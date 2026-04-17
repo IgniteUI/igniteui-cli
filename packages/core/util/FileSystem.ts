@@ -21,6 +21,9 @@ export class FsFileSystem implements IFileSystem {
 	public writeFile(filePath: string, text: string): void {
 		fs.writeFileSync(filePath, text);
 	}
+	public mkdir(dirPath: string, options?: { recursive?: boolean }): void {
+		fs.mkdirSync(dirPath, options);
+	}
 	public directoryExists(dirPath: string): boolean {
 		try {
 			return fs.statSync(dirPath).isDirectory();

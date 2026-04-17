@@ -15,6 +15,9 @@ class MockFileSystem implements IFileSystem {
 	public writeFile(filePath: string, text: string): void {
 		throw new Error("writeFile not implemented.");
 	}
+	public mkdir(dirPath: string): void {
+		throw new Error("mkdir not implemented.");
+	}
 	public directoryExists(dirPath: string): boolean {
 		throw new Error("directoryExists not implemented.");
 	}

@@ -1,9 +1,8 @@
 import {
-	BasePromptSession, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig,
+	BasePromptSession, FsFileSystem, GoogleAnalytics, IFileSystem, InquirerWrapper, PackageManager, ProjectConfig,
 	ProjectLibrary, PromptTaskContext, Task, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
-import * as fs from "fs";
 import { default as add } from "./commands/add";
 import { default as start } from "./commands/start";
 import { default as upgrade } from "./commands/upgrade";
@@ -11,8 +10,11 @@ import { TemplateManager } from "./TemplateManager";
 
 export class PromptSession extends BasePromptSession {
 
-	constructor(templateManager: TemplateManager) {
+	private readonly mcpFs: IFileSystem;
+
+	constructor(templateManager: TemplateManager, mcpFs: IFileSystem = new FsFileSystem()) {
 		super(templateManager);
+		this.mcpFs = mcpFs;
 	}
 
 	public static async chooseTerm() {
@@ -119,7 +121,7 @@ export class PromptSession extends BasePromptSession {
 		const configPath = path.join(process.cwd(), ".vscode", "mcp.json");
 		let config: { servers: Record<string, { command: string; args: string[] }> } = { servers: {} };
 		try {
-			config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+			config = JSON.parse(this.mcpFs.readFile(configPath, "utf8"));
 		} catch { /* file doesn't exist yet */ }
 		config.servers = config.servers || {};
 
@@ -130,8 +132,8 @@ export class PromptSession extends BasePromptSession {
 
 		// Preserve existing MCP entries and add ours
 		config.servers[MCP_SERVER_KEY] = { command, args };
-		fs.mkdirSync(path.dirname(configPath), { recursive: true });
-		fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + "\n", "utf8");
+		this.mcpFs.mkdir(path.dirname(configPath), { recursive: true });
+		this.mcpFs.writeFile(configPath, JSON.stringify(config, null, 2) + "\n");
 		Util.log(Util.greenCheck() + ` MCP server configured in ${configPath}`);
 	}
 

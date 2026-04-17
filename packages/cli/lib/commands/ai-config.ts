@@ -1,7 +1,6 @@
-﻿import { GoogleAnalytics, Util } from "@igniteui/cli-core";
+﻿import { FsFileSystem, GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 import * as path from "path";
-import * as fs from "fs";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
 const IGNITEUI_THEMING_SERVER_KEY = "igniteui-theming";
@@ -29,22 +28,22 @@ function getConfigPath(): string {
 	return path.join(process.cwd(), ".vscode", "mcp.json");
 }
 
-function readJson<T>(filePath: string, fallback: T): T {
+function readJson<T>(filePath: string, fallback: T, fileSystem: IFileSystem): T {
 	try {
-		return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;
+		return JSON.parse(fileSystem.readFile(filePath)) as T;
 	} catch {
 		return fallback;
 	}
 }
 
-function writeJson(filePath: string, data: unknown): void {
-	fs.mkdirSync(path.dirname(filePath), { recursive: true });
-	fs.writeFileSync(filePath, JSON.stringify(data, null, 2) + "\n", "utf8");
+function writeJson(filePath: string, data: unknown, fileSystem: IFileSystem): void {
+	fileSystem.mkdir(path.dirname(filePath), { recursive: true });
+	fileSystem.writeFile(filePath, JSON.stringify(data, null, 2) + "\n");
 }
 
-function configureVsCode(): void {
+export function configureVsCode(fileSystem: IFileSystem = new FsFileSystem()): void {
 	const configPath = getConfigPath();
-	const config = readJson<VsCodeMcpConfig>(configPath, { servers: {} });
+	const config = readJson<VsCodeMcpConfig>(configPath, { servers: {} }, fileSystem);
 	config.servers = config.servers || {};
 
 	let modified = false;
@@ -61,7 +60,7 @@ function configureVsCode(): void {
 		Util.log(` Ignite UI MCP servers already configured in ${configPath}`);
 		return;
 	}
-	writeJson(configPath, config);
+	writeJson(configPath, config, fileSystem);
 	Util.log(Util.greenCheck() + ` MCP servers configured in ${configPath}`);
 }
 
