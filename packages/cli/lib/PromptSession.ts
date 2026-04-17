@@ -104,7 +104,7 @@ export class PromptSession extends BasePromptSession {
 		await upgrade.upgrade({ skipInstall: true, _: ["upgrade"], $0: "upgrade" });
 	}
 
-	protected async configureMcp(): Promise<void> {
+	protected async configureAI(): Promise<void> {
 		aiConfigure();
 	}
 

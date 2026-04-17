@@ -58,7 +58,7 @@ export class SchematicsPromptSession extends BasePromptSession {
 		// TODO?
 	}
 
-	protected async configureMcp(): Promise<void> {
+	protected async configureAI(): Promise<void> {
 		// No-op in schematics context
 	}
 
