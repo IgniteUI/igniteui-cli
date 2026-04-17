@@ -67,8 +67,6 @@ export function configureSkills(): void {
 	const result = copyAISkillsToProject();
 	if (result === "copied") {
 		Util.log(Util.greenCheck() + " AI skills added to the project.");
-	} else if (result === "up-to-date") {
-		Util.log(Util.greenCheck() + " AI skills are already up to date.");
 	} else {
 		Util.warn("No AI skill files found. Make sure packages are installed (npm install) " +
 			"and your Ignite UI package includes a skills/ directory.", "yellow");

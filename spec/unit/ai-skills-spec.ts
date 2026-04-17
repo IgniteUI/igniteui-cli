@@ -93,14 +93,19 @@ describe("Unit - copyAISkillsToProject", () => {
 			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", "skill content");
 		});
 
-		it("should not overwrite an existing skill file", async () => {
+		it("should overwrite an existing skill file with newer content", async () => {
 			const angularSkillsDir = skillsDir("igniteui-angular");
 			const skillFilePath = skillFile("igniteui-angular", "angular.md");
+			const newContent = "# Updated Angular skills";
 			const fs = makeFs({
 				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) => {
 					if (p === "ignite-ui-cli.json") return true;
 					if (p === ".claude/skills/angular.md") return true; // already exists
 					return false;
+				}),
+				readFile: jasmine.createSpy("readFile").and.callFake((p: string) => {
+					if (p === skillFilePath) return newContent;
+					return "";
 				}),
 				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
 					p === angularSkillsDir
@@ -117,7 +122,7 @@ describe("Unit - copyAISkillsToProject", () => {
 
 			await copyAISkillsToProject();
 
-			expect(fs.writeFile).not.toHaveBeenCalled();
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", newContent);
 		});
 	});
 
