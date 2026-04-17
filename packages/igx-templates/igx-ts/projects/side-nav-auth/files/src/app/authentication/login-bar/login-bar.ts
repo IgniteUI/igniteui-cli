@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, inject, viewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IgxDropDownComponent, ISelectionEventArgs, IgxRippleDirective, IgxButtonDirective, IgxToggleActionDirective,
   IgxAvatarComponent, IgxIconComponent, IgxDropDownItemComponent } from 'igniteui-angular';
@@ -15,20 +15,16 @@ import { UserStore } from '../services/user-store';
 })
 export class LoginBar {
 
-  @ViewChild(LoginDialog, { static: true })
-  loginDialog!: LoginDialog;
+  loginDialog = viewChild.required(LoginDialog);
 
-  @ViewChild(IgxDropDownComponent, { static: true })
-  igxDropDown!: IgxDropDownComponent;
+  igxDropDown = viewChild.required(IgxDropDownComponent);
 
-  constructor(
-    public userStore: UserStore,
-    private externalAuth: ExternalAuth,
-    private router: Router) {
-  }
+  public userStore = inject(UserStore);
+  private externalAuth = inject(ExternalAuth);
+  private router = inject(Router);
 
   openDialog() {
-    this.loginDialog.open();
+    this.loginDialog().open();
   }
 
   handleLogout() {

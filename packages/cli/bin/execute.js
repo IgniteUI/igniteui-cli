@@ -19,5 +19,8 @@ resolve("igniteui-cli", { basedir: process.cwd() }, function (err, res) {
 	} else {
 		cli = require("../lib/cli");
 	}
-	cli.run(args);
+	cli.run(args).catch(function (err) {
+		console.error("Error: " + (err.message || err));
+		process.exit(1);
+	});
 });

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, viewChild, ViewEncapsulation } from '@angular/core';
 import {
   IgxDateSummaryOperand,
   IgxGridComponent,
@@ -24,8 +24,7 @@ import { Employee, employeesData } from './localData';
   ]
 })
 export class <%=ClassName%> implements OnInit {
-  @ViewChild('sampleGrid', { static: true, read: IgxGridComponent })
-  public sampleGrid!: IgxGridComponent;
+  public sampleGrid = viewChild.required('sampleGrid', { read: IgxGridComponent });
   public customDateSummary = CustomDateSummary;
 
   public localData!: Employee[];
@@ -40,10 +39,10 @@ export class <%=ClassName%> implements OnInit {
   }
 
   public toggleSummary(name: string): void {
-    if (this.sampleGrid.getColumnByName(name).hasSummary) {
-      this.sampleGrid.disableSummaries(name);
+    if (this.sampleGrid().getColumnByName(name).hasSummary) {
+      this.sampleGrid().disableSummaries(name);
     } else {
-      this.sampleGrid.enableSummaries(name);
+      this.sampleGrid().enableSummaries(name);
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import {
   IgxDialogComponent,
   IgxGridComponent,
@@ -44,19 +44,19 @@ import { Singer } from './singer';
 })
 export class <%=ClassName%> {
   public get undoEnabledParent(): boolean {
-    return this.hierarchicalGrid.transactions.canUndo;
+    return this.hierarchicalGrid().transactions.canUndo;
   }
 
   public get redoEnabledParent(): boolean {
-    return this.hierarchicalGrid.transactions.canRedo;
+    return this.hierarchicalGrid().transactions.canRedo;
   }
 
   public get hasTransactions(): boolean {
-    return this.hierarchicalGrid.transactions.getAggregatedChanges(false).length > 0 || this.hasChildTransactions;
+    return this.hierarchicalGrid().transactions.getAggregatedChanges(false).length > 0 || this.hasChildTransactions;
   }
 
   public get hasChildTransactions(): boolean {
-    return this.layout1.gridAPI.getChildGrids()
+    return this.layout1().gridAPI.getChildGrids()
       .find(c => c.transactions.getAggregatedChanges(false).length > 0) !== undefined;
   }
 
@@ -72,20 +72,15 @@ export class <%=ClassName%> {
     HasGrammyAward: false
   };
 
-  @ViewChild('dialogChanges', { read: IgxDialogComponent, static: true })
-  public dialogChanges!: IgxDialogComponent;
+  public dialogChanges = viewChild.required('dialogChanges', { read: IgxDialogComponent });
 
-  @ViewChild('dialogGrid', { read: IgxGridComponent, static: true })
-  public dialogGrid!: IgxGridComponent;
+  public dialogGrid = viewChild.required('dialogGrid', { read: IgxGridComponent });
 
-  @ViewChild('layout1', { static: true })
-  private layout1!: IgxRowIslandComponent;
+  private layout1 = viewChild.required<IgxRowIslandComponent>('layout1');
 
-  @ViewChild('hierarchicalGrid', { static: true })
-  private hierarchicalGrid!: IgxHierarchicalGridComponent;
+  private hierarchicalGrid = viewChild.required<IgxHierarchicalGridComponent>('hierarchicalGrid');
 
-  @ViewChild('dialogAddSinger', { read: IgxDialogComponent, static: true })
-  private dialogSinger!: IgxDialogComponent;
+  private dialogSinger = viewChild.required('dialogAddSinger', { read: IgxDialogComponent });
 
   public formatter = (a: number): number => a;
 
@@ -100,38 +95,38 @@ export class <%=ClassName%> {
   }
 
   public commit(): void {
-    this.hierarchicalGrid.transactions.commit(this.localdata);
-    this.layout1.gridAPI.getChildGrids().forEach((grid) => {
+    this.hierarchicalGrid().transactions.commit(this.localdata);
+    this.layout1().gridAPI.getChildGrids().forEach((grid) => {
       grid.transactions.commit(grid.data as any[]);
     });
-    this.dialogChanges.close();
+    this.dialogChanges().close();
   }
 
   public discard(): void {
-    this.hierarchicalGrid.transactions.clear();
-    this.layout1.gridAPI.getChildGrids().forEach((grid) => {
+    this.hierarchicalGrid().transactions.clear();
+    this.layout1().gridAPI.getChildGrids().forEach((grid) => {
       grid.transactions.clear();
     });
-    this.dialogChanges.close();
+    this.dialogChanges().close();
   }
 
   public openCommitDialog(): void {
-    this.transactionsDataAll = [...this.hierarchicalGrid.transactions.getAggregatedChanges(true)];
-    this.layout1.gridAPI.getChildGrids().forEach((grid) => {
+    this.transactionsDataAll = [...this.hierarchicalGrid().transactions.getAggregatedChanges(true)];
+    this.layout1().gridAPI.getChildGrids().forEach((grid) => {
       this.transactionsDataAll = this.transactionsDataAll.concat(grid.transactions.getAggregatedChanges(true));
     });
-    this.dialogChanges.open();
-    this.dialogGrid.reflow();
+    this.dialogChanges().open();
+    this.dialogGrid().reflow();
   }
 
   public addSinger(): void {
-    this.hierarchicalGrid.addRow(this.singer);
+    this.hierarchicalGrid().addRow(this.singer);
     ++this.id;
     this.cancel();
   }
 
   public removeRow(rowIndex: number): void {
-    const row = this.hierarchicalGrid.getRowByIndex(rowIndex);
+    const row = this.hierarchicalGrid().getRowByIndex(rowIndex);
     if (row && row.delete) {
       row.delete();
     }
@@ -150,8 +145,8 @@ export class <%=ClassName%> {
   }
 
   public cancel(): void {
-    this.dialogChanges.close();
-    this.dialogSinger.close();
+    this.dialogChanges().close();
+    this.dialogSinger().close();
     this.singer = {
       ID: this.id,
       Artist: 'Mock Jagger',

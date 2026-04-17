@@ -2,6 +2,7 @@ import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { ScopedTree } from "@angular-devkit/schematics/src/tree/scoped";
+import * as jsonc from "jsonc-parser";
 import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
@@ -125,6 +126,10 @@ function importStyles(): Rule {
 export function addAIConfig(): Rule {
 	return (tree: Tree) => {
 		const mcpFilePath = "/.vscode/mcp.json";
+		const angularCliServer = {
+			command: "npx",
+			args: ["-y", "@angular/cli", "mcp"]
+		};
 		const igniteuiServer = {
 			command: "npx",
 			args: ["-y", "igniteui-cli@next", "mcp"]
@@ -135,24 +140,31 @@ export function addAIConfig(): Rule {
 		};
 
 		if (tree.exists(mcpFilePath)) {
-			const content = JSON.parse(tree.read(mcpFilePath)!.toString());
+			let text = tree.read(mcpFilePath)!.toString();
+			const content = jsonc.parse(text);
 			const servers = content.servers ?? {};
-			let modified = false;
+			const formattingOptions: jsonc.FormattingOptions = { tabSize: 2, insertSpaces: true };
+			const newServers: Record<string, object> = {};
+			if (!servers["angular-cli"]) {
+				newServers["angular-cli"] = angularCliServer;
+			}
 			if (!servers["igniteui-cli"]) {
-				servers["igniteui-cli"] = igniteuiServer;
-				modified = true;
+				newServers["igniteui-cli"] = igniteuiServer;
 			}
 			if (!servers["igniteui-theming"]) {
-				servers["igniteui-theming"] = igniteuiThemingServer;
-				modified = true;
+				newServers["igniteui-theming"] = igniteuiThemingServer;
 			}
-			if (modified) {
-				content.servers = servers;
-				tree.overwrite(mcpFilePath, JSON.stringify(content, null, 2));
+			for (const [key, value] of Object.entries(newServers)) {
+				const edits = jsonc.modify(text, ["servers", key], value, { formattingOptions });
+				text = jsonc.applyEdits(text, edits);
+			}
+			if (Object.keys(newServers).length > 0) {
+				tree.overwrite(mcpFilePath, text);
 			}
 		} else {
 			const mcpConfig = {
 				servers: {
+					"angular-cli": angularCliServer,
 					"igniteui-cli": igniteuiServer,
 					"igniteui-theming": igniteuiThemingServer
 				}

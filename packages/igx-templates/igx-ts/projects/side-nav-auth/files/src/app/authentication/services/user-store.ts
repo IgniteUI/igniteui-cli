@@ -1,4 +1,4 @@
-import { Injectable, isDevMode } from '@angular/core';
+import { inject, Injectable, isDevMode } from '@angular/core';
 import { User } from '../models/user';
 import { LocalStorageService } from './local-storage';
 
@@ -16,6 +16,7 @@ const USER_TOKEN = 'currentUser';
   providedIn: 'root'
 })
 export class UserStore {
+  private localStorage = inject(LocalStorageService);
   private _currentUser: User | null;
   /** Current logged in user, if any */
   public get currentUser() { return this._currentUser; }
@@ -32,7 +33,7 @@ export class UserStore {
     return initials;
   }
 
-  constructor(private localStorage: LocalStorageService) {
+  constructor() {
     const storedUser = this.localStorage.getItem(USER_TOKEN);
     if (storedUser && storedUser !== 'undefined') {
       try {

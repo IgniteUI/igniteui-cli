@@ -34,6 +34,10 @@
       "factory": "./cli-config/index",
       "schema": "./cli-config/schema.json"
     },
+    "ai-config": {
+      "description": "Adds AI/MCP server configuration to .vscode/mcp.json.",
+      "factory": "./cli-config/index#addAIConfig"
+    },
     "upgrade-packages": {
       "description": "Upgrades to the licensed Ignite UI for Angular packages",
       "factory": "./upgrade-packages/index",

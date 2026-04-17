@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject, output } from '@angular/core';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
   IgxInputDirective, IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular';
@@ -17,21 +17,20 @@ import { UserStore } from '../services/user-store';
     IgxInputDirective, IgxButtonDirective, IgxRippleDirective]
 })
 export class Login {
-  public loginForm: FormGroup;
-  @Output() public viewChange: EventEmitter<any> = new EventEmitter();
-  @Output() public loggedIn: EventEmitter<any> = new EventEmitter();
+  public externalAuth = inject(ExternalAuth);
+  private authentication = inject(Authentication);
+  private userStore = inject(UserStore);
+  private router = inject(Router);
+  private fb = inject(FormBuilder);
+
+  public loginForm = this.fb.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+  });
+  public viewChange = output<any>();
+  public loggedIn = output<any>();
   /** expose to template */
   public providers = ExternalAuthProvider;
-
-  constructor(
-    public externalAuth: ExternalAuth, private authentication: Authentication,
-    private userStore: UserStore, private router: Router, fb: FormBuilder
-  ) {
-    this.loginForm = fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-    });
-  }
 
   signUpG() {
     this.externalAuth.login(ExternalAuthProvider.Google);

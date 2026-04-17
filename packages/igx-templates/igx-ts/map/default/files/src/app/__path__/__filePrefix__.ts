@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, viewChild } from '@angular/core';
 import { IgxGeographicMapComponent, IgxGeographicMapCoreModule } from 'igniteui-angular-maps';
 
 @Component({
@@ -9,10 +9,9 @@ import { IgxGeographicMapComponent, IgxGeographicMapCoreModule } from 'igniteui-
 })
 export class <%=ClassName%> implements AfterViewInit {
 
-  @ViewChild('map', {static: true})
-  public map!: IgxGeographicMapComponent;
+  public map = viewChild.required<IgxGeographicMapComponent>('map');
 
   public ngAfterViewInit(): void {
-    this.map.windowRect = { left: 0.2, top: 0.1, width: 0.7, height: 0.7 };
+    this.map().windowRect = { left: 0.2, top: 0.1, width: 0.7, height: 0.7 };
   }
 }
