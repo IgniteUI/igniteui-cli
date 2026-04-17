@@ -19,6 +19,10 @@ export class FsFileSystem implements IFileSystem {
 		return fs.readFileSync(filePath).toString();
 	}
 	public writeFile(filePath: string, text: string): void {
+		const dir = path.dirname(filePath);
+		if (!fs.existsSync(dir)) {
+			fs.mkdirSync(dir, { recursive: true });
+		}
 		fs.writeFileSync(filePath, text);
 	}
 	public directoryExists(dirPath: string): boolean {

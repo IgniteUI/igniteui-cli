@@ -98,6 +98,9 @@ export abstract class BasePromptSession {
 	/** Upgrade packages to use private Infragistics feed */
 	protected abstract upgradePackages();
 
+	/** Configure Ignite UI AI tooling (MCP servers) for the project */
+	protected abstract configureAI(): Promise<void>;
+
 	/**
 	 * Get user name and set template's extra configurations if any
 	 * @param projectLibrary to add component to
@@ -418,6 +421,8 @@ export abstract class BasePromptSession {
 					await this.upgradePackages();
 				}
 			}
+
+			await this.configureAI();
 
 			const defaultPort = config.project.defaultPort;
 			const port = await this.getUserInput({
