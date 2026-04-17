@@ -1,5 +1,4 @@
 export { default as add } from "./add";
-export { default as addSkills } from "./add-skills";
 export { default as aiConfig } from "./ai-config";
 export { default as build } from "./build";
 export { default as config } from "./config";

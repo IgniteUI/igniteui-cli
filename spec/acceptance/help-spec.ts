@@ -16,7 +16,6 @@ describe("Help command", () => {
 		const originalHelpText: string = `Commands:
 		new [name]             creates a project
 		add [template] [name]  adds template by its ID
-		add-skills             Copies AI coding skills to the current project
 		build                  builds the project
 		start                  starts the project
 		generate               generates custom template                  [aliases: g]
@@ -27,7 +26,8 @@ describe("Help command", () => {
 		upgrade-packages        upgrades Ignite UI Packages
 		mcp                    Starts the Ignite UI MCP server for AI assistant
                                integration
-		ai-config              Configure Ignite UI AI tooling (MCP servers)
+		ai-config              Configure Ignite UI AI tooling (MCP servers and AI
+                               coding skills)
 	  Options:
 		-v, --version  Show current Ignite UI CLI version                    [boolean]
 		-h, --help     Show help                                             [boolean]`.replace(/\s/g, "");

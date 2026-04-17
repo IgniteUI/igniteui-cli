@@ -145,13 +145,13 @@ ig start
 
 ## Configure AI Tooling
 
-To automatically configure Ignite UI MCP servers for VS Code, run:
+To automatically configure Ignite UI AI tooling - MCP servers and AI coding skills, run:
 
 ```bash
 ig ai-config
 ```
 
-This creates or updates `.vscode/mcp.json` in the current project with entries for both the [Ignite UI MCP](#mcp-server) and `igniteui-theming` MCP servers. Existing servers in the file are preserved. New projects are created with AI tooling configuration out of the box.
+This creates or updates `.vscode/mcp.json` in the current project with entries for both the [Ignite UI MCP](#mcp-server) and `igniteui-theming` MCP servers. Existing servers in the file are preserved. It also copies any AI coding skill files from installed Ignite UI packages into the project. New projects are created with AI tooling configuration out of the box.
 
 ## MCP Server
 
