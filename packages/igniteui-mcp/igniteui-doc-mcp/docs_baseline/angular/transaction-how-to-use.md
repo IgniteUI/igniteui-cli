@@ -283,6 +283,9 @@ In our html template, we define an [`igxList`](https://www.infragistics.com/prod
 </igx-list>
 ```
 
+> [!NOTE]
+> This example uses `igx-icon` with the default Material Icons family. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 ## Pipe for pending changes
 
 The list component from above uses the `transactionBasePipe` to display changes to the items in the wishlist without affecting the original data. Here is how the pipe looks like:

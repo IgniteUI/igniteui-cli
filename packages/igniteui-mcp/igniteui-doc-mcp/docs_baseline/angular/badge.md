@@ -92,6 +92,9 @@ import { IgxBadgeComponent } from 'igniteui-angular/badge';
 export class HomeComponent {}
 ```
 
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 Now that you have the Ignite UI for Angular Badge module or component imported, you can start with a basic configuration of the `igx-badge` component.
 
 ## Using the Angular Badge Component
@@ -163,6 +166,31 @@ igx-badge {
   font-size: calc(var(--size) / 2);
   line-height: normal;
 }
+```
+
+### Badge Value and Icon
+
+Use the `[value]` input to display text or a numeric count inside the badge. This is the recommended approach instead of projecting content directly:
+
+```html
+<!-- Recommended -->
+<igx-badge [value]="model.value"></igx-badge>
+
+<!-- Avoid -->
+<igx-badge>{{ model.value }}</igx-badge>
+```
+
+When both `[icon]` and `[value]` are set, the badge displays both simultaneously:
+
+```html
+<!-- Both the icon "check" and the value "5" will be shown -->
+<igx-badge icon="check" value="5" type="success"></igx-badge>
+```
+
+To display only a numeric value without an icon, make sure `[icon]` is not set:
+
+```html
+<igx-badge [value]="unreadCount" type="info"></igx-badge>
 ```
 
 ### Badge Icon
@@ -292,7 +320,7 @@ export class AppModule {}
 ```
 
 >[!NOTE]
->The [`igx-badge`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html) has [`icon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html#icon) and [`type`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html#type) inputs to configure the badge look. You can set the icon by providing its name from the official [material icons set](https://material.io/icons/). The badge type can be set to either [`default`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#default), [`info`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#info), [`success`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#success), [`warning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#warning), or [`error`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#error). Depending on the type, a specific background color is applied.
+>The [`igx-badge`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html) has [`icon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html#icon), [`value`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html#value), and [`type`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html#type) inputs to configure the badge look. You can set the icon by providing its name from the official [material icons set](https://material.io/icons/). The badge type can be set to either [`default`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#default), [`info`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#info), [`success`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#success), [`warning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#warning), or [`error`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#error). Depending on the type, a specific background color is applied.
 
 In our sample, [`icon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html#icon) and [`type`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html#type) are bound to model properties named _icon_ and _type_.
 

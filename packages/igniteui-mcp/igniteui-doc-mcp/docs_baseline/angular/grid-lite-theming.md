@@ -23,7 +23,7 @@ As a rule of thumb, you can always copy the `themes` folder to your assets direc
 ```
 
 | Theme     | Variant | Path                                                           |
-| --------- | ------- | -------------------------------------------------------------- |
+| :-------- | :------ | :------------------------------------------------------------- |
 | Bootstrap | Light   | node_modules/igniteui-webcomponents/themes/light/bootstrap.css |
 | Bootstrap | Dark    | node_modules/igniteui-webcomponents/themes/dark/bootstrap.css  |
 | Material  | Light   | node_modules/igniteui-webcomponents/themes/light/material.css  |

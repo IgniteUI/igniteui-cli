@@ -67,7 +67,7 @@ import { IgxProgressBarModule } from 'igniteui-angular/progressbar';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxCircularProgressBarComponent` as a standalone dependency, or use the [`IGX_CIRCULAR_PROGRESS_BAR_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/progressbar/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxCircularProgressBarComponent` as a standalone dependency, or use the [`IGX_CIRCULAR_PROGRESS_BAR_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/progressbar/src/progressbar/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -172,6 +172,9 @@ You can dynamically change the value of the progress by using external controls 
   </div>
 </div>
 ```
+
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 Add the methods that increment and decrement the value:
 

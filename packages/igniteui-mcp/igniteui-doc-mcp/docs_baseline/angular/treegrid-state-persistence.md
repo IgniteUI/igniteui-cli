@@ -14,25 +14,37 @@ _premium: true
     const state = this.state.getState() as string;
     window.sessionStorage.setItem('grid1-state', state);}public restoreGridState() {
     const state = window.sessionStorage.getItem('grid1-state');
-    this.state.setState(state);}```## Restoring columnsWhen possible the state directive will reuses the columns that already exists on the grid when restoring the state, instead of creating new column instances. The only scenario where a new instance will be created is when the column (or its children in case of a column groups) have no `field` property so there's no way to uniquely identify the matching column and re-use it.For such scenarios, the following [`limitations`](state-persistence.md#limitations) are imposed. In that case restoring complex objects can be achieved with code on application level. Let's show how to do this for templated columns:1. Define a template reference variable (in the example below it is `#activeTemplate`) and assign an event handler for the [`columnInit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#columnInit) event:@@if (igxName === 'IgxGrid') {```html<igx-grid id="grid" #grid igxGridState (columnInit)="onColumnInit($event)">
-    <igx-column [field]="'IsActive'" header="IsActive">
-        <ng-template igxCell #activeTemplate let-column let-val="val">
-            <igx-checkbox [checked]="val"></igx-checkbox>
-        </ng-template>
-    </igx-column>
-    ...</igx-grid>```}@@if (igxName === 'IgxHierarchicalGrid') {```html<igx-hierarchical-grid id="grid" #grid igxGridState (columnInit)="onColumnInit($event)">
-    <igx-column [field]="'IsActive'" header="IsActive">
-        <ng-template igxCell #activeTemplate let-column let-val="val">
-            <igx-checkbox [checked]="val"></igx-checkbox>
-        </ng-template>
-    </igx-column>
-    ...</igx-hierarchical-grid>```}@@if (igxName === 'IgxTreeGrid') {```html<igx-tree-grid id="grid" #grid igxGridState (columnInit)="onColumnInit($event)">
-    <igx-column [field]="'IsActive'" header="IsActive">
-        <ng-template igxCell #activeTemplate let-column let-val="val">
-            <igx-checkbox [checked]="val"></igx-checkbox>
-        </ng-template>
-    </igx-column>
-    ...</igx-tree-grid>```}2. Query the template view in the component using @ViewChild or @ViewChildren decorator. In the [`columnInit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#columnInit) event handler, assign the template to the column `bodyTemplate` property:```typescript@ViewChild('activeTemplate', { static: true }) public activeTemplate: TemplateRef<any>;public onColumnInit(column: IgxColumnComponent) {
+    this.state.setState(state);}```## Restoring columnsWhen possible the state directive will reuses the columns that already exists on the grid when restoring the state, instead of creating new column instances. The only scenario where a new instance will be created is when the column (or its children in case of a column groups) have no `field` property so there's no way to uniquely identify the matching column and re-use it.For such scenarios, the following [`limitations`](state-persistence.md#limitations) are imposed. In that case restoring complex objects can be achieved with code on application level. Let's show how to do this for templated columns:1. Define a template reference variable (in the example below it is `#activeTemplate`) and assign an event handler for the [`columnInit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#columnInit) event:@@if (igxName === 'IgxGrid') {
+    ```html
+    <igx-grid id="grid" #grid igxGridState (columnInit)="onColumnInit($event)">
+        <igx-column [field]="'IsActive'" header="IsActive">
+            <ng-template igxCell #activeTemplate let-column let-val="val">
+                <igx-checkbox [checked]="val"></igx-checkbox>
+            </ng-template>
+        </igx-column>
+        ...
+    </igx-grid>
+    ```}@@if (igxName === 'IgxHierarchicalGrid') {
+    ```html
+    <igx-hierarchical-grid id="grid" #grid igxGridState (columnInit)="onColumnInit($event)">
+        <igx-column [field]="'IsActive'" header="IsActive">
+            <ng-template igxCell #activeTemplate let-column let-val="val">
+                <igx-checkbox [checked]="val"></igx-checkbox>
+            </ng-template>
+        </igx-column>
+        ...
+    </igx-hierarchical-grid>
+    ```}@@if (igxName === 'IgxTreeGrid') {
+    ```html
+    <igx-tree-grid id="grid" #grid igxGridState (columnInit)="onColumnInit($event)">
+        <igx-column [field]="'IsActive'" header="IsActive">
+            <ng-template igxCell #activeTemplate let-column let-val="val">
+                <igx-checkbox [checked]="val"></igx-checkbox>
+            </ng-template>
+        </igx-column>
+        ...
+    </igx-tree-grid>
+    ```}1. Query the template view in the component using @ViewChild or @ViewChildren decorator. In the [`columnInit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#columnInit) event handler, assign the template to the column `bodyTemplate` property:```typescript@ViewChild('activeTemplate', { static: true }) public activeTemplate: TemplateRef<any>;public onColumnInit(column: IgxColumnComponent) {
     if (column.field === 'IsActive') {
         column.bodyTemplate = this.activeTemplate;
         column.summaries = MySummary;

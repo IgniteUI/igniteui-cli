@@ -150,7 +150,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 The [`IgxGeographicScatterAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicscatterareaseriescomponent.html) works a lot like the [`IgxGeographicContourLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographiccontourlineseriescomponent.html) except that it represents data as interpolated and colored surface instead of contour lines connecting data points with the same values.
@@ -164,16 +163,16 @@ The [`IgxGeographicScatterAreaSeriesComponent`](https://www.infragistics.com/pro
 
 The following table summarizes properties of GeographicScatterAreaSeries used for data binding.
 
-| Property Name  | Property Type   | Description   |
-|--------------|---------------| ---------------|
-|`ItemsSource`|any|The source of data items to perform triangulation on if the [`trianglesSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#trianglesSource) property provides no triangulation data.|
-|[`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#longitudeMemberPath)|string|The name of the property containing the Longitude for all items bound to the `ItemsSource`.|
-|[`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#latitudeMemberPath)|string|The name of the property containing the Latitude for all items bound to the `ItemsSource`.|
-|[`colorMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicscatterareaseriescomponent.html#colorMemberPath)|string|The name of the property containing a value at Latitude and Longitude coordinates of each data item. This numeric value will be be converted to a color when the [`colorScale`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicscatterareaseriescomponent.html#colorScale) property is set.|
-|[`trianglesSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#trianglesSource)|any|The source of triangulation data. Setting Triangles of the `TriangulationSource` object to this property improves both runtime performance and geographic series rendering.|
-|[`triangleVertexMemberPath1`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#triangleVertexMemberPath1)|string|The name of the property of the [`trianglesSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#trianglesSource) items which, for each triangle, contains the index of the first vertex point in the ItemsSource. It is not mandatory to set this property. It is taken by default unless custom triangulation logic is provided.|
-|[`triangleVertexMemberPath2`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#triangleVertexMemberPath2)|string|The name of the property of the [`trianglesSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#trianglesSource) items which, for each triangle, contains the index of the first vertex point in the ItemsSource. It is not mandatory to set this property. It is taken by default unless custom triangulation logic is provided.|
-|[`triangleVertexMemberPath3`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#triangleVertexMemberPath3)|string|The name of the property of the [`trianglesSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#trianglesSource) items which, for each triangle, contains the index of the first vertex point in the ItemsSource. It is not mandatory to set this property. It is taken by default unless custom triangulation logic is provided.|
+| Property Name                                                                                                                                                                                                            | Property Type | Description                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ItemsSource`                                                                                                                                                                                                            | any           | The source of data items to perform triangulation on if the [`trianglesSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#trianglesSource) property provides no triangulation data.                                                                                                                                             |
+| [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#longitudeMemberPath)             | string        | The name of the property containing the Longitude for all items bound to the `ItemsSource`.                                                                                                                                                                                                                                                                                                                                                           |
+| [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#latitudeMemberPath)               | string        | The name of the property containing the Latitude for all items bound to the `ItemsSource`.                                                                                                                                                                                                                                                                                                                                                            |
+| [`colorMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicscatterareaseriescomponent.html#colorMemberPath)                         | string        | The name of the property containing a value at Latitude and Longitude coordinates of each data item. This numeric value will be be converted to a color when the [`colorScale`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicscatterareaseriescomponent.html#colorScale) property is set.                                                                              |
+| [`trianglesSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#trianglesSource)                     | any           | The source of triangulation data. Setting Triangles of the `TriangulationSource` object to this property improves both runtime performance and geographic series rendering.                                                                                                                                                                                                                                                                           |
+| [`triangleVertexMemberPath1`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#triangleVertexMemberPath1) | string        | The name of the property of the [`trianglesSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#trianglesSource) items which, for each triangle, contains the index of the first vertex point in the ItemsSource. It is not mandatory to set this property. It is taken by default unless custom triangulation logic is provided. |
+| [`triangleVertexMemberPath2`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#triangleVertexMemberPath2) | string        | The name of the property of the [`trianglesSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#trianglesSource) items which, for each triangle, contains the index of the first vertex point in the ItemsSource. It is not mandatory to set this property. It is taken by default unless custom triangulation logic is provided. |
+| [`triangleVertexMemberPath3`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#triangleVertexMemberPath3) | string        | The name of the property of the [`trianglesSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicxytriangulatingseriescomponent.html#trianglesSource) items which, for each triangle, contains the index of the first vertex point in the ItemsSource. It is not mandatory to set this property. It is taken by default unless custom triangulation logic is provided. |
 
 ## Color Scale
 
@@ -182,12 +181,12 @@ The provided [`IgxCustomPaletteColorScaleComponent`](https://www.infragistics.co
 
 The following table list properties of the [`IgxCustomPaletteColorScaleComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcustompalettecolorscalecomponent.html) affecting surface coloring of the GeographicScatterAreaSeries.
 
-| Property Name  | Property Type   | Description   |
-|--------------|---------------| ---------------|
-|[`palette`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcustompalettecolorscalecomponent.html#palette)| ObservableCollection<Color> |Gets or sets the collection of colors to select from or to interpolate between.|
-|[`interpolationMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcustompalettecolorscalecomponent.html#interpolationMode)|[`ColorScaleInterpolationMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.colorscaleinterpolationmode.html)|Gets or sets the method getting a color from the Palette.|
-|[`maximumValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcustompalettecolorscalecomponent.html#maximumValue)|double|The highest value to assign a color. Any given value greater than this value will be Transparent.|
-|[`minimumValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcustompalettecolorscalecomponent.html#minimumValue)|double|The lowest value to assign a color. Any given value less than this value will be Transparent.|
+| Property Name                                                                                                                                                                                      | Property Type                                                                                                                                                                    | Description                                                                                       |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [`palette`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcustompalettecolorscalecomponent.html#palette)                     | ObservableCollection<Color>                                                                                                                                                      | Gets or sets the collection of colors to select from or to interpolate between.                   |
+| [`interpolationMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcustompalettecolorscalecomponent.html#interpolationMode) | [`ColorScaleInterpolationMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.colorscaleinterpolationmode.html) | Gets or sets the method getting a color from the Palette.                                         |
+| [`maximumValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcustompalettecolorscalecomponent.html#maximumValue)           | double                                                                                                                                                                           | The highest value to assign a color. Any given value greater than this value will be Transparent. |
+| [`minimumValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcustompalettecolorscalecomponent.html#minimumValue)           | double                                                                                                                                                                           | The lowest value to assign a color. Any given value less than this value will be Transparent.     |
 
 ## Code Snippet
 
@@ -196,87 +195,81 @@ The following code shows how to bind the [`IgxGeographicScatterAreaSeriesCompone
 <!-- Angular -->
 
 ```html
-<div className="sampleRoot" >
-    <igx-geographic-map #map
-        width="700px"
-        height="500px"
-        zoomable="true" >
-    </igx-geographic-map>
+<div className="sampleRoot">
+  <igx-geographic-map #map width="700px" height="500px" zoomable="true">
+  </igx-geographic-map>
 </div>
 
 <ng-template let-series="series" let-item="item" #template>
-    <div>
-        <span>
-            Degrees: {{item.value}} "°F"
-        </span>
-        <br/>
-        <span>
-                Longitude: {{item.lon}}
-        </span>
-        <br/>
-        <span>
-                Latitude: {{item.lat}}
-        </span>
-    </div>
+  <div>
+    <span> Degrees: {{item.value}} "°F" </span>
+    <br />
+    <span> Longitude: {{item.lon}} </span>
+    <br />
+    <span> Latitude: {{item.lat}} </span>
+  </div>
 </ng-template>
 ```
 
 ```ts
-import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
-import { IgxCustomPaletteColorScaleComponent } from 'igniteui-angular-charts';
-import { IgxShapeDataSource } from 'igniteui-angular-core';
-import { IgxGeographicMapComponent } from 'igniteui-angular-maps';
-import { IgxGeographicScatterAreaSeriesComponent } from 'igniteui-angular-maps';
+import {
+  AfterViewInit,
+  Component,
+  TemplateRef,
+  ViewChild,
+} from "@angular/core";
+import { IgxCustomPaletteColorScaleComponent } from "igniteui-angular-charts";
+import { IgxShapeDataSource } from "igniteui-angular-core";
+import { IgxGeographicMapComponent } from "igniteui-angular-maps";
+import { IgxGeographicScatterAreaSeriesComponent } from "igniteui-angular-maps";
 
 @Component({
   selector: "app-map-geographic-scatter-area-series",
   styleUrls: ["./map-geographic-scatter-area-series.component.scss"],
-  templateUrl: "./map-geographic-scatter-area-series.component.html"
+  templateUrl: "./map-geographic-scatter-area-series.component.html",
 })
 export class MapTypeScatterAreaSeriesComponent implements AfterViewInit {
+  @ViewChild("map")
+  public map: IgxGeographicMapComponent;
+  @ViewChild("template")
+  public tooltipTemplate: TemplateRef<object>;
+  constructor() {}
 
-    @ViewChild ("map")
-    public map: IgxGeographicMapComponent;
-    @ViewChild ("template")
-    public tooltipTemplate: TemplateRef<object>;
-    constructor() {
-    }
-
-    public ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     const sds = new IgxShapeDataSource();
     sds.shapefileSource = "assets/Shapes/WorldTemperatures.shp";
-    sds.databaseSource  = "assets/Shapes/WorldTemperatures.dbf";
+    sds.databaseSource = "assets/Shapes/WorldTemperatures.dbf";
     sds.dataBind();
     sds.importCompleted.subscribe(() => this.onDataLoaded(sds, ""));
-}
+  }
 
-    public onDataLoaded(sds: IgxShapeDataSource, e: any) {
+  public onDataLoaded(sds: IgxShapeDataSource, e: any) {
     const shapeRecords = sds.getPointData();
     const contourPoints: any[] = [];
     for (const record of shapeRecords) {
-        const temp = record.fieldValues.Contour;
-        // using only major contours (every 10th degrees Celsius)
-        if (temp % 10 === 0 && temp >= 0) {
-            for (const shapes of record.points) {
-                for (let i = 0; i < shapes.length; i++) {
-                if (i % 5 === 0) {
-                    const p = shapes[i];
-                    const item = { lon: p.x, lat: p.y, value: temp};
-                    contourPoints.push(item);
-                }
-                }
+      const temp = record.fieldValues.Contour;
+      // using only major contours (every 10th degrees Celsius)
+      if (temp % 10 === 0 && temp >= 0) {
+        for (const shapes of record.points) {
+          for (let i = 0; i < shapes.length; i++) {
+            if (i % 5 === 0) {
+              const p = shapes[i];
+              const item = { lon: p.x, lat: p.y, value: temp };
+              contourPoints.push(item);
             }
+          }
         }
+      }
     }
     this.createContourSeries(contourPoints);
-}
+  }
 
-    public createContourSeries(data: any[]) {
+  public createContourSeries(data: any[]) {
     const brushes = [
-        "rgba(32, 146, 252, 0.5)", // semi-transparent blue
-        "rgba(14, 194, 14, 0.5)",  // semi-transparent green
-        "rgba(252, 120, 32, 0.5)", // semi-transparent orange
-        "rgba(252, 32, 32, 0.5)"  // semi-transparent red
+      "rgba(32, 146, 252, 0.5)", // semi-transparent blue
+      "rgba(14, 194, 14, 0.5)", // semi-transparent green
+      "rgba(252, 120, 32, 0.5)", // semi-transparent orange
+      "rgba(252, 32, 32, 0.5)", // semi-transparent red
     ];
 
     const colorScale = new IgxCustomPaletteColorScaleComponent();
@@ -294,7 +287,7 @@ export class MapTypeScatterAreaSeriesComponent implements AfterViewInit {
     areaSeries.thickness = 4;
 
     this.map.series.add(areaSeries);
-}
+  }
 }
 ```
 

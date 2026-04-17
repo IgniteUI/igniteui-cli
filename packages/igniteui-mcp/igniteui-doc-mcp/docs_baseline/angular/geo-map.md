@@ -175,8 +175,6 @@ For more details please visit:
 
 [Microsoft Bing Blogs](https://blogs.bing.com/maps/2025-06/Bing-Maps-for-Enterprise-Basic-Account-shutdown-June-30,2025)
 
-<!-- Angular, React, WebComponents -->
-
 ## Dependencies
 
 The Angular geographic map component, you need to first install these packages:
@@ -186,8 +184,6 @@ npm install --save igniteui-angular-core
 npm install --save igniteui-angular-charts
 npm install --save igniteui-angular-maps
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Component Modules
 

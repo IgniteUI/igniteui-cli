@@ -166,14 +166,14 @@ import { IgxActionStripModule } from 'igniteui-angular/action-strip';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxActionStripComponent` as a standalone dependency, or use the [`IGX_ACTION_STRIP_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/action-strip/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxActionStripComponent` as a standalone dependency, or use the [`IGX_ACTION_STRIP_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/action-strip/src/action-strip/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
 
 ...
 import { IGX_ACTION_STRIP_DIRECTIVES } from 'igniteui-angular/action-strip';
-import { IgxButtonDirective } from 'igniteui-angular/button';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 // import { IGX_ACTION_STRIP_DIRECTIVES, IgxButtonDirective, IgxIconComponent } from '@infragistics/igniteui-angular'; for licensed package
 
@@ -195,6 +195,9 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
 })
 export class HomeComponent {}
 ```
+
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 Now that you have the Ignite UI for Angular Action Strip module or directives imported, you can start with a basic configuration of the `igx-action-strip` component.
 

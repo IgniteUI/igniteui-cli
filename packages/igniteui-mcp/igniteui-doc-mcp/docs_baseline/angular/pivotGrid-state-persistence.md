@@ -49,7 +49,7 @@ _premium: true
         case 'SellerName':
             dim.memberFunction = (data) => data.Seller.Name;
             break;
-    }}``````typescript
+    }}```## Demo```typescript
 import { AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren, inject } from "@angular/core";
 import { NavigationStart, Router, RouterLink } from "@angular/router";
 

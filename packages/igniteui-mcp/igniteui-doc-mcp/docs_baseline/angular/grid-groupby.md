@@ -1127,9 +1127,9 @@ $custom-chips-theme: chip-theme(
 
 ## Known Limitations
 
-|Limitation|Description|
-|--- |--- |
-|Maximum amount of grouped columns is 10. | If more than 10 columns are grouped an error is thrown. |
+| Limitation                               | Description                                             |
+| :--------------------------------------- | :------------------------------------------------------ |
+| Maximum amount of grouped columns is 10. | If more than 10 columns are grouped an error is thrown. |
 
 ## API References
 
