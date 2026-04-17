@@ -206,7 +206,8 @@ describe("Schematics ng-new", () => {
 				commit: true,
 				message: `Initial commit for project`
 			};
-			const expectedCliConfig: RunSchematicTaskOptions = {
+			const expectedCliConfig: RunSchematicTaskOptions<any> = {
+				collection: null,
 				name: "cli-config",
 				options: {
 					directory: workingDirectory
