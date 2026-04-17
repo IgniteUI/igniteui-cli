@@ -1,4 +1,4 @@
-﻿import { FsFileSystem, GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
+import { FsFileSystem, GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 import * as path from "path";
 

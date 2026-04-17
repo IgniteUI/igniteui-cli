@@ -151,7 +151,7 @@ To automatically configure Ignite UI MCP servers for VS Code, run:
 ig ai-config
 ```
 
-This creates or updates `.vscode/mcp.json` in the current project with entries for both the [Ignite UI MCP](#mcp-server) and `igniteui-theming` MCP servers. Existing servers in the file are preserved. Newly projects are create with AI tooling configuration out of the box.
+This creates or updates `.vscode/mcp.json` in the current project with entries for both the [Ignite UI MCP](#mcp-server) and `igniteui-theming` MCP servers. Existing servers in the file are preserved. New projects are created with AI tooling configuration out of the box.
 
 ## MCP Server
 
