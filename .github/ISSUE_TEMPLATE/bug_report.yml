@@ -2,6 +2,7 @@
 name: Bug Report
 description: Report a bug with the Ignite UI CLI
 labels: ["bug"]
+type: Bug
 body:
   - type: markdown
     attributes:

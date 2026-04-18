@@ -1,7 +1,8 @@
 ---
 name: Feature Request
 description: Suggest a new feature or improvement for the Ignite UI CLI
-labels: ["feature request"]
+labels: ["feature-request"]
+type: Feature
 body:
   - type: markdown
     attributes:
