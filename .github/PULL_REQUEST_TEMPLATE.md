@@ -4,7 +4,7 @@
 
 ## Related Issue
 
-Closes # .
+Closes #<issue-number>
 
 ## Type of Change
 
