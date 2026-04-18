@@ -91,8 +91,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Dependencies
 
-<!-- Angular, WebComponents, React -->
-
 First, you need to install the Ignite UI for Angular by running the following command:
 
 ```cmd
@@ -102,13 +100,9 @@ npm install igniteui-angular-inputs
 
 Before using the `ColorEditor`, you need to register the following modules as follows:
 
-<!-- end:Angular, WebComponents, React -->
-
 ## Usage
 
 The simplest way to start using the `ColorEditor` is as follows:
-
-<!-- Angular -->
 
 ```html
 <igx-color-editor
@@ -118,16 +112,12 @@ The simplest way to start using the `ColorEditor` is as follows:
 </div>
 ```
 
-<!-- end: Angular -->
-
 ## Binding to events
 
 The Color Editor component raises the following events:
 
 - valueChanged
 - valueChanging
-
-<!-- Angular -->
 
 ```ts
 @ViewChild("colorEditor", { static: true } )
@@ -141,8 +131,6 @@ public onValueChanged = (e: any) => {
     console.log("test");
 }
 ```
-
-<!-- end: Angular -->
 
 <div class="divider--half"></div>
 

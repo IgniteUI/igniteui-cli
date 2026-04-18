@@ -1,37 +1,54 @@
 ---
 title: Getting Started with Ignite UI CLI | Ignite UI for Angular | Infragistics
-_description: The Step-by-Step mode contains guided experience through the Ignite UI CLI options.
-_keywords: angular cli, ignite ui for angular, infragistics
+_description: Install the Ignite UI CLI globally and use it to scaffold Angular projects, add component views, run a development server, and connect an MCP server to your AI coding assistant.
+_keywords: ignite ui cli, ignite ui for angular, angular scaffolding, getting started, infragistics
+last_updated: "2025-04-06"
 _tocName: Getting Started with Ignite UI CLI
 ---
 
-## Getting Started with Ignite UI CLI
+<!-- schema: Article, HowTo -->
 
-If you are creating a new Angular application from scratch, we recommend using the approach described bellow as it will provide you with an user-friendly guided experience. The guide will lead you through all the setup options and your project will be scaffolded in a blink of an eye.
+# Getting Started with Ignite UI CLI
 
-To get started install [Ignite UI CLI](https://github.com/IgniteUI/igniteui-cli) globally:
+The Ignite UI CLI is a standalone global command-line tool for scaffolding Angular, React, and jQuery projects pre-configured for Ignite UI components. It provides a guided step-by-step wizard for first-time setup, non-interactive `new` and `add` commands for scripted workflows, a development server, and a built-in MCP server for connecting AI coding assistants to live Ignite UI documentation.
+
+The CLI does not replace the Angular CLI - it works alongside it. Projects created with the Ignite UI CLI are standard Angular workspaces and are fully compatible with `ng` commands after scaffolding.
+
+## Install the Ignite UI CLI
+
+Install the Ignite UI CLI globally using npm:
 
 ```cmd
-npm install -g igniteui-cli 
+npm install -g igniteui-cli
 ```
 
-If you are using `yarn` package manager:
+Or, using yarn:
 
 ```cmd
 yarn global add igniteui-cli
 ```
 
-### Using guided experience
+Verify the installation:
 
-The shortest and easiest way to bootstrap an application is to use the [step by step guide using Ignite UI CLI](step-by-step-guide-using-cli.md).
+```cmd
+ig version
+```
 
-To activate the guide using the Ignite UI CLI run:
+## Create a New Project
+
+The Ignite UI CLI provides two modes for project creation: a guided interactive wizard and a direct command with arguments.
+
+### Use the guided wizard
+
+The guided wizard is the recommended starting point for new projects. It prompts you to choose a project type, name, template, and theme, then scaffolds and commits the project automatically.
+
+To activate the wizard:
 
 ```cmd
 ig
 ```
 
-or
+or:
 
 ```cmd
 ig new
@@ -40,28 +57,33 @@ ig new
 <div style="display:inline-block;">
     <a style="background: url(../../../images/general/buildCLIapp.gif); display:flex; justify-content:center; width: 80vw; max-width:540px; min-height:315px;"
        href="https://youtu.be/QK_NsdtdA70" target="_blank">
-        <img src="../../../images/general/play.svg" alt="Play video" style="vertical-align: middle;" />
+        <img src="../../../images/general/play.svg" alt="Play video: Building Your First Ignite UI CLI App" style="vertical-align: middle;" />
     </a>
     <p style="text-align:center;">Building Your First Ignite UI CLI App</p>
 </div>
 
-## Create a new project
+For a step-by-step walkthrough of the wizard options, see [Step-by-Step Guide Using Ignite UI CLI](step-by-step-guide-using-cli.md).
 
-When using [Ignite UI CLI](https://github.com/IgniteUI/igniteui-cli) you need to provide `angular` as framework and `igx-ts` as your project type argument to the `new` command:
+### Create a project directly
+
+To create an Angular project non-interactively, provide `angular` as the framework and `igx-ts` as the project type:
 
 ```cmd
-ig new newAngularProject --framework=angular --type=igx-ts --template=side-nav
+ig new <project-name> --framework=angular --type=igx-ts --template=side-nav
 ```
 
-The new application is created in a directory with the same name (`newAngularProject`). There are several project templates from which you can choose when creating an Ignite UI for Angular application:
+> [!NOTE]
+> As of Ignite UI CLI v13.1.0, the `igx-ts` project type generates a project with standalone components by default. To use NgModule-based bootstrapping instead, set `--type=igx-ts-legacy`.
 
-| template id   | template description |
-| ---           | ---                  |
-| empty         | Project structure with routing and a home page |
-| side-nav      | Project structure with side navigation drawer |
-| side-nav-auth | Side navigation project extended with user authentication module. <br> [Angular Authentication Project Template](auth-template.md) topic covers the project template in detail. |
+The new application is created in a directory named after the project. The following project templates are available for Angular:
 
-Additionally, you can specify **arguments** to control the theme or skip packages install:
+| Template ID   | Description                                                                                                                                      |
+| :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| empty         | Project structure with routing and a home page                                                                                                   |
+| side-nav      | Project structure with a side navigation drawer                                                                                                  |
+| side-nav-auth | Side navigation project extended with a user authentication module. See [Angular Authentication Project Template](auth-template.md) for details. |
+
+The following arguments are available when creating a project:
 
 <details>
   <summary><u>name</u></summary>
@@ -79,7 +101,7 @@ Additionally, you can specify **arguments** to control the theme or skip package
     <code>--framework</code> (alias: <code>-f</code>) <em>default value: "jquery"</em>
   </p>
   <p>
-    Framework to setup project for. The supported frameworks are jQuery, Angular and React.
+    Framework to set up the project for. Supported values are: jquery, angular, react.
   </p>
 </details>
 
@@ -109,7 +131,7 @@ Additionally, you can specify **arguments** to control the theme or skip package
     <code>--skip-git</code> (alias: <code>--sg</code>)
   </p>
   <p>
-    When this option is used, the automatic repository initialization with Git will be skipped. If the option is omitted, then the global skip-git configuration property is used.
+    Skips automatic Git repository initialization. If omitted, the global <code>skip-git</code> configuration property is used.
   </p>
 </details>
 
@@ -119,7 +141,7 @@ Additionally, you can specify **arguments** to control the theme or skip package
     <code>--skip-install</code> (alias: <code>--si</code>)
   </p>
   <p>
-    The <code>new</code> command will install package dependencies on project creation. Passing this flag will skip the initial installation.
+    Skips the initial npm package installation on project creation.
   </p>
 </details>
 
@@ -129,23 +151,27 @@ Additionally, you can specify **arguments** to control the theme or skip package
     <code>--template</code>
   </p>
   <p>
-    Use this option if there are different project templates for a specific framework type.
-    Currently this option is available only for Ignite UI for Angular igx-ts project types.</p>
+    Specifies the project template when multiple templates exist for a framework type. Currently available for Ignite UI for Angular <code>igx-ts</code> project types.
+  </p>
 </details>
 
-## Add template
+## Add a Component Template
 
-To add one of the [available Ignite UI Angular templates](component-templates.md) you need to provide template ID and a name for the new component or use the [Step-by-Step Guide](step-by-step-guide-using-cli.md#add-view). Their usage is supported only inside existing projects created with the Ignite UI CLI, Angular Schematics or where Ignite UI for Angular has been [installed using `ng add`](../getting-started.md#installing-ignite-ui-for-angular).
-
-We use the `ig add [template] [name]` command:
+To add an [available Ignite UI for Angular template](component-templates.md) to an existing project, provide the template ID and a name for the new component:
 
 ```cmd
 ig add grid newGrid
 ```
 
-To get a list of all the [available templates](component-templates.md) you can also execute the [`ig list`](https://github.com/IgniteUI/igniteui-cli/wiki/list) command in your project directory.
+To list all available templates in your project directory:
 
-Additionally, you can specify the module in which the component will be registered or skip the auto-generation of app navigation route:
+```cmd
+ig list
+```
+
+Template addition is supported in projects created with the Ignite UI CLI, Angular Schematics, or any Angular CLI project where Ignite UI for Angular was added with `ng add`. For the guided component wizard, see [Step-by-Step Guide Using Ignite UI CLI](step-by-step-guide-using-cli.md#add-view).
+
+The following arguments are available when adding a template:
 
 <details>
   <summary><u>module</u></summary>
@@ -153,10 +179,10 @@ Additionally, you can specify the module in which the component will be register
     <code>--module</code> (alias: <code>-m</code>)
   </p>
   <p>
-    <i>note: module argument is applicable only in Angular projects.</i>
+    <i>Applicable only in Angular projects.</i>
   </p>
   <p>
-    Path to the module.ts file, relative to the /src/app/ folder, for the module where the new component should be registered:
+    Path to the <code>module.ts</code> file, relative to <code>/src/app/</code>, where the new component should be registered:
   </p>
   <code>ig add combo newCombo --module=myModule/myModule.module.ts</code>
 </details>
@@ -167,30 +193,43 @@ Additionally, you can specify the module in which the component will be register
     <code>--skip-route</code> (alias: <code>-srk</code>)
   </p>
   <p>
-    Don't auto-generate an app navigation route for the new component
+    Skips auto-generation of an app navigation route for the new component.
   </p>
 </details>
 
-## Run the application
+## Run the Application
 
-The `start` command will build the application, start a web server and open it in your default browser:
+The `start` command builds the application, starts a local web server, and opens it in your default browser:
 
 ```cmd
 ig start
 ```
 
+## AI Assistant Integration (MCP)
+
+The Ignite UI CLI includes a built-in MCP (Model Context Protocol) server that connects AI coding assistants - GitHub Copilot, Claude, Cursor - to live Ignite UI component documentation and API references. Once configured, your AI assistant can query component APIs, retrieve setup guides, and generate accurate Ignite UI for Angular code without switching context.
+
+Start the MCP server:
+
+```cmd
+ig mcp
+```
+
+For client configuration (VS Code, Claude Desktop, Cursor) and a full description of available tools, see [Ignite UI CLI MCP](../../ai/cli-mcp.md).
+
 ## Ignite UI CLI Commands
 
-A full list of the available Ignite UI CLI commands and their usage (like passing flags, etc.), can be found at the [Ignite UI CLI wiki pages](https://github.com/IgniteUI/igniteui-cli/wiki):
+A complete list of available Ignite UI CLI commands is maintained on the [Ignite UI CLI wiki](https://github.com/IgniteUI/igniteui-cli/wiki):
 
-| Command | Alias | Description |
-| --- | --- | --- |
-| [ig start](https://github.com/IgniteUI/igniteui-cli/wiki/start)  | | Builds the application, starts a web server and opens the application in the default browser. |
-| [ig build](https://github.com/IgniteUI/igniteui-cli/wiki/build) | | Builds the application into an output directory |
-| [ig generate](https://github.com/IgniteUI/igniteui-cli/wiki/generate) | g | Generates a new custom template for supported frameworks and project types |
-| [ig help](https://github.com/IgniteUI/igniteui-cli/wiki/help) | -h | Lists the available commands and provides a brief description of what they do. |
-| [ig config](https://github.com/IgniteUI/igniteui-cli/wiki/config) | | Performs read and write operation on the Ignite UI CLI configuration settings. |
-| [ig doc](https://github.com/IgniteUI/igniteui-cli/wiki/doc) | | Searches the Infragistics knowledge base for information about a given search term |
-| [ig list](https://github.com/IgniteUI/igniteui-cli/wiki/list) | l |  Lists all templates for the specified framework and type. When you run the command within a project folder it will list all templates for the project's framework and type, even if you provide different ones. |
-| [ig test](https://github.com/IgniteUI/igniteui-cli/wiki/test) |  | Executes the tests for the current project. |
-| ig version | -v | Shows Ignite UI CLI version installed locally, or globally if local is missing |
+| Command                                                               | Alias | Description                                                                                                                                                                                          |
+| :-------------------------------------------------------------------- | :---- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ig start](https://github.com/IgniteUI/igniteui-cli/wiki/start)       |       | Builds the application, starts a web server, and opens it in the default browser.                                                                                                                    |
+| [ig build](https://github.com/IgniteUI/igniteui-cli/wiki/build)       |       | Builds the application into an output directory.                                                                                                                                                     |
+| [ig generate](https://github.com/IgniteUI/igniteui-cli/wiki/generate) | g     | Generates a new custom template for supported frameworks and project types.                                                                                                                          |
+| [ig help](https://github.com/IgniteUI/igniteui-cli/wiki/help)         | -h    | Lists available commands with brief descriptions.                                                                                                                                                    |
+| [ig config](https://github.com/IgniteUI/igniteui-cli/wiki/config)     |       | Reads and writes Ignite UI CLI configuration settings.                                                                                                                                               |
+| [ig doc](https://github.com/IgniteUI/igniteui-cli/wiki/doc)           |       | Searches the Infragistics knowledge base for a given term.                                                                                                                                           |
+| [ig list](https://github.com/IgniteUI/igniteui-cli/wiki/list)         | l     | Lists all templates for the specified framework and type. When run inside a project folder, lists templates for the project's framework and type even if different values are provided as arguments. |
+| [ig test](https://github.com/IgniteUI/igniteui-cli/wiki/test)         |       | Executes the tests for the current project.                                                                                                                                                          |
+| ig version                                                            | -v    | Shows the Ignite UI CLI version installed locally, or globally if no local installation is found.                                                                                                    |
+| ig mcp                                                                |       | Starts the Ignite UI MCP server, providing component documentation search and API reference tools to connected AI assistants. See [Ignite UI CLI MCP](../../ai/cli-mcp.md).                          |

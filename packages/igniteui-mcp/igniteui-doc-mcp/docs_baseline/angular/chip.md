@@ -112,7 +112,7 @@ import { IgxChipsModule } from 'igniteui-angular/chips';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxChipComponent` as a standalone dependency, or use the [`IGX_CHIPS_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/chips/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxChipComponent` as a standalone dependency, or use the [`IGX_CHIPS_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/chips/src/chips/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -166,6 +166,9 @@ Selection can be enabled by setting the [`selectable`](https://www.infragistics.
   {{chip.text}}
 </igx-chip>
 ```
+
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 ### Removing
 

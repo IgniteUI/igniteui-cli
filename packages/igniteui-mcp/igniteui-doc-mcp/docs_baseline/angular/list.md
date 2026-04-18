@@ -197,7 +197,7 @@ import { IgxListModule } from 'igniteui-angular/list';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxListComponent` as a standalone dependency, or use the [`IGX_LIST_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/list/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxListComponent` as a standalone dependency, or use the [`IGX_LIST_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/list/src/list/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -587,6 +587,9 @@ Cool, now let's update the template for our contacts list to show the avatar and
   </igx-list-item>
 </igx-list>
 ```
+
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 - `igxListThumbnail` is meant to be used if we need to add some kind of media at the beginning of our list items. The directive will wrap the target element in our case igx-avatar in a container that will provide some default position and spacing.
 - `igxListAction` is meant to be used for list items that have some kind of action or metadata, for example, switch, radio-button, checkbox, etc. In our case the action is will be represented by an `igx-icon`. Again, the directive will wrap the target element in a container that will have the correct position and spacing.

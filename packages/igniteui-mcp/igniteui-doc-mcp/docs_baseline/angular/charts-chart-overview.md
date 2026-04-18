@@ -2260,12 +2260,10 @@ If you are considering any other Angular Charts on the market, here are a few th
 - We are here 24x5. Infragistics has global support that is always online. For North America, Asia Pacific, Middle East, and Europe, we are on the clock when you are!
 - We have many more UI controls in Angular besides the Charts. We offer a complete Angular solution to build your applications!
 
-<!-- Angular -->
+<!---->
 
 - Ignite UI for Angular is built on Angular for the Angular developer, with zero 3rd party dependencies. We are 100% optimized for Angular.
 - We offer the world’s first, and only, end-to-end comprehensive design to code platform for UX Designers, Visual Designers, and Developers that will generate pixel-perfect Angular controls from Figma designs. With Indigo.Design, everything you craft in Figma from our Indigo Design System matches to our Ignite UI for Angular controls.
-
-<!-- end: Angular -->
 
 ## API References
 

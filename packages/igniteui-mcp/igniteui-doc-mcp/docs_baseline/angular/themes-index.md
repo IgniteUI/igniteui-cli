@@ -36,21 +36,21 @@ All themes have light and dark variants as well as support for left-to-right(LTR
 
 Here's the full list of themes included in the styles folder:
 
-| Theme Name                  | Path                                                                       |
-|-----------------------------|----------------------------------------------------------------------------|
-| **Material Light**          | `node_modules/igniteui-angular/styles/igniteui-angular.css`                |
-| **Material Dark**           | `node_modules/igniteui-angular/styles/igniteui-angular-dark.css`           |
-| **Bootstrap Light**         | `node_modules/igniteui-angular/styles/igniteui-bootstrap-light.css`        |
-| **Bootstrap Dark**          | `node_modules/igniteui-angular/styles/igniteui-bootstrap-dark.css`         |
-| **Material Dark Green**     | `node_modules/igniteui-angular/styles/igniteui-dark-green.css`             |
-| **Fluent Light**            | `node_modules/igniteui-angular/styles/igniteui-fluent-light.css`           |
-| **Fluent Dark**             | `node_modules/igniteui-angular/styles/igniteui-fluent-dark.css`            |
-| **Fluent Light Excel**      | `node_modules/igniteui-angular/styles/igniteui-fluent-light-excel.css`     |
-| **Fluent Dark Excel**       | `node_modules/igniteui-angular/styles/igniteui-fluent-dark-excel.css`      |
-| **Fluent Light Word**       | `node_modules/igniteui-angular/styles/igniteui-fluent-light-word.css`      |
-| **Fluent Dark Word**        | `node_modules/igniteui-angular/styles/igniteui-fluent-dark-word.css`       |
-| **Indigo Light**            | `node_modules/igniteui-angular/styles/igniteui-indigo-light.css`           |
-| **Indigo Dark**             | `node_modules/igniteui-angular/styles/igniteui-indigo-dark.css`            |
+| Theme Name              | Path                                                                   |
+| :---------------------- | :--------------------------------------------------------------------- |
+| **Material Light**      | `node_modules/igniteui-angular/styles/igniteui-angular.css`            |
+| **Material Dark**       | `node_modules/igniteui-angular/styles/igniteui-angular-dark.css`       |
+| **Bootstrap Light**     | `node_modules/igniteui-angular/styles/igniteui-bootstrap-light.css`    |
+| **Bootstrap Dark**      | `node_modules/igniteui-angular/styles/igniteui-bootstrap-dark.css`     |
+| **Material Dark Green** | `node_modules/igniteui-angular/styles/igniteui-dark-green.css`         |
+| **Fluent Light**        | `node_modules/igniteui-angular/styles/igniteui-fluent-light.css`       |
+| **Fluent Dark**         | `node_modules/igniteui-angular/styles/igniteui-fluent-dark.css`        |
+| **Fluent Light Excel**  | `node_modules/igniteui-angular/styles/igniteui-fluent-light-excel.css` |
+| **Fluent Dark Excel**   | `node_modules/igniteui-angular/styles/igniteui-fluent-dark-excel.css`  |
+| **Fluent Light Word**   | `node_modules/igniteui-angular/styles/igniteui-fluent-light-word.css`  |
+| **Fluent Dark Word**    | `node_modules/igniteui-angular/styles/igniteui-fluent-dark-word.css`   |
+| **Indigo Light**        | `node_modules/igniteui-angular/styles/igniteui-indigo-light.css`       |
+| **Indigo Dark**         | `node_modules/igniteui-angular/styles/igniteui-indigo-dark.css`        |
 
 As you can see, we ship Ignite UI for Angular with a substantial amount of themes.
 

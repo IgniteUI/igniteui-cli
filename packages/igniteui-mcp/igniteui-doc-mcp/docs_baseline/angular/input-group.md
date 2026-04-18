@@ -74,7 +74,7 @@ import { IgxInputGroupModule } from 'igniteui-angular/input-group';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxInputGroupComponent` as a standalone dependency, or use the [`IGX_INPUT_GROUP_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/input-group/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxInputGroupComponent` as a standalone dependency, or use the [`IGX_INPUT_GROUP_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/input-group/src/input-group/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -103,6 +103,9 @@ export class HomeComponent {
     public value = '123456789';
 }
 ```
+
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 Now that you have the Ignite UI for Angular Input Group module or directives imported, you can start using the `igx-input-group` component.
 

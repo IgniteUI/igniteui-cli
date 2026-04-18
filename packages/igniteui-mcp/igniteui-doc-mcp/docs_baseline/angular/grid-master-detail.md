@@ -318,11 +318,11 @@ Additional API methods for controlling the expansion states are also exposed:
 ## Known Issues and Limitations
 
 
-|Known Limitations| Description|
-| --- | --- |
-| Tab navigation inside the custom detail template may not update the master grid scroll position in case the next focused element is outside the visible view port.| Tab navigation inside the custom detail template is left up to the browser. |
-| Details template will not be exported to Excel.| As the details template can contain any type of content we cannot export it to excel out of the box.|
-| The search feature will not highlight elements from the details template. | |
+| Known Limitations                                                                                                                                                  | Description                                                                                          |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------- |
+| Tab navigation inside the custom detail template may not update the master grid scroll position in case the next focused element is outside the visible view port. | Tab navigation inside the custom detail template is left up to the browser.                          |
+| Details template will not be exported to Excel.                                                                                                                    | As the details template can contain any type of content we cannot export it to excel out of the box. |
+| The search feature will not highlight elements from the details template.                                                                                          |                                                                                                      |
 
 
 <div class="divider--half"></div>

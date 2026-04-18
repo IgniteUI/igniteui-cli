@@ -73,7 +73,6 @@ Alternatively, as of `16.0.0` you can import the `IgxRippleDirective` as standal
 // home.component.ts
 
 import { IgxRippleDirective, IgxButtonDirective } from 'igniteui-angular/directives';
-import { IgxButtonDirective } from 'igniteui-angular/button';
 // import { IgxRippleDirective, IgxButtonDirective } from '@infragistics/igniteui-angular'; for licensed package
 
 @Component({

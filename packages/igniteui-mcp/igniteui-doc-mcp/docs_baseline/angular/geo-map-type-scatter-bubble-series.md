@@ -159,7 +159,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 The demo above shows the [`IgxGeographicProportionalSymbolSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html) series and how to specify data binding options of the series. Automatic marker selection is configured along with marker collision avoidance logic, and marker outline and fill colors are specified too.
@@ -170,126 +169,128 @@ Similar to other types of scatter series in the map control, the [`IgxGeographic
 
 The following table summarizes the GeographicHighDensityScatterSeries series properties used for data binding.
 
-| Property|Type|Description |
-| ---|---|--- |
-| `ItemsSource`|any|Gets or sets the items source |
-| [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#longitudeMemberPath)|string|Uses the ItemsSource property to determine the location of the longitude values on the assigned items |
-| [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#latitudeMemberPath)|string|Uses the ItemsSource property to determine the location of the latitude values on the assigned items |
-| [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#radiusMemberPath)|string|Sets the path to use to get the radius values for the series. |
-| [`radiusScale`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#radiusScale)|[`IgxSizeScaleComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxsizescalecomponent.html)|Gets or sets the radius scale property for the current bubble series. |
-| [`minimumValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxsizescalecomponent.html#minimumValue)|any|Configure the minimum value for calculating value sub ranges. |
-| [`maximumValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxsizescalecomponent.html#maximumValue)|any|Configure the maximum value for calculating value sub ranges. |
+| Property                                                                                                                                                                                                        | Type                                                                                                                                                                   | Description                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `ItemsSource`                                                                                                                                                                                                   | any                                                                                                                                                                    | Gets or sets the items source                                                                         |
+| [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#longitudeMemberPath) | string                                                                                                                                                                 | Uses the ItemsSource property to determine the location of the longitude values on the assigned items |
+| [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#latitudeMemberPath)   | string                                                                                                                                                                 | Uses the ItemsSource property to determine the location of the latitude values on the assigned items  |
+| [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#radiusMemberPath)       | string                                                                                                                                                                 | Sets the path to use to get the radius values for the series.                                         |
+| [`radiusScale`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicproportionalsymbolseriescomponent.html#radiusScale)                 | [`IgxSizeScaleComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxsizescalecomponent.html) | Gets or sets the radius scale property for the current bubble series.                                 |
+| [`minimumValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxsizescalecomponent.html#minimumValue)                                      | any                                                                                                                                                                    | Configure the minimum value for calculating value sub ranges.                                         |
+| [`maximumValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxsizescalecomponent.html#maximumValue)                                      | any                                                                                                                                                                    | Configure the maximum value for calculating value sub ranges.                                         |
 
 ## Code Snippet
 
 <!--Angular -->
 
 ```html
-<div className="sampleRoot" >
-    <igx-geographic-map #map
-        width="700px"
-        height="500px"
-        zoomable="true" >
-    </igx-geographic-map>
+<div className="sampleRoot">
+  <igx-geographic-map #map width="700px" height="500px" zoomable="true">
+  </igx-geographic-map>
 </div>
 
 <ng-template let-series="series" let-item="item" #template>
-    <div>
-        <span>
-            {{item.name}}
-        </span>
-    </div>
+  <div>
+    <span> {{item.name}} </span>
+  </div>
 </ng-template>
 ```
 
 ```ts
-import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
-import { IgxSizeScaleComponent } from 'igniteui-angular-charts';
-import { IgxValueBrushScaleComponent } from 'igniteui-angular-charts';
-import { IgxDataContext } from 'igniteui-angular-core';
-import { IgxShapeDataSource } from 'igniteui-angular-core';
-import { IgxGeographicMapComponent } from 'igniteui-angular-maps';
-import { IgxGeographicProportionalSymbolSeriesComponent } from 'igniteui-angular-maps';
-import { MarkerType } from 'igniteui-angular-charts';
+import {
+  AfterViewInit,
+  Component,
+  TemplateRef,
+  ViewChild,
+} from "@angular/core";
+import { IgxSizeScaleComponent } from "igniteui-angular-charts";
+import { IgxValueBrushScaleComponent } from "igniteui-angular-charts";
+import { IgxDataContext } from "igniteui-angular-core";
+import { IgxShapeDataSource } from "igniteui-angular-core";
+import { IgxGeographicMapComponent } from "igniteui-angular-maps";
+import { IgxGeographicProportionalSymbolSeriesComponent } from "igniteui-angular-maps";
+import { MarkerType } from "igniteui-angular-charts";
 import { WorldLocations } from "../../utilities/WorldLocations";
 
 @Component({
   selector: "app-map-geographic-scatter-proportional-series",
   styleUrls: ["./map-geographic-scatter-proportional-series.component.scss"],
-  templateUrl: "./map-geographic-scatter-proportional-series.component.html"
+  templateUrl: "./map-geographic-scatter-proportional-series.component.html",
 })
 export class MapTypeScatterBubbleSeriesComponent implements AfterViewInit {
+  @ViewChild("map")
+  public map: IgxGeographicMapComponent;
+  @ViewChild("template")
+  public tooltipTemplate: TemplateRef<object>;
+  constructor() {}
 
-    @ViewChild ("map")
-    public map: IgxGeographicMapComponent;
-    @ViewChild ("template")
-    public tooltipTemplate: TemplateRef<object>;
-    constructor() {
-    }
-
-    public ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     const sds = new IgxShapeDataSource();
     sds.shapefileSource = "assets/Shapes/WorldTemperatures.shp";
-    sds.databaseSource  = "assets/Shapes/WorldTemperatures.dbf";
+    sds.databaseSource = "assets/Shapes/WorldTemperatures.dbf";
     sds.dataBind();
     sds.importCompleted.subscribe(() => this.onDataLoaded(sds, ""));
-}
+  }
 
-    public onDataLoaded(sds: IgxShapeDataSource, e: any) {
+  public onDataLoaded(sds: IgxShapeDataSource, e: any) {
     const shapeRecords = sds.getPointData();
-    console.log("loaded contour shapes: " + shapeRecords.length + " from /Shapes/WorldTemperatures.shp");
+    console.log(
+      "loaded contour shapes: " +
+        shapeRecords.length +
+        " from /Shapes/WorldTemperatures.shp",
+    );
 
     const contourPoints: any[] = [];
     for (const record of shapeRecords) {
-        const temp = record.fieldValues.Contour;
-        // using only major contours (every 10th degrees Celsius)
-        if (temp % 10 === 0 && temp >= 0) {
-            for (const shapes of record.points) {
-                 for (let i = 0; i < shapes.length; i++) {
-                    if (i % 5 === 0) {
-                        const p = shapes[i];
-                        const item = { lon: p.x, lat: p.y, value: temp};
-                        contourPoints.push(item);
-                    }
-                 }
+      const temp = record.fieldValues.Contour;
+      // using only major contours (every 10th degrees Celsius)
+      if (temp % 10 === 0 && temp >= 0) {
+        for (const shapes of record.points) {
+          for (let i = 0; i < shapes.length; i++) {
+            if (i % 5 === 0) {
+              const p = shapes[i];
+              const item = { lon: p.x, lat: p.y, value: temp };
+              contourPoints.push(item);
             }
+          }
         }
+      }
     }
 
     console.log("loaded contour points: " + contourPoints.length);
     this.addSeriesWith(WorldLocations.getAll());
-}
+  }
 
-    public addSeriesWith(locations: any[]) {
-        const sizeScale = new IgxSizeScaleComponent();
-        sizeScale.minimumValue = 4;
-        sizeScale.maximumValue = 60;
+  public addSeriesWith(locations: any[]) {
+    const sizeScale = new IgxSizeScaleComponent();
+    sizeScale.minimumValue = 4;
+    sizeScale.maximumValue = 60;
 
-        const brushes = [
-            "rgba(14, 194, 14, 0.4)",  // semi-transparent green
-            "rgba(252, 170, 32, 0.4)", // semi-transparent orange
-            "rgba(252, 32, 32, 0.4)"  // semi-transparent red
-        ];
+    const brushes = [
+      "rgba(14, 194, 14, 0.4)", // semi-transparent green
+      "rgba(252, 170, 32, 0.4)", // semi-transparent orange
+      "rgba(252, 32, 32, 0.4)", // semi-transparent red
+    ];
 
-        const brushScale = new IgxValueBrushScaleComponent();
-        brushScale.brushes = brushes;
-        brushScale.minimumValue = 0;
-        brushScale.maximumValue = 30;
+    const brushScale = new IgxValueBrushScaleComponent();
+    brushScale.brushes = brushes;
+    brushScale.minimumValue = 0;
+    brushScale.maximumValue = 30;
 
-        const symbolSeries = new IgxGeographicProportionalSymbolSeriesComponent();
-        symbolSeries.dataSource = locations;
-        symbolSeries.markerType = MarkerType.Circle;
-        symbolSeries.radiusScale = sizeScale;
-        symbolSeries.fillScale = brushScale;
-        symbolSeries.fillMemberPath = "pop";
-        symbolSeries.radiusMemberPath = "pop";
-        symbolSeries.latitudeMemberPath = "lat";
-        symbolSeries.longitudeMemberPath = "lon";
-        symbolSeries.markerOutline = "rgba(0,0,0,0.3)";
-        symbolSeries.tooltipTemplate = this.tooltipTemplate;
+    const symbolSeries = new IgxGeographicProportionalSymbolSeriesComponent();
+    symbolSeries.dataSource = locations;
+    symbolSeries.markerType = MarkerType.Circle;
+    symbolSeries.radiusScale = sizeScale;
+    symbolSeries.fillScale = brushScale;
+    symbolSeries.fillMemberPath = "pop";
+    symbolSeries.radiusMemberPath = "pop";
+    symbolSeries.latitudeMemberPath = "lat";
+    symbolSeries.longitudeMemberPath = "lon";
+    symbolSeries.markerOutline = "rgba(0,0,0,0.3)";
+    symbolSeries.tooltipTemplate = this.tooltipTemplate;
 
-        this.map.series.add(symbolSeries);
-    }
+    this.map.series.add(symbolSeries);
+  }
 }
 ```
 

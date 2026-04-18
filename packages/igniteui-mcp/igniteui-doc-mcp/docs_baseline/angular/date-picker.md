@@ -78,7 +78,7 @@ import { IgxDatePickerModule } from 'igniteui-angular/date-picker';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxDatePickerComponent` as a standalone dependency, or use the [`IGX_DATE_PICKER_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/date-picker/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxDatePickerComponent` as a standalone dependency, or use the [`IGX_DATE_PICKER_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/date-picker/src/date-picker/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -182,6 +182,9 @@ The [`IgxDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-a
 </igx-date-picker>
 ```
 
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 The above snippet will add an additional toggle icon at the end of the input, right after the default clear icon. This will not remove the default toggle icon, though as prefixes and suffixes can be stacked one after the other.
 
 #### Customizing the toggle and clear icons
@@ -225,13 +228,13 @@ With it you gain access to the date picker's [`calendar`](calendar.md) and all o
 
 Opening and closing the [`IgxDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatepickercomponent.html)'s calendar UI with the keyboard is available only for `dropdown` mode and can be triggered via the key combinations below:
 
-|Keys|Description|
-|----|-----------|
-| <kbd>Space</kbd> | Displays the calendar pop-up and focuses it |
-| <kbd>Alt</kbd> + <kbd>&darr;</kbd> | Displays the calendar pop-up and focuses it |
-| <kbd>Esc</kbd> | Closes the calendar pop-up and focuses the input field |
-| <kbd>Enter</kbd> | Closes the calendar pop-up, selecting the focused date and moves the focus to the input field |
-| <kbd>Alt</kbd> + <kbd>&uarr;</kbd> | Closes the calendar pop-up and focuses the input field |
+| Keys                               | Description                                                                                   |
+| :--------------------------------- | :-------------------------------------------------------------------------------------------- |
+| <kbd>Space</kbd>                   | Displays the calendar pop-up and focuses it                                                   |
+| <kbd>Alt</kbd> + <kbd>&darr;</kbd> | Displays the calendar pop-up and focuses it                                                   |
+| <kbd>Esc</kbd>                     | Closes the calendar pop-up and focuses the input field                                        |
+| <kbd>Enter</kbd>                   | Closes the calendar pop-up, selecting the focused date and moves the focus to the input field |
+| <kbd>Alt</kbd> + <kbd>&uarr;</kbd> | Closes the calendar pop-up and focuses the input field                                        |
 
 Since the [`IgxDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatepickercomponent.html) uses the [`IgxDateTimeEditorDirective`](date-time-editor.md) it inherits its keyboard navigation.
 
