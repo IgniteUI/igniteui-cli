@@ -1,4 +1,4 @@
-import { Route } from '@vaadin/router';
+import { type Route } from '@vaadin/router';
 import './home/home.js';
 import './not-found/not-found.js';
 

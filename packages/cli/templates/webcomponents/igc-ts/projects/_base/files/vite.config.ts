@@ -19,7 +19,6 @@ export default defineConfig({
     },
     target: 'es2021',
     minify: 'terser',
-    emptyOutDir: false,
     chunkSizeWarningLimit: 10 * 1024 * 1024 // 10 MB
   },
   test: {
