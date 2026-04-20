@@ -1,4 +1,5 @@
 export * from './ai-skills';
+export * from './detect-framework';
 export * from './GoogleAnalytics';
 export * from './Util';
 export * from './ProjectConfig';

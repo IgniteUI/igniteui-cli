@@ -2,13 +2,20 @@ import * as path from "path";
 
 import { EmptyTree } from "@angular-devkit/schematics";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import { FEED_ANGULAR, NPM_ANGULAR } from "@igniteui/cli-core";
+import { App, FEED_ANGULAR, NPM_ANGULAR, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 
 describe("cli-config schematic", () => {
 	const collectionPath = path.join(__dirname, "../collection.json");
 	const runner: SchematicTestRunner = new SchematicTestRunner("cli-schematics", collectionPath);
 	let tree: UnitTestTree;
 	const sourceRoot = "src";
+	// TODO:
+	// TS compiles export * from "./util", __createBinding defines each re-exported name as an accessor descriptor (getter-only, no setter, writable is N/A on accessor descriptors)
+	// Require the leaf module directly so spyOn works — cliCore re-exports via __createBinding getter chains
+	// (index → util/index → ai-skills), making the property non-writable at the top level.
+	// The leaf module's exports object uses plain assignments, which are writable and spyable.
+	const aiSkillsModule = require("@igniteui/cli-core/util/ai-skills");
 
 	const ngJsonConfig = {
 		projects: {
@@ -85,13 +92,12 @@ describe("cli-config schematic", () => {
 			 </body>`);
 		createIgPkgJson();
 		populatePkgJson();
+		spyOn(aiSkillsModule, "copyAISkillsToProject");
 	});
 
-	it("should create the needed files correctly", () => {
-		expect(tree).toBeTruthy();
-		expect(tree.exists("/angular.json")).toBeTruthy();
-		expect(tree.exists("/package.json")).toBeTruthy();
-		expect(tree.exists("/src/index.html"));
+	it("should set the template manager correctly", async () => {
+		await runner.runSchematic("cli-config", {}, tree);
+		expect(App.container.get(TEMPLATE_MANAGER)).toBeInstanceOf(SchematicsTemplateManager);
 	});
 
 	it("should create an ignite-ui-cli.json file correctly", async () => {
@@ -320,6 +326,11 @@ export const appConfig: ApplicationConfig = {
 			const content = JSON.parse(tree.readContent(mcpFilePath));
 			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] });
 			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+		});
+
+		it("should call copyAISkillsToProject", async () => {
+			await runner.runSchematic("cli-config", {}, tree);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
 		});
 
 		it("should add both servers to existing .vscode/mcp.json that has no servers", async () => {

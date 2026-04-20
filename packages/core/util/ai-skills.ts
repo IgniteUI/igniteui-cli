@@ -1,11 +1,15 @@
 import * as path from "path";
+import type { BaseTemplateManager } from "../templates";
+import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
+import { NPM_ANGULAR, NPM_REACT, NPM_WEBCOMPONENTS, resolvePackage, UPGRADEABLE_PACKAGES } from "../update/package-resolve";
 import { App } from "./App";
-import { IFileSystem, FS_TOKEN } from "../types/FileSystem";
+import { detectFrameworkFromPackageJson } from "./detect-framework";
+import { TEMPLATE_MANAGER } from "./GlobalConstants";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
-import { NPM_ANGULAR, NPM_REACT, NPM_WEBCOMPONENTS, resolvePackage, UPGRADEABLE_PACKAGES } from "../update/package-resolve";
 
 const CLAUDE_SKILLS_DIR = ".claude/skills";
+const CLAUDE_SKILLS_DIR_TEMPLATE = "__dot__claude/skills";
 
 export interface AISkillsCopyResult {
 	found: number;
@@ -46,6 +50,22 @@ function resolveSkillsRoots(): string[] {
 		const skillsRoot = `node_modules/${resolved}/skills`;
 		if (fs.directoryExists(skillsRoot) && !roots.includes(skillsRoot)) {
 			roots.push(skillsRoot);
+		}
+	}
+
+	if (!roots.length) {
+		// if no root discovered, take the root from the appropriate project template files:
+		framework ??= detectFrameworkFromPackageJson();
+		if (framework) {
+			const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+			const projectLib = templateManager
+				.getFrameworkById(framework)?.projectLibraries[0]!;
+			const filePaths = projectLib?.getProject(projectLib.projectIds[0]).templatePaths ?? [];
+			roots.push(
+				...filePaths
+				.map((p) => path.join(p, CLAUDE_SKILLS_DIR_TEMPLATE))
+				.slice(0, 1),
+			);
 		}
 	}
 

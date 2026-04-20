@@ -1,5 +1,5 @@
 import * as path from "path";
-import { App, Config, FS_TOKEN, GoogleAnalytics, IFileSystem, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, Config, FS_TOKEN, GoogleAnalytics, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import { configureMCP, configureSkills } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 
@@ -141,7 +141,14 @@ describe("Unit - ai-config command", () => {
 				glob: jasmine.createSpy("glob").and.returnValue([])
 			} as unknown as IFileSystem;
 
-			spyOn(App.container, "get").and.returnValue(mockFs);
+			spyOn(App.container, "get").and.callFake(token => {
+				if (token === FS_TOKEN) {
+					return mockFs;
+				}
+				if (token == TEMPLATE_MANAGER) {
+					return { getFrameworkById: () => null } as any;
+				}
+			})
 			setupAngularConfig();
 
 			configureSkills();
