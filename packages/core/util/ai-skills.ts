@@ -7,6 +7,12 @@ import { NPM_ANGULAR, NPM_REACT, NPM_WEBCOMPONENTS, resolvePackage, UPGRADEABLE_
 
 const CLAUDE_SKILLS_DIR = ".claude/skills";
 
+export interface AISkillsCopyResult {
+	found: number;
+	skipped: number;
+	failed: number;
+}
+
 /**
  * Returns the list of 'skills/' directory paths found in installed
  * Ignite UI packages that are relevant to the project's detected framework.
@@ -50,22 +56,23 @@ function resolveSkillsRoots(): string[] {
  * Copies skill files from the installed Ignite UI package(s) into .claude/skills/.
  * Works with both real FS (CLI) and virtual Tree FS (schematics) through IFileSystem.
  */
-export function copyAISkillsToProject(): "copied" | "no-source" {
+export function copyAISkillsToProject(): AISkillsCopyResult {
+	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0 };
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 	const skillsRoots = resolveSkillsRoots();
 
 	if (!skillsRoots.length) {
-		return "no-source";
+		return result;
 	}
 
 	const multiRoot = skillsRoots.length > 1;
-	let copied = false;
 
 	for (const skillsRoot of skillsRoots) {
 		const rawPaths = fs.glob(skillsRoot, "**/*");
 		const pkgDirName = multiRoot ? path.basename(path.dirname(skillsRoot)) : "";
 
 		for (const p of rawPaths) {
+			result.found++;
 			// Normalize to posix and strip leading '/' so path.posix.relative works
 			// across both FsFileSystem (relative paths) and NgTreeFileSystem (tree-rooted paths)
 			const normP = p.replace(/\\/g, "/").replace(/^\//, "");
@@ -75,10 +82,25 @@ export function copyAISkillsToProject(): "copied" | "no-source" {
 				? `${CLAUDE_SKILLS_DIR}/${pkgDirName}/${rel}`
 				: `${CLAUDE_SKILLS_DIR}/${rel}`;
 
-			fs.writeFile(dest, fs.readFile(p));
-			Util.log(`${Util.greenCheck()} Created ${dest}`);
-			copied = true;
+			const newContent = fs.readFile(p);
+			try {
+				if (fs.fileExists(dest)) {
+					const existingContent = fs.readFile(dest);
+					if (existingContent === newContent) {
+						result.skipped++;
+						continue;
+					}
+					fs.writeFile(dest, newContent);
+					Util.log(`${Util.greenCheck()} Updated ${dest}`);
+				} else {
+					fs.writeFile(dest, newContent);
+					Util.log(`${Util.greenCheck()} Created ${dest}`);
+				}
+			} catch {
+				result.failed++;
+			}
 		}
 	}
-	return copied ? "copied" : "no-source";
+
+	return result;
 }
