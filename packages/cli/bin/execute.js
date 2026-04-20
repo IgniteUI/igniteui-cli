@@ -14,8 +14,14 @@ resolve("igniteui-cli", { basedir: process.cwd() }, function (err, res) {
 		const globalVersion = require(path.join(__dirname, "../package.json"))["version"];
 		if (globalVersion !== localVersion) {
 			console.log("Different igniteui-cli global and local version");
+			if (args[0] === "ai-config") {
+				cli = require("../lib/cli");
+			} else {
+				cli = require(res);
+			}
+		} else {
+			cli = require(res);
 		}
-		cli = require(res);
 	} else {
 		cli = require("../lib/cli");
 	}
