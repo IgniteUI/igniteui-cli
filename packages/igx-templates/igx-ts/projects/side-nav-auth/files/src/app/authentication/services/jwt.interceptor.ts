@@ -1,5 +1,5 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserStore } from '../services/user-store';
 
@@ -7,7 +7,7 @@ import { UserStore } from '../services/user-store';
   providedIn: 'root'
 })
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private userStore: UserStore) { }
+  private userStore = inject(UserStore);
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const currentUser = this.userStore.currentUser;

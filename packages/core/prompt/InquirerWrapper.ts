@@ -1,4 +1,4 @@
-import { checkbox, input, select, Separator } from '@inquirer/prompts';
+import { checkbox, confirm, input, select, Separator } from '@inquirer/prompts';
 import { Context } from '@inquirer/type';
 
 // ref - node_modules\@inquirer\input\dist\cjs\types\index.d.ts - bc for some reason this is not publicly exported
@@ -31,5 +31,9 @@ export class InquirerWrapper {
 
 	public static async checkbox(message: InputConfig & { choices: (string | Separator)[] }, context?: Context): Promise<string[]> {
 		return checkbox(message, context);
+	}
+
+	public static async confirm(message: { message: string; default?: boolean }, context?: Context): Promise<boolean> {
+		return confirm(message, context);
 	}
 }

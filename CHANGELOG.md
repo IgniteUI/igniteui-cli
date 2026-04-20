@@ -27,6 +27,8 @@ All scaffolded projects now include AI-ready configuration files to enhance the 
 * **CLAUDE.md** for Claude Code integration ([#1546](https://github.com/IgniteUI/igniteui-cli/pull/1546))
 * **VS Code MCP configuration** (`mcp.json`) pre-configured with `angular-cli`, `igniteui-cli`, and `igniteui-theming` MCP servers ([#1563](https://github.com/IgniteUI/igniteui-cli/pull/1563))
 * **Claude skills** for component usage, theming customization, and bundle size optimization ([#1573](https://github.com/IgniteUI/igniteui-cli/pull/1573))
+* **`ig ai-config` CLI command** to configure AI tooling in an existing project: writes `.vscode/mcp.json` with `igniteui-cli` and `igniteui-theming` MCP servers and copies AI coding skill files from installed Ignite UI packages to `.claude/skills/` ([#1502](https://github.com/IgniteUI/igniteui-cli/pull/1502))
+* **AI skills auto-copy on `ng add`**: the `cli-config` Angular schematic now automatically copies skill files from the installed Ignite UI package's `skills/` directory into `.claude/skills/` as part of the `ng add igniteui-angular` flow ([#1502](https://github.com/IgniteUI/igniteui-cli/pull/1502))
 
 ---
 
@@ -34,6 +36,7 @@ All scaffolded projects now include AI-ready configuration files to enhance the 
 
 A comprehensive modernization of all Angular templates to align with Angular v21+ patterns.
 
+* **Signals and inject() migration:** replaced `@ViewChild` with signal-based `viewChild()` / `viewChild.required()`, `@Output` with `output()`, and constructor-based dependency injection with the `inject()` function across all 34 template files ([#1586](https://github.com/IgniteUI/igniteui-cli/pull/1586))
 * **Control flow migration:** replaced `*ngIf`, `*ngFor`, `*ngSwitch` structural directives with built-in `@if`, `@for`, `@switch` block syntax; migrated `[ngClass]` to `[class]` bindings across all templates ([#1584](https://github.com/IgniteUI/igniteui-cli/pull/1584))
 * **Standalone component adoption:** removed NgModule files (`AuthenticationModule`, `AppModule`) and replaced with provider functions; `provideAuthentication()` consolidates all auth setup ([#1554](https://github.com/IgniteUI/igniteui-cli/pull/1554))
 * **Auth library upgrade:** migrated to `angular-auth-oidc-client` v21 API with configurable social login providers (Google, Microsoft, Facebook) ([#1554](https://github.com/IgniteUI/igniteui-cli/pull/1554))
@@ -83,6 +86,9 @@ A comprehensive modernization of all Angular templates to align with Angular v21
 * **ci:** mark `Util.sanitizeShellArg(x)` as command injection sanitizer for CodeQL ([#1524](https://github.com/IgniteUI/igniteui-cli/pull/1524))
 * **deps:** bump minimatch, ajv, immutable, and lodash ([#1549](https://github.com/IgniteUI/igniteui-cli/pull/1549))
 * **deps:** bump flatted ([#1559](https://github.com/IgniteUI/igniteui-cli/pull/1559))
+* **CLI error handling:** added `.fail()` handler to yargs to gracefully handle command validation errors (e.g., missing required subcommands) instead of showing raw stack traces ([#1614](https://github.com/IgniteUI/igniteui-cli/pull/1614))
+* **Unknown command detection:** running `ig <unknown>` now prints an error message and available commands instead of silently falling through to the step-by-step interactive mode ([#1614](https://github.com/IgniteUI/igniteui-cli/pull/1614))
+* **Unhandled promise rejection:** added `.catch()` in the CLI entry point to catch and display unexpected errors cleanly ([#1614](https://github.com/IgniteUI/igniteui-cli/pull/1614))
 
 ---
 
