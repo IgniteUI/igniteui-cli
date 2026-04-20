@@ -94,6 +94,9 @@ import { IgxIconButtonDirective } from 'igniteui-angular/directives';
 export class HomeComponent {}
 ```
 
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 Now that you have the Ignite UI for Angular Icon Button directive imported, you can start using the `igxIconButton` directive on elements.
 
 ## Angular Icon Button Types

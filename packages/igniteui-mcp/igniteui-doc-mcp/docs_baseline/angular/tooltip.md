@@ -58,7 +58,7 @@ The next step is to import the `IgxTooltipModule` in your **app.module.ts** file
 // app.module.ts
 
 ...
-import { IgxTooltipModule } from 'igniteui-angular/tooltip';
+import { IgxTooltipModule } from 'igniteui-angular/directives';
 // import { IgxTooltipModule } from '@infragistics/igniteui-angular'; for licensed package
 
 @NgModule({
@@ -73,7 +73,7 @@ Alternatively, as of `16.0.0` you can import the `IgxTooltipDirective` as a stan
 ```typescript
 // home.component.ts
 
-import { IGX_TOOLTIP_DIRECTIVES } from 'igniteui-angular/tooltip';
+import { IGX_TOOLTIP_DIRECTIVES } from 'igniteui-angular/directives';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 // import { IGX_TOOLTIP_DIRECTIVES, IgxAvatarComponent } from '@infragistics/igniteui-angular'; for licensed package
 
@@ -109,7 +109,7 @@ Let's say we want to create a simple text tooltip like the one above. In our cas
 ```typescript
 // app.module.ts
 
-import { IgxTooltipModule } from 'igniteui-angular/tooltip';
+import { IgxTooltipModule } from 'igniteui-angular/directives';
 import { IgxAvatarModule } from 'igniteui-angular/avatar';
 // import { IgxTooltipModule, IgxAvatarModule } from '@infragistics/igniteui-angular'; for licensed package
 
@@ -183,7 +183,7 @@ Let's expand on the use of the [`igxTooltip`](https://www.infragistics.com/produ
 ```typescript
 // app.module.ts
 
-import { IgxTooltipModule } from 'igniteui-angular/tooltip';
+import { IgxTooltipModule } from 'igniteui-angular/directives';
 import { IgxAvatarModule } from 'igniteui-angular/avatar';
 import { IgxIconModule } from 'igniteui-angular/icon';
 // import { IgxTooltipModule, IgxAvatarModule, IgxIconModule } from '@infragistics/igniteui-angular'; for licensed package
@@ -251,6 +251,9 @@ Let's start by creating our map. We need a simple div that has for a background 
   ...
 </div>
 ```
+
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 Now for the tooltip! For its content, we will create a container that will be populated with some text information elements and an avatar. Then we will simply attach the tooltip to the target and include some nice CSS styling!
 
@@ -1286,20 +1289,20 @@ The arrow element is positioned based on the provided position settings. If the 
 
 #### Predefined position values
 
-| Position     | Horizontal Direction          | Horizontal Start Point         | Vertical Direction            | Vertical Start Point           |
-|--------------|-------------------------------|--------------------------------|-------------------------------|--------------------------------|
-| top          | HorizontalAlignment.Center    | HorizontalAlignment.Center     | VerticalAlignment.Top         | VerticalAlignment.Top          |
-| top-start    | HorizontalAlignment.Right     | HorizontalAlignment.Left       | VerticalAlignment.Top         | VerticalAlignment.Top          |
-| top-end      | HorizontalAlignment.Left      | HorizontalAlignment.Right      | VerticalAlignment.Top         | VerticalAlignment.Top          |
-| bottom       | HorizontalAlignment.Center    | HorizontalAlignment.Center     | VerticalAlignment.Bottom      | VerticalAlignment.Bottom       |
-| bottom-start | HorizontalAlignment.Right     | HorizontalAlignment.Left       | VerticalAlignment.Bottom      | VerticalAlignment.Bottom       |
-| bottom-end   | HorizontalAlignment.Left      | HorizontalAlignment.Right      | VerticalAlignment.Bottom      | VerticalAlignment.Bottom       |
-| right        | HorizontalAlignment.Right     | HorizontalAlignment.Right      | VerticalAlignment.Middle      | VerticalAlignment.Middle       |
-| right-start  | HorizontalAlignment.Right     | HorizontalAlignment.Right      | VerticalAlignment.Bottom      | VerticalAlignment.Top          |
-| right-end    | HorizontalAlignment.Right     | HorizontalAlignment.Right      | VerticalAlignment.Top         | VerticalAlignment.Bottom       |
-| left         | HorizontalAlignment.Left      | HorizontalAlignment.Left       | VerticalAlignment.Middle      | VerticalAlignment.Middle       |
-| left-start   | HorizontalAlignment.Left      | HorizontalAlignment.Left       | VerticalAlignment.Bottom      | VerticalAlignment.Top          |
-| left-end     | HorizontalAlignment.Left      | HorizontalAlignment.Left       | VerticalAlignment.Top         | VerticalAlignment.Bottom       |
+| Position     | Horizontal Direction       | Horizontal Start Point     | Vertical Direction       | Vertical Start Point     |
+| :----------- | :------------------------- | :------------------------- | :----------------------- | :----------------------- |
+| top          | HorizontalAlignment.Center | HorizontalAlignment.Center | VerticalAlignment.Top    | VerticalAlignment.Top    |
+| top-start    | HorizontalAlignment.Right  | HorizontalAlignment.Left   | VerticalAlignment.Top    | VerticalAlignment.Top    |
+| top-end      | HorizontalAlignment.Left   | HorizontalAlignment.Right  | VerticalAlignment.Top    | VerticalAlignment.Top    |
+| bottom       | HorizontalAlignment.Center | HorizontalAlignment.Center | VerticalAlignment.Bottom | VerticalAlignment.Bottom |
+| bottom-start | HorizontalAlignment.Right  | HorizontalAlignment.Left   | VerticalAlignment.Bottom | VerticalAlignment.Bottom |
+| bottom-end   | HorizontalAlignment.Left   | HorizontalAlignment.Right  | VerticalAlignment.Bottom | VerticalAlignment.Bottom |
+| right        | HorizontalAlignment.Right  | HorizontalAlignment.Right  | VerticalAlignment.Middle | VerticalAlignment.Middle |
+| right-start  | HorizontalAlignment.Right  | HorizontalAlignment.Right  | VerticalAlignment.Bottom | VerticalAlignment.Top    |
+| right-end    | HorizontalAlignment.Right  | HorizontalAlignment.Right  | VerticalAlignment.Top    | VerticalAlignment.Bottom |
+| left         | HorizontalAlignment.Left   | HorizontalAlignment.Left   | VerticalAlignment.Middle | VerticalAlignment.Middle |
+| left-start   | HorizontalAlignment.Left   | HorizontalAlignment.Left   | VerticalAlignment.Bottom | VerticalAlignment.Top    |
+| left-end     | HorizontalAlignment.Left   | HorizontalAlignment.Left   | VerticalAlignment.Top    | VerticalAlignment.Bottom |
 
 
 In the following example, you can see a demonstration of all position options and the arrow positioning behavior in action:
@@ -1642,9 +1645,9 @@ Extra care should be taken in the following scenarios:
 
 ## Notes and Limitations
 
-| Limitation                          | Description|
-| ----------------------------------- | ---------- |
-| Custom position strategy with arrow | The [`igxTooltipTarget`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html) directive uses the [`TooltipPositionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/tooltippositionstrategy.html) to position the tooltip and arrow element. If a custom [`positionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#positionstrategy) is used and [`hasArrow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#hasarrow) is set to `true`, the custom strategy should extend the [`TooltipPositionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/tooltippositionstrategy.html). Otherwise, the arrow will not be displayed.|
+| Limitation                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| :---------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Custom position strategy with arrow | The [`igxTooltipTarget`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html) directive uses the [`TooltipPositionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/tooltippositionstrategy.html) to position the tooltip and arrow element. If a custom [`positionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#positionstrategy) is used and [`hasArrow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtooltiptargetdirective.html#hasarrow) is set to `true`, the custom strategy should extend the [`TooltipPositionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/tooltippositionstrategy.html). Otherwise, the arrow will not be displayed. |
 
 
 ## API References

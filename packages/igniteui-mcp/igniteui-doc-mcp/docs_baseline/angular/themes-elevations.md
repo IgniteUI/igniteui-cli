@@ -20,16 +20,16 @@ Shadows in Ignite UI for Angular closely follow the Material Design guidelines f
 
 Here's a list of resting elevations as used in various components in Ignite UI for Angular in the Material Theme and their corresponding CSS variable names:
 
-| Component                                       | Default Elevation Level | CSS Variable       |
-| ----------------------------------------------- | ----------------------- | ------------------ |
-| banner, button, toast                           | 0                       | --ig-elevation-0  |
-| badge, carousel buttons, search input           | 1                       | --ig-elevation-1  |
+| Component                                          | Default Elevation Level | CSS Variable      |
+| :------------------------------------------------- | :---------------------- | :---------------- |
+| banner, button, toast                              | 0                       | --ig-elevation-0  |
+| badge, carousel buttons, search input              | 1                       | --ig-elevation-1  |
 | button group, contained button, card, grid, switch | 2                       | --ig-elevation-2  |
-| navbar, snackbar                                | 4                       | --ig-elevation-4  |
-| floating action button,                         | 6                       | --ig-elevation-6  |
-| bottom navigation, ghost chip, dropdown         | 8                       | --ig-elevation-8  |
-| navdrawer                                       | 16                      | --ig-elevation-16 |
-| dialog                                          | 24                      | --ig-elevation-24 |
+| navbar, snackbar                                   | 4                       | --ig-elevation-4  |
+| floating action button,                            | 6                       | --ig-elevation-6  |
+| bottom navigation, ghost chip, dropdown            | 8                       | --ig-elevation-8  |
+| navdrawer                                          | 16                      | --ig-elevation-16 |
+| dialog                                             | 24                      | --ig-elevation-24 |
 
 As you can see from the `CSS Variable` column, all elevations are defined in the following format `--ig-elevation-[level]`. As mentioned, the elevation level number go from 0 through 24(inclusive).
 

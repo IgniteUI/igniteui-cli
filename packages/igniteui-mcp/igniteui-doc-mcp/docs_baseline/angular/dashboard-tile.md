@@ -107,8 +107,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Dependencies
 
-<!-- Angular, WebComponents, React -->
-
 Install the following packages in the Ignite UI for Angular toolset:
 
 ```cmd
@@ -141,8 +139,6 @@ import { IgxDashboardTileModule, IgxDataChartDashboardTileModule, IgxRadialGauge
 })
 export class AppModule {}
 ```
-
-<!-- end:Angular, WebComponents, React -->
 
 ## Usage
 

@@ -152,7 +152,7 @@ import { IgxTreeGridModule } from 'igniteui-angular/grids/tree-grid';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxTreeGridComponent` as a standalone dependency, or use the [`IGX_TREE_GRID_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/grids/tree-grid/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxTreeGridComponent` as a standalone dependency, or use the [`IGX_TREE_GRID_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/grids/tree-grid/src/tree-grid.module.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -472,10 +472,10 @@ platformBrowserDynamic()
 
 ## Known Limitations
 
-|Limitation|Description|
-|--- |--- |
-|Templating Tree Cells|When templating a tree cell, content that spans outside the boundaries of the cell will not be shown unless positioned in an overlay.|
-|Group By|Group By feature is not supported, because it is inherent to the tree grid.|
+| Limitation            | Description                                                                                                                           |
+| :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| Templating Tree Cells | When templating a tree cell, content that spans outside the boundaries of the cell will not be shown unless positioned in an overlay. |
+| Group By              | Group By feature is not supported, because it is inherent to the tree grid.                                                           |
 
 > [!NOTE]
 > The tree grid has a depth limit of 25 levels. Supporting more levels requires adding custom CSS classes in the application. You may see an example of such CSS class below:

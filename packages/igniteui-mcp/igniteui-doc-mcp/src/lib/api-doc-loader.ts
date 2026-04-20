@@ -2,8 +2,7 @@ import { readFileSync, existsSync, realpathSync } from 'fs';
 import { join, dirname, resolve, relative, isAbsolute } from 'path';
 import { fileURLToPath } from 'url';
 import type { Platform, PlatformConfig } from '../config/platforms.js';
-import { ReactJsonParser } from './react-json-parser.js';
-import type { ReactDocSection } from './react-json-parser.js';
+import { type ReactDocSection, ReactJsonParser } from './react-json-parser.js';
 import type { DocEntry, IndexEntry } from './types/docs.types.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -33,7 +32,7 @@ export class ApiDocLoader {
   private docs = new Map<string, DocEntry>();
   private platformConfigs: PlatformConfig[];
   private typedocJsonParsers = new Map<Platform, ReactJsonParser>();
- 
+
   constructor(platformConfigs: PlatformConfig[]) {
     this.platformConfigs = platformConfigs;
   }
@@ -103,7 +102,7 @@ export class ApiDocLoader {
           indexPath
         );
         const content = readFileSync(filepath, 'utf-8');
-        
+
         this.docs.set(key, {
           filepath,
           content,
@@ -239,7 +238,7 @@ export class ApiDocLoader {
 
   getStats(): Partial<Record<Platform, { total: number; byType: Record<string, number> }>> {
     const stats: Partial<Record<Platform, { total: number; byType: Record<string, number> }>> = {};
-    
+
     for (const entry of this.docs.values()) {
       if (!stats[entry.platform]) {
         stats[entry.platform] = { total: 0, byType: {} };
@@ -249,11 +248,11 @@ export class ApiDocLoader {
       if (!platformStats) {
         continue;
       }
-      
+
       platformStats.total++;
       platformStats.byType[entry.type] = (platformStats.byType[entry.type] || 0) + 1;
     }
-    
+
     return stats;
   }
 }

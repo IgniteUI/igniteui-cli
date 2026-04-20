@@ -215,6 +215,9 @@ Use selector `[igxComboToggleIcon]`:
 </igx-combo>
 ```
 
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 ### Clear Icon Template
 
 Use selector `[igxComboClearIcon]`:

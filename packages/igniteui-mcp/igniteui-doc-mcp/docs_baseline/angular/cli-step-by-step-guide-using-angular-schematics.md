@@ -1,79 +1,105 @@
 ---
 title: Step-by-Step Guide Using Ignite UI for Angular Schematics | Ignite UI for Angular | Infragistics
-_description: The Step-by-Step mode contains guided experience through the Ignite UI CLI options.
-_keywords: angular cli, ignite ui for angular, infragistics
+_description: Step-by-step guide to creating and scaffolding Angular projects using the Ignite UI for Angular Schematics collection. Covers project type selection, template choice, theming, and adding component views.
+_keywords: ignite ui for angular, angular schematics, step-by-step, scaffolding, infragistics
+last_updated: "2025-04-06"
 _tocName: Step by Step guide using Ignite UI for Angular Schematics
 ---
 
+<!-- schema: Article, HowTo -->
+
 # Step-by-Step Guide Using Ignite UI for Angular Schematics
 
-If you want to get a guided experience through the available options, you can initialize the step by step mode that will help you create and setup your new application, as well as update project previously created with the [Ignite UI Angular Schematics](getting-started-with-angular-schematics.md).
+The Ignite UI for Angular Schematics step-by-step mode is an interactive wizard built into the `@igniteui/angular-schematics` collection. It guides you through project bootstrapping, template selection, and theming, then lets you add component views before finishing. The wizard can be activated for both new project creation and for adding views to an existing project previously created with the [Ignite UI Angular Schematics](getting-started-with-angular-schematics.md).
 
-To activate the guide using the Schematics collection run:
+The step-by-step mode does not support non-interactive or scripted use - for that, use the direct `ng new` and `ng g` commands with explicit arguments. The wizard relies on `Inquirer.js`; see [supported terminals](https://github.com/SBoudrias/Inquirer.js#support-os-terminals) for compatibility.
+
+To activate the guided wizard, run:
 
 ```cmd
 ng new --collection="@igniteui/angular-schematics"
 ```
 
-This will activate the step by step mode and you will be asked a series of questions to help you create your new project.
-
 <div style="display:inline-block;">
     <a style="background: url(../../../images/general/buildCLIapp.gif); display:flex; justify-content:center; width: 80vw; max-width:540px; min-height:315px;"
        href="https://youtu.be/QK_NsdtdA70" target="_blank">
-        <img src="../../../images/general/play.svg" alt="Play video" style="vertical-align: middle;" />
+        <img src="../../../images/general/play.svg" alt="Play video: Building Your First Ignite UI CLI App" style="vertical-align: middle;" />
     </a>
 </div>
 
-> [!Note]
-> Step by step mode relies on `Inquirer.js`, see [supported terminals](https://github.com/SBoudrias/Inquirer.js#support-os-terminals)
+## Create a New Project
 
+The wizard guides you through four configuration steps before scaffolding the project.
 
-## Create new project
+### Step 1: Choose a bootstrapping type
 
-First you will be prompted to choose the way your application will be bootstrapped, using modules or standalone components:
+The first prompt asks whether to bootstrap the application using standalone components or NgModules.
 
-<img class="responsive-img"  src="../../../images/general/ig-step-by-step-project-type.png" alt="Step by step project type" />
+<img class="responsive-img" src="../../../images/general/ig-step-by-step-project-type.png" alt="Step by step prompt: standalone components or NgModules" />
 
-Then you can enter a name for your application:
+Standalone components are the Angular 17+ default and are recommended for new projects. Choose NgModules only if you are integrating with an existing NgModule-based codebase.
 
-<img class="responsive-img"  src="../../../images/general/ig-step-by-step-new-project-name.png" alt="Step by step new project name" />
+### Step 2: Enter a project name
 
-Then you will be guided to choose one of the available project templates. You can create an empty project, project with side navigation or [authentication project](auth-template.md) with basic authentication module. Navigate through the available options using the arrow keys and press ENTER to confirm the selection:
+Enter a name for the new application. The project is created in a directory with the same name.
 
-<img class="responsive-img"  src="../../../images/general/ig-step-by-step-new-project-template.png" alt="Step by step new project template" />
+<img class="responsive-img" src="../../../images/general/ig-step-by-step-new-project-name.png" alt="Step by step prompt: enter project name" />
 
-The next step is to choose a theme for your application. If you select the default option a pre-compiled CSS file (`igniteui-angular.css`) with the default Ignite UI for Angular theme is included in your project's `angular.json`. The custom option generates code for a color palette and theme with our [Theming API](../../themes.md) in the `app/styles.scss`.
+### Step 3: Choose a project template
 
-<img class="responsive-img"  src="../../../images/general/ig-step-by-step-new-project-theme.png" alt="Step by step new project theme" />
+Navigate the available project templates using the arrow keys and press ENTER to confirm. Three templates are available:
 
-After completing the above steps the application structure will be generated, git repository will be initialized and the project will be committed. Then you will be asked if you want to complete the process or to add a new view to your application:
+- **empty** - a project structure with routing and a home page, no pre-built navigation
+- **side-nav** - a project structure with a pre-built side navigation drawer
+- **auth** - a side navigation project extended with a basic authentication module (see [Authentication Project Template](auth-template.md) for details)
 
-<img class="responsive-img"  src="../../../images/general/ig-step-by-step-new-project-action.png" alt="Step by step new project action" />
+<img class="responsive-img" src="../../../images/general/ig-step-by-step-new-project-template.png" alt="Step by step prompt: choose project template" />
 
-## Add view
+### Step 4: Choose a theme
 
-Ignite UI CLI supports multiple component templates, as well as some more elaborated scenario templates, that can be added to a project. This mode can be activated either after completing project creation or inside an existing project using the commands below.
+Two theme options are available:
 
-To activate the the step by step mode using the Schematics collection run the `component`(alias:`c`) schematic:
+- **default** - includes a pre-compiled CSS file (`igniteui-angular.css`) with the default Ignite UI for Angular Material-based theme in `angular.json`
+- **custom** - generates a color palette and theme configuration using the [Theming API](../../themes.md) in `app/styles.scss`, ready for customization
+
+<img class="responsive-img" src="../../../images/general/ig-step-by-step-new-project-theme.png" alt="Step by step prompt: choose default or custom theme" />
+
+After completing these four steps, the wizard generates the project structure, initializes a Git repository, and commits the initial state. It then asks whether to finish or continue by adding a component view.
+
+<img class="responsive-img" src="../../../images/general/ig-step-by-step-new-project-action.png" alt="Step by step prompt: finish or add a view" />
+
+## Add Component Views
+
+The Ignite UI for Angular Schematics collection provides individual component templates and more elaborate scenario templates. This mode is available both as a continuation of project creation and as a standalone operation in an existing project.
+
+To activate the component wizard in an existing project, run the `component` schematic (alias: `c`):
 
 ```bash
 ng g @igniteui/angular-schematics:component
 ```
 
-In case you choose to add a new control, you will be provided with a [list of the available templates](component-templates.md#component-templates), grouped in categories.
+The wizard displays the available [component templates](component-templates.md#component-templates), grouped by category. Navigate with the arrow keys and press ENTER to select.
 
-<img class="responsive-img"  src="../../../images/general/ig-step-by-step-template-group.png" alt="Step by step template group" />
+<img class="responsive-img" src="../../../images/general/ig-step-by-step-template-group.png" alt="Step by step prompt: template category selection" />
 
-Use the arrow keys to navigate through the options and ENTER to choose the selected one.
+Some templates - such as the Custom Grid - expose a list of optional features. Use the SPACE key to toggle individual options before confirming with ENTER.
 
-For some templates, like `Custom Grid`, for example you will be provided with a list of options that you might enable. Options can be toggled with the SPACE key:
+<img class="responsive-img" src="../../../images/general/ig-step-by-step-component-features.png" alt="Step by step prompt: optional component feature toggles" />
 
-<img class="responsive-img"  src="../../../images/general/ig-step-by-step-component-features.png" alt="Step by step component features" />
+Scenario templates are also available and provide more complete application views that combine multiple components. Select "Scenarios" in the category list to browse them.
 
-If you choose to add a scenario to your application you will also get a list of the available [scenario templates](component-templates.md#scenario-templates):
+<img class="responsive-img" src="../../../images/general/ig-step-by-step-scenario-templates.png" alt="Step by step prompt: scenario template selection" />
 
-<img class="responsive-img"  src="../../../images/general/ig-step-by-step-scenario-templates.png" alt="Scenario templates" />
+After adding a template, the wizard asks whether to add more views or complete the process. On completion, any remaining package dependencies are installed and the application is served and opened in your default browser.
 
-After adding a template to your application, you will be asked weather you want to complete the process or to proceed with adding more controls. When you choose to complete the process, the required packages will be installed (on project creation) and the application will be served and opened in your default browser.
+To add more Ignite UI for Angular views to a project later without the wizard, use the direct schematic command:
 
-You can always add more Ignite UI for Angular views to your application at latter moment using the `ng g @igniteui/angular-schematics:c [template] [name]` command.
+```cmd
+ng g @igniteui/angular-schematics:c [template] [name]
+```
+
+## AI Assistant Integration
+
+The Ignite UI CLI - which shares the same scaffolding toolchain as these Schematics - includes a built-in MCP server that connects AI coding assistants to live Ignite UI component documentation. If your workflow uses the Ignite UI CLI alongside the Angular CLI, start the server with `ig mcp` after installing the CLI globally.
+
+For MCP client configuration and a full description of available tools, see [Ignite UI CLI MCP](../../ai/cli-mcp.md).

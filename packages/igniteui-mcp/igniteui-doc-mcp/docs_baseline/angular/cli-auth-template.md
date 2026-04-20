@@ -130,11 +130,11 @@ As you enable providers, all buttons will become active:
 
 Here are the default providers the project template comes with:
 
-| Provider | Uses | Redirect URL |
-|---|---|---|
-| Google | OpenID Connect* | `<app root>/redirect-google` |
-| Microsoft | OpenID Connect* | `<app root>/redirect-microsoft` |
-| Facebook | Facebook Connect** | `<app root>/redirect-facebook` |
+| Provider  | Uses               | Redirect URL                    |
+| :-------- | :----------------- | :------------------------------ |
+| Google    | OpenID Connect*    | `<app root>/redirect-google`    |
+| Microsoft | OpenID Connect*    | `<app root>/redirect-microsoft` |
+| Facebook  | Facebook Connect** | `<app root>/redirect-facebook`  |
 
 Where the app is hosted will determine the root URL, for example by default on the first app run that will be `http://localhost:4200`.
 

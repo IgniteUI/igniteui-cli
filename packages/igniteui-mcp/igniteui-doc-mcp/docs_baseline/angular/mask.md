@@ -99,6 +99,9 @@ import { IgxMaskDirective, IGX_INPUT_GROUP_DIRECTIVES } from 'igniteui-angular/i
 export class HomeComponent {}
 ```
 
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 Now that you have the Ignite UI for Angular Mask module or directive imported, you can start using the `igxMask` directive.
 
 ## Using the Angular Mask
@@ -107,17 +110,17 @@ Now that you have the Ignite UI for Angular Mask module or directive imported, y
 
 <div class="divider--half"></div>
 
-| Mask Character | Description |
-| :--- | :--- |
-| 0 | requires a digit (0-9) |
-| 9 | requires a digit (0-9) or a space |
-| # | requires a digit (0-9), plus (+), or minus (-) sign |
-| L | requires a letter (a-Z) |
-| ? | requires a letter (a-Z) or a space |
-| A | requires an alphanumeric (0-9, a-Z) |
-| a | requires an alphanumeric (0-9, a-Z) or a space |
-| & | any keyboard character (excluding space) |
-| C | any keyboard character |
+| Mask Character | Description                                         |
+| :------------- | :-------------------------------------------------- |
+| 0              | requires a digit (0-9)                              |
+| 9              | requires a digit (0-9) or a space                   |
+| #              | requires a digit (0-9), plus (+), or minus (-) sign |
+| L              | requires a letter (a-Z)                             |
+| ?              | requires a letter (a-Z) or a space                  |
+| A              | requires an alphanumeric (0-9, a-Z)                 |
+| a              | requires an alphanumeric (0-9, a-Z) or a space      |
+| &              | any keyboard character (excluding space)            |
+| C              | any keyboard character                              |
 
 ### Apply Mask on Input
 
