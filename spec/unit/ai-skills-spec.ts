@@ -1,4 +1,4 @@
-import { App, Config, copyAISkillsToProject, IFileSystem, ProjectConfig } from "@igniteui/cli-core";
+import { App, Config, copyAISkillsToProject, IFileSystem, ProjectConfig, Util } from "@igniteui/cli-core";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;
@@ -20,6 +20,11 @@ function makeFs(overrides: Partial<IFileSystem> = {}): IFileSystem {
 }
 
 describe("Unit - copyAISkillsToProject", () => {
+	beforeEach(() => {
+		spyOn(Util, "log");
+		spyOn(Util, "greenCheck").and.returnValue("✓");
+	});
+
 	describe("Angular framework", () => {
 		it("should copy skills from igniteui-angular into .claude/skills/", async () => {
 			const angularSkillsDir = skillsDir("igniteui-angular");
@@ -105,7 +110,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				}),
 				readFile: jasmine.createSpy("readFile").and.callFake((p: string) => {
 					if (p === skillFilePath) return newContent;
-					return "";
+					return ""; // dest has different (older) content
 				}),
 				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
 					p === angularSkillsDir
@@ -123,6 +128,42 @@ describe("Unit - copyAISkillsToProject", () => {
 			await copyAISkillsToProject();
 
 			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", newContent);
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Updated .claude/skills/angular.md"));
+		});
+
+		it("should not write when destination content is already up-to-date", async () => {
+			const angularSkillsDir = skillsDir("igniteui-angular");
+			const skillFilePath = skillFile("igniteui-angular", "angular.md");
+			const existingContent = "# Ignite UI for Angular skills";
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) => {
+					if (p === "ignite-ui-cli.json") return true;
+					if (p === ".claude/skills/angular.md") return true;
+					return false;
+				}),
+				readFile: jasmine.createSpy("readFile").and.returnValue(existingContent),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
+				writeFile: jasmine.createSpy("writeFile")
+			});
+
+			spyOn(App.container, "get").and.returnValue(fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+
+			const result = await copyAISkillsToProject();
+
+			expect(fs.writeFile).not.toHaveBeenCalled();
+			expect(result.found).toBe(1);
+			expect(result.skipped).toBe(1);
+			expect(result.failed).toBe(0);
+			expect(Util.log).not.toHaveBeenCalled(); // no per-file Created/Updated logs emitted
 		});
 	});
 
@@ -328,6 +369,120 @@ describe("Unit - copyAISkillsToProject", () => {
 			await copyAISkillsToProject();
 
 			expect(fs.writeFile).not.toHaveBeenCalled();
+		});
+	});
+
+	describe("Error handling", () => {
+		it("should increment failed when writeFile throws creating a new file", async () => {
+			const pkg = "igniteui-angular";
+			const dir = skillsDir(pkg);
+			const file = skillFile(pkg, "angular.md");
+
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) => {
+					if (p === "ignite-ui-cli.json") return true;
+					return false; // dest does not exist
+				}),
+				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === dir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === dir ? [file] : []
+				),
+				writeFile: jasmine.createSpy("writeFile").and.throwError("EACCES: permission denied")
+			});
+
+			spyOn(App.container, "get").and.returnValue(fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+
+			const result = await copyAISkillsToProject();
+
+			expect(result.found).toBe(1);
+			expect(result.skipped).toBe(0);
+			expect(result.failed).toBe(1);
+		});
+
+		it("should increment failed when writeFile throws updating an existing file", async () => {
+			const pkg = "igniteui-angular";
+			const dir = skillsDir(pkg);
+			const file = skillFile(pkg, "angular.md");
+			const destFile = ".claude/skills/angular.md";
+
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) => {
+					if (p === "ignite-ui-cli.json") return true;
+					if (p === destFile) return true; // dest exists with different content
+					return false;
+				}),
+				readFile: jasmine.createSpy("readFile").and.callFake((p: string) => {
+					if (p === file) return "new content";
+					return "old content"; // dest has different content
+				}),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === dir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === dir ? [file] : []
+				),
+				writeFile: jasmine.createSpy("writeFile").and.throwError("EACCES: permission denied")
+			});
+
+			spyOn(App.container, "get").and.returnValue(fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+
+			const result = await copyAISkillsToProject();
+
+			expect(result.found).toBe(1);
+			expect(result.skipped).toBe(0);
+			expect(result.failed).toBe(1);
+		});
+
+		it("should report correct counts when some writes fail and some succeed", async () => {
+			const pkg = "igniteui-angular";
+			const dir = skillsDir(pkg);
+			const file1 = skillFile(pkg, "angular.md");
+			const file2 = skillFile(pkg, "components.md");
+
+			let writeCallCount = 0;
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) => {
+					if (p === "ignite-ui-cli.json") return true;
+					return false;
+				}),
+				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === dir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === dir ? [file1, file2] : []
+				),
+				writeFile: jasmine.createSpy("writeFile").and.callFake(() => {
+					writeCallCount++;
+					if (writeCallCount === 2) {
+						throw new Error("ENOSPC: no space left on device");
+					}
+				})
+			});
+
+			spyOn(App.container, "get").and.returnValue(fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+
+			const result = await copyAISkillsToProject();
+
+			expect(result.found).toBe(2);
+			expect(result.skipped).toBe(0);
+			expect(result.failed).toBe(1);
+			expect(fs.writeFile).toHaveBeenCalledTimes(2);
 		});
 	});
 

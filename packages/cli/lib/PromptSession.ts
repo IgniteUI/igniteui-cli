@@ -105,7 +105,8 @@ export class PromptSession extends BasePromptSession {
 	}
 
 	protected async configureAI(): Promise<void> {
-		aiConfigure();
+		// skip adding skills since those are baked into the project template atm:
+		aiConfigure(false);
 	}
 
 	/**
