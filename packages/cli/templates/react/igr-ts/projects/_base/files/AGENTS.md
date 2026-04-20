@@ -109,3 +109,8 @@ You are an expert in building front-end web applications with React with deep kn
 ## UI Components
 
 - Use `igniteui-react`.
+- Use `igniteui-react-grids` for advanced grids.
+- Use `igniteui-react` and `igniteui-grid-lite` for Grid Lite; import from `igniteui-react/grid-lite`.
+- Use `igniteui-react-charts`, `igniteui-react-gauges`, and `igniteui-react-maps` for charts, gauges, and maps.
+- For package-specific components such as grids, Grid Lite, charts, gauges, and maps, do not assume they come from `igniteui-react`; follow `.claude/skills/igniteui-react-components/SKILL.md` to choose the correct package and imports.
+- If the required Ignite UI package is not present in `package.json`, add or install the correct dependency first.
