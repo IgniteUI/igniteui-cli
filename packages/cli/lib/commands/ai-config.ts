@@ -65,17 +65,24 @@ export function configureMCP(fileSystem: IFileSystem = new FsFileSystem()): void
 
 export function configureSkills(): void {
 	const result = copyAISkillsToProject();
-	if (result === "copied") {
-		Util.log(Util.greenCheck() + " AI skills added to the project.");
-	} else {
+	if (result.found === 0) {
 		Util.warn("No AI skill files found. Make sure packages are installed (npm install) " +
-			"and your Ignite UI package includes a skills/ directory.", "yellow");
+			"and your Ignite UI packages are up-to-date.", "yellow");
+	} else if (result.failed > 0) {
+		Util.warn(`Failed to write ${result.failed} skill file(s) out of ${result.found}.`, "yellow");
+	} else if (result.skipped === result.found) {
+		Util.log("Everything is already up-to-date.");
+	} else {
+		const written = result.found - result.skipped;
+		Util.log(Util.greenCheck() + ` ${written} AI skill file(s) created or updated.`);
 	}
 }
 
-export function configure(fileSystem: IFileSystem = new FsFileSystem()): void {
-	configureMCP(fileSystem);
-	configureSkills();
+export function configure(skills = true): void {
+	configureMCP();
+	if (skills) {
+		configureSkills();
+	}
 }
 
 const command: CommandModule = {

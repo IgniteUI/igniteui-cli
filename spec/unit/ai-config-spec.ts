@@ -1,6 +1,6 @@
 import * as path from "path";
-import { App, FS_TOKEN, GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
-import { configureMCP } from "../../packages/cli/lib/commands/ai-config";
+import { App, Config, FS_TOKEN, GoogleAnalytics, IFileSystem, ProjectConfig, Util } from "@igniteui/cli-core";
+import { configureMCP, configureSkills } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
@@ -113,6 +113,118 @@ describe("Unit - ai-config command", () => {
 			expect((config.servers as any)["other-server"]).toEqual(thirdPartyServer);
 			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
 			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+	});
+
+	describe("configureSkills", () => {
+		const angularSkillsDir = "node_modules/igniteui-angular/skills";
+
+		beforeEach(() => {
+			spyOn(Util, "warn");
+		});
+
+		function setupAngularConfig() {
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+		}
+
+		it("warns when no skill files are found", () => {
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue(""),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.returnValue(false),
+				glob: jasmine.createSpy("glob").and.returnValue([])
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			setupAngularConfig();
+
+			configureSkills();
+
+			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("No AI skill files found"), "yellow");
+			expect(Util.log).not.toHaveBeenCalled();
+		});
+
+		it("warns with failure count when some writes fail", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				writeFile: jasmine.createSpy("writeFile").and.throwError("EACCES: permission denied"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			setupAngularConfig();
+
+			configureSkills();
+
+			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("Failed to write 1 skill file(s) out of 1"), "yellow");
+			expect(Util.log).not.toHaveBeenCalled();
+		});
+
+		it("logs up-to-date when all files are already current", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const destFile = ".claude/skills/angular.md";
+			const content = "# Ignite UI skills";
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json" || p === destFile
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue(content),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			setupAngularConfig();
+
+			configureSkills();
+
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("already up-to-date"));
+			expect(Util.warn).not.toHaveBeenCalled();
+		});
+
+		it("logs created/updated count when skills are written successfully", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			setupAngularConfig();
+
+			configureSkills();
+
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("1 AI skill file(s) created or updated"));
+			expect(Util.warn).not.toHaveBeenCalled();
 		});
 	});
 
