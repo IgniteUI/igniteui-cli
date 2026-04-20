@@ -29,6 +29,8 @@ jobs:
            cache: 'yarn'
       - name: Install packages
         run: yarn --frozen-lockfile
+      - name: Lint
+        run: yarn lint
       - name: Test
         run: |
           yarn config set scripts-prepend-node-path auto
