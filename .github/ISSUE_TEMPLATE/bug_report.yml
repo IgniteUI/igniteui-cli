@@ -22,7 +22,7 @@ body:
     id: framework
     attributes:
       label: Framework
-      description: Which framework are you using?
+      description: Which framework(s) are you using?
       multiple: true
       options:
         - Angular
