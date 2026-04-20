@@ -27,6 +27,8 @@ All scaffolded projects now include AI-ready configuration files to enhance the 
 * **CLAUDE.md** for Claude Code integration ([#1546](https://github.com/IgniteUI/igniteui-cli/pull/1546))
 * **VS Code MCP configuration** (`mcp.json`) pre-configured with `angular-cli`, `igniteui-cli`, and `igniteui-theming` MCP servers ([#1563](https://github.com/IgniteUI/igniteui-cli/pull/1563))
 * **Claude skills** for component usage, theming customization, and bundle size optimization ([#1573](https://github.com/IgniteUI/igniteui-cli/pull/1573))
+* **`ig ai-config` CLI command** to configure AI tooling in an existing project: writes `.vscode/mcp.json` with `igniteui-cli` and `igniteui-theming` MCP servers and copies AI coding skill files from installed Ignite UI packages to `.claude/skills/` ([#1502](https://github.com/IgniteUI/igniteui-cli/pull/1502))
+* **AI skills auto-copy on `ng add`**: the `cli-config` Angular schematic now automatically copies skill files from the installed Ignite UI package's `skills/` directory into `.claude/skills/` as part of the `ng add igniteui-angular` flow ([#1502](https://github.com/IgniteUI/igniteui-cli/pull/1502))
 
 ---
 
