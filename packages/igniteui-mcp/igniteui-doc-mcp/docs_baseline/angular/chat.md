@@ -182,12 +182,12 @@ This approach makes it easy to plug the Chat into your own data source, such as 
 ### Inputs
 The Chat component exposes several key properties that let you control its state and configuration:
 
-| Name              | Description                                                                                                                                                          |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `messages`        | Array of messages (`IgcChatMessage[]`) displayed in the chat. You can bind to this to control which messages are shown.                                                  |
-| `draftMessage`    | The current unsent message, represented as an object containing `text` and optional `attachments`. This is useful for saving or restoring message drafts.            |
-| `options`         | Chat configuration ([`IgxChatOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/types/igxchatoptions.html)) such as current user ID, input placeholders, accepted file types, quick reply suggestions and typing behavior. |
-| `templates` | Custom Angular templates ([`IgxChatTemplates`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/types/igxchattemplates.html)) for message content, input, attachments, and other parts of the chat UI.                                   |
+| Name           | Description                                                                                                                                                                                                   |
+| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `messages`     | Array of messages (`IgcChatMessage[]`) displayed in the chat. You can bind to this to control which messages are shown.                                                                                       |
+| `draftMessage` | The current unsent message, represented as an object containing `text` and optional `attachments`. This is useful for saving or restoring message drafts.                                                     |
+| `options`      | Chat configuration ([`IgxChatOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/types/igxchatoptions.html)) such as current user ID, input placeholders, accepted file types, quick reply suggestions and typing behavior. |
+| `templates`    | Custom Angular templates ([`IgxChatTemplates`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/types/igxchattemplates.html)) for message content, input, attachments, and other parts of the chat UI.                             |
 
 These properties make it straightforward to synchronize the Chat’s UI with your application’s state and backend.
 
@@ -538,7 +538,7 @@ The Chat component exposes both **CSS parts** and **slots** for fine-grained cus
 ### CSS Parts
 
 | Part name                       | Description                                                                          |
-| ------------------------------- | ------------------------------------------------------------------------------------ |
+| :------------------------------ | :----------------------------------------------------------------------------------- |
 | `chat-container`                | Styles the main chat container.                                                      |
 | `header`                        | Styles the chat header container.                                                    |
 | `prefix`                        | Styles the element before the chat title (e.g., avatar).                             |
@@ -604,7 +604,7 @@ This allows you to style the `Chat` to match your brand without replacing its fu
 ### Slots
 
 | Slot name             | Description                                                              |
-| --------------------- | ------------------------------------------------------------------------ |
+| :-------------------- | :----------------------------------------------------------------------- |
 | `prefix`              | Slot for injecting content (e.g., avatar or icon) before the chat title. |
 | `title`               | Slot for overriding the chat title content.                              |
 | `actions`             | Slot for injecting header actions (e.g., buttons, menus).                |
@@ -628,8 +628,8 @@ These slots allow injecting custom UI into the header or suggestions area:
 
 The Chat component's options include a special flag for advanced styling scenarios:
 
-| Option            | Type      | Default | Description        |
-| ----------------- | --------- | ------- | ------------------ |
+| Option            | Type      | Default | Description                                                                                                                                                                                                                                    |
+| :---------------- | :-------- | :------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `adoptRootStyles` | `boolean` | false   | When `true`, the component allows content rendered inside its Shadow DOM (e.g., from custom renderers) to inherit styles from the document's root. This provides a quick workaround for styling but is **not recommended** for production use. |
 
 This property can be useful if you prefer not to deal with Shadow DOM encapsulation when applying global CSS to custom-rendered templates.

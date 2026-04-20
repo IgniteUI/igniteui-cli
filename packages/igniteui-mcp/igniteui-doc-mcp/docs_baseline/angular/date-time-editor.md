@@ -174,21 +174,21 @@ To set a specific input format, pass it as a string to the IgxDateTimeEditor dir
 
 The table bellow shows formats that are supported by the directive's [`inputFormat`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#inputFormat):
 
-|  Format  | Description |
-| -------- | ----------- |
-| `d` | Date, will be coerced with a leading zero while editing. |
-| `dd` | Date with an explicitly set leading zero. |
-| `M` | Month, will be coerced with a leading zero while editing. |
-| `MM` | Month with an explicitly set leading zero. |
-| `yy` | Short year format. |
-| `yyyy` | Full year format. |
-| `h` | Hours in 12-hour format, will be coerced with a leading zero while editing. |
-| `hh` | Hours in 12-hour format with an explicitly set leading zero. |
-| `H` | Hours in 24-hour format, will be coerced with a leading zero while editing. |
-| `HH` | Hours in 24-hour format, with an explicitly set leading zero. |
-| `m` | Minutes, will be coerced with a leading zero while editing. |
-| `mm` | Minutes with an explicitly set leading zero. |
-| `tt` | AM/PM section for 12-hour format. |
+|  Format | Description                                                                 |
+| :------ | :-------------------------------------------------------------------------- |
+| `d`     | Date, will be coerced with a leading zero while editing.                    |
+| `dd`    | Date with an explicitly set leading zero.                                   |
+| `M`     | Month, will be coerced with a leading zero while editing.                   |
+| `MM`    | Month with an explicitly set leading zero.                                  |
+| `yy`    | Short year format.                                                          |
+| `yyyy`  | Full year format.                                                           |
+| `h`     | Hours in 12-hour format, will be coerced with a leading zero while editing. |
+| `hh`    | Hours in 12-hour format with an explicitly set leading zero.                |
+| `H`     | Hours in 24-hour format, will be coerced with a leading zero while editing. |
+| `HH`    | Hours in 24-hour format, with an explicitly set leading zero.               |
+| `m`     | Minutes, will be coerced with a leading zero while editing.                 |
+| `mm`    | Minutes with an explicitly set leading zero.                                |
+| `tt`    | AM/PM section for 12-hour format.                                           |
 
 > [!NOTE]
 > The `IgxDateTimeEditorDirective` directive supports IME input. When typing in an Asian language input, the control will display input method compositions and candidate lists directly in the control’s editing area, and immediately re-flow surrounding text as the composition ends.

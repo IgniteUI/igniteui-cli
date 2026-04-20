@@ -218,7 +218,7 @@ export class AppComponent implements AfterViewInit {
 ```
 
 
-> \[!Note]
+> [!Note]
 > The XLSX format is required. Other formats are not supported at this time.
 
 <div class="divider--half"></div>

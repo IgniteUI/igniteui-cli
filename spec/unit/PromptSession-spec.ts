@@ -501,6 +501,7 @@ describe("Unit - PromptSession", () => {
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledWith(false);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.input).toHaveBeenCalledWith({
 			type: "input",
@@ -579,6 +580,7 @@ describe("Unit - PromptSession", () => {
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledWith(false);
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", mockSelectedTemplate);
@@ -704,6 +706,7 @@ describe("Unit - PromptSession", () => {
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
 		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledWith(false);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.checkbox).toHaveBeenCalledWith({
 			type: "checkbox",

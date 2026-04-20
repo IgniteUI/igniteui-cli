@@ -75,7 +75,7 @@ The next step is to import the `IgxButtonModule` in your **app.module.ts** file.
 
 ```typescript
 // app.module.ts
-import { IgxButtonModule } from 'igniteui-angular/button';
+import { IgxButtonModule } from 'igniteui-angular/directives';
 // import { IgxButtonModule } from '@infragistics/igniteui-angular'; for licensed package
 @NgModule({
     imports: [
@@ -93,7 +93,7 @@ Alternatively, as of `16.0.0` you can import the `IgxButtonDirective` as a stand
 // home.component.ts
 
 ...
-import { IgxButtonDirective } from 'igniteui-angular/button';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
 // import { IgxButtonDirective } from '@infragistics/igniteui-angular'; for licensed package
 
 @Component({
@@ -155,6 +155,9 @@ As of version `17.1.0` the IgniteUI for Angular exposes a new `igxIconButton` di
   <igx-icon fontSet="material">favorite</igx-icon>
 </button>
 ```
+
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 <div class="sample-container loading" style="height: 70px">
     <iframe class="lazyload" seamless width="100%" height="100%" frameborder="0" data-src="{environment:demosBaseUrl}/data-entries/buttons-sample-7">

@@ -125,7 +125,7 @@ import { IgxCarouselModule } from 'igniteui-angular/carousel';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxCarouselComponent` as a standalone dependency, or use the [`IGX_CAROUSEL_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/carousel/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxCarouselComponent` as a standalone dependency, or use the [`IGX_CAROUSEL_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/carousel/src/carousel/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -263,6 +263,9 @@ To achieve this we will use the [IgxCarouselPrevButtonDirective](https://www.inf
     </ng-template>
 ...
 ```
+
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 ### Slide containing other components
 

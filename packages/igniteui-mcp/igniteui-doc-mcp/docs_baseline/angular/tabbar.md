@@ -93,7 +93,7 @@ import { IgxBottomNavModule } from 'igniteui-angular/bottom-nav';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxBottomNavComponent` as a standalone dependency, or use the [`IGX_BOTTOM_NAV_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/tabs/bottom-nav/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxBottomNavComponent` as a standalone dependency, or use the [`IGX_BOTTOM_NAV_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/bottom-nav/src/bottom-nav/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts

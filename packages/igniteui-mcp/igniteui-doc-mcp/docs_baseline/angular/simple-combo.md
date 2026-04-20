@@ -184,7 +184,7 @@ import { IgxSimpleComboModule } from 'igniteui-angular/simple-combo';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxSimpleComboComponent` as a standalone dependency, or use the [`IGX_SIMPLE_COMBO_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/simple-combo/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxSimpleComboComponent` as a standalone dependency, or use the [`IGX_SIMPLE_COMBO_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/simple-combo/src/simple-combo/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -367,6 +367,16 @@ Binding to the event can be done through the proper `@Output` property on the `i
 ```html
 <igx-simple-combo [data]="cities" [displayKey]="'name'" [valueKey]="'id'"
            (selectionChanging)="handleCityChange($event)">
+</igx-simple-combo>
+```
+
+Additionally, the simple combobox fires a [selectionChanged](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxSimpleComboComponent.html#selectionChanged) event after the selection is committed and the component state has been updated. The emitted event arguments, [ISimpleComboSelectionChangedEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isimplecomboselectionchangedeventargs.html), contain information about the previous selection, the current selection and the displayed item. Unlike `selectionChanging`, this event is not cancellable and is guaranteed to reflect the final committed selection state. When the simple combobox is used with `ngModel` or Angular forms, `selectionChanged` is emitted after the form value has been updated.
+
+Binding to the event can be done through the proper `@Output` property on the `igx-simple-combo` tag:
+
+```html
+<igx-simple-combo [data]="cities" [displayKey]="'name'" [valueKey]="'id'"
+           (selectionChanged)="handleSelectionChanged($event)">
 </igx-simple-combo>
 ```
 

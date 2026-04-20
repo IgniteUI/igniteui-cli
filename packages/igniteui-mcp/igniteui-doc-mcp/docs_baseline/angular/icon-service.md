@@ -173,6 +173,9 @@ Having registered the two font families above, we can now consume their icons in
 <igx-icon family="fa-solid" name="car"></igx-icon>
 ```
 
+> [!NOTE]
+> To render icons from the default `material` family with `igx-icon`, add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 You might have noticed that for the `material` family we use the ligature `name` as name, while in the case of the `fa-solid` family we specify the `className` for name, which is `fa-car` but drop the `fa-` prefix as it has been specified when we registered the icon family in the previous step.
 
 ### Adding SVG Icons
@@ -234,7 +237,7 @@ console.log(type); // -> 'font'
 Starting with version 18.1.0 of Ignite UI for Angular, we added a new `setFamily` method that allows us to create new families of icons in the Icon Service and associate them with CSS classes, types, and even prefixes. Additionally, icons used internally are now all declared by reference in a new `default` family with aliased names (see table bellow).
 
 | Alias                            | Target Icon           | Target Family |
-|----------------------------------|-----------------------|---------------|
+| :------------------------------- | :-------------------- | :------------ |
 | **add**                          | add                   | material      |
 | **add_child**                    | add-child             | imx-icons     |
 | **add_row**                      | add-row               | imx-icons     |
@@ -344,37 +347,37 @@ Here's a breakdown of all icons as used by each component:
 
 ### Action Strip
 
-| Icon          | Description              |
-| ------------- | ------------------------ |
-| **add_child** | Used by the popup menu.  |
-| **add_row**   | Used by the popup menu.  |
-| **more_vert** | Used by the popup menu.  |
+| Icon          | Description             |
+| :------------ | :---------------------- |
+| **add_child** | Used by the popup menu. |
+| **add_row**   | Used by the popup menu. |
+| **more_vert** | Used by the popup menu. |
 
 ### Calendar
 
 | Icon           | Description                                             |
-| -------------- | ------------------------------------------------------- |
+| :------------- | :------------------------------------------------------ |
 | **arrow_prev** | Used by the header for navigating between months/years. |
 | **arrow_next** | Used by the header for navigating between months/years. |
 
 ### Carousel
 
 | Icon              | Description                         |
-| ----------------- | ----------------------------------- |
+| :---------------- | :---------------------------------- |
 | **carousel_prev** | Used for navigating between slides. |
 | **carousel_next** | Used for navigating between slides. |
 
 ### Chip
 
 | Icon         | Description                               |
-| ------------ | ----------------------------------------- |
+| :----------- | :---------------------------------------- |
 | **selected** | Used to indicate that a chip is selected. |
 | **remove**   | Used for the remove button.               |
 
 ### Combo (incl. Simple Combo)
 
 | Icon               | Description                                                  |
-| ------------------ | ------------------------------------------------------------ |
+| :----------------- | :----------------------------------------------------------- |
 | **case_sensitive** | Used to indicate and toggle case-sensitive filtering.        |
 | **input_clear**    | Used for the clear button.                                   |
 | **input_expand**   | Used for the toggle button when the combo menu is collapsed. |
@@ -383,72 +386,72 @@ Here's a breakdown of all icons as used by each component:
 ### Date Picker
 
 | Icon            | Description                                          |
-| --------------- | ---------------------------------------------------- |
+| :-------------- | :--------------------------------------------------- |
 | **today**       | Used for the toggle button that triggers the picker. |
 | **input_clear** | Used for the clear button.                           |
 
 ### Date Range Picker
 
 | Icon           | Description                                          |
-| -------------- | ---------------------------------------------------- |
+| :------------- | :--------------------------------------------------- |
 | **date_range** | Used for the toggle button that triggers the picker. |
 
 ### Expansion Panel
 
 | Icon         | Description                                                   |
-|------------- | ------------------------------------------------------------- |
+| :----------- | :------------------------------------------------------------ |
 | **expand**   | Used for the toggle button that triggers the expanded state.  |
 | **collapse** | Used for the toggle button that triggers the collapsed state. |
 
 ### Grid
 
-| Icon                 | Description                                                                    |
-| -------------------- | ------------------------------------------------------------------------------ |
-| **add**              | Used in excel-filter menu to add filter entry.                                 |
-| **arrow_back**       | Used in various UI elements for moving a column backwards.                     |
-| **arrow_drop_down**  | Used in various buttons to indicate toggleable menus.                           |
-| **arrow_forward**    | Used in various UI elements for moving a column forwards.                      |
-| **cancel**           | Used in various UI elements for canceling operations.                          |
-| **chevron_right**    | Used to indicate expandable menus, like in the excel style filtering.          |
-| **close**            | Used to close an expanded menu.                                                |
-| **confirm**          | Used to confirm an operation.                                                  |
-| **drag_indicator**   | Used to show a handle to indicate an item can be dragged.                      |
-| **error**            | Used in editable cells to indicate erroneous data input.                       |
-| **expand_more**      | Used by the excel filtering menu to indicate the addition of more filters.     |
-| **file_download**     | Used by the excel filter exporter.                                             |
-| **filter_***         | Used for various filtering operands.                                           |
-| **group_work**       | Used by the group-by drop area.                                                |
-| **hide**             | Used by various UI elements for hiding columns.                                |
-| **import_export**    | Used by the pivot data selector for moving.                                    |
-| **input_clear**      | Used by input fields for clearing input data.                                  |
-| **next**             | Used by the filtering row menu to navigate between chips.                      |
-| **pin**              | Used by various UI elements for column pinning.                                |
-| **prev**             | Used by the filtering row menu to navigate between chips.                      |
-| **remove**           | Used by various UI elements as a removal indicator.                            |
-| **refresh**          | Used by the filtering row menu to reload the filters.                          |
-| **selected**         | Used by various UI elements to indicated active selection.                     |
-| **show**             | Used by various UI elements for showing columns.                               |
-| **sort_asc**         | Used by various UI elements to indicate sorting direction.                     |
-| **sort_desc**        | Used by various UI elements to indicate sorting direction.                     |
-| **functions**        | Used by the pivot grid and data selectors.                                     |
-| **table_rows**       | Used by the pivot grid data selector.                                          |
-| **tree_collapse**    | Used by tree-like structure to show less details.                              |
-| **tree_expand**      | Used by tree-like structure to show more details.                              |
-| **unpin**            | Used by various UI elements for column pinning.                                |
-| **unfold_less**      | Used by the hierarchical grid to collapse all rows.                            |
-| **unfold_more**      | Used by the hierarchical grid to expand all rows.                              |
-| **view_column**      | Used by the pivot data selector.                                               |
+| Icon                | Description                                                                |
+| :------------------ | :------------------------------------------------------------------------- |
+| **add**             | Used in excel-filter menu to add filter entry.                             |
+| **arrow_back**      | Used in various UI elements for moving a column backwards.                 |
+| **arrow_drop_down** | Used in various buttons to indicate toggleable menus.                      |
+| **arrow_forward**   | Used in various UI elements for moving a column forwards.                  |
+| **cancel**          | Used in various UI elements for canceling operations.                      |
+| **chevron_right**   | Used to indicate expandable menus, like in the excel style filtering.      |
+| **close**           | Used to close an expanded menu.                                            |
+| **confirm**         | Used to confirm an operation.                                              |
+| **drag_indicator**  | Used to show a handle to indicate an item can be dragged.                  |
+| **error**           | Used in editable cells to indicate erroneous data input.                   |
+| **expand_more**     | Used by the excel filtering menu to indicate the addition of more filters. |
+| **file_download**   | Used by the excel filter exporter.                                         |
+| **filter_***        | Used for various filtering operands.                                       |
+| **group_work**      | Used by the group-by drop area.                                            |
+| **hide**            | Used by various UI elements for hiding columns.                            |
+| **import_export**   | Used by the pivot data selector for moving.                                |
+| **input_clear**     | Used by input fields for clearing input data.                              |
+| **next**            | Used by the filtering row menu to navigate between chips.                  |
+| **pin**             | Used by various UI elements for column pinning.                            |
+| **prev**            | Used by the filtering row menu to navigate between chips.                  |
+| **remove**          | Used by various UI elements as a removal indicator.                        |
+| **refresh**         | Used by the filtering row menu to reload the filters.                      |
+| **selected**        | Used by various UI elements to indicated active selection.                 |
+| **show**            | Used by various UI elements for showing columns.                           |
+| **sort_asc**        | Used by various UI elements to indicate sorting direction.                 |
+| **sort_desc**       | Used by various UI elements to indicate sorting direction.                 |
+| **functions**       | Used by the pivot grid and data selectors.                                 |
+| **table_rows**      | Used by the pivot grid data selector.                                      |
+| **tree_collapse**   | Used by tree-like structure to show less details.                          |
+| **tree_expand**     | Used by tree-like structure to show more details.                          |
+| **unpin**           | Used by various UI elements for column pinning.                            |
+| **unfold_less**     | Used by the hierarchical grid to collapse all rows.                        |
+| **unfold_more**     | Used by the hierarchical grid to expand all rows.                          |
+| **view_column**     | Used by the pivot data selector.                                           |
 
 ### Input Group
 
-| Icon            | Description                                          |
-| --------------- | ---------------------------------------------------- |
-| **input_clear** | Used for the clear button.                           |
+| Icon            | Description                |
+| :-------------- | :------------------------- |
+| **input_clear** | Used for the clear button. |
 
 ### Paginator
 
 | Icon           | Description                                                  |
-| -------------- | ------------------------------------------------------------ |
+| :------------- | :----------------------------------------------------------- |
 | **first_page** | Used by the button used for navigating to the first page.    |
 | **last_page**  | Used by the button used for navigating to the last page.     |
 | **prev**       | Used by the button used for navigating to the previous page. |
@@ -456,42 +459,42 @@ Here's a breakdown of all icons as used by each component:
 
 ### Query Builder
 
-| Icon         | Description                                                  |
-| ------------ | ------------------------------------------------------------ |
-| **add**      | Used by the button for adding new filter entries.            |
-| **close**    | Used by the button that closes the contextual menu.          |
-| **edit**     | Used by the button for editing filter entries.               |
-| **confirm**  | Used by the button to confirm adding new filter entries.     |
-| **ungroup**  | Used by the button to ungroup filter entries.                |
-| **delete**   | Used by the button to delete filter entries.                 |
-| **filter_*** | Used for various filtering operands.                         |
+| Icon         | Description                                              |
+| :----------- | :------------------------------------------------------- |
+| **add**      | Used by the button for adding new filter entries.        |
+| **close**    | Used by the button that closes the contextual menu.      |
+| **edit**     | Used by the button for editing filter entries.           |
+| **confirm**  | Used by the button to confirm adding new filter entries. |
+| **ungroup**  | Used by the button to ungroup filter entries.            |
+| **delete**   | Used by the button to delete filter entries.             |
+| **filter_*** | Used for various filtering operands.                     |
 
 
 ### Select
 
 | Icon               | Description                                                   |
-| ------------------ | -----------------------------------------------------------   |
+| :----------------- | :------------------------------------------------------------ |
 | **input_expand**   | Used for the toggle button when the select menu is collapsed. |
 | **input_collapse** | Used for the toggle button when the select menu is expanded.  |
 
 ### Tabs
 
-| Icon         | Description                                                 |
-| ------------ | ----------------------------------------------------------- |
-| **prev**     | Used by the button used for navigating to the previous tab. |
-| **next**     | Used by the button used for navigating to the next tab.     |
+| Icon     | Description                                                 |
+| :------- | :---------------------------------------------------------- |
+| **prev** | Used by the button used for navigating to the previous tab. |
+| **next** | Used by the button used for navigating to the next tab.     |
 
 
 ### Time Picker
 
-| Icon         | Description                                          |
-| ------------ | ---------------------------------------------------- |
-| **clock**    | Used for the toggle button that triggers the picker. |
+| Icon      | Description                                          |
+| :-------- | :--------------------------------------------------- |
+| **clock** | Used for the toggle button that triggers the picker. |
 
 ### Tree
 
 | Icon              | Description                                          |
-| ----------------- | ---------------------------------------------------- |
+| :---------------- | :--------------------------------------------------- |
 | **tree_expand**   | Used for the toggle button that triggers the picker. |
 | **tree_collapse** | Used for the toggle button that triggers the picker. |
 

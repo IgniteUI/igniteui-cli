@@ -158,8 +158,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Dependencies
 
-<!-- Angular, WebComponents, React -->
-
 Install the Ignite UI for Angular layouts, inputs, charts and core packages:
 
 ```cmd
@@ -203,8 +201,6 @@ IgrDataChartAnnotationModule.register();
 IgrDataChartInteractivityModule.register();
 IgrDataChartCategoryTrendLineModule.register();
 ```
-
-<!-- end:Angular, WebComponents, React -->
 
 ## Usage
 
