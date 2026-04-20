@@ -1,8 +1,16 @@
 ---
+title: Cascading combos in Angular Grid Grid - Infragistics
+_description: Grid with Cascading Combos. See the sample here.
+_keywords: angular cascading combos with grid, ignite ui for angular, infragistics
+_license: commercial
 _tocName: Grid with Cascading combos
 _premium: true
 ---
----title: Cascading combos in Angular Grid Grid - Infragistics_description: Grid with Cascading Combos. See the sample here._keywords: angular cascading combos with grid, ignite ui for angular, infragistics_license: commercial---# Angular Grid with Cascading CombosThe Grid's Editing functionality provides with the opportunity to use [Cascading Combos](../simple-combo.md#cascading-scenario). By selecting the value in any preceding [Combos](../combo.md), the users will receive only the data that is relevant to their selection within the next Combo.## Angular Grid with Cascading Combos Sample OverviewThe sample below demonstrates how `Grid` works with nested `Cascading Combos`.```typescript
+# Angular Grid with Cascading Combos
+The Grid's Editing functionality provides with the opportunity to use [Cascading Combos](../simple-combo.md#cascading-scenario). By selecting the value in any preceding [Combos](../combo.md), the users will receive only the data that is relevant to their selection within the next Combo.
+## Angular Grid with Cascading Combos Sample Overview
+The sample below demonstrates how `Grid` works with nested `Cascading Combos`.
+```typescript
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ISimpleComboSelectionChangingEventArgs, IgxSimpleComboComponent } from 'igniteui-angular/simple-combo';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -215,12 +223,26 @@ export class GridCascadingCombosComponent implements OnInit {
         }
     }
 }
-```## SetupIn order enable column editing, make sure [`editable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#editable) property is set to **true**.Once the column editing is enabled, you can start by adding your [Single Select ComboBox](../simple-combo.md). Please note that here in order to have only one single selection available, you will need to use [igxSimpleCombo](../simple-combo.md) instead of modifying the igxCombo.To get started with the [Simple ComboBox component](../simple-combo.md#angular-simple-combobox-features), first you need to import the `IgxSimpleComboModule` in your **app.module.ts** file:```typescriptimport { IgxSimpleComboModule } from 'igniteui-angular/simple-combo';@NgModule({
+```
+## Setup
+In order enable column editing, make sure [`editable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#editable) property is set to **true**.
+Once the column editing is enabled, you can start by adding your [Single Select ComboBox](../simple-combo.md). Please note that here in order to have only one single selection available, you will need to use [igxSimpleCombo](../simple-combo.md) instead of modifying the igxCombo.
+To get started with the [Simple ComboBox component](../simple-combo.md#angular-simple-combobox-features), first you need to import the `IgxSimpleComboModule` in your **app.module.ts** file:
+```typescript
+import { IgxSimpleComboModule } from 'igniteui-angular/simple-combo';
+@NgModule({
     imports: [
         ...
         IgxSimpleComboModule,
         ...
-    ]})export class AppModule {}```Then, in the template, you should bind the combos [igx-simple-combo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html) to some data.- `displayKey` - _Required for object arrays_ - Specifies which property will be used for the items' text. If no value is specified for [displayKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxSimpleComboComponent.html#displayKey), the simple combobox will use the specified `valueKey` (if any).```typescriptexport class MySimpleComboComponent implements OnInit {
+    ]
+})
+export class AppModule {}
+```
+Then, in the template, you should bind the combos [igx-simple-combo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html) to some data.
+- `displayKey` - _Required for object arrays_ - Specifies which property will be used for the items' text. If no value is specified for [displayKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxSimpleComboComponent.html#displayKey), the simple combobox will use the specified `valueKey` (if any).
+```typescript
+export class MySimpleComboComponent implements OnInit {
     public countriesData: Country[];
     public selectedCountry: Country;
     public selectedCity: City;
@@ -231,11 +253,37 @@ export class GridCascadingCombosComponent implements OnInit {
             'Japan',
             'United Kingdom'
         ]);
-    }}```In order to handle the selection change, we need [selectionChanging()](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#selectionChanging). The emitted event arguments, [IComboSelectionChangingEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/icomboselectionchangingeventargs.html), contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.```html<igx-combo [data]="countriesData" (selectionChanging)="countryChanging($event)"></igx-combo>``````typescriptpublic countryChanging(event: IComboSelectionChangingEventArgs) {
+    }
+}
+```
+In order to handle the selection change, we need [selectionChanging()](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#selectionChanging). The emitted event arguments, [IComboSelectionChangingEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/icomboselectionchangingeventargs.html), contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
+```html
+<igx-combo [data]="countriesData" (selectionChanging)="countryChanging($event)"></igx-combo>
+```
+```typescript
+public countryChanging(event: IComboSelectionChangingEventArgs) {
     if (event.added.length) {
         event.newSelection = event.added;
-    }}```And lastly, adding the [Linear Progress](../linear-progress.md), which is required while loading the list of data.The [`id`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#id) is necessary to set the value of `id` attribute.```html
+    }
+}
+```
+And lastly, adding the [Linear Progress](../linear-progress.md), which is required while loading the list of data.
+The [`id`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#id) is necessary to set the value of `id` attribute.
+```html
  <igx-linear-bar 
     [id]="'region-progress-' + cell.row.data.ID" 
     [style.visibility]="'hidden'"
-    type="info" [indeterminate]="true"></igx-linear-bar>```## API References<div class="divider--half"></div>- [IgxSimpleComboComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html)- [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)- [IgxLinearProgressBarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html)- [IgxLinearProgressBarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-progress-linear-theme)## Additional Resources- [Grid Editing](editing.md)- [Single Select ComboBox](../simple-combo.md)- [Cascading Combos](../simple-combo.md#cascading-scenario)- [Linear Progress](../linear-progress.md)
+    type="info" [indeterminate]="true">
+</igx-linear-bar>
+```
+## API References
+<div class="divider--half"></div>
+- [IgxSimpleComboComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html)
+- [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)
+- [IgxLinearProgressBarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html)
+- [IgxLinearProgressBarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-progress-linear-theme)
+## Additional Resources
+- [Grid Editing](editing.md)
+- [Single Select ComboBox](../simple-combo.md)
+- [Cascading Combos](../simple-combo.md#cascading-scenario)
+- [Linear Progress](../linear-progress.md)

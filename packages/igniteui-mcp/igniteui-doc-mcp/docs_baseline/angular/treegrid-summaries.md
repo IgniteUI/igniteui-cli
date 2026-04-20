@@ -1,8 +1,16 @@
 ---
+title: Angular Grid Summaries - Ignite UI for Angular
+_description: Configure Angular grid summaries in the group footer of the column and use the option to set custom angular template in the Ignite UI for Angular table
+_keywords: angular grid summaries, ignite ui for angular, infragistics
+_license: commercial
+_canonicalLink: grid/summaries
 _tocName: Summaries
 _premium: true
 ---
----title: Angular Grid Summaries - Ignite UI for Angular_description: Configure Angular grid summaries in the group footer of the column and use the option to set custom angular template in the Ignite UI for Angular table_keywords: angular grid summaries, ignite ui for angular, infragistics_license: commercial_canonicalLink: grid/summaries---# Angular Tree Grid SummariesThe Angular UI grid in Ignite UI for Angular has a **summaries** feature that functions on a per-column level as group footer. Angular grid summaries is powerful feature which enables the user to see column information in a separate container with a predefined set of default summary items, depending on the type of data within the column or by implementing a custom angular template in the Tree Grid.## Angular Tree Grid Summaries Overview Example```typescript
+# Angular Tree Grid Summaries
+The Angular UI grid in Ignite UI for Angular has a **summaries** feature that functions on a per-column level as group footer. Angular grid summaries is powerful feature which enables the user to see column information in a separate container with a predefined set of default summary items, depending on the type of data within the column or by implementing a custom angular template in the Tree Grid.
+## Angular Tree Grid Summaries Overview Example
+```typescript
 import { Component, ViewChild } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -195,18 +203,60 @@ export class TreeGridSummarySampleComponent {
         cursor: auto;
     }
 }
-```<div class="divider--half"></div>> [!NOTE]> The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values****Tree Grid summaries** can also be enabled on a per-column level in Ignite UI for Angular, which means that you can activate it only for columns that you need. Tree Grid summaries gives you a predefined set of default summaries, depending on the type of data in the column, so that you can save some time:For `string` and `boolean` [`data types`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#dataType), the following function is available:- countFor `number`, `currency` and `percent` data types, the following functions are available:- count- min- max- average- sumFor `date` data type, the following functions are available:- count- earliest- latestAll available column data types could be found in the official [Column types topic](column-types.md#default-template).**Tree Grid summaries** are enabled per-column by setting [`hasSummary`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#hasSummary) property to `true`. It is also important to keep in mind that the summaries for each column are resolved according to the column data type. In the `igx-tree-grid` the default column data type is `string`, so if you want `number` or `date` specific summaries you should specify the [`dataType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#datatype) property as `number` or `date`. Note that the summary values will be displayed localized, according to the grid [`locale`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#locale) and column [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#pipeArgs).```html<igx-tree-grid #grid1 [data]="data" [autoGenerate]="false" height="800px" width="800px" (columnInit)="initColumn($event)">
+```
+<div class="divider--half"></div>
+> [!NOTE]
+> The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
+**Tree Grid summaries** can also be enabled on a per-column level in Ignite UI for Angular, which means that you can activate it only for columns that you need. Tree Grid summaries gives you a predefined set of default summaries, depending on the type of data in the column, so that you can save some time:
+For `string` and `boolean` [`data types`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#dataType), the following function is available:
+- count
+For `number`, `currency` and `percent` data types, the following functions are available:
+- count
+- min
+- max
+- average
+- sum
+For `date` data type, the following functions are available:
+- count
+- earliest
+- latest
+All available column data types could be found in the official [Column types topic](column-types.md#default-template).
+**Tree Grid summaries** are enabled per-column by setting [`hasSummary`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#hasSummary) property to `true`. It is also important to keep in mind that the summaries for each column are resolved according to the column data type. In the `igx-tree-grid` the default column data type is `string`, so if you want `number` or `date` specific summaries you should specify the [`dataType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#datatype) property as `number` or `date`. Note that the summary values will be displayed localized, according to the grid [`locale`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#locale) and column [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#pipeArgs).
+```html
+<igx-tree-grid #grid1 [data]="data" [autoGenerate]="false" height="800px" width="800px" (columnInit)="initColumn($event)">
     <igx-column field="ID" header="Order ID" width="200px" [sortable]="true"></igx-column>
     <igx-column field="Name" header="Order Product" width="200px" [sortable]="true" [hasSummary]="true"></igx-column>
-    <igx-column field="Units" width="200px" [editable]="true" [dataType]="'number'" [hasSummary]="true"></igx-column></igx-tree-grid>```The other way to enable/disable summaries for a specific column or a list of columns is to use the public method [`enableSummaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#enableSummaries)/[`disableSummaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#disableSummaries) of the **igx-tree-grid**.```html<igx-tree-grid #grid1 [data]="data" [autoGenerate]="false" height="800px" width="800px" (columnInit)="initColumn($event)" >
+    <igx-column field="Units" width="200px" [editable]="true" [dataType]="'number'" [hasSummary]="true"></igx-column>
+</igx-tree-grid>
+```
+The other way to enable/disable summaries for a specific column or a list of columns is to use the public method [`enableSummaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#enableSummaries)/[`disableSummaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#disableSummaries) of the **igx-tree-grid**.
+```html
+<igx-tree-grid #grid1 [data]="data" [autoGenerate]="false" height="800px" width="800px" (columnInit)="initColumn($event)" >
     <igx-column field="ID" header="Order ID" width="200px" [sortable]="true"></igx-column>
     <igx-column field="Name" header="Order Product" width="200px" [sortable]="true" [hasSummary]="true" ></igx-column>
-    <igx-column field="Units" width="200px" [editable]="true" [dataType]="'number'" [hasSummary]="false"></igx-column></igx-tree-grid><button (click)="enableSummary()">Enable Summary</button><button (click)="disableSummary()">Disable Summary </button>``````typescriptpublic enableSummary() {
+    <igx-column field="Units" width="200px" [editable]="true" [dataType]="'number'" [hasSummary]="false"></igx-column>
+</igx-tree-grid>
+<button (click)="enableSummary()">Enable Summary</button>
+<button (click)="disableSummary()">Disable Summary </button>
+```
+```typescript
+public enableSummary() {
     this.grid1.enableSummaries([
         {fieldName: 'Units', customSummary: this.mySummary},
         {fieldName: 'ID'}
-    ]);}public disableSummary() {
-    this.grid1.disableSummaries('Name');}```## Custom Tree Grid SummariesIf these functions do not fulfill your requirements you can provide a custom summary for the specific columns. In order to achieve this you have to override one of the base classes [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html), [`IgxNumberSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html) or [`IgxDateSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html) according to the column data type and your needs. This way you can redefine the existing function or you can add new functions. [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html) class provides the default implementation only for the [`count`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html#count) method. [`IgxNumberSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html) extends [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html) and provides implementation for the [`min`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html#min), [`max`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html#max), [`sum`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html#sum) and [`average`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html#average). [`IgxDateSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html) extends [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html) and additionally gives you [`earliest`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html#earliest) and [`latest`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html#latest).```typescriptimport { IgxSummaryResult } from 'igniteui-angular/core';import { IgxSummaryOperand, IgxNumberSummaryOperand, IgxDateSummaryOperand } from 'igniteui-angular/grids/core';// import { IgxSummaryResult, IgxSummaryOperand, IgxNumberSummaryOperand, IgxDateSummaryOperand } from '@infragistics/igniteui-angular'; for licensed packageclass MySummary extends IgxNumberSummaryOperand {
+    ]);
+}
+public disableSummary() {
+    this.grid1.disableSummaries('Name');
+}
+```
+## Custom Tree Grid Summaries
+If these functions do not fulfill your requirements you can provide a custom summary for the specific columns. In order to achieve this you have to override one of the base classes [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html), [`IgxNumberSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html) or [`IgxDateSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html) according to the column data type and your needs. This way you can redefine the existing function or you can add new functions. [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html) class provides the default implementation only for the [`count`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html#count) method. [`IgxNumberSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html) extends [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html) and provides implementation for the [`min`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html#min), [`max`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html#max), [`sum`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html#sum) and [`average`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html#average). [`IgxDateSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html) extends [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html) and additionally gives you [`earliest`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html#earliest) and [`latest`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html#latest).
+```typescript
+import { IgxSummaryResult } from 'igniteui-angular/core';
+import { IgxSummaryOperand, IgxNumberSummaryOperand, IgxDateSummaryOperand } from 'igniteui-angular/grids/core';
+// import { IgxSummaryResult, IgxSummaryOperand, IgxNumberSummaryOperand, IgxDateSummaryOperand } from '@infragistics/igniteui-angular'; for licensed package
+class MySummary extends IgxNumberSummaryOperand {
     constructor() {
         super();
     }
@@ -219,18 +269,47 @@ export class TreeGridSummarySampleComponent {
             summaryResult: data.filter(rec => rec > 10 && rec < 30).length
         });
         return result;
-    }}```As seen in the examples, the base classes expose the [`operate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html#operate) method, so you can choose to get all default summaries and modify the result, or calculate entirely new summary results.The method returns a list of [`IgxSummaryResult`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxsummaryresult.html).```typescriptinterface IgxSummaryResult {
+    }
+}
+```
+As seen in the examples, the base classes expose the [`operate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html#operate) method, so you can choose to get all default summaries and modify the result, or calculate entirely new summary results.
+The method returns a list of [`IgxSummaryResult`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxsummaryresult.html).
+```typescript
+interface IgxSummaryResult {
     key: string;
     label: string;
-    summaryResult: any;}```and take optional parameters for calculating the summaries.See [Custom summaries, which access all data](#custom-summaries-which-access-all-data) section below.> [!NOTE]> In order to calculate the summary row height properly, the Tree Grid needs the [`operate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html#operate) method to always return an array of [`IgxSummaryResult`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxsummaryresult.html) with the proper length even when the data is empty.And now let's add our custom summary to the column `UnitPrice`. We will achieve that by setting the [`summaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#summaries) property to the class we create below.```html<igx-tree-grid #grid1 [data]="data" [autoGenerate]="false" height="800px" width="800px" (columnInit)="initColumn($event)">
+    summaryResult: any;
+}
+```
+and take optional parameters for calculating the summaries.
+See [Custom summaries, which access all data](#custom-summaries-which-access-all-data) section below.
+> [!NOTE]
+> In order to calculate the summary row height properly, the Tree Grid needs the [`operate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html#operate) method to always return an array of [`IgxSummaryResult`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxsummaryresult.html) with the proper length even when the data is empty.
+And now let's add our custom summary to the column `UnitPrice`. We will achieve that by setting the [`summaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#summaries) property to the class we create below.
+```html
+<igx-tree-grid #grid1 [data]="data" [autoGenerate]="false" height="800px" width="800px" (columnInit)="initColumn($event)">
     <igx-column field="ID" header="Order ID" width="200px" [sortable]="true"></igx-column>
     <igx-column field="Name" header="Order Product" width="200px" [sortable]="true" [hasSummary]="true"></igx-column>
     <igx-column field="Units" [dataType]="'number'" width="200px" [editable]="true" [hasSummary]="true" [summaries]="mySummary"></igx-column>
-    <igx-column field="UnitPrice" header="Unit Price" width="200px" [dataType]="'number'"  [dataType]="'currency'" [hasSummary]="true"></igx-column></igx-tree-grid>``````typescript...export class GridComponent implements OnInit {
+    <igx-column field="UnitPrice" header="Unit Price" width="200px" [dataType]="'number'"  [dataType]="'currency'" [hasSummary]="true"></igx-column>
+</igx-tree-grid>
+```
+```typescript
+...
+export class GridComponent implements OnInit {
     mySummary = MySummary;
-    ....}```### Custom summaries, which access all data
+    ....
+}
+```
+### Custom summaries, which access all data
 
- Now you can access all Tree Grid data inside the custom column summary. Two additional optional parameters are introduced in the IgxSummaryOperand `operate` method.As you can see in the code snippet below the operate method has the following three parameters:- columnData - gives you an array that contains the values only for the current column- allGridData - gives you the whole grid data source- fieldName - current column field```typescriptclass MySummary extends IgxNumberSummaryOperand {
+ Now you can access all Tree Grid data inside the custom column summary. Two additional optional parameters are introduced in the IgxSummaryOperand `operate` method.
+As you can see in the code snippet below the operate method has the following three parameters:
+- columnData - gives you an array that contains the values only for the current column
+- allGridData - gives you the whole grid data source
+- fieldName - current column field
+```typescript
+class MySummary extends IgxNumberSummaryOperand {
     constructor() {
         super();
     }
@@ -238,7 +317,10 @@ export class TreeGridSummarySampleComponent {
         const result = super.operate(allData.map(r => r[fieldName]));
         result.push({ key: 'test', label: 'Total Undelivered', summaryResult: allData.filter((rec) => rec.Discontinued).length });
         return result;
-    }}``````typescript
+    }
+}
+```
+```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxColumnComponent, IgxSummaryOperand } from 'igniteui-angular/grids/core';
 import { IgxSummaryResult } from 'igniteui-angular/core';
@@ -323,11 +405,21 @@ export class TreeGridAllDataSummaryComponent implements OnInit {
     --ig-size: var(--ig-size-small);
     padding: 16px;
 }
-```### Summary Template`igxSummary` targets the column summary providing as a context the column summary results.```html<igx-column ... [hasSummary]="true">
+```
+### Summary Template
+`igxSummary` targets the column summary providing as a context the column summary results.
+```html
+<igx-column ... [hasSummary]="true">
     <ng-template igxSummary let-summaryResults>
         <span> My custom summary template</span>
         <span>{{ summaryResults[0].label }} - {{ summaryResults[0].summaryResult }}</span>
-    </ng-template></igx-column>```When a default summary is defined, the height of the summary area is calculated by design depending on the column with the largest number of summaries and the size of the grid. Use the [summaryRowHeight](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#summaryRowHeight) input property to override the default value. As an argument it expects a number value, and setting a false value will trigger the default sizing behavior of the grid footer.> [!NOTE]> Column summary template could be defined through API by setting the column [summaryTemplate](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#summaryTemplate) property to the required TemplateRef.```typescript
+    </ng-template>
+</igx-column>
+```
+When a default summary is defined, the height of the summary area is calculated by design depending on the column with the largest number of summaries and the size of the grid. Use the [summaryRowHeight](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#summaryRowHeight) input property to override the default value. As an argument it expects a number value, and setting a false value will trigger the default sizing behavior of the grid footer.
+> [!NOTE]
+> Column summary template could be defined through API by setting the column [summaryTemplate](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#summaryTemplate) property to the required TemplateRef.
+```typescript
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { IgxColumnComponent, IgxSummaryOperand, IgxSummaryTemplateDirective } from 'igniteui-angular/grids/core';
 import { IgxSummaryResult } from 'igniteui-angular/core';
@@ -516,18 +608,36 @@ igx-buttongroup {
 	flex-direction: row;
 	gap: 16px;
 }
-```## Disable SummariesThe [`disabledSummaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#disabledSummaries) property provides precise per-column control over the Ignite UI for Angular grid summary feature. This property enables users to customize the summaries displayed for each column in the grid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as `['count', 'min', 'max']`, by specifying their summary keys in an array.This property can also be modified **dynamically at runtime** through code, providing flexibility to adapt the grid's summaries to changing application states or user actions.The following examples illustrate how to use the `disabledSummaries` property to manage summaries for different columns and exclude specific default and custom summary types in the Ignite UI for Angular grid:```html<!-- custom summaries --><igx-column
+```
+## Disable Summaries
+The [`disabledSummaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#disabledSummaries) property provides precise per-column control over the Ignite UI for Angular grid summary feature. This property enables users to customize the summaries displayed for each column in the grid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as `['count', 'min', 'max']`, by specifying their summary keys in an array.
+This property can also be modified **dynamically at runtime** through code, providing flexibility to adapt the grid's summaries to changing application states or user actions.
+The following examples illustrate how to use the `disabledSummaries` property to manage summaries for different columns and exclude specific default and custom summary types in the Ignite UI for Angular grid:
+```html
+<!-- custom summaries -->
+<igx-column
     field="Units"
     header="Units"
     dataType="number"
     [hasSummary]="true"
     [summaries]="unitsSummary"
-    [disabledSummaries]="['uniqueCount', 'maxDifference']"></igx-column><!-- default summaries --><igx-column
+    [disabledSummaries]="['uniqueCount', 'maxDifference']"
+>
+</igx-column>
+<!-- default summaries -->
+<igx-column
     field="UnitPrice"
     header="Unit Price"
     dataType="number"
     [hasSummary]="true"
-    [disabledSummaries]="['count', 'sum', 'average']"></igx-column>```For `Units`, custom summaries such as `totalDelivered` and `totalNotDelivered` are excluded using the `disabledSummaries` property.For `UnitPrice`, default summaries like `count`, `sum`, and `average` are disabled, leaving others like `min` and `max` active.At runtime, summaries can also be dynamically disabled using the `disabledSummaries` property. For example, you can set or update the property on specific columns programmatically to adapt the displayed summaries based on user actions or application state changes.```typescript
+    [disabledSummaries]="['count', 'sum', 'average']"
+>
+</igx-column>
+```
+For `Units`, custom summaries such as `totalDelivered` and `totalNotDelivered` are excluded using the `disabledSummaries` property.
+For `UnitPrice`, default summaries like `count`, `sum`, and `average` are disabled, leaving others like `min` and `max` active.
+At runtime, summaries can also be dynamically disabled using the `disabledSummaries` property. For example, you can set or update the property on specific columns programmatically to adapt the displayed summaries based on user actions or application state changes.
+```typescript
 import {
     Component,
     ViewChild,
@@ -952,14 +1062,24 @@ export class TreeGridDisableSummariesComponent implements OnInit, AfterViewInit 
         padding: 0.2rem;
     }
 }
-```## Formatting summariesBy default, summary results, produced by the built-in summary operands, are localized and formatted according to the grid [`locale`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#locale) and column [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#pipeArgs). When using custom operands, the `locale` and `pipeArgs` are not applied. If you want to change the default appearance of the summary results, you may format them using the [`summaryFormatter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#summaryFormatter) property.```typescriptpublic dateSummaryFormat(summary: IgxSummaryResult, summaryOperand: IgxSummaryOperand): string {
+```
+## Formatting summaries
+By default, summary results, produced by the built-in summary operands, are localized and formatted according to the grid [`locale`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#locale) and column [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#pipeArgs). When using custom operands, the `locale` and `pipeArgs` are not applied. If you want to change the default appearance of the summary results, you may format them using the [`summaryFormatter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#summaryFormatter) property.
+```typescript
+public dateSummaryFormat(summary: IgxSummaryResult, summaryOperand: IgxSummaryOperand): string {
     const result = summary.summaryResult;
     if(summaryOperand instanceof IgxDateSummaryOperand && summary.key !== 'count'
         && result !== null && result !== undefined) {
         const pipe = new DatePipe('en-US');
         return pipe.transform(result,'MMM YYYY');
     }
-    return result;}``````html<igx-column ... [summaryFormatter]="dateSummaryFormat"></igx-column>``````typescript
+    return result;
+}
+```
+```html
+<igx-column ... [summaryFormatter]="dateSummaryFormat"></igx-column>
+```
+```typescript
 import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxDateSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
@@ -1034,7 +1154,20 @@ export class TreeGridSummaryFormatterComponent implements OnInit {
 .grid__wrapper {
     margin: 16px;
 }
-```## Child SummariesThe Tree Grid supports separate summaries for the root nodes and for each nested child node level. Which summaries are shown is configurable using the [`summaryCalculationMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#summaryCalculationMode) property. The child level summaries can be shown before or after the child nodes using the [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#summaryPosition) property. Along with these two properties the IgxTreeGrid exposes and [`showSummaryOnCollapse`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#showSummaryOnCollapse) property which allows you to determine whether the summary row stays visible when the parent node that refers to is collapsed.The available values of the [`summaryCalculationMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#summaryCalculationMode) property are:- rootLevelOnly - Summaries are calculated only for the root level nodes.- childLevelsOnly - Summaries are calculated only for the child levels.- rootAndChildLevels - Summaries are calculated for both root and child levels. This is the default value.The available values of the [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#summaryPosition) property are:- top - The summary row appears before the list of child rows.- bottom - The summary row appears after the list of child rows. This is the default value.The [`showSummaryOnCollapse`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#showSummaryOnCollapse) property is boolean. Its default value is set to **false**, which means that the summary row would be hidden when the parent row is collapsed. If the property is set to **true** the summary row stays visible when parent row is collapsed.> [!NOTE]> The [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#summaryPosition) property applies only for the child level summaries. The root level summaries appear always fixed at the bottom of the Tree Grid.```typescript
+```
+## Child Summaries
+The Tree Grid supports separate summaries for the root nodes and for each nested child node level. Which summaries are shown is configurable using the [`summaryCalculationMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#summaryCalculationMode) property. The child level summaries can be shown before or after the child nodes using the [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#summaryPosition) property. Along with these two properties the IgxTreeGrid exposes and [`showSummaryOnCollapse`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#showSummaryOnCollapse) property which allows you to determine whether the summary row stays visible when the parent node that refers to is collapsed.
+The available values of the [`summaryCalculationMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#summaryCalculationMode) property are:
+- rootLevelOnly - Summaries are calculated only for the root level nodes.
+- childLevelsOnly - Summaries are calculated only for the child levels.
+- rootAndChildLevels - Summaries are calculated for both root and child levels. This is the default value.
+The available values of the [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#summaryPosition) property are:
+- top - The summary row appears before the list of child rows.
+- bottom - The summary row appears after the list of child rows. This is the default value.
+The [`showSummaryOnCollapse`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#showSummaryOnCollapse) property is boolean. Its default value is set to **false**, which means that the summary row would be hidden when the parent row is collapsed. If the property is set to **true** the summary row stays visible when parent row is collapsed.
+> [!NOTE]
+> The [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#summaryPosition) property applies only for the child level summaries. The root level summaries appear always fixed at the bottom of the Tree Grid.
+```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DefaultSortingStrategy, GridSummaryCalculationMode, ISortingExpression, IgxSummaryResult, SortingDirection } from 'igniteui-angular/core';
 import { GridSummaryPosition, IgxCellTemplateDirective, IgxColumnComponent, IgxNumberSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
@@ -1200,7 +1333,12 @@ igx-buttongroup{
     display: block;
     width: 600px;
 }
-```<div class="divider--half"></div>## Exporting SummariesThere is an [`exportSummaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxExcelExporterOptions.html#exportSummaries) option in `IgxExcelExporterOptions` that specifies whether the exported data should include the grid's summaries. Default `exportSummaries` value is **false**.The [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxExcelExporterService.html) will export the default summaries for all column types as their equivalent excel functions so they will continue working properly when the sheet is modified. Try it for yourself in the example below:```typescript
+```
+<div class="divider--half"></div>
+## Exporting Summaries
+There is an [`exportSummaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxExcelExporterOptions.html#exportSummaries) option in `IgxExcelExporterOptions` that specifies whether the exported data should include the grid's summaries. Default `exportSummaries` value is **false**.
+The [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxExcelExporterService.html) will export the default summaries for all column types as their equivalent excel functions so they will continue working properly when the sheet is modified. Try it for yourself in the example below:
+```typescript
 import { Component, ViewChild, inject } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -1417,20 +1555,72 @@ export class TreeGridSummaryExportComponent {
 .button-container {
     margin: 25px auto;
 }
-```The exported file includes a hidden column that holds the level of each `DataRecord` in the sheet. This level is used in the summaries to filter out the cells that need to be included in the summary function.In the table below, you can find the corresponding Excel formula for each of the default summaries.| Data Type                       |  Function | Excel Function                                                                   || :------------------------------ | :-------: | :------------------------------------------------------------------------------- || `string`, `boolean`             |    count  | ="Count: "&COUNTIF(start:end, recordLevel)                                       || `number`, `currency`, `percent` |    count  | ="Count: "&COUNTIF(start:end, recordLevel)                                       ||                                 |      min  | ="Min: "&MIN(IF(start:end=recordLevel, rangeStart:rangeEnd))                     ||                                 |      max  | ="Max: "&MAX(IF(start:end=recordLevel, rangeStart:rangeEnd))                     ||                                 |  average  | ="Avg: "&AVERAGEIF(start:end, recordLevel, rangeStart:rangeEnd)                  ||                                 |      sum  | ="Sum: "&SUMIF(start:end, recordLevel, rangeStart:rangeEnd)                      || `date`                          |    count  | ="Count: "&COUNTIF(start:end, recordLevel)                                       ||                                 |  earliest | ="Earliest: "& TEXT(MIN(IF(start:end=recordLevel, rangeStart:rangeEnd)), format) ||                                 |   latest  | ="Latest: "&TEXT(MAX(IF(start:end=recordLevel, rangeStart:rangeEnd)), format)    |### Known Limitations| Limitation                    | Description                                                                     || :---------------------------- | :------------------------------------------------------------------------------ || Exporting custom summaries    | Custom summaries will be exported as strings instead of Excel functions.        || Exporting templated summaries | Templated summaries are not supported and will be exported as the default ones. |## Keyboard NavigationThe summary rows can be navigated with the following keyboard interactions:- <kbd>UP</kbd> - navigates one cell up- <kbd>DOWN</kbd> - navigates one cell down- <kbd>LEFT</kbd> - navigates one cell left- <kbd>RIGHT</kbd> - navigates one cell right- <kbd>CTRL</kbd> + <kbd>LEFT</kbd> or <kbd>HOME</kbd> - navigates to the leftmost cell- <kbd>CTRL</kbd> + <kbd>RIGHT</kbd> or <kbd>END</kbd> - navigates to the rightmost cell## StylingTo get started with styling the sorting behavior, we need to import the `index` file, where all the theme functions and component mixins live:```scss@use "igniteui-angular/theming" as *;// IMPORTANT: Prior to Ignite UI for Angular version 13 use:// @import '~igniteui-angular/lib/core/styles/themes/index';```Following the simplest approach, we create a new theme that extends the [`grid-summary-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-summary-theme) and accepts the `$background-color`, `$focus-background-color`, `$label-color`, `$result-color`, `$pinned-border-width`, `$pinned-border-style` and `$pinned-border-color` parameters.```scss$custom-theme: grid-summary-theme(
+```
+The exported file includes a hidden column that holds the level of each `DataRecord` in the sheet. This level is used in the summaries to filter out the cells that need to be included in the summary function.
+In the table below, you can find the corresponding Excel formula for each of the default summaries.
+| Data Type                       |  Function | Excel Function                                                                   |
+| :------------------------------ | :-------: | :------------------------------------------------------------------------------- |
+| `string`, `boolean`             |    count  | ="Count: "&COUNTIF(start:end, recordLevel)                                       |
+| `number`, `currency`, `percent` |    count  | ="Count: "&COUNTIF(start:end, recordLevel)                                       |
+|                                 |      min  | ="Min: "&MIN(IF(start:end=recordLevel, rangeStart:rangeEnd))                     |
+|                                 |      max  | ="Max: "&MAX(IF(start:end=recordLevel, rangeStart:rangeEnd))                     |
+|                                 |  average  | ="Avg: "&AVERAGEIF(start:end, recordLevel, rangeStart:rangeEnd)                  |
+|                                 |      sum  | ="Sum: "&SUMIF(start:end, recordLevel, rangeStart:rangeEnd)                      |
+| `date`                          |    count  | ="Count: "&COUNTIF(start:end, recordLevel)                                       |
+|                                 |  earliest | ="Earliest: "& TEXT(MIN(IF(start:end=recordLevel, rangeStart:rangeEnd)), format) |
+|                                 |   latest  | ="Latest: "&TEXT(MAX(IF(start:end=recordLevel, rangeStart:rangeEnd)), format)    |
+### Known Limitations
+| Limitation                    | Description                                                                     |
+| :---------------------------- | :------------------------------------------------------------------------------ |
+| Exporting custom summaries    | Custom summaries will be exported as strings instead of Excel functions.        |
+| Exporting templated summaries | Templated summaries are not supported and will be exported as the default ones. |
+## Keyboard Navigation
+The summary rows can be navigated with the following keyboard interactions:
+- <kbd>UP</kbd> - navigates one cell up
+- <kbd>DOWN</kbd> - navigates one cell down
+- <kbd>LEFT</kbd> - navigates one cell left
+- <kbd>RIGHT</kbd> - navigates one cell right
+- <kbd>CTRL</kbd> + <kbd>LEFT</kbd> or <kbd>HOME</kbd> - navigates to the leftmost cell
+- <kbd>CTRL</kbd> + <kbd>RIGHT</kbd> or <kbd>END</kbd> - navigates to the rightmost cell
+## Styling
+To get started with styling the sorting behavior, we need to import the `index` file, where all the theme functions and component mixins live:
+```scss
+@use "igniteui-angular/theming" as *;
+// IMPORTANT: Prior to Ignite UI for Angular version 13 use:
+// @import '~igniteui-angular/lib/core/styles/themes/index';
+```
+Following the simplest approach, we create a new theme that extends the [`grid-summary-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-summary-theme) and accepts the `$background-color`, `$focus-background-color`, `$label-color`, `$result-color`, `$pinned-border-width`, `$pinned-border-style` and `$pinned-border-color` parameters.
+```scss
+$custom-theme: grid-summary-theme(
   $background-color: #e0f3ff,
   $focus-background-color: rgba(#94d1f7, .3),
   $label-color: #e41c77,
   $result-color: black,
   $pinned-border-width: 2px,
   $pinned-border-style: dotted,
-  $pinned-border-color: #e41c77);```>[!NOTE]>Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](../themes/sass/palettes.md) topic for detailed guidance on how to use them.The last step is to **include** the component custom theme:```scss:host {
-  @include tokens($custom-theme);}```>[!NOTE]>If the component is using an [`Emulated`](../themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to `penetrate` this encapsulation using `::ng-deep`:
+  $pinned-border-color: #e41c77
+);
+```
+>[!NOTE]
+>Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](../themes/sass/palettes.md) topic for detailed guidance on how to use them.
+The last step is to **include** the component custom theme:
+```scss
+:host {
+  @include tokens($custom-theme);
+}
+```
+>[!NOTE]
+>If the component is using an [`Emulated`](../themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to `penetrate` this encapsulation using `::ng-deep`:
 
- ```scss:host {
+ ```scss
+:host {
   ::ng-deep {
     @include tokens($custom-theme);
-  }}```### Demo```typescript
+  }
+}
+```
+### Demo
+```typescript
 import { Component, ViewChild } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -1557,4 +1747,29 @@ $custom-theme: grid-summary-theme(
 :host {
     @include tokens($custom-theme);
 }
-```## API References- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)- [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)- [IgxTreeGridSummaries Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-summary-theme)- [IgxSummaryOperand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html)- [IgxNumberSummaryOperand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html)- [IgxDateSummaryOperand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html)- [IgxColumnGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumngroupcomponent.html)- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)## Additional Resources<div class="divider--half"></div>- [Tree Grid overview](tree-grid.md)- [Column Data Types](column-types.md#default-template)- [Virtualization and Performance](virtualization.md)- [Paging](paging.md)- [Filtering](filtering.md)- [Sorting](sorting.md)- [Column Moving](column-moving.md)- [Column Pinning](column-pinning.md)- [Column Resizing](column-resizing.md)- [Selection](selection.md)<div class="divider--half"></div>Our community is active and always welcoming to new ideas.- [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)- [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
+```
+## API References
+- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
+- [IgxTreeGridSummaries Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-summary-theme)
+- [IgxSummaryOperand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html)
+- [IgxNumberSummaryOperand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html)
+- [IgxDateSummaryOperand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html)
+- [IgxColumnGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumngroupcomponent.html)
+- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
+## Additional Resources
+<div class="divider--half"></div>
+- [Tree Grid overview](tree-grid.md)
+- [Column Data Types](column-types.md#default-template)
+- [Virtualization and Performance](virtualization.md)
+- [Paging](paging.md)
+- [Filtering](filtering.md)
+- [Sorting](sorting.md)
+- [Column Moving](column-moving.md)
+- [Column Pinning](column-pinning.md)
+- [Column Resizing](column-resizing.md)
+- [Selection](selection.md)
+<div class="divider--half"></div>
+Our community is active and always welcoming to new ideas.
+- [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
+- [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
