@@ -75,7 +75,7 @@ There are five positioning strategies:
 Positions the content, based on the directions passed in through [`positionSettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionsettings.html). These are Left/Center/Right for [`horizontalDirection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionsettings.html#horizontalDirection) and Top/Middle/Bottom for [`verticalDirection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionsettings.html#verticalDirection). Defaults are:
 
 | horizontalDirection        | verticalDirection        |
-|:---------------------------|:-------------------------|
+| :------------------------- | :----------------------- |
 | HorizontalAlignment.Center | VerticalAlignment.Middle |
 
 <div class="divider"></div>
@@ -85,7 +85,7 @@ Positions the content, based on the directions passed in through [`positionSetti
 Positions the content as `GlobalPositionStrategy`. Instead of position related to the screen `ContainerPositionStrategy` positions the content related to the provided in `OverlaySettings` `outlet`. Defaults are:
 
 | horizontalDirection        | verticalDirection        |
-|:---------------------------|:-------------------------|
+| :------------------------- | :----------------------- |
 | HorizontalAlignment.Center | VerticalAlignment.Middle |
 
 <div class="divider"></div>
@@ -95,7 +95,7 @@ Positions the content as `GlobalPositionStrategy`. Instead of position related t
 Positions the element based on the start point from [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) and directions passed in through [`positionSettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionsettings.html). It is possible to either pass a start point (type [`Point`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/point.html)) or an `HTMLElement` as a positioning base. Defaults are:
 
 | target          | horizontalDirection       |  verticalDirection       | horizontalStartPoint     | verticalStartPoint       |
-|:----------------|:--------------------------|:-------------------------|:-------------------------|:-------------------------|
+| :-------------- | :------------------------ | :----------------------- | :----------------------- | :----------------------- |
 | new Point(0, 0) | HorizontalAlignment.Right | VerticalAlignment.Bottom | HorizontalAlignment.Left | VerticalAlignment.Bottom |
 
 <div class="divider"></div>
@@ -105,7 +105,7 @@ Positions the element based on the start point from [`overlaySettings`](https://
 Positions the element the same way as the **Connected** positioning strategy. It also calculates a different starting point in case the element goes partially out of the viewport. The **Auto** strategy will initially try to show the element like the **Connected** strategy does. If the element goes out of the viewport **Auto** will flip the starting point and the direction, i.e. if the direction is 'bottom', it will switch it to 'top' and so on. After flipped, if the element is still out of the viewport, **Auto** will use the initial directions and the starting point, to push the element into the viewport. For example - if the element goes out of the right side of the viewport, by 50px, **Auto** will push it by 50px to the left. Afterwards, if the element is partially out of the viewport, then its height or width were greater than the viewport's, **Auto** will align the element's left/top edge with the viewport's left/top edge. Defaults are:
 
 | target          | horizontalDirection       |  verticalDirection       | horizontalStartPoint     | verticalStartPoint       |
-|:----------------|:--------------------------|:-------------------------|:-------------------------|:-------------------------|
+| :-------------- | :------------------------ | :----------------------- | :----------------------- | :----------------------- |
 | new Point(0, 0) | HorizontalAlignment.Right | VerticalAlignment.Bottom | HorizontalAlignment.Left | VerticalAlignment.Bottom |
 
 <div class="divider"></div>
@@ -114,9 +114,9 @@ Positions the element the same way as the **Connected** positioning strategy. It
 
 Positions the element like the **Connected** positioning strategy and re-sizes the element to fit inside the view port (re-calculating width and/or height) in case the element is partially out of view. [`minSize`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionsettings.html#minSize) can be passed in [`positionSettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionSettings.html) to prevent resizing if it would put the element's dimensions below a certain threshold. Defaults are:
 
-| target          | horizontalDirection       |  verticalDirection       | horizontalStartPoint     | verticalStartPoint       | minSize               |
-|:----------------|:--------------------------|:-------------------------|:-------------------------|:-------------------------|:----------------------|
-| new Point(0, 0) | HorizontalAlignment.Right | VerticalAlignment.Bottom | HorizontalAlignment.Left | VerticalAlignment.Bottom |{ width: 0, height: 0 }|
+| target          | horizontalDirection       |  verticalDirection       | horizontalStartPoint     | verticalStartPoint       | minSize                 |
+| :-------------- | :------------------------ | :----------------------- | :----------------------- | :----------------------- | :---------------------- |
+| new Point(0, 0) | HorizontalAlignment.Right | VerticalAlignment.Bottom | HorizontalAlignment.Left | VerticalAlignment.Bottom | { width: 0, height: 0 } |
 
 <div class="divider"></div>
 

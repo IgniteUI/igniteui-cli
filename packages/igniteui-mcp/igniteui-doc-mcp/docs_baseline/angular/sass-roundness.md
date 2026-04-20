@@ -79,28 +79,28 @@ Now the `border-radius` on the button will be affected by the `$roundness` and `
 
 The table below shows an excerpt of some of the component border radius values as defined in the Material schema.
 
-| **Component**          | **Min/Max Radius** | **Default Radius** |
-|------------------------|--------------------|--------------------|
-| **Button(Flat)**       |  0 / 20px          | 4px                |
-| **Button(Contained)**  |  0 / 20px          | 4px                |
-| **button(Fab)**        |  12px / 28px       | 28px               |
-| **button(Icon)**       |  0 / 18px          | 18px               |
-| **Button-group**       |  0 / 20px          | 4px                |
-| **Chip**               |  0 / 20px          | 4px                |
-| **Card**               |  0 / 24px          | 4px                |
-| **Carousel**           |  0 / 36px          | 0                  |
-| **Dialog**             |  0 / 36px          | 4px                |
-| **Drop-down**          |  0 / 20px          | 4px                |
-| **Expansion panel**    |  0 / 16px          | 0                  |
-| **input(Border)**      |  0 / 20px          | 4px                |
-| **input(Box)**         |  0 / 20px          | 4px 4px 0 0        |
-| **input(Search)**      |  0 / 20px          | 4px                |
-| **List**               |  0 / 24px          | 0                  |
-| **List item**          |  0 / 24px          | 0                  |
-| **Navdrawer**          |  0 / 36px          | 0                  |
-| **Snackbar**           |  0 / 24px          | 4px                |
-| **Tooltip**            |  0 / 16px          | 4px                |
-| **Toast**              |  0 / 26px          | 26px               |
+| **Component**         | **Min/Max Radius** | **Default Radius** |
+| :-------------------- | :----------------- | :----------------- |
+| **Button(Flat)**      |  0 / 20px          | 4px                |
+| **Button(Contained)** |  0 / 20px          | 4px                |
+| **button(Fab)**       |  12px / 28px       | 28px               |
+| **button(Icon)**      |  0 / 18px          | 18px               |
+| **Button-group**      |  0 / 20px          | 4px                |
+| **Chip**              |  0 / 20px          | 4px                |
+| **Card**              |  0 / 24px          | 4px                |
+| **Carousel**          |  0 / 36px          | 0                  |
+| **Dialog**            |  0 / 36px          | 4px                |
+| **Drop-down**         |  0 / 20px          | 4px                |
+| **Expansion panel**   |  0 / 16px          | 0                  |
+| **input(Border)**     |  0 / 20px          | 4px                |
+| **input(Box)**        |  0 / 20px          | 4px 4px 0 0        |
+| **input(Search)**     |  0 / 20px          | 4px                |
+| **List**              |  0 / 24px          | 0                  |
+| **List item**         |  0 / 24px          | 0                  |
+| **Navdrawer**         |  0 / 36px          | 0                  |
+| **Snackbar**          |  0 / 24px          | 4px                |
+| **Tooltip**           |  0 / 16px          | 4px                |
+| **Toast**             |  0 / 26px          | 26px               |
 
 Please refer to the [Schema](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/schemas) documentation for each component to find out what the default and min/max radius values are for each theme.
 

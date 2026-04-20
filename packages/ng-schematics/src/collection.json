@@ -34,7 +34,7 @@
       "factory": "./cli-config/index"
     },
     "ai-config": {
-      "description": "Adds AI/MCP server configuration to .vscode/mcp.json.",
+      "description": "Configures AI tooling: MCP servers and AI coding skills.",
       "factory": "./cli-config/index#addAIConfig"
     },
     "upgrade-packages": {

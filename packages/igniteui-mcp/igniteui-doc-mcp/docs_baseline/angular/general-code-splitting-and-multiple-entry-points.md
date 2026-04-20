@@ -130,8 +130,8 @@ import {
 #### After (v21.0.0)
 
 ```typescript
-import { IgxOverlayService } from 'igniteui-angular/core';
-import { IFilteringExpression, GridBaseAPIService } from 'igniteui-angular/grids/core';
+import { IgxOverlayService, IFilteringExpression } from 'igniteui-angular/core';
+import { GridBaseAPIService } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxInputDirective } from 'igniteui-angular/input-group';
@@ -172,7 +172,7 @@ If you only need a button and an input, import just those entry points:
 
 ```typescript
 import { Component } from '@angular/core';
-import { IgxButtonDirective } from 'igniteui-angular/button';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { 
   IgxInputGroupComponent, 
   IgxInputDirective, 

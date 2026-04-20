@@ -84,8 +84,8 @@ export function createSearchApiHandler(docLoader: ApiDocLoader) {
     const lines = hits.map(h => {
       const platformTag = `[${h.entry.platform}]`;
       const typeTag = `[${h.entry.type}]`;
-      const kwTag = h.entry.keywords.length 
-        ? `\nKeywords: ${h.entry.keywords.join(", ")}` 
+      const kwTag = h.entry.keywords.length
+        ? `\nKeywords: ${h.entry.keywords.join(", ")}`
         : "";
       return `**${h.entry.component}** ${platformTag} ${typeTag} (${h.matches} matches)${kwTag}\n${h.excerpt}`;
     });

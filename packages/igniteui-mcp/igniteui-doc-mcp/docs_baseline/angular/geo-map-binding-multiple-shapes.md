@@ -338,8 +338,6 @@ sdsLocations.databaseSource  = url + "/Shapes/WorldCities.dbf";
 sdsLocations.dataBind();
 ```
 
-<!-- Angular, React, WebComponents -->
-
 ## Processing Polygons
 
 Process shapes data loaded in [`IgxShapeDataSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_core.igxshapedatasource.html) with of countries of the world and assign it to [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html) object.
@@ -430,8 +428,6 @@ public onPointsLoaded(sds: IgxShapeDataSource, e: any) {
     symbolSeries.dataSource = geoLocations;
 }
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Map Background
 

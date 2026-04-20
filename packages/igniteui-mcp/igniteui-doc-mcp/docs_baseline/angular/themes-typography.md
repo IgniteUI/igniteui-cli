@@ -19,7 +19,7 @@ The type system is a **_type scale_** consisting of **_13 different category typ
 Here's a list of all 13 category styles as defined for the Material Theme in Ignite UI for Angular:
 
 | **Scale Category** | **Font Family** | **Font Weight** | **Font Size** | **Text Transform** | **Letter Spacing** | **Line Height** | **CSS Class**               | **CSS Variables**   |
-| ------------------ | --------------- | --------------- | ------------- | ------------------ | ------------------ | --------------- | --------------------------- | ------------------- |
+| :----------------- | :-------------- | :-------------- | :------------ | :----------------- | :----------------- | :-------------- | :-------------------------- | :------------------ |
 | **h1**             | Titillium Web   | 300             | 6 rem         | none               | -.09375 rem        | 7 rem           | `ig-typography__h1`         | `--ig-h1-*`         |
 | **h2**             | Titillium Web   | 300             | 3.75 rem      | none               | -.0312 rem         | 4.4375 rem      | `ig-typography__h2`         | `--ig-h2-*`         |
 | **h3**             | Titillium Web   | 400             | 3 rem         | none               | 0                  | 3.5625 rem      | `ig-typography__h3`         | `--ig-h3-*`         |

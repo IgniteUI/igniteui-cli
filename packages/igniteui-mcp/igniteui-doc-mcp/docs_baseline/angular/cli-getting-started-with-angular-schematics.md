@@ -1,59 +1,78 @@
 ---
 title: Getting Started with Ignite UI for Angular Schematics | Ignite UI for Angular | Infragistics
-_description: The Step-by-Step mode contains guided experience through the Ignite UI CLI options.
-_keywords: angular cli, ignite ui for angular, infragistics
+_description: Install the Ignite UI for Angular Schematics collection and use it to scaffold Angular projects, add component views, and run a development server within the native Angular CLI workflow.
+_keywords: ignite ui for angular, angular schematics, angular cli, scaffolding, getting started, infragistics
+last_updated: "2025-04-08"
 _tocName: Getting Started with Ignite UI for Angular Schematics
 ---
 
-## Getting Started with Ignite UI for Angular Schematics
+<!-- schema: Article, HowTo -->
 
-To get started install [Ignite UI for Angular Schematics](https://github.com/IgniteUI/igniteui-cli/tree/master/packages/ng-schematics) globally:
+# Getting Started with Ignite UI for Angular Schematics
+
+The Ignite UI for Angular Schematics collection is a set of Angular CLI schematics for scaffolding Angular projects and component views pre-configured for Ignite UI for Angular. It integrates into the native Angular CLI workflow - use it with `ng new` for project creation and `ng g` for component scaffolding, without installing a separate global tool. The collection is distributed as the `@igniteui/angular-schematics` package and is added automatically when you run `ng add igniteui-angular` on an existing Angular project.
+
+The Schematics collection does not include an MCP server for AI assistant integration - for that, install the [Ignite UI CLI](getting-started-with-cli.md) alongside your Angular CLI project. The collection is specific to Angular; React, Web Components, and Blazor equivalents are covered in their respective framework documentation. Neither tool is required to use Ignite UI for Angular - the library can be installed and configured manually as described in the [Getting Started guide](../getting-started.md).
+
+## Install the Schematics Collection
+
+Install `@igniteui/angular-schematics` globally using npm:
 
 ```cmd
 npm i -g @igniteui/angular-schematics
 ```
 
-The above install will make the schematics available to use a collection parameter for the `ng  new` command.
-
-If you are using `yarn` package manager:
+Or, using yarn:
 
 ```cmd
 yarn global add @igniteui/angular-schematics
 ```
 
-### Using guided experience
-
-The shortest and easiest way to bootstrap an application is to use the [step by step guide using Ignite UI for Angular Schematics](step-by-step-guide-using-angular-schematics.md).
-
-To activate the guide using the Ignite UI for Angular Schematics run:
-
-```cmd
-ng new --collection="@igniteui/angular-schematics"
-```
-
-## Create a new project
-
-To create an application that is configured to use the Ignite UI for Angular controls, run the `ng new` command providing `@igniteui/angular-schematics` to the collection option.
-
-```cmd
-ng new newAngularProject --collection="@igniteui/angular-schematics" --template=side-nav
-```
-
-If you already have an Angular project, created without providing the `@igniteui/angular-schematics` collection as described above, you can add the Ignite UI for Angular product, using the following command:
+After a global install, the collection is available as the `--collection` argument to `ng new`. If you already have an Angular project and want to add Ignite UI for Angular without scaffolding a new one, use:
 
 ```cmd
 ng add igniteui-angular
 ```
 
-The new application is created in a directory with the same name (`newAngularProject`). There are several project templates from which you can choose when creating an Ignite UI for Angular application:
+This installs the `igniteui-angular` package, registers the `@igniteui/angular-schematics` collection, and configures dependencies, styles, and theme imports automatically.
 
-| template id   | template description |
-| ---           | ---                  |
-| empty         | Project structure with routing and a home page |
-| side-nav      | Project structure with side navigation drawer |
-| side-nav-auth | Side navigation project extended with user authentication module. <br> [Angular Authentication Project Template](auth-template.md) topic covers the project template in detail. |
+## Create a New Project
 
-Additionally, you can specify **arguments** to control the theme or skip packages install:
+The Schematics collection provides two modes for project creation: a guided interactive wizard and a direct `ng new` command with explicit arguments.
+
+### Use the guided wizard
+
+The guided wizard is the recommended starting point for new projects. Activate it with:
+
+```cmd
+ng new --collection="@igniteui/angular-schematics"
+```
+
+For a step-by-step walkthrough of the wizard options, see [Step-by-Step Guide Using Ignite UI for Angular Schematics](step-by-step-guide-using-angular-schematics.md).
+
+### Create a project directly
+
+To create an Angular project non-interactively, provide the collection and template arguments to `ng new`:
+
+```cmd
+ng new newAngularProject --collection="@igniteui/angular-schematics" --template=side-nav
+```
+
+By default, the project uses standalone components. To use NgModule-based bootstrapping instead, add `--type=igx-ts-legacy`:
+
+```cmd
+ng new newAngularProject --collection="@igniteui/angular-schematics" --type=igx-ts-legacy
+```
+
+The project is created in a directory named after the project. The following project templates are available:
+
+| Template ID   | Description                                                                                                                                       |
+| :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------ |
+| empty         | Project structure with routing and a home page                                                                                                    |
+| side-nav      | Project structure with a side navigation drawer                                                                                                   |
+| side-nav-auth | Side navigation project extended with a user authentication module. See [Angular Authentication Project Template](auth-template.md) for details.  |
+
+The following arguments are available when creating a project:
 
 <details>
   <summary><u>name</u></summary>
@@ -66,22 +85,12 @@ Additionally, you can specify **arguments** to control the theme or skip package
 </details>
 
 <details>
-  <summary><u>framework</u><span align="right"><strong> (Ignite UI CLI only)</strong></span></summary>
-  <p>
-    <code>--framework</code> (alias: <code>-f</code>) <em>default value: "jquery"</em>
-  </p>
-  <p>
-    Framework to setup project for. The supported frameworks are jQuery, Angular and React.
-  </p>
-</details>
-
-<details>
-  <summary><u>type</u><span align="right"><strong> (Ignite UI CLI only)</strong></span></summary>
+  <summary><u>type</u></summary>
   <p>
     <code>--type</code> (alias: <code>-t</code>)
   </p>
   <p>
-    The available project types depend on the selected framework.
+    The project bootstrapping type. Use <code>igx-ts-legacy</code> for NgModule-based bootstrapping. Omit to default to standalone components.
   </p>
 </details>
 
@@ -101,7 +110,7 @@ Additionally, you can specify **arguments** to control the theme or skip package
     <code>--skip-git</code> (alias: <code>--sg</code>)
   </p>
   <p>
-    When this option is used, the automatic repository initialization with Git will be skipped. If the option is omitted, then the global skip-git configuration property is used.
+    Skips automatic Git repository initialization. If omitted, the global <code>skip-git</code> configuration property is used.
   </p>
 </details>
 
@@ -111,7 +120,7 @@ Additionally, you can specify **arguments** to control the theme or skip package
     <code>--skip-install</code> (alias: <code>--si</code>)
   </p>
   <p>
-    The <code>new</code> command will install package dependencies on project creation. Passing this flag will skip the initial installation.
+    Skips the initial npm package installation on project creation.
   </p>
 </details>
 
@@ -121,23 +130,21 @@ Additionally, you can specify **arguments** to control the theme or skip package
     <code>--template</code>
   </p>
   <p>
-    Use this option if there are different project templates for a specific framework type.
-    Currently this option is available only for Ignite UI for Angular igx-ts project types.</p>
+    Specifies the project template. Currently available for Ignite UI for Angular <code>igx-ts</code> project types.
+  </p>
 </details>
 
-## Add template
+## Add a Component Template
 
-To add one of the [available Ignite UI Angular templates](component-templates.md) you need to provide template ID and a name for the new component or use the [Step-by-Step Guide](step-by-step-guide-using-cli.md#add-view). Their usage is supported only inside existing projects created with the Angular Schematics, Ignite UI CLI or where Ignite UI for Angular has been [installed using `ng add`](../getting-started.md#installing-ignite-ui-for-angular).
-
-With Schematics, use `ng generate` with the Ignite UI for Angular collection and `component [template] [name]`:
+To add an [available Ignite UI for Angular template](component-templates.md) to an existing project, use `ng generate` with the Ignite UI for Angular collection and the `component` schematic, providing the template ID and a name for the new component:
 
 ```cmd
 ng g @igniteui/angular-schematics:component grid newGrid
 ```
 
-List of all the [available templates](component-templates.md).
+Template addition is supported in projects created with the Angular Schematics, Ignite UI CLI, or any Angular CLI project where Ignite UI for Angular was added with `ng add`. For the guided component wizard, see [Step-by-Step Guide Using Ignite UI for Angular Schematics](step-by-step-guide-using-angular-schematics.md#add-component-views).
 
-Additionally, you can specify the module in which the component will be registered or skip the auto-generation of app navigation route:
+The following arguments are available when adding a template:
 
 <details>
   <summary><u>module</u></summary>
@@ -145,13 +152,12 @@ Additionally, you can specify the module in which the component will be register
     <code>--module</code> (alias: <code>-m</code>)
   </p>
   <p>
-    <i>note: module argument is applicable only in Angular projects.</i>
+    <i>Applicable only in Angular projects.</i>
   </p>
   <p>
-    Path to the module.ts file, relative to the /src/app/ folder, for the module where the new component should be registered:
+    Path to the <code>module.ts</code> file, relative to <code>/src/app/</code>, where the new component should be registered:
   </p>
   <code>ng g @igniteui/angular-schematics:component combo newCombo --module=myModule/myModule.module.ts</code>
-  <br>
 </details>
 
 <details>
@@ -160,13 +166,13 @@ Additionally, you can specify the module in which the component will be register
     <code>--skip-route</code> (alias: <code>-srk</code>)
   </p>
   <p>
-    Don't auto-generate an app navigation route for the new component
+    Skips auto-generation of an app navigation route for the new component.
   </p>
 </details>
 
-## Run the application
+## Run the Application
 
-The `start` schematic will build the application, start a web server and open it in your default browser.
+The `start` schematic builds the application, starts a local web server, and opens it in your default browser:
 
 ```cmd
 ng g @igniteui/angular-schematics:start

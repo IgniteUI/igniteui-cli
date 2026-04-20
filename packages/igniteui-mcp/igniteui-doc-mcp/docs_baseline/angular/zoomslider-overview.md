@@ -456,21 +456,18 @@ export class AppComponent implements AfterViewInit {
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
 
-| Feature Name        | Description |
-| --------------------|----------------------- |
-| Scrollbar navigation       | Users can change scale and scroll through ranges of data using the built-in capabilities of the ZoomSlider scrollbar. |
-| Panning and zooming       | Users can adjust the display scale by dragging the edges of the thumb pad to either make the current display cover a larger range (zoom out) or a smaller range (zoom in). |
-| Multiple user interaction options       | All mouse user interactions are redundantly supported through touch and most of them – through the keyboard. For details, see User Interactions and Usability. |
-| Touch support       |  On touch-enabled devices, users can enjoy the full ZoomSlider functionality. All mouse interactions are supported in touch environment. |
-| Extensibility       | The ZoomSlider control supports DataChart control out-of the box. |
-| Configurable zoom-range window       | The initial zoom-range window width and position, as well as its minimum size, are configurable. |
-
-<!-- Angular, React, WebComponents -->
+| Feature Name                      | Description                                                                                                                                                                |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Scrollbar navigation              | Users can change scale and scroll through ranges of data using the built-in capabilities of the ZoomSlider scrollbar.                                                      |
+| Panning and zooming               | Users can adjust the display scale by dragging the edges of the thumb pad to either make the current display cover a larger range (zoom out) or a smaller range (zoom in). |
+| Multiple user interaction options | All mouse user interactions are redundantly supported through touch and most of them – through the keyboard. For details, see User Interactions and Usability.             |
+| Touch support                     | On touch-enabled devices, users can enjoy the full ZoomSlider functionality. All mouse interactions are supported in touch environment.                                    |
+| Extensibility                     | The ZoomSlider control supports DataChart control out-of the box.                                                                                                          |
+| Configurable zoom-range window    | The initial zoom-range window width and position, as well as its minimum size, are configurable.                                                                           |
 
 ## Dependencies
 
@@ -481,22 +478,20 @@ npm install --save igniteui-angular-core
 npm install --save igniteui-angular-charts
 ```
 
-<!-- end: Angular, React, WebComponents -->
-
 ## Component Modules
 
 The [`IgxZoomSliderComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxzoomslidercomponent.html) requires the following modules:
 
 ```ts
-import { IgxZoomSliderModule } from 'igniteui-angular-charts';
-import { IgxZoomSliderComponent } from 'igniteui-angular-charts';
+import { IgxZoomSliderModule } from "igniteui-angular-charts";
+import { IgxZoomSliderComponent } from "igniteui-angular-charts";
 
 @NgModule({
-    imports: [
-        // ...
-        IgxZoomSliderModule,
-        // ...
-    ]
+  imports: [
+    // ...
+    IgxZoomSliderModule,
+    // ...
+  ],
 })
 export class AppModule {}
 ```
@@ -506,10 +501,7 @@ export class AppModule {}
 The following code demonstrates how to setup the ZoomSlider.
 
 ```html
-<igx-zoom-slider
-  width="100%"
-  height="150px">
-</igx-zoom-slider>
+<igx-zoom-slider width="100%" height="150px"> </igx-zoom-slider>
 ```
 
 <div class="divider--half"></div>

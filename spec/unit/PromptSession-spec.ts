@@ -2,6 +2,7 @@ import { App, BaseTemplate, Config, ControlExtraConfigType, GoogleAnalytics, Inq
 	ProjectLibrary, ProjectTemplate, Template, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as add } from "../../packages/cli/lib/commands/add";
+import * as aiConfig from "../../packages/cli/lib/commands/ai-config";
 import { default as start } from "../../packages/cli/lib/commands/start";
 import { default as upgrade } from "../../packages/cli/lib/commands/upgrade";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
@@ -97,6 +98,10 @@ function createMockLibrary(mockTemplate: Template, mockProjectTemplate: ProjectT
 describe("Unit - PromptSession", () => {
 	beforeAll(() => {
 		spyOn(GoogleAnalytics, "post");
+	});
+
+	beforeEach(() => {
+		spyOn(aiConfig, "configure");
 	});
 
 	// TODO: most of the tests use same setup - move the setup to beforeAll call
@@ -468,6 +473,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(Promise.resolve(true));
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
+		spyOn(PackageManager, "installPackages").and.returnValue(Promise.resolve());
 		spyOn(start, "start").and.returnValue(Promise.resolve());
 
 		spyOn(InquirerWrapper, "select").and.returnValues(
@@ -494,6 +500,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledWith(false);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.input).toHaveBeenCalledWith({
 			type: "input",
@@ -571,6 +579,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledWith(false);
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", mockSelectedTemplate);
@@ -654,12 +664,13 @@ describe("Unit - PromptSession", () => {
 			project: {
 				defaultPort: 4200
 			}
-	    } as unknown as Config;
+		} as unknown as Config;
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(Util, "log");
 		spyOn(add, "addTemplate").and.returnValue(Promise.resolve(true));
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
+		spyOn(PackageManager, "installPackages").and.returnValue(Promise.resolve());
 		//spyOn(start, "start").and.returnValue(Promise.resolve({port: 3333 }));
 		spyOn(start, "start").and.returnValue(Promise.resolve());
 
@@ -694,6 +705,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledWith(false);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.checkbox).toHaveBeenCalledWith({
 			type: "checkbox",

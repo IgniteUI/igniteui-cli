@@ -19,9 +19,10 @@ Quickly create projects including [Ignite UI for Angular](https://www.infragisti
 - Step by step guide
 
 ### Supported frameworks
- * jQuery
  * Angular
  * React
+ * Web Components
+ * jQuery
 
 ### Prerequisites
 The repository houses multiple packages and orchestrates building and publishing them with [lerna](https://github.com/lerna/lerna) and [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
@@ -51,6 +52,7 @@ This monorepo contains several packages that combine into the `igniteui-cli`:
 	* [Generate Ignite UI for React project](#generate-ignite-ui-for-react-project)
 	* [Adding components](#adding-components)
   * [Build and run](#build-and-run)
+* [Configure AI Tooling](#configure-ai-tooling)
 * [MCP Server](#mcp-server)
   * [Using with AI Assistants](#using-with-ai-assistants)
   * [Testing with MCP Inspector](#testing-with-mcp-inspector)
@@ -141,6 +143,16 @@ ig build
 ig start
 ```
 
+## Configure AI Tooling
+
+To automatically configure Ignite UI AI tooling - MCP servers and AI coding skills, run:
+
+```bash
+ig ai-config
+```
+
+This creates or updates `.vscode/mcp.json` in the current project with entries for both the [Ignite UI MCP](#mcp-server) and `igniteui-theming` MCP servers. Existing servers in the file are preserved. It also copies any AI coding skill files from installed Ignite UI packages into the project. New projects are created with AI tooling configuration out of the box.
+
 ## MCP Server
 
 The CLI includes a bundled [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server that provides AI assistants with Ignite UI documentation search, API reference lookup, and scaffolding guidance for Angular, React, Blazor, and Web Components.
@@ -158,7 +170,7 @@ ig mcp --debug          # Enable debug logging to mcp-server.log
 
 ### Using with AI Assistants
 
-Configure your MCP client (e.g., VS Code, Claude Desktop, Cursor) to use the CLI as the MCP server:
+For VS Code, the `ig ai-config` command handles configuration automatically (see above). For other MCP clients (e.g., Claude Desktop, Cursor), configure them manually to use the CLI as the MCP server:
 
 ```json
 {

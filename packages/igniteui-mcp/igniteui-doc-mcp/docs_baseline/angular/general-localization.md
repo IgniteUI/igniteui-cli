@@ -208,64 +208,64 @@ Components like the IgxGrid or IgxDatePicker allow for specifying date format (f
 
 Available predefined format options:
 
-| Option | Equivalent to | Examples (given in en-US locale) |
-| ------ | --------------| --------------------------------|
-| 'short' | 'M/d/yy, h:mm a' | 6/15/15, 9:03 AM |
-| 'medium' | 'MMM d, y, h:mm:ss a' | Jun 15, 2015, 9:03:01 AM |
-| 'long' | 'MMMM d, y, h:mm:ss a z' | June 15, 2015 at 9:03:01 AM GMT+1 |
-| 'full' | 'EEEE, MMMM d, y, h:mm:ss a zzzz' | Monday, June 15, 2015 at 9:03:01 AM GMT+01:00 |
-| 'shortDate' | 'M/d/yy' | 6/15/15 |
-| 'mediumDate' | 'MMM d, y' | Jun 15, 2015 |
-| 'longDate' | 'MMMM d, y' | June 15, 2015 |
-| 'fullDate' | 'EEEE, MMMM d, y' | Monday, June 15, 2015 |
-| 'shortTime' | 'h:mm a' | 9:03 AM |
-| 'mediumTime' | 'h:mm:ss a' | 9:03:01 AM |
-| 'longTime' | 'h:mm:ss a z' | 9:03:01 AM GMT+1 |
-| 'fullTime' | 'h:mm:ss a zzzz' | 9:03:01 AM GMT+01:00 |
+| Option       | Equivalent to                     | Examples (given in en-US locale)              |
+| :----------- | :-------------------------------- | :-------------------------------------------- |
+| 'short'      | 'M/d/yy, h:mm a'                  | 6/15/15, 9:03 AM                              |
+| 'medium'     | 'MMM d, y, h:mm:ss a'             | Jun 15, 2015, 9:03:01 AM                      |
+| 'long'       | 'MMMM d, y, h:mm:ss a z'          | June 15, 2015 at 9:03:01 AM GMT+1             |
+| 'full'       | 'EEEE, MMMM d, y, h:mm:ss a zzzz' | Monday, June 15, 2015 at 9:03:01 AM GMT+01:00 |
+| 'shortDate'  | 'M/d/yy'                          | 6/15/15                                       |
+| 'mediumDate' | 'MMM d, y'                        | Jun 15, 2015                                  |
+| 'longDate'   | 'MMMM d, y'                       | June 15, 2015                                 |
+| 'fullDate'   | 'EEEE, MMMM d, y'                 | Monday, June 15, 2015                         |
+| 'shortTime'  | 'h:mm a'                          | 9:03 AM                                       |
+| 'mediumTime' | 'h:mm:ss a'                       | 9:03:01 AM                                    |
+| 'longTime'   | 'h:mm:ss a z'                     | 9:03:01 AM GMT+1                              |
+| 'fullTime'   | 'h:mm:ss a zzzz'                  | 9:03:01 AM GMT+01:00                          |
 
 Custom format options:
 
-| Date field | Value | Description | Example |
-|-|-|-|-|
-| Weekday | c, cc, ccc, E, EE, EEE | Short version of the weekday | Tue |
-| | cccc, EEEE | Long version of the weekday | Tuesday |
-| | ccccc, EEEEE | Narrow version of the weekday | T |
-| Day| d | Numeric display (single digit when possible) | 1, 10 |
-| | dd | 2-digit always (zero padded) | 01, 10 |
-| Month | M, L | Numeric display (single digit when possible) | 8, 12 |
-| | MM, LL | 2-digit always (zero padded) | 08, 12 |
-| | MMM, LLL | Short month name | Oct |
-| | MMMM, LLLL | Long month name | October |
-| | MMMMM, LLLLL | Narrow month name | O |
-| Year | y, yyy, yyyy | Numeric display | 1, 24, 632, 2025 |
-| | yy | 2-digit display (zero padded when possible) | 01, 24, 32, 25 |
-| ISO 8601 year  | Y, YYY, YYYY | Numeric display | 1, 24, 632, 2025 |
-| | YY | 2-digit display (zero padded when possible) | 01, 24, 32, 25 |
-| Era | G, GG, GGG | Short display | AD, BC |
-| | GGGG | Long display |  Anno Domini, Before Christ|
-| | GGGGG | Narrow display | A, B |
-| Minute | m | Numeric (single digit when possible) | 1, 5, 22 |
-| | mm | 2-digit display (zero padded)| 01, 05, 22 |
-| Hour 1-12 | h | Numeric (single digit when possible) | 8, 12 |
-| | hh | 2-digit (zero padded) | 08, 13 |
-| Hour 0-23 | H | Numeric (single digit when possible) | 8, 21 |
-| | HH | 2-digit  (zero padded)| 08, 21 |
-| Hour 0-11 | K | Numeric (single digit when possible) | 0, 11 |
-| | KK | 2-digit (zero padded) | 00, 11 |
-| Second | s | Numeric (single digit when possible) | 0...59 |
-| | ss | 2-digit (zero padded) | 00...59 |
-| Fractional seconds | S | Numeric for 1 digit | 0...9 |
-| | SS | Numeric for 2 digits | 00...99 |
-| | SSS | Numeric for 3 digits | 000...999 |
-| Period of time - abbreviated | a, t | Lower case always | am, pm |
-| | aa, aaa, tt, ttt | Upper case always | AM, PM |
-| | aaaa, tttt | Case based on locale | am, pm, AM, PM |
-| | aaaaa, ttttt | Narrow lower case always | a, p |
-| Period of time - extended | b, bb, bbb, B, BB, BBB | Short display. Based on `Intl` locale | en-GB: at night |
-| | bbbb, BBBB | Long display. Based on `Intl` locale| en-GB: at night |
-| | bbbbb, BBBBB | Narrow display. Based on `Intl` locale | en-GB: at night |
-| Timezone | z, zz, zzz, Z, ZZ, ZZZ, O, OO, OOO | Short display | GMT+4 |
-| | zzzz, ZZZZ, OOOO | Long display | GMT+0430 |
+| Date field                   | Value                              | Description                                  | Example                     |
+| :--------------------------- | :--------------------------------- | :------------------------------------------- | :-------------------------- |
+| Weekday                      | c, cc, ccc, E, EE, EEE             | Short version of the weekday                 | Tue                         |
+|                              | cccc, EEEE                         | Long version of the weekday                  | Tuesday                     |
+|                              | ccccc, EEEEE                       | Narrow version of the weekday                | T                           |
+| Day                          | d                                  | Numeric display (single digit when possible) | 1, 10                       |
+|                              | dd                                 | 2-digit always (zero padded)                 | 01, 10                      |
+| Month                        | M, L                               | Numeric display (single digit when possible) | 8, 12                       |
+|                              | MM, LL                             | 2-digit always (zero padded)                 | 08, 12                      |
+|                              | MMM, LLL                           | Short month name                             | Oct                         |
+|                              | MMMM, LLLL                         | Long month name                              | October                     |
+|                              | MMMMM, LLLLL                       | Narrow month name                            | O                           |
+| Year                         | y, yyy, yyyy                       | Numeric display                              | 1, 24, 632, 2025            |
+|                              | yy                                 | 2-digit display (zero padded when possible)  | 01, 24, 32, 25              |
+| ISO 8601 year                | Y, YYY, YYYY                       | Numeric display                              | 1, 24, 632, 2025            |
+|                              | YY                                 | 2-digit display (zero padded when possible)  | 01, 24, 32, 25              |
+| Era                          | G, GG, GGG                         | Short display                                | AD, BC                      |
+|                              | GGGG                               | Long display                                 |  Anno Domini, Before Christ |
+|                              | GGGGG                              | Narrow display                               | A, B                        |
+| Minute                       | m                                  | Numeric (single digit when possible)         | 1, 5, 22                    |
+|                              | mm                                 | 2-digit display (zero padded)                | 01, 05, 22                  |
+| Hour 1-12                    | h                                  | Numeric (single digit when possible)         | 8, 12                       |
+|                              | hh                                 | 2-digit (zero padded)                        | 08, 13                      |
+| Hour 0-23                    | H                                  | Numeric (single digit when possible)         | 8, 21                       |
+|                              | HH                                 | 2-digit  (zero padded)                       | 08, 21                      |
+| Hour 0-11                    | K                                  | Numeric (single digit when possible)         | 0, 11                       |
+|                              | KK                                 | 2-digit (zero padded)                        | 00, 11                      |
+| Second                       | s                                  | Numeric (single digit when possible)         | 0...59                      |
+|                              | ss                                 | 2-digit (zero padded)                        | 00...59                     |
+| Fractional seconds           | S                                  | Numeric for 1 digit                          | 0...9                       |
+|                              | SS                                 | Numeric for 2 digits                         | 00...99                     |
+|                              | SSS                                | Numeric for 3 digits                         | 000...999                   |
+| Period of time - abbreviated | a, t                               | Lower case always                            | am, pm                      |
+|                              | aa, aaa, tt, ttt                   | Upper case always                            | AM, PM                      |
+|                              | aaaa, tttt                         | Case based on locale                         | am, pm, AM, PM              |
+|                              | aaaaa, ttttt                       | Narrow lower case always                     | a, p                        |
+| Period of time - extended    | b, bb, bbb, B, BB, BBB             | Short display. Based on `Intl` locale        | en-GB: at night             |
+|                              | bbbb, BBBB                         | Long display. Based on `Intl` locale         | en-GB: at night             |
+|                              | bbbbb, BBBBB                       | Narrow display. Based on `Intl` locale       | en-GB: at night             |
+| Timezone                     | z, zz, zzz, Z, ZZ, ZZZ, O, OO, OOO | Short display                                | GMT+4                       |
+|                              | zzzz, ZZZZ, OOOO                   | Long display                                 | GMT+0430                    |
 
 ### Localized resource strings
 

@@ -55,14 +55,14 @@ export class ReactJsonParser {
 
   private findReflection(node: TypeDocReflection, name: string): TypeDocReflection | null {
     if (node.name === name) return node;
-    
+
     if (Array.isArray(node.children)) {
       for (const child of node.children.filter(isTypeDocReflection)) {
         const found = this.findReflection(child, name);
         if (found) return found;
       }
     }
-    
+
     return null;
   }
 
@@ -71,7 +71,7 @@ export class ReactJsonParser {
     if (node.kind === 128 && node.name.startsWith('Igr')) {
       list.push(node.name);
     }
-    
+
     if (Array.isArray(node.children)) {
       for (const child of node.children.filter(isTypeDocReflection)) {
         this.collectComponents(child, list);
@@ -86,7 +86,7 @@ export class ReactJsonParser {
 
   private extractProperties(component: TypeDocReflection): ReactDocEntry['properties'] {
     if (!component.children) return [];
-    
+
     // Find Properties category
     const propsCategory = component.categories?.find(c => c.title === 'Properties');
     if (!propsCategory) return [];
@@ -103,7 +103,7 @@ export class ReactJsonParser {
 
   private extractMethods(component: TypeDocReflection): ReactDocEntry['methods'] {
     if (!component.children) return [];
-    
+
     const methodsCategory = component.categories?.find(c => c.title === 'Methods');
     if (!methodsCategory) return [];
 
@@ -119,7 +119,7 @@ export class ReactJsonParser {
 
   private extractEvents(component: TypeDocReflection): ReactDocEntry['events'] {
     if (!component.children) return [];
-    
+
     const eventsCategory = component.categories?.find(c => c.title === 'Events');
     if (!eventsCategory) return [];
 
@@ -161,7 +161,7 @@ export class ReactJsonParser {
     // Format method signature from signatures array
     if (method.signatures?.[0]) {
       const sig = method.signatures[0];
-      const params = sig.parameters?.map((p) => 
+      const params = sig.parameters?.map((p) =>
         `${p.name}: ${this.formatType(p.type)}`
       ).join(', ') || '';
       const returnType = this.formatType(sig.type);
@@ -183,7 +183,7 @@ export class ReactJsonParser {
 
   formatAsMarkdown(entry: ReactDocEntry, section: ReactDocSection = 'all'): string {
     let md = `# ${entry.type}: ${entry.name}\n\n`;
-    
+
     if (entry.summary) {
       md += `${entry.summary}\n\n`;
     }

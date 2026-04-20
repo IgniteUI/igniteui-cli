@@ -1,3 +1,4 @@
+import fs = require("fs");
 import * as glob from "glob";
 import { FsFileSystem } from "../../packages/core/util/FileSystem";
 
@@ -6,6 +7,30 @@ describe("Unit - FsFileSystem", () => {
 
 	beforeEach(() => {
 		fileSystem = new FsFileSystem();
+	});
+
+	describe("writeFile", () => {
+		it("should create parent directories when they do not exist", () => {
+			spyOn(fs, "existsSync").and.returnValue(false);
+			spyOn(fs, "mkdirSync");
+			spyOn(fs, "writeFileSync");
+
+			fileSystem.writeFile("/some/new/dir/file.json", "content");
+
+			expect(fs.mkdirSync).toHaveBeenCalledWith("/some/new/dir", { recursive: true });
+			expect(fs.writeFileSync).toHaveBeenCalledWith("/some/new/dir/file.json", "content");
+		});
+
+		it("should skip mkdir when parent directory already exists", () => {
+			spyOn(fs, "existsSync").and.returnValue(true);
+			spyOn(fs, "mkdirSync");
+			spyOn(fs, "writeFileSync");
+
+			fileSystem.writeFile("/existing/dir/file.json", "content");
+
+			expect(fs.mkdirSync).not.toHaveBeenCalled();
+			expect(fs.writeFileSync).toHaveBeenCalledWith("/existing/dir/file.json", "content");
+		});
 	});
 
 	describe("glob", () => {

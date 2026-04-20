@@ -1,8 +1,16 @@
 ---
+title: Excel Style Filtering in Angular Tree Grid - Ignite UI for Angular
+_description: Learn how to configure Excel filtering in Angular Tree Grid. You can enable/disable various options and customize the Excel style filter menu the way you want.
+_keywords: excel like filter, igniteui for angular, infragistics
+_license: commercial
+_canonicalLink: grid/excel-style-filtering
 _tocName: Excel Style Filtering
 _premium: true
 ---
----title: Excel Style Filtering in Angular Tree Grid - Ignite UI for Angular_description: Learn how to configure Excel filtering in Angular Tree Grid. You can enable/disable various options and customize the Excel style filter menu the way you want._keywords: excel like filter, igniteui for angular, infragistics_license: commercial_canonicalLink: grid/excel-style-filtering---# Excel Filtering in Angular Tree GridThe grid Excel filtering provides an Excel like filtering UI for any Angular table like the Tree Grid.## Angular Tree Grid Excel Style Filtering Example```typescript
+# Excel Filtering in Angular Tree Grid
+The grid Excel filtering provides an Excel like filtering UI for any Angular table like the Tree Grid.
+## Angular Tree Grid Excel Style Filtering Example
+```typescript
 import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { TreeGridFilteringStrategy } from 'igniteui-angular/core';
@@ -148,7 +156,25 @@ igx-buttongroup{
     display: block;
     width: 500px;
 }
-```<div class="divider--half"></div>## UsageTo turn on the grid excel filtering, two inputs should be set. The [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#allowFiltering) should be set to `true` and the [`filterMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filterMode) should be set to `excelStyleFilter`.```html<igx-tree-grid [data]="data" [autoGenerate]="true" [allowFiltering]="true" [filterMode]="'excelStyleFilter'"></igx-tree-grid>```## InteractionsIn order to open the filter menu for a particular column, the Angular filter icon in the header should be clicked. Additionally, you can use the `Ctrl + Shift + L` combination on a selected header. If the column can be sorted, pinned, moved, selected or hidden along with the filtering functionality, there will be buttons available for the features that are turned on.If no filter is applied, all the items in the list will be selected. They can be filtered from the input above the list. In order to filter the data, you can select/deselect the items in the list and either click the Apply button, or press `Enter`. The filtering applied through the list items creates filter expressions with `equals` operator and the logic operator between the expressions is [`OR`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/filteringlogic.html#or).If you type something in the search box and apply the filter, only the items that match the search criteria will be selected. If you want to add items to the currently filtered ones, however, you should select the option `Add current selection to filter`.If you want to clear the filter, you can check the `Select All` option and then click the Apply button.To apply a filter with different expressions, you can click the **Text filter**, which will open a sub menu with all available filter operators for the particular column. Selecting one of them will open the custom filter dialog, where you can add as many expressions as you want with different filter and logic operators. There is also a clear button, which can clear the filter.<div class="divider--half"></div>## Configure Menu FeaturesSorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`sortable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#sortable), [`selected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#selected), [`disablePinning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#disablePinning), [`disableHiding`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#disableHiding).```html<igx-tree-grid #treegrid1 [data]="data" [autoGenerate]="false" height="480px" width="100%" [moving]="true" [allowFiltering]="true"
+```
+<div class="divider--half"></div>
+## Usage
+To turn on the grid excel filtering, two inputs should be set. The [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#allowFiltering) should be set to `true` and the [`filterMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filterMode) should be set to `excelStyleFilter`.
+```html
+<igx-tree-grid [data]="data" [autoGenerate]="true" [allowFiltering]="true" [filterMode]="'excelStyleFilter'">
+</igx-tree-grid>
+```
+## Interactions
+In order to open the filter menu for a particular column, the Angular filter icon in the header should be clicked. Additionally, you can use the `Ctrl + Shift + L` combination on a selected header. If the column can be sorted, pinned, moved, selected or hidden along with the filtering functionality, there will be buttons available for the features that are turned on.
+If no filter is applied, all the items in the list will be selected. They can be filtered from the input above the list. In order to filter the data, you can select/deselect the items in the list and either click the Apply button, or press `Enter`. The filtering applied through the list items creates filter expressions with `equals` operator and the logic operator between the expressions is [`OR`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/filteringlogic.html#or).
+If you type something in the search box and apply the filter, only the items that match the search criteria will be selected. If you want to add items to the currently filtered ones, however, you should select the option `Add current selection to filter`.
+If you want to clear the filter, you can check the `Select All` option and then click the Apply button.
+To apply a filter with different expressions, you can click the **Text filter**, which will open a sub menu with all available filter operators for the particular column. Selecting one of them will open the custom filter dialog, where you can add as many expressions as you want with different filter and logic operators. There is also a clear button, which can clear the filter.
+<div class="divider--half"></div>
+## Configure Menu Features
+Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`sortable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#sortable), [`selected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#selected), [`disablePinning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#disablePinning), [`disableHiding`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#disableHiding).
+```html
+<igx-tree-grid #treegrid1 [data]="data" [autoGenerate]="false" height="480px" width="100%" [moving]="true" [allowFiltering]="true"
     primaryKey="ID" foreignKey="ParentID" filterMode="excelStyleFilter">
     <igx-column field="ID" header="Order ID" [dataType]="'string'"></igx-column>
     <igx-column field="Name" header="Order Product" [dataType]="'string'" [sortable]="true"></igx-column>
@@ -162,7 +188,13 @@ igx-buttongroup{
             <img *ngIf="val" src="assets/images/grid/active.png" title="Delivered" alt="Delivered" />
             <img *ngIf="!val" src="assets/images/grid/expired.png" title="Undelivered" alt="Undelivered" />
         </ng-template>
-    </igx-column></igx-tree-grid>```<div class="divider--half"></div>In the sample below 'Order Product', 'Category' and 'Units' columns have all three features enabled, 'Price' have all three disabled, 'Order Date' and 'Delivered' have only pinning and hiding.<div class="divider--half"></div>```typescript
+    </igx-column>
+</igx-tree-grid>
+```
+<div class="divider--half"></div>
+In the sample below 'Order Product', 'Category' and 'Units' columns have all three features enabled, 'Price' have all three disabled, 'Order Date' and 'Delivered' have only pinning and hiding.
+<div class="divider--half"></div>
+```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
@@ -266,7 +298,16 @@ export class TreeGridExcelStyleFilteringSample2Component implements OnInit {
   position: relative;
   justify-content: space-between;
 }
-```<div class="divider--half"></div>## TemplatesIf you want to further customize the Excel style filter menu without disabling the column features you could use custom templates. The Excel Style filter menu provides two directives for templating:- `IgxExcelStyleColumnOperationsTemplateDirective` - re-templates the area with all column operations like sorting, pinning, etc.- `IgxExcelStyleFilterOperationsTemplateDirective` - re-templates the area with all filter specific operations.You could either re-template only one of those areas or both of them. You could put any custom content inside those directives or you could use any of our built-in Excel style filtering components.The following code demonstrates how to define a custom Excel style filter menu using the [`igx-excel-style-header`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleheadercomponent.html), [`igx-excel-style-sorting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylesortingcomponent.html) and [`igx-excel-style-search`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylesearchcomponent.html) components.```html<igx-tree-grid #treegrid1 [data]="data" [autoGenerate]="false" height="480px" width="100%" [allowFiltering]="true"
+```
+<div class="divider--half"></div>
+## Templates
+If you want to further customize the Excel style filter menu without disabling the column features you could use custom templates. The Excel Style filter menu provides two directives for templating:
+- `IgxExcelStyleColumnOperationsTemplateDirective` - re-templates the area with all column operations like sorting, pinning, etc.
+- `IgxExcelStyleFilterOperationsTemplateDirective` - re-templates the area with all filter specific operations.
+You could either re-template only one of those areas or both of them. You could put any custom content inside those directives or you could use any of our built-in Excel style filtering components.
+The following code demonstrates how to define a custom Excel style filter menu using the [`igx-excel-style-header`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleheadercomponent.html), [`igx-excel-style-sorting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylesortingcomponent.html) and [`igx-excel-style-search`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylesearchcomponent.html) components.
+```html
+<igx-tree-grid #treegrid1 [data]="data" [autoGenerate]="false" height="480px" width="100%" [allowFiltering]="true"
     primaryKey="ID" foreignKey="ParentID" filterMode="excelStyleFilter">
 
     <igx-grid-excel-style-filtering [minHeight]="'380px'" [maxHeight]="'500px'">
@@ -285,10 +326,19 @@ export class TreeGridExcelStyleFilteringSample2Component implements OnInit {
         </igx-excel-style-filter-operations>
     </igx-grid-excel-style-filtering>
 
-    ...</igx-tree-grid>```You could also re-template the Excel style filtering icon in the column header using the `igxExcelStyleHeaderIcon` directive:```html<igx-tree-grid ...>
+    ...
+</igx-tree-grid>
+```
+You could also re-template the Excel style filtering icon in the column header using the `igxExcelStyleHeaderIcon` directive:
+```html
+<igx-tree-grid ...>
     <ng-template igxExcelStyleHeaderIcon>
         <igx-icon>filter_alt</igx-icon>
-    </ng-template></igx-tree-grid>```<div class="divider--half"></div>```typescript
+    </ng-template>
+</igx-tree-grid>
+```
+<div class="divider--half"></div>
+```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxExcelStyleColumnOperationsTemplateDirective, IgxExcelStyleFilterOperationsTemplateDirective, IgxExcelStyleHeaderComponent, IgxExcelStyleHeaderIconDirective, IgxExcelStyleSearchComponent, IgxExcelStyleSortingComponent, IgxGridExcelStyleFilteringComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent } from 'igniteui-angular/grids/core';
@@ -413,7 +463,23 @@ export class TreeGridExcelStyleFilteringSample3Component implements OnInit {
   position: relative;
   justify-content: space-between;
 }
-```Here is the full list of Excel style filtering components that you could use:- [`igx-excel-style-header`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleheadercomponent.html)- [`igx-excel-style-sorting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylesortingcomponent.html)- [`igx-excel-style-moving`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylemovingcomponent.html)- [`igx-excel-style-pinning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylepinningcomponent.html)- [`igx-excel-style-hiding`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylehidingcomponent.html)- [`igx-excel-style-selecting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleselectingcomponent.html)- [`igx-excel-style-clear-filters`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleclearfilterscomponent.html)- [`igx-excel-style-conditional-filter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleconditionalfiltercomponent.html)- [`igx-excel-style-search`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylesearchcomponent.html)<div class="divider--half"></div>## Unique Column Values StrategyThe list items inside the Excel Style Filtering dialog represent the unique values for the respective column. These values can be provided manually and loaded on demand, which is demonstrated in the [`Tree Grid Remote Data Operations`](remote-data-operations.md#unique-column-values-strategy) topic.## Formatted Values Filtering StrategyBy default, the Tree Grid component filters the data based on the original cell values, however in some cases you may want to filter the data based on the formatted values. @@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') { In order to do that you can use the [`FormattedValuesFilteringStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/formattedvaluesfilteringstrategy.html). }  In order to do that you can use the [`TreeGridFormattedValuesFilteringStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/treegridformattedvaluesfilteringstrategy.html).  The following sample demonstrates how to format the numeric values of a column as strings and filter the Tree Grid based on the string values:```typescript
+```
+Here is the full list of Excel style filtering components that you could use:
+- [`igx-excel-style-header`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleheadercomponent.html)
+- [`igx-excel-style-sorting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylesortingcomponent.html)
+- [`igx-excel-style-moving`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylemovingcomponent.html)
+- [`igx-excel-style-pinning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylepinningcomponent.html)
+- [`igx-excel-style-hiding`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylehidingcomponent.html)
+- [`igx-excel-style-selecting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleselectingcomponent.html)
+- [`igx-excel-style-clear-filters`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleclearfilterscomponent.html)
+- [`igx-excel-style-conditional-filter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleconditionalfiltercomponent.html)
+- [`igx-excel-style-search`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylesearchcomponent.html)
+<div class="divider--half"></div>
+## Unique Column Values Strategy
+The list items inside the Excel Style Filtering dialog represent the unique values for the respective column. These values can be provided manually and loaded on demand, which is demonstrated in the [`Tree Grid Remote Data Operations`](remote-data-operations.md#unique-column-values-strategy) topic.
+## Formatted Values Filtering Strategy
+By default, the Tree Grid component filters the data based on the original cell values, however in some cases you may want to filter the data based on the formatted values. @@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') { In order to do that you can use the [`FormattedValuesFilteringStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/formattedvaluesfilteringstrategy.html). }  In order to do that you can use the [`TreeGridFormattedValuesFilteringStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/treegridformattedvaluesfilteringstrategy.html).  The following sample demonstrates how to format the numeric values of a column as strings and filter the Tree Grid based on the string values:
+```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { TreeGridFormattedValuesFilteringStrategy } from 'igniteui-angular/core';
@@ -482,7 +548,12 @@ export class TreeGridFormattedFilteringStrategyComponent implements OnInit {
 .grid__wrapper {
     margin: 16px;
 }
-```>[!NOTE]>The formatted values filtering strategy won't work correctly if you have more than one column bound to the same field from your data and one of the columns has a formatter.## Tree Filter ViewBy default, the Excel Style Filtering dialog displays the items in a list view. In order to display them in a tree view you can use the [`TreeGridFilteringStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/treegridfilteringstrategy.html) and specify an array of column field names. Filter items will be displayed in a tree view for the specified columns and in a list view for all other columns. The following sample demonstrates how to show filter items in a tree view for the first column:```typescript
+```
+>[!NOTE]
+>The formatted values filtering strategy won't work correctly if you have more than one column bound to the same field from your data and one of the columns has a formatter.
+## Tree Filter View
+By default, the Excel Style Filtering dialog displays the items in a list view. In order to display them in a tree view you can use the [`TreeGridFilteringStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/treegridfilteringstrategy.html) and specify an array of column field names. Filter items will be displayed in a tree view for the specified columns and in a list view for all other columns. The following sample demonstrates how to show filter items in a tree view for the first column:
+```typescript
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { TreeGridFilteringStrategy } from 'igniteui-angular/core';
@@ -572,7 +643,11 @@ export class TreeGridTreeFilterViewComponent implements OnInit {
     display: flex;
     column-gap: 16px;
 }
-```## External Excel Style filteringAs you see at the demos above the default appearance of the Excel Style filtering dialog is inside the Tree Grid. So this dialog is only visible when configuring the filters. There is a way to make that dialog stay always visible - it can be used outside of the grid as a standalone component. In the demo below, the Excel style filtering is declared separately of the Tree Grid.### Demo```typescript
+```
+## External Excel Style filtering
+As you see at the demos above the default appearance of the Excel Style filtering dialog is inside the Tree Grid. So this dialog is only visible when configuring the filters. There is a way to make that dialog stay always visible - it can be used outside of the grid as a standalone component. In the demo below, the Excel style filtering is declared separately of the Tree Grid.
+### Demo
+```typescript
 import { Component, ViewChild, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { ORDERS_DATA } from '../data/orders';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
@@ -670,11 +745,25 @@ export class TreeGridExternalExcelStyleFilteringComponent implements OnInit {
 .igSelect {
     margin-left: 1px;
 }
-```<div class="divider--half"></div>### UsageIn order to configure the Excel style filtering component, you should set its [`column`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridexcelstylefilteringcomponent.html#column) property to one of the Tree Grid's columns. In the sample above, we have bound the [`column`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridexcelstylefilteringcomponent.html#column) property to the value of an IgxSelectComponent that displays the Tree Grid's columns.```html<igx-select #gridColums value="ID">
+```
+<div class="divider--half"></div>
+### Usage
+In order to configure the Excel style filtering component, you should set its [`column`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridexcelstylefilteringcomponent.html#column) property to one of the Tree Grid's columns. In the sample above, we have bound the [`column`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridexcelstylefilteringcomponent.html#column) property to the value of an IgxSelectComponent that displays the Tree Grid's columns.
+```html
+<igx-select #gridColums value="ID">
    <label igxLabel>Columns:</label>
    <igx-select-item *ngFor="let c of treegrid1.columns" [value]="c.field">
        {{ c.field }}
-   </igx-select-item></igx-select><igx-grid-excel-style-filtering [column]="treegrid1.getColumnByName(gridColums.value)"></igx-grid-excel-style-filtering>```## External OutletThe Tree Grid's [`z-index`](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) creates separate stacking context for each grid in the DOM. This ensures that all descendant elements of the grid will render as intended, without overlapping one another.However, elements that go outside of the grid (e.g. Excel Style filter) will conflict with outside elements with the same `z-index` (e.g. having two grids one under another) resulting in false rendering. The solution for this issue is to set the [`outlet`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#outlet) property to an external outlet directive which allows the overlay elements to always appear on top.### Demo```typescript
+   </igx-select-item>
+</igx-select>
+<igx-grid-excel-style-filtering [column]="treegrid1.getColumnByName(gridColums.value)">
+</igx-grid-excel-style-filtering>
+```
+## External Outlet
+The Tree Grid's [`z-index`](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) creates separate stacking context for each grid in the DOM. This ensures that all descendant elements of the grid will render as intended, without overlapping one another.
+However, elements that go outside of the grid (e.g. Excel Style filter) will conflict with outside elements with the same `z-index` (e.g. having two grids one under another) resulting in false rendering. The solution for this issue is to set the [`outlet`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#outlet) property to an external outlet directive which allows the overlay elements to always appear on top.
+### Demo
+```typescript
 import { Component, OnInit } from '@angular/core';
 import { ORDERS_DATA } from '../data/orders';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -789,31 +878,64 @@ export class TreeGridExternalOutletComponent implements OnInit {
     margin: 0 16px;
     padding-top: 10px;
 }
-```## StylingTo get started with styling the Excel Style Filtering dialog, we need to import the `index` file, where all the theme functions and component mixins live:```scss@use "igniteui-angular/theming" as *;// IMPORTANT: Prior to Ignite UI for Angular version 13 use:// @import '~igniteui-angular/lib/core/styles/themes/index';```The Excel Style Filtering dialog takes its background color from the grid's theme, using the `filtering-row-background` parameter. Additionally, there are specific Excel Style Filtering parameters available for customizing the text color of elements within the dialog. To change the overall style of the dialog, you need to create a custom theme.```scss$custom-grid: grid-theme(
+```
+## Styling
+To get started with styling the Excel Style Filtering dialog, we need to import the `index` file, where all the theme functions and component mixins live:
+```scss
+@use "igniteui-angular/theming" as *;
+// IMPORTANT: Prior to Ignite UI for Angular version 13 use:
+// @import '~igniteui-angular/lib/core/styles/themes/index';
+```
+The Excel Style Filtering dialog takes its background color from the grid's theme, using the `filtering-row-background` parameter. Additionally, there are specific Excel Style Filtering parameters available for customizing the text color of elements within the dialog. To change the overall style of the dialog, you need to create a custom theme.
+```scss
+$custom-grid: grid-theme(
   $filtering-row-background: #ffcd0f,
   $excel-filtering-header-foreground: #292826,
   $excel-filtering-subheader-foreground: #292826,
   $excel-filtering-actions-foreground: #006400,
   $excel-filtering-actions-hover-foreground: #ffcd0f,
-  $excel-filtering-actions-disabled-foreground: #9e9e9e);```We obviously have a lot more components inside the excel like filtering dialog, such as buttons, checkboxes, a list and even a drop-down. In order to style them, we need to create a separate theme for each one:```scss$custom-button: contained-button-theme(
+  $excel-filtering-actions-disabled-foreground: #9e9e9e
+);
+```
+We obviously have a lot more components inside the excel like filtering dialog, such as buttons, checkboxes, a list and even a drop-down. In order to style them, we need to create a separate theme for each one:
+```scss
+$custom-button: contained-button-theme(
   $background: #ffcd0f,
   $foreground: #292826,
   $hover-background: #292826,
-  $hover-foreground: #ffcd0f);$flat-custom-button: flat-button-theme(
-  $foreground: #ffcd0f,);$custom-checkbox: checkbox-theme(
+  $hover-foreground: #ffcd0f
+);
+$flat-custom-button: flat-button-theme(
+  $foreground: #ffcd0f,
+);
+$custom-checkbox: checkbox-theme(
   $empty-color: #292826,
   $fill-color: #292826,
   $tick-color: #ffcd0f,
-  $label-color: #292826);$custom-drop-down: drop-down-theme(
+  $label-color: #292826
+);
+$custom-drop-down: drop-down-theme(
   $background-color: #ffcd0f,
   $item-text-color: #292826,
   $hover-item-background: #292826,
-  $hover-item-text-color: #ffcd0f);$custom-input-group: input-group-theme(
+  $hover-item-text-color: #ffcd0f
+);
+$custom-input-group: input-group-theme(
   $box-background: #ffcd0f,
   $idle-text-color: #292826,
   $focused-text-color: #292826,
-  $filled-text-color: #292826);$custom-list: list-theme(
-  $background: #ffcd0f);```>[!NOTE]>Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](../themes/sass/palettes.md) topic for detailed guidance on how to use them.In this example we only changed some of the parameters for the listed components, but the [`button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme), [`checkbox-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-checkbox-theme), [`drop-down-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme), [`input-group-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme), [`list-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-list-theme) themes provide way more parameters to control their respective styling.The last step is to **include** each component’s custom theme. We will also set the color property for the input's placeholder.```scss:host {
+  $filled-text-color: #292826
+);
+$custom-list: list-theme(
+  $background: #ffcd0f
+);
+```
+>[!NOTE]
+>Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the [`palette`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-palette) and [`color`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/palettes#function-color) functions. Please refer to [`Palettes`](../themes/sass/palettes.md) topic for detailed guidance on how to use them.
+In this example we only changed some of the parameters for the listed components, but the [`button-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme), [`checkbox-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-checkbox-theme), [`drop-down-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme), [`input-group-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme), [`list-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-list-theme) themes provide way more parameters to control their respective styling.
+The last step is to **include** each component’s custom theme. We will also set the color property for the input's placeholder.
+```scss
+:host {
     @include tokens($custom-grid);
     @include tokens($custom-drop-down);
 
@@ -827,7 +949,15 @@ export class TreeGridExternalOutletComponent implements OnInit {
         .igx-input-group__input::placeholder {
             color: #ffcd0f;
         }
-    }}```>[!NOTE]>We scope most of the components' mixins within `.igx-excel-filter` and `.igx-excel-filter__secondary`, so that these custom themes will affect only components nested in the excel style filtering dialog and all of its sub-dialogs. Otherwise other buttons, checkboxes, input-groups and lists would be affected too.>[!NOTE]>If the component is using an [`Emulated`](../themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to `penetrate` this encapsulation using `::ng-deep`:```scss:host {
+    }
+}
+```
+>[!NOTE]
+>We scope most of the components' mixins within `.igx-excel-filter` and `.igx-excel-filter__secondary`, so that these custom themes will affect only components nested in the excel style filtering dialog and all of its sub-dialogs. Otherwise other buttons, checkboxes, input-groups and lists would be affected too.
+>[!NOTE]
+>If the component is using an [`Emulated`](../themes/sass/component-themes.md#view-encapsulation) ViewEncapsulation, it is necessary to `penetrate` this encapsulation using `::ng-deep`:
+```scss
+:host {
   ::ng-deep {
     @include tokens($custom-grid);
     @include tokens($custom-drop-down);
@@ -844,7 +974,11 @@ export class TreeGridExternalOutletComponent implements OnInit {
         color: #ffcd0f;
       }
     }
-  }}```### Demo```typescript
+  }
+}
+```
+### Demo
+```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -997,4 +1131,27 @@ $custom-drop-down: drop-down-theme(
     }
   }
 }
-```>[!NOTE]>The sample will not be affected by the selected global theme from `Change Theme`.<div class="divider--half"></div>## API References<div class="divider--half"></div>- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)- [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)## Additional Resources<div class="divider--half"></div>- [Tree Grid overview](tree-grid.md)- [Virtualization and Performance](virtualization.md)- [Paging](paging.md)- [Sorting](sorting.md)- [Summaries](summaries.md)- [Column Moving](column-moving.md)- [Column Pinning](column-pinning.md)- [Column Resizing](column-resizing.md)- [Selection](selection.md)<div class="divider--half"></div>Our community is active and always welcoming to new ideas.- [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)- [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
+```
+>[!NOTE]
+>The sample will not be affected by the selected global theme from `Change Theme`.
+<div class="divider--half"></div>
+## API References
+<div class="divider--half"></div>
+- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
+- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
+## Additional Resources
+<div class="divider--half"></div>
+- [Tree Grid overview](tree-grid.md)
+- [Virtualization and Performance](virtualization.md)
+- [Paging](paging.md)
+- [Sorting](sorting.md)
+- [Summaries](summaries.md)
+- [Column Moving](column-moving.md)
+- [Column Pinning](column-pinning.md)
+- [Column Resizing](column-resizing.md)
+- [Selection](selection.md)
+<div class="divider--half"></div>
+Our community is active and always welcoming to new ideas.
+- [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
+- [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

@@ -31,3 +31,9 @@ You are an expert in building front-end web applications. You have a strong unde
 ## UI Components
 
 - Use `igniteui-webcomponents`.
+- Use `igniteui-webcomponents-charts` for charts and data visualization.
+- Use `igniteui-webcomponents-grids` for advanced grids.
+- Use `igniteui-grid-lite` for Grid Lite.
+- Use `igniteui-dockmanager` for Dock Manager.
+- For package-specific components such as charts, advanced grids, Grid Lite, and Dock Manager, do not assume they come from `igniteui-webcomponents`; follow `.claude/skills/igniteui-wc-choose-components/SKILL.md` to choose the correct package and `.claude/skills/igniteui-wc-integrate-with-framework/SKILL.md` for setup.
+- If the required Ignite UI package is not present in `package.json`, add or install the correct dependency first.
