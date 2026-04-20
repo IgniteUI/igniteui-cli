@@ -31,4 +31,4 @@ You are an expert in building front-end web applications. You have a strong unde
 ## UI Components
 
 - Use `igniteui-webcomponents`.
-- For package-specific components such as advanced grids, Grid Lite, and Dock Manager, do not assume they come from `igniteui-webcomponents`; follow `.claude/skills/igniteui-wc-choose-components/SKILL.md` to choose the correct package and `.claude/skills/igniteui-wc-integrate-with-framework/SKILL.md` for setup.
+- For package-specific components such as charts, advanced grids, Grid Lite, and Dock Manager, do not assume they come from `igniteui-webcomponents`; follow `.claude/skills/igniteui-wc-choose-components/SKILL.md` to choose the correct package and `.claude/skills/igniteui-wc-integrate-with-framework/SKILL.md` for setup.
