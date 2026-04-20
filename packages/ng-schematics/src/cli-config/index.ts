@@ -2,7 +2,7 @@ import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import * as jsonc from "jsonc-parser";
-import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { addClassToBody, copyAISkillsToProject, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -120,6 +120,8 @@ function importStyles(): Rule {
 
 export function addAIConfig(): Rule {
 	return (tree: Tree) => {
+		copyAISkillsToProject();
+
 		const mcpFilePath = "/.vscode/mcp.json";
 		const angularCliServer = {
 			command: "npx",
