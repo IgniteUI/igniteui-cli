@@ -77,7 +77,7 @@ import { IgxExpansionPanelModule } from 'igniteui-angular/expansion-panel';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxExpansionPanelComponent` as a standalone dependency, or use the [`IGX_EXPANSION_PANEL_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/expansion-panel/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxExpansionPanelComponent` as a standalone dependency, or use the [`IGX_EXPANSION_PANEL_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/expansion-panel/src/expansion-panel/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -119,14 +119,14 @@ Now that you have the Ignite UI for Angular Expansion Panel module or directives
 
 The table below shows all the available markup parts for the Angular Expansion Panel.
 
-| Tag Name                          | Description                                                                                                            |
-| :-------------------------------: | :--------------------------------------------------------------------------------------------------------------------: |
-| `igx-expansion-panel`             | The component host - stores header and body.                                                                           |
-| `igx-expansion-panel-header`      | Stores the component header. This is always visible. Stores title and description as well as any additional content    |
-| `igx-expansion-panel-title`       | Use it to set expansion panel title.                                                                                   |
-| `igx-expansion-panel-description` | It can be used to provide a short summary. The description will always appear after the title (if the title is set).   |
-| `igx-expansion-panel-icon`        | Use it to change the default expand/collapse icon.                                                                     |
-| `igx-expansion-panel-body`        | This is the expandable container and it's only visible when the panel is expanded.                                     |
+|                      Tag Name     |                                                                                             Description               |
+| :-------------------------------: | :-------------------------------------------------------------------------------------------------------------------: |
+|           `igx-expansion-panel`   |                                                                 The component host - stores header and body.          |
+|     `igx-expansion-panel-header`  |  Stores the component header. This is always visible. Stores title and description as well as any additional content  |
+|      `igx-expansion-panel-title`  |                                                                        Use it to set expansion panel title.           |
+| `igx-expansion-panel-description` |  It can be used to provide a short summary. The description will always appear after the title (if the title is set). |
+|       `igx-expansion-panel-icon`  |                                                           Use it to change the default expand/collapse icon.          |
+|       `igx-expansion-panel-body`  |                               This is the expandable container and it's only visible when the panel is expanded.      |
 
 
 ## Properties Binding and Events

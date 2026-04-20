@@ -192,6 +192,9 @@ Analogically, the avatar can display an icon via the [`icon`](https://www.infrag
 </igx-avatar>
 ```
 
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 You should see something like this:
 
 <div class="sample-container loading" style="height:100px">

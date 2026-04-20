@@ -36,15 +36,15 @@ Before plotting geo-spatial data in the control, one should get familiar with th
 
 ## Shape Files Format
 
-The Angular [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html) control uses popular [Shape Files](http://en.wikipedia.org/wiki/Shapefile#Overview) format as one of the sources for geo-spatial data. Shape files are usually shipped with other file types, generally files with  **.shp**, **.shx**, and **.dbf** extensions.
+The Angular [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html) control uses popular [Shape Files](http://en.wikipedia.org/wiki/Shapefile#Overview) format as one of the sources for geo-spatial data. Shape files are usually shipped with other file types, generally files with **.shp**, **.shx**, and **.dbf** extensions.
 
 The following table provides basic information and purpose for each type of shape files.
 
-| File Extension | Description |
-| ---------------|------------ |
-| `.shp` | A shape file contains geo-spatial vector data items that describe points, polylines, and polygons. In this file, points may describe cities, polylines may describe roads, and polygons may describe shapes/borders of countries in geographic context. |
-| `.shx` | A shape index file contains an index for a quick lookup of a geo-spatial vector data items. |
-| `.dbf` | A shape database file contains a table in which a row corresponds to each geo-spatial data item from a shape (.shp) file. In the shape database file, string columns may describe attributes for geo-spatial data item such as strings (names of countries, regions, cities) and numeric columns (population of countries, location of cities). |
+| File Extension | Description                                                                                                                                                                                                                                                                                                                                     |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.shp`         | A shape file contains geo-spatial vector data items that describe points, polylines, and polygons. In this file, points may describe cities, polylines may describe roads, and polygons may describe shapes/borders of countries in geographic context.                                                                                         |
+| `.shx`         | A shape index file contains an index for a quick lookup of a geo-spatial vector data items.                                                                                                                                                                                                                                                     |
+| `.dbf`         | A shape database file contains a table in which a row corresponds to each geo-spatial data item from a shape (.shp) file. In the shape database file, string columns may describe attributes for geo-spatial data item such as strings (names of countries, regions, cities) and numeric columns (population of countries, location of cities). |
 
 Refer to the following resources for detailed information and specifications on how geo-spatial data is stored in shape files.
 

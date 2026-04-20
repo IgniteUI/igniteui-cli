@@ -363,8 +363,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 <div class="divider--half"></div>
 
-<!-- Angular, React, WebComponents -->
-
 ## Dependencies
 
 When installing the Angular gauge component, the core package must also be installed.
@@ -373,8 +371,6 @@ When installing the Angular gauge component, the core package must also be insta
 npm install --save igniteui-angular-core
 npm install --save igniteui-angular-gauges
 ```
-
-<!-- end: Angular, React, WebComponents -->
 
 ## Component Modules
 

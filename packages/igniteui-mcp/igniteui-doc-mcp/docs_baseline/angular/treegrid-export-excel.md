@@ -1,8 +1,28 @@
 ---
+title: Angular Tree Grid Export to Excel and PDF - Ignite UI for Angular
+_description: With Ignite UI Excel and PDF Exporters you can make client exports more convenient & simpler. These formats allow features like filtering, sorting, etc
+_keywords: data export, ignite ui for angular, infragistics
+_license: commercial
+_canonicalLink: grid/export-excel
 _tocName: Export services
 _premium: true
 ---
----title: Angular Tree Grid Export to Excel and PDF - Ignite UI for Angular_description: With Ignite UI Excel and PDF Exporters you can make client exports more convenient & simpler. These formats allow features like filtering, sorting, etc_keywords: data export, ignite ui for angular, infragistics_license: commercial_canonicalLink: grid/export-excel---# Angular Tree Grid Export to Excel and PDF Service@@if (igxName === 'IgxGrid' || igxName === 'IgxTreeGrid') {<p class="highlight">Whether your audience needs a spreadsheet for deeper analysis or a polished PDF they can share right away, the Ignite UI exporters help you deliver the right file from the IgxTreeGrid in seconds. Inject the [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html) or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html), call the respective [`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#export)/[`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html#export) method, and the component handles the rest—from honoring filters and sorting to shaping the output format.</p>}@@if (igxName === 'IgxHierarchicalGrid' || igxName === 'IgxPivotGrid') {<p class="highlight">The Ignite UI Excel and PDF Exporter services treat the IgxTreeGrid exactly like your users see it on screen—complete with hierarchical layouts and summaries. Inject the [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html) or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html), call the appropriate [`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#export)/[`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html#export) method, and let the service generate the final document.</p>}The sections below walk through setup, usage patterns, and tips for tailoring each export so that your users receive data that is ready to consume, no matter which file type they prefer.<div class="divider"></div>## Angular Excel Exporter ExampleThis live example demonstrates the standard Excel and PDF export workflow for the Tree Grid—bound data, two export buttons (Excel and PDF), and the resulting `.xlsx` and `.pdf` files with preserved filtering and sorting state. Share it with stakeholders who want to preview the experience before wiring it into their application.```typescript
+# Angular Tree Grid Export to Excel and PDF Service
+@@if (igxName === 'IgxGrid' || igxName === 'IgxTreeGrid') {
+<p class="highlight">
+Whether your audience needs a spreadsheet for deeper analysis or a polished PDF they can share right away, the Ignite UI exporters help you deliver the right file from the IgxTreeGrid in seconds. Inject the [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html) or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html), call the respective [`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#export)/[`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html#export) method, and the component handles the rest—from honoring filters and sorting to shaping the output format.
+</p>
+}
+@@if (igxName === 'IgxHierarchicalGrid' || igxName === 'IgxPivotGrid') {
+<p class="highlight">
+The Ignite UI Excel and PDF Exporter services treat the IgxTreeGrid exactly like your users see it on screen—complete with hierarchical layouts and summaries. Inject the [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html) or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html), call the appropriate [`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#export)/[`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html#export) method, and let the service generate the final document.
+</p>
+}
+The sections below walk through setup, usage patterns, and tips for tailoring each export so that your users receive data that is ready to consume, no matter which file type they prefer.
+<div class="divider"></div>
+## Angular Excel Exporter Example
+This live example demonstrates the standard Excel and PDF export workflow for the Tree Grid—bound data, two export buttons (Excel and PDF), and the resulting `.xlsx` and `.pdf` files with preserved filtering and sorting state. Share it with stakeholders who want to preview the experience before wiring it into their application.
+```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent } from 'igniteui-angular/grids/core';
@@ -101,10 +121,60 @@ export class TreeGridExcelExportSample1Component implements OnInit {
 .exportButton {
     margin-top: 5px;
 }
-```<div class="divider--half"></div>## Exporting Tree Grid's DataGetting the exporters into your project takes only a few lines of code. Follow these steps and you will have reusable services that can create either Excel or PDF outputs on demand:1. Import the [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html) and/or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html) in your root module.2. Inject whichever exporter you need and call its `export` method when the user requests a file.```typescript// component.tsimport { IgxExcelExporterService, IgxPdfExporterService } from 'igniteui-angular/grids/core';// import { IgxExcelExporterService, IgxPdfExporterService } from '@infragistics/igniteui-angular/grids/core'; for licensed package...private excelExportService = inject(IgxExcelExporterService);private pdfExportService = inject(IgxPdfExporterService);```> [!Note]> In v12.2.1 and later, `IgxExcelExporterService` is provided in root and does not need to be registered in the `providers` array. The PDF exporter was introduced in later versions and is available as an injectable service without any additional configuration.To initiate an export process you may use the handler of a button in your component's template.```html<igx-tree-grid #treeGrid [data]="localData" [autoGenerate]="true"></igx-tree-grid><button (click)="exportButtonHandler()">Export IgxTreeGrid to Excel</button><button (click)="exportPdfButtonHandler()">Export IgxTreeGrid to PDF</button>```You may access either exporter service by defining it as a constructor dependency and letting Angular provide an instance. Calling the shared [`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#export) method initiates the download while automatically respecting the component state, selected rows, and formatting rules.Here is the code which will execute both export processes in the component's typescript file:```typescript// component.tsimport { IgxExcelExporterService, IgxExcelExporterOptions, IgxPdfExporterService, IgxPdfExporterOptions } from 'igniteui-angular/grids/core';import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';@ViewChild('treeGrid') public treeGrid: IgxTreeGridComponent;private excelExportService = inject(IgxExcelExporterService);private pdfExportService = inject(IgxPdfExporterService);public exportButtonHandler() {
-  this.excelExportService.export(this.treeGrid, new IgxExcelExporterOptions('ExportedDataFile'));}public exportPdfButtonHandler() {
-  this.pdfExportService.export(this.treeGrid, new IgxPdfExporterOptions('ExportedDataFile'));}```Once wired up, pressing the respective buttons downloads files named `ExportedDataFile.xlsx` or `ExportedDataFile.pdf` populated with the current Tree Grid view. You can swap in customer-friendly file names, append timestamps, or surface a success toast so users know their export has completed.## Export All DataLarge, remote datasets often load page-by-page or on demand, which means the Tree Grid might not have every record available when the user clicks **Export**. To guarantee a complete workbook, hydrate the exporter with the full data collection before starting the process. The `exportData` helper bypasses the component and works directly against plain objects, so you can reuse the same routine for scheduled exports or admin-only downloads.```tspublic exportButtonHandler() {
-  this.excelExportService.exportData(this.localData, new IgxExcelExporterOptions('ExportedDataFile'));}```> [!TIP]> When offering PDF downloads for remote data, consider fetching the complete dataset first and then calling `export` so the document mirrors the user's expectations.@@if (igxName === 'IgxGrid') {## Export Grouped DataGrouping is a popular way to summarize customer segments, product categories, or financial periods before sharing the results. The exporter preserves the exact grouping hierarchy that is currently applied to the Tree Grid, so your recipients see the same breakdown you do in the browser. Simply group by one or more columns and trigger the export—no extra configuration is required.If you need flat data in the exported file, clear the grouping prior to calling `export` or handle the `rowExporting` event to reshape the output.Example:```typescript
+```
+<div class="divider--half"></div>
+## Exporting Tree Grid's Data
+Getting the exporters into your project takes only a few lines of code. Follow these steps and you will have reusable services that can create either Excel or PDF outputs on demand:
+1. Import the [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html) and/or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html) in your root module.
+2. Inject whichever exporter you need and call its `export` method when the user requests a file.
+```typescript
+// component.ts
+import { IgxExcelExporterService, IgxPdfExporterService } from 'igniteui-angular/grids/core';
+// import { IgxExcelExporterService, IgxPdfExporterService } from '@infragistics/igniteui-angular/grids/core'; for licensed package
+...
+private excelExportService = inject(IgxExcelExporterService);
+private pdfExportService = inject(IgxPdfExporterService);
+```
+> [!Note]
+> In v12.2.1 and later, `IgxExcelExporterService` is provided in root and does not need to be registered in the `providers` array. The PDF exporter was introduced in later versions and is available as an injectable service without any additional configuration.
+To initiate an export process you may use the handler of a button in your component's template.
+```html
+<igx-tree-grid #treeGrid [data]="localData" [autoGenerate]="true"></igx-tree-grid>
+<button (click)="exportButtonHandler()">Export IgxTreeGrid to Excel</button>
+<button (click)="exportPdfButtonHandler()">Export IgxTreeGrid to PDF</button>
+```
+You may access either exporter service by defining it as a constructor dependency and letting Angular provide an instance. Calling the shared [`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#export) method initiates the download while automatically respecting the component state, selected rows, and formatting rules.
+Here is the code which will execute both export processes in the component's typescript file:
+```typescript
+// component.ts
+import { IgxExcelExporterService, IgxExcelExporterOptions, IgxPdfExporterService, IgxPdfExporterOptions } from 'igniteui-angular/grids/core';
+import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
+@ViewChild('treeGrid') public treeGrid: IgxTreeGridComponent;
+private excelExportService = inject(IgxExcelExporterService);
+private pdfExportService = inject(IgxPdfExporterService);
+public exportButtonHandler() {
+  this.excelExportService.export(this.treeGrid, new IgxExcelExporterOptions('ExportedDataFile'));
+}
+public exportPdfButtonHandler() {
+  this.pdfExportService.export(this.treeGrid, new IgxPdfExporterOptions('ExportedDataFile'));
+}
+```
+Once wired up, pressing the respective buttons downloads files named `ExportedDataFile.xlsx` or `ExportedDataFile.pdf` populated with the current Tree Grid view. You can swap in customer-friendly file names, append timestamps, or surface a success toast so users know their export has completed.
+## Export All Data
+Large, remote datasets often load page-by-page or on demand, which means the Tree Grid might not have every record available when the user clicks **Export**. To guarantee a complete workbook, hydrate the exporter with the full data collection before starting the process. The `exportData` helper bypasses the component and works directly against plain objects, so you can reuse the same routine for scheduled exports or admin-only downloads.
+```ts
+public exportButtonHandler() {
+  this.excelExportService.exportData(this.localData, new IgxExcelExporterOptions('ExportedDataFile'));
+}
+```
+> [!TIP]
+> When offering PDF downloads for remote data, consider fetching the complete dataset first and then calling `export` so the document mirrors the user's expectations.
+@@if (igxName === 'IgxGrid') {
+## Export Grouped Data
+Grouping is a popular way to summarize customer segments, product categories, or financial periods before sharing the results. The exporter preserves the exact grouping hierarchy that is currently applied to the Tree Grid, so your recipients see the same breakdown you do in the browser. Simply group by one or more columns and trigger the export—no extra configuration is required.
+If you need flat data in the exported file, clear the grouping prior to calling `export` or handle the `rowExporting` event to reshape the output.
+Example:
+```typescript
 import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { GridColumnDataType, ISortingExpression, SortingDirection } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -188,7 +258,18 @@ export class ExcelExportSample1Component implements OnInit {
 .exportButton {
     margin-top: 5px;
 }
-```}## Export Multi Column Headers GridDashboards often rely on [multi-column headers](multi-column-headers.md) to add context—think of a "Q1/Q2/Q3" band above individual month columns. The exporter mirrors this structure so spreadsheet users immediately understand the grouping logic. If your downstream workflow prefers simple column names, flip the [exporter option](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexporteroptionsbase.html) [ignoreMultiColumnHeaders](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexporteroptionsbase.html#ignoremulticolumnheaders) flag to `true` and the output will include only the leaf headers.> [!NOTE]> The exported Tree Grid will not be formatted as a table, since Excel tables do not support multiple row headers.@@if (igxName === 'IgxHierarchicalGrid') {> [!NOTE]> The exported expansion state of the multi-column headers in the row islands will always be in its initial state.}@@if (igxName === 'IgxGrid') {```typescript
+```
+}
+## Export Multi Column Headers Grid
+Dashboards often rely on [multi-column headers](multi-column-headers.md) to add context—think of a "Q1/Q2/Q3" band above individual month columns. The exporter mirrors this structure so spreadsheet users immediately understand the grouping logic. If your downstream workflow prefers simple column names, flip the [exporter option](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexporteroptionsbase.html) [ignoreMultiColumnHeaders](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexporteroptionsbase.html#ignoremulticolumnheaders) flag to `true` and the output will include only the leaf headers.
+> [!NOTE]
+> The exported Tree Grid will not be formatted as a table, since Excel tables do not support multiple row headers.
+@@if (igxName === 'IgxHierarchicalGrid') {
+> [!NOTE]
+> The exported expansion state of the multi-column headers in the row islands will always be in its initial state.
+}
+@@if (igxName === 'IgxGrid') {
+```typescript
 import { Component, ViewChild } from '@angular/core';
 import { IgxColumnComponent, IgxColumnGroupComponent, IgxExporterEvent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -257,7 +338,10 @@ export class GridMultiColumnHeadersExportComponent {
     --ig-size: var(--ig-size-small);
     margin: 15px;
 }
-```}@@if (igxName === 'IgxTreeGrid') {```typescript
+```
+}
+@@if (igxName === 'IgxTreeGrid') {
+```typescript
 import { Component } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxColumnGroupComponent, IgxExporterEvent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -324,7 +408,10 @@ export class TreeGridMultiColumnHeadersExportComponent {
     --ig-size: var(--ig-size-small);
     margin: 15px;
 }
-```}@@if (igxName === 'IgxHierarchicalGrid') {```typescript
+```
+}
+@@if (igxName === 'IgxHierarchicalGrid') {
+```typescript
 import { Component, OnInit } from '@angular/core';
 import { IgxColumnComponent, IgxColumnGroupComponent, IgxExporterEvent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -435,10 +522,51 @@ export class HGridMultiColumnHeadersExportComponent implements OnInit {
     --ig-size: var(--ig-size-small);
     margin: 16px;
 }
-```}## Export Grid with Frozen Column HeadersLong sheets can become hard to read once the header row scrolls out of view. Enabling frozen headers keeps key context—like "Customer" or "Invoice Total"—visible at the top of the worksheet while your users explore the data further down. Toggle the [exporter option](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexporteroptionsbase.html) [freezeHeaders](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexporteroptionsbase.html#freezeHeaders) flag to `true` before calling `export` and the service will handle the rest.```typescriptpublic exportButtonHandler() {
+```
+}
+## Export Grid with Frozen Column Headers
+Long sheets can become hard to read once the header row scrolls out of view. Enabling frozen headers keeps key context—like "Customer" or "Invoice Total"—visible at the top of the worksheet while your users explore the data further down. Toggle the [exporter option](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexporteroptionsbase.html) [freezeHeaders](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexporteroptionsbase.html#freezeHeaders) flag to `true` before calling `export` and the service will handle the rest.
+```typescript
+public exportButtonHandler() {
     const exporterOptions = new IgxExcelExporterOptions('ExportedDataFile');
     exporterOptions.freezeHeaders = true;
-    this.excelExportService.export(this.grid, exporterOptions);}```PDF exports automatically include the column header row at the top of the document, so readers retain the same context when they open or print the file.## Customizing the Exported ContentMost teams tailor exports before sharing them: hiding internal-use columns, renaming headers, or skipping rows that only apply to administrators. Both exporter services expose events that let you intercept every row or column and decide how it should appear in the file. Subscribe to [`columnExporting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#columnexporting) and [`rowExporting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#rowexporting) to make last-minute adjustments—set `cancel = true` to omit an item or tweak the event arguments to update values on the fly.The following example will exclude a column from the export if its header is "Age" and if its index is 1:```typescript// component.tsthis.excelExportService.columnExporting.subscribe((args: IColumnExportingEventArgs) => {
+    this.excelExportService.export(this.grid, exporterOptions);
+}
+```
+PDF exports automatically include the column header row at the top of the document, so readers retain the same context when they open or print the file.
+## Customizing the Exported Content
+Most teams tailor exports before sharing them: hiding internal-use columns, renaming headers, or skipping rows that only apply to administrators. Both exporter services expose events that let you intercept every row or column and decide how it should appear in the file. Subscribe to [`columnExporting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#columnexporting) and [`rowExporting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#rowexporting) to make last-minute adjustments—set `cancel = true` to omit an item or tweak the event arguments to update values on the fly.
+The following example will exclude a column from the export if its header is "Age" and if its index is 1:
+```typescript
+// component.ts
+this.excelExportService.columnExporting.subscribe((args: IColumnExportingEventArgs) => {
   if (args.header == 'Age' && args.columnIndex == 1) {
       args.cancel = true;
-  }});this.excelExportService.export(this.treeGrid, new IgxExcelExporterOptions('ExportedDataFile'));```When you are exporting data from the Tree Grid component, the services automatically respect sorting, filtering, summaries, and hidden columns so the file reflects what the user currently sees. Need the full dataset instead? Toggle the relevant flags on [`IgxExcelExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporteroptions.html) or [`IgxPdfExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporteroptions.html) to include filtered rows, hidden columns, or custom metadata.## Known LimitationsBefore shipping exports to production users, review the following platform constraints so you can set expectations and provide helpful guidance within your app.|Limitation|Description||--- |--- ||Hierarchy levels|The exporter supports up to 8 levels of hierarchy. If you need deeper structures, flatten the data or export subsets to keep the file readable.||Max worksheet size|The maximum worksheet size supported by Excel is 1,048,576 rows by 16,384 columns. Consider slicing extremely large exports by date range or segment to stay within these limits.||Cell Styling|The Excel exporter service does not support exporting a custom style applied directly to a cell component. In such scenarios we recommend using the richer [Excel Library](../excel-library.md) for fine-grained formatting.||Wide PDF layouts|Very wide grids can force PDF columns to shrink to fit the page. Apply column widths or hide low-priority fields before exporting to keep the document legible.|## API ReferencesThe Excel and PDF Exporter services have a few more APIs to explore, which are listed below.- [IgxExcelExporterService API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html)- [IgxExcelExporterOptions API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporteroptions.html)- [IgxPdfExporterService API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html)- [IgxPdfExporterOptions API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporteroptions.html)Additional components that were used:- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)- [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)<div class="divider"></div>## Additional Resources<div class="divider--half"></div>Our community is active and always welcoming to new ideas. The links below connect you with samples, community answers, and the engineering team.- [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)- [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
+  }
+});
+this.excelExportService.export(this.treeGrid, new IgxExcelExporterOptions('ExportedDataFile'));
+```
+When you are exporting data from the Tree Grid component, the services automatically respect sorting, filtering, summaries, and hidden columns so the file reflects what the user currently sees. Need the full dataset instead? Toggle the relevant flags on [`IgxExcelExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporteroptions.html) or [`IgxPdfExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporteroptions.html) to include filtered rows, hidden columns, or custom metadata.
+## Known Limitations
+Before shipping exports to production users, review the following platform constraints so you can set expectations and provide helpful guidance within your app.
+| Limitation         | Description                                                                                                                                                                                                                  |
+| :----------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Hierarchy levels   | The exporter supports up to 8 levels of hierarchy. If you need deeper structures, flatten the data or export subsets to keep the file readable.                                                                              |
+| Max worksheet size | The maximum worksheet size supported by Excel is 1,048,576 rows by 16,384 columns. Consider slicing extremely large exports by date range or segment to stay within these limits.                                            |
+| Cell Styling       | The Excel exporter service does not support exporting a custom style applied directly to a cell component. In such scenarios we recommend using the richer [Excel Library](../excel-library.md) for fine-grained formatting. |
+| Wide PDF layouts   | Very wide grids can force PDF columns to shrink to fit the page. Apply column widths or hide low-priority fields before exporting to keep the document legible.                                                              |
+## API References
+The Excel and PDF Exporter services have a few more APIs to explore, which are listed below.
+- [IgxExcelExporterService API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html)
+- [IgxExcelExporterOptions API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporteroptions.html)
+- [IgxPdfExporterService API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html)
+- [IgxPdfExporterOptions API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporteroptions.html)
+Additional components that were used:
+- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
+<div class="divider"></div>
+## Additional Resources
+<div class="divider--half"></div>
+Our community is active and always welcoming to new ideas. The links below connect you with samples, community answers, and the engineering team.
+- [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
+- [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

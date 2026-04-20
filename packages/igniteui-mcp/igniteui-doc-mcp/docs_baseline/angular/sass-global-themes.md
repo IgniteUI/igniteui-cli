@@ -21,24 +21,24 @@ To generate a global theme we're going to be including two mixins `core` and `th
 
 <div class="divider--half"></div>
 
-| Name                      | Type    | Default | Description                                                               |
+|                   Name    |   Type  | Default |                                                       Description         |
 | :-----------------------: | :-----: | :-----: | :-----------------------------------------------------------------------: |
-| `$print-layout`           | boolean | true    | Include/exclude the styles for printing.                                  |
-| `$enhanced-accessibility` | boolean | false   | Switches component colors and other properties to more accessible values. |
+|         `$print-layout`   | boolean |   true  |                             Include/exclude the styles for printing.      |
+| `$enhanced-accessibility` | boolean |  false  | Switches component colors and other properties to more accessible values. |
 
 
 ### Theme mixins
 
 <div class="divider--half"></div>
 
-| Name          | Type    | Default                  | Description                                                                                                  |
+|        Name   |   Type  |               Default    |                                                                                     Description              |
 | :-----------: | :-----: | :----------------------: | :----------------------------------------------------------------------------------------------------------: |
-| `$palette`    | map     | `null`                   | The palette map to be used to by the default themes of all components.                                       |
-| `$schema`     | map     | `$light-material-schema` | The schema used as basis for styling the components.                                                         |
-| `$exclude`    | list    | `()`                     | A list of component themes to be excluded from the global theme.                                             |
-| `$roundness`  | Number  | `null`                   | Sets the global roundness factor for all components (the value can be any decimal fraction between 0 and 1). |
-| `$elevation`  | boolean | `true`                   | Turns on/off elevations for all components in the theme.                                                     |
-| `$elevations` | Map     | `$material-elevations`   | The elevation map to be used by all component themes.                                                        |
+|   `$palette`  |    map  |                `null`    |                                  The palette map to be used to by the default themes of all components.      |
+|    `$schema`  |    map  | `$light-material-schema` |                                                  The schema used as basis for styling the components.        |
+|   `$exclude`  |   list  |                  `()`    |                                       A list of component themes to be excluded from the global theme.       |
+| `$roundness`  | Number  |                `null`    | Sets the global roundness factor for all components (the value can be any decimal fraction between 0 and 1). |
+| `$elevation`  | boolean |                `true`    |                                              Turns on/off elevations for all components in the theme.        |
+| `$elevations` |    Map  |  `$material-elevations`  |                                                 The elevation map to be used by all component themes.        |
 
 Let's create a custom global theme that will use the primary, secondary and surface colors of our company.
 
@@ -141,16 +141,16 @@ _**Light**_
 Ignite UI for Angular gives you the option to pick from a set of predefined themes.
 The table below shows all the built-in themes that you can use right away.
 
-| Theme                                                             | Schema                             | Color Palette                                                                          |
-| ----------------------------------------------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------- |
-| [**Material Light**](presets/material.md#default-theme)           |  `$light-material-schema`          | $light-material-palette                                                                |
-| [**Material Dark**](presets/material.md#material-dark-theme)      |  `$dark-material-schema`           | $dark-material-palette                                                                 |
-| [**Fluent Light**](presets/fluent.md)                             | `$light-fluent-schema`             | $light-fluent-palette <br> $light-fluent-excel-palette <br> $light-fluent-word-palette |
-| [**Fluent Dark**](presets/fluent.md#fluent-dark-theme)            |  `$dark-fluent-schema`             | $dark-fluent-palette <br> $dark-fluent-excel-palette <br> $dark-fluent-word-palette    |
-| [**Bootstrap Light**](presets/bootstrap.md)                       | `$light-bootstrap-schema`          | $light-bootstrap-palette                                                               |
-| [**Bootstrap Dark**](presets/bootstrap.md#bootstrap-dark-theme)   |  `$dark-bootstrap-schema`         | $dark-bootstrap-palette                                                                |
-| [**Indigo Light**](presets/indigo.md)                             | `$light-indigo-schema`             | $light-indigo-palette                                                                  |
-| [**Indigo Dark**](presets/indigo.md#indigo-dark-theme)            |   `$dark-indigo-schema`           | $dark-indigo-palette                                                                   |
+| Theme                                                           | Schema                    | Color Palette                                                                          |
+| :-------------------------------------------------------------- | :------------------------ | :------------------------------------------------------------------------------------- |
+| [**Material Light**](presets/material.md#default-theme)         |  `$light-material-schema` | $light-material-palette                                                                |
+| [**Material Dark**](presets/material.md#material-dark-theme)    |  `$dark-material-schema`  | $dark-material-palette                                                                 |
+| [**Fluent Light**](presets/fluent.md)                           | `$light-fluent-schema`    | $light-fluent-palette <br> $light-fluent-excel-palette <br> $light-fluent-word-palette |
+| [**Fluent Dark**](presets/fluent.md#fluent-dark-theme)          |  `$dark-fluent-schema`    | $dark-fluent-palette <br> $dark-fluent-excel-palette <br> $dark-fluent-word-palette    |
+| [**Bootstrap Light**](presets/bootstrap.md)                     | `$light-bootstrap-schema` | $light-bootstrap-palette                                                               |
+| [**Bootstrap Dark**](presets/bootstrap.md#bootstrap-dark-theme) |  `$dark-bootstrap-schema` | $dark-bootstrap-palette                                                                |
+| [**Indigo Light**](presets/indigo.md)                           | `$light-indigo-schema`    | $light-indigo-palette                                                                  |
+| [**Indigo Dark**](presets/indigo.md#indigo-dark-theme)          |   `$dark-indigo-schema`   | $dark-indigo-palette                                                                   |
 
 
 ## Additional Resources
