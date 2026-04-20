@@ -33,8 +33,8 @@ jobs:
         run: |
           yarn config set scripts-prepend-node-path auto
           yarn test
-      - name: Test
-        run: node --run lint
+      - name: Lint
+        run: yarn lint
       - name: Generate coverage
         if: matrix.node-version == '20.x'
         run: yarn coverage
