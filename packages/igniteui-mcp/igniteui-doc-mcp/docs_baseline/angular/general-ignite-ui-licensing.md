@@ -40,7 +40,7 @@ Infragistics Ignite UI for Angular is available as an npm package and you can ad
 
 The Infragistics Ignite UI Dock Manager Web Component is available as a separate npm package and by installing it you will start using the [Ignite UI Dock Manager Web Component Trial version](https://www.infragistics.com/products/ignite-ui-angular) of the product.
 
-> More information on how to start using the Ignite UI for Angular npm package can be found in [this topic](getting-started.md#installing-ignite-ui-for-angular). Additional information on Ignite UI Dock Manager Web Component can be found in the [Dock Manager documentation](../dock-manager.md).
+> More information on how to start using the Ignite UI for Angular npm package can be found in [this topic](getting-started.md#install-ignite-ui-for-angular). Additional information on Ignite UI Dock Manager Web Component can be found in the [Dock Manager documentation](../dock-manager.md).
 
 ### Upgrading packages using our Angular Schematics or Ignite UI CLI
 

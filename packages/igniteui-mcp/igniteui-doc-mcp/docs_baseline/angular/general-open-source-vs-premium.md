@@ -42,113 +42,113 @@ Start with Grid Lite for essential needs and seamlessly upgrade to the full-feat
 
 ## Comparison Table for All Components
 
-| Component                          | Open-Source | Premium |
-|-----------------------------------|-------------|---------|
-| Accordion                         | ✅          | ✅      |
-| Action Strip                      | ✅          | ✅      |
-| Autocomplete                      | ✅          | ✅      |
-| Avatar                            | ✅          | ✅      |
-| Badge                             | ✅          | ✅      |
-| Banner                            | ✅          | ✅      |
-| Bottom Nav                        | ✅          | ✅      |
-| Button                            | ✅          | ✅      |
-| Button Group                      | ✅          | ✅      |
-| Calendar                          | ✅          | ✅      |
-| Card                              | ✅          | ✅      |
-| Carousel                          | ✅          | ✅      |
-| Chart Area                        | ❌          | ✅      |
-| Chart Bar                         | ❌          | ✅      |
-| Chart Bubble                      | ❌          | ✅      |
-| Chart Category                    | ❌          | ✅      |
-| Chart Column                      | ❌          | ✅      |
-| Chart Donut                       | ❌          | ✅      |
-| Chart Financial/Stock             | ❌          | ✅      |
-| Chart Line                        | ❌          | ✅      |
-| Chart Pie                         | ❌          | ✅      |
-| Chart Pie Data                    | ❌          | ✅      |
-| Chart Point                       | ❌          | ✅      |
-| Chart Polar                       | ❌          | ✅      |
-| Chart Radial                      | ❌          | ✅      |
-| Chart Scatter                     | ❌          | ✅      |
-| Chart Shape                       | ❌          | ✅      |
-| Chart Sparkline                   | ❌          | ✅      |
-| Chart Spline                      | ❌          | ✅      |
-| Chart Spline Area                 | ❌          | ✅      |
-| Chart Stacked                     | ❌          | ✅      |
-| Chart Step Area                   | ❌          | ✅      |
-| Chart Step Line                   | ❌          | ✅      |
-| Chart Treemap                     | ❌          | ✅      |
-| Chart Waterfall                   | ❌          | ✅      |
-| Chat                              | ✅          | ✅      |
-| Checkbox                          | ✅          | ✅      |
-| Chip                              | ✅          | ✅      |
-| Chip Area                         | ✅          | ✅      |
-| Circular Progress                 | ✅          | ✅      |
-| Color Editor                      | ❌          | ✅      |
-| Combo                             | ✅          | ✅      |
-| CVS Exporter                      | ❌          | ✅      |
-| Dashboard Tile                    | ❌          | ✅      |
-| Date Picker                       | ✅          | ✅      |
-| Date Range Picker                 | ✅          | ✅      |
-| Date Time Editor                  | ✅          | ✅      |
-| Dialog                            | ✅          | ✅      |
-| Divider                           | ✅          | ✅      |
-| Drag and Drop                     | ✅          | ✅      |
-| Drop Down                         | ✅          | ✅      |
-| Excel Exporter                    | ❌          | ✅      |
-| Excel Library                     | ❌          | ✅      |
-| Expansion Panel                   | ✅          | ✅      |
-| ForOf                             | ✅          | ✅      |
-| Grid Data                         | ❌          | ✅      |
-| Grid Hierarchical                 | ❌          | ✅      |
-| Grid Pivot                        | ❌          | ✅      |
-| Grid Tree                         | ❌          | ✅      |
-| Grid Lite                         | ✅          | ✅      |
-| Gauges Linear Gauge               | ❌          | ✅      |
-| Gauges Radial Gauge               | ❌          | ✅      |
-| Gauges Bullet Graph               | ❌          | ✅      |
-| Map Geographic Area               | ❌          | ✅      |
-| Map Geographic Bubble             | ❌          | ✅      |
-| Map Geographic Contour            | ❌          | ✅      |
-| Map Geographic High Density       | ❌          | ✅      |
-| Map Geographic Polygon            | ❌          | ✅      |
-| Map Geographic Polyline           | ❌          | ✅      |
-| Map Geographic Symbol             | ❌          | ✅      |
-| Icon                              | ✅          | ✅      |
-| Icon Button                       | ✅          | ✅      |
-| Icon Service                      | ✅          | ✅      |
-| Input                             | ✅          | ✅      |
-| Input Group                       | ✅          | ✅      |
-| Label                             | ✅          | ✅      |
-| Layout Manager                    | ✅          | ✅      |
-| Linear Progress                   | ✅          | ✅      |
-| List                              | ✅          | ✅      |
-| Mask Input                        | ✅          | ✅      |
-| Month Picker                      | ✅          | ✅      |
-| Nav Drawer                        | ✅          | ✅      |
-| Navbar                            | ✅          | ✅      |
-| Overlay Service                   | ✅          | ✅      |
-| Paginator                         | ✅          | ✅      |
-| Query Builder                     | ❌          | ✅      |
-| Radio                             | ✅          | ✅      |
-| Radio Group                       | ✅          | ✅      |
-| Rating                            | ✅          | ✅      |
-| Ripple                            | ✅          | ✅      |
-| Select                            | ✅          | ✅      |
-| Simple Combo                      | ✅          | ✅      |
-| Slider                            | ✅          | ✅      |
-| Snackbar                          | ✅          | ✅      |
-| Splitter                          | ✅          | ✅      |
-| Spreadsheet                       | ❌          | ✅      |
-| Stepper                           | ✅          | ✅      |
-| Switch                            | ✅          | ✅      |
-| Tabs                              | ✅          | ✅      |
-| Text Highlight                    | ✅          | ✅      |
-| Tile Manager                      | ✅          | ✅      |
-| Time Picker                       | ✅          | ✅      |
-| Toast                             | ✅          | ✅      |
-| Toggle                            | ✅          | ✅      |
-| Toolbar                           | ❌          | ✅      |
-| Tooltip                           | ✅          | ✅      |
-| Tree                              | ✅          | ✅      |
-| Zoom Slider                       | ❌          | ✅      |
+| Component                   | Open-Source | Premium |
+| :-------------------------- | :---------- | :------ |
+| Accordion                   | ✅          | ✅      |
+| Action Strip                | ✅          | ✅      |
+| Autocomplete                | ✅          | ✅      |
+| Avatar                      | ✅          | ✅      |
+| Badge                       | ✅          | ✅      |
+| Banner                      | ✅          | ✅      |
+| Bottom Nav                  | ✅          | ✅      |
+| Button                      | ✅          | ✅      |
+| Button Group                | ✅          | ✅      |
+| Calendar                    | ✅          | ✅      |
+| Card                        | ✅          | ✅      |
+| Carousel                    | ✅          | ✅      |
+| Chart Area                  | ❌          | ✅      |
+| Chart Bar                   | ❌          | ✅      |
+| Chart Bubble                | ❌          | ✅      |
+| Chart Category              | ❌          | ✅      |
+| Chart Column                | ❌          | ✅      |
+| Chart Donut                 | ❌          | ✅      |
+| Chart Financial/Stock       | ❌          | ✅      |
+| Chart Line                  | ❌          | ✅      |
+| Chart Pie                   | ❌          | ✅      |
+| Chart Pie Data              | ❌          | ✅      |
+| Chart Point                 | ❌          | ✅      |
+| Chart Polar                 | ❌          | ✅      |
+| Chart Radial                | ❌          | ✅      |
+| Chart Scatter               | ❌          | ✅      |
+| Chart Shape                 | ❌          | ✅      |
+| Chart Sparkline             | ❌          | ✅      |
+| Chart Spline                | ❌          | ✅      |
+| Chart Spline Area           | ❌          | ✅      |
+| Chart Stacked               | ❌          | ✅      |
+| Chart Step Area             | ❌          | ✅      |
+| Chart Step Line             | ❌          | ✅      |
+| Chart Treemap               | ❌          | ✅      |
+| Chart Waterfall             | ❌          | ✅      |
+| Chat                        | ✅          | ✅      |
+| Checkbox                    | ✅          | ✅      |
+| Chip                        | ✅          | ✅      |
+| Chip Area                   | ✅          | ✅      |
+| Circular Progress           | ✅          | ✅      |
+| Color Editor                | ❌          | ✅      |
+| Combo                       | ✅          | ✅      |
+| CVS Exporter                | ❌          | ✅      |
+| Dashboard Tile              | ❌          | ✅      |
+| Date Picker                 | ✅          | ✅      |
+| Date Range Picker           | ✅          | ✅      |
+| Date Time Editor            | ✅          | ✅      |
+| Dialog                      | ✅          | ✅      |
+| Divider                     | ✅          | ✅      |
+| Drag and Drop               | ✅          | ✅      |
+| Drop Down                   | ✅          | ✅      |
+| Excel Exporter              | ❌          | ✅      |
+| Excel Library               | ❌          | ✅      |
+| Expansion Panel             | ✅          | ✅      |
+| ForOf                       | ✅          | ✅      |
+| Grid Data                   | ❌          | ✅      |
+| Grid Hierarchical           | ❌          | ✅      |
+| Grid Pivot                  | ❌          | ✅      |
+| Grid Tree                   | ❌          | ✅      |
+| Grid Lite                   | ✅          | ✅      |
+| Gauges Linear Gauge         | ❌          | ✅      |
+| Gauges Radial Gauge         | ❌          | ✅      |
+| Gauges Bullet Graph         | ❌          | ✅      |
+| Map Geographic Area         | ❌          | ✅      |
+| Map Geographic Bubble       | ❌          | ✅      |
+| Map Geographic Contour      | ❌          | ✅      |
+| Map Geographic High Density | ❌          | ✅      |
+| Map Geographic Polygon      | ❌          | ✅      |
+| Map Geographic Polyline     | ❌          | ✅      |
+| Map Geographic Symbol       | ❌          | ✅      |
+| Icon                        | ✅          | ✅      |
+| Icon Button                 | ✅          | ✅      |
+| Icon Service                | ✅          | ✅      |
+| Input                       | ✅          | ✅      |
+| Input Group                 | ✅          | ✅      |
+| Label                       | ✅          | ✅      |
+| Layout Manager              | ✅          | ✅      |
+| Linear Progress             | ✅          | ✅      |
+| List                        | ✅          | ✅      |
+| Mask Input                  | ✅          | ✅      |
+| Month Picker                | ✅          | ✅      |
+| Nav Drawer                  | ✅          | ✅      |
+| Navbar                      | ✅          | ✅      |
+| Overlay Service             | ✅          | ✅      |
+| Paginator                   | ✅          | ✅      |
+| Query Builder               | ❌          | ✅      |
+| Radio                       | ✅          | ✅      |
+| Radio Group                 | ✅          | ✅      |
+| Rating                      | ✅          | ✅      |
+| Ripple                      | ✅          | ✅      |
+| Select                      | ✅          | ✅      |
+| Simple Combo                | ✅          | ✅      |
+| Slider                      | ✅          | ✅      |
+| Snackbar                    | ✅          | ✅      |
+| Splitter                    | ✅          | ✅      |
+| Spreadsheet                 | ❌          | ✅      |
+| Stepper                     | ✅          | ✅      |
+| Switch                      | ✅          | ✅      |
+| Tabs                        | ✅          | ✅      |
+| Text Highlight              | ✅          | ✅      |
+| Tile Manager                | ✅          | ✅      |
+| Time Picker                 | ✅          | ✅      |
+| Toast                       | ✅          | ✅      |
+| Toggle                      | ✅          | ✅      |
+| Toolbar                     | ❌          | ✅      |
+| Tooltip                     | ✅          | ✅      |
+| Tree                        | ✅          | ✅      |
+| Zoom Slider                 | ❌          | ✅      |

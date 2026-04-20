@@ -121,7 +121,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ### Header Row
 
 The header row displays the current label of x-axis when hovering mouse over category series and financial series. You can use [`headerFormatDate`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html#headerFormatDate) and [`headerFormatTime`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html#headerFormatTime) properties to format date and time in the [`IgxDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html) if the x-axis shows dates. For other types of series, the [`IgxDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html) does not render the header row.
@@ -238,17 +237,16 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 Setting values on the [`includedColumns`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html#includedColumns) and [`excludedColumns`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html#excludedColumns) properties, depends on type of series and how many data columns they support. For example, you can set [`includedColumns`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html#includedColumns) property to a collection of **Open** and **Close** strings and the legend will show only open and close values for stock prices when the chart is plotting financial series. The following table lists all column names that can be use to filter columns in data legend.
 
-|  Type of Series  | Column Names |
-| -----------------|-------------- |
-| Category Series  | Value |
-| Radial Series    | Value |
-| Polar Series     | Radius, Angle |
-| Bubble Series    | X, Y, Radius |
-| Scatter Series   | X, Y |
-| Range Series     | High, Low |
+| Type of Series   | Column Names                                         |
+| ---------------- | ---------------------------------------------------- |
+| Category Series  | Value                                                |
+| Radial Series    | Value                                                |
+| Polar Series     | Radius, Angle                                        |
+| Bubble Series    | X, Y, Radius                                         |
+| Scatter Series   | X, Y                                                 |
+| Range Series     | High, Low                                            |
 | Financial Series | High, Low, Open, Close, Change, TypicalPrice, Volume |
 
 Where the **TypicalPrice** and percentage **Change** of OHLC prices are automatically calculated by financial series so you do not need to include them in your data sources.
@@ -271,14 +269,14 @@ The unit column displays an abbreviation symbol on the right side of value colum
 
 ### Customizing Columns
 
-You can customize text displayed in the **Label** and **Unit** columns using  properties that end with **MemberAsLegendLabel** and **MemberAsLegendUnit** on each series. The following table shows some possible customizations of the **Label** and **Unit** columns.
+You can customize text displayed in the **Label** and **Unit** columns using properties that end with **MemberAsLegendLabel** and **MemberAsLegendUnit** on each series. The following table shows some possible customizations of the **Label** and **Unit** columns.
 
-|  Type of Series | Series Properties |
-| ------|---- |
-| Category Series | ValueMemberAsLegendLabel="$" <br> ValueMemberAsLegendUnit="M" |
-| Radial Series | ValueMemberAsLegendLabel="Distance:" <br> ValueMemberAsLegendUnit="KM" |
-| Polar Series | RadiusMemberAsLegendLabel="Radius:" <br> RadiusMemberAsLegendUnit="KM" <br> AngleMemberAsLegendLabel="Angle:" <br> AngleMemberAsLegendUnit="°" |
-| Range Series | HighMemberAsLegendLabel="H:" <br> HighMemberAsLegendUnit="K" <br> LowMemberAsLegendLabel="L:" <br> LowMemberAsLegendUnit="K" |
+| Type of Series   | Series Properties                                                                                                                                                                                                                                                       |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Category Series  | ValueMemberAsLegendLabel="$" <br> ValueMemberAsLegendUnit="M"                                                                                                                                                                                                           |
+| Radial Series    | ValueMemberAsLegendLabel="Distance:" <br> ValueMemberAsLegendUnit="KM"                                                                                                                                                                                                  |
+| Polar Series     | RadiusMemberAsLegendLabel="Radius:" <br> RadiusMemberAsLegendUnit="KM" <br> AngleMemberAsLegendLabel="Angle:" <br> AngleMemberAsLegendUnit="°"                                                                                                                          |
+| Range Series     | HighMemberAsLegendLabel="H:" <br> HighMemberAsLegendUnit="K" <br> LowMemberAsLegendLabel="L:" <br> LowMemberAsLegendUnit="K"                                                                                                                                            |
 | Financial Series | OpenMemberAsLegendLabel="O:" <br> OpenMemberAsLegendUnit="K" <br> HighMemberAsLegendLabel="H:" <br> HighMemberAsLegendUnit="K" <br> LowMemberAsLegendLabel="L:" <br> LowMemberAsLegendUnit="K" <br> CloseMemberAsLegendLabel="C:" <br> CloseMemberAsLegendUnit="K" <br> |
 
 Also, you can use the `UnitText` property on the [`IgxDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html) to change text displayed in all Unit columns.
@@ -400,7 +398,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Angular Data Legend Value Formatting
 
 The [`IgxDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html) provides automatic abbreviation of large numbers using its [`valueFormatAbbreviation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html#valueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`valueFormatMinFractions`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html#valueFormatMinFractions) and [`valueFormatMaxFractions`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html#valueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
@@ -514,7 +511,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Angular Data Legend Value Mode
 
 You have the ability to change the default decimal display of values within the [`IgxDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html) to a currency by changing the [`valueFormatMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html#valueFormatMode) property. Also, you can change the culture of the displayed currency symbol by setting the [`valueFormatCulture`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html#valueFormatCulture) property a culture tag. For example, the following example data legend with the [`valueFormatCulture`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatalegendcomponent.html#valueFormatCulture) set to "en-GB" to display British Pounds (£) symbol:
@@ -624,7 +620,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Angular Data Legend Grouping
 
@@ -793,7 +788,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Angular Data Legend Styling & Events
 
@@ -982,7 +976,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## API References
 

@@ -352,6 +352,9 @@ Let’s create a list with contacts that can be deleted. When an item is deleted
 </igx-list>
 ```
 
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 ```typescript
 //sample.component.ts
 

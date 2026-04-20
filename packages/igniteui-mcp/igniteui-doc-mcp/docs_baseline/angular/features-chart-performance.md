@@ -286,7 +286,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Angular Chart with High-Volume
@@ -486,7 +485,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## General Performance Guidelines
@@ -510,25 +508,25 @@ this.CategoryChart.dataSource = FlattenDataSource.create();
 this.FinancialChart.dataSource = FlattenDataSource.create();
 
 export class FlattenDataSource {
-    public static create(): any[] {
-        const data: any[] = [];
-        data.push({ "Year": "1996", "USA": 148, "CHN": 110 });
-        data.push({ "Year": "2000", "USA": 142, "CHN": 115 });
-        return data;
-    }
+  public static create(): any[] {
+    const data: any[] = [];
+    data.push({ Year: "1996", USA: 148, CHN: 110 });
+    data.push({ Year: "2000", USA: 142, CHN: 115 });
+    return data;
+  }
 }
 // instead of this data structure:
 export class MultiDataSources {
-    public static create(): any[] {
-        const dataSource1: any[] = [];
-        dataSource1.push({ "Year": "1996", "Value": 148 });
-        dataSource1.push({ "Year": "2000", "Value": 142 });
-        const dataSource2: any[] = [];
-        dataSource2.push({ "Year": "1996", "Value": 110 });
-        dataSource2.push({ "Year": "2000", "Value": 115 });
-        const multipleSources: any[] = [dataSource1, dataSource2];
-        return multipleSources;
-    }
+  public static create(): any[] {
+    const dataSource1: any[] = [];
+    dataSource1.push({ Year: "1996", Value: 148 });
+    dataSource1.push({ Year: "2000", Value: 142 });
+    const dataSource2: any[] = [];
+    dataSource2.push({ Year: "1996", Value: 110 });
+    dataSource2.push({ Year: "2000", Value: 115 });
+    const multipleSources: any[] = [dataSource1, dataSource2];
+    return multipleSources;
+  }
 }
 ```
 
@@ -539,8 +537,8 @@ Angular [`IgxCategoryChartComponent`](https://www.infragistics.com/products/igni
 <!-- Angular, React, WebComponents -->
 
 ```ts
-this.Chart.includedProperties = [ "Year", "USA", "RUS" ];
-this.Chart.excludedProperties = [ "CHN",  "FRN", "GER" ];
+this.Chart.includedProperties = ["Year", "USA", "RUS"];
+this.Chart.excludedProperties = ["CHN", "FRN", "GER"];
 ```
 
 ## Chart Performance Guidelines
@@ -551,18 +549,18 @@ Simpler chart types such as [Line Chart](../types/line-chart.md) have faster per
 
 The following table lists chart types in order from the fastest performance to slower performance in each group of charts:
 
-| Chart Group     | Chart Type |
-| ----------------|--------------------------------- |
-| Pie Charts       | - [Pie Chart](../types/pie-chart.md) <br> - [Donut Chart](../types/donut-chart.md) <br> - [Radial Pie Chart](../types/radial-chart.md#angular-radial-pie-chart) |
-| Line Charts      | - [Category Line Chart](../types/line-chart.md#angular-line-chart-example) <br> - [Category Spline Chart](../types/spline-chart.md#angular-spline-chart-example) <br> - [Step Line Chart](../types/step-chart.md#angular-step-line-chart) <br> - [Radial Line Chart](../types/radial-chart.md#angular-radial-line-chart) <br> - [Polar Line Chart](../types/polar-chart.md#angular-polar-line-chart) <br> - [Scatter Line Chart](../types/scatter-chart.md#angular-scatter-line-chart) <br> - [Scatter Polyline Chart](../types/shape-chart.md#angular-scatter-polyline-chart) (\*)  <br> - [Scatter Contour Chart](../types/scatter-chart.md#angular-scatter-contour-chart) <br> - [Stacked Line Chart](../types/stacked-chart.md#angular-stacked-line-chart) <br> - [Stacked 100% Line Chart](../types/stacked-chart.md#angular-stacked-100-line-chart) <br> |
-| Area Charts      | - [Category Area Chart](../types/area-chart.md#angular-area-chart-example) <br> - [Step Area Chart](../types/step-chart.md#angular-step-area-chart) <br> - [Range Area Chart](../types/area-chart.md#angular-range-area-chart) <br> - [Radial Area Chart](../types/radial-chart.md#angular-radial-area-chart) <br> - [Polar Area Chart](../types/polar-chart.md#angular-polar-area-chart) <br> - [Scatter Polygon Chart](../types/shape-chart.md#angular-scatter-polygon-chart) (\*) <br> - [Scatter Area Chart](../types/scatter-chart.md#angular-scatter-area-chart) <br> - [Stacked Area Chart](../types/stacked-chart.md#angular-stacked-area-chart) <br> - [Stacked 100% Area Chart](../types/stacked-chart.md#angular-stacked-100-area-chart) <br> |
-| Column Charts    | - [Column Chart](../types/column-chart.md#angular-column-chart-example) <br> - [Bar Chart](../types/bar-chart.md#angular-bar-chart-example) <br> - [Waterfall Chart](../types/column-chart.md#angular-waterfall-chart) <br> - [Range Column Chart](../types/column-chart.md#angular-range-column-chart) <br> - [Radial Column Chart](../types/radial-chart.md#angular-radial-column-chart) <br> - [Stacked Column Chart](../types/stacked-chart.md#angular-stacked-column-chart) <br> - [Stacked Bar Chart](../types/stacked-chart.md#angular-stacked-bar-chart) <br> - [Stacked 100% Column Chart](../types/stacked-chart.md#angular-stacked-100-column-chart) <br> - [Stacked 100% Bar Chart](../types/stacked-chart.md#angular-stacked-100-bar-chart) |
-| Spline Charts    | - [Category Spline Chart](../types/spline-chart.md#angular-spline-chart-example) <br> - [Polar Spline Chart](../types/polar-chart.md#angular-polar-spline-chart) <br> - [Scatter Spline Chart](../types/scatter-chart.md#angular-scatter-spline-chart) <br> - [Stacked Spline Chart](../types/stacked-chart.md#angular-stacked-spline-chart) <br> - [Stacked 100% Spline Chart](../types/stacked-chart.md#angular-stacked-100-spline-chart) <br> |
-| Point Charts     | - [Category Point Chart](../types/point-chart.md) <br> - [Scatter HD Chart](../types/scatter-chart.md#angular-scatter-high-density-chart)  <br> - [Scatter Marker Chart](../types/scatter-chart.md#angular-scatter-marker-chart) <br> - [Scatter Bubble Chart](../types/bubble-chart.md) <br> - [Polar Marker Chart](../types/polar-chart.md#angular-polar-marker-chart) <br> |
-| Financial Charts | - [Stock Chart in Line Mode](../types/stock-chart.md) <br> - [Stock Chart in Column Mode](../types/stock-chart.md) <br> - [Stock Chart in Bar Mode](../types/stock-chart.md) <br> - [Stock Chart in Candle Mode](../types/stock-chart.md) <br> - [Stock Chart with Overlays](../types/stock-chart.md) <br> - [Stock Chart with Zoom Pane](../types/stock-chart.md) <br> - [Stock Chart with Volume Pane](../types/stock-chart.md#volume-pane) <br> - [Stock Chart with Indicator Pane](../types/stock-chart.md#indicator-pane) <br> |
-| Scatter Charts   | - [Scatter HD Chart](../types/scatter-chart.md#angular-scatter-high-density-chart) <br> - [Scatter Marker Chart](../types/scatter-chart.md#angular-scatter-marker-chart) <br> - [Scatter Line Chart](../types/scatter-chart.md#angular-scatter-line-chart) <br> - [Scatter Bubble Chart](../types/bubble-chart.md) <br> - [Scatter Spline Chart](../types/scatter-chart.md#angular-scatter-spline-chart) <br> - [Scatter Area Chart](../types/scatter-chart.md#angular-scatter-area-chart) <br> - [Scatter Contour Chart](../types/scatter-chart.md#angular-scatter-contour-chart) <br> - [Scatter Polyline Chart](../types/shape-chart.md#angular-scatter-polyline-chart) (\*) <br> - [Scatter Polygon Chart](../types/shape-chart.md#angular-scatter-polygon-chart) (\*) <br> |
-| Radial Charts    | - [Radial Line Chart](../types/radial-chart.md#angular-radial-line-chart) <br> - [Radial Area Chart](../types/radial-chart.md#angular-radial-area-chart) <br> - [Radial Pie Chart](../types/radial-chart.md#angular-radial-pie-chart) <br> - [Radial Column Chart](../types/radial-chart.md#angular-radial-column-chart) <br> |
-| Polar Charts     | - [Polar Marker Chart](../types/polar-chart.md#angular-polar-marker-chart) <br> - [Polar Line Chart](../types/polar-chart.md#angular-polar-line-chart) <br> - [Polar Area Chart](../types/polar-chart.md#angular-polar-area-chart) <br> - [Polar Spline Chart](../types/polar-chart.md#angular-polar-spline-chart) <br> - [Polar Spline Area Chart](../types/polar-chart.md#angular-polar-spline-area-chart) <br> |
+| Chart Group      | Chart Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Pie Charts       | - [Pie Chart](../types/pie-chart.md) <br> - [Donut Chart](../types/donut-chart.md) <br> - [Radial Pie Chart](../types/radial-chart.md#angular-radial-pie-chart)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Line Charts      | - [Category Line Chart](../types/line-chart.md#angular-line-chart-example) <br> - [Category Spline Chart](../types/spline-chart.md#angular-spline-chart-example) <br> - [Step Line Chart](../types/step-chart.md#angular-step-line-chart) <br> - [Radial Line Chart](../types/radial-chart.md#angular-radial-line-chart) <br> - [Polar Line Chart](../types/polar-chart.md#angular-polar-line-chart) <br> - [Scatter Line Chart](../types/scatter-chart.md#angular-scatter-line-chart) <br> - [Scatter Polyline Chart](../types/shape-chart.md#angular-scatter-polyline-chart) (\*) <br> - [Scatter Contour Chart](../types/scatter-chart.md#angular-scatter-contour-chart) <br> - [Stacked Line Chart](../types/stacked-chart.md#angular-stacked-line-chart) <br> - [Stacked 100% Line Chart](../types/stacked-chart.md#angular-stacked-100-line-chart) <br>                                                |
+| Area Charts      | - [Category Area Chart](../types/area-chart.md#angular-area-chart-example) <br> - [Step Area Chart](../types/step-chart.md#angular-step-area-chart) <br> - [Range Area Chart](../types/area-chart.md#angular-range-area-chart) <br> - [Radial Area Chart](../types/radial-chart.md#angular-radial-area-chart) <br> - [Polar Area Chart](../types/polar-chart.md#angular-polar-area-chart) <br> - [Scatter Polygon Chart](../types/shape-chart.md#angular-scatter-polygon-chart) (\*) <br> - [Scatter Area Chart](../types/scatter-chart.md#angular-scatter-area-chart) <br> - [Stacked Area Chart](../types/stacked-chart.md#angular-stacked-area-chart) <br> - [Stacked 100% Area Chart](../types/stacked-chart.md#angular-stacked-100-area-chart) <br>                                                                                                                                                     |
+| Column Charts    | - [Column Chart](../types/column-chart.md#angular-column-chart-example) <br> - [Bar Chart](../types/bar-chart.md#angular-bar-chart-example) <br> - [Waterfall Chart](../types/column-chart.md#angular-waterfall-chart) <br> - [Range Column Chart](../types/column-chart.md#angular-range-column-chart) <br> - [Radial Column Chart](../types/radial-chart.md#angular-radial-column-chart) <br> - [Stacked Column Chart](../types/stacked-chart.md#angular-stacked-column-chart) <br> - [Stacked Bar Chart](../types/stacked-chart.md#angular-stacked-bar-chart) <br> - [Stacked 100% Column Chart](../types/stacked-chart.md#angular-stacked-100-column-chart) <br> - [Stacked 100% Bar Chart](../types/stacked-chart.md#angular-stacked-100-bar-chart)                                                                                                                                                     |
+| Spline Charts    | - [Category Spline Chart](../types/spline-chart.md#angular-spline-chart-example) <br> - [Polar Spline Chart](../types/polar-chart.md#angular-polar-spline-chart) <br> - [Scatter Spline Chart](../types/scatter-chart.md#angular-scatter-spline-chart) <br> - [Stacked Spline Chart](../types/stacked-chart.md#angular-stacked-spline-chart) <br> - [Stacked 100% Spline Chart](../types/stacked-chart.md#angular-stacked-100-spline-chart) <br>                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Point Charts     | - [Category Point Chart](../types/point-chart.md) <br> - [Scatter HD Chart](../types/scatter-chart.md#angular-scatter-high-density-chart) <br> - [Scatter Marker Chart](../types/scatter-chart.md#angular-scatter-marker-chart) <br> - [Scatter Bubble Chart](../types/bubble-chart.md) <br> - [Polar Marker Chart](../types/polar-chart.md#angular-polar-marker-chart) <br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Financial Charts | - [Stock Chart in Line Mode](../types/stock-chart.md) <br> - [Stock Chart in Column Mode](../types/stock-chart.md) <br> - [Stock Chart in Bar Mode](../types/stock-chart.md) <br> - [Stock Chart in Candle Mode](../types/stock-chart.md) <br> - [Stock Chart with Overlays](../types/stock-chart.md) <br> - [Stock Chart with Zoom Pane](../types/stock-chart.md) <br> - [Stock Chart with Volume Pane](../types/stock-chart.md#volume-pane) <br> - [Stock Chart with Indicator Pane](../types/stock-chart.md#indicator-pane) <br>                                                                                                                                                                                                                                                                                                                                                                          |
+| Scatter Charts   | - [Scatter HD Chart](../types/scatter-chart.md#angular-scatter-high-density-chart) <br> - [Scatter Marker Chart](../types/scatter-chart.md#angular-scatter-marker-chart) <br> - [Scatter Line Chart](../types/scatter-chart.md#angular-scatter-line-chart) <br> - [Scatter Bubble Chart](../types/bubble-chart.md) <br> - [Scatter Spline Chart](../types/scatter-chart.md#angular-scatter-spline-chart) <br> - [Scatter Area Chart](../types/scatter-chart.md#angular-scatter-area-chart) <br> - [Scatter Contour Chart](../types/scatter-chart.md#angular-scatter-contour-chart) <br> - [Scatter Polyline Chart](../types/shape-chart.md#angular-scatter-polyline-chart) (\*) <br> - [Scatter Polygon Chart](../types/shape-chart.md#angular-scatter-polygon-chart) (\*) <br>                                                                                                                              |
+| Radial Charts    | - [Radial Line Chart](../types/radial-chart.md#angular-radial-line-chart) <br> - [Radial Area Chart](../types/radial-chart.md#angular-radial-area-chart) <br> - [Radial Pie Chart](../types/radial-chart.md#angular-radial-pie-chart) <br> - [Radial Column Chart](../types/radial-chart.md#angular-radial-column-chart) <br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Polar Charts     | - [Polar Marker Chart](../types/polar-chart.md#angular-polar-marker-chart) <br> - [Polar Line Chart](../types/polar-chart.md#angular-polar-line-chart) <br> - [Polar Area Chart](../types/polar-chart.md#angular-polar-area-chart) <br> - [Polar Spline Chart](../types/polar-chart.md#angular-polar-spline-chart) <br> - [Polar Spline Area Chart](../types/polar-chart.md#angular-polar-spline-area-chart) <br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Stacked Charts   | - [Stacked Line Chart](../types/stacked-chart.md#angular-stacked-line-chart) <br> - [Stacked Area Chart](../types/stacked-chart.md#angular-stacked-area-chart) <br> - [Stacked Column Chart](../types/stacked-chart.md#angular-stacked-column-chart) <br> - [Stacked Bar Chart](../types/stacked-chart.md#angular-stacked-bar-chart) <br> - [Stacked Spline Chart](../types/stacked-chart.md#angular-stacked-spline-chart) <br> - [Stacked 100% Line Chart](../types/stacked-chart.md#angular-stacked-100-line-chart) <br> - [Stacked 100% Area Chart](../types/stacked-chart.md#angular-stacked-100-area-chart) <br> - [Stacked 100% Column Chart](../types/stacked-chart.md#angular-stacked-100-column-chart) <br> - [Stacked 100% Bar Chart](../types/stacked-chart.md#angular-stacked-100-bar-chart) <br> - [Stacked 100% Spline Chart](../types/stacked-chart.md#angular-stacked-100-spline-chart) <br> |
 
 \* Note that the [Scatter Polygon Chart](../types/shape-chart.md) and [Scatter Polyline Chart](../types/shape-chart.md) have better performance than rest of charts if you have a lot of data sources bound to the chart. For more info, see [Series Collection](#series-collection) section. Otherwise, other chart types are faster.
@@ -628,7 +626,7 @@ Enabling [Chart Trendlines](chart-trendlines.md) will slightly decrease performa
 
 Usage of x-axis with DateTime support is not recommended if spaces between data points, based on the amount of time span between them, are not important. Instead, ordinal/category axis should be used because it is more efficient in the way it coalesces data. Also, ordinal/category axis doesn’t perform any sorting on the data like the time-based x-axis does.
 
-> \[!Note]
+> [!Note]
 > The [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) already uses ordinal/category axis so there is no need to change its properties.
 
 This code snippet shows how to ordinal/category x-axis in the [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html) and [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) controls.
@@ -637,7 +635,7 @@ This code snippet shows how to ordinal/category x-axis in the [`IgxFinancialChar
 <igx-financial-chart xAxisMode="Ordinal"></igx-financial-chart>
 
 <igx-data-chart>
-    <igx-category-x-axis label="Time"></igx-category-x-axis>
+  <igx-category-x-axis label="Time"></igx-category-x-axis>
 </igx-data-chart>
 ```
 
@@ -645,7 +643,7 @@ This code snippet shows how to ordinal/category x-axis in the [`IgxFinancialChar
 
 By default, Angular charts will automatically calculate [`yAxisInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisInterval) based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing [`yAxisInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#yAxisInterval) property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
 
-> \[!Note]
+> [!Note]
 > We do not recommend setting axis minor interval as it will decrease chart performance.
 
 This code snippet shows how to set axis major interval in the Angular charts.
@@ -656,8 +654,8 @@ This code snippet shows how to set axis major interval in the Angular charts.
 <igx-financial-chart xAxisInterval="5" yAxisInterval="50"></igx-financial-chart>
 
 <igx-data-chart>
-    <igx-category-x-axis name="xAxis" interval="5"></igx-category-x-axis>
-    <igx-numeric-y-axis name="yAxis" interval="50"></igx-numeric-y-axis>
+  <igx-category-x-axis name="xAxis" interval="5"></igx-category-x-axis>
+  <igx-numeric-y-axis name="yAxis" interval="50"></igx-numeric-y-axis>
 </igx-data-chart>
 ```
 
@@ -672,15 +670,27 @@ In the same way as Markers, axis labels are also expensive because they use temp
 This code snippet shows how to hide axis labels in the Angular charts.
 
 ```html
-<igx-category-chart xAxisLabelVisibility="Collapsed" yAxisLabelVisibility="Collapsed">
+<igx-category-chart
+  xAxisLabelVisibility="Collapsed"
+  yAxisLabelVisibility="Collapsed"
+>
 </igx-category-chart>
 
-<igx-financial-chart xAxisLabelVisibility="Collapsed" yAxisLabelVisibility="Collapsed">
+<igx-financial-chart
+  xAxisLabelVisibility="Collapsed"
+  yAxisLabelVisibility="Collapsed"
+>
 </igx-financial-chart>
 
 <igx-data-chart>
-    <igx-category-x-axis name="xAxis" labelVisibility="Collapsed"></igx-category-x-axis>
-    <igx-numeric-y-axis name="yAxis" labelVisibility="Collapsed"></igx-numeric-y-axis>
+  <igx-category-x-axis
+    name="xAxis"
+    labelVisibility="Collapsed"
+  ></igx-category-x-axis>
+  <igx-numeric-y-axis
+    name="yAxis"
+    labelVisibility="Collapsed"
+  ></igx-numeric-y-axis>
 </igx-data-chart>
 ```
 
@@ -696,7 +706,7 @@ This code snippet shows how to set axis title in the Angular charts.
 <igx-financial-chart yAxisTitle="In millions of Dollars"></igx-financial-chart>
 
 <igx-data-chart>
-    <igx-numeric-y-axis title="In millions of Dollars"></igx-numeric-y-axis>
+  <igx-numeric-y-axis title="In millions of Dollars"></igx-numeric-y-axis>
 </igx-data-chart>
 ```
 
@@ -707,13 +717,19 @@ At runtime, the Angular charts adjust extent of labels on y-axis based on a labe
 The following code snippet shows how to set a fixed extent for labels on y-axis in the Angular charts.
 
 ```html
-<igx-category-chart xAxisLabelExtent="50" yAxisLabelExtent="50"></igx-category-chart>
+<igx-category-chart
+  xAxisLabelExtent="50"
+  yAxisLabelExtent="50"
+></igx-category-chart>
 
-<igx-financial-chart xAxisLabelExtent="50" yAxisLabelExtent="50"></igx-financial-chart>
+<igx-financial-chart
+  xAxisLabelExtent="50"
+  yAxisLabelExtent="50"
+></igx-financial-chart>
 
 <igx-data-chart>
-    <igx-category-x-axis name="xAxis" labelExtent="50"></igx-category-x-axis>
-    <igx-numeric-y-axis name="yAxis" labelExtent="50"></igx-numeric-y-axis>
+  <igx-category-x-axis name="xAxis" labelExtent="50"></igx-category-x-axis>
+  <igx-numeric-y-axis name="yAxis" labelExtent="50"></igx-numeric-y-axis>
 </igx-data-chart>
 ```
 
@@ -723,27 +739,27 @@ Enabling additional axis visuals (e.g. axis titles) or changing their default va
 
 For example, changing these properties on the [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) or [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html) control:
 
-| Axis Visual          | X-Axis Properties | Y-Axis Properties |
-| ---------------------|-------------------|------------------- |
-| All Axis Visual      | [`xAxisInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisInterval)<br>  [`xAxisMinorInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMinorInterval) | [`yAxisInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html#yAxisInterval)<br>  [`yAxisMinorInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html#yAxisMinorInterval) |
-| Axis Tickmarks       | [`xAxisTickStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisTickStroke) <br>  [`xAxisTickStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisTickStrokeThickness)<br>  [`xAxisTickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisTickLength)<br>  | [`yAxisTickStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisTickStroke) <br>  [`yAxisTickStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisTickStrokeThickness)<br>  [`yAxisTickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisTickLength)<br> |
-| Axis Major Gridlines | [`xAxisMajorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisMajorStroke)<br>  [`xAxisMajorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisMajorStrokeThickness)<br>   | [`yAxisMajorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisMajorStroke)<br>  [`yAxisMajorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisMajorStrokeThickness)<br> |
-| Axis Minor Gridlines | [`xAxisMinorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisMinorStroke)<br>  [`xAxisMinorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisMinorStrokeThickness)<br>   | [`yAxisMinorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisMinorStroke)<br>  [`yAxisMinorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisMinorStrokeThickness)<br> |
-| Axis Main Line       | [`xAxisStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisStroke)<br>  [`xAxisStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisStrokeThickness)<br>   | [`yAxisStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisStroke)<br>  [`yAxisStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisStrokeThickness)<br> |
-| Axis Titles          | [`xAxisTitle`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisTitle)<br>  [`xAxisTitleAngle`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisTitleAngle)<br>    | [`yAxisTitle`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisTitle)<br>  [`yAxisTitleAngle`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisTitleAngle)<br> |
-| Axis Strips          | [`xAxisStrip`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisStrip)<br>   | [`yAxisStrip`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisStrip)<br> |
+| Axis Visual          | X-Axis Properties                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Y-Axis Properties                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| All Axis Visual      | [`xAxisInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisInterval)<br> [`xAxisMinorInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#xAxisMinorInterval)                                                                                                                                                                                             | [`yAxisInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html#yAxisInterval)<br> [`yAxisMinorInterval`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html#yAxisMinorInterval)                                                                                                                                                                                           |
+| Axis Tickmarks       | [`xAxisTickStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisTickStroke) <br> [`xAxisTickStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisTickStrokeThickness)<br> [`xAxisTickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisTickLength)<br> | [`yAxisTickStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisTickStroke) <br> [`yAxisTickStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisTickStrokeThickness)<br> [`yAxisTickLength`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisTickLength)<br> |
+| Axis Major Gridlines | [`xAxisMajorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisMajorStroke)<br> [`xAxisMajorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisMajorStrokeThickness)<br>                                                                                                                                                                                 | [`yAxisMajorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisMajorStroke)<br> [`yAxisMajorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisMajorStrokeThickness)<br>                                                                                                                                                                                 |
+| Axis Minor Gridlines | [`xAxisMinorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisMinorStroke)<br> [`xAxisMinorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisMinorStrokeThickness)<br>                                                                                                                                                                                 | [`yAxisMinorStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisMinorStroke)<br> [`yAxisMinorStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisMinorStrokeThickness)<br>                                                                                                                                                                                 |
+| Axis Main Line       | [`xAxisStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisStroke)<br> [`xAxisStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisStrokeThickness)<br>                                                                                                                                                                                                     | [`yAxisStroke`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisStroke)<br> [`yAxisStrokeThickness`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisStrokeThickness)<br>                                                                                                                                                                                                     |
+| Axis Titles          | [`xAxisTitle`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisTitle)<br> [`xAxisTitleAngle`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisTitleAngle)<br>                                                                                                                                                                                                                 | [`yAxisTitle`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisTitle)<br> [`yAxisTitleAngle`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisTitleAngle)<br>                                                                                                                                                                                                                 |
+| Axis Strips          | [`xAxisStrip`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#xAxisStrip)<br>                                                                                                                                                                                                                                                                                                                                                                                                    | [`yAxisStrip`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxxychartcomponent.html#yAxisStrip)<br>                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 Or changing properties of an [`IgxAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxaxiscomponent.html) in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control:
 
-| Axis Visual          | Axis Properties |
-| ---------------------|------------------- |
-| All Axis Visuals     | `Interval`, `MinorInterval` |
-| Axis Tickmarks       | `TickStroke` , `TickStrokeThickness`, `TickLength` |
-| Axis Major Gridlines | `MajorStroke`, `MajorStrokeThickness` |
-| Axis Minor Gridlines | `MinorStroke`, `MinorStrokeThickness` |
-| Axis Main Line       | `Stroke`, `StrokeThickness` |
+| Axis Visual          | Axis Properties                                                                                                                                                                        |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| All Axis Visuals     | `Interval`, `MinorInterval`                                                                                                                                                            |
+| Axis Tickmarks       | `TickStroke` , `TickStrokeThickness`, `TickLength`                                                                                                                                     |
+| Axis Major Gridlines | `MajorStroke`, `MajorStrokeThickness`                                                                                                                                                  |
+| Axis Minor Gridlines | `MinorStroke`, `MinorStrokeThickness`                                                                                                                                                  |
+| Axis Main Line       | `Stroke`, `StrokeThickness`                                                                                                                                                            |
 | Axis Titles          | [`chartTitle`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#chartTitle), `TitleAngle` |
-| Axis Strips          | `Strip` |
+| Axis Strips          | `Strip`                                                                                                                                                                                |
 
 ## Performance in Financial Chart
 
@@ -782,16 +798,16 @@ Adding too many axis to the `Axes` collection of the [`IgxDataChartComponent`](h
 
 Also, adding a lot of series to the [`IgxSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriescomponent.html) collection of the Angular [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) control will add overhead to rendering because each series has its own rendering canvas. This is especially important if you have more than 10 series in the Data Chart. We recommend combining multiple data sources into flatten data source (see [Data Structure](#data-structure) section) and then using conditional styling feature of the following series:
 
-| Slower Performance Scenario | Faster Scenario with Conditional Styling |
-| ----------------------------|---------------------------------------- |
-| 10+ of [`IgxLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxlineseriescomponent.html)         | Single [`IgxScatterLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterlineseriescomponent.html) |
-| 20+ of [`IgxLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxlineseriescomponent.html)         | Single [`IgxScatterPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterpolylineseriescomponent.html) |
-| 10+ of [`IgxScatterLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterlineseriescomponent.html)  | Single [`IgxScatterPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterpolylineseriescomponent.html) |
-| 10+ of [`IgxPointSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxpointseriescomponent.html)        | Single [`IgxScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterseriescomponent.html) |
-| 20+ of [`IgxPointSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxpointseriescomponent.html)        | Single [`IgxHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxhighdensityscatterseriescomponent.html) |
-| 20+ of [`IgxScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterseriescomponent.html)      | Single [`IgxHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxhighdensityscatterseriescomponent.html) |
-| 10+ of [`IgxAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxareaseriescomponent.html)         | Single [`IgxScatterPolygonSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterpolygonseriescomponent.html) |
-| 10+ of [`IgxColumnSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcolumnseriescomponent.html)       | Single [`IgxScatterPolygonSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterpolygonseriescomponent.html) |
+| Slower Performance Scenario                                                                                                                                                                   | Faster Scenario with Conditional Styling                                                                                                                                                                    |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 10+ of [`IgxLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxlineseriescomponent.html)               | Single [`IgxScatterLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterlineseriescomponent.html)               |
+| 20+ of [`IgxLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxlineseriescomponent.html)               | Single [`IgxScatterPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterpolylineseriescomponent.html)       |
+| 10+ of [`IgxScatterLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterlineseriescomponent.html) | Single [`IgxScatterPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterpolylineseriescomponent.html)       |
+| 10+ of [`IgxPointSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxpointseriescomponent.html)             | Single [`IgxScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterseriescomponent.html)                       |
+| 20+ of [`IgxPointSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxpointseriescomponent.html)             | Single [`IgxHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxhighdensityscatterseriescomponent.html) |
+| 20+ of [`IgxScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterseriescomponent.html)         | Single [`IgxHighDensityScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxhighdensityscatterseriescomponent.html) |
+| 10+ of [`IgxAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxareaseriescomponent.html)               | Single [`IgxScatterPolygonSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterpolygonseriescomponent.html)         |
+| 10+ of [`IgxColumnSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcolumnseriescomponent.html)           | Single [`IgxScatterPolygonSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterpolygonseriescomponent.html)         |
 
 ## Additional Resources
 

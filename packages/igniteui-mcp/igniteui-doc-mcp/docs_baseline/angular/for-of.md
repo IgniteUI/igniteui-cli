@@ -566,8 +566,8 @@ The `igxFor` directive includes the following helper properties in its context: 
 
 ## Known Limitations
 
-|Limitation|Description|
-|--- |--- |
+| Limitation                                                                                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| :-------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `scrollTo` method does not work correctly when the content size of the rendered templates changes post initialization | When the elements inside the template have a size, that changes runtime after initialization (for example as a result of content projection, remote request resolution etc.), then the `scrollTo` method will not be able to scroll to the correct index. The method will scroll to the position of the index before the runtime size change occurs, hence the location will not be correct after the size is changed later. A possible workaround is to use templates that do not change their size based on their content if the content is loaded later. |
 
 ## API References

@@ -99,9 +99,11 @@ export class PivotDataSelectorSampleComponent {
 ```
 ```html
 <div class="pivot-container">
-    <igx-pivot-grid #grid1 [data]="data" [pivotConfiguration]="pivotConfigHierarchy" [height]="'850px'"
-        [superCompactMode]="true" [defaultExpandState]='true'>
-    </igx-pivot-grid>
+    <div style="flex-grow: 1;">
+        <igx-pivot-grid #grid1 [data]="data" [pivotConfiguration]="pivotConfigHierarchy" [height]="'850px'"
+            [superCompactMode]="true" [defaultExpandState]='true'>
+        </igx-pivot-grid>
+    </div>
     <igx-pivot-data-selector [grid]="grid1"></igx-pivot-data-selector>
 </div>
 ```
@@ -139,6 +141,9 @@ To get started with the Ignite UI for Angular Pivot Grid component, first you ne
 ng add igniteui-angular
 ```
 
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+
 For a complete introduction to the Ignite UI for Angular, read the [_getting started_](../general/getting-started.md) topic.
 
 The next step is to import the `IgxPivotGridModule` in your **app.module.ts** file.
@@ -159,7 +164,7 @@ import { IgxPivotGridModule } from 'igniteui-angular/grids/pivot-grid';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxPivotGridComponent` as a standalone dependency, or use the [`IGX_PIVOT_GRID_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/grids/pivot-grid/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxPivotGridComponent` as a standalone dependency, or use the [`IGX_PIVOT_GRID_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/grids/pivot-grid/src/pivot-grid.module.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -487,12 +492,12 @@ This feature allows developers to quickly create a pivot view without manually s
 
 ## Known Issues and Limitations
 
-|Limitation|Description|
-|--- |--- |
-| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the `columns` configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
-| Setting duplicate `memberName` or `member` property values for dimensions/values. | `memberName`/`member` should be unique for each dimension/value. Duplication may result in loss of data from the final result. |
-| Row Selection is only supported in `single` mode. | Multiple selection is currently not supported. |
-| Merging the dimension members is case sensitive| The pivot grid creates groups and merges the same (case sensitive) values. But the dimensions provide `memberFunction` and this can be changed there, the result of the `memberFunction` are compared and used as display value.|
+| Limitation                                                                        | Description                                                                                                                                                                                                                      |
+| :-------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Setting columns declaratively is not supported.                                   | The Pivot grid generates its columns based on the `columns` configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded.                                                 |
+| Setting duplicate `memberName` or `member` property values for dimensions/values. | `memberName`/`member` should be unique for each dimension/value. Duplication may result in loss of data from the final result.                                                                                                   |
+| Row Selection is only supported in `single` mode.                                 | Multiple selection is currently not supported.                                                                                                                                                                                   |
+| Merging the dimension members is case sensitive                                   | The pivot grid creates groups and merges the same (case sensitive) values. But the dimensions provide `memberFunction` and this can be changed there, the result of the `memberFunction` are compared and used as display value. |
 
 ## API References
 

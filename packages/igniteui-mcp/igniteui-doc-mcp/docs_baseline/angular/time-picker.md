@@ -88,7 +88,7 @@ import { IgxTimePickerModule } from 'igniteui-angular/time-picker';
 export class AppModule {}
 ```
 
-Alternatively, as of `16.0.0` you can import the `IgxTimePickerComponent` as a standalone dependency, or use the [`IGX_TIME_PICKER_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/time-picker/public_api.ts) token to import the component and all of its supporting components and directives.
+Alternatively, as of `16.0.0` you can import the `IgxTimePickerComponent` as a standalone dependency, or use the [`IGX_TIME_PICKER_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/time-picker/src/time-picker/public_api.ts) token to import the component and all of its supporting components and directives.
 
 ```typescript
 // home.component.ts
@@ -186,6 +186,9 @@ In the following example we have added a custom label and hint and changed the d
     <igx-hint>{{date.toLocaleString()}}</igx-hint>
 </igx-time-picker>
 ```
+
+> [!NOTE]
+> This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 ```typescript
 public date: Date = new Date();

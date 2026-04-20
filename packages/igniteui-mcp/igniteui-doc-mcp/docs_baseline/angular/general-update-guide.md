@@ -1151,12 +1151,12 @@ If for any reason you see Sass compilation errors saying `math.div` is not a kno
 
     For each theme included in Ignite UI for Angular we provide specific `font-family` and `type-scale` variables which you can use:
 
-    | **Theme** | **Font Family**     | **Type Scale**        |
-    | --------- | ------------------- | --------------------- |
-    | Material  | $material-typeface  | $material-type-scale  |
-    | Fluent    | $fluent-typeface    | $fluent-type-scale    |
-    | Bootstrap | $bootstrap-typeface | $bootstrap-type-scale |
-    | Indigo    | $indigo-typeface    | $indigo-type-scale    |
+| **Theme** | **Font Family**     | **Type Scale**        |
+| :-------- | :------------------ | :-------------------- |
+| Material  | $material-typeface  | $material-type-scale  |
+| Fluent    | $fluent-typeface    | $fluent-type-scale    |
+| Bootstrap | $bootstrap-typeface | $bootstrap-type-scale |
+| Indigo    | $indigo-typeface    | $indigo-type-scale    |
 
 ### IgxBottomNav component
 
@@ -1484,7 +1484,7 @@ The `ng update` process will update all enumeration names, like `AvatarType`, `T
     }
     ```
 
-    You can read more about setting up the combo in the [readme](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/combo/README.md#value-binding) and in the [official documentation](../combo.md#selection-api).
+    You can read more about setting up the combo in the [readme](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/combo/README.md#value-binding) and in the [official documentation](../combo.md#selection-api).
 
 ## From 8.0.x to 8.1.x
 
