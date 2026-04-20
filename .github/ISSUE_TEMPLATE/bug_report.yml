@@ -22,7 +22,8 @@ body:
     id: framework
     attributes:
       label: Framework
-      description: Which framework are you using?
+      description: Which framework(s) are you using?
+      multiple: true
       options:
         - Angular
         - React
@@ -31,18 +32,18 @@ body:
     validations:
       required: true
 
-  - type: dropdown
-    id: project-type
-    attributes:
-      label: Project Type
-      description: Which project type are you using?
-      options:
-        - igx-ts (Angular)
-        - igr-ts (React)
-        - js (jQuery)
-        - igc-ts (Web Components)
-    validations:
-      required: true
+  # - type: dropdown
+  #   id: project-type
+  #   attributes:
+  #     label: Project Type
+  #     description: Which project type are you using?
+  #     options:
+  #       - igx-ts (Angular)
+  #       - igr-ts (React)
+  #       - js (jQuery)
+  #       - igc-ts (Web Components)
+  #   validations:
+  #     required: true
 
   - type: dropdown
     id: command
@@ -60,6 +61,7 @@ body:
         - list
         - doc
         - upgrade-packages
+        - ai-config
         - Other
     validations:
       required: true
