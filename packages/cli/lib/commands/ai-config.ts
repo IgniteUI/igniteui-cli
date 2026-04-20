@@ -78,9 +78,11 @@ export function configureSkills(): void {
 	}
 }
 
-export function configure(fileSystem: IFileSystem = new FsFileSystem()): void {
-	configureMCP(fileSystem);
-	configureSkills();
+export function configure(skills = true): void {
+	configureMCP();
+	if (skills) {
+		configureSkills();
+	}
 }
 
 const command: CommandModule = {
