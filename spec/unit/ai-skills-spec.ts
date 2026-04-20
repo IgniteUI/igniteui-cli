@@ -166,7 +166,7 @@ describe("Unit - copyAISkillsToProject", () => {
 
 	describe("WebComponents framework", () => {
 		it("should copy skills from igniteui-webcomponents into .claude/skills/", async () => {
-			const wcPkg = "igniteui-webcomponents-core";
+			const wcPkg = "igniteui-webcomponents";
 			const dir = skillsDir(wcPkg);
 			const file = skillFile(wcPkg, "webcomponents.md");
 			const content = "# Ignite UI WebComponents skills";
@@ -231,6 +231,56 @@ describe("Unit - copyAISkillsToProject", () => {
 			// With multiple roots, the dest path is prefixed; angular is the only root found here
 			// but since we scan ALL packages and only one directory exists, roots.length === 1 → no prefix
 			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", "skill content");
+		});
+
+		it("should also scan igniteui-react in the fallback", async () => {
+			const reactPkg = "igniteui-react";
+			const dir = skillsDir(reactPkg);
+			const file = skillFile(reactPkg, "overview.md");
+
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.returnValue(false),
+				readFile: jasmine.createSpy("readFile").and.returnValue("react skill content"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === dir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === dir ? [file] : []
+				),
+				writeFile: jasmine.createSpy("writeFile")
+			});
+
+			spyOn(App.container, "get").and.returnValue(fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+
+			await copyAISkillsToProject();
+
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/overview.md", "react skill content");
+		});
+
+		it("should also scan igniteui-webcomponents in the fallback", async () => {
+			const wcPkg = "igniteui-webcomponents";
+			const dir = skillsDir(wcPkg);
+			const file = skillFile(wcPkg, "webcomponents.md");
+
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.returnValue(false),
+				readFile: jasmine.createSpy("readFile").and.returnValue("wc skill content"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === dir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === dir ? [file] : []
+				),
+				writeFile: jasmine.createSpy("writeFile")
+			});
+
+			spyOn(App.container, "get").and.returnValue(fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+
+			await copyAISkillsToProject();
+
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", "wc skill content");
 		});
 	});
 
