@@ -3,7 +3,7 @@ import { App } from "./App";
 import { IFileSystem, FS_TOKEN } from "../types/FileSystem";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
-import { NPM_ANGULAR, NPM_REACT, resolvePackage, UPGRADEABLE_PACKAGES } from "../update/package-resolve";
+import { NPM_ANGULAR, NPM_REACT, NPM_WEBCOMPONENTS, resolvePackage, UPGRADEABLE_PACKAGES } from "../update/package-resolve";
 
 const CLAUDE_SKILLS_DIR = ".claude/skills";
 
@@ -23,15 +23,16 @@ function resolveSkillsRoots(): string[] {
 	} catch { /* config not readable – fall through to scan all */ }
 
 	const allPkgKeys = Object.keys(UPGRADEABLE_PACKAGES);
-	let candidates: string[];
+	let candidates = new Set<string>();
 	if (framework === "angular") {
-		candidates = [NPM_ANGULAR];
+		candidates.add(NPM_ANGULAR);
 	} else if (framework === "react") {
-		candidates = [NPM_REACT];
+		candidates.add(NPM_REACT);
 	} else if (framework === "webcomponents") {
-		candidates = allPkgKeys.filter(k => k.startsWith("igniteui-webcomponents"));
+		candidates.add(NPM_WEBCOMPONENTS);
 	} else {
-		candidates = allPkgKeys;
+		// NPM_REACT and NPM_WEBCOMPONENTS are OSS-only and not in UPGRADEABLE_PACKAGES, so add them explicitly
+		candidates = new Set([...allPkgKeys, NPM_REACT, NPM_WEBCOMPONENTS]);
 	}
 
 	for (const pkg of candidates) {
