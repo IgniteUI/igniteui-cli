@@ -34,4 +34,17 @@ describe("Angular templates", () => {
 			}
 		}
 	});
+
+	it("Igx templates should reference igniteui-angular 21.2.x", async () => {
+		const angularFramework: Framework = require(templatesLocation);
+		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
+		const packageRefs = projLibrary.templates
+			.flatMap(x => x.packages || [])
+			.filter(x => typeof x === "string" && x.startsWith("igniteui-angular@~"));
+
+		expect(packageRefs.length).toBeGreaterThan(0);
+		for (const packageRef of packageRefs) {
+			expect(packageRef).toBe("igniteui-angular@~21.2.0");
+		}
+	});
 });
