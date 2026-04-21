@@ -6,6 +6,7 @@ export class BaseWithHomeIgcProject extends BaseIgcProject implements ProjectTem
 	public id: string = "base with home";
 	public name = "Base With Home";
 	public description = "Empty project layout structure for Ignite UI for Web Components";
+	public isHidden: boolean = true;
 
 	public get templatePaths() {
 		return [...super.templatePaths, path.join(__dirname, "files")];

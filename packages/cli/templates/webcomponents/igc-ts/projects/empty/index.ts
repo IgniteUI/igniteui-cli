@@ -10,6 +10,7 @@ export class EmptyPageTemplate extends BaseWithHomeIgcProject implements Project
 	public projectType: string = "igc-ts";
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
+	public isHidden: boolean = false;
 
 	public get templatePaths(): string[] {
 		return [...super.templatePaths, path.join(__dirname, "files")];

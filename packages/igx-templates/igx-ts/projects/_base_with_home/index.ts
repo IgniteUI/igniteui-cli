@@ -10,6 +10,7 @@ export class BaseWithHomeProject extends BaseIgxProject implements ProjectTempla
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";
 	public hasExtraConfiguration = false;
+	public isHidden: boolean = true;
 
 	public get templatePaths() {
 		return [...super.templatePaths, path.join(__dirname, "files")];
