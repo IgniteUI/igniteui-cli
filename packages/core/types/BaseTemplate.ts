@@ -28,7 +28,7 @@ export interface BaseTemplate {
 	hasExtraConfiguration: boolean;
 
 	/** Controls if the template should be hidden from listings and prompts */
-	isHidden: boolean;
+	isHidden?: boolean;
 	/** An array with the physical path to the template files */
 	templatePaths: string[];
 
