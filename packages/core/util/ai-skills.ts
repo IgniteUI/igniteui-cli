@@ -58,8 +58,7 @@ function resolveSkillsRoots(): string[] {
 		framework ??= detectFrameworkFromPackageJson();
 		if (framework) {
 			const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
-			const projectLib = templateManager
-				.getFrameworkById(framework)?.projectLibraries[0]!;
+			const projectLib = templateManager?.getFrameworkById(framework)?.projectLibraries[0];
 			const filePaths = projectLib?.getProject(projectLib.projectIds[0]).templatePaths ?? [];
 			roots.push(
 				...filePaths

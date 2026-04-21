@@ -2,7 +2,7 @@ import * as path from "path";
 
 import { EmptyTree } from "@angular-devkit/schematics";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import { App, FEED_ANGULAR, NPM_ANGULAR, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { App, FEED_ANGULAR, NPM_ANGULAR, TEMPLATE_MANAGER } from "@igniteui/cli-core";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 
 describe("cli-config schematic", () => {
