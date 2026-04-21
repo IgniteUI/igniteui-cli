@@ -1,7 +1,7 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { addClassToBody, addMcpServers, App, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { addClassToBody, addMcpServers, App, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -130,7 +130,7 @@ export function addAIConfig(): Rule {
 			}
 		};
 
-		addMcpServers(angularCliServer);
+		addMcpServers(VS_CODE_MCP_PATH,angularCliServer);
 	};
 }
 

@@ -1,14 +1,14 @@
-import { addMcpServers, copyAISkillsToProject, GoogleAnalytics, Util } from "@igniteui/cli-core";
+import { addMcpServers, copyAISkillsToProject, GoogleAnalytics, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
 export function configureMCP(): void {
-	const modified = addMcpServers();
+	const modified = addMcpServers(VS_CODE_MCP_PATH);
 
 	if (!modified) {
-		Util.log(` Ignite UI MCP servers already configured`);
+		Util.log(` Ignite UI MCP servers already configured in ${VS_CODE_MCP_PATH}`);
 		return;
 	}
-	Util.log(Util.greenCheck() + ` MCP servers configured`);
+	Util.log(Util.greenCheck() + ` MCP servers configured in ${VS_CODE_MCP_PATH}`);
 }
 
 export function configureSkills(): void {

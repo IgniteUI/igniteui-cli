@@ -18,7 +18,7 @@ const IGNITEUI_MCP_SERVERS: Record<string, McpServerEntry> = {
 	}
 };
 
-const mcpFilePath = ".vscode/mcp.json";
+export const VS_CODE_MCP_PATH = ".vscode/mcp.json";
 
 /**
  * Reads .vscode/mcp.json, ensures all IgniteUI MCP servers are present,
@@ -27,6 +27,7 @@ const mcpFilePath = ".vscode/mcp.json";
  * @returns whether the file was modified
  */
 export function addMcpServers(
+	mcpFilePath: string,
 	additionalServers?: Record<string, McpServerEntry>
 ): boolean {
 	const fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
