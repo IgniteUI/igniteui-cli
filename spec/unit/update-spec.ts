@@ -483,8 +483,8 @@ title = 'igniteui-angular example';
 
 		it("Should fail if no packages.json is found", async () => {
 			const upgradeable: pkgResolve.PackageDefinition = {
-				trial: pkgResolve.NPM_REACT,
-				licensed: pkgResolve.FEED_REACT
+				trial: pkgResolve.NPM_REACT_DOCK_MANAGER,
+				licensed: pkgResolve.FEED_REACT_DOCK_MANAGER
 			};
 			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([upgradeable]);
 			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
@@ -499,8 +499,8 @@ title = 'igniteui-angular example';
 				someName: "testValue"
 			};
 			const upgradeable: pkgResolve.PackageDefinition = {
-				trial: pkgResolve.NPM_REACT,
-				licensed: pkgResolve.FEED_REACT
+				trial: pkgResolve.NPM_REACT_DOCK_MANAGER,
+				licensed: pkgResolve.FEED_REACT_DOCK_MANAGER
 			};
 			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([upgradeable]);
 			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
@@ -509,13 +509,14 @@ title = 'igniteui-angular example';
 			expect(await updateWorkspace("")).toEqual(false);
 		});
 
-		it("Should update package.json file, removing non-scoped igniteui-react packages", async () => {
+		it("Should update package.json file, removing non-scoped igniteui-react-* packages", async () => {
 			const mockPackageJSON = {
 				dependencies: {
 					"@alphabetically-sorted-scope/package": "^0.0.0",
 					"alphabetically-second-package": "^0.0.0",
 					"igniteui-react": "^18.5.1",
-					"igniteui-dockmanager": "^1.0.0",
+					"igniteui-react-grids": "^18.5.1",
+					"igniteui-react-dockmanager": "^1.0.0",
 					"some-package": "^0.0.0"
 				}
 			};
@@ -539,9 +540,10 @@ title = 'igniteui-angular example';
 			expect(fsSpy.writeFile).toHaveBeenCalledWith("package.json", Util.formatPackageJson({
 				dependencies: {
 					"@alphabetically-sorted-scope/package": "^0.0.0",
-					"@infragistics/igniteui-react": "^18.5.1",
-					"@infragistics/igniteui-dockmanager": "^1.0.0",
+					"@infragistics/igniteui-react-dockmanager": "^1.0.0",
+					"@infragistics/igniteui-react-grids": "^18.5.1",
 					"alphabetically-second-package": "^0.0.0",
+					"igniteui-react": "^18.5.1",
 					"some-package": "^0.0.0"
 				}
 			}));
@@ -567,8 +569,8 @@ title = 'igniteui-angular example';
 					`{
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
-    "@infragistics/igniteui-react": "^18.5.1",
     "@infragistics/igniteui-react-grids": "^18.5.1",
+    "igniteui-react": "^18.5.1",
     "some-package": "^0.0.0"
   }
 }
@@ -738,8 +740,8 @@ export default function Home() {
   "name": "root-project",
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
-    "@infragistics/igniteui-react": "^18.5.1",
     "@infragistics/igniteui-react-grids": "^18.5.1",
+    "igniteui-react": "^18.5.1",
     "some-package": "^0.0.0"
   },
   "workspaces": [
@@ -766,8 +768,8 @@ export default function Home() {
   "name": "charts-project",
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
-    "@infragistics/igniteui-react": "^18.5.1",
     "@infragistics/igniteui-react-grids": "^18.5.1",
+    "igniteui-react": "^18.5.1",
     "some-package": "^0.0.0"
   }
 }
@@ -791,8 +793,8 @@ export default function Home() {
   "name": "charts-project",
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
-    "@infragistics/igniteui-react": "^18.5.1",
     "@infragistics/igniteui-react-grids": "^18.5.1",
+    "igniteui-react": "^18.5.1",
     "some-package": "^0.0.0"
   }
 }

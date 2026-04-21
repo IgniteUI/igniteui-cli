@@ -16,7 +16,8 @@ export const FEED_DOCK_MANAGER = "@infragistics/igniteui-dockmanager";
 
 // react
 export const NPM_REACT = "igniteui-react";
-export const FEED_REACT = "@infragistics/igniteui-react";
+export const NPM_REACT_DOCK_MANAGER = "igniteui-react-dockmanager";
+export const FEED_REACT_DOCK_MANAGER = "@infragistics/igniteui-react-dockmanager";
 export const NPM_REACT_CORE = "igniteui-react-core";
 export const FEED_REACT_CORE = "@infragistics/igniteui-react-core";
 export const NPM_REACT_CHARTS = "igniteui-react-charts";
@@ -76,7 +77,7 @@ export const UPGRADEABLE_PACKAGES = {
 	[NPM_DOCK_MANAGER]: FEED_DOCK_MANAGER,
 
 	// react
-	[NPM_REACT]: FEED_REACT,
+	[NPM_REACT_DOCK_MANAGER]: FEED_REACT_DOCK_MANAGER,
 	[NPM_REACT_CORE]: FEED_REACT_CORE,
 	[NPM_REACT_CHARTS]: FEED_REACT_CHARTS,
 	[NPM_REACT_GAUGES]: FEED_REACT_GAUGES,

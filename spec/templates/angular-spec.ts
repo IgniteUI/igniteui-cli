@@ -1,4 +1,7 @@
 import { App, Framework, Util } from "@igniteui/cli-core";
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../packages/igx-templates/constants";
+import path from "path";
+import * as fs from "fs";
 
 const templatesLocation = "../../packages/cli/templates/angular";
 
@@ -31,6 +34,33 @@ describe("Angular templates", () => {
 				)
 					.withContext(`Template ${element.id} can overwrite ${target.id}`)
 					.toBeTruthy();
+			}
+		}
+	});
+
+	it("Igx templates and project package.json files should use the same igniteui-angular version as the const", async () => {
+		const angularFramework: Framework = require(templatesLocation);
+		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
+		const [pkg, version] = IGNITEUI_ANGULAR_PACKAGE.split("@");
+
+		projLibrary.templates
+			.flatMap(t => t.packages || [])
+			.filter(p => typeof p === "string" && p.startsWith(`${pkg}@`))
+			.forEach(p => expect(p).toBe(IGNITEUI_ANGULAR_PACKAGE));
+
+		const roots = [
+			...new Set(projLibrary.projects.flatMap(p => p.templatePaths))
+		];
+
+		for (const root of roots) {
+			const file = path.resolve(process.cwd(), root, "package.json");
+			if (!fs.existsSync(file)) continue;
+
+			const { dependencies = {}, devDependencies = {} } = require(file);
+			const deps = { ...dependencies, ...devDependencies };
+
+			if (deps[pkg]) {
+				expect(deps[pkg]).toBe(version);
 			}
 		}
 	});
