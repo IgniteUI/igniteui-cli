@@ -1,4 +1,6 @@
+import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
 import * as jsonc from "jsonc-parser";
+import { App } from "./App";
 
 export interface McpServerEntry {
 	command: string;
@@ -16,21 +18,33 @@ const IGNITEUI_MCP_SERVERS: Record<string, McpServerEntry> = {
 	}
 };
 
+const mcpFilePath = ".vscode/mcp.json";
+
 /**
- * Adds MCP servers to mcp.json content using jsonc-parser to preserve comments.
- * @param existingContent existing file content, or undefined/empty if file doesn't exist
- * @param servers servers to add (skips keys already present)
- * @returns the resulting text and whether any changes were made
+ * Reads .vscode/mcp.json, ensures all IgniteUI MCP servers are present,
+ * optionally adds additional servers. Creates the file if it doesn't exist.
+ * @param additionalServers optional extra servers to include alongside the built-in ones
+ * @returns whether the file was modified
  */
 export function addMcpServers(
-	existingContent: string | undefined,
-	servers: Record<string, McpServerEntry>
-): { text: string; modified: boolean } {
+	additionalServers?: Record<string, McpServerEntry>
+): boolean {
+	const fileSystem = App.container.get<IFileSystem>(FS_TOKEN);
+	const servers = { ...additionalServers, ...IGNITEUI_MCP_SERVERS };
+
+	let existingContent: string | undefined;
+	try {
+		existingContent = fileSystem.readFile(mcpFilePath);
+	} catch {
+		existingContent = undefined;
+	}
+
 	if (!existingContent) {
-		return {
-			text: JSON.stringify({ servers: { ...servers } }, null, 2),
-			modified: Object.keys(servers).length > 0
-		};
+		if (Object.keys(servers).length === 0) {
+			return false;
+		}
+		fileSystem.writeFile(mcpFilePath, JSON.stringify({ servers }, null, 2) + "\n");
+		return true;
 	}
 
 	const parsed = jsonc.parse(existingContent);
@@ -48,26 +62,9 @@ export function addMcpServers(
 		}
 	}
 
-	return { text, modified };
-}
-
-/**
- * Reads existing mcp.json content, merges servers, and writes back if changed.
- * @param readFile callback to read existing content (return undefined if file doesn't exist)
- * @param writeFile callback to write the resulting content
- * @param extraServers additional servers to include alongside the built-in ones
- * @returns whether the file was modified
- */
-export function configureMcpFile(
-	readFile: () => string | undefined,
-	writeFile: (content: string) => void,
-	extraServers?: Record<string, McpServerEntry>
-): boolean {
-	const servers = { ...extraServers, ...IGNITEUI_MCP_SERVERS };
-	const existingContent = readFile();
-	const { text, modified } = addMcpServers(existingContent, servers);
 	if (modified) {
-		writeFile(text);
+		fileSystem.writeFile(mcpFilePath, text);
 	}
+
 	return modified;
 }

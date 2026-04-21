@@ -1,7 +1,7 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { addClassToBody, configureMcpFile, App, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { addClassToBody, addMcpServers, App, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -120,9 +120,9 @@ function importStyles(): Rule {
 
 export function addAIConfig(): Rule {
 	return (tree: Tree) => {
+		setVirtual(tree);
 		copyAISkillsToProject();
 
-		const mcpFilePath = "/.vscode/mcp.json";
 		const angularCliServer: Record<string, McpServerEntry> = {
 			"angular-cli": {
 				command: "npx",
@@ -130,11 +130,7 @@ export function addAIConfig(): Rule {
 			}
 		};
 
-		configureMcpFile(
-			() => tree.exists(mcpFilePath) ? tree.read(mcpFilePath)!.toString() : undefined,
-			(text) => tree.exists(mcpFilePath) ? tree.overwrite(mcpFilePath, text) : tree.create(mcpFilePath, text),
-			angularCliServer
-		);
+		addMcpServers(angularCliServer);
 	};
 }
 

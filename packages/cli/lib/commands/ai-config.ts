@@ -1,23 +1,14 @@
-import { configureMcpFile, copyAISkillsToProject, FsFileSystem, GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
+import { addMcpServers, copyAISkillsToProject, GoogleAnalytics, Util } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
-import * as path from "path";
 
-function getConfigPath(): string {
-	return path.join(process.cwd(), ".vscode", "mcp.json");
-}
-
-export function configureMCP(fileSystem: IFileSystem = new FsFileSystem()): void {
-	const configPath = getConfigPath();
-	const modified = configureMcpFile(
-		() => { try { return fileSystem.readFile(configPath); } catch { return undefined; } },
-		(text) => fileSystem.writeFile(configPath, text + "\n")
-	);
+export function configureMCP(): void {
+	const modified = addMcpServers();
 
 	if (!modified) {
-		Util.log(` Ignite UI MCP servers already configured in ${configPath}`);
+		Util.log(` Ignite UI MCP servers already configured`);
 		return;
 	}
-	Util.log(Util.greenCheck() + ` MCP servers configured in ${configPath}`);
+	Util.log(Util.greenCheck() + ` MCP servers configured`);
 }
 
 export function configureSkills(): void {
