@@ -126,7 +126,7 @@ export class <%=ClassName%> implements OnInit, OnDestroy, AfterViewInit {
   public ngAfterViewInit(): void {
     this.overlaySettings = IgxOverlayService.createAbsoluteOverlaySettings(
       AbsolutePosition.Center,
-      this.grid1() as any
+      true
     );
     this.overlaySettings.modal = true;
   }

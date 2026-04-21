@@ -154,6 +154,12 @@ $progressBar-sample-theme: progress-linear-theme(
 .grid__wrapper {
   margin: 0 auto;
   padding: 16px;
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @media (max-width: 1000px) {
