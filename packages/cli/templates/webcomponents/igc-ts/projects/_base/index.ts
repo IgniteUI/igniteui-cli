@@ -9,6 +9,7 @@ export class BaseIgcProject implements ProjectTemplate {
 	public framework: string = "webcomponents";
 	public projectType: string = "igc-ts";
 	public hasExtraConfiguration: boolean = false;
+	public isHidden: boolean = true;
 	public delimiters = defaultDelimiters;
 
 	public get templatePaths(): string[] {

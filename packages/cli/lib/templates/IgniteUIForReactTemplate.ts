@@ -27,6 +27,7 @@ export class IgniteUIForReactTemplate implements Template {
 	public framework: string = "react";
 	public projectType: string;
 	public hasExtraConfiguration: boolean = false;
+	public isHidden: boolean = false;
 	public packages = [];
 	public delimiters = defaultDelimiters;
 	// non-standard template prop

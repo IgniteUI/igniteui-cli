@@ -10,6 +10,7 @@ export class TopNavIgrTsProject extends BaseWithHomeIgrTsProject implements Proj
 	public framework: string = "react";
 	public projectType: string = "igr-ts";
 	public hasExtraConfiguration: boolean = false;
+	public isHidden: boolean = false;
 
 	public get templatePaths(): string[] {
 		return [...super.templatePaths, path.join(__dirname, "files")];
