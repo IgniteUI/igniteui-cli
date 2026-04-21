@@ -10,6 +10,7 @@ export class BasePageIgrTsProject extends BaseIgrTsProject implements ProjectTem
 	public framework: string = "react";
 	public projectType: string = "igr-ts";
 	public hasExtraConfiguration: boolean = false;
+	public isHidden: boolean = true;
 
 	public get templatePaths(): string[] {
 		return [...super.templatePaths, path.join(__dirname, "files")];

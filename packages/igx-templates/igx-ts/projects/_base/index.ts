@@ -9,6 +9,7 @@ export class BaseIgxProject implements ProjectTemplate {
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";
 	public hasExtraConfiguration = false;
+	public isHidden: boolean = true;
 	public delimiters = {
 		content: {
 			end: `%>`,

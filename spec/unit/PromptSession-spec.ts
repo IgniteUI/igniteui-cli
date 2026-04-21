@@ -22,6 +22,7 @@ function createMockBaseTemplate(): BaseTemplate {
 		framework: "angular",
 		projectType: "ts",
 		hasExtraConfiguration: true,
+		isHidden: false,
 		templatePaths: ["/path/to/template"],
 		generateConfig: jasmine.createSpy().and.returnValue({}),
 		getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
@@ -863,5 +864,32 @@ describe("Unit - PromptSession", () => {
 		const actualCall = (Util.processTemplates as jasmine.Spy).calls.argsFor(0)[2]["DefaultTheme"].replace(/\s/g, "");
 		const expectedCall = DEFAULT_THEME.replace(/\s/g, "");
 		expect(actualCall).toEqual(expectedCall);
+	});
+	it("getProjectTemplate - should exclude isHidden templates from choices and resolve the selected visible one", async () => {
+		const mockBaseTemplate = createMockBaseTemplate();
+		const hiddenProject = createMockProjectTemplate({ ...mockBaseTemplate, name: "base", isHidden: true });
+		const visibleProject1 = createMockProjectTemplate({ ...mockBaseTemplate, name: "empty", isHidden: false });
+		const visibleProject2 = createMockProjectTemplate({ ...mockBaseTemplate, name: "top-nav", isHidden: false });
+		const mockProjectLibrary = {
+			projects: [hiddenProject, visibleProject1, visibleProject2]
+		} as unknown as ProjectLibrary;
+
+		const mockTemplate = jasmine.createSpyObj("mockTemplate", ["getProjectLibrary"]);
+		const mockSession = new PromptSession(mockTemplate);
+
+		spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("empty"));
+
+		const result = await (mockSession as any).getProjectTemplate(mockProjectLibrary);
+
+		// Only the visible projects should appear as choices
+		expect(InquirerWrapper.select).toHaveBeenCalledTimes(1);
+		const selectCall = (InquirerWrapper.select as jasmine.Spy).calls.mostRecent();
+		const choiceValues: string[] = selectCall.args[0].choices.map((c: { value: string }) => c.value);
+		expect(choiceValues).not.toContain("base");
+		expect(choiceValues).toContain("empty");
+		expect(choiceValues).toContain("top-nav");
+
+		// The resolved template should be the selected visible project
+		expect(result).toBe(visibleProject1);
 	});
 });
