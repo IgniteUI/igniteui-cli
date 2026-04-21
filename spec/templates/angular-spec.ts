@@ -1,5 +1,7 @@
 import { App, Framework, Util } from "@igniteui/cli-core";
 import { IGNITEUI_ANGULAR_PACKAGE } from "../../packages/igx-templates/constants";
+import path from "path/win32";
+import * as fs from "fs";
 
 const templatesLocation = "../../packages/cli/templates/angular";
 
@@ -36,17 +38,33 @@ describe("Angular templates", () => {
 		}
 	});
 
-	it("Igx templates should reference igniteui-angular 21.2.0-rc.1", async () => {
+	it("Igx templates and project package.json files should use the same igniteui-angular version as the const", async () => {
 		const angularFramework: Framework = require(templatesLocation);
 		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
-		const packageName = IGNITEUI_ANGULAR_PACKAGE.split("@")[0];
-		const packageRefs = projLibrary.templates
-			.flatMap(x => x.packages || [])
-			.filter(x => typeof x === "string" && x.startsWith(`${packageName}@`));
+		const [pkg, version] = IGNITEUI_ANGULAR_PACKAGE.split("@");
 
-		expect(packageRefs.length).toBeGreaterThan(0);
-		for (const packageRef of packageRefs) {
-			expect(packageRef).toBe(IGNITEUI_ANGULAR_PACKAGE);
+    	projLibrary.templates
+			.flatMap(t => t.packages || [])
+			.filter(p => typeof p === "string" && p.startsWith(`${pkg}@`))
+			.forEach(p => expect(p).toBe(IGNITEUI_ANGULAR_PACKAGE));
+
+		const roots = [
+			path.resolve(__dirname, "../projects/_base/files"),
+			path.resolve(__dirname, "../projects/side-nav-auth/files")
+		];
+
+		for (const root of roots) {
+			for (const dir of fs.readdirSync(root)) {
+				const file = path.join(root, dir, "package.json");
+				if (!fs.existsSync(file)) continue;
+
+				const { dependencies = {}, devDependencies = {} } = require(file);
+				const deps = { ...dependencies, ...devDependencies };
+
+				if (deps[pkg]) {
+					expect(deps[pkg]).toBe(version);
+				}
+			}
 		}
 	});
 });
