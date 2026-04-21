@@ -43,6 +43,7 @@ describe("Schematics upgrade-packages", () => {
 			framework: "angular",
 			projectType: "ts",
 			hasExtraConfiguration: true,
+			isHidden: false,
 			templatePaths: ["/path/to/template"],
 			generateConfig: jasmine.createSpy().and.returnValue({}),
 			getExtraConfiguration: jasmine.createSpy().and.returnValue([]),

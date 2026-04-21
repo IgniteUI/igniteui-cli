@@ -222,13 +222,14 @@ export abstract class BasePromptSession {
 	 * @param projectLibrary to get theme for
 	 */
 	protected async getProjectTemplate(projectLibrary: ProjectLibrary): Promise<ProjectTemplate> {
+		const visibleProjects = projectLibrary.projects.filter(p => !p.isHidden);
 		const componentNameRes = await this.getUserInput({
 			type: "list",
 			name: "projTemplate",
 			message: "Choose project template:",
-			choices: Util.formatChoices(projectLibrary.projects)
+			choices: Util.formatChoices(visibleProjects)
 		});
-		return projectLibrary.projects.find(x => x.name === componentNameRes);
+		return visibleProjects.find(x => x.name === componentNameRes);
 	}
 
 	/**

@@ -16,6 +16,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 	public framework: string = "webcomponents";
 	public projectType = "igc-ts";
 	public hasExtraConfiguration: boolean = false;
+	public isHidden: boolean = false;
 	public packages = [];
 	public dependencies: TemplateDependency[] = [];
 	public delimiters = defaultDelimiters;
