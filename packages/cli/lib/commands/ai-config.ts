@@ -1,66 +1,14 @@
-import { copyAISkillsToProject, FsFileSystem, GoogleAnalytics, IFileSystem, Util } from "@igniteui/cli-core";
+import { addMcpServers, copyAISkillsToProject, GoogleAnalytics, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
-import * as path from "path";
 
-const IGNITEUI_SERVER_KEY = "igniteui-cli";
-const IGNITEUI_THEMING_SERVER_KEY = "igniteui-theming";
-
-const igniteuiServer = {
-	command: "npx",
-	args: ["-y", "igniteui-cli@next", "mcp"]
-};
-
-const igniteuiThemingServer = {
-	command: "npx",
-	args: ["-y", "igniteui-theming", "igniteui-theming-mcp"]
-};
-
-interface McpServerEntry {
-	command: string;
-	args: string[];
-}
-
-interface VsCodeMcpConfig {
-	servers: Record<string, McpServerEntry>;
-}
-
-function getConfigPath(): string {
-	return path.join(process.cwd(), ".vscode", "mcp.json");
-}
-
-function readJson<T>(filePath: string, fallback: T, fileSystem: IFileSystem): T {
-	try {
-		return JSON.parse(fileSystem.readFile(filePath)) as T;
-	} catch {
-		return fallback;
-	}
-}
-
-function writeJson(filePath: string, data: unknown, fileSystem: IFileSystem): void {
-	fileSystem.writeFile(filePath, JSON.stringify(data, null, 2) + "\n");
-}
-
-export function configureMCP(fileSystem: IFileSystem = new FsFileSystem()): void {
-	const configPath = getConfigPath();
-	const config = readJson<VsCodeMcpConfig>(configPath, { servers: {} }, fileSystem);
-	config.servers = config.servers || {};
-
-	let modified = false;
-	if (!config.servers[IGNITEUI_SERVER_KEY]) {
-		config.servers[IGNITEUI_SERVER_KEY] = igniteuiServer;
-		modified = true;
-	}
-	if (!config.servers[IGNITEUI_THEMING_SERVER_KEY]) {
-		config.servers[IGNITEUI_THEMING_SERVER_KEY] = igniteuiThemingServer;
-		modified = true;
-	}
+export function configureMCP(): void {
+	const modified = addMcpServers(VS_CODE_MCP_PATH);
 
 	if (!modified) {
-		Util.log(` Ignite UI MCP servers already configured in ${configPath}`);
+		Util.log(` Ignite UI MCP servers already configured in ${VS_CODE_MCP_PATH}`);
 		return;
 	}
-	writeJson(configPath, config, fileSystem);
-	Util.log(Util.greenCheck() + ` MCP servers configured in ${configPath}`);
+	Util.log(Util.greenCheck() + ` MCP servers configured in ${VS_CODE_MCP_PATH}`);
 }
 
 export function configureSkills(): void {

@@ -1,8 +1,7 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import * as jsonc from "jsonc-parser";
-import { addClassToBody, App, copyAISkillsToProject, FormatSettings, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { addClassToBody, addMcpServers, App, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -119,72 +118,47 @@ function importStyles(): Rule {
 	};
 }
 
-export function addAIConfig(): Rule {
+/** Initialize the App container with TemplateManager and virtual FS */
+function appInit(tree: Tree) {
+	App.initialize("angular-cli");
+	// must be initialized with physical fs first:
+	App.container.set(TEMPLATE_MANAGER, new SchematicsTemplateManager());
+	setVirtual(tree);
+}
+
+function aiConfig({ init } = { init: true }): Rule {
 	return (tree: Tree) => {
+		if (init) {
+			appInit(tree);
+		}
 		copyAISkillsToProject();
 
-		const mcpFilePath = "/.vscode/mcp.json";
-		const angularCliServer = {
-			command: "npx",
-			args: ["-y", "@angular/cli", "mcp"]
-		};
-		const igniteuiServer = {
-			command: "npx",
-			args: ["-y", "igniteui-cli@next", "mcp"]
-		};
-		const igniteuiThemingServer = {
-			command: "npx",
-			args: ["-y", "igniteui-theming", "igniteui-theming-mcp"]
+		const angularCliServer: Record<string, McpServerEntry> = {
+			"angular-cli": {
+				command: "npx",
+				args: ["-y", "@angular/cli", "mcp"]
+			}
 		};
 
-		if (tree.exists(mcpFilePath)) {
-			let text = tree.read(mcpFilePath)!.toString();
-			const content = jsonc.parse(text);
-			const servers = content.servers ?? {};
-			const formattingOptions: jsonc.FormattingOptions = { tabSize: 2, insertSpaces: true };
-			const newServers: Record<string, object> = {};
-			if (!servers["angular-cli"]) {
-				newServers["angular-cli"] = angularCliServer;
-			}
-			if (!servers["igniteui-cli"]) {
-				newServers["igniteui-cli"] = igniteuiServer;
-			}
-			if (!servers["igniteui-theming"]) {
-				newServers["igniteui-theming"] = igniteuiThemingServer;
-			}
-			for (const [key, value] of Object.entries(newServers)) {
-				const edits = jsonc.modify(text, ["servers", key], value, { formattingOptions });
-				text = jsonc.applyEdits(text, edits);
-			}
-			if (Object.keys(newServers).length > 0) {
-				tree.overwrite(mcpFilePath, text);
-			}
-		} else {
-			const mcpConfig = {
-				servers: {
-					"angular-cli": angularCliServer,
-					"igniteui-cli": igniteuiServer,
-					"igniteui-theming": igniteuiThemingServer
-				}
-			};
-			tree.create(mcpFilePath, JSON.stringify(mcpConfig, null, 2));
-		}
+		addMcpServers(VS_CODE_MCP_PATH, angularCliServer);
 	};
+}
+
+/** Standalone `ai-config` schematic entry */
+export function addAIConfig(): Rule {
+	return aiConfig();
 }
 
 export default function (): Rule {
 	return (tree: Tree) => {
-		App.initialize("angular-cli");
-		// must be initialized with physical fs first:
-		App.container.set(TEMPLATE_MANAGER, new SchematicsTemplateManager());
-		setVirtual(tree);
+		appInit(tree);
 		return chain([
 			importStyles(),
 			addTypographyToProj(),
 			importBrowserAnimations(),
 			createCliConfig(),
 			displayVersionMismatch(),
-			addAIConfig()
+			aiConfig({ init: false })
 		]);
 	};
 }
