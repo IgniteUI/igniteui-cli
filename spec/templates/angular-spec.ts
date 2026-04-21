@@ -35,7 +35,7 @@ describe("Angular templates", () => {
 		}
 	});
 
-	it("Igx templates should reference igniteui-angular 21.2.x", async () => {
+	it("Igx templates should reference igniteui-angular 21.2.0", async () => {
 		const angularFramework: Framework = require(templatesLocation);
 		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
 		const packageRefs = projLibrary.templates
