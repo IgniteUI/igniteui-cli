@@ -1,6 +1,6 @@
 import { App, Framework, Util } from "@igniteui/cli-core";
 import { IGNITEUI_ANGULAR_PACKAGE } from "../../packages/igx-templates/constants";
-import path from "path/win32";
+import path from "path";
 import * as fs from "fs";
 
 const templatesLocation = "../../packages/cli/templates/angular";
@@ -43,18 +43,17 @@ describe("Angular templates", () => {
 		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
 		const [pkg, version] = IGNITEUI_ANGULAR_PACKAGE.split("@");
 
-    	projLibrary.templates
+		projLibrary.templates
 			.flatMap(t => t.packages || [])
 			.filter(p => typeof p === "string" && p.startsWith(`${pkg}@`))
 			.forEach(p => expect(p).toBe(IGNITEUI_ANGULAR_PACKAGE));
 
 		const roots = [
-			path.resolve(process.cwd(), "packages/igx-templates/igx-ts/projects/_base/files"),
-			path.resolve(process.cwd(), "packages/igx-templates/igx-ts/projects/side-nav-auth/files")
+			...new Set(projLibrary.projects.flatMap(p => p.templatePaths))
 		];
 
 		for (const root of roots) {
-			const file = path.join(root, "package.json");
+			const file = path.resolve(process.cwd(), root, "package.json");
 			if (!fs.existsSync(file)) continue;
 
 			const { dependencies = {}, devDependencies = {} } = require(file);
