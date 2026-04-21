@@ -16,7 +16,6 @@ export const FEED_DOCK_MANAGER = "@infragistics/igniteui-dockmanager";
 
 // react
 export const NPM_REACT = "igniteui-react";
-export const FEED_REACT = "@infragistics/igniteui-react";
 export const NPM_REACT_DOCK_MANAGER = "igniteui-react-dockmanager";
 export const FEED_REACT_DOCK_MANAGER = "@infragistics/igniteui-react-dockmanager";
 export const NPM_REACT_CORE = "igniteui-react-core";
