@@ -89,6 +89,7 @@ A comprehensive modernization of all Angular templates to align with Angular v21
 * **CLI error handling:** added `.fail()` handler to yargs to gracefully handle command validation errors (e.g., missing required subcommands) instead of showing raw stack traces ([#1614](https://github.com/IgniteUI/igniteui-cli/pull/1614))
 * **Unknown command detection:** running `ig <unknown>` now prints an error message and available commands instead of silently falling through to the step-by-step interactive mode ([#1614](https://github.com/IgniteUI/igniteui-cli/pull/1614))
 * **Unhandled promise rejection:** added `.catch()` in the CLI entry point to catch and display unexpected errors cleanly ([#1614](https://github.com/IgniteUI/igniteui-cli/pull/1614))
+* **upgrade-packages:** aligned with React 19.4.0+ licensing migration, now upgrading `igniteui-react-dockmanager` and no longer upgrading `igniteui-react` ([#1641](https://github.com/IgniteUI/igniteui-cli/pull/1641))
 
 ---
 

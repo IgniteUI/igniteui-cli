@@ -2,7 +2,8 @@ import { IFileSystem } from "../../packages/core/types";
 import { App } from "../../packages/core/util";
 import {
 	FEED_DOCK_MANAGER, FEED_ANGULAR, getUpgradeablePackages,
-	NPM_DOCK_MANAGER, NPM_ANGULAR, resolvePackage, PackageDefinition
+	NPM_DOCK_MANAGER, NPM_ANGULAR, resolvePackage, PackageDefinition,
+	FEED_REACT_DOCK_MANAGER, NPM_REACT_DOCK_MANAGER
 } from "../../packages/core/update/package-resolve";
 
 class MockFileSystem implements IFileSystem {
@@ -112,6 +113,15 @@ describe("Igx templates - package resolve", () => {
 				"kek": "1.0.1"
 			};
 			expected.push({ trial: NPM_DOCK_MANAGER, licensed: FEED_DOCK_MANAGER });
+			mockRead.and.returnValue(JSON.stringify(mockObj));
+			expect(getUpgradeablePackages()).toEqual(expected);
+			mockObj.dependencies = {
+				"igniteui-angular": "^9.0.1",
+				"igniteui-dockmanager": "0.1.0",
+				"igniteui-react-dockmanager": "0.1.0",
+				"kek": "1.0.1"
+			};
+			expected.push({ trial: NPM_REACT_DOCK_MANAGER, licensed: FEED_REACT_DOCK_MANAGER });
 			mockRead.and.returnValue(JSON.stringify(mockObj));
 			expect(getUpgradeablePackages()).toEqual(expected);
 		});
