@@ -49,21 +49,19 @@ describe("Angular templates", () => {
 			.forEach(p => expect(p).toBe(IGNITEUI_ANGULAR_PACKAGE));
 
 		const roots = [
-			path.resolve(__dirname, "../projects/_base/files"),
-			path.resolve(__dirname, "../projects/side-nav-auth/files")
+			path.resolve(process.cwd(), "packages/igx-templates/igx-ts/projects/_base/files"),
+			path.resolve(process.cwd(), "packages/igx-templates/igx-ts/projects/side-nav-auth/files")
 		];
 
 		for (const root of roots) {
-			for (const dir of fs.readdirSync(root)) {
-				const file = path.join(root, dir, "package.json");
-				if (!fs.existsSync(file)) continue;
+			const file = path.join(root, "package.json");
+			if (!fs.existsSync(file)) continue;
 
-				const { dependencies = {}, devDependencies = {} } = require(file);
-				const deps = { ...dependencies, ...devDependencies };
+			const { dependencies = {}, devDependencies = {} } = require(file);
+			const deps = { ...dependencies, ...devDependencies };
 
-				if (deps[pkg]) {
-					expect(deps[pkg]).toBe(version);
-				}
+			if (deps[pkg]) {
+				expect(deps[pkg]).toBe(version);
 			}
 		}
 	});
