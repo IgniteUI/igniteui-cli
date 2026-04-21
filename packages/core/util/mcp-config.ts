@@ -5,7 +5,7 @@ export interface McpServerEntry {
 	args: string[];
 }
 
-export const IGNITEUI_MCP_SERVERS: Record<string, McpServerEntry> = {
+const IGNITEUI_MCP_SERVERS: Record<string, McpServerEntry> = {
 	"igniteui-cli": {
 		command: "npx",
 		args: ["-y", "igniteui-cli@next", "mcp"]
@@ -49,4 +49,25 @@ export function addMcpServers(
 	}
 
 	return { text, modified };
+}
+
+/**
+ * Reads existing mcp.json content, merges servers, and writes back if changed.
+ * @param readFile callback to read existing content (return undefined if file doesn't exist)
+ * @param writeFile callback to write the resulting content
+ * @param extraServers additional servers to include alongside the built-in ones
+ * @returns whether the file was modified
+ */
+export function configureMcpFile(
+	readFile: () => string | undefined,
+	writeFile: (content: string) => void,
+	extraServers?: Record<string, McpServerEntry>
+): boolean {
+	const servers = { ...extraServers, ...IGNITEUI_MCP_SERVERS };
+	const existingContent = readFile();
+	const { text, modified } = addMcpServers(existingContent, servers);
+	if (modified) {
+		writeFile(text);
+	}
+	return modified;
 }

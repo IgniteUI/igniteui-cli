@@ -1,7 +1,7 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { addClassToBody, addMcpServers, App, copyAISkillsToProject, FormatSettings, IGNITEUI_MCP_SERVERS, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { addClassToBody, configureMcpFile, App, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -123,24 +123,18 @@ export function addAIConfig(): Rule {
 		copyAISkillsToProject();
 
 		const mcpFilePath = "/.vscode/mcp.json";
-		const servers: Record<string, McpServerEntry> = {
+		const angularCliServer: Record<string, McpServerEntry> = {
 			"angular-cli": {
 				command: "npx",
 				args: ["-y", "@angular/cli", "mcp"]
-			},
-			...IGNITEUI_MCP_SERVERS
+			}
 		};
 
-		const existingContent = tree.exists(mcpFilePath) ? tree.read(mcpFilePath)!.toString() : undefined;
-		const { text, modified } = addMcpServers(existingContent, servers);
-
-		if (modified) {
-			if (tree.exists(mcpFilePath)) {
-				tree.overwrite(mcpFilePath, text);
-			} else {
-				tree.create(mcpFilePath, text);
-			}
-		}
+		configureMcpFile(
+			() => tree.exists(mcpFilePath) ? tree.read(mcpFilePath)!.toString() : undefined,
+			(text) => tree.exists(mcpFilePath) ? tree.overwrite(mcpFilePath, text) : tree.create(mcpFilePath, text),
+			angularCliServer
+		);
 	};
 }
 
