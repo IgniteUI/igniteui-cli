@@ -10,6 +10,7 @@ class EmptyProject implements ProjectTemplate {
 	public framework: string = "jquery";
 	public projectType: string = "js";
 	public hasExtraConfiguration: boolean = false;
+	public isHidden: boolean = false;
 	public routesFile = "bs-routes.json";
 	public delimiters = defaultDelimiters;
 

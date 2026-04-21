@@ -10,6 +10,7 @@ export class BasePageTemplate extends BaseIgcProject implements ProjectTemplate 
 	public projectType: string = "igc-ts";
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
+	public isHidden: boolean = true;
 
 	public get templatePaths(): string[] {
 		return [...super.templatePaths, path.join(__dirname, "files")];
