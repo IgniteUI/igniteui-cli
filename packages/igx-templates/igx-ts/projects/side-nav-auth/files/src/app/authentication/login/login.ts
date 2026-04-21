@@ -27,8 +27,8 @@ export class Login {
     email: ['', Validators.required],
     password: ['', Validators.required],
   });
-  public viewChange = output<any>();
-  public loggedIn = output<any>();
+  public viewChange = output<void>();
+  public loggedIn = output<void>();
   /** expose to template */
   public providers = ExternalAuthProvider;
 
@@ -46,14 +46,17 @@ export class Login {
   }
 
   async tryLogin() {
-    const response = await this.authentication.login(this.loginForm.value);
+    if (!this.loginForm.valid) {
+      return;
+    }
+    const response = await this.authentication.login(this.loginForm.value as any);
     if (!response.error) {
       this.userStore.setCurrentUser(response.user!);
       this.router.navigate(['/auth/profile']);
       this.loginForm.reset();
       // https://github.com/angular/angular/issues/15741
       Object.keys(this.loginForm.controls).forEach(key => {
-        this.loginForm.controls[key].setErrors(null);
+        this.loginForm.get(key)?.setErrors(null);
       });
       this.loggedIn.emit();
     } else {
