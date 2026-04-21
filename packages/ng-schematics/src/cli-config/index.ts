@@ -118,9 +118,19 @@ function importStyles(): Rule {
 	};
 }
 
-export function addAIConfig(): Rule {
+/** Initialize the App container with TemplateManager and virtual FS */
+function appInit(tree: Tree) {
+	App.initialize("angular-cli");
+	// must be initialized with physical fs first:
+	App.container.set(TEMPLATE_MANAGER, new SchematicsTemplateManager());
+	setVirtual(tree);
+}
+
+function aiConfig({ init } = { init: true }): Rule {
 	return (tree: Tree) => {
-		setVirtual(tree);
+		if (init) {
+			appInit(tree);
+		}
 		copyAISkillsToProject();
 
 		const angularCliServer: Record<string, McpServerEntry> = {
@@ -130,23 +140,25 @@ export function addAIConfig(): Rule {
 			}
 		};
 
-		addMcpServers(VS_CODE_MCP_PATH,angularCliServer);
+		addMcpServers(VS_CODE_MCP_PATH, angularCliServer);
 	};
+}
+
+/** Standalone `ai-config` schematic entry */
+export function addAIConfig(): Rule {
+	return aiConfig();
 }
 
 export default function (): Rule {
 	return (tree: Tree) => {
-		App.initialize("angular-cli");
-		// must be initialized with physical fs first:
-		App.container.set(TEMPLATE_MANAGER, new SchematicsTemplateManager());
-		setVirtual(tree);
+		appInit(tree);
 		return chain([
 			importStyles(),
 			addTypographyToProj(),
 			importBrowserAnimations(),
 			createCliConfig(),
 			displayVersionMismatch(),
-			addAIConfig()
+			aiConfig({ init: false })
 		]);
 	};
 }
