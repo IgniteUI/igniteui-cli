@@ -509,12 +509,13 @@ title = 'igniteui-angular example';
 			expect(await updateWorkspace("")).toEqual(false);
 		});
 
-		it("Should update package.json file, removing non-scoped igniteui-react packages", async () => {
+		it("Should update package.json file, removing non-scoped igniteui-react-* packages", async () => {
 			const mockPackageJSON = {
 				dependencies: {
 					"@alphabetically-sorted-scope/package": "^0.0.0",
 					"alphabetically-second-package": "^0.0.0",
 					"igniteui-react": "^18.5.1",
+					"igniteui-react-grids": "^18.5.1",
 					"igniteui-react-dockmanager": "^1.0.0",
 					"some-package": "^0.0.0"
 				}
@@ -540,6 +541,7 @@ title = 'igniteui-angular example';
 				dependencies: {
 					"@alphabetically-sorted-scope/package": "^0.0.0",
 					"@infragistics/igniteui-react-dockmanager": "^1.0.0",
+					"@infragistics/igniteui-react-grids": "^18.5.1",
 					"alphabetically-second-package": "^0.0.0",
 					"igniteui-react": "^18.5.1",
 					"some-package": "^0.0.0"
