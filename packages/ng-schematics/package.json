@@ -23,7 +23,6 @@
     "@igniteui/angular-templates": "~21.1.1500-rc.2",
     "@igniteui/cli-core": "~15.0.0-rc.2",
     "@schematics/angular": "^21.0.0",
-    "jsonc-parser": "3.3.1",
     "minimatch": "^10.0.1",
     "rxjs": "~7.8.1"
   },
