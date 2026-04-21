@@ -18,6 +18,7 @@ export class IgniteUIForAngularTemplate implements Template {
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";
 	public hasExtraConfiguration: boolean = false;
+	public isHidden: boolean = false;
 	public packages: string[] = [];
 
 	public dependencies: TemplateDependency[] = [];

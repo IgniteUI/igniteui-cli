@@ -10,6 +10,7 @@ export class SideNavProject extends BaseWithHomeIgcProject implements ProjectTem
 	public projectType: string = "igc-ts";
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
+	public isHidden: boolean = false;
 
 	public get templatePaths() {
 		return [...super.templatePaths, path.join(__dirname, "files")];

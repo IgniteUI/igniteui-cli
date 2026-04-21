@@ -2,11 +2,12 @@ import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import * as jsonc from "jsonc-parser";
-import { addClassToBody, copyAISkillsToProject, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { addClassToBody, App, copyAISkillsToProject, FormatSettings, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/theme-import";
+import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 
 function getDependencyVersion(pkg: string, tree: Tree): string {
 	const targetFile = "/package.json";
@@ -173,6 +174,9 @@ export function addAIConfig(): Rule {
 
 export default function (): Rule {
 	return (tree: Tree) => {
+		App.initialize("angular-cli");
+		// must be initialized with physical fs first:
+		App.container.set(TEMPLATE_MANAGER, new SchematicsTemplateManager());
 		setVirtual(tree);
 		return chain([
 			importStyles(),

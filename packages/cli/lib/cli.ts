@@ -1,4 +1,4 @@
-import { App, GoogleAnalytics, Util } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import yargs from "yargs";
 import {
 	add,
@@ -32,6 +32,8 @@ export async function run(args = null) {
 	App.initialize();
 
 	const templateManager = new TemplateManager();
+	// TODO: Refactor all code to use TemplateManager from the App container:
+	App.container.set(TEMPLATE_MANAGER, templateManager);
 
 	newCommand.addChoices(templateManager.getFrameworkIds());
 	newCommand.templateManager = templateManager;
