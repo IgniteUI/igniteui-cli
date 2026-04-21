@@ -1,4 +1,5 @@
-import { App, Config, copyAISkillsToProject, IFileSystem, ProjectConfig, Util } from "@igniteui/cli-core";
+import * as path from "path";
+import { App, Config, copyAISkillsToProject, FS_TOKEN, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;
@@ -6,6 +7,18 @@ function skillsDir(pkgName: string) {
 
 function skillFile(pkgName: string, file: string) {
 	return `${skillsDir(pkgName)}/${file}`;
+}
+
+function mockTemplateManager(templatePaths: string[]) {
+	const mockProject = { templatePaths };
+	const mockProjectLib = {
+		projectIds: ["base"],
+		getProject: jasmine.createSpy("getProject").and.returnValue(mockProject)
+	};
+	const mockTm = jasmine.createSpyObj("TemplateManager", ["getFrameworkById"]);
+	mockTm.getFrameworkById.and.returnValue({ projectLibraries: [mockProjectLib] });
+	App.container.set(TEMPLATE_MANAGER, mockTm);
+	return mockTm;
 }
 
 function makeFs(overrides: Partial<IFileSystem> = {}): IFileSystem {
@@ -326,24 +339,30 @@ describe("Unit - copyAISkillsToProject", () => {
 	});
 
 	describe("No skills available", () => {
-		it("should silently return when no skills directories are found", async () => {
+		it("should silently return when no npm skills exist and template paths also have no files", () => {
+			const FAKE_TEMPLATE_PATH = "/no-skills/template";
 			const fs = makeFs({
 				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
 					p === "ignite-ui-cli.json"
 				),
 				directoryExists: jasmine.createSpy("directoryExists").and.returnValue(false),
+				glob: jasmine.createSpy("glob").and.returnValue([]),
 				writeFile: jasmine.createSpy("writeFile")
 			});
 
-			spyOn(App.container, "get").and.returnValue(fs);
+			App.container.set(FS_TOKEN, fs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "getConfig").and.returnValue({
 				project: { framework: "angular" }
 			} as unknown as Config);
+			// Explicitly control the template fallback — glob returns nothing for the fake path too
+			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			await copyAISkillsToProject();
+			const result = copyAISkillsToProject();
 
+			expect(result.found).toBe(0);
 			expect(fs.writeFile).not.toHaveBeenCalled();
+			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("angular");
 		});
 
 		it("should silently return when skills directory exists but is empty", async () => {
@@ -483,6 +502,191 @@ describe("Unit - copyAISkillsToProject", () => {
 			expect(result.skipped).toBe(0);
 			expect(result.failed).toBe(1);
 			expect(fs.writeFile).toHaveBeenCalledTimes(2);
+		});
+	});
+
+	describe("Template fallback (no package skills found)", () => {
+		const FAKE_TEMPLATE_PATH = "/fake/template";
+		const FAKE_SKILLS_ROOT = path.join(FAKE_TEMPLATE_PATH, "__dot__claude/skills");
+
+		it("should use angular template paths when framework is in config and no npm skills are found", () => {
+			const skillFile = path.join(FAKE_SKILLS_ROOT, "angular.md");
+			const content = "# Angular skills from template";
+
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue(content),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === FAKE_SKILLS_ROOT
+				),
+				glob: jasmine.createSpy("glob").and.callFake((dir: string) =>
+					dir === FAKE_SKILLS_ROOT ? [skillFile] : []
+				),
+				writeFile: jasmine.createSpy("writeFile")
+			});
+
+			App.container.set(FS_TOKEN, fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
+
+			copyAISkillsToProject();
+
+			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("angular");
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", content);
+		});
+
+		it("should detect react from package.json and use react template paths when no npm skills are found", () => {
+			const skillFile = path.join(FAKE_SKILLS_ROOT, "react.md");
+			const content = "# React skills from template";
+
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "./package.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.callFake((p: string) => {
+					if (p === "./package.json") return JSON.stringify({ dependencies: { "react": "^19.0.0" } });
+					return content;
+				}),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === FAKE_SKILLS_ROOT
+				),
+				glob: jasmine.createSpy("glob").and.callFake((dir: string) =>
+					dir === FAKE_SKILLS_ROOT ? [skillFile] : []
+				),
+				writeFile: jasmine.createSpy("writeFile")
+			});
+
+			App.container.set(FS_TOKEN, fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
+
+			copyAISkillsToProject();
+
+			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("react");
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/react.md", content);
+		});
+
+		it("should use webcomponents (catch-all) template paths when no angular or react detected in package.json", () => {
+			const skillFile = path.join(FAKE_SKILLS_ROOT, "webcomponents.md");
+			const content = "# WC skills from template";
+
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "./package.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.callFake((p: string) => {
+					if (p === "./package.json") return JSON.stringify({ dependencies: { "lit": "^3.0.0" } });
+					return content;
+				}),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === FAKE_SKILLS_ROOT
+				),
+				glob: jasmine.createSpy("glob").and.callFake((dir: string) =>
+					dir === FAKE_SKILLS_ROOT ? [skillFile] : []
+				),
+				writeFile: jasmine.createSpy("writeFile")
+			});
+
+			App.container.set(FS_TOKEN, fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
+
+			copyAISkillsToProject();
+
+			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("webcomponents");
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", content);
+		});
+
+		it("should return empty result when no package.json exists and no npm skills are found", () => {
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.returnValue(false),
+				directoryExists: jasmine.createSpy("directoryExists").and.returnValue(false),
+				writeFile: jasmine.createSpy("writeFile")
+			});
+
+			App.container.set(FS_TOKEN, fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+			// no package.json → detectFrameworkFromPackageJson returns null → no template fallback
+
+			const result = copyAISkillsToProject();
+
+			expect(result.found).toBe(0);
+			expect(result.skipped).toBe(0);
+			expect(result.failed).toBe(0);
+			expect(fs.writeFile).not.toHaveBeenCalled();
+		});
+
+		it("should preserve nested directory structure from template skill paths", () => {
+			const nestedFile = path.join(FAKE_SKILLS_ROOT, "grids", "grid.md");
+			const content = "# Grid skills from template";
+
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue(content),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === FAKE_SKILLS_ROOT
+				),
+				glob: jasmine.createSpy("glob").and.callFake((dir: string) =>
+					dir === FAKE_SKILLS_ROOT ? [nestedFile] : []
+				),
+				writeFile: jasmine.createSpy("writeFile")
+			});
+
+			App.container.set(FS_TOKEN, fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+			mockTemplateManager([FAKE_TEMPLATE_PATH]);
+
+			copyAISkillsToProject();
+
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/grids/grid.md", content);
+		});
+
+		it("should use config framework (not detectFrameworkFromPackageJson) when config has framework but npm skills absent", () => {
+			// framework from config = "react"; package.json has @angular/core — config must win
+			const skillFile = path.join(FAKE_SKILLS_ROOT, "react.md");
+			const content = "# React skills from template";
+
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) => {
+					if (p === "ignite-ui-cli.json") return true;
+					if (p === "./package.json") return true;
+					return false;
+				}),
+				readFile: jasmine.createSpy("readFile").and.callFake((p: string) => {
+					if (p === "./package.json") return JSON.stringify({ dependencies: { "@angular/core": "^17.0.0" } });
+					return content;
+				}),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === FAKE_SKILLS_ROOT
+				),
+				glob: jasmine.createSpy("glob").and.callFake((dir: string) =>
+					dir === FAKE_SKILLS_ROOT ? [skillFile] : []
+				),
+				writeFile: jasmine.createSpy("writeFile")
+			});
+
+			App.container.set(FS_TOKEN, fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "react" } // config says react, even though package.json has angular
+			} as unknown as Config);
+			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
+
+			copyAISkillsToProject();
+
+			// ??= must NOT overwrite already-set framework value
+			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("react");
+			expect(mockTm.getFrameworkById).not.toHaveBeenCalledWith("angular");
 		});
 	});
 
