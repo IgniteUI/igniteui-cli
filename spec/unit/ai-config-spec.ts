@@ -145,7 +145,7 @@ describe("Unit - ai-config command", () => {
 				if (token === FS_TOKEN) {
 					return mockFs;
 				}
-				if (token == TEMPLATE_MANAGER) {
+				if (token === TEMPLATE_MANAGER) {
 					return { getFrameworkById: () => null } as any;
 				}
 			})
