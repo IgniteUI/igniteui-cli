@@ -53,7 +53,7 @@ Add to `.vscode/mcp.json`:
   "servers": {
     "igniteui-cli": {
       "command": "npx",
-      "args": ["-y", "igniteui-cli@next", "mcp"]
+      "args": ["-y", "igniteui-cli", "mcp"]
     }
   }
 }
@@ -69,7 +69,7 @@ Add to `claude_desktop_config.json`:
   "mcpServers": {
     "igniteui-cli": {
       "command": "npx",
-      "args": ["-y", "igniteui-cli@next", "mcp"]
+      "args": ["-y", "igniteui-cli", "mcp"]
     }
   }
 }
@@ -84,7 +84,7 @@ Add to Cursor MCP settings:
   "mcpServers": {
     "igniteui-cli": {
       "command": "npx",
-      "args": ["-y", "igniteui-cli@next", "mcp"]
+      "args": ["-y", "igniteui-cli", "mcp"]
     }
   }
 }
