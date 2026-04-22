@@ -39,6 +39,7 @@ All scaffolded projects now include AI-ready configuration files to enhance the 
 
 A comprehensive modernization of all Angular templates to align with Angular v21+ patterns.
 
+* **Angular packages update:** updated `igniteui-angular` to 21.2.0
 * **Signals and inject() migration:** replaced `@ViewChild` with signal-based `viewChild()` / `viewChild.required()`, `@Output` with `output()`, and constructor-based dependency injection with the `inject()` function across all 34 template files ([#1586](https://github.com/IgniteUI/igniteui-cli/pull/1586))
 * **Control flow migration:** replaced `*ngIf`, `*ngFor`, `*ngSwitch` structural directives with built-in `@if`, `@for`, `@switch` block syntax; migrated `[ngClass]` to `[class]` bindings across all templates ([#1584](https://github.com/IgniteUI/igniteui-cli/pull/1584))
 * **Standalone component adoption:** removed NgModule files (`AuthenticationModule`, `AppModule`) and replaced with provider functions; `provideAuthentication()` consolidates all auth setup ([#1554](https://github.com/IgniteUI/igniteui-cli/pull/1554))
@@ -57,7 +58,6 @@ A comprehensive modernization of all Angular templates to align with Angular v21
 * **React packages update:** updated `igniteui-react-core/charts/gauges` to ~19.5.2 and `igniteui-react[-grids]` to ~19.6.0 ([#1567](https://github.com/IgniteUI/igniteui-cli/pull/1567))
 * **Web Components packages update:** updated igniteui-webcomponents packages to latest ([#1566](https://github.com/IgniteUI/igniteui-cli/pull/1566))
 * **Web Components grid fixes:** corrected component usage and dependencies in grid templates ([#1562](https://github.com/IgniteUI/igniteui-cli/pull/1562))
-* **Web Components (`igc-ts`) project template modernization:** updated Vite config, switched from `eslint.config.mjs` to `eslint.config.js`, removed the `web-dev-server.config.mjs` dev server, and refreshed package scripts ([#1609](https://github.com/IgniteUI/igniteui-cli/pull/1609))
 
 ---
 
@@ -84,9 +84,6 @@ A comprehensive modernization of all Angular templates to align with Angular v21
 
 ### Bug Fixes & Maintenance
 
-* **execute:** fixed CLI loading to use the correct local version when a version mismatch between global and local installations is detected ([#1640](https://github.com/IgniteUI/igniteui-cli/pull/1640))
-* **templates:** hidden internal base project templates from the available project list in interactive selection ([#1649](https://github.com/IgniteUI/igniteui-cli/pull/1649))
-* **mcp:** removed `@next` tag from MCP server NPM package configurations; all scaffolded projects now reference the stable release ([d56d2d7](https://github.com/IgniteUI/igniteui-cli/commit/d56d2d7f8))
 * **eslint:** correct config ignores and resolve lint errors ([#1557](https://github.com/IgniteUI/igniteui-cli/pull/1557))
 * **lint:** re-enable `no-console` rule ([3ffa07f](https://github.com/IgniteUI/igniteui-cli/commit/3ffa07ff8812e93dd358b38332f3abc2ea955af2))
 * **tslint:** cleanup all leftover references to tslint ([#1558](https://github.com/IgniteUI/igniteui-cli/pull/1558))
@@ -96,7 +93,7 @@ A comprehensive modernization of all Angular templates to align with Angular v21
 * **CLI error handling:** added `.fail()` handler to yargs to gracefully handle command validation errors (e.g., missing required subcommands) instead of showing raw stack traces ([#1614](https://github.com/IgniteUI/igniteui-cli/pull/1614))
 * **Unknown command detection:** running `ig <unknown>` now prints an error message and available commands instead of silently falling through to the step-by-step interactive mode ([#1614](https://github.com/IgniteUI/igniteui-cli/pull/1614))
 * **Unhandled promise rejection:** added `.catch()` in the CLI entry point to catch and display unexpected errors cleanly ([#1614](https://github.com/IgniteUI/igniteui-cli/pull/1614))
-* **upgrade-packages:** aligned with React 19.4.0+ licensing migration, now upgrading `igniteui-react-dockmanager` and no longer upgrading `igniteui-react` ([#1638](https://github.com/IgniteUI/igniteui-cli/pull/1638))
+* **upgrade-packages:** aligned with React 19.4.0+ licensing migration, now upgrading `igniteui-react-dockmanager` and no longer upgrading `igniteui-react` ([#1641](https://github.com/IgniteUI/igniteui-cli/pull/1641))
 
 ---
 

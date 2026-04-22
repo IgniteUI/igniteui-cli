@@ -1,6 +1,6 @@
 {
   "name": "@igniteui/angular-templates",
-  "version": "21.2.1500-rc.3",
+  "version": "21.2.1500",
   "description": "Templates for Ignite UI for Angular projects and components",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   "author": "Infragistics",
   "license": "MIT",
   "dependencies": {
-    "@igniteui/cli-core": "~15.0.0-rc.3",
+    "@igniteui/cli-core": "~15.0.0",
     "typescript": "~5.5.4"
   }
 }
