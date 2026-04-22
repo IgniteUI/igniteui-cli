@@ -1,5 +1,5 @@
 import * as path from "path";
-import { App, Config, FS_TOKEN, GoogleAnalytics, IFileSystem, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, Config, FS_TOKEN, GoogleAnalytics, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import { configureMCP, configureSkills } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 
@@ -40,8 +40,9 @@ describe("Unit - ai-config command", () => {
 	describe("configureMCP", () => {
 		it("creates .vscode/mcp.json with both servers when file does not exist", () => {
 			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP(mockFs);
+			configureMCP();
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -51,8 +52,9 @@ describe("Unit - ai-config command", () => {
 
 		it("adds both servers when file exists but servers object is empty", () => {
 			const mockFs = createMockFs(JSON.stringify({ servers: {} }));
+			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP(mockFs);
+			configureMCP();
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -64,8 +66,9 @@ describe("Unit - ai-config command", () => {
 			const mockFs = createMockFs(JSON.stringify({
 				servers: { [IGNITEUI_SERVER_KEY]: igniteuiServer }
 			}));
+			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP(mockFs);
+			configureMCP();
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -77,8 +80,9 @@ describe("Unit - ai-config command", () => {
 			const mockFs = createMockFs(JSON.stringify({
 				servers: { [IGNITEUI_THEMING_SERVER_KEY]: igniteuiThemingServer }
 			}));
+			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP(mockFs);
+			configureMCP();
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -93,8 +97,9 @@ describe("Unit - ai-config command", () => {
 					[IGNITEUI_THEMING_SERVER_KEY]: igniteuiThemingServer
 				}
 			}));
+			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP(mockFs);
+			configureMCP();
 
 			expect(mockFs.writeFile).not.toHaveBeenCalled();
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("already configured"));
@@ -105,8 +110,9 @@ describe("Unit - ai-config command", () => {
 			const mockFs = createMockFs(JSON.stringify({
 				servers: { "other-server": thirdPartyServer }
 			}));
+			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP(mockFs);
+			configureMCP();
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -141,7 +147,14 @@ describe("Unit - ai-config command", () => {
 				glob: jasmine.createSpy("glob").and.returnValue([])
 			} as unknown as IFileSystem;
 
-			spyOn(App.container, "get").and.returnValue(mockFs);
+			spyOn(App.container, "get").and.callFake(token => {
+				if (token === FS_TOKEN) {
+					return mockFs;
+				}
+				if (token === TEMPLATE_MANAGER) {
+					return { getFrameworkById: () => null } as any;
+				}
+			})
 			setupAngularConfig();
 
 			configureSkills();
@@ -231,11 +244,6 @@ describe("Unit - ai-config command", () => {
 	describe("handler", () => {
 		it("posts analytics and calls configure", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
-			const fs = require("fs");
-			spyOn(fs, "readFileSync").and.throwError(new Error("ENOENT"));
-			spyOn(fs, "existsSync").and.returnValue(false);
-			spyOn(fs, "mkdirSync");
-			spyOn(fs, "writeFileSync");
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 

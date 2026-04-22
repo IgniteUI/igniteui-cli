@@ -6,16 +6,18 @@ export abstract class BaseTemplateManager {
 	protected frameworks: Framework[] = [];
 
 	constructor(private templatesAbsPath: string) {
+		this.loadFrameworks();
+		this.loadExternalTemplates();
+	}
 
+	/** Populate `frameworks` prop with frameworks from templates */
+	protected loadFrameworks() {
 		// read dirs and push dir names into frameworks
 		const frameworks = Util.getDirectoryNames(this.templatesAbsPath);
 		// load and initialize templates
 		for (const framework of frameworks) {
 			this.frameworks.push(require(path.join(this.templatesAbsPath, framework)) as Framework);
 		}
-
-		// load external templates
-		this.loadExternalTemplates();
 	}
 
 	public getFrameworkIds(): string[] {

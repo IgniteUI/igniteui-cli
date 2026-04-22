@@ -28,8 +28,8 @@ export class Register {
     password: ['', Validators.required]
   });
 
-  viewChange = output<any>();
-  registered = output<any>();
+  viewChange = output<void>();
+  registered = output<void>();
 
   async tryRegister() {
     const response = await this.authentication.register(this.registrationForm.value as RegisterInfo);

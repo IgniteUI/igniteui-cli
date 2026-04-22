@@ -10,6 +10,7 @@ export class BasePageTemplate extends BaseIgxProject implements ProjectTemplate 
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";
 	public hasExtraConfiguration = false;
+	public isHidden: boolean = true;
 
 	public get templatePaths(): string[] {
 		return [...super.templatePaths, path.join(__dirname, "files")];

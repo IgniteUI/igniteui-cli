@@ -2,6 +2,9 @@ import * as ts from 'typescript';
 import { EOL } from 'os';
 import { PropertyAssignment } from '../types';
 
+// tokens:
+export const TEMPLATE_MANAGER = "TEMPLATE_MANAGER";
+
 // TypeScript
 export const ROUTES_VARIABLE_NAME = 'routes';
 export const THEN_IDENTIFIER_NAME = 'then';

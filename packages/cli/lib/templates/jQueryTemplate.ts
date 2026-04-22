@@ -17,6 +17,7 @@ export class jQueryTemplate implements Template {
 	public framework: string = "jquery";
 	public projectType: string;
 	public hasExtraConfiguration: boolean;
+	public isHidden: boolean = false;
 	public packages = [];
 	public delimiters = defaultDelimiters;
 
