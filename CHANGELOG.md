@@ -1,4 +1,4 @@
-# 15.0.0-rc.0 (2026-04-02)
+# 15.0.0 (2026-04-22)
 
 ## Highlights
 
@@ -29,6 +29,9 @@ All scaffolded projects now include AI-ready configuration files to enhance the 
 * **Claude skills** for component usage, theming customization, and bundle size optimization ([#1573](https://github.com/IgniteUI/igniteui-cli/pull/1573))
 * **`ig ai-config` CLI command** to configure AI tooling in an existing project: writes `.vscode/mcp.json` with `igniteui-cli` and `igniteui-theming` MCP servers and copies AI coding skill files from installed Ignite UI packages to `.claude/skills/` ([#1502](https://github.com/IgniteUI/igniteui-cli/pull/1502))
 * **AI skills auto-copy on `ng add`**: the `cli-config` Angular schematic now automatically copies skill files from the installed Ignite UI package's `skills/` directory into `.claude/skills/` as part of the `ng add igniteui-angular` flow ([#1502](https://github.com/IgniteUI/igniteui-cli/pull/1502))
+* **`ng add` ai-config schematic:** a dedicated `ai-config` Angular schematic configures VS Code MCP settings with `angular-cli` and `igniteui-cli` MCP servers when running `ng add igniteui-angular` ([#1624](https://github.com/IgniteUI/igniteui-cli/pull/1624))
+* **Skills fallback from project template:** `ig ai-config` now falls back to copying skill files from the project template when the installed package does not include a `skills/` directory ([#1644](https://github.com/IgniteUI/igniteui-cli/pull/1644))
+* **Web Components skills without framework config:** `ig ai-config` now correctly adds `igniteui-webcomponents` skills even when no framework is configured in the project ([#1634](https://github.com/IgniteUI/igniteui-cli/pull/1634))
 
 ---
 
@@ -54,6 +57,7 @@ A comprehensive modernization of all Angular templates to align with Angular v21
 * **React packages update:** updated `igniteui-react-core/charts/gauges` to ~19.5.2 and `igniteui-react[-grids]` to ~19.6.0 ([#1567](https://github.com/IgniteUI/igniteui-cli/pull/1567))
 * **Web Components packages update:** updated igniteui-webcomponents packages to latest ([#1566](https://github.com/IgniteUI/igniteui-cli/pull/1566))
 * **Web Components grid fixes:** corrected component usage and dependencies in grid templates ([#1562](https://github.com/IgniteUI/igniteui-cli/pull/1562))
+* **Web Components (`igc-ts`) project template modernization:** updated Vite config, switched from `eslint.config.mjs` to `eslint.config.js`, removed the `web-dev-server.config.mjs` dev server, and refreshed package scripts ([#1609](https://github.com/IgniteUI/igniteui-cli/pull/1609))
 
 ---
 
@@ -80,6 +84,9 @@ A comprehensive modernization of all Angular templates to align with Angular v21
 
 ### Bug Fixes & Maintenance
 
+* **execute:** fixed CLI loading to use the correct local version when a version mismatch between global and local installations is detected ([#1640](https://github.com/IgniteUI/igniteui-cli/pull/1640))
+* **templates:** hidden internal base project templates from the available project list in interactive selection ([#1649](https://github.com/IgniteUI/igniteui-cli/pull/1649))
+* **mcp:** removed `@next` tag from MCP server NPM package configurations; all scaffolded projects now reference the stable release ([d56d2d7](https://github.com/IgniteUI/igniteui-cli/commit/d56d2d7f8))
 * **eslint:** correct config ignores and resolve lint errors ([#1557](https://github.com/IgniteUI/igniteui-cli/pull/1557))
 * **lint:** re-enable `no-console` rule ([3ffa07f](https://github.com/IgniteUI/igniteui-cli/commit/3ffa07ff8812e93dd358b38332f3abc2ea955af2))
 * **tslint:** cleanup all leftover references to tslint ([#1558](https://github.com/IgniteUI/igniteui-cli/pull/1558))
@@ -89,7 +96,7 @@ A comprehensive modernization of all Angular templates to align with Angular v21
 * **CLI error handling:** added `.fail()` handler to yargs to gracefully handle command validation errors (e.g., missing required subcommands) instead of showing raw stack traces ([#1614](https://github.com/IgniteUI/igniteui-cli/pull/1614))
 * **Unknown command detection:** running `ig <unknown>` now prints an error message and available commands instead of silently falling through to the step-by-step interactive mode ([#1614](https://github.com/IgniteUI/igniteui-cli/pull/1614))
 * **Unhandled promise rejection:** added `.catch()` in the CLI entry point to catch and display unexpected errors cleanly ([#1614](https://github.com/IgniteUI/igniteui-cli/pull/1614))
-* **upgrade-packages:** aligned with React 19.4.0+ licensing migration, now upgrading `igniteui-react-dockmanager` and no longer upgrading `igniteui-react` ([#1641](https://github.com/IgniteUI/igniteui-cli/pull/1641))
+* **upgrade-packages:** aligned with React 19.4.0+ licensing migration, now upgrading `igniteui-react-dockmanager` and no longer upgrading `igniteui-react` ([#1638](https://github.com/IgniteUI/igniteui-cli/pull/1638))
 
 ---
 
