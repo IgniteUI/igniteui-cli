@@ -1,6 +1,7 @@
 import js from '@eslint/js'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
+import { configs as litConfigs } from 'eslint-plugin-lit';
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
@@ -9,6 +10,7 @@ export default defineConfig([
     files: ['**/*.{js,ts}'],
     extends: [
       js.configs.recommended,
+      litConfigs['flat/recommended'],
       tseslint.configs.recommended
     ],
     languageOptions: {

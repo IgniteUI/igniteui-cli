@@ -1,6 +1,6 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
-import { defineComponents, IgcButtonComponent, IgcCheckboxChangeEventArgs, IgcSwitchComponent } from 'igniteui-webcomponents';
+import { defineComponents, IgcButtonComponent, type IgcCheckboxChangeEventArgs, IgcSwitchComponent } from 'igniteui-webcomponents';
 import {
   IgcGridComponent
 } from 'igniteui-webcomponents-grids';

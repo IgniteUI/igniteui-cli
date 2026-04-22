@@ -19,7 +19,7 @@ export default [
 		//],
 		parser: typescriptParser,
 		parserOptions: {
-        	project: '**/tsconfig.json',
+        	project: ['tsconfig.json', 'packages/ng-schematics/tsconfig.json', 'packages/igniteui-mcp/igniteui-doc-mcp/tsconfig.json'],
         	sourceType: 'module',
 		},
     },
