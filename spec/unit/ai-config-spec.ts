@@ -5,7 +5,7 @@ import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
 const IGNITEUI_THEMING_SERVER_KEY = "igniteui-theming";
-const igniteuiServer = { command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] };
+const igniteuiServer = { command: "npx", args: ["-y", "igniteui-cli", "mcp"] };
 const igniteuiThemingServer = { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] };
 
 function createMockFs(existingContent?: string): IFileSystem {
