@@ -78,7 +78,7 @@ function resolveSkillsRoots(): string[] {
 export function copyAISkillsToProject(): AISkillsCopyResult {
 	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0 };
 	// Source reads (glob + readFile) always use physical FS - skill files can
-	// come from sources outside the the project virtual tree (external/global package):
+	// come from sources outside the project virtual tree (external/global package):
 	const srcFs = new FsFileSystem();
 	// Destination writes respect the App FS (which may be virtual):
 	const destFs = App.container.get<IFileSystem>(FS_TOKEN);
