@@ -69,23 +69,20 @@ describe("Unit - copyAISkillsToProject", () => {
 			const mockSkillContent = "# Ignite UI for Angular skills";
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === angularSkillsDir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
 					dir === angularSkillsDir ? [skillFilePath] : []
 				),
 				readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
 					if (p === skillFilePath) return mockSkillContent;
 					return "";
-				}),
-				fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.callFake((p: string) => {
-					if (p === "./package.json") return false;
-					return false;
 				})
 			});
 
-			const destFs = makeDestFs();
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				)
+			});
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "getConfig").and.returnValue({
@@ -103,17 +100,17 @@ describe("Unit - copyAISkillsToProject", () => {
 			const skillFilePath = skillFile(licensedPkg, "angular.md");
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === angularSkillsDir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
 					dir === angularSkillsDir ? [skillFilePath] : []
 				),
 				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content")
 			});
 
-			// resolvePackage reads ./package.json via the container FS (destFs)
+			// resolvePackage + directoryExists use the container FS (destFs)
 			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
 				fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
 					p === "./package.json"
 				),
@@ -139,14 +136,14 @@ describe("Unit - copyAISkillsToProject", () => {
 			const newContent = "# Updated Angular skills";
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === angularSkillsDir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.returnValue([skillFilePath]),
 				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(newContent)
 			});
 
 			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
 				fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
 					p === ".claude/skills/angular.md"
 				),
@@ -170,9 +167,6 @@ describe("Unit - copyAISkillsToProject", () => {
 			const existingContent = "# Ignite UI for Angular skills";
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === angularSkillsDir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
 					dir === angularSkillsDir ? [skillFilePath] : []
 				),
@@ -180,6 +174,9 @@ describe("Unit - copyAISkillsToProject", () => {
 			});
 
 			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
 				fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
 					p === ".claude/skills/angular.md"
 				),
@@ -209,20 +206,20 @@ describe("Unit - copyAISkillsToProject", () => {
 			const content = "# React overview";
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === dir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
 					d === dir ? [file] : []
 				),
 				readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
 					if (p === file) return content;
 					return "";
-				}),
-				fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.returnValue(false)
+				})
 			});
 
-			const destFs = makeDestFs();
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === dir
+				)
+			});
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "getConfig").and.returnValue({
@@ -243,20 +240,20 @@ describe("Unit - copyAISkillsToProject", () => {
 			const content = "# Ignite UI WebComponents skills";
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === dir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
 					d === dir ? [file] : []
 				),
 				readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
 					if (p === file) return content;
 					return "";
-				}),
-				fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.returnValue(false)
+				})
 			});
 
-			const destFs = makeDestFs();
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === dir
+				)
+			});
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "getConfig").and.returnValue({
@@ -276,17 +273,17 @@ describe("Unit - copyAISkillsToProject", () => {
 			const file = skillFile(angularPkg, "angular.md");
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === dir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
 					d === dir ? [file] : []
 				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content"),
-				fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.returnValue(false)
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content")
 			});
 
-			const destFs = makeDestFs();
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === dir
+				)
+			});
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
@@ -301,17 +298,17 @@ describe("Unit - copyAISkillsToProject", () => {
 			const file = skillFile(reactPkg, "overview.md");
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === dir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
 					d === dir ? [file] : []
 				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("react skill content"),
-				fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.returnValue(false)
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("react skill content")
 			});
 
-			const destFs = makeDestFs();
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === dir
+				)
+			});
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
@@ -326,17 +323,17 @@ describe("Unit - copyAISkillsToProject", () => {
 			const file = skillFile(wcPkg, "webcomponents.md");
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === dir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
 					d === dir ? [file] : []
 				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("wc skill content"),
-				fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.returnValue(false)
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("wc skill content")
 			});
 
-			const destFs = makeDestFs();
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === dir
+				)
+			});
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
@@ -373,13 +370,14 @@ describe("Unit - copyAISkillsToProject", () => {
 			const dir = skillsDir("igniteui-angular");
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === dir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.returnValue([])
 			});
 
-			const destFs = makeDestFs();
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === dir
+				)
+			});
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "getConfig").and.returnValue({
@@ -399,9 +397,6 @@ describe("Unit - copyAISkillsToProject", () => {
 			const file = skillFile(pkg, "angular.md");
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === dir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
 					d === dir ? [file] : []
 				),
@@ -409,6 +404,9 @@ describe("Unit - copyAISkillsToProject", () => {
 			});
 
 			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === dir
+				),
 				writeFile: jasmine.createSpy("destFs.writeFile").and.throwError("EACCES: permission denied")
 			});
 			App.container.set(FS_TOKEN, destFs);
@@ -431,9 +429,6 @@ describe("Unit - copyAISkillsToProject", () => {
 			const destFile = ".claude/skills/angular.md";
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === dir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
 					d === dir ? [file] : []
 				),
@@ -441,6 +436,9 @@ describe("Unit - copyAISkillsToProject", () => {
 			});
 
 			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === dir
+				),
 				fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
 					p === destFile
 				),
@@ -467,9 +465,6 @@ describe("Unit - copyAISkillsToProject", () => {
 			const file2 = skillFile(pkg, "components.md");
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === dir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
 					d === dir ? [file1, file2] : []
 				),
@@ -478,6 +473,9 @@ describe("Unit - copyAISkillsToProject", () => {
 
 			let writeCallCount = 0;
 			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === dir
+				),
 				writeFile: jasmine.createSpy("destFs.writeFile").and.callFake(() => {
 					writeCallCount++;
 					if (writeCallCount === 2) {
@@ -717,17 +715,17 @@ describe("Unit - copyAISkillsToProject", () => {
 			const content = "# Grid skills";
 
 			spySrcFs({
-				directoryExists: spyOn(FsFileSystem.prototype, "directoryExists").and.callFake((p: string) =>
-					p === dir
-				),
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
 					d === dir ? [nestedFile] : []
 				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content),
-				fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.returnValue(false)
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
 			});
 
-			const destFs = makeDestFs();
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === dir
+				)
+			});
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 			spyOn(ProjectConfig, "getConfig").and.returnValue({
