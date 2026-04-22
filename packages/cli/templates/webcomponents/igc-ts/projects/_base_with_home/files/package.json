@@ -15,7 +15,7 @@
     "@vaadin/router": "^2.0.0",
     "@igniteui/material-icons-extended": "^3.0.2",
     "igniteui-dockmanager": "^2.1.0",
-    "igniteui-webcomponents": "~7.1.0",
+    "igniteui-webcomponents": "~7.1.2",
     "igniteui-webcomponents-charts": "~7.0.0",
     "igniteui-webcomponents-core": "~7.0.0",
     "igniteui-webcomponents-gauges": "~7.0.0",

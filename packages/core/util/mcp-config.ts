@@ -10,7 +10,7 @@ export interface McpServerEntry {
 const IGNITEUI_MCP_SERVERS: Record<string, McpServerEntry> = {
 	"igniteui-cli": {
 		command: "npx",
-		args: ["-y", "igniteui-cli@next", "mcp"]
+		args: ["-y", "igniteui-cli", "mcp"]
 	},
 	"igniteui-theming": {
 		command: "npx",
