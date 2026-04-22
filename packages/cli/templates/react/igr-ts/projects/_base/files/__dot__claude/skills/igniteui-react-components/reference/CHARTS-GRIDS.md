@@ -20,6 +20,7 @@ IgrCategoryChartModule.register();
 | Component | Module Import | Registration |
 |---|---|---|
 | `IgrCategoryChart` | `IgrCategoryChartModule` | `IgrCategoryChartModule.register()` |
+| `IgrDataChart` | `IgrDataChartCoreModule` + category/annotation modules (see [Complete Data Chart Example](#complete-data-chart-example)) | Multiple `.register()` calls required |
 | `IgrPieChart` | `IgrPieChartModule` | `IgrPieChartModule.register()` |
 | `IgrFinancialChart` | `IgrFinancialChartModule` | `IgrFinancialChartModule.register()` |
 | `IgrRadialGauge` | `IgrRadialGaugeModule` | `IgrRadialGaugeModule.register()` |
@@ -89,6 +90,222 @@ export default function DashboardView() {
   width: 100%;
 }
 ```
+
+## Complete Data Chart Example
+
+> **⚠️ IMPORTANT:** `IgrDataChart` requires registering **multiple modules** depending on the series type used. For bar charts, register the modules shown below. If you miss any module, the chart or axis types will silently fail to render.
+
+### Module Registration for Bar Charts
+
+```tsx
+import {
+  IgrLegendModule,
+  IgrDataChartCoreModule,
+  IgrDataChartCategoryCoreModule,
+  IgrDataChartCategoryModule,
+  IgrDataChartInteractivityModule,
+  IgrDataChartVerticalCategoryModule,
+  IgrDataChartAnnotationModule,
+} from 'igniteui-react-charts';
+
+// Register all required modules once at module level (outside any component)
+IgrLegendModule.register();
+IgrDataChartCoreModule.register();
+IgrDataChartCategoryCoreModule.register();
+IgrDataChartCategoryModule.register();
+IgrDataChartInteractivityModule.register();
+IgrDataChartVerticalCategoryModule.register();
+IgrDataChartAnnotationModule.register();
+```
+
+| Module | Purpose |
+|---|---|
+| `IgrDataChartCoreModule` | Core chart infrastructure |
+| `IgrDataChartCategoryCoreModule` | Base for category series |
+| `IgrDataChartCategoryModule` | Column, Line, Area, Spline etc. |
+| `IgrDataChartVerticalCategoryModule` | **Bar series** (horizontal bars) |
+| `IgrDataChartInteractivityModule` | Mouse hover, selection |
+| `IgrDataChartAnnotationModule` | Tooltip layers, callout layers |
+| `IgrLegendModule` | `IgrLegend` component |
+
+### Axis Choice for Bar Charts
+
+| Chart Orientation | Category Axis | Value Axis |
+|---|---|---|
+| Bar (horizontal) | `IgrCategoryYAxis` | `IgrNumericXAxis` |
+| Column (vertical) | `IgrCategoryXAxis` | `IgrNumericYAxis` |
+
+> **Bar charts are horizontal** — categories go on the Y-axis and numeric values on the X-axis. This is the opposite of column charts.
+
+### Complete Bar Chart Component (Multiple Series)
+
+```tsx
+import { useRef } from 'react';
+import {
+  IgrLegendModule,
+  IgrDataChartCoreModule,
+  IgrDataChartCategoryCoreModule,
+  IgrDataChartCategoryModule,
+  IgrDataChartInteractivityModule,
+  IgrDataChartVerticalCategoryModule,
+  IgrDataChartAnnotationModule,
+  IgrLegend,
+  IgrDataChart,
+  IgrCategoryYAxis,
+  IgrNumericXAxis,
+  IgrCategoryHighlightLayer,
+  IgrBarSeries,
+  IgrDataToolTipLayer,
+} from 'igniteui-react-charts';
+import styles from './bar-chart-view.module.css';
+
+// Register all required modules once at module level
+IgrLegendModule.register();
+IgrDataChartCoreModule.register();
+IgrDataChartCategoryCoreModule.register();
+IgrDataChartCategoryModule.register();
+IgrDataChartInteractivityModule.register();
+IgrDataChartVerticalCategoryModule.register();
+IgrDataChartAnnotationModule.register();
+
+interface MovieFranchise {
+  franchise: string;
+  totalRevenue: number;   // total box office in billions USD
+  highestGrossing: number; // highest single film in billions USD
+}
+
+const movieData: MovieFranchise[] = [
+  { franchise: 'Marvel Universe', totalRevenue: 22.55, highestGrossing: 2.80 },
+  { franchise: 'Star Wars',       totalRevenue: 10.32, highestGrossing: 2.07 },
+  { franchise: 'Harry Potter',    totalRevenue:  9.19, highestGrossing: 1.34 },
+  { franchise: 'Avengers',        totalRevenue:  7.76, highestGrossing: 2.80 },
+  { franchise: 'Spider Man',      totalRevenue:  7.22, highestGrossing: 1.28 },
+  { franchise: 'James Bond',      totalRevenue:  7.12, highestGrossing: 1.11 },
+];
+
+export default function BarChartView() {
+  const legendRef = useRef<IgrLegend>(null);
+
+  return (
+    <div className={styles['chart-wrapper']}>
+      <h3 className={styles['legend-title']}>Highest Grossing Movie Franchises</h3>
+
+      {/* Legend must be rendered before the chart so the ref is populated */}
+      <IgrLegend ref={legendRef} orientation="Horizontal" />
+
+      <div className={styles['chart-container']}>
+        <IgrDataChart legend={legendRef.current ?? undefined}>
+          {/*
+           * IgrCategoryYAxis  — category axis for horizontal bar charts.
+           * - label:          field name that supplies the axis labels.
+           * - dataSource:     the data array (required on the axis for bar charts).
+           * - isInverted:     renders top-to-bottom instead of bottom-to-top.
+           * - gap / overlap:  control bar spacing (gap) and multi-series overlap.
+           */}
+          <IgrCategoryYAxis
+            name="yAxis"
+            label="franchise"
+            dataSource={movieData}
+            isInverted={true}
+            gap={0.5}
+            overlap={-0.1}
+            useEnhancedIntervalManagement={true}
+            enhancedIntervalPreferMoreCategoryLabels={true}
+          />
+
+          {/* IgrNumericXAxis — value axis; start at 0 per bar chart best practices */}
+          <IgrNumericXAxis
+            name="xAxis"
+            title="Billions of U.S. Dollars"
+          />
+
+          {/* Highlight the hovered category row across all series */}
+          <IgrCategoryHighlightLayer name="categoryHighlight" />
+
+          {/* First series — total franchise revenue */}
+          <IgrBarSeries
+            name="totalRevenueSeries"
+            xAxisName="xAxis"
+            yAxisName="yAxis"
+            title="Total Revenue of Franchise"
+            valueMemberPath="totalRevenue"
+            dataSource={movieData}
+            showDefaultTooltip={true}
+            isTransitionInEnabled={true}
+            isHighlightingEnabled={true}
+          />
+
+          {/* Second series — highest grossing single film */}
+          <IgrBarSeries
+            name="highestGrossingSeries"
+            xAxisName="xAxis"
+            yAxisName="yAxis"
+            title="Highest Grossing Movie in Series"
+            valueMemberPath="highestGrossing"
+            dataSource={movieData}
+            showDefaultTooltip={true}
+            isTransitionInEnabled={true}
+            isHighlightingEnabled={true}
+          />
+
+          {/* Rich tooltip layer — shows all series values on hover */}
+          <IgrDataToolTipLayer name="tooltips" />
+        </IgrDataChart>
+      </div>
+    </div>
+  );
+}
+```
+
+```css
+/* bar-chart-view.module.css */
+.chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 500px;
+}
+
+.legend-title {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.chart-container {
+  min-height: 400px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+/* Make the chart fill its container */
+.chart-container > * {
+  height: 100%;
+  width: 100%;
+}
+```
+
+### Key Props Reference for `IgrBarSeries`
+
+| Prop | Type | Description |
+|---|---|---|
+| `name` | `string` | Unique identifier — **required** when referencing the series from other elements |
+| `xAxisName` | `string` | Must match the `name` of an `IgrNumericXAxis` declared in the same chart |
+| `yAxisName` | `string` | Must match the `name` of an `IgrCategoryYAxis` declared in the same chart |
+| `valueMemberPath` | `string` | Field name in the data object that holds the bar length value |
+| `dataSource` | `any[]` | The data array — can differ per series for independent datasets |
+| `title` | `string` | Series label shown in the legend |
+| `isTransitionInEnabled` | `boolean` | Animates bars on initial render |
+| `isHighlightingEnabled` | `boolean` | Dims other series when one is hovered |
+| `showDefaultTooltip` | `boolean` | Shows a simple built-in tooltip (use `IgrDataToolTipLayer` for richer output) |
+
+### Available Bar Chart Variants
+
+| Variant | Component | Module |
+|---|---|---|
+| Bar (horizontal) | `IgrBarSeries` | `IgrDataChartVerticalCategoryModule` |
+| Stacked Bar | `IgrStackedBarSeries` + `IgrStackedFragmentSeries` | `IgrDataChartStackedModule` |
+| Stacked 100% Bar | `IgrStacked100BarSeries` + `IgrStackedFragmentSeries` | `IgrDataChartStackedModule` |
 
 ## Complete Grid Lite Example
 

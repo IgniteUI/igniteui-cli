@@ -56,16 +56,16 @@ chartComponent.itemsSource = dataArray;
 ```
 
 ### Chart Type Selection
-- **Category Chart**: `chartType` property (Area, Bar, Column, Line, etc.)
-- **Financial Chart**: `chartType` property (Line, Candlestick, OHLC Bar)
-- **Data Chart**: Configure explicit series (IgxAreaSeriesComponent, IgxBarSeriesComponent, etc.)
+- **Category Chart**: `chartType` property (Auto, Area, Column, Line, Point, etc.)
+- **Financial Chart**: `chartType` property (Auto, Candle, Line, Bar, Column)
+- **Data Chart**: Configure explicit series (IgxAreaSeriesComponent, IgxBarSeriesComponent, IgxBarSeries, etc.)
 - **Pie Chart**: No chartType needed; inherent pie structure
 
 ### Required Properties
 
 **IgxCategoryChartComponent** (simplest API; auto-detects numeric & string columns):
 - `dataSource` — Data array (required)
-- `chartType` — Chart type (Area, Bar, Column, Line, etc.)
+- `chartType` — Chart type (Auto, Area, Column, Line, Point, etc.)
 - Component auto-detects: first string column → X-axis labels, numeric columns → Y-axis data
 
 **IgxDataChartComponent** (advanced; requires explicit configuration):
@@ -75,6 +75,7 @@ chartComponent.itemsSource = dataArray;
 
 **IgxFinancialChartComponent** (stock data):
 - `dataSource` — Data array with date + OHLC columns
+- `chartType` — Chart type (Auto, Candle, Line, Bar, Column)
 - `openMemberPath`, `highMemberPath`, `lowMemberPath`, `closeMemberPath` — OHLC field names
 
 **IgxPieChartComponent**:
@@ -184,9 +185,9 @@ chartComponent.itemsSource = dataArray;
   - **Volume Pane**: Show trading volume (column, line, or area chart)
   - **Indicator Pane**: Financial indicators (RSI, MACD, Bollinger Bands, etc.)
   - **Zoom Pane**: Navigation slider to zoom/pan
-- **Chart Types**: `Line`, `Candlestick` (default), `OHLC Bar`, `Column`
+- **Chart Types**: `Auto` (default), `Candle`, `Line`, `Bar`, `Column`
 - **API**:
-  - `chartType` — Price display type (Line, Candlestick, OHLC, Column — default Auto)
+  - `chartType` — Price display type (Auto, Line, Candle, Bar, Column)
   - `volumeType` — Volume display (None, Column, Line, Area)
   - `indicatorTypes` — Array of indicators (0 or more)
   - `zoomSliderType` — Zoom pane display (defaults to match chartType)
@@ -233,7 +234,7 @@ chartComponent.itemsSource = dataArray;
 ```typescript
 // Required
 dataSource: any[];           // Data array (auto-detects numeric fields)
-chartType: ChartType;        // Area, Bar, Column, Line, Waterfall, etc.
+chartType: CategoryChartType;        // Auto, Area, Column, Line, Point, etc.
 
 // Common optional inputs
 xAxisTitle: string;          // X-axis label
@@ -257,7 +258,7 @@ transitionInDuration: number;           // Animation duration (milliseconds)
 
 ### IgxFinancialChartComponent (Stock/Candlestick/OHLC)
 ```typescript
-chartType: FinancialChartType; // Line, Candlestick, OHLC, Column
+chartType: FinancialChartType; // Auto, Line, Candle, Bar, Column
 itemsSource: any[];
 openMemberPath: string;
 highMemberPath: string;

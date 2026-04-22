@@ -54,7 +54,6 @@ This skill is organized into focused sections. Refer to the appropriate file for
 | CSS Theming | [CSS-THEMING.md](./reference/CSS-THEMING.md) | Pre-built themes, CSS custom properties, scoped overrides, layout controls, light/dark switching |
 | Sass Theming | [SASS-THEMING.md](./reference/SASS-THEMING.md) | Sass-based theming with palette(), component theme functions |
 | MCP Server | [MCP-SERVER.md](./reference/MCP-SERVER.md) | AI-assisted theming code generation |
-| Reveal Theme Sync | [REVEAL-THEME.md](./reference/REVEAL-THEME.md) | Syncing Reveal SDK dashboards with Ignite UI theme |
 | Troubleshooting | [TROUBLESHOOTING.md](./reference/TROUBLESHOOTING.md) | Common issues and solutions |
 
 ---

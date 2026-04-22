@@ -12,7 +12,6 @@ Ignite UI for React is distributed across several packages depending on your nee
 | [`igniteui-react-charts`](https://www.npmjs.com/package/igniteui-react-charts) | Commercial | `npm install igniteui-react-charts` (trial) | Charts (Category, Financial, Pie, Scatter, etc.) |
 | [`igniteui-react-maps`](https://www.npmjs.com/package/igniteui-react-maps) | Commercial | `npm install igniteui-react-maps` (trial) | Geographic maps |
 | [`igniteui-react-gauges`](https://www.npmjs.com/package/igniteui-react-gauges) | Commercial | `npm install igniteui-react-gauges` (trial) | Radial and linear gauges |
-| [`reveal-sdk-wrappers-react`](https://www.npmjs.com/package/reveal-sdk-wrappers-react) | Commercial | `npm install reveal-sdk-wrappers-react` | Embedded BI dashboards (Reveal SDK) |
 
 > **Note:** The lightweight Grid Lite (`IgrGridLite` from `igniteui-react/grid-lite`) requires installing both `igniteui-react` and `igniteui-grid-lite` packages. It's a React wrapper component (uses `Igr` prefix) that works like any other React component — no `.register()` needed. See [CHARTS-GRIDS.md](./CHARTS-GRIDS.md) for setup details.
 
@@ -130,14 +129,6 @@ Use the tables below to map a UI need to the right React component. All componen
 | UI Need | Component | Import | Docs |
 |---|---|---|---|
 | Chat / AI assistant message thread | `IgrChat` | `igniteui-react` | [Docs](https://www.infragistics.com/products/ignite-ui-react/react/components/interactivity/chat) |
-
-### Embedded Analytics / BI Dashboards (Reveal SDK)
-
-| UI Need | Component | Import | Docs |
-|---|---|---|---|
-| Embedded BI dashboard viewer | `RvRevealView` | `reveal-sdk-wrappers-react` | [Docs](https://help.revealbi.io/web/getting-started-react/) |
-
-> **Note:** Reveal SDK is a companion product for embedding interactive dashboards and data visualizations. It uses separate packages (`reveal-sdk-wrappers-react`, `reveal-sdk-wrappers`) and requires a backend Reveal server URL. See [REVEAL-SDK.md](./REVEAL-SDK.md) for setup instructions and [../igniteui-react-customize-theme/SKILL.md](../igniteui-react-customize-theme/SKILL.md) for syncing Reveal's theme with Ignite UI theming tokens.
 
 ---
 
