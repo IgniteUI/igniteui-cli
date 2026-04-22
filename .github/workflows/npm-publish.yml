@@ -4,6 +4,7 @@ on:
     types: [created]
 
 permissions:
+  id-token: write
   contents: read
 
 jobs:
@@ -16,6 +17,9 @@ jobs:
         with:
           node-version: 20
           registry-url: "https://registry.npmjs.org"
+
+      - name: 'Update NPM' # needed for npmjs.org Trusted Publishing
+        run: npm install -g npm@latest
 
       - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - run: echo ${VERSION}
@@ -37,5 +41,3 @@ jobs:
         # use npm run as yarn run changes the registry and publishes to https://registry.yarnpkg.com
         run: npm run deploy ${NPM_TAG}
         # define env variable for the specific run
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
