@@ -62,7 +62,7 @@ function resolveSkillsRoots(): string[] {
 			const filePaths = projectLib?.getProject(projectLib.projectIds[0]).templatePaths ?? [];
 			roots.push(
 				...filePaths
-				.map((p) => path.join(p, CLAUDE_SKILLS_DIR_TEMPLATE))
+				.map((p) => path.join(path.relative(process.cwd(), p), CLAUDE_SKILLS_DIR_TEMPLATE))
 				.slice(0, 1),
 			);
 		}

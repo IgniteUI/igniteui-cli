@@ -507,7 +507,8 @@ describe("Unit - copyAISkillsToProject", () => {
 
 	describe("Template fallback (no package skills found)", () => {
 		const FAKE_TEMPLATE_PATH = "/fake/template";
-		const FAKE_SKILLS_ROOT = path.join(FAKE_TEMPLATE_PATH, "__dot__claude/skills");
+		// cwd-relative paths so both physical and virtual (schematics Tree) FS can use them
+		const FAKE_SKILLS_ROOT = path.join(path.relative(process.cwd(), FAKE_TEMPLATE_PATH), "__dot__claude/skills");
 
 		it("should use angular template paths when framework is in config and no npm skills are found", () => {
 			const skillFile = path.join(FAKE_SKILLS_ROOT, "angular.md");
@@ -687,6 +688,44 @@ describe("Unit - copyAISkillsToProject", () => {
 			// ??= must NOT overwrite already-set framework value
 			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("react");
 			expect(mockTm.getFrameworkById).not.toHaveBeenCalledWith("angular");
+		});
+
+		it("should convert absolute template paths to relative so virtual FS (schematics Tree) can resolve them", () => {
+			// SchematicsTemplateManager returns absolute paths (path.join(__dirname, "files")).
+			// resolveSkillsRoots() converts them to cwd-relative both physical and virtual FS can glob/read them.
+			const ABS_TEMPLATE_PATH = path.resolve("node_modules/fake-angular-templates/base/files");
+			const REL_SKILLS_ROOT = path.join("node_modules/fake-angular-templates/base/files", "__dot__claude/skills");
+			const ABS_SKILLS_ROOT = path.join(ABS_TEMPLATE_PATH, "__dot__claude/skills");
+			const skillFilePath = path.join(REL_SKILLS_ROOT, "angular.md");
+			const content = "# Angular skills from template";
+
+			const fs = makeFs({
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue(content),
+				directoryExists: jasmine.createSpy("directoryExists").and.returnValue(false),
+				// Virtual FS: glob only succeeds for the cwd-relative path
+				glob: jasmine.createSpy("glob").and.callFake((dir: string) =>
+					dir === REL_SKILLS_ROOT ? [skillFilePath] : []
+				),
+				writeFile: jasmine.createSpy("writeFile")
+			});
+
+			App.container.set(FS_TOKEN, fs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+			// Template manager returns absolute path (as SchematicsTemplateManager does at runtime)
+			mockTemplateManager([ABS_TEMPLATE_PATH]);
+
+			copyAISkillsToProject();
+
+			// glob must be called with the relative path, never with the original absolute path
+			expect(fs.glob).not.toHaveBeenCalledWith(ABS_SKILLS_ROOT, jasmine.anything());
+			expect(fs.glob).toHaveBeenCalledWith(REL_SKILLS_ROOT, jasmine.anything());
+			expect(fs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", content);
 		});
 	});
 
