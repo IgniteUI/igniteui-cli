@@ -134,14 +134,14 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch React Upgrade Packages",
-			"cwd": "${workspaceRoot}/output/reactproj",
+			"name": "Launch Upgrade Packages",
+			"cwd": "${workspaceRoot}/output/wcUpdate",
 			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
 			"console": "externalTerminal",
 			"preLaunchTask": "build",
 			"outFiles": ["${workspaceFolder}/**/*.js"],
 			"args": [
-				"upgrade-packages",
+				"ai-config",
 			]
 		},
 		{
@@ -171,12 +171,12 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"cwd": "${workspaceRoot}/output/proj",
+			"cwd": "${workspaceRoot}/output/start-test",
 			"name": "Launch Start",
 			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
 			"console": "externalTerminal",
 			"preLaunchTask": "build",
-			"outFiles": ["${workspaceFolder}/**/*.js"],
+			"outFiles": ["${workspaceRoot}/packages/**/*.js"],
 			"args": [
 				"start"
 			]
@@ -333,7 +333,7 @@
 			"type": "node",
 
 			// "cwd": "<absolute directory of the project, created with ng cli, on which the 'ng' schematic is applied>"
-			"cwd": "C:\\Users\\User\\Desktop\\ng_test",
+			"cwd": "${workspaceFolder}\\output",
 			"program": "${env:AppData}/npm/node_modules/@angular/cli/bin/ng",
 			"args": [
 					"new",
