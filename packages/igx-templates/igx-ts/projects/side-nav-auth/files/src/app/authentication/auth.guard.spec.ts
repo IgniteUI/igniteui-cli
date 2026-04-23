@@ -31,12 +31,12 @@ describe('AuthGuard', () => {
     expect(authGuard).toBeDefined();
   });
 
-  it(`Should properly call 'canActivate'`, () => {
+  it(`Should return true from 'canActivate' for authenticated user`, () => {
     const authGuard = TestBed.inject(AuthGuard);
     const mockSpy = vi.fn();
     expect(authGuard.canActivate(mockSpy as any, mockSpy as any)).toEqual(true);
   });
-  it(`Should properly call 'canActivate'`, () => {
+  it(`Should redirect and return false from 'canActivate' for unauthenticated user`, () => {
     const authGuard = TestBed.inject(AuthGuard);
     const mockSpy = vi.fn();
     mockUserService.currentUser = false;
