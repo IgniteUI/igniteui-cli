@@ -27,8 +27,6 @@ describe('JWT Tests', () => {
   afterEach(() => { vi.restoreAllMocks(); });
 
   describe(`JWT Interceptor`, () => {
-    const mockService = {} as any;
-
     it(`Should properly initialize`, () => {
       expect(interceptor).toBeTruthy();
     });
