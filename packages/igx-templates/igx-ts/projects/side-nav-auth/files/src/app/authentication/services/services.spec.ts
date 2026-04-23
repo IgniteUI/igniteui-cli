@@ -238,6 +238,13 @@ describe('Services', () => {
   });
 
   describe(`MOCK Backend Service`, () => {
+    const backendInterceptorLocalStorageStub = {
+      getItem: vi.fn(),
+      setItem: vi.fn(),
+      removeItem: vi.fn(),
+      clear: vi.fn()
+    };
+
     describe(`public`, () => {
       it(`Should properly call 'intercept'`, () => {
         const mockLocalStorage = {
@@ -393,16 +400,10 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'loginHandle'`, () => {
-        const mockLocalStorage = {
-          getItem: vi.fn(),
-          setItem: vi.fn(),
-          removeItem: vi.fn(),
-          clear: vi.fn()
-        };
         TestBed.configureTestingModule({
           providers: [
             BackendInterceptor,
-            { provide: LocalStorageService, useValue: mockLocalStorage }
+            { provide: LocalStorageService, useValue: backendInterceptorLocalStorageStub }
           ]
         });
         const provider = TestBed.inject(BackendInterceptor);
@@ -434,18 +435,11 @@ describe('Services', () => {
     });
 
     describe(`private`, () => {
-      const mockLocalStorage = {
-        getItem: vi.fn(),
-        setItem: vi.fn(),
-        removeItem: vi.fn(),
-        clear: vi.fn()
-      };
-
       it(`Should properly call 'getStorageUser'`, () => {
         TestBed.configureTestingModule({
           providers: [
             BackendInterceptor,
-            { provide: LocalStorageService, useValue: mockLocalStorage }
+            { provide: LocalStorageService, useValue: backendInterceptorLocalStorageStub }
           ]
         });
         const provider = TestBed.inject(BackendInterceptor);
@@ -472,7 +466,7 @@ describe('Services', () => {
         TestBed.configureTestingModule({
           providers: [
             BackendInterceptor,
-            { provide: LocalStorageService, useValue: mockLocalStorage }
+            { provide: LocalStorageService, useValue: backendInterceptorLocalStorageStub }
           ]
         });
         const provider = TestBed.inject(BackendInterceptor);
@@ -504,7 +498,7 @@ describe('Services', () => {
         TestBed.configureTestingModule({
           providers: [
             BackendInterceptor,
-            { provide: LocalStorageService, useValue: mockLocalStorage }
+            { provide: LocalStorageService, useValue: backendInterceptorLocalStorageStub }
           ]
         });
         const provider = TestBed.inject(BackendInterceptor);
@@ -534,7 +528,7 @@ describe('Services', () => {
         TestBed.configureTestingModule({
           providers: [
             BackendInterceptor,
-            { provide: LocalStorageService, useValue: mockLocalStorage }
+            { provide: LocalStorageService, useValue: backendInterceptorLocalStorageStub }
           ]
         });
         const provider = TestBed.inject(BackendInterceptor);
