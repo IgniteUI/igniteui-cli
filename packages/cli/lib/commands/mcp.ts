@@ -6,21 +6,20 @@ import { ArgumentsCamelCase } from "yargs";
 
 const command: CommandType = {
 	command: "mcp",
-	describe: "Starts the Ignite UI MCP server for AI assistant integration",
+	describe: "starts the Ignite UI MCP server for AI assistant integration",
 	templateManager: null,
 	builder: (yargs) => {
 		return yargs
 			.option("remote", {
-				describe: "Backend URL for remote mode (uses HTTP instead of local SQLite)",
+				describe: "backend URL for remote mode (uses HTTP instead of local SQLite)",
 				type: "string",
 				requiresArg: true
 			})
 			.option("debug", {
-				describe: "Enable debug logging to mcp-server.log",
+				describe: "enable debug logging to mcp-server.log",
 				type: "boolean",
 				default: false
-			})
-			.usage("");
+			});
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		let mcpEntry: string;

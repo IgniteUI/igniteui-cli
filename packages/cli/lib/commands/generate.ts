@@ -77,44 +77,42 @@ async function handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 const command: CommandType = {
 	aliases: ["g"],
 	command: "generate",
-	describe: "generates custom template",
+	describe: "generates custom templates (see subcommands)",
 	templateManager: null,
 	builder: yargs => {
 		yargs
 			.command({
 				aliases: ["t"],
 				command: "template [name]",
-				describe: "generates custom template",
+				describe: "generates a custom template scaffold",
 				builder: (yargs) => {
 					return yargs
 						.option("framework", {
 							alias: "f",
 							default: "jquery",
-							describe: "Framework to generate template for",
+							describe: "framework to generate the template for",
 							type: "string"
 						})
 						.option("name", {
 							alias: "n",
 							default: "custom-template",
-							describe: "Template name",
+							describe: "template name",
 							type: "string"
 						})
 						.option("skip-config", {
 							alias: "s",
 							default: false,
-							describe: "Runs generate command without updating the cli config",
+							describe: "run without updating the CLI config",
 							type: "boolean"
 						})
 						.option("type", {
 							alias: "t",
-							describe: "Project type (depends on framework)",
+							describe: "project type (depends on framework)",
 							type: "string"
-						})
-						.usage(""); // do not show any usage instructions before the commands list
+						});
 				},
 				handler
 			})
-			.usage("") // do not show any usage instructions before the commands list
 			// at least one command is required
 			.demandCommand(1, "Please select command");
 		return yargs;

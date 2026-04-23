@@ -27,10 +27,9 @@ const command: StartCommandType = {
 		return yargs
 			.option("port", {
 				alias: "p",
-				describe: "serve app port",
+				describe: "port to serve the app on",
 				type: "number"
-			})
-			.usage(""); // do not show any usage instructions before the commands
+			});
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({

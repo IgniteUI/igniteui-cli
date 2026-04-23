@@ -8,10 +8,9 @@ const command: TestCommandType = {
 	builder: (yargs) => {
 		return yargs
 			.option("e2e", {
-				describe: "Executes end-to-end tests",
+				describe: "execute end-to-end tests",
 				type: "boolean"
-			})
-			.usage(""); // do not show any usage instructions before the commands list
+			});
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 

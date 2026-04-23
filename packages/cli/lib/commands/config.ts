@@ -3,50 +3,47 @@ import { ConfigCommandType } from "./types";
 
 const command: ConfigCommandType = {
 	command: "config",
-	describe: "gets, sets or adds a configuration property",
+	describe: "gets, sets or adds a configuration property (see subcommands)",
 	builder: (yargs) => {
 		return yargs
 			.command({
 				command: "get <property>",
-				describe: "Gets a configuration property",
+				describe: "gets a configuration property",
 				builder: (yargs) => {
-					return yargs.option("property", {
-						describe: "Config property to get",
+					return yargs.positional("property", {
+						describe: "config property to get",
 						type: "string"
-					})
-					.usage(""); // do not show any usage instructions before the commands list
+					});
 				},
 				handler: command.getHandler
 			})
 			.command({
 				command: "set <property> <value>",
-				describe: "Sets a configuration property",
+				describe: "sets a configuration property",
 				builder: (yargs) => {
-					return yargs.option("property", {
-						describe: "Config property to set",
+					return yargs.positional("property", {
+						describe: "config property to set",
 						type: "string"
 					})
-					.option("value", {
-						describe: "New value for the property",
+					.positional("value", {
+						describe: "new value for the property",
 						type: "string"
-					})
-					.usage(""); // do not show any usage instructions before the commands list
+					});
 				},
 				handler: command.setHandler
 			})
 			.command({
 				command: "add <property> <value>",
-				describe: "Adds a value to an existing configuration array",
+				describe: "adds a value to an existing configuration array",
 				builder: (yargs) => {
-					return yargs.option("property", {
-						describe: "Config property to add to",
+					return yargs.positional("property", {
+						describe: "config property to add to",
 						type: "string"
 					})
-					.option("value", {
-						describe: "New value to add",
+					.positional("value", {
+						describe: "new value to add",
 						type: "string"
-					})
-					.usage(""); // do not show any usage instructions before the commands list
+					});
 				},
 				handler: command.addHandler
 			})
@@ -54,9 +51,8 @@ const command: ConfigCommandType = {
 				alias: "g",
 				type: "boolean",
 				global: true,
-				describe: "Specify if the global configuration should be used"
+				describe: "use the global configuration"
 			})
-			.usage("") // do not show any usage instructions before the commands list
 			// at least one command is required
 			.demandCommand(1, "Please select command");
 	},

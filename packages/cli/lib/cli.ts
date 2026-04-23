@@ -3,9 +3,9 @@ import yargs from "yargs";
 import {
 	add,
 	ADD_COMMAND_NAME,
-	ALL_COMMANDS,
 	aiConfig,
 	build,
+	CommandType,
 	config,
 	doc,
 	generate,
@@ -44,10 +44,27 @@ export async function run(args = null) {
 	list.templateManager = templateManager;
 	upgrade.templateManager = templateManager;
 
+	const registeredCommands: CommandType[] = [
+		newCommand, add, build, start, generate, config, doc, test, list, upgrade, mcp, aiConfig
+	];
+	const knownCommands = new Set<string>();
+	for (const cmd of registeredCommands) {
+		const primary = (Array.isArray(cmd.command) ? cmd.command[0] : cmd.command as string).split(/\s+/)[0];
+		knownCommands.add(primary);
+		const aliases = Array.isArray(cmd.aliases) ? cmd.aliases : (cmd.aliases ? [cmd.aliases] : []);
+		for (const alias of aliases) {
+			knownCommands.add(alias);
+		}
+	}
+
 	const yargsModule = args ? yargs(args) : yargs;
 	await yargsModule
-		.scriptName("") // prevent the addition of the name of the executing script in the usage output
-		.usage("") // do not show any usage instructions before the commands list
+		.scriptName("ig")
+		.usage("Usage: $0 [command] [options]\n\nRun without a command to start the interactive step-by-step project setup.")
+		.example("$0", "launch the interactive step-by-step project setup")
+		.example("$0 new my-app --framework angular", "scaffold a new Ignite UI for Angular project")
+		.example("$0 add grid main-grid", "add a Grid component to the current project")
+		.example("$0 list", "show all frameworks and their project templates")
 		.command(newCommand)
 		.command(add)
 		.command(build)
@@ -132,7 +149,7 @@ export async function run(args = null) {
 				/* istanbul ignore next */
 				App.testMode = !!argv.testMode;
 
-				if (!helpRequest && !ALL_COMMANDS.has(command?.toString())) {
+				if (!helpRequest && !knownCommands.has(command?.toString())) {
 					if (command) {
 						process.exitCode = 1;
 						Util.error(`Unknown command: "${command}"`, "red");

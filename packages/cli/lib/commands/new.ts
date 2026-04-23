@@ -15,7 +15,7 @@ const _framework: {
 } = {
 	alias: "f",
 	default: "jquery",
-	describe: "Framework to setup project for",
+	describe: "framework to scaffold the project for",
 	type: "string",
 	choices: []
 };
@@ -25,37 +25,42 @@ const command: NewCommandType = {
 	describe: "creates a project",
 	builder: (yargs) => {
 		return yargs
+			.positional("name", {
+				describe: "project name (same as --name/-n)",
+				type: "string"
+			})
 			.option("name", {
 				alias: "n",
-				describe: "Project name",
+				describe: "project name",
 				type: "string"
 			})
 			.option("framework", _framework)
 			.option("type", {
 				alias: "t",
-				describe: "Project type (depends on framework)",
+				describe: "project type (depends on framework)",
 				type: "string"
 			})
 			.option("theme", {
 				alias: "th",
-				describe: "Project theme (depends on project type)",
+				describe: "project theme (depends on project type)",
 				type: "string"
 			})
 			.option("skip-git", {
 				alias: "sg",
-				describe: "Do not automatically initialize repository for the project with Git",
+				describe: "do not initialize a git repository for the project",
 				type: "boolean"
 			})
 			.option("skip-install", {
 				alias: "si",
-				describe: "Do not automatically install packages",
+				describe: "do not install packages after scaffolding",
 				type: "boolean"
 			})
 			.option("template", {
-				describe: "Project template",
+				describe: "project template",
 				type: "string"
 			})
-			.usage(""); // do not show any usage instructions before the commands list
+			.example("$0 new my-app", "scaffold a new project interactively")
+			.example("$0 new my-app -f angular -t igx-ts", "scaffold an Ignite UI for Angular project");
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({

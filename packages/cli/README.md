@@ -103,6 +103,12 @@ For full list of supported templates in the current project you can simply run [
 ig list
 ```
 
+When run outside of a generated project and without a `--framework` argument, `ig list` prints every supported framework along with its project types and available project templates — a handy overview before running `ig new`:
+```bash
+ig list
+```
+Pass `-f <framework> [-t <projectType>]` to list component templates for a specific framework/project type instead.
+
 ### Build and run
 ```bash
 ig build

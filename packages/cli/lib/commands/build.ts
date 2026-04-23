@@ -7,9 +7,7 @@ import { ArgumentsCamelCase } from "yargs";
 const command: BuildCommandType = {
 	command: "build",
 	describe: "builds the project",
-	builder: (yargs) => {
-		return yargs.usage(""); // do not show any usage instructions before the commands
-	},
+	builder: (yargs) => yargs,
 	templateManager: null,
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 

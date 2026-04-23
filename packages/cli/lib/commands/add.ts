@@ -8,33 +8,44 @@ import { ArgumentsCamelCase } from "yargs";
 
 const command: AddCommandType = {
 	command: "add [template] [name]",
-	describe: "adds template by its ID",
+	describe: "adds a component or view template to the current project",
 	templateManager: null,
-	builder: {
-		"template": {
-			alias: "t",
-			description: `Template ID, such as "grid", "combo", etc.`,
-			type: "string",
-			global: true
-		},
-		"name": {
-			alias: "n",
-			description: "File name.",
-			type: "string",
-			global: true
-		},
-		"module": {
-			alias: "m",
-			description: "The module to which the template is to be added",
-			type: "string",
-			global: true
-		},
-		"skip-route": {
-			alias: "skr",
-			describe: "Don't auto-generate an app navigation route for the new component",
-			type: "boolean",
-			global: true
-		}
+	builder: (yargs) => {
+		return yargs
+			.positional("template", {
+				describe: `template ID (e.g. "grid", "combo"); same as --template/-t`,
+				type: "string"
+			})
+			.positional("name", {
+				describe: "file name (same as --name/-n)",
+				type: "string"
+			})
+			.option("template", {
+				alias: "t",
+				describe: `template ID (e.g. "grid", "combo")`,
+				type: "string",
+				global: true
+			})
+			.option("name", {
+				alias: "n",
+				describe: "file name",
+				type: "string",
+				global: true
+			})
+			.option("module", {
+				alias: "m",
+				describe: "module to which the template is to be added",
+				type: "string",
+				global: true
+			})
+			.option("skip-route", {
+				alias: "skr",
+				describe: "do not auto-generate an app navigation route for the new component",
+				type: "boolean",
+				global: true
+			})
+			.example("$0 add", "launch guided component picker")
+			.example("$0 add grid main-grid", "add a Grid component named main-grid");
 	},
 	check: (argv: ArgumentsCamelCase<PositionalArgs>) => {
 		if ((!argv.name && argv.template) || (argv.name && !argv.template)) {

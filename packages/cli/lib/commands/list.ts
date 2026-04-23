@@ -7,19 +7,21 @@ const command: CommandType = {
 	command: "list",
 	// use aliases here, instead of alias. With single alias yargs does not build correctly argv
 	aliases: ["l"],
-	describe: "list all templates",
-	builder: {
-		framework: {
-			alias: "f",
-			default: "jquery",
-			describe: "Framework to list templates for",
-			type: "string"
-		},
-		type: {
-			alias: "t",
-			describe: "Project type (depends on framework)",
-			type: "string"
-		}
+	describe: "lists frameworks, project templates and component templates",
+	builder: (yargs) => {
+		return yargs
+			.option("framework", {
+				alias: "f",
+				describe: "framework to list templates for",
+				type: "string"
+			})
+			.option("type", {
+				alias: "t",
+				describe: "project type (depends on framework)",
+				type: "string"
+			})
+			.example("$0 list", "show all frameworks and their project templates")
+			.example("$0 list -f angular", "list component templates for Angular");
 	},
 	templateManager: null,
 	handler(argv: ArgumentsCamelCase<PositionalArgs>) {
@@ -35,6 +37,13 @@ const command: CommandType = {
 			argv.framework = config.project.framework;
 			argv.type = config.project.projectType;
 			inProject = true;
+		}
+
+		if (!inProject && !argv.framework) {
+			if (argv.type) {
+				return Util.error("'--type' requires '--framework'", "red");
+			}
+			return listAllFrameworks();
 		}
 
 		const templatesByGroup = [];
@@ -104,5 +113,54 @@ const command: CommandType = {
 		}
 	}
 };
+
+function listAllFrameworks() {
+	const frameworkIds: string[] = command.templateManager.getFrameworkIds();
+	const frameworks: Framework[] = frameworkIds
+		.map(id => command.templateManager.getFrameworkById(id))
+		.filter(f => !!f);
+
+	GoogleAnalytics.post({
+		t: "event",
+		ec: "$ig list",
+		ea: "all frameworks"
+	});
+
+	let maxIdLength = 0;
+	for (const framework of frameworks) {
+		for (const lib of framework.projectLibraries) {
+			for (const project of lib.projects.filter(p => !p.isHidden)) {
+				if (project.id.length > maxIdLength) {
+					maxIdLength = project.id.length;
+				}
+			}
+		}
+	}
+
+	const addSpacesCount = 5;
+	const spaceChar = " ";
+
+	Util.log("Available frameworks and project templates:");
+	for (const framework of frameworks) {
+		Util.log("");
+		Util.log(`${framework.name} (${framework.id})`);
+		for (const lib of framework.projectLibraries) {
+			Util.log(`\t${lib.name} (${lib.projectType})`);
+			const visibleProjects = lib.projects.filter(p => !p.isHidden);
+			if (visibleProjects.length === 0) {
+				Util.log("\t\t(no project templates)");
+				continue;
+			}
+			for (const project of visibleProjects) {
+				const spacesCount = maxIdLength - project.id.length + addSpacesCount;
+				Util.log("\t\t" + project.id + spaceChar.repeat(spacesCount) + project.description);
+			}
+		}
+	}
+
+	Util.log("");
+	Util.log("Run 'ig new <name> --framework <framework> --type <projectType>' to scaffold a project.");
+	Util.log("Run 'ig list -f <framework> [-t <projectType>]' to list component templates.");
+}
 
 export default command;
