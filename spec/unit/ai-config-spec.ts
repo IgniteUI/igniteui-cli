@@ -1,11 +1,11 @@
 import * as path from "path";
-import { App, Config, FS_TOKEN, GoogleAnalytics, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { App, Config, FS_TOKEN, FsFileSystem, GoogleAnalytics, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import { configureMCP, configureSkills } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
 const IGNITEUI_THEMING_SERVER_KEY = "igniteui-theming";
-const igniteuiServer = { command: "npx", args: ["-y", "igniteui-cli@next", "mcp"] };
+const igniteuiServer = { command: "npx", args: ["-y", "igniteui-cli", "mcp"] };
 const igniteuiThemingServer = { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] };
 
 function createMockFs(existingContent?: string): IFileSystem {
@@ -180,6 +180,11 @@ describe("Unit - ai-config command", () => {
 			} as unknown as IFileSystem;
 
 			spyOn(App.container, "get").and.returnValue(mockFs);
+			// srcFs reads (FsFileSystem.prototype) for source content
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
 			setupAngularConfig();
 
 			configureSkills();
@@ -207,6 +212,11 @@ describe("Unit - ai-config command", () => {
 			} as unknown as IFileSystem;
 
 			spyOn(App.container, "get").and.returnValue(mockFs);
+			// srcFs reads (FsFileSystem.prototype) for source content
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content);
 			setupAngularConfig();
 
 			configureSkills();
@@ -232,6 +242,11 @@ describe("Unit - ai-config command", () => {
 			} as unknown as IFileSystem;
 
 			spyOn(App.container, "get").and.returnValue(mockFs);
+			// srcFs reads (FsFileSystem.prototype) for source content
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
 			setupAngularConfig();
 
 			configureSkills();
