@@ -23,7 +23,7 @@ describe('Services', () => {
       post: () => { }
     } as any;
 
-    const authServ = new Authentication(MOCK_HTTP_CLIENT);
+    const authServ = new Authentication();
     it('Should properly initialize', async () => {
       expect(authServ).toBeDefined();
     });
@@ -80,8 +80,8 @@ describe('Services', () => {
       prepareExternalUrl: () => { }
     } as any;
 
-    const localStorage = new LocalStorageService(PLATFORM_ID);
-    const extAuthServ = new ExternalAuth(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_LOCATION, localStorage);
+    const localStorage = new LocalStorageService();
+    const extAuthServ = new ExternalAuth();
     it(`Should properly initialize`, () => {
       expect(extAuthServ).toBeDefined();
     });
@@ -208,8 +208,8 @@ describe('Services', () => {
   describe(`MOCK Backend Service`, () => {
     describe(`public`, () => {
       it(`Should properly call 'intercept'`, () => {
-        const mockLocalStorage: LocalStorageService = new LocalStorageService({});
-        const provider = new BackendInterceptor(mockLocalStorage);
+        const mockLocalStorage: LocalStorageService = new LocalStorageService();
+        const provider = new BackendInterceptor();
         const mockRequest = {
           method: 'POST',
           url: '/login',
@@ -287,7 +287,7 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'registerHandle'`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
+        const provider = new BackendInterceptor();
         const localStorage = (provider as any).localStorage;
         const mockUser = {
           email: 'test_user'
@@ -334,7 +334,7 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'loginHandle'`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
+        const provider = new BackendInterceptor();
         const mockUser = {
           email: 'test_email'
         } as any;
@@ -364,7 +364,7 @@ describe('Services', () => {
 
     describe(`private`, () => {
       it(`Should properly call 'getStorageUser'`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
+        const provider = new BackendInterceptor();
         const mockInput = {
           body: {
             name: 'test_name',
@@ -385,7 +385,7 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'getStorageExtUser'`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
+        const provider = new BackendInterceptor();
         const mockInput = {
           body: {
             id: 'test_id',
@@ -411,7 +411,7 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'getUserJWT'`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
+        const provider = new BackendInterceptor();
         const mockInput = {
           name: 'test_name',
           given_name: 'test_given_name',
@@ -435,7 +435,7 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'generateToken'`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
+        const provider = new BackendInterceptor();
         const inputString = 'testString1';
         const expectedOutput = `${JWTUtil.encodeBase64Url({ alg: 'Mock', typ: 'JWT' })}.${JWTUtil.encodeBase64Url(inputString)}.mockSignature`;
         expect((provider as any).generateToken(inputString)).toEqual(expectedOutput);
@@ -454,7 +454,7 @@ describe('Services', () => {
       token: `mock token`,
       externalToken: `mock token`
     };
-    const localStorage = new LocalStorageService(PLATFORM_ID);
+    const localStorage = new LocalStorageService();
 
     beforeEach(() => {
       vi.spyOn(JSON, 'parse').mockReturnValue(mockUser);
@@ -462,7 +462,7 @@ describe('Services', () => {
     });
 
     it(`Should properly initialize`, () => {
-      const userServ = new UserStore(localStorage);
+      const userServ = new UserStore();
       expect(userServ).toBeDefined();
       expect(localStorage.getItem).toHaveBeenCalledWith('currentUser');
       expect(JSON.parse).toHaveBeenCalledWith('MOCK JSON');
@@ -471,7 +471,7 @@ describe('Services', () => {
     });
 
     it(`Should properly get 'initials'`, () => {
-      const userServ = new UserStore(localStorage);
+      const userServ = new UserStore();
       const currentUserSpy = vi.spyOn(userServ, 'currentUser', 'get').mockReturnValue(null as any);
       expect(userServ.initials).toEqual(null);
       currentUserSpy.mockReturnValue({ given_name: '' } as any);
@@ -489,7 +489,7 @@ describe('Services', () => {
     });
 
     it(`Should properly 'setCurrentUser'`, () => {
-      const userServ = new UserStore(localStorage);
+      const userServ = new UserStore();
       const mockUser2 = {
         exp: 111,
         name: 'Qually T',
@@ -511,7 +511,7 @@ describe('Services', () => {
     });
 
     it(`Should properly call 'clearCurrentUser'`, () => {
-      const userServ = new UserStore(localStorage);
+      const userServ = new UserStore();
       vi.spyOn(localStorage, 'removeItem');
       expect(userServ.currentUser).toBeTruthy();
       userServ.clearCurrentUser();

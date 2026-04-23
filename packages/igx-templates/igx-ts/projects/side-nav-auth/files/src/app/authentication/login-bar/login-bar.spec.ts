@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -104,12 +104,14 @@ describe('LoginBar', () => {
 
   it('should open dialog on button click (not logged)', () => {
     // override ViewChild:
-    component.loginDialog = new TestLoginDialog();
-
+    const mockDialog = {
+      open: vi.fn()
+    };
+    component.loginDialog = signal(mockDialog as any);
     const button = fixture.debugElement.query(By.css('button'));
-    vi.spyOn(component.loginDialog, 'open');
+    vi.spyOn(mockDialog as any, 'open');
     button.triggerEventHandler('click', {});
-    expect(component.loginDialog.open).toHaveBeenCalled();
+    expect(mockDialog.open).toHaveBeenCalled();
   });
 
   it('should open drop down on button click (logged in)', async () => {
@@ -122,7 +124,7 @@ describe('LoginBar', () => {
     const button = fixture.debugElement.query(By.css('button'));
     button.triggerEventHandler('click', {});
     await fixture.whenStable();
-    expect(component.igxDropDown.collapsed).toBeFalsy();
+    expect(component.igxDropDown()?.collapsed).toBeFalsy();
   });
 
   it('should handle user menu items', async () => {
@@ -133,11 +135,12 @@ describe('LoginBar', () => {
     vi.spyOn(userStore, 'clearCurrentUser');
     vi.spyOn(externalAuth, 'logout');
 
-    component.igxDropDown.open();
-    component.igxDropDown.setSelectedItem(0);
+    const dd = component.igxDropDown();
+    dd.open();
+    dd.setSelectedItem(0);
     expect(router.navigate).toHaveBeenCalledWith(['/auth/profile']);
 
-    component.igxDropDown.setSelectedItem(1);
+    dd.setSelectedItem(1);
     expect(router.navigate).toHaveBeenCalledWith(['/home']);
     expect(userStore.clearCurrentUser).toHaveBeenCalled();
     expect(externalAuth.logout).toHaveBeenCalled();
