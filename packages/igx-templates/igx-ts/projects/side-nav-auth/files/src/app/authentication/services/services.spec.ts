@@ -1,7 +1,10 @@
-import { HttpHandler, HttpResponse } from '@angular/common/http';
-import { PLATFORM_ID } from '@angular/core';
+import { Location } from '@angular/common';
+import { HttpClient, HttpHandler, HttpResponse } from '@angular/common/http';
+import { TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { Router } from '@angular/router';
 import { FacebookProvider } from '../providers/facebook-provider';
 import { GoogleProvider } from '../providers/google-provider';
 import { MicrosoftProvider } from '../providers/microsoft-provider';
@@ -19,11 +22,20 @@ describe('Services', () => {
   afterEach(() => { vi.restoreAllMocks(); });
 
   describe('Authentication Service', () => {
+    let authServ: Authentication;
     const MOCK_HTTP_CLIENT = {
       post: () => { }
     } as any;
 
-    const authServ = new Authentication(MOCK_HTTP_CLIENT);
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [
+          { provide: HttpClient, useValue: MOCK_HTTP_CLIENT }
+        ]
+      });
+      authServ = TestBed.inject(Authentication);
+    });
+
     it('Should properly initialize', async () => {
       expect(authServ).toBeDefined();
     });
@@ -68,20 +80,40 @@ describe('Services', () => {
         throw new Error('Test Error');
       });
       vi.spyOn(MOCK_HTTP_CLIENT, 'post').mockReturnValue(mockObs);
-      expect(await (authServ as any).loginPost(dummyData)).toEqual({ error: 'Test Error' });
+      expect(await (authServ as any).loginPost('/login', dummyData)).toEqual({ error: 'Test Error' });
       expect(MOCK_HTTP_CLIENT.post).toHaveBeenCalled();
     });
   });
 
   describe('External Authentication Service', () => {
+    let extAuthServ: ExternalAuth;
+    let localStorage: LocalStorageService;
+    let mockLocalStorage: any;
     const MOCK_OIDC_SECURITY = {} as any;
     const MOCK_ROUTER = {} as any;
     const MOCK_LOCATION = {
       prepareExternalUrl: () => { }
     } as any;
 
-    const localStorage = new LocalStorageService(PLATFORM_ID);
-    const extAuthServ = new ExternalAuth(MOCK_ROUTER, MOCK_OIDC_SECURITY, MOCK_LOCATION, localStorage);
+    beforeEach(() => {
+      mockLocalStorage = {
+        getItem: vi.fn(),
+        setItem: vi.fn(),
+        removeItem: vi.fn()
+      };
+
+      TestBed.configureTestingModule({
+        providers: [
+          { provide: Router, useValue: MOCK_ROUTER },
+          { provide: OidcSecurityService, useValue: MOCK_OIDC_SECURITY },
+          { provide: Location, useValue: MOCK_LOCATION },
+          { provide: LocalStorageService, useValue: mockLocalStorage }
+        ]
+      });
+      extAuthServ = TestBed.inject(ExternalAuth);
+      localStorage = TestBed.inject(LocalStorageService);
+    });
+
     it(`Should properly initialize`, () => {
       expect(extAuthServ).toBeDefined();
     });
@@ -206,10 +238,30 @@ describe('Services', () => {
   });
 
   describe(`MOCK Backend Service`, () => {
+    const backendInterceptorLocalStorageStub = {
+      getItem: vi.fn(),
+      setItem: vi.fn(),
+      removeItem: vi.fn(),
+      clear: vi.fn()
+    };
+
     describe(`public`, () => {
       it(`Should properly call 'intercept'`, () => {
-        const mockLocalStorage: LocalStorageService = new LocalStorageService({});
-        const provider = new BackendInterceptor(mockLocalStorage);
+        const mockLocalStorage = {
+          clear: () => { },
+          getItem: () => null,
+          key: () => null,
+          removeItem: () => { },
+          setItem: () => { },
+          length: 0
+        } as unknown as LocalStorageService;
+        TestBed.configureTestingModule({
+          providers: [
+            BackendInterceptor,
+            { provide: LocalStorageService, useValue: mockLocalStorage }
+          ]
+        });
+        const provider = TestBed.inject(BackendInterceptor);
         const mockRequest = {
           method: 'POST',
           url: '/login',
@@ -287,7 +339,21 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'registerHandle'`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
+        const mockLocalStorage = {
+          clear: () => { },
+          getItem: () => null,
+          key: () => null,
+          removeItem: () => { },
+          setItem: () => { },
+          length: 0
+        } as unknown as LocalStorageService;
+        TestBed.configureTestingModule({
+          providers: [
+            BackendInterceptor,
+            { provide: LocalStorageService, useValue: mockLocalStorage }
+          ]
+        });
+        const provider = TestBed.inject(BackendInterceptor);
         const localStorage = (provider as any).localStorage;
         const mockUser = {
           email: 'test_user'
@@ -334,7 +400,13 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'loginHandle'`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
+        TestBed.configureTestingModule({
+          providers: [
+            BackendInterceptor,
+            { provide: LocalStorageService, useValue: backendInterceptorLocalStorageStub }
+          ]
+        });
+        const provider = TestBed.inject(BackendInterceptor);
         const mockUser = {
           email: 'test_email'
         } as any;
@@ -363,8 +435,19 @@ describe('Services', () => {
     });
 
     describe(`private`, () => {
+      let provider: BackendInterceptor;
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          providers: [
+            BackendInterceptor,
+            { provide: LocalStorageService, useValue: backendInterceptorLocalStorageStub }
+          ]
+        });
+        provider = TestBed.inject(BackendInterceptor);
+      });
+
       it(`Should properly call 'getStorageUser'`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
         const mockInput = {
           body: {
             name: 'test_name',
@@ -385,7 +468,6 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'getStorageExtUser'`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
         const mockInput = {
           body: {
             id: 'test_id',
@@ -411,7 +493,6 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'getUserJWT'`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
         const mockInput = {
           name: 'test_name',
           given_name: 'test_given_name',
@@ -435,7 +516,6 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'generateToken'`, () => {
-        const provider = new BackendInterceptor(new LocalStorageService({}));
         const inputString = 'testString1';
         const expectedOutput = `${JWTUtil.encodeBase64Url({ alg: 'Mock', typ: 'JWT' })}.${JWTUtil.encodeBase64Url(inputString)}.mockSignature`;
         expect((provider as any).generateToken(inputString)).toEqual(expectedOutput);
@@ -444,6 +524,9 @@ describe('Services', () => {
   });
 
   describe(`User Service`, () => {
+    let userServ: UserStore;
+    let localStorage: LocalStorageService;
+    let mockLocalStorage: any;
     const mockUser = {
       exp: 111,
       name: 'Testy Testington',
@@ -454,15 +537,27 @@ describe('Services', () => {
       token: `mock token`,
       externalToken: `mock token`
     };
-    const localStorage = new LocalStorageService(PLATFORM_ID);
+
+    mockLocalStorage = {
+      getItem: vi.fn(),
+      setItem: vi.fn(),
+      removeItem: vi.fn()
+    };
 
     beforeEach(() => {
       vi.spyOn(JSON, 'parse').mockReturnValue(mockUser);
-      vi.spyOn(localStorage, 'getItem').mockReturnValue('MOCK JSON');
+      vi.spyOn(mockLocalStorage, 'getItem').mockReturnValue('MOCK JSON');
+      TestBed.configureTestingModule({
+        providers: [
+          UserStore,
+          { provide: LocalStorageService, useValue: mockLocalStorage }
+        ]
+      });
+      localStorage = TestBed.inject(LocalStorageService);
+      userServ = TestBed.inject(UserStore);
     });
 
     it(`Should properly initialize`, () => {
-      const userServ = new UserStore(localStorage);
       expect(userServ).toBeDefined();
       expect(localStorage.getItem).toHaveBeenCalledWith('currentUser');
       expect(JSON.parse).toHaveBeenCalledWith('MOCK JSON');
@@ -471,7 +566,6 @@ describe('Services', () => {
     });
 
     it(`Should properly get 'initials'`, () => {
-      const userServ = new UserStore(localStorage);
       const currentUserSpy = vi.spyOn(userServ, 'currentUser', 'get').mockReturnValue(null as any);
       expect(userServ.initials).toEqual(null);
       currentUserSpy.mockReturnValue({ given_name: '' } as any);
@@ -489,7 +583,6 @@ describe('Services', () => {
     });
 
     it(`Should properly 'setCurrentUser'`, () => {
-      const userServ = new UserStore(localStorage);
       const mockUser2 = {
         exp: 111,
         name: 'Qually T',
@@ -511,7 +604,6 @@ describe('Services', () => {
     });
 
     it(`Should properly call 'clearCurrentUser'`, () => {
-      const userServ = new UserStore(localStorage);
       vi.spyOn(localStorage, 'removeItem');
       expect(userServ.currentUser).toBeTruthy();
       userServ.clearCurrentUser();
