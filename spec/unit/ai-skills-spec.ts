@@ -1,5 +1,5 @@
 import * as path from "path";
-import { App, Config, copyAISkillsToProject, FS_TOKEN, FsFileSystem, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { AI_AGENT_SKILLS_DIRS, AIAgentTarget, App, Config, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getSkillsDir, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;
@@ -736,5 +736,193 @@ describe("Unit - copyAISkillsToProject", () => {
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/grids/grid.md", content);
 		});
+	});
+
+	describe("Agent-aware destination", () => {
+		it("should copy skills to .cursor/skills/ when skillsDir targets cursor", () => {
+			const angularSkillsDir = skillsDir("igniteui-angular");
+			const skillFilePath = skillFile("igniteui-angular", "angular.md");
+			const content = "# Angular skills";
+
+			spySrcFs({
+				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
+			});
+
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				)
+			});
+			App.container.set(FS_TOKEN, destFs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+
+			copyAISkillsToProject(getSkillsDir("cursor"));
+
+			expect(destFs.writeFile).toHaveBeenCalledWith(".cursor/skills/angular.md", content);
+		});
+
+		it("should copy skills to .agents/skills/ when skillsDir targets generic", () => {
+			const angularSkillsDir = skillsDir("igniteui-angular");
+			const skillFilePath = skillFile("igniteui-angular", "angular.md");
+			const content = "# Angular skills";
+
+			spySrcFs({
+				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
+			});
+
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				)
+			});
+			App.container.set(FS_TOKEN, destFs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+
+			copyAISkillsToProject(getSkillsDir("generic"));
+
+			expect(destFs.writeFile).toHaveBeenCalledWith(".agents/skills/angular.md", content);
+		});
+
+		it("should copy skills to .github/skills/ when skillsDir targets copilot", () => {
+			const reactPkg = "igniteui-react";
+			const dir = skillsDir(reactPkg);
+			const file = skillFile(reactPkg, "overview.md");
+			const content = "# React overview";
+
+			spySrcFs({
+				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+					d === dir ? [file] : []
+				),
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
+			});
+
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === dir
+				)
+			});
+			App.container.set(FS_TOKEN, destFs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "react" }
+			} as unknown as Config);
+
+			copyAISkillsToProject(getSkillsDir("copilot"));
+
+			expect(destFs.writeFile).toHaveBeenCalledWith(".github/skills/overview.md", content);
+		});
+
+		it("should support a custom skills directory path", () => {
+			const angularSkillsDir = skillsDir("igniteui-angular");
+			const skillFilePath = skillFile("igniteui-angular", "angular.md");
+			const content = "# Angular skills";
+
+			spySrcFs({
+				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
+			});
+
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				)
+			});
+			App.container.set(FS_TOKEN, destFs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+
+			copyAISkillsToProject("my-custom/ai-skills");
+
+			expect(destFs.writeFile).toHaveBeenCalledWith("my-custom/ai-skills/angular.md", content);
+		});
+
+		it("should default to .claude/skills/ when no skillsDir is provided", () => {
+			const angularSkillsDir = skillsDir("igniteui-angular");
+			const skillFilePath = skillFile("igniteui-angular", "angular.md");
+			const content = "# Angular skills";
+
+			spySrcFs({
+				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
+			});
+
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				)
+			});
+			App.container.set(FS_TOKEN, destFs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+
+			copyAISkillsToProject();
+
+			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", content);
+		});
+	});
+});
+
+describe("Unit - getSkillsDir", () => {
+	it("should return .claude/skills for 'claude'", () => {
+		expect(getSkillsDir("claude")).toBe(".claude/skills");
+	});
+
+	it("should return .github/skills for 'copilot'", () => {
+		expect(getSkillsDir("copilot")).toBe(".github/skills");
+	});
+
+	it("should return .cursor/skills for 'cursor'", () => {
+		expect(getSkillsDir("cursor")).toBe(".cursor/skills");
+	});
+
+	it("should return .codex/skills for 'codex'", () => {
+		expect(getSkillsDir("codex")).toBe(".codex/skills");
+	});
+
+	it("should return .windsurf/skills for 'windsurf'", () => {
+		expect(getSkillsDir("windsurf")).toBe(".windsurf/skills");
+	});
+
+	it("should return .gemini/skills for 'gemini'", () => {
+		expect(getSkillsDir("gemini")).toBe(".gemini/skills");
+	});
+
+	it("should return .junie/skills for 'junie'", () => {
+		expect(getSkillsDir("junie")).toBe(".junie/skills");
+	});
+
+	it("should return .agents/skills for 'generic'", () => {
+		expect(getSkillsDir("generic")).toBe(".agents/skills");
+	});
+
+	it("should default to .claude/skills when no target is specified", () => {
+		expect(getSkillsDir()).toBe(".claude/skills");
+	});
+});
+
+describe("Unit - AI_AGENT_SKILLS_DIRS", () => {
+	it("should contain entries for all expected agents", () => {
+		const expected: AIAgentTarget[] = ["claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"];
+		expect(Object.keys(AI_AGENT_SKILLS_DIRS).sort()).toEqual(expected.sort());
 	});
 });

@@ -9,8 +9,29 @@ import { TEMPLATE_MANAGER } from "./GlobalConstants";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
-const CLAUDE_SKILLS_DIR = ".claude/skills";
-const CLAUDE_SKILLS_DIR_TEMPLATE = "__dot__claude/skills";
+const DEFAULT_SKILLS_DIR = ".claude/skills";
+const SKILLS_DIR_TEMPLATE = "__dot__claude/skills";
+
+export type AIAgentTarget = "claude" | "copilot" | "cursor" | "codex" | "windsurf" | "gemini" | "junie" | "generic";
+
+export const AI_AGENT_SKILLS_DIRS: Record<AIAgentTarget, string> = {
+	claude: ".claude/skills",
+	copilot: ".github/skills",
+	cursor: ".cursor/skills",
+	codex: ".codex/skills",
+	windsurf: ".windsurf/skills",
+	gemini: ".gemini/skills",
+	junie: ".junie/skills",
+	generic: ".agents/skills"
+};
+
+/**
+ * Returns the project-level skills directory for the given AI agent target.
+ * Falls back to `.claude/skills` when no target is specified.
+ */
+export function getSkillsDir(target?: AIAgentTarget): string {
+	return AI_AGENT_SKILLS_DIRS[target ?? "claude"];
+}
 
 export interface AISkillsCopyResult {
 	found: number;
@@ -63,7 +84,7 @@ function resolveSkillsRoots(): string[] {
 			const filePaths = projectLib?.getProject(projectLib.projectIds[0]).templatePaths ?? [];
 			roots.push(
 				...filePaths
-				.map((p) => path.join(p, CLAUDE_SKILLS_DIR_TEMPLATE))
+				.map((p) => path.join(p, SKILLS_DIR_TEMPLATE))
 				.slice(0, 1),
 			);
 		}
@@ -73,9 +94,13 @@ function resolveSkillsRoots(): string[] {
 }
 
 /**
- * Copies skill files from the installed Ignite UI package(s) into .claude/skills/.
+ * Copies skill files from the installed Ignite UI package(s) into the
+ * specified skills directory. When no directory is given, defaults to
+ * `.claude/skills/` for backward compatibility.
+ * @param skillsDir – destination directory (e.g. `.agents/skills`, `.cursor/skills`, …)
  */
-export function copyAISkillsToProject(): AISkillsCopyResult {
+export function copyAISkillsToProject(skillsDir?: string): AISkillsCopyResult {
+	const outputDir = skillsDir ?? DEFAULT_SKILLS_DIR;
 	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0 };
 	// Source reads (glob + readFile) always use physical FS - skill files can
 	// come from sources outside the project virtual tree (external/global package):
@@ -102,8 +127,8 @@ export function copyAISkillsToProject(): AISkillsCopyResult {
 			const normRoot = skillsRoot.replace(/\\/g, "/").replace(/^\//, "");
 			const rel = path.posix.relative(normRoot, normP);
 			const dest = multiRoot
-				? `${CLAUDE_SKILLS_DIR}/${pkgDirName}/${rel}`
-				: `${CLAUDE_SKILLS_DIR}/${rel}`;
+				? `${outputDir}/${pkgDirName}/${rel}`
+				: `${outputDir}/${rel}`;
 
 			const newContent = srcFs.readFile(p);
 			try {

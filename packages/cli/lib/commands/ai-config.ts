@@ -1,4 +1,4 @@
-import { addMcpServers, copyAISkillsToProject, GoogleAnalytics, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
+import { addMcpServers, AI_AGENT_SKILLS_DIRS, AIAgentTarget, copyAISkillsToProject, getSkillsDir, GoogleAnalytics, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
 export function configureMCP(): void {
@@ -11,8 +11,8 @@ export function configureMCP(): void {
 	Util.log(Util.greenCheck() + ` MCP servers configured in ${VS_CODE_MCP_PATH}`);
 }
 
-export function configureSkills(): void {
-	const result = copyAISkillsToProject();
+export function configureSkills(skillsDir?: string): void {
+	const result = copyAISkillsToProject(skillsDir);
 	if (result.found === 0) {
 		Util.warn("No AI skill files found. Make sure packages are installed (npm install) " +
 			"and your Ignite UI packages are up-to-date.", "yellow");
@@ -26,18 +26,32 @@ export function configureSkills(): void {
 	}
 }
 
-export function configure(skills = true): void {
+export function configure(skills = true, skillsDir?: string): void {
 	configureMCP();
 	if (skills) {
-		configureSkills();
+		configureSkills(skillsDir);
 	}
 }
+
+const AI_AGENT_CHOICES = Object.keys(AI_AGENT_SKILLS_DIRS) as AIAgentTarget[];
 
 const command: CommandModule = {
 	command: "ai-config",
 	describe: "Configure Ignite UI AI tooling (MCP servers and AI coding skills)",
-	builder: (yargs) => yargs.usage(""),
-	async handler(_argv: ArgumentsCamelCase) {
+	builder: (yargs) => yargs
+		.usage("")
+		.option("agent", {
+			alias: "a",
+			describe: "AI agent to configure skills for (determines the target skills directory)",
+			choices: AI_AGENT_CHOICES,
+			type: "string"
+		})
+		.option("skills-dir", {
+			alias: "d",
+			describe: "Custom skills directory path (overrides --agent)",
+			type: "string"
+		}),
+	async handler(argv: ArgumentsCamelCase) {
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "MCP"
@@ -46,10 +60,11 @@ const command: CommandModule = {
 		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig ai-config",
-			ea: "client: vscode"
+			ea: `client: vscode, agent: ${argv.agent ?? "default"}`
 		});
 
-		configure();
+		const skillsDir = (argv.skillsDir as string) ?? (argv.agent ? getSkillsDir(argv.agent as AIAgentTarget) : undefined);
+		configure(true, skillsDir);
 	}
 };
 
