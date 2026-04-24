@@ -24,13 +24,13 @@ import { LoginBar } from './login-bar';
   selector: 'app-login-dialog',
   template: '',
   imports: [RouterTestingModule,
-	  IgxAvatarModule,
-	  IgxButtonModule,
-	  IgxDialogModule,
-	  IgxDropDownModule,
-	  IgxIconModule,
-	  IgxRippleModule,
-	  IgxToggleModule]
+    IgxAvatarModule,
+    IgxButtonModule,
+    IgxDialogModule,
+    IgxDropDownModule,
+    IgxIconModule,
+    IgxRippleModule,
+    IgxToggleModule]
 })
 class TestLoginDialog extends LoginDialog {
   override open() { }
@@ -64,8 +64,8 @@ describe('LoginBar', () => {
         IgxIconModule,
         IgxRippleModule,
         IgxToggleModule,
-		LoginBar,
-		TestLoginDialog
+        LoginBar,
+        TestLoginDialog
       ],
       providers: [
         ...provideAuthentication(),
