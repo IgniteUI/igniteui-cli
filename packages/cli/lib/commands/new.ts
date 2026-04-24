@@ -14,7 +14,7 @@ const _framework: {
     choices: Choices;
 } = {
 	alias: "f",
-	default: "jquery",
+	default: "angular",
 	describe: "Framework to setup project for",
 	type: "string",
 	choices: []

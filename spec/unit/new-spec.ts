@@ -75,6 +75,7 @@ describe("Unit - New command", () => {
 
 	it("Logs error for wrong framework", async () => {
 		spyOn(Util, "error");
+		spyOn(Util, "directoryExists").and.returnValue(false);
 		//spied getFrameworkById won't return anything, i.e. not found
 		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", ["getFrameworkById", "getProjectLibrary"]);
 
@@ -89,6 +90,7 @@ describe("Unit - New command", () => {
 
 	it("Logs error for wrong project type", async () => {
 		spyOn(Util, "error");
+		spyOn(Util, "directoryExists").and.returnValue(false);
 		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			// return nothing, i.e. not found
@@ -106,6 +108,7 @@ describe("Unit - New command", () => {
 
 	it("Logs error for wrong project theme", async () => {
 		spyOn(Util, "error");
+		spyOn(Util, "directoryExists").and.returnValue(false);
 
 		const mockProjLib = {
 			getProject: () => { },
@@ -147,6 +150,7 @@ describe("Unit - New command", () => {
 
 	it("Logs error for unavailable project", async () => {
 		spyOn(Util, "error");
+		spyOn(Util, "directoryExists").and.returnValue(false);
 
 		const mockProjLib = {
 			getProject: () => { },
