@@ -57,13 +57,15 @@ const command: CommandModule = {
 			cd: "MCP"
 		});
 
+		const agent = (argv.agent as string) ?? "default";
 		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig ai-config",
-			ea: `client: vscode, agent: ${argv.agent ?? "default"}`
+			ea: `agent: ${agent}`
 		});
 
-		const skillsDir = (argv.skillsDir as string) ?? (argv.agent ? getSkillsDir(argv.agent as AIAgentTarget) : undefined);
+		const skillsDir = (argv.skillsDir as string | undefined)
+			?? (argv.agent ? getSkillsDir(argv.agent as AIAgentTarget) : undefined);
 		configure(true, skillsDir);
 	}
 };
