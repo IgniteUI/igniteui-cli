@@ -402,4 +402,43 @@ export const appConfig: ApplicationConfig = {
 			expect(content.servers["igniteui-theming"]).toBeDefined();
 		});
 	});
+
+	describe("ai-config schematic", () => {
+		it("should call copyAISkillsToProject with no skillsDir by default", async () => {
+			await runner.runSchematic("ai-config", {}, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(undefined);
+		});
+
+		it("should pass resolved skillsDir when agent option is provided", async () => {
+			await runner.runSchematic("ai-config", { agent: "cursor" }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".cursor/skills");
+		});
+
+		it("should pass resolved skillsDir for copilot agent", async () => {
+			await runner.runSchematic("ai-config", { agent: "copilot" }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".github/skills");
+		});
+
+		it("should pass resolved skillsDir for generic agent", async () => {
+			await runner.runSchematic("ai-config", { agent: "generic" }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".agents/skills");
+		});
+
+		it("should pass custom skillsDir when skillsDir option is provided", async () => {
+			await runner.runSchematic("ai-config", { skillsDir: "my-custom/skills" }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith("my-custom/skills");
+		});
+
+		it("should prefer skillsDir over agent when both are provided", async () => {
+			await runner.runSchematic("ai-config", { agent: "cursor", skillsDir: "override/path" }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith("override/path");
+		});
+	});
 });

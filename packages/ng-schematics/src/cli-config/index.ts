@@ -1,7 +1,7 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { addClassToBody, addMcpServers, App, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
+import { addClassToBody, addMcpServers, AIAgentTarget, App, copyAISkillsToProject, FormatSettings, getSkillsDir, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -126,12 +126,12 @@ function appInit(tree: Tree) {
 	setVirtual(tree);
 }
 
-function aiConfig({ init } = { init: true }): Rule {
+function aiConfig({ init, skillsDir }: { init: boolean; skillsDir?: string } = { init: true }): Rule {
 	return (tree: Tree) => {
 		if (init) {
 			appInit(tree);
 		}
-		copyAISkillsToProject();
+		copyAISkillsToProject(skillsDir);
 
 		const angularCliServer: Record<string, McpServerEntry> = {
 			"angular-cli": {
@@ -145,8 +145,9 @@ function aiConfig({ init } = { init: true }): Rule {
 }
 
 /** Standalone `ai-config` schematic entry */
-export function addAIConfig(): Rule {
-	return aiConfig();
+export function addAIConfig(options: { agent?: AIAgentTarget; skillsDir?: string } = {}): Rule {
+	const resolvedSkillsDir = options.skillsDir ?? (options.agent ? getSkillsDir(options.agent) : undefined);
+	return aiConfig({ init: true, skillsDir: resolvedSkillsDir });
 }
 
 export default function (): Rule {

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "IgniteUIAIConfigSchema",
+  "title": "AI Config Options Schema",
+  "type": "object",
+  "description": "Configures AI tooling: MCP servers and AI coding skills.",
+  "properties": {
+    "agent": {
+      "type": "string",
+      "description": "AI agent to configure skills for (determines the target skills directory).",
+      "alias": "a",
+      "enum": ["claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"]
+    },
+    "skillsDir": {
+      "type": "string",
+      "description": "Custom skills directory path (overrides --agent).",
+      "alias": "d"
+    }
+  }
+}
