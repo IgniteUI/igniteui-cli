@@ -545,6 +545,8 @@ describe('Services', () => {
     };
 
     beforeEach(() => {
+      vi.spyOn(JSON, 'parse').mockReturnValue(mockUser);
+      vi.spyOn(mockLocalStorage, 'getItem').mockReturnValue('MOCK JSON');
       TestBed.configureTestingModule({
         providers: [
           UserStore,
@@ -553,8 +555,6 @@ describe('Services', () => {
       });
       localStorage = TestBed.inject(LocalStorageService);
       userServ = TestBed.inject(UserStore);
-      vi.spyOn(JSON, 'parse').mockReturnValue(mockUser);
-      vi.spyOn(mockLocalStorage, 'getItem').mockReturnValue('MOCK JSON');
     });
 
     it(`Should properly initialize`, () => {
