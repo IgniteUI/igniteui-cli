@@ -1,6 +1,6 @@
-import { AuthGuard } from './auth.guard';
-import { Router } from '@angular/router';
 import { TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { UserStore } from './services/user-store';
 
 describe('AuthGuard', () => {

@@ -435,14 +435,19 @@ describe('Services', () => {
     });
 
     describe(`private`, () => {
-      it(`Should properly call 'getStorageUser'`, () => {
+      let provider: BackendInterceptor;
+
+      beforeEach(() => {
         TestBed.configureTestingModule({
           providers: [
             BackendInterceptor,
             { provide: LocalStorageService, useValue: backendInterceptorLocalStorageStub }
           ]
         });
-        const provider = TestBed.inject(BackendInterceptor);
+        provider = TestBed.inject(BackendInterceptor);
+      });
+
+      it(`Should properly call 'getStorageUser'`, () => {
         const mockInput = {
           body: {
             name: 'test_name',
@@ -463,13 +468,6 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'getStorageExtUser'`, () => {
-        TestBed.configureTestingModule({
-          providers: [
-            BackendInterceptor,
-            { provide: LocalStorageService, useValue: backendInterceptorLocalStorageStub }
-          ]
-        });
-        const provider = TestBed.inject(BackendInterceptor);
         const mockInput = {
           body: {
             id: 'test_id',
@@ -495,13 +493,6 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'getUserJWT'`, () => {
-        TestBed.configureTestingModule({
-          providers: [
-            BackendInterceptor,
-            { provide: LocalStorageService, useValue: backendInterceptorLocalStorageStub }
-          ]
-        });
-        const provider = TestBed.inject(BackendInterceptor);
         const mockInput = {
           name: 'test_name',
           given_name: 'test_given_name',
@@ -525,13 +516,6 @@ describe('Services', () => {
       });
 
       it(`Should properly call 'generateToken'`, () => {
-        TestBed.configureTestingModule({
-          providers: [
-            BackendInterceptor,
-            { provide: LocalStorageService, useValue: backendInterceptorLocalStorageStub }
-          ]
-        });
-        const provider = TestBed.inject(BackendInterceptor);
         const inputString = 'testString1';
         const expectedOutput = `${JWTUtil.encodeBase64Url({ alg: 'Mock', typ: 'JWT' })}.${JWTUtil.encodeBase64Url(inputString)}.mockSignature`;
         expect((provider as any).generateToken(inputString)).toEqual(expectedOutput);
@@ -540,6 +524,7 @@ describe('Services', () => {
   });
 
   describe(`User Service`, () => {
+    let userServ: UserStore;
     let localStorage: LocalStorageService;
     let mockLocalStorage: any;
     const mockUser = {
@@ -559,7 +544,7 @@ describe('Services', () => {
       removeItem: vi.fn()
     };
 
-    const createUserStore = () => {
+    beforeEach(() => {
       TestBed.configureTestingModule({
         providers: [
           UserStore,
@@ -567,16 +552,12 @@ describe('Services', () => {
         ]
       });
       localStorage = TestBed.inject(LocalStorageService);
-      return TestBed.inject(UserStore);
-    };
-
-    beforeEach(() => {
+      userServ = TestBed.inject(UserStore);
       vi.spyOn(JSON, 'parse').mockReturnValue(mockUser);
       vi.spyOn(mockLocalStorage, 'getItem').mockReturnValue('MOCK JSON');
     });
 
     it(`Should properly initialize`, () => {
-      const userServ = createUserStore();
       expect(userServ).toBeDefined();
       expect(localStorage.getItem).toHaveBeenCalledWith('currentUser');
       expect(JSON.parse).toHaveBeenCalledWith('MOCK JSON');
@@ -585,7 +566,6 @@ describe('Services', () => {
     });
 
     it(`Should properly get 'initials'`, () => {
-      const userServ = createUserStore();
       const currentUserSpy = vi.spyOn(userServ, 'currentUser', 'get').mockReturnValue(null as any);
       expect(userServ.initials).toEqual(null);
       currentUserSpy.mockReturnValue({ given_name: '' } as any);
@@ -603,7 +583,6 @@ describe('Services', () => {
     });
 
     it(`Should properly 'setCurrentUser'`, () => {
-      const userServ = createUserStore();
       const mockUser2 = {
         exp: 111,
         name: 'Qually T',
@@ -625,7 +604,6 @@ describe('Services', () => {
     });
 
     it(`Should properly call 'clearCurrentUser'`, () => {
-      const userServ = createUserStore();
       vi.spyOn(localStorage, 'removeItem');
       expect(userServ.currentUser).toBeTruthy();
       userServ.clearCurrentUser();
