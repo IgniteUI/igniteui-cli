@@ -25,7 +25,7 @@ export class ExternalAuth {
   private location = inject(Location);
   private localStorage = inject(LocalStorageService);
 
-  protected providers: Map<ExternalAuthProvider, AuthProvider> = new Map();
+  protected providers = new Map<ExternalAuthProvider, AuthProvider>();
   public get activeProvider(): ExternalAuthProvider {
     return this.localStorage.getItem('extActiveProvider') as ExternalAuthProvider;
   }

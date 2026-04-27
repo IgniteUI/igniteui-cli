@@ -328,13 +328,12 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
     let rnd = Math.random();
     rnd = Math.round(rnd * 100) / 100;
     const volatility = 2;
-    let newPrice = 0;
     let changePercent = 2 * volatility * rnd;
     if (changePercent > volatility) {
       changePercent -= (2 * volatility);
     }
     const changeAmount = oldPrice * (changePercent / 100);
-    newPrice = oldPrice + changeAmount;
+    let newPrice = oldPrice + changeAmount;
     newPrice = Math.round(newPrice * 100) / 100;
     const result = {Price: 0, ChangePercent: 0};
     changePercent = Math.round(changePercent * 100) / 100;

@@ -36,12 +36,12 @@ export function decodeBase64Url(base64Url: string) {
     return decodeURIComponent(decoded.split('')
       .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
       .join(''));
-  } catch (er) {
+  } catch {
     return decoded;
   }
 }
 
-export function encodeBase64Url(input: {}) {
+export function encodeBase64Url(input: object) {
   const encodedToURI: string = encodeURI(JSON.stringify(input));
   let result = '';
   for (let i = 0; i < encodedToURI.length; i++) {

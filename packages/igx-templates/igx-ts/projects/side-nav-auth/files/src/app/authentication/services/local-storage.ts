@@ -4,11 +4,14 @@ import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 class LocalStorageFallback implements Storage {
   [name: string]: any;
   readonly length = 0;
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   clear(): void { }
-  getItem(key: string): string | null { return null; }
-  key(index: number): string | null { return null; }
-  removeItem(key: string): void { }
-  setItem(key: string, value: string): void { }
+  getItem(_key: string): string | null { return null; }
+  key(_index: number): string | null { return null; }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  removeItem(_key: string): void { }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setItem(_key: string, _value: string): void { }
 }
 
 @Injectable({

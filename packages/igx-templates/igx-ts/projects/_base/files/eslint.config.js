@@ -34,6 +34,7 @@ module.exports = defineConfig([
       // Relax rules
       '@typescript-eslint/no-explicit-any': 'off',
       '@angular-eslint/prefer-inject': 'off',
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     },
   },
   {
