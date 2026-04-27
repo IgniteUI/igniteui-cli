@@ -1,8 +1,7 @@
-import { GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { App, BaseTemplateManager, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { PromptSession } from "./../PromptSession";
 import { NewCommandType, PositionalArgs } from "./types";
-import { TemplateManager } from "../TemplateManager";
 import { ArgumentsCamelCase, Choices } from "yargs";
 
 // explicit typing because `type: "string"` will be inferred as `type: string` which yargs will not like
@@ -66,8 +65,9 @@ const command: NewCommandType = {
 		if (ProjectConfig.hasLocalConfig()) {
 			return Util.error("There is already an existing project.", "red");
 		}
+		const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
 		if (!argv.name) {
-			const prompts = new PromptSession(command.templateManager || new TemplateManager());
+			const prompts = new PromptSession();
 			await prompts.start();
 			return;
 		}
@@ -87,20 +87,20 @@ const command: NewCommandType = {
 			Util.error(`Folder "${argv.name}" already exists!`, "red");
 			return;
 		}
-		if (command.templateManager?.getFrameworkById(argv.framework) === undefined) {
+		if (templateManager?.getFrameworkById(argv.framework) === undefined) {
 			return Util.error("Framework not supported", "red");
 		}
 		let projectLib: ProjectLibrary;
 		if (argv.type) {
-			projectLib = command.templateManager?.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
+			projectLib = templateManager?.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
 			if (!projectLib) {
 				return Util.error(`Project type "${argv.type}" not found in framework '${argv.framework}'`);
 			}
 		} else {
-			projectLib = command.templateManager?.getProjectLibrary(argv.framework) as ProjectLibrary;
+			projectLib = templateManager?.getProjectLibrary(argv.framework) as ProjectLibrary;
 		}
 
-		if (command.templateManager?.getFrameworkById(argv.framework).id === "angular" && projectLib.projectType === "igx-ts") {
+		if (templateManager?.getFrameworkById(argv.framework).id === "angular" && projectLib.projectType === "igx-ts") {
 			Util.warn("Psst! Did you know you can use our schematics package with Angular CLI to create and modify your projects?", "yellow");
 			Util.warn("Read more at: https://www.infragistics.com/products/ignite-ui-angular/angular/components/general/cli-overview", "yellow");
 		}

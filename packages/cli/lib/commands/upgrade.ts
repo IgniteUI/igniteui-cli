@@ -1,11 +1,10 @@
-import { GoogleAnalytics, ProjectConfig, type ProjectTemplate, Util } from "@igniteui/cli-core";
+import { App, BaseTemplateManager, GoogleAnalytics, ProjectConfig, TEMPLATE_MANAGER, type ProjectTemplate, Util } from "@igniteui/cli-core";
 import { PositionalArgs, UpgradeCommandType } from "./types";
 import { ArgumentsCamelCase } from "yargs";
 
 const command: UpgradeCommandType = {
 	command: "upgrade-packages",
 	describe: "upgrades Ignite UI Packages",
-	templateManager: null,
 	builder: (yargs) => {
 		return yargs
 			.option("skip-install", {
@@ -37,7 +36,8 @@ const command: UpgradeCommandType = {
 			case "react":
 			case "webcomponents":
 				if (projectType === "igx-ts" || projectType === "igr-ts" || projectType === "igc-ts") {
-					const projectLibrary = command.templateManager.getProjectLibrary(framework, projectType);
+					const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+					const projectLibrary = templateManager.getProjectLibrary(framework, projectType);
 					let project: ProjectTemplate;
 					if (!config.project.projectTemplate || !projectLibrary.hasProject(config.project.projectTemplate)) {
 						// in case project template is missing from the config we provide backward.

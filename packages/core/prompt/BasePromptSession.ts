@@ -6,13 +6,16 @@ import {
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "../types";
 import { App, ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
+import { TEMPLATE_MANAGER } from "../util/GlobalConstants";
 import { Task, TaskRunner, WIZARD_BACK_OPTION } from "./TaskRunner";
 import { InquirerWrapper } from "./InquirerWrapper";
 
 export abstract class BasePromptSession {
 	protected config: Config;
 
-	constructor(protected templateManager: BaseTemplateManager) { }
+	protected get templateManager(): BaseTemplateManager {
+		return App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+	}
 
 	/**
 	 * Start questions session for project creation

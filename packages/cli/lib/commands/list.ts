@@ -1,4 +1,4 @@
-import { Config, Framework, GoogleAnalytics, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { App, BaseTemplateManager, Config, Framework, GoogleAnalytics, ProjectConfig, ProjectLibrary, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import { CommandType, PositionalArgs } from "./types";
 import { ArgumentsCamelCase } from "yargs";
 
@@ -21,7 +21,6 @@ const command: CommandType = {
 			type: "string"
 		}
 	},
-	templateManager: null,
 	handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
 			t: "screenview",
@@ -40,19 +39,20 @@ const command: CommandType = {
 		const templatesByGroup = [];
 		const controlGroups: string[] = [];
 
-		const framework: Framework = command.templateManager.getFrameworkById(argv.framework);
+		const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+		const framework: Framework = templateManager.getFrameworkById(argv.framework);
 		if (!framework) {
 			return Util.error("Wrong framework provided", "red");
 		}
 
 		let projectLib: ProjectLibrary;
 		if (argv.type) {
-			projectLib = command.templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
+			projectLib = templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
 			if (!projectLib) {
 				return Util.error(`Project type '${argv.type}' not found in framework '${argv.framework}'`, "red");
 			}
 		} else {
-			projectLib = command.templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
+			projectLib = templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
 		}
 
 		let maxIdLength = 0;
