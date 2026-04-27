@@ -49,7 +49,7 @@ describe("Help command", () => {
 		-v, --version         Show current Ignite UI CLI version             [boolean]
 		-h, --help            Show help                                      [boolean]
 		-f, --framework       framework to scaffold the project for
-				  [string] [choices: "angular", "jquery", "react", "webcomponents"] [default: "jquery"]
+				  [string] [choices: "angular", "jquery", "react", "webcomponents"] [default: "angular"]
 		-t, --type            project type (depends on framework)             [string]
 		--theme, --th         project theme (depends on project type)         [string]
 		--skip-git, --sg      do not initialize a git repository for the project [boolean]
