@@ -41,7 +41,8 @@ export function decodeBase64Url(base64Url: string) {
   }
 }
 
-export function encodeBase64Url(input: object) {
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export function encodeBase64Url(input: {}) {
   const encodedToURI: string = encodeURI(JSON.stringify(input));
   let result = '';
   for (let i = 0; i < encodedToURI.length; i++) {

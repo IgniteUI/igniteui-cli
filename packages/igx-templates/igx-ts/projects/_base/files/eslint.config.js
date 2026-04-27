@@ -38,6 +38,14 @@ module.exports = defineConfig([
     },
   },
   {
+    files: ['**/*.spec.ts'],
+    rules: {
+      // Test files use empty mock methods extensively
+      '@typescript-eslint/no-empty-function': 'off',
+      '@typescript-eslint/class-literal-property-style': 'off',
+    },
+  },
+  {
     files: ['**/*.html'],
     extends: [angular.configs.templateRecommended],
     rules: {
