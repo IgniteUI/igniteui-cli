@@ -51,6 +51,6 @@ export class FacebookProvider implements AuthProvider {
   }
 
   public logout() {
-    FB.logout(() => { /* no-op */ });
+    FB.logout();
   }
 }
