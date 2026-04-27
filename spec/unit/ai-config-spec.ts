@@ -1,5 +1,5 @@
 import * as path from "path";
-import { App, Config, FS_TOKEN, FsFileSystem, GoogleAnalytics, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { App, Config, FS_TOKEN, FsFileSystem, GoogleAnalytics, IFileSystem, InquirerWrapper, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import { configureMCP, configureSkills } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 
@@ -257,14 +257,36 @@ describe("Unit - ai-config command", () => {
 	});
 
 	describe("handler", () => {
-		it("posts analytics and calls configure", async () => {
+		it("prompts for agent when neither --agent nor --skills-dir is provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("claude"));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
-			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("MCP servers configured"));
+			expect(InquirerWrapper.select).toHaveBeenCalledWith(jasmine.objectContaining({
+				message: "Which AI agent are you using?"
+			}));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "MCP" }));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ec: "$ig ai-config" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude" }));
+		});
+
+		it("skips prompt when --agent is provided", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(InquirerWrapper, "select");
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agent: "cursor" });
+
+			expect(InquirerWrapper.select).not.toHaveBeenCalled();
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor" }));
+		});
+
+		it("skips prompt when --skills-dir is provided", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(InquirerWrapper, "select");
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", skillsDir: "custom/path" });
+
+			expect(InquirerWrapper.select).not.toHaveBeenCalled();
 		});
 	});
 });

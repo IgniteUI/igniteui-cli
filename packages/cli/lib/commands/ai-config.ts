@@ -1,4 +1,4 @@
-import { addMcpServers, AI_AGENT_SKILLS_DIRS, AIAgentTarget, copyAISkillsToProject, getSkillsDir, GoogleAnalytics, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
+import { addMcpServers, AI_AGENT_SKILLS_DIRS, AIAgentTarget, copyAISkillsToProject, getSkillsDir, GoogleAnalytics, InquirerWrapper, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
 export function configureMCP(): void {
@@ -57,15 +57,27 @@ const command: CommandModule = {
 			cd: "MCP"
 		});
 
-		const agent = (argv.agent as string) ?? "default";
-		GoogleAnalytics.post({
-			t: "event",
-			ec: "$ig ai-config",
-			ea: `agent: ${agent}`
-		});
+		let skillsDir = argv.skillsDir as string | undefined;
 
-		const skillsDir = (argv.skillsDir as string | undefined)
-			?? (argv.agent ? getSkillsDir(argv.agent as AIAgentTarget) : undefined);
+		if (!skillsDir) {
+			let agent = argv.agent as AIAgentTarget | undefined;
+
+			if (!agent) {
+				agent = await InquirerWrapper.select({
+					message: "Which AI agent are you using?",
+					choices: AI_AGENT_CHOICES
+				}) as AIAgentTarget;
+			}
+
+			GoogleAnalytics.post({
+				t: "event",
+				ec: "$ig ai-config",
+				ea: `agent: ${agent}`
+			});
+
+			skillsDir = getSkillsDir(agent);
+		}
+
 		configure(true, skillsDir);
 	}
 };

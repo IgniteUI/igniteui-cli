@@ -9,7 +9,21 @@
       "type": "string",
       "description": "AI agent to configure skills for (determines the target skills directory).",
       "alias": "a",
-      "enum": ["claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"]
+      "enum": ["claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"],
+      "x-prompt": {
+        "message": "Which AI agent are you using?",
+        "type": "list",
+        "items": [
+          { "value": "claude", "label": "Claude" },
+          { "value": "copilot", "label": "GitHub Copilot" },
+          { "value": "cursor", "label": "Cursor" },
+          { "value": "codex", "label": "Codex" },
+          { "value": "windsurf", "label": "Windsurf" },
+          { "value": "gemini", "label": "Gemini" },
+          { "value": "junie", "label": "Junie" },
+          { "value": "generic", "label": "Generic / Other" }
+        ]
+      }
     },
     "skillsDir": {
       "type": "string",
