@@ -22,6 +22,6 @@ describe('<%=ClassName%>', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
     // disable animation
-    component.linearGauge.transitionDuration = 0;
+    component.linearGauge().transitionDuration = 0;
   });
 });
