@@ -58,10 +58,9 @@ const command: CommandModule = {
 		});
 
 		let skillsDir = argv.skillsDir as string | undefined;
+		let agent = argv.agent as AIAgentTarget | undefined;
 
 		if (!skillsDir) {
-			let agent = argv.agent as AIAgentTarget | undefined;
-
 			if (!agent) {
 				agent = await InquirerWrapper.select({
 					message: "Which AI agent are you using?",
@@ -69,14 +68,15 @@ const command: CommandModule = {
 				}) as AIAgentTarget;
 			}
 
-			GoogleAnalytics.post({
-				t: "event",
-				ec: "$ig ai-config",
-				ea: `agent: ${agent}`
-			});
-
 			skillsDir = getSkillsDir(agent);
 		}
+
+		GoogleAnalytics.post({
+			t: "event",
+			ec: "$ig ai-config",
+			ea: `agent: ${agent ?? "custom"}`,
+			el: argv.skillsDir ? "customSkillsDir" : undefined
+		});
 
 		configure(true, skillsDir);
 	}

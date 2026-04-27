@@ -267,7 +267,7 @@ describe("Unit - ai-config command", () => {
 				message: "Which AI agent are you using?"
 			}));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "MCP" }));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude", el: undefined }));
 		});
 
 		it("skips prompt when --agent is provided", async () => {
@@ -277,7 +277,7 @@ describe("Unit - ai-config command", () => {
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agent: "cursor" });
 
 			expect(InquirerWrapper.select).not.toHaveBeenCalled();
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor", el: undefined }));
 		});
 
 		it("skips prompt when --skills-dir is provided", async () => {
@@ -287,6 +287,7 @@ describe("Unit - ai-config command", () => {
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", skillsDir: "custom/path" });
 
 			expect(InquirerWrapper.select).not.toHaveBeenCalled();
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: custom", el: "customSkillsDir" }));
 		});
 	});
 });

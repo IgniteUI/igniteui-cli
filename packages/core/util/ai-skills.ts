@@ -9,7 +9,7 @@ import { TEMPLATE_MANAGER } from "./GlobalConstants";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
-const SKILLS_DIR_TEMPLATE = "__dot__claude/skills";
+const FALLBACK_SKILLS_TEMPLATE_PATH = "__dot__claude/skills";
 
 export type AIAgentTarget = "claude" | "copilot" | "cursor" | "codex" | "windsurf" | "gemini" | "junie" | "generic";
 
@@ -83,7 +83,7 @@ function resolveSkillsRoots(): string[] {
 			const filePaths = projectLib?.getProject(projectLib.projectIds[0]).templatePaths ?? [];
 			roots.push(
 				...filePaths
-				.map((p) => path.join(p, SKILLS_DIR_TEMPLATE))
+				.map((p) => path.join(p, FALLBACK_SKILLS_TEMPLATE_PATH))
 				.slice(0, 1),
 			);
 		}
@@ -99,7 +99,10 @@ function resolveSkillsRoots(): string[] {
  * @param skillsDir – destination directory (e.g. `.agents/skills`, `.cursor/skills`, …)
  */
 export function copyAISkillsToProject(skillsDir?: string): AISkillsCopyResult {
-	const outputDir = (skillsDir ?? getSkillsDir()).replace(/\\/g, "/").replace(/\/+$/, "");
+	let outputDir = (skillsDir ?? getSkillsDir()).replace(/\\/g, "/");
+	while (outputDir.endsWith("/")) {
+		outputDir = outputDir.slice(0, -1);
+	}
 	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0 };
 	// Source reads (glob + readFile) always use physical FS - skill files can
 	// come from sources outside the project virtual tree (external/global package):
