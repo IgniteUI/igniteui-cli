@@ -1,4 +1,4 @@
-import { Config, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, Config, GoogleAnalytics, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import { default as listCmd } from "../../packages/cli/lib/commands/list";
 
 describe("Unit - List command", () => {
@@ -29,10 +29,10 @@ describe("Unit - List command", () => {
 			templates: mockTemplates
 		};
 
-		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: framework,
 			getProjectLibrary: projectLib
-		});
+		}));
 
 		await listCmd.handler({ framework: "jQuery", type: "js", _: ["list"], $0: "list" });
 
@@ -66,10 +66,10 @@ describe("Unit - List command", () => {
 			templates: mockTemplates
 		};
 
-		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: framework,
 			getProjectLibrary: projectLib
-		});
+		}));
 
 		await listCmd.handler({ _: ["list"], $0: "list" });
 		expect(Util.error).toHaveBeenCalledTimes(0);
@@ -88,9 +88,9 @@ describe("Unit - List command", () => {
 	});
 
 	it("Should log error if called with wrong framework", async () => {
-		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: undefined
-		});
+		}));
 
 		await listCmd.handler({ framework: "wrongOne", type: "js", _: ["list"], $0: "list" });
 
@@ -100,9 +100,9 @@ describe("Unit - List command", () => {
 
 	it("Should log error if called without framework outside a project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
-		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: undefined
-		});
+		}));
 
 		await listCmd.handler({ _: ["list"], $0: "list" });
 
@@ -111,10 +111,10 @@ describe("Unit - List command", () => {
 	});
 
 	it("Should log error if called with wrong type", async () => {
-		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: undefined
-		});
+		}));
 
 		await listCmd.handler({ framework: "angular", type: "wrongType", _: ["list"], $0: "list" });
 
@@ -129,10 +129,10 @@ describe("Unit - List command", () => {
 			templates: mockTemplates
 		};
 
-		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: framework,
 			getProjectLibrary: projectLib
-		});
+		}));
 
 		await listCmd.handler({ framework: "react", _: ["list"], $0: "list" });
 

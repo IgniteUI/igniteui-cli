@@ -15,6 +15,7 @@ export class SchematicsPromptSession extends BasePromptSession {
 	public userAnswers: Map<string, any>;
 
 	constructor() {
+		super();
 		this.config = ProjectConfig.getConfig();
 	}
 
