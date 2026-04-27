@@ -97,7 +97,7 @@ ig new <project name> --framework=<framework> --type=<proj-type> --theme=<theme>
 ```
 This will create the project and will install the needed dependencies.
 
-Parameters besides name are optional. Framework default to "jquery", project type defaults to the first available in the framework and theme to the first available for the project. For more information visit [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New) Wiki page.
+Parameters besides name are optional. Framework defaults to "angular", project type defaults to the first available in the framework and theme to the first available for the project. For more information visit [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New) Wiki page.
 
 #### Generate Ignite UI for Angular project
 

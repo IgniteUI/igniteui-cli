@@ -77,6 +77,18 @@ describe("New command", () => {
 		testFolder = "./Ignite UI for Angular";
 	});
 
+	it("Creates Ignite UI for Angular project by default", async () => {
+
+		await cli.run(["new", "Default Angular Project", "--theme=default", "--skip-install"]);
+
+		expect(fs.existsSync("./Default Angular Project")).toBeTruthy();
+		expect(filesDiff("../templates/angular/igx-ts/projects/empty/files", "./Default Angular Project")).toEqual([]);
+		const packageText = fs.readFileSync("./Default Angular Project/package.json", "utf-8");
+		expect(JSON.parse(packageText).name).toEqual("default-angular-project");
+		expect(fs.existsSync("./Default Angular Project/.gitignore")).toBeTruthy();
+		testFolder = "./Default Angular Project";
+	});
+
 	it("Should not work on existing folders", async () => {
 		fs.mkdirSync("testProj");
 		await cli.run(["new", "testProj", "--skip-install"]);
@@ -98,18 +110,18 @@ describe("New command", () => {
 
 		await cli.run(["new", "testProj2", "--skip-install"]);
 		expect(fs.existsSync("./testProj2")).toBeTruthy();
-		expect(fs.existsSync("./testProj2/ignite-cli-views.js")).toBeTruthy();
+		expect(fs.existsSync("./testProj2/ignite-ui-cli.json")).toBeTruthy();
 
-		fs.writeFileSync("./testProj2/ignite-cli-views.js", "text");
+		fs.writeFileSync("./testProj2/ignite-ui-cli.json", "text");
 		await cli.run(["new", "testProj2"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj2" already exists!/));
-		expect(fs.readFileSync("./testProj2/ignite-cli-views.js").toString())
+		expect(fs.readFileSync("./testProj2/ignite-ui-cli.json").toString())
 			.toEqual("text", "Shouldn't overwrite existing project files!");
 
 		resetSpy(console.error);
 		await cli.run(["new", "   testProj2  \t  ", "--skip-install"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj2" already exists!/));
-		expect(fs.readFileSync("./testProj2/ignite-cli-views.js").toString())
+		expect(fs.readFileSync("./testProj2/ignite-ui-cli.json").toString())
 			.toEqual("text", "Shouldn't overwrite existing project files!");
 
 		testFolder = "./testProj2";
