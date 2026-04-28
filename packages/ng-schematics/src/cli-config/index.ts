@@ -126,12 +126,14 @@ function appInit(tree: Tree) {
 	setVirtual(tree);
 }
 
-function aiConfig({ init, skillsDir }: { init: boolean; skillsDir?: string } = { init: true }): Rule {
+function aiConfig({ init, skillsDirs }: { init: boolean; skillsDirs: string[] }): Rule {
 	return (tree: Tree) => {
 		if (init) {
 			appInit(tree);
 		}
-		copyAISkillsToProject(skillsDir);
+		for (const dir of skillsDirs) {
+			copyAISkillsToProject(dir);
+		}
 
 		const angularCliServer: Record<string, McpServerEntry> = {
 			"angular-cli": {
@@ -145,9 +147,11 @@ function aiConfig({ init, skillsDir }: { init: boolean; skillsDir?: string } = {
 }
 
 /** Standalone `ai-config` schematic entry */
-export function addAIConfig(options: { agent?: AIAgentTarget; skillsDir?: string } = {}): Rule {
-	const resolvedSkillsDir = options.skillsDir ?? (options.agent ? getSkillsDir(options.agent) : undefined);
-	return aiConfig({ init: true, skillsDir: resolvedSkillsDir });
+export function addAIConfig(options: { agent?: AIAgentTarget[]; skillsDir?: string } = {}): Rule {
+	const skillsDirs = options.skillsDir
+		? [options.skillsDir]
+		: (options.agent?.length ? options.agent : ["claude"] as AIAgentTarget[]).map(a => getSkillsDir(a));
+	return aiConfig({ init: true, skillsDirs });
 }
 
 export default function (): Rule {
@@ -159,7 +163,7 @@ export default function (): Rule {
 			importBrowserAnimations(),
 			createCliConfig(),
 			displayVersionMismatch(),
-			aiConfig({ init: false })
+			aiConfig({ init: false, skillsDirs: [getSkillsDir("claude")] })
 		]);
 	};
 }

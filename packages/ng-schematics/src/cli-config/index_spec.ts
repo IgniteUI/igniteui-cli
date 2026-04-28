@@ -404,29 +404,37 @@ export const appConfig: ApplicationConfig = {
 	});
 
 	describe("ai-config schematic", () => {
-		it("should call copyAISkillsToProject with no skillsDir by default", async () => {
+		it("should call copyAISkillsToProject with claude default when no options", async () => {
 			await runner.runSchematic("ai-config", {}, tree);
 
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(undefined);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".claude/skills");
 		});
 
 		it("should pass resolved skillsDir when agent option is provided", async () => {
-			await runner.runSchematic("ai-config", { agent: "cursor" }, tree);
+			await runner.runSchematic("ai-config", { agent: ["cursor"] }, tree);
 
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".cursor/skills");
 		});
 
 		it("should pass resolved skillsDir for copilot agent", async () => {
-			await runner.runSchematic("ai-config", { agent: "copilot" }, tree);
+			await runner.runSchematic("ai-config", { agent: ["copilot"] }, tree);
 
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".github/skills");
 		});
 
 		it("should pass resolved skillsDir for generic agent", async () => {
-			await runner.runSchematic("ai-config", { agent: "generic" }, tree);
+			await runner.runSchematic("ai-config", { agent: ["generic"] }, tree);
 
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".agents/skills");
+		});
+
+		it("should configure multiple agents", async () => {
+			await runner.runSchematic("ai-config", { agent: ["claude", "cursor"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(2);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".claude/skills");
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".cursor/skills");
 		});
 
 		it("should pass custom skillsDir when skillsDir option is provided", async () => {
@@ -436,7 +444,7 @@ export const appConfig: ApplicationConfig = {
 		});
 
 		it("should prefer skillsDir over agent when both are provided", async () => {
-			await runner.runSchematic("ai-config", { agent: "cursor", skillsDir: "override/path" }, tree);
+			await runner.runSchematic("ai-config", { agent: ["cursor"], skillsDir: "override/path" }, tree);
 
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith("override/path");
 		});

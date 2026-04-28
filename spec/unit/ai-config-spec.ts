@@ -157,7 +157,7 @@ describe("Unit - ai-config command", () => {
 			})
 			setupAngularConfig();
 
-			configureSkills();
+			configureSkills(".claude/skills");
 
 			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("No AI skill files found"), "yellow");
 			expect(Util.log).not.toHaveBeenCalled();
@@ -187,7 +187,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
 			setupAngularConfig();
 
-			configureSkills();
+			configureSkills(".claude/skills");
 
 			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("Failed to write 1 skill file(s) out of 1"), "yellow");
 			expect(Util.log).not.toHaveBeenCalled();
@@ -219,7 +219,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content);
 			setupAngularConfig();
 
-			configureSkills();
+			configureSkills(".claude/skills");
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("already up-to-date"));
 			expect(Util.warn).not.toHaveBeenCalled();
@@ -249,7 +249,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
 			setupAngularConfig();
 
-			configureSkills();
+			configureSkills(".claude/skills");
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("1 AI skill file(s) created or updated"));
 			expect(Util.warn).not.toHaveBeenCalled();
@@ -257,36 +257,48 @@ describe("Unit - ai-config command", () => {
 	});
 
 	describe("handler", () => {
-		it("prompts for agent when neither --agent nor --skills-dir is provided", async () => {
+		it("prompts for agents when neither --agent nor --skills-dir is provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
-			spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("claude"));
+			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
-			expect(InquirerWrapper.select).toHaveBeenCalledWith(jasmine.objectContaining({
-				message: "Which AI agent are you using?"
+			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
+				message: "Which AI agent(s) are you using?"
 			}));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "MCP" }));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude", el: undefined }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude" }));
+		});
+
+		it("configures multiple agents when selected interactively", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude", "cursor"]));
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
+				message: "Which AI agent(s) are you using?"
+			}));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: claude, cursor" }));
 		});
 
 		it("skips prompt when --agent is provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
-			spyOn(InquirerWrapper, "select");
+			spyOn(InquirerWrapper, "checkbox");
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agent: "cursor" });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agent: ["cursor"] });
 
-			expect(InquirerWrapper.select).not.toHaveBeenCalled();
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor", el: undefined }));
+			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor" }));
 		});
 
 		it("skips prompt when --skills-dir is provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
-			spyOn(InquirerWrapper, "select");
+			spyOn(InquirerWrapper, "checkbox");
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", skillsDir: "custom/path" });
 
-			expect(InquirerWrapper.select).not.toHaveBeenCalled();
+			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: custom", el: "customSkillsDir" }));
 		});
 	});

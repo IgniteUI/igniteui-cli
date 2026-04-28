@@ -6,13 +6,17 @@
   "description": "Configures AI tooling: MCP servers and AI coding skills.",
   "properties": {
     "agent": {
-      "type": "string",
-      "description": "AI agent to configure skills for (determines the target skills directory).",
+      "type": "array",
+      "description": "AI agent(s) to configure skills for (determines the target skills directories).",
       "alias": "a",
-      "enum": ["claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"],
+      "items": {
+        "type": "string",
+        "enum": ["claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"]
+      },
       "x-prompt": {
-        "message": "Which AI agent are you using?",
+        "message": "Which AI agent(s) are you using?",
         "type": "list",
+        "multiselect": true,
         "items": [
           { "value": "claude", "label": "Claude" },
           { "value": "copilot", "label": "GitHub Copilot" },
@@ -26,7 +30,6 @@
       }
     },
     "skillsDir": {
-      "type": "string",
       "description": "Custom skills directory path (overrides --agent).",
       "alias": "d"
     }

@@ -26,10 +26,9 @@ export const AI_AGENT_SKILLS_DIRS: Record<AIAgentTarget, string> = {
 
 /**
  * Returns the project-level skills directory for the given AI agent target.
- * Falls back to `.claude/skills` when no target is specified.
  */
-export function getSkillsDir(target?: AIAgentTarget): string {
-	return AI_AGENT_SKILLS_DIRS[target ?? "claude"];
+export function getSkillsDir(target: AIAgentTarget): string {
+	return AI_AGENT_SKILLS_DIRS[target];
 }
 
 export interface AISkillsCopyResult {
@@ -94,12 +93,11 @@ function resolveSkillsRoots(): string[] {
 
 /**
  * Copies skill files from the installed Ignite UI package(s) into the
- * specified skills directory. When no directory is given, defaults to
- * `.claude/skills/` for backward compatibility.
+ * specified skills directory.
  * @param skillsDir – destination directory (e.g. `.agents/skills`, `.cursor/skills`, …)
  */
-export function copyAISkillsToProject(skillsDir?: string): AISkillsCopyResult {
-	let outputDir = (skillsDir ?? getSkillsDir()).replace(/\\/g, "/");
+export function copyAISkillsToProject(skillsDir: string): AISkillsCopyResult {
+	let outputDir = skillsDir.replace(/\\/g, "/");
 	while (outputDir.endsWith("/")) {
 		outputDir = outputDir.slice(0, -1);
 	}

@@ -11,7 +11,7 @@ export function configureMCP(): void {
 	Util.log(Util.greenCheck() + ` MCP servers configured in ${VS_CODE_MCP_PATH}`);
 }
 
-export function configureSkills(skillsDir?: string): void {
+export function configureSkills(skillsDir: string): void {
 	const result = copyAISkillsToProject(skillsDir);
 	if (result.found === 0) {
 		Util.warn("No AI skill files found. Make sure packages are installed (npm install) " +
@@ -26,10 +26,12 @@ export function configureSkills(skillsDir?: string): void {
 	}
 }
 
-export function configure(skills = true, skillsDir?: string): void {
+export function configure(skills = true, skillsDirs?: string[]): void {
 	configureMCP();
-	if (skills) {
-		configureSkills(skillsDir);
+	if (skills && skillsDirs) {
+		for (const dir of skillsDirs) {
+			configureSkills(dir);
+		}
 	}
 }
 
@@ -42,9 +44,9 @@ const command: CommandModule = {
 		.usage("")
 		.option("agent", {
 			alias: "a",
-			describe: "AI agent to configure skills for (determines the target skills directory)",
+			describe: "AI agent(s) to configure skills for (determines the target skills directory)",
 			choices: AI_AGENT_CHOICES,
-			type: "string"
+			type: "array"
 		})
 		.option("skills-dir", {
 			alias: "d",
@@ -57,28 +59,36 @@ const command: CommandModule = {
 			cd: "MCP"
 		});
 
-		let skillsDir = argv.skillsDir as string | undefined;
-		let agent = argv.agent as AIAgentTarget | undefined;
+		const skillsDir = argv.skillsDir as string | undefined;
 
-		if (!skillsDir) {
-			if (!agent) {
-				agent = await InquirerWrapper.select({
-					message: "Which AI agent are you using?",
-					choices: AI_AGENT_CHOICES
-				}) as AIAgentTarget;
-			}
+		if (skillsDir) {
+			GoogleAnalytics.post({
+				t: "event",
+				ec: "$ig ai-config",
+				ea: "agent: custom",
+				el: "customSkillsDir"
+			});
 
-			skillsDir = getSkillsDir(agent);
+			configure(true, [skillsDir]);
+			return;
+		}
+
+		let agents = argv.agent as AIAgentTarget[] | undefined;
+
+		if (!agents?.length) {
+			agents = await InquirerWrapper.checkbox({
+				message: "Which AI agent(s) are you using?",
+				choices: AI_AGENT_CHOICES
+			}) as AIAgentTarget[];
 		}
 
 		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig ai-config",
-			ea: `agent: ${agent ?? "custom"}`,
-			el: argv.skillsDir ? "customSkillsDir" : undefined
+			ea: `agent: ${agents.join(", ")}`
 		});
 
-		configure(true, skillsDir);
+		configure(true, agents.map(a => getSkillsDir(a)));
 	}
 };
 
