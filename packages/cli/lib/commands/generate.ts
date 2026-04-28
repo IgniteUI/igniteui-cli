@@ -78,19 +78,19 @@ async function handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 const command: CommandType = {
 	aliases: ["g"],
 	command: "generate",
-	describe: "generates custom template",
+	describe: "Generates custom templates (see subcommands)",
 	builder: yargs => {
 		yargs
 			.command({
 				aliases: ["t"],
 				command: "template [name]",
-				describe: "generates custom template",
+				describe: "Generates a custom template scaffold",
 				builder: (yargs) => {
 					return yargs
 						.option("framework", {
 							alias: "f",
 							default: "jquery",
-							describe: "Framework to generate template for",
+							describe: "Framework to generate the template for",
 							type: "string"
 						})
 						.option("name", {
@@ -102,19 +102,17 @@ const command: CommandType = {
 						.option("skip-config", {
 							alias: "s",
 							default: false,
-							describe: "Runs generate command without updating the cli config",
+							describe: "Run without updating the CLI config",
 							type: "boolean"
 						})
 						.option("type", {
 							alias: "t",
 							describe: "Project type (depends on framework)",
 							type: "string"
-						})
-						.usage(""); // do not show any usage instructions before the commands list
+						});
 				},
 				handler
 			})
-			.usage("") // do not show any usage instructions before the commands list
 			// at least one command is required
 			.demandCommand(1, "Please select command");
 		return yargs;

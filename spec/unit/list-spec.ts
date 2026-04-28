@@ -98,16 +98,71 @@ describe("Unit - List command", () => {
 		expect(Util.error).toHaveBeenCalledWith("Wrong framework provided", "red");
 	});
 
-	it("Should log error if called without framework outside a project", async () => {
+	it("Should list all frameworks and their project templates when called without framework outside a project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
-		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
-			getFrameworkById: undefined
-		}));
+
+		const angularFramework = {
+			id: "angular",
+			name: "Angular",
+			projectLibraries: [{
+				name: "Ignite UI for Angular",
+				projectType: "igx-ts",
+				projects: [
+					{ id: "default-side-nav", description: "Side navigation project", isHidden: false },
+					{ id: "hidden-one", description: "hidden", isHidden: true }
+				]
+			}]
+		};
+		const reactFramework = {
+			id: "react",
+			name: "React",
+			projectLibraries: [{
+				name: "Ignite UI for React",
+				projectType: "igr-ts",
+				projects: [
+					{ id: "default", description: "Default React project", isHidden: false }
+				]
+			}]
+		};
+
+		const mockTm = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkIds: ["angular", "react"],
+			getFrameworkById: null
+		});
+		(mockTm.getFrameworkById as jasmine.Spy).and.callFake((id: string) => {
+			if (id === "angular") { return angularFramework; }
+			if (id === "react") { return reactFramework; }
+			return undefined;
+		});
+		App.container.set(TEMPLATE_MANAGER, mockTm);
 
 		await listCmd.handler({ _: ["list"], $0: "list" });
 
+		expect(Util.error).toHaveBeenCalledTimes(0);
+		expect(Util.log).toHaveBeenCalledWith("Available frameworks and project templates:");
+		expect(Util.log).toHaveBeenCalledWith("Angular (angular)");
+		expect(Util.log).toHaveBeenCalledWith("\tIgnite UI for Angular (igx-ts)");
+		const ansi = "(?:\\u001b\\[\\d+m)*";
+		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching(
+			new RegExp(`^\\t\\tdefault-side-nav${ansi}\\.{3}${ansi}Side navigation project${ansi}$`)));
+		expect(Util.log).toHaveBeenCalledWith("React (react)");
+		expect(Util.log).toHaveBeenCalledWith("\tIgnite UI for React (igr-ts)");
+		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching(
+			new RegExp(`^\\t\\tdefault${ansi}\\.{11}${ansi}Default React project${ansi}$`)));
+		expect(Util.log).not.toHaveBeenCalledWith(jasmine.stringMatching(/hidden-one/));
+	});
+
+	it("Should log error if called with --type but no --framework outside a project", async () => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+			getFrameworkIds: [],
+			getFrameworkById: undefined
+		}));
+
+		await listCmd.handler({ type: "igx-ts", _: ["list"], $0: "list" });
+
 		expect(Util.error).toHaveBeenCalledTimes(1);
-		expect(Util.error).toHaveBeenCalledWith("Wrong framework provided", "red");
+		expect(Util.error).toHaveBeenCalledWith("'--type' requires '--framework'", "red");
 	});
 
 	it("Should log error if called with wrong type", async () => {

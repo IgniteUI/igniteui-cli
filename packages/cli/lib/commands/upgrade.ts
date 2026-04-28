@@ -4,16 +4,16 @@ import { ArgumentsCamelCase } from "yargs";
 
 const command: UpgradeCommandType = {
 	command: "upgrade-packages",
-	describe: "upgrades Ignite UI Packages",
+	aliases: ["upgrade"],
+	describe: "Upgrades Ignite UI packages",
 	builder: (yargs) => {
 		return yargs
 			.option("skip-install", {
 				alias: "si",
 				default: false,
-				describe: "Runs upgrade command without performing install",
+				describe: "Run upgrade without installing packages",
 				type: "boolean"
-			})
-			.usage(""); // do not show any usage instructions before the commands list
+			});
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({

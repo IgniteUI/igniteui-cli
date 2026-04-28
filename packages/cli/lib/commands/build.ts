@@ -6,10 +6,8 @@ import { ArgumentsCamelCase } from "yargs";
 
 const command: BuildCommandType = {
 	command: "build",
-	describe: "builds the project",
-	builder: (yargs) => {
-		return yargs.usage(""); // do not show any usage instructions before the commands
-	},
+	describe: "Builds the project",
+	builder: (yargs) => yargs,
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 
 		GoogleAnalytics.post({
@@ -24,7 +22,7 @@ const command: BuildCommandType = {
 		await PackageManager.ensureIgniteUISource(true, templateManager);
 
 		if (!ProjectConfig.hasLocalConfig()) {
-			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
+			Util.error("Build command is supported only on existing project created with igniteui-cli", "red");
 			return;
 		}
 

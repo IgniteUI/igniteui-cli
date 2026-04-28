@@ -1,34 +1,6 @@
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 import { AddTemplateArgs, Template } from "@igniteui/cli-core";
 
-export const ADD_COMMAND_NAME = "add";
-export const NEW_COMMAND_NAME = "new";
-export const BUILD_COMMAND_NAME = "build";
-export const START_COMMAND_NAME = "start";
-export const GENERATE_COMMAND_NAME = "generate";
-export const CONFIG_COMMAND_NAME = "config";
-export const DOC_COMMAND_NAME = "doc";
-export const TEST_COMMAND_NAME = "test";
-export const LIST_COMMAND_NAME = "list";
-export const UPGRADE_COMMAND_NAME = "upgrade-packages";
-export const MCP_COMMAND_NAME = "mcp";
-export const AI_CONFIG_COMMAND_NAME = "ai-config";
-
-export const ALL_COMMANDS = new Set([
-  ADD_COMMAND_NAME,
-  NEW_COMMAND_NAME,
-  BUILD_COMMAND_NAME,
-  START_COMMAND_NAME,
-  GENERATE_COMMAND_NAME,
-  CONFIG_COMMAND_NAME,
-  DOC_COMMAND_NAME,
-  TEST_COMMAND_NAME,
-  LIST_COMMAND_NAME,
-  UPGRADE_COMMAND_NAME,
-  MCP_COMMAND_NAME,
-  AI_CONFIG_COMMAND_NAME
-]);
-
 export interface PositionalArgs {
 	/** The framework that the project will target. */
 	framework?: string;
@@ -47,9 +19,6 @@ export interface PositionalArgs {
 	module?: string;
 
 	skipRoute?: boolean;
-
-	/** Prevents the execution of a commands handler. For internal use only. */
-	skipExecution?: boolean;
 
 	/** Port to run the generated app on. */
 	port?: number;
