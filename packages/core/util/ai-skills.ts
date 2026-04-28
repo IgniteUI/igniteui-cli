@@ -4,6 +4,7 @@ import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
 import { NPM_ANGULAR, NPM_REACT, NPM_WEBCOMPONENTS, resolvePackage, UPGRADEABLE_PACKAGES } from "../update/package-resolve";
 import { App } from "./App";
 import { detectFrameworkFromPackageJson } from "./detect-framework";
+import { FsFileSystem } from "./FileSystem";
 import { TEMPLATE_MANAGER } from "./GlobalConstants";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
@@ -73,11 +74,14 @@ function resolveSkillsRoots(): string[] {
 
 /**
  * Copies skill files from the installed Ignite UI package(s) into .claude/skills/.
- * Works with both real FS (CLI) and virtual Tree FS (schematics) through IFileSystem.
  */
 export function copyAISkillsToProject(): AISkillsCopyResult {
 	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0 };
-	const fs = App.container.get<IFileSystem>(FS_TOKEN);
+	// Source reads (glob + readFile) always use physical FS - skill files can
+	// come from sources outside the project virtual tree (external/global package):
+	const srcFs = new FsFileSystem();
+	// Destination writes respect the App FS (which may be virtual):
+	const destFs = App.container.get<IFileSystem>(FS_TOKEN);
 	const skillsRoots = resolveSkillsRoots();
 
 	if (!skillsRoots.length) {
@@ -87,7 +91,7 @@ export function copyAISkillsToProject(): AISkillsCopyResult {
 	const multiRoot = skillsRoots.length > 1;
 
 	for (const skillsRoot of skillsRoots) {
-		const rawPaths = fs.glob(skillsRoot, "**/*");
+		const rawPaths = srcFs.glob(skillsRoot, "**/*");
 		const pkgDirName = multiRoot ? path.basename(path.dirname(skillsRoot)) : "";
 
 		for (const p of rawPaths) {
@@ -101,18 +105,18 @@ export function copyAISkillsToProject(): AISkillsCopyResult {
 				? `${CLAUDE_SKILLS_DIR}/${pkgDirName}/${rel}`
 				: `${CLAUDE_SKILLS_DIR}/${rel}`;
 
-			const newContent = fs.readFile(p);
+			const newContent = srcFs.readFile(p);
 			try {
-				if (fs.fileExists(dest)) {
-					const existingContent = fs.readFile(dest);
+				if (destFs.fileExists(dest)) {
+					const existingContent = destFs.readFile(dest);
 					if (existingContent === newContent) {
 						result.skipped++;
 						continue;
 					}
-					fs.writeFile(dest, newContent);
+					destFs.writeFile(dest, newContent);
 					Util.log(`${Util.greenCheck()} Updated ${dest}`);
 				} else {
-					fs.writeFile(dest, newContent);
+					destFs.writeFile(dest, newContent);
 					Util.log(`${Util.greenCheck()} Created ${dest}`);
 				}
 			} catch {

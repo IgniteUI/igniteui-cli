@@ -13,47 +13,67 @@ describe("Help command", () => {
 			fail(e);
 		}
 
-		const originalHelpText: string = `Commands:
-		new [name]             creates a project
-		add [template] [name]  adds template by its ID
-		build                  builds the project
-		start                  starts the project
-		generate               generates custom template                  [aliases: g]
-		config                 gets, sets or adds a configuration property
-		doc [term]             opens the Infragistics search for the given term
-		test                   executes project tests
-		list                   list all templates                           [aliases: l]
-		upgrade-packages        upgrades Ignite UI Packages
-		mcp                    Starts the Ignite UI MCP server for AI assistant
-                               integration
-		ai-config              Configure Ignite UI AI tooling (MCP servers and AI
-                               coding skills)
+		const originalHelpText: string = `Usage: ig [command] [options]
+
+		Run without a command to start the interactive step-by-step project setup.
+
+		Commands:
+		ig new [name]             Creates a project
+		ig add [template] [name]  Adds a component or view template to the current project
+		ig build                  Builds the project
+		ig start                  Starts the project
+		ig generate               Generates custom templates (see subcommands) [aliases: g]
+		ig config                 Gets, sets or adds a configuration property (see subcommands)
+		ig doc [term]             Opens the Infragistics search for the given term
+		ig test                   Executes project tests
+		ig list                   Lists frameworks, project templates and component templates [aliases: l]
+		ig upgrade-packages       Upgrades Ignite UI packages [aliases: upgrade]
+		ig mcp                    Starts the Ignite UI MCP server for AI assistant integration
+		ig ai-config              Configures Ignite UI AI tooling (MCP servers and AI coding skills)
+
 	  Options:
 		-v, --version  Show current Ignite UI CLI version                    [boolean]
-		-h, --help     Show help                                             [boolean]`.replace(/\s/g, "");
+		-h, --help     Show help                                             [boolean]
+		
+		Examples:
+		ig                                 Launch the interactive step-by-step project setup
+		ig new my-app --framework angular  Scaffold a new Ignite UI for Angular	project
+		ig add grid main-grid              Add a Grid component to the current project
+		ig list                            Show all frameworks and their project templates`.replace(/\s/g, "");
 
 		expect(GoogleAnalytics.post).toHaveBeenCalledWith({ t: "screenview", cd: "$ig help" });
 		expect(consoleSpy).toHaveBeenCalledTimes(1);
 		const actualText: string = (consoleSpy.calls.mostRecent().args[0] + "").replace(/\s/g, "");
-		expect(originalHelpText).toEqual(actualText);
+		expect(actualText).toContain(originalHelpText);
 	});
 
 	it("should show help for the new command", async () => {
 		const child = Util.spawnSync("node", [execLocation, "new", "--help"], {
 			encoding: "utf-8"
 		});
-		const originalNewHelpText: string = `Options:
-		-v, --version         Show current Ignite UI CLI version             [boolean]
-		-h, --help            Show help                                      [boolean]
-		-n, --name            Project name                                    [string]
-		-f, --framework       Framework to setup project for
-				  [string] [choices: "angular", "jquery", "react", "webcomponents"] [default: "jquery"]
-		-t, --type            Project type (depends on framework)             [string]
-		--theme, --th         Project theme (depends on project type)         [string]
-		--skip-git, --sg      Do not automatically initialize repository for the
-							  project with Git                               [boolean]
-		--skip-install, --si  Do not automatically install packages          [boolean]
-		--template            Project template                                [string]`;
+		const originalNewHelpText: string = `ig new [name]
+
+			Creates a project
+
+			Positionals:
+			name, n  Project name                                                 [string]
+
+			Options:
+			-v, --version             Show current Ignite UI CLI version         [boolean]
+			-h, --help                Show help                                  [boolean]
+			-f, --framework           Framework to scaffold the project for.
+				[string] [choices: "angular", "jquery", "react", "webcomponents"] [default:
+																				"angular"]
+			-t, --type                Project type (depends on framework)         [string]
+				--theme, --th         Project theme (depends on project type)     [string]
+				--skip-git, --sg      Do not initialize a git repository for the project
+																				[boolean]
+				--skip-install, --si  Do not install packages after scaffolding  [boolean]
+				--template            Project template                            [string]
+
+			Examples:
+			ig new my-app                       Scaffold a new project interactively
+			ig new my-app -f angular -t igx-ts  Scaffold an Ignite UI for Angular project`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
 		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
@@ -66,14 +86,14 @@ describe("Help command", () => {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Commands:
-		config get <property>          Gets a configuration property
-		config set <property> <value>  Sets a configuration property
-		config add <property> <value>  Adds a value to an existing configuration array
+		ig config get <property>          Gets a configuration property
+		ig config set <property> <value>  Sets a configuration property
+		ig config add <property> <value>  Adds a value to an existing configuration array
 
 		Options:
 		-v, --version  Show current Ignite UI CLI version                    [boolean]
 		-h, --help     Show help                                             [boolean]
-		-g, --global   Specify if the global configuration should be used    [boolean]`;
+		-g, --global   Use the global configuration                          [boolean]`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
 		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
@@ -86,11 +106,11 @@ describe("Help command", () => {
 			encoding: "utf-8"
 		});
 		const originalNewHelpText: string = `Commands:
-		generate template	[name]	generates custom template		[aliases: t]
+		ig generate template [name]  Generates a custom template scaffold [aliases: t]
 
 		Options:
-		-v, --version		Show current Ignite UI CLI version	[boolean]
-		-h, --help			Show help							[boolean]`;
+		-v, --version  Show current Ignite UI CLI version                    [boolean]
+		-h, --help     Show help                                             [boolean]`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
 		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
@@ -106,11 +126,9 @@ describe("Help command", () => {
 		Options:
 		-v, --version      Show current Ignite UI CLI version                [boolean]
 		-h, --help         Show help                                         [boolean]
-		-f, --framework    Framework to generate template for
-											              [string] [default: "jquery"]
+		-f, --framework    Framework to generate the template for [string] [default: "jquery"]
 		-n, --name         Template name         [string] [default: "custom-template"]
-		-s, --skip-config  Runs generate command without updating the cli config
-															[boolean] [default: false]
+		-s, --skip-config  Run without updating the CLI config [boolean] [default: false]
 		-t, --type         Project type (depends on framework)                [string]
 		`;
 
@@ -128,7 +146,7 @@ describe("Help command", () => {
 		Options:
 		-v, --version    Show current Ignite UI CLI version                  [boolean]
 		-h, --help       Show help                                           [boolean]
-		-f, --framework  Framework to list templates for  [string] [default: "jquery"]
+		-f, --framework  Framework to list templates for                      [string]
 		-t, --type       Project type (depends on framework)                  [string]
 		`;
 
@@ -147,7 +165,7 @@ describe("Help command", () => {
 		Options:
 		-v, --version  Show current Ignite UI CLI version                    [boolean]
 		-h, --help     Show help                                             [boolean]
-		    --e2e      Executes end-to-end tests                             [boolean]
+		    --e2e      Execute end-to-end tests                              [boolean]
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
@@ -162,10 +180,8 @@ describe("Help command", () => {
 		});
 
 		const originalNewHelpText: string = `
-		Options:
-		-v, --version  Show current Ignite UI CLI version                    [boolean]
-		-h, --help     Show help                                             [boolean]
-		    --term     The term you would like to search for                  [string]
+		Positionals:
+		term  Term to search for                                              [string]
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
@@ -201,7 +217,7 @@ describe("Help command", () => {
 		Options:
 		-v, --version  Show current Ignite UI CLI version                    [boolean]
 		-h, --help     Show help                                             [boolean]
-		-p, --port     serve app port                                         [number]
+		-p, --port     Port to serve the app on                               [number]
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");
@@ -219,8 +235,7 @@ describe("Help command", () => {
 		Options:
 		-v, --version             Show current Ignite UI CLI version         [boolean]
 		-h, --help                Show help                                  [boolean]
-		--skip-install, --si  Runs upgrade command without performing install
-                                                      [boolean] [default: false]
+		--skip-install, --si  Run upgrade without installing packages [boolean] [default: false]
 		`;
 
 		const replacedNewHelpText: string = originalNewHelpText.replace(/\s/g, "");

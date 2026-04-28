@@ -1,4 +1,4 @@
-# 15.0.0-rc.0 (2026-04-02)
+# 15.0.0 (2026-04-22)
 
 ## Highlights
 
@@ -29,6 +29,9 @@ All scaffolded projects now include AI-ready configuration files to enhance the 
 * **Claude skills** for component usage, theming customization, and bundle size optimization ([#1573](https://github.com/IgniteUI/igniteui-cli/pull/1573))
 * **`ig ai-config` CLI command** to configure AI tooling in an existing project: writes `.vscode/mcp.json` with `igniteui-cli` and `igniteui-theming` MCP servers and copies AI coding skill files from installed Ignite UI packages to `.claude/skills/` ([#1502](https://github.com/IgniteUI/igniteui-cli/pull/1502))
 * **AI skills auto-copy on `ng add`**: the `cli-config` Angular schematic now automatically copies skill files from the installed Ignite UI package's `skills/` directory into `.claude/skills/` as part of the `ng add igniteui-angular` flow ([#1502](https://github.com/IgniteUI/igniteui-cli/pull/1502))
+* **`ng add` ai-config schematic:** a dedicated `ai-config` Angular schematic configures VS Code MCP settings with `angular-cli` and `igniteui-cli` MCP servers when running `ng add igniteui-angular` ([#1624](https://github.com/IgniteUI/igniteui-cli/pull/1624))
+* **Skills fallback from project template:** `ig ai-config` now falls back to copying skill files from the project template when the installed package does not include a `skills/` directory ([#1644](https://github.com/IgniteUI/igniteui-cli/pull/1644))
+* **Web Components skills without framework config:** `ig ai-config` now correctly adds `igniteui-webcomponents` skills even when no framework is configured in the project ([#1634](https://github.com/IgniteUI/igniteui-cli/pull/1634))
 
 ---
 
@@ -36,6 +39,7 @@ All scaffolded projects now include AI-ready configuration files to enhance the 
 
 A comprehensive modernization of all Angular templates to align with Angular v21+ patterns.
 
+* **Angular packages update:** updated `igniteui-angular` to 21.2.0
 * **Signals and inject() migration:** replaced `@ViewChild` with signal-based `viewChild()` / `viewChild.required()`, `@Output` with `output()`, and constructor-based dependency injection with the `inject()` function across all 34 template files ([#1586](https://github.com/IgniteUI/igniteui-cli/pull/1586))
 * **Control flow migration:** replaced `*ngIf`, `*ngFor`, `*ngSwitch` structural directives with built-in `@if`, `@for`, `@switch` block syntax; migrated `[ngClass]` to `[class]` bindings across all templates ([#1584](https://github.com/IgniteUI/igniteui-cli/pull/1584))
 * **Standalone component adoption:** removed NgModule files (`AuthenticationModule`, `AppModule`) and replaced with provider functions; `provideAuthentication()` consolidates all auth setup ([#1554](https://github.com/IgniteUI/igniteui-cli/pull/1554))
