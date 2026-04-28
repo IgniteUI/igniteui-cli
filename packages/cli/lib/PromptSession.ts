@@ -4,7 +4,7 @@ import {
 } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as add } from "./commands/add";
-import { configure as aiConfigure } from "./commands/ai-config";
+import { configureMCP } from "./commands/ai-config";
 import { default as start } from "./commands/start";
 import { default as upgrade } from "./commands/upgrade";
 import { TemplateManager } from "./TemplateManager";
@@ -106,7 +106,7 @@ export class PromptSession extends BasePromptSession {
 
 	protected async configureAI(): Promise<void> {
 		// skip adding skills since those are baked into the project template atm:
-		aiConfigure(false);
+		configureMCP();
 	}
 
 	/**

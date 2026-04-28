@@ -26,12 +26,10 @@ export function configureSkills(skillsDir: string): void {
 	}
 }
 
-export function configure(skills = true, skillsDirs?: string[]): void {
+export function configure(agents: AIAgentTarget[]): void {
 	configureMCP();
-	if (skills && skillsDirs) {
-		for (const dir of skillsDirs) {
-			configureSkills(dir);
-		}
+	for (const agent of agents) {
+		configureSkills(getSkillsDir(agent));
 	}
 }
 
@@ -47,31 +45,12 @@ const command: CommandModule = {
 			describe: "AI agent(s) to configure skills for (determines the target skills directory)",
 			choices: AI_AGENT_CHOICES,
 			type: "array"
-		})
-		.option("skills-dir", {
-			alias: "d",
-			describe: "Custom skills directory path (overrides --agent)",
-			type: "string"
 		}),
 	async handler(argv: ArgumentsCamelCase) {
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "MCP"
 		});
-
-		const skillsDir = argv.skillsDir as string | undefined;
-
-		if (skillsDir) {
-			GoogleAnalytics.post({
-				t: "event",
-				ec: "$ig ai-config",
-				ea: "agent: custom",
-				el: "customSkillsDir"
-			});
-
-			configure(true, [skillsDir]);
-			return;
-		}
 
 		let agents = argv.agent as AIAgentTarget[] | undefined;
 
@@ -88,7 +67,7 @@ const command: CommandModule = {
 			ea: `agent: ${agents.join(", ")}`
 		});
 
-		configure(true, agents.map(a => getSkillsDir(a)));
+		configure(agents);
 	}
 };
 

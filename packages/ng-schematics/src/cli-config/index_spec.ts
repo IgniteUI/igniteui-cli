@@ -436,17 +436,5 @@ export const appConfig: ApplicationConfig = {
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".claude/skills");
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".cursor/skills");
 		});
-
-		it("should pass custom skillsDir when skillsDir option is provided", async () => {
-			await runner.runSchematic("ai-config", { skillsDir: "my-custom/skills" }, tree);
-
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith("my-custom/skills");
-		});
-
-		it("should prefer skillsDir over agent when both are provided", async () => {
-			await runner.runSchematic("ai-config", { agent: ["cursor"], skillsDir: "override/path" }, tree);
-
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith("override/path");
-		});
 	});
 });

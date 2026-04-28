@@ -257,7 +257,7 @@ describe("Unit - ai-config command", () => {
 	});
 
 	describe("handler", () => {
-		it("prompts for agents when neither --agent nor --skills-dir is provided", async () => {
+		it("prompts for agents when --agent is not provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
 
@@ -290,16 +290,6 @@ describe("Unit - ai-config command", () => {
 
 			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor" }));
-		});
-
-		it("skips prompt when --skills-dir is provided", async () => {
-			App.container.set(FS_TOKEN, createMockFs());
-			spyOn(InquirerWrapper, "checkbox");
-
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", skillsDir: "custom/path" });
-
-			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: custom", el: "customSkillsDir" }));
 		});
 	});
 });

@@ -28,10 +28,6 @@
           { "value": "generic", "label": "Generic / Other" }
         ]
       }
-    },
-    "skillsDir": {
-      "description": "Custom skills directory path (overrides --agent).",
-      "alias": "d"
     }
   }
 }
