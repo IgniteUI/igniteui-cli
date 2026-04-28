@@ -1,10 +1,11 @@
 import {
+	AI_AGENT_SKILLS_DIRS, AIAgentTarget,
 	BasePromptSession, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig,
 	ProjectLibrary, PromptTaskContext, Task, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as add } from "./commands/add";
-import { configureMCP } from "./commands/ai-config";
+import { configure, configureMCP } from "./commands/ai-config";
 import { default as start } from "./commands/start";
 import { default as upgrade } from "./commands/upgrade";
 import { TemplateManager } from "./TemplateManager";
@@ -76,6 +77,12 @@ export class PromptSession extends BasePromptSession {
 			// project options:
 			theme = await this.getTheme(projLibrary);
 
+			const AI_AGENT_CHOICES = Object.keys(AI_AGENT_SKILLS_DIRS) as AIAgentTarget[];
+			const agents = await InquirerWrapper.checkbox({
+				message: "Which AI agent(s) are you using? (optional)",
+				choices: AI_AGENT_CHOICES
+			}) as AIAgentTarget[];
+
 			Util.log("  Generating project structure.");
 			const config = projTemplate.generateConfig(projectName, theme);
 			for (const templatePath of projTemplate.templatePaths) {
@@ -89,6 +96,10 @@ export class PromptSession extends BasePromptSession {
 			}
 			// move cwd to project folder
 			process.chdir(projectName);
+
+			if (agents?.length) {
+				configure(agents);
+			}
 		}
 		await this.chooseActionLoop(projLibrary);
 		//TODO: restore cwd?

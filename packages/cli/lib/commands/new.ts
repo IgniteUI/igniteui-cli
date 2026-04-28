@@ -1,9 +1,12 @@
-import { GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { AI_AGENT_SKILLS_DIRS, AIAgentTarget, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { PromptSession } from "./../PromptSession";
 import { NewCommandType, PositionalArgs } from "./types";
 import { TemplateManager } from "../TemplateManager";
 import { ArgumentsCamelCase, Choices } from "yargs";
+import { configure } from "./ai-config";
+
+const AI_AGENT_CHOICES = Object.keys(AI_AGENT_SKILLS_DIRS) as AIAgentTarget[];
 
 // explicit typing because `type: "string"` will be inferred as `type: string` which yargs will not like
 const _framework: {
@@ -58,6 +61,12 @@ const command: NewCommandType = {
 			.option("template", {
 				describe: "Project template",
 				type: "string"
+			})
+			.option("agent", {
+				alias: "a",
+				describe: "AI agent(s) to configure skills for (determines the target skills directory)",
+				choices: AI_AGENT_CHOICES,
+				type: "array"
 			})
 			.example("$0 new my-app", "Scaffold a new project interactively")
 			.example("$0 new my-app -f angular -t igx-ts", "Scaffold an Ignite UI for Angular project");
@@ -159,6 +168,13 @@ const command: NewCommandType = {
 		if (!argv.skipInstall) {
 			process.chdir(argv.name);
 			await PackageManager.installPackages();
+			process.chdir("..");
+		}
+
+		const agents = argv.agent as AIAgentTarget[] | undefined;
+		if (agents?.length) {
+			process.chdir(argv.name);
+			configure(agents);
 			process.chdir("..");
 		}
 
