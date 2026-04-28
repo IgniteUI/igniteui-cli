@@ -14,17 +14,21 @@ const _framework: {
     choices: Choices;
 } = {
 	alias: "f",
-	default: "jquery",
-	describe: "Framework to setup project for",
+	default: "angular",
+	describe: "Framework to scaffold the project for.",
 	type: "string",
 	choices: []
 };
 
 const command: NewCommandType = {
 	command: "new [name]",
-	describe: "creates a project",
+	describe: "Creates a project",
 	builder: (yargs) => {
 		return yargs
+			.positional("name", {
+				describe: "Project name (same as --name/-n)",
+				type: "string"
+			})
 			.option("name", {
 				alias: "n",
 				describe: "Project name",
@@ -43,19 +47,20 @@ const command: NewCommandType = {
 			})
 			.option("skip-git", {
 				alias: "sg",
-				describe: "Do not automatically initialize repository for the project with Git",
+				describe: "Do not initialize a git repository for the project",
 				type: "boolean"
 			})
 			.option("skip-install", {
 				alias: "si",
-				describe: "Do not automatically install packages",
+				describe: "Do not install packages after scaffolding",
 				type: "boolean"
 			})
 			.option("template", {
 				describe: "Project template",
 				type: "string"
 			})
-			.usage(""); // do not show any usage instructions before the commands list
+			.example("$0 new my-app", "Scaffold a new project interactively")
+			.example("$0 new my-app -f angular -t igx-ts", "Scaffold an Ignite UI for Angular project");
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({

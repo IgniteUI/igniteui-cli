@@ -3,18 +3,17 @@ import { ConfigCommandType } from "./types";
 
 const command: ConfigCommandType = {
 	command: "config",
-	describe: "gets, sets or adds a configuration property",
+	describe: "Gets, sets or adds a configuration property (see subcommands)",
 	builder: (yargs) => {
 		return yargs
 			.command({
 				command: "get <property>",
 				describe: "Gets a configuration property",
 				builder: (yargs) => {
-					return yargs.option("property", {
+					return yargs.positional("property", {
 						describe: "Config property to get",
 						type: "string"
-					})
-					.usage(""); // do not show any usage instructions before the commands list
+					});
 				},
 				handler: command.getHandler
 			})
@@ -22,15 +21,14 @@ const command: ConfigCommandType = {
 				command: "set <property> <value>",
 				describe: "Sets a configuration property",
 				builder: (yargs) => {
-					return yargs.option("property", {
+					return yargs.positional("property", {
 						describe: "Config property to set",
 						type: "string"
 					})
-					.option("value", {
+					.positional("value", {
 						describe: "New value for the property",
 						type: "string"
-					})
-					.usage(""); // do not show any usage instructions before the commands list
+					});
 				},
 				handler: command.setHandler
 			})
@@ -38,15 +36,14 @@ const command: ConfigCommandType = {
 				command: "add <property> <value>",
 				describe: "Adds a value to an existing configuration array",
 				builder: (yargs) => {
-					return yargs.option("property", {
+					return yargs.positional("property", {
 						describe: "Config property to add to",
 						type: "string"
 					})
-					.option("value", {
+					.positional("value", {
 						describe: "New value to add",
 						type: "string"
-					})
-					.usage(""); // do not show any usage instructions before the commands list
+					});
 				},
 				handler: command.addHandler
 			})
@@ -54,9 +51,8 @@ const command: ConfigCommandType = {
 				alias: "g",
 				type: "boolean",
 				global: true,
-				describe: "Specify if the global configuration should be used"
+				describe: "Use the global configuration"
 			})
-			.usage("") // do not show any usage instructions before the commands list
 			// at least one command is required
 			.demandCommand(1, "Please select command");
 	},

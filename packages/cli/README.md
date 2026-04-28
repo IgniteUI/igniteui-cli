@@ -66,7 +66,7 @@ ig new <project name> --framework=<framework> --type=<proj-type> --theme=<theme>
 ```
 This will create the project and will install the needed dependencies.
 
-Parameters besides name are optional. Framework default to "jquery", project type defaults to the first available in the framework and theme to the first available for the project. For more information visit [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New) Wiki page.
+Parameters besides name are optional. Framework defaults to "angular", project type defaults to the first available in the framework and theme to the first available for the project. For more information visit [ig new](https://github.com/IgniteUI/igniteui-cli/wiki/New) Wiki page.
 
 #### Generate Ignite UI for Angular project
 
@@ -102,6 +102,12 @@ For full list of supported templates in the current project you can simply run [
 ```bash
 ig list
 ```
+
+When run outside of a generated project and without a `--framework` argument, `ig list` prints every supported framework along with its project types and available project templates — a handy overview before running `ig new`:
+```bash
+ig list
+```
+Pass `-f <framework> [-t <projectType>]` to list component templates for a specific framework/project type instead.
 
 ### Build and run
 ```bash

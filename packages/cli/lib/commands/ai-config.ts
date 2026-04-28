@@ -37,7 +37,7 @@ const AI_AGENT_CHOICES = Object.keys(AI_AGENT_SKILLS_DIRS) as AIAgentTarget[];
 
 const command: CommandModule = {
 	command: "ai-config",
-	describe: "Configure Ignite UI AI tooling (MCP servers and AI coding skills)",
+	describe: "Configures Ignite UI AI tooling (MCP servers and AI coding skills)",
 	builder: (yargs) => yargs
 		.usage("")
 		.option("agent", {

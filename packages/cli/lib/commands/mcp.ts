@@ -19,8 +19,7 @@ const command: CommandType = {
 				describe: "Enable debug logging to mcp-server.log",
 				type: "boolean",
 				default: false
-			})
-			.usage("");
+			});
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		let mcpEntry: string;
