@@ -33,6 +33,7 @@ module.exports = defineConfig([
       ],
       // Relax rules
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-empty-function': 'off',
       '@angular-eslint/prefer-inject': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     },
@@ -41,7 +42,6 @@ module.exports = defineConfig([
     files: ['**/*.spec.ts'],
     rules: {
       // Test files use empty mock methods extensively
-      '@typescript-eslint/no-empty-function': 'off',
       '@typescript-eslint/class-literal-property-style': 'off',
     },
   },
