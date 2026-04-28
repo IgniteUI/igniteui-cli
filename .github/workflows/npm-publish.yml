@@ -37,4 +37,3 @@ jobs:
       - name: Publish packages
         # use npm run as yarn run changes the registry and publishes to https://registry.yarnpkg.com
         run: npm run deploy ${NPM_TAG}
-        # define env variable for the specific run
