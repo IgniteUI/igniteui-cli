@@ -126,20 +126,6 @@ function listAllFrameworks() {
 		ea: "all frameworks"
 	});
 
-	let maxIdLength = 0;
-	for (const framework of frameworks) {
-		for (const lib of framework.projectLibraries) {
-			for (const project of lib.projects.filter(p => !p.isHidden)) {
-				if (project.id.length > maxIdLength) {
-					maxIdLength = project.id.length;
-				}
-			}
-		}
-	}
-
-	const addSpacesCount = 5;
-	const spaceChar = " ";
-
 	Util.log("Available frameworks and project templates:");
 	for (const framework of frameworks) {
 		Util.log("");
@@ -151,9 +137,11 @@ function listAllFrameworks() {
 				Util.log("\t\t(no project templates)");
 				continue;
 			}
-			for (const project of visibleProjects) {
-				const spacesCount = maxIdLength - project.id.length + addSpacesCount;
-				Util.log("\t\t" + project.id + spaceChar.repeat(spacesCount) + project.description);
+			const formattedItems = Util.formatChoices(
+				visibleProjects.map(p => ({ name: p.id, description: p.description }))
+			);
+			for (const item of formattedItems) {
+				Util.log("\t\t" + item.name);
 			}
 		}
 	}
