@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,27 +13,10 @@ import {
   IgxRippleModule,
   IgxToggleModule
 } from 'igniteui-angular';
-import { LoginDialog } from '../login-dialog/login-dialog';
 import { ExternalAuth } from '../services/external-auth';
 import { UserStore } from '../services/user-store';
 import { provideAuthentication } from '../provide-authentication';
 import { LoginBar } from './login-bar';
-
-@Component({
-  selector: 'app-login-dialog',
-  template: '',
-  imports: [RouterTestingModule,
-	  IgxAvatarModule,
-	  IgxButtonModule,
-	  IgxDialogModule,
-	  IgxDropDownModule,
-	  IgxIconModule,
-	  IgxRippleModule,
-	  IgxToggleModule]
-})
-class TestLoginDialog extends LoginDialog {
-  override open() { }
-}
 
 describe('LoginBar', () => {
   let component: LoginBar;
@@ -64,8 +46,7 @@ describe('LoginBar', () => {
         IgxIconModule,
         IgxRippleModule,
         IgxToggleModule,
-		LoginBar,
-		TestLoginDialog
+        LoginBar
       ],
       providers: [
         ...provideAuthentication(),
@@ -103,13 +84,10 @@ describe('LoginBar', () => {
   });
 
   it('should open dialog on button click (not logged)', () => {
-    // override ViewChild:
-    component.loginDialog = new TestLoginDialog();
-
     const button = fixture.debugElement.query(By.css('button'));
-    vi.spyOn(component.loginDialog, 'open');
+    vi.spyOn(component.loginDialog(), 'open');
     button.triggerEventHandler('click', {});
-    expect(component.loginDialog.open).toHaveBeenCalled();
+    expect(component.loginDialog().open).toHaveBeenCalled();
   });
 
   it('should open drop down on button click (logged in)', async () => {
@@ -122,7 +100,7 @@ describe('LoginBar', () => {
     const button = fixture.debugElement.query(By.css('button'));
     button.triggerEventHandler('click', {});
     await fixture.whenStable();
-    expect(component.igxDropDown.collapsed).toBeFalsy();
+    expect(component.igxDropDown().collapsed).toBeFalsy();
   });
 
   it('should handle user menu items', async () => {
@@ -133,11 +111,12 @@ describe('LoginBar', () => {
     vi.spyOn(userStore, 'clearCurrentUser');
     vi.spyOn(externalAuth, 'logout');
 
-    component.igxDropDown.open();
-    component.igxDropDown.setSelectedItem(0);
+    const dropdown = component.igxDropDown();
+    dropdown.open();
+    dropdown.setSelectedItem(0);
     expect(router.navigate).toHaveBeenCalledWith(['/auth/profile']);
 
-    component.igxDropDown.setSelectedItem(1);
+    dropdown.setSelectedItem(1);
     expect(router.navigate).toHaveBeenCalledWith(['/home']);
     expect(userStore.clearCurrentUser).toHaveBeenCalled();
     expect(externalAuth.logout).toHaveBeenCalled();

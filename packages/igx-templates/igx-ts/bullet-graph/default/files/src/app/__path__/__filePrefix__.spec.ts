@@ -18,7 +18,7 @@ describe('<%=ClassName%>', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     // disable animation
-    component.bulletGraph.transitionDuration = 0;
+    component.bulletGraph().transitionDuration = 0;
   });
 
   it('should create', () => {

@@ -63,7 +63,7 @@ describe("Help command", () => {
 			-h, --help                Show help                                  [boolean]
 			-f, --framework           Framework to scaffold the project for.
 				[string] [choices: "angular", "jquery", "react", "webcomponents"] [default:
-																				"jquery"]
+																				"angular"]
 			-t, --type                Project type (depends on framework)         [string]
 				--theme, --th         Project theme (depends on project type)     [string]
 				--skip-git, --sg      Do not initialize a git repository for the project
