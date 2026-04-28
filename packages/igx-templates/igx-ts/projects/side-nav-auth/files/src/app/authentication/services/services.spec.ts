@@ -526,7 +526,11 @@ describe('Services', () => {
   describe(`User Service`, () => {
     let userServ: UserStore;
     let localStorage: LocalStorageService;
-    let mockLocalStorage: any;
+    const mockLocalStorage = {
+      getItem: vi.fn(),
+      setItem: vi.fn(),
+      removeItem: vi.fn()
+    };
     const mockUser = {
       exp: 111,
       name: 'Testy Testington',
@@ -536,12 +540,6 @@ describe('Services', () => {
       picture: `testy-boy.png`,
       token: `mock token`,
       externalToken: `mock token`
-    };
-
-    mockLocalStorage = {
-      getItem: vi.fn(),
-      setItem: vi.fn(),
-      removeItem: vi.fn()
     };
 
     beforeEach(() => {
