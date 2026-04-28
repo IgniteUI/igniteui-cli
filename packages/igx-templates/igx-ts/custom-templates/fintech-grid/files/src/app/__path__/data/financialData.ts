@@ -953,15 +953,13 @@ export class FinancialData {
   private generateNewPrice(oldPrice: number): any {
     const rnd = parseFloat(Math.random().toFixed(2));
     const volatility = 2;
-    let newPrice = 0;
-
     let changePercent = 2 * volatility * rnd;
     if (changePercent > volatility) {
       changePercent -= (2 * volatility);
     }
 
     const changeAmount = oldPrice * (changePercent / 100);
-    newPrice = oldPrice + changeAmount;
+    const newPrice = oldPrice + changeAmount;
 
     const result = {Price: 0, ChangePercent: 0};
     result.Price = parseFloat(newPrice.toFixed(2));
