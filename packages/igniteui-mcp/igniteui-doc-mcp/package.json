@@ -3,9 +3,9 @@
   "version": "15.1.0-beta.0",
   "description": "Unified MCP server for Ignite UI — documentation, GitHub API, and CLI scaffolding",
   "repository": {
-  "type": "git",
-  "url": "https://github.com/IgniteUI/igniteui-cli.git",
-  "directory": "packages/igniteui-mcp/igniteui-doc-mcp"
+    "type": "git",
+    "url": "https://github.com/IgniteUI/igniteui-cli.git",
+    "directory": "packages/igniteui-mcp/igniteui-doc-mcp"
   },
   "type": "module",
   "main": "dist/index.js",
