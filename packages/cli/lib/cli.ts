@@ -112,6 +112,7 @@ export async function run(args = null) {
 				process.exitCode = 1;
 			}
 		})
+		.wrap(yargs.terminalWidth())
 		.help().alias("help", "h")
 		.parseAsync(
 			args, // the args to parse to argv
