@@ -141,10 +141,10 @@ describe("Unit - List command", () => {
 		expect(Util.log).toHaveBeenCalledWith("Available frameworks and project templates:");
 		expect(Util.log).toHaveBeenCalledWith("Angular (angular)");
 		expect(Util.log).toHaveBeenCalledWith("\tIgnite UI for Angular (igx-ts)");
-		expect(Util.log).toHaveBeenCalledWith("\t\tdefault-side-nav     Side navigation project");
+		expect(Util.log).toHaveBeenCalledWith("\t\tdefault-side-nav...Side navigation project");
 		expect(Util.log).toHaveBeenCalledWith("React (react)");
 		expect(Util.log).toHaveBeenCalledWith("\tIgnite UI for React (igr-ts)");
-		expect(Util.log).toHaveBeenCalledWith("\t\tdefault              Default React project");
+		expect(Util.log).toHaveBeenCalledWith("\t\tdefault...........Default React project");
 		expect(Util.log).not.toHaveBeenCalledWith(jasmine.stringMatching(/hidden-one/));
 	});
 
