@@ -7,21 +7,21 @@ const command: CommandType = {
 	command: "list",
 	// use aliases here, instead of alias. With single alias yargs does not build correctly argv
 	aliases: ["l"],
-	describe: "lists frameworks, project templates and component templates",
+	describe: "Lists frameworks, project templates and component templates",
 	builder: (yargs) => {
 		return yargs
 			.option("framework", {
 				alias: "f",
-				describe: "framework to list templates for",
+				describe: "Framework to list templates for",
 				type: "string"
 			})
 			.option("type", {
 				alias: "t",
-				describe: "project type (depends on framework)",
+				describe: "Project type (depends on framework)",
 				type: "string"
 			})
-			.example("$0 list", "show all frameworks and their project templates")
-			.example("$0 list -f angular", "list component templates for Angular");
+			.example("$0 list", "Show all frameworks and their project templates")
+			.example("$0 list -f angular", "List component templates for Angular");
 	},
 	templateManager: null,
 	handler(argv: ArgumentsCamelCase<PositionalArgs>) {

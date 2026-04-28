@@ -53,7 +53,7 @@ describe("Unit - MCP CLI command", () => {
 	describe("metadata", () => {
 		it("registers the MCP command with the expected description", () => {
 			expect(mcp.command).toBe("mcp");
-			expect(mcp.describe).toBe("starts the Ignite UI MCP server for AI assistant integration");
+			expect(mcp.describe).toBe("Starts the Ignite UI MCP server for AI assistant integration");
 		});
 
 		it("configures the debug and remote options", () => {

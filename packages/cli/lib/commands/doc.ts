@@ -5,11 +5,11 @@ import { ArgumentsCamelCase } from "yargs";
 
 const doc: DocCommandType = {
 	command: "doc [term]",
-	describe: "opens the Infragistics search for the given term",
+	describe: "Opens the Infragistics search for the given term",
 	builder: (yargs) => {
 		return yargs
 			.positional("term", {
-				describe: "term to search for",
+				describe: "Term to search for",
 				type: "string"
 			});
 	},

@@ -21,13 +21,13 @@ const execSyncNpmStart = (port: number, options: ExecSyncOptions): void => {
 
 const command: StartCommandType = {
 	command: "start",
-	describe: "starts the project",
+	describe: "Starts the project",
 	templateManager: null,
 	builder: (yargs) => {
 		return yargs
 			.option("port", {
 				alias: "p",
-				describe: "port to serve the app on",
+				describe: "Port to serve the app on",
 				type: "number"
 			});
 	},

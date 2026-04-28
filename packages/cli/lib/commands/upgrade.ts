@@ -5,14 +5,14 @@ import { ArgumentsCamelCase } from "yargs";
 const command: UpgradeCommandType = {
 	command: "upgrade-packages",
 	aliases: ["upgrade"],
-	describe: "upgrades Ignite UI packages",
+	describe: "Upgrades Ignite UI packages",
 	templateManager: null,
 	builder: (yargs) => {
 		return yargs
 			.option("skip-install", {
 				alias: "si",
 				default: false,
-				describe: "run upgrade without installing packages",
+				describe: "Run upgrade without installing packages",
 				type: "boolean"
 			});
 	},

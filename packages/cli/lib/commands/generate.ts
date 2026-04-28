@@ -77,37 +77,37 @@ async function handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 const command: CommandType = {
 	aliases: ["g"],
 	command: "generate",
-	describe: "generates custom templates (see subcommands)",
+	describe: "Generates custom templates (see subcommands)",
 	templateManager: null,
 	builder: yargs => {
 		yargs
 			.command({
 				aliases: ["t"],
 				command: "template [name]",
-				describe: "generates a custom template scaffold",
+				describe: "Generates a custom template scaffold",
 				builder: (yargs) => {
 					return yargs
 						.option("framework", {
 							alias: "f",
 							default: "jquery",
-							describe: "framework to generate the template for",
+							describe: "Framework to generate the template for",
 							type: "string"
 						})
 						.option("name", {
 							alias: "n",
 							default: "custom-template",
-							describe: "template name",
+							describe: "Template name",
 							type: "string"
 						})
 						.option("skip-config", {
 							alias: "s",
 							default: false,
-							describe: "run without updating the CLI config",
+							describe: "Run without updating the CLI config",
 							type: "boolean"
 						})
 						.option("type", {
 							alias: "t",
-							describe: "project type (depends on framework)",
+							describe: "Project type (depends on framework)",
 							type: "string"
 						});
 				},

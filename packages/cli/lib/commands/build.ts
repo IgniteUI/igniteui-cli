@@ -6,7 +6,7 @@ import { ArgumentsCamelCase } from "yargs";
 
 const command: BuildCommandType = {
 	command: "build",
-	describe: "builds the project",
+	describe: "Builds the project",
 	builder: (yargs) => yargs,
 	templateManager: null,
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
@@ -22,7 +22,7 @@ const command: BuildCommandType = {
 		await PackageManager.ensureIgniteUISource(true, command.templateManager);
 
 		if (!ProjectConfig.hasLocalConfig()) {
-			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
+			Util.error("Build command is supported only on existing project created with igniteui-cli", "red");
 			return;
 		}
 

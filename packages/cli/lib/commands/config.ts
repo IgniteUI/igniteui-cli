@@ -3,15 +3,15 @@ import { ConfigCommandType } from "./types";
 
 const command: ConfigCommandType = {
 	command: "config",
-	describe: "gets, sets or adds a configuration property (see subcommands)",
+	describe: "Gets, sets or adds a configuration property (see subcommands)",
 	builder: (yargs) => {
 		return yargs
 			.command({
 				command: "get <property>",
-				describe: "gets a configuration property",
+				describe: "Gets a configuration property",
 				builder: (yargs) => {
 					return yargs.positional("property", {
-						describe: "config property to get",
+						describe: "Config property to get",
 						type: "string"
 					});
 				},
@@ -19,14 +19,14 @@ const command: ConfigCommandType = {
 			})
 			.command({
 				command: "set <property> <value>",
-				describe: "sets a configuration property",
+				describe: "Sets a configuration property",
 				builder: (yargs) => {
 					return yargs.positional("property", {
-						describe: "config property to set",
+						describe: "Config property to set",
 						type: "string"
 					})
 					.positional("value", {
-						describe: "new value for the property",
+						describe: "New value for the property",
 						type: "string"
 					});
 				},
@@ -34,14 +34,14 @@ const command: ConfigCommandType = {
 			})
 			.command({
 				command: "add <property> <value>",
-				describe: "adds a value to an existing configuration array",
+				describe: "Adds a value to an existing configuration array",
 				builder: (yargs) => {
 					return yargs.positional("property", {
-						describe: "config property to add to",
+						describe: "Config property to add to",
 						type: "string"
 					})
 					.positional("value", {
-						describe: "new value to add",
+						describe: "New value to add",
 						type: "string"
 					});
 				},
@@ -51,7 +51,7 @@ const command: ConfigCommandType = {
 				alias: "g",
 				type: "boolean",
 				global: true,
-				describe: "use the global configuration"
+				describe: "Use the global configuration"
 			})
 			// at least one command is required
 			.demandCommand(1, "Please select command");

@@ -35,7 +35,7 @@ export function configure(skills = true): void {
 
 const command: CommandModule = {
 	command: "ai-config",
-	describe: "configures Ignite UI AI tooling (MCP servers and AI coding skills)",
+	describe: "Configures Ignite UI AI tooling (MCP servers and AI coding skills)",
 	builder: (yargs) => yargs,
 	async handler(_argv: ArgumentsCamelCase) {
 		GoogleAnalytics.post({
