@@ -2,7 +2,6 @@ import { App, GoogleAnalytics, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core
 import yargs from "yargs";
 import {
 	add,
-	ADD_COMMAND_NAME,
 	aiConfig,
 	build,
 	CommandType,
@@ -47,36 +46,39 @@ export async function run(args = null) {
 	const registeredCommands: CommandType[] = [
 		newCommand, add, build, start, generate, config, doc, test, list, upgrade, mcp, aiConfig
 	];
-	const knownCommands = new Set<string>();
-	for (const cmd of registeredCommands) {
-		const primary = (Array.isArray(cmd.command) ? cmd.command[0] : cmd.command as string).split(/\s+/)[0];
-		knownCommands.add(primary);
-		const aliases = Array.isArray(cmd.aliases) ? cmd.aliases : (cmd.aliases ? [cmd.aliases] : []);
-		for (const alias of aliases) {
-			knownCommands.add(alias);
-		}
-	}
 
 	const yargsModule = args ? yargs(args) : yargs;
-	await yargsModule
+	let chain = yargsModule
 		.scriptName("ig")
 		.usage("Usage: $0 [command] [options]\n\nRun without a command to start the interactive step-by-step project setup.")
 		.example("$0", "Launch the interactive step-by-step project setup")
 		.example("$0 new my-app --framework angular", "Scaffold a new Ignite UI for Angular project")
 		.example("$0 add grid main-grid", "Add a Grid component to the current project")
-		.example("$0 list", "Show all frameworks and their project templates")
-		.command(newCommand)
-		.command(add)
-		.command(build)
-		.command(start)
-		.command(generate)
-		.command(config)
-		.command(doc)
-		.command(test)
-		.command(list)
-		.command(upgrade)
-		.command(mcp)
-		.command(aiConfig)
+		.example("$0 list", "Show all frameworks and their project templates");
+
+	for (const cmd of registeredCommands) {
+		chain = chain.command(cmd);
+	}
+
+	await chain
+		.command({
+			command: "$0",
+			describe: false,
+			handler: async (argv) => {
+				if (argv.version) return; // version handled in the parseAsync callback
+				const unknown = argv._[0];
+				if (unknown) {
+					process.exitCode = 1;
+					Util.error(`Unknown command: "${unknown}"`, "red");
+					Util.log(await yargsModule.getHelp());
+				} else {
+					Util.log("Starting Step by step mode.", "green");
+					Util.log("For available commands, stop this execution and use --help.", "green");
+					const prompts = new PromptSession(templateManager);
+					prompts.start();
+				}
+			}
+		})
 		.version(false) // disable built-in `yargs.version` to override it with our custom option
 		.options({
 			version: {
@@ -93,17 +95,6 @@ export async function run(args = null) {
 				hidden: true
 			}
 		})
-		.middleware((argv) => {
-				// invoked after parsing and before the `yargsModule.parseAsync` callback
-				const command = argv._[0];
-				if (command === ADD_COMMAND_NAME && !add.check(argv)) {
-					argv.skipExecution = true;
-					yargsModule.showHelp();
-				}
-			},
-			false	// setting this to `true` is supposed to exec the middleware after parsing and before arg validation
-					// but in reality it also does not trigger the command's handler (╯°□°）╯︵ ┻━┻
-		)
 		.fail((msg, err, yargs) => {
 			const message = err?.message ?? msg;
 			if (message) {
@@ -130,8 +121,7 @@ export async function run(args = null) {
 					process.exit(1);
 				}
 
-				const helpRequest = argv.h || argv.help;
-				if (helpRequest) {
+				if (argv.h || argv.help) {
 					logHelp();
 				}
 
@@ -149,19 +139,6 @@ export async function run(args = null) {
 				// internal testing only
 				/* istanbul ignore next */
 				App.testMode = !!argv.testMode;
-
-				if (!helpRequest && !knownCommands.has(command?.toString())) {
-					if (command) {
-						process.exitCode = 1;
-						Util.error(`Unknown command: "${command}"`, "red");
-						Util.log(await yargsModule.getHelp());
-					} else {
-						Util.log("Starting Step by step mode.", "green");
-						Util.log("For available commands, stop this execution and use --help.", "green");
-						const prompts = new PromptSession(templateManager);
-						prompts.start();
-					}
-				}
 			}
 		);
 }

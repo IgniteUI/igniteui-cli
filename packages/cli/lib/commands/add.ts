@@ -4,13 +4,16 @@ import {
 } from "@igniteui/cli-core";
 import { PromptSession } from "./../PromptSession";
 import { AddCommandType, PositionalArgs } from "./types";
-import { ArgumentsCamelCase } from "yargs";
+import { ArgumentsCamelCase, Argv } from "yargs";
+
+let yargsContext: Argv | undefined;
 
 const command: AddCommandType = {
 	command: "add [template] [name]",
 	describe: "Adds a component or view template to the current project",
 	templateManager: null,
 	builder: (yargs) => {
+		yargsContext = yargs;
 		return yargs
 			.positional("template", {
 				describe: `Template ID (e.g. "grid", "combo"); same as --template/-t`,
@@ -54,7 +57,8 @@ const command: AddCommandType = {
 		return true;
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
-		if (argv.skipExecution) {
+		if (!command.check(argv)) {
+			yargsContext?.showHelp();
 			return;
 		}
 
