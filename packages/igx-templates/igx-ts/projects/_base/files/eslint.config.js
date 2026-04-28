@@ -33,7 +33,15 @@ module.exports = defineConfig([
       ],
       // Relax rules
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-empty-function': 'off',
       '@angular-eslint/prefer-inject': 'off',
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    },
+  },
+  {
+    files: ['**/*.spec.ts'],
+    rules: {
+      '@typescript-eslint/class-literal-property-style': 'off',
     },
   },
   {
