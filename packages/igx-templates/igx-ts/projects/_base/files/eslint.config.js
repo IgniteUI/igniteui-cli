@@ -41,7 +41,6 @@ module.exports = defineConfig([
   {
     files: ['**/*.spec.ts'],
     rules: {
-      // Test files use empty mock methods extensively
       '@typescript-eslint/class-literal-property-style': 'off',
     },
   },
