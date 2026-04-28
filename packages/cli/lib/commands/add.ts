@@ -4,37 +4,51 @@ import {
 } from "@igniteui/cli-core";
 import { PromptSession } from "./../PromptSession";
 import { AddCommandType, PositionalArgs } from "./types";
-import { ArgumentsCamelCase } from "yargs";
+import { ArgumentsCamelCase, Argv } from "yargs";
+
+let yargsContext: Argv | undefined;
 
 const command: AddCommandType = {
 	command: "add [template] [name]",
-	describe: "adds template by its ID",
+	describe: "Adds a component or view template to the current project",
 	templateManager: null,
-	builder: {
-		"template": {
-			alias: "t",
-			description: `Template ID, such as "grid", "combo", etc.`,
-			type: "string",
-			global: true
-		},
-		"name": {
-			alias: "n",
-			description: "File name.",
-			type: "string",
-			global: true
-		},
-		"module": {
-			alias: "m",
-			description: "The module to which the template is to be added",
-			type: "string",
-			global: true
-		},
-		"skip-route": {
-			alias: "skr",
-			describe: "Don't auto-generate an app navigation route for the new component",
-			type: "boolean",
-			global: true
-		}
+	builder: (yargs) => {
+		yargsContext = yargs;
+		return yargs
+			.positional("template", {
+				describe: `Template ID (e.g. "grid", "combo"); same as --template/-t`,
+				type: "string"
+			})
+			.positional("name", {
+				describe: "File name (same as --name/-n)",
+				type: "string"
+			})
+			.option("template", {
+				alias: "t",
+				describe: `Template ID (e.g. "grid", "combo")`,
+				type: "string",
+				global: true
+			})
+			.option("name", {
+				alias: "n",
+				describe: "File name",
+				type: "string",
+				global: true
+			})
+			.option("module", {
+				alias: "m",
+				describe: "Module to which the template is to be added",
+				type: "string",
+				global: true
+			})
+			.option("skip-route", {
+				alias: "skr",
+				describe: "Do not auto-generate an app navigation route for the new component",
+				type: "boolean",
+				global: true
+			})
+			.example("$0 add", "Launch guided component picker")
+			.example("$0 add grid main-grid", "Add a Grid component named main-grid");
 	},
 	check: (argv: ArgumentsCamelCase<PositionalArgs>) => {
 		if ((!argv.name && argv.template) || (argv.name && !argv.template)) {
@@ -43,7 +57,8 @@ const command: AddCommandType = {
 		return true;
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
-		if (argv.skipExecution) {
+		if (!command.check(argv)) {
+			yargsContext?.showHelp();
 			return;
 		}
 
