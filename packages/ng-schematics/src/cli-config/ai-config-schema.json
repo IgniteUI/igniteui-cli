@@ -11,21 +11,22 @@
       "alias": "a",
       "items": {
         "type": "string",
-        "enum": ["claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"]
+        "enum": ["none", "claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"]
       },
       "x-prompt": {
-        "message": "Which AI agent(s) are you using?",
+        "message": "Which AI tools do you want to generate configuration files for?",
         "type": "list",
         "multiselect": true,
         "items": [
-          { "value": "claude", "label": "Claude" },
-          { "value": "copilot", "label": "GitHub Copilot" },
-          { "value": "cursor", "label": "Cursor" },
-          { "value": "codex", "label": "Codex" },
-          { "value": "windsurf", "label": "Windsurf" },
-          { "value": "gemini", "label": "Gemini" },
-          { "value": "junie", "label": "Junie" },
-          { "value": "generic", "label": "Generic / Other" }
+          { "value": "none", "label": "None (skip AI configuration)" },
+          { "value": "claude", "label": "Claude (Adding .claude/skills and CLAUDE.md)" },
+          { "value": "copilot", "label": "Copilot (Adding .github/skills and copilot-instructions.md)" },
+          { "value": "cursor", "label": "Cursor (Adding .cursor/skills)" },
+          { "value": "codex", "label": "Codex (Adding .codex/skills)" },
+          { "value": "windsurf", "label": "Windsurf (Adding .windsurf/skills)" },
+          { "value": "gemini", "label": "Gemini (Adding .gemini/skills)" },
+          { "value": "junie", "label": "Junie (Adding .junie/skills)" },
+          { "value": "generic", "label": "Generic (Adding .agents/skills and AGENTS.md)" }
         ]
       }
     }

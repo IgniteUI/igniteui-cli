@@ -330,7 +330,7 @@ export const appConfig: ApplicationConfig = {
 
 		it("should call copyAISkillsToProject", async () => {
 			await runner.runSchematic("cli-config", {}, tree);
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(2);
 		});
 
 		it("should add both servers to existing .vscode/mcp.json that has no servers", async () => {
@@ -404,11 +404,12 @@ export const appConfig: ApplicationConfig = {
 	});
 
 	describe("ai-config schematic", () => {
-		it("should call copyAISkillsToProject with claude default when no options", async () => {
+		it("should call copyAISkillsToProject with claude and generic defaults when no options", async () => {
 			await runner.runSchematic("ai-config", {}, tree);
 
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(2);
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".claude/skills");
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".agents/skills");
 		});
 
 		it("should pass resolved skillsDir when agent option is provided", async () => {

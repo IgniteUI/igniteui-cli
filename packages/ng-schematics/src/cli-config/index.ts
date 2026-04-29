@@ -148,7 +148,10 @@ function aiConfig({ init, agents }: { init: boolean; agents: AIAgentTarget[] }):
 
 /** Standalone `ai-config` schematic entry */
 export function addAIConfig(options: { agent?: AIAgentTarget[] } = {}): Rule {
-	const agents = options.agent?.length ? options.agent : ["claude"] as AIAgentTarget[];
+	const agents = (options.agent?.length ? options.agent : ["claude", "generic"] as AIAgentTarget[]).filter(a => a !== "none" as any);
+	if (!agents.length) {
+		return (tree: Tree) => tree;
+	}
 	return aiConfig({ init: true, agents });
 }
 
@@ -161,7 +164,7 @@ export default function (): Rule {
 			importBrowserAnimations(),
 			createCliConfig(),
 			displayVersionMismatch(),
-			aiConfig({ init: false, agents: ["claude"] })
+			aiConfig({ init: false, agents: ["claude", "generic"] })
 		]);
 	};
 }

@@ -264,7 +264,7 @@ describe("Unit - ai-config command", () => {
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
 			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
-				message: "Which AI agent(s) are you using?"
+				message: "Which AI tools do you want to generate configuration files for?"
 			}));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "MCP" }));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude" }));
@@ -277,7 +277,7 @@ describe("Unit - ai-config command", () => {
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
 			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
-				message: "Which AI agent(s) are you using?"
+				message: "Which AI tools do you want to generate configuration files for?"
 			}));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: claude, cursor" }));
 		});
