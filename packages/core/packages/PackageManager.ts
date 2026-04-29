@@ -1,6 +1,6 @@
 import { exec } from "child_process";
 import * as path from "path";
-import { TemplateManager } from "../../cli/lib/TemplateManager";
+import { BaseTemplateManager } from "../templates";
 import { Config, FS_TOKEN, IFileSystem, ProjectTemplate } from "../types";
 import { App, ProjectConfig, Util } from "../util";
 
@@ -31,7 +31,7 @@ export class PackageManager {
 	 */
 	public static async ensureIgniteUISource(
 		installNow: boolean = false,
-		templateManager: TemplateManager,
+		templateManager: BaseTemplateManager,
 		verbose: boolean = false
 	) {
 		const config = ProjectConfig.localConfig();

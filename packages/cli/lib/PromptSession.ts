@@ -7,13 +7,8 @@ import { default as add } from "./commands/add";
 import { configure as aiConfigure } from "./commands/ai-config";
 import { default as start } from "./commands/start";
 import { default as upgrade } from "./commands/upgrade";
-import { TemplateManager } from "./TemplateManager";
 
 export class PromptSession extends BasePromptSession {
-
-	constructor(templateManager: TemplateManager) {
-		super(templateManager);
-	}
 
 	public static async chooseTerm() {
 		const answer = await InquirerWrapper.input({
@@ -39,7 +34,6 @@ export class PromptSession extends BasePromptSession {
 
 		let projLibrary: ProjectLibrary;
 		let theme: string;
-		add.templateManager = this.templateManager as TemplateManager;
 		this.config = ProjectConfig.getConfig();
 		const defaultProjName = "IG Project";
 
@@ -100,7 +94,6 @@ export class PromptSession extends BasePromptSession {
 	}
 
 	protected async upgradePackages() {
-		upgrade.templateManager = this.templateManager as TemplateManager;
 		await upgrade.upgrade({ skipInstall: true, _: ["upgrade"], $0: "upgrade" });
 	}
 

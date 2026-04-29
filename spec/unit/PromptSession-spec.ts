@@ -1,5 +1,5 @@
 import { App, BaseTemplate, Config, ControlExtraConfigType, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig,
-	ProjectLibrary, ProjectTemplate, Template, Util } from "@igniteui/cli-core";
+	ProjectLibrary, ProjectTemplate, Template, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as add } from "../../packages/cli/lib/commands/add";
 import * as aiConfig from "../../packages/cli/lib/commands/ai-config";
@@ -160,7 +160,8 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		mockTemplate.templatePaths = ["test"];
-		const mockSession = new PromptSession(mockTemplate);
+		App.container.set(TEMPLATE_MANAGER, mockTemplate);
+		const mockSession = new PromptSession();
 		const mockQuestion = {
 			type: "list",
 			name: "theme",
@@ -210,7 +211,8 @@ describe("Unit - PromptSession", () => {
 		const mockTemplate = jasmine.createSpyObj("mockTemplate", {
 			getProjectLibrary: mockLibrary
 		});
-		const mockSession = new PromptSession(mockTemplate);
+		App.container.set(TEMPLATE_MANAGER, mockTemplate);
+		const mockSession = new PromptSession();
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		const mockProjectConfig = {
 			project: {
@@ -264,16 +266,18 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		mockTemplate.templatePaths = ["test"];
-		const mockSession = new PromptSession(mockTemplate);
+		App.container.set(TEMPLATE_MANAGER, mockTemplate);
+		const mockSession = new PromptSession();
 		spyOn(Util, "greenCheck").and.returnValue("");
 		spyOn(Util, "log");
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "fileExists").and.returnValue(false);
+		const mockTm = App.container.get(TEMPLATE_MANAGER);
 		const mockFileSystem = {
 			fileExists: jasmine.createSpy().and.returnValue(false),
 			readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" }))
 		};
-		spyOn(App.container, 'get').and.returnValue(mockFileSystem);
+		spyOn(App.container, 'get').and.callFake((token: any) => token === TEMPLATE_MANAGER ? mockTm : mockFileSystem as any);
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "gitInit");
 		spyOn(InquirerWrapper, "input").and.returnValues(
@@ -341,7 +345,8 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryByName: mockProjectLibrary
 		});
 		mockTemplate.templatePaths = ["test"];
-		const mockSession = new PromptSession(mockTemplate);
+		App.container.set(TEMPLATE_MANAGER, mockTemplate);
+		const mockSession = new PromptSession();
 		const mockQuestion = {
 			type: "list",
 			name: "theme",
@@ -463,7 +468,8 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
-		const mockSession = new PromptSession(mockTemplate);
+		App.container.set(TEMPLATE_MANAGER, mockTemplate);
+		const mockSession = new PromptSession();
 		const mockProjectConfig = {
 			project: {
 				defaultPort: 4200
@@ -540,7 +546,8 @@ describe("Unit - PromptSession", () => {
 			getProjectLibrary: mockProjectLibrary,
 			getProjectLibraryByName: mockProjectLibrary
 		});
-		const mockSession = new PromptSession(mockTemplate);
+		App.container.set(TEMPLATE_MANAGER, mockTemplate);
+		const mockSession = new PromptSession();
 		const mockProjectConfig = {
 				packagesInstalled: true,
 				project: {
@@ -660,7 +667,8 @@ describe("Unit - PromptSession", () => {
 			getProjectLibraryNames: projectLibraries,
 			getProjectLibraryByName: mockProjectLibrary
 		});
-		const mockSession = new PromptSession(mockTemplate);
+		App.container.set(TEMPLATE_MANAGER, mockTemplate);
+		const mockSession = new PromptSession();
 		const mockProjectConfig = {
 			project: {
 				defaultPort: 4200
@@ -745,7 +753,8 @@ describe("Unit - PromptSession", () => {
 		} as unknown as Config;
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-		const mockSession = new PromptSession(mockTemplate);
+		App.container.set(TEMPLATE_MANAGER, mockTemplate);
+		const mockSession = new PromptSession();
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(InquirerWrapper, "select").and.returnValues(
 			Promise.resolve("Complete & Run"),
@@ -787,7 +796,8 @@ describe("Unit - PromptSession", () => {
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(ProjectConfig, "setConfig");
 
-		const mockSession = new PromptSession({} as any);
+		App.container.set(TEMPLATE_MANAGER, {} as any);
+		const mockSession = new PromptSession();
 		spyOn(mockSession as any, "generateActionChoices").and.returnValues([]);
 		spyOn(mockSession as any, "getUserInput").and.returnValues(
 			Promise.resolve("Complete & Run"),
@@ -810,7 +820,8 @@ describe("Unit - PromptSession", () => {
 			}
 		} as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
-		const mockSession = new PromptSession(new TemplateManager());
+		App.container.set(TEMPLATE_MANAGER, new TemplateManager());
+		const mockSession = new PromptSession();
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
 		spyOn(Util, "log");
@@ -847,7 +858,8 @@ describe("Unit - PromptSession", () => {
 			}
 		} as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
-		const mockSession = new PromptSession(new TemplateManager());
+		App.container.set(TEMPLATE_MANAGER, new TemplateManager());
+		const mockSession = new PromptSession();
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
 		spyOn(Util, "gitInit");
 		spyOn(Util, "log");
@@ -875,7 +887,8 @@ describe("Unit - PromptSession", () => {
 		} as unknown as ProjectLibrary;
 
 		const mockTemplate = jasmine.createSpyObj("mockTemplate", ["getProjectLibrary"]);
-		const mockSession = new PromptSession(mockTemplate);
+		App.container.set(TEMPLATE_MANAGER, mockTemplate);
+		const mockSession = new PromptSession();
 
 		spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("empty"));
 

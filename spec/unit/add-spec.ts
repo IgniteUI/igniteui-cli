@@ -1,6 +1,6 @@
 import { IgniteUIForAngularTemplate, AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import {
-	App, BaseTemplate, Config, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, ProjectTemplate, Template, TemplateDelimiters, TypeScriptUtils, Util
+	App, BaseTemplate, Config, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, ProjectTemplate, Template, TEMPLATE_MANAGER, TemplateDelimiters, TypeScriptUtils, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
 import * as ts from "typescript";
@@ -116,10 +116,10 @@ describe("Unit - Add command", () => {
 		const mockTemplate = createMockTemplate(mockBaseTemplate);
 		const mockProjLib = createMockLibrary(mockTemplate, mockProjectTemplate);
 
-		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
-		});
+		}));
 
 		const promptSession =  PromptSession.prototype;
 		spyOn(promptSession, "chooseActionLoop");
@@ -196,25 +196,25 @@ describe("Unit - Add command", () => {
 		const mockTemplate = jasmine.createSpyObj("Template", ["generateConfig", "registerInProject"]);
 		mockTemplate.templatePaths = ["test"];
 		mockTemplate.packages = ["tslib" , "test-pack"];
-		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", ["updateProjectConfiguration"]);
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", ["updateProjectConfiguration"]));
 
 		await addCmd.addTemplate("template with packages", mockTemplate);
 		expect(mockTemplate.generateConfig).toHaveBeenCalled();
 		expect(mockTemplate.registerInProject).toHaveBeenCalled();
 		expect(Util.processTemplates).toHaveBeenCalledTimes(1);
-		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalled();
+		expect(App.container.get<any>(TEMPLATE_MANAGER).updateProjectConfiguration).toHaveBeenCalled();
 		expect(PackageManager.queuePackage).toHaveBeenCalledTimes(2);
 		expect(PackageManager.queuePackage).toHaveBeenCalledWith("tslib");
 		expect(PackageManager.queuePackage).toHaveBeenCalledWith("test-pack");
 
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: mockTemplate,
 			getProjectLibrary: jasmine.createSpyObj("ProjectLibrary", {
 				getTemplateById: mockTemplate,
 				hasTemplate: true
 			})
-		});
+		}));
 
 		spyOn(addCmd, "addTemplate");
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
@@ -251,23 +251,24 @@ describe("Unit - Add command", () => {
 		const mockLibrary = jasmine.createSpyObj("frameworkLibrary", ["hasTemplate", "getTemplateById"]);
 		mockLibrary.hasTemplate.and.returnValue(true);
 		mockLibrary.getTemplateById.and.returnValue(mockTemplate);
-		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockLibrary,
 			updateProjectConfiguration: () => {}
-		});
+		}));
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(addCmd, "addTemplate").and.callThrough();
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "ensureIgniteUISource");
 		spyOn(Util, "directoryExists").and.returnValue(true);
+		const mockTm = App.container.get(TEMPLATE_MANAGER);
 		const mockVirtFs = {
 			fileExists: (file: string): boolean => {
 				return false;
 			}
 		};
-		spyOn(App.container, "get").and.returnValue(mockVirtFs);
+		spyOn(App.container, "get").and.callFake((token: any) => token === TEMPLATE_MANAGER ? mockTm : mockVirtFs as any);
 		spyOn(mockVirtFs, "fileExists").and.callFake(file => {
 			if (file === "src/app/app-routing-module.ts") {
 				return true;
@@ -309,7 +310,7 @@ describe("Unit - Add command", () => {
 			true
 		);
 		expect(finalizeSpy).toHaveBeenCalledTimes(2);
-		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledTimes(1);
+		expect(App.container.get<any>(TEMPLATE_MANAGER).updateProjectConfiguration).toHaveBeenCalledTimes(1);
 	});
 
 	it("Should properly accept skip-route args when passed", async () => {
@@ -330,11 +331,11 @@ describe("Unit - Add command", () => {
 		const mockLibrary = jasmine.createSpyObj("frameworkLibrary", {
 			getTemplateById: mockTemplate, hasTemplate: true
 		});
-		addCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockLibrary,
 			updateProjectConfiguration: () => {}
-		});
+		}));
 
 		const directoryPath = path.join("My/Example/Path");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
@@ -365,7 +366,7 @@ describe("Unit - Add command", () => {
 			directoryPath, "test-file-name",
 			jasmine.objectContaining({ skipRoute: true })
 		);
-		expect(addCmd.templateManager.updateProjectConfiguration).toHaveBeenCalledWith(mockTemplate);
+		expect(App.container.get<any>(TEMPLATE_MANAGER).updateProjectConfiguration).toHaveBeenCalledWith(mockTemplate);
 	});
 
 	it("Should not add component and should log error if wrong path is passed to module", async () => {
