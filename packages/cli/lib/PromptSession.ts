@@ -89,7 +89,7 @@ export class PromptSession extends BasePromptSession {
 					}))
 				]
 			});
-			const agents = selected.filter(a => a !== "none") as AIAgentTarget[];
+			const agents = selected.includes("none") ? [] : selected as AIAgentTarget[];
 
 			Util.log("  Generating project structure.");
 			const config = projTemplate.generateConfig(projectName, theme);

@@ -1,5 +1,5 @@
 import * as path from "path";
-import { AI_AGENT_SKILLS_DIRS, AIAgentTarget, App, Config, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getSkillsDir, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { AI_AGENT_INSTRUCTION_FILES, AI_AGENT_SKILLS_DIRS, AIAgentTarget, App, Config, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, getSkillsDir, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;
@@ -1009,5 +1009,136 @@ describe("Unit - AI_AGENT_SKILLS_DIRS", () => {
 	it("should contain entries for all expected agents", () => {
 		const expected: AIAgentTarget[] = ["claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"];
 		expect(Object.keys(AI_AGENT_SKILLS_DIRS).sort()).toEqual(expected.sort());
+	});
+});
+
+describe("Unit - getInstructionFilePath", () => {
+	it("should return .claude/CLAUDE.md for 'claude'", () => {
+		expect(getInstructionFilePath("claude")).toBe(".claude/CLAUDE.md");
+	});
+
+	it("should return .github/copilot-instructions.md for 'copilot'", () => {
+		expect(getInstructionFilePath("copilot")).toBe(".github/copilot-instructions.md");
+	});
+
+	it("should return .cursor/rules/cursor.mdc for 'cursor'", () => {
+		expect(getInstructionFilePath("cursor")).toBe(".cursor/rules/cursor.mdc");
+	});
+
+	it("should return .codex/instructions.md for 'codex'", () => {
+		expect(getInstructionFilePath("codex")).toBe(".codex/instructions.md");
+	});
+
+	it("should return .windsurf/rules/guidelines.md for 'windsurf'", () => {
+		expect(getInstructionFilePath("windsurf")).toBe(".windsurf/rules/guidelines.md");
+	});
+
+	it("should return .gemini/GEMINI.md for 'gemini'", () => {
+		expect(getInstructionFilePath("gemini")).toBe(".gemini/GEMINI.md");
+	});
+
+	it("should return .junie/guidelines.md for 'junie'", () => {
+		expect(getInstructionFilePath("junie")).toBe(".junie/guidelines.md");
+	});
+
+	it("should return AGENTS.md for 'generic'", () => {
+		expect(getInstructionFilePath("generic")).toBe("AGENTS.md");
+	});
+});
+
+describe("Unit - AI_AGENT_INSTRUCTION_FILES", () => {
+	it("should contain entries for all expected agents", () => {
+		const expected: AIAgentTarget[] = ["claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"];
+		expect(Object.keys(AI_AGENT_INSTRUCTION_FILES).sort()).toEqual(expected.sort());
+	});
+});
+
+describe("Unit - copyAgentInstructionFiles", () => {
+	beforeEach(() => {
+		spyOn(Util, "log");
+		spyOn(Util, "greenCheck").and.returnValue("✓");
+	});
+
+	it("should copy AGENTS.md content to each agent's instruction file path", () => {
+		const agentsContent = "# AI Agent Instructions\nFollow these rules.";
+		const angularSkillsDir = skillsDir("igniteui-angular");
+		const agentsPath = path.join(path.dirname(angularSkillsDir), "AGENTS.md");
+
+		spySrcFs({
+			fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.callFake((p: string) =>
+				p === agentsPath
+			),
+			readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(agentsContent)
+		});
+
+		const destFs = makeDestFs({
+			directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+				p === angularSkillsDir
+			)
+		});
+		App.container.set(FS_TOKEN, destFs);
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({
+			project: { framework: "angular" }
+		} as unknown as Config);
+
+		copyAgentInstructionFiles(["claude", "cursor"]);
+
+		const cursorFrontmatter = "---\ncontext: true\npriority: high\nscope: project\n---\n";
+		expect(destFs.writeFile).toHaveBeenCalledWith(".claude/CLAUDE.md", agentsContent);
+		expect(destFs.writeFile).toHaveBeenCalledWith(".cursor/rules/cursor.mdc", cursorFrontmatter + agentsContent);
+	});
+
+	it("should skip writing when instruction file already has same content", () => {
+		const agentsContent = "# AI Agent Instructions - same content";
+		const angularSkillsDir = skillsDir("igniteui-angular");
+		const agentsPath = path.join(path.dirname(angularSkillsDir), "AGENTS.md");
+		const claudeDest = ".claude/CLAUDE.md";
+
+		spySrcFs({
+			fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.callFake((p: string) =>
+				p === agentsPath
+			),
+			readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
+				if (p === agentsPath) return agentsContent;
+				return "";
+			})
+		});
+
+		const destFs = makeDestFs({
+			directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+				p === angularSkillsDir
+			),
+			fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
+				p === claudeDest
+			),
+			readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) => {
+				if (p === claudeDest) return agentsContent;
+				return "{}";
+			})
+		});
+		App.container.set(FS_TOKEN, destFs);
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({
+			project: { framework: "angular" }
+		} as unknown as Config);
+
+		copyAgentInstructionFiles(["claude"]);
+
+		expect(destFs.writeFile).not.toHaveBeenCalled();
+	});
+
+	it("should not write anything when AGENTS.md source is not found", () => {
+		spySrcFs({
+			fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.returnValue(false)
+		});
+
+		const destFs = makeDestFs();
+		App.container.set(FS_TOKEN, destFs);
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+
+		copyAgentInstructionFiles(["claude", "generic"]);
+
+		expect(destFs.writeFile).not.toHaveBeenCalled();
 	});
 });

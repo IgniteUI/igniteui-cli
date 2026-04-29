@@ -13,7 +13,7 @@ export class BaseIgcTsAiConfigPartial implements ProjectTemplate {
 	public isHidden: boolean = true;
 
 	public get templatePaths(): string[] {
-		return [...super.templatePaths, path.join(__dirname, "files")];
+		return [path.join(__dirname, "files")];
 	}
 
 	installModules(): void {

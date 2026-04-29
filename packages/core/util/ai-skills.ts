@@ -22,14 +22,25 @@ export const AI_AGENT_SKILLS_DIRS: Record<AIAgentTarget, string> = {
 	generic: ".agents/skills"
 };
 
+export const AI_AGENT_INSTRUCTION_FILES: Record<AIAgentTarget, string> = {
+	claude: ".claude/CLAUDE.md",
+	copilot: ".github/copilot-instructions.md",
+	cursor: ".cursor/rules/cursor.mdc",
+	codex: ".codex/instructions.md",
+	windsurf: ".windsurf/rules/guidelines.md",
+	gemini: ".gemini/GEMINI.md",
+	junie: ".junie/guidelines.md",
+	generic: "AGENTS.md"
+};
+
 export const AI_AGENT_LABELS: Record<AIAgentTarget, string> = {
 	claude: "Claude (Adding .claude/skills and CLAUDE.md)",
 	copilot: "Copilot (Adding .github/skills and copilot-instructions.md)",
-	cursor: "Cursor (Adding .cursor/skills)",
-	codex: "Codex (Adding .codex/skills)",
-	windsurf: "Windsurf (Adding .windsurf/skills)",
-	gemini: "Gemini (Adding .gemini/skills)",
-	junie: "Junie (Adding .junie/skills)",
+	cursor: "Cursor (Adding .cursor/skills and .cursor/rules/cursor.mdc)",
+	codex: "Codex (Adding .codex/skills and .codex/instructions.md)",
+	windsurf: "Windsurf (Adding .windsurf/skills and .windsurf/rules/guidelines.md)",
+	gemini: "Gemini (Adding .gemini/skills and .gemini/GEMINI.md)",
+	junie: "Junie (Adding .junie/skills and .junie/guidelines.md)",
 	generic: "Generic (Adding .agents/skills and AGENTS.md)"
 };
 
@@ -38,6 +49,13 @@ export const AI_AGENT_LABELS: Record<AIAgentTarget, string> = {
  */
 export function getSkillsDir(target: AIAgentTarget): string {
 	return AI_AGENT_SKILLS_DIRS[target];
+}
+
+/**
+ * Returns the agent-specific instruction file path for the given AI agent target.
+ */
+export function getInstructionFilePath(target: AIAgentTarget): string {
+	return AI_AGENT_INSTRUCTION_FILES[target];
 }
 
 export interface AISkillsCopyResult {
@@ -163,4 +181,59 @@ export function copyAISkillsToProject(skillsDir: string): AISkillsCopyResult {
 	}
 
 	return result;
+}
+
+/**
+ * Resolves the AGENTS.md source file content from installed packages or template files.
+ * Uses the same resolution logic as `resolveSkillsRoots()` – the AGENTS.md is expected
+ * to be a sibling of the `skills/` directory.
+ */
+function resolveAgentsContent(): string | null {
+	const srcFs = new FsFileSystem();
+	const skillsRoots = resolveSkillsRoots();
+
+	for (const skillsRoot of skillsRoots) {
+		const agentsPath = path.join(path.dirname(skillsRoot), "AGENTS.md");
+		if (srcFs.fileExists(agentsPath)) {
+			return srcFs.readFile(agentsPath);
+		}
+	}
+
+	return null;
+}
+
+/**
+ * Copies the AGENTS.md content into agent-specific instruction files for
+ * each of the given agents.
+ * @param agents – list of AI agent targets to create instruction files for
+ */
+export function copyAgentInstructionFiles(agents: AIAgentTarget[]): void {
+	const content = resolveAgentsContent();
+	if (!content) {
+		return;
+	}
+
+	const destFs = App.container.get<IFileSystem>(FS_TOKEN);
+
+	for (const agent of agents) {
+		const dest = getInstructionFilePath(agent);
+		const fileContent = agent === "cursor"
+			? `---\ncontext: true\npriority: high\nscope: project\n---\n${content}`
+			: content;
+		try {
+			if (destFs.fileExists(dest)) {
+				const existing = destFs.readFile(dest);
+				if (existing === fileContent) {
+					continue;
+				}
+				destFs.writeFile(dest, fileContent);
+				Util.log(`${Util.greenCheck()} Updated ${dest}`);
+			} else {
+				destFs.writeFile(dest, fileContent);
+				Util.log(`${Util.greenCheck()} Created ${dest}`);
+			}
+		} catch {
+			/* skip on error */
+		}
+	}
 }

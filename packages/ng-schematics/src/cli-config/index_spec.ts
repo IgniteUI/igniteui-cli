@@ -93,6 +93,7 @@ describe("cli-config schematic", () => {
 		createIgPkgJson();
 		populatePkgJson();
 		spyOn(aiSkillsModule, "copyAISkillsToProject");
+		spyOn(aiSkillsModule, "copyAgentInstructionFiles");
 	});
 
 	it("should set the template manager correctly", async () => {
@@ -410,24 +411,28 @@ export const appConfig: ApplicationConfig = {
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(2);
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".claude/skills");
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".agents/skills");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "generic"]);
 		});
 
 		it("should pass resolved skillsDir when agent option is provided", async () => {
 			await runner.runSchematic("ai-config", { agent: ["cursor"] }, tree);
 
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".cursor/skills");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["cursor"]);
 		});
 
 		it("should pass resolved skillsDir for copilot agent", async () => {
 			await runner.runSchematic("ai-config", { agent: ["copilot"] }, tree);
 
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".github/skills");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["copilot"]);
 		});
 
 		it("should pass resolved skillsDir for generic agent", async () => {
 			await runner.runSchematic("ai-config", { agent: ["generic"] }, tree);
 
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".agents/skills");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["generic"]);
 		});
 
 		it("should configure multiple agents", async () => {
@@ -436,6 +441,7 @@ export const appConfig: ApplicationConfig = {
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(2);
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".claude/skills");
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".cursor/skills");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "cursor"]);
 		});
 	});
 });

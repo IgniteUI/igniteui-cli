@@ -21,11 +21,11 @@
           { "value": "none", "label": "None (skip AI configuration)" },
           { "value": "claude", "label": "Claude (Adding .claude/skills and CLAUDE.md)" },
           { "value": "copilot", "label": "Copilot (Adding .github/skills and copilot-instructions.md)" },
-          { "value": "cursor", "label": "Cursor (Adding .cursor/skills)" },
-          { "value": "codex", "label": "Codex (Adding .codex/skills)" },
-          { "value": "windsurf", "label": "Windsurf (Adding .windsurf/skills)" },
-          { "value": "gemini", "label": "Gemini (Adding .gemini/skills)" },
-          { "value": "junie", "label": "Junie (Adding .junie/skills)" },
+          { "value": "cursor", "label": "Cursor (Adding .cursor/skills and .cursor/rules/cursor.mdc)" },
+          { "value": "codex", "label": "Codex (Adding .codex/skills and .codex/instructions.md)" },
+          { "value": "windsurf", "label": "Windsurf (Adding .windsurf/skills and .windsurf/rules/guidelines.md)" },
+          { "value": "gemini", "label": "Gemini (Adding .gemini/skills and .gemini/GEMINI.md)" },
+          { "value": "junie", "label": "Junie (Adding .junie/skills and .junie/guidelines.md)" },
           { "value": "generic", "label": "Generic (Adding .agents/skills and AGENTS.md)" }
         ]
       }
