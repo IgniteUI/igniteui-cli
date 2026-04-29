@@ -13,7 +13,10 @@ function mockTemplateManager(templatePaths: string[]) {
 	const mockProject = { templatePaths };
 	const mockProjectLib = {
 		projectIds: ["base"],
-		getProject: jasmine.createSpy("getProject").and.returnValue(mockProject)
+		getProject: jasmine.createSpy("getProject").and.callFake((id: string) => {
+			if (id === "ai-config") return mockProject;
+			return null;
+		})
 	};
 	const mockTm = jasmine.createSpyObj("TemplateManager", ["getFrameworkById"]);
 	mockTm.getFrameworkById.and.returnValue({ projectLibraries: [mockProjectLib] });
@@ -500,7 +503,7 @@ describe("Unit - copyAISkillsToProject", () => {
 
 	describe("Template fallback (no package skills found)", () => {
 		const FAKE_TEMPLATE_PATH = "/fake/template";
-		const FAKE_SKILLS_ROOT = path.join(FAKE_TEMPLATE_PATH, "__dot__claude/skills");
+		const FAKE_SKILLS_ROOT = path.join(FAKE_TEMPLATE_PATH, "..", "skills");
 
 		it("should use angular template paths when framework is in config and no npm skills are found", () => {
 			const skillFilePath = path.join(FAKE_SKILLS_ROOT, "angular.md");
@@ -673,7 +676,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			// Simulates the schematics scenario: srcFs (FsFileSystem) reads from disk,
 			// destFs (NgTreeFileSystem) writes into the virtual Tree.
 			const ABS_TEMPLATE_PATH = path.resolve("/usr/lib/node_modules/fake-templates/base/files");
-			const SKILLS_ROOT = path.join(ABS_TEMPLATE_PATH, "__dot__claude/skills");
+			const SKILLS_ROOT = path.join(ABS_TEMPLATE_PATH, "..", "skills");
 			const skillFilePath = path.join(SKILLS_ROOT, "angular.md");
 			const content = "# Angular skills from template";
 

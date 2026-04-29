@@ -179,6 +179,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("jQuery"),
 			Promise.resolve("infragistics")
 		);
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
@@ -283,6 +284,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(mockSession, "chooseActionLoop");
 		spyOn(process, "cwd").and.returnValue("Mock");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		await mockSession.start();
 
 		// prompt only for project name:
@@ -368,6 +370,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("jQuery"),
 			Promise.resolve("infragistics")
 		);
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
@@ -821,6 +824,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("Default side navigation"),
 			Promise.resolve("Custom")
 		);
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();
@@ -857,6 +861,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("Angular"),
 			Promise.resolve("Default side navigation"),
 			Promise.resolve("Default"));
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();

@@ -9,8 +9,6 @@ import { TEMPLATE_MANAGER } from "./GlobalConstants";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
-const FALLBACK_SKILLS_TEMPLATE_PATH = "__dot__claude/skills";
-
 export type AIAgentTarget = "claude" | "copilot" | "cursor" | "codex" | "windsurf" | "gemini" | "junie" | "generic";
 
 export const AI_AGENT_SKILLS_DIRS: Record<AIAgentTarget, string> = {
@@ -79,12 +77,15 @@ function resolveSkillsRoots(): string[] {
 		if (framework) {
 			const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
 			const projectLib = templateManager?.getFrameworkById(framework)?.projectLibraries[0];
-			const filePaths = projectLib?.getProject(projectLib.projectIds[0]).templatePaths ?? [];
-			roots.push(
-				...filePaths
-				.map((p) => path.join(p, FALLBACK_SKILLS_TEMPLATE_PATH))
-				.slice(0, 1),
-			);
+			const aiConfigProject = projectLib?.getProject("ai-config");
+			if (aiConfigProject) {
+				const filePaths = aiConfigProject.templatePaths ?? [];
+				roots.push(
+					...filePaths
+					.map((p) => path.join(p, "..", "skills"))
+					.slice(0, 1),
+				);
+			}
 		}
 	}
 

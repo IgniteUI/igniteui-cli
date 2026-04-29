@@ -16,19 +16,19 @@ const mappings = [
 		name: "angular",
 		repo: join(root, "packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-angular"),
 		src: join(root, "packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-angular/skills"),
-		dest: join(root, "packages/igx-templates/igx-ts/projects/_base/files/__dot__claude/skills")
+		dest: join(root, "packages/igx-templates/igx-ts/projects/ai-config/skills")
 	},
 	{
 		name: "react",
 		repo: join(root, "packages/igniteui-mcp/igniteui-doc-mcp/react/igniteui-react"),
 		src: join(root, "packages/igniteui-mcp/igniteui-doc-mcp/react/igniteui-react/skills"),
-		dest: join(root, "packages/cli/templates/react/igr-ts/projects/_base/files/__dot__claude/skills")
+		dest: join(root, "packages/cli/templates/react/igr-ts/projects/ai-config/skills")
 	},
 	{
 		name: "webcomponents",
 		repo: join(root, "packages/igniteui-mcp/igniteui-doc-mcp/webcomponents/igniteui-webcomponents"),
 		src: join(root, "packages/igniteui-mcp/igniteui-doc-mcp/webcomponents/igniteui-webcomponents/skills"),
-		dest: join(root, "packages/cli/templates/webcomponents/igc-ts/projects/_base/files/__dot__claude/skills")
+		dest: join(root, "packages/cli/templates/webcomponents/igc-ts/projects/ai-config/skills")
 	}
 ];
 
