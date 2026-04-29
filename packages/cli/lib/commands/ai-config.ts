@@ -1,4 +1,4 @@
-import { addMcpServers, AI_AGENT_SKILLS_DIRS, AIAgentTarget, copyAISkillsToProject, getSkillsDir, GoogleAnalytics, InquirerWrapper, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
+import { addMcpServers, AI_AGENT_LABELS, AI_AGENT_SKILLS_DIRS, AIAgentTarget, copyAISkillsToProject, getSkillsDir, GoogleAnalytics, InquirerWrapper, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
 export function configureMCP(): void {
@@ -35,6 +35,15 @@ export function configure(agents: AIAgentTarget[]): void {
 
 const AI_AGENT_CHOICES = Object.keys(AI_AGENT_SKILLS_DIRS) as AIAgentTarget[];
 
+const AI_AGENT_CHECKBOX_CHOICES = [
+	{ value: "none", name: "None (skip AI configuration)" },
+	...AI_AGENT_CHOICES.map(agent => ({
+		value: agent,
+		name: AI_AGENT_LABELS[agent],
+		checked: agent === "generic" || agent === "claude"
+	}))
+];
+
 const command: CommandModule = {
 	command: "ai-config",
 	describe: "Configures Ignite UI AI tooling (MCP servers and AI coding skills)",
@@ -55,10 +64,16 @@ const command: CommandModule = {
 		let agents = argv.agent as AIAgentTarget[] | undefined;
 
 		if (!agents?.length) {
-			agents = await InquirerWrapper.checkbox({
-				message: "Which AI agent(s) are you using?",
-				choices: AI_AGENT_CHOICES
-			}) as AIAgentTarget[];
+			const selected = await InquirerWrapper.checkbox({
+				message: "Which AI tools do you want to generate configuration files for?",
+				choices: AI_AGENT_CHECKBOX_CHOICES
+			});
+			agents = selected.filter(a => a !== "none") as AIAgentTarget[];
+		}
+
+		if (!agents.length) {
+			Util.log("No AI configuration selected. Skipping.");
+			return;
 		}
 
 		GoogleAnalytics.post({

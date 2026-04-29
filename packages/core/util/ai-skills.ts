@@ -22,6 +22,17 @@ export const AI_AGENT_SKILLS_DIRS: Record<AIAgentTarget, string> = {
 	generic: ".agents/skills"
 };
 
+export const AI_AGENT_LABELS: Record<AIAgentTarget, string> = {
+	claude: "Claude (Adding .claude/skills and CLAUDE.md)",
+	copilot: "Copilot (Adding .github/skills and copilot-instructions.md)",
+	cursor: "Cursor (Adding .cursor/skills)",
+	codex: "Codex (Adding .codex/skills)",
+	windsurf: "Windsurf (Adding .windsurf/skills)",
+	gemini: "Gemini (Adding .gemini/skills)",
+	junie: "Junie (Adding .junie/skills)",
+	generic: "Generic (Adding .agents/skills and AGENTS.md)"
+};
+
 /**
  * Returns the project-level skills directory for the given AI agent target.
  */

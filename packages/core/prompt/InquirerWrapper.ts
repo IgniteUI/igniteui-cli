@@ -8,7 +8,7 @@ type InputConfig = {
     required?: boolean;
 	type?: string;
 	name?: string;
-	choices?: (string | Separator)[];
+	choices?: (string | { value: string; name?: string; checked?: boolean } | Separator)[];
     transformer?: (value: string, { isFinal }: {
         isFinal: boolean;
     }) => string;
@@ -29,8 +29,8 @@ export class InquirerWrapper {
 		return select(message, context);
 	}
 
-	public static async checkbox(message: InputConfig & { choices: (string | Separator)[] }, context?: Context): Promise<string[]> {
-		return checkbox(message, context);
+	public static async checkbox(message: InputConfig & { choices: (string | { value: string; name?: string; checked?: boolean } | Separator)[] }, context?: Context): Promise<string[]> {
+		return checkbox(message as any, context);
 	}
 
 	public static async confirm(message: { message: string; default?: boolean }, context?: Context): Promise<boolean> {

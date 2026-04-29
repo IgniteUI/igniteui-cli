@@ -1,5 +1,5 @@
 import {
-	AI_AGENT_SKILLS_DIRS, AIAgentTarget,
+	AI_AGENT_LABELS, AI_AGENT_SKILLS_DIRS, AIAgentTarget,
 	BasePromptSession, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig,
 	ProjectLibrary, PromptTaskContext, Task, Util
 } from "@igniteui/cli-core";
@@ -78,10 +78,18 @@ export class PromptSession extends BasePromptSession {
 			theme = await this.getTheme(projLibrary);
 
 			const AI_AGENT_CHOICES = Object.keys(AI_AGENT_SKILLS_DIRS) as AIAgentTarget[];
-			const agents = await InquirerWrapper.checkbox({
-				message: "Which AI agent(s) are you using? (optional)",
-				choices: AI_AGENT_CHOICES
-			}) as AIAgentTarget[];
+			const selected = await InquirerWrapper.checkbox({
+				message: "Which AI tools do you want to generate configuration files for?",
+				choices: [
+					{ value: "none", name: "None (skip AI configuration)" },
+					...AI_AGENT_CHOICES.map(agent => ({
+						value: agent,
+						name: AI_AGENT_LABELS[agent],
+						checked: agent === "generic" || agent === "claude"
+					}))
+				]
+			});
+			const agents = selected.filter(a => a !== "none") as AIAgentTarget[];
 
 			Util.log("  Generating project structure.");
 			const config = projTemplate.generateConfig(projectName, theme);
