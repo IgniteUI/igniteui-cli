@@ -22,7 +22,10 @@ const IGNITEUI_MCP_SERVERS: Record<string, McpServerEntry> = {
 export const VS_CODE_MCP_PATH = ".vscode/mcp.json";
 export const CURSOR_MCP_PATH = ".cursor/mcp.json";
 
-/** Project-level MCP config file paths and their servers root key, keyed by AI agent target. */
+/** Project-level MCP config file paths and their servers root key, keyed by AI agent target.
+ *  Agents not listed here do not have a project-level MCP config and will only receive the
+ *  baseline VS Code configuration when `configureMcpForAgents` is called.
+ */
 export const AI_AGENT_MCP_CONFIGS: Partial<Record<AIAgentTarget, { path: string; serversKey: string }>> = {
 	cursor: { path: CURSOR_MCP_PATH, serversKey: "mcpServers" }
 };
@@ -82,9 +85,10 @@ export function addMcpServers(
 
 /**
  * Writes MCP server configuration for the selected AI agents.
- * Always writes `.vscode/mcp.json` (VS Code baseline).
+ * Always writes `.vscode/mcp.json` (VS Code baseline) — even when `agents` is empty.
  * Also writes `.cursor/mcp.json` (with `mcpServers` key) when `cursor` is in the agents list.
- * @param agents list of AI agent targets
+ * Agents without an entry in `AI_AGENT_MCP_CONFIGS` only receive the VS Code baseline file.
+ * @param agents list of AI agent targets (pass an empty array to configure VS Code only)
  * @param additionalServers optional extra servers to include alongside the built-in ones
  */
 export function configureMcpForAgents(
