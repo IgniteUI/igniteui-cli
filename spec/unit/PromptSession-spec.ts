@@ -9,6 +9,9 @@ import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { TemplateManager } from "../../packages/cli/lib/TemplateManager";
 import { Separator } from "@inquirer/prompts";
 
+// Require the leaf module directly so spyOn works (same pattern as index_spec.ts)
+const mcpConfigModule = require("@igniteui/cli-core/util/mcp-config");
+
 function createMockBaseTemplate(): BaseTemplate {
 	return {
 		id: "mock-template-id",
@@ -102,7 +105,7 @@ describe("Unit - PromptSession", () => {
 	});
 
 	beforeEach(() => {
-		spyOn(aiConfig, "configureMCP");
+		spyOn(mcpConfigModule, "configureMcpForAgents");
 	});
 
 	// TODO: most of the tests use same setup - move the setup to beforeAll call
@@ -504,7 +507,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configureMCP).toHaveBeenCalledTimes(1);
+		expect(mcpConfigModule.configureMcpForAgents).toHaveBeenCalledTimes(1);
 
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.input).toHaveBeenCalledWith({
@@ -583,7 +586,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configureMCP).toHaveBeenCalledTimes(1);
+		expect(mcpConfigModule.configureMcpForAgents).toHaveBeenCalledTimes(1);
 
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
@@ -709,7 +712,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configureMCP).toHaveBeenCalledTimes(1);
+		expect(mcpConfigModule.configureMcpForAgents).toHaveBeenCalledTimes(1);
 
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.checkbox).toHaveBeenCalledWith({

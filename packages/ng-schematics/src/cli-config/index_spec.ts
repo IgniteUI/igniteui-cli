@@ -435,6 +435,16 @@ export const appConfig: ApplicationConfig = {
 			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["generic"]);
 		});
 
+		it("should create .cursor/mcp.json with mcpServers key when cursor agent is selected", async () => {
+			await runner.runSchematic("ai-config", { agent: ["cursor"] }, tree);
+
+			expect(tree.exists("/.cursor/mcp.json")).toBeTruthy();
+			const content = JSON.parse(tree.readContent("/.cursor/mcp.json"));
+			expect(content.mcpServers).toBeDefined();
+			expect(content.mcpServers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			expect(content.mcpServers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+		});
+
 		it("should configure multiple agents", async () => {
 			await runner.runSchematic("ai-config", { agent: ["claude", "cursor"] }, tree);
 
