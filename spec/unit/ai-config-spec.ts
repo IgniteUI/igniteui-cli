@@ -1,5 +1,5 @@
 import * as path from "path";
-import { App, Config, FS_TOKEN, FsFileSystem, GoogleAnalytics, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { App, Config, FS_TOKEN, FsFileSystem, GoogleAnalytics, IFileSystem, InquirerWrapper, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import { configureMCP, configureSkills } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 
@@ -157,7 +157,7 @@ describe("Unit - ai-config command", () => {
 			})
 			setupAngularConfig();
 
-			configureSkills();
+			configureSkills(".claude/skills");
 
 			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("No AI skill files found"), "yellow");
 			expect(Util.log).not.toHaveBeenCalled();
@@ -187,7 +187,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
 			setupAngularConfig();
 
-			configureSkills();
+			configureSkills(".claude/skills");
 
 			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("Failed to write 1 skill file(s) out of 1"), "yellow");
 			expect(Util.log).not.toHaveBeenCalled();
@@ -219,7 +219,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content);
 			setupAngularConfig();
 
-			configureSkills();
+			configureSkills(".claude/skills");
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("already up-to-date"));
 			expect(Util.warn).not.toHaveBeenCalled();
@@ -249,7 +249,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
 			setupAngularConfig();
 
-			configureSkills();
+			configureSkills(".claude/skills");
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("1 AI skill file(s) created or updated"));
 			expect(Util.warn).not.toHaveBeenCalled();
@@ -257,14 +257,39 @@ describe("Unit - ai-config command", () => {
 	});
 
 	describe("handler", () => {
-		it("posts analytics and calls configure", async () => {
+		it("prompts for agents when --agent is not provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
-			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("MCP servers configured"));
+			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
+				message: "Which AI tools do you want to generate configuration files for?"
+			}));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "MCP" }));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ec: "$ig ai-config" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude" }));
+		});
+
+		it("configures multiple agents when selected interactively", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude", "cursor"]));
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
+				message: "Which AI tools do you want to generate configuration files for?"
+			}));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: claude, cursor" }));
+		});
+
+		it("skips prompt when --agent is provided", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(InquirerWrapper, "checkbox");
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agent: ["cursor"] });
+
+			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor" }));
 		});
 	});
 });

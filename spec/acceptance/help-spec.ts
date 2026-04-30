@@ -70,6 +70,10 @@ describe("Help command", () => {
 																				[boolean]
 				--skip-install, --si  Do not install packages after scaffolding  [boolean]
 				--template            Project template                            [string]
+			-a, --agent               AI agent(s) to configure skills for (determines the
+								target skills directory)
+					[array] [choices: "claude", "copilot", "cursor", "codex", "windsurf",
+																"gemini", "junie", "generic"]
 
 			Examples:
 			ig new my-app                       Scaffold a new project interactively

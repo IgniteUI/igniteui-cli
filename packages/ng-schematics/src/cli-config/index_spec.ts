@@ -93,6 +93,7 @@ describe("cli-config schematic", () => {
 		createIgPkgJson();
 		populatePkgJson();
 		spyOn(aiSkillsModule, "copyAISkillsToProject");
+		spyOn(aiSkillsModule, "copyAgentInstructionFiles");
 	});
 
 	it("should set the template manager correctly", async () => {
@@ -330,7 +331,7 @@ export const appConfig: ApplicationConfig = {
 
 		it("should call copyAISkillsToProject", async () => {
 			await runner.runSchematic("cli-config", {}, tree);
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(2);
 		});
 
 		it("should add both servers to existing .vscode/mcp.json that has no servers", async () => {
@@ -400,6 +401,47 @@ export const appConfig: ApplicationConfig = {
 			expect(content.servers["other-server"]).toEqual({ command: "node", args: ["server.js"] });
 			expect(content.servers["igniteui-cli"]).toBeDefined();
 			expect(content.servers["igniteui-theming"]).toBeDefined();
+		});
+	});
+
+	describe("ai-config schematic", () => {
+		it("should call copyAISkillsToProject with claude and generic defaults when no options", async () => {
+			await runner.runSchematic("ai-config", {}, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(2);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".claude/skills");
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".agents/skills");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "generic"]);
+		});
+
+		it("should pass resolved skillsDir when agent option is provided", async () => {
+			await runner.runSchematic("ai-config", { agent: ["cursor"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".cursor/skills");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["cursor"]);
+		});
+
+		it("should pass resolved skillsDir for copilot agent", async () => {
+			await runner.runSchematic("ai-config", { agent: ["copilot"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".github/skills");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["copilot"]);
+		});
+
+		it("should pass resolved skillsDir for generic agent", async () => {
+			await runner.runSchematic("ai-config", { agent: ["generic"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".agents/skills");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["generic"]);
+		});
+
+		it("should configure multiple agents", async () => {
+			await runner.runSchematic("ai-config", { agent: ["claude", "cursor"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(2);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".claude/skills");
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".cursor/skills");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "cursor"]);
 		});
 	});
 });

@@ -9,8 +9,54 @@ import { TEMPLATE_MANAGER } from "./GlobalConstants";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
-const CLAUDE_SKILLS_DIR = ".claude/skills";
-const CLAUDE_SKILLS_DIR_TEMPLATE = "__dot__claude/skills";
+export type AIAgentTarget = "claude" | "copilot" | "cursor" | "codex" | "windsurf" | "gemini" | "junie" | "generic";
+
+export const AI_AGENT_SKILLS_DIRS: Record<AIAgentTarget, string> = {
+	claude: ".claude/skills",
+	copilot: ".github/skills",
+	cursor: ".cursor/skills",
+	codex: ".codex/skills",
+	windsurf: ".windsurf/skills",
+	gemini: ".gemini/skills",
+	junie: ".junie/skills",
+	generic: ".agents/skills"
+};
+
+export const AI_AGENT_INSTRUCTION_FILES: Record<AIAgentTarget, string> = {
+	claude: ".claude/CLAUDE.md",
+	copilot: ".github/copilot-instructions.md",
+	cursor: ".cursor/rules/cursor.mdc",
+	codex: ".codex/instructions.md",
+	windsurf: ".windsurf/rules/guidelines.md",
+	gemini: ".gemini/GEMINI.md",
+	junie: ".junie/guidelines.md",
+	generic: "AGENTS.md"
+};
+
+export const AI_AGENT_LABELS: Record<AIAgentTarget, string> = {
+	claude: "Claude (Adding .claude/skills and CLAUDE.md)",
+	copilot: "Copilot (Adding .github/skills and copilot-instructions.md)",
+	cursor: "Cursor (Adding .cursor/skills and .cursor/rules/cursor.mdc)",
+	codex: "Codex (Adding .codex/skills and .codex/instructions.md)",
+	windsurf: "Windsurf (Adding .windsurf/skills and .windsurf/rules/guidelines.md)",
+	gemini: "Gemini (Adding .gemini/skills and .gemini/GEMINI.md)",
+	junie: "Junie (Adding .junie/skills and .junie/guidelines.md)",
+	generic: "Generic (Adding .agents/skills and AGENTS.md)"
+};
+
+/**
+ * Returns the project-level skills directory for the given AI agent target.
+ */
+export function getSkillsDir(target: AIAgentTarget): string {
+	return AI_AGENT_SKILLS_DIRS[target];
+}
+
+/**
+ * Returns the agent-specific instruction file path for the given AI agent target.
+ */
+export function getInstructionFilePath(target: AIAgentTarget): string {
+	return AI_AGENT_INSTRUCTION_FILES[target];
+}
 
 export interface AISkillsCopyResult {
 	found: number;
@@ -60,12 +106,15 @@ function resolveSkillsRoots(): string[] {
 		if (framework) {
 			const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
 			const projectLib = templateManager?.getFrameworkById(framework)?.projectLibraries[0];
-			const filePaths = projectLib?.getProject(projectLib.projectIds[0]).templatePaths ?? [];
-			roots.push(
-				...filePaths
-				.map((p) => path.join(p, CLAUDE_SKILLS_DIR_TEMPLATE))
-				.slice(0, 1),
-			);
+			const aiConfigProject = projectLib?.getProject("ai-config");
+			if (aiConfigProject) {
+				const filePaths = aiConfigProject.templatePaths ?? [];
+				roots.push(
+					...filePaths
+					.map((p) => path.join(p, "..", "skills"))
+					.slice(0, 1),
+				);
+			}
 		}
 	}
 
@@ -73,9 +122,15 @@ function resolveSkillsRoots(): string[] {
 }
 
 /**
- * Copies skill files from the installed Ignite UI package(s) into .claude/skills/.
+ * Copies skill files from the installed Ignite UI package(s) into the
+ * specified skills directory.
+ * @param skillsDir – destination directory (e.g. `.agents/skills`, `.cursor/skills`, …)
  */
-export function copyAISkillsToProject(): AISkillsCopyResult {
+export function copyAISkillsToProject(skillsDir: string): AISkillsCopyResult {
+	let outputDir = skillsDir.replace(/\\/g, "/");
+	while (outputDir.endsWith("/")) {
+		outputDir = outputDir.slice(0, -1);
+	}
 	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0 };
 	// Source reads (glob + readFile) always use physical FS - skill files can
 	// come from sources outside the project virtual tree (external/global package):
@@ -102,8 +157,8 @@ export function copyAISkillsToProject(): AISkillsCopyResult {
 			const normRoot = skillsRoot.replace(/\\/g, "/").replace(/^\//, "");
 			const rel = path.posix.relative(normRoot, normP);
 			const dest = multiRoot
-				? `${CLAUDE_SKILLS_DIR}/${pkgDirName}/${rel}`
-				: `${CLAUDE_SKILLS_DIR}/${rel}`;
+				? `${outputDir}/${pkgDirName}/${rel}`
+				: `${outputDir}/${rel}`;
 
 			const newContent = srcFs.readFile(p);
 			try {
@@ -126,4 +181,59 @@ export function copyAISkillsToProject(): AISkillsCopyResult {
 	}
 
 	return result;
+}
+
+/**
+ * Resolves the AGENTS.md source file content from installed packages or template files.
+ * Uses the same resolution logic as `resolveSkillsRoots()` – the AGENTS.md is expected
+ * to be a sibling of the `skills/` directory.
+ */
+function resolveAgentsContent(): string | null {
+	const srcFs = new FsFileSystem();
+	const skillsRoots = resolveSkillsRoots();
+
+	for (const skillsRoot of skillsRoots) {
+		const agentsPath = path.join(path.dirname(skillsRoot), "AGENTS.md");
+		if (srcFs.fileExists(agentsPath)) {
+			return srcFs.readFile(agentsPath);
+		}
+	}
+
+	return null;
+}
+
+/**
+ * Copies the AGENTS.md content into agent-specific instruction files for
+ * each of the given agents.
+ * @param agents – list of AI agent targets to create instruction files for
+ */
+export function copyAgentInstructionFiles(agents: AIAgentTarget[]): void {
+	const content = resolveAgentsContent();
+	if (!content) {
+		return;
+	}
+
+	const destFs = App.container.get<IFileSystem>(FS_TOKEN);
+
+	for (const agent of agents) {
+		const dest = getInstructionFilePath(agent);
+		const fileContent = agent === "cursor"
+			? `---\ncontext: true\npriority: high\nscope: project\n---\n${content}`
+			: content;
+		try {
+			if (destFs.fileExists(dest)) {
+				const existing = destFs.readFile(dest);
+				if (existing === fileContent) {
+					continue;
+				}
+				destFs.writeFile(dest, fileContent);
+				Util.log(`${Util.greenCheck()} Updated ${dest}`);
+			} else {
+				destFs.writeFile(dest, fileContent);
+				Util.log(`${Util.greenCheck()} Created ${dest}`);
+			}
+		} catch {
+			/* skip on error */
+		}
+	}
 }

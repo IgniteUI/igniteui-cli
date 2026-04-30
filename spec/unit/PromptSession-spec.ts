@@ -102,7 +102,7 @@ describe("Unit - PromptSession", () => {
 	});
 
 	beforeEach(() => {
-		spyOn(aiConfig, "configure");
+		spyOn(aiConfig, "configureMCP");
 	});
 
 	// TODO: most of the tests use same setup - move the setup to beforeAll call
@@ -179,6 +179,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("jQuery"),
 			Promise.resolve("infragistics")
 		);
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
@@ -283,6 +284,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(mockSession, "chooseActionLoop");
 		spyOn(process, "cwd").and.returnValue("Mock");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		await mockSession.start();
 
 		// prompt only for project name:
@@ -368,6 +370,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("jQuery"),
 			Promise.resolve("infragistics")
 		);
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
@@ -501,8 +504,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configure).toHaveBeenCalledWith(false);
+		expect(aiConfig.configureMCP).toHaveBeenCalledTimes(1);
+
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.input).toHaveBeenCalledWith({
 			type: "input",
@@ -580,8 +583,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configure).toHaveBeenCalledWith(false);
+		expect(aiConfig.configureMCP).toHaveBeenCalledTimes(1);
+
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", mockSelectedTemplate);
@@ -706,8 +709,8 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configure).toHaveBeenCalledWith(false);
+		expect(aiConfig.configureMCP).toHaveBeenCalledTimes(1);
+
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.checkbox).toHaveBeenCalledWith({
 			type: "checkbox",
@@ -821,6 +824,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("Default side navigation"),
 			Promise.resolve("Custom")
 		);
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();
@@ -857,6 +861,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("Angular"),
 			Promise.resolve("Default side navigation"),
 			Promise.resolve("Default"));
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();

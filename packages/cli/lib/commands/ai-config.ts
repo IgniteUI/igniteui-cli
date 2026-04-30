@@ -1,4 +1,4 @@
-import { addMcpServers, copyAISkillsToProject, GoogleAnalytics, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
+import { addMcpServers, AI_AGENT_LABELS, AI_AGENT_SKILLS_DIRS, AIAgentTarget, copyAgentInstructionFiles, copyAISkillsToProject, getSkillsDir, GoogleAnalytics, InquirerWrapper, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
 export function configureMCP(): void {
@@ -11,8 +11,8 @@ export function configureMCP(): void {
 	Util.log(Util.greenCheck() + ` MCP servers configured in ${VS_CODE_MCP_PATH}`);
 }
 
-export function configureSkills(): void {
-	const result = copyAISkillsToProject();
+export function configureSkills(skillsDir: string): void {
+	const result = copyAISkillsToProject(skillsDir);
 	if (result.found === 0) {
 		Util.warn("No AI skill files found. Make sure packages are installed (npm install) " +
 			"and your Ignite UI packages are up-to-date.", "yellow");
@@ -26,30 +26,64 @@ export function configureSkills(): void {
 	}
 }
 
-export function configure(skills = true): void {
+export function configure(agents: AIAgentTarget[]): void {
 	configureMCP();
-	if (skills) {
-		configureSkills();
+	for (const agent of agents) {
+		configureSkills(getSkillsDir(agent));
 	}
+	copyAgentInstructionFiles(agents);
 }
+
+const AI_AGENT_CHOICES = Object.keys(AI_AGENT_SKILLS_DIRS) as AIAgentTarget[];
+
+const AI_AGENT_CHECKBOX_CHOICES = [
+	{ value: "none", name: "None (skip AI configuration)" },
+	...AI_AGENT_CHOICES.map(agent => ({
+		value: agent,
+		name: AI_AGENT_LABELS[agent],
+		checked: agent === "generic" || agent === "claude"
+	}))
+];
 
 const command: CommandModule = {
 	command: "ai-config",
 	describe: "Configures Ignite UI AI tooling (MCP servers and AI coding skills)",
-	builder: (yargs) => yargs,
-	async handler(_argv: ArgumentsCamelCase) {
+	builder: (yargs) => yargs
+		.usage("")
+		.option("agent", {
+			alias: "a",
+			describe: "AI agent(s) to configure skills for (determines the target skills directory)",
+			choices: AI_AGENT_CHOICES,
+			type: "array"
+		}),
+	async handler(argv: ArgumentsCamelCase) {
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "MCP"
 		});
 
+		let agents = argv.agent as AIAgentTarget[] | undefined;
+
+		if (!agents?.length) {
+			const selected = await InquirerWrapper.checkbox({
+				message: "Which AI tools do you want to generate configuration files for?",
+				choices: AI_AGENT_CHECKBOX_CHOICES
+			});
+			agents = selected.includes("none") ? [] : selected as AIAgentTarget[];
+		}
+
+		if (!agents.length) {
+			Util.log("No AI configuration selected. Skipping.");
+			return;
+		}
+
 		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig ai-config",
-			ea: "client: vscode"
+			ea: `agent: ${agents.join(", ")}`
 		});
 
-		configure();
+		configure(agents);
 	}
 };
 
