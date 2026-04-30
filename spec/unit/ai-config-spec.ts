@@ -1,6 +1,5 @@
-import * as path from "path";
-import { App, Config, FS_TOKEN, FsFileSystem, GoogleAnalytics, IFileSystem, InquirerWrapper, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
-import { configureMCP, configureSkills } from "../../packages/cli/lib/commands/ai-config";
+import { App, Config, configureMcpForAgents, FS_TOKEN, FsFileSystem, GoogleAnalytics, IFileSystem, InquirerWrapper, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { configureSkills } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
@@ -21,8 +20,6 @@ function createMockFs(existingContent?: string): IFileSystem {
 }
 
 describe("Unit - ai-config command", () => {
-	const configPath = path.join(process.cwd(), ".vscode", "mcp.json");
-
 	beforeAll(() => {
 		spyOn(GoogleAnalytics, "post");
 	});
@@ -37,12 +34,12 @@ describe("Unit - ai-config command", () => {
 		return JSON.parse(content);
 	}
 
-	describe("configureMCP", () => {
+	describe("configureMcpForAgents", () => {
 		it("creates .vscode/mcp.json with both servers when file does not exist", () => {
 			const mockFs = createMockFs();
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP();
+			configureMcpForAgents([]);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -54,7 +51,7 @@ describe("Unit - ai-config command", () => {
 			const mockFs = createMockFs(JSON.stringify({ servers: {} }));
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP();
+			configureMcpForAgents([]);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -68,7 +65,7 @@ describe("Unit - ai-config command", () => {
 			}));
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP();
+			configureMcpForAgents([]);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -82,7 +79,7 @@ describe("Unit - ai-config command", () => {
 			}));
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP();
+			configureMcpForAgents([]);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -90,7 +87,7 @@ describe("Unit - ai-config command", () => {
 			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
 		});
 
-		it("is a no-op and logs when both servers are already configured", () => {
+		it("is a no-op for .vscode/mcp.json when both servers are already configured", () => {
 			const mockFs = createMockFs(JSON.stringify({
 				servers: {
 					[IGNITEUI_SERVER_KEY]: igniteuiServer,
@@ -99,10 +96,9 @@ describe("Unit - ai-config command", () => {
 			}));
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP();
+			configureMcpForAgents([]);
 
 			expect(mockFs.writeFile).not.toHaveBeenCalled();
-			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("already configured"));
 		});
 
 		it("preserves existing third-party servers when adding igniteui servers", () => {
@@ -112,13 +108,52 @@ describe("Unit - ai-config command", () => {
 			}));
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP();
+			configureMcpForAgents([]);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
 			expect((config.servers as any)["other-server"]).toEqual(thirdPartyServer);
 			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
 			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+
+		it("also creates .cursor/mcp.json with mcpServers key when cursor is in agents", () => {
+			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
+
+			configureMcpForAgents(["cursor"]);
+
+			// Two writes: .vscode/mcp.json and .cursor/mcp.json
+			const calls = (mockFs.writeFile as jasmine.Spy).calls.all();
+			expect(calls.length).toBe(2);
+
+			const vscodePath = calls[0].args[0] as string;
+			const cursorPath = calls[1].args[0] as string;
+			expect(vscodePath).toContain(".vscode/mcp.json");
+			expect(cursorPath).toContain(".cursor/mcp.json");
+
+			const vscodeConfig = JSON.parse(calls[0].args[1]);
+			const cursorConfig = JSON.parse(calls[1].args[1]);
+
+			// VS Code uses "servers" key
+			expect(vscodeConfig.servers).toBeDefined();
+			expect(vscodeConfig.servers[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+
+			// Cursor uses "mcpServers" key
+			expect(cursorConfig.mcpServers).toBeDefined();
+			expect(cursorConfig.mcpServers[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+			expect(cursorConfig.mcpServers[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+
+		it("does NOT create .cursor/mcp.json when cursor is not in agents", () => {
+			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
+
+			configureMcpForAgents(["claude"]);
+
+			const calls = (mockFs.writeFile as jasmine.Spy).calls.all();
+			const paths = calls.map((c: jasmine.CallInfo<jasmine.Func>) => c.args[0] as string);
+			expect(paths.some((p: string) => p.includes(".cursor"))).toBeFalse();
 		});
 	});
 

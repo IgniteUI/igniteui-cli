@@ -1,11 +1,11 @@
 import {
 	AI_AGENT_LABELS, AI_AGENT_SKILLS_DIRS, AIAgentTarget,
-	BasePromptSession, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig,
+	BasePromptSession, configureMcpForAgents, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig,
 	ProjectLibrary, PromptTaskContext, Task, Util
 } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as add } from "./commands/add";
-import { configure, configureMCP } from "./commands/ai-config";
+import { configure } from "./commands/ai-config";
 import { default as start } from "./commands/start";
 import { default as upgrade } from "./commands/upgrade";
 import { TemplateManager } from "./TemplateManager";
@@ -125,7 +125,7 @@ export class PromptSession extends BasePromptSession {
 
 	protected async configureAI(): Promise<void> {
 		// skip adding skills since those are baked into the project template atm:
-		configureMCP();
+		configureMcpForAgents([]);
 	}
 
 	/**
