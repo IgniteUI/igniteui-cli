@@ -4,7 +4,7 @@ import { PromptSession } from "./../PromptSession";
 import { NewCommandType, PositionalArgs } from "./types";
 import { TemplateManager } from "../TemplateManager";
 import { ArgumentsCamelCase, Choices } from "yargs";
-import { configure } from "./ai-config";
+import { configure, promptForAgents } from "./ai-config";
 
 const AI_AGENT_CHOICES = Object.keys(AI_AGENT_SKILLS_DIRS) as AIAgentTarget[];
 
@@ -171,8 +171,11 @@ const command: NewCommandType = {
 			process.chdir("..");
 		}
 
-		const agents = argv.agent as AIAgentTarget[] | undefined;
-		if (agents?.length) {
+		let agents = argv.agent as AIAgentTarget[] | undefined;
+		if (!agents?.length) {
+			agents = await promptForAgents();
+		}
+		if (agents.length) {
 			process.chdir(argv.name);
 			configure(agents);
 			process.chdir("..");

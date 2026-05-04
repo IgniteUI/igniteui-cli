@@ -45,6 +45,14 @@ const AI_AGENT_CHECKBOX_CHOICES = [
 	}))
 ];
 
+export async function promptForAgents(): Promise<AIAgentTarget[]> {
+	const selected = await InquirerWrapper.checkbox({
+		message: "Which AI tools do you want to generate configuration files for?",
+		choices: AI_AGENT_CHECKBOX_CHOICES
+	});
+	return selected.includes("none") ? [] : selected as AIAgentTarget[];
+}
+
 const command: CommandModule = {
 	command: "ai-config",
 	describe: "Configures Ignite UI AI tooling (MCP servers and AI coding skills)",
@@ -65,11 +73,7 @@ const command: CommandModule = {
 		let agents = argv.agent as AIAgentTarget[] | undefined;
 
 		if (!agents?.length) {
-			const selected = await InquirerWrapper.checkbox({
-				message: "Which AI tools do you want to generate configuration files for?",
-				choices: AI_AGENT_CHECKBOX_CHOICES
-			});
-			agents = selected.includes("none") ? [] : selected as AIAgentTarget[];
+			agents = await promptForAgents();
 		}
 
 		if (!agents.length) {
