@@ -12,36 +12,36 @@ import { Util } from "./Util";
 export type AIAgentTarget = "claude" | "copilot" | "cursor" | "codex" | "windsurf" | "gemini" | "junie" | "generic";
 
 export const AI_AGENT_SKILLS_DIRS: Record<AIAgentTarget, string> = {
+	generic: ".agents/skills",
 	claude: ".claude/skills",
 	copilot: ".github/skills",
 	cursor: ".cursor/skills",
 	codex: ".codex/skills",
 	windsurf: ".windsurf/skills",
 	gemini: ".gemini/skills",
-	junie: ".junie/skills",
-	generic: ".agents/skills"
+	junie: ".junie/skills"
 };
 
 export const AI_AGENT_INSTRUCTION_FILES: Record<AIAgentTarget, string> = {
+	generic: "AGENTS.md",
 	claude: ".claude/CLAUDE.md",
 	copilot: ".github/copilot-instructions.md",
 	cursor: ".cursor/rules/cursor.mdc",
 	codex: ".codex/instructions.md",
 	windsurf: ".windsurf/rules/guidelines.md",
 	gemini: ".gemini/GEMINI.md",
-	junie: ".junie/guidelines.md",
-	generic: "AGENTS.md"
+	junie: ".junie/guidelines.md"
 };
 
 export const AI_AGENT_LABELS: Record<AIAgentTarget, string> = {
+	generic: "Generic (Adding .agents/skills and AGENTS.md)",
 	claude: "Claude (Adding .claude/skills and CLAUDE.md)",
 	copilot: "Copilot (Adding .github/skills and copilot-instructions.md)",
 	cursor: "Cursor (Adding .cursor/skills and .cursor/rules/cursor.mdc)",
 	codex: "Codex (Adding .codex/skills and .codex/instructions.md)",
 	windsurf: "Windsurf (Adding .windsurf/skills and .windsurf/rules/guidelines.md)",
 	gemini: "Gemini (Adding .gemini/skills and .gemini/GEMINI.md)",
-	junie: "Junie (Adding .junie/skills and .junie/guidelines.md)",
-	generic: "Generic (Adding .agents/skills and AGENTS.md)"
+	junie: "Junie (Adding .junie/skills and .junie/guidelines.md)"
 };
 
 /**

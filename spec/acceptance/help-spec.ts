@@ -72,8 +72,8 @@ describe("Help command", () => {
 				--template            Project template                            [string]
 			-a, --agent               AI agent(s) to configure skills for (determines the
 								target skills directory)
-					[array] [choices: "claude", "copilot", "cursor", "codex", "windsurf",
-																"gemini", "junie", "generic"]
+					[array] [choices: "generic", "claude", "copilot", "cursor", "codex",
+													"windsurf", "gemini", "junie"]
 
 			Examples:
 			ig new my-app                       Scaffold a new project interactively
