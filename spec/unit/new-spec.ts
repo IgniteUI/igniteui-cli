@@ -36,6 +36,7 @@ describe("Unit - New command", () => {
 		spyOn(process, "chdir");
 		spyOn(PackageManager, "installPackages");
 		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
+		spyOn(Util, "directoryExists").and.returnValue(false);
 	});
 
 	afterEach(() => {
@@ -197,7 +198,6 @@ describe("Unit - New command", () => {
 
 		spyOn(process, "cwd").and.returnValue("Mock dir");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "fileExists").and.returnValue(false);
 
 		const mockFileSystem = {
@@ -243,7 +243,6 @@ describe("Unit - New command", () => {
 
 		spyOn(process, "cwd").and.returnValue("Mock dir");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "fileExists").and.returnValue(false);
 
 		const mockFileSystem = {
@@ -318,7 +317,6 @@ describe("Unit - New command", () => {
 		});
 
 		spyOn(Util, "gitInit");
-		spyOn(Util, "directoryExists").and.returnValue(false);
 
 		await newCmd.handler({ "name": projectName, "framework": "jq", "skip-git": true, _: ["new"], $0: "new" });
 
