@@ -64,9 +64,24 @@ export interface AISkillsCopyResult {
 	failed: number;
 }
 
+export const AGENTS_TEMPLATE_FILE = "AGENTS.md";
+
+/**
+ * Returns the `files/` directory of the ai-config project template for the
+ * detected framework. This is where AGENTS.md (and the bundled skills/) live
+ * when no npm package is installed.
+ */
+function resolveTemplateFilesDir(framework: string): string | null {
+	const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+	const projectLib = templateManager?.getFrameworkById(framework)?.projectLibraries[0];
+	const templatePaths = projectLib?.getProject("ai-config")?.templatePaths ?? [];
+	return templatePaths[0] ?? null;
+}
+
 /**
  * Returns the list of 'skills/' directory paths found in installed
  * Ignite UI packages that are relevant to the project's detected framework.
+ * Falls back to the bundled template skills when no npm package is installed.
  */
 function resolveSkillsRoots(): string[] {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
@@ -104,14 +119,10 @@ function resolveSkillsRoots(): string[] {
 		// if no root discovered, take the root from the appropriate project template files:
 		framework ??= detectFrameworkFromPackageJson();
 		if (framework) {
-			const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
-			const projectLib = templateManager?.getFrameworkById(framework)?.projectLibraries[0];
-			const filePaths = projectLib?.getProject("ai-config").templatePaths ?? [];
-			roots.push(
-				...filePaths
-				.map((p) => path.join(p, "skills"))
-				.slice(0, 1),
-			);
+			const filesDir = resolveTemplateFilesDir(framework);
+			if (filesDir) {
+				roots.push(path.join(filesDir, "skills"));
+			}
 		}
 	}
 
@@ -178,22 +189,32 @@ export function copyAISkillsToProject(skillsDir: string): AISkillsCopyResult {
 }
 
 /**
- * Resolves the AGENTS.md source file content from installed packages or template files.
- * Uses the same resolution logic as `resolveSkillsRoots()` – the AGENTS.md is expected
- * to be a sibling of the `skills/` directory.
+ * Resolves the AGENTS.md source file content from the bundled project template files.
+ * AGENTS.md lives only in the template files/ directory, not in npm packages.
  */
 function resolveAgentsContent(): string | null {
-	const srcFs = new FsFileSystem();
-	const skillsRoots = resolveSkillsRoots();
-
-	for (const skillsRoot of skillsRoots) {
-		const agentsPath = path.join(path.dirname(skillsRoot), "AGENTS.md");
-		if (srcFs.fileExists(agentsPath)) {
-			return srcFs.readFile(agentsPath);
+	let framework: string | null = null;
+	try {
+		if (ProjectConfig.hasLocalConfig()) {
+			framework = ProjectConfig.getConfig().project?.framework?.toLowerCase() ?? null;
 		}
+	} catch { /* fall through */ }
+	framework ??= detectFrameworkFromPackageJson();
+
+	if (!framework) {
+		return null;
 	}
 
-	return null;
+	const filesDir = resolveTemplateFilesDir(framework);
+	if (!filesDir) {
+		return null;
+	}
+
+	try {
+		return new FsFileSystem().readFile(path.join(filesDir, AGENTS_TEMPLATE_FILE));
+	} catch {
+		return null;
+	}
 }
 
 /**

@@ -1,5 +1,6 @@
 import * as path from "path";
-import { AI_AGENT_INSTRUCTION_FILES, AI_AGENT_SKILLS_DIRS, AIAgentTarget, App, Config, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, getSkillsDir, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import * as fs from "fs";
+import { AGENTS_TEMPLATE_FILE, AI_AGENT_INSTRUCTION_FILES, AI_AGENT_SKILLS_DIRS, AIAgentTarget, App, Config, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, getSkillsDir, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;
@@ -975,26 +976,19 @@ describe("Unit - copyAgentInstructionFiles", () => {
 
 	it("should copy AGENTS.md content to each agent's instruction file path", () => {
 		const agentsContent = "# AI Agent Instructions\nFollow these rules.";
-		const angularSkillsDir = skillsDir("igniteui-angular");
-		const agentsPath = path.join(path.dirname(angularSkillsDir), "AGENTS.md");
+		const FAKE_FILES_DIR = "/fake/template/files";
 
 		spySrcFs({
-			fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.callFake((p: string) =>
-				p === agentsPath
-			),
 			readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(agentsContent)
 		});
 
-		const destFs = makeDestFs({
-			directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
-				p === angularSkillsDir
-			)
-		});
+		const destFs = makeDestFs();
 		App.container.set(FS_TOKEN, destFs);
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
 			project: { framework: "angular" }
 		} as unknown as Config);
+		mockTemplateManager([FAKE_FILES_DIR]);
 
 		copyAgentInstructionFiles(["claude", "cursor"]);
 
@@ -1005,24 +999,14 @@ describe("Unit - copyAgentInstructionFiles", () => {
 
 	it("should skip writing when instruction file already has same content", () => {
 		const agentsContent = "# AI Agent Instructions - same content";
-		const angularSkillsDir = skillsDir("igniteui-angular");
-		const agentsPath = path.join(path.dirname(angularSkillsDir), "AGENTS.md");
+		const FAKE_FILES_DIR = "/fake/template/files";
 		const claudeDest = ".claude/CLAUDE.md";
 
 		spySrcFs({
-			fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.callFake((p: string) =>
-				p === agentsPath
-			),
-			readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
-				if (p === agentsPath) return agentsContent;
-				return "";
-			})
+			readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(agentsContent)
 		});
 
 		const destFs = makeDestFs({
-			directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
-				p === angularSkillsDir
-			),
 			fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
 				p === claudeDest
 			),
@@ -1036,6 +1020,7 @@ describe("Unit - copyAgentInstructionFiles", () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
 			project: { framework: "angular" }
 		} as unknown as Config);
+		mockTemplateManager([FAKE_FILES_DIR]);
 
 		copyAgentInstructionFiles(["claude"]);
 
@@ -1044,15 +1029,52 @@ describe("Unit - copyAgentInstructionFiles", () => {
 
 	it("should not write anything when AGENTS.md source is not found", () => {
 		spySrcFs({
-			fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.returnValue(false)
+			readFile: spyOn(FsFileSystem.prototype, "readFile").and.throwError("ENOENT")
 		});
 
 		const destFs = makeDestFs();
 		App.container.set(FS_TOKEN, destFs);
-		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({
+			project: { framework: "angular" }
+		} as unknown as Config);
+		mockTemplateManager(["/fake/files"]);
 
 		copyAgentInstructionFiles(["claude", "generic"]);
 
 		expect(destFs.writeFile).not.toHaveBeenCalled();
 	});
+});
+
+describe("Unit - ai-config template file presence", () => {
+	const root = path.resolve(__dirname, "../..");
+
+	const templates = [
+		{
+			name: "angular (igx-ts)",
+			filesDir: path.join(root, "packages/igx-templates/igx-ts/projects/ai-config/files")
+		},
+		{
+			name: "react (igr-ts)",
+			filesDir: path.join(root, "packages/cli/templates/react/igr-ts/projects/ai-config/files")
+		},
+		{
+			name: "webcomponents (igc-ts)",
+			filesDir: path.join(root, "packages/cli/templates/webcomponents/igc-ts/projects/ai-config/files")
+		}
+	];
+
+	for (const { name, filesDir } of templates) {
+		it(`${name}: ${AGENTS_TEMPLATE_FILE} must exist in files/`, () => {
+			expect(fs.existsSync(path.join(filesDir, AGENTS_TEMPLATE_FILE)))
+				.withContext(`Missing ${AGENTS_TEMPLATE_FILE} in ${filesDir}`)
+				.toBeTrue();
+		});
+
+		it(`${name}: skills/ directory must exist in files/`, () => {
+			expect(fs.existsSync(path.join(filesDir, "skills")))
+				.withContext(`Missing skills/ in ${filesDir}`)
+				.toBeTrue();
+		});
+	}
 });
