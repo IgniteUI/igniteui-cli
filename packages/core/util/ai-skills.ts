@@ -106,15 +106,12 @@ function resolveSkillsRoots(): string[] {
 		if (framework) {
 			const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
 			const projectLib = templateManager?.getFrameworkById(framework)?.projectLibraries[0];
-			const aiConfigProject = projectLib?.getProject("ai-config");
-			if (aiConfigProject) {
-				const filePaths = aiConfigProject.templatePaths ?? [];
-				roots.push(
-					...filePaths
-					.map((p) => path.join(p, "..", "skills"))
-					.slice(0, 1),
-				);
-			}
+			const filePaths = projectLib?.getProject("ai-config").templatePaths ?? [];
+			roots.push(
+				...filePaths
+				.map((p) => path.join(p, CLAUDE_SKILLS_DIR_TEMPLATE))
+				.slice(0, 1),
+			);
 		}
 	}
 
