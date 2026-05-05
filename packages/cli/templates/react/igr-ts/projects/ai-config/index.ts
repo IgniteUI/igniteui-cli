@@ -4,7 +4,7 @@ import * as path from "path";
 export class BaseIgrTsAiConfigPartial implements ProjectTemplate {
 	public id: string = "ai-config";
 	public name = "ai-config";
-	public description = "Ignite UI CLI project for React";
+	public description = "Ignite UI CLI AI config for React partial project files";
 	public framework: string = "react";
 	public projectType: string = "tsx";
 	public dependencies: string[];
