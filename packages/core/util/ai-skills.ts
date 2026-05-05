@@ -127,10 +127,7 @@ function resolveSkillsRoots(): string[] {
  * @param skillsDir – destination directory (e.g. `.agents/skills`, `.cursor/skills`, …)
  */
 export function copyAISkillsToProject(skillsDir: string): AISkillsCopyResult {
-	let outputDir = skillsDir.replace(/\\/g, "/");
-	while (outputDir.endsWith("/")) {
-		outputDir = outputDir.slice(0, -1);
-	}
+	const outputDir = skillsDir;
 	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0 };
 	// Source reads (glob + readFile) always use physical FS - skill files can
 	// come from sources outside the project virtual tree (external/global package):

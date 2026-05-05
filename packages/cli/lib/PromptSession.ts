@@ -93,7 +93,7 @@ export class PromptSession extends BasePromptSession {
 			process.chdir(projectName);
 
 			if (agents?.length) {
-				configure(agents);
+				await configure(agents);
 			}
 		}
 		await this.chooseActionLoop(projLibrary);

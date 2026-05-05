@@ -4,7 +4,7 @@ import { PromptSession } from "./../PromptSession";
 import { NewCommandType, PositionalArgs } from "./types";
 import { TemplateManager } from "../TemplateManager";
 import { ArgumentsCamelCase, Choices } from "yargs";
-import { configure, promptForAgents } from "./ai-config";
+import { configure } from "./ai-config";
 
 const AI_AGENT_CHOICES = Object.keys(AI_AGENT_SKILLS_DIRS) as AIAgentTarget[];
 
@@ -161,24 +161,18 @@ const command: NewCommandType = {
 
 		Util.log(Util.greenCheck() + " Project Created");
 
-		if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {
-			Util.gitInit(process.cwd(), argv.name);
-		}
-
 		if (!argv.skipInstall) {
 			process.chdir(argv.name);
 			await PackageManager.installPackages();
 			process.chdir("..");
 		}
 
-		let agents = argv.agent as AIAgentTarget[] | undefined;
-		if (!agents?.length) {
-			agents = await promptForAgents();
-		}
-		if (agents.length) {
-			process.chdir(argv.name);
-			configure(agents);
-			process.chdir("..");
+		process.chdir(argv.name);
+		await configure(argv.agent as AIAgentTarget[] | undefined);
+		process.chdir("..");
+
+		if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {
+			Util.gitInit(process.cwd(), argv.name);
 		}
 
 		Util.log("");

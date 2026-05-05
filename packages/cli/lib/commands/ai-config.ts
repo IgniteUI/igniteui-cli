@@ -32,7 +32,11 @@ function configureSkillsForAgent(skillsDir: string): void {
 	}
 }
 
-export function configure(agents: AIAgentTarget[], skills = true): void {
+export async function configure(agents?: AIAgentTarget[], skills = true): Promise<void> {
+	if (!agents?.length) {
+		agents = await promptForAgents();
+	}
+	if (!agents.length) return;
 	configureMCP();
 	if (skills) {
 		configureSkills(agents);
@@ -94,7 +98,7 @@ const command: CommandModule = {
 			ea: `agent: ${agents.join(", ")}`
 		});
 
-		configure(agents);
+		await configure(agents);
 	}
 };
 
