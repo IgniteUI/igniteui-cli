@@ -264,10 +264,22 @@ describe("Unit - ai-config command", () => {
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
 			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
-				message: "Which AI tools do you want to generate configuration files for?"
+				message: "Which AI tools do you want to generate configuration files for?",
+				required: true
 			}));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "MCP" }));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude" }));
+		});
+
+		it("logs skipping and does not post analytics when none is selected", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Skipping"));
+			expect(GoogleAnalytics.post).not.toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview" }));
+			expect(GoogleAnalytics.post).not.toHaveBeenCalledWith(jasmine.objectContaining({ t: "event" }));
 		});
 
 		it("configures multiple agents when selected interactively", async () => {
