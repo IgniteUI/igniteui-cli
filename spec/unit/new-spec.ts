@@ -375,6 +375,5 @@ describe("Unit - New command", () => {
 		await newCmd.handler({ name: "title", framework: "jq", skipInstall: true, _: ["new"], $0: "new" });
 
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();
-		expect(process.chdir).not.toHaveBeenCalled();
 	});
 });

@@ -257,6 +257,10 @@ describe("Unit - ai-config command", () => {
 	});
 
 	describe("handler", () => {
+		beforeEach(() => {
+			(GoogleAnalytics.post as jasmine.Spy).calls.reset();
+		});
+
 		it("prompts for agents when --agent is not provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
