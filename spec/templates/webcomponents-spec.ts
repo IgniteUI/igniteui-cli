@@ -1,4 +1,6 @@
 import { App, Framework, Util } from "@igniteui/cli-core";
+import path from "path";
+import * as fs from "fs";
 
 const templatesLocation = "../../packages/cli/templates/webcomponents";
 describe("Web Components templates", () => {
@@ -34,5 +36,27 @@ describe("Web Components templates", () => {
 					.toBeTruthy();
 			}
 		}
+	});
+
+	describe("ai-config template file presence", () => {
+		it("ai-config project template must be registered", () => {
+			const wcFramework: Framework = require(templatesLocation);
+			const projLibrary = wcFramework.projectLibraries.find(x => x.projectType === "igc-ts");
+			expect(projLibrary.getProject("ai-config")).toBeDefined();
+		});
+
+		const filesDir = path.resolve(__dirname, "../..", "packages/cli/templates/webcomponents/igc-ts/projects/ai-config/files");
+
+		it("AGENTS.md must exist in files/", () => {
+			expect(fs.existsSync(path.join(filesDir, "AGENTS.md")))
+				.withContext(`Missing AGENTS.md in ${filesDir}`)
+				.toBeTrue();
+		});
+
+		it("skills/ directory must exist in files/", () => {
+			expect(fs.existsSync(path.join(filesDir, "skills")))
+				.withContext(`Missing skills/ in ${filesDir}`)
+				.toBeTrue();
+		});
 	});
 });

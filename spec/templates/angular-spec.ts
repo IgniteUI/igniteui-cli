@@ -64,4 +64,26 @@ describe("Angular templates", () => {
 			}
 		}
 	});
+
+	describe("ai-config template file presence", () => {
+		it("ai-config project template must be registered", () => {
+			const angularFramework: Framework = require(templatesLocation);
+			const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
+			expect(projLibrary.getProject("ai-config")).toBeDefined();
+		});
+
+		const filesDir = path.resolve(__dirname, "../..", "packages/igx-templates/igx-ts/projects/ai-config/files");
+
+		it("AGENTS.md must exist in files/", () => {
+			expect(fs.existsSync(path.join(filesDir, "AGENTS.md")))
+				.withContext(`Missing AGENTS.md in ${filesDir}`)
+				.toBeTrue();
+		});
+
+		it("skills/ directory must exist in files/", () => {
+			expect(fs.existsSync(path.join(filesDir, "skills")))
+				.withContext(`Missing skills/ in ${filesDir}`)
+				.toBeTrue();
+		});
+	});
 });

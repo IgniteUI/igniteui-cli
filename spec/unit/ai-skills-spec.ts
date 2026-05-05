@@ -1,6 +1,5 @@
 import * as path from "path";
-import * as fs from "fs";
-import { AGENTS_TEMPLATE_FILE, AI_AGENT_INSTRUCTION_FILES, AI_AGENT_SKILLS_DIRS, AIAgentTarget, App, Config, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, getSkillsDir, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { AI_AGENT_INSTRUCTION_FILES, AI_AGENT_SKILLS_DIRS, AIAgentTarget, App, Config, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, getSkillsDir, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;
@@ -1046,35 +1045,3 @@ describe("Unit - copyAgentInstructionFiles", () => {
 	});
 });
 
-describe("Unit - ai-config template file presence", () => {
-	const root = path.resolve(__dirname, "../..");
-
-	const templates = [
-		{
-			name: "angular (igx-ts)",
-			filesDir: path.join(root, "packages/igx-templates/igx-ts/projects/ai-config/files")
-		},
-		{
-			name: "react (igr-ts)",
-			filesDir: path.join(root, "packages/cli/templates/react/igr-ts/projects/ai-config/files")
-		},
-		{
-			name: "webcomponents (igc-ts)",
-			filesDir: path.join(root, "packages/cli/templates/webcomponents/igc-ts/projects/ai-config/files")
-		}
-	];
-
-	for (const { name, filesDir } of templates) {
-		it(`${name}: ${AGENTS_TEMPLATE_FILE} must exist in files/`, () => {
-			expect(fs.existsSync(path.join(filesDir, AGENTS_TEMPLATE_FILE)))
-				.withContext(`Missing ${AGENTS_TEMPLATE_FILE} in ${filesDir}`)
-				.toBeTrue();
-		});
-
-		it(`${name}: skills/ directory must exist in files/`, () => {
-			expect(fs.existsSync(path.join(filesDir, "skills")))
-				.withContext(`Missing skills/ in ${filesDir}`)
-				.toBeTrue();
-		});
-	}
-});

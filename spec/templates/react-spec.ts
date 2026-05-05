@@ -1,4 +1,6 @@
 import { App, Framework, Util } from "@igniteui/cli-core";
+import path from "path";
+import * as fs from "fs";
 
 const templatesLocation = "../../packages/cli/templates/react";
 describe("React templates", () => {
@@ -30,5 +32,27 @@ describe("React templates", () => {
 					.toBeTruthy();
 			}
 		}
+	});
+
+	describe("ai-config template file presence", () => {
+		it("ai-config project template must be registered", () => {
+			const reactFramework: Framework = require(templatesLocation);
+			const projLibrary = reactFramework.projectLibraries.find(x => x.projectType === "igr-ts");
+			expect(projLibrary.getProject("ai-config")).toBeDefined();
+		});
+
+		const filesDir = path.resolve(__dirname, "../..", "packages/cli/templates/react/igr-ts/projects/ai-config/files");
+
+		it("AGENTS.md must exist in files/", () => {
+			expect(fs.existsSync(path.join(filesDir, "AGENTS.md")))
+				.withContext(`Missing AGENTS.md in ${filesDir}`)
+				.toBeTrue();
+		});
+
+		it("skills/ directory must exist in files/", () => {
+			expect(fs.existsSync(path.join(filesDir, "skills")))
+				.withContext(`Missing skills/ in ${filesDir}`)
+				.toBeTrue();
+		});
 	});
 });
