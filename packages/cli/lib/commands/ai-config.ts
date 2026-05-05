@@ -11,7 +11,13 @@ export function configureMCP(): void {
 	Util.log(Util.greenCheck() + ` MCP servers configured in ${VS_CODE_MCP_PATH}`);
 }
 
-export function configureSkills(skillsDir: string): void {
+export function configureSkills(agents: AIAgentTarget[]): void {
+	for (const agent of agents) {
+		configureSkillsForAgent(getSkillsDir(agent));
+	}
+}
+
+function configureSkillsForAgent(skillsDir: string): void {
 	const result = copyAISkillsToProject(skillsDir);
 	if (result.found === 0) {
 		Util.warn("No AI skill files found. Make sure packages are installed (npm install) " +
@@ -26,10 +32,10 @@ export function configureSkills(skillsDir: string): void {
 	}
 }
 
-export function configure(agents: AIAgentTarget[]): void {
+export function configure(agents: AIAgentTarget[], skills = true): void {
 	configureMCP();
-	for (const agent of agents) {
-		configureSkills(getSkillsDir(agent));
+	if (skills) {
+		configureSkills(agents);
 	}
 	copyAgentInstructionFiles(agents);
 }

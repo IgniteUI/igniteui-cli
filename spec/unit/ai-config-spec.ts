@@ -157,7 +157,7 @@ describe("Unit - ai-config command", () => {
 			})
 			setupAngularConfig();
 
-			configureSkills(".claude/skills");
+			configureSkills(["claude"]);
 
 			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("No AI skill files found"), "yellow");
 			expect(Util.log).not.toHaveBeenCalled();
@@ -187,7 +187,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
 			setupAngularConfig();
 
-			configureSkills(".claude/skills");
+			configureSkills(["claude"]);
 
 			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("Failed to write 1 skill file(s) out of 1"), "yellow");
 			expect(Util.log).not.toHaveBeenCalled();
@@ -219,7 +219,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content);
 			setupAngularConfig();
 
-			configureSkills(".claude/skills");
+			configureSkills(["claude"]);
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("already up-to-date"));
 			expect(Util.warn).not.toHaveBeenCalled();
@@ -249,7 +249,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
 			setupAngularConfig();
 
-			configureSkills(".claude/skills");
+			configureSkills(["claude"]);
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("1 AI skill file(s) created or updated"));
 			expect(Util.warn).not.toHaveBeenCalled();
