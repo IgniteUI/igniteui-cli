@@ -4,7 +4,7 @@ import * as path from "path";
 export class BaseIgxAiConfigPartial implements ProjectTemplate {
 	public id: string = "ai-config";
 	public name = "ai-config";
-	public description = "Empty project layout structure for Ignite UI for Angular";
+	public description = "Ignite UI CLI AI config for Angular partial project files";
 	public dependencies: string[] = [];
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";

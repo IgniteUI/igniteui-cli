@@ -109,7 +109,7 @@ function resolveSkillsRoots(): string[] {
 			const filePaths = projectLib?.getProject("ai-config").templatePaths ?? [];
 			roots.push(
 				...filePaths
-				.map((p) => path.join(p, "..", "skills"))
+				.map((p) => path.join(p, "skills"))
 				.slice(0, 1),
 			);
 		}
