@@ -1,9 +1,10 @@
-export const PLATFORMS = ['angular', 'webcomponents', 'react'] as const;
+export const PLATFORMS = ['angular', 'webcomponents', 'react', 'blazor'] as const;
 export type Platform = typeof PLATFORMS[number];
 
 export type ApiSourceConfig =
   | { kind: 'markdown-index' }
-  | { kind: 'typedoc-json'; jsonPath: string };
+  | { kind: 'typedoc-json'; jsonPath: string }
+  | { kind: 'llms-full-txt'; docsPath: string };
 
 export interface PlatformConfig {
   key: Platform;
@@ -37,6 +38,13 @@ export const PLATFORM_CONFIGS: Record<Platform, PlatformConfig> = {
     submodulePath: 'webcomponents/igniteui-webcomponents',
     docsPath: 'docs/webcomponents/api',
     apiSource: { kind: 'markdown-index' },
+  },
+  blazor: {
+    key: 'blazor',
+    displayName: 'Blazor',
+    submodulePath: 'blazor/api-docs',
+    docsPath: 'docs/blazor',
+    apiSource: { kind: 'llms-full-txt', docsPath: 'docs/blazor' },
   },
   // TODO: Add Blazor config when ready
 };

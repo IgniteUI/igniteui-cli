@@ -51,6 +51,7 @@
     "build:xplat-wc": "cd common/igniteui-xplat-docs && npm install --silent && npx tsc --skipLibCheck && npx gulp buildOutputWC",
     "build:docs:angular": "git submodule update --init angular/igniteui-angular && npm run build && node scripts/build-docs.mjs angular",
     "build:docs:webcomponents": "git submodule update --init webcomponents/igniteui-webcomponents && npm run build && node scripts/build-docs.mjs webcomponents",
+    "build:docs:blazor": "git submodule update --init blazor/api-docs && npx tsx scripts/export-blazor-api.ts",
     "build:docs:all": "npm run build:docs:angular && npm run build:docs:webcomponents",
     "export:angular": "npx tsx scripts/export-angular-docs.ts",
     "export:react": "npx tsx scripts/export-react-docs.ts --skip-build",

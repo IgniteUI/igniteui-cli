@@ -1,4 +1,4 @@
-import { readFileSync, existsSync, realpathSync } from 'fs';
+import { readFileSync, existsSync, realpathSync, readdirSync, statSync } from 'fs';
 import { join, dirname, resolve, relative, isAbsolute } from 'path';
 import { fileURLToPath } from 'url';
 import type { Platform, PlatformConfig } from '../config/platforms.js';
@@ -54,6 +54,8 @@ export class ApiDocLoader {
           return this.parseTypedocJson(config);
         case 'markdown-index':
           return this.parseMarkdownIndex(config);
+        case 'llms-full-txt':
+          return this.parseLlmsFullTxt(config);
       }
     } catch (err) {
       if (err instanceof ApiDocsInitializationError) {
@@ -143,6 +145,99 @@ export class ApiDocLoader {
     }
 
     return filepathReal;
+  }
+
+  /**
+   * Loads Blazor API docs from pre-built llms-full.txt files.
+   * Expected layout: docs/blazor/{package}/{version}/llms-full.txt
+   * Each file is split on "### [" headings — one DocEntry per component.
+   */
+  private parseLlmsFullTxt(config: PlatformConfig): void {
+    if (config.apiSource.kind !== 'llms-full-txt') {
+      throw new ApiDocsInitializationError(
+        `Invalid llms-full-txt source configuration for ${config.displayName} (${config.key}).`
+      );
+    }
+
+    const docsPath = join(__dirname, '..', '..', config.apiSource.docsPath);
+
+    if (!existsSync(docsPath)) {
+      throw new ApiDocsInitializationError(
+        `Blazor API docs not found at ${docsPath}. Run: npm run build:docs:blazor`
+      );
+    }
+
+    let count = 0;
+
+    // Walk docs/blazor/{package}/{version}/llms-full.txt
+    for (const pkgName of readdirSync(docsPath)) {
+      const pkgDir = join(docsPath, pkgName);
+      if (!statSync(pkgDir).isDirectory()) continue;
+
+      for (const versionName of readdirSync(pkgDir)) {
+        const versionDir = join(pkgDir, versionName);
+        if (!statSync(versionDir).isDirectory()) continue;
+
+        const llmsFile = join(versionDir, 'llms-full.txt');
+        if (!existsSync(llmsFile)) continue;
+
+        const content = readFileSync(llmsFile, 'utf-8');
+
+        // Split on "### [ComponentName](url)" headings
+        // Each chunk starts with the heading line and contains the member list
+        const chunks = content.split(/(?=^### \[)/m).filter(c => c.trim());
+
+        for (const chunk of chunks) {
+          // Extract component name from "### [IgbAvatar](url)"
+          const headingMatch = chunk.match(/^### \[([^\]]+)\]/);
+          if (!headingMatch) continue;
+
+          const componentName = headingMatch[1].trim();
+
+          // Determine type from name prefix / chunk content
+          const type = this.inferBlazorType(chunk);
+
+          // Extract first line of prose as summary (skip the heading itself)
+          const bodyLines = chunk.split('\n').slice(1);
+          const summaryLine = bodyLines.find(l => l.trim() && !l.startsWith('-') && !l.startsWith('#')) ?? '';
+
+          // Keywords: component name parts split by camelCase
+          const keywords = componentName
+            .replace(/^Igb/, '')
+            .split(/(?=[A-Z])/)
+            .map(w => w.toLowerCase())
+            .filter(Boolean);
+
+          const key = `${config.key}:${componentName}`;
+          this.docs.set(key, {
+            filepath: llmsFile,
+            content: chunk,
+            title: componentName,
+            component: componentName,
+            type,
+            keywords,
+            summary: summaryLine.trim(),
+            platform: config.key,
+          });
+          count++;
+        }
+      }
+    }
+
+    if (count === 0) {
+      throw new ApiDocsInitializationError(
+        `No Blazor API entries found in ${docsPath}. Ensure the Astro build has been run.`
+      );
+    }
+
+    console.error(`   ${config.displayName}: ${count} entries (from llms-full.txt)`);
+  }
+
+  private inferBlazorType(chunk: string): string {
+    if (/^### \[Igb\w+EventArgs\]/m.test(chunk)) return 'interface';
+    if (/^### \[Igb\w+Options\]/m.test(chunk)) return 'interface';
+    if (/enum/i.test(chunk.split('\n')[0])) return 'enum';
+    return 'class';
   }
 
   private parseTypedocJson(config: PlatformConfig): void {
