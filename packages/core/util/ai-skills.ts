@@ -47,7 +47,7 @@ export const AI_AGENT_LABELS: Record<AIAgentTarget, string> = {
 /**
  * Returns the project-level skills directory for the given AI agent target.
  */
-export function getSkillsDir(target: AIAgentTarget): string {
+function getSkillsDir(target: AIAgentTarget): string {
 	return AI_AGENT_SKILLS_DIRS[target];
 }
 
@@ -131,11 +131,10 @@ function resolveSkillsRoots(): string[] {
 
 /**
  * Copies skill files from the installed Ignite UI package(s) into the
- * specified skills directory.
- * @param skillsDir – destination directory (e.g. `.agents/skills`, `.cursor/skills`, …)
+ * skills directories for each of the given AI agents.
+ * @param agents – list of AI agent targets to copy skills for
  */
-export function copyAISkillsToProject(skillsDir: string): AISkillsCopyResult {
-	const outputDir = skillsDir;
+export function copyAISkillsToProject(agents: AIAgentTarget[]): AISkillsCopyResult {
 	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0 };
 	// Source reads (glob + readFile) always use physical FS - skill files can
 	// come from sources outside the project virtual tree (external/global package):
@@ -150,37 +149,41 @@ export function copyAISkillsToProject(skillsDir: string): AISkillsCopyResult {
 
 	const multiRoot = skillsRoots.length > 1;
 
-	for (const skillsRoot of skillsRoots) {
-		const rawPaths = srcFs.glob(skillsRoot, "**/*");
-		const pkgDirName = multiRoot ? path.basename(path.dirname(skillsRoot)) : "";
+	for (const agent of agents) {
+		const outputDir = getSkillsDir(agent);
 
-		for (const p of rawPaths) {
-			result.found++;
-			// Normalize to posix and strip leading '/' so path.posix.relative works
-			// across both FsFileSystem (relative paths) and NgTreeFileSystem (tree-rooted paths)
-			const normP = p.replace(/\\/g, "/").replace(/^\//, "");
-			const normRoot = skillsRoot.replace(/\\/g, "/").replace(/^\//, "");
-			const rel = path.posix.relative(normRoot, normP);
-			const dest = multiRoot
-				? `${outputDir}/${pkgDirName}/${rel}`
-				: `${outputDir}/${rel}`;
+		for (const skillsRoot of skillsRoots) {
+			const rawPaths = srcFs.glob(skillsRoot, "**/*");
+			const pkgDirName = multiRoot ? path.basename(path.dirname(skillsRoot)) : "";
 
-			const newContent = srcFs.readFile(p);
-			try {
-				if (destFs.fileExists(dest)) {
-					const existingContent = destFs.readFile(dest);
-					if (existingContent === newContent) {
-						result.skipped++;
-						continue;
+			for (const p of rawPaths) {
+				result.found++;
+				// Normalize to posix and strip leading '/' so path.posix.relative works
+				// across both FsFileSystem (relative paths) and NgTreeFileSystem (tree-rooted paths)
+				const normP = p.replace(/\\/g, "/").replace(/^\//, "");
+				const normRoot = skillsRoot.replace(/\\/g, "/").replace(/^\//, "");
+				const rel = path.posix.relative(normRoot, normP);
+				const dest = multiRoot
+					? `${outputDir}/${pkgDirName}/${rel}`
+					: `${outputDir}/${rel}`;
+
+				const newContent = srcFs.readFile(p);
+				try {
+					if (destFs.fileExists(dest)) {
+						const existingContent = destFs.readFile(dest);
+						if (existingContent === newContent) {
+							result.skipped++;
+							continue;
+						}
+						destFs.writeFile(dest, newContent);
+						Util.log(`${Util.greenCheck()} Updated ${dest}`);
+					} else {
+						destFs.writeFile(dest, newContent);
+						Util.log(`${Util.greenCheck()} Created ${dest}`);
 					}
-					destFs.writeFile(dest, newContent);
-					Util.log(`${Util.greenCheck()} Updated ${dest}`);
-				} else {
-					destFs.writeFile(dest, newContent);
-					Util.log(`${Util.greenCheck()} Created ${dest}`);
+				} catch {
+					result.failed++;
 				}
-			} catch {
-				result.failed++;
 			}
 		}
 	}

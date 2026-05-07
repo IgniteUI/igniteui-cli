@@ -1,4 +1,4 @@
-import { addMcpServers, AI_AGENT_LABELS, AI_AGENT_SKILLS_DIRS, AIAgentTarget, copyAgentInstructionFiles, copyAISkillsToProject, getSkillsDir, GoogleAnalytics, InquirerWrapper, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
+import { addMcpServers, AI_AGENT_LABELS, AI_AGENT_SKILLS_DIRS, AIAgentTarget, copyAgentInstructionFiles, copyAISkillsToProject, GoogleAnalytics, InquirerWrapper, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
 export function configureMCP(): void {
@@ -12,13 +12,7 @@ export function configureMCP(): void {
 }
 
 export function configureSkills(agents: AIAgentTarget[]): void {
-	for (const agent of agents) {
-		configureSkillsForAgent(getSkillsDir(agent));
-	}
-}
-
-function configureSkillsForAgent(skillsDir: string): void {
-	const result = copyAISkillsToProject(skillsDir);
+	const result = copyAISkillsToProject(agents);
 	if (result.found === 0) {
 		Util.warn("No AI skill files found. Make sure packages are installed (npm install) " +
 			"and your Ignite UI packages are up-to-date.", "yellow");

@@ -331,9 +331,8 @@ export const appConfig: ApplicationConfig = {
 		it("should call copyAISkillsToProject with claude and generic defaults when no options", async () => {
 			await runner.runSchematic("ai-config", {}, tree);
 
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(2);
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".claude/skills");
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".agents/skills");
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["claude", "generic"]);
 			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "generic"]);
 		});
 
@@ -405,33 +404,32 @@ export const appConfig: ApplicationConfig = {
 			expect(content.servers["angular-cli"]).toBeDefined();
 		});
 
-		it("should pass resolved skillsDir when agent option is provided", async () => {
+		it("should pass agents when agent option is provided", async () => {
 			await runner.runSchematic("ai-config", { agent: ["cursor"] }, tree);
 
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".cursor/skills");
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["cursor"]);
 			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["cursor"]);
 		});
 
-		it("should pass resolved skillsDir for copilot agent", async () => {
+		it("should pass agents for copilot agent", async () => {
 			await runner.runSchematic("ai-config", { agent: ["copilot"] }, tree);
 
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".github/skills");
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["copilot"]);
 			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["copilot"]);
 		});
 
-		it("should pass resolved skillsDir for generic agent", async () => {
+		it("should pass agents for generic agent", async () => {
 			await runner.runSchematic("ai-config", { agent: ["generic"] }, tree);
 
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".agents/skills");
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["generic"]);
 			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["generic"]);
 		});
 
 		it("should configure multiple agents", async () => {
 			await runner.runSchematic("ai-config", { agent: ["claude", "cursor"] }, tree);
 
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(2);
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".claude/skills");
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(".cursor/skills");
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["claude", "cursor"]);
 			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "cursor"]);
 		});
 	});

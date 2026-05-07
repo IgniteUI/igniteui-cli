@@ -1,5 +1,5 @@
 import * as path from "path";
-import { AI_AGENT_INSTRUCTION_FILES, AI_AGENT_SKILLS_DIRS, AIAgentTarget, App, Config, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, getSkillsDir, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { AI_AGENT_INSTRUCTION_FILES, AI_AGENT_SKILLS_DIRS, AIAgentTarget, App, Config, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;
@@ -92,7 +92,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", mockSkillContent);
 		});
@@ -128,7 +128,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", "skill content");
 		});
@@ -158,7 +158,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", newContent);
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Updated .claude/skills/angular.md"));
@@ -191,7 +191,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			const result = copyAISkillsToProject(".claude/skills");
+			const result = copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).not.toHaveBeenCalled();
 			expect(result.found).toBe(1);
@@ -229,7 +229,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "react" }
 			} as unknown as Config);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/overview.md", content);
 		});
@@ -263,7 +263,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "webcomponents" }
 			} as unknown as Config);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", content);
 		});
@@ -290,7 +290,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", "skill content");
 		});
@@ -315,7 +315,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/overview.md", "react skill content");
 		});
@@ -340,7 +340,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", "wc skill content");
 		});
@@ -362,7 +362,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			} as unknown as Config);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			const result = copyAISkillsToProject(".claude/skills");
+			const result = copyAISkillsToProject(["claude"]);
 
 			expect(result.found).toBe(0);
 			expect(destFs.writeFile).not.toHaveBeenCalled();
@@ -387,7 +387,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).not.toHaveBeenCalled();
 		});
@@ -418,7 +418,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			const result = copyAISkillsToProject(".claude/skills");
+			const result = copyAISkillsToProject(["claude"]);
 
 			expect(result.found).toBe(1);
 			expect(result.skipped).toBe(0);
@@ -454,7 +454,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			const result = copyAISkillsToProject(".claude/skills");
+			const result = copyAISkillsToProject(["claude"]);
 
 			expect(result.found).toBe(1);
 			expect(result.skipped).toBe(0);
@@ -492,7 +492,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			const result = copyAISkillsToProject(".claude/skills");
+			const result = copyAISkillsToProject(["claude"]);
 
 			expect(result.found).toBe(2);
 			expect(result.skipped).toBe(0);
@@ -527,7 +527,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			} as unknown as Config);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("angular");
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", content);
@@ -558,7 +558,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("react");
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/react.md", content);
@@ -589,7 +589,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("webcomponents");
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", content);
@@ -604,7 +604,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
-			const result = copyAISkillsToProject(".claude/skills");
+			const result = copyAISkillsToProject(["claude"]);
 
 			expect(result.found).toBe(0);
 			expect(result.skipped).toBe(0);
@@ -634,7 +634,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			} as unknown as Config);
 			mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/grids/grid.md", content);
 		});
@@ -666,7 +666,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			} as unknown as Config);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("react");
 			expect(mockTm.getFrameworkById).not.toHaveBeenCalledWith("angular");
@@ -698,7 +698,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			} as unknown as Config);
 			mockTemplateManager([ABS_TEMPLATE_PATH]);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			// Source reads go to real FsFileSystem (srcFs)
 			expect(srcSpies.glob).toHaveBeenCalledWith(SKILLS_ROOT, "**/*");
@@ -735,7 +735,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject(".claude/skills");
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/grids/grid.md", content);
 		});
@@ -765,12 +765,12 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject(getSkillsDir("cursor"));
+			copyAISkillsToProject(["cursor"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".cursor/skills/angular.md", content);
 		});
 
-		it("should copy skills to .agents/skills/ when skillsDir targets generic", () => {
+		it("should copy skills to .agents/skills/ when targeting generic agent", () => {
 			const angularSkillsDir = skillsDir("igniteui-angular");
 			const skillFilePath = skillFile("igniteui-angular", "angular.md");
 			const content = "# Angular skills";
@@ -793,12 +793,12 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject(getSkillsDir("generic"));
+			copyAISkillsToProject(["generic"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".agents/skills/angular.md", content);
 		});
 
-		it("should copy skills to .github/skills/ when skillsDir targets copilot", () => {
+		it("should copy skills to .github/skills/ when targeting copilot agent", () => {
 			const reactPkg = "igniteui-react";
 			const dir = skillsDir(reactPkg);
 			const file = skillFile(reactPkg, "overview.md");
@@ -822,12 +822,12 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "react" }
 			} as unknown as Config);
 
-			copyAISkillsToProject(getSkillsDir("copilot"));
+			copyAISkillsToProject(["copilot"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".github/skills/overview.md", content);
 		});
 
-		it("should support a custom skills directory path", () => {
+		it("should copy skills to multiple agent directories when given multiple agents", () => {
 			const angularSkillsDir = skillsDir("igniteui-angular");
 			const skillFilePath = skillFile("igniteui-angular", "angular.md");
 			const content = "# Angular skills";
@@ -850,72 +850,14 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject("my-custom/ai-skills");
-
-			expect(destFs.writeFile).toHaveBeenCalledWith("my-custom/ai-skills/angular.md", content);
-		});
-
-		it("should default to .claude/skills/ when no skillsDir is provided", () => {
-			const angularSkillsDir = skillsDir("igniteui-angular");
-			const skillFilePath = skillFile("igniteui-angular", "angular.md");
-			const content = "# Angular skills";
-
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === angularSkillsDir ? [skillFilePath] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
-			});
-
-			const destFs = makeDestFs({
-				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
-					p === angularSkillsDir
-				)
-			});
-			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
-
-			copyAISkillsToProject(".claude/skills");
+			const result = copyAISkillsToProject(["claude", "cursor", "generic"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", content);
+			expect(destFs.writeFile).toHaveBeenCalledWith(".cursor/skills/angular.md", content);
+			expect(destFs.writeFile).toHaveBeenCalledWith(".agents/skills/angular.md", content);
+			expect(destFs.writeFile).toHaveBeenCalledTimes(3);
+			expect(result.found).toBe(3);
 		});
-	});
-});
-
-describe("Unit - getSkillsDir", () => {
-	it("should return .claude/skills for 'claude'", () => {
-		expect(getSkillsDir("claude")).toBe(".claude/skills");
-	});
-
-	it("should return .github/skills for 'copilot'", () => {
-		expect(getSkillsDir("copilot")).toBe(".github/skills");
-	});
-
-	it("should return .cursor/skills for 'cursor'", () => {
-		expect(getSkillsDir("cursor")).toBe(".cursor/skills");
-	});
-
-	it("should return .codex/skills for 'codex'", () => {
-		expect(getSkillsDir("codex")).toBe(".codex/skills");
-	});
-
-	it("should return .windsurf/skills for 'windsurf'", () => {
-		expect(getSkillsDir("windsurf")).toBe(".windsurf/skills");
-	});
-
-	it("should return .gemini/skills for 'gemini'", () => {
-		expect(getSkillsDir("gemini")).toBe(".gemini/skills");
-	});
-
-	it("should return .junie/skills for 'junie'", () => {
-		expect(getSkillsDir("junie")).toBe(".junie/skills");
-	});
-
-	it("should return .agents/skills for 'generic'", () => {
-		expect(getSkillsDir("generic")).toBe(".agents/skills");
 	});
 });
 
