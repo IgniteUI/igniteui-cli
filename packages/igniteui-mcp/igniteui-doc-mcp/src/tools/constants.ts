@@ -48,7 +48,7 @@ Returns up to 20 results ranked by relevance. Each result includes: doc name (pa
 Query must be non-empty. Special characters are sanitized automatically — only * for prefix matching needs to be passed explicitly.
 `,
 
-  get_api_reference: `Look up the full API reference for a specific Ignite UI component or class by exact name. Case-insensitive matching. Covers angular, react, and webcomponents (Blazor API not yet available).
+  get_api_reference: `Look up the full API reference for a specific Ignite UI component or class by exact name. Case-insensitive matching. Covers all four frameworks: angular, react, webcomponents, and blazor.
 
 Use this when you already know the exact component name — from the user's code (e.g. IgxGridComponent, IgrGrid, IgcSelect) or from a previous search_api result. If you only have a keyword or partial name, call search_api first to discover the exact name.
 
@@ -57,7 +57,7 @@ Returns formatted markdown with the class/interface summary, properties (with ty
 Component name must be ≤128 characters. Returns isError with a suggestion to use search_api if not found.
 `,
 
-  search_api: `Search Ignite UI API entries by keyword, feature name, or partial component name. Returns up to 10 results ranked by relevance across angular, react, and webcomponents (Blazor API not yet available).
+  search_api: `Search Ignite UI API entries by keyword, feature name, or partial component name. Returns up to 10 results ranked by relevance across all four frameworks: angular, react, webcomponents, and blazor.
 
 Use this as the discovery step when the exact component name is unknown — e.g. the user asks about "grid virtualization" or "combo filtering". Also use it to confirm which framework a component belongs to. Do NOT use this if you already know the exact component name — call get_api_reference directly instead.
 

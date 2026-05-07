@@ -22,21 +22,25 @@ describe('PLATFORM_CONFIGS', () => {
     }
   });
 
-  it('angular uses markdown-index api source', () => {
-    expect(PLATFORM_CONFIGS.angular.apiSource.kind).toBe('markdown-index');
-  });
-
-  it('react uses typedoc-json api source with a jsonPath', () => {
-    const source = PLATFORM_CONFIGS.react.apiSource;
-    expect(source.kind).toBe('typedoc-json');
-    if (source.kind === 'typedoc-json') {
-      expect(source.jsonPath).toBeDefined();
-      expect(source.jsonPath).toContain('.json');
+  it('angular uses llms-full-txt api source', () => {
+    const source = PLATFORM_CONFIGS.angular.apiSource;
+    expect(source.kind).toBe('llms-full-txt');
+    if (source.kind === 'llms-full-txt') {
+      expect(source.docsPath).toContain('angular-api');
     }
   });
 
-  it('webcomponents uses markdown-index api source', () => {
-    expect(PLATFORM_CONFIGS.webcomponents.apiSource.kind).toBe('markdown-index');
+  it('react uses llms-full-txt api source', () => {
+    const source = PLATFORM_CONFIGS.react.apiSource;
+    expect(source.kind).toBe('llms-full-txt');
+    if (source.kind === 'llms-full-txt') {
+      expect(source.docsPath).toBeDefined();
+      expect(source.docsPath).toContain('react-api');
+    }
+  });
+
+  it('webcomponents uses llms-full-txt api source', () => {
+    expect(PLATFORM_CONFIGS.webcomponents.apiSource.kind).toBe('llms-full-txt');
   });
 
   it('each config has required fields', () => {
