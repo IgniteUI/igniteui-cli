@@ -1,16 +1,19 @@
-import { ControlExtraConfiguration, ProjectTemplate, TemplateDelimiters } from "@igniteui/cli-core";
+import { ControlExtraConfiguration, defaultDelimiters, ProjectTemplate } from "@igniteui/cli-core";
 import * as path from "path";
 
-export class BaseIgcTsAiConfigPartial implements ProjectTemplate {
+// currently reusing hidden project impl as components/views pipeline go through registerInProject
+// ideally would define a separate type/category for those partial files
+export class IgcTsAiConfigPartial implements ProjectTemplate {
 
 	public id: string = "ai-config";
 	public name = "ai-config";
-	public description = "Project structure with routing";
+	public description = "Ignite UI CLI AI config for Web Components partial project files";
 	public framework: string = "webcomponents";
 	public projectType: string = "igc-ts";
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
 	public isHidden: boolean = true;
+	public delimiters = defaultDelimiters;
 
 	public get templatePaths(): string[] {
 		return [path.join(__dirname, "files")];
@@ -19,20 +22,19 @@ export class BaseIgcTsAiConfigPartial implements ProjectTemplate {
 	installModules(): void {
 		throw new Error("Method not implemented.");
 	}
-	upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
+	upgradeIgniteUIPackages(_projectPath: string, _packagePath: string): Promise<boolean> {
 		throw new Error("Method not implemented.");
 	}
-	generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any; } {
+	generateConfig(_name: string, _theme: string, ..._options: any[]): { [key: string]: any; } {
 		throw new Error("Method not implemented.");
 	}
-	delimiters: TemplateDelimiters;
 	getExtraConfiguration(): ControlExtraConfiguration[] {
 		throw new Error("Method not implemented.");
 	}
-	setExtraConfiguration(extraConfigKeys: {}) {
+	setExtraConfiguration(_extraConfigKeys: {}) {
 		throw new Error("Method not implemented.");
 	}
 }
-export default new BaseIgcTsAiConfigPartial();
+export default new IgcTsAiConfigPartial();
 
 

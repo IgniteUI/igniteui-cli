@@ -1,7 +1,9 @@
-import { ControlExtraConfiguration, NPM_ANGULAR, ProjectTemplate, Util, updateWorkspace } from "@igniteui/cli-core";
+import { ControlExtraConfiguration, ProjectTemplate } from "@igniteui/cli-core";
 import * as path from "path";
 
-export class BaseIgxAiConfigPartial implements ProjectTemplate {
+// currently reusing hidden project impl as components/views pipeline go through registerInProject
+// ideally would define a separate type/category for those partial files
+export class IgxAiConfigPartial implements ProjectTemplate {
 	public id: string = "ai-config";
 	public name = "ai-config";
 	public description = "Ignite UI CLI AI config for Angular partial project files";
@@ -27,31 +29,18 @@ export class BaseIgxAiConfigPartial implements ProjectTemplate {
 	public installModules(): void {
 		throw new Error("Method not implemented.");
 	}
-
-	public async upgradeIgniteUIPackages(projectPath: string, packagePath: string): Promise<boolean> {
-		return updateWorkspace(projectPath);
+	public async upgradeIgniteUIPackages(_projectPath: string, _packagePath: string): Promise<boolean> {
+		throw new Error("Method not implemented.");
 	}
 	public getExtraConfiguration(): ControlExtraConfiguration[] {
-		return [];
+		throw new Error("Method not implemented.");
 	}
-	public setExtraConfiguration(extraConfigKeys: any[]) { }
-	public generateConfig(name: string, theme: string, ...options: any[]): { [key: string]: any } {
-		return{}
+	public setExtraConfiguration(_extraConfigKeys: any[]) {
+		throw new Error("Method not implemented.");
 	}
-
-	protected getVariablesConfig(name: string, theme: string) {
-		return {
-			name,
-			theme,
-			"cliVersion": Util.version(),
-			"dash-name": Util.lowerDashed(name),
-			"description": this.description,
-			"dot": ".",
-			"path": name,
-			"projectTemplate": this.id,
-			"yamlDefaultBranch": this.id === "base" ? "<%=yaml-default-branch%>" : "main"
-		};
+	public generateConfig(_name: string, _theme: string, ..._options: any[]): { [key: string]: any } {
+		return { /* partials not using Util.processTemplates atm */ };
 	}
 }
 
-export default new BaseIgxAiConfigPartial();
+export default new IgxAiConfigPartial();
