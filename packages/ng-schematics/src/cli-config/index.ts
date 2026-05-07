@@ -1,6 +1,7 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
+import { RunSchematicTask } from "@angular-devkit/schematics/tasks";
 import { addClassToBody, addMcpServers, AIAgentTarget, App, copyAgentInstructionFiles, copyAISkillsToProject, FormatSettings, getSkillsDir, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
@@ -158,15 +159,17 @@ export function addAIConfig(options: { agent?: AIAgentTarget[] } = {}): Rule {
 }
 
 export default function (): Rule {
-	return (tree: Tree) => {
+	return (tree: Tree, context: SchematicContext) => {
 		appInit(tree);
+		// queue ai-config with prompts:
+		context.addTask(new RunSchematicTask("ai-config", {}));
+
 		return chain([
 			importStyles(),
 			addTypographyToProj(),
 			importBrowserAnimations(),
 			createCliConfig(),
 			displayVersionMismatch(),
-			aiConfig({ init: false, agents: ["claude", "generic"] })
 		]);
 	};
 }
