@@ -504,7 +504,6 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configureMCP).toHaveBeenCalledTimes(1);
 
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.input).toHaveBeenCalledWith({
@@ -583,7 +582,6 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configureMCP).toHaveBeenCalledTimes(1);
 
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
@@ -709,7 +707,6 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configureMCP).toHaveBeenCalledTimes(1);
 
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.checkbox).toHaveBeenCalledWith({

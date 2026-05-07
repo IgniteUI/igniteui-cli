@@ -4,7 +4,7 @@ import {
 } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as add } from "./commands/add";
-import { configure, configureMCP, promptForAgents } from "./commands/ai-config";
+import { configure } from "./commands/ai-config";
 import { default as start } from "./commands/start";
 import { default as upgrade } from "./commands/upgrade";
 import { TemplateManager } from "./TemplateManager";
@@ -76,8 +76,6 @@ export class PromptSession extends BasePromptSession {
 			// project options:
 			theme = await this.getTheme(projLibrary);
 
-			const agents = await promptForAgents();
-
 			Util.log("  Generating project structure.");
 			const config = projTemplate.generateConfig(projectName, theme);
 			for (const templatePath of projTemplate.templatePaths) {
@@ -91,10 +89,7 @@ export class PromptSession extends BasePromptSession {
 			}
 			// move cwd to project folder
 			process.chdir(projectName);
-
-			if (agents?.length) {
-				await configure(agents);
-			}
+			await this.configureAI();
 		}
 		await this.chooseActionLoop(projLibrary);
 		//TODO: restore cwd?
@@ -111,8 +106,7 @@ export class PromptSession extends BasePromptSession {
 	}
 
 	protected async configureAI(): Promise<void> {
-		// skip adding skills since those are baked into the project template atm:
-		configureMCP();
+		await configure();
 	}
 
 	/**
