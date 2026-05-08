@@ -1,3 +1,14 @@
+# 15.0.1 (2026-04-28)
+
+## What's Changed
+* fix(igx-ts): fix spec files by @Hristo313 in https://github.com/IgniteUI/igniteui-cli/pull/1661
+* fix(cli): default new command to angular by @georgianastasov in https://github.com/IgniteUI/igniteui-cli/pull/1666
+* fix(igx-ts): resolve lint errors in Angular project templates by @Copilot in https://github.com/IgniteUI/igniteui-cli/pull/1668
+* feat(cli): list-all-frameworks mode + help output overhaul by @dkalinovInfra in https://github.com/IgniteUI/igniteui-cli/pull/1662
+* ci(npm): OIDC/Trusted publishing workflow & node update by @turbobobbytraykov in https://github.com/IgniteUI/igniteui-cli/pull/1654
+* build(deps): bump postcss from 8.5.8 to 8.5.12 in the npm_and_yarn group across 1 directory by @dependabot[bot] in https://github.com/IgniteUI/igniteui-cli/pull/1670
+* chore(igx-ts,igr-ts,igc-ts): bump igniteui package deps by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1673
+
 # 15.0.0 (2026-04-22)
 
 ## Highlights
