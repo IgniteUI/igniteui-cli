@@ -35,7 +35,8 @@
     },
     "ai-config": {
       "description": "Configures AI tooling: MCP servers and AI coding skills.",
-      "factory": "./cli-config/index#addAIConfig"
+      "factory": "./cli-config/index#addAIConfig",
+      "schema": "./cli-config/ai-config-schema.json"
     },
     "upgrade-packages": {
       "description": "Upgrades to the licensed Ignite UI for Angular packages",
