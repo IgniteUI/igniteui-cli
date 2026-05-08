@@ -127,7 +127,7 @@ function appInit(tree: Tree) {
 	setVirtual(tree);
 }
 
-function aiConfig({ init, agents, assistant = "vscode" }: { init: boolean; agents: AIAgentTarget[]; assistant?: AiCodingAssistant }): Rule {
+function aiConfig({ init, agents, assistants = ["vscode"] }: { init: boolean; agents: AIAgentTarget[]; assistants?: AiCodingAssistant[] }): Rule {
 	return (tree: Tree) => {
 		if (init) {
 			appInit(tree);
@@ -142,15 +142,19 @@ function aiConfig({ init, agents, assistant = "vscode" }: { init: boolean; agent
 			}
 		};
 
-		addMcpServers(assistant, angularCliServer);
+		for (const assistant of assistants) {
+			addMcpServers(assistant, angularCliServer);
+		}
 	};
 }
 
 /** Standalone `ai-config` schematic entry */
-export function addAIConfig(options: { agents?: AIAgentTarget[]; assistant?: AiCodingAssistant } = {}): Rule {
+export function addAIConfig(options: { agents?: AIAgentTarget[]; /* TODO: assistants */  assistant?: AiCodingAssistant[] } = {}): Rule {
 	const selected = options.agents?.length ? options.agents : [] as AIAgentTarget[];
 	const agents = selected.includes("none" as any) ? [] : selected;
-	return aiConfig({ init: true, agents, assistant: options.assistant });
+	const selectedAssistants = options.assistant?.length ? options.assistant : ["vscode"] as AiCodingAssistant[];
+	const assistants = selectedAssistants.includes("none" as any) ? [] : selectedAssistants;
+	return aiConfig({ init: true, agents, assistants });
 }
 
 export default function (): Rule {

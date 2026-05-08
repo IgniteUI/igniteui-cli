@@ -444,7 +444,7 @@ export const appConfig: ApplicationConfig = {
 		});
 
 		it("should write to .cursor/mcp.json with mcpServers key when assistant is cursor", async () => {
-			await runner.runSchematic("ai-config", { assistant: "cursor" }, tree);
+			await runner.runSchematic("ai-config", { assistant: ["cursor"] }, tree);
 
 			const mcpFilePath = "/.cursor/mcp.json";
 			expect(tree.exists(mcpFilePath)).toBeTruthy();
@@ -456,7 +456,7 @@ export const appConfig: ApplicationConfig = {
 		});
 
 		it("should write to .mcp.json when assistant is claude-code", async () => {
-			await runner.runSchematic("ai-config", { assistant: "claude-code" }, tree);
+			await runner.runSchematic("ai-config", { assistant: ["claude-code"] }, tree);
 
 			const mcpFilePath = "/.mcp.json";
 			expect(tree.exists(mcpFilePath)).toBeTruthy();

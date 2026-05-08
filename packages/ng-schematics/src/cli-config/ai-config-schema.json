@@ -32,14 +32,19 @@
       }
     },
     "assistant": {
-      "type": "string",
-      "description": "Coding assistant to configure MCP servers for.",
-      "default": "vscode",
-      "enum": ["vscode", "cursor", "claude-code", "gemini", "junie"],
+      "type": "array",
+      "description": "Coding assistant(s) to configure MCP servers for.",
+      "default": ["vscode"],
+      "items": {
+        "type": "string",
+        "enum": ["none", "vscode", "cursor", "claude-code", "gemini", "junie"]
+      },
       "x-prompt": {
-        "message": "Which coding assistant should MCP servers be configured for?",
+        "message": "Which coding assistants should MCP servers be configured for?",
         "type": "list",
+        "multiselect": true,
         "items": [
+          { "value": "none", "label": "None (skip MCP configuration)" },
           { "value": "vscode", "label": "VS Code (GitHub Copilot)" },
           { "value": "cursor", "label": "Cursor" },
           { "value": "claude-code", "label": "Claude Code" },

@@ -54,7 +54,7 @@ describe("Unit - ai-config command", () => {
 			const mockFs = createMockFs();
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP("cursor");
+			configureMCP(["cursor"]);
 
 			expect(mockFs.writeFile).toHaveBeenCalledWith(".cursor/mcp.json", jasmine.any(String));
 			const config = writtenConfig(mockFs);
@@ -277,8 +277,10 @@ describe("Unit - ai-config command", () => {
 		it("prompts for agents when --agent is not provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(true);
-			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
-			spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("vscode"));
+			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+				Promise.resolve(["vscode"]),
+				Promise.resolve(["claude"])
+			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
@@ -317,8 +319,10 @@ describe("Unit - ai-config command", () => {
 		it("still configures MCP when none is selected for skills", async () => {
 			const mockFs = createMockFs();
 			App.container.set(FS_TOKEN, mockFs);
-			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
-			spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("vscode"));
+			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+				Promise.resolve(["vscode"]),
+				Promise.resolve(["none"])
+			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
@@ -331,8 +335,10 @@ describe("Unit - ai-config command", () => {
 		it("configures multiple agents when selected interactively", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(true);
-			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude", "cursor"]));
-			spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("vscode"));
+			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+				Promise.resolve(["vscode"]),
+				Promise.resolve(["claude", "cursor"])
+			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
@@ -344,43 +350,46 @@ describe("Unit - ai-config command", () => {
 
 		it("skips prompt when --agent is provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
-			spyOn(InquirerWrapper, "checkbox");
-			spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("vscode"));
+			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["vscode"]));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agent: ["cursor"] });
 
-			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
+			expect(InquirerWrapper.checkbox).not.toHaveBeenCalledWith(jasmine.objectContaining({
+				message: "Which AI agents do you want to generate skills and instructions for?"
+			}));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor" }));
 		});
 
 		it("skips assistant prompt when --assistant is provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
-			spyOn(InquirerWrapper, "select");
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", assistant: "cursor" });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", assistant: ["cursor"] });
 
-			expect(InquirerWrapper.select).not.toHaveBeenCalled();
-			expect((createMockFs().writeFile as jasmine.Spy).calls || true).toBeTruthy();
+			expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(1);
 		});
 
 		it("prompts for assistant with correct message", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
-			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
-			spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("cursor"));
+			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+				Promise.resolve(["cursor"]),
+				Promise.resolve(["claude"])
+			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
-			expect(InquirerWrapper.select).toHaveBeenCalledWith(jasmine.objectContaining({
-				message: "Which coding assistant should MCP servers be configured for?"
+			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
+				message: "Which coding assistants should MCP servers be configured for?"
 			}));
 		});
 
 		it("writes to correct config path for selected assistant", async () => {
 			const mockFs = createMockFs();
 			App.container.set(FS_TOKEN, mockFs);
-			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
-			spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("claude-code"));
+			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+				Promise.resolve(["claude-code"]),
+				Promise.resolve(["none"])
+			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 

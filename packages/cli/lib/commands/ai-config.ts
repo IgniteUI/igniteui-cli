@@ -1,15 +1,17 @@
 import { addMcpServers, AI_AGENT_LABELS, AI_AGENT_CHOICES, AIAgentTarget, copyAgentInstructionFiles, copyAISkillsToProject, GoogleAnalytics, InquirerWrapper, Util, AiCodingAssistant, AI_ASSISTANT_MCP_CONFIGS } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
-export function configureMCP(assistant: AiCodingAssistant = "vscode"): void {
-	const { mcpFilePath } = AI_ASSISTANT_MCP_CONFIGS[assistant];
-	const modified = addMcpServers(assistant);
+export function configureMCP(assistants: AiCodingAssistant[] = ["vscode"]): void {
+	for (const assistant of assistants) {
+		const { mcpFilePath } = AI_ASSISTANT_MCP_CONFIGS[assistant];
+		const modified = addMcpServers(assistant);
 
-	if (!modified) {
-		Util.log(` Ignite UI MCP servers already configured in ${mcpFilePath}`);
-		return;
+		if (!modified) {
+			Util.log(` Ignite UI MCP servers already configured in ${mcpFilePath}`);
+		} else {
+			Util.log(Util.greenCheck() + ` MCP servers configured in ${mcpFilePath}`);
+		}
 	}
-	Util.log(Util.greenCheck() + ` MCP servers configured in ${mcpFilePath}`);
 }
 
 export function configureSkills(agents: AIAgentTarget[]): void {
@@ -27,12 +29,12 @@ export function configureSkills(agents: AIAgentTarget[]): void {
 	}
 }
 
-export async function configure(agents?: AIAgentTarget[], skills = true, assistant: AiCodingAssistant = "vscode"): Promise<void> {
+export async function configure(agents?: AIAgentTarget[], skills = true, assistants: AiCodingAssistant[] = ["vscode"]): Promise<void> {
 	if (!agents?.length) {
 		agents = await promptForAgents();
 	}
 	if (!agents.length) return;
-	configureMCP(assistant);
+	configureMCP(assistants);
 	if (skills) {
 		configureSkills(agents);
 	}
@@ -59,6 +61,15 @@ const AI_AGENT_CHECKBOX_CHOICES = [
 	}))
 ];
 
+const AI_ASSISTANT_CHECKBOX_CHOICES = [
+	{ value: "none", name: "None (skip MCP configuration)" },
+	...AI_ASSISTANT_CHOICES.map(a => ({
+		value: a,
+		name: AI_ASSISTANT_LABELS[a],
+		checked: a === "vscode"
+	}))
+];
+
 export async function promptForAgents(): Promise<AIAgentTarget[]> {
 	let selected: AIAgentTarget[] = AI_AGENT_CHECKBOX_DEFAULTS;
 	if (Util.canPrompt()) {
@@ -72,12 +83,14 @@ export async function promptForAgents(): Promise<AIAgentTarget[]> {
 	return selected;
 }
 
-export async function promptForAssistant(): Promise<AiCodingAssistant> {
-	const selected = await InquirerWrapper.select({
-		message: "Which coding assistant should MCP servers be configured for?",
-		choices: AI_ASSISTANT_CHOICES.map(a => ({ value: a, name: AI_ASSISTANT_LABELS[a] }))
+export async function promptForAssistant(): Promise<AiCodingAssistant[]> {
+	// TODO: check Util.canPrompt() and assign defaults
+	const selected = await InquirerWrapper.checkbox({
+		message: "Which coding assistants should MCP servers be configured for?",
+		required: true,
+		choices: AI_ASSISTANT_CHECKBOX_CHOICES
 	});
-	return selected as AiCodingAssistant;
+	return selected.includes("none") ? [] : selected as AiCodingAssistant[];
 }
 
 const command: CommandModule = {
@@ -92,21 +105,21 @@ const command: CommandModule = {
 			type: "array"
 		})
 		.option("assistant", {
-			describe: "Coding assistant to configure MCP servers for",
+			describe: "Coding assistant(s) to configure MCP servers for",
 			choices: AI_ASSISTANT_CHOICES,
-			type: "string"
+			type: "array"
 		}),
 	async handler(argv: ArgumentsCamelCase) {
 		let agents = argv.agent as AIAgentTarget[] | undefined;
-		let assistant = argv.assistant as AiCodingAssistant | undefined;
+		let assistants = argv.assistant as AiCodingAssistant[] | undefined;
 
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Ai Config"
 		});
 
-		if (!assistant) {
-			assistant = await promptForAssistant();
+		if (!assistants?.length) {
+			assistants = await promptForAssistant();
 		}
 		if (!agents?.length) {
 			agents = await promptForAgents();
@@ -118,7 +131,9 @@ const command: CommandModule = {
 			ea: `agent: ${agents.join(", ") || "none"}`
 		});
 
-		configureMCP(assistant);
+		if (assistants.length) {
+			configureMCP(assistants);
+		}
 
 		if (!agents.length) {
 			Util.log("No AI configuration selected. Skipping.");
