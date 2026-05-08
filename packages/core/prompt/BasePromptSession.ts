@@ -71,6 +71,7 @@ export abstract class BasePromptSession {
 			}
 			// move cwd to project folder
 			process.chdir(projectName);
+			await this.configureAI();
 		}
 		await this.chooseActionLoop(projLibrary);
 		//TODO: restore cwd?
@@ -422,8 +423,6 @@ export abstract class BasePromptSession {
 					await this.upgradePackages();
 				}
 			}
-
-			await this.configureAI();
 
 			const defaultPort = config.project.defaultPort;
 			const port = await this.getUserInput({

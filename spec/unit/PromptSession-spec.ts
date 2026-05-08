@@ -102,7 +102,7 @@ describe("Unit - PromptSession", () => {
 	});
 
 	beforeEach(() => {
-		spyOn(aiConfig, "configureMCP");
+		spyOn(aiConfig, "configure");
 	});
 
 	// TODO: most of the tests use same setup - move the setup to beforeAll call
@@ -202,6 +202,7 @@ describe("Unit - PromptSession", () => {
 		expect(InquirerWrapper.select).toHaveBeenCalledTimes(3);
 		expect(InquirerWrapper.select).toHaveBeenCalledWith(mockQuestion);
 		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
 	});
 	it("start - Should go into chooseActionLoop if project has local config", async () => {
 		const mockBaseTemplate = createMockBaseTemplate();
@@ -310,6 +311,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(mockSession.chooseActionLoop).toHaveBeenCalled();
+		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
 	});
 	it("start - New project - missing IFs", async () => {
 		const mockProject = {
@@ -399,6 +401,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Th15 w1ll");
 		expect(Util.directoryExists).toHaveBeenCalledTimes(3);
 		expect(Util.directoryExists).toHaveBeenCalledWith("Th15 w1ll");
+		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
 	});
 	it("chooseActionLoop - should run through properly - Add Component", async () => {
 		const mockExtraConfigurations = [{
@@ -504,7 +507,6 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configureMCP).toHaveBeenCalledTimes(1);
 
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.input).toHaveBeenCalledWith({
@@ -583,7 +585,6 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configureMCP).toHaveBeenCalledTimes(1);
 
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
@@ -709,7 +710,6 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configureMCP).toHaveBeenCalledTimes(1);
 
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.checkbox).toHaveBeenCalledWith({
