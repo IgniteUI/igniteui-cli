@@ -154,7 +154,7 @@ ig ai-config
 You will be prompted to select which AI tools to configure (Claude and Generic are selected by default). You can also pass agents directly:
 
 ```bash
-ig ai-config --agent claude copilot generic
+ig ai-config --agents claude copilot generic
 ```
 
 This creates or updates `.vscode/mcp.json` with entries for the [Ignite UI MCP](#mcp-server) and `igniteui-theming` MCP servers (existing servers are preserved), copies AI coding skill files from installed Ignite UI packages, and generates agent-specific instruction files (e.g. `CLAUDE.md`, `AGENTS.md`).
