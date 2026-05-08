@@ -100,11 +100,6 @@ describe("Schematics ng-new", () => {
 			registerTemplate: jasmine.createSpy()
 		};
 
-		const mockProject: Partial<ProjectTemplate> = {
-			upgradeIgniteUIPackages: () => Promise.resolve(true)
-		};
-		spyOn(mockProject, "upgradeIgniteUIPackages").and.callThrough();
-
 		const mockSession = {
 			chooseActionLoop: spyOn(SchematicsPromptSession.prototype, "chooseActionLoop")
 				.and.returnValue(Promise.resolve()),
@@ -113,7 +108,7 @@ describe("Schematics ng-new", () => {
 			getProjectTemplate: spyOn(SchematicsPromptSession.prototype, "getProjectTemplate")
 				.and.returnValue(Promise.resolve(mockProjectTemplate)),
 			getTheme: spyOn(SchematicsPromptSession.prototype, "getTheme")
-				.and.returnValue(Promise.resolve("custom")),
+				.and.returnValue(Promise.resolve("mock-theme")),
 			getUserInput: spyOn(SchematicsPromptSession.prototype, "getUserInput")
 				.and.returnValue(Promise.resolve(workingDirectory))
 		};
@@ -161,7 +156,7 @@ describe("Schematics ng-new", () => {
 			}
 		};
 		expect(taskOptions.length).toBe(3);
-		expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();
+		expect(mockProjectTemplate.upgradeIgniteUIPackages).toHaveBeenCalled();
 		expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
 		expect(taskOptions).toContain(expectedInit);
 		expect(taskOptions).toContain(expectedStart);
@@ -171,14 +166,31 @@ describe("Schematics ng-new", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
-		const mockProject: Partial<ProjectTemplate> = {
-			upgradeIgniteUIPackages: () => Promise.resolve(true)
+
+		const mockProject: Pick<ProjectTemplate, "upgradeIgniteUIPackages"> = {
+			upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
 		};
-		spyOn(mockProject, "upgradeIgniteUIPackages").and.callThrough();
+
+		const mockLibrary: Partial<ProjectLibrary> = {
+			name: "mock-library",
+			themes: ["mock-theme"],
+			components: [],
+			projectIds: ["another-mock"],
+			projects: [mockProject as ProjectTemplate],
+			templates: [],
+			projectType: "ts"
+		};
+
+		spyOn(SchematicsPromptSession.prototype, "getProjectLibraryByType")
+				.and.returnValue((Promise.resolve(mockLibrary as ProjectLibrary)));
 
 		const userAnswers = new Map<string, any>();
 		userAnswers.set("upgradePackages", true);
-		spyOnProperty(SchematicsPromptSession.prototype, "userAnswers", "get").and.returnValue(userAnswers);
+		Object.defineProperty(SchematicsPromptSession.prototype, "userAnswers", {
+			configurable: true,
+			get: () => userAnswers,
+			set: () => void 0
+		});
 
 		spyOn(AppProjectSchematic, "default").and.returnValue((currentTree: Tree, _context: SchematicContext) => {
 			currentTree.create("gitignore", "");
