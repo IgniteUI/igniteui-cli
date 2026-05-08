@@ -1,4 +1,4 @@
-import { App, Framework, Util } from "@igniteui/cli-core";
+import { AGENTS_TEMPLATE_FILE, AI_CONFIG_PROJECT_ID, AI_SKILLS_DIR_NAME, App, Framework, Util } from "@igniteui/cli-core";
 import path from "path";
 import * as fs from "fs";
 
@@ -38,20 +38,20 @@ describe("React templates", () => {
 		it("ai-config project template must be registered", () => {
 			const reactFramework: Framework = require(templatesLocation);
 			const projLibrary = reactFramework.projectLibraries.find(x => x.projectType === "igr-ts");
-			expect(projLibrary.getProject("ai-config")).toBeDefined();
+			expect(projLibrary.getProject(AI_CONFIG_PROJECT_ID)).toBeDefined();
 		});
 
-		const filesDir = path.resolve(__dirname, "../..", "packages/cli/templates/react/igr-ts/projects/ai-config/files");
+		const filesDir = path.resolve(__dirname, "../..", `packages/cli/templates/react/igr-ts/projects/${AI_CONFIG_PROJECT_ID}/files`);
 
 		it("AGENTS.md must exist in files/", () => {
-			expect(fs.existsSync(path.join(filesDir, "AGENTS.md")))
-				.withContext(`Missing AGENTS.md in ${filesDir}`)
+			expect(fs.existsSync(path.join(filesDir, AGENTS_TEMPLATE_FILE)))
+				.withContext(`Missing ${AGENTS_TEMPLATE_FILE} in ${filesDir}`)
 				.toBeTrue();
 		});
 
 		it("skills/ directory must exist in files/", () => {
-			expect(fs.existsSync(path.join(filesDir, "skills")))
-				.withContext(`Missing skills/ in ${filesDir}`)
+			expect(fs.existsSync(path.join(filesDir, AI_SKILLS_DIR_NAME)))
+				.withContext(`Missing ${AI_SKILLS_DIR_NAME}/ in ${filesDir}`)
 				.toBeTrue();
 		});
 	});

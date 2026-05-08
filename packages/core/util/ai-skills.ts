@@ -66,6 +66,8 @@ export interface AISkillsCopyResult {
 }
 
 export const AGENTS_TEMPLATE_FILE = "AGENTS.md";
+export const AI_CONFIG_PROJECT_ID = "ai-config";
+export const AI_SKILLS_DIR_NAME = "skills";
 
 /**
  * Returns the `files/` directory of the ai-config project template for the
@@ -75,7 +77,7 @@ export const AGENTS_TEMPLATE_FILE = "AGENTS.md";
 function resolveTemplateFilesDir(framework: string): string | null {
 	const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
 	const projectLib = templateManager?.getFrameworkById(framework)?.projectLibraries[0];
-	const templatePaths = projectLib?.getProject("ai-config")?.templatePaths ?? [];
+	const templatePaths = projectLib?.getProject(AI_CONFIG_PROJECT_ID)?.templatePaths ?? [];
 	return templatePaths[0] ?? null;
 }
 
@@ -110,7 +112,7 @@ function resolveSkillsRoots(): string[] {
 
 	for (const pkg of candidates) {
 		const resolved = resolvePackage(pkg as keyof typeof UPGRADEABLE_PACKAGES);
-		const skillsRoot = `node_modules/${resolved}/skills`;
+		const skillsRoot = `node_modules/${resolved}/${AI_SKILLS_DIR_NAME}`;
 		if (fs.directoryExists(skillsRoot) && !roots.includes(skillsRoot)) {
 			roots.push(skillsRoot);
 		}
@@ -122,7 +124,7 @@ function resolveSkillsRoots(): string[] {
 		if (framework) {
 			const filesDir = resolveTemplateFilesDir(framework);
 			if (filesDir) {
-				roots.push(path.join(filesDir, "skills"));
+				roots.push(path.join(filesDir, AI_SKILLS_DIR_NAME));
 			}
 		}
 	}
