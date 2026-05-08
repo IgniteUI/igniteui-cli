@@ -148,7 +148,7 @@ function aiConfig({ init, agents }: { init: boolean; agents: AIAgentTarget[] }):
 
 /** Standalone `ai-config` schematic entry */
 export function addAIConfig(options: { agents?: AIAgentTarget[] } = {}): Rule {
-	const selected = options.agents?.length ? options.agents : ["claude", "generic"] as AIAgentTarget[];
+	const selected = options.agents?.length ? options.agents : [] as AIAgentTarget[];
 	const agents = selected.includes("none" as any) ? [] : selected;
 	if (!agents.length) {
 		return (tree: Tree) => tree;

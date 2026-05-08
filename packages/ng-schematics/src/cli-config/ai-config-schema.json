@@ -3,7 +3,7 @@
   "$id": "IgniteUIAIConfigSchema",
   "title": "AI Config Options Schema",
   "type": "object",
-  "description": "Configures AI tooling: MCP servers and AI coding skills.",
+  "description": "Configures Ignite UI AI tooling (MCP servers, AI coding skills and instructions)",
   "properties": {
     "agents": {
       "type": "array",
