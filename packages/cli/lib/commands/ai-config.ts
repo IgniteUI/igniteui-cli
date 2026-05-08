@@ -69,27 +69,24 @@ const command: CommandModule = {
 		}),
 	async handler(argv: ArgumentsCamelCase) {
 		let agents = argv.agent as AIAgentTarget[] | undefined;
+		GoogleAnalytics.post({
+			t: "screenview",
+			cd: "Ai Config"
+		});
 
 		if (!agents?.length) {
 			agents = await promptForAgents();
 		}
-
-		if (!agents.length) {
-			Util.log("No AI configuration selected. Skipping.");
-			return;
-		}
-
-		GoogleAnalytics.post({
-			t: "screenview",
-			cd: "MCP"
-		});
-
 		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig ai-config",
 			ea: `agent: ${agents.join(", ")}`
 		});
 
+		if (!agents.length) {
+			Util.log("No AI configuration selected. Skipping.");
+			return;
+		}
 		await configure(agents);
 	}
 };

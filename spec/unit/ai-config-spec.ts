@@ -29,7 +29,7 @@ describe("Unit - ai-config command", () => {
 
 	beforeEach(() => {
 		spyOn(Util, "log");
-		spyOn(Util, "greenCheck").and.returnValue("✓");
+		spyOn(Util, "greenCheck").and.returnValue("Ã¢Å“â€œ");
 	});
 
 	function writtenConfig(mockFs: IFileSystem): Record<string, unknown> {
@@ -271,7 +271,7 @@ describe("Unit - ai-config command", () => {
 				message: "Which AI tools do you want to generate configuration files for?",
 				required: true
 			}));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "MCP" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "$ig ai-config" }));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude" }));
 		});
 
