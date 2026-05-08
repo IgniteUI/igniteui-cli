@@ -154,7 +154,10 @@ export function newProject(options: OptionsSchema): Rule {
 					},
 					// run full schematic for args/prompts
 					schematic("ai-config", {}),
-					move(options.name!)
+					(_tree: Tree, _context: IgxSchematicContext) => {
+						// move late so name can be resolved before use
+						return move(options.name!);
+					}
 				]), MergeStrategy.Overwrite
 			),
 			(tree: Tree, _context: IgxSchematicContext) => {
