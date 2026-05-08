@@ -3,14 +3,15 @@ import { PLATFORMS, PLATFORM_CONFIGS, getPlatforms, getPlatformConfig } from '..
 import type { Platform, PlatformConfig } from '../../config/platforms.js';
 
 describe('PLATFORMS', () => {
-  it('includes angular, react, and webcomponents', () => {
+  it('includes angular, react, webcomponents, and blazor', () => {
     expect(PLATFORMS).toContain('angular');
     expect(PLATFORMS).toContain('react');
     expect(PLATFORMS).toContain('webcomponents');
+    expect(PLATFORMS).toContain('blazor');
   });
 
-  it('has exactly 3 entries', () => {
-    expect(PLATFORMS).toHaveLength(3);
+  it('has exactly 4 entries', () => {
+    expect(PLATFORMS).toHaveLength(4);
   });
 });
 
@@ -41,6 +42,14 @@ describe('PLATFORM_CONFIGS', () => {
 
   it('webcomponents uses llms-full-txt api source', () => {
     expect(PLATFORM_CONFIGS.webcomponents.apiSource.kind).toBe('llms-full-txt');
+  });
+
+  it('blazor uses llms-full-txt api source', () => {
+    const source = PLATFORM_CONFIGS.blazor.apiSource;
+    expect(source.kind).toBe('llms-full-txt');
+    if (source.kind === 'llms-full-txt') {
+      expect(source.docsPath).toContain('blazor-api');
+    }
   });
 
   it('each config has required fields', () => {
