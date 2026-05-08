@@ -58,12 +58,12 @@ export async function promptForAgents(): Promise<AIAgentTarget[]> {
 
 const command: CommandModule = {
 	command: "ai-config",
-	describe: "Configures Ignite UI AI tooling (MCP servers and AI coding skills)",
+	describe: "Configures Ignite UI AI tooling (MCP servers, AI coding skills and instructions)",
 	builder: (yargs) => yargs
 		.usage("")
 		.option("agent", {
 			alias: "a",
-			describe: "AI agent(s) to configure skills for (determines the target skills directory)",
+			describe: "AI agents/tools to generate configuration files for",
 			choices: AI_AGENT_CHOICES,
 			type: "array"
 		}),

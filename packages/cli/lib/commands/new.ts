@@ -60,9 +60,9 @@ const command: NewCommandType = {
 				describe: "Project template",
 				type: "string"
 			})
-			.option("agent", {
+			.option("agents", {
 				alias: "a",
-				describe: "AI agent(s) to configure skills for (determines the target skills directory)",
+				describe: "AI agents/tools to generate configuration files for",
 				choices: AI_AGENT_CHOICES,
 				type: "array"
 			})
@@ -166,7 +166,7 @@ const command: NewCommandType = {
 		}
 
 		process.chdir(argv.name);
-		await configure(argv.agent as AIAgentTarget[] | undefined);
+		await configure(argv.agents as AIAgentTarget[] | undefined);
 		process.chdir("..");
 
 		if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {

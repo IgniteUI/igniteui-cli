@@ -29,7 +29,7 @@ describe("Help command", () => {
 		ig list                   Lists frameworks, project templates and component templates [aliases: l]
 		ig upgrade-packages       Upgrades Ignite UI packages [aliases: upgrade]
 		ig mcp                    Starts the Ignite UI MCP server for AI assistant integration
-		ig ai-config              Configures Ignite UI AI tooling (MCP servers and AI coding skills)
+		ig ai-config              Configures Ignite UI AI tooling (MCP servers, AI coding skills and instructions)
 
 	  Options:
 		-v, --version  Show current Ignite UI CLI version                    [boolean]
@@ -70,8 +70,7 @@ describe("Help command", () => {
 																				[boolean]
 				--skip-install, --si  Do not install packages after scaffolding  [boolean]
 				--template            Project template                            [string]
-			-a, --agent               AI agent(s) to configure skills for (determines the
-								target skills directory)
+			-a, --agents               AI agents/tools to generate configuration files for
 					[array] [choices: "generic", "claude", "copilot", "cursor", "codex",
 													"windsurf", "gemini", "junie"]
 
