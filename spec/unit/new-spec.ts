@@ -1,4 +1,4 @@
-import { App, BaseTemplate, Config, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig, ProjectTemplate, Util } from "@igniteui/cli-core";
+import { App, BaseTemplate, Config, GoogleAnalytics, PackageManager, ProjectConfig, ProjectTemplate, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as newCmd } from "../../packages/cli/lib/commands/new";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
@@ -36,7 +36,7 @@ describe("Unit - New command", () => {
 		spyOn(Util, "execSync");
 		spyOn(process, "chdir");
 		spyOn(PackageManager, "installPackages");
-		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
+		spyOn(aiConfig, "configure").and.returnValue(Promise.resolve());
 		spyOn(Util, "directoryExists").and.returnValue(false);
 	});
 
@@ -382,7 +382,7 @@ describe("Unit - New command", () => {
 		let configureSpy: jasmine.Spy;
 
 		beforeEach(() => {
-			configureSpy = spyOn(aiConfig, "configure").and.returnValue(Promise.resolve());
+			configureSpy = aiConfig.configure as jasmine.Spy;
 		});
 
 		function createProjectMocks() {
