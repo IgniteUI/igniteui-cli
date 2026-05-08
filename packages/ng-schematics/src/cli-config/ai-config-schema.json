@@ -15,11 +15,11 @@
         "enum": ["none", "claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"]
       },
       "x-prompt": {
-        "message": "Which AI tools do you want to generate configuration files for?",
+        "message": "Which AI agents do you want to generate skills and instructions for?",
         "type": "list",
         "multiselect": true,
         "items": [
-          { "value": "none", "label": "None (skip AI configuration)" },
+          { "value": "none", "label": "None (skip skills and instructions)" },
           { "value": "generic", "label": "Generic (Adding .agents/skills and AGENTS.md)" },
           { "value": "claude", "label": "Claude (Adding .claude/skills and CLAUDE.md)" },
           { "value": "copilot", "label": "Copilot (Adding .github/skills and copilot-instructions.md)" },
@@ -28,6 +28,23 @@
           { "value": "windsurf", "label": "Windsurf (Adding .windsurf/skills and .windsurf/rules/guidelines.md)" },
           { "value": "gemini", "label": "Gemini (Adding .gemini/skills and .gemini/GEMINI.md)" },
           { "value": "junie", "label": "Junie (Adding .junie/skills and .junie/guidelines.md)" }
+        ]
+      }
+    },
+    "assistant": {
+      "type": "string",
+      "description": "Coding assistant to configure MCP servers for.",
+      "default": "vscode",
+      "enum": ["vscode", "cursor", "claude-code", "gemini", "junie"],
+      "x-prompt": {
+        "message": "Which coding assistant should MCP servers be configured for?",
+        "type": "list",
+        "items": [
+          { "value": "vscode", "label": "VS Code (GitHub Copilot)" },
+          { "value": "cursor", "label": "Cursor" },
+          { "value": "claude-code", "label": "Claude Code" },
+          { "value": "gemini", "label": "Gemini" },
+          { "value": "junie", "label": "JetBrains Junie" }
         ]
       }
     }
