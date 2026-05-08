@@ -271,7 +271,7 @@ describe("Unit - ai-config command", () => {
 				message: "Which AI tools do you want to generate configuration files for?",
 				required: true
 			}));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "$ig ai-config" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude" }));
 		});
 
@@ -282,8 +282,8 @@ describe("Unit - ai-config command", () => {
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Skipping"));
-			expect(GoogleAnalytics.post).not.toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview" }));
-			expect(GoogleAnalytics.post).not.toHaveBeenCalledWith(jasmine.objectContaining({ t: "event" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: " }));
 		});
 
 		it("configures multiple agents when selected interactively", async () => {
