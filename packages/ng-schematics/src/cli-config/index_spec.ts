@@ -432,5 +432,37 @@ export const appConfig: ApplicationConfig = {
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["claude", "cursor"]);
 			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "cursor"]);
 		});
+
+		it("should default MCP config to .vscode/mcp.json with servers key", async () => {
+			await runner.runSchematic("ai-config", {}, tree);
+
+			const mcpFilePath = "/.vscode/mcp.json";
+			expect(tree.exists(mcpFilePath)).toBeTruthy();
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.servers).toBeDefined();
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+		});
+
+		it("should write to .cursor/mcp.json with mcpServers key when assistant is cursor", async () => {
+			await runner.runSchematic("ai-config", { assistant: "cursor" }, tree);
+
+			const mcpFilePath = "/.cursor/mcp.json";
+			expect(tree.exists(mcpFilePath)).toBeTruthy();
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.mcpServers).toBeDefined();
+			expect(content.mcpServers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			expect(content.mcpServers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
+			expect(content.servers).toBeUndefined();
+		});
+
+		it("should write to .mcp.json when assistant is claude-code", async () => {
+			await runner.runSchematic("ai-config", { assistant: "claude-code" }, tree);
+
+			const mcpFilePath = "/.mcp.json";
+			expect(tree.exists(mcpFilePath)).toBeTruthy();
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.mcpServers["igniteui-cli"]).toBeDefined();
+			expect(content.mcpServers["angular-cli"]).toBeDefined();
+		});
 	});
 });

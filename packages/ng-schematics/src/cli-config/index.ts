@@ -2,7 +2,7 @@ import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { RunSchematicTask } from "@angular-devkit/schematics/tasks";
-import { addClassToBody, addMcpServers, AIAgentTarget, App, copyAgentInstructionFiles, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
+import { addClassToBody, addMcpServers, AiCodingAssistant, AIAgentTarget, App, copyAgentInstructionFiles, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -127,7 +127,7 @@ function appInit(tree: Tree) {
 	setVirtual(tree);
 }
 
-function aiConfig({ init, agents }: { init: boolean; agents: AIAgentTarget[] }): Rule {
+function aiConfig({ init, agents, assistant = "vscode" }: { init: boolean; agents: AIAgentTarget[]; assistant?: AiCodingAssistant }): Rule {
 	return (tree: Tree) => {
 		if (init) {
 			appInit(tree);
@@ -142,18 +142,15 @@ function aiConfig({ init, agents }: { init: boolean; agents: AIAgentTarget[] }):
 			}
 		};
 
-		addMcpServers(VS_CODE_MCP_PATH, angularCliServer);
+		addMcpServers(assistant, angularCliServer);
 	};
 }
 
 /** Standalone `ai-config` schematic entry */
-export function addAIConfig(options: { agents?: AIAgentTarget[] } = {}): Rule {
+export function addAIConfig(options: { agents?: AIAgentTarget[]; assistant?: AiCodingAssistant } = {}): Rule {
 	const selected = options.agents?.length ? options.agents : [] as AIAgentTarget[];
 	const agents = selected.includes("none" as any) ? [] : selected;
-	if (!agents.length) {
-		return (tree: Tree) => tree;
-	}
-	return aiConfig({ init: true, agents });
+	return aiConfig({ init: true, agents, assistant: options.assistant });
 }
 
 export default function (): Rule {
