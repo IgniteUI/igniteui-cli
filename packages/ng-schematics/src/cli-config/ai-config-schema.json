@@ -5,9 +5,9 @@
   "type": "object",
   "description": "Configures AI tooling: MCP servers and AI coding skills.",
   "properties": {
-    "agent": {
+    "agents": {
       "type": "array",
-      "description": "AI agent(s) to configure skills for (determines the target skills directories).",
+      "description": "AI agents/tools to generate configuration files for",
       "alias": "a",
       "default": ["claude", "generic"],
       "items": {
