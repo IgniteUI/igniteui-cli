@@ -88,8 +88,9 @@ export function newProject(options: OptionsSchema): Rule {
 					}
 
 					if (projTemplate === undefined) {
-						const projectTemplate = options.template || projLibrary.projectIds[0];
-						projTemplate = projLibrary.getProject(projectTemplate);
+						projTemplate = options.template
+							? projLibrary.getProject(options.template)
+							: projLibrary.projects.filter(p => !p.isHidden)[0];
 						if (!projTemplate) {
 							throw new SchematicsException(`template with id '${options.template}' not found`);
 						}
