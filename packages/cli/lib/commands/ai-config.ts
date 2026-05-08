@@ -1,4 +1,4 @@
-import { addMcpServers, AI_AGENT_LABELS, AI_AGENT_SKILLS_DIRS, AIAgentTarget, copyAgentInstructionFiles, copyAISkillsToProject, GoogleAnalytics, InquirerWrapper, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
+import { addMcpServers, AI_AGENT_LABELS, AI_AGENT_CHOICES, AIAgentTarget, copyAgentInstructionFiles, copyAISkillsToProject, GoogleAnalytics, InquirerWrapper, Util, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
 export function configureMCP(): void {
@@ -37,8 +37,6 @@ export async function configure(agents?: AIAgentTarget[], skills = true): Promis
 	}
 	copyAgentInstructionFiles(agents);
 }
-
-const AI_AGENT_CHOICES = Object.keys(AI_AGENT_SKILLS_DIRS) as AIAgentTarget[];
 
 const AI_AGENT_CHECKBOX_CHOICES = [
 	{ value: "none", name: "None (skip AI configuration)" },

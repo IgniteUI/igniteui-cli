@@ -1,5 +1,5 @@
 import * as path from "path";
-import { AI_AGENT_INSTRUCTION_FILES, AI_AGENT_SKILLS_DIRS, AIAgentTarget, App, Config, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { App, Config, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;
@@ -861,13 +861,6 @@ describe("Unit - copyAISkillsToProject", () => {
 	});
 });
 
-describe("Unit - AI_AGENT_SKILLS_DIRS", () => {
-	it("should contain entries for all expected agents", () => {
-		const expected: AIAgentTarget[] = ["claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"];
-		expect(Object.keys(AI_AGENT_SKILLS_DIRS).sort()).toEqual(expected.sort());
-	});
-});
-
 describe("Unit - getInstructionFilePath", () => {
 	it("should return .claude/CLAUDE.md for 'claude'", () => {
 		expect(getInstructionFilePath("claude")).toBe(".claude/CLAUDE.md");
@@ -899,13 +892,6 @@ describe("Unit - getInstructionFilePath", () => {
 
 	it("should return AGENTS.md for 'generic'", () => {
 		expect(getInstructionFilePath("generic")).toBe("AGENTS.md");
-	});
-});
-
-describe("Unit - AI_AGENT_INSTRUCTION_FILES", () => {
-	it("should contain entries for all expected agents", () => {
-		const expected: AIAgentTarget[] = ["claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"];
-		expect(Object.keys(AI_AGENT_INSTRUCTION_FILES).sort()).toEqual(expected.sort());
 	});
 });
 

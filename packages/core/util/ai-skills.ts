@@ -9,9 +9,10 @@ import { TEMPLATE_MANAGER } from "./GlobalConstants";
 import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
-export type AIAgentTarget = "claude" | "copilot" | "cursor" | "codex" | "windsurf" | "gemini" | "junie" | "generic";
+export const AI_AGENT_CHOICES = ["generic", "claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie"] as const;
+export type AIAgentTarget = typeof AI_AGENT_CHOICES[number];
 
-export const AI_AGENT_SKILLS_DIRS: Record<AIAgentTarget, string> = {
+const AI_AGENT_SKILLS_DIRS: Record<AIAgentTarget, string> = {
 	generic: ".agents/skills",
 	claude: ".claude/skills",
 	copilot: ".github/skills",
@@ -22,7 +23,7 @@ export const AI_AGENT_SKILLS_DIRS: Record<AIAgentTarget, string> = {
 	junie: ".junie/skills"
 };
 
-export const AI_AGENT_INSTRUCTION_FILES: Record<AIAgentTarget, string> = {
+const AI_AGENT_INSTRUCTION_FILES: Record<AIAgentTarget, string> = {
 	generic: "AGENTS.md",
 	claude: ".claude/CLAUDE.md",
 	copilot: ".github/copilot-instructions.md",

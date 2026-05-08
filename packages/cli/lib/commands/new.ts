@@ -1,12 +1,10 @@
-import { AI_AGENT_SKILLS_DIRS, AIAgentTarget, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { AI_AGENT_CHOICES, AIAgentTarget, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { PromptSession } from "./../PromptSession";
 import { NewCommandType, PositionalArgs } from "./types";
 import { TemplateManager } from "../TemplateManager";
 import { ArgumentsCamelCase, Choices } from "yargs";
 import { configure } from "./ai-config";
-
-const AI_AGENT_CHOICES = Object.keys(AI_AGENT_SKILLS_DIRS) as AIAgentTarget[];
 
 // explicit typing because `type: "string"` will be inferred as `type: string` which yargs will not like
 const _framework: {
