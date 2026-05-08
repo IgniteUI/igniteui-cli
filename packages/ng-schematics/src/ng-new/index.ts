@@ -17,7 +17,6 @@ import { defer, Observable } from "rxjs";
 import { NewProjectOptions } from "../app-projects/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
-import { addAIConfig } from "../cli-config/index";
 import { setVirtual } from "../utils/NgFileSystem";
 import { OptionsSchema } from "./schema";
 
