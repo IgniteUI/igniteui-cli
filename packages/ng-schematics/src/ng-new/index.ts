@@ -152,10 +152,9 @@ export function newProject(options: OptionsSchema): Rule {
 							});
 						}
 					},
-					addAIConfig(),
-					(_tree: Tree, _context: IgxSchematicContext) => {
-						return move(options.name!);
-					}
+					// run full schematic for args/prompts
+					schematic("ai-config", {}),
+					move(options.name!)
 				]), MergeStrategy.Overwrite
 			),
 			(tree: Tree, _context: IgxSchematicContext) => {
