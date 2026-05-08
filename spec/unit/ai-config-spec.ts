@@ -29,7 +29,7 @@ describe("Unit - ai-config command", () => {
 
 	beforeEach(() => {
 		spyOn(Util, "log");
-		spyOn(Util, "greenCheck").and.returnValue("Ã¢Å“â€œ");
+		spyOn(Util, "greenCheck").and.returnValue("✓");
 	});
 
 	function writtenConfig(mockFs: IFileSystem): Record<string, unknown> {
@@ -263,6 +263,7 @@ describe("Unit - ai-config command", () => {
 
 		it("prompts for agents when --agent is not provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
@@ -275,8 +276,20 @@ describe("Unit - ai-config command", () => {
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude" }));
 		});
 
+		it("uses defaults without prompting when canPrompt returns false", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(false);
+			spyOn(InquirerWrapper, "checkbox");
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: generic, claude" }));
+		});
+
 		it("logs skipping and does not post analytics when none is selected", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
@@ -288,6 +301,7 @@ describe("Unit - ai-config command", () => {
 
 		it("configures multiple agents when selected interactively", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude", "cursor"]));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });

@@ -37,23 +37,27 @@ export async function configure(agents?: AIAgentTarget[], skills = true): Promis
 	}
 	copyAgentInstructionFiles(agents);
 }
-
+const AI_AGENT_CHECKBOX_DEFAULTS: AIAgentTarget[] = ["generic", "claude"];
 const AI_AGENT_CHECKBOX_CHOICES = [
 	{ value: "none", name: "None (skip AI configuration)" },
 	...AI_AGENT_CHOICES.map(agent => ({
 		value: agent,
 		name: AI_AGENT_LABELS[agent],
-		checked: agent === "generic" || agent === "claude"
+		checked: AI_AGENT_CHECKBOX_DEFAULTS.includes(agent)
 	}))
 ];
 
 export async function promptForAgents(): Promise<AIAgentTarget[]> {
-	const selected = await InquirerWrapper.checkbox({
-		message: "Which AI tools do you want to generate configuration files for?",
-		required: true,
-		choices: AI_AGENT_CHECKBOX_CHOICES
-	});
-	return selected.includes("none") ? [] : selected as AIAgentTarget[];
+	let selected: AIAgentTarget[] = AI_AGENT_CHECKBOX_DEFAULTS;
+	if (Util.canPrompt()) {
+		const result = await InquirerWrapper.checkbox({
+			message: "Which AI tools do you want to generate configuration files for?",
+			required: true,
+			choices: AI_AGENT_CHECKBOX_CHOICES
+		});
+		selected = result.includes("none") ? [] : result as AIAgentTarget[];
+	}
+	return selected;
 }
 
 const command: CommandModule = {
