@@ -1,9 +1,8 @@
-export const PLATFORMS = ['angular', 'webcomponents', 'react'] as const;
+export const PLATFORMS = ['angular', 'webcomponents', 'react', 'blazor'] as const;
 export type Platform = typeof PLATFORMS[number];
 
 export type ApiSourceConfig =
-  | { kind: 'markdown-index' }
-  | { kind: 'typedoc-json'; jsonPath: string };
+  | { kind: 'llms-full-txt'; docsPath: string };
 
 export interface PlatformConfig {
   key: Platform;
@@ -17,31 +16,34 @@ export const PLATFORM_CONFIGS: Record<Platform, PlatformConfig> = {
   angular: {
     key: 'angular',
     displayName: 'Angular',
-    submodulePath: 'angular/igniteui-angular',
-    docsPath: 'docs/angular/api',
-    apiSource: { kind: 'markdown-index' },
+    submodulePath: 'blazor/api-docs',
+    docsPath: 'docs/angular-api',
+    apiSource: { kind: 'llms-full-txt', docsPath: 'docs/angular-api' },
   },
   react: {
     key: 'react',
     displayName: 'React',
-    submodulePath: 'react/igniteui-react',
-    docsPath: 'docs/react',
-    apiSource: {
-      kind: 'typedoc-json',
-      jsonPath: 'docs/react/igniteui-react.json',
-    },
+    submodulePath: 'blazor/api-docs',
+    docsPath: 'docs/react-api',
+    apiSource: { kind: 'llms-full-txt', docsPath: 'docs/react-api' },
   },
   webcomponents: {
     key: 'webcomponents',
     displayName: 'Web Components',
-    submodulePath: 'webcomponents/igniteui-webcomponents',
-    docsPath: 'docs/webcomponents/api',
-    apiSource: { kind: 'markdown-index' },
+    submodulePath: 'blazor/api-docs',
+    docsPath: 'docs/webcomponents-api',
+    apiSource: { kind: 'llms-full-txt', docsPath: 'docs/webcomponents-api' },
   },
-  // TODO: Add Blazor config when ready
+  blazor: {
+    key: 'blazor',
+    displayName: 'Blazor',
+    submodulePath: 'blazor/api-docs',
+    docsPath: 'docs/blazor-api',
+    apiSource: { kind: 'llms-full-txt', docsPath: 'docs/blazor-api' },
+  },
 };
 
-// Helper to get only enabled platforms
+// Returns all platform configs
 export function getPlatforms(): PlatformConfig[] {
   return Object.values(PLATFORM_CONFIGS);
 }
