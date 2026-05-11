@@ -28,7 +28,11 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 │   ├── export-blazor-docs.ts          # Export Blazor docs from xplat gulp build (toc.json-driven, flatten hierarchy)
 │   ├── inject-blazor-docs.ts          # Inject Blazor sample code (github-src based, .razor/.razor.cs/.css files)
 │   ├── compress-blazor-docs.ts        # LLM-based compression with Blazor-specific prompt (Igb prefix, no suffix, supports --batch mode)
-│   └── validate-docs.ts               # LLM-as-Judge validation of compressed docs (platform-independent)
+│   ├── validate-docs.ts               # LLM-as-Judge validation of compressed docs (platform-independent)
+│   ├── export-angular-api.ts          # Build Angular API docs from blazor/api-docs submodule → docs/angular-api/
+│   ├── export-react-api.ts            # Build React API docs from blazor/api-docs submodule → docs/react-api/
+│   ├── export-wc-api.ts               # Build Web Components API docs from blazor/api-docs submodule → docs/webcomponents-api/
+│   └── export-blazor-api.ts           # Build Blazor API docs from blazor/api-docs submodule → docs/blazor-api/
 ├── docs/
 │   ├── knowledgebase.md                # Lessons learned and issues for cross-platform reference (32 entries)
 │   ├── db.md                           # SQLite + FTS4 database integration (IMPLEMENTED)
@@ -42,6 +46,10 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 │   ├── react-pipeline.md              # React pipeline implementation plan
 │   ├── wc-pipeline-plan.md            # WebComponents pipeline implementation plan
 │   └── blazor-pipeline-plan.md        # Blazor pipeline implementation plan
+├── angular-api/                        # Angular API docs (llms-full.txt files, built by build:docs:angular-api)
+├── react-api/                          # React API docs (llms-full.txt files, built by build:docs:react-api)
+├── webcomponents-api/                  # Web Components API docs (llms-full.txt files, built by build:docs:wc-api)
+├── blazor-api/                         # Blazor API docs (llms-full.txt files, built by build:docs:blazor-api)
 ├── angular/                            # Git submodules
 │   ├── igniteui-docfx/                 # DocFX-based Angular documentation (en/jp/kr)
 │   │   └── en/components/toc.yml       # Table of contents — source of truth for which files to process
@@ -72,6 +80,18 @@ npm install        # install dependencies
 npm run build:db   # build SQLite database from compressed docs → dist/igniteui-docs.db
 npm run build      # compile TypeScript (tsc) → outputs to ./dist/
 npm start          # run MCP server in local mode (default, uses bundled SQLite DB)
+```
+
+### API Docs Generation
+
+The `blazor/api-docs` submodule provides the Astro build pipeline used by all four platforms. Run these scripts once (or when upstream API data changes) to populate the `docs/*-api/` directories:
+
+```bash
+npm run build:docs:angular-api     # Angular: Astro build → docs/angular-api/
+npm run build:docs:wc-api          # Web Components: Astro build → docs/webcomponents-api/
+npm run build:docs:react-api       # React: Astro build → docs/react-api/
+npm run build:docs:blazor-api      # Blazor: docfx + Astro build → docs/blazor-api/
+npm run build:docs:all             # Build all four platforms
 ```
 
 ### Server Modes

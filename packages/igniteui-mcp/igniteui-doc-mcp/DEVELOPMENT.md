@@ -6,7 +6,7 @@ MCP server that serves pre-compressed Ignite UI component documentation via full
 
 ```bash
 cd packages/igniteui-mcp/igniteui-doc-mcp
-git submodule update --init --recursive
+git submodule update --init blazor/api-docs
 npm install
 ```
 
@@ -24,11 +24,7 @@ npm run build:db
 ```
 
 ### Building the API markdown
-The repository already tracks the required documentation and source repositories as git submodules. A fresh clone still needs `git submodule update --init --recursive` to materialize them locally.
-
-Required submodules for local API markdown generation include:
-- `angular/igniteui-angular`
-- `webcomponents/igniteui-webcomponents`
+The `blazor/api-docs` submodule provides the Astro-based API build pipeline used by all four platforms. A fresh clone still needs `git submodule update --init blazor/api-docs` to materialize it locally.
 
 Before using the MCP server from a source checkout, generate the local API markdowns:
 
@@ -36,7 +32,7 @@ Before using the MCP server from a source checkout, generate the local API markd
 npm run build:docs:all
 ```
 
-This step builds the Angular and Web Components API markdown used by the local MCP API tools. If you skip it, API lookups may be incomplete or unavailable even if the server itself builds successfully.
+This step generates API docs for all four platforms (Angular, React, Web Components, and Blazor). If you skip it, API lookups may be incomplete or unavailable even if the server itself builds successfully.
 
 If you want to refresh submodules to newer upstream commits, run:
 
@@ -421,70 +417,52 @@ Per-platform clear removes the platform subdirectory from `docs_processing/`, `d
 
 ## API Reference Documentation
 
-The MCP server provides API reference lookup via the `get_api_reference` and `search_api` tools. API docs are generated from framework submodules using TypeDoc and stored in `docs/<framework>/`.
+The MCP server provides API reference lookup via the `get_api_reference` and `search_api` tools. API docs are generated from the `blazor/api-docs` submodule using its Astro build pipeline and stored as `llms-full.txt` files in `docs/{platform}-api/`.
 
-Each framework uses one of two source strategies:
+All four platforms use the same source strategy:
 
-| Framework | Strategy | Source | Output |
-|-----------|----------|--------|--------|
-| Angular | `markdown-index` | `angular/igniteui-angular` (TypeDoc → markdown) | `docs/angular/api/*.md` + `index.json` |
-| React | `typedoc-json` | Pre-built TypeDoc JSON model | `docs/react/igniteui-react.json` |
-| Web Components | `markdown-index` | `webcomponents/igniteui-webcomponents` (TypeDoc → markdown) | `docs/webcomponents/api/*.md` + `index.json` |
-| Blazor | — | Not yet supported | — |
+| Platform | Build script | Output |
+|----------|-------------|--------|
+| Angular | `build:docs:angular-api` | `docs/angular-api/{package}/{version}/llms-full.txt` |
+| React | `build:docs:react-api` | `docs/react-api/{package}/{version}/llms-full.txt` |
+| Web Components | `build:docs:wc-api` | `docs/webcomponents-api/{package}/{version}/llms-full.txt` |
+| Blazor | `build:docs:blazor-api` | `docs/blazor-api/{package}/{version}/llms-full.txt` |
 
 ### Building API Docs
 
 ```bash
-npm run build:docs:angular         # Angular: TypeDoc → markdown + search index
-npm run build:docs:webcomponents   # Web Components: build lib → TypeDoc → markdown + search index
-npm run build:docs:all             # Build both Angular and Web Components
+npm run build:docs:angular-api     # Angular: Astro build → llms-full.txt files
+npm run build:docs:wc-api          # Web Components: Astro build → llms-full.txt files
+npm run build:docs:react-api       # React: Astro build → llms-full.txt files
+npm run build:docs:blazor-api      # Blazor: docfx + Astro build → llms-full.txt files
+npm run build:docs:all             # Build all four platforms
 ```
 
-Each `build:docs:<platform>` script:
-1. Initializes the required git submodule (`git submodule update --init`)
-2. Compiles the MCP server TypeScript (`npm run build`)
-3. Runs `scripts/build-docs.mjs <platform>` which:
-   - Checks the submodule is built (for Web Components, runs `npm install && npm run build:publish` if needed)
-   - Runs TypeDoc with the config from `typedoc/<platform>.typedoc.json`
-   - Generates markdown files in `docs/<platform>/api/`
-   - Builds a search index (`index.json`) with component names, types, keywords, and summaries
+Each `build:docs:{platform}-api` script:
+1. Initializes the `blazor/api-docs` git submodule
+2. Runs `npm install` in the submodule
+3. Runs the Astro static build for the platform (`npm run build:{platform}:en`)
+4. Copies the generated `llms-full.txt` files from `dist/en/api/{platform}/` to `docs/{platform}-api/`
 
-**React** uses a pre-built TypeDoc JSON model (`docs/react/igniteui-react.json`) that is checked into git. It does not need a `build:docs` step — the JSON is parsed at runtime by `ReactJsonParser`.
+The Blazor script additionally runs `dotnet tool restore` and `npm run fetch:tools:blazor` + the five docfx package build scripts before the Astro step. Angular's TypeDoc JSON data is pre-bundled in `blazor/api-docs/src/data/angular/` so no fetch step is needed.
 
 ### Rebuilding After Upstream Changes
 
-When the upstream Angular or Web Components library releases a new version:
+When a new version of `blazor/api-docs` is available:
 
-1. Update the submodule to the new version:
+1. Update the submodule:
    ```bash
-   cd angular/igniteui-angular    # or webcomponents/igniteui-webcomponents
-   git fetch && git checkout <new-tag>
+   cd blazor/api-docs
+   git fetch && git checkout <new-branch-or-tag>
    cd ../..
    ```
 
-2. Rebuild the API docs:
+2. Rebuild the affected platform's API docs:
    ```bash
-   npm run build:docs:angular     # or build:docs:webcomponents
+   npm run build:docs:angular-api   # or wc-api / react-api / blazor-api
    ```
 
-3. Commit the updated `docs/` output and submodule reference.
-
-### Web Components First-Time Build
-
-The Web Components submodule requires a one-time library build before TypeDoc can generate docs. The `build-docs.mjs` script handles this automatically:
-
-1. If `dist/index.d.ts` is missing, it runs `npm install && npm run build:publish`
-2. After TypeDoc completes, it cleans up `node_modules` if it installed them
-3. Subsequent runs skip the build step if `dist/index.d.ts` exists
-
-If the automatic build fails, build manually:
-
-```bash
-cd webcomponents/igniteui-webcomponents
-npm install && npm run build:publish
-cd ../..
-npm run build:docs:webcomponents
-```
+3. Commit the updated `docs/{platform}-api/` output and submodule reference.
 
 ## MCP Server
 

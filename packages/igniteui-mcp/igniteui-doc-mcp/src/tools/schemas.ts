@@ -5,7 +5,7 @@ const MAX_COMPONENT_LENGTH = 128;
 const MAX_QUERY_LENGTH = 256;
 
 export const getApiReferenceSchema = z.object({
-  platform: z.enum(PLATFORMS).describe('Platform to look up: angular, react, or webcomponents. Blazor is currently not supported by this tool.'),
+  platform: z.enum(PLATFORMS).describe('Platform to look up: angular, react, webcomponents, or blazor.'),
   component: z
     .string()
     .trim()
@@ -22,7 +22,7 @@ export const searchApiSchema = z.object({
     .min(1, 'Search query is required')
     .max(MAX_QUERY_LENGTH, `Search query must be at most ${MAX_QUERY_LENGTH} characters`)
     .describe('Keyword, feature name, or partial component name. Matches against component names, keywords, API type, and content. Partial names work. Examples: "grid virtualization", "IgxCombo", "drag drop", "selection"'),
-  platform: z.enum(PLATFORMS).optional().describe('Limit results to one platform (angular, react, or webcomponents). Omit to search all platforms simultaneously.'),
+  platform: z.enum(PLATFORMS).optional().describe('Limit results to one platform (angular, react, webcomponents, or blazor). Omit to search all platforms simultaneously.'),
 });
 
 export type GetApiReferenceParams = z.infer<typeof getApiReferenceSchema>;
