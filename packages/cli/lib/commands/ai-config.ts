@@ -1,4 +1,4 @@
-import { addMcpServers, AI_AGENT_LABELS, AI_AGENT_CHOICES, AIAgentTarget, copyAgentInstructionFiles, copyAISkillsToProject, GoogleAnalytics, InquirerWrapper, Util, AiCodingAssistant, AI_ASSISTANT_MCP_CONFIGS } from "@igniteui/cli-core";
+import { addMcpServers, AI_AGENT_LABELS, AI_AGENT_CHOICES, AIAgentTarget, copyAgentInstructionFiles, copyAISkillsToProject, GoogleAnalytics, InquirerWrapper, Util, AiCodingAssistant, AI_ASSISTANT_MCP_CONFIGS, AI_ASSISTANT_CHOICES, AI_ASSISTANT_LABELS } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
 export function configureMCP(assistants: AiCodingAssistant[] = ["vscode"]): void {
@@ -30,11 +30,8 @@ export function configureSkills(agents: AIAgentTarget[]): void {
 }
 
 export async function configure(agents?: AIAgentTarget[], skills = true, assistants: AiCodingAssistant[] = ["vscode"]): Promise<void> {
-	if (!agents?.length) {
-		agents = await promptForAgents();
-	}
-	if (!agents.length) return;
 	configureMCP(assistants);
+	if (!agents?.length) return;
 	if (skills) {
 		configureSkills(agents);
 	}
@@ -42,15 +39,7 @@ export async function configure(agents?: AIAgentTarget[], skills = true, assista
 }
 const AI_AGENT_CHECKBOX_DEFAULTS: AIAgentTarget[] = ["generic", "claude"];
 
-const AI_ASSISTANT_CHOICES = Object.keys(AI_ASSISTANT_MCP_CONFIGS) as AiCodingAssistant[];
-
-const AI_ASSISTANT_LABELS: Record<AiCodingAssistant, string> = {
-	"vscode":      "VS Code (GitHub Copilot)",
-	"cursor":      "Cursor",
-	"claude-code": "Claude Code",
-	"gemini":      "Gemini",
-	"junie":       "JetBrains Junie",
-};
+const AI_ASSISTANT_CHECKBOX_DEFAULTS: AiCodingAssistant[] = ["vscode", "claude-code"];
 
 const AI_AGENT_CHECKBOX_CHOICES = [
 	{ value: "none", name: "None (skip skills and instructions)" },
@@ -66,7 +55,7 @@ const AI_ASSISTANT_CHECKBOX_CHOICES = [
 	...AI_ASSISTANT_CHOICES.map(a => ({
 		value: a,
 		name: AI_ASSISTANT_LABELS[a],
-		checked: a === "vscode"
+		checked: AI_ASSISTANT_CHECKBOX_DEFAULTS.includes(a)
 	}))
 ];
 
@@ -84,13 +73,16 @@ export async function promptForAgents(): Promise<AIAgentTarget[]> {
 }
 
 export async function promptForAssistant(): Promise<AiCodingAssistant[]> {
-	// TODO: check Util.canPrompt() and assign defaults
-	const selected = await InquirerWrapper.checkbox({
-		message: "Which coding assistants should MCP servers be configured for?",
-		required: true,
-		choices: AI_ASSISTANT_CHECKBOX_CHOICES
-	});
-	return selected.includes("none") ? [] : selected as AiCodingAssistant[];
+	let selected: AiCodingAssistant[] = AI_ASSISTANT_CHECKBOX_DEFAULTS;
+	if (Util.canPrompt()) {
+		const result = await InquirerWrapper.checkbox({
+			message: "Which coding assistants should MCP servers be configured for?",
+			required: true,
+			choices: AI_ASSISTANT_CHECKBOX_CHOICES
+		});
+		selected = result.includes("none") ? [] : result as AiCodingAssistant[];
+	}
+	return selected;
 }
 
 const command: CommandModule = {
@@ -112,34 +104,34 @@ const command: CommandModule = {
 	async handler(argv: ArgumentsCamelCase) {
 		let agents = argv.agent as AIAgentTarget[] | undefined;
 		let assistants = argv.assistant as AiCodingAssistant[] | undefined;
-
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Ai Config"
 		});
 
-		if (!assistants?.length) {
-			assistants = await promptForAssistant();
-		}
 		if (!agents?.length) {
 			agents = await promptForAgents();
+		}
+		if (!assistants?.length) {
+			assistants = await promptForAssistant();
 		}
 
 		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig ai-config",
-			ea: `agent: ${agents.join(", ") || "none"}`
+			ea: `agent: ${agents?.join(", ") || "none"}; assistant: ${assistants?.join(", ") || "none"}`
 		});
 
-		if (assistants.length) {
-			configureMCP(assistants);
+		if (!assistants.length) {
+			Util.log("No MCP configuration selected. Skipping.");
+			return;
 		}
 
 		if (!agents.length) {
 			Util.log("No AI configuration selected. Skipping.");
 			return;
 		}
-		await configure(agents);
+		await configure(agents, true, assistants);
 	}
 };
 
