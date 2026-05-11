@@ -78,7 +78,15 @@ export class ApiDocLoader {
         const llmsFile = join(versionDir, 'llms-full.txt');
         if (!existsSync(llmsFile)) continue;
 
-        const content = readFileSync(llmsFile, 'utf-8');
+        let content: string;
+        try {
+          content = readFileSync(llmsFile, 'utf-8');
+        } catch (err) {
+          throw new ApiDocsInitializationError(
+            `Failed to read ${llmsFile}: ${err instanceof Error ? err.message : String(err)}`,
+            { cause: err }
+          );
+        }
 
         // Split on "### [ComponentName](url)" headings
         // Each chunk starts with the heading line and contains the member list
@@ -136,11 +144,11 @@ export class ApiDocLoader {
     const heading = chunk.split('\n')[0];
     if (/enum/i.test(heading)) return 'enum';
     if (platform === 'blazor') {
-      if (/^### \[Igb\w+EventArgs\]/m.test(chunk)) return 'interface';
-      if (/^### \[Igb\w+Options\]/m.test(chunk)) return 'interface';
+      if (/^### \[Igb\w+EventArgs\]/.test(heading)) return 'interface';
+      if (/^### \[Igb\w+Options\]/.test(heading)) return 'interface';
     }
     if (platform === 'webcomponents') {
-      if (/^### \[Igc\w+EventArgs\]/m.test(chunk)) return 'interface';
+      if (/^### \[Igc\w+EventArgs\]/.test(heading)) return 'interface';
       if (/interface/i.test(heading)) return 'interface';
     }
     if (platform === 'react') {
@@ -149,7 +157,7 @@ export class ApiDocLoader {
     if (platform === 'angular') {
       // Angular interfaces conventionally start with I + uppercase (e.g., IGridState, IScrollStrategy)
       // while class names starting with Igx have a lowercase g (e.g., IgxGridComponent)
-      if (/^### \[I[A-Z]/.test(chunk)) return 'interface';
+      if (/^### \[I[A-Z]/.test(heading)) return 'interface';
     }
     return 'class';
   }
