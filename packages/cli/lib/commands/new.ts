@@ -1,8 +1,9 @@
-import { App, BaseTemplateManager, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { AI_AGENT_CHOICES, AIAgentTarget, App, type BaseTemplateManager, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { PromptSession } from "./../PromptSession";
 import { NewCommandType, PositionalArgs } from "./types";
 import { ArgumentsCamelCase, Choices } from "yargs";
+import { configure } from "./ai-config";
 
 // explicit typing because `type: "string"` will be inferred as `type: string` which yargs will not like
 const _framework: {
@@ -57,6 +58,12 @@ const command: NewCommandType = {
 			.option("template", {
 				describe: "Project template",
 				type: "string"
+			})
+			.option("agents", {
+				alias: "a",
+				describe: "AI agents/tools to generate configuration files for",
+				choices: AI_AGENT_CHOICES,
+				type: "array"
 			})
 			.example("$0 new my-app", "Scaffold a new project interactively")
 			.example("$0 new my-app -f angular -t igx-ts", "Scaffold an Ignite UI for Angular project");
@@ -152,14 +159,18 @@ const command: NewCommandType = {
 
 		Util.log(Util.greenCheck() + " Project Created");
 
-		if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {
-			Util.gitInit(process.cwd(), argv.name);
-		}
-
 		if (!argv.skipInstall) {
 			process.chdir(argv.name);
 			await PackageManager.installPackages();
 			process.chdir("..");
+		}
+
+		process.chdir(argv.name);
+		await configure(argv.agents as AIAgentTarget[] | undefined);
+		process.chdir("..");
+
+		if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {
+			Util.gitInit(process.cwd(), argv.name);
 		}
 
 		Util.log("");

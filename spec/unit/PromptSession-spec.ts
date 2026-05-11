@@ -180,6 +180,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("jQuery"),
 			Promise.resolve("infragistics")
 		);
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
@@ -202,6 +203,7 @@ describe("Unit - PromptSession", () => {
 		expect(InquirerWrapper.select).toHaveBeenCalledTimes(3);
 		expect(InquirerWrapper.select).toHaveBeenCalledWith(mockQuestion);
 		expect(mockTemplate.getFrameworkByName).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
 	});
 	it("start - Should go into chooseActionLoop if project has local config", async () => {
 		const mockBaseTemplate = createMockBaseTemplate();
@@ -287,6 +289,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(mockSession, "chooseActionLoop");
 		spyOn(process, "cwd").and.returnValue("Mock");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		await mockSession.start();
 
 		// prompt only for project name:
@@ -312,6 +315,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(mockSession.chooseActionLoop).toHaveBeenCalled();
+		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
 	});
 	it("start - New project - missing IFs", async () => {
 		const mockProject = {
@@ -373,6 +377,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("jQuery"),
 			Promise.resolve("infragistics")
 		);
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(process, "chdir");
 		spyOn(mockSession, "chooseActionLoop");
 		await mockSession.start();
@@ -401,6 +406,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.isAlphanumericExt).toHaveBeenCalledWith("Th15 w1ll");
 		expect(Util.directoryExists).toHaveBeenCalledTimes(3);
 		expect(Util.directoryExists).toHaveBeenCalledWith("Th15 w1ll");
+		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
 	});
 	it("chooseActionLoop - should run through properly - Add Component", async () => {
 		const mockExtraConfigurations = [{
@@ -507,8 +513,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configure).toHaveBeenCalledWith(false);
+
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.input).toHaveBeenCalledWith({
 			type: "input",
@@ -587,8 +592,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configure).toHaveBeenCalledWith(false);
+
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledWith("Custom Template Name", mockSelectedTemplate);
@@ -714,8 +718,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledTimes(3);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
 		expect(start.start).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
-		expect(aiConfig.configure).toHaveBeenCalledWith(false);
+
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.checkbox).toHaveBeenCalledWith({
 			type: "checkbox",
@@ -832,6 +835,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("Default side navigation"),
 			Promise.resolve("Custom")
 		);
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();
@@ -869,6 +873,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("Angular"),
 			Promise.resolve("Default side navigation"),
 			Promise.resolve("Default"));
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
 		await mockSession.start();

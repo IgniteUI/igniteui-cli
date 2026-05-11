@@ -310,6 +310,13 @@ export class Util {
 	}
 
 	/**
+	 * Checks if the terminal is TTY and is not in CI env
+	 */
+	public static canPrompt() {
+		return process.stdout.isTTY && process.stdin.isTTY && !process.env.CI;
+	}
+
+	/**
 	 * Fairly aggressive sanitize removing anything but ASCII, numbers and a few needed chars that have no action:
 	 * - semicolons (:), dots (.), underscores (_) for paths/URLs
 	 * - dashes (-) & forward slashes (/) for packages and paths/URLs

@@ -83,6 +83,7 @@ export class PromptSession extends BasePromptSession {
 			}
 			// move cwd to project folder
 			process.chdir(projectName);
+			await this.configureAI();
 		}
 		await this.chooseActionLoop(projLibrary);
 		//TODO: restore cwd?
@@ -98,8 +99,7 @@ export class PromptSession extends BasePromptSession {
 	}
 
 	protected async configureAI(): Promise<void> {
-		// skip adding skills since those are baked into the project template atm:
-		aiConfigure(false);
+		await aiConfigure();
 	}
 
 	/**

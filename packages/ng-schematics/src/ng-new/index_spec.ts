@@ -16,7 +16,7 @@ describe("Schematics ng-new", () => {
 		spyOn(GoogleAnalytics, "post");
 	});
 
-	it("works with no name provided", () => {
+	it("works with no name provided", async () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
@@ -100,11 +100,6 @@ describe("Schematics ng-new", () => {
 			registerTemplate: jasmine.createSpy()
 		};
 
-		const mockProject: Partial<ProjectTemplate> = {
-			upgradeIgniteUIPackages: () => Promise.resolve(true)
-		};
-		spyOn(mockProject, "upgradeIgniteUIPackages").and.callThrough();
-
 		const mockSession = {
 			chooseActionLoop: spyOn(SchematicsPromptSession.prototype, "chooseActionLoop")
 				.and.returnValue(Promise.resolve()),
@@ -113,7 +108,7 @@ describe("Schematics ng-new", () => {
 			getProjectTemplate: spyOn(SchematicsPromptSession.prototype, "getProjectTemplate")
 				.and.returnValue(Promise.resolve(mockProjectTemplate)),
 			getTheme: spyOn(SchematicsPromptSession.prototype, "getTheme")
-				.and.returnValue(Promise.resolve("custom")),
+				.and.returnValue(Promise.resolve("mock-theme")),
 			getUserInput: spyOn(SchematicsPromptSession.prototype, "getUserInput")
 				.and.returnValue(Promise.resolve(workingDirectory))
 		};
@@ -131,87 +126,100 @@ describe("Schematics ng-new", () => {
 			return currentTree;
 		});
 
-		runner.runSchematic("ng-new", { version: "8.0.3" }, myTree)
-		.then((e: UnitTestTree) => {
-			for (const mockFunc of Object.entries(mockSession)) {
-				expect(mockFunc[1]).toHaveBeenCalled();
+		const tree = await runner.runSchematic("ng-new", { version: "8.0.3" }, myTree);
+		for (const mockFunc of Object.entries(mockSession)) {
+			expect(mockFunc[1]).toHaveBeenCalled();
+		}
+		expect(AppProjectSchematic.default).toHaveBeenCalled();
+		expect(tree.files.length).toEqual(2);
+		expect(tree.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
+		const taskOptions = runner.tasks.map(task => task.options);
+		const expectedInstall: NodePackageTaskOptions = {
+			command: "install",
+			quiet: true,
+			workingDirectory,
+			packageName: undefined,
+			packageManager: undefined
+		};
+		const expectedInit: RepositoryInitializerTaskOptions = {
+			workingDirectory,
+			authorEmail: undefined,
+			authorName: undefined,
+			commit: true,
+			message: `Initial commit for project`
+		};
+		const expectedStart: RunSchematicTaskOptions<any> = {
+			collection: null,
+			name: "start",
+			options: {
+				directory: "my-test-project"
 			}
-			expect(AppProjectSchematic.default).toHaveBeenCalled();
-			expect(e.files.length).toEqual(2);
-			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
-			const taskOptions = runner.tasks.map(task => task.options);
-			const expectedInstall: NodePackageTaskOptions = {
-				command: "install",
-				quiet: true,
-				workingDirectory,
-				packageName: undefined,
-				packageManager: undefined
-			};
-			const expectedInit: RepositoryInitializerTaskOptions = {
-				workingDirectory,
-				authorEmail: undefined,
-				authorName: undefined,
-				commit: true,
-				message: `Initial commit for project`
-			};
-			const expectedStart: RunSchematicTaskOptions<any> = {
-				collection: null,
-				name: "start",
-				options: {
-					directory: "my-test-project"
-				}
-			};
-			expect(taskOptions.length).toBe(3);
-			expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();
-			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
-			expect(taskOptions).toContain(expectedInit);
-			expect(taskOptions).toContain(expectedStart);
-		});
+		};
+		expect(taskOptions.length).toBe(3);
+		expect(mockProjectTemplate.upgradeIgniteUIPackages).toHaveBeenCalled();
+		expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
+		expect(taskOptions).toContain(expectedInit);
+		expect(taskOptions).toContain(expectedStart);
 	});
 
-	it("works with name provided", () => {
+	it("works with name provided", async () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
-		const mockProject: Partial<ProjectTemplate> = {
-			upgradeIgniteUIPackages: () => Promise.resolve(true)
+
+		const mockProject: Pick<ProjectTemplate, "upgradeIgniteUIPackages"> = {
+			upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
 		};
-		spyOn(mockProject, "upgradeIgniteUIPackages").and.callThrough();
+
+		const mockLibrary: Partial<ProjectLibrary> = {
+			name: "mock-library",
+			themes: ["mock-theme"],
+			components: [],
+			projectIds: ["another-mock"],
+			projects: [mockProject as ProjectTemplate],
+			templates: [],
+			projectType: "ts"
+		};
+
+		spyOn(SchematicsPromptSession.prototype, "getProjectLibraryByType")
+				.and.returnValue((Promise.resolve(mockLibrary as ProjectLibrary)));
 
 		const userAnswers = new Map<string, any>();
 		userAnswers.set("upgradePackages", true);
-		spyOnProperty(SchematicsPromptSession.prototype, "userAnswers", "get").and.returnValue(userAnswers);
+		Object.defineProperty(SchematicsPromptSession.prototype, "userAnswers", {
+			configurable: true,
+			get: () => userAnswers,
+			set: () => void 0
+		});
 
 		spyOn(AppProjectSchematic, "default").and.returnValue((currentTree: Tree, _context: SchematicContext) => {
 			currentTree.create("gitignore", "");
 			return currentTree;
 		});
 
-		runner.runSchematic("ng-new", { version: "8.0.3", name: workingDirectory }, myTree)
-		.then((e: UnitTestTree) => {
-			expect(AppProjectSchematic.default).toHaveBeenCalled();
-			expect(e.files.length).toEqual(2);
-			expect(e.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
-			const taskOptions = runner.tasks.map(task => task.options);
-			const expectedInstall: NodePackageTaskOptions = {
-				command: "install",
-				quiet: true,
-				workingDirectory,
-				packageName: undefined,
-				packageManager: undefined
-			};
-			const expectedInit: RepositoryInitializerTaskOptions = {
-				workingDirectory,
-				authorEmail: undefined,
-				authorName: undefined,
-				commit: true,
-				message: `Initial commit for project`
-			};
-			expect(taskOptions.length).toBe(2);
-			expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();
-			expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
-			expect(taskOptions).toContain(expectedInit);
-		});
+		const tree = await runner.runSchematic("ng-new", { version: "8.0.3", name: workingDirectory }, myTree);
+		expect(AppProjectSchematic.default).toHaveBeenCalled();
+		expect(tree.files.length).toEqual(2);
+		expect(tree.exists(`${workingDirectory}/.gitignore`)).toBeTruthy();
+		const taskOptions = runner.tasks.map(task => task.options);
+		const expectedInstall: NodePackageTaskOptions = {
+			command: "install",
+			quiet: true,
+			workingDirectory,
+			packageName: undefined,
+			packageManager: undefined
+		};
+		const expectedInit: RepositoryInitializerTaskOptions = {
+			workingDirectory,
+			authorEmail: undefined,
+			authorName: undefined,
+			commit: true,
+			message: `Initial commit for project`
+		};
+		expect(taskOptions.length).toBe(2);
+		expect(mockProject.upgradeIgniteUIPackages).toHaveBeenCalled();
+		expect(taskOptions).toContain(jasmine.objectContaining(expectedInstall));
+		expect(taskOptions).toContain(expectedInit);
 	});
 
 	describe("addAIConfig via ng-new", () => {
