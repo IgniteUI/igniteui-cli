@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "IgniteUIAIConfigSchema",
+  "title": "AI Config Options Schema",
+  "type": "object",
+  "description": "Configures Ignite UI AI tooling (MCP servers, AI coding skills and instructions)",
+  "properties": {
+    "agents": {
+      "type": "array",
+      "description": "AI agents/tools to generate configuration files for",
+      "alias": "a",
+      "default": ["claude", "generic"],
+      "items": {
+        "type": "string",
+        "enum": ["none", "claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "generic"]
+      },
+      "x-prompt": {
+        "message": "Which AI tools do you want to generate configuration files for?",
+        "type": "list",
+        "multiselect": true,
+        "items": [
+          { "value": "none", "label": "None (skip AI configuration)" },
+          { "value": "generic", "label": "Generic (Adding .agents/skills and AGENTS.md)" },
+          { "value": "claude", "label": "Claude (Adding .claude/skills and CLAUDE.md)" },
+          { "value": "copilot", "label": "Copilot (Adding .github/skills and copilot-instructions.md)" },
+          { "value": "cursor", "label": "Cursor (Adding .cursor/skills and .cursor/rules/cursor.mdc)" },
+          { "value": "codex", "label": "Codex (Adding .codex/skills and .codex/instructions.md)" },
+          { "value": "windsurf", "label": "Windsurf (Adding .windsurf/skills and .windsurf/rules/guidelines.md)" },
+          { "value": "gemini", "label": "Gemini (Adding .gemini/skills and .gemini/GEMINI.md)" },
+          { "value": "junie", "label": "Junie (Adding .junie/skills and .junie/guidelines.md)" }
+        ]
+      }
+    }
+  }
+}

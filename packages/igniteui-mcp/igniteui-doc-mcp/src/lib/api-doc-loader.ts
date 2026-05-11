@@ -1,25 +1,10 @@
-import { readFileSync, existsSync, realpathSync } from 'fs';
-import { join, dirname, resolve, relative, isAbsolute } from 'path';
+import { readFileSync, existsSync, readdirSync, statSync } from 'fs';
+import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import type { Platform, PlatformConfig } from '../config/platforms.js';
-import { type ReactDocSection, ReactJsonParser } from './react-json-parser.js';
-import type { DocEntry, IndexEntry } from './types/docs.types.js';
+import type { DocEntry } from './types/docs.types.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-
-function isIndexEntry(value: unknown): value is IndexEntry {
-  if (!value || typeof value !== 'object') {
-    return false;
-  }
-
-  const entry = value as Partial<IndexEntry>;
-  return (
-    typeof entry.file === 'string' &&
-    typeof entry.title === 'string' &&
-    typeof entry.component === 'string' &&
-    typeof entry.type === 'string'
-  );
-}
 
 export class ApiDocsInitializationError extends Error {
   constructor(message: string, options?: { cause?: unknown }) {
@@ -31,7 +16,6 @@ export class ApiDocsInitializationError extends Error {
 export class ApiDocLoader {
   private docs = new Map<string, DocEntry>();
   private platformConfigs: PlatformConfig[];
-  private typedocJsonParsers = new Map<Platform, ReactJsonParser>();
 
   constructor(platformConfigs: PlatformConfig[]) {
     this.platformConfigs = platformConfigs;
@@ -49,12 +33,7 @@ export class ApiDocLoader {
 
   private loadPlatform(config: PlatformConfig): void {
     try {
-      switch (config.apiSource.kind) {
-        case 'typedoc-json':
-          return this.parseTypedocJson(config);
-        case 'markdown-index':
-          return this.parseMarkdownIndex(config);
-      }
+      this.parseLlmsFullTxt(config);
     } catch (err) {
       if (err instanceof ApiDocsInitializationError) {
         console.error(`   ⚠ ${config.displayName}: API reference not available (get_api_reference and search_api tools will skip this framework)`);
@@ -64,145 +43,127 @@ export class ApiDocLoader {
     }
   }
 
-  private parseMarkdownIndex(config: PlatformConfig): void {
-    const docsPath = join(__dirname, '..', '..', config.docsPath);
-    const indexPath = join(docsPath, 'index.json');
+  /**
+   * Loads API docs from pre-built llms-full.txt files.
+   * Expected layout: docs/{platform}-api/{package}/{version}/llms-full.txt
+   * Each file is split on "### [" headings — one DocEntry per component.
+   */
+  private parseLlmsFullTxt(config: PlatformConfig): void {
+    const docsPath = join(__dirname, '..', '..', config.apiSource.docsPath);
 
-    if (!existsSync(indexPath)) {
+    if (!existsSync(docsPath)) {
+      const buildScriptMap: Record<string, string> = {
+        webcomponents: 'wc-api',
+        react: 'react-api',
+        angular: 'angular-api',
+        blazor: 'blazor-api',
+      };
+      const buildScript = buildScriptMap[config.key] ?? config.key;
       throw new ApiDocsInitializationError(
-        `API docs not found for ${config.displayName}: ${indexPath}. Run: npm run build:docs:${config.key}`
+        `${config.displayName} API docs not found at ${docsPath}. Run: npm run build:docs:${buildScript}`
       );
     }
 
-    try {
-      const docsPathResolved = resolve(docsPath);
-      const docsPathReal = realpathSync(docsPathResolved);
-      const indexContent = readFileSync(indexPath, 'utf-8');
-      const parsedIndex = JSON.parse(indexContent) as unknown;
-      if (!parsedIndex || typeof parsedIndex !== 'object') {
-        throw new Error(`Invalid API index format: ${indexPath}`);
-      }
+    let count = 0;
 
-      const index = parsedIndex as Record<string, unknown>;
+    // Walk {docsPath}/{package}/{version}/llms-full.txt
+    for (const pkgName of readdirSync(docsPath)) {
+      const pkgDir = join(docsPath, pkgName);
+      if (!statSync(pkgDir).isDirectory()) continue;
 
-      let count = 0;
-      for (const [name, rawEntry] of Object.entries(index)) {
-        if (!isIndexEntry(rawEntry)) {
+      for (const versionName of readdirSync(pkgDir)) {
+        const versionDir = join(pkgDir, versionName);
+        if (!statSync(versionDir).isDirectory()) continue;
+
+        const llmsFile = join(versionDir, 'llms-full.txt');
+        if (!existsSync(llmsFile)) continue;
+
+        let content: string;
+        try {
+          content = readFileSync(llmsFile, 'utf-8');
+        } catch (err) {
           throw new ApiDocsInitializationError(
-            `Invalid docs index entry for ${config.displayName} (${config.key}) in ${indexPath}: key="${name}" has invalid shape.`
+            `Failed to read ${llmsFile}: ${err instanceof Error ? err.message : String(err)}`,
+            { cause: err }
           );
         }
 
-        // Use platform-prefixed key to avoid collisions
-        const key = `${config.key}:${name}`;
-        const filepath = this.resolveValidatedDocPath(
-          docsPathReal,
-          rawEntry.file,
-          config,
-          indexPath
-        );
-        const content = readFileSync(filepath, 'utf-8');
+        // Split on "### [ComponentName](url)" headings
+        // Each chunk starts with the heading line and contains the member list
+        const chunks = content.split(/(?=^### \[)/m).filter(c => c.trim());
 
-        this.docs.set(key, {
-          filepath,
-          content,
-          title: rawEntry.title,
-          component: rawEntry.component,
-          type: rawEntry.type,
-          keywords: rawEntry.keywords ?? [],
-          summary: rawEntry.summary ?? '',
-          platform: config.key,
-        });
-        count++;
+        for (const chunk of chunks) {
+          // Extract component name from heading: "### [IgxGridComponent](url)"
+          const headingMatch = chunk.match(/^### \[([^\]]+)\]/);
+          if (!headingMatch) continue;
+
+          const componentName = headingMatch[1].trim();
+
+          // Determine type from name prefix / chunk content
+          const type = this.inferComponentType(chunk, config.key);
+
+          // Extract first line of prose as summary (skip the heading itself)
+          const bodyLines = chunk.split('\n').slice(1);
+          const summaryLine = bodyLines.find(l => l.trim() && !l.startsWith('-') && !l.startsWith('#')) ?? '';
+
+          // Keywords: component name parts split by camelCase
+          // Strip known platform prefixes (Igb for Blazor, Igc for WC, Igr for React, Igx for Angular) and Component suffix
+          const keywords = componentName
+            .replace(/^Ig[bcrx]/, '')
+            .replace(/Component$/, '')
+            .split(/(?=[A-Z])/)
+            .map(w => w.toLowerCase())
+            .filter(Boolean);
+
+          const key = `${config.key}:${componentName}`;
+          this.docs.set(key, {
+            filepath: llmsFile,
+            content: chunk,
+            title: componentName,
+            component: componentName,
+            type,
+            keywords,
+            summary: summaryLine.trim(),
+            platform: config.key,
+          });
+          count++;
+        }
       }
+    }
 
-      console.error(`   ${config.displayName}: ${count} entries`);
-    } catch (err: unknown) {
+    if (count === 0) {
       throw new ApiDocsInitializationError(
-        `Failed to load ${config.displayName} index: ${indexPath}`,
-        { cause: err }
+        `No ${config.displayName} API entries found in ${docsPath}. Ensure the Astro build has been run.`
       );
     }
+
+    console.error(`   ${config.displayName}: ${count} entries (from llms-full.txt)`);
   }
 
-  private resolveValidatedDocPath(
-    docsPathReal: string,
-    entryFile: string,
-    config: PlatformConfig,
-    indexPath: string
-  ): string {
-    const filepath = resolve(docsPathReal, entryFile);
-    const filepathReal = realpathSync(filepath);
-    const rel = relative(docsPathReal, filepathReal);
-    const isContained = rel !== '' && !rel.startsWith('..') && !isAbsolute(rel);
-
-    if (!isContained) {
-      throw new ApiDocsInitializationError(
-        `Invalid docs index entry for ${config.displayName} (${config.key}) in ${indexPath}: file="${entryFile}" resolves outside docs root (${docsPathReal}).`
-      );
+  private inferComponentType(chunk: string, platform: string): string {
+    const heading = chunk.split('\n')[0];
+    if (/enum/i.test(heading)) return 'enum';
+    if (platform === 'blazor') {
+      if (/^### \[Igb\w+EventArgs\]/.test(heading)) return 'interface';
+      if (/^### \[Igb\w+Options\]/.test(heading)) return 'interface';
     }
-
-    return filepathReal;
-  }
-
-  private parseTypedocJson(config: PlatformConfig): void {
-    if (config.apiSource.kind !== 'typedoc-json') {
-      throw new ApiDocsInitializationError(
-        `Invalid typedoc JSON source configuration for ${config.displayName} (${config.key}).`
-      );
+    if (platform === 'webcomponents') {
+      if (/^### \[Igc\w+EventArgs\]/.test(heading)) return 'interface';
+      if (/interface/i.test(heading)) return 'interface';
     }
-
-    const jsonPath = join(__dirname, '..', '..', config.apiSource.jsonPath);
-
-    if (!existsSync(jsonPath)) {
-      throw new ApiDocsInitializationError(`${config.displayName} API model not found: ${jsonPath}`);
+    if (platform === 'react') {
+      if (/interface/i.test(heading)) return 'interface';
     }
-
-    const parser = new ReactJsonParser(jsonPath);
-    this.typedocJsonParsers.set(config.key, parser);
-
-    const components = parser.getAllComponents();
-    for (const name of components) {
-      const key = `${config.key}:${name}`;
-      this.docs.set(key, {
-        filepath: jsonPath, // Points to JSON, not markdown
-        title: `Class: ${name}`,
-        component: name,
-        type: 'class',
-        keywords: [],
-        summary: '',
-        platform: config.key,
-      });
+    if (platform === 'angular') {
+      // Angular interfaces conventionally start with I + uppercase (e.g., IGridState, IScrollStrategy)
+      // while class names starting with Igx have a lowercase g (e.g., IgxGridComponent)
+      if (/^### \[I[A-Z]/.test(heading)) return 'interface';
     }
-
-    console.error(`   ${config.displayName}: ${components.length} entries (from JSON)`);
+    return 'class';
   }
 
   get(platform: Platform, name: string): DocEntry | undefined {
     return this.docs.get(`${platform}:${name}`);
-  }
-
-  formatStructuredComponent(
-    platform: Platform,
-    name: string,
-    section: ReactDocSection = 'all'
-  ): string | null {
-    const config = this.platformConfigs.find(candidate => candidate.key === platform);
-    if (!config || config.apiSource.kind !== 'typedoc-json') {
-      return null;
-    }
-
-    const parser = this.typedocJsonParsers.get(platform);
-    if (!parser) {
-      return null;
-    }
-
-    const component = parser.getComponent(name);
-    if (!component) {
-      return null;
-    }
-
-    return parser.formatAsMarkdown(component, section);
   }
 
   search(options: {

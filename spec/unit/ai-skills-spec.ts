@@ -1,5 +1,5 @@
 import * as path from "path";
-import { App, Config, copyAISkillsToProject, FS_TOKEN, FsFileSystem, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { App, Config, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;
@@ -13,7 +13,10 @@ function mockTemplateManager(templatePaths: string[]) {
 	const mockProject = { templatePaths };
 	const mockProjectLib = {
 		projectIds: ["base"],
-		getProject: jasmine.createSpy("getProject").and.returnValue(mockProject)
+		getProject: jasmine.createSpy("getProject").and.callFake((id: string) => {
+			if (id === "ai-config") return mockProject;
+			return null;
+		})
 	};
 	const mockTm = jasmine.createSpyObj("TemplateManager", ["getFrameworkById"]);
 	mockTm.getFrameworkById.and.returnValue({ projectLibraries: [mockProjectLib] });
@@ -89,7 +92,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", mockSkillContent);
 		});
@@ -125,7 +128,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", "skill content");
 		});
@@ -155,7 +158,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", newContent);
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Updated .claude/skills/angular.md"));
@@ -188,7 +191,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			const result = copyAISkillsToProject();
+			const result = copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).not.toHaveBeenCalled();
 			expect(result.found).toBe(1);
@@ -226,7 +229,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "react" }
 			} as unknown as Config);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/overview.md", content);
 		});
@@ -260,7 +263,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "webcomponents" }
 			} as unknown as Config);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", content);
 		});
@@ -287,7 +290,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", "skill content");
 		});
@@ -312,7 +315,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/overview.md", "react skill content");
 		});
@@ -337,7 +340,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", "wc skill content");
 		});
@@ -359,7 +362,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			} as unknown as Config);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			const result = copyAISkillsToProject();
+			const result = copyAISkillsToProject(["claude"]);
 
 			expect(result.found).toBe(0);
 			expect(destFs.writeFile).not.toHaveBeenCalled();
@@ -384,7 +387,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).not.toHaveBeenCalled();
 		});
@@ -415,7 +418,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			const result = copyAISkillsToProject();
+			const result = copyAISkillsToProject(["claude"]);
 
 			expect(result.found).toBe(1);
 			expect(result.skipped).toBe(0);
@@ -451,7 +454,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			const result = copyAISkillsToProject();
+			const result = copyAISkillsToProject(["claude"]);
 
 			expect(result.found).toBe(1);
 			expect(result.skipped).toBe(0);
@@ -489,7 +492,7 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			const result = copyAISkillsToProject();
+			const result = copyAISkillsToProject(["claude"]);
 
 			expect(result.found).toBe(2);
 			expect(result.skipped).toBe(0);
@@ -500,7 +503,7 @@ describe("Unit - copyAISkillsToProject", () => {
 
 	describe("Template fallback (no package skills found)", () => {
 		const FAKE_TEMPLATE_PATH = "/fake/template";
-		const FAKE_SKILLS_ROOT = path.join(FAKE_TEMPLATE_PATH, "__dot__claude/skills");
+		const FAKE_SKILLS_ROOT = path.join(FAKE_TEMPLATE_PATH, "skills");
 
 		it("should use angular template paths when framework is in config and no npm skills are found", () => {
 			const skillFilePath = path.join(FAKE_SKILLS_ROOT, "angular.md");
@@ -524,7 +527,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			} as unknown as Config);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("angular");
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", content);
@@ -555,7 +558,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("react");
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/react.md", content);
@@ -586,7 +589,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("webcomponents");
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", content);
@@ -601,7 +604,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			App.container.set(FS_TOKEN, destFs);
 			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
-			const result = copyAISkillsToProject();
+			const result = copyAISkillsToProject(["claude"]);
 
 			expect(result.found).toBe(0);
 			expect(result.skipped).toBe(0);
@@ -631,7 +634,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			} as unknown as Config);
 			mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/grids/grid.md", content);
 		});
@@ -663,7 +666,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			} as unknown as Config);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("react");
 			expect(mockTm.getFrameworkById).not.toHaveBeenCalledWith("angular");
@@ -673,7 +676,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			// Simulates the schematics scenario: srcFs (FsFileSystem) reads from disk,
 			// destFs (NgTreeFileSystem) writes into the virtual Tree.
 			const ABS_TEMPLATE_PATH = path.resolve("/usr/lib/node_modules/fake-templates/base/files");
-			const SKILLS_ROOT = path.join(ABS_TEMPLATE_PATH, "__dot__claude/skills");
+			const SKILLS_ROOT = path.join(ABS_TEMPLATE_PATH, "skills");
 			const skillFilePath = path.join(SKILLS_ROOT, "angular.md");
 			const content = "# Angular skills from template";
 
@@ -695,7 +698,7 @@ describe("Unit - copyAISkillsToProject", () => {
 			} as unknown as Config);
 			mockTemplateManager([ABS_TEMPLATE_PATH]);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			// Source reads go to real FsFileSystem (srcFs)
 			expect(srcSpies.glob).toHaveBeenCalledWith(SKILLS_ROOT, "**/*");
@@ -732,9 +735,241 @@ describe("Unit - copyAISkillsToProject", () => {
 				project: { framework: "angular" }
 			} as unknown as Config);
 
-			copyAISkillsToProject();
+			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/grids/grid.md", content);
 		});
 	});
+
+	describe("Agent-aware destination", () => {
+		it("should copy skills to .cursor/skills/ when skillsDir targets cursor", () => {
+			const angularSkillsDir = skillsDir("igniteui-angular");
+			const skillFilePath = skillFile("igniteui-angular", "angular.md");
+			const content = "# Angular skills";
+
+			spySrcFs({
+				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
+			});
+
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				)
+			});
+			App.container.set(FS_TOKEN, destFs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+
+			copyAISkillsToProject(["cursor"]);
+
+			expect(destFs.writeFile).toHaveBeenCalledWith(".cursor/skills/angular.md", content);
+		});
+
+		it("should copy skills to .agents/skills/ when targeting generic agent", () => {
+			const angularSkillsDir = skillsDir("igniteui-angular");
+			const skillFilePath = skillFile("igniteui-angular", "angular.md");
+			const content = "# Angular skills";
+
+			spySrcFs({
+				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
+			});
+
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				)
+			});
+			App.container.set(FS_TOKEN, destFs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+
+			copyAISkillsToProject(["generic"]);
+
+			expect(destFs.writeFile).toHaveBeenCalledWith(".agents/skills/angular.md", content);
+		});
+
+		it("should copy skills to .github/skills/ when targeting copilot agent", () => {
+			const reactPkg = "igniteui-react";
+			const dir = skillsDir(reactPkg);
+			const file = skillFile(reactPkg, "overview.md");
+			const content = "# React overview";
+
+			spySrcFs({
+				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+					d === dir ? [file] : []
+				),
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
+			});
+
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === dir
+				)
+			});
+			App.container.set(FS_TOKEN, destFs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "react" }
+			} as unknown as Config);
+
+			copyAISkillsToProject(["copilot"]);
+
+			expect(destFs.writeFile).toHaveBeenCalledWith(".github/skills/overview.md", content);
+		});
+
+		it("should copy skills to multiple agent directories when given multiple agents", () => {
+			const angularSkillsDir = skillsDir("igniteui-angular");
+			const skillFilePath = skillFile("igniteui-angular", "angular.md");
+			const content = "# Angular skills";
+
+			spySrcFs({
+				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
+					dir === angularSkillsDir ? [skillFilePath] : []
+				),
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
+			});
+
+			const destFs = makeDestFs({
+				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				)
+			});
+			App.container.set(FS_TOKEN, destFs);
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+
+			const result = copyAISkillsToProject(["claude", "cursor", "generic"]);
+
+			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", content);
+			expect(destFs.writeFile).toHaveBeenCalledWith(".cursor/skills/angular.md", content);
+			expect(destFs.writeFile).toHaveBeenCalledWith(".agents/skills/angular.md", content);
+			expect(destFs.writeFile).toHaveBeenCalledTimes(3);
+			expect(result.found).toBe(3);
+		});
+	});
 });
+
+describe("Unit - getInstructionFilePath", () => {
+	it("should return .claude/CLAUDE.md for 'claude'", () => {
+		expect(getInstructionFilePath("claude")).toBe(".claude/CLAUDE.md");
+	});
+
+	it("should return .github/copilot-instructions.md for 'copilot'", () => {
+		expect(getInstructionFilePath("copilot")).toBe(".github/copilot-instructions.md");
+	});
+
+	it("should return .cursor/rules/cursor.mdc for 'cursor'", () => {
+		expect(getInstructionFilePath("cursor")).toBe(".cursor/rules/cursor.mdc");
+	});
+
+	it("should return .codex/instructions.md for 'codex'", () => {
+		expect(getInstructionFilePath("codex")).toBe(".codex/instructions.md");
+	});
+
+	it("should return .windsurf/rules/guidelines.md for 'windsurf'", () => {
+		expect(getInstructionFilePath("windsurf")).toBe(".windsurf/rules/guidelines.md");
+	});
+
+	it("should return .gemini/GEMINI.md for 'gemini'", () => {
+		expect(getInstructionFilePath("gemini")).toBe(".gemini/GEMINI.md");
+	});
+
+	it("should return .junie/guidelines.md for 'junie'", () => {
+		expect(getInstructionFilePath("junie")).toBe(".junie/guidelines.md");
+	});
+
+	it("should return AGENTS.md for 'generic'", () => {
+		expect(getInstructionFilePath("generic")).toBe("AGENTS.md");
+	});
+});
+
+describe("Unit - copyAgentInstructionFiles", () => {
+	beforeEach(() => {
+		spyOn(Util, "log");
+		spyOn(Util, "greenCheck").and.returnValue("✓");
+	});
+
+	it("should copy AGENTS.md content to each agent's instruction file path", () => {
+		const agentsContent = "# AI Agent Instructions\nFollow these rules.";
+		const FAKE_FILES_DIR = "/fake/template/files";
+
+		spySrcFs({
+			readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(agentsContent)
+		});
+
+		const destFs = makeDestFs();
+		App.container.set(FS_TOKEN, destFs);
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({
+			project: { framework: "angular" }
+		} as unknown as Config);
+		mockTemplateManager([FAKE_FILES_DIR]);
+
+		copyAgentInstructionFiles(["claude", "cursor"]);
+
+		const cursorFrontmatter = "---\ncontext: true\npriority: high\nscope: project\n---\n";
+		expect(destFs.writeFile).toHaveBeenCalledWith(".claude/CLAUDE.md", agentsContent);
+		expect(destFs.writeFile).toHaveBeenCalledWith(".cursor/rules/cursor.mdc", cursorFrontmatter + agentsContent);
+	});
+
+	it("should skip writing when instruction file already has same content", () => {
+		const agentsContent = "# AI Agent Instructions - same content";
+		const FAKE_FILES_DIR = "/fake/template/files";
+		const claudeDest = ".claude/CLAUDE.md";
+
+		spySrcFs({
+			readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(agentsContent)
+		});
+
+		const destFs = makeDestFs({
+			fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
+				p === claudeDest
+			),
+			readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) => {
+				if (p === claudeDest) return agentsContent;
+				return "{}";
+			})
+		});
+		App.container.set(FS_TOKEN, destFs);
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({
+			project: { framework: "angular" }
+		} as unknown as Config);
+		mockTemplateManager([FAKE_FILES_DIR]);
+
+		copyAgentInstructionFiles(["claude"]);
+
+		expect(destFs.writeFile).not.toHaveBeenCalled();
+	});
+
+	it("should not write anything when AGENTS.md source is not found", () => {
+		spySrcFs({
+			readFile: spyOn(FsFileSystem.prototype, "readFile").and.throwError("ENOENT")
+		});
+
+		const destFs = makeDestFs();
+		App.container.set(FS_TOKEN, destFs);
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({
+			project: { framework: "angular" }
+		} as unknown as Config);
+		mockTemplateManager(["/fake/files"]);
+
+		copyAgentInstructionFiles(["claude", "generic"]);
+
+		expect(destFs.writeFile).not.toHaveBeenCalled();
+	});
+});
+

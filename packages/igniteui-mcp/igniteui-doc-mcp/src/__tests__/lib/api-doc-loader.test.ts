@@ -6,58 +6,61 @@ vi.mock('fs', async () => {
     ...actual,
     existsSync: vi.fn(),
     readFileSync: vi.fn(),
+    readdirSync: vi.fn(),
+    statSync: vi.fn(),
     realpathSync: vi.fn((p: string) => p),
   };
 });
 
-import { existsSync, readFileSync } from 'fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'fs';
 import { ApiDocLoader, ApiDocsInitializationError } from '../../lib/api-doc-loader.js';
 import type { PlatformConfig } from '../../config/platforms.js';
 
 const mockExistsSync = vi.mocked(existsSync);
 const mockReadFileSync = vi.mocked(readFileSync);
+const mockReaddirSync = vi.mocked(readdirSync);
+const mockStatSync = vi.mocked(statSync);
 
-const FIXTURE_INDEX = JSON.stringify({
-  IgxGridComponent: {
-    file: 'IgxGridComponent.md',
-    title: 'IgxGridComponent',
-    component: 'IgxGridComponent',
-    type: 'class',
-    keywords: ['grid', 'data'],
-    summary: 'A data grid component.',
-  },
-  IgxComboComponent: {
-    file: 'IgxComboComponent.md',
-    title: 'IgxComboComponent',
-    component: 'IgxComboComponent',
-    type: 'class',
-    keywords: ['combo', 'select'],
-    summary: 'A combo box component.',
-  },
-});
+const FIXTURE_LLMS_CONTENT = [
+  '### [IgxGridComponent](https://example.com/angular/igxgrid)',
+  '',
+  'A data grid component.',
+  '',
+  '- **rowSelection**: string — Row selection mode.',
+  '',
+  '### [IgxComboComponent](https://example.com/angular/igxcombo)',
+  '',
+  'A combo box component.',
+  '',
+  '- **displayKey**: string — Key for display.',
+  '',
+].join('\n');
 
 const FIXTURE_CONFIG: PlatformConfig = {
   key: 'angular',
   displayName: 'Angular',
-  submodulePath: 'angular/igniteui-angular',
-  docsPath: 'docs/angular/api',
-  apiSource: { kind: 'markdown-index' },
-};
-
-const FIXTURE_REACT_CONFIG: PlatformConfig = {
-  key: 'react',
-  displayName: 'React',
-  submodulePath: 'react/igniteui-react',
-  docsPath: 'docs/react',
-  apiSource: { kind: 'typedoc-json', jsonPath: 'docs/react/igniteui-react.json' },
+  submodulePath: 'blazor/api-docs',
+  docsPath: 'docs/angular-api',
+  apiSource: { kind: 'llms-full-txt', docsPath: 'docs/angular-api' },
 };
 
 function setupFsMocks() {
-  mockExistsSync.mockImplementation((p) => String(p).endsWith('index.json'));
-  mockReadFileSync.mockImplementation((p) => {
-    if (String(p).endsWith('index.json')) return FIXTURE_INDEX;
-    return '# Component\n\n## Properties\nprop: string';
+  mockExistsSync.mockImplementation((p) => {
+    const s = String(p);
+    return s.endsWith('angular-api') || s.endsWith('llms-full.txt') || s.endsWith('webcomponents-api');
   });
+  mockReaddirSync.mockImplementation((p) => {
+    const s = String(p);
+    if (s.endsWith('angular-api') || s.endsWith('webcomponents-api')) {
+      return ['igniteui-angular'] as unknown as ReturnType<typeof readdirSync>;
+    }
+    if (s.endsWith('igniteui-angular')) {
+      return ['21.0.x'] as unknown as ReturnType<typeof readdirSync>;
+    }
+    return [] as unknown as ReturnType<typeof readdirSync>;
+  });
+  mockStatSync.mockReturnValue({ isDirectory: () => true } as ReturnType<typeof statSync>);
+  mockReadFileSync.mockReturnValue(FIXTURE_LLMS_CONTENT);
 }
 
 /** Creates a loader with fs mocks configured and load() already called. */
@@ -78,50 +81,38 @@ describe('ApiDocLoader', () => {
   });
 
   describe('load()', () => {
-    it('loads entries for a platform with a markdown index', () => {
+    it('loads entries for a platform with an llms-full.txt file', () => {
       const loader = createLoadedLoader();
       expect(loader.get('angular', 'IgxGridComponent')).toBeDefined();
       expect(loader.get('angular', 'IgxComboComponent')).toBeDefined();
     });
 
-    it('skips platform gracefully when index.json is missing', () => {
+    it('skips platform gracefully when docs directory is missing', () => {
       mockExistsSync.mockReturnValue(false);
       const loader = new ApiDocLoader([FIXTURE_CONFIG]);
       expect(() => loader.load()).not.toThrow();
       expect(loader.get('angular', 'IgxGridComponent')).toBeUndefined();
     });
 
-    it('skips platform gracefully when index JSON is malformed', () => {
+    it('skips platform gracefully when llms-full.txt has no component entries', () => {
       mockExistsSync.mockReturnValue(true);
-      mockReadFileSync.mockReturnValue('not valid json{{');
+      mockReaddirSync.mockReturnValue(['igniteui-angular'] as unknown as ReturnType<typeof readdirSync>);
+      mockStatSync.mockReturnValue({ isDirectory: () => true } as ReturnType<typeof statSync>);
+      mockReadFileSync.mockReturnValue('# Package — no components here');
       const loader = new ApiDocLoader([FIXTURE_CONFIG]);
-      // loadPlatform catches ApiDocsInitializationError and logs it without re-throwing
       expect(() => loader.load()).not.toThrow();
       expect(loader.get('angular', 'IgxGridComponent')).toBeUndefined();
     });
 
     it('loads multiple platforms', () => {
-      mockExistsSync.mockImplementation((p) => {
-        const s = String(p);
-        return s.endsWith('index.json') || s.endsWith('.json');
-      });
-      mockReadFileSync.mockImplementation((p) => {
-        if (String(p).endsWith('index.json')) return FIXTURE_INDEX;
-        // Return a minimal TypeDoc JSON for react config
-        if (String(p).endsWith('.json')) {
-          return JSON.stringify({ name: 'root', kind: 1, id: 0, children: [
-            { name: 'IgrGrid', kind: 128, id: 1 }
-          ]});
-        }
-        return '# Component\n\n## Properties\nprop: string';
-      });
+      setupFsMocks();
 
       const wcConfig: PlatformConfig = {
         key: 'webcomponents',
         displayName: 'Web Components',
-        submodulePath: 'webcomponents/igniteui-webcomponents',
-        docsPath: 'docs/webcomponents/api',
-        apiSource: { kind: 'markdown-index' },
+        submodulePath: 'blazor/api-docs',
+        docsPath: 'docs/webcomponents-api',
+        apiSource: { kind: 'llms-full-txt', docsPath: 'docs/webcomponents-api' },
       };
 
       const loader = new ApiDocLoader([FIXTURE_CONFIG, wcConfig]);
@@ -132,19 +123,12 @@ describe('ApiDocLoader', () => {
       expect(loader.get('webcomponents', 'IgxGridComponent')).toBeDefined();
     });
 
-    it('skips entries with invalid shape in index.json', () => {
+    it('returns zero entries when llms-full.txt exists but has no ### headings', () => {
       mockExistsSync.mockReturnValue(true);
-      mockReadFileSync.mockImplementation((p) => {
-        if (String(p).endsWith('index.json')) {
-          return JSON.stringify({
-            InvalidEntry: { title: 'Missing required fields' },
-          });
-        }
-        return '';
-      });
-
+      mockReaddirSync.mockReturnValue(['igniteui-angular'] as unknown as ReturnType<typeof readdirSync>);
+      mockStatSync.mockReturnValue({ isDirectory: () => true } as ReturnType<typeof statSync>);
+      mockReadFileSync.mockReturnValue('# Just a header\n\nNo component sections.');
       const loader = new ApiDocLoader([FIXTURE_CONFIG]);
-      // Invalid entries cause ApiDocsInitializationError which is caught
       expect(() => loader.load()).not.toThrow();
     });
   });
@@ -158,10 +142,11 @@ describe('ApiDocLoader', () => {
       expect(entry?.keywords).toContain('grid');
     });
 
-    it('populates content from the markdown file', () => {
+    it('populates content chunk from llms-full.txt', () => {
       const loader = createLoadedLoader();
       const entry = loader.get('angular', 'IgxGridComponent');
-      expect(entry?.content).toBe('# Component\n\n## Properties\nprop: string');
+      expect(entry?.content).toContain('IgxGridComponent');
+      expect(entry?.content).toContain('A data grid component.');
     });
 
     it('returns undefined for an unknown component', () => {
@@ -196,7 +181,7 @@ describe('ApiDocLoader', () => {
 
     it('filters by keyword', () => {
       const loader = createLoadedLoader();
-      const results = loader.search({ filter: 'select' });
+      const results = loader.search({ filter: 'combo' });
       expect(results).toHaveLength(1);
       expect(results[0].component).toBe('IgxComboComponent');
     });
