@@ -29,14 +29,22 @@ export function configureSkills(agents: AIAgentTarget[]): void {
 	}
 }
 
-export async function configure(agents?: AIAgentTarget[], skills = true, assistants: AiCodingAssistant[] = ["vscode"]): Promise<void> {
+export async function configure(agents?: AIAgentTarget[], skills = true, assistants?: AiCodingAssistant[]): Promise<void> {
+	if (!agents?.length) {
+		agents = await promptForAgents();
+	}
+
+	if (!assistants?.length) {
+		assistants = await promptForAssistant();
+	}
 	configureMCP(assistants);
-	if (!agents?.length) return;
+
 	if (skills) {
 		configureSkills(agents);
 	}
 	copyAgentInstructionFiles(agents);
 }
+
 const AI_AGENT_CHECKBOX_DEFAULTS: AIAgentTarget[] = ["generic", "claude"];
 
 const AI_ASSISTANT_CHECKBOX_DEFAULTS: AiCodingAssistant[] = ["vscode", "claude-code"];

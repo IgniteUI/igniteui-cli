@@ -289,7 +289,7 @@ describe("Unit - ai-config command", () => {
 				required: true
 			}));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude; assistant: vscode" }));
 		});
 
 		it("uses defaults without prompting when canPrompt returns false", async () => {
@@ -300,7 +300,7 @@ describe("Unit - ai-config command", () => {
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
 			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: generic, claude" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: generic, claude; assistant: vscode, claude-code" }));
 		});
 
 		it("logs skipping and does not post analytics when none is selected", async () => {
@@ -313,7 +313,7 @@ describe("Unit - ai-config command", () => {
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Skipping"));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: none" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: none; assistant: none" }));
 		});
 
 		it("still configures MCP when none is selected for skills", async () => {
@@ -329,7 +329,7 @@ describe("Unit - ai-config command", () => {
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			// TODO: toHaveBeenCalledWith check for mcp.json
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: none" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: none; assistant: none" }));
 		});
 
 		it("configures multiple agents when selected interactively", async () => {
@@ -345,7 +345,7 @@ describe("Unit - ai-config command", () => {
 			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which AI agents do you want to generate skills and instructions for?"
 			}));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: claude, cursor" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: claude, cursor; assistant: vscode" }));
 		});
 
 		it("skips prompt when --agent is provided", async () => {
@@ -357,7 +357,7 @@ describe("Unit - ai-config command", () => {
 			expect(InquirerWrapper.checkbox).not.toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which AI agents do you want to generate skills and instructions for?"
 			}));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor; assistant: vscode" }));
 		});
 
 		it("skips assistant prompt when --assistant is provided", async () => {

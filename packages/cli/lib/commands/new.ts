@@ -1,4 +1,4 @@
-import { AI_AGENT_CHOICES, AIAgentTarget, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { AI_AGENT_CHOICES, AIAgentTarget, AiCodingAssistant, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { PromptSession } from "./../PromptSession";
 import { NewCommandType, PositionalArgs } from "./types";
@@ -166,7 +166,7 @@ const command: NewCommandType = {
 		}
 
 		process.chdir(argv.name);
-		await configure(argv.agents as AIAgentTarget[] | undefined);
+		await configure(argv.agents as AIAgentTarget[] | undefined, true, argv.assistants as AiCodingAssistant[] | undefined);
 		process.chdir("..");
 
 		if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {
