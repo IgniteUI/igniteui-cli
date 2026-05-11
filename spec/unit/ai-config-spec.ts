@@ -313,7 +313,7 @@ describe("Unit - ai-config command", () => {
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Skipping"));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: " }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: none" }));
 		});
 
 		it("still configures MCP when none is selected for skills", async () => {
