@@ -140,7 +140,7 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 
 ## API Reference Tools
 
-- **\`search_api\`** — discover components by keyword when the exact name is unknown (supports angular, react, webcomponents)
+- **\`search_api\`** — discover components by keyword when the exact name is unknown (supports angular, react, webcomponents, blazor)
 - **\`get_api_reference\`** — retrieve properties, methods, and events for a known component
 
 ## Project Setup
