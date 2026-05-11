@@ -1,4 +1,4 @@
-import { App, BaseTemplate, Config, ControlExtraConfigType, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig,
+import { App, BaseTemplate, Config, ControlExtraConfigType, FS_TOKEN, GoogleAnalytics, InquirerWrapper, PackageManager, ProjectConfig,
 	ProjectLibrary, ProjectTemplate, Template, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as add } from "../../packages/cli/lib/commands/add";
@@ -128,6 +128,7 @@ describe("Unit - PromptSession", () => {
 			}
 		} as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 
 		const mockProject = {
 			name: "Project 1",
@@ -274,12 +275,11 @@ describe("Unit - PromptSession", () => {
 		spyOn(Util, "log");
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "fileExists").and.returnValue(false);
-		const mockTm = App.container.get(TEMPLATE_MANAGER);
 		const mockFileSystem = {
 			fileExists: jasmine.createSpy().and.returnValue(false),
 			readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" }))
 		};
-		spyOn(App.container, 'get').and.callFake((token: any) => token === TEMPLATE_MANAGER ? mockTm : mockFileSystem as any);
+		App.container.set(FS_TOKEN, mockFileSystem);
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "gitInit");
 		spyOn(InquirerWrapper, "input").and.returnValues(
@@ -484,6 +484,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(Util, "log");
+		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(add, "addTemplate").and.returnValue(Promise.resolve(true));
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "installPackages").and.returnValue(Promise.resolve());
@@ -681,6 +682,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
 		spyOn(Util, "log");
+		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(add, "addTemplate").and.returnValue(Promise.resolve(true));
 		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
 		spyOn(PackageManager, "installPackages").and.returnValue(Promise.resolve());
@@ -823,6 +825,7 @@ describe("Unit - PromptSession", () => {
 			}
 		} as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
+		App.initialize();
 		App.container.set(TEMPLATE_MANAGER, new TemplateManager());
 		const mockSession = new PromptSession();
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
@@ -862,6 +865,7 @@ describe("Unit - PromptSession", () => {
 			}
 		} as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
+		App.initialize();
 		App.container.set(TEMPLATE_MANAGER, new TemplateManager());
 		const mockSession = new PromptSession();
 		spyOn(Util, "isAlphanumericExt").and.callThrough();
