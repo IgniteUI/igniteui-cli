@@ -93,6 +93,7 @@ describe("cli-config schematic", () => {
 		createIgPkgJson();
 		populatePkgJson();
 		spyOn(aiSkillsModule, "copyAISkillsToProject");
+		spyOn(aiSkillsModule, "copyAgentInstructionFiles");
 	});
 
 	it("should set the template manager correctly", async () => {
@@ -316,90 +317,120 @@ export const appConfig: ApplicationConfig = {
 		expect(warns).toContain(jasmine.stringMatching(pattern));
 	});
 
-	describe("addAIConfig", () => {
+	it("should schedule the ai-config schematic task", async () => {
+		await runner.runSchematic("cli-config", {}, tree);
+
+		const taskOptions = runner.tasks.map(task => task.options);
+		expect(taskOptions).toContain(jasmine.objectContaining({ name: "ai-config" }));
+	});
+
+
+	describe("ai-config schematic", () => {
 		const mcpFilePath = "/.vscode/mcp.json";
 
-		it("should create .vscode/mcp.json with both servers when file does not exist", async () => {
-			await runner.runSchematic("cli-config", {}, tree);
+		it("should call copyAISkillsToProject with claude and generic defaults when no options", async () => {
+			await runner.runSchematic("ai-config", {}, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["claude", "generic"]);
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "generic"]);
+		});
+
+		it("should create .vscode/mcp.json with igniteui and angular-cli servers when file does not exist", async () => {
+			await runner.runSchematic("ai-config", {}, tree);
 
 			expect(tree.exists(mcpFilePath)).toBeTruthy();
 			const content = JSON.parse(tree.readContent(mcpFilePath));
 			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
 			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+			expect(content.servers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
 		});
 
-		it("should call copyAISkillsToProject", async () => {
-			await runner.runSchematic("cli-config", {}, tree);
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
-		});
-
-		it("should add both servers to existing .vscode/mcp.json that has no servers", async () => {
+		it("should add all three servers to existing .vscode/mcp.json that has no servers", async () => {
 			tree.create(mcpFilePath, JSON.stringify({ servers: {} }));
 
-			await runner.runSchematic("cli-config", {}, tree);
+			await runner.runSchematic("ai-config", {}, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
 			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
 			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+			expect(content.servers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
 		});
 
-		it("should add missing igniteui-theming server if only igniteui is already present", async () => {
+		it("should add missing servers when only some are already present", async () => {
 			tree.create(mcpFilePath, JSON.stringify({
 				servers: {
 					"igniteui-cli": { command: "npx", args: ["-y", "igniteui-cli", "mcp"] }
 				}
 			}));
 
-			await runner.runSchematic("cli-config", {}, tree);
+			await runner.runSchematic("ai-config", {}, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
 			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
 			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+			expect(content.servers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
 		});
 
-		it("should add missing igniteui server if only igniteui-theming is already present", async () => {
-			tree.create(mcpFilePath, JSON.stringify({
-				servers: {
-					"igniteui-theming": { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] }
-				}
-			}));
-
-			await runner.runSchematic("cli-config", {}, tree);
-
-			const content = JSON.parse(tree.readContent(mcpFilePath));
-			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
-			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
-		});
-
-		it("should not modify .vscode/mcp.json if both servers are already present", async () => {
+		it("should not modify .vscode/mcp.json if all servers are already present", async () => {
 			const existing = {
 				servers: {
-					"angular-cli": { command: "npx", args: ["-y", "@angular/cli", "mcp"] },
 					"igniteui-cli": { command: "npx", args: ["-y", "igniteui-cli", "mcp"] },
-					"igniteui-theming": { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] }
+					"igniteui-theming": { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] },
+					"angular-cli": { command: "npx", args: ["-y", "@angular/cli", "mcp"] }
 				}
 			};
 			tree.create(mcpFilePath, JSON.stringify(existing));
 
-			await runner.runSchematic("cli-config", {}, tree);
+			await runner.runSchematic("ai-config", {}, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
 			expect(content).toEqual(existing);
 		});
 
-		it("should preserve existing servers when adding igniteui servers", async () => {
+		it("should preserve existing servers when adding new ones", async () => {
 			tree.create(mcpFilePath, JSON.stringify({
 				servers: {
 					"other-server": { command: "node", args: ["server.js"] }
 				}
 			}));
 
-			await runner.runSchematic("cli-config", {}, tree);
+			await runner.runSchematic("ai-config", {}, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
 			expect(content.servers["other-server"]).toEqual({ command: "node", args: ["server.js"] });
 			expect(content.servers["igniteui-cli"]).toBeDefined();
 			expect(content.servers["igniteui-theming"]).toBeDefined();
+			expect(content.servers["angular-cli"]).toBeDefined();
+		});
+
+		it("should pass agents when agents option is provided", async () => {
+			await runner.runSchematic("ai-config", { agents: ["cursor"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["cursor"]);
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["cursor"]);
+		});
+
+		it("should pass agents for copilot agents", async () => {
+			await runner.runSchematic("ai-config", { agents: ["copilot"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["copilot"]);
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["copilot"]);
+		});
+
+		it("should pass agents for generic agents", async () => {
+			await runner.runSchematic("ai-config", { agents: ["generic"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["generic"]);
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["generic"]);
+		});
+
+		it("should configure multiple agents", async () => {
+			await runner.runSchematic("ai-config", { agents: ["claude", "cursor"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["claude", "cursor"]);
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "cursor"]);
 		});
 	});
 });

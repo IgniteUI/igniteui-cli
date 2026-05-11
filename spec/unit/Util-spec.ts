@@ -136,4 +136,58 @@ describe("Unit - Util", () => {
 			.toBe("../../../dir1/dir2/target.ts", "posix folder to Win style file, keep ext => posix");
 		});
 	});
+
+	describe("canPrompt", () => {
+		let originalStdoutIsTTY: boolean | undefined;
+		let originalStdinIsTTY: boolean | undefined;
+		let originalCI: string | undefined;
+
+		beforeEach(() => {
+			originalStdoutIsTTY = process.stdout.isTTY;
+			originalStdinIsTTY = process.stdin.isTTY;
+			originalCI = process.env.CI;
+		});
+
+		afterEach(() => {
+			(process.stdout as any).isTTY = originalStdoutIsTTY;
+			(process.stdin as any).isTTY = originalStdinIsTTY;
+			if (originalCI === undefined) {
+				delete process.env.CI;
+			} else {
+				process.env.CI = originalCI;
+			}
+		});
+
+		it("returns true when stdout and stdin are TTY and CI is not set", () => {
+			(process.stdout as any).isTTY = true;
+			(process.stdin as any).isTTY = true;
+			delete process.env.CI;
+
+			expect(Util.canPrompt()).toBe(true);
+		});
+
+		it("returns false when stdout is not TTY", () => {
+			(process.stdout as any).isTTY = false;
+			(process.stdin as any).isTTY = true;
+			delete process.env.CI;
+
+			expect(Util.canPrompt()).toBe(false);
+		});
+
+		it("returns false when stdin is not TTY", () => {
+			(process.stdout as any).isTTY = true;
+			(process.stdin as any).isTTY = false;
+			delete process.env.CI;
+
+			expect(Util.canPrompt()).toBe(false);
+		});
+
+		it("returns false when CI environment variable is set", () => {
+			(process.stdout as any).isTTY = true;
+			(process.stdin as any).isTTY = true;
+			process.env.CI = "true";
+
+			expect(Util.canPrompt()).toBe(false);
+		});
+	});
 });

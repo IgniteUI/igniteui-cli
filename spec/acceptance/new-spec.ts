@@ -1,4 +1,4 @@
-import { GoogleAnalytics, GoogleAnalyticsParameters, PackageManager, Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, GoogleAnalyticsParameters, InquirerWrapper, PackageManager, Util } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as cli from "../../packages/cli/lib/cli";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
@@ -11,6 +11,7 @@ describe("New command", () => {
 		spyOn(console, "error");
 		spyOn(GoogleAnalytics, "post");
 		spyOn(PackageManager, "installPackages");
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
 		process.chdir("./output");
 	});
 
