@@ -2,7 +2,7 @@ import { SchematicContext, Tree } from "@angular-devkit/schematics";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import {
 	BasePromptSession, Framework,
-	IUserInputOptions, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task
+	type UserInputOptions, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task
 } from "@igniteui/cli-core";
 import { of } from "rxjs";
 import { TemplateOptions } from "../component/schema";
@@ -26,7 +26,10 @@ export class SchematicsPromptSession extends BasePromptSession {
 		this.userAnswers = new Map<string, any>();
 	}
 
-	public async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
+	public async getUserInput(
+		options: Exclude<UserInputOptions, { type: "checkbox" }>,
+		withBackChoice: boolean = false,
+	): Promise<string> {
 		return super.getUserInput(options, withBackChoice);
 	}
 
