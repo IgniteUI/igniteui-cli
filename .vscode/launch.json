@@ -297,7 +297,7 @@
 			"preLaunchTask": "build",
 			"outFiles": ["${workspaceFolder}/**/*.js"],
 			"args": [
-				"ai-config"
+				"list"
 			]
 		}, {
 			"type": "node",
