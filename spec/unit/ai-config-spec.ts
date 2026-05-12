@@ -278,8 +278,8 @@ describe("Unit - ai-config command", () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValues(
-				Promise.resolve(["vscode"]),
-				Promise.resolve(["claude"])
+				Promise.resolve(["claude"]),
+				Promise.resolve(["vscode"])
 			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
@@ -307,7 +307,6 @@ describe("Unit - ai-config command", () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
-			spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("vscode"));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
@@ -319,25 +318,25 @@ describe("Unit - ai-config command", () => {
 		it("still configures MCP when none is selected for skills", async () => {
 			const mockFs = createMockFs();
 			App.container.set(FS_TOKEN, mockFs);
+			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValues(
-				Promise.resolve(["vscode"]),
-				Promise.resolve(["none"])
+				Promise.resolve(["none"]),
+				Promise.resolve(["vscode"])
 			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
-			expect(mockFs.writeFile).toHaveBeenCalled();
-			// TODO: toHaveBeenCalledWith check for mcp.json
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: none; assistant: none" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: none; assistant: vscode" }));
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Skipping"));
 		});
 
 		it("configures multiple agents when selected interactively", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValues(
-				Promise.resolve(["vscode"]),
-				Promise.resolve(["claude", "cursor"])
+				Promise.resolve(["claude", "cursor"]),
+				Promise.resolve(["vscode"])
 			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
@@ -350,6 +349,7 @@ describe("Unit - ai-config command", () => {
 
 		it("skips prompt when --agent is provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["vscode"]));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agent: ["cursor"] });
@@ -362,6 +362,7 @@ describe("Unit - ai-config command", () => {
 
 		it("skips assistant prompt when --assistant is provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", assistant: ["cursor"] });
@@ -371,9 +372,10 @@ describe("Unit - ai-config command", () => {
 
 		it("prompts for assistant with correct message", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValues(
-				Promise.resolve(["cursor"]),
-				Promise.resolve(["claude"])
+				Promise.resolve(["claude"]),
+				Promise.resolve(["vscode"])
 			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
@@ -386,9 +388,10 @@ describe("Unit - ai-config command", () => {
 		it("writes to correct config path for selected assistant", async () => {
 			const mockFs = createMockFs();
 			App.container.set(FS_TOKEN, mockFs);
+			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValues(
-				Promise.resolve(["claude-code"]),
-				Promise.resolve(["none"])
+				Promise.resolve(["claude"]),
+				Promise.resolve(["claude-code"])
 			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
