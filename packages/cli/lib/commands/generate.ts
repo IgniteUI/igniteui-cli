@@ -1,4 +1,4 @@
-import { GoogleAnalytics, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { App, BaseTemplateManager, GoogleAnalytics, ProjectLibrary, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as config } from "./config";
 import { CommandType, PositionalArgs } from "./types";
@@ -27,18 +27,19 @@ async function handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		return;
 	}
 
-	if (command.templateManager.getFrameworkById(argv.framework) === undefined) {
+	const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+	if (templateManager.getFrameworkById(argv.framework) === undefined) {
 		return Util.error("Framework not supported", "red");
 	}
 
 	let projectLib: ProjectLibrary;
 	if (argv.type) {
-		projectLib = command.templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
+		projectLib = templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
 		if (!projectLib) {
 			return Util.error(`Project type '${argv.type}' not found in framework '${argv.framework}'`);
 		}
 	} else {
-		projectLib = command.templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
+		projectLib = templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
 		argv.type = projectLib.projectType;
 	}
 
@@ -78,7 +79,6 @@ const command: CommandType = {
 	aliases: ["g"],
 	command: "generate",
 	describe: "Generates custom templates (see subcommands)",
-	templateManager: null,
 	builder: yargs => {
 		yargs
 			.command({

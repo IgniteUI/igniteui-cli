@@ -1,4 +1,4 @@
-import { GoogleAnalytics, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, BaseTemplateManager, GoogleAnalytics, PackageManager, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as path from "path";
 import { BuildCommandType, PositionalArgs } from "./types";
@@ -8,7 +8,6 @@ const command: BuildCommandType = {
 	command: "build",
 	describe: "Builds the project",
 	builder: (yargs) => yargs,
-	templateManager: null,
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 
 		GoogleAnalytics.post({
@@ -19,7 +18,8 @@ const command: BuildCommandType = {
 	},
 	async build() {
 		Util.log("Build started.");
-		await PackageManager.ensureIgniteUISource(true, command.templateManager);
+		const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+		await PackageManager.ensureIgniteUISource(true, templateManager);
 
 		if (!ProjectConfig.hasLocalConfig()) {
 			Util.error("Build command is supported only on existing project created with igniteui-cli", "red");

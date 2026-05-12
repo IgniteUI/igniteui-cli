@@ -1,5 +1,6 @@
 {
   "name": "@igniteui/mcp-server",
+  "mcpName": "io.github.IgniteUI/mcp-server",
   "version": "15.0.1",
   "description": "Unified MCP server for Ignite UI — documentation, GitHub API, and CLI scaffolding",
   "repository": {

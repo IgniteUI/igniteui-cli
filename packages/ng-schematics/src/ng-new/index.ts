@@ -12,7 +12,7 @@ import {
 	TaskId,
 	Tree } from "@angular-devkit/schematics";
 import { NodePackageInstallTask, RepositoryInitializerTask, RunSchematicTask } from "@angular-devkit/schematics/tasks";
-import { App, GoogleAnalytics, ProjectLibrary, ProjectTemplate, Util } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, ProjectLibrary, ProjectTemplate, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import { defer, Observable } from "rxjs";
 import { NewProjectOptions } from "../app-projects/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
@@ -35,7 +35,8 @@ export function newProject(options: OptionsSchema): Rule {
 		let projLibrary: ProjectLibrary;
 		let projectOptions: NewProjectOptions;
 		const templateManager = new SchematicsTemplateManager();
-		const prompt = new SchematicsPromptSession(templateManager);
+		App.container.set(TEMPLATE_MANAGER, templateManager);
+		const prompt = new SchematicsPromptSession();
 
 		// TODO:
 		const defaultProjName = "IG Project";

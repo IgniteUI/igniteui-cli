@@ -5,7 +5,7 @@ import {
 } from "@angular-devkit/schematics";
 import { NodePackageInstallTask, RunSchematicTask } from "@angular-devkit/schematics/tasks";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
-import { App, FS_TYPE_TOKEN, FsTypes, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, FS_TYPE_TOKEN, FsTypes, GoogleAnalytics, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -75,6 +75,7 @@ export function component(options: ComponentOptions): Rule {
 		});
 		const addedComponents: TemplateOptions[] = [];
 		const templateManager = new SchematicsTemplateManager();
+		App.container.set(TEMPLATE_MANAGER, templateManager);
 		const projLib = templateManager.getProjectLibrary("angular", "igx-ts");
 		/**
 		 * MDNT
@@ -90,7 +91,7 @@ export function component(options: ComponentOptions): Rule {
 		void properties; // cache templates for use inside chooseActionLoop
 		let prompt: SchematicsPromptSession;
 		if (!options.template || !options.name) {
-			prompt = new SchematicsPromptSession(templateManager);
+			prompt = new SchematicsPromptSession();
 			prompt.setContext(context, tree, options.name as string);
 			setVirtual(tree);
 			await prompt.chooseActionLoop(projLib);
