@@ -153,9 +153,7 @@ export function addAIConfig(options: { agents?: AIAgentTarget[]; assistants?: st
 	const selected = options.agents?.length ? options.agents : [] as AIAgentTarget[];
 	const agents = selected.includes("none" as any) ? [] : selected;
 	const selectedAssistants = options.assistants?.length ? options.assistants : [];
-	const assistants = selectedAssistants
-		.filter(a => a !== "none")
-		.map(a => a === "claude-code" ? "general" : a) as AiCodingAssistant[];
+	const assistants = (selectedAssistants.includes("none")? [] : selectedAssistants) as AiCodingAssistant[];
 	return aiConfig({ init: true, agents, assistants });
 }
 

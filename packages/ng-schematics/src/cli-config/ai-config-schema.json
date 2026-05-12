@@ -44,6 +44,7 @@
         "type": "list",
         "multiselect": true,
         "items": [
+          { "value": "none", "label": "None (skip MCP configuration)" },
           { "value": "general", "label": ".mcp.json (general for Claude Code, VS Code, and other assistants)" },
           { "value": "vscode", "label": "VS Code (GitHub Copilot)" },
           { "value": "cursor", "label": "Cursor" },
