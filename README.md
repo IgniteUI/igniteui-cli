@@ -151,13 +151,17 @@ To configure Ignite UI AI tooling — MCP servers and AI coding skills — run:
 ig ai-config
 ```
 
-You will be prompted to select which AI tools to configure (Claude and Generic are selected by default). You can also pass agents directly:
+You will be prompted with two selections:
+- **AI agents** — which tools to generate skill and instruction files for (Generic and Claude are selected by default)
+- **Coding assistants** — which assistants to configure MCP servers for (general `.mcp.json` is selected by default, compatible with Claude Code, VS Code, and others)
+
+You can also pass options directly:
 
 ```bash
-ig ai-config --agents claude copilot generic
+ig ai-config --agents claude copilot generic --assistants vscode cursor
 ```
 
-This creates or updates `.vscode/mcp.json` with entries for the [Ignite UI MCP](#mcp-server) and `igniteui-theming` MCP servers (existing servers are preserved), copies AI coding skill files from installed Ignite UI packages, and generates agent-specific instruction files (e.g. `CLAUDE.md`, `AGENTS.md`).
+This creates or updates the assistant-specific MCP config file (e.g. `.mcp.json`, `.vscode/mcp.json`, `.cursor/mcp.json`) with entries for the [Ignite UI MCP](#mcp-server) and `igniteui-theming` MCP servers (existing servers are preserved), copies AI coding skill files from installed Ignite UI packages, and generates agent-specific instruction files (e.g. `CLAUDE.md`, `AGENTS.md`).
 
 The `ig new` command also prompts for AI tool configuration as part of project creation.
 

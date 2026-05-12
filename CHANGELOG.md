@@ -8,6 +8,7 @@
 * ci(npm): OIDC/Trusted publishing workflow & node update by @turbobobbytraykov in https://github.com/IgniteUI/igniteui-cli/pull/1654
 * build(deps): bump postcss from 8.5.8 to 8.5.12 in the npm_and_yarn group across 1 directory by @dependabot[bot] in https://github.com/IgniteUI/igniteui-cli/pull/1670
 * chore(igx-ts,igr-ts,igc-ts): bump igniteui package deps by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1673
+* feat(ai-config): The ai-config command now enables users to select and configure an AI coding assistant integration for their Ignite UI project. Based on the selected provider, the command adds the required skills, instruction files, and MCP configuration to streamline AI-assisted development workflows. by @Marina-L-Stoyanova https://github.com/IgniteUI/igniteui-cli/pull/1684
 
 # 15.0.0 (2026-04-22)
 
