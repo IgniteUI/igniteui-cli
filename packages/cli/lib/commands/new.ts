@@ -60,7 +60,6 @@ const command: NewCommandType = {
 				type: "string"
 			})
 			.option("agents", {
-				alias: "a",
 				describe: "AI agents/tools to generate configuration files for",
 				choices: [...AI_AGENT_CHOICES, "none"] as string[],
 				type: "array"
@@ -156,15 +155,6 @@ const command: NewCommandType = {
 			cd14: theme
 		});
 
-		const config = projTemplate.generateConfig(argv.name, theme);
-		for (const templatePath of projTemplate.templatePaths) {
-			await Util.processTemplates(templatePath, path.join(process.cwd(), argv.name),
-				config, projTemplate.delimiters, false);
-		}
-
-		Util.log(Util.greenCheck() + " Project Created");
-
-
 		process.chdir(argv.name);
 		const rawAgents = argv.agents as string[] | undefined;
 		const filteredAgents = rawAgents?.filter(a => a !== "none") as AIAgentTarget[] | undefined;
@@ -172,6 +162,14 @@ const command: NewCommandType = {
 			await configure(filteredAgents, argv.assistants as AiCodingAssistant[] | undefined);
 		}
 		process.chdir("..");
+
+		const config = projTemplate.generateConfig(argv.name, theme);
+		for (const templatePath of projTemplate.templatePaths) {
+			await Util.processTemplates(templatePath, path.join(process.cwd(), argv.name),
+				config, projTemplate.delimiters, false);
+		}
+
+		Util.log(Util.greenCheck() + " Project Created");
 
 		if (!argv.skipInstall) {
 			process.chdir(argv.name);

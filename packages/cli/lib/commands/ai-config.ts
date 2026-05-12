@@ -47,7 +47,7 @@ export async function configure(agents: AIAgentTarget[] = [], assistants: AiCodi
 
 const AI_AGENT_CHECKBOX_DEFAULTS: AIAgentTarget[] = ["generic", "claude"];
 
-const AI_ASSISTANT_CHECKBOX_DEFAULTS: AiCodingAssistant[] = ["general"];
+const AI_ASSISTANT_CHECKBOX_DEFAULTS: AiCodingAssistant[] = ["generic"];
 
 const AI_AGENT_CHECKBOX_CHOICES = [
 	{ value: "none", name: "None (skip skills and instructions)" },

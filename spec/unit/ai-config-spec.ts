@@ -300,7 +300,7 @@ describe("Unit - ai-config command", () => {
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
 			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: generic, claude; assistant: general" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: generic, claude; assistant: generic" }));
 		});
 
 		it("logs skipping and does not post analytics when none is selected", async () => {
@@ -399,7 +399,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValues(
 				Promise.resolve(["claude"]),
-				Promise.resolve(["general"])
+				Promise.resolve(["generic"])
 			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });

@@ -456,7 +456,7 @@ export const appConfig: ApplicationConfig = {
 		});
 
 		it("should write to .mcp.json when assistant is claude-code", async () => {
-			await runner.runSchematic("ai-config", { assistants: ["general"] }, tree);
+			await runner.runSchematic("ai-config", { assistants: ["generic"] }, tree);
 
 			const filePath = "/.mcp.json";
 			expect(tree.exists(filePath)).toBeTruthy();

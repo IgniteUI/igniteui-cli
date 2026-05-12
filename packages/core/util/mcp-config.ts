@@ -7,7 +7,7 @@ export interface McpServerEntry {
 	args: string[];
 }
 
-export const AI_ASSISTANT_CHOICES = ["general", "vscode", "cursor", "gemini", "junie"] as const;
+export const AI_ASSISTANT_CHOICES = ["generic", "vscode", "cursor", "gemini", "junie"] as const;
 export type AiCodingAssistant = typeof AI_ASSISTANT_CHOICES[number];
 
 interface AssistantMcpConfig {
@@ -16,7 +16,7 @@ interface AssistantMcpConfig {
 }
 
 export const AI_ASSISTANT_LABELS: Record<AiCodingAssistant, string> = {
-	"general":	".mcp.json (general for Claude Code, VS Code, and other assistants)",
+	"generic":	".mcp.json (generic for Claude Code, VS Code, and other assistants)",
 	"vscode":	"VS Code (GitHub Copilot)",
 	"cursor":	"Cursor",
 	"gemini":	"Gemini",
@@ -24,7 +24,7 @@ export const AI_ASSISTANT_LABELS: Record<AiCodingAssistant, string> = {
 };
 
 export const AI_ASSISTANT_MCP_CONFIGS: Record<AiCodingAssistant, AssistantMcpConfig> = {
-	"general":	{ mcpFilePath: ".mcp.json",              rootKey: "mcpServers" },
+	"generic":	{ mcpFilePath: ".mcp.json",              rootKey: "mcpServers" },
 	"vscode":	{ mcpFilePath: ".vscode/mcp.json",      rootKey: "servers" },
 	"cursor":	{ mcpFilePath: ".cursor/mcp.json",       rootKey: "mcpServers" },
 	"gemini":	{ mcpFilePath: ".gemini/settings.json",  rootKey: "mcpServers" },
@@ -50,7 +50,7 @@ const IGNITEUI_MCP_SERVERS: Record<string, McpServerEntry> = {
  * @returns whether the file was modified
  */
 export function addMcpServers(
-	assistant: AiCodingAssistant = "vscode",
+	assistant: AiCodingAssistant,
 	additionalServers?: Record<string, McpServerEntry>
 ): boolean {
 	const { mcpFilePath, rootKey } = AI_ASSISTANT_MCP_CONFIGS[assistant];

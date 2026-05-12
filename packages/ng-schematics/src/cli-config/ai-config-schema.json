@@ -34,10 +34,10 @@
     "assistants": {
       "type": "array",
       "description": "Coding assistant(s) to configure MCP servers for.",
-      "default": ["general"],
+      "default": ["generic"],
       "items": {
         "type": "string",
-        "enum": ["none", "general", "vscode", "cursor", "gemini", "junie"]
+        "enum": ["none", "generic", "vscode", "cursor", "gemini", "junie"]
       },
       "x-prompt": {
         "message": "Which coding assistants should MCP servers be configured for?",
@@ -45,7 +45,7 @@
         "multiselect": true,
         "items": [
           { "value": "none", "label": "None (skip MCP configuration)" },
-          { "value": "general", "label": ".mcp.json (general for Claude Code, VS Code, and other assistants)" },
+          { "value": "generic", "label": ".mcp.json (generic for Claude Code, VS Code, and other assistants)" },
           { "value": "vscode", "label": "VS Code (GitHub Copilot)" },
           { "value": "cursor", "label": "Cursor" },
           { "value": "gemini", "label": "Gemini" },
