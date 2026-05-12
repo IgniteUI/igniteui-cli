@@ -7,7 +7,7 @@ export interface McpServerEntry {
 	args: string[];
 }
 
-export const AI_ASSISTANT_CHOICES = ["vscode", "claude-code", "cursor", "gemini", "junie"] as const;
+export const AI_ASSISTANT_CHOICES = ["general", "vscode", "cursor", "gemini", "junie"] as const;
 export type AiCodingAssistant = typeof AI_ASSISTANT_CHOICES[number];
 
 interface AssistantMcpConfig {
@@ -16,16 +16,16 @@ interface AssistantMcpConfig {
 }
 
 export const AI_ASSISTANT_LABELS: Record<AiCodingAssistant, string> = {
+	"general": "mcp.json (general for Claude Code, VS Code, and other assistants)",
 	"vscode":      "VS Code (GitHub Copilot)",
-	"claude-code": "Claude Code",
 	"cursor":      "Cursor",
 	"gemini":      "Gemini",
 	"junie":       "JetBrains Junie",
 };
 
 export const AI_ASSISTANT_MCP_CONFIGS: Record<AiCodingAssistant, AssistantMcpConfig> = {
+	"general": { mcpFilePath: ".mcp.json",              rootKey: "mcpServers" },
 	"vscode":      { mcpFilePath: ".vscode/mcp.json",      rootKey: "servers" },
-	"claude-code": { mcpFilePath: ".mcp.json",              rootKey: "mcpServers" },
 	"cursor":      { mcpFilePath: ".cursor/mcp.json",       rootKey: "mcpServers" },
 	"gemini":      { mcpFilePath: ".gemini/settings.json",  rootKey: "mcpServers" },
 	"junie":       { mcpFilePath: ".junie/mcp/mcp.json",    rootKey: "mcpServers" },

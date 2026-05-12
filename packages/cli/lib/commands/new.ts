@@ -1,4 +1,4 @@
-import { AI_AGENT_CHOICES, AIAgentTarget, AiCodingAssistant, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { AI_AGENT_CHOICES, AIAgentTarget, AI_ASSISTANT_CHOICES, AiCodingAssistant, GoogleAnalytics, PackageManager, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { PromptSession } from "./../PromptSession";
 import { NewCommandType, PositionalArgs } from "./types";
@@ -63,7 +63,12 @@ const command: NewCommandType = {
 			.option("agents", {
 				alias: "a",
 				describe: "AI agents/tools to generate configuration files for",
-				choices: AI_AGENT_CHOICES,
+				choices: [...AI_AGENT_CHOICES, "none"] as string[],
+				type: "array"
+			})
+			.option("assistants", {
+				describe: "Coding assistant(s) to configure MCP servers for",
+				choices: [...AI_ASSISTANT_CHOICES, "none"] as string[],
 				type: "array"
 			})
 			.example("$0 new my-app", "Scaffold a new project interactively")
@@ -166,7 +171,11 @@ const command: NewCommandType = {
 		}
 
 		process.chdir(argv.name);
-		await configure(argv.agents as AIAgentTarget[] | undefined, true, argv.assistants as AiCodingAssistant[] | undefined);
+		const rawAgents = argv.agents as string[] | undefined;
+		const filteredAgents = rawAgents?.filter(a => a !== "none") as AIAgentTarget[] | undefined;
+		if (rawAgents == null || rawAgents.indexOf("none") === -1 || filteredAgents?.length) {
+			await configure(filteredAgents, true, argv.assistants as AiCodingAssistant[] | undefined);
+		}
 		process.chdir("..");
 
 		if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {

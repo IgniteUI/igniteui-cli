@@ -47,7 +47,7 @@ export async function configure(agents?: AIAgentTarget[], skills = true, assista
 
 const AI_AGENT_CHECKBOX_DEFAULTS: AIAgentTarget[] = ["generic", "claude"];
 
-const AI_ASSISTANT_CHECKBOX_DEFAULTS: AiCodingAssistant[] = ["vscode", "claude-code"];
+const AI_ASSISTANT_CHECKBOX_DEFAULTS: AiCodingAssistant[] = ["general"];
 
 const AI_AGENT_CHECKBOX_CHOICES = [
 	{ value: "none", name: "None (skip skills and instructions)" },
@@ -98,29 +98,33 @@ const command: CommandModule = {
 	describe: "Configures Ignite UI AI tooling (MCP servers, AI coding skills and instructions)",
 	builder: (yargs) => yargs
 		.usage("")
-		.option("agent", {
+		.option("agents", {
 			alias: "a",
 			describe: "AI agents/tools to generate configuration files for",
-			choices: AI_AGENT_CHOICES,
+			choices: [...AI_AGENT_CHOICES, "none"] as string[],
 			type: "array"
 		})
-		.option("assistant", {
+		.option("assistants", {
 			describe: "Coding assistant(s) to configure MCP servers for",
-			choices: AI_ASSISTANT_CHOICES,
+			choices: [...AI_ASSISTANT_CHOICES, "none"] as string[],
 			type: "array"
 		}),
 	async handler(argv: ArgumentsCamelCase) {
-		let agents = argv.agent as AIAgentTarget[] | undefined;
-		let assistants = argv.assistant as AiCodingAssistant[] | undefined;
+		const rawAgents = argv.agents as string[] | undefined;
+		const rawAssistants = argv.assistants as string[] | undefined;
+		const agentNoneSelected = rawAgents ? rawAgents.indexOf("none") !== -1 : false;
+		const assistantNoneSelected = rawAssistants ? rawAssistants.indexOf("none") !== -1 : false;
+		let agents = (rawAgents?.filter(a => a !== "none") ?? []) as AIAgentTarget[];
+		let assistants = (rawAssistants?.filter(a => a !== "none") ?? []) as AiCodingAssistant[];
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Ai Config"
 		});
 
-		if (!agents?.length) {
+		if (!agentNoneSelected && !agents.length) {
 			agents = await promptForAgents();
 		}
-		if (!assistants?.length) {
+		if (!assistantNoneSelected && !assistants.length) {
 			assistants = await promptForAssistant();
 		}
 

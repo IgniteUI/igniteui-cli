@@ -300,7 +300,7 @@ describe("Unit - ai-config command", () => {
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
 			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: generic, claude; assistant: vscode, claude-code" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: generic, claude; assistant: general" }));
 		});
 
 		it("logs skipping and does not post analytics when none is selected", async () => {
@@ -352,7 +352,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["vscode"]));
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agent: ["cursor"] });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agents: ["cursor"] });
 
 			expect(InquirerWrapper.checkbox).not.toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which AI agents do you want to generate skills and instructions for?"
@@ -365,7 +365,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", assistant: ["cursor"] });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", assistants: ["cursor"] });
 
 			expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(1);
 		});
@@ -391,7 +391,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValues(
 				Promise.resolve(["claude"]),
-				Promise.resolve(["claude-code"])
+				Promise.resolve(["general"])
 			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
