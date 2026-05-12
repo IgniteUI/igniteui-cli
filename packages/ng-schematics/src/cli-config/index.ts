@@ -127,7 +127,7 @@ function appInit(tree: Tree) {
 	setVirtual(tree);
 }
 
-function aiConfig({ init, agents, assistants = ["vscode"] }: { init: boolean; agents: AIAgentTarget[]; assistants?: AiCodingAssistant[] }): Rule {
+function aiConfig({ init, agents, assistants }: { init: boolean; agents: AIAgentTarget[]; assistants: AiCodingAssistant[] }): Rule {
 	return (tree: Tree) => {
 		if (init) {
 			appInit(tree);
