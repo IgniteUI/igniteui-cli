@@ -44,11 +44,11 @@
         "type": "list",
         "multiselect": true,
         "items": [
-            { "value": "general", "label": ".mcp.json (general for Claude Code, VS Code, and other assistants)" },
-            { "value": "vscode", "label": "VS Code (GitHub Copilot)" },
-            { "value": "cursor", "label": "Cursor" },
-            { "value": "gemini", "label": "Gemini" },
-            { "value": "junie", "label": "JetBrains Junie" }
+          { "value": "general", "label": ".mcp.json (general for Claude Code, VS Code, and other assistants)" },
+          { "value": "vscode", "label": "VS Code (GitHub Copilot)" },
+          { "value": "cursor", "label": "Cursor" },
+          { "value": "gemini", "label": "Gemini" },
+          { "value": "junie", "label": "JetBrains Junie" }
         ]
       }
     }

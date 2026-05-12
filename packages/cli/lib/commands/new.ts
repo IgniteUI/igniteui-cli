@@ -178,7 +178,7 @@ const command: NewCommandType = {
 			await PackageManager.installPackages();
 			process.chdir("..");
 		}
-		
+
 		if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {
 			Util.gitInit(process.cwd(), argv.name);
 		}
