@@ -20,14 +20,14 @@
         "multiselect": true,
         "items": [
           { "value": "none", "label": "None (skip skills and instructions)" },
-          { "value": "generic", "label": "Generic (Adding .agents/skills and AGENTS.md)" },
-          { "value": "claude", "label": "Claude (Adding .claude/skills and CLAUDE.md)" },
-          { "value": "copilot", "label": "Copilot (Adding .github/skills and copilot-instructions.md)" },
-          { "value": "cursor", "label": "Cursor (Adding .cursor/skills and .cursor/rules/cursor.mdc)" },
-          { "value": "codex", "label": "Codex (Adding .codex/skills and .codex/instructions.md)" },
-          { "value": "windsurf", "label": "Windsurf (Adding .windsurf/skills and .windsurf/rules/guidelines.md)" },
-          { "value": "gemini", "label": "Gemini (Adding .gemini/skills and .gemini/GEMINI.md)" },
-          { "value": "junie", "label": "Junie (Adding .junie/skills and .junie/guidelines.md)" }
+          { "value": "generic", "label": "Generic (Add .agents/skills and AGENTS.md general for most assistants)" },
+          { "value": "claude", "label": "Claude (Add .claude/skills and CLAUDE.md)" },
+          { "value": "copilot", "label": "Copilot (Add .github/skills and copilot-instructions.md)" },
+          { "value": "cursor", "label": "Cursor (Add .cursor/skills and .cursor/rules/cursor.mdc)" },
+          { "value": "codex", "label": "Codex (Add .codex/skills and .codex/instructions.md)" },
+          { "value": "windsurf", "label": "Windsurf (Add .windsurf/skills and .windsurf/rules/guidelines.md)" },
+          { "value": "gemini", "label": "Gemini (Add .gemini/skills and .gemini/GEMINI.md)" },
+          { "value": "junie", "label": "Junie (Add .junie/skills and .junie/guidelines.md)" }
         ]
       }
     },
