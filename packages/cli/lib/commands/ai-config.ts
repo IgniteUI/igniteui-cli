@@ -1,7 +1,7 @@
 import { addMcpServers, AI_AGENT_LABELS, AI_AGENT_CHOICES, AIAgentTarget, copyAgentInstructionFiles, copyAISkillsToProject, GoogleAnalytics, InquirerWrapper, Util, AiCodingAssistant, AI_ASSISTANT_MCP_CONFIGS, AI_ASSISTANT_CHOICES, AI_ASSISTANT_LABELS } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
-export function configureMCP(assistants: AiCodingAssistant[] = ["vscode"]): void {
+export function configureMCP(assistants: AiCodingAssistant[]): void {
 	for (const assistant of assistants) {
 		const { mcpFilePath } = AI_ASSISTANT_MCP_CONFIGS[assistant];
 		const modified = addMcpServers(assistant);

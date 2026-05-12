@@ -42,7 +42,7 @@ describe("Unit - ai-config command", () => {
 			const mockFs = createMockFs();
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP();
+			configureMCP(["vscode"]);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -67,7 +67,7 @@ describe("Unit - ai-config command", () => {
 			const mockFs = createMockFs(JSON.stringify({ servers: {} }));
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP();
+			configureMCP(["vscode"]);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -81,7 +81,7 @@ describe("Unit - ai-config command", () => {
 			}));
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP();
+			configureMCP(["vscode"]);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -95,7 +95,7 @@ describe("Unit - ai-config command", () => {
 			}));
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP();
+			configureMCP(["vscode"]);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -112,7 +112,7 @@ describe("Unit - ai-config command", () => {
 			}));
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP();
+			configureMCP(["vscode"]);
 
 			expect(mockFs.writeFile).not.toHaveBeenCalled();
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("already configured"));
@@ -125,7 +125,7 @@ describe("Unit - ai-config command", () => {
 			}));
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP();
+			configureMCP(["vscode"]);
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
