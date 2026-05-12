@@ -16,19 +16,19 @@ interface AssistantMcpConfig {
 }
 
 export const AI_ASSISTANT_LABELS: Record<AiCodingAssistant, string> = {
-	"general": "mcp.json (general for Claude Code, VS Code, and other assistants)",
-	"vscode":      "VS Code (GitHub Copilot)",
-	"cursor":      "Cursor",
-	"gemini":      "Gemini",
-	"junie":       "JetBrains Junie",
+	"general":	".mcp.json (general for Claude Code, VS Code, and other assistants)",
+	"vscode":	"VS Code (GitHub Copilot)",
+	"cursor":	"Cursor",
+	"gemini":	"Gemini",
+	"junie":	"JetBrains Junie",
 };
 
 export const AI_ASSISTANT_MCP_CONFIGS: Record<AiCodingAssistant, AssistantMcpConfig> = {
-	"general": { mcpFilePath: ".mcp.json",              rootKey: "mcpServers" },
-	"vscode":      { mcpFilePath: ".vscode/mcp.json",      rootKey: "servers" },
-	"cursor":      { mcpFilePath: ".cursor/mcp.json",       rootKey: "mcpServers" },
-	"gemini":      { mcpFilePath: ".gemini/settings.json",  rootKey: "mcpServers" },
-	"junie":       { mcpFilePath: ".junie/mcp/mcp.json",    rootKey: "mcpServers" },
+	"general":	{ mcpFilePath: ".mcp.json",              rootKey: "mcpServers" },
+	"vscode":	{ mcpFilePath: ".vscode/mcp.json",      rootKey: "servers" },
+	"cursor":	{ mcpFilePath: ".cursor/mcp.json",       rootKey: "mcpServers" },
+	"gemini":	{ mcpFilePath: ".gemini/settings.json",  rootKey: "mcpServers" },
+	"junie":	{ mcpFilePath: ".junie/mcp/mcp.json",    rootKey: "mcpServers" },
 };
 
 const IGNITEUI_MCP_SERVERS: Record<string, McpServerEntry> = {

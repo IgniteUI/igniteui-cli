@@ -35,7 +35,7 @@ const AI_AGENT_INSTRUCTION_FILES: Record<AIAgentTarget, string> = {
 };
 
 export const AI_AGENT_LABELS: Record<AIAgentTarget, string> = {
-	generic: "Generic (Adding .agents/skills and AGENTS.md)",
+	generic: "Generic (Adding .agents/skills and AGENTS.md general for most assistants)",
 	claude: "Claude (Adding .claude/skills and CLAUDE.md)",
 	copilot: "Copilot (Adding .github/skills and copilot-instructions.md)",
 	cursor: "Cursor (Adding .cursor/skills and .cursor/rules/cursor.mdc)",
