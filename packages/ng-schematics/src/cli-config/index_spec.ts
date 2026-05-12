@@ -337,7 +337,7 @@ export const appConfig: ApplicationConfig = {
 		});
 
 		it("should create .vscode/mcp.json with igniteui and angular-cli servers when file does not exist", async () => {
-			await runner.runSchematic("ai-config", {}, tree);
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
 
 			expect(tree.exists(mcpFilePath)).toBeTruthy();
 			const content = JSON.parse(tree.readContent(mcpFilePath));
@@ -349,7 +349,7 @@ export const appConfig: ApplicationConfig = {
 		it("should add all three servers to existing .vscode/mcp.json that has no servers", async () => {
 			tree.create(mcpFilePath, JSON.stringify({ servers: {} }));
 
-			await runner.runSchematic("ai-config", {}, tree);
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
 			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
@@ -364,7 +364,7 @@ export const appConfig: ApplicationConfig = {
 				}
 			}));
 
-			await runner.runSchematic("ai-config", {}, tree);
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
 			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
@@ -382,7 +382,7 @@ export const appConfig: ApplicationConfig = {
 			};
 			tree.create(mcpFilePath, JSON.stringify(existing));
 
-			await runner.runSchematic("ai-config", {}, tree);
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
 			expect(content).toEqual(existing);
@@ -395,7 +395,7 @@ export const appConfig: ApplicationConfig = {
 				}
 			}));
 
-			await runner.runSchematic("ai-config", {}, tree);
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
 
 			const content = JSON.parse(tree.readContent(mcpFilePath));
 			expect(content.servers["other-server"]).toEqual({ command: "node", args: ["server.js"] });
@@ -434,7 +434,7 @@ export const appConfig: ApplicationConfig = {
 		});
 
 		it("should default MCP config to .vscode/mcp.json with servers key", async () => {
-			await runner.runSchematic("ai-config", {}, tree);
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
 
 			const filePath = "/.vscode/mcp.json";
 			expect(tree.exists(filePath)).toBeTruthy();
@@ -456,7 +456,7 @@ export const appConfig: ApplicationConfig = {
 		});
 
 		it("should write to .mcp.json when assistant is claude-code", async () => {
-			await runner.runSchematic("ai-config", { assistants: ["claude-code"] }, tree);
+			await runner.runSchematic("ai-config", { assistants: ["general"] }, tree);
 
 			const filePath = "/.mcp.json";
 			expect(tree.exists(filePath)).toBeTruthy();
