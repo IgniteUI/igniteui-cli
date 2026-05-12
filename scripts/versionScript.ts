@@ -37,11 +37,28 @@ function updatePackageJson(fileLocation: string) {
 	writeFileSync(fileLocation, JSON.stringify(pkgJson, null, 2) + "\n");
 }
 
+function updateServerJson(pkgJsonLocation: string, serverJsonLocation: string) {
+	const pkgVersion = JSON.parse(readFileSync(pkgJsonLocation).toString()).version;
+	const serverJson = JSON.parse(readFileSync(serverJsonLocation).toString());
+	const previousVersion = serverJson.version;
+	serverJson.version = pkgVersion;
+	if (Array.isArray(serverJson.packages)) {
+		for (const entry of serverJson.packages) {
+			entry.version = pkgVersion;
+		}
+	}
+	writeFileSync(serverJsonLocation, JSON.stringify(serverJson, null, 2) + "\n");
+}
+
 function main() {
 	version = getVersion();
 	for (const folder of packageFolders) {
 		updatePackageJson(path.join("packages", folder, "package.json"));
 	}
+	updateServerJson(
+		path.join("packages", "igniteui-mcp", "igniteui-doc-mcp", "package.json"),
+		path.join("packages", "igniteui-mcp", "igniteui-doc-mcp", "server.json"),
+	);
 }
 main();
 generateChangelog(version);
