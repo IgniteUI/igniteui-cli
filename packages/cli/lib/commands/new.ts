@@ -169,7 +169,7 @@ const command: NewCommandType = {
 		const rawAgents = argv.agents as string[] | undefined;
 		const filteredAgents = rawAgents?.filter(a => a !== "none") as AIAgentTarget[] | undefined;
 		if (rawAgents == null || rawAgents.indexOf("none") === -1 || filteredAgents?.length) {
-			await configure(filteredAgents, true, argv.assistants as AiCodingAssistant[] | undefined);
+			await configure(filteredAgents, argv.assistants as AiCodingAssistant[] | undefined);
 		}
 		process.chdir("..");
 

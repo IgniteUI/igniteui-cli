@@ -29,7 +29,7 @@ export function configureSkills(agents: AIAgentTarget[]): void {
 	}
 }
 
-export async function configure(agents?: AIAgentTarget[], skills = true, assistants?: AiCodingAssistant[]): Promise<void> {
+export async function configure(agents?: AIAgentTarget[], assistants?: AiCodingAssistant[], skills = true): Promise<void> {
 	if (!agents?.length) {
 		agents = await promptForAgents();
 	}
@@ -143,7 +143,7 @@ const command: CommandModule = {
 			Util.log("No AI configuration selected. Skipping.");
 			return;
 		}
-		await configure(agents, true, assistants);
+		await configure(agents, assistants);
 	}
 };
 
