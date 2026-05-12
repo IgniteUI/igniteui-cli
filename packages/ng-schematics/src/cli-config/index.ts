@@ -149,10 +149,10 @@ function aiConfig({ init, agents, assistants = ["vscode"] }: { init: boolean; ag
 }
 
 /** Standalone `ai-config` schematic entry */
-export function addAIConfig(options: { agents?: AIAgentTarget[]; /* TODO: assistants */  assistant?: string[] } = {}): Rule {
+export function addAIConfig(options: { agents?: AIAgentTarget[]; assistants?: string[] } = {}): Rule {
 	const selected = options.agents?.length ? options.agents : [] as AIAgentTarget[];
 	const agents = selected.includes("none" as any) ? [] : selected;
-	const selectedAssistants = options.assistant?.length ? options.assistant : ["vscode"];
+	const selectedAssistants = options.assistants?.length ? options.assistants : [];
 	const assistants = selectedAssistants
 		.filter(a => a !== "none")
 		.map(a => a === "claude-code" ? "general" : a) as AiCodingAssistant[];
