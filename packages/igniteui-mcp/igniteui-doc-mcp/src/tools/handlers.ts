@@ -35,11 +35,6 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
       }
     }
 
-    const formatted = docLoader.formatStructuredComponent(platform, resolvedComponent, section);
-    if (formatted) {
-      return { content: [{ type: "text", text: formatted }] };
-    }
-
     const content = entry.content;
     if (!content) {
       return {

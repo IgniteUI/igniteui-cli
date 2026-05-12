@@ -15,7 +15,6 @@ describe("Unit - MCP runtime", () => {
 	let buildProjectSetupGuide: any;
 	let sanitizeSearchDocsQuery: any;
 	let ApiDocLoader: any;
-	let ReactJsonParser: any;
 	let LocalDocsProvider: any;
 	let SETUP_DOCS: any;
 
@@ -30,8 +29,6 @@ describe("Unit - MCP runtime", () => {
 			await import(`${mcpDist}/tools/doc-tools.js`));
 		({ ApiDocLoader } =
 			await import(`${mcpDist}/lib/api-doc-loader.js`));
-		({ ReactJsonParser } =
-			await import(`${mcpDist}/lib/react-json-parser.js`));
 		({ LocalDocsProvider } =
 			await import(`${mcpDist}/providers/LocalDocsProvider.js`));
 		({ SETUP_DOCS } =
@@ -212,15 +209,14 @@ describe("Unit - MCP runtime", () => {
 	});
 
 	describe("tool handlers", () => {
-		it("returns formatted structured API content when available", async () => {
-			const formatted = "# IgrGrid\n\n## Properties\n- height: string";
+		it("returns entry content as the API response", async () => {
+			const apiContent = "# IgrGrid\n\n## Properties\n- height: string";
 			const docLoader = {
 				get: jasmine.createSpy().and.returnValue({
 					component: "IgrGrid",
 					platform: "react",
-					content: "fallback content"
+					content: apiContent
 				}),
-				formatStructuredComponent: jasmine.createSpy().and.returnValue(formatted),
 				search: jasmine.createSpy().and.returnValue([])
 			};
 
@@ -232,15 +228,14 @@ describe("Unit - MCP runtime", () => {
 			});
 
 			expect(result.isError).toBeUndefined();
-			expect(result.content[0].text).toBe(formatted);
+			expect(result.content[0].text).toBe(apiContent);
 		});
 
 		it("falls back to case-insensitive component matching", async () => {
 			const docLoader = {
 				get: jasmine.createSpy().and.returnValue(undefined),
-				formatStructuredComponent: jasmine.createSpy().and.returnValue("# IgcGridComponent"),
 				search: jasmine.createSpy().and.returnValue([
-					{ component: "IgcGridComponent", platform: "webcomponents", content: "content" }
+					{ component: "IgcGridComponent", platform: "webcomponents", content: "# IgcGridComponent" }
 				])
 			};
 
@@ -252,14 +247,12 @@ describe("Unit - MCP runtime", () => {
 			});
 
 			expect(docLoader.search).toHaveBeenCalledWith({ platform: "webcomponents", filter: "igcgridcomponent" });
-			expect(docLoader.formatStructuredComponent).toHaveBeenCalledWith("webcomponents", "IgcGridComponent", "all");
 			expect(result.isError).toBeUndefined();
 		});
 
 		it("returns an error when an API reference is not found", async () => {
 			const docLoader = {
 				get: jasmine.createSpy().and.returnValue(undefined),
-				formatStructuredComponent: jasmine.createSpy(),
 				search: jasmine.createSpy().and.returnValue([])
 			};
 
@@ -281,7 +274,6 @@ describe("Unit - MCP runtime", () => {
 					platform: "webcomponents",
 					content: ""
 				}),
-				formatStructuredComponent: jasmine.createSpy().and.returnValue(null),
 				search: jasmine.createSpy().and.returnValue([])
 			};
 
@@ -296,7 +288,7 @@ describe("Unit - MCP runtime", () => {
 			expect(result.content[0].text).toContain('API content for "IgcGridComponent" is not available in memory.');
 		});
 
-		it("returns a requested markdown section when structured formatting is not available", async () => {
+		it("returns a requested markdown section from entry content", async () => {
 			const docLoader = {
 				get: jasmine.createSpy().and.returnValue({
 					component: "IgcGridComponent",
@@ -314,7 +306,6 @@ describe("Unit - MCP runtime", () => {
 						"- rowSelectionChanging"
 					].join("\n")
 				}),
-				formatStructuredComponent: jasmine.createSpy().and.returnValue(null),
 				search: jasmine.createSpy().and.returnValue([])
 			};
 
@@ -382,7 +373,6 @@ describe("Unit - MCP runtime", () => {
 					platform: "webcomponents",
 					content: fullContent
 				}),
-				formatStructuredComponent: jasmine.createSpy().and.returnValue(null),
 				search: jasmine.createSpy().and.returnValue([])
 			};
 
@@ -550,42 +540,31 @@ describe("Unit - MCP runtime", () => {
 
 	describe("ApiDocLoader", () => {
 		const fixtureDir = path.join(mcpRoot, "test-fixtures", "api-test");
+		const llmsFile = path.join(fixtureDir, "igniteui-wc", "1.0.0", "llms-full.txt");
+
+		const FIXTURE_LLMS_CONTENT = [
+			"### [IgcTestGrid](https://example.com/IgcTestGrid)",
+			"Test grid component",
+			"- width: string — The grid width",
+			"- selectRow(): void — Selects a row",
+			"",
+			"### [IgcTestCombo](https://example.com/IgcTestCombo)",
+			"Test combo component",
+			"- value: string — Selected value",
+		].join("\n");
 
 		beforeAll(() => {
-			fs.mkdirSync(fixtureDir, { recursive: true });
-			fs.writeFileSync(path.join(fixtureDir, "index.json"), JSON.stringify({
-				IgcTestGrid: {
-					file: "grid.md",
-					title: "Class: IgcTestGrid",
-					component: "IgcTestGrid",
-					type: "class",
-					keywords: ["grid", "data"],
-					summary: "Test grid component"
-				},
-				IgcTestCombo: {
-					file: "combo.md",
-					title: "Class: IgcTestCombo",
-					component: "IgcTestCombo",
-					type: "class",
-					keywords: ["combo", "filtering"],
-					summary: "Test combo component"
-				}
-			}));
-			fs.writeFileSync(path.join(fixtureDir, "grid.md"),
-				"# IgcTestGrid\n\n## Properties\n- width: string\n\n## Methods\n- selectRow(): void"
-			);
-			fs.writeFileSync(path.join(fixtureDir, "combo.md"),
-				"# IgcTestCombo\n\n## Properties\n- value: string"
-			);
+			fs.mkdirSync(path.dirname(llmsFile), { recursive: true });
+			fs.writeFileSync(llmsFile, FIXTURE_LLMS_CONTENT);
 		});
 
 		function createLoader(): any {
 			const loader = new ApiDocLoader([{
 				key: "webcomponents",
 				displayName: "Test WC",
-				submodulePath: "test",
+				submodulePath: "blazor/api-docs",
 				docsPath: "test-fixtures/api-test",
-				apiSource: { kind: "markdown-index" }
+				apiSource: { kind: "llms-full-txt", docsPath: "test-fixtures/api-test" }
 			}]);
 			spyOn(console, "error");
 			loader.load();
@@ -599,7 +578,7 @@ describe("Unit - MCP runtime", () => {
 			expect(entry).toBeDefined();
 			expect(entry.component).toBe("IgcTestGrid");
 			expect(entry.platform).toBe("webcomponents");
-			expect(entry.content).toContain("## Properties");
+			expect(entry.content).toContain("IgcTestGrid");
 		});
 
 		it("returns undefined for a missing entry or wrong platform", () => {
@@ -628,103 +607,6 @@ describe("Unit - MCP runtime", () => {
 
 			const interfaces = loader.search({ platform: "webcomponents", type: "interface" });
 			expect(interfaces.length).toBe(0);
-		});
-
-		it("formatStructuredComponent() returns null for markdown-index platforms", () => {
-			const loader = createLoader();
-
-			expect(loader.formatStructuredComponent("webcomponents", "IgcTestGrid")).toBeNull();
-		});
-	});
-
-	describe("ReactJsonParser", () => {
-		const fixtureDir = path.join(mcpRoot, "test-fixtures", "json-test");
-		const jsonPath = path.join(fixtureDir, "react-test.json");
-
-		beforeAll(() => {
-			fs.mkdirSync(fixtureDir, { recursive: true });
-			fs.writeFileSync(jsonPath, JSON.stringify({
-				id: 0, name: "test-project", kind: 1,
-				children: [
-					{
-						id: 1, name: "IgrTestGrid", kind: 128,
-						comment: { summary: [{ text: "A test grid component" }] },
-						children: [
-							{
-								id: 2, name: "width", kind: 1024,
-								type: { type: "intrinsic", name: "string" },
-								comment: { summary: [{ text: "The width" }] }
-							},
-							{
-								id: 3, name: "selectAll", kind: 2048,
-								signatures: [{ parameters: [], type: { type: "intrinsic", name: "void" } }],
-								comment: { summary: [{ text: "Selects all rows" }] }
-							}
-						],
-						categories: [
-							{ title: "Properties", children: [2] },
-							{ title: "Methods", children: [3] }
-						]
-					},
-					{
-						id: 4, name: "IgrTestCombo", kind: 128,
-						children: [], categories: []
-					},
-					{
-						id: 5, name: "HelperUtil", kind: 128,
-						children: [], categories: []
-					}
-				]
-			}));
-		});
-
-		it("discovers only Igr-prefixed components", () => {
-			const parser = new ReactJsonParser(jsonPath);
-			const components = parser.getAllComponents();
-
-			expect(components).toContain("IgrTestGrid");
-			expect(components).toContain("IgrTestCombo");
-			expect(components).not.toContain("HelperUtil");
-		});
-
-		it("extracts structured component data with properties and methods", () => {
-			const parser = new ReactJsonParser(jsonPath);
-			const entry = parser.getComponent("IgrTestGrid");
-
-			expect(entry).not.toBeNull();
-			expect(entry.name).toBe("IgrTestGrid");
-			expect(entry.summary).toBe("A test grid component");
-			expect(entry.properties.length).toBe(1);
-			expect(entry.properties[0].name).toBe("width");
-			expect(entry.methods.length).toBe(1);
-			expect(entry.methods[0].name).toBe("selectAll");
-		});
-
-		it("returns null for a non-existent component", () => {
-			const parser = new ReactJsonParser(jsonPath);
-
-			expect(parser.getComponent("NonExistent")).toBeNull();
-		});
-
-		it("formats component as markdown with all sections", () => {
-			const parser = new ReactJsonParser(jsonPath);
-			const entry = parser.getComponent("IgrTestGrid");
-			const md = parser.formatAsMarkdown(entry, "all");
-
-			expect(md).toContain("# class: IgrTestGrid");
-			expect(md).toContain("## Properties");
-			expect(md).toContain("### width");
-			expect(md).toContain("## Methods");
-			expect(md).toContain("selectAll");
-		});
-
-		it("formats only the requested section", () => {
-			const parser = new ReactJsonParser(jsonPath);
-			const entry = parser.getComponent("IgrTestGrid");
-			const md = parser.formatAsMarkdown(entry, "properties");
-
-			expect(md).toContain("## Properties");
-			expect(md).not.toContain("## Methods");
 		});
 	});
 

@@ -32,7 +32,9 @@ yarn-debug.log*
 yarn-error.log*
 
 # API MCP - Generated documentation
-# igniteui-doc-mcp/docs/angular
-# igniteui-doc-mcp/docs/webcomponents
+igniteui-doc-mcp/docs/angular-api
+igniteui-doc-mcp/docs/blazor-api
+igniteui-doc-mcp/docs/react-api
+igniteui-doc-mcp/docs/webcomponents-api
 
 tmp/

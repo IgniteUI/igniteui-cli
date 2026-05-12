@@ -142,26 +142,25 @@ Doc "<name>" not found for framework "<framework>". Use list_components to see a
 **Return**: Markdown setup guidance only. The response contains installation, scaffolding, and next-step instructions for the selected framework.
 
 ### **search_api**
-**Purpose**: Search Ignite UI API entries by keyword, feature, or partial component name across Angular, React, and Web Components. Returns up to 10 results ranked by match count.
+**Purpose**: Search Ignite UI API entries by keyword, feature, or partial component name across all four platforms. Returns up to 10 results ranked by match count.
 
 **Logic**:
 - Searches against component names, keywords, API type, and document content
-- Omitting `platform` searches all three supported platforms simultaneously
+- Omitting `platform` searches all four supported platforms simultaneously
 - Results are ranked by match count; each result includes the exact component name, platform tag, API type (class/interface/directive/enum), match count, keyword list, and a content excerpt
 
 **Schema**:
 - `query`: String — keyword, partial name, or feature description; max 256 characters — required
-- `platform`: Enum (angular|react|webcomponents) — optional; omit to search all platforms
+- `platform`: Enum (angular|react|webcomponents|blazor) — optional; omit to search all platforms
 
 **Constraints**:
-- Blazor is not supported
 - Output is text, not structured JSON
 - Returns an empty-query message immediately if the input is blank
 
 **Return**: Up to 10 ranked text results. Use the exact `component` name and `platform` from a result to call `get_api_reference`.
 
 ### **get_api_reference**
-**Purpose**: Retrieve the full API reference for one Ignite UI component or class. Supports Angular, React, and Web Components. Component name matching is case-insensitive.
+**Purpose**: Retrieve the full API reference for one Ignite UI component or class. Supports Angular, React, Web Components, and Blazor. Component name matching is case-insensitive.
 
 **Logic**:
 - Requires the exact component name (obtained from user code or an `search_api` result)
@@ -171,11 +170,8 @@ Doc "<name>" not found for framework "<framework>". Use list_components to see a
 
 **Schema**:
 - `component`: String — exact component or class name; max 128 characters — required
-- `platform`: Enum (angular|react|webcomponents) — required
+- `platform`: Enum (angular|react|webcomponents|blazor) — required
 - `section`: Enum (all|properties|methods|events) — optional; defaults to `all`
-
-**Constraints**:
-- Blazor is not supported
 
 **Return**: Formatted Markdown for the requested API entry. The full entry (`section="all"`) includes the class/interface summary, properties with types and descriptions, methods with signatures, and events.
 
