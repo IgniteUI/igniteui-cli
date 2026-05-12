@@ -331,6 +331,7 @@ describe("Unit - ai-config command", () => {
 			expect(config.servers).toBeDefined();
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: none; assistant: vscode" }));
+			expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(2);
 			expect(
 				(Util.log as jasmine.Spy).calls.allArgs()
 					.filter(([msg]) => String(msg).includes("Skipping"))

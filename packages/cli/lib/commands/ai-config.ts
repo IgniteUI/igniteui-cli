@@ -141,7 +141,7 @@ const command: CommandModule = {
 		if (!agents.length) {
 			Util.log("No AI configuration selected. Skipping.");
 		}
-		await configure(agents, assistants);
+		await configure(agents, assistants, false);
 	}
 };
 
