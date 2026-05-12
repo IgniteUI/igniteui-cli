@@ -427,7 +427,7 @@ describe("Unit - New command", () => {
 			expect(configureSpy).toHaveBeenCalledWith(["generic"], true, undefined);
 		});
 
-		it("calls configure after project creation and package install", async () => {
+		it("calls configure before package install", async () => {
 			createProjectMocks();
 			const callOrder: string[] = [];
 			(PackageManager.installPackages as jasmine.Spy).and.callFake(() => {
@@ -441,7 +441,7 @@ describe("Unit - New command", () => {
 
 			await newCmd.handler({ name: "Test", framework: "jq", agents: ["claude"], _: ["new"], $0: "new" });
 
-			expect(callOrder).toEqual(["install", "configure"]);
+			expect(callOrder).toEqual(["configure", "install"]);
 		});
 
 		it("calls configure from within the project directory", async () => {

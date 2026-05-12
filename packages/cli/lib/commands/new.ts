@@ -164,11 +164,6 @@ const command: NewCommandType = {
 
 		Util.log(Util.greenCheck() + " Project Created");
 
-		if (!argv.skipInstall) {
-			process.chdir(argv.name);
-			await PackageManager.installPackages();
-			process.chdir("..");
-		}
 
 		process.chdir(argv.name);
 		const rawAgents = argv.agents as string[] | undefined;
@@ -178,6 +173,12 @@ const command: NewCommandType = {
 		}
 		process.chdir("..");
 
+		if (!argv.skipInstall) {
+			process.chdir(argv.name);
+			await PackageManager.installPackages();
+			process.chdir("..");
+		}
+		
 		if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {
 			Util.gitInit(process.cwd(), argv.name);
 		}
