@@ -1,6 +1,6 @@
 import {
-	AddTemplateArgs, GoogleAnalytics, PackageManager,
-	ProjectConfig, ProjectLibrary, Template, Util
+	AddTemplateArgs, App, BaseTemplateManager, GoogleAnalytics, PackageManager,
+	ProjectConfig, ProjectLibrary, TEMPLATE_MANAGER, Template, Util
 } from "@igniteui/cli-core";
 import { PromptSession } from "./../PromptSession";
 import { AddCommandType, PositionalArgs } from "./types";
@@ -11,7 +11,6 @@ let yargsContext: Argv | undefined;
 const command: AddCommandType = {
 	command: "add [template] [name]",
 	describe: "Adds a component or view template to the current project",
-	templateManager: null,
 	builder: (yargs) => {
 		yargsContext = yargs;
 		return yargs
@@ -76,18 +75,19 @@ const command: AddCommandType = {
 			Util.error("Showcases projects don't support the add command", "red");
 			return;
 		}
-		const framework = command.templateManager.getFrameworkById(config.project.framework);
+		const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+		const framework = templateManager.getFrameworkById(config.project.framework);
 		if (!framework) {
 			Util.error("Framework not supported", "red");
 			return;
 		}
-		const frameworkLibrary = command.templateManager.getProjectLibrary(
+		const frameworkLibrary = templateManager.getProjectLibrary(
 			config.project.framework,
 			config.project.projectType
 		) as ProjectLibrary;
 
 		if (!argv.template && !argv.name) {
-			const prompts = new PromptSession(command.templateManager);
+			const prompts = new PromptSession();
 			await prompts.chooseActionLoop(frameworkLibrary);
 			return;
 		}
@@ -123,7 +123,7 @@ const command: AddCommandType = {
 				skipRoute: argv.skipRoute
 			});
 			await PackageManager.flushQueue(true);
-			await PackageManager.ensureIgniteUISource(config.packagesInstalled, command.templateManager);
+			await PackageManager.ensureIgniteUISource(config.packagesInstalled, templateManager);
 		}
 	},
 	async addTemplate(fileName: string, template: Template, options?: AddTemplateArgs): Promise<boolean> {
@@ -165,7 +165,7 @@ const command: AddCommandType = {
 		}
 		if (!fail && templatePaths.length) {
 			template.registerInProject(process.cwd(), fileName, options || {});
-			command.templateManager.updateProjectConfiguration(template);
+			App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER).updateProjectConfiguration(template);
 			template.packages.forEach(x => PackageManager.queuePackage(x));
 			Util.log(`${Util.greenCheck()} View '${name}' added.`);
 			return true;

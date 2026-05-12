@@ -7,7 +7,6 @@ import { ArgumentsCamelCase } from "yargs";
 const command: CommandType = {
 	command: "mcp",
 	describe: "Starts the Ignite UI MCP server for AI assistant integration",
-	templateManager: null,
 	builder: (yargs) => {
 		return yargs
 			.option("remote", {

@@ -1,5 +1,4 @@
 import { ArgumentsCamelCase, CommandModule } from "yargs";
-import { TemplateManager } from "../TemplateManager";
 import { AddTemplateArgs, Template } from "@igniteui/cli-core";
 
 export interface PositionalArgs {
@@ -40,8 +39,6 @@ export interface PositionalArgs {
 }
 
 export interface CommandType extends CommandModule<{}, any> {
-	templateManager?: TemplateManager;
-
 	/** Handler function that will be called by yargs after the command line has been parsed. */
 	handler(/** do not use `this` in handler */this: void, argv: ArgumentsCamelCase<PositionalArgs>);
 }

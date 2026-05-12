@@ -1,7 +1,7 @@
 import { SchematicContext, Tree } from "@angular-devkit/schematics";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import {
-	BasePromptSession, BaseTemplateManager, Framework,
+	BasePromptSession, Framework,
 	IUserInputOptions, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task
 } from "@igniteui/cli-core";
 import { of } from "rxjs";
@@ -14,9 +14,8 @@ export class SchematicsPromptSession extends BasePromptSession {
 	public projectName: string;
 	public userAnswers: Map<string, any>;
 
-	constructor(
-		templateManager: BaseTemplateManager) {
-		super(templateManager);
+	constructor() {
+		super();
 		this.config = ProjectConfig.getConfig();
 	}
 

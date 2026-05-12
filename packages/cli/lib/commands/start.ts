@@ -22,7 +22,6 @@ const execSyncNpmStart = (port: number, options: ExecSyncOptions): void => {
 const command: StartCommandType = {
 	command: "start",
 	describe: "Starts the project",
-	templateManager: null,
 	builder: (yargs) => {
 		return yargs
 			.option("port", {

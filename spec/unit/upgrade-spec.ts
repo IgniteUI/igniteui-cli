@@ -1,6 +1,6 @@
 import {
-	BaseTemplate, BaseTemplateManager, Config, GoogleAnalytics, PackageManager, ProjectConfig,
-	ProjectLibrary, ProjectTemplate, Template, Util
+	App, BaseTemplate, BaseTemplateManager, Config, GoogleAnalytics, PackageManager, ProjectConfig,
+	ProjectLibrary, ProjectTemplate, Template, TEMPLATE_MANAGER, Util
 } from "@igniteui/cli-core";
 
 import { default as upgradeCmd } from "../../packages/cli/lib/commands/upgrade";
@@ -107,7 +107,7 @@ describe("Unit - Upgrade command", () => {
 		};
 
 		const mockTemplateManager: Partial<BaseTemplateManager> = { getProjectLibrary: () => null };
-		upgradeCmd.templateManager = mockTemplateManager as any;
+		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
 		spyOn(mockTemplateManager, "getProjectLibrary").and.returnValue(mockProjLib);
 		spyOn(mockProjLib, "getProject").and.returnValue(mockProjTemplate);
 		const upgradeIgniteUIPackagesSpy = spyOn(mockProjTemplate, "upgradeIgniteUIPackages");
