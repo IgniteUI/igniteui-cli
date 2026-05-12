@@ -93,4 +93,3 @@ export function addMcpServers(
 
 	return modified;
 }
-
