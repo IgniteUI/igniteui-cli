@@ -29,20 +29,33 @@ export function configureSkills(agents: AIAgentTarget[]): void {
 	}
 }
 
-export async function configure(agents: AIAgentTarget[] = [], assistants: AiCodingAssistant[] = [], prompt = true, skills = true): Promise<void> {
-	if (!agents.length && prompt) {
+export async function configure(agents: (AIAgentTarget | "none")[] = [], assistants: (AiCodingAssistant | "none")[] = [], prompt = true, skills = true): Promise<{ agents: AIAgentTarget[], assistants: AiCodingAssistant[] }> {
+	if (!agents.includes("none") && !agents.length && prompt) {
 		agents = await promptForAgents();
 	}
 
-	if (!assistants.length && prompt) {
+	if (!assistants.includes("none") && !assistants.length && prompt) {
 		assistants = await promptForAssistant();
 	}
-	configureMCP(assistants);
 
-	if (skills) {
-		configureSkills(agents);
+	const resolvedAgents: AIAgentTarget[] = agents.includes("none") ? [] : agents as AIAgentTarget[];
+	const resolvedAssistants: AiCodingAssistant[] = assistants.includes("none") ? [] : assistants as AiCodingAssistant[];
+
+	if (!resolvedAssistants.length) {
+		Util.log("No MCP configuration selected. Skipping.");
 	}
-	copyAgentInstructionFiles(agents);
+	configureMCP(resolvedAssistants);
+
+	if (!resolvedAgents.length) {
+		Util.log("No AI configuration selected. Skipping.");
+	} else {
+		if (skills) {
+			configureSkills(resolvedAgents);
+		}
+		copyAgentInstructionFiles(resolvedAgents);
+	}
+
+	return { agents: resolvedAgents, assistants: resolvedAssistants };
 }
 
 const AI_AGENT_CHECKBOX_DEFAULTS: AIAgentTarget[] = ["generic", "claude"];
@@ -67,28 +80,28 @@ const AI_ASSISTANT_CHECKBOX_CHOICES = [
 	}))
 ];
 
-export async function promptForAgents(): Promise<AIAgentTarget[]> {
-	let selected: AIAgentTarget[] = AI_AGENT_CHECKBOX_DEFAULTS;
+export async function promptForAgents(): Promise<(AIAgentTarget | "none")[]> {
+	let selected: (AIAgentTarget | "none")[] = AI_AGENT_CHECKBOX_DEFAULTS;
 	if (Util.canPrompt()) {
 		const result = await InquirerWrapper.checkbox({
 			message: "Which AI agents do you want to generate skills and instructions for?",
 			required: true,
 			choices: AI_AGENT_CHECKBOX_CHOICES
 		});
-		selected = result.includes("none") ? [] : result as AIAgentTarget[];
+		selected = result as (AIAgentTarget | "none")[];
 	}
 	return selected;
 }
 
-export async function promptForAssistant(): Promise<AiCodingAssistant[]> {
-	let selected: AiCodingAssistant[] = AI_ASSISTANT_CHECKBOX_DEFAULTS;
+export async function promptForAssistant(): Promise<(AiCodingAssistant | "none")[]> {
+	let selected: (AiCodingAssistant | "none")[] = AI_ASSISTANT_CHECKBOX_DEFAULTS;
 	if (Util.canPrompt()) {
 		const result = await InquirerWrapper.checkbox({
 			message: "Which coding assistants should MCP servers be configured for?",
 			required: true,
 			choices: AI_ASSISTANT_CHECKBOX_CHOICES
 		});
-		selected = result.includes("none") ? [] : result as AiCodingAssistant[];
+		selected = result as (AiCodingAssistant | "none")[];
 	}
 	return selected;
 }
@@ -99,7 +112,6 @@ const command: CommandModule = {
 	builder: (yargs) => yargs
 		.usage("")
 		.option("agents", {
-			alias: "a",
 			describe: "AI agents/tools to generate configuration files for",
 			choices: [...AI_AGENT_CHOICES, "none"] as string[],
 			type: "array"
@@ -110,38 +122,20 @@ const command: CommandModule = {
 			type: "array"
 		}),
 	async handler(argv: ArgumentsCamelCase) {
-		const rawAgents = argv.agents as string[] | undefined;
-		const rawAssistants = argv.assistants as string[] | undefined;
-		const agentNoneSelected = rawAgents ? rawAgents.indexOf("none") !== -1 : false;
-		const assistantNoneSelected = rawAssistants ? rawAssistants.indexOf("none") !== -1 : false;
-		let agents = (rawAgents?.filter(a => a !== "none") ?? []) as AIAgentTarget[];
-		let assistants = (rawAssistants?.filter(a => a !== "none") ?? []) as AiCodingAssistant[];
+		const agents = (argv.agents ?? []) as (AIAgentTarget | "none")[];
+		const assistants = (argv.assistants ?? []) as (AiCodingAssistant | "none")[];
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Ai Config"
 		});
 
-		if (!agentNoneSelected && !agents.length) {
-			agents = await promptForAgents();
-		}
-		if (!assistantNoneSelected && !assistants.length) {
-			assistants = await promptForAssistant();
-		}
+		const result = await configure(agents, assistants);
 
 		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig ai-config",
-			ea: `agent: ${agents?.join(", ") || "none"}; assistant: ${assistants?.join(", ") || "none"}`
+			ea: `agent: ${result.agents.join(", ") || "none"}; assistant: ${result.assistants.join(", ") || "none"}`
 		});
-
-		if (!assistants.length) {
-			Util.log("No MCP configuration selected. Skipping.");
-		}
-
-		if (!agents.length) {
-			Util.log("No AI configuration selected. Skipping.");
-		}
-		await configure(agents, assistants, false);
 	}
 };
 

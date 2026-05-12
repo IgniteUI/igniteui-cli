@@ -156,11 +156,7 @@ const command: NewCommandType = {
 		});
 
 		process.chdir(argv.name);
-		const rawAgents = argv.agents as string[] | undefined;
-		const filteredAgents = rawAgents?.filter(a => a !== "none") as AIAgentTarget[] | undefined;
-		if (rawAgents == null || rawAgents.indexOf("none") === -1 || filteredAgents?.length) {
-			await configure(filteredAgents, argv.assistants as AiCodingAssistant[] | undefined);
-		}
+		await configure(argv.agents as (AIAgentTarget | "none")[] ?? [], argv.assistants as (AiCodingAssistant | "none")[] ?? []);
 		process.chdir("..");
 
 		const config = projTemplate.generateConfig(argv.name, theme);

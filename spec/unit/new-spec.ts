@@ -36,7 +36,7 @@ describe("Unit - New command", () => {
 		spyOn(Util, "execSync");
 		spyOn(process, "chdir");
 		spyOn(PackageManager, "installPackages");
-		spyOn(aiConfig, "configure").and.returnValue(Promise.resolve());
+		spyOn(aiConfig, "configure").and.returnValue(Promise.resolve({ agents: [], assistants: [] }));
 		spyOn(Util, "directoryExists").and.returnValue(false);
 	});
 
