@@ -11,15 +11,6 @@ export interface DocEntry {
   platform: Platform;
 }
 
-export interface IndexEntry {
-  file: string;
-  title: string;
-  component: string;
-  type: string;
-  keywords?: string[];
-  summary?: string;
-}
-
 export interface SearchHit {
   entry: DocEntry;
   matches: number;

@@ -1,4 +1,4 @@
-import { App, Framework, Util } from "@igniteui/cli-core";
+import { AGENTS_TEMPLATE_FILE, AI_CONFIG_PROJECT_ID, AI_SKILLS_DIR_NAME, App, Framework, Util } from "@igniteui/cli-core";
 import { IGNITEUI_ANGULAR_PACKAGE } from "../../packages/igx-templates/constants";
 import path from "path";
 import * as fs from "fs";
@@ -63,5 +63,27 @@ describe("Angular templates", () => {
 				expect(deps[pkg]).toBe(version);
 			}
 		}
+	});
+
+	describe("ai-config template file presence", () => {
+		it("ai-config project template must be registered", () => {
+			const angularFramework: Framework = require(templatesLocation);
+			const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
+			expect(projLibrary.getProject(AI_CONFIG_PROJECT_ID)).toBeDefined();
+		});
+
+		const filesDir = path.resolve(__dirname, "../..", `packages/igx-templates/igx-ts/projects/${AI_CONFIG_PROJECT_ID}/files`);
+
+		it("AGENTS.md must exist in files/", () => {
+			expect(fs.existsSync(path.join(filesDir, AGENTS_TEMPLATE_FILE)))
+				.withContext(`Missing ${AGENTS_TEMPLATE_FILE} in ${filesDir}`)
+				.toBeTrue();
+		});
+
+		it("skills/ directory must exist in files/", () => {
+			expect(fs.existsSync(path.join(filesDir, AI_SKILLS_DIR_NAME)))
+				.withContext(`Missing ${AI_SKILLS_DIR_NAME}/ in ${filesDir}`)
+				.toBeTrue();
+		});
 	});
 });

@@ -3,6 +3,7 @@ import * as path from "path";
 import { default as newCmd } from "../../packages/cli/lib/commands/new";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { resetSpy } from "../helpers/utils";
+import * as aiConfig from "../../packages/cli/lib/commands/ai-config";
 
 function createMockBaseTemplate(): BaseTemplate {
 	return {
@@ -35,6 +36,8 @@ describe("Unit - New command", () => {
 		spyOn(Util, "execSync");
 		spyOn(process, "chdir");
 		spyOn(PackageManager, "installPackages");
+		spyOn(aiConfig, "configure").and.returnValue(Promise.resolve());
+		spyOn(Util, "directoryExists").and.returnValue(false);
 	});
 
 	afterEach(() => {
@@ -196,7 +199,6 @@ describe("Unit - New command", () => {
 
 		spyOn(process, "cwd").and.returnValue("Mock dir");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "fileExists").and.returnValue(false);
 
 		const mockFileSystem = {
@@ -242,7 +244,6 @@ describe("Unit - New command", () => {
 
 		spyOn(process, "cwd").and.returnValue("Mock dir");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "fileExists").and.returnValue(false);
 
 		const mockFileSystem = {
@@ -317,7 +318,6 @@ describe("Unit - New command", () => {
 		});
 
 		spyOn(Util, "gitInit");
-		spyOn(Util, "directoryExists").and.returnValue(false);
 
 		await newCmd.handler({ "name": projectName, "framework": "jq", "skip-git": true, _: ["new"], $0: "new" });
 
@@ -376,6 +376,109 @@ describe("Unit - New command", () => {
 		await newCmd.handler({ name: "title", framework: "jq", skipInstall: true, _: ["new"], $0: "new" });
 
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();
-		expect(process.chdir).not.toHaveBeenCalled();
+	});
+
+	describe("AI agents configuration", () => {
+		let configureSpy: jasmine.Spy;
+
+		beforeEach(() => {
+			configureSpy = aiConfig.configure as jasmine.Spy;
+		});
+
+		function createProjectMocks() {
+			const mockTemplate = {
+				generateConfig: jasmine.createSpy().and.returnValue({ test: "test" }),
+				templatePaths: ["test"]
+			};
+			const mockProjLib = {
+				getProject: () => mockTemplate,
+				projectIds: ["empty"],
+				projectType: "type",
+				themes: ["ig"]
+			};
+			newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {},
+				getProjectLibrary: mockProjLib
+			});
+			spyOn(Util, "gitInit");
+		}
+
+		it("calls configure with provided agents", async () => {
+			createProjectMocks();
+
+			await newCmd.handler({ name: "Test", framework: "jq", agents: ["claude", "cursor"], _: ["new"], $0: "new" });
+
+			expect(configureSpy).toHaveBeenCalledWith(["claude", "cursor"]);
+		});
+
+		it("calls configure with undefined when --agents is not provided", async () => {
+			createProjectMocks();
+
+			await newCmd.handler({ name: "Test", framework: "jq", _: ["new"], $0: "new" });
+
+			expect(configureSpy).toHaveBeenCalledWith(undefined);
+		});
+
+		it("calls configure with single agent", async () => {
+			createProjectMocks();
+
+			await newCmd.handler({ name: "Test", framework: "jq", agents: ["generic"], _: ["new"], $0: "new" });
+
+			expect(configureSpy).toHaveBeenCalledWith(["generic"]);
+		});
+
+		it("calls configure after project creation and package install", async () => {
+			createProjectMocks();
+			const callOrder: string[] = [];
+			(PackageManager.installPackages as jasmine.Spy).and.callFake(() => {
+				callOrder.push("install");
+				return Promise.resolve();
+			});
+			configureSpy.and.callFake(() => {
+				callOrder.push("configure");
+				return Promise.resolve();
+			});
+
+			await newCmd.handler({ name: "Test", framework: "jq", agents: ["claude"], _: ["new"], $0: "new" });
+
+			expect(callOrder).toEqual(["install", "configure"]);
+		});
+
+		it("calls configure from within the project directory", async () => {
+			createProjectMocks();
+			let cwdDuringConfigure: string | undefined;
+			const chdirSpy = process.chdir as jasmine.Spy;
+			configureSpy.and.callFake(() => {
+				// capture the chdir calls made before configure was invoked
+				cwdDuringConfigure = chdirSpy.calls.mostRecent()?.args[0];
+				return Promise.resolve();
+			});
+
+			await newCmd.handler({ name: "MyProject", framework: "jq", agents: ["claude"], _: ["new"], $0: "new" });
+
+			expect(cwdDuringConfigure).toBe("MyProject");
+			// after configure, should chdir back
+			const allChdirCalls = chdirSpy.calls.allArgs().map((a: string[]) => a[0]);
+			const configureIdx = allChdirCalls.lastIndexOf("MyProject");
+			expect(allChdirCalls[configureIdx + 1]).toBe("..");
+		});
+
+		it("calls configure even when skipInstall is true", async () => {
+			createProjectMocks();
+
+			await newCmd.handler({ name: "Test", framework: "jq", skipInstall: true, agents: ["claude"], _: ["new"], $0: "new" });
+
+			expect(PackageManager.installPackages).not.toHaveBeenCalled();
+			expect(configureSpy).toHaveBeenCalledWith(["claude"]);
+		});
+
+		it("does not call configure when project creation fails (bad name)", async () => {
+			spyOn(Util, "error");
+			spyOn(ProjectConfig, "getConfig").and.returnValue(null);
+
+			await newCmd.handler({ name: "1invalid", _: ["new"], $0: "new" });
+
+			expect(configureSpy).not.toHaveBeenCalled();
+		});
 	});
 });

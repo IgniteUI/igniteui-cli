@@ -17,7 +17,6 @@ import { defer, Observable } from "rxjs";
 import { NewProjectOptions } from "../app-projects/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
 import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
-import { addAIConfig } from "../cli-config/index";
 import { setVirtual } from "../utils/NgFileSystem";
 import { OptionsSchema } from "./schema";
 
@@ -88,8 +87,9 @@ export function newProject(options: OptionsSchema): Rule {
 					}
 
 					if (projTemplate === undefined) {
-						const projectTemplate = options.template || projLibrary.projectIds[0];
-						projTemplate = projLibrary.getProject(projectTemplate);
+						projTemplate = options.template
+							? projLibrary.getProject(options.template)
+							: projLibrary.projects.filter(p => !p.isHidden)[0];
 						if (!projTemplate) {
 							throw new SchematicsException(`template with id '${options.template}' not found`);
 						}
@@ -151,8 +151,10 @@ export function newProject(options: OptionsSchema): Rule {
 							});
 						}
 					},
-					addAIConfig(),
+					// run full schematic for args/prompts
+					schematic("ai-config", {}),
 					(_tree: Tree, _context: IgxSchematicContext) => {
+						// move late so name can be resolved before use
 						return move(options.name!);
 					}
 				]), MergeStrategy.Overwrite

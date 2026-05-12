@@ -21,7 +21,6 @@ function makeLoader(overrides: Partial<ApiDocLoader> = {}): ApiDocLoader {
   return {
     get: vi.fn().mockReturnValue(undefined),
     search: vi.fn().mockReturnValue([]),
-    formatStructuredComponent: vi.fn().mockReturnValue(null),
     load: vi.fn(),
     getStats: vi.fn(),
     ...overrides,
@@ -133,17 +132,6 @@ describe('createGetApiReferenceHandler', () => {
     // extractSection returns null for missing section, so handler falls through to full content
     expect(result.isError).toBeUndefined();
     expect(result.content[0].text).toContain('Some content only');
-  });
-
-  it('uses formatStructuredComponent output when available (typedoc-json platforms)', async () => {
-    const loader = makeLoader({
-      get: vi.fn().mockReturnValue(makeEntry()),
-      formatStructuredComponent: vi.fn().mockReturnValue('# Formatted\nsome content'),
-    });
-    const handler = createGetApiReferenceHandler(loader);
-    const result = await handler({ platform: 'react', component: 'IgrGrid', section: 'all' });
-
-    expect(result.content[0].text).toBe('# Formatted\nsome content');
   });
 
   it('defaults section to "all" when omitted', async () => {
