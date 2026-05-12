@@ -48,7 +48,6 @@ function updateServerJson(pkgJsonLocation: string, serverJsonLocation: string) {
 		}
 	}
 	writeFileSync(serverJsonLocation, JSON.stringify(serverJson, null, 2) + "\n");
-	console.log(`Updated ${serverJsonLocation}: ${previousVersion} -> ${pkgVersion}`);
 }
 
 function main() {
