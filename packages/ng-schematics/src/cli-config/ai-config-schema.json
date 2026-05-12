@@ -31,7 +31,7 @@
         ]
       }
     },
-    "assistant": {
+    "assistants": {
       "type": "array",
       "description": "Coding assistant(s) to configure MCP servers for.",
       "default": ["vscode"],
