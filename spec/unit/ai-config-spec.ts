@@ -326,9 +326,16 @@ describe("Unit - ai-config command", () => {
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
 
+			expect(mockFs.writeFile).toHaveBeenCalled();
+			const config = writtenConfig(mockFs);
+			expect(config.servers).toBeDefined();
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: none; assistant: vscode" }));
-			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Skipping"));
+			expect(
+				(Util.log as jasmine.Spy).calls.allArgs()
+					.filter(([msg]) => String(msg).includes("Skipping"))
+			).toHaveSize(1);
+			expect(Util.log).toHaveBeenCalledWith("No AI configuration selected. Skipping.");
 		});
 
 		it("configures multiple agents when selected interactively", async () => {

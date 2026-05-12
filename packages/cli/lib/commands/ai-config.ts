@@ -29,12 +29,12 @@ export function configureSkills(agents: AIAgentTarget[]): void {
 	}
 }
 
-export async function configure(agents?: AIAgentTarget[], assistants?: AiCodingAssistant[], skills = true): Promise<void> {
-	if (!agents?.length) {
+export async function configure(agents: AIAgentTarget[] = [], assistants: AiCodingAssistant[] = [], prompt = true, skills = true): Promise<void> {
+	if (!agents.length && prompt) {
 		agents = await promptForAgents();
 	}
 
-	if (!assistants?.length) {
+	if (!assistants.length && prompt) {
 		assistants = await promptForAssistant();
 	}
 	configureMCP(assistants);
@@ -136,12 +136,10 @@ const command: CommandModule = {
 
 		if (!assistants.length) {
 			Util.log("No MCP configuration selected. Skipping.");
-			return;
 		}
 
 		if (!agents.length) {
 			Util.log("No AI configuration selected. Skipping.");
-			return;
 		}
 		await configure(agents, assistants);
 	}
