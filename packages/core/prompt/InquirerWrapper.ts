@@ -3,23 +3,22 @@ import { Context } from '@inquirer/type';
 
 // ref - node_modules\@inquirer\input\dist\cjs\types\index.d.ts - bc for some reason this is not publicly exported
 type InputConfig = {
-    message: string;
-    default?: string;
-    required?: boolean;
+	message: string;
+	default?: string;
+	required?: boolean;
 	type?: string;
 	name?: string;
-	choices?: (string | Separator)[] | ({ value: string; name?: string; checked?: boolean } | Separator)[];
-    transformer?: (value: string, { isFinal }: {
-        isFinal: boolean;
-    }) => string;
+	transformer?: (value: string, { isFinal }: {
+		isFinal: boolean;
+	}) => string;
 
 	// TODO: consider typing these by extracting the types from the inquirer package
-    validate?: any;
-    theme?: any;
+	validate?: any;
+	theme?: any;
 };
 
-type InputChoicesConfig = InputConfig & {
-    choices: (string | Separator)[] | ({ value: string; name?: string; checked?: boolean } | Separator)[];
+type InputChoicesConfig = Omit<InputConfig, "transformer"> & {
+	choices: (string | Separator)[] | ({ value: string; name?: string; checked?: boolean } | Separator)[];
 };
 
 export class InquirerWrapper {
