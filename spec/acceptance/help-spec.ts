@@ -70,9 +70,12 @@ describe("Help command", () => {
 																				[boolean]
 				--skip-install, --si  Do not install packages after scaffolding  [boolean]
 				--template            Project template                            [string]
-			-a, --agents               AI agents/tools to generate configuration files for
+				--agents              AI agents/tools to generate configuration files for
 					[array] [choices: "generic", "claude", "copilot", "cursor", "codex",
-													"windsurf", "gemini", "junie"]
+											"windsurf", "gemini", "junie", "none"]
+				--assistants          Coding assistant(s) to configure MCP servers for
+					[array] [choices: "generic", "vscode", "cursor", "gemini", "junie",
+																			"none"]
 
 			Examples:
 			ig new my-app                       Scaffold a new project interactively

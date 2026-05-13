@@ -35,14 +35,14 @@ const AI_AGENT_INSTRUCTION_FILES: Record<AIAgentTarget, string> = {
 };
 
 export const AI_AGENT_LABELS: Record<AIAgentTarget, string> = {
-	generic: "Generic (Adding .agents/skills and AGENTS.md)",
-	claude: "Claude (Adding .claude/skills and CLAUDE.md)",
-	copilot: "Copilot (Adding .github/skills and copilot-instructions.md)",
-	cursor: "Cursor (Adding .cursor/skills and .cursor/rules/cursor.mdc)",
-	codex: "Codex (Adding .codex/skills and .codex/instructions.md)",
-	windsurf: "Windsurf (Adding .windsurf/skills and .windsurf/rules/guidelines.md)",
-	gemini: "Gemini (Adding .gemini/skills and .gemini/GEMINI.md)",
-	junie: "Junie (Adding .junie/skills and .junie/guidelines.md)"
+	generic: "Generic (Add .agents/skills and AGENTS.md general for most assistants)",
+	claude: "Claude (Add .claude/skills and CLAUDE.md)",
+	copilot: "Copilot (Add .github/skills and copilot-instructions.md)",
+	cursor: "Cursor (Add .cursor/skills and .cursor/rules/cursor.mdc)",
+	codex: "Codex (Add .codex/skills and .codex/instructions.md)",
+	windsurf: "Windsurf (Add .windsurf/skills and .windsurf/rules/guidelines.md)",
+	gemini: "Gemini (Add .gemini/skills and .gemini/GEMINI.md)",
+	junie: "Junie (Add .junie/skills and .junie/guidelines.md)"
 };
 
 /**
