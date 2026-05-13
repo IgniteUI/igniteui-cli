@@ -29,12 +29,12 @@ export function configureSkills(agents: AIAgentTarget[]): void {
 	}
 }
 
-export async function configure(agents: (AIAgentTarget | "none")[] = [], assistants: (AiCodingAssistant | "none")[] = [], prompt = true, skills = true): Promise<{ agents: AIAgentTarget[], assistants: AiCodingAssistant[] }> {
-	if (!agents.length && prompt) {
+export async function configure(agents: (AIAgentTarget | "none")[] = [], assistants: (AiCodingAssistant | "none")[] = [], skills = true): Promise<{ agents: AIAgentTarget[], assistants: AiCodingAssistant[] }> {
+	if (!agents.length) {
 		agents = await promptForAgents();
 	}
 
-	if (!assistants.length && prompt) {
+	if (!assistants.length) {
 		assistants = await promptForAssistant();
 	}
 
