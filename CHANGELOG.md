@@ -1,12 +1,12 @@
 # 15.1.0 (2026-05-13)
 
 ## What's Changed
-* feat(ai-config): The `ai-config` command now enables users to select and configure an AI coding assistant integration for their Ignite UI project. by @Marina-L-Stoyanova [#1684](https://github.com/IgniteUI/igniteui-cli/pull/1684), [#1664](https://github.com/IgniteUI/igniteui-cli/pull/1664)
+* feat(ai-config): The `ai-config` command now enables users to select and configure an AI coding assistant integration for their Ignite UI project. by @Marina-L-Stoyanova in [#1684](https://github.com/IgniteUI/igniteui-cli/pull/1684), [#1664](https://github.com/IgniteUI/igniteui-cli/pull/1664)
   * Based on the selected provider, the command adds the required skills, instruction files, and MCP configuration to streamline AI-assisted development workflows.
-  * The `new` command now accepts `--agents` (for adding skills and instruction files) and `--assistants` (for adding mcp configuration) options, allowing users to configure AI integration directly during project creation.
+  * The `new` command now accepts `--agents` (for adding skills and instruction files) and `--assistants` (for adding MCP configuration) options, allowing users to configure AI integration directly during project creation.
   * When using the step-by-step wizard, users are automatically prompted to select their preferred AI agents and coding assistants after the project structure is generated.
   * The Angular schematics package includes a dedicated `ai-config` schematic that runs automatically during `ng new` with Ignite UI and can also be invoked standalone via `ng generate @igniteui/angular-schematics:ai-config` to add AI configuration to existing Angular projects.
-* feat(mcp): mcp server registry.modelcontextprotocol.io config by @dkalinovInfra in [#1678](https://github.com/IgniteUI/igniteui-cli/pull/1678)
+* feat(mcp): MCP server registry.modelcontextprotocol.io config by @dkalinovInfra in [#1678](https://github.com/IgniteUI/igniteui-cli/pull/1678)
 * fix(react): Grid is missing in "Grids & Lists" components by @dkalinovInfra in [#1676](https://github.com/IgniteUI/igniteui-cli/pull/1676)
 
 # 15.0.1 (2026-04-28)
