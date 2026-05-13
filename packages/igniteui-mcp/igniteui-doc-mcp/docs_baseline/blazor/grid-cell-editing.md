@@ -164,7 +164,6 @@ public class NwindData
 }
 ```
 
-
 ## Cell Editing
 
 ### Editing through UI
@@ -383,7 +382,6 @@ public class RoleplayDataStats
 }
 ```
 
-
 <!-- ComponentStart: Grid -->
 
 ### Grid Excel Style Editing
@@ -393,9 +391,6 @@ Using Excel Style Editing allows the user to navigate trough the cells just as h
 Implementing this custom functionality can be done by utilizing the events of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). First we hook up to the grid's keydown events, and from there we can implement two functionalities:
 
 - Constant edit mode
-
-<!---->
-
 - <kbd>ENTER</kbd>/<kbd>SHIFT</kbd> + <kbd>ENTER</kbd> navigation
 
 Key parts of finding the next eligible index would be:
@@ -403,7 +398,6 @@ Key parts of finding the next eligible index would be:
 Please check the full sample for further reference:
 
 #### Blazor Grid Excel Style Editing Sample
-
 
 
 
@@ -513,7 +507,7 @@ If the value entered in a cell under the **Units On Order** column is larger tha
 
 <!-- ComponentEnd: Grid -->
 
-If the value entered in a cell under the **Age** column is below 18 or the value in the **HireDate** column is in the future, the editing will be cancelled and the user will be alerted to the cancellation.
+<!-- Blazor -->
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -629,7 +623,6 @@ public class NwindData
     }
 }
 ```
-
 
 ## Styling
 
@@ -790,13 +783,9 @@ public class NwindData
 }
 ```
 
-
 ## API References
 
 - [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
-
-<!---->
-
 - [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html)
 
 ## Additional Resources

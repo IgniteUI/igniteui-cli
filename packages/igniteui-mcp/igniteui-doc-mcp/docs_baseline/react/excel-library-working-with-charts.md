@@ -301,7 +301,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExcelLibraryWorkingWithCharts/>);
 ```
 
-
 > [!Note]
 > The XLSX format is required. Other formats are not supported at this time.
 

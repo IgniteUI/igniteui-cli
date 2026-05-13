@@ -177,7 +177,6 @@ public class NwindData
 }
 ```
 
-
 ## Cell Editing
 
 ### Editing through UI
@@ -423,7 +422,6 @@ public class HGridDndData
 }
 ```
 
-
 ## CRUD operations
 
 > [!Note]
@@ -500,30 +498,29 @@ The first thing we need to do is bind to the grid's event:
 
 The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
 
-If the value entered in a cell under the **Age** column is below 18 or the value in the **HireDate** column is in the future, the editing will be cancelled and the user will be alerted to the cancellation.
+<!-- Blazor -->
+
+<!-- ComponentStart: HierarchicalGrid -->
+
+If the value entered in a cell under the **Units On Order** column is larger than the available amount (the value under **Units in Stock**), the editing will be cancelled and the user will be alerted to the cancellation.
+
+<!-- ComponentEnd: HierarchicalGrid -->
 
 <!-- ComponentEnd: TreeGrid -->
 
 ```razor
 // In JavaScript
-igRegisterScript("HandleCellEdit", (ev) => {
-    const today = new Date();
-    const column = event.detail.column;
-    if (column.field === 'Debut') {
-        if (event.detail.newValue > today.getFullYear()) {
-            event.detail.cancel = true;
-            alert('The debut date must be in the past!');
-        }
-    } else if (column.field === 'LaunchDate') {
-        if (event.detail.newValue > today) {
-            event.detail.cancel = true;
-            alert('The launch date must be in the past!');
+igRegisterScript("WebGridEditingEventsCellEdit", (ev) => {
+    var d = ev.detail;
+
+    if (d.column != null && d.column.field == "UnitsOnOrder") {
+        if (d.newValue > d.rowData.UnitsInStock) {
+            d.cancel = true;
+            alert("You cannot order more than the units in stock!")
         }
     }
 }, false);
 ```
-
-Here, we are validating two columns. If the user tries to change an artist's **Debut** year or an album's **Launch Date**, the grid will not allow any dates that are greater than today.
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
@@ -698,7 +695,6 @@ public class NwindData
     }
 }
 ```
-
 
 ## Styling
 
@@ -880,13 +876,9 @@ public class NwindData
 }
 ```
 
-
 ## API References
 
 - [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)
-
-<!---->
-
 - [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html)
 
 ## Additional Resources

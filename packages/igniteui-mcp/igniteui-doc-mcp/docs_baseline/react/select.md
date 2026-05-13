@@ -42,7 +42,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<SelectOverview />);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -149,7 +148,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<SelectItem />);
 ```
 
-
 ### Header
 
 You can use the [`IgrSelectHeader`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectheader.html) to provide a header for a group of items.
@@ -186,7 +184,6 @@ export default function SelectHeader() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<SelectHeader />);
 ```
-
 
 ```tsx
 <IgrSelect>
@@ -327,7 +324,6 @@ export default function SelectGroup() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<SelectGroup />);
 ```
-
 
 ```tsx
 <IgrSelect>
@@ -558,7 +554,6 @@ export default function SelectGroup() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<SelectGroup />);
 ```
-
 
 ## API Reference
 

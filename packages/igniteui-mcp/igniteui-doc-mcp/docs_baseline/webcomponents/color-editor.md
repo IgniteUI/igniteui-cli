@@ -20,7 +20,6 @@ The Ignite UI for Web Components Color Editor is a lightweight color picker comp
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies

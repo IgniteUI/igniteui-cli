@@ -167,7 +167,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Cell Editing
 
 ### Editing through UI
@@ -466,7 +465,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## CRUD operations
 
 > [!Note]
@@ -565,6 +563,8 @@ public webTreeGridCellEdit(args: IgrGridEditEventArgs): void {
 ```
 
 <!-- ComponentEnd: TreeGrid -->
+
+<!-- Blazor -->
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -716,7 +716,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## Styling
 
@@ -889,13 +888,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## API References
 
 - [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
-
-<!---->
-
 - [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html)
 
 ## Additional Resources

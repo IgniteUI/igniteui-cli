@@ -44,7 +44,6 @@ The Ignite UI for Blazor map component, the [`IgbShapeDataSource`](https://www.i
 }
 ```
 
-
 <div class="divider--half"></div>
 
 The following table explains properties of the [`IgbShapeDataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbShapeDataSource.html) class for loading shape files.

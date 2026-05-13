@@ -369,7 +369,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExcelLibraryWorkingWithCells/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## References

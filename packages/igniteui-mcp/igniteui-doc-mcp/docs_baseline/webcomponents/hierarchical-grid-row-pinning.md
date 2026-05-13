@@ -22,7 +22,6 @@ The Ignite UI for Web Components Row Pinning feature in Web Components Hierarchi
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Row Pinning UI
 
 The built-in row pinning UI is enabled by adding an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) component with the [`IgcGridPinningActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridpinningactions.html) component. The action strip is automatically shown when hovering a row and will display a pin or unpin button icon based on the state of the row it is shown for. An additional action allowing to scroll the copy of the pinned row into view is shown for each pinned row as well.
@@ -142,7 +141,6 @@ public togglePinning(row: IgcRowType) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Row Pinning Limitations
 
 - Only records that exist in the data source can be pinned.
@@ -183,7 +181,6 @@ Then set the related CSS properties for that class:
         --ig-grid-cell-active-border-color: #FFCD0F;
     }
 ```
-
 
 ## API References
 

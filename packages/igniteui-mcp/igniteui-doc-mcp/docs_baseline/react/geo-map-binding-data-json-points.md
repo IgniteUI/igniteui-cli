@@ -367,7 +367,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapBindingDataJsonPoints/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Data Example

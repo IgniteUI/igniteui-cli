@@ -71,7 +71,6 @@ The Blazor Button Group component is used to organize [`IgbToggleButton`](https:
 }
 ```
 
-
 ## Usage
 
 Before using the [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html), you need to register it as follows:
@@ -159,7 +158,6 @@ Use the [`Alignment`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 
 }
 ```
-
 
 ### Selection
 
@@ -256,7 +254,6 @@ The sample below demonstrates the exposed [`IgbButtonGroup`](https://www.infragi
 }
 ```
 
-
 A [`IgbToggleButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html) could be marked as selected via its [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html#IgniteUI_Blazor_Controls_IgbToggleButton_Selected) attribute or through the [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html) [`SelectedItems`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html#IgniteUI_Blazor_Controls_IgbButtonGroup_SelectedItems) attribute:
 
 ```razor
@@ -309,7 +306,6 @@ The `--ig-size` CSS custom property can be used to control the size of the butto
     }
 }
 ```
-
 
 ## Styling
 
@@ -385,7 +381,6 @@ igc-toggle-button::part(toggle) {
 
 }
 ```
-
 
 ## API Reference
 

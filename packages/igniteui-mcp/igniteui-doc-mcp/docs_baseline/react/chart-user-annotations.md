@@ -302,7 +302,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 > [!Note]
 > This feature is designed to support X and Y axes and does not currently support radial or angular axes.
 

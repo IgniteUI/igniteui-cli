@@ -30,7 +30,6 @@ The sample below demonstrates the three types of [`IgcHierarchicalGridComponent`
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Basic Usage
 
 The column selection feature can be enabled through the [`columnSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#columnSelection) input, which takes `GridSelectionMode` values.
@@ -52,7 +51,6 @@ The default selection mode is `None`. If set to `Single` or `Multiple`, all of t
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Keyboard Combinations
 
@@ -112,7 +110,6 @@ Then set the related CSS properties to this class:
     --ig-grid-row-selected-hover-background: #0062A3;
 }
 ```
-
 
 ## API References
 

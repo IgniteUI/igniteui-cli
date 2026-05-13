@@ -29,7 +29,6 @@ The Ignite UI for Blazor Ripple component creates an animation in response to a 
 }
 ```
 
-
 ## Usage
 
 Before using the [`IgbRipple`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRipple.html), you need to register it as follows:
@@ -91,7 +90,6 @@ igc-ripple {
 
 }
 ```
-
 
 ## API References
 

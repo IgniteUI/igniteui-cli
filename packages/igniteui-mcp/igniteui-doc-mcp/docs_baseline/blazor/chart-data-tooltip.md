@@ -111,7 +111,6 @@ public class HighestGrossingMovies
 }
 ```
 
-
 ### Blazor Data Tooltip Columns
 
 The columns of the [`IgbDataToolTipLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html) include the title, label, value, and units columns. Each series in the chart can have multiple columns for label, value, and units depending on the [`DataToolTipIncludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataToolTipIncludedColumns) or [`DataToolTipExcludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataToolTipExcludedColumns) collections of the chart.
@@ -306,7 +305,6 @@ The following example demonstrates a data tooltip with the added columns of Open
     //end async data
 ```
 
-
 ## Blazor Data Tooltip Grouping for Data Chart
 
 [`DataLegendGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
@@ -444,7 +442,6 @@ public class OlympicMedalsTopCountriesWithTotals
 }
 ```
 
-
 ## Blazor Data Tooltip Grouping & Positioning for Category Chart & Financial Chart
 
 You can set [`DataToolTipGroupingMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataToolTipGroupingMode) property to either `Grouped` or `Individual` to group content for multiple series into single tooltip or separate content for each series in multiple tooltips. In the `Grouped` mode, you can customize where the tooltip is shown by setting the [`DataToolTipGroupedPositionModeX`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataToolTipGroupedPositionModeX) and [`DataToolTipGroupedPositionModeY`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataToolTipGroupedPositionModeY) properties. This essentially allows you to customize the horizontal and vertical alignments of the tooltip and whether you want it to track to the closest series points to the mouse position or pin the tooltip to edge of plot area.
@@ -577,7 +574,6 @@ public class HighestGrossingMovies
 }
 ```
 
-
 ## Blazor Data Tooltip Value Formatting
 
 The **DataToolTip** provides automatic abbreviation of large numbers using its [`DataToolTipValueFormatAbbreviation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataToolTipValueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`DataToolTipValueFormatMinFractions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataToolTipValueFormatMinFractions) and [`DataToolTipValueFormatMaxFractions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataToolTipValueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
@@ -662,7 +658,6 @@ public class HighestGrossingMovies
     }
 }
 ```
-
 
 ## Blazor Data Tooltip Value Mode
 
@@ -829,7 +824,6 @@ You can change the default decimal display of values within the **DataToolTip** 
     }
     //end async data
 ```
-
 
 ## Layout Mode
 
@@ -1058,7 +1052,6 @@ public class StockItem {
   }
   //end data
 ```
-
 
 Several properties are exposed including grouping portions of the tooltip.
 

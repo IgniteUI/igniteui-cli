@@ -217,7 +217,6 @@ public class NwindData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Getting Started with Blazor Data Grid
@@ -777,7 +776,6 @@ public class EmployeesNestedData
 }
 ```
 
-
 ### Working with Flat Data Overview
 
 The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`Data`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Data) property of the [`IgbGridRow`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridRow.html).
@@ -999,7 +997,6 @@ public class CustomersData
     }
 }
 ```
-
 
 ## Keyboard Navigation
 

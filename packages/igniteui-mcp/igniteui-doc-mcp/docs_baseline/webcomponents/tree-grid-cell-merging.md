@@ -62,7 +62,6 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <!-- ComponentEnd: TreeGrid -->
 
 ## Enabling and Using Cell Merging
@@ -443,7 +442,6 @@ export const generateEmployeeDetailedFlatData2 = () => ([
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <!-- ComponentEnd: TreeGrid -->
 

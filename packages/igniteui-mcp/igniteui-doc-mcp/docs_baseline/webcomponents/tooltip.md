@@ -22,7 +22,6 @@ igc-avatar {
 }
 ```
 
-
 ### Getting Started
 
 To start using the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html), first, you need to install the Ignite UI for Web Components by running the following command:
@@ -147,7 +146,6 @@ igc-tooltip::part(base) {
 }
 ```
 
-
 ### Show/Hide delay settings
 
 If you want to control the delay before showing and hiding the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html), you can use the [`showDelay`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#showDelay) and [`hideDelay`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#hideDelay) properties. Both properties accept a number value representing time in milliseconds.
@@ -196,7 +194,6 @@ igc-button::part(base) {
 }
 ```
 
-
 ### Triggers
 
 By default, the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) is triggered only while hovering over the target element. However, you can change this behavior using the [`showTriggers`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#showTriggers) and [`hideTriggers`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#hideTriggers) properties, which allow you to control when the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) in different scenarios.
@@ -232,7 +229,6 @@ By default, the [`IgcTooltipComponent`](https://www.infragistics.com/products/ig
   padding: 0.5rem 0rem 0rem 0.5rem;
 }
 ```
-
 
 ### Advanced Example
 
@@ -704,7 +700,6 @@ igc-tooltip::part(base) {
 }
 ```
 
-
 ### Additional Properties
 
 Apart from the properties we've already covered, the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) component offers a variety of additional properties that allow you to further configure its behavior, position, and appearance.
@@ -772,7 +767,6 @@ igc-tooltip::part(bottom) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

@@ -61,7 +61,6 @@ export class SalesData extends Array<SalesDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ```html
 <igc-category-chart
      id="chart"

@@ -250,7 +250,6 @@ public class CountryStatsEurope
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Bubble Chart with Single Series
@@ -420,7 +419,6 @@ public class WorldStats
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -661,7 +659,6 @@ public class CountryStatsEurope
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Bubble Chart Styling
@@ -836,7 +833,6 @@ public class WorldStats
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

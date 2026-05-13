@@ -49,7 +49,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Pie Chart Recommendations
@@ -133,7 +132,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Pie Chart Others Category
@@ -176,7 +174,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Pie Chart Explosion
@@ -187,7 +184,6 @@ The pie chart supports explosion of individual pie slices as well as a `SliceCli
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -219,7 +215,6 @@ For scenarios where you click on the Others slice, the pie chart will return an 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Pie Chart Animation
@@ -232,7 +227,6 @@ In the code below, the radiusFactor is increasing the chart by 0.25% of the size
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -272,7 +266,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Radial Pie Chart
@@ -310,7 +303,6 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

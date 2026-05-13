@@ -33,7 +33,6 @@ The sample below demonstrates three types of **cell selection** behaviors in the
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Web Components Grid Selection Options
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
@@ -370,7 +369,6 @@ export class NwindData extends Array<NwindDataItem> {
     justify-content: space-evenly;
 }
 ```
-
 
 <!-- ComponentEnd: Grid -->
 

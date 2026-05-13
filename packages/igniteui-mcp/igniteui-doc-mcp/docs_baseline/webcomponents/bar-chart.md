@@ -49,7 +49,6 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Bar Chart Recommendations
@@ -140,7 +139,6 @@ export class OnlineShoppingSearches extends Array<OnlineShoppingSearchesItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Bar Chart with Multiple Series
@@ -178,7 +176,6 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -219,7 +216,6 @@ export class OnlineShoppingSearches extends Array<OnlineShoppingSearchesItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -266,7 +262,6 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Stacked 100% Bar Chart
@@ -309,7 +304,6 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

@@ -283,7 +283,6 @@ namespace Infragistics.Samples
 }
 ```
 
-
 > [!Note]
 > The XLSX format is required. Other formats are not supported at this time.
 

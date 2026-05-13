@@ -337,7 +337,6 @@ namespace Infragistics.Samples
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Configuring the Gridlines

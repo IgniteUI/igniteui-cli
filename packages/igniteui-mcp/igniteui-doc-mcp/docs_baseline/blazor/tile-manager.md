@@ -198,7 +198,6 @@ The following Ignite UI for Blazor Tile Manager Example shows the component in a
 }
 ```
 
-
 > [!Warning]
 > Due to the iframe permissions policy, the fullscreen button in this example will only work when the example is opened in standalone mode by clicking the 'Expand to fullscreen' button in the top-right corner.
 
@@ -369,7 +368,6 @@ We also have properties for setting the minimum width of the columns ([`MinColum
 }
 ```
 
-
 ## Tile component
 
 The Tile component has properties that can be set individually for each tile. Some of these properties include:
@@ -486,7 +484,6 @@ You also have the option to disable both action buttons and create custom ones a
 }
 ```
 
-
 In this example, we created custom action buttons using the Ignite UI Icon Button component.
 
 ## Resizing
@@ -595,7 +592,6 @@ You can see the difference between the three states in the example below:
 }
 ```
 
-
 ### Snapping
 
 Tiles resize in full grid units, meaning they can only grow or shrink by whole columns or rows. The ghost element snaps to the next column or row when expanding past the halfway point and to the previous one when shrinking past the halfway mark. This applies to all adorners (bottom, side and corner), ensuring tiles always stay aligned to the grid.
@@ -690,7 +686,6 @@ Similar to resizing, when you initiate the drag-and-drop process, a ghost elemen
 }
 ```
 
-
 ## Serialization
 
 The Tile Manager provides methods that help manage the layout of tiles:
@@ -743,7 +738,6 @@ The Tile Manager provides methods that help manage the layout of tiles:
     }
 }
 ```
-
 
 ## Styling
 
@@ -843,7 +837,6 @@ You can also change the icon of the adorners to a custom one using the `side-ado
     }
 }
 ```
-
 
 ## API Reference
 

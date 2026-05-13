@@ -38,7 +38,6 @@ The following Blazor Dropdown List example demonstrates the use of simple intera
 }
 ```
 
-
 ## How to use the Dropdown List with Ignite UI for Blazor
 
 Before using the [`IgbDropdown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html), you need to register it as follows:
@@ -84,7 +83,6 @@ The Blazor Dropdown list is positioned relatively to its target. The `target` sl
     }
 }
 ```
-
 
 ### Position
 
@@ -178,7 +176,6 @@ The preferred placement of the Blazor Dropdown can be set using the [`Placement`
 }
 ```
 
-
 ### Selection
 
 The [`IgbDropdown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html) emits the `Change` event when the user selects an item. The [`Select`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html#IgniteUI_Blazor_Controls_IgbDropdown_Select) method of the Dropdown allows you to select an item by its index or value.
@@ -244,7 +241,6 @@ The [`IgbDropdownItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteU
 }
 ```
 
-
 ### Header
 
 You could use the [`IgbDropdownHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownHeader.html) to provide a header for a group of items.
@@ -305,7 +301,6 @@ You could use the [`IgbDropdownHeader`](https://www.infragistics.com/blazor/docs
     }
 }
 ```
-
 
 ### Group
 
@@ -375,7 +370,6 @@ The Blazor Dropdown's items can also be grouped using the [`IgbDropdownGroup`](h
     }
 }
 ```
-
 
 ### Scroll Strategy
 
@@ -483,7 +477,6 @@ igc-dropdown-group::part(label) {
     }
 }
 ```
-
 
 ## API Reference
 

@@ -329,7 +329,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<LinearGaugeAnimation/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies
@@ -447,7 +446,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<LinearGaugeNeedle/>);
 ```
 
-
 ## Highlight Needle
 
 The linear gauge can be modified to show a second needle. This will make the main needle's [`value`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargauge.html#value) appear with a lower opacity. To enable this first set [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargauge.html#highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrlineargauge.html#highlightValue).
@@ -510,7 +508,6 @@ export default class LinearGaugeHighlightNeedle extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<LinearGaugeHighlightNeedle/>);
 ```
-
 
 ## Ranges
 
@@ -575,7 +572,6 @@ export default class LinearGaugeRanges extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<LinearGaugeRanges/>);
 ```
-
 
 ## Tick Marks
 
@@ -646,7 +642,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<LinearGaugeTickmarks/>);
 ```
 
-
 ## Labels
 
 The labels indicate the measures on the scale.
@@ -699,7 +694,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<LinearGaugeLabels/>);
 ```
 
-
 ## Backing
 
 The backing element represents background and border of the linear gauge component. It is always the first element rendered and all the rest of elements such as labels, and tick marks are overlaid on top of it.
@@ -750,7 +744,6 @@ export default class LinearGaugeBacking extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<LinearGaugeBacking/>);
 ```
-
 
 ## Scale
 
@@ -807,7 +800,6 @@ export default class LinearGaugeScale extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<LinearGaugeScale/>);
 ```
-
 
 ## Summary
 

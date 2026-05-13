@@ -24,7 +24,6 @@ igc-expansion-panel{
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -92,7 +91,6 @@ span#fired-event {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Component Customization
@@ -132,7 +130,6 @@ img {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -238,7 +235,6 @@ igc-expansion-panel {
   border-radius: 8px;
 }
 ```
-
 
 <div class="divider"></div>
 

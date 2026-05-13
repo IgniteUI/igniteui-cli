@@ -26,7 +26,6 @@ The Blazor Checkbox is a component that lets you add checkboxes to your Blazor a
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -108,7 +107,6 @@ The checkbox can also be labelled by elements external to the checkbox. In this 
 }
 ```
 
-
 ### Checked
 
 You can use the [`Checked`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckboxBase.html#IgniteUI_Blazor_Controls_IgbCheckboxBase_Checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
@@ -129,7 +127,6 @@ You can use the [`Checked`](https://www.infragistics.com/blazor/docs/api/api/Ign
 
 }
 ```
-
 
 ### Indeterminate
 
@@ -152,7 +149,6 @@ You can use the [`Indeterminate`](https://www.infragistics.com/blazor/docs/api/a
 
 }
 ```
-
 
 ### Required
 
@@ -190,7 +186,6 @@ You can use the [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/Ig
 
 }
 ```
-
 
 ### Forms
 
@@ -235,7 +230,6 @@ igc-checkbox::part(control checked)::after {
 
 }
 ```
-
 
 ## API References
 

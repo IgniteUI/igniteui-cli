@@ -284,7 +284,6 @@ public class FinancialDataAll
 }
 ```
 
-
 ## Overview
 
 **Column moving** feature is enabled on a per-grid level, meaning that the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) could have either movable or immovable columns. This is done via the [`Moving`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Moving) input of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
@@ -617,7 +616,6 @@ public class FinancialDataAll
     }
 }
 ```
-
 
 ## API References
 

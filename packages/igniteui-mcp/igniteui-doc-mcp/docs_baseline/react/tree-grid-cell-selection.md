@@ -188,7 +188,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Selection Types
 
 ### Tree Grid Multiple-Cell Selection
@@ -348,7 +347,6 @@ export default function App() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App/>);
 ```
-
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
@@ -654,7 +652,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## API References
 

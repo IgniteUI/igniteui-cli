@@ -155,7 +155,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## React Grid Selection Options
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
@@ -657,7 +656,6 @@ export default function App() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
-
 
 <!-- ComponentEnd: Grid -->
 

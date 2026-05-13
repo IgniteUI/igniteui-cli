@@ -254,7 +254,6 @@ igc-card-content {
 }
 ```
 
-
 > [!Warning]
 > Due to the iframe permissions policy, the fullscreen button in this example will only work when the example is opened in standalone mode by clicking the 'Expand to fullscreen' button in the top-right corner.
 
@@ -470,7 +469,6 @@ img {
   margin-bottom: 12px;
 }
 ```
-
 
 ## Tile component
 
@@ -700,7 +698,6 @@ igc-tile:nth-last-child(1) p {
 }
 ```
 
-
 In this example, we created custom action buttons using the Ignite UI Icon Button component.
 
 ## Resizing
@@ -844,7 +841,6 @@ igc-input {
 }
 ```
 
-
 ### Snapping
 
 Tiles resize in full grid units, meaning they can only grow or shrink by whole columns or rows. The ghost element snaps to the next column or row when expanding past the halfway point and to the previous one when shrinking past the halfway mark. This applies to all adorners (bottom, side and corner), ensuring tiles always stay aligned to the grid.
@@ -980,7 +976,6 @@ igc-tile::part(dragging) {
 }
 ```
 
-
 ## Serialization
 
 The Tile Manager provides methods that help manage the layout of tiles:
@@ -1083,7 +1078,6 @@ igc-button:nth-of-type(-n+3) {
   overflow: auto;
 }
 ```
-
 
 ## Styling
 
@@ -1256,7 +1250,6 @@ igc-tile:nth-child(n+2)::part(trigger) {
   transform: rotate(90deg);
 }
 ```
-
 
 ## API Reference
 

@@ -114,7 +114,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Axis Labels Example
@@ -275,7 +274,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -443,7 +441,6 @@ public class HighestGrossingMovies
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Axis Range Example
@@ -602,7 +599,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Axis Modes & Scale
@@ -678,7 +674,6 @@ In addition to [`YAxisMode`](https://www.infragistics.com/blazor/docs/api/api/Ig
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -816,7 +811,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Axis Overlap Example
@@ -940,7 +934,6 @@ public class HighestGrossingMovies
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

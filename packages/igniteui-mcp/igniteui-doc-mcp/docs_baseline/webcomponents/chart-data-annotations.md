@@ -211,7 +211,6 @@ export class StockTesla extends Array<StockTeslaItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 Like this sample? Get access to our complete Web Components toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-web-components/download">Download it for free.</a>
 
 ## Web Components Data Annotation Slice Layer Example
@@ -331,7 +330,6 @@ export class StockTesla extends Array<StockTeslaItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Data Annotation Strip Layer Example
@@ -402,7 +400,6 @@ export class StockTesla extends Array<StockTeslaItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -505,7 +502,6 @@ export class StockTesla extends Array<StockTeslaItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Data Annotation Rect Layer Example
@@ -578,7 +574,6 @@ export class StockTesla extends Array<StockTeslaItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -653,7 +648,6 @@ export class StockTesla extends Array<StockTeslaItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

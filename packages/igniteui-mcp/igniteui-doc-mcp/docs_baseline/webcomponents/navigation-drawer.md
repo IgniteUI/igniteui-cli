@@ -29,7 +29,6 @@ igc-icon-button::part(icon) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Usage
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -83,7 +82,6 @@ igc-icon-button::part(icon) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Navbar Integration
 
@@ -160,7 +158,6 @@ If all goes well, your component should now look like this:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Mini Variant
 
 With the mini variant, the Navigation Drawer changes its width instead of closing. It is used to maintain quick navigation, available at all times, leaving just the icons. To achieve that, you only need to set up the `mini` slot of the drawer.
@@ -193,7 +190,6 @@ And here's the result:
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Styling
 
@@ -257,7 +253,6 @@ igc-icon-button::part(icon) {
   color: var(--ig-secondary-500);
 }
 ```
-
 
 ## API References
 

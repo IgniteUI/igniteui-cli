@@ -57,7 +57,6 @@ The [`IgbArcGISOnlineMapImagery`](https://www.infragistics.com/blazor/docs/api/a
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Code Snippet

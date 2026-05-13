@@ -1179,7 +1179,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapBindingMultipleSources/>);
 ```
 
-
 <div class="divider--half"></div>
 
 This topic takes you step-by-step towards displaying multiple geographic series that will plot following geo-spatial data:

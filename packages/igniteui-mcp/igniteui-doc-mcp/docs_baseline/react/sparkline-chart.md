@@ -108,7 +108,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SparklineDisplayTypes/>);
 ```
 
-
 <div class="divider--half"></div>
 
 Like this sample? Get access to our complete React toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-react/download">Download it for free.</a>
@@ -242,7 +241,6 @@ export default class SparklineDisplayTypes extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SparklineDisplayTypes/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -459,7 +457,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Normal Range
@@ -635,7 +632,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Trendlines
@@ -783,7 +779,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Unknown Value Interpolation
@@ -926,7 +921,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1162,7 +1156,6 @@ export default class SparklineGrid extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SparklineGrid/>);
 ```
-
 
 ## Additional Resources
 

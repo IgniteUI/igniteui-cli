@@ -178,7 +178,6 @@ public class EmployeesNestedData
 }
 ```
 
-
 ## Configuration
 
 In order to enable row-dragging for your [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html), all you need to do is set the grid's [`RowDraggable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's `RowDragStart` event to fire. Releasing the click at any time will cause `RowDragEnd` event to fire.
@@ -424,7 +423,6 @@ public class EmployeesNestedTreeData
     }
 }
 ```
-
 
 ## Limitations
 

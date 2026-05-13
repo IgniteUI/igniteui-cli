@@ -328,7 +328,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 ## React Grid Default Template

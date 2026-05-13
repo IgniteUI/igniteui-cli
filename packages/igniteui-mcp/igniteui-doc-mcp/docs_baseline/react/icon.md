@@ -69,7 +69,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<IconSizing/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -208,7 +207,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<IconSizing/>);
 ```
 
-
 You can also set a custom size for the icon component. The best way to do this is by using the `--size` CSS variable.
 
 ```css
@@ -282,7 +280,6 @@ export default class IconStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<IconStyling/>);
 ```
-
 
 ## API References
 

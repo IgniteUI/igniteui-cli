@@ -137,7 +137,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Donut Chart Recommendations
@@ -312,7 +311,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DoughnutChartSelection/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Donut Chart - Multiple Rings
@@ -469,7 +467,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 

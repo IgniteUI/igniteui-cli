@@ -183,7 +183,6 @@ public class PivotSalesData
 }
 ```
 
-
 ## Getting Started With Blazor Pivot Grid
 
 The Blazor PivotGrid can be configured via the [`PivotConfiguration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_PivotConfiguration) property.
@@ -497,7 +496,6 @@ public class PivotDataFlat
     }
 }
 ```
-
 
 ### Auto generate configuration
 

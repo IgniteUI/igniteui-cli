@@ -18,7 +18,6 @@ The Ignite UI for Web Components Badge is a component used in conjunction with a
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider"></div>
 
 ## Usage
@@ -67,7 +66,6 @@ The Ignite UI for Web Components badge supports several pre-defined stylistic va
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Shape
 
 The badge component supports `rounded`(default) and `square` shapes. These values can be assigned to the [`shape`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html#shape) attribute.
@@ -81,7 +79,6 @@ The badge component supports `rounded`(default) and `square` shapes. These value
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Dot
 
 The Ignite UI for Web Components badge component can also render as a minimal dot indicator for notifications by setting its `dot` attribute. Dot badges do not support content, but they can be outlined and can use any of the available dot types (e.g., primary, success, info, etc.).
@@ -94,7 +91,6 @@ The Ignite UI for Web Components badge component can also render as a minimal do
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Styling
 
@@ -117,7 +113,6 @@ igc-badge::part(base) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

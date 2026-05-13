@@ -186,7 +186,6 @@ public class CountryDemographicEurope
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Scatter Line Chart
@@ -370,7 +369,6 @@ public class HealthDataForGermany
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -556,7 +554,6 @@ public class HealthDataForGermany
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Scatter High Density Chart
@@ -619,7 +616,6 @@ Use the Blazor Scatter High Density (HD) Chart to bind and show scatter data ran
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -687,7 +683,6 @@ Blazor Scatter Area Chart draws a colored surface based on a triangulation of X 
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Scatter Contour Chart
@@ -753,7 +748,6 @@ Blazor Scatter Contour Chart draws colored contour lines based on a triangulatio
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

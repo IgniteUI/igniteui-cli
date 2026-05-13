@@ -83,7 +83,6 @@ The following sample depicts a [`IgbFinancialChart`](https://www.infragistics.co
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Chart Trendlines Dash Array Example
@@ -198,7 +197,6 @@ public class Stock2Years
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

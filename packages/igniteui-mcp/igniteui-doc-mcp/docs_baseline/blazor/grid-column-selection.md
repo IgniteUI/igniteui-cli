@@ -162,7 +162,6 @@ public class CustomersData
 }
 ```
 
-
 ## Basic Usage
 
 The column selection feature can be enabled through the [`ColumnSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ColumnSelection) input, which takes `GridSelectionMode` values.
@@ -316,7 +315,6 @@ public class CustomersData
 }
 ```
 
-
 ## Keyboard Combinations
 
 > [!Note]
@@ -466,7 +464,6 @@ public class CustomersData
     }
 }
 ```
-
 
 ## API References
 

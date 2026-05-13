@@ -120,7 +120,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartValueOverlay/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Value Overlay Properties
@@ -328,7 +327,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -564,7 +562,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ### Styling Overlay Text
 

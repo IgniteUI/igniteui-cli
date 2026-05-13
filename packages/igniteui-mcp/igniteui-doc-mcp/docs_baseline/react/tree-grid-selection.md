@@ -191,7 +191,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## React Tree Grid Selection Options
 
 ### React Tree Grid Row Selection

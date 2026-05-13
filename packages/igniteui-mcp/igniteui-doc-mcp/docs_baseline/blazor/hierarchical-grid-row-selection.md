@@ -289,7 +289,6 @@ public class SingersData
 }
 ```
 
-
 ## Setup
 
 In order to setup row selection in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html), you just need to set the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelection) property. This property accepts `GridSelectionMode` enumeration.
@@ -797,7 +796,6 @@ public class SingersData
 }
 ```
 
-
 ### Conditional Selection Demo
 
 This demo prevents some rows from being selected using the `RowSelectionChanging` event and a custom template with disabled checkbox for non-selectable rows.
@@ -1031,7 +1029,6 @@ public class SingersData
     }
 }
 ```
-
 
 ## API References
 

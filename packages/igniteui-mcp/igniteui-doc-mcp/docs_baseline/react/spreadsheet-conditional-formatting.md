@@ -173,7 +173,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SpreadsheetConditionalFormatting/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Conditional Formatting Overview

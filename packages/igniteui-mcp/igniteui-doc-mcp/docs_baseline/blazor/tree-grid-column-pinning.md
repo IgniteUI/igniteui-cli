@@ -134,7 +134,6 @@ public class EmployeesFlatData
 }
 ```
 
-
 ## Column Pinning API
 
 Column pinning is controlled through the [`Pinned`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Pinned) property of the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html). Pinned columns are rendered on the left side of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) body.
@@ -334,7 +333,6 @@ public class EmployeesFlatDetails
     }
 }
 ```
-
 
 ### Column Pinning on Both Sides
 
@@ -561,7 +559,6 @@ public class EmployeesFlatDetails
 }
 ```
 
-
 ## Custom Column Pinning UI
 
 You can define your custom UI and change the pin state of the columns via the related API.
@@ -746,7 +743,6 @@ public class EmployeesFlatData
 }
 ```
 
-
 ## Pinning Limitations
 
 - Setting column widths in percentage (%) explicitly makes the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html).
@@ -909,7 +905,6 @@ public class EmployeesFlatData
     }
 }
 ```
-
 
 <!-- end: WebComponents, Blazor -->
 

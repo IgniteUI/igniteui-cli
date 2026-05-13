@@ -56,8 +56,6 @@ If you want to use a data type specific edit templates, you should specify the c
 - For `currency` data type, default template is using `InputGroup` with prefix/suffix configuration based on application or grid locale settings.
 - For `percent` data type, default template is using `InputGroup` with suffix element that shows a preview of the edited value in percents.
 
- 
-
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 All available column data types could be found in the official [Column types topic](column-types.md#default-template).
@@ -352,7 +350,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ### Features integration
 

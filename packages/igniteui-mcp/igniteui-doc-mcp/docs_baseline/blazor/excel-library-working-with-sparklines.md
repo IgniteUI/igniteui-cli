@@ -354,7 +354,6 @@ namespace Infragistics.Samples
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Supported Sparklines

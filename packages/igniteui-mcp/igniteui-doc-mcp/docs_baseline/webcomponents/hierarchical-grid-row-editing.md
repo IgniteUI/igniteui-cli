@@ -24,7 +24,6 @@ The following sample demonstrates how to enable row editing in the [`IgcHierarch
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 > [!Note]
 > When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
 
@@ -181,7 +180,6 @@ Then set the related CSS properties for that class:
     --ig-banner-banner-message-color: #423589;
 }
 ```
-
 
 ## Known Issues and Limitations
 

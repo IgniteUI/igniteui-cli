@@ -46,28 +46,24 @@ They are added inside the [`IgbGrid`](https://www.infragistics.com/blazor/docs/a
 
 These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgbActionStrip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbActionStrip.html) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgbActionStrip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbActionStrip.html).
 
-<!-- ComponentStart: Grid, TreeGrid -->
+<!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
 ```razor
 <div class="grid__wrapper">
     <IgbGrid Data=northwindEmployees>
         <IgbActionStrip @ref=actionstrip>
             <IgbGridPinningActions></IgbGridPinningActions>
-            <IgbButton Title="Edit" @onclick="() => StartEdit(actionstrip.Context)">
-                <IgbIcon>edit</IgbIcon>
-            </IgbButton>
-            @if (!IsDeleted(actionstrip.Context))
-            {
-                <IgbButton Title="Delete" @onclick="() => Delete(actionstrip.Context)">
-                    <IgbIcon>delete</IgbIcon>
-                </IgbButton>
-            }
+            <IgbGridEditingActions
+                EditRow="true"
+                DeleteRow="true"
+                AddRow="true">
+            </IgbGridEditingActions>
         </IgbActionStrip>
     </IgbGrid>
 </div>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
+<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -218,7 +214,6 @@ public class NwindData
     }
 }
 ```
-
 
 ## API References
 

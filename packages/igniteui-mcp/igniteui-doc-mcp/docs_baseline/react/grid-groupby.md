@@ -256,7 +256,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Initial Grouping State
 
 It is possible to define initial grouping of the grid by assigning an array of expressions to the [`groupingExpressions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#groupingExpressions) property of the grid.
@@ -567,7 +566,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## Group By With Summaries
 
@@ -895,7 +893,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample />);
 ```
 
-
 The sample defines custom sorting for the different date conditions.
 Each custom strategy defines the `GroupingComparer` method, which is the custom compare function used when sorting the values. Additionally it extracts the values from the date needed for the comparison.
 
@@ -1216,7 +1213,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## Known Limitations
 

@@ -904,7 +904,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Dependencies
 
 Install the following packages in the Ignite UI for React toolset:
@@ -1041,7 +1040,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 The visualization or properties of the visualization are also configurable using the [`IgrToolbar`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolbar.html) at the top of the control. This [`IgrToolbar`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolbar.html) has the default tools for the current visualization with the addition of four Dashboard Tile specific ones, highlighted below:
 
 <img src="../images/dashboard-tile-toolbar.png" alt="Dashboard Tile Toolbar"/>
@@ -1148,7 +1146,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 This demo demonstrates dashboard tile integration with the React Geographic Map. The toolbar options at the top right provides access to styling and changing the data visualization.
 
 ```typescript
@@ -1247,7 +1244,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## API References
 

@@ -283,7 +283,6 @@ public class FinancialDataAll
 }
 ```
 
-
 ## Setup
 
 In order to setup row selection in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html), you just need to set the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelection) property. This property accepts `GridSelectionMode` enumeration.
@@ -634,7 +633,6 @@ public class CustomersData
 }
 ```
 
-
 <!-- ComponentStart: Grid, TreeGrid -->
 
 ### Excel Style Row Selectors Demo
@@ -769,7 +767,6 @@ public class CustomersData
 }
 ```
 
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 ### Conditional Selection Demo
@@ -880,7 +877,6 @@ public class CustomersData
     }
 }
 ```
-
 
 ## API References
 

@@ -29,7 +29,6 @@ This sample demonstrates how to create [`IgbSnackbar`](https://www.infragistics.
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ### Usage
@@ -106,7 +105,6 @@ Use the [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteU
 }
 ```
 
-
 ### Action Text
 
 By default, the snackbar component is hidden automatically after a period specified by the [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBaseAlertLike.html#IgniteUI_Blazor_Controls_IgbBaseAlertLike_DisplayTime). You can use [`KeepOpen`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBaseAlertLike.html#IgniteUI_Blazor_Controls_IgbBaseAlertLike_KeepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`ActionText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_ActionText) you can display an action button inside the component.
@@ -143,7 +141,6 @@ By default, the snackbar component is hidden automatically after a period specif
     }
 }
 ```
-
 
 ## Styling
 
@@ -185,7 +182,6 @@ igc-snackbar::part(base) {
 
 }
 ```
-
 
 <div class="divider--half"></div>
 

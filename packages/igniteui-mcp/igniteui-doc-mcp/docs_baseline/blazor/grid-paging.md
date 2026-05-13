@@ -157,7 +157,6 @@ public class AthletesData
 }
 ```
 
-
 ```css
 .gridSize {
     --ig-size: var(--ig-size-small);
@@ -366,7 +365,6 @@ public class AthletesData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

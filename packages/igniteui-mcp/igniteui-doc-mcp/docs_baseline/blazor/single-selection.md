@@ -71,7 +71,6 @@ To enable single-selection and quick filtering, set the [`SingleSelect`](https:/
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Selection API

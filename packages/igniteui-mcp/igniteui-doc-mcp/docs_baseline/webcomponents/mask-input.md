@@ -18,7 +18,6 @@ The Ignite UI for Web Components Mask Input is an input field that allows the de
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Usage
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -77,7 +76,6 @@ After that you should see the following in your browser:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Prompt Character
 
 Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`prompt`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputbasecomponent.html#prompt) property:
@@ -104,7 +102,6 @@ The [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-we
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Styling
 
@@ -146,7 +143,6 @@ igc-mask-input::part(input)::placeholder {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Assumptions and limitations
 

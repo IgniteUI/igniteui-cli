@@ -431,7 +431,6 @@ public class CustomersData
 }
 ```
 
-
 ## Limitations
 
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->

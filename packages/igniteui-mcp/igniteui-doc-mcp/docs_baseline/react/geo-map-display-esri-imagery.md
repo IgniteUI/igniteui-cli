@@ -303,7 +303,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapDisplayImageryEsri/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Code Snippet

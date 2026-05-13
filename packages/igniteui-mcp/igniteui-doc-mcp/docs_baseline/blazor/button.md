@@ -38,7 +38,6 @@ The Blazor Button Component lets you enable clickable elements that trigger acti
 }
 ```
 
-
 ## Usage
 
 Before using the [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html), you need to register it as follows:
@@ -104,7 +103,6 @@ Use the [`Variant`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bl
 }
 ```
 
-
 ### Outlined Button
 
 All you have to do to create an `outlined` button is to change the value of the [`Variant`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html#IgniteUI_Blazor_Controls_IgbButton_Variant) property:
@@ -125,7 +123,6 @@ All you have to do to create an `outlined` button is to change the value of the 
 
 }
 ```
-
 
 ### Flat Button
 
@@ -148,7 +145,6 @@ Analogically, we can switch to `flat` variant.
 
 }
 ```
-
 
 ### Floating Action Button
 
@@ -173,7 +169,6 @@ We can create a floating action button by setting the [`Variant`](https://www.in
 
 }
 ```
-
 
 ## Button Sizing
 
@@ -256,7 +251,6 @@ The result of implementing the above code should look like the following:
 }
 ```
 
-
 ### Download
 
 Setting the [`Download`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonBase.html#IgniteUI_Blazor_Controls_IgbButtonBase_Download) property will prompt the user to save the linked URL instead of navigating to it.
@@ -281,7 +275,6 @@ Setting the [`Download`](https://www.infragistics.com/blazor/docs/api/api/Ignite
 
 }
 ```
-
 
 ## Styling
 
@@ -325,7 +318,6 @@ igc-button::part(base) {
 
 }
 ```
-
 
 ## API References
 

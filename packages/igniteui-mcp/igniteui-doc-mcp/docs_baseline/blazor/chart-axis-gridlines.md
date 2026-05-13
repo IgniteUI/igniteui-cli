@@ -210,7 +210,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Axis Gridlines Properties
@@ -428,7 +427,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 The axes of the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) also have the ability to place a dash array on the major and minor gridlines by utilizing the [`MajorStrokeDashArray`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAxis.html#IgniteUI_Blazor_Controls_IgbAxis_MajorStrokeDashArray) and [`MinorStrokeDashArray`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAxis.html#IgniteUI_Blazor_Controls_IgbAxis_MinorStrokeDashArray) properties, respectively. The actual axis line can be dashed as well by setting the [`StrokeDashArray`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAxis.html#IgniteUI_Blazor_Controls_IgbAxis_StrokeDashArray) property of the corresponding axis. These properties take an array of numbers that will describe the length of the dashes for the corresponding grid lines.
 
 The following example demonstrates a [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) with the above dash array properties set:
@@ -594,7 +592,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Axis Tickmarks Example
@@ -726,7 +723,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

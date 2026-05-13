@@ -91,7 +91,6 @@ export class CategoryChartSharedData {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Chart with High-Volume
@@ -167,7 +166,6 @@ export class CategoryChartSharedData {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

@@ -44,7 +44,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BadgeOutlined/>);
 ```
 
-
 <div class="divider"></div>
 
 ## Usage
@@ -115,7 +114,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BadgeVariants/>);
 ```
 
-
 ### Shape
 
 The badge component supports `rounded`(default) and `square` shapes. These values can be assigned to the [`shape`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbadge.html#shape) attribute.
@@ -155,7 +153,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BadgeShape/>);
 ```
 
-
 ### Dot
 
 The Ignite UI for React badge component can also render as a minimal dot indicator for notifications by setting its `dot` attribute. Dot badges do not support content, but they can be outlined and can use any of the available dot types (e.g., primary, success, info, etc.).
@@ -163,7 +160,6 @@ The Ignite UI for React badge component can also render as a minimal dot indicat
 ```tsx
 <IgrBadge dot={true} ></IgrBadge>
 ```
-
 
 
 
@@ -213,7 +209,6 @@ export default class BadgeStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BadgeStyling/>);
 ```
-
 
 <div class="divider--half"></div>
 

@@ -209,7 +209,6 @@ public class InvoicesWorldData
 }
 ```
 
-
 ## Initial Grouping State
 
 It is possible to define initial grouping of the grid by assigning an array of expressions to the [`GroupingExpressions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GroupingExpressions) property of the grid.
@@ -503,7 +502,6 @@ public class InvoicesWorldData
 }
 ```
 
-
 ## Group By With Summaries
 
 Integration between Group By and Summaries is described in the [Summaries](summaries.md#summaries-with-group-by) topic.
@@ -764,7 +762,6 @@ public class InvoicesData
     }
 }
 ```
-
 
 ## Known Limitations
 

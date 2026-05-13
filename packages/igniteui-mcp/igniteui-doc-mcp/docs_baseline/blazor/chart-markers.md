@@ -146,7 +146,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Chart Marker Templates
@@ -195,7 +194,6 @@ In addition to marker properties, you can implement your own marker by setting a
 
 }
 ```
-
 
 <div class="divider--half"></div>
 

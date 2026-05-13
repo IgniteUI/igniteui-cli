@@ -22,7 +22,6 @@ The Ignite UI for Web Components Advanced Filtering in Web Components Hierarchic
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Interaction
 
 In order to open the advanced filtering dialog, the **Advanced Filtering** button in the grid toolbar should be clicked. If no advanced filter is applied, you should start with creating a group of filtering conditions linked with **AND** or **OR**. After that, you can add filtering conditions or sub-groups.
@@ -127,7 +126,6 @@ Then set the related CSS properties to this class:
     --ig-query-builder-subquery-border-radius: 4px;
 }
 ```
-
 
 ## API References
 

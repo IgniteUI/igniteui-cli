@@ -174,7 +174,6 @@ public class FoodsData
 }
 ```
 
-
 ## Usage
 
 To turn on the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) component's Excel-style filtering, two inputs should be set. The [`AllowFiltering`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_AllowFiltering) should be set to **true** and the [`FilterMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_FilterMode) should be set to `ExcelStyleFilter` value.
@@ -345,7 +344,6 @@ public class FoodsData
     }
 }
 ```
-
 
 ## Templates
 
@@ -519,7 +517,6 @@ public class FoodsData
 }
 ```
 
-
 <!-- ComponentStart: TreeGrid -->
 
 ## Styling
@@ -651,7 +648,6 @@ public class FoodsData
     }
 }
 ```
-
 
 ## API References
 

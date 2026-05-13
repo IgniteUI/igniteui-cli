@@ -81,7 +81,6 @@ The following example represents a [`IgbNavbar`](https://www.infragistics.com/bl
 }
 ```
 
-
 ## Usage
 
 Before using the [`IgbNavbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavbar.html), you need to register it as follows:
@@ -235,7 +234,6 @@ If all went well, you should see the following in your browser:
     }
 }
 ```
-
 
 <div class="divider"></div>
 

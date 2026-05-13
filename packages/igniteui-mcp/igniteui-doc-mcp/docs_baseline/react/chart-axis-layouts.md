@@ -178,7 +178,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <!-- ## Axis Orientation Example
 
 TODO add info/example of 4 charts with all possible combinations of XAxisInverted and YAxisInverted
@@ -341,7 +340,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartAxisSharing/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ### Axis Crossing Example
@@ -496,7 +494,6 @@ export default class DataChartAxisSharing extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartAxisSharing/>);
 ```
-
 
 <div class="divider--half"></div>
 

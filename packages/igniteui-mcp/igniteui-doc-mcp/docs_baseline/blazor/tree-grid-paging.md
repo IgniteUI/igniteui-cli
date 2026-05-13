@@ -139,7 +139,6 @@ public class OrdersTreeData
 }
 ```
 
-
 ```css
 .gridSize {
     --ig-size: var(--ig-size-small);
@@ -342,7 +341,6 @@ public class OrdersTreeData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

@@ -57,7 +57,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownOverview/>);
 ```
 
-
 ## How to use the Dropdown List with Ignite UI for React
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -146,7 +145,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownTarget/>);
 ```
 
-
 ### Position
 
 The preferred placement of the React Dropdown can be set using the [`placement`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#placement) property. The default placement of the Dropdown is `bottom-start`. The [`flip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#flip) property determines whether the placement should be flipped if there is not enough space to display the Dropdown at the specified placement. The distance from the React Dropdown list to its target can be specified using the [`distance`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#distance) property.
@@ -226,7 +224,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownPosition/>);
 ```
 
-
 ### Selection
 
 The [`IgrDropdown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html) emits the `Change` event when the user selects an item. The [`select`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#select) method of the Dropdown allows you to select an item by its index or value.
@@ -299,7 +296,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownItem/>);
 ```
 
-
 ### Header
 
 You could use the [`IgrDropdownHeader`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdownheader.html) to provide a header for a group of items.
@@ -368,7 +364,6 @@ export default class DropDownHeader extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownHeader/>);
 ```
-
 
 ### Group
 
@@ -461,7 +456,6 @@ export default class DropDownGroup extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownGroup/>);
 ```
-
 
 ### Scroll Strategy
 
@@ -590,7 +584,6 @@ export default class DropDownStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownStyling/>);
 ```
-
 
 ## API Reference
 

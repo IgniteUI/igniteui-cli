@@ -51,7 +51,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RadioGroup/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ### Usage
@@ -158,7 +157,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RadioLabel/>);
 ```
 
-
 ### Checked
 
 You can use the `checked` attribute to toggle on the radio.
@@ -210,7 +208,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RadioGroup/>);
 ```
 
-
 ### Invalid
 
 You can use the `invalid` attribute to mark the radio as invalid.
@@ -251,7 +248,6 @@ export default class RadioInvalid extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RadioInvalid/>);
 ```
-
 
 ### Disabled
 
@@ -304,7 +300,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RadioDisabled/>);
 ```
 
-
 ### Group Alignment
 
 The [`IgrRadioGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html) allows you to easily change the placement directionality of the radio buttons it contains using the `alignment` attribute. Allowed values are `vertical`(default) and `horizontal`.
@@ -355,7 +350,6 @@ export default class RadioAlignment extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RadioAlignment/>);
 ```
-
 
 ### Forms
 
@@ -438,7 +432,6 @@ export default class RadioStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RadioStyling/>);
 ```
-
 
 <div class="divider--half"></div>
 

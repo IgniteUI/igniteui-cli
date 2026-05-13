@@ -52,7 +52,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<TooltipOverview />);
 ```
 
-
 ### Getting Started
 
 To start using the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html), first, you need to install the Ignite UI for React by running the following command:
@@ -223,7 +222,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<TooltipRich />);
 ```
 
-
 ### Show/Hide delay settings
 
 If you want to control the delay before showing and hiding the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html), you can use the [`showDelay`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#showDelay) and [`hideDelay`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#hideDelay) properties. Both properties accept a number value representing time in milliseconds.
@@ -337,7 +335,6 @@ export default class TooltipPlacement extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<TooltipPlacement />);
 ```
-
 
 ### Triggers
 
@@ -515,7 +512,6 @@ export default class TooltipTriggers extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<TooltipTriggers />);
 ```
-
 
 ### Advanced Example
 
@@ -1297,7 +1293,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<TooltipAdvanced />);
 ```
 
-
 ### Additional Properties
 
 Apart from the properties we've already covered, the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) component offers a variety of additional properties that allow you to further configure its behavior, position, and appearance.
@@ -1396,7 +1391,6 @@ export default class TooltipStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<TooltipStyling />);
 ```
-
 
 <div class="divider--half"></div>
 

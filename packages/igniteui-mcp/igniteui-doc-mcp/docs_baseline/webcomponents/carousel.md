@@ -50,7 +50,6 @@ igc-carousel-slide::part(base) {
 }
 ```
 
-
 ## Usage
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -246,7 +245,6 @@ igc-carousel-slide div * {
 }
 ```
 
-
 ## Animations
 
 Animated slide transitions provide the end-users a nice experience when interacting with the carousel.
@@ -317,7 +315,6 @@ igc-card-header {
     padding: 8px 16px;
 }
 ```
-
 
 ## Navigation
 
@@ -435,7 +432,6 @@ igc-carousel::part(indicators) {
     opacity: 0.5;
 }
 ```
-
 
 ## Accessibility
 

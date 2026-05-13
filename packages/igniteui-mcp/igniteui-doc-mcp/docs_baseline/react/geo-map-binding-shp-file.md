@@ -135,7 +135,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapBindingShapefilePolylines/>);
 ```
 
-
 <div class="divider--half"></div>
 
 The following table explains properties of the [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) class for loading shape files.

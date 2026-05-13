@@ -185,7 +185,6 @@ public class InvoicesData
 }
 ```
 
-
 <!-- ComponentStart: Grid -->
 
 ## Export Grouped Data
@@ -411,7 +410,6 @@ public class CustomersData
     }
 }
 ```
-
 
 ## Export Grid with Frozen Column Headers
 

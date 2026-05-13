@@ -172,7 +172,6 @@ public class NwindData
 }
 ```
 
-
 ## Blazor Grid Selection Options
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
@@ -586,7 +585,6 @@ public class NwindData
     }
 }
 ```
-
 
 <!-- ComponentEnd: Grid -->
 

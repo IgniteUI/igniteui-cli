@@ -199,7 +199,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <!-- ComponentStart: Grid -->
 
 ## Export Grouped Data
@@ -433,7 +432,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## Export Grid with Frozen Column Headers
 

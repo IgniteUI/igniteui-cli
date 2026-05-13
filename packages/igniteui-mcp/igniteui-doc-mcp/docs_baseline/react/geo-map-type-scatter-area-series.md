@@ -555,7 +555,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapTypeScatterAreaSeries/>);
 ```
 
-
 <div class="divider--half"></div>
 
 The [`IgrGeographicScatterAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicscatterareaseries.html) works a lot like the [`IgrGeographicContourLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographiccontourlineseries.html) except that it represents data as interpolated and colored surface instead of contour lines connecting data points with the same values.

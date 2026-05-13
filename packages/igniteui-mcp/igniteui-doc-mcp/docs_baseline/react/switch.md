@@ -38,7 +38,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SwitchOverview/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -126,7 +125,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SwitchLabel/>);
 ```
 
-
 ### Checked
 
 You can use the `checked` attribute to toggle on the switch.
@@ -159,7 +157,6 @@ export default function SwitchOutlined() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SwitchOutlined/>);
 ```
-
 
 ### Required
 
@@ -205,7 +202,6 @@ export default function SwitchDisabled() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SwitchDisabled/>);
 ```
-
 
 ### Forms
 
@@ -268,7 +264,6 @@ export default function SwitchStyling() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SwitchStyling/>);
 ```
-
 
 <div class="divider--half"></div>
 

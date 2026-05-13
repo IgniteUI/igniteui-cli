@@ -25,7 +25,6 @@ The Ignite UI for Web Components Circular Progress Indicator component provides 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -82,7 +81,6 @@ The following sample demonstrates the above configuration:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Animation Duration
@@ -116,7 +114,6 @@ Customizing the progress bar in order to use a color gradient instead of a solid
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 > [!Note]
 > For each [`IgcCircularGradientComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccirculargradientcomponent.html) defined as gradient slot of Ignite UI for Web Components [`IgcCircularProgressComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccircularprogresscomponent.html) a [SVG stop](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop) element would be created. The values passed as `color`, `offset` and `opacity` would be set as stop-color, offset and stop-opacity of the SVG element without further validations.
@@ -190,7 +187,6 @@ igc-circular-progress::part(track) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

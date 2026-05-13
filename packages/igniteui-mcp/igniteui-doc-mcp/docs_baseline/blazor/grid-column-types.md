@@ -438,7 +438,6 @@ The Blazor Grid provides a default handling of **number**, **string**, **date**,
     //end data
 ```
 
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 ## Blazor Grid Default Template

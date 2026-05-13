@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Hierarchical Grid Exporting
 
-The Ignite UI for Web Components Hierarchical Grid provides data export functionality through the Grid Toolbar Exporter component. You can export the displayed data to Excel, CSV, or PDF formats. Excel exports use the MS Excel table format, which supports features like filtering and sorting. To enable exporting, place the [`IgcGridToolbarExporterComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarexportercomponent.html) inside the grid's toolbar. By default, all export formats are enabled.
+The Ignite UI for Web Components Hierarchical Grid provides data export functionality through the Grid Toolbar Exporter component. You can export the displayed data to Excel, CSV, or PDF formats. Excel exports use the MS Excel table format, which supports features like filtering and sorting. To enable exporting, place the [`IgcGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarexporter.html) inside the grid's toolbar. By default, all export formats are enabled.
 
 ## Web Components Exporting Example
 
@@ -21,7 +21,6 @@ The Ignite UI for Web Components Hierarchical Grid provides data export function
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Export Multi Column Headers Grid
 
@@ -31,7 +30,7 @@ You can export [`IgcHierarchicalGridComponent`](https://www.infragistics.com/pro
 > The exported [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) will not be formatted as a table, since Excel tables do not support multiple column headers.
 
 > [!Note]
-> [`IgcGridToolbarExporterComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarexportercomponent.html) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
+> [`IgcGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarexporter.html) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
 >
 > - `export-excel`, `export-csv`, `export-pdf`
 
@@ -39,7 +38,6 @@ You can export [`IgcHierarchicalGridComponent`](https://www.infragistics.com/pro
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Export Grid with Frozen Column Headers
 

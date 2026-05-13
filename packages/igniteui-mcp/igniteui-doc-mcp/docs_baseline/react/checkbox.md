@@ -46,7 +46,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CheckboxOverview/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -143,7 +142,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CheckboxLabel/>);
 ```
 
-
 ### Checked
 
 You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
@@ -185,7 +183,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CheckboxChecked/>);
 ```
 
-
 ### Indeterminate
 
 You can use the [`indeterminate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#indeterminate) property of the component to set the checkbox's value to neither **true** nor **false**.
@@ -226,7 +223,6 @@ export default class CheckboxIndeterminate extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CheckboxIndeterminate/>);
 ```
-
 
 ### Required
 
@@ -284,7 +280,6 @@ export default class CheckboxDisabled extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CheckboxDisabled/>);
 ```
-
 
 ### Forms
 
@@ -357,7 +352,6 @@ export default class CheckboxStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CheckboxStyling/>);
 ```
-
 
 ## API References
 

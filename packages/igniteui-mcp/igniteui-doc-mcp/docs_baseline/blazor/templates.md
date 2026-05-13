@@ -57,7 +57,6 @@ The Ignite UI for Blazor ComboBox component allows defining custom templates for
 }
 ```
 
-
 ## Template Types
 
 ### Item Template

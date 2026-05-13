@@ -172,7 +172,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SpreadsheetHyperlinks/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Hyperlinks Overview

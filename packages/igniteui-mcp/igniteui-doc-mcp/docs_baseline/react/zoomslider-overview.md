@@ -763,7 +763,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ZoomSliderOverview/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage

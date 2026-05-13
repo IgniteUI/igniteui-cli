@@ -21,7 +21,6 @@ The Ignite UI for Blazor Rating component allows users to view and provide feedb
 @code { }
 ```
 
-
 Before using the [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html), you need to register it as follows:
 
 ```razor
@@ -103,7 +102,6 @@ The [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blaz
 }
 ```
 
-
 > The number of rating symbols between the opening and closing brackets of the rating component determines the max value.
 
 ## Single Selection
@@ -150,7 +148,6 @@ The Ignite UI for Blazor Rating component has a single selection mode that allow
 
 @code { }
 ```
-
 
 > Keep in mind that the `step` attribute doesn't work with single selection mode.
 
@@ -209,7 +206,6 @@ The Ignite UI for Blazor Rating component allows users to use different icons/el
     }
 }
 ```
-
 
 ## Configuration
 
@@ -310,7 +306,6 @@ igc-rating::part(empty) {
 
 @code { }
 ```
-
 
 ## API Reference
 

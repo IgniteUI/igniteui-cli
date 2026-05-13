@@ -94,7 +94,6 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Functionality
 
 Copy behavior is working with the default interaction defined by the browser and operating system. Thus for the copy and paste behaviors, these are:
@@ -121,17 +120,17 @@ Copy behavior is working with the default interaction defined by the browser and
 
 ## API Usage
 
-We expose [`IgcClipboardOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcclipboardoptions.html) property, which handles the following options:
+We expose [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#clipboardOptions) property, which handles the following options:
 
-- [`enabled`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcclipboardoptions.html#enabled) Enables/disables copying of selected cells.
-- [`copyHeaders`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcclipboardoptions.html#copyHeaders) Include the associated headers when copying.
-- [`copyFormatters`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcclipboardoptions.html#copyFormatters) Apply any existing column formatters to the copied data.
-- [`separator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcclipboardoptions.html#separator) The string separator to use the for formatting the data in the clipboard. Default is `/t`
+- `Enabled` Enables/disables copying of selected cells.
+- `CopyHeaders` Include the associated headers when copying.
+- `CopyFormatters` Apply any existing column formatters to the copied data.
+- `Separator` The string separator to use the for formatting the data in the clipboard. Default is `/t`
 
 > [!Note]
 > Excel can automatically detect text that is separated by tabs (tab-delimited `/t`) and properly paste the data into separate columns. When the paste format doesn't work, and everything you paste appears in a single column, then Excel's delimiter is set to another character, or your text is using spaces instead of tabs.
 
-- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`IgcClipboardOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcclipboardoptions.html).
+- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#clipboardOptions).
 
 ## Additional Resources
 

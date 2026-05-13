@@ -52,7 +52,6 @@ igc-dockmanager > div {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Focus Panes Programmatically
 
 The `focusPane` method allows developers to dynamically and programmatically focus a specific pane within the layout by providing the `contentId` of the desired pane.
@@ -88,7 +87,6 @@ igc-dockmanager > div {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Auto-hide Pane Headers
 
 With the `showPaneHeaders` property of the DockManager, developers now have the flexibility to control the visibility of pane headers within the `layout`. By default, `showPaneHeaders` is set to `always` ensuring that pane headers are always visible. When set to `onHoverOnly`, all pane headers will be hidden until you hover your mouse over the top edge of a content pane. The corresponding pane header will appear and it will smoothly hide once your mouse moves away. Take a look at the example below:
@@ -107,7 +105,6 @@ igc-dockmanager > div {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Control Inner Docking
 
@@ -145,7 +142,6 @@ igc-dockmanager > div {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Control Pane Dragging
 
 With the `containedInBoundaries` property, developers can control whether the sides of floating panes are always contained within the DockManager. When set to **true**, pane dragging will stop once any of the sides attempt to move beyond the DockManager boundaries.
@@ -166,7 +162,6 @@ igc-dockmanager > div {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Highlight Resizing Panes
 
@@ -260,7 +255,6 @@ igc-dockmanager > div {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

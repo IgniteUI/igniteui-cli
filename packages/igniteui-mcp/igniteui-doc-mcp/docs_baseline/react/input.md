@@ -48,7 +48,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<InputOverview/>);
 ```
 
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -111,7 +110,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<InputPrefixSuffix/>);
 ```
 
-
 ## Helper Text
 
 The `helper-text` slot provides a hint placed below the Input. Let's add some helper text to our phone Input:
@@ -155,7 +153,6 @@ export default class InputHelperText extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<InputHelperText/>);
 ```
-
 
 ## Input Sizing
 
@@ -235,7 +232,6 @@ export default class InputSize extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<InputSize />);
 ```
-
 
 In the sample above we have demonstrated the use of the following attributes:
 
@@ -331,7 +327,6 @@ export default class InputStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<InputStyling/>);
 ```
-
 
 <div class="divider"></div>
 

@@ -78,7 +78,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DialogOverview/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ### Usage
@@ -209,7 +208,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DialogClosingVariations/>);
 ```
 
-
 ### Form
 
 Form elements can close a Dialog if they have the attribute `method="dialog"`. Submitting the form will trigger the closing of the dialog.
@@ -294,7 +292,6 @@ export default class DialogForm extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DialogForm/>);
 ```
-
 
 ## Styling
 
@@ -394,7 +391,6 @@ export default class DialogStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DialogStyling/>);
 ```
-
 
 <div class="divider--half"></div>
 

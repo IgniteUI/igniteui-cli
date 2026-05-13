@@ -55,7 +55,6 @@ In Blazor map component, you can use the [`IgbGeographicScatterAreaSeries`](http
 }
 ```
 
-
 <div class="divider--half"></div>
 
 The [`IgbGeographicScatterAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicScatterAreaSeries.html) works a lot like the [`IgbGeographicContourLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicContourLineSeries.html) except that it represents data as interpolated and colored surface instead of contour lines connecting data points with the same values.

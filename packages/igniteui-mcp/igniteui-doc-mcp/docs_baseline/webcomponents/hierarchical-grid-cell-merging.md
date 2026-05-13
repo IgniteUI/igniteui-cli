@@ -24,7 +24,6 @@ The Ignite UI for Web Components Hierarchical Grid provides a Cell Merging featu
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 ## Enabling and Using Cell Merging
@@ -132,7 +131,6 @@ Once defined, assign the strategy to the grid through the `mergeStrategy` proper
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <!-- ComponentEnd: HierarchicalGrid -->
 

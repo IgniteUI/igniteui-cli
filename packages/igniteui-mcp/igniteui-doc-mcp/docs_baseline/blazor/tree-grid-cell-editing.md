@@ -132,7 +132,6 @@ public class EmployeesNestedTreeData
 }
 ```
 
-
 ## Cell Editing
 
 ### Editing through UI
@@ -353,7 +352,6 @@ public class RoleplayTreeGridData
 }
 ```
 
-
 ## CRUD operations
 
 > [!Note]
@@ -445,7 +443,7 @@ igRegisterScript("HandleCellEdit", (ev) => {
 }, false);
 ```
 
-If the value entered in a cell under the **Age** column is below 18 or the value in the **HireDate** column is in the future, the editing will be cancelled and the user will be alerted to the cancellation.
+<!-- Blazor -->
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -546,7 +544,6 @@ public class EmployeesNestedTreeData
     }
 }
 ```
-
 
 ## Styling
 
@@ -678,13 +675,9 @@ public class EmployeesNestedTreeData
 }
 ```
 
-
 ## API References
 
 - [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
-
-<!---->
-
 - [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html)
 
 ## Additional Resources

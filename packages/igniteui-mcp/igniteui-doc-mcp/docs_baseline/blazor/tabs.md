@@ -60,7 +60,6 @@ The Blazor Tabs example below displays three different tabs aligned in a single 
 }
 ```
 
-
 ## How to use Tabs with Ignite UI for Blazor
 
 Before using the [`IgbTabs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html), you need to import it as follows:
@@ -182,7 +181,6 @@ If the space is not enough to fit all tabs, scroll buttons are displayed.
 }
 ```
 
-
 ### Scrolling
 
 Scroll buttons are shown when the available space is not enough to render all Blazor tabs. The start scroll button is disabled if the first tab is in view. Respectively, when last tab is in view the end scroll button is disabled. By pressing one of the scroll buttons the tabs are scrolled so the tab in that direction is fully visible, or if it is already visible the previous/next tab in that direction is displayed.
@@ -207,7 +205,6 @@ Scroll buttons are shown when the available space is not enough to render all Bl
 
 }
 ```
-
 
 ### Keyboard Navigation
 
@@ -275,7 +272,6 @@ Each tab has default slot to display information - icon, text or both and `prefi
 }
 ```
 
-
 ## Styling
 
 The [`IgbTabs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html) component exposes several CSS parts, giving you full control over its style:
@@ -295,9 +291,11 @@ The [`IgbTab`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.
 
 |Name|Description|
 |--|--|
-| `content` | The content wrapper. |
-| `prefix` | The prefix wrapper. |
-| `suffix` | The suffix wrapper. |
+| `content` | Tab header's label slot container. |
+| `prefix` | Tab header's label prefix. |
+| `suffix` | Tab header's label suffix. |
+| `tab-header` | The header of a single tab. |
+| `tab-body` | Holds the body content of a single tab, only the body of the selected tab is visible. |
 
 ```css
 igc-tab::part(tab-header),
@@ -378,7 +376,6 @@ igc-tab::part(tab-header)::before {
     }
 }
 ```
-
 
 ## API Reference
 

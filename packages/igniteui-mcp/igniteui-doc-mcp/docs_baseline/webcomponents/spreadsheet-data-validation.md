@@ -19,7 +19,6 @@ This topic explains how to configure and set the built-in data validation rules.
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies

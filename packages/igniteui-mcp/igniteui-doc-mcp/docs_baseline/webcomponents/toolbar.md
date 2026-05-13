@@ -66,7 +66,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 }
 ```
 
-
 ## Dependencies
 
 Install the Ignite UI for Web Components layouts, inputs, charts and core packages:
@@ -169,7 +168,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
     align-items: flex-end;
 }
 ```
-
 
 ### Web Components Data Chart Integration
 
@@ -335,7 +333,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Color Editor
 
 You can add a custom color editor tool to the the Web Components Toolbar, which will also work with the Command event to perform custom styling to your application.
@@ -403,7 +400,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
     align-items: flex-end;
 }
 ```
-
 
 <!-- ## Styling/Theming
 

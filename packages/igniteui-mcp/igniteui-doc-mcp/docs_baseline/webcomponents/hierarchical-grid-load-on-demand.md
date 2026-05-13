@@ -42,7 +42,6 @@ function buildUrl(dataState: any) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Remote Service Provider
 
 First we will prepare our service provider so we will be ready to get the data we would need for the hierarchical grid.
@@ -156,7 +155,7 @@ There is one thing missing in our template though, and that is the data for our 
 
 We will easily set the data of the root grid after getting its data from the service in our code later, since we can use the `id="hGrid"` reference.
 
-Setting the data for any child that has been expanded is a bit different. When a row is expanded for the first time, a new child [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) is rendered for it and we need to get the reference for the newly created grid to set its data. That is why each [`IgcRowIslandComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowislandcomponent.html) component provides the `GridCreated` event that is fired when a new child grid is created for that specific row island. We can use that to get the reference we need for the new grid, request its data from the service, and apply it.
+Setting the data for any child that has been expanded is a bit different. When a row is expanded for the first time, a new child [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) is rendered for it and we need to get the reference for the newly created grid to set its data. That is why each [`IgcRowIsland`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowisland.html) component provides the `GridCreated` event that is fired when a new child grid is created for that specific row island. We can use that to get the reference we need for the new grid, request its data from the service, and apply it.
 
 We can use one method for all row islands since we built our service so that it needs only information if it is the root level, the key of the row island, the primary key of the parent row, and its unique identifier. All this information can be accessed either directly from the event arguments, or from the row island responsible for triggering the event.
 
@@ -296,7 +295,7 @@ public gridCreated(event: CustomEvent<IgcGridCreatedEventArgs>, _parentKey: stri
 ## API References
 
 - [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)
-- [`IgcRowIslandComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowislandcomponent.html)
+- [`IgcRowIsland`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowisland.html)
 
 ## Additional Resources
 

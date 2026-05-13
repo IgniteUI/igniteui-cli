@@ -303,7 +303,6 @@ public class NwindModel
 }
 ```
 
-
 ## Remote Paging
 
 <!-- ComponentStart: Grid -->
@@ -1734,7 +1733,6 @@ namespace Infragistics.Samples
     }
 }
 ```
-
 
 <!-- ComponentEnd: Grid -->
 

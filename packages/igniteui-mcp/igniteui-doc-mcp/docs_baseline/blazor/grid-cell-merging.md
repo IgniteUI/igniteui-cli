@@ -132,7 +132,6 @@ public class InvoicesData
 }
 ```
 
-
 <!-- ComponentEnd: Grid -->
 
 ## Enabling and Using Cell Merging

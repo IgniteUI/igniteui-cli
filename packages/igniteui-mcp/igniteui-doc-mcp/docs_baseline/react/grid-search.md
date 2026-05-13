@@ -223,7 +223,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample />);
 ```
 
-
 ## React Search Usage
 
 ### Grid Setup

@@ -205,7 +205,6 @@ public class MultiColumnsExportData
 }
 ```
 
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 ## Enabling and Using Cell Merging

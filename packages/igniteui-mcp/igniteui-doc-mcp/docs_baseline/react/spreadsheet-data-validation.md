@@ -139,7 +139,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SpreadsheetDataValidation/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies

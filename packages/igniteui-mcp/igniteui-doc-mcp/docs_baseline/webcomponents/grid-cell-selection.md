@@ -30,7 +30,6 @@ The sample below demonstrates the three types of [`IgcGridComponent`](https://ww
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Selection Types
 
 ### Grid Multiple-Cell Selection
@@ -187,7 +186,6 @@ export class InvoicesData extends Array<InvoicesDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
@@ -392,7 +390,6 @@ export class CustomersData extends Array<CustomersDataItem> {
     --cell-selected-background: #0062a3;
 }
 ```
-
 
 ## API References
 

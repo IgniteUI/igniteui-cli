@@ -139,7 +139,6 @@ Navigation in the [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Geographic Coordinates

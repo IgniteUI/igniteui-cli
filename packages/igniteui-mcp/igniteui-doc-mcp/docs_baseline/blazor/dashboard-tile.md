@@ -991,7 +991,6 @@ Interacting with the chart type menu in the toolbar will allow for selecting a d
     //end data
 ```
 
-
 ## Dependencies
 
 Add the **IgniteUI.Blazor.Controls** namespace in the **\_Imports.razor** file:
@@ -1090,7 +1089,6 @@ public class DashboardGaugeDataSource
 }
 ```
 
-
 The visualization or properties of the visualization are also configurable using the [`IgbToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html) at the top of the control. This [`IgbToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html) has the default tools for the current visualization with the addition of four Dashboard Tile specific ones, highlighted below:
 
 <img src="../images/dashboard-tile-toolbar.png" alt="Dashboard Tile Toolbar"/>
@@ -1166,7 +1164,6 @@ public class EnergyGlobalDemand
 }
 ```
 
-
 This demo demonstrates dashboard tile integration with the Blazor Geographic Map. The toolbar options at the top right provides access to styling and changing the data visualization.
 
 ```razor
@@ -1234,7 +1231,6 @@ public class WorldCities
     }
 }
 ```
-
 
 ## API References
 

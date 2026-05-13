@@ -159,7 +159,6 @@ public class FootballPlayerStats
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Radial Column Chart
@@ -305,7 +304,6 @@ public class FootballPlayerStats
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -455,7 +453,6 @@ public class FootballPlayerStats
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Radial Pie Chart
@@ -602,7 +599,6 @@ public class FootballPlayerStats
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Radial Chart Styling
@@ -747,7 +743,6 @@ public class FootballPlayerStats
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

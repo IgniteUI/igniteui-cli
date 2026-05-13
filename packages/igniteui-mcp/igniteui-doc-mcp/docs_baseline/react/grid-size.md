@@ -308,7 +308,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Usage
 
 As you can see in the demo above, the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) provides three size options:  **small**, **medium** and **large**. The code snippet below shows how to set `--ig-size` either inline or part of a CSS class:
@@ -432,8 +431,6 @@ Please keep in mind the following:
 - `--ig-size` will **affect all of the rest elements in the Grid**, as it has been described above.
 
 We can now extend our sample and add [`rowHeight`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowHeight) property to the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html):
-
- 
 
 ```tsx
 <IgrGrid className="gridSize" rowHeight="80px" width="100%" height="550px" allowFiltering={true}></IgrGrid>

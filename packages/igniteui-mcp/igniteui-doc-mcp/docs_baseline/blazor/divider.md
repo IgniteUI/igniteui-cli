@@ -24,7 +24,6 @@ The Ignite UI for Blazor Divider allows the content author to easily create a ho
 </div>
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies
@@ -98,7 +97,6 @@ If the [`Vertical`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bl
 </div>
 ```
 
-
 ### Type
 
 The `Type` attribute determines whether to render a `solid` or a `dashed` divider line. The default value is `solid`.
@@ -117,7 +115,6 @@ The `Type` attribute determines whether to render a `solid` or a `dashed` divide
     <p>Second paragraph</p>
 </div>
 ```
-
 
 ### Inset Divider
 
@@ -191,7 +188,6 @@ The [`IgbDivider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bla
 </div>
 ```
 
-
 ### Using Divider Inside Select Component
 
 The following sample illustrates how the [`IgbDivider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDivider.html) can be integrated within the [`IgbSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelect.html) in order to distinguish two groups of items.
@@ -218,7 +214,6 @@ The following sample illustrates how the [`IgbDivider`](https://www.infragistics
     </IgbSelect>
 </div>
 ```
-
 
 ## CSS Variables
 

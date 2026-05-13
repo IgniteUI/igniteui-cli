@@ -229,7 +229,6 @@ public class EmployeesFlatDetails
 }
 ```
 
-
 ## Overview
 
 **Column moving** feature is enabled on a per-grid level, meaning that the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) could have either movable or immovable columns. This is done via the [`Moving`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Moving) input of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html).
@@ -503,7 +502,6 @@ public class EmployeesFlatDetails
     }
 }
 ```
-
 
 ## API References
 

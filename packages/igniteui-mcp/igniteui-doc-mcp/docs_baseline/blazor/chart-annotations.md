@@ -132,7 +132,6 @@ The following example demonstrates the annotation layers that are available on t
 }
 ```
 
-
 <div class="divider--half"></div>
 
 Like this sample? Get access to our complete Blazor toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-blazor/download">Download it for free.</a>
@@ -182,7 +181,6 @@ The following example shows how to configure the crosshair layer but targeting a
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Final Value Layer
@@ -225,7 +223,6 @@ The following example demonstrates how to style the final value layer annotation
 
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -362,7 +359,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ### Timeline Styling
@@ -469,7 +465,6 @@ The following example demonstrates how to style the data chart as a timeline wit
 
 }
 ```
-
 
 ## API References
 

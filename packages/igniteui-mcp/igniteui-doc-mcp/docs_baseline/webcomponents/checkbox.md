@@ -18,7 +18,6 @@ The Web Components Checkbox is a component that lets you add checkboxes to your 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -88,10 +87,9 @@ The checkbox can also be labelled by elements external to the checkbox. In this 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Checked
 
-You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
+You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
 
 ```html
 <igc-checkbox checked></igc-checkbox>
@@ -101,7 +99,6 @@ You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-web-
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Indeterminate
 
@@ -116,10 +113,9 @@ You can use the [`indeterminate`](https://www.infragistics.com/products/ignite-u
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Required
 
-You can use the [`required`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#required) property to mark the checkbox as required.
+You can use the [`required`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#required) property to mark the checkbox as required.
 
 ```html
 <igc-checkbox required></igc-checkbox>
@@ -127,7 +123,7 @@ You can use the [`required`](https://www.infragistics.com/products/ignite-ui-web
 
 ### Invalid
 
-You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#invalid) attribute to mark the checkbox as invalid.
+You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#invalid) attribute to mark the checkbox as invalid.
 
 ```html
 <igc-checkbox invalid></igc-checkbox>
@@ -135,7 +131,7 @@ You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-web-
 
 ### Disabled
 
-You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#disabled) attribute to disable the checkbox.
+You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#disabled) attribute to disable the checkbox.
 
 ```html
 <igc-checkbox disabled></igc-checkbox>
@@ -146,10 +142,9 @@ You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-web
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Forms
 
-You can use the [`name`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#name) and [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#value) attributes when using the checkbox with `Form`.
+You can use the [`name`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#name) and [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#value) attributes when using the checkbox with `Form`.
 
 ```html
 <igc-checkbox name="wifi" value="enabled"></igc-checkbox>
@@ -192,12 +187,11 @@ igc-checkbox::part(control checked)::after {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## API References
 
 - [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html)
-- [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#checked)
-- [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#disabled)
+- [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#checked)
+- [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#disabled)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

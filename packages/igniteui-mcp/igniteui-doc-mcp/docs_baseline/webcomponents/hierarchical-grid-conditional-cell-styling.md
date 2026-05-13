@@ -44,13 +44,13 @@ The [`rowClasses`](https://www.infragistics.com/products/ignite-ui-web-component
 
 ```ts
 public rowClasses = {
-    activeRow: (row: IgcRowType) => row.index === 0
+    activeRow: (row: IgcRowType) => row.index % 2 === 0
 }
 ```
 
 ```css
 .activeRow {
-    border: 2px solid #fc81b8;
+    border-top: 2px solid #fc81b8;
     border-left: 3px solid #e41c77;
 }
 ```
@@ -66,7 +66,6 @@ public rowClasses = {
         border-left: 3px solid #e41c77;
     }
 ```
-
 
 ### Using Row Styles
 
@@ -118,7 +117,6 @@ constructor() {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Hierarchical Grid Conditional Cell Styling
 
@@ -185,7 +183,6 @@ public grammyNominationsCellClassesHandler = {
 }
 ```
 
-
 - By using the [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) input [`cellStyles`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#cellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 
 > The callback signature for both `cellStyles` and `cellClasses` is now changed to:
@@ -232,7 +229,6 @@ constructor() {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Known issues and limitations
 

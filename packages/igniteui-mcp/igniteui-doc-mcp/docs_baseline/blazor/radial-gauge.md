@@ -493,7 +493,6 @@ The following sample demonstrates how setting multiple properties on the same [`
 }
 ```
 
-
 <div class="divider--half"></div>
 
 Please refer to these topics on adding the IgniteUI.Blazor package.
@@ -608,7 +607,6 @@ The backing can be circular or fitted. A circular shape creates a 360 degree cir
 }
 ```
 
-
 ## Scale
 
 The scale is visual element that highlights full range of values in the gauge which can be created by supplying [`MinimumValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_MinimumValue) and [`MaximumValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_MaximumValue) values. Together with backing, it defines overall shape of gauge. The [`ScaleStartAngle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_ScaleStartAngle) and [`ScaleEndAngle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_ScaleEndAngle) properties define bounds of arc of the scale. While, the [`ScaleSweepDirection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_ScaleSweepDirection) property specifies whether the scale sweeps in clockwise or counter-clockwise direction. You can customize appearance of the scale by setting [`ScaleBrush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_ScaleBrush), [`ScaleStartExtent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_ScaleStartExtent), and [`ScaleEndExtent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_ScaleEndExtent) properties.
@@ -659,7 +657,6 @@ The scale is visual element that highlights full range of values in the gauge wh
 }
 ```
 
-
 ## Labels and Titles
 
 The radial gauge labels are visual elements displaying numeric values at a specified interval between values of the [`MinimumValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_MinimumValue) and [`MaximumValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_MaximumValue) properties. You can position labels by setting the [`LabelExtent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_LabelExtent) property to a fraction, where 0 represents center of gauge and 1 represents outer extent of the gauge backing. Also, you can customize labels setting various styling properties such as [`FontBrush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_FontBrush) and [`Font`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_Font).
@@ -705,7 +702,6 @@ Each of these labels for the needle have various styling attributes you can appl
 
 }
 ```
-
 
 ## Title & Subtitle
 
@@ -774,7 +770,6 @@ The radial gauge's labels and titles can change it's scaling. To enable this, fi
 }
 ```
 
-
 ## Tick Marks
 
 Tick marks are thin lines radiating from the center of the radial gauge. There are two types of tick marks: major and minor. Major tick marks are displayed at the [`Interval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_Interval) between the [`MinimumValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_MinimumValue) and [`MaximumValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_MaximumValue) properties. Use the [`MinorTickCount`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_MinorTickCount) property to specify the number of minor tick marks displayed between each major tick mark. You can control the length of tick marks by setting a fraction (between 0 and 1) to [`TickStartExtent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_TickStartExtent), [`TickEndExtent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_TickEndExtent), [`MinorTickStartExtent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_MinorTickStartExtent), and [`MinorTickEndExtent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_MinorTickEndExtent) properties.
@@ -827,7 +822,6 @@ Tick marks are thin lines radiating from the center of the radial gauge. There a
 
 }
 ```
-
 
 ## Ranges
 
@@ -889,7 +883,6 @@ A range highlights a set of continuous values bound by a specified [`MinimumValu
 
 }
 ```
-
 
 ## Needle
 
@@ -955,7 +948,6 @@ You can enable an interactive mode of the gauge (using [`IsNeedleDraggingEnabled
 }
 ```
 
-
 ## Highlight Needle
 
 The radial gauge can be modified to show a second needle. This will make the main needle's [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_Value) appear with a lower opacity. To enable this first set [`HighlightValueDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_HighlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html#IgniteUI_Blazor_Controls_IgbRadialGauge_HighlightValue).
@@ -1003,7 +995,6 @@ The radial gauge can be modified to show a second needle. This will make the mai
 
 }
 ```
-
 
 ## Summary
 

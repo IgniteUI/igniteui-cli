@@ -48,7 +48,6 @@ This sample demonstrates how to create a Dialog component in Blazor.
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ### Usage
@@ -170,7 +169,6 @@ Form elements can close a Dialog if they have the attribute `method="dialog"`. S
 }
 ```
 
-
 ## Styling
 
 The [`IgbDialog`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html) component exposes several CSS parts to give you full control over its style:
@@ -240,7 +238,6 @@ igc-dialog::part(footer) {
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

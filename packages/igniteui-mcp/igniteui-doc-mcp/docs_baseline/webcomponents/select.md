@@ -18,7 +18,6 @@ The Ignite UI for Web Components Select component allows a single selection from
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -71,7 +70,6 @@ The [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite-ui-w
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Header
 
 You can use the [`IgcSelectHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectheadercomponent.html) to provide a header for a group of items.
@@ -80,7 +78,6 @@ You can use the [`IgcSelectHeaderComponent`](https://www.infragistics.com/produc
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ```html
 <igc-select>
@@ -99,7 +96,6 @@ Multiple [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ```html
 <igc-select>
@@ -227,7 +223,6 @@ igc-select::part(suffix) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API Reference
 

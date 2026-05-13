@@ -475,7 +475,6 @@ public class Worker
 //end data
 ```
 
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 ## Blazor Tree Grid Default Template

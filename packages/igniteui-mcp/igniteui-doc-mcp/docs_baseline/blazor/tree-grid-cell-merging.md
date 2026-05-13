@@ -125,7 +125,6 @@ public class EmployeesFlatDetails
 }
 ```
 
-
 <!-- ComponentEnd: TreeGrid -->
 
 ## Enabling and Using Cell Merging

@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Tree Grid Column Selection Overview
 
-The Web Components Tree Grid Column Selection feature in Ignite UI for Web Components offers a simplified and Excel-like way to select and highlight an entire column with a single click. It can be enabled through the `ColumnSelection` input. Thanks to the rich API, the feature allows for easy manipulation of the selection state, data extraction from the selected fractions, data analysis operations, and visualizations.
+The Web Components Tree Grid Column Selection feature in Ignite UI for Web Components offers a simplified and Excel-like way to select and highlight an entire column with a single click. It can be enabled through the [`columnSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#columnSelection) input. Thanks to the rich API, the feature allows for easy manipulation of the selection state, data extraction from the selected fractions, data analysis operations, and visualizations.
 
 ## Web Components Tree Grid Column Selection Example
 
@@ -60,10 +60,9 @@ export class FoodsData extends Array<FoodsDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Basic Usage
 
-The column selection feature can be enabled through the `ColumnSelection` input, which takes `GridSelectionMode` values.
+The column selection feature can be enabled through the [`columnSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#columnSelection) input, which takes `GridSelectionMode` values.
 
 ## Interactions
 
@@ -121,11 +120,10 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Keyboard Combinations
 
 > [!Note]
-> The keyboard combinations are available only when the grid `ColumnSelection` input is set to `multiple`.
+> The keyboard combinations are available only when the grid [`columnSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#columnSelection) input is set to `multiple`.
 
 There are two scenarios for keyboard navigation of the **Column Selection** feature:
 
@@ -219,7 +217,6 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 }
 ```
 
-
 ## API References
 
 The column selection UI has a few more APIs to explore, which are listed below.
@@ -230,12 +227,12 @@ The column selection UI has a few more APIs to explore, which are listed below.
 
 [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) properties:
 
-- `ColumnSelection`
-- `SelectedColumns`
-- `SelectColumns`
-- `DeselectColumns`
-- `SelectAllColumns`
-- `DeselectAllColumns`
+- [`columnSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#columnSelection)
+- [`selectedColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#selectedColumns)
+- [`selectColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#selectColumns)
+- [`deselectColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#deselectColumns)
+- [`selectAllColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#selectAllColumns)
+- [`deselectAllColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#deselectAllColumns)
 
 [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) properties:
 

@@ -129,7 +129,6 @@ public class TemperatureAnnotatedData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 # Blazor Chart Highlighting Modes & Behaviors
@@ -239,7 +238,6 @@ public class TemperatureAnnotatedData
 }
 ```
 
-
 The following example demonstrates the [`HighlightingBehavior`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_HighlightingBehavior) Blazor chart.
 
 ```razor
@@ -344,7 +342,6 @@ public class TemperatureAnnotatedData
 }
 ```
 
-
 # Blazor Chart Legend Highlighting
 
 All Blazor Charts support legend highlighting. [`LegendHighlightingMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_LegendHighlightingMode) can enabled so that when mouse is hovering over a legend marker item then the rendered series will highlight in the plot area. Legend highlighting is supported by the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html), [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html), and [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) controls and they have the same API for using the highlighting feature.
@@ -442,7 +439,6 @@ public class HighestGrossingMovies
     }
 }
 ```
-
 
 ## Highlight Layers
 
@@ -591,7 +587,6 @@ The following example demonstrates the different highlighting layers that are av
     }
 }
 ```
-
 
 ## Additional Resources
 

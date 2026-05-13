@@ -54,7 +54,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SimpleCircularProgressIndicator/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -129,7 +128,6 @@ export default class IndeterminateCircularProgress extends React.Component<any, 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<IndeterminateCircularProgress/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -241,7 +239,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DynamicCircularProgress/>);
 ```
 
-
 > [!Note]
 > For each [`IgrCircularGradient`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcirculargradient.html) defined as gradient slot of Ignite UI for React [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) a [SVG stop](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop) element would be created. The values passed as `color`, `offset` and `opacity` would be set as stop-color, offset and stop-opacity of the SVG element without further validations.
 
@@ -347,7 +344,6 @@ export default class StylingCircularProgressIndicator extends React.Component<an
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<StylingCircularProgressIndicator/>);
 ```
-
 
 ## API References
 

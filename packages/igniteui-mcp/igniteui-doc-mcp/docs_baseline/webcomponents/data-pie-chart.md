@@ -49,7 +49,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Data Pie Chart Recommendations
@@ -127,7 +126,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Pie Chart Others Category
@@ -192,7 +190,6 @@ export class DataPieData extends Array<DataPieDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Data Pie Chart Selection
@@ -251,7 +248,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Data Pie Chart Highlighting
@@ -306,7 +302,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 In addition to the mouse highlighting, the [`IgcDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatapiechartcomponent.html) exposes a highlight filter capability that can display a subset of your data. This is applied by specifying a `HighlightedDataSource` for the control and by setting the [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#highlightedValuesDisplayMode) property to `Overlay`. The `HighlightedDataSource` expects a subset of the data assigned to the `DataSource` property of the [`IgcDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatapiechartcomponent.html).
 
@@ -371,7 +366,6 @@ export class OnlineTrafficHighlightTotals extends Array<OnlineTrafficHighlightTo
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Data Pie Chart Animation
@@ -415,7 +409,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

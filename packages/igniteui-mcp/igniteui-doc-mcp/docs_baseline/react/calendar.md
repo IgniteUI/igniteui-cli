@@ -46,7 +46,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarOverview/>);
 ```
 
-
 ## How To Create a Calendar in React with Ignite UI
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -107,7 +106,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarMultipleSelection/>);
 ```
 
-
 ### Range Selection
 
 Following the same approach, we can switch [`selection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#selection) to range mode:
@@ -142,7 +140,6 @@ export default class CalendarRangeSelection extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarRangeSelection/>);
 ```
-
 
 ### Active View and Date
 
@@ -198,7 +195,6 @@ export default class CalendarHeader extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarHeader/>);
 ```
-
 
 ### Localization and Formatting
 
@@ -316,7 +312,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarFormatting/>);
 ```
 
-
 ### Disabled dates
 
 In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#disabledDates) property. The [`disabledDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#disabledDates) property is an array of [`DateRangeDescriptor`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.daterangedescriptor.html) objects. Each descriptor has a `Type` and optionally a [`dateRange`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.daterangedescriptor.html#dateRange) which is an array of `Date` objects.
@@ -403,7 +398,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarDisabledDates/>);
 ```
 
-
 ### Special dates
 
 The [`specialDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#specialDates) property is using almost the same configuration principles as the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#disabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
@@ -481,7 +475,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarSpecialDates/>);
 ```
 
-
 ### Week numbers
 
 You can use the [`showWeekNumbers`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#showWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
@@ -518,7 +511,6 @@ export default class CalendarWeekNumbers extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarWeekNumbers/>);
 ```
-
 
 ### Multiple Months
 
@@ -558,7 +550,6 @@ export default class CalendarMultipleMonths extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarMultipleMonths/>);
 ```
-
 
 ### Size
 
@@ -628,7 +619,6 @@ export default class CalendarSize extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarSize />);
 ```
-
 
 ### Events
 
@@ -823,7 +813,6 @@ export default class CalendarStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarStyling/>);
 ```
-
 
 ## API References
 

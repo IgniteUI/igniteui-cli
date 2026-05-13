@@ -127,7 +127,6 @@ export const xMark = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 5
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Internal Icons
 
 The following lists all internal icons. Alias is the name of the icon by which it can be referenced. Target Icon is the internal icon name and Target Collection is the collection in which the icon is registered internally.

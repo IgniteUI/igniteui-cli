@@ -20,7 +20,6 @@ With the Ignite UI for Web Components map component, you can plot geographic dat
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Data Example

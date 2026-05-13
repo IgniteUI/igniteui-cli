@@ -112,7 +112,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<ComboFeatures />);
 ```
 
-
 In our sample we are going to use the [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html) component, so we have to import them together with the combo:
 
 ```tsx

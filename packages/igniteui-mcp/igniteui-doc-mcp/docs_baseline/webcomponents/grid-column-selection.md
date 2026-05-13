@@ -65,7 +65,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Basic Usage
 
 The column selection feature can be enabled through the [`columnSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#columnSelection) input, which takes `GridSelectionMode` values.
@@ -122,7 +121,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Keyboard Combinations
 
@@ -217,7 +215,6 @@ export class CustomersData extends Array<CustomersDataItem> {
     --ig-grid-row-selected-hover-background: #0062A3;
 }
 ```
-
 
 ## API References
 

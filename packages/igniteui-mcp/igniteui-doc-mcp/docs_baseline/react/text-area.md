@@ -40,7 +40,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<TextAreaOverview/>);
 ```
 
-
 ## Dependencies
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -103,7 +102,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<TextAreaSlots/>);
 ```
 
-
 ## Text Area Resizing
 
 There are three different resize options of the [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html). When set to `none`, the text area does not resize and uses a scroll bar to show overflow text. When set to `vertical` (the default option), the text area lets the user resize it vertically. When set to `auto`, the text area shows all the user input at once. Overflow text wraps onto a new line and expands the text area automatically.
@@ -146,7 +144,6 @@ export default function TextAreaResize() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<TextAreaResize/>);
 ```
-
 
 ## Form Integration
 
@@ -217,7 +214,6 @@ export default function TextAreaFormIntegration() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<TextAreaFormIntegration />);
 ```
-
 
 ## Styling
 
@@ -301,7 +297,6 @@ export default function TextAreaStyling() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<TextAreaStyling/>);
 ```
-
 
 <div class="divider"></div>
 

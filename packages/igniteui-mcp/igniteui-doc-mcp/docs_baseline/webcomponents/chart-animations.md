@@ -24,7 +24,6 @@ The following example depicts a [Line Chart](../types/line-chart.md) with an ani
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Additional Resources

@@ -102,7 +102,6 @@ You can create this type of chart in the [`IgbDataChart`](https://www.infragisti
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Scatter Polyline Chart
@@ -191,7 +190,6 @@ You can create this type of chart in the [`IgbDataChart`](https://www.infragisti
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

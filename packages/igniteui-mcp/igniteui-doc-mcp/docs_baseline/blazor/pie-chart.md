@@ -104,7 +104,6 @@ public class EnergyGlobalDemand
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Pie Chart Recommendations
@@ -245,7 +244,6 @@ public class EnergyGlobalDemand
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Pie Chart Others Category
@@ -347,7 +345,6 @@ public class EnergyGlobalDemand
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -471,7 +468,6 @@ The pie chart supports explosion of individual pie slices as well as a `SliceCli
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Pie Chart Selection
@@ -562,7 +558,6 @@ For scenarios where you click on the Others slice, the pie chart will return an 
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -663,7 +658,6 @@ In the code below, the radiusFactor is increasing the chart by 0.25% of the size
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Pie Chart Styling
@@ -760,7 +754,6 @@ public class EnergyGlobalDemand
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -907,7 +900,6 @@ public class FootballPlayerStats
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

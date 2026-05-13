@@ -82,7 +82,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<IconButtonSize/>);
 ```
 
-
 <div class="divider"></div>
 
 ## Usage
@@ -166,7 +165,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<IconButtonVariant/>);
 ```
 
-
 ```tsx
 <IgrIconButton name="search" variant="contained"></IgrIconButton>
 ```
@@ -243,7 +241,6 @@ export default class IconButtonSize extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<IconButtonSize/>);
 ```
-
 
 ```tsx
 <IgrIconButton className="size-medium" name="thumb-up"></IgrIconButton>
@@ -340,7 +337,6 @@ export default class IconButtonStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<IconButtonStyling/>);
 ```
-
 
 ## API References
 

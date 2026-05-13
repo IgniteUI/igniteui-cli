@@ -50,7 +50,6 @@ In Blazor map component, you can use the [`IgbGeographicSymbolSeries`](https://w
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Data Requirements

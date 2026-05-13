@@ -222,7 +222,6 @@ public class EmployeeBasicData // EmployeesFlatDetails
 }
 ```
 
-
 ## Functionality
 
 Copy behavior is working with the default interaction defined by the browser and operating system. Thus for the copy and paste behaviors, these are:

@@ -174,7 +174,6 @@ public class EmployeesFlatDetails
 }
 ```
 
-
 ## Tree Grid Setup
 
 Let's start by creating our [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) and binding it to our data. We will also enable both filtering and sorting for the columns.
@@ -483,7 +482,6 @@ public class EmployeesFlatDetails
     }
 }
 ```
-
 
 ## API References
 

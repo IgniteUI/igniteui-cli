@@ -148,7 +148,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartLineChartWithAnnotations/>);
 ```
 
-
 <div class="divider--half"></div>
 
 Like this sample? Get access to our complete React toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-react/download">Download it for free.</a>
@@ -265,7 +264,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartCrosshairLayerStyling/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Final Value Layer
@@ -379,7 +377,6 @@ export default class DataChartFinalValueLayerStyling extends React.Component<any
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartFinalValueLayerStyling/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -540,7 +537,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 

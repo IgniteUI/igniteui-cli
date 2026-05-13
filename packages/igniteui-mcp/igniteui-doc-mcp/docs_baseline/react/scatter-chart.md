@@ -205,7 +205,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Scatter Line Chart
@@ -406,7 +405,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -609,7 +607,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Scatter High Density Chart
@@ -755,7 +752,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTypeScatterDensitySeries/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Scatter Area Chart
@@ -891,7 +887,6 @@ export default class DataChartTypeScatterAreaSeries extends React.Component<any,
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTypeScatterAreaSeries/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1029,7 +1024,6 @@ export default class DataChartTypeScatterContourSeries extends React.Component<a
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTypeScatterContourSeries/>);
 ```
-
 
 <div class="divider--half"></div>
 

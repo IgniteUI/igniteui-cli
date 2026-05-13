@@ -172,7 +172,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 > [!Note]
 > This feature is designed to support X and Y axes and does not currently support radial or angular axes.
 

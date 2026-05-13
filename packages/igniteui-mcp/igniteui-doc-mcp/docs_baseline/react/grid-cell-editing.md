@@ -191,7 +191,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Cell Editing
 
 ### Editing through UI
@@ -231,7 +230,7 @@ function updateCell() {
 
 <!-- ComponentEnd: Grid -->
 
-Another way to update cell is directly through `Update` method of `Cell`:
+Another way to update cell is directly through [`update`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowdirective.html#update) method of `Cell`:
 
 ```typescript
 function updateCell() {
@@ -482,7 +481,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <!-- ComponentStart: Grid -->
 
 ### Grid Excel Style Editing
@@ -655,7 +653,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Sample />);
 ```
 
-
 Main benefits of the above approach include:
 
 - Constant edit mode: typing while a cell is selected will immediately enter edit mode with the value typed, replacing the existing one
@@ -757,6 +754,8 @@ function handleCellEdit(args: IgrGridEditEventArgs): void {
 If the value entered in a cell under the **Units On Order** column is larger than the available amount (the value under **Units in Stock**), the editing will be cancelled and the user will be alerted to the cancellation.
 
 <!-- ComponentEnd: Grid -->
+
+<!-- Blazor -->
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -870,7 +869,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## Styling
 
@@ -1028,13 +1026,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## API References
 
 - [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
-
-<!---->
-
 - [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html)
 
 ## Additional Resources

@@ -47,7 +47,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 > [!Note]
 > This feature is designed to support X and Y axes and does not currently support radial or angular axes.
 

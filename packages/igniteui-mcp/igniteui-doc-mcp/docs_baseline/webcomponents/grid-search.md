@@ -75,7 +75,6 @@ export class MarketData extends Array<MarketRecord>
 }
 ```
 
-
 ## Web Components Search Usage
 
 ### Grid Setup

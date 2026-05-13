@@ -169,7 +169,6 @@ public class NwindData
 }
 ```
 
-
 ## Selection Types
 
 ### Grid Multiple-Cell Selection
@@ -321,7 +320,6 @@ How to select cells:
     }
 }
 ```
-
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
@@ -546,7 +544,6 @@ public class CustomersData
     }
 }
 ```
-
 
 ## API References
 

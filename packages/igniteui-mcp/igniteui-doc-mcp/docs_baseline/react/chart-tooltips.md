@@ -173,7 +173,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 The [`toolTipType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#toolTipType) property is configurable and can be set to one of the following options:
@@ -306,7 +305,6 @@ export default class CategoryChartTooltipTemplate extends React.Component<any, a
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartTooltipTemplate/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -480,7 +478,6 @@ export default class DataChartTooltipTemplate extends React.Component<any, any> 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTooltipTemplate/>);
 ```
-
 
 <div class="divider--half"></div>
 

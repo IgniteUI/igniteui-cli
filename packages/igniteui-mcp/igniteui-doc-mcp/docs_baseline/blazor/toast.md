@@ -40,7 +40,6 @@ Take a look at the simple Ignite UI for Blazor Toast example below. The animated
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ### How To Use Ignite UI for Blazor Toast Notification
@@ -185,7 +184,6 @@ By default, the toast component is hidden automatically after a period specified
 }
 ```
 
-
 ## Styling
 
 You can style the Blazor [`IgbToast`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html) notifications directly using its tag selector:
@@ -228,7 +226,6 @@ igc-toast {
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

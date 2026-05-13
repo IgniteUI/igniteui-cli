@@ -28,7 +28,6 @@ The Ignite UI for Blazor Text Area represents a multi-line plain-text editing co
 }
 ```
 
-
 ## Dependencies
 
 ```razor
@@ -80,7 +79,6 @@ With `prefix` and `suffix` slots we can add different content before and after t
 }
 ```
 
-
 ## Text Area Resizing
 
 There are three different resize options of the [`IgbTextarea`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTextarea.html). When set to `none`, the text area does not resize and uses a scroll bar to show overflow text. When set to `vertical` (the default option), the text area lets the user resize it vertically. When set to `auto`, the text area shows all the user input at once. Overflow text wraps onto a new line and expands the text area automatically.
@@ -117,7 +115,6 @@ There are three different resize options of the [`IgbTextarea`](https://www.infr
 }
 ```
 
-
 ## Form Integration
 
 The sample below shows how a [`IgbTextarea`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTextarea.html) could be integrated into a form.
@@ -153,7 +150,6 @@ The sample below shows how a [`IgbTextarea`](https://www.infragistics.com/blazor
 
 }
 ```
-
 
 ## Styling
 
@@ -231,7 +227,6 @@ igc-textarea::part(suffix) {
 
 }
 ```
-
 
 <div class="divider"></div>
 

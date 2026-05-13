@@ -271,7 +271,6 @@ public class SingersData
 }
 ```
 
-
 > [!Note]
 > When a row is in edit mode, clicking on a cell in another row will act like the "Done" button is pressed, submitting all changes made in the previous row. If the newly focused cell is editable, the new row enters edit mode as well. However, if the cell is not editable, only the previous row exits edit mode.
 
@@ -752,7 +751,6 @@ public class SingersData
     }
 }
 ```
-
 
 ## Known Issues and Limitations
 

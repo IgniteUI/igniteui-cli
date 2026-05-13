@@ -36,7 +36,6 @@ The sample below demonstrates the three types of [`IgcHierarchicalGridComponent`
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Selection Types
 
 ### Hierarchical Grid Multiple-Cell Selection
@@ -224,7 +223,6 @@ Then set the related CSS properties for that class:
     --ig-grid-cell-selected-background: #0062a3;
 }
 ```
-
 
 ## API References
 

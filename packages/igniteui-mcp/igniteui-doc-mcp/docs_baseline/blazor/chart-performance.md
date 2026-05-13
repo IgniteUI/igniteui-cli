@@ -148,7 +148,6 @@ In High-Frequency scenario, the Blazor Charts can render data items that are upd
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Chart with High-Volume
@@ -243,7 +242,6 @@ In High-Volume scenario, the Blazor Charts can render 1 million of data points w
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

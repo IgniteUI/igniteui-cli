@@ -22,7 +22,6 @@ Take a look at the simple Ignite UI for Web Components Toast example below. The 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ### How To Use Ignite UI for Web Components Toast Notification
@@ -78,7 +77,6 @@ By default, the toast component is hidden automatically after a period specified
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Styling
 
 You can style the Web Components [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html) notifications directly using its tag selector:
@@ -100,7 +98,6 @@ igc-toast {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

@@ -379,7 +379,6 @@ The following sample demonstrates how setting multiple properties on the same [`
 }
 ```
 
-
 <div class="divider--half"></div>
 
 The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_TransitionDuration) property.
@@ -483,7 +482,6 @@ Performance value is the primary measure displayed by the component and it is vi
 }
 ```
 
-
 ## Highlight Value
 
 The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_Value) appear with a lower opacity. A good example is if [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_Value) is 50 and  [`HighlightValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_HighlightValue) is set to 25. This would represent a performance of 50% regardless of what the value of [`TargetValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_TargetValue) is set to. To enable this first set [`HighlightValueDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_HighlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_HighlightValue) to something lower than [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_Value).
@@ -528,7 +526,6 @@ The bullet graph's performance value can be further modified to show progress re
 
 }
 ```
-
 
 ## Comparative Ranges
 
@@ -598,7 +595,6 @@ The ranges are visual elements that highlight a specified range of values on a s
 }
 ```
 
-
 ## Tick Marks
 
 The tick marks serve as a visual division of the scale into intervals in order to increase the readability of the bullet graph.
@@ -657,7 +653,6 @@ The tick marks serve as a visual division of the scale into intervals in order t
 }
 ```
 
-
 ## Labels
 
 The labels indicate the measures on the scale.
@@ -699,7 +694,6 @@ The labels indicate the measures on the scale.
 }
 ```
 
-
 ## Backing
 
 The backing element represents background and border of the bullet graph component. It is always the first element rendered and all the rest of elements such as labels, and tick marks are overlaid on top of it.
@@ -738,7 +732,6 @@ The backing element represents background and border of the bullet graph compone
 
 }
 ```
-
 
 ## Scale
 
@@ -780,7 +773,6 @@ The scale is visual element that highlights the full range of values in the gaug
 
 }
 ```
-
 
 ## Summary
 

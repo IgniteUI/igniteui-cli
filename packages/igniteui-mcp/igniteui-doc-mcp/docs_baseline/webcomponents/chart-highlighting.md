@@ -46,7 +46,6 @@ export class TemperatureAnnotatedData extends Array<TemperatureAnnotatedDataItem
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 # Web Components Chart Highlighting Modes & Behaviors
@@ -88,7 +87,6 @@ export class TemperatureAnnotatedData extends Array<TemperatureAnnotatedDataItem
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 The following example demonstrates the [`highlightingBehavior`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#highlightingBehavior) Web Components chart.
 
 ```typescript
@@ -123,7 +121,6 @@ export class TemperatureAnnotatedData extends Array<TemperatureAnnotatedDataItem
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 # Web Components Chart Legend Highlighting
 
@@ -163,7 +160,6 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Highlight Layers
 
 The Ignite UI for Web Components [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) can enable three types of highlighting when hovering over data items.
@@ -180,7 +176,6 @@ The following example demonstrates the different highlighting layers that are av
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Additional Resources
 

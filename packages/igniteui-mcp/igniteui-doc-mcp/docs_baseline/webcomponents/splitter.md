@@ -3,7 +3,7 @@ title: Web Components Splitter Component | Layout Controls | Infragistics
 _description: Use the Ignite UI for Web Components Splitter component to create two resizable panes with horizontal or vertical layouts, collapse and expand behavior, keyboard support, and nested split views.
 _keywords: splitter, split panes, resizable panes, web components splitter, Web Components splitter, Ignite UI for Web Components
 _license: MIT
-mentionedTypes: ["Splitter"]
+mentionedTypes: ["Splitter", "SplitterResizeEventArgs"]
 _tocName: Splitter
 ---
 
@@ -35,10 +35,9 @@ p {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
-## Usage
+## Getting Started with Web Components Splitter
 
 First, you need to install the Ignite UI for Web Components by running the following command:
 
@@ -46,7 +45,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the `Splitter`, you need to register it as follows:
+Before using the [`IgcSplitterComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcSplitterComponent } from 'igniteui-webcomponents';
@@ -55,6 +54,8 @@ defineComponents(IgcSplitterComponent);
 ```
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
+
+## Using Web Components Splitter
 
 Use the `start` and `end` slots to place pane content:
 
@@ -67,7 +68,7 @@ Use the `start` and `end` slots to place pane content:
 
 ### Orientation
 
-Set the `orientation` property to control pane direction:
+Set the [`orientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html#orientation) property to control pane direction:
 
 - `horizontal` (default): start and end panes are rendered left and right.
 - `vertical`: start and end panes are rendered top and bottom.
@@ -83,9 +84,9 @@ Set the `orientation` property to control pane direction:
 
 Use size properties to set initial and constrained pane sizes:
 
-- `start-size`, `end-size`
-- `start-min-size`, `end-min-size`
-- `start-max-size`, `end-max-size`
+- [`startSize`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html#startSize), [`endSize`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html#endSize)
+- [`startMinSize`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html#startMinSize), [`endMinSize`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html#endMinSize)
+- [`startMaxSize`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html#startMaxSize), [`endMaxSize`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html#endMaxSize)
 
 Values accept CSS length values such as `px` and `%`.
 
@@ -106,10 +107,10 @@ Values accept CSS length values such as `px` and `%`.
 
 Use these properties to control interactions:
 
-- `disable-resize`: disables pane resizing.
-- `disable-collapse`: disables pane collapsing.
-- `hide-drag-handle`: hides the drag handle.
-- `hide-collapse-buttons`: hides collapse and expand buttons.
+- [`disableResize`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html#disableResize): disables pane resizing.
+- [`disableCollapse`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html#disableCollapse): disables pane collapsing.
+- [`hideDragHandle`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html#hideDragHandle): hides the drag handle.
+- [`hideCollapseButtons`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html#hideCollapseButtons): hides collapse and expand buttons.
 
 You can also collapse or expand panes programmatically:
 
@@ -135,7 +136,6 @@ p {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Events
 
@@ -170,7 +170,7 @@ When the splitter bar is focused:
 
 ## Styling
 
-The `Splitter` component exposes CSS parts for styling:
+The [`IgcSplitterComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html) component exposes CSS parts for styling:
 
 | Name | Description |
 | ---- | ----------- |
@@ -224,10 +224,9 @@ p {
 }
 ```
 
-
 ## API References
 
-- `Splitter`
+- [`IgcSplitterComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsplittercomponent.html)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

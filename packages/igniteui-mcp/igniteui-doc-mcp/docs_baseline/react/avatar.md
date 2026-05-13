@@ -44,7 +44,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<AvatarIcon/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -111,7 +110,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<AvatarInitials/>);
 ```
 
-
 ### Image
 
 The avatar can also display an image when the [`src`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html#src) attribute is assigned a valid URL to a static asset. In that case the [`initials`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html#initials) value will be ignored and children elements will not be rendered.
@@ -144,7 +142,6 @@ export default function AvatarImage() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<AvatarImage/>);
 ```
-
 
 ### Shape
 
@@ -179,7 +176,6 @@ export default function AvatarShape() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<AvatarShape/>);
 ```
-
 
 ### Size
 
@@ -231,7 +227,6 @@ export default function AvatarSize() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<AvatarSize/>);
 ```
-
 
 ### Styling
 
@@ -339,7 +334,6 @@ export default function AvatarStyling() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<AvatarStyling/>);
 ```
-
 
 <div class="divider--half"></div>
 

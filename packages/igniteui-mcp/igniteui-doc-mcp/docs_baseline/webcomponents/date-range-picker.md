@@ -20,7 +20,6 @@ Below is a sample demonstrating the [`IgcDateRangePickerComponent`](https://www.
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Getting Started
 
 To start using the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html), you first need to install the Ignite UI for Web Components by running the following command:
@@ -258,7 +257,6 @@ Now, when you click the newly created **"Next 7 days"** chip in the calendar pop
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Disabled & Special dates
 
 You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#disabledDates) property.
@@ -293,7 +291,6 @@ igc-button {
   margin-top: 15px;
 }
 ```
-
 
 ## Additional configuration
 
@@ -385,7 +382,6 @@ h3:nth-of-type(1) {
 }
 ```
 
-
 ### Methods
 
 In addition to the properties and slots, the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) also exposes few methods that you can use:
@@ -474,7 +470,6 @@ igc-date-range-picker::part(clear-icon-end) {
   color: var(--ig-error-500-contrast);
 }
 ```
-
 
 ## API References
 

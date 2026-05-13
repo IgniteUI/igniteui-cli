@@ -39,7 +39,6 @@ The Ignite UI for Blazor Mask Input is an input field that allows the developer 
 }
 ```
 
-
 ## Usage
 
 Before using the [`IgbMaskInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html), you need to register it as follows:
@@ -117,7 +116,6 @@ After that you should see the following in your browser:
 }
 ```
 
-
 ### Prompt Character
 
 Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`Prompt`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInputBase.html#IgniteUI_Blazor_Controls_IgbMaskInputBase_Prompt) property:
@@ -192,7 +190,6 @@ The [`IgbMaskInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.B
 }
 ```
 
-
 ## Styling
 
 The [`IgbMaskInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
@@ -256,7 +253,6 @@ igc-mask-input::part(input)::placeholder {
     }
 }
 ```
-
 
 ## Assumptions and limitations
 

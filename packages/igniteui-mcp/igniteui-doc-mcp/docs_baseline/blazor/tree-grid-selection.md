@@ -160,7 +160,6 @@ public class EmployeesFlatData
 }
 ```
 
-
 ## Blazor Tree Grid Selection Options
 
 ### Blazor Tree Grid Row Selection

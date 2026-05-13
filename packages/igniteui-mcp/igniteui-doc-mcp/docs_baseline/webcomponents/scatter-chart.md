@@ -78,7 +78,6 @@ export class CountryDemographicEurope extends Array<CountryDemographicEuropeItem
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Scatter Line Chart
@@ -145,7 +144,6 @@ export class HealthDataForGermany extends Array<HealthDataForGermanyItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -214,7 +212,6 @@ export class HealthDataForGermany extends Array<HealthDataForGermanyItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Scatter High Density Chart
@@ -277,7 +274,6 @@ export class SampleDensityData {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Scatter Area Chart
@@ -331,7 +327,6 @@ export class SampleScatterData {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Scatter Contour Chart
@@ -384,7 +379,6 @@ export class SampleScatterData {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

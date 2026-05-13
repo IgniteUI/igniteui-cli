@@ -37,7 +37,6 @@ Below is a sample demonstrating the [`IgbDateRangePicker`](https://www.infragist
 }
 ```
 
-
 ### Getting Started
 
 To get started with the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) component, first we need to register its module as follows:
@@ -303,7 +302,6 @@ Now, when you click the newly created **"Next 7 days"** chip in the calendar pop
 }
 ```
 
-
 ### Disabled & Special dates
 
 You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`DisabledDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_DisabledDates) property.
@@ -397,7 +395,6 @@ The [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/Igni
     }
 }
 ```
-
 
 ## Additional configuration
 
@@ -564,7 +561,6 @@ In addition to the slots we've already covered, the following slots are also ava
 }
 ```
 
-
 ### Methods
 
 In addition to the properties and slots, the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) also exposes few methods that you can use:
@@ -693,7 +689,6 @@ igc-date-range-picker::part(clear-icon-end) {
     }
 }
 ```
-
 
 ## API References
 

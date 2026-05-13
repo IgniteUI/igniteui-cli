@@ -39,7 +39,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<DrpOverview />);
 ```
 
-
 ### Getting Started
 
 To start using the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html), you first need to install the Ignite UI for React by running the following command:
@@ -304,7 +303,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DrpCustom/>);
 ```
 
-
 ### Disabled & Special dates
 
 You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#disabledDates) property.
@@ -401,7 +399,6 @@ export default function DrpForm() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DrpForm/>);
 ```
-
 
 ## Additional configuration
 
@@ -573,7 +570,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<DrpSlots />);
 ```
 
-
 ### Methods
 
 In addition to the properties and slots, the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) also exposes few methods that you can use:
@@ -697,7 +693,6 @@ export default function DrpOverview() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<DrpOverview />);
 ```
-
 
 ## API References
 

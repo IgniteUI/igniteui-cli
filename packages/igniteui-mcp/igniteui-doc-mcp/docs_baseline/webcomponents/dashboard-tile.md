@@ -843,7 +843,6 @@ export class RetailSalesPerformanceLocalDataSource extends LocalDataSource {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Dependencies
 
 Install the following packages in the Ignite UI for Web Components toolset:
@@ -920,7 +919,6 @@ export class DashboardGaugeDataSource extends Array<DashboardGaugeDataSourceItem
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 The visualization or properties of the visualization are also configurable using the [`IgcToolbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolbarcomponent.html) at the top of the control. This [`IgcToolbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolbarcomponent.html) has the default tools for the current visualization with the addition of four Dashboard Tile specific ones, highlighted below:
 
 <img src="../images/dashboard-tile-toolbar.png" alt="Dashboard Tile Toolbar"/>
@@ -966,7 +964,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 This demo demonstrates dashboard tile integration with the Web Components Geographic Map. The toolbar options at the top right provides access to styling and changing the data visualization.
 
 ```typescript
@@ -1003,7 +1000,6 @@ export class WorldCities extends Array<WorldCitiesItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

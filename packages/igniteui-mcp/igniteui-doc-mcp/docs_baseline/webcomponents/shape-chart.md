@@ -24,7 +24,6 @@ You can create this type of chart in the [`IgcDataChartComponent`](https://www.i
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Scatter Polyline Chart
@@ -37,7 +36,6 @@ You can create this type of chart in the [`IgcDataChartComponent`](https://www.i
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

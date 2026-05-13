@@ -27,7 +27,6 @@ The sample below demonstrates [`IgcHierarchicalGridComponent`](https://www.infra
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Setup
 
 In order to specify if filtering is enabled and which filtering mode should be used, the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) exposes the following properties - [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#allowFiltering), [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#allowAdvancedFiltering), [`filterMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#filterMode) and [`filterable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#filterable).
@@ -297,7 +296,6 @@ constructor() {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -339,7 +337,6 @@ Then set the related CSS properties for that class:
     --ig-grid-row-highlight: #ffcd0f
 }
 ```
-
 
 ## Known Limitations
 
