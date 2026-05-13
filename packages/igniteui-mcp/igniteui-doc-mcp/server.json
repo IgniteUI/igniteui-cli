@@ -1,7 +1,12 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.IgniteUI/mcp-server",
-  "description": "Unified MCP server for Ignite UI — documentation, GitHub API, and CLI scaffolding",
+	"title": "Ignite UI MCP Server",
+  "description": "Unified MCP server for Ignite UI — documentation, API, and CLI scaffolding",
+	"repository": {
+		"source": "github",
+		"url": "https://github.com/IgniteUI/igniteui-cli"
+	},
   "version": "15.1.0",
   "packages": [
     {
