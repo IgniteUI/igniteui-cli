@@ -30,11 +30,11 @@ export function configureSkills(agents: AIAgentTarget[]): void {
 }
 
 export async function configure(agents: (AIAgentTarget | "none")[] = [], assistants: (AiCodingAssistant | "none")[] = [], prompt = true, skills = true): Promise<{ agents: AIAgentTarget[], assistants: AiCodingAssistant[] }> {
-	if (!agents.includes("none") && !agents.length && prompt) {
+	if (!agents.length && prompt) {
 		agents = await promptForAgents();
 	}
 
-	if (!assistants.includes("none") && !assistants.length && prompt) {
+	if (!assistants.length && prompt) {
 		assistants = await promptForAssistant();
 	}
 

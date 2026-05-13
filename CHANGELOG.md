@@ -1,3 +1,8 @@
+# 15.1.0
+
+## What's Changed
+* feat(ai-config): The ai-config command now enables users to select and configure an AI coding assistant integration for their Ignite UI project. Based on the selected provider, the command adds the required skills, instruction files, and MCP configuration to streamline AI-assisted development workflows. The `new` command now accepts `--agents` (for adding skills and instruction files) and `--assistants`(for adding mcp configuration) options, allowing users to configure AI integration directly during project creation. When using the step-by-step wizard, users are automatically prompted to select their preferred AI agents and coding assistants after the project structure is generated. The Angular schematics package includes a dedicated `ai-config` schematic that runs automatically during `ng new` with Ignite UI and can also be invoked standalone via `ng generate @igniteui/angular-schematics:ai-config` to add AI configuration to existing Angular projects. by @Marina-L-Stoyanova https://github.com/IgniteUI/igniteui-cli/pull/1684
+
 # 15.0.1 (2026-04-28)
 
 ## What's Changed
@@ -8,7 +13,6 @@
 * ci(npm): OIDC/Trusted publishing workflow & node update by @turbobobbytraykov in https://github.com/IgniteUI/igniteui-cli/pull/1654
 * build(deps): bump postcss from 8.5.8 to 8.5.12 in the npm_and_yarn group across 1 directory by @dependabot[bot] in https://github.com/IgniteUI/igniteui-cli/pull/1670
 * chore(igx-ts,igr-ts,igc-ts): bump igniteui package deps by @damyanpetev in https://github.com/IgniteUI/igniteui-cli/pull/1673
-* feat(ai-config): The ai-config command now enables users to select and configure an AI coding assistant integration for their Ignite UI project. Based on the selected provider, the command adds the required skills, instruction files, and MCP configuration to streamline AI-assisted development workflows. by @Marina-L-Stoyanova https://github.com/IgniteUI/igniteui-cli/pull/1684
 
 # 15.0.0 (2026-04-22)
 
