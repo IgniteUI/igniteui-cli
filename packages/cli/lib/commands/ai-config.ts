@@ -29,7 +29,10 @@ export function configureSkills(agents: AIAgentTarget[]): void {
 	}
 }
 
-export async function configure(agents: (AIAgentTarget | "none")[] = [], assistants: (AiCodingAssistant | "none")[] = [], skills = true): Promise<{ agents: AIAgentTarget[], assistants: AiCodingAssistant[] }> {
+type AIAgentOption = AIAgentTarget | "none";
+type AIAssistantOption = AiCodingAssistant | "none";
+
+export async function configure(agents: AIAgentOption[] = [], assistants: AIAssistantOption[] = [], skills = true): Promise<{ agents: AIAgentTarget[], assistants: AiCodingAssistant[] }> {
 	if (!agents.length) {
 		agents = await promptForAgents();
 	}
@@ -59,7 +62,6 @@ export async function configure(agents: (AIAgentTarget | "none")[] = [], assista
 }
 
 const AI_AGENT_CHECKBOX_DEFAULTS: AIAgentTarget[] = ["generic", "claude"];
-
 const AI_ASSISTANT_CHECKBOX_DEFAULTS: AiCodingAssistant[] = ["generic"];
 
 const AI_AGENT_CHECKBOX_CHOICES = [
@@ -80,28 +82,28 @@ const AI_ASSISTANT_CHECKBOX_CHOICES = [
 	}))
 ];
 
-export async function promptForAgents(): Promise<(AIAgentTarget | "none")[]> {
-	let selected: (AIAgentTarget | "none")[] = AI_AGENT_CHECKBOX_DEFAULTS;
+export async function promptForAgents(): Promise<AIAgentOption[]> {
+	let selected: AIAgentOption[] = AI_AGENT_CHECKBOX_DEFAULTS;
 	if (Util.canPrompt()) {
 		const result = await InquirerWrapper.checkbox({
 			message: "Which AI agents do you want to generate skills and instructions for?",
 			required: true,
 			choices: AI_AGENT_CHECKBOX_CHOICES
 		});
-		selected = result as (AIAgentTarget | "none")[];
+		selected = result as AIAgentOption[];
 	}
 	return selected;
 }
 
-export async function promptForAssistant(): Promise<(AiCodingAssistant | "none")[]> {
-	let selected: (AiCodingAssistant | "none")[] = AI_ASSISTANT_CHECKBOX_DEFAULTS;
+export async function promptForAssistant(): Promise<AIAssistantOption[]> {
+	let selected: AIAssistantOption[] = AI_ASSISTANT_CHECKBOX_DEFAULTS;
 	if (Util.canPrompt()) {
 		const result = await InquirerWrapper.checkbox({
 			message: "Which coding assistants should MCP servers be configured for?",
 			required: true,
 			choices: AI_ASSISTANT_CHECKBOX_CHOICES
 		});
-		selected = result as (AiCodingAssistant | "none")[];
+		selected = result as AIAssistantOption[];
 	}
 	return selected;
 }
@@ -122,8 +124,8 @@ const command: CommandModule = {
 			type: "array"
 		}),
 	async handler(argv: ArgumentsCamelCase) {
-		const agents = (argv.agents ?? []) as (AIAgentTarget | "none")[];
-		const assistants = (argv.assistants ?? []) as (AiCodingAssistant | "none")[];
+		const agents = (argv.agents ?? []) as AIAgentOption[];
+		const assistants = (argv.assistants ?? []) as AIAssistantOption[];
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Ai Config"
