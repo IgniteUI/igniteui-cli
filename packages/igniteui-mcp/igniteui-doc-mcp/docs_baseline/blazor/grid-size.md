@@ -282,7 +282,6 @@ public class InvoicesData
 }
 ```
 
-
 ## Usage
 
 As you can see in the demo above, the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) provides three size options:  **small**, **medium** and **large**. The code snippet below shows how to set `--ig-size` either inline or part of a CSS class:
@@ -411,8 +410,6 @@ We can now extend our sample and add [`RowHeight`](https://www.infragistics.com/
    private string rowHeight = "80px";
 }
 ```
-
- 
 
 ## API References
 

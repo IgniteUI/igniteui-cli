@@ -186,7 +186,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SpreadsheetOverview/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Functionality

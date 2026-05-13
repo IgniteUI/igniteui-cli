@@ -267,7 +267,6 @@ public class SingersData
 }
 ```
 
-
 ## Blazor Hierarchical Grid Selection Options
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->

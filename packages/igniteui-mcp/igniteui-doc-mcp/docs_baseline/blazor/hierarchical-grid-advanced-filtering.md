@@ -297,7 +297,6 @@ public class SingersData
 }
 ```
 
-
 ## Interaction
 
 In order to open the advanced filtering dialog, the **Advanced Filtering** button in the grid toolbar should be clicked. If no advanced filter is applied, you should start with creating a group of filtering conditions linked with **AND** or **OR**. After that, you can add filtering conditions or sub-groups.
@@ -637,7 +636,6 @@ public class SingersData
     }
 }
 ```
-
 
 ## API References
 

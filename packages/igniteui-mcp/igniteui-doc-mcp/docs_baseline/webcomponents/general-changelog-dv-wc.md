@@ -569,7 +569,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 **Breaking Changes**
 
 - **All Grids**
-  - [`IgcRowIslandComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowislandcomponent.html)
+  - [`IgcRowIsland`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowisland.html)
   - Removed `displayDensity` deprecated property.
   - Renamed `actualColumns`, `contentColumns` properties to `actualColumnList` and `contentColumnList`. Use `column` or `columnList` property to get all columns now.
   - Renamed `rowDelete` and `rowAdd` event argument type to [`IgcRowDataCancelableEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowdatacancelableeventargs.html).
@@ -582,7 +582,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
   - Removed `columnChildren` property. Use `childColumns` instead.
 - [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup)
   - Removed `children` property. Use `childColumns` instead.
-- [`IgcPaginatorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginatorcomponent.html)
+- [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)
   - Removed `isFirstPageDisabled` and `isLastPageDisabled` properties. Use `isFirstPage` and `isLastPage` instead.
 
 ## **4.8.1 (June 2024)**
@@ -758,7 +758,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 ### igniteui-webcomponents-grids
 
 - `DataGrid`:
-  - Added New Feature - [Row Paging](grids/data-grid/row-paging.md) which is used to split a large set of data into a sequence of pages that have similar content. With pagination, data can be displayed in a set number of rows, letting users “scroll” through their data, without needing a scroll bar. The UI for table pagination usually includes things like the current page, total pages, and clickable Previous and Next arrows/buttons that let users flip through the pages of data.
+  - Added New Feature - `Row Paging` which is used to split a large set of data into a sequence of pages that have similar content. With pagination, data can be displayed in a set number of rows, letting users “scroll” through their data, without needing a scroll bar. The UI for table pagination usually includes things like the current page, total pages, and clickable Previous and Next arrows/buttons that let users flip through the pages of data.
 
 ### igniteui-webcomponents-charts
 
@@ -801,10 +801,10 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 - `DataGrid`:
   - New Features Added:
-    - [Filter Row](grids/data-grid/column-filtering.md)
-    - [Load/Save Layout Customizations](grids/data-grid/load-save-layout.md)
-    - [GroupBy Area for column grouping](grids/data-grid/row-grouping.md)
-    - [Cell Merging](grids/data-grid/cell-merging.md)
+    - `Filter Row`
+    - `Load/Save Layout Customizations`
+    - `GroupBy Area for column grouping`
+    - `Cell Merging`
   - New API:
     - Added `SelectionChanged` event. Used to detect changes on selection interactions, e.g. Multiple row selection.
   - Breaking Changes:
@@ -1011,7 +1011,7 @@ Import statements have been simplified to use just package names instead of full
 | <a href="https://www.npmjs.com/package/igniteui-webcomponents-gauges/v/1.0.6" target="_blank">igniteui-webcomponents-gauges</a> |  [Bullet Graph](bullet-graph.md), [Linear Gauge](linear-gauge.md), [Radial Gauge](radial-gauge.md)   |
 | <a href="https://www.npmjs.com/package/igniteui-webcomponents-charts/v/1.0.6" target="_blank">igniteui-webcomponents-charts</a>| Category Chart, Data Chart, Donut Chart, Financial Chart], Pie Chart, [Zoom Slider](zoomslider-overview.md)  |
 | <a href="https://www.npmjs.com/package/igniteui-webcomponents-core/v/1.0.6" target="_blank">igniteui-webcomponents-core</a> | all classes and enums  |
-| <a href="https://www.npmjs.com/package/igniteui-webcomponents-grids/v/1.0.6" target="_blank">igniteui-webcomponents-grids</a> | [Data Grid](grids/data-grid/overview.md) |
+| <a href="https://www.npmjs.com/package/igniteui-webcomponents-grids/v/1.0.6" target="_blank">igniteui-webcomponents-grids</a> | `Data Grid` |
 
 - Code After Changes
 

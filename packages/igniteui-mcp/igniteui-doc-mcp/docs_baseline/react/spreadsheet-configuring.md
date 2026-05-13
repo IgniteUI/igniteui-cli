@@ -324,7 +324,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SpreadsheetConfigOptions/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Configuring Cell Editing

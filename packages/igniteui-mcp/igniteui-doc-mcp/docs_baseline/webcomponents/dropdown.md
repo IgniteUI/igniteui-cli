@@ -24,7 +24,6 @@ The following Web Components Dropdown List example demonstrates the use of simpl
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## How to use the Dropdown List with Ignite UI for Web Components
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -65,7 +64,6 @@ The Web Components Dropdown list is positioned relatively to its target. The `ta
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Position
 
 The preferred placement of the Web Components Dropdown can be set using the [`placement`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#placement) property. The default placement of the Dropdown is `bottom-start`. The [`flip`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#flip) property determines whether the placement should be flipped if there is not enough space to display the Dropdown at the specified placement. The distance from the Web Components Dropdown list to its target can be specified using the [`distance`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#distance) property.
@@ -89,7 +87,6 @@ igc-dropdown::part(list) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Selection
 
 The [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) emits the `Change` event when the user selects an item. The [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#select) method of the Dropdown allows you to select an item by its index or value.
@@ -103,7 +100,6 @@ The [`IgcDropdownItemComponent`](https://www.infragistics.com/products/ignite-ui
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Header
 
 You could use the [`IgcDropdownHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownheadercomponent.html) to provide a header for a group of items.
@@ -113,7 +109,6 @@ You could use the [`IgcDropdownHeaderComponent`](https://www.infragistics.com/pr
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Group
 
 The Web Components Dropdown's items can also be grouped using the [`IgcDropdownGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowngroupcomponent.html), making it easier for users to differentiate separate categories. See it in action in this Web Components Dropdown List example:
@@ -122,7 +117,6 @@ The Web Components Dropdown's items can also be grouped using the [`IgcDropdownG
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Scroll Strategy
 
@@ -169,7 +163,6 @@ igc-dropdown-group::part(label) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API Reference
 

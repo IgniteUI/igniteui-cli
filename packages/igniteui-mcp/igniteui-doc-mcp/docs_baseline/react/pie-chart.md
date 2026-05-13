@@ -129,7 +129,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Pie Chart Recommendations
@@ -295,7 +294,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Pie Chart Others Category
@@ -423,7 +421,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Pie Chart Explosion
@@ -523,7 +520,6 @@ export default class PieChartExplosion extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<PieChartExplosion/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -644,7 +640,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<PieChartSelection/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Pie Chart Animation
@@ -764,7 +759,6 @@ export default class PieChartAnimation extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<PieChartAnimation/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -887,7 +881,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1048,7 +1041,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 

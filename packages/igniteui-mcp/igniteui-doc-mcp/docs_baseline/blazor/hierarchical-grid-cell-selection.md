@@ -270,7 +270,6 @@ public class SingersData
 }
 ```
 
-
 ## Selection Types
 
 ### Hierarchical Grid Multiple-Cell Selection
@@ -717,7 +716,6 @@ public class SingersData
     }
 }
 ```
-
 
 ## API References
 

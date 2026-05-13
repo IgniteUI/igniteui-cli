@@ -41,7 +41,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RippleButton/>);
 ```
 
-
 ## Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -111,7 +110,6 @@ export default function RippleColor() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RippleColor/>);
 ```
-
 
 ## API References
 

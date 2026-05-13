@@ -61,7 +61,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderOverview/>);
 ```
 
-
 ## Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -150,7 +149,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<SliderValue />);
 ```
 
-
 While dragging a slider thumb, it displays its value in a tooltip. You could hide this tooltip using the [`hideTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#hideTooltip) property.
 
 ### Disabled
@@ -188,7 +186,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderDisabled/>);
 ```
 
-
 ### Constraints
 
 The track of the sliders has a minimum and maximum values which are configured using the [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#max) properties. Additionally, you can restrict the thumb dragging using the [`lowerBound`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#lowerBound) and [`upperBound`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#upperBound) properties.
@@ -223,7 +220,6 @@ export default function SliderConstraints() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderConstraints/>);
 ```
-
 
 ### Step
 
@@ -260,7 +256,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderDiscrete/>);
 ```
 
-
 If the [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#step) property is set to `0`, no stepping is implied and any value in the slider range is allowed. In this case, the slider will look continuous even if [`discreteTrack`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#discreteTrack) is set to **true**.
 
 ### Tick Marks
@@ -293,7 +288,6 @@ export default function SliderTicks() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderTicks/>);
 ```
-
 
 Additionally, you could configure the orientation of the tick marks using the [`tickOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#tickOrientation) property. By default, the [`tickOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#tickOrientation) value is `end` which displays the ticks below the slider track. You could set it to `start` which displays them above the track and `mirror` which mirrors the ticks above and below the track.
 
@@ -329,7 +323,6 @@ export default function SliderTickLabels() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderTickLabels/>);
 ```
-
 
 ### Value Format
 
@@ -376,7 +369,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderValueFormat/>);
 ```
 
-
 ### Labels
 
 In some cases you would want to format the values of the slider as string values i.e. map the values **\[0, 1, 2]** to **\['Low', 'Medium', 'High']**. For this scenario the slider allows you to define [`IgrSliderLabel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderlabel.html) elements inside it. The text content of the slider labels is going to be used for thumb and tick labels. Please note that when slider labels are provided, the [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#min), [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#max) and [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#step) properties are automatically calculated so that they do not allow values that do not map to the provided labels. In the case of 'Low', 'Medium' and 'High' labels, [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#min) is set to `0`, [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#max) is set to `2` and [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#step) is set to `1`.
@@ -416,7 +408,6 @@ export default function SliderLabels() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderLabels/>);
 ```
-
 
 ## Styling
 
@@ -515,7 +506,6 @@ export default function SliderStyling() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderStyling/>);
 ```
-
 
 ## API References
 

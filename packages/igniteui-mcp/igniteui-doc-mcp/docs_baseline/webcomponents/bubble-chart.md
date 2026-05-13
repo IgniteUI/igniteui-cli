@@ -80,7 +80,6 @@ export class CountryStatsEurope extends Array<CountryStatsEuropeItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Bubble Chart with Single Series
@@ -136,7 +135,6 @@ export class WorldStats extends Array<WorldStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -207,7 +205,6 @@ export class CountryStatsEurope extends Array<CountryStatsEuropeItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Bubble Chart Styling
@@ -263,7 +260,6 @@ export class WorldStats extends Array<WorldStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

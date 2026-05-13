@@ -34,7 +34,6 @@ The following Blazor [`IgbCalendar`](https://www.infragistics.com/blazor/docs/ap
 }
 ```
 
-
 ## How To Create a Calendar in Blazor with Ignite UI
 
 Before using the [`IgbCalendar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html), you need to register it as follows:
@@ -82,7 +81,6 @@ Users can choose from three different selection modes - single selection, multip
 }
 ```
 
-
 ### Range Selection
 
 Following the same approach, we can switch [`Selection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_Selection) to range mode:
@@ -105,7 +103,6 @@ Following the same approach, we can switch [`Selection`](https://www.infragistic
 
 }
 ```
-
 
 ### Active View and Date
 
@@ -147,7 +144,6 @@ The following sample demonstrates the above configuration:
 
 }
 ```
-
 
 ### Disabled dates
 
@@ -214,7 +210,6 @@ These configurations should have the following result:
 }
 ```
 
-
 ### Special dates
 
 The [`SpecialDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_SpecialDates) property is using almost the same configuration principles as the [`DisabledDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_DisabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
@@ -273,7 +268,6 @@ The following demo illustrates a Calendar with a vacation request option:
 }
 ```
 
-
 ### Week numbers
 
 You can use the [`ShowWeekNumbers`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_ShowWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
@@ -298,7 +292,6 @@ The following demo illustrates a Calendar with enabled week numbers:
 
 }
 ```
-
 
 ### Multiple Months
 
@@ -326,7 +319,6 @@ The following sample demonstrates the multiple months configuration:
 
 }
 ```
-
 
 ### Size
 
@@ -357,7 +349,6 @@ You could control the size and spacing of the calendar inner elements using the 
     }
 }
 ```
-
 
 ### Events
 
@@ -542,7 +533,6 @@ The following sample demonstrates the above CSS configuration:
 
 }
 ```
-
 
 ## API References
 

@@ -55,7 +55,6 @@ The Blazor Slider & Range Slider components allow selection in a given range by 
 }
 ```
 
-
 ## Usage
 
 Before using the [`IgbSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html) and [`IgbRangeSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRangeSlider.html), you need to register them as follows:
@@ -142,7 +141,6 @@ Both sliders emit two events when any of the values is changed. The [`IgbInput`]
 }
 ```
 
-
 While dragging a slider thumb, it displays its value in a tooltip. You could hide this tooltip using the [`HideTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_HideTooltip) property.
 
 ### Disabled
@@ -171,7 +169,6 @@ igc-slider {
 
 }
 ```
-
 
 ### Constraints
 
@@ -204,7 +201,6 @@ igc-slider {
 }
 ```
 
-
 ### Step
 
 The [`Step`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html#IgniteUI_Blazor_Controls_IgbInput_Step) property specifies the granularity of the slider that the value must adhere to. By default, the slider track looks continuous. Setting the [`DiscreteTrack`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_DiscreteTrack) property of the slider to **true** will make it to display the steps on the track.
@@ -234,7 +230,6 @@ The [`Step`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Co
 
 }
 ```
-
 
 If the [`Step`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html#IgniteUI_Blazor_Controls_IgbInput_Step) property is set to `0`, no stepping is implied and any value in the slider range is allowed. In this case, the slider will look continuous even if [`DiscreteTrack`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_DiscreteTrack) is set to **true**.
 
@@ -267,7 +262,6 @@ The slider components could display tick marks and labels. The slider components
 }
 ```
 
-
 Additionally, you could configure the orientation of the tick marks using the [`TickOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_TickOrientation) property. By default, the [`TickOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_TickOrientation) value is `end` which displays the ticks below the slider track. You could set it to `start` which displays them above the track and `mirror` which mirrors the ticks above and below the track.
 
 By default, the tick marks display labels with their values. You could modify the rotation of the tick labels using the `SliderTickLabelRotation` property. Additionally, you could hide the labels of the primary and secondary ticks using the [`HidePrimaryLabels`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_HidePrimaryLabels) and [`HideSecondaryLabels`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_HideSecondaryLabels) properties.
@@ -298,7 +292,6 @@ By default, the tick marks display labels with their values. You could modify th
 
 }
 ```
-
 
 ### Value Format
 
@@ -368,7 +361,6 @@ If you want to format the thumb and tick label values, the slider provides [`Val
 }
 ```
 
-
 ### Labels
 
 In some cases you would want to format the values of the slider as string values i.e. map the values **\[0, 1, 2]** to **\['Low', 'Medium', 'High']**. For this scenario the slider allows you to define [`IgbSliderLabel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderLabel.html) elements inside it. The text content of the slider labels is going to be used for thumb and tick labels. Please note that when slider labels are provided, the [`Min`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_Min), [`Max`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_Max) and [`Step`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_Step) properties are automatically calculated so that they do not allow values that do not map to the provided labels. In the case of 'Low', 'Medium' and 'High' labels, [`Min`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_Min) is set to `0`, [`Max`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_Max) is set to `2` and [`Step`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderBase.html#IgniteUI_Blazor_Controls_IgbSliderBase_Step) is set to `1`.
@@ -401,7 +393,6 @@ In some cases you would want to format the values of the slider as string values
 
 }
 ```
-
 
 ## Styling
 
@@ -491,7 +482,6 @@ The following sample demonstrates how to style the track fill and thumb parts:
 
 }
 ```
-
 
 ## API References
 

@@ -173,7 +173,6 @@ public class EmployeesFlatData
 }
 ```
 
-
 ## Blazor Search Usage
 
 ### Tree Grid Setup
@@ -487,9 +486,6 @@ Additional components with relative APIs that were used:
 
 - [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
 - [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html)
-
-<!---->
-
 - [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html)
 - [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html)
 

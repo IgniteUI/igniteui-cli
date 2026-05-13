@@ -450,7 +450,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 ```
 
-
 ## Limitations
 
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->

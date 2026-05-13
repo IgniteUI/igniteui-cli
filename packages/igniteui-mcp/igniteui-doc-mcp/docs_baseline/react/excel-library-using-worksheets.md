@@ -337,7 +337,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExcelLibraryUsingWorksheets/>);
 ```
 
-
 <div class="divider--half"></div>
 
 The following code shows the imports needed to use the code-snippets below:

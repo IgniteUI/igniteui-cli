@@ -90,7 +90,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Configuration
 
 In order to enable row-dragging for your [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), all you need to do is set the grid's [`rowDraggable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's `RowDragStart` event to fire. Releasing the click at any time will cause `RowDragEnd` event to fire.
@@ -245,7 +244,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <!-- ComponentStart: Grid -->
 

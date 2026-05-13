@@ -319,7 +319,6 @@ public class HierarchicalCustomersData
 }
 ```
 
-
 ## Setup
 
 To get started with the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) and the **Collapsible multi-column headers** feature, first you need to install Ignite UI for Blazor by typing the following command:

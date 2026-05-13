@@ -47,7 +47,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SnackbarOverview />);
 ```
 
-
 <div class="divider--half"></div>
 
 ### Usage
@@ -126,7 +125,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SnackbarDisplayTime />);
 ```
 
-
 ### Action Text
 
 By default, the snackbar component is hidden automatically after a period specified by the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#displayTime). You can use [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#keepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`actionText`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#actionText) you can display an action button inside the component.
@@ -171,7 +169,6 @@ export default function SnackbarActionText() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SnackbarActionText />);
 ```
-
 
 ## Styling
 
@@ -231,7 +228,6 @@ export default function SnackbarStyling() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SnackbarStyling />);
 ```
-
 
 <div class="divider--half"></div>
 

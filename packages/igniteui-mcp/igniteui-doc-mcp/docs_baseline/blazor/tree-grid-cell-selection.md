@@ -157,7 +157,6 @@ public class EmployeesFlatData
 }
 ```
 
-
 ## Selection Types
 
 ### Tree Grid Multiple-Cell Selection
@@ -250,7 +249,6 @@ public class EmployeesFlatData
     }
 }
 ```
-
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
@@ -494,7 +492,6 @@ public class OrdersTreeData
     }
 }
 ```
-
 
 ## API References
 

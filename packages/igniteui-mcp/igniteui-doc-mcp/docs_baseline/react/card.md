@@ -100,7 +100,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<CardOverview />);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -312,7 +311,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CardHorizontal/>);
 ```
 
-
 ### Alternative layouts
 
 You can get even more creative with the layout of the [`IgrCard`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcard.html).
@@ -443,7 +441,6 @@ export default function CardSemiHorizontal() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<CardSemiHorizontal />);
 ```
-
 
 ### Card Actions
 
@@ -597,7 +594,6 @@ export default function CardStyling() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<CardStyling />);
 ```
-
 
 ### Summary
 

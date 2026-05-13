@@ -1946,7 +1946,7 @@ Or you can use the universal `--ig-button-size` variable to target all instances
 
 ```html
 <div class="my-app">
-  <button igxButton="contained">Button</button>
+  <button igxButton="contained"></button>
 </div>
 ```
 

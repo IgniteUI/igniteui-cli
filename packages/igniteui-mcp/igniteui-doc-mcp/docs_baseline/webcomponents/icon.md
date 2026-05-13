@@ -31,7 +31,6 @@ The Web Components Icon component allows you to easily display font or choose fr
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -122,7 +121,6 @@ igc-icon {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 You can also set a custom size for the icon component. The best way to do this is by using the `--size` CSS variable.
 
 ```css
@@ -164,7 +162,6 @@ igc-icon {
     color: olive;
   }
 ```
-
 
 ## API References
 

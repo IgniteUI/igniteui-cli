@@ -134,7 +134,6 @@ export class MapUtils {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Web Components Displaying Imagery from Azure Maps - Code Example
 
 The following code snippet shows how to display geographic imagery tiles from Azure Maps in Web Components [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html) using [`IgcAzureMapsImagery`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcazuremapsimagery.html) class.

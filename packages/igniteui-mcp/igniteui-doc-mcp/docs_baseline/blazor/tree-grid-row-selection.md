@@ -180,7 +180,6 @@ public class EmployeesFlatData
 }
 ```
 
-
 ## Setup
 
 In order to setup row selection in the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html), you just need to set the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelection) property. This property accepts `GridSelectionMode` enumeration.
@@ -562,7 +561,6 @@ public class EmployeesFlatData
 }
 ```
 
-
 <!-- ComponentStart: Grid, TreeGrid -->
 
 ### Excel Style Row Selectors Demo
@@ -708,7 +706,6 @@ public class EmployeesFlatData
 }
 ```
 
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 ### Conditional Selection Demo
@@ -814,7 +811,6 @@ public class EmployeesFlatData
     }
 }
 ```
-
 
 ## API References
 

@@ -112,7 +112,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Step Line Chart
@@ -212,7 +211,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -314,7 +312,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

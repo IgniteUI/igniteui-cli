@@ -206,7 +206,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ### Category Y-Axis
 
 The [`IgrCategoryYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryyaxis.html) works very similarly to the [`IgrCategoryXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html) described above, but it is placed vertically rather than horizontally. Also, this axis requires you to provide a `DataSource` and a [`label`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igraxis.html#label) in order to plot data with it. The [`IgrCategoryYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryyaxis.html) is generally used with the [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) to plot the following type of series:
@@ -376,7 +375,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ### Numeric X-Axis
 
 The [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) treats its data as continuously varying numerical data items. Labels on this axis are placed horizontally along the X-Axis. The location of the [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) labels depends on the `XMemberPath` property of the various [Scatter Series](../types/scatter-chart.md) that it supports if combined with a [`IgrNumericYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericyaxis.html). Alternatively, if combined with the [`IgrCategoryXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryxaxis.html), these labels will be placed corresponding to the `ValueMemberPath` of the [`IgrBarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbarseries.html), [`IgrStackedBarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedbarseries.html), and [`IgrStacked100BarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100barseries.html).
@@ -536,7 +534,6 @@ export default class DataChartTypeScatterDensitySeries extends React.Component<a
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTypeScatterDensitySeries/>);
 ```
-
 
 ### Numeric Y-Axis
 
@@ -745,7 +742,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ### Time X Axis
 
 The [`IgrTimeXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html) treats its data as a sequence of data items, sorted by date. Labels on this axis type are dates and can be formatted and arranged according to date intervals. The date range of this axis is determined by the date values in a data column that is mapped using its `DateTimeMemberPath`. This, along with a `DataSource` is required to plot data with this axis type.
@@ -938,7 +934,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ### Proportional Category Angle Axis
 
 The [`IgrProportionalCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrproportionalcategoryangleaxis.html) treats its data as a sequence of category data items. The labels on this axis are placed along the edge of a circle according to their position in that sequence. This type of axis can display almost any type of data including strings and numbers.
@@ -946,7 +941,6 @@ The [`IgrProportionalCategoryAngleAxis`](https://www.infragistics.com/products/i
 The [`IgrProportionalCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrproportionalcategoryangleaxis.html) is generally used with the [`IgrNumericRadiusAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericradiusaxis.html) to plot a pie chart eg. [Radial Series](../types/radial-chart.md).
 
 The following example demonstrates usage of the [`IgrProportionalCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrproportionalcategoryangleaxis.html) type:
-
 
 
 
@@ -1099,7 +1093,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ### Numeric Radius Axis
 
@@ -1267,7 +1260,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## Additional Resources
 

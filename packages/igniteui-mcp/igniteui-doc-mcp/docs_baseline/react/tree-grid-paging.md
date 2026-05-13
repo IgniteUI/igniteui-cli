@@ -169,7 +169,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ```css
 .gridSize {
     --ig-size: var(--ig-size-small);
@@ -405,7 +404,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 

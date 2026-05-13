@@ -21,7 +21,6 @@ The Web Components Grid exposes an Excel-style filtering feature that provides a
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Usage
 
 To turn on the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#allowFiltering) should be set to **true** and the [`filterMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#filterMode) should be set to `ExcelStyleFilter` value.
@@ -70,7 +69,6 @@ In the sample below **Product Name** and **Discontinued** columns have all four 
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Templates
 
@@ -124,7 +122,6 @@ Add razor snipets
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -172,7 +169,6 @@ Then set the related CSS properties to this class:
         --ig-drop-down-focused-item-background: #c2b1b1bd;
     }
 ```
-
 
 ## API References
 

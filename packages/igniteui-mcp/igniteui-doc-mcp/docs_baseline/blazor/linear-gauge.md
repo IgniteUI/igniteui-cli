@@ -372,7 +372,6 @@ The following sample demonstrates how setting multiple properties on the same [`
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Component Modules
@@ -469,7 +468,6 @@ This is the primary measure displayed by the linear gauge component and is visua
 }
 ```
 
-
 ## Highlight Needle
 
 The linear gauge can be modified to show a second needle. This will make the main needle's [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html#IgniteUI_Blazor_Controls_IgbLinearGauge_Value) appear with a lower opacity. To enable this first set [`HighlightValueDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html#IgniteUI_Blazor_Controls_IgbLinearGauge_HighlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html#IgniteUI_Blazor_Controls_IgbLinearGauge_HighlightValue).
@@ -519,7 +517,6 @@ The linear gauge can be modified to show a second needle. This will make the mai
 
 }
 ```
-
 
 ## Ranges
 
@@ -582,7 +579,6 @@ The ranges are visual elements that highlight a specified range of values on a s
 }
 ```
 
-
 ## Tick Marks
 
 The tick marks serve as a visual division of the scale into intervals in order to increase the readability of the linear gauge.
@@ -640,7 +636,6 @@ Minor tick marks – The minor tick marks represent helper tick marks, which mig
 }
 ```
 
-
 ## Labels
 
 The labels indicate the measures on the scale.
@@ -682,7 +677,6 @@ The labels indicate the measures on the scale.
 
 }
 ```
-
 
 ## Backing
 
@@ -726,7 +720,6 @@ The backing element represents background and border of the linear gauge compone
 
 }
 ```
-
 
 ## Scale
 
@@ -772,7 +765,6 @@ The scale is a visual element that highlights the full range of values in the li
 
 }
 ```
-
 
 ## Summary
 

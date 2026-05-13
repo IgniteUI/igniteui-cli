@@ -25,7 +25,6 @@ igc-switch {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Getting Started with Web Components Stepper
@@ -147,7 +146,6 @@ The sample below demonstrates how stepper orientation and titles position could 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Step States
@@ -254,7 +252,6 @@ The sample below demonstrates all exposed step types and how they could be chang
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Stepper Animations
@@ -287,7 +284,6 @@ The [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-
     margin-bottom: 2rem;
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -406,7 +402,6 @@ igc-step[active]:active::part(indicator) {
   padding: 1rem;
 }
 ```
-
 
 <div class="divider--half"></div>
 

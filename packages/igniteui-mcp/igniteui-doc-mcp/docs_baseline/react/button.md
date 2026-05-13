@@ -56,7 +56,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonOverview/>);
 ```
 
-
 ## Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -138,7 +137,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonContained/>);
 ```
 
-
 ### Outlined Button
 
 All you have to do to create an `outlined` button is to change the value of the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#variant) property:
@@ -178,7 +176,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonOutlined/>);
 ```
 
-
 ### Flat Button
 
 Analogically, we can switch to `flat` variant.
@@ -217,7 +214,6 @@ export default class ButtonFlat extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonFlat/>);
 ```
-
 
 ### Floating Action Button
 
@@ -260,7 +256,6 @@ export default class ButtonFab extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonFab/>);
 ```
-
 
 ## Button Sizing
 
@@ -382,7 +377,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonSize/>);
 ```
 
-
 ### Download
 
 Setting the [`download`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html#download) property will prompt the user to save the linked URL instead of navigating to it.
@@ -427,7 +421,6 @@ export default class ButtonDownload extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonDownload/>);
 ```
-
 
 ## Styling
 
@@ -490,7 +483,6 @@ export default class ButtonStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonStyling/>);
 ```
-
 
 ## API References
 

@@ -30,7 +30,6 @@ This example shows most functionalities and docking options of the [`IgcDockMana
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 To install the Dock Manager package execute the following command:
@@ -408,14 +407,11 @@ igc-dockmanager > div {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Events
 
 The Dock Manager component raises events when specific end-user interactions are performed for example closing, pinning, resizing and dragging a pane. You can find the full list of Dock Manager events in this [topic](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcdockmanagereventmap.html).
 
 <div class="divider--half"></div>
-
- 
 
 Here is how to add an event listener for the `PaneClose` event:
 
@@ -439,7 +435,6 @@ this.dockManager.addEventListener('paneClose', ev => console.log(ev.detail));
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -577,7 +572,6 @@ igc-dockmanager::part(pane-header-maximize-button) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 Below you can find a list containing the slot names for all of the buttons as well as the splitter handle:
 
@@ -1018,7 +1012,6 @@ export class MenuComponent extends HTMLElement {
   }
 }
 ```
-
 
 <div class="divider--half"></div>
 

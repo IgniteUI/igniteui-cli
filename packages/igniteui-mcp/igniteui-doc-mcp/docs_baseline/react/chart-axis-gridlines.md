@@ -240,7 +240,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Axis Gridlines Properties
@@ -488,7 +487,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 The axes of the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) also have the ability to place a dash array on the major and minor gridlines by utilizing the [`majorStrokeDashArray`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igraxis.html#majorStrokeDashArray) and [`minorStrokeDashArray`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igraxis.html#minorStrokeDashArray) properties, respectively. The actual axis line can be dashed as well by setting the [`strokeDashArray`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igraxis.html#strokeDashArray) property of the corresponding axis. These properties take an array of numbers that will describe the length of the dashes for the corresponding grid lines.
 
 The following example demonstrates a [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) with the above dash array properties set:
@@ -683,7 +681,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Axis Tickmarks Example
@@ -857,7 +854,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 

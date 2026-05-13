@@ -19,7 +19,6 @@ In Web Components map component, you can use the [`IgcGeographicPolylineSeriesCo
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 The [`IgcGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicpolylineseriescomponent.html) works a lot like the [`IgcGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicshapeseriescomponent.html) except that geo-spatial data is rendered with polylines instead of polygons.

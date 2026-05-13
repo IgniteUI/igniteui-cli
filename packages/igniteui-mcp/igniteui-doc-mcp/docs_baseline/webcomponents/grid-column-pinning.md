@@ -24,10 +24,9 @@ This example demonstrates how you can pin a column or multiple columns to the le
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Column Pinning API
 
-Column pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pinned) property of the [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html). Pinned columns are rendered on the left side of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) body.
+Column pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowdirective.html#pinned) property of the [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html). Pinned columns are rendered on the left side of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) body.
 
 ```html
 <igc-grid id="grid1" width="700px" auto-generate="false">
@@ -152,7 +151,6 @@ export class AthletesDataExtended extends Array<AthletesDataExtendedItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Column Pinning on Both Sides
 
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
@@ -229,7 +227,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Custom Column Pinning UI
 
@@ -346,7 +343,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Pinning Limitations
 
 - Setting column widths in percentage (%) explicitly makes the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
@@ -421,7 +417,6 @@ export class CustomersData extends Array<CustomersDataItem> {
     --ig-grid-cell-active-border-color: #FFCD0F;
 }
 ```
-
 
 <!-- end: WebComponents, Blazor -->
 

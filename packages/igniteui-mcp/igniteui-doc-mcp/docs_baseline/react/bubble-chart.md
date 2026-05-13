@@ -260,7 +260,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Bubble Chart with Single Series
@@ -446,7 +445,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -697,7 +695,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Bubble Chart Styling
@@ -889,7 +886,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 

@@ -56,7 +56,7 @@ These components expose templates giving flexibility for customization. For inst
 </igc-grid>
 ```
 
-<!-- ComponentEnd: Grid, TreeGrid -->
+<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 <!-- ComponentStart: Grid, TreeGrid -->
 
@@ -75,7 +75,6 @@ These components expose templates giving flexibility for customization. For inst
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

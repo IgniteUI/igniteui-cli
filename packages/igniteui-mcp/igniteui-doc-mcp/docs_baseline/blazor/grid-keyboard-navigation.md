@@ -102,18 +102,10 @@ over Group Row - collapses the group.
 
  <!-- ComponentEnd: Grid -->
 
- 
-
- 
-
 - <kbd>ALT</kbd> + <kbd>→</kbd> or <kbd>ALT</kbd> + <kbd>↓</kbd> - <!-- ComponentStart: Grid -->
     over Group Row - expands the group.
 
  <!-- ComponentEnd: Grid -->
-
- 
-
- 
 
  <!-- ComponentStart: Grid -->
 
@@ -289,7 +281,6 @@ public class NwindData
     }
 }
 ```
-
 
 ## Known Limitations
 

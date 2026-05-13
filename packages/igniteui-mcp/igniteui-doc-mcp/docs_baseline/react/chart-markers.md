@@ -181,7 +181,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Chart Marker Templates
@@ -346,7 +345,6 @@ export default class CategoryChartMarkerTemplates extends React.Component<any, a
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartMarkerTemplates/>);
 ```
-
 
 <div class="divider--half"></div>
 

@@ -136,7 +136,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <!-- ## Axis Orientation Example
 
 TODO add info/example of 4 charts with all possible combinations of XAxisInverted and YAxisInverted
@@ -207,7 +206,6 @@ The following example depicts a stock price and trade volume chart with a [Stock
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -296,7 +294,6 @@ The following example shows a Sin and Cos wave represented by a [Scatter Spline 
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -404,7 +401,6 @@ The following example demonstrates how to style the data chart using the [`IgbTi
 
 }
 ```
-
 
 ## Additional Resources
 

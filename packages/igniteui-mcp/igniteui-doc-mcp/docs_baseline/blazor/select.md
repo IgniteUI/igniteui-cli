@@ -28,7 +28,6 @@ The Ignite UI for Blazor Select component allows a single selection from a list 
 @code { }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -106,7 +105,6 @@ The [`IgbSelectItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 }
 ```
 
-
 ### Header
 
 You can use the [`IgbSelectHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelectHeader.html) to provide a header for a group of items.
@@ -126,7 +124,6 @@ You can use the [`IgbSelectHeader`](https://www.infragistics.com/blazor/docs/api
 
 @code { }
 ```
-
 
 ```razor
 <IgbSelect>
@@ -233,7 +230,6 @@ Multiple [`IgbSelectItem`](https://www.infragistics.com/blazor/docs/api/api/Igni
     }
 }
 ```
-
 
 ```razor
 <IgbSelect>

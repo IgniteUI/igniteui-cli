@@ -134,7 +134,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Line Chart Recommendations
@@ -290,7 +289,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Line Chart with Multiple Series
@@ -415,7 +413,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -677,7 +674,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartHighFrequency/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Styling Line Chart
@@ -805,7 +801,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 You can also create a dashed line within the [`IgrLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrlineseries.html) by using the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) and setting the [`dashArray`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseries.html#dashArray) property on the series. This property takes an array of numbers that will describe the length of the resulting dashes in the line.
 
@@ -983,7 +978,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1173,7 +1167,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Stacked 100% Line Chart
@@ -1356,7 +1349,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Radial Line Chart
@@ -1520,7 +1512,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1688,7 +1679,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 

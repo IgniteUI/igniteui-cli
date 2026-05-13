@@ -106,7 +106,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<NavDrawerAddDrawerItems />);
 ```
 
-
 ## Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -242,7 +241,6 @@ export default class NavDrawerAddDrawerItems extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<NavDrawerAddDrawerItems />);
 ```
-
 
 ## Navbar Integration
 
@@ -435,7 +433,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<NavDrawerAddPositionsNavbar />);
 ```
 
-
 ## Mini Variant
 
 With the mini variant, the Navigation Drawer changes its width instead of closing. It is used to maintain quick navigation, available at all times, leaving just the icons. To achieve that, you only need to set up the `mini` slot of the drawer.
@@ -586,7 +583,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<NavDrawerAddMini />);
 ```
 
-
 ## Styling
 
 The [`IgrNavDrawer`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavdrawer.html) exposes several CSS parts - `base`, `main`, and `mini`, giving you full control over their styling.
@@ -734,7 +730,6 @@ export default class NavDrawerStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<NavDrawerStyling />);
 ```
-
 
 ## API References
 

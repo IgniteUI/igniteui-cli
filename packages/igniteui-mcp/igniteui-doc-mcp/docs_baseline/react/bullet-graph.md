@@ -322,7 +322,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BulletGraphAnimation/>);
 ```
 
-
 <div class="divider--half"></div>
 
 The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#transitionDuration) property.
@@ -448,7 +447,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BulletGraphMeasures/>);
 ```
 
-
 ## Highlight Value
 
 The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the [`value`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#value) appear with a lower opacity. A good example is if [`value`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#value) is 50 and  [`highlightValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#highlightValue) is set to 25. This would represent a performance of 50% regardless of what the value of [`targetValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#targetValue) is set to. To enable this first set [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#highlightValue) to something lower than [`value`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_gauges.igrbulletgraph.html#value).
@@ -507,7 +505,6 @@ export default class BulletGraphHighlightNeedle extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BulletGraphHighlightNeedle/>);
 ```
-
 
 ## Comparative Ranges
 
@@ -580,7 +577,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BulletGraphRanges/>);
 ```
 
-
 ## Tick Marks
 
 The tick marks serve as a visual division of the scale into intervals in order to increase the readability of the bullet graph.
@@ -648,7 +644,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BulletGraphTickmarks/>);
 ```
 
-
 ## Labels
 
 The labels indicate the measures on the scale.
@@ -701,7 +696,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BulletGraphLabels/>);
 ```
 
-
 ## Backing
 
 The backing element represents background and border of the bullet graph component. It is always the first element rendered and all the rest of elements such as labels, and tick marks are overlaid on top of it.
@@ -751,7 +745,6 @@ export default class BulletGraphBackground extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BulletGraphBackground/>);
 ```
-
 
 ## Scale
 
@@ -804,7 +797,6 @@ export default class BulletGraphScale extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BulletGraphScale/>);
 ```
-
 
 ## Summary
 

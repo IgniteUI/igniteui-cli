@@ -37,13 +37,13 @@ The [`rowClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/ty
 
 ```tsx
 const rowClasses = {
-    activeRow: (row: IgrRowType) => row.index === 0
+    activeRow: (row: IgrRowType) => row.index % 2 === 0
 }
 ```
 
 ```css
 .activeRow {
-    border: 2px solid #fc81b8;
+    border-top: 2px solid #fc81b8;
     border-left: 3px solid #e41c77;
 }
 ```
@@ -243,7 +243,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ### Using Row Styles
 
@@ -474,7 +473,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## Hierarchical Grid Conditional Cell Styling
 
@@ -713,7 +711,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 - By using the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) input [`cellStyles`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 
 > The callback signature for both `cellStyles` and `cellClasses` is now changed to:
@@ -951,7 +948,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## Known issues and limitations
 

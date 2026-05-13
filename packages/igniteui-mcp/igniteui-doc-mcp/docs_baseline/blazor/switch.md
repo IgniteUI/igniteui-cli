@@ -27,7 +27,6 @@ The Ignite UI for Blazor Switch component is a binary choice selection component
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -98,7 +97,6 @@ The switch can also be labelled by elements external to the switch. In this case
 }
 ```
 
-
 ### Checked
 
 You can use the `checked` attribute to toggle on the switch.
@@ -119,7 +117,6 @@ You can use the `checked` attribute to toggle on the switch.
 
 }
 ```
-
 
 ### Required
 
@@ -157,7 +154,6 @@ You can use the `disabled` attribute to disable the switch.
 
 }
 ```
-
 
 ### Forms
 
@@ -200,7 +196,6 @@ The [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blaz
 
 }
 ```
-
 
 <div class="divider--half"></div>
 

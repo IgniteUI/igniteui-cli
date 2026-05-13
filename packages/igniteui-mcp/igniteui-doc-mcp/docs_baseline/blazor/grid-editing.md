@@ -209,7 +209,6 @@ public class NwindData
 }
 ```
 
-
 ### Features integration
 
 While a cell/row is in edit mode, a user may interact with the grid in many ways. The following table specifies how a certain interaction affects the current editing:

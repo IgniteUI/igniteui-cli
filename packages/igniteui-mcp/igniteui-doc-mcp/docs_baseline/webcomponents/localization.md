@@ -23,7 +23,6 @@ Currently, Ignite UI for Web Components ships with resource strings for the foll
 }
 ```
 
-
 > Note: Hindi (HI) included in the sample is for illustrative purposes only, to demonstrate the possibility of passing a custom localization object. In this sample, it contains only a few localized strings for the summary. For more details, see the [Custom localized resource strings](#custom-localized-resource-strings) section below.
 
 ## Locale

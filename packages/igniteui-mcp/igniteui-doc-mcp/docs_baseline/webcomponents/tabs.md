@@ -22,7 +22,6 @@ The Web Components Tabs example below displays three different tabs aligned in a
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## How to use Tabs with Ignite UI for Web Components
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -92,7 +91,6 @@ If the space is not enough to fit all tabs, scroll buttons are displayed.
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Scrolling
 
 Scroll buttons are shown when the available space is not enough to render all Web Components tabs. The start scroll button is disabled if the first tab is in view. Respectively, when last tab is in view the end scroll button is disabled. By pressing one of the scroll buttons the tabs are scrolled so the tab in that direction is fully visible, or if it is already visible the previous/next tab in that direction is displayed.
@@ -101,7 +99,6 @@ Scroll buttons are shown when the available space is not enough to render all We
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Keyboard Navigation
 
@@ -129,7 +126,6 @@ igc-icon-button {
     --ig-size: var(--ig-size-small);
 }
 ```
-
 
 ## Styling
 
@@ -228,7 +224,6 @@ igc-tab::part(tab-header)::before {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API Reference
 

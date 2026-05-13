@@ -366,7 +366,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapNavigation/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Geographic Coordinates

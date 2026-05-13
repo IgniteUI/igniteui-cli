@@ -64,7 +64,6 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
     }
 ```
 
-
 ## Setup
 
 To get started with the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) and the **Collapsible multi-column headers** feature, first you need to install Ignite UI for Web Components by typing the following command:

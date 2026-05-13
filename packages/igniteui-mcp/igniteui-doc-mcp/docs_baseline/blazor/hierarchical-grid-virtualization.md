@@ -146,7 +146,6 @@ public class SingersData
 }
 ```
 
-
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ## Enabling Virtualization

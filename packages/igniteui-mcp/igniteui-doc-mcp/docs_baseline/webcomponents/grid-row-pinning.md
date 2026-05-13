@@ -22,7 +22,6 @@ The Ignite UI for Web Components Row Pinning feature in Web Components Grid allo
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Row Pinning UI
 
 The built-in row pinning UI is enabled by adding an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) component with the [`IgcGridPinningActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridpinningactions.html) component. The action strip is automatically shown when hovering a row and will display a pin or unpin button icon based on the state of the row it is shown for. An additional action allowing to scroll the copy of the pinned row into view is shown for each pinned row as well.
@@ -47,7 +46,7 @@ The built-in row pinning UI is enabled by adding an [`IgcActionStrip`](https://w
 
 ## Row Pinning API
 
-Row pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) body.
+Row pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowdirective.html#pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) body.
 
 ```typescript
 this.grid.getRowByIndex(0).pinned = true;
@@ -153,7 +152,6 @@ public togglePinning(index: number) {
 }
 ```
 
-
 <!-- ComponentStart: Grid -->
 
 <!-- ComponentEnd: Grid -->
@@ -199,11 +197,10 @@ Then set the related CSS properties for that class:
     }
 ```
 
-
 ## API References
 
 - [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
-- [`IgcGridRowComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrowcomponent.html)
+- [`IgcGridRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html)
 - [`IgcRowType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowtype.html)
 
 ## Additional Resources

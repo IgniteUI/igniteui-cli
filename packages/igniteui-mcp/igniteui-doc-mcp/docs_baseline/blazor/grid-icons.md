@@ -308,7 +308,6 @@ public class NwindData
 }
 ```
 
-
 ## Internal Icons
 
 The following lists all internal icons. Alias is the name of the icon by which it can be referenced. Target Icon is the internal icon name and Target Collection is the collection in which the icon is registered internally.

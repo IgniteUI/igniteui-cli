@@ -200,7 +200,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## React Hierarchical Grid Selection Options
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->

@@ -266,7 +266,6 @@ public class SingersData
 }
 ```
 
-
 > [!Note]
 > The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
 
@@ -684,7 +683,6 @@ public class SingersData
 }
 ```
 
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 ### Summary Template
@@ -1083,7 +1081,6 @@ public class SingersData
 }
 ```
 
-
 ## Disabled Summaries
 
 The [`DisabledSummaries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisabledSummaries) property provides precise per-column control over the Blazor Hierarchical Grid summary feature. This property enables users to customize the summaries displayed for each column in the HierarchicalGrid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as **\['count', 'min', 'max']** by specifying their summary keys in an array.
@@ -1464,7 +1461,6 @@ public class SingersData
 }
 ```
 
-
 ## Keyboard Navigation
 
 The summary rows can be navigated with the following keyboard interactions:
@@ -1746,7 +1742,6 @@ public class SingersData
     }
 }
 ```
-
 
 <!-- ComponentEnd: HierarchicalGrid -->
 

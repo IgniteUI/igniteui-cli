@@ -214,7 +214,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<FinancialChartTrendlines/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Chart Trendlines Dash Array Example
@@ -378,7 +377,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 

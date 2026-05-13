@@ -49,7 +49,6 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Radial Column Chart
@@ -87,7 +86,6 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -127,7 +125,6 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Radial Pie Chart
@@ -166,7 +163,6 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Radial Chart Styling
@@ -204,7 +200,6 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

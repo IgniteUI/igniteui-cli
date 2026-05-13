@@ -77,7 +77,6 @@ export class SampleFinancialData {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 Like this sample? Get access to our complete Web Components toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-web-components/download">Download it for free.</a>
@@ -234,7 +233,6 @@ export class MultipleStocks extends Array<Array<StockItem>> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

@@ -54,7 +54,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <!-- ## Axis Orientation Example
 
 TODO add info/example of 4 charts with all possible combinations of XAxisInverted and YAxisInverted
@@ -134,7 +133,6 @@ export class SharedAxisFinancialData {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Axis Crossing Example
@@ -147,7 +145,6 @@ The following example shows a Sin and Cos wave represented by a [Scatter Spline 
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

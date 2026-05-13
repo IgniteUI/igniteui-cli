@@ -18,7 +18,6 @@ The Ignite UI for Web Components Linear Progress Indicator component provides a 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -63,7 +62,6 @@ You can make the indicator striped, using the [`striped`](https://www.infragisti
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Indeterminate Progress
@@ -98,7 +96,6 @@ The following sample demonstrates the above configuration:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Dynamic Progress
@@ -109,7 +106,6 @@ You can dynamically change the value of the progress indicator by using external
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -150,7 +146,6 @@ igc-linear-progress::part(label){
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ```css
 igc-linear-progress::part(track){

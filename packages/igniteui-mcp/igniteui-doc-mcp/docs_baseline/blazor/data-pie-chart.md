@@ -82,7 +82,6 @@ public class EnergyGlobalDemand
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Data Pie Chart Recommendations
@@ -209,7 +208,6 @@ public class EnergyGlobalDemand
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -364,7 +362,6 @@ public class DataPieData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Data Pie Chart Selection
@@ -506,7 +503,6 @@ public class EnergyGlobalDemand
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Data Pie Chart Highlighting
@@ -637,7 +633,6 @@ public class EnergyGlobalDemand
 }
 ```
 
-
 In addition to the mouse highlighting, the [`IgbDataPieChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataPieChart.html) exposes a highlight filter capability that can display a subset of your data. This is applied by specifying a `HighlightedDataSource` for the control and by setting the [`HighlightedValuesDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_HighlightedValuesDisplayMode) property to `Overlay`. The `HighlightedDataSource` expects a subset of the data assigned to the `DataSource` property of the [`IgbDataPieChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataPieChart.html).
 
 When these conditions are met, the values of the subset will be highlighted, while the remainder of the full set of data will be faded - effectively creating a highlight for the subset and allowing easier visualization of a subset of your data within the same control.
@@ -740,7 +735,6 @@ public class OnlineTrafficHighlightTotals
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -862,7 +856,6 @@ public class EnergyGlobalDemand
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

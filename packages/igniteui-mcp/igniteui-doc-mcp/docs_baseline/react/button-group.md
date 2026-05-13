@@ -96,7 +96,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonGroupOverview/>);
 ```
 
-
 ## Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -200,7 +199,6 @@ export default function ButtonGroupAlignment() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonGroupAlignment/>);
 ```
-
 
 ### Selection
 
@@ -320,7 +318,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonGroupSelectionSample/>);
 ```
 
-
 A [`IgrToggleButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html) could be marked as selected via its [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html#selected) attribute or through the [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html) [`selectedItems`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html#selectedItems) attribute:
 
 ```tsx
@@ -392,7 +389,6 @@ export default function ButtonGroupSize() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonGroupSize/>);
 ```
-
 
 ## Styling
 
@@ -484,7 +480,6 @@ export default function ButtonGroupStyling() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonGroupStyling/>);
 ```
-
 
 ## API Reference
 

@@ -178,7 +178,6 @@ public class CustomersData
 }
 ```
 
-
 ## Grid Setup
 
 Let's start by creating our [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) and binding it to our data. We will also enable both filtering and sorting for the columns.
@@ -480,7 +479,6 @@ public class CustomersData
     }
 }
 ```
-
 
 ## API References
 

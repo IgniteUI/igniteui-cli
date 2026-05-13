@@ -376,7 +376,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Usage
 
 You should first bind to the grid's `rendered` event to create and manage a text area element:

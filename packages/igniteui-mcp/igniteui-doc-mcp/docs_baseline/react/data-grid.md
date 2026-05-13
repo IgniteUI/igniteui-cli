@@ -202,7 +202,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Getting Started with React Data Grid
@@ -545,9 +544,6 @@ For example, in order to display the weights of a given amino acid in the grid t
 An alternative way to bind complex data, or to visualize composite data (from more than one column) in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) is to use a custom body template for the column. Generally, one can:
 
 - use the `value` of the cell, that contains the nested data
-
-<!---->
-
 - use the `cell` object in the template, from which to access the `ctx.cell.id.rowIndex` or `ctx.cell.id.rowID` to get the row via the grid's API and retrieve any value from it and interpolate those in the template.
 
 ```tsx
@@ -846,10 +842,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ### Working with Flat Data Overview
 
-The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`data`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#data) property of the [`IgrGridRowComponent`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrowcomponent.html).
+The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`data`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#data) property of the [`IgrGridRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrow.html).
 
 Since the React grid is a component for **rendering**, **manipulating** and **preserving** data records, having access to **every data record** gives you the opportunity to customize the approach of handling it. The `data` property provides you this opportunity.
 
@@ -1215,7 +1210,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Keyboard Navigation
 
 Keyboard navigation of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) provides a rich variety of keyboard interactions for the user. It enhances accessibility and allows intuitive navigation through any type of elements inside (cell, row, column header, toolbar, footer, etc.).
@@ -1263,7 +1257,7 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 - [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
 - `Cell`
 - [`IgrCellTemplateContext`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcelltemplatecontext.html)
-- [`IgrGridRowComponent`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrowcomponent.html)
+- [`IgrGridRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrow.html)
 - [`IgrGridToolbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbar.html)
 - [`IgrPaginator`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpaginator.html)
 

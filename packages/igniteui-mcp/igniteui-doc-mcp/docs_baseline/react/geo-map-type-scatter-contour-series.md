@@ -322,7 +322,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapTypeScatterContourSeries/>);
 ```
 
-
 <div class="divider--half"></div>
 
 The [`IgrGeographicContourLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographiccontourlineseries.html) works a lot like the [`IgrGeographicScatterAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicscatterareaseries.html) except that it represents data as contour lines, colored using a fill scale and the geographic scatter area series, represents data as a surface interpolated using a color scale.

@@ -20,7 +20,7 @@ The Ignite UI for Web Components Cell Editing feature in Web Components Tree Gri
 
 ## Setup
 
-In order to specify which edit mode should be enabled, the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) exposes the following boolean properties - [`editable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#editable) and `RowEditable`.
+In order to specify which edit mode should be enabled, the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) exposes the following boolean properties - [`editable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#editable) and [`rowEditable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowEditable).
 
 The [`editable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#editable) property enables you to specify the following options:
 
@@ -29,12 +29,12 @@ The [`editable`](https://www.infragistics.com/products/ignite-ui-web-components/
 
 > Keep in mind that if the column is not editable, you can still modify its value through the public API exposed by the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html).
 
-The `RowEditable` property enables you to specify the following options:
+The [`rowEditable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowEditable) property enables you to specify the following options:
 
 - **false** - the row editing in the corresponding grid will be disabled. This is the default value.
 - **true** - the row editing in the corresponding grid will be enabled.
 
-In the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), if you set `RowEditable` property to true, and the [`editable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#editable) property is not explicitly defined for any column, the editing will be enabled for all the columns except the **primary key**.
+In the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), if you set [`rowEditable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowEditable) property to true, and the [`editable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#editable) property is not explicitly defined for any column, the editing will be enabled for all the columns except the **primary key**.
 
 <!--
 [Batch editing](batch-editing.md) in the grid can be enabled for both [cell editing](cell-editing.md) and [row editing](row-editing.md) modes. In order to set up batch editing it is necessary to provide to the grid a  **TransactionService**.
@@ -55,8 +55,6 @@ If you want to use a data type specific edit templates, you should specify the c
 - For `boolean` data type, default template is using [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html).
 - For `currency` data type, default template is using `InputGroup` with prefix/suffix configuration based on application or grid locale settings.
 - For `percent` data type, default template is using `InputGroup` with suffix element that shows a preview of the edited value in percents.
-
- 
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -86,7 +84,7 @@ The grid exposes a wide array of events that provide greater control over the ed
 ### Event Cancellation
 
 - `RowEditEnter` - Neither `Row` nor `Cell` will enter edit mode.
-- `CellEditEnter` - Prevents entering cell edit. If `RowEditable` is enabled, row edit will be triggered, although cell edit will remain forbidden.
+- `CellEditEnter` - Prevents entering cell edit. If [`rowEditable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowEditable) is enabled, row edit will be triggered, although cell edit will remain forbidden.
 - `CellEdit` - Allowed `Cell` and/or `Row` edit, hitting **Done** button or **Enter** won't commit the value or row transaction. Cell editing and Row editing won't be closed until **Cancel** button is clicked.
 - `RowEdit` - Committing cell is possible, but not the whole row. The row will stay in edit mode and the row transaction will be considered open. Hitting **Done** does not commit or close the row. **Cancel** button closes the editing process and the transaction without committing the changes.
 
@@ -128,7 +126,6 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Features integration
 

@@ -86,7 +86,6 @@ main {
 }
 ```
 
-
 > [!NOTE]
 > This sample is fictional and fully custom, it’s not part of the Ignite UI component library.
 

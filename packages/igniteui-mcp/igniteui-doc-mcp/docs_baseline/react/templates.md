@@ -127,7 +127,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<ComboTemplates />);
 ```
 
-
 ## Template Types
 
 ### Item Template

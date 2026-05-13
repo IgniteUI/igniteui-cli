@@ -70,7 +70,6 @@ export class InvoicesWorldData extends Array<InvoicesWorldDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Initial Grouping State
 
 It is possible to define initial grouping of the grid by assigning an array of expressions to the [`groupingExpressions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#groupingExpressions) property of the grid.
@@ -258,7 +257,6 @@ export class InvoicesWorldData extends Array<InvoicesWorldDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Group By With Summaries
 
 Integration between Group By and Summaries is described in the [Summaries](summaries.md#summaries-with-group-by) topic.
@@ -424,7 +422,6 @@ export class InvoicesData extends Array<InvoicesDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 The sample defines custom sorting for the different date conditions.
 Each custom strategy defines the `GroupingComparer` method, which is the custom compare function used when sorting the values. Additionally it extracts the values from the date needed for the comparison.
 
@@ -558,7 +555,6 @@ export class InvoicesData extends Array<InvoicesDataItem> {
     --ig-grid-expand-icon-hover-color: rgb(223, 181, 13);
 }
 ```
-
 
 ## Known Limitations
 

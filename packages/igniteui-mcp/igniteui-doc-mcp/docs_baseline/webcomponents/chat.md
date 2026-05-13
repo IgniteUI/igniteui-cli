@@ -18,7 +18,6 @@ Unlike a static message list, the [`IgcChatComponent`](https://www.infragistics.
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Installation
 
 To get started, install the Ignite UI for Web Components by running the following command:
@@ -326,7 +325,6 @@ chat.addEventListener('igcMessageCreated', (e) => {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Styling
 
 The [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) component exposes both **CSS parts** and **slots** for fine-grained customization of its appearance and structure.
@@ -492,7 +490,6 @@ igc-chat::part(input-attachments-container) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API Reference
 

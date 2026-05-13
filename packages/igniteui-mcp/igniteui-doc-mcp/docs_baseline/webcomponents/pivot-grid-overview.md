@@ -102,7 +102,6 @@ export class PivotSalesData extends Array<PivotSalesDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Getting Started With Web Components Pivot Grid
 
 The Web Components IgcPivotGrid can be configured via the [`pivotConfiguration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#pivotConfiguration) property.
@@ -339,7 +338,6 @@ export class PivotDataFlat extends Array<PivotDataFlatItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Auto generate configuration
 

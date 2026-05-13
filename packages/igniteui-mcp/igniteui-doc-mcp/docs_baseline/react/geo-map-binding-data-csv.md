@@ -376,7 +376,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapBindingDataCSV/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Data Example

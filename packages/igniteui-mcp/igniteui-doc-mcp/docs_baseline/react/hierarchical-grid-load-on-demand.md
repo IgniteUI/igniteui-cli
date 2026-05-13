@@ -140,7 +140,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
 
-
 ## Remote Service Provider
 
 First we will prepare our service provider so we will be ready to get the data we would need for the hierarchical grid.

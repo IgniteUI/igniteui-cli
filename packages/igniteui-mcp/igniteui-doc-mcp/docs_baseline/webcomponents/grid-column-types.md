@@ -108,7 +108,6 @@ export class Invoice
     }
 ```
 
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 ## Web Components Grid Default Template

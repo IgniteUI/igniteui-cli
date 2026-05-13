@@ -46,7 +46,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SimpleLinearProgressIndicator/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -121,7 +120,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<LinearProgressTypes/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ### Indeterminate Progress
@@ -182,7 +180,6 @@ export default class StripedLinearProgress extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<StripedLinearProgress/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -268,7 +265,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DynamicLinearProgress/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Styling
@@ -337,7 +333,6 @@ export default class StylingLinearProgressIndicator extends React.Component<any,
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<StylingLinearProgressIndicator/>);
 ```
-
 
 ```css
 igc-linear-progress::part(track){

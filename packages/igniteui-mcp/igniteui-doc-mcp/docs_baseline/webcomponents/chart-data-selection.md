@@ -81,7 +81,6 @@ export class TemperatureAverageData extends Array<TemperatureAverageDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Configuring Multiple Selection
 
 Other selection modes offer various methods of selection. For example using [`selectionBehavior`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#selectionBehavior) with `PerDataItemMultiSelect` will affect all series in entire category when multiple series are present while allowing selection across categories. Compared to `PerDataItemSingleSelect`, only a single category of items can be selected at a time. This is useful if multiple series are bound to different datasources and provides greater control of selection between categories.
@@ -122,7 +121,6 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Configuring Outline Selection
 
 When [`focusBrush`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#focusBrush) is applied, selected series will appear with a border when the [`selectionMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#selectionMode) property is set to one of the focus options.
@@ -162,7 +160,6 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Programmatic Selection
 
@@ -206,7 +203,6 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

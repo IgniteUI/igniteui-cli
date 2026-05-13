@@ -151,7 +151,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 The [`InitialFilter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_InitialFilter) property is a string that requires the following syntax in order to filter properly. The value requires sets of parentheses that include both the filter expression definition, column and value associated with the record(s) filtering in.

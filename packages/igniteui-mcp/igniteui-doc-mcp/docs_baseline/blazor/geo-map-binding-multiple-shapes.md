@@ -58,7 +58,6 @@ In the Ignite UI for Blazor map, you can add multiple geographic series objects 
 }
 ```
 
-
 <div class="divider--half"></div>
 
 This topic takes you step-by-step towards displaying multiple geographic series in the map component. All geographic series plot following geo-spatial data loaded from shape files using the [`IgbShapeDataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbShapeDataSource.html) class. Refer to the [Binding Shape Files](geo-map-binding-shp-file.md) topic for more information about [`IgbShapeDataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbShapeDataSource.html) object.

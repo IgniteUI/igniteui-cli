@@ -49,7 +49,7 @@ They are added inside the [`IgrHierarchicalGrid`](https://www.infragistics.com/p
 
 These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html).
 
-<!-- ComponentEnd: HierarchicalGrid -->
+<!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -257,7 +257,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## API References
 

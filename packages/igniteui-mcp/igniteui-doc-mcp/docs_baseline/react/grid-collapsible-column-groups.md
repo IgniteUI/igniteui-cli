@@ -219,7 +219,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Setup
 
 To get started with the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) and the **Collapsible multi-column headers** feature, first you need to install Ignite UI for React by typing the following command:

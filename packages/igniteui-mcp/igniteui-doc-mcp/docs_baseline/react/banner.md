@@ -108,7 +108,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BannerSample1 />);
 ```
 
-
 ## Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -305,7 +304,6 @@ export default function BannerSample2() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BannerSample2 />);
 ```
-
 
 ### Binding to events
 
@@ -530,7 +528,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BannerAdvancedSample />);
 ```
 
-
 ## Styling
 
 The [`IgrBanner`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbanner.html) component exposes several CSS parts which give you full control over its style:
@@ -708,7 +705,6 @@ export default function BannerStyling() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BannerStyling />);
 ```
-
 
 ## API References
 

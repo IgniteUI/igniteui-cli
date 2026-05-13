@@ -24,7 +24,6 @@ The following Web Components [`IgcCalendarComponent`](https://www.infragistics.c
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## How To Create a Calendar in Web Components with Ignite UI
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -51,7 +50,7 @@ The simplest way to start using the Ignite UI for Web Components [`IgcCalendarCo
 
 ### Selection Modes
 
-Users can choose from three different selection modes - single selection, multiple selection or range selection. By default, the Ignite UI for Web Components [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html) is using single selection mode but you can change it by setting the [`selection`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#selection) property as shown in this example.
+Users can choose from three different selection modes - single selection, multiple selection or range selection. By default, the Ignite UI for Web Components [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html) is using single selection mode but you can change it by setting the [`selection`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarbasecomponent.html#selection) property as shown in this example.
 
 ```html
 <igc-calendar selection="multiple"></igc-calendar>
@@ -62,10 +61,9 @@ Users can choose from three different selection modes - single selection, multip
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Range Selection
 
-Following the same approach, we can switch [`selection`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#selection) to range mode:
+Following the same approach, we can switch [`selection`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarbasecomponent.html#selection) to range mode:
 
 ```html
 <!-- Range selection mode -->
@@ -77,7 +75,6 @@ Following the same approach, we can switch [`selection`](https://www.infragistic
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Active View and Date
 
 The Ignite UI for Web Components Calendar component allows you to switch between three different views: days, months and years. The [`activeView`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#activeView) property of the component reflects the current view. By default, the Calendar displays the current date when loaded initially. You could modify this by setting the [`activeDate`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#activeDate) property. The [`activeDate`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#activeDate) property also reflects the changes of the currently visible date made by the end user.
@@ -87,7 +84,7 @@ The Ignite UI for Web Components Calendar component allows you to switch between
 By default, the Ignite UI for Web Components Calendar component renders a header area which contains information about the selected dates. You could hide the header by setting the `HasHeader` property to **false**. You could also configure `vertical` or `horizontal` orientation of the header using the [`headerOrientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#headerOrientation) property.
 
 > [!Note]
-> Please note that the Ignite UI for Web Components Calendar header is not rendered when the [`selection`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#selection) is set to multiple.
+> Please note that the Ignite UI for Web Components Calendar header is not rendered when the [`selection`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarbasecomponent.html#selection) is set to multiple.
 
 > [!Note]
 > Please note that the Ignite UI for Web Components Calendar DOM properties use `camelCase` naming while their corresponding HTML attributes are using `kebab-case`. For example the [`headerOrientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#headerOrientation) property corresponds to the `header-orientation` attribute.
@@ -107,12 +104,11 @@ The following sample demonstrates the above configuration:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Localization and Formatting
 
-Due to their very nature, localization and formatting are essential to any calendar. In the Ignite UI for Web Components [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html) those are controlled and customized through the following properties - [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#locale), [`formatOptions`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#formatOptions), [`weekStart`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#weekStart).
+Due to their very nature, localization and formatting are essential to any calendar. In the Ignite UI for Web Components [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html) those are controlled and customized through the following properties - [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarbasecomponent.html#locale), [`formatOptions`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#formatOptions), [`weekStart`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarbasecomponent.html#weekStart).
 
-Let's go ahead and try those along with other customizations. First thing we need to set is the [`weekStart`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#weekStart), which controls the starting day of the week. It defaults to `Sunday`, so we will set it to `Monday`. We will also customize the [`formatOptions`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#formatOptions) property which specifies the options used to format the months and the weekdays in the Calendar views. Finally, we will set the [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#locale) property to a value, based on the user's location choice:
+Let's go ahead and try those along with other customizations. First thing we need to set is the [`weekStart`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarbasecomponent.html#weekStart), which controls the starting day of the week. It defaults to `Sunday`, so we will set it to `Monday`. We will also customize the [`formatOptions`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#formatOptions) property which specifies the options used to format the months and the weekdays in the Calendar views. Finally, we will set the [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarbasecomponent.html#locale) property to a value, based on the user's location choice:
 
 ```html
 <igc-radio-group alignment="horizontal">
@@ -154,10 +150,9 @@ If everything went well, we should now have a Calendar with customized display, 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Disabled dates
 
-In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#disabledDates) property. The [`disabledDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#disabledDates) property is an array of [`DateRangeDescriptor`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html) objects. Each descriptor has a `Type` and optionally a [`dateRange`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html#dateRange) which is an array of `Date` objects.
+In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarbasecomponent.html#disabledDates) property. The [`disabledDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarbasecomponent.html#disabledDates) property is an array of [`DateRangeDescriptor`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html) objects. Each descriptor has a `Type` and optionally a [`dateRange`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html#dateRange) which is an array of `Date` objects.
 
 These are the available options for the `Type` property:
 
@@ -187,10 +182,9 @@ These configurations should have the following result:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Special dates
 
-The [`specialDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#specialDates) property is using almost the same configuration principles as the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#disabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
+The [`specialDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarbasecomponent.html#specialDates) property is using almost the same configuration principles as the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarbasecomponent.html#disabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
 
 Let's add some special dates to our Calendar. In order to do this, we will create a [`DateRangeDescriptor`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html) and pass the dates between the 3rd and the 8th of the current month:
 
@@ -211,10 +205,9 @@ The following demo illustrates a Calendar with a vacation request option:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Week numbers
 
-You can use the [`showWeekNumbers`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#showWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
+You can use the [`showWeekNumbers`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarbasecomponent.html#showWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
 
 ```html
 <igc-calendar show-week-numbers></igc-calendar>
@@ -226,7 +219,6 @@ The following demo illustrates a Calendar with enabled week numbers:
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Multiple Months
 
@@ -245,7 +237,6 @@ The following sample demonstrates the multiple months configuration:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Size
 
 You could control the size and spacing of the calendar inner elements using the `--ig-size` CSS variable. The default size of the component is large.
@@ -254,7 +245,6 @@ You could control the size and spacing of the calendar inner elements using the 
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Events
 
@@ -422,7 +412,6 @@ igc-calendar::part(navigation-button):focus {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

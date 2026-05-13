@@ -190,7 +190,6 @@ The following example shows all of the available panning and zooming options tha
 }
 ```
 
-
 <div class="divider--half"></div>
 
 Like this sample? Get access to our complete Blazor toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-blazor/download">Download it for free.</a>
@@ -393,7 +392,6 @@ The following example demonstrates enabling scrollbars.
     }
     //end async data
 ```
-
 
 <div class="divider--half"></div>
 

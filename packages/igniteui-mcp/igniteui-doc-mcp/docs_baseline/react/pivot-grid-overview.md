@@ -158,7 +158,6 @@ export const SALES_DATA_NEW =
     ];
 ```
 
-
 ## Getting Started With React Pivot Grid
 
 The React IgrPivotGrid can be configured via the [`pivotConfiguration`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html#pivotConfiguration) property.
@@ -559,7 +558,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ### Auto generate configuration
 

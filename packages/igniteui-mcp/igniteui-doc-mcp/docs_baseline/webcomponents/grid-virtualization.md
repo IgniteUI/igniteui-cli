@@ -108,7 +108,6 @@ export class FinancialDataAll extends Array<FinancialDataAllItem> {
 }
 ```
 
-
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ## Enabling Virtualization

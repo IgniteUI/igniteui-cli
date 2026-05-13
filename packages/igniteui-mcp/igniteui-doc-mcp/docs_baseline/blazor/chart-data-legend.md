@@ -108,7 +108,6 @@ public class HighestGrossingMovies
 }
 ```
 
-
 ### Header Row
 
 The header row displays the current label of x-axis when hovering mouse over category series and financial series. You can use [`HeaderFormatDate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataLegend.html#IgniteUI_Blazor_Controls_IgbDataLegend_HeaderFormatDate) and [`HeaderFormatTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataLegend.html#IgniteUI_Blazor_Controls_IgbDataLegend_HeaderFormatTime) properties to format date and time in the [`IgbDataLegend`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataLegend.html) if the x-axis shows dates. For other types of series, the [`IgbDataLegend`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataLegend.html) does not render the header row.
@@ -299,7 +298,6 @@ The columns of the [`IgbDataLegend`](https://www.infragistics.com/blazor/docs/ap
     }
     //end async data
 ```
-
 
 Setting values on the [`IncludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataLegend.html#IgniteUI_Blazor_Controls_IgbDataLegend_IncludedColumns) and [`ExcludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataLegend.html#IgniteUI_Blazor_Controls_IgbDataLegend_ExcludedColumns) properties, depends on type of series and how many data columns they support. For example, you can set [`IncludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataLegend.html#IgniteUI_Blazor_Controls_IgbDataLegend_IncludedColumns) property to a collection of **Open** and **Close** strings and the legend will show only open and close values for stock prices when the chart is plotting financial series. The following table lists all column names that can be use to filter columns in data legend.
 
@@ -588,7 +586,6 @@ public class StockItem {
   //end data
 ```
 
-
 ## Blazor Data Legend Value Formatting
 
 The [`IgbDataLegend`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataLegend.html) provides automatic abbreviation of large numbers using its [`ValueFormatAbbreviation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataLegend.html#IgniteUI_Blazor_Controls_IgbDataLegend_ValueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`ValueFormatMinFractions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataLegend.html#IgniteUI_Blazor_Controls_IgbDataLegend_ValueFormatMinFractions) and [`ValueFormatMaxFractions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataLegend.html#IgniteUI_Blazor_Controls_IgbDataLegend_ValueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
@@ -688,7 +685,6 @@ public class HighestGrossingMovies
     }
 }
 ```
-
 
 ## Blazor Data Legend Value Mode
 
@@ -875,7 +871,6 @@ You have the ability to change the default decimal display of values within the 
     //end async data
 ```
 
-
 ## Blazor Data Legend Grouping
 
 [`DataLegendGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
@@ -1018,7 +1013,6 @@ public class OlympicMedalsTopCountriesWithTotals
     }
 }
 ```
-
 
 ## Blazor Data Legend Styling & Events
 
@@ -1184,7 +1178,6 @@ public class OlympicMedalsTopCountriesWithTotals
     }
 }
 ```
-
 
 ## API References
 

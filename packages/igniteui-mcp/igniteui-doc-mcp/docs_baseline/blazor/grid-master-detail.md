@@ -126,7 +126,6 @@ public class CustomersData
 }
 ```
 
-
 ## Configuration
 
 To configure the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) to display in master-detail mode you need to specify a template for the grid:

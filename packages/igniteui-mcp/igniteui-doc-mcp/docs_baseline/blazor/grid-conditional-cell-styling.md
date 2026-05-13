@@ -38,14 +38,14 @@ The [`RowClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bla
 ```razor
 igRegisterScript("RowClassesHandler", () => {
     return {
-        activeRow: (row) => row.index === 0
+        activeRow: (row) => row.index % 2 === 0
     };
 }, true);
 ```
 
 ```css
 .activeRow {
-    border: 2px solid #fc81b8;
+    border-top: 2px solid #fc81b8;
     border-left: 3px solid #e41c77;
 }
 ```
@@ -168,7 +168,6 @@ public class NwindData
     }
 }
 ```
-
 
 ### Using Row Styles
 
@@ -415,7 +414,6 @@ public class FinancialDataAll
 }
 ```
 
-
 ## Grid Conditional Cell Styling
 
 ## Overview
@@ -588,7 +586,6 @@ public class AthletesData
 }
 ```
 
-
 - By using the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) input [`CellStyles`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 
 > The callback signature for both `cellStyles` and `cellClasses` is now changed to:
@@ -749,7 +746,6 @@ public class AthletesData
     }
 }
 ```
-
 
 ## Known issues and limitations
 

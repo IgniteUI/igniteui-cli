@@ -152,7 +152,6 @@ public class CustomersData
 }
 ```
 
-
 **Column resizing** is also enabled per-column level, meaning that the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) can have a mix of resizable and non-resizable columns. This is done via the [`Resizable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Resizable) input of the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html).
 
 ```razor
@@ -406,7 +405,6 @@ public class CustomersData
 }
 ```
 
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -527,7 +525,6 @@ public class AthletesData
     }
 }
 ```
-
 
 ## API References
 

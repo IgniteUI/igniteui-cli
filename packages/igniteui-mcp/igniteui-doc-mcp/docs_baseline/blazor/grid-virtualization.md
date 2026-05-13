@@ -234,7 +234,6 @@ public class FinancialDataAll
 }
 ```
 
-
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ## Enabling Virtualization

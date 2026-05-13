@@ -28,7 +28,6 @@ Additionally there is a custom contextmenu added for sorting using [`IgcHierarch
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 This is done via the [`sortable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#sortable) input. With the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) sorting, you can also set the [`sortingIgnoreCase`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#sortingIgnoreCase) property to perform case sensitive sorting:
 
 ```html
@@ -45,7 +44,6 @@ The [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignit
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Sorting through the API
 
@@ -188,7 +186,6 @@ Then set the related CSS properties to this class:
     --ig-grid-sortable-header-icon-hover-color: black;
 }
 ```
-
 
 ## API References
 

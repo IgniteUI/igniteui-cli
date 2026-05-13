@@ -140,7 +140,6 @@ export class PivotNoopData extends Array<any> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 Users have the ability to achieve certain scenarios by feeding the pivot grid with already aggregated data.
 There are some requirements on how the data should look like and some specifics regarding hierarchies in the pivot view. For example, to declare hierarchy in **rows** dimension:
 

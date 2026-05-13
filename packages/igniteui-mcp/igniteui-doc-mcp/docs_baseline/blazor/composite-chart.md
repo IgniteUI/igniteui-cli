@@ -108,7 +108,6 @@ The following example demonstrates how to create Composite Chart using [`IgbColu
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Additional Resources

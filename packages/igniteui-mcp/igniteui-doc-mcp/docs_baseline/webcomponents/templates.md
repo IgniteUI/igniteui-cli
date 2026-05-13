@@ -27,7 +27,6 @@ igc-combo::part(empty) {
 }
 ```
 
-
 ## Template Types
 
 ### Item Template

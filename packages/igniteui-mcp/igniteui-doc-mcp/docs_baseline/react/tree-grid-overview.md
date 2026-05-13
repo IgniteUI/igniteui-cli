@@ -206,7 +206,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Getting Started with Ignite UI for React Tree Grid
 
 ### Dependencies
@@ -438,7 +437,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## Persistence and Integration
 

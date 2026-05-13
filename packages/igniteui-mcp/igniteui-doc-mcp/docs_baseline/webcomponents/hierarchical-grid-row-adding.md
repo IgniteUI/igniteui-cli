@@ -27,7 +27,6 @@ Add an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-co
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Row Adding Usage
 
 Then define a [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) with bound data source, [`rowEditable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowEditable) set to true and an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) component with editing actions enabled. The `AddRow` input controls the visibility of the button that spawns the row adding UI.
@@ -129,9 +128,6 @@ After a new row is added through the row adding UI, its position and/or visibili
 ## Keyboard Navigation
 
 - <kbd>ALT</kbd> + <kbd>+</kbd> - Enters edit mode for adding a row
-
-<!---->
-
 - <kbd>ESC</kbd> exits row adding mode without submitting any changes
 
 - <kbd>TAB</kbd> move focus from one editable cell in the row to the next and from the right-most editable cell to the CANCEL and DONE buttons. Navigation from DONE button goes to the left-most editable cell within the currently edited row.

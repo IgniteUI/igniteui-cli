@@ -54,7 +54,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExpansionPanelUsage/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -189,7 +188,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExpansionPanelPropertiesAndEvents/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Component Customization
@@ -276,7 +274,6 @@ export default class ExpansionPanelComponentCustomization extends React.Componen
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExpansionPanelComponentCustomization/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -412,7 +409,6 @@ export default class ExpansionPanelStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExpansionPanelStyling/>);
 ```
-
 
 <div class="divider"></div>
 

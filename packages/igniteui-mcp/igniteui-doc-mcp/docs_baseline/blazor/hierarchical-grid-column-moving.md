@@ -347,7 +347,6 @@ public class HierarchicalCustomers
 }
 ```
 
-
 ## Overview
 
 **Column moving** feature is enabled on a per-grid level, meaning that the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) could have either movable or immovable columns. This is done via the [`Moving`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Moving) input of the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html).
@@ -753,7 +752,6 @@ public class HierarchicalCustomers
     }
 }
 ```
-
 
 ## API References
 

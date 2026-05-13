@@ -425,7 +425,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapBindingDataModel/>);
 ```
 
-
 <div class="divider--half"></div>
 
 The following table summarized data structures required for each type of geographic series:

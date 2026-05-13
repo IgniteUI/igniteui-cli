@@ -24,7 +24,6 @@ The Ignite UI for Web Components Card displays text, images, icons, and buttons 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -195,7 +194,6 @@ If everything went well, our card should look like this:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Alternative layouts
 
 You can get even more creative with the layout of the [`IgcCardComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcomponent.html).
@@ -265,7 +263,6 @@ Below is an example showing how you can create a semi-horizontal card, where we 
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Card Actions
 
@@ -351,7 +348,6 @@ igc-icon-button+igc-icon-button {
   margin-left: 10px;
 }
 ```
-
 
 ### Summary
 

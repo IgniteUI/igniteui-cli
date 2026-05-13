@@ -71,7 +71,6 @@ In Blazor map component, you can use the [`IgbGeographicHighDensityScatterSeries
 }
 ```
 
-
 <div class="divider--half"></div>
 
 The demo above shows the [`IgbGeographicHighDensityScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicHighDensityScatterSeries.html) series in the map component bound to hundreds or even thousands of data points representing Australia’s population density. The map plot area with more densely populated data points represented as coalescences of red pixels and loosely distributed data points by discrete blue pixels.

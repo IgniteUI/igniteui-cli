@@ -385,7 +385,6 @@ namespace Infragistics.Samples
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Change Default Font

@@ -100,7 +100,6 @@ public class CountyHierarchicalData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Treemap Recommendations
@@ -281,7 +280,6 @@ public class CountyHierarchicalData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -473,7 +471,6 @@ public class CountyHierarchicalData
 }
 ```
 
-
 ### Blazor Treemap Highlighting
 
 In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set [`HighlightingMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_HighlightingMode)to Brighten or FadeOthers.
@@ -592,7 +589,6 @@ public class CountyHierarchicalData
 }
 ```
 
-
 ## Blazor Treemap Percent based highlighting
 
 - [`HighlightedDataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_HighlightedDataSource): Specifies the datasource to read highlighted values from. If null, then highlighted values are read from the ItemsSource property.
@@ -686,7 +682,6 @@ public class CountryTopUrbanPopData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

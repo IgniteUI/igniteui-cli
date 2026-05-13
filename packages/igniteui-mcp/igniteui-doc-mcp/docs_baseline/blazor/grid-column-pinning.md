@@ -168,7 +168,6 @@ public class CustomersDataLocal
 }
 ```
 
-
 ## Column Pinning API
 
 Column pinning is controlled through the [`Pinned`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowDirective.html#IgniteUI_Blazor_Controls_IgbRowDirective_Pinned) property of the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html). Pinned columns are rendered on the left side of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) body.
@@ -419,7 +418,6 @@ public class AthletesDataExtended
 }
 ```
 
-
 ### Column Pinning on Both Sides
 
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
@@ -641,7 +639,6 @@ public class CustomersDataLocal
 }
 ```
 
-
 ## Custom Column Pinning UI
 
 You can define your custom UI and change the pin state of the columns via the related API.
@@ -862,7 +859,6 @@ public class CustomersData
 }
 ```
 
-
 ## Pinning Limitations
 
 - Setting column widths in percentage (%) explicitly makes the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
@@ -1015,7 +1011,6 @@ public class CustomersData
     }
 }
 ```
-
 
 <!-- end: WebComponents, Blazor -->
 

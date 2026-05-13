@@ -50,7 +50,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Area Chart Recommendations
@@ -122,7 +121,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Area Chart with Multiple Series
@@ -162,7 +160,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Area Chart Styling
@@ -201,7 +198,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -246,7 +242,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 The following sections explain more advanced types of Web Components Area Charts that can be created using the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control instead of [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) control with simplified API.
@@ -288,7 +283,6 @@ export class TemperatureRangeData extends Array<TemperatureRangeDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -332,7 +326,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Stacked 100% Area Chart
@@ -374,7 +367,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -418,7 +410,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Stacked 100% Spline Area Chart
@@ -461,7 +452,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Radial Area Chart
@@ -499,7 +489,6 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -539,7 +528,6 @@ export class BoatSailingData extends Array<BoatSailingDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Polar Spline Area Chart
@@ -577,7 +565,6 @@ export class BoatSailingData extends Array<BoatSailingDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

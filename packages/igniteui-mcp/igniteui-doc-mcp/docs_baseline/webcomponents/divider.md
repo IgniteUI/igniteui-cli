@@ -18,7 +18,6 @@ The Ignite UI for Web Components Divider allows the content author to easily cre
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies
@@ -70,7 +69,6 @@ p{
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Type
 
 The [`type`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdividercomponent.html#type) attribute determines whether to render a `solid` or a `dashed` divider line. The default value is `solid`.
@@ -83,7 +81,6 @@ The [`type`](https://www.infragistics.com/products/ignite-ui-web-components/docs
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Inset Divider
 
@@ -139,7 +136,6 @@ p {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Using Divider Inside Select Component
 
 The following sample illustrates how the [`IgcDividerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdividercomponent.html) can be integrated within the [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) in order to distinguish two groups of items.
@@ -157,7 +153,6 @@ The following sample illustrates how the [`IgcDividerComponent`](https://www.inf
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## CSS Variables
 

@@ -57,7 +57,6 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Cell Editing
 
 ### Editing through UI
@@ -204,7 +203,6 @@ export class RoleplayTreeGridData extends Array<RoleplayTreeGridDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## CRUD operations
 
 > [!Note]
@@ -232,7 +230,7 @@ public addNewChildRow() {
 
 ### Updating data in the Tree Grid
 
-Updating data in the Tree Grid is achieved through `UpdateRow` and `UpdateCell` methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
+Updating data in the Tree Grid is achieved through [`updateRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#updateRow) and [`updateCell`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -255,7 +253,7 @@ row.update(newData);
 
 ### Deleting data from the Tree Grid
 
-Please keep in mind that `DeleteRow` method will remove the specified row only if a `PrimaryKey` is defined.
+Please keep in mind that [`deleteRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#deleteRow) method will remove the specified row only if a [`primaryKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#primaryKey) is defined.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -310,6 +308,8 @@ public webTreeGridCellEdit(event: CustomEvent<IgcGridEditEventArgs>): void {
 
 ```
 
+<!-- Blazor -->
+
 <!-- ComponentEnd: TreeGrid -->
 
 The result of the above validation being applied to our [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) can be seen in the below demo:
@@ -350,7 +350,6 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Styling
 
@@ -420,13 +419,9 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 }
 ```
 
-
 ## API References
 
 - [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)
-
-<!---->
-
 - [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html)
 
 ## Additional Resources

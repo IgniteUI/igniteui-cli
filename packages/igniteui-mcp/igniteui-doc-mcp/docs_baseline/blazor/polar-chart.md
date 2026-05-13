@@ -164,7 +164,6 @@ public class BoatSailingData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Polar Spline Area Chart
@@ -301,7 +300,6 @@ public class BoatSailingData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Polar Marker Chart
@@ -433,7 +431,6 @@ public class BoatSailingData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -586,7 +583,6 @@ public class BoatSailingData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Polar Spline Chart
@@ -720,7 +716,6 @@ public class BoatSailingData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -872,7 +867,6 @@ public class BoatSailingData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

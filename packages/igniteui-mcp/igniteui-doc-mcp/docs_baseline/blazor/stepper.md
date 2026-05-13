@@ -111,7 +111,6 @@ The following Ignite UI for Blazor Stepper Example below shows the component in 
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Getting Started with Blazor Stepper
@@ -318,7 +317,6 @@ The sample below demonstrates how stepper orientation and titles position could 
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ### Step States
@@ -453,7 +451,6 @@ The sample below demonstrates all exposed step types and how they could be chang
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ### Stepper Animations
@@ -568,7 +565,6 @@ The [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bla
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -728,7 +724,6 @@ igc-step::part(indicator) {
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

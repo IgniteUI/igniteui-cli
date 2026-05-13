@@ -102,18 +102,10 @@ over Group Row - collapses the group.
 
  <!-- ComponentEnd: Grid -->
 
- 
-
- 
-
 - <kbd>ALT</kbd> + <kbd>→</kbd> or <kbd>ALT</kbd> + <kbd>↓</kbd> - <!-- ComponentStart: Grid -->
     over Group Row - expands the group.
 
  <!-- ComponentEnd: Grid -->
-
- 
-
- 
 
  <!-- ComponentStart: Grid -->
 
@@ -311,7 +303,6 @@ export class Item {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Custom Keyboard Navigation
 
 Overriding the default behavior for a certain key or keys combination is one of the benefits that the **Keyboard Navigation** feature provides. For example: press the <kbd>ENTER</kbd> or <kbd>TAB</kbd> key to navigate to the next cell or the cell below. This or any other navigation scenario is easily achieved by the **Keyboard Navigation** API:
@@ -393,7 +384,6 @@ Use the demo below to try out the custom scenarios that we just implemented:
         --ig-size: var(--ig-size-medium);
     }
 ```
-
 
 ## Known Limitations
 

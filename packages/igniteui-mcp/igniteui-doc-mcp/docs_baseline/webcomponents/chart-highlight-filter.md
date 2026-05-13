@@ -74,7 +74,6 @@ export class CountryRenewableElectricityFiltered extends Array<CountryRenewableE
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 Note that data highlighting feature is supported by the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) and [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html), but it is configured in different ways in those controls due to the nature of how those controls work. One thing remains constant with this feature though, in that you need to set the [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#highlightedValuesDisplayMode) property to `Overlay` if you want to see the highlight. The following will explain the different configurations for the highlight filter feature.
 
 ## Using Highlight Filter with DataChart
@@ -128,7 +127,6 @@ export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopC
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control using the [`highlightedValuesDataLegendGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#highlightedValuesDataLegendGroup):
 
 ```typescript
@@ -168,7 +166,6 @@ export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopC
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 The following example demonstrates the usage of the data highlighting overlay feature within the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control using the `HighlightedValueMemberPath`:
 
 ```typescript
@@ -207,7 +204,6 @@ export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopC
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Using Highlight Filter in CategoryChart
 
@@ -262,7 +258,6 @@ export class SalesData extends Array<SalesDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <!-- TODO add new section that talks about how this feature also applies to Range, Financial series and the HighlightedValueMemberPath property corresponds to:
 HighlightedHighMemberPath and HighlightedLowMemberPath in Range Series

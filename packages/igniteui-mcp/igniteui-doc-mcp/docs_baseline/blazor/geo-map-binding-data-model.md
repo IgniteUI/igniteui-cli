@@ -94,7 +94,6 @@ The Ignite UI for Blazor map component is designed to display geo-spatial data f
 }
 ```
 
-
 <div class="divider--half"></div>
 
 The following table summarized data structures required for each type of geographic series:

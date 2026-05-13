@@ -221,7 +221,6 @@ public class NwindData
 }
 ```
 
-
 ## Usage
 
 To turn on the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component's Excel-style filtering, two inputs should be set. The [`AllowFiltering`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_AllowFiltering) should be set to **true** and the [`FilterMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_FilterMode) should be set to `ExcelStyleFilter` value.
@@ -436,7 +435,6 @@ public class NwindData
     }
 }
 ```
-
 
 ## Templates
 
@@ -657,7 +655,6 @@ public class NwindData
 }
 ```
 
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -842,7 +839,6 @@ public class NwindData
     }
 }
 ```
-
 
 ## API References
 

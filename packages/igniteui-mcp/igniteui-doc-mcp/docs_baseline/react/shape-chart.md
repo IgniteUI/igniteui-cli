@@ -170,7 +170,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTypeScatterPolygonSeries/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Scatter Polyline Chart
@@ -328,7 +327,6 @@ export default class DataChartTypeScatterPolylineSeries extends React.Component<
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartTypeScatterPolylineSeries/>);
 ```
-
 
 <div class="divider--half"></div>
 

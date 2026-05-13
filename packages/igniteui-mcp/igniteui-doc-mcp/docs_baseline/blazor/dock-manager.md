@@ -214,7 +214,6 @@ This example shows most functionalities and docking options of the [`IgbDockMana
 }
 ```
 
-
 <div class="divider--half"></div>
 
 <!-- end: Angular, React, WebComponents -->
@@ -222,8 +221,6 @@ This example shows most functionalities and docking options of the [`IgbDockMana
 <div class="divider--half"></div>
 
 <div class="divider--half"></div>
-
- 
 
 <div class="divider--half"></div>
 
@@ -552,7 +549,6 @@ If everything went well, we should now have a DockManager with customized icons 
 
 }
 ```
-
 
 Below you can find a list containing the slot names for all of the buttons as well as the splitter handle:
 
@@ -1538,7 +1534,6 @@ igc-card-content {
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

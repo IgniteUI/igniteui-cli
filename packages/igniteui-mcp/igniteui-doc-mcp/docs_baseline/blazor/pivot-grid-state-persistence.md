@@ -538,7 +538,6 @@ public class PivotDataFlat
 }
 ```
 
-
 <!-- ComponentStart: PivotGrid -->
 
 <!-- ComponentEnd: PivotGrid -->

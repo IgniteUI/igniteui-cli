@@ -52,9 +52,6 @@ When the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/Ignite
 - <kbd>CTRL</kbd> + <kbd>↑</kbd> sorts the active column header in ASC order. If the column is already sorted in ASC, sorting state is cleared.
 - <kbd>CTRL</kbd> + <kbd>↓</kbd> sorts the active column header in DSC order. If the column is already sorted in DSC, sorting state is cleared.
 - <kbd>SPACE</kbd> selects the column. If the column is already selected, selection is cleared.
-
- 
-
 - <kbd>SHIFT</kbd> + <kbd>ALT</kbd> + <kbd>→</kbd> ungroups the column, if the column is marked as groupable.
 - <kbd>ALT</kbd> + <kbd>←</kbd> or <kbd>ALT</kbd> + <kbd>↑</kbd> collapses the column group header, if the header is not already collapsed.
 - <kbd>ALT</kbd> + <kbd>→</kbd> or <kbd>ALT</kbd> + <kbd>↓</kbd> expands the column group header, if the header is not already expanded.
@@ -92,10 +89,6 @@ When the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/Ignite
 - <kbd>SPACE</kbd> - selects the row, if [Row Selection](row-selection.md) is enabled.
 - <kbd>ALT</kbd> + <kbd>←</kbd> or <kbd>ALT</kbd> + <kbd>↑</kbd> -
 
- 
-
- 
-
  <!-- ComponentStart: TreeGrid -->
 
 collapses the current node.
@@ -107,15 +100,11 @@ collapses the current node.
 
  <!-- ComponentEnd: Grid -->
 
- 
-
  <!-- ComponentStart: TreeGrid -->
 
 expands the current node.
 
  <!-- ComponentEnd: TreeGrid -->
-
- 
 
 Practice all of the above mentioned actions in the demo sample below. Focus any navigable grid element and a list with some of the available actions for the element will be shown to guide you through.
 
@@ -289,7 +278,6 @@ public class EmployeesNestedData
     }
 }
 ```
-
 
 ## Known Limitations
 

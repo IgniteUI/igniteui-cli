@@ -280,7 +280,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ## Enabling Virtualization

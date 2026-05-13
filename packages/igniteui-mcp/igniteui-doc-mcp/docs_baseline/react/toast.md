@@ -49,7 +49,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ToastOverview />);
 ```
 
-
 <div class="divider--half"></div>
 
 ### How To Use Ignite UI for React Toast Notification
@@ -185,7 +184,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ToastProperties />);
 ```
 
-
 ## Styling
 
 You can style the React [`IgrToast`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html) notifications directly using its tag selector:
@@ -236,7 +234,6 @@ export default function ToastStyling() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ToastStyling />);
 ```
-
 
 <div class="divider--half"></div>
 

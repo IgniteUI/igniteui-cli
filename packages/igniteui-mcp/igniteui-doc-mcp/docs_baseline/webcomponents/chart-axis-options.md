@@ -50,7 +50,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Axis Labels Example
@@ -89,7 +88,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -139,7 +137,6 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Axis Range Example
@@ -180,7 +177,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -377,7 +373,6 @@ export class StocksUtility {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Axis Gap Example
@@ -423,7 +418,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Axis Overlap Example
@@ -463,7 +457,6 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

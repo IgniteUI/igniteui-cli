@@ -22,7 +22,6 @@ The following example depicts a [Column Chart](../types/column-chart.md) with a 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Value Overlay Properties
@@ -89,7 +88,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -161,7 +159,6 @@ export class StockTesla extends Array<StockTeslaItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Styling Overlay Text
 

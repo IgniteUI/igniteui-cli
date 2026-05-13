@@ -325,7 +325,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExcelLibraryWorkingWithSparklines/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Supported Sparklines

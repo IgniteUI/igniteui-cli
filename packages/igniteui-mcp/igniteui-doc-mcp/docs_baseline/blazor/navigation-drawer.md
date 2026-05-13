@@ -102,7 +102,6 @@ This sample demonstrates how to create [`IgbNavDrawer`](https://www.infragistics
 }
 ```
 
-
 ## Usage
 
 Before using the [`IgbNavDrawer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavDrawer.html), you need to register it as follows:
@@ -232,7 +231,6 @@ If all went well, you should see the following in your browser:
     }
 }
 ```
-
 
 ## Navbar Integration
 
@@ -447,7 +445,6 @@ If all goes well, your component should now look like this:
 }
 ```
 
-
 ## Mini Variant
 
 With the mini variant, the Navigation Drawer changes its width instead of closing. It is used to maintain quick navigation, available at all times, leaving just the icons. To achieve that, you only need to set up the `mini` slot of the drawer.
@@ -587,7 +584,6 @@ And here's the result:
     }
 }
 ```
-
 
 ## Styling
 
@@ -732,7 +728,6 @@ igc-nav-drawer-header-item {
     }
 }
 ```
-
 
 ## API References
 

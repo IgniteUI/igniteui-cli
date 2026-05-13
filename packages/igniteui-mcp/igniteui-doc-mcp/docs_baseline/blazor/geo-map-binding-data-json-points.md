@@ -63,7 +63,6 @@ With the Ignite UI for Blazor map, you can plot geographic data loaded from vari
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Data Example

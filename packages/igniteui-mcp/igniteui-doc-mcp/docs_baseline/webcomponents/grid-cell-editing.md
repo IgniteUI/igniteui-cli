@@ -29,7 +29,6 @@ In addition, you can define your own custom templates for update-data actions an
     }
 ```
 
-
 ## Cell Editing
 
 ### Editing through UI
@@ -71,7 +70,7 @@ public updateCell() {
 
 <!-- ComponentEnd: Grid -->
 
-Another way to update cell is directly through `Update` method of `Cell`:
+Another way to update cell is directly through [`update`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowdirective.html#update) method of `Cell`:
 
 <!-- ComponentStart: Grid -->
 
@@ -175,7 +174,6 @@ export class RoleplayDataStats extends Array<RoleplayDataStatsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <!-- ComponentStart: Grid -->
 
@@ -321,7 +319,6 @@ export class NwindData extends Array<NwindDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 Main benefits of the above approach include:
 
 - Constant edit mode: typing while a cell is selected will immediately enter edit mode with the value typed, replacing the existing one
@@ -433,6 +430,8 @@ If the value entered in a cell under the **Units On Order** column is larger tha
 
 <!-- ComponentEnd: Grid -->
 
+<!-- Blazor -->
+
 <!-- ComponentEnd: TreeGrid -->
 
 The result of the above validation being applied to our [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) can be seen in the below demo:
@@ -441,7 +440,6 @@ The result of the above validation being applied to our [`IgcGridComponent`](htt
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Styling
 
@@ -483,13 +481,9 @@ Then set the related CSS properties for that class:
     }
 ```
 
-
 ## API References
 
 - [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
-
-<!---->
-
 - [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html)
 
 ## Additional Resources

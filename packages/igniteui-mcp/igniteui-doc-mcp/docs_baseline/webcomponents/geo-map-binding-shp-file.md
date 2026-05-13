@@ -19,7 +19,6 @@ The Ignite UI for Web Components map component, the [`IgcShapeDataSource`](https
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 The following table explains properties of the [`IgcShapeDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_core.igcshapedatasource.html) class for loading shape files.

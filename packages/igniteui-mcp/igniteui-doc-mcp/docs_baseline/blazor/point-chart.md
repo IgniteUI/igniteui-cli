@@ -109,7 +109,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Point Chart with Single Series
@@ -191,7 +190,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -290,7 +288,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -393,7 +390,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

@@ -69,7 +69,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Overview/>);
 ```
 
-
 ## How to use Tabs with Ignite UI for React
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -184,7 +183,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Alignment />);
 ```
 
-
 ### Scrolling
 
 Scroll buttons are shown when the available space is not enough to render all React tabs. The start scroll button is disabled if the first tab is in view. Respectively, when last tab is in view the end scroll button is disabled. By pressing one of the scroll buttons the tabs are scrolled so the tab in that direction is fully visible, or if it is already visible the previous/next tab in that direction is displayed.
@@ -222,7 +220,6 @@ export default class Scrolling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Scrolling />);
 ```
-
 
 ### Keyboard Navigation
 
@@ -312,7 +309,6 @@ export default class PrefixSuffix extends React.Component<any, { tabs: string[] 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<PrefixSuffix/>);
 ```
-
 
 ## Styling
 
@@ -457,7 +453,6 @@ export default class TabsStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<TabsStyling/>);
 ```
-
 
 ## API Reference
 

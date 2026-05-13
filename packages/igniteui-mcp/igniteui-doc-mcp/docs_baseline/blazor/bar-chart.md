@@ -164,7 +164,6 @@ public class HighestGrossingMovies
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Bar Chart Recommendations
@@ -339,7 +338,6 @@ public class OnlineShoppingSearches
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Bar Chart with Multiple Series
@@ -493,7 +491,6 @@ public class HighestGrossingMovies
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Bar Chart Styling
@@ -634,7 +631,6 @@ public class OnlineShoppingSearches
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -807,7 +803,6 @@ public class EnergyRenewableConsumption
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100% Bar Chart
@@ -975,7 +970,6 @@ public class EnergyRenewableConsumption
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

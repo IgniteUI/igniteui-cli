@@ -193,7 +193,6 @@ public class CustomersDataLocal
 }
 ```
 
-
 ## Row Pinning UI
 
 The built-in row pinning UI is enabled by adding an [`IgbActionStrip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbActionStrip.html) component with the [`IgbGridPinningActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridPinningActions.html) component. The action strip is automatically shown when hovering a row and will display a pin or unpin button icon based on the state of the row it is shown for. An additional action allowing to scroll the copy of the pinned row into view is shown for each pinned row as well.
@@ -465,7 +464,6 @@ public class CustomersDataLocal
 }
 ```
 
-
 <!-- ComponentStart: Grid -->
 
 <!-- ComponentEnd: Grid -->
@@ -639,7 +637,6 @@ public class CustomersDataLocal
     }
 }
 ```
-
 
 ## API References
 

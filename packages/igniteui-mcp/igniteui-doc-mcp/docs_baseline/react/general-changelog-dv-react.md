@@ -20,7 +20,7 @@ All notable changes for each version of Ignite UI for React are documented on th
 #### Changed
 
 - [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html): Updated to use the latest `igniteui-dockmanager@2.1.0` with new `minResizeWidth` and `minResizeHeight` properties, `paneFlyoutToggle` event; additional `layoutChange` event detail and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-dockmanager/blob/master/CHANGELOG.md#210).
-- Updated to use the latest `igniteui-webcomponents@7.1.0` including new `Splitter` and `Highlight` container components and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/CHANGELOG.md#710---2026-03-19).
+- Updated to use the latest `igniteui-webcomponents@7.1.0` including new [`IgrSplitter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html) and `Highlight` container components and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/CHANGELOG.md#710---2026-03-19).
 
 #### New Features
 
@@ -591,7 +591,7 @@ The following table lists the bug fixes made for the Ignite UI for React toolset
 ### igniteui-react
 
 - Added new `allowSplitterDock` property for `Dockmanager` that allows docking directly in a split.
-- Added new `useFixedSize` property for the [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrsplitpane.html) of `Dockmanager` that allows new resize behavior.
+- Added new `useFixedSize` property for the [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html) of `Dockmanager` that allows new resize behavior.
 
 ### Enhancements
 
@@ -756,7 +756,7 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 
 - [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html), [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html) - exposed [`validateOnly`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html#validateOnly) to enable validation rules being enforced without restricting user input.
 - [`IgrDropdown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html) - [`IgrPositionStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpositionstrategy.html) property is deprecated. The dropdown now uses the `Popover` API to render its container in the top layer of the browser viewport, making the property obsolete.
-- [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html) - [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrsplitpane.html) [`isMaximized`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrsplitpane.html#isMaximized) is deprecated. Having isMaximized set to true on a split pane level has no real effect as split panes serve as containers only, meaning they have no actual content to be shown maximized. Use the [`isMaximized`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrsplitpane.html#isMaximized) property of [`IgrTabGroupPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrtabgrouppane.html) and/or [`IgrContentPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrcontentpane.html) instead.
+- [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html) - [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html) [`isMaximized`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#isMaximized) is deprecated. Having isMaximized set to true on a split pane level has no real effect as split panes serve as containers only, meaning they have no actual content to be shown maximized. Use the [`isMaximized`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#isMaximized) property of [`IgrTabGroupPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabgrouppane.html) and/or [`IgrContentPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html) instead.
 
 ### igniteui-react-grids
 
@@ -876,7 +876,7 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 
 ### Deprecated Components
 
-> [DataGrid](grids/data-grid/overview.md) - The DataGrid is deprecated, please use [Grid](grids/data-grid.md)
+> `DataGrid` - The DataGrid is deprecated, please use [Grid](grids/data-grid.md)
 
 ## **18.2.0 (June 2023)**
 
@@ -948,7 +948,7 @@ Added significant improvements to default behaviors, and refined the Category Ch
 
 ### igniteui-react-grids (Data Grid)
 
-Added New Feature - [Row Paging](grids/data-grid/row-paging.md) which is used to split a large set of data into a sequence of pages that have similar content. With pagination, data can be displayed in a set number of rows, letting users “scroll” through their data, without needing a scroll bar. The UI for table pagination usually includes things like the current page, total pages, and clickable Previous and Next arrows/buttons that let users flip through the pages of data.
+Added New Feature - `Row Paging` which is used to split a large set of data into a sequence of pages that have similar content. With pagination, data can be displayed in a set number of rows, letting users “scroll” through their data, without needing a scroll bar. The UI for table pagination usually includes things like the current page, total pages, and clickable Previous and Next arrows/buttons that let users flip through the pages of data.
 
 ## **16.15.1 (December 2021)**
 
@@ -1019,10 +1019,10 @@ This release introduces a few improvements and simplifications to visual design 
 ### igniteui-react-grids (Data Grid)
 
 - New Features Added:
-  - [Filter Row](grids/data-grid/column-filtering.md)
-  - [Load/Save Layout Customizations](grids/data-grid/load-save-layout.md)
-  - [GroupBy Area for column grouping](grids/data-grid/row-grouping.md)
-  - [Cell Merging](grids/data-grid/cell-merging.md)
+  - `Filter Row`
+  - `Load/Save Layout Customizations`
+  - `GroupBy Area for column grouping`
+  - `Cell Merging`
 - New API:
   - Added `SelectionChanged` event. Used to detect changes on selection interactions
         e.g. Multiple row selection.
@@ -1198,7 +1198,7 @@ Import statements have been simplified to use just package names instead of full
 | <a href="https://www.npmjs.com/package/igniteui-react-gauges/v/16.11.7" target="_blank">igniteui-react-gauges</a> |  [Bullet Graph](bullet-graph.md), [Linear Gauge](linear-gauge.md), [Radial Gauge](radial-gauge.md)   |
 | <a href="https://www.npmjs.com/package/igniteui-react-charts/v/16.11.7" target="_blank">igniteui-react-charts</a>| Category Chart, Data Chart, Donut Chart, Financial Chart], Pie Chart, [Zoom Slider](zoomslider-overview.md)  |
 | <a href="https://www.npmjs.com/package/igniteui-react-core/v/16.11.7" target="_blank">igniteui-react-core</a> | all classes and enums  |
-| <a href="https://www.npmjs.com/package/igniteui-react-grids/v/16.11.7" target="_blank">igniteui-react-grids</a> | [Data Grid](grids/data-grid/overview.md) |
+| <a href="https://www.npmjs.com/package/igniteui-react-grids/v/16.11.7" target="_blank">igniteui-react-grids</a> | `Data Grid` |
 
 - Code After Changes
 

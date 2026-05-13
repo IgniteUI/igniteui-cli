@@ -42,7 +42,6 @@ The Blazor Icon component allows you to easily display font or choose from a lar
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -159,7 +158,6 @@ igc-icon {
 }
 ```
 
-
 You can also set a custom size for the icon component. The best way to do this is by using the `--size` CSS variable.
 
 ```css
@@ -217,7 +215,6 @@ igc-icon {
     }
 }
 ```
-
 
 ## API References
 

@@ -210,7 +210,6 @@ public class InvoicesData
 }
 ```
 
-
 ## Setup
 
 To get started with the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) and the **Collapsible multi-column headers** feature, first you need to install Ignite UI for Blazor by typing the following command:

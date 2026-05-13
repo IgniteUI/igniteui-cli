@@ -44,7 +44,6 @@ function buildUrl(dataState: any) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ## Enabling Virtualization

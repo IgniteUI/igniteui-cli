@@ -505,7 +505,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapBindingMultipleShapes/>);
 ```
 
-
 <div class="divider--half"></div>
 
 This topic takes you step-by-step towards displaying multiple geographic series in the map component. All geographic series plot following geo-spatial data loaded from shape files using the [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) class. Refer to the [Binding Shape Files](geo-map-binding-shp-file.md) topic for more information about [`IgrShapeDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_core.igrshapedatasource.html) object.

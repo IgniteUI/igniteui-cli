@@ -101,7 +101,6 @@ The following sample demonstrates the editing execution sequence in action:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Features integration
 
 While a cell/row is in edit mode, a user may interact with the grid in many ways. The following table specifies how a certain interaction affects the current editing:

@@ -41,7 +41,6 @@ The Ignite UI for Blazor Color Editor is a lightweight color picker component. T
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies

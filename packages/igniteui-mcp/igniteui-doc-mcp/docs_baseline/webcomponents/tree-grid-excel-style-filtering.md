@@ -51,10 +51,9 @@ export class FoodsData extends Array<FoodsDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Usage
 
-To turn on the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) component's Excel-style filtering, two inputs should be set. The `AllowFiltering` should be set to **true** and the `FilterMode` should be set to `ExcelStyleFilter` value.
+To turn on the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#allowFiltering) should be set to **true** and the [`filterMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#filterMode) should be set to `ExcelStyleFilter` value.
 
 ```html
 <igc-tree-grid auto-generate="true" allow-filtering="true" filter-mode="excelStyleFilter" >
@@ -132,12 +131,11 @@ export class FoodsData extends Array<FoodsDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the `ExcelStyleHeaderIconTemplate` property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the `ExcelStyleHeaderIconTemplate`:
+The following code demonstrates how to customize the Excel style filter menu using the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#excelStyleHeaderIconTemplate):
 
 ```ts
 constructor() {
@@ -213,7 +211,6 @@ export class FoodsData extends Array<FoodsDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -294,7 +291,6 @@ export class FoodsData extends Array<FoodsDataItem> {
         --ig-drop-down-focused-item-background: #c2b1b1bd;
     }
 ```
-
 
 ## API References
 

@@ -56,7 +56,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Configuration
 
 To configure the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) to display in master-detail mode you need to specify a template for the grid:

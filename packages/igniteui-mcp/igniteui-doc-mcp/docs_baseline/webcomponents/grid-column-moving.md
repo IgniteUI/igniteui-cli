@@ -123,7 +123,6 @@ export class FinancialDataAll extends Array<FinancialDataAllItem> {
 }
 ```
 
-
 ## Overview
 
 **Column moving** feature is enabled on a per-grid level, meaning that the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) could have either movable or immovable columns. This is done via the [`moving`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#moving) input of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
@@ -303,7 +302,6 @@ export class FinancialDataAll extends Array<FinancialDataAllItem> {
     --ig-grid-ghost-header-icon-color: #f4d45c;
 }
 ```
-
 
 ## API References
 

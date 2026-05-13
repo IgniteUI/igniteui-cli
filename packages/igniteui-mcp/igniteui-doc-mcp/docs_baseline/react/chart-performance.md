@@ -271,7 +271,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartHighFrequency/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Chart with High-Volume
@@ -424,7 +423,6 @@ export default class CategoryChartHighVolume extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartHighVolume/>);
 ```
-
 
 <div class="divider--half"></div>
 

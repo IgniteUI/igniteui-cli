@@ -109,7 +109,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Line Chart Recommendations
@@ -238,7 +237,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Line Chart with Multiple Series
@@ -338,7 +336,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -477,7 +474,6 @@ You can create this type of chart in the [`IgbCategoryChart`](https://www.infrag
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Styling Line Chart
@@ -580,7 +576,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 You can also create a dashed line within the [`IgbLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLineSeries.html) by using the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) and setting the [`DashArray`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DashArray) property on the series. This property takes an array of numbers that will describe the length of the resulting dashes in the line.
 
@@ -729,7 +724,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -915,7 +909,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100% Line Chart
@@ -1094,7 +1087,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Radial Line Chart
@@ -1244,7 +1236,6 @@ public class FootballPlayerStats
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1398,7 +1389,6 @@ public class BoatSailingData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

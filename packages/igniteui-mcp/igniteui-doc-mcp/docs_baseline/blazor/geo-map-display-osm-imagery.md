@@ -48,7 +48,6 @@ By the default, the Ignite UI for Blazor map component already displays geograph
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Code Snippet

@@ -29,7 +29,6 @@ In addition, you can define your own custom templates for update-data actions an
     }
 ```
 
-
 ## Cell Editing
 
 ### Editing through UI
@@ -143,7 +142,6 @@ Working sample of the above can be found here for further reference:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## CRUD operations
 
 > [!Note]
@@ -227,6 +225,8 @@ constructor() {
 
 The `CellEdit` emits whenever **any** cell's value is about to be committed. In our **CellEdit** definition, we need to make sure that we check for our specific column before taking any action:
 
+<!-- Blazor -->
+
 <!-- ComponentStart: HierarchicalGrid -->
 
 If the value entered in a cell under the **Units On Order** column is larger than the available amount (the value under **Units in Stock**), the editing will be cancelled and the user will be alerted to the cancellation.
@@ -238,18 +238,12 @@ If the value entered in a cell under the **Units On Order** column is larger tha
 <!-- ComponentStart: HierarchicalGrid -->
 
 ```typescript
-public webHierarchicalGridCellEdit(event: CustomEvent<IgcGridEditEventArgs>): void {
-    const today = new Date();
-    const column = event.detail.column;
-    if (column.field === 'Debut') {
-        if (event.detail.newValue > today.getFullYear()) {
-            event.detail.cancel = true;
-            alert('The debut date must be in the past!');
-        }
-    } else if (column.field === 'LaunchDate') {
-        if (event.detail.newValue > today) {
-            event.detail.cancel = true;
-            alert('The launch date must be in the past!');
+ public webGridEditingEventsCellEdit(args: CustomEvent<IgcGridEditEventArgs>): void {
+    var d = args.detail;
+    if (d.column != null && d.column.field == "UnitsOnOrder") {
+        if (d.newValue > d.rowData.UnitsInStock) {
+            d.cancel = true;
+            alert("You cannot order more than the units in stock!")
         }
     }
 }
@@ -267,7 +261,6 @@ The result of the above validation being applied to our [`IgcHierarchicalGridCom
         --ig-size: var(--ig-size-medium);
     }
 ```
-
 
 ## Styling
 
@@ -309,13 +302,9 @@ Then set the related CSS properties for that class:
     }
 ```
 
-
 ## API References
 
 - [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)
-
-<!---->
-
 - [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html)
 
 ## Additional Resources

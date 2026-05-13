@@ -360,7 +360,6 @@ namespace Infragistics.Samples
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Referencing Cells and Regions

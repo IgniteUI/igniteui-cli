@@ -60,7 +60,6 @@ The Ignite UI for Blazor Date Time Input allows the user to set and edit the dat
 }
 ```
 
-
 ## Usage
 
 Before using the [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html), you need to register it as follows:
@@ -185,7 +184,6 @@ If all went well, you should see the following in your browser:
 }
 ```
 
-
 ### Display format
 
 The date time input exposes predefined formats for displaying date/time in various manners. All of the examples below are given in en-US locale.
@@ -299,7 +297,6 @@ If all went well, the component will be `invalid` if the value is greater or low
 }
 ```
 
-
 ## Step up/down
 
 The [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html) exposes public [`StepUp`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_StepUp) and [`StepDown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_StepDown) methods. They increment or decrement a specific `DatePart` of the currently set date and time and can be used in a couple of ways.
@@ -362,7 +359,6 @@ Try it in the example below:
     }
 }
 ```
-
 
 ## Styling
 
@@ -449,7 +445,6 @@ igc-date-time-input {
     }
 }
 ```
-
 
 ## API References
 

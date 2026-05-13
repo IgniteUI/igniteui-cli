@@ -32,7 +32,6 @@ The sample below demonstrates the three types of [`IgcHierarchicalGridComponent`
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Setup
 
 In order to setup row selection in the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), you just need to set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowSelection) property. This property accepts `GridSelectionMode` enumeration.
@@ -217,7 +216,7 @@ constructor() {
 
 You can template header and row selectors in the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) and also access their contexts which provide useful functionality for different scenarios.
 
-By default, the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`click`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
+By default, the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`click`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
 
 #### Row Template
 
@@ -255,7 +254,7 @@ public rowSelectorTemplate = (ctx: IgcRowSelectorTemplateContext) => {
 }
 ```
 
-In the above example we are using an [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) and we bind `rowContext.selected` to its [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
+In the above example we are using an [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) and we bind `rowContext.selected` to its [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -322,7 +321,6 @@ This demo shows the usage of custom header and row selectors. The latter uses [`
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Conditional Selection Demo
 
 This demo prevents some rows from being selected using the `RowSelectionChanging` event and a custom template with disabled checkbox for non-selectable rows.
@@ -331,7 +329,6 @@ This demo prevents some rows from being selected using the `RowSelectionChanging
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

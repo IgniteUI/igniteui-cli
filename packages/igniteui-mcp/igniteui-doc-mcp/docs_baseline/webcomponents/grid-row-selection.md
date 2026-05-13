@@ -116,7 +116,6 @@ export class FinancialDataAll extends Array<FinancialDataAllItem> {
 }
 ```
 
-
 ## Setup
 
 In order to setup row selection in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), you just need to set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowSelection) property. This property accepts `GridSelectionMode` enumeration.
@@ -295,7 +294,7 @@ constructor() {
 
 You can template header and row selectors in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) and also access their contexts which provide useful functionality for different scenarios.
 
-By default, the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`click`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
+By default, the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`click`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
 
 #### Row Template
 
@@ -333,7 +332,7 @@ public rowSelectorTemplate = (ctx: IgcRowSelectorTemplateContext) => {
 }
 ```
 
-In the above example we are using an [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) and we bind `rowContext.selected` to its [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
+In the above example we are using an [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) and we bind `rowContext.selected` to its [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
 
 ### Header Template
 
@@ -419,7 +418,6 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <!-- ComponentStart: Grid, TreeGrid -->
 
 ### Excel Style Row Selectors Demo
@@ -472,7 +470,6 @@ export class CustomersData extends Array<CustomersDataItem> {
     }
 ```
 
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 ### Conditional Selection Demo
@@ -519,11 +516,10 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## API References
 
 - [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
-- [`IgcGridRowComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrowcomponent.html)
+- [`IgcGridRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html)
 
 ## Additional Resources
 

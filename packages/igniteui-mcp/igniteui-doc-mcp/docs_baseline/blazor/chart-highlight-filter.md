@@ -196,7 +196,6 @@ public class CountryRenewableElectricityFiltered
 }
 ```
 
-
 Note that data highlighting feature is supported by the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) and [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html), but it is configured in different ways in those controls due to the nature of how those controls work. One thing remains constant with this feature though, in that you need to set the [`HighlightedValuesDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_HighlightedValuesDisplayMode) property to `Overlay` if you want to see the highlight. The following will explain the different configurations for the highlight filter feature.
 
 ## Using Highlight Filter with DataChart
@@ -363,7 +362,6 @@ public class OlympicMedalsTopCountriesWithTotals
 }
 ```
 
-
 The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control using the [`HighlightedValuesDataLegendGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_HighlightedValuesDataLegendGroup):
 
 ```razor
@@ -508,7 +506,6 @@ public class OlympicMedalsTopCountriesWithTotals
 }
 ```
 
-
 The following example demonstrates the usage of the data highlighting overlay feature within the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control using the `HighlightedValueMemberPath`:
 
 ```razor
@@ -640,7 +637,6 @@ public class OlympicMedalsTopCountriesWithTotals
 }
 ```
 
-
 ## Using Highlight Filter in CategoryChart
 
 The [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) highlight filter happens on the chart by setting the [`InitialHighlightFilter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_InitialHighlightFilter) property. Since the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) takes all of the properties on your underlying data item into account by default, you will need to define the [`InitialGroups`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_InitialGroups) on the chart as well so that the data can be grouped and aggregated in a way that you can have a subset of the data to filter on. You can set the [`InitialGroups`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_InitialGroups) to a value path in your underlying data item to group by a path that has duplicate values.
@@ -761,7 +757,6 @@ public class SalesData
     }
 }
 ```
-
 
 <!-- TODO add new section that talks about how this feature also applies to Range, Financial series and the HighlightedValueMemberPath property corresponds to:
 HighlightedHighMemberPath and HighlightedLowMemberPath in Range Series

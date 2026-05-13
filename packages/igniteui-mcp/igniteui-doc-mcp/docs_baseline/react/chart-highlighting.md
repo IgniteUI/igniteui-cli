@@ -163,7 +163,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 # React Chart Highlighting Modes & Behaviors
@@ -309,7 +308,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 The following example demonstrates the [`highlightingBehavior`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#highlightingBehavior) React chart.
 
 ```typescript
@@ -450,7 +448,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 # React Chart Legend Highlighting
 
 All React Charts support legend highlighting. [`legendHighlightingMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#legendHighlightingMode) can enabled so that when mouse is hovering over a legend marker item then the rendered series will highlight in the plot area. Legend highlighting is supported by the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html), [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html), and [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) controls and they have the same API for using the highlighting feature.
@@ -573,7 +570,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## Highlight Layers
 
@@ -770,7 +766,6 @@ export default class CategoryChartColumnChartWithHighlighting extends React.Comp
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartColumnChartWithHighlighting/>);
 ```
-
 
 ## Additional Resources
 

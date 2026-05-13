@@ -226,7 +226,6 @@ public class ProductSales
 }
 ```
 
-
 This is done via the [`Sortable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Sortable) input. With the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) sorting, you can also set the [`SortingIgnoreCase`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_SortingIgnoreCase) property to perform case sensitive sorting:
 
 ```razor
@@ -411,7 +410,6 @@ public class FinancialDataAll
     }
 }
 ```
-
 
 ## Sorting through the API
 
@@ -713,7 +711,6 @@ public class ProductSales
     }
 }
 ```
-
 
 ## API References
 

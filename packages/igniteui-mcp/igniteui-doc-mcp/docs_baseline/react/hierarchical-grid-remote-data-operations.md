@@ -378,7 +378,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
 
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 <!-- ComponentEnd: HierarchicalGrid -->

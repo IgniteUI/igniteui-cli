@@ -27,7 +27,6 @@ The Ignite UI for Blazor Linear Progress Indicator component provides a visual i
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -86,7 +85,6 @@ You can make the indicator striped, using the [`Striped`](https://www.infragisti
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ### Indeterminate Progress
@@ -140,7 +138,6 @@ The following sample demonstrates the above configuration:
 
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -201,7 +198,6 @@ You can dynamically change the value of the progress indicator by using external
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Styling
@@ -250,7 +246,6 @@ Using this CSS parts we have almost full control of the Linear Progress styling.
 
 }
 ```
-
 
 ```css
 igc-linear-progress::part(track){

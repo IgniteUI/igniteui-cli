@@ -74,7 +74,6 @@ The following example depicts a [Column Chart](../types/column-chart.md) with a 
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Value Overlay Properties
@@ -241,7 +240,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -444,7 +442,6 @@ public class StockTesla
     }
 }
 ```
-
 
 ### Styling Overlay Text
 
