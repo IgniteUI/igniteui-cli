@@ -155,15 +155,15 @@ const command: NewCommandType = {
 			cd14: theme
 		});
 
-		process.chdir(argv.name);
-		await configure(argv.agents as (AIAgentTarget | "none")[] ?? [], argv.assistants as (AiCodingAssistant | "none")[] ?? []);
-		process.chdir("..");
-
 		const config = projTemplate.generateConfig(argv.name, theme);
 		for (const templatePath of projTemplate.templatePaths) {
 			await Util.processTemplates(templatePath, path.join(process.cwd(), argv.name),
 				config, projTemplate.delimiters, false);
 		}
+
+		process.chdir(argv.name);
+		await configure(argv.agents as (AIAgentTarget | "none")[], argv.assistants as (AiCodingAssistant | "none")[]);
+		process.chdir("..");
 
 		Util.log(Util.greenCheck() + " Project Created");
 
