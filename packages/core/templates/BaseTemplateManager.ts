@@ -20,12 +20,12 @@ export abstract class BaseTemplateManager {
 		}
 	}
 
-	public getFrameworkIds(): string[] {
-		return this.frameworks.map(f => f.id);
+	public getFrameworkIds(includeHidden = false): string[] {
+		return this.frameworks.filter(f => includeHidden || !f.hidden).map(f => f.id);
 	}
-	public getFrameworkNames(): string[] {
+	public getFrameworkNames(includeHidden = false): string[] {
 		// exclude WebComponents from the Step-By-Step wizard
-		return this.frameworks.map(f => f.name);
+		return this.frameworks.filter(f => includeHidden || !f.hidden).map(f => f.name);
 	}
 	/**  Returns framework found by its name or undefined. */
 	public getFrameworkByName(name: string): Framework {

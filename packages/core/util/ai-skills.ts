@@ -3,7 +3,7 @@ import type { BaseTemplateManager } from "../templates";
 import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
 import { NPM_ANGULAR, NPM_REACT, NPM_WEBCOMPONENTS, resolvePackage, UPGRADEABLE_PACKAGES } from "../update/package-resolve";
 import { App } from "./App";
-import { detectFrameworkFromPackageJson } from "./detect-framework";
+import { detectBlazorFromCsproj, detectFrameworkFromPackageJson } from "./detect-framework";
 import { FsFileSystem } from "./FileSystem";
 import { TEMPLATE_MANAGER } from "./GlobalConstants";
 import { ProjectConfig } from "./ProjectConfig";
@@ -96,6 +96,21 @@ function resolveSkillsRoots(): string[] {
 			framework = ProjectConfig.getConfig().project?.framework?.toLowerCase() ?? null;
 		}
 	} catch { /* config not readable – fall through to scan all */ }
+
+	// Detect Blazor from .csproj when no local config is available
+	const isBlazor = !framework && detectBlazorFromCsproj();
+	if (isBlazor) {
+		framework = "blazor";
+	}
+
+	// Blazor has no npm package — skills come only from the bundled ai-config template files
+	if (framework === "blazor") {
+		const filesDir = resolveTemplateFilesDir(framework);
+		if (filesDir) {
+			roots.push(path.join(filesDir, AI_SKILLS_DIR_NAME));
+		}
+		return roots;
+	}
 
 	const allPkgKeys = Object.keys(UPGRADEABLE_PACKAGES);
 	let candidates = new Set<string>();
@@ -205,7 +220,7 @@ function resolveAgentsContent(): string | null {
 			framework = ProjectConfig.getConfig().project?.framework?.toLowerCase() ?? null;
 		}
 	} catch { /* fall through */ }
-	framework ??= detectFrameworkFromPackageJson();
+	framework ??= detectBlazorFromCsproj() ? "blazor" : detectFrameworkFromPackageJson();
 
 	if (!framework) {
 		return null;
