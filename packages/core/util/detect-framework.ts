@@ -1,5 +1,27 @@
 import { App } from "./App";
 import { IFileSystem, FS_TOKEN } from "../types/FileSystem";
+import { ProjectConfig } from "./ProjectConfig";
+
+type Framework = "angular" | "react" | "webcomponents";
+
+/**
+ * Attempt to detect project framework by first checking for local cli-config,
+ * then falling back to package.json analysis of `detectFrameworkFromPackageJson()`.
+ * @returns The detected framework Id or `null` if no framework could be detected.
+ */
+export function detectFramework():  Framework | null {
+	let framework: Framework | null = null;
+	try {
+		// try project config first:
+		if (ProjectConfig.hasLocalConfig()) {
+			framework = ProjectConfig.getConfig().project?.framework?.toLowerCase() as Framework ?? null;
+		}
+	} catch { /* fall through */ }
+
+	framework ??= detectFrameworkFromPackageJson();
+
+	return framework;
+}
 
 /**
  * Attempts to detect the front-end framework by inspecting for well-known,
@@ -12,7 +34,7 @@ import { IFileSystem, FS_TOKEN } from "../types/FileSystem";
  *  - "webcomponents"→ fallback when neither of the above is found
  *  - `null` if `package.json` is absent or cannot be parsed.
  */
-export function detectFrameworkFromPackageJson(): "angular" | "react" | "webcomponents" | null {
+export function detectFrameworkFromPackageJson(): Framework | null {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 	if (!fs.fileExists("./package.json")) {
 		return null;

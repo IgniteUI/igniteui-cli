@@ -38,8 +38,8 @@ export class PromptSession extends BasePromptSession {
 		await upgrade.upgrade({ skipInstall: true, _: ["upgrade"], $0: "upgrade" });
 	}
 
-	protected override async configureAI(): Promise<void> {
-		await aiConfigure();
+	protected override async configureAI(frameworkId: string): Promise<void> {
+		await aiConfigure(frameworkId);
 	}
 
 	protected override templateSelectedTask(type: "component" | "view" = "component"): Task<PromptTaskContext> {

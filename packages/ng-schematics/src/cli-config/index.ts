@@ -132,8 +132,8 @@ function aiConfig({ init, agents, assistants }: { init: boolean; agents: AIAgent
 		if (init) {
 			appInit(tree);
 		}
-		copyAISkillsToProject(agents);
-		copyAgentInstructionFiles(agents);
+		copyAISkillsToProject(agents, "angular");
+		copyAgentInstructionFiles(agents, "angular");
 
 		const angularCliServer: Record<string, McpServerEntry> = {
 			"angular-cli": {

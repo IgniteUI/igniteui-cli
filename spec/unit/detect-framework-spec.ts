@@ -1,5 +1,5 @@
-import { App, IFileSystem } from "@igniteui/cli-core";
-import { detectFrameworkFromPackageJson } from "../../packages/core/util/detect-framework";
+import { App, IFileSystem, ProjectConfig } from "@igniteui/cli-core";
+import { detectFramework, detectFrameworkFromPackageJson } from "../../packages/core/util/detect-framework";
 
 function makeFs(pkgJson?: object): IFileSystem {
 	const present = pkgJson !== undefined;
@@ -95,5 +95,49 @@ describe("Unit - detectFrameworkFromPackageJson", () => {
 			);
 			expect(detectFrameworkFromPackageJson()).toBe("react");
 		});
+	});
+});
+
+describe("Unit - detectFramework", () => {
+	it("returns framework from ProjectConfig when local config is present", () => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({
+			project: { framework: "angular" }
+		} as any);
+		expect(detectFramework()).toBe("angular");
+	});
+
+	it("falls back to package.json detection when local config is absent", () => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+		spyOn(App.container, "get").and.returnValue(
+			makeFs({ dependencies: { "react": "^19.0.0" } })
+		);
+		expect(detectFramework()).toBe("react");
+	});
+
+	it("prefers ProjectConfig framework over package.json when both are present", () => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({
+			project: { framework: "react" }
+		} as any);
+		// package.json has angular — should be ignored
+		spyOn(App.container, "get").and.returnValue(
+			makeFs({ dependencies: { "@angular/core": "^17.0.0" } })
+		);
+		expect(detectFramework()).toBe("react");
+	});
+
+	it("falls back to package.json detection when ProjectConfig throws", () => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.throwError("config read error");
+		spyOn(App.container, "get").and.returnValue(
+			makeFs({ dependencies: { "@angular/core": "^17.0.0" } })
+		);
+		expect(detectFramework()).toBe("angular");
+	});
+
+	it("returns null when neither ProjectConfig nor package.json provides a framework", () => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+		spyOn(App.container, "get").and.returnValue(makeFs()); // no package.json present
+		expect(detectFramework()).toBeNull();
 	});
 });

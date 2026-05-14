@@ -1,4 +1,22 @@
-import { addMcpServers, AI_AGENT_LABELS, AI_AGENT_CHOICES, AIAgentTarget, copyAgentInstructionFiles, copyAISkillsToProject, GoogleAnalytics, InquirerWrapper, Util, AiCodingAssistant, AI_ASSISTANT_MCP_CONFIGS, AI_ASSISTANT_CHOICES, AI_ASSISTANT_LABELS } from "@igniteui/cli-core";
+import {
+	addMcpServers,
+	AI_AGENT_LABELS,
+	AI_AGENT_CHOICES,
+	type AIAgentTarget,
+	copyAgentInstructionFiles,
+	copyAISkillsToProject,
+	GoogleAnalytics,
+	InquirerWrapper,
+	Util,
+	type AiCodingAssistant,
+	AI_ASSISTANT_MCP_CONFIGS,
+	AI_ASSISTANT_CHOICES,
+	AI_ASSISTANT_LABELS,
+	detectFramework,
+	App,
+	type BaseTemplateManager,
+	TEMPLATE_MANAGER,
+} from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
 export function configureMCP(assistants: AiCodingAssistant[]): void {
@@ -14,8 +32,8 @@ export function configureMCP(assistants: AiCodingAssistant[]): void {
 	}
 }
 
-export function configureSkills(agents: AIAgentTarget[]): void {
-	const result = copyAISkillsToProject(agents);
+export function configureSkills(agents: AIAgentTarget[], framework: string): void {
+	const result = copyAISkillsToProject(agents, framework);
 	if (result.found === 0) {
 		Util.warn("No AI skill files found. Make sure packages are installed (npm install) " +
 			"and your Ignite UI packages are up-to-date.", "yellow");
@@ -32,7 +50,7 @@ export function configureSkills(agents: AIAgentTarget[]): void {
 type AIAgentOption = AIAgentTarget | "none";
 type AIAssistantOption = AiCodingAssistant | "none";
 
-export async function configure(agents: AIAgentOption[] = [], assistants: AIAssistantOption[] = [], skills = true): Promise<{ agents: AIAgentTarget[], assistants: AiCodingAssistant[] }> {
+export async function configure(framework: string, agents: AIAgentOption[] = [], assistants: AIAssistantOption[] = [], skills = true): Promise<{ agents: AIAgentTarget[], assistants: AiCodingAssistant[] }> {
 	if (!agents.length) {
 		agents = await promptForAgents();
 	}
@@ -53,9 +71,9 @@ export async function configure(agents: AIAgentOption[] = [], assistants: AIAssi
 		Util.log("No AI configuration selected. Skipping.");
 	} else {
 		if (skills) {
-			configureSkills(resolvedAgents);
+			configureSkills(resolvedAgents, framework);
 		}
-		copyAgentInstructionFiles(resolvedAgents);
+		copyAgentInstructionFiles(resolvedAgents, framework);
 	}
 
 	return { agents: resolvedAgents, assistants: resolvedAssistants };
@@ -82,7 +100,7 @@ const AI_ASSISTANT_CHECKBOX_CHOICES = [
 	}))
 ];
 
-export async function promptForAgents(): Promise<AIAgentOption[]> {
+async function promptForAgents(): Promise<AIAgentOption[]> {
 	let selected: AIAgentOption[] = AI_AGENT_CHECKBOX_DEFAULTS;
 	if (Util.canPrompt()) {
 		const result = await InquirerWrapper.checkbox({
@@ -95,7 +113,7 @@ export async function promptForAgents(): Promise<AIAgentOption[]> {
 	return selected;
 }
 
-export async function promptForAssistant(): Promise<AIAssistantOption[]> {
+async function promptForAssistant(): Promise<AIAssistantOption[]> {
 	let selected: AIAssistantOption[] = AI_ASSISTANT_CHECKBOX_DEFAULTS;
 	if (Util.canPrompt()) {
 		const result = await InquirerWrapper.checkbox({
@@ -106,6 +124,23 @@ export async function promptForAssistant(): Promise<AIAssistantOption[]> {
 		selected = result as AIAssistantOption[];
 	}
 	return selected;
+}
+
+/** delayed call so it's not immediate on module import for testing purposes */
+function getTemplateManager(): BaseTemplateManager {
+	return App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+}
+
+/** Separate from the PromptSession prompt due to step by step config */
+async function promptForFrameworkId(): Promise<string> {
+	const tm = getTemplateManager();
+	const frameRes: string = await InquirerWrapper.select({
+		name: "framework",
+		message: "Choose framework:",
+		choices: tm.getFrameworkNames(),
+		default: "Angular"
+	});
+	return tm.getFrameworkByName(frameRes).id;
 }
 
 const command: CommandModule = {
@@ -122,6 +157,12 @@ const command: CommandModule = {
 			describe: "Coding assistant(s) to configure MCP servers for",
 			choices: [...AI_ASSISTANT_CHOICES, "none"] as string[],
 			type: "array"
+		})
+		.option("framework", {
+			alias: "f",
+			describe: "Manually set project framework to configure AI for.",
+			choices: getTemplateManager()?.getFrameworkIds(),
+			type: "string"
 		}),
 	async handler(argv: ArgumentsCamelCase) {
 		const agents = (argv.agents ?? []) as AIAgentOption[];
@@ -131,7 +172,20 @@ const command: CommandModule = {
 			cd: "Ai Config"
 		});
 
-		const result = await configure(agents, assistants);
+		let framework: string = argv.framework as string ?? detectFramework();
+		if (!framework) {
+			Util.log("Framework not provided and couldn't detect project from config or structure.");
+			if (Util.canPrompt()) {
+				framework = await promptForFrameworkId();
+			} else {
+				return Util.error("Please provide --framework argument.", "red");
+			}
+		}
+		if (!getTemplateManager()?.getFrameworkById(framework)) {
+			return Util.error("Framework not supported", "red");
+		}
+
+		const result = await configure(framework, agents, assistants);
 
 		GoogleAnalytics.post({
 			t: "event",
