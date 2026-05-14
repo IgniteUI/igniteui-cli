@@ -97,13 +97,7 @@ function resolveSkillsRoots(): string[] {
 		}
 	} catch { /* config not readable – fall through to scan all */ }
 
-	// Detect Blazor from .csproj when no local config is available
-	const isBlazor = !framework && detectBlazorFromCsproj();
-	if (isBlazor) {
-		framework = "blazor";
-	}
-
-	// Blazor has no npm package — skills come only from the bundled ai-config template files
+	// Blazor has no npm package — when explicitly configured, skip npm scanning
 	if (framework === "blazor") {
 		const filesDir = resolveTemplateFilesDir(framework);
 		if (filesDir) {
@@ -135,7 +129,8 @@ function resolveSkillsRoots(): string[] {
 
 	if (!roots.length) {
 		// if no root discovered, take the root from the appropriate project template files:
-		framework ??= detectFrameworkFromPackageJson();
+		// Try Blazor (.csproj) detection only as a last resort, after npm scanning found nothing
+		framework ??= detectBlazorFromCsproj() ? "blazor" : detectFrameworkFromPackageJson();
 		if (framework) {
 			const filesDir = resolveTemplateFilesDir(framework);
 			if (filesDir) {
