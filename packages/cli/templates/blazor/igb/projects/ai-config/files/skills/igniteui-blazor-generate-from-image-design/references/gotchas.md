@@ -94,6 +94,27 @@ Brushes="#FF6B6B #4ECDC4 #45B7D1"
 ### `AreaFillOpacity` exists on `IgbCategoryChart`
 It does **NOT** exist on `IgbSparkline`. For sparkline fill, use the `Brush` parameter.
 
+### `IgbSparkline` has no SplineArea type — use `IgbCategoryChart` for smooth area sparklines
+`IgbSparkline` supports only `Line`, `Area`, `Column`, and `WinLoss` display types. `Area` renders as angular polygon fills, not smooth curves. If the design shows smooth mountain-shaped area sparklines, use a small `IgbCategoryChart` with `ChartType="CategoryChartType.SplineArea"`:
+
+```razor
+<!-- ❌ Angular fill — no smooth curves available on IgbSparkline -->
+<IgbSparkline DisplayType="SparklineDisplayType.Area" Brush="#5B57E8" ... />
+
+<!-- ✅ Smooth spline area sparkline -->
+<IgbCategoryChart @ref="splineChart"
+                  ChartType="@CategoryChartType.SplineArea"
+                  Brushes="#5B57E8"
+                  Outlines="#5B57E8"
+                  AreaFillOpacity="0.35"
+                  XAxisLabelTextColor="transparent"
+                  YAxisLabelTextColor="transparent"
+                  Height="70px"
+                  Width="100%"
+                  DataSource="@SparkData" />
+```
+
+
 ### `IncludedProperties` and `ExcludedProperties` are string arrays
 Pass them as bound parameters:
 ```razor
@@ -132,7 +153,38 @@ jobSeries.Brushes = "#CF6E7A #6C74DC #D4A84B";
 ```
 
 ### Smooth area/line charts
-Set `ChartType` to `Spline`, `SplineArea`, or `StepLine` / `StepArea` depending on the visual in the screenshot.
+Match `ChartType` to the curve shape in the screenshot:
+- Smooth flowing curves → `Spline` (lines) or `SplineArea` (filled)
+- Angular/jagged lines → `Line` or `Area`
+- Step-shaped → `StepLine` or `StepArea`
+
+Do not default to `Line` or `Area` when the screenshot shows smooth curves. The difference is immediately visible and is the most common chart fidelity mistake.
+
+### Circular ring with centered percentage — choosing the right component
+- **Thick static ring with a centred label and no needle** → `IgbDoughnutChart` + `IgbRingSeries`. Place `InnerExtent` on the chart, not the series. Overlay the label with `position: absolute` inside a `position: relative` wrapper.
+- **Thin animated spinner / loading progress** → `IgbCircularProgress`. Not a data visualisation.
+- **Needle pointer on a scale arc** → `IgbRadialGauge`.
+
+`IgbRadialGauge` and `IgbCircularProgress` will never produce a clean static ring. Use `IgbDoughnutChart` whenever the design shows a coloured arc ring with a centred value and no needle.
+
+```razor
+<div class="gauge-wrapper">
+    <IgbDoughnutChart InnerExtent="0.62" Height="160px" Width="160px" AllowSliceExplosion="false">
+        <IgbRingSeries ValueMemberPath="Value" LabelMemberPath="Category"
+                       LabelsPosition="@LabelsPosition.None"
+                       DataSource="@GaugeData"
+                       Brushes="#5B57E8 #e8e8f5"
+                       Outlines="transparent transparent"
+                       RadiusFactor="0.95" />
+    </IgbDoughnutChart>
+    <div class="gauge-label">75%</div>
+</div>
+```
+
+```css
+.gauge-wrapper { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.gauge-label   { position: absolute; font-size: 1.9rem; font-weight: 700; }
+```
 
 ### Charts inside CSS Grid can collapse
 Charts may render with zero height inside a CSS Grid container. Set `min-height: 0` on the grid cell and `Height="100%"` on the chart component so the chart fills its container without requiring a fixed pixel value:
@@ -183,15 +235,6 @@ Use named `slot` attributes on child elements inside `IgbListItem` for positioni
 The component's `::part(base)` is always `position: fixed; transform: translateX(-Npx)` - the host contributes `width: 0` to the layout. `Open="true"` makes it visible but still floating over content. `slot="mini"` adds a collapsed icon-only state. There is no `pin`/`pinned` Blazor parameter.
 
 To make the drawer occupy real layout space (pinned sidebar), override the parts in **global CSS**: set explicit width on the host, `position: relative; transform: none` on `::part(base)`, hide `::part(overlay)`, and strip `inert` from `::part(base)` via JS in `OnAfterRenderAsync`. See `layout.md` for the full pattern.
-
-### IgbTabs: Panel and Id pairing
-Each `IgbTab` must reference an `IgbTabPanel` via the `Panel` property matching the panel's `Id`:
-```razor
-<IgbTabs>
-    <IgbTab Panel="panel-1">Tab A</IgbTab>
-    <IgbTabPanel Id="panel-1">Content A</IgbTabPanel>
-</IgbTabs>
-```
 
 ### IgbTileManager: drag and resize modes
 Set `DragMode` and `ResizeMode` for interactive dashboards:

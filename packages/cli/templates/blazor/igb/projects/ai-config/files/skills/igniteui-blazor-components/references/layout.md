@@ -23,18 +23,7 @@ This reference gives high-level guidance on layout and navigation components, th
 > **Docs:** [Tabs](https://www.infragistics.com/products/ignite-ui-blazor/blazor/components/layouts/tabs)
 
 ```csharp
-builder.Services.AddIgniteUIBlazor(typeof(IgbTabsModule), typeof(IgbTabModule));
-```
-
-```razor
-<IgbTabs>
-    <IgbTab Panel="home">Home</IgbTab>
-    <IgbTab Panel="search">Search</IgbTab>
-    <IgbTab Panel="favorites" Disabled="true">Favorites</IgbTab>
-    <IgbTabPanel Id="home">Home panel content</IgbTabPanel>
-    <IgbTabPanel Id="search">Search panel content</IgbTabPanel>
-    <IgbTabPanel Id="favorites">Favorites panel content</IgbTabPanel>
-</IgbTabs>
+builder.Services.AddIgniteUIBlazor(typeof(IgbTabsModule));
 ```
 
 For icon tabs, use the `label` slot inside `IgbTab`:
@@ -46,7 +35,7 @@ For icon tabs, use the `label` slot inside `IgbTab`:
 </IgbTab>
 ```
 
-Key attributes on `IgbTabs`: `Alignment` (`TabsAlignment.Start` / `End` / `Center` / `Justify`), `Activation` (`TabsActivation.Auto` / `Manual`). On `IgbTab`: `Panel` (must match `IgbTabPanel.Id`), `Disabled`, `Selected`.
+Key attributes on `IgbTabs`: `Alignment` (`TabsAlignment.Start` / `End` / `Center` / `Justify`), `Activation` (`TabsActivation.Auto` / `Manual`). On `IgbTab`: `Label`, `Disabled`, `Selected`.
 
 Events on `IgbTabs`: `Change` - fires when the selected tab changes.
 
@@ -311,8 +300,7 @@ Events on `IgbTree`: `NodeSelectionChanging` (cancellable), `NodeSelectionChange
 
 ## Key Rules
 
-1. **`IgbTab.Panel` must match `IgbTabPanel.Id`** - mismatched IDs cause the panel to never display.
-2. **Stepper with `Linear="true"` prevents users from skipping steps.** Do not set `Linear` if free navigation is intended.
-3. **Activate/deactivate `IgbNavDrawerItem` programmatically** by setting `item.Active` - there is no automatic selection tracking.
-4. **Register icons via `RegisterIconFromTextAsync` in `OnAfterRenderAsync(bool firstRender)`**, and always call `await component.EnsureReady()` first.
-5. **`IgbAccordion` with `SingleExpand="true"` closes other panels when one is opened.** This is the most common use case for accordions.
+1. **Stepper with `Linear="true"` prevents users from skipping steps.** Do not set `Linear` if free navigation is intended.
+2. **Activate/deactivate `IgbNavDrawerItem` programmatically** by setting `item.Active` - there is no automatic selection tracking.
+3. **Register icons via `RegisterIconFromTextAsync` in `OnAfterRenderAsync(bool firstRender)`**, and always call `await component.EnsureReady()` first.
+4. **`IgbAccordion` with `SingleExpand="true"` closes other panels when one is opened.** This is the most common use case for accordions.

@@ -11,11 +11,12 @@ user-invocable: true
 Before writing any implementation code, you must complete these steps in order:
 
 1. Analyze the image and identify all visible regions and UI patterns.
-2. Read [references/component-mapping.md](references/component-mapping.md) and [references/gotchas.md](references/gotchas.md).
+2. Read [references/component-mapping.md](references/component-mapping.md).
 3. This skill is Blazor-only. Check NuGet package (`IgniteUI.Blazor.Lite`, `IgniteUI.Blazor.GridLite` for general purpose components and light-weight grid, or `IgniteUI.Blazor` / `IgniteUI.Blazor.Trial` for specialized feature-rich grids and charts) only when theming or component availability depends on it.
 4. To apply a theme, use the theming workflow from this skill and the dedicated `igniteui-blazor-theming` skill; use the `igniteui-theming` MCP tools instead of styling from memory.
 5. Call `get_doc` for every chosen component family before using it.
-6. Only then start coding.
+6. **Read [references/gotchas.md](references/gotchas.md) now — after docs, before writing any code.** Read the file in full. Some entries are component-specific; others apply broadly to any chart, any themed component, or any scoped CSS. Apply every entry that is relevant to what you are building. This is a blocking step: do not start implementation until you have read the whole file and checked it against your component list.
+7. Only then start coding.
 
 ---
 
@@ -25,7 +26,7 @@ Before writing any implementation code, you must complete these steps in order:
 2. **Confirm NuGet package if needed** - this skill is Blazor-only; use `IgniteUI.Blazor.Lite`, `IgniteUI.Blazor.GridLite` for general purpose components and the light-weight grid, and `IgniteUI.Blazor` (trial version available publicly as `IgniteUI.Blazor.Trial`) for specialized feature-rich grids and charts.
 3. **Discover components** - Call `list_components` with targeted filters and `framework: "blazor"` to find matching components for each UI pattern.
 4. **Look up component docs** - Call `get_doc` for every chosen component family before coding.
-5. **Generate theme** - (a) To generate a theme, first extract colors and create a color palette using `create_palette` or `create_custom_palette` depending on the scenario. Then extract elevations and call `create_elevations`. Then extract typography and call `create_typography`. Then call `create_theme` with the palette, elevations, and typography with `platform: "blazor"`. (b) After a palette exists, prefer using design tokens or scoped semantic CSS variables over raw literals. (c) For every Ignite UI component, call `get_component_design_tokens`, map extracted image tokens to token roles, then call `create_component_theme` with the tokens differing from the global theme for the specific component.
+5. **Generate theme** - (a) Extract colors and call `create_palette` or `create_custom_palette` with `platform: "blazor"` and `output: "css"` — do **not** use `create_theme` for Blazor, it produces Sass requiring compilation. Optionally call `create_elevations` and `create_typography` for elevation and font overrides. (b) After a palette exists, prefer using design tokens or scoped semantic CSS variables over raw literals. (c) For every Ignite UI component, call `get_component_design_tokens`, map extracted image tokens to token roles, then call `create_component_theme` with the tokens differing from the global theme for the specific component.
 6. **Implement** - Build the screenshot-first layout, data, and view components.
 7. **Refine** - Use the `set_size`, `set_spacing`, `set_roundness` tools to refine the view's visual fidelity against the image, then iterate on implementation and theming until the view matches the design closely.
 8. **Validate** - Build, test, run, compare against the image, and fix differences.
@@ -236,7 +237,7 @@ If the required NuGet package is not referenced in the project, identify the cor
 ### Implementation Checks
 
 - Use [references/component-mapping.md](references/component-mapping.md) for component-choice and semantic-fallback rules
-- Use [references/gotchas.md](references/gotchas.md) for components, theming, and API edge cases instead of re-encoding those rules inline
+- When unsure about an API parameter, CSS scoping rule, or component choice, re-check [references/gotchas.md](references/gotchas.md) — do not guess or re-encode its rules inline
 - Favor Ignite UI components over custom HTML when both approaches can reach similar visual fidelity
 - Preserve spacing, hierarchy, and data density before adding extra interactivity
 - Avoid generic placeholders when the image shows domain-specific content
