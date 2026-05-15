@@ -44,7 +44,6 @@ const command: UpgradeCommandType = {
 				return;
 			}
 			framework = detected;
-			projectType = projectType || FRAMEWORK_PROJECT_TYPE_MAP[framework];
 		}
 
 		if (!projectType) {
