@@ -26,6 +26,22 @@ This reference gives high-level guidance on layout and navigation components, th
 builder.Services.AddIgniteUIBlazor(typeof(IgbTabsModule));
 ```
 
+```razor
+<IgbTabs>
+    <IgbTab Label="Tab 1">
+      <span>Content for tab 1</span>
+    </IgbTab>
+    <IgbTab Label="Tab 2">
+      <span>Content for tab 2</span>
+    </IgbTab>
+    <IgbTab>
+      <div slot="label">Tab 3</div>
+      <span>Content for tab 3</span>
+    </IgbTab>
+</IgbTabs>
+```
+Tab text can be set either as simple string using the `Label` property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
+
 For icon tabs, use the `label` slot inside `IgbTab`:
 
 ```razor
