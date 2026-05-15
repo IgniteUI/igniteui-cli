@@ -1,7 +1,7 @@
 import { App, IFileSystem, ProjectConfig } from "@igniteui/cli-core";
 import { detectBlazorFromCsproj, detectFramework, detectFrameworkFromPackageJson } from "../../packages/core/util/detect-framework";
 
-function makeFs(pkgJson?: object): IFileSystem {
+function makeFs(pkgJson?: object): jasmine.SpyObj<IFileSystem> {
 	const present = pkgJson !== undefined;
 	return {
 		fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
@@ -11,7 +11,7 @@ function makeFs(pkgJson?: object): IFileSystem {
 		writeFile: jasmine.createSpy("writeFile"),
 		directoryExists: jasmine.createSpy("directoryExists").and.returnValue(false),
 		glob: jasmine.createSpy("glob").and.returnValue([]),
-	} as unknown as IFileSystem;
+	} satisfies jasmine.SpyObj<IFileSystem>;
 }
 
 describe("Unit - detectFrameworkFromPackageJson", () => {
@@ -22,8 +22,8 @@ describe("Unit - detectFrameworkFromPackageJson", () => {
 
 	it("returns null when package.json is malformed JSON", () => {
 		const fs = makeFs({});
-		(fs.fileExists as jasmine.Spy).and.returnValue(true);
-		(fs.readFile as jasmine.Spy).and.returnValue("not-valid-json{{{");
+		fs.fileExists.and.returnValue(true);
+		fs.readFile.and.returnValue("not-valid-json{{{");
 		spyOn(App.container, "get").and.returnValue(fs);
 		expect(detectFrameworkFromPackageJson()).toBeNull();
 	});
