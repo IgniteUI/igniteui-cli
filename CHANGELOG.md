@@ -1,3 +1,6 @@
+# 15.1.1
+* Update(ai-config): Adding AI coding assistance integration for Blazor projects.
+
 # 15.1.0 (2026-05-13)
 
 ## What's Changed

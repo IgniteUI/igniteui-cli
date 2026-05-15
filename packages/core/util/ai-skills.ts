@@ -3,7 +3,7 @@ import type { BaseTemplateManager } from "../templates";
 import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
 import { NPM_ANGULAR, NPM_REACT, NPM_WEBCOMPONENTS, resolvePackage, UPGRADEABLE_PACKAGES } from "../update/package-resolve";
 import { App } from "./App";
-import { detectFrameworkFromPackageJson } from "./detect-framework";
+import { detectBlazorFromCsproj, detectFrameworkFromPackageJson } from "./detect-framework";
 import { FsFileSystem } from "./FileSystem";
 import { TEMPLATE_MANAGER } from "./GlobalConstants";
 import { ProjectConfig } from "./ProjectConfig";
@@ -97,6 +97,15 @@ function resolveSkillsRoots(): string[] {
 		}
 	} catch { /* config not readable – fall through to scan all */ }
 
+	// Blazor has no npm package — when explicitly configured, skip npm scanning
+	if (framework === "blazor") {
+		const filesDir = resolveTemplateFilesDir(framework);
+		if (filesDir) {
+			roots.push(path.join(filesDir, AI_SKILLS_DIR_NAME));
+		}
+		return roots;
+	}
+
 	const allPkgKeys = Object.keys(UPGRADEABLE_PACKAGES);
 	let candidates = new Set<string>();
 	if (framework === "angular") {
@@ -120,7 +129,8 @@ function resolveSkillsRoots(): string[] {
 
 	if (!roots.length) {
 		// if no root discovered, take the root from the appropriate project template files:
-		framework ??= detectFrameworkFromPackageJson();
+		// Try Blazor (.csproj) detection only as a last resort, after npm scanning found nothing
+		framework ??= detectBlazorFromCsproj() ? "blazor" : detectFrameworkFromPackageJson();
 		if (framework) {
 			const filesDir = resolveTemplateFilesDir(framework);
 			if (filesDir) {
@@ -205,7 +215,7 @@ function resolveAgentsContent(): string | null {
 			framework = ProjectConfig.getConfig().project?.framework?.toLowerCase() ?? null;
 		}
 	} catch { /* fall through */ }
-	framework ??= detectFrameworkFromPackageJson();
+	framework ??= detectBlazorFromCsproj() ? "blazor" : detectFrameworkFromPackageJson();
 
 	if (!framework) {
 		return null;

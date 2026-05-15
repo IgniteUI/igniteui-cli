@@ -40,3 +40,12 @@ export function detectFrameworkFromPackageJson(): "angular" | "react" | "webcomp
 	// for now assume webcomponents as default fallback
 	return "webcomponents";
 }
+
+/**
+ * Returns true if the current directory (or any subdirectory) contains
+ * a `.csproj` file, indicating a Blazor / .NET project.
+ */
+export function detectBlazorFromCsproj(): boolean {
+	const fs = App.container.get<IFileSystem>(FS_TOKEN);
+	return fs.glob(".", "**/*.csproj").length > 0;
+}
