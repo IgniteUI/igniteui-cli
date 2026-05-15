@@ -2,6 +2,7 @@ import {
 	App, BaseTemplate, BaseTemplateManager, Config, GoogleAnalytics, PackageManager, ProjectConfig,
 	ProjectLibrary, ProjectTemplate, Template, TEMPLATE_MANAGER, Util
 } from "@igniteui/cli-core";
+import * as detectFrameworkModule from "../../packages/core/util/detect-framework";
 
 import { default as upgradeCmd } from "../../packages/cli/lib/commands/upgrade";
 
@@ -143,5 +144,55 @@ describe("Unit - Upgrade command", () => {
 
 		await upgradeCmd.handler({ _: ["upgrade"], $0: "upgrade" });
 		expect(Util.log).toHaveBeenCalledTimes(1);
+	});
+
+	it("Should auto-detect framework from package.json when config has no project", async () => {
+		const config = {} as Config;
+		spyOn(ProjectConfig, "getConfig").and.returnValue(config);
+		spyOn(detectFrameworkModule, "detectFrameworkFromPackageJson").and.returnValue("react");
+
+		const mockProjTemplate: ProjectTemplate = {
+			id: "mock",
+			name: "mock",
+			description: "mock",
+			delimiters: { content: { start: "{{", end: "}}" }, path: { start: "[[", end: "]]" } },
+			dependencies: [],
+			framework: "react",
+			projectType: "igr-ts",
+			hasExtraConfiguration: false,
+			isHidden: false,
+			templatePaths: [],
+			generateConfig: jasmine.createSpy().and.returnValue({}),
+			getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
+			setExtraConfiguration: jasmine.createSpy(),
+			installModules: jasmine.createSpy(),
+			upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
+		};
+
+		const mockProjLib: Partial<ProjectLibrary> = {
+			projectIds: ["default-project"],
+			getProject: jasmine.createSpy().and.returnValue(mockProjTemplate),
+			hasProject: jasmine.createSpy().and.returnValue(false)
+		};
+
+		const mockTemplateManager: Partial<BaseTemplateManager> = { getProjectLibrary: () => null };
+		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
+		spyOn(mockTemplateManager, "getProjectLibrary").and.returnValue(mockProjLib as ProjectLibrary);
+
+		await upgradeCmd.handler({ skipInstall: true, _: ["upgrade"], $0: "upgrade" });
+		expect(detectFrameworkModule.detectFrameworkFromPackageJson).toHaveBeenCalled();
+		expect(mockTemplateManager.getProjectLibrary).toHaveBeenCalledWith("react", "igr-ts");
+		expect(mockProjTemplate.upgradeIgniteUIPackages).toHaveBeenCalledWith(process.cwd(), "");
+	});
+
+	it("Should log a message when no framework can be detected", async () => {
+		const config = {} as Config;
+		spyOn(ProjectConfig, "getConfig").and.returnValue(config);
+		spyOn(detectFrameworkModule, "detectFrameworkFromPackageJson").and.returnValue(null);
+
+		await upgradeCmd.handler({ _: ["upgrade"], $0: "upgrade" });
+		expect(Util.log).toHaveBeenCalledWith(
+			jasmine.stringMatching(/Unable to determine the project framework/), "yellow"
+		);
 	});
 });
