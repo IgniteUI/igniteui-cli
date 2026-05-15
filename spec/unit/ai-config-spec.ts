@@ -1,5 +1,6 @@
 import * as path from "path";
 import { App, Config, FS_TOKEN, FsFileSystem, GoogleAnalytics, IFileSystem, InquirerWrapper, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import * as coreDetect from "../../packages/core/util/detect-framework";
 import { configureMCP, configureSkills } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 
@@ -168,9 +169,8 @@ describe("Unit - ai-config command", () => {
 					return { getFrameworkById: () => null } as any;
 				}
 			})
-			setupAngularConfig();
 
-			configureSkills(["claude"]);
+			configureSkills(["claude"], "angular");
 
 			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("No AI skill files found"), "yellow");
 			expect(Util.log).not.toHaveBeenCalled();
@@ -198,9 +198,8 @@ describe("Unit - ai-config command", () => {
 				d === angularSkillsDir ? [skillFile] : []
 			);
 			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
-			setupAngularConfig();
 
-			configureSkills(["claude"]);
+			configureSkills(["claude"], "angular");
 
 			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("Failed to write 1 skill file(s) out of 1"), "yellow");
 			expect(Util.log).not.toHaveBeenCalled();
@@ -230,9 +229,8 @@ describe("Unit - ai-config command", () => {
 				d === angularSkillsDir ? [skillFile] : []
 			);
 			spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content);
-			setupAngularConfig();
 
-			configureSkills(["claude"]);
+			configureSkills(["claude"], "angular");
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("already up-to-date"));
 			expect(Util.warn).not.toHaveBeenCalled();
@@ -260,9 +258,8 @@ describe("Unit - ai-config command", () => {
 				d === angularSkillsDir ? [skillFile] : []
 			);
 			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
-			setupAngularConfig();
 
-			configureSkills(["claude"]);
+			configureSkills(["claude"], "angular");
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("1 AI skill file(s) created or updated"));
 			expect(Util.warn).not.toHaveBeenCalled();
@@ -272,6 +269,13 @@ describe("Unit - ai-config command", () => {
 	describe("handler", () => {
 		beforeEach(() => {
 			(GoogleAnalytics.post as jasmine.Spy).calls.reset();
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: { projectLibraries: [] },
+				getFrameworkIds: ["angular"],
+				getFrameworkNames: ["Angular"],
+				getFrameworkByName: { id: "angular" }
+			}));
+			spyOn(Util, "warn");
 		});
 
 		it("prompts for agents when --agent is not provided", async () => {
@@ -282,7 +286,7 @@ describe("Unit - ai-config command", () => {
 				Promise.resolve(["vscode"])
 			);
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
 			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which AI agents do you want to generate skills and instructions for?",
@@ -297,7 +301,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(Util, "canPrompt").and.returnValue(false);
 			spyOn(InquirerWrapper, "checkbox");
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
 			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: generic, claude; assistant: generic" }));
@@ -308,7 +312,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Skipping"));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
@@ -324,7 +328,7 @@ describe("Unit - ai-config command", () => {
 				Promise.resolve(["vscode"])
 			);
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
 			expect(mockFs.writeFile).toHaveBeenCalled();
 			const config = writtenConfig(mockFs);
@@ -347,7 +351,7 @@ describe("Unit - ai-config command", () => {
 				Promise.resolve(["vscode"])
 			);
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
 			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which AI agents do you want to generate skills and instructions for?"
@@ -360,7 +364,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["vscode"]));
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agents: ["cursor"] });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agents: ["cursor"], framework: "angular" });
 
 			expect(InquirerWrapper.checkbox).not.toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which AI agents do you want to generate skills and instructions for?"
@@ -373,7 +377,7 @@ describe("Unit - ai-config command", () => {
 			spyOn(Util, "canPrompt").and.returnValue(true);
 			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", assistants: ["cursor"] });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", assistants: ["cursor"], framework: "angular" });
 
 			expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(1);
 		});
@@ -386,7 +390,7 @@ describe("Unit - ai-config command", () => {
 				Promise.resolve(["vscode"])
 			);
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
 			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which coding assistants should MCP servers be configured for?"
@@ -402,11 +406,79 @@ describe("Unit - ai-config command", () => {
 				Promise.resolve(["generic"])
 			);
 
-			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
 			expect(mockFs.writeFile).toHaveBeenCalledWith(".mcp.json", jasmine.any(String));
 			const config = writtenConfig(mockFs);
 			expect((config.mcpServers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+		});
+
+		describe("framework resolution", () => {
+			const NO_DETECT_MESSAGE = "Framework not provided and couldn't detect project from config or structure.";
+			beforeEach(() => {
+				App.container.set(FS_TOKEN, createMockFs());
+				spyOn(Util, "canPrompt").and.returnValue(true);
+				spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
+			});
+
+			it("uses detected framework when --framework is not provided", async () => {
+				spyOn(coreDetect, "detectFramework").and.returnValue("react");
+				spyOn(InquirerWrapper, "select");
+
+				await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+				expect(coreDetect.detectFramework).toHaveBeenCalled();
+				expect(InquirerWrapper.select).not.toHaveBeenCalled();
+				expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event" }));
+			});
+
+			it("prompts for framework when --framework is absent and detection returns null", async () => {
+				spyOn(coreDetect, "detectFramework").and.returnValue(null);
+				spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("Angular"));
+
+				await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+				expect(Util.log).toHaveBeenCalledWith(NO_DETECT_MESSAGE);
+				expect(InquirerWrapper.select).toHaveBeenCalledWith(jasmine.objectContaining({
+					message: "Choose framework:"
+				}));
+				expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event" }));
+			});
+
+			it("shows framework choices from template manager when prompting", async () => {
+				spyOn(coreDetect, "detectFramework").and.returnValue(null);
+				spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("Angular"));
+
+				await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+				expect(InquirerWrapper.select).toHaveBeenCalledWith(jasmine.objectContaining({
+					choices: ["Angular"]
+				}));
+			});
+
+			it("errors without prompting when framework is absent and canPrompt is false", async () => {
+				spyOn(coreDetect, "detectFramework").and.returnValue(null);
+				spyOn(InquirerWrapper, "select");
+				spyOn(Util, "error");
+				(Util.canPrompt as jasmine.Spy).and.returnValue(false);
+
+				await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+				expect(InquirerWrapper.select).not.toHaveBeenCalled();
+				expect(Util.log).toHaveBeenCalledWith(NO_DETECT_MESSAGE);
+				expect(Util.error).toHaveBeenCalledWith("Please provide --framework argument.", "red");
+			});
+
+			it("errors when provided framework is not supported", async () => {
+				spyOn(Util, "error");
+				// override the spy to return undefined (unknown framework)
+				(App.container.get(TEMPLATE_MANAGER) as jasmine.SpyObj<any>)
+					.getFrameworkById.and.returnValue(undefined);
+
+				await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "unknown" });
+
+				expect(Util.error).toHaveBeenCalledWith("Framework not supported", "red");
+			});
 		});
 	});
 });

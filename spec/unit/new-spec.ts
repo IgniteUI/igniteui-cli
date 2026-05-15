@@ -414,7 +414,7 @@ describe("Unit - New command", () => {
 
 			await newCmd.handler({ name: "Test", framework: "jq", agents: ["claude", "cursor"], _: ["new"], $0: "new" });
 
-			expect(configureSpy).toHaveBeenCalledWith(["claude", "cursor"], undefined);
+			expect(configureSpy).toHaveBeenCalledWith("jq", ["claude", "cursor"], undefined);
 		});
 
 		it("calls configure with undefined when --agents is not provided", async () => {
@@ -422,7 +422,7 @@ describe("Unit - New command", () => {
 
 			await newCmd.handler({ name: "Test", framework: "jq", _: ["new"], $0: "new" });
 
-			expect(configureSpy).toHaveBeenCalledWith(undefined, undefined);
+			expect(configureSpy).toHaveBeenCalledWith("jq", undefined, undefined);
 		});
 
 		it("calls configure with single agent", async () => {
@@ -430,7 +430,7 @@ describe("Unit - New command", () => {
 
 			await newCmd.handler({ name: "Test", framework: "jq", agents: ["generic"], _: ["new"], $0: "new" });
 
-			expect(configureSpy).toHaveBeenCalledWith(["generic"], undefined);
+			expect(configureSpy).toHaveBeenCalledWith("jq", ["generic"], undefined);
 		});
 
 		it("calls configure before package install", async () => {
@@ -475,7 +475,7 @@ describe("Unit - New command", () => {
 			await newCmd.handler({ name: "Test", framework: "jq", skipInstall: true, agents: ["claude"], _: ["new"], $0: "new" });
 
 			expect(PackageManager.installPackages).not.toHaveBeenCalled();
-			expect(configureSpy).toHaveBeenCalledWith(["claude"], undefined);
+			expect(configureSpy).toHaveBeenCalledWith("jq", ["claude"], undefined);
 		});
 
 		it("does not call configure when project creation fails (bad name)", async () => {

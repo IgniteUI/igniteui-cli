@@ -3,10 +3,8 @@ import type { BaseTemplateManager } from "../templates";
 import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
 import { NPM_ANGULAR, NPM_REACT, NPM_WEBCOMPONENTS, resolvePackage, UPGRADEABLE_PACKAGES } from "../update/package-resolve";
 import { App } from "./App";
-import { detectBlazorFromCsproj, detectFrameworkFromPackageJson } from "./detect-framework";
 import { FsFileSystem } from "./FileSystem";
 import { TEMPLATE_MANAGER } from "./GlobalConstants";
-import { ProjectConfig } from "./ProjectConfig";
 import { Util } from "./Util";
 
 export const AI_AGENT_CHOICES = ["generic", "claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie"] as const;
@@ -86,25 +84,9 @@ function resolveTemplateFilesDir(framework: string): string | null {
  * Ignite UI packages that are relevant to the project's detected framework.
  * Falls back to the bundled template skills when no npm package is installed.
  */
-function resolveSkillsRoots(): string[] {
+function resolveSkillsRoots(framework: string): string[] {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 	const roots: string[] = [];
-
-	let framework: string | null = null;
-	try {
-		if (ProjectConfig.hasLocalConfig()) {
-			framework = ProjectConfig.getConfig().project?.framework?.toLowerCase() ?? null;
-		}
-	} catch { /* config not readable – fall through to scan all */ }
-
-	// Blazor has no npm package — when explicitly configured, skip npm scanning
-	if (framework === "blazor") {
-		const filesDir = resolveTemplateFilesDir(framework);
-		if (filesDir) {
-			roots.push(path.join(filesDir, AI_SKILLS_DIR_NAME));
-		}
-		return roots;
-	}
 
 	const allPkgKeys = Object.keys(UPGRADEABLE_PACKAGES);
 	let candidates = new Set<string>();
@@ -129,13 +111,9 @@ function resolveSkillsRoots(): string[] {
 
 	if (!roots.length) {
 		// if no root discovered, take the root from the appropriate project template files:
-		// Try Blazor (.csproj) detection only as a last resort, after npm scanning found nothing
-		framework ??= detectBlazorFromCsproj() ? "blazor" : detectFrameworkFromPackageJson();
-		if (framework) {
-			const filesDir = resolveTemplateFilesDir(framework);
-			if (filesDir) {
-				roots.push(path.join(filesDir, AI_SKILLS_DIR_NAME));
-			}
+		const filesDir = resolveTemplateFilesDir(framework);
+		if (filesDir) {
+			roots.push(path.join(filesDir, AI_SKILLS_DIR_NAME));
 		}
 	}
 
@@ -147,14 +125,14 @@ function resolveSkillsRoots(): string[] {
  * skills directories for each of the given AI agents.
  * @param agents – list of AI agent targets to copy skills for
  */
-export function copyAISkillsToProject(agents: AIAgentTarget[]): AISkillsCopyResult {
+export function copyAISkillsToProject(agents: AIAgentTarget[], framework: string): AISkillsCopyResult {
 	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0 };
 	// Source reads (glob + readFile) always use physical FS - skill files can
 	// come from sources outside the project virtual tree (external/global package):
 	const srcFs = new FsFileSystem();
 	// Destination writes respect the App FS (which may be virtual):
 	const destFs = App.container.get<IFileSystem>(FS_TOKEN);
-	const skillsRoots = resolveSkillsRoots();
+	const skillsRoots = resolveSkillsRoots(framework);
 
 	if (!skillsRoots.length) {
 		return result;
@@ -208,20 +186,8 @@ export function copyAISkillsToProject(agents: AIAgentTarget[]): AISkillsCopyResu
  * Resolves the AGENTS.md source file content from the bundled project template files.
  * AGENTS.md lives only in the template files/ directory, not in npm packages.
  */
-function resolveAgentsContent(): string | null {
-	let framework: string | null = null;
-	try {
-		if (ProjectConfig.hasLocalConfig()) {
-			framework = ProjectConfig.getConfig().project?.framework?.toLowerCase() ?? null;
-		}
-	} catch { /* fall through */ }
-	framework ??= detectBlazorFromCsproj() ? "blazor" : detectFrameworkFromPackageJson();
-
-	if (!framework) {
-		return null;
-	}
-
-	const filesDir = resolveTemplateFilesDir(framework);
+function resolveAgentsContent(framework: string): string | null {
+	const filesDir = resolveTemplateFilesDir(framework.toLowerCase());
 	if (!filesDir) {
 		return null;
 	}
@@ -238,8 +204,8 @@ function resolveAgentsContent(): string | null {
  * each of the given agents.
  * @param agents – list of AI agent targets to create instruction files for
  */
-export function copyAgentInstructionFiles(agents: AIAgentTarget[]): void {
-	const content = resolveAgentsContent();
+export function copyAgentInstructionFiles(agents: AIAgentTarget[], framework: string): void {
+	const content = resolveAgentsContent(framework);
 	if (!content) {
 		return;
 	}

@@ -162,7 +162,7 @@ const command: NewCommandType = {
 		}
 
 		process.chdir(argv.name);
-		await configure(argv.agents as (AIAgentTarget | "none")[], argv.assistants as (AiCodingAssistant | "none")[]);
+		await configure(argv.framework, argv.agents as (AIAgentTarget | "none")[], argv.assistants as (AiCodingAssistant | "none")[]);
 		process.chdir("..");
 
 		Util.log(Util.greenCheck() + " Project Created");
