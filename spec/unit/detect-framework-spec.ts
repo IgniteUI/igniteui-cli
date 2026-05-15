@@ -140,6 +140,14 @@ describe("Unit - detectFramework", () => {
 		spyOn(App.container, "get").and.returnValue(makeFs()); // no package.json present
 		expect(detectFramework()).toBeNull();
 	});
+
+	it("returns blazor when no config and no package.json but a .csproj file exists", () => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+		const fs = makeFs(); // no package.json
+		(fs.glob as jasmine.Spy).and.returnValue(["MyApp.csproj"]);
+		spyOn(App.container, "get").and.returnValue(fs);
+		expect(detectFramework()).toBe("blazor");
+	});
 });
 
 describe("Unit - detectBlazorFromCsproj", () => {

@@ -2,7 +2,7 @@ import { App } from "./App";
 import { IFileSystem, FS_TOKEN } from "../types/FileSystem";
 import { ProjectConfig } from "./ProjectConfig";
 
-type Framework = "angular" | "react" | "webcomponents";
+type Framework = "angular" | "react" | "webcomponents" | "blazor";
 
 /**
  * Attempt to detect project framework by first checking for local cli-config,
@@ -19,6 +19,7 @@ export function detectFramework():  Framework | null {
 	} catch { /* fall through */ }
 
 	framework ??= detectFrameworkFromPackageJson();
+	framework ??= detectBlazorFromCsproj() ? "blazor" : null;
 
 	return framework;
 }
