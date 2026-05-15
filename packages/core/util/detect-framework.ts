@@ -64,11 +64,77 @@ export function detectFrameworkFromPackageJson(): Framework | null {
 	return "webcomponents";
 }
 
+//#region Blazor detection
+
+/** Strings present in a `.csproj` that identify a Blazor project. */
+const BLAZOR_SIGNALS = [
+	// project SDKs:
+	"Microsoft.NET.Sdk.Web",
+	"Microsoft.NET.Sdk.BlazorWebAssembly",
+	"Microsoft.NET.Sdk.Razor",
+	// package references
+	"Microsoft.AspNetCore.Components",
+	"IgniteUI.Blazor",
+];
+
+/** Returns true if the `.csproj` at `csprojPath` is a Blazor project.*/
+function isBlazorProject(fs: IFileSystem, csprojPath: string): boolean {
+	try {
+		const content = fs.readFile(csprojPath);
+		return BLAZOR_SIGNALS.some(s => content.includes(s));
+	} catch {
+		return false;
+	}
+}
+
 /**
- * Returns true if the current directory (or any subdirectory) contains
- * a `.csproj` file, indicating a Blazor / .NET project.
+ * Extracts `.csproj` paths from a solution file (`.sln` or `.slnx`).
+ * @returns array of paths (backslashes normalised to forward slashes), if any.
+ */
+function parseCsprojPathsFromSolution(content: string): string[] {
+	const paths: string[] = [];
+
+	// .sln text format: Project("{...}") = "Name", "path.csproj", "{...}"
+	// .slnx XML format: <Project Path="path.csproj" />
+	// Matches any quoted .csproj path — covers both formats:
+	const re = /"([^"]*\.csproj)"/gi;
+	let match: RegExpExecArray | null;
+
+	while ((match = re.exec(content)) !== null) {
+		paths.push(match[1].replace(/\\/g, "/"));
+	}
+
+	return paths;
+}
+
+/**
+ * Attempt to detect whether the current directory contains a Blazor project.
+ *
+ * Strategy:
+ *  1. Look for `.csproj` files in the working directory.
+ *  2. If none found, look for solution files (`.sln` / `.slnx`) and
+ *     extract referenced `.csproj` paths.
+ *  3. Verify at least one `.csproj` is a Blazor project via {@link isBlazorProject}.
  */
 export function detectBlazorFromCsproj(): boolean {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
-	return fs.glob(".", "**/*.csproj").length > 0;
+
+	const csprojFiles = fs.glob(".", "*.csproj");
+
+	if (csprojFiles.length === 0) {
+		const slnFiles = [
+			...fs.glob(".", "*.sln"),
+			...fs.glob(".", "*.slnx"),
+		];
+		for (const sln of slnFiles) {
+			try {
+				const content = fs.readFile(sln);
+				const projects = parseCsprojPathsFromSolution(content);
+				csprojFiles.push(...projects.filter(p => fs.fileExists(p)));
+			} catch { /* skip unreadable solution files */ }
+		}
+	}
+
+	return csprojFiles.some(csproj => isBlazorProject(fs, csproj));
 }
+//#endregion Blazor detection
