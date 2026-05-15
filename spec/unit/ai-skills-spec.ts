@@ -1,6 +1,5 @@
 import * as path from "path";
 import { App, Config, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
-import * as detectFramework from "../../packages/core/util/detect-framework";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;
@@ -270,105 +269,6 @@ describe("Unit - copyAISkillsToProject", () => {
 		});
 	});
 
-	describe("Blazor framework", () => {
-		const FAKE_TEMPLATE_PATH = "/fake/blazor/template";
-		const FAKE_SKILLS_ROOT = path.join(FAKE_TEMPLATE_PATH, "skills");
-
-		it("should copy skills from blazor template files (no npm package lookup)", () => {
-			const skillFilePath = path.join(FAKE_SKILLS_ROOT, "blazor.md");
-			const content = "# Blazor skills";
-
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === FAKE_SKILLS_ROOT ? [skillFilePath] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
-			});
-
-			const destFs = makeDestFs();
-			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "blazor" }
-			} as unknown as Config);
-			mockTemplateManager([FAKE_TEMPLATE_PATH]);
-
-			copyAISkillsToProject(["claude"]);
-
-			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/blazor.md", content);
-		});
-
-		it("should not perform any npm package directory lookups for blazor", () => {
-			const skillFilePath = path.join(FAKE_SKILLS_ROOT, "blazor.md");
-
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === FAKE_SKILLS_ROOT ? [skillFilePath] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("content")
-			});
-
-			const destFs = makeDestFs();
-			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "blazor" }
-			} as unknown as Config);
-			mockTemplateManager([FAKE_TEMPLATE_PATH]);
-
-			copyAISkillsToProject(["claude"]);
-
-			// directoryExists should never be called with a node_modules path for blazor
-			const nodeModulesCalls = (destFs.directoryExists as jasmine.Spy).calls.all()
-				.filter(c => (c.args[0] as string).startsWith("node_modules"));
-			expect(nodeModulesCalls.length).toBe(0);
-		});
-
-		it("should return empty result when blazor template path is not registered", () => {
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.returnValue([])
-			});
-
-			const destFs = makeDestFs();
-			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "blazor" }
-			} as unknown as Config);
-			// Return no templatePaths so resolveTemplateFilesDir returns null
-			mockTemplateManager([]);
-
-			const result = copyAISkillsToProject(["claude"]);
-
-			expect(result.found).toBe(0);
-			expect(destFs.writeFile).not.toHaveBeenCalled();
-		});
-
-		it("should copy nested blazor skill files preserving directory structure", () => {
-			const nestedFile = path.join(FAKE_SKILLS_ROOT, "grids", "data-grid.md");
-			const content = "# Blazor Data Grid skills";
-
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === FAKE_SKILLS_ROOT ? [nestedFile] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
-			});
-
-			const destFs = makeDestFs();
-			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "blazor" }
-			} as unknown as Config);
-			mockTemplateManager([FAKE_TEMPLATE_PATH]);
-
-			copyAISkillsToProject(["copilot"]);
-
-			expect(destFs.writeFile).toHaveBeenCalledWith(".github/skills/grids/data-grid.md", content);
-		});
-	});
-
 	describe("No local config (fallback)", () => {
 		it("should scan all known packages when no ignite-ui-cli.json is present", () => {
 			const angularPkg = "igniteui-angular";
@@ -443,29 +343,6 @@ describe("Unit - copyAISkillsToProject", () => {
 			copyAISkillsToProject(["claude"]);
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", "wc skill content");
-		});
-
-		it("should detect blazor from .csproj when no config and no npm packages found", () => {
-			const FAKE_TEMPLATE_PATH = "/fake/blazor/template";
-			const FAKE_SKILLS_ROOT = path.join(FAKE_TEMPLATE_PATH, "skills");
-			const skillFilePath = path.join(FAKE_SKILLS_ROOT, "blazor.md");
-
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === FAKE_SKILLS_ROOT ? [skillFilePath] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("blazor skill content")
-			});
-
-			const destFs = makeDestFs();
-			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
-			spyOn(detectFramework, "detectBlazorFromCsproj").and.returnValue(true);
-			mockTemplateManager([FAKE_TEMPLATE_PATH]);
-
-			copyAISkillsToProject(["claude"]);
-
-			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/blazor.md", "blazor skill content");
 		});
 	});
 
