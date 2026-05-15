@@ -6,7 +6,35 @@ user-invocable: true
 
 # Ignite UI for React Components
 
-This skill covers everything from identifying the right component for a UI requirement to installing, setting up, and using Ignite UI for React components — including JSX patterns, event handling, refs, controlled/uncontrolled form components, and TypeScript.
+## Prerequisites
+
+- The **Ignite UI CLI MCP server** (`igniteui-cli`) available as a tool provider
+
+> **AGENT INSTRUCTION — MCP Server Setup (REQUIRED)**
+>
+> Before using the Ignite UI CLI MCP tools, you MUST verify the MCP server is available
+> by calling `list_components`. If the tool is not available or the call fails,
+> you MUST automatically configure it by following the setup process steps described below.
+>
+> After writing the file, inform the user that the MCP server has been
+> configured and they may need to reload the editor for the tools to activate.
+> Start the MCP server and wait for that MCP server to start before continuing the component-related work.
+> Do NOT skip this step or ask the user to do it manually.
+
+## Setting Up the Ignite UI CLI MCP Server
+
+> **Full setup instructions for VS Code, Cursor, Claude Desktop, and JetBrains IDEs are in [`reference/MCP-SERVER.md`](./reference/MCP-SERVER.md).** Read that file for editor-specific configuration steps and verification.
+
+### Package Routing
+
+| Component family | Install packages | Import from |
+|---|---|---|
+| Core UI components | `igniteui-react` | `igniteui-react` |
+| Advanced grids | `igniteui-react-grids` (trial) `@infragistics/igniteui-react-grids` (licensed) | `igniteui-react-grids` |
+| Grid Lite | `igniteui-react`, `igniteui-grid-lite` | `igniteui-react`, `igniteui-grid-lite` |
+| Charts | `igniteui-react-charts` (trial) `@infragistics/igniteui-react-charts` (licensed) | `igniteui-react-charts` |
+| Gauges | `igniteui-react-gauges` (trial) `@infragistics/igniteui-react-gauges` (licensed) | `igniteui-react-gauges` |
+| Maps | `igniteui-react-maps` (trial) `@infragistics/igniteui-react-maps` (licensed) | `igniteui-react-maps` |
 
 ## Example Usage
 
@@ -54,7 +82,6 @@ This skill is organized into focused reference files. Load the appropriate file 
 | Event Handling | [EVENT-HANDLING.md](./reference/EVENT-HANDLING.md) | Event props, CustomEvent types, common events |
 | Refs & Forms | [REFS-FORMS.md](./reference/REFS-FORMS.md) | useRef, controlled/uncontrolled forms, React Hook Form |
 | Charts, Gauges, Maps & Grid Lite | [CHARTS-GRIDS.md](./reference/CHARTS-GRIDS.md) | Module registration, container sizing |
-| Reveal SDK | [REVEAL-SDK.md](./reference/REVEAL-SDK.md) | Embedded BI dashboards, theme sync |
 | Troubleshooting | [TROUBLESHOOTING.md](./reference/TROUBLESHOOTING.md) | Common issues and solutions |
 
 ---
