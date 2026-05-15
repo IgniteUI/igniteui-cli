@@ -1,5 +1,5 @@
 import { App, IFileSystem, ProjectConfig } from "@igniteui/cli-core";
-import { detectFramework, detectFrameworkFromPackageJson } from "../../packages/core/util/detect-framework";
+import { detectBlazorFromCsproj, detectFramework, detectFrameworkFromPackageJson } from "../../packages/core/util/detect-framework";
 
 function makeFs(pkgJson?: object): IFileSystem {
 	const present = pkgJson !== undefined;
@@ -139,5 +139,21 @@ describe("Unit - detectFramework", () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
 		spyOn(App.container, "get").and.returnValue(makeFs()); // no package.json present
 		expect(detectFramework()).toBeNull();
+	});
+});
+
+describe("Unit - detectBlazorFromCsproj", () => {
+	it("returns true when a .csproj file exists", () => {
+		const fs = makeFs();
+		(fs.glob as jasmine.Spy).and.returnValue(["MyApp.csproj"]);
+		spyOn(App.container, "get").and.returnValue(fs);
+		expect(detectBlazorFromCsproj()).toBe(true);
+	});
+
+	it("returns false when no .csproj files exist", () => {
+		const fs = makeFs();
+		(fs.glob as jasmine.Spy).and.returnValue([]);
+		spyOn(App.container, "get").and.returnValue(fs);
+		expect(detectBlazorFromCsproj()).toBe(false);
 	});
 });
