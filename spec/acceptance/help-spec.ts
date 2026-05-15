@@ -249,4 +249,26 @@ describe("Help command", () => {
 
 		expect(actualNewText).toContain(replacedNewHelpText);
 	});
+
+	it("should show help for the ai-config command", async () => {
+		const child = Util.spawnSync("node", [execLocation, "ai-config", "-h"], {
+			encoding: "utf-8"
+		});
+
+		const originalHelpText: string = `
+		Options:
+		-v, --version     Show current Ignite UI CLI version                           [boolean]
+		-h, --help        Show help                                                    [boolean]
+			--agents      AI agents/tools to generate configuration files for          [array]
+				[choices: "generic", "claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie", "none"]
+			--assistants  Coding assistant(s) to configure MCP servers for             [array]
+				[choices: "generic", "vscode", "cursor", "gemini", "junie", "none"]
+		-f, --framework   Manually set project framework to configure AI for.          [string]
+			[choices: "angular", "blazor", "jquery", "react", "webcomponents"]`;
+
+		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");
+		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");
+
+		expect(actualNewText).toContain(replacedHelpText);
+	});
 });

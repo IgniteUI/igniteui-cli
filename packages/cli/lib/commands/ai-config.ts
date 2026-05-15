@@ -137,7 +137,7 @@ async function promptForFrameworkId(): Promise<string> {
 	const frameRes: string = await InquirerWrapper.select({
 		name: "framework",
 		message: "Choose framework:",
-		choices: tm.getFrameworkNames(),
+		choices: tm.getFrameworkNames(true),
 		default: "Angular"
 	});
 	return tm.getFrameworkByName(frameRes).id;
@@ -161,7 +161,7 @@ const command: CommandModule = {
 		.option("framework", {
 			alias: "f",
 			describe: "Manually set project framework to configure AI for.",
-			choices: getTemplateManager()?.getFrameworkIds(),
+			choices: getTemplateManager()?.getFrameworkIds(true),
 			type: "string"
 		}),
 	async handler(argv: ArgumentsCamelCase) {
