@@ -73,7 +73,7 @@ export abstract class BasePromptSession {
 			}
 			// move cwd to project folder
 			process.chdir(projectName);
-			await this.configureAI();
+			await this.configureAI(framework.id);
 		}
 		await this.chooseActionLoop(projLibrary);
 		//TODO: restore cwd?
@@ -102,7 +102,7 @@ export abstract class BasePromptSession {
 	protected abstract upgradePackages();
 
 	/** Configure Ignite UI AI tooling (MCP servers and AI coding skills) for the project */
-	protected abstract configureAI(): Promise<void>;
+	protected abstract configureAI(frameworkId: string): Promise<void>;
 
 	/**
 	 * Get user name and set template's extra configurations if any

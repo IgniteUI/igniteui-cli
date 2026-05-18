@@ -1,5 +1,5 @@
 import * as path from "path";
-import { App, Config, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, IFileSystem, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { App, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, IFileSystem, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;
@@ -87,12 +87,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				)
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 
-			copyAISkillsToProject(["claude"]);
+			copyAISkillsToProject(["claude"], "angular");
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", mockSkillContent);
 		});
@@ -123,12 +119,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				})
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 
-			copyAISkillsToProject(["claude"]);
+			copyAISkillsToProject(["claude"], "angular");
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", "skill content");
 		});
@@ -153,12 +145,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				readFile: jasmine.createSpy("destFs.readFile").and.returnValue("") // older content
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 
-			copyAISkillsToProject(["claude"]);
+			copyAISkillsToProject(["claude"], "angular");
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", newContent);
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Updated .claude/skills/angular.md"));
@@ -186,12 +174,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				readFile: jasmine.createSpy("destFs.readFile").and.returnValue(existingContent)
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 
-			const result = copyAISkillsToProject(["claude"]);
+			const result = copyAISkillsToProject(["claude"], "angular");
 
 			expect(destFs.writeFile).not.toHaveBeenCalled();
 			expect(result.found).toBe(1);
@@ -224,12 +208,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				)
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "react" }
-			} as unknown as Config);
 
-			copyAISkillsToProject(["claude"]);
+			copyAISkillsToProject(["claude"], "react");
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/overview.md", content);
 		});
@@ -258,91 +238,10 @@ describe("Unit - copyAISkillsToProject", () => {
 				)
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "webcomponents" }
-			} as unknown as Config);
 
-			copyAISkillsToProject(["claude"]);
+			copyAISkillsToProject(["claude"], "webcomponents");
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", content);
-		});
-	});
-
-	describe("No local config (fallback)", () => {
-		it("should scan all known packages when no ignite-ui-cli.json is present", () => {
-			const angularPkg = "igniteui-angular";
-			const dir = skillsDir(angularPkg);
-			const file = skillFile(angularPkg, "angular.md");
-
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-					d === dir ? [file] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content")
-			});
-
-			const destFs = makeDestFs({
-				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
-					p === dir
-				)
-			});
-			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
-
-			copyAISkillsToProject(["claude"]);
-
-			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", "skill content");
-		});
-
-		it("should also scan igniteui-react in the fallback", () => {
-			const reactPkg = "igniteui-react";
-			const dir = skillsDir(reactPkg);
-			const file = skillFile(reactPkg, "overview.md");
-
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-					d === dir ? [file] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("react skill content")
-			});
-
-			const destFs = makeDestFs({
-				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
-					p === dir
-				)
-			});
-			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
-
-			copyAISkillsToProject(["claude"]);
-
-			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/overview.md", "react skill content");
-		});
-
-		it("should also scan igniteui-webcomponents in the fallback", () => {
-			const wcPkg = "igniteui-webcomponents";
-			const dir = skillsDir(wcPkg);
-			const file = skillFile(wcPkg, "webcomponents.md");
-
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
-					d === dir ? [file] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("wc skill content")
-			});
-
-			const destFs = makeDestFs({
-				directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
-					p === dir
-				)
-			});
-			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
-
-			copyAISkillsToProject(["claude"]);
-
-			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", "wc skill content");
 		});
 	});
 
@@ -356,13 +255,9 @@ describe("Unit - copyAISkillsToProject", () => {
 
 			const destFs = makeDestFs();
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			const result = copyAISkillsToProject(["claude"]);
+			const result = copyAISkillsToProject(["claude"], "angular");
 
 			expect(result.found).toBe(0);
 			expect(destFs.writeFile).not.toHaveBeenCalled();
@@ -382,12 +277,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				)
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 
-			copyAISkillsToProject(["claude"]);
+			copyAISkillsToProject(["claude"], "angular");
 
 			expect(destFs.writeFile).not.toHaveBeenCalled();
 		});
@@ -413,12 +304,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				writeFile: jasmine.createSpy("destFs.writeFile").and.throwError("EACCES: permission denied")
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 
-			const result = copyAISkillsToProject(["claude"]);
+			const result = copyAISkillsToProject(["claude"], "angular");
 
 			expect(result.found).toBe(1);
 			expect(result.skipped).toBe(0);
@@ -449,12 +336,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				writeFile: jasmine.createSpy("destFs.writeFile").and.throwError("EACCES: permission denied")
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 
-			const result = copyAISkillsToProject(["claude"]);
+			const result = copyAISkillsToProject(["claude"], "angular");
 
 			expect(result.found).toBe(1);
 			expect(result.skipped).toBe(0);
@@ -487,12 +370,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				})
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 
-			const result = copyAISkillsToProject(["claude"]);
+			const result = copyAISkillsToProject(["claude"], "angular");
 
 			expect(result.found).toBe(2);
 			expect(result.skipped).toBe(0);
@@ -505,7 +384,7 @@ describe("Unit - copyAISkillsToProject", () => {
 		const FAKE_TEMPLATE_PATH = "/fake/template";
 		const FAKE_SKILLS_ROOT = path.join(FAKE_TEMPLATE_PATH, "skills");
 
-		it("should use angular template paths when framework is in config and no npm skills are found", () => {
+		it("should use template skill files when no npm package is installed", () => {
 			const skillFilePath = path.join(FAKE_SKILLS_ROOT, "angular.md");
 			const content = "# Angular skills from template";
 
@@ -513,103 +392,17 @@ describe("Unit - copyAISkillsToProject", () => {
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
 					dir === FAKE_SKILLS_ROOT ? [skillFilePath] : []
 				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content),
-				fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.callFake((p: string) =>
-					p === "ignite-ui-cli.json"
-				)
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
 			});
 
 			const destFs = makeDestFs();
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject(["claude"]);
+			copyAISkillsToProject(["claude"], "angular");
 
 			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("angular");
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", content);
-		});
-
-		it("should detect react from package.json and use react template paths when no npm skills are found", () => {
-			const skillFilePath = path.join(FAKE_SKILLS_ROOT, "react.md");
-			const content = "# React skills from template";
-
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === FAKE_SKILLS_ROOT ? [skillFilePath] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
-			});
-
-			// detectFrameworkFromPackageJson reads ./package.json via the container FS (destFs)
-			const destFs = makeDestFs({
-				fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
-					p === "./package.json"
-				),
-				readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) => {
-					if (p === "./package.json") return JSON.stringify({ dependencies: { "react": "^19.0.0" } });
-					return "";
-				})
-			});
-			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
-			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
-
-			copyAISkillsToProject(["claude"]);
-
-			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("react");
-			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/react.md", content);
-		});
-
-		it("should use webcomponents (catch-all) template paths when no angular or react detected in package.json", () => {
-			const skillFilePath = path.join(FAKE_SKILLS_ROOT, "webcomponents.md");
-			const content = "# WC skills from template";
-
-			spySrcFs({
-				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
-					dir === FAKE_SKILLS_ROOT ? [skillFilePath] : []
-				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
-			});
-
-			// detectFrameworkFromPackageJson reads ./package.json via the container FS (destFs)
-			const destFs = makeDestFs({
-				fileExists: jasmine.createSpy("destFs.fileExists").and.callFake((p: string) =>
-					p === "./package.json"
-				),
-				readFile: jasmine.createSpy("destFs.readFile").and.callFake((p: string) => {
-					if (p === "./package.json") return JSON.stringify({ dependencies: { "lit": "^3.0.0" } });
-					return "";
-				})
-			});
-			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
-			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
-
-			copyAISkillsToProject(["claude"]);
-
-			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("webcomponents");
-			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/webcomponents.md", content);
-		});
-
-		it("should return empty result when no package.json exists and no npm skills are found", () => {
-			spySrcFs({
-				fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.returnValue(false)
-			});
-
-			const destFs = makeDestFs();
-			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
-
-			const result = copyAISkillsToProject(["claude"]);
-
-			expect(result.found).toBe(0);
-			expect(result.skipped).toBe(0);
-			expect(result.failed).toBe(0);
-			expect(destFs.writeFile).not.toHaveBeenCalled();
 		});
 
 		it("should preserve nested directory structure from template skill paths", () => {
@@ -628,18 +421,14 @@ describe("Unit - copyAISkillsToProject", () => {
 
 			const destFs = makeDestFs();
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 			mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject(["claude"]);
+			copyAISkillsToProject(["claude"], "angular");
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/grids/grid.md", content);
 		});
 
-		it("should use config framework (not detectFrameworkFromPackageJson) when config has framework but npm skills absent", () => {
+		it("should use the provided framework param when selecting template skill files", () => {
 			const skillFilePath = path.join(FAKE_SKILLS_ROOT, "react.md");
 			const content = "# React skills from template";
 
@@ -647,26 +436,14 @@ describe("Unit - copyAISkillsToProject", () => {
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
 					dir === FAKE_SKILLS_ROOT ? [skillFilePath] : []
 				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
-					if (p === "./package.json") return JSON.stringify({ dependencies: { "@angular/core": "^17.0.0" } });
-					return content;
-				}),
-				fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.callFake((p: string) => {
-					if (p === "ignite-ui-cli.json") return true;
-					if (p === "./package.json") return true;
-					return false;
-				})
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
 			});
 
 			const destFs = makeDestFs();
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "react" }
-			} as unknown as Config);
 			const mockTm = mockTemplateManager([FAKE_TEMPLATE_PATH]);
 
-			copyAISkillsToProject(["claude"]);
+			copyAISkillsToProject(["claude"], "react");
 
 			expect(mockTm.getFrameworkById).toHaveBeenCalledWith("react");
 			expect(mockTm.getFrameworkById).not.toHaveBeenCalledWith("angular");
@@ -684,21 +461,14 @@ describe("Unit - copyAISkillsToProject", () => {
 				glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
 					dir === SKILLS_ROOT ? [skillFilePath] : []
 				),
-				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content),
-				fileExists: spyOn(FsFileSystem.prototype, "fileExists").and.callFake((p: string) =>
-					p === "ignite-ui-cli.json"
-				)
+				readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content)
 			});
 
 			const destFs = makeDestFs();
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 			mockTemplateManager([ABS_TEMPLATE_PATH]);
 
-			copyAISkillsToProject(["claude"]);
+			copyAISkillsToProject(["claude"], "angular");
 
 			// Source reads go to real FsFileSystem (srcFs)
 			expect(srcSpies.glob).toHaveBeenCalledWith(SKILLS_ROOT, "**/*");
@@ -730,12 +500,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				)
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 
-			copyAISkillsToProject(["claude"]);
+			copyAISkillsToProject(["claude"], "angular");
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/grids/grid.md", content);
 		});
@@ -760,12 +526,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				)
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 
-			copyAISkillsToProject(["cursor"]);
+			copyAISkillsToProject(["cursor"], "angular");
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".cursor/skills/angular.md", content);
 		});
@@ -788,12 +550,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				)
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 
-			copyAISkillsToProject(["generic"]);
+			copyAISkillsToProject(["generic"], "angular");
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".agents/skills/angular.md", content);
 		});
@@ -817,12 +575,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				)
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "react" }
-			} as unknown as Config);
 
-			copyAISkillsToProject(["copilot"]);
+			copyAISkillsToProject(["copilot"], "react");
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".github/skills/overview.md", content);
 		});
@@ -845,12 +599,8 @@ describe("Unit - copyAISkillsToProject", () => {
 				)
 			});
 			App.container.set(FS_TOKEN, destFs);
-			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-			spyOn(ProjectConfig, "getConfig").and.returnValue({
-				project: { framework: "angular" }
-			} as unknown as Config);
 
-			const result = copyAISkillsToProject(["claude", "cursor", "generic"]);
+			const result = copyAISkillsToProject(["claude", "cursor", "generic"], "angular");
 
 			expect(destFs.writeFile).toHaveBeenCalledWith(".claude/skills/angular.md", content);
 			expect(destFs.writeFile).toHaveBeenCalledWith(".cursor/skills/angular.md", content);
@@ -911,13 +661,9 @@ describe("Unit - copyAgentInstructionFiles", () => {
 
 		const destFs = makeDestFs();
 		App.container.set(FS_TOKEN, destFs);
-		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
-			project: { framework: "angular" }
-		} as unknown as Config);
 		mockTemplateManager([FAKE_FILES_DIR]);
 
-		copyAgentInstructionFiles(["claude", "cursor"]);
+		copyAgentInstructionFiles(["claude", "cursor"], "angular");
 
 		const cursorFrontmatter = "---\ncontext: true\npriority: high\nscope: project\n---\n";
 		expect(destFs.writeFile).toHaveBeenCalledWith(".claude/CLAUDE.md", agentsContent);
@@ -943,13 +689,9 @@ describe("Unit - copyAgentInstructionFiles", () => {
 			})
 		});
 		App.container.set(FS_TOKEN, destFs);
-		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
-			project: { framework: "angular" }
-		} as unknown as Config);
 		mockTemplateManager([FAKE_FILES_DIR]);
 
-		copyAgentInstructionFiles(["claude"]);
+		copyAgentInstructionFiles(["claude"], "angular");
 
 		expect(destFs.writeFile).not.toHaveBeenCalled();
 	});
@@ -961,13 +703,9 @@ describe("Unit - copyAgentInstructionFiles", () => {
 
 		const destFs = makeDestFs();
 		App.container.set(FS_TOKEN, destFs);
-		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
-		spyOn(ProjectConfig, "getConfig").and.returnValue({
-			project: { framework: "angular" }
-		} as unknown as Config);
 		mockTemplateManager(["/fake/files"]);
 
-		copyAgentInstructionFiles(["claude", "generic"]);
+		copyAgentInstructionFiles(["claude", "generic"], "angular");
 
 		expect(destFs.writeFile).not.toHaveBeenCalled();
 	});
