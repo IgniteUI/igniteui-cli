@@ -293,7 +293,7 @@ describe("Unit - ai-config command", () => {
 				required: true
 			}));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude; assistant: vscode" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude; assistant: vscode", cd1: "angular" }));
 		});
 
 		it("uses defaults without prompting when canPrompt returns false", async () => {
@@ -304,7 +304,7 @@ describe("Unit - ai-config command", () => {
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
 			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: generic, claude; assistant: generic" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: generic, claude; assistant: generic", cd1: "angular" }));
 		});
 
 		it("logs skipping and does not post analytics when none is selected", async () => {
@@ -316,7 +316,7 @@ describe("Unit - ai-config command", () => {
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Skipping"));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: none; assistant: none" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: none; assistant: none", cd1: "angular" }));
 		});
 
 		it("still configures MCP when none is selected for skills", async () => {
@@ -334,7 +334,7 @@ describe("Unit - ai-config command", () => {
 			const config = writtenConfig(mockFs);
 			expect(config.servers).toBeDefined();
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: none; assistant: vscode" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: none; assistant: vscode", cd1: "angular" }));
 			expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(2);
 			expect(
 				(Util.log as jasmine.Spy).calls.allArgs()
@@ -356,7 +356,7 @@ describe("Unit - ai-config command", () => {
 			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which AI agents do you want to generate skills and instructions for?"
 			}));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: claude, cursor; assistant: vscode" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: claude, cursor; assistant: vscode", cd1: "angular" }));
 		});
 
 		it("skips prompt when --agent is provided", async () => {
@@ -369,7 +369,7 @@ describe("Unit - ai-config command", () => {
 			expect(InquirerWrapper.checkbox).not.toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which AI agents do you want to generate skills and instructions for?"
 			}));
-			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor; assistant: vscode" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor; assistant: vscode", cd1: "angular" }));
 		});
 
 		it("skips assistant prompt when --assistant is provided", async () => {
@@ -440,7 +440,7 @@ describe("Unit - ai-config command", () => {
 
 				expect(coreDetect.detectFramework).toHaveBeenCalled();
 				expect(InquirerWrapper.select).not.toHaveBeenCalled();
-				expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", cd1: "react" }));
 			});
 
 			it("prompts for framework when --framework is absent and detection returns null", async () => {
@@ -453,7 +453,7 @@ describe("Unit - ai-config command", () => {
 				expect(InquirerWrapper.select).toHaveBeenCalledWith(jasmine.objectContaining({
 					message: "Choose framework:"
 				}));
-				expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", cd1: "angular" }));
 			});
 
 			it("shows framework choices from template manager when prompting", async () => {

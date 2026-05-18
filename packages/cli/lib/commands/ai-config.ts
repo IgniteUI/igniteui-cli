@@ -199,7 +199,8 @@ const command: CommandModule = {
 		GoogleAnalytics.post({
 			t: "event",
 			ec: "$ig ai-config",
-			ea: `agent: ${result.agents.join(", ") || "none"}; assistant: ${result.assistants.join(", ") || "none"}`
+			ea: `agent: ${result.agents.join(", ") || "none"}; assistant: ${result.assistants.join(", ") || "none"}`,
+			cd1: framework
 		});
 	}
 };
