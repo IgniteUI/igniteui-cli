@@ -80,12 +80,11 @@
 			"program": "${workspaceRoot}/packages/cli/bin/execute.js",
 			"console": "externalTerminal",
 			"preLaunchTask": "build",
-			"outFiles": [ "${workspaceRoot}/lib/**/*.js",
-				"${workspaceRoot}/spec/**/*.js" ],
 			"args": [
 				"new",
 				"angularproj",
-				"--framework=angular"
+				"--framework=angular",
+				"--skip-install"
 			]
 		},
 		{

@@ -29,6 +29,12 @@ const mappings = [
 		repo: join(root, "packages/igniteui-mcp/igniteui-doc-mcp/webcomponents/igniteui-webcomponents"),
 		src: join(root, "packages/igniteui-mcp/igniteui-doc-mcp/webcomponents/igniteui-webcomponents/skills"),
 		dest: join(root, "packages/cli/templates/webcomponents/igc-ts/projects/ai-config/files/skills")
+	},
+	{
+		name: "blazor",
+		repo: join(root, "packages/igniteui-mcp/igniteui-doc-mcp/blazor/igniteui-blazor"),
+		src: join(root, "packages/igniteui-mcp/igniteui-doc-mcp/blazor/igniteui-blazor/skills"),
+		dest: join(root, "packages/cli/templates/blazor/igb/projects/ai-config/files/skills")
 	}
 ];
 

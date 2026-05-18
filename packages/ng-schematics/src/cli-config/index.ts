@@ -2,7 +2,7 @@ import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
 import { RunSchematicTask } from "@angular-devkit/schematics/tasks";
-import { addClassToBody, addMcpServers, AIAgentTarget, App, copyAgentInstructionFiles, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils, VS_CODE_MCP_PATH } from "@igniteui/cli-core";
+import { addClassToBody, addMcpServers, AIAgentTarget, AiCodingAssistant, App, copyAgentInstructionFiles, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
@@ -127,7 +127,7 @@ function appInit(tree: Tree) {
 	setVirtual(tree);
 }
 
-function aiConfig({ init, agents }: { init: boolean; agents: AIAgentTarget[] }): Rule {
+function aiConfig({ init, agents, assistants }: { init: boolean; agents: AIAgentTarget[]; assistants: AiCodingAssistant[] }): Rule {
 	return (tree: Tree) => {
 		if (init) {
 			appInit(tree);
@@ -142,18 +142,19 @@ function aiConfig({ init, agents }: { init: boolean; agents: AIAgentTarget[] }):
 			}
 		};
 
-		addMcpServers(VS_CODE_MCP_PATH, angularCliServer);
+		for (const assistant of assistants) {
+			addMcpServers(assistant, angularCliServer);
+		}
 	};
 }
 
 /** Standalone `ai-config` schematic entry */
-export function addAIConfig(options: { agents?: AIAgentTarget[] } = {}): Rule {
+export function addAIConfig(options: { agents?: AIAgentTarget[]; assistants?: string[] } = {}): Rule {
 	const selected = options.agents?.length ? options.agents : [] as AIAgentTarget[];
 	const agents = selected.includes("none" as any) ? [] : selected;
-	if (!agents.length) {
-		return (tree: Tree) => tree;
-	}
-	return aiConfig({ init: true, agents });
+	const selectedAssistants = options.assistants?.length ? options.assistants : [];
+	const assistants = (selectedAssistants.includes("none")? [] : selectedAssistants) as AiCodingAssistant[];
+	return aiConfig({ init: true, agents, assistants });
 }
 
 export default function (): Rule {

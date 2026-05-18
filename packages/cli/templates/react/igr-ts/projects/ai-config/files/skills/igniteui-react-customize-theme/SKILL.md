@@ -1,17 +1,33 @@
 ---
 name: igniteui-react-customize-theme
-description: This skill customizes Ignite UI for React component styling using CSS custom properties, Sass, and the full theming system and should be used when applying brand colors, dark mode, component-level overrides, or scoped themes in a React application
+description: This skill customizes Ignite UI for React component styling using CSS custom properties and the full theming system and should be used when applying brand colors, dark mode, component-level overrides, or scoped themes in a React application
 user-invocable: true
 ---
 
 # Ignite UI for React — Theming Skill
 
+## Prerequisites
+
+- A React project with `igniteui-react` installed
+- A theme CSS file imported in your entry point (see [igniteui-react-components](../igniteui-react-components/SKILL.md))
+- The **Ignite UI Theming MCP server** (`igniteui-theming`)
+
+> **AGENT INSTRUCTION — MCP Server Setup (REQUIRED)**
+>
+> Before using any theming tools, you MUST verify the MCP server is available
+> by calling `detect_platform`. If the tool is not available or the call fails,
+> you MUST automatically configure it by following the setup process steps described below.
+>
+> After writing the file, inform the user that the MCP server has been
+> configured and they may need to reload the editor for the tools to activate.
+> Start the MCP server and wait for that MCP server to start before continuing the theming related work.
+> Do NOT skip this step or ask the user to do it manually.
+
 ## Description
 
-This skill teaches AI agents how to theme Ignite UI for React applications. Two approaches are supported:
+This skill teaches AI agents how to theme Ignite UI for React applications. One approach is supported:
 
 - **CSS custom properties** — works in any project without additional build tooling
-- **Sass** — available when the project has Sass configured; provides the full palette/typography/elevation API
 
 The skill also covers component-level theming, layout controls (spacing, sizing, roundness), and how to use the **Ignite UI Theming MCP server** for AI-assisted code generation — all in a React application context.
 
@@ -23,12 +39,9 @@ The skill also covers component-level theming, layout controls (spacing, sizing,
 - "How do I scope a theme to a specific section of my React app?"
 - "Set up Material Design theming for Ignite UI components"
 
-## Prerequisites
+## Setting Up the Theming MCP Server
 
-- A React project with `igniteui-react` installed
-- A theme CSS file imported in your entry point (see [igniteui-react-components](../igniteui-react-components/SKILL.md))
-- **Optional**: Sass configured in the project (enables the Sass-based theming API)
-- **Optional**: The **Ignite UI Theming MCP server** (`igniteui-theming`) for AI-assisted code generation
+> **Full setup instructions for VS Code, Cursor, Claude Desktop, and JetBrains IDEs are in [`reference/MCP-SERVER.md`](./reference/MCP-SERVER.md).** Read that file for editor-specific configuration steps and verification.
 
 ## Related Skills
 
@@ -52,9 +65,7 @@ This skill is organized into focused sections. Refer to the appropriate file for
 | Topic | File | When to Use |
 |---|---|---|
 | CSS Theming | [CSS-THEMING.md](./reference/CSS-THEMING.md) | Pre-built themes, CSS custom properties, scoped overrides, layout controls, light/dark switching |
-| Sass Theming | [SASS-THEMING.md](./reference/SASS-THEMING.md) | Sass-based theming with palette(), component theme functions |
 | MCP Server | [MCP-SERVER.md](./reference/MCP-SERVER.md) | AI-assisted theming code generation |
-| Reveal Theme Sync | [REVEAL-THEME.md](./reference/REVEAL-THEME.md) | Syncing Reveal SDK dashboards with Ignite UI theme |
 | Troubleshooting | [TROUBLESHOOTING.md](./reference/TROUBLESHOOTING.md) | Common issues and solutions |
 
 ---
@@ -170,9 +181,7 @@ See [CSS-THEMING.md](./reference/CSS-THEMING.md) for approaches: class toggle, m
 3. **Always call `get_component_design_tokens` before `create_component_theme`**
 4. **Palette shades**: 50 = lightest, 900 = darkest
 5. **Surface color must match variant** — light color for `light`, dark for `dark`
-6. **Sass**: Use `@use 'igniteui-theming'` — not `igniteui-angular/theming`
-7. **Sass**: Component themes use `@include tokens($theme)` inside a selector
-8. **Never hardcode colors after palette generation**
+6. **Never hardcode colors after palette generation**
 
 ## Additional Resources
 

@@ -7,4 +7,7 @@ export interface Framework {
 	name: string;
 
 	projectLibraries: ProjectLibrary[];
+
+	/** When true the framework is excluded from `ig new` choices and the step-by-step wizard. */
+	hidden?: boolean;
 }

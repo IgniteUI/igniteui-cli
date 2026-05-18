@@ -164,7 +164,7 @@ describe("Unit - PromptSession", () => {
 		App.container.set(TEMPLATE_MANAGER, mockTemplate);
 		const mockSession = new PromptSession();
 		const mockQuestion = {
-			type: "list",
+			type: "select",
 			name: "theme",
 			message: "Choose the theme for the project:",
 			choices: ["infragistics", new Separator(), "infragistics.less"],
@@ -352,7 +352,7 @@ describe("Unit - PromptSession", () => {
 		App.container.set(TEMPLATE_MANAGER, mockTemplate);
 		const mockSession = new PromptSession();
 		const mockQuestion = {
-			type: "list",
+			type: "select",
 			name: "theme",
 			message: "Choose the theme for the project:",
 			choices: ["infragistics", new Separator(), "infragistics.less"],
@@ -410,13 +410,11 @@ describe("Unit - PromptSession", () => {
 	});
 	it("chooseActionLoop - should run through properly - Add Component", async () => {
 		const mockExtraConfigurations = [{
-			choices: [],
 			default: "Choice 1",
 			message: "Please enter a value",
 			key: "customValue1",
 			type: ControlExtraConfigType.Value
 		}, {
-			choices: [],
 			default: "Choice 1",
 			message: "Please enter a value",
 			key: "customValue2",
@@ -521,14 +519,12 @@ describe("Unit - PromptSession", () => {
 			default: "Choice 1",
 			message: "Please enter a value",
 			name: "customValue1",
-			choices: []
 		});
 		expect(InquirerWrapper.input).toHaveBeenCalledWith({
 			type: "input",
 			default: "Choice 1",
 			message: "Please enter a value",
 			name: "customValue2",
-			choices: []
 		});
 	});
 	it("chooseActionLoop - should run through properly - Add scenario", async () => {

@@ -41,12 +41,11 @@ export abstract class BasePromptSession {
 				name: "projectName",
 				message: "Enter a name for your project:",
 				default: Util.getAvailableName(defaultProjName, true),
-				choices: null,
 				validate: this.nameIsValid
 			});
 
 			const frameRes: string = await this.getUserInput({
-				type: "list",
+				type: "select",
 				name: "framework",
 				message: "Choose framework:",
 				choices: this.getFrameworkNames(),
@@ -117,9 +116,12 @@ export abstract class BasePromptSession {
 	 * @param options to use for the user input
 	 * @param withBackChoice Add a "Back" option to choices list
 	 */
-	protected async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
+	protected async getUserInput(
+		options: Exclude<UserInputOptions, { type: "checkbox" }>,
+		withBackChoice: boolean = false,
+	): Promise<string> {
 
-		if (options.choices) {
+		if ("choices" in options) {
 			if (options.choices.length < 2) {
 				// single choice to return:
 				let choice = options.choices[0];
@@ -133,8 +135,8 @@ export abstract class BasePromptSession {
 			options.choices = this.addSeparators(options.choices);
 		}
 
-		let result: string = null;
-		if (options.type === "list") {
+		let result = "";
+		if (options.type === "select") {
 			result = await InquirerWrapper.select(options);
 		} else {
 			result = await InquirerWrapper.input(options);
@@ -213,7 +215,7 @@ export abstract class BasePromptSession {
 		const projectLibraries = this.getProjectLibNames(framework);
 
 		const projectRes = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "projectType",
 			message: "Choose the type of project:",
 			choices: projectLibraries
@@ -228,7 +230,7 @@ export abstract class BasePromptSession {
 	protected async getProjectTemplate(projectLibrary: ProjectLibrary): Promise<ProjectTemplate> {
 		const visibleProjects = projectLibrary.projects.filter(p => !p.isHidden);
 		const componentNameRes = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "projTemplate",
 			message: "Choose project template:",
 			choices: Util.formatChoices(visibleProjects)
@@ -242,7 +244,7 @@ export abstract class BasePromptSession {
 	 */
 	protected async getTheme(projectLibrary: ProjectLibrary): Promise<string> {
 		const theme = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "theme",
 			message: "Choose the theme for the project:",
 			choices: projectLibrary.themes,
@@ -266,7 +268,6 @@ export abstract class BasePromptSession {
 			name: `${type === "component" ? type : "customView"}Name`,
 			message: `Name your ${type}:`,
 			default: availableDefaultName,
-			choices: null,
 			validate: (input: string) => {
 				// TODO: GA post?
 				const name = Util.nameFromPath(input);
@@ -329,27 +330,26 @@ export abstract class BasePromptSession {
 	 * Generate questions from extra configuration array
 	 * @param extraConfig
 	 */
-	private createQuestions(extraConfig: ControlExtraConfiguration[]): { type: string; name: string; message: string; choices: any[]; default: any; }[] {
-		const result = [];
+	private createQuestions(extraConfig: ControlExtraConfiguration[]): UserInputOptions[] {
+		const result: UserInputOptions[] = [];
 		for (const element of extraConfig) {
-			const currExtraConfig = {};
+			const base = {
+				default: element.default,
+				message: element.message,
+				name: element.key,
+			};
 			switch (element.type) {
 				case ControlExtraConfigType.Choice:
-					currExtraConfig["type"] = "select"; // formerly list
+					result.push({ ...base, type: "select", choices: element.choices ?? [] });
 					break;
 				case ControlExtraConfigType.MultiChoice:
-					currExtraConfig["type"] = "checkbox";
+					result.push({ ...base, type: "checkbox", choices: element.choices ?? [] });
 					break;
 				case ControlExtraConfigType.Value:
 				default:
-					currExtraConfig["type"] = "input";
+					result.push({ ...base, type: "input" });
 					break;
 			}
-			currExtraConfig["default"] = element.default;
-			currExtraConfig["message"] = element.message;
-			currExtraConfig["name"] = element.key;
-			currExtraConfig["choices"] = element.choices;
-			result.push(currExtraConfig);
 		}
 		return result;
 	}
@@ -368,7 +368,7 @@ export abstract class BasePromptSession {
 	private chooseActionTask: Task<PromptTaskContext> = async (runner, context) => {
 		Util.log(""); /* new line */
 		const action: string = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "action",
 			message: "Choose an action:",
 			choices: this.generateActionChoices(context.projectLibrary),
@@ -412,7 +412,7 @@ export abstract class BasePromptSession {
 				Util.log("The project will be created using a Trial version of Ignite UI for Angular.");
 				Util.log("You can always run the upgrade-packages command once it's created.");
 				const shouldUpgrade = await this.getUserInput({
-					type: "list",
+					type: "select",
 					name: "shouldUpgrade",
 					message: "Would you like to upgrade to the licensed feed now?",
 					choices: [
@@ -433,7 +433,6 @@ export abstract class BasePromptSession {
 				name: "port",
 				message: "Choose app host port:",
 				default: defaultPort,
-				choices: null,
 				validate: (input: string) => {
 					if (!Number(input)) {
 						Util.log(""); /* new line */
@@ -459,7 +458,7 @@ export abstract class BasePromptSession {
 	private getComponentGroupTask: Task<PromptTaskContext> = async (_runner, context) => {
 		const groups = context.projectLibrary.getComponentGroupNames();
 		const groupRes: string = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "componentGroup",
 			message: "Choose a group:",
 			choices: Util.formatChoices(context.projectLibrary.getComponentGroups()),
@@ -480,7 +479,7 @@ export abstract class BasePromptSession {
 	 */
 	private getComponentTask: Task<PromptTaskContext> = async (_runner, context) => {
 		const componentNameRes = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "component",
 			message: "Choose a component:",
 			choices: Util.formatChoices(context.projectLibrary.getComponentsByGroup(context.group))
@@ -503,7 +502,7 @@ export abstract class BasePromptSession {
 		const templates: Template[] = context.component.templates;
 
 		const templateRes = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "template",
 			message: "Choose one:",
 			choices: Util.formatChoices(templates)
@@ -534,7 +533,7 @@ export abstract class BasePromptSession {
 		const customTemplates: Template[] = context.projectLibrary.getCustomTemplates();
 
 		const customTemplateNameRes = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "customTemplate",
 			message: "Choose custom view:",
 			choices: Util.formatChoices(customTemplates)
@@ -554,7 +553,7 @@ export abstract class BasePromptSession {
 		return false;
 	}
 
-	private logAutoSelected(options: IUserInputOptions, choice: any) {
+	private logAutoSelected(options: UserInputOptions, choice: any) {
 		let text;
 		switch (options.name) {
 			case "framework":
@@ -629,15 +628,27 @@ export abstract class BasePromptSession {
 	}
 }
 
-/** Options for User Input */
-export interface IUserInputOptions {
-	type: string;
+type InputOptions = {
+	type: "input";
 	name: string;
 	message: string;
-	choices: any[];
 	default?: any;
 	validate?: (input: string) => string | boolean;
 }
+
+type SelectOptions = Omit<InputOptions, "type"> & {
+	type: "select";
+	// TODO: Expand type:
+	choices: any[];
+}
+
+type CheckboxOptions = Omit<SelectOptions, "type"> & {
+	type: "checkbox";
+	required?: boolean;
+}
+
+/** Options for User Input */
+export type UserInputOptions = InputOptions | SelectOptions | CheckboxOptions;
 
 /** Context type for prompt tasks */
 export interface PromptTaskContext {
