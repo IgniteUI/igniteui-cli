@@ -60,7 +60,7 @@ export class SchematicsPromptSession extends BasePromptSession {
 		// TODO?
 	}
 
-	protected async configureAI(): Promise<void> {
+	protected async configureAI(_frameworkId: string): Promise<void> {
 		// No-op in schematics context
 	}
 
