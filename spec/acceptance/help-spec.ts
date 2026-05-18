@@ -264,7 +264,7 @@ describe("Help command", () => {
 			--assistants  Coding assistant(s) to configure MCP servers for             [array]
 				[choices: "generic", "vscode", "cursor", "gemini", "junie", "none"]
 		-f, --framework   Manually set project framework to configure AI for.          [string]
-			[choices: "angular", "blazor", "jquery", "react", "webcomponents"]`;
+			[choices: "angular", "blazor", "react", "webcomponents"]`;
 
 		const replacedHelpText: string = originalHelpText.replace(/\s/g, "");
 		const actualNewText: string = (child.stdout.toString()).replace(/\s/g, "");

@@ -136,13 +136,13 @@ function getTemplateManager(): BaseTemplateManager {
 	return App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
 }
 
-/** Separate from the PromptSession prompt due to step by step config */
+/** Separate from the PromptSession prompt due to step by step config w/ jQuery and w/o Blazor */
 async function promptForFrameworkId(): Promise<string> {
 	const tm = getTemplateManager();
 	const frameRes: string = await InquirerWrapper.select({
 		name: "framework",
 		message: "Choose framework:",
-		choices: tm.getFrameworkNames(true),
+		choices: tm.getFrameworkNames(true).filter(x => x !== "jQuery"),
 		default: "Angular"
 	});
 	return tm.getFrameworkByName(frameRes).id;
@@ -166,7 +166,7 @@ const command: CommandModule = {
 		.option("framework", {
 			alias: "f",
 			describe: "Manually set project framework to configure AI for.",
-			choices: getTemplateManager()?.getFrameworkIds(true),
+			choices: getTemplateManager()?.getFrameworkIds(true).filter(x => x !== "jquery"),
 			type: "string"
 		}),
 	async handler(argv: ArgumentsCamelCase) {
