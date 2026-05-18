@@ -51,6 +51,11 @@ type AIAgentOption = AIAgentTarget | "none";
 type AIAssistantOption = AiCodingAssistant | "none";
 
 export async function configure(framework: string, agents: AIAgentOption[] = [], assistants: AIAssistantOption[] = [], skills = true): Promise<{ agents: AIAgentTarget[], assistants: AiCodingAssistant[] }> {
+	if (framework === "jquery") {
+		// currently not supported
+		return { agents: [], assistants: [] };
+	}
+
 	if (!agents.length) {
 		agents = await promptForAgents();
 	}
@@ -183,6 +188,10 @@ const command: CommandModule = {
 		}
 		if (!getTemplateManager()?.getFrameworkById(framework)) {
 			return Util.error("Framework not supported", "red");
+		}
+
+		if (framework === "jquery") {
+			Util.log("AI Config currently not available for jQuery projects.");
 		}
 
 		const result = await configure(framework, agents, assistants);

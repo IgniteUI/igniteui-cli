@@ -413,6 +413,17 @@ describe("Unit - ai-config command", () => {
 			expect((config.mcpServers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
 		});
 
+		it("logs and returns early when framework is jquery", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
+			spyOn(InquirerWrapper, "checkbox");
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "jquery" });
+
+			expect(Util.log).toHaveBeenCalledWith("AI Config currently not available for jQuery projects.");
+			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
+		});
+
 		describe("framework resolution", () => {
 			const NO_DETECT_MESSAGE = "Framework not provided and couldn't detect project from config or structure.";
 			beforeEach(() => {

@@ -2,7 +2,7 @@ import { App } from "./App";
 import { IFileSystem, FS_TOKEN } from "../types/FileSystem";
 import { ProjectConfig } from "./ProjectConfig";
 
-type Framework = "angular" | "react" | "webcomponents" | "blazor";
+type Framework = "angular" | "react" | "webcomponents" | "blazor" | "jquery";
 
 /**
  * Attempt to detect project framework by first checking for local cli-config,
@@ -35,7 +35,7 @@ export function detectFramework():  Framework | null {
  *  - "webcomponents"→ fallback when neither of the above is found
  *  - `null` if `package.json` is absent or cannot be parsed.
  */
-export function detectFrameworkFromPackageJson(): Framework | null {
+export function detectFrameworkFromPackageJson(): Exclude<Framework, "jquery"> | null {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);
 	if (!fs.fileExists("./package.json")) {
 		return null;
