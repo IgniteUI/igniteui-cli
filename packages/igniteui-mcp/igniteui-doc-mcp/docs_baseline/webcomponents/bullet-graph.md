@@ -24,7 +24,6 @@ The following sample demonstrates how setting multiple properties on the same [`
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcbulletgraphcomponent.html#transitionDuration) property.
@@ -120,7 +119,6 @@ Performance value is the primary measure displayed by the component and it is vi
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Highlight Value
 
 The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the [`value`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcbulletgraphcomponent.html#value) appear with a lower opacity. A good example is if [`value`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcbulletgraphcomponent.html#value) is 50 and  [`highlightValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcbulletgraphcomponent.html#highlightValue) is set to 25. This would represent a performance of 50% regardless of what the value of [`targetValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcbulletgraphcomponent.html#targetValue) is set to. To enable this first set [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcbulletgraphcomponent.html#highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcbulletgraphcomponent.html#highlightValue) to something lower than [`value`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcbulletgraphcomponent.html#value).
@@ -148,7 +146,6 @@ The bullet graph's performance value can be further modified to show progress re
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Comparative Ranges
 
@@ -184,7 +181,6 @@ The ranges are visual elements that highlight a specified range of values on a s
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Tick Marks
 
 The tick marks serve as a visual division of the scale into intervals in order to increase the readability of the bullet graph.
@@ -217,7 +213,6 @@ The tick marks serve as a visual division of the scale into intervals in order t
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Labels
 
 The labels indicate the measures on the scale.
@@ -241,7 +236,6 @@ The labels indicate the measures on the scale.
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Backing
 
 The backing element represents background and border of the bullet graph component. It is always the first element rendered and all the rest of elements such as labels, and tick marks are overlaid on top of it.
@@ -263,7 +257,6 @@ The backing element represents background and border of the bullet graph compone
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Scale
 
@@ -287,7 +280,6 @@ The scale is visual element that highlights the full range of values in the gaug
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Summary
 

@@ -32,7 +32,6 @@ The Ignite UI for Blazor Tooltip component provides a way to display a tooltip f
 @code { }
 ```
 
-
 ### Getting Started
 
 Before using the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html), you need to register it as follows:
@@ -161,7 +160,6 @@ The [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bla
 }
 ```
 
-
 ### Show/Hide delay settings
 
 If you want to control the delay before showing and hiding the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html), you can use the [`ShowDelay`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_ShowDelay) and [`HideDelay`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_HideDelay) properties. Both properties accept a number value representing time in milliseconds.
@@ -248,7 +246,6 @@ In the following example, you can see a demonstration of all tooltip placement o
     };
 }
 ```
-
 
 ### Triggers
 
@@ -408,7 +405,6 @@ By default, the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/
 
 @code { }
 ```
-
 
 ### Advanced Example
 
@@ -722,7 +718,6 @@ namespace Infragistics.Samples
 }
 ```
 
-
 ### Additional Properties
 
 Apart from the properties we've already covered, the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) component offers a variety of additional properties that allow you to further configure its behavior, position, and appearance.
@@ -799,7 +794,6 @@ igc-tooltip::part(bottom) {
 
 @code { }
 ```
-
 
 <div class="divider--half"></div>
 

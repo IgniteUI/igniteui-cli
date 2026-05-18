@@ -150,7 +150,6 @@ export class RemoteNwindService {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Remote Paging
 
 <!-- ComponentStart: Grid -->
@@ -302,7 +301,6 @@ export class RemotePagingService {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <!-- ComponentEnd: Grid -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
@@ -321,7 +319,7 @@ export class RemotePagingService {
 
 ## API References
 
-- [`IgcPaginatorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginatorcomponent.html)
+- [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)
 - [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
 
 ## Additional Resources

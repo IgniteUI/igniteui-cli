@@ -279,7 +279,6 @@ public class SingersData
 }
 ```
 
-
 ## Getting Started with Ignite UI for Blazor Hierarchical Grid
 
 ### Dependencies
@@ -791,7 +790,6 @@ public class SingersData
     }
 }
 ```
-
 
 ## Known Limitations
 

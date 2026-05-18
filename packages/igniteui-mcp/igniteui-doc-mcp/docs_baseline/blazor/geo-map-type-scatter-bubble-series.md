@@ -60,7 +60,6 @@ In Blazor map component, you can use the [`IgbGeographicProportionalSymbolSeries
 }
 ```
 
-
 <div class="divider--half"></div>
 
 The demo above shows the [`IgbGeographicProportionalSymbolSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicProportionalSymbolSeries.html) series and how to specify data binding options of the series. Automatic marker selection is configured along with marker collision avoidance logic, and marker outline and fill colors are specified too.

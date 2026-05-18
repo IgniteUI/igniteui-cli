@@ -49,7 +49,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Pie Chart Recommendations
@@ -97,9 +96,9 @@ Do Not Use Pie Chart When:
 
 Legends are used to show information about each point, to know about its contribution towards the total sum. You can collapse the point using legend click.
 
-In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`IgcLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igclegendcomponent.html) property. The [`legendLabelMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#legendLabelMemberPath) can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
+In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`IgcLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igclegendcomponent.html) property. The [`legendLabelMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#legendLabelMemberPath) can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
 
-Additionally you can use the [`legendItemTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#legendItemTemplate) and [`legendItemBadgeTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#legendItemBadgeTemplate) properties and the various font properties on ItemLegend to further customize the look of the legend items.
+Additionally you can use the [`legendItemTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#legendItemTemplate) and [`legendItemBadgeTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#legendItemBadgeTemplate) properties and the various font properties on ItemLegend to further customize the look of the legend items.
 
 ```typescript
 export class EnergyGlobalDemandItem {
@@ -132,7 +131,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -140,9 +138,9 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 
 Sometimes, the underlying data for the pie chart will contain many items with small values. In this case, the Others category will permit automatic aggregation of several data values into a single slice
 
-In the sample below, the [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#othersCategoryThreshold) is set to 2, and [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#othersCategoryType) is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
+In the sample below, the [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#othersCategoryThreshold) is set to 2, and [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#othersCategoryType) is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
 
-If you set [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#othersCategoryType) to Percent, then [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#othersCategoryThreshold) will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#othersCategoryType) is most appropriate for your application.
+If you set [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#othersCategoryType) to Percent, then [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#othersCategoryThreshold) will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#othersCategoryType) is most appropriate for your application.
 
 ```typescript
 export class EnergyGlobalDemandItem {
@@ -175,7 +173,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -188,14 +185,13 @@ The pie chart supports explosion of individual pie slices as well as a `SliceCli
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Pie Chart Selection
 
-The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the [`selectedItems`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#selectedItems) property. The selected slices are then highlighted.
+The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the [`selectedItems`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#selectedItems) property. The selected slices are then highlighted.
 
-There is a property called [`selectionMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#selectionMode) which is how you set what mode you want the pie chart to use. The default value is `Single`. In order to disable selection, set the property to `Manual`.
+There is a property called [`selectionMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#selectionMode) which is how you set what mode you want the pie chart to use. The default value is `Single`. In order to disable selection, set the property to `Manual`.
 
 The pie chart supports three different selection modes.
 
@@ -219,7 +215,6 @@ For scenarios where you click on the Others slice, the pie chart will return an 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Pie Chart Animation
@@ -232,7 +227,6 @@ In the code below, the radiusFactor is increasing the chart by 0.25% of the size
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -272,7 +266,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Radial Pie Chart
@@ -311,7 +304,6 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Additional Resources
@@ -324,12 +316,12 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 
 The following table lists API members mentioned in the above sections:
 
-- [`legendItemBadgeTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#legendItemBadgeTemplate)
-- [`legendItemTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#legendItemTemplate)
-- [`legendLabelMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#legendLabelMemberPath)
-- [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#othersCategoryThreshold)
-- [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#othersCategoryType)
-- [`selectionMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartbasecomponent.html#selectionMode)
+- [`legendItemBadgeTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#legendItemBadgeTemplate)
+- [`legendItemTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#legendItemTemplate)
+- [`legendLabelMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#legendLabelMemberPath)
+- [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#othersCategoryThreshold)
+- [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#othersCategoryType)
+- [`selectionMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpiechartcomponent.html#selectionMode)
 
 |Chart Type       | Control Name   | API Members |
 |-----------------|----------------|------------ |

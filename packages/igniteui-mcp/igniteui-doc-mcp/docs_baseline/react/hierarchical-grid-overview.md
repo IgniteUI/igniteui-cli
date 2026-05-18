@@ -195,7 +195,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Getting Started with Ignite UI for React Hierarchical Grid
 
 ### Dependencies
@@ -639,7 +638,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## Known Limitations
 

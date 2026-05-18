@@ -246,7 +246,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
 
-
 <!-- ComponentEnd: Grid -->
 
 ## Enabling and Using Cell Merging
@@ -626,7 +625,6 @@ export class PerProjectMergeStrategy extends IgrDefaultMergeStrategy {
   }
 }
 ```
-
 
 <!-- ComponentEnd: Grid -->
 

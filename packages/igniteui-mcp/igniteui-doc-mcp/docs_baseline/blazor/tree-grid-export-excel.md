@@ -154,7 +154,6 @@ public class EmployeesNestedData
 }
 ```
 
-
 ## Export Multi Column Headers Grid
 
 You can export [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` `IgnoreMultiColumnHeaders` to `true`.
@@ -371,7 +370,6 @@ public class EmployeesFlatDetails
     }
 }
 ```
-
 
 ## Export Grid with Frozen Column Headers
 

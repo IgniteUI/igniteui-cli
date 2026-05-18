@@ -481,7 +481,6 @@ public class SingersData
 }
 ```
 
-
 ## Exporting Indicator
 
 When using the default toolbar exporter component, whenever an export operation takes place the toolbar will show a progress indicator while the operation is in progress.
@@ -1258,7 +1257,6 @@ public class SingersNestedData : List<SingersNestedItem>
     }
 }
 ```
-
 
 ## Custom Content
 
@@ -2066,7 +2064,6 @@ public class SingersNestedData : List<SingersNestedItem>
 }
 ```
 
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -2358,7 +2355,6 @@ public class SingersData
     }
 }
 ```
-
 
 <!-- ComponentStart: HierarchicalGrid -->
 

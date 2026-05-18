@@ -235,7 +235,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App/>);
 ```
 
-
 ## Remote Paging
 
 <!-- ComponentStart: Grid -->
@@ -467,7 +466,6 @@ export default function App() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
-
 
 <!-- ComponentEnd: Grid -->
 

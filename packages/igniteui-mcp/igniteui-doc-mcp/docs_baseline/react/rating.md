@@ -45,7 +45,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RatingOverview/>);
 ```
 
-
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
@@ -151,7 +150,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RatingCustomSymbols/>);
 ```
 
-
 > The number of rating symbols between the opening and closing brackets of the rating component determines the max value.
 
 ## Single Selection
@@ -235,7 +233,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RatingSingleSelection/>);
 ```
 
-
 > Keep in mind that the `step` attribute doesn't work with single selection mode.
 
 ## Empty & Selected
@@ -305,7 +302,6 @@ export default class RatingEmptyAndSelected extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RatingEmptyAndSelected/>);
 ```
-
 
 ## Configuration
 
@@ -447,7 +443,6 @@ export default class RatingStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RatingStyling/>);
 ```
-
 
 ## API Reference
 

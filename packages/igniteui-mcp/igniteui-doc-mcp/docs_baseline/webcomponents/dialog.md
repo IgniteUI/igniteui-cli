@@ -20,7 +20,6 @@ This sample demonstrates how to create a Dialog component in Web Components.
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Usage
@@ -68,7 +67,6 @@ Use the [`closeOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Form
 
 Form elements can close a Dialog if they have the attribute `method="dialog"`. Submitting the form will trigger the closing of the dialog.
@@ -77,7 +75,6 @@ Form elements can close a Dialog if they have the attribute `method="dialog"`. S
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Styling
 
@@ -119,7 +116,6 @@ igc-dialog::part(footer) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

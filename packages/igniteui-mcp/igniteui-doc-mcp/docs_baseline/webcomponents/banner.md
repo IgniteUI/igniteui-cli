@@ -52,7 +52,6 @@ img {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Usage
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -181,7 +180,6 @@ img {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Binding to events
 
@@ -320,7 +318,6 @@ img {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Styling
 
 The [`IgcBannerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbannercomponent.html) component exposes several CSS parts which give you full control over its style:
@@ -399,7 +396,6 @@ img {
   max-width: 100%;
 }
 ```
-
 
 ## API References
 

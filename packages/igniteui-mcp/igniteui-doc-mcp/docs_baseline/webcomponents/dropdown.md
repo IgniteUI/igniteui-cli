@@ -24,7 +24,6 @@ The following Web Components Dropdown List example demonstrates the use of simpl
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## How to use the Dropdown List with Ignite UI for Web Components
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -58,13 +57,12 @@ The simplest way to start using the [`IgcDropdownComponent`](https://www.infragi
 
 ### Target
 
-The Web Components Dropdown list is positioned relatively to its target. The `target` slot allows you to provide a built-in component which toggles the `open` property on click. In some cases you would want to use an external target or use another event to toggle the opening of the Dropdown. You can achieve this using the [`showTarget`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#showTarget), [`hide`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbasecomboboxlikecomponent.html#hide) and [`toggleTarget`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#toggleTarget) methods which allow you to provide the target as a parameter. By default, the Dropdown list uses `absolute` CSS position. You will need to set the [`IgcPositionStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpositionstrategy.html) of the Web Components Dropdown to `fixed` when the target element is inside a fixed container, but the Dropdown is not. The Dropdown list is automatically sized based on its content, if you want the list to have the same width as the target, you should set the [`sameWidth`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#sameWidth) property to `true`.
+The Web Components Dropdown list is positioned relatively to its target. The `target` slot allows you to provide a built-in component which toggles the `open` property on click. In some cases you would want to use an external target or use another event to toggle the opening of the Dropdown. You can achieve this using the [`showTarget`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#showTarget), [`hide`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#hide) and [`toggleTarget`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#toggleTarget) methods which allow you to provide the target as a parameter. By default, the Dropdown list uses `absolute` CSS position. You will need to set the [`IgcPositionStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpositionstrategy.html) of the Web Components Dropdown to `fixed` when the target element is inside a fixed container, but the Dropdown is not. The Dropdown list is automatically sized based on its content, if you want the list to have the same width as the target, you should set the [`sameWidth`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#sameWidth) property to `true`.
 
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Position
 
@@ -89,20 +87,18 @@ igc-dropdown::part(list) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Selection
 
 The [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) emits the `Change` event when the user selects an item. The [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#select) method of the Dropdown allows you to select an item by its index or value.
 
 ### Item
 
-The [`IgcDropdownItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html) represents a selectable item in the Dropdown list. You could predefine a selected item by setting the [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbaseoptionlikecomponent.html#selected) property. You could also disable an item so that it can't be selected using the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbaseoptionlikecomponent.html#disabled) property. The [`IgcDropdownItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html) has a default slot which allows you to specify the content of the item. You could also provide custom content to be rendered before or after the content using the `prefix` and `suffix` slots. The [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbaseoptionlikecomponent.html#value) property allows you to provide a custom value to an item. If the [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbaseoptionlikecomponent.html#value) is not set, it resolves to the text content of the item.
+The [`IgcDropdownItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html) represents a selectable item in the Dropdown list. You could predefine a selected item by setting the [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html#selected) property. You could also disable an item so that it can't be selected using the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html#disabled) property. The [`IgcDropdownItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html) has a default slot which allows you to specify the content of the item. You could also provide custom content to be rendered before or after the content using the `prefix` and `suffix` slots. The [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html#value) property allows you to provide a custom value to an item. If the [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html#value) is not set, it resolves to the text content of the item.
 
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Header
 
@@ -113,7 +109,6 @@ You could use the [`IgcDropdownHeaderComponent`](https://www.infragistics.com/pr
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Group
 
 The Web Components Dropdown's items can also be grouped using the [`IgcDropdownGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowngroupcomponent.html), making it easier for users to differentiate separate categories. See it in action in this Web Components Dropdown List example:
@@ -123,14 +118,13 @@ The Web Components Dropdown's items can also be grouped using the [`IgcDropdownG
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Scroll Strategy
 
 The [`scrollStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#scrollStrategy) property determines the behavior of the component during scrolling the container of the target element. The default value is `scroll` which means that the Dropdown will be scrolled with its target. Setting the property to `block` will block the scrolling if the Dropdown is opened. You could also set the property to `close` which means that the Dropdown will be closed automatically on scroll.
 
 ### Keep Open
 
-By default, the Dropdown is closed automatically when the user clicks outside of it or selects an item. You could prevent this behavior using the [`keepOpenOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbasecomboboxlikecomponent.html#keepOpenOnOutsideClick) and [`keepOpenOnSelect`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbasecomboboxlikecomponent.html#keepOpenOnSelect) properties.
+By default, the Dropdown is closed automatically when the user clicks outside of it or selects an item. You could prevent this behavior using the [`keepOpenOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#keepOpenOnOutsideClick) and [`keepOpenOnSelect`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#keepOpenOnSelect) properties.
 
 ## Styling
 
@@ -169,7 +163,6 @@ igc-dropdown-group::part(label) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API Reference
 

@@ -19,7 +19,6 @@ The Ignite UI for Web Components Rating component allows users to view and provi
 }
 ```
 
-
 First, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
@@ -63,7 +62,6 @@ The [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-c
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 > The number of rating symbols between the opening and closing brackets of the rating component determines the max value.
 
 ## Single Selection
@@ -88,7 +86,6 @@ igc-rating::part(symbols) {
 }
 ```
 
-
 > Keep in mind that the `step` attribute doesn't work with single selection mode.
 
 ## Empty & Selected
@@ -106,7 +103,6 @@ The Ignite UI for Web Components Rating component allows users to use different 
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Configuration
 
@@ -228,7 +224,6 @@ igc-rating::part(symbols) {
     gap: 8px; 
 }
 ```
-
 
 ## API Reference
 

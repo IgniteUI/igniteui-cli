@@ -32,7 +32,6 @@ The sample below demonstrates the three types of [`IgcHierarchicalGridComponent`
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Setup
 
 In order to setup row selection in the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), you just need to set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowSelection) property. This property accepts `GridSelectionMode` enumeration.
@@ -322,7 +321,6 @@ This demo shows the usage of custom header and row selectors. The latter uses [`
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Conditional Selection Demo
 
 This demo prevents some rows from being selected using the `RowSelectionChanging` event and a custom template with disabled checkbox for non-selectable rows.
@@ -331,7 +329,6 @@ This demo prevents some rows from being selected using the `RowSelectionChanging
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

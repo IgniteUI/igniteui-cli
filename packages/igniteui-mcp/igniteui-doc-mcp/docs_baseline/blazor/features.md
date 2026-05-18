@@ -82,7 +82,6 @@ The following demo shows some [`IgbCombo`](https://www.infragistics.com/blazor/d
 }
 ```
 
-
 In our sample we are going to use the [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html) component, so we have to import them together with the combo:
 
 ```razor

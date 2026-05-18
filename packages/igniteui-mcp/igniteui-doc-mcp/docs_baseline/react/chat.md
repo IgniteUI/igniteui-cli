@@ -144,7 +144,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<ChatOverview />);
 ```
 
-
 ## Installation
 
 To get started, install the Ignite UI for React by running the following command:
@@ -757,7 +756,6 @@ export default function ChatStyling() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<ChatStyling />);
 ```
-
 
 ## API Reference
 

@@ -87,7 +87,6 @@ export class InvoicesData extends Array<InvoicesDataItem> {
     }
 ```
 
-
 ## Usage
 
 You should first bind to the grid's `rendered` event to create and manage a text area element:

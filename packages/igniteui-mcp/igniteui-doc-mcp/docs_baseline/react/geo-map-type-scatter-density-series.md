@@ -539,7 +539,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapTypeScatterDensitySeries/>);
 ```
 
-
 <div class="divider--half"></div>
 
 The demo above shows the [`IgrGeographicHighDensityScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographichighdensityscatterseries.html) series in the map component bound to hundreds or even thousands of data points representing Australia’s population density. The map plot area with more densely populated data points represented as coalescences of red pixels and loosely distributed data points by discrete blue pixels.

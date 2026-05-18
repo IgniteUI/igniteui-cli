@@ -189,7 +189,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
 
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 ## Enabling and Using Cell Merging
@@ -457,7 +456,6 @@ class PerCountryMergeStrategy extends IgrDefaultMergeStrategy {
   }
 }
 ```
-
 
 <!-- ComponentEnd: HierarchicalGrid -->
 

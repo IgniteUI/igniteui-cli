@@ -115,7 +115,6 @@ public class EnergyGlobalDemand
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Donut Chart Recommendations
@@ -258,7 +257,6 @@ The Blazor Donut Chart has the ability to select slices on click. Optionally, yo
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Donut Chart - Multiple Rings
@@ -391,7 +389,6 @@ public class CalendarSeasons
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

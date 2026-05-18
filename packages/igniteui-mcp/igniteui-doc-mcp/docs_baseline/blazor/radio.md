@@ -34,7 +34,6 @@ The Ignite UI for Blazor Radio component allows the user to select a single opti
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ### Usage
@@ -112,7 +111,6 @@ The [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazo
 }
 ```
 
-
 ### Checked
 
 You can use the `checked` attribute to toggle on the radio.
@@ -147,7 +145,6 @@ You can use the `checked` attribute to toggle on the radio.
 }
 ```
 
-
 ### Invalid
 
 You can use the `invalid` attribute to mark the radio as invalid.
@@ -168,7 +165,6 @@ You can use the `invalid` attribute to mark the radio as invalid.
 
 }
 ```
-
 
 ### Disabled
 
@@ -204,7 +200,6 @@ You can use the `disabled` attribute to disable the radio.
 }
 ```
 
-
 ### Group Alignment
 
 The [`IgbRadioGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadioGroup.html) allows you to easily change the placement directionality of the radio buttons it contains using the `alignment` attribute. Allowed values are `vertical`(default) and `horizontal`.
@@ -235,7 +230,6 @@ The [`IgbRadioGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 
 }
 ```
-
 
 ### Forms
 
@@ -303,7 +297,6 @@ igc-radio::part(label) {
 
 }
 ```
-
 
 <div class="divider--half"></div>
 

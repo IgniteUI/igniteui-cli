@@ -313,7 +313,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapDisplayImageryAzure/>);
 ```
 
-
 ## React Displaying Imagery from Azure Maps - Code Example
 
 The following code snippet shows how to display geographic imagery tiles from Azure Maps in React [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html) using [`IgrAzureMapsImagery`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrazuremapsimagery.html) class.

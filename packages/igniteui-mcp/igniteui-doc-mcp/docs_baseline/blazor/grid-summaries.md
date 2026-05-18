@@ -136,7 +136,6 @@ public class NwindData
 }
 ```
 
-
 > [!Note]
 > The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
 
@@ -422,7 +421,6 @@ public class NwindData
 }
 ```
 
-
 <!-- ComponentEnd: Grid -->
 
 ### Summary Template
@@ -701,7 +699,6 @@ public class NwindData
 }
 ```
 
-
 ## Disabled Summaries
 
 The [`DisabledSummaries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisabledSummaries) property provides precise per-column control over the Blazor Grid summary feature. This property enables users to customize the summaries displayed for each column in the IgbGrid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as **\['count', 'min', 'max']** by specifying their summary keys in an array.
@@ -974,7 +971,6 @@ public class NwindData
 }
 ```
 
-
 <!-- ComponentStart: Grid -->
 
 ## Summaries with Group By
@@ -1201,7 +1197,6 @@ public class InvoicesData
     }
 }
 ```
-
 
 <!-- ComponentEnd: Grid -->
 
@@ -1436,7 +1431,6 @@ public class InvoicesData
     }
 }
 ```
-
 
 <!-- ComponentEnd: Grid -->
 

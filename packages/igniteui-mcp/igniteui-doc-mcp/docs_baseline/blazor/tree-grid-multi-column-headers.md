@@ -231,7 +231,6 @@ public class EmployeesFlatDetails
 }
 ```
 
-
 The declaration of multi-column headers is achieved by wrapping a set of columns into an [`IgbColumnGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html) component with [`Header`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Header) title information passed.
 
 <!-- ComponentStart: TreeGrid -->
@@ -530,7 +529,6 @@ public class EmployeesFlatDetails
 }
 ```
 
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -715,7 +713,6 @@ public class EmployeesFlatDetails
     }
 }
 ```
-
 
 ## API References
 

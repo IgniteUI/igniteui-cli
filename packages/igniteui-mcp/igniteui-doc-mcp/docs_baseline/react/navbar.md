@@ -65,7 +65,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<NavbarOverview/>);
 ```
 
-
 ## Usage
 
 Before using the [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html), you need to register it as follows:
@@ -214,7 +213,6 @@ export default class NavbarStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<NavbarStyling/>);
 ```
-
 
 <div class="divider"></div>
 

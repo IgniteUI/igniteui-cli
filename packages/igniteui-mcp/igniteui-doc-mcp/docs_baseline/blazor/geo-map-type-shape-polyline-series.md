@@ -54,7 +54,6 @@ In Blazor map component, you can use the [`IgbGeographicPolylineSeries`](https:/
 }
 ```
 
-
 <div class="divider--half"></div>
 
 The [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicPolylineSeries.html) works a lot like the [`IgbGeographicShapeSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicShapeSeries.html) except that geo-spatial data is rendered with polylines instead of polygons.

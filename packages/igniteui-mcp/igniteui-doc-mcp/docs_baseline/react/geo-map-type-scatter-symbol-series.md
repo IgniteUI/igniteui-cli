@@ -984,7 +984,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapTypeScatterSymbolSeries/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Data Requirements

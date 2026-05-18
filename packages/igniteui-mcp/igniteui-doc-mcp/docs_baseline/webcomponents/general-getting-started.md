@@ -1,11 +1,13 @@
 ---
 title: Getting Started | Ignite UI for Web Components | Infragistics
-_description: Use Infragistics' Web Components components to create apps and improve data visualization with the world’s fastest, virtualized, real-time Web Components data grid and streaming financial and business and financial charts.
+_description: Install Ignite UI for Web Components and render your first component. Covers CLI scaffolding, manual package setup, and AI tooling with Agent Skills and MCP servers.
 _keywords: Ignite UI for Web Components, Infragistics, Getting Started
-_language: en
-mentionedTypes: ["XamBulletGraph", "IgrGrid"]
+last_updated: "2025-04-06"
+mentionedTypes: []
 _tocName: Getting Started
 ---
+
+<!-- schema: Article, HowTo -->
 
 # Getting Started With Ignite UI for Web Components
 
@@ -13,7 +15,7 @@ _tocName: Getting Started
 
 Ignite UI for Web Components comprises several packages available under either an MIT or a commercial license, depending on the components and services they contain. For a detailed list of components and their license, please refer to the [License FAQ and Installation](./general-licensing.md) and [Open Source vs Premium](./general-open-source-vs-premium.md) topics.
 
-## Install Ignite UI CLI
+## Using Ignite UI CLI
 
 To create an application from scratch and configure it to use the Ignite UI Web Components you can use the Ignite UI CLI. The first step is to install the respective package globally as follows:
 
@@ -28,7 +30,14 @@ ig
 ```
 
 Then choose Web Components as framework, select `Base` project template, add a specific component/view or select `Complete & Run`.
-Additionally, you can read more about the Ignite UI CLI in this [topic](general-cli-overview.md).
+
+Or create a project directly in one command, for example:
+
+```cmd
+ig new <project-name> --framework=webcomponents --type=igc-ts --template=side-nav
+```
+
+For a step-by-step walkthrough of the wizard, see [Step-by-Step Guide Using Ignite UI CLI](general-step-by-step-guide-using-cli.md). For a full reference of all CLI commands and options, see the [CLI Overview](general-cli-overview.md).
 
 ## Install Polyfills
 
@@ -40,7 +49,7 @@ npm install @webcomponents/custom-elements
 
 Then import the web component polyfills into index.js:
 
-```ts
+```typescript
 import '@webcomponents/custom-elements/custom-elements.min';
 import '@webcomponents/custom-elements/src/native-shim.js';
 ```
@@ -55,7 +64,7 @@ npm install igniteui-webcomponents
 
 Next you will need to import the components that you want to use in your `index.ts` file. You could import one or more components using the `defineComponents` function like this:
 
-```ts
+```typescript
 import { defineComponents, IgcAvatarComponent, IgcBadgeComponent } from 'igniteui-webcomponents';
 
 defineComponents(IgcAvatarComponent, IgcBadgeComponent);
@@ -63,18 +72,18 @@ defineComponents(IgcAvatarComponent, IgcBadgeComponent);
 
 You could also import all of the components using the `defineAllComponents` function:
 
-```ts
+```typescript
 import { defineAllComponents } from 'igniteui-webcomponents';
 
 defineAllComponents();
 ```
 
-> [!Note]
+> [!NOTE]
 > Importing all of the components will increase the bundle size of your application. That's why we recommend you to import only the components that you are actually using.
 
 The last step is to import the necessary CSS for our components so that they are styled properly:
 
-```ts
+```typescript
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
@@ -113,7 +122,7 @@ npm init -y
 npm install webpack webpack-cli --save-dev
 ```
 
-> [!Note]
+> [!NOTE]
 > Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
 
 5 - Open the project in **VS Code**
@@ -136,7 +145,7 @@ code .
   },
 ```
 
-> [!Note]
+> [!NOTE]
 > This script will use webpack to bundle the **index.js** file into another file called **index.bundle.js** and place it into a folder named **dist**.
 >
 > If a **JavaScript heap out of memory** issue occurs while building you can increase the heap size by using this build command instead:
@@ -159,7 +168,7 @@ npm install @webcomponents/custom-elements
 
 3 - Import the web component polyfills into **index.js**
 
-```ts
+```typescript
 import '@webcomponents/custom-elements/custom-elements.min';
 import '@webcomponents/custom-elements/src/native-shim.js';
 ```
@@ -177,7 +186,7 @@ npm install lit-html
 
 2 - Import the Geographic Map modules and **ModuleManager** in **index.js** file:
 
-```ts
+```typescript
 import { IgcGeographicMapModule } from 'igniteui-webcomponents-maps';
 import { IgcDataChartInteractivityModule } from 'igniteui-webcomponents-charts';
 // module manager for registering the modules
@@ -186,7 +195,7 @@ import { ModuleManager } from 'igniteui-webcomponents-core';
 
 3 - Register the Geographic Map modules using the **ModuleManager**
 
-```ts
+```typescript
 ModuleManager.register(
     IgcGeographicMapModule,
     IgcDataChartInteractivityModule
@@ -210,7 +219,7 @@ ModuleManager.register(
 npm run build
 ```
 
-> [!Note]
+> [!NOTE]
 > This command will run the build script we created earlier. The build script will generate a file named **index.bundle.js** in a folder named **dist**
 
 2 - Add the **index.bundle.js** script to the end of **body** element in **index.html** file.
@@ -226,22 +235,36 @@ npm run build
 
 3 - To run the project, launch a local development server. In this example, we are using Live Server. Right-click within the editor of **index.html** and select **Open with Live Server**
 
-<!-- <img src="../images/wc-live-server.jpg" alt="wc-live-server" /> -->
-
-> [!Note]
+> [!NOTE]
 > Live Server is an extension to Visual Studio Code that allows you to launch a local development server with live reload feature for static & dynamic pages. This extension can be installed via the Visual Studio Code Extensions tab, or by downloading it from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
 
 4 - Navigate to the **index.html** using a web browser on your local server. The final result should show interactive map of the world:
-
-<!-- <img src="../images/general/geo-map.png" alt="geo-map" /> -->
 
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
+## Upgrade from Trial to Licensed
 
-# Ignite UI for Web Components Packages Overview
+The Ignite UI CLI installs the trial version of Ignite UI for Web Components by default. To upgrade from the trial package to the licensed version, run the upgrade command in your project root:
+
+```bash
+ig upgrade-packages
+```
+
+You will be prompted to log in to the Infragistics private npm registry if not already configured. For details on the license model, see [License FAQ and Installation](./general-licensing.md) and [Open Source vs Premium](./general-open-source-vs-premium.md).
+
+## AI-Assisted Development
+
+Ignite UI provides a three-part AI toolchain - **Agent Skills**, the **Ignite UI CLI MCP server**, and the **Ignite UI Theming MCP server** - that grounds AI coding assistants in correct component APIs, import paths, and design tokens. Once connected, your AI assistant can scaffold projects, add and modify components, answer documentation questions, and generate accurate Ignite UI for Web Components code without leaving your editor.
+
+Run `ig ai-config` from your project root to copy Ignite UI for Web Components Agent Skills and write the Ignite
+UI MCP server configuration to `.vscode/mcp.json` in a single step.
+
+For an overview of all three layers and setup instructions, see [AI-Assisted Development with Ignite UI](./ai/ai-assisted-development-overview.md). For the full CLI MCP client setup guide, see [Ignite UI CLI MCP](./ai/cli-mcp.md). For an end-to-end walkthrough using both MCP servers, see [Build an App End-to-End with CLI MCP and Theming MCP](./general-how-to-mcp-e2e.md).
+
+## Ignite UI for Web Components Packages Overview
 
 Ignite UI for Web Components is a complete set of UI widgets, components, and UI kits for design tools and supporting services for Web Components. Designed to enable developers to build the most modern, high-performance HTML5 and JavaScript apps for modern desktop browsers, mobile experiences, and progressive web apps (PWAs) targeting the browsers web components APIs.
 

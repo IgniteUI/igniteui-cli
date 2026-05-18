@@ -46,7 +46,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CheckboxOverview/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -143,10 +142,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CheckboxLabel/>);
 ```
 
-
 ### Checked
 
-You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
+You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
 
 ```tsx
 <IgrCheckbox checked={true}></IgrCheckbox>
@@ -184,7 +182,6 @@ export default class CheckboxChecked extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CheckboxChecked/>);
 ```
-
 
 ### Indeterminate
 
@@ -227,10 +224,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CheckboxIndeterminate/>);
 ```
 
-
 ### Required
 
-You can use the [`required`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#required) property to mark the checkbox as required.
+You can use the [`required`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#required) property to mark the checkbox as required.
 
 ```tsx
 <IgrCheckbox required={true}></IgrCheckbox>
@@ -238,7 +234,7 @@ You can use the [`required`](https://www.infragistics.com/products/ignite-ui-rea
 
 ### Invalid
 
-You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#invalid) attribute to mark the checkbox as invalid.
+You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#invalid) attribute to mark the checkbox as invalid.
 
 ```tsx
 <IgrCheckbox invalid={true}></IgrCheckbox>
@@ -246,7 +242,7 @@ You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-reac
 
 ### Disabled
 
-You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#disabled) attribute to disable the checkbox.
+You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#disabled) attribute to disable the checkbox.
 
 ```tsx
 <IgrCheckbox disabled={true}></IgrCheckbox>
@@ -285,10 +281,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CheckboxDisabled/>);
 ```
 
-
 ### Forms
 
-You can use the [`name`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#name) and [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#value) attributes when using the checkbox with `Form`.
+You can use the [`name`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#name) and [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#value) attributes when using the checkbox with `Form`.
 
 ```tsx
 <IgrCheckbox name="wifi" value="enabled"></IgrCheckbox>
@@ -358,12 +353,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CheckboxStyling/>);
 ```
 
-
 ## API References
 
 - [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html)
-- [`checked`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#checked)
-- [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#disabled)
+- [`checked`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#checked)
+- [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#disabled)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

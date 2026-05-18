@@ -47,7 +47,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SnackbarOverview />);
 ```
 
-
 <div class="divider--half"></div>
 
 ### Usage
@@ -69,7 +68,7 @@ Before using the [`IgrSnackbar`](https://www.infragistics.com/products/ignite-ui
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the snackbar component is to use its [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#show) method and call it on a button click.
+The simplest way to display the snackbar component is to use its [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#show) method and call it on a button click.
 
 ```tsx
 <IgrButton variant="contained" onClick={onShowButtonClicked}>
@@ -92,7 +91,7 @@ const onShowButtonClicked = () => {
 
 ### Display Time
 
-Use the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#displayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
+Use the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#displayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
 
 ```tsx
 import React, { useRef } from 'react';
@@ -126,10 +125,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SnackbarDisplayTime />);
 ```
 
-
 ### Action Text
 
-By default, the snackbar component is hidden automatically after a period specified by the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#displayTime). You can use [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#keepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`actionText`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#actionText) you can display an action button inside the component.
+By default, the snackbar component is hidden automatically after a period specified by the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#displayTime). You can use [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#keepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`actionText`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#actionText) you can display an action button inside the component.
 
 ```tsx
 import React, { useRef } from 'react';
@@ -171,7 +169,6 @@ export default function SnackbarActionText() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SnackbarActionText />);
 ```
-
 
 ## Styling
 
@@ -232,15 +229,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SnackbarStyling />);
 ```
 
-
 <div class="divider--half"></div>
 
 ## API References
 
 - [`actionText`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#actionText)
-- [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#displayTime)
-- [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#keepOpen)
-- [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#show)
+- [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#displayTime)
+- [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#keepOpen)
+- [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#show)
 - [`IgrSnackbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html)
 - [`Styling & Themes`](../themes/overview.md)
 

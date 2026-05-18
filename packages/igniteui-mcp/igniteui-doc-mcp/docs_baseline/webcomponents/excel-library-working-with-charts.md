@@ -128,7 +128,6 @@ export class ExcelUtility {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 > [!Note]
 > The XLSX format is required. Other formats are not supported at this time.
 

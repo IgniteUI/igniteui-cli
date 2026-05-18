@@ -74,18 +74,17 @@ The following example depicts a [Column Chart](../types/column-chart.md) with a 
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Value Overlay Properties
 
-Unlike other series types that use a [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataSource) for data binding, the value overlay uses a `ValueMemberPath` property to bind a single numeric value. In addition, the value overlay requires you to define a single [`Axis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html#IgniteUI_Blazor_Controls_IgbValueOverlay_Axis) to use. If you use an X-axis, the value overlay will be a vertical line, and if you use a Y-axis, it will be a horizontal line.
+Unlike other series types that use a [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html#IgniteUI_Blazor_Controls_IgbValueOverlay_DataSource) for data binding, the value overlay uses a `ValueMemberPath` property to bind a single numeric value. In addition, the value overlay requires you to define a single [`Axis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html#IgniteUI_Blazor_Controls_IgbValueOverlay_Axis) to use. If you use an X-axis, the value overlay will be a vertical line, and if you use a Y-axis, it will be a horizontal line.
 
 When using a numeric X or Y axis, the `ValueMemberPath` property should reflect the actual numeric value on the axis where you want the value overlay to be drawn. When using a category X or Y axis, the `ValueMemberPath` should reflect the index of the category at which you want the value overlay to appear.
 
 When using the value overlay with a numeric angle axis, it will appear as a line from the center of the chart and when using a numeric radius axis, it will appear as a circle.
 
-[`IgbValueOverlay`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html) appearance properties are inherited from [`Series`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_Series) and so [`Brush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_Brush) and [`Thickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_Thickness) for example are available and work the same way they do with other types of series.
+[`IgbValueOverlay`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html) appearance properties are inherited from [`Series`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Series) and so [`Brush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html#IgniteUI_Blazor_Controls_IgbValueOverlay_Brush) and [`Thickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html#IgniteUI_Blazor_Controls_IgbValueOverlay_Thickness) for example are available and work the same way they do with other types of series.
 
 It is also possible to show an axis annotation on a [`IgbValueOverlay`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html) to show the value of the overlay on the owning axis. In order to show this, you can set the [`IsAxisAnnotationEnabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html#IgniteUI_Blazor_Controls_IgbValueOverlay_IsAxisAnnotationEnabled) property to true.
 
@@ -93,9 +92,9 @@ It is also possible to show an axis annotation on a [`IgbValueOverlay`](https://
 
 The Blazor charting components also expose the ability to use value lines to call out different focal points of your data, such as minimum, maximum, and average values.
 
-Applying the [`IgbValueLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html) in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) and [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) components is done by setting the [`ValueLines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ValueLines) property on the chart. This property takes a collection of the `ValueLayerValueMode` enumeration. You can mix and match multiple value layers in the same chart by adding multiple `ValueLayerValueMode` enumerations to the [`ValueLines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ValueLines) collection of the chart.
+Applying the [`IgbValueLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html) in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) and [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) components is done by setting the [`ValueLines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ValueLines) property on the chart. This property takes a collection of the `ValueLayerValueMode` enumeration. You can mix and match multiple value layers in the same chart by adding multiple `ValueLayerValueMode` enumerations to the [`ValueLines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ValueLines) collection of the chart.
 
-In the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html), this is done by adding a [`IgbValueLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html) to the [`Series`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_Series) collection of the chart and then setting the [`ValueMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html#IgniteUI_Blazor_Controls_IgbValueLayer_ValueMode) property to one of the `ValueLayerValueMode` enumerations. Each of these enumerations and what they mean is listed below:
+In the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html), this is done by adding a [`IgbValueLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html) to the [`Series`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Series) collection of the chart and then setting the [`ValueMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html#IgniteUI_Blazor_Controls_IgbValueLayer_ValueMode) property to one of the `ValueLayerValueMode` enumerations. Each of these enumerations and what they mean is listed below:
 
 - `Auto`: The default value mode of the `ValueLayerValueMode` enumeration.
 - `Average`: Applies potentially multiple value lines to call out the average value of each series plotted in the chart.
@@ -107,7 +106,7 @@ In the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteU
 
 If you want to prevent any particular series from being taken into account when using the [`IgbValueLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html) element, you can set the [`TargetSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html#IgniteUI_Blazor_Controls_IgbValueLayer_TargetSeries) property on the layer. This will force the layer to target the series that you define. You can have as many [`IgbValueLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html) elements within a single [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) as you want.
 
-The following sample demonstrates usage of the different [`ValueLines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ValueLines) in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html):
+The following sample demonstrates usage of the different [`ValueLines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ValueLines) in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html):
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -241,7 +240,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -445,7 +443,6 @@ public class StockTesla
 }
 ```
 
-
 ### Styling Overlay Text
 
 This code example shows how to style and customize Overlay Text on
@@ -487,16 +484,16 @@ You can find more information about related chart types in these topics:
 The following is a list of API members mentioned in the above sections:
 
 - [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
-- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataSource)
+- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html#IgniteUI_Blazor_Controls_IgbValueOverlay_DataSource)
 - [`IgbValueOverlay`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html)
 - [`Axis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html#IgniteUI_Blazor_Controls_IgbValueOverlay_Axis)
-- [`Brush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_Brush)
+- [`Brush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html#IgniteUI_Blazor_Controls_IgbValueOverlay_Brush)
 - `IsAxisAnnotationsEnabled`
-- [`Series`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_Series)
-- [`Thickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_Thickness)
+- [`Series`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Series)
+- [`Thickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueOverlay.html#IgniteUI_Blazor_Controls_IgbValueOverlay_Thickness)
 - [`IgbValueLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html)
 - `ValueLayerValueMode`
-- [`ValueLines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ValueLines)
+- [`ValueLines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ValueLines)
 - [`OverlayText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html#IgniteUI_Blazor_Controls_IgbValueLayer_OverlayText)
 - [`TargetAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html#IgniteUI_Blazor_Controls_IgbValueLayer_TargetAxis)
 - `OverlayTextMemberPath`

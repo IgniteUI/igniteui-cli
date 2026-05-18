@@ -153,7 +153,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DockManagerEmbeddingFrames/>);
 ```
 
-
 <!-- <div>
     <button data-localize="stackblitz" disabled class="stackblitz-btn" data-iframe-id="dock-manager-overview-iframe" data-demos-base-url="http://localhost:4200">View on StackBlitz
     </button>

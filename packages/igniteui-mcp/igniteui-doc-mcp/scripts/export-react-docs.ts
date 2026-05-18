@@ -100,6 +100,10 @@ function flattenPath(href: string): string {
     return `${componentDir}-${fileName}`;
   }
 
+  if (parts.length >= 2 && parts[0] === "grid-lite") {
+    return `grid-lite-${fileName}`;
+  }
+
   // For other nested paths (charts/types/area-chart.md, etc.) just use the filename
   // since it's already descriptive
   return fileName;

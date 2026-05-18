@@ -36,7 +36,6 @@ Below you can see a sample that demonstrates how the Date Picker works when user
 }
 ```
 
-
 ## Getting Started with Blazor Date Picker
 
 To get started with the [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html) component, first we need to register its module as follows:
@@ -167,7 +166,6 @@ The [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 }
 ```
 
-
 ### Display and input format
 
 [`InputFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html#IgniteUI_Blazor_Controls_IgbDatePicker_InputFormat) and [`DisplayFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html#IgniteUI_Blazor_Controls_IgbDatePicker_DisplayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`InputFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html#IgniteUI_Blazor_Controls_IgbDatePicker_InputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
@@ -193,7 +191,6 @@ More information about these can be found in the [`IgbDateTimeInput`](https://ww
     public IgbDatePicker DatePicker { get; set; }
 }
 ```
-
 
 ### Increment and decrement
 
@@ -303,7 +300,6 @@ In forms, we can handle the `Change` event of the component and update the value
 }
 ```
 
-
 ### Calendar Specific settings
 
 The [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html) can modify some of the calendar's settings via the properties that the Date Picker exposes. Some of these include [`VisibleMonths`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html#IgniteUI_Blazor_Controls_IgbDatePicker_VisibleMonths) which allows more than one calendar to be displayed when the picker expands, [`WeekStart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html#IgniteUI_Blazor_Controls_IgbDatePicker_WeekStart) which determines the starting day of the week, [`ShowWeekNumbers`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html#IgniteUI_Blazor_Controls_IgbDatePicker_ShowWeekNumbers) which shows the number for each week in the year and more.
@@ -369,7 +365,6 @@ igc-date-picker::part(year-inner selected) {
     public IgbDatePicker DatePicker { get; set; }
 }
 ```
-
 
 ## API References
 

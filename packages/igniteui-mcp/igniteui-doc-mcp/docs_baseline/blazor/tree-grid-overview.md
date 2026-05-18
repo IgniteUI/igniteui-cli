@@ -172,7 +172,6 @@ public class EmployeesNestedData
 }
 ```
 
-
 ## Getting Started with Ignite UI for Blazor Tree Grid
 
 ### Dependencies
@@ -481,7 +480,6 @@ public class EmployeesFlatData
 }
 ```
 
-
 ## Persistence and Integration
 
 The indentation of the tree grid cell persists across other tree grid features like filtering, sorting and paging.
@@ -630,7 +628,6 @@ public class EmployeesNestedData
     }
 }
 ```
-
 
 ## API References
 

@@ -24,7 +24,6 @@ You can create this type of chart in the [`IgcDataChartComponent`](https://www.i
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Scatter Polyline Chart
@@ -37,7 +36,6 @@ You can create this type of chart in the [`IgcDataChartComponent`](https://www.i
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -57,7 +55,7 @@ The following table lists API members mentioned in the above sections:
 - [`IgcScatterPolygonSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcscatterpolygonseriescomponent.html)
 - [`IgcScatterPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcscatterpolylineseriescomponent.html)
 - `ItemsSource`
-- [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcshapeseriesbasecomponent.html#shapeMemberPath)
+- [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcscatterpolygonseriescomponent.html#shapeMemberPath)
 - [`IgcNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcnumericxaxiscomponent.html)
 - [`IgcNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcnumericyaxiscomponent.html)
 - `YAxisName`

@@ -271,7 +271,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample />);
 ```
 
-
 ## Functionality
 
 Copy behavior is working with the default interaction defined by the browser and operating system. Thus for the copy and paste behaviors, these are:
@@ -298,7 +297,7 @@ Copy behavior is working with the default interaction defined by the browser and
 
 ## API Usage
 
-We expose [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#clipboardOptions) property, which handles the following options:
+We expose [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#clipboardOptions) property, which handles the following options:
 
 - `Enabled` Enables/disables copying of selected cells.
 - `CopyHeaders` Include the associated headers when copying.
@@ -308,7 +307,7 @@ We expose [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-r
 > [!Note]
 > Excel can automatically detect text that is separated by tabs (tab-delimited `/t`) and properly paste the data into separate columns. When the paste format doesn't work, and everything you paste appears in a single column, then Excel's delimiter is set to another character, or your text is using spaces instead of tabs.
 
-- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#clipboardOptions).
+- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#clipboardOptions).
 
 ## Additional Resources
 

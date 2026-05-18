@@ -180,7 +180,6 @@ public class EmployeesFlatData
 }
 ```
 
-
 ## Setup
 
 In order to setup row selection in the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html), you just need to set the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelection) property. This property accepts `GridSelectionMode` enumeration.
@@ -411,7 +410,7 @@ Additionally, assigning row IDs to [`SelectedRows`](https://www.infragistics.com
 
 You can template header and row selectors in the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) and also access their contexts which provide useful functionality for different scenarios.
 
-By default, the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`Click`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckboxBase.html#IgniteUI_Blazor_Controls_IgbCheckboxBase_Click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
+By default, the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`Click`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html#IgniteUI_Blazor_Controls_IgbCheckbox_Click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
 
 #### Row Template
 
@@ -438,7 +437,7 @@ igRegisterScript("WebGridRowSelectorTemplate", (ctx) => {
 
 The [`RowID`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbRowSelectorTemplateDetails_RowID) property can be used to get a reference of an [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) row. This is useful when you implement a `click` handler on the row selector element.
 
-In the above example we are using an [`IgbCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html) and we bind `rowContext.selected` to its [`Checked`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckboxBase.html#IgniteUI_Blazor_Controls_IgbCheckboxBase_Checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
+In the above example we are using an [`IgbCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html) and we bind `rowContext.selected` to its [`Checked`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html#IgniteUI_Blazor_Controls_IgbCheckbox_Checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
 
 ### Header Template
 
@@ -561,7 +560,6 @@ public class EmployeesFlatData
     }
 }
 ```
-
 
 <!-- ComponentStart: Grid, TreeGrid -->
 
@@ -708,7 +706,6 @@ public class EmployeesFlatData
 }
 ```
 
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 ### Conditional Selection Demo
@@ -814,7 +811,6 @@ public class EmployeesFlatData
     }
 }
 ```
-
 
 ## API References
 

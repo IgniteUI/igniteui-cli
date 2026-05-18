@@ -17,7 +17,6 @@ In addition to predefined themes and palettes, you can further customize the loo
 
 
 
-
 ## Available Theming Properties
 
 | Property name                            | Type                     | Description                                                                                  |

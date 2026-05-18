@@ -20,7 +20,6 @@ The Ignite UI for Web Components Text Area represents a multi-line plain-text ed
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Dependencies
 
 To get started we need to import the [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) in our typescript file and register the component by calling the [defineComponents()](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/index.html#defineComponents) function as follows:
@@ -49,7 +48,6 @@ With `prefix` and `suffix` slots we can add different content before and after t
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Text Area Resizing
 
 There are three different resize options of the [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html). When set to `none`, the text area does not resize and uses a scroll bar to show overflow text. When set to `vertical` (the default option), the text area lets the user resize it vertically. When set to `auto`, the text area shows all the user input at once. Overflow text wraps onto a new line and expands the text area automatically.
@@ -65,7 +63,6 @@ There are three different resize options of the [`IgcTextareaComponent`](https:/
 }
 ```
 
-
 The full list of attributes of the text area can be found in [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) API.
 
 ## Form Integration
@@ -79,7 +76,6 @@ The sample below shows how a [`IgcTextareaComponent`](https://www.infragistics.c
     margin-top: 1rem;
 }
 ```
-
 
 ## Styling
 
@@ -133,7 +129,6 @@ igc-textarea::part(suffix) {
   background-color: var(--ig-primary-500);
 }
 ```
-
 
 <div class="divider"></div>
 

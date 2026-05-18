@@ -93,6 +93,10 @@ function flattenPath(href: string): string {
     return `${componentDir}-${fileName}`;
   }
 
+  if (parts.length >= 2 && parts[0] === "grid-lite") {
+    return `grid-lite-${fileName}`;
+  }
+
   return fileName;
 }
 

@@ -20,7 +20,7 @@ All notable changes for each version of Ignite UI for React are documented on th
 #### Changed
 
 - [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html): Updated to use the latest `igniteui-dockmanager@2.1.0` with new `minResizeWidth` and `minResizeHeight` properties, `paneFlyoutToggle` event; additional `layoutChange` event detail and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-dockmanager/blob/master/CHANGELOG.md#210).
-- Updated to use the latest `igniteui-webcomponents@7.1.0` including new `Splitter` and `Highlight` container components and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/CHANGELOG.md#710---2026-03-19).
+- Updated to use the latest `igniteui-webcomponents@7.1.0` including new [`IgrSplitter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html) and `Highlight` container components and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/CHANGELOG.md#710---2026-03-19).
 
 #### New Features
 
@@ -591,7 +591,7 @@ The following table lists the bug fixes made for the Ignite UI for React toolset
 ### igniteui-react
 
 - Added new `allowSplitterDock` property for `Dockmanager` that allows docking directly in a split.
-- Added new `useFixedSize` property for the [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrsplitpane.html) of `Dockmanager` that allows new resize behavior.
+- Added new `useFixedSize` property for the [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html) of `Dockmanager` that allows new resize behavior.
 
 ### Enhancements
 
@@ -756,7 +756,7 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 
 - [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html), [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html) - exposed [`validateOnly`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html#validateOnly) to enable validation rules being enforced without restricting user input.
 - [`IgrDropdown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html) - [`IgrPositionStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpositionstrategy.html) property is deprecated. The dropdown now uses the `Popover` API to render its container in the top layer of the browser viewport, making the property obsolete.
-- [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html) - [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrsplitpane.html) [`isMaximized`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrsplitpane.html#isMaximized) is deprecated. Having isMaximized set to true on a split pane level has no real effect as split panes serve as containers only, meaning they have no actual content to be shown maximized. Use the [`isMaximized`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrsplitpane.html#isMaximized) property of [`IgrTabGroupPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrtabgrouppane.html) and/or [`IgrContentPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrcontentpane.html) instead.
+- [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html) - [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html) [`isMaximized`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#isMaximized) is deprecated. Having isMaximized set to true on a split pane level has no real effect as split panes serve as containers only, meaning they have no actual content to be shown maximized. Use the [`isMaximized`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#isMaximized) property of [`IgrTabGroupPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabgrouppane.html) and/or [`IgrContentPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html) instead.
 
 ### igniteui-react-grids
 
@@ -766,7 +766,7 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 
 ### igniteui-react-charts (Charts)
 
-- [Data Legend Grouping](charts/features/chart-data-legend.md#react-data-legend-grouping) & [Data Tooltip Grouping](charts/features/chart-data-tooltip.md#react-data-tooltip-grouping-for-data-chart) - New grouping feature added. The property `GroupRowVisible` toggles grouping with each series opting in can assign group text via the [`dataLegendGroup`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseries.html#dataLegendGroup) property. If the same value is applied to more than one series then they will appear grouped. Useful for large datasets that need to be categorized and organized for all users.
+- [Data Legend Grouping](charts/features/chart-data-legend.md#react-data-legend-grouping) & [Data Tooltip Grouping](charts/features/chart-data-tooltip.md#react-data-tooltip-grouping-for-data-chart) - New grouping feature added. The property `GroupRowVisible` toggles grouping with each series opting in can assign group text via the [`dataLegendGroup`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcrosshairlayer.html#dataLegendGroup) property. If the same value is applied to more than one series then they will appear grouped. Useful for large datasets that need to be categorized and organized for all users.
 
 - [Chart Selection](charts/features/chart-data-selection.md) - New series selection styling. This is adopted broadly across all category, financial and radial series for [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) and [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html). Series can be clicked and shown a different color, brightened or faded, and focus outlines. Manage which items are effected through individual series or entire data item. Multiple series and markers are supported. Useful for illustrating various differences or similarities between values of a particular data item. Also  `SelectedSeriesItemsChanged` event and [`selectedSeriesItems`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#selectedSeriesItems) are available for additional help to build out robust business requirements surrounding other actions that can take place within an application such as a popup or other screen with data analysis based on the selection.
 
@@ -774,7 +774,7 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 
 - [Treemap Highlighting](charts/types/treemap-chart.md#react-treemap-highlighting) - Now exposes a [`highlightingMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#highlightingMode) property that allows you to configure the mouse-over highlighting of the items in the tree map. This property takes two options: `Brighten` where the highlight will apply to the item that you hover the mouse over only, and `FadeOthers` where the highlight of the hovered item will remain the same, but everything else will fade out. This highlight is animated, and can be controlled using the [`highlightingTransitionDuration`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#highlightingTransitionDuration) property.
 
-- [Treemap Percent-based Highlighting](charts/types/treemap-chart.md#react-treemap-percent-based-highlighting) - New percent-based highlighting, allowing nodes to represent progress or subset of a collection. The appearance is shown as a fill-in of its backcolor up to a specific value either by a member on your data item or by supplying a new [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#highlightedDataSource). Can be toggled via [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#highlightedValuesDisplayMode) and styled via `FillBrushes`.
+- [Treemap Percent-based Highlighting](charts/types/treemap-chart.md#react-treemap-percent-based-highlighting) - New percent-based highlighting, allowing nodes to represent progress or subset of a collection. The appearance is shown as a fill-in of its backcolor up to a specific value either by a member on your data item or by supplying a new [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#highlightedDataSource). Can be toggled via [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#highlightedValuesDisplayMode) and styled via `FillBrushes`.
 
 - [`IgrToolbar`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_layouts.igrtoolbar.html) - New `IsHighlighted` option for ToolAction for outlining a border around specific tools of choice.
 
@@ -787,7 +787,7 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 
 ### igniteui-react-charts
 
-- New Data Filtering via the [`initialFilter`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#initialFilter) property. Apply filter expressions to filter the chart data to a subset of records. Can be used for drill down large data.
+- New Data Filtering via the [`initialFilter`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#initialFilter) property. Apply filter expressions to filter the chart data to a subset of records. Can be used for drill down large data.
 
 - `XamRadialChart`
   - New Label Mode
@@ -876,7 +876,7 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 
 ### Deprecated Components
 
-> [DataGrid](grids/data-grid/overview.md) - The DataGrid is deprecated, please use [Grid](grids/data-grid.md)
+> `DataGrid` - The DataGrid is deprecated, please use [Grid](grids/data-grid.md)
 
 ## **18.2.0 (June 2023)**
 
@@ -886,7 +886,7 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 
 ### igniteui-react-charts (Charts)
 
-- [ValueLayer](charts/features/chart-overlays.md#react-value-layer) - A new series type named the [`IgrValueLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrvaluelayer.html) is now exposed which can allow you to render an overlay for different focal points of the plotted data such as Maximum, Minimum, and Average. This is applied to the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) and [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) by adding to the new [`valueLines`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#valueLines) collection.
+- [ValueLayer](charts/features/chart-overlays.md#react-value-layer) - A new series type named the [`IgrValueLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrvaluelayer.html) is now exposed which can allow you to render an overlay for different focal points of the plotted data such as Maximum, Minimum, and Average. This is applied to the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) and [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) by adding to the new [`valueLines`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#valueLines) collection.
 
 - It is now possible to apply a **dash array** to the different parts of the series of the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html). You can apply this to the [series](charts/types/line-chart.md#react-styling-line-chart) plotted in the chart, the [gridlines](charts/features/chart-axis-gridlines.md#react-axis-gridlines-properties) of the chart, and the [trendlines](charts/features/chart-trendlines.md#react-chart-trendlines-dash-array-example) of the series plotted in the chart.
 
@@ -918,7 +918,7 @@ Added significant improvements to default behaviors, and refined the Category Ch
   - GroupSortDescriptions
 
 > [!Note]
-> [Chart Aggregation](charts/features/chart-data-aggregations.md) will not work when using [`includedProperties`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#includedProperties) | [`excludedProperties`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#excludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
+> [Chart Aggregation](charts/features/chart-data-aggregations.md) will not work when using [`includedProperties`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#includedProperties) | [`excludedProperties`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#excludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
 
 ### igniteui-react-grids (Data Grid)
 
@@ -948,7 +948,7 @@ Added significant improvements to default behaviors, and refined the Category Ch
 
 ### igniteui-react-grids (Data Grid)
 
-Added New Feature - [Row Paging](grids/data-grid/row-paging.md) which is used to split a large set of data into a sequence of pages that have similar content. With pagination, data can be displayed in a set number of rows, letting users “scroll” through their data, without needing a scroll bar. The UI for table pagination usually includes things like the current page, total pages, and clickable Previous and Next arrows/buttons that let users flip through the pages of data.
+Added New Feature - `Row Paging` which is used to split a large set of data into a sequence of pages that have similar content. With pagination, data can be displayed in a set number of rows, letting users “scroll” through their data, without needing a scroll bar. The UI for table pagination usually includes things like the current page, total pages, and clickable Previous and Next arrows/buttons that let users flip through the pages of data.
 
 ## **16.15.1 (December 2021)**
 
@@ -993,11 +993,11 @@ This release introduces a few improvements and simplifications to visual design 
 - Added crosshair annotations by default in [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) and [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html)
 - Added final value annotation by default in [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html)
 - Added new properties in Category Chart and Financial Chart:
-  - [`crosshairsLineThickness`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#crosshairsLineThickness) and other properties for customizing crosshairs lines
-  - [`crosshairsAnnotationXAxisBackground`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#crosshairsAnnotationXAxisBackground) and other properties for customizing crosshairs annotations
-  - [`finalValueAnnotationsBackground`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#finalValueAnnotationsBackground) and other properties for customizing final value annotations
-  - [`areaFillOpacity`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#areaFillOpacity) that allow changing opacity of series fill (e.g. Area chart)
-  - [`markerThickness`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#markerThickness) that allows changing thickness of markers
+  - [`crosshairsLineThickness`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#crosshairsLineThickness) and other properties for customizing crosshairs lines
+  - [`crosshairsAnnotationXAxisBackground`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#crosshairsAnnotationXAxisBackground) and other properties for customizing crosshairs annotations
+  - [`finalValueAnnotationsBackground`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#finalValueAnnotationsBackground) and other properties for customizing final value annotations
+  - [`areaFillOpacity`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#areaFillOpacity) that allow changing opacity of series fill (e.g. Area chart)
+  - [`markerThickness`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#markerThickness) that allows changing thickness of markers
 - Added new properties in Category Chart, Financial Chart, Data Chart, and Geographic Map:
   - [`markerAutomaticBehavior`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#markerAutomaticBehavior) that allows which marker type is assigned to multiple series in the same chart
   - [`legendItemBadgeShape`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#legendItemBadgeShape) for setting badge shape of all series represented in a legend
@@ -1019,10 +1019,10 @@ This release introduces a few improvements and simplifications to visual design 
 ### igniteui-react-grids (Data Grid)
 
 - New Features Added:
-  - [Filter Row](grids/data-grid/column-filtering.md)
-  - [Load/Save Layout Customizations](grids/data-grid/load-save-layout.md)
-  - [GroupBy Area for column grouping](grids/data-grid/row-grouping.md)
-  - [Cell Merging](grids/data-grid/cell-merging.md)
+  - `Filter Row`
+  - `Load/Save Layout Customizations`
+  - `GroupBy Area for column grouping`
+  - `Cell Merging`
 - New API:
   - Added `SelectionChanged` event. Used to detect changes on selection interactions
         e.g. Multiple row selection.
@@ -1043,20 +1043,20 @@ This release introduces several new and improved visual design and configuration
 - Changed Scatter High Density series’ colors for heat max property from <span style="color:#ee5879">#ee5879</span> to <span style="color:#ee5879">#ee5879</span>
 - Changed Financial/Waterfall series’ `NegativeBrush` and `NegativeOutline` properties from <span style="color:#C62828">#C62828</span> to <span style="color:#ee5879">#ee5879</span>
 - Changed marker's thickness to 2px from 1px
-- Changed marker's fill to match the marker's outline for [`IgrPointSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpointseries.html), [`IgrBubbleSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html), [`IgrScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterseries.html), [`IgrPolarScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpolarscatterseries.html). You can use set [`markerFillMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#markerFillMode) property to Normal to undo this change
+- Changed marker's fill to match the marker's outline for [`IgrPointSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpointseries.html), [`IgrBubbleSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html), [`IgrScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterseries.html), [`IgrPolarScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpolarscatterseries.html). You can use set [`markerFillMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#markerFillMode) property to Normal to undo this change
 - Compressed labelling for the [`IgrTimeXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrtimexaxis.html) and [`IgrOrdinalTimeXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrordinaltimexaxis.html)
 - New Marker Properties:
-  - series.[`markerFillMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#markerFillMode) - Can be set to `MatchMarkerOutline` so the marker depends on the outline
-  - series.[`markerFillOpacity`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#markerFillOpacity) - Can be set to a value 0 to 1
-  - series.[`markerOutlineMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#markerOutlineMode) - Can be set to `MatchMarkerBrush` so the marker's outline depends on the fill brush color
+  - series.[`markerFillMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#markerFillMode) - Can be set to `MatchMarkerOutline` so the marker depends on the outline
+  - series.[`markerFillOpacity`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#markerFillOpacity) - Can be set to a value 0 to 1
+  - series.[`markerOutlineMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#markerOutlineMode) - Can be set to `MatchMarkerBrush` so the marker's outline depends on the fill brush color
 - New Series Property:
-  - series.[`outlineMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#outlineMode) - Can be set to toggle the series outline visibility. Note, for Data Chart, the property is on the series
-- New chart properties that define bleed over area introduced into the viewport when the chart is at the default zoom level. A common use case is to provide space between the axes and first/last data points. Note, the [`computedPlotAreaMarginMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#computedPlotAreaMarginMode), listed below, will automatically set the margin when markers are enabled. The others are designed to specify a `Double` to represent the thickness, where PlotAreaMarginLeft etc. adjusts the space to all four sides of the chart:
-  - chart.[`plotAreaMarginLeft`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#plotAreaMarginLeft)
-  - chart.[`plotAreaMarginTop`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#plotAreaMarginTop)
-  - chart.[`plotAreaMarginRight`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#plotAreaMarginRight)
-  - chart.[`plotAreaMarginBottom`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#plotAreaMarginBottom)
-  - chart.[`computedPlotAreaMarginMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#computedPlotAreaMarginMode)
+  - series.[`outlineMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#outlineMode) - Can be set to toggle the series outline visibility. Note, for Data Chart, the property is on the series
+- New chart properties that define bleed over area introduced into the viewport when the chart is at the default zoom level. A common use case is to provide space between the axes and first/last data points. Note, the [`computedPlotAreaMarginMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#computedPlotAreaMarginMode), listed below, will automatically set the margin when markers are enabled. The others are designed to specify a `Double` to represent the thickness, where PlotAreaMarginLeft etc. adjusts the space to all four sides of the chart:
+  - chart.[`plotAreaMarginLeft`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#plotAreaMarginLeft)
+  - chart.[`plotAreaMarginTop`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#plotAreaMarginTop)
+  - chart.[`plotAreaMarginRight`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#plotAreaMarginRight)
+  - chart.[`plotAreaMarginBottom`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#plotAreaMarginBottom)
+  - chart.[`computedPlotAreaMarginMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrxychart.html#computedPlotAreaMarginMode)
 - New Highlighting Properties
   - chart.[`highlightingMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#highlightingMode) - Sets whether hovered or non-hovered series to fade, brighten
   - chart.[`highlightingBehavior`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#highlightingBehavior) - Sets whether the series highlights depending on mouse position e.g. directly over or nearest item
@@ -1198,7 +1198,7 @@ Import statements have been simplified to use just package names instead of full
 | <a href="https://www.npmjs.com/package/igniteui-react-gauges/v/16.11.7" target="_blank">igniteui-react-gauges</a> |  [Bullet Graph](bullet-graph.md), [Linear Gauge](linear-gauge.md), [Radial Gauge](radial-gauge.md)   |
 | <a href="https://www.npmjs.com/package/igniteui-react-charts/v/16.11.7" target="_blank">igniteui-react-charts</a>| Category Chart, Data Chart, Donut Chart, Financial Chart], Pie Chart, [Zoom Slider](zoomslider-overview.md)  |
 | <a href="https://www.npmjs.com/package/igniteui-react-core/v/16.11.7" target="_blank">igniteui-react-core</a> | all classes and enums  |
-| <a href="https://www.npmjs.com/package/igniteui-react-grids/v/16.11.7" target="_blank">igniteui-react-grids</a> | [Data Grid](grids/data-grid/overview.md) |
+| <a href="https://www.npmjs.com/package/igniteui-react-grids/v/16.11.7" target="_blank">igniteui-react-grids</a> | `Data Grid` |
 
 - Code After Changes
 

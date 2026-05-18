@@ -17,6 +17,13 @@ To enable a theme, a theme file should be loaded. Depending on your project conf
 
 Here's the complete list of all bundled themes and their path:
 
-## API References
-
-- `ConfigureTheme`
+| Name        | Variant | Location                                          |
+| ----------- | ------- | ------------------------------------------------- |
+| **Bootstrap*- | Light   | \_content/IgniteUI.Blazor/themes/light/bootstrap.css |
+| **Material*-  | Light   | \_content/IgniteUI.Blazor/themes/light/material.css  |
+| **Fluent*-    | Light   | \_content/IgniteUI.Blazor/themes/light/fluent.css    |
+| **Indigo*-    | Light   | \_content/IgniteUI.Blazor/themes/light/indigo.css    |
+| **Bootstrap*- | Dark    | \_content/IgniteUI.Blazor/themes/dark/bootstrap.css  |
+| **Material*-  | Dark    | \_content/IgniteUI.Blazor/themes/dark/material.css   |
+| **Fluent*-    | Dark    | \_content/IgniteUI.Blazor/themes/dark/fluent.css     |
+| **Indigo*-    | Dark    | \_content/IgniteUI.Blazor/themes/dark/indigo.css     |

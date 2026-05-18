@@ -46,7 +46,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarOverview/>);
 ```
 
-
 ## How To Create a Calendar in React with Ignite UI
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -74,7 +73,7 @@ The simplest way to start using the Ignite UI for React [`IgrCalendar`](https://
 
 ### Selection Modes
 
-Users can choose from three different selection modes - single selection, multiple selection or range selection. By default, the Ignite UI for React [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html) is using single selection mode but you can change it by setting the [`selection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#selection) property as shown in this example.
+Users can choose from three different selection modes - single selection, multiple selection or range selection. By default, the Ignite UI for React [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html) is using single selection mode but you can change it by setting the [`selection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#selection) property as shown in this example.
 
 ```tsx
 <IgrCalendar selection="multiple" />
@@ -107,10 +106,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarMultipleSelection/>);
 ```
 
-
 ### Range Selection
 
-Following the same approach, we can switch [`selection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#selection) to range mode:
+Following the same approach, we can switch [`selection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#selection) to range mode:
 
 ```tsx
 <IgrCalendar selection="range" />
@@ -143,7 +141,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarRangeSelection/>);
 ```
 
-
 ### Active View and Date
 
 The Ignite UI for React Calendar component allows you to switch between three different views: days, months and years. The [`activeView`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#activeView) property of the component reflects the current view. By default, the Calendar displays the current date when loaded initially. You could modify this by setting the [`activeDate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#activeDate) property. The [`activeDate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#activeDate) property also reflects the changes of the currently visible date made by the end user.
@@ -153,7 +150,7 @@ The Ignite UI for React Calendar component allows you to switch between three di
 By default, the Ignite UI for React Calendar component renders a header area which contains information about the selected dates. You could hide the header by setting the `HasHeader` property to **false**. You could also configure `vertical` or `horizontal` orientation of the header using the [`headerOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#headerOrientation) property.
 
 > [!Note]
-> Please note that the Ignite UI for React Calendar header is not rendered when the [`selection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#selection) is set to multiple.
+> Please note that the Ignite UI for React Calendar header is not rendered when the [`selection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#selection) is set to multiple.
 
 > [!Note]
 > Please note that the Ignite UI for React Calendar DOM properties use `camelCase` naming while their corresponding HTML attributes are using `kebab-case`. For example the [`headerOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#headerOrientation) property corresponds to the `header-orientation` attribute.
@@ -199,12 +196,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarHeader/>);
 ```
 
-
 ### Localization and Formatting
 
-Due to their very nature, localization and formatting are essential to any calendar. In the Ignite UI for React [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html) those are controlled and customized through the following properties - [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#locale), [`formatOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#formatOptions), [`weekStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#weekStart).
+Due to their very nature, localization and formatting are essential to any calendar. In the Ignite UI for React [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html) those are controlled and customized through the following properties - [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#locale), [`formatOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#formatOptions), [`weekStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#weekStart).
 
-Let's go ahead and try those along with other customizations. First thing we need to set is the [`weekStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#weekStart), which controls the starting day of the week. It defaults to `Sunday`, so we will set it to `Monday`. We will also customize the [`formatOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#formatOptions) property which specifies the options used to format the months and the weekdays in the Calendar views. Finally, we will set the [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#locale) property to a value, based on the user's location choice:
+Let's go ahead and try those along with other customizations. First thing we need to set is the [`weekStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#weekStart), which controls the starting day of the week. It defaults to `Sunday`, so we will set it to `Monday`. We will also customize the [`formatOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#formatOptions) property which specifies the options used to format the months and the weekdays in the Calendar views. Finally, we will set the [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#locale) property to a value, based on the user's location choice:
 
 ```tsx
 <IgrRadioGroup alignment="horizontal" value={this.state.calendarLocale}>
@@ -316,10 +312,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarFormatting/>);
 ```
 
-
 ### Disabled dates
 
-In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#disabledDates) property. The [`disabledDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#disabledDates) property is an array of [`DateRangeDescriptor`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.daterangedescriptor.html) objects. Each descriptor has a `Type` and optionally a [`dateRange`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.daterangedescriptor.html#dateRange) which is an array of `Date` objects.
+In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#disabledDates) property. The [`disabledDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#disabledDates) property is an array of [`DateRangeDescriptor`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.daterangedescriptor.html) objects. Each descriptor has a `Type` and optionally a [`dateRange`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.daterangedescriptor.html#dateRange) which is an array of `Date` objects.
 
 These are the available options for the `Type` property:
 
@@ -403,10 +398,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarDisabledDates/>);
 ```
 
-
 ### Special dates
 
-The [`specialDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#specialDates) property is using almost the same configuration principles as the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#disabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
+The [`specialDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#specialDates) property is using almost the same configuration principles as the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#disabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
 
 Let's add some special dates to our Calendar. In order to do this, we will create a [`DateRangeDescriptor`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.daterangedescriptor.html) and pass the dates between the 3rd and the 8th of the current month:
 
@@ -481,10 +475,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarSpecialDates/>);
 ```
 
-
 ### Week numbers
 
-You can use the [`showWeekNumbers`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendarbase.html#showWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
+You can use the [`showWeekNumbers`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html#showWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
 
 ```tsx
 <IgrCalendar showWeekNumbers={true} />
@@ -518,7 +511,6 @@ export default class CalendarWeekNumbers extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarWeekNumbers/>);
 ```
-
 
 ### Multiple Months
 
@@ -558,7 +550,6 @@ export default class CalendarMultipleMonths extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarMultipleMonths/>);
 ```
-
 
 ### Size
 
@@ -628,7 +619,6 @@ export default class CalendarSize extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarSize />);
 ```
-
 
 ### Events
 
@@ -823,7 +813,6 @@ export default class CalendarStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CalendarStyling/>);
 ```
-
 
 ## API References
 

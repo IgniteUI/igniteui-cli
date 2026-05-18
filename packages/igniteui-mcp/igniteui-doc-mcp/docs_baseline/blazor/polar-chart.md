@@ -164,7 +164,6 @@ public class BoatSailingData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Polar Spline Area Chart
@@ -301,7 +300,6 @@ public class BoatSailingData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Polar Marker Chart
@@ -433,7 +431,6 @@ public class BoatSailingData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -586,7 +583,6 @@ public class BoatSailingData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Polar Spline Chart
@@ -720,7 +716,6 @@ public class BoatSailingData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -873,7 +868,6 @@ public class BoatSailingData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Additional Resources
@@ -898,8 +892,8 @@ The following table lists API members mentioned in the above sections:
 - [`IgbPolarSplineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarSplineSeries.html)
 - [`IgbPolarSplineAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarSplineAreaSeries.html)
 - [`IgbPolarScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarScatterSeries.html)
-- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataSource)
-- [`AngleMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarBase.html#IgniteUI_Blazor_Controls_IgbPolarBase_AngleMemberPath)
-- [`RadiusMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarBase.html#IgniteUI_Blazor_Controls_IgbPolarBase_RadiusMemberPath)
+- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarAreaSeries.html#IgniteUI_Blazor_Controls_IgbPolarAreaSeries_DataSource)
+- [`AngleMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarAreaSeries.html#IgniteUI_Blazor_Controls_IgbPolarAreaSeries_AngleMemberPath)
+- [`RadiusMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarAreaSeries.html#IgniteUI_Blazor_Controls_IgbPolarAreaSeries_RadiusMemberPath)
 - [`IgbNumericAngleAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericAngleAxis.html)
 - [`IgbNumericRadiusAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericRadiusAxis.html)

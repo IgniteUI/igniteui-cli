@@ -63,7 +63,6 @@ The following example represents a list populated with contacts with a name and 
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -131,7 +130,6 @@ If all went well, you should see the following in your browser:
 }
 ```
 
-
 Let's up our game a bit and enhance our list items. Say we want to create a list of contacts with a name and a phone number displayed under the name. To achieve that we can use some of the slots that come with the list items as demonstrated in the next example:
 
 ```razor
@@ -182,7 +180,6 @@ After implementing the above code, our list component should now look like the f
 
 }
 ```
-
 
 ### Adding Avatar and Buttons
 
@@ -310,7 +307,6 @@ The result of implementing the above code should look like the following:
 }
 ```
 
-
 ## Styling
 
 The [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html) exposes several CSS parts, giving you full control over its style:
@@ -397,7 +393,6 @@ igc-list-item::part(subtitle) {
 
 }
 ```
-
 
 In this article we covered a lot of ground with the [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html) component. First, we created a simple list with text items. Then, we created a list of contact items and added functionality to them by using some additional Ignite UI for Blazor components, like the [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html) and [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html). Finally, we changed the component's appearance through the exposed CSS parts.
 

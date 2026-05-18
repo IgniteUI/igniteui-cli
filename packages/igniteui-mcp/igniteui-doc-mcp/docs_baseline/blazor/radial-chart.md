@@ -159,7 +159,6 @@ public class FootballPlayerStats
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Radial Column Chart
@@ -305,7 +304,6 @@ public class FootballPlayerStats
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -455,7 +453,6 @@ public class FootballPlayerStats
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Radial Pie Chart
@@ -602,7 +599,6 @@ public class FootballPlayerStats
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Radial Chart Styling
@@ -748,7 +744,6 @@ public class FootballPlayerStats
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Radial Chart Settings
@@ -776,9 +771,9 @@ The following table lists API members mentioned in the above sections:
 - [`IgbRadialColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialColumnSeries.html)
 - [`IgbRadialLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialLineSeries.html)
 - [`IgbRadialPieSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialPieSeries.html)
-- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataSource)
+- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialLineSeries.html#IgniteUI_Blazor_Controls_IgbRadialLineSeries_DataSource)
 - `AngleAxisName`
 - `ValueAxisName`
-- [`ValueMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAnchoredRadialSeries.html#IgniteUI_Blazor_Controls_IgbAnchoredRadialSeries_ValueMemberPath)
+- [`ValueMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialLineSeries.html#IgniteUI_Blazor_Controls_IgbRadialLineSeries_ValueMemberPath)
 - [`IgbCategoryAngleAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryAngleAxis.html)
 - [`IgbNumericRadiusAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericRadiusAxis.html)

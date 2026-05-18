@@ -30,7 +30,6 @@ To enable single-selection and quick filtering, set the [`singleSelect`](https:/
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Selection API

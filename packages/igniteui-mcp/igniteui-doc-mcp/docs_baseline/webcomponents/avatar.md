@@ -18,7 +18,6 @@ The Ignite UI for Web Components Avatar helps to display initials, images, or ic
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -70,7 +69,6 @@ If the [`initials`](https://www.infragistics.com/products/ignite-ui-web-componen
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Image
 
 The avatar can also display an image when the [`src`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html#src) attribute is assigned a valid URL to a static asset. In that case the [`initials`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html#initials) value will be ignored and children elements will not be rendered.
@@ -89,7 +87,6 @@ The avatar can also display an image when the [`src`](https://www.infragistics.c
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Shape
 
 The avatar supports three shapes - `circle`, `rounded`, and `square`. The default shape of the avatar is `square` and it can be changed via the `shape` attribute.
@@ -98,7 +95,6 @@ The avatar supports three shapes - `circle`, `rounded`, and `square`. The defaul
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Size
 
@@ -133,7 +129,6 @@ igc-avatar {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Styling
 
 The [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html) component exposes several CSS parts, giving you full control over its style:
@@ -166,7 +161,6 @@ igc-avatar::part(base) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

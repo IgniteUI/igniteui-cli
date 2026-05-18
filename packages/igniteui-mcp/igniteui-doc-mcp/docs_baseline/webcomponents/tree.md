@@ -31,7 +31,6 @@ igc-tree {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## How to Use Ignite UI for Web Components Tree With Ignite UI
@@ -629,7 +628,6 @@ igc-tree {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 After the user clicks the expand icon, it is replaced by a loading indicator. When the loading property resolves to false, the loading indicator disappears and the children are loaded.
 
 You can provide a custom slot content for the loading area using the `loadingIndicator` slot. If such slot is not defined, the [`IgcCircularProgressComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccircularprogresscomponent.html) is used.
@@ -1078,7 +1076,6 @@ igc-tree {
   overflow-y: auto;
 }
 ```
-
 
 <div class="divider--half"></div>
 

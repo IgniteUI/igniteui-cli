@@ -61,7 +61,6 @@ igc-card-content {
 }
 ```
 
-
 > [!Warning]
 > Due to the iframe permissions policy, the fullscreen button in this example will only work when the example is opened in standalone mode by clicking the 'Expand to fullscreen' button in the top-right corner.
 
@@ -204,7 +203,6 @@ img {
 }
 ```
 
-
 ## Tile component
 
 The Tile component has properties that can be set individually for each tile. Some of these properties include:
@@ -296,7 +294,6 @@ igc-tile:nth-last-child(1) p {
 }
 ```
 
-
 In this example, we created custom action buttons using the Ignite UI Icon Button component.
 
 ## Resizing
@@ -367,7 +364,6 @@ igc-input {
   margin-right: 50px;
 }
 ```
-
 
 ### Snapping
 
@@ -444,7 +440,6 @@ igc-tile::part(dragging) {
 }
 ```
 
-
 ## Serialization
 
 The Tile Manager provides methods that help manage the layout of tiles:
@@ -478,7 +473,6 @@ igc-button:nth-of-type(-n+3) {
   overflow: auto;
 }
 ```
-
 
 ## Styling
 
@@ -598,7 +592,6 @@ igc-tile:nth-child(n+2)::part(trigger) {
   transform: rotate(90deg);
 }
 ```
-
 
 ## API Reference
 

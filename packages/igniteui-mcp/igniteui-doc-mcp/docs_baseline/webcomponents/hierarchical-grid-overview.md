@@ -21,7 +21,6 @@ In this Web Components grid example you can see how users can visualize hierarch
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Getting Started with Ignite UI for Web Components Hierarchical Grid
 
 ### Dependencies
@@ -294,7 +293,6 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 }
 ```
 
-
 ## Known Limitations
 
 |Limitation|Description|
@@ -304,7 +302,7 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 ## API References
 
 - [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)
-- [`IgcRowIslandComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowislandcomponent.html)
+- [`IgcRowIsland`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowisland.html)
 - [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
 - [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
 - `Cell`

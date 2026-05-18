@@ -102,7 +102,6 @@ You can create this type of chart in the [`IgbDataChart`](https://www.infragisti
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Scatter Polyline Chart
@@ -192,7 +191,6 @@ You can create this type of chart in the [`IgbDataChart`](https://www.infragisti
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Additional Resources
@@ -210,8 +208,8 @@ The following table lists API members mentioned in the above sections:
 - [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
 - [`IgbScatterPolygonSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolygonSeries.html)
 - [`IgbScatterPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolylineSeries.html)
-- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataSource)
-- [`ShapeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbShapeSeriesBase.html#IgniteUI_Blazor_Controls_IgbShapeSeriesBase_ShapeMemberPath)
+- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolygonSeries.html#IgniteUI_Blazor_Controls_IgbScatterPolygonSeries_DataSource)
+- [`ShapeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolygonSeries.html#IgniteUI_Blazor_Controls_IgbScatterPolygonSeries_ShapeMemberPath)
 - [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html)
 - [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html)
 - `YAxisName`

@@ -173,7 +173,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartCompositeChart/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Additional Resources

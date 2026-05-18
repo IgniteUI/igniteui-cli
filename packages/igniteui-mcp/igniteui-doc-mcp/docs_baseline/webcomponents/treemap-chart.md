@@ -50,7 +50,6 @@ export class CountyHierarchicalData extends Array<CountyHierarchicalDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Treemap Recommendations
@@ -127,7 +126,6 @@ export class CountyHierarchicalData extends Array<CountyHierarchicalDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Layout Types
@@ -189,7 +187,6 @@ export class CountyHierarchicalData extends Array<CountyHierarchicalDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Web Components Treemap Highlighting
 
 In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set [`highlightingMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igctreemapcomponent.html#highlightingMode)to Brighten or FadeOthers.
@@ -226,7 +223,6 @@ export class CountyHierarchicalData extends Array<CountyHierarchicalDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Web Components Treemap Percent based highlighting
 
@@ -272,7 +268,6 @@ export class CountryTopUrbanPopData extends Array<CountryTopUrbanPopDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

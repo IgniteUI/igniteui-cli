@@ -48,7 +48,6 @@ The Ignite UI for Blazor Icon Button component allows developers to use register
 }
 ```
 
-
 <div class="divider"></div>
 
 ## Usage
@@ -113,7 +112,6 @@ Similar to the regular button components, the icon button supports several varia
 }
 ```
 
-
 ```razor
 <IgbIconButton IconName="search" Variant="@IconButtonVariant.Contained" Collection="material" />
 ```
@@ -156,7 +154,6 @@ The size of the button can be changed by utilizing the `--ig-size` CSS variable 
     }
 }
 ```
-
 
 ```css
 igc-icon-button {
@@ -241,7 +238,6 @@ igc-icon-button::part(icon) {
     }
 }
 ```
-
 
 ## API References
 

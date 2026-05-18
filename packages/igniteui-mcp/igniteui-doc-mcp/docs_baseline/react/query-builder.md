@@ -237,7 +237,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 # Getting started with React Query Builder
 
 To start using the `QueryBuilder`, first, you need to install the `Ignite UI for React` package by running the following command:
@@ -1100,7 +1099,6 @@ export default class Sample extends React.Component<any, SampleState> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## API Reference
 

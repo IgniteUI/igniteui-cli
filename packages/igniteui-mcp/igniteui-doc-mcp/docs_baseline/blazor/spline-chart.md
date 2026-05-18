@@ -105,7 +105,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Spline Chart with Single Series
@@ -189,7 +188,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -287,7 +285,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -389,7 +386,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -577,7 +573,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100% Spline Chart
@@ -754,7 +749,6 @@ public class ContinentsBirthRate
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

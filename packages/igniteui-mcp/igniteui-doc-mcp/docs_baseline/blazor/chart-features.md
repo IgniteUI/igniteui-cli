@@ -97,7 +97,6 @@ Modify or customize all aspects of both the X-Axis and Y-Axis using the differen
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Annotations
@@ -219,7 +218,6 @@ These additional layers are on top of the chart which are mouse / touch dependen
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Animations
@@ -334,7 +332,6 @@ Animate your chart as it loads a new data source by enabling animations. These a
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -478,7 +475,6 @@ Bring focus to visuals such as lines, columns, or markers by highlighting them a
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Markers
@@ -611,7 +607,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -792,7 +787,6 @@ You can navigate the chart by zooming and panning with the mouse, keyboard, and 
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Overlays
@@ -855,7 +849,6 @@ Overlays allows you to annotate important values and thresholds by plotting hori
 
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -951,7 +944,6 @@ Blazor charts are optimized for high performance of rendering millions of data p
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1073,7 +1065,6 @@ public class HighestGrossingMovies
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Trendlines
@@ -1141,7 +1132,6 @@ Use trendlines to identify a trend or find patterns in your data. There are many
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

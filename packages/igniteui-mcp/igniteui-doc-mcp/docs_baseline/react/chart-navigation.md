@@ -297,7 +297,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartNavigation/>);
 ```
 
-
 <div class="divider--half"></div>
 
 Like this sample? Get access to our complete React toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-react/download">Download it for free.</a>
@@ -306,7 +305,7 @@ Like this sample? Get access to our complete React toolkit and start building yo
 
 Whether or not zooming is on by default depends on the chart you are using. If you are using [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html), it is on by default, but it is not in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html). In order to enable or disable navigation in the UI, you need to set either the [`isHorizontalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#isHorizontalZoomEnabled) and/or the [`isVerticalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#isVerticalZoomEnabled) properties of the chart, depending on the direction that you wish to enable or disable zooming.
 
-It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#defaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#defaultInteraction) property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
+It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#defaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#defaultInteraction) property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
 
 ## Chart Navigation with Touch, Mouse and Keyboard
 
@@ -316,9 +315,9 @@ Navigation in the React data chart can happen with either touch, the mouse or th
 - **Zoom In**: Using the <kbd>PAGE UP</kbd> key on the keyboard, rolling the mouse wheel up, or pinching to zoom in via touch.
 - **Zoom Out**: Using the <kbd>PAGE DOWN</kbd> key on the keyboard, rolling the mouse wheel down, or pinching to zoom out via touch.
 - **Fit to Chart Plot Area**: Using the <kbd>HOME</kbd> key on the keyboard. There is no mouse or touch operation for this.
-- **Area Zoom**: Click and drag the mouse within the plot area with the [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#defaultInteraction) property set to its default - `DragZoom`.
+- **Area Zoom**: Click and drag the mouse within the plot area with the [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#defaultInteraction) property set to its default - `DragZoom`.
 
-The zoom and pan operations can also be enabled by using modifier keys by setting the [`dragModifier`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#dragModifier) and [`panModifier`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#panModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
+The zoom and pan operations can also be enabled by using modifier keys by setting the [`dragModifier`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#dragModifier) and [`panModifier`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#panModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
 
 | Modifier Value | Corresponding Key |
 | ---------------|------------------ |
@@ -330,7 +329,7 @@ The zoom and pan operations can also be enabled by using modifier keys by settin
 
 ## Chart Navigation with Scrollbars
 
-The chart can be scrolled by enabling the [`verticalViewScrollbarMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#verticalViewScrollbarMode) and [`horizontalViewScrollbarMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#horizontalViewScrollbarMode) properties.
+The chart can be scrolled by enabling the [`verticalViewScrollbarMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#verticalViewScrollbarMode) and [`horizontalViewScrollbarMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#horizontalViewScrollbarMode) properties.
 
 These can be configured to the following options
 
@@ -522,7 +521,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Chart Navigation through Code
@@ -532,9 +530,9 @@ root.render(<Sample/>);
 
 The React data chart provides several navigation properties that are updated each time a zoom or pan operation happens in the chart. You can also set each of these properties to zoom or pan the data chart programmatically. The following is a list of these properties:
 
-- [`windowPositionHorizontal`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#windowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
-- [`windowPositionVertical`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#windowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
-- [`windowRect`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#windowRect): A `Rect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`windowRect`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#windowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
+- [`windowPositionHorizontal`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#windowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
+- [`windowPositionVertical`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#windowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
+- [`windowRect`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#windowRect): A `Rect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`windowRect`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#windowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
 - [`windowScaleHorizontal`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#windowScaleHorizontal): A numeric value describing the width portion of the content view rectangle displayed by the data chart.
 - [`windowScaleVertical`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#windowScaleVertical): A numeric value describing the height portion of the content view rectangle displayed by the data chart.
 
@@ -549,11 +547,11 @@ You can find more information about related chart features in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-- [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#defaultInteraction)
-- [`dragModifier`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#dragModifier)
+- [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#defaultInteraction)
+- [`dragModifier`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#dragModifier)
 - [`isHorizontalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#isHorizontalZoomEnabled)
 - [`isVerticalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#isVerticalZoomEnabled)
-- [`panModifier`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#panModifier)
+- [`panModifier`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html#panModifier)
 - [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html)
 - [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)
 - [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html)

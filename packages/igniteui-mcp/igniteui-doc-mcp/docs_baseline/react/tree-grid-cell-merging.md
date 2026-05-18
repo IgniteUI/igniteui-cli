@@ -228,7 +228,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
 
-
 <!-- ComponentEnd: TreeGrid -->
 
 ## Enabling and Using Cell Merging
@@ -730,7 +729,6 @@ class CustomTreeGridMergeStrategy extends IgrDefaultTreeGridMergeStrategy {
   }
 }
 ```
-
 
 <!-- ComponentEnd: TreeGrid -->
 

@@ -26,7 +26,6 @@ The Ignite UI for Blazor Badge is a component used in conjunction with avatars, 
 }
 ```
 
-
 <div class="divider"></div>
 
 ## Usage
@@ -80,7 +79,6 @@ The Ignite UI for Blazor badge supports several pre-defined stylistic variants. 
 }
 ```
 
-
 ### Shape
 
 The badge component supports `rounded`(default) and `square` shapes. These values can be assigned to the [`Shape`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBadge.html#IgniteUI_Blazor_Controls_IgbBadge_Shape) attribute.
@@ -102,7 +100,6 @@ The badge component supports `rounded`(default) and `square` shapes. These value
 }
 ```
 
-
 ### Dot
 
 The Ignite UI for Blazor badge component can also render as a minimal dot indicator for notifications by setting its `dot` attribute. Dot badges do not support content, but they can be outlined and can use any of the available dot types (e.g., primary, success, info, etc.).
@@ -110,7 +107,6 @@ The Ignite UI for Blazor badge component can also render as a minimal dot indica
 ```razor
 <IgbBadge Dot="true" />
 ```
-
 
 
 
@@ -137,7 +133,6 @@ igc-badge::part(base) {
 
 }
 ```
-
 
 <div class="divider--half"></div>
 

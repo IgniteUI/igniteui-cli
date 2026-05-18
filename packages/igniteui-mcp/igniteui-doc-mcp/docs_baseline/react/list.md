@@ -130,7 +130,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ListOverview/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -217,7 +216,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ListAddListItems/>);
 ```
 
-
 Let's up our game a bit and enhance our list items. Say we want to create a list of contacts with a name and a phone number displayed under the name. To achieve that we can use some of the slots that come with the list items as demonstrated in the next example:
 
 ```tsx
@@ -284,7 +282,6 @@ export default class ListItemContent extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ListItemContent/>);
 ```
-
 
 ### Adding Avatar and Buttons
 
@@ -494,7 +491,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ListOverview/>);
 ```
 
-
 ## Styling
 
 The [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html) exposes several CSS parts, giving you full control over its style:
@@ -627,7 +623,6 @@ export default class ListStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ListStyling/>);
 ```
-
 
 In this article we covered a lot of ground with the [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html) component. First, we created a simple list with text items. Then, we created a list of contact items and added functionality to them by using some additional Ignite UI for React components, like the [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html) and [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html). Finally, we changed the component's appearance through the exposed CSS parts.
 

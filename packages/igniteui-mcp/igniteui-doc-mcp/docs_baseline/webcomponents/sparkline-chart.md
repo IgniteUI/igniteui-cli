@@ -22,7 +22,6 @@ The following example shows all the different types of [`Sparkline`](https://www
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 Like this sample? Get access to our complete Web Components toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-web-components/download">Download it for free.</a>
@@ -70,7 +69,6 @@ The Web Components Sparkline supports the following types of sparklines by setti
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -120,7 +118,6 @@ export class SparklineProfitData extends Array<SparklineProfitDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Normal Range
@@ -168,7 +165,6 @@ export class SparklineMixedData extends Array<SparklineMixedDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Trendlines
@@ -212,7 +208,6 @@ export class SparklineMixedData extends Array<SparklineMixedDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Unknown Value Interpolation
@@ -251,7 +246,6 @@ export class SparklineUnknownData extends Array<SparklineUnknownDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -379,7 +373,6 @@ export class Products {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Additional Resources
 

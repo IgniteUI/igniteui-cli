@@ -25,7 +25,6 @@ The Ignite UI for Web Components Query Builder provides a rich UI that allows de
 }
 ```
 
-
 # Getting started with Web Components Query Builder
 
 To start using the `QueryBuilder`, first, you need to install the `Ignite UI for Web Components` package by running the following command:
@@ -384,7 +383,6 @@ We’ve created this example to show you the templating and formatter functional
     background: #fff;
 }
 ```
-
 
 ## API Reference
 

@@ -20,7 +20,6 @@ By the default, the Ignite UI for Web Components map component already displays 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Code Snippet

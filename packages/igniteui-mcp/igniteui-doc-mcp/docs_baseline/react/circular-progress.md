@@ -54,7 +54,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SimpleCircularProgressIndicator/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -81,7 +80,7 @@ The simplest way to start using the [`IgrCircularProgress`](https://www.infragis
 
 ### Progress Types
 
-You can set the type of your indicator, using the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrprogressbase.html#variant) attribute. There are five types of circular progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
+You can set the type of your indicator, using the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html#variant) attribute. There are five types of circular progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
 
 ```tsx
 <IgrCircularProgress value="100" variant="success"></IgrCircularProgress>
@@ -89,7 +88,7 @@ You can set the type of your indicator, using the [`variant`](https://www.infrag
 
 ### Indeterminate Progress
 
-If you want to track a process that is not determined precisely, you can set the [`indeterminate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrprogressbase.html#indeterminate) property. Also, you can hide the default label of the Ignite UI for React [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) by setting the [`hideLabel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrprogressbase.html#hideLabel) property and customize the progress indicator default label via the exposed [`labelFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrprogressbase.html#labelFormat) property.
+If you want to track a process that is not determined precisely, you can set the [`indeterminate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html#indeterminate) property. Also, you can hide the default label of the Ignite UI for React [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) by setting the [`hideLabel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html#hideLabel) property and customize the progress indicator default label via the exposed [`labelFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html#labelFormat) property.
 
 ```tsx
 <IgrCircularProgress value="100" indeterminate="true"></IgrCircularProgress>
@@ -130,12 +129,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<IndeterminateCircularProgress/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ### Animation Duration
 
-You can use the [`animationDuration`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrprogressbase.html#animationDuration) property on the [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) component to specify how long the animation cycle should take in milliseconds.
+You can use the [`animationDuration`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html#animationDuration) property on the [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) component to specify how long the animation cycle should take in milliseconds.
 
 ```tsx
 <IgrCircularProgress animationDuration="5000" indeterminate="true"></IgrCircularProgress>
@@ -240,7 +238,6 @@ export default function DynamicCircularProgress() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DynamicCircularProgress/>);
 ```
-
 
 > [!Note]
 > For each [`IgrCircularGradient`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcirculargradient.html) defined as gradient slot of Ignite UI for React [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) a [SVG stop](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop) element would be created. The values passed as `color`, `offset` and `opacity` would be set as stop-color, offset and stop-opacity of the SVG element without further validations.
@@ -347,7 +344,6 @@ export default class StylingCircularProgressIndicator extends React.Component<an
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<StylingCircularProgressIndicator/>);
 ```
-
 
 ## API References
 

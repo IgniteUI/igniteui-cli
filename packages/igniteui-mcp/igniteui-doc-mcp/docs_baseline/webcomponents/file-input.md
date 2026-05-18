@@ -20,7 +20,6 @@ The Ignite UI for Web Components File Input component provides an interactive wa
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Usage
 
 The [`IgcFileInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcfileinputcomponent.html) component allows users to select files from their device and upload them to a web application. It displays the names of selected files and offers customization options for the browse button and the "No file chosen" text. The component also provides properties, methods, and slots that can be used to further configure its behavior to suit your needs.
@@ -101,7 +100,6 @@ The [`IgcFileInputComponent`](https://www.infragistics.com/products/ignite-ui-we
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Integration
 
 The [`IgcFileInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcfileinputcomponent.html) component integrates seamlessly with the HTML Form element. Using the methods and properties described above, you can effectively manage its behavior and validation within the standard HTML Forms.
@@ -114,7 +112,6 @@ igc-button {
   margin-top: 10px;
 }
 ```
-
 
 ## Limitations
 
@@ -193,7 +190,6 @@ igc-file-input::part(file-selector-button) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider"></div>
 

@@ -22,7 +22,6 @@ The following example, you can use the drop-down to switch between all of the di
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 The following sections demonstrate individual types of Ignite UI for Web Components Stacked Charts.
@@ -69,7 +68,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Stacked 100 Area Chart
@@ -113,7 +111,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -160,7 +157,6 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Stacked 100% Bar Chart
@@ -203,7 +199,6 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -249,7 +244,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Stacked 100% Column Chart
@@ -290,7 +284,6 @@ export class OnlineTrafficByDevice extends Array<OnlineTrafficByDeviceItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -333,7 +326,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -379,7 +371,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Stacked Spline Area Chart
@@ -423,7 +414,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -469,7 +459,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Stacked Spline Chart
@@ -511,7 +500,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -556,7 +544,6 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

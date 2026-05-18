@@ -190,7 +190,6 @@ public class SalesData
 }
 ```
 
-
 ## API References
 
 The following is a list of API members mentioned in the above sections:

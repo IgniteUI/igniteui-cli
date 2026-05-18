@@ -20,7 +20,6 @@ The following example represents a [`IgcNavbarComponent`](https://www.infragisti
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Usage
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -104,7 +103,6 @@ igc-navbar::part(middle) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider"></div>
 

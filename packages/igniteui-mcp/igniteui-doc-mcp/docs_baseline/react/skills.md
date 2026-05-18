@@ -4,8 +4,11 @@ _description: Learn how to use Agent Skills to supercharge AI-assisted developme
 _keywords: Ignite UI for React, agent skills, ai assisted development, github copilot, cursor, windsurf, claude, gemini cli, junie
 _license: MIT
 mentionedTypes: []
+last_updated: "2026-04-24"
 _tocName: Agent Skills
 ---
+
+<!-- schema: Article, HowTo -->
 
 # Ignite UI for React Agent Skills
 
@@ -22,7 +25,8 @@ The skill files live in the [`skills/`](https://github.com/IgniteUI/igniteui-rea
 |:------|:-----|:------------|
 | Components | [`skills/igniteui-react-components/SKILL.md`](https://github.com/IgniteUI/igniteui-react/blob/master/skills/igniteui-react-components/SKILL.md) | Identify the right components, install, import, and use them - JSX patterns, event handling, refs, forms, TypeScript |
 | Theming & Styling | [`skills/igniteui-react-customize-theme/SKILL.md`](https://github.com/IgniteUI/igniteui-react/blob/master/skills/igniteui-react-customize-theme/SKILL.md) | Palettes, typography, elevations, component themes, MCP server |
-| Optimization | [`skills/igniteui-react-optimize-bundle-size/SKILL.md`](https://github.com/IgniteUI/igniteui-react/blob/master/skills/igniteui-react-optimize-bundle-size/SKILL.md) | Ensuring best practices for tree shaking to optimize bundle size
+| Optimization | [`skills/igniteui-react-optimize-bundle-size/SKILL.md`](https://github.com/IgniteUI/igniteui-react/blob/master/skills/igniteui-react-optimize-bundle-size/SKILL.md) | Ensuring best practices for tree shaking to optimize bundle size |
+| Generate From Image Design | [`skills/igniteui-react-generate-from-image-design/SKILL.md`](https://github.com/IgniteUI/igniteui-react/blob/master/skills/igniteui-react-generate-from-image-design/SKILL.md) | Build React apps from screenshots, mockups, and wireframes using Ignite UI components |
 
 ## Skill Locations
 
@@ -41,6 +45,8 @@ The `.agents/skills/` directory is a cross-agent convention supported by multipl
       SKILL.md
     igniteui-react-optimize-bundle-size/
       SKILL.md
+    igniteui-react-generate-from-image-design/
+      SKILL.md
 ```
 
 For user-level (global) skills available across all projects, use `~/.agents/skills/` instead.
@@ -54,7 +60,7 @@ For user-level (global) skills available across all projects, use `~/.agents/ski
 | Project | `.github/skills/`, `.claude/skills/` |
 | Personal | `~/.copilot/skills/`, `~/.claude/skills/` (Copilot coding agent and GitHub Copilot CLI only) |
 
-> **Tip:** In [VS Code](https://code.visualstudio.com/docs/copilot/customization/agent-skills), these locations also include the general  `.agents/skills/` and `~/.agents/skills/` and you can configure additional skill locations using the `chat.agentSkillsLocations` setting.
+> **Tip:** In [VS Code](https://code.visualstudio.com/docs/copilot/customization/agent-skills), these locations also include the general `.agents/skills/` and `~/.agents/skills/` and you can configure additional skill locations using the `chat.agentSkillsLocations` setting.
 
 ### Claude
 
@@ -109,7 +115,40 @@ For user-level (global) skills available across all projects, use `~/.agents/ski
 
 Use one of the options below to download and place the skill files into the appropriate [skill location](#skill-locations) for your AI assistant.
 
-### **Option A - Use the installed npm package**
+### **Option A - Use the Ignite UI CLI**
+
+The `ai-config` command configures MCP servers, copies framework-specific skill files into each agent's skills directory, and sets up instruction files — all in a single step. Use `--assistants` to choose which coding assistants receive MCP config and `--agents` to choose which agents receive skill files. Existing files are only updated if their content has changed. If no parameters are provided, the command enters interactive mode, prompting you to select assistants and agents. For available options, refer to the table below.
+
+```bash
+ig ai-config --assistants generic --agents claude
+```
+
+Use `--agents` with multiple values to target several agents at once:
+
+```bash
+ig ai-config --assistants generic vscode --agents claude copilot cursor
+```
+
+| Flag | Values | Default |
+|------|--------|---------|
+| `--assistants` | `generic`, `vscode`, `cursor`, `gemini`, `junie`, `none` | Prompted interactively |
+| `--agents` | `generic`, `claude`, `copilot`, `cursor`, `codex`, `windsurf`, `gemini`, `junie`, `none` | Prompted interactively |
+
+### **Option B - Use the `GitHub CLI`**
+
+The GitHub CLI can be used to download skill files directly from the Ignite UI for React repository. Run the following commands in your project root to start the installation process:
+
+```bash
+gh skill install IgniteUI/igniteui-react
+```
+
+You will be asked to select which skills to install and the target Agents for the skill files in your project. The CLI will then download and place the selected skill according to the chosen Agents.
+
+To update skills later, run the following command:
+
+```bash
+gh skill update IgniteUI/igniteui-react
+```
 
 If Ignite UI for React is already installed in your project, the skill files are available under `node_modules`. To copy them into your project (e.g. into `.agents/skills/`), run:
 
@@ -133,6 +172,7 @@ Or copy individual skill directories as needed:
 cp -r node_modules/igniteui-react/skills/igniteui-react-components .agents/skills/
 cp -r node_modules/igniteui-react/skills/igniteui-react-customize-theme .agents/skills/
 cp -r node_modules/igniteui-react/skills/igniteui-react-optimize-bundle-size .agents/skills/
+cp -r node_modules/igniteui-react/skills/igniteui-react-generate-from-image-design .agents/skills/
 ```
 
 **Windows (Command Prompt)**
@@ -141,9 +181,10 @@ cp -r node_modules/igniteui-react/skills/igniteui-react-optimize-bundle-size .ag
 robocopy node_modules\igniteui-react\skills\igniteui-react-components .agents\skills\igniteui-react-components /E
 robocopy node_modules\igniteui-react\skills\igniteui-react-customize-theme .agents\skills\igniteui-react-customize-theme /E
 robocopy node_modules\igniteui-react\skills\igniteui-react-optimize-bundle-size .agents\skills\igniteui-react-optimize-bundle-size /E
+robocopy node_modules\igniteui-react\skills\igniteui-react-generate-from-image-design .agents\skills\igniteui-react-generate-from-image-design /E
 ```
 
-### **Option B - Use the `gemini skills` CLI**
+### **Option C - Use the `gemini skills` CLI**
 
 The `gemini skills install` command installs skills directly from a Git repository. It supports two scopes:
 
@@ -156,6 +197,7 @@ The `gemini skills install` command installs skills directly from a Git reposito
 gemini skills install https://github.com/IgniteUI/igniteui-react.git --path skills/igniteui-react-components
 gemini skills install https://github.com/IgniteUI/igniteui-react.git --path skills/igniteui-react-customize-theme
 gemini skills install https://github.com/IgniteUI/igniteui-react.git --path skills/igniteui-react-optimize-bundle-size
+gemini skills install https://github.com/IgniteUI/igniteui-react.git --path skills/igniteui-react-generate-from-image-design
 ```
 
 **Install to workspace scope:**
@@ -164,15 +206,16 @@ gemini skills install https://github.com/IgniteUI/igniteui-react.git --path skil
 gemini skills install --scope workspace https://github.com/IgniteUI/igniteui-react.git --path skills/igniteui-react-components
 gemini skills install --scope workspace https://github.com/IgniteUI/igniteui-react.git --path skills/igniteui-react-customize-theme
 gemini skills install --scope workspace https://github.com/IgniteUI/igniteui-react.git --path skills/igniteui-react-optimize-bundle-size
+gemini skills install --scope workspace https://github.com/IgniteUI/igniteui-react.git --path skills/igniteui-react-generate-from-image-design
 ```
 
 Once installed, the skill files are available in the respective location and will be automatically discovered by compatible AI assistants.
 
-### **Option C - Use the `npx skills` CLI**
+### **Option D - Use the `npx skills` CLI**
 
 The `skills` CLI is an interactive tool that downloads and installs skills directly into your project. Run the following command in your project root:
 
-```shell
+```bash
 npx skills add IgniteUI/igniteui-react
 ```
 
@@ -200,9 +243,6 @@ For more information on the Theming MCP, refer to the [Ignite UI Theming MCP](./
 
 - [Getting Started with Ignite UI for React](../general-getting-started.md)
 - [Ignite UI CLI](../general-cli-overview.md)
-
-<!---->
-
 - [AI-Assisted Development with Ignite UI](./ai-assisted-development-overview.md)
 - [Ignite UI CLI MCP](./cli-mcp.md)
 - [Ignite UI Theming MCP](./theming-mcp.md)

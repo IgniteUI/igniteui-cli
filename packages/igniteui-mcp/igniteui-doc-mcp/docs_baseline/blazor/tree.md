@@ -55,7 +55,6 @@ In this basic Ignite UI for Blazor Tree example, you can see how to define a tre
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## How to Use Ignite UI for Blazor Tree With Ignite UI
@@ -249,7 +248,6 @@ igc-tree-item {
 
 }
 ```
-
 
 <div class="divider--half"></div>
 

@@ -76,7 +76,6 @@ The following example shows all the different types of `Sparkline` available. Th
 }
 ```
 
-
 <div class="divider--half"></div>
 
 Like this sample? Get access to our complete Blazor toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-blazor/download">Download it for free.</a>
@@ -178,7 +177,6 @@ The Blazor Sparkline supports the following types of sparklines by setting the [
 
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -374,7 +372,6 @@ public class SparklineProfitData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Normal Range
@@ -520,7 +517,6 @@ public class SparklineMixedData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Trendlines
@@ -632,7 +628,6 @@ public class SparklineMixedData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Unknown Value Interpolation
@@ -740,7 +735,6 @@ public class SparklineUnknownData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Sparkline in Data Grid
@@ -809,7 +803,6 @@ You can embed the Blazor Sparkline in a template column of data grid or other UI
     }
 }
 ```
-
 
 ## Additional Resources
 

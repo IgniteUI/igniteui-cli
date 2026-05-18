@@ -57,7 +57,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownOverview/>);
 ```
 
-
 ## How to use the Dropdown List with Ignite UI for React
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -90,7 +89,7 @@ The simplest way to start using the [`IgrDropdown`](https://www.infragistics.com
 
 ### Target
 
-The React Dropdown list is positioned relatively to its target. The `target` slot allows you to provide a built-in component which toggles the `open` property on click. In some cases you would want to use an external target or use another event to toggle the opening of the Dropdown. You can achieve this using the [`showTarget`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#showTarget), [`hide`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasecomboboxlike.html#hide) and [`toggleTarget`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#toggleTarget) methods which allow you to provide the target as a parameter. By default, the Dropdown list uses `absolute` CSS position. You will need to set the [`IgrPositionStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpositionstrategy.html) of the React Dropdown to `fixed` when the target element is inside a fixed container, but the Dropdown is not. The Dropdown list is automatically sized based on its content, if you want the list to have the same width as the target, you should set the [`sameWidth`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#sameWidth) property to `true`.
+The React Dropdown list is positioned relatively to its target. The `target` slot allows you to provide a built-in component which toggles the `open` property on click. In some cases you would want to use an external target or use another event to toggle the opening of the Dropdown. You can achieve this using the [`showTarget`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#showTarget), [`hide`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#hide) and [`toggleTarget`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#toggleTarget) methods which allow you to provide the target as a parameter. By default, the Dropdown list uses `absolute` CSS position. You will need to set the [`IgrPositionStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpositionstrategy.html) of the React Dropdown to `fixed` when the target element is inside a fixed container, but the Dropdown is not. The Dropdown list is automatically sized based on its content, if you want the list to have the same width as the target, you should set the [`sameWidth`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#sameWidth) property to `true`.
 
 ```css
 /* shared styles are loaded from: */
@@ -145,7 +144,6 @@ export default class DropDownTarget extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownTarget/>);
 ```
-
 
 ### Position
 
@@ -226,14 +224,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownPosition/>);
 ```
 
-
 ### Selection
 
 The [`IgrDropdown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html) emits the `Change` event when the user selects an item. The [`select`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#select) method of the Dropdown allows you to select an item by its index or value.
 
 ### Item
 
-The [`IgrDropdownItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdownitem.html) represents a selectable item in the Dropdown list. You could predefine a selected item by setting the [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbaseoptionlike.html#selected) property. You could also disable an item so that it can't be selected using the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbaseoptionlike.html#disabled) property. The [`IgrDropdownItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdownitem.html) has a default slot which allows you to specify the content of the item. You could also provide custom content to be rendered before or after the content using the `prefix` and `suffix` slots. The [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbaseoptionlike.html#value) property allows you to provide a custom value to an item. If the [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbaseoptionlike.html#value) is not set, it resolves to the text content of the item.
+The [`IgrDropdownItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdownitem.html) represents a selectable item in the Dropdown list. You could predefine a selected item by setting the [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdownitem.html#selected) property. You could also disable an item so that it can't be selected using the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdownitem.html#disabled) property. The [`IgrDropdownItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdownitem.html) has a default slot which allows you to specify the content of the item. You could also provide custom content to be rendered before or after the content using the `prefix` and `suffix` slots. The [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdownitem.html#value) property allows you to provide a custom value to an item. If the [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdownitem.html#value) is not set, it resolves to the text content of the item.
 
 ```css
 /* shared styles are loaded from: */
@@ -298,7 +295,6 @@ export default class DropDownItem extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownItem/>);
 ```
-
 
 ### Header
 
@@ -368,7 +364,6 @@ export default class DropDownHeader extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownHeader/>);
 ```
-
 
 ### Group
 
@@ -462,14 +457,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownGroup/>);
 ```
 
-
 ### Scroll Strategy
 
 The [`scrollStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#scrollStrategy) property determines the behavior of the component during scrolling the container of the target element. The default value is `scroll` which means that the Dropdown will be scrolled with its target. Setting the property to `block` will block the scrolling if the Dropdown is opened. You could also set the property to `close` which means that the Dropdown will be closed automatically on scroll.
 
 ### Keep Open
 
-By default, the Dropdown is closed automatically when the user clicks outside of it or selects an item. You could prevent this behavior using the [`keepOpenOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasecomboboxlike.html#keepOpenOnOutsideClick) and [`keepOpenOnSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasecomboboxlike.html#keepOpenOnSelect) properties.
+By default, the Dropdown is closed automatically when the user clicks outside of it or selects an item. You could prevent this behavior using the [`keepOpenOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#keepOpenOnOutsideClick) and [`keepOpenOnSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html#keepOpenOnSelect) properties.
 
 ## Styling
 
@@ -590,7 +584,6 @@ export default class DropDownStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DropDownStyling/>);
 ```
-
 
 ## API Reference
 
