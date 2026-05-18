@@ -155,7 +155,7 @@ root.render(<MaskInputApplyingMask/>);
 
 ### Prompt Character
 
-Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`prompt`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinputbase.html#prompt) property:
+Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`prompt`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html#prompt) property:
 
 ```tsx
 <IgrMaskInput mask="(####) 00-00-00 Ext. 9999" prompt="-"></IgrMaskInput>
@@ -165,7 +165,7 @@ By default, the `prompt` character is **underscore**.
 
 ### Placeholder
 
-Developers can also take advantage of the [`placeholder`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinputbase.html#placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
+Developers can also take advantage of the [`placeholder`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html#placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
 
 ```tsx
 <IgrMaskInput mask="00/00/0000" placeholder="dd/MM/yyyy"></IgrMaskInput>

@@ -205,7 +205,7 @@ The built-in row pinning UI is enabled by adding an [`IgrActionStrip`](https://w
 
 ## Row Pinning API
 
-Row pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowdirective.html#pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) body.
+Row pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrow.html#pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) body.
 
 ```tsx
 gridRef.current.getRowByIndex(0).pinned = true;
@@ -218,7 +218,7 @@ gridRef.current.pinRow('ALFKI');
 gridRef.current.unpinRow('ALFKI');
 ```
 
-Note that the row ID is the primary key value, defined by the [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
+Note that the row ID is the primary key value, defined by the [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
 
 A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the `RowPinning` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
 
@@ -235,7 +235,7 @@ const rowPinning = (event: IgrPinRowEventArgs) => {
 
 ## Pinning Position
 
-You can change the row pinning position via the [`pinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
+You can change the row pinning position via the [`pinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
 When set to Bottom pinned rows are rendered at the bottom of the grid, after the unpinned rows. Unpinned rows can be scrolled vertically, while the pinned rows remain fixed at the bottom.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->

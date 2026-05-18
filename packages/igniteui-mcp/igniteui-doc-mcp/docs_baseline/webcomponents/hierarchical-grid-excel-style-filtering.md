@@ -23,7 +23,7 @@ The Web Components Hierarchical Grid exposes an Excel-style filtering feature th
 
 ## Usage
 
-To turn on the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#allowFiltering) should be set to **true** and the [`filterMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#filterMode) should be set to `ExcelStyleFilter` value.
+To turn on the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#allowFiltering) should be set to **true** and the [`filterMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#filterMode) should be set to `ExcelStyleFilter` value.
 
 ```html
 <igc-hierarchical-grid auto-generate="true" allow-filtering="true" filter-mode="excelStyleFilter" >
@@ -69,9 +69,9 @@ In the sample below 'Artist' column have all three features enabled, 'Debut' hav
 
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#excelStyleHeaderIconTemplate):
+The following code demonstrates how to customize the Excel style filter menu using the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#excelStyleHeaderIconTemplate):
 
 ```ts
 constructor() {

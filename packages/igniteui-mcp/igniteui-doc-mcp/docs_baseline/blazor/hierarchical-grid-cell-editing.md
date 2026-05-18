@@ -468,7 +468,7 @@ Updating data in the Hierarchical Grid is achieved through `UpdateRow` and `Upda
 
 ### Deleting data from the Hierarchical Grid
 
-Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey) is defined.
+Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_PrimaryKey) is defined.
 
 <!-- ComponentStart: HierarchicalGrid -->
 

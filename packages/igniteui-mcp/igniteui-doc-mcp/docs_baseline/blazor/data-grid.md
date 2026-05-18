@@ -262,7 +262,7 @@ Now that we have the grid packages imported, let’s get started with the basic 
 
 The [`Id`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while `data` binds the grid, in this case to local data.
 
-The [`AutoGenerate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_AutoGenerate) property tells the grid to auto generate the grid's [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
+The [`AutoGenerate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_AutoGenerate) property tells the grid to auto generate the grid's [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
 
 ## Editable Blazor Grid
 
@@ -276,7 +276,7 @@ Following this topic you will learn more about [cell template](data-grid.md#cell
 
 ### Defining Columns
 
-Let's turn the [`AutoGenerate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_AutoGenerate) property off and define the columns collection in the markup:
+Let's turn the [`AutoGenerate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_AutoGenerate) property off and define the columns collection in the markup:
 
 ```razor
 <IgbGrid AutoGenerate=false AllowFiltering=true>
@@ -451,9 +451,9 @@ The code above will make the **ProductName** column sortable and editable and wi
 
 There are optional parameters for formatting:
 
-- [`Format`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFieldPipeArgs.html#IgniteUI_Blazor_Controls_IgbFieldPipeArgs_Format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
-- [`Timezone`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFieldPipeArgs.html#IgniteUI_Blazor_Controls_IgbFieldPipeArgs_Timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
-- [`DigitsInfo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFieldPipeArgs.html#IgniteUI_Blazor_Controls_IgbFieldPipeArgs_DigitsInfo) - decimal representation objects. Default to **1.0-3**
+- [`Format`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnPipeArgs.html#IgniteUI_Blazor_Controls_IgbColumnPipeArgs_Format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
+- [`Timezone`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnPipeArgs.html#IgniteUI_Blazor_Controls_IgbColumnPipeArgs_Timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
+- [`DigitsInfo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnPipeArgs.html#IgniteUI_Blazor_Controls_IgbColumnPipeArgs_DigitsInfo) - decimal representation objects. Default to **1.0-3**
 
 To allow customizing the display format by these parameters, the [`PipeArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_PipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`PipeArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_PipeArgs) is set. Example:
 
@@ -467,7 +467,7 @@ To allow customizing the display format by these parameters, the [`PipeArgs`](ht
            PipeArgs=@(new IgbColumnPipeArgs() { Timezone="UTC+0", DigitsInfo="1.2-2", Format = "longDate" }) />
 ```
 
-The `OrderDate` column will respect only the [`Format`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFieldPipeArgs.html#IgniteUI_Blazor_Controls_IgbFieldPipeArgs_Format) and [`Timezone`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFieldPipeArgs.html#IgniteUI_Blazor_Controls_IgbFieldPipeArgs_Timezone) properties, while the `UnitPrice` will only respect the [`DigitsInfo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFieldPipeArgs.html#IgniteUI_Blazor_Controls_IgbFieldPipeArgs_DigitsInfo).
+The `OrderDate` column will respect only the [`Format`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnPipeArgs.html#IgniteUI_Blazor_Controls_IgbColumnPipeArgs_Format) and [`Timezone`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnPipeArgs.html#IgniteUI_Blazor_Controls_IgbColumnPipeArgs_Timezone) properties, while the `UnitPrice` will only respect the [`DigitsInfo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnPipeArgs.html#IgniteUI_Blazor_Controls_IgbColumnPipeArgs_DigitsInfo).
 
 All available column data types could be found in the official [Column types topic](grid/column-types.md#default-template).
 

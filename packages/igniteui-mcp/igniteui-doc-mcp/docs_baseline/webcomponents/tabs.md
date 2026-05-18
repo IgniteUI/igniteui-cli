@@ -44,12 +44,10 @@ Simple [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-
 
 ```html
 <igc-tabs>
-    <igc-tab>
-      <div slot="label">Tab 1</div>
+    <igc-tab label="Tab 1">
       <span>Content for tab 1</span>
     </igc-tab>
-    <igc-tab>
-      <div slot="label">Tab 2</div>
+    <igc-tab label="Tab 2">
       <span>Content for tab 2</span>
     </igc-tab>
     <igc-tab>
@@ -58,6 +56,8 @@ Simple [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-
     </igc-tab>
 </igc-tabs>
 ```
+
+Tab text can be set either as simple string using the [`label`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabcomponent.html#label) property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
 
 ### Selection
 
@@ -72,7 +72,7 @@ The default behavior, which selects a tab when the user is navigating with the a
 A tab is disabled by setting the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabcomponent.html#disabled) attribute:
 
 ```html
-<igc-tab disabled>Tab 1</igc-tab>
+<igc-tab label="Tab 1" disabled></igc-tab>
 ```
 
 ### Alignment
@@ -112,7 +112,7 @@ Scroll buttons are shown when the available space is not enough to render all We
 
 ### Prefix / Suffix
 
-Each tab has default slot to display information - icon, text or both and `prefix` and `suffix` slots to show additional content in the beginning and/or in the end.
+Besides the `label` slot to display information - icon, text or both, each tab also has `prefix` and `suffix` slots to show additional content in the beginning and/or in the end.
 
 ```css
 /* shared styles are loaded from: */

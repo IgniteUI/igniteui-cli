@@ -349,7 +349,7 @@ this.Grid.PinRowAsync("ALFKI", 0);
 this.Grid.UnpinRowAsync("ALFKI");
 ```
 
-Note that the row ID is the primary key value, defined by the [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
+Note that the row ID is the primary key value, defined by the [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_PrimaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
 
 A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the `RowPinning` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
 
@@ -378,7 +378,7 @@ igRegisterScript("rowPinningHandler", rowPinningHandler, false);
 
 ## Pinning Position
 
-You can change the row pinning position via the [`Pinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
+You can change the row pinning position via the [`Pinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_Pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
 When set to Bottom pinned rows are rendered at the bottom of the grid, after the unpinned rows. Unpinned rows can be scrolled vertically, while the pinned rows remain fixed at the bottom.
 
 ```razor

@@ -407,7 +407,7 @@ The default values are:
 
 |Limitation|Description|
 |--- |--- |
-| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`columns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
+| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`columns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
 | Setting duplicate [`memberName`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdimension.html#memberName) or [`member`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotvalue.html#member) property values for dimensions/values. | These properties should be unique for each dimension/value. Duplication may result in loss of data from the final result. |
 | Row Selection is only supported in **Single** mode. | Multiple selection is currently not supported. |
 

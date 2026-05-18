@@ -62,8 +62,8 @@ With `prefix` and `suffix` slots of the [`IgcButtonComponent`](https://www.infra
 
 ## Type
 
-The button component will change its internal structure from a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) type element when the [`href`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttonbasecomponent.html#href) attribute is set. In that case the button can be thought of as a regular link. Setting the [`href`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttonbasecomponent.html#href) attribute will allow you to also set the [`rel`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttonbasecomponent.html#rel), [`target`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttonbasecomponent.html#target) and [`download`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttonbasecomponent.html#download) attributes.
-In the case when the button component uses an actual [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element internally, we can specify its [`Type`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttonbasecomponent.html#Type) by setting the property to any of the following values:
+The button component will change its internal structure from a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) type element when the [`href`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#href) attribute is set. In that case the button can be thought of as a regular link. Setting the [`href`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#href) attribute will allow you to also set the [`rel`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#rel), [`target`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#target) and [`download`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#download) attributes.
+In the case when the button component uses an actual [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element internally, we can specify its [`Type`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#Type) by setting the property to any of the following values:
 
 - `Submit` - when we want to submit the form data
 - `reset` - when we want to reset form data to its initial values
@@ -177,7 +177,7 @@ The result of implementing the above code should look like the following:
 
 ### Download
 
-Setting the [`download`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttonbasecomponent.html#download) property will prompt the user to save the linked URL instead of navigating to it.
+Setting the [`download`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#download) property will prompt the user to save the linked URL instead of navigating to it.
 
 ```html
 <igc-button
@@ -229,9 +229,9 @@ igc-button::part(base) {
 ## API References
 
 - [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html)
-- [`Type`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttonbasecomponent.html#Type)
-- [`download`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttonbasecomponent.html#download)
-- [`href`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttonbasecomponent.html#href)
+- [`Type`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#Type)
+- [`download`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#download)
+- [`href`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#href)
 - [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html)
 - [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html)
 - [`Styling & Themes`](../themes/overview.md)

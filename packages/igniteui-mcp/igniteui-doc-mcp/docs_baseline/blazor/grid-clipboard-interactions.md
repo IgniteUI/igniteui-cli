@@ -167,7 +167,7 @@ Copy behavior is working with the default interaction defined by the browser and
 
 ## API Usage
 
-We expose [`ClipboardOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ClipboardOptions) property, which handles the following options:
+We expose [`ClipboardOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ClipboardOptions) property, which handles the following options:
 
 - `Enabled` Enables/disables copying of selected cells.
 - `CopyHeaders` Include the associated headers when copying.
@@ -177,7 +177,7 @@ We expose [`ClipboardOptions`](https://www.infragistics.com/blazor/docs/api/api/
 > [!Note]
 > Excel can automatically detect text that is separated by tabs (tab-delimited `/t`) and properly paste the data into separate columns. When the paste format doesn't work, and everything you paste appears in a single column, then Excel's delimiter is set to another character, or your text is using spaces instead of tabs.
 
-- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`ClipboardOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ClipboardOptions).
+- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`ClipboardOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ClipboardOptions).
 
 ## Additional Resources
 

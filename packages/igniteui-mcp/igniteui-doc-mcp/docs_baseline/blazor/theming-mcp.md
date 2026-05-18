@@ -302,6 +302,9 @@ For light themes use a light surface (e.g., `#fafafa`). For dark themes use a da
 
 ## Additional Resources
 
+- [AI-Assisted Development with Ignite UI](./ai-assisted-development-overview.md)
+- [Ignite UI for Blazor Skills](./skills.md)
+- [Ignite UI CLI MCP](./cli-mcp.md)
 - [MAKER Framework](./maker-framework.md)
 
 <!-- Ideally these should be included once documentation is combined

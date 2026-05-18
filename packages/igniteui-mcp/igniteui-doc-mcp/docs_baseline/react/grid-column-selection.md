@@ -13,7 +13,7 @@ _premium: true
 
 # React Grid Column Selection Overview
 
-The React Grid Column Selection feature in Ignite UI for React offers a simplified and Excel-like way to select and highlight an entire column with a single click. It can be enabled through the [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#columnSelection) input. Thanks to the rich API, the feature allows for easy manipulation of the selection state, data extraction from the selected fractions, data analysis operations, and visualizations.
+The React Grid Column Selection feature in Ignite UI for React offers a simplified and Excel-like way to select and highlight an entire column with a single click. It can be enabled through the [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#columnSelection) input. Thanks to the rich API, the feature allows for easy manipulation of the selection state, data extraction from the selected fractions, data analysis operations, and visualizations.
 
 ## React Grid Column Selection Example
 
@@ -194,7 +194,7 @@ root.render(<Sample/>);
 
 ## Basic Usage
 
-The column selection feature can be enabled through the [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#columnSelection) input, which takes `GridSelectionMode` values.
+The column selection feature can be enabled through the [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#columnSelection) input, which takes `GridSelectionMode` values.
 
 ## Interactions
 
@@ -363,7 +363,7 @@ root.render(<Sample/>);
 ## Keyboard Combinations
 
 > [!Note]
-> The keyboard combinations are available only when the grid [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#columnSelection) input is set to `multiple`.
+> The keyboard combinations are available only when the grid [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#columnSelection) input is set to `multiple`.
 
 There are two scenarios for keyboard navigation of the **Column Selection** feature:
 
@@ -551,12 +551,12 @@ The column selection UI has a few more APIs to explore, which are listed below.
 
 [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) properties:
 
-- [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#columnSelection)
-- [`selectedColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#selectedColumns)
-- [`selectColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#selectColumns)
-- [`deselectColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#deselectColumns)
-- [`selectAllColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#selectAllColumns)
-- [`deselectAllColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#deselectAllColumns)
+- [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#columnSelection)
+- [`selectedColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#selectedColumns)
+- [`selectColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#selectColumns)
+- [`deselectColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#deselectColumns)
+- [`selectAllColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#selectAllColumns)
+- [`deselectAllColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#deselectAllColumns)
 
 [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) properties:
 

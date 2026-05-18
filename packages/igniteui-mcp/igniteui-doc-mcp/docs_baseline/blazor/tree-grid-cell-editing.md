@@ -396,7 +396,7 @@ Updating data in the Tree Grid is achieved through `UpdateRow` and `UpdateCell` 
 
 ### Deleting data from the Tree Grid
 
-Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey) is defined.
+Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_PrimaryKey) is defined.
 
 ```razor
 @code {

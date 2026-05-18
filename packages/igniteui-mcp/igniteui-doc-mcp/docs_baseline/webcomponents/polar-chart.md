@@ -264,7 +264,7 @@ The following table lists API members mentioned in the above sections:
 - [`IgcPolarSplineAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarsplineareaseriescomponent.html)
 - [`IgcPolarScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarscatterseriescomponent.html)
 - `ItemsSource`
-- [`angleMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarbasecomponent.html#angleMemberPath)
-- [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarbasecomponent.html#radiusMemberPath)
+- [`angleMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarareaseriescomponent.html#angleMemberPath)
+- [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarareaseriescomponent.html#radiusMemberPath)
 - [`IgcNumericAngleAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcnumericangleaxiscomponent.html)
 - [`IgcNumericRadiusAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcnumericradiusaxiscomponent.html)

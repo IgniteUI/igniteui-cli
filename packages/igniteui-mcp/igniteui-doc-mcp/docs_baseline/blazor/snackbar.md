@@ -49,7 +49,7 @@ You will also need to link an additional CSS file to apply the styling to the [`
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the snackbar component is to use its [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBaseAlertLike.html#IgniteUI_Blazor_Controls_IgbBaseAlertLike_Show) method and call it on a button click.
+The simplest way to display the snackbar component is to use its [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_Show) method and call it on a button click.
 
 ```razor
 <div class="container vertical">
@@ -62,7 +62,7 @@ The simplest way to display the snackbar component is to use its [`Show`](https:
 
 ### Display Time
 
-Use the [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBaseAlertLike.html#IgniteUI_Blazor_Controls_IgbBaseAlertLike_DisplayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
+Use the [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_DisplayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -107,7 +107,7 @@ Use the [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteU
 
 ### Action Text
 
-By default, the snackbar component is hidden automatically after a period specified by the [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBaseAlertLike.html#IgniteUI_Blazor_Controls_IgbBaseAlertLike_DisplayTime). You can use [`KeepOpen`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBaseAlertLike.html#IgniteUI_Blazor_Controls_IgbBaseAlertLike_KeepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`ActionText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_ActionText) you can display an action button inside the component.
+By default, the snackbar component is hidden automatically after a period specified by the [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_DisplayTime). You can use [`KeepOpen`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_KeepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`ActionText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_ActionText) you can display an action button inside the component.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -188,9 +188,9 @@ igc-snackbar::part(base) {
 ## API References
 
 - [`ActionText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_ActionText)
-- [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBaseAlertLike.html#IgniteUI_Blazor_Controls_IgbBaseAlertLike_DisplayTime)
-- [`KeepOpen`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBaseAlertLike.html#IgniteUI_Blazor_Controls_IgbBaseAlertLike_KeepOpen)
-- [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBaseAlertLike.html#IgniteUI_Blazor_Controls_IgbBaseAlertLike_Show)
+- [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_DisplayTime)
+- [`KeepOpen`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_KeepOpen)
+- [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_Show)
 - [`IgbSnackbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html)
 - [`Styling & Themes`](../themes/overview.md)
 

@@ -203,7 +203,7 @@ this.grid.UpdateCell(newValue, rowID, 'ReorderLevel')
 
 <!-- ComponentEnd: Grid -->
 
-Another way to update cell is directly through [`Update`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowDirective.html#IgniteUI_Blazor_Controls_IgbRowDirective_Update) method of `Cell`:
+Another way to update cell is directly through [`Update`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridRow.html#IgniteUI_Blazor_Controls_IgbGridRow_Update) method of `Cell`:
 
 <!-- ComponentStart: Grid -->
 
@@ -458,7 +458,7 @@ Updating data in the Grid is achieved through `UpdateRow` and `UpdateCell` metho
 
 ### Deleting data from the Grid
 
-Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey) is defined.
+Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_PrimaryKey) is defined.
 
 <!-- ComponentStart: Grid -->
 

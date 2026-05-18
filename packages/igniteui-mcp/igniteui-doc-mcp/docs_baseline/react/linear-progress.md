@@ -72,7 +72,7 @@ The simplest way to start using the [`IgrLinearProgress`](https://www.infragisti
 
 ### Progress Types
 
-You can set the type of your indicator, using  the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrprogressbase.html#variant) attribute. There are five types of linear progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
+You can set the type of your indicator, using  the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#variant) attribute. There are five types of linear progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
 
 ```tsx
 <IgrLinearProgress value="100" variant="success"></IgrLinearProgress>
@@ -124,11 +124,11 @@ root.render(<LinearProgressTypes/>);
 
 ### Indeterminate Progress
 
-If you want to track a process that is not determined precisely, you can set the [`indeterminate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrprogressbase.html#indeterminate) property.
+If you want to track a process that is not determined precisely, you can set the [`indeterminate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#indeterminate) property.
 
 ### Animation Duration
 
-The [`animationDuration`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrprogressbase.html#animationDuration) property is used to specify how long the animation cycle should take. It takes as value a number which represents the animation duration in milliseconds.
+The [`animationDuration`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#animationDuration) property is used to specify how long the animation cycle should take. It takes as value a number which represents the animation duration in milliseconds.
 
 ```tsx
 <IgrLinearProgress animationDuration="5000" indeterminate="true"></IgrLinearProgress>
@@ -138,9 +138,9 @@ The [`animationDuration`](https://www.infragistics.com/products/ignite-ui-react/
 
 You can align the default value, using the [`labelAlign`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#labelAlign) property. Permitted values are **top**, **bottom**, **top-start**, **top-end**, **bottom-start** and **bottom-end**.
 
-To hide the default label of the progress indicator, use the [`hideLabel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrprogressbase.html#hideLabel) attribute.
+To hide the default label of the progress indicator, use the [`hideLabel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#hideLabel) attribute.
 
-The [`labelFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrprogressbase.html#labelFormat) property can be used to customize the [`IgrLinearProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html) default label.
+The [`labelFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#labelFormat) property can be used to customize the [`IgrLinearProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html) default label.
 
 The following sample demonstrates the above configuration:
 

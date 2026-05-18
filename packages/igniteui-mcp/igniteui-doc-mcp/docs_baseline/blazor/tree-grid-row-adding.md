@@ -142,7 +142,7 @@ public class EmployeesNestedTreeData
 
 ## Row Adding Usage
 
-Then define a [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) with bound data source, [`RowEditable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowEditable) set to true and an [`IgbActionStrip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbActionStrip.html) component with editing actions enabled. The `AddRow` input controls the visibility of the button that spawns the row adding UI.
+Then define a [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) with bound data source, [`RowEditable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_RowEditable) set to true and an [`IgbActionStrip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbActionStrip.html) component with editing actions enabled. The `AddRow` input controls the visibility of the button that spawns the row adding UI.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -240,7 +240,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 ### Customizing Text
 
-Customizing the text of the row adding overlay is possible using the [`RowAddTextTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowAddTextTemplate).
+Customizing the text of the row adding overlay is possible using the [`RowAddTextTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_RowAddTextTemplate).
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -302,13 +302,13 @@ The row adding UI comprises the buttons in the [`IgbActionStrip`](https://www.in
 
 ## API References
 
-- [`RowEditable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowEditable)
+- [`RowEditable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_RowEditable)
 - `RowEditEnter`
 - `RowEdit`
 - `RowEditDone`
 - `RowEditCancel`
 - `EndEdit`
-- [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey)
+- [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_PrimaryKey)
 - [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
 
 ## Additional Resources

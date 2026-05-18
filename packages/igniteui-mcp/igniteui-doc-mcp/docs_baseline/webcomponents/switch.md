@@ -60,7 +60,7 @@ To provide a meaningful label for the switch, simply place some text between the
 <igc-switch>Label</igc-switch>
 ```
 
-You can specify if the label should be positioned before or after the switch toggle by setting the [`labelPosition`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#labelPosition) attribute of the switch. Allowed values are `before` and `after`(default):
+You can specify if the label should be positioned before or after the switch toggle by setting the [`labelPosition`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html#labelPosition) attribute of the switch. Allowed values are `before` and `after`(default):
 
 ```html
 <igc-switch label-position="before">Label</igc-switch>
@@ -174,7 +174,7 @@ igc-switch {
 
 ## API References
 
-- [`labelPosition`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#labelPosition)
+- [`labelPosition`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html#labelPosition)
 - [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html)
 - [`Styling & Themes`](../themes/overview.md)
 

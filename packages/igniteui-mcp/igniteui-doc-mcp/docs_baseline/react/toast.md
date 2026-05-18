@@ -70,7 +70,7 @@ Before using the React [`IgrToast`](https://www.infragistics.com/products/ignite
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the toast component is to use its [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#show) method and call it on a button click.
+The simplest way to display the toast component is to use its [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#show) method and call it on a button click.
 
 ```tsx
 <IgrButton variant="contained" onClick={onShowButtonClicked}>
@@ -92,9 +92,9 @@ const onShowButtonClicked = () => {
 
 ### Properties
 
-Use the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#displayTime) property to configure how long the toast component is visible. By default, it's set to 4000 milliseconds.
+Use the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#displayTime) property to configure how long the toast component is visible. By default, it's set to 4000 milliseconds.
 
-By default, the toast component is hidden automatically after a period specified by the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#displayTime). You can use [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#keepOpen) property to change this behavior. In this way, the toast will remain visible.
+By default, the toast component is hidden automatically after a period specified by the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#displayTime). You can use [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#keepOpen) property to change this behavior. In this way, the toast will remain visible.
 
 ```tsx
 <div>
@@ -240,9 +240,9 @@ root.render(<ToastStyling />);
 ## API References
 
 - [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html)
-- [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#displayTime)
-- [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#keepOpen)
-- [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbasealertlike.html#show)
+- [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#displayTime)
+- [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#keepOpen)
+- [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#show)
 - [`IgrToast`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html)
 - [`Styling & Themes`](../themes/overview.md)
 

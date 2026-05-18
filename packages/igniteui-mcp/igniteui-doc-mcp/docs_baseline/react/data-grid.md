@@ -239,7 +239,7 @@ Now that we have the grid packages imported, let’s get started with the basic 
 
 The [`id`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while `data` binds the grid, in this case to local data.
 
-The [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#autoGenerate) property tells the grid to auto generate the grid's [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
+The [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#autoGenerate) property tells the grid to auto generate the grid's [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
 
 ## Editable React Grid
 
@@ -253,7 +253,7 @@ Following this topic you will learn more about [cell template](data-grid.md#cell
 
 ### Defining Columns
 
-Let's turn the [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#autoGenerate) property off and define the columns collection in the markup:
+Let's turn the [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#autoGenerate) property off and define the columns collection in the markup:
 
 ```tsx
 <IgrGrid id="grid1" autoGenerate={false} allowFiltering={true} data={localData}>
@@ -484,7 +484,7 @@ const POJO = [{
 > **WARNING**:
 > **The key values must not contain arrays**.
 
-> If you use [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#autoGenerate) columns **the data keys must be identical.**
+> If you use [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#autoGenerate) columns **the data keys must be identical.**
 
 ## Grid Data Binding
 
@@ -508,7 +508,7 @@ function fetchData(url: string): void {
 }
 ```
 
-**Note**: The grid [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
+**Note**: The grid [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
 
 ## Complex Data Binding
 

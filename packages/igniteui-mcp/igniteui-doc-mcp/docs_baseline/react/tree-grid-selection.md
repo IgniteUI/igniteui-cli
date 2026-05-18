@@ -18,7 +18,7 @@ With the Ignite UI for React Select feature in React Tree Grid you can easily in
 - Cell selection
 - Column selection
 
-With the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowSelection) property, you can specify:
+With the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowSelection) property, you can specify:
 
 - None
 - Single
@@ -195,7 +195,7 @@ root.render(<Sample/>);
 
 ### React Tree Grid Row Selection
 
-Property [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowSelection) enables you to specify the following options:
+Property [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowSelection) enables you to specify the following options:
 
 - `None` - Row selection would be disabled for the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html).
 - `Single` - Selection of only one row within the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) would be available.
@@ -211,7 +211,7 @@ Property [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/
 
 ### React Tree Grid Cell Selection
 
-Property [`cellSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#cellSelection) enables you to specify the following options:
+Property [`cellSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#cellSelection) enables you to specify the following options:
 
 - `None` - Cell selection would be disabled for the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html).
 - `Single` - Selection of only one cell within the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) would be available.
@@ -241,7 +241,7 @@ This leads to the following three variations:
 
 ## Known Issues and Limitations
 
-When the grid has no [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+When the grid has no [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 - Row Expand/collapse

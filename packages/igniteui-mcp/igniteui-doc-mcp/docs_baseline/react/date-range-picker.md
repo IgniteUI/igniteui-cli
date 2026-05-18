@@ -60,9 +60,7 @@ For a complete introduction to the Ignite UI for React, read the [**Getting Star
 
 ## Usage
 
-The [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) allows users to select a start and end date either by choosing a date range from a dropdown/calendar pop-up or by typing directly into the input fields - one for the start date and one for the end date.
-
-The picker offers two modes for displaying date values: single input and two inputs. In single input mode, the field is non-editable, and the date range cannot be edited by typing. In two inputs mode, however, users can edit the start and end dates by typing in separate input fields.
+The [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) allows users to select a start and end date either by choosing a date range from a dropdown/calendar pop-up or by typing directly into the input fields - one for the start date and one for the end date. The picker offers two modes for displaying date values: single input and two inputs. Both provide editing and masking capabilities.
 
 When the calendar is visible, a date range can be selected by choosing both a start and end date. Selecting a date will set both the start and end date, and once a second date is chosen, it will set the end date. If a range is already selected, clicking any other date on the calendar will start a new range selection.
 
@@ -129,10 +127,6 @@ By default, when clicked, the [`IgrDateRangePicker`](https://www.infragistics.co
 
 The [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) features intuitive keyboard navigation, allowing users to easily increment, decrement, or jump between different component parts, all without needing to use a mouse.
 
-The available keyboard navigation options vary depending on whether the component is in single input or two inputs mode.
-
-**Two Inputs Mode:**
-
 |Keys|Description|
 |----|-----------|
 | <kbd>←</kbd> | Moves the caret one character to the left |
@@ -144,11 +138,6 @@ The available keyboard navigation options vary depending on whether the componen
 | <kbd>HOME</kbd> | Moves the caret to the beginning of the input mask |
 | <kbd>END</kbd> | Moves the caret to the end of the input mask |
 | <kbd>CTRL</kbd> + <kbd>;</kbd> | Sets the current date as the value of the component |
-
-**Both Single and Two Inputs Modes:**
-
-|Keys|Description|
-|----|-----------|
 | <kbd>ALT</kbd> + <kbd>↓</kbd> | Opens the calendar dropdown |
 | <kbd>ALT</kbd> + <kbd>↑</kbd> | Closes the calendar dropdown |
 

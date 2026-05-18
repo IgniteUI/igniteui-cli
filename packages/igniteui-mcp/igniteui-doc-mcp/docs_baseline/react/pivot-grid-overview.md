@@ -627,7 +627,7 @@ The default values are:
 
 |Limitation|Description|
 |--- |--- |
-| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`columns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
+| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`columns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html#columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
 | Setting duplicate [`memberName`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotdimension.html#memberName) or [`member`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotvalue.html#member) property values for dimensions/values. | These properties should be unique for each dimension/value. Duplication may result in loss of data from the final result. |
 | Row Selection is only supported in **Single** mode. | Multiple selection is currently not supported. |
 

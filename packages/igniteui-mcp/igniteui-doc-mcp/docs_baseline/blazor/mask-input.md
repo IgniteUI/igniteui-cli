@@ -118,7 +118,7 @@ After that you should see the following in your browser:
 
 ### Prompt Character
 
-Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`Prompt`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInputBase.html#IgniteUI_Blazor_Controls_IgbMaskInputBase_Prompt) property:
+Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`Prompt`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html#IgniteUI_Blazor_Controls_IgbMaskInput_Prompt) property:
 
 ```razor
 <IgbMaskInput @ref="MaskInputRef" Mask="(####) 00-00-00 Ext. 9999" Prompt="-"></IgbMaskInput>
@@ -128,7 +128,7 @@ By default, the `prompt` character is **underscore**.
 
 ### Placeholder
 
-Developers can also take advantage of the [`Placeholder`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInputBase.html#IgniteUI_Blazor_Controls_IgbInputBase_Placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
+Developers can also take advantage of the [`Placeholder`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html#IgniteUI_Blazor_Controls_IgbMaskInput_Placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
 
 ```razor
 <IgbMaskInput @ref="MaskInputRef" Mask="00/00/0000" Placeholder="dd/MM/yyyy"></IgbMaskInput>

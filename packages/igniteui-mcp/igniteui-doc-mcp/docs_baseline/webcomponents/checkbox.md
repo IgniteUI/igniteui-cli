@@ -89,7 +89,7 @@ The checkbox can also be labelled by elements external to the checkbox. In this 
 
 ### Checked
 
-You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
+You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
 
 ```html
 <igc-checkbox checked></igc-checkbox>
@@ -115,7 +115,7 @@ You can use the [`indeterminate`](https://www.infragistics.com/products/ignite-u
 
 ### Required
 
-You can use the [`required`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#required) property to mark the checkbox as required.
+You can use the [`required`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#required) property to mark the checkbox as required.
 
 ```html
 <igc-checkbox required></igc-checkbox>
@@ -123,7 +123,7 @@ You can use the [`required`](https://www.infragistics.com/products/ignite-ui-web
 
 ### Invalid
 
-You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#invalid) attribute to mark the checkbox as invalid.
+You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#invalid) attribute to mark the checkbox as invalid.
 
 ```html
 <igc-checkbox invalid></igc-checkbox>
@@ -131,7 +131,7 @@ You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-web-
 
 ### Disabled
 
-You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#disabled) attribute to disable the checkbox.
+You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#disabled) attribute to disable the checkbox.
 
 ```html
 <igc-checkbox disabled></igc-checkbox>
@@ -144,7 +144,7 @@ You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-web
 
 ### Forms
 
-You can use the [`name`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#name) and [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#value) attributes when using the checkbox with `Form`.
+You can use the [`name`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#name) and [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#value) attributes when using the checkbox with `Form`.
 
 ```html
 <igc-checkbox name="wifi" value="enabled"></igc-checkbox>
@@ -190,8 +190,8 @@ igc-checkbox::part(control checked)::after {
 ## API References
 
 - [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html)
-- [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#checked)
-- [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxbasecomponent.html#disabled)
+- [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#checked)
+- [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#disabled)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

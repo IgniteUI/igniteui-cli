@@ -847,6 +847,6 @@ The following table lists API members mentioned in the above sections:
 - `ItemsSource`
 - `AngleAxisName`
 - `ValueAxisName`
-- [`valueMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igranchoredradialseries.html#valueMemberPath)
+- [`valueMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradiallineseries.html#valueMemberPath)
 - [`IgrCategoryAngleAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryangleaxis.html)
 - [`IgrNumericRadiusAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericradiusaxis.html)

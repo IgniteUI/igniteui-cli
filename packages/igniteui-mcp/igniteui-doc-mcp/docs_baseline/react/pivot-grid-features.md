@@ -240,7 +240,7 @@ const dimension: IgrPivotDimension = {
 Row dimensions can be resized similarly to column resizing - via a resizing indicator that can be found on the right edge of the cells.
 They can also be auto-sized by double clicking the resize indicator, or by using the related API - [`autoSizeRowDimension`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html#autoSizeRowDimension).
 
-A different size can also be set initially with the [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#width) property available in the dimension definition:
+A different size can also be set initially with the [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#width) property available in the dimension definition:
 
 ```tsx
 const igrPivotDimension2: IgrPivotDimension = {

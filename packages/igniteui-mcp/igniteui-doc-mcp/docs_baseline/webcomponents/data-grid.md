@@ -121,7 +121,7 @@ constructor() {
 
 The [`id`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while `data` binds the grid, in this case to local data.
 
-The [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#autoGenerate) property tells the grid to auto generate the grid's [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
+The [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#autoGenerate) property tells the grid to auto generate the grid's [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
 
 ## Editable Web Components Grid
 
@@ -135,7 +135,7 @@ Following this topic you will learn more about [cell template](data-grid.md#cell
 
 ### Defining Columns
 
-Let's turn the [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#autoGenerate) property off and define the columns collection in the markup:
+Let's turn the [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#autoGenerate) property off and define the columns collection in the markup:
 
 ```html
 <igc-grid id="grid1" auto-generate="false" allow-filtering="true">
@@ -331,9 +331,9 @@ The code above will make the **ProductName** column sortable and editable and wi
 
 There are optional parameters for formatting:
 
-- [`format`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcfieldpipeargs.html#format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
-- [`timezone`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcfieldpipeargs.html#timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
-- [`digitsInfo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcfieldpipeargs.html#digitsInfo) - decimal representation objects. Default to **1.0-3**
+- [`format`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumnpipeargs.html#format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
+- [`timezone`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumnpipeargs.html#timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
+- [`digitsInfo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumnpipeargs.html#digitsInfo) - decimal representation objects. Default to **1.0-3**
 
 To allow customizing the display format by these parameters, the [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pipeArgs) is set. Example:
 
@@ -361,7 +361,7 @@ constructor() {
 }
 ```
 
-The `OrderDate` column will respect only the [`format`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcfieldpipeargs.html#format) and [`timezone`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcfieldpipeargs.html#timezone) properties, while the `UnitPrice` will only respect the [`digitsInfo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcfieldpipeargs.html#digitsInfo).
+The `OrderDate` column will respect only the [`format`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumnpipeargs.html#format) and [`timezone`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumnpipeargs.html#timezone) properties, while the `UnitPrice` will only respect the [`digitsInfo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumnpipeargs.html#digitsInfo).
 
 All available column data types could be found in the official [Column types topic](grid/column-types.md#default-template).
 
@@ -397,7 +397,7 @@ const POJO = [{
 > **WARNING**:
 > **The key values must not contain arrays**.
 
-> If you use [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#autoGenerate) columns **the data keys must be identical.**
+> If you use [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#autoGenerate) columns **the data keys must be identical.**
 
 ## Grid Data Binding
 
@@ -423,7 +423,7 @@ public onDataLoaded(jsonData: any[]) {
 }
 ```
 
-**Note**: The grid [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
+**Note**: The grid [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
 
 ## Complex Data Binding
 

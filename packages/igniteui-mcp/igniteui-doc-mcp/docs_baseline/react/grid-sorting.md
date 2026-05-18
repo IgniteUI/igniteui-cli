@@ -455,7 +455,7 @@ root.render(<Sample/>);
 
 ## Sorting through the API
 
-You can sort any column or a combination of columns through the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) API using the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) [`sort`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#sort) method:
+You can sort any column or a combination of columns through the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) API using the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) [`sort`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#sort) method:
 
 ```tsx
 import { SortingDirection } from "igniteui-react-grids";
@@ -477,7 +477,7 @@ gridRef.current.sort([
 > [!Note]
 > Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
 
-As with the filtering behavior, you can clear the sorting state by using the [`clearSort`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#clearSort) method:
+As with the filtering behavior, you can clear the sorting state by using the [`clearSort`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#clearSort) method:
 
 <!-- ComponentStart: Grid -->
 
@@ -492,14 +492,14 @@ gridRef.current.clearSort();
 <!-- ComponentEnd: Grid -->
 
 > [!Note]
-> The [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#sortStrategy) of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) is of different type compared to the [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#sortStrategy) of the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html), since they work in different scopes and expose different parameters.
+> The [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#sortStrategy) of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) is of different type compared to the [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#sortStrategy) of the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html), since they work in different scopes and expose different parameters.
 
 > [!Note]
 > The sorting operation **DOES NOT** change the underlying data source of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
 
 ## Initial Sorting State
 
-It is possible to set the initial sorting state of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) by passing an array of sorting expressions to the [`sortingExpressions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#sortingExpressions) property of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
+It is possible to set the initial sorting state of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) by passing an array of sorting expressions to the [`sortingExpressions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#sortingExpressions) property of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
 
 ```tsx
 const sortingExpressions: IgrSortingExpression[] = [
@@ -526,7 +526,7 @@ const sortingExpressions: IgrSortingExpression[] = [
 
 The sorting indicator icon in the column header can be customized using a template. The following properties are available for templating the sorting indicator for any sorting state (ascending, descending, none):
 
-- [`sortHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#sortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
+- [`sortHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#sortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -544,7 +544,7 @@ const sortHeaderIconTemplate = (ctx: IgrGridHeaderTemplateContext) => {
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-- [`sortAscendingHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#sortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
+- [`sortAscendingHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#sortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -562,7 +562,7 @@ const sortAscendingHeaderIconTemplate = (ctx: IgrGridHeaderTemplateContext) => {
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-- [`sortDescendingHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#sortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
+- [`sortDescendingHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#sortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 

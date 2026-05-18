@@ -66,7 +66,7 @@ To provide a meaningful label for the switch, simply place some text between the
 <IgbSwitch>Label</IgbSwitch>
 ```
 
-You can specify if the label should be positioned before or after the switch toggle by setting the [`LabelPosition`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckboxBase.html#IgniteUI_Blazor_Controls_IgbCheckboxBase_LabelPosition) attribute of the switch. Allowed values are `before` and `after`(default):
+You can specify if the label should be positioned before or after the switch toggle by setting the [`LabelPosition`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html#IgniteUI_Blazor_Controls_IgbSwitch_LabelPosition) attribute of the switch. Allowed values are `before` and `after`(default):
 
 ```razor
 <IgbSwitch LabelPosition="@ToggleLabelPosition.Before">Label</IgbSwitch>
@@ -201,7 +201,7 @@ The [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blaz
 
 ## API References
 
-- [`LabelPosition`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckboxBase.html#IgniteUI_Blazor_Controls_IgbCheckboxBase_LabelPosition)
+- [`LabelPosition`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html#IgniteUI_Blazor_Controls_IgbSwitch_LabelPosition)
 - [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html)
 - [`Styling & Themes`](../themes/overview.md)
 

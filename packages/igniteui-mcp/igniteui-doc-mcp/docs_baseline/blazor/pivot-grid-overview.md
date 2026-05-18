@@ -584,7 +584,7 @@ When overriding the [`IgbPivotKeys`](https://www.infragistics.com/blazor/docs/ap
 
 |Limitation|Description|
 |--- |--- |
-| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`Columns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
+| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`Columns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_Columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
 | Setting duplicate [`MemberName`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDimension.html#IgniteUI_Blazor_Controls_IgbPivotDimension_MemberName) or [`Member`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotValue.html#IgniteUI_Blazor_Controls_IgbPivotValue_Member) property values for dimensions/values. | These properties should be unique for each dimension/value. Duplication may result in loss of data from the final result. |
 | Row Selection is only supported in **Single** mode. | Multiple selection is currently not supported. |
 

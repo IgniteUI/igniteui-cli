@@ -60,7 +60,7 @@ The simplest way to start using the Ignite UI for Blazor [`IgbCalendar`](https:/
 
 ### Selection Modes
 
-Users can choose from three different selection modes - single selection, multiple selection or range selection. By default, the Ignite UI for Blazor [`IgbCalendar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html) is using single selection mode but you can change it by setting the [`Selection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_Selection) property as shown in this example.
+Users can choose from three different selection modes - single selection, multiple selection or range selection. By default, the Ignite UI for Blazor [`IgbCalendar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html) is using single selection mode but you can change it by setting the [`Selection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html#IgniteUI_Blazor_Controls_IgbCalendar_Selection) property as shown in this example.
 
 ```razor
 <IgbCalendar Selection="@CalendarSelection.Multiple" />
@@ -83,7 +83,7 @@ Users can choose from three different selection modes - single selection, multip
 
 ### Range Selection
 
-Following the same approach, we can switch [`Selection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_Selection) to range mode:
+Following the same approach, we can switch [`Selection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html#IgniteUI_Blazor_Controls_IgbCalendar_Selection) to range mode:
 
 ```razor
 <IgbCalendar Selection="@CalendarSelection.Range" />
@@ -113,7 +113,7 @@ The Ignite UI for Blazor Calendar component allows you to switch between three d
 By default, the Ignite UI for Blazor Calendar component renders a header area which contains information about the selected dates. You could hide the header by setting the `HasHeader` property to **false**. You could also configure `vertical` or `horizontal` orientation of the header using the [`HeaderOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html#IgniteUI_Blazor_Controls_IgbCalendar_HeaderOrientation) property.
 
 > [!Note]
-> Please note that the Ignite UI for Blazor Calendar header is not rendered when the [`Selection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_Selection) is set to multiple.
+> Please note that the Ignite UI for Blazor Calendar header is not rendered when the [`Selection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html#IgniteUI_Blazor_Controls_IgbCalendar_Selection) is set to multiple.
 
 > [!Note]
 > Please note that the Ignite UI for Blazor Calendar DOM properties use `camelCase` naming while their corresponding HTML attributes are using `kebab-case`. For example the [`HeaderOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html#IgniteUI_Blazor_Controls_IgbCalendar_HeaderOrientation) property corresponds to the `header-orientation` attribute.
@@ -147,7 +147,7 @@ The following sample demonstrates the above configuration:
 
 ### Disabled dates
 
-In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`DisabledDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_DisabledDates) property. The [`DisabledDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_DisabledDates) property is an array of [`IgbDateRangeDescriptor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangeDescriptor.html) objects. Each descriptor has a `Type` and optionally a [`DateRange`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangeDescriptor.html#IgniteUI_Blazor_Controls_IgbDateRangeDescriptor_DateRange) which is an array of `Date` objects.
+In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`DisabledDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html#IgniteUI_Blazor_Controls_IgbCalendar_DisabledDates) property. The [`DisabledDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html#IgniteUI_Blazor_Controls_IgbCalendar_DisabledDates) property is an array of [`IgbDateRangeDescriptor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangeDescriptor.html) objects. Each descriptor has a `Type` and optionally a [`DateRange`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangeDescriptor.html#IgniteUI_Blazor_Controls_IgbDateRangeDescriptor_DateRange) which is an array of `Date` objects.
 
 These are the available options for the `Type` property:
 
@@ -212,7 +212,7 @@ These configurations should have the following result:
 
 ### Special dates
 
-The [`SpecialDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_SpecialDates) property is using almost the same configuration principles as the [`DisabledDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_DisabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
+The [`SpecialDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html#IgniteUI_Blazor_Controls_IgbCalendar_SpecialDates) property is using almost the same configuration principles as the [`DisabledDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html#IgniteUI_Blazor_Controls_IgbCalendar_DisabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
 
 Let's add some special dates to our Calendar. In order to do this, we will create a [`IgbDateRangeDescriptor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangeDescriptor.html) and pass the dates between the 3rd and the 8th of the current month:
 
@@ -270,7 +270,7 @@ The following demo illustrates a Calendar with a vacation request option:
 
 ### Week numbers
 
-You can use the [`ShowWeekNumbers`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendarBase.html#IgniteUI_Blazor_Controls_IgbCalendarBase_ShowWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
+You can use the [`ShowWeekNumbers`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html#IgniteUI_Blazor_Controls_IgbCalendar_ShowWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
 
 ```razor
 <IgbCalendar ShowWeekNumbers="true" />

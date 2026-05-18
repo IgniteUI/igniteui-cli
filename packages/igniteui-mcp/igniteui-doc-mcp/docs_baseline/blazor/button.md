@@ -72,8 +72,8 @@ With `prefix` and `suffix` slots of the [`IgbButton`](https://www.infragistics.c
 
 ## Type
 
-The button component will change its internal structure from a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) type element when the [`Href`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonBase.html#IgniteUI_Blazor_Controls_IgbButtonBase_Href) attribute is set. In that case the button can be thought of as a regular link. Setting the [`Href`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonBase.html#IgniteUI_Blazor_Controls_IgbButtonBase_Href) attribute will allow you to also set the [`Rel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonBase.html#IgniteUI_Blazor_Controls_IgbButtonBase_Rel), [`Target`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonBase.html#IgniteUI_Blazor_Controls_IgbButtonBase_Target) and [`Download`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonBase.html#IgniteUI_Blazor_Controls_IgbButtonBase_Download) attributes.
-In the case when the button component uses an actual [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element internally, we can specify its [`DisplayType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonBase.html#IgniteUI_Blazor_Controls_IgbButtonBase_DisplayType) by setting the property to any of the following values:
+The button component will change its internal structure from a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) type element when the [`Href`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html#IgniteUI_Blazor_Controls_IgbButton_Href) attribute is set. In that case the button can be thought of as a regular link. Setting the [`Href`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html#IgniteUI_Blazor_Controls_IgbButton_Href) attribute will allow you to also set the [`Rel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html#IgniteUI_Blazor_Controls_IgbButton_Rel), [`Target`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html#IgniteUI_Blazor_Controls_IgbButton_Target) and [`Download`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html#IgniteUI_Blazor_Controls_IgbButton_Download) attributes.
+In the case when the button component uses an actual [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element internally, we can specify its [`DisplayType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html#IgniteUI_Blazor_Controls_IgbButton_DisplayType) by setting the property to any of the following values:
 
 - `Submit` - when we want to submit the form data
 - `reset` - when we want to reset form data to its initial values
@@ -253,7 +253,7 @@ The result of implementing the above code should look like the following:
 
 ### Download
 
-Setting the [`Download`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonBase.html#IgniteUI_Blazor_Controls_IgbButtonBase_Download) property will prompt the user to save the linked URL instead of navigating to it.
+Setting the [`Download`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html#IgniteUI_Blazor_Controls_IgbButton_Download) property will prompt the user to save the linked URL instead of navigating to it.
 
 ```razor
 <IgbButton Variant="@ButtonVariant.Contained" Download="Url" Href="https://www.infragistics.com/" Target="@ButtonBaseTarget._blank">
@@ -322,9 +322,9 @@ igc-button::part(base) {
 ## API References
 
 - [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html)
-- [`DisplayType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonBase.html#IgniteUI_Blazor_Controls_IgbButtonBase_DisplayType)
-- [`Download`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonBase.html#IgniteUI_Blazor_Controls_IgbButtonBase_Download)
-- [`Href`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonBase.html#IgniteUI_Blazor_Controls_IgbButtonBase_Href)
+- [`DisplayType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html#IgniteUI_Blazor_Controls_IgbButton_DisplayType)
+- [`Download`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html#IgniteUI_Blazor_Controls_IgbButton_Download)
+- [`Href`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html#IgniteUI_Blazor_Controls_IgbButton_Href)
 - [`IgbRadioGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadioGroup.html)
 - [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html)
 - [`Styling & Themes`](../themes/overview.md)

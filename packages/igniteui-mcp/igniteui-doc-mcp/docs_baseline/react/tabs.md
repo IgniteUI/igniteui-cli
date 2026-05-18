@@ -90,16 +90,19 @@ Simple [`IgrTabs`](https://www.infragistics.com/products/ignite-ui-react/docs/ty
 ```tsx
 <IgrTabs>
     <IgrTab label="Tab 1">
-      <span>Panel 1</span>
+      <span>Content for tab 1</span>
     </IgrTab>
     <IgrTab label="Tab 2">
-      <span>Panel 2</span>
+      <span>Content for tab 2</span>
     </IgrTab>
-    <IgrTab label="Tab 3">
-      <span>Panel 3</span>
+    <IgrTab>
+      <div slot="label">Tab 3</div>
+      <span>Content for tab 3</span>
     </IgrTab>
 </IgrTabs>
 ```
+
+Tab text can be set either as simple string using the [`label`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtab.html#label) property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
 
 ### Selection
 
@@ -114,7 +117,7 @@ The default behavior, which selects a tab when the user is navigating with the a
 A tab is disabled by setting the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtab.html#disabled) attribute:
 
 ```tsx
-<IgrTab disabled={true}>Tab 1</IgrTab>
+<IgrTab label="Tab 1" disabled={true}></IgrTab>
 ```
 
 ### Alignment
@@ -233,7 +236,7 @@ root.render(<Scrolling />);
 
 ### Prefix / Suffix
 
-Each tab has default slot to display information - icon, text or both and `prefix` and `suffix` slots to show additional content in the beginning and/or in the end.
+Besides the `label` slot to display information - icon, text or both, each tab also has `prefix` and `suffix` slots to show additional content in the beginning and/or in the end.
 
 ```css
 /* shared styles are loaded from: */

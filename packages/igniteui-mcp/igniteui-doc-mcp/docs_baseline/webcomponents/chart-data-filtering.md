@@ -21,7 +21,7 @@ A complete list of valid expressions and keywords to form a query string can be 
 
 ## Web Components Chart Data Filter Example
 
-The following example depicts a [Column Chart](../types/column-chart.md) of annual birth rates across several decades. The drop-down allows you to select a decade, which inserts an expression via the [`initialFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#initialFilter) property, to update the chart visual and thus filtering out the other decades out.
+The following example depicts a [Column Chart](../types/column-chart.md) of annual birth rates across several decades. The drop-down allows you to select a decade, which inserts an expression via the [`initialFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#initialFilter) property, to update the chart visual and thus filtering out the other decades out.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -61,7 +61,7 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 
 <div class="divider--half"></div>
 
-The [`initialFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#initialFilter) property is a string that requires the following syntax in order to filter properly. The value requires sets of parentheses that include both the filter expression definition, column and value associated with the record(s) filtering in.
+The [`initialFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#initialFilter) property is a string that requires the following syntax in order to filter properly. The value requires sets of parentheses that include both the filter expression definition, column and value associated with the record(s) filtering in.
 
 eg. To show all countries that start with the letter B:
 

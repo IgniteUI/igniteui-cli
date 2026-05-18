@@ -16,7 +16,7 @@ The Blazor [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api
 - [`Zoomable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_Zoomable)
 - [`ZoomToGeographic`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_ZoomToGeographic)
 - [`WorldRect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_WorldRect)
-- [`WindowRect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_WindowRect)
+- [`WindowRect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_WindowRect)
 - [`WindowScale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_WindowScale)
 - [`GetGeographicFromZoom`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_GetGeographicFromZoom)
 - [`GetGeographicPoint`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_GetGeographicPoint)
@@ -42,9 +42,9 @@ The Blazor [`IgbGeographicSymbolSeries`](https://www.infragistics.com/blazor/doc
 
 - [`LatitudeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_LatitudeMemberPath)
 - [`LongitudeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_LongitudeMemberPath)
-- [`MarkerType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMarkerSeries.html#IgniteUI_Blazor_Controls_IgbGeographicMarkerSeries_MarkerType)
-- [`MarkerBrush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMarkerSeries.html#IgniteUI_Blazor_Controls_IgbGeographicMarkerSeries_MarkerBrush)
-- [`MarkerOutline`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMarkerSeries.html#IgniteUI_Blazor_Controls_IgbGeographicMarkerSeries_MarkerOutline)
+- [`MarkerType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_MarkerType)
+- [`MarkerBrush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_MarkerBrush)
+- [`MarkerOutline`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_MarkerOutline)
 
 ## Blazor Geographic Bubble Series API
 
@@ -61,7 +61,7 @@ The Blazor [`IgbGeographicProportionalSymbolSeries`](https://www.infragistics.co
 
 The Blazor [`IgbGeographicShapeSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicShapeSeries.html) and [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicPolylineSeries.html) have the same API members:
 
-- [`ShapeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicShapeSeriesBase.html#IgniteUI_Blazor_Controls_IgbGeographicShapeSeriesBase_ShapeMemberPath)
+- [`ShapeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicShapeSeries.html#IgniteUI_Blazor_Controls_IgbGeographicShapeSeries_ShapeMemberPath)
 - [`Thickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_Thickness)
 - [`Brush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_Brush)
 - [`Outline`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_Outline)

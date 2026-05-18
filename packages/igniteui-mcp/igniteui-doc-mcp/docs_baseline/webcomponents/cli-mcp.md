@@ -327,8 +327,8 @@ Here is a brief overview of each tool:
 | `get_doc`                 | Gets the full markdown content of a specific component doc by kebab-case name (e.g., `grid-editing`, `combo-overview`). Includes code samples, tables, and links.   |
 | `search_docs`             | Full-text search across Ignite UI docs for a framework. Returns up to 20 ranked results with excerpts.                                                              |
 | `get_project_setup_guide` | Returns the project setup guide for creating a new project in a specific framework, including CLI steps and install instructions.                                   |
-| `search_api`              | Searches API entries by keyword or component name across Angular, React, and Web Components.                                                                        |
-| `get_api_reference`       | Returns the full API reference for a specific component or class, including properties, methods, and events. Supports Angular, React, and Web Components.           |
+| `search_api`              | Searches API entries by keyword or component name across Angular, React, Blazor and Web Components.                                                                        |
+| `get_api_reference`       | Returns the full API reference for a specific component or class, including properties, methods, and events. Supports Angular, React, Blazor and Web Components.           |
 
 At a high level, the CLI MCP tools help with:
 

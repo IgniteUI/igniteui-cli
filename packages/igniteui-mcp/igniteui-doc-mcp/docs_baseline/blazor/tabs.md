@@ -76,14 +76,20 @@ Simple [`IgbTabs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bla
 
 ```razor
 <IgbTabs>
-    <IgbTab Panel="first">Tab 1</IgbTab>
-    <IgbTab Panel="second">Tab 2</IgbTab>
-    <IgbTab Panel="third">Tab 3</IgbTab>
-    <IgbTabPanel Id="first">Panel 1</IgbTabPanel>
-    <IgbTabPanel Id="second">Panel 2</IgbTabPanel>
-    <IgbTabPanel Id="third">Panel 3</IgbTabPanel>
+    <IgbTab Label="Tab 1">
+      <span>Content for tab 1</span>
+    </IgbTab>
+    <IgbTab Label="Tab 2">
+      <span>Content for tab 2</span>
+    </IgbTab>
+    <IgbTab>
+      <div slot="label">Tab 3</div>
+      <span>Content for tab 3</span>
+    </IgbTab>
 </IgbTabs>
 ```
+
+Tab text can be set either as simple string using the [`Label`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTab.html#IgniteUI_Blazor_Controls_IgbTab_Label) property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
 
 ### Selection
 
@@ -98,7 +104,7 @@ The default behavior, which selects a tab when the user is navigating with the a
 A tab is disabled by setting the [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTab.html#IgniteUI_Blazor_Controls_IgbTab_Disabled) attribute:
 
 ```razor
-<IgbTab Panel="first" Disabled>Tab 1</IgbTab>
+<IgbTab Label="Tab 1" Disabled></IgbTab>
 ```
 
 ### Alignment
@@ -218,7 +224,7 @@ Scroll buttons are shown when the available space is not enough to render all Bl
 
 ### Prefix / Suffix
 
-Each tab has default slot to display information - icon, text or both and `prefix` and `suffix` slots to show additional content in the beginning and/or in the end.
+Besides the `label` slot to display information - icon, text or both, each tab also has `prefix` and `suffix` slots to show additional content in the beginning and/or in the end.
 
 ```razor
 @using IgniteUI.Blazor.Controls

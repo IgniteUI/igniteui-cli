@@ -421,7 +421,7 @@ public class OrdersTreeData
 
 ## Sorting through the API
 
-You can sort any column or a combination of columns through the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) API using the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) [`Sort`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Sort) method:
+You can sort any column or a combination of columns through the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) API using the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) [`Sort`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_Sort) method:
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -445,7 +445,7 @@ You can sort any column or a combination of columns through the [`IgbTreeGrid`](
 > [!Note]
 > Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
 
-As with the filtering behavior, you can clear the sorting state by using the [`ClearSort`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ClearSort) method:
+As with the filtering behavior, you can clear the sorting state by using the [`ClearSort`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_ClearSort) method:
 
 ```razor
 @code {
@@ -460,14 +460,14 @@ As with the filtering behavior, you can clear the sorting state by using the [`C
 <!-- ComponentEnd: TreeGrid -->
 
 > [!Note]
-> The [`SortStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_SortStrategy) of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) is of different type compared to the [`SortStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SortStrategy) of the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html), since they work in different scopes and expose different parameters.
+> The [`SortStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_SortStrategy) of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) is of different type compared to the [`SortStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_SortStrategy) of the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html), since they work in different scopes and expose different parameters.
 
 > [!Note]
 > The sorting operation **DOES NOT** change the underlying data source of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html).
 
 ## Initial Sorting State
 
-It is possible to set the initial sorting state of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) by passing an array of sorting expressions to the [`SortingExpressions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SortingExpressions) property of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html).
+It is possible to set the initial sorting state of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) by passing an array of sorting expressions to the [`SortingExpressions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_SortingExpressions) property of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html).
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -497,7 +497,7 @@ It is possible to set the initial sorting state of the [`IgbTreeGrid`](https://w
 
 The sorting indicator icon in the column header can be customized using a template. The following properties are available for templating the sorting indicator for any sorting state (ascending, descending, none):
 
-- [`SortHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
+- [`SortHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_SortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -514,7 +514,7 @@ The sorting indicator icon in the column header can be customized using a templa
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-- [`SortAscendingHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
+- [`SortAscendingHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_SortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -531,7 +531,7 @@ The sorting indicator icon in the column header can be customized using a templa
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-- [`SortDescendingHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
+- [`SortDescendingHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_SortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
