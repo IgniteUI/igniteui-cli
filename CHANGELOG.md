@@ -2,8 +2,9 @@
 
 ## What's Changed
 * Updated `ig ai-config` command:
-  - Added AI coding assistance integration for Blazor projects.
-  - Now accepts a `--framework` / `-f` option for explicit framework specification. When omitted, the command still attempts to auto-detect the framework, but if detection fails it now also prompts the user for selection (in TTY).
+  - Added AI coding assistance integration for Blazor projects. [#1688](https://github.com/IgniteUI/igniteui-cli/pull/1688)
+  - Now accepts a `--framework` / `-f` option for explicit framework specification. When omitted, the command still attempts to auto-detect the framework, but if detection fails it now also prompts the user for selection (in TTY). [#1689](https://github.com/IgniteUI/igniteui-cli/pull/1689)
+* MCP documentation database update [#1686](https://github.com/IgniteUI/igniteui-cli/pull/1686)
 
 # 15.1.0 (2026-05-13)
 
