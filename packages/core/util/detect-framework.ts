@@ -18,8 +18,8 @@ export function detectFramework():  Framework | null {
 		}
 	} catch { /* fall through */ }
 
-	framework ??= detectFrameworkFromPackageJson();
 	framework ??= detectBlazorFromCsproj() ? "blazor" : null;
+	framework ??= detectFrameworkFromPackageJson();
 
 	return framework;
 }

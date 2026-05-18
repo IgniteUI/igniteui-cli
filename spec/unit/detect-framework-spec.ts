@@ -156,6 +156,18 @@ describe("Unit - detectFramework", () => {
 		spyOn(App.container, "get").and.returnValue(fs);
 		expect(detectFramework()).toBe("blazor");
 	});
+
+	it("returns blazor when no config but both package.json and a Blazor .csproj file exists", () => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+		const fs = makeFs({});
+		fs.glob.and.returnValue(["MyApp.csproj"]);
+		fs.readFile.and.callFake((p: string) => {
+			if (p === "MyApp.csproj") return `<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly"></Project>`;
+			return "{}";
+		});
+		spyOn(App.container, "get").and.returnValue(fs);
+		expect(detectFramework()).toBe("blazor");
+	});
 });
 
 describe("Unit - detectBlazorFromCsproj", () => {
