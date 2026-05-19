@@ -16,7 +16,7 @@ The React [`IgrGeographicMap`](https://www.infragistics.com/products/ignite-ui-r
 - [`zoomable`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html#zoomable)
 - [`zoomToGeographic`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html#zoomToGeographic)
 - [`worldRect`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html#worldRect)
-- [`windowRect`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseriesviewer.html#windowRect)
+- [`windowRect`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html#windowRect)
 - [`windowScale`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html#windowScale)
 - [`getGeographicFromZoom`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html#getGeographicFromZoom)
 - [`getGeographicPoint`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmap.html#getGeographicPoint)
@@ -42,9 +42,9 @@ The React [`IgrGeographicSymbolSeries`](https://www.infragistics.com/products/ig
 
 - [`latitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#latitudeMemberPath)
 - [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#longitudeMemberPath)
-- [`markerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmarkerseries.html#markerType)
-- [`markerBrush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmarkerseries.html#markerBrush)
-- [`markerOutline`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicmarkerseries.html#markerOutline)
+- [`markerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#markerType)
+- [`markerBrush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#markerBrush)
+- [`markerOutline`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#markerOutline)
 
 ## React Geographic Bubble Series API
 
@@ -61,10 +61,10 @@ The React [`IgrGeographicProportionalSymbolSeries`](https://www.infragistics.com
 
 The React [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html) and [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) have the same API members:
 
-- [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseriesbase.html#shapeMemberPath)
-- `Thickness`
-- `Brush`
-- `Outline`
+- [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html#shapeMemberPath)
+- [`thickness`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#thickness)
+- [`brush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#brush)
+- [`outline`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicsymbolseries.html#outline)
 
 ## React Geographic Area Series API
 

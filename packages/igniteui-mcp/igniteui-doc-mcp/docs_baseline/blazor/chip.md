@@ -30,7 +30,6 @@ Ignite UI for Blazor Chips help people enter information, make selections, filte
 }
 ```
 
-
 <div class="divider"></div>
 
 ## Usage
@@ -119,7 +118,6 @@ The Ignite UI for Blazor chip supports several pre-defined stylistic variants. Y
 }
 ```
 
-
 ### Disabled
 
 The Ignite UI for Blazor chip can be disabled by using the [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html#IgniteUI_Blazor_Controls_IgbChip_Disabled) property.
@@ -206,7 +204,6 @@ With the `Prefix` and `Suffix` parts of the [`IgbChip`](https://www.infragistics
 }
 ```
 
-
 ## Size
 
 We allow the user to choose the size of the [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html) by utilizing the `--ig-size` CSS variable:
@@ -249,7 +246,6 @@ We allow the user to choose the size of the [`IgbChip`](https://www.infragistics
 }
 ```
 
-
 ## Styling
 
 The [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html) component exposes a `base`, `prefix`, `suffix` CSS parts that can be used to change all of its style properties.
@@ -280,7 +276,6 @@ igc-chip::part(suffix) {
 
 }
 ```
-
 
 ## API References
 

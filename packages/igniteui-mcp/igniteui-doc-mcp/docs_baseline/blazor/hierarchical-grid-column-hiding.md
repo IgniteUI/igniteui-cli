@@ -282,7 +282,6 @@ public class SingersData
 }
 ```
 
-
 ## Hierarchical Grid Setup
 
 Let's start by creating our [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) and binding it to our data. We will also enable both filtering and sorting for the columns.
@@ -696,7 +695,6 @@ public class SingersData
     }
 }
 ```
-
 
 ## API References
 

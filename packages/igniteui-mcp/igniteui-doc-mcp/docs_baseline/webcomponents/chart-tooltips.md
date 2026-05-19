@@ -49,7 +49,6 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 The [`toolTipType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#toolTipType) property is configurable and can be set to one of the following options:
@@ -76,7 +75,6 @@ This example shows how to create custom tooltips for all series in Web Component
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Custom Tooltips in Data Chart
@@ -102,7 +100,6 @@ export class SampleCategoryData {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

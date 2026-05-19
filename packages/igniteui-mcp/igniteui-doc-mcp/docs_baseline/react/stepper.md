@@ -312,7 +312,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<LinearStepper />);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Getting Started with React Stepper
@@ -515,7 +514,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<StepperOrientationSample />);
 ```
 
-
 <div class="divider--half"></div>
 
 ### Step States
@@ -667,7 +665,6 @@ export default function StepperStepTypes() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<StepperStepTypes />);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -910,7 +907,6 @@ export default function StepperAnimations() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<StepperAnimations />);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1267,7 +1263,6 @@ export default function StepperStyling() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<StepperStyling />);
 ```
-
 
 <div class="divider--half"></div>
 

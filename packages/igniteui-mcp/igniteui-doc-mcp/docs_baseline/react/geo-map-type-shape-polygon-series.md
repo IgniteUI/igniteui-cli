@@ -562,7 +562,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapTypeScatterPolygonSeries/>);
 ```
 
-
 <div class="divider--half"></div>
 
 The [`IgrGeographicShapeSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicshapeseries.html) works a lot like the [`IgrGeographicPolylineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_maps.igrgeographicpolylineseries.html) except that geo-spatial data is rendered with polygons instead of polylines.

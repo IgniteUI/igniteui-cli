@@ -128,7 +128,6 @@ export class ExcelUtility {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Supported Sparklines

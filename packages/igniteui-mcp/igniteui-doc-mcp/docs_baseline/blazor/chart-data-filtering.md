@@ -21,7 +21,7 @@ A complete list of valid expressions and keywords to form a query string can be 
 
 ## Blazor Chart Data Filter Example
 
-The following example depicts a [Column Chart](../types/column-chart.md) of annual birth rates across several decades. The drop-down allows you to select a decade, which inserts an expression via the [`InitialFilter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_InitialFilter) property, to update the chart visual and thus filtering out the other decades out.
+The following example depicts a [Column Chart](../types/column-chart.md) of annual birth rates across several decades. The drop-down allows you to select a decade, which inserts an expression via the [`InitialFilter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_InitialFilter) property, to update the chart visual and thus filtering out the other decades out.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -151,10 +151,9 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
-The [`InitialFilter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_InitialFilter) property is a string that requires the following syntax in order to filter properly. The value requires sets of parentheses that include both the filter expression definition, column and value associated with the record(s) filtering in.
+The [`InitialFilter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_InitialFilter) property is a string that requires the following syntax in order to filter properly. The value requires sets of parentheses that include both the filter expression definition, column and value associated with the record(s) filtering in.
 
 eg. To show all countries that start with the letter B:
 

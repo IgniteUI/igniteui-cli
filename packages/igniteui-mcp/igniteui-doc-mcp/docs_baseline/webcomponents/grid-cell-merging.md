@@ -75,7 +75,6 @@ export class InvoicesData extends Array<InvoicesDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <!-- ComponentEnd: Grid -->
 
 ## Enabling and Using Cell Merging
@@ -193,7 +192,6 @@ constructor() {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <!-- ComponentEnd: Grid -->
 

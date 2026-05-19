@@ -44,7 +44,6 @@ igc-expansion-panel {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Getting Started with Web Components Accordion
@@ -162,7 +161,6 @@ igc-rating {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Nested Web Components Accordions Scenario
@@ -192,7 +190,6 @@ igc-expansion-panel {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

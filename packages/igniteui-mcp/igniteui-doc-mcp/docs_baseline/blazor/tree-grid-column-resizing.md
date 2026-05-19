@@ -159,7 +159,6 @@ public class EmployeesFlatDetails
 }
 ```
 
-
 **Column resizing** is also enabled per-column level, meaning that the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) can have a mix of resizable and non-resizable columns. This is done via the [`Resizable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Resizable) input of the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html).
 
 ```razor
@@ -428,7 +427,6 @@ public class EmployeesFlatDetails
 }
 ```
 
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -589,7 +587,6 @@ public class EmployeesFlatDetails
     }
 }
 ```
-
 
 ## API References
 

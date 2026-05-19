@@ -9,7 +9,7 @@ _tocName: Excel Library
 
 # Web Components Excel Library Overview
 
-The Infragistics Web Components Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.sheet.html#workbook), [`Worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html), `Cell`, [`Formula`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.formula.html) and many more. The Infragistics Web Components Excel Library makes it easy for you to represent the data of your application in an Excel spreadsheet as well as transfer data from Excel into your application.
+The Infragistics Web Components Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#workbook), [`Worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html), `Cell`, [`Formula`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.formula.html) and many more. The Infragistics Web Components Excel Library makes it easy for you to represent the data of your application in an Excel spreadsheet as well as transfer data from Excel into your application.
 
 ## Web Components Excel Library Example
 
@@ -127,7 +127,6 @@ export class ExcelUtility {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies
@@ -188,9 +187,9 @@ The following is a list of the supported versions of Excel.\*\*
 
 Now that the Excel Library module is imported, next step is to load a workbook.
 
-In the following code snippet, an external [ExcelUtility](excel-utility.md) class is used to save and load a [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.sheet.html#workbook).
+In the following code snippet, an external [ExcelUtility](excel-utility.md) class is used to save and load a [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#workbook).
 
-In order to load and save [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.sheet.html#workbook) objects, you can utilize the save method of the actual [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.sheet.html#workbook) object, as well as its static `Load` method.
+In order to load and save [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#workbook) objects, you can utilize the save method of the actual [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#workbook) object, as well as its static `Load` method.
 
 ```ts
 import { Workbook } from "igniteui-webcomponents-excel";
@@ -207,4 +206,4 @@ ExcelUtility.save(workbook, "fileName");
 - `Load`
 - `WorkbookInProcessRuntime`
 - [`Worksheet`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html)
-- [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.sheet.html#workbook)
+- [`workbook`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheet.html#workbook)

@@ -277,7 +277,6 @@ namespace Infragistics.Samples
 }
 ```
 
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 <!-- ComponentEnd: HierarchicalGrid -->

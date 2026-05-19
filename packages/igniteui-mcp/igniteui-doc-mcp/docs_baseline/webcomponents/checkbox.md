@@ -18,7 +18,6 @@ The Web Components Checkbox is a component that lets you add checkboxes to your 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -88,7 +87,6 @@ The checkbox can also be labelled by elements external to the checkbox. In this 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Checked
 
 You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
@@ -102,7 +100,6 @@ You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-web-
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Indeterminate
 
 You can use the [`indeterminate`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#indeterminate) property of the component to set the checkbox's value to neither **true** nor **false**.
@@ -115,7 +112,6 @@ You can use the [`indeterminate`](https://www.infragistics.com/products/ignite-u
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Required
 
@@ -145,7 +141,6 @@ You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-web
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Forms
 
@@ -191,7 +186,6 @@ igc-checkbox::part(control checked)::after {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

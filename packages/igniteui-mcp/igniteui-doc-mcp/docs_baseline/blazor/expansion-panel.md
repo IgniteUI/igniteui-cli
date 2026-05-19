@@ -32,7 +32,6 @@ The Ignite UI for Blazor Expansion Panel is a lightweight accordion component wh
 </div>
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -110,7 +109,6 @@ The following sample demonstrates how we can add some logic to our component to 
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Component Customization
@@ -181,7 +179,6 @@ The next code sample demonstrates how to configure the component's button to go 
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -299,7 +296,6 @@ igc-expansion-panel::part(subtitle) {
     </IgbExpansionPanel>
 </div>
 ```
-
 
 <div class="divider"></div>
 

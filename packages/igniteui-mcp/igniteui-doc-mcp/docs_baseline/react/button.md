@@ -56,7 +56,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonOverview/>);
 ```
 
-
 ## Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -90,8 +89,8 @@ With `prefix` and `suffix` slots of the [`IgrButton`](https://www.infragistics.c
 
 ## Type
 
-The button component will change its internal structure from a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) type element when the [`href`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html#href) attribute is set. In that case the button can be thought of as a regular link. Setting the [`href`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html#href) attribute will allow you to also set the [`rel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html#rel), [`target`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html#target) and [`download`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html#download) attributes.
-In the case when the button component uses an actual [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element internally, we can specify its [`displayType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html#displayType) by setting the property to any of the following values:
+The button component will change its internal structure from a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) type element when the [`href`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#href) attribute is set. In that case the button can be thought of as a regular link. Setting the [`href`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#href) attribute will allow you to also set the [`rel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#rel), [`target`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#target) and [`download`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#download) attributes.
+In the case when the button component uses an actual [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element internally, we can specify its [`displayType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#displayType) by setting the property to any of the following values:
 
 - `Submit` - when we want to submit the form data
 - `reset` - when we want to reset form data to its initial values
@@ -138,7 +137,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonContained/>);
 ```
 
-
 ### Outlined Button
 
 All you have to do to create an `outlined` button is to change the value of the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#variant) property:
@@ -178,7 +176,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonOutlined/>);
 ```
 
-
 ### Flat Button
 
 Analogically, we can switch to `flat` variant.
@@ -217,7 +214,6 @@ export default class ButtonFlat extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonFlat/>);
 ```
-
 
 ### Floating Action Button
 
@@ -260,7 +256,6 @@ export default class ButtonFab extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonFab/>);
 ```
-
 
 ## Button Sizing
 
@@ -382,10 +377,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonSize/>);
 ```
 
-
 ### Download
 
-Setting the [`download`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html#download) property will prompt the user to save the linked URL instead of navigating to it.
+Setting the [`download`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#download) property will prompt the user to save the linked URL instead of navigating to it.
 
 ```tsx
 <IgrButton
@@ -427,7 +421,6 @@ export default class ButtonDownload extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonDownload/>);
 ```
-
 
 ## Styling
 
@@ -491,13 +484,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonStyling/>);
 ```
 
-
 ## API References
 
 - [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html)
-- [`displayType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html#displayType)
-- [`download`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html#download)
-- [`href`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html#href)
+- [`displayType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#displayType)
+- [`download`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#download)
+- [`href`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#href)
 - [`IgrRadioGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html)
 - [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html)
 - [`Styling & Themes`](../themes/overview.md)

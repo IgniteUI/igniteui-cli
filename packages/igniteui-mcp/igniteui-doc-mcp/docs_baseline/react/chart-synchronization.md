@@ -134,7 +134,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartSynchronization/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Chart Synchronization Properties

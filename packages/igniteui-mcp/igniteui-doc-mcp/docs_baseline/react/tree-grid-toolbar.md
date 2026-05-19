@@ -186,7 +186,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 The predefined [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) and [`IgrGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbartitle.html) UI components are added inside the [`IgrGridToolbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbar.html) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
@@ -415,7 +414,6 @@ export default function App() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
-
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
@@ -722,7 +720,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Exporting Indicator
 
 When using the default toolbar exporter component, whenever an export operation takes place the toolbar will show a progress indicator while the operation is in progress.
@@ -887,7 +884,6 @@ export default function TreeGridDataExportingIndicatorSample() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<TreeGridDataExportingIndicatorSample />);
 ```
-
 
 ## Styling
 
@@ -1075,7 +1071,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## API References
 

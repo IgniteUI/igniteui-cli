@@ -26,7 +26,6 @@ The following demo shows some [`IgcComboComponent`](https://www.infragistics.com
 }
 ```
 
-
 In our sample we are going to use the [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) component, so we have to import them together with the combo:
 
 ```ts

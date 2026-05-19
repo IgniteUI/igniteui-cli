@@ -18,7 +18,6 @@ Ignite UI for Web Components Chips help people enter information, make selection
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider"></div>
 
 ## Usage
@@ -73,7 +72,6 @@ The Ignite UI for Web Components chip supports several pre-defined stylistic var
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Disabled
 
 The Ignite UI for Web Components chip can be disabled by using the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html#disabled) property.
@@ -100,7 +98,6 @@ With the `Prefix` and `Suffix` parts of the [`IgcChipComponent`](https://www.inf
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Size
 
@@ -142,7 +139,6 @@ We allow the user to choose the size of the [`IgcChipComponent`](https://www.inf
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Styling
 
 The [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html) component exposes a `base`, `prefix`, `suffix` CSS parts that can be used to change all of its style properties.
@@ -172,7 +168,6 @@ igc-chip::part(suffix) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

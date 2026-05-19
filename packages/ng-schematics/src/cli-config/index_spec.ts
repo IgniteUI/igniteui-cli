@@ -332,8 +332,8 @@ export const appConfig: ApplicationConfig = {
 			await runner.runSchematic("ai-config", {}, tree);
 
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["claude", "generic"]);
-			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "generic"]);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["claude", "generic"], "angular");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "generic"], "angular");
 		});
 
 		it("should create .vscode/mcp.json with igniteui and angular-cli servers when file does not exist", async () => {
@@ -407,30 +407,30 @@ export const appConfig: ApplicationConfig = {
 		it("should pass agents when agents option is provided", async () => {
 			await runner.runSchematic("ai-config", { agents: ["cursor"] }, tree);
 
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["cursor"]);
-			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["cursor"]);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["cursor"], "angular");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["cursor"], "angular");
 		});
 
 		it("should pass agents for copilot agents", async () => {
 			await runner.runSchematic("ai-config", { agents: ["copilot"] }, tree);
 
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["copilot"]);
-			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["copilot"]);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["copilot"], "angular");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["copilot"], "angular");
 		});
 
 		it("should pass agents for generic agents", async () => {
 			await runner.runSchematic("ai-config", { agents: ["generic"] }, tree);
 
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["generic"]);
-			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["generic"]);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["generic"], "angular");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["generic"], "angular");
 		});
 
 		it("should configure multiple agents", async () => {
 			await runner.runSchematic("ai-config", { agents: ["claude", "cursor"] }, tree);
 
 			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
-			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["claude", "cursor"]);
-			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "cursor"]);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["claude", "cursor"], "angular");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "cursor"], "angular");
 		});
 
 		it("should default MCP config to .vscode/mcp.json with servers key", async () => {

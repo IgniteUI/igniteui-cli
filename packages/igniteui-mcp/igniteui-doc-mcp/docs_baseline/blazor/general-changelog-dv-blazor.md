@@ -165,7 +165,7 @@ As of the 2025.2 release, we no longer support .NET 6. This corresponds with the
 
 In Ignite UI for Blazor, you can now annotate the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) with slice, strip, and point annotations at runtime using the new user annotations feature. This allows the end user to add more details to the plot such as calling out single important events such as company quarter reports by using the slice annotation or events that have a duration by using the strip annotation. You can also call out individual points on the plotted series by using the point annotation or any combination of these three.
 
-This is directly integrated with the available tools of the [`Toolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Toolbar).
+This is directly integrated with the available tools of the [`Toolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Toolbar).
 
 <img class="responsive-img" src="../images/charts/data-chart-user-annotation-create.gif"
 alt="Blazor user-annotation-create"/>
@@ -195,7 +195,7 @@ Ability for axis annotations to automatically detect collisions and truncate to 
 - The merging can be configured on the grid level to apply either:
   - `OnSort` - only when the column is sorted.
   - `Always` - always, regardless of data operations.
-        The default [`CellMergeMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_CellMergeMode) is `OnSort`.
+        The default [`CellMergeMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_CellMergeMode) is `OnSort`.
 
 ```razor
 <IgbGrid CellMergeMode="GridCellMergeMode.Always">
@@ -230,7 +230,7 @@ col.Pinned = true;
 
 - **Other Improvements**
   - A column's `MinWidth` and `MaxWidth` constrain the user-specified width so that it cannot go outside their bounds.
-  - The [`PagingMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PagingMode) property can now be set as simple strings "local" and "remote" and does not require importing the `GridPagingMode` enum.
+  - The [`PagingMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_PagingMode) property can now be set as simple strings "local" and "remote" and does not require importing the `GridPagingMode` enum.
 
 ### General
 
@@ -585,7 +585,7 @@ The following properties of these components are now nullable:
 ### IgniteUI.Blazor
 
 - **All Grids**
-  - Allow applying initial filtering through [`FilteringExpressionsTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_FilteringExpressionsTree) property
+  - Allow applying initial filtering through [`FilteringExpressionsTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_FilteringExpressionsTree) property
 
 ### Bug Fixes
 
@@ -617,7 +617,7 @@ The following properties of these components are now nullable:
 
 #### Toolbar
 
-- Added new `GroupHeaderTextStyle` property to [`Toolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Toolbar) and [`IgbToolPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolPanel.html). If set, it will apply to all [`IgbToolActionGroupHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionGroupHeader.html) actions.
+- Added new `GroupHeaderTextStyle` property to [`Toolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Toolbar) and [`IgbToolPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolPanel.html). If set, it will apply to all [`IgbToolActionGroupHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionGroupHeader.html) actions.
 - Added new property on [`IgbToolAction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html) called [`TitleHorizontalAlignment`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html#IgniteUI_Blazor_Controls_IgbToolAction_TitleHorizontalAlignment) which controls the horizontal alignment of the title text.
 - Added new property on [`IgbToolActionSubPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionSubPanel.html) called [`ItemSpacing`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionSubPanel.html#IgniteUI_Blazor_Controls_IgbToolActionSubPanel_ItemSpacing) which controls the spacing between items inside the panel.
 
@@ -685,7 +685,7 @@ The following table lists the bug fixes made for the Ignite UI for Blazor toolse
 
 - New [Proportional Category Angle Axis](charts/types/radial-chart.md) - New axes for the Radial Pie Series in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html), to plot slices similar to a pie chart, a type of data visualization where data points are represented as segments within a circular graph.
 
-- [`Toolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Toolbar)
+- [`Toolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Toolbar)
 
   - New ToolActionCheckboxList
         A new CheckboxList ToolAction that displays a collection of items with checkboxes for selecting. A grid inside ToolAction CheckboxList grows in height up to 5 items, then a scrollbar is displayed.
@@ -734,7 +734,7 @@ The following table lists the bug fixes made for the Ignite UI for Blazor toolse
   - Removed [`IgbPositionStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPositionStrategy.html) property.
 - [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html)
   - Removed old named `Maxlength` and `Minlength` properties. Use [`MaxLength`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html#IgniteUI_Blazor_Controls_IgbInput_MaxLength) and [`MinLength`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html#IgniteUI_Blazor_Controls_IgbInput_MinLength).
-  - Removed old named `Readonly` and `Inputmode` properties. Use [`ReadOnly`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInputBase.html#IgniteUI_Blazor_Controls_IgbInputBase_ReadOnly) and [`InputMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html#IgniteUI_Blazor_Controls_IgbInput_InputMode).
+  - Removed old named `Readonly` and `Inputmode` properties. Use [`ReadOnly`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html#IgniteUI_Blazor_Controls_IgbMaskInput_ReadOnly) and [`InputMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html#IgniteUI_Blazor_Controls_IgbInput_InputMode).
   - Changed [`InputMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html#IgniteUI_Blazor_Controls_IgbInput_InputMode) type also to `string`.
 - [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html)
   - Changed `Change` event argument type from [`IgbComponentBoolValueChangedEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbComponentBoolValueChangedEventArgs.html) to [`IgbRadioChangeEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadioChangeEventArgs.html).
@@ -762,14 +762,14 @@ The following table lists the bug fixes made for the Ignite UI for Blazor toolse
 - **All Grids**
   - [`IgbRowIsland`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowIsland.html)
   - Removed `DisplayDensity` deprecated property.
-  - Renamed [`Columns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowIsland.html#IgniteUI_Blazor_Controls_IgbRowIsland_Columns), `ActualColumns`, `ContentColumns` properties to [`ColumnList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowIsland.html#IgniteUI_Blazor_Controls_IgbRowIsland_ColumnList), [`ActualColumnList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ActualColumnList) and `ContentColumnList`. Recommended to use the new `GetColumns` method instead.
+  - Renamed [`Columns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowIsland.html#IgniteUI_Blazor_Controls_IgbRowIsland_Columns), `ActualColumns`, `ContentColumns` properties to [`ColumnList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowIsland.html#IgniteUI_Blazor_Controls_IgbRowIsland_ColumnList), [`ActualColumnList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ActualColumnList) and `ContentColumnList`. Recommended to use the new `GetColumns` method instead.
   - Renamed `RowDelete` and `RowAdd` event argument type to [`IgbRowDataCancelableEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowDataCancelableEventArgs.html).
   - Renamed `ContextMenu` event argument type to [`IgbGridContextMenuEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridContextMenuEventArgs.html).
-  - Removed [`IgbGridEditEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridEditEventArgs.html),  [`IgbGridEditDoneEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridEditDoneEventArgs.html), [`IgbPinRowEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPinRowEventArgs.html) events `RowID` and [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey) properties. Use `RowKey` instead.
+  - Removed [`IgbGridEditEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridEditEventArgs.html),  [`IgbGridEditDoneEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridEditDoneEventArgs.html), [`IgbPinRowEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPinRowEventArgs.html) events `RowID` and [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_PrimaryKey) properties. Use `RowKey` instead.
 - [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html)
   - removed `ShowPivotConfigurationUI` property. Use [`PivotUI`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_PivotUI) and set inside it the new `ShowConfiguration` option.
 - [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
-  - Removed `Movable` property. Use Grid's [`Moving`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Moving) property now.
+  - Removed `Movable` property. Use Grid's [`Moving`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Moving) property now.
   - Removed `ColumnChildren` property. Use [`ChildColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_ChildColumns) instead.
 - [`IgbColumnGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html)
   - Removed [`Children`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html#IgniteUI_Blazor_Controls_IgbColumnGroup_Children) property. Use `ChildColumns` instead.
@@ -793,7 +793,7 @@ The type of Values from [`PivotConfiguration`](https://www.infragistics.com/blaz
 
 ### IgniteUI.Blazor (Charts)
 
-- [Data Legend Grouping](charts/features/chart-data-legend.md#blazor-data-legend-grouping) & [Data Tooltip Grouping](charts/features/chart-data-tooltip.md#blazor-data-tooltip-grouping-for-data-chart) - New grouping feature added. The property `GroupRowVisible` toggles grouping with each series opting in can assign group text via the [`DataLegendGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataLegendGroup) property. If the same value is applied to more than one series then they will appear grouped. Useful for large datasets that need to be categorized and organized for all users.
+- [Data Legend Grouping](charts/features/chart-data-legend.md#blazor-data-legend-grouping) & [Data Tooltip Grouping](charts/features/chart-data-tooltip.md#blazor-data-tooltip-grouping-for-data-chart) - New grouping feature added. The property `GroupRowVisible` toggles grouping with each series opting in can assign group text via the [`DataLegendGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCrosshairLayer.html#IgniteUI_Blazor_Controls_IgbCrosshairLayer_DataLegendGroup) property. If the same value is applied to more than one series then they will appear grouped. Useful for large datasets that need to be categorized and organized for all users.
 
 - [Chart Selection](charts/features/chart-data-selection.md) - New series selection styling. This is adopted broadly across all category, financial and radial series for [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) and [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html). Series can be clicked and shown a different color, brightened or faded, and focus outlines. Manage which items are effected through individual series or entire data item. Multiple series and markers are supported. Useful for illustrating various differences or similarities between values of a particular data item. Also  `SelectedSeriesItemsChanged` event and [`SelectedSeriesItems`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_SelectedSeriesItems) are available for additional help to build out robust business requirements surrounding other actions that can take place within an application such as a popup or other screen with data analysis based on the selection.
 
@@ -801,9 +801,9 @@ The type of Values from [`PivotConfiguration`](https://www.infragistics.com/blaz
 
 - [Treemap Highlighting](charts/types/treemap-chart.md#blazor-treemap-highlighting) - Now exposes a [`HighlightingMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_HighlightingMode) property that allows you to configure the mouse-over highlighting of the items in the tree map. This property takes two options: `Brighten` where the highlight will apply to the item that you hover the mouse over only, and `FadeOthers` where the highlight of the hovered item will remain the same, but everything else will fade out. This highlight is animated, and can be controlled using the [`HighlightingTransitionDuration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_HighlightingTransitionDuration) property.
 
-- [Treemap Percent-based Highlighting](charts/types/treemap-chart.md#blazor-treemap-percent-based-highlighting) - New percent-based highlighting, allowing nodes to represent progress or subset of a collection. The appearance is shown as a fill-in of its backcolor up to a specific value either by a member on your data item or by supplying a new [`HighlightedDataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_HighlightedDataSource). Can be toggled via [`HighlightedValuesDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_HighlightedValuesDisplayMode) and styled via `FillBrushes`.
+- [Treemap Percent-based Highlighting](charts/types/treemap-chart.md#blazor-treemap-percent-based-highlighting) - New percent-based highlighting, allowing nodes to represent progress or subset of a collection. The appearance is shown as a fill-in of its backcolor up to a specific value either by a member on your data item or by supplying a new [`HighlightedDataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_HighlightedDataSource). Can be toggled via [`HighlightedValuesDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_HighlightedValuesDisplayMode) and styled via `FillBrushes`.
 
-- [`Toolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Toolbar) - New `IsHighlighted` option for ToolAction for outlining a border around specific tools of choice.
+- [`Toolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Toolbar) - New `IsHighlighted` option for ToolAction for outlining a border around specific tools of choice.
 
 ### IgniteUI.Blazor (Gauges)
 
@@ -814,7 +814,7 @@ The type of Values from [`PivotConfiguration`](https://www.infragistics.com/blaz
 
 ### IgniteUI.Blazor (Charts)
 
-Data Filtering via the [`InitialFilter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_InitialFilter) property. Apply filter expressions to filter the chart data to a subset of records. Can be used for drill down large data.
+Data Filtering via the [`InitialFilter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_InitialFilter) property. Apply filter expressions to filter the chart data to a subset of records. Can be used for drill down large data.
 
 - [`IgbBulletGraph`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html)
   - The Performance bar will now reflect a difference between the value and new [`HighlightValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_HighlightValue) when the [`HighlightValueDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_HighlightValueDisplayMode) is applied to the 'Overlay' setting. The highlight value will show a filtered/subset measured percentage as a filled in color while the remaining bar's appearance will appear faded to the assigned value, illustrating the performance in real-time.
@@ -914,7 +914,7 @@ Data Filtering via the [`InitialFilter`](https://www.infragistics.com/blazor/doc
 
 ### IgniteUI.Blazor (Charts)
 
-- [ValueLayer](charts/features/chart-overlays.md#blazor-value-layer) - A new series type named the [`IgbValueLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html) is now exposed which can allow you to render an overlay for different focal points of the plotted data such as Maximum, Minimum, and Average. This is applied to the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) and [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) by adding to the new [`ValueLines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ValueLines) collection.
+- [ValueLayer](charts/features/chart-overlays.md#blazor-value-layer) - A new series type named the [`IgbValueLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html) is now exposed which can allow you to render an overlay for different focal points of the plotted data such as Maximum, Minimum, and Average. This is applied to the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) and [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) by adding to the new [`ValueLines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_ValueLines) collection.
 
 - It is now possible to apply a **dash array** to the different parts of the series of the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html). You can apply this to the [series](charts/types/line-chart.md#blazor-styling-line-chart) plotted in the chart, the [gridlines](charts/features/chart-axis-gridlines.md#blazor-axis-gridlines-properties) of the chart, and the [trendlines](charts/features/chart-trendlines.md#blazor-chart-trendlines-dash-array-example) of the series plotted in the chart.
 
@@ -931,7 +931,7 @@ Data Filtering via the [`InitialFilter`](https://www.infragistics.com/blazor/doc
 
 ### IgniteUI.Blazor (Data Grid)
 
-- A new argument [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey) has been introduced to [`IgbRowDataEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowDataEventArgs.html) from [`Detail`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowDataEventArgs.html#IgniteUI_Blazor_Controls_IgbRowDataEventArgs_Detail), and part of the event arguments that are emitted by the `RowAdded` and `RowDeleted` events. When the grid has a primary key attribute added, then the emitted primaryKey event argument represents the row ID, otherwise it defaults to null.
+- A new argument [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_PrimaryKey) has been introduced to [`IgbRowDataEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowDataEventArgs.html) from [`Detail`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowDataEventArgs.html#IgniteUI_Blazor_Controls_IgbRowDataEventArgs_Detail), and part of the event arguments that are emitted by the `RowAdded` and `RowDeleted` events. When the grid has a primary key attribute added, then the emitted primaryKey event argument represents the row ID, otherwise it defaults to null.
 - `RowSelectionChanging` event arguments are changed. Now, the `OldSelection`, `NewSelection`, `Added` and `Removed` collections no longer consist of the row keys of the selected elements when the grid has set a primaryKey, but now in any case the row data is emitted.
 - When the grid is working with remote data and a primary key has been set, the selected rows that are not currently part of the grid view will be emitted for a partial row data object.
 - When selected row is deleted from the grid component `RowSelectionChanging` event will no longer be emitted.
@@ -997,7 +997,7 @@ Added significant improvements to default behaviors, and refined the Category Ch
   - GroupSortDescriptions
 
 > [!Note]
-> [Chart Aggregation](charts/features/chart-data-aggregations.md) will not work when using [`IncludedProperties`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_IncludedProperties) | [`ExcludedProperties`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ExcludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
+> [Chart Aggregation](charts/features/chart-data-aggregations.md) will not work when using [`IncludedProperties`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_IncludedProperties) | [`ExcludedProperties`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_ExcludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
 
 ### IgniteUI.Blazor (Data Grid)
 
@@ -1027,7 +1027,7 @@ Added significant improvements to default behaviors, and refined the Category Ch
 
 ### IgniteUI.Blazor (Data Grid)
 
-Added New Feature - [Row Paging](grids/data-grid/row-paging.md) which is used to split a large set of data into a sequence of pages that have similar content. With pagination, data can be displayed in a set number of rows, letting users “scroll” through their data, without needing a scroll bar. The UI for table pagination usually includes things like the current page, total pages, and clickable Previous and Next arrows/buttons that let users flip through the pages of data.
+Added New Feature - `Row Paging` which is used to split a large set of data into a sequence of pages that have similar content. With pagination, data can be displayed in a set number of rows, letting users “scroll” through their data, without needing a scroll bar. The UI for table pagination usually includes things like the current page, total pages, and clickable Previous and Next arrows/buttons that let users flip through the pages of data.
 
 ### IgniteUI.Blazor (Dock Manager)
 
@@ -1100,11 +1100,11 @@ This release introduces a few improvements and simplifications to visual design 
 - Added crosshair annotations by default in [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) and [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html)
 - Added final value annotation by default in [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html)
 - Added new properties in Category Chart and Financial Chart:
-  - [`CrosshairsLineThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_CrosshairsLineThickness) and other properties for customizing crosshairs lines
-  - [`CrosshairsAnnotationXAxisBackground`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_CrosshairsAnnotationXAxisBackground) and other properties for customizing crosshairs annotations
-  - [`FinalValueAnnotationsBackground`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_FinalValueAnnotationsBackground) and other properties for customizing final value annotations
-  - [`AreaFillOpacity`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_AreaFillOpacity) that allow changing opacity of series fill (e.g. Area chart)
-  - [`MarkerThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerThickness) that allows changing thickness of markers
+  - [`CrosshairsLineThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_CrosshairsLineThickness) and other properties for customizing crosshairs lines
+  - [`CrosshairsAnnotationXAxisBackground`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_CrosshairsAnnotationXAxisBackground) and other properties for customizing crosshairs annotations
+  - [`FinalValueAnnotationsBackground`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_FinalValueAnnotationsBackground) and other properties for customizing final value annotations
+  - [`AreaFillOpacity`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_AreaFillOpacity) that allow changing opacity of series fill (e.g. Area chart)
+  - [`MarkerThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_MarkerThickness) that allows changing thickness of markers
 - Added new properties in Category Chart, Financial Chart, Data Chart, and Geographic Map:
   - [`MarkerAutomaticBehavior`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_MarkerAutomaticBehavior) that allows which marker type is assigned to multiple series in the same chart
   - [`LegendItemBadgeShape`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_LegendItemBadgeShape) for setting badge shape of all series represented in a legend
@@ -1124,10 +1124,10 @@ This release introduces a few improvements and simplifications to visual design 
 ### IgniteUI.Blazor (Data Grid)
 
 - New Features Added:
-  - [Filter Row](grids/data-grid/column-filtering.md)
-  - [Load/Save Layout Customizations](grids/data-grid/load-save-layout.md)
-  - [GroupBy Area for column grouping](grids/data-grid/row-grouping.md)
-  - [Cell Merging](grids/data-grid/cell-merging.md)
+  - `Filter Row`
+  - `Load/Save Layout Customizations`
+  - `GroupBy Area for column grouping`
+  - `Cell Merging`
 - New API:
   - Added `SelectionChanged` event. Used to detect changes on selection interactions
         e.g. Multiple row selection.
@@ -1148,20 +1148,20 @@ This release introduces several new and improved visual design and configuration
 - Changed Scatter High Density series’ colors for heat max property from <span style="color:#ee5879">#ee5879</span> to <span style="color:#ee5879">#ee5879</span>
 - Changed Financial/Waterfall series’ `NegativeBrush` and `NegativeOutline` properties from <span style="color:#C62828">#C62828</span> to <span style="color:#ee5879">#ee5879</span>
 - Changed marker's thickness to 2px from 1px
-- Changed marker's fill to match the marker's outline for [`IgbPointSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPointSeries.html), [`IgbBubbleSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html), [`IgbScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterSeries.html), [`IgbPolarScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarScatterSeries.html). You can use set [`MarkerFillMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerFillMode) property to Normal to undo this change
+- Changed marker's fill to match the marker's outline for [`IgbPointSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPointSeries.html), [`IgbBubbleSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html), [`IgbScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterSeries.html), [`IgbPolarScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarScatterSeries.html). You can use set [`MarkerFillMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_MarkerFillMode) property to Normal to undo this change
 - Compressed labelling for the [`IgbTimeXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeXAxis.html) and [`IgbOrdinalTimeXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbOrdinalTimeXAxis.html)
 - New Marker Properties:
-  - series.[`MarkerFillMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerFillMode) - Can be set to `MatchMarkerOutline` so the marker depends on the outline
-  - series.[`MarkerFillOpacity`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerFillOpacity) - Can be set to a value 0 to 1
-  - series.[`MarkerOutlineMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerOutlineMode) - Can be set to `MatchMarkerBrush` so the marker's outline depends on the fill brush color
+  - series.[`MarkerFillMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_MarkerFillMode) - Can be set to `MatchMarkerOutline` so the marker depends on the outline
+  - series.[`MarkerFillOpacity`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_MarkerFillOpacity) - Can be set to a value 0 to 1
+  - series.[`MarkerOutlineMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_MarkerOutlineMode) - Can be set to `MatchMarkerBrush` so the marker's outline depends on the fill brush color
 - New Series Property:
-  - series.[`OutlineMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_OutlineMode) - Can be set to toggle the series outline visibility. Note, for Data Chart, the property is on the series
-- New chart properties that define bleed over area introduced into the viewport when the chart is at the default zoom level. A common use case is to provide space between the axes and first/last data points. Note, the [`ComputedPlotAreaMarginMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ComputedPlotAreaMarginMode), listed below, will automatically set the margin when markers are enabled. The others are designed to specify a `Double` to represent the thickness, where PlotAreaMarginLeft etc. adjusts the space to all four sides of the chart:
-  - chart.[`PlotAreaMarginLeft`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_PlotAreaMarginLeft)
-  - chart.[`PlotAreaMarginTop`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_PlotAreaMarginTop)
-  - chart.[`PlotAreaMarginRight`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_PlotAreaMarginRight)
-  - chart.[`PlotAreaMarginBottom`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_PlotAreaMarginBottom)
-  - chart.[`ComputedPlotAreaMarginMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ComputedPlotAreaMarginMode)
+  - series.[`OutlineMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_OutlineMode) - Can be set to toggle the series outline visibility. Note, for Data Chart, the property is on the series
+- New chart properties that define bleed over area introduced into the viewport when the chart is at the default zoom level. A common use case is to provide space between the axes and first/last data points. Note, the [`ComputedPlotAreaMarginMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_ComputedPlotAreaMarginMode), listed below, will automatically set the margin when markers are enabled. The others are designed to specify a `Double` to represent the thickness, where PlotAreaMarginLeft etc. adjusts the space to all four sides of the chart:
+  - chart.[`PlotAreaMarginLeft`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_PlotAreaMarginLeft)
+  - chart.[`PlotAreaMarginTop`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_PlotAreaMarginTop)
+  - chart.[`PlotAreaMarginRight`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_PlotAreaMarginRight)
+  - chart.[`PlotAreaMarginBottom`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_PlotAreaMarginBottom)
+  - chart.[`ComputedPlotAreaMarginMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_ComputedPlotAreaMarginMode)
 - New Highlighting Properties
   - chart.[`HighlightingMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_HighlightingMode) - Sets whether hovered or non-hovered series to fade, brighten
   - chart.[`HighlightingBehavior`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_HighlightingBehavior) - Sets whether the series highlights depending on mouse position e.g. directly over or nearest item
@@ -1206,7 +1206,7 @@ for example:
 - Added `EditModeClickAction` property - By default double-clicking is required to enter edit mode. This can be set to `SingleClick` to allow for edit mode to occur when selecting a new cell.
 - Added `EnterKeyBehaviors` property - aka Excel-style Navigation (Enter Behavior) – controls the behavior of the enter key, e.g. Options are (none, edit, move up, down, left, right)
 - Added `EnterKeyBehaviorAfterEdit` property - While in edit-mode, this property controls when enter is pressed, e.g. Options are (moves to the cell below, above, right, left)
-- Added [`SelectAllRows`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SelectAllRows) - method.
+- Added [`SelectAllRows`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_SelectAllRows) - method.
 - Added Row Range Selection - With `GridSelectionMode` property set to MultipleRow the following new functionality is now included:
   - Click and drag to select rows
   - <kbd>SHIFT</kbd> and click to select multiple rows.

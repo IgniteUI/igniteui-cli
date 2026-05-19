@@ -84,7 +84,6 @@ In it, you can see how to define an accordion and its expansion panels. The samp
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Getting Started with Blazor Accordion
@@ -341,7 +340,6 @@ The sample below demonstrates how elaborate filtering options can be implemented
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ### Nested Blazor Accordions Scenario
@@ -452,7 +450,6 @@ In the following Blazor Accordion example is created a complex FAQ section in or
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

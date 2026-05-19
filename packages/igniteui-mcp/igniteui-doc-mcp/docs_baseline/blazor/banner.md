@@ -106,7 +106,6 @@ The Ignite UI for Blazor Banner component provides a way to easily display a pro
 }
 ```
 
-
 ## Usage
 
 Before using the [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html), you need to register it as follows:
@@ -320,7 +319,6 @@ The [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blaz
     }
 }
 ```
-
 
 ### Binding to events
 
@@ -571,7 +569,6 @@ Finally, we will add a [`IgbToast`](https://www.infragistics.com/blazor/docs/api
 }
 ```
 
-
 ## Styling
 
 The [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html) component exposes several CSS parts which give you full control over its style:
@@ -743,7 +740,6 @@ igc-banner::part(content) {
     }
 }
 ```
-
 
 ## API References
 

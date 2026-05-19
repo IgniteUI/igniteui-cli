@@ -25,7 +25,6 @@ Below you can see a sample that demonstrates how the Date Picker works when user
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Getting Started with Web Components Date Picker
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -140,7 +139,6 @@ The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-w
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Display and input format
 
 [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#inputFormat) and [`displayFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#displayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#inputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
@@ -155,7 +153,6 @@ More information about these can be found in the [`IgcDateTimeInputComponent`](h
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Increment and decrement
 
@@ -178,7 +175,6 @@ In forms, we can handle the `igcChange` event of the component and update the va
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Calendar Specific settings
 
@@ -266,7 +262,6 @@ igc-date-picker::part(year-inner selected) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

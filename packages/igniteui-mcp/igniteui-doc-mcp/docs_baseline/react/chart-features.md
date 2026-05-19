@@ -164,7 +164,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartAxisSharing/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Annotations
@@ -302,7 +301,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartLineChartWithAnnotations/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Animations
@@ -435,7 +433,6 @@ export default class CategoryChartLineChartWithAnimations extends React.Componen
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartLineChartWithAnimations/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -627,7 +624,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartColumnChartWithHighlighting/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Markers
@@ -795,7 +791,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1083,7 +1078,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartNavigation/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Overlays
@@ -1192,7 +1186,6 @@ export default class DataChartValueOverlay extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartValueOverlay/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1346,7 +1339,6 @@ export default class CategoryChartHighVolume extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartHighVolume/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1509,7 +1501,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1709,7 +1700,6 @@ export default class FinancialChartTrendlines extends React.Component<any, any> 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<FinancialChartTrendlines/>);
 ```
-
 
 <div class="divider--half"></div>
 

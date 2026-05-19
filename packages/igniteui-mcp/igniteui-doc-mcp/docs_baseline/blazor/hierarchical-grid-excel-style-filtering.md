@@ -304,10 +304,9 @@ public class SingersData
 }
 ```
 
-
 ## Usage
 
-To turn on the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) component's Excel-style filtering, two inputs should be set. The [`AllowFiltering`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_AllowFiltering) should be set to **true** and the [`FilterMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_FilterMode) should be set to `ExcelStyleFilter` value.
+To turn on the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) component's Excel-style filtering, two inputs should be set. The [`AllowFiltering`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_AllowFiltering) should be set to **true** and the [`FilterMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_FilterMode) should be set to `ExcelStyleFilter` value.
 
 ```razor
 <IgbHierarchicalGrid AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" >
@@ -335,7 +334,7 @@ Sorting, pinning and hiding features can be removed from the filter menu using t
     Height="650px" Width="100%" Id="hierarchicalGrid">
     <IgbColumn Field="Artist" Filterable="true" Sortable="true"></IgbColumn>
     <IgbColumn Field="Photo" Filterable="false"></IgbColumn>
-    <IgbColumn Field="Debut" Filterable="true" DisablePinning="true" DisableHiding="true"></IgbColumn>
+    <IgbColumn Field="Debut" Filterable="false"></IgbColumn>
     <IgbColumn Field="GrammyNominations" Header="Grammy Nominations" DataType="GridColumnDataType.Number" Filterable="true" Sortable="true" ></IgbColumn>
     <IgbColumn Field="GrammyAwards" Header="Grammy Awards" DataType="GridColumnDataType.Number" Filterable="true"></IgbColumn>
     @* ... *@
@@ -640,12 +639,11 @@ public class SingersData
 }
 ```
 
-
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the [`ExcelStyleHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ExcelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`ExcelStyleHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_ExcelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the [`ExcelStyleHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ExcelStyleHeaderIconTemplate):
+The following code demonstrates how to customize the Excel style filter menu using the [`ExcelStyleHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_ExcelStyleHeaderIconTemplate):
 
 ```razor
 <IgbHierarchicalGrid
@@ -1000,7 +998,6 @@ public class SingersData
 }
 ```
 
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -1309,7 +1306,6 @@ public class SingersData
     }
 }
 ```
-
 
 ## API References
 

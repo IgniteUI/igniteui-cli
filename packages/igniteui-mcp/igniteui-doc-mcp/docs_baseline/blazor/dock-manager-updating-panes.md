@@ -166,7 +166,6 @@ The Infragistics Blazor Dock Manager component provides you with the layout for 
 }
 ```
 
-
 <!-- <div>
     <button data-localize="stackblitz" disabled class="stackblitz-btn" data-iframe-id="dock-manager-overview-iframe" data-demos-base-url="https://localhost:44317">View on StackBlitz
     </button>

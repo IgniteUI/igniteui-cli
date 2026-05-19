@@ -49,7 +49,6 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Header Row
 
 The header row displays the current label of x-axis when hovering mouse over category series and financial series. You can use [`headerFormatDate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#headerFormatDate) and [`headerFormatTime`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#headerFormatTime) properties to format date and time in the [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) if the x-axis shows dates. For other types of series, the [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) does not render the header row.
@@ -179,7 +178,6 @@ export class MultipleStocks extends Array<Array<StockItem>> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 Setting values on the [`includedColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#includedColumns) and [`excludedColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#excludedColumns) properties, depends on type of series and how many data columns they support. For example, you can set [`includedColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#includedColumns) property to a collection of **Open** and **Close** strings and the legend will show only open and close values for stock prices when the chart is plotting financial series. The following table lists all column names that can be use to filter columns in data legend.
 
@@ -1244,7 +1242,6 @@ export class StockItem {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Web Components Data Legend Value Formatting
 
 The [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) provides automatic abbreviation of large numbers using its [`valueFormatAbbreviation`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`valueFormatMinFractions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatMinFractions) and [`valueFormatMaxFractions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
@@ -1281,7 +1278,6 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Web Components Data Legend Value Mode
 
@@ -1401,7 +1397,6 @@ export class MultipleStocks extends Array<Array<StockItem>> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Web Components Data Legend Grouping
 
 [`dataLegendGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#dataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
@@ -1443,7 +1438,6 @@ export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopC
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Web Components Data Legend Styling & Events
 
@@ -1514,7 +1508,6 @@ export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopC
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

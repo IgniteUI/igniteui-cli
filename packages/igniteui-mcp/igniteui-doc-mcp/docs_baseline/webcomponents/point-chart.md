@@ -50,7 +50,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Point Chart with Single Series
@@ -89,7 +88,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -130,7 +128,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Point Chart Styling
@@ -169,7 +166,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

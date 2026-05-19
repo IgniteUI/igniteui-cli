@@ -22,7 +22,6 @@ Modify or customize all aspects of both the X-Axis and Y-Axis using the differen
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Annotations
@@ -33,7 +32,6 @@ These additional layers are on top of the chart which are mouse / touch dependen
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -46,7 +44,6 @@ Animate your chart as it loads a new data source by enabling animations. These a
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Highlighting
@@ -57,7 +54,6 @@ Bring focus to visuals such as lines, columns, or markers by highlighting them a
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -97,7 +93,6 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -165,7 +160,6 @@ export class SampleFinancialData {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Overlays
@@ -176,7 +170,6 @@ Overlays allows you to annotate important values and thresholds by plotting hori
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -254,7 +247,6 @@ export class CategoryChartSharedData {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Tooltips
@@ -292,7 +284,6 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -415,7 +406,6 @@ export class StockItem {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

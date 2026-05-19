@@ -1,11 +1,13 @@
 ---
 title: Getting Started | Ignite UI for React | Infragistics
-_description: Use Infragistics' React components to create apps and improve data visualization with the world’s fastest, virtualized, real-time React data grid and streaming financial and business and financial charts.
+_description: Install Ignite UI for React and render your first component. Covers CLI scaffolding, manual package setup, and AI tooling with Agent Skills and MCP servers.
 _keywords: Ignite UI for React, Infragistics, Getting Started
-_language: en
-mentionedTypes: ["XamBulletGraph", "IgrGrid"]
+last_updated: "2025-04-06"
+mentionedTypes: []
 _tocName: Getting Started
 ---
+
+<!-- schema: Article, HowTo -->
 
 # Getting Started With Ignite UI for React
 
@@ -52,11 +54,18 @@ ig
 ```
 
 Then choose `React` as the framework and `Ignite UI for React TS` as the project type. Select the `Default Top Navigation` project template, add a specific component/view, or select `Complete & Run`.
-For more information about the Ignite UI CLI, see the [CLI overview](general-cli-overview.md).
+
+Or create a project directly in one command, for example:
+
+```cmd
+ig new <project-name> --framework=react --type=igr-ts --template=top-nav
+```
+
+For a step-by-step walkthrough of the wizard, see [Step-by-Step Guide Using Ignite UI CLI](general-step-by-step-guide-using-cli.md). For a full reference of all CLI commands and options, see the [CLI Overview](general-cli-overview.md).
 
 If you added a Grid component during the prompts, once the application is running you should see something similar to the following:
 
-<img src="../images/general/ig-cli-grid.png" />
+<img src="../images/general/ig-cli-grid.png" alt="Ignite UI CLI generated grid component" />
 
 > [!NOTE]
 > Keep in mind that by default Ignite UI CLI installs the Trial version of Ignite UI for React's Grid component which is under [commercial license](./general-open-source-vs-premium.md#comparison-table-for-all-components).
@@ -67,7 +76,7 @@ Alternatively, you can use popular frameworks such as Next.js, Vite, or Expo as 
 
 ### Creating a New React Project
 
-All popular frameworks for React development provide powerful CLI tools for scaffolding a React application.
+Common React toolchains such as Next.js, Vite, and Expo each provide CLI tools for scaffolding a new application.
 
 1 - Open **VS Code**, select **Terminal** menu and then **New Terminal** option.
 
@@ -81,7 +90,7 @@ Then follow the prompts to choose a name for the project, React as the framework
 
 ### Adding an Ignite UI React Grid Component
 
-##### Package Installation
+#### Package Installation
 
 To add the Ignite UI React [**Grid**](grids/data-grid.md) component to the app you need to install the `igniteui-react-grids` package:
 
@@ -93,7 +102,7 @@ npm install igniteui-react-grids --save
 
 Then we can import the required modules of the components we want to use. Let's do this for the Grid and Column components that we will also use in the template. We also need to import one of the themes.
 
-```ts
+```typescript
 import { IgrGrid, IgrColumn } from 'igniteui-react-grids';
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css';
 ```
@@ -103,7 +112,7 @@ import 'igniteui-react-grids/grids/themes/light/bootstrap.css';
 We are now ready to use the Ignite UI for React grid component in our markup! Let's go ahead and define it:
 
 ```tsx
-// App.txs
+// App.tsx
 function App() {
   const data = [
     { name: "John", age: 30 },
@@ -142,7 +151,7 @@ npm run dev
 
 After executing this command, your project will be built and served locally on your computer. It will automatically open in your default browser and you will be able to use Ignite UI for React components in your project. The final result should show a data grid with sample data:
 
-<img src="../images/general/ig-vite-grid.png" />
+<img src="../images/general/ig-vite-grid.png" alt="Ignite UI React grid component rendered with Vite" />
 
 ## Updating Existing Apps
 
@@ -171,7 +180,26 @@ yarn add igniteui-react-spreadsheet igniteui-react-core
 
 This will automatically install packages for Ignite UI for React, along with all of their dependencies, font imports and styles references to the existing project.
 
-# Ignite UI for React Packages Overview
+## Upgrade from Trial to Licensed
+
+The Ignite UI CLI installs the trial version of Ignite UI for React by default. To upgrade from the trial package to the licensed version, run the upgrade command in your project root:
+
+```bash
+ig upgrade-packages
+```
+
+You will be prompted to log in to the Infragistics private npm registry if not already configured. For details on the license model, see [License FAQ and Installation](./general-licensing.md) and [Open Source vs Premium](./general-open-source-vs-premium.md).
+
+## AI-Assisted Development
+
+Ignite UI provides a three-part AI toolchain - **Agent Skills**, the **Ignite UI CLI MCP server**, and the **Ignite UI Theming MCP server** - that grounds AI coding assistants in correct component APIs, import paths, and design tokens. Once connected, your AI assistant can scaffold projects, add and modify components, answer documentation questions, and generate accurate Ignite UI for React code without leaving your editor.
+
+Run `ig ai-config` from your project root to copy Ignite UI for React Agent Skills and write the Ignite
+UI MCP server configuration to `.vscode/mcp.json` in a single step.
+
+For an overview of all three layers and setup instructions, see [AI-Assisted Development with Ignite UI](./ai/ai-assisted-development-overview.md). For the full CLI MCP client setup guide, see [Ignite UI CLI MCP](./ai/cli-mcp.md). For an end-to-end walkthrough using both MCP servers, see [Build an App End-to-End with CLI MCP and Theming MCP](./general-how-to-mcp-e2e.md).
+
+## Ignite UI for React Packages Overview
 
 Ignite UI for React is a comprehensive suite of UI components, design toolkits, and supporting services for React. Built to empower developers to create modern, high-performance React applications for desktop browsers, mobile experiences, and progressive web apps (PWAs), Ignite UI for React leverages the latest React best practices and APIs.
 

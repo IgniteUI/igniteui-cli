@@ -129,7 +129,7 @@ Added OthersCategoryBrush and OthersCategoryOutline to DataPieChart and Proporti
 
 In Ignite UI for Web Components, you can now annotate the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) with slice, strip, and point annotations at runtime using the new user annotations feature. This allows the end user to add more details to the plot such as calling out single important events such as company quarter reports by using the slice annotation or events that have a duration by using the strip annotation. You can also call out individual points on the plotted series by using the point annotation or any combination of these three.
 
-This is directly integrated with the available tools of the [`toolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#toolbar).
+This is directly integrated with the available tools of the [`toolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#toolbar).
 
 <img class="responsive-img" src="../images/charts/data-chart-user-annotation-create.gif"
 alt="Web Components user-annotation-create"/>
@@ -472,7 +472,7 @@ Please note that the maximum size available for the icons is 24x24. You can prov
 ### igniteui-webcomponents-grids
 
 - **All Grids**
-  - Allow applying initial filtering through [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#filteringExpressionsTree) property
+  - Allow applying initial filtering through [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#filteringExpressionsTree) property
 
 ### Bug Fixes
 
@@ -490,7 +490,7 @@ Please note that the maximum size available for the icons is 24x24. You can prov
 
 #### Toolbar
 
-- Added new `GroupHeaderTextStyle` property to [`toolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#toolbar) and [`IgcToolPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolpanelcomponent.html). If set, it will apply to all [`IgcToolActionGroupHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactiongroupheadercomponent.html) actions.
+- Added new `GroupHeaderTextStyle` property to [`toolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#toolbar) and [`IgcToolPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolpanelcomponent.html). If set, it will apply to all [`IgcToolActionGroupHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactiongroupheadercomponent.html) actions.
 - Added new property on [`IgcToolActionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html) called [`titleHorizontalAlignment`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html#titleHorizontalAlignment) which controls the horizontal alignment of the title text.
 - Added new property on [`IgcToolActionSubPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionsubpanelcomponent.html) called [`itemSpacing`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionsubpanelcomponent.html#itemSpacing) which controls the spacing between items inside the panel.
 
@@ -540,7 +540,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 - New [Proportional Category Angle Axis](charts/types/radial-chart.md) - New axes for the Radial Pie Series in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html), to plot slices similar to a pie chart, a type of data visualization where data points are represented as segments within a circular graph.
 
-- [`toolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#toolbar)
+- [`toolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#toolbar)
 
   - New ToolActionCheckboxList
         A new CheckboxList ToolAction that displays a collection of items with checkboxes for selecting. A grid inside ToolAction CheckboxList grows in height up to 5 items, then a scrollbar is displayed.
@@ -569,7 +569,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 **Breaking Changes**
 
 - **All Grids**
-  - [`IgcRowIslandComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowislandcomponent.html)
+  - [`IgcRowIsland`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowisland.html)
   - Removed `displayDensity` deprecated property.
   - Renamed `actualColumns`, `contentColumns` properties to `actualColumnList` and `contentColumnList`. Use `column` or `columnList` property to get all columns now.
   - Renamed `rowDelete` and `rowAdd` event argument type to [`IgcRowDataCancelableEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowdatacancelableeventargs.html).
@@ -582,7 +582,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
   - Removed `columnChildren` property. Use `childColumns` instead.
 - [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup)
   - Removed `children` property. Use `childColumns` instead.
-- [`IgcPaginatorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginatorcomponent.html)
+- [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)
   - Removed `isFirstPageDisabled` and `isLastPageDisabled` properties. Use `isFirstPage` and `isLastPage` instead.
 
 ## **4.8.1 (June 2024)**
@@ -599,7 +599,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 ### igniteui-webcomponents-charts
 
-- [Data Legend Grouping](charts/features/chart-data-legend.md#web-components-data-legend-grouping) & [Data Tooltip Grouping](charts/features/chart-data-tooltip.md#web-components-data-tooltip-grouping-for-data-chart) - New grouping feature added. The property `GroupRowVisible` toggles grouping with each series opting in can assign group text via the [`dataLegendGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#dataLegendGroup) property. If the same value is applied to more than one series then they will appear grouped. Useful for large datasets that need to be categorized and organized for all users.
+- [Data Legend Grouping](charts/features/chart-data-legend.md#web-components-data-legend-grouping) & [Data Tooltip Grouping](charts/features/chart-data-tooltip.md#web-components-data-tooltip-grouping-for-data-chart) - New grouping feature added. The property `GroupRowVisible` toggles grouping with each series opting in can assign group text via the [`dataLegendGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccrosshairlayercomponent.html#dataLegendGroup) property. If the same value is applied to more than one series then they will appear grouped. Useful for large datasets that need to be categorized and organized for all users.
 
 - [Chart Selection](charts/features/chart-data-selection.md) - New series selection styling. This is adopted broadly across all category, financial and radial series for [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) and [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html). Series can be clicked and shown a different color, brightened or faded, and focus outlines. Manage which items are effected through individual series or entire data item. Multiple series and markers are supported. Useful for illustrating various differences or similarities between values of a particular data item. Also  `SelectedSeriesItemsChanged` event and [`selectedSeriesItems`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#selectedSeriesItems) are available for additional help to build out robust business requirements surrounding other actions that can take place within an application such as a popup or other screen with data analysis based on the selection.
 
@@ -607,9 +607,9 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 - [Treemap Highlighting](charts/types/treemap-chart.md#web-components-treemap-highlighting) - Now exposes a [`highlightingMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#highlightingMode) property that allows you to configure the mouse-over highlighting of the items in the tree map. This property takes two options: `Brighten` where the highlight will apply to the item that you hover the mouse over only, and `FadeOthers` where the highlight of the hovered item will remain the same, but everything else will fade out. This highlight is animated, and can be controlled using the [`highlightingTransitionDuration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#highlightingTransitionDuration) property.
 
-- [Treemap Percent-based Highlighting](charts/types/treemap-chart.md#web-components-treemap-percent-based-highlighting) - New percent-based highlighting, allowing nodes to represent progress or subset of a collection. The appearance is shown as a fill-in of its backcolor up to a specific value either by a member on your data item or by supplying a new [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#highlightedDataSource). Can be toggled via [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#highlightedValuesDisplayMode) and styled via `FillBrushes`.
+- [Treemap Percent-based Highlighting](charts/types/treemap-chart.md#web-components-treemap-percent-based-highlighting) - New percent-based highlighting, allowing nodes to represent progress or subset of a collection. The appearance is shown as a fill-in of its backcolor up to a specific value either by a member on your data item or by supplying a new [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#highlightedDataSource). Can be toggled via [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#highlightedValuesDisplayMode) and styled via `FillBrushes`.
 
-- [`toolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#toolbar) - New `IsHighlighted` option for ToolAction for outlining a border around specific tools of choice.
+- [`toolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#toolbar) - New `IsHighlighted` option for ToolAction for outlining a border around specific tools of choice.
 
 ### igniteui-webcomponents-gauges
 
@@ -624,7 +624,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 ### igniteui-webcomponents-charts
 
-- New Data Filtering via the [`initialFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#initialFilter) property. Apply filter expressions to filter the chart data to a subset of records. Can be used for drill down large data.
+- New Data Filtering via the [`initialFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#initialFilter) property. Apply filter expressions to filter the chart data to a subset of records. Can be used for drill down large data.
 
 - `XamRadialChart`
   - New Label Mode
@@ -670,7 +670,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 ### igniteui-webcomponents-charts
 
-- [ValueLayer](charts/features/chart-overlays.md#web-components-value-layer) - A new series type named the [`IgcValueLayerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcvaluelayercomponent.html) is now exposed which can allow you to render an overlay for different focal points of the plotted data such as Maximum, Minimum, and Average. This is applied to the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) and [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html) by adding to the new [`valueLines`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#valueLines) collection.
+- [ValueLayer](charts/features/chart-overlays.md#web-components-value-layer) - A new series type named the [`IgcValueLayerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcvaluelayercomponent.html) is now exposed which can allow you to render an overlay for different focal points of the plotted data such as Maximum, Minimum, and Average. This is applied to the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) and [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html) by adding to the new [`valueLines`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#valueLines) collection.
 
 - It is now possible to apply a **dash array** to the different parts of the series of the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html). You can apply this to the [series](charts/types/line-chart.md#web-components-styling-line-chart) plotted in the chart, the [gridlines](charts/features/chart-axis-gridlines.md#web-components-axis-gridlines-properties) of the chart, and the [trendlines](charts/features/chart-trendlines.md#web-components-chart-trendlines-dash-array-example) of the series plotted in the chart.
 
@@ -678,7 +678,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 ### igniteui-webcomponents-grids
 
-- A new argument [`primaryKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#primaryKey) has been introduced to [`IgcRowDataEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowdataeventargs.html), and part of the event arguments that are emitted by the `RowAdded` and `RowDeleted` events. When the grid has a primary key attribute added, then the emitted primaryKey event argument represents the row ID, otherwise it defaults to undefined.
+- A new argument [`primaryKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#primaryKey) has been introduced to [`IgcRowDataEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowdataeventargs.html), and part of the event arguments that are emitted by the `RowAdded` and `RowDeleted` events. When the grid has a primary key attribute added, then the emitted primaryKey event argument represents the row ID, otherwise it defaults to undefined.
 
 - `RowSelectionChanging` event arguments are changed. Now, the `OldSelection`, `NewSelection`, `Added` and `Removed` collections no longer consist of the row keys of the selected elements when the grid has set a primaryKey, but now in any case the row data is emitted.
 
@@ -751,14 +751,14 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
   - GroupSortDescriptions
 
 > [!Note]
-> [Chart Aggregation](charts/features/chart-data-aggregations.md) will not work when using [`includedProperties`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#includedProperties) | [`excludedProperties`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#excludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
+> [Chart Aggregation](charts/features/chart-data-aggregations.md) will not work when using [`includedProperties`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#includedProperties) | [`excludedProperties`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#excludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
 
 ## **3.2.1 (June 2022)**
 
 ### igniteui-webcomponents-grids
 
 - `DataGrid`:
-  - Added New Feature - [Row Paging](grids/data-grid/row-paging.md) which is used to split a large set of data into a sequence of pages that have similar content. With pagination, data can be displayed in a set number of rows, letting users “scroll” through their data, without needing a scroll bar. The UI for table pagination usually includes things like the current page, total pages, and clickable Previous and Next arrows/buttons that let users flip through the pages of data.
+  - Added New Feature - `Row Paging` which is used to split a large set of data into a sequence of pages that have similar content. With pagination, data can be displayed in a set number of rows, letting users “scroll” through their data, without needing a scroll bar. The UI for table pagination usually includes things like the current page, total pages, and clickable Previous and Next arrows/buttons that let users flip through the pages of data.
 
 ### igniteui-webcomponents-charts
 
@@ -801,10 +801,10 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 - `DataGrid`:
   - New Features Added:
-    - [Filter Row](grids/data-grid/column-filtering.md)
-    - [Load/Save Layout Customizations](grids/data-grid/load-save-layout.md)
-    - [GroupBy Area for column grouping](grids/data-grid/row-grouping.md)
-    - [Cell Merging](grids/data-grid/cell-merging.md)
+    - `Filter Row`
+    - `Load/Save Layout Customizations`
+    - `GroupBy Area for column grouping`
+    - `Cell Merging`
   - New API:
     - Added `SelectionChanged` event. Used to detect changes on selection interactions, e.g. Multiple row selection.
   - Breaking Changes:
@@ -826,11 +826,11 @@ This release introduces a few improvements and simplifications to visual design 
 - Added crosshair annotations by default in [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html) and [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html)
 - Added final value annotation by default in [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html)
 - Added new properties in Category Chart and Financial Chart:
-  - [`crosshairsLineThickness`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#crosshairsLineThickness) and other properties for customizing crosshairs lines
-  - [`crosshairsAnnotationXAxisBackground`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#crosshairsAnnotationXAxisBackground) and other properties for customizing crosshairs annotations
-  - [`finalValueAnnotationsBackground`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#finalValueAnnotationsBackground) and other properties for customizing final value annotations
-  - [`areaFillOpacity`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#areaFillOpacity) that allow changing opacity of series fill (e.g. Area chart)
-  - [`markerThickness`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerThickness) that allows changing thickness of markers
+  - [`crosshairsLineThickness`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#crosshairsLineThickness) and other properties for customizing crosshairs lines
+  - [`crosshairsAnnotationXAxisBackground`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#crosshairsAnnotationXAxisBackground) and other properties for customizing crosshairs annotations
+  - [`finalValueAnnotationsBackground`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#finalValueAnnotationsBackground) and other properties for customizing final value annotations
+  - [`areaFillOpacity`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#areaFillOpacity) that allow changing opacity of series fill (e.g. Area chart)
+  - [`markerThickness`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#markerThickness) that allows changing thickness of markers
 - Added new properties in Category Chart, Financial Chart, Data Chart, and Geographic Map:
   - [`markerAutomaticBehavior`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#markerAutomaticBehavior) that allows which marker type is assigned to multiple series in the same chart
   - [`legendItemBadgeShape`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#legendItemBadgeShape) for setting badge shape of all series represented in a legend
@@ -856,7 +856,7 @@ This release introduces a few improvements and simplifications to visual design 
   - Added [`EditModeClickAction`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_grids.editmodeclickaction.html) property - By default double-clicking is required to enter edit mode. This can be set to [`SingleClick`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_grids.editmodeclickaction.html#SingleClick) to allow for edit mode to occur when selecting a new cell.
   - Added [`EnterKeyBehaviors`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_grids.enterkeybehaviors.html) property - aka Excel-style Navigation (Enter Behavior) – controls the behavior of the enter key, e.g. Options are (none, edit, move up, down, left, right)
   - Added [`EnterKeyBehaviorAfterEdit`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_grids.enterkeybehaviorafteredit.html) property - While in edit-mode, this property controls when enter is pressed, e.g. Options are (moves to the cell below, above, right, left)
-  - Added [`selectAllRows`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#selectAllRows) - method.
+  - Added [`selectAllRows`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#selectAllRows) - method.
   - Added Row Range Selection - With `GridSelectionMode` property set to MultipleRow the following new functionality is now included:
   - Click and drag to select rows
   - <kbd>SHIFT</kbd> and click to select multiple rows.
@@ -897,20 +897,20 @@ This release introduces several new and improved visual design and configuration
 - Changed Scatter High Density series’ colors for heat max property from <span style="color:#ee5879">#ee5879</span> to <span style="color:#ee5879">#ee5879</span>
 - Changed Financial/Waterfall series’ `NegativeBrush` and `NegativeOutline` properties from <span style="color:#C62828">#C62828</span> to <span style="color:#ee5879">#ee5879</span>
 - Changed marker's thickness to 2px from 1px
-- Changed marker's fill to match the marker's outline for [`IgcPointSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpointseriescomponent.html), [`IgcBubbleSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html), [`IgcScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcscatterseriescomponent.html), [`IgcPolarScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarscatterseriescomponent.html). You can use set [`markerFillMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerFillMode) property to Normal to undo this change
+- Changed marker's fill to match the marker's outline for [`IgcPointSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpointseriescomponent.html), [`IgcBubbleSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html), [`IgcScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcscatterseriescomponent.html), [`IgcPolarScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarscatterseriescomponent.html). You can use set [`markerFillMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#markerFillMode) property to Normal to undo this change
 - Compressed labelling for the [`IgcTimeXAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igctimexaxiscomponent.html) and [`IgcOrdinalTimeXAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcordinaltimexaxiscomponent.html)
 - New Marker Properties:
-  - series.[`markerFillMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerFillMode) - Can be set to `MatchMarkerOutline` so the marker depends on the outline
-  - series.[`markerFillOpacity`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerFillOpacity) - Can be set to a value 0 to 1
-  - series.[`markerOutlineMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerOutlineMode) - Can be set to `MatchMarkerBrush` so the marker's outline depends on the fill brush color
+  - series.[`markerFillMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#markerFillMode) - Can be set to `MatchMarkerOutline` so the marker depends on the outline
+  - series.[`markerFillOpacity`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#markerFillOpacity) - Can be set to a value 0 to 1
+  - series.[`markerOutlineMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#markerOutlineMode) - Can be set to `MatchMarkerBrush` so the marker's outline depends on the fill brush color
 - New Series Property:
-  - series.[`outlineMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#outlineMode) - Can be set to toggle the series outline visibility. Note, for Data Chart, the property is on the series
-- New chart properties that define bleed over area introduced into the viewport when the chart is at the default zoom level. A common use case is to provide space between the axes and first/last data points. Note, the [`computedPlotAreaMarginMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#computedPlotAreaMarginMode), listed below, will automatically set the margin when markers are enabled. The others are designed to specify a `Double` to represent the thickness, where PlotAreaMarginLeft etc. adjusts the space to all four sides of the chart:
-  - chart.[`plotAreaMarginLeft`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#plotAreaMarginLeft)
-  - chart.[`plotAreaMarginTop`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#plotAreaMarginTop)
-  - chart.[`plotAreaMarginRight`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#plotAreaMarginRight)
-  - chart.[`plotAreaMarginBottom`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#plotAreaMarginBottom)
-  - chart.[`computedPlotAreaMarginMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#computedPlotAreaMarginMode)
+  - series.[`outlineMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#outlineMode) - Can be set to toggle the series outline visibility. Note, for Data Chart, the property is on the series
+- New chart properties that define bleed over area introduced into the viewport when the chart is at the default zoom level. A common use case is to provide space between the axes and first/last data points. Note, the [`computedPlotAreaMarginMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#computedPlotAreaMarginMode), listed below, will automatically set the margin when markers are enabled. The others are designed to specify a `Double` to represent the thickness, where PlotAreaMarginLeft etc. adjusts the space to all four sides of the chart:
+  - chart.[`plotAreaMarginLeft`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#plotAreaMarginLeft)
+  - chart.[`plotAreaMarginTop`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#plotAreaMarginTop)
+  - chart.[`plotAreaMarginRight`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#plotAreaMarginRight)
+  - chart.[`plotAreaMarginBottom`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#plotAreaMarginBottom)
+  - chart.[`computedPlotAreaMarginMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#computedPlotAreaMarginMode)
 - New Highlighting Properties
   - chart.[`highlightingMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#highlightingMode) - Sets whether hovered or non-hovered series to fade, brighten
   - chart.[`highlightingBehavior`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#highlightingBehavior) - Sets whether the series highlights depending on mouse position e.g. directly over or nearest item
@@ -1011,7 +1011,7 @@ Import statements have been simplified to use just package names instead of full
 | <a href="https://www.npmjs.com/package/igniteui-webcomponents-gauges/v/1.0.6" target="_blank">igniteui-webcomponents-gauges</a> |  [Bullet Graph](bullet-graph.md), [Linear Gauge](linear-gauge.md), [Radial Gauge](radial-gauge.md)   |
 | <a href="https://www.npmjs.com/package/igniteui-webcomponents-charts/v/1.0.6" target="_blank">igniteui-webcomponents-charts</a>| Category Chart, Data Chart, Donut Chart, Financial Chart], Pie Chart, [Zoom Slider](zoomslider-overview.md)  |
 | <a href="https://www.npmjs.com/package/igniteui-webcomponents-core/v/1.0.6" target="_blank">igniteui-webcomponents-core</a> | all classes and enums  |
-| <a href="https://www.npmjs.com/package/igniteui-webcomponents-grids/v/1.0.6" target="_blank">igniteui-webcomponents-grids</a> | [Data Grid](grids/data-grid/overview.md) |
+| <a href="https://www.npmjs.com/package/igniteui-webcomponents-grids/v/1.0.6" target="_blank">igniteui-webcomponents-grids</a> | `Data Grid` |
 
 - Code After Changes
 

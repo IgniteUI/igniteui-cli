@@ -256,7 +256,6 @@ igc-dialog::part(content) {
 }
 ```
 
-
 ## Blazor Displaying Imagery from Azure Maps - Code Example
 
 The following code snippet shows how to display geographic imagery tiles from Azure Maps in Blazor [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html) using [`IgbAzureMapsImagery`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAzureMapsImagery.html) class.

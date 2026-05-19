@@ -216,7 +216,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SpreadsheetAdapterForCharts/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Chart Adapter Overview

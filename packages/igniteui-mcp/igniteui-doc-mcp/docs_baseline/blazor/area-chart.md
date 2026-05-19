@@ -109,7 +109,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Area Chart Recommendations
@@ -223,7 +222,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Area Chart with Multiple Series
@@ -321,7 +319,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -425,7 +422,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -531,7 +527,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -680,7 +675,6 @@ public class TemperatureRangeData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -862,7 +856,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100% Area Chart
@@ -1039,7 +1032,6 @@ public class ContinentsBirthRate
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1221,7 +1213,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100% Spline Area Chart
@@ -1398,7 +1389,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Radial Area Chart
@@ -1546,7 +1536,6 @@ public class FootballPlayerStats
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1701,7 +1690,6 @@ public class BoatSailingData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Polar Spline Area Chart
@@ -1837,7 +1825,6 @@ public class BoatSailingData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

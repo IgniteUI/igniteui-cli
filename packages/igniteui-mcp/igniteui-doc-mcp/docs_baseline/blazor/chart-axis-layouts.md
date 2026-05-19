@@ -17,9 +17,9 @@ All Ignite UI for Blazor charts include options to configure many axis layout op
 
 ## Axis Locations Example
 
-For all axes, you can specify axis location in relationship to chart plot area. The [`XAxisLabelLocation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_XAxisLabelLocation) property of the Blazor charts, allows you to position x-axis line and its labels on above or below plot area. Similarly, you can use the [`YAxisLabelLocation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_YAxisLabelLocation) property to position y-axis on left side or right side of plot area.
+For all axes, you can specify axis location in relationship to chart plot area. The [`XAxisLabelLocation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisLabelLocation) property of the Blazor charts, allows you to position x-axis line and its labels on above or below plot area. Similarly, you can use the [`YAxisLabelLocation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisLabelLocation) property to position y-axis on left side or right side of plot area.
 
-The following example depicts the amount of renewable electricity produced since 2009, represented by a [Line Chart](../types/line-chart.md). There is a drop-down that lets you configure the [`YAxisLabelLocation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_YAxisLabelLocation) so that you can visualize what the axes look like when the labels are placed on the left or right side on the inside or outside of the chart's plot area.
+The following example depicts the amount of renewable electricity produced since 2009, represented by a [Line Chart](../types/line-chart.md). There is a drop-down that lets you configure the [`YAxisLabelLocation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisLabelLocation) so that you can visualize what the axes look like when the labels are placed on the left or right side on the inside or outside of the chart's plot area.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -136,7 +136,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <!-- ## Axis Orientation Example
 
 TODO add info/example of 4 charts with all possible combinations of XAxisInverted and YAxisInverted
@@ -207,7 +206,6 @@ The following example depicts a stock price and trade volume chart with a [Stock
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -296,7 +294,6 @@ The following example shows a Sin and Cos wave represented by a [Scatter Spline 
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -405,7 +402,6 @@ The following example demonstrates how to style the data chart using the [`IgbTi
 }
 ```
 
-
 ## Additional Resources
 
 You can find more information about related chart features in these topics:
@@ -422,14 +418,14 @@ d in the above sections:
 | ------------------------------------------------------ | ------------------------------- |
 | [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html) ➔ [`CrossingAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAxis.html#IgniteUI_Blazor_Controls_IgbAxis_CrossingAxis)             | None                            |
 | [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html) ➔ [`CrossingValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAxis.html#IgniteUI_Blazor_Controls_IgbAxis_CrossingValue)            | None                            |
-| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html) ➔ [`IsInverted`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAxis.html#IgniteUI_Blazor_Controls_IgbAxis_IsInverted)               | [`XAxisInverted`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_XAxisInverted)                 |
-| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html) ➔ [`IsInverted`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAxis.html#IgniteUI_Blazor_Controls_IgbAxis_IsInverted)               | [`YAxisInverted`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_YAxisInverted)                 |
-| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html) ➔ `LabelLocation`            | [`YAxisLabelLocation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_YAxisLabelLocation)            |
-| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html) ➔ `LabelLocation`            | [`XAxisLabelLocation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_XAxisLabelLocation)            |
-| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html) ➔ `LabelHorizontalAlignment` | [`YAxisLabelHorizontalAlignment`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_YAxisLabelHorizontalAlignment) |
-| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html) ➔ `LabelVerticalAlignment`   | [`XAxisLabelVerticalAlignment`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_XAxisLabelVerticalAlignment)   |
-| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html) ➔ `LabelVisibility`          | [`YAxisLabelVisibility`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_YAxisLabelVisibility)          |
-| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html) ➔ `LabelVisibility`          | [`XAxisLabelVisibility`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbXYChart.html#IgniteUI_Blazor_Controls_IgbXYChart_XAxisLabelVisibility)          |
+| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html) ➔ [`IsInverted`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAxis.html#IgniteUI_Blazor_Controls_IgbAxis_IsInverted)               | [`XAxisInverted`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisInverted)                 |
+| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html) ➔ [`IsInverted`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAxis.html#IgniteUI_Blazor_Controls_IgbAxis_IsInverted)               | [`YAxisInverted`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisInverted)                 |
+| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html) ➔ `LabelLocation`            | [`YAxisLabelLocation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisLabelLocation)            |
+| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html) ➔ `LabelLocation`            | [`XAxisLabelLocation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisLabelLocation)            |
+| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html) ➔ `LabelHorizontalAlignment` | [`YAxisLabelHorizontalAlignment`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisLabelHorizontalAlignment) |
+| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html) ➔ `LabelVerticalAlignment`   | [`XAxisLabelVerticalAlignment`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisLabelVerticalAlignment)   |
+| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html) ➔ `LabelVisibility`          | [`YAxisLabelVisibility`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisLabelVisibility)          |
+| [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) ➔ [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html) ➔ `LabelVisibility`          | [`XAxisLabelVisibility`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisLabelVisibility)          |
 
 <!-- TODO correct links in Transformer -->
 

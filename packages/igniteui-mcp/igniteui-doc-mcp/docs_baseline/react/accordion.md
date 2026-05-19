@@ -110,7 +110,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<AccordionOverview />);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Getting Started with React Accordion
@@ -435,7 +434,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<AccordionCustomization />);
 ```
 
-
 <div class="divider--half"></div>
 
 ### Nested React Accordions Scenario
@@ -565,7 +563,6 @@ export default function AccordionNestedScenario() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<AccordionNestedScenario />);
 ```
-
 
 <div class="divider--half"></div>
 

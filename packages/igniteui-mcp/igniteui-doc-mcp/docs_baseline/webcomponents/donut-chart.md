@@ -49,7 +49,6 @@ export class EnergyGlobalDemand extends Array<EnergyGlobalDemandItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Donut Chart Recommendations
@@ -101,7 +100,6 @@ The Web Components Donut Chart has the ability to select slices on click. Option
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -165,7 +163,6 @@ export class CalendarSeasons extends Array<CalendarSeasonsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

@@ -45,7 +45,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App/>);
 ```
 
-
 ## Getting Started with React Date Picker
 
 First, you need to install the Ignite UI for React by running the following command:
@@ -178,7 +177,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App/>);
 ```
 
-
 ### Display and input format
 
 [`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#inputFormat) and [`displayFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#displayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#inputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
@@ -213,7 +211,6 @@ export default function App() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App/>);
 ```
-
 
 ### Increment and decrement
 
@@ -304,7 +301,6 @@ export default function App() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 ```
-
 
 ### Calendar Specific settings
 
@@ -412,7 +408,6 @@ export default function App() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App/>);
 ```
-
 
 ## API References
 

@@ -52,7 +52,6 @@ You can create Stock Chart using the [`IgbFinancialChart`](https://www.infragist
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Stock Chart Recommendations
@@ -131,7 +130,6 @@ As a Stock Chart is meant to allow the user to perform data analysis functions, 
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stock Chart
@@ -178,7 +176,6 @@ In this example the Stock Chart is representing the S\&P 500 over the course of 
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stock Chart Styling
@@ -222,7 +219,6 @@ If you need a Stock Chart with more features such as composite other series, you
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -444,7 +440,6 @@ Note: When using the ordinal X axis mode, the CalloutsXMemberPath should point t
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Chart Panes
@@ -522,7 +517,6 @@ In this example, the stock chart is plotting revenue for United States.
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

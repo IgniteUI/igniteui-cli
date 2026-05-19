@@ -202,7 +202,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 ### Category Y-Axis
 
 The [`IgbCategoryYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryYAxis.html) works very similarly to the [`IgbCategoryXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryXAxis.html) described above, but it is placed vertically rather than horizontally. Also, this axis requires you to provide a `DataSource` and a `Label` in order to plot data with it. The [`IgbCategoryYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryYAxis.html) is generally used with the [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html) to plot the following type of series:
@@ -360,7 +359,6 @@ public class HighestGrossingMovies
 }
 ```
 
-
 ### Numeric X-Axis
 
 The [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html) treats its data as continuously varying numerical data items. Labels on this axis are placed horizontally along the X-Axis. The location of the [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html) labels depends on the `XMemberPath` property of the various [Scatter Series](../types/scatter-chart.md) that it supports if combined with a [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html). Alternatively, if combined with the [`IgbCategoryXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryXAxis.html), these labels will be placed corresponding to the `ValueMemberPath` of the [`IgbBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBarSeries.html), [`IgbStackedBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedBarSeries.html), and [`IgbStacked100BarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100BarSeries.html).
@@ -438,7 +436,6 @@ The following example demonstrates usage of the [`IgbNumericXAxis`](https://www.
     }
 }
 ```
-
 
 ### Numeric Y-Axis
 
@@ -630,7 +627,6 @@ public class HealthDataForGermany
 }
 ```
 
-
 ### Time X Axis
 
 The [`IgbTimeXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeXAxis.html) treats its data as a sequence of data items, sorted by date. Labels on this axis type are dates and can be formatted and arranged according to date intervals. The date range of this axis is determined by the date values in a data column that is mapped using its `DateTimeMemberPath`. This, along with a `DataSource` is required to plot data with this axis type.
@@ -649,7 +645,7 @@ The [`Format`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.
 
 #### Intervals in Time X Axis
 
-The [`IgbTimeXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeXAxis.html) replaces the conventional [`Interval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericAxisBase.html#IgniteUI_Blazor_Controls_IgbNumericAxisBase_Interval) property of the category and numeric axes with an [`Intervals`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeXAxis.html#IgniteUI_Blazor_Controls_IgbTimeXAxis_Intervals) collection of type [`IgbTimeAxisInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html). Each [`IgbTimeAxisInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html) added to the collection is responsible for assigning a unique [`Interval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html#IgniteUI_Blazor_Controls_IgbTimeAxisInterval_Interval), [`Range`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html#IgniteUI_Blazor_Controls_IgbTimeAxisInterval_Range) and [`IntervalType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html#IgniteUI_Blazor_Controls_IgbTimeAxisInterval_IntervalType). This can be especially useful for drilling down data from years to milliseconds to provide unique spacing between labels depending on the range of time shown by the chart. A description of these properties is below:
+The [`IgbTimeXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeXAxis.html) replaces the conventional [`Interval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html#IgniteUI_Blazor_Controls_IgbNumericYAxis_Interval) property of the category and numeric axes with an [`Intervals`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeXAxis.html#IgniteUI_Blazor_Controls_IgbTimeXAxis_Intervals) collection of type [`IgbTimeAxisInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html). Each [`IgbTimeAxisInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html) added to the collection is responsible for assigning a unique [`Interval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html#IgniteUI_Blazor_Controls_IgbTimeAxisInterval_Interval), [`Range`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html#IgniteUI_Blazor_Controls_IgbTimeAxisInterval_Range) and [`IntervalType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html#IgniteUI_Blazor_Controls_IgbTimeAxisInterval_IntervalType). This can be especially useful for drilling down data from years to milliseconds to provide unique spacing between labels depending on the range of time shown by the chart. A description of these properties is below:
 
 - [`Interval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html#IgniteUI_Blazor_Controls_IgbTimeAxisInterval_Interval): This specifies the interval to use. This is tied to the [`IntervalType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html#IgniteUI_Blazor_Controls_IgbTimeAxisInterval_IntervalType) property. For example, if the [`IntervalType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html#IgniteUI_Blazor_Controls_IgbTimeAxisInterval_IntervalType) is set to `Days`, then the numeric value specified in [`Interval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html#IgniteUI_Blazor_Controls_IgbTimeAxisInterval_Interval) will be in days.
 - [`Range`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTimeAxisInterval.html#IgniteUI_Blazor_Controls_IgbTimeAxisInterval_Range): This specifies the visible range at which the axis interval will switch to a different interval. For example, if you have two TimeAxisInterval with a range set to 10 days and another set to 5 hours, as soon as the visible range in the axis becomes less than 10 days it will switch to the interval whose range is 5 hours.
@@ -809,7 +805,6 @@ public class FootballPlayerStats
 }
 ```
 
-
 ### Proportional Category Angle Axis
 
 The [`IgbProportionalCategoryAngleAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbProportionalCategoryAngleAxis.html) treats its data as a sequence of category data items. The labels on this axis are placed along the edge of a circle according to their position in that sequence. This type of axis can display almost any type of data including strings and numbers.
@@ -817,7 +812,6 @@ The [`IgbProportionalCategoryAngleAxis`](https://www.infragistics.com/blazor/doc
 The [`IgbProportionalCategoryAngleAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbProportionalCategoryAngleAxis.html) is generally used with the [`IgbNumericRadiusAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericRadiusAxis.html) to plot a pie chart eg. [Radial Series](../types/radial-chart.md).
 
 The following example demonstrates usage of the [`IgbProportionalCategoryAngleAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbProportionalCategoryAngleAxis.html) type:
-
 
 
 
@@ -954,7 +948,6 @@ public class BoatSailingData
     }
 }
 ```
-
 
 ### Numeric Radius Axis
 
@@ -1108,7 +1101,6 @@ public class BoatSailingData
     }
 }
 ```
-
 
 ## Additional Resources
 

@@ -38,7 +38,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SwitchOverview/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -77,7 +76,7 @@ To provide a meaningful label for the switch, simply place some text between the
 <IgrSwitch><span>Label</span></IgrSwitch>
 ```
 
-You can specify if the label should be positioned before or after the switch toggle by setting the [`labelPosition`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#labelPosition) attribute of the switch. Allowed values are `before` and `after`(default):
+You can specify if the label should be positioned before or after the switch toggle by setting the [`labelPosition`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html#labelPosition) attribute of the switch. Allowed values are `before` and `after`(default):
 
 ```tsx
 <IgrSwitch aria-labelledby="switchLabel" labelPosition="before" ><span id="switch-label">Label</span></IgrSwitch>
@@ -126,7 +125,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SwitchLabel/>);
 ```
 
-
 ### Checked
 
 You can use the `checked` attribute to toggle on the switch.
@@ -159,7 +157,6 @@ export default function SwitchOutlined() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SwitchOutlined/>);
 ```
-
 
 ### Required
 
@@ -205,7 +202,6 @@ export default function SwitchDisabled() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SwitchDisabled/>);
 ```
-
 
 ### Forms
 
@@ -269,12 +265,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SwitchStyling/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## API References
 
-- [`labelPosition`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#labelPosition)
+- [`labelPosition`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html#labelPosition)
 - [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html)
 - [`Styling & Themes`](../themes/overview.md)
 

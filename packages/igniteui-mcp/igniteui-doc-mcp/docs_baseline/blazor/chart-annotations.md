@@ -132,7 +132,6 @@ The following example demonstrates the annotation layers that are available on t
 }
 ```
 
-
 <div class="divider--half"></div>
 
 Like this sample? Get access to our complete Blazor toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-blazor/download">Download it for free.</a>
@@ -151,7 +150,7 @@ The chart's crosshairs can also be configured to snap to data points by setting 
 
 You can configure the crosshair layer so that the layer will only display on one specific series, as by default they will target all series in the chart control. To achieve this, set the [`TargetSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCrosshairLayer.html#IgniteUI_Blazor_Controls_IgbCrosshairLayer_TargetSeries) property.
 
-By default, the color of the crosshair lines is a lighter color than the series that it is interacting with. However, this default setting can be overridden so that you can select a color that will be used for the crosshair lines. This is done by setting the [`Brush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_Brush) property of the Crosshair Layer.
+By default, the color of the crosshair lines is a lighter color than the series that it is interacting with. However, this default setting can be overridden so that you can select a color that will be used for the crosshair lines. This is done by setting the [`Brush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCrosshairLayer.html#IgniteUI_Blazor_Controls_IgbCrosshairLayer_Brush) property of the Crosshair Layer.
 
 The following example shows how to configure the crosshair layer but targeting a single series, setting the type to vertical and styling the brush color.
 
@@ -181,7 +180,6 @@ The following example shows how to configure the crosshair layer but targeting a
 
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -225,7 +223,6 @@ The following example demonstrates how to style the final value layer annotation
 
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -362,7 +359,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ### Timeline Styling
@@ -469,7 +465,6 @@ The following example demonstrates how to style the data chart as a timeline wit
 
 }
 ```
-
 
 ## API References
 

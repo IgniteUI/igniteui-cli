@@ -12,7 +12,7 @@ _premium: true
 
 # Web Components Tree Grid Pagination Overview
 
-The Ignite UI for Web Components Pagination feature in Web Components Tree Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) pagination is configurable via a separate component projected in the grid tree by defining a [`IgcPaginatorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginatorcomponent.html)  tag, similar to adding of a column. As in any Web Components table, the pagination in the Web Components Tree Grid supports template for custom pages.
+The Ignite UI for Web Components Pagination feature in Web Components Tree Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) pagination is configurable via a separate component projected in the grid tree by defining a [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)  tag, similar to adding of a column. As in any Web Components table, the pagination in the Web Components Tree Grid supports template for custom pages.
 
 ## Web Components Tree Grid Pagination Example
 
@@ -56,7 +56,6 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ```css
 .gridSize {
     --ig-size: var(--ig-size-small);
@@ -72,7 +71,7 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 
 ## Usage
 
-The [`IgcPaginatorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginatorcomponent.html) component is used along with the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) component in the example below, but you can use it with any other component in case paging functionality is needed.
+The [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html) component is used along with the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) component in the example below, but you can use it with any other component in case paging functionality is needed.
 
 ```html
 <igc-tree-grid id="grid" className="gridSize">
@@ -139,13 +138,12 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
     }
 ```
 
-
 <div class="divider--half"></div>
 
 ## API References
 
 - [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)
-- [`IgcPaginatorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginatorcomponent.html)
+- [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)
 
 ## Additional Resources
 

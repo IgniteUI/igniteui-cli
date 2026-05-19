@@ -26,7 +26,6 @@ The Blazor Checkbox is a component that lets you add checkboxes to your Blazor a
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -108,10 +107,9 @@ The checkbox can also be labelled by elements external to the checkbox. In this 
 }
 ```
 
-
 ### Checked
 
-You can use the [`Checked`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckboxBase.html#IgniteUI_Blazor_Controls_IgbCheckboxBase_Checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
+You can use the [`Checked`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html#IgniteUI_Blazor_Controls_IgbCheckbox_Checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
 
 ```razor
 <IgbCheckbox Checked="true" />
@@ -129,7 +127,6 @@ You can use the [`Checked`](https://www.infragistics.com/blazor/docs/api/api/Ign
 
 }
 ```
-
 
 ### Indeterminate
 
@@ -153,10 +150,9 @@ You can use the [`Indeterminate`](https://www.infragistics.com/blazor/docs/api/a
 }
 ```
 
-
 ### Required
 
-You can use the [`Required`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckboxBase.html#IgniteUI_Blazor_Controls_IgbCheckboxBase_Required) property to mark the checkbox as required.
+You can use the [`Required`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html#IgniteUI_Blazor_Controls_IgbCheckbox_Required) property to mark the checkbox as required.
 
 ```razor
 <IgbCheckbox Required="true" />
@@ -164,7 +160,7 @@ You can use the [`Required`](https://www.infragistics.com/blazor/docs/api/api/Ig
 
 ### Invalid
 
-You can use the [`Invalid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckboxBase.html#IgniteUI_Blazor_Controls_IgbCheckboxBase_Invalid) attribute to mark the checkbox as invalid.
+You can use the [`Invalid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html#IgniteUI_Blazor_Controls_IgbCheckbox_Invalid) attribute to mark the checkbox as invalid.
 
 ```razor
 <IgbCheckbox Invalid="true" />
@@ -172,7 +168,7 @@ You can use the [`Invalid`](https://www.infragistics.com/blazor/docs/api/api/Ign
 
 ### Disabled
 
-You can use the [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckboxBase.html#IgniteUI_Blazor_Controls_IgbCheckboxBase_Disabled) attribute to disable the checkbox.
+You can use the [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html#IgniteUI_Blazor_Controls_IgbCheckbox_Disabled) attribute to disable the checkbox.
 
 ```razor
 <IgbCheckbox Disabled="true" />
@@ -191,10 +187,9 @@ You can use the [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/Ig
 }
 ```
 
-
 ### Forms
 
-You can use the `Name` and [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckboxBase.html#IgniteUI_Blazor_Controls_IgbCheckboxBase_Value) attributes when using the checkbox with `Form`.
+You can use the `Name` and [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html#IgniteUI_Blazor_Controls_IgbCheckbox_Value) attributes when using the checkbox with `Form`.
 
 ```razor
 <IgbCheckbox Name="wifi" Value="enabled" />
@@ -236,12 +231,11 @@ igc-checkbox::part(control checked)::after {
 }
 ```
 
-
 ## API References
 
 - [`IgbCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html)
-- [`Checked`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckboxBase.html#IgniteUI_Blazor_Controls_IgbCheckboxBase_Checked)
-- [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckboxBase.html#IgniteUI_Blazor_Controls_IgbCheckboxBase_Disabled)
+- [`Checked`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html#IgniteUI_Blazor_Controls_IgbCheckbox_Checked)
+- [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html#IgniteUI_Blazor_Controls_IgbCheckbox_Disabled)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

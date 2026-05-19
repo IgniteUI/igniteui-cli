@@ -132,7 +132,6 @@ public class EmployeesNestedTreeData
 }
 ```
 
-
 ## Cell Editing
 
 ### Editing through UI
@@ -353,7 +352,6 @@ public class RoleplayTreeGridData
 }
 ```
 
-
 ## CRUD operations
 
 > [!Note]
@@ -398,7 +396,7 @@ Updating data in the Tree Grid is achieved through `UpdateRow` and `UpdateCell` 
 
 ### Deleting data from the Tree Grid
 
-Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey) is defined.
+Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_PrimaryKey) is defined.
 
 ```razor
 @code {
@@ -445,7 +443,7 @@ igRegisterScript("HandleCellEdit", (ev) => {
 }, false);
 ```
 
-If the value entered in a cell under the **Age** column is below 18 or the value in the **HireDate** column is in the future, the editing will be cancelled and the user will be alerted to the cancellation.
+<!-- Blazor -->
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -546,7 +544,6 @@ public class EmployeesNestedTreeData
     }
 }
 ```
-
 
 ## Styling
 
@@ -678,13 +675,9 @@ public class EmployeesNestedTreeData
 }
 ```
 
-
 ## API References
 
 - [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
-
-<!---->
-
 - [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html)
 
 ## Additional Resources

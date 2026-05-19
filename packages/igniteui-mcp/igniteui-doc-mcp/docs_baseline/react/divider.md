@@ -44,7 +44,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DividerOverview />);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies
@@ -141,7 +140,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DividerVertical />);
 ```
 
-
 ### Type
 
 The [`type`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html#type) attribute determines whether to render a `solid` or a `dashed` divider line. The default value is `solid`.
@@ -182,7 +180,6 @@ export default class DividerDashed extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DividerDashed/>);
 ```
-
 
 ### Inset Divider
 
@@ -273,7 +270,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DividerMiddle />);
 ```
 
-
 ### Using Divider Inside Select Component
 
 The following sample illustrates how the [`IgrDivider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html) can be integrated within the [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) in order to distinguish two groups of items.
@@ -330,7 +326,6 @@ export default class DividerSelect extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DividerSelect />);
 ```
-
 
 ## CSS Variables
 

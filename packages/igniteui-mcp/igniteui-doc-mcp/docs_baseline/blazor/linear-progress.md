@@ -27,7 +27,6 @@ The Ignite UI for Blazor Linear Progress Indicator component provides a visual i
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -54,7 +53,7 @@ The simplest way to start using the [`IgbLinearProgress`](https://www.infragisti
 
 ### Progress Types
 
-You can set the type of your indicator, using  the [`Variant`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbProgressBase.html#IgniteUI_Blazor_Controls_IgbProgressBase_Variant) attribute. There are five types of linear progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
+You can set the type of your indicator, using  the [`Variant`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_Variant) attribute. There are five types of linear progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
 
 ```razor
 <IgbLinearProgress Value=100 Variant=@ProgressBaseVariant.Success />
@@ -86,16 +85,15 @@ You can make the indicator striped, using the [`Striped`](https://www.infragisti
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ### Indeterminate Progress
 
-If you want to track a process that is not determined precisely, you can set the [`Indeterminate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbProgressBase.html#IgniteUI_Blazor_Controls_IgbProgressBase_Indeterminate) property.
+If you want to track a process that is not determined precisely, you can set the [`Indeterminate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_Indeterminate) property.
 
 ### Animation Duration
 
-The [`AnimationDuration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbProgressBase.html#IgniteUI_Blazor_Controls_IgbProgressBase_AnimationDuration) property is used to specify how long the animation cycle should take. It takes as value a number which represents the animation duration in milliseconds.
+The [`AnimationDuration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_AnimationDuration) property is used to specify how long the animation cycle should take. It takes as value a number which represents the animation duration in milliseconds.
 
 ```razor
 <IgbLinearProgress AnimationDuration=5000 Indeterminate=true />
@@ -105,9 +103,9 @@ The [`AnimationDuration`](https://www.infragistics.com/blazor/docs/api/api/Ignit
 
 You can align the default value, using the [`LabelAlign`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_LabelAlign) property. Permitted values are **top**, **bottom**, **top-start**, **top-end**, **bottom-start** and **bottom-end**.
 
-To hide the default label of the progress indicator, use the [`HideLabel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbProgressBase.html#IgniteUI_Blazor_Controls_IgbProgressBase_HideLabel) attribute.
+To hide the default label of the progress indicator, use the [`HideLabel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_HideLabel) attribute.
 
-The [`LabelFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbProgressBase.html#IgniteUI_Blazor_Controls_IgbProgressBase_LabelFormat) property can be used to customize the [`IgbLinearProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html) default label.
+The [`LabelFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_LabelFormat) property can be used to customize the [`IgbLinearProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html) default label.
 
 The following sample demonstrates the above configuration:
 
@@ -140,7 +138,6 @@ The following sample demonstrates the above configuration:
 
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -201,7 +198,6 @@ You can dynamically change the value of the progress indicator by using external
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Styling
@@ -250,7 +246,6 @@ Using this CSS parts we have almost full control of the Linear Progress styling.
 
 }
 ```
-
 
 ```css
 igc-linear-progress::part(track){

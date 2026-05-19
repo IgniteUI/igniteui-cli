@@ -92,7 +92,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<CarouselOverview />);
 ```
 
-
 ## Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -377,7 +376,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<CarouselComponents />);
 ```
 
-
 ## Animations
 
 Animated slide transitions provide the end-users a nice experience when interacting with the carousel.
@@ -622,7 +620,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<CarouselComponents />);
 ```
 
-
 ## Navigation
 
 Transition and navigation are the most important carousel features.
@@ -833,7 +830,6 @@ export default function CarouselThumbnail() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<CarouselThumbnail />);
 ```
-
 
 ## Accessibility
 

@@ -225,7 +225,6 @@ The following example, you can use the drop-down to switch between all of the di
 }
 ```
 
-
 <div class="divider--half"></div>
 
 The following sections demonstrate individual types of Ignite UI for Blazor Stacked Charts.
@@ -410,7 +409,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100 Area Chart
@@ -590,7 +588,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked Bar Chart
@@ -762,7 +759,6 @@ public class EnergyRenewableConsumption
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100% Bar Chart
@@ -930,7 +926,6 @@ public class EnergyRenewableConsumption
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1112,7 +1107,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100% Column Chart
@@ -1268,7 +1262,6 @@ public class OnlineTrafficByDevice
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1450,7 +1443,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100% Line Chart
@@ -1628,7 +1620,6 @@ public class ContinentsBirthRate
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1812,7 +1803,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100% Spline Area Chart
@@ -1990,7 +1980,6 @@ public class ContinentsBirthRate
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -2172,7 +2161,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100% Spline Chart
@@ -2349,7 +2337,6 @@ public class ContinentsBirthRate
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

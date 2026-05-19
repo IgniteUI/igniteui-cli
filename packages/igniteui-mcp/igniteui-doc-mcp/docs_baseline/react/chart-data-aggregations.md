@@ -227,7 +227,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ```tsx
  <IgrCategoryChart
     dataSource={this.state.salesData}

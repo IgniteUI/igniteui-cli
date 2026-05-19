@@ -38,3 +38,6 @@
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/blazor/api-docs"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/blazor/api-docs
 	url = https://github.com/IgniteUI/api-docs
+[submodule "packages/igniteui-mcp/igniteui-doc-mcp/blazor/igniteui-blazor"]
+	path = packages/igniteui-mcp/igniteui-doc-mcp/blazor/igniteui-blazor
+	url = https://github.com/IgniteUI/igniteui-blazor.git

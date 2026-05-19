@@ -1,17 +1,19 @@
 ---
 title: Getting Started | Ignite UI for Blazor | Infragistics
-_description: Use Infragistics' Blazor components to create apps and improve data visualization with the world’s fastest, virtualized, real-time Blazor data grid and streaming financial and business and financial charts.
+_description: Install Ignite UI for Blazor and render your first component. Covers CLI scaffolding, manual package setup, and AI tooling with Agent Skills and MCP servers.
 _keywords: Ignite UI for Blazor, Infragistics, Getting Started
-_language: en
-mentionedTypes: ["XamBulletGraph", "IgrGrid"]
+last_updated: "2025-04-06"
+mentionedTypes: []
 _tocName: Blazor Server App
 ---
 
-## Getting Started With Ignite UI for Blazor
+<!-- schema: Article, HowTo -->
+
+# Getting Started With Ignite UI for Blazor
 
 This topic provides step-by-step instructions for creating Blazor Server applications with Ignite UI for Blazor using Visual Studio.
 
-### Create a New Blazor Server Project
+## Create a New Blazor Server Project
 
 The steps below describe how to create a new Blazor Server project. If you want to add Ignite UI for Blazor to an existing application, go to the [**Install Ignite UI for Blazor Package**](#install-ignite-ui-for-blazor) section.
 
@@ -27,7 +29,7 @@ Specify additional project options, and click **Create**
 
 <img src="../images/general/new-blazor-project-info-server.jpg" alt="new-blazor-info-server" />
 
-### Install Ignite UI for Blazor
+## Install Ignite UI for Blazor
 
 Ignite UI for Blazor is delivered via NuGet packages. To use the Ignite UI for Blazor components in your Blazor applications, you must first install the appropriate NuGet packages.
 
@@ -35,9 +37,9 @@ In Visual Studio, open the NuGet package manager by selecting **Tools** → **Nu
 
 For more information on installing Ignite UI for Blazor using NuGet, read the [Installing Ignite UI for Blazor](general-installing-blazor.md) topic.
 
-### Register Ignite UI for Blazor
+## Register Ignite UI for Blazor
 
-#### .NET 6 and Later Applications
+### .NET 6 and Later Applications
 
 1 - Open the **Program.cs** file and register the Ignite UI for Blazor Service by calling **builder.Services.AddIgniteUIBlazor** function:
 
@@ -74,7 +76,7 @@ var app = builder.Build();
 <script src="_framework/blazor.server.js"></script>
 ```
 
-#### .NET 5 Applications
+### .NET 5 Applications
 
 1 - Open the **Startup.cs** file and register the Ignite UI for Blazor Service by calling **services.AddIgniteUIBlazor()**:
 
@@ -107,7 +109,7 @@ public void ConfigureServices(IServiceCollection services)
 <script src="_framework/blazor.server.js"></script>
 ```
 
-### Add Ignite UI for Blazor Component
+## Add Ignite UI for Blazor Component
 
 Add an Ignite UI for Blazor component to your razor page:
 

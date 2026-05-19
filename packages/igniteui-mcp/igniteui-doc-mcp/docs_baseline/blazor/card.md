@@ -85,7 +85,6 @@ The Ignite UI for Blazor Card displays text, images, icons, and buttons in a vis
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -267,7 +266,6 @@ If everything went well, our card should look like this:
 }
 ```
 
-
 ### Alternative layouts
 
 You can get even more creative with the layout of the [`IgbCard`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCard.html).
@@ -347,7 +345,6 @@ Below is an example showing how you can create a semi-horizontal card, where we 
 
 }
 ```
-
 
 ### Card Actions
 
@@ -491,7 +488,6 @@ igc-icon-button::part(base) {
     }
 }
 ```
-
 
 ### Summary
 

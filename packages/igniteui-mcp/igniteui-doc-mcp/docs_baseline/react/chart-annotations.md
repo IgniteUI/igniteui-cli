@@ -148,7 +148,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartLineChartWithAnnotations/>);
 ```
 
-
 <div class="divider--half"></div>
 
 Like this sample? Get access to our complete React toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-react/download">Download it for free.</a>
@@ -167,7 +166,7 @@ The chart's crosshairs can also be configured to snap to data points by setting 
 
 You can configure the crosshair layer so that the layer will only display on one specific series, as by default they will target all series in the chart control. To achieve this, set the [`targetSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcrosshairlayer.html#targetSeries) property.
 
-By default, the color of the crosshair lines is a lighter color than the series that it is interacting with. However, this default setting can be overridden so that you can select a color that will be used for the crosshair lines. This is done by setting the [`brush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrseries.html#brush) property of the Crosshair Layer.
+By default, the color of the crosshair lines is a lighter color than the series that it is interacting with. However, this default setting can be overridden so that you can select a color that will be used for the crosshair lines. This is done by setting the [`brush`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcrosshairlayer.html#brush) property of the Crosshair Layer.
 
 The following example shows how to configure the crosshair layer but targeting a single series, setting the type to vertical and styling the brush color.
 
@@ -264,7 +263,6 @@ export default class DataChartCrosshairLayerStyling extends React.Component<any,
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartCrosshairLayerStyling/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -379,7 +377,6 @@ export default class DataChartFinalValueLayerStyling extends React.Component<any
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartFinalValueLayerStyling/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -540,7 +537,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <div class="divider--half"></div>
 

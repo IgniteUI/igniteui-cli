@@ -696,7 +696,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapShapeStyling/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Required Imports

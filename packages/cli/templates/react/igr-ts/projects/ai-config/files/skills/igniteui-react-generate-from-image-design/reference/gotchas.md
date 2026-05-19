@@ -1,0 +1,200 @@
+# Ignite UI React Gotchas & Pitfalls
+
+## Table of Contents
+- [React Wrappers & CSS Selectors](#react-wrappers--css-selectors)
+- [Chart Properties](#chart-properties)
+- [Component Properties](#component-properties)
+- [Theming Pitfalls](#theming-pitfalls)
+- [Map Component](#map-component)
+- [Dark Theme Specifics](#dark-theme-specifics)
+
+## React Wrappers & CSS Selectors
+
+### Use JSX props and children
+Pass dynamic values as JSX expressions and use children with `slot` attributes for named regions:
+
+```tsx
+<IgrCard>
+  <IgrCardHeader>
+    <h3 slot="title">{'<resolved-card-title>'}</h3>
+    <p slot="subtitle">{'<resolved-card-subtitle>'}</p>
+  </IgrCardHeader>
+  <IgrCardContent>{'<resolved-card-content>'}</IgrCardContent>
+</IgrCard>
+```
+
+### CSS selectors must target rendered `igc-*` tags
+When applying CSS custom properties, `::part()` selectors, or MCP-generated component theme blocks, target the underlying web component selectors:
+
+```css
+.dashboard-panel igc-card::part(header) {
+  padding: <resolved-header-padding>;
+}
+```
+
+Do not write selectors against React wrapper names.
+
+## Chart Properties
+
+### Charts, gauges, and maps require module registration
+The React wrappers for charts, gauges, and maps must register their modules once at module level before use:
+
+```tsx
+import { IgrCategoryChartModule } from 'igniteui-react-charts';
+
+IgrCategoryChartModule.register();
+```
+
+`IgrGridLite` does **not** require registration.
+
+### Markers shown by default
+Category charts show markers at every data point by default. If the screenshot does not show markers, set `markerTypes` to the matching no-marker option documented for the component:
+```tsx
+<IgrCategoryChart markerTypes="<resolved-marker-types>" />
+```
+
+`markerTypes` must use the documented marker type values for the chosen chart. Do not pass an array of lowercase strings.
+
+### `plotAreaBackground` does NOT exist on `IgrCategoryChart`
+Use CSS to style the chart container background instead.
+
+### `areaFillOpacity` exists on `IgrCategoryChart`
+It does NOT exist on the sparkline component.
+
+### `includedProperties` must be an array prop
+Use a JSX array expression, not a plain string:
+```tsx
+<IgrCategoryChart includedProperties={['fieldOne', 'fieldTwo', 'fieldThree']} />
+```
+Replace `'fieldOne'`, `'fieldTwo'`, etc. with the actual data property names from your mock data.
+
+### Chart callback props must receive function references
+Function-valued chart props must receive a function reference:
+```tsx
+<IgrCategoryChart xAxisFormatLabel={labelFormatter} />
+```
+
+### Smooth area charts
+For smooth-looking area charts where the data should appear continuous rather than spiky:
+- Increase data density until the line or area reads as continuous at the rendered size
+- Apply smoothing only when the source shape in the design looks smoothed rather than point-to-point
+- Hide markers unless the screenshot clearly shows visible data points
+- Tune fill opacity and label density to match the screenshot instead of relying on a fixed default
+
+### Charts inside CSS Grid can collapse
+In a flexible CSS Grid track, set `min-height: 0` on the grid cell and make the chart fill its container:
+```css
+.chart-panel {
+  min-height: 0;
+}
+
+.chart-panel > * {
+  height: <resolved-chart-height>;
+  width: <resolved-chart-width>;
+}
+```
+
+## Component Properties
+
+### `roundShape` does NOT exist on `IgrAvatar`
+Use the supported `shape` input alone. Do not add `roundShape`.
+
+### Tabs used for navigation should be label-only
+When a screenshot shows tabs that drive routed page content, use label-only `IgrTab` items and keep the routed content outside the `IgrTabs` component. Do not place inline tab panel content inside router-driven tabs.
+
+### Avatar background color via CSS variable
+```tsx
+<div style={{ '--ig-avatar-background': color } as React.CSSProperties}>
+  <IgrAvatar />
+</div>
+```
+
+## Theming Pitfalls
+
+### Theme CSS imports are required
+Core components need a base theme import, and grids need an additional grid theme import:
+
+```tsx
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
+import 'igniteui-react-grids/grids/themes/light/bootstrap.css';
+```
+
+Do not remove or replace those imports unless the user explicitly wants a theme variant change.
+
+### DV components require explicit visual props
+Charts, maps, gauges, and sparklines do not use the component-token theme generation flow from this skill. Set their visual properties explicitly via component props. After a palette exists, prefer palette tokens or local semantic CSS variables over leaving raw color literals in the final JSX:
+```tsx
+<IgrCategoryChart
+  brushes="<resolved-series-brush>"
+  outlines="<resolved-series-outline>"
+  xAxisLabelTextColor="<resolved-axis-label-color>"
+  yAxisMajorStroke="<resolved-grid-line-color>"
+/>
+```
+
+### Component theme functions
+For core UI component theming, prefer `create_component_theme` and apply the returned theme block as generated by the MCP server.
+
+### Nav drawer width
+Override the drawer width using the nav drawer CSS custom properties measured from the design image:
+```css
+igc-nav-drawer {
+  --ig-nav-drawer-size: <extracted-sidebar-width>;
+  --ig-nav-drawer-size--mini: <extracted-mini-drawer-width>;
+}
+```
+
+### Read luminance warnings from theme generation
+If `create_theme` returns a luminance warning for a generated surface, do not ignore it. If the design needs multiple surface depths, use `create_custom_palette` or define semantic CSS variables such as `--surface-1` and `--surface-2` in a shared CSS file instead of relying on a single generated surface color.
+
+## Map Component
+
+### Adding markers programmatically
+The geographic map often requires programmatic series setup once the map ref is available:
+```tsx
+const mapRef = useRef<IgrGeographicMap>(null);
+
+useEffect(() => {
+  const map = mapRef.current;
+  if (!map) return;
+
+  const symbolSeries = new IgrGeographicSymbolSeries();
+  symbolSeries.dataSource = locations;
+  symbolSeries.latitudeMemberPath = '<latitude-field>';
+  symbolSeries.longitudeMemberPath = '<longitude-field>';
+  symbolSeries.markerType = <resolvedMarkerType>;
+  symbolSeries.markerBrush = '<resolved-accent-color>';
+  symbolSeries.markerOutline = '<resolved-accent-color>';
+  map.series.add(symbolSeries);
+  map.zoomToGeographic({ left: <min-longitude>, top: <top-latitude>, width: <longitude-span>, height: <latitude-span> });
+}, []);
+```
+
+### Dark map styling
+OpenStreetMap tiles are light by default. For dark themes, apply a CSS filter to the container. Adjust the values to match the map tone in the design image:
+```css
+.map-container {
+  /* tune grayscale (0-1) and brightness (0-1) to match the design */
+  filter: grayscale(<0-1>) brightness(<0-1>);
+}
+```
+
+## Dark Theme Specifics
+
+### CSS custom properties for dark panels
+When the design uses multiple dark surface depths (panels, sidebars, cards on a dark background), define reusable semantic tokens using palette references or values derived from the design intent:
+
+```css
+:root {
+  --surface-primary: <resolved-surface-token>;
+  --surface-secondary: <resolved-surface-token>;
+  --accent-strong: <resolved-accent-token>;
+  --text-primary: <resolved-text-token>;
+  --text-secondary: <resolved-text-token>;
+}
+```
+
+If `create_theme` returns a single surface color that doesn't cover all depth levels visible in the design, define additional surface tokens (`--surface-1`, `--surface-2`, etc.) for each distinct depth.
+
+### Scope dark overrides on a wrapper before reaching for file-wide theme swaps
+When only one view or panel should match a dark screenshot, prefer a scoped wrapper class with semantic CSS variables over replacing the app's global theme import.

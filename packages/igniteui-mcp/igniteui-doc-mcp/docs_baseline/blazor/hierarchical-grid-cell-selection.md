@@ -270,7 +270,6 @@ public class SingersData
 }
 ```
 
-
 ## Selection Types
 
 ### Hierarchical Grid Multiple-Cell Selection
@@ -293,13 +292,13 @@ How to select cells:
 
 ### Hierarchical Grid Single Selection
 
-When you set the [`CellSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_CellSelection) to **single**, this allows you to have only one selected cell in the grid at a time. Also the mode **mouse drag** will not work and instead of selecting a cell, this will make default text selection.
+When you set the [`CellSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_CellSelection) to **single**, this allows you to have only one selected cell in the grid at a time. Also the mode **mouse drag** will not work and instead of selecting a cell, this will make default text selection.
 
 > When single cell is selected [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selected) event is emitted, no matter if the **selection mode** is **single** or **multiple**. In multi-cell selection mode when you select a range of cells `RangeSelected` event is emitted.
 
 ### Hierarchical Grid None Selection
 
-If you want to disable cell selection you can just set [`CellSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_CellSelection) to **none**. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the **activation style** is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
+If you want to disable cell selection you can just set [`CellSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_CellSelection) to **none**. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the **activation style** is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
 
 ## Keyboard Navigation Interactions
 
@@ -328,7 +327,7 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 ### Select range
 
-[`SelectRange`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SelectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
+[`SelectRange`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_SelectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -357,7 +356,7 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 ### Clear cell selection
 
-[`ClearCellSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_ClearCellSelection) will clear the current cell selection.
+[`ClearCellSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_ClearCellSelection) will clear the current cell selection.
 
 ```razor
 @code {
@@ -370,7 +369,7 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 ### Get Selected Data
 
-[`GetSelectedData`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_GetSelectedData) will return array of the selected data in Dictionary format. Examples below:
+[`GetSelectedData`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_GetSelectedData) will return array of the selected data in Dictionary format. Examples below:
 
 ```razor
 <IgbHierarchicalGrid @ref=grid  CellSelection="GridSelectionMode.Multiple" AutoGenerate=true></<IgbHierarchicalGrid>
@@ -394,7 +393,7 @@ The multi-cell selection is index based (DOM elements selection).
 - `Filtering` - When filtering is performed selection will not be cleared. If filtering is cleared it will return - the initially selected cells.
 - `Resizing` - On column resizing selected cells will not be cleared.
 - `Hiding` - It will not clear the selected cells. If column is hidden, the cells from the next visible column will be selected.
-- [`Pinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_Pinning) - Selected cell will not be cleared. Same as hiding
+- [`Pinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_Pinning) - Selected cell will not be cleared. Same as hiding
 - `GroupBy` - On column grouping selected cells will not be cleared.
 
 <!-- ComponentEnd: Grid, TreeGrid -->
@@ -717,7 +716,6 @@ public class SingersData
     }
 }
 ```
-
 
 ## API References
 

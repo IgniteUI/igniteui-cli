@@ -77,7 +77,6 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Usage
 
 The Load on Demand feature is compatible with both types of Tree Grid data sources - primary and foreign keys or child collection. You only need to load the root level data in the Tree Grid and specify the necessary keys for one of the data source types. In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`loadChildrenOnDemand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#loadChildrenOnDemand).

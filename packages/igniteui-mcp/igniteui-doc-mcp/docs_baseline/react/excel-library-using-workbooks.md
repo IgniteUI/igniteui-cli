@@ -334,7 +334,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ExcelLibraryUsingWorkbooks/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Change Default Font

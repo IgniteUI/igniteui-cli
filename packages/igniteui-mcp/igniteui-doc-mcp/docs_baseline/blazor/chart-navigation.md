@@ -190,7 +190,6 @@ The following example shows all of the available panning and zooming options tha
 }
 ```
 
-
 <div class="divider--half"></div>
 
 Like this sample? Get access to our complete Blazor toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-blazor/download">Download it for free.</a>
@@ -199,7 +198,7 @@ Like this sample? Get access to our complete Blazor toolkit and start building y
 
 Whether or not zooming is on by default depends on the chart you are using. If you are using [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html), it is on by default, but it is not in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html). In order to enable or disable navigation in the UI, you need to set either the [`IsHorizontalZoomEnabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_IsHorizontalZoomEnabled) and/or the [`IsVerticalZoomEnabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_IsVerticalZoomEnabled) properties of the chart, depending on the direction that you wish to enable or disable zooming.
 
-It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`DefaultInteraction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_DefaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`DefaultInteraction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_DefaultInteraction) property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
+It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`DefaultInteraction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_DefaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`DefaultInteraction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_DefaultInteraction) property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
 
 ## Chart Navigation with Touch, Mouse and Keyboard
 
@@ -209,9 +208,9 @@ Navigation in the Blazor data chart can happen with either touch, the mouse or t
 - **Zoom In**: Using the <kbd>PAGE UP</kbd> key on the keyboard, rolling the mouse wheel up, or pinching to zoom in via touch.
 - **Zoom Out**: Using the <kbd>PAGE DOWN</kbd> key on the keyboard, rolling the mouse wheel down, or pinching to zoom out via touch.
 - **Fit to Chart Plot Area**: Using the <kbd>HOME</kbd> key on the keyboard. There is no mouse or touch operation for this.
-- **Area Zoom**: Click and drag the mouse within the plot area with the [`DefaultInteraction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_DefaultInteraction) property set to its default - `DragZoom`.
+- **Area Zoom**: Click and drag the mouse within the plot area with the [`DefaultInteraction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_DefaultInteraction) property set to its default - `DragZoom`.
 
-The zoom and pan operations can also be enabled by using modifier keys by setting the [`DragModifier`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_DragModifier) and [`PanModifier`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_PanModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
+The zoom and pan operations can also be enabled by using modifier keys by setting the [`DragModifier`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_DragModifier) and [`PanModifier`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_PanModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
 
 | Modifier Value | Corresponding Key |
 | ---------------|------------------ |
@@ -223,7 +222,7 @@ The zoom and pan operations can also be enabled by using modifier keys by settin
 
 ## Chart Navigation with Scrollbars
 
-The chart can be scrolled by enabling the [`VerticalViewScrollbarMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_VerticalViewScrollbarMode) and [`HorizontalViewScrollbarMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_HorizontalViewScrollbarMode) properties.
+The chart can be scrolled by enabling the [`VerticalViewScrollbarMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_VerticalViewScrollbarMode) and [`HorizontalViewScrollbarMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_HorizontalViewScrollbarMode) properties.
 
 These can be configured to the following options
 
@@ -394,7 +393,6 @@ The following example demonstrates enabling scrollbars.
     //end async data
 ```
 
-
 <div class="divider--half"></div>
 
 ## Chart Navigation through Code
@@ -404,9 +402,9 @@ The following example demonstrates enabling scrollbars.
 
 The Blazor data chart provides several navigation properties that are updated each time a zoom or pan operation happens in the chart. You can also set each of these properties to zoom or pan the data chart programmatically. The following is a list of these properties:
 
-- [`WindowPositionHorizontal`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_WindowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
-- [`WindowPositionVertical`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_WindowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
-- [`WindowRect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_WindowRect): A `Rect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`WindowRect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_WindowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
+- [`WindowPositionHorizontal`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_WindowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
+- [`WindowPositionVertical`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_WindowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
+- [`WindowRect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_WindowRect): A `Rect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`WindowRect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_WindowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
 - [`WindowScaleHorizontal`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_WindowScaleHorizontal): A numeric value describing the width portion of the content view rectangle displayed by the data chart.
 - [`WindowScaleVertical`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_WindowScaleVertical): A numeric value describing the height portion of the content view rectangle displayed by the data chart.
 
@@ -421,11 +419,11 @@ You can find more information about related chart features in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-- [`DefaultInteraction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_DefaultInteraction)
-- [`DragModifier`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_DragModifier)
+- [`DefaultInteraction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_DefaultInteraction)
+- [`DragModifier`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_DragModifier)
 - [`IsHorizontalZoomEnabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_IsHorizontalZoomEnabled)
 - [`IsVerticalZoomEnabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_IsVerticalZoomEnabled)
-- [`PanModifier`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_PanModifier)
+- [`PanModifier`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_PanModifier)
 - [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html)
 - [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
 - [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html)

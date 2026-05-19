@@ -99,11 +99,9 @@ export class PivotDataSelectorSampleComponent {
 ```
 ```html
 <div class="pivot-container">
-    <div style="flex-grow: 1;">
-        <igx-pivot-grid #grid1 [data]="data" [pivotConfiguration]="pivotConfigHierarchy" [height]="'850px'"
-            [superCompactMode]="true" [defaultExpandState]='true'>
-        </igx-pivot-grid>
-    </div>
+    <igx-pivot-grid #grid1 [data]="data" [pivotConfiguration]="pivotConfigHierarchy" [height]="'850px'"
+        [superCompactMode]="true" [defaultExpandState]='true'>
+    </igx-pivot-grid>
     <igx-pivot-data-selector [grid]="grid1"></igx-pivot-data-selector>
 </div>
 ```

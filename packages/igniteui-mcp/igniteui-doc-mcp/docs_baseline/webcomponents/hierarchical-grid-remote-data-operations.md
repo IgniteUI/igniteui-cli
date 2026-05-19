@@ -174,7 +174,6 @@ For further reference, please check the demo bellow:
 
 
 
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
@@ -193,7 +192,7 @@ For further reference, please check the demo bellow:
 
 ## API References
 
-- [`IgcPaginatorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginatorcomponent.html)
+- [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)
 - [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)
 
 ## Additional Resources

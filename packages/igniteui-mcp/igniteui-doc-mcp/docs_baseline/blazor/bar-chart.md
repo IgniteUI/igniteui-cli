@@ -164,7 +164,6 @@ public class HighestGrossingMovies
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Bar Chart Recommendations
@@ -339,7 +338,6 @@ public class OnlineShoppingSearches
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Bar Chart with Multiple Series
@@ -493,7 +491,6 @@ public class HighestGrossingMovies
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Bar Chart Styling
@@ -634,7 +631,6 @@ public class OnlineShoppingSearches
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -807,7 +803,6 @@ public class EnergyRenewableConsumption
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100% Bar Chart
@@ -976,7 +971,6 @@ public class EnergyRenewableConsumption
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Additional Resources
@@ -994,7 +988,7 @@ You can find more information about related chart types in these topics:
 The following table lists API members mentioned in the above sections:
 
 - [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
-- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataSource)
+- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBarSeries.html#IgniteUI_Blazor_Controls_IgbBarSeries_DataSource)
 - [`IgbBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBarSeries.html)
 - [`IgbCalloutLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalloutLayer.html)
 - [`IgbStackedBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedBarSeries.html)

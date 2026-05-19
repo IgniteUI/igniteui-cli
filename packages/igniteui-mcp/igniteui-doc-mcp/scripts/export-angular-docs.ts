@@ -275,9 +275,9 @@ function main() {
 
     let content: string;
     if (gridDoc) {
-      content = gridDoc.content;
+      content = gridDoc.content.replace(/\r\n/g, "\n");
       // Remove leading comments
-      content = content.replace(/^<!--[\s\S]*?-->(?:\r?\n)*/, "");
+      content = content.replace(/^<!--[\s\S]*?-->\n*/, "");
       // Remove blank lines before non-empty lines (same as gulp pipeline)
       content = content.replace(/^\s*\n(?=\S)/gm, "");
     } else {

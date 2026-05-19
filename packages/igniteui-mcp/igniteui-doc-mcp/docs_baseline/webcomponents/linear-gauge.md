@@ -22,7 +22,6 @@ The following sample demonstrates how setting multiple properties on the same [`
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies
@@ -110,7 +109,6 @@ This is the primary measure displayed by the linear gauge component and is visua
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Highlight Needle
 
 The linear gauge can be modified to show a second needle. This will make the main needle's [`value`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html#value) appear with a lower opacity. To enable this first set [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html#highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igclineargaugecomponent.html#highlightValue).
@@ -140,7 +138,6 @@ The linear gauge can be modified to show a second needle. This will make the mai
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Ranges
 
 The ranges are visual elements that highlight a specified range of values on a scale. Their purpose is to visually communicate the qualitative state of the performance bar measure, illustrating at the same times the degree to which it resides within that state.
@@ -169,7 +166,6 @@ The ranges are visual elements that highlight a specified range of values on a s
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Tick Marks
 
@@ -204,7 +200,6 @@ Minor tick marks – The minor tick marks represent helper tick marks, which mig
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Labels
 
 The labels indicate the measures on the scale.
@@ -228,7 +223,6 @@ The labels indicate the measures on the scale.
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Backing
 
 The backing element represents background and border of the linear gauge component. It is always the first element rendered and all the rest of elements such as labels, and tick marks are overlaid on top of it.
@@ -250,7 +244,6 @@ The backing element represents background and border of the linear gauge compone
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Scale
 
@@ -276,7 +269,6 @@ The scale is a visual element that highlights the full range of values in the li
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Summary
 

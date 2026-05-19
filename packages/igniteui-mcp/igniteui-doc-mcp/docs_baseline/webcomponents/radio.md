@@ -18,7 +18,6 @@ The Ignite UI for Web Components Radio component allows the user to select a sin
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Usage
@@ -89,7 +88,6 @@ The [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-co
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Checked
 
 You can use the `checked` attribute to toggle on the radio.
@@ -108,7 +106,6 @@ You can use the `checked` attribute to toggle on the radio.
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Invalid
 
 You can use the `invalid` attribute to mark the radio as invalid.
@@ -121,7 +118,6 @@ You can use the `invalid` attribute to mark the radio as invalid.
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Disabled
 
@@ -141,7 +137,6 @@ You can use the `disabled` attribute to disable the radio.
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Group Alignment
 
 The [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html) allows you to easily change the placement directionality of the radio buttons it contains using the `alignment` attribute. Allowed values are `vertical`(default) and `horizontal`.
@@ -159,7 +154,6 @@ The [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-w
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Forms
 
@@ -226,7 +220,6 @@ igc-radio::part(control) {
     --size: 18px;
 }
 ```
-
 
 <div class="divider--half"></div>
 

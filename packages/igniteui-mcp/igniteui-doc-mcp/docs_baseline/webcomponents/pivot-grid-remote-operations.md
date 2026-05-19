@@ -140,7 +140,6 @@ export class PivotNoopData extends Array<any> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 Users have the ability to achieve certain scenarios by feeding the pivot grid with already aggregated data.
 There are some requirements on how the data should look like and some specifics regarding hierarchies in the pivot view. For example, to declare hierarchy in **rows** dimension:
 
@@ -233,7 +232,7 @@ public pivotConfig: IgcPivotConfiguration = {
 
 It is important for the data to match the configuration. For the best results no additional fields should be included into the aggregated data and no fields from the provided data should be left undeclared as rows or columns. The [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html) component builds its data based on the [`pivotConfiguration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#pivotConfiguration) and it is expected for the configuration and aggregated data to match accordingly.
 
-Similarly for other remote data operations like sorting and filtering, data processing can be skipped by setting the related empty strategies - [`filterStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#filterStrategy), [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#sortStrategy):
+Similarly for other remote data operations like sorting and filtering, data processing can be skipped by setting the related empty strategies - [`filterStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#filterStrategy), [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#sortStrategy):
 
 ```html
 <igc-pivot-grid filter-strategy="noopFilterStrategy" sort-strategy="noopSortStrategy">

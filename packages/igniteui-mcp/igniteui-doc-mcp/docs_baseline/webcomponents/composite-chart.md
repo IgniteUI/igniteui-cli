@@ -22,7 +22,6 @@ The following example demonstrates how to create Composite Chart using [`IgcColu
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Additional Resources

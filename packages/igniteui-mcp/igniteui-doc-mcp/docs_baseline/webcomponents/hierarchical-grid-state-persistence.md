@@ -13,11 +13,11 @@ _premium: true
 
 # Web Components Hierarchical Grid State Persistence
 
-The Ignite UI for Web Components State Persistence in Web Components Hierarchical Grid allows developers to easily save and restore the grid state. When the [`IgcGridStateComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html) is applied on the Web Components [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), it exposes the [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#getState), [`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#getStateAsString), [`applyState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#applyState) and [`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#applyStateFromString) methods that developers can use to achieve state persistence in any scenario.
+The Ignite UI for Web Components State Persistence in Web Components Hierarchical Grid allows developers to easily save and restore the grid state. When the [`IgcGridState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html) is applied on the Web Components [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), it exposes the [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getState), [`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getStateAsString), [`applyState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyState) and [`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyStateFromString) methods that developers can use to achieve state persistence in any scenario.
 
 ## Supported Features
 
-[`IgcGridStateComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html) supports saving and restoring the state of the following features:
+[`IgcGridState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html) supports saving and restoring the state of the following features:
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -43,9 +43,9 @@ The Ignite UI for Web Components State Persistence in Web Components Hierarchica
 
 ## Usage
 
-The [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#getState) method returns the grid state in a [`IgcGridStateInfo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstateinfo.html) object, containing all the state info. Additional steps may be required in order to save it.
+The [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getState) method returns the grid state in a [`IgcGridStateInfo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstateinfo.html) object, containing all the state info. Additional steps may be required in order to save it.
 
-The [`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#getStateAsString) returns a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc).
+The [`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getStateAsString) returns a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc).
 
 The developer may choose to get only the state for a certain feature/features, by passing in an array with feature names as an argument. Empty array will result to using the default state options.
 
@@ -74,9 +74,9 @@ const sortingFilteringStates: IgcGridStateInfo = gridState.getState(['sorting', 
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
-[`applyState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#applyState) - The method accepts a [`IgcGridStateInfo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstateinfo.html) object as argument and will restore the state of each feature found in the object or specified features as second argument.
+[`applyState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyState) - The method accepts a [`IgcGridStateInfo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstateinfo.html) object as argument and will restore the state of each feature found in the object or specified features as second argument.
 
-[`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#applyStateFromString) - The method accepts a serialized JSON string as argument and will restore the state of each feature found in the JSON string or specified features as second argument.
+[`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyStateFromString) - The method accepts a serialized JSON string as argument and will restore the state of each feature found in the JSON string or specified features as second argument.
 
 ```typescript
 gridState.applyState(gridState);
@@ -84,7 +84,7 @@ gridState.applyStateFromString(gridStateString);
 gridState.applyState(sortingFilteringStates)
 ```
 
-The [`options`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatebasedirective.html#options) object implements the [`IgcGridStateOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstateoptions.html) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#getState)/[`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#getStateAsString) methods will not put the state of these features in the returned value and [`applyState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#applyState)/[`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#applyStateFromString) methods will not restore state for them.
+The [`options`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatebasedirective.html#options) object implements the [`IgcGridStateOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstateoptions.html) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getState)/[`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getStateAsString) methods will not put the state of these features in the returned value and [`applyState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyState)/[`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyStateFromString) methods will not restore state for them.
 
 ```typescript
 gridState.options = { cellSelection: false, sorting: false };
@@ -131,7 +131,7 @@ public restoreGridStateString() {
 
 ## Restoring Child Grids
 
-Saving / Restoring state for the child grids is controlled by the `RowIslands` property and is enabled by default. [`IgcGridStateComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html) will use the same options for saving/restoring features both for the root grid and all child grids down the hierarchy. For example, if we pass the following options:
+Saving / Restoring state for the child grids is controlled by the `RowIslands` property and is enabled by default. [`IgcGridState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html) will use the same options for saving/restoring features both for the root grid and all child grids down the hierarchy. For example, if we pass the following options:
 
 ```ts
 gridState.options = { cellSelection: false, sorting: false, rowIslands: true };
@@ -145,7 +145,7 @@ gridState.options = { cellSelection: false, sorting: false, rowIslands: true };
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-Then the [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#getState) API will return the state for all grids (root grid and child grids) features excluding `Selection` and `Sorting`. If later on the developer wants to restore only the `Filtering` state for all grids, use:
+Then the [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getState) API will return the state for all grids (root grid and child grids) features excluding `Selection` and `Sorting`. If later on the developer wants to restore only the `Filtering` state for all grids, use:
 
 ```typescript
 this.state.applyState(state, ['filtering', 'rowIslands']);
@@ -168,7 +168,6 @@ this.state.applyState(state, ['filtering', 'rowIslands']);
 }
 ```
 
-
 ## Limitations
 
 <!-- ComponentStart: HierarchicalGrid -->
@@ -185,7 +184,7 @@ state.applyState(gridState.columnSelection);
 
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
 
-- [`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html#getStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgcGridStateComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatecomponent.html) component will ignore the columns [`formatter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotvalue.html#formatter), [`filters`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotconfiguration.html#filters), `Summaries`, `SortStrategy`, `CellClasses`, `CellStyles`, `HeaderTemplate` and `BodyTemplate` properties.
+- [`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgcGridState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html) component will ignore the columns [`formatter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotvalue.html#formatter), [`filters`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotconfiguration.html#filters), `Summaries`, `SortStrategy`, `CellClasses`, `CellStyles`, `HeaderTemplate` and `BodyTemplate` properties.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
 

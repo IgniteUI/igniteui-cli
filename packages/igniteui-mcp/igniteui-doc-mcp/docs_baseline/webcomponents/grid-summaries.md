@@ -22,7 +22,6 @@ The Ignite UI for Web Components Summaries feature in Web Components Grid functi
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 > [!Note]
 > The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
 
@@ -334,7 +333,6 @@ export class NwindData extends Array<NwindDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 <!-- ComponentStart: Grid -->
@@ -411,7 +409,6 @@ When a default summary is defined, the height of the summary area is calculated 
     user-select: none;
 }
 ```
-
 
 ## Disabled Summaries
 
@@ -825,7 +822,6 @@ igc-dialog::part(title) {
 }
 ```
 
-
 ## Formatting summaries
 
 By default, summary results, produced by the built-in summary operands, are localized and formatted according to the grid [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#locale) and column [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pipeArgs). When using custom operands, the [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#locale) and [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pipeArgs) are not applied. If you want to change the default appearance of the summary results, you may format them using the [`summaryFormatter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#summaryFormatter) property.
@@ -860,7 +856,6 @@ constructor() {
         --ig-size: var(--ig-size-small);
     }
 ```
-
 
 <!-- ComponentStart: Grid -->
 
@@ -941,7 +936,6 @@ export class InvoicesData extends Array<InvoicesDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <!-- ComponentEnd: Grid -->
 
@@ -1046,7 +1040,6 @@ export class InvoicesData extends Array<InvoicesDataItem> {
     --ig-grid-summary-result-color: black;
 }
 ```
-
 
 <!-- ComponentEnd: Grid -->
 

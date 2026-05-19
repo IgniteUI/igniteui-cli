@@ -25,7 +25,6 @@ igc-ripple {
 }
 ```
 
-
 ## Usage
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -91,7 +90,6 @@ igc-ripple {
 }
 ```
 
-
 ### Selection
 
 In order to configure the Ignite UI for Web Components [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html) selection, you could use its [`selection`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html#selection) property. This property accepts the following three modes:
@@ -122,7 +120,6 @@ igc-ripple {
     --color: gray;
 }
 ```
-
 
 A [`IgcToggleButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html) could be marked as selected via its [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html#selected) attribute or through the [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html) [`selectedItems`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html#selectedItems) attribute:
 
@@ -156,7 +153,6 @@ The `--ig-size` CSS custom property can be used to control the size of the butto
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Styling
 
@@ -215,7 +211,6 @@ igc-toggle-button[selected]::part(toggle) {
     background: #1f3347;
 }
 ```
-
 
 ## API Reference
 

@@ -33,7 +33,6 @@ The Ignite UI for Blazor Input is a component where the user can enter data.
 }
 ```
 
-
 ## Dependencies
 
 To get started with the Input component, you first need to register its module.
@@ -87,7 +86,6 @@ With `prefix` and `suffix` slots we can add different content before and after t
 }
 ```
 
-
 ## Helper Text
 
 The `helper-text` slot provides a hint placed below the Input. Let's add some helper text to our phone Input:
@@ -119,7 +117,6 @@ The `helper-text` slot provides a hint placed below the Input. Let's add some he
     }
 }
 ```
-
 
 ## Input Sizing
 
@@ -160,7 +157,6 @@ We can allow the user to change the size of the [`IgbInput`](https://www.infragi
     }
 }
 ```
-
 
 In the sample above we have demonstrated the use of the following attributes:
 
@@ -244,7 +240,6 @@ igc-input::part(suffix) {
     }
 }
 ```
-
 
 <div class="divider"></div>
 

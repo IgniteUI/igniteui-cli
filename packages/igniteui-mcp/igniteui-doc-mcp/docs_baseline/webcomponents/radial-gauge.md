@@ -22,7 +22,6 @@ The following sample demonstrates how setting multiple properties on the same [`
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies
@@ -114,7 +113,6 @@ The backing can be circular or fitted. A circular shape creates a 360 degree cir
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Scale
 
 The scale is visual element that highlights full range of values in the gauge which can be created by supplying [`minimumValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#minimumValue) and [`maximumValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#maximumValue) values. Together with backing, it defines overall shape of gauge. The [`scaleStartAngle`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#scaleStartAngle) and [`scaleEndAngle`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#scaleEndAngle) properties define bounds of arc of the scale. While, the [`scaleSweepDirection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#scaleSweepDirection) property specifies whether the scale sweeps in clockwise or counter-clockwise direction. You can customize appearance of the scale by setting [`scaleBrush`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#scaleBrush), [`scaleStartExtent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#scaleStartExtent), and [`scaleEndExtent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#scaleEndExtent) properties.
@@ -140,7 +138,6 @@ The scale is visual element that highlights full range of values in the gauge wh
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Labels and Titles
 
 The radial gauge labels are visual elements displaying numeric values at a specified interval between values of the [`minimumValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#minimumValue) and [`maximumValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#maximumValue) properties. You can position labels by setting the [`labelExtent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#labelExtent) property to a fraction, where 0 represents center of gauge and 1 represents outer extent of the gauge backing. Also, you can customize labels setting various styling properties such as [`fontBrush`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#fontBrush) and [`font`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#font).
@@ -164,7 +161,6 @@ Each of these labels for the needle have various styling attributes you can appl
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Title & Subtitle
 
 [`titleText`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#titleText) and [`subtitleText`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#subtitleText) properties are available and can both be used to display custom text for the needle. Alternatively, [`titleDisplaysValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#titleDisplaysValue) and [`subtitleDisplaysValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#subtitleDisplaysValue), when set to true, will let display the needle's value and override [`titleText`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#titleText) and [`subtitleText`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#subtitleText). So you can occupy custom text for the title but show the value via the subtitle and vice versa.
@@ -186,7 +182,6 @@ The radial gauge's labels and titles can change it's scaling. To enable this, fi
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Tick Marks
 
@@ -213,7 +208,6 @@ Tick marks are thin lines radiating from the center of the radial gauge. There a
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Ranges
 
@@ -242,7 +236,6 @@ A range highlights a set of continuous values bound by a specified [`minimumValu
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Needle
 
@@ -277,7 +270,6 @@ You can enable an interactive mode of the gauge (using [`isNeedleDraggingEnabled
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Highlight Needle
 
 The radial gauge can be modified to show a second needle. This will make the main needle's [`value`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#value) appear with a lower opacity. To enable this first set [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_gauges.igcradialgaugecomponent.html#highlightValue).
@@ -303,7 +295,6 @@ The radial gauge can be modified to show a second needle. This will make the mai
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Summary
 

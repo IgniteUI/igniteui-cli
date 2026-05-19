@@ -102,18 +102,10 @@ over Group Row - collapses the group.
 
  <!-- ComponentEnd: Grid -->
 
- 
-
- 
-
 - <kbd>ALT</kbd> + <kbd>→</kbd> or <kbd>ALT</kbd> + <kbd>↓</kbd> - <!-- ComponentStart: Grid -->
     over Group Row - expands the group.
 
  <!-- ComponentEnd: Grid -->
-
- 
-
- 
 
  <!-- ComponentStart: Grid -->
 
@@ -126,7 +118,6 @@ over Group Row - collapses the group.
 Practice all of the above mentioned actions in the demo sample below. Focus any navigable grid element and a list with some of the available actions for the element will be shown to guide you through.
 
 ## Demo
-
 
 
 
@@ -311,7 +302,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 ## Known Limitations
 

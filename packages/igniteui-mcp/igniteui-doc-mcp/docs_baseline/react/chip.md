@@ -51,7 +51,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ChipOverview/>);
 ```
 
-
 <div class="divider"></div>
 
 ## Usage
@@ -146,7 +145,6 @@ export default class ChipVariants extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ChipVariants/>);
 ```
-
 
 ### Disabled
 
@@ -246,7 +244,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ChipMultiple/>);
 ```
 
-
 ## Size
 
 We allow the user to choose the size of the [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html) by utilizing the `--ig-size` CSS variable:
@@ -333,7 +330,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ChipSize/>);
 ```
 
-
 ## Styling
 
 The [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html) component exposes a `base`, `prefix`, `suffix` CSS parts that can be used to change all of its style properties.
@@ -397,7 +393,6 @@ export default class ChipStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ChipStyling/>);
 ```
-
 
 ## API References
 

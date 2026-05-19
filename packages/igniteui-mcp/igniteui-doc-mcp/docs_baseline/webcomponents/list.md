@@ -20,7 +20,6 @@ The following example represents a list populated with contacts with a name and 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -69,7 +68,6 @@ If all went well, you should see the following in your browser:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 Let's up our game a bit and enhance our list items. Say we want to create a list of contacts with a name and a phone number displayed under the name. To achieve that we can use some of the slots that come with the list items as demonstrated in the next example:
 
 ```html
@@ -98,7 +96,6 @@ After implementing the above code, our list component should now look like the f
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Adding Avatar and Buttons
 
@@ -181,7 +178,6 @@ The result of implementing the above code should look like the following:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Styling
 
 The [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html) exposes several CSS parts, giving you full control over its style:
@@ -232,7 +228,6 @@ igc-list-item::part(subtitle) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 In this article we covered a lot of ground with the [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html) component. First, we created a simple list with text items. Then, we created a list of contact items and added functionality to them by using some additional Ignite UI for Web Components components, like the [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html) and [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html). Finally, we changed the component's appearance through the exposed CSS parts.
 

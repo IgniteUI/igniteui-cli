@@ -120,7 +120,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 ## Dependencies
 
 Add the **IgniteUI.Blazor.Controls** namespace in the **\_Imports.razor** file:
@@ -473,7 +472,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 ### Blazor Data Chart Integration
 
 The Blazor Toolbar contains a [`Target`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html#IgniteUI_Blazor_Controls_IgbToolbar_Target) property. This is used to link a component, such as the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) as shown in the code below:
@@ -708,7 +706,6 @@ public class CountryRenewableElectricity
 }
 ```
 
-
 ### Color Editor
 
 You can add a custom color editor tool to the the Blazor Toolbar, which will also work with the Command event to perform custom styling to your application.
@@ -863,7 +860,6 @@ public class CountryRenewableElectricity
     }
 }
 ```
-
 
 <!-- ## Styling/Theming
 

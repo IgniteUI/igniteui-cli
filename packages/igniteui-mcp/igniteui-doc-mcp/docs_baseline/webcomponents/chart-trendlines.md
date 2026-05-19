@@ -137,7 +137,6 @@ export class StockItem {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Web Components Chart Trendlines Dash Array Example
@@ -202,7 +201,6 @@ export class Stock2Years extends Array<Stock2YearsItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

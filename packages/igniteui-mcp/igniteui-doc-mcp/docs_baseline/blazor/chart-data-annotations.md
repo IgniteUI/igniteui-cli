@@ -539,7 +539,6 @@ public class StockTesla
 }
 ```
 
-
 Like this sample? Get access to our complete Blazor toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-blazor/download">Download it for free.</a>
 
 ## Blazor Data Annotation Slice Layer Example
@@ -871,7 +870,6 @@ public class StockTesla
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Data Annotation Strip Layer Example
@@ -1107,7 +1105,6 @@ public class StockTesla
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1396,7 +1393,6 @@ public class StockTesla
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Data Annotation Rect Layer Example
@@ -1598,7 +1594,6 @@ public class StockTesla
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1840,7 +1835,6 @@ public class StockTesla
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

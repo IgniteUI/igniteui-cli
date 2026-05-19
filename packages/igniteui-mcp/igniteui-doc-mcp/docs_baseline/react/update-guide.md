@@ -59,7 +59,7 @@ Becomes:
 
 - Components no longer have the non-functional `name` property by default. The `name` property only remains in **igniteui-react** components, mostly form inputs such as [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) and [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html), where it has native functionality.
 - Ignite UI for React components no longer require a `key` property, unless it is necessary according to React\`s [documentation](https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key)
-- The [IgrDataGrid](./grids/data-grid/overview.md) is no longer part of **igniteui-react-grids** package. It has been moved to **igniteui-react-data-grids**, making **igniteui-react-grids** more lightweight.
+- The `DataGrid` is no longer part of **igniteui-react-grids** package. It has been moved to **igniteui-react-data-grids**, making **igniteui-react-grids** more lightweight.
 - There were several types that were exposed as classes in version **18.9.0** which is no longer the case. Those are now exported as types and can be used like this:
 
 ```tsx

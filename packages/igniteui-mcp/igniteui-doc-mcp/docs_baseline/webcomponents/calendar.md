@@ -24,7 +24,6 @@ The following Web Components [`IgcCalendarComponent`](https://www.infragistics.c
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## How To Create a Calendar in Web Components with Ignite UI
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -62,7 +61,6 @@ Users can choose from three different selection modes - single selection, multip
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Range Selection
 
 Following the same approach, we can switch [`selection`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#selection) to range mode:
@@ -76,7 +74,6 @@ Following the same approach, we can switch [`selection`](https://www.infragistic
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Active View and Date
 
@@ -106,7 +103,6 @@ The following sample demonstrates the above configuration:
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Localization and Formatting
 
@@ -154,7 +150,6 @@ If everything went well, we should now have a Calendar with customized display, 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Disabled dates
 
 In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#disabledDates) property. The [`disabledDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#disabledDates) property is an array of [`DateRangeDescriptor`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html) objects. Each descriptor has a `Type` and optionally a [`dateRange`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/daterangedescriptor.html#dateRange) which is an array of `Date` objects.
@@ -187,7 +182,6 @@ These configurations should have the following result:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Special dates
 
 The [`specialDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#specialDates) property is using almost the same configuration principles as the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#disabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
@@ -211,7 +205,6 @@ The following demo illustrates a Calendar with a vacation request option:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Week numbers
 
 You can use the [`showWeekNumbers`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html#showWeekNumbers) property to show the week numbers of the Calendar component. You can do this by using its corresponding boolean attribute `show-week-numbers` like this:
@@ -226,7 +219,6 @@ The following demo illustrates a Calendar with enabled week numbers:
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Multiple Months
 
@@ -245,7 +237,6 @@ The following sample demonstrates the multiple months configuration:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Size
 
 You could control the size and spacing of the calendar inner elements using the `--ig-size` CSS variable. The default size of the component is large.
@@ -254,7 +245,6 @@ You could control the size and spacing of the calendar inner elements using the 
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Events
 
@@ -422,7 +412,6 @@ igc-calendar::part(navigation-button):focus {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

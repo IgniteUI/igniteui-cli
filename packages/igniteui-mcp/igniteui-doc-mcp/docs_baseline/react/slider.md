@@ -61,7 +61,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderOverview/>);
 ```
 
-
 ## Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -150,12 +149,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<SliderValue />);
 ```
 
-
-While dragging a slider thumb, it displays its value in a tooltip. You could hide this tooltip using the [`hideTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#hideTooltip) property.
+While dragging a slider thumb, it displays its value in a tooltip. You could hide this tooltip using the [`hideTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#hideTooltip) property.
 
 ### Disabled
 
-You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#disabled) property of the sliders to disable their user interactions.
+You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#disabled) property of the sliders to disable their user interactions.
 
 ```css
 igc-slider {
@@ -188,10 +186,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderDisabled/>);
 ```
 
-
 ### Constraints
 
-The track of the sliders has a minimum and maximum values which are configured using the [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#max) properties. Additionally, you can restrict the thumb dragging using the [`lowerBound`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#lowerBound) and [`upperBound`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#upperBound) properties.
+The track of the sliders has a minimum and maximum values which are configured using the [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#max) properties. Additionally, you can restrict the thumb dragging using the [`lowerBound`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#lowerBound) and [`upperBound`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#upperBound) properties.
 
 ```css
 igc-slider {
@@ -224,10 +221,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderConstraints/>);
 ```
 
-
 ### Step
 
-The [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#step) property specifies the granularity of the slider that the value must adhere to. By default, the slider track looks continuous. Setting the [`discreteTrack`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#discreteTrack) property of the slider to **true** will make it to display the steps on the track.
+The [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#step) property specifies the granularity of the slider that the value must adhere to. By default, the slider track looks continuous. Setting the [`discreteTrack`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#discreteTrack) property of the slider to **true** will make it to display the steps on the track.
 
 ```css
 igc-slider {
@@ -260,12 +256,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderDiscrete/>);
 ```
 
-
-If the [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#step) property is set to `0`, no stepping is implied and any value in the slider range is allowed. In this case, the slider will look continuous even if [`discreteTrack`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#discreteTrack) is set to **true**.
+If the [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#step) property is set to `0`, no stepping is implied and any value in the slider range is allowed. In this case, the slider will look continuous even if [`discreteTrack`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#discreteTrack) is set to **true**.
 
 ### Tick Marks
 
-The slider components could display tick marks and labels. The slider components support two types of tick marks: primary and secondary. In order to display the primary tick marks, you should set the [`primaryTicks`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#primaryTicks) property to a value greater than `1`. The number of primary ticks will be evenly distributed on the track. In order to display the secondary tick marks, you should set the [`secondaryTicks`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#secondaryTicks) property to a value greater than `0`. The value of [`secondaryTicks`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#secondaryTicks) specifies the number of secondary ticks between every two primary ticks.
+The slider components could display tick marks and labels. The slider components support two types of tick marks: primary and secondary. In order to display the primary tick marks, you should set the [`primaryTicks`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#primaryTicks) property to a value greater than `1`. The number of primary ticks will be evenly distributed on the track. In order to display the secondary tick marks, you should set the [`secondaryTicks`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#secondaryTicks) property to a value greater than `0`. The value of [`secondaryTicks`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#secondaryTicks) specifies the number of secondary ticks between every two primary ticks.
 
 ```css
 /* shared styles are loaded from: */
@@ -294,10 +289,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderTicks/>);
 ```
 
+Additionally, you could configure the orientation of the tick marks using the [`tickOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#tickOrientation) property. By default, the [`tickOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#tickOrientation) value is `end` which displays the ticks below the slider track. You could set it to `start` which displays them above the track and `mirror` which mirrors the ticks above and below the track.
 
-Additionally, you could configure the orientation of the tick marks using the [`tickOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#tickOrientation) property. By default, the [`tickOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#tickOrientation) value is `end` which displays the ticks below the slider track. You could set it to `start` which displays them above the track and `mirror` which mirrors the ticks above and below the track.
-
-By default, the tick marks display labels with their values. You could modify the rotation of the tick labels using the `SliderTickLabelRotation` property. Additionally, you could hide the labels of the primary and secondary ticks using the [`hidePrimaryLabels`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#hidePrimaryLabels) and [`hideSecondaryLabels`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#hideSecondaryLabels) properties.
+By default, the tick marks display labels with their values. You could modify the rotation of the tick labels using the `SliderTickLabelRotation` property. Additionally, you could hide the labels of the primary and secondary ticks using the [`hidePrimaryLabels`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#hidePrimaryLabels) and [`hideSecondaryLabels`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#hideSecondaryLabels) properties.
 
 ```css
 /* shared styles are loaded from: */
@@ -330,10 +324,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderTickLabels/>);
 ```
 
-
 ### Value Format
 
-If you want to format the thumb and tick label values, the slider provides [`valueFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#valueFormat), [`valueFormatOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#valueFormatOptions) and [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#locale) properties. Тhe [`valueFormatOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#valueFormatOptions) allows you to specify the number of fraction and significant digits, style (decimal, currency, percent, unit), notation and others taking into account the specified [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#locale). The [`valueFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#valueFormat) is a string which may contain the `{0}` identifier which will be replaced by the value with applied format options.
+If you want to format the thumb and tick label values, the slider provides [`valueFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#valueFormat), [`valueFormatOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#valueFormatOptions) and [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#locale) properties. Тhe [`valueFormatOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#valueFormatOptions) allows you to specify the number of fraction and significant digits, style (decimal, currency, percent, unit), notation and others taking into account the specified [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#locale). The [`valueFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#valueFormat) is a string which may contain the `{0}` identifier which will be replaced by the value with applied format options.
 
 ```css
 /* shared styles are loaded from: */
@@ -376,10 +369,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderValueFormat/>);
 ```
 
-
 ### Labels
 
-In some cases you would want to format the values of the slider as string values i.e. map the values **\[0, 1, 2]** to **\['Low', 'Medium', 'High']**. For this scenario the slider allows you to define [`IgrSliderLabel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderlabel.html) elements inside it. The text content of the slider labels is going to be used for thumb and tick labels. Please note that when slider labels are provided, the [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#min), [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#max) and [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#step) properties are automatically calculated so that they do not allow values that do not map to the provided labels. In the case of 'Low', 'Medium' and 'High' labels, [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#min) is set to `0`, [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#max) is set to `2` and [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#step) is set to `1`.
+In some cases you would want to format the values of the slider as string values i.e. map the values **\[0, 1, 2]** to **\['Low', 'Medium', 'High']**. For this scenario the slider allows you to define [`IgrSliderLabel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderlabel.html) elements inside it. The text content of the slider labels is going to be used for thumb and tick labels. Please note that when slider labels are provided, the [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#min), [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#max) and [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#step) properties are automatically calculated so that they do not allow values that do not map to the provided labels. In the case of 'Low', 'Medium' and 'High' labels, [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#min) is set to `0`, [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#max) is set to `2` and [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#step) is set to `1`.
 
 ```css
 igc-slider {
@@ -416,7 +408,6 @@ export default function SliderLabels() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderLabels/>);
 ```
-
 
 ## Styling
 
@@ -516,22 +507,21 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SliderStyling/>);
 ```
 
-
 ## API References
 
-- [`hidePrimaryLabels`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#hidePrimaryLabels)
-- [`hideSecondaryLabels`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#hideSecondaryLabels)
-- [`hideTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#hideTooltip)
-- [`primaryTicks`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#primaryTicks)
+- [`hidePrimaryLabels`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#hidePrimaryLabels)
+- [`hideSecondaryLabels`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#hideSecondaryLabels)
+- [`hideTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#hideTooltip)
+- [`primaryTicks`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#primaryTicks)
 - [`IgrRangeSlider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrangeslider.html)
-- [`secondaryTicks`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#secondaryTicks)
+- [`secondaryTicks`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#secondaryTicks)
 - [`IgrSliderLabel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderlabel.html)
 - [`IgrSlider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html)
 - `SliderTickLabelRotation`
-- [`tickOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#tickOrientation)
-- [`upperBound`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#upperBound)
-- [`valueFormatOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#valueFormatOptions)
-- [`valueFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsliderbase.html#valueFormat)
+- [`tickOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#tickOrientation)
+- [`upperBound`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#upperBound)
+- [`valueFormatOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#valueFormatOptions)
+- [`valueFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html#valueFormat)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

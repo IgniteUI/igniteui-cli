@@ -175,7 +175,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Dependencies
 
 Install the Ignite UI for React layouts, inputs, charts and core packages:
@@ -538,7 +537,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ### React Data Chart Integration
 
 The React Toolbar contains a `Target` property. This is used to link a component, such as the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) as shown in the code below:
@@ -798,7 +796,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ### Color Editor
 
 You can add a custom color editor tool to the the React Toolbar, which will also work with the Command event to perform custom styling to your application.
@@ -1008,7 +1005,6 @@ export default class Sample extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
-
 
 <!-- ## Styling/Theming
 

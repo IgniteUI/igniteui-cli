@@ -315,7 +315,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(mockSession.chooseActionLoop).toHaveBeenCalled();
-		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
+		expect(aiConfig.configure).toHaveBeenCalledOnceWith("angular");
 	});
 	it("start - New project - missing IFs", async () => {
 		const mockProject = {

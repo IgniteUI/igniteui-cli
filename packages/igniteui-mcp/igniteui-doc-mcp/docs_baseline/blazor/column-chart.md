@@ -109,7 +109,6 @@ public class HighestGrossingMovies
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Column Charts Recommendations
@@ -219,7 +218,6 @@ public class TemperatureAverageData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Column Chart with Multiple Series
@@ -317,7 +315,6 @@ public class HighestGrossingMovies
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -423,7 +420,6 @@ public class EnergyRenewableConsumption
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -555,7 +551,6 @@ public class CompanyIncomeData
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 
@@ -737,7 +732,6 @@ public class ContinentsBirthRate
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Stacked 100% Column Chart
@@ -894,7 +888,6 @@ public class OnlineTrafficByDevice
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Range Column Chart
@@ -1045,7 +1038,6 @@ public class TemperatureRangeData
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Radial Column Chart
@@ -1193,7 +1185,6 @@ public class FootballPlayerStats
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

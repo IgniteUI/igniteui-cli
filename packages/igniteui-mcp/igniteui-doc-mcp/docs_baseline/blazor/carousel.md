@@ -76,7 +76,6 @@ The Blazor Carousel demo you see below shows slides containing only images.
 }
 ```
 
-
 ## Usage
 
 Before using the [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html), you need to register it as follows:
@@ -324,7 +323,6 @@ This carousel is going to contain slides with forms and images:
 }
 ```
 
-
 ## Animations
 
 Animated slide transitions provide the end-users a nice experience when interacting with the carousel.
@@ -501,7 +499,6 @@ igc-card-header {
     }
 }
 ```
-
 
 ## Navigation
 
@@ -712,7 +709,6 @@ These configurations will have the following result:
 @code {
 }
 ```
-
 
 ## Accessibility
 

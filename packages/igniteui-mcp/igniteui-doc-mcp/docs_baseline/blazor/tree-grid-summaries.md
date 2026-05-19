@@ -170,7 +170,6 @@ public class OrdersTreeData
 }
 ```
 
-
 > [!Note]
 > The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
 
@@ -437,7 +436,6 @@ public class EmployeesFlatData
 }
 ```
 
-
 <!-- ComponentEnd: TreeGrid -->
 
 ### Summary Template
@@ -629,7 +627,6 @@ public class EmployeesNestedTreeData
     }
 }
 ```
-
 
 ## Disabled Summaries
 
@@ -908,7 +905,6 @@ public class OrdersTreeData
 }
 ```
 
-
 <!-- ComponentStart: TreeGrid -->
 
 ## Child Summaries
@@ -1088,7 +1084,6 @@ public class OrdersTreeData
     }
 }
 ```
-
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -1292,7 +1287,6 @@ public class OrdersTreeData
     }
 }
 ```
-
 
 <!-- ComponentEnd: TreeGrid -->
 

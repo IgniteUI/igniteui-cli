@@ -158,7 +158,6 @@ public class PivotDataFlat
 }
 ```
 
-
 ## Dimensions Sorting
 
 Dimension values in the `rows` or `columns` can be sorted via the related chip or the API. This functionality is embedded and enabled by default.

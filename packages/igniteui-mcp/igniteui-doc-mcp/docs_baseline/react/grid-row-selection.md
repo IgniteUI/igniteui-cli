@@ -320,7 +320,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## Setup
 
 In order to setup row selection in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html), you just need to set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowSelection) property. This property accepts `GridSelectionMode` enumeration.
@@ -457,7 +456,7 @@ const mySelectedRows = [1,2,3];
 
 You can template header and row selectors in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) and also access their contexts which provide useful functionality for different scenarios.
 
-By default, the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`click`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
+By default, the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`click`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
 
 #### Row Template
 
@@ -505,7 +504,7 @@ const rowSelectorTemplate = (ctx: IgrRowSelectorTemplateContext) => {
 }
 ```
 
-In the above example we are using an [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) and we bind `rowContext.selected` to its [`checked`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxbase.html#checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
+In the above example we are using an [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) and we bind `rowContext.selected` to its [`checked`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
 
 ### Header Template
 
@@ -714,7 +713,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <!-- ComponentStart: Grid, TreeGrid -->
 
 ### Excel Style Row Selectors Demo
@@ -895,7 +893,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 ### Conditional Selection Demo
@@ -1062,11 +1059,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-
 ## API References
 
 - [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
-- [`IgrGridRowComponent`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrowcomponent.html)
+- [`IgrGridRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrow.html)
 
 ## Additional Resources
 

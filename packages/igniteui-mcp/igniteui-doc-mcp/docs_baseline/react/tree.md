@@ -61,7 +61,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<TreeBasicExample/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## How to Use Ignite UI for React Tree With Ignite UI
@@ -249,7 +248,6 @@ export default class TreeStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<TreeStyling/>);
 ```
-
 
 <div class="divider--half"></div>
 

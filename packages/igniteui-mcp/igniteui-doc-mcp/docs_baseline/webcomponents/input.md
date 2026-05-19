@@ -20,7 +20,6 @@ The Ignite UI for Web Components Input is a component where the user can enter d
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 To get started we need to import the [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) in our typescript file and register the component by calling the [defineComponents()](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/index.html#defineComponents) function as follows:
 
 ```ts
@@ -47,7 +46,6 @@ With `prefix` and `suffix` slots we can add different content before and after t
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Helper Text
 
 The `helper-text` slot provides a hint placed below the Input. Let's add some helper text to our phone Input:
@@ -56,7 +54,6 @@ The `helper-text` slot provides a hint placed below the Input. Let's add some he
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Input Sizing
 
@@ -79,7 +76,6 @@ We can allow the user to change the size of the [`IgcInputComponent`](https://ww
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 In the sample above we have demonstrated the use of the following attributes:
 
@@ -143,7 +139,6 @@ igc-input::part(suffix) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider"></div>
 

@@ -25,7 +25,6 @@ The Web Components Button Component lets you enable clickable elements that trig
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Usage
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -85,7 +84,6 @@ Use the [`variant`](https://www.infragistics.com/products/ignite-ui-web-componen
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Outlined Button
 
 All you have to do to create an `outlined` button is to change the value of the [`variant`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#variant) property:
@@ -98,7 +96,6 @@ All you have to do to create an `outlined` button is to change the value of the 
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ### Flat Button
 
@@ -113,7 +110,6 @@ Analogically, we can switch to `flat` variant.
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Floating Action Button
 
 We can create a floating action button by setting the [`variant`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#variant) property to `fab`:
@@ -126,7 +122,6 @@ We can create a floating action button by setting the [`variant`](https://www.in
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Button Sizing
 
@@ -180,7 +175,6 @@ The result of implementing the above code should look like the following:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Download
 
 Setting the [`download`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#download) property will prompt the user to save the linked URL instead of navigating to it.
@@ -199,7 +193,6 @@ Setting the [`download`](https://www.infragistics.com/products/ignite-ui-web-com
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Styling
 
@@ -232,7 +225,6 @@ igc-button::part(base) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 

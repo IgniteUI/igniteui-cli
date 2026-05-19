@@ -153,7 +153,6 @@ public class AthletesData
 }
 ```
 
-
 <!-- ComponentEnd: Grid, TreeGrid -->
 
 The predefined [`IgbGridToolbarActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarActions.html) and [`IgbGridToolbarTitle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarTitle.html) UI components are added inside the [`IgbGridToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbar.html) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
@@ -331,7 +330,6 @@ public class AthletesData
     }
 }
 ```
-
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
@@ -589,7 +587,6 @@ public class AthletesData
 }
 ```
 
-
 ## Exporting Indicator
 
 When using the default toolbar exporter component, whenever an export operation takes place the toolbar will show a progress indicator while the operation is in progress.
@@ -742,7 +739,6 @@ public class AthletesData
     }
 }
 ```
-
 
 ## Custom Content
 
@@ -936,7 +932,6 @@ public class PlayersData // AthletesData
 }
 ```
 
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -1085,7 +1080,6 @@ public class AthletesData
     }
 }
 ```
-
 
 ## API References
 

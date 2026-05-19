@@ -131,7 +131,6 @@ public class HighestGrossingMovies
 }
 ```
 
-
 <div class="divider--half"></div>
 
 The [`ToolTipType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ToolTipType) property is configurable and can be set to one of the following options:
@@ -193,7 +192,6 @@ This example shows how to create custom tooltips for all series in Blazor [`IgbC
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Custom Tooltips in Data Chart
@@ -240,7 +238,6 @@ This example shows how to create custom tooltips for each series in Blazor Data 
     }
 }
 ```
-
 
 <div class="divider--half"></div>
 

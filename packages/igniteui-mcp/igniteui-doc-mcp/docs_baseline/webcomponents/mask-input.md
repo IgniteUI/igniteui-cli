@@ -18,7 +18,6 @@ The Ignite UI for Web Components Mask Input is an input field that allows the de
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Usage
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -77,10 +76,9 @@ After that you should see the following in your browser:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Prompt Character
 
-Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`prompt`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputbasecomponent.html#prompt) property:
+Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`prompt`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html#prompt) property:
 
 ```html
 <igc-mask-input id="mask-input" mask="(####) 00-00-00 Ext. 9999" prompt="-"></igc-mask-input>
@@ -90,7 +88,7 @@ By default, the `prompt` character is **underscore**.
 
 ### Placeholder
 
-Developers can also take advantage of the [`placeholder`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputbasecomponent.html#placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
+Developers can also take advantage of the [`placeholder`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html#placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
 
 ```html
 <igc-mask-input id="mask-input" mask="00/00/0000" placeholder="dd/MM/yyyy"></igc-mask-input>
@@ -104,7 +102,6 @@ The [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-we
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Styling
 
@@ -146,7 +143,6 @@ igc-mask-input::part(input)::placeholder {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Assumptions and limitations
 

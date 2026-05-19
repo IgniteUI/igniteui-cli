@@ -40,7 +40,6 @@ The Ignite UI for Blazor Avatar helps to display initials, images, or icons in y
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Usage
@@ -101,7 +100,6 @@ If the [`Initials`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bl
 }
 ```
 
-
 ### Image
 
 The avatar can also display an image when the [`Src`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html#IgniteUI_Blazor_Controls_IgbAvatar_Src) attribute is assigned a valid URL to a static asset. In that case the [`Initials`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html#IgniteUI_Blazor_Controls_IgbAvatar_Initials) value will be ignored and children elements will not be rendered.
@@ -126,7 +124,6 @@ The avatar can also display an image when the [`Src`](https://www.infragistics.c
 
 }
 ```
-
 
 ### Shape
 
@@ -159,7 +156,6 @@ The avatar supports three shapes - `circle`, `rounded`, and `square`. The defaul
 }
 ```
 
-
 ### Size
 
 Apart from the shape, the size of the avatar can also be changed by utilizing the `--ig-size` CSS variable. The supported sizes are `small` (default), `medium`, and `large`. The following code snippet shows how to use a different component size:
@@ -184,7 +180,6 @@ igc-avatar {
 
 }
 ```
-
 
 ### Styling
 
@@ -226,7 +221,6 @@ igc-avatar::part(base) {
 
 }
 ```
-
 
 <div class="divider--half"></div>
 

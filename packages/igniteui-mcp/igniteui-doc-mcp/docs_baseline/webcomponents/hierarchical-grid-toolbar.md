@@ -31,10 +31,9 @@ The toolbar and the predefined UI components support Web Components events and e
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
-The predefined [`IgcGridToolbarActionsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractionscomponent.html) and [`IgcGridToolbarTitleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitlecomponent.html) UI components are added inside the [`IgcGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarcomponent.html) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
+The predefined [`IgcGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractions.html) and [`IgcGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitle.html) UI components are added inside the [`IgcGridToolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -55,7 +54,7 @@ The predefined [`IgcGridToolbarActionsComponent`](https://www.infragistics.com/p
 <!-- ComponentEnd: HierarchicalGrid -->
 
 > [!Note]
-> As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgcGridToolbarActionsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractionscomponent.html) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
+> As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgcGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractions.html) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
 
 Of course, each of these UIs can be added independently of each other, or may not be added at all. This way the toolbar container will be rendered empty:
 
@@ -127,12 +126,11 @@ Listed below are the main features of the toolbar with example code for each of 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <!-- ComponentEnd: HierarchicalGrid -->
 
 ### Title
 
-Setting a title for the toolbar in your grid is achieved by using the [`IgcGridToolbarTitleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitlecomponent.html).
+Setting a title for the toolbar in your grid is achieved by using the [`IgcGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitle.html).
 
 Users can provide anything from simple text to more involved templates.
 
@@ -148,7 +146,7 @@ Users can provide anything from simple text to more involved templates.
 
 ### Actions
 
-The [`IgcGridToolbarActionsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractionscomponent.html) is where users can place actions/interactions in relation to the parent grid.
+The [`IgcGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractions.html) is where users can place actions/interactions in relation to the parent grid.
 As with the title portion of the toolbar, users can provide anything inside that template part, including the default
 toolbar interaction components.
 
@@ -166,7 +164,7 @@ toolbar interaction components.
 
 ### Column Pinning
 
-The [`IgcGridToolbarPinningComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarpinningcomponent.html) component provides the default UI for interacting with column pinning in the grid.
+The [`IgcGridToolbarPinning`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarpinning.html) component provides the default UI for interacting with column pinning in the grid.
 
 The component is setup to work out of the box with the parent grid containing the toolbar as well as several input properties for customizing the UI, such as the component title, the placeholder for the component input and the height of the dropdown itself.
 
@@ -188,7 +186,7 @@ The component is setup to work out of the box with the parent grid containing th
 
 ### Column Hiding
 
-The [`IgcGridToolbarHidingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhidingcomponent.html) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
+The [`IgcGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhiding.html) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
 title, the placeholder for the component input and the height of the dropdown itself.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
@@ -233,7 +231,7 @@ Toolbar Advanced Filtering component provides the default UI for the Advanced Fi
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-As with the rest of the toolbar actions, exporting is provided through a [`IgcGridToolbarExporterComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarexportercomponent.html) out of the box.
+As with the rest of the toolbar actions, exporting is provided through a [`IgcGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarexporter.html) out of the box.
 
 The toolbar exporter component exposes several input properties for customizing both the UI and the exporting experience.
 
@@ -296,12 +294,11 @@ The following sample demonstrates how to customize the exported files:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Exporting Indicator
 
 When using the default toolbar exporter component, whenever an export operation takes place the toolbar will show a progress indicator while the operation is in progress.
 
-Moreover, users can set the toolbar [`showProgress`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarcomponent.html#showProgress) property and use for their own long running operations or just as another way to signify an action taking place in the grid.
+Moreover, users can set the toolbar [`showProgress`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html#showProgress) property and use for their own long running operations or just as another way to signify an action taking place in the grid.
 
 The sample belows uses has significant amount of data, in order to increase the time needed for data export so the progressbar can be seen. Additionally it has another button that simulates a long running operation in the grid:
 
@@ -1878,7 +1875,6 @@ export class SingersData extends Array<SingersDataItem> {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Custom Content
 
@@ -3478,7 +3474,6 @@ export class SingersData extends Array<SingersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Styling
 
 In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../theming-grid.md).
@@ -3511,7 +3506,6 @@ Then set the related CSS properties for that class:
 }
 ```
 
-
 <!-- ComponentStart: HierarchicalGrid -->
 
 <!-- ComponentEnd: HierarchicalGrid -->
@@ -3521,11 +3515,11 @@ Then set the related CSS properties for that class:
 The Grid Toolbar service has a few more APIs to explore, which are listed below.
 
 - [`IgcGridToolbarAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaradvancedfiltering.html)
-- [`IgcGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarcomponent.html)
-- [`IgcGridToolbarExporterComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarexportercomponent.html)
-- [`IgcGridToolbarHidingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhidingcomponent.html)
-- [`IgcGridToolbarPinningComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarpinningcomponent.html)
-- [`IgcGridToolbarTitleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitlecomponent.html)
+- [`IgcGridToolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html)
+- [`IgcGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarexporter.html)
+- [`IgcGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhiding.html)
+- [`IgcGridToolbarPinning`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarpinning.html)
+- [`IgcGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitle.html)
 
 [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) Events:
 

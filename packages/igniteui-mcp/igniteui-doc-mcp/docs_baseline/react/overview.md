@@ -1,459 +1,463 @@
 ---
-title: Free React Data Grid Lite (Open Source) - Ignite UI Grid Lite | MIT license
-_description: Create apps with our open-source Grid Lite. It’s lightweight and packed with essential features - filtering, hiding, sorting, and more. Try now.
-_keywords: overview, React, {ComponentKeywords}, Ignite UI for React, Infragistics
-mentionedTypes: [{ComponentApiMembers}]
-namespace: Infragistics.Controls
+title: React ComboBox Component – Ignite UI for React
+_description: React Combo component provides a powerful input, combining features of the basic HTML input, select, filtering and custom drop-down lists. Try it for FREE
+_keywords: Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React ComboBox component
 _license: MIT
-_tocName: Grid Lite
+mentionedTypes: ["Combo", "ComboItem", "ComboHeader", "ComboList"]
+_tocName: Combo Box
 ---
 
-# Free & Open-Source React Data Grid (Grid Lite)
+# React ComboBox Overview
 
-The Ignite UI for React Grid Lite is a lightweight, high-performance React data grid that’s free to use, open-source, and built for modern React applications.
+React ComboBox is a lightweight editor that enables users to easily select, filter, and group different predefined options in a provided list. The component also supports options for React ComboBox keyboard navigation, templates to customize how the items, header, and footer are displayed.
 
-This free React data grid is open-source JavaScript data grid built as a Web Component, which means you can use it dependency-free with or without a web framework. It delivers essential data-display functionality with minimal overhead and the performance users expect. The React Grid Lite is designed for developers who need fast and lightweight data presentation.
+The Ignite UI for React ComboBox component provides a list of options from which users can make a selection. It displays all options in a virtualized list of items, meaning the ComboBox can simultaneously show thousands of records, where one or more options can be selected. Additionally, the component features case-sensitive filtering, grouping, complex data binding and more.
 
-## What You Get with our Free React Data Grid
+## React ComboBox Example
 
-Our free, open-source React Grid Lite comes with the following column-based features: sorting, filtering, hiding, resizing and a variety of pre-defined data types. Blazing-fast performance is delivered with the use of row virtualization. In addition, the component supports keyboard navigation and theming through the [Ignite UI Theming Framework](../themes/overview.md).
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+```
+```tsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { IgrCombo } from "igniteui-react";
+import "igniteui-webcomponents/themes/light/bootstrap.css";
 
-## Installation and Setup
+interface City {
+  id: string;
+  name: string;
+}
 
-### Installation
+const cities: City[] = [
+  { name: "London", id: "UK01" },
+  { name: "Sofia", id: "BG01" },
+  { name: "New York", id: "NY01" },
+];
 
-To install Grid Lite, go to the root folder of your project (where `package.json` is located) and run the following command using npm:
+export default function ComboOverview() {
+  return (
+    <div className="sample">
+      <IgrCombo
+        valueKey="id"
+        displayKey="name"
+        data={cities}
+        value={["BG01"]}
+      ></IgrCombo>
+    </div>
+  );
+}
+
+// rendering above class to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<ComboOverview />);
+```
+
+<div class="divider--half"></div>
+
+## Getting Started with React ComboBox
+
+First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
 ```cmd
 npm install igniteui-react
-npm install igniteui-grid-lite
 ```
 
-Or using yarn:
-
-```cmd
-yarn add igniteui-react
-yarn add igniteui-grid-lite
-```
-
-### Using the Grid Lite in your React code
-
-In the file where you want to use Grid Lite, first we need to import it:
+You will then need to import the React [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html) and its necessary CSS:
 
 ```tsx
-import { IgrGridLite } from 'igniteui-react/grid-lite';
+import { IgrCombo } from 'igniteui-react';
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-<!-- End: React -->
+> [!WARNING]
+> The [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
-Add the `<GridLite>` component to your markup:
+Then, we will bind an array of objects to the combo data source used for building the list of options.
 
 ```tsx
-return (
-  <div className="container sample ig-typography">
-    <div className="grid-lite-wrapper">
-      <IgrGridLite ref={this.gridRef} id="grid-lite"></IgrGridLite>
-    </div>
-  </div>
-);
-```
-
-## Grid Lite in Action
-
-```typescript
-export type UserSimple = {
-  id: string;
-  username: string;
-  email: string;
-  subscribed: boolean;
-};
-
-export type ProductInfo = {
+interface City {
   id: string;
   name: string;
-  price: number;
-  sold: number;
-  rating: number;
-  total: number;
-};
-
-export type User = {
-  id: string;
-  firstName: string;
-  lastName: string;
-  age: number;
-  email: string;
-  avatar: string;
-  active: boolean;
-  priority: 'Low' | 'Standard' | 'High';
-  employmentType: 'Full-Time' | 'Part-Time' | 'Contract';
-  department: 'Engineering' | 'Marketing' | 'Sales' | 'Finance';
-  satisfaction: number;
-  registeredAt: Date;
-};
-
-export class GridLiteDataService {
-  private counter = 0;
-
-  private namesMen = ['John', 'Bob', 'Mark', 'Charlie', 'Martin', 'Bill', 'Frank', 'Larry', 'Henry', 'Steve', 'Mike', 'Andrew'];
-  private namesWomen = ['Jane', 'Alice', 'Diana', 'Eve', 'Grace' , 'Katie', 'Irene', 'Liz', 'Fiona', 'Pam', 'Val', 'Mindy'];
-  private lastNames = ['Smith', 'Johnson', 'Mendoza', 'Brown', 'Spencer', 'Stone', 'Stark', 'Rooney'];
-  private productNames = ['Widget', 'Gadget', 'Gizmo', 'Device', 'Tool', 'Instrument', 'Machine', 'Equipment'];
-  private productModels = ['Pro', 'Plus', 'Max', 'Ultra', 'Mini', 'Lite'];
-  private priorities: ('Low' | 'Standard' | 'High')[] = ['Low', 'Standard', 'High'];
-  private employmentTypes: ('Full-Time' | 'Part-Time' | 'Contract')[] = ['Full-Time', 'Part-Time', 'Contract'];
-  private departments: ('Engineering' | 'Marketing' | 'Sales' | 'Finance')[] = ['Engineering', 'Marketing', 'Sales', 'Finance'];
-
-  private randomInt(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  private randomFloat(min: number, max: number, precision = 2): number {
-    const array = new Uint32Array(1);
-    window.crypto.getRandomValues(array);
-    const random01 = array[0] / 2 ** 32;
-    return parseFloat((random01 * (max - min) + min).toFixed(precision));
-  }
-
-  private randomElement<T>(array: T[]): T {
-    return array[this.randomInt(0, array.length - 1)];
-  }
-
-  private randomBoolean(): boolean {
-    const array = new Uint8Array(1);
-    window.crypto.getRandomValues(array);
-    return (array[0] & 1) === 0;
-  }
-
-  private generateId(): string {
-    return `1000-${this.counter++}-${this.randomInt(1000, 9999)}`;
-  }
-
-  createProductInfo(): ProductInfo {
-    const price = this.randomFloat(50, 500, 2);
-    const sold = this.randomInt(10, 100);
-    const total = parseFloat((price * sold).toFixed(2));
-    const product = this.randomElement(this.productNames) + ' ' + this.randomElement(this.productModels);
-
-    return {
-      price,
-      sold,
-      total,
-      id: this.generateId(),
-      name: product,
-      rating: this.randomFloat(0, 5, 1)
-    };
-  }
-
-  createUserSimple(): UserSimple {
-    const firstName = this.randomElement(this.namesMen.concat(this.namesWomen)).toLowerCase();
-    const lastName = this.randomElement(this.lastNames).toLowerCase();
-    const email = firstName + '.' + lastName + '@example.com';
-    const username = firstName + '.' + lastName + this.randomInt(1, 99);
-    return {
-      id: this.generateId(),
-      username: username,
-      email: email,
-      subscribed: this.randomBoolean()
-    };
-  }
-
-  createUser(): User {
-    let imagePath: string = "";
-    let firstName: string = "";
-    const gender = this.randomInt(0, 1);
-    if (gender === 0) {
-       imagePath = "https://dl.infragistics.com/x/img/people/men/" + this.randomInt(10, 40) + ".png";
-       firstName = this.randomElement(this.namesMen);
-    } else {
-       imagePath = "https://dl.infragistics.com/x/img/people/women/" + this.randomInt(10, 40) + ".png";
-       firstName = this.randomElement(this.namesWomen);
-    }
-    const lastName = this.randomElement(this.lastNames);
-    const email = firstName.toLowerCase() + '.' + lastName.toLowerCase() + '@example.com';
-
-    return {
-      id: this.generateId(),
-      firstName,
-      lastName,
-      age: this.randomInt(18, 90),
-      email,
-      avatar: imagePath,
-      active: this.randomBoolean(),
-      priority: this.randomElement(this.priorities),
-      employmentType: this.randomElement(this.employmentTypes),
-      department: this.randomElement(this.departments),
-      satisfaction: this.randomInt(0, 5),
-      registeredAt: new Date(Date.now() - this.randomInt(0, 365 * 24 * 60 * 60 * 1000))
-    };
-  }
-
-  generateUsers(count: number): User[] {
-    return Array.from({ length: count }, () => this.createUser());
-  }
-
-  generateProducts(count: number): ProductInfo[] {
-    return Array.from({ length: count }, () => this.createProductInfo());
-  }
-
-  generateSimpleUsers(count: number): UserSimple[] {
-    return Array.from({ length: count }, () => this.createUserSimple());
-  }
 }
+
+const cities: City[] = [
+  { name: "London", id: "UK01" },
+  { name: "Sofia", id: "BG01" },
+  { name: "New York", id: "NY01" },
+];
+
+<IgrCombo
+    valueKey="id"
+    displayKey="name"
+    data={cities}
+    value={["BG01"]}
+></IgrCombo>
+```
+
+### Data value and display properties
+
+When the combo is bound to a list of complex data (i.e. objects), we need to specify a property that the control will use to handle item selection. The component exposes the following properties:
+
+<!-- end: Blazor -->
+
+- `T` - **required**, if [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) is omitted, this should be set to "object", otherwise this needs to match the property type of [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey).
+
+<!-- end: Blazor -->
+
+- [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) - **Optional**, **required** for complex data object - Determines which field of the data source will be used to make selections. If [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) is omitted, the selection API will use object references to select items.
+- [`displayKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#displayKey) - **Optional**, **recommended** for complex data objects - Determines which field in the data source is used as the display value. If no value is specified for [`displayKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#displayKey), the combo will use the specified [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) (if any).
+    In our case, we want the combo to display the `name` of each city and use the `id` field for item selection and as the underlying value for each item. Therefore, we provide these properties to the combo's [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) and [`displayKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#displayKey) respectively.
+
+> [!Note]
+> When the data source consists of primitive types (e.g. `strings`, `numbers`, etc.), **do not** specify a [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) and/or [`displayKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#displayKey).
+
+### Setting Value
+
+The ComboBox component exposes a [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#value) getter and setter in addition to an attribute, which is also called value. You can use the value attribute to set the selected items on component initialization.
+
+If you want to read the value, i.e. the list of currently selected items, or to update the value use the value getter and setter respectively. The value getter will return a list of all selected items as represented by the [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey). Likewise, if you want to update the list of selected items by using the value setter, you should provide a list of items by their [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey).
+
+Example:
+
+```tsx
+const comboRef = useRef<IgrCombo>(null);
+
+// Given the overview example from above this will return ['BG01']
+console.log(comboRef.current.value);
+
+// Change the selected items to New York and London
+comboRef.current.value = ['NY01', 'UK01'];
+```
+
+### Selection API
+
+The combo component exposes APIs that allow you to change the currently selected items.
+
+Besides selecting items from the list of options by user interaction, you can select items programmatically. This is done via the [`select`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#select) and [`deselect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#deselect) methods. You can pass an array of items to both methods. If the methods are called with no arguments all items will be selected/deselected depending on which method is called. If you have specified a [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) for your combo component, then you should pass the value keys of the items you would like to select/deselect:
+
+#### Select/deselect some items
+
+```tsx
+// Select/deselect items by their IDs as valueKey is set to 'id'
+comboRef.current.select(["UK01", "UK02", "UK03", "UK04", "UK05"]);
+comboRef.current.deselect(["UK01", "UK02", "UK03", "UK04", "UK05"]);
+```
+
+#### Select/deselect all items
+
+```tsx
+// Select/deselect all items
+comboRef.current.select([]);
+comboRef.current.deselect([]);
+```
+
+If the [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) property is omitted, you will have to list the items you wish to select/deselect as objects references:
+
+```tsx
+// Select/deselect values by object references when no valueKey is provided
+comboRef.current.select([cities[1], cities[5]]);
+comboRef.current.deselect([cities[1], cities[5]]);
+```
+
+```typescript
+interface City {
+  id: string;
+  name: string;
+  country: string;
+}
+
+export const Cities: City[] = [
+  { name: "London", id: "UK01", country: "UK" },
+  { name: "Manchester", id: "UK02", country: "UK" },
+  { name: "Birmingham", id: "UK03", country: "UK" },
+  { name: "Glasgow", id: "UK04", country: "UK" },
+  { name: "Liverpool", id: "UK05", country: "UK" },
+  { name: "New York", id: "US01", country: "USA" },
+  { name: "Miami", id: "US02", country: "USA" },
+  { name: "Philadelphia", id: "US03", country: "USA" },
+  { name: "Chicago", id: "US04", country: "USA" },
+  { name: "Springfield", id: "US05", country: "USA" },
+  { name: "Los Angeles", id: "US06", country: "USA" },
+  { name: "Houston", id: "US07", country: "USA" },
+  { name: "Phoenix", id: "US08", country: "USA" },
+  { name: "San Diego", id: "US09", country: "USA" },
+  { name: "Dallas", id: "US010", country: "USA" },
+  { name: "Sofia", id: "BG01", country: "Bulgaria" },
+  { name: "Plovdiv", id: "BG02", country: "Bulgaria" },
+  { name: "Varna", id: "BG03", country: "Bulgaria" },
+  { name: "Burgas", id: "BG04", country: "Bulgaria" },
+  { name: "Rome", id: "IT01", country: "Italy" },
+  { name: "Milan", id: "IT02", country: "Italy" },
+  { name: "Naples", id: "IT03", country: "Italy" },
+  { name: "Turin", id: "IT04", country: "Italy" },
+  { name: "Palermo", id: "IT05", country: "Italy" },
+  { name: "Florence", id: "IT06", country: "Italy" },
+];
 ```
 ```css
-.grid-lite-wrapper {
-  width: 100%;
-  height: 100%;
-}
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 
-igc-grid-lite {
-  min-height: 75vh;
-  --ig-size: 1;
-}
-
-/* Badge spacing tokens are scale multipliers; 2.6667 = 0.5rem target inline padding / 0.1875rem base spacing unit. */
-.badge-padded {
-  --ig-spacing-inline: 2.6667;
-}
-
-.badge-padded::part(base) {
-  padding-block: 0.125rem;
-  color: var(--ig-gray-900) !important;
-}
-
-/* Use lighter variant shades across both department (filled) and employment (outlined) badges. */
-.badge-padded[variant="success"] {
-  --ig-badge-border-color: var(--ig-success-300);
-}
-
-.badge-padded[variant="warning"] {
-  --ig-badge-border-color: var(--ig-warn-300);
-}
-
-.badge-padded[variant="primary"] {
-  --ig-badge-border-color: var(--ig-primary-300);
-}
-
-.badge-padded[variant="danger"] {
-  --ig-badge-border-color: var(--ig-error-300);
-}
-
-/* Force lighter fills for department (filled) badges. */
-.badge-padded.badge-department[variant="success"]::part(base) {
-  background: var(--ig-success-300) !important;
-}
-
-.badge-padded.badge-department[variant="warning"]::part(base) {
-  background: var(--ig-warn-300) !important;
-}
-
-.badge-padded.badge-department[variant="primary"]::part(base) {
-  background: var(--ig-primary-300) !important;
-}
-
-.badge-padded.badge-department[variant="danger"]::part(base) {
-  background: var(--ig-error-300) !important;
-}
-
-/* Employment badges are outline-only. */
-.badge-employment::part(base) {
-  background: transparent !important;
-  box-shadow: inset 0 0 0 0.125rem var(--ig-badge-border-color) !important;
+.button-container {
+    display: flex;
+    margin-top: 16px;
+    gap: 8px;
 }
 ```
 ```tsx
-import React, { useEffect } from "react";
+import React, { useRef } from "react";
 import ReactDOM from "react-dom/client";
-import { GridLiteDataService, User } from "./GridLiteDataService";
+import { IgrCombo, IgrButton } from "igniteui-react";
 import "./index.css";
-import {
-  IgrAvatar,
-  IgrBadge,
-  IgrRating,
-  type StyleVariant,
-} from "igniteui-react";
-import {
-  IgrGridLite,
-  IgrGridLiteColumn,
-  type IgrCellContext,
-} from "igniteui-react/grid-lite";
-
 import "igniteui-webcomponents/themes/light/bootstrap.css";
-import "./index.css";
+import { Cities } from "./ComboData";
 
-const avatarCellTemplate = (ctx: IgrCellContext) => (
-  <IgrAvatar shape="circle" alt="User avatar" src={ctx.value}></IgrAvatar>
-);
+export default function ComboSelection() {
+  const comboRef = useRef<IgrCombo>(null);
 
-const satisfactionCellTemplate = (ctx: IgrCellContext) => (
-  <IgrRating readOnly max={5} step={0.01} value={ctx.value}></IgrRating>
-);
+  const selectCities = () => {
+    comboRef.current.select(["UK01", "UK02", "UK03", "UK04", "UK05"]);
+  };
 
-const getDepartmentBadgeVariant = (value: string): StyleVariant => {
-  switch (value) {
-    case "Engineering":
-      return "primary";
-    case "Marketing":
-      return "warning";
-    case "Sales":
-      return "danger";
-    case "Finance":
-      return "success";
-    default:
-      return "primary";
-  }
-};
+  const deselectCities = () => {
+    comboRef.current.deselect(["UK01", "UK02", "UK03", "UK04", "UK05"]);
+  };
 
-const getEmploymentTypeOutline = (value: string): StyleVariant => {
-  switch (value) {
-    case "Full-Time":
-      return "success";
-    case "Part-Time":
-      return "warning";
-    case "Contract":
-      return "primary";
-    default:
-      return "primary";
-  }
-};
+  const selectAll = () => {
+    comboRef.current.select([]);
+  };
 
-const employmentTypeCellTemplate = (ctx: IgrCellContext) => (
-  <IgrBadge
-    variant={getEmploymentTypeOutline(ctx.value)}
-    outlined={true}
-    className="badge-padded badge-employment"
-  >
-    {ctx.value}
-  </IgrBadge>
-);
-
-const departmentCellTemplate = (ctx: IgrCellContext) => (
-  <IgrBadge
-    variant={getDepartmentBadgeVariant(ctx.value)}
-    className="badge-padded badge-department"
-  >
-    {ctx.value}
-  </IgrBadge>
-);
-
-const registeredAtCellTemplate = (ctx: IgrCellContext) => (
-  <span>{ctx.value.toLocaleString()}</span>
-);
-
-export default function Sample() {
-  const [data, setData] = React.useState<User[]>([]);
-
-  useEffect(() => {
-    const dataService = new GridLiteDataService();
-    const data: User[] = dataService.generateUsers(1000);
-    setData(data);
-  }, []);
+  const deselectAll = () => {
+    comboRef.current.deselect([]);
+  };
 
   return (
-    <div className="container sample ig-typography">
-      <div className="grid-lite-wrapper">
-        <IgrGridLite data={data} id="grid-lite" adoptRootStyles={true}>
-          <IgrGridLiteColumn
-            field="avatar"
-            header="Avatar"
-            cellTemplate={avatarCellTemplate}
-          ></IgrGridLiteColumn>
-          <IgrGridLiteColumn
-            field="firstName"
-            header="First Name"
-            sortable
-            filterable
-            resizable
-          ></IgrGridLiteColumn>
-          <IgrGridLiteColumn
-            field="lastName"
-            header="Last Name"
-            sortable
-            filterable
-            resizable
-          ></IgrGridLiteColumn>
-          <IgrGridLiteColumn
-            field="satisfaction"
-            header="Satisfaction Rating"
-            dataType="number"
-            sortable
-            filterable
-            resizable
-            cellTemplate={satisfactionCellTemplate}
-          ></IgrGridLiteColumn>
-          <IgrGridLiteColumn
-            field="employmentType"
-            header="Employment Type"
-            sortable
-            filterable
-            resizable
-            cellTemplate={employmentTypeCellTemplate}
-          ></IgrGridLiteColumn>
-          <IgrGridLiteColumn
-            field="email"
-            header="Email Address"
-            resizable
-          ></IgrGridLiteColumn>
-          <IgrGridLiteColumn
-            field="department"
-            header="Department"
-            sortable
-            filterable
-            resizable
-            cellTemplate={departmentCellTemplate}
-          ></IgrGridLiteColumn>
-          <IgrGridLiteColumn
-            field="registeredAt"
-            header="Registered On"
-            sortable
-            resizable
-            cellTemplate={registeredAtCellTemplate}
-          ></IgrGridLiteColumn>
-        </IgrGridLite>
+    <div className="sample">
+      <IgrCombo
+        valueKey="id"
+        displayKey="name"
+        label="Cities"
+        placeholder="Pick a city"
+        placeholderSearch="Search for a city"
+        data={Cities}
+        ref={comboRef}
+      ></IgrCombo>
+      <div className="button-container">
+        <IgrButton onClick={selectCities}>
+          <span>Select UK Cities</span>
+        </IgrButton>
+        <IgrButton onClick={deselectCities}>
+          <span>Deselect UK Favorites</span>
+        </IgrButton>
+        <IgrButton onClick={selectAll}>
+          <span>Select All</span>
+        </IgrButton>
+        <IgrButton onClick={deselectAll}>
+          <span>Deselect All</span>
+        </IgrButton>
       </div>
     </div>
   );
 }
 
-// rendering above component in the React DOM
+// rendering above class to the React DOM
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Sample />);
+root.render(<ComboSelection />);
 ```
 
+### Validation
 
-Grid Lite is designed to give you the core features that you need to deliver a beautiful data grid / data table experience in your apps. Designed for performance and beauty, the Grid Lite will work in any framework, on any platform.
+The Ignite UI for React Combo component supports most of the [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) properties, such as [`required`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#required), [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#disabled), [`autofocus`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#autofocus), [`invalid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#invalid), etc. The component also exposes two methods bound to its validation:
 
-## Performance Built In
+- [`reportValidity`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#reportValidity) - checks for validity and returns true if the component satisfies the validation constraints.
+- [`checkValidity`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#checkValidity) - a wrapper around reportValidity to comply with the native input API.
 
-Row-level virtualization allows you to render unlimited amounts of data with smooth scrolling.
+## Keyboard Navigation
 
-## Automatic Column Types
+When the combo component is focused and the list of options is **not visible**:
 
-Column types are automatically generated based on your data source, with built-in filtering tailored to each column type.
+- Open the list of options using <kbd>Down/Alt</kbd> + <kbd>Down</kbd> keys.
 
-## Interactive Features
+When the combo component is focused and the list of options is **visible**:
 
-All the core interactive features your users expect: column filtering, column hiding, column resizing, column sorting, and more.
+- Using the <kbd>Down</kbd> key will activate the next item in the list.
+- Using the <kbd>Up</kbd> key will activate the previous item in the list. If the first item is already active it will focus the input.
+- Using the <kbd>HOME</kbd> or <kbd>END</kbd> keys will activate the first or the last item in the list.
+- Using the <kbd>SPACE</kbd> key will select the active item.
+- Using the <kbd>ENTER</kbd> key will select the active item and close the list of options.
+- Using the <kbd>ESC</kbd> or <kbd>TAB/SHIFT</kbd> + <kbd>TAB</kbd> keys will close the list of options.
 
-## Beautiful UX & Branding
+## Styling
 
-Built-in theme support for Bootstrap, Material & Fluent, plus endless branding options in color palettes, fonts, elevation, display density & more.
+You can change the appearance of the [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html) component and its items, by using the exposed CSS parts listed below:
 
-## Rich Keyboard Navigation
+| Part name            | Description                                                                     |
+| -------------------- | ------------------------------------------------------------------------------- |
+| `label`              | The encapsulated text label.                                                   |
+| `input`              | The main input field.                                                          |
+| `native-input`       | The native input of the main input field.                                      |
+| `prefix`             | The prefix wrapper.                                                            |
+| `suffix`             | The suffix wrapper.                                                            |
+| `toggle-icon`        | The toggle icon wrapper.                                                       |
+| `clear-icon`         | The clear icon wrapper.                                                        |
+| `case-icon`          | A case-icon wrapper that renders content inside the suffix of the filter-input. |
+| `helper-text`        | The helper text wrapper.                                                       |
+| `search-input`       | The search input field.                                                        |
+| `list-wrapper`       | The list of options wrapper.                                                   |
+| `list`               | The list of options box.                                                       |
+| `item`               | Represents each item in the list of options.                                   |
+| `group-header`       | Represents each header in the list of options.                                 |
+| `active`             | Appended to the item parts list when the item is active.                       |
+| `selected`           | Appended to the item parts list when the item is selected.                     |
+| `checkbox`           | Represents each checkbox of each list item.                                    |
+| `checkbox-indicator` | Represents the checkbox indicator of each list item.                           |
+| `checked`            | Appended to checkbox parts list when checkbox is checked.                      |
+| `header`             | The container holding the header content.                                      |
+| `footer`             | The container holding the footer content.                                      |
+| `empty`              | The container holding the empty content.                                       |
 
-Full Excel-style keyboard navigation gives users the experience they expect, with high performance even on large datasets.
+Using the CSS parts we have full control over the Combo styling.
 
-## Is Grid Lite a Free & Open-Source React Data Grid?
+```css
+igc-combo::part(search-input) {
+  background-color: var(--ig-gray-100);
+  border-radius: 2px;
+}
 
-Yes. Ignite UI Grid Lite is a free, open-source React data grid released under the MIT license. You can use it in commercial or personal projects with no licensing fees. It is part of our initiative to make Ignite UI more open, transparent, and accessible.
+igc-combo::part(input) {
+  background-color: var(--ig-gray-100);
+}
 
-- MIT-licensed
+igc-combo::part(prefix) {
+  background-color: var(--ig-secondary-50);
+  color: var(--ig-primary-500);
+}
 
-- Free for commercial use
+igc-combo::part(toggle-icon) {
+  color: var(--ig-primary-500);
+}
+```
 
-- Community-driven development
+```typescript
+interface City {
+  id: string;
+  name: string;
+  country: string;
+}
 
-- No feature gating
+export const Cities: City[] = [
+  { name: "London", id: "UK01", country: "UK" },
+  { name: "Manchester", id: "UK02", country: "UK" },
+  { name: "Birmingham", id: "UK03", country: "UK" },
+  { name: "Glasgow", id: "UK04", country: "UK" },
+  { name: "Liverpool", id: "UK05", country: "UK" },
+  { name: "New York", id: "US01", country: "USA" },
+  { name: "Miami", id: "US02", country: "USA" },
+  { name: "Philadelphia", id: "US03", country: "USA" },
+  { name: "Chicago", id: "US04", country: "USA" },
+  { name: "Springfield", id: "US05", country: "USA" },
+  { name: "Los Angeles", id: "US06", country: "USA" },
+  { name: "Houston", id: "US07", country: "USA" },
+  { name: "Phoenix", id: "US08", country: "USA" },
+  { name: "San Diego", id: "US09", country: "USA" },
+  { name: "Dallas", id: "US010", country: "USA" },
+  { name: "Sofia", id: "BG01", country: "Bulgaria" },
+  { name: "Plovdiv", id: "BG02", country: "Bulgaria" },
+  { name: "Varna", id: "BG03", country: "Bulgaria" },
+  { name: "Burgas", id: "BG04", country: "Bulgaria" },
+  { name: "Rome", id: "IT01", country: "Italy" },
+  { name: "Milan", id: "IT02", country: "Italy" },
+  { name: "Naples", id: "IT03", country: "Italy" },
+  { name: "Turin", id: "IT04", country: "Italy" },
+  { name: "Palermo", id: "IT05", country: "Italy" },
+  { name: "Florence", id: "IT06", country: "Italy" },
+];
+```
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 
-However, if your project scales and grows in complexity and functionality, and you require an enterprise-grade application, we have a seamless upgrade strategy. It will make the transitioning from the free React data grid (Grid Lite) to the full-featured and advanced Data Grid simpler and faster.
+igc-combo::part(label),
+igc-combo::part(empty),
+igc-combo::part(group-header) {
+  color: #2b3a55;
+}
+
+igc-combo::part(native-input),
+igc-combo::part(list-wrapper) {
+  background-color: #f2e5e5;
+}
+
+igc-combo::part(item selected) {
+  background: #e8c4c4;
+}
+
+igc-combo::part(item selected active),
+igc-combo::part(item selected):hover {
+  background: #ce7777;
+}
+
+igc-combo::part(prefix),
+igc-combo::part(suffix),
+igc-combo::part(case-icon) {
+  color: #f2e5e5;
+  background-color: #2b3a55;
+}
+
+igc-combo::part(checkbox checked)::after {
+  background: #2b3a55;
+  box-shadow: none;
+}
+```
+```tsx
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom/client";
+import { IgrCombo, IgrIcon, registerIconFromText } from "igniteui-react";
+import "./index.css";
+import "igniteui-webcomponents/themes/light/bootstrap.css";
+import { Cities } from "./ComboData";
+
+const placeSvg =
+  '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm6-1.8C18 6.57 15.35 4 12 4s-6 2.57-6 6.2c0 2.34 1.95 5.44 6 9.14 4.05-3.7 6-6.8 6-9.14zM12 2c4.2 0 8 3.22 8 8.2 0 3.32-2.67 7.25-8 11.8-5.33-4.55-8-8.48-8-11.8C4 5.22 7.8 2 12 2z"/></svg>';
+
+export default function ComboStyling() {
+
+  useEffect(() => {
+    registerIconFromText("place", placeSvg, "material");
+  }, []);
+
+  return (
+    <div className="sample">
+      <IgrCombo
+        valueKey="id"
+        displayKey="name"
+        groupKey="country"
+        label="Destinations"
+        caseSensitiveIcon
+        data={Cities}
+      >
+        <span slot="helper-text">Choose the desired place</span>
+        <span slot="prefix">
+          <IgrIcon name="place" collection="material"></IgrIcon>
+        </span>
+      </IgrCombo>
+    </div>
+  );
+}
+
+// rendering above class to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<ComboStyling />);
+```
+
+## API Reference
+
+- [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html)
+- [`Styling & Themes`](../../themes/overview.md)
+
+## Additional Resources
+
+- [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)
+- [Ignite UI for React **GitHub**](https://github.com/IgniteUI/igniteui-react)

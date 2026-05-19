@@ -11,7 +11,7 @@ _premium: true
 
 # Blazor Grid Group By
 
-The Ignite UI for Blazor Group By behavior in Blazor IgbGrid creates grouped data rows based on the column values. The Group By in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) allows for visualizing the groups in a hierarchical structure. The grouped data rows can be expanded or collapsed and the order of grouping may be changed through the UI or API. When Row Selection is enabled, a Group By row selector is rendered in the left-most area of the group row. In case the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelection) property is set to single, checkboxes are disabled and only serve as an indication for the group where selection is placed. If the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelection) property is set to multiple, clicking over the Group By row selector selects all records belonging to this group.
+The Ignite UI for Blazor Group By behavior in Blazor IgbGrid creates grouped data rows based on the column values. The Group By in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) allows for visualizing the groups in a hierarchical structure. The grouped data rows can be expanded or collapsed and the order of grouping may be changed through the UI or API. When Row Selection is enabled, a Group By row selector is rendered in the left-most area of the group row. In case the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowSelection) property is set to single, checkboxes are disabled and only serve as an indication for the group where selection is placed. If the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowSelection) property is set to multiple, clicking over the Group By row selector selects all records belonging to this group.
 
 ## Blazor Grid Group By Example
 
@@ -208,7 +208,6 @@ public class InvoicesWorldData
     }
 }
 ```
-
 
 ## Initial Grouping State
 
@@ -503,7 +502,6 @@ public class InvoicesWorldData
 }
 ```
 
-
 ## Group By With Summaries
 
 Integration between Group By and Summaries is described in the [Summaries](summaries.md#summaries-with-group-by) topic.
@@ -764,7 +762,6 @@ public class InvoicesData
     }
 }
 ```
-
 
 ## Known Limitations
 

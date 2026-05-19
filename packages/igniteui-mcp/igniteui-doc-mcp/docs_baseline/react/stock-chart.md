@@ -178,7 +178,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<FinancialChartMultipleData/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## Stock Chart Recommendations
@@ -382,7 +381,6 @@ export default class FinancialChartMultipleData extends React.Component<any, any
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<FinancialChartMultipleData/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -706,7 +704,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<FinancialChartStockIndexChart/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Stock Chart Styling
@@ -876,7 +873,6 @@ export default class FinancialChartStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<FinancialChartStyling/>);
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1227,7 +1223,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<FinancialChartAnnotations/>);
 ```
 
-
 <div class="divider--half"></div>
 
 ## React Chart Panes
@@ -1472,7 +1467,6 @@ export default class FinancialChartPanes extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<FinancialChartPanes/>);
 ```
-
 
 <div class="divider--half"></div>
 

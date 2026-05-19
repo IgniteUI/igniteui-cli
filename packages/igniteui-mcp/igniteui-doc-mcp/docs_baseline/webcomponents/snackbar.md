@@ -20,7 +20,6 @@ This sample demonstrates how to create [`IgcSnackbarComponent`](https://www.infr
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Usage
@@ -59,7 +58,6 @@ Use the [`displayTime`](https://www.infragistics.com/products/ignite-ui-web-comp
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Action Text
 
 By default, the snackbar component is hidden automatically after a period specified by the [`displayTime`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html#displayTime). You can use [`keepOpen`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html#keepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`actionText`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html#actionText) you can display an action button inside the component.
@@ -68,7 +66,6 @@ By default, the snackbar component is hidden automatically after a period specif
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Styling
 
@@ -100,7 +97,6 @@ igc-snackbar::part(base) {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 <div class="divider--half"></div>
 

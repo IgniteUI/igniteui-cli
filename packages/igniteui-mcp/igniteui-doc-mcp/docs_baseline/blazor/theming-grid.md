@@ -173,7 +173,6 @@ public class NwindData
 }
 ```
 
-
 ```razor
 <head>
     <link href="_content/IgniteUI.Blazor/themes/grid/dark/bootstrap.css" rel="stylesheet" />

@@ -31,7 +31,6 @@ The Ignite UI for Web Components Icon Button component allows developers to use 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 <div class="divider"></div>
 
 ## Usage
@@ -70,7 +69,6 @@ Similar to the regular button components, the icon button supports several varia
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ```html
 <igc-icon-button name="search" variant="contained"></igc-icon-button>
 ```
@@ -96,7 +94,6 @@ The size of the button can be changed by utilizing the `--ig-size` CSS variable 
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ```css
 igc-icon-button {
@@ -157,10 +154,9 @@ igc-icon-button::part(icon) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## API References
 
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html)
+- [`IgcButtonBaseComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttonbasecomponent.html)
 - [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html)
 - [`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html)
 - [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)

@@ -83,7 +83,6 @@ The following sample depicts a [`IgbFinancialChart`](https://www.infragistics.co
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Chart Trendlines Dash Array Example
@@ -199,12 +198,11 @@ public class Stock2Years
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Blazor Chart Trendline Layer
 
-The [`IgbTrendLineLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTrendLineLayer.html) is a series type that is designed to display a single trendline type for a target series. The difference between this and the existing trendline features on the existing series types is that since the [`IgbTrendLineLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTrendLineLayer.html) is a series type, you can add more than one of them to the [`Series`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_Series) collection of the chart to have multiple trendlines attached to the same series. You can also have the trendline appear in the legend, which was not possible previously.
+The [`IgbTrendLineLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTrendLineLayer.html) is a series type that is designed to display a single trendline type for a target series. The difference between this and the existing trendline features on the existing series types is that since the [`IgbTrendLineLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTrendLineLayer.html) is a series type, you can add more than one of them to the [`Series`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Series) collection of the chart to have multiple trendlines attached to the same series. You can also have the trendline appear in the legend, which was not possible previously.
 
 ## Trendline Layer Usage
 
@@ -216,7 +214,7 @@ If you would like to show the [`IgbTrendLineLayer`](https://www.infragistics.com
 
 By default, the [`IgbTrendLineLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTrendLineLayer.html) renders with the same color as its [`TargetSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTrendLineLayer.html#IgniteUI_Blazor_Controls_IgbTrendLineLayer_TargetSeries) in a dashed line. This can be configured by using the various styling properties on the [`IgbTrendLineLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTrendLineLayer.html).
 
-To change the color of the trendline that is drawn, you can set its `Brush` property. Alternatively, you can also set the `UseIndex` property to `true`, which will pull from the chart's [`Brushes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_Brushes) palette based on the index in which the [`IgbTrendLineLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTrendLineLayer.html) is placed in the chart's [`Series`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeriesViewer.html#IgniteUI_Blazor_Controls_IgbSeriesViewer_Series) collection.
+To change the color of the trendline that is drawn, you can set its `Brush` property. Alternatively, you can also set the `UseIndex` property to `true`, which will pull from the chart's [`Brushes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_Brushes) palette based on the index in which the [`IgbTrendLineLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTrendLineLayer.html) is placed in the chart's [`Series`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Series) collection.
 
 You can also modify the way that the [`IgbTrendLineLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTrendLineLayer.html) appears by using its `AppearanceMode` and `ShiftAmount` properties. The `ShiftAmount` takes a value between -1.0 and 1.0 to determine how much of a "shift" to apply to the options that end in "Shift".
 

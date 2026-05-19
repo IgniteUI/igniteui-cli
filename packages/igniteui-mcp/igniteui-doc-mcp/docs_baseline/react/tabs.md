@@ -69,7 +69,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Overview/>);
 ```
 
-
 ## How to use Tabs with Ignite UI for React
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -91,16 +90,19 @@ Simple [`IgrTabs`](https://www.infragistics.com/products/ignite-ui-react/docs/ty
 ```tsx
 <IgrTabs>
     <IgrTab label="Tab 1">
-      <span>Panel 1</span>
+      <span>Content for tab 1</span>
     </IgrTab>
     <IgrTab label="Tab 2">
-      <span>Panel 2</span>
+      <span>Content for tab 2</span>
     </IgrTab>
-    <IgrTab label="Tab 3">
-      <span>Panel 3</span>
+    <IgrTab>
+      <div slot="label">Tab 3</div>
+      <span>Content for tab 3</span>
     </IgrTab>
 </IgrTabs>
 ```
+
+Tab text can be set either as simple string using the [`label`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtab.html#label) property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
 
 ### Selection
 
@@ -115,7 +117,7 @@ The default behavior, which selects a tab when the user is navigating with the a
 A tab is disabled by setting the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtab.html#disabled) attribute:
 
 ```tsx
-<IgrTab disabled={true}>Tab 1</IgrTab>
+<IgrTab label="Tab 1" disabled={true}></IgrTab>
 ```
 
 ### Alignment
@@ -184,7 +186,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Alignment />);
 ```
 
-
 ### Scrolling
 
 Scroll buttons are shown when the available space is not enough to render all React tabs. The start scroll button is disabled if the first tab is in view. Respectively, when last tab is in view the end scroll button is disabled. By pressing one of the scroll buttons the tabs are scrolled so the tab in that direction is fully visible, or if it is already visible the previous/next tab in that direction is displayed.
@@ -223,7 +224,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Scrolling />);
 ```
 
-
 ### Keyboard Navigation
 
 |Keys|Description|
@@ -236,7 +236,7 @@ root.render(<Scrolling />);
 
 ### Prefix / Suffix
 
-Each tab has default slot to display information - icon, text or both and `prefix` and `suffix` slots to show additional content in the beginning and/or in the end.
+Besides the `label` slot to display information - icon, text or both, each tab also has `prefix` and `suffix` slots to show additional content in the beginning and/or in the end.
 
 ```css
 /* shared styles are loaded from: */
@@ -312,7 +312,6 @@ export default class PrefixSuffix extends React.Component<any, { tabs: string[] 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<PrefixSuffix/>);
 ```
-
 
 ## Styling
 
@@ -457,7 +456,6 @@ export default class TabsStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<TabsStyling/>);
 ```
-
 
 ## API Reference
 

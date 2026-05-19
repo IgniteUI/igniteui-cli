@@ -63,7 +63,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DateTimeInputOverview/>);
 ```
 
-
 ## Usage
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
@@ -206,7 +205,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DateTimeInputInputFormatDisplayFormat/>);
 ```
 
-
 ### Display format
 
 The date time input exposes predefined formats for displaying date/time in various manners. All of the examples below are given in en-US locale.
@@ -320,7 +318,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DateTimeInputMinMaxValue/>);
 ```
 
-
 ## Step up/down
 
 The [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html) exposes public [`stepUp`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#stepUp) and [`stepDown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#stepDown) methods. They increment or decrement a specific `DatePart` of the currently set date and time and can be used in a couple of ways.
@@ -380,7 +377,6 @@ export default class DateTimeInputStepUpDown extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DateTimeInputStepUpDown/>);
 ```
-
 
 ## Styling
 
@@ -485,7 +481,6 @@ export default class DateTimeInputStyling extends React.Component<any, any> {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DateTimeInputStyling/>);
 ```
-
 
 ## API References
 

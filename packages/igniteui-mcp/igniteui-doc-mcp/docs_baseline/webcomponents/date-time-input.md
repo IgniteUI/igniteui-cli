@@ -16,7 +16,6 @@ The Ignite UI for Web Components Date Time Input allows the user to set and edit
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Usage
 
 First, you need to install the Ignite UI for Web Components by running the following command:
@@ -120,7 +119,6 @@ If all went well, you should see the following in your browser:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ### Display format
 
 The date time input exposes predefined formats for displaying date/time in various manners. All of the examples below are given in en-US locale.
@@ -193,7 +191,6 @@ If all went well, the component will be `invalid` if the value is greater or low
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-
 ## Step up/down
 
 The [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) exposes public [`stepUp`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#stepUp) and [`stepDown`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#stepDown) methods. They increment or decrement a specific `DatePart` of the currently set date and time and can be used in a couple of ways.
@@ -220,7 +217,6 @@ Try it in the example below:
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## Styling
 
@@ -278,7 +274,6 @@ igc-date-time-input {
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
-
 
 ## API References
 
