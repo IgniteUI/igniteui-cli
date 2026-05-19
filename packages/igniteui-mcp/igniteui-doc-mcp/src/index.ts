@@ -70,7 +70,10 @@ const server = new McpServer(
       "React → Igr prefix (IgrGrid), package 'igniteui-react', .tsx files. " +
       "Blazor → Igb prefix (IgbGrid), package 'IgniteUI.Blazor', .razor files. " +
       "Web Components → Igc prefix + Component suffix (IgcGridComponent), package 'igniteui-webcomponents', .ts+.html with custom elements. " +
-      "If the framework is unclear from context, ask the user.",
+      "If the framework is unclear from context, ask the user. " +
+      "LIBRARY BOUNDARY RULE: Once the target framework is identified, always pass it as the 'framework' or 'platform' parameter to every tool call. " +
+      "Never apply component APIs, event names, binding syntax, prop names, or state patterns from one framework to code in another framework. " +
+      "Angular (Igx), React (Igr), Blazor (Igb), and Web Components (Igc) each have distinct APIs — they are not interchangeable.",
   }
 );
 
