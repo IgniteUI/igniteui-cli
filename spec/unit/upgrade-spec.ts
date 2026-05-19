@@ -190,8 +190,9 @@ describe("Unit - Upgrade command", () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue(config);
 		spyOn(detectFrameworkModule, "detectFrameworkFromPackageJson").and.returnValue(null);
 
+		spyOn(Util, "warn");
 		await upgradeCmd.handler({ _: ["upgrade"], $0: "upgrade" });
-		expect(Util.log).toHaveBeenCalledWith(
+		expect(Util.warn).toHaveBeenCalledWith(
 			jasmine.stringMatching(/Unable to determine the project framework/), "yellow"
 		);
 	});

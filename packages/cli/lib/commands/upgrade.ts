@@ -38,7 +38,7 @@ const command: UpgradeCommandType = {
 		if (!framework) {
 			const detected = detectFrameworkFromPackageJson();
 			if (!detected) {
-				Util.log("Unable to determine the project framework. " +
+				Util.warn("Unable to determine the project framework. " +
 					"Please ensure you are running this command in a project directory with a package.json file, " +
 					"or create an ignite-ui-cli.json configuration file.", "yellow");
 				return;
