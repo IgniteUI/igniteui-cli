@@ -8,7 +8,7 @@ _tocName: Chip
 
 # Angular Chip Component Overview
 
-[`The Angular Chip component`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html) is a visual element that displays information in an oval container. The component has various properties - it can be templated, deleted, and selected. Multiple chips can be reordered and visually connected to each other, using the chip area as a container.
+[`The Angular Chip component`](mcp:get_api_reference?platform=angular&component=IgxChipComponent) is a visual element that displays information in an oval container. The component has various properties - it can be templated, deleted, and selected. Multiple chips can be reordered and visually connected to each other, using the chip area as a container.
 
 ## Angular Chip Example
 
@@ -146,7 +146,7 @@ Now that you have the Ignite UI for Angular Chips module or directives imported,
 
 ## Using the Angular Chip Component
 
-The [`IgxChipComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html) has an [`id`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#id) input property so that the different chip instances can be easily distinguished. If an [`id`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#id) is not provided, it will be automatically generated.
+The [`IgxChipComponent`](mcp:get_api_reference?platform=angular&component=IgxChipComponent) has an [`id`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=id) input property so that the different chip instances can be easily distinguished. If an [`id`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=id) is not provided, it will be automatically generated.
 
 ```html
 <igx-chip *ngFor="let chip of chipList" [id]="chip.id">
@@ -158,7 +158,7 @@ The [`IgxChipComponent`](https://www.infragistics.com/products/ignite-ui-angular
 
 <img class="responsive-img"  src="../images/chip/selecting_default.gif" alt="Selecting Default" />
 
-Selection can be enabled by setting the [`selectable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#selectable) input property to `true`. When selecting a chip, the [`selectedChanging`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#selectedChanging) event is fired. It provides the new [`selected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ichipselecteventargs.html#selected) value so you can get the new state and the original event in [`originalEvent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ichipselecteventargs.html#originalEvent) that triggered the selection change. If this is not done through user interaction but instead is done by setting the [`selected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ichipselecteventargs.html#selected) property programmatically, the [`originalEvent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ichipselecteventargs.html#originalEvent) argument has a value of `null`.
+Selection can be enabled by setting the [`selectable`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=selectable) input property to `true`. When selecting a chip, the [`selectedChanging`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=selectedChanging) event is fired. It provides the new [`selected`](mcp:get_api_reference?platform=angular&component=IChipSelectEventArgs&member=selected) value so you can get the new state and the original event in [`originalEvent`](mcp:get_api_reference?platform=angular&component=IChipSelectEventArgs&member=originalEvent) that triggered the selection change. If this is not done through user interaction but instead is done by setting the [`selected`](mcp:get_api_reference?platform=angular&component=IChipSelectEventArgs&member=selected) property programmatically, the [`originalEvent`](mcp:get_api_reference?platform=angular&component=IChipSelectEventArgs&member=originalEvent) argument has a value of `null`.
 
 ```html
 <igx-chip *ngFor="let chip of chipList" [selectable]="true">
@@ -174,7 +174,7 @@ Selection can be enabled by setting the [`selectable`](https://www.infragistics.
 
 <img class="responsive-img"  src="../images/chip/removing_default.gif" alt="Removing Default" />
 
-Removing can be enabled by setting the [`removable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#removable) input to `true`. When enabled, a remove button is rendered at the end of the chip. When removing a chip, the [`remove`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#remove) event is emitted.
+Removing can be enabled by setting the [`removable`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=removable) input to `true`. When enabled, a remove button is rendered at the end of the chip. When removing a chip, the [`remove`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=remove) event is emitted.
 
 By default, the chip doesn't get automatically removed from the DOM tree upon clicking on the remove icon. Removal needs to be handled manually.
 
@@ -196,7 +196,7 @@ public chipRemoved(event: IBaseChipEventArgs) {
 
 ### Dragging
 
-Dragging can be enabled by setting the [`draggable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#draggable) input to `true`. When enabled, you can click and drag the chip around.
+Dragging can be enabled by setting the [`draggable`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=draggable) input to `true`. When enabled, you can click and drag the chip around.
 
 ```html
 <igx-chip *ngFor="let chip of chipList" [id]="chip.id" [draggable]="true">
@@ -206,7 +206,7 @@ Dragging can be enabled by setting the [`draggable`](https://www.infragistics.co
 ```
 
 > [!NOTE]
-> To reorder the chips you need to handle the event using the [`IgxChipsAreaComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipsareacomponent.html).
+> To reorder the chips you need to handle the event using the [`IgxChipsAreaComponent`](mcp:get_api_reference?platform=angular&component=IgxChipsAreaComponent).
 
 <div class="divider"></div>
 
@@ -219,7 +219,7 @@ Dragging can be enabled by setting the [`draggable`](https://www.infragistics.co
 </igx-chip>
 ```
 
-Then, we need to add the `chipList` and the function, that handles the [`remove`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#remove) event:
+Then, we need to add the `chipList` and the function, that handles the [`remove`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=remove) event:
 
 ```ts
 import { IBaseChipEventArgs } from 'igniteui-angular/chips';
@@ -334,7 +334,7 @@ igx-chip {
 
 ### Chip Templates
 
-All of the [`IgxChipComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html)'s elements are templatable.
+All of the [`IgxChipComponent`](mcp:get_api_reference?platform=angular&component=IgxChipComponent)'s elements are templatable.
 
 You can template the `prefix` and the `suffix` of the chip, using the `IgxPrefix` and the `IgxSuffix` directives:
 
@@ -365,7 +365,7 @@ You can customize the size of the chip, using the [`--ig-size`] CSS variable. By
 </igx-chip>
 ```
 
-You can customize the `select icon`, using the [`selectIcon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#selecticon) input. It accepts values of type `TemplateRef` and overrides the default icon while retaining the same functionality.
+You can customize the `select icon`, using the [`selectIcon`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=selecticon) input. It accepts values of type `TemplateRef` and overrides the default icon while retaining the same functionality.
 
 <img class="responsive-img"  src="../images/chip/selecting_custom.gif" alt="Selecting Custom" />
 
@@ -380,7 +380,7 @@ You can customize the `select icon`, using the [`selectIcon`](https://www.infrag
 </ng-template>
 ```
 
-You can customize the `remove icon`, using the [`removeIcon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#removeIcon) input. It takes a value of type `TemplateRef` and renders it instead of the default remove icon.
+You can customize the `remove icon`, using the [`removeIcon`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=removeIcon) input. It takes a value of type `TemplateRef` and renders it instead of the default remove icon.
 
 <img class="responsive-img"  src="../images/chip/remove_icons.jpg" alt="Remove Icons" />
 
@@ -414,7 +414,7 @@ To create the demo sample below, we will use the features above:
 </igx-chip>
 ```
 
-Then, we need to add the `chipList` and the function, that handles the [`remove`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#remove) event:
+Then, we need to add the `chipList` and the function, that handles the [`remove`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=remove) event:
 
 ```ts
 import { IBaseChipEventArgs } from 'igniteui-angular/chips';
@@ -530,13 +530,13 @@ igx-chip {
 
 ## Chip Area
 
-The [`IgxChipsAreaComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipsareacomponent.html) is used when handling more complex scenarios that require interaction between chips (dragging, selection, navigation, etc.).
+The [`IgxChipsAreaComponent`](mcp:get_api_reference?platform=angular&component=IgxChipsAreaComponent) is used when handling more complex scenarios that require interaction between chips (dragging, selection, navigation, etc.).
 
 ### Reorder Chips
 
 <img class="responsive-img"  src="../images/chip/dragging.gif" alt="Dragging" />
 
-The chip can be dragged by the end-user in order to change its position. The dragging is disabled by default but can be enabled using the [`draggable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#draggable) input property. You need to handle the actual chip reordering manually. This is where the chip area comes in handy since it provides the [`reorder`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipsareacomponent.html#reorder) event that returns the new order when a chip is dragged over another chip.
+The chip can be dragged by the end-user in order to change its position. The dragging is disabled by default but can be enabled using the [`draggable`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=draggable) input property. You need to handle the actual chip reordering manually. This is where the chip area comes in handy since it provides the [`reorder`](mcp:get_api_reference?platform=angular&component=IgxChipsAreaComponent&member=reorder) event that returns the new order when a chip is dragged over another chip.
 
 ```html
 <igx-chips-area (reorder)="chipsOrderChanged($event)">
@@ -578,13 +578,13 @@ The chip can be focused using the `Tab` key or by clicking on it. When the chips
 
     <img class="responsive-img"  src="../images/chip/space_key.gif" alt="Space Key" />
 
-  - <kbd>DELETE</kbd> - Triggers the [`remove`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#remove) event for the [`igxChip`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html) so the chip deletion can be handled manually.
-  - <kbd>SHIFT</kbd> + <kbd>LEFT</kbd> - Triggers [`reorder`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipsareacomponent.html#reorder) event for the [`igxChipArea`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipsareacomponent.html) when the currently focused chip should move position to the left.
-  - <kbd>SHIFT</kbd> + <kbd>RIGHT</kbd> - Triggers [`reorder`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipsareacomponent.html#reorder) event for the [`igxChipArea`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipsareacomponent.html) when the currently focused chip should move one position to the right.
+  - <kbd>DELETE</kbd> - Triggers the [`remove`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=remove) event for the [`igxChip`](mcp:get_api_reference?platform=angular&component=IgxChipComponent) so the chip deletion can be handled manually.
+  - <kbd>SHIFT</kbd> + <kbd>LEFT</kbd> - Triggers [`reorder`](mcp:get_api_reference?platform=angular&component=IgxChipsAreaComponent&member=reorder) event for the [`igxChipArea`](mcp:get_api_reference?platform=angular&component=IgxChipsAreaComponent) when the currently focused chip should move position to the left.
+  - <kbd>SHIFT</kbd> + <kbd>RIGHT</kbd> - Triggers [`reorder`](mcp:get_api_reference?platform=angular&component=IgxChipsAreaComponent&member=reorder) event for the [`igxChipArea`](mcp:get_api_reference?platform=angular&component=IgxChipsAreaComponent) when the currently focused chip should move one position to the right.
 
 - Keyboard controls when the remove button is focused:
 
-  - <kbd>SPACE</kbd> or <kbd>ENTER</kbd> Fires the [`remove`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#remove) output so the chip deletion can be handled manually.
+  - <kbd>SPACE</kbd> or <kbd>ENTER</kbd> Fires the [`remove`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=remove) output so the chip deletion can be handled manually.
 
 <div class="divider--half"></div>
 
@@ -1119,9 +1119,9 @@ Learn more about it in the [Size](display-density.md) article.
 
 ## API
 
-- [IgxChipComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html)
+- [IgxChipComponent](mcp:get_api_reference?platform=angular&component=IgxChipComponent)
 - [IgxChipComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chip-theme)
-- [IgxChipsAreaComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipsareacomponent.html)
+- [IgxChipsAreaComponent](mcp:get_api_reference?platform=angular&component=IgxChipsAreaComponent)
 
 ## Theming Dependencies
 

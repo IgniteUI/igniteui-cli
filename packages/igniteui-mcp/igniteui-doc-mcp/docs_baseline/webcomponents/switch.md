@@ -22,7 +22,7 @@ The Ignite UI for Web Components Switch component is a binary choice selection c
 
 ## Usage
 
-At its core, the [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) component allows for toggling between on/off states. The default styling is done according to the selection controls specification in the Material Design guidelines.
+At its core, the [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent) component allows for toggling between on/off states. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
 First, you need to install the Ignite UI for Web Components by running the following command:
 
@@ -30,7 +30,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html)and its necessary CSS, like so:
+You will then need to import the [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent)and its necessary CSS, like so:
 
 ```ts
 import { defineComponents, IgcSwitchComponent } from "igniteui-webcomponents";
@@ -41,14 +41,14 @@ defineComponents(IgcSwitchComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) is as follows:
+The simplest way to start using the [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent) is as follows:
 
 ```html
 <igc-switch></igc-switch>
 ```
 
 > [!WARNING]
-> The [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
+> The [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples
 
@@ -60,7 +60,7 @@ To provide a meaningful label for the switch, simply place some text between the
 <igc-switch>Label</igc-switch>
 ```
 
-You can specify if the label should be positioned before or after the switch toggle by setting the [`labelPosition`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html#labelPosition) attribute of the switch. Allowed values are `before` and `after`(default):
+You can specify if the label should be positioned before or after the switch toggle by setting the [`labelPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent&member=labelPosition) attribute of the switch. Allowed values are `before` and `after`(default):
 
 ```html
 <igc-switch label-position="before">Label</igc-switch>
@@ -137,7 +137,7 @@ You can use the `name` and `value` attributes when using the switch with `Form`.
 
 ## Styling
 
-The [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) component exposes several CSS parts to give you full control over its styling:
+The [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent) component exposes several CSS parts to give you full control over its styling:
 
 |Name|Description|
 |--|--|
@@ -174,8 +174,8 @@ igc-switch {
 
 ## API References
 
-- [`labelPosition`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html#labelPosition)
-- [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html)
+- [`labelPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent&member=labelPosition)
+- [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

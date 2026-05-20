@@ -88,7 +88,7 @@ export class HomeComponent {}
 Now that you have the Ignite UI for Angular Ripple module or directive imported, you can start using the `igxRipple` directive.
 
 > [!WARNING]
-> The [`igxRipple`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxrippledirective.html) uses the Web Animation API and runs natively on [browsers that support it.](http://caniuse.com/#feat=web-animation)
+> The [`igxRipple`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective) uses the Web Animation API and runs natively on [browsers that support it.](http://caniuse.com/#feat=web-animation)
 > The `web-animations.min.js` polyfill is [available](https://github.com/web-animations/web-animations-js)
 > for other browsers.
 
@@ -136,7 +136,7 @@ export class RippleSample6Component { }
 
 ### Centered Ripple Effect
 
-By default, the ripple effect starts from the position of the click event. You can change this behavior using the [`igxRippleCentered`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxrippledirective.html#centered) property and setting the center of the element as origin.
+By default, the ripple effect starts from the position of the click event. You can change this behavior using the [`igxRippleCentered`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective&member=centered) property and setting the center of the element as origin.
 
 ```html
 <button igxButton="contained" igxRipple="white" [igxRippleCentered]="true">
@@ -168,7 +168,7 @@ export class RippleSample3Component { }
 
 ### Ripple Duration
 
-We can use the [`igxRippleDuration`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxrippledirective.html#rippleDuration) property to change the duration of the ripple animation, which, by default, is set to 600 milliseconds.
+We can use the [`igxRippleDuration`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective&member=rippleDuration) property to change the duration of the ripple animation, which, by default, is set to 600 milliseconds.
 
 ```html
 <button igxButton="contained" igxRipple [igxRippleDuration]="2000">
@@ -200,7 +200,7 @@ export class RippleSample4Component { }
 
 ### Ripple Target
 
-Use the [`igxRippleTarget`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxrippledirective.html#igxRippleTarget) property to attach a ripple effect to a specific element inside a parent element.
+Use the [`igxRippleTarget`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective&member=igxRippleTarget) property to attach a ripple effect to a specific element inside a parent element.
 
 ```html
 <div class="parent" igxRipple="white" igxRippleTarget=".child" [igxRippleCentered]="true">
@@ -345,7 +345,7 @@ $custom-ripple-theme: ripple-theme(
 
 <div class="divider--half"></div>
 
-- [IgxRippleDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxrippledirective.html)
+- [IgxRippleDirective](mcp:get_api_reference?platform=angular&component=IgxRippleDirective)
 - [IgxRipple Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-ripple-theme)
 
 ## Additional Resources

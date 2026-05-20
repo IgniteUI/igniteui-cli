@@ -20,7 +20,7 @@ For example, if you wanted to find what parts the avatar exposes, simply right-c
 
 <img class="responsive-img" src="../../images/avatar-markup.png" alt="avatar markup"/>
 
-You will notice that the [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html) exposes 4 parts - `base`, `icon`, `image`, and `initials` depending on the type of the avatar. Those parts allow you to overwrite styles defined within their scope.
+You will notice that the [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent) exposes 4 parts - `base`, `icon`, `image`, and `initials` depending on the type of the avatar. Those parts allow you to overwrite styles defined within their scope.
 
 So if you wanted to change the color of the initials to the primary color in your palette you can overwrite the color property in either `base` or `initials` like so:
 

@@ -8,7 +8,7 @@ _tocName: Mask
 
 # Angular Mask Directive Overview
 
-By applying the [`igxMask`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmaskdirective.html) directive on a **text input field**, the developer can control user input and format the visible value, based on configurable mask rules. It provides different input options and ease in use and configuration.
+By applying the [`igxMask`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective) directive on a **text input field**, the developer can control user input and format the visible value, based on configurable mask rules. It provides different input options and ease in use and configuration.
 
 ## Angular Mask Example
 
@@ -55,7 +55,7 @@ For a complete introduction to the Ignite UI for Angular, read the [_getting sta
 The next step is to import the `IgxMaskModule` and `IgxInputGroupModule` in your **app.module.ts** file.
 
 >[!NOTE]
->[`igxMask`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmaskdirective.html) directive is used on an input of type **text**.
+>[`igxMask`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective) directive is used on an input of type **text**.
 
 ```typescript
 // app.module.ts
@@ -145,7 +145,7 @@ If configured properly, you should see the demo sample in your browser.
 
 ### Bind to Formatted/Raw Value
 
-Use the [`includeLiterals`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmaskdirective.html#includeLiterals) input to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`includeLiterals`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmaskdirective.html#includeLiterals) is set to _false_ and the raw value is used.
+Use the [`includeLiterals`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective&member=includeLiterals) input to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`includeLiterals`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective&member=includeLiterals) is set to _false_ and the raw value is used.
 
 ```html
 <!--sample.component.html-->
@@ -325,7 +325,7 @@ igx-snackbar {
 
 ### Text Selection
 
-You can force the component to select all of the input text on focus using [`igxTextSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtextselectiondirective.html). Find more info on `igxTextSelection` at [Label & Input](label-input.md#focus--text-selection).
+You can force the component to select all of the input text on focus using [`igxTextSelection`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective). Find more info on `igxTextSelection` at [Label & Input](label-input.md#focus--text-selection).
 
 Import the `IgxTextSelectionModule` in your **app.module.ts** file:
 
@@ -357,7 +357,7 @@ You can see how this works in the previous sample.
 
 ### Apply additional formatting on focus and blur
 
-In addition to the default mask behavior, the user can implement his own custom pipes and take advantage of the [`focusedValuePipe`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmaskdirective.html#focusedValuePipe) and [`displayValuePipe`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmaskdirective.html#displayValuePipe) input properties, to transform the value to a desired output when the input gets or loses focus. This will not affect the underlying model value. Let's demonstrate how this can be achieved!
+In addition to the default mask behavior, the user can implement his own custom pipes and take advantage of the [`focusedValuePipe`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective&member=focusedValuePipe) and [`displayValuePipe`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective&member=displayValuePipe) input properties, to transform the value to a desired output when the input gets or loses focus. This will not affect the underlying model value. Let's demonstrate how this can be achieved!
 
 Implement two pipes that will append/remove a '%' sign at the end of the displayed value:
 
@@ -386,7 +386,7 @@ export class InputFormatPipe implements PipeTransform {
 }
 ```
 
-Pass an instance of each pipe to the [`focusedValuePipe`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmaskdirective.html#focusedValuePipe) and [`displayValuePipe`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmaskdirective.html#displayValuePipe) input properties as follows:
+Pass an instance of each pipe to the [`focusedValuePipe`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective&member=focusedValuePipe) and [`displayValuePipe`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective&member=displayValuePipe) input properties as follows:
 
 ```typescript
 public value = 100;
@@ -474,7 +474,7 @@ export class InputFormatPipe implements PipeTransform {
 
 ### Adding a placeholder
 
-The user can also take advantage of the [`placeholder`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmaskdirective.html#placeholder) input property, which serves the purpose of the native input placeholder attribute. If no value is provided for the [`placeholder`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmaskdirective.html#placeholder), the value set for the mask is used.
+The user can also take advantage of the [`placeholder`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective&member=placeholder) input property, which serves the purpose of the native input placeholder attribute. If no value is provided for the [`placeholder`](mcp:get_api_reference?platform=angular&component=IgxMaskDirective&member=placeholder), the value set for the mask is used.
 
 ```typescript
 value = null;
@@ -524,10 +524,10 @@ export class MaskSample5Component {
 
 <div class="divider--half"></div>
 
-- [IgxInputDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputdirective.html)
-- [IgxInputGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html)
-- [IgxMaskDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmaskdirective.html)
-- [IgxSnackbarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsnackbarcomponent.html)
+- [IgxInputDirective](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
+- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
+- [IgxMaskDirective](mcp:get_api_reference?platform=angular&component=IgxMaskDirective)
+- [IgxSnackbarComponent](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent)
 
 ## Additional Resources
 

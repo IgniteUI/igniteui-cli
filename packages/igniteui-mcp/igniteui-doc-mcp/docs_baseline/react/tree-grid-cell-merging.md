@@ -290,18 +290,18 @@ In addition to the built-in `always` and `onSort` modes, the grid allows you to 
 
 ### Merge Strategy Class
 
-A custom merge strategy must implement the [`IgrGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridmergestrategy.html) class:
+A custom merge strategy must implement the [`IgrGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrGridMergeStrategy) class:
 
 - `merge` - defines how merged cells are produced.
 - `comparer` - defines the condition to decide if two adjacent records should be merged.
 
 <!-- ComponentStart: TreeGrid -->
 
-The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) provides two built-in strategies that implement the `IGridMergeStrategy` interface: [`IgrDefaultTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrdefaulttreegridmergestrategy.html) and [`IgrByLevelTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrbyleveltreegridmergestrategy.html). [`IgrDefaultTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrdefaulttreegridmergestrategy.html) merges all cells with the same value, regardless of their hierarchical level. In contrast, [`IgrByLevelTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrbyleveltreegridmergestrategy.html) only merges cells if they have the same value and are located at the same level, making level a required condition for merging.
+The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) provides two built-in strategies that implement the `IGridMergeStrategy` interface: [`IgrDefaultTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrDefaultTreeGridMergeStrategy) and [`IgrByLevelTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrByLevelTreeGridMergeStrategy). [`IgrDefaultTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrDefaultTreeGridMergeStrategy) merges all cells with the same value, regardless of their hierarchical level. In contrast, [`IgrByLevelTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrByLevelTreeGridMergeStrategy) only merges cells if they have the same value and are located at the same level, making level a required condition for merging.
 
 ### Extending the Default Strategy
 
-If you only want to customize part of the behavior (for example, the comparer logic), you can extend one of the built-in strategies, either [`IgrDefaultTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrdefaulttreegridmergestrategy.html) or [`IgrByLevelTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrbyleveltreegridmergestrategy.html), and override the relevant methods.
+If you only want to customize part of the behavior (for example, the comparer logic), you can extend one of the built-in strategies, either [`IgrDefaultTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrDefaultTreeGridMergeStrategy) or [`IgrByLevelTreeGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrByLevelTreeGridMergeStrategy), and override the relevant methods.
 
 ```ts
 export class MyCustomStrategy extends IgrDefaultTreeGridMergeStrategy {
@@ -748,7 +748,7 @@ Due to the specific behavior of merged cells it has to be noted how exactly it t
 
 ## API References
 
-- [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
+- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
 
 ## Additional Resources
 

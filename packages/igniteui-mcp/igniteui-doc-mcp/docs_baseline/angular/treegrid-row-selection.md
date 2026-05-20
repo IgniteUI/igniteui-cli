@@ -190,9 +190,9 @@ igx-buttongroup {
 ```
 <div class="divider--half"></div>
 ## Setup
-In order to setup row selection in the [`igx-tree-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html), you just need to set the **rowSelection** property. This property accepts **GridSelectionMode** enumeration. **GridSelectionMode** exposes the following four modes: **none**, **single**, **multiple** and **multipleCascade**. Below we will take a look at each of them in more detail.
+In order to setup row selection in the [`igx-tree-grid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent), you just need to set the **rowSelection** property. This property accepts **GridSelectionMode** enumeration. **GridSelectionMode** exposes the following four modes: **none**, **single**, **multiple** and **multipleCascade**. Below we will take a look at each of them in more detail.
 ### None Selection
-In the [`igx-tree-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) by default row selection is disabled, otherwise _([rowSelection]="'none'")_. So you can **not** select or deselect a row through interaction with the Tree Grid UI, the only way to complete these actions is to use the provided API methods.
+In the [`igx-tree-grid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) by default row selection is disabled, otherwise _([rowSelection]="'none'")_. So you can **not** select or deselect a row through interaction with the Tree Grid UI, the only way to complete these actions is to use the provided API methods.
 ### Single Selection
 Single row selection can now be easily set up, the only thing you need to do, is to set `[rowSelection] = '"single"'` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the _space_ key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected **rowSelectionChanging** event is emitted.
 ```html
@@ -210,7 +210,7 @@ public handleRowSelection(event) {
 }
 ```
 ### Multiple Selection
-To enable multiple row selection in the [`igx-tree-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) just set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowSelection) property to `multiple`. This will enable a row selector field on each row and in the Tree Grid header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the _space_ key when a cell is focused. If you have selected one row and click on another while holding the _shift_ key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you _click_ while holding the _ctrl_ key, the row will be toggled and the previous selection will be preserved.
+To enable multiple row selection in the [`igx-tree-grid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) just set the [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowSelection) property to `multiple`. This will enable a row selector field on each row and in the Tree Grid header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the _space_ key when a cell is focused. If you have selected one row and click on another while holding the _shift_ key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you _click_ while holding the _ctrl_ key, the row will be toggled and the previous selection will be preserved.
 ```html
 <!-- selectionExample.component.html -->
 <igx-tree-grid [data]="data" primaryKey="ID" foreignKey="ParentID" [rowSelection]="'multiple'"
@@ -218,7 +218,7 @@ To enable multiple row selection in the [`igx-tree-grid`](https://www.infragisti
 </igx-tree-grid>
 ```
 ### Cascade Selection
-To enable cascade row selection in the [`igx-tree-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) just set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowSelection) property to `multipleCascade`. This will enable a row selector field on each row and in the Tree Grid header. The row selector allows users to select multiple rows which would select all children in the tree below. The selection persists through scrolling, paging, and data operations, such as sorting and filtering. The row can also be selected by clicking on a cell or by pressing the _space_ key when a cell is focused. If you have selected one row and _click_ on another while holding the _shift_ key, the selection of a parent record will select all of its children even if they are not in the selected range. In this selection mode, when you _click_ on a single row, the previously selected rows will be deselected. If you _click_ while holding the _ctrl_ key, the row and its children will be toggled and the previous selection will be preserved.
+To enable cascade row selection in the [`igx-tree-grid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) just set the [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowSelection) property to `multipleCascade`. This will enable a row selector field on each row and in the Tree Grid header. The row selector allows users to select multiple rows which would select all children in the tree below. The selection persists through scrolling, paging, and data operations, such as sorting and filtering. The row can also be selected by clicking on a cell or by pressing the _space_ key when a cell is focused. If you have selected one row and _click_ on another while holding the _shift_ key, the selection of a parent record will select all of its children even if they are not in the selected range. In this selection mode, when you _click_ on a single row, the previously selected rows will be deselected. If you _click_ while holding the _ctrl_ key, the row and its children will be toggled and the previous selection will be preserved.
 ```html
 <!-- selectionExample.component.html -->
 <igx-tree-grid [data]="data" primaryKey="ID" foreignKey="ParentID" [autoGenerate]="true"
@@ -236,12 +236,12 @@ In this mode a parent's selection state entirely depends on the selection state 
  }
 ```
 **Notes**
-- Row selection will trigger [`rowSelectionChanging`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowSelectionChanging) event. This event gives you information about the _new selection_, _old selection_, the rows that have been _added_ and _removed_ from the old selection. Also the event is _cancellable_, so this allows you to prevent selection.
+- Row selection will trigger [`rowSelectionChanging`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowSelectionChanging) event. This event gives you information about the _new selection_, _old selection_, the rows that have been _added_ and _removed_ from the old selection. Also the event is _cancellable_, so this allows you to prevent selection.
 - When row selection is enabled row selectors are displayed, but if you don't want to show them, you can set `[hideRowSelectors] = true`.
 - When you switch between row selection modes at runtime, this will clear the previous row selection state.
 ## API usage
 ### Select rows programmatically
-The code snippet below can be used to select one or multiple rows simultaneously (via [`primaryKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#primaryKey)); Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
+The code snippet below can be used to select one or multiple rows simultaneously (via [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=primaryKey)); Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 @@if (igxName === 'IgxGrid' || igxName === 'IgxTreeGrid') {
 ```html
 <!-- selectionExample.component.html -->
@@ -264,7 +264,7 @@ If you need to deselect rows programmatically, you can use the `deselectRows(row
 <button (click)="this.treeGrid.deselectRows([1,2,5])">Deselect 1,2 and 5</button>
 ```
 ### Row selection event
-When there is some change in the row selection **[`rowSelectionChanging`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowSelectionChanging)** event is emitted. **`rowSelectionChanging`** exposes the following arguments:
+When there is some change in the row selection **[`rowSelectionChanging`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelectionChanging)** event is emitted. **`rowSelectionChanging`** exposes the following arguments:
 - `oldSelection`  - array of row's data that contains the previous state of the row selection.
 - `newSelection` - array of row's data that match the new state of the row selection.
 - `added` - array of row's data that are currently added to the selection.
@@ -272,7 +272,7 @@ When there is some change in the row selection **[`rowSelectionChanging`](https:
 - `event` - the original event that triggered row selection change.
 - `cancel` -  allows you the prevent the row selection change.
 #### Row selection event in remote data scenarios
-In remote data scenarios, when the grid has a `primaryKey` set, [`rowSelectionChanging.oldSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/IRowSelectionEventArgs.html#oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
+In remote data scenarios, when the grid has a `primaryKey` set, [`rowSelectionChanging.oldSelection`](mcp:get_api_reference?platform=angular&component=IRowSelectionEventArgs&member=oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
 ```html
 <!-- selectionExample.component.html -->
 <igx-tree-grid (rowSelectionChanging)="handleRowSelectionChange($event)">
@@ -286,11 +286,11 @@ public handleRowSelectionChange(args) {
 }
 ```
 ### Select all rows
-Another useful API method that [`igx-tree-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) provides is `selectAll(onlyFilteredData)`. By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. But if you call the method with _false_ parameter, `selectAll(false)` will always select all data in the grid, even if filtering is applied.
+Another useful API method that [`igx-tree-grid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) provides is `selectAll(onlyFilteredData)`. By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. But if you call the method with _false_ parameter, `selectAll(false)` will always select all data in the grid, even if filtering is applied.
 >[!NOTE]
 > Keep in mind that `selectAll()` will not select the rows that are deleted.
 ### Deselect all rows
-[`igx-tree-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) provides `deselectAll(onlyFilteredData)` method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. But if you call the method with _false_ parameter, `deselectAll(false)` will always clear all row selection state even if filtering is applied.
+[`igx-tree-grid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) provides `deselectAll(onlyFilteredData)` method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. But if you call the method with _false_ parameter, `deselectAll(false)` will always clear all row selection state even if filtering is applied.
 ### How to get selected rows
 If you need to see which rows are currently selected, you can get their row IDs with the `selectedRows` getter.
 ```typescript
@@ -528,9 +528,9 @@ export class TreeGridConditionalRowSelectorsSampleComponent implements OnInit {
 ```
 <div class="divider--half"></div>
 ## API References
-- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
-_ [IgxTreeGridRow API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridrow.html)
-- [IgxGridCell API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
+- [IgxTreeGridComponent API](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
+_ [IgxTreeGridRow API](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
+- [IgxGridCell API](mcp:get_api_reference?platform=angular&component=IgxGridCell)
 - [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

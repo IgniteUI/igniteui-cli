@@ -11,7 +11,7 @@ _tocName: Chat
 
 The Ignite UI for Web Components Chat component provides a complete solution for building conversational interfaces in your applications. Whether you are creating a customer support tool, a collaborative workspace, or a chatbot assistant, the Chat component gives you the building blocks you need: sending and receiving text messages, uploading file attachments, displaying quick reply suggestions, showing typing indicators when the other participant is writing a response.
 
-Unlike a static message list, the [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) component is interactive and designed for **real-time communication**. It manages input, rendering, and user interaction while giving you full control over how messages and attachments are displayed. It also exposes an extensive rendering API that lets you override any part of its layout or visuals.
+Unlike a static message list, the [`IgcChatComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChatComponent) component is interactive and designed for **real-time communication**. It manages input, rendering, and user interaction while giving you full control over how messages and attachments are displayed. It also exposes an extensive rendering API that lets you override any part of its layout or visuals.
 
 ```css
 /* shared styles are loaded from: */
@@ -35,11 +35,11 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 defineComponents(IgcChatComponent);
 ```
 
-The CSS file includes one of our default themes. You can replace it with a different theme or create a custom one if you want the [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) to match your application’s branding.
+The CSS file includes one of our default themes. You can replace it with a different theme or create a custom one if you want the [`IgcChatComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChatComponent) to match your application’s branding.
 
 ## Usage
 
-The simplest way to use the [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) is to declare it as follows:
+The simplest way to use the [`IgcChatComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChatComponent) is to declare it as follows:
 
 ```ts
 const options: IgcChatOptions = {
@@ -73,7 +73,7 @@ This approach makes it easy to plug the Chat into your own data source, such as 
 
 ### Properties
 
-The [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) component exposes several key properties that let you control its state and configuration:
+The [`IgcChatComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChatComponent) component exposes several key properties that let you control its state and configuration:
 
 | Name              | Description                                                                                                                                                          |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -141,7 +141,7 @@ This feature is typically toggled programmatically, for example when receiving a
 ### Custom Renderers
 
 While the Chat component works out of the box with its default UI, many applications need to customize the look and feel. For example, you might want to add read receipts, display avatars, or replace the input area with a voice recording button.
-The [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) component addresses this need with a renderer system. A renderer is simply a function that returns a template for a given part of the UI. You can override as many or as few renderers as you like.
+The [`IgcChatComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChatComponent) component addresses this need with a renderer system. A renderer is simply a function that returns a template for a given part of the UI. You can override as many or as few renderers as you like.
 
 #### ChatTemplateRenderer
 
@@ -158,9 +158,9 @@ The ctx parameter provides different contextual data depending on what is being 
 | Context Type                | Provided Data                                                                                                          |
 | --------------------------- | -----------------------------------------------------------------------------------------------------------------------|
 | `ChatRenderContext`       | `instance` (the chat component instance).                                               |
-| `ChatInputRenderContext`      | Inherits `ChatRenderContext` and adds `attachments` (array of [`IgcChatMessageAttachment`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/interfaces/igcchatmessageattachment.html)) and `value` (current input text). |
-| `ChatMessageRenderContext`    | Inherits `ChatRenderContext` and adds [`IgcChatMessage`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/interfaces/igcchatmessage.html) (the [`IgcChatMessage`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/interfaces/igcchatmessage.html) being rendered).                                     |
-| `ChatAttachmentRenderContext` | Inherits `ChatMessageRenderContext` and adds `attachment` (the [`IgcChatMessageAttachment`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/interfaces/igcchatmessageattachment.html) being rendered).                     |
+| `ChatInputRenderContext`      | Inherits `ChatRenderContext` and adds `attachments` (array of [`IgcChatMessageAttachment`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessageAttachment)) and `value` (current input text). |
+| `ChatMessageRenderContext`    | Inherits `ChatRenderContext` and adds [`IgcChatMessage`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessage) (the [`IgcChatMessage`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessage) being rendered).                                     |
+| `ChatAttachmentRenderContext` | Inherits `ChatMessageRenderContext` and adds `attachment` (the [`IgcChatMessageAttachment`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessageAttachment) being rendered).                     |
 
 #### Available Renderers
 
@@ -206,7 +206,7 @@ const options = {
 
 #### Example: Extending Input Actions
 
-The [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) component provides two renderers which are useful when you want to keep the default actions (upload and send) but extend them with additional controls:
+The [`IgcChatComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChatComponent) component provides two renderers which are useful when you want to keep the default actions (upload and send) but extend them with additional controls:
 
 - `inputActionsStart` – allows you to inject custom content after the built-in upload button.
 - `inputActionsEnd` – allows you to inject custom content after the built-in send button.
@@ -327,7 +327,7 @@ chat.addEventListener('igcMessageCreated', (e) => {
 
 ## Styling
 
-The [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) component exposes both **CSS parts** and **slots** for fine-grained customization of its appearance and structure.
+The [`IgcChatComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChatComponent) component exposes both **CSS parts** and **slots** for fine-grained customization of its appearance and structure.
 
 ### CSS Parts
 
@@ -427,7 +427,7 @@ igc-chat::part(empty-state) {
 }
 ```
 
-This allows you to style the [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) to match your brand without replacing its functionality.
+This allows you to style the [`IgcChatComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChatComponent) to match your brand without replacing its functionality.
 
 ```css
 igc-chat {
@@ -493,11 +493,11 @@ igc-chat::part(input-attachments-container) {
 
 ## API Reference
 
-- [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html)
+- [`IgcChatComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChatComponent)
 - [`IgcChatOptions`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/types/igcchatoptions.html)
-- [`IgcChatMessage`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/interfaces/igcchatmessage.html)
-- [`IgcChatMessageAttachment`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/interfaces/igcchatmessageattachment.html)
-- [`ChatRenderers`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/interfaces/chatrenderers.html)
+- [`IgcChatMessage`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessage)
+- [`IgcChatMessageAttachment`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessageAttachment)
+- [`ChatRenderers`](mcp:get_api_reference?platform=webcomponents&component=ChatRenderers)
 - [`ChatTemplateRenderer`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/types/chattemplaterenderer.html)
 - [Styling & Themes](../themes/overview.md)
 

@@ -9,11 +9,11 @@ _tocName: List
 
 # Web Components List Overview
 
-The Ignite UI for Web Components List element is extremely useful when presenting a group of items. You can create a simple list of textual items, or a more complex one, containing an array of different layout elements. The [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html) component displays rows of items and supports one or more headers as well. Each list item is completely templatable and will support any valid HTML or other components.
+The Ignite UI for Web Components List element is extremely useful when presenting a group of items. You can create a simple list of textual items, or a more complex one, containing an array of different layout elements. The [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent) component displays rows of items and supports one or more headers as well. Each list item is completely templatable and will support any valid HTML or other components.
 
 ## Web Components List Example
 
-The following example represents a list populated with contacts with a name and a phone number properties. The [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html) component demonstrated below uses the [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html) and [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) elements to enrich the user experience and expose the capabilities of setting avatar picture and buttons for text and call actions.
+The following example represents a list populated with contacts with a name and a phone number properties. The [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent) component demonstrated below uses the [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent) and [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) elements to enrich the user experience and expose the capabilities of setting avatar picture and buttons for text and call actions.
 
 ```css
 /* shared styles are loaded from: */
@@ -32,7 +32,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html), you need to register it as follows:
+Before using the [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcListComponent } from 'igniteui-webcomponents';
@@ -99,7 +99,7 @@ After implementing the above code, our list component should now look like the f
 
 ### Adding Avatar and Buttons
 
-We can use some of our other components in conjunction with the [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html) component to enrich the experience and add some functionality. We can have a nice picture avatar to the left of the name and phone values. Additionally, we can add some buttons to the right of them to allow the user to text and call contacts, so let's update our contacts list component to show the avatar and the buttons. We can do that by using some of the list item's slots.
+We can use some of our other components in conjunction with the [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent) component to enrich the experience and add some functionality. We can have a nice picture avatar to the left of the name and phone values. Additionally, we can add some buttons to the right of them to allow the user to text and call contacts, so let's update our contacts list component to show the avatar and the buttons. We can do that by using some of the list item's slots.
 
 ```html
     <igc-list>
@@ -148,9 +148,9 @@ We can use some of our other components in conjunction with the [`IgcListCompone
     </igc-list>
 ```
 
-The `start` slot is meant to be used for adding some kind of media before all other content of our list items. The target element, in our case the [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html) component, will also be provided with a default position and spacing.
+The `start` slot is meant to be used for adding some kind of media before all other content of our list items. The target element, in our case the [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent) component, will also be provided with a default position and spacing.
 
-The `end` slot is meant to be used for list items that have some kind of action or metadata, represented, for example, by a switch, a button, a checkbox, etc. We will use [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) components.
+The `end` slot is meant to be used for list items that have some kind of action or metadata, represented, for example, by a switch, a button, a checkbox, etc. We will use [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) components.
 
 Let's also allow the user to change the size of the list using the `--ig-size` CSS variable. We will add some radio buttons to display all size values. This way whenever one gets selected, we will change the size of the list.
 
@@ -180,7 +180,7 @@ The result of implementing the above code should look like the following:
 
 ## Styling
 
-The [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html) exposes several CSS parts, giving you full control over its style:
+The [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent) exposes several CSS parts, giving you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -229,19 +229,19 @@ igc-list-item::part(subtitle) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-In this article we covered a lot of ground with the [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html) component. First, we created a simple list with text items. Then, we created a list of contact items and added functionality to them by using some additional Ignite UI for Web Components components, like the [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html) and [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html). Finally, we changed the component's appearance through the exposed CSS parts.
+In this article we covered a lot of ground with the [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent) component. First, we created a simple list with text items. Then, we created a list of contact items and added functionality to them by using some additional Ignite UI for Web Components components, like the [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent) and [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent). Finally, we changed the component's appearance through the exposed CSS parts.
 
 <div class="divider--half"></div>
 
 ## API References
 
-- [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html)
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html)
-- [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html)
-- [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html)
-- [`IgcListHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistheadercomponent.html)
-- [`IgcListItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistitemcomponent.html)
-- [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html)
+- [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent)
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
+- [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)
+- [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent)
+- [`IgcListHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListHeaderComponent)
+- [`IgcListItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListItemComponent)
+- [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

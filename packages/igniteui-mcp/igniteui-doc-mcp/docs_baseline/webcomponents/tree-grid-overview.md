@@ -126,7 +126,7 @@ Regardless of which option is used for building the tree grid's hierarchy (child
 
 ### Initial Expansion Depth
 
-Initially the tree grid will expand all node levels and show them. This behavior can be configured using the [`expansionDepth`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#expansionDepth) property. By default its value is **Infinity** which means all node levels will be expanded. You may control the initial expansion depth by setting this property to a numeric value. For example **0** will show only root level nodes, **1** will show root level nodes and their child nodes and so on.
+Initially the tree grid will expand all node levels and show them. This behavior can be configured using the [`expansionDepth`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=expansionDepth) property. By default its value is **Infinity** which means all node levels will be expanded. You may control the initial expansion depth by setting this property to a numeric value. For example **0** will show only root level nodes, **1** will show root level nodes and their child nodes and so on.
 
 ### Child Collection
 
@@ -163,7 +163,7 @@ const EMPLOYEE_DATA = [
 ]
 ```
 
-Now let's start by importing our [`data`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#data) collection and binding it to our tree grid.
+Now let's start by importing our [`data`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=data) collection and binding it to our tree grid.
 
 ```html
 <igc-tree-grid auto-generate="false" id="treeGrid" name="treeGrid">
@@ -181,10 +181,10 @@ Now let's start by importing our [`data`](https://www.infragistics.com/products/
     }
 ```
 
-In order for the tree grid to build the hierarchy, we will have to set its [`childDataKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#childDataKey) property to the name of the child collection that is used in each of our data objects. In our case that will be the **Employees** collection.
+In order for the tree grid to build the hierarchy, we will have to set its [`childDataKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=childDataKey) property to the name of the child collection that is used in each of our data objects. In our case that will be the **Employees** collection.
 In addition, we can disable the automatic column generation and define them manually by matching them to the actual properties of our data objects. (The **Employees** collection will be automatically used for the hierarchy, so there is no need to include it in the columns' definitions.)
 
-We can now enable the row selection and paging features of the tree grid by using the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowSelection) and add the [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html) element.
+We can now enable the row selection and paging features of the tree grid by using the [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelection) and add the [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html) element.
 We can also enable the summaries, the filtering, sorting, editing, moving and resizing features for each of our columns.
 
 ```html
@@ -236,9 +236,9 @@ const data = [
 ];
 ```
 
-In the sample data above, all records have an ID, a ParentID and some additional properties like Name, JobTitle and Age. As mentioned previously, the ID of the records must be unique as it will be our [`primaryKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#primaryKey). The ParentID contains the ID of the parent node and could be set as a [`foreignKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#foreignKey). If a row has a ParentID that does not match any row in the tree grid, then that means this row is a root row.
+In the sample data above, all records have an ID, a ParentID and some additional properties like Name, JobTitle and Age. As mentioned previously, the ID of the records must be unique as it will be our [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=primaryKey). The ParentID contains the ID of the parent node and could be set as a [`foreignKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=foreignKey). If a row has a ParentID that does not match any row in the tree grid, then that means this row is a root row.
 
-The parent-child relation is configured using the tree grid's [`primaryKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#primaryKey) and [`foreignKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#foreignKey) properties.
+The parent-child relation is configured using the tree grid's [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=primaryKey) and [`foreignKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=foreignKey) properties.
 
 Here is the template of the component which demonstrates how to configure the tree grid to display the data defined in the above flat collection:
 
@@ -304,8 +304,8 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 The indentation of the tree grid cell persists across other tree grid features like filtering, sorting and paging.
 
 - When `Sorting` is applied on a column, the data rows get sorted by levels. This means that the root level rows will be sorted independently from their respective children. Their respective children collections will each be sorted independently as well and so on.
-- The first column (the one that has a [`visibleIndex`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#visibleIndex) of 0) is always the tree column.
-- The column that ends up with a [`visibleIndex`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#visibleIndex) of 0 after operations like column pinning, column hiding and column moving becomes the tree column.
+- The first column (the one that has a [`visibleIndex`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=visibleIndex) of 0) is always the tree column.
+- The column that ends up with a [`visibleIndex`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=visibleIndex) of 0 after operations like column pinning, column hiding and column moving becomes the tree column.
 - Exported Excel worksheets reflect the hierarchy by grouping the records as they are grouped in the tree grid itself. All records expanded states would also be persisted and reflected.
 - When exporting to CSV, levels and expanded states are ignored and all data is exported as flat.
 
@@ -397,10 +397,10 @@ export class EmployeesNestedData extends Array<EmployeesNestedDataItem> {
 
 ## API References
 
-- [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
+- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 - [`IgcGridToolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html)
-- [`IgcTreeGridRecord`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridrecord.html)
+- [`IgcTreeGridRecord`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridRecord)
 
 ## Additional Resources
 

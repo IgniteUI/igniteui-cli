@@ -36,7 +36,7 @@ Before plotting geo-spatial data in the control, one should get familiar with th
 
 ## Shape Files Format
 
-The Blazor [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html) control uses popular [Shape Files](http://en.wikipedia.org/wiki/Shapefile#Overview) format as one of the sources for geo-spatial data. Shape files are usually shipped with other file types, generally files with  **.shp**, **.shx**, and **.dbf** extensions.
+The Blazor [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap) control uses popular [Shape Files](http://en.wikipedia.org/wiki/Shapefile#Overview) format as one of the sources for geo-spatial data. Shape files are usually shipped with other file types, generally files with  **.shp**, **.shx**, and **.dbf** extensions.
 
 The following table provides basic information and purpose for each type of shape files.
 
@@ -70,7 +70,7 @@ The following list provides resource tools for editing shape files.
 
 ## Shape Files Data Sources
 
-The following list provides resources for obtaining shape files. Also, samples for the [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html) control are good source of shape files. These shape files are included in the installer for the Samples Browser.
+The following list provides resources for obtaining shape files. Also, samples for the [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap) control are good source of shape files. These shape files are included in the installer for the Samples Browser.
 
 - [ESRI - World Map Data](http://www.esri.com/data/download/basemap/index.html)
 - [ESRI - Census 2010 Tiger/Line® - Shape Files](http://www.census.gov/geo/www/tiger/tgrshp2010/tgrshp2010.html)
@@ -94,9 +94,9 @@ The following topics provide additional information related to this topic.
 
 ## API References
 
-- [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html)
-- [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicPolylineSeries.html)
-- [`IgbGeographicShapeSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicShapeSeries.html)
-- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicShapeSeriesBase.html#IgniteUI_Blazor_Controls_IgbGeographicShapeSeriesBase_DataSource)
-- [`ShapeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicShapeSeriesBase.html#IgniteUI_Blazor_Controls_IgbGeographicShapeSeriesBase_ShapeMemberPath)
-- [`IgbShapeDataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbShapeDataSource.html)
+- [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)
+- [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
+- [`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries)
+- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeriesBase&member=DataSource)
+- [`ShapeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeriesBase&member=ShapeMemberPath)
+- [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource)

@@ -13,11 +13,11 @@ _premium: true
 
 # Web Components Grid Column Pinning
 
-The Ignite UI for Web Components Column Pinning feature in Web Components Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html). There’s an integrated UI for Column Pinning, accessible via the Web Components Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
+The Ignite UI for Web Components Column Pinning feature in Web Components Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). There’s an integrated UI for Column Pinning, accessible via the Web Components Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
 
 ## Web Components Grid Column Pinning Example
 
-This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
+This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ```css
 /* shared styles are loaded from: */
@@ -26,7 +26,7 @@ This example demonstrates how you can pin a column or multiple columns to the le
 
 ## Column Pinning API
 
-Column pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html#pinned) property of the [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html). Pinned columns are rendered on the left side of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) body.
+Column pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html#pinned) property of the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent). Pinned columns are rendered on the left side of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) body.
 
 ```html
 <igc-grid id="grid1" width="700px" auto-generate="false">
@@ -47,7 +47,7 @@ constructor() {
 
 <!-- ComponentEnd: Grid -->
 
-You may also use the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)'s [`pinColumn`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#pinColumn) or [`unpinColumn`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#unpinColumn) methods of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) to pin or unpin columns by their field name:
+You may also use the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s [`pinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=pinColumn) or [`unpinColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=unpinColumn) methods of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) to pin or unpin columns by their field name:
 
 <!-- ComponentStart: Grid -->
 
@@ -88,7 +88,7 @@ public columnPinning(event) {
 
 ## Pinning Position
 
-You can change the column pinning position via the [`pinning`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#pinning) configuration option. It allows you to set the columns position to either Start or End.
+You can change the column pinning position via the [`pinning`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=pinning) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
 
 ```html
@@ -345,7 +345,7 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## Pinning Limitations
 
-- Setting column widths in percentage (%) explicitly makes the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
+- Setting column widths in percentage (%) explicitly makes the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 <!-- WebComponents, Blazor, React -->
 
@@ -422,8 +422,8 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## API References
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 
 ## Additional Resources
 

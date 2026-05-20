@@ -13,27 +13,27 @@ _premium: true
 
 # Blazor Hierarchical Grid Conditional Styling
 
-The Ignite UI for Blazor Conditional Styling feature in Blazor Hierarchical Grid allows custom styling on a row or cell level. The [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
+The Ignite UI for Blazor Conditional Styling feature in Blazor Hierarchical Grid allows custom styling on a row or cell level. The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
 
 ## Hierarchical Grid Conditional Row Styling
 
-The [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) component in Ignite UI for Blazor provides two ways to **conditional styling of rows** based on custom rules.
+The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component in Ignite UI for Blazor provides two ways to **conditional styling of rows** based on custom rules.
 
-- By setting [`RowClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_RowClasses) input on the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) component;
-- By setting [`RowStyles`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_RowStyles) input on the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) component;
+- By setting [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowClasses) input on the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component;
+- By setting [`RowStyles`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowStyles) input on the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component;
 
 Further in this topic we will cover both of them in more details.
 
 ### Using Row Classes
 
-You can conditionally style the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) rows by setting the [`RowClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_RowClasses) input and define custom rules.
+You can conditionally style the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) rows by setting the [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowClasses) input and define custom rules.
 
 ```razor
 <IgbHierarchicalGrid AutoGenerate="true" Id="grid" Data="CustomersData" Name="grid" RowClassesScript="RowClassesHandler" @ref="grid">
 </IgbHierarchicalGrid>
 ```
 
-The [`RowClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_RowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 ```razor
 igRegisterScript("RowClassesHandler", () => {
@@ -335,9 +335,9 @@ public class SingersData
 
 ### Using Row Styles
 
-The [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) control exposes the [`RowStyles`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_RowStyles) property which allows conditional styling of the data rows. Similar to [`RowClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_RowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
+The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) control exposes the [`RowStyles`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowStyles) property which allows conditional styling of the data rows. Similar to [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
 
-> The callback signature for both [`RowStyles`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_RowStyles) and [`RowClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_RowClasses) is:
+> The callback signature for both [`RowStyles`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowStyles) and [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=RowClasses) is:
 
 ```razor
 (row) => boolean
@@ -649,13 +649,13 @@ public class SingersData
 
 ## Overview
 
-The [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) component in Ignite UI for Blazor provides two ways to **conditional styling of cells** based on custom rules.
+The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component in Ignite UI for Blazor provides two ways to **conditional styling of cells** based on custom rules.
 
-- By setting the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) input [`CellClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
+- By setting the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) input [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
 
 ### Using Cell Classes
 
-You can conditionally style the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) cells by setting the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) [`CellClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellClasses) input and define custom rules.
+You can conditionally style the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) cells by setting the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) input and define custom rules.
 
 ```razor
 <IgbColumn Field="BeatsPerMinute" CellClassesScript="GrammyNominationsCellClassesHandler">
@@ -663,7 +663,7 @@ You can conditionally style the [`IgbHierarchicalGrid`](https://www.infragistics
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-The [`CellClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 ```razor
 igRegisterScript("GrammyNominationsCellClassesHandler", () => {
@@ -958,7 +958,7 @@ public class SingersData
 }
 ```
 
-- By using the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) input [`CellStyles`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
+- By using the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) input [`CellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 
 > The callback signature for both `cellStyles` and `cellClasses` is now changed to:
 
@@ -968,7 +968,7 @@ public class SingersData
 
 ### Using Cell Styles
 
-Columns expose the [`CellStyles`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellStyles) property which allows conditional styling of the column cells. Similar to [`CellClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
+Columns expose the [`CellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellStyles) property which allows conditional styling of the column cells. Similar to [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
 
 Let's define our styles:
 
@@ -1307,8 +1307,8 @@ public class SingersData
 
 ## API References
 
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
-- [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
 
 ## Additional Resources
 

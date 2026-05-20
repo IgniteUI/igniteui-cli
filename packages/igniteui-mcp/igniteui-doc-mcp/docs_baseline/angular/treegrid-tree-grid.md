@@ -180,26 +180,26 @@ Now that you have the Ignite UI for Angular Tree Grid module or directives impor
 >[!NOTE]
 >**This component can utilize the [`HammerModule`](https://angular.io/api/platform-browser/HammerModule) **optionally**. It can be imported in the root module of the application in order for touch interactions to work as expected.**.
 
-The [`IgxTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) shares a lot of features with the [`IgxGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html), but it also adds the ability to display its data hierarchically.
-In order to achieve this, the [`IgxTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) provides us with a couple of ways to define the relations among our data objects - by using a [child collection](#child-collection) for every data object or by using [primary and foreign keys](#primary-and-foreign-keys) for every data object.
+The [`IgxTreeGridComponent`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) shares a lot of features with the [`IgxGridComponent`](mcp:get_api_reference?platform=angular&component=IgxGridComponent), but it also adds the ability to display its data hierarchically.
+In order to achieve this, the [`IgxTreeGridComponent`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) provides us with a couple of ways to define the relations among our data objects - by using a [child collection](#child-collection) for every data object or by using [primary and foreign keys](#primary-and-foreign-keys) for every data object.
 
 ### Tree Cells
 
 Regardless of which option is used for building the tree grid's hierarchy (child collection or primary and foreign keys), the tree grid's rows are constructed of two types of cells:
 
-- [`IgxGridCell`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html) - Ordinary cell that contains a value.
-- [`IgxGridCell`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html) - Tree cell that contains a value, an expand/collapse indicator and an indentation div element, which is based on the level of the cell's row. The level of a row component can be accessed through the [`level`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/itreegridrecord.html#level) property of its inner [`treeRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridrow.html#treeRow).
+- [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell) - Ordinary cell that contains a value.
+- [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell) - Tree cell that contains a value, an expand/collapse indicator and an indentation div element, which is based on the level of the cell's row. The level of a row component can be accessed through the [`level`](mcp:get_api_reference?platform=angular&component=ITreeGridRecord&member=level) property of its inner [`treeRow`](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow&member=treeRow).
 
 > [!NOTE]
 > Each row can have only one tree cell, but it can have multiple (or none) ordinary cells.
 
 ### Initial Expansion Depth
 
-Initially the tree grid will expand all node levels and show them. This behavior can be configured using the [`expansionDepth`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#expansionDepth) property. By default its value is **Infinity** which means all node levels will be expanded. You may control the initial expansion depth by setting this property to a numeric value. For example **0** will show only root level nodes, **1** will show root level nodes and their child nodes and so on.
+Initially the tree grid will expand all node levels and show them. This behavior can be configured using the [`expansionDepth`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=expansionDepth) property. By default its value is **Infinity** which means all node levels will be expanded. You may control the initial expansion depth by setting this property to a numeric value. For example **0** will show only root level nodes, **1** will show root level nodes and their child nodes and so on.
 
 ### Child Collection
 
-When we are using the **child collection** option, every data object contains a child collection, that is populated with items of the same type as the parent data object. This way every record in our tree grid will have a direct reference to any of its children. In this case the [`data`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#data) property of our tree grid that contains the original data source will be a hierarchically defined collection.
+When we are using the **child collection** option, every data object contains a child collection, that is populated with items of the same type as the parent data object. This way every record in our tree grid will have a direct reference to any of its children. In this case the [`data`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=data) property of our tree grid that contains the original data source will be a hierarchically defined collection.
 
 For this sample, let's use the following collection structure:
 
@@ -234,7 +234,7 @@ export const EMPLOYEE_DATA = [
 ]
 ```
 
-Now let's start by importing our data collection and binding it to the [`data`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#data) input of our tree grid.
+Now let's start by importing our data collection and binding it to the [`data`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=data) input of our tree grid.
 
 ```html
 <!--treeGridSample.component.html-->
@@ -243,7 +243,7 @@ Now let's start by importing our data collection and binding it to the [`data`](
 </igx-tree-grid>
 ```
 
-In order for the IgxTreeGridComponent to build the hierarchy, we will have to set its [`childDataKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#childdatakey) property to the name of the child collection that is used in each of our data objects. In our case that will be the **Employees** collection.
+In order for the IgxTreeGridComponent to build the hierarchy, we will have to set its [`childDataKey`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=childdatakey) property to the name of the child collection that is used in each of our data objects. In our case that will be the **Employees** collection.
 In addition, we will disable the automatic column generation and define them manually by matching them to the actual properties of our data objects. (The **Employees** collection will be automatically used for the hierarchy, so there is no need to include it in the columns' definitions.)
 
 ```html
@@ -257,7 +257,7 @@ In addition, we will disable the automatic column generation and define them man
 </igx-tree-grid>
 ```
 
-We will now enable the row selection and paging features of the tree grid by using the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowSelection) and the [`paging`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#paging) properties.
+We will now enable the row selection and paging features of the tree grid by using the [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection) and the [`paging`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=paging) properties.
 We will also enable the summaries feature on the first column and the filtering, sorting, editing, moving and resizing features for each of our columns.
 
 ```html
@@ -274,7 +274,7 @@ We will also enable the summaries feature on the first column and the filtering,
 </igx-tree-grid>
 ```
 
-Finally, we will enable the toolbar of our tree grid, along with the column hiding, column pinning and exporting features by using the [`IgxGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarcomponent.html), [`IgxGridToolbarHidingComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarhidingcomponent.html), [`IgxGridToolbarPinningComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarpinningcomponent.html) and [`IgxGridToolbarExporterComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarexportercomponent.html) respectively.
+Finally, we will enable the toolbar of our tree grid, along with the column hiding, column pinning and exporting features by using the [`IgxGridToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarComponent), [`IgxGridToolbarHidingComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarHidingComponent), [`IgxGridToolbarPinningComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarPinningComponent) and [`IgxGridToolbarExporterComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarExporterComponent) respectively.
 
 ```html
 <!--treeGridSample.component.html-->
@@ -301,7 +301,7 @@ You can see the result of the code from above at the beginning of this article i
 
 ### Primary and Foreign keys
 
-When we are using the **primary and foreign keys** option, every data object contains a primary key and a foreign key. The primary key is the unique identifier of the current data object and the foreign key is the unique identifier of its parent. In this case the [`data`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#data) property of our tree grid that contains the original data source will be a flat collection.
+When we are using the **primary and foreign keys** option, every data object contains a primary key and a foreign key. The primary key is the unique identifier of the current data object and the foreign key is the unique identifier of its parent. In this case the [`data`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=data) property of our tree grid that contains the original data source will be a flat collection.
 
 The following is an example of a component which contains a flat collection defined with primary and foreign keys relation:
 
@@ -335,7 +335,7 @@ export class MyComponent implements OnInit {
 
 In the sample data above, all records have an ID, a ParentID and some additional properties like Name, JobTitle and Age. As mentioned previously, the ID of the records must be unique. The ParentID contains the ID of the parent node. If a row has a ParentID that does not match any row in the tree grid, then that means this row is a root row.
 
-The parent-child relation is configured using the tree grid's [`primaryKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#primaryKey) and [`foreignKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#foreignKey) properties.
+The parent-child relation is configured using the tree grid's [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=primaryKey) and [`foreignKey`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=foreignKey) properties.
 
 Here is the template of the component which demonstrates how to configure the tree grid to display the data defined in the above flat collection:
 
@@ -350,7 +350,7 @@ Here is the template of the component which demonstrates how to configure the tr
 </igx-tree-grid>
 ```
 
-In addition we will enable the row selection feature of the tree grid by using the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowSelection) property and also the filtering, sorting, editing, moving and resizing features for each of our columns.
+In addition we will enable the row selection feature of the tree grid by using the [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection) property and also the filtering, sorting, editing, moving and resizing features for each of our columns.
 
 ```html
 <!--treeGridSample.component.html-->
@@ -495,12 +495,12 @@ platformBrowserDynamic()
 
 <div class="divider--half"></div>
 
-- [IgxTreeGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
-- [IgxGridCell](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
-- [IgxTreeGridRow](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridrow.html)
-- [IgxGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
+- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
+- [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell)
+- [IgxTreeGridRow](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
+- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [IgxBaseTransactionService](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbasetransactionservice.html)
+- [IgxBaseTransactionService](mcp:get_api_reference?platform=angular&component=IgxBaseTransactionService)
 
 ## Theming Dependencies
 

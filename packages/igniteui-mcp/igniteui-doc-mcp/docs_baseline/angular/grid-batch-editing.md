@@ -8,11 +8,11 @@ _premium: true
 ---
 # Angular Grid Batch Editing and Transactions
 @@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') {
-The Batch Editing feature of the IgxGrid is based on the [`TransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtransactionservice.html). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxTransactionService` and details how it is implemented.
+The Batch Editing feature of the IgxGrid is based on the [`TransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxTransactionService` and details how it is implemented.
 }
 Below is a detailed example of how is Batch Editing enabled for the Grid component.
 ## Angular Grid Batch Editing and Transactions Example
-The following sample demonstrates a scenario, where the grid has [`batchEditing`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#batchEditing) enabled and has row editing enabled. The latter will ensure that transaction will be added after the entire row edit is confirmed.
+The following sample demonstrates a scenario, where the grid has [`batchEditing`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=batchEditing) enabled and has row editing enabled. The latter will ensure that transaction will be added after the entire row edit is confirmed.
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -222,7 +222,7 @@ Then, all you need to do is enable `batchEditing` from your Grid:
 </igx-grid>
 ```
 This will ensure a proper instance of `Transaction` service is provided for the igx-grid. The proper `TransactionService` is provided through a `TransactionFactory`. You can learn more about this internal implementation in the [transactions topic](../transaction-classes.md#transaction-factory).
-After batch editing is enabled, define a `IgxGrid` with bound data source and [`rowEditable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowEditable) set to true and bind:
+After batch editing is enabled, define a `IgxGrid` with bound data source and [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditable) set to true and bind:
 ```html
 <igx-grid #grid [batchEditing]="true" [data]="data" [primaryKey]="'ProductID'" width="100%" height="500px"
     [rowEditable]="true">
@@ -235,7 +235,7 @@ After batch editing is enabled, define a `IgxGrid` with bound data source and [`
     (click)="openCommitDialog(dialogGrid)">Commit</button>
 ...
 ```
-The following code demonstrates the usage of the [`transactions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtransactionservice.html#) API - undo, redo, commit.
+The following code demonstrates the usage of the [`transactions`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) API - undo, redo, commit.
 ```typescript
 export class GridBatchEditingSampleComponent {
     @ViewChild('grid', { read: IgxGridComponent }) public gridRowEditTransaction: IgxGridComponent;
@@ -259,9 +259,9 @@ export class GridBatchEditingSampleComponent {
 }
 ```
 > [!NOTE]
-> The transactions API won't handle end of edit and you'd need to do it by yourself. Otherwise, `Grid` would stay in edit mode. One way to do that is by calling [`endEdit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#endEdit) in the respective method.
+> The transactions API won't handle end of edit and you'd need to do it by yourself. Otherwise, `Grid` would stay in edit mode. One way to do that is by calling [`endEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=endEdit) in the respective method.
 > [!NOTE]
-> Disabling [`rowEditable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowEditable) property will modify `Grid` to create transactions on cell change and will not expose row editing overlay in the UI.
+> Disabling [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditable) property will modify `Grid` to create transactions on cell change and will not expose row editing overlay in the UI.
 ## Remote Paging with Batch Editing Demo
 [Check out the full demo configuration](remote-data-operations.md#remote-paging-with-batch-editing)
 ```typescript
@@ -553,8 +553,8 @@ igx-paginator {
 }
 ```
 ## API References
-- [transactions](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#transactions)
-- [igxTransactionService](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtransactionservice.html)
+- [transactions](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=transactions)
+- [igxTransactionService](mcp:get_api_reference?platform=angular&component=IgxTransactionService)
 ## Additional Resources
 - [Build CRUD operations with igxGrid](../general/how-to/how-to-perform-crud.md)
 - [Grid Overview](grid.md)

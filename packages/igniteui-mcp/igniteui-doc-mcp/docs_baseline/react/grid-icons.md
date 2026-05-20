@@ -10,7 +10,7 @@ _premium: true
 
 # React Grid Customize Icons
 
-The Ignite UI for React [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) icons can be customized to use custom icons from a different collection set using the exposed API methods:
+The Ignite UI for React [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) icons can be customized to use custom icons from a different collection set using the exposed API methods:
 
 - `registerIconFromText`
 - `registerIcon`
@@ -466,7 +466,7 @@ Here's a breakdown of all icons as used by component:
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 
 ## Additional Resources
 

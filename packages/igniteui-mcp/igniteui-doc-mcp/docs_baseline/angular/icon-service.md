@@ -546,7 +546,7 @@ addSvgIconFromText(name: string, iconText: string, family: string, stripMeta = f
 
 <div class="divider--half"></div>
 
-- [IgxIconService](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconservice.html)
+- [IgxIconService](mcp:get_api_reference?platform=angular&component=IgxIconService)
 
 ## Additional Resources
 

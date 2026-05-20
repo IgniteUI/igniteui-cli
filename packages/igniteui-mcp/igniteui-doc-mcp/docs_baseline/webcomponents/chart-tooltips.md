@@ -11,11 +11,11 @@ _premium: true
 
 # Web Components Chart Tooltips
 
-In Web Components charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html), [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html), and [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) controls.
+In Web Components charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent), and [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) controls.
 
 ## Web Components Chart Tooltip Types
 
-Web Components Chart provide three types of tooltips that you can with tooltips enabled by setting the [`toolTipType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#toolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
+Web Components Chart provide three types of tooltips that you can with tooltips enabled by setting the [`toolTipType`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=toolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -51,14 +51,14 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 
 <div class="divider--half"></div>
 
-The [`toolTipType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#toolTipType) property is configurable and can be set to one of the following options:
+The [`toolTipType`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=toolTipType) property is configurable and can be set to one of the following options:
 
 | Property Value     | Description  |
 | -------------------|----------------|
-| [`Default`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.tooltiptype.html#Default)  Tooltip | Display a tooltip for a single item when the pointer is positioned over it. |
-| [`Data`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.tooltiptype.html#Data) Tooltip | Display the data tooltips for all series in the chart. |
-| [`Item`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.tooltiptype.html#Item)  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over. |
-| [`Category`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.tooltiptype.html#Category) Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over. |
+| [`Default`](mcp:get_api_reference?platform=webcomponents&component=ToolTipType&member=Default)  Tooltip | Display a tooltip for a single item when the pointer is positioned over it. |
+| [`Data`](mcp:get_api_reference?platform=webcomponents&component=ToolTipType&member=Data) Tooltip | Display the data tooltips for all series in the chart. |
+| [`Item`](mcp:get_api_reference?platform=webcomponents&component=ToolTipType&member=Item)  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over. |
+| [`Category`](mcp:get_api_reference?platform=webcomponents&component=ToolTipType&member=Category) Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over. |
 
 <div class="divider--half"></div>
 
@@ -68,7 +68,7 @@ If none of built-in types of tooltips are matching your requirements, you can cr
 
 ## Custom Tooltips in Category Chart
 
-This example shows how to create custom tooltips for all series in Web Components [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) control. Note that you can also apply the same logic to custom tooltips in Web Components [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html) control.
+This example shows how to create custom tooltips for all series in Web Components [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control. Note that you can also apply the same logic to custom tooltips in Web Components [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) control.
 
 ```css
 /* shared styles are loaded from: */
@@ -112,13 +112,13 @@ You can find more information about related chart features in these topics:
 
 ## API References
 
-The [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) and [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html) components share the following API properties:
+The [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) and [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) components share the following API properties:
 
-- [`toolTipType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#toolTipType)
+- [`toolTipType`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=toolTipType)
 
-In the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) component, you can use the following API components and properties:
+In the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) component, you can use the following API components and properties:
 
-- [`IgcDataToolTipLayerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatatooltiplayercomponent.html)
-- [`IgcItemToolTipLayerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcitemtooltiplayercomponent.html)
-- [`IgcCategoryToolTipLayerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorytooltiplayercomponent.html)
+- [`IgcDataToolTipLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent)
+- [`IgcItemToolTipLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcItemToolTipLayerComponent)
+- [`IgcCategoryToolTipLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryToolTipLayerComponent)
 - `ShowDefaultToolTip`

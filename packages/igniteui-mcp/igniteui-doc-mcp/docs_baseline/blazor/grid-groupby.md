@@ -11,7 +11,7 @@ _premium: true
 
 # Blazor Grid Group By
 
-The Ignite UI for Blazor Group By behavior in Blazor IgbGrid creates grouped data rows based on the column values. The Group By in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) allows for visualizing the groups in a hierarchical structure. The grouped data rows can be expanded or collapsed and the order of grouping may be changed through the UI or API. When Row Selection is enabled, a Group By row selector is rendered in the left-most area of the group row. In case the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowSelection) property is set to single, checkboxes are disabled and only serve as an indication for the group where selection is placed. If the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowSelection) property is set to multiple, clicking over the Group By row selector selects all records belonging to this group.
+The Ignite UI for Blazor Group By behavior in Blazor IgbGrid creates grouped data rows based on the column values. The Group By in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) allows for visualizing the groups in a hierarchical structure. The grouped data rows can be expanded or collapsed and the order of grouping may be changed through the UI or API. When Row Selection is enabled, a Group By row selector is rendered in the left-most area of the group row. In case the [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowSelection) property is set to single, checkboxes are disabled and only serve as an indication for the group where selection is placed. If the [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowSelection) property is set to multiple, clicking over the Group By row selector selects all records belonging to this group.
 
 ## Blazor Grid Group By Example
 
@@ -211,7 +211,7 @@ public class InvoicesWorldData
 
 ## Initial Grouping State
 
-It is possible to define initial grouping of the grid by assigning an array of expressions to the [`GroupingExpressions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GroupingExpressions) property of the grid.
+It is possible to define initial grouping of the grid by assigning an array of expressions to the [`GroupingExpressions`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=GroupingExpressions) property of the grid.
 
 ```razor
 <IgbGrid AutoGenerate="true" Data="InvoicesData" @ref="grid" Id="grid" GroupingExpressions="GroupingExpression1"></IgbGrid>
@@ -249,7 +249,7 @@ Grouping is available through the UI and through a robust API exposed by the gri
 </IgbGrid>
 ```
 
-During runtime the expressions are gettable and settable from the `groupingExpressions` property. If you need to add or change an existing expression you may also use the [`GroupBy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GroupBy) method with either a single or an array of expressions.
+During runtime the expressions are gettable and settable from the `groupingExpressions` property. If you need to add or change an existing expression you may also use the [`GroupBy`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=GroupBy) method with either a single or an array of expressions.
 
 ```razor
 @code {
@@ -271,9 +271,9 @@ During runtime the expressions are gettable and settable from the `groupingExpre
 
 ### Expand/Collapse API
 
-In addition to grouping expressions you can also control the expansion states for group rows. They are stored in a separate property of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component [`GroupingExpansionState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GroupingExpansionState) which is a collection of [`IgbGroupByExpandState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGroupByExpandState.html). Each expansion state is uniquely defined by the field name it is created for and the value it represents for each level of grouping, i.e. the identifier is a hierarchy array of [`IgbGroupByKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGroupByKey.html).
+In addition to grouping expressions you can also control the expansion states for group rows. They are stored in a separate property of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component [`GroupingExpansionState`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=GroupingExpansionState) which is a collection of [`IgbGroupByExpandState`](mcp:get_api_reference?platform=blazor&component=IgbGroupByExpandState). Each expansion state is uniquely defined by the field name it is created for and the value it represents for each level of grouping, i.e. the identifier is a hierarchy array of [`IgbGroupByKey`](mcp:get_api_reference?platform=blazor&component=IgbGroupByKey).
 
-As with [`GroupingExpressions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GroupingExpressions), setting a list of [`IgbGroupByExpandState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGroupByExpandState.html) directly to the [`GroupingExpansionState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GroupingExpansionState) will change the expansion accordingly. Additionally [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) exposes a method [`ToggleGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ToggleGroup) that toggles a group by the group record instance or via the [`Expanded`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowDirective.html#IgniteUI_Blazor_Controls_IgbRowDirective_Expanded) property of the row.
+As with [`GroupingExpressions`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=GroupingExpressions), setting a list of [`IgbGroupByExpandState`](mcp:get_api_reference?platform=blazor&component=IgbGroupByExpandState) directly to the [`GroupingExpansionState`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=GroupingExpansionState) will change the expansion accordingly. Additionally [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) exposes a method [`ToggleGroup`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ToggleGroup) that toggles a group by the group record instance or via the [`Expanded`](mcp:get_api_reference?platform=blazor&component=IgbRowDirective&member=Expanded) property of the row.
 
 ```razor
 <IgbGrid AutoGenerate="true" Data="InvoicesData" GroupingExpressions="GroupingExpression1" GroupingExpansionState=ExpansionState @ref="grid" Id="grid">
@@ -292,20 +292,20 @@ As with [`GroupingExpressions`](https://www.infragistics.com/blazor/docs/api/api
 }
 ```
 
-Groups can be created expanded (**default**) or collapsed and the expansion states would generally only contain the state opposite to the default behavior. You can control whether groups should be created expanded or not through the [`GroupsExpanded`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GroupsExpanded) property.
+Groups can be created expanded (**default**) or collapsed and the expansion states would generally only contain the state opposite to the default behavior. You can control whether groups should be created expanded or not through the [`GroupsExpanded`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=GroupsExpanded) property.
 
 ### Select/Deselect All Rows in a Group API
 
-Selecting/Deselecting all rows in a group is available through the [`SelectRowsInGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_SelectRowsInGroup) and [`DeselectRowsInGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_DeselectRowsInGroup) API methods.
+Selecting/Deselecting all rows in a group is available through the [`SelectRowsInGroup`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=SelectRowsInGroup) and [`DeselectRowsInGroup`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=DeselectRowsInGroup) API methods.
 
-The code snippet below can be used to select all rows within a group using the group record instance [`SelectRowsInGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_SelectRowsInGroup) method. Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
+The code snippet below can be used to select all rows within a group using the group record instance [`SelectRowsInGroup`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=SelectRowsInGroup) method. Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
 ```razor
 var row = await this.grid.GetRowByIndexAsync(0);
 this.grid.SelectRowsInGroup(row.GroupRow, true);
 ```
 
-If you need to deselect all rows within a group programmatically, you can use the [`DeselectRowsInGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_DeselectRowsInGroup) method.
+If you need to deselect all rows within a group programmatically, you can use the [`DeselectRowsInGroup`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=DeselectRowsInGroup) method.
 
 ```razor
 var row = await this.grid.GetRowByIndexAsync(0);
@@ -316,7 +316,7 @@ this.grid.DeselectRowsInGroup(row.GroupRow);
 
 ### Group Row Templates
 
-The group row except for the expand/collapse UI is fully templatable. By default it renders a grouping icon and displays the field name and value it represents. The context to render the template against is of type [`IgbGroupByRecord`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGroupByRecord.html).
+The group row except for the expand/collapse UI is fully templatable. By default it renders a grouping icon and displays the field name and value it represents. The context to render the template against is of type [`IgbGroupByRecord`](mcp:get_api_reference?platform=blazor&component=IgbGroupByRecord).
 
 As an example, the following template would make the group rows summary more verbose:
 
@@ -334,9 +334,9 @@ igRegisterScript("WebGridGroupByRowTemplate", (ctx) => {
 
 ### Group Row Selector Templates
 
-As mentioned above the group row except for the expand/collapse UI is fully templatable. To create a custom Group By row selector template use [`GroupByRowSelectorTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GroupByRowSelectorTemplate). From the template, you can access the implicitly provided context variable, with properties that give you information about the Group By row's state.
+As mentioned above the group row except for the expand/collapse UI is fully templatable. To create a custom Group By row selector template use [`GroupByRowSelectorTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=GroupByRowSelectorTemplate). From the template, you can access the implicitly provided context variable, with properties that give you information about the Group By row's state.
 
-The [`SelectedCount`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGroupByRowSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbGroupByRowSelectorTemplateDetails_SelectedCount) property shows how many of the group records are currently selected while [`TotalCount`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGroupByRowSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbGroupByRowSelectorTemplateDetails_TotalCount) shows how many records belong to the group.
+The [`SelectedCount`](mcp:get_api_reference?platform=blazor&component=IgbGroupByRowSelectorTemplateDetails&member=SelectedCount) property shows how many of the group records are currently selected while [`TotalCount`](mcp:get_api_reference?platform=blazor&component=IgbGroupByRowSelectorTemplateDetails&member=TotalCount) shows how many records belong to the group.
 
 ```razor
 <IgbGrid GroupByRowSelectorTemplateScript="GroupByRowSelectorTemplate"></IgbGrid>
@@ -347,7 +347,7 @@ igRegisterScript("GroupByRowSelectorTemplate", (ctx) => {
 }, false);
 ```
 
-The [`GroupRow`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGroupByRowSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbGroupByRowSelectorTemplateDetails_GroupRow) property returns a reference to the group row.
+The [`GroupRow`](mcp:get_api_reference?platform=blazor&component=IgbGroupByRowSelectorTemplateDetails&member=GroupRow) property returns a reference to the group row.
 
 ```razor
 <IgbGrid GroupByRowSelectorTemplateScript="GroupByRowSelectorTemplate"></IgbGrid>
@@ -359,7 +359,7 @@ igRegisterScript("GroupByRowSelectorTemplate", (ctx) => {
 }, false);
 ```
 
-The [`SelectedCount`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGroupByRowSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbGroupByRowSelectorTemplateDetails_SelectedCount) and [`TotalCount`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGroupByRowSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbGroupByRowSelectorTemplateDetails_TotalCount) properties can be used to determine if the Group By row selector should be checked or indeterminate (partially selected).
+The [`SelectedCount`](mcp:get_api_reference?platform=blazor&component=IgbGroupByRowSelectorTemplateDetails&member=SelectedCount) and [`TotalCount`](mcp:get_api_reference?platform=blazor&component=IgbGroupByRowSelectorTemplateDetails&member=TotalCount) properties can be used to determine if the Group By row selector should be checked or indeterminate (partially selected).
 
 ## Blazor Grid Group By With Paging
 
@@ -515,7 +515,7 @@ The grouping UI supports the following keyboard interactions:
   - <kbd>ALT</kbd> + <kbd>LEFT</kbd> - Collapses the group
   - <kbd>SPACE</kbd> - selects all rows in the group, if <kbd>rowSelection</kbd> property is set to multiple
 
-- For group [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html) components in the group by area (focus should be on the chip)
+- For group [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip) components in the group by area (focus should be on the chip)
   - <kbd>SHIFT</kbd> + <kbd>LEFT</kbd> - moves the focused chip left, changing the grouping order, if possible
   - <kbd>SHIFT</kbd> + <kbd>RIGHT</kbd> - moves the focused chip right, changing the grouping order, if possible
   - <kbd>SPACE</kbd> - changes the sorting direction
@@ -771,12 +771,12 @@ public class InvoicesData
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
-- [`IgbGroupByRecord`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGroupByRecord.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+- [`IgbGroupByRecord`](mcp:get_api_reference?platform=blazor&component=IgbGroupByRecord)
 - `ISortingExpression`
-- [`Column`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGroupByRecord.html#IgniteUI_Blazor_Controls_IgbGroupByRecord_Column)
+- [`Column`](mcp:get_api_reference?platform=blazor&component=IgbGroupByRecord&member=Column)
 - `IGroupByExpandState`
-- [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html)
+- [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip)
 
 ## Additional Resources
 

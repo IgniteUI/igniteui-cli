@@ -61,14 +61,14 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html) and the [`IgrRadioGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio) and the [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup), its necessary CSS, and register its module, like so:
 
 ```tsx
 import { IgrRadio, IgrRadioGroupComponent } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-The simplest way to start using the [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html) is as follows:
+The simplest way to start using the [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio) is as follows:
 
 ```tsx
 <IgrRadioGroup>
@@ -80,25 +80,25 @@ The simplest way to start using the [`IgrRadio`](https://www.infragistics.com/pr
 ```
 
 > [!WARNING]
-> The [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
+> The [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples
 
 ### Label
 
-To provide a meaningful label for the [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html), simply place some text between the opening and closing tags:
+To provide a meaningful label for the [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio), simply place some text between the opening and closing tags:
 
 ```tsx
 <IgrRadio><span>Label</span></IgrRadio>
 ```
 
-You can specify if the label should be positioned before or after the [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html) button by setting the `label-position` attribute. Allowed values are `before` and `after`(default):
+You can specify if the label should be positioned before or after the [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio) button by setting the `label-position` attribute. Allowed values are `before` and `after`(default):
 
 ```tsx
 <IgrRadio labelPosition="before"><span>Apple</span></IgrRadio>
 ```
 
-The [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html) can also be labelled by elements external to it. In this case the user is given full control to position and style the label in accordance to their needs.
+The [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio) can also be labelled by elements external to it. In this case the user is given full control to position and style the label in accordance to their needs.
 
 ```tsx
 <span id="radio-label">Label</span>
@@ -302,7 +302,7 @@ root.render(<RadioDisabled/>);
 
 ### Group Alignment
 
-The [`IgrRadioGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html) allows you to easily change the placement directionality of the radio buttons it contains using the `alignment` attribute. Allowed values are `vertical`(default) and `horizontal`.
+The [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup) allows you to easily change the placement directionality of the radio buttons it contains using the `alignment` attribute. Allowed values are `vertical`(default) and `horizontal`.
 
 ```tsx
 <IgrRadioGroup alignment="horizontal">
@@ -366,7 +366,7 @@ You can use the `name` and `value` attributes when using the radio with `Form`.
 
 ## Styling
 
-The [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html) component exposes several CSS parts (`base`, `control`, and `label`) to give you full control over its styling.
+The [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio) component exposes several CSS parts (`base`, `control`, and `label`) to give you full control over its styling.
 
 ```css
 igc-radio::part(control) {
@@ -437,8 +437,8 @@ root.render(<RadioStyling/>);
 
 ## API References
 
-- [`IgrRadioGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html)
-- [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html)
+- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
+- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

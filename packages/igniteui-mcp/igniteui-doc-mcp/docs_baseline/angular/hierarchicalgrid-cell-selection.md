@@ -8,7 +8,7 @@ _tocName: Cell selection
 _premium: true
 ---
 # Angular Cell Selection
-The selection feature enables rich data select capabilities in the Material UI based Hierarchical Grid. Variety of events and single select actions are available thanks to the powerful API and easy to use methods. The Hierarchical Grid now supports three modes for cell selection, and you can easily switch between them by changing [`cellSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#cellSelection) property. You can disable cell selection, you can _select only one cell within the grid_ or to _select multiple cells in the grid_, which is provided as default option.
+The selection feature enables rich data select capabilities in the Material UI based Hierarchical Grid. Variety of events and single select actions are available thanks to the powerful API and easy to use methods. The Hierarchical Grid now supports three modes for cell selection, and you can easily switch between them by changing [`cellSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellSelection) property. You can disable cell selection, you can _select only one cell within the grid_ or to _select multiple cells in the grid_, which is provided as default option.
  In the Hierarchical Grid you can specify the cell selection mode on grid level. So for example in the parent grid multi-cell selection can be enabled, but in child grids cell selection mode can be single or disabled. But let's dive deeper in each of these options.
 ## Angular Cell Selection Example
 The sample below demonstrates the three types of Hierarchical Grid's **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
@@ -204,7 +204,7 @@ How to select cells:
 ### Hierarchical Grid Single Selection
 When you set the `[cellSelection]="'single'"`, this allows you to have only one selected cell in the grid at a time. Also the mode `mouse drag` will not work and instead of selecting a cell, this will make default text selection.
 >[!NOTE]
-> When single cell is selected [`selected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#selected) event is emitted, no matter if the `selection mode` is `single` or `multiple`. In multi-cell selection mode when you select a range of cells [`rangeSelected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rangeSelected) event is emitted.
+> When single cell is selected [`selected`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selected) event is emitted, no matter if the `selection mode` is `single` or `multiple`. In multi-cell selection mode when you select a range of cells [`rangeSelected`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rangeSelected) event is emitted.
 ### Hierarchical Grid None selection
 If you want to disable cell selection you can just set `[cellSelection]="'none'"` property. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the `activation style` is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
 ## Styling
@@ -321,9 +321,9 @@ $custom-grid-theme: grid-theme(
 >[!NOTE]
 >The sample will not be affected by the selected global theme from `Change Theme`.
 ## API References
-- [IgxHierarchicalGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
-_[IgxGridRow API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridrow.html)
-- [IgxGridCell API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
+- [IgxHierarchicalGridComponent API](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
+_[IgxGridRow API](mcp:get_api_reference?platform=angular&component=IgxGridRow)
+- [IgxGridCell API](mcp:get_api_reference?platform=angular&component=IgxGridCell)
 - [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

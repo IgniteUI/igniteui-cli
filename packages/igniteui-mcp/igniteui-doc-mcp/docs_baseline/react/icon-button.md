@@ -92,14 +92,14 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrIconButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igriconbutton.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton), its necessary CSS, and register its module, like so:
 
 ```tsx
 import { IgrIconButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-The simplest way to start using the [`IgrIconButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igriconbutton.html) is as follows:
+The simplest way to start using the [`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton) is as follows:
 
 ```tsx
 <IgrIconButton name="thumb-up" collection="material"></IgrIconButton>
@@ -271,7 +271,7 @@ Some icons need to look a little different when used in Right-to-Left(RTL) mode.
 
 ## Styling
 
-The [`IgrIconButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igriconbutton.html) component exposes two CSS parts - `base` and `icon` that allow you to style the wrapping element (`<button>` or `<a>`) and the wrapped `<igc-icon>` element.
+The [`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton) component exposes two CSS parts - `base` and `icon` that allow you to style the wrapping element (`<button>` or `<a>`) and the wrapped `<igc-icon>` element.
 
 ```css
 igc-icon-button[variant="contained"]:not([disabled])::part(base) {
@@ -341,9 +341,9 @@ root.render(<IconButtonStyling/>);
 ## API References
 
 - [`IgrButtonBase`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttonbase.html)
-- [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html)
-- [`IgrIconButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igriconbutton.html)
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
+- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
+- [`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

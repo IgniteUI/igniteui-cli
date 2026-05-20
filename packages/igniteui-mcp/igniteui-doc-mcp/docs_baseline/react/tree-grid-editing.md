@@ -12,7 +12,7 @@ _tocName: Editing
 
 # React Tree Grid Editing
 
-The Ignite UI for React Cell Editing feature in React Tree Grid provides an easy way to perform data manipulation operations like creating, updating, and deleting records. The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) provides you with a powerful public API which allows you to customize the way these operations are performed. The data manipulation phases are:
+The Ignite UI for React Cell Editing feature in React Tree Grid provides an easy way to perform data manipulation operations like creating, updating, and deleting records. The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) provides you with a powerful public API which allows you to customize the way these operations are performed. The data manipulation phases are:
 
 - [Cell Editing](cell-editing.md)
 - [Row Editing](row-editing.md)
@@ -20,21 +20,21 @@ The Ignite UI for React Cell Editing feature in React Tree Grid provides an easy
 
 ## Setup
 
-In order to specify which edit mode should be enabled, the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) exposes the following boolean properties - [`editable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#editable) and [`rowEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowEditable).
+In order to specify which edit mode should be enabled, the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) exposes the following boolean properties - [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) and [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable).
 
-The [`editable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#editable) property enables you to specify the following options:
+The [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) property enables you to specify the following options:
 
 - **false** - the editing for the corresponding column will be disabled. This is the default value.
 - **true** - the editing for the corresponding column will be enabled.
 
-> Keep in mind that if the column is not editable, you can still modify its value through the public API exposed by the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html).
+> Keep in mind that if the column is not editable, you can still modify its value through the public API exposed by the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
 
-The [`rowEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowEditable) property enables you to specify the following options:
+The [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable) property enables you to specify the following options:
 
 - **false** - the row editing in the corresponding grid will be disabled. This is the default value.
 - **true** - the row editing in the corresponding grid will be enabled.
 
-In the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), if you set [`rowEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowEditable) property to true, and the [`editable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#editable) property is not explicitly defined for any column, the editing will be enabled for all the columns except the **primary key**.
+In the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), if you set [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable) property to true, and the [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) property is not explicitly defined for any column, the editing will be enabled for all the columns except the **primary key**.
 
 <!--
 [Batch editing](batch-editing.md) in the grid can be enabled for both [cell editing](cell-editing.md) and [row editing](row-editing.md) modes. In order to set up batch editing it is necessary to provide to the grid a  **TransactionService**.
@@ -45,14 +45,14 @@ In the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/doc
 
 ### Editing Templates
 
-If you want to use a data type specific edit templates, you should specify the column's [`dataType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#dataType) property. So let's now see what are the default templates for each type:
+If you want to use a data type specific edit templates, you should specify the column's [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) property. So let's now see what are the default templates for each type:
 
-- For `string` data type, default template is using [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html).
-- For `number` data type, default template is using [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) type="number", so if you try to update cell to a value which can not be parsed to a number your change is going to be discarded, and the value in the cell will be set to 0.
-- For `date` data type, default template is using [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html)
+- For `string` data type, default template is using [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput).
+- For `number` data type, default template is using [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) type="number", so if you try to update cell to a value which can not be parsed to a number your change is going to be discarded, and the value in the cell will be set to 0.
+- For `date` data type, default template is using [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker)
 - For `dateTime` data type, default template is using `DateTimeEditor`. This editor will give you a mask directions for the input elements part of the DateTime object.
 - For `time` - data type, default template is using `TimePicker`.
-- For `boolean` data type, default template is using [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html).
+- For `boolean` data type, default template is using [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox).
 - For `currency` data type, default template is using `InputGroup` with prefix/suffix configuration based on application or grid locale settings.
 - For `percent` data type, default template is using `InputGroup` with suffix element that shows a preview of the edited value in percents.
 
@@ -72,19 +72,19 @@ The grid exposes a wide array of events that provide greater control over the ed
 
 | Event           | Description                                                                                                                                               | Arguments                  | Cancellable |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ----------- |
-| `RowEditEnter`  | If `RowEditing` is enabled, fires when a row enters edit mode                                                                                             | [`IgrGridEditEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridediteventargs.html)     | **true*-  |
-| `CellEditEnter` | Fires when a cell **enters edit mode** (after `RowEditEnter`)                                                                                             | [`IgrGridEditEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridediteventargs.html)     | **true*-  |
-| `CellEdit`      | If value is changed, fires just **before** a cell's value is **committed** (e.g. by pressing <kbd>ENTER</kbd>)                                                     | [`IgrGridEditEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridediteventargs.html)     | **true*-  |
-| `CellEditDone`  | If value is changed, fires **after** a cell has been edited and cell's value is **committed*-                                                           | [`IgrGridEditDoneEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrideditdoneeventargs.html) | **false*- |
-| `CellEditExit`  | Fires when a cell **exits edit mode*-                                                                                                                   | [`IgrGridEditDoneEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrideditdoneeventargs.html) | **false*- |
-| `RowEdit`       | If `RowEditing` is enabled, fires just before a row in edit mode's value is **committed** (e.g. by clicking the `Done` button on the Row Editing Overlay) | [`IgrGridEditEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridediteventargs.html)     | **true*-  |
-| `RowEditDone`   | If `RowEditing` is enabled, fires **after** a row has been edited and new row's value has been **committed**.                                            | [`IgrGridEditDoneEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrideditdoneeventargs.html) | **false*- |
-| `RowEditExit`   | If `RowEditing` is enabled, fires when a row **exits edit mode*-                                                                                        | [`IgrGridEditDoneEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrideditdoneeventargs.html) | **false*- |
+| `RowEditEnter`  | If `RowEditing` is enabled, fires when a row enters edit mode                                                                                             | [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs)     | **true*-  |
+| `CellEditEnter` | Fires when a cell **enters edit mode** (after `RowEditEnter`)                                                                                             | [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs)     | **true*-  |
+| `CellEdit`      | If value is changed, fires just **before** a cell's value is **committed** (e.g. by pressing <kbd>ENTER</kbd>)                                                     | [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs)     | **true*-  |
+| `CellEditDone`  | If value is changed, fires **after** a cell has been edited and cell's value is **committed*-                                                           | [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs) | **false*- |
+| `CellEditExit`  | Fires when a cell **exits edit mode*-                                                                                                                   | [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs) | **false*- |
+| `RowEdit`       | If `RowEditing` is enabled, fires just before a row in edit mode's value is **committed** (e.g. by clicking the `Done` button on the Row Editing Overlay) | [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs)     | **true*-  |
+| `RowEditDone`   | If `RowEditing` is enabled, fires **after** a row has been edited and new row's value has been **committed**.                                            | [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs) | **false*- |
+| `RowEditExit`   | If `RowEditing` is enabled, fires when a row **exits edit mode*-                                                                                        | [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs) | **false*- |
 
 ### Event Cancellation
 
 - `RowEditEnter` - Neither `Row` nor `Cell` will enter edit mode.
-- `CellEditEnter` - Prevents entering cell edit. If [`rowEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowEditable) is enabled, row edit will be triggered, although cell edit will remain forbidden.
+- `CellEditEnter` - Prevents entering cell edit. If [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable) is enabled, row edit will be triggered, although cell edit will remain forbidden.
 - `CellEdit` - Allowed `Cell` and/or `Row` edit, hitting **Done** button or **Enter** won't commit the value or row transaction. Cell editing and Row editing won't be closed until **Cancel** button is clicked.
 - `RowEdit` - Committing cell is possible, but not the whole row. The row will stay in edit mode and the row transaction will be considered open. Hitting **Done** does not commit or close the row. **Cancel** button closes the editing process and the transaction without committing the changes.
 
@@ -325,7 +325,7 @@ function onSorting(args: IgrSortingEventArgs) {
 
 ## API References
 
-- [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
+- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
 
 ## Additional Resources
 

@@ -185,15 +185,15 @@ You can exit edit mode and **commit** the changes in one of the following ways:
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 - on key press <kbd>TAB</kbd>;
-- on single click to another cell - when you click on another cell in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html), your changes will be submitted.
+- on single click to another cell - when you click on another cell in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
 > [!Note]
-> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). This is valid for both cell editing and row editing.
+> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). This is valid for both cell editing and row editing.
 
 ### Editing through API
 
-You can also modify the cell value through the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) API but only if primary key is defined:
+You can also modify the cell value through the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) API but only if primary key is defined:
 
 <!-- ComponentStart: Grid -->
 
@@ -203,7 +203,7 @@ this.grid.UpdateCell(newValue, rowID, 'ReorderLevel')
 
 <!-- ComponentEnd: Grid -->
 
-Another way to update cell is directly through [`Update`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridRow.html#IgniteUI_Blazor_Controls_IgbGridRow_Update) method of `Cell`:
+Another way to update cell is directly through [`Update`](mcp:get_api_reference?platform=blazor&component=IgbGridRow&member=Update) method of `Cell`:
 
 <!-- ComponentStart: Grid -->
 
@@ -388,7 +388,7 @@ public class RoleplayDataStats
 
 Using Excel Style Editing allows the user to navigate trough the cells just as he would using the Excel, and ever so quickly edit them.
 
-Implementing this custom functionality can be done by utilizing the events of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). First we hook up to the grid's keydown events, and from there we can implement two functionalities:
+Implementing this custom functionality can be done by utilizing the events of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). First we hook up to the grid's keydown events, and from there we can implement two functionalities:
 
 - Constant edit mode
 - <kbd>ENTER</kbd>/<kbd>SHIFT</kbd> + <kbd>ENTER</kbd> navigation
@@ -413,11 +413,11 @@ Main benefits of the above approach include:
 > [!Note]
 > Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
-The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) provides a straightforward API for basic CRUD operations.
+The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) provides a straightforward API for basic CRUD operations.
 
 ### Adding a new record
 
-The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component exposes the `AddRow` method which will add the provided data to the data source itself.
+The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component exposes the `AddRow` method which will add the provided data to the data source itself.
 
 <!-- ComponentStart: Grid -->
 
@@ -458,7 +458,7 @@ Updating data in the Grid is achieved through `UpdateRow` and `UpdateCell` metho
 
 ### Deleting data from the Grid
 
-Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_PrimaryKey) is defined.
+Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=PrimaryKey) is defined.
 
 <!-- ComponentStart: Grid -->
 
@@ -474,7 +474,7 @@ Please keep in mind that `DeleteRow` method will remove the specified row only i
 
 ### Cell Validation on Edit Event
 
-Using the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)'s editing events, we can alter how the user interacts with the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
+Using the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)'s editing events, we can alter how the user interacts with the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
 
 In this example, we'll validate a cell based on the data entered in it by binding to the `CellEdit` event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
 
@@ -511,7 +511,7 @@ If the value entered in a cell under the **Units On Order** column is larger tha
 
 <!-- ComponentEnd: TreeGrid -->
 
-The result of the above validation being applied to our [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) can be seen in the below demo:
+The result of the above validation being applied to our [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) can be seen in the below demo:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -785,8 +785,8 @@ public class NwindData
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
-- [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+- [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)
 
 ## Additional Resources
 

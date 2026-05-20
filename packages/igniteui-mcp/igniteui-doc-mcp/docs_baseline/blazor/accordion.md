@@ -18,7 +18,7 @@ Users are enabled to interact and navigate among a list of items, such as thumbn
 
 The following is a basic Ignite UI for Blazor Accordion example of a FAQ section. It operates as an accordion, with individually working sections. You can toggle each text block with a single click, while expanding multiple panels at the same time. This way you can read information more easily, without having to go back and forth between an automatically expanding and collapsing panel, which conceals the previously opened section every time.
 
-In it, you can see how to define an accordion and its expansion panels. The sample also demonstrates the two types of expansion behavior. The switch button sets the [`SingleExpand`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html#IgniteUI_Blazor_Controls_IgbAccordion_SingleExpand) property to toggle between single and multiple branches to be expanded at a time.
+In it, you can see how to define an accordion and its expansion panels. The sample also demonstrates the two types of expansion behavior. The switch button sets the [`SingleExpand`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=SingleExpand) property to toggle between single and multiple branches to be expanded at a time.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -88,7 +88,7 @@ In it, you can see how to define an accordion and its expansion panels. The samp
 
 ## Getting Started with Blazor Accordion
 
-Before using the [`IgbAccordion`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html), you need to register it as follows:
+Before using the [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -96,13 +96,13 @@ Before using the [`IgbAccordion`](https://www.infragistics.com/blazor/docs/api/a
 builder.Services.AddIgniteUIBlazor(typeof(IgbAccordionModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbAccordion`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-Now you can start with a basic configuration of the [`IgbAccordion`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html) and its panels.
+Now you can start with a basic configuration of the [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion) and its panels.
 
 ## Usage
 
@@ -130,18 +130,18 @@ The accordion wraps all expansion panels declared inside it.
 </IgbAccordion>
 ```
 
-As demonstrated above, the [`SingleExpand`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html#IgniteUI_Blazor_Controls_IgbAccordion_SingleExpand)property gives you the ability to set whether single or multiple panels can be expanded at a time.
+As demonstrated above, the [`SingleExpand`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=SingleExpand)property gives you the ability to set whether single or multiple panels can be expanded at a time.
 
-By using the [`HideAll`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html#IgniteUI_Blazor_Controls_IgbAccordion_HideAll) and [`ShowAll`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html#IgniteUI_Blazor_Controls_IgbAccordion_ShowAll) methods you can respectively collapse and expand all [`IgbExpansionPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbExpansionPanel.html)s of the [`IgbAccordion`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html) programmatically.
+By using the [`HideAll`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=HideAll) and [`ShowAll`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=ShowAll) methods you can respectively collapse and expand all [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel)s of the [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion) programmatically.
 
 > [!Note]
-> If [`SingleExpand`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html#IgniteUI_Blazor_Controls_IgbAccordion_SingleExpand) property is set to **true** calling [`ShowAll`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html#IgniteUI_Blazor_Controls_IgbAccordion_ShowAll) method would expand only the focused panel.
+> If [`SingleExpand`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=SingleExpand) property is set to **true** calling [`ShowAll`](mcp:get_api_reference?platform=blazor&component=IgbAccordion&member=ShowAll) method would expand only the focused panel.
 
 ### Blazor Accordion Customization Example
 
 With the Blazor Accordion, you can customize the header and content panel's appearance.
 
-The sample below demonstrates how elaborate filtering options can be implemented using the built-in slots of the [`IgbExpansionPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbExpansionPanel.html).
+The sample below demonstrates how elaborate filtering options can be implemented using the built-in slots of the [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel).
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -344,7 +344,7 @@ The sample below demonstrates how elaborate filtering options can be implemented
 
 ### Nested Blazor Accordions Scenario
 
-In the following Blazor Accordion example is created a complex FAQ section in order to illustrate how you can go about this common application scenario. In the sample nested [`IgbAccordion`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html) is achieved by adding an accordion inside an expansion panel.
+In the following Blazor Accordion example is created a complex FAQ section in order to illustrate how you can go about this common application scenario. In the sample nested [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion) is achieved by adding an accordion inside an expansion panel.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -474,8 +474,8 @@ The Accordion navigation is compliant with W3C accessibility standards and conve
 
 ## API References
 
-- [`IgbAccordion`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAccordion.html)
-- [`IgbExpansionPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbExpansionPanel.html)
+- [`IgbAccordion`](mcp:get_api_reference?platform=blazor&component=IgbAccordion)
+- [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel)
 
 ## Additional Resources
 

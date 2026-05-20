@@ -250,14 +250,14 @@ public class CustomersData
 }
 ```
 
-The declaration of Multi-row Layout is achieved through [`IgbColumnLayout`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnLayout.html) component. Each [`IgbColumnLayout`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnLayout.html) component should be considered as a block, containing one or multiple [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more [`IgbColumnLayout`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnLayout.html) blocks if the layout allows it. There should be no columns outside of those blocks and no usage of [`IgbColumnGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html) when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
+The declaration of Multi-row Layout is achieved through [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout) component. Each [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout) component should be considered as a block, containing one or multiple [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout) blocks if the layout allows it. There should be no columns outside of those blocks and no usage of [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
 
-The [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) component exposes four [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html) properties to determine the location and span of each cell:
+The [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) component exposes four [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) properties to determine the location and span of each cell:
 
-- [`ColStart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_ColStart) - column index from which the field is starting. This property is **mandatory**.
-- [`RowStart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_RowStart) - row index from which the field is starting. This property is **mandatory**.
-- [`ColEnd`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_ColEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to **colStart + 1**.
-- [`RowEnd`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_RowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to **rowStart + 1**.
+- [`ColStart`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=ColStart) - column index from which the field is starting. This property is **mandatory**.
+- [`RowStart`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=RowStart) - row index from which the field is starting. This property is **mandatory**.
+- [`ColEnd`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=ColEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to **colStart + 1**.
+- [`RowEnd`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=RowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to **rowStart + 1**.
 
 ```razor
 <IgbColumnLayout>
@@ -286,11 +286,11 @@ The result of the above configuration can be seen on the screenshot below:
 <img src="../../../images/multi-row-layout-1.png" alt="multi-row-layout" style="width: 100%"/>
 
 > [!Note]
-> [`RowStart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_RowStart) and [`ColStart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_ColStart) properties must be set for each [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) into a [`IgbColumnLayout`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnLayout.html). The [`IgbColumnLayout`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnLayout.html) component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
+> [`RowStart`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=RowStart) and [`ColStart`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=ColStart) properties must be set for each [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) into a [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout). The [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout) component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
 
 ## Feature Integration
 
-Due to the completely different rendering approach of Multi-row Layout, some of the column features will work only on [`IgbColumnLayout`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnLayout.html) component. Such features are Column Pinning and Column Hiding. Otherwise - Sorting and Grouping will work in the same way - on the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) component.
+Due to the completely different rendering approach of Multi-row Layout, some of the column features will work only on [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout) component. Such features are Column Pinning and Column Hiding. Otherwise - Sorting and Grouping will work in the same way - on the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) component.
 
 - Filtering - only Excel Style Filtering is supported. Setting `FilterMode` explicitly to `FilterMode.quickFilter` has no effect.
 - Paging - works on records, not visual rows.
@@ -305,7 +305,7 @@ The following features are currently **not** supported:
 
 ## Keyboard Navigation
 
-[`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) with Multi-Row Layouts provides build-in keyboard navigation.
+[`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) with Multi-Row Layouts provides build-in keyboard navigation.
 
 ### Horizontal Navigation
 
@@ -739,9 +739,9 @@ public class CustomersData
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
-- [`IgbColumnLayout`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnLayout.html)
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+- [`IgbColumnLayout`](mcp:get_api_reference?platform=blazor&component=IgbColumnLayout)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 
 ## Additional Resources
 

@@ -309,7 +309,7 @@ If the value of the `middle` attribute is set to a false value, or if the attrib
 
 <div class="divider--half"></div>
 
-- [IgxDividerDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdividerdirective.html)
+- [IgxDividerDirective](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
 - [IgxDividerDirective Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-divider-theme)
 
 ## Additional Resources

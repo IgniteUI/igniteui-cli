@@ -15,7 +15,7 @@ The Ignite UI for Blazor Donut Chart is similar to the [Pie Chart](pie-chart.m
 
 ## Blazor Donut Chart Example
 
-You can create Donut Chart using the [`IgbDoughnutChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDoughnutChart.html) control by binding your data as shown in the example below.
+You can create Donut Chart using the [`IgbDoughnutChart`](mcp:get_api_reference?platform=blazor&component=IgbDoughnutChart) control by binding your data as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -404,8 +404,8 @@ You can find more information about related chart types in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgbDoughnutChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDoughnutChart.html)
-- [`AllowSliceExplosion`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDoughnutChart.html#IgniteUI_Blazor_Controls_IgbDoughnutChart_AllowSliceExplosion)
-- [`AllowSliceSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDoughnutChart.html#IgniteUI_Blazor_Controls_IgbDoughnutChart_AllowSliceSelection)
-- [`InnerExtent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDoughnutChart.html#IgniteUI_Blazor_Controls_IgbDoughnutChart_InnerExtent)
+- [`IgbDoughnutChart`](mcp:get_api_reference?platform=blazor&component=IgbDoughnutChart)
+- [`AllowSliceExplosion`](mcp:get_api_reference?platform=blazor&component=IgbDoughnutChart&member=AllowSliceExplosion)
+- [`AllowSliceSelection`](mcp:get_api_reference?platform=blazor&component=IgbDoughnutChart&member=AllowSliceSelection)
+- [`InnerExtent`](mcp:get_api_reference?platform=blazor&component=IgbDoughnutChart&member=InnerExtent)
 - `SliceClick`

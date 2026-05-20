@@ -23,7 +23,7 @@ The Web Components Grid exposes an Excel-style filtering feature that provides a
 
 ## Usage
 
-To turn on the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#allowFiltering) should be set to **true** and the [`filterMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#filterMode) should be set to `ExcelStyleFilter` value.
+To turn on the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowFiltering) should be set to **true** and the [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filterMode) should be set to `ExcelStyleFilter` value.
 
 ```html
 <igc-grid auto-generate="true" allow-filtering="true" filter-mode="excelStyleFilter" >
@@ -44,7 +44,7 @@ To apply a filter with different expressions, you can click the **Text filter**,
 
 ## Configure Menu Features
 
-Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`sortable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#sortable), [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selected), [`disablePinning`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#disablePinning), [`disableHiding`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#disableHiding).
+Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`sortable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=sortable), [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected), [`disablePinning`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=disablePinning), [`disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=disableHiding).
 
 ```html
 <igc-grid id="grid1" auto-generate="false" height="650px" width="100%" moving="true" allow-filtering="true" filter-mode="ExcelStyleFilter">
@@ -61,7 +61,7 @@ Sorting, pinning and hiding features can be removed from the filter menu using t
 </igc-grid>
 ```
 
-In the sample below **Product Name** and **Discontinued** columns have all four features enabled, **Quantity Per Unit** have all three disabled, **Unit Price** has only sorting and **Order Date** has only pinning and hiding and all are [`selectable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selectable).
+In the sample below **Product Name** and **Discontinued** columns have all four features enabled, **Quantity Per Unit** have all three disabled, **Unit Price** has only sorting and **Order Date** has only pinning and hiding and all are [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable).
 
 <!-- ComponentEnd: Grid -->
 
@@ -72,9 +72,9 @@ In the sample below **Product Name** and **Discontinued** columns have all four 
 
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#excelStyleHeaderIconTemplate):
+The following code demonstrates how to customize the Excel style filter menu using the [`excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=excelStyleHeaderIconTemplate):
 
 ```ts
 constructor() {
@@ -172,8 +172,8 @@ Then set the related CSS properties to this class:
 
 ## API References
 
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 
 ## Additional Resources
 

@@ -306,7 +306,7 @@ public class SingersData
 
 ## Usage
 
-To turn on the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) component's Excel-style filtering, two inputs should be set. The [`AllowFiltering`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_AllowFiltering) should be set to **true** and the [`FilterMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_FilterMode) should be set to `ExcelStyleFilter` value.
+To turn on the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) component's Excel-style filtering, two inputs should be set. The [`AllowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=AllowFiltering) should be set to **true** and the [`FilterMode`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=FilterMode) should be set to `ExcelStyleFilter` value.
 
 ```razor
 <IgbHierarchicalGrid AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" >
@@ -327,7 +327,7 @@ To apply a filter with different expressions, you can click the **Text filter**,
 
 ## Configure Menu Features
 
-Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`Sortable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Sortable), [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selected), [`DisablePinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisablePinning), [`DisableHiding`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisableHiding).
+Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`Sortable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Sortable), [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected), [`DisablePinning`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisablePinning), [`DisableHiding`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisableHiding).
 
 ```razor
 <IgbHierarchicalGrid AutoGenerate="false" Moving="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter"
@@ -641,9 +641,9 @@ public class SingersData
 
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the [`ExcelStyleHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_ExcelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`ExcelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=ExcelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the [`ExcelStyleHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_ExcelStyleHeaderIconTemplate):
+The following code demonstrates how to customize the Excel style filter menu using the [`ExcelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=ExcelStyleHeaderIconTemplate):
 
 ```razor
 <IgbHierarchicalGrid
@@ -1309,8 +1309,8 @@ public class SingersData
 
 ## API References
 
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
-- [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
 
 ## Additional Resources
 

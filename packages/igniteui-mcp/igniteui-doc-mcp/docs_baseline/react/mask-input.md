@@ -60,7 +60,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrMaskInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput), its necessary CSS, and register its module, like so:
 
 ```tsx
 import { IgrMaskInput } from 'igniteui-react';
@@ -99,7 +99,7 @@ These flags also participate in the component validation - i.e., the input becom
 
 ### Applying Mask
 
-Applying the mask is pretty straightforward. All you need to do is provide a predetermined pattern to the [`mask`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html#mask) property of the input.
+Applying the mask is pretty straightforward. All you need to do is provide a predetermined pattern to the [`mask`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=mask) property of the input.
 
 In the example below, we will apply a mask for a phone number with an extension code.
 
@@ -155,7 +155,7 @@ root.render(<MaskInputApplyingMask/>);
 
 ### Prompt Character
 
-Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`prompt`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html#prompt) property:
+Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`prompt`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=prompt) property:
 
 ```tsx
 <IgrMaskInput mask="(####) 00-00-00 Ext. 9999" prompt="-"></IgrMaskInput>
@@ -165,7 +165,7 @@ By default, the `prompt` character is **underscore**.
 
 ### Placeholder
 
-Developers can also take advantage of the [`placeholder`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html#placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
+Developers can also take advantage of the [`placeholder`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
 
 ```tsx
 <IgrMaskInput mask="00/00/0000" placeholder="dd/MM/yyyy"></IgrMaskInput>
@@ -173,7 +173,7 @@ Developers can also take advantage of the [`placeholder`](https://www.infragisti
 
 ### Value Modes
 
-The [`IgrMaskInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html) exposes a [`valueMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html#valueMode) property that lets you choose between `raw` and `withFormatting` options to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`valueMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html#valueMode) is set to `raw`. Try it for yourself in the example below:
+The [`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput) exposes a [`valueMode`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=valueMode) property that lets you choose between `raw` and `withFormatting` options to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`valueMode`](mcp:get_api_reference?platform=react&component=IgrMaskInput&member=valueMode) is set to `raw`. Try it for yourself in the example below:
 
 ```css
 /* shared styles are loaded from: */
@@ -251,7 +251,7 @@ root.render(<MaskInputValueModes />);
 
 ## Styling
 
-The [`IgrMaskInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -283,11 +283,11 @@ igc-mask-input::part(input)::placeholder {
 
 ## API References
 
-- [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html)
-- [`IgrMaskInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html)
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
-- [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html)
-- [`IgrRadioGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html)
+- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
+- [`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
+- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

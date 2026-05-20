@@ -15,7 +15,7 @@ The Ignite UI for Web Components Polar Chart uses the polar coordinate system (a
 
 ## Web Components Polar Area Chart
 
-The Polar Area Chart renders using a collection of polygons connecting data points and it uses the same concepts of data plotting as the [Category Area Chart](area-chart.md#web-components-area-chart-example) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control by binding your data to a [`IgcPolarAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarareaseriescomponent.html), as shown in the example below:
+The Polar Area Chart renders using a collection of polygons connecting data points and it uses the same concepts of data plotting as the [Category Area Chart](area-chart.md#web-components-area-chart-example) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcPolarAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarAreaSeriesComponent), as shown in the example below:
 
 ```typescript
 export class BoatSailingDataItem {
@@ -53,7 +53,7 @@ export class BoatSailingData extends Array<BoatSailingDataItem> {
 
 ## Web Components Polar Spline Area Chart
 
-The Polar Spline Area Chart renders also as a collection of polygons but they have curved splines connecting data points instead of straight lines like [Polar Area Chart](polar-chart.md#web-components-polar-area-chart) does. You can create this type of chart in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control by binding your data to a [`IgcPolarAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarareaseriescomponent.html), as shown in the example below:
+The Polar Spline Area Chart renders also as a collection of polygons but they have curved splines connecting data points instead of straight lines like [Polar Area Chart](polar-chart.md#web-components-polar-area-chart) does. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcPolarAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarAreaSeriesComponent), as shown in the example below:
 
 ```typescript
 export class BoatSailingDataItem {
@@ -91,7 +91,7 @@ export class BoatSailingData extends Array<BoatSailingDataItem> {
 
 ## Web Components Polar Marker Chart
 
-The Polar Marker Chart renders using a collection of markers representing data points in polar (angle/radius) coordinate system. This chart uses the same concepts of data plotting as the [Scatter Marker Chart](scatter-chart.md#web-components-scatter-marker-chart) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control by binding your data to a [`IgcPolarScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarscatterseriescomponent.html), as shown in the example below:
+The Polar Marker Chart renders using a collection of markers representing data points in polar (angle/radius) coordinate system. This chart uses the same concepts of data plotting as the [Scatter Marker Chart](scatter-chart.md#web-components-scatter-marker-chart) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcPolarScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarScatterSeriesComponent), as shown in the example below:
 
 ```typescript
 export class BoatSailingDataItem {
@@ -129,7 +129,7 @@ export class BoatSailingData extends Array<BoatSailingDataItem> {
 
 ## Web Components Polar Line Chart
 
-The Polar Line Chart renders using a collection of straight lines connecting data points in polar (angle/radius) coordinate system. This chart uses the same concepts of data plotting as the [Scatter Line Chart](scatter-chart.md#web-components-scatter-line-chart) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control by binding your data to a [`IgcPolarLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarlineseriescomponent.html), as shown in the example below:
+The Polar Line Chart renders using a collection of straight lines connecting data points in polar (angle/radius) coordinate system. This chart uses the same concepts of data plotting as the [Scatter Line Chart](scatter-chart.md#web-components-scatter-line-chart) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcPolarLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent), as shown in the example below:
 
 ```typescript
 export class BoatSailingDataItem {
@@ -167,7 +167,7 @@ export class BoatSailingData extends Array<BoatSailingDataItem> {
 
 ## Web Components Polar Spline Chart
 
-The Polar Spline Chart renders using a collection of curved splines connecting data points in polar (angle/radius) coordinate system. This Chart uses the same concepts of data plotting as the [Scatter Spline Chart](scatter-chart.md#web-components-scatter-spline-chart) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control by binding your data to a [`IgcPolarSplineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarsplineseriescomponent.html), as shown in the example below:
+The Polar Spline Chart renders using a collection of curved splines connecting data points in polar (angle/radius) coordinate system. This Chart uses the same concepts of data plotting as the [Scatter Spline Chart](scatter-chart.md#web-components-scatter-spline-chart) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcPolarSplineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarSplineSeriesComponent), as shown in the example below:
 
 ```typescript
 export class BoatSailingDataItem {
@@ -205,7 +205,7 @@ export class BoatSailingData extends Array<BoatSailingDataItem> {
 
 ## Web Components Polar Chart Styling
 
-Once our polar chart is created, we may want to make some further styling customizations such as a change of the line colors, marker types, or outline colors of those markers. You can create this type of chart in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control by binding your data to a [`IgcPolarAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarareaseriescomponent.html), as shown in the example below:
+Once our polar chart is created, we may want to make some further styling customizations such as a change of the line colors, marker types, or outline colors of those markers. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcPolarAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarAreaSeriesComponent), as shown in the example below:
 
 ```typescript
 export class BoatSailingDataItem {
@@ -257,14 +257,14 @@ You can find more information about related chart types in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html)
-- [`IgcPolarAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarareaseriescomponent.html)
-- [`IgcPolarLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarlineseriescomponent.html)
-- [`IgcPolarSplineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarsplineseriescomponent.html)
-- [`IgcPolarSplineAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarsplineareaseriescomponent.html)
-- [`IgcPolarScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarscatterseriescomponent.html)
+- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+- [`IgcPolarAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarAreaSeriesComponent)
+- [`IgcPolarLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent)
+- [`IgcPolarSplineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarSplineSeriesComponent)
+- [`IgcPolarSplineAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarSplineAreaSeriesComponent)
+- [`IgcPolarScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarScatterSeriesComponent)
 - `ItemsSource`
-- [`angleMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarareaseriescomponent.html#angleMemberPath)
-- [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarareaseriescomponent.html#radiusMemberPath)
-- [`IgcNumericAngleAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcnumericangleaxiscomponent.html)
-- [`IgcNumericRadiusAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcnumericradiusaxiscomponent.html)
+- [`angleMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarAreaSeriesComponent&member=angleMemberPath)
+- [`radiusMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarAreaSeriesComponent&member=radiusMemberPath)
+- [`IgcNumericAngleAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericAngleAxisComponent)
+- [`IgcNumericRadiusAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericRadiusAxisComponent)

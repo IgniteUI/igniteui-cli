@@ -141,9 +141,9 @@ Now that we have the Ignite UI for Angular Tree module or directives imported, l
 
 ## Using the Angular Tree
 
-[IgxTreeNodesComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html) is the representation of every node that belongs to the [IgxTreeComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html).  
-Nodes provide [disabled](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html#disabled), [active](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html#active), [selected](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html#selected) and [expanded](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html#expanded) properties, which give you opportunity to configure the states of the node as per your requirement.
-[data](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html#data) property can be used to add a reference to the data entry the node represents. Binding `[data]` is required for searching through nodes using [IgxTreeComponent.findNodes()](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html#findNodes).
+[IgxTreeNodesComponent](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent) is the representation of every node that belongs to the [IgxTreeComponent](mcp:get_api_reference?platform=angular&component=IgxTreeComponent).  
+Nodes provide [disabled](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent&member=disabled), [active](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent&member=active), [selected](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent&member=selected) and [expanded](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent&member=expanded) properties, which give you opportunity to configure the states of the node as per your requirement.
+[data](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent&member=data) property can be used to add a reference to the data entry the node represents. Binding `[data]` is required for searching through nodes using [IgxTreeComponent.findNodes()](mcp:get_api_reference?platform=angular&component=IgxTreeComponent&member=findNodes).
 
 ### Declaring a tree
 
@@ -232,10 +232,10 @@ When a node should render a link, the `IgxTreeNodeLink` directive should be adde
 
 ### Node Interactions
 
-[IgxTreeNodeComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html) could be expanded or collapsed:
+[IgxTreeNodeComponent](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent) could be expanded or collapsed:
 
 - by clicking on the node expand indicator _(default behavior)_.
-- by clicking on the node if the `igx-tree` [toggleNodeOnClick](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html#toggleNodeOnClick) property is set to `true`.
+- by clicking on the node if the `igx-tree` [toggleNodeOnClick](mcp:get_api_reference?platform=angular&component=IgxTreeComponent&member=toggleNodeOnClick) property is set to `true`.
 
 ```html
 <igx-tree [toggleNodeOnClick]="true">
@@ -248,7 +248,7 @@ When a node should render a link, the `IgxTreeNodeLink` directive should be adde
 </igx-tree>
 ```
 
-By default, multiple nodes could be expanded at the same time. In order to change this behavior and allow expanding only single branch at a time, the [singleBranchExpand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html#singleBranchExpand) property could be enabled. This way when a node is expanded, all of the others already expanded branches in the same level will be collapsed.
+By default, multiple nodes could be expanded at the same time. In order to change this behavior and allow expanding only single branch at a time, the [singleBranchExpand](mcp:get_api_reference?platform=angular&component=IgxTreeComponent&member=singleBranchExpand) property could be enabled. This way when a node is expanded, all of the others already expanded branches in the same level will be collapsed.
 
 ```html
 <igx-tree [singleBranchExpand]="true">
@@ -263,16 +263,16 @@ By default, multiple nodes could be expanded at the same time. In order to chang
 
 In addition, the IgxTree provides the following API methods for node interactions:
 
-- [**expand**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html#expand) - expands the node with animation.
-- [**collapse**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html#collapse) - collapses the node with animation.
-- [**toggle**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html#toggle) - toggles node expansion state with animation.
-- [**collapseAll**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html#collapseAll) - collapses the specified nodes with animation. If no nodes are passed, collapses all parent nodes.
-- [**expandAll**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html#expandAll) - sets the specified nodes as expanded with animation. If no nodes are passed, expands all parent nodes.
-- [**deselectAll**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html#deselectAll) - deselects all nodes. If a nodes array is passed, deselects only the specified nodes. Does not emit nodeSelection event.
+- [**expand**](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent&member=expand) - expands the node with animation.
+- [**collapse**](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent&member=collapse) - collapses the node with animation.
+- [**toggle**](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent&member=toggle) - toggles node expansion state with animation.
+- [**collapseAll**](mcp:get_api_reference?platform=angular&component=IgxTreeComponent&member=collapseAll) - collapses the specified nodes with animation. If no nodes are passed, collapses all parent nodes.
+- [**expandAll**](mcp:get_api_reference?platform=angular&component=IgxTreeComponent&member=expandAll) - sets the specified nodes as expanded with animation. If no nodes are passed, expands all parent nodes.
+- [**deselectAll**](mcp:get_api_reference?platform=angular&component=IgxTreeComponent&member=deselectAll) - deselects all nodes. If a nodes array is passed, deselects only the specified nodes. Does not emit nodeSelection event.
 
 ### Finding Nodes
 
-You can find a specific node within an IgxTree by using the [findNodes](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html#findNodes) method. It returns an array of nodes, which match the specified data.
+You can find a specific node within an IgxTree by using the [findNodes](mcp:get_api_reference?platform=angular&component=IgxTreeComponent&member=findNodes) method. It returns an array of nodes, which match the specified data.
 When finding nodes in more complex data structure scenarios, like composite primary keys, you can pass a custom comparer function in order to specify the criteria for finding nodes based on the data.
 
 ```html
@@ -325,7 +325,7 @@ To create a reusable template for your nodes, declare `<ng-template>` **within `
 > [!NOTE]
 > This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
-Additionally, by using the [expandIndicator](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html#expandIndicator) input you have the ability to set a custom template to be used for rendering the expand/collapse indicators of nodes.
+Additionally, by using the [expandIndicator](mcp:get_api_reference?platform=angular&component=IgxTreeComponent&member=expandIndicator) input you have the ability to set a custom template to be used for rendering the expand/collapse indicators of nodes.
 
 ```html
 <igx-tree>
@@ -339,7 +339,7 @@ Additionally, by using the [expandIndicator](https://www.infragistics.com/produc
 
 ## Angular Tree Selection
 
-In order to setup node selection in the `igx-tree`, you just need to set its [selection](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html#selection) property. This property accepts the following three modes: **None**, **BiState** and **Cascading**. Below we will take a look at each of them in more detail.
+In order to setup node selection in the `igx-tree`, you just need to set its [selection](mcp:get_api_reference?platform=angular&component=IgxTreeComponent&member=selection) property. This property accepts the following three modes: **None**, **BiState** and **Cascading**. Below we will take a look at each of them in more detail.
 
 ### None
 
@@ -347,7 +347,7 @@ In the `igx-tree` by default node selection is disabled. Users cannot select or 
 
 ### Bi-State
 
-To enable bi-state node selection in the `igx-tree` just set the [selection](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html#selection) property to **BiState**. This will render a checkbox for every node. Each node has two states - selected or not. This mode supports multiple selection.
+To enable bi-state node selection in the `igx-tree` just set the [selection](mcp:get_api_reference?platform=angular&component=IgxTreeComponent&member=selection) property to **BiState**. This will render a checkbox for every node. Each node has two states - selected or not. This mode supports multiple selection.
 
 ```html
 <igx-tree selection="BiState">
@@ -578,7 +578,7 @@ export class TreeAdvancedSampleComponent implements AfterViewInit, OnDestroy {
 }
 ```
 
-After the user clicks the expand icon, it is replaced by a loading indicator. When the [loading](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html#loading) property resolves to `false`, the loading indicator disappears and the children are loaded.
+After the user clicks the expand icon, it is replaced by a loading indicator. When the [loading](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent&member=loading) property resolves to `false`, the loading indicator disappears and the children are loaded.
 
 ## Styling
 
@@ -770,8 +770,8 @@ At the end your tree should look like this:
 
 <div class="divider"></div>
 
-- [IgxTreeComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html)
-- [IgxTreeNodeComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html)
+- [IgxTreeComponent](mcp:get_api_reference?platform=angular&component=IgxTreeComponent)
+- [IgxTreeNodeComponent](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent)
 
 ## Additional Resources
 

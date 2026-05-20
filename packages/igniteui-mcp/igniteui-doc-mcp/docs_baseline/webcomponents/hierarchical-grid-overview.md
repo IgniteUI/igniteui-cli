@@ -188,16 +188,16 @@ function buildUrl(dataState: any) {
 
 ## Hide/Show row expand indicators
 
-If you have a way to provide information whether a row has children prior to its expanding, you could use the [`hasChildrenKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridbasedirective.html#hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
+If you have a way to provide information whether a row has children prior to its expanding, you could use the [`hasChildrenKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridBaseDirective&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
 
 ```html
 <igc-hierarchical-grid data="data" primary-key="ID" has-children-key="hasChildren">
 </igc-hierarchical-grid>
 ```
 
-Note that setting the [`hasChildrenKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridbasedirective.html#hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
+Note that setting the [`hasChildrenKey`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridBaseDirective&member=hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
 
-Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`showExpandAll`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridbasedirective.html#showExpandAll) property.
+Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`showExpandAll`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridBaseDirective&member=showExpandAll) property.
 This UI is disabled by default for performance reasons and it is not recommended to enable it in grids with large data or grids with load on demand.
 
 ## Features
@@ -301,10 +301,10 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 
 ## API References
 
-- [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)
+- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
 - [`IgcRowIsland`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowisland.html)
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 - `Cell`
 
 <!-- TODO: uncomment when all of the topics are ready -->

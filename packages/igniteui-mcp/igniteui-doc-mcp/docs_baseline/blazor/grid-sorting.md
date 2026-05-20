@@ -13,7 +13,7 @@ _premium: true
 
 # Blazor Grid Sorting
 
-The Ignite UI for Blazor Data Sorting feature in Blazor Grid is enabled on a per-column level, meaning that the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) can have a mix of sortable and non-sortable columns. Performing Blazor sort actions enables you to change the display order of the records based on specified criteria.
+The Ignite UI for Blazor Data Sorting feature in Blazor Grid is enabled on a per-column level, meaning that the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) can have a mix of sortable and non-sortable columns. Performing Blazor sort actions enables you to change the display order of the records based on specified criteria.
 
 ## Blazor Grid Sorting Overview Example
 
@@ -226,7 +226,7 @@ public class ProductSales
 }
 ```
 
-This is done via the [`Sortable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Sortable) input. With the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) sorting, you can also set the [`SortingIgnoreCase`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_SortingIgnoreCase) property to perform case sensitive sorting:
+This is done via the [`Sortable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Sortable) input. With the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) sorting, you can also set the [`SortingIgnoreCase`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=SortingIgnoreCase) property to perform case sensitive sorting:
 
 ```razor
 <IgbColumn Field="Title" Sortable="true"></IgbColumn>
@@ -236,7 +236,7 @@ This is done via the [`Sortable`](https://www.infragistics.com/blazor/docs/api/a
 
 Having a certain amount of sorted columns could be really confusing if there is no indication of the sorted order.
 
-The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) provides a solution for this problem by indicating the index of each sorted column.
+The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) provides a solution for this problem by indicating the index of each sorted column.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -413,7 +413,7 @@ public class FinancialDataAll
 
 ## Sorting through the API
 
-You can sort any column or a combination of columns through the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) API using the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) [`Sort`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Sort) method:
+You can sort any column or a combination of columns through the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) API using the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) [`Sort`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=Sort) method:
 
 <!-- ComponentStart: Grid -->
 
@@ -435,9 +435,9 @@ You can sort any column or a combination of columns through the [`IgbGrid`](http
 <!-- ComponentEnd: Grid -->
 
 > [!Note]
-> Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
+> Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
 
-As with the filtering behavior, you can clear the sorting state by using the [`ClearSort`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ClearSort) method:
+As with the filtering behavior, you can clear the sorting state by using the [`ClearSort`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ClearSort) method:
 
 ```razor
 @code {
@@ -452,14 +452,14 @@ As with the filtering behavior, you can clear the sorting state by using the [`C
 <!-- ComponentEnd: Grid -->
 
 > [!Note]
-> The [`SortStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_SortStrategy) of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) is of different type compared to the [`SortStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_SortStrategy) of the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html), since they work in different scopes and expose different parameters.
+> The [`SortStrategy`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=SortStrategy) of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) is of different type compared to the [`SortStrategy`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=SortStrategy) of the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn), since they work in different scopes and expose different parameters.
 
 > [!Note]
-> The sorting operation **DOES NOT** change the underlying data source of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
+> The sorting operation **DOES NOT** change the underlying data source of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
 
 ## Initial Sorting State
 
-It is possible to set the initial sorting state of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) by passing an array of sorting expressions to the [`SortingExpressions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_SortingExpressions) property of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
+It is possible to set the initial sorting state of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) by passing an array of sorting expressions to the [`SortingExpressions`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=SortingExpressions) property of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
 
 <!-- ComponentStart: Grid -->
 
@@ -483,7 +483,7 @@ It is possible to set the initial sorting state of the [`IgbGrid`](https://www.i
 <!-- ComponentEnd: Grid -->
 
 > [!Note]
-> If values of type `string` are used by a column of [`DataType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DataType) `Date`, the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) won't parse them to `Date` objects and using [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
+> If values of type `string` are used by a column of [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) `Date`, the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) won't parse them to `Date` objects and using [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
 
 <!-- ComponentStart: Grid -->
 
@@ -493,7 +493,7 @@ It is possible to set the initial sorting state of the [`IgbGrid`](https://www.i
 
 The sorting indicator icon in the column header can be customized using a template. The following properties are available for templating the sorting indicator for any sorting state (ascending, descending, none):
 
-- [`SortHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_SortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
+- [`SortHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=SortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -510,7 +510,7 @@ The sorting indicator icon in the column header can be customized using a templa
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-- [`SortAscendingHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_SortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
+- [`SortAscendingHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=SortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -527,7 +527,7 @@ The sorting indicator icon in the column header can be customized using a templa
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-- [`SortDescendingHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_SortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
+- [`SortDescendingHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=SortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -714,7 +714,7 @@ public class ProductSales
 
 ## API References
 
-- [`IgbSortingExpression`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSortingExpression.html)
+- [`IgbSortingExpression`](mcp:get_api_reference?platform=blazor&component=IgbSortingExpression)
 
 ## Additional Resources
 

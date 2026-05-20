@@ -15,7 +15,7 @@ The Ignite UI for Blazor Sparkline is a lightweight charting control. It is inte
 
 ## Blazor Sparkline Example
 
-The following example shows all the different types of `Sparkline` available. The type is defined by setting the [`DisplayType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_DisplayType) property. If the [`DisplayType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_DisplayType) property is not specified, then by default, the `Line` type is displayed.
+The following example shows all the different types of `Sparkline` available. The type is defined by setting the [`DisplayType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=DisplayType) property. If the [`DisplayType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=DisplayType) property is not specified, then by default, the `Line` type is displayed.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -112,11 +112,11 @@ The Blazor Sparkline has the ability to mark the data points with elliptical ico
 
 ## Sparkline Types
 
-The Blazor Sparkline supports the following types of sparklines by setting the [`DisplayType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_DisplayType) property accordingly:
+The Blazor Sparkline supports the following types of sparklines by setting the [`DisplayType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=DisplayType) property accordingly:
 
 - `Line`:  Displays the line chart type of Sparkline with numeric data, connecting the data points with line segments. At least two data points must be supplied to visualize the data in Sparkline.
 - `Area`: Displays the Area chart type of Sparkline with numeric data. This is like line type with additional steps of closing the area after each line is drawn. At least two data points must be supplied to visualize the data in Sparkline.
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html): Displays the Column chart type of Sparkline with numeric data. Some may refer to it as vertical bars. This type can render a single data point, but it would require specifying the minimum value range property (minimum) in Sparkline so the supplied single data point can be visible, otherwise the value will be treated as the minimum value and will not be visible.
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn): Displays the Column chart type of Sparkline with numeric data. Some may refer to it as vertical bars. This type can render a single data point, but it would require specifying the minimum value range property (minimum) in Sparkline so the supplied single data point can be visible, otherwise the value will be treated as the minimum value and will not be visible.
 - `WinLoss`: This type is similar in its visual appearance to Column chart type, in which the value of each column is equal to either the positive maximum (for positive values) or the negative minimum (for negative value) of the data set. The idea is to indicate a win or loss scenario. For the Win/Loss chart to display properly, the data set must have both positive and negative values. If the WinLoss sparkline is bound to the same data as the other types such as the Line type, which can be bound to a collection of numeric values, then the Blazor Sparkline will select two values from the collection - the highest and the lowest - and will render the sparkline based upon those values.
 
 ```razor
@@ -182,7 +182,7 @@ The Blazor Sparkline supports the following types of sparklines by setting the [
 
 ## Markers
 
-The Blazor Sparkline allows you to show markers as circular-colored icons on your series to indicate the individual data points based on X/Y coordinates. Markers can be set on sparklines of display types of `Line`, `Area`, and [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html). The `WinLoss` type of sparkline does not currently accept markers. By default, markers are not displayed, but they can be enabled by setting the corresponding marker visibility property.
+The Blazor Sparkline allows you to show markers as circular-colored icons on your series to indicate the individual data points based on X/Y coordinates. Markers can be set on sparklines of display types of `Line`, `Area`, and [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). The `WinLoss` type of sparkline does not currently accept markers. By default, markers are not displayed, but they can be enabled by setting the corresponding marker visibility property.
 
 Markers in the sparkline can be placed in any combination of the following locations:
 
@@ -193,7 +193,7 @@ Markers in the sparkline can be placed in any combination of the following locat
 - `Last`: Display a marker on the last data point in the sparkline.
 - `Negative`: Display markers on the negative data points plotted in the sparkline.
 
-All of the markers mentioned above can be customized using the related marker type's property in aspects of color, visibility, and size. For example, the `Low` markers above will have properties [`LowMarkerBrush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_LowMarkerBrush), [`LowMarkerVisibility`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_LowMarkerVisibility), and [`LowMarkerSize`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_LowMarkerSize).
+All of the markers mentioned above can be customized using the related marker type's property in aspects of color, visibility, and size. For example, the `Low` markers above will have properties [`LowMarkerBrush`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=LowMarkerBrush), [`LowMarkerVisibility`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=LowMarkerVisibility), and [`LowMarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=LowMarkerSize).
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -380,13 +380,13 @@ The normal range feature of the Blazor Sparkline is a horizontal stripe represen
 
 The normal range can be wider than the maximum data point or beyond, and it can also be as thin as the sparkline's `Line` display type, to serve as a threshold indicator, for instance. The width of the normal range is determined by the following three properties, which serve as the minimum settings required for displaying the normal range:
 
-- [`NormalRangeVisibility`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_NormalRangeVisibility): Whether the normal range is visible.
-- [`NormalRangeMaximum`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_NormalRangeMaximum): The bottom border of the range.
-- [`NormalRangeMinimum`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_NormalRangeMinimum): The top border of the range.
+- [`NormalRangeVisibility`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=NormalRangeVisibility): Whether the normal range is visible.
+- [`NormalRangeMaximum`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=NormalRangeMaximum): The bottom border of the range.
+- [`NormalRangeMinimum`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=NormalRangeMinimum): The top border of the range.
 
-By default, the normal range is not displayed. When enabled, the normal range shows up with a light gray color appearance, which can also be configured using the [`NormalRangeFill`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_NormalRangeFill) property.
+By default, the normal range is not displayed. When enabled, the normal range shows up with a light gray color appearance, which can also be configured using the [`NormalRangeFill`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=NormalRangeFill) property.
 
-You can also configure whether to show the normal range in front of or behind the plotted series in your Blazor Sparkline by setting the [`DisplayNormalRangeInFront`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_DisplayNormalRangeInFront) property.
+You can also configure whether to show the normal range in front of or behind the plotted series in your Blazor Sparkline by setting the [`DisplayNormalRangeInFront`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=DisplayNormalRangeInFront) property.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -521,9 +521,9 @@ public class SparklineMixedData
 
 ## Trendlines
 
-The Blazor Sparkline has support for a range of trendlines that display as another layer on top of the actual sparkline layer. To display a sparkline, you can use the [`TrendLineType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_TrendLineType) property.
+The Blazor Sparkline has support for a range of trendlines that display as another layer on top of the actual sparkline layer. To display a sparkline, you can use the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=TrendLineType) property.
 
-The trendlines are calculated according to the algorithm specified by the [`TrendLineType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_TrendLineType) property using the values of the data the the chart is bound to.
+The trendlines are calculated according to the algorithm specified by the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=TrendLineType) property using the values of the data the the chart is bound to.
 
 Trendlines can only be displayed one at a time and by default, the trendline is not displayed.
 
@@ -634,7 +634,7 @@ public class SparklineMixedData
 
 The Blazor Sparkline can detect unknown values and render the space for unknown values through a specified interpolation algorithm. If your data contains null values and you do not use this feature, meaning no interpolation is specified, the unknown value will not be plotted.
 
-To plot the unknown values, you can set the [`UnknownValuePlotting`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_UnknownValuePlotting) property of the Blazor Sparkline. The sample below shows the differences between the values of the [`UnknownValuePlotting`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_UnknownValuePlotting) property, allowing you to toggle it on or off using a checkbox:
+To plot the unknown values, you can set the [`UnknownValuePlotting`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=UnknownValuePlotting) property of the Blazor Sparkline. The sample below shows the differences between the values of the [`UnknownValuePlotting`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=UnknownValuePlotting) property, allowing you to toggle it on or off using a checkbox:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -816,11 +816,11 @@ You can find more information about related chart types in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-- [`DisplayNormalRangeInFront`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_DisplayNormalRangeInFront)
-- [`DisplayType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_DisplayType)
-- [`LowMarkerBrush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_LowMarkerBrush)
-- [`LowMarkerSize`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_LowMarkerSize)
-- [`LowMarkerVisibility`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_LowMarkerVisibility)
-- [`NormalRangeFill`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_NormalRangeFill)
-- [`UnknownValuePlotting`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html#IgniteUI_Blazor_Controls_IgbSparkline_UnknownValuePlotting)
-- [`IgbSparkline`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSparkline.html)
+- [`DisplayNormalRangeInFront`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=DisplayNormalRangeInFront)
+- [`DisplayType`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=DisplayType)
+- [`LowMarkerBrush`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=LowMarkerBrush)
+- [`LowMarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=LowMarkerSize)
+- [`LowMarkerVisibility`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=LowMarkerVisibility)
+- [`NormalRangeFill`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=NormalRangeFill)
+- [`UnknownValuePlotting`](mcp:get_api_reference?platform=blazor&component=IgbSparkline&member=UnknownValuePlotting)
+- [`IgbSparkline`](mcp:get_api_reference?platform=blazor&component=IgbSparkline)

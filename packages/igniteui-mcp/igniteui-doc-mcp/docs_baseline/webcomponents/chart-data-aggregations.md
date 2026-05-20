@@ -11,13 +11,13 @@ _premium: true
 
 # Web Components Data Aggregations
 
-In the Ignite UI for Web Components [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) control Data Aggregations feature allows you to group data in the chart by unique values on the `XAxis` and then sort those groups. You may then apply summaries which will be reflected by the range of the `YAxis` and will be displayed in the tooltip when hovering the series.
+In the Ignite UI for Web Components [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control Data Aggregations feature allows you to group data in the chart by unique values on the `XAxis` and then sort those groups. You may then apply summaries which will be reflected by the range of the `YAxis` and will be displayed in the tooltip when hovering the series.
 
 ## Web Components Data Aggregations Example
 
 The following example depicts a [Column Chart](../types/column-chart.md) that groups by the Country member of the `XAxis` and can be changed to other properties within each data item such as Product, MonthName, and Year to aggregate the sales data. Also a summary and sort option is available to get a desirable order for the grouped property.
 
-Note, the abbreviated functions found within the dropdowns for [`initialSummaries`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#initialSummaries) and [`groupSorts`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#groupSorts) have be applied as shown to get a correct result based on the property you assign. eg. Sum(sales) as Sales | Sales Desc
+Note, the abbreviated functions found within the dropdowns for [`initialSummaries`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialSummaries) and [`groupSorts`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=groupSorts) have be applied as shown to get a correct result based on the property you assign. eg. Sum(sales) as Sales | Sales Desc
 
 ```typescript
 export class SalesDataItem {
@@ -74,18 +74,18 @@ export class SalesData extends Array<SalesDataItem> {
 
 The following is a list of API members mentioned in the above sections:
 
-- [`initialSortDescriptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#initialSortDescriptions)
-- [`initialSorts`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#initialSorts)
-- [`sortDescriptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#sortDescriptions)
-- [`initialGroups`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#initialGroups)
-- [`initialGroupDescriptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#initialGroupDescriptions)
-- [`groupDescriptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#groupDescriptions)
-- [`initialSummaries`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#initialSummaries)
-- [`initialSummaryDescriptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#initialSummaryDescriptions)
-- [`summaryDescriptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#summaryDescriptions)
-- [`initialGroupSortDescriptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#initialGroupSortDescriptions)
-- [`groupSorts`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#groupSorts)
-- [`groupSortDescriptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#groupSortDescriptions)
+- [`initialSortDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialSortDescriptions)
+- [`initialSorts`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialSorts)
+- [`sortDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=sortDescriptions)
+- [`initialGroups`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialGroups)
+- [`initialGroupDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialGroupDescriptions)
+- [`groupDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=groupDescriptions)
+- [`initialSummaries`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialSummaries)
+- [`initialSummaryDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialSummaryDescriptions)
+- [`summaryDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=summaryDescriptions)
+- [`initialGroupSortDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=initialGroupSortDescriptions)
+- [`groupSorts`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=groupSorts)
+- [`groupSortDescriptions`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=groupSortDescriptions)
 
 > [!Note]
-> Chart Aggregation will not work when using [`includedProperties`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#includedProperties) | [`excludedProperties`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#excludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
+> Chart Aggregation will not work when using [`includedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=includedProperties) | [`excludedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=excludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.

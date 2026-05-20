@@ -17,7 +17,7 @@ The Ignite UI for Angular bullet graph component provides you with the ability t
 
 ## Angular Bullet Graph Example
 
-The following sample demonstrates how setting multiple properties on the same [`IgxBulletGraphComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html) can transform it to completely different bullet graph.
+The following sample demonstrates how setting multiple properties on the same [`IgxBulletGraphComponent`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent) can transform it to completely different bullet graph.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -356,7 +356,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 <div class="divider--half"></div>
 
-The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html#transitionDuration) property.
+The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=transitionDuration) property.
 The features of the bullet graph include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Dependencies
@@ -370,7 +370,7 @@ npm install --save igniteui-angular-gauges
 
 ## Component Modules
 
-The [`IgxBulletGraphComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html) requires the following modules:
+The [`IgxBulletGraphComponent`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent) requires the following modules:
 
 ```ts
 // app.module.ts
@@ -529,7 +529,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Highlight Value
 
-The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the [`value`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html#value) appear with a lower opacity. A good example is if [`value`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html#value) is 50 and  [`highlightValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html#highlightValue) is set to 25. This would represent a performance of 50% regardless of what the value of [`targetValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html#targetValue) is set to. To enable this first set [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html#highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html#highlightValue) to something lower than [`value`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html#value).
+The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the [`value`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=value) appear with a lower opacity. A good example is if [`value`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=value) is 50 and  [`highlightValue`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=highlightValue) is set to 25. This would represent a performance of 50% regardless of what the value of [`targetValue`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=targetValue) is set to. To enable this first set [`highlightValueDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=highlightValue) to something lower than [`value`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=value).
 
 ```html
 <igx-bullet-graph
@@ -1029,7 +1029,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Scale
 
-The scale is visual element that highlights the full range of values in the gauge. You can customize appearance and shape of the scale. The scale can also be inverted (using [`isScaleInverted`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html#isScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is visual element that highlights the full range of values in the gauge. You can customize appearance and shape of the scale. The scale can also be inverted (using [`isScaleInverted`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=isScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```html
 <igx-bullet-graph
@@ -1197,8 +1197,8 @@ For your convenience, all above code snippets are combined into one code block b
 
 The following is a list of API members mentioned in the above sections:
 
-- [`IgxBulletGraphComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html)
-- [`IgxLinearGraphRangeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargraphrangecomponent.html)
+- [`IgxBulletGraphComponent`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent)
+- [`IgxLinearGraphRangeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGraphRangeComponent)
 
 ## Additional Resources
 

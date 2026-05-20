@@ -71,7 +71,7 @@ import { IgxGridModule } from 'igniteui-angular';
 })
 export class AppModule {}
 ```
-Then define a Grid with bound data source and [`rowEditable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowEditable) set to true:
+Then define a Grid with bound data source and [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditable) set to true:
 ```html
 <igx-grid [data]="data" [primaryKey]="'ProductID'" width="100%" height="500px" [rowEditable]="true">
     <igx-column field="ProductID" header="Product ID" editable="false"></igx-column>
@@ -89,7 +89,7 @@ Then define a Grid with bound data source and [`rowEditable`](https://www.infrag
 > [!NOTE]
 > Setting primary key is mandatory for row editing operations.
 > [!NOTE]
-> It's not needed to enable editing for individual columns. Using the [`rowEditable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowEditable) property in the Grid, will mean that all rows, with defined `field` property, excluding primary one, will be editable. If you want to disable editing for specific column, then you set the [`editable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#editable) column's input to `false`.
+> It's not needed to enable editing for individual columns. Using the [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditable) property in the Grid, will mean that all rows, with defined `field` property, excluding primary one, will be editable. If you want to disable editing for specific column, then you set the [`editable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable) column's input to `false`.
 ```typescript
 import { Component, ViewChild } from '@angular/core';
 import { data } from './data';
@@ -111,7 +111,7 @@ export class GridRowEditSampleComponent {
 }
 ```
 > [!NOTE]
-> The Grid uses internally a provider [`IgxBaseTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbasetransactionservice.html) that holds pending cell changes, until row state submitted or cancelled.
+> The Grid uses internally a provider [`IgxBaseTransactionService`](mcp:get_api_reference?platform=angular&component=IgxBaseTransactionService) that holds pending cell changes, until row state submitted or cancelled.
 ## Positioning
 - Default position of the overlay will be below the row that is in edit mode
 - If there is no space below the row then overlay will appear above the row.
@@ -324,16 +324,16 @@ igx-grid {
   - Row Editing
   - Row Pinning
 ## API References
-- [rowEditable](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowEditable)
-- [onRowEditEnter](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#onRowEditEnter)
-- [onRowEdit](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#onRowEdit)
-- [rowEditDone](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowEditDone)
-- [onRowEditCancel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#onRowEditCancel)
-- [endEdit](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#endEdit)
-- [field](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#field)
-- [editable](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#editable)
-- [primaryKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#primaryKey)
-- [IgxGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
+- [rowEditable](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditable)
+- [onRowEditEnter](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=onRowEditEnter)
+- [onRowEdit](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=onRowEdit)
+- [rowEditDone](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditDone)
+- [onRowEditCancel](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=onRowEditCancel)
+- [endEdit](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=endEdit)
+- [field](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=field)
+- [editable](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable)
+- [primaryKey](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=primaryKey)
+- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Build CRUD operations with igxGrid](../general/how-to/how-to-perform-crud.md)

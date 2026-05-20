@@ -15,7 +15,7 @@ The Ignite UI for Blazor Treemap chart displays hierarchical (tree-structured) d
 
 ## Blazor Treemap Example
 
-In the following example, the [`IgbTreemap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html) demonstrates the 30 largest countries in the world by total area.
+In the following example, the [`IgbTreemap`](mcp:get_api_reference?platform=blazor&component=IgbTreemap) demonstrates the 30 largest countries in the world by total area.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -135,13 +135,13 @@ There are several common use cases for choosing a Treemap. When you:
 
 - The data source must be an array or a list of data items
 - The data source must contain at least one data item otherwise the map will not render any nodes.
-- All data items must contain at least one data column (e.g. string) which should be mapped to the [`LabelMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_LabelMemberPath) property.
-- All data items must contain at least one numeric data column which should be mapped using the [`ValueMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_ValueMemberPath) property.
-- To categorize data into organized tiles you can optionally use [`ParentIdMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_ParentIdMemberPath) and [`IdMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_IdMemberPath).
+- All data items must contain at least one data column (e.g. string) which should be mapped to the [`LabelMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=LabelMemberPath) property.
+- All data items must contain at least one numeric data column which should be mapped using the [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=ValueMemberPath) property.
+- To categorize data into organized tiles you can optionally use [`ParentIdMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=ParentIdMemberPath) and [`IdMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=IdMemberPath).
 
 ## Blazor Treemap Configuration
 
-In the following example, the treemap demonstrates the ability of changing it's algorithmic structure by modifying the [`LayoutType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_LayoutType) and [`LayoutOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_LayoutOrientation) properties.
+In the following example, the treemap demonstrates the ability of changing it's algorithmic structure by modifying the [`LayoutType`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=LayoutType) and [`LayoutOrientation`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=LayoutOrientation) properties.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -298,9 +298,9 @@ The Treemap allows you to choose the algorithm that is best for your requirement
 
 ### Layout Orientation
 
-[`LayoutOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_LayoutOrientation) property enables the user to set the direction in which the nodes of the hierarchy will be expanded.
+[`LayoutOrientation`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=LayoutOrientation) property enables the user to set the direction in which the nodes of the hierarchy will be expanded.
 
-Note that the [`LayoutOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_LayoutOrientation) property works with the layout types SliceAndDice and Strip.
+Note that the [`LayoutOrientation`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=LayoutOrientation) property works with the layout types SliceAndDice and Strip.
 
 - `Horizontal` – the child nodes are going to be stacked horizontally(SliceAndDice).
 - `Vertical` – the child nodes are going to be stacked vertically (SliceAndDice).
@@ -473,7 +473,7 @@ public class CountyHierarchicalData
 
 ### Blazor Treemap Highlighting
 
-In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set [`HighlightingMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_HighlightingMode)to Brighten or FadeOthers.
+In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set [`HighlightingMode`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=HighlightingMode)to Brighten or FadeOthers.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -591,10 +591,10 @@ public class CountyHierarchicalData
 
 ## Blazor Treemap Percent based highlighting
 
-- [`HighlightedDataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_HighlightedDataSource): Specifies the datasource to read highlighted values from. If null, then highlighted values are read from the ItemsSource property.
-- [`HighlightedValueMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_HighlightedValueMemberPath): Specifies the name of the property in the datasource where the highlighted values are read.
-- [`HighlightedValueOpacity`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_HighlightedValueOpacity): Controls the opacity of the normal value behind the highlighted value.
-- [`HighlightedValuesDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_HighlightedValuesDisplayMode): Enables or disables highlighted values.
+- [`HighlightedDataSource`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=HighlightedDataSource): Specifies the datasource to read highlighted values from. If null, then highlighted values are read from the ItemsSource property.
+- [`HighlightedValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=HighlightedValueMemberPath): Specifies the name of the property in the datasource where the highlighted values are read.
+- [`HighlightedValueOpacity`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=HighlightedValueOpacity): Controls the opacity of the normal value behind the highlighted value.
+- [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=HighlightedValuesDisplayMode): Enables or disables highlighted values.
   - Auto: The treemap decides what mode to use.
   - Overlay: The treemap displays highlighted values over top the normal value with a slight opacity applied to the normal value.
   - Hidden: The treemap does not show highlighted values.
@@ -696,8 +696,8 @@ You can find more information about related chart types in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-- [`IgbTreemap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html)
-- [`LayoutOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_LayoutOrientation)
-- [`HighlightedValuesDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_HighlightedValuesDisplayMode)
-- [`HighlightedValueMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_HighlightedValueMemberPath)
-- [`LayoutType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreemap.html#IgniteUI_Blazor_Controls_IgbTreemap_LayoutType)
+- [`IgbTreemap`](mcp:get_api_reference?platform=blazor&component=IgbTreemap)
+- [`LayoutOrientation`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=LayoutOrientation)
+- [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=HighlightedValuesDisplayMode)
+- [`HighlightedValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=HighlightedValueMemberPath)
+- [`LayoutType`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=LayoutType)

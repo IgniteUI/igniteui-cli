@@ -225,7 +225,7 @@ export class GridCascadingCombosComponent implements OnInit {
 }
 ```
 ## Setup
-In order enable column editing, make sure [`editable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#editable) property is set to **true**.
+In order enable column editing, make sure [`editable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable) property is set to **true**.
 Once the column editing is enabled, you can start by adding your [Single Select ComboBox](../simple-combo.md). Please note that here in order to have only one single selection available, you will need to use [igxSimpleCombo](../simple-combo.md) instead of modifying the igxCombo.
 To get started with the [Simple ComboBox component](../simple-combo.md#angular-simple-combobox-features), first you need to import the `IgxSimpleComboModule` in your **app.module.ts** file:
 ```typescript
@@ -239,8 +239,8 @@ import { IgxSimpleComboModule } from 'igniteui-angular/simple-combo';
 })
 export class AppModule {}
 ```
-Then, in the template, you should bind the combos [igx-simple-combo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html) to some data.
-- `displayKey` - _Required for object arrays_ - Specifies which property will be used for the items' text. If no value is specified for [displayKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxSimpleComboComponent.html#displayKey), the simple combobox will use the specified `valueKey` (if any).
+Then, in the template, you should bind the combos [igx-simple-combo](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent) to some data.
+- `displayKey` - _Required for object arrays_ - Specifies which property will be used for the items' text. If no value is specified for [displayKey](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent&member=displayKey), the simple combobox will use the specified `valueKey` (if any).
 ```typescript
 export class MySimpleComboComponent implements OnInit {
     public countriesData: Country[];
@@ -256,7 +256,7 @@ export class MySimpleComboComponent implements OnInit {
     }
 }
 ```
-In order to handle the selection change, we need [selectionChanging()](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#selectionChanging). The emitted event arguments, [IComboSelectionChangingEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/icomboselectionchangingeventargs.html), contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
+In order to handle the selection change, we need [selectionChanging()](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selectionChanging). The emitted event arguments, [IComboSelectionChangingEventArgs](mcp:get_api_reference?platform=angular&component=IComboSelectionChangingEventArgs), contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
 ```html
 <igx-combo [data]="countriesData" (selectionChanging)="countryChanging($event)"></igx-combo>
 ```
@@ -268,7 +268,7 @@ public countryChanging(event: IComboSelectionChangingEventArgs) {
 }
 ```
 And lastly, adding the [Linear Progress](../linear-progress.md), which is required while loading the list of data.
-The [`id`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#id) is necessary to set the value of `id` attribute.
+The [`id`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=id) is necessary to set the value of `id` attribute.
 ```html
  <igx-linear-bar 
     [id]="'region-progress-' + cell.row.data.ID" 
@@ -278,9 +278,9 @@ The [`id`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescri
 ```
 ## API References
 <div class="divider--half"></div>
-- [IgxSimpleComboComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html)
+- [IgxSimpleComboComponent](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent)
 - [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)
-- [IgxLinearProgressBarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html)
+- [IgxLinearProgressBarComponent](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent)
 - [IgxLinearProgressBarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-progress-linear-theme)
 ## Additional Resources
 - [Grid Editing](editing.md)

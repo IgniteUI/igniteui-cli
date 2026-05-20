@@ -479,17 +479,17 @@ public class Worker
 
 ## Blazor Tree Grid Default Template
 
-If you want to enable a data type-specific template, you should set the column [`DataType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DataType) input, otherwise the column will be treated as a string column since that is the default value for column [`DataType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DataType).
+If you want to enable a data type-specific template, you should set the column [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) input, otherwise the column will be treated as a string column since that is the default value for column [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType).
 
-The following sections describe the default templates for each [`DataType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DataType).
+The following sections describe the default templates for each [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType).
 
 ### String
 
-This column [`DataType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DataType) is not changing the appearance or format of the cell value.
+This column [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) is not changing the appearance or format of the cell value.
 
 ### Number
 
-If the [`DataType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DataType) is set to **number**, the cell value will be formatted based on application or grid's [`Locale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_Locale) settings, as well as when [`PipeArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_PipeArgs) property is specified. Then the number format will be changed based on them, for example it might change the:
+If the [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) is set to **number**, the cell value will be formatted based on application or grid's [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=Locale) settings, as well as when [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs) property is specified. Then the number format will be changed based on them, for example it might change the:
 
 - Number of digits after the decimal point
 - Decimal separator with `,` or `.`
@@ -504,7 +504,7 @@ If the [`DataType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bl
 
 ### DateTime, Date and Time
 
-The appearance of the date portions will be set (e.g. day, month, year) based on [`Locale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_Locale) format or [`PipeArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_PipeArgs) input. The pipe arguments can be used to specify a custom date format or timezone:
+The appearance of the date portions will be set (e.g. day, month, year) based on [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=Locale) format or [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs) input. The pipe arguments can be used to specify a custom date format or timezone:
 
 - **format** - The default value for formatting the date is `'mediumDate'`. Other available options are `'short'`, `'long'`, `'shortDate'`, `'fullDate'`, `'longTime'`, `'fullTime'` and etc.
 - **timezone** - The user's local system timezone is the default value. The timezone offset or standard GMT/UTC or continental US timezone abbreviation can also be passed. Different timezone examples which will display the corresponding time of the location anywhere in the world:
@@ -539,7 +539,7 @@ Available timezones:
 | Hawaii Standard Time      |‘UTC-10’                   |
 | India Standard Time       |‘UTC+4’                    |
 
-The [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) accepts date values of type **Date object**, **Number (milliseconds)**, **An ISO date-time string**. This section shows [how to configure a custom display format](../data-grid.md#custom-display-format).
+The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) accepts date values of type **Date object**, **Number (milliseconds)**, **An ISO date-time string**. This section shows [how to configure a custom display format](../data-grid.md#custom-display-format).
 
 As you can see in the sample, we specify a different format options in order to showcase the available formats for the specific column type. For example, below you can find the format options for the **time** portion of the date object:
 
@@ -560,7 +560,7 @@ As you can see in the sample, we specify a different format options in order to 
 When it comes to cell editing based on the column type a different editor will appear:
 
 - `DateTime` - `DateTimeEditor` will be used. This editor will give you a mask directions for the input elements part of the `DateTime` object.
-- `Date` - [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html) will be used.
+- `Date` - [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) will be used.
 - `Time` - `TimePicker` will be used.
 
 #### Filtering
@@ -582,7 +582,7 @@ The available Summary operands will be **Count**, **Earliest** (date/time) and *
 
 ### Boolean
 
-The default template is using material icons for visualization of boolean values - 'clear' icon for **false** values and 'check' icon for **true** values. As for the editing template, it is using [`IgbCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html) component.
+The default template is using material icons for visualization of boolean values - 'clear' icon for **false** values and 'check' icon for **true** values. As for the editing template, it is using [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) component.
 
 ```razor
 <IgbColumn DataType="GridColumnDataType.Boolean"></IgbColumn>
@@ -596,7 +596,7 @@ Default template is using the value coming from the data as an image source to a
 <IgbColumn DataType="GridColumnDataType.Image"></IgbColumn>
 ```
 
-When [`AutoGenerate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_AutoGenerate) is used for the columns, the grid analyses the values in the first data record. If a value is of type string and matches the pattern of a url ending in an image extension (gif, jpg, jpeg, tiff, png, webp, bmp) then the column will automatically be marked as `dataType === GridColumnDataType.Image` and a default image template will be rendered.
+When [`AutoGenerate`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=AutoGenerate) is used for the columns, the grid analyses the values in the first data record. If a value is of type string and matches the pattern of a url ending in an image extension (gif, jpg, jpeg, tiff, png, webp, bmp) then the column will automatically be marked as `dataType === GridColumnDataType.Image` and a default image template will be rendered.
 
 ### Currency
 
@@ -604,7 +604,7 @@ When [`AutoGenerate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 
 The default template will show a numeric value with currency symbol that would be either prefixed or suffixed.
 
-By using the [`PipeArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_PipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
+By using the [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
 
 ```razor
 <IgbColumn Field="UnitsInStock" DataType="GridColumnDataType.Currency" PipeArgs=formatOptions></IgbColumn>
@@ -693,11 +693,11 @@ igRegisterScript("CurrencyFormatter", (value) => {
 ## API References
 
 - `Cell`
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
-- [`PipeArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_PipeArgs)
-- [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
-- [`Locale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_Locale)
-- [`DataType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DataType)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+- [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs)
+- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+- [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=Locale)
+- [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType)
 
 ## Additional Resources
 

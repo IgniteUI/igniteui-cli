@@ -88,13 +88,13 @@ export class LayoutSampleComponent { }
 
 ## Usage
 
-Use the [**igxLayout**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlayoutdirective.html) directive on a container element to specify the layout direction for its children:
+Use the [**igxLayout**](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective) directive on a container element to specify the layout direction for its children:
 
 <div class="divider--half"></div>
 
 ### Horizontally with Row direction
 
-Use [`igxLayoutDir`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlayoutdirective.html#dir)`="row"`.
+Use [`igxLayoutDir`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=dir)`="row"`.
 
 ```typescript
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -170,7 +170,7 @@ igx-buttongroup {
 
 ### Vertically with Column direction
 
-Use [`igxLayoutDir`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlayoutdirective.html#dir)`="column"`.
+Use [`igxLayoutDir`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=dir)`="column"`.
 
 ```typescript
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -245,7 +245,7 @@ igx-buttongroup {
 <div class="divider--half"></div>
 
 >[!NOTE]
-> Reverse order using [`igxLayoutReverse`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlayoutdirective.html#reverse)`="true"`.
+> Reverse order using [`igxLayoutReverse`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=reverse)`="true"`.
 
 <div class="divider--half"></div>
 
@@ -307,7 +307,7 @@ igx-buttongroup {
 
 ### Change element spacing
 
-Use [`igxLayoutJustify`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlayoutdirective.html#justify)`="space-between | space-around"`.
+Use [`igxLayoutJustify`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=justify)`="space-between | space-around"`.
 
 ```typescript
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -383,7 +383,7 @@ igx-buttongroup {
 
 ### Position elements along the main axis
 
-Use [`igxLayoutJustify`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlayoutdirective.html#justify)`="flex-start | center | flex-end"` to specify the elements position along the main axis according to your preferences.
+Use [`igxLayoutJustify`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=justify)`="flex-start | center | flex-end"` to specify the elements position along the main axis according to your preferences.
 
 ```typescript
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -470,7 +470,7 @@ igx-buttongroup {
 
 ### Position elements along the cross axis
 
-Use [`igxLayoutItemAlign`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlayoutdirective.html#itemalign)`="flex-start | center | flex-end"` to specify the elements position along the cross axis according to your preferences.
+Use [`igxLayoutItemAlign`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=itemalign)`="flex-start | center | flex-end"` to specify the elements position along the cross axis according to your preferences.
 
 ```typescript
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -561,7 +561,7 @@ igx-buttongroup {
 
 ### You can also wrap elements
 
-Use [`igxLayoutWrap`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlayoutdirective.html#wrap)`="wrap"`.
+Use [`igxLayoutWrap`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=wrap)`="wrap"`.
 
 ```typescript
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -610,13 +610,13 @@ export class LayoutWrapComponent {
 ```
 
 >[!NOTE]
-> The [`igxLayout`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlayoutdirective.html) directive affects the flow directions for that
+> The [`igxLayout`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective) directive affects the flow directions for that
 container's **immediate** children.
 <div class="divider--half"></div>
 
 ## Nesting
 
-Use the [`igxFlex`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxflexdirective.html) directive for elements inside an [`igxLayout`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlayoutdirective.html) parent to control specific flexbox properties.
+Use the [`igxFlex`](mcp:get_api_reference?platform=angular&component=IgxFlexDirective) directive for elements inside an [`igxLayout`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective) parent to control specific flexbox properties.
 <div class="divider--half"></div>
 
 
@@ -624,5 +624,5 @@ Use the [`igxFlex`](https://www.infragistics.com/products/ignite-ui-angular/docs
 
 <div class="divider--half"></div>
 
-- [IgxLayoutDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlayoutdirective.html)
-- [IgxFlexDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxflexdirective.html)
+- [IgxLayoutDirective](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective)
+- [IgxFlexDirective](mcp:get_api_reference?platform=angular&component=IgxFlexDirective)

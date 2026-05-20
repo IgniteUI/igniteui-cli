@@ -42,7 +42,7 @@ root.render(<SwitchOverview/>);
 
 ## Usage
 
-At its core, the [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html) component allows for toggling between on/off states. The default styling is done according to the selection controls specification in the Material Design guidelines.
+At its core, the [`IgrSwitch`](mcp:get_api_reference?platform=react&component=IgrSwitch) component allows for toggling between on/off states. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
@@ -50,21 +50,21 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html) and its necessary CSS, like so:
+You will then need to import the [`IgrSwitch`](mcp:get_api_reference?platform=react&component=IgrSwitch) and its necessary CSS, like so:
 
 ```tsx
 import { IgrSwitch } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-The simplest way to start using the [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html) is as follows:
+The simplest way to start using the [`IgrSwitch`](mcp:get_api_reference?platform=react&component=IgrSwitch) is as follows:
 
 ```tsx
 <IgrSwitch></IgrSwitch>
 ```
 
 > [!WARNING]
-> The [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
+> The [`IgrSwitch`](mcp:get_api_reference?platform=react&component=IgrSwitch) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples
 
@@ -76,7 +76,7 @@ To provide a meaningful label for the switch, simply place some text between the
 <IgrSwitch><span>Label</span></IgrSwitch>
 ```
 
-You can specify if the label should be positioned before or after the switch toggle by setting the [`labelPosition`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html#labelPosition) attribute of the switch. Allowed values are `before` and `after`(default):
+You can specify if the label should be positioned before or after the switch toggle by setting the [`labelPosition`](mcp:get_api_reference?platform=react&component=IgrSwitch&member=labelPosition) attribute of the switch. Allowed values are `before` and `after`(default):
 
 ```tsx
 <IgrSwitch aria-labelledby="switchLabel" labelPosition="before" ><span id="switch-label">Label</span></IgrSwitch>
@@ -213,7 +213,7 @@ You can use the `name` and `value` attributes when using the switch with `Form`.
 
 ## Styling
 
-The [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html) component exposes several CSS parts to give you full control over its styling:
+The [`IgrSwitch`](mcp:get_api_reference?platform=react&component=IgrSwitch) component exposes several CSS parts to give you full control over its styling:
 
 |Name|Description|
 |--|--|
@@ -269,8 +269,8 @@ root.render(<SwitchStyling/>);
 
 ## API References
 
-- [`labelPosition`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html#labelPosition)
-- [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html)
+- [`labelPosition`](mcp:get_api_reference?platform=react&component=IgrSwitch&member=labelPosition)
+- [`IgrSwitch`](mcp:get_api_reference?platform=react&component=IgrSwitch)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

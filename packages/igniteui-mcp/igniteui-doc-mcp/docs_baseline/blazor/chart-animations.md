@@ -13,11 +13,11 @@ _premium: true
 
 Animations allows you to ease-in the series as it loads a new data source. The available animation differs depending on the type of series involved. For example, the column series animates by rising from the x-axis, a line series animates by drawing from the origin of y-axis.
 
-Animations are disabled in the Ignite UI for Blazor Charts, but they can be enabled by setting the [`IsTransitionInEnabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_IsTransitionInEnabled) property to true. From there, you can set the [`TransitionInDuration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_TransitionInDuration) property to determine how long your animation should take to complete and the [`TransitionInMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_TransitionInMode) to determine the type of animation that takes place.
+Animations are disabled in the Ignite UI for Blazor Charts, but they can be enabled by setting the [`IsTransitionInEnabled`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=IsTransitionInEnabled) property to true. From there, you can set the [`TransitionInDuration`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=TransitionInDuration) property to determine how long your animation should take to complete and the [`TransitionInMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=TransitionInMode) to determine the type of animation that takes place.
 
 ## Blazor Chart Animation Example
 
-The following example depicts a [Line Chart](../types/line-chart.md) with an animation set to the default [`TransitionInMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_TransitionInMode) - "Auto." The drop-down and slider at the top in this example will allow you to modify the [`TransitionInMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_TransitionInMode) and [`TransitionInDuration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_TransitionInDuration), respectively, so that you can see what the different supported animations look like at different speeds.
+The following example depicts a [Line Chart](../types/line-chart.md) with an animation set to the default [`TransitionInMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=TransitionInMode) - "Auto." The drop-down and slider at the top in this example will allow you to modify the [`TransitionInMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=TransitionInMode) and [`TransitionInDuration`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=TransitionInDuration), respectively, so that you can see what the different supported animations look like at different speeds.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -142,7 +142,7 @@ You can find more information about related chart features in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-- [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html)
-- [`IsTransitionInEnabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_IsTransitionInEnabled)
-- [`TransitionInDuration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_TransitionInDuration)
-- [`TransitionInMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_TransitionInMode)
+- [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
+- [`IsTransitionInEnabled`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=IsTransitionInEnabled)
+- [`TransitionInDuration`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=TransitionInDuration)
+- [`TransitionInMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=TransitionInMode)

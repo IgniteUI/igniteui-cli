@@ -77,7 +77,7 @@ export class ComboFeaturesComponent implements OnInit{
 
 ### First Steps
 
-To get started with the combobox component, first you need to import the `IgxComboModule` in your **app.module.ts** file. Our sample also uses the [igx-switch](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxswitchcomponent.html) component to toggle combobox properties' values, so we will need the `IgxSwitchModule` as well:
+To get started with the combobox component, first you need to import the `IgxComboModule` in your **app.module.ts** file. Our sample also uses the [igx-switch](mcp:get_api_reference?platform=angular&component=IgxSwitchComponent) component to toggle combobox properties' values, so we will need the `IgxSwitchModule` as well:
 
 ```typescript
 import { IgxComboModule } from 'igniteui-angular/combo';
@@ -117,7 +117,7 @@ export class AppModule {}
 
 ### Component Definition
 
-Note that grouping is enabled/disabled by setting the [groupKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#groupKey) property to a corresponding data source entity or setting it to an empty string.
+Note that grouping is enabled/disabled by setting the [groupKey](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=groupKey) property to a corresponding data source entity or setting it to an empty string.
 
 ```typescript
     @ViewChild('combo', { read: IgxComboComponent }) public combo: IgxComboComponent;
@@ -136,7 +136,7 @@ Note that grouping is enabled/disabled by setting the [groupKey](https://www.inf
 
 ### Data Binding
 
-The following code snippet illustrates a basic usage of the [igx-combo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcombocomponent.html) bound to a local data source. The [valueKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#valueKey) specifies which property of the data entries will be stored for the combobox's selection and the [displayKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#displayKey) specifies which property will be used for the combobox text:
+The following code snippet illustrates a basic usage of the [igx-combo](mcp:get_api_reference?platform=angular&component=IgxComboComponent) bound to a local data source. The [valueKey](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=valueKey) specifies which property of the data entries will be stored for the combobox's selection and the [displayKey](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=displayKey) specifies which property will be used for the combobox text:
 
 ```html
 <igx-combo [data]="lData" valueKey="ProductID" displayKey="ProductName"></igx-combo>
@@ -161,7 +161,7 @@ Follow the [ComboBox Remote Binding topic](combo-remote.md) for more details abo
 
 ### Custom Overlay Settings
 
-The combobox component allows users to change the way a list of items is shown. This can be done by defining [Custom OverlaySettings](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) and passing them to the [ComboBox's OverlaySettings](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#overlaySettings) input:
+The combobox component allows users to change the way a list of items is shown. This can be done by defining [Custom OverlaySettings](mcp:get_api_reference?platform=angular&component=OverlaySettings) and passing them to the [ComboBox's OverlaySettings](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=overlaySettings) input:
 
 ```typescript
 export class CustomOverlayCombo {
@@ -229,13 +229,13 @@ export class ComboOverlayComponent {
 <div class="divider--half"></div>
 
 > [!Note]
-> The combobox component uses the [AutoPositionStrategy](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/autopositionstrategy.html) as a default position strategy.
+> The combobox component uses the [AutoPositionStrategy](mcp:get_api_reference?platform=angular&component=AutoPositionStrategy) as a default position strategy.
 
 ### Filtering
 
-By default, filtering in the combobox is enabled. It can be disabled by setting the [disableFiltering](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcombocomponent.html#disableFiltering) property to true.
+By default, filtering in the combobox is enabled. It can be disabled by setting the [disableFiltering](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=disableFiltering) property to true.
 
-Filtering options can be further enhanced by enabling the search case sensitivity. To display the case-sensitive icon in the search input, set the [showSearchCaseIcon](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#showSearchCaseIcon) property to true:
+Filtering options can be further enhanced by enabling the search case sensitivity. To display the case-sensitive icon in the search input, set the [showSearchCaseIcon](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=showSearchCaseIcon) property to true:
 
 ```html
 <igx-combo [disableFiltering]="true" [showSearchCaseIcon]="true"></igx-combo>
@@ -245,7 +245,7 @@ Filtering options can be further enhanced by enabling the search case sensitivit
 
 ### Custom Values
 
-The [allowCustomValues](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#allowCustomValues) property controls whether custom values can be added to the collection. If it is enabled, a missing item could be included using the UI of the combobox.
+The [allowCustomValues](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=allowCustomValues) property controls whether custom values can be added to the collection. If it is enabled, a missing item could be included using the UI of the combobox.
 
 ```html
 <igx-combo [allowCustomValues]="true"></igx-combo>
@@ -255,7 +255,7 @@ The [allowCustomValues](https://www.infragistics.com/products/ignite-ui-angular/
 
 ### Search Input Focus
 
-The combobox's [autoFocusSearch](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#autoFocusSearch)  property controls if the search input should receive focus when a combobox's dropdown list is opened. By default, the property is set to `true`. When set to `false`, the focus goes to the combobox's items container. For mobile devices, this can be used to prevent the software keyboard from popping up when opening the combobox's dropdown list.
+The combobox's [autoFocusSearch](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=autoFocusSearch)  property controls if the search input should receive focus when a combobox's dropdown list is opened. By default, the property is set to `true`. When set to `false`, the focus goes to the combobox's items container. For mobile devices, this can be used to prevent the software keyboard from popping up when opening the combobox's dropdown list.
 
 ```html
 <igx-combo [autoFocusSearch]="false"></igx-combo>
@@ -304,12 +304,12 @@ export class ComboDemo {
 
 <div class="divider--half"></div>
 
-- [IgxComboComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcombocomponent.html)
+- [IgxComboComponent](mcp:get_api_reference?platform=angular&component=IgxComboComponent)
 - [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)
 
 Additional components and/or directives with relative APIs that were used:
 
-- [IgxSwitchComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxswitchcomponent.html)
+- [IgxSwitchComponent](mcp:get_api_reference?platform=angular&component=IgxSwitchComponent)
 
 ## Additional Resources
 

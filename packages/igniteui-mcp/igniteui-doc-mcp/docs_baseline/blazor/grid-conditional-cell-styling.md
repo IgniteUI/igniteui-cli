@@ -13,27 +13,27 @@ _premium: true
 
 # Blazor Grid Conditional Styling
 
-The Ignite UI for Blazor Conditional Styling feature in Blazor Grid allows custom styling on a row or cell level. The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
+The Ignite UI for Blazor Conditional Styling feature in Blazor Grid allows custom styling on a row or cell level. The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
 
 ## Grid Conditional Row Styling
 
-The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component in Ignite UI for Blazor provides two ways to **conditional styling of rows** based on custom rules.
+The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component in Ignite UI for Blazor provides two ways to **conditional styling of rows** based on custom rules.
 
-- By setting [`RowClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowClasses) input on the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component;
-- By setting [`RowStyles`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowStyles) input on the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component;
+- By setting [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowClasses) input on the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component;
+- By setting [`RowStyles`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowStyles) input on the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component;
 
 Further in this topic we will cover both of them in more details.
 
 ### Using Row Classes
 
-You can conditionally style the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) rows by setting the [`RowClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowClasses) input and define custom rules.
+You can conditionally style the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) rows by setting the [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowClasses) input and define custom rules.
 
 ```razor
 <IgbGrid AutoGenerate="true" Id="grid" Data="CustomersData" Name="grid" RowClassesScript="RowClassesHandler" @ref="grid">
 </IgbGrid>
 ```
 
-The [`RowClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 ```razor
 igRegisterScript("RowClassesHandler", () => {
@@ -171,9 +171,9 @@ public class NwindData
 
 ### Using Row Styles
 
-The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) control exposes the [`RowStyles`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowStyles) property which allows conditional styling of the data rows. Similar to [`RowClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
+The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) control exposes the [`RowStyles`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowStyles) property which allows conditional styling of the data rows. Similar to [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
 
-> The callback signature for both [`RowStyles`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowStyles) and [`RowClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowClasses) is:
+> The callback signature for both [`RowStyles`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowStyles) and [`RowClasses`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowClasses) is:
 
 ```razor
 (row) => boolean
@@ -418,13 +418,13 @@ public class FinancialDataAll
 
 ## Overview
 
-The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component in Ignite UI for Blazor provides two ways to **conditional styling of cells** based on custom rules.
+The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component in Ignite UI for Blazor provides two ways to **conditional styling of cells** based on custom rules.
 
-- By setting the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) input [`CellClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
+- By setting the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) input [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
 
 ### Using Cell Classes
 
-You can conditionally style the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) cells by setting the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) [`CellClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellClasses) input and define custom rules.
+You can conditionally style the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) cells by setting the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) input and define custom rules.
 
 ```razor
 <IgbColumn Field="BeatsPerMinute" CellClassesScript="CellClassesHandler">
@@ -432,7 +432,7 @@ You can conditionally style the [`IgbGrid`](https://www.infragistics.com/blazor/
 
 <!-- ComponentEnd: Grid -->
 
-The [`CellClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 ```razor
 igRegisterScript("CellClassesHandler", () => {
@@ -586,7 +586,7 @@ public class AthletesData
 }
 ```
 
-- By using the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) input [`CellStyles`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
+- By using the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) input [`CellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 
 > The callback signature for both `cellStyles` and `cellClasses` is now changed to:
 
@@ -596,7 +596,7 @@ public class AthletesData
 
 ### Using Cell Styles
 
-Columns expose the [`CellStyles`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellStyles) property which allows conditional styling of the column cells. Similar to [`CellClasses`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_CellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
+Columns expose the [`CellStyles`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellStyles) property which allows conditional styling of the column cells. Similar to [`CellClasses`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=CellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
 
 Let's define our styles:
 
@@ -755,8 +755,8 @@ public class AthletesData
 
 ## API References
 
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ## Additional Resources
 

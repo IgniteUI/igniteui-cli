@@ -10,7 +10,7 @@ _premium: true
 
 # Blazor Binding Multiple Data Sources
 
-In the Ignite UI for Blazor map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data. For example, [`IgbGeographicSymbolSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html) for plotting geographic locations of airports, the [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicPolylineSeries.html) for plotting flights between airports, and 2nd [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicPolylineSeries.html) for plotting gridlines of major geographic coordinates.
+In the Ignite UI for Blazor map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data. For example, [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) for plotting geographic locations of airports, the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) for plotting flights between airports, and 2nd [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) for plotting gridlines of major geographic coordinates.
 
 ## Blazor Binding Multiple Data Sources Example
 
@@ -52,9 +52,9 @@ In the Ignite UI for Blazor map, you can add multiple geographic series objects 
 
 This topic takes you step-by-step towards displaying multiple geographic series that will plot following geo-spatial data:
 
-- [`IgbGeographicSymbolSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html) – displays locations of major airports
-- [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicPolylineSeries.html) – displays flights between airports
-- [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicPolylineSeries.html) – displays gridlines of major coordinates
+- [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) – displays locations of major airports
+- [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) – displays flights between airports
+- [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) – displays gridlines of major coordinates
 
 You can use geographic series in this or other combinations to plot desired data.
 
@@ -80,7 +80,7 @@ Create data sources for all geographic series that you want to display in the Ig
 
 ## Overlaying Flights
 
-Create first [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicPolylineSeries.html) object with flight connections between major airports and add it to the Series collection of the Ignite UI for Blazor map.
+Create first [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) object with flight connections between major airports and add it to the Series collection of the Ignite UI for Blazor map.
 
 ```razor
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
@@ -91,7 +91,7 @@ Create first [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor
 
 ## Overlaying Gridlines
 
-Create second [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicPolylineSeries.html) object with geographic gridlines and add it to the Series collection of the Ignite UI for Blazor map.
+Create second [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) object with geographic gridlines and add it to the Series collection of the Ignite UI for Blazor map.
 
 ```razor
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
@@ -102,7 +102,7 @@ Create second [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazo
 
 ## Overlaying Airports
 
-Create [`IgbGeographicSymbolSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html) object with airport points and add it to the Series collection of the geographic Ignite UI for Blazor map.
+Create [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) object with airport points and add it to the Series collection of the geographic Ignite UI for Blazor map.
 
 ```razor
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
@@ -148,5 +148,5 @@ For your convenience, all above code snippets are combined into one code block b
 
 ## API References
 
-- [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicPolylineSeries.html)
-- [`IgbGeographicSymbolSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html)
+- [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
+- [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries)

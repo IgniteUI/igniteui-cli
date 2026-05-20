@@ -38,7 +38,7 @@ The Ignite UI for Blazor Radio component allows the user to select a single opti
 
 ### Usage
 
-Before using the [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html) and the [`IgbRadioGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadioGroup.html), you need to register them as follows:
+Before using the [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) and the [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup), you need to register them as follows:
 
 ```razor
 // in Program.cs file
@@ -49,13 +49,13 @@ builder.Services.AddIgniteUIBlazor(
 );
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html) and the [`IgbRadioGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadioGroup.html) components. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) and the [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup) components. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-The simplest way to start using the [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html) is as follows:
+The simplest way to start using the [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) is as follows:
 
 ```razor
 <IgbRadioGroup>
@@ -67,25 +67,25 @@ The simplest way to start using the [`IgbRadio`](https://www.infragistics.com/bl
 ```
 
 > [!WARNING]
-> The [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
+> The [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples
 
 ### Label
 
-To provide a meaningful label for the [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html), simply place some text between the opening and closing tags:
+To provide a meaningful label for the [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio), simply place some text between the opening and closing tags:
 
 ```razor
 <IgbRadio>Apple</IgbRadio>
 ```
 
-You can specify if the label should be positioned before or after the [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html) button by setting the `label-position` attribute. Allowed values are `before` and `after`(default):
+You can specify if the label should be positioned before or after the [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) button by setting the `label-position` attribute. Allowed values are `before` and `after`(default):
 
 ```razor
 <IgbRadio LabelPosition="@RadioLabelPosition.Before">Apple</IgbRadio>
 ```
 
-The [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html) can also be labelled by elements external to it. In this case the user is given full control to position and style the label in accordance to their needs.
+The [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) can also be labelled by elements external to it. In this case the user is given full control to position and style the label in accordance to their needs.
 
 ```razor
 <span id="radio-label">Label</span>
@@ -202,7 +202,7 @@ You can use the `disabled` attribute to disable the radio.
 
 ### Group Alignment
 
-The [`IgbRadioGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadioGroup.html) allows you to easily change the placement directionality of the radio buttons it contains using the `alignment` attribute. Allowed values are `vertical`(default) and `horizontal`.
+The [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup) allows you to easily change the placement directionality of the radio buttons it contains using the `alignment` attribute. Allowed values are `vertical`(default) and `horizontal`.
 
 ```razor
 <IgbRadioGroup Alignment="@ContentOrientation.Horizontal">
@@ -246,7 +246,7 @@ You can use the `name` and `value` attributes when using the radio with `Form`.
 
 ## Styling
 
-The [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html) component exposes several CSS parts (`base`, `control`, and `label`) to give you full control over its styling.
+The [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio) component exposes several CSS parts (`base`, `control`, and `label`) to give you full control over its styling.
 
 ```css
 igc-radio::part(control) {
@@ -302,8 +302,8 @@ igc-radio::part(label) {
 
 ## API References
 
-- [`IgbRadioGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadioGroup.html)
-- [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html)
+- [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)
+- [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

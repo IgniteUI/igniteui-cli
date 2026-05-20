@@ -18,7 +18,7 @@ Users are enabled to interact and navigate among a list of items, such as thumbn
 
 The following is a basic Ignite UI for Web Components Accordion example of a FAQ section. It operates as an accordion, with individually working sections. You can toggle each text block with a single click, while expanding multiple panels at the same time. This way you can read information more easily, without having to go back and forth between an automatically expanding and collapsing panel, which conceals the previously opened section every time.
 
-In it, you can see how to define an accordion and its expansion panels. The sample also demonstrates the two types of expansion behavior. The switch button sets the [`singleExpand`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html#singleExpand) property to toggle between single and multiple branches to be expanded at a time.
+In it, you can see how to define an accordion and its expansion panels. The sample also demonstrates the two types of expansion behavior. The switch button sets the [`singleExpand`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent&member=singleExpand) property to toggle between single and multiple branches to be expanded at a time.
 
 ```css
 igc-accordion {
@@ -54,7 +54,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcAccordionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html), you need to register it as follows:
+Before using the [`IgcAccordionComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcAccordionComponent } from 'igniteui-webcomponents';
@@ -64,9 +64,9 @@ defineComponents(IgcAccordionComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Before using the [`IgcAccordionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html), you need to register it as follows:
+Before using the [`IgcAccordionComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent), you need to register it as follows:
 
-Now you can start with a basic configuration of the [`IgcAccordionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html) and its panels.
+Now you can start with a basic configuration of the [`IgcAccordionComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent) and its panels.
 
 ## Usage
 
@@ -94,7 +94,7 @@ The accordion wraps all expansion panels declared inside it.
 </igc-accordion>
 ```
 
-Using the `Panels` accessor you can get a reference to the collection containing all expansion panels children of the [`IgcAccordionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html).
+Using the `Panels` accessor you can get a reference to the collection containing all expansion panels children of the [`IgcAccordionComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent).
 
 ```typescript
 private accordion: IgcAccordionComponent;
@@ -106,18 +106,18 @@ constructor() {
 }
 ```
 
-As demonstrated above, the [`singleExpand`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html#singleExpand)property gives you the ability to set whether single or multiple panels can be expanded at a time.
+As demonstrated above, the [`singleExpand`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent&member=singleExpand)property gives you the ability to set whether single or multiple panels can be expanded at a time.
 
-By using the [`hideAll`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html#hideAll) and [`showAll`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html#showAll) methods you can respectively collapse and expand all [`IgcExpansionPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html)s of the [`IgcAccordionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html) programmatically.
+By using the [`hideAll`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent&member=hideAll) and [`showAll`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent&member=showAll) methods you can respectively collapse and expand all [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent)s of the [`IgcAccordionComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent) programmatically.
 
 > [!Note]
-> If [`singleExpand`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html#singleExpand) property is set to **true** calling [`showAll`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html#showAll) method would expand only the focused panel.
+> If [`singleExpand`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent&member=singleExpand) property is set to **true** calling [`showAll`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent&member=showAll) method would expand only the focused panel.
 
 ### Web Components Accordion Customization Example
 
 With the Web Components Accordion, you can customize the header and content panel's appearance.
 
-The sample below demonstrates how elaborate filtering options can be implemented using the built-in slots of the [`IgcExpansionPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html).
+The sample below demonstrates how elaborate filtering options can be implemented using the built-in slots of the [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent).
 
 ```css
 igc-accordion {
@@ -165,7 +165,7 @@ igc-rating {
 
 ### Nested Web Components Accordions Scenario
 
-In the following Web Components Accordion example is created a complex FAQ section in order to illustrate how you can go about this common application scenario. In the sample nested [`IgcAccordionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html) is achieved by adding an accordion inside an expansion panel.
+In the following Web Components Accordion example is created a complex FAQ section in order to illustrate how you can go about this common application scenario. In the sample nested [`IgcAccordionComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent) is achieved by adding an accordion inside an expansion panel.
 
 ```css
 igc-accordion {
@@ -214,8 +214,8 @@ The Accordion navigation is compliant with W3C accessibility standards and conve
 
 ## API References
 
-- [`IgcAccordionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcaccordioncomponent.html)
-- [`IgcExpansionPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html)
+- [`IgcAccordionComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAccordionComponent)
+- [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent)
 
 ## Additional Resources
 

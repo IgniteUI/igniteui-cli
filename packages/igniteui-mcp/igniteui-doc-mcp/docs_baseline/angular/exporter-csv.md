@@ -12,7 +12,7 @@ _premium: true
 <p class="highlight">
 
 The IgniteUI CSV Exporter service can export data in a Character Separated Values format from both raw data (array) or from an [**IgxGrid**](grid/grid.md), [**IgxHierarchicalGrid**](hierarchicalgrid/hierarchical-grid.md) and [**IgxTreeGrid**](treegrid/tree-grid.md).
-The exporting functionality is encapsulated in the [`IgxCsvExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporterservice.html) class.
+The exporting functionality is encapsulated in the [`IgxCsvExporterService`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService) class.
 </p>
 <div class="divider"></div>
 
@@ -66,7 +66,7 @@ export class CsvExportComponent {
 
 <div class="divider--half"></div>
 
-To start using the IgniteUI CSV Exporter first import the [`IgxCsvExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporterservice.html) in the app.module.ts file and add the service to the `providers` array:
+To start using the IgniteUI CSV Exporter first import the [`IgxCsvExporterService`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService) in the app.module.ts file and add the service to the `providers` array:
 
 ```typescript
 // app.module.ts
@@ -91,7 +91,7 @@ To initiate an export process you may use the handler of a button in your compon
 <button (click)="exportButtonHandler()">Export Data to CSV</button>
 ```
 
-You may access the exporter service by defining an argument of type [`IgxCsvExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporterservice.html) in the component's constructor and the Angular framework will provide an instance of the service. To export some data in CSV format you need to invoke the exporter service's [`exportData`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporterservice.html#exportdata) method. This method accepts as a first argument the data you want to export and the second argument is of type [`IgxCsvExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporteroptions.html) and allows you to configure the export process.
+You may access the exporter service by defining an argument of type [`IgxCsvExporterService`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService) in the component's constructor and the Angular framework will provide an instance of the service. To export some data in CSV format you need to invoke the exporter service's [`exportData`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=exportdata) method. This method accepts as a first argument the data you want to export and the second argument is of type [`IgxCsvExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions) and allows you to configure the export process.
 
 Here is the code which will execute the export process in the component's typescript file:
 
@@ -124,7 +124,7 @@ If all went well, you should see an export button. When pressed, it will trigger
 ## Exporting IgxGrid's Data
 
 The CSV Exporter service can also export data in CSV format from an [**IgxGrid**](grid/grid.md). The only difference is that you need to invoke the
-[`IgxCsvExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporterservice.html)'s [`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporterservice.html#export) method and pass the [**IgxGrid**](grid/grid.md) as first argument.
+[`IgxCsvExporterService`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService)'s [`export`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=export) method and pass the [**IgxGrid**](grid/grid.md) as first argument.
 
 Here is an example:
 
@@ -233,24 +233,24 @@ export class CsvExportSample1Component {
 
 The CSV Exporter supports several types of exporting formats. The export format may be specified:
 
-- as a second argument of the [`IgxCsvExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporteroptions.html) objects's constructor
-- using the [`IgxCsvExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporteroptions.html) object's [`fileType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporteroptions.html#filetype) property
+- as a second argument of the [`IgxCsvExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions) objects's constructor
+- using the [`IgxCsvExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions) object's [`fileType`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions&member=filetype) property
 
 Different export formats have different file extensions and value delimiters. The following table maps the export formats and their respective file extensions and delimiters:
 
 | Format                                                                        | File Extension | Default Delimiter |
 | :---------------------------------------------------------------------------- | :------------- | :---------------- |
-| [`CsvFileTypes.CSV`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/csvfiletypes.html#csv) | .csv           | Comma             |
-| [`CsvFileTypes.TAB`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/csvfiletypes.html#tab) | .tab           | Tab               |
-| [`CsvFileTypes.TSV`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/csvfiletypes.html#tsv) | .tsv           | Tab               |
+| [`CsvFileTypes.CSV`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=csv) | .csv           | Comma             |
+| [`CsvFileTypes.TAB`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=tab) | .tab           | Tab               |
+| [`CsvFileTypes.TSV`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=tsv) | .tsv           | Tab               |
 
 <div class="divider--half"></div>
 
-You can also specify a custom delimiter using the [`IgxCsvExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporteroptions.html) objects's [`valueDelimiter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporteroptions.html#valuedelimiter) property.
+You can also specify a custom delimiter using the [`IgxCsvExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions) objects's [`valueDelimiter`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions&member=valuedelimiter) property.
 
 ## Customizing the Exported Content
 
-In the above examples the CSV Exporter service was exporting all available data. There are situations in which you may want to skip exporting a row or even an entire column. To achieve this you may hook to the [`columnExporting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporterservice.html#columnexporting) and/or [`rowExporting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporterservice.html#rowexporting) events which are fired respectively for each column and/or each row and cancel the respective event by setting the event argument object's [`cancel`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/irowexportingeventargs.html#cancel) property to `true`.
+In the above examples the CSV Exporter service was exporting all available data. There are situations in which you may want to skip exporting a row or even an entire column. To achieve this you may hook to the [`columnExporting`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=columnexporting) and/or [`rowExporting`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=rowexporting) events which are fired respectively for each column and/or each row and cancel the respective event by setting the event argument object's [`cancel`](mcp:get_api_reference?platform=angular&component=IRowExportingEventArgs&member=cancel) property to `true`.
 
 The following example will exclude a column from the export if its name is "Age" and if its index is 1:
 
@@ -265,18 +265,18 @@ this.csvExportService.columnExporting.subscribe((args: IColumnExportingEventArgs
 this.csvExportService.export(this.igxGrid1, new IgxCsvExporterOptions('ExportedDataFile'));
 ```
 
-When you are exporting data from [**IgxGrid**](grid/grid.md) the export process takes in account features like row filtering and column hiding and exports only the data visible in the grid. You can configure the exporter service to include filtered rows or hidden columns by setting properties on the [`IgxCsvExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporteroptions.html) object. These properties are described in the table below.
+When you are exporting data from [**IgxGrid**](grid/grid.md) the export process takes in account features like row filtering and column hiding and exports only the data visible in the grid. You can configure the exporter service to include filtered rows or hidden columns by setting properties on the [`IgxCsvExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions) object. These properties are described in the table below.
 
 ## API References
 
 The CSV Exporter service has a few more APIs to explore, which are listed below.
 
-- [IgxCsvExporterService API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporterservice.html)
-- [IgxCsvExporterOptions API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporteroptions.html)
+- [IgxCsvExporterService API](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService)
+- [IgxCsvExporterOptions API](mcp:get_api_reference?platform=angular&component=IgxCsvExporterOptions)
 
 Additional components that were used:
 
-- [IgxGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
+- [IgxGridComponent API](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 
 <div class="divider"></div>

@@ -110,7 +110,7 @@ igc-dockmanager > div {
 
 By default, the Dock Manager allows users to effortlessly drag and dock panes inside each other, creating tabs. To provide more control over this functionality, we've introduced two properties - `allowInnerDock` and `acceptsInnerDock`.
 
-By setting the `acceptsInnerDock` property of an [`IgcContentPane`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igccontentpane.html), developers can control docking inside specific content panes. When this property is set to false, users will be restricted from performing inner docking in the specified pane.
+By setting the `acceptsInnerDock` property of an [`IgcContentPane`](mcp:get_api_reference?platform=webcomponents&component=IgcContentPane), developers can control docking inside specific content panes. When this property is set to false, users will be restricted from performing inner docking in the specified pane.
 
 ```ts
 {
@@ -258,5 +258,5 @@ igc-dockmanager > div {
 
 ## API References
 
-- [`IgcDockManagerComponent`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html)
-- [`IgcContentPane`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igccontentpane.html)
+- [`IgcDockManagerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent)
+- [`IgcContentPane`](mcp:get_api_reference?platform=webcomponents&component=IgcContentPane)

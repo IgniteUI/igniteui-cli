@@ -220,7 +220,7 @@ Due to the specific behavior of merged cells it has to be noted how exactly it t
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ## Additional Resources
 

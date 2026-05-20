@@ -284,7 +284,7 @@ public class SingersData
 
 ## Hierarchical Grid Setup
 
-Let's start by creating our [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) and binding it to our data. We will also enable both filtering and sorting for the columns.
+Let's start by creating our [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) and binding it to our data. We will also enable both filtering and sorting for the columns.
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
@@ -304,9 +304,9 @@ Let's start by creating our [`IgbHierarchicalGrid`](https://www.infragistics.com
 
 ## Toolbar's Column Hiding UI
 
-The built-in Column Hiding UI is placed inside an `DropDown` in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
+The built-in Column Hiding UI is placed inside an `DropDown` in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
 
-For this purpose all we have to do is set both the [`IgbGridToolbarActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarActions.html) and the [`IgbGridToolbarHiding`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarHiding.html) inside of the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html).
+For this purpose all we have to do is set both the [`IgbGridToolbarActions`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarActions) and the [`IgbGridToolbarHiding`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarHiding) inside of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 
 <!-- Web Components -->
 
@@ -333,9 +333,9 @@ For this purpose all we have to do is set both the [`IgbGridToolbarActions`](htt
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-The [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
+The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
 
-By using the [`Title`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
+By using the [`Title`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
 
 <!-- Web Components -->
 
@@ -365,7 +365,7 @@ You can see the result of the code from above at the beginning of this article i
 
 ### Disable hiding of a column
 
-We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`DisableHiding`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisableHiding) property to true.
+We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`DisableHiding`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisableHiding) property to true.
 
 ```razor
 <IgbHierarchicalGrid>
@@ -698,27 +698,27 @@ public class SingersData
 
 ## API References
 
-In this article we learned how to use the built-in column hiding UI in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
+In this article we learned how to use the built-in column hiding UI in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
 
 - `ColumnActionsComponent`
 
 Additional components with relative APIs that were used:
 
-[`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) properties:
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) properties:
 
-- [`DisableHiding`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisableHiding)
+- [`DisableHiding`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisableHiding)
 
-[`IgbGridToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbar.html) properties:
+[`IgbGridToolbar`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar) properties:
 
 - `showProgress`
 
-[`IgbGridToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbar.html) methods:
+[`IgbGridToolbar`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar) methods:
 
-- [`IgbGridToolbarHiding`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarHiding.html)
-- [`IgbGridToolbarActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarActions.html)
-- [`IgbGridToolbarTitle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarTitle.html)
+- [`IgbGridToolbarHiding`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarHiding)
+- [`IgbGridToolbarActions`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarActions)
+- [`IgbGridToolbarTitle`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarTitle)
 
-[`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) events:
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) events:
 
 - `ColumnVisibilityChanged`
 

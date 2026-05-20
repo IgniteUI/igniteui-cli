@@ -90,7 +90,7 @@ import { IgxTreeGridModule } from 'igniteui-angular';
 })
 export class AppModule {}
 ```
-Then define a Tree Grid with bound data source and [`rowEditable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowEditable) set to true:
+Then define a Tree Grid with bound data source and [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditable) set to true:
 ```html
 <igx-tree-grid [data]="data" [primaryKey]="EmployeID" [foreignKey]="PID"
                [rowEditable]="true" [rowSelection]="'multiple'" [moving]="true">
@@ -108,7 +108,7 @@ Then define a Tree Grid with bound data source and [`rowEditable`](https://www.i
 > [!NOTE]
 > Setting primary key is mandatory for row editing operations.
 > [!NOTE]
-> It's not needed to enable editing for individual columns. Using the [`rowEditable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowEditable) property in the Tree Grid, will mean that all rows, with defined `field` property, excluding primary one, will be editable. If you want to disable editing for specific column, then you set the [`editable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#editable) column's input to `false`.
+> It's not needed to enable editing for individual columns. Using the [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditable) property in the Tree Grid, will mean that all rows, with defined `field` property, excluding primary one, will be editable. If you want to disable editing for specific column, then you set the [`editable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable) column's input to `false`.
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -139,7 +139,7 @@ export class TreeGridRowEditSampleComponent implements OnInit {
 }
 ```
 > [!NOTE]
-> The Tree Grid uses internally a provider [`IgxBaseTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbasetransactionservice.html) that holds pending cell changes, until row state submitted or cancelled.
+> The Tree Grid uses internally a provider [`IgxBaseTransactionService`](mcp:get_api_reference?platform=angular&component=IgxBaseTransactionService) that holds pending cell changes, until row state submitted or cancelled.
 ## Positioning
 - Default position of the overlay will be below the row that is in edit mode
 - If there is no space below the row then overlay will appear above the row.
@@ -340,16 +340,16 @@ igx-tree-grid{
   - Row Editing
   - Row Pinning
 ## API References
-- [rowEditable](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowEditable)
-- [onRowEditEnter](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#onRowEditEnter)
-- [onRowEdit](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#onRowEdit)
-- [rowEditDone](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowEditDone)
-- [onRowEditCancel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#onRowEditCancel)
-- [endEdit](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#endEdit)
-- [field](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#field)
-- [editable](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#editable)
-- [primaryKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#primaryKey)
-- [IgxTreeGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [rowEditable](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditable)
+- [onRowEditEnter](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=onRowEditEnter)
+- [onRowEdit](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=onRowEdit)
+- [rowEditDone](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditDone)
+- [onRowEditCancel](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=onRowEditCancel)
+- [endEdit](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=endEdit)
+- [field](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=field)
+- [editable](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable)
+- [primaryKey](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=primaryKey)
+- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Build CRUD operations with igxGrid](../general/how-to/how-to-perform-crud.md)

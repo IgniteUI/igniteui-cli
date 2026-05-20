@@ -44,7 +44,7 @@ Take a look at the simple Ignite UI for Blazor Toast example below. The animated
 
 ### How To Use Ignite UI for Blazor Toast Notification
 
-Before using the Blazor [`IgbToast`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html), you need to register it as follows:
+Before using the Blazor [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -54,13 +54,13 @@ builder.Services.AddIgniteUIBlazor(typeof(IgbToastModule));
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbCalendar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-The simplest way to display the toast component is to use its [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html#IgniteUI_Blazor_Controls_IgbToast_Show) method and call it on a button click.
+The simplest way to display the toast component is to use its [`Show`](mcp:get_api_reference?platform=blazor&component=IgbToast&member=Show) method and call it on a button click.
 
 ```razor
 <IgbButton @onclick=@OnToastButtonClick Variant=@ButtonVariant.Contained>Show Toast</IgbButton>
@@ -87,9 +87,9 @@ The simplest way to display the toast component is to use its [`Show`](https://w
 
 ### Properties
 
-Use the [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html#IgniteUI_Blazor_Controls_IgbToast_DisplayTime) property to configure how long the toast component is visible. By default, it's set to 4000 milliseconds.
+Use the [`DisplayTime`](mcp:get_api_reference?platform=blazor&component=IgbToast&member=DisplayTime) property to configure how long the toast component is visible. By default, it's set to 4000 milliseconds.
 
-By default, the toast component is hidden automatically after a period specified by the [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html#IgniteUI_Blazor_Controls_IgbToast_DisplayTime). You can use [`KeepOpen`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html#IgniteUI_Blazor_Controls_IgbToast_KeepOpen) property to change this behavior. In this way, the toast will remain visible.
+By default, the toast component is hidden automatically after a period specified by the [`DisplayTime`](mcp:get_api_reference?platform=blazor&component=IgbToast&member=DisplayTime). You can use [`KeepOpen`](mcp:get_api_reference?platform=blazor&component=IgbToast&member=KeepOpen) property to change this behavior. In this way, the toast will remain visible.
 
 ```razor
 <IgbButton @onclick=@OnToggleToastButtonClick Variant="ButtonVariant.Contained">Toggle Toast</IgbButton>
@@ -186,7 +186,7 @@ By default, the toast component is hidden automatically after a period specified
 
 ## Styling
 
-You can style the Blazor [`IgbToast`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html) notifications directly using its tag selector:
+You can style the Blazor [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast) notifications directly using its tag selector:
 
 ```css
 igc-toast {
@@ -231,11 +231,11 @@ igc-toast {
 
 ## API References
 
-- [`IgbCalendar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html)
-- [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html#IgniteUI_Blazor_Controls_IgbToast_DisplayTime)
-- [`KeepOpen`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html#IgniteUI_Blazor_Controls_IgbToast_KeepOpen)
-- [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html#IgniteUI_Blazor_Controls_IgbToast_Show)
-- [`IgbToast`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html)
+- [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)
+- [`DisplayTime`](mcp:get_api_reference?platform=blazor&component=IgbToast&member=DisplayTime)
+- [`KeepOpen`](mcp:get_api_reference?platform=blazor&component=IgbToast&member=KeepOpen)
+- [`Show`](mcp:get_api_reference?platform=blazor&component=IgbToast&member=Show)
+- [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

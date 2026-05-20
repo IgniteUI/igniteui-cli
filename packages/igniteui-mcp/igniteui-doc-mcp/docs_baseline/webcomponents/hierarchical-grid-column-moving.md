@@ -22,7 +22,7 @@ The Web Components Hierarchical Grid Column Moving feature in Ignite UI for Web 
 > If a column header is templated and the Column Moving is enabled or the corresponding column is groupable, then the templated elements need to have the **draggable** attribute set to **false**!
 
 > [!Note]
-> If the pinned area exceeds its maximum allowed width (80% of the total [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) width), a visual clue notifies the end user that the drop operation is forbidden and pinning is not possible. This means you won't be allowed to drop a column in the pinned area.
+> If the pinned area exceeds its maximum allowed width (80% of the total [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) width), a visual clue notifies the end user that the drop operation is forbidden and pinning is not possible. This means you won't be allowed to drop a column in the pinned area.
 
 ```ts
 public headerTemplate = (ctx: IgcCellTemplateContext) => {
@@ -41,7 +41,7 @@ public headerTemplate = (ctx: IgcCellTemplateContext) => {
 
 ## Overview
 
-**Column moving** feature is enabled on a per-grid level, meaning that the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) could have either movable or immovable columns. This is done via the [`moving`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#moving) input of the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html).
+**Column moving** feature is enabled on a per-grid level, meaning that the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) could have either movable or immovable columns. This is done via the [`moving`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=moving) input of the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent).
 
 ```html
 <igc-hierarchical-grid moving="true">
@@ -56,7 +56,7 @@ public headerTemplate = (ctx: IgcCellTemplateContext) => {
 
 In addition to the drag and drop functionality, the Column Moving feature also provides API methods to allow moving a column/reordering columns programmatically:
 
-[`moveColumn`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `Position` (representing a `DropPosition` value), which determines whether to place the column before or after the target column.
+[`moveColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `Position` (representing a `DropPosition` value), which determines whether to place the column before or after the target column.
 
 ```typescript
 // Move the ID column after the Name column
@@ -66,7 +66,7 @@ const nameColumn = grid.getColumnByName("Name");
 grid.moveColumn(idColumn, nameColumn, DropPosition.AfterDropTarget);
 ```
 
-[`move`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#move) - Moves a column to a specified visible index. If the passed index parameter is invalid (is negative, or exceeds the number of columns), or if the column is not allowed to move to this index (if inside another group), no operation is performed.
+[`move`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=move) - Moves a column to a specified visible index. If the passed index parameter is invalid (is negative, or exceeds the number of columns), or if the column is not allowed to move to this index (if inside another group), no operation is performed.
 
 ```typescript
 // Move the ID column at 3rd position.
@@ -74,13 +74,13 @@ const idColumn = grid.getColumnByName("ID");
 idColumn.move(3);
 ```
 
-Note that when using the column moving feature, the `ColumnMovingEnd` event will be emitted if the operation was successful. Also note that in comparison to the drag and drop functionality, using the column moving feature does not require setting the [`moving`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#moving) property to true.
+Note that when using the column moving feature, the `ColumnMovingEnd` event will be emitted if the operation was successful. Also note that in comparison to the drag and drop functionality, using the column moving feature does not require setting the [`moving`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=moving) property to true.
 
 ## Events
 
 There are several events related to the column moving to provide a means for tapping into the columns' drag and drop operations. These are `ColumnMovingStart`, `ColumnMoving` and `ColumnMovingEnd`.
 
-You can subscribe to the `ColumnMovingEnd` event of the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) to implement some custom logic when a column is dropped to a new position. For example, you can cancel dropping the **Category** column after the **Change On Year(%)** column in the following code snippet.
+You can subscribe to the `ColumnMovingEnd` event of the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) to implement some custom logic when a column is dropped to a new position. For example, you can cancel dropping the **Category** column after the **Change On Year(%)** column in the following code snippet.
 
 ```html
 <igc-hierarchical-grid id="dataGrid" auto-generate="false" moving="true">
@@ -140,8 +140,8 @@ Then set the related CSS properties to this class:
 
 ## API References
 
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
-- [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
 
 ## Additional Resources
 

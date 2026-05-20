@@ -87,7 +87,7 @@ export class PinningToolbarSampleComponent implements OnInit{
 }
 ```
 ## Column Pinning API
-Column pinning is controlled through the `pinned` input of the [`igx-column`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html). Pinned columns are rendered on the left side of the Grid by default and stay fixed through horizontal scrolling of the unpinned columns in the Grid body.
+Column pinning is controlled through the `pinned` input of the [`igx-column`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent). Pinned columns are rendered on the left side of the Grid by default and stay fixed through horizontal scrolling of the unpinned columns in the Grid body.
 ```html
 <igx-grid #grid1 [data]="data | async" [width]="700px" [autoGenerate]="false" (columnInit)="initColumns($event)"
     (selected)="selectCell($event)">
@@ -98,13 +98,13 @@ Column pinning is controlled through the `pinned` input of the [`igx-column`](ht
     </igx-paginator>
 </igx-grid>
 ```
-You may also use the Grid's [`pinColumn`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#pinColumn) or [`unpinColumn`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#unpinColumn) methods of the [`IgxGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) to pin or unpin columns by their field name:
+You may also use the Grid's [`pinColumn`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=pinColumn) or [`unpinColumn`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=unpinColumn) methods of the [`IgxGridComponent`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) to pin or unpin columns by their field name:
 ```typescript
 this.grid.pinColumn('AthleteNumber');
 this.grid.unpinColumn('Name');
 ```
 Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the column is already in the desired state.
-A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the [`columnPin`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#columnPin) event and changing the [`insertAtIndex`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ipincolumneventargs.html#insertAtIndex) property of the event arguments to the desired position index.
+A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the [`columnPin`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columnPin) event and changing the [`insertAtIndex`](mcp:get_api_reference?platform=angular&component=IPinColumnEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
 ```html
 <igx-grid #grid1 [data]="data | async" [autoGenerate]="true" (columnPin)="columnPinning($event)"></igx-grid>
 ```
@@ -116,7 +116,7 @@ public columnPinning(event) {
 }
 ```
 ## Pinning Position
-You can change the column pinning position via the [`pinning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#pinning) configuration option. It allows you to set the columns position to either Start or End.
+You can change the column pinning position via the [`pinning`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=pinning) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
 ```html
 <igx-grid [data]="data" [autoGenerate]="true" [pinning]="pinningConfig"></igx-grid>
@@ -693,8 +693,8 @@ $custom-theme: grid-theme(
 >[!NOTE]
 >The sample will not be affected by the selected global theme from `Change Theme`.
 ## API References
-- [IgxGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
+- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Grid overview](grid.md)

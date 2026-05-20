@@ -198,7 +198,7 @@ export class HomeComponent {
 
 <div class="divider--half"></div>
 
-By default, the Carousel in Angular has its [`loop`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html#loop) input property set to `true` (_looping occurs when the first slide comes after the last by navigating using the Next action, or when the last slide comes after the first by using the Previous action_). The looping behavior can be disabled by setting the value of the [`loop`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html#loop) input to `false`.
+By default, the Carousel in Angular has its [`loop`](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent&member=loop) input property set to `true` (_looping occurs when the first slide comes after the last by navigating using the Next action, or when the last slide comes after the first by using the Previous action_). The looping behavior can be disabled by setting the value of the [`loop`](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent&member=loop) input to `false`.
 
 ```html
 <igx-carousel [loop]="false">
@@ -206,7 +206,7 @@ By default, the Carousel in Angular has its [`loop`](https://www.infragistics.co
 </igx-carousel>
 ```
 
-To keep track of each slide index, the carousel has indicators that are positioned at the `end` of the carousel by default. In order to change this behavior, use the [`indicatorsOrientation`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html#indicatorsOrientation) property and assign it to `start`.
+To keep track of each slide index, the carousel has indicators that are positioned at the `end` of the carousel by default. In order to change this behavior, use the [`indicatorsOrientation`](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent&member=indicatorsOrientation) property and assign it to `start`.
 
 ```html
 <igx-carousel indicatorsOrientation="start">
@@ -214,7 +214,7 @@ To keep track of each slide index, the carousel has indicators that are position
 </igx-carousel>
 ```
 
-By default, the [`IgxCarousel`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html) displays its navigation buttons and indicators. Use the [`indicators`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html#indicators) property to hide the indicators and the [`navigation`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html#navigation) property to hide the navigation buttons.
+By default, the [`IgxCarousel`](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent) displays its navigation buttons and indicators. Use the [`indicators`](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent&member=indicators) property to hide the indicators and the [`navigation`](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent&member=navigation) property to hide the navigation buttons.
 
 ```html
 <igx-carousel [navigation]="false" [indicators]="false">
@@ -222,7 +222,7 @@ By default, the [`IgxCarousel`](https://www.infragistics.com/products/ignite-ui-
 </igx-carousel>
 ```
 
-The [`IgxCarousel`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html) supports vertical mode. Use the [`vertical`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html#vertical) property to enable it.
+The [`IgxCarousel`](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent) supports vertical mode. Use the [`vertical`](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent&member=vertical) property to enable it.
 
 ```html
 <igx-carousel [vertical]="true">
@@ -234,7 +234,7 @@ The [`IgxCarousel`](https://www.infragistics.com/products/ignite-ui-angular/docs
 
 <div class="divider--half"></div>
 
-To add Angular custom carousel indicators we will have to use the [IgxCarouselIndicatorDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselindicatordirective.html), like this:
+To add Angular custom carousel indicators we will have to use the [IgxCarouselIndicatorDirective](mcp:get_api_reference?platform=angular&component=IgxCarouselIndicatorDirective), like this:
 
 ```html
 ...
@@ -246,7 +246,7 @@ To add Angular custom carousel indicators we will have to use the [IgxCarouselIn
 
 ### Custom nav buttons
 
-To achieve this we will use the [IgxCarouselPrevButtonDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselprevbuttondirective.html) and [IgxCarouselNextButtonDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselnextbuttondirective.html) directives:
+To achieve this we will use the [IgxCarouselPrevButtonDirective](mcp:get_api_reference?platform=angular&component=IgxCarouselPrevButtonDirective) and [IgxCarouselNextButtonDirective](mcp:get_api_reference?platform=angular&component=IgxCarouselNextButtonDirective) directives:
 
 ```html
 ...
@@ -446,7 +446,7 @@ Animated slide transitions provide the end-users a nice experience when interact
 
 The carousel is configured to use the `slide` animation by default but it also supports `fade` as an alternative animation.
 
-The animations are configured through the [animationType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html#animationType) input, like this:
+The animations are configured through the [animationType](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent&member=animationType) input, like this:
 
 ```html
 <igx-carousel animationType="fade">
@@ -618,7 +618,7 @@ The navigation in the carousel can be handled by the user through navigation but
 
 <div class="divider--half"></div>
 
-By default, the carousel can be used on any touch-enabled device. This is optional and can be changed by setting the [gesturesSupport](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html#gesturesSupport) property to `false`.
+By default, the carousel can be used on any touch-enabled device. This is optional and can be changed by setting the [gesturesSupport](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent&member=gesturesSupport) property to `false`.
 
 The carousel [animations](carousel.md#angular-carousel-animations) are fully supported on touch devices, which makes the carousel consistent with any platform and great when used in progressive web applications ([PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)).
 
@@ -638,16 +638,16 @@ The carousel [animations](carousel.md#angular-carousel-animations) are fully sup
 
 <div class="divider--half"></div>
 
-The **IgxCarousel** can be easily configured to change the slides automatically, without any user interaction. This way you can create your own slideshow by only setting a transition interval to the [interval](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html#interval) property, which determines the amount of time in milliseconds between slides transition.
+The **IgxCarousel** can be easily configured to change the slides automatically, without any user interaction. This way you can create your own slideshow by only setting a transition interval to the [interval](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent&member=interval) property, which determines the amount of time in milliseconds between slides transition.
 
 >[!NOTE]
->The automatic slide transitioning is not entirely user-independent by default. Positioning the mouse pointer over a slide will interrupt the current slide transition until the mouse pointer leaves the slide area. This can be prevented by setting [pause](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html#pause) property to `false`.
+>The automatic slide transitioning is not entirely user-independent by default. Positioning the mouse pointer over a slide will interrupt the current slide transition until the mouse pointer leaves the slide area. This can be prevented by setting [pause](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent&member=pause) property to `false`.
 
 ## Advanced Example
 
 <div class="divider--half"></div>
 
-Let's create a fully automated carousel with looping enabled. Each slide will be synced with a [list item](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistitemcomponent.html) in a list. Clicking on a list item will trigger a slide change.
+Let's create a fully automated carousel with looping enabled. Each slide will be synced with a [list item](mcp:get_api_reference?platform=angular&component=IgxListItemComponent) in a list. Clicking on a list item will trigger a slide change.
 
 
 To achieve this goal, we have to do the following configurations to the carousel:
@@ -674,7 +674,7 @@ Our carousel will look like this in the template:
 
 We are ready with the carousel configuration. Now we need only to add a [list](list.md) component and sync the both components:
 
-adding [IgxList](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html):
+adding [IgxList](mcp:get_api_reference?platform=angular&component=IgxListComponent):
 
 ```html
 ...
@@ -689,7 +689,7 @@ adding [IgxList](https://www.infragistics.com/products/ignite-ui-angular/docs/ty
 ...
 ```
 
-syncing the components by hooking up on carousel's [`slideChanged`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html#slideChanged) and list's [itemClicked](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html#itemClicked) events:
+syncing the components by hooking up on carousel's [`slideChanged`](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent&member=slideChanged) and list's [itemClicked](mcp:get_api_reference?platform=angular&component=IgxListComponent&member=itemClicked) events:
 
 >[!NOTE]
 >As of v15.1.0 `onSlideChanged` was renamed to `slideChanged`. Using `ng update` will automatically migrate your code prior to use the new event name.
@@ -1329,7 +1329,7 @@ At the end your carousel should look like this:
 - [aria-roledescription](https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription) set to 'carousel'.
 - [aria-selected](https://www.w3.org/TR/wai-aria/states_and_properties#aria-selected)- set to _true_ or _false_ based on the active slide.
 - [aria-controls](https://www.w3.org/TR/wai-aria-1.1/#aria-controls) - set a slide index whose content is controlled by the current element.
-- [aria-live](https://www.w3.org/TR/wai-aria-1.1/#aria-live) - used to set the priority with which screen reader should treat updates to live regions - the possible settings are: **off** and **polite**. The default setting is **polite**. When the [interval](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html#interval) option set, the **aria-live** attribute would be set to **off**.
+- [aria-live](https://www.w3.org/TR/wai-aria-1.1/#aria-live) - used to set the priority with which screen reader should treat updates to live regions - the possible settings are: **off** and **polite**. The default setting is **polite**. When the [interval](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent&member=interval) option set, the **aria-live** attribute would be set to **off**.
 - [aria-label](https://www.w3.org/TR/wai-aria/states_and_properties#aria-label) slide based.
 - aria-label (buttons)
   - aria-label - for previous slide.
@@ -1351,11 +1351,11 @@ At the end your carousel should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxCarouselComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcarouselcomponent.html)
+- [IgxCarouselComponent](mcp:get_api_reference?platform=angular&component=IgxCarouselComponent)
 - [IgxCarouselComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-carousel-theme)
-- [IgxSlideComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidecomponent.html)
-- [IgxListComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html)
-- [IgxListItemComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistitemcomponent.html)
+- [IgxSlideComponent](mcp:get_api_reference?platform=angular&component=IgxSlideComponent)
+- [IgxListComponent](mcp:get_api_reference?platform=angular&component=IgxListComponent)
+- [IgxListItemComponent](mcp:get_api_reference?platform=angular&component=IgxListItemComponent)
 
 ## Theming Dependencies
 

@@ -132,7 +132,7 @@ Use `style.color` CSS property to change its default color:
 
 ### Inactive Icon
 
-If you want to disable an icon, you can use the [`active`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconcomponent.html#active) property:
+If you want to disable an icon, you can use the [`active`](mcp:get_api_reference?platform=angular&component=IgxIconComponent&member=active) property:
 
 ```html
 <igx-icon [active]="false">volume_off</igx-icon>
@@ -170,9 +170,9 @@ You can customize the icons using CSS. To change an icon size use the `--size` C
 
 ## SVG Icons
 
-You can also use an SVG image as an icon. First, inject the [`IgxIconService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconservice.html) dependency. In this example we will inject it in a component's constructor but you can use it wherever it is needed in your code.
+You can also use an SVG image as an icon. First, inject the [`IgxIconService`](mcp:get_api_reference?platform=angular&component=IgxIconService) dependency. In this example we will inject it in a component's constructor but you can use it wherever it is needed in your code.
 
-Use the [`addSvgIcon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconservice.html#addSvgIcon) method to import the SVG file in cache. When the SVG is cached, it can be used anywhere in the application. The icon name and file URL path are the method's mandatory parameters; family can be specified as well. After that, you can use the SVG files in the HTML markup. Alternatively, you can use the `addSvgIconFromText` method to import an SVG file, providing the SVG text content instead of the file URL.
+Use the [`addSvgIcon`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=addSvgIcon) method to import the SVG file in cache. When the SVG is cached, it can be used anywhere in the application. The icon name and file URL path are the method's mandatory parameters; family can be specified as well. After that, you can use the SVG files in the HTML markup. Alternatively, you can use the `addSvgIconFromText` method to import an SVG file, providing the SVG text content instead of the file URL.
 
 - Have in mind that if there are two icons with the same name and the same family, the SVG icon will be displayed with priority.
 - It is better not to provide image width and height in the SVG file.
@@ -266,7 +266,7 @@ Additionally, users can take advantage of the latest Material icons and their de
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
 ```
 
-Then we need to inject the [`IgxIconService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconservice.html) dependency and make use of its `setFamily` method so that Material Symbols can work with `igx-icon`:
+Then we need to inject the [`IgxIconService`](mcp:get_api_reference?platform=angular&component=IgxIconService) dependency and make use of its `setFamily` method so that Material Symbols can work with `igx-icon`:
 
 ```ts
 constructor(private iconService: IgxIconService) { }
@@ -563,7 +563,7 @@ At the end your icon should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxIconComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconcomponent.html)
+- [IgxIconComponent](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
 - [IgxIconComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
 
 ## Additional Resources

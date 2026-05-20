@@ -9,7 +9,7 @@ _tocName: Filtering
 # Angular Tree Grid Filtering
 IgniteUI for [Angular Tree Grid component](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid) provides three different filtering types - Quick filtering, [Excel style filtering](excel-style-filtering.md) and [Advanced filtering](advanced-filtering.md) which enable you to display only the records that meet specified criteria. The Material UI grid component in Ignite UI provides angular filter capabilities and extensive filtering API through the Data Container to which the Tree Grid is bound.
 ## Angular Tree Grid Filtering Example
-The sample below demonstrates Tree Grid's **Quick filtering** user experience. API [filter()](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filter) method is used to apply _contains_ condition on the _ProductName column_ through external _igxInputGroup component_.  
+The sample below demonstrates Tree Grid's **Quick filtering** user experience. API [filter()](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filter) method is used to apply _contains_ condition on the _ProductName column_ through external _igxInputGroup component_.  
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxStringFilteringOperand } from 'igniteui-angular/core';
@@ -118,17 +118,17 @@ export class TreeGridFilteringSampleComponent implements OnInit {
 ```
 <div class="divider--half"></div>
 ## Setup
-In order to specify if filtering is enabled and which filtering mode should be used, the Tree Grid exposes the following boolean properties - [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#allowFiltering), [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#allowAdvancedFiltering), [`filterMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filterMode) and [`filterable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#filterable).
-Property **[allowFiltering](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#allowfiltering)** enables you to specify the following options:
+In order to specify if filtering is enabled and which filtering mode should be used, the Tree Grid exposes the following boolean properties - [`allowFiltering`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=allowFiltering), [`allowAdvancedFiltering`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=allowAdvancedFiltering), [`filterMode`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filterMode) and [`filterable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=filterable).
+Property **[allowFiltering](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=allowfiltering)** enables you to specify the following options:
 - **false** - the filtering for the corresponding grid will be disabled; /default value/
 - **true** - the filtering for the corresponding grid will be enabled;
-Property **[allowAdvancedFiltering](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#allowAdvancedFiltering)** enables you to specify the following options:
+Property **[allowAdvancedFiltering](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=allowAdvancedFiltering)** enables you to specify the following options:
 - **false** - the advanced filtering for the corresponding grid will be disabled; /default value/
 - **true** - the advanced filtering for the corresponding grid will be enabled;
-Property **[filterMode](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filterMode)** enables you to specify the following options:
+Property **[filterMode](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filterMode)** enables you to specify the following options:
 - **quickFilter** - a simplistic filtering UI; /default value/
 - **excelStyleFilter** - an Excel-like filtering UI;
-Property **[filterable](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#filterable)** enables you to specify the following options:
+Property **[filterable](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=filterable)** enables you to specify the following options:
 - **true** - the filtering for the corresponding column will be enabled; /default value/
 - **false** - the filtering for the corresponding column will be disabled;
 ```html
@@ -137,7 +137,7 @@ Property **[filterable](https://www.infragistics.com/products/ignite-ui-angular/
     <igx-column field="Units" header="Units" dataType="number" [filterable]="false"></igx-column>
 </igx-tree-grid>
 ```
-To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#allowAdvancedFiltering) input properties to `true`.
+To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`allowAdvancedFiltering`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=allowAdvancedFiltering) input properties to `true`.
 ```html
 <igx-tree-grid [data]="data" [autoGenerate]="true" [allowAdvancedFiltering]="true">
 </igx-tree-grid>
@@ -148,8 +148,8 @@ To enable the [Advanced filtering](advanced-filtering.md) however, you need to s
 In order to open the filter row for a particular column, the 'Filter' chip below its header should be clicked. To add conditions you should choose filter operand using the dropdown on the left of the input and enter value. For `number` and `date` columns 'Equals' is selected by default, for `string` - 'Contains' and for `boolean` - 'All'. Pressing 'Enter' confirms the condition and you are now able to add another one. There is a dropdown, between 'condition' chips, which determines the logical operator between them, 'AND' is selected by default. To remove a condition you can click the 'X' button of the chip, and to edit it you should select the chip and the input will be populated with the chip's data. While filter row is opened you can click on any filterable column's header in order to select it and to be able to add filter conditions for it.
 While some filtering conditions have been applied to a column, and the filter row is closed, you can either remove the conditions by clicking the chip's close button, or you can open the filter row by selecting any of the chips. When there is not enough space to show all the conditions, a filter icon is shown with a badge that indicates how many more conditions there are. It can also be clicked in order to open the filter row.
 ## Usage
-There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The Tree Grid currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#dataType) of the column, the correct set of [**filtering operations**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ifilteringoperation.html) is loaded inside the filter UI dropdown. Additionally, you can set the [`ignoreCase`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ifilteringexpression.html) and the initial [`condition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ifilteringexpression.html#condition) properties.
-Filtering feature is enabled for the Tree Grid component by setting the [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#allowFiltering) input to `true`. The default [`filterMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filterMode) is `quickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#filterable) input to `false`.
+There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The Tree Grid currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=dataType) of the column, the correct set of [**filtering operations**](mcp:get_api_reference?platform=angular&component=IFilteringOperation) is loaded inside the filter UI dropdown. Additionally, you can set the [`ignoreCase`](mcp:get_api_reference?platform=angular&component=IFilteringExpression) and the initial [`condition`](mcp:get_api_reference?platform=angular&component=IFilteringExpression&member=condition) properties.
+Filtering feature is enabled for the Tree Grid component by setting the [`allowFiltering`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=allowFiltering) input to `true`. The default [`filterMode`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filterMode) is `quickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=filterable) input to `false`.
 ```html
 <igx-tree-grid [data]="data" [autoGenerate]="false" [allowFiltering]="true">
     <igx-column field="Name" header="Order Product"></igx-column>
@@ -159,14 +159,14 @@ Filtering feature is enabled for the Tree Grid component by setting the [`allowF
 ```
 > [!NOTE]
 > If values of type `string` are used by a column of dataType `Date`, the Tree Grid won't parse them to `Date` objects and using filtering conditions won't be possible. If you want to use `string` objects, additional logic should be implemented on the application level, in order to parse the values to `Date` objects.
-You can filter any column or a combination of columns through the Tree Grid API. The Tree Grid exposes several methods for this task - [`filter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filter), [`filterGlobal`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filterglobal) and [`clearFilter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#clearFilter).
-- [`filter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filter) - filter a single column or a combination of columns.
+You can filter any column or a combination of columns through the Tree Grid API. The Tree Grid exposes several methods for this task - [`filter`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filter), [`filterGlobal`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filterglobal) and [`clearFilter`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=clearFilter).
+- [`filter`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filter) - filter a single column or a combination of columns.
 There are five filtering operand classes exposed:
-- [`IgxFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfilteringoperand.html): this is a base filtering operand, which can be inherited when defining custom filtering conditions.
-- [`IgxBooleanFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbooleanfilteringoperand.html) defines all default filtering conditions for `boolean` type.
-- [`IgxNumberFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumberfilteringoperand.html) defines all default filtering conditions for `numeric` type.
-- [`IgxStringFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstringfilteringoperand.html) defines all default filtering conditions for `string` type.
-- [`IgxDateFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatefilteringoperand.html) defines all default filtering conditions for `Date` type.
+- [`IgxFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxFilteringOperand): this is a base filtering operand, which can be inherited when defining custom filtering conditions.
+- [`IgxBooleanFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxBooleanFilteringOperand) defines all default filtering conditions for `boolean` type.
+- [`IgxNumberFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxNumberFilteringOperand) defines all default filtering conditions for `numeric` type.
+- [`IgxStringFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxStringFilteringOperand) defines all default filtering conditions for `string` type.
+- [`IgxDateFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxDateFilteringOperand) defines all default filtering conditions for `Date` type.
 ```typescript
 // Single column filtering
 // Filter the `Order Product` column for values which `contains` the `myproduct` substring, ignoring case
@@ -198,13 +198,13 @@ priceFilteringExpressionsTree.filteringOperands.push(priceExpression);
 gridFilteringExpressionsTree.filteringOperands.push(priceFilteringExpressionsTree);
 this.treeGrid.filteringExpressionsTree = gridFilteringExpressionsTree;
 ```
-- [`filterGlobal`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filterGlobal) - clears all existing filters and applies the new filtering condition to all Tree Grid's columns.
+- [`filterGlobal`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filterGlobal) - clears all existing filters and applies the new filtering condition to all Tree Grid's columns.
 ```typescript
 // Filter all cells for a value which contains `myproduct`
 this.treeGrid.filteringLogic = FilteringLogic.Or;
 this.treeGrid.filterGlobal('myproduct', IgxStringFilteringOperand.instance().condition('contains'), false);
 ```
-- [`clearFilter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#clearFilter) - removes any applied filtering from the target column. If called with no arguments it will clear the filtering of all columns.
+- [`clearFilter`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=clearFilter) - removes any applied filtering from the target column. If called with no arguments it will clear the filtering of all columns.
 ```typescript
 // Remove the filtering state from the ProductName column
 this.treeGrid.clearFilter('Order Product');
@@ -212,7 +212,7 @@ this.treeGrid.clearFilter('Order Product');
 this.treeGrid.clearFilter();
 ```
 ## Initial filtered state
-To set the initial filtering state of the Tree Grid, set the [`IgxTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filteringExpressionsTree) property to an array of [`IFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ifilteringexpressionstree.html) for each column to be filtered.
+To set the initial filtering state of the Tree Grid, set the [`IgxTreeGridComponent`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) [`filteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filteringExpressionsTree) property to an array of [`IFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree) for each column to be filtered.
 ```typescript
 constructor(private cdr: ChangeDetectorRef) { }
 public ngAfterViewInit() {
@@ -232,15 +232,15 @@ public ngAfterViewInit() {
 }
 ```
 ### Filtering logic
-The [`filteringLogic`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filteringlogic) property of the Tree Grid controls how filtering multiple columns will resolve in the Tree Grid. You can change it at any time through the Tree Grid API, or through the Tree Grid input property.
+The [`filteringLogic`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filteringlogic) property of the Tree Grid controls how filtering multiple columns will resolve in the Tree Grid. You can change it at any time through the Tree Grid API, or through the Tree Grid input property.
 ```typescript
 import { FilteringLogic } from 'igniteui-angular/core';
 // import { FilteringLogic } from '@infragistics/igniteui-angular'; for licensed package
 ...
 this.treeGrid.filteringLogic = FilteringLogic.OR;
 ```
-The default value of [`AND`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/filteringlogic.html#and) returns only the rows that match all the currently applied filtering expressions. Following the example above, a row will be returned when both the `ProductName` cell value contains `myproduct` and the `Price` cell value is greater than 55.
-When set to [`OR`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/filteringlogic.html#or), a row will be returned when either the `ProductName` cell value contains `myproduct` or the `Price` cell value is greater than 55.
+The default value of [`AND`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=and) returns only the rows that match all the currently applied filtering expressions. Following the example above, a row will be returned when both the `ProductName` cell value contains `myproduct` and the `Price` cell value is greater than 55.
+When set to [`OR`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=or), a row will be returned when either the `ProductName` cell value contains `myproduct` or the `Price` cell value is greater than 55.
 <div class="divider--half"></div>
 @@if (igxName === 'IgxGrid' || igxName === 'IgxTreeGrid') {
 ## Remote Filtering
@@ -248,9 +248,9 @@ The Tree Grid supports remote filtering, which is demonstrated in the [`Tree Gri
 <div class="divider--half"></div>
 }
 ## Custom Filtering Operands
-You can customize the filtering menu by adding, removing or modifying the filtering operands. By default, the filtering menu contains certain operands based on the column’s data type ([`IgxBooleanFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbooleanfilteringoperand.html), [`IgxDateFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatefilteringoperand.html), [`IgxNumberFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumberfilteringoperand.html) and [`IgxStringFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstringfilteringoperand.html)). You can extend these classes or their base class [`IgxFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfilteringoperand.html) to change the filtering menu items’ behavior.
+You can customize the filtering menu by adding, removing or modifying the filtering operands. By default, the filtering menu contains certain operands based on the column’s data type ([`IgxBooleanFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxBooleanFilteringOperand), [`IgxDateFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxDateFilteringOperand), [`IgxNumberFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxNumberFilteringOperand) and [`IgxStringFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxStringFilteringOperand)). You can extend these classes or their base class [`IgxFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxFilteringOperand) to change the filtering menu items’ behavior.
 In the sample below, inspect the "Order Product" and "Delivered" columns filters menus. For the "Delivered" column filter, we have limited the number of operands to All, True and False. For the "Order Product" column filter – we have modified the Contains and Does Not Contain operands logic to perform case sensitive search and added also Empty and Not Empty operands.
-To do that, extend the [`IgxStringFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstringfilteringoperand.html) and [`IgxBooleanFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbooleanfilteringoperand.html), modify the operations and their logic, and set the column [`filters`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#filters) input to the new operands.
+To do that, extend the [`IgxStringFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxStringFilteringOperand) and [`IgxBooleanFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxBooleanFilteringOperand), modify the operations and their logic, and set the column [`filters`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=filters) input to the new operands.
 ```typescript
 // grid-custom-filtering.component.ts
 export class GridCustomFilteringComponent {
@@ -845,21 +845,21 @@ $dark-button: flat-button-theme(
 > [!NOTE]
 > Some browsers such as Firefox fail to parse regional specific decimal separators by considering them grouping separators, thus resulting in them being invalid. When inputting such values for a numeric column filter value, only the valid part of the number will be applied to the filtering expression. For further information, refer to the Firefox [issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1199665).
 ### Breaking Changes in 6.1.0
-- IgxTreeGrid `filteringExpressions` property is removed. Use [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filteringexpressionstree) instead.
-- `filter_multiple` method is removed. Use [`filter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filter) method and [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filteringExpressionsTree) property instead.
-- The [`filter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filter) method has new signature. It now accepts the following parameters:
+- IgxTreeGrid `filteringExpressions` property is removed. Use [`filteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filteringexpressionstree) instead.
+- `filter_multiple` method is removed. Use [`filter`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filter) method and [`filteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filteringExpressionsTree) property instead.
+- The [`filter`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filter) method has new signature. It now accepts the following parameters:
   - `name` - the name of the column to be filtered.
   - `value` - the value to be used for filtering.
-  - `conditionOrExpressionTree` (optional) - this parameter accepts object of type [`IFilteringOperation`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ifilteringoperation.html) or [`IFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ifilteringexpressionstree.html). If only simple filtering is needed, a filtering operation could be passed as an argument. In case of advanced filtering, an expressions tree containing complex filtering logic could be passed as an argument.
+  - `conditionOrExpressionTree` (optional) - this parameter accepts object of type [`IFilteringOperation`](mcp:get_api_reference?platform=angular&component=IFilteringOperation) or [`IFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree). If only simple filtering is needed, a filtering operation could be passed as an argument. In case of advanced filtering, an expressions tree containing complex filtering logic could be passed as an argument.
   - `ignoreCase` (optional) - whether the filtering is case sensitive or not.
-- [`filteringDone`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filteringDone) event now have only one parameter of type [`IFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ifilteringexpressionstree.html) which contains the filtering state of the filtered column.
-- filtering operands: [`IFilteringExpression`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ifilteringexpression.html) condition property is no longer a direct reference to a filtering condition method, instead it's a reference to an [`IFilteringOperation`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ifilteringoperation.html).
-- [`IgxColumnComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html) now exposes a [`filters`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#filters) property, which takes an [`IgxFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfilteringoperand.html) class reference.
-- Custom filters can be provided to the Tree Grid columns by populating the [`operations`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfilteringoperand.html#operations) property of the [`IgxFilteringOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfilteringoperand.html) with operations of [`IFilteringOperation`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ifilteringoperation.html) type.
+- [`filteringDone`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filteringDone) event now have only one parameter of type [`IFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree) which contains the filtering state of the filtered column.
+- filtering operands: [`IFilteringExpression`](mcp:get_api_reference?platform=angular&component=IFilteringExpression) condition property is no longer a direct reference to a filtering condition method, instead it's a reference to an [`IFilteringOperation`](mcp:get_api_reference?platform=angular&component=IFilteringOperation).
+- [`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) now exposes a [`filters`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=filters) property, which takes an [`IgxFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxFilteringOperand) class reference.
+- Custom filters can be provided to the Tree Grid columns by populating the [`operations`](mcp:get_api_reference?platform=angular&component=IgxFilteringOperand&member=operations) property of the [`IgxFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxFilteringOperand) with operations of [`IFilteringOperation`](mcp:get_api_reference?platform=angular&component=IFilteringOperation) type.
 ## API References
 <div class="divider--half"></div>
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
-- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [IgxTreeGridComponent API](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 - [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

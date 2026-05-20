@@ -28,7 +28,7 @@ First, you need to install the Ignite UI for Web Components npm package by runni
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcDividerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdividercomponent.html), you need to register it as follows:
+Before using the [`IgcDividerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDividerComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcDividerComponent } from 'igniteui-webcomponents';
@@ -38,7 +38,7 @@ defineComponents(IgcDividerComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The [`IgcDividerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdividercomponent.html) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgcDividerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdividercomponent.html) is as simple as:
+The [`IgcDividerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDividerComponent) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgcDividerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDividerComponent) is as simple as:
 
 ```html
 <igc-divider></igc-divider>
@@ -48,7 +48,7 @@ The [`IgcDividerComponent`](https://www.infragistics.com/products/ignite-ui-web-
 
 ### Vertical Divider
 
-If the [`vertical`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdividercomponent.html#vertical) attribute is set the direction of the divider would be changed from horizontal to vertical.
+If the [`vertical`](mcp:get_api_reference?platform=webcomponents&component=IgcDividerComponent&member=vertical) attribute is set the direction of the divider would be changed from horizontal to vertical.
 
 ```html
 <igc-divider vertical></igc-divider>
@@ -71,7 +71,7 @@ p{
 
 ### Type
 
-The [`type`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdividercomponent.html#type) attribute determines whether to render a `solid` or a `dashed` divider line. The default value is `solid`.
+The [`type`](mcp:get_api_reference?platform=webcomponents&component=IgcDividerComponent&member=type) attribute determines whether to render a `solid` or a `dashed` divider line. The default value is `solid`.
 
 ```html
 <igc-divider type="dashed"></igc-divider>
@@ -84,7 +84,7 @@ The [`type`](https://www.infragistics.com/products/ignite-ui-web-components/docs
 
 ### Inset Divider
 
-The [`IgcDividerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdividercomponent.html) can be set in on both sides. To `inset` the divider, set the [`middle`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdividercomponent.html#middle) attribute to true in combination with the `--inset` css variable. This will shrink the divider line from both sides. The default value of the [`middle`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdividercomponent.html#middle) attribute is false.
+The [`IgcDividerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDividerComponent) can be set in on both sides. To `inset` the divider, set the [`middle`](mcp:get_api_reference?platform=webcomponents&component=IgcDividerComponent&member=middle) attribute to true in combination with the `--inset` css variable. This will shrink the divider line from both sides. The default value of the [`middle`](mcp:get_api_reference?platform=webcomponents&component=IgcDividerComponent&member=middle) attribute is false.
 
 ```css
 /* DividerStyles.css */
@@ -138,7 +138,7 @@ p {
 
 ### Using Divider Inside Select Component
 
-The following sample illustrates how the [`IgcDividerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdividercomponent.html) can be integrated within the [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) in order to distinguish two groups of items.
+The following sample illustrates how the [`IgcDividerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDividerComponent) can be integrated within the [`IgcSelectComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent) in order to distinguish two groups of items.
 
 ```html
 <igc-select>
@@ -168,7 +168,7 @@ The `--color` css variable sets the color of the divider.
 
 ## API References
 
-- [`IgcDividerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdividercomponent.html)
+- [`IgcDividerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDividerComponent)
 
 ## Additional Resources
 
