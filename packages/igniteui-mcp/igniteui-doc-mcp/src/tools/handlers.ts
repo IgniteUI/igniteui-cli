@@ -114,6 +114,11 @@ export function createSearchApiHandler(docLoader: ApiDocLoader) {
       return `**${h.entry.component}** ${platformTag} ${typeTag} (${h.matches} matches)${kwTag}\n${h.excerpt}`;
     });
 
-    return { content: [{ type: "text", text: lines.join("\n\n") }] };
+    const frameworks = new Set(hits.map(h => h.entry.platform));
+    const crossPlatformWarning = !platform && frameworks.size > 1
+      ? `⚠ Results span multiple frameworks (${[...frameworks].join(', ')}). Only use entries that match your target framework — never apply APIs, events, or binding syntax from one framework to another.\n\n`
+      : '';
+
+    return { content: [{ type: "text", text: crossPlatformWarning + lines.join("\n\n") }] };
   };
 }

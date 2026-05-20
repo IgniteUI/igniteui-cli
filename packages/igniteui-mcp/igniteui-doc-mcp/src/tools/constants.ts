@@ -65,7 +65,7 @@ Use this as the discovery step when the exact component name is unknown — e.g.
 
 Each result includes: exact component name, framework tag, API type (class/interface/directive/enum), match count, keyword list, and a content excerpt. Pass the component name and framework from a result to get_api_reference for full details. To reduce response size, use section="properties", "methods", or "events" instead of the default "all".
 
-Omit framework to search all frameworks at once. Maximum query length is 256 characters.
+Always specify \`platform\` when your target framework is known — this prevents cross-framework API contamination. Omit only when you explicitly need to compare or search across all frameworks at once. Maximum query length is 256 characters.
 `
 };
 
@@ -133,6 +133,15 @@ Most tools require a \`framework\` parameter. Determine the framework from the u
 3. **File extensions** — .razor → blazor, .tsx → react
 4. **User's explicit statement** — "I'm using Angular", "Blazor project", etc.
 5. **Ask the user** if none of the above apply
+
+## Library Boundary Rules
+
+> **These rules are mandatory. Violating them produces code that looks valid but fails at runtime.**
+
+- **Always pass \`framework\` / \`platform\` to every tool call once the target framework is known.** Do not omit it.
+- **Never mix APIs across frameworks.** Angular (\`Igx\`), React (\`Igr\`), Blazor (\`Igb\`), and Web Components (\`Igc\`) each have distinct component names, event shapes, prop names, binding syntax, and state models. They are not interchangeable.
+- **Do not apply Angular patterns to React code** (or any other cross-framework combination). For example: Angular template bindings (\`(cellEditDone)\`), directive imports (\`IGX_GRID_DIRECTIVES\`), and signal-based \`viewChild\` are Angular-only. React uses callback props, hook-based state, and \`useRef\`.
+- **When \`search_api\` returns results from multiple frameworks, only use entries that match your target framework.**
 
 ## Documentation Tools
 
