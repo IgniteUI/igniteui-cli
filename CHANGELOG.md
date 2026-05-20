@@ -1,3 +1,11 @@
+# 15.2.1 (2026-05-20)
+
+## What's Changed
+* Fix [MCP] Enforce library boundaries in search_api and server instructions [#1694](https://github.com/IgniteUI/igniteui-cli/pull/1694)
+* Adding api ref docs to npm package [#1697](https://github.com/IgniteUI/igniteui-cli/pull/1697)
+* fix(upgrade-packages): detect framework & run without ignite-ui-cli.json b[#1690](https://github.com/IgniteUI/igniteui-cli/pull/1690)
+
+
 # 15.2.0 (2026-05-18)
 
 ## What's Changed
