@@ -84,7 +84,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* Api ref documantation added to the repo ([ce819a7](https://github.com/IgniteUI/igniteui-cli/commit/ce819a7eaf033f68405ebd157af24dc9f8f46f47))
+* API ref documentation added to the repo ([ce819a7](https://github.com/IgniteUI/igniteui-cli/commit/ce819a7eaf033f68405ebd157af24dc9f8f46f47))
 * update MCP configuration to use 'igniteui-cli@next' for command execution ([1c612ef](https://github.com/IgniteUI/igniteui-cli/commit/1c612ef14fba0e1ec899c568bac1ee9bd513874b))
 
 
