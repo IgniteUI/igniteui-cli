@@ -55,6 +55,63 @@ export function searchApiDocs(
   return hits.slice(0, limit);
 }
 
+const MEMBER_SECTIONS: ReadonlyArray<{ key: 'property' | 'method' | 'event'; aliases: ReadonlyArray<string> }> = [
+  { key: 'property', aliases: ['properties', 'accessors'] },
+  { key: 'method', aliases: ['methods', 'functions'] },
+  { key: 'event', aliases: ['events', 'outputs', 'fires'] },
+];
+
+// Allow TypeScript modifier keywords (static, readonly, static readonly, ...)
+// between the bullet marker and the member name in **bold**.
+const MEMBER_BULLET_RE = /^\s*[-*]\s+(?:\w+\s+){0,3}\*\*([A-Za-z_$][A-Za-z0-9_$]*)\b/;
+
+export interface MemberMatch {
+  section: 'property' | 'method' | 'event';
+  line: string;
+}
+
+// When the markdown lacks ## Properties / ## Methods / ## Events headings
+// (the shape produced by Astro's llms-full.txt), classify each bullet from
+// its syntax:
+//   - **name**(args): T   → method (signature follows the name)
+//   - **name**: `EventEmitter<...>` → event
+//   - otherwise           → property
+function inferSectionFromBullet(line: string): MemberMatch['section'] {
+  const afterName = line.replace(/^.*?\*\*[A-Za-z_$][A-Za-z0-9_$]*\*\*/, '');
+  if (afterName.startsWith('(')) return 'method';
+  if (/EventEmitter\b/.test(afterName)) return 'event';
+  return 'property';
+}
+
+export function extractMember(markdown: string, member: string): MemberMatch | null {
+  const lines = markdown.split(/\r?\n/);
+  const memberLower = member.toLowerCase();
+
+  for (const caseInsensitive of [false, true]) {
+    let currentSection: MemberMatch['section'] | null = null;
+
+    for (const line of lines) {
+      const heading = line.match(/^##\s+(.+?)\s*$/);
+      if (heading) {
+        const normalized = heading[1].toLowerCase().replace(/\s+/g, ' ').trim();
+        currentSection = MEMBER_SECTIONS.find(s => s.aliases.includes(normalized))?.key ?? null;
+        continue;
+      }
+
+      const bullet = MEMBER_BULLET_RE.exec(line);
+      if (!bullet) continue;
+      const name = bullet[1].trim();
+      const matches = caseInsensitive ? name.toLowerCase() === memberLower : name === member;
+      if (matches) {
+        const section = currentSection ?? inferSectionFromBullet(line);
+        return { section, line: line.trim() };
+      }
+    }
+  }
+
+  return null;
+}
+
 export function extractSection(markdown: string, section: string): string | null {
   const headingMap: Record<string, string[]> = {
     properties: ['properties', 'accessors'],

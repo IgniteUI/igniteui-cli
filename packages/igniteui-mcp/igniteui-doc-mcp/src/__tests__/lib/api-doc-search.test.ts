@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { extractSection, searchApiDocs } from '../../lib/api-doc-search.js';
+import { extractMember, extractSection, searchApiDocs } from '../../lib/api-doc-search.js';
 import type { DocEntry } from '../../lib/types/docs.types.js';
 
 function makeEntry(overrides: Partial<DocEntry> = {}): DocEntry {
@@ -185,5 +185,104 @@ describe('extractSection', () => {
 
   it('returns null for empty markdown', () => {
     expect(extractSection('', 'properties')).toBeNull();
+  });
+});
+
+describe('extractMember', () => {
+  const md = [
+    '## Properties',
+    '',
+    '- **checked** `boolean` — Whether the checkbox is checked.',
+    '- **disabled** `boolean` — Whether disabled.',
+    '',
+    '## Methods',
+    '',
+    '- **click()** — Toggles the checkbox.',
+    '- **setCustomValidity(message: string): void** — Sets a validation message.',
+    '',
+    '## Events',
+    '',
+    '- **igcChange** — Fired on state change.',
+    '',
+  ].join('\n');
+
+  it('finds a property and returns its section + line', () => {
+    const hit = extractMember(md, 'checked');
+    expect(hit).not.toBeNull();
+    expect(hit!.section).toBe('property');
+    expect(hit!.line).toContain('**checked**');
+  });
+
+  it('finds a method by its bare name (without parens)', () => {
+    const hit = extractMember(md, 'click');
+    expect(hit).not.toBeNull();
+    expect(hit!.section).toBe('method');
+    expect(hit!.line).toContain('**click()**');
+  });
+
+  it('finds a method with parameters in its signature', () => {
+    const hit = extractMember(md, 'setCustomValidity');
+    expect(hit).not.toBeNull();
+    expect(hit!.section).toBe('method');
+    expect(hit!.line).toContain('setCustomValidity');
+  });
+
+  it('finds an event', () => {
+    const hit = extractMember(md, 'igcChange');
+    expect(hit).not.toBeNull();
+    expect(hit!.section).toBe('event');
+  });
+
+  it('matches case-insensitively when no exact case match exists', () => {
+    const hit = extractMember(md, 'IGCCHANGE');
+    expect(hit).not.toBeNull();
+    expect(hit!.section).toBe('event');
+  });
+
+  it('returns null for an unknown member', () => {
+    expect(extractMember(md, 'nonexistent')).toBeNull();
+  });
+
+  it('returns null for empty markdown', () => {
+    expect(extractMember('', 'checked')).toBeNull();
+  });
+
+  it('matches a flat bullet list with no section headings (real llms-full.txt shape)', () => {
+    const flat = [
+      '### [IgxGridComponent](https://example.com)',
+      'Grid component.',
+      '',
+      '- **data**: `any[]` — Gets/Sets the data.',
+      '- **groupingDone**: `EventEmitter<IGroupingDoneEventArgs>` — Emitted when grouping.',
+      '- **clearGrouping**(name?: string): void — Clears grouping.',
+      '- static readonly **tagName**: `"igx-grid"` — The tag name.',
+    ].join('\n');
+
+    const prop = extractMember(flat, 'data');
+    expect(prop).not.toBeNull();
+    expect(prop!.section).toBe('property');
+
+    const event = extractMember(flat, 'groupingDone');
+    expect(event).not.toBeNull();
+    expect(event!.section).toBe('event');
+
+    const method = extractMember(flat, 'clearGrouping');
+    expect(method).not.toBeNull();
+    expect(method!.section).toBe('method');
+
+    const staticReadonly = extractMember(flat, 'tagName');
+    expect(staticReadonly).not.toBeNull();
+    expect(staticReadonly!.section).toBe('property');
+    expect(staticReadonly!.line).toContain('static readonly');
+  });
+
+  it('prefers exact case before falling back to case-insensitive', () => {
+    const dual = [
+      '## Properties',
+      '- **Value** `string` — PascalCase variant.',
+      '- **value** `string` — camelCase variant.',
+    ].join('\n');
+    const hit = extractMember(dual, 'value');
+    expect(hit!.line).toContain('camelCase');
   });
 });

@@ -51,6 +51,44 @@ describe('getApiReferenceSchema', () => {
   it('rejects invalid section values', () => {
     expect(getApiReferenceSchema.safeParse({ platform: 'angular', component: 'IgxGrid', section: 'slots' }).success).toBe(false);
   });
+
+  it('accepts an optional member name', () => {
+    expect(getApiReferenceSchema.safeParse({
+      platform: 'angular',
+      component: 'IgxGridComponent',
+      member: 'rowSelection',
+    }).success).toBe(true);
+  });
+
+  it('leaves member undefined when omitted', () => {
+    const result = getApiReferenceSchema.parse({ platform: 'angular', component: 'IgxGrid' });
+    expect(result.member).toBeUndefined();
+  });
+
+  it('trims whitespace from member name', () => {
+    const result = getApiReferenceSchema.parse({
+      platform: 'angular',
+      component: 'IgxGrid',
+      member: '  checked  ',
+    });
+    expect(result.member).toBe('checked');
+  });
+
+  it('rejects empty member name', () => {
+    expect(getApiReferenceSchema.safeParse({
+      platform: 'angular',
+      component: 'IgxGrid',
+      member: '',
+    }).success).toBe(false);
+  });
+
+  it('rejects member name exceeding 128 characters', () => {
+    expect(getApiReferenceSchema.safeParse({
+      platform: 'angular',
+      component: 'IgxGrid',
+      member: 'x'.repeat(129),
+    }).success).toBe(false);
+  });
 });
 
 describe('searchApiSchema', () => {
