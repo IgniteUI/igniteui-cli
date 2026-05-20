@@ -1,0 +1,136 @@
+# Ignite UI for Blazor GridLite v25.1.x — Full API Reference
+
+> Complete API reference for the Ignite UI for Blazor GridLite package (25.1.x). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: Blazor
+Package: IgniteUI.Blazor.GridLite
+Version: 25.1.x
+
+## Classes
+
+### [IgbColumnConfiguration](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/classes/IgbColumnConfiguration)
+
+- **constructor**(): void
+- **DataType**: `GridLiteColumnDataType?`
+- **Field**: `string`
+- **Filterable**: `bool`
+- **FilteringCaseSensitive**: `bool`
+- **Header**: `string`
+- **Hidden**: `bool`
+- **Resizable**: `bool`
+- **Sortable**: `bool`
+- **SortingCaseSensitive**: `bool`
+- **Width**: `string`
+
+### [IgbGridLiteColumn](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/classes/IgbGridLiteColumn)
+
+- **constructor**(): void
+- **DataType**: `GridLiteColumnDataType?`
+- **Field**: `string`
+- **Filterable**: `bool`
+- **FilteringCaseSensitive**: `bool`
+- **Header**: `string`
+- **Hidden**: `bool`
+- **Resizable**: `bool`
+- **Sortable**: `bool`
+- **SortingCaseSensitive**: `bool`
+- **Width**: `string`
+- **BuildRenderTree**(__builder: RenderTreeBuilder): void
+
+### [IgbGridLiteFilterExpression](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/classes/IgbGridLiteFilterExpression)
+
+- **constructor**(): void
+- **CaseSensitive**: `bool?`
+- **Condition**: `object`
+- **Criteria**: `string`
+- **Key**: `string`
+- **SearchTerm**: `object`
+
+### [IgbGridLiteFilteredEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/classes/IgbGridLiteFilteredEventArgs)
+
+- **constructor**(): void
+- **Key**: `string`
+- **State**: `List<IgbGridLiteFilterExpression>`
+
+### [IgbGridLiteFilteringEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/classes/IgbGridLiteFilteringEventArgs)
+
+- **constructor**(): void
+- **Expressions**: `List<IgbGridLiteFilterExpression>`
+- **Key**: `string`
+- **Type**: `string`
+
+### [IgbGridLiteSortedEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/classes/IgbGridLiteSortedEventArgs)
+
+- **constructor**(): void
+- **Expression**: `IgbGridLiteSortingExpression`
+
+### [IgbGridLiteSortingEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/classes/IgbGridLiteSortingEventArgs)
+
+- **constructor**(): void
+- **Expression**: `IgbGridLiteSortingExpression`
+
+### [IgbGridLiteSortingExpression](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/classes/IgbGridLiteSortingExpression)
+
+- **constructor**(): void
+- **CaseSensitive**: `bool?`
+- **Direction**: `GridLiteSortingDirection`
+- **Key**: `string`
+
+### [IgbGridLiteSortingOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/classes/IgbGridLiteSortingOptions)
+
+- **constructor**(): void
+- **Mode**: `GridLiteSortingMode`
+
+### [IgbGridLite<TItem>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/classes/IgbGridLite<TItem>)
+
+- **constructor**(): void
+- **AdditionalAttributes**: `Dictionary<string, object>`
+- **AdoptRootStyles**: `bool`
+- **AutoGenerate**: `bool`
+- **ChildContent**: `RenderFragment`
+- **Data**: `IEnumerable<TItem>`
+- **FilterExpressions**: `IEnumerable<IgbGridLiteFilterExpression>`
+- **Filtered**: `EventCallback<IgbGridLiteFilteredEventArgs>`
+- **Filtering**: `EventCallback<IgbGridLiteFilteringEventArgs>`
+- **GridId**: `string`
+- **Rendered**: `EventCallback`
+- **Sorted**: `EventCallback<IgbGridLiteSortedEventArgs>`
+- **Sorting**: `EventCallback<IgbGridLiteSortingEventArgs>`
+- **SortingExpressions**: `IEnumerable<IgbGridLiteSortingExpression>`
+- **SortingOptions**: `IgbGridLiteSortingOptions`
+- **BuildRenderTree**(__builder: RenderTreeBuilder): void
+- **ClearFilterAsync**(key: string): Task
+- **ClearSortAsync**(key: string): Task
+- **Dispose**(): void
+- **FilterAsync**(expression: IgbGridLiteFilterExpression): Task
+- **FilterAsync**(expressions: List<IgbGridLiteFilterExpression>): Task
+- **GetColumnsAsync**(): ValueTask<IgbColumnConfiguration[]>
+- **NavigateToAsync**(row: long, field: string, activate: bool): Task
+- **OnAfterRenderAsync**(firstRender: bool): Task
+- **OnInitialized**(): void
+- **RefreshAsync**(): Task
+- **RenderAsync**(): Task
+- **SetParametersAsync**(parameters: ParameterView): Task
+- **SortAsync**(expressions: IgbGridLiteSortingExpression): Task
+- **SortAsync**(expressions: List<IgbGridLiteSortingExpression>): Task
+- **UpdateDataAsync**(newData: IEnumerable<TItem>): Task
+
+## Enumerations
+
+### [GridLiteColumnDataType](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/enums/GridLiteColumnDataType)
+
+- **Boolean**
+- **Date**
+- **Number**
+- **String**
+
+### [GridLiteSortingDirection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/enums/GridLiteSortingDirection)
+
+- **Ascending**
+- **Descending**
+- **None**
+
+### [GridLiteSortingMode](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.GridLite/25.1.x/enums/GridLiteSortingMode)
+
+- **Multiple**
+- **Single**
