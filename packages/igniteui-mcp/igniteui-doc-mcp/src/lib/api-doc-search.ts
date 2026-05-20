@@ -79,7 +79,8 @@ export interface MemberMatch {
 function inferSectionFromBullet(line: string): MemberMatch['section'] {
   const afterName = line.replace(/^.*?\*\*[A-Za-z_$][A-Za-z0-9_$]*\*\*/, '');
   if (afterName.startsWith('(')) return 'method';
-  if (/EventEmitter\b/.test(afterName)) return 'event';
+  // Angular/WC/React emit events as EventEmitter<T>; Blazor uses EventCallback<T>.
+  if (/\b(?:EventEmitter|EventCallback)\b/.test(afterName)) return 'event';
   return 'property';
 }
 
@@ -153,9 +154,27 @@ export function extractSection(markdown: string, section: string): string | null
     matches.push(lines.slice(currentStart).join('\n').trimEnd());
   }
 
-  if (matches.length === 0) {
-    return null;
+  if (matches.length > 0) {
+    return matches.join('\n\n');
   }
 
-  return matches.join('\n\n');
+  // Fallback for flat bullet lists (real llms-full.txt shape — no ## headings).
+  // Classify each bullet by its syntax and return only those matching the target.
+  const sectionKey = section.toLowerCase();
+  const targetKind: MemberMatch['section'] | null =
+    sectionKey === 'properties' || sectionKey === 'accessors' ? 'property' :
+    sectionKey === 'methods'    || sectionKey === 'functions' ? 'method' :
+    sectionKey === 'events'     || sectionKey === 'outputs' || sectionKey === 'fires' ? 'event' :
+    null;
+  if (!targetKind) return null;
+
+  const bullets: string[] = [];
+  for (const line of lines) {
+    if (!MEMBER_BULLET_RE.test(line)) continue;
+    if (inferSectionFromBullet(line) === targetKind) {
+      bullets.push(line.trim());
+    }
+  }
+
+  return bullets.length > 0 ? bullets.join('\n') : null;
 }

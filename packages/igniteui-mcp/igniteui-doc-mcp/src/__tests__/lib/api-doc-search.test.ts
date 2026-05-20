@@ -186,6 +186,88 @@ describe('extractSection', () => {
   it('returns null for empty markdown', () => {
     expect(extractSection('', 'properties')).toBeNull();
   });
+
+  describe('inference fallback (flat bullet list — real llms-full.txt shape)', () => {
+    const flat = [
+      '### [IgxGridComponent](https://example.com)',
+      'Grid component.',
+      '',
+      '- **data**: `any[]` — Gets/Sets the data.',
+      '- **groupsExpanded**: `boolean` — Gets/Sets whether groups are expanded.',
+      '- **groupingDone**: `EventEmitter<IGroupingDoneEventArgs>` — Emitted when grouping is performed.',
+      '- **groupingExpressionsChange**: `EventEmitter<IGroupingExpression[]>` — Emitted when grouping changes.',
+      '- **clearGrouping**(name?: string): void — Clears grouping.',
+      '- **groupBy**(expr: IGroupingExpression): void — Groups by a column.',
+      '- static readonly **tagName**: `"igx-grid"` — The tag name.',
+    ].join('\n');
+
+    it('returns only properties', () => {
+      const result = extractSection(flat, 'properties');
+      expect(result).not.toBeNull();
+      expect(result).toContain('**data**');
+      expect(result).toContain('**groupsExpanded**');
+      expect(result).toContain('**tagName**');
+      expect(result).not.toContain('**groupingDone**');
+      expect(result).not.toContain('**clearGrouping**');
+    });
+
+    it('returns only methods', () => {
+      const result = extractSection(flat, 'methods');
+      expect(result).not.toBeNull();
+      expect(result).toContain('**clearGrouping**');
+      expect(result).toContain('**groupBy**');
+      expect(result).not.toContain('**data**');
+      expect(result).not.toContain('**groupingDone**');
+    });
+
+    it('returns only events', () => {
+      const result = extractSection(flat, 'events');
+      expect(result).not.toBeNull();
+      expect(result).toContain('**groupingDone**');
+      expect(result).toContain('**groupingExpressionsChange**');
+      expect(result).not.toContain('**data**');
+      expect(result).not.toContain('**clearGrouping**');
+    });
+
+    it('classifies Blazor EventCallback bullets as events', () => {
+      const blazor = [
+        '### [IgbGrid](https://example.com)',
+        '- **Data**: `object`',
+        '- **GroupingDone**: `EventCallback<IgbGroupingDoneEventArgs>`',
+        '- **ClearGrouping**(name: string): void',
+      ].join('\n');
+
+      const events = extractSection(blazor, 'events');
+      expect(events).not.toBeNull();
+      expect(events).toContain('**GroupingDone**');
+      expect(events).not.toContain('**Data**');
+      expect(events).not.toContain('**ClearGrouping**');
+
+      const props = extractSection(blazor, 'properties');
+      expect(props).toContain('**Data**');
+      expect(props).not.toContain('**GroupingDone**');
+    });
+
+    it('returns null when no bullets match the requested kind', () => {
+      const eventsOnly = '- **change**: `EventEmitter<void>` — Fires on change.';
+      expect(extractSection(eventsOnly, 'methods')).toBeNull();
+      expect(extractSection(eventsOnly, 'properties')).toBeNull();
+    });
+
+    it('prefers the heading-based path when both shapes are present', () => {
+      const mixed = [
+        '## Properties',
+        '- **viaHeading**: `string` — Under explicit heading.',
+        '## Methods',
+        '- **doIt**(): void — Under explicit heading.',
+      ].join('\n');
+      const props = extractSection(mixed, 'properties');
+      expect(props).toContain('## Properties');
+      expect(props).toContain('**viaHeading**');
+      // Heading walk wins — methods bullets do not bleed into the properties response.
+      expect(props).not.toContain('**doIt**');
+    });
+  });
 });
 
 describe('extractMember', () => {
