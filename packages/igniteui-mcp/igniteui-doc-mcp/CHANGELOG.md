@@ -122,30 +122,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * Revert "chore: address copilot comments" ([9fe5a3a](https://github.com/IgniteUI/igniteui-cli/commit/9fe5a3ac65590d739796c4e9dcb474130bf52418))
 
 
-
-
-
-## 15.2.1-alpha.3 (2026-05-20)
-
-
-### Bug Fixes
-
-* **mcp:** enforce library boundaries in search_api and server instructions ([5b70603](https://github.com/IgniteUI/igniteui-cli/commit/5b706035d3df278f41c8aede80f7f03c484f1084))
-
-
-
-# 15.2.0 (2026-05-18)
-
-
-### Features
-
-* **ai-config:** Add skills for Blazor through ai-config command ([#1688](https://github.com/IgniteUI/igniteui-cli/issues/1688)) ([2cbc962](https://github.com/IgniteUI/igniteui-cli/commit/2cbc962eb913df11b879a62dbffb8e79abbb1919))
-
-
-
-# 15.1.0 (2026-05-13)
-
-
 ### Bug Fixes
 
 * apply copilot suggestions from review ([5095a40](https://github.com/IgniteUI/igniteui-cli/commit/5095a40c49d497e84924ebd20d8b037efffd484a))
