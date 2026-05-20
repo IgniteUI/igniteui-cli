@@ -117,35 +117,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * update project setup guide description for clarity ([abb418e](https://github.com/IgniteUI/igniteui-cli/commit/abb418e5c6ffd4429870bca21896995773b5a595))
 
 
-### Reverts
-
-* Revert "chore: address copilot comments" ([9fe5a3a](https://github.com/IgniteUI/igniteui-cli/commit/9fe5a3ac65590d739796c4e9dcb474130bf52418))
-
-
-### Bug Fixes
-
-* apply copilot suggestions from review ([5095a40](https://github.com/IgniteUI/igniteui-cli/commit/5095a40c49d497e84924ebd20d8b037efffd484a))
-* failing tests ([17711d3](https://github.com/IgniteUI/igniteui-cli/commit/17711d3cde56b950a1a5eeaac21e422dd2ce9a0a))
-
-
-### Features
-
-* astro api docs for blazor ([b851831](https://github.com/IgniteUI/igniteui-cli/commit/b851831c222fa1104868f47605510ddcae6fb677))
-* **mcp:** mcp server registry.modelcontextprotocol.io config ([#1678](https://github.com/IgniteUI/igniteui-cli/issues/1678)) ([6506eda](https://github.com/IgniteUI/igniteui-cli/commit/6506edad80306bb70d8664454a8bd574474a1d68))
-* use astro api docs for all platforms ([0fd497e](https://github.com/IgniteUI/igniteui-cli/commit/0fd497e71e23c4ad994568f53a49253ea849f021))
-
-
-
-# 15.0.0 (2026-04-22)
-
-
-
-# 15.0.0-rc.3 (2026-04-21)
-
-
-
-# 15.0.0-rc.2 (2026-04-21)
-
 
 
 # 15.0.0-rc.1 (2026-04-17)
