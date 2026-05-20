@@ -1,7 +1,7 @@
 {
   "name": "@igniteui/mcp-server",
   "mcpName": "io.github.IgniteUI/mcp-server",
-  "version": "15.2.0",
+  "version": "15.2.1-alpha.0",
   "description": "Unified MCP server for Ignite UI — documentation, GitHub API, and CLI scaffolding",
   "repository": {
     "type": "git",
@@ -25,13 +25,10 @@
     "dist/**/*.d.ts",
     "dist/tools/*.md",
     "dist/igniteui-docs.db",
-    "dist/tools/*.md",
-    "docs/angular/api/**/*.md",
-    "docs/angular/api/**/*.json",
-    "docs/react/**/*.md",
-    "docs/react/**/*.json",
-    "docs/webcomponents/api/**/*.md",
-    "docs/webcomponents/api/**/*.json",
+    "docs/angular-api/**/llms-full.txt",
+    "docs/react-api/**/llms-full.txt",
+    "docs/webcomponents-api/**/llms-full.txt",
+    "docs/blazor-api/**/llms-full.txt",
     "README.md"
   ],
   "scripts": {
