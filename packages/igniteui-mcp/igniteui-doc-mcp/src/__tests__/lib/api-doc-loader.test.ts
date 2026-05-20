@@ -123,6 +123,33 @@ describe('ApiDocLoader', () => {
       expect(loader.get('webcomponents', 'IgxGridComponent')).toBeDefined();
     });
 
+    it('loads only the latest version when multiple version dirs exist', () => {
+      mockExistsSync.mockImplementation((p) => {
+        const s = String(p);
+        return s.endsWith('angular-api') || s.endsWith('llms-full.txt');
+      });
+      mockStatSync.mockReturnValue({ isDirectory: () => true } as ReturnType<typeof statSync>);
+      mockReaddirSync.mockImplementation((p) => {
+        const s = String(p);
+        if (s.endsWith('angular-api')) {
+          return ['igniteui-angular'] as unknown as ReturnType<typeof readdirSync>;
+        }
+        if (s.endsWith('igniteui-angular')) {
+          return ['9.0.x', '15.1.x', '21.0.x'] as unknown as ReturnType<typeof readdirSync>;
+        }
+        return [] as unknown as ReturnType<typeof readdirSync>;
+      });
+      mockReadFileSync.mockReturnValue(FIXTURE_LLMS_CONTENT);
+
+      const loader = new ApiDocLoader([FIXTURE_CONFIG]);
+      loader.load();
+
+      const entry = loader.get('angular', 'IgxGridComponent');
+      expect(entry?.filepath).toContain('21.0.x');
+      expect(entry?.filepath).not.toContain('9.0.x');
+      expect(entry?.filepath).not.toContain('15.1.x');
+    });
+
     it('returns zero entries when llms-full.txt exists but has no ### headings', () => {
       mockExistsSync.mockReturnValue(true);
       mockReaddirSync.mockReturnValue(['igniteui-angular'] as unknown as ReturnType<typeof readdirSync>);

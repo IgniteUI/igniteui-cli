@@ -3,6 +3,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import type { Platform, PlatformConfig } from '../config/platforms.js';
 import type { DocEntry } from './types/docs.types.js';
+import { pickLatestVersionDir } from './version-picker.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -66,18 +67,20 @@ export class ApiDocLoader {
 
     let count = 0;
 
-    // Walk {docsPath}/{package}/{version}/llms-full.txt
+    // Walk {docsPath}/{package}/{version}/llms-full.txt — load only the latest
+    // version per package so older snapshots never overwrite newer ones.
     for (const pkgName of readdirSync(docsPath)) {
       const pkgDir = join(docsPath, pkgName);
       if (!statSync(pkgDir).isDirectory()) continue;
 
-      for (const versionName of readdirSync(pkgDir)) {
-        const versionDir = join(pkgDir, versionName);
-        if (!statSync(versionDir).isDirectory()) continue;
+      const versionDirs = readdirSync(pkgDir)
+        .filter(n => statSync(join(pkgDir, n)).isDirectory());
+      if (versionDirs.length === 0) continue;
 
-        const llmsFile = join(versionDir, 'llms-full.txt');
-        if (!existsSync(llmsFile)) continue;
-
+      const versionName = pickLatestVersionDir(versionDirs);
+      const versionDir = join(pkgDir, versionName);
+      const llmsFile = join(versionDir, 'llms-full.txt');
+      if (existsSync(llmsFile)) {
         let content: string;
         try {
           content = readFileSync(llmsFile, 'utf-8');

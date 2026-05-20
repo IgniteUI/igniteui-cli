@@ -19,10 +19,12 @@ import {
   mkdirSync,
   copyFileSync,
   readdirSync,
+  rmSync,
   statSync,
 } from 'fs';
 import { join, resolve } from 'path';
 import { execSync } from 'child_process';
+import { pickLatestVersionDir } from '../src/lib/version-picker.js';
 
 const ROOT = resolve(import.meta.dirname, '..');
 const SUBMODULE_DIR = join(ROOT, 'blazor', 'api-docs');
@@ -73,21 +75,23 @@ for (const pkgName of readdirSync(ASTRO_DIST)) {
   const pkgSrc = join(ASTRO_DIST, pkgName);
   if (!statSync(pkgSrc).isDirectory()) continue;
 
-  for (const versionName of readdirSync(pkgSrc)) {
-    const versionSrc = join(pkgSrc, versionName);
-    if (!statSync(versionSrc).isDirectory()) continue;
+  const versions = readdirSync(pkgSrc)
+    .filter(n => statSync(join(pkgSrc, n)).isDirectory());
+  if (versions.length === 0) continue;
 
-    const srcFile = join(versionSrc, 'llms-full.txt');
-    if (!existsSync(srcFile)) continue;
+  const latest = pickLatestVersionDir(versions);
+  const srcFile = join(pkgSrc, latest, 'llms-full.txt');
+  if (!existsSync(srcFile)) continue;
 
-    const destDir = join(OUTPUT_DIR, pkgName, versionName);
-    mkdirSync(destDir, { recursive: true });
+  const pkgDest = join(OUTPUT_DIR, pkgName);
+  rmSync(pkgDest, { recursive: true, force: true });
+  const destDir = join(pkgDest, latest);
+  mkdirSync(destDir, { recursive: true });
 
-    const destFile = join(destDir, 'llms-full.txt');
-    copyFileSync(srcFile, destFile);
-    console.log(`  ✓ ${pkgName}/${versionName}/llms-full.txt`);
-    copied++;
-  }
+  copyFileSync(srcFile, join(destDir, 'llms-full.txt'));
+  const note = versions.length > 1 ? ` (latest of ${versions.length})` : '';
+  console.log(`  ✓ ${pkgName}/${latest}/llms-full.txt${note}`);
+  copied++;
 }
 
 if (copied === 0) {
