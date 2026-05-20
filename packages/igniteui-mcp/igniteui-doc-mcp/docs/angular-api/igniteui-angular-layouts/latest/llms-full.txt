@@ -1,0 +1,1682 @@
+# Ignite UI for Angular Layouts latest — Full API Reference
+
+> Complete API reference for the Ignite UI for Angular Layouts package (latest). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: Angular
+Package: igniteui-angular-layouts
+Version: latest
+
+## Classes
+
+### [IgxComboEditorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxComboEditorComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxComboEditorComponent
+- **_childTemplateRef**: `TemplateRef<any>`
+- **_dynamicContent**: `ViewContainerRef`
+- **_mainDiv**: `Element`
+- **_mainDivRef**: `ElementRef`
+- static **ngAcceptInputType_actualBaseTheme**: `string | BaseControlTheme`
+- static **ngAcceptInputType_actualBorderWidth**: `string | number`
+- static **ngAcceptInputType_actualContentPaddingBottom**: `string | number`
+- static **ngAcceptInputType_actualContentPaddingLeft**: `string | number`
+- static **ngAcceptInputType_actualContentPaddingRight**: `string | number`
+- static **ngAcceptInputType_actualContentPaddingTop**: `string | number`
+- static **ngAcceptInputType_actualCornerRadiusBottomLeft**: `string | number`
+- static **ngAcceptInputType_actualCornerRadiusBottomRight**: `string | number`
+- static **ngAcceptInputType_actualCornerRadiusTopLeft**: `string | number`
+- static **ngAcceptInputType_actualCornerRadiusTopRight**: `string | number`
+- static **ngAcceptInputType_actualDensity**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_actualFocusBorderWidth**: `string | number`
+- static **ngAcceptInputType_actualFocusUnderlineOpacity**: `string | number`
+- static **ngAcceptInputType_actualFocusUnderlineRippleOpacity**: `string | number`
+- static **ngAcceptInputType_actualHoverUnderlineOpacity**: `string | number`
+- static **ngAcceptInputType_actualHoverUnderlineWidth**: `string | number`
+- static **ngAcceptInputType_actualLabelVisible**: `string | boolean`
+- static **ngAcceptInputType_actualUnderlineOpacity**: `string | number`
+- static **ngAcceptInputType_actualUnderlineRippleOpacity**: `string | number`
+- static **ngAcceptInputType_actualUnderlineRippleWidth**: `string | number`
+- static **ngAcceptInputType_actualUnderlineWidth**: `string | number`
+- static **ngAcceptInputType_actualValueField**: `string | string[]`
+- static **ngAcceptInputType_allowFilter**: `string | boolean`
+- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
+- static **ngAcceptInputType_borderWidth**: `string | number`
+- static **ngAcceptInputType_contentPaddingBottom**: `string | number`
+- static **ngAcceptInputType_contentPaddingLeft**: `string | number`
+- static **ngAcceptInputType_contentPaddingRight**: `string | number`
+- static **ngAcceptInputType_contentPaddingTop**: `string | number`
+- static **ngAcceptInputType_cornerRadiusBottomLeft**: `string | number`
+- static **ngAcceptInputType_cornerRadiusBottomRight**: `string | number`
+- static **ngAcceptInputType_cornerRadiusTopLeft**: `string | number`
+- static **ngAcceptInputType_cornerRadiusTopRight**: `string | number`
+- static **ngAcceptInputType_dataSourceDesiredProperties**: `string | string[]`
+- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_dropDownButtonVisible**: `string | boolean`
+- static **ngAcceptInputType_fields**: `string | string[]`
+- static **ngAcceptInputType_focusBorderWidth**: `string | number`
+- static **ngAcceptInputType_focusUnderlineOpacity**: `string | number`
+- static **ngAcceptInputType_focusUnderlineRippleOpacity**: `string | number`
+- static **ngAcceptInputType_hoverUnderlineOpacity**: `string | number`
+- static **ngAcceptInputType_hoverUnderlineWidth**: `string | number`
+- static **ngAcceptInputType_isFixed**: `string | boolean`
+- static **ngAcceptInputType_openAsChild**: `string | boolean`
+- static **ngAcceptInputType_underlineOpacity**: `string | number`
+- static **ngAcceptInputType_underlineRippleOpacity**: `string | number`
+- static **ngAcceptInputType_underlineRippleWidth**: `string | number`
+- static **ngAcceptInputType_underlineWidth**: `string | number`
+- static **ngAcceptInputType_useTopLayer**: `string | boolean`
+- static **ngAcceptInputType_valueField**: `string | string[]`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actualBackgroundColor**: `string` — Gets the actual opacity to use for the underline ripple element.
+- **actualBaseTheme**: `BaseControlTheme` — Gets the actual display baseTheme to use for the component.
+- **actualBorderColor**: `string` — Gets the actual item background color.
+- **actualBorderWidth**: `number` — Gets the actual item border width.
+- **actualContentPaddingBottom**: `number`
+- **actualContentPaddingLeft**: `number`
+- **actualContentPaddingRight**: `number`
+- **actualContentPaddingTop**: `number`
+- **actualCornerRadiusBottomLeft**: `number`
+- **actualCornerRadiusBottomRight**: `number`
+- **actualCornerRadiusTopLeft**: `number`
+- **actualCornerRadiusTopRight**: `number`
+- **actualDataSource**: `IDataSource` — Gets the actual data source that is being used by the combo box list. If a collection was provided for the combo box data, an implicit LocalDataSource has been created, and this is available via this property.
+- **actualDensity**: `ControlDisplayDensity` — Gets the actual display Density to use for the component.
+- **actualFocusBorderColor**: `string` — Gets the actual item border color.
+- **actualFocusBorderWidth**: `number` — Gets the actual item border width.
+- **actualFocusUnderlineColor**: `string` — Gets the actual color to use for the underline element when focused.
+- **actualFocusUnderlineOpacity**: `number` — Gets the actual opacity to use for the underline element when focused.
+- **actualFocusUnderlineRippleOpacity**: `number` — Gets the actual opacity to use for the underline ripple element when focused.
+- **actualHoverUnderlineColor**: `string` — Gets the actual color to use for the underline element.
+- **actualHoverUnderlineOpacity**: `number` — Gets the actual opacity to use for the underline element when hovered.
+- **actualHoverUnderlineWidth**: `number` — Gets the width to use for the underline element when hovered.
+- **actualLabelTextColor**: `string` — Gets the actual color to use for the text color.
+- **actualLabelVisible**: `boolean` — Gets or sets the visibility of the label.
+- **actualNoMatchesFoundLabel**: `string` — Gets the actual text to display on the list when no suggested matches are found.
+- **actualNoMatchesFoundLabelBackgroundColor**: `string` — Gets the actual color to use for the "no matches found" label.
+- **actualNoMatchesFoundLabelTextColor**: `string` — Gets the actual color to use for the "no matches found" label.
+- **actualTextColor**: `string` — Gets the actual color to use for the text color.
+- **actualUnderlineColor**: `string` — Gets the actual color to use for the underline element.
+- **actualUnderlineOpacity**: `number` — Gets the actual opacity to use for the underline element.
+- **actualUnderlineRippleColor**: `string` — Gets the actual color to use for the underline ripple element.
+- **actualUnderlineRippleOpacity**: `number` — Gets the actual opacity to use for the underline ripple element.
+- **actualUnderlineRippleWidth**: `number` — Gets the actual width to use for the underline element.
+- **actualUnderlineWidth**: `number` — Gets the actual width to use for the underline element.
+- **actualValueField**: `string[]` — Gets the actual name of the field in the data source will be used as the Value of the ComboEditor.
+- **allowFilter**: `boolean` — Whether to allow filtering of the combo
+- **backgroundColor**: `string` — Gets or sets the background color to use for the input group.
+- **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the component.
+- **borderColor**: `string` — Gets or sets the color to use the border of the input group.
+- **borderWidth**: `number` — Gets or sets the border width to use for the border of the item group.
+- **change**: `EventEmitter<any>`
+- **changing**: `EventEmitter<any>`
+- **contentPaddingBottom**: `number`
+- **contentPaddingLeft**: `number`
+- **contentPaddingRight**: `number`
+- **contentPaddingTop**: `number`
+- **cornerRadiusBottomLeft**: `number`
+- **cornerRadiusBottomRight**: `number`
+- **cornerRadiusTopLeft**: `number`
+- **cornerRadiusTopRight**: `number`
+- **dataSource**: `any` — Gets or sets the data to which to bind the combo box list. This can be some type of array or list, or it can
+be an IDataSource instance.
+- **dataSourceDesiredProperties**: `string[]` — Gets or sets the desired properties for the data source to load. If specified the data source may decide to constrain the properties it fetches to these properties and must make sure that at least those properties are loaded, rather than the default behavior for that data source.
+- **density**: `ControlDisplayDensity` — Gets or sets the display Density to use for the buttons and dropdown grid.
+- **dropDownButtonVisible**: `boolean` — Gets or sets the visibility of the drop down button.
+- **fields**: `string[]` — Gets or sets the desired properties for the data source to load. If specified the data source may decide to constrain the properties it fetches to these properties and must make sure that at least those properties are loaded, rather than the default behavior for that data source.
+- **focusBorderColor**: `string` — Gets or sets the color to use the hovered background of the inputs in the group.
+- **focusBorderWidth**: `number` — Gets or sets the border width to use for the border of the item group when focused.
+- **focusUnderlineColor**: `string` — Gets or sets the color to use for the underline element.
+- **focusUnderlineOpacity**: `number` — Gets or sets the color to use for the underline element.
+- **focusUnderlineRippleOpacity**: `number` — Gets or sets the opacity to use for the underline ripple element when focused.
+- **gotFocus**: `EventEmitter<any>`
+- **height**: `string`
+- **hoverUnderlineColor**: `string` — Gets or sets the color to use for the underline element.
+- **hoverUnderlineOpacity**: `number` — Gets or sets the color to use for the underline element.
+- **hoverUnderlineWidth**: `number` — Gets or sets the width to use for the underline element when hovered.
+- **i**: `ComboEditor`
+- **isFixed**: `boolean` — Indicates that the dropdown will position itself relative to the window instead of the document.
+- **keyDown**: `EventEmitter<any>`
+- **label**: `string` — The text displayed in the label portion of the control.
+- **labelTextColor**: `string` — Gets or sets the color to use for the text.
+- **labelTextStyle**: `string` — Gets or sets the font to use for the combobox.
+- **lostFocus**: `EventEmitter<any>`
+- **noMatchesFoundLabel**: `string` — Gets or sets the text to display on the list when no suggested matches are found.
+- **noMatchesFoundLabelBackgroundColor**: `string` — Gets or sets the color to use for the "no matches found" label.
+- **noMatchesFoundLabelTextColor**: `string` — Gets or sets the color to use for the "no matches found" label.
+- **noMatchesFoundLabelTextStyle**: `string` — Gets or sets the font to use for the combobox.
+- **openAsChild**: `boolean` — Indicates that the dropdown should open as a child of the combobox.
+- **placeholder**: `string` — Placeholder text which gives the user a hint about what kind of text is expected.
+- **selectedValueChanged**: `EventEmitter<any>`
+- **text**: `string` — The text displayed in the edit portion of the control.
+- **textChange**: `EventEmitter<string>`
+- **textColor**: `string` — Gets or sets the color to use for the text.
+- **textField**: `string` — Determines the name of the field in the data source will be used as the Text of the ComboEditor.
+- **textStyle**: `string` — Gets or sets the font to use for the combobox.
+- **textValueChanged**: `EventEmitter<any>`
+- **underlineColor**: `string` — Gets or sets the color to use for the underline element.
+- **underlineOpacity**: `number` — Gets or sets the color to use for the underline element.
+- **underlineRippleColor**: `string` — Gets or sets the color to use for the underline ripple element.
+- **underlineRippleOpacity**: `number` — Gets or sets the opacity to use for the underline ripple element.
+- **underlineRippleWidth**: `number` — Gets or sets the width to use for the underline element.
+- **underlineWidth**: `number` — Gets or sets the width to use for the underline element.
+- **useTopLayer**: `boolean` — Indicates that the dropdown will place itself into the browser top layer.
+- **value**: `any` — Gets or sets the Value of the combo.
+When the user selects an item from, the value is set based on the specified ValueField field. If not ValueField is specified, then the first field in the data source is used.
+When the user enters text into the combo, the list is searched based on the TextField field. If a matching string is found, the Value of the combo is the value of the ValueField field in the same row.
+If the text entered in the combo does not match any item on the list, then the value will return null.
+- **valueChange**: `EventEmitter<any>`
+- **valueField**: `string[]` — Sets or gets the user provided primary key to assume for the data. Certain functionality of the combo (such as the the current Value) requires
+a way to uniquely identify items in order to work correctly.
+If a primary key cannot be inferred from the data source, you may need to provide one here.
+- **width**: `string`
+- **closeUp**(): void — Programmatically closes the list.
+- **dropDown**(): void — Programmatically drops down the list.
+- **enableDisableFiltering**(allowFilter: boolean): void
+- **ensureActualContentPadding**(): void
+- **ensureActualCornerRadius**(): void
+- **ensureContentPadding**(): void
+- **ensureCornerRadius**(): void
+- **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
+- **exportVisualModel**(): any — Exports visual information about the current state of the grid.
+- **findByName**(name: string): any
+- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
+Angular has completed initialization of all of the directive's
+content.
+It is invoked only once when the directive is instantiated.
+- **ngAfterViewInit**(): void
+- **ngOnDestroy**(): void
+- **select**(): void — Selects all the text in the combo input area.
+- **selectGridRow**(index: number): void
+- **updateStyle**(): void
+- **verifyDisplayText**(): void
+
+### [IgxComboEditorGotFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxComboEditorGotFocusEventArgs)
+
+- **constructor**(): IgxComboEditorGotFocusEventArgs
+
+### [IgxComboEditorLostFocusEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxComboEditorLostFocusEventArgs)
+
+- **constructor**(): IgxComboEditorLostFocusEventArgs
+
+### [IgxComboEditorTextChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxComboEditorTextChangedEventArgs)
+
+- **constructor**(): IgxComboEditorTextChangedEventArgs
+- **newText**: `string`
+- **oldText**: `string`
+
+### [IgxComboEditorValueChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxComboEditorValueChangedEventArgs)
+
+- **constructor**(): IgxComboEditorValueChangedEventArgs
+- **newValue**: `any`
+- **oldValue**: `any`
+
+### [IgxLayoutPrimaryKeyValue](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxLayoutPrimaryKeyValue)
+A primary key value.
+
+- **constructor**(): IgxLayoutPrimaryKeyValue
+- static **ngAcceptInputType_key**: `string | string[]`
+- static **ngAcceptInputType_value**: `string | any[]`
+- **key**: `string[]` — The primary key associated with this value.
+- **value**: `any[]` — The value of the keys for this primary key value.
+- **equals**(other: any): boolean — Determines if two primary key values are equal.
+- **findByName**(name: string): any
+
+### [IgxLayoutSelectedItemsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxLayoutSelectedItemsCollection)
+
+- **constructor**(list?: any[]): IgxLayoutSelectedItemsCollection
+
+### [IgxLayoutSelectedKeysCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxLayoutSelectedKeysCollection)
+
+- **constructor**(list?: IgxLayoutPrimaryKeyValue[]): IgxLayoutSelectedKeysCollection
+
+### [IgxListPanelActiveRowChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelActiveRowChangedEventArgs)
+Information about the change to the selected cells in the grid.
+
+- **constructor**(): IgxListPanelActiveRowChangedEventArgs
+- static **ngAcceptInputType_newActiveRow**: `string | number`
+- static **ngAcceptInputType_oldActiveRow**: `string | number`
+- **newActiveRow**: `number` — The new active row.
+- **oldActiveRow**: `number` — The old active row.
+
+### [IgxListPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, changeDetector: ChangeDetectorRef, componentFactoryResolver: ComponentFactoryResolver): IgxListPanelComponent
+- **_mainDiv**: `Element`
+- **_mainDivRef**: `ElementRef`
+- static **ngAcceptInputType_activationBorderBottomWidth**: `string | number`
+- static **ngAcceptInputType_activationBorderLeftWidth**: `string | number`
+- static **ngAcceptInputType_activationBorderRightWidth**: `string | number`
+- static **ngAcceptInputType_activationBorderTopWidth**: `string | number`
+- static **ngAcceptInputType_activationMode**: `string | ListPanelActivationMode`
+- static **ngAcceptInputType_activeRow**: `string | number`
+- static **ngAcceptInputType_actualPrimaryKey**: `string | string[]`
+- static **ngAcceptInputType_actualRowHeight**: `string | number`
+- static **ngAcceptInputType_hasUnevenSizes**: `string | boolean`
+- static **ngAcceptInputType_isActiveRowStyleEnabled**: `string | boolean`
+- static **ngAcceptInputType_isCustomRowHeightEnabled**: `string | boolean`
+- static **ngAcceptInputType_itemSpacing**: `string | number`
+- static **ngAcceptInputType_notifyOnAllSelectionChanges**: `string | boolean`
+- static **ngAcceptInputType_orientation**: `string | ListPanelOrientation`
+- static **ngAcceptInputType_primaryKey**: `string | string[]`
+- static **ngAcceptInputType_rowHeight**: `string | number`
+- static **ngAcceptInputType_schemaIncludedProperties**: `string | string[]`
+- static **ngAcceptInputType_scrollbarStyle**: `string | ScrollbarStyle`
+- static **ngAcceptInputType_selectedItems**: `string | IgxListPanelSelectedItemsCollection`
+- static **ngAcceptInputType_selectedKeys**: `string | IgxListPanelSelectedKeysCollection`
+- static **ngAcceptInputType_selectionBehavior**: `string | ListPanelSelectionBehavior`
+- static **ngAcceptInputType_selectionMode**: `string | ListPanelSelectionMode`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **activationBorder**: `string` — Gets or sets the activation border color to use.
+- **activationBorderBottomWidth**: `number` — Gets or sets the amount of bottom activation border to use for the cell content of this column.
+- **activationBorderLeftWidth**: `number` — Gets or sets the amount of left activation border to use for the cell content for this column.
+- **activationBorderRightWidth**: `number` — Gets or sets the amount of right activation border to use for the cell content of this column.
+- **activationBorderTopWidth**: `number` — Gets or sets the amount of top activation border to use for the cell content for this column.
+- **activationMode**: `ListPanelActivationMode` — Sets or gets the grid selection mode.
+- **activeRow**: `number` — Gets or sets the position of the active row.
+- **activeRowChanged**: `EventEmitter<any>` — Called when the active row changes.
+- **actualPrimaryKey**: `string[]` — Gets either the inferred primary key from the data source, or the user provided primary key, if present. Represents the actual primary key that the grid will use in operations that require it.
+- **actualPrimaryKeyChange**: `EventEmitter<string[]>`
+- **actualRowHeight**: `number`
+- **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
+- **cellTextStyle**: `string` — Gets or Sets the property name that contains the values.
+- **contentRefreshed**: `EventEmitter<any>`
+- **hasUnevenSizes**: `boolean`
+- **height**: `string`
+- **i**: `ListPanel`
+- **isActiveRowStyleEnabled**: `boolean` — Gets or sets whether the active row style will be applied to rows when made active.
+- **isCustomRowHeightEnabled**: `boolean` — Gets or sets the color to use for the background of the component.
+- **itemClicked**: `EventEmitter<any>`
+- **itemHeightRequested**: `EventEmitter<any>`
+- **itemRebind**: `EventEmitter<any>` — Called when item content is rebound.
+- **itemRecycled**: `EventEmitter<any>` — Called when item content is recycled.
+- **itemSpacing**: `number` — Gets or sets the spacing between items.
+- **itemWidthRequested**: `EventEmitter<any>`
+- **normalBackground**: `string` — Gets or sets the background color to use.
+- **notifyOnAllSelectionChanges**: `boolean` — Gets or sets if the grid should notify on programmatic selection changes as well as changes from the UI.
+- **orientation**: `ListPanelOrientation` — Gets or sets the color to use for the background of the component.
+- **primaryKey**: `string[]` — Sets or gets the user provided primary key to assume for the data. Certain functionality of the grid requires a way to uniquely identify items in order to work correctly.
+If a primary key cannot be inferred from the data source, you may need to provide one here.
+- **rowHeight**: `number` — Gets or Sets the property name that contains the values.
+- **rowUpdating**: `EventEmitter<any>`
+- **schemaIncludedProperties**: `string[]` — Gets either the filtered properties to include in the schema of the data source.
+- **scrollbarBackground**: `string` — Gets or sets the scrollbar background color.
+- **scrollbarStyle**: `ScrollbarStyle` — Gets or sets the style of scrollbar.
+- **selectedBackground**: `string` — Gets or sets the background color to use for the cells when they are selected
+- **selectedItems**: `IgxListPanelSelectedItemsCollection` — Gets which items are currently selected in the grid. Collection can be updated to programatically select items.
+- **selectedItemsChanged**: `EventEmitter<any>` — Called when the selected items change.
+- **selectedKeys**: `IgxListPanelSelectedKeysCollection` — Gets which primary key values are currently selected in the grid. Collection can be updated to programatically select items.
+- **selectedKeysChanged**: `EventEmitter<any>` — Called when the selected keys change.
+- **selectionBehavior**: `ListPanelSelectionBehavior` — Sets or gets how selection behaves in the grid.
+- **selectionChanged**: `EventEmitter<any>` — Called when an individual selection operation has been made.
+- **selectionMode**: `ListPanelSelectionMode` — Sets or gets the grid selection mode.
+- **textColor**: `string` — Gets or sets the color to use for the text of the component.
+- **width**: `string`
+- **createLocalDataSource**(itemsSource: any, schemaIncludedProperties: string[]): IDataSource
+- **dataIndexOfItem**(item: any): number — Returns the data index of an item within the bound data source.
+- **dataIndexOfPrimaryKey**(key: any[]): number
+- **deselectAllRows**(): void — Deselects all currently selected rows.
+- **exportSerializedVisualData**(): string
+- **exportVisualData**(): any
+- **findByName**(name: string): any
+- **getFirstVisibleIndex**(): number — Gets the first visible index in the grid.
+- **getItemKey**(primaryKey: string[], item_: any): IgxListPanelPrimaryKeyValue
+- **getLastVisibleIndex**(): number — Gets the last visible index in the grid.
+- **getRowKey**(primaryKey: string[], rowIndex: number): IgxListPanelPrimaryKeyValue
+- **invalidateVisibleItems**(): void — Invalidates the bound data for the rows currently visible.
+- **moveViewportTo**(x: number, y: number): void
+- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
+Angular has completed initialization of all of the directive's
+content.
+It is invoked only once when the directive is instantiated.
+- **ngAfterViewInit**(): void
+- **ngOnDestroy**(): void
+- **notifyClearItems**(): void — Manually notifies the grid's data source that the data it has bound to has been cleared and needs to be re-examined.
+This should not be called if the data that the grid is bound to is already observable.
+- **notifyInsertItem**(index: number, newItem: any): void
+- **notifyRemoveItem**(index: number, oldItem: any): void
+- **notifySetItem**(index: number, oldItem: any, newItem: any): void
+- **notifySizeChanged**(): void
+- **onContentSizeChanged**(): void
+- **onScroll**(): void
+- **onScrollStart**(): void
+- **onScrollStop**(): void
+- **scrollTo**(x: number, y: number): void
+- **scrollToLastRowByIndex**(rowNumber: number): void — Scrolls the grid so that a row is the last visible, by index.
+- **scrollToRowByIndex**(rowNumber: number): void — Scrolls the grid to given row, by index
+- **selectAllRows**(): void — Selects all of the rows in the grid.
+- **setScrollbarColor**(color: any): void
+- **setScrollbarStyle**(style: ScrollbarStyle): void
+- **updateStyle**(): void
+
+### [IgxListPanelContentRebindEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelContentRebindEventArgs)
+Information about list item content that was just rebound.
+
+- **constructor**(): IgxListPanelContentRebindEventArgs
+- **rowObject**: `any` — The model that is rebinding.
+
+### [IgxListPanelContentRecycledEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelContentRecycledEventArgs)
+Information about list item content that was just recycled.
+
+- **constructor**(): IgxListPanelContentRecycledEventArgs
+- **rowObject**: `any` — The model that was recycled.
+
+### [IgxListPanelContentRefreshedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelContentRefreshedEventArgs)
+
+- **constructor**(): IgxListPanelContentRefreshedEventArgs
+
+### [IgxListPanelItemEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelItemEventArgs)
+Event arguments for the SelectionChanged event.
+
+- **constructor**(): IgxListPanelItemEventArgs
+- static **ngAcceptInputType_isDoubleClick**: `string | boolean`
+- static **ngAcceptInputType_isLeftButton**: `string | boolean`
+- **isDoubleClick**: `boolean`
+- **isLeftButton**: `boolean`
+- **itemInfo**: `IgxListPanelItemModel`
+- **listPanel**: `IgxListPanelComponent`
+
+### [IgxListPanelItemModel](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelItemModel)
+
+- **constructor**(): IgxListPanelItemModel
+- static **ngAcceptInputType_dataRow**: `string | number`
+- static **ngAcceptInputType_isActivated**: `string | boolean`
+- static **ngAcceptInputType_isActivationSupported**: `string | boolean`
+- static **ngAcceptInputType_isModelDirty**: `string | boolean`
+- static **ngAcceptInputType_isSelected**: `string | boolean`
+- static **ngAcceptInputType_left**: `string | number`
+- static **ngAcceptInputType_rowHeight**: `string | number`
+- static **ngAcceptInputType_top**: `string | number`
+- **dataRow**: `number`
+- **isActivated**: `boolean`
+- **isActivationSupported**: `boolean`
+- **isModelDirty**: `boolean`
+- **isSelected**: `boolean`
+- **left**: `number`
+- **rowHeight**: `number`
+- **rowObject**: `any`
+- **top**: `number`
+- **findByName**(name: string): any
+
+### [IgxListPanelPrimaryKeyValue](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelPrimaryKeyValue)
+A primary key value.
+
+- **constructor**(): IgxListPanelPrimaryKeyValue
+- static **ngAcceptInputType_key**: `string | string[]`
+- static **ngAcceptInputType_value**: `string | any[]`
+- **key**: `string[]` — The primary key associated with this value.
+- **value**: `any[]` — The value of the keys for this primary key value.
+- **equals**(other: any): boolean — Determines if two primary key values are equal.
+- **findByName**(name: string): any
+
+### [IgxListPanelSelectedItemsChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelSelectedItemsChangedEventArgs)
+Information about the changing selected items in the grid.
+
+- **constructor**(): IgxListPanelSelectedItemsChangedEventArgs
+- static **ngAcceptInputType_addedItems**: `string | IgxListPanelSelectedItemsCollection`
+- static **ngAcceptInputType_currentItems**: `string | IgxListPanelSelectedItemsCollection`
+- static **ngAcceptInputType_removedItems**: `string | IgxListPanelSelectedItemsCollection`
+- **addedItems**: `IgxListPanelSelectedItemsCollection` — The items added to the selection.
+- **currentItems**: `IgxListPanelSelectedItemsCollection` — The items added to the selection.
+- **removedItems**: `IgxListPanelSelectedItemsCollection` — The items removed from the selection.
+
+### [IgxListPanelSelectedItemsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelSelectedItemsCollection)
+
+- **constructor**(list?: any[]): IgxListPanelSelectedItemsCollection
+
+### [IgxListPanelSelectedKeysChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelSelectedKeysChangedEventArgs)
+Information about the change to the selected keys in the grid.
+
+- **constructor**(): IgxListPanelSelectedKeysChangedEventArgs
+- static **ngAcceptInputType_addedKeys**: `string | IgxListPanelSelectedKeysCollection`
+- static **ngAcceptInputType_currentKeys**: `string | IgxListPanelSelectedKeysCollection`
+- static **ngAcceptInputType_removedKeys**: `string | IgxListPanelSelectedKeysCollection`
+- **addedKeys**: `IgxListPanelSelectedKeysCollection` — The keys added to the selection.
+- **currentKeys**: `IgxListPanelSelectedKeysCollection` — All keys in the selection.
+- **removedKeys**: `IgxListPanelSelectedKeysCollection` — The keys removed from the selection.
+
+### [IgxListPanelSelectedKeysCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelSelectedKeysCollection)
+
+- **constructor**(list?: IgxListPanelPrimaryKeyValue[]): IgxListPanelSelectedKeysCollection
+
+### [IgxListPanelSelectionChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelSelectionChangedEventArgs)
+Event arguments for the SelectionChanged event.
+
+- **constructor**(): IgxListPanelSelectionChangedEventArgs
+
+### [IgxListPanelTemplateHeightRequestedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelTemplateHeightRequestedEventArgs)
+
+- **constructor**(): IgxListPanelTemplateHeightRequestedEventArgs
+- static **ngAcceptInputType_dataRow**: `string | number`
+- static **ngAcceptInputType_height**: `string | number`
+- **dataItem**: `any`
+- **dataRow**: `number`
+- **height**: `number`
+
+### [IgxListPanelTemplateItemUpdatingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelTemplateItemUpdatingEventArgs)
+
+- **constructor**(): IgxListPanelTemplateItemUpdatingEventArgs
+- static **ngAcceptInputType_availableWidth**: `string | number`
+- **availableWidth**: `number`
+- **content**: `any`
+- **model**: `IgxListPanelItemModel`
+
+### [IgxListPanelTemplateWidthRequestedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxListPanelTemplateWidthRequestedEventArgs)
+
+- **constructor**(): IgxListPanelTemplateWidthRequestedEventArgs
+- static **ngAcceptInputType_dataRow**: `string | number`
+- static **ngAcceptInputType_width**: `string | number`
+- **dataItem**: `any`
+- **dataRow**: `number`
+- **width**: `number`
+
+### [IgxOnCollapsedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxOnCollapsedEventArgs)
+
+- **constructor**(): IgxOnCollapsedEventArgs
+
+### [IgxOnExpandedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxOnExpandedEventArgs)
+
+- **constructor**(): IgxOnExpandedEventArgs
+
+### [IgxPropertyEditorDataSource](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorDataSource)
+
+- **constructor**(): IgxPropertyEditorDataSource
+- **context**: `TypeDescriptionContext`
+- **descriptionType**: `string`
+- **findByName**(name: string): any
+
+### [IgxPropertyEditorDescriptionObject](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorDescriptionObject)
+
+- **constructor**(): IgxPropertyEditorDescriptionObject
+- static **ngAcceptInputType_properties**: `string | IgxPropertyEditorPropertyDescriptionCollection`
+- **descriptionType**: `string`
+- **properties**: `IgxPropertyEditorPropertyDescriptionCollection`
+- **findByName**(name: string): any
+
+### [IgxPropertyEditorDescriptionObjectCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorDescriptionObjectCollection)
+
+- **constructor**(list?: IgxPropertyEditorDescriptionObject[]): IgxPropertyEditorDescriptionObjectCollection
+
+### [IgxPropertyEditorPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPanelComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, changeDetector: ChangeDetectorRef, componentFactoryResolver: ComponentFactoryResolver): IgxPropertyEditorPanelComponent
+- **_childTemplateRef**: `TemplateRef<any>`
+- **_dynamicContent**: `ViewContainerRef`
+- **_mainDiv**: `Element`
+- **_mainDivRef**: `ElementRef`
+- **actualProperties**: `IgxPropertyEditorPropertyDescriptionComponent[]` — The style mappings actually present in the chart. Do not directly modify this array.
+This array's contents can be modified by causing Angular to reproject the child content.
+Or adding and removing stye mappings from the manual style mapping collection on the properties property.
+- **contentProperties**: `QueryList<IgxPropertyEditorPropertyDescriptionComponent>`
+- static **ngAcceptInputType_actualDataSource**: `string | IgxPropertyEditorPropertyDescriptionCollection`
+- static **ngAcceptInputType_actualRowHeight**: `string | number`
+- static **ngAcceptInputType_isHorizontal**: `string | boolean`
+- static **ngAcceptInputType_isIndirectModeEnabled**: `string | boolean`
+- static **ngAcceptInputType_isWrappingEnabled**: `string | boolean`
+- static **ngAcceptInputType_rowHeight**: `string | number`
+- static **ngAcceptInputType_updateMode**: `string | PropertyEditorPanelUpdateMode`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actualDataSource**: `IgxPropertyEditorPropertyDescriptionCollection` — Gets the actaul data or data source instance to which to bind the grid.
+- **actualDescriptionContext**: `TypeDescriptionContext`
+- **actualRowHeight**: `number`
+- **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
+- **cellTextStyle**: `string` — Gets or Sets the property name that contains the values.
+- **componentRenderer**: `ComponentRenderer`
+- **descriptionContext**: `TypeDescriptionContext`
+- **descriptionType**: `string`
+- **height**: `string`
+- **i**: `PropertyEditorPanel`
+- **isHorizontal**: `boolean`
+- **isIndirectModeEnabled**: `boolean`
+- **isWrappingEnabled**: `boolean`
+- **properties**: `IgxPropertyEditorPropertyDescriptionCollection` — A collection or manually added axes for the chart.
+- **rowHeight**: `number` — Gets or Sets the property name that contains the values.
+- **target**: `any`
+- **textColor**: `string` — Gets or sets the color to use for the text of the component.
+- **updateMode**: `PropertyEditorPanelUpdateMode` — Gets or Sets the property name that contains the values.
+- **width**: `string`
+- **findByName**(name: string): any
+- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
+Angular has completed initialization of all of the directive's
+content.
+It is invoked only once when the directive is instantiated.
+- **ngAfterViewInit**(): void
+- **ngOnDestroy**(): void
+- **notifyClearItems**(): void — Manually notifies the checkboxlist's grid that the data it has bound to has been cleared and needs to be re-examined.
+This should not be called if the data that the grid is bound to is already observable.
+- **notifyInsertItem**(index: number, newItem: any): void
+- **notifyRemoveItem**(index: number, oldItem: any): void
+- **notifySetItem**(index: number, oldItem: any, newItem: any): void
+- **updateStyle**(): void
+
+### [IgxPropertyEditorPropertyDescriptionButtonClickEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPropertyDescriptionButtonClickEventArgs)
+
+- **constructor**(): IgxPropertyEditorPropertyDescriptionButtonClickEventArgs
+
+### [IgxPropertyEditorPropertyDescriptionChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPropertyDescriptionChangedEventArgs)
+
+- **constructor**(): IgxPropertyEditorPropertyDescriptionChangedEventArgs
+- **newValue**: `any`
+
+### [IgxPropertyEditorPropertyDescriptionCoercingValueEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPropertyDescriptionCoercingValueEventArgs)
+
+- **constructor**(): IgxPropertyEditorPropertyDescriptionCoercingValueEventArgs
+- static **ngAcceptInputType_complexValues**: `string | IgxPropertyEditorDescriptionObjectCollection`
+- **complexValue**: `IgxPropertyEditorDescriptionObject`
+- **complexValues**: `IgxPropertyEditorDescriptionObjectCollection`
+- **value**: `any`
+
+### [IgxPropertyEditorPropertyDescriptionCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPropertyDescriptionCollection)
+
+- **constructor**(list?: IgxPropertyEditorPropertyDescriptionComponent[]): IgxPropertyEditorPropertyDescriptionCollection
+
+### [IgxPropertyEditorPropertyDescriptionComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPropertyDescriptionComponent)
+
+- **constructor**(): IgxPropertyEditorPropertyDescriptionComponent
+- static **ngAcceptInputType_coercedComplexValues**: `string | IgxPropertyEditorDescriptionObjectCollection`
+- static **ngAcceptInputType_coercedValueType**: `string | PropertyEditorValueType`
+- static **ngAcceptInputType_complexValues**: `string | IgxPropertyEditorDescriptionObjectCollection`
+- static **ngAcceptInputType_dropDownNames**: `string | string[]`
+- static **ngAcceptInputType_dropDownValues**: `string | string[]`
+- static **ngAcceptInputType_editorWidth**: `string | number`
+- static **ngAcceptInputType_labelWidth**: `string | number`
+- static **ngAcceptInputType_max**: `string | number`
+- static **ngAcceptInputType_min**: `string | number`
+- static **ngAcceptInputType_properties**: `string | IgxPropertyEditorPropertyDescriptionCollection`
+- static **ngAcceptInputType_shouldOverrideDefaultEditor**: `string | boolean`
+- static **ngAcceptInputType_step**: `string | number`
+- static **ngAcceptInputType_useCoercedValue**: `string | boolean`
+- static **ngAcceptInputType_valueType**: `string | PropertyEditorValueType`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **buttonClicked**: `EventEmitter<any>`
+- **changed**: `EventEmitter<any>`
+- **coercedComplexValue**: `IgxPropertyEditorDescriptionObject`
+- **coercedComplexValues**: `IgxPropertyEditorDescriptionObjectCollection`
+- **coercedPrimitiveValue**: `any`
+- **coercedValueType**: `PropertyEditorValueType`
+- **coercingValue**: `EventEmitter<any>`
+- **complexValue**: `IgxPropertyEditorDescriptionObject`
+- **complexValues**: `IgxPropertyEditorDescriptionObjectCollection`
+- **dropDownNames**: `string[]`
+- **dropDownValues**: `string[]`
+- **editorWidth**: `number`
+- **elementDescriptionType**: `string`
+- **label**: `string`
+- **labelWidth**: `number`
+- **max**: `number`
+- **min**: `number`
+- **name**: `string` — Gets or sets the unique name of the mapping.
+- **primitiveValue**: `any`
+- **properties**: `IgxPropertyEditorPropertyDescriptionCollection`
+- **propertyDescriptionType**: `string`
+- **propertyPath**: `string`
+- **shouldOverrideDefaultEditor**: `boolean`
+- **step**: `number`
+- **subtitle**: `string`
+- **targetPropertyUpdating**: `EventEmitter<any>`
+- **useCoercedValue**: `boolean`
+- **valueType**: `PropertyEditorValueType`
+- **findByName**(name: string): any
+- **ngOnInit**(): void — A callback method that is invoked immediately after the
+default change detector has checked the directive's
+data-bound properties for the first time,
+and before any of the view or content children have been checked.
+It is invoked only once when the directive is instantiated.
+- static **_createFromInternal**(internal: any): IgxPropertyEditorPropertyDescriptionComponent
+
+### [IgxPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs)
+
+- **constructor**(): IgxPropertyEditorPropertyDescriptionTargetPropertyUpdatingEventArgs
+- **propertyPath**: `string`
+- **target**: `any`
+- **value**: `any`
+
+### [IgxToolActionButtonComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionButtonComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionButtonComponent
+- static **ngAcceptInputType_cornerRadius**: `string | number`
+- static **ngAcceptInputType_displayType**: `string | ToolActionButtonDisplayType`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **cornerRadius**: `number` — Gets or sets the button corner radius.
+- **displayType**: `ToolActionButtonDisplayType` — Gets or sets the display type for the button.
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionButtonPairComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionButtonPairComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionButtonPairComponent
+- static **ngAcceptInputType_cornerRadius**: `string | number`
+- static **ngAcceptInputType_displayType**: `string | ToolActionButtonGroupDisplayType`
+- static **ngAcceptInputType_isToggleDisabled**: `string | boolean`
+- static **ngAcceptInputType_leftIconFillColors**: `string | string[]`
+- static **ngAcceptInputType_leftIconStrokeColors**: `string | string[]`
+- static **ngAcceptInputType_leftIconStrokeWidth**: `string | number`
+- static **ngAcceptInputType_leftIconViewBoxHeight**: `string | number`
+- static **ngAcceptInputType_leftIconViewBoxLeft**: `string | number`
+- static **ngAcceptInputType_leftIconViewBoxTop**: `string | number`
+- static **ngAcceptInputType_leftIconViewBoxWidth**: `string | number`
+- static **ngAcceptInputType_leftIsDisabled**: `string | boolean`
+- static **ngAcceptInputType_leftIsSelected**: `string | boolean`
+- static **ngAcceptInputType_rightIconFillColors**: `string | string[]`
+- static **ngAcceptInputType_rightIconStrokeColors**: `string | string[]`
+- static **ngAcceptInputType_rightIconStrokeWidth**: `string | number`
+- static **ngAcceptInputType_rightIconViewBoxHeight**: `string | number`
+- static **ngAcceptInputType_rightIconViewBoxLeft**: `string | number`
+- static **ngAcceptInputType_rightIconViewBoxTop**: `string | number`
+- static **ngAcceptInputType_rightIconViewBoxWidth**: `string | number`
+- static **ngAcceptInputType_rightIsDisabled**: `string | boolean`
+- static **ngAcceptInputType_rightIsSelected**: `string | boolean`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actualLeftIconFill**: `string` — Gets the actual LeftIcon fill color.
+- **actualLeftIconStroke**: `string` — Gets the actual LeftIcon stroke color.
+- **actualRightIconFill**: `string` — Gets the actual RightIcon fill color.
+- **actualRightIconStroke**: `string` — Gets the actual RightIcon stroke color.
+- **cornerRadius**: `number` — Gets or sets the button corner radius.
+- **displayType**: `ToolActionButtonGroupDisplayType` — Gets or sets the display type for the button.
+- **isToggleDisabled**: `boolean`
+- **leftCommandArgument**: `string`
+- **leftIconCollectionName**: `string`
+- **leftIconFill**: `string` — Gets or sets the LeftIcon fill color.
+- **leftIconFillColors**: `string[]` — Gets or sets the LeftIcon fill colors.
+- **leftIconName**: `string`
+- **leftIconStroke**: `string` — Gets or sets the LeftIcon stroke color.
+- **leftIconStrokeColors**: `string[]` — Gets or sets the LeftIcon stroke colors.
+- **leftIconStrokeWidth**: `number` — Gets or sets the LeftIcon viewbox width.
+- **leftIconViewBoxHeight**: `number` — Gets or sets the LeftIcon viewbox height.
+- **leftIconViewBoxLeft**: `number` — Gets or sets the LeftIcon viewbox left.
+- **leftIconViewBoxTop**: `number` — Gets or sets the LeftIcon viewbox top.
+- **leftIconViewBoxWidth**: `number` — Gets or sets the LeftIcon viewbox width.
+- **leftIsDisabled**: `boolean`
+- **leftIsSelected**: `boolean`
+- **leftTitle**: `string` — Gets or sets the title of the left button.
+- **rightCommandArgument**: `string`
+- **rightIconCollectionName**: `string`
+- **rightIconFill**: `string` — Gets or sets the RightIcon fill color.
+- **rightIconFillColors**: `string[]` — Gets or sets the RightIcon fill colors.
+- **rightIconName**: `string`
+- **rightIconStroke**: `string` — Gets or sets the RightIcon stroke color.
+- **rightIconStrokeColors**: `string[]` — Gets or sets the RightIcon stroke colors.
+- **rightIconStrokeWidth**: `number` — Gets or sets the RightIcon viewbox width.
+- **rightIconViewBoxHeight**: `number` — Gets or sets the RightIcon viewbox height.
+- **rightIconViewBoxLeft**: `number` — Gets or sets the RightIcon viewbox left.
+- **rightIconViewBoxTop**: `number` — Gets or sets the RightIcon viewbox top.
+- **rightIconViewBoxWidth**: `number` — Gets or sets the RightIcon viewbox width.
+- **rightIsDisabled**: `boolean`
+- **rightIsSelected**: `boolean`
+- **rightTitle**: `string` — Gets or sets the title of the Right button.
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionCheckboxComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionCheckboxComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionCheckboxComponent
+- static **ngAcceptInputType_isChecked**: `string | boolean`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actualCheckedBackgroundColor**: `string` — Gets the actual background color of the checkbox when in the checked state.
+- **actualCheckedBorderColor**: `string` — Gets the actual border color of the checkbox when in the checked state.
+- **actualUncheckedBackgroundColor**: `string` — Gets the actual background color of the checkbox when in the unchecked state.
+- **actualUncheckedBorderColor**: `string` — Gets the actual border color of the checkbox when in the unchecked state.
+- **checkedBackgroundColor**: `string` — Gets or sets the background color of the checkbox when in the checked state.
+- **checkedBorderColor**: `string` — Gets or sets the border color of the checkbox when in the checked state.
+- **isChecked**: `boolean` — Gets or sets if the tool action is checked.
+- **uncheckedBackgroundColor**: `string` — Gets or sets the background color of the checkbox when in the unchecked state.
+- **uncheckedBorderColor**: `string` — Gets or sets the border color of the checkbox when in the unchecked state.
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionCheckboxListComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionCheckboxListComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionCheckboxListComponent
+- static **ngAcceptInputType_indexType**: `string | ToolActionCheckboxListIndexType`
+- static **ngAcceptInputType_primaryKey**: `string | string[]`
+- static **ngAcceptInputType_selectedKeys**: `string | IgxLayoutSelectedKeysCollection`
+- static **ngAcceptInputType_showSelectAll**: `string | boolean`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **dataMemberPath**: `string` — Gets or sets if the tool action is checked.
+- **dataSource**: `any` — Gets or sets if the tool action is checked.
+- **indexType**: `ToolActionCheckboxListIndexType`
+- **primaryKey**: `string[]` — Gets or sets if the tool action is checked.
+- **selectedKeys**: `IgxLayoutSelectedKeysCollection`
+- **selectedMemberPath**: `string` — Gets or sets if the tool action is checked.
+- **showSelectAll**: `boolean` — Gets or sets if the select all row is shown.
+- **findByName**(name: string): any
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionCollection)
+
+- **constructor**(list?: IgxToolActionComponent[]): IgxToolActionCollection
+
+### [IgxToolActionColorEditorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionColorEditorComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionColorEditorComponent
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **value**: `string` — Gets or sets the value for the input.
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionComboComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionComboComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionComboComponent
+- static **ngAcceptInputType_selectedValues**: `string | IgxLayoutSelectedItemsCollection`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **dataSource**: `any` — Gets or sets if the tool action is checked.
+- **displayMemberPath**: `string` — Gets or sets the field to use to get the displayed values.
+- **selectedValues**: `IgxLayoutSelectedItemsCollection`
+- **valueMemberPath**: `string` — Gets or sets the field to use to get the values to use.
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionComponent
+- **contentActions**: `QueryList<IgxToolActionComponent>`
+- static **ngAcceptInputType_actions**: `string | IgxToolActionCollection`
+- static **ngAcceptInputType_actualDensity**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_actualHighlightRadius**: `string | number`
+- static **ngAcceptInputType_actualHighlightWidth**: `string | number`
+- static **ngAcceptInputType_actualIconHeight**: `string | number`
+- static **ngAcceptInputType_actualIconWidth**: `string | number`
+- static **ngAcceptInputType_actualPaddingBottom**: `string | number`
+- static **ngAcceptInputType_actualPaddingLeft**: `string | number`
+- static **ngAcceptInputType_actualPaddingRight**: `string | number`
+- static **ngAcceptInputType_actualPaddingTop**: `string | number`
+- static **ngAcceptInputType_closeOnExecute**: `string | boolean`
+- static **ngAcceptInputType_contextBindings**: `string | IgxToolContextBindingCollection`
+- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_height**: `string | number`
+- static **ngAcceptInputType_highlightRadius**: `string | number`
+- static **ngAcceptInputType_highlightWidth**: `string | number`
+- static **ngAcceptInputType_iconFillColors**: `string | string[]`
+- static **ngAcceptInputType_iconHeight**: `string | number`
+- static **ngAcceptInputType_iconStrokeColors**: `string | string[]`
+- static **ngAcceptInputType_iconStrokeWidth**: `string | number`
+- static **ngAcceptInputType_iconViewBoxHeight**: `string | number`
+- static **ngAcceptInputType_iconViewBoxLeft**: `string | number`
+- static **ngAcceptInputType_iconViewBoxTop**: `string | number`
+- static **ngAcceptInputType_iconViewBoxWidth**: `string | number`
+- static **ngAcceptInputType_iconWidth**: `string | number`
+- static **ngAcceptInputType_isDisabled**: `string | boolean`
+- static **ngAcceptInputType_isHighlighted**: `string | boolean`
+- static **ngAcceptInputType_isOpen**: `string | boolean`
+- static **ngAcceptInputType_paddingBottom**: `string | number`
+- static **ngAcceptInputType_paddingLeft**: `string | number`
+- static **ngAcceptInputType_paddingRight**: `string | number`
+- static **ngAcceptInputType_paddingTop**: `string | number`
+- static **ngAcceptInputType_subPanelRowHeight**: `string | number`
+- static **ngAcceptInputType_titleHorizontalAlignment**: `string | HorizontalAlignment`
+- static **ngAcceptInputType_visibility**: `string | Visibility`
+- static **ngAcceptInputType_width**: `string | number`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actionId**: `string`
+- **actions**: `IgxToolActionCollection` — Gets the sub actions associated with this tool action.
+- **actualActions**: `IgxToolActionComponent[]`
+- **actualBackground**: `string` — Gets the actual background used by the tool action.
+- **actualDensity**: `ControlDisplayDensity` — Gets the resolved display density to use for the action.
+- **actualDisabledTextColor**: `string` — Gets the actual label text color when the tool is disabled.
+- **actualHighlightColor**: `string`
+- **actualHighlightRadius**: `number`
+- **actualHighlightWidth**: `number`
+- **actualHoverBackground**: `string` — Gets the actual hover background used by the tool action.
+- **actualIconFill**: `string` — Gets the actual icon fill color.
+- **actualIconHeight**: `number` — Gets the actual icon height used.
+- **actualIconStroke**: `string` — Gets the actual icon stroke color.
+- **actualIconWidth**: `number` — Gets the actual icon width used.
+- **actualPaddingBottom**: `number`
+- **actualPaddingLeft**: `number`
+- **actualPaddingRight**: `number`
+- **actualPaddingTop**: `number`
+- **actualSubtitleTextColor**: `string` — Gets the actual label text color.
+- **actualSubtitleTextStyle**: `FontInfo` — Gets the actual font used.
+- **actualTextColor**: `string` — Gets the actual label text color.
+- **actualTextStyle**: `FontInfo` — Gets the actual font used.
+- **afterId**: `string` — Gets or sets the Id of the action that this action will be inserted after.
+Subsequent actions will continue to insert after the target action, following
+the original action that set this property. If using this property do not use the
+BeforeId property.
+This property is only relevant during initial insertion into the toolbar. Changing the property
+after the action has already been added will have no effect.
+- **background**: `string` — Gets or sets the background color of the tool action.
+- **beforeId**: `string` — Gets or sets the Id of the action that this action will be inserted before.
+Subsequent actions will continue to insert before the target action, following
+the original action that set this property. If using this property do not use the
+AfterId property.
+This property is only relevant during initial insertion into the toolbar. Changing the property
+after the action has already been added will have no effect.
+- **closeOnExecute**: `boolean` — Gets or sets if the tool action will close its parent dropdown when executed by the user.
+- **commandArgument**: `string`
+- **commandArgumentValue**: `any`
+- **commandId**: `string`
+- **contextBindings**: `IgxToolContextBindingCollection` — Gets the context bindings for this tool action.
+- **density**: `ControlDisplayDensity` — Gets or sets the display density to use for the action.
+- **disabledTextColor**: `string` — Gets or sets the label text color when the tool is disabled.
+- **height**: `number` — Gets or sets the height to use for this tool action.
+- **highlightColor**: `string`
+- **highlightRadius**: `number`
+- **highlightWidth**: `number`
+- **hoverBackground**: `string` — Gets or sets the hover background for this tool action.
+- **iconCollectionName**: `string`
+- **iconFill**: `string` — Gets or sets the icon fill color.
+- **iconFillColors**: `string[]` — Gets or sets the icon fill colors.
+- **iconHeight**: `number` — Gets or sets the height of the icon.
+- **iconName**: `string`
+- **iconStroke**: `string` — Gets or sets the icon stroke color.
+- **iconStrokeColors**: `string[]` — Gets or sets the icon stroke colors.
+- **iconStrokeWidth**: `number` — Gets or sets the icon viewbox width.
+- **iconViewBoxHeight**: `number` — Gets or sets the icon viewbox height.
+- **iconViewBoxLeft**: `number` — Gets or sets the icon viewbox left.
+- **iconViewBoxTop**: `number` — Gets or sets the icon viewbox top.
+- **iconViewBoxWidth**: `number` — Gets or sets the icon viewbox width.
+- **iconWidth**: `number` — Gets or sets the width of the icon.
+- **isDisabled**: `boolean`
+- **isHighlighted**: `boolean`
+- **isOpen**: `boolean`
+- **name**: `string`
+- **onCommand**: `EventEmitter<any>`
+- **overlayId**: `string` — Sets to the Id of the action that this action will overlay itself on to.
+The purpose of this property is to allow users to override actions automatically generated by
+toolbar targets such as the DataChart. These generated actions all have unique Ids associated
+with them that can be used for the OverlayId.
+These overlaid actions will
+not
+replace the generated one but will have its properties
+overlaid onto the generated actions.
+- **paddingBottom**: `number`
+- **paddingLeft**: `number`
+- **paddingRight**: `number`
+- **paddingTop**: `number`
+- **parentId**: `string`
+- **performed**: `EventEmitter<any>`
+- **subPanelRowHeight**: `number` — Gets or sets the height to use for the sub panel if different than default
+- **subtitle**: `string` — Gets or sets the subtitle of the tool.
+- **subtitleTextColor**: `string` — Gets or sets the label text color.
+- **subtitleTextStyle**: `string` — Gets or sets the font to use.
+- **textColor**: `string` — Gets or sets the label text color.
+- **textStyle**: `string` — Gets or sets the font to use.
+- **title**: `string` — Gets or sets the title of the tool.
+- **titleHorizontalAlignment**: `HorizontalAlignment` — Gets or sets the title horizontal alignment.
+- **visibility**: `Visibility` — Gets or sets the tool action visibility.
+- **width**: `number` — Gets or sets the width to use for this tool action.
+- **closeSubmenu**(): void
+- **exportSerializedVisualData**(): string
+- **exportVisualData**(): any
+- **findByName**(name: string): any
+- **ngAfterContentInit**(): void
+- **ngOnInit**(): void — A callback method that is invoked immediately after the
+default change detector has checked the directive's
+data-bound properties for the first time,
+and before any of the view or content children have been checked.
+It is invoked only once when the directive is instantiated.
+- **openSubMenu**(): void
+- static **_createFromInternal**(internal: any): IgxToolActionComponent
+
+### [IgxToolActionEventDetail](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionEventDetail)
+
+- **constructor**(): IgxToolActionEventDetail
+- static **ngAcceptInputType_actionType**: `string | ToolActionType`
+- static **ngAcceptInputType_boolValue**: `string | boolean`
+- static **ngAcceptInputType_isModified**: `string | boolean`
+- static **ngAcceptInputType_numberValue**: `string | number`
+- **actionId**: `string`
+- **actionType**: `ToolActionType`
+- **boolValue**: `boolean`
+- **dateTimeValue**: `Date`
+- **isModified**: `boolean`
+- **numberValue**: `number`
+- **stringValue**: `string`
+- **untypedValue**: `any`
+- **findByName**(name: string): any
+
+### [IgxToolActionEventDetailCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionEventDetailCollection)
+
+- **constructor**(list?: IgxToolActionEventDetail[]): IgxToolActionEventDetailCollection
+
+### [IgxToolActionFieldSelectorAggregation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionFieldSelectorAggregation)
+
+- **constructor**(): IgxToolActionFieldSelectorAggregation
+- static **ngAcceptInputType_operand**: `string | DataSourceSummaryOperand`
+- **label**: `string`
+- **name**: `string`
+- **operand**: `DataSourceSummaryOperand`
+- **findByName**(name: string): any
+
+### [IgxToolActionFieldSelectorAggregationsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionFieldSelectorAggregationsCollection)
+
+- **constructor**(list?: IgxToolActionFieldSelectorAggregation[]): IgxToolActionFieldSelectorAggregationsCollection
+
+### [IgxToolActionFieldSelectorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionFieldSelectorComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionFieldSelectorComponent
+- static **ngAcceptInputType_actualPaddingBottom**: `string | number`
+- static **ngAcceptInputType_actualPaddingLeft**: `string | number`
+- static **ngAcceptInputType_actualPaddingRight**: `string | number`
+- static **ngAcceptInputType_actualPaddingTop**: `string | number`
+- static **ngAcceptInputType_aggregations**: `string | IgxToolActionFieldSelectorAggregationsCollection`
+- static **ngAcceptInputType_fieldType**: `string | ToolActionFieldSelectorType`
+- static **ngAcceptInputType_paddingBottom**: `string | number`
+- static **ngAcceptInputType_paddingLeft**: `string | number`
+- static **ngAcceptInputType_paddingRight**: `string | number`
+- static **ngAcceptInputType_paddingTop**: `string | number`
+- static **ngAcceptInputType_selectedAggregations**: `string | IgxToolActionFieldSelectorSelectedAggregationsCollection`
+- static **ngAcceptInputType_singleSelection**: `string | boolean`
+- static **ngAcceptInputType_updateDataSource**: `string | boolean`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actualPaddingBottom**: `number`
+- **actualPaddingLeft**: `number`
+- **actualPaddingRight**: `number`
+- **actualPaddingTop**: `number`
+- **aggregations**: `IgxToolActionFieldSelectorAggregationsCollection` — Gets or sets a list of aggregations to use, if null a default list is used instead.
+If list provided has custom aggregations the data source is never updated.
+- **dataSource**: `IDataSource` — Gets or sets if the tool action is checked.
+- **fieldType**: `ToolActionFieldSelectorType` — Gets or sets if the tool action is checked.
+- **legendTarget**: `any`
+- **paddingBottom**: `number`
+- **paddingLeft**: `number`
+- **paddingRight**: `number`
+- **paddingTop**: `number`
+- **selectedAggregations**: `IgxToolActionFieldSelectorSelectedAggregationsCollection` — Used to set default values when using custom aggregations, will be overriden otherwise
+- **singleSelection**: `boolean` — Gets or sets if the list only takes one selection at a time.
+- **updateDataSource**: `boolean` — Gets or sets if the data source has to be updated when changes are made.
+- **findByName**(name: string): any
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionFieldSelectorSelectedAggregation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionFieldSelectorSelectedAggregation)
+
+- **constructor**(): IgxToolActionFieldSelectorSelectedAggregation
+- static **ngAcceptInputType_aggregationOperand**: `string | DataSourceSummaryOperand`
+- **aggregationName**: `string`
+- **aggregationOperand**: `DataSourceSummaryOperand`
+- **field**: `string`
+- **findByName**(name: string): any
+
+### [IgxToolActionFieldSelectorSelectedAggregationsCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionFieldSelectorSelectedAggregationsCollection)
+
+- **constructor**(list?: IgxToolActionFieldSelectorSelectedAggregation[]): IgxToolActionFieldSelectorSelectedAggregationsCollection
+
+### [IgxToolActionGroupHeaderComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionGroupHeaderComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionGroupHeaderComponent
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actualBackIconColor**: `string` — Gets the actual back icon color.
+- **backIconColor**: `string` — Gets or sets the icon color for the back button.
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionIconButtonComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionIconButtonComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionIconButtonComponent
+- static **ngAcceptInputType_actualContentPaddingBottom**: `string | number`
+- static **ngAcceptInputType_actualContentPaddingLeft**: `string | number`
+- static **ngAcceptInputType_actualContentPaddingRight**: `string | number`
+- static **ngAcceptInputType_actualContentPaddingTop**: `string | number`
+- static **ngAcceptInputType_actualTooltipDelay**: `string | number`
+- static **ngAcceptInputType_contentPaddingBottom**: `string | number`
+- static **ngAcceptInputType_contentPaddingLeft**: `string | number`
+- static **ngAcceptInputType_contentPaddingRight**: `string | number`
+- static **ngAcceptInputType_contentPaddingTop**: `string | number`
+- static **ngAcceptInputType_isOpen**: `string | boolean`
+- static **ngAcceptInputType_tooltipDelay**: `string | number`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actualContentPaddingBottom**: `number`
+- **actualContentPaddingLeft**: `number`
+- **actualContentPaddingRight**: `number`
+- **actualContentPaddingTop**: `number`
+- **actualTooltipDelay**: `number` — Gets the actual delay before the tooltip is displayed (in milliseconds).
+- **contentPaddingBottom**: `number`
+- **contentPaddingLeft**: `number`
+- **contentPaddingRight**: `number`
+- **contentPaddingTop**: `number`
+- **isOpen**: `boolean`
+- **popupOpening**: `EventEmitter<any>`
+- **tooltipDelay**: `number` — Gets or sets how long it takes before the tooltip is displayed (in milliseconds).
+- **closeSubmenu**(): void
+- **exportVisualData**(): any
+- **ngAfterContentInit**(): void
+- **openSubMenu**(): void
+
+### [IgxToolActionIconMenuComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionIconMenuComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionIconMenuComponent
+- static **ngAcceptInputType_showArrowIcon**: `string | boolean`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actualArrowStroke**: `string` — Gets the actual stroke color of the arrow icon.
+- **arrowStroke**: `string` — Gets or sets the stroke color of the arrow icon.
+- **showArrowIcon**: `boolean` — Gets or sets whether the arrow icon should be shown.
+- **exportVisualData**(): any
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionLabelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionLabelComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionLabelComponent
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionNumberInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionNumberInputComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionNumberInputComponent
+- static **ngAcceptInputType_value**: `string | number`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **value**: `number` — Gets or sets the value for the input.
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionPerformedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionPerformedEventArgs)
+
+- **constructor**(): IgxToolActionPerformedEventArgs
+- static **ngAcceptInputType_detailCollection**: `string | IgxToolActionEventDetailCollection`
+- static **ngAcceptInputType_isAggregate**: `string | boolean`
+- **detail**: `IgxToolActionEventDetail`
+- **detailCollection**: `IgxToolActionEventDetailCollection`
+- **isAggregate**: `boolean`
+
+### [IgxToolActionPopupOpeningEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionPopupOpeningEventArgs)
+
+- **constructor**(): IgxToolActionPopupOpeningEventArgs
+- static **ngAcceptInputType_cancel**: `string | boolean`
+- **cancel**: `boolean`
+- **sourceAction**: `IgxToolActionComponent`
+
+### [IgxToolActionRadioComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionRadioComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionRadioComponent
+- static **ngAcceptInputType_isChecked**: `string | boolean`
+- static **ngAcceptInputType_isManual**: `string | boolean`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actualCheckedBackgroundColor**: `string` — Gets the actual background color of the radio when in the checked state.
+- **actualCheckedBorderColor**: `string` — Gets the actual border color of the radio when in the checked state.
+- **actualUncheckedBackgroundColor**: `string` — Gets the actual background color of the radio when in the unchecked state.
+- **actualUncheckedBorderColor**: `string` — Gets the actual border color of the radio when in the unchecked state.
+- **channel**: `string` — Gets or sets the channel this radio button belongs to.
+- **checkedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the checked state.
+- **checkedBorderColor**: `string` — Gets or sets the border color of the radio when in the checked state.
+- **isChecked**: `boolean` — Gets or sets if the tool action is checked.
+- **isManual**: `boolean` — Gets or sets if the checked state of the radio is handled manually by the user. The radio
+well not become selected when clicked if this property is true.
+- **uncheckedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the unchecked state.
+- **uncheckedBorderColor**: `string` — Gets or sets the border color of the radio when in the unchecked state.
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionSeparatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionSeparatorComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionSeparatorComponent
+- static **ngAcceptInputType_isGroupHeaderSeparator**: `string | boolean`
+- static **ngAcceptInputType_size**: `string | number`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **isGroupHeaderSeparator**: `boolean` — Gets or sets whether to use group header styling or regular styling on this separator.
+- **size**: `number` — Gets or sets the size of the separator.
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionSubPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionSubPanelComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionSubPanelComponent
+- static **ngAcceptInputType_itemSpacing**: `string | number`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **itemSpacing**: `number` — Gets or sets the spacing between items.
+- **ngAfterContentInit**(): void
+
+### [IgxToolActionTextInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolActionTextInputComponent)
+Represents base class for all tool actions in toolbar
+
+- **constructor**(): IgxToolActionTextInputComponent
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **value**: `string` — Gets or sets the value for the input.
+- **ngAfterContentInit**(): void
+
+### [IgxToolbarComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolbarComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, changeDetector: ChangeDetectorRef, componentFactoryResolver: ComponentFactoryResolver): IgxToolbarComponent
+- **_childTemplateRef**: `TemplateRef<any>`
+- **_dynamicContent**: `ViewContainerRef`
+- **_mainDiv**: `Element`
+- **_mainDivRef**: `ElementRef`
+- **combinedActions**: `IgxToolActionComponent[]` — The style mappings actually present in the chart. Do not directly modify this array.
+This array's contents can be modified by causing Angular to reproject the child content.
+Or adding and removing stye mappings from the manual style mapping collection on the actions property.
+- **contentActions**: `QueryList<IgxToolActionComponent>`
+- static **ngAcceptInputType_actualActions**: `string | IgxToolActionCollection`
+- static **ngAcceptInputType_autoGeneratedActions**: `string | IgxToolActionCollection`
+- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
+- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_dropdownClickBuffer**: `string | number`
+- static **ngAcceptInputType_dropdownDelay**: `string | number`
+- static **ngAcceptInputType_highlightRadius**: `string | number`
+- static **ngAcceptInputType_highlightWidth**: `string | number`
+- static **ngAcceptInputType_isOpen**: `string | boolean`
+- static **ngAcceptInputType_orientation**: `string | ToolbarOrientation`
+- static **ngAcceptInputType_rowHeight**: `string | number`
+- static **ngAcceptInputType_scrollbarStyle**: `string | ScrollbarStyle`
+- static **ngAcceptInputType_separatorHorizontalPaddingBottom**: `string | number`
+- static **ngAcceptInputType_separatorHorizontalPaddingLeft**: `string | number`
+- static **ngAcceptInputType_separatorHorizontalPaddingRight**: `string | number`
+- static **ngAcceptInputType_separatorHorizontalPaddingTop**: `string | number`
+- static **ngAcceptInputType_separatorVerticalPaddingBottom**: `string | number`
+- static **ngAcceptInputType_separatorVerticalPaddingLeft**: `string | number`
+- static **ngAcceptInputType_separatorVerticalPaddingRight**: `string | number`
+- static **ngAcceptInputType_separatorVerticalPaddingTop**: `string | number`
+- static **ngAcceptInputType_showOnHover**: `string | boolean`
+- static **ngAcceptInputType_showTooltipOnHover**: `string | boolean`
+- static **ngAcceptInputType_stopPropagation**: `string | boolean`
+- static **ngAcceptInputType_toolTipCornerRadius**: `string | number`
+- static **ngAcceptInputType_toolTipElevation**: `string | number`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actions**: `IgxToolActionCollection` — A collection or manually added axes for the chart.
+- **actualActions**: `IgxToolActionCollection` — Gets or sets the data or data source instance to which to bind the grid.
+- **autoGeneratedActions**: `IgxToolActionCollection` — Gets or sets the data or data source instance to which to bind the grid.
+- **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
+- **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the checkbox.
+- **cellTextStyle**: `string` — Gets or sets the text style.
+- **checkedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the checked state.
+- **checkedBorderColor**: `string` — Gets or sets the border color of the radio when in the checked state.
+- **density**: `ControlDisplayDensity` — Gets or sets the display density to use for the toolbar.
+- **disabledTextColor**: `string` — Gets or sets the color to use for the text in disabled tool actions.
+- **dropdownClickBuffer**: `number` — Gets or sets the amount of time to wait when clicking on the icon menu button while the dropdown is opening. If a click was
+executed within this buffer window the dropdown will be left open. Otherwise it will close it. Setting a negative value will
+always keep the dropdown open during a hover open and will require an extra click to close.
+- **dropdownDelay**: `number` — Gets or sets the dropdown delay time in milliseconds.
+- **groupHeaderBackgroundColor**: `string` — Gets or sets the group header background color.
+- **groupHeaderSubtitleTextColor**: `string` — Gets or sets the text color for group header subtitles.
+- **groupHeaderTextColor**: `string` — Gets or sets the text color for group header tool actions.
+- **groupHeaderTextStyle**: `string` — Gets or sets the text style.
+- **height**: `string`
+- **highlightColor**: `string`
+- **highlightRadius**: `number`
+- **highlightWidth**: `number`
+- **hoverBackgroundColor**: `string` — Gets or sets the hover background color.
+- **i**: `Toolbar`
+- **iconFill**: `string` — Gets or sets the fill color of icons in the ToolPanel.
+- **iconStroke**: `string` — Gets or sets the stroke color of icons in the ToolPanel.
+- **isOpen**: `boolean`
+- **menuArrowStroke**: `string` — Gets or sets the stroke color for all icon menu dropdown arrows.
+- **onCommand**: `EventEmitter<any>` — Event raised when a command is triggered in the toolbar.
+- **orientation**: `ToolbarOrientation` — Gets or sets the orientation of the toolbar.
+- **rowHeight**: `number` — Gets or sets the row height that should be used.
+- **scrollbarStyle**: `ScrollbarStyle` — Gets or sets the style of scrollbar.
+- **separatorBackgroundColor**: `string` — Gets or sets the separator background color.
+- **separatorHorizontalPaddingBottom**: `number` — Gets or sets the bottom padding for separators in the horizontal orientation.
+- **separatorHorizontalPaddingLeft**: `number` — Gets or sets the left padding for separators in the horizontal orientation.
+- **separatorHorizontalPaddingRight**: `number` — Gets or sets the right padding for separators in the horizontal orientation.
+- **separatorHorizontalPaddingTop**: `number` — Gets or sets the top padding for separators in the horizontal orientation.
+- **separatorVerticalPaddingBottom**: `number` — Gets or sets the bottom padding for separators in the vertical orientation.
+- **separatorVerticalPaddingLeft**: `number` — Gets or sets the left padding for separators in the vertical orientation.
+- **separatorVerticalPaddingRight**: `number` — Gets or sets the right padding for separators in the vertical orientation.
+- **separatorVerticalPaddingTop**: `number` — Gets or sets the top padding for separators in the vertical orientation.
+- **showOnHover**: `boolean` — Gets or sets if the tool actions should display their submenus on mouse hover.
+- **showTooltipOnHover**: `boolean` — Gets or sets if the tool action icon buttons should display their tooltips on mouse hover.
+- **stopPropagation**: `boolean` — Prevents clicks on the tool actions from bubbling.
+- **submenuBackgroundColor**: `string` — Gets or sets the background color for submenus.
+- **subMenuClosing**: `EventEmitter<any>` — Event raised when a submenu is closed on the toolbar
+- **subMenuOpening**: `EventEmitter<any>` — Event raised when a submenu is opened on the toolbar.
+- **subtitleTextColor**: `string` — Gets or sets the text color for subtitles.
+- **subtitleTextStyle**: `string` — Gets or sets the text style for subtitles.
+- **target**: `any` — Gets or sets a target component which the toolbar can request actions from.
+- **textColor**: `string` — Gets or sets the color to use for the text of the component.
+- **toolTipBackgroundColor**: `string` — Gets or sets the tooltip background color.
+- **toolTipCornerRadius**: `number` — Gets or sets the tooltip corner radius.
+- **toolTipElevation**: `number` — Gets or sets the shadow elevation for the tooltip.
+- **toolTipTextColor**: `string` — Gets or sets the tooltip text color.
+- **uncheckedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the unchecked state.
+- **uncheckedBorderColor**: `string` — Gets or sets the border color of the radio when in the unchecked state.
+- **width**: `string`
+- **closeSubmenus**(): void — Forces any open sub menus to close.
+- **exportSerializedVisualData**(): string — Returns a serialized copy of the exported visual model
+- **exportVisualData**(): any — Exports visual information about the current state of the grid.
+- **findByName**(name: string): any
+- **flushRefresh**(): void
+- **getBoolContextItem**(key: string): boolean
+- **getBrushCollectionContextItem**(key: string): string[]
+- **getBrushContextItem**(key: string): string
+- **getColorContextItem**(key: string): string
+- **getDataContextItem**(key: string): any
+- **getDataURLFromCache**(iconCollection: string, iconName: string): string
+- **getDesiredSize**(): IgSize — Get the desired size the toolbar wants to be.
+- **getDoubleContextItem**(key: string): number
+- **getExternalDataContextItem**(key: string): any
+- **getExternalDoubleContextItem**(key: string): number
+- **getExternalIntContextItem**(key: string): number
+- **getIconFromCache**(iconCollection: string, iconName: string): string
+- **getIconSource**(iconCollection: string, iconName: string): any
+- **getIntContextItem**(key: string): number
+- **getMultiPathSVGFromCache**(iconCollection: string, iconName: string): string[]
+- **getStringContextItem**(key: string): string
+- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
+Angular has completed initialization of all of the directive's
+content.
+It is invoked only once when the directive is instantiated.
+- **ngAfterViewInit**(): void
+- **ngOnDestroy**(): void
+- **onCommandStateChanged**(id: string, type: string | ToolCommandStateType, value: any): void
+- **registerIconFromDataURL**(iconCollection: string, iconName: string, dataURL: string): void
+- **registerIconFromText**(iconCollection: string, iconName: string, iconText: string): void
+- **registerIconSource**(iconCollection: string, iconName: string, source: any): void
+- **registerMultiPathSVG**(iconCollection: string, iconName: string, multiPathSVG: string[]): void
+- **setBoolContextItem**(key: string, value: boolean): void
+- **setBrushCollectionContextItem**(key: string, value: string[]): void
+- **setBrushContextItem**(key: string, value: string): void
+- **setColorContextItem**(key: string, value: string): void
+- **setDataContextItem**(key: string, value: any): void
+- **setDoubleContextItem**(key: string, value: number): void
+- **setExternalDataContextItem**(key: string, value: any): void
+- **setExternalDoubleContextItem**(key: string, value: any): void
+- **setExternalIntContextItem**(key: string, value: any): void
+- **setIntContextItem**(key: string, value: number): void
+- **setStringContextItem**(key: string, value: string): void
+- **updateStyle**(): void
+
+### [IgxToolbarSubMenuClosingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolbarSubMenuClosingEventArgs)
+
+- **constructor**(): IgxToolbarSubMenuClosingEventArgs
+
+### [IgxToolbarSubMenuOpeningEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolbarSubMenuOpeningEventArgs)
+
+- **constructor**(): IgxToolbarSubMenuOpeningEventArgs
+
+### [IgxToolCommandEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolCommandEventArgs)
+
+- **constructor**(): IgxToolCommandEventArgs
+- static **ngAcceptInputType_closeOnExecute**: `string | boolean`
+- **closeOnExecute**: `boolean`
+- **command**: `ToolCommand`
+
+### [IgxToolContextBinding](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolContextBinding)
+
+- **constructor**(): IgxToolContextBinding
+- static **ngAcceptInputType_bindingMode**: `string | ToolContextBindingMode`
+- **bindingMode**: `ToolContextBindingMode`
+- **contextKey**: `string`
+- **propertyName**: `string`
+- **propertyUpdated**: `EventEmitter<any>`
+- **findByName**(name: string): any
+
+### [IgxToolContextBindingCollection](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolContextBindingCollection)
+
+- **constructor**(list?: IgxToolContextBinding[]): IgxToolContextBindingCollection
+
+### [IgxToolPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolPanelComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, changeDetector: ChangeDetectorRef, componentFactoryResolver: ComponentFactoryResolver): IgxToolPanelComponent
+- **_childTemplateRef**: `TemplateRef<any>`
+- **_dynamicContent**: `ViewContainerRef`
+- **_mainDiv**: `Element`
+- **_mainDivRef**: `ElementRef`
+- **actualActions**: `IgxToolActionComponent[]` — The style mappings actually present in the chart. Do not directly modify this array.
+This array's contents can be modified by causing Angular to reproject the child content.
+Or adding and removing stye mappings from the manual style mapping collection on the actions property.
+- **contentActions**: `QueryList<IgxToolActionComponent>`
+- static **ngAcceptInputType_actualDensity**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_actualDropdownDelay**: `string | number`
+- static **ngAcceptInputType_actualHighlightRadius**: `string | number`
+- static **ngAcceptInputType_actualHighlightWidth**: `string | number`
+- static **ngAcceptInputType_actualRowHeight**: `string | number`
+- static **ngAcceptInputType_actualSeparatorHorizontalPaddingBottom**: `string | number`
+- static **ngAcceptInputType_actualSeparatorHorizontalPaddingLeft**: `string | number`
+- static **ngAcceptInputType_actualSeparatorHorizontalPaddingRight**: `string | number`
+- static **ngAcceptInputType_actualSeparatorHorizontalPaddingTop**: `string | number`
+- static **ngAcceptInputType_actualSeparatorVerticalPaddingBottom**: `string | number`
+- static **ngAcceptInputType_actualSeparatorVerticalPaddingLeft**: `string | number`
+- static **ngAcceptInputType_actualSeparatorVerticalPaddingRight**: `string | number`
+- static **ngAcceptInputType_actualSeparatorVerticalPaddingTop**: `string | number`
+- static **ngAcceptInputType_actualToolTipCornerRadius**: `string | number`
+- static **ngAcceptInputType_actualToolTipElevation**: `string | number`
+- static **ngAcceptInputType_baseTheme**: `string | BaseControlTheme`
+- static **ngAcceptInputType_density**: `string | ControlDisplayDensity`
+- static **ngAcceptInputType_dropdownClickBuffer**: `string | number`
+- static **ngAcceptInputType_dropdownDelay**: `string | number`
+- static **ngAcceptInputType_highlightRadius**: `string | number`
+- static **ngAcceptInputType_highlightWidth**: `string | number`
+- static **ngAcceptInputType_isOpen**: `string | boolean`
+- static **ngAcceptInputType_itemSpacing**: `string | number`
+- static **ngAcceptInputType_nestedActionMode**: `string | NestedActionMode`
+- static **ngAcceptInputType_orientation**: `string | ToolPanelOrientation`
+- static **ngAcceptInputType_rowHeight**: `string | number`
+- static **ngAcceptInputType_scrollbarStyle**: `string | ScrollbarStyle`
+- static **ngAcceptInputType_separatorHorizontalPaddingBottom**: `string | number`
+- static **ngAcceptInputType_separatorHorizontalPaddingLeft**: `string | number`
+- static **ngAcceptInputType_separatorHorizontalPaddingRight**: `string | number`
+- static **ngAcceptInputType_separatorHorizontalPaddingTop**: `string | number`
+- static **ngAcceptInputType_separatorVerticalPaddingBottom**: `string | number`
+- static **ngAcceptInputType_separatorVerticalPaddingLeft**: `string | number`
+- static **ngAcceptInputType_separatorVerticalPaddingRight**: `string | number`
+- static **ngAcceptInputType_separatorVerticalPaddingTop**: `string | number`
+- static **ngAcceptInputType_showOnHover**: `string | boolean`
+- static **ngAcceptInputType_showTooltipOnHover**: `string | boolean`
+- static **ngAcceptInputType_stopPropagation**: `string | boolean`
+- static **ngAcceptInputType_toolTipCornerRadius**: `string | number`
+- static **ngAcceptInputType_toolTipElevation**: `string | number`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actions**: `IgxToolActionCollection` — A collection or manually added axes for the chart.
+- **actualBackgroundColor**: `string`
+- **actualCheckedBackgroundColor**: `string` — Gets the actual background color of the radio when in the checked state.
+- **actualCheckedBorderColor**: `string` — Gets the actual border color of the radio when in the checked state.
+- **actualDensity**: `ControlDisplayDensity` — Gets the resolved display density to use for the toolbar.
+- **actualDisabledTextColor**: `string`
+- **actualDropdownDelay**: `number` — Gets the actual dropdown delay.
+- **actualGroupHeaderBackgroundColor**: `string`
+- **actualGroupHeaderSeparatorBackgroundColor**: `string`
+- **actualGroupHeaderSubtitleTextColor**: `string`
+- **actualGroupHeaderTextColor**: `string`
+- **actualHighlightColor**: `string`
+- **actualHighlightRadius**: `number`
+- **actualHighlightWidth**: `number`
+- **actualHoverBackgroundColor**: `string`
+- **actualIconFill**: `string` — Gets the actual icon fill color.
+- **actualIconStroke**: `string` — Gets the actual icon stroke color.
+- **actualMenuArrowStroke**: `string` — Gets the actual stroke color for all icon menu dropdown arrows.
+- **actualRowHeight**: `number` — Gets the actual row height used by the panel.
+- **actualSeparatorBackgroundColor**: `string`
+- **actualSeparatorHorizontalPaddingBottom**: `number`
+- **actualSeparatorHorizontalPaddingLeft**: `number`
+- **actualSeparatorHorizontalPaddingRight**: `number`
+- **actualSeparatorHorizontalPaddingTop**: `number`
+- **actualSeparatorVerticalPaddingBottom**: `number`
+- **actualSeparatorVerticalPaddingLeft**: `number`
+- **actualSeparatorVerticalPaddingRight**: `number`
+- **actualSeparatorVerticalPaddingTop**: `number`
+- **actualSubmenuBackgroundColor**: `string`
+- **actualSubtitleTextColor**: `string`
+- **actualTextColor**: `string`
+- **actualToolTipBackgroundColor**: `string` — Gets the actual tooltip background color.
+- **actualToolTipCornerRadius**: `number` — Gets the actual tooltip corner radius.
+- **actualToolTipElevation**: `number` — Gets the actual shadow elevation used by the tooltip.
+- **actualToolTipTextColor**: `string`
+- **actualUncheckedBackgroundColor**: `string` — Gets the actual background color of the radio when in the unchecked state.
+- **actualUncheckedBorderColor**: `string` — Gets the actual border color of the radio when in the unchecked state.
+- **backgroundColor**: `string` — Gets or sets the color to use for the background of the component.
+- **baseTheme**: `BaseControlTheme` — Gets or sets the base built in theme to use for the checkbox.
+- **cellTextStyle**: `string` — Gets or sets the text style for the panel.
+- **checkedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the checked state.
+- **checkedBorderColor**: `string` — Gets or sets the border color of the radio when in the checked state.
+- **contentRefreshed**: `EventEmitter<any>`
+- **density**: `ControlDisplayDensity` — Gets or sets the display density to use for the toolbar.
+- **disabledTextColor**: `string` — Gets or sets the color to use for the text in disabled tool actions.
+- **dropdownClickBuffer**: `number` — Gets or sets the amount of time to wait when clicking on the icon menu button while the dropdown is opening. If a click was
+executed within this buffer window the dropdown will be left open. Otherwise it will close it. Setting a negative value will
+always keep the dropdown open during a hover open and will require an extra click to close.
+- **dropdownDelay**: `number` — Gets or sets the dropdown delay time in milliseconds.
+- **groupHeaderBackgroundColor**: `string` — Gets or sets the group header background color.
+- **groupHeaderSeparatorBackgroundColor**: `string` — Gets or sets the group header separator background color.
+- **groupHeaderSubtitleTextColor**: `string` — Gets or sets the text color for group header subtitle.
+- **groupHeaderTextColor**: `string` — Gets or sets the text color for group header tool actions.
+- **groupHeaderTextStyle**: `string` — Gets or sets the text style.
+- **height**: `string`
+- **highlightColor**: `string`
+- **highlightRadius**: `number`
+- **highlightWidth**: `number`
+- **hoverBackgroundColor**: `string` — Gets or sets the hover background color.
+- **i**: `ToolPanel`
+- **iconFill**: `string` — Gets or sets the fill color of icons in the ToolPanel.
+- **iconStroke**: `string` — Gets or sets the stroke color of icons in the ToolPanel.
+- **isOpen**: `boolean`
+- **itemSpacing**: `number` — Gets or sets the spacing between items
+- **menuArrowStroke**: `string` — Gets or sets the stroke color for all icon menu dropdown arrows.
+- **nestedActionMode**: `NestedActionMode` — Gets or sets the mode used when displaying nested actions.
+- **onCommand**: `EventEmitter<any>`
+- **orientation**: `ToolPanelOrientation` — Gets or sets the color to use for the background of the component.
+- **rowHeight**: `number` — Gets or sets the row height for the panel.
+- **scrollbarStyle**: `ScrollbarStyle` — Gets or sets the style of scrollbar.
+- **separatorBackgroundColor**: `string` — Gets or sets the separator background color.
+- **separatorHorizontalPaddingBottom**: `number` — Gets or sets the bottom padding for separators in the horizontal orientation.
+- **separatorHorizontalPaddingLeft**: `number` — Gets or sets the left padding for separators in the horizontal orientation.
+- **separatorHorizontalPaddingRight**: `number` — Gets or sets the right padding for separators in the horizontal orientation.
+- **separatorHorizontalPaddingTop**: `number` — Gets or sets the top padding for separators in the horizontal orientation.
+- **separatorVerticalPaddingBottom**: `number` — Gets or sets the bottom padding for separators in the vertical orientation.
+- **separatorVerticalPaddingLeft**: `number` — Gets or sets the left padding for separators in the vertical orientation.
+- **separatorVerticalPaddingRight**: `number` — Gets or sets the right padding for separators in the vertical orientation.
+- **separatorVerticalPaddingTop**: `number` — Gets or sets the top padding for separators in the vertical orientation.
+- **showOnHover**: `boolean` — Gets or sets if the tool actions should display their submenus on mouse hover.
+- **showTooltipOnHover**: `boolean` — Gets or sets if the tool action icon buttons should display their tooltips on mouse hover.
+- **stopPropagation**: `boolean` — Prevents clicks on the tool actions from bubbling.
+- **submenuBackgroundColor**: `string` — Gets or sets the background color for submenus.
+- **subtitleTextColor**: `string` — Gets or sets the color to use for the subtitle of the component.
+- **subtitleTextStyle**: `string` — Gets or sets the subtitle text style for the panel.
+- **textColor**: `string` — Gets or sets the color to use for the text of the component.
+- **toolTipBackgroundColor**: `string` — Gets or sets the tooltip background color.
+- **toolTipCornerRadius**: `number` — Gets or sets the tooltip corner radius.
+- **toolTipElevation**: `number` — Gets or sets the shadow elevation for the tooltip.
+- **toolTipTextColor**: `string` — Gets or sets the tooltip text color.
+- **uncheckedBackgroundColor**: `string` — Gets or sets the background color of the radio when in the unchecked state.
+- **uncheckedBorderColor**: `string` — Gets or sets the border color of the radio when in the unchecked state.
+- **width**: `string`
+- **closeSubmenus**(): void — Forces any open sub menus to close.
+- **exportSerializedVisualData**(): string
+- **exportVisualData**(): any
+- **findByName**(name: string): any
+- **flushRefresh**(): void
+- **getBoolContextItem**(key: string): boolean
+- **getBrushCollectionContextItem**(key: string): string[]
+- **getBrushContextItem**(key: string): string
+- **getColorContextItem**(key: string): string
+- **getDataContextItem**(key: string): any
+- **getDesiredSize**(): IgSize
+- **getDoubleContextItem**(key: string): number
+- **getIntContextItem**(key: string): number
+- **getStringContextItem**(key: string): string
+- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
+Angular has completed initialization of all of the directive's
+content.
+It is invoked only once when the directive is instantiated.
+- **ngAfterViewInit**(): void
+- **ngOnDestroy**(): void
+- **refresh**(): void
+- **setBoolContextItem**(key: string, value: boolean): void
+- **setBrushCollectionContextItem**(key: string, value: string[]): void
+- **setBrushContextItem**(key: string, value: string): void
+- **setColorContextItem**(key: string, value: string): void
+- **setDataContextItem**(key: string, value: any): void
+- **setDoubleContextItem**(key: string, value: number): void
+- **setIntContextItem**(key: string, value: number): void
+- **setStringContextItem**(key: string, value: string): void
+- **updateStyle**(): void
+
+### [IgxToolPanelContentRefreshedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolPanelContentRefreshedEventArgs)
+
+- **constructor**(): IgxToolPanelContentRefreshedEventArgs
+
+### [IgxToolPanelContextChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolPanelContextChangedEventArgs)
+
+- **constructor**(): IgxToolPanelContextChangedEventArgs
+- **contextKey**: `string`
+- **newValue**: `any`
+- **oldValue**: `any`
+
+### [IgxToolPanelContextSwappedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxToolPanelContextSwappedEventArgs)
+
+- **constructor**(): IgxToolPanelContextSwappedEventArgs
+
+### [IgxXExpansionPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/classes/IgxXExpansionPanelComponent)
+
+- **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector, componentFactoryResolver: ComponentFactoryResolver): IgxXExpansionPanelComponent
+- **_contentInner**: `ElementRef`
+- **_contentOuter**: `ElementRef`
+- **_dynamicContent**: `ViewContainerRef`
+- **_header**: `ElementRef`
+- **_mainDiv**: `Element`
+- **_mainDivRef**: `ElementRef`
+- static **ngAcceptInputType_actualElevation**: `string | number`
+- static **ngAcceptInputType_elevation**: `string | number`
+- static **ngAcceptInputType_expanded**: `string | boolean`
+- static **ɵcmp**: `unknown`
+- static **ɵfac**: `unknown`
+- **actualAmbientShadowColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
+- **actualCaptionTextColor**: `string` — Gets or sets the color to use for the actual header caption text.
+- **actualDescriptionTextColor**: `string` — Gets or sets the color to use for the actual header description text.
+- **actualElevation**: `number` — Gets or sets the elevation of the border shadow
+- **actualHeaderBackgroundColor**: `string` — Gets or sets the color to use for the actual background of the header.
+- **actualPenumbraShadowColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
+- **actualUmbraShadowColor**: `string` — Gets or sets the color to use for the check mark when the checkbox is checked.
+- **caption**: `string` — Gets / sets the caption to display in the header area.
+- **captionCollapsedTextColor**: `string` — Gets or sets the color to use for the header caption text when the panel is collapsed.
+- **captionExpandedTextColor**: `string` — Gets or sets the color to use for the header caption text when the panel is expanded.
+- **captionTextColor**: `string` — Gets or sets the color to use for the header caption text.
+- **description**: `string` — Gets / sets the description to display in the header area.
+- **descriptionCollapsedTextColor**: `string` — Gets or sets the color to use for the header description text when the panel is collapsed.
+- **descriptionExpandedTextColor**: `string` — Gets or sets the color to use for the header description text when the panel is expanded.
+- **descriptionTextColor**: `string` — Gets or sets the color to use for the header description text.
+- **elevation**: `number` — Gets or sets the elevation to use for the button regardless of type.
+- **expanded**: `boolean` — Gets / sets the expanded state of the panel.
+- **headerBackgroundColor**: `string` — Gets or sets the color to use for the background of the header.
+- **headerCollapsedBackgroundColor**: `string` — Gets or sets the color to use for the background of the header when the panel is expanded.
+- **headerExpandedBackgroundColor**: `string` — Gets or sets the color to use for the background of the header when the panel is expanded.
+- **height**: `string`
+- **i**: `XExpansionPanel`
+- **onCollapsed**: `EventEmitter<any>` — Fires when the expansion panel is collapsed.
+- **onExpanded**: `EventEmitter<any>`
+- **width**: `string`
+- **collapse**(): void — Collapses the contents of the expansion panel.
+- **expand**(): void — Expands the contents of the expansion panel.
+- **findByName**(name: string): any
+- **ngAfterContentInit**(): void — A callback method that is invoked immediately after
+Angular has completed initialization of all of the directive's
+content.
+It is invoked only once when the directive is instantiated.
+- **ngOnDestroy**(): void
+- **toggle**(): void — Toggles the expanded state of the expansion panel.
+- **updateStyle**(): void
+
+## Enumerations
+
+### [ComboEditorCloneDataSourceFilterOperation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ComboEditorCloneDataSourceFilterOperation)
+Indicates the current operation underway for the cloned data source.
+
+- **None** = 0
+- **TextToValue** = 2
+- **ValueToText** = 1
+
+### [ComboEditorSelectedItemChangeType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ComboEditorSelectedItemChangeType)
+Indicates what type of operation is taking place when the selected row, value, or text in the combo box changes.
+
+- **Row** = 2
+- **Text** = 1
+- **Value** = 0
+
+### [ListPanelActivationMode](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ListPanelActivationMode)
+Indicates the activation mode to use for the grid.
+
+- **Cell** = 1 — A single cell is permitted to be activated at a time.
+- **None** = 0 — No activation should be peformed based on interaction.
+
+### [ListPanelOrientation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ListPanelOrientation)
+
+- **Horizontal** = 1
+- **HorizontalWrapped** = 2
+- **Vertical** = 0
+
+### [ListPanelSelectionBehavior](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ListPanelSelectionBehavior)
+Indicates the selection mode to use for the grid.
+
+- **ModifierBased** = 1 — Only one row or cell is selected at a time and modifier keys are required to multi-select them.
+- **Toggle** = 0 — Rows and cells are selected using a toggleable behavior. Modifier selection is ignored (CTRL and SHIFT).
+
+### [ListPanelSelectionMode](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ListPanelSelectionMode)
+Indicates the selection mode to use for the grid.
+
+- **MultipleRow** = 2 — Multiple rows are permitted to be selected at a time from interaction.
+- **None** = 0 — No selection should be peformed based on interaction.
+- **SingleRow** = 1 — A single row is permitted to be selected at a time from interaction.
+
+### [NestedActionMode](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/NestedActionMode)
+
+- **Replace** = 0 — Replaces the current tool action view with the nested view.
+
+### [PropertyEditorPanelUpdateMode](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/PropertyEditorPanelUpdateMode)
+
+- **Auto** = 0
+- **ComponentRendererOverlay** = 1
+- **DataSeriesToDescriptionCustomizations** = 2
+
+### [PropertyEditorValueType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/PropertyEditorValueType)
+
+- **Array** = 10
+- **boolean1** = 7
+- **Brush** = 4
+- **BrushCollection** = 6
+- **Button** = 20
+- **Collection** = 9
+- **Color** = 5
+- **ColorCollection** = 14
+- **DataRef** = 18
+- **Date** = 3
+- **DoubleCollection** = 23
+- **EnumValue** = 15
+- **EventRef** = 17
+- **Header** = 25
+- **MethodRef** = 16
+- **Number** = 1
+- **Point** = 11
+- **Rect** = 13
+- **Separator** = 24
+- **Size** = 12
+- **Slider** = 21
+- **StringValue** = 2
+- **SubType** = 8
+- **TemplateRef** = 22
+- **TimeSpan** = 19
+- **Unhandled** = 0
+
+### [ToolActionButtonDisplayType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolActionButtonDisplayType)
+Different display types for the button.
+
+- **Flat** = 1
+- **Outlined** = 2
+- **Raised** = 0
+
+### [ToolActionButtonGroupDisplayType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolActionButtonGroupDisplayType)
+Different display types for the button.
+
+- **Flat** = 0
+- **Outlined** = 1
+
+### [ToolActionCheckboxListIndexType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolActionCheckboxListIndexType)
+
+- **DeSelected** = 1
+- **Selected** = 0
+
+### [ToolActionFieldSelectorEventType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolActionFieldSelectorEventType)
+
+- **AggregationChange** = 1
+- **Change** = 0
+
+### [ToolActionFieldSelectorType](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolActionFieldSelectorType)
+
+- **Label** = 0
+- **Value** = 1
+
+### [ToolbarOrientation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolbarOrientation)
+
+- **Horizontal** = 1
+- **HorizontalWrapped** = 2
+- **Vertical** = 0
+
+### [ToolPanelOrientation](https://www.infragistics.com/api/angular/igniteui-angular-layouts/latest/enums/ToolPanelOrientation)
+
+- **Horizontal** = 1
+- **HorizontalWrapped** = 2
+- **Vertical** = 0

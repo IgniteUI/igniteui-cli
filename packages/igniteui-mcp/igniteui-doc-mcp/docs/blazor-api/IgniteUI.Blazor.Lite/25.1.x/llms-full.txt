@@ -1,0 +1,3710 @@
+# Ignite UI for Blazor Lite v25.1.x — Full API Reference
+
+> Complete API reference for the Ignite UI for Blazor Lite package (25.1.x). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: Blazor
+Package: IgniteUI.Blazor.Lite
+Version: 25.1.x
+
+## Classes
+
+### [BaseCollection<T>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/BaseCollection<T>)
+
+- **constructor**(parent: object, propertyName: string): void
+- **ClearItems**(): void
+- **FindByName**(name: string): object
+- **HasName**(name: string): bool
+- **InsertItem**(index: int, item: T): void
+- **RemoveItem**(index: int): void
+- **Serialize**(context: SerializationContext, propertyName: string): void
+- **SetItem**(index: int, item: T): void
+- **ToArray**(): T[]
+
+### [BaseRendererControl](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/BaseRendererControl)
+
+- **constructor**(): void
+- **AdditionalAttributes**: `Dictionary<string, object>`
+- **ChildContent**: `RenderFragment`
+- **Class**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **EventBehavior**: `ControlEventBehavior`
+- **Height**: `string`
+- **IgBlazor**: `IIgniteUIBlazor`
+- **NeedsDynamicContent**: `bool`
+- **ParentTypeName**: `string`
+- **RoundTripDateConversion**: `RoundTripDateConversion`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseCamelEnumValues**: `bool`
+- **UseDirectRender**: `bool`
+- **Width**: `string`
+- **_cachedSerializedContent**: `string`
+- **eventCallbacksCache**: `Dictionary<Type, Dictionary<string, FieldInfo>>`
+- **BuildRenderTree**(builder: RenderTreeBuilder): void
+- **BuildSequenceInfo**(startSequence: int): SequenceInfo
+- **Camelize**(value: string): string
+- **CompareEventCallbacks<T>**(left: T, right: T, eventFieldsDictionary: Dictionary<Type, Dictionary<string, FieldInfo>>): bool
+- **Dispose**(): void
+- **Dispose**(disposing: bool): void
+- **EnsureModulesLoaded**(): void
+- **EnsureReady**(): Task
+- **~BaseRendererControl**(): void
+- **FindByName**(name: string): object
+- **InvokeMethod**(methodName: string, arguments: object[], types: string[], nativeElements: ElementReference[]): Task<object>
+- **InvokeMethodSync**(methodName: string, arguments: object[], types: string[], nativeElements: ElementReference[]): object
+- **IsPropDirty**(propertyName: string): bool
+- **IsTransformedEnumValue**(key: string): bool
+- **MarkPropDirty**(propertyName: string): void
+- **NotifyClearItems**(dataSource: object): void
+- **NotifyInsertItem**(dataSource: object, index: int, refItem: object): void
+- **NotifyRemoveItem**(dataSource: object, index: int, oldItem: object): void
+- **NotifySetItem**(dataSource: object, index: int, oldItem: object, newItem: object): void
+- **NotifyUpdateItem**(dataSource: object, index: int, refItem: object, syncDataOnly: bool): void
+- **OnAfterRenderAsync**(firstRender: bool): Task
+- **OnElementNameChanged**(element: BaseRendererElement, oldName: string, newName: string): void
+- **OnInvokeReturn**(invokeId: long, returnValue: object): void
+- **OnRefChanged**(refName: string, refValue: object): void
+- **ResolveDisplay**(): string
+- **ResolveEventBehavior**(): ControlEventBehavior
+- **ResumeNotifications**(dataSource: object, notify: bool): void
+- **Serialize**(): string
+- **Serialize**(context: SerializationContext, propertyName: string): void
+- **SetPropertyValue**(item: object, property: PropertyInfo, value: object): void
+- **SetPropertyValue**(item: object, property: PropertyInfo, jsonElement: JsonElement): void
+- **SetResourceStringAsync**(grouping: string, json: string): Task<object>
+- **SetResourceStringAsync**(grouping: string, id: string, value: string): Task<object>
+- **SuspendNotifications**(dataSource: object): void
+- **TemplateContentType**(templateId: string): Type
+- **ToPascal**(value: string): string
+- **ToSpinal**(value: string): string
+- **TransformPotentialEnumValue**(key: string, value: object): object
+- **TransformSimpleKey**(key: string): string
+
+### [BaseRendererElement](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/BaseRendererElement)
+
+- **constructor**(): void
+- **ChildContent**: `RenderFragment`
+- **CurrParent**: `object`
+- **IgBlazor**: `IIgniteUIBlazor`
+- **IsComponentRooted**: `bool`
+- **MethodTarget**: `string`
+- **Name**: `string`
+- **Parent**: `object`
+- **ParentTypeName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **_cachedSerializedContent**: `string`
+- **_name**: `string`
+- **eventCallbacksCache**: `Dictionary<Type, Dictionary<string, FieldInfo>>`
+- **BuildRenderTree**(builder: RenderTreeBuilder): void
+- **CompareEventCallbacks<T>**(left: T, right: T, eventFieldsDictionary: Dictionary<Type, Dictionary<string, FieldInfo>>): bool
+- **EnsureModulesLoaded**(): void
+- **EnsureValid**(): void
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **InvokeMethod**(methodName: string, arguments: object[], types: string[], nativeElements: ElementReference[]): Task<object>
+- **InvokeMethodHelper**(target: string, methodName: string, arguments: object[], types: string[], nativeElements: ElementReference[]): Task<object>
+- **InvokeMethodHelperSync**(target: string, methodName: string, arguments: object[], types: string[], nativeElements: ElementReference[]): object
+- **InvokeMethodSync**(methodName: string, arguments: object[], types: string[], nativeElements: ElementReference[]): object
+- **IsPropDirty**(propertyName: string): bool
+- **OnElementNameChanged**(element: BaseRendererElement, oldName: string, newName: string): void
+- **Serialize**(): string
+- **Serialize**(context: SerializationContext, propertyName: string): void
+- **SetResourceStringAsync**(grouping: string, json: string): Task<object>
+- **SetResourceStringAsync**(grouping: string, id: string, value: string): Task<object>
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [ComponentRendererComponentChangedEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/ComponentRendererComponentChangedEventArgs)
+
+- **constructor**(): void
+- **NewComponent**: `object`
+- **OldComponent**: `object`
+
+### [DataIntentAttribute](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/DataIntentAttribute)
+
+- **constructor**(intent: string): void
+- **Intent**: `string`
+
+### [DynamicComponentChangingEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/DynamicComponentChangingEventArgs)
+
+- **constructor**(): void
+- **NewComponent**: `object`
+- **OldComponent**: `object`
+
+### [DynamicContentHolder](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/DynamicContentHolder)
+
+- **constructor**(): void
+- **DynamicContentInfo**: `List<DynamicContentInfo>`
+- **AddDynamicContent**(content: DynamicContentInfo): void
+- **BuildRenderTree**(__builder: RenderTreeBuilder): void
+- **OnDynamicChildRef**(refName: string, child: object): void
+- **OnInitialized**(): void
+- **RemoveDynamicContent**(content: DynamicContentInfo): void
+
+### [DynamicContentInfo](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/DynamicContentInfo)
+
+- **constructor**(): void
+- **Component**: `object`
+- **ControlType**: `Type`
+- **Owner**: `BaseRendererControl`
+- **RefDivName**: `string`
+- **RefName**: `string`
+- **OnComponentChanged**(oldValue: object, component: object): void
+- **UpdateContext**(context: object): void
+- **UpdateTemplate**(template: object): void
+
+### [DynamicContentInfo<T>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/DynamicContentInfo<T>)
+
+- **constructor**(): void
+- **Context**: `T`
+- **Template**: `RenderFragment<T>`
+- **OnComponentChanged**(oldValue: object, component: object): void
+- **UpdateContext**(context: object): void
+- **UpdateTemplate**(template: object): void
+
+### [IgbAccordion](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbAccordion)
+
+- **constructor**(): void
+- **Closed**: `EventCallback<IgbExpansionPanelComponentEventArgs>`
+- **ClosedScript**: `string`
+- **Closing**: `EventCallback<IgbExpansionPanelComponentEventArgs>`
+- **ClosingScript**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Opened**: `EventCallback<IgbExpansionPanelComponentEventArgs>`
+- **OpenedScript**: `string`
+- **Opening**: `EventCallback<IgbExpansionPanelComponentEventArgs>`
+- **OpeningScript**: `string`
+- **ParentTypeName**: `string`
+- **SingleExpand**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **HideAll**(): void
+- **HideAllAsync**(): Task
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **ShowAll**(): void
+- **ShowAllAsync**(): Task
+
+### [IgbAccordionModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbAccordionModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbActiveStepChangedEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbActiveStepChangedEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbActiveStepChangedEventArgsDetail`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbActiveStepChangedEventArgsDetail](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbActiveStepChangedEventArgsDetail)
+
+- **constructor**(): void
+- **Index**: `double`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbActiveStepChangingEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbActiveStepChangingEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbActiveStepChangingEventArgsDetail`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbActiveStepChangingEventArgsDetail](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbActiveStepChangingEventArgsDetail)
+
+- **constructor**(): void
+- **NewIndex**: `double`
+- **OldIndex**: `double`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbAvatar](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbAvatar)
+
+- **constructor**(): void
+- **Alt**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Initials**: `string`
+- **Shape**: `AvatarShape`
+- **Src**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbAvatarModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbAvatarModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbBadge](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbBadge)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Outlined**: `bool`
+- **Shape**: `BadgeShape`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Variant**: `StyleVariant`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbBadgeModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbBadgeModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbBanner](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbBanner)
+
+- **constructor**(): void
+- **Closed**: `EventCallback<IgbVoidEventArgs>`
+- **ClosedScript**: `string`
+- **Closing**: `EventCallback<IgbVoidEventArgs>`
+- **ClosingScript**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Open**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **Hide**(): bool
+- **HideAsync**(): Task<bool>
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **Show**(): bool
+- **ShowAsync**(): Task<bool>
+- **Toggle**(): bool
+- **ToggleAsync**(): Task<bool>
+
+### [IgbBannerModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbBannerModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbBaseAlertLike](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbBaseAlertLike)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **DisplayTime**: `double`
+- **KeepOpen**: `bool`
+- **Open**: `bool`
+- **Position**: `AbsolutePosition`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **FindByName**(name: string): object
+- **Hide**(): bool
+- **HideAsync**(): Task<bool>
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **Show**(): bool
+- **ShowAsync**(): Task<bool>
+- **Toggle**(): bool
+- **ToggleAsync**(): Task<bool>
+
+### [IgbBaseAlertLikeModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbBaseAlertLikeModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbBaseComboBoxLike](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbBaseComboBoxLike)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **EmitEvent**: `object`
+- **KeepOpenOnOutsideClick**: `bool`
+- **KeepOpenOnSelect**: `bool`
+- **Open**: `bool`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **Hide**(): bool
+- **HideAsync**(): Task<bool>
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **Show**(): bool
+- **ShowAsync**(): Task<bool>
+- **Toggle**(): bool
+- **ToggleAsync**(): Task<bool>
+
+### [IgbBaseComboBoxLikeModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbBaseComboBoxLikeModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbBaseOptionLike](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbBaseOptionLike)
+
+- **constructor**(): void
+- **Active**: `bool`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Selected**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Value**: `string`
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbBaseOptionLikeModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbBaseOptionLikeModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbButton](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbButton)
+
+- **constructor**(): void
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Variant**: `ButtonVariant`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+
+### [IgbButtonBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbButtonBase)
+
+- **constructor**(): void
+- **Blur**: `EventCallback<IgbVoidEventArgs>`
+- **BlurScript**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **DisplayType**: `ButtonBaseType`
+- **Download**: `string`
+- **Focus**: `EventCallback<IgbVoidEventArgs>`
+- **FocusScript**: `string`
+- **Href**: `string`
+- **Rel**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Target**: `ButtonBaseTarget`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **BlurComponent**(): void
+- **BlurComponentAsync**(): Task
+- **Click**(): void
+- **ClickAsync**(): Task
+- **FindByName**(name: string): object
+- **FocusComponent**(options: IgbFocusOptions): void
+- **FocusComponentAsync**(options: IgbFocusOptions): Task
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbButtonBaseModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbButtonBaseModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbButtonGroup](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbButtonGroup)
+
+- **constructor**(): void
+- **Alignment**: `ContentOrientation`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **Deselect**: `EventCallback<IgbComponentValueChangedEventArgs>`
+- **DeselectScript**: `string`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Select**: `EventCallback<IgbComponentValueChangedEventArgs>`
+- **SelectScript**: `string`
+- **SelectedItems**: `string[]`
+- **Selection**: `ButtonGroupSelection`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbButtonGroupModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbButtonGroupModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbButtonModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbButtonModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCalendar](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCalendar)
+
+- **constructor**(): void
+- **ActiveDate**: `DateTime`
+- **ActiveView**: `CalendarActiveView`
+- **Change**: `EventCallback<IgbComponentDataValueChangedEventArgs>`
+- **ChangeScript**: `string`
+- **FormatOptions**: `IgbCalendarFormatOptions`
+- **HeaderOrientation**: `CalendarHeaderOrientation`
+- **HideHeader**: `bool`
+- **HideOutsideDays**: `bool`
+- **Orientation**: `ContentOrientation`
+- **ResourceStrings**: `IgbCalendarResourceStrings`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **Value**: `DateTime`
+- **ValueChanged**: `EventCallback<DateTime>`
+- **Values**: `DateTime[]`
+- **ValuesChanged**: `EventCallback<DateTime[]>`
+- **VisibleMonths**: `double`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetCurrentValue**(): DateTime
+- **GetCurrentValueAsync**(): Task<DateTime>
+- **GetCurrentValues**(): DateTime[]
+- **GetCurrentValuesAsync**(): Task<DateTime[]>
+- **ResolveDisplay**(): string
+
+### [IgbCalendarBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCalendarBase)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DisabledDates**: `IgbDateRangeDescriptor[]`
+- **Locale**: `string`
+- **Selection**: `CalendarSelection`
+- **ShowWeekNumbers**: `bool`
+- **SpecialDates**: `IgbDateRangeDescriptor[]`
+- **Type**: `string`
+- **WeekStart**: `WeekDays`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbCalendarBaseModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCalendarBaseModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCalendarDate](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCalendarDate)
+
+- **constructor**(): void
+- **Date**: `DateTime`
+- **IsCurrentMonth**: `bool`
+- **IsNextMonth**: `bool`
+- **IsPrevMonth**: `bool`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbCalendarDateEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCalendarDateEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbCalendarDate`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbCalendarFormatOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCalendarFormatOptions)
+
+- **constructor**(): void
+- **Month**: `string`
+- **Type**: `string`
+- **Weekday**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbCalendarModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCalendarModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCalendarResourceStrings](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCalendarResourceStrings)
+
+- **constructor**(): void
+- **EndDate**: `string`
+- **NextMonth**: `string`
+- **NextYear**: `string`
+- **NextYears**: `string`
+- **PreviousMonth**: `string`
+- **PreviousYear**: `string`
+- **PreviousYears**: `string`
+- **SelectDate**: `string`
+- **SelectMonth**: `string`
+- **SelectRange**: `string`
+- **SelectYear**: `string`
+- **SelectedDate**: `string`
+- **StartDate**: `string`
+- **Type**: `string`
+- **WeekLabel**: `string`
+- **FindByName**(name: string): object
+
+### [IgbCard](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCard)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Elevated**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbCardActions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCardActions)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Orientation**: `ContentOrientation`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbCardActionsModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCardActionsModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCardContent](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCardContent)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbCardContentModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCardContentModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCardHeader](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCardHeader)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbCardHeaderModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCardHeaderModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCardMedia](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCardMedia)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbCardMediaModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCardMediaModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCardModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCardModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCarousel](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCarousel)
+
+- **constructor**(): void
+- **AnimationType**: `HorizontalTransitionAnimation`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **DisableLoop**: `bool`
+- **DisablePauseOnInteraction**: `bool`
+- **HideIndicators**: `bool`
+- **HideNavigation**: `bool`
+- **IndicatorsLabelFormat**: `string`
+- **IndicatorsOrientation**: `CarouselIndicatorsOrientation`
+- **Interval**: `double`
+- **MaximumIndicatorsCount**: `double`
+- **Paused**: `EventCallback<IgbVoidEventArgs>`
+- **PausedScript**: `string`
+- **Playing**: `EventCallback<IgbVoidEventArgs>`
+- **PlayingScript**: `string`
+- **SlideChanged**: `EventCallback<IgbNumberEventArgs>`
+- **SlideChangedScript**: `string`
+- **SlidesLabelFormat**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Vertical**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetCurrent**(): double
+- **GetCurrentAsync**(): Task<double>
+- **GetIsPaused**(): bool
+- **GetIsPausedAsync**(): Task<bool>
+- **GetIsPlaying**(): bool
+- **GetIsPlayingAsync**(): Task<bool>
+- **GetTotal**(): double
+- **GetTotalAsync**(): Task<double>
+- **Next**(): bool
+- **NextAsync**(): Task<bool>
+- **Pause**(): void
+- **PauseAsync**(): Task
+- **Play**(): void
+- **PlayAsync**(): Task
+- **Prev**(): bool
+- **PrevAsync**(): Task<bool>
+- **ResolveDisplay**(): string
+- **Select**(index: double, animationDirection: CarouselAnimationDirection): bool
+- **SelectAsync**(index: double, animationDirection: CarouselAnimationDirection): Task<bool>
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbCarouselIndicator](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCarouselIndicator)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbCarouselIndicatorModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCarouselIndicatorModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCarouselModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCarouselModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCarouselSlide](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCarouselSlide)
+
+- **constructor**(): void
+- **Active**: `bool`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbCarouselSlideModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCarouselSlideModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCheckbox](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCheckbox)
+
+- **constructor**(): void
+- **DirectRenderElementName**: `string`
+- **Indeterminate**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+
+### [IgbCheckboxBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCheckboxBase)
+
+- **constructor**(): void
+- **Blur**: `EventCallback<IgbVoidEventArgs>`
+- **BlurScript**: `string`
+- **Change**: `EventCallback<IgbCheckboxChangeEventArgs>`
+- **ChangeScript**: `string`
+- **Checked**: `bool`
+- **CheckedChanged**: `EventCallback<bool>`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Focus**: `EventCallback<IgbVoidEventArgs>`
+- **FocusScript**: `string`
+- **Invalid**: `bool`
+- **LabelPosition**: `ToggleLabelPosition`
+- **Required**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Value**: `string`
+- **BlurComponent**(): void
+- **BlurComponentAsync**(): Task
+- **CheckValidity**(): void
+- **CheckValidityAsync**(): Task
+- **Click**(): void
+- **ClickAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **FocusComponent**(options: IgbFocusOptions): void
+- **FocusComponentAsync**(options: IgbFocusOptions): Task
+- **GetCurrentChecked**(): bool
+- **GetCurrentCheckedAsync**(): Task<bool>
+- **ReportValidity**(): void
+- **ReportValidityAsync**(): Task
+- **ResolveDisplay**(): string
+- **SetCustomValidity**(message: string): void
+- **SetCustomValidityAsync**(message: string): Task
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbCheckboxBaseModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCheckboxBaseModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCheckboxChangeEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCheckboxChangeEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbCheckboxChangeEventArgsDetail`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbCheckboxChangeEventArgsDetail](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCheckboxChangeEventArgsDetail)
+
+- **constructor**(): void
+- **Checked**: `bool`
+- **Type**: `string`
+- **Value**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbCheckboxModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCheckboxModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbChip](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbChip)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Removable**: `bool`
+- **Remove**: `EventCallback<IgbComponentBoolValueChangedEventArgs>`
+- **RemoveScript**: `string`
+- **Select**: `EventCallback<IgbComponentBoolValueChangedEventArgs>`
+- **SelectScript**: `string`
+- **Selectable**: `bool`
+- **Selected**: `bool`
+- **SelectedChanged**: `EventCallback<bool>`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Variant**: `StyleVariant`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetCurrentSelected**(): bool
+- **GetCurrentSelectedAsync**(): Task<bool>
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbChipModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbChipModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCircularGradient](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCircularGradient)
+
+- **constructor**(): void
+- **Color**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Offset**: `string`
+- **Opacity**: `double`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbCircularGradientModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCircularGradientModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCircularProgress](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCircularProgress)
+
+- **constructor**(): void
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+
+### [IgbCircularProgressModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCircularProgressModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbComboChangeEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbComboChangeEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbComboChangeEventArgsDetail`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbComboChangeEventArgsDetail](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbComboChangeEventArgsDetail)
+
+- **constructor**(): void
+- **ChangeType**: `ComboChangeType`
+- **Items**: `object[]`
+- **ItemsScript**: `string`
+- **NewValue**: `object[]`
+- **NewValueScript**: `string`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbComboModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbComboModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbCombo<T>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCombo<T>)
+
+- **constructor**(): void
+- **Autofocus**: `bool`
+- **AutofocusList**: `bool`
+- **Blur**: `EventCallback<IgbVoidEventArgs>`
+- **BlurScript**: `string`
+- **CaseSensitiveIcon**: `bool`
+- **Change**: `EventCallback<IgbComboChangeEventArgs>`
+- **ChangeScript**: `string`
+- **Closed**: `EventCallback<IgbVoidEventArgs>`
+- **ClosedScript**: `string`
+- **Closing**: `EventCallback<IgbVoidEventArgs>`
+- **ClosingScript**: `string`
+- **Data**: `object`
+- **DataScript**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DisableFiltering**: `bool`
+- **Disabled**: `bool`
+- **DisplayKey**: `string`
+- **FilteringOptions**: `IgbFilteringOptions`
+- **Focus**: `EventCallback<IgbVoidEventArgs>`
+- **FocusScript**: `string`
+- **GroupHeaderTemplate**: `RenderFragment<object>`
+- **GroupHeaderTemplateScript**: `string`
+- **GroupKey**: `string`
+- **GroupSorting**: `GroupingDirection`
+- **Invalid**: `bool`
+- **ItemTemplate**: `RenderFragment<object>`
+- **ItemTemplateScript**: `string`
+- **Label**: `string`
+- **Open**: `bool`
+- **Opened**: `EventCallback<IgbVoidEventArgs>`
+- **OpenedScript**: `string`
+- **Opening**: `EventCallback<IgbVoidEventArgs>`
+- **OpeningScript**: `string`
+- **Outlined**: `bool`
+- **Placeholder**: `string`
+- **PlaceholderSearch**: `string`
+- **Required**: `bool`
+- **SingleSelect**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **Value**: `T[]`
+- **ValueChanged**: `EventCallback<T[]>`
+- **ValueKey**: `string`
+- **BlurComponent**(): void
+- **BlurComponentAsync**(): Task
+- **CheckValidity**(): void
+- **CheckValidityAsync**(): Task
+- **Deselect**(items: object[]): void
+- **DeselectAsync**(items: object[]): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **FocusComponent**(options: IgbFocusOptions): void
+- **FocusComponentAsync**(options: IgbFocusOptions): Task
+- **GetCurrentValue**(): T[]
+- **GetCurrentValueAsync**(): Task<T[]>
+- **GetSelection**(): object[]
+- **GetSelectionAsync**(): Task<object[]>
+- **Hide**(): bool
+- **HideAsync**(): Task<bool>
+- **ReportValidity**(): void
+- **ReportValidityAsync**(): Task
+- **ResolveDisplay**(): string
+- **Select**(items: object[]): void
+- **SelectAsync**(items: object[]): Task
+- **SetCustomValidity**(message: string): void
+- **SetCustomValidityAsync**(message: string): Task
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **Show**(): bool
+- **ShowAsync**(): Task<bool>
+- **Toggle**(): bool
+- **ToggleAsync**(): Task<bool>
+
+### [IgbComponentBoolValueChangedEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbComponentBoolValueChangedEventArgs)
+
+- **constructor**(): void
+- **Detail**: `bool`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbComponentDataValueChangedEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbComponentDataValueChangedEventArgs)
+
+- **constructor**(): void
+- **Detail**: `object`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbComponentDateValueChangedEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbComponentDateValueChangedEventArgs)
+
+- **constructor**(): void
+- **Detail**: `DateTime`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbComponentRendererContainer](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbComponentRendererContainer)
+
+- **constructor**(): void
+- **ComponentType**: `Type`
+- **RootComponent**: `object`
+- **BuildRenderTree**(builder: RenderTreeBuilder): void
+
+### [IgbComponentValueChangedEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbComponentValueChangedEventArgs)
+
+- **constructor**(): void
+- **Detail**: `string`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbCustomDateRange](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbCustomDateRange)
+
+- **constructor**(): void
+- **DateRange**: `IgbDateRangeValue`
+- **Label**: `string`
+- **Type**: `string`
+- **FindByName**(name: string): object
+
+### [IgbDatePartDeltas](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDatePartDeltas)
+
+- **constructor**(): void
+- **Date**: `double`
+- **Hours**: `double`
+- **Minutes**: `double`
+- **Month**: `double`
+- **Seconds**: `double`
+- **Type**: `string`
+- **Year**: `double`
+- **FindByName**(name: string): object
+
+### [IgbDatePicker](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDatePicker)
+
+- **constructor**(): void
+- **ActiveDate**: `DateTime`
+- **Change**: `EventCallback<IgbComponentDateValueChangedEventArgs>`
+- **ChangeScript**: `string`
+- **Closed**: `EventCallback<IgbVoidEventArgs>`
+- **ClosedScript**: `string`
+- **Closing**: `EventCallback<IgbVoidEventArgs>`
+- **ClosingScript**: `string`
+- **Disabled**: `bool`
+- **DisabledDates**: `IgbDateRangeDescriptor[]`
+- **DisplayFormat**: `string`
+- **HeaderOrientation**: `CalendarHeaderOrientation`
+- **HideHeader**: `bool`
+- **HideOutsideDays**: `bool`
+- **Input**: `EventCallback<IgbComponentDateValueChangedEventArgs>`
+- **InputFormat**: `string`
+- **InputScript**: `string`
+- **Invalid**: `bool`
+- **Label**: `string`
+- **Locale**: `string`
+- **Max**: `DateTime?`
+- **Min**: `DateTime?`
+- **Mode**: `PickerMode`
+- **NonEditable**: `bool`
+- **Opened**: `EventCallback<IgbVoidEventArgs>`
+- **OpenedScript**: `string`
+- **Opening**: `EventCallback<IgbVoidEventArgs>`
+- **OpeningScript**: `string`
+- **Orientation**: `ContentOrientation`
+- **Outlined**: `bool`
+- **Placeholder**: `string`
+- **Prompt**: `string`
+- **ReadOnly**: `bool`
+- **Required**: `bool`
+- **ResourceStrings**: `IgbCalendarResourceStrings`
+- **ShowWeekNumbers**: `bool`
+- **SpecialDates**: `IgbDateRangeDescriptor[]`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **Value**: `DateTime?`
+- **ValueChanged**: `EventCallback<DateTime?>`
+- **VisibleMonths**: `double`
+- **WeekStart**: `WeekDays`
+- **CheckValidity**(): void
+- **CheckValidityAsync**(): Task
+- **Clear**(): void
+- **ClearAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetCurrentValue**(): DateTime?
+- **GetCurrentValueAsync**(): Task<DateTime?>
+- **ReportValidity**(): void
+- **ReportValidityAsync**(): Task
+- **ResolveDisplay**(): string
+- **Select**(): void
+- **SelectAsync**(): Task
+- **SetCustomValidity**(message: string): void
+- **SetCustomValidityAsync**(message: string): Task
+- **SetRangeText**(replacement: string, start: double, end: double, mode: RangeTextSelectMode): void
+- **SetRangeTextAsync**(replacement: string, start: double, end: double, mode: RangeTextSelectMode): Task
+- **SetSelectionRange**(start: double, end: double, direction: SelectionRangeDirection): void
+- **SetSelectionRangeAsync**(start: double, end: double, direction: SelectionRangeDirection): Task
+- **StepDown**(datePart: DatePart, delta: double): void
+- **StepDownAsync**(datePart: DatePart, delta: double): Task
+- **StepUp**(datePart: DatePart, delta: double): void
+- **StepUpAsync**(datePart: DatePart, delta: double): Task
+
+### [IgbDatePickerModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDatePickerModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbDateRangeDescriptor](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDateRangeDescriptor)
+
+- **constructor**(): void
+- **DateRange**: `object`
+- **RangeType**: `DateRangeType`
+- **Type**: `string`
+- **FindByName**(name: string): object
+
+### [IgbDateRangePicker](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDateRangePicker)
+
+- **constructor**(): void
+- **ActiveDate**: `DateTime`
+- **Change**: `EventCallback<IgbDateRangeValueEventArgs>`
+- **ChangeScript**: `string`
+- **Closed**: `EventCallback<IgbVoidEventArgs>`
+- **ClosedScript**: `string`
+- **Closing**: `EventCallback<IgbVoidEventArgs>`
+- **ClosingScript**: `string`
+- **CustomRanges**: `IgbCustomDateRange[]`
+- **Disabled**: `bool`
+- **DisabledDates**: `IgbDateRangeDescriptor[]`
+- **DisplayFormat**: `string`
+- **HeaderOrientation**: `ContentOrientation`
+- **HideHeader**: `bool`
+- **HideOutsideDays**: `bool`
+- **Input**: `EventCallback<IgbDateRangeValueEventArgs>`
+- **InputFormat**: `string`
+- **InputScript**: `string`
+- **Invalid**: `bool`
+- **Label**: `string`
+- **LabelEnd**: `string`
+- **LabelStart**: `string`
+- **Locale**: `string`
+- **Max**: `DateTime?`
+- **Min**: `DateTime?`
+- **Mode**: `PickerMode`
+- **NonEditable**: `bool`
+- **Opened**: `EventCallback<IgbVoidEventArgs>`
+- **OpenedScript**: `string`
+- **Opening**: `EventCallback<IgbVoidEventArgs>`
+- **OpeningScript**: `string`
+- **Orientation**: `ContentOrientation`
+- **Outlined**: `bool`
+- **Placeholder**: `string`
+- **PlaceholderEnd**: `string`
+- **PlaceholderStart**: `string`
+- **Prompt**: `string`
+- **ReadOnly**: `bool`
+- **Required**: `bool`
+- **ResourceStrings**: `IgbDateRangePickerResourceStrings`
+- **ShowWeekNumbers**: `bool`
+- **SpecialDates**: `IgbDateRangeDescriptor[]`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UsePredefinedRanges**: `bool`
+- **UseTwoInputs**: `bool`
+- **Value**: `IgbDateRangeValue`
+- **ValueChanged**: `EventCallback<IgbDateRangeValue>`
+- **VisibleMonths**: `double`
+- **WeekStart**: `WeekDays`
+- **CheckValidity**(): void
+- **CheckValidityAsync**(): Task
+- **Clear**(): void
+- **ClearAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetCurrentValue**(): IgbDateRangeValue
+- **GetCurrentValueAsync**(): Task<IgbDateRangeValue>
+- **ReportValidity**(): void
+- **ReportValidityAsync**(): Task
+- **ResolveDisplay**(): string
+- **Select**(value: IgbDateRangeValue): void
+- **SelectAsync**(value: IgbDateRangeValue): Task
+- **SetCustomValidity**(message: string): void
+- **SetCustomValidityAsync**(message: string): Task
+
+### [IgbDateRangePickerModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDateRangePickerModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbDateRangePickerResourceStrings](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDateRangePickerResourceStrings)
+
+- **constructor**(): void
+- **Type**: `string`
+- **FindByName**(name: string): object
+
+### [IgbDateRangeValue](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDateRangeValue)
+
+- **constructor**(): void
+- **End**: `DateTime`
+- **Start**: `DateTime`
+- **Type**: `string`
+- **FindByName**(name: string): object
+
+### [IgbDateRangeValueDetail](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDateRangeValueDetail)
+
+- **constructor**(): void
+- **End**: `DateTime`
+- **Start**: `DateTime`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbDateRangeValueEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDateRangeValueEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbDateRangeValueDetail`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbDateTimeInput](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDateTimeInput)
+
+- **constructor**(): void
+- **Change**: `EventCallback<IgbComponentDateValueChangedEventArgs>`
+- **ChangeScript**: `string`
+- **DirectRenderElementName**: `string`
+- **DisplayFormat**: `string`
+- **InputFormat**: `string`
+- **Locale**: `string`
+- **Max**: `DateTime?`
+- **Min**: `DateTime?`
+- **SpinDelta**: `IgbDatePartDeltas`
+- **SpinLoop**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Value**: `DateTime?`
+- **ValueChanged**: `EventCallback<DateTime?>`
+- **Clear**(): void
+- **ClearAsync**(): Task
+- **ConnectedCallback**(): void
+- **ConnectedCallbackAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetCurrentValue**(): DateTime?
+- **GetCurrentValueAsync**(): Task<DateTime?>
+- **ResolveDisplay**(): string
+- **StepDown**(): void
+- **StepDown**(datePart: DatePart): void
+- **StepDown**(datePart: DatePart, delta: double): void
+- **StepDownAsync**(): Task
+- **StepDownAsync**(datePart: DatePart): Task
+- **StepDownAsync**(datePart: DatePart, delta: double): Task
+- **StepUp**(): void
+- **StepUp**(datePart: DatePart): void
+- **StepUp**(datePart: DatePart, delta: double): void
+- **StepUpAsync**(): Task
+- **StepUpAsync**(datePart: DatePart): Task
+- **StepUpAsync**(datePart: DatePart, delta: double): Task
+
+### [IgbDateTimeInputModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDateTimeInputModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbDialog](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDialog)
+
+- **constructor**(): void
+- **CloseOnOutsideClick**: `bool`
+- **Closed**: `EventCallback<IgbVoidEventArgs>`
+- **ClosedScript**: `string`
+- **Closing**: `EventCallback<IgbVoidEventArgs>`
+- **ClosingScript**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **HideDefaultAction**: `bool`
+- **KeepOpenOnEscape**: `bool`
+- **Open**: `bool`
+- **ReturnValue**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Title**: `string`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **Hide**(): bool
+- **HideAsync**(): Task<bool>
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **Show**(): bool
+- **ShowAsync**(): Task<bool>
+- **Toggle**(): bool
+- **ToggleAsync**(): Task<bool>
+
+### [IgbDialogModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDialogModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbDivider](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDivider)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **LineType**: `DividerType`
+- **Middle**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Vertical**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbDividerModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDividerModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbDragService](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDragService)
+
+- **constructor**(): void
+- **Type**: `string`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbDragServiceModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDragServiceModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbDropdown](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDropdown)
+
+- **constructor**(): void
+- **Change**: `EventCallback<IgbDropdownItemComponentEventArgs>`
+- **ChangeScript**: `string`
+- **Closed**: `EventCallback<IgbVoidEventArgs>`
+- **ClosedScript**: `string`
+- **Closing**: `EventCallback<IgbVoidEventArgs>`
+- **ClosingScript**: `string`
+- **ContentItems**: `IgbDropdownItemCollection`
+- **DirectRenderElementName**: `string`
+- **Distance**: `double`
+- **Flip**: `bool`
+- **Opened**: `EventCallback<IgbVoidEventArgs>`
+- **OpenedScript**: `string`
+- **Opening**: `EventCallback<IgbVoidEventArgs>`
+- **OpeningScript**: `string`
+- **ParentTypeName**: `string`
+- **Placement**: `PopoverPlacement`
+- **SameWidth**: `bool`
+- **ScrollStrategy**: `PopoverScrollStrategy`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **ClearSelection**(): void
+- **ClearSelectionAsync**(): Task
+- **DisconnectedCallback**(): void
+- **DisconnectedCallbackAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetGroups**(): IgbDropdownGroup[]
+- **GetGroupsAsync**(): Task<IgbDropdownGroup[]>
+- **GetItems**(): IgbDropdownItem[]
+- **GetItemsAsync**(): Task<IgbDropdownItem[]>
+- **GetSelectedItem**(): IgbDropdownItem
+- **GetSelectedItemAsync**(): Task<IgbDropdownItem>
+- **NavigateTo**(index: object): IgbDropdownItem
+- **NavigateToAsync**(index: object): Task<IgbDropdownItem>
+- **ResolveDisplay**(): string
+- **Select**(value: object): IgbDropdownItem
+- **SelectAsync**(value: object): Task<IgbDropdownItem>
+- **Show**(target_: object): void
+- **ShowAsync**(target_: object): Task
+- **Toggle**(target_: object): void
+- **ToggleAsync**(target_: object): Task
+
+### [IgbDropdownGroup](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDropdownGroup)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbDropdownGroupModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDropdownGroupModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbDropdownHeader](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDropdownHeader)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbDropdownHeaderModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDropdownHeaderModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbDropdownItem](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDropdownItem)
+
+- **constructor**(): void
+- **DirectRenderElementName**: `string`
+- **DropdownParent**: `BaseRendererControl`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Dispose**(): void
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **OnInitializedAsync**(): Task
+- **ResolveDisplay**(): string
+
+### [IgbDropdownItemCollection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDropdownItemCollection)
+
+- **constructor**(parent: object, propertyName: string): void
+
+### [IgbDropdownItemComponentEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDropdownItemComponentEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbDropdownItem`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbDropdownItemModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDropdownItemModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbDropdownModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbDropdownModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbExpansionPanel](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbExpansionPanel)
+
+- **constructor**(): void
+- **AccordionParent**: `BaseRendererControl`
+- **Closed**: `EventCallback<IgbExpansionPanelComponentEventArgs>`
+- **ClosedScript**: `string`
+- **Closing**: `EventCallback<IgbExpansionPanelComponentEventArgs>`
+- **ClosingScript**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **IndicatorPosition**: `ExpansionPanelIndicatorPosition`
+- **Open**: `bool`
+- **Opened**: `EventCallback<IgbExpansionPanelComponentEventArgs>`
+- **OpenedScript**: `string`
+- **Opening**: `EventCallback<IgbExpansionPanelComponentEventArgs>`
+- **OpeningScript**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **ConnectedCallback**(): void
+- **ConnectedCallbackAsync**(): Task
+- **Dispose**(): void
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **Hide**(): bool
+- **HideAsync**(): Task<bool>
+- **OnInitializedAsync**(): Task
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **Show**(): bool
+- **ShowAsync**(): Task<bool>
+- **Toggle**(): bool
+- **ToggleAsync**(): Task<bool>
+
+### [IgbExpansionPanelComponentEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbExpansionPanelComponentEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbExpansionPanel`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbExpansionPanelModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbExpansionPanelModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbFilteringOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbFilteringOptions)
+
+- **constructor**(): void
+- **Type**: `string`
+- **FindByName**(name: string): object
+
+### [IgbFocusOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbFocusOptions)
+
+- **constructor**(): void
+- **PreventScroll**: `bool`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbFormatSpecifier](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbFormatSpecifier)
+
+- **constructor**(): void
+- **Type**: `string`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **GetLocalCulture**(): string
+- **GetLocalCultureAsync**(): Task<string>
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbFormatSpecifierModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbFormatSpecifierModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbIcon](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbIcon)
+
+- **constructor**(): void
+- **Collection**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **IconName**: `string`
+- **Mirrored**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **ConnectedCallback**(): void
+- **ConnectedCallbackAsync**(): Task
+- **DisconnectedCallback**(): void
+- **DisconnectedCallbackAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **RegisterIcon**(name: string, url: string, collection: string): void
+- **RegisterIconAsync**(name: string, url: string, collection: string): Task
+- **RegisterIconFromText**(name: string, iconText: string, collection: string): void
+- **RegisterIconFromTextAsync**(name: string, iconText: string, collection: string): Task
+- **ResolveDisplay**(): string
+- **SetIconRef**(name: string, collection: string, icon: IgbIconMeta): void
+- **SetIconRefAsync**(name: string, collection: string, icon: IgbIconMeta): Task
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbIconButton](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbIconButton)
+
+- **constructor**(): void
+- **Collection**: `string`
+- **DirectRenderElementName**: `string`
+- **IconName**: `string`
+- **Mirrored**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Variant**: `IconButtonVariant`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **RegisterIcon**(name: string, url: string, collection: string): void
+- **RegisterIconAsync**(name: string, url: string, collection: string): Task
+- **RegisterIconFromText**(name: string, iconText: string, collection: string): void
+- **RegisterIconFromTextAsync**(name: string, iconText: string, collection: string): Task
+- **ResolveDisplay**(): string
+
+### [IgbIconButtonModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbIconButtonModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbIconMeta](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbIconMeta)
+
+- **constructor**(): void
+- **Collection**: `string`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbIconModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbIconModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbInput](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbInput)
+
+- **constructor**(): void
+- **Autocomplete**: `string`
+- **Autofocus**: `bool`
+- **Change**: `EventCallback<IgbComponentValueChangedEventArgs>`
+- **ChangeScript**: `string`
+- **DirectRenderElementName**: `string`
+- **DisplayType**: `InputType`
+- **InputMode**: `string`
+- **Max**: `double?`
+- **MaxLength**: `double?`
+- **Min**: `double?`
+- **MinLength**: `double?`
+- **Pattern**: `string`
+- **Step**: `double?`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **ValidateOnly**: `bool`
+- **Value**: `string`
+- **ValueChanged**: `EventCallback<string>`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetCurrentValue**(): string
+- **GetCurrentValueAsync**(): Task<string>
+- **ResolveDisplay**(): string
+- **Select**(): void
+- **SelectAsync**(): Task
+- **SetParametersAsync**(parameters: ParameterView): Task
+- **StepDown**(n: double): void
+- **StepDownAsync**(n: double): Task
+- **StepUp**(n: double): void
+- **StepUpAsync**(n: double): Task
+
+### [IgbInputBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbInputBase)
+
+- **constructor**(): void
+- **Blur**: `EventCallback<IgbVoidEventArgs>`
+- **BlurScript**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Focus**: `EventCallback<IgbVoidEventArgs>`
+- **FocusScript**: `string`
+- **InputOcurred**: `EventCallback<IgbComponentValueChangedEventArgs>`
+- **InputOcurredScript**: `string`
+- **Invalid**: `bool`
+- **Label**: `string`
+- **Outlined**: `bool`
+- **Placeholder**: `string`
+- **ReadOnly**: `bool`
+- **Required**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **ValueChanging**: `EventCallback<string>`
+- **BlurComponent**(): void
+- **BlurComponentAsync**(): Task
+- **CheckValidity**(): void
+- **CheckValidityAsync**(): Task
+- **FindByName**(name: string): object
+- **FocusComponent**(options: IgbFocusOptions): void
+- **FocusComponentAsync**(options: IgbFocusOptions): Task
+- **ReportValidity**(): void
+- **ReportValidityAsync**(): Task
+- **ResolveDisplay**(): string
+- **SetCustomValidity**(message: string): void
+- **SetCustomValidityAsync**(message: string): Task
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **SetParametersAsync**(parameters: ParameterView): Task
+- **SetRangeText**(replacement: string, start: double, end: double, selectMode: RangeTextSelectMode): void
+- **SetRangeTextAsync**(replacement: string, start: double, end: double, selectMode: RangeTextSelectMode): Task
+- **SetSelectionRange**(start: double, end: double, direction: SelectionRangeDirection): void
+- **SetSelectionRangeAsync**(start: double, end: double, direction: SelectionRangeDirection): Task
+
+### [IgbInputBaseModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbInputBaseModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbInputModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbInputModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbKeyBindingHandler](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbKeyBindingHandler)
+
+- **constructor**(): void
+- **Type**: `string`
+- **FindByName**(name: string): object
+
+### [IgbKeyBindingOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbKeyBindingOptions)
+
+- **constructor**(): void
+- **Type**: `string`
+- **FindByName**(name: string): object
+
+### [IgbLinearProgress](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbLinearProgress)
+
+- **constructor**(): void
+- **DirectRenderElementName**: `string`
+- **LabelAlign**: `LinearProgressLabelAlign`
+- **Striped**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+
+### [IgbLinearProgressModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbLinearProgressModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbList](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbList)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbListHeader](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbListHeader)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbListHeaderModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbListHeaderModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbListItem](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbListItem)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Selected**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbListItemModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbListItemModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbListModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbListModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbMaskInput](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbMaskInput)
+
+- **constructor**(): void
+- **Change**: `EventCallback<IgbComponentValueChangedEventArgs>`
+- **ChangeScript**: `string`
+- **DirectRenderElementName**: `string`
+- **Mask**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Value**: `string`
+- **ValueChanged**: `EventCallback<string>`
+- **ValueMode**: `MaskInputValueMode`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetCurrentValue**(): string
+- **GetCurrentValueAsync**(): Task<string>
+- **ResolveDisplay**(): string
+
+### [IgbMaskInputBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbMaskInputBase)
+
+- **constructor**(): void
+- **DirectRenderElementName**: `string`
+- **Prompt**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **ConnectedCallback**(): void
+- **ConnectedCallbackAsync**(): Task
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **Select**(): void
+- **SelectAsync**(): Task
+
+### [IgbMaskInputBaseModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbMaskInputBaseModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbMaskInputModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbMaskInputModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbNavDrawer](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbNavDrawer)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Open**: `bool`
+- **Position**: `NavDrawerPosition`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **Hide**(): bool
+- **HideAsync**(): Task<bool>
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **Show**(): bool
+- **ShowAsync**(): Task<bool>
+- **Toggle**(): bool
+- **ToggleAsync**(): Task<bool>
+
+### [IgbNavDrawerHeaderItem](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbNavDrawerHeaderItem)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbNavDrawerHeaderItemModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbNavDrawerHeaderItemModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbNavDrawerItem](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbNavDrawerItem)
+
+- **constructor**(): void
+- **Active**: `bool`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbNavDrawerItemModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbNavDrawerItemModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbNavDrawerModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbNavDrawerModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbNavbar](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbNavbar)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbNavbarModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbNavbarModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbNumberEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbNumberEventArgs)
+
+- **constructor**(): void
+- **Detail**: `double`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbNumberFormatSpecifier](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbNumberFormatSpecifier)
+
+- **constructor**(): void
+- **CompactDisplay**: `string`
+- **Currency**: `string`
+- **CurrencyCode**: `string`
+- **CurrencyDisplay**: `string`
+- **CurrencySign**: `string`
+- **Locale**: `string`
+- **LocaleMatcher**: `string`
+- **MaximumFractionDigits**: `int`
+- **MaximumSignificantDigits**: `int`
+- **MinimumFractionDigits**: `int`
+- **MinimumIntegerDigits**: `int`
+- **MinimumSignificantDigits**: `int`
+- **Notation**: `string`
+- **NumberingSystem**: `string`
+- **SignDisplay**: `string`
+- **Style**: `string`
+- **Type**: `string`
+- **Unit**: `string`
+- **UnitDisplay**: `string`
+- **UseGrouping**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbNumberFormatSpecifierModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbNumberFormatSpecifierModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbProgressBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbProgressBase)
+
+- **constructor**(): void
+- **AnimationDuration**: `double`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **HideLabel**: `bool`
+- **Indeterminate**: `bool`
+- **LabelFormat**: `string`
+- **Max**: `double`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Value**: `double`
+- **Variant**: `StyleVariant`
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbProgressBaseModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbProgressBaseModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbRadio](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRadio)
+
+- **constructor**(): void
+- **Blur**: `EventCallback<IgbVoidEventArgs>`
+- **BlurScript**: `string`
+- **Change**: `EventCallback<IgbRadioChangeEventArgs>`
+- **ChangeScript**: `string`
+- **Checked**: `bool`
+- **CheckedChanged**: `EventCallback<bool>`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Focus**: `EventCallback<IgbVoidEventArgs>`
+- **FocusScript**: `string`
+- **Invalid**: `bool`
+- **LabelPosition**: `ToggleLabelPosition`
+- **Required**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Value**: `string`
+- **BlurComponent**(): void
+- **BlurComponentAsync**(): Task
+- **CheckValidity**(): void
+- **CheckValidityAsync**(): Task
+- **Click**(): void
+- **ClickAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **FocusComponent**(options: IgbFocusOptions): void
+- **FocusComponentAsync**(options: IgbFocusOptions): Task
+- **GetCurrentChecked**(): bool
+- **GetCurrentCheckedAsync**(): Task<bool>
+- **ReportValidity**(): bool
+- **ReportValidityAsync**(): Task<bool>
+- **ResolveDisplay**(): string
+- **SetCustomValidity**(message: string): void
+- **SetCustomValidityAsync**(message: string): Task
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbRadioChangeEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRadioChangeEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbRadioChangeEventArgsDetail`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbRadioChangeEventArgsDetail](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRadioChangeEventArgsDetail)
+
+- **constructor**(): void
+- **Checked**: `bool`
+- **Type**: `string`
+- **Value**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbRadioGroup](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRadioGroup)
+
+- **constructor**(): void
+- **Alignment**: `ContentOrientation`
+- **Change**: `EventCallback<IgbRadioChangeEventArgs>`
+- **ChangeScript**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Value**: `string`
+- **ValueChanged**: `EventCallback<string>`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetCurrentValue**(): string
+- **GetCurrentValueAsync**(): Task<string>
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbRadioGroupModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRadioGroupModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbRadioModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRadioModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbRangeSlider](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRangeSlider)
+
+- **constructor**(): void
+- **Change**: `EventCallback<IgbRangeSliderValueEventArgs>`
+- **ChangeScript**: `string`
+- **DirectRenderElementName**: `string`
+- **Input**: `EventCallback<IgbRangeSliderValueEventArgs>`
+- **InputScript**: `string`
+- **Lower**: `double`
+- **SupportsVisualChildren**: `bool`
+- **ThumbLabelLower**: `string`
+- **ThumbLabelUpper**: `string`
+- **Type**: `string`
+- **Upper**: `double`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+
+### [IgbRangeSliderModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRangeSliderModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbRangeSliderValue](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRangeSliderValue)
+
+- **constructor**(): void
+- **Lower**: `double`
+- **Type**: `string`
+- **Upper**: `double`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbRangeSliderValueEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRangeSliderValueEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbRangeSliderValue`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbRating](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRating)
+
+- **constructor**(): void
+- **AllowReset**: `bool`
+- **Change**: `EventCallback<IgbNumberEventArgs>`
+- **ChangeScript**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Hover**: `EventCallback<IgbNumberEventArgs>`
+- **HoverPreview**: `bool`
+- **HoverScript**: `string`
+- **Invalid**: `bool`
+- **Label**: `string`
+- **Max**: `double`
+- **ReadOnly**: `bool`
+- **Single**: `bool`
+- **Step**: `double`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Value**: `double`
+- **ValueChanged**: `EventCallback<double>`
+- **ValueFormat**: `string`
+- **CheckValidity**(): void
+- **CheckValidityAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetCurrentValue**(): double
+- **GetCurrentValueAsync**(): Task<double>
+- **ReportValidity**(): void
+- **ReportValidityAsync**(): Task
+- **ResolveDisplay**(): string
+- **SetCustomValidity**(message: string): void
+- **SetCustomValidityAsync**(message: string): Task
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **SetParametersAsync**(parameters: ParameterView): Task
+- **StepDown**(n: double): void
+- **StepDownAsync**(n: double): Task
+- **StepUp**(n: double): void
+- **StepUpAsync**(n: double): Task
+
+### [IgbRatingModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRatingModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbRatingSymbol](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRatingSymbol)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **ConnectedCallback**(): void
+- **ConnectedCallbackAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbRatingSymbolModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRatingSymbolModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbRipple](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRipple)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbRippleModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbRippleModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbSelect](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSelect)
+
+- **constructor**(): void
+- **Autofocus**: `bool`
+- **Blur**: `EventCallback<IgbVoidEventArgs>`
+- **BlurScript**: `string`
+- **Change**: `EventCallback<IgbSelectItemComponentEventArgs>`
+- **ChangeScript**: `string`
+- **Closed**: `EventCallback<IgbVoidEventArgs>`
+- **ClosedScript**: `string`
+- **Closing**: `EventCallback<IgbVoidEventArgs>`
+- **ClosingScript**: `string`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Distance**: `double`
+- **Focus**: `EventCallback<IgbVoidEventArgs>`
+- **FocusScript**: `string`
+- **Invalid**: `bool`
+- **Label**: `string`
+- **Opened**: `EventCallback<IgbVoidEventArgs>`
+- **OpenedScript**: `string`
+- **Opening**: `EventCallback<IgbVoidEventArgs>`
+- **OpeningScript**: `string`
+- **Outlined**: `bool`
+- **ParentTypeName**: `string`
+- **Placeholder**: `string`
+- **Placement**: `PopoverPlacement`
+- **Required**: `bool`
+- **ScrollStrategy**: `PopoverScrollStrategy`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Value**: `string`
+- **ValueChanged**: `EventCallback<string>`
+- **BlurComponent**(): void
+- **BlurComponentAsync**(): Task
+- **CheckValidity**(): void
+- **CheckValidityAsync**(): Task
+- **ClearSelection**(): void
+- **ClearSelectionAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **FocusComponent**(options: IgbFocusOptions): void
+- **FocusComponentAsync**(options: IgbFocusOptions): Task
+- **GetCurrentValue**(): string
+- **GetCurrentValueAsync**(): Task<string>
+- **GetGroups**(): IgbSelectGroup[]
+- **GetGroupsAsync**(): Task<IgbSelectGroup[]>
+- **GetItems**(): IgbSelectItem[]
+- **GetItemsAsync**(): Task<IgbSelectItem[]>
+- **GetSelectedItem**(): IgbSelectItem
+- **GetSelectedItemAsync**(): Task<IgbSelectItem>
+- **ReportValidity**(): bool
+- **ReportValidityAsync**(): Task<bool>
+- **ResolveDisplay**(): string
+- **SetCustomValidity**(message: string): void
+- **SetCustomValidityAsync**(message: string): Task
+
+### [IgbSelectGroup](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSelectGroup)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Items**: `IgbSelectItem[]`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbSelectGroupModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSelectGroupModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbSelectHeader](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSelectHeader)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbSelectHeaderModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSelectHeaderModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbSelectItem](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSelectItem)
+
+- **constructor**(): void
+- **DirectRenderElementName**: `string`
+- **SelectParent**: `BaseRendererControl`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Dispose**(): void
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **OnInitializedAsync**(): Task
+- **ResolveDisplay**(): string
+
+### [IgbSelectItemComponentEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSelectItemComponentEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbSelectItem`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbSelectItemModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSelectItemModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbSelectModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSelectModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbSlider](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSlider)
+
+- **constructor**(): void
+- **Change**: `EventCallback<IgbNumberEventArgs>`
+- **ChangeScript**: `string`
+- **DirectRenderElementName**: `string`
+- **Input**: `EventCallback<IgbNumberEventArgs>`
+- **InputScript**: `string`
+- **Invalid**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Value**: `double`
+- **ValueChanged**: `EventCallback<double>`
+- **CheckValidity**(): void
+- **CheckValidityAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetCurrentValue**(): double
+- **GetCurrentValueAsync**(): Task<double>
+- **ReportValidity**(): void
+- **ReportValidityAsync**(): Task
+- **ResolveDisplay**(): string
+- **SetCustomValidity**(message: string): void
+- **SetCustomValidityAsync**(message: string): Task
+- **StepDown**(stepDecrement: double): void
+- **StepDownAsync**(stepDecrement: double): Task
+- **StepUp**(stepIncrement: double): void
+- **StepUpAsync**(stepIncrement: double): Task
+
+### [IgbSliderBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSliderBase)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **DiscreteTrack**: `bool`
+- **HidePrimaryLabels**: `bool`
+- **HideSecondaryLabels**: `bool`
+- **HideTooltip**: `bool`
+- **Locale**: `string`
+- **LowerBound**: `double`
+- **Max**: `double`
+- **Min**: `double`
+- **PrimaryTicks**: `double`
+- **SecondaryTicks**: `double`
+- **Step**: `double`
+- **SupportsVisualChildren**: `bool`
+- **TickLabelRotation**: `SliderTickLabelRotation`
+- **TickOrientation**: `SliderTickOrientation`
+- **Type**: `string`
+- **UpperBound**: `double`
+- **UseDirectRender**: `bool`
+- **ValueFormat**: `string`
+- **ValueFormatOptions**: `IgbNumberFormatSpecifier`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbSliderBaseModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSliderBaseModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbSliderLabel](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSliderLabel)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbSliderLabelModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSliderLabelModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbSliderModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSliderModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbSnackbar](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSnackbar)
+
+- **constructor**(): void
+- **Action**: `EventCallback<IgbVoidEventArgs>`
+- **ActionScript**: `string`
+- **ActionText**: `string`
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+
+### [IgbSnackbarModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSnackbarModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbStep](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbStep)
+
+- **constructor**(): void
+- **Active**: `bool`
+- **Complete**: `bool`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Invalid**: `bool`
+- **Optional**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbStepModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbStepModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbStepper](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbStepper)
+
+- **constructor**(): void
+- **ActiveStepChanged**: `EventCallback<IgbActiveStepChangedEventArgs>`
+- **ActiveStepChangedScript**: `string`
+- **ActiveStepChanging**: `EventCallback<IgbActiveStepChangingEventArgs>`
+- **ActiveStepChangingScript**: `string`
+- **AnimationDuration**: `double`
+- **ContentTop**: `bool`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **HorizontalAnimation**: `HorizontalTransitionAnimation`
+- **Linear**: `bool`
+- **Orientation**: `StepperOrientation`
+- **StepType**: `StepperStepType`
+- **Steps**: `IgbStep[]`
+- **SupportsVisualChildren**: `bool`
+- **TitlePosition**: `StepperTitlePosition`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **VerticalAnimation**: `StepperVerticalAnimation`
+- **ConnectedCallback**(): void
+- **ConnectedCallbackAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **NavigateTo**(index: double): void
+- **NavigateToAsync**(index: double): Task
+- **Next**(): void
+- **NextAsync**(): Task
+- **Prev**(): void
+- **PrevAsync**(): Task
+- **Reset**(): void
+- **ResetAsync**(): Task
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbStepperModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbStepperModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbSwitch](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSwitch)
+
+- **constructor**(): void
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+
+### [IgbSwitchModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbSwitchModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbTab](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTab)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Label**: `string`
+- **Selected**: `bool`
+- **SelectedChanged**: `EventCallback<bool>`
+- **SupportsVisualChildren**: `bool`
+- **TabsParent**: `BaseRendererControl`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Dispose**(): void
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **OnInitializedAsync**(): Task
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbTabComponentEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTabComponentEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbTab`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbTabHeaderElement](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTabHeaderElement)
+
+- **constructor**(): void
+- **DragService**: `IgbDragService`
+- **Type**: `string`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbTabHeaderElementModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTabHeaderElementModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbTabModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTabModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbTabs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTabs)
+
+- **constructor**(): void
+- **Activation**: `TabsActivation`
+- **ActualTabsCollection**: `IgbTabs_TabCollection`
+- **Alignment**: `TabsAlignment`
+- **Change**: `EventCallback<IgbTabComponentEventArgs>`
+- **ChangeScript**: `string`
+- **ContentTabsCollection**: `IgbTabs_TabCollection`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **ParentTypeName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **TabsCollection**: `IgbTabs_TabCollection`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetSelected**(): string
+- **GetSelectedAsync**(): Task<string>
+- **ResolveDisplay**(): string
+- **Select**(id: string): void
+- **SelectAsync**(id: string): Task
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbTabsModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTabsModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbTabs_TabCollection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTabs_TabCollection)
+
+- **constructor**(parent: object, propertyName: string): void
+
+### [IgbTemplateContent<T>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTemplateContent<T>)
+
+- **constructor**(): void
+- **Context**: `T`
+- **Template**: `RenderFragment<T>`
+- **BuildRenderTree**(__builder: RenderTreeBuilder): void
+- **Update**(): void
+
+### [IgbTextarea](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTextarea)
+
+- **constructor**(): void
+- **Autocapitalize**: `string`
+- **Autocomplete**: `string`
+- **Blur**: `EventCallback<IgbVoidEventArgs>`
+- **BlurScript**: `string`
+- **Change**: `EventCallback<IgbComponentValueChangedEventArgs>`
+- **ChangeScript**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Focus**: `EventCallback<IgbVoidEventArgs>`
+- **FocusScript**: `string`
+- **Input**: `EventCallback<IgbComponentValueChangedEventArgs>`
+- **InputMode**: `string`
+- **InputScript**: `string`
+- **Invalid**: `bool`
+- **Label**: `string`
+- **MaxLength**: `double`
+- **MinLength**: `double`
+- **Outlined**: `bool`
+- **Placeholder**: `string`
+- **ReadOnly**: `bool`
+- **Required**: `bool`
+- **Resize**: `TextareaResize`
+- **Rows**: `double`
+- **Spellcheck**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **ValidateOnly**: `bool`
+- **Value**: `string`
+- **ValueChanged**: `EventCallback<string>`
+- **Wrap**: `TextareaWrap`
+- **CheckValidity**(): void
+- **CheckValidityAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetCurrentValue**(): string
+- **GetCurrentValueAsync**(): Task<string>
+- **ReportValidity**(): void
+- **ReportValidityAsync**(): Task
+- **ResolveDisplay**(): string
+- **Select**(): void
+- **SelectAsync**(): Task
+- **SetCustomValidity**(message: string): void
+- **SetCustomValidityAsync**(message: string): Task
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **SetRangeText**(replacement: string, start: double, end: double, selectMode: RangeTextSelectMode): void
+- **SetRangeTextAsync**(replacement: string, start: double, end: double, selectMode: RangeTextSelectMode): Task
+- **SetSelectionRange**(start: double, end: double, direction: SelectionRangeDirection): void
+- **SetSelectionRangeAsync**(start: double, end: double, direction: SelectionRangeDirection): Task
+
+### [IgbTextareaModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTextareaModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbTile](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTile)
+
+- **constructor**(): void
+- **ColSpan**: `double`
+- **ColStart**: `double?`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **DisableFullscreen**: `bool`
+- **DisableMaximize**: `bool`
+- **DisableResize**: `bool`
+- **Maximized**: `bool`
+- **Position**: `double`
+- **RowSpan**: `double`
+- **RowStart**: `double?`
+- **SupportsVisualChildren**: `bool`
+- **TileDragCancel**: `EventCallback<IgbTileComponentEventArgs>`
+- **TileDragCancelScript**: `string`
+- **TileDragEnd**: `EventCallback<IgbTileComponentEventArgs>`
+- **TileDragEndScript**: `string`
+- **TileDragStart**: `EventCallback<IgbTileComponentEventArgs>`
+- **TileDragStartScript**: `string`
+- **TileFullscreen**: `EventCallback<IgbTileChangeStateEventArgs>`
+- **TileFullscreenScript**: `string`
+- **TileManagerParent**: `BaseRendererControl`
+- **TileMaximize**: `EventCallback<IgbTileChangeStateEventArgs>`
+- **TileMaximizeScript**: `string`
+- **TileResizeCancel**: `EventCallback<IgbTileComponentEventArgs>`
+- **TileResizeCancelScript**: `string`
+- **TileResizeEnd**: `EventCallback<IgbTileComponentEventArgs>`
+- **TileResizeEndScript**: `string`
+- **TileResizeStart**: `EventCallback<IgbTileComponentEventArgs>`
+- **TileResizeStartScript**: `string`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Dispose**(): void
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetFullscreen**(): bool
+- **GetFullscreenAsync**(): Task<bool>
+- **OnInitializedAsync**(): Task
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbTileChangeStateEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTileChangeStateEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbTileChangeStateEventArgsDetail`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbTileChangeStateEventArgsDetail](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTileChangeStateEventArgsDetail)
+
+- **constructor**(): void
+- **State**: `bool`
+- **Tile**: `IgbTile`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbTileComponentEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTileComponentEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbTile`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbTileManager](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTileManager)
+
+- **constructor**(): void
+- **ColumnCount**: `double`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **DragMode**: `TileManagerDragMode`
+- **Gap**: `string`
+- **MinColumnWidth**: `string`
+- **MinRowHeight**: `string`
+- **ParentTypeName**: `string`
+- **ResizeMode**: `TileManagerResizeMode`
+- **SupportsVisualChildren**: `bool`
+- **TileDragCancel**: `EventCallback<IgbTileComponentEventArgs>`
+- **TileDragCancelScript**: `string`
+- **TileDragEnd**: `EventCallback<IgbTileComponentEventArgs>`
+- **TileDragEndScript**: `string`
+- **TileDragStart**: `EventCallback<IgbTileComponentEventArgs>`
+- **TileDragStartScript**: `string`
+- **TileFullscreen**: `EventCallback<IgbTileChangeStateEventArgs>`
+- **TileFullscreenScript**: `string`
+- **TileMaximize**: `EventCallback<IgbTileChangeStateEventArgs>`
+- **TileMaximizeScript**: `string`
+- **TileResizeCancel**: `EventCallback<IgbTileComponentEventArgs>`
+- **TileResizeCancelScript**: `string`
+- **TileResizeEnd**: `EventCallback<IgbTileComponentEventArgs>`
+- **TileResizeEndScript**: `string`
+- **TileResizeStart**: `EventCallback<IgbTileComponentEventArgs>`
+- **TileResizeStartScript**: `string`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **GetTiles**(): IgbTile[]
+- **GetTilesAsync**(): Task<IgbTile[]>
+- **LoadLayout**(data: string): void
+- **LoadLayoutAsync**(data: string): Task
+- **ResolveDisplay**(): string
+- **SaveLayout**(): string
+- **SaveLayoutAsync**(): Task<string>
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbTileManagerModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTileManagerModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbTileModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTileModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbToast](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbToast)
+
+- **constructor**(): void
+- **DirectRenderElementName**: `string`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+
+### [IgbToastModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbToastModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbToggleButton](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbToggleButton)
+
+- **constructor**(): void
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Selected**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Value**: `string`
+- **BlurComponent**(): void
+- **BlurComponentAsync**(): Task
+- **Click**(): void
+- **ClickAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **FocusComponent**(options: IgbFocusOptions): void
+- **FocusComponentAsync**(options: IgbFocusOptions): Task
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbToggleButtonModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbToggleButtonModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbTooltip](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTooltip)
+
+- **constructor**(): void
+- **Anchor**: `string`
+- **Closed**: `EventCallback<IgbVoidEventArgs>`
+- **ClosedScript**: `string`
+- **Closing**: `EventCallback<IgbVoidEventArgs>`
+- **ClosingScript**: `string`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **DisableArrow**: `bool`
+- **HideDelay**: `double`
+- **HideTriggers**: `string`
+- **Message**: `string`
+- **Offset**: `double`
+- **Open**: `bool`
+- **Opened**: `EventCallback<IgbVoidEventArgs>`
+- **OpenedScript**: `string`
+- **Opening**: `EventCallback<IgbVoidEventArgs>`
+- **OpeningScript**: `string`
+- **Placement**: `PopoverPlacement`
+- **ShowDelay**: `double`
+- **ShowTriggers**: `string`
+- **Sticky**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **WithArrow**: `bool`
+- **EnsureModulesLoaded**(): void
+- **FindByName**(name: string): object
+- **Hide**(): bool
+- **HideAsync**(): Task<bool>
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **Show**(target: string): bool
+- **ShowAsync**(target: string): Task<bool>
+- **Toggle**(): bool
+- **ToggleAsync**(): Task<bool>
+
+### [IgbTooltipModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTooltipModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbTree](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTree)
+
+- **constructor**(): void
+- **ActiveItem**: `EventCallback<IgbTreeItemComponentEventArgs>`
+- **ActiveItemScript**: `string`
+- **ContentItems**: `IgbTreeItemCollection`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **ItemCollapsed**: `EventCallback<IgbTreeItemComponentEventArgs>`
+- **ItemCollapsedScript**: `string`
+- **ItemCollapsing**: `EventCallback<IgbTreeItemComponentEventArgs>`
+- **ItemCollapsingScript**: `string`
+- **ItemExpanded**: `EventCallback<IgbTreeItemComponentEventArgs>`
+- **ItemExpandedScript**: `string`
+- **ItemExpanding**: `EventCallback<IgbTreeItemComponentEventArgs>`
+- **ItemExpandingScript**: `string`
+- **ParentTypeName**: `string`
+- **Selection**: `TreeSelection`
+- **SelectionChanged**: `EventCallback<IgbTreeSelectionEventArgs>`
+- **SelectionChangedScript**: `string`
+- **SingleBranchExpand**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **ToggleNodeOnClick**: `bool`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **ConnectedCallback**(): void
+- **ConnectedCallbackAsync**(): Task
+- **EnsureModulesLoaded**(): void
+- **ExpandToItem**(item: IgbTreeItem): void
+- **ExpandToItemAsync**(item: IgbTreeItem): Task
+- **FindByName**(name: string): object
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+
+### [IgbTreeItem](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTreeItem)
+
+- **constructor**(): void
+- **Active**: `bool`
+- **DefaultEventBehavior**: `ControlEventBehavior`
+- **DirectRenderElementName**: `string`
+- **Disabled**: `bool`
+- **Expanded**: `bool`
+- **Label**: `string`
+- **Level**: `double`
+- **Loading**: `bool`
+- **Parent**: `IgbTreeItem`
+- **Selected**: `bool`
+- **SupportsVisualChildren**: `bool`
+- **TreeParent**: `BaseRendererControl`
+- **Type**: `string`
+- **UseDirectRender**: `bool`
+- **Value**: `object`
+- **Collapse**(): void
+- **CollapseAsync**(): Task
+- **CollapseWithEvent**(): void
+- **CollapseWithEventAsync**(): Task
+- **ConnectedCallback**(): void
+- **ConnectedCallbackAsync**(): Task
+- **DisconnectedCallback**(): void
+- **DisconnectedCallbackAsync**(): Task
+- **Dispose**(): void
+- **EnsureModulesLoaded**(): void
+- **Expand**(): void
+- **ExpandAsync**(): Task
+- **ExpandWithEvent**(): void
+- **ExpandWithEventAsync**(): Task
+- **FindByName**(name: string): object
+- **GetPath**(): IgbTreeItem[]
+- **GetPathAsync**(): Task<IgbTreeItem[]>
+- **OnInitializedAsync**(): Task
+- **ResolveDisplay**(): string
+- **SetNativeElement**(element: object): void
+- **SetNativeElementAsync**(element: object): Task
+- **Toggle**(): void
+- **ToggleAsync**(): Task
+
+### [IgbTreeItemCollection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTreeItemCollection)
+
+- **constructor**(parent: object, propertyName: string): void
+
+### [IgbTreeItemComponentEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTreeItemComponentEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbTreeItem`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbTreeItemModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTreeItemModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbTreeModule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTreeModule)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor): bool
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor): void
+- **Register**(runtime: IIgniteUIBlazor): void
+
+### [IgbTreeSelectionEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTreeSelectionEventArgs)
+
+- **constructor**(): void
+- **Detail**: `IgbTreeSelectionEventArgsDetail`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbTreeSelectionEventArgsDetail](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbTreeSelectionEventArgsDetail)
+
+- **constructor**(): void
+- **NewSelection**: `IgbTreeItem[]`
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgbVoidEventArgs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgbVoidEventArgs)
+
+- **constructor**(): void
+- **Type**: `string`
+- **FindByName**(name: string): object
+- **FromEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+- **ToEventJson**(control: BaseRendererControl, args: Dictionary<string, object>): void
+
+### [IgniteUIBlazor](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgniteUIBlazor)
+
+- **constructor**(runtime: IJSRuntime): void
+- **constructor**(runtime: IJSRuntime, settings: IIgniteUIBlazorSettings): void
+- **JsRuntime**: `IJSRuntime`
+- **Settings**: `IIgniteUIBlazorSettings`
+- **WebCallback**: `WebCallback`
+- **IsLoadRequested**(moduleName: string): bool
+- **IsRuntimeValid**(reevaluate: bool): bool
+- **MarkIsLoadRequested**(moduleName: string): void
+- **RequestLoad**(moduleName: string): void
+
+### [IgniteUIBlazorSettings](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgniteUIBlazorSettings)
+
+- **constructor**(): void
+- **ForceJsonDataMarshalling**: `bool`
+- **JsonSerializerOptions**: `IgniteUIJsonSerializerOptions`
+- **ModulesToLoad**: `ReadOnlyCollection<Type>`
+- **Create**(): IgniteUIBlazorSettings
+- **ShouldForceJsonDataMarshalling**(): IgniteUIBlazorSettings
+- **WithForceJsonDataMarshalling**(forceJsonDataMarshalling: bool): IgniteUIBlazorSettings
+- **WithJsonSerializerOptions**(options: IgniteUIJsonSerializerOptions): IgniteUIBlazorSettings
+- **WithModulesToLoad**(modulesToLoad: ReadOnlyCollection<Type>): IgniteUIBlazorSettings
+
+### [IgniteUIJsonSerializerOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/IgniteUIJsonSerializerOptions)
+
+- **constructor**(): void
+- **constructor**(options: IgniteUIJsonSerializerOptions): void
+- **constructor**(maxDepth: int): void
+- **MaxDepth**: `int`
+
+### [LocalJson](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/LocalJson)
+
+- **constructor**(json: string): void
+- **Json**: `string`
+- **From**(json: string): LocalJson
+
+### [MarshalByValueFactory](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/MarshalByValueFactory)
+
+- **constructor**(): void
+
+### [ModuleLoader](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/ModuleLoader)
+
+- **constructor**(): void
+- **IsLoadRequested**(runtime: IIgniteUIBlazor, moduleName: string): bool
+- **Load**(runtime: IIgniteUIBlazor, moduleName: string): void
+- **MarkIsLoadRequested**(runtime: IIgniteUIBlazor, moduleName: string): void
+
+### [RemoteJson](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/RemoteJson)
+
+- **constructor**(uri: string): void
+- **Uri**: `string`
+- **From**(uri: string): RemoteJson
+- **WithUri**(uri: string): RemoteJson
+
+### [SequenceInfo](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/SequenceInfo)
+
+- **AttributeKeys**: `ReadOnlyCollection<string>`
+- **MaxSequence**: `int`
+- **GetSequence**(key: string): int
+
+### [SerializationContext](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/SerializationContext)
+
+- **constructor**(writer: Utf8JsonWriter, filter: SerializationFilter): void
+- **Filter**: `SerializationFilter`
+- **Writer**: `Utf8JsonWriter`
+
+### [TypedDynamicContent](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/TypedDynamicContent)
+
+- **constructor**(t: Type): void
+- **GetInstanceAsync**(): Task<object>
+- **OnComponentChanged**(oldValue: object, component: object): void
+
+### [WCAttributeNameAttribute](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/WCAttributeNameAttribute)
+
+- **constructor**(alternateName: string): void
+- **Name**: `string`
+
+### [WCEnumNameAttribute](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/WCEnumNameAttribute)
+
+- **constructor**(alternateName: string): void
+- **Name**: `string`
+
+### [WCWidgetMemberNameAttribute](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/WCWidgetMemberNameAttribute)
+
+- **constructor**(alternateName: string): void
+- **Name**: `string`
+
+### [WebCallback](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/WebCallback)
+
+- **constructor**(): void
+- **IsReady**: `bool`
+- **AdjustDynamicContent**(containerId: string, contentType: string, templateId: string, contentId: string, actionType: string, args: string): void
+- **AdjustDynamicContentBatch**(containerId: string, batch: string): void
+- **OnInvokeReturn**(containerId: string, invokeId: long, returnValue: object): void
+- **OnRaiseEvent**(containerId: string, name: string, propertyName: string, args: string): void
+- **OnReady**(): void
+- **Register**(control: BaseRendererControl): void
+
+### [_Imports](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/_Imports)
+
+- **constructor**(): void
+- **Execute**(): void
+
+### [InfragisticsBlazorExtensions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/classes/InfragisticsBlazorExtensions)
+
+- **AddIgniteUIBlazor**(collection: IServiceCollection, settings: IIgniteUIBlazorSettings, modulesToLoad: Type[]): IServiceCollection
+- **AddIgniteUIBlazor**(collection: IServiceCollection, modulesToLoad: Type[]): IServiceCollection
+
+## Interfaces
+
+### [IDataIntentAttribute](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/interfaces/IDataIntentAttribute)
+
+- **Intent**: `string`
+
+### [IIgniteUIBlazor](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/interfaces/IIgniteUIBlazor)
+
+- **IsLoadRequested(string)**: `bool`
+- **IsRuntimeValid(bool)**: `bool`
+- **JsRuntime**: `IJSRuntime`
+- **MarkIsLoadRequested(string)**: `any`
+- **RequestLoad(string)**: `any`
+- **Settings**: `IIgniteUIBlazorSettings`
+- **WebCallback**: `WebCallback`
+
+### [IIgniteUIBlazorSettings](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/interfaces/IIgniteUIBlazorSettings)
+
+- **ForceJsonDataMarshalling**: `bool`
+- **JsonSerializerOptions**: `IgniteUIJsonSerializerOptions`
+- **ModulesToLoad**: `ReadOnlyCollection<Type>`
+
+### [JsonSerializable](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/interfaces/JsonSerializable)
+
+- **Serialize(SerializationContext, string)**: `any`
+
+## Enumerations
+
+### [AbsolutePosition](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/AbsolutePosition)
+
+- **Bottom**
+- **Middle**
+- **Top**
+
+### [AvatarShape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/AvatarShape)
+
+- **Circle**
+- **Rounded**
+- **Square**
+
+### [BadgeShape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/BadgeShape)
+
+- **Rounded**
+- **Square**
+
+### [ButtonBaseTarget](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/ButtonBaseTarget)
+
+- **_blank**
+- **_parent**
+- **_self**
+- **_top**
+
+### [ButtonBaseType](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/ButtonBaseType)
+
+- **Button**
+- **Reset**
+- **Submit**
+
+### [ButtonGroupSelection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/ButtonGroupSelection)
+
+- **Multiple**
+- **Single**
+- **SingleRequired**
+
+### [ButtonVariant](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/ButtonVariant)
+
+- **Contained**
+- **Fab**
+- **Flat**
+- **Outlined**
+
+### [CalendarActiveView](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/CalendarActiveView)
+
+- **Days**
+- **Months**
+- **Years**
+
+### [CalendarHeaderOrientation](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/CalendarHeaderOrientation)
+
+- **Horizontal**
+- **Vertical**
+
+### [CalendarSelection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/CalendarSelection)
+
+- **Multiple**
+- **Range**
+- **Single**
+
+### [CarouselAnimationDirection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/CarouselAnimationDirection)
+
+- **Next**
+- **Prev**
+
+### [CarouselIndicatorsOrientation](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/CarouselIndicatorsOrientation)
+
+- **End**
+- **Start**
+
+### [ComboChangeType](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/ComboChangeType)
+
+- **Addition**
+- **Deselection**
+- **Selection**
+
+### [ContentOrientation](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/ContentOrientation)
+
+- **Horizontal**
+- **Vertical**
+
+### [ControlEventBehavior](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/ControlEventBehavior)
+
+- **Auto**
+- **Immediate**
+- **Queued**
+
+### [DatePart](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/DatePart)
+
+- **AmPm**
+- **Date**
+- **Hours**
+- **Minutes**
+- **Month**
+- **Seconds**
+- **Year**
+
+### [DateRangeType](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/DateRangeType)
+
+- **After**
+- **Before**
+- **Between**
+- **Specific**
+- **Weekdays**
+- **Weekends**
+
+### [DividerType](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/DividerType)
+
+- **Dashed**
+- **Solid**
+
+### [ExpansionPanelIndicatorPosition](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/ExpansionPanelIndicatorPosition)
+
+- **End**
+- **None**
+- **Start**
+
+### [GroupingDirection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/GroupingDirection)
+
+- **Asc**
+- **Desc**
+- **None**
+
+### [HorizontalTransitionAnimation](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/HorizontalTransitionAnimation)
+
+- **Fade**
+- **None**
+- **Slide**
+
+### [IconButtonVariant](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/IconButtonVariant)
+
+- **Contained**
+- **Flat**
+- **Outlined**
+
+### [InputType](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/InputType)
+
+- **Email**
+- **Number**
+- **Password**
+- **Search**
+- **Tel**
+- **Text**
+- **Url**
+
+### [KeyBindingTrigger](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/KeyBindingTrigger)
+
+- **Keydown**
+- **KeydownRepeat**
+- **Keyup**
+
+### [LinearProgressLabelAlign](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/LinearProgressLabelAlign)
+
+- **Bottom**
+- **BottomEnd**
+- **BottomStart**
+- **Top**
+- **TopEnd**
+- **TopStart**
+
+### [MaskInputValueMode](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/MaskInputValueMode)
+
+- **Raw**
+- **WithFormatting**
+
+### [NavDrawerPosition](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/NavDrawerPosition)
+
+- **Bottom**
+- **End**
+- **Relative**
+- **Start**
+- **Top**
+
+### [PaneActionBehavior](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/PaneActionBehavior)
+
+- **AllPanes**
+- **SelectedPane**
+
+### [PickerMode](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/PickerMode)
+
+- **Dialog**
+- **Dropdown**
+
+### [PopoverPlacement](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/PopoverPlacement)
+
+- **Bottom**
+- **BottomEnd**
+- **BottomStart**
+- **Left**
+- **LeftEnd**
+- **LeftStart**
+- **Right**
+- **RightEnd**
+- **RightStart**
+- **Top**
+- **TopEnd**
+- **TopStart**
+
+### [PopoverScrollStrategy](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/PopoverScrollStrategy)
+
+- **Block**
+- **Close**
+- **Scroll**
+
+### [RangeTextSelectMode](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/RangeTextSelectMode)
+
+- **End**
+- **Preserve**
+- **Select**
+- **Start**
+
+### [ResizerLocation](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/ResizerLocation)
+
+- **Bottom**
+- **BottomLeft**
+- **BottomRight**
+- **Left**
+- **Right**
+- **Top**
+- **TopLeft**
+- **TopRight**
+
+### [RoundTripDateConversion](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/RoundTripDateConversion)
+
+- **Auto**
+- **Local**
+- **UTC**
+
+### [SelectionRangeDirection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/SelectionRangeDirection)
+
+- **Backward**
+- **Forward**
+- **None**
+
+### [SliderTickLabelRotation](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/SliderTickLabelRotation)
+
+- **NegativeNinety**
+- **Ninety**
+- **Zero**
+
+### [SliderTickOrientation](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/SliderTickOrientation)
+
+- **End**
+- **Mirror**
+- **Start**
+
+### [StepperOrientation](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/StepperOrientation)
+
+- **Horizontal**
+- **Vertical**
+
+### [StepperStepType](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/StepperStepType)
+
+- **Full**
+- **Indicator**
+- **Title**
+
+### [StepperTitlePosition](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/StepperTitlePosition)
+
+- **Auto**
+- **Bottom**
+- **End**
+- **Start**
+- **Top**
+
+### [StepperVerticalAnimation](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/StepperVerticalAnimation)
+
+- **Fade**
+- **Grow**
+- **None**
+
+### [StyleVariant](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/StyleVariant)
+
+- **Danger**
+- **Info**
+- **Primary**
+- **Success**
+- **Warning**
+
+### [TabsActivation](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/TabsActivation)
+
+- **Auto**
+- **Manual**
+
+### [TabsAlignment](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/TabsAlignment)
+
+- **Center**
+- **End**
+- **Justify**
+- **Start**
+
+### [TextareaResize](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/TextareaResize)
+
+- **Auto**
+- **None**
+- **Vertical**
+
+### [TextareaWrap](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/TextareaWrap)
+
+- **Hard**
+- **Off**
+- **Soft**
+
+### [TileManagerDragMode](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/TileManagerDragMode)
+
+- **None**
+- **Tile**
+- **TileHeader**
+
+### [TileManagerResizeMode](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/TileManagerResizeMode)
+
+- **Always**
+- **Hover**
+- **None**
+
+### [ToggleLabelPosition](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/ToggleLabelPosition)
+
+- **After**
+- **Before**
+
+### [TreeSelection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/TreeSelection)
+
+- **Cascade**
+- **Multiple**
+- **None**
+
+### [UnpinnedLocation](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/UnpinnedLocation)
+
+- **Bottom**
+- **Left**
+- **Right**
+- **Top**
+
+### [WeekDays](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/25.1.x/enums/WeekDays)
+
+- **Friday**
+- **Monday**
+- **Saturday**
+- **Sunday**
+- **Thursday**
+- **Tuesday**
+- **Wednesday**
