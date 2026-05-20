@@ -1,0 +1,40 @@
+# igniteui-webcomponents API (stub)
+
+### [IgcCheckboxComponent](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html)
+
+A two-state checkbox custom element with form-association support.
+
+## Properties
+
+- **checked** `boolean` — Whether the checkbox is in the checked state. Defaults to `false`.
+- **disabled** `boolean` — Whether the checkbox is disabled and not interactive.
+- **indeterminate** `boolean` — Sets the indeterminate (tri-state) visual state.
+- **labelPosition** `'before' | 'after'` — Position of the label relative to the checkbox indicator.
+- **name** `string` — The name attribute used in form submission.
+- **required** `boolean` — Marks the checkbox as required for form validation.
+- **value** `string` — The value submitted with the parent form when checked.
+
+## Methods
+
+- **click()** — Programmatically toggles the checkbox.
+- **reportValidity(): boolean** — Triggers a validity check and reports messages.
+- **setCustomValidity(message: string): void** — Sets a custom validation message.
+
+## Events
+
+- **igcChange** — Fired when the checked state changes through user interaction.
+- **igcFocus** — Fired when the element receives focus.
+- **igcBlur** — Fired when the element loses focus.
+
+### [IgcSwitchComponent](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html)
+
+A two-state toggle switch element.
+
+## Properties
+
+- **checked** `boolean` — Whether the switch is on.
+- **disabled** `boolean` — Whether the switch is disabled.
+
+## Events
+
+- **igcChange** — Fired when the switch is toggled.

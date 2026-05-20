@@ -1,0 +1,4632 @@
+# Ignite UI for Angular v9.0.x — Full API Reference
+
+> Complete API reference for the Ignite UI for Angular package (9.0.x). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: Angular
+Package: igniteui-angular
+Version: 9.0.x
+
+## Classes
+
+### [AbsoluteScrollStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/AbsoluteScrollStrategy)
+
+- **constructor**(scrollContainer?: HTMLElement): AbsoluteScrollStrategy
+- **attach**(): void
+- **detach**(): void
+- **initialize**(document: Document, overlayService: IgxOverlayService, id: string): void
+
+### [AutoPositionStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/AutoPositionStrategy)
+
+- **constructor**(settings?: PositionSettings): AutoPositionStrategy
+
+### [BaseFilteringStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/BaseFilteringStrategy)
+
+- **filter**(data: any[], expressionsTree: IFilteringExpressionsTree, advancedExpressionsTree?: IFilteringExpressionsTree): any[]
+- **findMatchByExpression**(rec: object, expr: IFilteringExpression): boolean
+- **matchRecord**(rec: object, expressions: IFilteringExpressionsTree | IFilteringExpression): boolean
+
+### [BaseFitPositionStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/BaseFitPositionStrategy)
+
+- **constructor**(settings?: PositionSettings): BaseFitPositionStrategy
+- **position**(contentElement: HTMLElement, size: Size, document?: Document, initialCall?: boolean): void
+
+### [BlockScrollStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/BlockScrollStrategy)
+
+- **constructor**(scrollContainer?: HTMLElement): BlockScrollStrategy
+- **attach**(): void
+- **detach**(): void
+- **initialize**(document: Document, overlayService: IgxOverlayService, id: string): void
+
+### [Calendar](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/Calendar)
+
+- **constructor**(firstWeekDay: number | WEEKDAYS): Calendar
+- **firstWeekDay**: `any`
+- **formatToParts**(date: Date, locale: string, options: any, parts: string[]): any
+- **getFirstViewDate**(date: Date, interval: string, activeViewIdx: number): Date
+- **getNextMonth**(date: Date): Date
+- **getNextYear**(date: Date): Date
+- **getPrevMonth**(date: Date): Date
+- **getPrevYear**(date: Date): Date
+- **monthdates**(year: number, month: number, extraWeek: boolean): ICalendarDate[]
+- **monthdatescalendar**(year: number, month: number, extraWeek: boolean): ICalendarDate[][]
+- **timedelta**(date: Date, interval: string, units: number): Date
+- **weekdays**(): number[]
+
+### [CalendarHammerConfig](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/CalendarHammerConfig)
+
+
+### [CarouselHammerConfig](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/CarouselHammerConfig)
+
+
+### [CloseScrollStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/CloseScrollStrategy)
+
+- **constructor**(scrollContainer?: HTMLElement): CloseScrollStrategy
+- **attach**(): void
+- **detach**(): void
+- **initialize**(document: Document, overlayService: IgxOverlayService, id: string): void
+
+### [ConnectedPositioningStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/ConnectedPositioningStrategy)
+
+- **constructor**(settings?: PositionSettings): ConnectedPositioningStrategy
+- **settings**: `PositionSettings`
+- **clone**(): IPositionStrategy
+- **position**(contentElement: HTMLElement, size: Size, document?: Document, initialCall?: boolean): void
+
+### [ContainerPositionStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/ContainerPositionStrategy)
+
+- **constructor**(settings?: PositionSettings): ContainerPositionStrategy
+- **position**(contentElement: HTMLElement, size?: Size, document?: Document, initialCall?: boolean): void
+
+### [CustomFilteringStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/CustomFilteringStrategy)
+
+- **constructor**(): CustomFilteringStrategy
+- **filter**(data: any[], expressionsTree: IFilteringExpressionsTree): any[]
+
+### [DefaultSortingStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/DefaultSortingStrategy)
+
+- **compareValues**(a: any, b: any): 1 | 0 | -1
+- **sort**(data: any[], fieldName: string, dir: SortingDirection, ignoreCase: boolean, valueResolver: any): any[]
+- static **instance**(): DefaultSortingStrategy
+
+### [DisplayContainerComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/DisplayContainerComponent)
+
+- **constructor**(cdr: ChangeDetectorRef, _viewContainer: ViewContainerRef): DisplayContainerComponent
+- **_vcr**: `any`
+- **_viewContainer**: `ViewContainerRef`
+- **cdr**: `ChangeDetectorRef`
+- **cssClass**: `string`
+- **notVirtual**: `boolean`
+- **scrollContainer**: `any`
+- **scrollDirection**: `string`
+
+### [DisplayDensityBase](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/DisplayDensityBase)
+
+- **constructor**(displayDensityOptions: IDisplayDensityOptions): DisplayDensityBase
+- **onDensityChanged**: `EventEmitter<IDensityChangedEventArgs>`
+- **displayDensity**: `any`
+- **ngDoCheck**(): void
+
+### [ElasticPositionStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/ElasticPositionStrategy)
+
+- **constructor**(settings?: PositionSettings): ElasticPositionStrategy
+
+### [FilteringExpressionsTree](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/FilteringExpressionsTree)
+
+- **constructor**(operator: FilteringLogic, fieldName?: string): FilteringExpressionsTree
+- **fieldName**: `string`
+- **filteringOperands**: `IFilteringExpressionsTree | IFilteringExpression[]`
+- **operator**: `FilteringLogic`
+- **type**: `FilteringExpressionsTreeType`
+- **find**(fieldName: string): IFilteringExpressionsTree | IFilteringExpression
+- **findIndex**(fieldName: string): number
+- static **empty**(expressionTree: IFilteringExpressionsTree): boolean
+
+### [FilteringStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/FilteringStrategy)
+
+- **constructor**(): FilteringStrategy
+- **filter**(data: T[], expressionsTree: IFilteringExpressionsTree, advancedExpressionsTree?: IFilteringExpressionsTree): T[]
+- static **instance**(): FilteringStrategy
+
+### [GlobalPositionStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/GlobalPositionStrategy)
+
+- **constructor**(settings?: PositionSettings): GlobalPositionStrategy
+- **settings**: `PositionSettings`
+- **clone**(): IPositionStrategy
+- **position**(contentElement: HTMLElement, size?: Size, document?: Document, initialCall?: boolean): void
+
+### [HelperTestFunctions](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/HelperTestFunctions)
+
+- static **CALENDAR**: `string`
+- static **CALENDAR_COLUMN_CSSCLASS**: `string`
+- static **CALENDAR_CSSCLASS**: `string`
+- static **CALENDAR_DATE_CSSCLASS**: `string`
+- static **CALENDAR_HEADER_CSSCLASS**: `string`
+- static **CALENDAR_HEADER_DATE_CSSCLASS**: `string`
+- static **CALENDAR_HEADER_YEAR_CSSCLASS**: `string`
+- static **CALENDAR_NEXT_BUTTON_CSSCLASS**: `string`
+- static **CALENDAR_PREV_BUTTON_CSSCLASS**: `string`
+- static **CALENDAR_ROW_CSSCLASS**: `string`
+- static **CALENDAR_ROW_WRAP_CSSCLASS**: `string`
+- static **CALENDAR_SUBHEADERS_SELECTOR**: `string`
+- static **CURRENT_DATE_CSSCLASS**: `string`
+- static **CURRENT_MONTH_CSSCLASS**: `string`
+- static **CURRENT_YEAR_CSSCLASS**: `string`
+- static **DAYS_VIEW**: `string`
+- static **DAY_CSSCLASS**: `string`
+- static **HIDDEN_DAYS_CSSCLASS**: `string`
+- static **ICON_CSSCLASS**: `string`
+- static **INACTIVE_DAYS_CSSCLASS**: `string`
+- static **MODAL_OVERLAY_CSSCLASS**: `string`
+- static **MONTH_CSSCLASS**: `string`
+- static **OVERLAY_CSSCLASS**: `string`
+- static **RANGE_CSSCLASS**: `string`
+- static **SELECTED_DATE**: `string`
+- static **SELECTED_DATE_CSSCLASS**: `string`
+- static **VERTICAL_CALENDAR_CSSCLASS**: `string`
+- static **WEEKSTART_LABEL_CSSCLASS**: `string`
+- static **YEAR_CSSCLASS**: `string`
+- static **getCalendarSubHeader**(fixture: any): HTMLElement
+- static **getCurrentYearsFromYearView**(fixture: any): any
+- static **getHiddenDays**(fixture: any, monthNumber: number): any
+- static **getInactiveDays**(fixture: any, monthNumber: number): any
+- static **getMonthView**(fixture: any, monthsViewNumber: number): any
+- static **getMonthViewDates**(fixture: any, monthsViewNumber: number): any
+- static **getMonthViewInactiveDates**(fixture: any, monthsViewNumber: number): any
+- static **getMonthViewSelectedDates**(fixture: any, monthsViewNumber: number): any
+- static **getMonthsFromMonthView**(fixture: any): any
+- static **getNexArrowElement**(fixture: any): any
+- static **getPreviousArrowElement**(fixture: any): any
+- static **getYearsFromYearView**(fixture: any): any
+- static **verifyCalendarHeader**(fixture: any, selectedDate: Date): void
+- static **verifyCalendarSubHeader**(fixture: any, monthNumber: number, viewDate: Date): void
+- static **verifyCalendarSubHeaders**(fixture: any, viewDates: Date[]): void
+- static **verifyDateNotSelected**(el: any): void
+- static **verifyDateSelected**(el: any): void
+- static **verifyMonthsViewNumber**(fixture: any, monthsView: number, checkCurrentDate: boolean): void
+- static **verifyNoRangeSelectionCreated**(fixture: any, monthNumber: number): void
+
+### [IgxActionIconDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxActionIconDirective)
+
+
+### [IgxAdvancedFilteringDialogComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxAdvancedFilteringDialogComponent)
+
+- **constructor**(cdr: ChangeDetectorRef): IgxAdvancedFilteringDialogComponent
+- **cdr**: `ChangeDetectorRef`
+- **grid**: `any`
+
+### [IgxAppendDropStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxAppendDropStrategy)
+
+- **constructor**(_renderer: Renderer2): IgxAppendDropStrategy
+- **dropAction**(drag: IgxDragDirective, drop: IgxDropDirective, atIndex: number): void
+
+### [IgxAutocompleteDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxAutocompleteDirective)
+
+- **constructor**(ngModel: NgModel, formControl: FormControlName, group: IgxInputGroupComponent, elementRef: ElementRef, cdr: ChangeDetectorRef): IgxAutocompleteDirective
+- **autocompleteSettings**: `AutocompleteOverlaySettings`
+- **disabled**: `boolean`
+- **onItemSelected**: `EventEmitter<AutocompleteItemSelectionEventArgs>`
+- **target**: `IgxDropDownComponent`
+- **close**(): void
+- **open**(): void
+
+### [IgxAvatarComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxAvatarComponent)
+
+- **constructor**(elementRef: ElementRef): IgxAvatarComponent
+- **ariaLabel**: `string`
+- **bgColor**: `string`
+- **color**: `string`
+- **cssClass**: `string`
+- **elementRef**: `ElementRef`
+- **icon**: `string`
+- **id**: `string`
+- **image**: `ElementRef`
+- **initials**: `string`
+- **role**: `string`
+- **roleDescription**: `string`
+- **roundShape**: `boolean`
+- **src**: `string`
+- **size**: `any`
+- **template**: `any`
+- **type**: `any`
+- **getSrcUrl**(): string
+
+### [IgxBadgeComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxBadgeComponent)
+
+- **cssClass**: `string`
+- **icon**: `string`
+- **id**: `string`
+- **label**: `string`
+- **role**: `string`
+- **type**: `string | IgxBadgeType`
+- **value**: `string`
+
+### [IgxBannerActionsDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxBannerActionsDirective)
+
+
+### [IgxBannerComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxBannerComponent)
+
+- **constructor**(elementRef: ElementRef): IgxBannerComponent
+- **elementRef**: `ElementRef`
+- **onClosed**: `EventEmitter<BannerEventArgs>`
+- **onClosing**: `EventEmitter<BannerCancelEventArgs>`
+- **onOpened**: `EventEmitter<BannerEventArgs>`
+- **onOpening**: `EventEmitter<BannerCancelEventArgs>`
+- **animationSettings**: `any`
+- **collapsed**: `any`
+- **element**: `any`
+- **close**(event?: Event): void
+- **open**(event?: Event): void
+- **toggle**(event?: Event): void
+
+### [IgxBaseExporter](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxBaseExporter)
+
+- **onColumnExport**: `EventEmitter<IColumnExportingEventArgs>`
+- **onRowExport**: `EventEmitter<IRowExportingEventArgs>`
+- **export**(grid: any, options: IgxExporterOptionsBase): void
+- **exportData**(data: any[], options: IgxExporterOptionsBase): void
+
+### [IgxBaseTransactionService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxBaseTransactionService)
+
+- **onStateUpdate**: `EventEmitter<void>`
+- **canRedo**: `any`
+- **canUndo**: `any`
+- **enabled**: `any`
+- **add**(transaction: T, recordRef?: any): void
+- **clear**(id?: any): void
+- **commit**(data: any[], id?: any): void
+- **endPending**(commit: boolean): void
+- **getAggregatedChanges**(mergeChanges: boolean): T[]
+- **getAggregatedValue**(id: any, mergeChanges: boolean): any
+- **getState**(id: any): S
+- **getTransactionLog**(id?: any): T[]
+- **redo**(): void
+- **startPending**(): void
+- **undo**(): void
+
+### [IgxBooleanFilteringOperand](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxBooleanFilteringOperand)
+
+- **constructor**(): IgxBooleanFilteringOperand
+
+### [IgxBottomNavComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxBottomNavComponent)
+
+- **constructor**(_element: ElementRef): IgxBottomNavComponent
+- **contentTabs**: `QueryList<IgxTabComponent>`
+- **id**: `string`
+- **onTabDeselected**: `EventEmitter<ISelectTabEventArgs>`
+- **onTabSelected**: `EventEmitter<ISelectTabEventArgs>`
+- **panels**: `QueryList<IgxTabPanelComponent>`
+- **selectedIndex**: `number`
+- **viewTabs**: `QueryList<IgxTabComponent>`
+- **itemStyle**: `any`
+- **selectedTab**: `any`
+- **tabs**: `any`
+
+### [IgxButtonDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxButtonDirective)
+
+- **constructor**(element: ElementRef, _renderer: Renderer2, _displayDensityOptions: IDisplayDensityOptions): IgxButtonDirective
+- **buttonClick**: `EventEmitter<any>`
+- **element**: `ElementRef`
+- **role**: `string`
+- **selected**: `boolean`
+- **background**: `any`
+- **color**: `any`
+- **disabled**: `any`
+- **label**: `any`
+- **nativeElement**: `any`
+- **type**: `any`
+
+### [IgxButtonGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxButtonGroupComponent)
+
+- **constructor**(_cdr: ChangeDetectorRef, _renderer: Renderer2, _displayDensityOptions: IDisplayDensityOptions): IgxButtonGroupComponent
+- **id**: `string`
+- **multiSelection**: `boolean`
+- **onSelect**: `EventEmitter<IButtonGroupEventArgs>`
+- **onUnselect**: `EventEmitter<IButtonGroupEventArgs>`
+- **values**: `any`
+- **alignment**: `any`
+- **buttons**: `any`
+- **disabled**: `any`
+- **isVertical**: `any`
+- **itemContentCssClass**: `any`
+- **selectedButtons**: `any`
+- **deselectButton**(index: number): void
+- **selectButton**(index: number): void
+
+### [IgxCalendarComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCalendarComponent)
+
+- **hasHeader**: `boolean`
+- **id**: `string`
+- **vertical**: `boolean`
+- **context**: `any`
+- **headerContext**: `any`
+- **headerTemplate**: `any`
+- **monthsViewNumber**: `any`
+- **subheaderTemplate**: `any`
+- **deselectDate**(value?: Date | Date[]): void
+- **ngAfterViewInit**(): void
+
+### [IgxCalendarMonthDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCalendarMonthDirective)
+
+- **constructor**(elementRef: ElementRef): IgxCalendarMonthDirective
+- **date**: `Date`
+- **elementRef**: `ElementRef`
+- **index**: `any`
+- **onMonthSelection**: `EventEmitter<Date>`
+- **tabindex**: `number`
+- **value**: `Date`
+- **currentCSS**: `any`
+- **defaultCSS**: `any`
+- **isCurrentMonth**: `any`
+- **nativeElement**: `any`
+- **onClick**(): void
+
+### [IgxCardActionsComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCardActionsComponent)
+
+- **constructor**(card: IgxCardComponent): IgxCardActionsComponent
+- **card**: `IgxCardComponent`
+- **layout**: `IgxCardActionsLayout | string`
+- **reverse**: `boolean`
+- **vertical**: `boolean`
+- **isJustifyLayout**: `any`
+- **ngOnChanges**(changes: SimpleChanges): void
+- **ngOnInit**(): void
+
+### [IgxCardComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCardComponent)
+
+- **horizontal**: `boolean`
+- **id**: `string`
+- **role**: `string`
+- **type**: `IgxCardType | string`
+- **isOutlinedCard**: `any`
+
+### [IgxCardContentDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCardContentDirective)
+
+
+### [IgxCardFooterDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCardFooterDirective)
+
+- **role**: `string`
+
+### [IgxCardHeaderComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCardHeaderComponent)
+
+- **role**: `string`
+- **vertical**: `boolean`
+
+### [IgxCardHeaderSubtitleDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCardHeaderSubtitleDirective)
+
+
+### [IgxCardHeaderTitleDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCardHeaderTitleDirective)
+
+
+### [IgxCardMediaDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCardMediaDirective)
+
+- **height**: `string`
+- **role**: `string`
+- **width**: `string`
+
+### [IgxCardThumbnailDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCardThumbnailDirective)
+
+
+### [IgxCarouselComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCarouselComponent)
+
+- **constructor**(element: ElementRef, iterableDiffers: IterableDiffers, builder: AnimationBuilder, platformUtil: PlatformUtil): IgxCarouselComponent
+- **animationType**: `CarouselAnimationType`
+- **ariaLabel**: `string`
+- **cssClass**: `string`
+- **gesturesSupport**: `boolean`
+- **id**: `string`
+- **indicatorTemplate**: `TemplateRef<any>`
+- **indicatorsOrientation**: `CarouselIndicatorsOrientation`
+- **keyboardSupport**: `boolean`
+- **loop**: `boolean`
+- **maximumIndicatorsCount**: `number`
+- **navigation**: `boolean`
+- **nextButtonTemplate**: `TemplateRef<any>`
+- **onCarouselPaused**: `EventEmitter<IgxCarouselComponent>`
+- **onCarouselPlaying**: `EventEmitter<IgxCarouselComponent>`
+- **onSlideAdded**: `EventEmitter<ISlideEventArgs>`
+- **onSlideChanged**: `EventEmitter<ISlideEventArgs>`
+- **onSlideRemoved**: `EventEmitter<ISlideEventArgs>`
+- **pause**: `boolean`
+- **prevButtonTemplate**: `TemplateRef<any>`
+- **role**: `string`
+- **slides**: `QueryList<IgxSlideComponent>`
+- **current**: `any`
+- **interval**: `any`
+- **isDestroyed**: `any`
+- **isPlaying**: `any`
+- **nativeElement**: `any`
+- **resourceStrings**: `any`
+- **tabIndex**: `any`
+- **total**: `any`
+- **touchAction**: `any`
+- **add**(slide: IgxSlideComponent): void
+- **get**(index: number): IgxSlideComponent
+- **next**(): void
+- **play**(): void
+- **prev**(): void
+- **remove**(slide: IgxSlideComponent): void
+- **select**(slide: IgxSlideComponent, direction: Direction): void
+- **stop**(): void
+
+### [IgxCarouselIndicatorDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCarouselIndicatorDirective)
+
+
+### [IgxCarouselNextButtonDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCarouselNextButtonDirective)
+
+
+### [IgxCarouselPrevButtonDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCarouselPrevButtonDirective)
+
+
+### [IgxCell](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCell)
+
+- **constructor**(id: any, rowIndex: number, column: any, value: any, editValue: any, rowData: any): IgxCell
+- **column**: `any`
+- **editValue**: `any`
+- **id**: `any`
+- **primaryKey**: `any`
+- **rowData**: `any`
+- **rowIndex**: `number`
+- **state**: `any`
+- **value**: `any`
+- **castToNumber**(value: any): any
+- **createEditEventArgs**(): IGridEditEventArgs
+
+### [IgxCellEditorTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCellEditorTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxCellEditorTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxCellHeaderTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCellHeaderTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxCellHeaderTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxCellTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCellTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxCellTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxCheckboxComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCheckboxComponent)
+
+- **ariaLabel**: `string | null`
+- **ariaLabelledBy**: `string`
+- **change**: `EventEmitter<IChangeCheckboxEventArgs>`
+- **checked**: `boolean`
+- **cssClass**: `string`
+- **disableRipple**: `boolean`
+- **disableTransitions**: `boolean`
+- **disabled**: `boolean`
+- **focused**: `boolean`
+- **id**: `string`
+- **indeterminate**: `boolean`
+- **labelId**: `string`
+- **labelPosition**: `LabelPosition | string`
+- **name**: `string`
+- **nativeCheckbox**: `ElementRef`
+- **nativeLabel**: `any`
+- **placeholderLabel**: `any`
+- **readonly**: `boolean`
+- **required**: `boolean`
+- **tabindex**: `number`
+- **value**: `any`
+- **toggle**(): void
+
+### [IgxCheckboxRequiredDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCheckboxRequiredDirective)
+
+
+### [IgxChildGridRowComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxChildGridRowComponent)
+
+- **constructor**(gridAPI: GridBaseAPIService<any>, element: ElementRef, resolver: ComponentFactoryResolver, cdr: ChangeDetectorRef): IgxChildGridRowComponent
+- **cdr**: `ChangeDetectorRef`
+- **element**: `ElementRef`
+- **expanded**: `boolean`
+- **gridAPI**: `GridBaseAPIService<any>`
+- **index**: `number`
+- **layout**: `IgxRowIslandComponent`
+- **rowData**: `any`
+- **level**: `any`
+- **nativeElement**: `any`
+- **parentGrid**: `any`
+
+### [IgxChipComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxChipComponent)
+
+- **constructor**(cdr: ChangeDetectorRef, elementRef: ElementRef, renderer: Renderer2, _displayDensityOptions: IDisplayDensityOptions): IgxChipComponent
+- **animateOnRelease**: `boolean`
+- **cdr**: `ChangeDetectorRef`
+- **data**: `any`
+- **disabled**: `boolean`
+- **dragDirective**: `IgxDragDirective`
+- **draggable**: `boolean`
+- **elementRef**: `ElementRef`
+- **hideBaseOnDrag**: `boolean`
+- **id**: `string`
+- **onClick**: `EventEmitter<IChipClickEventArgs>`
+- **onDragEnter**: `EventEmitter<IChipEnterDragAreaEventArgs>`
+- **onKeyDown**: `EventEmitter<IChipKeyDownEventArgs>`
+- **onMoveEnd**: `EventEmitter<IBaseChipEventArgs>`
+- **onMoveStart**: `EventEmitter<IBaseChipEventArgs>`
+- **onRemove**: `EventEmitter<IBaseChipEventArgs>`
+- **onSelection**: `EventEmitter<IChipSelectEventArgs>`
+- **onSelectionDone**: `EventEmitter<IBaseChipEventArgs>`
+- **removable**: `boolean`
+- **removeIcon**: `TemplateRef<any>`
+- **selectIcon**: `TemplateRef<any>`
+- **selectable**: `boolean`
+- **chipTabindex**: `any`
+- **color**: `any`
+- **selected**: `any`
+- **onRemoveMouseDown**(event: PointerEvent | MouseEvent): void
+- **onSelectTransitionDone**(event: any): void
+
+### [IgxChipsAreaComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxChipsAreaComponent)
+
+- **constructor**(cdr: ChangeDetectorRef, element: ElementRef, _iterableDiffers: IterableDiffers): IgxChipsAreaComponent
+- **cdr**: `ChangeDetectorRef`
+- **chipsList**: `QueryList<IgxChipComponent>`
+- **element**: `ElementRef`
+- **height**: `number`
+- **onMoveEnd**: `EventEmitter<IBaseChipsAreaEventArgs>`
+- **onMoveStart**: `EventEmitter<IBaseChipsAreaEventArgs>`
+- **onReorder**: `EventEmitter<IChipsAreaReorderEventArgs>`
+- **onSelection**: `EventEmitter<IChipsAreaSelectEventArgs>`
+- **width**: `number`
+
+### [IgxCircularProgressBarComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCircularProgressBarComponent)
+
+- **constructor**(renderer: Renderer2, _directionality: IgxDirectionality): IgxCircularProgressBarComponent
+- **gradientTemplate**: `IgxProgressBarGradientDirective`
+- **id**: `string`
+- **indeterminate**: `boolean`
+- **text**: `string`
+- **textTemplate**: `IgxProcessBarTextTemplateDirective`
+- **textVisibility**: `boolean`
+- **value**: `any`
+- **ngAfterContentInit**(): void
+- **ngAfterViewInit**(): void
+
+### [IgxCollapsibleIndicatorTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCollapsibleIndicatorTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxCollapsibleIndicatorTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxColumnComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxColumnComponent)
+
+- **constructor**(gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, cdr: ChangeDetectorRef, rowIslandAPI: IgxRowIslandAPIService, elementRef: ElementRef): IgxColumnComponent
+- **calcPixelWidth**: `number`
+- **cdr**: `ChangeDetectorRef`
+- **cellClasses**: `any`
+- **cellStyles**: `any`
+- **children**: `QueryList<IgxColumnComponent>`
+- **colEnd**: `number`
+- **colStart**: `number`
+- **dataType**: `DataType`
+- **defaultWidth**: `string`
+- **disableHiding**: `boolean`
+- **disablePinning**: `boolean`
+- **elementRef**: `ElementRef`
+- **field**: `string`
+- **filterable**: `boolean`
+- **filteringIgnoreCase**: `boolean`
+- **formatter**: `any`
+- **gridAPI**: `GridBaseAPIService<IgxGridBaseDirective & GridType>`
+- **gridID**: `string`
+- **groupable**: `boolean`
+- **header**: `string`
+- **headerClasses**: `string`
+- **headerGroupClasses**: `string`
+- **maxWidth**: `string`
+- **movable**: `boolean`
+- **parent**: `any`
+- **resizable**: `boolean`
+- **rowEnd**: `number`
+- **rowIslandAPI**: `IgxRowIslandAPIService`
+- **rowStart**: `number`
+- **searchable**: `boolean`
+- **sortable**: `boolean`
+- **sortingIgnoreCase**: `boolean`
+- **widthSetByUser**: `boolean`
+- **allChildren**: `any`
+- **bodyTemplate**: `any`
+- **cells**: `any`
+- **columnGroup**: `any`
+- **columnLayout**: `any`
+- **columnLayoutChild**: `any`
+- **defaultMinWidth**: `any`
+- **editable**: `any`
+- **filterCell**: `any`
+- **filterCellTemplate**: `any`
+- **filteringExpressionsTree**: `any`
+- **filters**: `any`
+- **grid**: `any`
+- **gridColumnSpan**: `any`
+- **gridRowSpan**: `any`
+- **groupingComparer**: `any`
+- **hasSummary**: `any`
+- **headerCell**: `any`
+- **headerGroup**: `any`
+- **headerTemplate**: `any`
+- **hidden**: `any`
+- **index**: `any`
+- **inlineEditorTemplate**: `any`
+- **isLastPinned**: `any`
+- **level**: `any`
+- **minWidth**: `any`
+- **pinned**: `any`
+- **sortStrategy**: `any`
+- **summaries**: `any`
+- **topLevelParent**: `any`
+- **visibleIndex**: `any`
+- **visibleWhenCollapsed**: `any`
+- **width**: `any`
+- **autosize**(): void
+- **getFilledChildColumnSizes**(children: QueryList<IgxColumnComponent>): Array<string>
+- **getInitialChildColumnSizes**(children: QueryList<IgxColumnComponent>): Array<MRLColumnSizeInfo>
+- **getResizableColUnderEnd**(): MRLResizeColumnInfo[]
+- **pin**(index?: number): boolean
+- **unpin**(index?: number): boolean
+
+### [IgxColumnGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxColumnGroupComponent)
+
+- **constructor**(gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, cdr: ChangeDetectorRef, rowIslandAPI: IgxRowIslandAPIService, elementRef: ElementRef): IgxColumnGroupComponent
+- **children**: `QueryList<IgxColumnComponent>`
+- **searchable**: `boolean`
+- **allChildren**: `any`
+- **cells**: `any`
+- **collapsible**: `any`
+- **collapsibleIndicatorTemplate**: `any`
+- **columnGroup**: `any`
+- **columnLayout**: `any`
+- **expanded**: `any`
+- **filters**: `any`
+- **hidden**: `any`
+- **summaries**: `any`
+- **width**: `any`
+
+### [IgxColumnHidingComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxColumnHidingComponent)
+
+- **constructor**(cdr: ChangeDetectorRef): IgxColumnHidingComponent
+- **cdr**: `ChangeDetectorRef`
+- **hideAllText**: `string`
+- **onColumnVisibilityChanged**: `EventEmitter<IColumnVisibilityChangedEventArgs>`
+- **showAllText**: `string`
+- **disableHideAll**: `any`
+- **disableShowAll**: `any`
+- **hiddenColumnsCount**: `any`
+- **hideAllColumns**(): void
+- **showAllColumns**(): void
+
+### [IgxColumnHidingModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxColumnHidingModule)
+
+
+### [IgxColumnLayoutComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxColumnLayoutComponent)
+
+- **constructor**(gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, cdr: ChangeDetectorRef, rowIslandAPI: IgxRowIslandAPIService, elementRef: ElementRef): IgxColumnLayoutComponent
+- **childrenVisibleIndexes**: `any[]`
+- **columnLayout**: `any`
+- **hasLastPinnedChildColumn**: `any`
+- **hidden**: `any`
+- **visibleIndex**: `any`
+- **width**: `any`
+
+### [IgxColumnMovingDropDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxColumnMovingDropDirective)
+
+- **constructor**(elementRef: ElementRef, renderer: Renderer2, zone: NgZone, cms: IgxColumnMovingService): IgxColumnMovingDropDirective
+- **column**: `any`
+- **data**: `any`
+- **horizontalScroll**: `any`
+- **isDropTarget**: `any`
+- **ngOnDestroy**(): void
+- **onDragDrop**(event: any): void
+- **onDragEnter**(event: any): void
+- **onDragLeave**(event: any): void
+- **onDragOver**(event: any): void
+
+### [IgxColumnMovingModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxColumnMovingModule)
+
+
+### [IgxColumnPinningComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxColumnPinningComponent)
+
+- **constructor**(cdr: ChangeDetectorRef): IgxColumnPinningComponent
+- **cdr**: `ChangeDetectorRef`
+
+### [IgxColumnPinningItemDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxColumnPinningItemDirective)
+
+- **constructor**(): IgxColumnPinningItemDirective
+- **pinnable**: `any`
+- **pinningDisabled**: `any`
+
+### [IgxColumnPinningModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxColumnPinningModule)
+
+
+### [IgxComboComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxComboComponent)
+
+- **constructor**(elementRef: ElementRef, cdr: ChangeDetectorRef, selection: IgxSelectionAPIService, comboAPI: IgxComboAPIService, _displayDensityOptions: IDisplayDensityOptions, _injector: Injector): IgxComboComponent
+- **addItemTemplate**: `TemplateRef<any>`
+- **allowCustomValues**: `boolean`
+- **ariaLabelledBy**: `string`
+- **clearIconTemplate**: `TemplateRef<any>`
+- **disabled**: `boolean`
+- **emptyTemplate**: `TemplateRef<any>`
+- **filterable**: `boolean`
+- **footerTemplate**: `TemplateRef<any>`
+- **headerItemTemplate**: `TemplateRef<any>`
+- **headerTemplate**: `TemplateRef<any>`
+- **id**: `string`
+- **itemTemplate**: `TemplateRef<any>`
+- **itemsWidth**: `string`
+- **onAddition**: `EventEmitter<IComboItemAdditionEvent>`
+- **onClosed**: `EventEmitter<void>`
+- **onClosing**: `EventEmitter<CancelableBrowserEventArgs & IBaseEventArgs>`
+- **onDataPreLoad**: `EventEmitter<any>`
+- **onOpened**: `EventEmitter<void>`
+- **onOpening**: `EventEmitter<CancelableEventArgs & IBaseEventArgs>`
+- **onSearchInput**: `EventEmitter<any>`
+- **onSelectionChange**: `EventEmitter<IComboSelectionChangeEventArgs>`
+- **overlaySettings**: `OverlaySettings`
+- **placeholder**: `any`
+- **searchPlaceholder**: `string`
+- **toggleIconTemplate**: `TemplateRef<any>`
+- **type**: `string`
+- **valueKey**: `string`
+- **width**: `string`
+- **collapsed**: `any`
+- **data**: `any`
+- **displayKey**: `any`
+- **groupKey**: `any`
+- **itemHeight**: `any`
+- **itemsMaxHeight**: `any`
+- **totalItemCount**: `any`
+- **valid**: `any`
+- **value**: `any`
+- **virtualizationState**: `any`
+- **close**(): void
+- **deselectAllItems**(ignoreFilter?: boolean, event?: Event): void
+- **deselectItems**(items: Array<any>, event?: Event): void
+- **open**(): void
+- **selectAllItems**(ignoreFilter?: boolean, event?: Event): void
+- **selectItems**(newItems: Array<any>, clearCurrentSelection?: boolean, event?: Event): void
+- **selectedItems**(): any[]
+- **setSelectedItem**(itemID: any, select: boolean, event?: Event): void
+- **toggle**(): void
+- **triggerCheck**(): void
+
+### [IgxCsvExporterOptions](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCsvExporterOptions)
+
+- **constructor**(fileName: string, fileType: CsvFileTypes): IgxCsvExporterOptions
+- **fileType**: `any`
+- **valueDelimiter**: `any`
+
+### [IgxCsvExporterService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxCsvExporterService)
+
+- **onExportEnded**: `EventEmitter<ICsvExportEndedEventArgs>`
+
+### [IgxDataLoadingTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDataLoadingTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxDataLoadingTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxDataRecordSorting](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDataRecordSorting)
+
+
+### [IgxDateFilteringOperand](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDateFilteringOperand)
+
+- **constructor**(): IgxDateFilteringOperand
+- static **getDateParts**(date: Date, dateFormat?: string): IDateParts
+
+### [IgxDatePickerActionsDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDatePickerActionsDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxDatePickerActionsDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxDatePickerComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDatePickerComponent)
+
+- **constructor**(_overlayService: IgxOverlayService, element: ElementRef, _cdr: ChangeDetectorRef, _moduleRef: NgModuleRef<any>, _injector: Injector): IgxDatePickerComponent
+- **cancelButtonLabel**: `string`
+- **disabled**: `boolean`
+- **element**: `ElementRef`
+- **formatter**: `any`
+- **hideOutsideDays**: `boolean`
+- **id**: `string`
+- **isSpinLoop**: `boolean`
+- **label**: `string`
+- **labelVisibility**: `boolean`
+- **locale**: `any`
+- **mask**: `string`
+- **mode**: `InteractionMode`
+- **monthsViewNumber**: `number`
+- **onClosed**: `EventEmitter<IgxDatePickerComponent>`
+- **onClosing**: `EventEmitter<CancelableBrowserEventArgs & IBaseEventArgs>`
+- **onDisabledDate**: `EventEmitter<IDatePickerDisabledDateEventArgs>`
+- **onOpened**: `EventEmitter<IgxDatePickerComponent>`
+- **onSelection**: `EventEmitter<Date>`
+- **onValidationFailed**: `EventEmitter<IDatePickerValidationFailedEventArgs>`
+- **outlet**: `IgxOverlayOutletDirective | ElementRef`
+- **todayButtonLabel**: `string`
+- **valueChange**: `EventEmitter<Date>`
+- **vertical**: `boolean`
+- **weekStart**: `WEEKDAYS | number`
+- **context**: `any`
+- **disabledDates**: `any`
+- **displayData**: `any`
+- **dropDownOverlaySettings**: `any`
+- **format**: `any`
+- **formatOptions**: `any`
+- **formatViews**: `any`
+- **modalOverlaySettings**: `any`
+- **onClose**: `any`
+- **onOpen**: `any`
+- **specialDates**: `any`
+- **template**: `any`
+- **value**: `any`
+- **_updateValidityOnBlur**(): void
+- **deselectDate**(): void
+- **mouseDown**(e: any): void
+- **ngAfterViewChecked**(): void
+- **openDialog**(target?: HTMLElement): void
+- **selectDate**(date: Date): void
+- **triggerTodaySelection**(): void
+
+### [IgxDatePickerTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDatePickerTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxDatePickerTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxDateSummaryOperand](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDateSummaryOperand)
+
+- **operate**(data: any[], allData: any[], fieldName?: string): IgxSummaryResult[]
+- static **earliest**(data: any[]): any
+- static **latest**(data: any[]): any
+
+### [IgxDaysViewComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDaysViewComponent)
+
+- **daysNavService**: `IgxDaysViewNavigationService`
+- **id**: `string`
+
+### [IgxDefaultDropStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDefaultDropStrategy)
+
+- **dropAction**(drag: IgxDragDirective, drop: IgxDropDirective, atIndex: number): void
+
+### [IgxDialogComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDialogComponent)
+
+- **constructor**(elementRef: ElementRef, navService: IgxNavigationService): IgxDialogComponent
+- **id**: `string`
+- **leftButtonBackgroundColor**: `string`
+- **leftButtonColor**: `string`
+- **leftButtonLabel**: `string`
+- **leftButtonRipple**: `string`
+- **leftButtonType**: `string`
+- **message**: `string`
+- **onClose**: `EventEmitter<IDialogEventArgs>`
+- **onLeftButtonSelect**: `EventEmitter<IDialogEventArgs>`
+- **onOpen**: `EventEmitter<IDialogEventArgs>`
+- **onRightButtonSelect**: `EventEmitter<IDialogEventArgs>`
+- **rightButtonBackgroundColor**: `string`
+- **rightButtonColor**: `string`
+- **rightButtonLabel**: `string`
+- **rightButtonRipple**: `string`
+- **rightButtonType**: `string`
+- **title**: `string`
+- **toggleRef**: `IgxToggleDirective`
+- **closeOnOutsideSelect**: `any`
+- **isCollapsed**: `any`
+- **isModal**: `any`
+- **isOpen**: `any`
+- **positionSettings**: `any`
+- **role**: `any`
+- **state**: `any`
+- **titleId**: `any`
+- **close**(): void
+- **ngAfterContentInit**(): void
+- **open**(overlaySettings: OverlaySettings): void
+- **toggle**(): void
+
+### [IgxDisplayDensityModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDisplayDensityModule)
+
+
+### [IgxDividerDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDividerDirective)
+
+- **id**: `string`
+- **middle**: `boolean`
+- **role**: `string`
+- **type**: `IgxDividerType | string`
+- **vertical**: `boolean`
+- **inset**: `any`
+- **isDashed**: `any`
+- **isSolid**: `any`
+
+### [IgxDividerModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDividerModule)
+
+
+### [IgxDragDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDragDirective)
+
+- **constructor**(cdr: ChangeDetectorRef, element: ElementRef, viewContainer: ViewContainerRef, zone: NgZone, renderer: Renderer2): IgxDragDirective
+- **cdr**: `ChangeDetectorRef`
+- **data**: `any`
+- **dragChannel**: `number | string | number[] | string[]`
+- **dragClick**: `EventEmitter<IDragBaseEventArgs>`
+- **dragEnd**: `EventEmitter<IDragBaseEventArgs>`
+- **dragMove**: `EventEmitter<IDragMoveEventArgs>`
+- **dragStart**: `EventEmitter<IDragStartEventArgs>`
+- **dragTolerance**: `number`
+- **element**: `ElementRef`
+- **ghost**: `boolean`
+- **ghostClass**: `string`
+- **ghostCreate**: `EventEmitter<IDragGhostBaseEventArgs>`
+- **ghostDestroy**: `EventEmitter<IDragGhostBaseEventArgs>`
+- **ghostHost**: `any`
+- **ghostTemplate**: `TemplateRef<any>`
+- **renderer**: `Renderer2`
+- **transitioned**: `EventEmitter<IDragBaseEventArgs>`
+- **viewContainer**: `ViewContainerRef`
+- **zone**: `NgZone`
+- **animateOnRelease**: `any`
+- **ghostOffsetX**: `any`
+- **ghostOffsetY**: `any`
+- **hideBaseOnDrag**: `any`
+- **location**: `any`
+- **originLocation**: `any`
+- **visible**: `any`
+- **setLocation**(newLocation: IgxDragLocation): void
+- **transitionTo**(target: IgxDragLocation | ElementRef, customAnimArgs?: IDragCustomTransitionArgs, startLocation?: IgxDragLocation): void
+- **transitionToOrigin**(customAnimArgs?: IDragCustomTransitionArgs, startLocation?: IgxDragLocation): void
+
+### [IgxDragHandleDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDragHandleDirective)
+
+- **constructor**(element: ElementRef<any>): IgxDragHandleDirective
+- **baseClass**: `boolean`
+- **element**: `ElementRef<any>`
+
+### [IgxDragLocation](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDragLocation)
+
+- **constructor**(_pageX: any, _pageY: any): IgxDragLocation
+- **pageX**: `number`
+- **pageY**: `number`
+
+### [IgxDropDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDropDirective)
+
+- **constructor**(element: ElementRef, _renderer: Renderer2, _zone: NgZone): IgxDropDirective
+- **data**: `any`
+- **dropChannel**: `number | string | number[] | string[]`
+- **dropped**: `EventEmitter<IDropDroppedEventArgs>`
+- **element**: `ElementRef`
+- **enter**: `EventEmitter<IDropBaseEventArgs>`
+- **leave**: `EventEmitter<IDropBaseEventArgs>`
+- **over**: `EventEmitter<IDropBaseEventArgs>`
+- **dropStrategy**: `any`
+
+### [IgxDropDownBaseDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDropDownBaseDirective)
+
+- **constructor**(elementRef: ElementRef, cdr: ChangeDetectorRef, _displayDensityOptions: IDisplayDensityOptions): IgxDropDownBaseDirective
+- **collapsed**: `boolean`
+- **height**: `string`
+- **id**: `string`
+- **maxHeight**: `any`
+- **onSelection**: `EventEmitter<ISelectionEventArgs>`
+- **width**: `string`
+- **element**: `any`
+- **headers**: `any`
+- **items**: `any`
+- **navigateItem**(newIndex: number): void
+- **onItemActionKey**(key: DropDownActionKey, event?: Event): void
+
+### [IgxDropDownComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDropDownComponent)
+
+- **constructor**(elementRef: ElementRef, cdr: ChangeDetectorRef, selection: IgxSelectionAPIService, _displayDensityOptions: IDisplayDensityOptions): IgxDropDownComponent
+- **allowItemsFocus**: `boolean`
+- **onClosed**: `EventEmitter<void>`
+- **onClosing**: `EventEmitter<CancelableBrowserEventArgs & IBaseEventArgs>`
+- **onOpened**: `EventEmitter<void>`
+- **onOpening**: `EventEmitter<CancelableEventArgs & IBaseEventArgs>`
+- **collapsed**: `any`
+- **id**: `any`
+- **listId**: `any`
+- **selectedItem**: `any`
+- **clearSelection**(): void
+- **close**(): void
+- **navigateItem**(index: number): void
+- **ngAfterViewInit**(): void
+- **onItemActionKey**(key: DropDownActionKey, event?: Event): void
+- **open**(overlaySettings?: OverlaySettings): void
+- **setSelectedItem**(index: number): void
+- **toggle**(overlaySettings?: OverlaySettings): void
+
+### [IgxDropDownGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDropDownGroupComponent)
+
+- **disabled**: `boolean`
+- **label**: `string`
+- **labelledBy**: `any`
+
+### [IgxDropDownItemBaseDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDropDownItemBaseDirective)
+
+- **constructor**(dropDown: IDropDownBase, elementRef: ElementRef, group: IgxDropDownGroupComponent, selection?: IgxSelectionAPIService): IgxDropDownItemBaseDirective
+- **id**: `string`
+- **isHeader**: `boolean`
+- **role**: `string`
+- **value**: `any`
+- **disabled**: `any`
+- **focused**: `any`
+- **index**: `any`
+- **selected**: `any`
+- **ngDoCheck**(): void
+
+### [IgxDropDownItemComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDropDownItemComponent)
+
+- **constructor**(dropDown: IDropDownBase, elementRef: ElementRef, group: IgxDropDownGroupComponent, selection?: IgxSelectionAPIService): IgxDropDownItemComponent
+- **focused**: `any`
+- **selected**: `any`
+- **clicked**(event: any): void
+
+### [IgxDropDownItemNavigationDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxDropDownItemNavigationDirective)
+
+- **constructor**(dropdown: IgxDropDownBaseDirective): IgxDropDownItemNavigationDirective
+- **dropdown**: `IgxDropDownBaseDirective`
+- **target**: `any`
+- **handleKeyDown**(event: KeyboardEvent): void
+- **onArrowDownKeyDown**(): void
+- **onArrowUpKeyDown**(): void
+- **onEndKeyDown**(): void
+- **onHomeKeyDown**(): void
+
+### [IgxEmptyListTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxEmptyListTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxEmptyListTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxExcelExporterOptions](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxExcelExporterOptions)
+
+- **constructor**(fileName: string): IgxExcelExporterOptions
+- **exportAsTable**: `boolean`
+- **ignorePinning**: `boolean`
+- **columnWidth**: `any`
+- **rowHeight**: `any`
+
+### [IgxExcelExporterService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxExcelExporterService)
+
+- **onExportEnded**: `EventEmitter<IExcelExportEndedEventArgs>`
+
+### [IgxExcelStyleHidingTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxExcelStyleHidingTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxExcelStyleHidingTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxExcelStyleLoadingValuesTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxExcelStyleLoadingValuesTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxExcelStyleLoadingValuesTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxExcelStyleMovingTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxExcelStyleMovingTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxExcelStyleMovingTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxExcelStylePinningTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxExcelStylePinningTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxExcelStylePinningTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxExcelStyleSortingTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxExcelStyleSortingTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxExcelStyleSortingTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxExpansionPanelBodyComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxExpansionPanelBodyComponent)
+
+- **constructor**(panel: IgxExpansionPanelBase, element: ElementRef, cdr: ChangeDetectorRef): IgxExpansionPanelBodyComponent
+- **cdr**: `ChangeDetectorRef`
+- **element**: `ElementRef`
+- **panel**: `IgxExpansionPanelBase`
+- **role**: `string`
+- **label**: `any`
+- **labelledBy**: `any`
+
+### [IgxExpansionPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxExpansionPanelComponent)
+
+- **constructor**(cdr: ChangeDetectorRef, builder: AnimationBuilder): IgxExpansionPanelComponent
+- **id**: `string`
+- **onCollapsed**: `EventEmitter<IExpansionPanelEventArgs>`
+- **onExpanded**: `EventEmitter<IExpansionPanelEventArgs>`
+- **collapsed**: `any`
+- **close**(evt?: Event): void
+- **collapse**(evt?: Event): void
+- **expand**(evt?: Event): void
+- **open**(evt?: Event): void
+- **toggle**(evt?: Event): void
+
+### [IgxExpansionPanelHeaderComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxExpansionPanelHeaderComponent)
+
+- **constructor**(panel: IgxExpansionPanelBase, cdr: ChangeDetectorRef, elementRef: ElementRef): IgxExpansionPanelHeaderComponent
+- **cdr**: `ChangeDetectorRef`
+- **disabled**: `boolean`
+- **elementRef**: `ElementRef`
+- **iconPosition**: `ICON_POSITION`
+- **id**: `string`
+- **lv**: `string`
+- **onInteraction**: `EventEmitter<IExpansionPanelEventArgs>`
+- **panel**: `IgxExpansionPanelBase`
+- **role**: `string`
+
+### [IgxExporterOptionsBase](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxExporterOptionsBase)
+
+- **constructor**(fileName: string, _fileExtension: string): IgxExporterOptionsBase
+- **ignoreColumnsOrder**: `boolean`
+- **ignoreColumnsVisibility**: `boolean`
+- **ignoreFiltering**: `boolean`
+- **ignoreSorting**: `boolean`
+- **fileName**: `any`
+
+### [IgxFilterCellTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxFilterCellTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxFilterCellTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxFilterDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxFilterDirective)
+
+- **constructor**(element: ElementRef, renderer: Renderer2): IgxFilterDirective
+- **filterOptions**: `IgxFilterOptions`
+- **filtered**: `EventEmitter<any>`
+- **filtering**: `EventEmitter<any>`
+- **ngOnChanges**(changes: SimpleChanges): void
+
+### [IgxFilterOptions](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxFilterOptions)
+
+- **inputValue**: `string`
+- **items**: `any[]`
+- **key**: `string`
+- **formatter**(valueToTest: string): string
+- **get_value**(item: any, key: string): string
+- **matchFn**(valueToTest: string, inputValue: string): boolean
+- **metConditionFn**(item: any): void
+- **overdueConditionFn**(item: any): void
+
+### [IgxFilterPipe](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxFilterPipe)
+
+- **transform**(items: any[], options: IgxFilterOptions): any[]
+
+### [IgxFilteringOperand](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxFilteringOperand)
+
+- **constructor**(): IgxFilteringOperand
+- **operations**: `IFilteringOperation[]`
+- **append**(operation: IFilteringOperation): void
+- **condition**(name: string): IFilteringOperation
+- **conditionList**(): string[]
+- static **instance**(): IgxFilteringOperand
+
+### [IgxFlexDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxFlexDirective)
+
+- **basis**: `string`
+- **flex**: `string`
+- **grow**: `number`
+- **order**: `number`
+- **shrink**: `number`
+
+### [IgxFocusDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxFocusDirective)
+
+- **constructor**(element: ElementRef, comp?: any[]): IgxFocusDirective
+- **focused**: `any`
+- **nativeElement**: `any`
+- **trigger**(): void
+
+### [IgxForOfContext](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxForOfContext)
+
+- **constructor**($implicit: T, index: number, count: number): IgxForOfContext
+- **$implicit**: `T`
+- **count**: `number`
+- **index**: `number`
+- **even**: `any`
+- **first**: `any`
+- **last**: `any`
+- **odd**: `any`
+
+### [IgxForOfDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxForOfDirective)
+
+- **constructor**(_viewContainer: ViewContainerRef, _template: TemplateRef<NgForOfContext<T>>, _differs: IterableDiffers, resolver: ComponentFactoryResolver, cdr: ChangeDetectorRef, _zone: NgZone, syncScrollService: IgxForOfScrollSyncService): IgxForOfDirective
+- **cdr**: `ChangeDetectorRef`
+- **igxForContainerSize**: `any`
+- **igxForItemSize**: `any`
+- **igxForOf**: `any[]`
+- **igxForScrollContainer**: `any`
+- **igxForScrollOrientation**: `string`
+- **igxForSizePropName**: `any`
+- **onBeforeViewDestroyed**: `EventEmitter<EmbeddedViewRef<any>>`
+- **onChunkLoad**: `EventEmitter<IForOfState>`
+- **onChunkPreload**: `EventEmitter<IForOfState>`
+- **onContentSizeChange**: `EventEmitter<any>`
+- **onDataChanged**: `EventEmitter<any>`
+- **totalItemCount**: `number`
+- **displayContainer**: `any`
+- **igxForTotalItemCount**: `any`
+- **igxForTrackBy**: `any`
+- **scrollPosition**: `any`
+- **virtualHelper**: `any`
+- **addScrollTop**(addTop: number): boolean
+- **getItemCountInView**(): number
+- **getScroll**(): any
+- **getScrollForIndex**(index: number, bottom?: boolean): number
+- **getSizeAt**(index: number): number
+- **isScrollable**(): boolean
+- **ngAfterViewInit**(): void
+- **scrollNext**(): void
+- **scrollNextPage**(): void
+- **scrollPrev**(): void
+- **scrollPrevPage**(): void
+- **scrollTo**(index: any): void
+- **verticalScrollHandler**(event: any): void
+
+### [IgxForOfScrollSyncService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxForOfScrollSyncService)
+
+- **getScrollMaster**(dir: string): VirtualHelperBaseDirective
+- **setScrollMaster**(dir: string, scroll: VirtualHelperBaseDirective): void
+
+### [IgxForOfSyncService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxForOfSyncService)
+
+
+### [IgxGetViewDateCalendar](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGetViewDateCalendar)
+
+- **constructor**(): IgxGetViewDateCalendar
+- **transform**(index: number, viewDate: Date, wholeDate: boolean): number | Date
+
+### [IgxGridAPIService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridAPIService)
+
+- **arrange_sorting_expressions**(): void
+- **clear_groupby**(name?: string | Array<string>): void
+- **get_groupBy_record_id**(gRow: IGroupByRecord): string
+- **groupBy**(expression: IGroupingExpression): void
+- **groupBy_fully_expand_group**(groupRow: IGroupByRecord): void
+- **groupBy_get_expanded_for_group**(groupRow: IGroupByRecord): IGroupByExpandState
+- **groupBy_is_row_in_group**(groupRow: IGroupByRecord, rowID: any): boolean
+- **groupBy_multiple**(expressions: IGroupingExpression[]): void
+- **groupBy_toggle_group**(groupRow: IGroupByRecord): void
+
+### [IgxGridBaseDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridBaseDirective)
+
+- **constructor**(selectionService: IgxGridSelectionService, crudService: IgxGridCRUDService, colResizingService: IgxColumnResizingService, gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, _transactions: TransactionService<Transaction, State>, elementRef: ElementRef, zone: NgZone, document: any, cdr: ChangeDetectorRef, resolver: ComponentFactoryResolver, differs: IterableDiffers, viewRef: ViewContainerRef, navigation: IgxGridNavigationService, filteringService: IgxFilteringService, overlayService: IgxOverlayService, summaryService: IgxGridSummaryService, _displayDensityOptions: IDisplayDensityOptions): IgxGridBaseDirective
+- **_destroyed**: `boolean`
+- **advancedFilteringExpressionsTreeChange**: `EventEmitter<IFilteringExpressionsTree>`
+- **autoGenerate**: `boolean`
+- **cdr**: `ChangeDetectorRef`
+- **colResizingService**: `IgxColumnResizingService`
+- **columnHidingTitle**: `string`
+- **columnPinningTitle**: `string`
+- **crudService**: `IgxGridCRUDService`
+- **data**: `any[]`
+- **document**: `any`
+- **emptyFilteredGridTemplate**: `TemplateRef<any>`
+- **emptyGridDefaultTemplate**: `TemplateRef<any>`
+- **emptyGridTemplate**: `TemplateRef<any>`
+- **evenRowCSS**: `string`
+- **filteredData**: `any[]`
+- **filteringExpressionsTreeChange**: `EventEmitter<IFilteringExpressionsTree>`
+- **filteringService**: `IgxFilteringService`
+- **headerCollapseIndicatorTemplate**: `TemplateRef<any>`
+- **headerExpandIndicatorTemplate**: `TemplateRef<any>`
+- **loadingGridTemplate**: `TemplateRef<any>`
+- **navigation**: `IgxGridNavigationService`
+- **oddRowCSS**: `string`
+- **onCellClick**: `EventEmitter<IGridCellEventArgs>`
+- **onCellEdit**: `EventEmitter<IGridEditEventArgs>`
+- **onCellEditCancel**: `EventEmitter<IGridEditEventArgs>`
+- **onCellEditEnter**: `EventEmitter<IGridEditEventArgs>`
+- **onColumnInit**: `EventEmitter<IgxColumnComponent>`
+- **onColumnMoving**: `EventEmitter<IColumnMovingEventArgs>`
+- **onColumnMovingEnd**: `EventEmitter<IColumnMovingEndEventArgs>`
+- **onColumnMovingStart**: `EventEmitter<IColumnMovingStartEventArgs>`
+- **onColumnPinning**: `EventEmitter<IPinColumnEventArgs>`
+- **onColumnResized**: `EventEmitter<IColumnResizeEventArgs>`
+- **onColumnVisibilityChanged**: `EventEmitter<IColumnVisibilityChangedEventArgs>`
+- **onContextMenu**: `EventEmitter<IGridCellEventArgs>`
+- **onDataPreLoad**: `EventEmitter<IForOfState>`
+- **onDoubleClick**: `EventEmitter<IGridCellEventArgs>`
+- **onFilteringDone**: `EventEmitter<IFilteringExpressionsTree>`
+- **onGridCopy**: `EventEmitter<IGridClipboardEvent>`
+- **onGridKeydown**: `EventEmitter<IGridKeydownEventArgs>`
+- **onPagingDone**: `EventEmitter<IPageEventArgs>`
+- **onRangeSelection**: `EventEmitter<GridSelectionRange>`
+- **onRowAdded**: `EventEmitter<IRowDataEventArgs>`
+- **onRowDeleted**: `EventEmitter<IRowDataEventArgs>`
+- **onRowDragEnd**: `EventEmitter<IRowDragEndEventArgs>`
+- **onRowDragStart**: `EventEmitter<IRowDragStartEventArgs>`
+- **onRowEdit**: `EventEmitter<IGridEditEventArgs>`
+- **onRowEditCancel**: `EventEmitter<IGridEditEventArgs>`
+- **onRowEditEnter**: `EventEmitter<IGridEditEventArgs>`
+- **onRowSelectionChange**: `EventEmitter<IRowSelectionEventArgs>`
+- **onRowToggle**: `EventEmitter<IRowToggleEventArgs>`
+- **onSelection**: `EventEmitter<IGridCellEventArgs>`
+- **onSortingDone**: `EventEmitter<ISortingExpression | ISortingExpression[]>`
+- **onToolbarExporting**: `EventEmitter<IGridToolbarExportEventArgs>`
+- **pageChange**: `EventEmitter<number>`
+- **paginationTemplate**: `TemplateRef<any>`
+- **perPageChange**: `EventEmitter<number>`
+- **primaryKey**: `any`
+- **rowCollapsedIndicatorTemplate**: `TemplateRef<any>`
+- **rowExpandedIndicatorTemplate**: `TemplateRef<any>`
+- **selectionService**: `IgxGridSelectionService`
+- **shouldGenerate**: `boolean`
+- **sortingExpressionsChange**: `EventEmitter<ISortingExpression[]>`
+- **summaryService**: `IgxGridSummaryService`
+- **toolbar**: `IgxGridToolbarComponent`
+- **uniqueColumnValuesStrategy**: `any`
+- **advancedFilteringExpressionsTree**: `any`
+- **allowAdvancedFiltering**: `any`
+- **allowFiltering**: `any`
+- **bannerClass**: `any`
+- **cellSelection**: `any`
+- **columnHiding**: `any`
+- **columnPinning**: `any`
+- **columnWidth**: `any`
+- **columns**: `any`
+- **dataRowList**: `any`
+- **dataView**: `any`
+- **defaultHeaderGroupMinWidth**: `any`
+- **defaultRowHeight**: `any`
+- **dragIndicatorIconTemplate**: `any`
+- **emptyFilteredGridMessage**: `any`
+- **emptyGridMessage**: `any`
+- **expansionStates**: `any`
+- **exportCsv**: `any`
+- **exportCsvText**: `any`
+- **exportExcel**: `any`
+- **exportExcelText**: `any`
+- **exportText**: `any`
+- **filterCellList**: `any`
+- **filterMode**: `any`
+- **filterStrategy**: `any`
+- **filteredSortedData**: `any`
+- **filteringExpressionsTree**: `any`
+- **filteringLogic**: `any`
+- **hasColumnGroups**: `any`
+- **hasColumnLayouts**: `any`
+- **hasEditableColumns**: `any`
+- **hasFilterableColumns**: `any`
+- **hasMovableColumns**: `any`
+- **hasSortableColumns**: `any`
+- **hasSummarizedColumns**: `any`
+- **headerCellList**: `any`
+- **headerGroupsList**: `any`
+- **headerWidth**: `any`
+- **height**: `any`
+- **hiddenColumnsCount**: `any`
+- **hiddenColumnsText**: `any`
+- **hideRowSelectors**: `any`
+- **isFirstPage**: `any`
+- **isLastPage**: `any`
+- **isLoading**: `any`
+- **locale**: `any`
+- **nativeElement**: `any`
+- **page**: `any`
+- **paging**: `any`
+- **perPage**: `any`
+- **pinnedColumns**: `any`
+- **pinnedColumnsText**: `any`
+- **pinnedWidth**: `any`
+- **resourceStrings**: `any`
+- **rowDraggable**: `any`
+- **rowEditable**: `any`
+- **rowHeight**: `any`
+- **rowList**: `any`
+- **rowSelectable**: `any`
+- **rowSelection**: `any`
+- **scrollWidth**: `any`
+- **selectedCells**: `any`
+- **showToolbar**: `any`
+- **sortStrategy**: `any`
+- **sortingExpressions**: `any`
+- **summaryCalculationMode**: `any`
+- **summaryPosition**: `any`
+- **toolbarCustomContentTemplate**: `any`
+- **toolbarTitle**: `any`
+- **totalPages**: `any`
+- **totalRecords**: `any`
+- **totalWidth**: `any`
+- **transactions**: `any`
+- **unpinnedColumns**: `any`
+- **unpinnedWidth**: `any`
+- **visibleColumns**: `any`
+- **width**: `any`
+- **_setupListeners**(): void
+- **_setupServices**(): void
+- **addRow**(data: any): void
+- **clearFilter**(name?: string): void
+- **clearSearch**(): void
+- **clearSort**(name?: string): void
+- **closeAdvancedFilteringDialog**(applyChanges: boolean): void
+- **collapseAll**(): void
+- **collapseRow**(rowID: any): void
+- **deleteRow**(rowSelector: any): void
+- **deselectAllRows**(onlyFilterData: boolean): void
+- **deselectRows**(rowIDs: any[]): void
+- **disableSummaries**(rest: any[]): void
+- **enableSummaries**(rest: any[]): void
+- **endEdit**(commit: boolean, event?: Event): void
+- **expandAll**(): void
+- **expandRow**(rowID: any): void
+- **filter**(name: string, value: any, conditionOrExpressionTree?: IFilteringOperation | IFilteringExpressionsTree, ignoreCase?: boolean): void
+- **filterGlobal**(value: any, condition: any, ignoreCase?: any): void
+- **findNext**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number
+- **findPrev**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number
+- **getCellByColumn**(rowIndex: number, columnField: string): IgxGridCellComponent
+- **getCellByKey**(rowSelector: any, columnField: string): IgxGridCellComponent
+- **getColumnByName**(name: string): IgxColumnComponent
+- **getHeaderGroupWidth**(column: IgxColumnComponent): string
+- **getNextCell**(currRowIndex: number, curVisibleColIndex: number, callback: any): ICellPosition
+- **getPinnedWidth**(takeHidden: boolean): number
+- **getPreviousCell**(currRowIndex: number, curVisibleColIndex: number, callback: any): ICellPosition
+- **getRowByIndex**(index: number): IgxRowDirective<IgxGridBaseDirective & GridType>
+- **getRowByKey**(keyValue: any): IgxRowDirective<IgxGridBaseDirective & GridType>
+- **getSelectedData**(formatters: boolean, headers: boolean): any[]
+- **markForCheck**(): void
+- **moveColumn**(column: IgxColumnComponent, dropTarget: IgxColumnComponent, pos: DropPosition): void
+- **navigateTo**(rowIndex: number, visibleColIndex: number, cb: Function): void
+- **nextPage**(): void
+- **openAdvancedFilteringDialog**(): void
+- **paginate**(val: number): void
+- **pinColumn**(columnName: string | IgxColumnComponent, index?: any): boolean
+- **previousPage**(): void
+- **reflow**(): void
+- **refreshSearch**(updateActiveInfo?: boolean, endEdit: boolean): number
+- **selectAllRows**(onlyFilterData: boolean): void
+- **selectRows**(rowIDs: any[], clearCurrentSelection?: boolean): void
+- **selectedRows**(): any[]
+- **sort**(expression: ISortingExpression | Array<ISortingExpression>): void
+- **toggleColumnVisibility**(args: IColumnVisibilityChangedEventArgs): void
+- **toggleRow**(rowID: any): void
+- **unpinColumn**(columnName: string | IgxColumnComponent, index?: any): boolean
+- **updateCell**(value: any, rowSelector: any, column: string): void
+- **updateRow**(value: any, rowSelector: any): void
+
+### [IgxGridBodyDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridBodyDirective)
+
+
+### [IgxGridCRUDService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridCRUDService)
+
+- **cell**: `IgxCell | null`
+- **grid**: `any`
+- **row**: `IgxRow | null`
+- **inEditMode**: `any`
+- **primaryKey**: `any`
+- **rowEditing**: `any`
+- **begin**(cell: any): void
+- **beginRowEdit**(): void
+- **createCell**(cell: any): IgxCell
+- **createRow**(cell: IgxCell): IgxRow
+- **end**(): void
+- **endRowEdit**(): void
+- **isInEditMode**(rowIndex: number, columnIndex: number): boolean
+- **sameCell**(cell: IgxCell): boolean
+- **sameRow**(rowID: any): boolean
+
+### [IgxGridCellComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridCellComponent)
+
+- **constructor**(selectionService: IgxGridSelectionService, crudService: IgxGridCRUDService, gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, cdr: ChangeDetectorRef, element: ElementRef, zone: NgZone, touchManager: HammerGesturesManager, platformUtil: PlatformUtil): IgxGridCellComponent
+- **activeHighlightClass**: `string`
+- **cdr**: `ChangeDetectorRef`
+- **cellTemplate**: `TemplateRef<any>`
+- **column**: `ColumnType`
+- **editMode**: `boolean`
+- **formatter**: `any`
+- **gridAPI**: `GridBaseAPIService<IgxGridBaseDirective & GridType>`
+- **highlightClass**: `string`
+- **role**: `string`
+- **row**: `RowType`
+- **rowData**: `any`
+- **tabindex**: `number`
+- **value**: `any`
+- **width**: `string`
+- **cellID**: `any`
+- **colEnd**: `any`
+- **colStart**: `any`
+- **columnIndex**: `any`
+- **context**: `any`
+- **describedby**: `any`
+- **dirty**: `any`
+- **editValue**: `any`
+- **editable**: `any`
+- **grid**: `any`
+- **gridColumnSpan**: `any`
+- **gridID**: `any`
+- **gridRowSpan**: `any`
+- **inEditMode**: `any`
+- **nativeElement**: `any`
+- **readonly**: `any`
+- **rowEnd**: `any`
+- **rowIndex**: `any`
+- **rowStart**: `any`
+- **selected**: `any`
+- **template**: `any`
+- **visibleColumnIndex**: `any`
+- **clearHighlight**(): void
+- **highlightText**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number
+- **isCellSelected**(): boolean
+- **setEditMode**(value: boolean): void
+- **update**(val: any): void
+
+### [IgxGridColumnModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridColumnModule)
+
+
+### [IgxGridColumnResizerComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridColumnResizerComponent)
+
+- **constructor**(colResizingService: IgxColumnResizingService): IgxGridColumnResizerComponent
+- **colResizingService**: `IgxColumnResizingService`
+- **resizer**: `IgxColumnResizerDirective`
+
+### [IgxGridComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridComponent)
+
+- **constructor**(selectionService: IgxGridSelectionService, crudService: IgxGridCRUDService, colResizingService: IgxColumnResizingService, gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, _transactions: TransactionService<Transaction, State>, elementRef: ElementRef, zone: NgZone, document: any, cdr: ChangeDetectorRef, resolver: ComponentFactoryResolver, differs: IterableDiffers, viewRef: ViewContainerRef, navigation: IgxGridNavigationService, filteringService: IgxFilteringService, overlayService: IgxOverlayService, summaryService: IgxGridSummaryService, _displayDensityOptions: IDisplayDensityOptions): IgxGridComponent
+- **dropAreaTemplate**: `TemplateRef<any>`
+- **groupsExpanded**: `boolean`
+- **groupsRecords**: `IGroupByRecord[]`
+- **onGroupingDone**: `EventEmitter<IGroupingDoneEventArgs>`
+- **data**: `any`
+- **dropAreaMessage**: `any`
+- **dropAreaVisible**: `any`
+- **filteredData**: `any`
+- **groupAreaTemplate**: `any`
+- **groupRowTemplate**: `any`
+- **groupingExpansionState**: `any`
+- **groupingExpressions**: `any`
+- **groupsRowList**: `any`
+- **hasGroupableColumns**: `any`
+- **hideGroupedColumns**: `any`
+- **id**: `any`
+- **totalItemCount**: `any`
+- **clearGrouping**(name?: string | Array<string>): void
+- **fullyExpandGroup**(groupRow: IGroupByRecord): void
+- **getSelectedData**(formatters: boolean, headers: boolean): any[]
+- **groupBy**(expression: IGroupingExpression | Array<IGroupingExpression>): void
+- **isExpandedGroup**(group: IGroupByRecord): boolean
+- **onFocusIn**(): void
+- **toggleAllGroupRows**(): void
+- **toggleGroup**(groupRow: IGroupByRecord): void
+
+### [IgxGridDragSelectDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridDragSelectDirective)
+
+- **constructor**(ref: ElementRef, zone: NgZone): IgxGridDragSelectDirective
+- **_activeDrag**: `boolean`
+- **onDragScroll**: `EventEmitter<DragScrollDirection>`
+- **onDragStop**: `EventEmitter<boolean>`
+- **activeDrag**: `any`
+- **clientRect**: `any`
+- **nativeElement**: `any`
+- **_measureDimensions**(x: number, y: number): DragScrollDirection
+- **ngOnDestroy**(): void
+- **ngOnInit**(): void
+- **startDragSelection**(ev: PointerEvent): void
+- **stopDragSelection**(): void
+
+### [IgxGridExcelStyleFilteringComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridExcelStyleFilteringComponent)
+
+- **constructor**(cdr: ChangeDetectorRef, element: ElementRef): IgxGridExcelStyleFilteringComponent
+- **column**: `any`
+
+### [IgxGridExpandableCellComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridExpandableCellComponent)
+
+- **constructor**(selectionService: IgxGridSelectionService, crudService: IgxGridCRUDService, gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, cdr: ChangeDetectorRef, element: ElementRef, zone: NgZone, touchManager: HammerGesturesManager, document: any, platformUtil: PlatformUtil): IgxGridExpandableCellComponent
+- **document**: `any`
+- **indentationDiv**: `ElementRef`
+- **indicator**: `ElementRef`
+
+### [IgxGridFilteringModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridFilteringModule)
+
+
+### [IgxGridFooterComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridFooterComponent)
+
+
+### [IgxGridForOfDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridForOfDirective)
+
+- **constructor**(_viewContainer: ViewContainerRef, _template: TemplateRef<NgForOfContext<T>>, _differs: IterableDiffers, resolver: ComponentFactoryResolver, cdr: ChangeDetectorRef, _zone: NgZone, syncScrollService: IgxForOfScrollSyncService, syncService: IgxForOfSyncService): IgxGridForOfDirective
+- **igxGridForOf**: `any`
+- **ngDoCheck**(): void
+- **ngOnChanges**(changes: SimpleChanges): void
+- **ngOnInit**(): void
+- **onHScroll**(scrollAmount: any): void
+- **onScroll**(event: any): void
+
+### [IgxGridGroupByRowComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridGroupByRowComponent)
+
+- **constructor**(gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, gridSelection: IgxGridSelectionService, element: ElementRef, cdr: ChangeDetectorRef): IgxGridGroupByRowComponent
+- **cdr**: `ChangeDetectorRef`
+- **element**: `ElementRef`
+- **gridAPI**: `GridBaseAPIService<IgxGridBaseDirective & GridType>`
+- **gridID**: `string`
+- **groupContent**: `ElementRef`
+- **groupRow**: `IGroupByRecord`
+- **index**: `number`
+- **dataRowIndex**: `any`
+- **expanded**: `any`
+- **focused**: `any`
+- **grid**: `any`
+- **iconTemplate**: `any`
+- **nativeElement**: `any`
+- **styleClasses**: `any`
+- **toggle**(): void
+
+### [IgxGridHeadersModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridHeadersModule)
+
+
+### [IgxGridPipesModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridPipesModule)
+
+
+### [IgxGridResizingModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridResizingModule)
+
+
+### [IgxGridRowComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridRowComponent)
+
+- **constructor**(gridAPI: GridBaseAPIService<IgxGridComponent>, crudService: IgxGridCRUDService, selectionService: IgxGridSelectionService, element: ElementRef, cdr: ChangeDetectorRef): IgxGridRowComponent
+- **cdr**: `ChangeDetectorRef`
+- **crudService**: `IgxGridCRUDService`
+- **element**: `ElementRef`
+- **gridAPI**: `GridBaseAPIService<IgxGridComponent>`
+- **selectionService**: `IgxGridSelectionService`
+- **cells**: `any`
+- **expanded**: `any`
+- **hasColumnLayouts**: `any`
+- **getContext**(col: any, row: any): any
+
+### [IgxGridSelectionModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridSelectionModule)
+
+
+### [IgxGridSelectionService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridSelectionService)
+
+- **constructor**(zone: NgZone): IgxGridSelectionService
+- **_ranges**: `Set<string>`
+- **_selectionRange**: `Range`
+- **activeElement**: `ISelectionNode | null`
+- **dragMode**: `boolean`
+- **grid**: `any`
+- **keyboardState**: `ISelectionKeyboardState`
+- **pointerState**: `ISelectionPointerState`
+- **rowSelection**: `Set<any>`
+- **selection**: `Map<number, Set<number>>`
+- **temp**: `Map<number, Set<number>>`
+- **allData**: `any`
+- **filteredSelectedRowIds**: `any`
+- **primaryButton**: `any`
+- **ranges**: `any`
+- **_moveSelectionChrome**(node: Node): void
+- **add**(node: ISelectionNode, addToRange: boolean): void
+- **addKeyboardRange**(): void
+- **addRangeMeta**(node: ISelectionNode, state?: SelectionState): void
+- **areAllRowSelected**(): boolean
+- **clear**(clearAcriveEl: boolean): void
+- **clearAllSelectedRows**(): void
+- **clearHeaderCBState**(): void
+- **clearRowSelection**(event?: any): void
+- **clearTextSelection**(): void
+- **deselectRow**(rowID: any, event?: any): void
+- **deselectRowsWithNoEvent**(rowIDs: any[]): void
+- **dragSelect**(node: ISelectionNode, state: SelectionState): void
+- **emitRowSelectionEvent**(newSelection: any, added: any, removed: any, event?: any): boolean
+- **generateRange**(node: ISelectionNode, state?: SelectionState): GridSelectionRange
+- **getRowDataById**(rowID: any): Object
+- **getRowIDs**(data: any): Array<any>
+- **getSelectedRows**(): Array<any>
+- **hasSomeRowSelected**(): boolean
+- **initKeyboardState**(): void
+- **initPointerState**(): void
+- **isActiveLayout**(current: IMultiRowLayoutNode, target: IMultiRowLayoutNode): boolean
+- **isActiveNode**(node: ISelectionNode): boolean
+- **isInMap**(node: ISelectionNode): boolean
+- **isRowSelected**(rowID: any): boolean
+- **keyboardStateOnFocus**(node: ISelectionNode, emitter: EventEmitter<GridSelectionRange>, dom: any): void
+- **keyboardStateOnKeydown**(node: ISelectionNode, shift: boolean, shiftTab: boolean): void
+- **mergeMap**(target: Map<number, Set<number>>, source: Map<number, Set<number>>): void
+- **pointerDown**(node: ISelectionNode, shift: boolean, ctrl: boolean): void
+- **pointerDownShiftKey**(node: ISelectionNode): void
+- **pointerEnter**(node: ISelectionNode, event: PointerEvent): boolean
+- **pointerUp**(node: ISelectionNode, emitter: EventEmitter<GridSelectionRange>): boolean
+- **remove**(node: ISelectionNode): void
+- **removeRangeMeta**(node: ISelectionNode, state?: SelectionState): void
+- **restoreTextSelection**(): void
+- **selectAllRows**(event?: any): void
+- **selectMultipleRows**(rowID: any, rowData: any, event?: any): void
+- **selectRange**(node: ISelectionNode, state: SelectionState, collection: Map<number, Set<number>>): void
+- **selectRowById**(rowID: any, clearPrevSelection?: any, event?: any): void
+- **selectRowsWithNoEvent**(rowIDs: any[], clearPrevSelection?: any): void
+- **selected**(node: ISelectionNode): boolean
+
+### [IgxGridSharedModules](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridSharedModules)
+
+
+### [IgxGridStateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridStateDirective)
+
+- **options**: `any`
+- **getState**(serialize: boolean, feature?: string | string[]): IGridState | string
+- **setState**(state: IGridState | string): void
+
+### [IgxGridSummaryModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridSummaryModule)
+
+
+### [IgxGridToolbarComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridToolbarComponent)
+
+- **constructor**(gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, cdr: ChangeDetectorRef, excelExporter: IgxExcelExporterService, csvExporter: IgxCsvExporterService, _displayDensityOptions: IDisplayDensityOptions): IgxGridToolbarComponent
+- **cdr**: `ChangeDetectorRef`
+- **columnHidingButton**: `IgxButtonDirective`
+- **columnHidingDropdown**: `IgxDropDownComponent`
+- **columnHidingUI**: `IgxColumnHidingComponent`
+- **columnPinningButton**: `IgxButtonDirective`
+- **columnPinningDropdown**: `IgxDropDownComponent`
+- **columnPinningUI**: `IgxColumnPinningComponent`
+- **csvExporter**: `IgxCsvExporterService`
+- **excelExporter**: `IgxExcelExporterService`
+- **exportButton**: `IgxButtonDirective`
+- **exportDropdown**: `IgxDropDownComponent`
+- **gridAPI**: `GridBaseAPIService<IgxGridBaseDirective & GridType>`
+- **context**: `any`
+- **defaultDropDownsMaxHeight**: `any`
+- **filterColumnsPrompt**: `any`
+- **grid**: `any`
+- **hostClass**: `any`
+- **pinnedColumnsCount**: `any`
+- **shouldShowExportButton**: `any`
+- **shouldShowExportCsvButton**: `any`
+- **shouldShowExportExcelButton**: `any`
+- **exportClicked**(): void
+- **exportToCsvClicked**(): void
+- **exportToExcelClicked**(): void
+- **getExportCsvText**(): string
+- **getExportExcelText**(): string
+- **getExportText**(): string
+- **getTitle**(): string
+- **toggleColumnHidingUI**(): void
+- **toggleColumnPinningUI**(): void
+
+### [IgxGridToolbarCustomContentDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridToolbarCustomContentDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxGridToolbarCustomContentDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxGridToolbarModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGridToolbarModule)
+
+
+### [IgxGrouping](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxGrouping)
+
+- **groupBy**(data: any[], state: IGroupingState, grid?: any, groupsRecords?: any[], fullResult: IGroupByResult): IGroupByResult
+
+### [IgxHierarchicalGridAPIService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxHierarchicalGridAPIService)
+
+- **allow_expansion_state_change**(rowID: any, expanded: any): boolean
+- **getChildGrid**(path: Array<IPathSegment>): any
+- **getChildGridByID**(rowIslandKey: any, rowID: any): IgxHierarchicalGridComponent
+- **getChildGrids**(inDepth?: boolean): any[]
+- **getChildGridsForRowIsland**(rowIslandKey: any): IgxHierarchicalGridComponent[]
+- **getChildRowIsland**(key: string): IgxRowIslandComponent
+- **getParentRowId**(childGrid: IgxHierarchicalGridComponent): any
+- **get_rec_by_id**(rowID: any): any
+- **get_row_expansion_state**(record: any): boolean
+- **registerChildGrid**(parentRowID: string | object, rowIslandKey: string, grid: IgxHierarchicalGridComponent): void
+- **registerChildRowIsland**(rowIsland: IgxRowIslandComponent): void
+- **unsetChildRowIsland**(rowIsland: IgxRowIslandComponent): void
+
+### [IgxHierarchicalGridBaseDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxHierarchicalGridBaseDirective)
+
+- **constructor**(selectionService: IgxGridSelectionService, crudService: IgxGridCRUDService, colResizingService: IgxColumnResizingService, gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, transactionFactory: TransactionService<Transaction, State>, elementRef: ElementRef, zone: NgZone, document: any, cdr: ChangeDetectorRef, resolver: ComponentFactoryResolver, differs: IterableDiffers, viewRef: ViewContainerRef, navigation: IgxHierarchicalGridNavigationService, filteringService: IgxFilteringService, overlayService: IgxOverlayService, summaryService: IgxGridSummaryService, _displayDensityOptions: IDisplayDensityOptions): IgxHierarchicalGridBaseDirective
+- **colResizingService**: `IgxColumnResizingService`
+- **document**: `any`
+- **expandChildren**: `boolean`
+- **hasChildrenKey**: `string`
+- **rootGrid**: `any`
+- **selectionService**: `IgxGridSelectionService`
+- **showExpandAll**: `boolean`
+- **summaryService**: `IgxGridSummaryService`
+
+### [IgxHierarchicalGridCellComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxHierarchicalGridCellComponent)
+
+- **constructor**(selectionService: IgxGridSelectionService, crudService: IgxGridCRUDService, gridAPI: GridBaseAPIService<IgxHierarchicalGridComponent>, cdr: ChangeDetectorRef, helement: ElementRef, zone: NgZone, touchManager: HammerGesturesManager, platformUtil: PlatformUtil): IgxHierarchicalGridCellComponent
+- **cdr**: `ChangeDetectorRef`
+- **gridAPI**: `GridBaseAPIService<IgxHierarchicalGridComponent>`
+- **_clearAllHighlights**(): void
+- **ngOnInit**(): void
+
+### [IgxHierarchicalGridComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxHierarchicalGridComponent)
+
+- **constructor**(selectionService: IgxGridSelectionService, crudService: IgxGridCRUDService, colResizingService: IgxColumnResizingService, gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, transactionFactory: TransactionService<Transaction, State>, elementRef: ElementRef, zone: NgZone, document: any, cdr: ChangeDetectorRef, resolver: ComponentFactoryResolver, differs: IterableDiffers, viewRef: ViewContainerRef, navigation: IgxHierarchicalGridNavigationService, filteringService: IgxFilteringService, overlayService: IgxOverlayService, summaryService: IgxGridSummaryService, _displayDensityOptions: IDisplayDensityOptions): IgxHierarchicalGridComponent
+- **data**: `any`
+- **expandChildren**: `any`
+- **filteredData**: `any`
+- **foreignKey**: `any`
+- **id**: `any`
+- **outletDirective**: `any`
+- **getDefaultExpandState**(record: any): boolean
+- **ngDoCheck**(): void
+- **ngOnDestroy**(): void
+- **onContainerScroll**(): void
+
+### [IgxHierarchicalGridNavigationService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxHierarchicalGridNavigationService)
+
+- **grid**: `IgxHierarchicalGridComponent`
+- **getCellElementByVisibleIndex**(rowIndex: any, visibleColumnIndex: any, isSummary: boolean): any
+- **getColumnUnpinnedIndex**(visibleColumnIndex: number, grid?: IgxHierarchicalGridComponent): number
+- **getFocusableGrid**(): IgxHierarchicalGridComponent
+- **goToFirstCell**(): void
+- **goToLastCell**(): void
+- **navigateBottom**(visibleColumnIndex: any): void
+- **navigateDown**(rowElement: any, selectedNode: ISelectionNode): void
+- **navigateNextFilterCell**(column: IgxColumnComponent, eventArgs: any): void
+- **navigatePrevFilterCell**(column: IgxColumnComponent, eventArgs: any): void
+- **navigateTop**(visibleColumnIndex: any): void
+- **navigateUp**(rowElement: any, selectedNode: ISelectionNode): void
+- **onKeydownEnd**(rowIndex: any, isSummary: boolean): void
+- **performShiftTabKey**(currentRowEl: any, selectedNode: ISelectionNode): void
+- **performTab**(currentRowEl: any, selectedNode: ISelectionNode): void
+
+### [IgxHierarchicalRowComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxHierarchicalRowComponent)
+
+- **constructor**(gridAPI: GridBaseAPIService<IgxHierarchicalGridComponent>, crudService: IgxGridCRUDService, selectionService: IgxGridSelectionService, element: ElementRef<HTMLElement>, cdr: ChangeDetectorRef): IgxHierarchicalRowComponent
+- **cells**: `QueryList<IgxHierarchicalGridCellComponent>`
+- **expander**: `ElementRef<HTMLElement>`
+- **expanded**: `any`
+- **hasChildren**: `any`
+- **viewIndex**: `any`
+- **toggle**(): void
+
+### [IgxHierarchicalTransactionService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxHierarchicalTransactionService)
+
+- **commit**(data: any[], primaryKey?: any, childDataKey?: any, id?: any): void
+- **getAggregatedChanges**(mergeChanges: boolean): T[]
+
+### [IgxHintDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxHintDirective)
+
+- **constructor**(_element: ElementRef): IgxHintDirective
+- **isPositionEnd**: `boolean`
+- **isPositionStart**: `boolean`
+- **position**: `any`
+
+### [IgxIconComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxIconComponent)
+
+- **constructor**(_el: ElementRef, iconService: IgxIconService, ref: ChangeDetectorRef): IgxIconComponent
+- **active**: `boolean`
+- **ariaHidden**: `boolean`
+- **el**: `ElementRef`
+- **font**: `string`
+- **iconColor**: `string`
+- **iconName**: `string`
+- **id**: `string`
+- **getActive**: `any`
+- **getFontSet**: `any`
+- **getIconColor**: `any`
+- **getIconName**: `any`
+- **getInactive**: `any`
+- **getSvgKey**: `any`
+- **template**: `any`
+
+### [IgxIconService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxIconService)
+
+- **constructor**(_sanitizer: DomSanitizer, _document: any): IgxIconService
+- **iconLoaded**: `Observable<IgxIconLoadedEvent>`
+- **defaultFontSet**: `any`
+- **addSvgIcon**(iconName: string, url: string, fontSet: string): void
+- **addSvgIconFromText**(iconName: string, iconText: string, fontSet: string): void
+- **fontSetClassName**(alias: string): string
+- **getSvgIconKey**(iconName: string, fontSet: string): string
+- **isSvgIconCached**(iconName: string, fontSet: string): boolean
+- **registerFontSetAlias**(alias: string, className: string): this
+
+### [IgxInputDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxInputDirective)
+
+- **constructor**(inputGroup: IgxInputGroupBase, ngModel: NgModel, formControl: FormControlName, element: ElementRef, cdr: ChangeDetectorRef): IgxInputDirective
+- **inputGroup**: `IgxInputGroupBase`
+- **isInput**: `boolean`
+- **isTextArea**: `boolean`
+- **disabled**: `any`
+- **focused**: `any`
+- **hasPlaceholder**: `any`
+- **isValid**: `any`
+- **nativeElement**: `any`
+- **placeholder**: `any`
+- **required**: `any`
+- **valid**: `any`
+- **value**: `any`
+- **focus**(): void
+
+### [IgxInputGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxInputGroupComponent)
+
+- **constructor**(_element: ElementRef, _displayDensityOptions: IDisplayDensityOptions): IgxInputGroupComponent
+- **defaultClass**: `boolean`
+- **disabled**: `boolean`
+- **element**: `ElementRef`
+- **id**: `string`
+- **filled**: `any`
+- **hasBorder**: `any`
+- **hasHints**: `any`
+- **isNotMaterial**: `any`
+- **isTypeBootstrap**: `any`
+- **isTypeBorder**: `any`
+- **isTypeBox**: `any`
+- **isTypeFluent**: `any`
+- **isTypeFluentSearch**: `any`
+- **isTypeLine**: `any`
+- **isTypeSearch**: `any`
+- **supressInputAutofocus**: `any`
+- **type**: `any`
+
+### [IgxInsertDropStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxInsertDropStrategy)
+
+- **constructor**(_renderer: Renderer2): IgxInsertDropStrategy
+- **dropAction**(drag: IgxDragDirective, drop: IgxDropDirective, atIndex: number): void
+
+### [IgxLabelDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxLabelDirective)
+
+- **defaultClass**: `boolean`
+
+### [IgxLayoutDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxLayoutDirective)
+
+- **dir**: `string`
+- **itemAlign**: `string`
+- **justify**: `string`
+- **reverse**: `boolean`
+- **wrap**: `string`
+
+### [IgxLeftButtonStyleDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxLeftButtonStyleDirective)
+
+- **constructor**(tabs: IgxTabsBase): IgxLeftButtonStyleDirective
+- **tabs**: `IgxTabsBase`
+- **hiddenCSS**: `any`
+- **notDisplayedCSS**: `any`
+- **visibleCSS**: `any`
+
+### [IgxLinearProgressBarComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxLinearProgressBarComponent)
+
+- **constructor**(): IgxLinearProgressBarComponent
+- **cssClass**: `string`
+- **id**: `string`
+- **indeterminate**: `boolean`
+- **role**: `string`
+- **striped**: `boolean`
+- **text**: `string`
+- **textAlign**: `IgxTextAlign`
+- **textTop**: `boolean`
+- **textVisibility**: `boolean`
+- **type**: `string`
+- **valueMin**: `number`
+- **value**: `any`
+- **ngAfterContentInit**(): void
+
+### [IgxListActionDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxListActionDirective)
+
+
+### [IgxListComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxListComponent)
+
+- **constructor**(element: ElementRef, _displayDensityOptions: IDisplayDensityOptions): IgxListComponent
+- **allowLeftPanning**: `boolean`
+- **allowRightPanning**: `boolean`
+- **children**: `QueryList<IgxListItemComponent>`
+- **dataLoadingTemplate**: `IgxDataLoadingTemplateDirective`
+- **element**: `ElementRef`
+- **emptyListTemplate**: `IgxEmptyListTemplateDirective`
+- **id**: `string`
+- **isLoading**: `boolean`
+- **listItemLeftPanningTemplate**: `IgxListItemLeftPanningTemplateDirective`
+- **listItemRightPanningTemplate**: `IgxListItemRightPanningTemplateDirective`
+- **onItemClicked**: `EventEmitter<IListItemClickEventArgs>`
+- **onLeftPan**: `EventEmitter<IListItemPanningEventArgs>`
+- **onPanStateChange**: `EventEmitter<IPanStateChangeEventArgs>`
+- **onRightPan**: `EventEmitter<IListItemPanningEventArgs>`
+- **panEndTriggeringThreshold**: `number`
+- **context**: `any`
+- **headers**: `any`
+- **isListEmpty**: `any`
+- **items**: `any`
+- **role**: `any`
+- **template**: `any`
+
+### [IgxListItemComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxListItemComponent)
+
+- **constructor**(list: IgxListBaseDirective, elementRef: ElementRef, _renderer: Renderer2): IgxListItemComponent
+- **ariaLabel**: `string`
+- **hidden**: `boolean`
+- **isHeader**: `boolean`
+- **leftPanningTemplateElement**: `any`
+- **list**: `IgxListBaseDirective`
+- **rightPanningTemplateElement**: `any`
+- **touchAction**: `string`
+- **contentElement**: `any`
+- **context**: `any`
+- **display**: `any`
+- **element**: `any`
+- **headerStyle**: `any`
+- **index**: `any`
+- **innerStyle**: `any`
+- **maxLeft**: `any`
+- **maxRight**: `any`
+- **panState**: `any`
+- **role**: `any`
+- **width**: `any`
+
+### [IgxListItemLeftPanningTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxListItemLeftPanningTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxListItemLeftPanningTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxListItemRightPanningTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxListItemRightPanningTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxListItemRightPanningTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxListLineDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxListLineDirective)
+
+
+### [IgxListLineSubTitleDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxListLineSubTitleDirective)
+
+- **cssClass**: `string`
+
+### [IgxListLineTitleDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxListLineTitleDirective)
+
+- **cssClass**: `string`
+
+### [IgxListThumbnailDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxListThumbnailDirective)
+
+
+### [IgxMaskDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxMaskDirective)
+
+- **constructor**(elementRef: ElementRef): IgxMaskDirective
+- **displayValuePipe**: `PipeTransform`
+- **focusedValuePipe**: `PipeTransform`
+- **includeLiterals**: `boolean`
+- **mask**: `string`
+- **onValueChange**: `EventEmitter<IMaskEventArgs>`
+- **promptChar**: `string`
+- **placeholder**: `any`
+
+### [IgxMonthPickerBaseDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxMonthPickerBaseDirective)
+
+- **activeView**: `any`
+
+### [IgxMonthPickerComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxMonthPickerComponent)
+
+- **id**: `string`
+- **selectDate**(value: Date): Date
+
+### [IgxMonthViewSlotsCalendar](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxMonthViewSlotsCalendar)
+
+- **transform**(monthViews: number): any[]
+
+### [IgxMonthsViewComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxMonthsViewComponent)
+
+- **constructor**(el: ElementRef): IgxMonthsViewComponent
+- **date**: `Date`
+- **el**: `ElementRef`
+- **formatView**: `boolean`
+- **id**: `string`
+- **onSelection**: `EventEmitter<Date>`
+- **locale**: `any`
+- **monthFormat**: `any`
+
+### [IgxNavDrawerItemDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxNavDrawerItemDirective)
+
+
+### [IgxNavDrawerMiniTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxNavDrawerMiniTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxNavDrawerMiniTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxNavDrawerTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxNavDrawerTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxNavDrawerTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxNavbarComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxNavbarComponent)
+
+- **actionButtonIcon**: `string`
+- **id**: `string`
+- **onAction**: `EventEmitter<IgxNavbarComponent>`
+- **title**: `string`
+- **titleId**: `string`
+- **isActionButtonVisible**: `any`
+
+### [IgxNavigationCloseDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxNavigationCloseDirective)
+
+- **constructor**(nav: IgxNavigationService): IgxNavigationCloseDirective
+- **state**: `IgxNavigationService`
+- **closeNavigationDrawer**(): void
+
+### [IgxNavigationDrawerComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxNavigationDrawerComponent)
+
+- **constructor**(elementRef: ElementRef, _state: IgxNavigationService, renderer: Renderer2, _touchManager: HammerGesturesManager, platformUtil: PlatformUtil): IgxNavigationDrawerComponent
+- **closed**: `EventEmitter<any>`
+- **closing**: `EventEmitter<any>`
+- **enableGestures**: `boolean`
+- **id**: `string`
+- **miniWidth**: `string`
+- **opened**: `EventEmitter<any>`
+- **opening**: `EventEmitter<any>`
+- **pin**: `boolean`
+- **pinChange**: `EventEmitter<boolean>`
+- **pinThreshold**: `number`
+- **position**: `string`
+- **width**: `string`
+- **isOpen**: `any`
+- **close**(): void
+- **open**(): void
+- **toggle**(): void
+
+### [IgxNavigationService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxNavigationService)
+
+- **constructor**(): IgxNavigationService
+- **add**(id: string, navItem: IToggleView): void
+- **close**(id: string, args: any[]): any
+- **get**(id: string): IToggleView
+- **open**(id: string, args: any[]): any
+- **remove**(id: string): void
+- **toggle**(id: string, args: any[]): any
+
+### [IgxNavigationToggleDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxNavigationToggleDirective)
+
+- **constructor**(nav: IgxNavigationService): IgxNavigationToggleDirective
+- **state**: `IgxNavigationService`
+- **toggleNavigationDrawer**(): void
+
+### [IgxNumberFilteringOperand](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxNumberFilteringOperand)
+
+- **constructor**(): IgxNumberFilteringOperand
+
+### [IgxNumberSummaryOperand](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxNumberSummaryOperand)
+
+- **operate**(data: any[], allData: any[], fieldName?: string): IgxSummaryResult[]
+- static **average**(data: any[]): number
+- static **max**(data: any[]): number
+- static **min**(data: any[]): number
+- static **sum**(data: any[]): number
+
+### [IgxOverlayOutletDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxOverlayOutletDirective)
+
+- **constructor**(element: ElementRef): IgxOverlayOutletDirective
+- **element**: `ElementRef`
+
+### [IgxOverlayService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxOverlayService)
+
+- **constructor**(_factoryResolver: ComponentFactoryResolver, _appRef: ApplicationRef, _injector: Injector, builder: AnimationBuilder, document: any, _zone: NgZone): IgxOverlayService
+- **onAnimation**: `EventEmitter<OverlayAnimationEventArgs>`
+- **onAppended**: `EventEmitter<OverlayEventArgs>`
+- **onClosed**: `EventEmitter<OverlayEventArgs>`
+- **onClosing**: `EventEmitter<OverlayClosingEventArgs>`
+- **onOpened**: `EventEmitter<OverlayEventArgs>`
+- **onOpening**: `EventEmitter<OverlayCancelableEventArgs>`
+- **attach**(element: ElementRef, settings?: OverlaySettings): string
+- **attach**(component: Type<any>, settings?: OverlaySettings, moduleRef?: Pick<NgModuleRef<any>, any | any>): string
+- **hide**(id: string): void
+- **hideAll**(): void
+- **reposition**(id: string): void
+- **setOffset**(id: string, deltaX: number, deltaY: number): void
+- **show**(id: string, settings?: OverlaySettings): string
+- **show**(component: ElementRef | Type<any>, settings?: OverlaySettings): string
+
+### [IgxPaginatorComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxPaginatorComponent)
+
+- **constructor**(_displayDensityOptions: IDisplayDensityOptions): IgxPaginatorComponent
+- **dropdownEnabled**: `boolean`
+- **dropdownHidden**: `boolean`
+- **pageChange**: `EventEmitter<number>`
+- **pagerEnabled**: `boolean`
+- **pagerHidden**: `boolean`
+- **perPageChange**: `EventEmitter<number>`
+- **selectLabel**: `any`
+- **totalPages**: `number`
+- **classComfortable**: `any`
+- **classCompact**: `any`
+- **classCosy**: `any`
+- **isFirstPage**: `any`
+- **isLastPage**: `any`
+- **page**: `any`
+- **perPage**: `any`
+- **selectOptions**: `any`
+- **totalRecords**: `any`
+- **nextPage**(): void
+- **paginate**(val: number): void
+- **previousPage**(): void
+
+### [IgxPaginatorModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxPaginatorModule)
+
+
+### [IgxPrependDropStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxPrependDropStrategy)
+
+- **constructor**(_renderer: Renderer2): IgxPrependDropStrategy
+- **dropAction**(drag: IgxDragDirective, drop: IgxDropDirective, atIndex: number): void
+
+### [IgxProcessBarTextTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxProcessBarTextTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxProcessBarTextTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxProgressBarGradientDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxProgressBarGradientDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxProgressBarGradientDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxRadioComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxRadioComponent)
+
+- **constructor**(): IgxRadioComponent
+- **ariaLabel**: `string | null`
+- **ariaLabelledBy**: `string`
+- **change**: `EventEmitter<IChangeRadioEventArgs>`
+- **checked**: `boolean`
+- **cssClass**: `string`
+- **disableRipple**: `boolean`
+- **disabled**: `boolean`
+- **focused**: `boolean`
+- **id**: `string`
+- **labelId**: `string`
+- **labelPosition**: `RadioLabelPosition | string`
+- **name**: `string`
+- **nativeLabel**: `any`
+- **nativeRadio**: `ElementRef`
+- **placeholderLabel**: `any`
+- **required**: `boolean`
+- **tabindex**: `number`
+- **value**: `any`
+- **select**(): void
+- **writeValue**(value: any): void
+
+### [IgxRadioGroupDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxRadioGroupDirective)
+
+- **change**: `EventEmitter<IChangeRadioEventArgs>`
+- **radioButtons**: `QueryList<IgxRadioComponent>`
+- **disabled**: `any`
+- **labelPosition**: `any`
+- **name**: `any`
+- **required**: `any`
+- **selected**: `any`
+- **value**: `any`
+- **ngAfterContentInit**(): void
+- **writeValue**(value: any): void
+
+### [IgxRightButtonStyleDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxRightButtonStyleDirective)
+
+- **constructor**(tabs: IgxTabsBase): IgxRightButtonStyleDirective
+- **tabs**: `IgxTabsBase`
+- **hiddenCSS**: `any`
+- **notDisplayedCSS**: `any`
+- **visibleCSS**: `any`
+
+### [IgxRippleDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxRippleDirective)
+
+- **constructor**(builder: AnimationBuilder, elementRef: ElementRef, renderer: Renderer2, zone: NgZone): IgxRippleDirective
+- **rippleColor**: `string`
+- **rippleDisabled**: `boolean`
+- **rippleDuration**: `number`
+- **rippleTarget**: `string`
+- **centered**: `any`
+
+### [IgxRow](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxRow)
+
+- **constructor**(id: any, index: number, data: any): IgxRow
+- **data**: `any`
+- **id**: `any`
+- **index**: `number`
+- **newData**: `any`
+- **state**: `any`
+- **transactionState**: `any`
+- **createEditEventArgs**(): IGridEditEventArgs
+
+### [IgxRowDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxRowDirective)
+
+- **constructor**(gridAPI: GridBaseAPIService<T>, crudService: IgxGridCRUDService, selectionService: IgxGridSelectionService, element: ElementRef<HTMLElement>, cdr: ChangeDetectorRef): IgxRowDirective
+- **cdr**: `ChangeDetectorRef`
+- **cells**: `QueryList<IgxGridCellComponent>`
+- **crudService**: `IgxGridCRUDService`
+- **element**: `ElementRef<HTMLElement>`
+- **gridAPI**: `GridBaseAPIService<T>`
+- **index**: `number`
+- **selectionService**: `IgxGridSelectionService`
+- **dataRowIndex**: `any`
+- **grid**: `any`
+- **inEditMode**: `any`
+- **isSelected**: `any`
+- **nativeElement**: `any`
+- **rowData**: `any`
+- **rowID**: `any`
+- **delete**(): void
+- **update**(value: any): void
+
+### [IgxRowDragModule](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxRowDragModule)
+
+
+### [IgxRowIslandAPIService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxRowIslandAPIService)
+
+- **change**: `Subject<any>`
+- **rowIsland**: `IgxRowIslandComponent`
+- **get**(id: string): IgxRowIslandComponent
+- **getChildGridByID**(rowID: any): IgxHierarchicalGridComponent
+- **getChildGrids**(inDepth?: boolean): any[]
+- **getChildRowIsland**(rowIslandKey: string): IgxRowIslandComponent
+- **register**(rowIsland: IgxRowIslandComponent): void
+- **registerChildGrid**(parentRowID: string | object, grid: IgxHierarchicalGridComponent): void
+- **registerChildRowIsland**(rowIsland: IgxRowIslandComponent): void
+- **reset**(oldId: string, newId: string): void
+- **unset**(id: string): void
+- **unsetChildRowIsland**(rowIsland: IgxRowIslandComponent): void
+- **unsubscribe**(rowIsland: IgxRowIslandComponent): void
+
+### [IgxRowIslandComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxRowIslandComponent)
+
+- **constructor**(selectionService: IgxGridSelectionService, crudService: IgxGridCRUDService, colResizingService: IgxColumnResizingService, gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, transactionFactory: any, elementRef: ElementRef, zone: NgZone, document: any, cdr: ChangeDetectorRef, resolver: ComponentFactoryResolver, differs: IterableDiffers, viewRef: ViewContainerRef, navigation: IgxHierarchicalGridNavigationService, filteringService: IgxFilteringService, overlayService: IgxOverlayService, summaryService: IgxGridSummaryService, _displayDensityOptions: IDisplayDensityOptions, rowIslandAPI: IgxRowIslandAPIService): IgxRowIslandComponent
+- **colResizingService**: `IgxColumnResizingService`
+- **data**: `any[]`
+- **document**: `any`
+- **filteredData**: `any[]`
+- **key**: `string`
+- **onGridCreated**: `EventEmitter<IGridCreatedEventArgs>`
+- **rowIslandAPI**: `IgxRowIslandAPIService`
+- **selectionService**: `IgxGridSelectionService`
+- **summaryService**: `IgxGridSummaryService`
+- **expandChildren**: `any`
+
+### [IgxSelectComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSelectComponent)
+
+- **constructor**(elementRef: ElementRef, cdr: ChangeDetectorRef, selection: IgxSelectionAPIService, _displayDensityOptions: IDisplayDensityOptions, _injector: Injector): IgxSelectComponent
+- **disabled**: `boolean`
+- **footerTemplate**: `TemplateRef<any>`
+- **headerTemplate**: `TemplateRef<any>`
+- **overlaySettings**: `OverlaySettings`
+- **placeholder**: `any`
+- **toggleIconTemplate**: `TemplateRef<any>`
+- **type**: `string`
+- **value**: `any`
+- **open**(overlaySettings?: OverlaySettings): void
+
+### [IgxSelectGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSelectGroupComponent)
+
+
+### [IgxSelectItemComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSelectItemComponent)
+
+- **constructor**(dropDown: IDropDownBase, elementRef: ElementRef, group: IgxDropDownGroupComponent, selection?: IgxSelectionAPIService): IgxSelectItemComponent
+- **selected**: `any`
+- **text**: `any`
+- **ngDoCheck**(): void
+
+### [IgxSlideComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSlideComponent)
+
+- **constructor**(elementRef: ElementRef): IgxSlideComponent
+- **cssClass**: `string`
+- **direction**: `Direction`
+- **index**: `number`
+- **previous**: `boolean`
+- **active**: `any`
+- **ariaLive**: `any`
+- **ariaSelected**: `any`
+- **nativeElement**: `any`
+- **tabIndex**: `any`
+
+### [IgxSliderComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSliderComponent)
+
+- **constructor**(renderer: Renderer2, _el: ElementRef, _cdr: ChangeDetectorRef, _ngZone: NgZone): IgxSliderComponent
+- **id**: `string`
+- **onValueChange**: `EventEmitter<ISliderValueChangeEventArgs>`
+- **onValueChanged**: `EventEmitter<number | IRangeSliderValue>`
+- **primaryTickLabels**: `boolean`
+- **secondaryTickLabels**: `boolean`
+- **showTicks**: `boolean`
+- **thumbLabelVisibilityDuration**: `number`
+- **tickLabelsOrientation**: `TickLabelsOrientation`
+- **ticksOrientation**: `TicksOrientation`
+- **context**: `any`
+- **continuous**: `any`
+- **disabled**: `any`
+- **isRange**: `any`
+- **labels**: `any`
+- **labelsViewEnabled**: `any`
+- **lowerBound**: `any`
+- **lowerLabel**: `any`
+- **lowerValue**: `any`
+- **maxValue**: `any`
+- **minValue**: `any`
+- **primaryTicks**: `any`
+- **secondaryTicks**: `any`
+- **step**: `any`
+- **type**: `any`
+- **upperBound**: `any`
+- **upperLabel**: `any`
+- **upperValue**: `any`
+- **value**: `any`
+- **ngAfterContentInit**(): void
+- **ngOnChanges**(changes: any): void
+- **setValue**(value: number | IRangeSliderValue): void
+
+### [IgxSnackbarComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSnackbarComponent)
+
+- **constructor**(zone: NgZone): IgxSnackbarComponent
+- **actionText**: `string`
+- **animationDone**: `EventEmitter<AnimationEvent>`
+- **animationStarted**: `EventEmitter<AnimationEvent>`
+- **autoHide**: `boolean`
+- **displayTime**: `number`
+- **id**: `string`
+- **isVisible**: `boolean`
+- **message**: `string`
+- **onAction**: `EventEmitter<IgxSnackbarComponent>`
+- **hide**(): void
+- **show**(): void
+
+### [IgxSorting](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSorting)
+
+- **sort**(data: any[], expressions: ISortingExpression[]): any[]
+
+### [IgxStringFilteringOperand](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxStringFilteringOperand)
+
+- **constructor**(): IgxStringFilteringOperand
+- static **applyIgnoreCase**(a: string, ignoreCase: boolean): string
+
+### [IgxSummaryCellComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSummaryCellComponent)
+
+- **constructor**(element: ElementRef): IgxSummaryCellComponent
+- **column**: `IgxColumnComponent`
+- **density**: `any`
+- **firstCellIndentation**: `number`
+- **focused**: `boolean`
+- **hasSummary**: `boolean`
+- **rowIndex**: `number`
+- **summaryResults**: `IgxSummaryResult[]`
+- **tabindex**: `number`
+- **columnDatatype**: `any`
+- **describeby**: `any`
+- **itemHeight**: `any`
+- **nativeElement**: `any`
+- **visibleColumnIndex**: `any`
+- **width**: `any`
+- **dispatchEvent**(event: KeyboardEvent): void
+- **onBlur**(): void
+- **onFocus**(): void
+- **translateSummary**(summary: IgxSummaryResult): string
+
+### [IgxSummaryDataPipe](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSummaryDataPipe)
+
+- **constructor**(gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>): IgxSummaryDataPipe
+- **transform**(id: string, trigger: number): Map<string, any[]>
+
+### [IgxSummaryOperand](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSummaryOperand)
+
+- **operate**(data: any[], allData: any[], fieldName?: string): IgxSummaryResult[]
+- static **count**(data: any[]): number
+
+### [IgxSummaryRowComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSummaryRowComponent)
+
+- **constructor**(gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, element: ElementRef, cdr: ChangeDetectorRef): IgxSummaryRowComponent
+- **cdr**: `ChangeDetectorRef`
+- **element**: `ElementRef`
+- **firstCellIndentation**: `number`
+- **gridAPI**: `GridBaseAPIService<IgxGridBaseDirective & GridType>`
+- **gridID**: `any`
+- **index**: `number`
+- **summaries**: `Map<string, IgxSummaryResult[]>`
+- **summaryCells**: `QueryList<IgxSummaryCellComponent>`
+- **dataRowIndex**: `any`
+- **grid**: `any`
+- **minHeight**: `any`
+- **nativeElement**: `any`
+- **getColumnSummaries**(columnName: any): IgxSummaryResult[]
+- **ngDoCheck**(): void
+
+### [IgxSwitchComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSwitchComponent)
+
+- **ariaLabel**: `string | null`
+- **ariaLabelledBy**: `string`
+- **change**: `EventEmitter<IChangeSwitchEventArgs>`
+- **checked**: `boolean`
+- **cssClass**: `string`
+- **disableRipple**: `boolean`
+- **disabled**: `boolean`
+- **focused**: `boolean`
+- **id**: `string`
+- **labelId**: `string`
+- **labelPosition**: `SwitchLabelPosition | string`
+- **name**: `string`
+- **nativeCheckbox**: `ElementRef`
+- **nativeLabel**: `any`
+- **placeholderLabel**: `any`
+- **required**: `boolean`
+- **tabindex**: `number`
+- **value**: `any`
+- **toggle**(): void
+
+### [IgxSwitchRequiredDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxSwitchRequiredDirective)
+
+
+### [IgxTabComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTabComponent)
+
+- **constructor**(_tabBar: IgxBottomNavComponent, _element: ElementRef): IgxTabComponent
+- **_selected**: `boolean`
+- **relatedPanel**: `IgxTabPanelComponent`
+- **role**: `string`
+- **changesCount**: `any`
+- **context**: `any`
+- **cssClass**: `any`
+- **cssClassDisabled**: `any`
+- **cssClassSelected**: `any`
+- **disabled**: `any`
+- **icon**: `any`
+- **index**: `any`
+- **isSelected**: `any`
+- **label**: `any`
+- **template**: `any`
+- **elementRef**(): ElementRef
+- **select**(): void
+
+### [IgxTabItemComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTabItemComponent)
+
+- **constructor**(_tabs: IgxTabsBase, _element: ElementRef, _ngZone: NgZone): IgxTabItemComponent
+- **relatedGroup**: `IgxTabsGroupComponent`
+- **disabled**: `any`
+- **icon**: `any`
+- **isSelected**: `any`
+- **label**: `any`
+- **provideCssClass**: `any`
+- **provideCssClassDisabled**: `any`
+- **provideCssClassSelected**: `any`
+- **ngAfterViewInit**(): void
+- **ngOnDestroy**(): void
+
+### [IgxTabItemTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTabItemTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxTabItemTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxTabPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTabPanelComponent)
+
+- **constructor**(_tabBar: IgxBottomNavComponent, _element: ElementRef): IgxTabPanelComponent
+- **disabled**: `boolean`
+- **icon**: `string`
+- **label**: `string`
+- **role**: `string`
+- **changesCount**: `any`
+- **customTabTemplate**: `any`
+- **index**: `any`
+- **isSelected**: `any`
+- **itemStyle**: `any`
+- **nativeElement**: `any`
+- **relatedTab**: `any`
+- **styleClass**: `any`
+- **select**(): void
+
+### [IgxTabTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTabTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxTabTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxTabsComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTabsComponent)
+
+- **constructor**(_element: ElementRef, _ngZone: NgZone, platformUtil: PlatformUtil): IgxTabsComponent
+- **contentTabs**: `QueryList<IgxTabItemComponent>`
+- **groups**: `QueryList<IgxTabsGroupComponent>`
+- **id**: `string`
+- **onTabItemDeselected**: `EventEmitter<any>`
+- **onTabItemSelected**: `EventEmitter<any>`
+- **type**: `string | IgxTabsType`
+- **viewTabs**: `QueryList<IgxTabItemComponent>`
+- **selectedIndex**: `any`
+- **selectedTabItem**: `any`
+- **tabs**: `any`
+- **hideIndicator**(): void
+
+### [IgxTabsGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTabsGroupComponent)
+
+- **constructor**(_tabs: IgxTabsBase, _element: ElementRef): IgxTabsGroupComponent
+- **disabled**: `boolean`
+- **icon**: `string`
+- **label**: `string`
+- **index**: `any`
+- **isSelected**: `any`
+- **nativeElement**: `any`
+- **relatedTab**: `any`
+- **select**(): void
+
+### [IgxTextHighlightDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTextHighlightDirective)
+
+- **constructor**(element: ElementRef, renderer: Renderer2): IgxTextHighlightDirective
+- **activeCssClass**: `string`
+- **column**: `any`
+- **cssClass**: `string`
+- **groupName**: `string`
+- **page**: `number`
+- **renderer**: `Renderer2`
+- **row**: `any`
+- static **highlightGroupsMap**: `Map<string, IActiveHighlightInfo>`
+- **value**: `any`
+- **activateIfNecessary**(): void
+- **clearHighlight**(): void
+- **highlight**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number
+- **observe**(): void
+- static **clearActiveHighlight**(groupName: any): void
+- static **setActiveHighlight**(groupName: string, highlight: IActiveHighlightInfo): void
+
+### [IgxTextSelectionDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTextSelectionDirective)
+
+- **constructor**(element: ElementRef): IgxTextSelectionDirective
+- **nativeElement**: `any`
+- **selected**: `any`
+- **trigger**(): void
+
+### [IgxThumbFromTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxThumbFromTemplateDirective)
+
+
+### [IgxThumbLabelComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxThumbLabelComponent)
+
+- **constructor**(_elementRef: ElementRef): IgxThumbLabelComponent
+- **context**: `any`
+- **continuous**: `boolean`
+- **deactiveState**: `boolean`
+- **templateRef**: `TemplateRef<any>`
+- **type**: `SliderHandle`
+- **value**: `number`
+- **active**: `any`
+- **nativeElement**: `any`
+- **thumbFromActiveClass**: `any`
+- **thumbFromClass**: `any`
+- **thumbToActiveClass**: `any`
+- **thumbToClass**: `any`
+
+### [IgxThumbToTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxThumbToTemplateDirective)
+
+
+### [IgxTickLabelTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTickLabelTemplateDirective)
+
+
+### [IgxTickLabelsPipe](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTickLabelsPipe)
+
+- **transform**(labels: Array<string | number | boolean | null | undefined>, secondaryTicks: number): any[]
+
+### [IgxTimePickerActionsDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTimePickerActionsDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxTimePickerActionsDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxTimePickerComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTimePickerComponent)
+
+- **constructor**(_injector: Injector, _cdr: ChangeDetectorRef): IgxTimePickerComponent
+- **disabled**: `boolean`
+- **id**: `string`
+- **isSpinLoop**: `boolean`
+- **maxValue**: `string`
+- **minValue**: `string`
+- **mode**: `InteractionMode`
+- **onClosed**: `EventEmitter<IgxTimePickerComponent>`
+- **onClosing**: `EventEmitter<CancelableBrowserEventArgs & IBaseEventArgs>`
+- **onOpened**: `EventEmitter<IgxTimePickerComponent>`
+- **onValidationFailed**: `EventEmitter<IgxTimePickerValidationFailedEventArgs>`
+- **onValueChanged**: `EventEmitter<IgxTimePickerValueChangedEventArgs>`
+- **outlet**: `IgxOverlayOutletDirective | ElementRef`
+- **promptChar**: `string`
+- **vertical**: `boolean`
+- **cancelButtonLabel**: `any`
+- **context**: `any`
+- **displayTime**: `any`
+- **format**: `any`
+- **itemsDelta**: `any`
+- **okButtonLabel**: `any`
+- **onClose**: `any`
+- **onOpen**: `any`
+- **overlaySettings**: `any`
+- **resourceStrings**: `any`
+- **template**: `any`
+- **value**: `any`
+- **ampmInView**(): string[]
+- **cancelButtonClick**(): void
+- **close**(): void
+- **hoursInView**(): string[]
+- **minutesInView**(): string[]
+- **mouseDown**(event: MouseEvent): void
+- **ngAfterViewChecked**(): void
+- **okButtonClick**(): boolean
+- **openDialog**(target?: HTMLElement): void
+- **scrollAmPmIntoView**(item: string): void
+- **scrollHourIntoView**(item: string): void
+- **scrollMinuteIntoView**(item: string): void
+- **scrollSecondsIntoView**(item: string): void
+- **secondsInView**(): string[]
+
+### [IgxTimePickerTemplateDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTimePickerTemplateDirective)
+
+- **constructor**(template: TemplateRef<any>): IgxTimePickerTemplateDirective
+- **template**: `TemplateRef<any>`
+
+### [IgxToastComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxToastComponent)
+
+- **constructor**(elementRef: ElementRef, navService: IgxNavigationService): IgxToastComponent
+- **autoHide**: `boolean`
+- **displayTime**: `number`
+- **id**: `string`
+- **message**: `string`
+- **onHidden**: `EventEmitter<IgxToastComponent>`
+- **onHiding**: `EventEmitter<IgxToastComponent>`
+- **onShowing**: `EventEmitter<IgxToastComponent>`
+- **onShown**: `EventEmitter<IgxToastComponent>`
+- **position**: `IgxToastPosition`
+- **role**: `string`
+- **element**: `any`
+- **isVisible**: `any`
+- **hide**(): void
+- **mapPositionToClassName**(): any
+- **show**(): void
+- **toggle**(): void
+
+### [IgxToggleActionDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxToggleActionDirective)
+
+- **constructor**(element: ElementRef, navigationService: IgxNavigationService): IgxToggleActionDirective
+- **outlet**: `IgxOverlayOutletDirective | ElementRef`
+- **overlaySettings**: `OverlaySettings`
+
+### [IgxToggleDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxToggleDirective)
+
+- **id**: `string`
+- **onAppended**: `EventEmitter<any>`
+- **onClosed**: `EventEmitter<any>`
+- **onClosing**: `EventEmitter<CancelableBrowserEventArgs & IBaseEventArgs>`
+- **onOpened**: `EventEmitter<any>`
+- **onOpening**: `EventEmitter<CancelableEventArgs & IBaseEventArgs>`
+- **close**(): void
+- **open**(overlaySettings?: OverlaySettings): void
+- **reposition**(): void
+- **setOffset**(deltaX: number, deltaY: number): void
+- **toggle**(overlaySettings?: OverlaySettings): void
+
+### [IgxTooltipDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTooltipDirective)
+
+- **context**: `any`
+- **id**: `string`
+- **role**: `any`
+
+### [IgxTooltipTargetDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTooltipTargetDirective)
+
+- **constructor**(_element: ElementRef, _navigationService: IgxNavigationService): IgxTooltipTargetDirective
+- **hideDelay**: `number`
+- **onTooltipHide**: `EventEmitter<ITooltipHideEventArgs>`
+- **onTooltipShow**: `EventEmitter<ITooltipShowEventArgs>`
+- **showDelay**: `number`
+- **tooltipDisabled**: `boolean`
+- **nativeElement**: `any`
+- **tooltipHidden**: `any`
+- **hideTooltip**(): void
+- **showTooltip**(): void
+
+### [IgxTransactionService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTransactionService)
+
+- **onStateUpdate**: `EventEmitter<void>`
+- **canRedo**: `any`
+- **canUndo**: `any`
+- **enabled**: `any`
+- **add**(transaction: T, recordRef?: any): void
+- **clear**(id?: any): void
+- **commit**(data: any[], id?: any): void
+- **endPending**(commit: boolean): void
+- **getAggregatedChanges**(mergeChanges: boolean): T[]
+- **getAggregatedValue**(id: any, mergeChanges: boolean): any
+- **getState**(id: any, pending: boolean): S
+- **getTransactionLog**(id?: any): T[]
+- **redo**(): void
+- **undo**(): void
+
+### [IgxTreeGridAPIService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTreeGridAPIService)
+
+- **allow_expansion_state_change**(rowID: any, expanded: any): boolean
+- **deleteRowById**(rowID: any): void
+- **deleteRowFromData**(rowID: any, index: number): void
+- **expand_path_to_record**(record: ITreeGridRecord): void
+- **get_all_data**(transactions?: boolean): any[]
+- **get_rec_by_id**(rowID: any): ITreeGridRecord
+- **get_row_expansion_state**(record: ITreeGridRecord): boolean
+- **get_selected_children**(record: ITreeGridRecord, selectedRowIDs: any[]): void
+- **get_summary_data**(): any[]
+- **row_deleted_transaction**(rowID: any): boolean
+- **should_apply_number_style**(column: ColumnType): boolean
+
+### [IgxTreeGridCellComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTreeGridCellComponent)
+
+- **constructor**(selectionService: IgxGridSelectionService, crudService: IgxGridCRUDService, gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, cdr: ChangeDetectorRef, element: ElementRef, zone: NgZone, touchManager: HammerGesturesManager, document: any, platformUtil: PlatformUtil): IgxTreeGridCellComponent
+- **document**: `any`
+
+### [IgxTreeGridComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTreeGridComponent)
+
+- **constructor**(selectionService: IgxGridSelectionService, crudService: IgxGridCRUDService, colResizingService: IgxColumnResizingService, gridAPI: GridBaseAPIService<IgxGridBaseDirective & GridType>, _transactions: TransactionService<Transaction, State>, elementRef: ElementRef, zone: NgZone, document: any, cdr: ChangeDetectorRef, resolver: ComponentFactoryResolver, differs: IterableDiffers, viewRef: ViewContainerRef, navigation: IgxGridNavigationService, filteringService: IgxFilteringService, overlayService: IgxOverlayService, summaryService: IgxGridSummaryService, _displayDensityOptions: IDisplayDensityOptions): IgxTreeGridComponent
+- **cascadeOnDelete**: `boolean`
+- **childDataKey**: `any`
+- **foreignKey**: `any`
+- **hasChildrenKey**: `any`
+- **loadChildrenOnDemand**: `any`
+- **processedRecords**: `Map<any, ITreeGridRecord>`
+- **processedRootRecords**: `ITreeGridRecord[]`
+- **records**: `Map<any, ITreeGridRecord>`
+- **rootRecords**: `ITreeGridRecord[]`
+- **data**: `any`
+- **expansionDepth**: `any`
+- **filteredData**: `any`
+- **id**: `any`
+- **rowLoadingIndicatorTemplate**: `any`
+- **transactions**: `any`
+- **addRow**(data: any, parentRowID?: any): void
+- **collapseAll**(): void
+- **expandAll**(): void
+- **getDefaultExpandState**(record: ITreeGridRecord): boolean
+- **getSelectedData**(formatters: boolean, headers: boolean): any[]
+- **ngDoCheck**(): void
+
+### [IgxTreeGridNavigationService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTreeGridNavigationService)
+
+
+### [IgxTreeGridRowComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxTreeGridRowComponent)
+
+- **constructor**(gridAPI: GridBaseAPIService<IgxTreeGridComponent>, crudService: IgxGridCRUDService, selectionService: IgxGridSelectionService, element: ElementRef<HTMLElement>, cdr: ChangeDetectorRef): IgxTreeGridRowComponent
+- **cells**: `QueryList<any>`
+- **expanded**: `any`
+- **treeRow**: `any`
+
+### [IgxYearsViewComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/IgxYearsViewComponent)
+
+- **constructor**(el: ElementRef): IgxYearsViewComponent
+- **date**: `Date`
+- **el**: `ElementRef`
+- **formatView**: `boolean`
+- **id**: `string`
+- **onSelection**: `EventEmitter<Date>`
+- **locale**: `any`
+- **yearFormat**: `any`
+
+### [NoOpScrollStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/NoOpScrollStrategy)
+
+- **constructor**(scrollContainer?: HTMLElement): NoOpScrollStrategy
+- **attach**(): void
+- **detach**(): void
+- **initialize**(document: Document, overlayService: IgxOverlayService, id: string): void
+
+### [NoopFilteringStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/NoopFilteringStrategy)
+
+- **filter**(data: any[], expressionsTree: IFilteringExpressionsTree, advancedExpressionsTree?: IFilteringExpressionsTree): any[]
+- static **instance**(): NoopFilteringStrategy
+
+### [NoopSortingStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/NoopSortingStrategy)
+
+- **sort**(data: any[], expressions: ISortingExpression[]): any[]
+- static **instance**(): NoopSortingStrategy
+
+### [Point](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/Point)
+
+- **constructor**(x: number, y: number): Point
+- **x**: `number`
+- **y**: `number`
+
+### [ScrollStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/ScrollStrategy)
+
+- **constructor**(scrollContainer?: HTMLElement): ScrollStrategy
+- **attach**(): void
+- **detach**(): void
+- **initialize**(document: Document, overlayService: IgxOverlayService, id: string): any
+
+### [TimeDisplayFormatPipe](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/TimeDisplayFormatPipe)
+
+- **constructor**(timePicker: IgxTimePickerBase): TimeDisplayFormatPipe
+- **transform**(value: any): string
+
+### [TimeInputFormatPipe](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/TimeInputFormatPipe)
+
+- **constructor**(timePicker: IgxTimePickerBase): TimeInputFormatPipe
+- **transform**(value: any): string
+
+### [TimePickerHammerConfig](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/TimePickerHammerConfig)
+
+
+### [VirtualHelperBaseDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/VirtualHelperBaseDirective)
+
+- **constructor**(elementRef: ElementRef, cdr: ChangeDetectorRef): VirtualHelperBaseDirective
+- **_size**: `number`
+- **cdr**: `ChangeDetectorRef`
+- **destroyed**: `any`
+- **elementRef**: `ElementRef`
+- **scrollAmount**: `number`
+- **nativeElement**: `any`
+- **size**: `any`
+- **ngAfterViewInit**(): void
+- **ngOnDestroy**(): void
+- **onScroll**(event: any): void
+
+### [VirtualHelperComponent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/classes/VirtualHelperComponent)
+
+- **constructor**(elementRef: ElementRef, cdr: ChangeDetectorRef): VirtualHelperComponent
+- **_vcr**: `any`
+- **cdr**: `ChangeDetectorRef`
+- **cssClasses**: `string`
+- **elementRef**: `ElementRef`
+- **itemsLength**: `number`
+- **scrollTop**: `any`
+
+## Interfaces
+
+### [AnimationSettings](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/AnimationSettings)
+
+- **closeAnimation**: `AnimationReferenceMetadata`
+- **openAnimation**: `AnimationReferenceMetadata`
+
+### [AutocompleteItemSelectionEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/AutocompleteItemSelectionEventArgs)
+
+- **value**: `string`
+
+### [AutocompleteOverlaySettings](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/AutocompleteOverlaySettings)
+
+- **outlet?**: `IgxOverlayOutletDirective | ElementRef`
+- **positionStrategy?**: `IPositionStrategy`
+- **scrollStrategy?**: `IScrollStrategy`
+
+### [BannerCancelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/BannerCancelEventArgs)
+
+
+### [BannerEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/BannerEventArgs)
+
+- **banner**: `IgxBannerComponent`
+- **event?**: `Event`
+
+### [CancelableBrowserEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/CancelableBrowserEventArgs)
+
+- **event?**: `Event`
+
+### [CancelableEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/CancelableEventArgs)
+
+- **cancel**: `boolean`
+
+### [CarouselAnimationSettings](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/CarouselAnimationSettings)
+
+- **enterAnimation**: `AnimationReferenceMetadata`
+- **leaveAnimation**: `AnimationReferenceMetadata`
+
+### [DateRangeDescriptor](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/DateRangeDescriptor)
+
+- **dateRange?**: `Date[]`
+- **type**: `DateRangeType`
+
+### [GridSelectionRange](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/GridSelectionRange)
+
+- **columnEnd**: `string | number`
+- **columnStart**: `string | number`
+- **rowEnd**: `number`
+- **rowStart**: `number`
+
+### [GridType](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/GridType)
+
+- **advancedFilteringExpressionsTree**: `IFilteringExpressionsTree`
+- **advancedFilteringExpressionsTreeChange**: `EventEmitter<IFilteringExpressionsTree>`
+- **allowFiltering**: `boolean`
+- **calcHeight**: `number`
+- **columnList**: `any`
+- **columns**: `any`
+- **dataRowList**: `any`
+- **dataView**: `any[]`
+- **displayDensity**: `DisplayDensity | string`
+- **filterMode**: `FilterMode`
+- **filteringService**: `any`
+- **firstEditableColumnIndex**: `number`
+- **hasDetails**: `boolean`
+- **headerContainer**: `any`
+- **id**: `string`
+- **lastEditableColumnIndex**: `number`
+- **locale**: `string`
+- **nativeElement**: `HTMLElement`
+- **navigation**: `any`
+- **outletDirective**: `any`
+- **parentVirtDir**: `any`
+- **pinnedColumns**: `any`
+- **primaryKey**: `any`
+- **resourceStrings**: `IGridResourceStrings`
+- **rootSummariesEnabled**: `boolean`
+- **rowDraggable**: `boolean`
+- **rowEditTabs**: `any`
+- **rowEditable**: `boolean`
+- **rowInEditMode**: `any`
+- **rowList**: `any`
+- **selectionService**: `any`
+- **sortingExpressions**: `ISortingExpression[]`
+- **sortingExpressionsChange**: `EventEmitter<ISortingExpression[]>`
+- **summariesRowList**: `any`
+- **tbody**: `any`
+- **unpinnedColumns**: `any`
+- **verticalScrollContainer**: `any`
+- **clearSort**: `any`
+- **endEdit**: `any`
+- **getColumnByName**: `any`
+- **isColumnGrouped**: `any`
+- **isDetailRecord**: `any`
+- **isGroupByRecord**: `any`
+- **sort**: `any`
+
+### [HierarchicalStateRecord](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/HierarchicalStateRecord)
+
+- **rowID**: `any`
+
+### [IActiveHighlightInfo](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IActiveHighlightInfo)
+
+- **column?**: `any`
+- **columnIndex?**: `number`
+- **index**: `number`
+- **page?**: `number`
+- **row?**: `any`
+- **rowIndex?**: `number`
+
+### [IAnimationParams](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IAnimationParams)
+
+- **delay**: `string`
+- **direction?**: `string`
+- **duration**: `string`
+- **easing**: `any`
+- **endAngle?**: `number`
+- **endDistance?**: `string`
+- **endHeight?**: `string`
+- **endOpacity?**: `number`
+- **fromPosition?**: `string`
+- **fromScale?**: `number`
+- **midScale?**: `number`
+- **rotateX?**: `number`
+- **rotateY?**: `number`
+- **rotateZ?**: `number`
+- **startAngle?**: `number`
+- **startDistance?**: `string`
+- **startHeight?**: `string`
+- **startOpacity?**: `number`
+- **toPosition?**: `string`
+- **toScale?**: `number`
+- **xPos?**: `string`
+- **yPos?**: `string`
+
+### [IBaseChipEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IBaseChipEventArgs)
+
+- **originalEvent**: `IDragBaseEventArgs | IDropBaseEventArgs | KeyboardEvent | MouseEvent | TouchEvent`
+- **owner**: `IgxChipComponent`
+
+### [IBaseChipsAreaEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IBaseChipsAreaEventArgs)
+
+- **originalEvent**: `IDragBaseEventArgs | IDropBaseEventArgs | KeyboardEvent | MouseEvent | TouchEvent`
+- **owner**: `IgxChipsAreaComponent`
+
+### [IBaseEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IBaseEventArgs)
+
+- **owner?**: `any`
+
+### [IButtonGroupEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IButtonGroupEventArgs)
+
+- **button**: `IgxButtonDirective`
+- **index**: `number`
+
+### [ICachedViewLoadedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ICachedViewLoadedEventArgs)
+
+- **oldContext**: `any`
+
+### [ICalendarDate](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ICalendarDate)
+
+- **date**: `Date`
+- **isCurrentMonth**: `boolean`
+- **isNextMonth**: `boolean`
+- **isPrevMonth**: `boolean`
+
+### [ICarouselResourceStrings](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ICarouselResourceStrings)
+
+- **igx_carousel_of?**: `string`
+
+### [ICellPosition](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ICellPosition)
+
+- **rowIndex**: `number`
+- **visibleColumnIndex**: `number`
+
+### [IChangeCheckboxEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IChangeCheckboxEventArgs)
+
+- **checkbox**: `IgxCheckboxComponent`
+- **checked**: `boolean`
+
+### [IChangeProgressEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IChangeProgressEventArgs)
+
+- **currentValue**: `number`
+- **previousValue**: `number`
+
+### [IChangeRadioEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IChangeRadioEventArgs)
+
+- **radio**: `IgxRadioComponent`
+- **value**: `any`
+
+### [IChangeSwitchEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IChangeSwitchEventArgs)
+
+- **checked**: `boolean`
+- **switch**: `IgxSwitchComponent`
+
+### [IChipClickEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IChipClickEventArgs)
+
+- **cancel**: `boolean`
+
+### [IChipEnterDragAreaEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IChipEnterDragAreaEventArgs)
+
+- **dragChip**: `IgxChipComponent`
+
+### [IChipKeyDownEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IChipKeyDownEventArgs)
+
+- **cancel**: `boolean`
+- **originalEvent**: `KeyboardEvent`
+
+### [IChipSelectEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IChipSelectEventArgs)
+
+- **cancel**: `boolean`
+- **selected**: `boolean`
+
+### [IChipsAreaReorderEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IChipsAreaReorderEventArgs)
+
+- **chipsArray**: `IgxChipComponent[]`
+
+### [IChipsAreaSelectEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IChipsAreaSelectEventArgs)
+
+- **newSelection**: `IgxChipComponent[]`
+
+### [IColumnExportingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IColumnExportingEventArgs)
+
+- **cancel**: `boolean`
+- **columnIndex**: `number`
+- **field**: `string`
+- **header**: `string`
+- **skipFormatter**: `boolean`
+
+### [IColumnMovingEndEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IColumnMovingEndEventArgs)
+
+- **source**: `IgxColumnComponent`
+- **target**: `IgxColumnComponent`
+
+### [IColumnMovingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IColumnMovingEventArgs)
+
+- **cancel**: `boolean`
+- **source**: `IgxColumnComponent`
+
+### [IColumnMovingStartEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IColumnMovingStartEventArgs)
+
+- **source**: `IgxColumnComponent`
+
+### [IColumnResizeEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IColumnResizeEventArgs)
+
+- **column**: `IgxColumnComponent`
+- **newWidth**: `string`
+- **prevWidth**: `string`
+
+### [IColumnState](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IColumnState)
+
+- **dataType**: `DataType`
+- **editable**: `boolean`
+- **field**: `string`
+- **filterable**: `boolean`
+- **filteringIgnoreCase**: `boolean`
+- **groupable**: `boolean`
+- **hasSummary**: `boolean`
+- **header**: `string`
+- **headerClasses**: `string`
+- **headerGroupClasses**: `string`
+- **hidden**: `boolean`
+- **maxWidth**: `string`
+- **movable**: `boolean`
+- **pinned**: `boolean`
+- **resizable**: `boolean`
+- **searchable**: `boolean`
+- **sortable**: `boolean`
+- **sortingIgnoreCase**: `boolean`
+- **width**: `any`
+
+### [IColumnVisibilityChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IColumnVisibilityChangedEventArgs)
+
+- **column**: `any`
+- **newValue**: `boolean`
+
+### [IComboItemAdditionEvent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IComboItemAdditionEvent)
+
+- **addedItem**: `any`
+- **newCollection**: `any[]`
+- **oldCollection**: `any[]`
+
+### [IComboSelectionChangeEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IComboSelectionChangeEventArgs)
+
+- **added**: `any[]`
+- **displayText**: `string`
+- **event?**: `Event`
+- **newSelection**: `any[]`
+- **oldSelection**: `any[]`
+- **removed**: `any[]`
+
+### [ICsvExportEndedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ICsvExportEndedEventArgs)
+
+- **csvData**: `string`
+
+### [IDateParts](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDateParts)
+
+- **day**: `number`
+- **hours**: `number`
+- **milliseconds**: `number`
+- **minutes**: `number`
+- **month**: `number`
+- **seconds**: `number`
+- **year**: `number`
+
+### [IDatePickerDisabledDateEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDatePickerDisabledDateEventArgs)
+
+- **currentValue**: `Date`
+- **datePicker**: `IgxDatePickerComponent`
+
+### [IDatePickerValidationFailedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDatePickerValidationFailedEventArgs)
+
+- **datePicker**: `IgxDatePickerComponent`
+- **prevValue**: `Date`
+
+### [IDensityChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDensityChangedEventArgs)
+
+- **newDensity**: `DisplayDensity`
+- **oldDensity**: `DisplayDensity`
+
+### [IDialogEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDialogEventArgs)
+
+- **dialog**: `IgxDialogComponent`
+- **event**: `Event`
+
+### [IDisplayDensityOptions](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDisplayDensityOptions)
+
+- **displayDensity**: `DisplayDensity`
+
+### [IDragBaseEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDragBaseEventArgs)
+
+- **originalEvent**: `PointerEvent | MouseEvent | TouchEvent`
+- **owner**: `IgxDragDirective`
+- **pageX**: `number`
+- **pageY**: `number`
+- **startX**: `number`
+- **startY**: `number`
+
+### [IDragCustomTransitionArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDragCustomTransitionArgs)
+
+- **delay?**: `number`
+- **duration?**: `number`
+- **timingFunction?**: `string`
+
+### [IDragGhostBaseEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDragGhostBaseEventArgs)
+
+- **cancel**: `boolean`
+- **ghostElement**: `any`
+- **owner**: `IgxDragDirective`
+
+### [IDragMoveEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDragMoveEventArgs)
+
+- **nextPageX**: `number`
+- **nextPageY**: `number`
+
+### [IDragStartEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDragStartEventArgs)
+
+- **cancel**: `boolean`
+
+### [IDropBaseEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDropBaseEventArgs)
+
+- **drag**: `IgxDragDirective`
+- **dragData**: `any`
+- **offsetX**: `number`
+- **offsetY**: `number`
+- **originalEvent**: `any`
+- **owner**: `IgxDropDirective`
+- **pageX**: `number`
+- **pageY**: `number`
+- **startX**: `number`
+- **startY**: `number`
+
+### [IDropDownNavigationDirective](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDropDownNavigationDirective)
+
+- **target**: `any`
+- **handleKeyDown**: `any`
+- **onArrowDownKeyDown**: `any`
+- **onArrowUpKeyDown**: `any`
+- **onEndKeyDown**: `any`
+- **onHomeKeyDown**: `any`
+
+### [IDropDroppedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDropDroppedEventArgs)
+
+- **cancel**: `boolean`
+
+### [IDropStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IDropStrategy)
+
+- **dropAction**: `any`
+
+### [IExcelExportEndedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IExcelExportEndedEventArgs)
+
+- **xlsx**: `JSZip`
+
+### [IExpansionPanelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IExpansionPanelEventArgs)
+
+- **event**: `Event`
+- **panel**: `IgxExpansionPanelBase`
+
+### [IFilteringExpression](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IFilteringExpression)
+
+- **condition**: `IFilteringOperation`
+- **fieldName**: `string`
+- **ignoreCase?**: `boolean`
+- **searchVal?**: `any`
+
+### [IFilteringExpressionsTree](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IFilteringExpressionsTree)
+
+- **fieldName?**: `string`
+- **filteringOperands**: `IFilteringExpressionsTree | IFilteringExpression[]`
+- **operator**: `FilteringLogic`
+- **type?**: `FilteringExpressionsTreeType`
+- **find**: `any`
+- **findIndex**: `any`
+
+### [IFilteringOperation](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IFilteringOperation)
+
+- **hidden?**: `boolean`
+- **iconName**: `string`
+- **isUnary**: `boolean`
+- **logic**: `any`
+- **name**: `string`
+
+### [IFilteringState](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IFilteringState)
+
+- **advancedExpressionsTree?**: `IFilteringExpressionsTree`
+- **expressionsTree**: `IFilteringExpressionsTree`
+- **strategy?**: `IFilteringStrategy`
+
+### [IFilteringStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IFilteringStrategy)
+
+- **filter**: `any`
+
+### [IForOfDataChangingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IForOfDataChangingEventArgs)
+
+- **containerSize**: `number`
+
+### [IForOfState](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IForOfState)
+
+- **chunkSize?**: `number`
+- **startIndex?**: `number`
+
+### [IFormatOptions](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IFormatOptions)
+
+- **day?**: `string`
+- **month?**: `string`
+- **weekday?**: `string`
+- **year?**: `string`
+
+### [IFormatViews](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IFormatViews)
+
+- **day?**: `boolean`
+- **month?**: `boolean`
+- **year?**: `boolean`
+
+### [IFormattedParts](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IFormattedParts)
+
+- **combined**: `string`
+- **literal?**: `string`
+- **value**: `string`
+
+### [IFormattingOptions](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IFormattingOptions)
+
+- **day?**: `string`
+- **month?**: `string`
+- **weekday?**: `string`
+- **year?**: `string`
+
+### [IFormattingViews](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IFormattingViews)
+
+- **day?**: `boolean`
+- **month?**: `boolean`
+- **year?**: `boolean`
+
+### [IGridCellEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGridCellEventArgs)
+
+- **cell**: `IgxGridCellComponent`
+- **event**: `Event`
+
+### [IGridClipboardEvent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGridClipboardEvent)
+
+- **cancel**: `boolean`
+- **data**: `any[]`
+
+### [IGridCreatedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGridCreatedEventArgs)
+
+- **grid**: `IgxHierarchicalGridComponent`
+- **owner**: `IgxRowIslandComponent`
+- **parentID**: `any`
+
+### [IGridDataBindable](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGridDataBindable)
+
+- **data**: `any[]`
+- **filteredData**: `any[]`
+
+### [IGridEditEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGridEditEventArgs)
+
+- **cellID?**: `any`
+- **event?**: `Event`
+- **newValue?**: `any`
+- **oldValue**: `any`
+- **rowID**: `any`
+
+### [IGridKeydownEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGridKeydownEventArgs)
+
+- **cancel**: `boolean`
+- **event**: `Event`
+- **target**: `Object`
+- **targetType**: `GridKeydownTargetType`
+
+### [IGridResourceStrings](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGridResourceStrings)
+
+- **igx_grid_advanced_filter_add_condition?**: `string`
+- **igx_grid_advanced_filter_and_group?**: `string`
+- **igx_grid_advanced_filter_and_label?**: `string`
+- **igx_grid_advanced_filter_column_placeholder?**: `string`
+- **igx_grid_advanced_filter_create_and_group?**: `string`
+- **igx_grid_advanced_filter_create_or_group?**: `string`
+- **igx_grid_advanced_filter_delete?**: `string`
+- **igx_grid_advanced_filter_delete_filters?**: `string`
+- **igx_grid_advanced_filter_end_group?**: `string`
+- **igx_grid_advanced_filter_initial_text?**: `string`
+- **igx_grid_advanced_filter_or_group?**: `string`
+- **igx_grid_advanced_filter_or_label?**: `string`
+- **igx_grid_advanced_filter_title?**: `string`
+- **igx_grid_advanced_filter_ungroup?**: `string`
+- **igx_grid_advanced_filter_value_placeholder?**: `string`
+- **igx_grid_complex_filter?**: `string`
+- **igx_grid_emptyFilteredGrid_message?**: `string`
+- **igx_grid_emptyGrid_message?**: `string`
+- **igx_grid_excel_apply?**: `string`
+- **igx_grid_excel_blanks?**: `string`
+- **igx_grid_excel_boolean_filter?**: `string`
+- **igx_grid_excel_cancel?**: `string`
+- **igx_grid_excel_custom_dialog_add?**: `string`
+- **igx_grid_excel_custom_dialog_clear?**: `string`
+- **igx_grid_excel_custom_dialog_header?**: `string`
+- **igx_grid_excel_custom_filter?**: `string`
+- **igx_grid_excel_date_filter?**: `string`
+- **igx_grid_excel_filter_clear?**: `string`
+- **igx_grid_excel_filter_moving_header?**: `string`
+- **igx_grid_excel_filter_moving_left?**: `string`
+- **igx_grid_excel_filter_moving_left_short?**: `string`
+- **igx_grid_excel_filter_moving_right?**: `string`
+- **igx_grid_excel_filter_moving_right_short?**: `string`
+- **igx_grid_excel_filter_sorting_asc?**: `string`
+- **igx_grid_excel_filter_sorting_asc_short?**: `string`
+- **igx_grid_excel_filter_sorting_desc?**: `string`
+- **igx_grid_excel_filter_sorting_desc_short?**: `string`
+- **igx_grid_excel_filter_sorting_header?**: `string`
+- **igx_grid_excel_hide?**: `string`
+- **igx_grid_excel_number_filter?**: `string`
+- **igx_grid_excel_pin?**: `string`
+- **igx_grid_excel_search_placeholder?**: `string`
+- **igx_grid_excel_select_all?**: `string`
+- **igx_grid_excel_show?**: `string`
+- **igx_grid_excel_text_filter?**: `string`
+- **igx_grid_excel_unpin?**: `string`
+- **igx_grid_filter?**: `string`
+- **igx_grid_filter_after?**: `string`
+- **igx_grid_filter_all?**: `string`
+- **igx_grid_filter_before?**: `string`
+- **igx_grid_filter_condition_placeholder?**: `string`
+- **igx_grid_filter_contains?**: `string`
+- **igx_grid_filter_doesNotContain?**: `string`
+- **igx_grid_filter_doesNotEqual?**: `string`
+- **igx_grid_filter_empty?**: `string`
+- **igx_grid_filter_endsWith?**: `string`
+- **igx_grid_filter_equals?**: `string`
+- **igx_grid_filter_false?**: `string`
+- **igx_grid_filter_greaterThan?**: `string`
+- **igx_grid_filter_greaterThanOrEqualTo?**: `string`
+- **igx_grid_filter_lastMonth?**: `string`
+- **igx_grid_filter_lastYear?**: `string`
+- **igx_grid_filter_lessThan?**: `string`
+- **igx_grid_filter_lessThanOrEqualTo?**: `string`
+- **igx_grid_filter_nextMonth?**: `string`
+- **igx_grid_filter_nextYear?**: `string`
+- **igx_grid_filter_notEmpty?**: `string`
+- **igx_grid_filter_notNull?**: `string`
+- **igx_grid_filter_null?**: `string`
+- **igx_grid_filter_operator_and?**: `string`
+- **igx_grid_filter_operator_or?**: `string`
+- **igx_grid_filter_row_boolean_placeholder?**: `string`
+- **igx_grid_filter_row_close?**: `string`
+- **igx_grid_filter_row_date_placeholder?**: `string`
+- **igx_grid_filter_row_placeholder?**: `string`
+- **igx_grid_filter_row_reset?**: `string`
+- **igx_grid_filter_startsWith?**: `string`
+- **igx_grid_filter_thisMonth?**: `string`
+- **igx_grid_filter_thisYear?**: `string`
+- **igx_grid_filter_today?**: `string`
+- **igx_grid_filter_true?**: `string`
+- **igx_grid_filter_yesterday?**: `string`
+- **igx_grid_groupByArea_message?**: `string`
+- **igx_grid_summary_average?**: `string`
+- **igx_grid_summary_count?**: `string`
+- **igx_grid_summary_earliest?**: `string`
+- **igx_grid_summary_latest?**: `string`
+- **igx_grid_summary_max?**: `string`
+- **igx_grid_summary_min?**: `string`
+- **igx_grid_summary_sum?**: `string`
+
+### [IGridSortingStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGridSortingStrategy)
+
+- **sort**: `any`
+
+### [IGridState](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGridState)
+
+- **advancedFiltering?**: `IFilteringExpressionsTree`
+- **cellSelection?**: `GridSelectionRange[]`
+- **columns?**: `IColumnState[]`
+- **filtering?**: `IFilteringExpressionsTree`
+- **groupBy?**: `IGroupingState`
+- **paging?**: `IPagingState`
+- **rowSelection?**: `any[]`
+- **sorting?**: `ISortingExpression[]`
+
+### [IGridStateOptions](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGridStateOptions)
+
+- **advancedFiltering?**: `boolean`
+- **cellSelection?**: `boolean`
+- **columns?**: `boolean`
+- **filtering?**: `boolean`
+- **groupBy?**: `boolean`
+- **paging?**: `boolean`
+- **rowSelection?**: `boolean`
+- **sorting?**: `boolean`
+
+### [IGridToolbarExportEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGridToolbarExportEventArgs)
+
+- **cancel**: `boolean`
+- **exporter**: `IgxBaseExporter`
+- **grid**: `IgxGridBaseDirective`
+- **options**: `IgxExporterOptionsBase`
+
+### [IGroupByExpandState](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGroupByExpandState)
+
+- **expanded**: `boolean`
+- **hierarchy**: `Array<IGroupByKey>`
+
+### [IGroupByKey](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGroupByKey)
+
+- **fieldName**: `string`
+- **value**: `any`
+
+### [IGroupByRecord](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGroupByRecord)
+
+- **expression**: `ISortingExpression`
+- **groupParent**: `IGroupByRecord`
+- **groups?**: `IGroupByRecord[]`
+- **height**: `number`
+- **level**: `number`
+- **records**: `GroupedRecords`
+- **value**: `any`
+
+### [IGroupByResult](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGroupByResult)
+
+- **data**: `any[]`
+- **metadata**: `IGroupByRecord[]`
+
+### [IGroupingDoneEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGroupingDoneEventArgs)
+
+- **expressions**: `Array<ISortingExpression> | ISortingExpression`
+- **groupedColumns**: `Array<IgxColumnComponent> | IgxColumnComponent`
+- **ungroupedColumns**: `Array<IgxColumnComponent> | IgxColumnComponent`
+
+### [IGroupingExpression](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGroupingExpression)
+
+- **groupingComparer?**: `any`
+
+### [IGroupingState](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IGroupingState)
+
+- **defaultExpanded**: `boolean`
+- **expansion**: `IGroupByExpandState[]`
+- **expressions**: `IGroupingExpression[]`
+
+### [IListChild](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IListChild)
+
+- **index**: `number`
+
+### [IListItemClickEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IListItemClickEventArgs)
+
+- **direction**: `IgxListPanState`
+- **event**: `Event`
+- **item**: `IgxListItemComponent`
+
+### [IListItemPanningEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IListItemPanningEventArgs)
+
+- **direction**: `IgxListPanState`
+- **item**: `IgxListItemComponent`
+- **keepItem**: `boolean`
+
+### [IMaskEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IMaskEventArgs)
+
+- **formattedValue**: `string`
+- **rawValue**: `string`
+
+### [IMultiRowLayoutNode](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IMultiRowLayoutNode)
+
+- **colEnd**: `number`
+- **colStart**: `number`
+- **columnVisibleIndex**: `number`
+- **rowEnd**: `number`
+- **rowStart**: `number`
+
+### [IPageEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IPageEventArgs)
+
+- **current**: `number`
+- **previous**: `number`
+
+### [IPaginatorResourceStrings](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IPaginatorResourceStrings)
+
+- **igx_paginator_label?**: `string`
+
+### [IPagingState](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IPagingState)
+
+- **index**: `number`
+- **metadata?**: `any`
+- **recordsPerPage**: `number`
+
+### [IPanStateChangeEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IPanStateChangeEventArgs)
+
+- **item**: `IgxListItemComponent`
+- **newState**: `IgxListPanState`
+- **oldState**: `IgxListPanState`
+
+### [IPathSegment](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IPathSegment)
+
+- **rowID**: `any`
+- **rowIslandKey**: `string`
+
+### [IPinColumnEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IPinColumnEventArgs)
+
+- **column**: `IgxColumnComponent`
+- **insertAtIndex**: `number`
+- **isPinned**: `boolean`
+
+### [IPositionStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IPositionStrategy)
+
+- **settings**: `PositionSettings`
+- **clone**: `any`
+- **position**: `any`
+
+### [IRangeSliderValue](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IRangeSliderValue)
+
+- **lower**: `number`
+- **upper**: `number`
+
+### [IResourceStrings](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IResourceStrings)
+
+
+### [IRowDataEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IRowDataEventArgs)
+
+- **data**: `any`
+
+### [IRowDragEndEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IRowDragEndEventArgs)
+
+- **animation**: `boolean`
+- **dragData**: `IgxRowDirective<IgxGridBaseDirective & IGridDataBindable>`
+- **dragDirective**: `IgxDragDirective`
+
+### [IRowDragStartEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IRowDragStartEventArgs)
+
+- **dragData**: `IgxRowDirective<IgxGridBaseDirective & IGridDataBindable>`
+- **dragDirective**: `IgxDragDirective`
+
+### [IRowExportingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IRowExportingEventArgs)
+
+- **cancel**: `boolean`
+- **rowData**: `any`
+- **rowIndex**: `number`
+
+### [IRowSelectionEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IRowSelectionEventArgs)
+
+- **added**: `any[]`
+- **event?**: `Event`
+- **newSelection**: `any[]`
+- **oldSelection**: `any[]`
+- **removed**: `any[]`
+
+### [IRowToggleEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IRowToggleEventArgs)
+
+- **cancel**: `boolean`
+- **event?**: `Event`
+- **expanded**: `boolean`
+- **rowID**: `any`
+
+### [IScrollStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IScrollStrategy)
+
+- **attach**: `any`
+- **detach**: `any`
+- **initialize**: `any`
+
+### [ISearchInfo](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ISearchInfo)
+
+- **activeMatchIndex**: `number`
+- **caseSensitive**: `boolean`
+- **content**: `string`
+- **exactMatch**: `boolean`
+- **matchCount**: `number`
+- **matchInfoCache**: `any[]`
+- **searchText**: `string`
+- **searchedText**: `string`
+
+### [ISelectTabEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ISelectTabEventArgs)
+
+- **panel**: `IgxTabPanelComponent`
+- **tab**: `IgxTabComponent`
+
+### [ISelectionEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ISelectionEventArgs)
+
+- **newSelection**: `IgxDropDownItemBaseDirective`
+- **oldSelection**: `IgxDropDownItemBaseDirective`
+
+### [ISelectionKeyboardState](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ISelectionKeyboardState)
+
+- **active**: `boolean`
+- **node**: `null | ISelectionNode`
+- **range**: `GridSelectionRange`
+- **shift**: `boolean`
+
+### [ISelectionNode](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ISelectionNode)
+
+- **column**: `number`
+- **isSummaryRow?**: `boolean`
+- **layout?**: `IMultiRowLayoutNode`
+- **row**: `number`
+
+### [ISelectionPointerState](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ISelectionPointerState)
+
+- **ctrl**: `boolean`
+- **primaryButton**: `boolean`
+
+### [ISlideEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ISlideEventArgs)
+
+- **carousel**: `IgxCarouselComponent`
+- **slide**: `IgxSlideComponent`
+
+### [ISliderValueChangeEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ISliderValueChangeEventArgs)
+
+- **oldValue**: `number | IRangeSliderValue`
+- **value**: `number | IRangeSliderValue`
+
+### [ISortingExpression](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ISortingExpression)
+
+- **dir**: `SortingDirection`
+- **fieldName**: `string`
+- **ignoreCase?**: `boolean`
+- **strategy?**: `ISortingStrategy`
+
+### [ISortingStrategy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ISortingStrategy)
+
+- **sort**: `any`
+
+### [IStartNavigationCell](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IStartNavigationCell)
+
+- **colStart**: `number`
+- **direction**: `NavigationDirection`
+- **rowStart**: `number`
+
+### [ISummaryExpression](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ISummaryExpression)
+
+- **customSummary?**: `any`
+- **fieldName**: `string`
+
+### [ISummaryRecord](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ISummaryRecord)
+
+- **cellIndentation?**: `number`
+- **max?**: `number`
+- **summaries**: `Map<string, IgxSummaryResult[]>`
+
+### [ITimePickerResourceStrings](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ITimePickerResourceStrings)
+
+- **igx_time_picker_cancel?**: `string`
+- **igx_time_picker_ok?**: `string`
+
+### [IToggleView](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IToggleView)
+
+- **element**: `any`
+- **close**: `any`
+- **open**: `any`
+- **toggle**: `any`
+
+### [ITooltipHideEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ITooltipHideEventArgs)
+
+- **cancel**: `boolean`
+- **target**: `IgxTooltipTargetDirective`
+- **tooltip**: `IgxTooltipDirective`
+
+### [ITooltipShowEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ITooltipShowEventArgs)
+
+- **cancel**: `boolean`
+- **target**: `IgxTooltipTargetDirective`
+- **tooltip**: `IgxTooltipDirective`
+
+### [ITreeGridRecord](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/ITreeGridRecord)
+
+- **children?**: `ITreeGridRecord[]`
+- **data**: `any`
+- **expanded?**: `boolean`
+- **isFilteredOutParent?**: `boolean`
+- **level?**: `number`
+- **parent?**: `ITreeGridRecord`
+- **rowID**: `any`
+
+### [IValueChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IValueChangedEventArgs)
+
+- **newValue**: `any`
+- **oldValue**: `any`
+
+### [IViewChangeEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IViewChangeEventArgs)
+
+- **context**: `any`
+- **owner**: `IgxTemplateOutletDirective`
+- **view**: `EmbeddedViewRef<any>`
+
+### [IViewChangingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IViewChangingEventArgs)
+
+- **key**: `string`
+- **monthAction**: `string`
+- **nextDate**: `Date`
+
+### [IgxDragCustomEventDetails](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IgxDragCustomEventDetails)
+
+- **originalEvent**: `any`
+- **owner**: `IgxDragDirective`
+- **pageX**: `number`
+- **pageY**: `number`
+- **startX**: `number`
+- **startY**: `number`
+
+### [IgxExpansionPanelBase](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IgxExpansionPanelBase)
+
+- **animationSettings**: `any`
+- **collapsed**: `boolean`
+- **cssClass**: `string`
+- **id**: `string`
+- **onCollapsed**: `EventEmitter<any>`
+- **onExpanded**: `EventEmitter<any>`
+- **collapse**: `any`
+- **expand**: `any`
+- **toggle**: `any`
+
+### [IgxIconLoadedEvent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IgxIconLoadedEvent)
+
+- **fontSet**: `string`
+- **name**: `string`
+- **value**: `string`
+
+### [IgxSummaryResult](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IgxSummaryResult)
+
+- **key**: `string`
+- **label**: `string`
+- **summaryResult**: `any`
+
+### [IgxTimePickerValidationFailedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IgxTimePickerValidationFailedEventArgs)
+
+- **currentValue**: `Date`
+- **setThroughUI**: `boolean`
+- **timePicker**: `IgxTimePickerComponent`
+
+### [IgxTimePickerValueChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/IgxTimePickerValueChangedEventArgs)
+
+- **newValue**: `Date`
+- **oldValue**: `Date`
+
+### [MRLColumnSizeInfo](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/MRLColumnSizeInfo)
+
+- **colEnd**: `number`
+- **colSpan**: `number`
+- **ref**: `IgxColumnComponent`
+- **width**: `number`
+- **widthSetByUser**: `boolean`
+
+### [MRLResizeColumnInfo](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/MRLResizeColumnInfo)
+
+- **spanUsed**: `number`
+- **target**: `IgxColumnComponent`
+
+### [OverlayAnimationEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/OverlayAnimationEventArgs)
+
+- **animationPlayer**: `AnimationPlayer`
+- **animationType**: `any | any`
+- **id**: `string`
+
+### [OverlayCancelableEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/OverlayCancelableEventArgs)
+
+
+### [OverlayClosingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/OverlayClosingEventArgs)
+
+
+### [OverlayEventArgs](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/OverlayEventArgs)
+
+- **componentRef?**: `ComponentRef<any>`
+- **id**: `string`
+
+### [OverlaySettings](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/OverlaySettings)
+
+- **closeOnOutsideClick?**: `boolean`
+- **modal?**: `boolean`
+- **outlet?**: `IgxOverlayOutletDirective | ElementRef`
+- **positionStrategy?**: `IPositionStrategy`
+- **scrollStrategy?**: `IScrollStrategy`
+
+### [PositionSettings](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/PositionSettings)
+
+- **closeAnimation?**: `AnimationReferenceMetadata`
+- **horizontalDirection?**: `HorizontalAlignment`
+- **horizontalStartPoint?**: `HorizontalAlignment`
+- **minSize?**: `Size`
+- **openAnimation?**: `AnimationReferenceMetadata`
+- **target?**: `Point | HTMLElement`
+- **verticalDirection?**: `VerticalAlignment`
+- **verticalStartPoint?**: `VerticalAlignment`
+
+### [RowType](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/RowType)
+
+- **added**: `boolean`
+- **checkboxElement**: `IgxCheckboxComponent`
+- **deleted**: `boolean`
+- **expanded?**: `boolean`
+- **focused**: `boolean`
+- **gridID**: `string`
+- **index**: `number`
+- **nativeElement**: `HTMLElement`
+- **rowData**: `any`
+- **rowID**: `any`
+- **rowSelectable**: `boolean`
+- **selected**: `boolean`
+- **treeRow?**: `any`
+
+### [Size](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/Size)
+
+- **height**: `number`
+- **width**: `number`
+
+### [State](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/State)
+
+- **recordRef**: `any`
+- **type**: `TransactionType`
+- **value**: `any`
+
+### [Transaction](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/Transaction)
+
+- **id**: `any`
+- **newValue**: `any`
+- **type**: `TransactionType`
+
+### [TransactionService](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/interfaces/TransactionService)
+
+- **canRedo**: `boolean`
+- **canUndo**: `boolean`
+- **enabled**: `boolean`
+- **onStateUpdate?**: `EventEmitter<void>`
+- **add**: `any`
+- **clear**: `any`
+- **commit**: `any`
+- **endPending**: `any`
+- **getAggregatedChanges**: `any`
+- **getAggregatedValue**: `any`
+- **getState**: `any`
+- **getTransactionLog**: `any`
+- **redo**: `any`
+- **startPending**: `any`
+- **undo**: `any`
+
+## Type Aliases
+
+### [CarouselResourceStringsEN](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/CarouselResourceStringsEN)
+`object`
+
+### [GridResourceStringsEN](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/GridResourceStringsEN)
+`object`
+
+### [IGX_CHECKBOX_REQUIRED_VALIDATOR](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/IGX_CHECKBOX_REQUIRED_VALIDATOR)
+`object`
+
+### [IGX_SWITCH_REQUIRED_VALIDATOR](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/IGX_SWITCH_REQUIRED_VALIDATOR)
+`object`
+
+### [IgxHierarchicalTransactionServiceFactory](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/IgxHierarchicalTransactionServiceFactory)
+`object`
+
+### [PaginatorResourceStringsEN](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/PaginatorResourceStringsEN)
+`object`
+
+### [TimePickerResourceStringsEN](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/TimePickerResourceStringsEN)
+`object`
+
+### [baseInParams](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/baseInParams)
+`object`
+
+### [baseOutParams](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/baseOutParams)
+`object`
+
+### [baseParams](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/baseParams)
+`object`
+
+### [blinkParams](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/blinkParams)
+`object`
+
+### [filteringStateDefaults](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/filteringStateDefaults)
+`object`
+
+### [heartbeatParams](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/heartbeatParams)
+`object`
+
+### [pulsateParams](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/pulsateParams)
+`object`
+
+### [swingOutParams](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/swingOutParams)
+`object`
+
+### [swingParams](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/types/swingParams)
+`object`
+
+## Functions
+
+### [WatchColumnChanges](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/WatchColumnChanges)
+`WatchColumnChanges(): PropertyDecorator`
+
+### [changei18n](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/changei18n)
+`changei18n(resourceStrings: IResourceStrings): void`
+
+### [clear](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/clear)
+`clear(el: any): boolean`
+
+### [first](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/first)
+`first(arr: any): any`
+
+### [getCurrentResourceStrings](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/getCurrentResourceStrings)
+`getCurrentResourceStrings(): IResourceStrings`
+
+### [getHierarchy](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/getHierarchy)
+`getHierarchy(gRow: IGroupByRecord): Array<IGroupByKey>`
+
+### [getTypeNameForDebugging](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/getTypeNameForDebugging)
+`getTypeNameForDebugging(type: any): string`
+
+### [hierarchicalTransactionServiceFactory](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/hierarchicalTransactionServiceFactory)
+`hierarchicalTransactionServiceFactory(): IgxTransactionService<Transaction, State>`
+
+### [isChromium](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/isChromium)
+`isChromium(): boolean`
+
+### [isDateInRanges](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/isDateInRanges)
+`isDateInRanges(date: Date, ranges: DateRangeDescriptor[]): boolean`
+
+### [isHierarchyMatch](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/isHierarchyMatch)
+`isHierarchyMatch(h1: Array<IGroupByKey>, h2: Array<IGroupByKey>): boolean`
+
+### [isLeap](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/isLeap)
+`isLeap(year: number): boolean`
+
+### [last](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/last)
+`last(arr: any): any`
+
+### [monthRange](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/monthRange)
+`monthRange(year: number, month: number): number[]`
+
+### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
+`noop(): void`
+
+### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
+`noop(): void`
+
+### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
+`noop(): void`
+
+### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
+`noop(): void`
+
+### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
+`noop(): void`
+
+### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
+`noop(): void`
+
+### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
+`noop(): void`
+
+### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
+`noop(): void`
+
+### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
+`noop(): void`
+
+### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
+`noop(): void`
+
+### [notifyChanges](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/notifyChanges)
+`notifyChanges(repaint: boolean): (Anonymous function)`
+
+### [range](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/range)
+`range(start: number, stop: any, step: number): any[]`
+
+### [toPercent](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/toPercent)
+`toPercent(value: number, max: number): number`
+
+### [updateResourceStrings](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/updateResourceStrings)
+`updateResourceStrings(currentStrings: IResourceStrings, newStrings: IResourceStrings): void`
+
+### [valueInRange](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/valueInRange)
+`valueInRange(value: number, max: number, min: number): number`
+
+### [weekDay](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/weekDay)
+`weekDay(year: number, month: number, day: number): number`
+
+## Variables
+
+### [ADVANCED_FILTERING](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/ADVANCED_FILTERING)
+`any`
+
+### [ARROW](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/ARROW)
+`any`
+
+### [CELL_SELECTION](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/CELL_SELECTION)
+`any`
+
+### [CHIP_ID](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/CHIP_ID)
+`number`
+
+### [COLUMNS](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/COLUMNS)
+`any`
+
+### [DIALOG_ID](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/DIALOG_ID)
+`number`
+
+### [DisplayDensityToken](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/DisplayDensityToken)
+`InjectionToken<IDisplayDensityOptions>`
+
+### [EVENT_SUFFIX](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/EVENT_SUFFIX)
+`any`
+
+### [FEBRUARY](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/FEBRUARY)
+`1`
+
+### [FILTERING](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/FILTERING)
+`any`
+
+### [FILTERING_ICONS_FONT_SET](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/FILTERING_ICONS_FONT_SET)
+`any`
+
+### [FILTER_ROW_HEIGHT](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/FILTER_ROW_HEIGHT)
+`50`
+
+### [GROUPBY](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/GROUPBY)
+`any`
+
+### [IGX_COMBO_COMPONENT](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/IGX_COMBO_COMPONENT)
+`InjectionToken<IgxComboBase>`
+
+### [IGX_DROPDOWN_BASE](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/IGX_DROPDOWN_BASE)
+`InjectionToken<IDropDownBase>`
+
+### [ITEMS_COUNT](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/ITEMS_COUNT)
+`7`
+
+### [IgxGridTransaction](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/IgxGridTransaction)
+`InjectionToken<string>`
+
+### [MDAYS](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/MDAYS)
+`number[]`
+
+### [MINIMUM_COLUMN_WIDTH](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/MINIMUM_COLUMN_WIDTH)
+`136`
+
+### [MIN_ROW_EDITING_COUNT_THRESHOLD](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/MIN_ROW_EDITING_COUNT_THRESHOLD)
+`2`
+
+### [MIN_VALUE](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/MIN_VALUE)
+`0`
+
+### [NAVIGATION_KEYS](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/NAVIGATION_KEYS)
+`Set<string>`
+
+### [NEXT_CIRCULAR_ID](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/NEXT_CIRCULAR_ID)
+`number`
+
+### [NEXT_GRADIENT_ID](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/NEXT_GRADIENT_ID)
+`number`
+
+### [NEXT_ID](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/NEXT_ID)
+`number`
+
+### [NEXT_LINEAR_ID](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/NEXT_LINEAR_ID)
+`number`
+
+### [NEXT_TABS_ID](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/NEXT_TABS_ID)
+`number`
+
+### [ONE_PERCENT](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/ONE_PERCENT)
+`0.01`
+
+### [PAGING](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/PAGING)
+`any`
+
+### [ROW_COLLAPSE_KEYS](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/ROW_COLLAPSE_KEYS)
+`Set<string>`
+
+### [ROW_EXPAND_KEYS](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/ROW_EXPAND_KEYS)
+`Set<string>`
+
+### [ROW_SELECTION](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/ROW_SELECTION)
+`any`
+
+### [SORTING](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/SORTING)
+`any`
+
+### [SUPPORTED_KEYS](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/SUPPORTED_KEYS)
+`Set<string>`
+
+### [Z_INDEX](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/Z_INDEX)
+`9999`
+
+### [base](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/base)
+`AnimationMetadata[]`
+
+### [baseRecipe](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/baseRecipe)
+`AnimationMetadata[]`
+
+### [blink](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/blink)
+`AnimationReferenceMetadata`
+
+### [blinkBase](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/blinkBase)
+`AnimationMetadata[]`
+
+### [cellActiveClass](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/cellActiveClass)
+`any`
+
+### [cellSelectedClass](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/cellSelectedClass)
+`any`
+
+### [context](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/context)
+`any`
+
+### [fadeIn](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/fadeIn)
+`AnimationReferenceMetadata`
+
+### [fadeOut](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/fadeOut)
+`AnimationReferenceMetadata`
+
+### [flipBottom](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/flipBottom)
+`AnimationReferenceMetadata`
+
+### [flipHorBck](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/flipHorBck)
+`AnimationReferenceMetadata`
+
+### [flipHorFwd](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/flipHorFwd)
+`AnimationReferenceMetadata`
+
+### [flipLeft](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/flipLeft)
+`AnimationReferenceMetadata`
+
+### [flipRight](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/flipRight)
+`AnimationReferenceMetadata`
+
+### [flipTop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/flipTop)
+`AnimationReferenceMetadata`
+
+### [flipVerBck](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/flipVerBck)
+`AnimationReferenceMetadata`
+
+### [flipVerFwd](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/flipVerFwd)
+`AnimationReferenceMetadata`
+
+### [ghostBackgroundClass](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/ghostBackgroundClass)
+`any`
+
+### [gridCellClass](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/gridCellClass)
+`any`
+
+### [growVerIn](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/growVerIn)
+`AnimationReferenceMetadata`
+
+### [growVerOut](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/growVerOut)
+`AnimationReferenceMetadata`
+
+### [heartbeat](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/heartbeat)
+`AnimationReferenceMetadata`
+
+### [heartbeatBase](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/heartbeatBase)
+`AnimationMetadata[]`
+
+### [nativeValidationAttributes](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/nativeValidationAttributes)
+`string[]`
+
+### [nextId](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/nextId)
+`number`
+
+### [pulsateBase](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/pulsateBase)
+`AnimationMetadata[]`
+
+### [pulsateBck](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/pulsateBck)
+`AnimationReferenceMetadata`
+
+### [pulsateFwd](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/pulsateFwd)
+`AnimationReferenceMetadata`
+
+### [require](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/require)
+`any`
+
+### [rotateInBl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInBl)
+`AnimationReferenceMetadata`
+
+### [rotateInBottom](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInBottom)
+`AnimationReferenceMetadata`
+
+### [rotateInBr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInBr)
+`AnimationReferenceMetadata`
+
+### [rotateInCenter](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInCenter)
+`AnimationReferenceMetadata`
+
+### [rotateInDiagonal1](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInDiagonal1)
+`AnimationReferenceMetadata`
+
+### [rotateInDiagonal2](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInDiagonal2)
+`AnimationReferenceMetadata`
+
+### [rotateInHor](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInHor)
+`AnimationReferenceMetadata`
+
+### [rotateInLeft](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInLeft)
+`AnimationReferenceMetadata`
+
+### [rotateInRight](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInRight)
+`AnimationReferenceMetadata`
+
+### [rotateInTl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInTl)
+`AnimationReferenceMetadata`
+
+### [rotateInTop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInTop)
+`AnimationReferenceMetadata`
+
+### [rotateInTr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInTr)
+`AnimationReferenceMetadata`
+
+### [rotateInVer](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateInVer)
+`AnimationReferenceMetadata`
+
+### [rotateOutBl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutBl)
+`AnimationReferenceMetadata`
+
+### [rotateOutBottom](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutBottom)
+`AnimationReferenceMetadata`
+
+### [rotateOutBr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutBr)
+`AnimationReferenceMetadata`
+
+### [rotateOutCenter](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutCenter)
+`AnimationReferenceMetadata`
+
+### [rotateOutDiagonal1](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutDiagonal1)
+`AnimationReferenceMetadata`
+
+### [rotateOutDiagonal2](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutDiagonal2)
+`AnimationReferenceMetadata`
+
+### [rotateOutHor](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutHor)
+`AnimationReferenceMetadata`
+
+### [rotateOutLeft](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutLeft)
+`AnimationReferenceMetadata`
+
+### [rotateOutRight](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutRight)
+`AnimationReferenceMetadata`
+
+### [rotateOutTl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutTl)
+`AnimationReferenceMetadata`
+
+### [rotateOutTop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutTop)
+`AnimationReferenceMetadata`
+
+### [rotateOutTr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutTr)
+`AnimationReferenceMetadata`
+
+### [rotateOutVer](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rotateOutVer)
+`AnimationReferenceMetadata`
+
+### [rowSelectedClass](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/rowSelectedClass)
+`any`
+
+### [scaleInBl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInBl)
+`AnimationReferenceMetadata`
+
+### [scaleInBottom](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInBottom)
+`AnimationReferenceMetadata`
+
+### [scaleInBr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInBr)
+`AnimationReferenceMetadata`
+
+### [scaleInCenter](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInCenter)
+`AnimationReferenceMetadata`
+
+### [scaleInHorCenter](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInHorCenter)
+`AnimationReferenceMetadata`
+
+### [scaleInHorLeft](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInHorLeft)
+`AnimationReferenceMetadata`
+
+### [scaleInHorRight](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInHorRight)
+`AnimationReferenceMetadata`
+
+### [scaleInLeft](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInLeft)
+`AnimationReferenceMetadata`
+
+### [scaleInRight](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInRight)
+`AnimationReferenceMetadata`
+
+### [scaleInTl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInTl)
+`AnimationReferenceMetadata`
+
+### [scaleInTop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInTop)
+`AnimationReferenceMetadata`
+
+### [scaleInTr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInTr)
+`AnimationReferenceMetadata`
+
+### [scaleInVerBottom](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInVerBottom)
+`AnimationReferenceMetadata`
+
+### [scaleInVerCenter](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInVerCenter)
+`AnimationReferenceMetadata`
+
+### [scaleInVerTop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleInVerTop)
+`AnimationReferenceMetadata`
+
+### [scaleOutBl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutBl)
+`AnimationReferenceMetadata`
+
+### [scaleOutBottom](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutBottom)
+`AnimationReferenceMetadata`
+
+### [scaleOutBr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutBr)
+`AnimationReferenceMetadata`
+
+### [scaleOutCenter](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutCenter)
+`AnimationReferenceMetadata`
+
+### [scaleOutHorCenter](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutHorCenter)
+`AnimationReferenceMetadata`
+
+### [scaleOutHorLeft](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutHorLeft)
+`AnimationReferenceMetadata`
+
+### [scaleOutHorRight](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutHorRight)
+`AnimationReferenceMetadata`
+
+### [scaleOutLeft](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutLeft)
+`AnimationReferenceMetadata`
+
+### [scaleOutRight](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutRight)
+`AnimationReferenceMetadata`
+
+### [scaleOutTl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutTl)
+`AnimationReferenceMetadata`
+
+### [scaleOutTop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutTop)
+`AnimationReferenceMetadata`
+
+### [scaleOutTr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutTr)
+`AnimationReferenceMetadata`
+
+### [scaleOutVerBottom](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutVerBottom)
+`AnimationReferenceMetadata`
+
+### [scaleOutVerCenter](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutVerCenter)
+`AnimationReferenceMetadata`
+
+### [scaleOutVerTop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/scaleOutVerTop)
+`AnimationReferenceMetadata`
+
+### [shakeBl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/shakeBl)
+`AnimationReferenceMetadata`
+
+### [shakeBottom](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/shakeBottom)
+`AnimationReferenceMetadata`
+
+### [shakeBr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/shakeBr)
+`AnimationReferenceMetadata`
+
+### [shakeCenter](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/shakeCenter)
+`AnimationReferenceMetadata`
+
+### [shakeHor](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/shakeHor)
+`AnimationReferenceMetadata`
+
+### [shakeLeft](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/shakeLeft)
+`AnimationReferenceMetadata`
+
+### [shakeRight](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/shakeRight)
+`AnimationReferenceMetadata`
+
+### [shakeTl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/shakeTl)
+`AnimationReferenceMetadata`
+
+### [shakeTop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/shakeTop)
+`AnimationReferenceMetadata`
+
+### [shakeTr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/shakeTr)
+`AnimationReferenceMetadata`
+
+### [shakeVer](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/shakeVer)
+`AnimationReferenceMetadata`
+
+### [slideInBl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideInBl)
+`AnimationReferenceMetadata`
+
+### [slideInBottom](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideInBottom)
+`AnimationReferenceMetadata`
+
+### [slideInBr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideInBr)
+`AnimationReferenceMetadata`
+
+### [slideInLeft](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideInLeft)
+`AnimationReferenceMetadata`
+
+### [slideInRight](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideInRight)
+`AnimationReferenceMetadata`
+
+### [slideInTl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideInTl)
+`AnimationReferenceMetadata`
+
+### [slideInTop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideInTop)
+`AnimationReferenceMetadata`
+
+### [slideInTr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideInTr)
+`AnimationReferenceMetadata`
+
+### [slideOutBl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideOutBl)
+`AnimationReferenceMetadata`
+
+### [slideOutBottom](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideOutBottom)
+`AnimationReferenceMetadata`
+
+### [slideOutBr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideOutBr)
+`AnimationReferenceMetadata`
+
+### [slideOutLeft](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideOutLeft)
+`AnimationReferenceMetadata`
+
+### [slideOutRight](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideOutRight)
+`AnimationReferenceMetadata`
+
+### [slideOutTl](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideOutTl)
+`AnimationReferenceMetadata`
+
+### [slideOutTop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideOutTop)
+`AnimationReferenceMetadata`
+
+### [slideOutTr](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/slideOutTr)
+`AnimationReferenceMetadata`
+
+### [swingBase](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingBase)
+`AnimationMetadata[]`
+
+### [swingInBottomBck](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingInBottomBck)
+`AnimationReferenceMetadata`
+
+### [swingInBottomFwd](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingInBottomFwd)
+`AnimationReferenceMetadata`
+
+### [swingInLeftBck](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingInLeftBck)
+`AnimationReferenceMetadata`
+
+### [swingInLeftFwd](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingInLeftFwd)
+`AnimationReferenceMetadata`
+
+### [swingInRightBck](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingInRightBck)
+`AnimationReferenceMetadata`
+
+### [swingInRightFwd](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingInRightFwd)
+`AnimationReferenceMetadata`
+
+### [swingInTopBck](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingInTopBck)
+`AnimationReferenceMetadata`
+
+### [swingInTopFwd](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingInTopFwd)
+`AnimationReferenceMetadata`
+
+### [swingOutBottomBck](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingOutBottomBck)
+`AnimationReferenceMetadata`
+
+### [swingOutBottomFwd](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingOutBottomFwd)
+`AnimationReferenceMetadata`
+
+### [swingOutLeftBck](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingOutLeftBck)
+`AnimationReferenceMetadata`
+
+### [swingOutLefttFwd](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingOutLefttFwd)
+`AnimationReferenceMetadata`
+
+### [swingOutRightBck](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingOutRightBck)
+`AnimationReferenceMetadata`
+
+### [swingOutRightFwd](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingOutRightFwd)
+`AnimationReferenceMetadata`
+
+### [swingOutTopBck](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingOutTopBck)
+`AnimationReferenceMetadata`
+
+### [swingOutTopFwd](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/swingOutTopFwd)
+`AnimationReferenceMetadata`
+
+### [warningShown](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/variables/warningShown)
+`boolean`

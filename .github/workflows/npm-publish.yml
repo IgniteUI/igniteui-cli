@@ -24,10 +24,6 @@ jobs:
       - name: Install packages
         run: yarn install --frozen-lockfile
 
-      - name: Build MCP API docs
-        working-directory: packages/igniteui-mcp/igniteui-doc-mcp
-        run: npm run build:docs:all
-
       - name: Build packages
         run: |
           npm run build-pack
