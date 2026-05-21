@@ -63,7 +63,7 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
     if (member) {
       const match = extractMember(content, member);
       if (match) {
-        const text = `${entry.component}.${member} (${match.section}):\n${match.line}`;
+        const text = `${entry.component}.${match.name} (${match.section}):\n${match.line}`;
         return { content: [{ type: "text", text }] };
       }
       return {

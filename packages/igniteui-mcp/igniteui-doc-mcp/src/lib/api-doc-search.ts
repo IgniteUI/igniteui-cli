@@ -67,6 +67,7 @@ const MEMBER_BULLET_RE = /^\s*[-*]\s+(?:\w+\s+){0,3}\*\*([A-Za-z_$][A-Za-z0-9_$]
 
 export interface MemberMatch {
   section: 'property' | 'method' | 'event';
+  name: string;
   line: string;
 }
 
@@ -105,7 +106,7 @@ export function extractMember(markdown: string, member: string): MemberMatch | n
       const matches = caseInsensitive ? name.toLowerCase() === memberLower : name === member;
       if (matches) {
         const section = currentSection ?? inferSectionFromBullet(line);
-        return { section, line: line.trim() };
+        return { section, name, line: line.trim() };
       }
     }
   }
