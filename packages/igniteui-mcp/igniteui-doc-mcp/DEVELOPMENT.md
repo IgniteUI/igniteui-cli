@@ -6,7 +6,7 @@ MCP server that serves pre-compressed Ignite UI component documentation via full
 
 ```bash
 cd packages/igniteui-mcp/igniteui-doc-mcp
-git submodule update --init blazor/api-docs
+git submodule update --init common/api-docs
 npm install
 ```
 
@@ -24,7 +24,7 @@ npm run build:db
 ```
 
 ### Building the API markdown
-The `blazor/api-docs` submodule provides the Astro-based API build pipeline used by all four platforms. A fresh clone still needs `git submodule update --init blazor/api-docs` to materialize it locally.
+The `common/api-docs` submodule provides the Astro-based API build pipeline used by all four platforms. A fresh clone still needs `git submodule update --init common/api-docs` to materialize it locally.
 
 Before using the MCP server from a source checkout, generate the local API markdowns:
 
@@ -417,7 +417,7 @@ Per-platform clear removes the platform subdirectory from `docs_processing/`, `d
 
 ## API Reference Documentation
 
-The MCP server provides API reference lookup via the `get_api_reference` and `search_api` tools. API docs are generated from the `blazor/api-docs` submodule using its Astro build pipeline and stored as `llms-full.txt` files in `docs/{platform}-api/`.
+The MCP server provides API reference lookup via the `get_api_reference` and `search_api` tools. API docs are generated from the `common/api-docs` submodule using its Astro build pipeline and stored as `llms-full.txt` files in `docs/{platform}-api/`.
 
 All four platforms use the same source strategy:
 
@@ -439,20 +439,20 @@ npm run build:docs:all             # Build all four platforms
 ```
 
 Each `build:docs:{platform}-api` script:
-1. Initializes the `blazor/api-docs` git submodule
+1. Initializes the `common/api-docs` git submodule
 2. Runs `npm install` in the submodule
 3. Runs the Astro static build for the platform (`npm run build:{platform}:en`)
 4. Copies the generated `llms-full.txt` files from `dist/en/api/{platform}/` to `docs/{platform}-api/`
 
-The Blazor script additionally runs `dotnet tool restore` and `npm run fetch:tools:blazor` + the five docfx package build scripts before the Astro step. Angular's TypeDoc JSON data is pre-bundled in `blazor/api-docs/src/data/angular/` so no fetch step is needed.
+The Blazor script additionally runs `dotnet tool restore` and `npm run fetch:tools:blazor` + the five docfx package build scripts before the Astro step. Angular's TypeDoc JSON data is pre-bundled in `common/api-docs/src/data/angular/` so no fetch step is needed.
 
 ### Rebuilding After Upstream Changes
 
-When a new version of `blazor/api-docs` is available:
+When a new version of `common/api-docs` is available:
 
 1. Update the submodule:
    ```bash
-   cd blazor/api-docs
+   cd common/api-docs
    git fetch && git checkout <new-branch-or-tag>
    cd ../..
    ```

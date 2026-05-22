@@ -2,7 +2,7 @@ import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { join, resolve } from 'path';
 
 const ROOT = resolve(import.meta.dirname, '..');
-const PKG_PATH = join(ROOT, 'blazor', 'api-docs', 'package.json');
+const PKG_PATH = join(ROOT, 'common', 'api-docs', 'package.json');
 
 const OVERRIDES = {
   '@astrojs/sitemap': '^3.7.2',
@@ -12,7 +12,7 @@ const OVERRIDES = {
 if (!existsSync(PKG_PATH)) {
   console.error(
     `Submodule package.json not found: ${PKG_PATH}\n` +
-    `   Run: git submodule update --init blazor/api-docs`
+    `   Run: git submodule update --init common/api-docs`
   );
   process.exit(1);
 }

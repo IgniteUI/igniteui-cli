@@ -5,9 +5,9 @@
  * generated llms-full.txt files into docs/blazor-api/{package}/{version}/llms-full.txt.
  *
  * Prerequisites (handled here):
- *   1. Verify blazor/api-docs submodule is present
- *   2. npm install inside blazor/api-docs
- *   3. dotnet tool restore inside blazor/api-docs
+ *   1. Verify common/api-docs submodule is present
+ *   2. npm install inside common/api-docs
+ *   3. dotnet tool restore inside common/api-docs
  *   4. npm run fetch:tools:blazor  — downloads NuGet DLLs
  *   5. npm run build:IgniteUI.Blazor (×5 packages)  — docfx → JSON
  *   6. npm run build:blazor:en  — Astro SSG → dist/en/api/blazor/**
@@ -27,7 +27,7 @@ import { execSync } from 'child_process';
 import { pickLatestVersionDir } from '../src/lib/version-picker.js';
 
 const ROOT = resolve(import.meta.dirname, '..');
-const SUBMODULE_DIR = join(ROOT, 'blazor', 'api-docs');
+const SUBMODULE_DIR = join(ROOT, 'common', 'api-docs');
 const ASTRO_DIST = join(SUBMODULE_DIR, 'dist', 'en', 'api', 'blazor');
 const OUTPUT_DIR = join(ROOT, 'docs', 'blazor-api');
 
@@ -49,7 +49,7 @@ function run(cmd: string, cwd: string): void {
 if (!existsSync(SUBMODULE_DIR)) {
   console.error(
     `❌ Submodule not found: ${SUBMODULE_DIR}\n` +
-    `   Run: git submodule update --init blazor/api-docs`
+    `   Run: git submodule update --init common/api-docs`
   );
   process.exit(1);
 }

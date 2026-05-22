@@ -39,7 +39,7 @@ const FIXTURE_LLMS_CONTENT = [
 const FIXTURE_CONFIG: PlatformConfig = {
   key: 'angular',
   displayName: 'Angular',
-  submodulePath: 'blazor/api-docs',
+  submodulePath: 'common/api-docs',
   docsPath: 'docs/angular-api',
   apiSource: { kind: 'llms-full-txt', docsPath: 'docs/angular-api' },
 };
@@ -110,7 +110,7 @@ describe('ApiDocLoader', () => {
       const wcConfig: PlatformConfig = {
         key: 'webcomponents',
         displayName: 'Web Components',
-        submodulePath: 'blazor/api-docs',
+        submodulePath: 'common/api-docs',
         docsPath: 'docs/webcomponents-api',
         apiSource: { kind: 'llms-full-txt', docsPath: 'docs/webcomponents-api' },
       };

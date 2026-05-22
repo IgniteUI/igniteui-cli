@@ -562,7 +562,7 @@ describe("Unit - MCP runtime", () => {
 			const loader = new ApiDocLoader([{
 				key: "webcomponents",
 				displayName: "Test WC",
-				submodulePath: "blazor/api-docs",
+				submodulePath: "common/api-docs",
 				docsPath: "test-fixtures/api-test",
 				apiSource: { kind: "llms-full-txt", docsPath: "test-fixtures/api-test" }
 			}]);

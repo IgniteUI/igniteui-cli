@@ -1,13 +1,13 @@
 /**
  * export-react-api.ts
  *
- * Builds the React API docs from the blazor/api-docs submodule and exports
+ * Builds the React API docs from the common/api-docs submodule and exports
  * the generated llms-full.txt files into:
  *   docs/react-api/{package}/{version}/llms-full.txt
  *
  * Steps (handled here):
- *   1. Verify blazor/api-docs submodule is present
- *   2. npm install inside blazor/api-docs
+ *   1. Verify common/api-docs submodule is present
+ *   2. npm install inside common/api-docs
  *   3. (skipped) fetch:tools:react — tool data download not currently working
  *   4. npm run build:react:en    — Astro SSG → dist/en/api/react/**
  *   5. Copy dist/en/api/react/{pkg}/{ver}/llms-full.txt
@@ -27,7 +27,7 @@ import { execSync } from 'child_process';
 import { pickLatestVersionDir } from '../src/lib/version-picker.js';
 
 const ROOT = resolve(import.meta.dirname, '..');
-const SUBMODULE_DIR = join(ROOT, 'blazor', 'api-docs');
+const SUBMODULE_DIR = join(ROOT, 'common', 'api-docs');
 const ASTRO_DIST = join(SUBMODULE_DIR, 'dist', 'en', 'api', 'react');
 const OUTPUT_DIR = join(ROOT, 'docs', 'react-api');
 
@@ -40,7 +40,7 @@ function run(cmd: string, cwd: string): void {
 if (!existsSync(SUBMODULE_DIR)) {
   console.error(
     `❌ Submodule not found: ${SUBMODULE_DIR}\n` +
-    `   Run: git submodule update --init blazor/api-docs`
+    `   Run: git submodule update --init common/api-docs`
   );
   process.exit(1);
 }

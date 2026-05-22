@@ -1,15 +1,15 @@
 /**
  * export-angular-api.ts
  *
- * Builds the Angular API docs from the blazor/api-docs submodule and exports
+ * Builds the Angular API docs from the common/api-docs submodule and exports
  * the generated llms-full.txt files into:
  *   docs/angular-api/{package}/{version}/llms-full.txt
  *
  * Steps (handled here):
- *   1. Verify blazor/api-docs submodule is present
- *   2. npm install inside blazor/api-docs
+ *   1. Verify common/api-docs submodule is present
+ *   2. npm install inside common/api-docs
  *   3. (skipped) fetch:tools:angular — Angular TypeDoc JSONs are pre-bundled
- *      in blazor/api-docs/src/data/angular/ so no download is needed.
+ *      in common/api-docs/src/data/angular/ so no download is needed.
  *   4. npm run build:angular:en  — Astro SSG → dist/en/api/angular/**
  *   5. Copy dist/en/api/angular/{pkg}/{ver}/llms-full.txt
  *        → docs/angular-api/{pkg}/{ver}/llms-full.txt
@@ -28,7 +28,7 @@ import { execSync } from 'child_process';
 import { pickLatestVersionDir } from '../src/lib/version-picker.js';
 
 const ROOT = resolve(import.meta.dirname, '..');
-const SUBMODULE_DIR = join(ROOT, 'blazor', 'api-docs');
+const SUBMODULE_DIR = join(ROOT, 'common', 'api-docs');
 const ASTRO_DIST = join(SUBMODULE_DIR, 'dist', 'en', 'api', 'angular');
 const OUTPUT_DIR = join(ROOT, 'docs', 'angular-api');
 
@@ -41,7 +41,7 @@ function run(cmd: string, cwd: string): void {
 if (!existsSync(SUBMODULE_DIR)) {
   console.error(
     `❌ Submodule not found: ${SUBMODULE_DIR}\n` +
-    `   Run: git submodule update --init blazor/api-docs`
+    `   Run: git submodule update --init common/api-docs`
   );
   process.exit(1);
 }
@@ -51,7 +51,7 @@ console.log('📦 Installing api-docs dependencies...');
 run('npm install --silent', SUBMODULE_DIR);
 
 // ── Step 3: (skipped) fetch Angular tools ──────────────────────────────
-// Angular TypeDoc JSONs are pre-bundled in blazor/api-docs/src/data/angular/.
+// Angular TypeDoc JSONs are pre-bundled in common/api-docs/src/data/angular/.
 // run('npm run fetch:tools:angular', SUBMODULE_DIR);
 
 // ── Step 4: Astro static build → dist/en/api/angular/** ──────────────────

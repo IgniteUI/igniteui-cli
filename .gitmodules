@@ -35,9 +35,11 @@
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/react/igniteui-react"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/react/igniteui-react
 	url = https://github.com/IgniteUI/igniteui-react.git
-[submodule "packages/igniteui-mcp/igniteui-doc-mcp/blazor/api-docs"]
-	path = packages/igniteui-mcp/igniteui-doc-mcp/blazor/api-docs
-	url = https://github.com/IgniteUI/api-docs
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/blazor/igniteui-blazor"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/blazor/igniteui-blazor
 	url = https://github.com/IgniteUI/igniteui-blazor.git
+[submodule "packages/igniteui-mcp/igniteui-doc-mcp/common/api-docs"]
+	path = packages/igniteui-mcp/igniteui-doc-mcp/common/api-docs
+	url = https://github.com/IgniteUI/api-docs
+	branch = master
+	ignore = dirty
