@@ -103,7 +103,7 @@
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "@types/js-yaml": "^4.0.9",
-    "@types/node": "^25.2.2",
+    "@types/node": "^25.9.1",
     "@types/tmp": "^0.2.6",
     "better-sqlite3": "^12.6.2",
     "js-tiktoken": "^1.0.21",
