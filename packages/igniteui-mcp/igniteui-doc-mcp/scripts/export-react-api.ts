@@ -5,8 +5,11 @@
  * the generated llms-full.txt files into:
  *   docs/react-api/{package}/{version}/llms-full.txt
  *
- * The `fetch:tools:react` step is currently skipped — tool data download is
- * not working and is tracked with the package author.
+ * The TypeDoc JSON files referenced by platforms-config.json are not checked
+ * into the submodule, so we generate them here. Versions are read from the
+ * submodule's platforms-config.json. `fetch:tools:react` /
+ * `build:typedoc:react-tools` (React sub-package tooling) is skipped — that
+ * tool data download is currently broken and tracked with the package author.
  */
 
 import { exportApi } from './lib/export-api.js';
@@ -16,5 +19,12 @@ exportApi({
   displayName: 'React',
   astroDistSubdir: 'react',
   outputDirName: 'react-api',
+  prebuildScripts: ({ latestVersion }) => {
+    const main = latestVersion('igniteui-react');
+    return [
+      `fetch:repo:react -- ${main}`,
+      `build:typedoc:react -- ${main}`,
+    ];
+  },
   buildScript: 'build:react:en',
 });
