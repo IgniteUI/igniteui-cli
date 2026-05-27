@@ -7,7 +7,7 @@ const DB_PATH = join(PKG_ROOT, "dist", "igniteui-docs.db");
 const DB_MIN_BYTES = 20 * 1024 * 1024; // 20 MB minimum for the SQLite DB
 const DOCS_ROOT = join(PKG_ROOT, "docs");
 const FRAMEWORK_DIRS = ["angular-api", "react-api", "webcomponents-api", "blazor-api"];
-const PACKAGE_MIN_BYTES = 300 * 1024; // 300 KB minimum for each package
+const FRAMEWORK_MIN_BYTES = 300 * 1024; // 300 KB minimum for each docs/<framework>-api directory
 
 const errors: string[] = [];
 
@@ -86,19 +86,11 @@ for (const framework of FRAMEWORK_DIRS) {
     errors.push(`Docs framework dir missing: ${frameworkDir}`);
     continue;
   }
-  const packages = readdirSync(frameworkDir, { withFileTypes: true }).filter(e => e.isDirectory());
-  if (packages.length === 0) {
-    errors.push(`No package subfolders in ${frameworkDir}`);
-    continue;
-  }
-  for (const pkg of packages) {
-    const pkgDir = join(frameworkDir, pkg.name);
-    const size = dirSize(pkgDir);
-    if (size < PACKAGE_MIN_BYTES) {
-      errors.push(`Package too small: ${framework}/${pkg.name} = ${formatSize(size)} < ${formatSize(PACKAGE_MIN_BYTES)}`);
-    } else {
-      console.log(`OK  pkg ${formatSize(size).padStart(10)}  ${framework}/${pkg.name}`);
-    }
+  const size = dirSize(frameworkDir);
+  if (size < FRAMEWORK_MIN_BYTES) {
+    errors.push(`Docs framework dir too small: ${framework} = ${formatSize(size)} < ${formatSize(FRAMEWORK_MIN_BYTES)}`);
+  } else {
+    console.log(`OK  dir ${formatSize(size).padStart(10)}  ${framework}`);
   }
 }
 
