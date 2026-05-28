@@ -13,7 +13,15 @@ const errors: string[] = [];
 
 function getExpectedVersion(): string | null {
   const idx = process.argv.indexOf("--expected-version");
-  if (idx >= 0 && process.argv[idx + 1]) return process.argv[idx + 1].replace(/^v/, "");
+  if (idx >= 0) {
+    const rawValue = process.argv[idx + 1];
+    const value = rawValue?.trim();
+    if (!value || value.startsWith("--")) {
+      console.error('Missing or invalid value for "--expected-version". Provide a version after the flag.');
+      process.exit(1);
+    }
+    return value.replace(/^v/, "");
+  }
   if (process.env.EXPECTED_VERSION) return process.env.EXPECTED_VERSION.replace(/^v/, "");
   return null;
 }
