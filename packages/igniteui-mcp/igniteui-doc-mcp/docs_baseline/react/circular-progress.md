@@ -64,7 +64,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress), its necessary CSS, and register its module, like so:
 
 ```tsx
 import { IgrCircularProgressModule, IgrCircularProgress } from 'igniteui-react';
@@ -72,7 +72,7 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 IgrCircularProgressModule.register();
 ```
 
-The simplest way to start using the [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) is as follows:
+The simplest way to start using the [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress) is as follows:
 
 ```tsx
 <IgrCircularProgress value="100"></IgrCircularProgress>
@@ -80,7 +80,7 @@ The simplest way to start using the [`IgrCircularProgress`](https://www.infragis
 
 ### Progress Types
 
-You can set the type of your indicator, using the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html#variant) attribute. There are five types of circular progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
+You can set the type of your indicator, using the [`variant`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=variant) attribute. There are five types of circular progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
 
 ```tsx
 <IgrCircularProgress value="100" variant="success"></IgrCircularProgress>
@@ -88,7 +88,7 @@ You can set the type of your indicator, using the [`variant`](https://www.infrag
 
 ### Indeterminate Progress
 
-If you want to track a process that is not determined precisely, you can set the [`indeterminate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html#indeterminate) property. Also, you can hide the default label of the Ignite UI for React [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) by setting the [`hideLabel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html#hideLabel) property and customize the progress indicator default label via the exposed [`labelFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html#labelFormat) property.
+If you want to track a process that is not determined precisely, you can set the [`indeterminate`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=indeterminate) property. Also, you can hide the default label of the Ignite UI for React [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress) by setting the [`hideLabel`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=hideLabel) property and customize the progress indicator default label via the exposed [`labelFormat`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=labelFormat) property.
 
 ```tsx
 <IgrCircularProgress value="100" indeterminate="true"></IgrCircularProgress>
@@ -133,7 +133,7 @@ root.render(<IndeterminateCircularProgress/>);
 
 ### Animation Duration
 
-You can use the [`animationDuration`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html#animationDuration) property on the [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) component to specify how long the animation cycle should take in milliseconds.
+You can use the [`animationDuration`](mcp:get_api_reference?platform=react&component=IgrCircularProgress&member=animationDuration) property on the [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress) component to specify how long the animation cycle should take in milliseconds.
 
 ```tsx
 <IgrCircularProgress animationDuration="5000" indeterminate="true"></IgrCircularProgress>
@@ -141,7 +141,7 @@ You can use the [`animationDuration`](https://www.infragistics.com/products/igni
 
 ### Gradient Progress
 
-Customizing the progress bar in order to use a color gradient instead of a solid color could be done via the exposed `gradient` slot and [`IgrCircularGradient`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcirculargradient.html) which defines the gradient stops.
+Customizing the progress bar in order to use a color gradient instead of a solid color could be done via the exposed `gradient` slot and [`IgrCircularGradient`](mcp:get_api_reference?platform=react&component=IgrCircularGradient) which defines the gradient stops.
 
 ```css
 igc-circular-progress {
@@ -240,7 +240,7 @@ root.render(<DynamicCircularProgress/>);
 ```
 
 > [!Note]
-> For each [`IgrCircularGradient`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcirculargradient.html) defined as gradient slot of Ignite UI for React [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) a [SVG stop](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop) element would be created. The values passed as `color`, `offset` and `opacity` would be set as stop-color, offset and stop-opacity of the SVG element without further validations.
+> For each [`IgrCircularGradient`](mcp:get_api_reference?platform=react&component=IgrCircularGradient) defined as gradient slot of Ignite UI for React [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress) a [SVG stop](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop) element would be created. The values passed as `color`, `offset` and `opacity` would be set as stop-color, offset and stop-opacity of the SVG element without further validations.
 
 ```tsx
 <IgrCircularProgress >
@@ -257,7 +257,7 @@ root.render(<DynamicCircularProgress/>);
 
 ## Styling
 
-The [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html) component exposes CSS parts for almost all of its inner elements:
+The [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress) component exposes CSS parts for almost all of its inner elements:
 
 |Name|Description|
 |--|--|
@@ -347,10 +347,10 @@ root.render(<StylingCircularProgressIndicator/>);
 
 ## API References
 
-- [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html)
-- [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html)
-- [`IgrCircularGradient`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcirculargradient.html)
-- [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html)
+- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
+- [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)
+- [`IgrCircularGradient`](mcp:get_api_reference?platform=react&component=IgrCircularGradient)
+- [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

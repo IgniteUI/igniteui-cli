@@ -52,7 +52,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) and the [`IgrSelectItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectitem.html) and its necessary CSS, like so:
+You will then need to import the [`IgrSelect`](mcp:get_api_reference?platform=react&component=IgrSelect) and the [`IgrSelectItem`](mcp:get_api_reference?platform=react&component=IgrSelectItem) and its necessary CSS, like so:
 
 ```tsx
 import { IgrSelect, IgrSelectItem } from 'igniteui-react';
@@ -62,7 +62,7 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 > [!Note]
 > Please note that the select header and group components are not mandatory unless you want to use them.
 
-To start using the component add the [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) along with a list of [`IgrSelectItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectitem.html)'s to choose from:
+To start using the component add the [`IgrSelect`](mcp:get_api_reference?platform=react&component=IgrSelect) along with a list of [`IgrSelectItem`](mcp:get_api_reference?platform=react&component=IgrSelectItem)'s to choose from:
 
 ```tsx
 <IgrSelect>
@@ -75,11 +75,11 @@ To start using the component add the [`IgrSelect`](https://www.infragistics.com/
 
 ### Select
 
-The [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) component can be used inside a `Form` component, thus it exposes a [`name`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html#name) property to be registered with. It also has a [`label`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html#label), and [`placeholder`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html#placeholder) properties. The [`outlined`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html#outlined) property is used for styling purposes only when it comes to the Material theme. Except for the default slot, the component provides a few other slots including `header`, `footer`, `helper-text`, `prefix`, `suffix`, and `toggle-icon`. The component size can be changed using the `--ig-size` CSS variable.
+The [`IgrSelect`](mcp:get_api_reference?platform=react&component=IgrSelect) component can be used inside a `Form` component, thus it exposes a [`name`](mcp:get_api_reference?platform=react&component=IgrSelect&member=name) property to be registered with. It also has a [`label`](mcp:get_api_reference?platform=react&component=IgrSelect&member=label), and [`placeholder`](mcp:get_api_reference?platform=react&component=IgrSelect&member=placeholder) properties. The [`outlined`](mcp:get_api_reference?platform=react&component=IgrSelect&member=outlined) property is used for styling purposes only when it comes to the Material theme. Except for the default slot, the component provides a few other slots including `header`, `footer`, `helper-text`, `prefix`, `suffix`, and `toggle-icon`. The component size can be changed using the `--ig-size` CSS variable.
 
 ### Item
 
-The [`IgrSelectItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectitem.html) component allows the users to declaratively specify a list of options to be used by the [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) control. Each item provides a [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html#value) property that represents the data it carries upon selection. The [`IgrSelectItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectitem.html) has a default slot which allows you to specify the text content of the item. This text content will be used as value in case the [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html#value) property is not present on the [`IgrSelectItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectitem.html). You could also provide custom content to be rendered before or after the [`IgrSelectItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectitem.html) content using the `prefix` and `suffix` slots. You could predefine a selected item by setting the `Selected` property. You could also disable some or all items via the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html#disabled) property.
+The [`IgrSelectItem`](mcp:get_api_reference?platform=react&component=IgrSelectItem) component allows the users to declaratively specify a list of options to be used by the [`IgrSelect`](mcp:get_api_reference?platform=react&component=IgrSelect) control. Each item provides a [`value`](mcp:get_api_reference?platform=react&component=IgrSelect&member=value) property that represents the data it carries upon selection. The [`IgrSelectItem`](mcp:get_api_reference?platform=react&component=IgrSelectItem) has a default slot which allows you to specify the text content of the item. This text content will be used as value in case the [`value`](mcp:get_api_reference?platform=react&component=IgrSelect&member=value) property is not present on the [`IgrSelectItem`](mcp:get_api_reference?platform=react&component=IgrSelectItem). You could also provide custom content to be rendered before or after the [`IgrSelectItem`](mcp:get_api_reference?platform=react&component=IgrSelectItem) content using the `prefix` and `suffix` slots. You could predefine a selected item by setting the `Selected` property. You could also disable some or all items via the [`disabled`](mcp:get_api_reference?platform=react&component=IgrSelect&member=disabled) property.
 
 ```css
 /* shared styles are loaded from: */
@@ -150,7 +150,7 @@ root.render(<SelectItem />);
 
 ### Header
 
-You can use the [`IgrSelectHeader`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectheader.html) to provide a header for a group of items.
+You can use the [`IgrSelectHeader`](mcp:get_api_reference?platform=react&component=IgrSelectHeader) to provide a header for a group of items.
 
 ```css
 /* shared styles are loaded from: */
@@ -195,7 +195,7 @@ root.render(<SelectHeader />);
 
 ### Group
 
-Multiple [`IgrSelectItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectitem.html)s can be placed between the opening and closing brackets of an [`IgrSelectGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectgroup.html) component so that users can visually group them together. The [`IgrSelectGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectgroup.html) can be labelled via its `label` slot and disabled via its [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectgroup.html#disabled) property.
+Multiple [`IgrSelectItem`](mcp:get_api_reference?platform=react&component=IgrSelectItem)s can be placed between the opening and closing brackets of an [`IgrSelectGroup`](mcp:get_api_reference?platform=react&component=IgrSelectGroup) component so that users can visually group them together. The [`IgrSelectGroup`](mcp:get_api_reference?platform=react&component=IgrSelectGroup) can be labelled via its `label` slot and disabled via its [`disabled`](mcp:get_api_reference?platform=react&component=IgrSelectGroup&member=disabled) property.
 
 > [!Note]
 > Keep in mind that if a select group is disabled, you cannot enable separate items of it.
@@ -356,7 +356,7 @@ root.render(<SelectGroup />);
 
 ## Validation
 
-In addition, the [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) supports most of the [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) properties, such as [`required`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html#required), [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html#disabled), [`autofocus`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#autofocus), etc. The component also exposes a method bound to its validation:
+In addition, the [`IgrSelect`](mcp:get_api_reference?platform=react&component=IgrSelect) supports most of the [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) properties, such as [`required`](mcp:get_api_reference?platform=react&component=IgrSelect&member=required), [`disabled`](mcp:get_api_reference?platform=react&component=IgrSelect&member=disabled), [`autofocus`](mcp:get_api_reference?platform=react&component=IgrInput&member=autofocus), etc. The component also exposes a method bound to its validation:
 
 - `reportValidity` - checks for validity and focuses the component if invalid.
 
@@ -364,8 +364,8 @@ In addition, the [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-r
 
 When the select is focused and the list of options is **not visible**:
 
-- Open the [`select`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#select) using the <kbd>ALT</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> combination or by clicking on the <kbd>SPACE</kbd> or the <kbd>ENTER</kbd> key.
-- Close the [`select`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#select) using the <kbd>ALT</kbd> + <kbd>↑</kbd> or <kbd>↓</kbd> combination or any of the <kbd>ENTER</kbd>, <kbd>SPACE</kbd>, <kbd>ESC</kbd> or [`IgrTab`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtab.html) keys.
+- Open the [`select`](mcp:get_api_reference?platform=react&component=IgrInput&member=select) using the <kbd>ALT</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> combination or by clicking on the <kbd>SPACE</kbd> or the <kbd>ENTER</kbd> key.
+- Close the [`select`](mcp:get_api_reference?platform=react&component=IgrInput&member=select) using the <kbd>ALT</kbd> + <kbd>↑</kbd> or <kbd>↓</kbd> combination or any of the <kbd>ENTER</kbd>, <kbd>SPACE</kbd>, <kbd>ESC</kbd> or [`IgrTab`](mcp:get_api_reference?platform=react&component=IgrTab) keys.
 - Using the <kbd>←</kbd> <kbd>→</kbd> keys will select the previous item in the list.
 - Using the <kbd>↑</kbd> <kbd>↓</kbd> keys will select the next item in the list.
 - Using the <kbd>HOME</kbd> or <kbd>END</kbd> keys will select the first or last item in the list.
@@ -379,11 +379,11 @@ When the select is focused and the list of options is **visible**:
 - Using the <kbd>HOME</kbd> or <kbd>END</kbd> keys will activate the first or last item in the list.
 
 > [!Note]
-> The [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) component supports only **single** selection of items.
+> The [`IgrSelect`](mcp:get_api_reference?platform=react&component=IgrSelect) component supports only **single** selection of items.
 
 ## Styling
 
-You can change the appearance of the Ignite UI for React [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) component and its items, by using the exposed CSS parts listed below:
+You can change the appearance of the Ignite UI for React [`IgrSelect`](mcp:get_api_reference?platform=react&component=IgrSelect) component and its items, by using the exposed CSS parts listed below:
 
 **Select Component**
 
@@ -557,10 +557,10 @@ root.render(<SelectGroup />);
 
 ## API Reference
 
-- [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html)
-- [`IgrSelectItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectitem.html)
-- [`IgrSelectHeader`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectheader.html)
-- [`IgrSelectGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselectgroup.html)
+- [`IgrSelect`](mcp:get_api_reference?platform=react&component=IgrSelect)
+- [`IgrSelectItem`](mcp:get_api_reference?platform=react&component=IgrSelectItem)
+- [`IgrSelectHeader`](mcp:get_api_reference?platform=react&component=IgrSelectHeader)
+- [`IgrSelectGroup`](mcp:get_api_reference?platform=react&component=IgrSelectGroup)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

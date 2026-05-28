@@ -62,7 +62,7 @@ The Ignite UI for Blazor Date Time Input allows the user to set and edit the dat
 
 ## Usage
 
-Before using the [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html), you need to register it as follows:
+Before using the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -70,7 +70,7 @@ Before using the [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/a
 builder.Services.AddIgniteUIBlazor(typeof(IgbDateTimeInputModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -78,7 +78,7 @@ You will also need to link an additional CSS file to apply the styling to the [`
 
 ### Value binding
 
-The easiest way to set the value of the [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html) component is by passing a Date object to the [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_Value) property:
+The easiest way to set the value of the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) component is by passing a Date object to the [`Value`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=Value) property:
 
 ```razor
 <IgbDateTimeInput @ref="DateTimeInputRef" Value="@Date">
@@ -88,7 +88,7 @@ The easiest way to set the value of the [`IgbDateTimeInput`](https://www.infragi
 
 ### Keyboard Navigation
 
-The [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different `DateParts` among others without having to touch the mouse.
+The [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different `DateParts` among others without having to touch the mouse.
 
 |Keys|Description|
 |----|-----------|
@@ -104,13 +104,13 @@ The [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/Ignite
 
 ## Setting formats
 
-The [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html) supports different display and input formats.
+The [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) supports different display and input formats.
 
-It uses [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) which allows it to support predefined format options, such as `long` and `short`, `medium` and `full`. Additionally, it can also accept a custom string constructed from supported characters, such as `dd-MM-yy`. Also, if no [`DisplayFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_DisplayFormat) is provided, the component will use the [`InputFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_InputFormat) as such.
+It uses [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) which allows it to support predefined format options, such as `long` and `short`, `medium` and `full`. Additionally, it can also accept a custom string constructed from supported characters, such as `dd-MM-yy`. Also, if no [`DisplayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=DisplayFormat) is provided, the component will use the [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=InputFormat) as such.
 
 ### Input Format
 
-The table bellow shows formats that are supported by the component's [`InputFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_InputFormat):
+The table bellow shows formats that are supported by the component's [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=InputFormat):
 
 |Format|Description|
 |-------|----------|
@@ -128,7 +128,7 @@ The table bellow shows formats that are supported by the component's [`InputForm
 | `mm` | Minutes with an explicitly set leading zero. |
 | `tt` | AM/PM section for 12-hour format. |
 
-To set a specific input format, pass it as a string to the [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html). This will set both the expected user input format and the `mask`. Additionally, the [`InputFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_InputFormat) is locale based, so if none is provided, the editor will default to `dd/MM/yyyy`.
+To set a specific input format, pass it as a string to the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput). This will set both the expected user input format and the `mask`. Additionally, the [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=InputFormat) is locale based, so if none is provided, the editor will default to `dd/MM/yyyy`.
 
 ```razor
 <IgbDateTimeInput @ref="DateTimeInputRef" InputFormat="dd-MM-yy" DisplayFormat="medium">
@@ -237,7 +237,7 @@ Furthermore, users can construct a displayFormat string using the supported symb
 
 ## Min/max value
 
-You can specify [`Min`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_Min) and [`Max`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_Max) properties to restrict input and control the validity of the component. Just like the [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_Value) property, they can be of type `string`.
+You can specify [`Min`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=Min) and [`Max`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=Max) properties to restrict input and control the validity of the component. Just like the [`Value`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=Value) property, they can be of type `string`.
 
 ```razor
 <IgbDateTimeInput @ref="DateTimeInputRef" Min="@MinDate" Max="@MaxDate">
@@ -299,11 +299,11 @@ If all went well, the component will be `invalid` if the value is greater or low
 
 ## Step up/down
 
-The [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html) exposes public [`StepUp`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_StepUp) and [`StepDown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_StepDown) methods. They increment or decrement a specific `DatePart` of the currently set date and time and can be used in a couple of ways.
+The [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) exposes public [`StepUp`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=StepUp) and [`StepDown`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=StepDown) methods. They increment or decrement a specific `DatePart` of the currently set date and time and can be used in a couple of ways.
 
-In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`InputFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_InputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
+In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=InputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
 
-Additionally, [`SpinDelta`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_SpinDelta) is a property that can be used to apply a different delta to each date time segment. It will be applied when spinning with the keyboard, mouse wheel or with the [`StepUp`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_StepUp) and [`StepDown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_StepDown) methods, as long as they don't have the delta parameter provided since it will take precedence over [`SpinDelta`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html#IgniteUI_Blazor_Controls_IgbDateTimeInput_SpinDelta).
+Additionally, [`SpinDelta`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=SpinDelta) is a property that can be used to apply a different delta to each date time segment. It will be applied when spinning with the keyboard, mouse wheel or with the [`StepUp`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=StepUp) and [`StepDown`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=StepDown) methods, as long as they don't have the delta parameter provided since it will take precedence over [`SpinDelta`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=SpinDelta).
 
 Try it in the example below:
 
@@ -362,7 +362,7 @@ Try it in the example below:
 
 ## Styling
 
-The [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -448,10 +448,10 @@ igc-date-time-input {
 
 ## API References
 
-- [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html)
-- [`IgbMaskInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html)
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
-- [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html)
+- [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
+- [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+- [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

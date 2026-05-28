@@ -97,7 +97,7 @@ To get a simple switch as the one in the demo, add the following code inside the
 
 ### Switch properties
 
-Let's enhance the code above by binding the switch properties to some data. Say, we have an array of settings objects, each having two properties - `name` and `state`. You can bind the switch component [`checked`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxswitchcomponent.html#checked) property to the underlying object state property. Analogically, you can bind the value property to name.
+Let's enhance the code above by binding the switch properties to some data. Say, we have an array of settings objects, each having two properties - `name` and `state`. You can bind the switch component [`checked`](mcp:get_api_reference?platform=angular&component=IgxSwitchComponent&member=checked) property to the underlying object state property. Analogically, you can bind the value property to name.
 
 ```typescript
 // toggle.component.ts
@@ -175,7 +175,7 @@ igx-switch {
 
 ### Label Positioning
 
-You can position the label using the switch's [`labelPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcheckboxcomponent.html#labelPosition) property:
+You can position the label using the switch's [`labelPosition`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent&member=labelPosition) property:
 
 ```html
 <igx-switch labelPosition="before"></igx-switch>
@@ -559,7 +559,7 @@ At the end your switch should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxSwitchComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxswitchcomponent.html)
+- [IgxSwitchComponent](mcp:get_api_reference?platform=angular&component=IgxSwitchComponent)
 - [IgxSwitchComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-switch-theme)
 
 ## Theming Dependencies

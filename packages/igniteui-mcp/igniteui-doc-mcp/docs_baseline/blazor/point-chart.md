@@ -15,7 +15,7 @@ The Ignite UI for Blazor Point Chart renders a collection of points. Values are 
 
 ## Blazor Point Chart Example
 
-You can create the Blazor Point Chart in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control by binding your data to [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataSource) property and setting [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) property to **Point** enum, as shown in the example below.
+You can create the Blazor Point Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=DataSource) property and setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to **Point** enum, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -395,7 +395,7 @@ public class CountryRenewableElectricity
 
 ## Advanced Types of Point Charts
 
-You can create more advanced types of Blazor Point Charts using the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control instead of [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control by following these topics:
+You can create more advanced types of Blazor Point Charts using the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control instead of [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by following these topics:
 
 - [Scatter Bubble Chart](bubble-chart.md)
 - [Scatter Marker Chart](scatter-chart.md#blazor-scatter-marker-chart)
@@ -413,10 +413,10 @@ You can find more information about related chart features in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html)
-- [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
-- [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType)
-- [`MarkerTypes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerTypes)
-- [`MarkerOutlines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerOutlines)
-- [`MarkerBrushes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerBrushes)
-- [`MarkerThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerThickness)
+- [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
+- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
+- [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType)
+- [`MarkerTypes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerTypes)
+- [`MarkerOutlines`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerOutlines)
+- [`MarkerBrushes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerBrushes)
+- [`MarkerThickness`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerThickness)

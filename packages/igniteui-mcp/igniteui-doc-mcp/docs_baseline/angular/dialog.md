@@ -109,8 +109,8 @@ Now that you have the Ignite UI for Angular Dialog Window module or directives i
 
 ### Alert Dialog
 
-To create an alert dialog, in the template of our email component, we add the following code. We have to set the [`title`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html#title), [`message`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html#message),
-[`leftButtonLabel`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html#leftButtonLabel) and handle [`leftButtonSelect`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html#leftButtonSelect) event:
+To create an alert dialog, in the template of our email component, we add the following code. We have to set the [`title`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=title), [`message`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=message),
+[`leftButtonLabel`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=leftButtonLabel) and handle [`leftButtonSelect`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=leftButtonSelect) event:
 
 ```html
 <!--email.component.html-->
@@ -130,8 +130,8 @@ If everything's done right, you should see the demo sample shown above in your b
 
 ### Standard Dialog
 
-To create a standard dialog, in the template of our file manager component, we add the following code. We have to set the [`title`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html#title), [`message`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html#message),
-[`leftButtonLabel`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html#leftButtonLabel), [`rightButtonLabel`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html#rightButtonLabel), and handle [`leftButtonSelect`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html#leftButtonSelect) and [`rightButtonSelect`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html#rightButtonSelect) events:
+To create a standard dialog, in the template of our file manager component, we add the following code. We have to set the [`title`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=title), [`message`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=message),
+[`leftButtonLabel`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=leftButtonLabel), [`rightButtonLabel`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=rightButtonLabel), and handle [`leftButtonSelect`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=leftButtonSelect) and [`rightButtonSelect`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=rightButtonSelect) events:
 
 ```html
 <!--file-manager.component.html-->
@@ -316,7 +316,7 @@ export class DialogSample3Component {
 
 There are two ways to change the position at which the `igx-dialog` will be shown:
 
-- Using [`open`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html#open) method and pass a valid [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html). Example:
+- Using [`open`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=open) method and pass a valid [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings). Example:
 
 ```typescript
 import { PositionSettings, OverlaySettings, GlobalPositionStrategy, NoOpScrollStrategy, HorizontalAlignment, VerticalAlignment } from 'igniteui-angular/core';
@@ -388,7 +388,7 @@ params: {
 
 ### Trap focus inside dialog
 
-By default when the dialog is opened the Tab key focus is trapped within it, i.e. the focus does not leave the element when the user keeps tabbing through the focusable elements. When the focus leaves the last element, it moves to the first one and vice versa, when SHIFT + TAB is pressed, when the focus leaves the first element, the last element should be focused. In case the dialog does not contain any focusable elements, the focus will be trapped on the dialog container itself. This behavior can be changed by setting the [`focusTrap`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html#focusTrap) property.
+By default when the dialog is opened the Tab key focus is trapped within it, i.e. the focus does not leave the element when the user keeps tabbing through the focusable elements. When the focus leaves the last element, it moves to the first one and vice versa, when SHIFT + TAB is pressed, when the focus leaves the first element, the last element should be focused. In case the dialog does not contain any focusable elements, the focus will be trapped on the dialog container itself. This behavior can be changed by setting the [`focusTrap`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=focusTrap) property.
 
 ## Styling
 
@@ -584,9 +584,9 @@ $custom-button: contained-button-theme(
 
 <div class="divider--half"></div>
 
-- [IgxDialogComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdialogcomponent.html)
+- [IgxDialogComponent](mcp:get_api_reference?platform=angular&component=IgxDialogComponent)
 - [IgxDialogComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-dialog-theme)
-- [IgxOverlay](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html)
+- [IgxOverlay](mcp:get_api_reference?platform=angular&component=OverlaySettings)
 - [IgxOverlay Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
 
 ## Theming Dependencies

@@ -10,7 +10,7 @@ _premium: true
 
 # Blazor Displaying Imagery from Open Street Maps
 
-The Blazor [`IgbOpenStreetMapImagery`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbOpenStreetMapImagery.html) is a free geographic imagery mapping service created collaboratively by OpenStreetMap© contributors from around the world. It provides geographic imagery tiles of the world only in road map style without any configuration options. This geographic imagery service can be accessed directly on <a href="http://www.openstreetmap.org" target="_blank">www.OpenStreetMap.org</a> web site.
+The Blazor [`IgbOpenStreetMapImagery`](mcp:get_api_reference?platform=blazor&component=IgbOpenStreetMapImagery) is a free geographic imagery mapping service created collaboratively by OpenStreetMap© contributors from around the world. It provides geographic imagery tiles of the world only in road map style without any configuration options. This geographic imagery service can be accessed directly on <a href="http://www.openstreetmap.org" target="_blank">www.OpenStreetMap.org</a> web site.
 By the default, the Ignite UI for Blazor map component already displays geographic imagery from the Open Street Maps. Therefore, there is no need to configure the control to display geographic imagery from the Open Street Maps.
 
 ## Blazor Displaying Imagery from Open Street Maps Example
@@ -52,7 +52,7 @@ By the default, the Ignite UI for Blazor map component already displays geograph
 
 ## Code Snippet
 
-This code example explicitly sets [`BackgroundContent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_BackgroundContent) of the map component to the [`IgbOpenStreetMapImagery`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbOpenStreetMapImagery.html) object which provides geographic imagery from  OpenStreetMap© contributors.
+This code example explicitly sets [`BackgroundContent`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=BackgroundContent) of the map component to the [`IgbOpenStreetMapImagery`](mcp:get_api_reference?platform=blazor&component=IgbOpenStreetMapImagery) object which provides geographic imagery from  OpenStreetMap© contributors.
 
 ```razor
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true"
@@ -71,5 +71,5 @@ This code example explicitly sets [`BackgroundContent`](https://www.infragistics
 
 ## API References
 
-- [`BackgroundContent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_BackgroundContent)
-- [`IgbOpenStreetMapImagery`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbOpenStreetMapImagery.html)
+- [`BackgroundContent`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=BackgroundContent)
+- [`IgbOpenStreetMapImagery`](mcp:get_api_reference?platform=blazor&component=IgbOpenStreetMapImagery)

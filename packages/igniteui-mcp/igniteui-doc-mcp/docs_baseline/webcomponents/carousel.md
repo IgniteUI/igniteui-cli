@@ -58,7 +58,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcCarouselComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcCarouselComponent } from "igniteui-webcomponents";
@@ -69,9 +69,9 @@ defineComponents(IgcCarouselComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Now that you have the Ignite UI for Web Components Carousel imported, you can start with a basic configuration of the [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html) and its slides.
+Now that you have the Ignite UI for Web Components Carousel imported, you can start with a basic configuration of the [`IgcCarouselComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent) and its slides.
 
-Use the [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html) selector to wrap your slides. The slides may feature any valid html content inside, including other components.
+Use the [`IgcCarouselComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent) selector to wrap your slides. The slides may feature any valid html content inside, including other components.
 
 ```html
 <igc-carousel>
@@ -108,7 +108,7 @@ If you want a slide to be active by default, use the `Active` attribute:
 
 ### Carousel Configuration
 
-By default, the [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html) has its [`disableLoop`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#disableLoop) property set to **false** (looping occurs when the first slide comes after the last by navigating using the Next action, or when the last slide comes after the first by using the Previous action). The looping behavior can be disabled by setting the value of the [`disableLoop`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#disableLoop) property to **true**.
+By default, the [`IgcCarouselComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent) has its [`disableLoop`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=disableLoop) property set to **false** (looping occurs when the first slide comes after the last by navigating using the Next action, or when the last slide comes after the first by using the Previous action). The looping behavior can be disabled by setting the value of the [`disableLoop`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=disableLoop) property to **true**.
 
 ```html
 <igc-carousel disable-loop="true">
@@ -116,7 +116,7 @@ By default, the [`IgcCarouselComponent`](https://www.infragistics.com/products/i
 </igc-carousel>
 ```
 
-To keep track of each slide index, the carousel has indicators that are positioned at the `end` of the carousel by default. In order to change this behavior, use the [`indicatorsOrientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#indicatorsOrientation) property and assign it to `start`.
+To keep track of each slide index, the carousel has indicators that are positioned at the `end` of the carousel by default. In order to change this behavior, use the [`indicatorsOrientation`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=indicatorsOrientation) property and assign it to `start`.
 
 ```html
 <igc-carousel indicators-orientation="start">
@@ -124,7 +124,7 @@ To keep track of each slide index, the carousel has indicators that are position
 </igc-carousel>
 ```
 
-By default, the [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html) displays its navigation buttons and indicators. Use the [`hideIndicators`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#hideIndicators) property to hide the indicators and the [`hideNavigation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#hideNavigation) property to hide the navigation buttons.
+By default, the [`IgcCarouselComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent) displays its navigation buttons and indicators. Use the [`hideIndicators`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=hideIndicators) property to hide the indicators and the [`hideNavigation`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=hideNavigation) property to hide the navigation buttons.
 
 ```html
 <igc-carousel hide-navigation="true" hide-indicators="true">
@@ -132,7 +132,7 @@ By default, the [`IgcCarouselComponent`](https://www.infragistics.com/products/i
 </igc-carousel>
 ```
 
-The [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html) supports vertical mode. Use the [`vertical`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#vertical) property to enable it.
+The [`IgcCarouselComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent) supports vertical mode. Use the [`vertical`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=vertical) property to enable it.
 
 ```html
 <igc-carousel vertical="true">
@@ -142,7 +142,7 @@ The [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web
 
 ### Custom indicators
 
-To add Web Components custom carousel indicators, use the [`IgcCarouselIndicatorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselindicatorcomponent.html):
+To add Web Components custom carousel indicators, use the [`IgcCarouselIndicatorComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselIndicatorComponent):
 
 ```html
 <igc-carousel>
@@ -251,7 +251,7 @@ Animated slide transitions provide the end-users a nice experience when interact
 
 The carousel is configured to use the `slide` animation by default, but it also supports `fade` as an alternative animation.
 
-Use the [`animationType`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#animationType) property to change the animation.
+Use the [`animationType`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=animationType) property to change the animation.
 
 ```html
 <igc-carousel animation-type="fade">
@@ -259,7 +259,7 @@ Use the [`animationType`](https://www.infragistics.com/products/ignite-ui-web-co
 </igc-carousel>
 ```
 
-Setting `none` to the [`animationType`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#animationType) property disables the animations.
+Setting `none` to the [`animationType`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=animationType) property disables the animations.
 
 ### Demo
 
@@ -340,11 +340,11 @@ The carousel [animations](carousel.md#animations) are fully supported on touch d
 
 ### Automatic transitioning
 
-The [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html) can be easily configured to change the slides automatically, without any user interaction. This way you can create your own slideshow by only setting a transition interval to the [`interval`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#interval) property, which determines the amount of time in milliseconds between slides transition.
+The [`IgcCarouselComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent) can be easily configured to change the slides automatically, without any user interaction. This way you can create your own slideshow by only setting a transition interval to the [`interval`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=interval) property, which determines the amount of time in milliseconds between slides transition.
 
 > [!NOTE]
 > Hovering the mouse over any carousel content or moving keyboard focus to any of the carousel content pauses automatic transitioning. Automatic transitioning resumes when the mouse moves away from the carousel or when keyboard focus moves out of the carousel content.
-> This can be prevented by setting [`disablePauseOnInteraction`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#disablePauseOnInteraction) property to **true**.
+> This can be prevented by setting [`disablePauseOnInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=disablePauseOnInteraction) property to **true**.
 
 ```html
 <igc-carousel interval="2000" disable-pause-on-interaction="true">
@@ -358,11 +358,11 @@ Let's create a fully automated carousel with looping enabled. We will configure 
 
 To achieve this goal, we have to do the following configurations to the carousel:
 
-- enable the [`disablePauseOnInteraction`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#disablePauseOnInteraction) property
-- enable the [`hideNavigation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#hideNavigation) property
-- enable the [`vertical`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#vertical) property
-- add transition [`interval`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#interval)
-- add custom [`IgcCarouselIndicatorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselindicatorcomponent.html) for each slide
+- enable the [`disablePauseOnInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=disablePauseOnInteraction) property
+- enable the [`hideNavigation`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=hideNavigation) property
+- enable the [`vertical`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=vertical) property
+- add transition [`interval`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=interval)
+- add custom [`IgcCarouselIndicatorComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselIndicatorComponent) for each slide
 
 Our carousel will look like this in the template:
 
@@ -448,7 +448,7 @@ igc-carousel::part(indicators) {
 
 - **Attributes**
   - [aria-roledescription](https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription) set to "carousel".
-  - [aria-live](https://www.w3.org/TR/wai-aria-1.1/#aria-live) - used to set the priority with which screen reader should treat updates to live regions - the possible settings are: **off** and **polite**. The default setting is **polite** and is set to the element that serves as the container for the set of slides. When the [`interval`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html#interval) option is set and the carousel is in playing state, the **aria-live** attribute would be set to **off**.
+  - [aria-live](https://www.w3.org/TR/wai-aria-1.1/#aria-live) - used to set the priority with which screen reader should treat updates to live regions - the possible settings are: **off** and **polite**. The default setting is **polite** and is set to the element that serves as the container for the set of slides. When the [`interval`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent&member=interval) option is set and the carousel is in playing state, the **aria-live** attribute would be set to **off**.
   - [aria-label](https://www.w3.org/TR/wai-aria/states_and_properties#aria-label) (navigation buttons) - "Previous slide"/"Next slide".
 
 #### Slide component
@@ -466,12 +466,12 @@ igc-carousel::part(indicators) {
 
 ## API References
 
-- [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html)
-- [`IgcCarouselSlideComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselslidecomponent.html)
-- [`IgcCarouselIndicatorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselindicatorcomponent.html)
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html)
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html)
+- [`IgcCarouselComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent)
+- [`IgcCarouselSlideComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselSlideComponent)
+- [`IgcCarouselIndicatorComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselIndicatorComponent)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
 
 ## Additional Resources
 

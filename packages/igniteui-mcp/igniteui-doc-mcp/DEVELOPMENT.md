@@ -123,13 +123,14 @@ To use the server with an MCP client (VS Code, Claude Desktop, Cursor, etc.), ad
 Each platform (Angular, React, WebComponents, Blazor) has an **incremental pipeline** that only recompresses docs that actually changed, saving LLM API costs and time:
 
 ```
-export → inject → diff → compress (changed only) → update baseline → build:db
+export → inject → rewrite-api-urls → diff → compress (changed only) → update baseline → build:db
 ```
 
 | Step | Input | Output | Requires API |
 |------|-------|--------|:---:|
 | Export | Source docs (docfx/xplat) | `dist/docs_processing/<platform>/` | No |
 | Inject | `dist/docs_processing/<platform>/` | `dist/docs_prepeared/<platform>/` | No |
+| Rewrite API Links | `dist/docs_prepeared/<platform>/` (in place) | `dist/docs_prepeared/<platform>/` + `_rewrite_log.csv` | No |
 | Diff | `dist/docs_prepeared/<platform>/` vs `docs_baseline/<platform>/` | `dist/diff-manifest.json` | No |
 | Compress | `dist/docs_prepeared/<platform>/` (changed only) | `dist/docs_final/<platform>/` | Yes |
 | Update Baseline | `dist/docs_prepeared/<platform>/` | `docs_baseline/<platform>/` | No |
@@ -142,7 +143,9 @@ The **diff** step compares the fresh inject output against a tracked baseline (`
 
 **Inject** — Replaces `<code-view>` HTML tags with actual component source code from the platform's examples repository. Resolves samples via the `github-src` attribute. Includes a post-inject data trimming step that keeps only 3 representative items from large data arrays and replaces the rest with `// ... N more items`, preventing individual files from exceeding 300KB.
 
-**Compress** — Sends each doc through an LLM with a platform-specific system prompt to reduce size by ~50% while preserving structure, code examples, and API references. Each platform's prompt specifies the correct component prefix (`Igx`/`Igr`/`Igc`/`Igb`), naming conventions, code block languages, and comment syntax. Counts tokens per file via `js-tiktoken` and writes `_compression_log.csv` and `_compression_stats.json` alongside output. When run with `--manifest`, only processes files listed as changed or added.
+**Rewrite API Links** — Deterministically replaces `https://www.infragistics.com/.../classes/...html` URLs with `mcp:get_api_reference?platform=<p>&component=<C>[&member=<m>]` references that the MCP server resolves at call time. Handles all four URL shapes per platform (bare `/docs/` and `/api/docs/` with package prefixes, Blazor FQN `.html`, Web Components `dock-manager` subpath) and decodes docfx synthetic anchors (e.g. `#IgniteUI_Blazor_Controls_IgbGrid_Sort` → `member=Sort`). Recovers PascalCase canonical names from lowercased URL segments via the `ApiDocLoader` index. Sass/theming mixin URLs, MDN, and other non-API links pass through untouched. Writes `_rewrite_log.csv` listing any unknown-component skips. See `docs/url_rewrite_plan.md`.
+
+**Compress** — Sends each doc through an LLM with a platform-specific system prompt to reduce size by ~50% while preserving structure, code examples, and API references. Each platform's prompt specifies the correct component prefix (`Igx`/`Igr`/`Igc`/`Igb`), naming conventions, code block languages, and comment syntax. The prompt also requires `mcp:get_api_reference?…` URIs to be preserved verbatim so the rewritten refs survive compression. Counts tokens per file via `js-tiktoken` and writes `_compression_log.csv` and `_compression_stats.json` alongside output. When run with `--manifest`, only processes files listed as changed or added.
 
 **Update Baseline** — Copies successfully compressed prepared docs to `docs_baseline/<platform>/` and removes deleted files. This tracked baseline enables the diff step on subsequent runs. On the first run (or with `--full`), all prepared files are copied.
 
@@ -174,6 +177,7 @@ npm run pipeline:blazor:full
 # Angular
 npm run export:angular           # parse toc.yml, expand grid templates, inject metadata
 npm run inject:angular           # replace <code-view> tags with TS/HTML/SCSS source code
+npm run rewrite-api-urls:angular      # replace infragistics.com API URLs with mcp:get_api_reference refs
 npm run diff:angular             # compare against baseline, output diff-manifest.json
 npm run compress:angular         # LLM-compress docs (~50% reduction, Igx prefix)
 npm run update-baseline:angular  # sync baseline with freshly processed docs
@@ -183,6 +187,7 @@ npm run validate:angular         # LLM-as-Judge quality scoring
 npm run build:xplat-blazor       # run xplat gulp build for Blazor
 npm run export:blazor            # flatten built docs, filter by toc.json, inject metadata
 npm run inject:blazor            # replace <code-view> tags with Razor/C#/CSS source code
+npm run rewrite-api-urls:blazor       # replace infragistics.com API URLs with mcp:get_api_reference refs
 npm run diff:blazor              # compare against baseline, output diff-manifest.json
 npm run compress:blazor          # LLM-compress docs (~50% reduction, Igb prefix)
 npm run update-baseline:blazor   # sync baseline with freshly processed docs
@@ -192,6 +197,7 @@ npm run validate:blazor          # LLM-as-Judge quality scoring
 npm run build:xplat-react        # run xplat gulp build for React
 npm run export:react             # flatten built docs, filter by toc.json, inject metadata
 npm run inject:react             # replace <code-view> tags with TSX/CSS source code
+npm run rewrite-api-urls:react        # replace infragistics.com API URLs with mcp:get_api_reference refs
 npm run diff:react               # compare against baseline, output diff-manifest.json
 npm run compress:react           # LLM-compress docs (~50% reduction, Igr prefix)
 npm run update-baseline:react    # sync baseline with freshly processed docs
@@ -201,6 +207,7 @@ npm run validate:react           # LLM-as-Judge quality scoring
 npm run build:xplat-wc           # run xplat gulp build for WebComponents
 npm run export:webcomponents     # flatten built docs, filter by toc.json, inject metadata
 npm run inject:webcomponents     # replace <code-view> tags with HTML/TS/CSS source code
+npm run rewrite-api-urls:webcomponents # replace infragistics.com API URLs with mcp:get_api_reference refs
 npm run diff:webcomponents       # compare against baseline, output diff-manifest.json
 npm run compress:webcomponents   # LLM-compress docs (~50% reduction, Igc prefix)
 npm run update-baseline:webcomponents  # sync baseline with freshly processed docs
@@ -234,6 +241,41 @@ npx tsx scripts/inject-angular-docs.ts
 ```
 
 No CLI parameters.
+
+### rewrite-api-links.ts
+
+Deterministically rewrites `infragistics.com` API documentation URLs in the prepared docs into `mcp:get_api_reference?...` references resolvable by the MCP server's `get_api_reference` tool. One shared script handles all four platforms; only the URL regex differs per platform. Loads the platform's `ApiDocLoader` once to build a `lowercase → canonical` component-name index, so lowercased URL segments like `igxgridcomponent` come back as `IgxGridComponent`. Fragments are passed through as `&member=<name>` (Blazor docfx synthetic anchors are decoded to bare member names — `#IgniteUI_Blazor_Controls_IgbGrid_Sort` → `member=Sort`). Sass/theming mixin URLs, MDN, and other non-API links pass through untouched. Doc-page URLs under `/components/...` are also skipped — only `/classes/`, `/interfaces/`, and `/enums/` paths are matched.
+
+```bash
+npm run rewrite-api-urls:angular
+npm run rewrite-api-urls:react
+npm run rewrite-api-urls:webcomponents
+npm run rewrite-api-urls:blazor
+# or directly:
+npx tsx scripts/rewrite-api-links.ts --platform <platform> [options]
+```
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `--platform <name>` | **(Required)** Platform to rewrite (`angular`, `react`, `webcomponents`, `blazor`) | none |
+| `--input <dir>` | Override input directory | `dist/docs_prepeared/<platform>/` |
+| `--dry-run` | Count and print rewrites without writing files | off |
+
+**Output:** rewrites files in place. Writes `_rewrite_log.csv` listing any URLs that were skipped because their component segment could not be resolved against the API index (columns: `file,url,reason`). Prints a summary line: `rewrote <N> links across <K> files; <M> skipped (unknown component)`.
+
+**Example output rewrite:**
+
+```
+- [IgcCheckbox](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#checked)
+```
+
+becomes
+
+```
+- [IgcCheckbox](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=checked)
+```
+
+See `docs/url_rewrite_plan.md` for the full design — URL patterns per platform, fragment-handling rules, and the matching `member` extension to `get_api_reference` (Part 1) that consumes these refs.
 
 ### compress-angular-docs.ts / compress-react-docs.ts / compress-wc-docs.ts / compress-blazor-docs.ts
 
@@ -504,7 +546,7 @@ npx @modelcontextprotocol/inspector ig mcp           # via CLI (after build:mcp-
 | `get_doc` | `framework` (required), `name` (required) | Return full markdown content of a specific doc. `name` is without `.md` extension |
 | `search_docs` | `query` (required), `framework` (required) | FTS4 full-text search with Porter stemming. Returns top 20 results with snippet excerpts |
 | `get_project_setup_guide` | `framework` (required) | Return setup guides for creating a new Ignite UI project. For Angular/React/WC: CLI docs. For Blazor: dotnet + NuGet guides |
-| `get_api_reference` | `framework` (required), `name` (required) | Retrieve the full API reference for a component or class. Returns formatted markdown with properties, methods, and events |
+| `get_api_reference` | `platform` (required), `component` (required), `section?`, `member?` | Retrieve API reference for a component or class. With no optional args, returns the full entry. Pass `section="properties\|methods\|events"` for one section, or `member="<name>"` to return just one property/method/event line. `member` takes precedence over `section`. Also tolerates `component="Name#member"` shorthand. |
 | `search_api` | `framework` (required), `query` (required) | Search API entries by keyword, feature, or partial component name. Returns up to 10 results ranked by match count |
 
 #### get_project_setup_guide
@@ -527,6 +569,33 @@ Returns framework-specific setup guides for creating a new Ignite UI project.
 {
   "framework": "angular"
 }
+```
+
+#### get_api_reference — member-targeted lookup
+
+`get_api_reference` accepts an optional `member` parameter that returns just one property, method, or event line from the API entry instead of the full document. This is what the `rewrite-api-urls` step generates refs for — `mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=checked` resolves to a ~130-character response instead of the ~1.2 KB full entry.
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `platform` | Yes | `angular`, `react`, `webcomponents`, or `blazor` |
+| `component` | Yes | Exact component or class name (case-insensitive). Also accepts `Name#member` shorthand — the `#member` suffix is split off into the `member` field when `member` is not already supplied. |
+| `section` | No | `properties`, `methods`, `events`, or `all` (default). Ignored when `member` is set. |
+| `member` | No | Property/method/event name (e.g. `checked`, `click`, `igcChange`). Returns one line. Returns `isError` if the member is not found. |
+
+**Examples:**
+
+```json
+// Full entry
+{ "platform": "webcomponents", "component": "IgcCheckboxComponent" }
+
+// One section only
+{ "platform": "angular", "component": "IgxGridComponent", "section": "events" }
+
+// One member only
+{ "platform": "webcomponents", "component": "IgcCheckboxComponent", "member": "checked" }
+
+// Shorthand — same effect as the previous example
+{ "platform": "webcomponents", "component": "IgcCheckboxComponent#checked" }
 ```
 
 ## Directory Structure
@@ -553,6 +622,7 @@ igniteui-doc-mcp/
   scripts/                          # Pipeline scripts
     build-db.ts                     # Build SQLite DB from compressed docs
     diff-docs.ts                    # Compare prepared docs against baseline (SHA-256)
+    rewrite-api-links.ts            # Rewrite infragistics.com API URLs → mcp:get_api_reference refs
     update-baseline.ts              # Sync baseline after successful compression
   src/                              # MCP server source
     index.ts                        # MCP server (sql.js + FTS4 queries)
@@ -583,6 +653,7 @@ igniteui-doc-mcp/
 | `docs/db.md` | SQLite + FTS4 database integration (implemented) |
 | `docs/batch-compression.md` | OpenAI Batch API for compression — 50% cost reduction (implemented) |
 | `docs/incremental-processing.md` | Incremental processing design — diff-based compression to skip unchanged docs (implemented) |
+| `docs/url_rewrite_plan.md` | URL → MCP-ref rewriter — `member`-aware `get_api_reference` + deterministic link rewrite step (implemented) |
 | `docs/impl_plan.md` | Code-view injection plan |
 | `docs/toc_based_processing.md` | TOC-based file selection plan |
 | `docs/prefix_fix.md` | Angular prefix fix plan |

@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Hierarchical Grid Toolbar
 
-The Ignite UI for Web Components Toolbar in is a container for UI operations in the Web Components Hierarchical Grid. The Web Components toolbar is located at the top of the Web Components component, i.e., the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) and it matches its horizontal size. The toolbar container can host any custom content or set of predefined UI controls. The default set for the Web Components Hierarchical Grid includes:
+The Ignite UI for Web Components Toolbar in is a container for UI operations in the Web Components Hierarchical Grid. The Web Components toolbar is located at the top of the Web Components component, i.e., the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) and it matches its horizontal size. The toolbar container can host any custom content or set of predefined UI controls. The default set for the Web Components Hierarchical Grid includes:
 
 - Column Hiding
 - Column Pinning
@@ -226,7 +226,7 @@ Toolbar Advanced Filtering component provides the default UI for the Advanced Fi
 <!-- ComponentStart: HierarchicalGrid -->
 
 > [!Note]
-> When exporting the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) or any of its child grids down the hierarchy, the exported data will be a flat collection of rows
+> When exporting the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) or any of its child grids down the hierarchy, the exported data will be a flat collection of rows
 > belonging to their respective grid (the child grids will not be included in the exported data).
 
 <!-- ComponentEnd: HierarchicalGrid -->
@@ -3521,7 +3521,7 @@ The Grid Toolbar service has a few more APIs to explore, which are listed below.
 - [`IgcGridToolbarPinning`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarpinning.html)
 - [`IgcGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitle.html)
 
-[`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) Events:
+[`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) Events:
 
 - `ToolbarExporting`
 

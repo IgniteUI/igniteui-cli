@@ -120,16 +120,16 @@ export class HGridAdvancedFilteringSampleComponent implements AfterViewInit{
 ```
 <div class="divider--half"></div>
 ## Interaction
-In order to open the advanced filtering dialog, the **Advanced Filtering** button in the grid toolbar should be clicked. The dialog is using the [`IgxQueryBuilder`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxquerybuildercomponent.html) component to generate,display and edit the filtering logic. You can have a look at the [`Query Builder topic`](../query-builder.md#getting-started-with-ignite-ui-for-angular-query-builder) for details on the interaction process.
+In order to open the advanced filtering dialog, the **Advanced Filtering** button in the grid toolbar should be clicked. The dialog is using the [`IgxQueryBuilder`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent) component to generate,display and edit the filtering logic. You can have a look at the [`Query Builder topic`](../query-builder.md#getting-started-with-ignite-ui-for-angular-query-builder) for details on the interaction process.
 In order to filter the data once you are ready with creating the filtering conditions and groups, you should click the **Apply** button. If you have modified the advanced filter, but you don't want to preserve the changes, you should click the **Cancel** button. You could also clear the advanced filter by clicking the **Clear Filter** button.
 ## Usage
-To enable the advanced filtering, the [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#allowAdvancedFiltering) input property should be set to `true`.
+To enable the advanced filtering, the [`allowAdvancedFiltering`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=allowAdvancedFiltering) input property should be set to `true`.
 ```html
 <igx-hierarchical-grid [data]="data" [autoGenerate]="true" [allowAdvancedFiltering]="true">
     <igx-grid-toolbar></igx-grid-toolbar>
 </igx-hierarchical-grid>
 ```
-The advanced filtering generates a [`FilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/filteringexpressionstree.html) which is stored in the [`advancedFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#advancedFilteringExpressionsTree) input property. You could use this property to set an initial state of the advanced filtering.
+The advanced filtering generates a [`FilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) which is stored in the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=advancedFilteringExpressionsTree) input property. You could use this property to set an initial state of the advanced filtering.
 ```TypeScript
 ngAfterViewInit(): void {
     const tree = new FilteringExpressionsTree(FilteringLogic.Or);
@@ -156,7 +156,7 @@ ngAfterViewInit(): void {
     this.hierarchicalGrid.advancedFilteringExpressionsTree = tree;
 }
 ```
-The advanced filtering in the `IgxHierarchicalGrid` can be used to filter root grid data based on child grids data using the _IN / NOT-IN_ operators. This way, subqueries can be created to define more complex filtering logic. More information about this functionality can be found in [`Query Builder's Using Sub-Queries section`](../query-builder-model.md#using-sub-queries). Here's a sample [`FilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/filteringexpressionstree.html) with a subquery:
+The advanced filtering in the `IgxHierarchicalGrid` can be used to filter root grid data based on child grids data using the _IN / NOT-IN_ operators. This way, subqueries can be created to define more complex filtering logic. More information about this functionality can be found in [`Query Builder's Using Sub-Queries section`](../query-builder-model.md#using-sub-queries). Here's a sample [`FilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) with a subquery:
 ```TypeScript
 ngAfterViewInit(): void {
     const albumsTree = new FilteringExpressionsTree(FilteringLogic.And, undefined, 'Albums', ['Artist']);
@@ -176,8 +176,8 @@ ngAfterViewInit(): void {
     this.hierarchicalGrid.advancedFilteringExpressionsTree = tree;
 }
 ```
-If remote data is used, the [`schema`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#schema) property of the `IgxHierarchicalGrid` should be set. Please refer to [`Load on Demand`](../hierarchicalgrid/load-on-demand.md) topic for detailed guidance.
-In case you don't want to show the Hierarchical Grid toolbar, you could use the [`openAdvancedFilteringDialog`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#openAdvancedFilteringDialog) and [`closeAdvancedFilteringDialog`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#closeAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
+If remote data is used, the [`schema`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=schema) property of the `IgxHierarchicalGrid` should be set. Please refer to [`Load on Demand`](../hierarchicalgrid/load-on-demand.md) topic for detailed guidance.
+In case you don't want to show the Hierarchical Grid toolbar, you could use the [`openAdvancedFilteringDialog`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=openAdvancedFilteringDialog) and [`closeAdvancedFilteringDialog`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=closeAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
 >[!NOTE]
 >You can enable both the `quickFilter`/`excelStyleFilter` and the advanced filtering user interfaces in the Hierarchical Grid. Both filtering user interfaces will work independently of one another. The final filtered result in the Hierarchical Grid is the intersection between the results of the two filters.
 ## External Advanced filtering
@@ -272,7 +272,7 @@ export class HGridExternalAdvancedFilteringComponent {
 }
 ```
 ### Usage
-It's super easy to configure the advanced filtering to work outside of the Hierarchical Grid. All you need to do is to create the dialog and set its [`grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbaradvancedfilteringcomponent.html#grid) property:
+It's super easy to configure the advanced filtering to work outside of the Hierarchical Grid. All you need to do is to create the dialog and set its [`grid`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarAdvancedFilteringComponent&member=grid) property:
 ```html
 <igx-advanced-filtering-dialog [grid]="hierarchicalGrid">
 </igx-advanced-filtering-dialog>
@@ -286,7 +286,7 @@ To get started with styling the Advanced Filtering dialog, we need to import the
 // IMPORTANT: Prior to Ignite UI for Angular version 13 use:
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
-Since the Advanced Filtering dialog uses the [`IgxQueryBuilder`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxquerybuildercomponent.html) component, you can use the [`query-builder-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#query-builder-theme) to style it. To style the header title, you can create a custom theme that extends the [`query-builder-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#query-builder-theme) and set the `$header-foreground` parameter.
+Since the Advanced Filtering dialog uses the [`IgxQueryBuilder`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent) component, you can use the [`query-builder-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#query-builder-theme) to style it. To style the header title, you can create a custom theme that extends the [`query-builder-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#query-builder-theme) and set the `$header-foreground` parameter.
 ```scss
 $custom-query-builder: query-builder-theme(
   $header-foreground: #512da8
@@ -417,8 +417,8 @@ $custom-query-builder: query-builder-theme(
 <div class="divider--half"></div>
 ## API References
 <div class="divider--half"></div>
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
-- [IgxHierarchicalGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [IgxHierarchicalGridComponent API](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
 - [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

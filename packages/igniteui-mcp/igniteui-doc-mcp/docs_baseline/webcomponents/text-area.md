@@ -22,7 +22,7 @@ The Ignite UI for Web Components Text Area represents a multi-line plain-text ed
 
 ## Dependencies
 
-To get started we need to import the [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) in our typescript file and register the component by calling the [defineComponents()](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/index.html#defineComponents) function as follows:
+To get started we need to import the [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) in our typescript file and register the component by calling the [defineComponents()](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/index.html#defineComponents) function as follows:
 
 ```ts
 import { defineComponents, IgcTextareaComponent } from 'igniteui-webcomponents';
@@ -33,7 +33,7 @@ defineComponents(IgcTextareaComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-After we import the [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) component we are ready to start using it, so let's add our first Text Area.
+After we import the [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) component we are ready to start using it, so let's add our first Text Area.
 
 ```html
 <igc-textarea rows="5" label="Tell us your story:">It was a dark and stormy night...</igc-textarea>
@@ -50,7 +50,7 @@ With `prefix` and `suffix` slots we can add different content before and after t
 
 ## Text Area Resizing
 
-There are three different resize options of the [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html). When set to `none`, the text area does not resize and uses a scroll bar to show overflow text. When set to `vertical` (the default option), the text area lets the user resize it vertically. When set to `auto`, the text area shows all the user input at once. Overflow text wraps onto a new line and expands the text area automatically.
+There are three different resize options of the [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent). When set to `none`, the text area does not resize and uses a scroll bar to show overflow text. When set to `vertical` (the default option), the text area lets the user resize it vertically. When set to `auto`, the text area shows all the user input at once. Overflow text wraps onto a new line and expands the text area automatically.
 
 ```css
 /* shared styles are loaded from: */
@@ -63,11 +63,11 @@ There are three different resize options of the [`IgcTextareaComponent`](https:/
 }
 ```
 
-The full list of attributes of the text area can be found in [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) API.
+The full list of attributes of the text area can be found in [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) API.
 
 ## Form Integration
 
-The sample below shows how a [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) could be integrated into a form.
+The sample below shows how a [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) could be integrated into a form.
 
 ```css
 /* shared styles are loaded from: */
@@ -79,7 +79,7 @@ The sample below shows how a [`IgcTextareaComponent`](https://www.infragistics.c
 
 ## Styling
 
-The [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -134,9 +134,9 @@ igc-textarea::part(suffix) {
 
 ## API References
 
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
-- [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html)
-- [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+- [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent)
+- [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

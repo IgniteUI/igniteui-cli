@@ -26,7 +26,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcRippleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcripplecomponent.html), you need to register it as follows:
+Before using the [`IgcRippleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcRippleComponent } from "igniteui-webcomponents";
@@ -37,7 +37,7 @@ defineComponents(IgcRippleComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcRippleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcripplecomponent.html) is as follows:
+The simplest way to start using the [`IgcRippleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent) is as follows:
 
 ```html
 <igc-button>
@@ -46,7 +46,7 @@ The simplest way to start using the [`IgcRippleComponent`](https://www.infragist
 </igc-button>
 ```
 
-You can add the [`IgcRippleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcripplecomponent.html) component to any web element as long as its CSS `position` property is set to any other value than `static`;
+You can add the [`IgcRippleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent) component to any web element as long as its CSS `position` property is set to any other value than `static`;
 
 ## Examples
 
@@ -72,8 +72,8 @@ igc-ripple {
 
 ## API References
 
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html)
-- [`IgcRippleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcripplecomponent.html)
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
+- [`IgcRippleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

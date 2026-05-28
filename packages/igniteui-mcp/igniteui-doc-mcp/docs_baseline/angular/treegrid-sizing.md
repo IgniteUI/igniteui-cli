@@ -8,14 +8,14 @@ _tocName: Sizing
 _premium: true
 ---
 # Angular Grid Sizing
-There are many different ways to size the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) in order to accommodate a lot of scenarios that the users can have. While some are straight forward, others might be more complex and that is why we will take each one and look into them in more depth. We will go through setting `width` and `height` separately since there are some differences e.g. when using percentages for each.
-When it comes to border and padding size for the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html), they are taken into its width/height size calculations or also known as [Border box](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing) sizing. It is applied in all scenarios.
+There are many different ways to size the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) in order to accommodate a lot of scenarios that the users can have. While some are straight forward, others might be more complex and that is why we will take each one and look into them in more depth. We will go through setting `width` and `height` separately since there are some differences e.g. when using percentages for each.
+When it comes to border and padding size for the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent), they are taken into its width/height size calculations or also known as [Border box](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing) sizing. It is applied in all scenarios.
 > [!Note]
-> If the Border box sizing is overridden by the user we cannot guarantee that the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) will size correctly.
+> If the Border box sizing is overridden by the user we cannot guarantee that the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) will size correctly.
 ## Width
-If the `width` input does not have value assigned, its default value is `100%` and the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) tries to fill the available space. You can check how the grid reacts to it in the `Percentages` section.
+If the `width` input does not have value assigned, its default value is `100%` and the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) tries to fill the available space. You can check how the grid reacts to it in the `Percentages` section.
 > [!Note]
-> Setting manually the `width` style of the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) itself will result in an unexpected behavior.
+> Setting manually the `width` style of the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) itself will result in an unexpected behavior.
 ### Null
 The grid's `width` can accepts value of `null`, which when set, renders all columns in the DOM. The grid sizes accordingly so there is no grid horizontal scrollbar since column virtualization is not applied.
 - If there are 6 columns and none of them has width defined, the grid will have `width` of `816px`, because each column by default have assigned `width` of `136px` in this scenario. Same will happen if the columns have `width` in percentages. If vertical scrollbar is rendered or there are features that render additional columns their width will be added also.
@@ -33,16 +33,16 @@ The grid's `width` can accepts value of `null`, which when set, renders all colu
 > [!Note]
 > Due to this behavior, if the grid data contains too many columns, it might have significant impact on the browser performance, since all columns would be rendered without virtualization.
 ### Pixels
-When the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) `width` input is set to pixels it will set the whole grid size to that value and it will be static. It will not react to any browser resizing or changes in the DOM, although this is not the case for the grid content:
+When the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) `width` input is set to pixels it will set the whole grid size to that value and it will be static. It will not react to any browser resizing or changes in the DOM, although this is not the case for the grid content:
 - When width is set in pixels in order for the grid to render horizontal scrollbar, its content width needs to exceed the specified grid `width`. Let's, for example, have the combined width of the columns exceed `1200px`. In this case a horizontal scrollbar will be rendered.
 
     <img src="../../images/grid_sizing/width-cols-scrollbar-v2.jpg" alt="Width Cols Scrollbar" style="width: 80%"/>
-- For scenarios where the grid has a parent element, it depends on the parent styling if it will render scrollbar or not. Everything else related to the grid itself is still retained. If the parent element width is smaller than the grid's width and has overflow style set to `auto` or `scroll`, it will render scrollbar natively. For example, if the parent has `width` set to `1000px` and the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) `width` is still `1200px`, it will look similar to the following illustrations:
+- For scenarios where the grid has a parent element, it depends on the parent styling if it will render scrollbar or not. Everything else related to the grid itself is still retained. If the parent element width is smaller than the grid's width and has overflow style set to `auto` or `scroll`, it will render scrollbar natively. For example, if the parent has `width` set to `1000px` and the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) `width` is still `1200px`, it will look similar to the following illustrations:
 
     <img src="../../images/grid_sizing/width-cols-scroll-parent-noscroll-v2.jpg" alt="Width Cols Scroll Parent No Scroll" style="width: 80%"/>
     <img src="../../images/grid_sizing/width-cols-scroll-parent-scroll-v2.jpg" alt="Width Cols Scroll Parent Scroll" style="width: 80%"/>
 ### Percentages
-When the `width` of the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) is set to percentages it will size the grid according to the parent element's width. If the parent element does not have width specified the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) will size relative to the browser window.
+When the `width` of the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) is set to percentages it will size the grid according to the parent element's width. If the parent element does not have width specified the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) will size relative to the browser window.
 - For example, if we set the grid `width` input to `100%` and there is no parent element it will fill 100% of the available width of the browser window. If it is resized the grid will resize as well accordingly.
 
     <img src="../../images/grid_sizing/width-percent-100p-v2.jpg" alt="Width Percent 100%" style="width: 80%"/>
@@ -54,11 +54,11 @@ When the `width` of the [**IgxTreeGrid**](https://www.infragistics.com/products/
     <img src="../../images/grid_sizing/width-percent-150p-parent-noscroll-v2.jpg" alt="Width Percent 150% Parent No Scroll" style="width: 80%"/>
     <img src="../../images/grid_sizing/width-percent-150p-parent-scroll-v2.jpg" alt="Width Percent 150% Parent Scroll" style="width: 80%"/>
 ## Height
-By default if no height is defined for the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html), it will be set to `100%`. You can check how the grid reacts depending on the DOM structure in the `Percentages` section.
+By default if no height is defined for the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent), it will be set to `100%`. You can check how the grid reacts depending on the DOM structure in the `Percentages` section.
 > [!Note]
-> Setting manually the `height` style of the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) itself will result in an unexpected behavior.
+> Setting manually the `height` style of the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) itself will result in an unexpected behavior.
 ### Null
-The [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) `height` input can accept `null` value, which when set, displays all rows with no scrollbar no matter how many they are. In this case, there is no vertical virtualization since the grid renders all rows anyway.
+The [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) `height` input can accept `null` value, which when set, displays all rows with no scrollbar no matter how many they are. In this case, there is no vertical virtualization since the grid renders all rows anyway.
 - If we have data with 14 rows in this case the grid will render all 14 of them and size the grid so all are visible without any empty space inside the grid.
 
     <img src="../../images/grid_sizing/height-null-14rows-v2.jpg" alt="Height Null 14 Rows" style="width: 80%"/>
@@ -72,7 +72,7 @@ The [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/do
 > [!Note]
 > Due to this behavior, if the grid data contains too many rows, it might have significant impact on the browser performance, since all rows would be rendered without virtualization.
 ### Pixels
-Setting the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) `height` in pixels is more straightforward since the grid will size to that specific size in all occasions similarly to how `width` is set in pixels.
+Setting the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) `height` in pixels is more straightforward since the grid will size to that specific size in all occasions similarly to how `width` is set in pixels.
 - If we set, for example, the height `500px` with 4 rows for our data the grid will sit to that size and since 4 rows are not enough to fill the visible area it is expected to have some empty area.
 
     <img src="../../images/grid_sizing/height-500px-4rows-v2.jpg" alt="Height 500px 4 Rows" style="width: 80%"/>
@@ -84,7 +84,7 @@ Setting the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-an
     <img src="../../images/grid_sizing/height-700px-14rows-parent-noscroll-v2.jpg" alt="Height 700px 14 Rows Parent No Scroll" style="width: 80%"/>
     <img src="../../images/grid_sizing/height-700px-14rows-parent-scroll-v2.jpg" alt="Height 700px 14 Rows Parent Scroll" style="width: 80%"/>
 ### Percentages
-When the `height` input is set to percentages the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) will size based on the parent element height. If the parent element has its `height` set in pixels or percentages, the grid will size relative to the size of the parent.
+When the `height` input is set to percentages the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) will size based on the parent element height. If the parent element has its `height` set in pixels or percentages, the grid will size relative to the size of the parent.
 When the parent element does not have defined height, the browser does not assign height to it initially and sizes it based on its children and their size. That is why there is no way for the grid to know what base height to use in order to apply percentage sizing based on it. For this reason, it will render a maximum of 10 rows and if they are more rows, a vertical scrollbar will be rendered. Otherwise, the grid will fit to number of rendered rows. We will look in this scenario in more detail in the next examples.
 Let's have `width` set to `1200px` and the parent element not having any size applied to it:
 - If there are less than 10 rows the grid will try to fit all rows in the `visible area without having an empty space between the last row and the bottom of the visible area. For example, let's have the grid data to consist of 7 rows. The grid will render all 7 rows without vertical scrollbar and without empty space inside the grid.
@@ -93,10 +93,10 @@ Let's have `width` set to `1200px` and the parent element not having any size ap
 - If there are more than 10 rows a vertical scrollbar will be rendered for the rest of the rows and only 10 rows can be visible at any time. In the next example only the row number is increased to 14.
 
     <img src="../../images/grid_sizing/height-undefined-14rows-v2.jpg" alt="Height Undefined 14 Rows" style="width: 80%"/>
-- If we set the parent element height to `800px` and the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) to `100%` height this means that the grid will be sized to 100 percentages of `800px`.
+- If we set the parent element height to `800px` and the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) to `100%` height this means that the grid will be sized to 100 percentages of `800px`.
 
     <img src="../../images/grid_sizing/height-percent-100-parent-800px-v2.jpg" alt="Height Percent 100% Parent 800px" style="width: 80%"/>
-- If the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) `height` is set to a number bigger than `100%` and the parent element has height, for the parent to render scrollbar it again needs to have `overflow` set to `auto` or `scroll`. Otherwise the grid will be fully visibly and size relative to the parent size.
+- If the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) `height` is set to a number bigger than `100%` and the parent element has height, for the parent to render scrollbar it again needs to have `overflow` set to `auto` or `scroll`. Otherwise the grid will be fully visibly and size relative to the parent size.
 
     <img src="../../images/grid_sizing/height-percent-130p-parent-noscroll-v2.jpg" alt="Height Percent 130% Parent No Scroll" style="width: 80%"/>
     <img src="../../images/grid_sizing/height-percent-130p-parent-scroll-v2.jpg" alt="Height Percent 130% Parent Scroll" style="width: 80%"/>
@@ -108,7 +108,7 @@ Depending on the grid size itself, the columns inside it can also be sized diffe
 ### Default
 By default when a column doesn't have a specified width it will try to autosize, so that it fills if any empty space is available in the grid view area. Autosized columns have minimum width of `136px`, so if the area available is less than `136px` for that column, it will default to that size.
 When the grid is resized in these scenarios, the column width is also updated to reflect the changes, so it fills any new empty space available.
-- If a column does not have specified `width` and the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) has `width` set to `null`, it will be sized to the minimum of `136px`. This means that for a grid with `width` `null` and 6 columns that don't have width, each column will be sized to `136px`.
+- If a column does not have specified `width` and the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) has `width` set to `null`, it will be sized to the minimum of `136px`. This means that for a grid with `width` `null` and 6 columns that don't have width, each column will be sized to `136px`.
 
     <img src="../../images/grid_sizing/columns-default-gridWidth-null-v2.jpg" alt="Columns Default Grid with Width Null" style="width: 80%"/>
 - When there are multiple autosized columns they will divide the available space between each other equally. This means that if we have 6 columns and there is empty area of `1200px`, each will size to `200px`.
@@ -126,11 +126,11 @@ When the grid is resized in these scenarios, the column width is also updated to
 > [!Note]
 > Feature columns like Row Selector checkbox column and etc. fill additional space that is taken into account when autosizing columns.
 ### Pixels
-When columns have set specific `width` in pixels, they stick to that size, unless they are resized manually. Since the combined `width` of the columns is static, it can be less than the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) `width` or exceed it.
-- If the combined `width` of all columns is less than the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) `width`, there would be an empty are inside the grid that the columns wouldn't be able to fill. This is the expected behavior of the [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html). In the next example the columns have `150px` width.
+When columns have set specific `width` in pixels, they stick to that size, unless they are resized manually. Since the combined `width` of the columns is static, it can be less than the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) `width` or exceed it.
+- If the combined `width` of all columns is less than the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) `width`, there would be an empty are inside the grid that the columns wouldn't be able to fill. This is the expected behavior of the [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent). In the next example the columns have `150px` width.
 
     <img src="../../images/grid_sizing/columns-150px-empty-area-v2.jpg" alt="Columns 150px Resulting in Empty Area" style="width: 80%"/>
-- If the combined `width` of all columns is bigger than the actual [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) `width`, a horizontal scrollbar will be rendered. In the next example each of the 6 columns have width of `300px` and grid has width of `1200px`, which means that the columns combined have excess of `600px` that goes out of bounds.
+- If the combined `width` of all columns is bigger than the actual [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) `width`, a horizontal scrollbar will be rendered. In the next example each of the 6 columns have width of `300px` and grid has width of `1200px`, which means that the columns combined have excess of `600px` that goes out of bounds.
 
     <img src="../../images/grid_sizing/columns-150px-extra-area-v2.jpg" alt="Columns 150px Resulting in Extra Area" style="width: 80%"/>
 ### Auto
@@ -151,7 +151,7 @@ When columns have set `width` in percentages, their size is calculated relativel
 
     <img src="../../images/grid_sizing/columns-percent-gridWidth-null-v2.jpg" alt="Columns Percent Grid with Width Null" style="width: 80%"/>
 ## Grid Cell Spacing Control
-The [**IgxTreeGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) automatically adapts its internal spacing based on the [size](display-density.md) setting. You can further customize the padding and margins in grid header and body cells using CSS custom properties for spacing control.
+The [**IgxTreeGrid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) automatically adapts its internal spacing based on the [size](display-density.md) setting. You can further customize the padding and margins in grid header and body cells using CSS custom properties for spacing control.
 ### Global Grid Spacing
 To reduce or increase spacing across all grid cells in your application:
 ```css
@@ -219,8 +219,8 @@ While the spacing properties affect both header and body cells, you can target t
 > [!Note]
 > These spacing adjustments work in conjunction with the grid's display density. The spacing multipliers are applied to the base spacing values that are already determined by whether the grid is in compact, cozy, or comfortable density mode.
 ## API References
-- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
-_ [IgxTreeGridRow API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridrow.html)
+- [IgxTreeGridComponent API](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
+_ [IgxTreeGridRow API](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
 - [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

@@ -13,7 +13,7 @@ The Infragistics React Dock Manager provides a means to manage the layout of you
 
 ## React Dock Manager Example
 
-This example shows most functionalities and docking options of the [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html) that you can use in your application.
+This example shows most functionalities and docking options of the [`IgrDockManager`](mcp:get_api_reference?platform=react&component=IgrDockManager) that you can use in your application.
 
 ```css
 .dockManagerContent {
@@ -225,7 +225,7 @@ Once the Dock Manager is imported, you can add it on the page:
 > [!Note]
 > Since the Dock Manager component uses ShadowDOM and slots it is not supported on older browsers like Internet Explorer 11 and Edge 18 and below (non-Chromium versions).
 
-The Dock Manager has a [`layout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#layout) property, which describes the layout of the panes. To start defining a layout, you should set the [`rootPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdocumenthost.html#rootPane) property and add child panes. Here is how you can define a layout with a single content pane:
+The Dock Manager has a [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) property, which describes the layout of the panes. To start defining a layout, you should set the [`rootPane`](mcp:get_api_reference?platform=react&component=IgrDocumentHost&member=rootPane) property and add child panes. Here is how you can define a layout with a single content pane:
 
 ```tsx
 import {  IgrDockManager, IgrDockManagerPaneType, IgrSplitPaneOrientation } from 'igniteui-react-dockmanager';
@@ -248,7 +248,7 @@ this.dockManager.layout = {
 };
 ```
 
-To load the content of the panes, the Dock Manager uses [slots](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot). The [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute of the content element should match the [`contentId`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#contentId) of the content pane in the layout configuration. It is highly recommended to set width and height of the content elements to **100%** for predictable response when the end-user is resizing panes.
+To load the content of the panes, the Dock Manager uses [slots](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot). The [slot](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) attribute of the content element should match the [`contentId`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=contentId) of the content pane in the layout configuration. It is highly recommended to set width and height of the content elements to **100%** for predictable response when the end-user is resizing panes.
 
 ```tsx
 <IgrDockManager id="dockManager">
@@ -258,12 +258,12 @@ To load the content of the panes, the Dock Manager uses [slots](https://develope
 
 The Dock Manager defines several pane types:
 
-- [`IgrContentPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html)
-- [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html)
-- [`IgrTabGroupPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabgrouppane.html)
-- [`IgrDocumentHost`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdocumenthost.html)
+- [`IgrContentPane`](mcp:get_api_reference?platform=react&component=IgrContentPane)
+- [`IgrSplitPane`](mcp:get_api_reference?platform=react&component=IgrSplitPane)
+- [`IgrTabGroupPane`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane)
+- [`IgrDocumentHost`](mcp:get_api_reference?platform=react&component=IgrDocumentHost)
 
-Each type of pane has a [`size`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdocumenthost.html#size) property. Depending on the parent orientation the size may affect either the width or the height of the pane. By default, the size of a pane is relative to the sizes of its sibling panes and defaults to 100. If you have two sibling panes, where the first one has its size set to 200 and the second one - size set to 100, the first will be twice the size of the second one and these two panes would fill up all the available space. If the absolute size of their parent is 900px, they will be sized to 600px and 300px respectively. If, for certain panes, you want to specify their sizes in pixels, instead of relying on the relative distribution of all the available space, you should set the `useFixedSize` of the parent split pane.
+Each type of pane has a [`size`](mcp:get_api_reference?platform=react&component=IgrDocumentHost&member=size) property. Depending on the parent orientation the size may affect either the width or the height of the pane. By default, the size of a pane is relative to the sizes of its sibling panes and defaults to 100. If you have two sibling panes, where the first one has its size set to 200 and the second one - size set to 100, the first will be twice the size of the second one and these two panes would fill up all the available space. If the absolute size of their parent is 900px, they will be sized to 600px and 300px respectively. If, for certain panes, you want to specify their sizes in pixels, instead of relying on the relative distribution of all the available space, you should set the `useFixedSize` of the parent split pane.
 
 The end-user can perform the following actions to customize the layout at runtime:
 
@@ -275,11 +275,11 @@ The end-user can perform the following actions to customize the layout at runtim
 - Dock a floating pane
 - Maximize a pane
 
-All of these are reflected in the [`layout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#layout) property of the Dock Manager.
+All of these are reflected in the [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) property of the Dock Manager.
 
 ### Content Pane
 
-The [`IgrContentPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html) represents a pane with header and content. It can be hosted inside a Split Pane or a Tab Group Pane. Here is how a content pane is defined:
+The [`IgrContentPane`](mcp:get_api_reference?platform=react&component=IgrContentPane) represents a pane with header and content. It can be hosted inside a Split Pane or a Tab Group Pane. Here is how a content pane is defined:
 
 ```tsx
 const contentPane: IgrContentPane = {
@@ -289,7 +289,7 @@ const contentPane: IgrContentPane = {
 }
 ```
 
-The [`header`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#header) property is used to provide a text header for the content pane. This text is rendered at several places: the top content pane header, the tab header if the pane is in a tab group and the unpinned header if the pane is unpinned. You can provide a custom slot content for each of these places respectively using the [`headerId`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#headerId), [`tabHeaderId`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#tabHeaderId) and [`unpinnedHeaderId`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#unpinnedHeaderId) properties. If any of these properties is not set, the [`header`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#header) text is used. Here is how to provide a tab header slot content:
+The [`header`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=header) property is used to provide a text header for the content pane. This text is rendered at several places: the top content pane header, the tab header if the pane is in a tab group and the unpinned header if the pane is unpinned. You can provide a custom slot content for each of these places respectively using the [`headerId`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=headerId), [`tabHeaderId`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=tabHeaderId) and [`unpinnedHeaderId`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=unpinnedHeaderId) properties. If any of these properties is not set, the [`header`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=header) text is used. Here is how to provide a tab header slot content:
 
 ```tsx
 <IgrDockManager id="dockManager">
@@ -307,7 +307,7 @@ const contentPane: IgrContentPane = {
 }
 ```
 
-When a pane is unpinned, it appears as a tab header at one of the edges of the Dock Manager. If the end-user selects it, its content appears over the docked pinned panes. To unpin a content pane, set its [`isPinned`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#isPinned) property to **false**.
+When a pane is unpinned, it appears as a tab header at one of the edges of the Dock Manager. If the end-user selects it, its content appears over the docked pinned panes. To unpin a content pane, set its [`isPinned`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=isPinned) property to **false**.
 
 ```tsx
 const contentPane = {
@@ -318,17 +318,17 @@ const contentPane = {
 }
 ```
 
-The [`isPinned`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#isPinned) property affects only content panes that are docked outside a document host. Also, content panes hosted in a floating pane cannot be unpinned.
+The [`isPinned`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=isPinned) property affects only content panes that are docked outside a document host. Also, content panes hosted in a floating pane cannot be unpinned.
 
-By default, the unpin destination for a content pane is calculated automatically based on the location of the pane relative to the document host. When more than one document host is defined, the nearest one in the parent hierarchy of the unpinned content pane will be used. If there is no document host defined, the default location is used - `Left`. It is also possible to set the desired destination of the unpinned pane by using the [`unpinnedLocation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#unpinnedLocation) property.
+By default, the unpin destination for a content pane is calculated automatically based on the location of the pane relative to the document host. When more than one document host is defined, the nearest one in the parent hierarchy of the unpinned content pane will be used. If there is no document host defined, the default location is used - `Left`. It is also possible to set the desired destination of the unpinned pane by using the [`unpinnedLocation`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=unpinnedLocation) property.
 
-You can configure which end-user operations are allowed for a content pane using its [`allowClose`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#allowClose), [`allowPinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#allowPinning), [`allowDocking`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#allowDocking) and [`allowFloating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#allowFloating) properties.
+You can configure which end-user operations are allowed for a content pane using its [`allowClose`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=allowClose), [`allowPinning`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=allowPinning), [`allowDocking`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=allowDocking) and [`allowFloating`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=allowFloating) properties.
 
-When defining a content pane, you can set the [`documentOnly`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#documentOnly) property to true so the pane can be docked only in a document host.
+When defining a content pane, you can set the [`documentOnly`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=documentOnly) property to true so the pane can be docked only in a document host.
 
-To restrict the user interaction with the content pane and its content, you can set the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#disabled) property to true. This will prevent all user interactions with the pane unless it is a single floating pane. The latter could be moved, maximized or closed (according to the pane's settings for maximizing and closing), so the user can have a look at the elements under it but will not be able to interact with its content.
+To restrict the user interaction with the content pane and its content, you can set the [`disabled`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=disabled) property to true. This will prevent all user interactions with the pane unless it is a single floating pane. The latter could be moved, maximized or closed (according to the pane's settings for maximizing and closing), so the user can have a look at the elements under it but will not be able to interact with its content.
 
-By default, when you close a pane it gets removed from the [`layout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#layout) object. However, in some cases you would want to temporary hide the pane and show it later again. In order to do that without changing the [`layout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#layout) object you can use the [`hidden`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html#hidden) property of the content pane. Setting the property to **true** will hide it from the UI, but it will remain in the [`layout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#layout) object. In order to override the default close behavior you can subscribe to the `PaneClose` event like this:
+By default, when you close a pane it gets removed from the [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) object. However, in some cases you would want to temporary hide the pane and show it later again. In order to do that without changing the [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) object you can use the [`hidden`](mcp:get_api_reference?platform=react&component=IgrContentPane&member=hidden) property of the content pane. Setting the property to **true** will hide it from the UI, but it will remain in the [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) object. In order to override the default close behavior you can subscribe to the `PaneClose` event like this:
 
 ```ts
 this.dockManager.addEventListener('paneClose', ev => {
@@ -350,7 +350,7 @@ this.dockManager.addEventListener('paneClose', ev => {
 
 ### Split Pane
 
-The [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html) is a container pane which stacks all of its child [`panes`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#panes) horizontally or vertically based on its [`orientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#orientation) property. Here is how a horizontal split pane with two child content panes is defined:
+The [`IgrSplitPane`](mcp:get_api_reference?platform=react&component=IgrSplitPane) is a container pane which stacks all of its child [`panes`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=panes) horizontally or vertically based on its [`orientation`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=orientation) property. Here is how a horizontal split pane with two child content panes is defined:
 
 ```tsx
 const splitPane: IgrSplitPane = {
@@ -373,11 +373,11 @@ const splitPane: IgrSplitPane = {
 
 The split pane may contain child panes of all pane types including other split panes.
 
-By default, if the split pane is empty it is not displayed. Yet if you would like to change that behavior you can set its [`allowEmpty`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#allowEmpty) property to true and the split pane will be presented in the UI even when there is no panes inside it.
+By default, if the split pane is empty it is not displayed. Yet if you would like to change that behavior you can set its [`allowEmpty`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=allowEmpty) property to true and the split pane will be presented in the UI even when there is no panes inside it.
 
 ### Tab Group Pane
 
-The [`IgrTabGroupPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabgrouppane.html) displays its child content [`panes`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabgrouppane.html#panes) as the tabs of a tab component. Here is how a tab group pane with a content pane for each of its two tabs is defined:
+The [`IgrTabGroupPane`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane) displays its child content [`panes`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane&member=panes) as the tabs of a tab component. Here is how a tab group pane with a content pane for each of its two tabs is defined:
 
 ```tsx
 const tabGroupPane: IgrTabGroupPane = {
@@ -401,11 +401,11 @@ If there is not enough space to display all tab headers, the tab group shows **M
 
 The tabs also can be reordered without being detached from the tab group in which they are located. You can click on a tab of your choice and drag it left or right to the position you want it to be. If you drag the selected tab outside of the tabs area it will be detached into a floating pane.
 
-In case you would like the tab group pane to be displayed in the UI when it has no tabs, you can set the [`allowEmpty`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabgrouppane.html#allowEmpty) property to true.
+In case you would like the tab group pane to be displayed in the UI when it has no tabs, you can set the [`allowEmpty`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane&member=allowEmpty) property to true.
 
 ### Document Host
 
-The [`IgrDocumentHost`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdocumenthost.html) is an area of tabs for documents, similar to the one in Visual Studio for code editing and design view. Here is how to define a document host with two document tabs:
+The [`IgrDocumentHost`](mcp:get_api_reference?platform=react&component=IgrDocumentHost) is an area of tabs for documents, similar to the one in Visual Studio for code editing and design view. Here is how to define a document host with two document tabs:
 
 ```tsx
 const docHost: IgrDocumentHost = {
@@ -436,7 +436,7 @@ const docHost: IgrDocumentHost = {
 
 ### Floating Pane
 
-The floating pane is a split pane rendered above all other ones in a floating window. The floating pane definitions are stored in the [`floatingPanes`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanagerlayout.html#floatingPanes) property of the [`layout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#layout). Here is how to add a floating pane with a single content pane inside:
+The floating pane is a split pane rendered above all other ones in a floating window. The floating pane definitions are stored in the [`floatingPanes`](mcp:get_api_reference?platform=react&component=IgrDockManagerLayout&member=floatingPanes) property of the [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout). Here is how to add a floating pane with a single content pane inside:
 
 ```tsx
 const layout: IgrDockManagerLayout = {
@@ -463,14 +463,14 @@ const layout: IgrDockManagerLayout = {
 };
 ```
 
-The [`floatingLocation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#floatingLocation), [`floatingWidth`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#floatingWidth) and [`floatingHeight`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#floatingHeight) properties represent absolute dimensions in pixels. Please note that these properties are applied only for the split panes in the [`floatingPanes`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanagerlayout.html#floatingPanes) array.
+The [`floatingLocation`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=floatingLocation), [`floatingWidth`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=floatingWidth) and [`floatingHeight`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=floatingHeight) properties represent absolute dimensions in pixels. Please note that these properties are applied only for the split panes in the [`floatingPanes`](mcp:get_api_reference?platform=react&component=IgrDockManagerLayout&member=floatingPanes) array.
 
-With the [`floatingResizable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#floatingResizable) and
-[`allowFloatingPanesResize`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#allowFloatingPanesResize) you can set whether resizing floating panes is allowed. The `allowFloatingPanesResize` is an **IgcDockManagerComponent** property, so if the value is set to **false** none of the floating panes can be resized. The `floatingResizable` property can be applied separately on each split pane in the `floatingPanes` array and if the property value is not set, it defaults to the value of the `allowFloatingPanesResize` property. If the `floatingResizable` property is set for a specific pane, its value takes precedence over the `allowFloatingPanesResize` property value.
+With the [`floatingResizable`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=floatingResizable) and
+[`allowFloatingPanesResize`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=allowFloatingPanesResize) you can set whether resizing floating panes is allowed. The `allowFloatingPanesResize` is an **IgcDockManagerComponent** property, so if the value is set to **false** none of the floating panes can be resized. The `floatingResizable` property can be applied separately on each split pane in the `floatingPanes` array and if the property value is not set, it defaults to the value of the `allowFloatingPanesResize` property. If the `floatingResizable` property is set for a specific pane, its value takes precedence over the `allowFloatingPanesResize` property value.
 
 ### Active Pane
 
-The Dock Manager component highlights the content pane which contains the focus and exposes it in its [`activePane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#activePane) property. You can programmatically change the active pane by setting the property. You can also listen for changes of the [`activePane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#activePane) property by subscribing to the `ActivePaneChanged` event:
+The Dock Manager component highlights the content pane which contains the focus and exposes it in its [`activePane`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=activePane) property. You can programmatically change the active pane by setting the property. You can also listen for changes of the [`activePane`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=activePane) property by subscribing to the `ActivePaneChanged` event:
 
 ```ts
 this.dockManager.addEventListener('activePaneChanged', ev => {
@@ -492,7 +492,7 @@ When you start dragging a floating pane, different docking indicators will appea
 
 #### Root Docking
 
-In this type of docking while dragging a pane, four arrow docking indicators will appear close to the four edges of the dock manager. Once released, the dragged pane will become a direct child of the Dock Manager's [`rootPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdocumenthost.html#rootPane). Visually, the newly docked pane will snap into place at the respective edge and occupy up to half of the dock manager's width or height, shifting all the other content to the other half.
+In this type of docking while dragging a pane, four arrow docking indicators will appear close to the four edges of the dock manager. Once released, the dragged pane will become a direct child of the Dock Manager's [`rootPane`](mcp:get_api_reference?platform=react&component=IgrDocumentHost&member=rootPane). Visually, the newly docked pane will snap into place at the respective edge and occupy up to half of the dock manager's width or height, shifting all the other content to the other half.
 
 <img class="responsive-img" src="../../images/dockmanager-root-docking.jpg" alt="dockmanager-root-docking" />
 
@@ -553,7 +553,7 @@ this.dockManager.layout = { ...this.dockManager.layout };
 
 ### Save/Load Layout
 
-To restore or persist a layout, you simply have to get/set the value of the [`layout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#layout) property. Here is how to save the layout as a stringified JSON:
+To restore or persist a layout, you simply have to get/set the value of the [`layout`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=layout) property. Here is how to save the layout as a stringified JSON:
 
 ```ts
 private savedLayout: string;
@@ -2066,13 +2066,13 @@ The Dock Manager comes with a light and a dark theme. The light theme is the def
 
 The Dock Manager lets you localize the strings used in context menus, tooltips, and ARIA attributes. By default, it reads the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute from the root `<html>` element to determine which language to use. If the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute is missing or set to an unsupported value, the Dock Manager uses [English (en)](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/index.html#IgcDockManagerResourceStringsEN).
 
-The Dock Manager also exposes a [`resourceStrings`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#resourceStrings) property that you can use to modify individual strings directly. When you set the [`resourceStrings`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#resourceStrings) property, the Dock Manager uses the strings you provide regardless of the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute on the page.
+The Dock Manager also exposes a [`resourceStrings`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=resourceStrings) property that you can use to modify individual strings directly. When you set the [`resourceStrings`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=resourceStrings) property, the Dock Manager uses the strings you provide regardless of the [lang](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) attribute on the page.
 
 ## API References
 
-- [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html)
-- [`IgrDocumentHost`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdocumenthost.html)
-- [`IgrDockManagerLayout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanagerlayout.html)
-- [`IgrContentPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html)
-- [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html)
-- [`IgrTabGroupPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabgrouppane.html)
+- [`IgrDockManager`](mcp:get_api_reference?platform=react&component=IgrDockManager)
+- [`IgrDocumentHost`](mcp:get_api_reference?platform=react&component=IgrDocumentHost)
+- [`IgrDockManagerLayout`](mcp:get_api_reference?platform=react&component=IgrDockManagerLayout)
+- [`IgrContentPane`](mcp:get_api_reference?platform=react&component=IgrContentPane)
+- [`IgrSplitPane`](mcp:get_api_reference?platform=react&component=IgrSplitPane)
+- [`IgrTabGroupPane`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane)

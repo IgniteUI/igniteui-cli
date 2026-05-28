@@ -122,15 +122,15 @@ igx-buttongroup{
 ```
 <div class="divider--half"></div>
 ## Usage
-As you can see in the demo above, the [**IgxHierarchicalGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html) provides three size options: **small**, **medium** and **large**. The code snippet below shows how to set size:
+As you can see in the demo above, the [**IgxHierarchicalGrid**](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) provides three size options: **small**, **medium** and **large**. The code snippet below shows how to set size:
 ```html
 <igx-hierarchical-grid #hierarchicalGrid [data]="data" style="--ig-size: var(--ig-size-small)">
 </igx-hierarchical-grid>
 ```
-And now let's see in details how each option reflects on the Hierarchical Grid component. When you switch between different sizes the height of each Hierarchical Grid element and the corresponding paddings will be changed. Also if you want to apply custom column [**width**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#width), please consider the fact that it must be bigger than the sum of left and right padding.
-- **--ig-size-large** - this is the default Hierarchical Grid size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`width`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#width) is `80px`;
-- **--ig-size-medium** - this is the middle size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`width`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#width) is `64px`;
-- **--ig-size-small** - this is the smallest size with `32px` row height. Left and Right paddings are `12px`; Minimal column [`width`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#width) is `56px`;
+And now let's see in details how each option reflects on the Hierarchical Grid component. When you switch between different sizes the height of each Hierarchical Grid element and the corresponding paddings will be changed. Also if you want to apply custom column [**width**](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=width), please consider the fact that it must be bigger than the sum of left and right padding.
+- **--ig-size-large** - this is the default Hierarchical Grid size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`width`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=width) is `80px`;
+- **--ig-size-medium** - this is the middle size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`width`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=width) is `64px`;
+- **--ig-size-small** - this is the smallest size with `32px` row height. Left and Right paddings are `12px`; Minimal column [`width`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=width) is `56px`;
 > [!NOTE]
 > Please keep in mind that currently you **can not** override any of the sizes.
 Let's now continue with our sample and see in action how each size is applied. Let's first add a button which will help us to switch between each size:
@@ -214,11 +214,11 @@ protected get sizeStyle() {
     return `var(--ig-size-${this.size})`;
 }
 ```
-Another option that [**IgxHierarchicalGrid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html) provides for you, in order to be able to change the height of the rows in the Hierarchical Grid, is the property [`rowHeight`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowheight). So let's see in action how this property affects the Hierarchical Grid layout along with the `--ig-size` CSS variable.
+Another option that [**IgxHierarchicalGrid**](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) provides for you, in order to be able to change the height of the rows in the Hierarchical Grid, is the property [`rowHeight`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowheight). So let's see in action how this property affects the Hierarchical Grid layout along with the `--ig-size` CSS variable.
 Please keep in mind the following:
-- `--ig-size` CSS variable will have **NO** impact on row height **if there is [rowHeight](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowheight) specified**;
+- `--ig-size` CSS variable will have **NO** impact on row height **if there is [rowHeight](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowheight) specified**;
 - `--ig-size` will **affect all of the rest elements in the Hierarchical Grid**, as it has been described above;
-And now we can extend our sample and add [`rowHeight`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowHeight) property to the Hierarchical Grid:
+And now we can extend our sample and add [`rowHeight`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowHeight) property to the Hierarchical Grid:
 
  ```html
  <igx-hierarchical-grid #hierarchicalGrid [data]="data" [rowHeight]="'80px'" width="100%" 
@@ -229,9 +229,9 @@ And now we can extend our sample and add [`rowHeight`](https://www.infragistics.
 <div class="divider--half"></div>
 ## API References
 <div class="divider--half"></div>
-- [IgxHierarchicalGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
+- [IgxHierarchicalGridComponent](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
 - [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
 <div class="divider--half"></div>
 ## Additional Resources
 - [Hierarchical Grid overview](hierarchical-grid.md)

@@ -15,7 +15,7 @@ The Ignite UI for Web Components Composite Chart, also called a Combo Chart, is 
 
 ## Web Components Composite / Combo Example
 
-The following example demonstrates how to create Composite Chart using [`IgcColumnSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccolumnseriescomponent.html) and [`IgcLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igclineseriescomponent.html) in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control.
+The following example demonstrates how to create Composite Chart using [`IgcColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnSeriesComponent) and [`IgcLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent) in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control.
 
 ```css
 /* shared styles are loaded from: */
@@ -36,8 +36,8 @@ The following example demonstrates how to create Composite Chart using [`IgcColu
 
 ## API References
 
-- [`IgcCategoryXAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategoryxaxiscomponent.html)
-- [`IgcColumnSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccolumnseriescomponent.html)
-- [`IgcLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igclineseriescomponent.html)
-- [`IgcNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcnumericyaxiscomponent.html)
-- [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html)
+- [`IgcCategoryXAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryXAxisComponent)
+- [`IgcColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnSeriesComponent)
+- [`IgcLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent)
+- [`IgcNumericYAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent)
+- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)

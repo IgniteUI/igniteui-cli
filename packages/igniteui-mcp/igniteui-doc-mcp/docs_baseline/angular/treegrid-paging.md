@@ -108,7 +108,7 @@ $progressBar-sample-theme: progress-linear-theme(
     width: 100%;
 }
 ```
-Adding a [`igx-paginator`](../paginator.md) component will control whether the feature is present, you can enable/disable it by using a simple `*ngIf` with a toggle property. The [`perPage`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#perPage) input controls the visible records per page. Let’s update our Tree Grid to enable paging:
+Adding a [`igx-paginator`](../paginator.md) component will control whether the feature is present, you can enable/disable it by using a simple `*ngIf` with a toggle property. The [`perPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPage) input controls the visible records per page. Let’s update our Tree Grid to enable paging:
 ```html
 <igx-tree-grid #treeGrid [data]="data" [height]="'500px'" [width]="'100%'">
     <igx-paginator [perPage]="10">
@@ -463,7 +463,7 @@ $dark-drop-down-theme: drop-down-theme(
 }
 ```
 ## API References
-- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxTreeGridComponent API](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 - [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 - [IgxGridPaginator Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-paginator-theme)
 ## Additional Resources

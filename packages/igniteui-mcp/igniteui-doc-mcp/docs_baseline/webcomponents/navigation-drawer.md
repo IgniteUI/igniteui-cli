@@ -13,7 +13,7 @@ The Ignite UI for Web Components Navigation Drawer provides side navigation that
 
 ## Web Components Navigation Drawer Example
 
-This sample demonstrates how to create [`IgcNavDrawerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawercomponent.html) component.
+This sample demonstrates how to create [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) component.
 
 ```css
 #button-wrapper{
@@ -37,7 +37,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcNavDrawerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawercomponent.html), you need to register it as follows:
+Before using the [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcNavDrawerComponent } from 'igniteui-webcomponents';
@@ -49,7 +49,7 @@ For a complete introduction to the Ignite UI for Web Components, read the [**Get
 
 ## Adding Navigation Drawer Items
 
-The simplest way to start using the [`IgcNavDrawerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawercomponent.html) is as follows:
+The simplest way to start using the [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) is as follows:
 
 ```html
 <igc-nav-drawer open="true">
@@ -85,9 +85,9 @@ igc-icon-button::part(icon) {
 
 ## Navbar Integration
 
-While any content can be provided in the drawer, the [`IgcNavDrawerItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdraweritemcomponent.html) is available to apply out-of-the-box styling to the items.
+While any content can be provided in the drawer, the [`IgcNavDrawerItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerItemComponent) is available to apply out-of-the-box styling to the items.
 
-To enhance our component a bit, we can use it in conjunction with the [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html). This way we can achieve a more completed look and use the drawer's methods. Let's look at how we can use this in the next example:
+To enhance our component a bit, we can use it in conjunction with the [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent). This way we can achieve a more completed look and use the drawer's methods. Let's look at how we can use this in the next example:
 
 ```html
 <igc-navbar>
@@ -193,7 +193,7 @@ And here's the result:
 
 ## Styling
 
-The [`IgcNavDrawerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawercomponent.html) exposes several CSS parts - `base`, `main`, and `mini`, giving you full control over their styling.
+The [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) exposes several CSS parts - `base`, `main`, and `mini`, giving you full control over their styling.
 
 ```scss
 igc-nav-drawer::part(base) {
@@ -256,14 +256,14 @@ igc-icon-button::part(icon) {
 
 ## API References
 
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html)
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
-- [`IgcNavDrawerHeaderItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawerheaderitemcomponent.html)
-- [`IgcNavDrawerItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdraweritemcomponent.html)
-- [`IgcNavDrawerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawercomponent.html)
-- [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html)
-- [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html)
-- [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html)
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+- [`IgcNavDrawerHeaderItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerHeaderItemComponent)
+- [`IgcNavDrawerItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerItemComponent)
+- [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent)
+- [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent)
+- [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)
+- [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

@@ -433,8 +433,8 @@ When selected row is deleted from the grid component, `rowSelectionChanging` eve
 
 - `igxGrid`, `igxHierarchicalGrid`, `igxTreeGrid`
   - Parameters in grid templates now have types for their context. This can also cause issues if the app is in strict template mode and uses the wrong type. References to the template that may require conversion:
-    - `IgxColumnComponent` - [`ColumnType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/columntype.html) (for example the column parameter in `igxFilterCellTemplate`)
-    - `IgxGridCell` - [`CellType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/celltype.html) (for example the cell parameter in `igxCell` template)
+    - `IgxColumnComponent` - [`ColumnType`](mcp:get_api_reference?platform=angular&component=ColumnType) (for example the column parameter in `igxFilterCellTemplate`)
+    - `IgxGridCell` - [`CellType`](mcp:get_api_reference?platform=angular&component=CellType) (for example the cell parameter in `igxCell` template)
 - Ignite UI for Angular has a dependency on [igniteui-theming](https://github.com/IgniteUI/igniteui-theming). Add the following preprocessor configuration in your `angular.json` file.
 
     ```json
@@ -884,8 +884,8 @@ To get a better grasp on the Sass Module System, you can read [this great articl
 ### Grids
 
 - Breaking Changes:
-  - [`IgxPaginatorComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html) - The way the Paginator is instantiated in the grid has changed. It is now a separate component projected in the grid tree. Thus the `[paging]="true"` property is removed from all grids and all other properties related to the paginator in the grid are deprecated. It is recommended to follow the guidance for enabling `Grid Paging` features as described in the [Paging topic](../grid/paging.md).
-  - [`IgxPageSizeSelectorComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPageSizeSelectorComponent.html) and [`IgxPageNavigationComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPageNavigationComponent.html) are introduced to ease the implementation of any custom content:
+  - [`IgxPaginatorComponent`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent) - The way the Paginator is instantiated in the grid has changed. It is now a separate component projected in the grid tree. Thus the `[paging]="true"` property is removed from all grids and all other properties related to the paginator in the grid are deprecated. It is recommended to follow the guidance for enabling `Grid Paging` features as described in the [Paging topic](../grid/paging.md).
+  - [`IgxPageSizeSelectorComponent`](mcp:get_api_reference?platform=angular&component=IgxPageSizeSelectorComponent) and [`IgxPageNavigationComponent`](mcp:get_api_reference?platform=angular&component=IgxPageNavigationComponent) are introduced to ease the implementation of any custom content:
 
     ```html
     <igx-paginator #paginator>
@@ -988,7 +988,7 @@ To get a better grasp on the Sass Module System, you can read [this great articl
 
 - _IgxGridCellComponent_, _IgxTreeGridCellComponent_, _IgxHierarchicalGridCellComponent_, _IgxGridExpandableCellComponent_ are no longer exposed in the public API.
 
-- Public APIs, which used to return an instance of one of the above, now return an instance of [`IgxGridCell`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html):
+- Public APIs, which used to return an instance of one of the above, now return an instance of [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell):
 
 ```ts
 const cell = grid.getCellByColumn(0, 'ProductID');     // returns IgxGridCell
@@ -999,13 +999,13 @@ const selectedCells = grid.selectedCells;              // returns IgxGridCell[]
 const cells = grid.getColumnByName('ProductID').cells; // returns IgxGridCell[]
 ```
 
-- `cell` property in the `IGridCellEventArgs` event arguments emitted by _cellClick_, _selected_, _contextMenu_ and _doubleClick_ events is now an instance of [`IgxGridCell`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
+- `cell` property in the `IGridCellEventArgs` event arguments emitted by _cellClick_, _selected_, _contextMenu_ and _doubleClick_ events is now an instance of [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell)
 - `let-cell` property in cell template is now `IgxGridCell`.
 - `getCellByColumnVisibleIndex` is now deprecated and will be removed in next major version. Use `getCellByKey`, `getCellByColumn` instead.
 
 Please note:
 
-- _ng update_ will migrate the uses of _IgxGridCellComponent_, _IgxTreeGridCellComponent_, _IgxHierarchicalGridCellComponent_, _IgxGridExpandableCellComponent_, like imports, typings and casts. If a place in your code using any of the above is not migrated, just remove the typing/cast, or change it with [`IgxGridCell`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html).
+- _ng update_ will migrate the uses of _IgxGridCellComponent_, _IgxTreeGridCellComponent_, _IgxHierarchicalGridCellComponent_, _IgxGridExpandableCellComponent_, like imports, typings and casts. If a place in your code using any of the above is not migrated, just remove the typing/cast, or change it with [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell).
 - _getCellByIndex_ and other methods will return undefined, if the row at that index is not a data row, but is IgxGroupByRow, IgxSummaryRow, details row, etc.
 
 
@@ -1160,7 +1160,7 @@ If for any reason you see Sass compilation errors saying `math.div` is not a kno
 
 ### IgxBottomNav component
 
-The [**IgxBottomNavComponent**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbottomnavcomponent.html) was completely refactored in order to provide more flexible and descriptive way to define tab headers and contents. It is recommended that you update via **ng update** in order to migrate the existing **igx-bottom-nav** definitions to the new ones.
+The [**IgxBottomNavComponent**](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent) was completely refactored in order to provide more flexible and descriptive way to define tab headers and contents. It is recommended that you update via **ng update** in order to migrate the existing **igx-bottom-nav** definitions to the new ones.
 
 
 - Template
@@ -1185,15 +1185,15 @@ The [**IgxBottomNavComponent**](https://www.infragistics.com/products/ignite-ui-
     ```
 
 - API changes
-  - The `id`, `itemStyle`, `panels`, `viewTabs`, `contentTabs` and `tabs` properties were removed. Currently, the [`items`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbottomnavcomponent.html#items) property returns the collection of tabs.
+  - The `id`, `itemStyle`, `panels`, `viewTabs`, `contentTabs` and `tabs` properties were removed. Currently, the [`items`](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent&member=items) property returns the collection of tabs.
   - The following properties were changed:
-    - The tab item's `isSelected` property was renamed to [`selected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbottomnavitemcomponent.html#selected).
-    - The `selectedTab` property was renamed to [`selectedItem`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbottomnavcomponent.html#selectedItem).
-  - The `onTabSelected` and `onTabDeselected` events were removed. We introduced three new events, [`selectedIndexChanging`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbottomnavcomponent.html#selectedIndexChanging),[`selectedIndexChange`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbottomnavcomponent.html#selectedIndexChange) and [`selectedItemChange`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbottomnavcomponent.html#selectedItemChange), which provide more flexibility and control over the tabs' selection. Unfortunately, having an adequate migration for these event changes is complicated to say the least, so any errors should be handled at project level.
+    - The tab item's `isSelected` property was renamed to [`selected`](mcp:get_api_reference?platform=angular&component=IgxBottomNavItemComponent&member=selected).
+    - The `selectedTab` property was renamed to [`selectedItem`](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent&member=selectedItem).
+  - The `onTabSelected` and `onTabDeselected` events were removed. We introduced three new events, [`selectedIndexChanging`](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent&member=selectedIndexChanging),[`selectedIndexChange`](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent&member=selectedIndexChange) and [`selectedItemChange`](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent&member=selectedItemChange), which provide more flexibility and control over the tabs' selection. Unfortunately, having an adequate migration for these event changes is complicated to say the least, so any errors should be handled at project level.
 
 ### IgxTabs component
 
-The [**IgxTabsComponent**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabscomponent.html) was completely refactored in order to provide more flexible and descriptive way to define tab headers and contents. It is recommended that you update via **ng update** in order to migrate the existing **igx-tabs** definitions to the new ones.
+The [**IgxTabsComponent**](mcp:get_api_reference?platform=angular&component=IgxTabsComponent) was completely refactored in order to provide more flexible and descriptive way to define tab headers and contents. It is recommended that you update via **ng update** in order to migrate the existing **igx-tabs** definitions to the new ones.
 
 
 - Template
@@ -1219,17 +1219,17 @@ The [**IgxTabsComponent**](https://www.infragistics.com/products/ignite-ui-angul
     ```
 
 - API changes
-  - The `id`, `groups`, `viewTabs`, `contentTabs` and `tabs` properties were removed. Currently, the [`items`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabscomponent.html#items) property returns the collection of tabs.
+  - The `id`, `groups`, `viewTabs`, `contentTabs` and `tabs` properties were removed. Currently, the [`items`](mcp:get_api_reference?platform=angular&component=IgxTabsComponent&member=items) property returns the collection of tabs.
   - The following properties were changed:
-    - The tab item's `isSelected` property was renamed to [`selected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabitemcomponent.html#selected).
-    - The `selectedTabItem` property was shortened to [`selectedItem`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabscomponent.html#selectedItem).
-    - The `type` property, with its contentFit and fixed options, is no longer available. The header sizing & positioning mode is currently controlled by the [`tabAlignment`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabscomponent.html#tabAlignment) input property which accepts four different values - start (default), center, end and justify. The old `contentFit` type corresponds to the current `start` alignment value and the old `fixed` type - to the current `justify` value.
-  - The `tabItemSelected` and `tabItemDeselected` events were removed. We introduced three new events, [`selectedIndexChanging`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabscomponent.html#selectedIndexChanging), [`selectedIndexChange`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabscomponent.html#selectedindexchange) and [`selectedItemChange`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabscomponent.html#selectedIndexChange), which provide more flexibility and control over the tabs' selection. Unfortunately, having an adequate migration for these event changes is complicated to say the least, so any errors should be handled at project level.
+    - The tab item's `isSelected` property was renamed to [`selected`](mcp:get_api_reference?platform=angular&component=IgxTabItemComponent&member=selected).
+    - The `selectedTabItem` property was shortened to [`selectedItem`](mcp:get_api_reference?platform=angular&component=IgxTabsComponent&member=selectedItem).
+    - The `type` property, with its contentFit and fixed options, is no longer available. The header sizing & positioning mode is currently controlled by the [`tabAlignment`](mcp:get_api_reference?platform=angular&component=IgxTabsComponent&member=tabAlignment) input property which accepts four different values - start (default), center, end and justify. The old `contentFit` type corresponds to the current `start` alignment value and the old `fixed` type - to the current `justify` value.
+  - The `tabItemSelected` and `tabItemDeselected` events were removed. We introduced three new events, [`selectedIndexChanging`](mcp:get_api_reference?platform=angular&component=IgxTabsComponent&member=selectedIndexChanging), [`selectedIndexChange`](mcp:get_api_reference?platform=angular&component=IgxTabsComponent&member=selectedindexchange) and [`selectedItemChange`](mcp:get_api_reference?platform=angular&component=IgxTabsComponent&member=selectedIndexChange), which provide more flexibility and control over the tabs' selection. Unfortunately, having an adequate migration for these event changes is complicated to say the least, so any errors should be handled at project level.
 
 ### IgxGridComponent, IgxTreeGridComponent, IgxHierarchicalGridComponent
 
 - _IgxGridRowComponent_, _IgxTreeGridRowComponent_, _IgxHierarchicalRowComponent_, _IgxGridGroupByRowComponent_ are no longer exposed in the public API.
-- Public APIs, which used to return an instance of one of the above, now return objects implementing the public [`RowType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/rowtype.html) interface:
+- Public APIs, which used to return an instance of one of the above, now return objects implementing the public [`RowType`](mcp:get_api_reference?platform=angular&component=RowType) interface:
 
 ```ts
 const row = grid.getRowByIndex(0);
@@ -1237,9 +1237,9 @@ const row = grid.getRowByKey(2);
 const row = cell.row;
 ```
 
-While the public API of [`RowType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/rowtype.html) is the same as what _IgxRowComponent_ and others used to expose, please note:
+While the public API of [`RowType`](mcp:get_api_reference?platform=angular&component=RowType) is the same as what _IgxRowComponent_ and others used to expose, please note:
 
-- _toggle_ method, exposed by the _IgxHierarchicalRowComponent_ is not available. Use [`expanded`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/rowtype.html#expanded) property for all row types:
+- _toggle_ method, exposed by the _IgxHierarchicalRowComponent_ is not available. Use [`expanded`](mcp:get_api_reference?platform=angular&component=RowType&member=expanded) property for all row types:
 
 ```ts
 grid.getRowByIndex(0).expanded = false;
@@ -1247,9 +1247,9 @@ grid.getRowByIndex(0).expanded = false;
 
 *row.rowData_ and _row.rowID_ are deprecated and will be entirely removed with version 13. Please use _row.data_ and _row.key_ instead.
 
-- _row_ property in the event arguments emitted by _onRowPinning_, and _dragData_ property in the event arguments emitted by _onRowDragStart_, _onRowDragEnd_ is now implementing [`RowType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/rowtype.html)
-- _ng update_ will migrate most of the uses of _IgxGridRowComponent_, _IgxTreeGridRowComponent_, _IgxHierarchicalRowComponent_, _IgxGridGroupByRowComponent_ , like imports, typings and casts. If a place in your code using any of the above is not migrated, just remove the typing/cast, or change it with [`RowType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/rowtype.html).
-- _getRowByIndex_ will now return a [`RowType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/rowtype.html) object, if the row at that index is a summary row (previously used to returned _undefined_). _row.isSummaryRow_ and _row.isGroupByRow_ return true if the row at the index is a summary row or a group by row.
+- _row_ property in the event arguments emitted by _onRowPinning_, and _dragData_ property in the event arguments emitted by _onRowDragStart_, _onRowDragEnd_ is now implementing [`RowType`](mcp:get_api_reference?platform=angular&component=RowType)
+- _ng update_ will migrate most of the uses of _IgxGridRowComponent_, _IgxTreeGridRowComponent_, _IgxHierarchicalRowComponent_, _IgxGridGroupByRowComponent_ , like imports, typings and casts. If a place in your code using any of the above is not migrated, just remove the typing/cast, or change it with [`RowType`](mcp:get_api_reference?platform=angular&component=RowType).
+- _getRowByIndex_ will now return a [`RowType`](mcp:get_api_reference?platform=angular&component=RowType) object, if the row at that index is a summary row (previously used to returned _undefined_). _row.isSummaryRow_ and _row.isGroupByRow_ return true if the row at the index is a summary row or a group by row.
 
 ### IgxInputGroupComponent
 

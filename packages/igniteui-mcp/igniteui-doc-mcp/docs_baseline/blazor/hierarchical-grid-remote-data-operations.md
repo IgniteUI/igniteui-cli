@@ -12,9 +12,9 @@ _premium: true
 
 # Blazor Hierarchical Grid Remote Data Operations
 
-By default, the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) uses its own logic for performing data operations.
+By default, the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) uses its own logic for performing data operations.
 
-You can perform these tasks remotely and feed the resulting data to the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) by taking advantage of certain inputs and events, which are exposed by the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html).
+You can perform these tasks remotely and feed the resulting data to the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) by taking advantage of certain inputs and events, which are exposed by the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 
 ## Remote Paging
 
@@ -37,7 +37,7 @@ As Blazor Server is already a remote instance, unlike the demos in the other pla
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-After declaring the service, we need to create a component, which will be responsible for the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) construction and data subscription.
+After declaring the service, we need to create a component, which will be responsible for the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) construction and data subscription.
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -283,7 +283,7 @@ namespace Infragistics.Samples
 
 ## Known Issues and Limitations
 
-- When the grid has no [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+- When the grid has no [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=PrimaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 
@@ -295,8 +295,8 @@ namespace Infragistics.Samples
 
 ## API References
 
-- [`IgbPaginator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPaginator.html)
-- [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)
+- [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)
+- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
 
 ## Additional Resources
 

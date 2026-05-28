@@ -35,7 +35,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html), you need to register it as follows:
+Before using the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcStepperComponent } from 'igniteui-webcomponents';
@@ -45,11 +45,11 @@ defineComponents(IgcStepperComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Now you can start with a basic configuration of the Web Components [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) and its steps.
+Now you can start with a basic configuration of the Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) and its steps.
 
 ## How To Use Web Components Stepper
 
-The [`IgcStepComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcstepcomponent.html) is the representation of every step that belongs to the [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html). Steps provide [`invalid`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcstepcomponent.html#invalid), [`active`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcstepcomponent.html#active), [`optional`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcstepcomponent.html#optional), [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcstepcomponent.html#disabled) and [`complete`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcstepcomponent.html#complete) properties, which give you the ability to configure the step states according to your business requirement.
+The [`IgcStepComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent) is the representation of every step that belongs to the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent). Steps provide [`invalid`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=invalid), [`active`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=active), [`optional`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=optional), [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=disabled) and [`complete`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent&member=complete) properties, which give you the ability to configure the step states according to your business requirement.
 
 ### Declaring Web Components Stepper
 
@@ -87,7 +87,7 @@ Steps can be declared using one of the following approaches.
 For each step the user has the ability to configure indicator, title and subtitle using the `Indicator`, `Title` and `Subtitle` slots as follows:
 
 > [!Note]
-> The `Default` [`IgcStepComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcstepcomponent.html) slot renders the content of the step.
+> The `Default` [`IgcStepComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent) slot renders the content of the step.
 
 ```html
 <igc-stepper>
@@ -106,18 +106,18 @@ For each step the user has the ability to configure indicator, title and subtitl
 
 ### Orientation in Web Components Stepper
 
-You can customize the stepper orientation through the exposed [`orientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html#orientation) property. It could be set to **horizontal** **(default value)** or **vertical**.
+You can customize the stepper orientation through the exposed [`orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=orientation) property. It could be set to **horizontal** **(default value)** or **vertical**.
 
 **Horizontal Stepper Orientation**
 
-**horizontal**is the default value for the [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) orientation property.
-When the Web Components stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) [`contentTop`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html#contentTop) boolean property, which default value is **false**. In case it is enabled the steps’ content would be displayed above the steps’ headers.
+**horizontal**is the default value for the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) orientation property.
+When the Web Components stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) [`contentTop`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=contentTop) boolean property, which default value is **false**. In case it is enabled the steps’ content would be displayed above the steps’ headers.
 
 <img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 800px"  src="../../images/stepper/stepper-contentTop.png" alt="stepper-contentTop" />
 
 **Vertical Stepper Orientation**
 
-You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`orientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html#orientation) property to **vertical**.
+You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=orientation) property to **vertical**.
 
 The sample below demonstrates how stepper orientation and titles position could be changed runtime.
 
@@ -150,7 +150,7 @@ The sample below demonstrates how stepper orientation and titles position could 
 
 ### Step States
 
-Web Components [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) supports five steps states and each of them apply different styles by default:
+Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) supports five steps states and each of them apply different styles by default:
 
 - **active** - Determines whether the step is the currently displayed. By design, if the user does not explicitly set some step’s active attribute to **true**, the initial active step would be the first non-disabled step.
 - **disabled** - Determines whether the step is intractable. By default, the disabled attribute of a step is set to **false**.
@@ -160,7 +160,7 @@ Web Components [`IgcStepperComponent`](https://www.infragistics.com/products/ign
 
 ### Linear Web Components Stepper
 
-The Web Components [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) gives you the opportunity to set its steps flow using the [`linear`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html#linear) property. By default, linear is set to **false** and the user is enabled to select any non-disabled step in the [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html).
+The Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) gives you the opportunity to set its steps flow using the [`linear`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=linear) property. By default, linear is set to **false** and the user is enabled to select any non-disabled step in the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent).
 
 ```html
 <igc-stepper linear="true">
@@ -182,7 +182,7 @@ If the current non-optional step is not valid you cannot go forward to the next 
 
 ### Step Interactions
 
-[`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) provides the following API methods for step interactions:
+[`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) provides the following API methods for step interactions:
 
 - **navigateTo** – activates the step by given index.
 - **next** - activates the next non-disabled step.
@@ -196,7 +196,7 @@ If the current non-optional step is not valid you cannot go forward to the next 
 
 The Ignite UI for Web Components Stepper gives you the ability to configure different options for titles, indicators and more.
 
-This could be achieved through the [`stepType`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html#stepType) property of the [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html). It takes the following values:
+This could be achieved through the [`stepType`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=stepType) property of the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent). It takes the following values:
 
 - Full **(default value)**
 - Indicator
@@ -207,7 +207,7 @@ This could be achieved through the [`stepType`](https://www.infragistics.com/pro
 If titles and subtitles are defined, with this setup both indicators and titles would be rendered.
 
 The user would also have the ability to define the position of the title for the steps, so it could be placed before, after, above or below the step indicator.
-The user can configure the title position using the [`titlePosition`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html#titlePosition) property. It takes the following values:
+The user can configure the title position using the [`titlePosition`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=titlePosition) property. It takes the following values:
 
 - undefined **(default value)**
 - end
@@ -215,7 +215,7 @@ The user can configure the title position using the [`titlePosition`](https://ww
 - bottom
 - top
 
-When the Web Components [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) is horizontally orientated and the title position **is not defined**, the titles would be displayed **below** the indicators.
+When the Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) is horizontally orientated and the title position **is not defined**, the titles would be displayed **below** the indicators.
 
 When the orientation is set to vertical and the title position **is not defined**, the titles would be displayed **after** the indicators.
 
@@ -226,7 +226,7 @@ When the orientation is set to vertical and the title position **is not defined*
 
 If you want to display only indicators for the steps, set the stepType option to **indicator**.
 
-The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) or [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html) as step indicators.
+The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) or [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent) as step indicators.
 
 **Title**
 
@@ -256,15 +256,15 @@ The sample below demonstrates all exposed step types and how they could be chang
 
 ### Stepper Animations
 
-The Web Components [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) Animations provide the end-users with a beautiful experience interacting with the defined steps. The available animation options differ depending on the orientation of the stepper.
+The Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) Animations provide the end-users with a beautiful experience interacting with the defined steps. The available animation options differ depending on the orientation of the stepper.
 
-When the stepper is horizontally orientated, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`horizontalAnimation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html#horizontalAnimation) input.
+When the stepper is horizontally orientated, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`horizontalAnimation`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=horizontalAnimation) input.
 
-In a vertically orientated layout, the animation type could be defined using the [`verticalAnimation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html#verticalAnimation) property. By default, its value is set to `grow` and the user has the ability to set it to `fade` as well.
+In a vertically orientated layout, the animation type could be defined using the [`verticalAnimation`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent&member=verticalAnimation) property. By default, its value is set to `grow` and the user has the ability to set it to `fade` as well.
 
 Setting `none` to both animation type inputs disables stepper animations.
 
-The [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) component also gives you the ability to configure the duration of the transition between the steps. This could be achieved through the `animationDuration` property, which takes a number as an argument and it is common to both orientations. The default value is set to 320ms.
+The [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) component also gives you the ability to configure the duration of the transition between the steps. This could be achieved through the `animationDuration` property, which takes a number as an argument and it is common to both orientations. The default value is set to 320ms.
 
 ```css
 /* shared styles are loaded from: */
@@ -290,7 +290,7 @@ The [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-
 ## Keyboard Navigation
 
 The Ignite UI for Web Components Stepper provides a rich variety of keyboard interactions to the end-user. This functionality is enabled by default and allows end-users to easily navigate through the steps.
-The Web Components [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) navigation is compliant with [W3 accessability standards](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/) and convenient to use.
+The Web Components [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) navigation is compliant with [W3 accessability standards](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/) and convenient to use.
 
 **Key Combinations**
 
@@ -306,7 +306,7 @@ The Web Components [`IgcStepperComponent`](https://www.infragistics.com/products
 
 ## Styling Web Components Stepper
 
-You can change the appearance of the [`IgcStepComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcstepcomponent.html), by using some of the exposed CSS parts listed below:
+You can change the appearance of the [`IgcStepComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent), by using some of the exposed CSS parts listed below:
 
 | Part name | Description |
 | ---------|------------ |
@@ -329,7 +329,7 @@ You can change the appearance of the [`IgcStepComponent`](https://www.infragisti
 | `body` | Wrapper of the step's content. |
 | `content` | The steps content. |
 
-Using these CSS parts we can customize thе appearance of the [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) component like this:
+Using these CSS parts we can customize thе appearance of the [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) component like this:
 
 ```css
 igc-step::part(title) {
@@ -407,10 +407,10 @@ igc-step[active]:active::part(indicator) {
 
 ## API References
 
-- [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html)
-- [`IgcStepComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcstepcomponent.html)
-- [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html)
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
+- [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent)
+- [`IgcStepComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepComponent)
+- [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

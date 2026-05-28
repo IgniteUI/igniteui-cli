@@ -202,7 +202,7 @@ Also, the paging area supports adding custom template by the user, if a `igx-pag
 </igx-paginator>
 ```
 
-In addition, [`IgxPageSizeSelectorComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPageSizeSelectorComponent.html) and [`IgxPageNavigationComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPageNavigationComponent.html) were introduced and now the paginator components allows a custom content to be defined, as it is shown in the example below. The first will add the dropdown element and label corresponding for the page size and the latter will handle the page navigation with all action buttons.
+In addition, [`IgxPageSizeSelectorComponent`](mcp:get_api_reference?platform=angular&component=IgxPageSizeSelectorComponent) and [`IgxPageNavigationComponent`](mcp:get_api_reference?platform=angular&component=IgxPageNavigationComponent) were introduced and now the paginator components allows a custom content to be defined, as it is shown in the example below. The first will add the dropdown element and label corresponding for the page size and the latter will handle the page navigation with all action buttons.
 
 ```html
 <igx-paginator #paginator>
@@ -213,7 +213,7 @@ In addition, [`IgxPageSizeSelectorComponent`](https://www.infragistics.com/produ
 </igx-paginator>
 ```
 
-Paging can also be done programmatically through the Paging API /which is described in more details in the section below/ using the [`paginate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpaginatorcomponent.html#paginate), [`previousPage`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpaginatorcomponent.html#previousPage), [`nextPage`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpaginatorcomponent.html#nextPage) methods and the inputs [`page`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpaginatorcomponent.html#page), [`perPage`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpaginatorcomponent.html#perPage) and [`totalRecords`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpaginatorcomponent.html#totalRecords). Where _page_ allows you to set the current page, _perPage_ - the number of items that are displayed at one page and _totalRecords_ - the number of the records that are in the grid. `TotalRecords` property is useful when you have paging with remote data and you want to alter the page count based on total remote records. Keep in mind that If you are using paging and all the data is passed to the grid, the value of `totalRecords` property will be set by default to the length of the provided data source. If `totalRecords` is set, it will take precedence over the default length based on the data source.
+Paging can also be done programmatically through the Paging API /which is described in more details in the section below/ using the [`paginate`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=paginate), [`previousPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=previousPage), [`nextPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=nextPage) methods and the inputs [`page`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=page), [`perPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPage) and [`totalRecords`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=totalRecords). Where _page_ allows you to set the current page, _perPage_ - the number of items that are displayed at one page and _totalRecords_ - the number of the records that are in the grid. `TotalRecords` property is useful when you have paging with remote data and you want to alter the page count based on total remote records. Keep in mind that If you are using paging and all the data is passed to the grid, the value of `totalRecords` property will be set by default to the length of the provided data source. If `totalRecords` is set, it will take precedence over the default length based on the data source.
 
 ## Paging API
 
@@ -237,7 +237,7 @@ Paging can also be done programmatically through the Paging API /which is descri
 
 ## Angular Paginator Localization
 
-With only a few lines of code you can easily localize all strings part of the Paging component. In order to localize a given Paging instance use the input property [resourceStrings](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#resourceStrings). You can use this
+With only a few lines of code you can easily localize all strings part of the Paging component. In order to localize a given Paging instance use the input property [resourceStrings](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=resourceStrings). You can use this
 
 **Step 1** - Import `IPaginatorResourceStrings` interface and [changei18n](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/#changei18n) function:
 
@@ -267,7 +267,7 @@ public ngOnInit(): void {
 }
 ```
 
-In order to change the resource string to a specific Paging component, you can use a @ViewChild and set the desired [resourceStrings](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#resourceStrings) within a `requestAnimationFrame` method with a callback, that will be invoked before the page repaint. Setting a newly instantiated object to the [resourceStrings](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#resourceStrings) property will localize only that given component's instance.
+In order to change the resource string to a specific Paging component, you can use a @ViewChild and set the desired [resourceStrings](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=resourceStrings) within a `requestAnimationFrame` method with a callback, that will be invoked before the page repaint. Setting a newly instantiated object to the [resourceStrings](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=resourceStrings) property will localize only that given component's instance.
 
 ```ts
 @ViewChild('paginator', { read: IgxPaginatorComponent, static: false }) public paginator: IgxPaginatorComponent;
@@ -283,7 +283,7 @@ public ngOnInit(): void {
 
 ## API References
 
-- [IgxPaginator API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html)
+- [IgxPaginator API](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent)
 - [IgxPaginator Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-paginator-theme)
 
 ## Additional Resources

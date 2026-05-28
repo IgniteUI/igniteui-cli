@@ -40,7 +40,7 @@ The following Blazor Dropdown List example demonstrates the use of simple intera
 
 ## How to use the Dropdown List with Ignite UI for Blazor
 
-Before using the [`IgbDropdown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html), you need to register it as follows:
+Before using the [`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -48,11 +48,11 @@ Before using the [`IgbDropdown`](https://www.infragistics.com/blazor/docs/api/ap
 builder.Services.AddIgniteUIBlazor(typeof(IgbDropdownModule));
 ```
 
-The simplest way to start using the [`IgbDropdown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html) is as follows:
+The simplest way to start using the [`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown) is as follows:
 
 ### Target
 
-The Blazor Dropdown list is positioned relatively to its target. The `target` slot allows you to provide a built-in component which toggles the `open` property on click. In some cases you would want to use an external target or use another event to toggle the opening of the Dropdown. You can achieve this using the [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html#IgniteUI_Blazor_Controls_IgbDropdown_Show), [`Hide`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html#IgniteUI_Blazor_Controls_IgbDropdown_Hide) and [`Toggle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html#IgniteUI_Blazor_Controls_IgbDropdown_Toggle) methods which allow you to provide the target as a parameter. By default, the Dropdown list uses `absolute` CSS position. You will need to set the [`IgbPositionStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPositionStrategy.html) of the Blazor Dropdown to `fixed` when the target element is inside a fixed container, but the Dropdown is not. The Dropdown list is automatically sized based on its content, if you want the list to have the same width as the target, you should set the [`SameWidth`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html#IgniteUI_Blazor_Controls_IgbDropdown_SameWidth) property to `true`.
+The Blazor Dropdown list is positioned relatively to its target. The `target` slot allows you to provide a built-in component which toggles the `open` property on click. In some cases you would want to use an external target or use another event to toggle the opening of the Dropdown. You can achieve this using the [`Show`](mcp:get_api_reference?platform=blazor&component=IgbDropdown&member=Show), [`Hide`](mcp:get_api_reference?platform=blazor&component=IgbDropdown&member=Hide) and [`Toggle`](mcp:get_api_reference?platform=blazor&component=IgbDropdown&member=Toggle) methods which allow you to provide the target as a parameter. By default, the Dropdown list uses `absolute` CSS position. You will need to set the [`IgbPositionStrategy`](mcp:get_api_reference?platform=blazor&component=IgbPositionStrategy) of the Blazor Dropdown to `fixed` when the target element is inside a fixed container, but the Dropdown is not. The Dropdown list is automatically sized based on its content, if you want the list to have the same width as the target, you should set the [`SameWidth`](mcp:get_api_reference?platform=blazor&component=IgbDropdown&member=SameWidth) property to `true`.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -86,7 +86,7 @@ The Blazor Dropdown list is positioned relatively to its target. The `target` sl
 
 ### Position
 
-The preferred placement of the Blazor Dropdown can be set using the [`Placement`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html#IgniteUI_Blazor_Controls_IgbDropdown_Placement) property. The default placement of the Dropdown is `bottom-start`. The [`Flip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html#IgniteUI_Blazor_Controls_IgbDropdown_Flip) property determines whether the placement should be flipped if there is not enough space to display the Dropdown at the specified placement. The distance from the Blazor Dropdown list to its target can be specified using the [`Distance`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html#IgniteUI_Blazor_Controls_IgbDropdown_Distance) property.
+The preferred placement of the Blazor Dropdown can be set using the [`Placement`](mcp:get_api_reference?platform=blazor&component=IgbDropdown&member=Placement) property. The default placement of the Dropdown is `bottom-start`. The [`Flip`](mcp:get_api_reference?platform=blazor&component=IgbDropdown&member=Flip) property determines whether the placement should be flipped if there is not enough space to display the Dropdown at the specified placement. The distance from the Blazor Dropdown list to its target can be specified using the [`Distance`](mcp:get_api_reference?platform=blazor&component=IgbDropdown&member=Distance) property.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -178,11 +178,11 @@ The preferred placement of the Blazor Dropdown can be set using the [`Placement`
 
 ### Selection
 
-The [`IgbDropdown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html) emits the `Change` event when the user selects an item. The [`Select`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html#IgniteUI_Blazor_Controls_IgbDropdown_Select) method of the Dropdown allows you to select an item by its index or value.
+The [`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown) emits the `Change` event when the user selects an item. The [`Select`](mcp:get_api_reference?platform=blazor&component=IgbDropdown&member=Select) method of the Dropdown allows you to select an item by its index or value.
 
 ### Item
 
-The [`IgbDropdownItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownItem.html) represents a selectable item in the Dropdown list. You could predefine a selected item by setting the [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownItem.html#IgniteUI_Blazor_Controls_IgbDropdownItem_Selected) property. You could also disable an item so that it can't be selected using the [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownItem.html#IgniteUI_Blazor_Controls_IgbDropdownItem_Disabled) property. The [`IgbDropdownItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownItem.html) has a default slot which allows you to specify the content of the item. You could also provide custom content to be rendered before or after the content using the `prefix` and `suffix` slots. The [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownItem.html#IgniteUI_Blazor_Controls_IgbDropdownItem_Value) property allows you to provide a custom value to an item. If the [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownItem.html#IgniteUI_Blazor_Controls_IgbDropdownItem_Value) is not set, it resolves to the text content of the item.
+The [`IgbDropdownItem`](mcp:get_api_reference?platform=blazor&component=IgbDropdownItem) represents a selectable item in the Dropdown list. You could predefine a selected item by setting the [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbDropdownItem&member=Selected) property. You could also disable an item so that it can't be selected using the [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbDropdownItem&member=Disabled) property. The [`IgbDropdownItem`](mcp:get_api_reference?platform=blazor&component=IgbDropdownItem) has a default slot which allows you to specify the content of the item. You could also provide custom content to be rendered before or after the content using the `prefix` and `suffix` slots. The [`Value`](mcp:get_api_reference?platform=blazor&component=IgbDropdownItem&member=Value) property allows you to provide a custom value to an item. If the [`Value`](mcp:get_api_reference?platform=blazor&component=IgbDropdownItem&member=Value) is not set, it resolves to the text content of the item.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -243,7 +243,7 @@ The [`IgbDropdownItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteU
 
 ### Header
 
-You could use the [`IgbDropdownHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownHeader.html) to provide a header for a group of items.
+You could use the [`IgbDropdownHeader`](mcp:get_api_reference?platform=blazor&component=IgbDropdownHeader) to provide a header for a group of items.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -304,7 +304,7 @@ You could use the [`IgbDropdownHeader`](https://www.infragistics.com/blazor/docs
 
 ### Group
 
-The Blazor Dropdown's items can also be grouped using the [`IgbDropdownGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownGroup.html), making it easier for users to differentiate separate categories. See it in action in this Blazor Dropdown List example:
+The Blazor Dropdown's items can also be grouped using the [`IgbDropdownGroup`](mcp:get_api_reference?platform=blazor&component=IgbDropdownGroup), making it easier for users to differentiate separate categories. See it in action in this Blazor Dropdown List example:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -373,15 +373,15 @@ The Blazor Dropdown's items can also be grouped using the [`IgbDropdownGroup`](h
 
 ### Scroll Strategy
 
-The [`ScrollStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html#IgniteUI_Blazor_Controls_IgbDropdown_ScrollStrategy) property determines the behavior of the component during scrolling the container of the target element. The default value is `scroll` which means that the Dropdown will be scrolled with its target. Setting the property to `block` will block the scrolling if the Dropdown is opened. You could also set the property to `close` which means that the Dropdown will be closed automatically on scroll.
+The [`ScrollStrategy`](mcp:get_api_reference?platform=blazor&component=IgbDropdown&member=ScrollStrategy) property determines the behavior of the component during scrolling the container of the target element. The default value is `scroll` which means that the Dropdown will be scrolled with its target. Setting the property to `block` will block the scrolling if the Dropdown is opened. You could also set the property to `close` which means that the Dropdown will be closed automatically on scroll.
 
 ### Keep Open
 
-By default, the Dropdown is closed automatically when the user clicks outside of it or selects an item. You could prevent this behavior using the [`KeepOpenOnOutsideClick`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html#IgniteUI_Blazor_Controls_IgbDropdown_KeepOpenOnOutsideClick) and [`KeepOpenOnSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html#IgniteUI_Blazor_Controls_IgbDropdown_KeepOpenOnSelect) properties.
+By default, the Dropdown is closed automatically when the user clicks outside of it or selects an item. You could prevent this behavior using the [`KeepOpenOnOutsideClick`](mcp:get_api_reference?platform=blazor&component=IgbDropdown&member=KeepOpenOnOutsideClick) and [`KeepOpenOnSelect`](mcp:get_api_reference?platform=blazor&component=IgbDropdown&member=KeepOpenOnSelect) properties.
 
 ## Styling
 
-You can change the appearance of the Dropdown and its items, by using the exposed CSS parts. The [`IgbDropdown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html) exposes `base` and `list` parts, the [`IgbDropdownItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownItem.html) exposes `prefix`, `content` and `suffix` parts and the [`IgbDropdownGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownGroup.html) exposes `label` part.
+You can change the appearance of the Dropdown and its items, by using the exposed CSS parts. The [`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown) exposes `base` and `list` parts, the [`IgbDropdownItem`](mcp:get_api_reference?platform=blazor&component=IgbDropdownItem) exposes `prefix`, `content` and `suffix` parts and the [`IgbDropdownGroup`](mcp:get_api_reference?platform=blazor&component=IgbDropdownGroup) exposes `label` part.
 
 ```css
 igc-dropdown::part(list) {
@@ -480,10 +480,10 @@ igc-dropdown-group::part(label) {
 
 ## API Reference
 
-- [`IgbDropdown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdown.html)
-- [`IgbDropdownItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownItem.html)
-- [`IgbDropdownHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownHeader.html)
-- [`IgbDropdownGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDropdownGroup.html)
+- [`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown)
+- [`IgbDropdownItem`](mcp:get_api_reference?platform=blazor&component=IgbDropdownItem)
+- [`IgbDropdownHeader`](mcp:get_api_reference?platform=blazor&component=IgbDropdownHeader)
+- [`IgbDropdownGroup`](mcp:get_api_reference?platform=blazor&component=IgbDropdownGroup)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

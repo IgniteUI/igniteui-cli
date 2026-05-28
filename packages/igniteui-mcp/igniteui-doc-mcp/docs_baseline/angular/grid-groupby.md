@@ -9,7 +9,7 @@ _premium: true
 
 # Angular Grid Group By
 
-A Group By behavior in an Ignite UI for Angular Table or UI Grid creates grouped data rows based on the column values. The Group By in [`igxGrid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) allows for visualizing the groups in a hierarchical structure. The grouped data rows can be expanded or collapsed and the order of grouping may be changed through the UI or API. When Row Selection is enabled, a Group By row selector is rendered in the left-most area of the group row. In case the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowSelection) property is set to single, checkboxes are disabled and only serve as an indication for the group where selection is placed. If the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowSelection) property is set to multiple, clicking over the Group By row selector selects all records belonging to this group.
+A Group By behavior in an Ignite UI for Angular Table or UI Grid creates grouped data rows based on the column values. The Group By in [`igxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) allows for visualizing the groups in a hierarchical structure. The grouped data rows can be expanded or collapsed and the order of grouping may be changed through the UI or API. When Row Selection is enabled, a Group By row selector is rendered in the left-most area of the group row. In case the [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection) property is set to single, checkboxes are disabled and only serve as an indication for the group where selection is placed. If the [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection) property is set to multiple, clicking over the Group By row selector selects all records belonging to this group.
 
 ## Angular Grid Group By Example
 
@@ -156,7 +156,7 @@ export class GridGroupBySampleComponent {
 
 ## Initial Grouping State
 
-It is possible to define initial grouping of the grid by assigning an array of expressions to the [`groupingExpressions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#groupingExpressions) property of the grid.
+It is possible to define initial grouping of the grid by assigning an array of expressions to the [`groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions) property of the grid.
 
 ```typescript
 public ngOnInit() {
@@ -167,13 +167,13 @@ public ngOnInit() {
 }
 ```
 
-Grouping expressions implement the [`ISortingExpression`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isortingexpression.html) interface.
+Grouping expressions implement the [`ISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression) interface.
 
 ## Group By API
 
 ### Grouping API
 
-Grouping is available through the UI and through a robust API exposed by the grid component. Developers can allow end-users to group the grid data by certain columns, by setting each column's [`groupable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#groupable) property to `true`.
+Grouping is available through the UI and through a robust API exposed by the grid component. Developers can allow end-users to group the grid data by certain columns, by setting each column's [`groupable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=groupable) property to `true`.
 
 ```html
 <igx-grid [data]="data">
@@ -190,7 +190,7 @@ public ngOnInit() {
 }
 ```
 
-During runtime the expressions are gettable and settable from the [`groupingExpressions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#groupingExpressions) property. If you need to add or change an existing expression you may also use the [`groupBy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#groupby) method with either a single or an array of [`ISortingExpression`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isortingexpression.html).
+During runtime the expressions are gettable and settable from the [`groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions) property. If you need to add or change an existing expression you may also use the [`groupBy`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupby) method with either a single or an array of [`ISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression).
 
 ```typescript
 grid.groupBy({ fieldName: 'ProductName', dir: SortingDirection.Desc, ignoreCase: true });
@@ -201,7 +201,7 @@ grid.groupBy({ fieldName: 'ProductName', dir: SortingDirection.Desc, ignoreCase:
 
 ### Expand/Collapse API
 
-In addition to grouping expressions you can also control the expansion states for group rows. They are stored in a separate property of the [`igxGrid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) component [`groupingExpansionState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#groupingExpansionState). A group row is uniquely identified based on the field name it is created for and the value it represents for each level of grouping. This means that the signature of an expansion state interface is the following:
+In addition to grouping expressions you can also control the expansion states for group rows. They are stored in a separate property of the [`igxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) component [`groupingExpansionState`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpansionState). A group row is uniquely identified based on the field name it is created for and the value it represents for each level of grouping. This means that the signature of an expansion state interface is the following:
 
 ```typescript
 export interface IGroupByKey {
@@ -215,7 +215,7 @@ export interface IGroupByExpandState {
 }
 ```
 
-As with [`groupingExpressions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#groupingExpressions), setting a list of [`IGroupByExpandState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igroupbyexpandstate.html) directly to the [`groupingExpansionState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#groupingExpansionState) will change the expansion accordingly. Additionally [`igxGrid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) exposes a method that toggles a group by the group record instance.
+As with [`groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions), setting a list of [`IGroupByExpandState`](mcp:get_api_reference?platform=angular&component=IGroupByExpandState) directly to the [`groupingExpansionState`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpansionState) will change the expansion accordingly. Additionally [`igxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) exposes a method that toggles a group by the group record instance.
 
 ```typescript
     const groupRow = this.grid.groupsRecords.find(r => r.value === "France");
@@ -224,13 +224,13 @@ As with [`groupingExpressions`](https://www.infragistics.com/products/ignite-ui-
     groupRow.expanded = false;
 ```
 
-Groups can be created expanded (_**default**_) or collapsed and the expansion states would generally only contain the state opposite to the default behavior. You can control whether groups should be created expanded or not through the [`groupsExpanded`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#groupsExpanded) property.
+Groups can be created expanded (_**default**_) or collapsed and the expansion states would generally only contain the state opposite to the default behavior. You can control whether groups should be created expanded or not through the [`groupsExpanded`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupsExpanded) property.
 
 ### Select/Deselect all rows in a group API
 
-Selecting/Deselecting all rows in a group is available through the [`selectRowsInGroup`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#selectRowsInGroup) and [`deselectRowsInGroup`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#deselectRowsInGroup) API methods.
+Selecting/Deselecting all rows in a group is available through the [`selectRowsInGroup`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selectRowsInGroup) and [`deselectRowsInGroup`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=deselectRowsInGroup) API methods.
 
-The code snippet below can be used to select all rows within a group using the group record instance [`selectRowsInGroup`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#selectRowsInGroup) method. Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
+The code snippet below can be used to select all rows within a group using the group record instance [`selectRowsInGroup`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selectRowsInGroup) method. Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
 ```typescript
     const groupRow = this.grid.groupsRecords.find(r => r.value === "France");
@@ -238,7 +238,7 @@ The code snippet below can be used to select all rows within a group using the g
     grid.selectRowsInGroup(groupRow);
 ```
 
-If you need to deselect all rows within a group programmatically, you can use the [`deselectRowsInGroup`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#deselectRowsInGroup) method.
+If you need to deselect all rows within a group programmatically, you can use the [`deselectRowsInGroup`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=deselectRowsInGroup) method.
 
 ```typescript
     const groupRow = this.grid.groupsRecords.find(r => r.value === "France");
@@ -440,7 +440,7 @@ The grouping UI supports the following keyboard interactions:
   - <kbd>ALT</kbd> + <kbd>LEFT</kbd> - Collapses the group
   - <kbd>SPACE</kbd> - selects all rows in the group, if <kbd>rowSelection</kbd> property is set to multiple
 
-- For group [`igxChip`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html) components in the group by area (focus should be on the chip)
+- For group [`igxChip`](mcp:get_api_reference?platform=angular&component=IgxChipComponent) components in the group by area (focus should be on the chip)
   - <kbd>SHIFT</kbd> + <kbd>LEFT</kbd> - moves the focused chip left, changing the grouping order, if possible
   - <kbd>SHIFT</kbd> + <kbd>RIGHT</kbd> - moves the focused chip right, changing the grouping order, if possible
   - <kbd>SPACE</kbd> - changes the sorting direction
@@ -452,7 +452,7 @@ The grouping UI supports the following keyboard interactions:
 igxGrid allows defining custom grouping per column or per grouping expression, which provides grouping based on a custom condition. This is useful when you need to group by complex objects or for other application specific scenarios.
 
 > [!NOTE]
-> In order to implement custom grouping the data first needs to be sorted appropriately. Due to this you may also need to apply a custom sorting strategy that extends the base [`DefaultSortingStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/defaultsortingstrategy.html). After the data is sorted the custom groups can be determined by specifying a [`groupingComparer`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igroupingexpression.html#groupingComparer) for the column or for the specific grouping expression.
+> In order to implement custom grouping the data first needs to be sorted appropriately. Due to this you may also need to apply a custom sorting strategy that extends the base [`DefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy). After the data is sorted the custom groups can be determined by specifying a [`groupingComparer`](mcp:get_api_reference?platform=angular&component=IGroupingExpression&member=groupingComparer) for the column or for the specific grouping expression.
 
 The sample below demonstrates custom grouping by `Date`, where the date values are sorted and grouped by Day, Week, Month or Year based on user-selected grouping mode.
 
@@ -694,7 +694,7 @@ class WeekSortingStrategy extends BaseSortingStrategy {
 
 
 The sample defines custom sorting strategies for the different date conditions.
-Each custom strategy extends the base [`DefaultSortingStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/defaultsortingstrategy.html) and defines the [`compareValues`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/defaultsortingstrategy.html#compareValues) method, which is the custom compare function used when sorting the values. Additionally it extracts the values from the date needed for the comparison.
+Each custom strategy extends the base [`DefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy) and defines the [`compareValues`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy&member=compareValues) method, which is the custom compare function used when sorting the values. Additionally it extracts the values from the date needed for the comparison.
 
 ```typescript
 class BaseSortingStrategy extends DefaultSortingStrategy {
@@ -752,7 +752,7 @@ class WeekSortingStrategy extends BaseSortingStrategy {
 }
 ```
 
-A [`groupingComparer`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igroupingexpression.html#groupingComparer) function is defined for the grouping expressions, which determines the items belonging to the same group based on the selected grouping mode. Values in the sorted data for which this function returns 0 are marked as part of the same group.
+A [`groupingComparer`](mcp:get_api_reference?platform=angular&component=IGroupingExpression&member=groupingComparer) function is defined for the grouping expressions, which determines the items belonging to the same group based on the selected grouping mode. Values in the sorted data for which this function returns 0 are marked as part of the same group.
 
 ```typescript
  groupingComparer: (a, b) => {
@@ -1133,13 +1133,13 @@ $custom-chips-theme: chip-theme(
 
 ## API References
 
-- [IgxGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
-- [IgxGroupByRow](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgroupbyrow.html)
+- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [IgxGroupByRow](mcp:get_api_reference?platform=angular&component=IgxGroupByRow)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [ISortingExpression](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isortingexpression.html)
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
-- [IGroupByExpandState](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igroupbyexpandstate.html)
-- [IgxChipComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html)
+- [ISortingExpression](mcp:get_api_reference?platform=angular&component=ISortingExpression)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [IGroupByExpandState](mcp:get_api_reference?platform=angular&component=IGroupByExpandState)
+- [IgxChipComponent](mcp:get_api_reference?platform=angular&component=IgxChipComponent)
 - [IgxChipComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chip-theme)
 
 ## Additional Resources

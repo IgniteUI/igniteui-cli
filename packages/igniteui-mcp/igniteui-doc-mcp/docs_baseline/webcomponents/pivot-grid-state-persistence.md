@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Pivot Grid State Persistence
 
-The Ignite UI for Web Components State Persistence in Web Components Pivot Grid allows developers to easily save and restore the grid state. When the [`IgcGridState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html) is applied on the Web Components [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html), it exposes the [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getState), [`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getStateAsString), [`applyState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyState) and [`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyStateFromString) methods that developers can use to achieve state persistence in any scenario.
+The Ignite UI for Web Components State Persistence in Web Components Pivot Grid allows developers to easily save and restore the grid state. When the [`IgcGridState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html) is applied on the Web Components [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent), it exposes the [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getState), [`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getStateAsString), [`applyState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyState) and [`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyStateFromString) methods that developers can use to achieve state persistence in any scenario.
 
 ## Supported Features
 
@@ -26,7 +26,7 @@ The Ignite UI for Web Components State Persistence in Web Components Pivot Grid 
 - `CellSelection`
 - `ColumnSelection`
 - `Expansion`
-- [`IgcPivotConfiguration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotconfiguration.html)
+- [`IgcPivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration)
   - Pivot Configuration properties defined by the `IPivotConfiguration` interface.
   - Pivot Dimension and Value functions are restored using application level code, see [Restoring Pivot Configuration](state-persistence.md#restoring-pivot-configuration) section.
   - Pivot Row and Column strategies are also restored using application level code, see [Restoring Pivot Strategies](state-persistence.md#restoring-pivot-strategies) section.
@@ -35,7 +35,7 @@ The Ignite UI for Web Components State Persistence in Web Components Pivot Grid 
 
 ## Usage
 
-The [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getState) method returns the grid state in a [`IgcGridStateInfo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstateinfo.html) object, containing all the state info. Additional steps may be required in order to save it.
+The [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getState) method returns the grid state in a [`IgcGridStateInfo`](mcp:get_api_reference?platform=webcomponents&component=IgcGridStateInfo) object, containing all the state info. Additional steps may be required in order to save it.
 
 The [`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getStateAsString) returns a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc).
 
@@ -66,7 +66,7 @@ const sortingFilteringStates: IgcGridStateInfo = gridState.getState(['sorting', 
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
-[`applyState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyState) - The method accepts a [`IgcGridStateInfo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstateinfo.html) object as argument and will restore the state of each feature found in the object or specified features as second argument.
+[`applyState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyState) - The method accepts a [`IgcGridStateInfo`](mcp:get_api_reference?platform=webcomponents&component=IgcGridStateInfo) object as argument and will restore the state of each feature found in the object or specified features as second argument.
 
 [`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyStateFromString) - The method accepts a serialized JSON string as argument and will restore the state of each feature found in the JSON string or specified features as second argument.
 
@@ -76,7 +76,7 @@ gridState.applyStateFromString(gridStateString);
 gridState.applyState(sortingFilteringStates)
 ```
 
-The [`options`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstatebasedirective.html#options) object implements the [`IgcGridStateOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstateoptions.html) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getState)/[`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getStateAsString) methods will not put the state of these features in the returned value and [`applyState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyState)/[`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyStateFromString) methods will not restore state for them.
+The [`options`](mcp:get_api_reference?platform=webcomponents&component=IgcGridStateBaseDirective&member=options) object implements the [`IgcGridStateOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getState)/[`getStateAsString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getStateAsString) methods will not put the state of these features in the returned value and [`applyState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyState)/[`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#applyStateFromString) methods will not restore state for them.
 
 ```typescript
 gridState.options = { cellSelection: false, sorting: false };
@@ -123,7 +123,7 @@ public restoreGridStateString() {
 
 ## Restoring Pivot Configuration
 
-[`IgcGridState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html) will not persist pivot dimension functions, value formatters, etc. by default (see [limitations](state-persistence.md#limitations)). Restoring any of these can be achieved with code on application level. The [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html) exposes two events which can be used to set back any custom functions you have in the configuration: `DimensionInit` and `ValueInit`. Let's show how to do this:
+[`IgcGridState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html) will not persist pivot dimension functions, value formatters, etc. by default (see [limitations](state-persistence.md#limitations)). Restoring any of these can be achieved with code on application level. The [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent) exposes two events which can be used to set back any custom functions you have in the configuration: `DimensionInit` and `ValueInit`. Let's show how to do this:
 
 - Assign event handlers for the `DimensionInit` and `ValueInit` events:
 
@@ -136,7 +136,7 @@ public restoreGridStateString() {
 }
 ```
 
-> The `DimensionInit` and `ValueInit` events are emitted for each value and dimension defined in the [`pivotConfiguration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#pivotConfiguration) property.
+> The `DimensionInit` and `ValueInit` events are emitted for each value and dimension defined in the [`pivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) property.
 
 - In the `ValueInit` event handler set all custom aggregators, formatters and styles:
 
@@ -166,7 +166,7 @@ public onValueInit(event: any) {
 }
 ```
 
-- In the `DimensionInit` event handler set all custom [`memberFunction`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdimension.html#memberFunction) implementations:
+- In the `DimensionInit` event handler set all custom [`memberFunction`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension&member=memberFunction) implementations:
 
 ```ts
 public onDimensionInit(event: any) {
@@ -454,7 +454,7 @@ export class PivotNoopData extends Array<any> {
 
 <!-- ComponentStart: PivotGrid -->
 
-- [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getState) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgcGridState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html) directive will ignore the pivot dimension [`memberFunction`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdimension.html#memberFunction), pivot values [`member`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotvalue.html#member), [`formatter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotvalue.html#formatter), custom [`aggregate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotvalue.html#aggregate) functions, [`styles`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotvalue.html#styles) and pivot configuration strategies: [`columnStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotconfiguration.html#columnStrategy) and [`rowStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotconfiguration.html#rowStrategy).
+- [`getState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html#getState) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgcGridState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridstate.html) directive will ignore the pivot dimension [`memberFunction`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension&member=memberFunction), pivot values [`member`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue&member=member), [`formatter`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue&member=formatter), custom [`aggregate`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue&member=aggregate) functions, [`styles`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue&member=styles) and pivot configuration strategies: [`columnStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration&member=columnStrategy) and [`rowStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotConfiguration&member=rowStrategy).
 
 <!-- ComponentEnd: PivotGrid -->
 

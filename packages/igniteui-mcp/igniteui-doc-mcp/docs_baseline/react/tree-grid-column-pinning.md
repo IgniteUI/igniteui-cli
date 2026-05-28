@@ -13,11 +13,11 @@ _premium: true
 
 # React Tree Grid Column Pinning
 
-The Ignite UI for React Column Pinning feature in React Tree Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html). There’s an integrated UI for Column Pinning, accessible via the React Tree Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
+The Ignite UI for React Column Pinning feature in React Tree Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). There’s an integrated UI for Column Pinning, accessible via the React Tree Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
 
 ## React Tree Grid Column Pinning Example
 
-This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html).
+This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
 
 ```typescript
 export class EmployeesFlatDataItem {
@@ -166,7 +166,7 @@ root.render(<Sample/>);
 
 ## Column Pinning API
 
-Column pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pinned) property of the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html). Pinned columns are rendered on the left side of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) body.
+Column pinning is controlled through the [`pinned`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pinned) property of the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn). Pinned columns are rendered on the left side of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) body.
 
 ```tsx
 <IgrTreeGrid data={nwindData} autoGenerate={false}>
@@ -178,7 +178,7 @@ Column pinning is controlled through the [`pinned`](https://www.infragistics.com
 
 <!-- ComponentEnd: TreeGrid -->
 
-You may also use the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)'s [`pinColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#pinColumn) or [`unpinColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#unpinColumn) methods of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) to pin or unpin columns by their field name:
+You may also use the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)'s [`pinColumn`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=pinColumn) or [`unpinColumn`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=unpinColumn) methods of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) to pin or unpin columns by their field name:
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -207,7 +207,7 @@ const columnPinning = (event: IgrPinColumnCancellableEventArgs) = {
 
 ## Pinning Position
 
-You can change the column pinning position via the [`pinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#pinning) configuration option. It allows you to set the columns position to either Start or End.
+You can change the column pinning position via the [`pinning`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=pinning) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
 
 ```typescript
@@ -803,7 +803,7 @@ root.render(<Sample/>);
 
 ## Pinning Limitations
 
-- Setting column widths in percentage (%) explicitly makes the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html).
+- Setting column widths in percentage (%) explicitly makes the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
 
 <!-- WebComponents, Blazor, React -->
 
@@ -999,8 +999,8 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
+- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 
 ## Additional Resources
 

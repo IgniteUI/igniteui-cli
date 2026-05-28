@@ -10,7 +10,7 @@ _premium: true
 
 # Blazor Esri Utility
 
-The resource topic provides implementation of an utility that helps with using [`IgbArcGISOnlineMapImagery`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbArcGISOnlineMapImagery.html) provided by Esri Maps in [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html).
+The resource topic provides implementation of an utility that helps with using [`IgbArcGISOnlineMapImagery`](mcp:get_api_reference?platform=blazor&component=IgbArcGISOnlineMapImagery) provided by Esri Maps in [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap).
 
 ## Code Snippet
 
@@ -64,5 +64,5 @@ public class EsriStyle
 
 ## API References
 
-- [`IgbArcGISOnlineMapImagery`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbArcGISOnlineMapImagery.html)
-- [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html)
+- [`IgbArcGISOnlineMapImagery`](mcp:get_api_reference?platform=blazor&component=IgbArcGISOnlineMapImagery)
+- [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)

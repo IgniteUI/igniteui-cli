@@ -12,11 +12,11 @@ _premium: true
 
 # Blazor Tree Grid Pagination Overview
 
-The Ignite UI for Blazor Pagination feature in Blazor Tree Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) pagination is configurable via a separate component projected in the grid tree by defining a [`IgbPaginator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPaginator.html)  tag, similar to adding of a column. As in any Blazor table, the pagination in the Blazor Tree Grid supports template for custom pages.
+The Ignite UI for Blazor Pagination feature in Blazor Tree Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) pagination is configurable via a separate component projected in the grid tree by defining a [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)  tag, similar to adding of a column. As in any Blazor table, the pagination in the Blazor Tree Grid supports template for custom pages.
 
 ## Blazor Tree Grid Pagination Example
 
-The following example represents [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) pagination and exposes the options usage of items per page and how paging can be enabled. The user can also quickly navigate through the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) pages via "Go to last page" and "Go to first page" buttons.
+The following example represents [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) pagination and exposes the options usage of items per page and how paging can be enabled. The user can also quickly navigate through the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) pages via "Go to last page" and "Go to first page" buttons.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -153,7 +153,7 @@ public class OrdersTreeData
 
 ## Usage
 
-The [`IgbPaginator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPaginator.html) component is used along with the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) component in the example below, but you can use it with any other component in case paging functionality is needed.
+The [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator) component is used along with the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component in the example below, but you can use it with any other component in case paging functionality is needed.
 
 <!-- ComponentStart: Grid, TreeGrid -->
 
@@ -346,8 +346,8 @@ public class OrdersTreeData
 
 ## API References
 
-- [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
-- [`IgbPaginator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPaginator.html)
+- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+- [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)
 
 ## Additional Resources
 

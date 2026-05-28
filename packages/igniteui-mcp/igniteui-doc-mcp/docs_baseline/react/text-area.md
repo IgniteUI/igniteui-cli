@@ -48,14 +48,14 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html) and its necessary CSS like so:
+You will then need to import the [`IgrTextarea`](mcp:get_api_reference?platform=react&component=IgrTextarea) and its necessary CSS like so:
 
 ```tsx
 import { IgrTextarea } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-After we import the [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html) component we are ready to start using it, so let's add our first Text Area.
+After we import the [`IgrTextarea`](mcp:get_api_reference?platform=react&component=IgrTextarea) component we are ready to start using it, so let's add our first Text Area.
 
 ```tsx
 <IgrTextarea rows="5" label="Tell us your story:"><span>It was a dark and stormy night...</span></IgrTextarea>
@@ -104,7 +104,7 @@ root.render(<TextAreaSlots/>);
 
 ## Text Area Resizing
 
-There are three different resize options of the [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html). When set to `none`, the text area does not resize and uses a scroll bar to show overflow text. When set to `vertical` (the default option), the text area lets the user resize it vertically. When set to `auto`, the text area shows all the user input at once. Overflow text wraps onto a new line and expands the text area automatically.
+There are three different resize options of the [`IgrTextarea`](mcp:get_api_reference?platform=react&component=IgrTextarea). When set to `none`, the text area does not resize and uses a scroll bar to show overflow text. When set to `vertical` (the default option), the text area lets the user resize it vertically. When set to `auto`, the text area shows all the user input at once. Overflow text wraps onto a new line and expands the text area automatically.
 
 ```css
 /* shared styles are loaded from: */
@@ -147,7 +147,7 @@ root.render(<TextAreaResize/>);
 
 ## Form Integration
 
-The sample below shows how a [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html) could be integrated into a form.
+The sample below shows how a [`IgrTextarea`](mcp:get_api_reference?platform=react&component=IgrTextarea) could be integrated into a form.
 
 ```css
 /* shared styles are loaded from: */
@@ -217,7 +217,7 @@ root.render(<TextAreaFormIntegration />);
 
 ## Styling
 
-The [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgrTextarea`](mcp:get_api_reference?platform=react&component=IgrTextarea) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -302,9 +302,9 @@ root.render(<TextAreaStyling/>);
 
 ## API References
 
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
-- [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html)
-- [`IgrToast`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+- [`IgrTextarea`](mcp:get_api_reference?platform=react&component=IgrTextarea)
+- [`IgrToast`](mcp:get_api_reference?platform=react&component=IgrToast)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

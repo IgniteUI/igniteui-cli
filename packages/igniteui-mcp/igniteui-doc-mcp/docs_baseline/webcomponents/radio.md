@@ -28,7 +28,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html) and the [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html), you need to register them as follows:
+Before using the [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent) and the [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent), you need to register them as follows:
 
 ```ts
 import { defineComponents, IgcRadioComponent, IgcRadioGroupComponent } from 'igniteui-webcomponents';
@@ -39,7 +39,7 @@ defineComponents(IgcRadioComponent, IgcRadioGroupComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html) is as follows:
+The simplest way to start using the [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent) is as follows:
 
 ```html
 <igc-radio-group>
@@ -51,25 +51,25 @@ The simplest way to start using the [`IgcRadioComponent`](https://www.infragisti
 ```
 
 > [!WARNING]
-> The [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
+> The [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples
 
 ### Label
 
-To provide a meaningful label for the [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html), simply place some text between the opening and closing tags:
+To provide a meaningful label for the [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent), simply place some text between the opening and closing tags:
 
 ```html
 <igc-radio>Apple</igc-radio>
 ```
 
-You can specify if the label should be positioned before or after the [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html) button by setting the `label-position` attribute. Allowed values are `before` and `after`(default):
+You can specify if the label should be positioned before or after the [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent) button by setting the `label-position` attribute. Allowed values are `before` and `after`(default):
 
 ```html
 <igc-radio label-position="before">Apple</igc-radio>
 ```
 
-The [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html) can also be labelled by elements external to it. In this case the user is given full control to position and style the label in accordance to their needs.
+The [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent) can also be labelled by elements external to it. In this case the user is given full control to position and style the label in accordance to their needs.
 
 ```html
 <span id="radio-label">Label</span>
@@ -139,7 +139,7 @@ You can use the `disabled` attribute to disable the radio.
 
 ### Group Alignment
 
-The [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html) allows you to easily change the placement directionality of the radio buttons it contains using the `alignment` attribute. Allowed values are `vertical`(default) and `horizontal`.
+The [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent) allows you to easily change the placement directionality of the radio buttons it contains using the `alignment` attribute. Allowed values are `vertical`(default) and `horizontal`.
 
 ```html
 <igc-radio-group alignment="horizontal">
@@ -170,7 +170,7 @@ You can use the `name` and `value` attributes when using the radio with `Form`.
 
 ## Styling
 
-The [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html) component exposes several CSS parts (`base`, `control`, and `label`) to give you full control over its styling.
+The [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent) component exposes several CSS parts (`base`, `control`, and `label`) to give you full control over its styling.
 
 ```css
 igc-radio::part(control) {
@@ -225,8 +225,8 @@ igc-radio::part(control) {
 
 ## API References
 
-- [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html)
-- [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html)
+- [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)
+- [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

@@ -12,7 +12,7 @@ _tocName: Editing
 
 # Web Components Tree Grid Editing
 
-The Ignite UI for Web Components Cell Editing feature in Web Components Tree Grid provides an easy way to perform data manipulation operations like creating, updating, and deleting records. The [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) provides you with a powerful public API which allows you to customize the way these operations are performed. The data manipulation phases are:
+The Ignite UI for Web Components Cell Editing feature in Web Components Tree Grid provides an easy way to perform data manipulation operations like creating, updating, and deleting records. The [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) provides you with a powerful public API which allows you to customize the way these operations are performed. The data manipulation phases are:
 
 - [Cell Editing](cell-editing.md)
 - [Row Editing](row-editing.md)
@@ -20,21 +20,21 @@ The Ignite UI for Web Components Cell Editing feature in Web Components Tree Gri
 
 ## Setup
 
-In order to specify which edit mode should be enabled, the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) exposes the following boolean properties - [`editable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#editable) and [`rowEditable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#rowEditable).
+In order to specify which edit mode should be enabled, the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) exposes the following boolean properties - [`editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) and [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowEditable).
 
-The [`editable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#editable) property enables you to specify the following options:
+The [`editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) property enables you to specify the following options:
 
 - **false** - the editing for the corresponding column will be disabled. This is the default value.
 - **true** - the editing for the corresponding column will be enabled.
 
-> Keep in mind that if the column is not editable, you can still modify its value through the public API exposed by the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html).
+> Keep in mind that if the column is not editable, you can still modify its value through the public API exposed by the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
 
-The [`rowEditable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#rowEditable) property enables you to specify the following options:
+The [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowEditable) property enables you to specify the following options:
 
 - **false** - the row editing in the corresponding grid will be disabled. This is the default value.
 - **true** - the row editing in the corresponding grid will be enabled.
 
-In the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), if you set [`rowEditable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#rowEditable) property to true, and the [`editable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#editable) property is not explicitly defined for any column, the editing will be enabled for all the columns except the **primary key**.
+In the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), if you set [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowEditable) property to true, and the [`editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) property is not explicitly defined for any column, the editing will be enabled for all the columns except the **primary key**.
 
 <!--
 [Batch editing](batch-editing.md) in the grid can be enabled for both [cell editing](cell-editing.md) and [row editing](row-editing.md) modes. In order to set up batch editing it is necessary to provide to the grid a  **TransactionService**.
@@ -45,14 +45,14 @@ In the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-
 
 ### Editing Templates
 
-If you want to use a data type specific edit templates, you should specify the column's [`dataType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#dataType) property. So let's now see what are the default templates for each type:
+If you want to use a data type specific edit templates, you should specify the column's [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) property. So let's now see what are the default templates for each type:
 
-- For `string` data type, default template is using [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html).
-- For `number` data type, default template is using [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) type="number", so if you try to update cell to a value which can not be parsed to a number your change is going to be discarded, and the value in the cell will be set to 0.
-- For `date` data type, default template is using [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html)
+- For `string` data type, default template is using [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent).
+- For `number` data type, default template is using [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) type="number", so if you try to update cell to a value which can not be parsed to a number your change is going to be discarded, and the value in the cell will be set to 0.
+- For `date` data type, default template is using [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent)
 - For `dateTime` data type, default template is using `DateTimeEditor`. This editor will give you a mask directions for the input elements part of the DateTime object.
 - For `time` - data type, default template is using `TimePicker`.
-- For `boolean` data type, default template is using [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html).
+- For `boolean` data type, default template is using [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent).
 - For `currency` data type, default template is using `InputGroup` with prefix/suffix configuration based on application or grid locale settings.
 - For `percent` data type, default template is using `InputGroup` with suffix element that shows a preview of the edited value in percents.
 
@@ -72,19 +72,19 @@ The grid exposes a wide array of events that provide greater control over the ed
 
 | Event           | Description                                                                                                                                               | Arguments                  | Cancellable |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ----------- |
-| `RowEditEnter`  | If `RowEditing` is enabled, fires when a row enters edit mode                                                                                             | [`IgcGridEditEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridediteventargs.html)     | **true*-  |
-| `CellEditEnter` | Fires when a cell **enters edit mode** (after `RowEditEnter`)                                                                                             | [`IgcGridEditEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridediteventargs.html)     | **true*-  |
-| `CellEdit`      | If value is changed, fires just **before** a cell's value is **committed** (e.g. by pressing <kbd>ENTER</kbd>)                                                     | [`IgcGridEditEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridediteventargs.html)     | **true*-  |
-| `CellEditDone`  | If value is changed, fires **after** a cell has been edited and cell's value is **committed*-                                                           | [`IgcGridEditDoneEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgrideditdoneeventargs.html) | **false*- |
-| `CellEditExit`  | Fires when a cell **exits edit mode*-                                                                                                                   | [`IgcGridEditDoneEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgrideditdoneeventargs.html) | **false*- |
-| `RowEdit`       | If `RowEditing` is enabled, fires just before a row in edit mode's value is **committed** (e.g. by clicking the `Done` button on the Row Editing Overlay) | [`IgcGridEditEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridediteventargs.html)     | **true*-  |
-| `RowEditDone`   | If `RowEditing` is enabled, fires **after** a row has been edited and new row's value has been **committed**.                                            | [`IgcGridEditDoneEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgrideditdoneeventargs.html) | **false*- |
-| `RowEditExit`   | If `RowEditing` is enabled, fires when a row **exits edit mode*-                                                                                        | [`IgcGridEditDoneEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgrideditdoneeventargs.html) | **false*- |
+| `RowEditEnter`  | If `RowEditing` is enabled, fires when a row enters edit mode                                                                                             | [`IgcGridEditEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditEventArgs)     | **true*-  |
+| `CellEditEnter` | Fires when a cell **enters edit mode** (after `RowEditEnter`)                                                                                             | [`IgcGridEditEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditEventArgs)     | **true*-  |
+| `CellEdit`      | If value is changed, fires just **before** a cell's value is **committed** (e.g. by pressing <kbd>ENTER</kbd>)                                                     | [`IgcGridEditEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditEventArgs)     | **true*-  |
+| `CellEditDone`  | If value is changed, fires **after** a cell has been edited and cell's value is **committed*-                                                           | [`IgcGridEditDoneEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditDoneEventArgs) | **false*- |
+| `CellEditExit`  | Fires when a cell **exits edit mode*-                                                                                                                   | [`IgcGridEditDoneEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditDoneEventArgs) | **false*- |
+| `RowEdit`       | If `RowEditing` is enabled, fires just before a row in edit mode's value is **committed** (e.g. by clicking the `Done` button on the Row Editing Overlay) | [`IgcGridEditEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditEventArgs)     | **true*-  |
+| `RowEditDone`   | If `RowEditing` is enabled, fires **after** a row has been edited and new row's value has been **committed**.                                            | [`IgcGridEditDoneEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditDoneEventArgs) | **false*- |
+| `RowEditExit`   | If `RowEditing` is enabled, fires when a row **exits edit mode*-                                                                                        | [`IgcGridEditDoneEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditDoneEventArgs) | **false*- |
 
 ### Event Cancellation
 
 - `RowEditEnter` - Neither `Row` nor `Cell` will enter edit mode.
-- `CellEditEnter` - Prevents entering cell edit. If [`rowEditable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#rowEditable) is enabled, row edit will be triggered, although cell edit will remain forbidden.
+- `CellEditEnter` - Prevents entering cell edit. If [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowEditable) is enabled, row edit will be triggered, although cell edit will remain forbidden.
 - `CellEdit` - Allowed `Cell` and/or `Row` edit, hitting **Done** button or **Enter** won't commit the value or row transaction. Cell editing and Row editing won't be closed until **Cancel** button is clicked.
 - `RowEdit` - Committing cell is possible, but not the whole row. The row will stay in edit mode and the row transaction will be considered open. Hitting **Done** does not commit or close the row. **Cancel** button closes the editing process and the transaction without committing the changes.
 
@@ -162,7 +162,7 @@ public onSorting(event: IgcSortingEventArgs) {
 
 ## API References
 
-- [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)
+- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
 
 ## Additional Resources
 

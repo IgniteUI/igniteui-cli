@@ -13,11 +13,11 @@ _premium: true
 
 # Blazor Hierarchical Grid Column Pinning
 
-The Ignite UI for Blazor Column Pinning feature in Blazor Hierarchical Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html). There’s an integrated UI for Column Pinning, accessible via the Blazor Hierarchical Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
+The Ignite UI for Blazor Column Pinning feature in Blazor Hierarchical Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). There’s an integrated UI for Column Pinning, accessible via the Blazor Hierarchical Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
 
 ## Blazor Hierarchical Grid Column Pinning Example
 
-This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html).
+This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -290,11 +290,11 @@ public class HierarchicalCustomersData
 
 ## Column Pinning API
 
-Column pinning is controlled through the [`Pinned`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Pinned) property of the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html). Pinned columns are rendered on the left side of the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) body.
+Column pinning is controlled through the [`Pinned`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Pinned) property of the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). Pinned columns are rendered on the left side of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) body.
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-You may also use the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)'s [`PinColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_PinColumn) or [`UnpinColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_UnpinColumn) methods of the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) to pin or unpin columns by their field name:
+You may also use the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)'s [`PinColumn`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=PinColumn) or [`UnpinColumn`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=UnpinColumn) methods of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) to pin or unpin columns by their field name:
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
@@ -306,7 +306,7 @@ A column is pinned to the right of the rightmost pinned column. Changing the ord
 
 ## Pinning Position
 
-You can change the column pinning position via the [`Pinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_Pinning) configuration option. It allows you to set the columns position to either Start or End.
+You can change the column pinning position via the [`Pinning`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=Pinning) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
 
 ```razor
@@ -1325,7 +1325,7 @@ public class HierarchicalCustomersData
 
 ## Pinning Limitations
 
-- Setting column widths in percentage (%) explicitly makes the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html).
+- Setting column widths in percentage (%) explicitly makes the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 
 <!-- WebComponents, Blazor, React -->
 
@@ -1624,8 +1624,8 @@ public class HierarchicalCustomersData
 
 ## API References
 
-- [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
+- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 
 ## Additional Resources
 

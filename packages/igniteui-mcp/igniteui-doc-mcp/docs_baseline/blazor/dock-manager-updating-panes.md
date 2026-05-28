@@ -212,4 +212,4 @@ this.dockManager.layout = {
 
 ## API References
 
-- [`IgbDockManager`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDockManager.html)
+- [`IgbDockManager`](mcp:get_api_reference?platform=blazor&component=IgbDockManager)

@@ -18,9 +18,9 @@ The scroll strategy determines how the scrolling is handled in the provided `Igx
 
 Every scroll strategy has the following methods:
 
-- [`initialize`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iscrollstrategy.html#initialize) - initializes the scroll strategy. It needs a reference of the document, the overlay service and the id of the component rendered
-- [`attach`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iscrollstrategy.html#attach) - attaches the scroll strategy to the specified element or to the document
-- [`detach`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iscrollstrategy.html#detach) - detaches the scroll strategy
+- [`initialize`](mcp:get_api_reference?platform=angular&component=IScrollStrategy&member=initialize) - initializes the scroll strategy. It needs a reference of the document, the overlay service and the id of the component rendered
+- [`attach`](mcp:get_api_reference?platform=angular&component=IScrollStrategy&member=attach) - attaches the scroll strategy to the specified element or to the document
+- [`detach`](mcp:get_api_reference?platform=angular&component=IScrollStrategy&member=detach) - detaches the scroll strategy
 
 ```typescript
 this.scrollStrategy.initialize(document, overlayService, id);
@@ -32,7 +32,7 @@ this.scrollStrategy.detach();
 
 ### Getting Started
 
-The scroll strategy is passed as a property in the [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) parameter when the [`overlay.attach()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#attach) method is called:
+The scroll strategy is passed as a property in the [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) parameter when the [`overlay.attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method is called:
 
 ```typescript
 // Initializing and using overlay settings
@@ -47,7 +47,7 @@ const overlayId = overlay.attach(dummyElement, overlaySettings);
 
 <div class="divider"></div>
 
-To change the scrolling strategy, used by the overlay, override the [`scrollStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iscrollstrategy.html) property of the [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) object passed to the overlay. If a strategy was already attached you should detach the previously generated ID:
+To change the scrolling strategy, used by the overlay, override the [`scrollStrategy`](mcp:get_api_reference?platform=angular&component=IScrollStrategy) property of the [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) object passed to the overlay. If a strategy was already attached you should detach the previously generated ID:
 
 ```typescript
 // overlaySettings is an existing object of type OverlaySettings
@@ -72,8 +72,8 @@ import { NoOpScrollStrategy } from "./scroll/NoOpScrollStrategy";
 
 ### Scroll Strategies
 
-The scroll strategies can be passed to the [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) object to determine how the overlay should handle scrolling.
-The demo below illustrates the difference between the separate [`scrollStrategies`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iscrollstrategy.html):
+The scroll strategies can be passed to the [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) object to determine how the overlay should handle scrolling.
+The demo below illustrates the difference between the separate [`scrollStrategies`](mcp:get_api_reference?platform=angular&component=IScrollStrategy):
 
 ```typescript
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef, inject } from '@angular/core';
@@ -301,10 +301,10 @@ span:hover {
 
 ## Modal
 
-The [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) object also allows a boolean property ([`modal`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#modal)) to be passed. This controls how the overlay will be displayed:
+The [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) object also allows a boolean property ([`modal`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=modal)) to be passed. This controls how the overlay will be displayed:
 
-- If the [`modal`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#modal) property is `false`, the element will be attached to the DOM foreground but everything will still be active and interactable - e.g. scrolling, clicking, etc.
-- If the [`modal`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#modal) property is `true`, the element will be attached to the DOM foreground and an overlay blocker will wrap behind it, stopping propagation of all events:
+- If the [`modal`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=modal) property is `false`, the element will be attached to the DOM foreground but everything will still be active and interactable - e.g. scrolling, clicking, etc.
+- If the [`modal`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=modal) property is `true`, the element will be attached to the DOM foreground and an overlay blocker will wrap behind it, stopping propagation of all events:
 
 
 ```typescript
@@ -535,12 +535,12 @@ span:hover {
 
 ## API References
 
-- [IScrollStrategy](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iscrollstrategy.html)
+- [IScrollStrategy](mcp:get_api_reference?platform=angular&component=IScrollStrategy)
 
 ## Additional Resources
 
 - [Overlay Main Topic](overlay.md)
 - [Position strategies](overlay-position.md)
 - [Styling Topic](overlay-styling.md)
-- [IgxOverlayService](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html)
+- [IgxOverlayService](mcp:get_api_reference?platform=angular&component=IgxOverlayService)
 - [IgxOverlay Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)

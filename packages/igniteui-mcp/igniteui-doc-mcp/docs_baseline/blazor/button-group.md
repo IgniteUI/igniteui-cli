@@ -9,7 +9,7 @@ _tocName: Button Group
 
 # Blazor Button Group Overview
 
-The Blazor Button Group component is used to organize [`IgbToggleButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html)'s into styled button groups with horizontal/vertical alignment, single/multiple selection and toggling.
+The Blazor Button Group component is used to organize [`IgbToggleButton`](mcp:get_api_reference?platform=blazor&component=IgbToggleButton)'s into styled button groups with horizontal/vertical alignment, single/multiple selection and toggling.
 
 ## Blazor Button Example
 
@@ -73,7 +73,7 @@ The Blazor Button Group component is used to organize [`IgbToggleButton`](https:
 
 ## Usage
 
-Before using the [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html), you need to register it as follows:
+Before using the [`IgbButtonGroup`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -81,7 +81,7 @@ Before using the [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api
 builder.Services.AddIgniteUIBlazor(typeof(IgbButtonGroupModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbButtonGroup`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -89,9 +89,9 @@ You will also need to link an additional CSS file to apply the styling to the [`
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Now that you have the Ignite UI for Blazor Button Group imported, you can start with a basic configuration of the [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html) and its buttons.
+Now that you have the Ignite UI for Blazor Button Group imported, you can start with a basic configuration of the [`IgbButtonGroup`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup) and its buttons.
 
-Use the [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html) selector to wrap your [`IgbToggleButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html)s and display them into a button group. If you want a button to be selected by default, use the [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html#IgniteUI_Blazor_Controls_IgbToggleButton_Selected) attribute:
+Use the [`IgbButtonGroup`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup) selector to wrap your [`IgbToggleButton`](mcp:get_api_reference?platform=blazor&component=IgbToggleButton)s and display them into a button group. If you want a button to be selected by default, use the [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbToggleButton&member=Selected) attribute:
 
 ```razor
 <IgbButtonGroup>
@@ -118,7 +118,7 @@ Use the [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/Igni
 
 ### Alignment
 
-Use the [`Alignment`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html#IgniteUI_Blazor_Controls_IgbButtonGroup_Alignment) property to set the orientation of the buttons in the button group.
+Use the [`Alignment`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup&member=Alignment) property to set the orientation of the buttons in the button group.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -161,13 +161,13 @@ Use the [`Alignment`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 
 ### Selection
 
-In order to configure the Ignite UI for Blazor [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html) selection, you could use its [`Selection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html#IgniteUI_Blazor_Controls_IgbButtonGroup_Selection) property. This property accepts the following three modes:
+In order to configure the Ignite UI for Blazor [`IgbButtonGroup`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup) selection, you could use its [`Selection`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup&member=Selection) property. This property accepts the following three modes:
 
 - **single** - default selection mode of the button group. A single button can be selected/deselected by the user.
 - **single-required** - mimics a radio group behavior. Only one button can be selected and once initial selection is made, deselection is not possible through user interaction.
 - **multiple** - multiple buttons in the group can be selected and deselected.
 
-The sample below demonstrates the exposed [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html) selection modes:
+The sample below demonstrates the exposed [`IgbButtonGroup`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup) selection modes:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -254,7 +254,7 @@ The sample below demonstrates the exposed [`IgbButtonGroup`](https://www.infragi
 }
 ```
 
-A [`IgbToggleButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html) could be marked as selected via its [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html#IgniteUI_Blazor_Controls_IgbToggleButton_Selected) attribute or through the [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html) [`SelectedItems`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html#IgniteUI_Blazor_Controls_IgbButtonGroup_SelectedItems) attribute:
+A [`IgbToggleButton`](mcp:get_api_reference?platform=blazor&component=IgbToggleButton) could be marked as selected via its [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbToggleButton&member=Selected) attribute or through the [`IgbButtonGroup`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup) [`SelectedItems`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup&member=SelectedItems) attribute:
 
 ```razor
 <IgbButtonGroup SelectedItems='["bold"]'>
@@ -274,7 +274,7 @@ A [`IgbToggleButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 ```
 
 > [!Note]
-> Setting [`IgbToggleButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html) [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html#IgniteUI_Blazor_Controls_IgbToggleButton_Value) attribute is mandatory for using the [`SelectedItems`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html#IgniteUI_Blazor_Controls_IgbButtonGroup_SelectedItems) property of the [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html).
+> Setting [`IgbToggleButton`](mcp:get_api_reference?platform=blazor&component=IgbToggleButton) [`Value`](mcp:get_api_reference?platform=blazor&component=IgbToggleButton&member=Value) attribute is mandatory for using the [`SelectedItems`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup&member=SelectedItems) property of the [`IgbButtonGroup`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup).
 
 ### Size
 
@@ -309,8 +309,8 @@ The `--ig-size` CSS custom property can be used to control the size of the butto
 
 ## Styling
 
-The [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html) component exposes `group` CSS part that allows us to style the button group container.
-Also, the [`IgbToggleButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html)s provide `toggle` CSS part that could be used to style the button element.
+The [`IgbButtonGroup`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup) component exposes `group` CSS part that allows us to style the button group container.
+Also, the [`IgbToggleButton`](mcp:get_api_reference?platform=blazor&component=IgbToggleButton)s provide `toggle` CSS part that could be used to style the button element.
 
 ```css
 igc-button-group::part(group) {
@@ -384,10 +384,10 @@ igc-toggle-button::part(toggle) {
 
 ## API Reference
 
-- [`IgbButtonGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonGroup.html)
-- [`IgbToggleButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToggleButton.html)
-- [`IgbRipple`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRipple.html)
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
+- [`IgbButtonGroup`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup)
+- [`IgbToggleButton`](mcp:get_api_reference?platform=blazor&component=IgbToggleButton)
+- [`IgbRipple`](mcp:get_api_reference?platform=blazor&component=IgbRipple)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

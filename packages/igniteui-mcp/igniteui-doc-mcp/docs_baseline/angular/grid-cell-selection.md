@@ -7,7 +7,7 @@ _tocName: Cell selection
 _premium: true
 ---
 # Angular Cell Selection
-The selection feature enables rich data select capabilities in the Material UI based Grid. Variety of events and single select actions are available thanks to the powerful API and easy to use methods. The Grid now supports three modes for cell selection, and you can easily switch between them by changing [`cellSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#cellSelection) property. You can disable cell selection, you can _select only one cell within the grid_ or to _select multiple cells in the grid_, which is provided as default option.
+The selection feature enables rich data select capabilities in the Material UI based Grid. Variety of events and single select actions are available thanks to the powerful API and easy to use methods. The Grid now supports three modes for cell selection, and you can easily switch between them by changing [`cellSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellSelection) property. You can disable cell selection, you can _select only one cell within the grid_ or to _select multiple cells in the grid_, which is provided as default option.
 But let's dive deeper in each of these options.
 ## Angular Cell Selection Example
 The sample below demonstrates the three types of Grid's **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
@@ -331,7 +331,7 @@ export class GridMultiCellSelectionComponent {
 ### Grid Single Selection
 When you set the `[cellSelection]="'single'"`, this allows you to have only one selected cell in the grid at a time. Also the mode `mouse drag` will not work and instead of selecting a cell, this will make default text selection.
 >[!NOTE]
-> When single cell is selected [`selected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#selected) event is emitted, no matter if the `selection mode` is `single` or `multiple`. In multi-cell selection mode when you select a range of cells [`rangeSelected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rangeSelected) event is emitted.
+> When single cell is selected [`selected`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selected) event is emitted, no matter if the `selection mode` is `single` or `multiple`. In multi-cell selection mode when you select a range of cells [`rangeSelected`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rangeSelected) event is emitted.
 ### Grid None selection
 If you want to disable cell selection you can just set `[cellSelection]="'none'"` property. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the `activation style` is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
 ## Keyboard navigation interactions
@@ -353,13 +353,13 @@ If you want to disable cell selection you can just set `[cellSelection]="'none'"
 Below are the methods that you can use in order to select ranges, clear selection or get selected cells data.
 ### Select range
 @@if (igxName === 'IgxGrid') {
-[`selectRange(range)`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#selectRange) - Select a range of cells with the API. `rowStart` and `rowEnd` should use row indexes and `columnStart` and `columnEnd` could use column index or column data field value.
+[`selectRange(range)`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selectRange) - Select a range of cells with the API. `rowStart` and `rowEnd` should use row indexes and `columnStart` and `columnEnd` could use column index or column data field value.
 }
 @@if (igxName === 'IgxTreeGrid') {
-[`selectRange(range)`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#selectRange) - Select a range of cells with the API. `rowStart` and `rowEnd` should use row indexes and `columnStart` and `columnEnd` could use column index or column data field value.
+[`selectRange(range)`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=selectRange) - Select a range of cells with the API. `rowStart` and `rowEnd` should use row indexes and `columnStart` and `columnEnd` could use column index or column data field value.
 }
 @@if (igxName === 'IgxHierarchicalGrid') {
-[`selectRange(range)`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#selectRange) - Select a range of cells with the API. `rowStart` and `rowEnd` should use row indexes and `columnStart` and `columnEnd` could use column index or column data field value.
+[`selectRange(range)`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=selectRange) - Select a range of cells with the API. `rowStart` and `rowEnd` should use row indexes and `columnStart` and `columnEnd` could use column index or column data field value.
 }
 ```typescript
 const range = { rowStart: 2, rowEnd: 2, columnStart: 1, columnEnd: 1 };
@@ -372,23 +372,23 @@ this.grid1.selectRange(range);
 > Select range is additive operation. It will not clear your previous selection.
 ### Clear cell selection
 @@if (igxName === 'IgxGrid') {
-[`clearCellSelection()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#clearCellSelection) will clear the current cell selection.
+[`clearCellSelection()`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clearCellSelection) will clear the current cell selection.
 }
 @@if (igxName === 'IgxTreeGrid') {
-[`clearCellSelection()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#clearCellSelection) will clear the current cell selection.
+[`clearCellSelection()`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=clearCellSelection) will clear the current cell selection.
 }
 @@if (igxName === 'IgxHierarchicalGrid') {
-[`clearCellSelection()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#clearCellSelection) will clear the current cell selection.
+[`clearCellSelection()`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=clearCellSelection) will clear the current cell selection.
 }
 ### Get selected data
 @@if (igxName === 'IgxGrid') {
-[`getSelectedData()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
+[`getSelectedData()`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
 }
 @@if (igxName === 'IgxTreeGrid') {
-[`getSelectedData()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
+[`getSelectedData()`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
 }
 @@if (igxName === 'IgxHierarchicalGrid') {
-[`getSelectedData()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
+[`getSelectedData()`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
 }
 1. If three different single cells are selected:
 
@@ -445,17 +445,17 @@ this.grid1.selectRange(range);
     ```
 @@if (igxName === 'IgxGrid') {
 > [!NOTE]
-> [`selectedCells()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#selectedCells) will return cells from all visible rows (rows in the grid's view port) and from all columns, including columns that are out of view. [`getSelectedData()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#getSelectedData) will also return the selected cell data.
+> [`selectedCells()`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selectedCells) will return cells from all visible rows (rows in the grid's view port) and from all columns, including columns that are out of view. [`getSelectedData()`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=getSelectedData) will also return the selected cell data.
 > [`getSelectedRanges(): GridSelectionRange[]`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#getSelectedRanges) will return the current selected ranges in the grid from both keyboard and pointer interactions. The type is GridSelectionRange[].
 }
 @@if (igxName === 'IgxTreeGrid') {
 > [!NOTE]
-> [`selectedCells()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#selectedCells) will return cells from all visible rows (rows in the grid's view port) and from all columns, including columns that are out of view. [`getSelectedData()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#getSelectedData) will also return the selected cell data.
+> [`selectedCells()`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=selectedCells) will return cells from all visible rows (rows in the grid's view port) and from all columns, including columns that are out of view. [`getSelectedData()`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=getSelectedData) will also return the selected cell data.
 > [`getSelectedRanges(): GridSelectionRange[]`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#getSelectedRanges) will return the current selected ranges in the grid from both keyboard and pointer interactions. The type is GridSelectionRange[].
 }
 @@if (igxName === 'IgxHierarchicalGrid') {
 > [!NOTE]
-> [`selectedCells()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#selectedCells) will return cells from all visible rows (rows in the grid's view port) and from all columns, including columns that are out of view. [`getSelectedData()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#getSelectedData) will also return the selected cell data.
+> [`selectedCells()`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=selectedCells) will return cells from all visible rows (rows in the grid's view port) and from all columns, including columns that are out of view. [`getSelectedData()`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=getSelectedData) will also return the selected cell data.
 > [`getSelectedRanges(): GridSelectionRange[]`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#getSelectedRanges) will return the current selected ranges in the grid from both keyboard and pointer interactions. The type is GridSelectionRange[].
 }
 ## Features integration
@@ -553,9 +553,9 @@ $custom-grid-theme: grid-theme(
 >[!NOTE]
 >The sample will not be affected by the selected global theme from `Change Theme`.
 ## API References
-- [IgxGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
-_[IgxGridRow API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridrow.html)
-- [IgxGridCell API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
+- [IgxGridComponent API](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+_[IgxGridRow API](mcp:get_api_reference?platform=angular&component=IgxGridRow)
+- [IgxGridCell API](mcp:get_api_reference?platform=angular&component=IgxGridCell)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

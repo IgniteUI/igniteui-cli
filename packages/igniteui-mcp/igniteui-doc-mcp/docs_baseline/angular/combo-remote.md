@@ -14,7 +14,7 @@ The Ignite UI for Angular ComboBox Component exposes an API that allows binding 
 
 ## Angular ComboBox Remote Binding Example
 
-The sample below demonstrates remote binding using the [dataPreLoad](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#dataPreLoad) property to load new chunk of remote data:
+The sample below demonstrates remote binding using the [dataPreLoad](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=dataPreLoad) property to load new chunk of remote data:
 
 
 ```typescript
@@ -195,7 +195,7 @@ export class AppModule {}
 
 ### Define Remote Service
 
-When binding a combobox to remote data, we need to have an available service that will load data on demand from a server. The combobox component exposes the [virtualizationState](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#virtualizationState) property which gives the current state of a combobox - the first index and the number of items that need to be loaded. In order to show properly the scroll size, the [totalItemCount](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#totalItemCount) property should have value that corresponds to the total items on the server.
+When binding a combobox to remote data, we need to have an available service that will load data on demand from a server. The combobox component exposes the [virtualizationState](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=virtualizationState) property which gives the current state of a combobox - the first index and the number of items that need to be loaded. In order to show properly the scroll size, the [totalItemCount](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=totalItemCount) property should have value that corresponds to the total items on the server.
 
 The code below defines a simple service that has a `getData()` method, which receives combobox's current state information and returns data as an observable:
 
@@ -383,7 +383,7 @@ When the combobox is bound to remote data, setting value/selected items through 
 
 <div class="divider--half"></div>
 
-- [IgxComboComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcombocomponent.html)
+- [IgxComboComponent](mcp:get_api_reference?platform=angular&component=IgxComboComponent)
 - [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)
 
 ## Additional Resources

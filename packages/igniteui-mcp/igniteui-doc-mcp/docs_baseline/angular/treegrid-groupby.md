@@ -9,7 +9,7 @@ _premium: true
 
 # Angular Tree Grid Group By
 
-If you have non-hierarchical data and you want to **group by** one or more columns and populate the parent rows with **aggregated values**, you could use the [`IgxTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) along with `treeGridGrouping` pipe and the UI component with selector `igx-tree-grid-group-by-area`.
+If you have non-hierarchical data and you want to **group by** one or more columns and populate the parent rows with **aggregated values**, you could use the [`IgxTreeGridComponent`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) along with `treeGridGrouping` pipe and the UI component with selector `igx-tree-grid-group-by-area`.
 
 The `treeGridGrouping` pipe groups the data based on the provided parameters and the resulting hierarchy is displayed in a separate column. The pipe can also calculate aggregated values for the generated parent rows if aggregations are provided. Here is an example of how to use the pipe in the template:
 
@@ -22,7 +22,7 @@ The `treeGridGrouping` pipe groups the data based on the provided parameters and
 
 The pipe arguments are the following:
 
-- groupingExpressions - an array of [`IGroupingExpression`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igroupingexpression.html) objects which contains information about the fields used to generate the hierarchy and the sorting details for each group
+- groupingExpressions - an array of [`IGroupingExpression`](mcp:get_api_reference?platform=angular&component=IGroupingExpression) objects which contains information about the fields used to generate the hierarchy and the sorting details for each group
 - groupKey - a string value for the name of the generated hierarchy column
 - childDataKey - a string value for the field where the child collection of the generated parent rows is stored
 - grid - `IgxTreeGridComponent` that is used for the grouping
@@ -41,7 +41,7 @@ The UI component with selector `igx-tree-grid-group-by-area` handles the UI inte
 The component's inputs are the following:
 
 - grid - `IgxTreeGridComponent` that is used for the grouping
-- expressions - an array of [`IGroupingExpression`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igroupingexpression.html) objects which contains the fields used to generate the hierarchy
+- expressions - an array of [`IGroupingExpression`](mcp:get_api_reference?platform=angular&component=IGroupingExpression) objects which contains the fields used to generate the hierarchy
 - hideGroupedColumns - a boolean value indicating whether to hide the columns by which grouping was performed
 - dropAreaTemplate - a template for the drop area that can be used to override the default drop area template
 - dropAreaMessage - a string that can be used to override the default message for the default drop area template
@@ -928,7 +928,7 @@ Here is an example of how to use load on demand:
         <igx-column [field]="groupColumnKey"></igx-column>
 ```
 
-In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`loadChildrenOnDemand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#loadChildrenOnDemand) - the children data is retrieved from the server and it is assigned to the requested parent row based on the grouping parameters.
+In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`loadChildrenOnDemand`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=loadChildrenOnDemand) - the children data is retrieved from the server and it is assigned to the requested parent row based on the grouping parameters.
 
 ```typescript
 public groupingExpressions: IGroupingExpression[] = [
@@ -974,7 +974,7 @@ private reloadData() {
 
 <div class="divider--half"></div>
 
-- [IgxTreeGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 
 ## Additional Resources

@@ -9,7 +9,7 @@ _tocName: Button Group
 
 # Web Components Button Group Overview
 
-The Web Components Button Group component is used to organize [`IgcToggleButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html)'s into styled button groups with horizontal/vertical alignment, single/multiple selection and toggling.
+The Web Components Button Group component is used to organize [`IgcToggleButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToggleButtonComponent)'s into styled button groups with horizontal/vertical alignment, single/multiple selection and toggling.
 
 ## Web Components Button Example
 
@@ -33,7 +33,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcButtonGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcButtonGroupComponent } from "igniteui-webcomponents";
@@ -44,9 +44,9 @@ defineComponents(IgcButtonGroupComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Now that you have the Ignite UI for Web Components Button Group imported, you can start with a basic configuration of the [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html) and its buttons.
+Now that you have the Ignite UI for Web Components Button Group imported, you can start with a basic configuration of the [`IgcButtonGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent) and its buttons.
 
-Use the [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html) selector to wrap your [`IgcToggleButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html)s and display them into a button group. If you want a button to be selected by default, use the [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html#selected) attribute:
+Use the [`IgcButtonGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent) selector to wrap your [`IgcToggleButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToggleButtonComponent)s and display them into a button group. If you want a button to be selected by default, use the [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcToggleButtonComponent&member=selected) attribute:
 
 ```html
  <igc-button-group>
@@ -76,7 +76,7 @@ Use the [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite
 
 ### Alignment
 
-Use the [`alignment`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html#alignment) property to set the orientation of the buttons in the button group.
+Use the [`alignment`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent&member=alignment) property to set the orientation of the buttons in the button group.
 
 ```css
 /* shared styles are loaded from: */
@@ -92,13 +92,13 @@ igc-ripple {
 
 ### Selection
 
-In order to configure the Ignite UI for Web Components [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html) selection, you could use its [`selection`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html#selection) property. This property accepts the following three modes:
+In order to configure the Ignite UI for Web Components [`IgcButtonGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent) selection, you could use its [`selection`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent&member=selection) property. This property accepts the following three modes:
 
 - **single** - default selection mode of the button group. A single button can be selected/deselected by the user.
 - **single-required** - mimics a radio group behavior. Only one button can be selected and once initial selection is made, deselection is not possible through user interaction.
 - **multiple** - multiple buttons in the group can be selected and deselected.
 
-The sample below demonstrates the exposed [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html) selection modes:
+The sample below demonstrates the exposed [`IgcButtonGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent) selection modes:
 
 ```css
 /* shared styles are loaded from: */
@@ -121,7 +121,7 @@ igc-ripple {
 }
 ```
 
-A [`IgcToggleButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html) could be marked as selected via its [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html#selected) attribute or through the [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html) [`selectedItems`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html#selectedItems) attribute:
+A [`IgcToggleButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToggleButtonComponent) could be marked as selected via its [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcToggleButtonComponent&member=selected) attribute or through the [`IgcButtonGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent) [`selectedItems`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent&member=selectedItems) attribute:
 
 ```html
 <igc-button-group selected-items='["bold"]'>
@@ -143,7 +143,7 @@ A [`IgcToggleButtonComponent`](https://www.infragistics.com/products/ignite-ui-w
 ```
 
 > [!Note]
-> Setting [`IgcToggleButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html) [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html#value) attribute is mandatory for using the [`selectedItems`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html#selectedItems) property of the [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html).
+> Setting [`IgcToggleButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToggleButtonComponent) [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcToggleButtonComponent&member=value) attribute is mandatory for using the [`selectedItems`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent&member=selectedItems) property of the [`IgcButtonGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent).
 
 ### Size
 
@@ -156,8 +156,8 @@ The `--ig-size` CSS custom property can be used to control the size of the butto
 
 ## Styling
 
-The [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html) component exposes `group` CSS part that allows us to style the button group container.
-Also, the [`IgcToggleButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html)s provide `toggle` CSS part that could be used to style the button element.
+The [`IgcButtonGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent) component exposes `group` CSS part that allows us to style the button group container.
+Also, the [`IgcToggleButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToggleButtonComponent)s provide `toggle` CSS part that could be used to style the button element.
 
 ```css
 igc-button-group::part(group) {
@@ -214,10 +214,10 @@ igc-toggle-button[selected]::part(toggle) {
 
 ## API Reference
 
-- [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html)
-- [`IgcToggleButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html)
-- [`IgcRippleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcripplecomponent.html)
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
+- [`IgcButtonGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent)
+- [`IgcToggleButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToggleButtonComponent)
+- [`IgcRippleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

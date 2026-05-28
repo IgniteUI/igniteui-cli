@@ -54,14 +54,14 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput), its necessary CSS, and register its module, like so:
 
 ```tsx
 import { IgrInput } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-After we import the [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) component we are ready to start using it, so let's add our first Input.
+After we import the [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) component we are ready to start using it, so let's add our first Input.
 
 ```tsx
 <IgrInput type="email" label="Subscribe"></IgrInput>
@@ -156,7 +156,7 @@ root.render(<InputHelperText/>);
 
 ## Input Sizing
 
-We can allow the user to change the size of the [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) using the `--ig-size` CSS variable. То do this, we will add some radio buttons to display all size values. This way whenever one gets selected, we will change the size of the Input:
+We can allow the user to change the size of the [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) using the `--ig-size` CSS variable. То do this, we will add some radio buttons to display all size values. This way whenever one gets selected, we will change the size of the Input:
 
 ```css
 .button-container {
@@ -241,7 +241,7 @@ In the sample above we have demonstrated the use of the following attributes:
 
 ## Styling
 
-The [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -332,9 +332,9 @@ root.render(<InputStyling/>);
 
 ## API References
 
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
-- [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html)
-- [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
+- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

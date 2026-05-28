@@ -34,7 +34,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcExpansionPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html), you need to register it as follows:
+Before using the [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent), you need to register it as follows:
 
 ```ts
 import {defineComponents, IgcExpansionPanelComponent} from 'igniteui-webcomponents';
@@ -44,7 +44,7 @@ defineComponents(IgcExpansionPanelComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcExpansionPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html) is as follows:
+The simplest way to start using the [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent) is as follows:
 
 ```html
 <igc-expansion-panel>
@@ -95,11 +95,11 @@ span#fired-event {
 
 ## Component Customization
 
-The [`IgcExpansionPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html) control allows all sorts of content to be added inside of its body. It can render [input](../inputs/input.md), charts and even other expansion panels!
+The [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent) control allows all sorts of content to be added inside of its body. It can render [input](../inputs/input.md), charts and even other expansion panels!
 
-The [`IgcExpansionPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html) allows for easy customization of the header through the exposed **title**, **subTitle** and **indicator** slots.
+The [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent) allows for easy customization of the header through the exposed **title**, **subTitle** and **indicator** slots.
 
-Configuring the position of the expansion indicator can be done through the [`indicatorPosition`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html#indicatorPosition) property of the Expansion Panel. The possible options are **start**, **end** or **none**.
+Configuring the position of the expansion indicator can be done through the [`indicatorPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent&member=indicatorPosition) property of the Expansion Panel. The possible options are **start**, **end** or **none**.
 
 The next code sample demonstrates how to configure the component's button to go on the **right**side.
 
@@ -145,7 +145,7 @@ The Ignite UI for Web Components Expansion Panel keyboard navigation is complian
 
 ## Styling
 
-The [`IgcExpansionPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html) component exposes several CSS parts, giving you full control over its style:
+The [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent) component exposes several CSS parts, giving you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -240,7 +240,7 @@ igc-expansion-panel {
 
 ## API References
 
-- [`IgcExpansionPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html)
+- [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

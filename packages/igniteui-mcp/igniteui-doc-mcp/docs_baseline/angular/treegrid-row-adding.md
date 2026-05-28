@@ -119,7 +119,7 @@ import { IgxTreeGridModule } from 'igniteui-angular';
 })
 export class AppModule {}
 ```
-Then define a Tree Grid with bound data source and [`rowEditable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowEditable) set to true and an [Action Strip](../action-strip.md) component with editing actions enabled. The [`addRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgrideditingactionscomponent.html#addRow) input controls the visibility of the button that spawns the row adding UI.
+Then define a Tree Grid with bound data source and [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditable) set to true and an [Action Strip](../action-strip.md) component with editing actions enabled. The [`addRow`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent&member=addRow) input controls the visibility of the button that spawns the row adding UI.
 ```html
 <igx-tree-grid igxPreventDocumentScroll [data]="data"
     primaryKey="ID" foreignKey="ParentID" [rowEditable]="true">
@@ -141,10 +141,10 @@ Then define a Tree Grid with bound data source and [`rowEditable`](https://www.i
 > [!NOTE]
 > Setting primary key is mandatory for row adding operations.
 > [!NOTE]
-> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`editable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#editable) column's input to `false`.
+> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`editable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable) column's input to `false`.
 > [!NOTE]
-> The IgxGridEditingActions inputs controlling the visibility of the add row and add child buttons may use the action strip context (which is of type [`RowType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/rowtype.html)) to fine tune which records the buttons show for.
-The internal [`IgxBaseTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbasetransactionservice.html) is automatically provided for Tree Grid. It holds pending cell changes until the row state is submitted or cancelled.
+> The IgxGridEditingActions inputs controlling the visibility of the add row and add child buttons may use the action strip context (which is of type [`RowType`](mcp:get_api_reference?platform=angular&component=RowType)) to fine tune which records the buttons show for.
+The internal [`IgxBaseTransactionService`](mcp:get_api_reference?platform=angular&component=IgxBaseTransactionService) is automatically provided for Tree Grid. It holds pending cell changes until the row state is submitted or cancelled.
 ## Start Row Adding Programmatically
 Tree Grid allows to programmatically spawn the add row UI by using two different public methods. One that accepts a row ID for specifying the row under which the UI should spawn and another that works by index. You can use these methods to spawn the UI anywhere within the current data view. Changing the page or specifying a row that is e.g. filtered out is not supported.
 Using `beginAddRowById` requires you to specify the row to use as context for the operation by its rowID (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. The second parameter controls if the row is added as a child to the context row or as a sibling. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
@@ -199,7 +199,7 @@ In most remote data scenarios the Primary Key assignment happens on the create s
     Once the create request is successfully completed and returns the added record data, you can replace that record's id in the local data record instance.
 - If the Tree Grid uses transactions.
 
-    Once the create request or batch update request is successfully completed and returns the added record instances (with their db generated ids), the related ADD transactions should be cleared from the transaction log using the [clear](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/transactionservice.html#clear) API method. This is necessary because the local transaction will have a generated id field, which may differ than the one created in the data base, so they should be cleared. You can then add the record(s) passed in the response to the local data instance.
+    Once the create request or batch update request is successfully completed and returns the added record instances (with their db generated ids), the related ADD transactions should be cleared from the transaction log using the [clear](mcp:get_api_reference?platform=angular&component=TransactionService&member=clear) API method. This is necessary because the local transaction will have a generated id field, which may differ than the one created in the data base, so they should be cleared. You can then add the record(s) passed in the response to the local data instance.
 This will ensure that the remotely generated ids are always reflected in the local data, and subsequent update/delete operations target the correct record ids.
 ## Styling
 The row adding UI comprises the buttons in the `IgxActionStrip` editing actions, the editing editors and overlay, as well as the snackbar which allows end users to scroll to the newly added row. To style these components you may refer to these comprehensive guides in their respective topics:
@@ -207,16 +207,16 @@ The row adding UI comprises the buttons in the `IgxActionStrip` editing actions,
 - [IgxSnackbar](../snackbar.md#styling)
 - [IgxActionStrip](../action-strip.md#styling)
 ## API References
-- [rowEditable](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowEditable)
-- [onRowEditEnter](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#onRowEditEnter)
-- [onRowEdit](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#onRowEdit)
-- [rowEditDone](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowEditDone)
-- [onRowEditCancel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#onRowEditCancel)
-- [endEdit](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#endEdit)
-- [primaryKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#primaryKey)
-- [IgxTreeGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
-- [IgxActionStripComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxactionstripcomponent.html)
-- [IgxGridEditingActionsComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgrideditingactionscomponent.html)
+- [rowEditable](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditable)
+- [onRowEditEnter](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=onRowEditEnter)
+- [onRowEdit](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=onRowEdit)
+- [rowEditDone](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditDone)
+- [onRowEditCancel](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=onRowEditCancel)
+- [endEdit](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=endEdit)
+- [primaryKey](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=primaryKey)
+- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
+- [IgxActionStripComponent](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent)
+- [IgxGridEditingActionsComponent](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Tree Grid Overview](tree-grid.md)

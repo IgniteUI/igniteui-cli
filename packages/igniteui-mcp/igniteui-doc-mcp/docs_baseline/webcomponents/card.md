@@ -38,7 +38,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcCardComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcomponent.html), you need to register it as follows:
+Before using the [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcCardComponent } from 'igniteui-webcomponents';
@@ -82,19 +82,19 @@ Then, to represent the demo card template, we can add the following code:
 </igc-card>
 ```
 
-You will notice a few things above. First, when we want to _tag_ an element as a header title, like the `h3` heading, we place it between the [`IgcCardHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardheadercomponent.html) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
+You will notice a few things above. First, when we want to _tag_ an element as a header title, like the `h3` heading, we place it between the [`IgcCardHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
 
-Any image or video we want to show in the card, we wrap inside the [`IgcCardMediaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardmediacomponent.html) tags. The [`IgcCardMediaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardmediacomponent.html) allows us to size the content placed inside so that it maintains its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
+Any image or video we want to show in the card, we wrap inside the [`IgcCardMediaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent) tags. The [`IgcCardMediaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent) allows us to size the content placed inside so that it maintains its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
 
-You can place anything inside the [`IgcCardContentComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcontentcomponent.html) tags. Usually text goes there.
+You can place anything inside the [`IgcCardContentComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardContentComponent) tags. Usually text goes there.
 
-Finally, the [`IgcCardActionsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardactionscomponent.html) is where you'd place any actionable items, like buttons.
+Finally, the [`IgcCardActionsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardActionsComponent) is where you'd place any actionable items, like buttons.
 
 ### Media, Thumbs, and Avatars
 
 If you want to show an image or icon in the card header next to the title and subtitle, you can do it by assigning the element's slot property to `thumbnail`.
 
-Taking the card above as an example, we can edit the contents of the [`IgcCardHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardheadercomponent.html) and add an avatar with `slot="thumbnail"`:
+Taking the card above as an example, we can edit the contents of the [`IgcCardHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent) and add an avatar with `slot="thumbnail"`:
 
 ```html
 <igc-card-header>
@@ -141,7 +141,7 @@ Here's an example of an outlined horizontal card:
 </igc-card>
 ```
 
-We are using an additional `div` element to bundle the [`IgcCardHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardheadercomponent.html) and [`IgcCardContentComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcontentcomponent.html) together, keeping them aligned vertically, and applying the `.card-horizontal` class to the wrapping `div` element to align the two sections of the card horizontally.
+We are using an additional `div` element to bundle the [`IgcCardHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent) and [`IgcCardContentComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardContentComponent) together, keeping them aligned vertically, and applying the `.card-horizontal` class to the wrapping `div` element to align the two sections of the card horizontally.
 
 The styles that `.card-horizontal` class applies are:
 
@@ -196,9 +196,9 @@ If everything went well, our card should look like this:
 
 ### Alternative layouts
 
-You can get even more creative with the layout of the [`IgcCardComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcomponent.html).
+You can get even more creative with the layout of the [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent).
 
-Below is an example showing how you can create a semi-horizontal card, where we have every section of the card laid out vertically, while the [`IgcCardMediaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardmediacomponent.html) appears alongside the vertical sections.
+Below is an example showing how you can create a semi-horizontal card, where we have every section of the card laid out vertically, while the [`IgcCardMediaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent) appears alongside the vertical sections.
 
 ```html
 <igc-card>
@@ -293,7 +293,7 @@ You can also add more content in-between by simply omitting the slot property an
 
 ## Styling
 
-Since the card is a container that wraps different elements, styling is done by styling its building blocks - the [`IgcCardHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardheadercomponent.html), [`IgcCardContentComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcontentcomponent.html), [`IgcCardMediaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardmediacomponent.html) and [`IgcCardActionsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardactionscomponent.html) sub-components.
+Since the card is a container that wraps different elements, styling is done by styling its building blocks - the [`IgcCardHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent), [`IgcCardContentComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardContentComponent), [`IgcCardMediaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent) and [`IgcCardActionsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardActionsComponent) sub-components.
 
 ```css
 igc-card {
@@ -357,15 +357,15 @@ In this article we covered a lot of ground with the card component. We created a
 
 ## API References
 
-- [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html)
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html)
-- [`IgcCardActionsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardactionscomponent.html)
-- [`IgcCardContentComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcontentcomponent.html)
-- [`IgcCardHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardheadercomponent.html)
-- [`IgcCardMediaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardmediacomponent.html)
-- [`IgcCardComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcomponent.html)
-- [`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html)
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
+- [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent)
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
+- [`IgcCardActionsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardActionsComponent)
+- [`IgcCardContentComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardContentComponent)
+- [`IgcCardHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardHeaderComponent)
+- [`IgcCardMediaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardMediaComponent)
+- [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent)
+- [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

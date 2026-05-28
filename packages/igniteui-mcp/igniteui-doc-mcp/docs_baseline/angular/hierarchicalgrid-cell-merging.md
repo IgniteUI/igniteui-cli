@@ -282,7 +282,7 @@ Due to the specific behavior of merged cells it has to be noted how exactly it t
 - **Updating/Editing**: since activation breaks the merge sequence, only a single cell will be in edit mode.
 - **Row selection**: if selected rows intersect merged cells, all related merged cells should be marked as part of the selection.
 ## API References
-- [IgxHierarchicalGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
+- [IgxHierarchicalGridComponent API](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
 - [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

@@ -128,7 +128,7 @@ Now that you have the Ignite UI for Angular Button Group module or directives im
 
 ### Add Button Group
 
-Use the [`igx-buttongroup`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbuttongroupcomponent.html) selector to wrap your buttons and display them into a button group. If you want a button to be selected by default, use the `selected` property:
+Use the [`igx-buttongroup`](mcp:get_api_reference?platform=angular&component=IgxButtonGroupComponent) selector to wrap your buttons and display them into a button group. If you want a button to be selected by default, use the `selected` property:
 
 ```html
 <!-- sample.component.html -->
@@ -152,7 +152,7 @@ Use the [`igx-buttongroup`](https://www.infragistics.com/products/ignite-ui-angu
 
 ### Alignment
 
-Use the [`alignment`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbuttongroupcomponent.html#alignment) input property to set the orientation of the buttons in the button group.
+Use the [`alignment`](mcp:get_api_reference?platform=angular&component=IgxButtonGroupComponent&member=alignment) input property to set the orientation of the buttons in the button group.
 
 ```typescript
 //sample.component.ts
@@ -211,7 +211,7 @@ igx-buttongroup{
 
 ### Selection
 
-In order to configure the `igx-buttongroup` selection, you could use its [selectionMode](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbuttongroupcomponent.html#selectionMode) property. This property accepts the following three modes:
+In order to configure the `igx-buttongroup` selection, you could use its [selectionMode](mcp:get_api_reference?platform=angular&component=IgxButtonGroupComponent&member=selectionMode) property. This property accepts the following three modes:
 
 - **single** - default selection mode of the button group. A single button can be selected/deselected by the user.
 - **singleRequired** - mimics a radio group behavior. Only one button can be selected and once initial selection is made, deselection is not possible through user interaction.
@@ -341,7 +341,7 @@ igx-buttongroup{
 
 ### Custom toggle buttons
 
-Use the [`values`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbuttongroupcomponent.html#values) input property to set an array of customized buttons in the button group.
+Use the [`values`](mcp:get_api_reference?platform=angular&component=IgxButtonGroupComponent&member=values) input property to set an array of customized buttons in the button group.
 
 ```typescript
 // sample.component.ts
@@ -748,9 +748,9 @@ At the end your button group should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxButtonGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbuttongroupcomponent.html)
+- [IgxButtonGroupComponent](mcp:get_api_reference?platform=angular&component=IgxButtonGroupComponent)
 - [IgxButtonGroup Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-group-theme)
-- [IgxButtonDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbuttondirective.html)
+- [IgxButtonDirective](mcp:get_api_reference?platform=angular&component=IgxButtonDirective)
 - [IgxButton Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
 
 ## Theming Dependencies

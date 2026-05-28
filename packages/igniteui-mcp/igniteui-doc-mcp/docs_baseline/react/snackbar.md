@@ -13,7 +13,7 @@ The Ignite UI for React Snackbar component is used to provide feedback about an 
 
 ## Ignite UI for React Snackbar Example
 
-This sample demonstrates how to create [`IgrSnackbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html) component.
+This sample demonstrates how to create [`IgrSnackbar`](mcp:get_api_reference?platform=react&component=IgrSnackbar) component.
 
 ```tsx
 import React, { useRef } from 'react';
@@ -57,18 +57,18 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrSnackbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html) and its necessary CSS, like so:
+You will then need to import the [`IgrSnackbar`](mcp:get_api_reference?platform=react&component=IgrSnackbar) and its necessary CSS, like so:
 
 ```tsx
 import { IgrSnackbar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-Before using the [`IgrSnackbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html), you need to register it as follows:
+Before using the [`IgrSnackbar`](mcp:get_api_reference?platform=react&component=IgrSnackbar), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the snackbar component is to use its [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#show) method and call it on a button click.
+The simplest way to display the snackbar component is to use its [`show`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=show) method and call it on a button click.
 
 ```tsx
 <IgrButton variant="contained" onClick={onShowButtonClicked}>
@@ -91,7 +91,7 @@ const onShowButtonClicked = () => {
 
 ### Display Time
 
-Use the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#displayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
+Use the [`displayTime`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=displayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
 
 ```tsx
 import React, { useRef } from 'react';
@@ -127,7 +127,7 @@ root.render(<SnackbarDisplayTime />);
 
 ### Action Text
 
-By default, the snackbar component is hidden automatically after a period specified by the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#displayTime). You can use [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#keepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`actionText`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#actionText) you can display an action button inside the component.
+By default, the snackbar component is hidden automatically after a period specified by the [`displayTime`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=displayTime). You can use [`keepOpen`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=keepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`actionText`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=actionText) you can display an action button inside the component.
 
 ```tsx
 import React, { useRef } from 'react';
@@ -172,7 +172,7 @@ root.render(<SnackbarActionText />);
 
 ## Styling
 
-The [`IgrSnackbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html) component exposes several CSS parts to give you full control over its styling:
+The [`IgrSnackbar`](mcp:get_api_reference?platform=react&component=IgrSnackbar) component exposes several CSS parts to give you full control over its styling:
 
 |Name|Description|
 |--|--|
@@ -233,11 +233,11 @@ root.render(<SnackbarStyling />);
 
 ## API References
 
-- [`actionText`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#actionText)
-- [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#displayTime)
-- [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#keepOpen)
-- [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html#show)
-- [`IgrSnackbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html)
+- [`actionText`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=actionText)
+- [`displayTime`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=displayTime)
+- [`keepOpen`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=keepOpen)
+- [`show`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=show)
+- [`IgrSnackbar`](mcp:get_api_reference?platform=react&component=IgrSnackbar)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

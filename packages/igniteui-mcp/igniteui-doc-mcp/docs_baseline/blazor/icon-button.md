@@ -52,7 +52,7 @@ The Ignite UI for Blazor Icon Button component allows developers to use register
 
 ## Usage
 
-Before using the [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html), you need to register it as follows:
+Before using the [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -60,13 +60,13 @@ Before using the [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/
 builder.Services.AddIgniteUIBlazor(typeof(IgbIconButtonModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-The simplest way to start using the [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html) is as follows:
+The simplest way to start using the [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton) is as follows:
 
 ```razor
 <IgbIconButton IconName="thumb-up" Collection="material" />
@@ -183,7 +183,7 @@ Some icons need to look a little different when used in Right-to-Left(RTL) mode.
 
 ## Styling
 
-The [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html) component exposes two CSS parts - `base` and `icon` that allow you to style the wrapping element (`<button>` or `<a>`) and the wrapped `<igc-icon>` element.
+The [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton) component exposes two CSS parts - `base` and `icon` that allow you to style the wrapping element (`<button>` or `<a>`) and the wrapped `<igc-icon>` element.
 
 ```css
 igc-icon-button[variant="contained"]:not([disabled])::part(base) {
@@ -241,10 +241,10 @@ igc-icon-button::part(icon) {
 
 ## API References
 
-- [`IgbButtonBase`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButtonBase.html)
-- [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html)
-- [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html)
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
+- [`IgbButtonBase`](mcp:get_api_reference?platform=blazor&component=IgbButtonBase)
+- [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
+- [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

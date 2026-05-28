@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Grid Sorting
 
-The Ignite UI for Web Components Data Sorting feature in Web Components Grid is enabled on a per-column level, meaning that the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) can have a mix of sortable and non-sortable columns. Performing Web Components sort actions enables you to change the display order of the records based on specified criteria.
+The Ignite UI for Web Components Data Sorting feature in Web Components Grid is enabled on a per-column level, meaning that the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) can have a mix of sortable and non-sortable columns. Performing Web Components sort actions enables you to change the display order of the records based on specified criteria.
 
 ## Web Components Grid Sorting Overview Example
 
@@ -52,7 +52,7 @@ export class ProductSales extends Array<ProductSalesItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-This is done via the [`sortable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#sortable) input. With the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) sorting, you can also set the [`sortingIgnoreCase`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#sortingIgnoreCase) property to perform case sensitive sorting:
+This is done via the [`sortable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=sortable) input. With the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) sorting, you can also set the [`sortingIgnoreCase`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=sortingIgnoreCase) property to perform case sensitive sorting:
 
 ```html
 <igc-column field="ProductName" header="Product Name" data-type="string" sortable="true"></igc-column>
@@ -62,7 +62,7 @@ This is done via the [`sortable`](https://www.infragistics.com/products/ignite-u
 
 Having a certain amount of sorted columns could be really confusing if there is no indication of the sorted order.
 
-The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) provides a solution for this problem by indicating the index of each sorted column.
+The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides a solution for this problem by indicating the index of each sorted column.
 
 ```typescript
 export class FinancialDataAllItem {
@@ -131,7 +131,7 @@ export class FinancialDataAll extends Array<FinancialDataAllItem> {
 
 ## Sorting through the API
 
-You can sort any column or a combination of columns through the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) API using the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) [`sort`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#sort) method:
+You can sort any column or a combination of columns through the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) API using the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) [`sort`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sort) method:
 
 ```typescript
 import { SortingDirection } from 'igniteui-webcomponents-grids';
@@ -154,9 +154,9 @@ this.grid.sort([
 <!-- ComponentEnd: Grid -->
 
 > [!Note]
-> Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
+> Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
 
-As with the filtering behavior, you can clear the sorting state by using the [`clearSort`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#clearSort) method:
+As with the filtering behavior, you can clear the sorting state by using the [`clearSort`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=clearSort) method:
 
 <!-- ComponentStart: Grid -->
 
@@ -171,14 +171,14 @@ this.grid.clearSort();
 <!-- ComponentEnd: Grid -->
 
 > [!Note]
-> The [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#sortStrategy) of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) is of different type compared to the [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#sortStrategy) of the [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html), since they work in different scopes and expose different parameters.
+> The [`sortStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=sortStrategy) of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) is of different type compared to the [`sortStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortStrategy) of the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent), since they work in different scopes and expose different parameters.
 
 > [!Note]
-> The sorting operation **DOES NOT** change the underlying data source of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
+> The sorting operation **DOES NOT** change the underlying data source of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ## Initial Sorting State
 
-It is possible to set the initial sorting state of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) by passing an array of sorting expressions to the [`sortingExpressions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#sortingExpressions) property of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
+It is possible to set the initial sorting state of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) by passing an array of sorting expressions to the [`sortingExpressions`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortingExpressions) property of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ```typescript
 public connectedCallback() {
@@ -192,7 +192,7 @@ public connectedCallback() {
 <!-- ComponentEnd: Grid -->
 
 > [!Note]
-> If values of type `string` are used by a column of [`dataType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#dataType) `Date`, the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) won't parse them to `Date` objects and using [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
+> If values of type `string` are used by a column of [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) `Date`, the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) won't parse them to `Date` objects and using [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
 
 <!-- ComponentStart: Grid -->
 
@@ -202,7 +202,7 @@ public connectedCallback() {
 
 The sorting indicator icon in the column header can be customized using a template. The following properties are available for templating the sorting indicator for any sorting state (ascending, descending, none):
 
-- [`sortHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#sortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
+- [`sortHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
 
 ```ts
 constructor() {
@@ -216,7 +216,7 @@ public sortHeaderIconTemplate = (ctx: IgcGridHeaderTemplateContext) => {
 }
 ```
 
-- [`sortAscendingHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#sortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
+- [`sortAscendingHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
 
 ```ts
 constructor() {
@@ -230,7 +230,7 @@ public sortAscendingHeaderIconTemplate = (ctx: IgcGridHeaderTemplateContext) => 
 }
 ```
 
-- [`sortDescendingHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#sortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
+- [`sortDescendingHeaderIconTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=sortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
 
 ```ts
 constructor() {
@@ -307,7 +307,7 @@ export class ProductSales extends Array<ProductSalesItem> {
 
 ## API References
 
-- [`IgcSortingExpression`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcsortingexpression.html)
+- [`IgcSortingExpression`](mcp:get_api_reference?platform=webcomponents&component=IgcSortingExpression)
 
 ## Additional Resources
 

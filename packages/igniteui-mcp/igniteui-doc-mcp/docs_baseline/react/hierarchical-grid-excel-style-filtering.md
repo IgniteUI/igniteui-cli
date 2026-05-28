@@ -222,7 +222,7 @@ root.render(<Sample/>);
 
 ## Usage
 
-To turn on the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#allowFiltering) should be set to **true** and the [`filterMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#filterMode) should be set to `ExcelStyleFilter` value.
+To turn on the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) component's Excel-style filtering, two inputs should be set. The [`allowFiltering`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=allowFiltering) should be set to **true** and the [`filterMode`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=filterMode) should be set to `ExcelStyleFilter` value.
 
 ```tsx
 <IgrHierarchicalGrid data={nwindData} autoGenerate={true} allowFiltering={true} filterMode="excelStyleFilter">
@@ -243,7 +243,7 @@ To apply a filter with different expressions, you can click the **Text filter**,
 
 ## Configure Menu Features
 
-Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`sortable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#sortable), [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected), [`disablePinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#disablePinning), [`disableHiding`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#disableHiding).
+Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`sortable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=sortable), [`selected`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selected), [`disablePinning`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disablePinning), [`disableHiding`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disableHiding).
 
 ```tsx
 <IgrHierarchicalGrid autoGenerate={false} allowFiltering={true} filterMode="excelStyleFilter"
@@ -473,9 +473,9 @@ root.render(<Sample/>);
 
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=excelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the [`excelStyleHeaderIconTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#excelStyleHeaderIconTemplate):
+The following code demonstrates how to customize the Excel style filter menu using the [`excelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=excelStyleHeaderIconTemplate):
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
 
@@ -1002,8 +1002,8 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
-- [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
 
 ## Additional Resources
 

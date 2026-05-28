@@ -8,12 +8,12 @@ _premium: true
 ---
 # Angular Hierarchical Grid Batch Editing and Transactions
 @@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') {
-The Batch Editing feature of the IgxHierarchicalGrid is based on the [`TransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtransactionservice.html). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxTransactionService` and details how it is implemented.
+The Batch Editing feature of the IgxHierarchicalGrid is based on the [`TransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxTransactionService` and details how it is implemented.
 }
-In order to use the [`HierarchicalTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicaltransactionservice.html) with [`IgxHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html), but have it accumulating separate transaction logs for each island, a service factory should be provided instead. One is exported and ready for use as [`IgxHierarchicalTransactionServiceFactory`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#igxhierarchicaltransactionservicefactory).
+In order to use the [`HierarchicalTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicaltransactionservice.html) with [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent), but have it accumulating separate transaction logs for each island, a service factory should be provided instead. One is exported and ready for use as [`IgxHierarchicalTransactionServiceFactory`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#igxhierarchicaltransactionservicefactory).
 Below is a detailed example of how is Batch Editing enabled for the Hierarchical Grid component.
 ## Angular Hierarchical Grid Batch Editing and Transactions Example
-The following sample demonstrates a scenario, where the hierarchicalGrid has [`batchEditing`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#batchEditing) enabled and has row editing enabled. The latter will ensure that transaction will be added after the entire row edit is confirmed.
+The following sample demonstrates a scenario, where the hierarchicalGrid has [`batchEditing`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=batchEditing) enabled and has row editing enabled. The latter will ensure that transaction will be added after the entire row edit is confirmed.
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -335,7 +335,7 @@ Then, all you need to do is enable `batchEditing` from your Hierarchical Grid:
 </igx-hierarchical-grid>
 ```
 This will ensure a proper instance of `Transaction` service is provided for the igx-hierarchical-grid. The proper `TransactionService` is provided through a `TransactionFactory`. You can learn more about this internal implementation in the [transactions topic](../transaction-classes.md#transaction-factory).
-After batch editing is enabled, define a `IgxHierarchicalGrid` with bound data source and [`rowEditable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowEditable) set to true and bind:
+After batch editing is enabled, define a `IgxHierarchicalGrid` with bound data source and [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowEditable) set to true and bind:
 ```html
 <igx-hierarchical-grid #hierarchicalGrid [batchEditing]="true" [data]="data" [primaryKey]="'Artist'"
     [height]="'580px'" [width]="'100%'" [rowEditable]="true" >
@@ -358,7 +358,7 @@ After batch editing is enabled, define a `IgxHierarchicalGrid` with bound data s
 </div>
 ...
 ```
-The following code demonstrates the usage of the [`transactions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtransactionservice.html#) API - undo, redo, commit.
+The following code demonstrates the usage of the [`transactions`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) API - undo, redo, commit.
 ```typescript
 ...
 export class HierarchicalGridBatchEditingSampleComponent {
@@ -384,9 +384,9 @@ export class HierarchicalGridBatchEditingSampleComponent {
 }
 ```
 > [!NOTE]
-> The transactions API won't handle end of edit and you'd need to do it by yourself. Otherwise, `Hierarchical Grid` would stay in edit mode. One way to do that is by calling [`endEdit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#endEdit) in the respective method.
+> The transactions API won't handle end of edit and you'd need to do it by yourself. Otherwise, `Hierarchical Grid` would stay in edit mode. One way to do that is by calling [`endEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=endEdit) in the respective method.
 > [!NOTE]
-> Disabling [`rowEditable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowEditable) property will modify `Hierarchical Grid` to create transactions on cell change and will not expose row editing overlay in the UI.
+> Disabling [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowEditable) property will modify `Hierarchical Grid` to create transactions on cell change and will not expose row editing overlay in the UI.
 ## API References
 - [igxHierarchicalTransactionServiceFactory](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#igxhierarchicaltransactionservicefactory)
 ## Additional Resources

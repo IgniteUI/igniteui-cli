@@ -13,7 +13,7 @@ The Blazor `ComboBox` supports single-selection mode and quick filtering of the 
 
 ## Blazor Single Selection Example
 
-To enable single-selection and quick filtering, set the [`SingleSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_SingleSelect) property on the [`IgbCombo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html). The user experience and keyboard navigation will mostly stay the same, but instead of having to type in your search query into a special filtering box above the list of options, the main input box will be used.
+To enable single-selection and quick filtering, set the [`SingleSelect`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=SingleSelect) property on the [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo). The user experience and keyboard navigation will mostly stay the same, but instead of having to type in your search query into a special filtering box above the list of options, the main input box will be used.
 
 ```razor
 <IgbCombo SingleSelect></IgbCombo>
@@ -75,9 +75,9 @@ To enable single-selection and quick filtering, set the [`SingleSelect`](https:/
 
 ## Selection API
 
-The selection API for a ComboBox with the [`SingleSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_SingleSelect) property applied mostly remains the same, however, there are some important differences compared to ComboBoxes that don't have this property set.
+The selection API for a ComboBox with the [`SingleSelect`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=SingleSelect) property applied mostly remains the same, however, there are some important differences compared to ComboBoxes that don't have this property set.
 
-The main difference is that only one item can be selected at any time. For example, if you have specified a [`ValueKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_ValueKey) for your combo component, passing more than one item to the [`Select`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_Select)/[`Deselect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_Deselect) methods will have no effect. This also means that any previously selected items will automatically get deselected upon making a new selection.
+The main difference is that only one item can be selected at any time. For example, if you have specified a [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey) for your combo component, passing more than one item to the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=Select)/[`Deselect`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=Deselect) methods will have no effect. This also means that any previously selected items will automatically get deselected upon making a new selection.
 
 Here's how to select/deselect an item programmatically in a single selection combo.
 
@@ -93,7 +93,7 @@ Here's how to select/deselect an item programmatically in a single selection com
 }
 ```
 
-To deselect an item without making a new selection, call the [`Deselect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_Deselect) method.
+To deselect an item without making a new selection, call the [`Deselect`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=Deselect) method.
 
 #### Deselecting items
 
@@ -113,11 +113,11 @@ Naturally, some configuration options will have no effect in a single selection 
 
 ### Placeholder
 
-Assigning a value to the [`PlaceholderSearch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_PlaceholderSearch) property will yield no result since the filtering input that usually is placed above the list of options will not be present in a single selection ComboBox.
+Assigning a value to the [`PlaceholderSearch`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=PlaceholderSearch) property will yield no result since the filtering input that usually is placed above the list of options will not be present in a single selection ComboBox.
 
 ### Auto-focusing the list of options
 
-Setting the [`AutofocusList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_AutofocusList) option on a single selection ComboBox will also have no effect.
+Setting the [`AutofocusList`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=AutofocusList) option on a single selection ComboBox will also have no effect.
 
 ## Keyboard Navigation
 
@@ -129,7 +129,7 @@ All other features will behave the same as in a non-single selection ComboBox co
 
 ## API Reference
 
-- [`IgbCombo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html)
+- [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo)
 
 ## Additional Resources
 

@@ -159,7 +159,7 @@ igx-icon {
 
 ## Getting Started with Ignite UI for Angular Virtual ForOf Directive
 
-To get started with the Ignite UI for Angular [`igxFor`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#igxForOf) directive, first you need to install Ignite UI for Angular. In an existing Angular application, type the following command:
+To get started with the Ignite UI for Angular [`igxFor`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=igxForOf) directive, first you need to install Ignite UI for Angular. In an existing Angular application, type the following command:
 
 ```cmd
 ng add igniteui-angular
@@ -227,7 +227,7 @@ The **data** property is an array that provides the data objects used to constru
 
 The `igxFor` directive can be used to virtualize the data in vertical, horizontal or both directions.
 
-Virtualization works similarly to Paging by slicing the data into smaller chucks which are swapped from a container viewport while the user scrolls the data horizontally/vertically. The difference with the Paging is that virtualization mimics the natural behavior of the scrollbar. The `igxFor` directive is creating scrollable containers and renders small chunks of the data. It is used inside the [`igxGrid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) and it can be used to build a virtual [`igx-list`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html).
+Virtualization works similarly to Paging by slicing the data into smaller chucks which are swapped from a container viewport while the user scrolls the data horizontally/vertically. The difference with the Paging is that virtualization mimics the natural behavior of the scrollbar. The `igxFor` directive is creating scrollable containers and renders small chunks of the data. It is used inside the [`igxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) and it can be used to build a virtual [`igx-list`](mcp:get_api_reference?platform=angular&component=IgxListComponent).
 
 ### Vertical virtualization
 
@@ -247,7 +247,7 @@ Virtualization works similarly to Paging by slicing the data into smaller chucks
 </igx-list>
 ```
 
-_**Note:**_ It is strongly advised that the parent container of the [`igxForOf`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#igxForOf) template has the following CSS rules applied: `height` for vertical and `width` for horizontal, `overflow: hidden` and `position: relative`. This is because the smooth scrolling behavior is achieved through content offsets that could visually affect other parts of the page if they remain visible.
+_**Note:**_ It is strongly advised that the parent container of the [`igxForOf`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=igxForOf) template has the following CSS rules applied: `height` for vertical and `width` for horizontal, `overflow: hidden` and `position: relative`. This is because the smooth scrolling behavior is achieved through content offsets that could visually affect other parts of the page if they remain visible.
 
 ### Horizontal virtualization
 
@@ -466,7 +466,7 @@ Follow the [Grid Virtualization](grid/virtualization.md) topic for more detailed
 
 ### igxFor bound to remote service
 
-The [`igxForOf`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#igxForOf) directive can be bound to a remote service using the `Observable` property - `remoteData` (in the following case). The `chunkLoading` event should also be utilized to trigger the requests for data.
+The [`igxForOf`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=igxForOf) directive can be bound to a remote service using the `Observable` property - `remoteData` (in the following case). The `chunkLoading` event should also be utilized to trigger the requests for data.
 
 ```html
 <div style='height: 500px; overflow: hidden; position: relative;'>
@@ -482,7 +482,7 @@ The [`igxForOf`](https://www.infragistics.com/products/ignite-ui-angular/docs/ty
 </div>
 ```
 
-_**Note:**_ There is a requirement to set the [`totalItemCount`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#totalItemCount) property in the instance of [`igxForOf`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#igxForOf).
+_**Note:**_ There is a requirement to set the [`totalItemCount`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=totalItemCount) property in the instance of [`igxForOf`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=igxForOf).
 
 ```typescript
 this.virtDirRemote.totalItemCount = data['@odata.count'];
@@ -495,7 +495,7 @@ In order to access the directive instance from the component, it should be marke
 public virtDirRemote: IgxForOfDirective<any>;
 ```
 
-After the request for loading the first chunk, the [`totalItemCount`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#totalItemCount) can be set:
+After the request for loading the first chunk, the [`totalItemCount`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=totalItemCount) can be set:
 
 ```typescript
 public ngAfterViewInit() {
@@ -505,7 +505,7 @@ public ngAfterViewInit() {
 }
 ```
 
-When requesting data you can take advantage of the [`IgxForOfState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#state) interface, which provides the [`startIndex`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#state.startindex) and [`chunkSize`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#state.chunkSize) properties. Note that initially the chunkSize will be 0, so you have to specify the size of the first loaded chunk (the best value is the initial [`igxForContainerSize`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#igxforcontainersize) divided by the [`igxForItemSize`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#igxForItemSize)).
+When requesting data you can take advantage of the [`IgxForOfState`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=state) interface, which provides the [`startIndex`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=state.startindex) and [`chunkSize`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=state.chunkSize) properties. Note that initially the chunkSize will be 0, so you have to specify the size of the first loaded chunk (the best value is the initial [`igxForContainerSize`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=igxforcontainersize) divided by the [`igxForItemSize`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=igxForItemSize)).
 
 ```typescript
 public getData(data?: IForOfState, cb?: (any) => void): any {
@@ -539,7 +539,7 @@ private buildUrl(dataState: any): string {
 }
 ```
 
-Every time the [`chunkPreload`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#chunkPreload) event is thrown, a new chunk of data should be requested:
+Every time the [`chunkPreload`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=chunkPreload) event is thrown, a new chunk of data should be requested:
 
 ```typescript
 chunkLoading(evt) {
@@ -572,9 +572,9 @@ The `igxFor` directive includes the following helper properties in its context: 
 
 ## API References
 
-- [IgxForOfDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html)
-- [IgxGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
-- [IgxListComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html)
+- [IgxForOfDirective](mcp:get_api_reference?platform=angular&component=IgxForOfDirective)
+- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [IgxListComponent](mcp:get_api_reference?platform=angular&component=IgxListComponent)
 
 ## Additional Resources
 

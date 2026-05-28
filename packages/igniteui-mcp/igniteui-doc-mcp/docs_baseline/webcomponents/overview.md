@@ -30,7 +30,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) component, you need to register it together with its additional components and necessary CSS:
+Before using the [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) component, you need to register it together with its additional components and necessary CSS:
 
 ```ts
 import { defineComponents, IgcComboComponent }
@@ -43,7 +43,7 @@ defineComponents(IgcComboComponent);
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../../general-getting-started.md) topic.
 
 > [!WARNING]
-> The [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
+> The [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 Then, we will bind an array of objects to the combo data source used for building the list of options.
 
@@ -79,22 +79,22 @@ When the combo is bound to a list of complex data (i.e. objects), we need to spe
 
 <!-- end: Blazor -->
 
-- `T` - **required**, if [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) is omitted, this should be set to "object", otherwise this needs to match the property type of [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey).
+- `T` - **required**, if [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) is omitted, this should be set to "object", otherwise this needs to match the property type of [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey).
 
 <!-- end: Blazor -->
 
-- [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) - **Optional**, **required** for complex data object - Determines which field of the data source will be used to make selections. If [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) is omitted, the selection API will use object references to select items.
-- [`displayKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#displayKey) - **Optional**, **recommended** for complex data objects - Determines which field in the data source is used as the display value. If no value is specified for [`displayKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#displayKey), the combo will use the specified [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) (if any).
-    In our case, we want the combo to display the `name` of each city and use the `id` field for item selection and as the underlying value for each item. Therefore, we provide these properties to the combo's [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) and [`displayKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#displayKey) respectively.
+- [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) - **Optional**, **required** for complex data object - Determines which field of the data source will be used to make selections. If [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) is omitted, the selection API will use object references to select items.
+- [`displayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey) - **Optional**, **recommended** for complex data objects - Determines which field in the data source is used as the display value. If no value is specified for [`displayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey), the combo will use the specified [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) (if any).
+    In our case, we want the combo to display the `name` of each city and use the `id` field for item selection and as the underlying value for each item. Therefore, we provide these properties to the combo's [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) and [`displayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey) respectively.
 
 > [!Note]
-> When the data source consists of primitive types (e.g. `strings`, `numbers`, etc.), **do not** specify a [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) and/or [`displayKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#displayKey).
+> When the data source consists of primitive types (e.g. `strings`, `numbers`, etc.), **do not** specify a [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) and/or [`displayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey).
 
 ### Setting Value
 
-The ComboBox component exposes a [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#value) getter and setter in addition to an attribute, which is also called value. You can use the value attribute to set the selected items on component initialization.
+The ComboBox component exposes a [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=value) getter and setter in addition to an attribute, which is also called value. You can use the value attribute to set the selected items on component initialization.
 
-If you want to read the value, i.e. the list of currently selected items, or to update the value use the value getter and setter respectively. The value getter will return a list of all selected items as represented by the [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey). Likewise, if you want to update the list of selected items by using the value setter, you should provide a list of items by their [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey).
+If you want to read the value, i.e. the list of currently selected items, or to update the value use the value getter and setter respectively. The value getter will return a list of all selected items as represented by the [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey). Likewise, if you want to update the list of selected items by using the value setter, you should provide a list of items by their [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey).
 
 Example:
 
@@ -112,7 +112,7 @@ combo.value = ['NY01', 'UK01'];
 
 The combo component exposes APIs that allow you to change the currently selected items.
 
-Besides selecting items from the list of options by user interaction, you can select items programmatically. This is done via the [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#select) and [`deselect`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#deselect) methods. You can pass an array of items to both methods. If the methods are called with no arguments all items will be selected/deselected depending on which method is called. If you have specified a [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) for your combo component, then you should pass the value keys of the items you would like to select/deselect:
+Besides selecting items from the list of options by user interaction, you can select items programmatically. This is done via the [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=select) and [`deselect`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=deselect) methods. You can pass an array of items to both methods. If the methods are called with no arguments all items will be selected/deselected depending on which method is called. If you have specified a [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) for your combo component, then you should pass the value keys of the items you would like to select/deselect:
 
 #### Select/deselect some items
 
@@ -130,7 +130,7 @@ combo.select();
 combo.deselect();
 ```
 
-If the [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) property is omitted, you will have to list the items you wish to select/deselect as objects references:
+If the [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) property is omitted, you will have to list the items you wish to select/deselect as objects references:
 
 ```ts
 // Select/deselect values by object references when no valueKey is provided
@@ -150,10 +150,10 @@ combo.deselect([cities[1], cities[5]]);
 
 ### Validation
 
-The Ignite UI for Web Components Combo component supports most of the [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) properties, such as [`required`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#required), [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#disabled), [`autofocus`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html#autofocus), [`invalid`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#invalid), etc. The component also exposes two methods bound to its validation:
+The Ignite UI for Web Components Combo component supports most of the [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) properties, such as [`required`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=required), [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=disabled), [`autofocus`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent&member=autofocus), [`invalid`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=invalid), etc. The component also exposes two methods bound to its validation:
 
-- [`reportValidity`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#reportValidity) - checks for validity and returns true if the component satisfies the validation constraints.
-- [`checkValidity`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#checkValidity) - a wrapper around reportValidity to comply with the native input API.
+- [`reportValidity`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=reportValidity) - checks for validity and returns true if the component satisfies the validation constraints.
+- [`checkValidity`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=checkValidity) - a wrapper around reportValidity to comply with the native input API.
 
 ## Keyboard Navigation
 
@@ -172,7 +172,7 @@ When the combo component is focused and the list of options is **visible**:
 
 ## Styling
 
-You can change the appearance of the [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) component and its items, by using the exposed CSS parts listed below:
+You can change the appearance of the [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) component and its items, by using the exposed CSS parts listed below:
 
 | Part name            | Description                                                                     |
 | -------------------- | ------------------------------------------------------------------------------- |
@@ -278,7 +278,7 @@ igc-combo::part(checkbox checked)::after {
 
 ## API Reference
 
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html)
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent)
 - [`Styling & Themes`](../../themes/overview.md)
 
 ## Additional Resources

@@ -674,13 +674,13 @@ igx-grid {
 ```
 ## API References
 <div class="divider--half"></div>
-- [IgxTreeGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
-- [IgxGridCell](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
-- [IgxTreeGridRow](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridrow.html)
-- [IgxGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
+- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
+- [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell)
+- [IgxTreeGridRow](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
+- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [IgxGridCell](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
-- [IgxBaseTransactionService](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbasetransactionservice.html)
+- [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell)
+- [IgxBaseTransactionService](mcp:get_api_reference?platform=angular&component=IgxBaseTransactionService)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Data Grid](../grid/grid.md)

@@ -11,11 +11,11 @@ _premium: true
 
 # Blazor Chart Tooltips
 
-In Blazor charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html), [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html), and [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) controls.
+In Blazor charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart), and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) controls.
 
 ## Blazor Chart Tooltip Types
 
-Blazor Chart provide three types of tooltips that you can with tooltips enabled by setting the [`ToolTipType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ToolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
+Blazor Chart provide three types of tooltips that you can with tooltips enabled by setting the [`ToolTipType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ToolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -133,7 +133,7 @@ public class HighestGrossingMovies
 
 <div class="divider--half"></div>
 
-The [`ToolTipType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ToolTipType) property is configurable and can be set to one of the following options:
+The [`ToolTipType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ToolTipType) property is configurable and can be set to one of the following options:
 
 | Property Value     | Description  |
 | -------------------|----------------|
@@ -150,7 +150,7 @@ If none of built-in types of tooltips are matching your requirements, you can cr
 
 ## Custom Tooltips in Category Chart
 
-This example shows how to create custom tooltips for all series in Blazor [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control. Note that you can also apply the same logic to custom tooltips in Blazor [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) control.
+This example shows how to create custom tooltips for all series in Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control. Note that you can also apply the same logic to custom tooltips in Blazor [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) control.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -250,13 +250,13 @@ You can find more information about related chart features in these topics:
 
 ## API References
 
-The [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) and [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) components share the following API properties:
+The [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) and [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) components share the following API properties:
 
-- [`ToolTipType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ToolTipType)
+- [`ToolTipType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ToolTipType)
 
-In the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) component, you can use the following API components and properties:
+In the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) component, you can use the following API components and properties:
 
-- [`IgbDataToolTipLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html)
-- [`IgbItemToolTipLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbItemToolTipLayer.html)
-- [`IgbCategoryToolTipLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryToolTipLayer.html)
+- [`IgbDataToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer)
+- [`IgbItemToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbItemToolTipLayer)
+- [`IgbCategoryToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbCategoryToolTipLayer)
 - `ShowDefaultToolTip`

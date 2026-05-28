@@ -9,7 +9,7 @@ _tocName: Linear Progress
 
 # React Linear Progress Overview
 
-The Ignite UI for React Linear Progress Indicator component provides a visual indicator of an application’s process as it changes. The [`IgrLinearProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html) indicator updates its appearance as its state changes. Also, you can style this component with a choice of colors in stripes or solids.
+The Ignite UI for React Linear Progress Indicator component provides a visual indicator of an application’s process as it changes. The [`IgrLinearProgress`](mcp:get_api_reference?platform=react&component=IgrLinearProgress) indicator updates its appearance as its state changes. Also, you can style this component with a choice of colors in stripes or solids.
 
 ## React Linear Progress Example
 
@@ -56,7 +56,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrLinearProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgrLinearProgress`](mcp:get_api_reference?platform=react&component=IgrLinearProgress), its necessary CSS, and register its module, like so:
 
 ```tsx
 import { IgrLinearProgressModule, IgrLinearProgress } from 'igniteui-react';
@@ -64,7 +64,7 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 IgrLinearProgressModule.register();
 ```
 
-The simplest way to start using the [`IgrLinearProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html) is as follows:
+The simplest way to start using the [`IgrLinearProgress`](mcp:get_api_reference?platform=react&component=IgrLinearProgress) is as follows:
 
 ```tsx
 <IgrLinearProgress value="100"></IgrLinearProgress>
@@ -72,7 +72,7 @@ The simplest way to start using the [`IgrLinearProgress`](https://www.infragisti
 
 ### Progress Types
 
-You can set the type of your indicator, using  the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#variant) attribute. There are five types of linear progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
+You can set the type of your indicator, using  the [`variant`](mcp:get_api_reference?platform=react&component=IgrLinearProgress&member=variant) attribute. There are five types of linear progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
 
 ```tsx
 <IgrLinearProgress value="100" variant="success"></IgrLinearProgress>
@@ -80,7 +80,7 @@ You can set the type of your indicator, using  the [`variant`](https://www.infra
 
 ### Striped Progress
 
-You can make the indicator striped, using the [`striped`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#striped) property:
+You can make the indicator striped, using the [`striped`](mcp:get_api_reference?platform=react&component=IgrLinearProgress&member=striped) property:
 
 ```css
 /* shared styles are loaded from: */
@@ -124,11 +124,11 @@ root.render(<LinearProgressTypes/>);
 
 ### Indeterminate Progress
 
-If you want to track a process that is not determined precisely, you can set the [`indeterminate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#indeterminate) property.
+If you want to track a process that is not determined precisely, you can set the [`indeterminate`](mcp:get_api_reference?platform=react&component=IgrLinearProgress&member=indeterminate) property.
 
 ### Animation Duration
 
-The [`animationDuration`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#animationDuration) property is used to specify how long the animation cycle should take. It takes as value a number which represents the animation duration in milliseconds.
+The [`animationDuration`](mcp:get_api_reference?platform=react&component=IgrLinearProgress&member=animationDuration) property is used to specify how long the animation cycle should take. It takes as value a number which represents the animation duration in milliseconds.
 
 ```tsx
 <IgrLinearProgress animationDuration="5000" indeterminate="true"></IgrLinearProgress>
@@ -136,11 +136,11 @@ The [`animationDuration`](https://www.infragistics.com/products/ignite-ui-react/
 
 ### Text Properties
 
-You can align the default value, using the [`labelAlign`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#labelAlign) property. Permitted values are **top**, **bottom**, **top-start**, **top-end**, **bottom-start** and **bottom-end**.
+You can align the default value, using the [`labelAlign`](mcp:get_api_reference?platform=react&component=IgrLinearProgress&member=labelAlign) property. Permitted values are **top**, **bottom**, **top-start**, **top-end**, **bottom-start** and **bottom-end**.
 
-To hide the default label of the progress indicator, use the [`hideLabel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#hideLabel) attribute.
+To hide the default label of the progress indicator, use the [`hideLabel`](mcp:get_api_reference?platform=react&component=IgrLinearProgress&member=hideLabel) attribute.
 
-The [`labelFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html#labelFormat) property can be used to customize the [`IgrLinearProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html) default label.
+The [`labelFormat`](mcp:get_api_reference?platform=react&component=IgrLinearProgress&member=labelFormat) property can be used to customize the [`IgrLinearProgress`](mcp:get_api_reference?platform=react&component=IgrLinearProgress) default label.
 
 The following sample demonstrates the above configuration:
 
@@ -269,7 +269,7 @@ root.render(<DynamicLinearProgress/>);
 
 ## Styling
 
-The [`IgrLinearProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html) component exposes CSS parts for almost all of its inner elements:
+The [`IgrLinearProgress`](mcp:get_api_reference?platform=react&component=IgrLinearProgress) component exposes CSS parts for almost all of its inner elements:
 
 |Name|Description|
 |--|--|
@@ -350,9 +350,9 @@ igc-linear-progress::part(label){
 
 ## API References
 
-- [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html)
-- [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html)
-- [`IgrLinearProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html)
+- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
+- [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)
+- [`IgrLinearProgress`](mcp:get_api_reference?platform=react&component=IgrLinearProgress)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

@@ -83,9 +83,9 @@ Like this sample? Get access to our complete Web Components toolkit and start bu
 
 ## Chart Navigation with User Interactions
 
-Whether or not zooming is on by default depends on the chart you are using. If you are using [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html), it is on by default, but it is not in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html). In order to enable or disable navigation in the UI, you need to set either the [`isHorizontalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#isHorizontalZoomEnabled) and/or the [`isVerticalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#isVerticalZoomEnabled) properties of the chart, depending on the direction that you wish to enable or disable zooming.
+Whether or not zooming is on by default depends on the chart you are using. If you are using [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), it is on by default, but it is not in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). In order to enable or disable navigation in the UI, you need to set either the [`isHorizontalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isHorizontalZoomEnabled) and/or the [`isVerticalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isVerticalZoomEnabled) properties of the chart, depending on the direction that you wish to enable or disable zooming.
 
-It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#defaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#defaultInteraction) property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
+It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`defaultInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=defaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`defaultInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=defaultInteraction) property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
 
 ## Chart Navigation with Touch, Mouse and Keyboard
 
@@ -95,9 +95,9 @@ Navigation in the Web Components data chart can happen with either touch, the mo
 - **Zoom In**: Using the <kbd>PAGE UP</kbd> key on the keyboard, rolling the mouse wheel up, or pinching to zoom in via touch.
 - **Zoom Out**: Using the <kbd>PAGE DOWN</kbd> key on the keyboard, rolling the mouse wheel down, or pinching to zoom out via touch.
 - **Fit to Chart Plot Area**: Using the <kbd>HOME</kbd> key on the keyboard. There is no mouse or touch operation for this.
-- **Area Zoom**: Click and drag the mouse within the plot area with the [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#defaultInteraction) property set to its default - `DragZoom`.
+- **Area Zoom**: Click and drag the mouse within the plot area with the [`defaultInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=defaultInteraction) property set to its default - `DragZoom`.
 
-The zoom and pan operations can also be enabled by using modifier keys by setting the [`dragModifier`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#dragModifier) and [`panModifier`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#panModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
+The zoom and pan operations can also be enabled by using modifier keys by setting the [`dragModifier`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=dragModifier) and [`panModifier`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=panModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
 
 | Modifier Value | Corresponding Key |
 | ---------------|------------------ |
@@ -109,7 +109,7 @@ The zoom and pan operations can also be enabled by using modifier keys by settin
 
 ## Chart Navigation with Scrollbars
 
-The chart can be scrolled by enabling the [`verticalViewScrollbarMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#verticalViewScrollbarMode) and [`horizontalViewScrollbarMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#horizontalViewScrollbarMode) properties.
+The chart can be scrolled by enabling the [`verticalViewScrollbarMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=verticalViewScrollbarMode) and [`horizontalViewScrollbarMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=horizontalViewScrollbarMode) properties.
 
 These can be configured to the following options
 
@@ -239,15 +239,15 @@ export class MultipleStocks extends Array<Array<StockItem>> {
 ## Chart Navigation through Code
 
 > [!Note]
-> Code navigation of the chart can only be used for the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control.
+> Code navigation of the chart can only be used for the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control.
 
 The Web Components data chart provides several navigation properties that are updated each time a zoom or pan operation happens in the chart. You can also set each of these properties to zoom or pan the data chart programmatically. The following is a list of these properties:
 
-- [`windowPositionHorizontal`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#windowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
-- [`windowPositionVertical`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#windowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
-- [`windowRect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#windowRect): A `Rect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`windowRect`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#windowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
-- [`windowScaleHorizontal`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#windowScaleHorizontal): A numeric value describing the width portion of the content view rectangle displayed by the data chart.
-- [`windowScaleVertical`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#windowScaleVertical): A numeric value describing the height portion of the content view rectangle displayed by the data chart.
+- [`windowPositionHorizontal`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
+- [`windowPositionVertical`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
+- [`windowRect`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowRect): A `Rect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`windowRect`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
+- [`windowScaleHorizontal`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowScaleHorizontal): A numeric value describing the width portion of the content view rectangle displayed by the data chart.
+- [`windowScaleVertical`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=windowScaleVertical): A numeric value describing the height portion of the content view rectangle displayed by the data chart.
 
 ## Additional Resources
 
@@ -260,11 +260,11 @@ You can find more information about related chart features in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-- [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#defaultInteraction)
-- [`dragModifier`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#dragModifier)
-- [`isHorizontalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#isHorizontalZoomEnabled)
-- [`isVerticalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#isVerticalZoomEnabled)
-- [`panModifier`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#panModifier)
-- [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html)
-- [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html)
-- [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html)
+- [`defaultInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=defaultInteraction)
+- [`dragModifier`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=dragModifier)
+- [`isHorizontalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isHorizontalZoomEnabled)
+- [`isVerticalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isVerticalZoomEnabled)
+- [`panModifier`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=panModifier)
+- [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+- [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)

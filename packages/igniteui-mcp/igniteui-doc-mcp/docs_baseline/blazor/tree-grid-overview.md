@@ -222,7 +222,7 @@ Regardless of which option is used for building the tree grid's hierarchy (child
 
 ### Initial Expansion Depth
 
-Initially the tree grid will expand all node levels and show them. This behavior can be configured using the [`ExpansionDepth`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_ExpansionDepth) property. By default its value is **Infinity** which means all node levels will be expanded. You may control the initial expansion depth by setting this property to a numeric value. For example **0** will show only root level nodes, **1** will show root level nodes and their child nodes and so on.
+Initially the tree grid will expand all node levels and show them. This behavior can be configured using the [`ExpansionDepth`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=ExpansionDepth) property. By default its value is **Infinity** which means all node levels will be expanded. You may control the initial expansion depth by setting this property to a numeric value. For example **0** will show only root level nodes, **1** will show root level nodes and their child nodes and so on.
 
 ### Child Collection
 
@@ -260,7 +260,7 @@ public class EmployeesItem
 }
 ```
 
-Now let's start by importing our [`Data`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_Data) collection and binding it to our tree grid.
+Now let's start by importing our [`Data`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=Data) collection and binding it to our tree grid.
 
 ```razor
  <IgbTreeGrid
@@ -275,10 +275,10 @@ Now let's start by importing our [`Data`](https://www.infragistics.com/blazor/do
 </IgbTreeGrid>
 ```
 
-In order for the tree grid to build the hierarchy, we will have to set its [`ChildDataKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_ChildDataKey) property to the name of the child collection that is used in each of our data objects. In our case that will be the **Employees** collection.
+In order for the tree grid to build the hierarchy, we will have to set its [`ChildDataKey`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=ChildDataKey) property to the name of the child collection that is used in each of our data objects. In our case that will be the **Employees** collection.
 In addition, we can disable the automatic column generation and define them manually by matching them to the actual properties of our data objects. (The **Employees** collection will be automatically used for the hierarchy, so there is no need to include it in the columns' definitions.)
 
-We can now enable the row selection and paging features of the tree grid by using the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelection) and add the [`IgbPaginator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPaginator.html) element.
+We can now enable the row selection and paging features of the tree grid by using the [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=RowSelection) and add the [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator) element.
 We can also enable the summaries, the filtering, sorting, editing, moving and resizing features for each of our columns.
 
 ```razor
@@ -297,7 +297,7 @@ We can also enable the summaries, the filtering, sorting, editing, moving and re
 </IgbTreeGrid>
 ```
 
-Finally, we can enable the toolbar of our tree grid, along with the column hiding, column pinning and exporting features by using the [`IgbGridToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbar.html), [`IgbGridToolbarHiding`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarHiding.html), [`IgbGridToolbarPinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarPinning.html) and [`IgbGridToolbarExporter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarExporter.html) respectively.
+Finally, we can enable the toolbar of our tree grid, along with the column hiding, column pinning and exporting features by using the [`IgbGridToolbar`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar), [`IgbGridToolbarHiding`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarHiding), [`IgbGridToolbarPinning`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarPinning) and [`IgbGridToolbarExporter`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter) respectively.
 
 ```razor
 <IgbTreeGrid AutoGenerate="false"
@@ -343,9 +343,9 @@ public class EmployeesFlatDataItem
 }
 ```
 
-In the sample data above, all records have an ID, a ParentID and some additional properties like Name, JobTitle and Age. As mentioned previously, the ID of the records must be unique as it will be our [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey). The ParentID contains the ID of the parent node and could be set as a [`ForeignKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_ForeignKey). If a row has a ParentID that does not match any row in the tree grid, then that means this row is a root row.
+In the sample data above, all records have an ID, a ParentID and some additional properties like Name, JobTitle and Age. As mentioned previously, the ID of the records must be unique as it will be our [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=PrimaryKey). The ParentID contains the ID of the parent node and could be set as a [`ForeignKey`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=ForeignKey). If a row has a ParentID that does not match any row in the tree grid, then that means this row is a root row.
 
-The parent-child relation is configured using the tree grid's [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey) and [`ForeignKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_ForeignKey) properties.
+The parent-child relation is configured using the tree grid's [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=PrimaryKey) and [`ForeignKey`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=ForeignKey) properties.
 
 Here is the template of the component which demonstrates how to configure the tree grid to display the data defined in the above flat collection:
 
@@ -485,8 +485,8 @@ public class EmployeesFlatData
 The indentation of the tree grid cell persists across other tree grid features like filtering, sorting and paging.
 
 - When `Sorting` is applied on a column, the data rows get sorted by levels. This means that the root level rows will be sorted independently from their respective children. Their respective children collections will each be sorted independently as well and so on.
-- The first column (the one that has a [`VisibleIndex`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_VisibleIndex) of 0) is always the tree column.
-- The column that ends up with a [`VisibleIndex`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_VisibleIndex) of 0 after operations like column pinning, column hiding and column moving becomes the tree column.
+- The first column (the one that has a [`VisibleIndex`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=VisibleIndex) of 0) is always the tree column.
+- The column that ends up with a [`VisibleIndex`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=VisibleIndex) of 0 after operations like column pinning, column hiding and column moving becomes the tree column.
 - Exported Excel worksheets reflect the hierarchy by grouping the records as they are grouped in the tree grid itself. All records expanded states would also be persisted and reflected.
 - When exporting to CSV, levels and expanded states are ignored and all data is exported as flat.
 
@@ -631,10 +631,10 @@ public class EmployeesNestedData
 
 ## API References
 
-- [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
-- [`IgbGridToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbar.html)
-- [`IgbTreeGridRecord`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGridRecord.html)
+- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+- [`IgbGridToolbar`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar)
+- [`IgbTreeGridRecord`](mcp:get_api_reference?platform=blazor&component=IgbTreeGridRecord)
 
 ## Additional Resources
 

@@ -8,7 +8,7 @@ _tocName: Column Hiding
 _premium: true
 ---
 # Angular Hierarchical Grid Column Hiding
-The Ignite UI for Angular Hierarchical Grid provides an [`IgxColumnActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnactionscomponent.html) with an [`IgxColumnHidingDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnhidingdirective.html) which allows users to perform column hiding directly through the user interface or by using the Angular component. The Material UI Grid has a built-in column hiding UI, which can be used through the Hierarchical Grid's toolbar to change the visible state of the columns. In addition, developers can always define the column hiding UI as a separate component and place it anywhere they want on the page.
+The Ignite UI for Angular Hierarchical Grid provides an [`IgxColumnActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent) with an [`IgxColumnHidingDirective`](mcp:get_api_reference?platform=angular&component=IgxColumnHidingDirective) which allows users to perform column hiding directly through the user interface or by using the Angular component. The Material UI Grid has a built-in column hiding UI, which can be used through the Hierarchical Grid's toolbar to change the visible state of the columns. In addition, developers can always define the column hiding UI as a separate component and place it anywhere they want on the page.
 ## Angular Hierarchical Grid Column Hiding Example
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -149,8 +149,8 @@ Let's start by creating our Hierarchical Grid and binding it to our data. We wil
 </igx-hierarchical-grid>
 ```
 ## Toolbar's Column Hiding UI
-The built-in Column Hiding UI is placed inside an [`IgxDropDownComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html) in the Hierarchical Grid's toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
-For this purpose all we have to do is set both the [`IgxGridToolbarActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbaractionscomponent.html) and the [`IgxGridToolbarHidingComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarhidingcomponent.html) inside of the Hierarchical Grid. We will also add a title to our toolbar by using the [`IgxGridToolbarTitleComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbartitlecomponent.html) and a custom style for our Hierarchical Grid's wrapper.
+The built-in Column Hiding UI is placed inside an [`IgxDropDownComponent`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) in the Hierarchical Grid's toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
+For this purpose all we have to do is set both the [`IgxGridToolbarActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarActionsComponent) and the [`IgxGridToolbarHidingComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarHidingComponent) inside of the Hierarchical Grid. We will also add a title to our toolbar by using the [`IgxGridToolbarTitleComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarTitleComponent) and a custom style for our Hierarchical Grid's wrapper.
 ```html
 <!--columnHiding.component.html-->
 <div class="hgrid-sample">
@@ -198,7 +198,7 @@ For this purpose all we have to do is set both the [`IgxGridToolbarActionsCompon
 ```
 }
 The Hierarchical Grid provides us with some useful properties when it comes to using the toolbar's column hiding UI.
-By using the `igx-grid-toolbar-hiding` [`title`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarhidingcomponent.html#title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
+By using the `igx-grid-toolbar-hiding` [`title`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarHidingComponent&member=title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
 @@if (igxName === 'IgxGrid' || igxName === 'IgxTreeGrid') {
 ```html
 <!--columnHiding.component.html-->
@@ -226,14 +226,14 @@ By using the `igx-grid-toolbar-hiding` [`title`](https://www.infragistics.com/pr
  </igx-hierarchical-grid>
 </div>
 ```
-By using the [`columnsAreaMaxHeight`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarhidingcomponent.html#columnsAreaMaxHeight) property of the IgxGridToolbarHidingComponent, we can set the maximum height of the area that contains the column actions. This way if we have a lot of actions and not all of them can fit in the container, a scrollbar will appear, which will allow us to scroll to any action we want.
+By using the [`columnsAreaMaxHeight`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarHidingComponent&member=columnsAreaMaxHeight) property of the IgxGridToolbarHidingComponent, we can set the maximum height of the area that contains the column actions. This way if we have a lot of actions and not all of them can fit in the container, a scrollbar will appear, which will allow us to scroll to any action we want.
 ```typescript
 // columnHiding.component.ts
 public ngAfterViewInit() {        
     this.hidingActionRef.columnsAreaMaxHeight = "200px";
 }
 ```
-In order to use the expanded set of functionalities for the column hiding UI, we can use the IgxColumnActionsComponent's [`columnsAreaMaxHeight`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxColumnActionsComponent.html#columnsAreaMaxHeight) property. This way we can use it according to our application's requirements.
+In order to use the expanded set of functionalities for the column hiding UI, we can use the IgxColumnActionsComponent's [`columnsAreaMaxHeight`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent&member=columnsAreaMaxHeight) property. This way we can use it according to our application's requirements.
 You can see the result of the code from above at the beginning of this article in the Angular Column Hiding Example section.
 ## Styling
 To get started with styling the column actions component, we need to import the index file, where all the theme functions and component mixins live:
@@ -400,22 +400,22 @@ $dark-checkbox-theme: checkbox-theme(
 ## API References
 In this article we learned how to use the built-in column hiding UI in the Hierarchical Grid's toolbar.
 The column hiding UI has a few more APIs to explore, which are listed below.
-- [IgxColumnActionsComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnactionscomponent.html)
+- [IgxColumnActionsComponent](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent)
 - [IgxColumnActionsComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-column-actions-theme)
 Additional components and/or directives with relative APIs that were used:
-[`IgxHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html) properties:
-- [hiddenColumnsCount](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#hiddenColumnsCount)
-[`IgxColumnComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html) properties:
-- [disableHiding](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#disablehiding)
-[`IgxGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarcomponent.html) properties:
-- [showProgress](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridToolbarComponent.html#showProgress)
-[`IgxGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarcomponent.html) components:
-- [IgxGridToolbarTitleComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbartitlecomponent.html)
-- [IgxGridToolbarActionsComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbaractionscomponent.html)
-[`IgxGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarcomponent.html) methods:
-[`IgxHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html) events:
-- [columnVisibilityChanged](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#columnVisibilityChanged)
-[IgxRadioComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxradiocomponent.html)
+[`IgxHierarchicalGridComponent`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) properties:
+- [hiddenColumnsCount](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=hiddenColumnsCount)
+[`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) properties:
+- [disableHiding](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=disablehiding)
+[`IgxGridToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarComponent) properties:
+- [showProgress](mcp:get_api_reference?platform=angular&component=IgxGridToolbarComponent&member=showProgress)
+[`IgxGridToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarComponent) components:
+- [IgxGridToolbarTitleComponent](mcp:get_api_reference?platform=angular&component=IgxGridToolbarTitleComponent)
+- [IgxGridToolbarActionsComponent](mcp:get_api_reference?platform=angular&component=IgxGridToolbarActionsComponent)
+[`IgxGridToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarComponent) methods:
+[`IgxHierarchicalGridComponent`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) events:
+- [columnVisibilityChanged](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=columnVisibilityChanged)
+[IgxRadioComponent](mcp:get_api_reference?platform=angular&component=IgxRadioComponent)
 Styles:
 - [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 - [IgxRadioComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-radio-theme)

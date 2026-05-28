@@ -22,7 +22,7 @@ The React Grid Column Moving feature in Ignite UI for React allows quick and eas
 > If a column header is templated and the Column Moving is enabled or the corresponding column is groupable, then the templated elements need to have the **draggable** attribute set to **false**!
 
 > [!Note]
-> If the pinned area exceeds its maximum allowed width (80% of the total [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) width), a visual clue notifies the end user that the drop operation is forbidden and pinning is not possible. This means you won't be allowed to drop a column in the pinned area.
+> If the pinned area exceeds its maximum allowed width (80% of the total [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) width), a visual clue notifies the end user that the drop operation is forbidden and pinning is not possible. This means you won't be allowed to drop a column in the pinned area.
 
 ```tsx
 const headerTemplate = (ctx: IgrCellTemplateContext) => {
@@ -325,7 +325,7 @@ root.render(<Sample/>);
 
 ## Overview
 
-**Column moving** feature is enabled on a per-grid level, meaning that the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) could have either movable or immovable columns. This is done via the [`moving`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#moving) input of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
+**Column moving** feature is enabled on a per-grid level, meaning that the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) could have either movable or immovable columns. This is done via the [`moving`](mcp:get_api_reference?platform=react&component=IgrGrid&member=moving) input of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
 ```tsx
 <IgrGrid moving={true}></IgrGrid>
@@ -337,7 +337,7 @@ root.render(<Sample/>);
 
 In addition to the drag and drop functionality, the Column Moving feature also provides API methods to allow moving a column/reordering columns programmatically:
 
-[`moveColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `Position` (representing a `DropPosition` value), which determines whether to place the column before or after the target column.
+[`moveColumn`](mcp:get_api_reference?platform=react&component=IgrGrid&member=moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `Position` (representing a `DropPosition` value), which determines whether to place the column before or after the target column.
 
 ```typescript
 // Move the ID column after the Name column
@@ -347,7 +347,7 @@ const nameColumn = grid.getColumnByName("Name");
 grid.moveColumn(idColumn, nameColumn, DropPosition.AfterDropTarget);
 ```
 
-[`move`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#move) - Moves a column to a specified visible index. If the passed index parameter is invalid (is negative, or exceeds the number of columns), or if the column is not allowed to move to this index (if inside another group), no operation is performed.
+[`move`](mcp:get_api_reference?platform=react&component=IgrColumn&member=move) - Moves a column to a specified visible index. If the passed index parameter is invalid (is negative, or exceeds the number of columns), or if the column is not allowed to move to this index (if inside another group), no operation is performed.
 
 ```typescript
 // Move the ID column at 3rd position.
@@ -355,13 +355,13 @@ const idColumn = grid.getColumnByName("ID");
 idColumn.move(3);
 ```
 
-Note that when using the column moving feature, the `ColumnMovingEnd` event will be emitted if the operation was successful. Also note that in comparison to the drag and drop functionality, using the column moving feature does not require setting the [`moving`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#moving) property to true.
+Note that when using the column moving feature, the `ColumnMovingEnd` event will be emitted if the operation was successful. Also note that in comparison to the drag and drop functionality, using the column moving feature does not require setting the [`moving`](mcp:get_api_reference?platform=react&component=IgrGrid&member=moving) property to true.
 
 ## Events
 
 There are several events related to the column moving to provide a means for tapping into the columns' drag and drop operations. These are `ColumnMovingStart`, `ColumnMoving` and `ColumnMovingEnd`.
 
-You can subscribe to the `ColumnMovingEnd` event of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) to implement some custom logic when a column is dropped to a new position. For example, you can cancel dropping the **Category** column after the **Change On Year(%)** column in the following code snippet.
+You can subscribe to the `ColumnMovingEnd` event of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) to implement some custom logic when a column is dropped to a new position. For example, you can cancel dropping the **Category** column after the **Change On Year(%)** column in the following code snippet.
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
 
@@ -689,8 +689,8 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 
 ## Additional Resources
 

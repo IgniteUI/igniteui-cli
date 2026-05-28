@@ -15,7 +15,7 @@ The Ignite UI for Blazor Radial Chart takes data and render it as collection of 
 
 ## Blazor Radial Area Chart
 
-The Blazor Radial Area Chart has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the [Area Chart](area-chart.md), but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to [`IgbRadialAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialAreaSeries.html), as shown in the example below.
+The Blazor Radial Area Chart has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the [Area Chart](area-chart.md), but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to [`IgbRadialAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialAreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -163,7 +163,7 @@ public class FootballPlayerStats
 
 ## Blazor Radial Column Chart
 
-The Radial Column Chart is visualized by using a collection of rectangles that extend from the center of the chart toward the locations of data points. This utilizes the same concepts of data plotting as the [Column Chart](column-chart.md), but wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbRadialColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialColumnSeries.html), as shown in the example below:
+The Radial Column Chart is visualized by using a collection of rectangles that extend from the center of the chart toward the locations of data points. This utilizes the same concepts of data plotting as the [Column Chart](column-chart.md), but wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbRadialColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialColumnSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -309,7 +309,7 @@ public class FootballPlayerStats
 
 ## Blazor Radial Line Chart
 
-The Blazor Radial Line Chart has renders as a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the [Line Chart](line-chart.md), but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to [`IgbRadialLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialLineSeries.html), as shown in the example below:
+The Blazor Radial Line Chart has renders as a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the [Line Chart](line-chart.md), but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to [`IgbRadialLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialLineSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -457,7 +457,7 @@ public class FootballPlayerStats
 
 ## Blazor Radial Pie Chart
 
-The Radial Pie Chart uses pie slices that extend from the center of chart towards locations of data points. This chart type takes concepts of categorizing multiple series of data points and wraps them around a circular axis rather than stretching data points along a horizontal line. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbRadialPieSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialPieSeries.html), as shown in the example below:
+The Radial Pie Chart uses pie slices that extend from the center of chart towards locations of data points. This chart type takes concepts of categorizing multiple series of data points and wraps them around a circular axis rather than stretching data points along a horizontal line. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbRadialPieSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialPieSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -603,7 +603,7 @@ public class FootballPlayerStats
 
 ## Blazor Radial Chart Styling
 
-Once our radial chart is created, we may want to make some further styling customizations such as a change of the line colors, marker types, or outline colors of those markers. This example demonstrates how to customize styling in [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control.
+Once our radial chart is created, we may want to make some further styling customizations such as a change of the line colors, marker types, or outline colors of those markers. This example demonstrates how to customize styling in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -748,7 +748,7 @@ public class FootballPlayerStats
 
 ## Blazor Radial Chart Settings
 
-In addition, the labels can be configured to appear near or wide from the chart. This can be configured with the `LabelMode` property for the [`IgbCategoryAngleAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryAngleAxis.html).
+In addition, the labels can be configured to appear near or wide from the chart. This can be configured with the `LabelMode` property for the [`IgbCategoryAngleAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryAngleAxis).
 
 <div class="divider--half"></div>
 
@@ -766,14 +766,14 @@ You can find more information about related chart types in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
-- [`IgbRadialAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialAreaSeries.html)
-- [`IgbRadialColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialColumnSeries.html)
-- [`IgbRadialLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialLineSeries.html)
-- [`IgbRadialPieSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialPieSeries.html)
-- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialLineSeries.html#IgniteUI_Blazor_Controls_IgbRadialLineSeries_DataSource)
+- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
+- [`IgbRadialAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialAreaSeries)
+- [`IgbRadialColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialColumnSeries)
+- [`IgbRadialLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialLineSeries)
+- [`IgbRadialPieSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialPieSeries)
+- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbRadialLineSeries&member=DataSource)
 - `AngleAxisName`
 - `ValueAxisName`
-- [`ValueMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialLineSeries.html#IgniteUI_Blazor_Controls_IgbRadialLineSeries_ValueMemberPath)
-- [`IgbCategoryAngleAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryAngleAxis.html)
-- [`IgbNumericRadiusAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericRadiusAxis.html)
+- [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbRadialLineSeries&member=ValueMemberPath)
+- [`IgbCategoryAngleAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryAngleAxis)
+- [`IgbNumericRadiusAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericRadiusAxis)

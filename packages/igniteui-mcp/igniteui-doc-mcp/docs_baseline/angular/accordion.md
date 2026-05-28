@@ -18,7 +18,7 @@ Users are enabled to interact and navigate among a list of items, such as thumbn
 
 The following is a basic Angular Accordion example of a FAQ section. It operates as an accordion, with individually working sections. You can toggle each text block with a single click, while expanding multiple panels at the same time. This way you can read information more easily, without having to go back and forth between an automatically expanding and collapsing panel, which conceals the previously opened section every time.
 
-In it, you can see how to define an `igx-accrodion` and its [expansion panels](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html). The sample also demonstrates the two types of expansion behavior. The switch button sets the [singleBranchExpand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html#singleBranchExpand) property to toggle between single and multiple branches to be expanded at a time.
+In it, you can see how to define an `igx-accrodion` and its [expansion panels](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent). The sample also demonstrates the two types of expansion behavior. The switch button sets the [singleBranchExpand](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent&member=singleBranchExpand) property to toggle between single and multiple branches to be expanded at a time.
 
 ```typescript
 import { Component } from '@angular/core';
@@ -207,12 +207,12 @@ Now that you have the Ignite UI for Angular Accordion module or directives impor
 
 ## Using the Angular Accordion Component
 
-Each section in the [IgxAccordionComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html) is defined using an [expansion panel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html).
-Panels provide [disabled](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelheadercomponent.html#disabled), [collapsed](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html#collapsed) and [animationSettings](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html#animationSettings) properties, which give you the ability to configure the states of the panel as per your requirement.
+Each section in the [IgxAccordionComponent](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent) is defined using an [expansion panel](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent).
+Panels provide [disabled](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelHeaderComponent&member=disabled), [collapsed](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent&member=collapsed) and [animationSettings](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent&member=animationSettings) properties, which give you the ability to configure the states of the panel as per your requirement.
 
 ### Declaring an accordion
 
-The accordion wraps all [`igx-expansion-panel`s](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html) declared inside it.
+The accordion wraps all [`igx-expansion-panel`s](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent) declared inside it.
 
 ```html
 <igx-accordion #accordion [singleBranchExpand]="true">
@@ -235,7 +235,7 @@ The accordion wraps all [`igx-expansion-panel`s](https://www.infragistics.com/pr
 </igx-accordion>
 ```
 
-Using the [panels](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html#panels) accessor you can get a reference to the collection containing all [expansion panels](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html) children of the `igx-accordion`.
+Using the [panels](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent&member=panels) accessor you can get a reference to the collection containing all [expansion panels](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent) children of the `igx-accordion`.
 
 ```typescript
 @ViewChild('accordion', { static: true })
@@ -244,11 +244,11 @@ public accordion!: IgxAccordionComponent;
 this.accordion.panels;
 ```
 
-As demonstrated above, the [singleBranchExpand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html#singleBranchExpand) property gives you the ability to set whether single or multiple panels can be expanded at a time.
+As demonstrated above, the [singleBranchExpand](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent&member=singleBranchExpand) property gives you the ability to set whether single or multiple panels can be expanded at a time.
 
 ### Angular Accordion Animations
 
-Angular Accordion supports animations for both expanding and collapsing actions of the panels. Animation behavior can be customized. Normally, animations can be set for each expansion panel individually. However, it could also be applied to all panels at once on [IgxAccordionComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html) level. This gives users the ability to disable animations for all sections at once via the animations property of the [IgxAccordionComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html).
+Angular Accordion supports animations for both expanding and collapsing actions of the panels. Animation behavior can be customized. Normally, animations can be set for each expansion panel individually. However, it could also be applied to all panels at once on [IgxAccordionComponent](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent) level. This gives users the ability to disable animations for all sections at once via the animations property of the [IgxAccordionComponent](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent).
 
 With regards to animation, you have two options. First, you could set the `animationSettings` property on the accordion component:
 
@@ -289,9 +289,9 @@ The following snippet demonstrates passing the animation settings to the compone
 ```
 
 >[!NOTE]
-> If you would like to turn off the animation for the [IgxAccordionComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html) the `animationSettings` could be set to `null`.
+> If you would like to turn off the animation for the [IgxAccordionComponent](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent) the `animationSettings` could be set to `null`.
 
-Alternatively, you have the ability to set every single [expansion panel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html)`s [animationSettings](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html#animationSettings) input.
+Alternatively, you have the ability to set every single [expansion panel](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent)`s [animationSettings](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent&member=animationSettings) input.
 
 ```html
 <igx-accordion #accordion [singleBranchExpand]="true">
@@ -314,15 +314,15 @@ Alternatively, you have the ability to set every single [expansion panel](https:
 </igx-accordion>
 ```
 
-Using the [collapseAll](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html#collapseAll) and [expandAll](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html#expandAll) methods you can respectively collapse and expand all [IgxExpansionPanels](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html) of the [IgxAccordion](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html) programmatically.
+Using the [collapseAll](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent&member=collapseAll) and [expandAll](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent&member=expandAll) methods you can respectively collapse and expand all [IgxExpansionPanels](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent) of the [IgxAccordion](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent) programmatically.
 
 >[!NOTE]
-> If [singleBranchExpand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html#singleBranchExpand) property is set to _true_ calling [expandAll](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html#expandAll) method would expand only the last [panel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html).
+> If [singleBranchExpand](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent&member=singleBranchExpand) property is set to _true_ calling [expandAll](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent&member=expandAll) method would expand only the last [panel](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent).
 
 ### Angular Accordion Templating Example
 
-With the Angular [Accordion component](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html), you can customize the header and content panel`s appearance.
-The sample below demonstrates how elaborate filtering options can be implemented using the built-in templating functionality of the [IgxExpansionPanel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html).
+With the Angular [Accordion component](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent), you can customize the header and content panel`s appearance.
+The sample below demonstrates how elaborate filtering options can be implemented using the built-in templating functionality of the [IgxExpansionPanel](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent).
 
 ```typescript
 import { Component } from '@angular/core';
@@ -486,7 +486,7 @@ igx-expansion-panel {
 
 ### Nested Angular Accordions Scenario
 
-In the following Angular accordion example, we are going to create a complex FAQ section in order to illustrate how you can go about this common application scenario. In the sample nested [IgxAccordionComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html) is achieved by adding an [accordion](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html) inside the body of an [expansion panel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html).
+In the following Angular accordion example, we are going to create a complex FAQ section in order to illustrate how you can go about this common application scenario. In the sample nested [IgxAccordionComponent](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent) is achieved by adding an [accordion](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent) inside the body of an [expansion panel](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent).
 
 ```html
 <igx-accordion #accordion>
@@ -717,7 +717,7 @@ igx-expansion-panel {
 ## Keyboard Navigation
 
 Keyboard navigation in the Ignite UI for Angular Accordion provides a rich variety of keyboard interactions to the end-user. This functionality is enabled by default and allows end-users to easily navigate through the panels.
-The [IgxAccordionComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html) navigation is compliant with W3C accessibility standards and convenient to use.
+The [IgxAccordionComponent](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent) navigation is compliant with W3C accessibility standards and convenient to use.
 
 **Key Combinations**
 
@@ -734,7 +734,7 @@ The [IgxAccordionComponent](https://www.infragistics.com/products/ignite-ui-angu
 
 ## Styling
 
-The [`accordion`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html) serves only as a container for the underlying [`panels`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html). Styles can be applied directly through the panel's theme, as described in the [`styling section of the IgxExpansionPanel topic`](expansion-panel.md#styling).
+The [`accordion`](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent) serves only as a container for the underlying [`panels`](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent). Styles can be applied directly through the panel's theme, as described in the [`styling section of the IgxExpansionPanel topic`](expansion-panel.md#styling).
 
 By design, there is a margin set to the expanded panels, in case that they are positioned within an `igx-accordion`. In order to modify it there is a property exposed inside the igx-expansion-panel theme.
 In order to take advantage of the functions exposed by the theming engine, we have to import the `index` file in our style file:
@@ -864,10 +864,10 @@ $custom-panel-theme: expansion-panel-theme(
 
 ## API Reference
 
-- [IgxAccordion API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxaccordioncomponent.html)
-- [IgxExpansionPanel API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelcomponent.html)
-- [IgxExpansionPanelHeader API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelheadercomponent.html)
-- [IgxExpansionPanelBody API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexpansionpanelbodycomponent.html)
+- [IgxAccordion API](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent)
+- [IgxExpansionPanel API](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent)
+- [IgxExpansionPanelHeader API](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelHeaderComponent)
+- [IgxExpansionPanelBody API](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelBodyComponent)
 - [IgxExpansionPanel Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-igx-expansion-panel)
 
 

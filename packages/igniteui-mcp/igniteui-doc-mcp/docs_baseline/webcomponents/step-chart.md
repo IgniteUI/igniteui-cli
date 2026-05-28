@@ -15,7 +15,7 @@ The Ignite UI for Web Components Step Chart belongs to a group of category chart
 
 ## Web Components Step Area Chart
 
-You can create Web Components Step Area Chart in the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) control by setting [`chartType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#chartType) property to [`StepArea`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.categorycharttype.html#StepArea) enum, as shown in the example below.
+You can create Web Components Step Area Chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by setting [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`StepArea`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepArea) enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -56,7 +56,7 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 
 The Web Components Step Line Chart is very similar to Step Area Chart, except that the area below lines are filled in.
 
-You can create Step Line Chart in the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) control by binding your data and setting [`chartType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#chartType) property to [`StepLine`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.categorycharttype.html#StepLine) value, as shown in the example below.
+You can create Step Line Chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`StepLine`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepLine) value, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -95,7 +95,7 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 
 ## Web Components Step Chart Styling
 
-If you need Step Charts with more features such as composite other series, you can configure the [`markerTypes`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerTypes), [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerBrushes), [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerOutlines), lines' [`brushes`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#brushes), and lines' [`outlines`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#outlines) properties on the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) control as demonstrated below.
+If you need Step Charts with more features such as composite other series, you can configure the [`markerTypes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerTypes), [`markerBrushes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerBrushes), [`markerOutlines`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerOutlines), lines' [`brushes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=brushes), and lines' [`outlines`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=outlines) properties on the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control as demonstrated below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -144,12 +144,12 @@ You can find more information about related chart types in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html)
-- [`chartType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#chartType)
-- [`StepArea`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.categorycharttype.html#StepArea)
-- [`StepLine`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.categorycharttype.html#StepLine)
-- [`brushes`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#brushes)
-- [`outlines`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#outlines)
-- [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerBrushes)
-- [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerOutlines)
-- [`markerTypes`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerTypes)
+- [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+- [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType)
+- [`StepArea`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepArea)
+- [`StepLine`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=StepLine)
+- [`brushes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=brushes)
+- [`outlines`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=outlines)
+- [`markerBrushes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerBrushes)
+- [`markerOutlines`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerOutlines)
+- [`markerTypes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerTypes)

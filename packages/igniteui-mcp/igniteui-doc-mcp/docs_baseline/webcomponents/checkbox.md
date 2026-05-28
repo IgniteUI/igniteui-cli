@@ -22,7 +22,7 @@ The Web Components Checkbox is a component that lets you add checkboxes to your 
 
 ## Usage
 
-At its core, the [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) allows for a choice between selected/unselected state. The default styling is done according to the selection controls specification in the Material Design guidelines.
+At its core, the [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) allows for a choice between selected/unselected state. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
 First, you need to install the Ignite UI for Web Components by running the following command:
 
@@ -30,7 +30,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcCheckboxComponent } from "igniteui-webcomponents";
@@ -43,14 +43,14 @@ For a complete introduction to the Ignite UI for Web Components, read the [**Get
 
 <div class="divider--half"></div>
 
-The simplest way to start using the [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) is as follows:
+The simplest way to start using the [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) is as follows:
 
 ```html
 <igc-checkbox></igc-checkbox>
 ```
 
 > [!WARNING]
-> The [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
+> The [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples
 
@@ -89,7 +89,7 @@ The checkbox can also be labelled by elements external to the checkbox. In this 
 
 ### Checked
 
-You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
+You can use the [`checked`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
 
 ```html
 <igc-checkbox checked></igc-checkbox>
@@ -102,7 +102,7 @@ You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-web-
 
 ### Indeterminate
 
-You can use the [`indeterminate`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#indeterminate) property of the component to set the checkbox's value to neither **true** nor **false**.
+You can use the [`indeterminate`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=indeterminate) property of the component to set the checkbox's value to neither **true** nor **false**.
 
 ```html
 <igc-checkbox indeterminate></igc-checkbox>
@@ -115,7 +115,7 @@ You can use the [`indeterminate`](https://www.infragistics.com/products/ignite-u
 
 ### Required
 
-You can use the [`required`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#required) property to mark the checkbox as required.
+You can use the [`required`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=required) property to mark the checkbox as required.
 
 ```html
 <igc-checkbox required></igc-checkbox>
@@ -123,7 +123,7 @@ You can use the [`required`](https://www.infragistics.com/products/ignite-ui-web
 
 ### Invalid
 
-You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#invalid) attribute to mark the checkbox as invalid.
+You can use the [`invalid`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=invalid) attribute to mark the checkbox as invalid.
 
 ```html
 <igc-checkbox invalid></igc-checkbox>
@@ -131,7 +131,7 @@ You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-web-
 
 ### Disabled
 
-You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#disabled) attribute to disable the checkbox.
+You can use the [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=disabled) attribute to disable the checkbox.
 
 ```html
 <igc-checkbox disabled></igc-checkbox>
@@ -144,7 +144,7 @@ You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-web
 
 ### Forms
 
-You can use the [`name`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#name) and [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#value) attributes when using the checkbox with `Form`.
+You can use the [`name`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=name) and [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=value) attributes when using the checkbox with `Form`.
 
 ```html
 <igc-checkbox name="wifi" value="enabled"></igc-checkbox>
@@ -152,7 +152,7 @@ You can use the [`name`](https://www.infragistics.com/products/ignite-ui-web-com
 
 ## Styling
 
-The [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) component exposes four CSS parts which we can use for styling:
+The [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) component exposes four CSS parts which we can use for styling:
 
 |Name|Description|
 |--|--|
@@ -189,9 +189,9 @@ igc-checkbox::part(control checked)::after {
 
 ## API References
 
-- [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html)
-- [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#checked)
-- [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#disabled)
+- [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent)
+- [`checked`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=checked)
+- [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=disabled)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

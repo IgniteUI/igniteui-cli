@@ -190,7 +190,7 @@ Now that you have the Ignite UI for Angular Pivot Grid module or directives impo
 
 ## Using the Angular Pivot Grid
 
-The Angular Pivot Grid Component can be configured via the [`pivotConfiguration`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpivotgridcomponent.html#pivotConfiguration) property.
+The Angular Pivot Grid Component can be configured via the [`pivotConfiguration`](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent&member=pivotConfiguration) property.
 
 ```html
 <igx-pivot-grid #grid1 [data]="data" [pivotConfiguration]="pivotConfigHierarchy">
@@ -499,8 +499,8 @@ This feature allows developers to quickly create a pivot view without manually s
 
 ## API References
 
-- [IgxPivotGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpivotgridcomponent.html)
-- [IgxPivotDataSelectorComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpivotdataselectorcomponent.html)
+- [IgxPivotGridComponent](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent)
+- [IgxPivotDataSelectorComponent](mcp:get_api_reference?platform=angular&component=IgxPivotDataSelectorComponent)
 
 
 ## Additional Resources

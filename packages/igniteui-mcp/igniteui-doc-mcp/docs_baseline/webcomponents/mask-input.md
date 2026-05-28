@@ -26,7 +26,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html), you need to register it as follows:
+Before using the [`IgcMaskInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcMaskInputComponent } from 'igniteui-webcomponents';
@@ -58,7 +58,7 @@ These flags also participate in the component validation - i.e., the input becom
 
 ### Applying Mask
 
-Applying the mask is pretty straightforward. All you need to do is provide a predetermined pattern to the [`mask`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html#mask) property of the input.
+Applying the mask is pretty straightforward. All you need to do is provide a predetermined pattern to the [`mask`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent&member=mask) property of the input.
 
 In the example below, we will apply a mask for a phone number with an extension code.
 
@@ -78,7 +78,7 @@ After that you should see the following in your browser:
 
 ### Prompt Character
 
-Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`prompt`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html#prompt) property:
+Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`prompt`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent&member=prompt) property:
 
 ```html
 <igc-mask-input id="mask-input" mask="(####) 00-00-00 Ext. 9999" prompt="-"></igc-mask-input>
@@ -88,7 +88,7 @@ By default, the `prompt` character is **underscore**.
 
 ### Placeholder
 
-Developers can also take advantage of the [`placeholder`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html#placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
+Developers can also take advantage of the [`placeholder`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent&member=placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
 
 ```html
 <igc-mask-input id="mask-input" mask="00/00/0000" placeholder="dd/MM/yyyy"></igc-mask-input>
@@ -96,7 +96,7 @@ Developers can also take advantage of the [`placeholder`](https://www.infragisti
 
 ### Value Modes
 
-The [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html) exposes a [`valueMode`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html#valueMode) property that lets you choose between `raw` and `withFormatting` options to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`valueMode`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html#valueMode) is set to `raw`. Try it for yourself in the example below:
+The [`IgcMaskInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent) exposes a [`valueMode`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent&member=valueMode) property that lets you choose between `raw` and `withFormatting` options to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`valueMode`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent&member=valueMode) is set to `raw`. Try it for yourself in the example below:
 
 ```css
 /* shared styles are loaded from: */
@@ -105,7 +105,7 @@ The [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-we
 
 ## Styling
 
-The [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgcMaskInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -151,11 +151,11 @@ igc-mask-input::part(input)::placeholder {
 
 ## API References
 
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html)
-- [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html)
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
-- [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html)
-- [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html)
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
+- [`IgcMaskInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+- [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent)
+- [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

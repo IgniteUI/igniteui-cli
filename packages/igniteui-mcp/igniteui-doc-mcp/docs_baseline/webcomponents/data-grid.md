@@ -119,9 +119,9 @@ constructor() {
 }
 ```
 
-The [`id`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while `data` binds the grid, in this case to local data.
+The [`id`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while `data` binds the grid, in this case to local data.
 
-The [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#autoGenerate) property tells the grid to auto generate the grid's [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
+The [`autoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=autoGenerate) property tells the grid to auto generate the grid's [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
 
 ## Editable Web Components Grid
 
@@ -131,11 +131,11 @@ Following this topic you will learn more about [cell template](data-grid.md#cell
 
 ## Grid Column Configuration
 
-[`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) is used to define the grid's columns collection and to enable features per column like **sorting** and **filtering**. Cell, header, and footer templates are also available.
+[`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) is used to define the grid's columns collection and to enable features per column like **sorting** and **filtering**. Cell, header, and footer templates are also available.
 
 ### Defining Columns
 
-Let's turn the [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#autoGenerate) property off and define the columns collection in the markup:
+Let's turn the [`autoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=autoGenerate) property off and define the columns collection in the markup:
 
 ```html
 <igc-grid id="grid1" auto-generate="false" allow-filtering="true">
@@ -257,7 +257,7 @@ When properly implemented, the cell editing template also ensures that the cell'
 ### Cell Editing Template
 
 The column also accepts one last template that will be used when a cell is in edit mode. As with the other column templates, the provided context object is again the cell value and the cell object itself. Of course in order to make the edit-mode template accessible to end users, you need
-to set the [`editable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#editable) property of the column to true.
+to set the [`editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) property of the column to true.
 
 ```html
 <igc-column id="price" field="Price" data-type="number" editable="true"></igc-column>
@@ -286,7 +286,7 @@ Make sure to check the API for the `Cell` in order to get accustomed with the pr
 
 ### Column Template API
 
-Each of the column templates can be changed programmatically at any point through the [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) object itself. For example in the code below, we have declared two templates for our user data. In our TypeScript code we'll get references to the templates themselves and then based on some condition we will render the appropriate template for the column in our application.
+Each of the column templates can be changed programmatically at any point through the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) object itself. For example in the code below, we have declared two templates for our user data. In our TypeScript code we'll get references to the templates themselves and then based on some condition we will render the appropriate template for the column in our application.
 
 ```html
 <igc-grid>
@@ -331,11 +331,11 @@ The code above will make the **ProductName** column sortable and editable and wi
 
 There are optional parameters for formatting:
 
-- [`format`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumnpipeargs.html#format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
-- [`timezone`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumnpipeargs.html#timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
-- [`digitsInfo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumnpipeargs.html#digitsInfo) - decimal representation objects. Default to **1.0-3**
+- [`format`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
+- [`timezone`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
+- [`digitsInfo`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=digitsInfo) - decimal representation objects. Default to **1.0-3**
 
-To allow customizing the display format by these parameters, the [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#pipeArgs) is set. Example:
+To allow customizing the display format by these parameters, the [`pipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`pipeArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=pipeArgs) is set. Example:
 
 ```html
 <igc-column id="orderDate" field="OrderDate" data-type="date"></igc-column>
@@ -361,13 +361,13 @@ constructor() {
 }
 ```
 
-The `OrderDate` column will respect only the [`format`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumnpipeargs.html#format) and [`timezone`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumnpipeargs.html#timezone) properties, while the `UnitPrice` will only respect the [`digitsInfo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumnpipeargs.html#digitsInfo).
+The `OrderDate` column will respect only the [`format`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=format) and [`timezone`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=timezone) properties, while the `UnitPrice` will only respect the [`digitsInfo`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnPipeArgs&member=digitsInfo).
 
 All available column data types could be found in the official [Column types topic](grid/column-types.md#default-template).
 
 ## Grid Data Structure
 
-The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) handles **flat data** and nested **POJO (Plain old Java objects)**. The data structure specific for rendering is in the form:
+The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) handles **flat data** and nested **POJO (Plain old Java objects)**. The data structure specific for rendering is in the form:
 
 ```typescript
 const OBJECT_ARRAY = [{
@@ -397,7 +397,7 @@ const POJO = [{
 > **WARNING**:
 > **The key values must not contain arrays**.
 
-> If you use [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#autoGenerate) columns **the data keys must be identical.**
+> If you use [`autoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=autoGenerate) columns **the data keys must be identical.**
 
 ## Grid Data Binding
 
@@ -423,7 +423,7 @@ public onDataLoaded(jsonData: any[]) {
 }
 ```
 
-**Note**: The grid [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
+**Note**: The grid [`autoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`autoGenerate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
 
 ## Complex Data Binding
 
@@ -456,7 +456,7 @@ For example, in order to display the weights of a given amino acid in the grid t
 <igc-column field="weight.residue"></igc-column>
 ```
 
-An alternative way to bind complex data, or to visualize composite data (from more than one column) in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) is to use a custom body template for the column. Generally, one can:
+An alternative way to bind complex data, or to visualize composite data (from more than one column) in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) is to use a custom body template for the column. Generally, one can:
 
 - use the `value` of the cell, that contains the nested data
 - use the `cell` object in the template, from which to access the `ctx.cell.id.rowIndex` or `ctx.cell.id.rowID` to get the row via the grid's API and retrieve any value from it and interpolate those in the template.
@@ -629,7 +629,7 @@ export class EmployeesNestedData extends Array<EmployeesNestedDataItem> {
 
 ### Working with Flat Data Overview
 
-The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`data`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#data) property of the [`IgcGridRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html).
+The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`data`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=data) property of the [`IgcGridRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html).
 
 Since the Web Components grid is a component for **rendering**, **manipulating** and **preserving** data records, having access to **every data record** gives you the opportunity to customize the approach of handling it. The `data` property provides you this opportunity.
 
@@ -738,7 +738,7 @@ public webGridCompositeAddressEditCellTemplate = (ctx: IgcCellTemplateContext) =
 
 ### Working with Flat Data Example
 
-Using code snippets from previous section will result in the following example of [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
+Using code snippets from previous section will result in the following example of [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 
 ```typescript
 export class CustomersDataItem {
@@ -782,7 +782,7 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## Keyboard Navigation
 
-Keyboard navigation of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) provides a rich variety of keyboard interactions for the user. It enhances accessibility and allows intuitive navigation through any type of elements inside (cell, row, column header, toolbar, footer, etc.).
+Keyboard navigation of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides a rich variety of keyboard interactions for the user. It enhances accessibility and allows intuitive navigation through any type of elements inside (cell, row, column header, toolbar, footer, etc.).
 
 <!-- The sizing topic is still not available thus the Sizing section is commented out. -->
 
@@ -823,10 +823,10 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 
 ## API References
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 - `Cell`
-- [`IgcCellTemplateContext`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccelltemplatecontext.html)
+- [`IgcCellTemplateContext`](mcp:get_api_reference?platform=webcomponents&component=IgcCellTemplateContext)
 - [`IgcGridRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridrow.html)
 - [`IgcGridToolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html)
 - [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)

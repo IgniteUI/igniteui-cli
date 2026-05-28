@@ -299,7 +299,7 @@ export class BadgeDotSampleComponent { }
 
 ### Badge in List
 
-Let's extend the previous sample and create a list with contacts, similar to those in chat clients. In addition to the contact name, we want to display an avatar and the current state of the contact (online, offline or away). To achieve this, we're using the [`igx-badge`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html) and [`igx-avatar`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxavatarcomponent.html) components. For a container, [`igx-list`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html) is used.
+Let's extend the previous sample and create a list with contacts, similar to those in chat clients. In addition to the contact name, we want to display an avatar and the current state of the contact (online, offline or away). To achieve this, we're using the [`igx-badge`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent) and [`igx-avatar`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent) components. For a container, [`igx-list`](mcp:get_api_reference?platform=angular&component=IgxListComponent) is used.
 
 To continue, include all needed modules and import them in the **app.module.ts** file.
 
@@ -320,9 +320,9 @@ export class AppModule {}
 ```
 
 >[!NOTE]
->The [`igx-badge`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html) has [`icon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html#icon), [`value`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html#value), and [`type`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html#type) inputs to configure the badge look. You can set the icon by providing its name from the official [material icons set](https://material.io/icons/). The badge type can be set to either [`default`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#default), [`info`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#info), [`success`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#success), [`warning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#warning), or [`error`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/type.html#error). Depending on the type, a specific background color is applied.
+>The [`igx-badge`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent) has [`icon`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=icon), [`value`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=value), and [`type`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=type) inputs to configure the badge look. You can set the icon by providing its name from the official [material icons set](https://material.io/icons/). The badge type can be set to either [`default`](mcp:get_api_reference?platform=angular&component=Type&member=default), [`info`](mcp:get_api_reference?platform=angular&component=Type&member=info), [`success`](mcp:get_api_reference?platform=angular&component=Type&member=success), [`warning`](mcp:get_api_reference?platform=angular&component=Type&member=warning), or [`error`](mcp:get_api_reference?platform=angular&component=Type&member=error). Depending on the type, a specific background color is applied.
 
-In our sample, [`icon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html#icon) and [`type`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html#type) are bound to model properties named _icon_ and _type_.
+In our sample, [`icon`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=icon) and [`type`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent&member=type) are bound to model properties named _icon_ and _type_.
 
 Next, we're adding the contacts in our template:
 
@@ -638,11 +638,11 @@ At the end your badges should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxAvatarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxavatarcomponent.html)
-- [IgxBadgeComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbadgecomponent.html)
+- [IgxAvatarComponent](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent)
+- [IgxBadgeComponent](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent)
 - [IgxBadgeComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-badge-theme)
-- [IgxListComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html)
-- [IgxListItemComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistitemcomponent.html)
+- [IgxListComponent](mcp:get_api_reference?platform=angular&component=IgxListComponent)
+- [IgxListItemComponent](mcp:get_api_reference?platform=angular&component=IgxListItemComponent)
 - [IgxBadgeType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#IgxBadgeType)
 
 ## Theming Dependencies

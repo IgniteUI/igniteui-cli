@@ -10,7 +10,7 @@ _premium: true
 
 # Blazor Dashboard Tile <label class="badge badge--preview">PREVIEW</label>
 
-The Blazor Dashboard Tile is a automatic data visualization component which determines via analysis of a DataSource collection/array or single data point what would be the most appropriate visualization to display. It then also provides a further suite of tools in its embedded [`IgbToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html) that let you alter the visualization that is presented in a variety of ways.
+The Blazor Dashboard Tile is a automatic data visualization component which determines via analysis of a DataSource collection/array or single data point what would be the most appropriate visualization to display. It then also provides a further suite of tools in its embedded [`IgbToolbar`](mcp:get_api_reference?platform=blazor&component=IgbToolbar) that let you alter the visualization that is presented in a variety of ways.
 
 A wide variety of visualizations may be selected for display depending on the shape of the provided data including, but not limited to: Category Charts, Radial and Polar Charts, Scatter Charts, Geographic Maps, Radial and Linear Gauges, Financial Charts and Stacked Charts.
 
@@ -1025,7 +1025,7 @@ Depending on what you bind the Dashboard Tile's `DataSource` property to will de
 - [IgbLinear Gauge](linear-gauge.md)
 - [IgbRadialGauge](radial-gauge.md)
 
-The data visualization that is chosen by default is mainly dependent on the schema and the count of the `DataSource` that you have bound. For example, if you bind a single numeric value, you will get a [`IgbRadialGauge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html), but if you bind a collection of value-label pairs that are easy to distinguish from each other, you will likely get a `XamDataPieChart`. If you bind an `DataSource` that has more value paths, you will receive a [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) with multiple column series or line series, depending mainly on the count of the collection bound. You can also bind to a `ShapeDataSource` or data the appears to contain geographic points to receive a [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html).
+The data visualization that is chosen by default is mainly dependent on the schema and the count of the `DataSource` that you have bound. For example, if you bind a single numeric value, you will get a [`IgbRadialGauge`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge), but if you bind a collection of value-label pairs that are easy to distinguish from each other, you will likely get a `XamDataPieChart`. If you bind an `DataSource` that has more value paths, you will receive a [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) with multiple column series or line series, depending mainly on the count of the collection bound. You can also bind to a `ShapeDataSource` or data the appears to contain geographic points to receive a [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap).
 
 You are not locked into a single visualization when you bind the `DataSource`, and you can tell the control that you want to see a particular visualization by setting its `VisualizationType` property. For example, if you specifically wanted to see a line chart, you could define the Dashboard Tile like so:
 
@@ -1089,7 +1089,7 @@ public class DashboardGaugeDataSource
 }
 ```
 
-The visualization or properties of the visualization are also configurable using the [`IgbToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html) at the top of the control. This [`IgbToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html) has the default tools for the current visualization with the addition of four Dashboard Tile specific ones, highlighted below:
+The visualization or properties of the visualization are also configurable using the [`IgbToolbar`](mcp:get_api_reference?platform=blazor&component=IgbToolbar) at the top of the control. This [`IgbToolbar`](mcp:get_api_reference?platform=blazor&component=IgbToolbar) has the default tools for the current visualization with the addition of four Dashboard Tile specific ones, highlighted below:
 
 <img src="../images/dashboard-tile-toolbar.png" alt="Dashboard Tile Toolbar"/>
 
@@ -1098,7 +1098,7 @@ From left to right:
 - The first tool will show a data grid with the `DataSource` provided to the control. This is a toggle tool, so if you click it again after showing the grid, it will revert to the visualization.
 - The second tool allows you to configure the settings of the current data visualization.
 - The third tool allows you to change the current visualization, allowing you to plot a different series type or show a different type of visualization altogether. This can be set on the control by setting the `VisualizationType` property, mentioned above.
-- The last tool allows you to configure which properties on your underlying data item are included for the control. You can configure this by setting the [`IncludedProperties`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_IncludedProperties) or [`ExcludedProperties`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ExcludedProperties) collection on the control.
+- The last tool allows you to configure which properties on your underlying data item are included for the control. You can configure this by setting the [`IncludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=IncludedProperties) or [`ExcludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ExcludedProperties) collection on the control.
 
 This demo demonstrates dashboard tile integration with the Blazor Pie Chart. The toolbar options at the top right provides access to styling and changing the data visualization.
 
@@ -1234,13 +1234,13 @@ public class WorldCities
 
 ## API References
 
-- [`IgbToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html)
-- [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html)
-- [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
-- [`IgbDataPieChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataPieChart.html)
-- [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html)
-- [`IgbLinearGauge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html)
-- [`IgbRadialGauge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialGauge.html)
+- [`IgbToolbar`](mcp:get_api_reference?platform=blazor&component=IgbToolbar)
+- [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
+- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
+- [`IgbDataPieChart`](mcp:get_api_reference?platform=blazor&component=IgbDataPieChart)
+- [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)
+- [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge)
+- [`IgbRadialGauge`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge)
 
 ## Additional Resources
 

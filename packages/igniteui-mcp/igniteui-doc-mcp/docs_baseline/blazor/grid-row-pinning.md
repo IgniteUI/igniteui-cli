@@ -13,7 +13,7 @@ _premium: true
 
 # Blazor Grid Row Pinning
 
-The Ignite UI for Blazor Row Pinning feature in Blazor Grid allows you to  pin one or multiple rows to the top or bottom of grid. Row Pinning allows end-users to pin rows in a particular order, duplicating them in a special area that is always visible even when they scroll the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) vertically. The Blazor Grid has a built-in row pinning UI, which is enabled by initializing an [`IgbActionStrip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbActionStrip.html) component in the context of Grid. In addition, you can define custom UI and change the pin state of the rows via the Row Pinning API.
+The Ignite UI for Blazor Row Pinning feature in Blazor Grid allows you to  pin one or multiple rows to the top or bottom of grid. Row Pinning allows end-users to pin rows in a particular order, duplicating them in a special area that is always visible even when they scroll the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) vertically. The Blazor Grid has a built-in row pinning UI, which is enabled by initializing an [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) component in the context of Grid. In addition, you can define custom UI and change the pin state of the rows via the Row Pinning API.
 
 ## Blazor Grid Row Pinning Example
 
@@ -195,7 +195,7 @@ public class CustomersDataLocal
 
 ## Row Pinning UI
 
-The built-in row pinning UI is enabled by adding an [`IgbActionStrip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbActionStrip.html) component with the [`IgbGridPinningActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridPinningActions.html) component. The action strip is automatically shown when hovering a row and will display a pin or unpin button icon based on the state of the row it is shown for. An additional action allowing to scroll the copy of the pinned row into view is shown for each pinned row as well.
+The built-in row pinning UI is enabled by adding an [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) component with the [`IgbGridPinningActions`](mcp:get_api_reference?platform=blazor&component=IgbGridPinningActions) component. The action strip is automatically shown when hovering a row and will display a pin or unpin button icon based on the state of the row it is shown for. An additional action allowing to scroll the copy of the pinned row into view is shown for each pinned row as well.
 
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
 
@@ -229,20 +229,20 @@ The built-in row pinning UI is enabled by adding an [`IgbActionStrip`](https://w
 
 ## Row Pinning API
 
-Row pinning is controlled through the [`Pinned`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridRow.html#IgniteUI_Blazor_Controls_IgbGridRow_Pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) body.
+Row pinning is controlled through the [`Pinned`](mcp:get_api_reference?platform=blazor&component=IgbGridRow&member=Pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) body.
 
 ```razor
 this.Grid.PinRowAsync("ALFKI", 0);
 ```
 
-You may also use the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)'s [`PinRow`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_PinRow) or [`UnpinRow`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_UnpinRow) methods of the to pin or unpin records by their ID:
+You may also use the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)'s [`PinRow`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=PinRow) or [`UnpinRow`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=UnpinRow) methods of the to pin or unpin records by their ID:
 
 ```razor
 this.Grid.PinRowAsync("ALFKI", 0);
 this.Grid.UnpinRowAsync("ALFKI");
 ```
 
-Note that the row ID is the primary key value, defined by the [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_PrimaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
+Note that the row ID is the primary key value, defined by the [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=PrimaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
 
 A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the `RowPinning` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
 
@@ -271,7 +271,7 @@ igRegisterScript("rowPinningHandler", rowPinningHandler, false);
 
 ## Pinning Position
 
-You can change the row pinning position via the [`Pinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
+You can change the row pinning position via the [`Pinning`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=Pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
 When set to Bottom pinned rows are rendered at the bottom of the grid, after the unpinned rows. Unpinned rows can be scrolled vertically, while the pinned rows remain fixed at the bottom.
 
 ```razor
@@ -640,9 +640,9 @@ public class CustomersDataLocal
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
-- [`IgbGridRow`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridRow.html)
-- [`IgbRowType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowType.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+- [`IgbGridRow`](mcp:get_api_reference?platform=blazor&component=IgbGridRow)
+- [`IgbRowType`](mcp:get_api_reference?platform=blazor&component=IgbRowType)
 
 ## Additional Resources
 

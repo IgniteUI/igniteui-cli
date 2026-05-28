@@ -13,7 +13,7 @@ _premium: true
 
 # Blazor Grid Toolbar
 
-The Ignite UI for Blazor Toolbar in is a container for UI operations in the Blazor Grid. The Blazor toolbar is located at the top of the Blazor component, i.e., the [`Grid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbar.html#IgniteUI_Blazor_Controls_IgbGridToolbar_Grid) and it matches its horizontal size. The toolbar container can host any custom content or set of predefined UI controls. The default set for the Blazor Grid includes:
+The Ignite UI for Blazor Toolbar in is a container for UI operations in the Blazor Grid. The Blazor toolbar is located at the top of the Blazor component, i.e., the [`Grid`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar&member=Grid) and it matches its horizontal size. The toolbar container can host any custom content or set of predefined UI controls. The default set for the Blazor Grid includes:
 
 - Column Hiding
 - Column Pinning
@@ -155,7 +155,7 @@ public class AthletesData
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
-The predefined [`IgbGridToolbarActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarActions.html) and [`IgbGridToolbarTitle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarTitle.html) UI components are added inside the [`IgbGridToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbar.html) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
+The predefined [`IgbGridToolbarActions`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarActions) and [`IgbGridToolbarTitle`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarTitle) UI components are added inside the [`IgbGridToolbar`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
 
 ```razor
 <IgbGrid>
@@ -177,7 +177,7 @@ The predefined [`IgbGridToolbarActions`](https://www.infragistics.com/blazor/doc
 <!-- ComponentEnd: Grid -->
 
 > [!Note]
-> As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgbGridToolbarActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarActions.html) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
+> As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgbGridToolbarActions`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarActions) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
 
 Of course, each of these UIs can be added independently of each other, or may not be added at all. This way the toolbar container will be rendered empty:
 
@@ -335,7 +335,7 @@ public class AthletesData
 
 ### Title
 
-Setting a title for the toolbar in your grid is achieved by using the [`IgbGridToolbarTitle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarTitle.html).
+Setting a title for the toolbar in your grid is achieved by using the [`IgbGridToolbarTitle`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarTitle).
 
 Users can provide anything from simple text to more involved templates.
 
@@ -351,7 +351,7 @@ Users can provide anything from simple text to more involved templates.
 
 ### Actions
 
-The [`IgbGridToolbarActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarActions.html) is where users can place actions/interactions in relation to the parent grid.
+The [`IgbGridToolbarActions`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarActions) is where users can place actions/interactions in relation to the parent grid.
 As with the title portion of the toolbar, users can provide anything inside that template part, including the default
 toolbar interaction components.
 
@@ -369,7 +369,7 @@ toolbar interaction components.
 
 ### Column Pinning
 
-The [`IgbGridToolbarPinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarPinning.html) component provides the default UI for interacting with column pinning in the grid.
+The [`IgbGridToolbarPinning`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarPinning) component provides the default UI for interacting with column pinning in the grid.
 
 The component is setup to work out of the box with the parent grid containing the toolbar as well as several input properties for customizing the UI, such as the component title, the placeholder for the component input and the height of the dropdown itself.
 
@@ -387,7 +387,7 @@ The component is setup to work out of the box with the parent grid containing th
 
 ### Column Hiding
 
-The [`IgbGridToolbarHiding`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarHiding.html) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
+The [`IgbGridToolbarHiding`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarHiding) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
 title, the placeholder for the component input and the height of the dropdown itself.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
@@ -420,7 +420,7 @@ Toolbar Advanced Filtering component provides the default UI for the Advanced Fi
 
 ### Data Exporting
 
-As with the rest of the toolbar actions, exporting is provided through a [`IgbGridToolbarExporter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarExporter.html) out of the box.
+As with the rest of the toolbar actions, exporting is provided through a [`IgbGridToolbarExporter`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter) out of the box.
 
 The toolbar exporter component exposes several input properties for customizing both the UI and the exporting experience.
 
@@ -591,7 +591,7 @@ public class AthletesData
 
 When using the default toolbar exporter component, whenever an export operation takes place the toolbar will show a progress indicator while the operation is in progress.
 
-Moreover, users can set the toolbar [`ShowProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbar.html#IgniteUI_Blazor_Controls_IgbGridToolbar_ShowProgress) property and use for their own long running operations or just as another way to signify an action taking place in the grid.
+Moreover, users can set the toolbar [`ShowProgress`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar&member=ShowProgress) property and use for their own long running operations or just as another way to signify an action taking place in the grid.
 
 The sample belows uses has significant amount of data, in order to increase the time needed for data export so the progressbar can be seen. Additionally it has another button that simulates a long running operation in the grid:
 
@@ -1085,14 +1085,14 @@ public class AthletesData
 
 The Grid Toolbar service has a few more APIs to explore, which are listed below.
 
-- [`IgbGridToolbarAdvancedFiltering`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarAdvancedFiltering.html)
-- [`IgbGridToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbar.html)
-- [`IgbGridToolbarExporter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarExporter.html)
-- [`IgbGridToolbarHiding`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarHiding.html)
-- [`IgbGridToolbarPinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarPinning.html)
-- [`IgbGridToolbarTitle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarTitle.html)
+- [`IgbGridToolbarAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarAdvancedFiltering)
+- [`IgbGridToolbar`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar)
+- [`IgbGridToolbarExporter`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter)
+- [`IgbGridToolbarHiding`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarHiding)
+- [`IgbGridToolbarPinning`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarPinning)
+- [`IgbGridToolbarTitle`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarTitle)
 
-[`Grid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbar.html#IgniteUI_Blazor_Controls_IgbGridToolbar_Grid) Events:
+[`Grid`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar&member=Grid) Events:
 
 - `ToolbarExporting`
 

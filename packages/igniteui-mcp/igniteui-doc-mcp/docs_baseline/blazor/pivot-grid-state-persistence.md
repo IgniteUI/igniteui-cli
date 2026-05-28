@@ -13,11 +13,11 @@ _premium: true
 
 # Blazor Pivot Grid State Persistence
 
-The Ignite UI for Blazor State Persistence in Blazor Pivot Grid allows developers to easily save and restore the grid state. When the [`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) is applied on the Blazor [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html), it exposes the `GetStateAsStringAsync` and `ApplyStateFromStringAsync` methods that developers can use to achieve state persistence in any scenario.
+The Ignite UI for Blazor State Persistence in Blazor Pivot Grid allows developers to easily save and restore the grid state. When the [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) is applied on the Blazor [`IgbPivotGrid`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid), it exposes the `GetStateAsStringAsync` and `ApplyStateFromStringAsync` methods that developers can use to achieve state persistence in any scenario.
 
 ## Supported Features
 
-[`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) supports saving and restoring the state of the following features:
+[`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) supports saving and restoring the state of the following features:
 
 <!-- ComponentStart: PivotGrid -->
 
@@ -26,7 +26,7 @@ The Ignite UI for Blazor State Persistence in Blazor Pivot Grid allows developer
 - `CellSelection`
 - `ColumnSelection`
 - `Expansion`
-- [`IgbPivotConfiguration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotConfiguration.html)
+- [`IgbPivotConfiguration`](mcp:get_api_reference?platform=blazor&component=IgbPivotConfiguration)
   - Pivot Configuration properties defined by the `IPivotConfiguration` interface.
   - Pivot Dimension and Value functions are restored using application level code, see [Restoring Pivot Configuration](state-persistence.md#restoring-pivot-configuration) section.
 
@@ -63,7 +63,7 @@ gridState.ApplyStateFromStringAsync(gridStateString, new string[0]);
 gridState.ApplyStateFromStringAsync(sortingFilteringStates, new string[0])
 ```
 
-The [`Options`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridStateBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridStateBaseDirective_Options) object implements the [`IgbGridStateOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridStateOptions.html) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. `GetStateAsStringAsync` methods will not put the state of these features in the returned value and `ApplyStateFromStringAsync` methods will not restore state for them.
+The [`Options`](mcp:get_api_reference?platform=blazor&component=IgbGridStateBaseDirective&member=Options) object implements the [`IgbGridStateOptions`](mcp:get_api_reference?platform=blazor&component=IgbGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. `GetStateAsStringAsync` methods will not put the state of these features in the returned value and `ApplyStateFromStringAsync` methods will not restore state for them.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
@@ -136,7 +136,7 @@ The simple to use single-point API's allows to achieve a full state persistence 
 
 ## Restoring Pivot Configuration
 
-[`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) will not persist pivot dimension functions, value formatters, etc. by default (see [limitations](state-persistence.md#limitations)). Restoring any of these can be achieved with code on application level. The [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html) exposes two events which can be used to set back any custom functions you have in the configuration: `DimensionInit` and `ValueInit`. Let's show how to do this:
+[`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) will not persist pivot dimension functions, value formatters, etc. by default (see [limitations](state-persistence.md#limitations)). Restoring any of these can be achieved with code on application level. The [`IgbPivotGrid`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid) exposes two events which can be used to set back any custom functions you have in the configuration: `DimensionInit` and `ValueInit`. Let's show how to do this:
 
 - Assign event handlers for the `DimensionInit` and `ValueInit` events:
 
@@ -150,7 +150,7 @@ The simple to use single-point API's allows to achieve a full state persistence 
     </IgbPivotGrid>
 ```
 
-> The `DimensionInit` and `ValueInit` events are emitted for each value and dimension defined in the [`PivotConfiguration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_PivotConfiguration) property.
+> The `DimensionInit` and `ValueInit` events are emitted for each value and dimension defined in the [`PivotConfiguration`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid&member=PivotConfiguration) property.
 
 - In the `ValueInit` event handler set all custom aggregators, formatters and styles:
 
@@ -546,7 +546,7 @@ public class PivotDataFlat
 
 <!-- ComponentStart: PivotGrid -->
 
-- [`GetState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html#IgniteUI_Blazor_Controls_IgbGridState_GetState) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) directive will ignore the pivot dimension `MemberFunction`, pivot values [`Member`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotValue.html#IgniteUI_Blazor_Controls_IgbPivotValue_Member), `Formatter`, custom [`Aggregate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotValue.html#IgniteUI_Blazor_Controls_IgbPivotValue_Aggregate) functions, [`Styles`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotValue.html#IgniteUI_Blazor_Controls_IgbPivotValue_Styles) and pivot configuration strategies: [`ColumnStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotConfiguration.html#IgniteUI_Blazor_Controls_IgbPivotConfiguration_ColumnStrategy) and [`RowStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotConfiguration.html#IgniteUI_Blazor_Controls_IgbPivotConfiguration_RowStrategy).
+- [`GetState`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=GetState) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) directive will ignore the pivot dimension `MemberFunction`, pivot values [`Member`](mcp:get_api_reference?platform=blazor&component=IgbPivotValue&member=Member), `Formatter`, custom [`Aggregate`](mcp:get_api_reference?platform=blazor&component=IgbPivotValue&member=Aggregate) functions, [`Styles`](mcp:get_api_reference?platform=blazor&component=IgbPivotValue&member=Styles) and pivot configuration strategies: [`ColumnStrategy`](mcp:get_api_reference?platform=blazor&component=IgbPivotConfiguration&member=ColumnStrategy) and [`RowStrategy`](mcp:get_api_reference?platform=blazor&component=IgbPivotConfiguration&member=RowStrategy).
 
 <!-- ComponentEnd: PivotGrid -->
 

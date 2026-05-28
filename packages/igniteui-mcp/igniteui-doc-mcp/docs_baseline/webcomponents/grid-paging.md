@@ -12,11 +12,11 @@ _premium: true
 
 # Web Components Grid Pagination Overview
 
-The Ignite UI for Web Components Pagination feature in Web Components Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) pagination is configurable via a separate component projected in the grid tree by defining a [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)  tag, similar to adding of a column. As in any Web Components table, the pagination in the Web Components Grid supports template for custom pages.
+The Ignite UI for Web Components Pagination feature in Web Components Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) pagination is configurable via a separate component projected in the grid tree by defining a [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)  tag, similar to adding of a column. As in any Web Components table, the pagination in the Web Components Grid supports template for custom pages.
 
 ## Web Components Grid Pagination Example
 
-The following example represents [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) pagination and exposes the options usage of items per page and how paging can be enabled. The user can also quickly navigate through the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) pages via "Go to last page" and "Go to first page" buttons.
+The following example represents [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) pagination and exposes the options usage of items per page and how paging can be enabled. The user can also quickly navigate through the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) pages via "Go to last page" and "Go to first page" buttons.
 
 ```typescript
 export class AthletesDataItem {
@@ -83,7 +83,7 @@ Integration between Paging and Group By is described in the [Group By](groupby.m
 
 ## Usage
 
-The [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html) component is used along with the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) component in the example below, but you can use it with any other component in case paging functionality is needed.
+The [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html) component is used along with the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component in the example below, but you can use it with any other component in case paging functionality is needed.
 
 ```html
 <igc-grid id="grid" className="gridSize">
@@ -156,7 +156,7 @@ export class AthletesData extends Array<AthletesDataItem> {
 
 ## API References
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 - [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)
 
 ## Additional Resources

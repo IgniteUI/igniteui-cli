@@ -28,7 +28,7 @@ The Ignite UI for Blazor Divider allows the content author to easily create a ho
 
 ## Dependencies
 
-Before using the [`IgbDivider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDivider.html), you need to register it as follows:
+Before using the [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -36,7 +36,7 @@ Before using the [`IgbDivider`](https://www.infragistics.com/blazor/docs/api/api
 builder.Services.AddIgniteUIBlazor(typeof(IgbDividerModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbDivider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDivider.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -44,7 +44,7 @@ You will also need to link an additional CSS file to apply the styling to the [`
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The [`IgbDivider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDivider.html) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgbDivider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDivider.html) is as simple as:
+The [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider) is as simple as:
 
 ```razor
 <IgbDivider></IgbDivider>
@@ -54,7 +54,7 @@ The [`IgbDivider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bla
 
 ### Vertical Divider
 
-If the [`Vertical`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDivider.html#IgniteUI_Blazor_Controls_IgbDivider_Vertical) attribute is set the direction of the divider would be changed from horizontal to vertical.
+If the [`Vertical`](mcp:get_api_reference?platform=blazor&component=IgbDivider&member=Vertical) attribute is set the direction of the divider would be changed from horizontal to vertical.
 
 ```razor
 <igrDivider Vertical></igrDivider>
@@ -118,7 +118,7 @@ The `Type` attribute determines whether to render a `solid` or a `dashed` divide
 
 ### Inset Divider
 
-The [`IgbDivider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDivider.html) can be set in on both sides. To `inset` the divider, set the [`Middle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDivider.html#IgniteUI_Blazor_Controls_IgbDivider_Middle) attribute to true in combination with the `--inset` css variable. This will shrink the divider line from both sides. The default value of the [`Middle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDivider.html#IgniteUI_Blazor_Controls_IgbDivider_Middle) attribute is false.
+The [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider) can be set in on both sides. To `inset` the divider, set the [`Middle`](mcp:get_api_reference?platform=blazor&component=IgbDivider&member=Middle) attribute to true in combination with the `--inset` css variable. This will shrink the divider line from both sides. The default value of the [`Middle`](mcp:get_api_reference?platform=blazor&component=IgbDivider&member=Middle) attribute is false.
 
 ```css
 /* DividerStyles.css */
@@ -190,7 +190,7 @@ The [`IgbDivider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bla
 
 ### Using Divider Inside Select Component
 
-The following sample illustrates how the [`IgbDivider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDivider.html) can be integrated within the [`IgbSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelect.html) in order to distinguish two groups of items.
+The following sample illustrates how the [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider) can be integrated within the [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) in order to distinguish two groups of items.
 
 ```razor
 <IgbSelect>
@@ -229,7 +229,7 @@ The `--color` css variable sets the color of the divider.
 
 ## API References
 
-- [`IgbDivider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDivider.html)
+- [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider)
 
 ## Additional Resources
 

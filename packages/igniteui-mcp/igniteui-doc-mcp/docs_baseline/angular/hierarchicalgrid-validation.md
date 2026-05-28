@@ -117,18 +117,18 @@ We expose the `FormGroup` that will be used for validation when editing starts o
 }
 You can decide to write your own validator function, or use one of the [built-in Angular validator functions](https://angular.io/guide/form-validation#built-in-validator-functions).
 ## Validation service API
-The grid exposes a validation service via the [`validation`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridComponent.html#validation) property.
+The grid exposes a validation service via the [`validation`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=validation) property.
 That service has the following public APIs:
-- [`valid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridValidationService.html#valid) - returns if the grid validation state is valid.
-- [`getInvalid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridValidationService.html#getInvalid) - returns records with invalid states.
-- [`clear`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridValidationService.html#clear) - clears state for record by id or clears all state if no id is provided.
-- [`markAsTouched`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridValidationService.html#markAsTouched) - marks the related record/field as touched.
+- [`valid`](mcp:get_api_reference?platform=angular&component=IgxGridValidationService&member=valid) - returns if the grid validation state is valid.
+- [`getInvalid`](mcp:get_api_reference?platform=angular&component=IgxGridValidationService&member=getInvalid) - returns records with invalid states.
+- [`clear`](mcp:get_api_reference?platform=angular&component=IgxGridValidationService&member=clear) - clears state for record by id or clears all state if no id is provided.
+- [`markAsTouched`](mcp:get_api_reference?platform=angular&component=IgxGridValidationService&member=markAsTouched) - marks the related record/field as touched.
 Invalid states will persist until the validation errors in them are fixed according to the validation rule or they are cleared.
 ## Validation triggers
 Validation will be triggered in the following scenarios:
-- While editing via the cell editor based on the grid's [`validationTrigger`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridComponent.html#validationTrigger). Either on `change` while typing in the editor, or on `blur` when the editor loses focus or closes.
-- When updating cells/rows via the API - [`updateRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridComponent.html#updateRow), [`updateCell`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridComponent.html#updateCell) etc..
-- When using batch editing and the [`undo`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxTransactionService.html#undo)/[`redo`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxTransactionService.html#redo) API of the transaction service.
+- While editing via the cell editor based on the grid's [`validationTrigger`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=validationTrigger). Either on `change` while typing in the editor, or on `blur` when the editor loses focus or closes.
+- When updating cells/rows via the API - [`updateRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=updateRow), [`updateCell`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=updateCell) etc..
+- When using batch editing and the [`undo`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=undo)/[`redo`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=redo) API of the transaction service.
 > Note: Validation will not trigger for records that have not been edited via user input or via the editing API. Visual indicators on the cell will only shown if the related input is considered touched - either via user interaction or via the `markAsTouched` API of the validation service.
 ## Angular Hierarchical Grid Validation Customization Options
 ### Set a custom validator
@@ -168,8 +168,8 @@ This is useful in scenarios where you want to add your own custom error message 
 ```
 ### Prevent exiting edit mode on invalid state
 In some cases you may want to disallow submitting an invalid value in the data.
-In that scenarios you can use the [`cellEdit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridComponent.html#cellEdit) or [`rowEdit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridComponent.html#rowEdit) events and cancel the event in case the new value is invalid.
-Both events' arguments have a [`valid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/IGridEditEventArgs.html#valid) property and can be canceled accordingly. How it is used can be seen in the [Cross-field Validation example](#cross-field-example)
+In that scenarios you can use the [`cellEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEdit) or [`rowEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEdit) events and cancel the event in case the new value is invalid.
+Both events' arguments have a [`valid`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs&member=valid) property and can be canceled accordingly. How it is used can be seen in the [Cross-field Validation example](#cross-field-example)
 ```html
 <igx-hierarchical-grid (cellEdit)='cellEdit($event)' ...>
 ```
@@ -407,7 +407,7 @@ In that case a custom validator can be used to compare the values in the record 
 
 
 
-  Cross-field validators can be added to the formGroup on the [`formGroupCreated`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridComponent.html#formGroupCreated) event. In them multiple fields can be compared for validity.
+  Cross-field validators can be added to the formGroup on the [`formGroupCreated`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=formGroupCreated) event. In them multiple fields can be compared for validity.
 
   ```ts
   public formCreateCustomerHandler(event: IGridFormGroupCreatedEventArgs) {
@@ -897,9 +897,9 @@ igx-hierarchical-grid {
 ```
 <div class="divider--half"></div>
 ## API References
-- [IgxBaseTransactionService](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbasetransactionservice.html)
-- [IgxGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
+- [IgxBaseTransactionService](mcp:get_api_reference?platform=angular&component=IgxBaseTransactionService)
+- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
 ## Known Issues and Limitations
 | Limitation                                                                                              | Description                                                                                                                                                                                                                 |
 | :------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

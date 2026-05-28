@@ -246,7 +246,7 @@ When used with templates, the `igxComboClearIcon` and the `igxComboToggleIcon` s
 
 <div class="divider--half"></div>
 
-- [IgxComboComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcombocomponent.html)
+- [IgxComboComponent](mcp:get_api_reference?platform=angular&component=IgxComboComponent)
 - [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)
 
 ## Additional Resources

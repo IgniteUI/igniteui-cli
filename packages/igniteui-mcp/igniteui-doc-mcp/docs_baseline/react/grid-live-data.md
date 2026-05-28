@@ -11,7 +11,7 @@ _premium: true
 
 # React Grid Live Data Updates
 
-The Ignite UI for React Live Data Updates feature in React Grid is used for enabling real-time or near-real-time updates of data displayed within the grid. This is extremely useful in apps where data is constantly changing, like stock market trackers, live sports scores, or IoT (Internet of Things) dashboards. The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) can handle thousands of updates per second, while staying responsive for user interactions.
+The Ignite UI for React Live Data Updates feature in React Grid is used for enabling real-time or near-real-time updates of data displayed within the grid. This is extremely useful in apps where data is constantly changing, like stock market trackers, live sports scores, or IoT (Internet of Things) dashboards. The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) can handle thousands of updates per second, while staying responsive for user interactions.
 
 ## React Live-data Update Example
 
@@ -2068,7 +2068,7 @@ Updating the view works the same way for columns with a default template and for
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 
 ## Additional Resources
 

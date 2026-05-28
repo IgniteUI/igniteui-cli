@@ -64,7 +64,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the React [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html) and its necessary CSS:
+You will then need to import the React [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) and its necessary CSS:
 
 ```tsx
 import { IgrCombo } from 'igniteui-react';
@@ -72,7 +72,7 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
 > [!WARNING]
-> The [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
+> The [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 Then, we will bind an array of objects to the combo data source used for building the list of options.
 
@@ -102,22 +102,22 @@ When the combo is bound to a list of complex data (i.e. objects), we need to spe
 
 <!-- end: Blazor -->
 
-- `T` - **required**, if [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) is omitted, this should be set to "object", otherwise this needs to match the property type of [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey).
+- `T` - **required**, if [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) is omitted, this should be set to "object", otherwise this needs to match the property type of [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey).
 
 <!-- end: Blazor -->
 
-- [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) - **Optional**, **required** for complex data object - Determines which field of the data source will be used to make selections. If [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) is omitted, the selection API will use object references to select items.
-- [`displayKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#displayKey) - **Optional**, **recommended** for complex data objects - Determines which field in the data source is used as the display value. If no value is specified for [`displayKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#displayKey), the combo will use the specified [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) (if any).
-    In our case, we want the combo to display the `name` of each city and use the `id` field for item selection and as the underlying value for each item. Therefore, we provide these properties to the combo's [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) and [`displayKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#displayKey) respectively.
+- [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) - **Optional**, **required** for complex data object - Determines which field of the data source will be used to make selections. If [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) is omitted, the selection API will use object references to select items.
+- [`displayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey) - **Optional**, **recommended** for complex data objects - Determines which field in the data source is used as the display value. If no value is specified for [`displayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey), the combo will use the specified [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) (if any).
+    In our case, we want the combo to display the `name` of each city and use the `id` field for item selection and as the underlying value for each item. Therefore, we provide these properties to the combo's [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) and [`displayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey) respectively.
 
 > [!Note]
-> When the data source consists of primitive types (e.g. `strings`, `numbers`, etc.), **do not** specify a [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) and/or [`displayKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#displayKey).
+> When the data source consists of primitive types (e.g. `strings`, `numbers`, etc.), **do not** specify a [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) and/or [`displayKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=displayKey).
 
 ### Setting Value
 
-The ComboBox component exposes a [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#value) getter and setter in addition to an attribute, which is also called value. You can use the value attribute to set the selected items on component initialization.
+The ComboBox component exposes a [`value`](mcp:get_api_reference?platform=react&component=IgrCombo&member=value) getter and setter in addition to an attribute, which is also called value. You can use the value attribute to set the selected items on component initialization.
 
-If you want to read the value, i.e. the list of currently selected items, or to update the value use the value getter and setter respectively. The value getter will return a list of all selected items as represented by the [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey). Likewise, if you want to update the list of selected items by using the value setter, you should provide a list of items by their [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey).
+If you want to read the value, i.e. the list of currently selected items, or to update the value use the value getter and setter respectively. The value getter will return a list of all selected items as represented by the [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey). Likewise, if you want to update the list of selected items by using the value setter, you should provide a list of items by their [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey).
 
 Example:
 
@@ -135,7 +135,7 @@ comboRef.current.value = ['NY01', 'UK01'];
 
 The combo component exposes APIs that allow you to change the currently selected items.
 
-Besides selecting items from the list of options by user interaction, you can select items programmatically. This is done via the [`select`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#select) and [`deselect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#deselect) methods. You can pass an array of items to both methods. If the methods are called with no arguments all items will be selected/deselected depending on which method is called. If you have specified a [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) for your combo component, then you should pass the value keys of the items you would like to select/deselect:
+Besides selecting items from the list of options by user interaction, you can select items programmatically. This is done via the [`select`](mcp:get_api_reference?platform=react&component=IgrCombo&member=select) and [`deselect`](mcp:get_api_reference?platform=react&component=IgrCombo&member=deselect) methods. You can pass an array of items to both methods. If the methods are called with no arguments all items will be selected/deselected depending on which method is called. If you have specified a [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) for your combo component, then you should pass the value keys of the items you would like to select/deselect:
 
 #### Select/deselect some items
 
@@ -153,7 +153,7 @@ comboRef.current.select([]);
 comboRef.current.deselect([]);
 ```
 
-If the [`valueKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#valueKey) property is omitted, you will have to list the items you wish to select/deselect as objects references:
+If the [`valueKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=valueKey) property is omitted, you will have to list the items you wish to select/deselect as objects references:
 
 ```tsx
 // Select/deselect values by object references when no valueKey is provided
@@ -269,10 +269,10 @@ root.render(<ComboSelection />);
 
 ### Validation
 
-The Ignite UI for React Combo component supports most of the [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) properties, such as [`required`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#required), [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#disabled), [`autofocus`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#autofocus), [`invalid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#invalid), etc. The component also exposes two methods bound to its validation:
+The Ignite UI for React Combo component supports most of the [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) properties, such as [`required`](mcp:get_api_reference?platform=react&component=IgrCombo&member=required), [`disabled`](mcp:get_api_reference?platform=react&component=IgrCombo&member=disabled), [`autofocus`](mcp:get_api_reference?platform=react&component=IgrInput&member=autofocus), [`invalid`](mcp:get_api_reference?platform=react&component=IgrCombo&member=invalid), etc. The component also exposes two methods bound to its validation:
 
-- [`reportValidity`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#reportValidity) - checks for validity and returns true if the component satisfies the validation constraints.
-- [`checkValidity`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#checkValidity) - a wrapper around reportValidity to comply with the native input API.
+- [`reportValidity`](mcp:get_api_reference?platform=react&component=IgrCombo&member=reportValidity) - checks for validity and returns true if the component satisfies the validation constraints.
+- [`checkValidity`](mcp:get_api_reference?platform=react&component=IgrCombo&member=checkValidity) - a wrapper around reportValidity to comply with the native input API.
 
 ## Keyboard Navigation
 
@@ -291,7 +291,7 @@ When the combo component is focused and the list of options is **visible**:
 
 ## Styling
 
-You can change the appearance of the [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html) component and its items, by using the exposed CSS parts listed below:
+You can change the appearance of the [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) component and its items, by using the exposed CSS parts listed below:
 
 | Part name            | Description                                                                     |
 | -------------------- | ------------------------------------------------------------------------------- |
@@ -454,7 +454,7 @@ root.render(<ComboStyling />);
 
 ## API Reference
 
-- [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html)
+- [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo)
 - [`Styling & Themes`](../../themes/overview.md)
 
 ## Additional Resources

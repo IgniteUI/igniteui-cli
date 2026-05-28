@@ -1,12 +1,25 @@
 import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
 import { ApiDocLoader } from '../lib/api-doc-loader.js';
-import { searchApiDocs, extractSection } from '../lib/api-doc-search.js';
+import { searchApiDocs, extractSection, extractMember } from '../lib/api-doc-search.js';
 import type { GetApiReferenceParams, SearchApiParams } from './schemas.js';
 import { getPlatformConfig } from '../config/platforms.js';
 
 export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
   return async (params: GetApiReferenceParams): Promise<CallToolResult> => {
-    const { platform, component, section = 'all' } = params;
+    const { platform, section = 'all' } = params;
+    let { component, member } = params;
+
+    // Hardening: tolerate "Component#member" being passed in `component`.
+    // The rewrite step encodes member as `&member=`, but defensive parsing here
+    // means a stray fragment-style ref still resolves.
+    if (component.includes('#')) {
+      const [head, ...rest] = component.split('#');
+      component = head.trim();
+      if (!member && rest.length > 0) {
+        const tail = rest.join('#').trim();
+        if (tail) member = tail;
+      }
+    }
 
     let resolvedComponent = component;
     let entry = docLoader.get(platform, resolvedComponent);
@@ -41,6 +54,22 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
         content: [{
           type: "text",
           text: `API content for "${resolvedComponent}" is not available in memory.`
+        }],
+        isError: true,
+      };
+    }
+
+    // Member-targeted lookup takes precedence over section.
+    if (member) {
+      const match = extractMember(content, member);
+      if (match) {
+        const text = `${entry.component}.${match.name} (${match.section}):\n${match.line}`;
+        return { content: [{ type: "text", text }] };
+      }
+      return {
+        content: [{
+          type: "text",
+          text: `Member "${member}" not found on ${entry.component}. Use search_api or call get_api_reference without "member" to see the full entry.`
         }],
         isError: true,
       };

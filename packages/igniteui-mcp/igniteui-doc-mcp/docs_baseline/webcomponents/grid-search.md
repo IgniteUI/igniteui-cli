@@ -12,11 +12,11 @@ _premium: true
 
 # Web Components Grid Search Filter
 
-The Ignite UI for Web Components Search Filter feature in Web Components Grid enables the process of finding values in the collection of data. We make it easier to set up this functionality and it can be implemented with a search input box, buttons, keyboard navigation and other useful features for an even better user experience. While browsers natively provide content search functionality, most of the time the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) virtualizes its columns and rows that are out of view. In these cases, the native browser search is unable to search data in the virtualized cells, since they are not part of the DOM. We have extended the Web Components Material table-based grid with a **search API** that allows you to search through the **virtualized content** of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
+The Ignite UI for Web Components Search Filter feature in Web Components Grid enables the process of finding values in the collection of data. We make it easier to set up this functionality and it can be implemented with a search input box, buttons, keyboard navigation and other useful features for an even better user experience. While browsers natively provide content search functionality, most of the time the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) virtualizes its columns and rows that are out of view. In these cases, the native browser search is unable to search data in the virtualized cells, since they are not part of the DOM. We have extended the Web Components Material table-based grid with a **search API** that allows you to search through the **virtualized content** of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ## Web Components Search Example
 
-The following example represents [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) with search input box that allows searching in all columns and rows, as well as specific filtering options for each column.
+The following example represents [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) with search input box that allows searching in all columns and rows, as well as specific filtering options for each column.
 
 ```typescript
 export class MarketRecord {
@@ -102,7 +102,7 @@ Let's start by creating our grid and binding it to our data. We will also add so
 
 <!-- ComponentEnd: Grid -->
 
-Great, and now let's prepare for the search API of our [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)! We can create a few properties, which can be used for storing the currently searched text and whether the search is case sensitive and/or by an exact match.
+Great, and now let's prepare for the search API of our [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)! We can create a few properties, which can be used for storing the currently searched text and whether the search is case sensitive and/or by an exact match.
 
 <!-- ComponentStart: Grid -->
 
@@ -124,9 +124,9 @@ Great, and now let's prepare for the search API of our [`IgcGridComponent`](http
 
 ### Web Components Search Box Input
 
-Now let's create our search input!  By getting the input element we can get its current value. This will allow us to use the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)'s [`findNext`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#findNext) and [`findPrev`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#findPrev) methods to highlight all the occurrences of the `SearchText` and scroll to the next/previous one (depending on which method we have invoked).
+Now let's create our search input!  By getting the input element we can get its current value. This will allow us to use the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s [`findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext) and [`findPrev`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findPrev) methods to highlight all the occurrences of the `SearchText` and scroll to the next/previous one (depending on which method we have invoked).
 
-Both the [`findNext`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#findNext) and the [`findPrev`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#findPrev) methods have three arguments:
+Both the [`findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext) and the [`findPrev`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findPrev) methods have three arguments:
 
 - `Text`: **string** (the text we are searching for)
 - (optional) `CaseSensitive`: **boolean** (should the search be case sensitive or not, default value is false)
@@ -134,7 +134,7 @@ Both the [`findNext`](https://www.infragistics.com/products/ignite-ui-web-compon
 
 When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '_software_' and '_Software_' are an exact match with a disregard for the case sensitivity.
 
-The methods from above return a **number** value (the number of times the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) contains the given string).
+The methods from above return a **number** value (the number of times the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) contains the given string).
 
 ```html
 <igc-input id="searchBox" name="searchBox">
@@ -157,7 +157,7 @@ public nextSearch(){
 
 ### Add Search Buttons
 
-In order to freely search and navigate among our search results, let's create a couple of buttons by invoking the [`findNext`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#findNext) and the [`findPrev`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#findPrev) methods inside the buttons' respective click event handlers.
+In order to freely search and navigate among our search results, let's create a couple of buttons by invoking the [`findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext) and the [`findPrev`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findPrev) methods inside the buttons' respective click event handlers.
 
 ```html
 <igc-icon-button id="prevIconBtn" variant="flat" name="prev" collection="material" ></igc-icon-button>
@@ -182,7 +182,7 @@ public nextSearch() {
 
 ### Add Keyboard Search
 
-We can also allow the users to navigate the results by using the keyboard's arrow keys and the <kbd>ENTER</kbd> key. In order to achieve this, we can handle the **keydown** event of our search input by preventing the default caret movement of the input with the `PreventDefault` method and invoke the [`findNext`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#findNext)/[`findPrev`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#findPrev) methods depending on which key the user has pressed.
+We can also allow the users to navigate the results by using the keyboard's arrow keys and the <kbd>ENTER</kbd> key. In order to achieve this, we can handle the **keydown** event of our search input by preventing the default caret movement of the input with the `PreventDefault` method and invoke the [`findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext)/[`findPrev`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findPrev) methods depending on which key the user has pressed.
 
 ```typescript
 constructor() {
@@ -228,7 +228,7 @@ public updateSearch() {
 
 ### Persistence
 
-What if we would like to filter and sort our [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) or even to add and remove records? After such operations, the highlights of our current search automatically update and persist over any text that matches the `SearchText`! Furthermore, the search will work with paging and will persist the highlights through changes of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)'s `PerPage` property.
+What if we would like to filter and sort our [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) or even to add and remove records? After such operations, the highlights of our current search automatically update and persist over any text that matches the `SearchText`! Furthermore, the search will work with paging and will persist the highlights through changes of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s `PerPage` property.
 
 ### Adding icons
 
@@ -298,7 +298,7 @@ public updateSearch() {
 }
 ```
 
-- For the search navigation buttons, we have added two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the [`findNext`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#findNext)/[`findPrev`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#findPrev) methods.
+- For the search navigation buttons, we have added two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the [`findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext)/[`findPrev`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findPrev) methods.
 
 ```html
 <div slot="suffix">
@@ -332,29 +332,29 @@ public prevSearch() {
 
 |Limitation|Description|
 |--- |--- |
-|Searching in cells with a template|The search functionality highlights work only for the default cell templates. If you have a column with custom cell template, the highlights will not work so you should either use alternative approaches, such as a column formatter, or set the [`searchable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#searchable) property on the column to false.|
+|Searching in cells with a template|The search functionality highlights work only for the default cell templates. If you have a column with custom cell template, the highlights will not work so you should either use alternative approaches, such as a column formatter, or set the [`searchable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=searchable) property on the column to false.|
 |Remote Virtualization| The search will not work properly when using remote virtualization|
 |Cells with cut off text| When the text in the cell is too large to fit and the text we are looking for is cut off by the ellipsis, we will still scroll to the cell and include it in the match count, but nothing will be highlighted |
 
 ## API References
 
-In this article we implemented our own search bar for the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) with some additional functionality when it comes to navigating between the search results. We also used some additional Ignite UI for Web Components components like icons, chips and inputs. The search API is listed below.
+In this article we implemented our own search bar for the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) with some additional functionality when it comes to navigating between the search results. We also used some additional Ignite UI for Web Components components like icons, chips and inputs. The search API is listed below.
 
-[`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) methods:
+[`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) methods:
 
-- [`findNext`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#findNext)
-- [`findPrev`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#findPrev)
-- [`clearSearch`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#clearSearch)
-- [`refreshSearch`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#refreshSearch)
+- [`findNext`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findNext)
+- [`findPrev`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=findPrev)
+- [`clearSearch`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=clearSearch)
+- [`refreshSearch`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=refreshSearch)
 
-[`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) properties:
+[`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) properties:
 
-- [`searchable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#searchable)
+- [`searchable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=searchable)
 
 Additional components with relative APIs that were used:
 
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
-- [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+- [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent)
 
 ## Additional Resources
 
