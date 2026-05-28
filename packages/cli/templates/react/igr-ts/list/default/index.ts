@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_PACKAGE } from "../../constants";
 
 class IgrListTemplate extends IgniteUIForReactTemplate {
 constructor() {
@@ -10,7 +11,7 @@ this.id = "list";
 this.projectType = "igr-ts";
 this.name = "List";
 this.description = "basic IgrList";
-this.packages = ["igniteui-react@~19.7.0"];
+this.packages = [IGNITEUI_REACT_PACKAGE];
 }
 }
 module.exports = new IgrListTemplate();

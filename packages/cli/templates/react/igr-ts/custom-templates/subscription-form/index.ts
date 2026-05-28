@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_PACKAGE } from "../../constants";
 
 class IgrSubscriptionFormTemplate extends IgniteUIForReactTemplate {
 constructor() {
@@ -9,7 +10,7 @@ this.id = "subscription-form";
 this.projectType = "igr-ts";
 this.name = "Subscription Form";
 this.description = "Subscription form with inputs, buttons and a checkbox inside";
-this.packages = ["igniteui-react@~19.7.0"];
+this.packages = [IGNITEUI_REACT_PACKAGE];
 }
 }
 module.exports = new IgrSubscriptionFormTemplate();

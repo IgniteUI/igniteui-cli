@@ -1,5 +1,6 @@
 
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_GRIDS_PACKAGE } from "../../constants";
 
 class GridTemplate extends IgniteUIForReactTemplate {
 	/**
@@ -14,7 +15,7 @@ class GridTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.components = ["Grid"];
 		this.controlGroup = "Data Grids";
-		this.packages = ["igniteui-react-grids@~19.7.0"];
+		this.packages = [IGNITEUI_REACT_GRIDS_PACKAGE];
 
 		this.hasExtraConfiguration = false;
 	}

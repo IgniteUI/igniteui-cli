@@ -1,4 +1,5 @@
 import { AGENTS_TEMPLATE_FILE, AI_CONFIG_PROJECT_ID, AI_SKILLS_DIR_NAME, App, Framework, Util } from "@igniteui/cli-core";
+import { IGNITEUI_REACT_GRIDS_PACKAGE, IGNITEUI_REACT_PACKAGE } from "../../packages/cli/templates/react/igr-ts/constants";
 import path from "path";
 import * as fs from "fs";
 
@@ -32,6 +33,22 @@ describe("React templates", () => {
 					.toBeTruthy();
 			}
 		}
+	});
+
+	it("Igr component templates should use the shared React package constants", async () => {
+		const reactFramework: Framework = require(templatesLocation);
+		const projLibrary = reactFramework.projectLibraries.find(x => x.projectType === "igr-ts");
+		const expectedPackages = new Set([
+			IGNITEUI_REACT_PACKAGE,
+			IGNITEUI_REACT_GRIDS_PACKAGE
+		]);
+
+		projLibrary.templates
+			.flatMap(t => t.packages || [])
+			.filter(p => typeof p === "string" && (p.startsWith("igniteui-react@") || p.startsWith("igniteui-react-grids@")))
+			.forEach(p => expect(expectedPackages.has(p))
+				.withContext(`Unexpected React package version: ${p}`)
+				.toBeTrue());
 	});
 
 	describe("ai-config template file presence", () => {

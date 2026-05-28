@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_PACKAGE } from "../../constants";
 
 class IgrTreeTemplate extends IgniteUIForReactTemplate {
 constructor() {
@@ -10,7 +11,7 @@ this.id = "tree";
 this.projectType = "igr-ts";
 this.name = "Tree";
 this.description = "basic IgrTree";
-this.packages = ["igniteui-react@~19.7.0"];
+this.packages = [IGNITEUI_REACT_PACKAGE];
 }
 }
 module.exports = new IgrTreeTemplate();
