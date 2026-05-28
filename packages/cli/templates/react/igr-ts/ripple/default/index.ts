@@ -10,7 +10,7 @@ this.id = "ripple";
 this.projectType = "igr-ts";
 this.name = "Ripple";
 this.description = "basic IgrRipple";
-this.packages = ["igniteui-react@~19.5.2"];
+this.packages = ["igniteui-react@~19.7.0"];
 }
 }
 module.exports = new IgrRippleTemplate();

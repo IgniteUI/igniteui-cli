@@ -10,7 +10,7 @@ this.id = "linear-progress";
 this.projectType = "igr-ts";
 this.name = "Linear Progress";
 this.description = "basic IgrLinearProgress";
-this.packages = ["igniteui-react@~19.5.2"];
+this.packages = ["igniteui-react@~19.7.0"];
 }
 }
 module.exports = new IgrLinearProgressTemplate();

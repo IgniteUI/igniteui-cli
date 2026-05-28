@@ -10,7 +10,7 @@ class IgrTsDoughnutChartTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Doughnut Chart";
 		this.description = `proportionally illustrate the occurrences of variables.`;
-		this.packages = ["igniteui-react-charts@~19.5.2"];
+		this.packages = ["igniteui-react-charts@~19.7.0"];
 	}
 }
 module.exports = new IgrTsDoughnutChartTemplate();

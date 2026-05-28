@@ -10,7 +10,7 @@ class IgrRadioGroupTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Radio Group";
 		this.description = "basic IgrRadioGroup";
-		this.packages = ["igniteui-react@~19.5.2"];
+		this.packages = ["igniteui-react@~19.7.0"];
 	}
 }
 module.exports = new IgrRadioGroupTemplate();

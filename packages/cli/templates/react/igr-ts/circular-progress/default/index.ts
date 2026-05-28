@@ -10,7 +10,7 @@ this.id = "circular-progress";
 this.projectType = "igr-ts";
 this.name = "Circular Progress";
 this.description = "basic IgrCircularProgress";
-this.packages = ["igniteui-react@~19.5.2"];
+this.packages = ["igniteui-react@~19.7.0"];
 }
 }
 module.exports = new IgrCircularProgressTemplate();

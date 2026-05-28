@@ -10,7 +10,7 @@ class IgrCheckboxTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Checkbox";
 		this.description = "basic IgrCheckbox";
-		this.packages = ["igniteui-react@~19.5.2"];
+		this.packages = ["igniteui-react@~19.7.0"];
 	}
 }
 module.exports = new IgrCheckboxTemplate();

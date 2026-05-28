@@ -10,7 +10,7 @@ this.id = "tabs";
 this.projectType = "igr-ts";
 this.name = "Tabs";
 this.description = "basic IgrTabs";
-this.packages = ["igniteui-react@~19.5.2"];
+this.packages = ["igniteui-react@~19.7.0"];
 }
 }
 module.exports = new IgrTabsTemplate();

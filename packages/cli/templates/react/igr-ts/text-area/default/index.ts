@@ -10,7 +10,7 @@ class IgrTextAreaTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Text area";
 		this.description = "basic IgrTextarea";
-		this.packages = ["igniteui-react@~19.5.2"];
+		this.packages = ["igniteui-react@~19.7.0"];
 	}
 }
 module.exports = new IgrTextAreaTemplate();

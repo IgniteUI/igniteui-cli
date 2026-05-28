@@ -10,7 +10,7 @@ class IgrInputTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Input";
 		this.description = "basic IgrInput";
-		this.packages = ["igniteui-react@~19.5.2"];
+		this.packages = ["igniteui-react@~19.7.0"];
 	}
 }
 module.exports = new IgrInputTemplate();

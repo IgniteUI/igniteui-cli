@@ -10,7 +10,7 @@ this.id = "navbar";
 this.projectType = "igr-ts";
 this.name = "Navbar";
 this.description = "basic IgrNavbar";
-this.packages = ["igniteui-react@~19.5.2"];
+this.packages = ["igniteui-react@~19.7.0"];
 }
 }
 module.exports = new IgrNavbarTemplate();

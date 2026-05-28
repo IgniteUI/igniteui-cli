@@ -10,7 +10,7 @@ this.id = "form";
 this.projectType = "igr-ts";
 this.name = "Form";
 this.description = "basic IgrForm";
-this.packages = ["igniteui-react@~19.5.2"];
+this.packages = ["igniteui-react@~19.7.0"];
 }
 }
 module.exports = new IgrFormTemplate();

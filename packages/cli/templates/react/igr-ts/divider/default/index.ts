@@ -10,7 +10,7 @@ class IgrDividerTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Divider";
 		this.description = "basic IgrDivider";
-		this.packages = ["igniteui-react@~19.5.2"];
+		this.packages = ["igniteui-react@~19.7.0"];
 	}
 }
 module.exports = new IgrDividerTemplate();

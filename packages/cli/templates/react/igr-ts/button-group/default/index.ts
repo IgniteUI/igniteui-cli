@@ -10,7 +10,7 @@ class IgrButtonGroupTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Button group";
 		this.description = "basic IgrButtonGroup";
-		this.packages = ["igniteui-react@~19.5.2"];
+		this.packages = ["igniteui-react@~19.7.0"];
 	}
 }
 module.exports = new IgrButtonGroupTemplate();

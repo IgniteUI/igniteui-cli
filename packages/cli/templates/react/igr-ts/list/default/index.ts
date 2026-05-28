@@ -10,7 +10,7 @@ this.id = "list";
 this.projectType = "igr-ts";
 this.name = "List";
 this.description = "basic IgrList";
-this.packages = ["igniteui-react@~19.5.2"];
+this.packages = ["igniteui-react@~19.7.0"];
 }
 }
 module.exports = new IgrListTemplate();
