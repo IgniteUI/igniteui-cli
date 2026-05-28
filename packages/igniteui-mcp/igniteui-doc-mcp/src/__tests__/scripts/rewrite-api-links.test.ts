@@ -143,6 +143,58 @@ describe("rewriteApiLinksInMarkdown — passthrough behaviour", () => {
   });
 });
 
+describe("rewriteApiLinksInMarkdown — clean URLs (no .html suffix)", () => {
+  const angularIndex = makeIndex({
+    igxgridcomponent: "IgxGridComponent",
+    igxaccordioncomponent: "IgxAccordionComponent",
+  });
+
+  it("rewrites a clean angular URL with a member fragment when requireHtmlSuffix is false", () => {
+    const md = "[IgxGrid](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent#sort)";
+    const { output, rewrites } = rewriteApiLinksInMarkdown(md, "angular", angularIndex, { requireHtmlSuffix: false });
+    expect(rewrites).toBe(1);
+    expect(output).toBe("[IgxGrid](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=sort)");
+  });
+
+  it("strips the package prefix from a clean /api/ URL", () => {
+    const md = "[IgxAccordion](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_grids.igxaccordioncomponent)";
+    const { output, rewrites } = rewriteApiLinksInMarkdown(md, "angular", angularIndex, { requireHtmlSuffix: false });
+    expect(rewrites).toBe(1);
+    expect(output).toContain("component=IgxAccordionComponent");
+  });
+
+  it("decodes a Blazor anchor on a clean URL", () => {
+    const md = "[Sort](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid#IgniteUI_Blazor_Controls_IgbGrid_Sort)";
+    const { output, rewrites } = rewriteApiLinksInMarkdown(md, "blazor", makeIndex({}), { requireHtmlSuffix: false });
+    expect(rewrites).toBe(1);
+    expect(output).toContain("component=IgbGrid");
+    expect(output).toContain("member=Sort");
+  });
+
+  it("rewrites a clean dock-manager URL", () => {
+    const index = makeIndex({ igcpaneheaderelement: "IgcPaneHeaderElement" });
+    const md = "[dragService](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcpaneheaderelement#dragService)";
+    const { output, rewrites } = rewriteApiLinksInMarkdown(md, "webcomponents", index, { requireHtmlSuffix: false });
+    expect(rewrites).toBe(1);
+    expect(output).toContain("component=IgcPaneHeaderElement");
+    expect(output).toContain("member=dragService");
+  });
+
+  it("leaves a clean URL untouched by default (requireHtmlSuffix defaults to true)", () => {
+    const md = "[IgxGrid](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent#sort)";
+    const { output, rewrites } = rewriteApiLinksInMarkdown(md, "angular", angularIndex);
+    expect(rewrites).toBe(0);
+    expect(output).toBe(md);
+  });
+
+  it("still rewrites legacy .html URLs when requireHtmlSuffix is false (both forms coexist)", () => {
+    const md = "[IgxGrid](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#sort)";
+    const { output, rewrites } = rewriteApiLinksInMarkdown(md, "angular", angularIndex, { requireHtmlSuffix: false });
+    expect(rewrites).toBe(1);
+    expect(output).toBe("[IgxGrid](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=sort)");
+  });
+});
+
 describe("rewriteApiLinksInMarkdown — multiple links in one document", () => {
   it("rewrites every matching link and counts correctly", () => {
     const index = makeIndex({ igrgrid: "IgrGrid" });

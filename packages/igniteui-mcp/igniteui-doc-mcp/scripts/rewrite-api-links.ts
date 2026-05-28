@@ -19,18 +19,21 @@ interface CliArgs {
   platform: Platform;
   input?: string;
   dryRun: boolean;
+  requireHtmlSuffix: boolean;
 }
 
 function parseCli(argv: string[]): CliArgs {
   let platform: string | undefined;
   let input: string | undefined;
   let dryRun = false;
+  let requireHtmlSuffix = true;
 
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === "--platform") platform = argv[++i];
     else if (arg === "--input") input = argv[++i];
     else if (arg === "--dry-run") dryRun = true;
+    else if (arg === "--no-html-suffix") requireHtmlSuffix = false;
   }
 
   if (!platform || !(PLATFORMS as readonly string[]).includes(platform)) {
@@ -38,63 +41,29 @@ function parseCli(argv: string[]): CliArgs {
     process.exit(1);
   }
 
-  return { platform: platform as Platform, input, dryRun };
+  return { platform: platform as Platform, input, dryRun, requireHtmlSuffix };
 }
 
 // ---------- URL patterns (one per platform) ----------
 
-interface UrlPattern {
-  regex: RegExp;
-  // Given a regex match, return the lowercase-or-PascalCase component segment.
-  // For "package.component" forms, takes the substring after the final dot.
-  extractSegment(match: RegExpExecArray): string;
-}
-
-const URL_PATTERNS: Record<Platform, UrlPattern[]> = {
+// The :kind(classes|interfaces|enums) constraint is what distinguishes API
+// reference URLs from /components/ doc pages and /docs/sass/ mixin URLs, which
+// must pass through untouched. The :file group captures the full final segment
+// (including any "package.component" prefix and the .html suffix).
+const URL_PATTERNS: Record<Platform, URLPattern[]> = {
   angular: [
-    {
-      regex: /\/products\/ignite-ui-angular\/(?:api\/)?docs\/typescript\/[^/]+\/(?:classes|interfaces|enums)\/([^/)\s#]+?)\.html(?:#([^)\s]+))?/g,
-      extractSegment: (m) => {
-        const seg = m[1];
-        const dot = seg.lastIndexOf(".");
-        return dot === -1 ? seg : seg.slice(dot + 1);
-      },
-    },
+    new URLPattern({ pathname: "/products/ignite-ui-angular/{api/}?docs/typescript/:version/:kind(classes|interfaces|enums)/:file" }),
   ],
   react: [
-    {
-      regex: /\/products\/ignite-ui-react\/(?:api\/)?docs\/typescript\/[^/]+\/(?:classes|interfaces|enums)\/([^/)\s#]+?)\.html(?:#([^)\s]+))?/g,
-      extractSegment: (m) => {
-        const seg = m[1];
-        const dot = seg.lastIndexOf(".");
-        return dot === -1 ? seg : seg.slice(dot + 1);
-      },
-    },
+    new URLPattern({ pathname: "/products/ignite-ui-react/{api/}?docs/typescript/:version/:kind(classes|interfaces|enums)/:file" }),
   ],
   webcomponents: [
-    {
-      regex: /\/products\/ignite-ui-web-components\/(?:api\/)?docs\/typescript\/[^/]+\/(?:classes|interfaces|enums)\/([^/)\s#]+?)\.html(?:#([^)\s]+))?/g,
-      extractSegment: (m) => {
-        const seg = m[1];
-        const dot = seg.lastIndexOf(".");
-        return dot === -1 ? seg : seg.slice(dot + 1);
-      },
-    },
-    {
-      regex: /\/products\/ignite-ui\/dock-manager\/docs\/typescript\/[^/]+\/(?:classes|interfaces|enums)\/([^/)\s#]+?)\.html(?:#([^)\s]+))?/g,
-      extractSegment: (m) => m[1],
-    },
+    new URLPattern({ pathname: "/products/ignite-ui-web-components/{api/}?docs/typescript/:version/:kind(classes|interfaces|enums)/:file" }),
+    new URLPattern({ pathname: "/products/ignite-ui/dock-manager/docs/typescript/:version/:kind(classes|interfaces|enums)/:file" }),
   ],
   blazor: [
-    {
-      // Blazor URLs preserve the PascalCase FQN, e.g. IgniteUI.Blazor.Controls.IgbGrid.html
-      regex: /\/blazor\/docs\/api\/api\/([A-Za-z0-9_.]+?)\.html(?:#([^)\s]+))?/g,
-      extractSegment: (m) => {
-        const seg = m[1];
-        const dot = seg.lastIndexOf(".");
-        return dot === -1 ? seg : seg.slice(dot + 1);
-      },
-    },
+    // Blazor URLs preserve the PascalCase FQN, e.g. IgniteUI.Blazor.Controls.IgbGrid.html
+    new URLPattern({ pathname: "/blazor/docs/api/api/:file" }),
   ],
 };
 
@@ -135,6 +104,13 @@ export interface RewriteResult {
   skipped: Array<{ url: string; reason: "unknown-component" | "non-api" }>;
 }
 
+export interface RewriteOptions {
+  /** Require the API URL's final path segment to end in `.html`. Legacy docs use
+   *  a `.html` suffix; the newer doc build strips it. Set false to accept both
+   *  forms (the suffix is stripped when present either way). Default: true. */
+  requireHtmlSuffix?: boolean;
+}
+
 const MD_LINK_RE = /\[([^\]]*)\]\(([^)\s]+)\)/g;
 
 function isCanonical(segment: string): boolean {
@@ -145,21 +121,30 @@ export function rewriteApiLinksInMarkdown(
   md: string,
   platform: Platform,
   index: CanonicalIndex,
+  options: RewriteOptions = {},
 ): RewriteResult {
+  const { requireHtmlSuffix = true } = options;
   const patterns = URL_PATTERNS[platform];
   const skipped: RewriteResult["skipped"] = [];
   let rewrites = 0;
 
   const output = md.replace(MD_LINK_RE, (whole, text: string, url: string) => {
-    // Each platform regex must match the full URL — they're anchored to
-    // /<classes|interfaces|enums>/ which only appears in API URLs.
-    for (const pat of patterns) {
-      pat.regex.lastIndex = 0;
-      const m = pat.regex.exec(url);
-      if (!m) continue;
+    // exec() parses url as a URL and returns null for non-URL strings (relative
+    // paths, #anchors, mailto:) — so it is safe to run on every markdown link.
+    for (const pattern of patterns) {
+      const result = pattern.exec(url);
+      if (!result) continue;
 
-      const rawSegment = pat.extractSegment(m);
-      const fragment = m[2];
+      const file = result.pathname.groups.file ?? "";
+      const hasHtmlSuffix = file.toLowerCase().endsWith(".html");
+      if (requireHtmlSuffix && !hasHtmlSuffix) continue;
+
+      // fqn keeps any "package.component" prefix and the FQN for Blazor anchor
+      // decoding; rawSegment is the bare trailing component name.
+      const fqn = hasHtmlSuffix ? file.slice(0, -".html".length) : file;
+      const dot = fqn.lastIndexOf(".");
+      const rawSegment = dot === -1 ? fqn : fqn.slice(dot + 1);
+      const fragment = result.hash.input || undefined;
 
       let canonical: string;
       if (isCanonical(rawSegment)) {
@@ -179,7 +164,7 @@ export function rewriteApiLinksInMarkdown(
 
       if (fragment) {
         const member = platform === "blazor"
-          ? decodeBlazorAnchor(m[1], fragment)
+          ? decodeBlazorAnchor(fqn, fragment)
           : fragment;
         params.set("member", member);
       }
@@ -231,6 +216,7 @@ async function main() {
 
   const files = walkMarkdown(inputDir);
   console.error(`Scanning ${files.length} markdown files in ${inputDir}`);
+  console.error(`   .html suffix: ${args.requireHtmlSuffix ? "required" : "optional"}`);
 
   let totalRewrites = 0;
   let filesTouched = 0;
@@ -238,7 +224,9 @@ async function main() {
 
   for (const file of files) {
     const md = readFileSync(file, "utf-8");
-    const { output, rewrites, skipped } = rewriteApiLinksInMarkdown(md, args.platform, index);
+    const { output, rewrites, skipped } = rewriteApiLinksInMarkdown(md, args.platform, index, {
+      requireHtmlSuffix: args.requireHtmlSuffix,
+    });
     if (rewrites > 0) {
       filesTouched++;
       totalRewrites += rewrites;
