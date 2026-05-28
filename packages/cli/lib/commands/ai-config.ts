@@ -16,6 +16,7 @@ import {
 	App,
 	type BaseTemplateManager,
 	TEMPLATE_MANAGER,
+	type AISkillsCopyResult,
 } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
@@ -32,8 +33,19 @@ export function configureMCP(assistants: AiCodingAssistant[]): void {
 	}
 }
 
+function logFileActions(result: AISkillsCopyResult): void {
+	for (const detail of result.details) {
+		if (detail.action === "created") {
+			Util.log(`${Util.greenCheck()} Created ${detail.path}`);
+		} else if (detail.action === "updated") {
+			Util.log(`${Util.greenCheck()} Updated ${detail.path}`);
+		}
+	}
+}
+
 export function configureSkills(agents: AIAgentTarget[], framework: string): void {
 	const result = copyAISkillsToProject(agents, framework);
+	logFileActions(result);
 	if (result.found === 0) {
 		Util.warn("No AI skill files found. Make sure packages are installed (npm install) " +
 			"and your Ignite UI packages are up-to-date.", "yellow");
@@ -45,6 +57,11 @@ export function configureSkills(agents: AIAgentTarget[], framework: string): voi
 		const written = result.found - result.skipped;
 		Util.log(Util.greenCheck() + ` ${written} AI skill file(s) created or updated.`);
 	}
+}
+
+export function configureInstructions(agents: AIAgentTarget[], framework: string): void {
+	const result = copyAgentInstructionFiles(agents, framework);
+	logFileActions(result);
 }
 
 type AIAgentOption = AIAgentTarget | "none";
@@ -78,7 +95,7 @@ export async function configure(framework: string, agents: AIAgentOption[] = [],
 		if (skills) {
 			configureSkills(resolvedAgents, framework);
 		}
-		copyAgentInstructionFiles(resolvedAgents, framework);
+		configureInstructions(resolvedAgents, framework);
 	}
 
 	return { agents: resolvedAgents, assistants: resolvedAssistants };

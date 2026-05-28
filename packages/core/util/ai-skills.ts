@@ -5,7 +5,7 @@ import { NPM_ANGULAR, NPM_REACT, NPM_WEBCOMPONENTS, resolvePackage, UPGRADEABLE_
 import { App } from "./App";
 import { FsFileSystem } from "./FileSystem";
 import { TEMPLATE_MANAGER } from "./GlobalConstants";
-import { Util } from "./Util";
+
 
 export const AI_AGENT_CHOICES = ["generic", "claude", "copilot", "cursor", "codex", "windsurf", "gemini", "junie"] as const;
 export type AIAgentTarget = typeof AI_AGENT_CHOICES[number];
@@ -57,10 +57,18 @@ export function getInstructionFilePath(target: AIAgentTarget): string {
 	return AI_AGENT_INSTRUCTION_FILES[target];
 }
 
+export type AIFileAction = "created" | "updated" | "skipped";
+
+export interface AIFileActionDetail {
+	path: string;
+	action: AIFileAction;
+}
+
 export interface AISkillsCopyResult {
 	found: number;
 	skipped: number;
 	failed: number;
+	details: AIFileActionDetail[];
 }
 
 export const AGENTS_TEMPLATE_FILE = "AGENTS.md";
@@ -126,7 +134,7 @@ function resolveSkillsRoots(framework: string): string[] {
  * @param agents – list of AI agent targets to copy skills for
  */
 export function copyAISkillsToProject(agents: AIAgentTarget[], framework: string): AISkillsCopyResult {
-	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0 };
+	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0, details: [] };
 	// Source reads (glob + readFile) always use physical FS - skill files can
 	// come from sources outside the project virtual tree (external/global package):
 	const srcFs = new FsFileSystem();
@@ -164,13 +172,14 @@ export function copyAISkillsToProject(agents: AIAgentTarget[], framework: string
 						const existingContent = destFs.readFile(dest);
 						if (existingContent === newContent) {
 							result.skipped++;
+							result.details.push({ path: dest, action: "skipped" });
 							continue;
 						}
 						destFs.writeFile(dest, newContent);
-						Util.log(`${Util.greenCheck()} Updated ${dest}`);
+						result.details.push({ path: dest, action: "updated" });
 					} else {
 						destFs.writeFile(dest, newContent);
-						Util.log(`${Util.greenCheck()} Created ${dest}`);
+						result.details.push({ path: dest, action: "created" });
 					}
 				} catch {
 					result.failed++;
@@ -204,15 +213,17 @@ function resolveAgentsContent(framework: string): string | null {
  * each of the given agents.
  * @param agents – list of AI agent targets to create instruction files for
  */
-export function copyAgentInstructionFiles(agents: AIAgentTarget[], framework: string): void {
+export function copyAgentInstructionFiles(agents: AIAgentTarget[], framework: string): AISkillsCopyResult {
+	const result: AISkillsCopyResult = { found: 0, skipped: 0, failed: 0, details: [] };
 	const content = resolveAgentsContent(framework);
 	if (!content) {
-		return;
+		return result;
 	}
 
 	const destFs = App.container.get<IFileSystem>(FS_TOKEN);
 
 	for (const agent of agents) {
+		result.found++;
 		const dest = getInstructionFilePath(agent);
 		const fileContent = agent === "cursor"
 			? `---\ncontext: true\npriority: high\nscope: project\n---\n${content}`
@@ -221,16 +232,20 @@ export function copyAgentInstructionFiles(agents: AIAgentTarget[], framework: st
 			if (destFs.fileExists(dest)) {
 				const existing = destFs.readFile(dest);
 				if (existing === fileContent) {
+					result.skipped++;
+					result.details.push({ path: dest, action: "skipped" });
 					continue;
 				}
 				destFs.writeFile(dest, fileContent);
-				Util.log(`${Util.greenCheck()} Updated ${dest}`);
+				result.details.push({ path: dest, action: "updated" });
 			} else {
 				destFs.writeFile(dest, fileContent);
-				Util.log(`${Util.greenCheck()} Created ${dest}`);
+				result.details.push({ path: dest, action: "created" });
 			}
 		} catch {
-			/* skip on error */
+			result.failed++;
 		}
 	}
+
+	return result;
 }
