@@ -100,7 +100,7 @@ Now that you have the Ignite UI for Angular Toast module or component imported, 
 
 ### Show Toast
 
-In order to display the toast component, use its [`open()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoastcomponent.html#open) method and call it on a button click. You can pass the toast content inside the element.
+In order to display the toast component, use its [`open()`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=open) method and call it on a button click. You can pass the toast content inside the element.
 
 ```html
 <!--sample.component.html-->
@@ -109,7 +109,7 @@ In order to display the toast component, use its [`open()`](https://www.infragis
 <igx-toast #toast>Notification displayed</igx-toast>
 ```
 
-Another way to set the toast content is to directly pass the message as a parameter to the [`open()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoastcomponent.html#open) method.
+Another way to set the toast content is to directly pass the message as a parameter to the [`open()`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=open) method.
 
 ```html
 <!--sample.component.html-->
@@ -118,7 +118,7 @@ Another way to set the toast content is to directly pass the message as a parame
 <igx-toast #toast></igx-toast>
 ```
 
-The [`open()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoastcomponent.html#open) method can also be used in the AppComponent file to manage the value of the message.
+The [`open()`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=open) method can also be used in the AppComponent file to manage the value of the message.
 
 ```typescript
 // app.component.ts
@@ -139,7 +139,7 @@ public showMessage() {
 
 ### Hide/Auto Hide
 
-Once opened, the toast disappears after a period specified by the [`displayTime`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoastcomponent.html#displayTime) input which is set initially to 4000 milliseconds. This behavior is enabled by default but you can change this by setting [`autoHide`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoastcomponent.html#autoHide) to **false**. This way, the toast remains visible. Using the toast [`close()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoastcomponent.html#close) method, you can close the component.
+Once opened, the toast disappears after a period specified by the [`displayTime`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=displayTime) input which is set initially to 4000 milliseconds. This behavior is enabled by default but you can change this by setting [`autoHide`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=autoHide) to **false**. This way, the toast remains visible. Using the toast [`close()`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=close) method, you can close the component.
 
 ```html
 <!--sample.component.html-->
@@ -150,7 +150,7 @@ Once opened, the toast disappears after a period specified by the [`displayTime`
 ```
 
 If the sample is configured properly, the toast will appear when the _Show button_ is clicked. For the first component auto-hide feature is disabled and the toast will disappear on 'Hide' button click.
-In the other two components you can see in action how to pass different messages through the [`open()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoastcomponent.html#open) method and use content projection.
+In the other two components you can see in action how to pass different messages through the [`open()`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=open) method and use content projection.
 
 ```typescript
 import { Component } from '@angular/core';
@@ -215,7 +215,7 @@ button {
 
 ### Display Time
 
-Use [`displayTime`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoastcomponent.html#displayTime) and set it to an interval in milliseconds to configure how long the toast component is visible.
+Use [`displayTime`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=displayTime) and set it to an interval in milliseconds to configure how long the toast component is visible.
 
 ```html
 <!--sample.component.html-->
@@ -232,7 +232,7 @@ If the sample is configured properly, the toast auto hides faster.
 
 ### Positioning
 
-Use [`positionSettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoastcomponent.html#positionSettings) property to configure where the toast appears. By default, it is displayed at the bottom of the page. In the sample below, we set notification to appear at the top position.
+Use [`positionSettings`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=positionSettings) property to configure where the toast appears. By default, it is displayed at the bottom of the page. In the sample below, we set notification to appear at the top position.
 
 ```html
 <!--sample.component.html-->
@@ -457,7 +457,7 @@ At the end your toast should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxToastComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoastcomponent.html)
+- [IgxToastComponent](mcp:get_api_reference?platform=angular&component=IgxToastComponent)
 - [IgxToastComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-toast-theme)
 
 ## Additional Resources

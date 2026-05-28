@@ -214,9 +214,9 @@ export class HGridSelectionSampleComponent implements OnInit, OnDestroy {
 ```
 <div class="divider--half"></div>
 ## Setup
-In order to setup row selection in the [`igx-hierarchical-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html), you just need to set the **rowSelection** property. This property accepts **GridSelectionMode** enumeration. **GridSelectionMode** exposes the following three modes: **none**, **single** and **multiple**. Below we will take a look at each of them in more detail.
+In order to setup row selection in the [`igx-hierarchical-grid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent), you just need to set the **rowSelection** property. This property accepts **GridSelectionMode** enumeration. **GridSelectionMode** exposes the following three modes: **none**, **single** and **multiple**. Below we will take a look at each of them in more detail.
 ### None Selection
-In the [`igx-hierarchical-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html) by default row selection is disabled, otherwise _([rowSelection]="'none'")_. So you can **not** select or deselect a row through interaction with the Hierarchical Grid UI, the only way to complete these actions is to use the provided API methods.
+In the [`igx-hierarchical-grid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) by default row selection is disabled, otherwise _([rowSelection]="'none'")_. So you can **not** select or deselect a row through interaction with the Hierarchical Grid UI, the only way to complete these actions is to use the provided API methods.
 ### Single Selection
 Single row selection can now be easily set up, the only thing you need to do, is to set `[rowSelection] = '"single"'` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the _space_ key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected **rowSelectionChanging** event is emitted.
 ```html
@@ -233,7 +233,7 @@ public handleRowSelection(event) {
 }
 ```
 ### Multiple Selection
-To enable multiple row selection in the [`igx-hierarchical-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html) just set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowSelection) property to `multiple`. This will enable a row selector field on each row and in the Hierarchical Grid header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the _space_ key when a cell is focused. If you have selected one row and click on another while holding the _shift_ key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you _click_ while holding the _ctrl_ key, the row will be toggled and the previous selection will be preserved.
+To enable multiple row selection in the [`igx-hierarchical-grid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) just set the [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowSelection) property to `multiple`. This will enable a row selector field on each row and in the Hierarchical Grid header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the _space_ key when a cell is focused. If you have selected one row and click on another while holding the _shift_ key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you _click_ while holding the _ctrl_ key, the row will be toggled and the previous selection will be preserved.
 ```html
 <igx-hierarchical-grid class="hgrid" [data]="localdata" [autoGenerate]="true"
         [rowSelection]="'multiple'" (rowSelectionChanging)="handleRowSelection($event)">
@@ -249,14 +249,14 @@ To enable multiple row selection in the [`igx-hierarchical-grid`](https://www.in
  }
 ```
 **Notes**
-- In order to have proper row selection and cell selection, while Hierarchical Grid has remote virtualization, a [`primaryKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#primarykey) should be provided.
+- In order to have proper row selection and cell selection, while Hierarchical Grid has remote virtualization, a [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=primarykey) should be provided.
 - When the Hierarchical Grid has remote virtualization, then clicking the header checkbox will select/deselect all records that are currently in the grid. When new data is loaded in the Hierarchical Grid on demand, newly added rows will not be selected and it is a limitation, so you should handle that behavior by yourself and you can select these rows by using the provided API methods.
-- Row selection will trigger [`rowSelectionChanging`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowSelectionChanging) event. This event gives you information about the _new selection_, _old selection_, the rows that have been _added_ and _removed_ from the old selection. Also the event is _cancellable_, so this allows you to prevent selection.
+- Row selection will trigger [`rowSelectionChanging`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowSelectionChanging) event. This event gives you information about the _new selection_, _old selection_, the rows that have been _added_ and _removed_ from the old selection. Also the event is _cancellable_, so this allows you to prevent selection.
 - When row selection is enabled row selectors are displayed, but if you don't want to show them, you can set `[hideRowSelectors] = true`.
 - When you switch between row selection modes at runtime, this will clear the previous row selection state.
 ## API usage
 ### Select rows programmatically
-The code snippet below can be used to select one or multiple rows simultaneously (via [`primaryKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#primaryKey)); Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
+The code snippet below can be used to select one or multiple rows simultaneously (via [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=primaryKey)); Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 @@if (igxName === 'IgxGrid' || igxName === 'IgxTreeGrid') {
 ```html
 <!-- selectionExample.component.html -->
@@ -287,7 +287,7 @@ If you need to deselect rows programmatically, you can use the `deselectRows(row
 <button (click)="this.hierarchicalGrid.deselectRows([1,2,5])">Deselect 1,2 and 5</button>
 ```
 ### Row selection event
-When there is some change in the row selection **[`rowSelectionChanging`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowSelectionChanging)** event is emitted. **`rowSelectionChanging`** exposes the following arguments:
+When there is some change in the row selection **[`rowSelectionChanging`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelectionChanging)** event is emitted. **`rowSelectionChanging`** exposes the following arguments:
 - `oldSelection`  - array of row's data that contains the previous state of the row selection.
 - `newSelection` - array of row's data that match the new state of the row selection.
 - `added` - array of row's data that are currently added to the selection.
@@ -296,7 +296,7 @@ When there is some change in the row selection **[`rowSelectionChanging`](https:
 - `cancel` -  allows you the prevent the row selection change.
 - `owner` - if the event is triggered from a child grid, this will give you a reference to the component, from which the event is emitted.
 #### Row selection event in remote data scenarios
-In remote data scenarios, when the grid has a `primaryKey` set, [`rowSelectionChanging.oldSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/IRowSelectionEventArgs.html#oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
+In remote data scenarios, when the grid has a `primaryKey` set, [`rowSelectionChanging.oldSelection`](mcp:get_api_reference?platform=angular&component=IRowSelectionEventArgs&member=oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
 ```html
 <!-- selectionExample.component.html -->
 <igx-hierarchical-grid (rowSelectionChanging)="handleRowSelectionChange($event)">
@@ -310,11 +310,11 @@ public handleRowSelectionChange(args) {
 }
 ```
 ### Select all rows
-Another useful API method that [`igx-hierarchical-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html) provides is `selectAll(onlyFilteredData)`. By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. But if you call the method with _false_ parameter, `selectAll(false)` will always select all data in the grid, even if filtering is applied.
+Another useful API method that [`igx-hierarchical-grid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) provides is `selectAll(onlyFilteredData)`. By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. But if you call the method with _false_ parameter, `selectAll(false)` will always select all data in the grid, even if filtering is applied.
 >[!NOTE]
 > Keep in mind that `selectAll()` will not select the rows that are deleted.
 ### Deselect all rows
-[`igx-hierarchical-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html) provides `deselectAll(onlyFilteredData)` method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. But if you call the method with _false_ parameter, `deselectAll(false)` will always clear all row selection state even if filtering is applied.
+[`igx-hierarchical-grid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) provides `deselectAll(onlyFilteredData)` method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. But if you call the method with _false_ parameter, `deselectAll(false)` will always clear all row selection state even if filtering is applied.
 ### How to get selected rows
 If you need to see which rows are currently selected, you can get their row IDs with the `selectedRows` getter.
 ```typescript
@@ -607,9 +607,9 @@ export class HGridConditionalRowSelectorsComponent implements OnInit {
 ```
 <div class="divider--half"></div>
 ## API References
-- [IgxHierarchicalGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
-_[IgxGridRow API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridrow.html)
-- [IgxGridCell API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
+- [IgxHierarchicalGridComponent API](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
+_[IgxGridRow API](mcp:get_api_reference?platform=angular&component=IgxGridRow)
+- [IgxGridCell API](mcp:get_api_reference?platform=angular&component=IgxGridCell)
 - [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

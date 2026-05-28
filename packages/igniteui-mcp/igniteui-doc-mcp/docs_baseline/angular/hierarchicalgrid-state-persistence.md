@@ -8,9 +8,9 @@ _tocName: State Persistence
 _premium: true
 ---
 # Angular Hierarchical Grid State Persistence
-Тhe igxGridState directive allows developers to easily save and restore the grid state. When the [`IgxGridState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html) directive is applied on the grid, it exposes the [`getState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html#getState) and [`setState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html#setState) methods that developers can use to achieve state persistence in any scenario.
+Тhe igxGridState directive allows developers to easily save and restore the grid state. When the [`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive is applied on the grid, it exposes the [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) methods that developers can use to achieve state persistence in any scenario.
 ## Supported Features
-[`IgxGridState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html) directive supports saving and restoring the state of the following features:
+[`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive supports saving and restoring the state of the following features:
 - `RowIslands`
   - saving/restoring features for all child grids down the hierarchy
 - `Sorting`
@@ -25,14 +25,14 @@ _premium: true
 - `Columns`
   - Multi column headers
   - Columns order
-  - Column properties defined by the [`IColumnState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/icolumnstate.html) interface.
+  - Column properties defined by the [`IColumnState`](mcp:get_api_reference?platform=angular&component=IColumnState) interface.
   - Columns templates and functions are restored using application level code, see [Restoring Column](state-persistence.md#restoring-columns) section.
 >[!NOTE]
-> The [`IgxGridState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html) directive does not take care of templates. Go to [Restoring Column](state-persistence.md#restoring-columns) section to see how to restore column templates.
+> The [`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive does not take care of templates. Go to [Restoring Column](state-persistence.md#restoring-columns) section to see how to restore column templates.
 >[!NOTE]
-> The `Row Selection`  feature requires the [`primaryKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridComponent.html#primaryKey) property to be set, so it can be stored/restored correctly.
+> The `Row Selection`  feature requires the [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=primaryKey) property to be set, so it can be stored/restored correctly.
 ## Usage
-[`getState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html#getState) - This method returns the grid state in a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc). The method accepts first optional parameter `serialize`, which determines whether [`getState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html#getState) will return an [`IGridState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igridstate.html) object or a serialized JSON string.
+[`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) - This method returns the grid state in a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc). The method accepts first optional parameter `serialize`, which determines whether [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) will return an [`IGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object or a serialized JSON string.
 The developer may choose to get only the state for a certain feature/features, by passing in the feature name, or an array with feature names as a second argument.
 ```typescript
 // get all features` state in a serialized JSON string
@@ -42,12 +42,12 @@ const gridState: IGridState = state.getState(false);
 // get the sorting and filtering expressions
 const sortingFilteringStates: IGridState = state.getState(false, ['sorting', 'filtering']);
 ```
-[`setState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html#setState) - The [`setState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html#setState) method accepts the serialized JSON string or [`IGridState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igridstate.html) object as argument and will restore the state of each feature found in the object/JSON string.
+[`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) - The [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method accepts the serialized JSON string or [`IGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object as argument and will restore the state of each feature found in the object/JSON string.
 ```typescript
 state.setState(gridState);
 state.setState(sortingFilteringStates)
 ```
-`options` - The [`options`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html#options) object implements the [`IGridStateOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igridstateoptions.html) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html#getState) method will not put the state of these features in the returned value and [`setState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html#setState) method will not restore state for it.
+`options` - The [`options`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=options) object implements the [`IGridStateOptions`](mcp:get_api_reference?platform=angular&component=IGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method will not put the state of these features in the returned value and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method will not restore state for it.
 ```typescript
 public options =  { cellSelection: false; sorting: false; }
 ```
@@ -79,7 +79,7 @@ public restoreGridState() {
 ## Restoring columns
 When possible the state directive will reuses the columns that already exists on the grid when restoring the state, instead of creating new column instances. The only scenario where a new instance will be created is when the column (or its children in case of a column groups) have no `field` property so there's no way to uniquely identify the matching column and re-use it.
 For such scenarios, the following [`limitations`](state-persistence.md#limitations) are imposed. In that case restoring complex objects can be achieved with code on application level. Let's show how to do this for templated columns:
-1. Define a template reference variable (in the example below it is `#activeTemplate`) and assign an event handler for the [`columnInit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#columnInit) event:
+1. Define a template reference variable (in the example below it is `#activeTemplate`) and assign an event handler for the [`columnInit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columnInit) event:
 @@if (igxName === 'IgxGrid') {
     ```html
     <igx-grid id="grid" #grid igxGridState (columnInit)="onColumnInit($event)">
@@ -116,7 +116,7 @@ For such scenarios, the following [`limitations`](state-persistence.md#limitatio
     </igx-tree-grid>
     ```
 }
-1. Query the template view in the component using @ViewChild or @ViewChildren decorator. In the [`columnInit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#columnInit) event handler, assign the template to the column `bodyTemplate` property:
+1. Query the template view in the component using @ViewChild or @ViewChildren decorator. In the [`columnInit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columnInit) event handler, assign the template to the column `bodyTemplate` property:
 ```typescript
 @ViewChild('activeTemplate', { static: true }) public activeTemplate: TemplateRef<any>;
 public onColumnInit(column: IgxColumnComponent) {
@@ -128,7 +128,7 @@ public onColumnInit(column: IgxColumnComponent) {
 }
 ```
 ## Restoring Child Grids
-Saving / Restoring state for the child grids is controlled by the [`rowIslands`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxgridstateoptions.html#rowIslands) property and is enabled by default. [`IgxGridState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html) will use the same options for saving/restoring features both for the root grid and all child grids down the hierarchy. For example, if we pass the following options:
+Saving / Restoring state for the child grids is controlled by the [`rowIslands`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxgridstateoptions.html#rowIslands) property and is enabled by default. [`IgxGridState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) will use the same options for saving/restoring features both for the root grid and all child grids down the hierarchy. For example, if we pass the following options:
 ``` html
 <!-- public options = {selection: false, sorting: false, rowIslands: true} -->
 <igx-grid [igxGridState]="options"></igx-grid>
@@ -444,11 +444,11 @@ state.setState(gridState);
 state.setState(gridState.columns);
 state.setState(gridState.columnSelection);
 ```
-- [`getState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html#getstate) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgxGridState`] directive will ignore the columns [`formatter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#formatter), [`filters`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#filters), [`summaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#summaries), [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#sortstrategy), [`cellClasses`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#cellClasses), [`cellStyles`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#cellstyles), [`headerTemplate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#headerTemplate) and [`bodyTemplate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#bodyTemplate) properties.
+- [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getstate) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgxGridState`] directive will ignore the columns [`formatter`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=formatter), [`filters`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=filters), [`summaries`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=summaries), [`sortStrategy`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortstrategy), [`cellClasses`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=cellClasses), [`cellStyles`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=cellstyles), [`headerTemplate`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=headerTemplate) and [`bodyTemplate`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=bodyTemplate) properties.
 <div class="divider--half"></div>
 ## API References
-- [IgxHierarchicalGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
-- [IgxGridStateDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridstatedirective.html)
+- [IgxHierarchicalGridComponent](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
+- [IgxGridStateDirective](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Hierarchical Grid overview](hierarchical-grid.md)

@@ -18,7 +18,7 @@ With the Ignite UI for React Select feature in React Grid you can easily interac
 - Cell selection
 - Column selection
 
-With the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowSelection) property, you can specify:
+With the [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) property, you can specify:
 
 - None
 - Single
@@ -26,7 +26,7 @@ With the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/
 
 ## React Grid Selection Example
 
-The sample below demonstrates three types of **cell selection** behaviors in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). Use the buttons below to enable each of the available selection modes.
+The sample below demonstrates three types of **cell selection** behaviors in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). Use the buttons below to enable each of the available selection modes.
 
 ```css
 /* shared styles are loaded from: */
@@ -159,27 +159,27 @@ root.render(<Sample/>);
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
 
-The Ignite UI for React [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). In order to change/enable selection mode you can use [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowSelection), [`cellSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#cellSelection) or [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selectable) properties.
+The Ignite UI for React [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). In order to change/enable selection mode you can use [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection), [`cellSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=cellSelection) or [`selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable) properties.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ### React Grid Row Selection
 
-Property [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowSelection) enables you to specify the following options:
+Property [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) enables you to specify the following options:
 
-- `None` - Row selection would be disabled for the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
-- `Single` - Selection of only one row within the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) would be available.
+- `None` - Row selection would be disabled for the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
+- `Single` - Selection of only one row within the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) would be available.
 - `Multiple` - Multi-row selection would be available by using the row selectors, with a key combination like <kbd>CTRL</kbd> + <kbd>click</kbd>, or by pressing the <kbd>space key</kbd> once a cell is focused.
 
 > Go to [Row selection topic](row-selection.md) for more information.
 
 ### React Grid Cell Selection
 
-Property [`cellSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#cellSelection) enables you to specify the following options:
+Property [`cellSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=cellSelection) enables you to specify the following options:
 
-- `None` - Cell selection would be disabled for the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
-- `Single` - Selection of only one cell within the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) would be available.
-- `Multiple` - Currently, this is the default state of the selection in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
+- `None` - Cell selection would be disabled for the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
+- `Single` - Selection of only one cell within the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) would be available.
+- `Multiple` - Currently, this is the default state of the selection in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -189,7 +189,7 @@ Property [`cellSelection`](https://www.infragistics.com/products/ignite-ui-react
 
 ### React Grid Column Selection
 
-The [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selectable) property enables you to specify the following options for each [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
+The [`selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable) property enables you to specify the following options for each [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
 
 This leads to the following three variations:
 
@@ -207,7 +207,7 @@ This leads to the following three variations:
 
 ## React Grid Context Menu
 
-Using the `ContextMenu` event you can add a custom context menu to facilitate your work with [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
+Using the `ContextMenu` event you can add a custom context menu to facilitate your work with [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
 
 If there is a **multi-cell selection**, we will put logic, which will check whether the selected cell is in the area of the multi-cell selection. If it is, we will also emit the values of the selected cells.
 
@@ -278,7 +278,7 @@ const copyData = (data: any[]) => {
 };
 ```
 
-The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) will fetch the copied data and will paste it in a container element.
+The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) will fetch the copied data and will paste it in a container element.
 
 The template we are going to use to combine the grid with the context menu:
 
@@ -661,7 +661,7 @@ root.render(<App />);
 
 ## Known Issues and Limitations
 
-When the grid has no [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+When the grid has no [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 - Row Expand/collapse
@@ -670,7 +670,7 @@ When the grid has no [`primaryKey`](https://www.infragistics.com/products/ignite
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 
 ## Additional Resources
 

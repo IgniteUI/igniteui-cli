@@ -10,12 +10,12 @@ _premium: true
 # Angular Pivot Grid Export to Excel and PDF Service
 @@if (igxName === 'IgxGrid' || igxName === 'IgxTreeGrid') {
 <p class="highlight">
-Whether your audience needs a spreadsheet for deeper analysis or a polished PDF they can share right away, the Ignite UI exporters help you deliver the right file from the IgxPivotGrid in seconds. Inject the [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html) or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html), call the respective [`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#export)/[`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html#export) method, and the component handles the rest—from honoring filters and sorting to shaping the output format.
+Whether your audience needs a spreadsheet for deeper analysis or a polished PDF they can share right away, the Ignite UI exporters help you deliver the right file from the IgxPivotGrid in seconds. Inject the [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html), call the respective [`export`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService&member=export)/[`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html#export) method, and the component handles the rest—from honoring filters and sorting to shaping the output format.
 </p>
 }
 @@if (igxName === 'IgxHierarchicalGrid' || igxName === 'IgxPivotGrid') {
 <p class="highlight">
-The Ignite UI Excel and PDF Exporter services treat the IgxPivotGrid exactly like your users see it on screen—complete with hierarchical layouts and summaries. Inject the [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html) or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html), call the appropriate [`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#export)/[`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html#export) method, and let the service generate the final document.
+The Ignite UI Excel and PDF Exporter services treat the IgxPivotGrid exactly like your users see it on screen—complete with hierarchical layouts and summaries. Inject the [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html), call the appropriate [`export`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService&member=export)/[`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html#export) method, and let the service generate the final document.
 </p>
 }
 The sections below walk through setup, usage patterns, and tips for tailoring each export so that your users receive data that is ready to consume, no matter which file type they prefer.
@@ -218,7 +218,7 @@ export class PivotExportComponent {
 <div class="divider--half"></div>
 ## Exporting Pivot Grid's Data
 Getting the exporters into your project takes only a few lines of code. Follow these steps and you will have reusable services that can create either Excel or PDF outputs on demand:
-1. Import the [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html) and/or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html) in your root module.
+1. Import the [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) and/or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html) in your root module.
 2. Inject whichever exporter you need and call its `export` method when the user requests a file.
 ```typescript
 // component.ts
@@ -236,7 +236,7 @@ To initiate an export process you may use the handler of a button in your compon
 <button (click)="exportButtonHandler()">Export IgxPivotGrid to Excel</button>
 <button (click)="exportPdfButtonHandler()">Export IgxPivotGrid to PDF</button>
 ```
-You may access either exporter service by defining it as a constructor dependency and letting Angular provide an instance. Calling the shared [`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#export) method initiates the download while automatically respecting the component state, selected rows, and formatting rules.
+You may access either exporter service by defining it as a constructor dependency and letting Angular provide an instance. Calling the shared [`export`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService&member=export) method initiates the download while automatically respecting the component state, selected rows, and formatting rules.
 Here is the code which will execute both export processes in the component's typescript file:
 ```typescript
 // component.ts
@@ -259,7 +259,7 @@ Once wired up, pressing the respective buttons downloads files named `ExportedDa
 > The exported Pivot Grid will not be formatted as a table, since Excel tables do not support multiple row headers.
 PDF exports automatically include the column header row at the top of the document, so readers retain the same context when they open or print the file.
 ## Customizing the Exported Content
-Most teams tailor exports before sharing them: hiding internal-use columns, renaming headers, or skipping rows that only apply to administrators. Both exporter services expose events that let you intercept every row or column and decide how it should appear in the file. Subscribe to [`columnExporting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#columnexporting) and [`rowExporting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#rowexporting) to make last-minute adjustments—set `cancel = true` to omit an item or tweak the event arguments to update values on the fly.
+Most teams tailor exports before sharing them: hiding internal-use columns, renaming headers, or skipping rows that only apply to administrators. Both exporter services expose events that let you intercept every row or column and decide how it should appear in the file. Subscribe to [`columnExporting`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService&member=columnexporting) and [`rowExporting`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService&member=rowexporting) to make last-minute adjustments—set `cancel = true` to omit an item or tweak the event arguments to update values on the fly.
 The following example will exclude all columns from the export if their header is "Amount of Sale":
 ```typescript
 // component.ts
@@ -270,7 +270,7 @@ this.excelExportService.columnExporting.subscribe((args: IColumnExportingEventAr
 });
 this.excelExportService.export(this.pivotGrid, new IgxExcelExporterOptions('ExportedDataFile'));
 ```
-When you are exporting data from the Pivot Grid component, the services automatically respect sorting, filtering, summaries, and hidden columns so the file reflects what the user currently sees. Need the full dataset instead? Toggle the relevant flags on [`IgxExcelExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporteroptions.html) or [`IgxPdfExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporteroptions.html) to include filtered rows, hidden columns, or custom metadata.
+When you are exporting data from the Pivot Grid component, the services automatically respect sorting, filtering, summaries, and hidden columns so the file reflects what the user currently sees. Need the full dataset instead? Toggle the relevant flags on [`IgxExcelExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterOptions) or [`IgxPdfExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporteroptions.html) to include filtered rows, hidden columns, or custom metadata.
 ## Known Limitations
 Before shipping exports to production users, review the following platform constraints so you can set expectations and provide helpful guidance within your app.
 | Limitation         | Description                                                                                                                                                                                                                  |
@@ -280,12 +280,12 @@ Before shipping exports to production users, review the following platform const
 | Wide PDF layouts   | Very wide exports can force PDF columns to shrink to fit the page. Apply column widths or hide low-priority fields before exporting to keep the document legible.                                                            |
 ## API References
 The Excel and PDF Exporter services have a few more APIs to explore, which are listed below.
-- [IgxExcelExporterService API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html)
-- [IgxExcelExporterOptions API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporteroptions.html)
+- [IgxExcelExporterService API](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService)
+- [IgxExcelExporterOptions API](mcp:get_api_reference?platform=angular&component=IgxExcelExporterOptions)
 - [IgxPdfExporterService API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html)
 - [IgxPdfExporterOptions API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporteroptions.html)
 Additional components that were used:
-- [IgxPivotGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpivotgridcomponent.html)
+- [IgxPivotGridComponent API](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent)
 - [IgxPivotGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 <div class="divider"></div>
 ## Additional Resources

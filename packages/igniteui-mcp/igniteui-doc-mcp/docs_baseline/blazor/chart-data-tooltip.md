@@ -11,11 +11,11 @@ _premium: true
 
 # Blazor Chart Data Tooltip
 
-In Ignite UI for Blazor, the **DataToolTip** displays values and titles of series as well as legend badges of series in a tooltip. In addition, it provides many configuration properties of the [`IgbDataLegend`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataLegend.html) for filtering series rows and values columns, styling, and formatting values. This tooltip type updates while moving the mouse inside of the plot area of the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html), [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html), and [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) components.
+In Ignite UI for Blazor, the **DataToolTip** displays values and titles of series as well as legend badges of series in a tooltip. In addition, it provides many configuration properties of the [`IgbDataLegend`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend) for filtering series rows and values columns, styling, and formatting values. This tooltip type updates while moving the mouse inside of the plot area of the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart), and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) components.
 
 ## Blazor Data Tooltip Properties
 
-All properties of [`IgbDataToolTipLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html) are prefixed with **DataToolTip** and exposed on API of [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) and [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) components. However, you will need to create an instance of [`IgbDataToolTipLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html) and add it to series collection of [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) component if you want to use it with Radial Charts, Polar Charts, Scatter Charts.
+All properties of [`IgbDataToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer) are prefixed with **DataToolTip** and exposed on API of [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) and [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) components. However, you will need to create an instance of [`IgbDataToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer) and add it to series collection of [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) component if you want to use it with Radial Charts, Polar Charts, Scatter Charts.
 
 ## Blazor Data Tooltip Elements
 
@@ -25,11 +25,11 @@ The **DataToolTip** displays content using a set of three types of rows and four
 
 The rows of the **DataToolTip** include the header row, series row(s), and the summary row.
 
-The header row displays the axis label of the point that is hovered, and can be changed using the [`DataToolTipHeaderText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipHeaderText) property.
+The header row displays the axis label of the point that is hovered, and can be changed using the [`DataToolTipHeaderText`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipHeaderText) property.
 
 The series row can actually be a set of rows corresponding to each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol and unit, if specified.
 
-Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`DataToolTipSummaryTitleText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipSummaryTitleText) property of the legend. Also, you can use the [`DataToolTipSummaryType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipSummaryType) property to customize whether you display the Total, Min, Max, or Average of series values in the summary row.
+Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`DataToolTipSummaryTitleText`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipSummaryTitleText) property of the legend. Also, you can use the [`DataToolTipSummaryType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipSummaryType) property to customize whether you display the Total, Min, Max, or Average of series values in the summary row.
 
 The following example demonstrates the data tooltip with a summary applied:
 
@@ -113,15 +113,15 @@ public class HighestGrossingMovies
 
 ### Blazor Data Tooltip Columns
 
-The columns of the [`IgbDataToolTipLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html) include the title, label, value, and units columns. Each series in the chart can have multiple columns for label, value, and units depending on the [`DataToolTipIncludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipIncludedColumns) or [`DataToolTipExcludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipExcludedColumns) collections of the chart.
+The columns of the [`IgbDataToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer) include the title, label, value, and units columns. Each series in the chart can have multiple columns for label, value, and units depending on the [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipIncludedColumns) or [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipExcludedColumns) collections of the chart.
 
-The title column displays legend badges and series titles, which come from the [`ChartTitle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_ChartTitle) property of the different [`Series`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Series) plotted in the chart.
+The title column displays legend badges and series titles, which come from the [`ChartTitle`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=ChartTitle) property of the different [`Series`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Series) plotted in the chart.
 
-The label column displays the name or abbreviation of the different property paths in the [`DataToolTipIncludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipIncludedColumns) or [`DataToolTipExcludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipExcludedColumns) collections of the tooltip.
+The label column displays the name or abbreviation of the different property paths in the [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipIncludedColumns) or [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipExcludedColumns) collections of the tooltip.
 
-The value column displays series values as abbreviated text which can be formatted using the [`DataToolTipValueFormatAbbreviation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to `Auto` or `Shared`. Alternatively, a user can select other abbreviations such as `Independent`, `Kilo`, `Million`, etc. Precision of abbreviated values is controlled using the [`DataToolTipValueFormatMinFractions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatMinFractions) and [`DataToolTipValueFormatMaxFractions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatMaxFractions) for minimum and maximum digits, respectively.
+The value column displays series values as abbreviated text which can be formatted using the [`DataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to `Auto` or `Shared`. Alternatively, a user can select other abbreviations such as `Independent`, `Kilo`, `Million`, etc. Precision of abbreviated values is controlled using the [`DataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatMinFractions) and [`DataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatMaxFractions) for minimum and maximum digits, respectively.
 
-The units column displays an abbreviation symbol and/or unit text, which can be set either on the **DataToolTip** by setting the [`DataToolTipUnitsText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipUnitsText) for all columns or using the following properties on each series in the chart:
+The units column displays an abbreviation symbol and/or unit text, which can be set either on the **DataToolTip** by setting the [`DataToolTipUnitsText`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipUnitsText) for all columns or using the following properties on each series in the chart:
 
 - Category Series (e.g. ColumnSeries)
   - ValueMemberAsLegendUnit="K"
@@ -141,7 +141,7 @@ The units column displays an abbreviation symbol and/or unit text, which can be 
 
 For the above-listed properties, there are corresponding properties ending with **MemberAsLegendLabel** to determine the text in the label columns mentioned previously.
 
-The columns included in the [`DataToolTipIncludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipIncludedColumns) and [`DataToolTipExcludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipExcludedColumns) collections generally correspond to the value paths of your underlying data items, but the financial series has the option to include some special ones in addition to the `High`, `Low`, `Open`, and `Close` paths that are required for the financial series to plot correctly. You have the ability to show `TypicalPrice`, `Change`, and `Volume` options within the tooltip.
+The columns included in the [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipIncludedColumns) and [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipExcludedColumns) collections generally correspond to the value paths of your underlying data items, but the financial series has the option to include some special ones in addition to the `High`, `Low`, `Open`, and `Close` paths that are required for the financial series to plot correctly. You have the ability to show `TypicalPrice`, `Change`, and `Volume` options within the tooltip.
 
 The following example demonstrates a data tooltip with the added columns of Open, High, Low, Close, and Change:
 
@@ -307,8 +307,8 @@ The following example demonstrates a data tooltip with the added columns of Open
 
 ## Blazor Data Tooltip Grouping for Data Chart
 
-[`DataLegendGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html#IgniteUI_Blazor_Controls_IgbDataToolTipLayer_DataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
-By default, DataLegend will hide names of groups, but you can display group names by setting the [`GroupRowVisible`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html#IgniteUI_Blazor_Controls_IgbDataToolTipLayer_GroupRowVisible) property to true. [`GroupingMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html#IgniteUI_Blazor_Controls_IgbDataToolTipLayer_GroupingMode) should be set to "Grouped" and [`LabelDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html#IgniteUI_Blazor_Controls_IgbDataToolTipLayer_LabelDisplayMode) should be set to "Visible" on the Data Tooltip Layer.
+[`DataLegendGroup`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=DataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
+By default, DataLegend will hide names of groups, but you can display group names by setting the [`GroupRowVisible`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupRowVisible) property to true. [`GroupingMode`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupingMode) should be set to "Grouped" and [`LabelDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=LabelDisplayMode) should be set to "Visible" on the Data Tooltip Layer.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -444,7 +444,7 @@ public class OlympicMedalsTopCountriesWithTotals
 
 ## Blazor Data Tooltip Grouping & Positioning for Category Chart & Financial Chart
 
-You can set [`DataToolTipGroupingMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipGroupingMode) property to either `Grouped` or `Individual` to group content for multiple series into single tooltip or separate content for each series in multiple tooltips. In the `Grouped` mode, you can customize where the tooltip is shown by setting the [`DataToolTipGroupedPositionModeX`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipGroupedPositionModeX) and [`DataToolTipGroupedPositionModeY`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipGroupedPositionModeY) properties. This essentially allows you to customize the horizontal and vertical alignments of the tooltip and whether you want it to track to the closest series points to the mouse position or pin the tooltip to edge of plot area.
+You can set [`DataToolTipGroupingMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipGroupingMode) property to either `Grouped` or `Individual` to group content for multiple series into single tooltip or separate content for each series in multiple tooltips. In the `Grouped` mode, you can customize where the tooltip is shown by setting the [`DataToolTipGroupedPositionModeX`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipGroupedPositionModeX) and [`DataToolTipGroupedPositionModeY`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipGroupedPositionModeY) properties. This essentially allows you to customize the horizontal and vertical alignments of the tooltip and whether you want it to track to the closest series points to the mouse position or pin the tooltip to edge of plot area.
 
 The following example demonstrates a data tooltip positioned to the top-right of the chart:
 
@@ -576,7 +576,7 @@ public class HighestGrossingMovies
 
 ## Blazor Data Tooltip Value Formatting
 
-The **DataToolTip** provides automatic abbreviation of large numbers using its [`DataToolTipValueFormatAbbreviation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`DataToolTipValueFormatMinFractions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatMinFractions) and [`DataToolTipValueFormatMaxFractions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
+The **DataToolTip** provides automatic abbreviation of large numbers using its [`DataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`DataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatMinFractions) and [`DataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
 
 The following example demonstrates a **DataToolTip** with the minimum and maximum fractions set:
 
@@ -661,7 +661,7 @@ public class HighestGrossingMovies
 
 ## Blazor Data Tooltip Value Mode
 
-You can change the default decimal display of values within the **DataToolTip** to be currency by changing the [`DataToolTipValueFormatMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatMode) property of the layer. The **DataToolTip** also exposes the ability to modify the culture of the displayed currency symbol by using its [`DataToolTipValueFormatCulture`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatCulture) property and setting it to its corresponding culture tag. For example, the following sample demonstrates a chart with the [`DataToolTipValueFormatCulture`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatCulture) set to "en-GB":
+You can change the default decimal display of values within the **DataToolTip** to be currency by changing the [`DataToolTipValueFormatMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatMode) property of the layer. The **DataToolTip** also exposes the ability to modify the culture of the displayed currency symbol by using its [`DataToolTipValueFormatCulture`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatCulture) property and setting it to its corresponding culture tag. For example, the following sample demonstrates a chart with the [`DataToolTipValueFormatCulture`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatCulture) set to "en-GB":
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -827,7 +827,7 @@ You can change the default decimal display of values within the **DataToolTip** 
 
 ## Layout Mode
 
-Legend items can be positioned in a vertical or table structure via the [`LayoutMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html#IgniteUI_Blazor_Controls_IgbDataToolTipLayer_LayoutMode) property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
+Legend items can be positioned in a vertical or table structure via the [`LayoutMode`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=LayoutMode) property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
 
 eg.
 
@@ -835,7 +835,7 @@ eg.
 
 ## Blazor Data Tooltip Styling
 
-The **DataToolTip** provides properties for styling each type of column. Each of these properties begins with Title, Label, Value, or Units, and you can style the text's color, font, and margin. For example, if you wanted to set the text color of each of these, you would set the [`DataToolTipTitleTextColor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipTitleTextColor), [`DataToolTipLabelTextColor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipLabelTextColor), [`DataToolTipValueTextColor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueTextColor), and [`DataToolTipUnitsTextColor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipUnitsTextColor) properties.
+The **DataToolTip** provides properties for styling each type of column. Each of these properties begins with Title, Label, Value, or Units, and you can style the text's color, font, and margin. For example, if you wanted to set the text color of each of these, you would set the [`DataToolTipTitleTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipTitleTextColor), [`DataToolTipLabelTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipLabelTextColor), [`DataToolTipValueTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueTextColor), and [`DataToolTipUnitsTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipUnitsTextColor) properties.
 
 The following example demonstrates usage of the styling properties mentioned above:
 
@@ -1056,14 +1056,14 @@ public class StockItem {
 Several properties are exposed including grouping portions of the tooltip.
 
 - `GroupTextMargin`
-- [`GroupTextColor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html#IgniteUI_Blazor_Controls_IgbDataToolTipLayer_GroupTextColor)
+- [`GroupTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupTextColor)
 - `GroupTextFontSize`
 - `GroupTextFontFamily`
 - `GroupTextFontStyle`
 - `GroupTextFontStretch`
 - `GroupTextFontWeight`
 - `HeaderTextMargin`
-- [`HeaderTextColor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html#IgniteUI_Blazor_Controls_IgbDataToolTipLayer_HeaderTextColor)
+- [`HeaderTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=HeaderTextColor)
 - `HeaderTextFontSize`
 - `HeaderTextFontFamily`
 - `HeaderTextFontStyle`
@@ -1072,24 +1072,24 @@ Several properties are exposed including grouping portions of the tooltip.
 
 ## API References
 
-- [`DataToolTipExcludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipExcludedColumns)
-- [`DataToolTipGroupedPositionModeX`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipGroupedPositionModeX)
-- [`DataToolTipGroupedPositionModeY`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipGroupedPositionModeY)
-- [`DataToolTipGroupingMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipGroupingMode)
-- [`DataToolTipHeaderText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipHeaderText)
-- [`DataToolTipIncludedColumns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipIncludedColumns)
-- [`DataToolTipLabelTextColor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipLabelTextColor)
-- [`IgbDataToolTipLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataToolTipLayer.html)
-- [`DataToolTipSummaryTitleText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipSummaryTitleText)
-- [`DataToolTipSummaryType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipSummaryType)
-- [`DataToolTipTitleTextColor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipTitleTextColor)
-- [`DataToolTipUnitsTextColor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipUnitsTextColor)
-- [`DataToolTipUnitsText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipUnitsText)
-- [`DataToolTipValueFormatAbbreviation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatAbbreviation)
-- [`DataToolTipValueFormatCulture`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatCulture)
-- [`DataToolTipValueFormatMaxFractions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatMaxFractions)
-- [`DataToolTipValueFormatMaxFractions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatMaxFractions)
-- [`DataToolTipValueFormatMinFractions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatMinFractions)
-- [`DataToolTipValueFormatMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueFormatMode)
-- [`DataToolTipValueTextColor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_DataToolTipValueTextColor)
+- [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipExcludedColumns)
+- [`DataToolTipGroupedPositionModeX`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipGroupedPositionModeX)
+- [`DataToolTipGroupedPositionModeY`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipGroupedPositionModeY)
+- [`DataToolTipGroupingMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipGroupingMode)
+- [`DataToolTipHeaderText`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipHeaderText)
+- [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipIncludedColumns)
+- [`DataToolTipLabelTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipLabelTextColor)
+- [`IgbDataToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer)
+- [`DataToolTipSummaryTitleText`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipSummaryTitleText)
+- [`DataToolTipSummaryType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipSummaryType)
+- [`DataToolTipTitleTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipTitleTextColor)
+- [`DataToolTipUnitsTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipUnitsTextColor)
+- [`DataToolTipUnitsText`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipUnitsText)
+- [`DataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatAbbreviation)
+- [`DataToolTipValueFormatCulture`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatCulture)
+- [`DataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatMaxFractions)
+- [`DataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatMaxFractions)
+- [`DataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatMinFractions)
+- [`DataToolTipValueFormatMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueFormatMode)
+- [`DataToolTipValueTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataToolTipValueTextColor)
 - `MemberAsLegendLabel`

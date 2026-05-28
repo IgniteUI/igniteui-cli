@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Tree Grid Toolbar
 
-The Ignite UI for Web Components Toolbar in is a container for UI operations in the Web Components Tree Grid. The Web Components toolbar is located at the top of the Web Components component, i.e., the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) and it matches its horizontal size. The toolbar container can host any custom content or set of predefined UI controls. The default set for the Web Components Tree Grid includes:
+The Ignite UI for Web Components Toolbar in is a container for UI operations in the Web Components Tree Grid. The Web Components toolbar is located at the top of the Web Components component, i.e., the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) and it matches its horizontal size. The toolbar container can host any custom content or set of predefined UI controls. The default set for the Web Components Tree Grid includes:
 
 - Column Hiding
 - Column Pinning
@@ -599,7 +599,7 @@ The Grid Toolbar service has a few more APIs to explore, which are listed below.
 - [`IgcGridToolbarPinning`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarpinning.html)
 - [`IgcGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitle.html)
 
-[`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) Events:
+[`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) Events:
 
 - `ToolbarExporting`
 

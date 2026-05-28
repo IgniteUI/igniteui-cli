@@ -398,7 +398,7 @@ Go to [Batch Editing](../../grid/batch-editing.md) for more details and demo sam
 
 You can see and learn more about default cell editing templates in the [general editing topic](../../grid/editing.md#editing-templates).
 
-If you want to provide a custom template which will be applied when a cell is in edit mode, you can make use of the [`igxCellEditor` directive](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcelltemplatedirective.html). To do this, you need to pass an `ng-template` marked with the `igxCellEditor` directive and properly bind your custom control to the [`cell.editValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html#editValue):
+If you want to provide a custom template which will be applied when a cell is in edit mode, you can make use of the [`igxCellEditor` directive](mcp:get_api_reference?platform=angular&component=IgxCellTemplateDirective). To do this, you need to pass an `ng-template` marked with the `igxCellEditor` directive and properly bind your custom control to the [`cell.editValue`](mcp:get_api_reference?platform=angular&component=IgxGridCell&member=editValue):
 
 ```html
 <igx-column field="class" header="Class" [editable]="true">
@@ -420,14 +420,14 @@ The grid exposes a wide array of events that provide greater control over the ed
 
 | Event                                                                                      | Description                                                                                                                                               | Arguments                                                                                    | Cancellable |
 | :----------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------- | :---------- |
-| [`rowEditEnter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowEditEnter)   | If `rowEditing` is enabled, fires when a row enters edit mode                                                                                             | [IGridEditEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igridediteventargs.html)         | `true`      |
-| [`cellEditEnter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#cellEditEnter) | Fires when a cell **enters edit mode** (after `rowEditEnter`)                                                                                             | [IGridEditEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igridediteventargs.html)         | `true`      |
-| [`cellEdit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#cellEdit)           | If value is changed, fires just **before** a cell's value is **committed** (e.g. by pressing `Enter`)                                                     | [IGridEditEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igridediteventargs.html)         | `true`      |
-| [`cellEditDone`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#cellEditDone)   | If value is changed, fires **after** a cell has been edited and cell's value is **committed**                                                             | [IGridEditDoneEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igrideditdoneeventargs.html) | `false`     |
-| [`cellEditExit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#cellEditExit)   | Fires when a cell **exits edit mode**                                                                                                                     | [IGridEditDoneEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igridediteventargs.html)     | `false`     |
-| [`rowEdit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowEdit)             | If `rowEditing` is enabled, fires just before a row in edit mode's value is **committed** (e.g. by clicking the `Done` button on the Row Editing Overlay) | [IGridEditEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igridediteventargs.html)         | `true`      |
-| [`rowEditDone`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowEditDone)     | If `rowEditing` is enabled, fires **after** a row has been edited and new row's value has been **committed**.                                             | [IGridEditDoneEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igridediteventargs.html)     | `false`     |
-| [`rowEditExit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowEditExit)     | If `rowEditing` is enabled, fires when a row **exits edit mode**                                                                                          | [IGridEditDoneEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igridediteventargs.html)     | `false`     |
+| [`rowEditEnter`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditEnter)   | If `rowEditing` is enabled, fires when a row enters edit mode                                                                                             | [IGridEditEventArgs](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs)         | `true`      |
+| [`cellEditEnter`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEditEnter) | Fires when a cell **enters edit mode** (after `rowEditEnter`)                                                                                             | [IGridEditEventArgs](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs)         | `true`      |
+| [`cellEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEdit)           | If value is changed, fires just **before** a cell's value is **committed** (e.g. by pressing `Enter`)                                                     | [IGridEditEventArgs](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs)         | `true`      |
+| [`cellEditDone`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEditDone)   | If value is changed, fires **after** a cell has been edited and cell's value is **committed**                                                             | [IGridEditDoneEventArgs](mcp:get_api_reference?platform=angular&component=IGridEditDoneEventArgs) | `false`     |
+| [`cellEditExit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEditExit)   | Fires when a cell **exits edit mode**                                                                                                                     | [IGridEditDoneEventArgs](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs)     | `false`     |
+| [`rowEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEdit)             | If `rowEditing` is enabled, fires just before a row in edit mode's value is **committed** (e.g. by clicking the `Done` button on the Row Editing Overlay) | [IGridEditEventArgs](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs)         | `true`      |
+| [`rowEditDone`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditDone)     | If `rowEditing` is enabled, fires **after** a row has been edited and new row's value has been **committed**.                                             | [IGridEditDoneEventArgs](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs)     | `false`     |
+| [`rowEditExit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditExit)     | If `rowEditing` is enabled, fires when a row **exits edit mode**                                                                                          | [IGridEditDoneEventArgs](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs)     | `false`     |
 
 Go to [Events](../../grid/editing.md#event-arguments-and-sequence) for more details and demo samples.
 
@@ -435,12 +435,12 @@ Go to [Events](../../grid/editing.md#event-arguments-and-sequence) for more deta
 
 Updating data in the grid is achieved through methods exposed both by the grid:
 
-- [`updateRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#updateRow)
-- [`updateCell`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#updateCell)
-- [`deleteRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#deleteRow)
-- [`addRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#addRow)
+- [`updateRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=updateRow)
+- [`updateCell`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=updateCell)
+- [`deleteRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=deleteRow)
+- [`addRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=addRow)
 
-and `update` method exposed by the [IgxGridCell](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html) and [IgxGridRow](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridrow.html) instances:
+and `update` method exposed by the [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell) and [IgxGridRow](mcp:get_api_reference?platform=angular&component=IgxGridRow) instances:
 
 ```typescript
 // Through the grid methods
@@ -464,11 +464,11 @@ Enabling CRUD in a robust way is major milestone for any data-driven application
 
 ## API References
 
-- [IgxGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
-- [IgxGridRow](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridrow.html)
-- [IgxGridCell](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
-- [`IgxActionStripComponent API`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxactionstripcomponent.html)
-- [`IgxGridActionsBaseDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridactionsbasedirective.html)
-- [`IgxGridPinningActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridpinningactionscomponent.html)
-- [`IgxGridEditingActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgrideditingactionscomponent.html)
+- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [IgxGridRow](mcp:get_api_reference?platform=angular&component=IgxGridRow)
+- [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell)
+- [`IgxActionStripComponent API`](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent)
+- [`IgxGridActionsBaseDirective`](mcp:get_api_reference?platform=angular&component=IgxGridActionsBaseDirective)
+- [`IgxGridPinningActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent)
+- [`IgxGridEditingActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent)
 

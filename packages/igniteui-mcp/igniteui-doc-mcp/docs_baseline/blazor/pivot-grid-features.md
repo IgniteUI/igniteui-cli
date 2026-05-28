@@ -14,7 +14,7 @@ _premium: true
 The pivot and flat grid components inherit from a common base and thus share some functionality and features.
 
 > [!Note]
-> Some features do not have meaningful behavior in the context of a pivot table and therefore cannot be enabled for [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html). These include:
+> Some features do not have meaningful behavior in the context of a pivot table and therefore cannot be enabled for [`IgbPivotGrid`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid). These include:
 >
 > - CRUD operations
 > - Grouping
@@ -179,7 +179,7 @@ Sorting can also be applied initially via the `sortDirection` property of the di
 ## Dimensions Resizing
 
 Row dimensions can be resized similarly to column resizing - via a resizing indicator that can be found on the right edge of the cells.
-They can also be auto-sized by double clicking the resize indicator, or by using the related API - [`AutoSizeRowDimension`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_AutoSizeRowDimension).
+They can also be auto-sized by double clicking the resize indicator, or by using the related API - [`AutoSizeRowDimension`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid&member=AutoSizeRowDimension).
 
 A different size can also be set initially with the `Width` property available in the dimension definition:
 
@@ -210,7 +210,7 @@ In case there are multiple row or column dimensions which would create groups th
 
 ## Super Compact Mode
 
-The [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html) component provides a [`SuperCompactMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_SuperCompactMode) input. It is suitable for cases that require a lot of cells to be present on the screen at once. If enabled the option ignores the `--ig-size` CSS variable for the Pivot Grid. Enabling [`SuperCompactMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_SuperCompactMode) also sets the `--ig-size` to `small` for each child component(like [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html)) that does not have the `SuperCompactMode` option.
+The [`IgbPivotGrid`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid) component provides a [`SuperCompactMode`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid&member=SuperCompactMode) input. It is suitable for cases that require a lot of cells to be present on the screen at once. If enabled the option ignores the `--ig-size` CSS variable for the Pivot Grid. Enabling [`SuperCompactMode`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid&member=SuperCompactMode) also sets the `--ig-size` to `small` for each child component(like [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip)) that does not have the `SuperCompactMode` option.
 
 ```razor
 <IgbPivotGrid SuperCompactMode=true></IgbPivotGrid>
@@ -224,7 +224,7 @@ When a `column` dimension defines a hierarchy, the Pivot Grid will render additi
 
 ### Keyboard Navigation
 
-Keyboard navigation in [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html) works similarly to the one in [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). The Pivot Grid is split into three areas - `rows`, `columns`, `values`. The areas for `rows` and `columns` are considered headers for the purposes of navigation while the area for `values` is the body.
+Keyboard navigation in [`IgbPivotGrid`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid) works similarly to the one in [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). The Pivot Grid is split into three areas - `rows`, `columns`, `values`. The areas for `rows` and `columns` are considered headers for the purposes of navigation while the area for `values` is the body.
 The keyboard arrows allow navigating the active element within the current area only.
 
 ### Dimensions Drag & Drop
@@ -239,8 +239,8 @@ Chips from these areas can not be moved to the `values` area and chips from the 
 
 ## API References
 
-- [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html)
-- [`IgbPivotDataSelector`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDataSelector.html)
+- [`IgbPivotGrid`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid)
+- [`IgbPivotDataSelector`](mcp:get_api_reference?platform=blazor&component=IgbPivotDataSelector)
 
 ## Additional Resources
 

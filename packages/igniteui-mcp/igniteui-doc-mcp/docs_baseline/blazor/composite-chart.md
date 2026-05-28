@@ -15,7 +15,7 @@ The Ignite UI for Blazor Composite Chart, also called a Combo Chart, is visualiz
 
 ## Blazor Composite / Combo Example
 
-The following example demonstrates how to create Composite Chart using [`IgbColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnSeries.html) and [`IgbLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLineSeries.html) in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control.
+The following example demonstrates how to create Composite Chart using [`IgbColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbColumnSeries) and [`IgbLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries) in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -122,8 +122,8 @@ The following example demonstrates how to create Composite Chart using [`IgbColu
 
 ## API References
 
-- [`IgbCategoryXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryXAxis.html)
-- [`IgbColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnSeries.html)
-- [`IgbLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLineSeries.html)
-- [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html)
-- [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
+- [`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis)
+- [`IgbColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbColumnSeries)
+- [`IgbLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries)
+- [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis)
+- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)

@@ -7,7 +7,7 @@ _tocName: Column Hiding
 _premium: true
 ---
 # Angular Grid Column Hiding
-The Ignite UI for Angular Grid provides an [`IgxColumnActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnactionscomponent.html) with an [`IgxColumnHidingDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnhidingdirective.html) which allows users to perform column hiding directly through the user interface or by using the Angular component. The Material UI Grid has a built-in column hiding UI, which can be used through the Grid's toolbar to change the visible state of the columns. In addition, developers can always define the column hiding UI as a separate component and place it anywhere they want on the page.
+The Ignite UI for Angular Grid provides an [`IgxColumnActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent) with an [`IgxColumnHidingDirective`](mcp:get_api_reference?platform=angular&component=IgxColumnHidingDirective) which allows users to perform column hiding directly through the user interface or by using the Angular component. The Material UI Grid has a built-in column hiding UI, which can be used through the Grid's toolbar to change the visible state of the columns. In addition, developers can always define the column hiding UI as a separate component and place it anywhere they want on the page.
 ## Angular Grid Column Hiding Example
 ```typescript
 import { AfterViewInit, Component, OnInit } from '@angular/core';
@@ -81,8 +81,8 @@ Let's start by creating our Grid and binding it to our data. We will also enable
 </igx-grid>
 ```
 ## Toolbar's Column Hiding UI
-The built-in Column Hiding UI is placed inside an [`IgxDropDownComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html) in the Grid's toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
-For this purpose all we have to do is set both the [`IgxGridToolbarActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbaractionscomponent.html) and the [`IgxGridToolbarHidingComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarhidingcomponent.html) inside of the Grid. We will also add a title to our toolbar by using the [`IgxGridToolbarTitleComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbartitlecomponent.html) and a custom style for our Grid's wrapper.
+The built-in Column Hiding UI is placed inside an [`IgxDropDownComponent`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) in the Grid's toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
+For this purpose all we have to do is set both the [`IgxGridToolbarActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarActionsComponent) and the [`IgxGridToolbarHidingComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarHidingComponent) inside of the Grid. We will also add a title to our toolbar by using the [`IgxGridToolbarTitleComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarTitleComponent) and a custom style for our Grid's wrapper.
 @@if (igxName === 'IgxGrid' || igxName === 'IgxTreeGrid') {
 ```html
 <!--columnHiding.component.html-->
@@ -106,7 +106,7 @@ For this purpose all we have to do is set both the [`IgxGridToolbarActionsCompon
 ```
 }
 The Grid provides us with some useful properties when it comes to using the toolbar's column hiding UI.
-By using the `igx-grid-toolbar-hiding` [`title`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarhidingcomponent.html#title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
+By using the `igx-grid-toolbar-hiding` [`title`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarHidingComponent&member=title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
 @@if (igxName === 'IgxGrid' || igxName === 'IgxTreeGrid') {
 ```html
 <!--columnHiding.component.html-->
@@ -122,17 +122,17 @@ By using the `igx-grid-toolbar-hiding` [`title`](https://www.infragistics.com/pr
 </div>
 ```
 }
-By using the [`columnsAreaMaxHeight`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarhidingcomponent.html#columnsAreaMaxHeight) property of the IgxGridToolbarHidingComponent, we can set the maximum height of the area that contains the column actions. This way if we have a lot of actions and not all of them can fit in the container, a scrollbar will appear, which will allow us to scroll to any action we want.
+By using the [`columnsAreaMaxHeight`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarHidingComponent&member=columnsAreaMaxHeight) property of the IgxGridToolbarHidingComponent, we can set the maximum height of the area that contains the column actions. This way if we have a lot of actions and not all of them can fit in the container, a scrollbar will appear, which will allow us to scroll to any action we want.
 ```typescript
 // columnHiding.component.ts
 public ngAfterViewInit() {        
     this.hidingActionRef.columnsAreaMaxHeight = "200px";
 }
 ```
-In order to use the expanded set of functionalities for the column hiding UI, we can use the IgxColumnActionsComponent's [`columnsAreaMaxHeight`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxColumnActionsComponent.html#columnsAreaMaxHeight) property. This way we can use it according to our application's requirements.
+In order to use the expanded set of functionalities for the column hiding UI, we can use the IgxColumnActionsComponent's [`columnsAreaMaxHeight`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent&member=columnsAreaMaxHeight) property. This way we can use it according to our application's requirements.
 You can see the result of the code from above at the beginning of this article in the Angular Column Hiding Example section.
 ## Custom Column Hiding UI
-Let's say we want to manually define our [`IgxColumnActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnactionscomponent.html), add the [`IgxColumnHidingDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnhidingdirective.html) so that it knows what its purpose would be and put it anywhere on the page. First, however, we need to import the `IgxColumnActionsComponent`.
+Let's say we want to manually define our [`IgxColumnActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent), add the [`IgxColumnHidingDirective`](mcp:get_api_reference?platform=angular&component=IgxColumnHidingDirective) so that it knows what its purpose would be and put it anywhere on the page. First, however, we need to import the `IgxColumnActionsComponent`.
 ```typescript
 // app.module.ts
 ...
@@ -147,7 +147,7 @@ import {
 })
 export class AppModule {}
 ```
-Now let's create our [`IgxColumnActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnactionscomponent.html). In our application, we will place it next to the grid (which is not the case with the toolbar's column hiding UI, where the component is inside a dropdown by design). We will also set the [`columns`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnactionscomponent.html#columns) property of the component to the columns of our Grid and include some custom styles to make our application look even better!
+Now let's create our [`IgxColumnActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent). In our application, we will place it next to the grid (which is not the case with the toolbar's column hiding UI, where the component is inside a dropdown by design). We will also set the [`columns`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent&member=columns) property of the component to the columns of our Grid and include some custom styles to make our application look even better!
 @@if (igxName === 'IgxGrid') {
 ```html
 <!--columnHiding.component.html-->
@@ -212,7 +212,7 @@ Now let's create our [`IgxColumnActionsComponent`](https://www.infragistics.com/
 ```
 }
 ### Add title and filter prompt
-A couple more things we can do in order to enrich the user experience of our column hiding component is to set the [`title`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnactionscomponent.html#title) and the [`filterColumnsPrompt`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnactionscomponent.html#filtercolumnsprompt) properties. The [`title`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnactionscomponent.html#title) is displayed on the top and the [`filterColumnsPrompt`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnactionscomponent.html#filterColumnsPrompt) is the prompt text that is displayed in the filter input of our column hiding UI.
+A couple more things we can do in order to enrich the user experience of our column hiding component is to set the [`title`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent&member=title) and the [`filterColumnsPrompt`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent&member=filtercolumnsprompt) properties. The [`title`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent&member=title) is displayed on the top and the [`filterColumnsPrompt`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent&member=filterColumnsPrompt) is the prompt text that is displayed in the filter input of our column hiding UI.
 ```html
 <!--columnHiding.component.html-->
 <div class="columnHidingContainer">
@@ -222,7 +222,7 @@ A couple more things we can do in order to enrich the user experience of our col
 </div>
 ```
 ### Add column display order options
-We can also allow the user to choose the display order of the columns in the column hiding UI. For this purpose we will use the [`columnDisplayOrder`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnactionscomponent.html#columnDisplayOrder) property, which is an enumeration type property and has the following options:
+We can also allow the user to choose the display order of the columns in the column hiding UI. For this purpose we will use the [`columnDisplayOrder`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent&member=columnDisplayOrder) property, which is an enumeration type property and has the following options:
 - **Alphabetical** (order the columns alphabetically)
 - **DisplayOrder** (order the columns according to the way they are displayed in the Grid)
 Let's create a couple of nicely designed radio buttons for our options! We just have to go ahead and get the [**IgxRadio**](../radio-button.md) component.
@@ -240,7 +240,7 @@ import {
 })
 export class AppModule {}
 ```
-Now all we have to do is bind the [`checked`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxradiocomponent.html#checked) property of both radio buttons respectively with different conditions and handle their click events.
+Now all we have to do is bind the [`checked`](mcp:get_api_reference?platform=angular&component=IgxRadioComponent&member=checked) property of both radio buttons respectively with different conditions and handle their click events.
 ```html
 <!--columnHiding.component.html-->
 <div class="columnHidingContainer">
@@ -258,7 +258,7 @@ Now all we have to do is bind the [`checked`](https://www.infragistics.com/produ
 </div>
 ```
 ### Disable hiding of a column
-We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`disableHiding`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#disableHiding) property to true.
+We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`disableHiding`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=disableHiding) property to true.
 @@if (igxName === 'IgxGrid') {
 ```html
 <!--columnHiding.component.html-->
@@ -647,22 +647,22 @@ $dark-ripple-theme: ripple-theme(
 ## API References
 In this article we learned how to use the built-in column hiding UI in the Grid's toolbar and we defined it as a separate component as well. We introduced a UI that allows the user to choose between different column orders and we set our own custom title and filter prompt texts. We also used an additional Ignite UI for Angular component - the [**IgxRadio**](../radio-button.md) button.
 The column hiding UI has a few more APIs to explore, which are listed below.
-- [IgxColumnActionsComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnactionscomponent.html)
+- [IgxColumnActionsComponent](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent)
 - [IgxColumnActionsComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-column-actions-theme)
 Additional components and/or directives with relative APIs that were used:
-[`IgxGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) properties:
-- [hiddenColumnsCount](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#hiddenColumnsCount)
-[`IgxColumnComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html) properties:
-- [disableHiding](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#disablehiding)
-[`IgxGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarcomponent.html) properties:
-- [showProgress](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridToolbarComponent.html#showProgress)
-[`IgxGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarcomponent.html) components:
-- [IgxGridToolbarTitleComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbartitlecomponent.html)
-- [IgxGridToolbarActionsComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbaractionscomponent.html)
-[`IgxGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarcomponent.html) methods:
-[`IgxGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) events:
-- [columnVisibilityChanged](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#columnVisibilityChanged)
-[IgxRadioComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxradiocomponent.html)
+[`IgxGridComponent`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) properties:
+- [hiddenColumnsCount](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=hiddenColumnsCount)
+[`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) properties:
+- [disableHiding](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=disablehiding)
+[`IgxGridToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarComponent) properties:
+- [showProgress](mcp:get_api_reference?platform=angular&component=IgxGridToolbarComponent&member=showProgress)
+[`IgxGridToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarComponent) components:
+- [IgxGridToolbarTitleComponent](mcp:get_api_reference?platform=angular&component=IgxGridToolbarTitleComponent)
+- [IgxGridToolbarActionsComponent](mcp:get_api_reference?platform=angular&component=IgxGridToolbarActionsComponent)
+[`IgxGridToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarComponent) methods:
+[`IgxGridComponent`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) events:
+- [columnVisibilityChanged](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columnVisibilityChanged)
+[IgxRadioComponent](mcp:get_api_reference?platform=angular&component=IgxRadioComponent)
 Styles:
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 - [IgxRadioComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-radio-theme)

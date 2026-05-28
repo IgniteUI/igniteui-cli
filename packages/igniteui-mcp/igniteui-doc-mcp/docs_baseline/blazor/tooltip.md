@@ -34,7 +34,7 @@ The Ignite UI for Blazor Tooltip component provides a way to display a tooltip f
 
 ### Getting Started
 
-Before using the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html), you need to register it as follows:
+Before using the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -42,7 +42,7 @@ Before using the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api
 builder.Services.AddIgniteUIBlazor(typeof(IgbTooltipModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -50,7 +50,7 @@ You will also need to link an additional CSS file to apply the styling to the [`
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Now you can start with a basic configuration of the Blazor [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html).
+Now you can start with a basic configuration of the Blazor [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip).
 
 ```razor
 <IgbTooltip Anchor="hover-button">
@@ -64,7 +64,7 @@ Now you can start with a basic configuration of the Blazor [`IgbTooltip`](https:
 
 ### Tooltip target
 
-To attach a tooltip to the desired element, use the [`Anchor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Anchor) property of the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) and set it to the ID of the target element.
+To attach a tooltip to the desired element, use the [`Anchor`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Anchor) property of the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) and set it to the ID of the target element.
 
 ```razor
 <IgbButton id="target-button">Hover me</IgbButton>
@@ -75,7 +75,7 @@ To attach a tooltip to the desired element, use the [`Anchor`](https://www.infra
 
 ### Tooltip content
 
-The tooltip content is defined by placing custom content between the opening and closing tags of the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html).
+The tooltip content is defined by placing custom content between the opening and closing tags of the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip).
 
 ```razor
 <IgbTooltip>
@@ -83,7 +83,7 @@ The tooltip content is defined by placing custom content between the opening and
 </IgbTooltip>
 ```
 
-The [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) content can be more than just simple text. Since the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) is a regular element in the markup, you can enhance its content by adding any elements you need and styling them accordingly.
+The [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) content can be more than just simple text. Since the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) is a regular element in the markup, you can enhance its content by adding any elements you need and styling them accordingly.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -162,7 +162,7 @@ The [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bla
 
 ### Show/Hide delay settings
 
-If you want to control the delay before showing and hiding the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html), you can use the [`ShowDelay`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_ShowDelay) and [`HideDelay`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_HideDelay) properties. Both properties accept a number value representing time in milliseconds.
+If you want to control the delay before showing and hiding the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip), you can use the [`ShowDelay`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=ShowDelay) and [`HideDelay`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=HideDelay) properties. Both properties accept a number value representing time in milliseconds.
 
 ```razor
 <IgbTooltip ShowDelay="600" HideDelay="800">
@@ -171,17 +171,17 @@ If you want to control the delay before showing and hiding the [`IgbTooltip`](ht
 ```
 
 > [!NOTE]
-> It's important to note that the Tooltip API methods — [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Show), [`Hide`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Hide), and [`Toggle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Toggle) — DO NOT take the [`ShowDelay`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_ShowDelay) and [`HideDelay`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_HideDelay) properties into account. They act immediately when invoked.
+> It's important to note that the Tooltip API methods — [`Show`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Show), [`Hide`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Hide), and [`Toggle`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Toggle) — DO NOT take the [`ShowDelay`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=ShowDelay) and [`HideDelay`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=HideDelay) properties into account. They act immediately when invoked.
 
 ### Placement
 
-The [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) can also be positioned relative to its target element with ease. All you need to do is use the [`Placement`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Placement) property along with one of the `PopoverPlacement` options.
+The [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) can also be positioned relative to its target element with ease. All you need to do is use the [`Placement`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Placement) property along with one of the `PopoverPlacement` options.
 
-If the [`Placement`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Placement) property is not set, the default value is `Bottom`, which places the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) below the target element.
+If the [`Placement`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Placement) property is not set, the default value is `Bottom`, which places the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) below the target element.
 
-Additionally, you can make the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) "sticky" using the [`Sticky`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Sticky) property, which adds a close button and keeps the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) visible until the user closes it manually - either by clicking the close button or pressing the `Esc` key. This behavior overrides the default hover behavior, preventing the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) from disappearing when the user stops hovering over the target element.
+Additionally, you can make the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) "sticky" using the [`Sticky`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Sticky) property, which adds a close button and keeps the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) visible until the user closes it manually - either by clicking the close button or pressing the `Esc` key. This behavior overrides the default hover behavior, preventing the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) from disappearing when the user stops hovering over the target element.
 
-The [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) also includes an optional arrow indicator that can be configured via the [`WithArrow`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_WithArrow) property. The arrow visually connects the tooltip to its anchor element and its position automatically adjusts based on the tooltip's [`Placement`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Placement).
+The [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) also includes an optional arrow indicator that can be configured via the [`WithArrow`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=WithArrow) property. The arrow visually connects the tooltip to its anchor element and its position automatically adjusts based on the tooltip's [`Placement`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Placement).
 
 ```razor
 <IgbButton id="target-button">Hover me</IgbButton>
@@ -190,7 +190,7 @@ The [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bla
 </IgbTooltip>
 ```
 
-In the following example, you can see a demonstration of all tooltip placement options, arrow positioning behavior, and the [`Sticky`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Sticky) property in action:
+In the following example, you can see a demonstration of all tooltip placement options, arrow positioning behavior, and the [`Sticky`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Sticky) property in action:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -249,7 +249,7 @@ In the following example, you can see a demonstration of all tooltip placement o
 
 ### Triggers
 
-By default, the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) is triggered only while hovering over the target element. However, you can change this behavior using the [`ShowTriggers`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_ShowTriggers) and [`HideTriggers`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_HideTriggers) properties, which allow you to control when the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) in different scenarios.
+By default, the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) is triggered only while hovering over the target element. However, you can change this behavior using the [`ShowTriggers`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=ShowTriggers) and [`HideTriggers`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=HideTriggers) properties, which allow you to control when the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) in different scenarios.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -408,8 +408,8 @@ By default, the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/
 
 ### Advanced Example
 
-The [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) integrates seamlessly with other components, allowing you to create advanced tooltips that contain components within them.
-In the following example, you can see how we create descriptive tooltips by using the [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html), [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html), [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html), [`IgbBadge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBadge.html), [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html), [`IgbCard`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCard.html) and [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) components.
+The [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) integrates seamlessly with other components, allowing you to create advanced tooltips that contain components within them.
+In the following example, you can see how we create descriptive tooltips by using the [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList), [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar), [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon), [`IgbBadge`](mcp:get_api_reference?platform=blazor&component=IgbBadge), [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton), [`IgbCard`](mcp:get_api_reference?platform=blazor&component=IgbCard) and [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) components.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -720,36 +720,36 @@ namespace Infragistics.Samples
 
 ### Additional Properties
 
-Apart from the properties we've already covered, the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) component offers a variety of additional properties that allow you to further configure its behavior, position, and appearance.
+Apart from the properties we've already covered, the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) component offers a variety of additional properties that allow you to further configure its behavior, position, and appearance.
 
 |Name|Type|Description|
 |--|--|--|
-| [`Open`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Open) | boolean | Determines whether the tooltip is visible. |
-| [`WithArrow`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_WithArrow) | boolean | Determines whether to render an arrow indicator for the tooltip. |
-| [`Offset`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Offset) | number | Sets the pixel distance between the tooltip and its [`Anchor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Anchor). |
+| [`Open`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Open) | boolean | Determines whether the tooltip is visible. |
+| [`WithArrow`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=WithArrow) | boolean | Determines whether to render an arrow indicator for the tooltip. |
+| [`Offset`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Offset) | number | Sets the pixel distance between the tooltip and its [`Anchor`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Anchor). |
 
 ### Methods
 
-In addition to its configurable properties, the [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) also exposes three methods that you can use:
+In addition to its configurable properties, the [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) also exposes three methods that you can use:
 
 |Name|Description|
 |--|--|
-| [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Show) | Displays the tooltip if it’s not already shown. If a target is provided, it sets the target as a transient [`Anchor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Anchor). |
-| [`Hide`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Hide) | Hides the tooltip if it’s not already hidden. |
-| [`Toggle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Toggle) |  Toggles the tooltip between the shown and hidden states. |
+| [`Show`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Show) | Displays the tooltip if it’s not already shown. If a target is provided, it sets the target as a transient [`Anchor`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Anchor). |
+| [`Hide`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Hide) | Hides the tooltip if it’s not already hidden. |
+| [`Toggle`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Toggle) |  Toggles the tooltip between the shown and hidden states. |
 
 ## Accessibility & ARIA Support
 
-The [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) is built with accessibility in mind and includes the following ARIA attributes:
+The [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) is built with accessibility in mind and includes the following ARIA attributes:
 
-- `role` - When the tooltip is in its default behavior, `role="tooltip"` is applied. If the [`Sticky`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html#IgniteUI_Blazor_Controls_IgbTooltip_Sticky) property is enabled, the role changes to `status`.
+- `role` - When the tooltip is in its default behavior, `role="tooltip"` is applied. If the [`Sticky`](mcp:get_api_reference?platform=blazor&component=IgbTooltip&member=Sticky) property is enabled, the role changes to `status`.
 - `inert` - Dynamically toggled based on visibility. When the tooltip is hidden, it becomes inert.
 - `aria-atomic` - Set to true, ensuring that the entire tooltip content is announced when it changes.
 - `aria-live` - Set to polite, indicating to screen readers that updates should be announced only when the user is idle.
 
 ## Styling
 
-The [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html) component exposes two CSS parts that you can use for styling:
+The [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip) component exposes two CSS parts that you can use for styling:
 
 |Name|Description|
 |--|--|
@@ -799,15 +799,15 @@ igc-tooltip::part(bottom) {
 
 ## API References
 
-- [`IgbTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTooltip.html)
-- [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html)
-- [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html)
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
-- [`IgbCard`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCard.html)
-- [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html)
-- [`IgbBadge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBadge.html)
-- [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html)
-- [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html)
+- [`IgbTooltip`](mcp:get_api_reference?platform=blazor&component=IgbTooltip)
+- [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar)
+- [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+- [`IgbCard`](mcp:get_api_reference?platform=blazor&component=IgbCard)
+- [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
+- [`IgbBadge`](mcp:get_api_reference?platform=blazor&component=IgbBadge)
+- [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList)
+- [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

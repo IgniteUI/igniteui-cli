@@ -126,7 +126,7 @@ Now that you have the Ignite UI for Angular Splitter module or directives import
 
 ### Orientation
 
-The splitter can be vertical or horizontal, which is defined by the [`type`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsplittercomponent.html#type) input. The default value is Vertical.
+The splitter can be vertical or horizontal, which is defined by the [`type`](mcp:get_api_reference?platform=angular&component=IgxSplitterComponent&member=type) input. The default value is Vertical.
 
 ```typescript
 public type = SplitterType.Horizontal;
@@ -145,7 +145,7 @@ public type = SplitterType.Horizontal;
 
 ### Collapsible Splitter
 
-You can make the splitter collapsible or not by showing or hiding the splitter's handle and expanders, using the [`nonCollapsible`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsplittercomponent.html#nonCollapsible) input. The default value is false, so the splitter is collapsible.
+You can make the splitter collapsible or not by showing or hiding the splitter's handle and expanders, using the [`nonCollapsible`](mcp:get_api_reference?platform=angular&component=IgxSplitterComponent&member=nonCollapsible) input. The default value is false, so the splitter is collapsible.
 
 ```html
 <igx-splitter [nonCollapsible]="true">
@@ -205,7 +205,7 @@ p {
 
 ### Configuring panes
 
-The **igxSplitterPane** component contains several input properties. You can set the initial pane size by using the [`size`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsplitterpanecomponent.html#size) input property. The [`minSize`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsplitterpanecomponent.html#minSize) and [`maxSize`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsplitterpanecomponent.html#maxSize) input properties can be used to set the minimum or maximum allowed size of the pane. Resizing beyond `minSize` and `maxSize` is not allowed.
+The **igxSplitterPane** component contains several input properties. You can set the initial pane size by using the [`size`](mcp:get_api_reference?platform=angular&component=IgxSplitterPaneComponent&member=size) input property. The [`minSize`](mcp:get_api_reference?platform=angular&component=IgxSplitterPaneComponent&member=minSize) and [`maxSize`](mcp:get_api_reference?platform=angular&component=IgxSplitterPaneComponent&member=maxSize) input properties can be used to set the minimum or maximum allowed size of the pane. Resizing beyond `minSize` and `maxSize` is not allowed.
 
 ```html
 <igx-splitter>
@@ -218,7 +218,7 @@ The **igxSplitterPane** component contains several input properties. You can set
 </igx-splitter>
 ```
 
-You can also forbid the resizing of a pane by setting its [`resizable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsplitterpanecomponent.html#resizable) input property to **false**.
+You can also forbid the resizing of a pane by setting its [`resizable`](mcp:get_api_reference?platform=angular&component=IgxSplitterPaneComponent&member=resizable) input property to **false**.
 
 ```html
 <igx-splitter>
@@ -502,9 +502,9 @@ Or you can use the universal `--ig-splitter-size` variable to target all instanc
 
 <div class="divider--half"></div>
 
-- [IgxSplitterComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsplittercomponent.html)
-- [IgxSplitterPaneComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsplitterpanecomponent.html)
-- [SplitterType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/splittertype.html)
+- [IgxSplitterComponent](mcp:get_api_reference?platform=angular&component=IgxSplitterComponent)
+- [IgxSplitterPaneComponent](mcp:get_api_reference?platform=angular&component=IgxSplitterPaneComponent)
+- [SplitterType](mcp:get_api_reference?platform=angular&component=SplitterType)
 - [IgxSplitterComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-splitter-theme)
 
 <div class="divider--half"></div>

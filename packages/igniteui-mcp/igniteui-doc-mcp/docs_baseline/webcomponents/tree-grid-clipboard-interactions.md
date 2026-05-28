@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Tree Grid Clipboard Overview
 
-Copy to clipboard operations are now available in the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html). This functionality provides a fast, easy and customizable way to copy data of the Web Components [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) through the current multi cell data select. System Clipboard behavior gives the user ability to copy data from the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) into Excel or other external programs.
+Copy to clipboard operations are now available in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). This functionality provides a fast, easy and customizable way to copy data of the Web Components [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) through the current multi cell data select. System Clipboard behavior gives the user ability to copy data from the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) into Excel or other external programs.
 
 ## Web Components Tree Grid Clipboard Example
 
@@ -120,7 +120,7 @@ Copy behavior is working with the default interaction defined by the browser and
 
 ## API Usage
 
-We expose [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#clipboardOptions) property, which handles the following options:
+We expose [`clipboardOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=clipboardOptions) property, which handles the following options:
 
 - `Enabled` Enables/disables copying of selected cells.
 - `CopyHeaders` Include the associated headers when copying.
@@ -130,7 +130,7 @@ We expose [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-w
 > [!Note]
 > Excel can automatically detect text that is separated by tabs (tab-delimited `/t`) and properly paste the data into separate columns. When the paste format doesn't work, and everything you paste appears in a single column, then Excel's delimiter is set to another character, or your text is using spaces instead of tabs.
 
-- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#clipboardOptions).
+- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=clipboardOptions).
 
 ## Additional Resources
 

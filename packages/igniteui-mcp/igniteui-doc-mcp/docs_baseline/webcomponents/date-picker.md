@@ -14,7 +14,7 @@ The Ignite UI for Web Components Date Picker is a feature rich component used fo
 The Ignite UI for Web Components Date Picker Component lets users pick a single date through a month-view calendar dropdown or editable input field. The Web Components Date Picker also supports a dialog mode for selection from the calendar only, locale-aware and customizable date formatting and validation integration.
 
 > [!NOTE]
-> The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) is a brand new component from Ignite UI for Web Components version 5.0.0. The old [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) prior to this version has been renamed to `XDatePicker` and its respective documentation page can be found under "Deprecated Components"
+> The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) is a brand new component from Ignite UI for Web Components version 5.0.0. The old [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) prior to this version has been renamed to `XDatePicker` and its respective documentation page can be found under "Deprecated Components"
 
 ## Web Components Date Picker Example
 
@@ -33,7 +33,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcDatePickerComponent } from 'igniteui-webcomponents';
@@ -48,7 +48,7 @@ For a complete introduction to the Ignite UI for Web Components, read the [**Get
 
 ### Display Date Picker
 
-To instantiate a [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) in its default `dropdown` state, use the following code:
+To instantiate a [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) in its default `dropdown` state, use the following code:
 
 ```html
 <igc-date-picker>
@@ -58,7 +58,7 @@ To instantiate a [`IgcDatePickerComponent`](https://www.infragistics.com/product
 
 ### Options
 
-The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) can be bound to a `date` or a `string`.
+The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) can be bound to a `date` or a `string`.
 
 ```typescript
 const DatePicker = document.querySelector('igc-date-picker') as IgcDatePickerComponent;
@@ -108,7 +108,7 @@ The picker's action buttons can be templated using the `actions` slot:
 
 ### Keyboard Navigation
 
-The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different DateParts among others without having to touch the mouse.
+The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different DateParts among others without having to touch the mouse.
 
 |Keys|Description|
 |----|-----------|
@@ -127,7 +127,7 @@ The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-w
 
 ### Dialog Mode
 
-The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) also supports a `dialog` mode:
+The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) also supports a `dialog` mode:
 
 ```html
 <igc-date-picker id="DatePicker" mode="dialog">
@@ -141,13 +141,13 @@ The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-w
 
 ### Display and input format
 
-[`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#inputFormat) and [`displayFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#displayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#inputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
+[`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=inputFormat) and [`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=displayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=inputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
 
 A good thing to note is that the Date Picker Component will always add a leading zero on the `date` and `month` portions if they were provided in a format that does not have it, e.g. `d/M/yy` becomes `dd/MM/yy`. This applies only during editing.
 
-[`displayFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#displayFormat) is used to format the picker's input when it is not focused. If no [`displayFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#displayFormat) is provided, the picker will use the [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#inputFormat) as its [`displayFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#displayFormat).
+[`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=displayFormat) is used to format the picker's input when it is not focused. If no [`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=displayFormat) is provided, the picker will use the [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=inputFormat) as its [`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=displayFormat).
 
-More information about these can be found in the [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) format section.
+More information about these can be found in the [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) format section.
 
 ```css
 /* shared styles are loaded from: */
@@ -156,7 +156,7 @@ More information about these can be found in the [`IgcDateTimeInputComponent`](h
 
 ### Increment and decrement
 
-The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) exposes [`stepUp`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#stepUp) and [`stepDown`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#stepDown) methods. Both of which come from the [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) and can be used for incrementing and decrementing a specific `DatePart` of the currently set date.
+The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) exposes [`stepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=stepUp) and [`stepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=stepDown) methods. Both of which come from the [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) and can be used for incrementing and decrementing a specific `DatePart` of the currently set date.
 
 ```html
 <igc-date-picker id="DatePicker">
@@ -167,7 +167,7 @@ The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-w
 
 ### In Forms
 
-The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) could be used in a form element, the component's [`min`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#max) properties act as form validators.
+The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) could be used in a form element, the component's [`min`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=min) and [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=max) properties act as form validators.
 
 In forms, we can handle the `igcChange` event of the component and update the value of the label.
 
@@ -178,13 +178,13 @@ In forms, we can handle the `igcChange` event of the component and update the va
 
 ### Calendar Specific settings
 
-The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) can modify some of the calendar's settings via the properties that the Date Picker exposes. Some of these include [`visibleMonths`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#visibleMonths) which allows more than one calendar to be displayed when the picker expands, [`weekStart`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#weekStart) which determines the starting day of the week, [`showWeekNumbers`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#showWeekNumbers) which shows the number for each week in the year and more.
+The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) can modify some of the calendar's settings via the properties that the Date Picker exposes. Some of these include [`visibleMonths`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=visibleMonths) which allows more than one calendar to be displayed when the picker expands, [`weekStart`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=weekStart) which determines the starting day of the week, [`showWeekNumbers`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=showWeekNumbers) which shows the number for each week in the year and more.
 
 ## Internationalization
 
-The localization of the [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) can be controlled through its [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#locale) input.
+The localization of the [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) can be controlled through its [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=locale) input.
 
-Here is how a [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) with Japanese locale definition would look like:
+Here is how a [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) with Japanese locale definition would look like:
 
 ```html
 <igc-date-picker locale="ja-JP">
@@ -193,7 +193,7 @@ Here is how a [`IgcDatePickerComponent`](https://www.infragistics.com/products/i
 
 ## Styling
 
-The [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html) component derives from the [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) and [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html) component, so it exposes all available CSS parts. See [Input Styling](../inputs/input.md#styling) and [Calendar Styling](calendar.md#styling) for reference.
+The [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) component derives from the [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) and [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component, so it exposes all available CSS parts. See [Input Styling](../inputs/input.md#styling) and [Calendar Styling](calendar.md#styling) for reference.
 
 ```css
 igc-date-picker::part(header) {
@@ -265,9 +265,9 @@ igc-date-picker::part(year-inner selected) {
 
 ## API References
 
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html)
-- [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html)
-- [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html)
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
+- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)
+- [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

@@ -155,7 +155,7 @@ CODE INTEGRITY RULES:
 WHAT TO KEEP:
 
 1. **All markdown headers** (##, ###, ####) — preserve document structure. Do not change heading levels (keep ## as ##, ### as ###). Do not merge or combine separate headings into one.
-2. **API references** — property names, types, descriptions, method signatures. These are critical.
+2. **API references** — property names, types, descriptions, method signatures. These are critical. Any link URL beginning with \`mcp:get_api_reference?\` must be preserved verbatim, character for character — do not edit, decode, or re-format these URIs.
 3. **At least one code example per section that had one in the original** — must include the component usage in Razor or C#. This applies to every section including variant/sub-type sections (e.g. Step Area Chart, Stacked Area Chart, Radial Area Chart must each keep their own example). If the original section had a code example, the compressed version must keep at least the key Razor snippet showing the component/parameter type — even a 3-5 line snippet is fine. Do NOT replace a code example with only a text description like "follows the same pattern" or "see external examples". If a section has a complex/advanced example (e.g. showing multiple components, event handling, template references), trim it by reducing repetitive siblings or data, but preserve the structural pattern. **Do NOT merge separate sections into a combined section** — if the original has separate ## or ### sections for different variants, keep them as separate sections in the output.
 4. **Notes, Warnings, Important callouts**
 5. **Key conceptual explanations** that aren't obvious from the code

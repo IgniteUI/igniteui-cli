@@ -189,21 +189,21 @@ export class HierarchicalGridCellSelectionComponent implements OnInit {
 ```
 <div class="divider--half"></div>
 ## Angular Grid Selection Options
-IgniteUI for Angular Hierarchical Grid component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the Hierarchical Grid. In order to change/enable selection mode you can use [`rowSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowSelection), [`cellSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#cellSelection) or [`selectable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#selectable) properties.
+IgniteUI for Angular Hierarchical Grid component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the Hierarchical Grid. In order to change/enable selection mode you can use [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection), [`cellSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellSelection) or [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable) properties.
 ### Angular Row Selection
-Property [`rowSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowSelection) enables you to specify the following options:
+Property [`rowSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowSelection) enables you to specify the following options:
 - none - Row selection would be disabled for the Hierarchical Grid
 - single - Selection of only one row within the Hierarchical Grid would be available
 - multiple - Multi-row selection would be available by using the `Row selectors`, with a key combination like <kbd>ctrl</kbd> + <kbd>click</kbd>, or by pressing the <kbd>space key</kbd> once a cell is focused 
 > Go to [Row selection topic](row-selection.md) for more information.
 ### Angular Cell Selection
-Property [`cellSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#cellSelection) enables you to specify the following options:
+Property [`cellSelection`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellSelection) enables you to specify the following options:
 - none - Cell selection would be disabled for the Hierarchical Grid
 - single - Selection of only one cell within the Hierarchical Grid would be available.
 - multiple - Currently, this is the default state of the selection in the Hierarchical Grid. Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
 > Go to [Cell selection topic](cell-selection.md) for more information.
 ### Angular Column Selection
-The [`selectable` property](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#selectable) enables you to specify the following options for each **column**:
+The [`selectable` property](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable) enables you to specify the following options for each **column**:
 - false - the corresponding column selection will be disabled for the Hierarchical Grid
 - true - the corresponding column selection will be enabled for the Hierarchical Grid
 - This lead to the following three variations:
@@ -223,9 +223,9 @@ The [`selectable` property](https://www.infragistics.com/products/ignite-ui-angu
   - Row Editing
   - Row Pinning
 ## API References
-- [IgxHierarchicalGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
-_[IgxGridRow API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridrow.html)
-- [IgxGridCell API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
+- [IgxHierarchicalGridComponent API](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
+_[IgxGridRow API](mcp:get_api_reference?platform=angular&component=IgxGridRow)
+- [IgxGridCell API](mcp:get_api_reference?platform=angular&component=IgxGridCell)
 - [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

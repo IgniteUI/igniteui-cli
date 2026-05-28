@@ -116,7 +116,7 @@ Now that you have the Ignite UI for Angular Input Group module or directives imp
 
 ### Label & Input
 
-You can read about the [`igxLabel`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlabeldirective.html) and [`igxInput`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputdirective.html) directives as well as their validation, data binding and API in the [Label & Input documentation](label-input.md).
+You can read about the [`igxLabel`](mcp:get_api_reference?platform=angular&component=IgxLabelDirective) and [`igxInput`](mcp:get_api_reference?platform=angular&component=IgxInputDirective) directives as well as their validation, data binding and API in the [Label & Input documentation](label-input.md).
 
 ### Prefix & Suffix
 
@@ -168,7 +168,7 @@ export class InputGroupSample3Component extends BaseInputGroupSampleComponent { 
 
 ### Hints
 
-The [`igx-hint`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhintdirective.html) directive provides a helper text placed below the input. It can be at the beginning or at the end of the input depending on the value of the [`position`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhintdirective.html#position) property. Let's add a hint to our phone input:
+The [`igx-hint`](mcp:get_api_reference?platform=angular&component=IgxHintDirective) directive provides a helper text placed below the input. It can be at the beginning or at the end of the input depending on the value of the [`position`](mcp:get_api_reference?platform=angular&component=IgxHintDirective&member=position) property. Let's add a hint to our phone input:
 
 ```html
 <igx-input-group>
@@ -223,7 +223,7 @@ export class InputGroupSample4Component extends BaseInputGroupSampleComponent { 
 
 ### Input Types & Input Group Type Token
 
-The input group styles can be altered by using the [`type`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html#type) property of the [`igxInputGroup`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html) component. The input group component supports the following types: `line` (default if type is not specified), `border`, `box`, and `search`. The `line`, `border`, and `box` types are made specifically for the `Material Design` themes. Setting those types with other themes will not have any effect on how the input group looks.
+The input group styles can be altered by using the [`type`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent&member=type) property of the [`igxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent) component. The input group component supports the following types: `line` (default if type is not specified), `border`, `box`, and `search`. The `line`, `border`, and `box` types are made specifically for the `Material Design` themes. Setting those types with other themes will not have any effect on how the input group looks.
 An example of setting a specific type declaratively:
 
 ```html
@@ -238,7 +238,7 @@ providers: [{provide: IGX_input-group_TYPE, useValue: 'box' }]
 ```
 
 >[!NOTE]
->The [`type`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html#type) property has precedence over a [IGX_INPUT_GROUP_TYPE](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#igx_input_group_type), thus a token value can be overridden on a component level if the type property is set explicitly.
+>The [`type`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent&member=type) property has precedence over a [IGX_INPUT_GROUP_TYPE](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#igx_input_group_type), thus a token value can be overridden on a component level if the type property is set explicitly.
 >Most of the `igniteui-angular` form controls use input-group component internally, or allow for a custom template. Setting a global token will affect these components as well.
 
 Ignite UI for Angular also provides styling for the input of `type="file"` and it supports all the input group types and themes, just add this to your template:
@@ -345,7 +345,7 @@ h6 {
 
 ### Input Group Theme
 
-The input group component supports several themes - `material`, `fluent`, `bootstrap`, and `indigo-design`; The [`theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html#theme) is automatically set during component initialization and is inferred from the currently used stylesheet. If you plan to support several themes in your application with runtime switching, you can explicitly set the theme using the `theme` Input property.
+The input group component supports several themes - `material`, `fluent`, `bootstrap`, and `indigo-design`; The [`theme`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent&member=theme) is automatically set during component initialization and is inferred from the currently used stylesheet. If you plan to support several themes in your application with runtime switching, you can explicitly set the theme using the `theme` Input property.
 
 ```html
 <igx-input-group theme="fluent">...</igx-input-group>
@@ -497,7 +497,7 @@ Template-driven form validation is achieved by adding validation attributes, i.e
 </form>
 ```
 
-The `required` attribute adds an asterisk next to the label, indicating that this field must be filled in. Furthermore, when the `input` has additional validation applied to it, such as `email` and `minlength`, this could allow the developer to notify the end user for additional requirements via the [`igx-hint`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhintdirective.html) directive.
+The `required` attribute adds an asterisk next to the label, indicating that this field must be filled in. Furthermore, when the `input` has additional validation applied to it, such as `email` and `minlength`, this could allow the developer to notify the end user for additional requirements via the [`igx-hint`](mcp:get_api_reference?platform=angular&component=IgxHintDirective) directive.
 
 The following example uses two-way data binding and demonstrates how to inspect the control's state by exporting the `ngModel` to a local variable.
 
@@ -538,7 +538,7 @@ The following example demonstrates how to inspect the form's state by exporting 
 </form>
 ```
 
-The result from the above configurations could be seen in the below sample. Start typing into the Email and Password fields and you will notice that the [`igx-hint`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhintdirective.html) is shown if the entered values are invalid. The sample also demonstrates how to toggle the password's visibility by using the [`igx-icon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconcomponent.html) and the [`igx-suffix`](#prefix--suffix) directive.
+The result from the above configurations could be seen in the below sample. Start typing into the Email and Password fields and you will notice that the [`igx-hint`](mcp:get_api_reference?platform=angular&component=IgxHintDirective) is shown if the entered values are invalid. The sample also demonstrates how to toggle the password's visibility by using the [`igx-icon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent) and the [`igx-suffix`](#prefix--suffix) directive.
 
 ```typescript
 import { Component, ViewChild } from '@angular/core';
@@ -678,7 +678,7 @@ constructor(fb: FormBuilder) {
 </form>
 ```
 
-Similar to the template-driven form sample, when having additional validation like `email` and `minlength`, an [`igx-hint`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhintdirective.html) directive could be used to notify the end user if the validation has failed.
+Similar to the template-driven form sample, when having additional validation like `email` and `minlength`, an [`igx-hint`](mcp:get_api_reference?platform=angular&component=IgxHintDirective) directive could be used to notify the end user if the validation has failed.
 
 The following example demonstrates how to access the control through a `get` method and inspect its state. It also demonstrates how to enable/disable the submit button by inspecting the state of the `FormGroup`.
 
@@ -711,7 +711,7 @@ public get password() {
 </form>
 ```
 
-The result from the above configurations could be seen in the below sample. Similar to the template-driven form sample, it also demonstrates how to toggle the password's visibility by using the [`igx-icon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconcomponent.html) and the [`igx-suffix`](#prefix--suffix) directive.
+The result from the above configurations could be seen in the below sample. Similar to the template-driven form sample, it also demonstrates how to toggle the password's visibility by using the [`igx-icon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent) and the [`igx-suffix`](#prefix--suffix) directive.
 
 ```typescript
 import { Component, inject } from '@angular/core';
@@ -1617,10 +1617,10 @@ At the end your inputs should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxInputDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputdirective.html)
-- [IgxHintDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhintdirective.html)
+- [IgxInputDirective](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
+- [IgxHintDirective](mcp:get_api_reference?platform=angular&component=IgxHintDirective)
 - [IgxInputGroup Types](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#IgxInputGroupType)
-- [IgxInputGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html)
+- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
 - [IgxInputGroupComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme)
 
 ## Theming Dependencies

@@ -112,7 +112,7 @@ Now that you have the Ignite UI for Angular Button module or directive imported,
 
 ### Flat Button
 
-Use the [`igxButton`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbuttondirective.html) directive to add a simple flat button in your component template. Note that if you do not choose a type, by default it will be set to `flat`.
+Use the [`igxButton`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective) directive to add a simple flat button in your component template. Note that if you do not choose a type, by default it will be set to `flat`.
 
 ```html
 <button igxButton="flat">Flat</button>
@@ -205,7 +205,7 @@ The `disabled` property can be used to make a button unclickable:
 
 ### Ripple
 
-The [`igxRipple`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxrippledirective.html) directive adds a ripple effect to your buttons or other specified elements. You can easily change the default ripple color, position and duration, using its properties:
+The [`igxRipple`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective) directive adds a ripple effect to your buttons or other specified elements. You can easily change the default ripple color, position and duration, using its properties:
 
 ```html
 <button igxButton="contained" igxRipple="white" [igxRippleCentered]="true" [igxRippleDuration]="2000">
@@ -233,7 +233,7 @@ We can also use the `igxButton` directive to turn elements like `span` and `div`
 
 ## Size
 
-We can allow the user to choose the size of the `igxButton` by using the `--ig-size` custom CSS property. To do this, first we have to import the `IgxButtonGroupModule`, and then use the [`igxButtonGroup`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbuttongroupcomponent.html) component to display size values. This way whenever one gets selected, we will update the **--ig-size** CSS property.
+We can allow the user to choose the size of the `igxButton` by using the `--ig-size` custom CSS property. To do this, first we have to import the `IgxButtonGroupModule`, and then use the [`igxButtonGroup`](mcp:get_api_reference?platform=angular&component=IgxButtonGroupComponent) component to display size values. This way whenever one gets selected, we will update the **--ig-size** CSS property.
 
 ```typescript
 // app.module.ts
@@ -1946,7 +1946,7 @@ Or you can use the universal `--ig-button-size` variable to target all instances
 
 ```html
 <div class="my-app">
-  <button igxButton="contained">Button</button>
+  <button igxButton="contained"></button>
 </div>
 ```
 
@@ -1972,11 +1972,11 @@ Learn more about it in the [Size](display-density.md) article.
 
 <div class="divider--half"></div>
 
-- [IgxButtonDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbuttondirective.html)
+- [IgxButtonDirective](mcp:get_api_reference?platform=angular&component=IgxButtonDirective)
 - [IgxButton Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-button-theme)
-- [IgxRippleDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxrippledirective.html)
-- [IgxIconButtonDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconbuttondirective.html)
-- [IgxButtonGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbuttongroupcomponent.html)
+- [IgxRippleDirective](mcp:get_api_reference?platform=angular&component=IgxRippleDirective)
+- [IgxIconButtonDirective](mcp:get_api_reference?platform=angular&component=IgxIconButtonDirective)
+- [IgxButtonGroupComponent](mcp:get_api_reference?platform=angular&component=IgxButtonGroupComponent)
 
 ## Additional Resources
 

@@ -104,8 +104,8 @@ To make the checkbox in the demo, add the following code inside the component te
 
 ### Checkbox properties
 
-Let's enhance the code above by binding the checkbox properties to some data. Say, we have an array of task objects, each having two properties: description and done. You can bind the checkbox component [`checked`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcheckboxcomponent.html#checked) property to the underlying task object done property. Analogically, you can bind the [`value`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcheckboxcomponent.html#value) property to description.
-Optionally, you can also bind the [`change`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcheckboxcomponent.html#change) event and add some custom logic in the provided event handler method.
+Let's enhance the code above by binding the checkbox properties to some data. Say, we have an array of task objects, each having two properties: description and done. You can bind the checkbox component [`checked`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent&member=checked) property to the underlying task object done property. Analogically, you can bind the [`value`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent&member=value) property to description.
+Optionally, you can also bind the [`change`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent&member=change) event and add some custom logic in the provided event handler method.
 
 ```typescript
 // tasks.component.ts
@@ -187,7 +187,7 @@ igx-checkbox {
 
 ### Label Positioning
 
-You can position the label using the checkbox's [`labelPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcheckboxcomponent.html#labelPosition) property:
+You can position the label using the checkbox's [`labelPosition`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent&member=labelPosition) property:
 
 ```html
 <igx-checkbox labelPosition="before"></igx-checkbox>
@@ -197,7 +197,7 @@ If the `labelPosition` is not set, the label will be positioned after the checkb
 
 ### Indeterminate Checkbox in Angular
 
-In addition to the checked and unchecked states, there is a third state a checkbox can be in: **indeterminate**. In this state the checkbox is neither checked, nor unchecked. This is set using the checkbox's [`indeterminate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcheckboxcomponent.html#indeterminate) property:
+In addition to the checked and unchecked states, there is a third state a checkbox can be in: **indeterminate**. In this state the checkbox is neither checked, nor unchecked. This is set using the checkbox's [`indeterminate`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent&member=indeterminate) property:
 
 ```html
 <igx-checkbox [indeterminate]="true"></igx-checkbox>
@@ -585,9 +585,9 @@ At the end your checkbox should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxCheckboxComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcheckboxcomponent.html)
+- [IgxCheckboxComponent](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent)
 - [IgxCheckboxComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-checkbox-theme)
-- [LabelPosition](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/labelposition.html)
+- [LabelPosition](mcp:get_api_reference?platform=angular&component=LabelPosition)
 
 ## Theming Dependencies
 

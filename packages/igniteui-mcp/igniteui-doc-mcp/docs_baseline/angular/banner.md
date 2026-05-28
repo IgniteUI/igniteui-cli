@@ -118,7 +118,7 @@ Now that you have the Ignite UI for Angular Banner module or directives imported
 
 ### Show Banner
 
-In order to display the banner component, use its [`open()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbannercomponent.html#open) method and call it on a button click. The banner appears relative to where the element was inserted in the page template, moving all other content. It typically shows some non-intrusive content that requires minimal user interaction to be dismissed.
+In order to display the banner component, use its [`open()`](mcp:get_api_reference?platform=angular&component=IgxBannerComponent&member=open) method and call it on a button click. The banner appears relative to where the element was inserted in the page template, moving all other content. It typically shows some non-intrusive content that requires minimal user interaction to be dismissed.
 
 ```html
 <!--banner.component.html-->
@@ -139,7 +139,7 @@ In order to display the banner component, use its [`open()`](https://www.infragi
 
 ## Examples
 
-The [`IgxBannerComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbannercomponent.html) allows templating of its content while still sticking as closely as possible to the material design banner guidelines.
+The [`IgxBannerComponent`](mcp:get_api_reference?platform=angular&component=IgxBannerComponent) allows templating of its content while still sticking as closely as possible to the material design banner guidelines.
 
 ### Changing the banner message
 
@@ -183,7 +183,7 @@ If you want to use an `igx-icon` in your banner message, wrap it in a `span` tag
 
 ### Changing the banner button
 
-The `IgxBannerModule` exposes a directive for templating the banner buttons - [`IgxBannerActionsDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbanneractionsdirective.html). This directive allows you to override the default banner button (`Dismiss`) and add user-defined custom actions.
+The `IgxBannerModule` exposes a directive for templating the banner buttons - [`IgxBannerActionsDirective`](mcp:get_api_reference?platform=angular&component=IgxBannerActionsDirective). This directive allows you to override the default banner button (`Dismiss`) and add user-defined custom actions.
 
 ```html
 <!--banner.component.html-->
@@ -254,7 +254,7 @@ export class BannerSample2Component implements OnInit {
 
 ### Applying custom animations
 
-The banner component comes with the [`animationSettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbannercomponent.html#animationSettings) property that allows applying custom opening and closing animations. Developers can choose between self-defined animations, and those from our [`Animation suite`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/animations). The default ones, used by the banner, are `growVerIn` for entering and `growVerOut` for exiting.
+The banner component comes with the [`animationSettings`](mcp:get_api_reference?platform=angular&component=IgxBannerComponent&member=animationSettings) property that allows applying custom opening and closing animations. Developers can choose between self-defined animations, and those from our [`Animation suite`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/animations). The default ones, used by the banner, are `growVerIn` for entering and `growVerOut` for exiting.
 
 Let's change the animations that our banner uses, so that it slides in and out:
 
@@ -343,7 +343,7 @@ export class BannerSample3Component implements OnInit {
 
 ### Binding to events
 
-The banner component emits events when changing its state - [`opening`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbannercomponent.html#opening) and [`opened`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbannercomponent.html#opened) are called when the banner is shown (before and after, resp.), while [`closing`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbannercomponent.html#closing) and [`closed`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbannercomponent.html#closed) are emitted when the banner is closed. The _ing_ events (`opening`, `closing`) are cancelable - they use the `ICancelEventArgs` interface and the emitted object has a `cancel` property. If the `cancel` property is set to true, the corresponding end action and event will not be triggered - e.g. if we cancel `opening`, the banner's `open` method will not finish and the banner will not be shown.
+The banner component emits events when changing its state - [`opening`](mcp:get_api_reference?platform=angular&component=IgxBannerComponent&member=opening) and [`opened`](mcp:get_api_reference?platform=angular&component=IgxBannerComponent&member=opened) are called when the banner is shown (before and after, resp.), while [`closing`](mcp:get_api_reference?platform=angular&component=IgxBannerComponent&member=closing) and [`closed`](mcp:get_api_reference?platform=angular&component=IgxBannerComponent&member=closed) are emitted when the banner is closed. The _ing_ events (`opening`, `closing`) are cancelable - they use the `ICancelEventArgs` interface and the emitted object has a `cancel` property. If the `cancel` property is set to true, the corresponding end action and event will not be triggered - e.g. if we cancel `opening`, the banner's `open` method will not finish and the banner will not be shown.
 
 To cancel an event, bind it to the emitted object and set its `cancel` property to `true`.
 
@@ -640,16 +640,16 @@ igx-banner {
 
 <div class="divider--half"></div>
 
-- [IgxBannerComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbannercomponent.html)
-- [IgxBannerActionsDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbanneractionsdirective.html)
+- [IgxBannerComponent](mcp:get_api_reference?platform=angular&component=IgxBannerComponent)
+- [IgxBannerActionsDirective](mcp:get_api_reference?platform=angular&component=IgxBannerActionsDirective)
 - [IgxBannerComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-banner-theme)
 
 Additional components and/or directives with relative APIs that were used:
 
-- [IgxCardComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcardcomponent.html)
-- [IgxIconComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconcomponent.html)
-- [IgxNavbarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbarcomponent.html)
-- [IgxToastComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoastcomponent.html)
+- [IgxCardComponent](mcp:get_api_reference?platform=angular&component=IgxCardComponent)
+- [IgxIconComponent](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
+- [IgxNavbarComponent](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent)
+- [IgxToastComponent](mcp:get_api_reference?platform=angular&component=IgxToastComponent)
 
 ## Theming Dependencies
 

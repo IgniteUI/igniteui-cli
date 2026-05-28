@@ -54,7 +54,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrDivider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider), its necessary CSS, and register its module, like so:
 
 ```tsx
 import { IgrDividerModule, IgrDivider } from 'igniteui-react';
@@ -63,11 +63,11 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 IgrDividerModule.register();
 ```
 
-Before using the [`IgrDivider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html), you need to register it as follows:
+Before using the [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The [`IgrDivider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgrDivider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html) is as simple as:
+The [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider) is as simple as:
 
 ```tsx
 <IgrDivider></IgrDivider>
@@ -77,7 +77,7 @@ The [`IgrDivider`](https://www.infragistics.com/products/ignite-ui-react/docs/ty
 
 ### Vertical Divider
 
-If the [`vertical`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html#vertical) attribute is set the direction of the divider would be changed from horizontal to vertical.
+If the [`vertical`](mcp:get_api_reference?platform=react&component=IgrDivider&member=vertical) attribute is set the direction of the divider would be changed from horizontal to vertical.
 
 ```tsx
 <IgrDivider vertical></IgrDivider>
@@ -142,7 +142,7 @@ root.render(<DividerVertical />);
 
 ### Type
 
-The [`type`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html#type) attribute determines whether to render a `solid` or a `dashed` divider line. The default value is `solid`.
+The [`type`](mcp:get_api_reference?platform=react&component=IgrDivider&member=type) attribute determines whether to render a `solid` or a `dashed` divider line. The default value is `solid`.
 
 ```tsx
 <IgrDivider type="dashed"></IgrDivider>
@@ -183,7 +183,7 @@ root.render(<DividerDashed/>);
 
 ### Inset Divider
 
-The [`IgrDivider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html) can be set in on both sides. To `inset` the divider, set the [`middle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html#middle) attribute to true in combination with the `--inset` css variable. This will shrink the divider line from both sides. The default value of the [`middle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html#middle) attribute is false.
+The [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider) can be set in on both sides. To `inset` the divider, set the [`middle`](mcp:get_api_reference?platform=react&component=IgrDivider&member=middle) attribute to true in combination with the `--inset` css variable. This will shrink the divider line from both sides. The default value of the [`middle`](mcp:get_api_reference?platform=react&component=IgrDivider&member=middle) attribute is false.
 
 ```css
 /* DividerStyles.css */
@@ -272,7 +272,7 @@ root.render(<DividerMiddle />);
 
 ### Using Divider Inside Select Component
 
-The following sample illustrates how the [`IgrDivider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html) can be integrated within the [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) in order to distinguish two groups of items.
+The following sample illustrates how the [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider) can be integrated within the [`IgrSelect`](mcp:get_api_reference?platform=react&component=IgrSelect) in order to distinguish two groups of items.
 
 ```tsx
 <IgrSelect>
@@ -341,7 +341,7 @@ The `--color` css variable sets the color of the divider.
 
 ## API References
 
-- [`IgrDivider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html)
+- [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider)
 
 ## Additional Resources
 

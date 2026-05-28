@@ -15,7 +15,7 @@ _premium: true
 
 <!-- ComponentStart: TreeGrid -->
 
-The [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) provides a convenient way to perform data manipulations through inline row adding and a powerful API for Blazor CRUD operations. Add an [`IgbActionStrip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbActionStrip.html) component with editing actions enabled in the grid's template, hover a row and use the provided button, press <kbd>ALT</kbd> + <kbd>+</kbd> to spawn the row adding UI or <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>+</kbd> to spawn the UI for adding a child for the selected row.
+The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) provides a convenient way to perform data manipulations through inline row adding and a powerful API for Blazor CRUD operations. Add an [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) component with editing actions enabled in the grid's template, hover a row and use the provided button, press <kbd>ALT</kbd> + <kbd>+</kbd> to spawn the row adding UI or <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>+</kbd> to spawn the UI for adding a child for the selected row.
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -142,7 +142,7 @@ public class EmployeesNestedTreeData
 
 ## Row Adding Usage
 
-Then define a [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) with bound data source, [`RowEditable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_RowEditable) set to true and an [`IgbActionStrip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbActionStrip.html) component with editing actions enabled. The `AddRow` input controls the visibility of the button that spawns the row adding UI.
+Then define a [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) with bound data source, [`RowEditable`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowEditable) set to true and an [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) component with editing actions enabled. The `AddRow` input controls the visibility of the button that spawns the row adding UI.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -169,20 +169,20 @@ Then define a [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/I
 > Setting primary key is mandatory for row adding operations.
 
 > **Note**:
-> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`Editable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Editable) column's input to `false`.
+> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`Editable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Editable) column's input to `false`.
 
 <!-- ComponentStart: TreeGrid -->
 
 > **Note**:
-> The [`IgbGridEditingActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridEditingActions.html) inputs controlling the visibility of the add row and add child buttons may use the action strip context (which is of type [`IgbRowType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowType.html) to fine tune which records the buttons show for.
+> The [`IgbGridEditingActions`](mcp:get_api_reference?platform=blazor&component=IgbGridEditingActions) inputs controlling the visibility of the add row and add child buttons may use the action strip context (which is of type [`IgbRowType`](mcp:get_api_reference?platform=blazor&component=IgbRowType) to fine tune which records the buttons show for.
 
 <!-- ComponentEnd: TreeGrid -->
 
-The internal `BaseTransactionService` is automatically provided for [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html). It holds pending cell changes until the row state is submitted or cancelled.
+The internal `BaseTransactionService` is automatically provided for [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid). It holds pending cell changes until the row state is submitted or cancelled.
 
 ## Start Row Adding Programmatically
 
-[`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) allows to programmatically spawn the add row UI by using two different public methods. One that accepts a row ID for specifying the row under which the UI should spawn and another that works by index. You can use these methods to spawn the UI anywhere within the current data view. Changing the page or specifying a row that is e.g. filtered out is not supported.
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) allows to programmatically spawn the add row UI by using two different public methods. One that accepts a row ID for specifying the row under which the UI should spawn and another that works by index. You can use these methods to spawn the UI anywhere within the current data view. Changing the page or specifying a row that is e.g. filtered out is not supported.
 
 ```razor
 @code {
@@ -191,7 +191,7 @@ The internal `BaseTransactionService` is automatically provided for [`IgbTreeGri
 }
 ```
 
-The [`BeginAddRowByIndex`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_BeginAddRowByIndex) method works similarly but the row to use as context is specified by index.
+The [`BeginAddRowByIndex`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=BeginAddRowByIndex) method works similarly but the row to use as context is specified by index.
 
 ```razor
 @code {
@@ -206,7 +206,7 @@ The [`BeginAddRowByIndex`](https://www.infragistics.com/blazor/docs/api/api/Igni
 
 - The default position of row add UI is below the row that the end user clicked the add row button for.
 
-- The [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) scrolls to fully display the add row UI automatically.
+- The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) scrolls to fully display the add row UI automatically.
 
 - The overlay for the add row UI maintains its position during scrolling.
 
@@ -214,7 +214,7 @@ The [`BeginAddRowByIndex`](https://www.infragistics.com/blazor/docs/api/api/Igni
 
 The add row UI has the same behavior as the row editing one as they are designed to provide a consistent editing experience to end users. Please, refer to the [Tree Grid Row Editing](row-editing.md) topic for more information.
 
-After a new row is added through the row adding UI, its position and/or visibility is determined by the sorting, filtering and grouping state of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html). In a [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) that does not have any of these states applied, it appears as the last record. A snackbar is briefly displayed containing a button the end user may use to scroll the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) to its position if it is not in view.
+After a new row is added through the row adding UI, its position and/or visibility is determined by the sorting, filtering and grouping state of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid). In a [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) that does not have any of these states applied, it appears as the last record. A snackbar is briefly displayed containing a button the end user may use to scroll the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) to its position if it is not in view.
 
 ## Keyboard Navigation
 
@@ -232,7 +232,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 ## Feature Integration
 
-- Any row adding operation will stop if the data view of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) gets modified. Any changes made by the end user are submitted. Operations that change the data view include but are not limited to sorting, grouping, filtering, paging, etc.
+- Any row adding operation will stop if the data view of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) gets modified. Any changes made by the end user are submitted. Operations that change the data view include but are not limited to sorting, grouping, filtering, paging, etc.
 
 - Summaries are updated after the row add operation finishes. The same is valid for the other data view dependant features such as sorting, filtering, etc.
 
@@ -240,7 +240,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 ### Customizing Text
 
-Customizing the text of the row adding overlay is possible using the [`RowAddTextTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_RowAddTextTemplate).
+Customizing the text of the row adding overlay is possible using the [`RowAddTextTemplate`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowAddTextTemplate).
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -293,7 +293,7 @@ igRegisterScript("rowEditActionsTemplate", (endRowEdit) => {
 
 ## Styling
 
-The row adding UI comprises the buttons in the [`IgbActionStrip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbActionStrip.html) editing actions, the editing editors and overlay, as well as the snackbar which allows end users to scroll to the newly added row. To style these components you may refer to these comprehensive guides in their respective topics:
+The row adding UI comprises the buttons in the [`IgbActionStrip`](mcp:get_api_reference?platform=blazor&component=IgbActionStrip) editing actions, the editing editors and overlay, as well as the snackbar which allows end users to scroll to the newly added row. To style these components you may refer to these comprehensive guides in their respective topics:
 
 - [Tree Grid Row Editing](row-editing.md#styling)
 - [Snackbar](../../notifications/snackbar.md#styling)
@@ -302,14 +302,14 @@ The row adding UI comprises the buttons in the [`IgbActionStrip`](https://www.in
 
 ## API References
 
-- [`RowEditable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_RowEditable)
+- [`RowEditable`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowEditable)
 - `RowEditEnter`
 - `RowEdit`
 - `RowEditDone`
 - `RowEditCancel`
 - `EndEdit`
-- [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_PrimaryKey)
-- [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
+- [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=PrimaryKey)
+- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
 
 ## Additional Resources
 

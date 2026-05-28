@@ -10,7 +10,7 @@ _premium: true
 
 # Blazor Grid Customize Icons
 
-The Ignite UI for Blazor [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) icons can be customized to use custom icons from a different collection set using the exposed API methods:
+The Ignite UI for Blazor [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) icons can be customized to use custom icons from a different collection set using the exposed API methods:
 
 - `registerIconFromText`
 - `registerIcon`
@@ -456,7 +456,7 @@ Here's a breakdown of all icons as used by component:
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ## Additional Resources
 

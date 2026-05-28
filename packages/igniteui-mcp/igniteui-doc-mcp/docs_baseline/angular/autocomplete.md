@@ -12,7 +12,7 @@ Angular Autocomplete is a search box directive that enables users to easily find
 
 <p class="highlight">
 
-The [`igxAutocomplete`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxautocompletedirective.html) directive provides a way to enhance a text input by showing an [`igxDropDown`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html) with suggested options, provided by the developer. The suggestions will show once you start typing in the text input or use the `Arrow Up`/`Arrow Down` keys.
+The [`igxAutocomplete`](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective) directive provides a way to enhance a text input by showing an [`igxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) with suggested options, provided by the developer. The suggestions will show once you start typing in the text input or use the `Arrow Up`/`Arrow Down` keys.
 </p>
 
 ## Angular Autocomplete Example
@@ -87,7 +87,7 @@ ng add igniteui-angular
 
 For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
 
-The next step is to import the **IgxAutocompleteModule** and **IgxDropDownModule** in our **app.module**. If [`igxAutocomplete`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxautocompletedirective.html) is applied on an [igxInput](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputdirective.html), the **igxInputGroupModule** is also required:
+The next step is to import the **IgxAutocompleteModule** and **IgxDropDownModule** in our **app.module**. If [`igxAutocomplete`](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective) is applied on an [igxInput](mcp:get_api_reference?platform=angular&component=IgxInputDirective), the **igxInputGroupModule** is also required:
 
 ```typescript
 // app.module.ts
@@ -186,11 +186,11 @@ export class AutocompletePipeStartsWith implements PipeTransform {
 ```
 
 >[!NOTE]
->The [`igxAutocomplete`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxautocompletedirective.html) uses the [`igxDropDown`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html) as a provider for the available options, which means that all capabilities of the dropdown component can be used in the autocomplete.
+>The [`igxAutocomplete`](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective) uses the [`igxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) as a provider for the available options, which means that all capabilities of the dropdown component can be used in the autocomplete.
 
 ### Disable Angular Autocomplete
 
-You can disable the Angular autocomplete by using the [`IgxAutocompleteDisabled`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxautocompletedirective.html#disabled) input:
+You can disable the Angular autocomplete by using the [`IgxAutocompleteDisabled`](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective&member=disabled) input:
 
 ```html
 <igx-input-group>
@@ -203,7 +203,7 @@ You can disable the Angular autocomplete by using the [`IgxAutocompleteDisabled`
 
 ### Autocomplete Settings
 
-The `igx-autocomplete` dropdown positioning, scrolling strategy, and outlet can be configured using the [`IgxAutocompleteSettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxautocompletedirective.html#autocompleteSettings).
+The `igx-autocomplete` dropdown positioning, scrolling strategy, and outlet can be configured using the [`IgxAutocompleteSettings`](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective&member=autocompleteSettings).
 
 In the following Angular Autocomplete example we will position the dropdown above the input and disable the opening and closing animations. We're using the `ConnectedPositioningStrategy` for this:
 
@@ -414,9 +414,9 @@ Take a look at the [`igxInputGroup`](input-group.md#styling) and the [`igxDropdo
 
 <div class="divider--half"></div>
 
-- [IgxAutocompleteDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxautocompletedirective.html)
-- [IgxDropDownComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html)
-- [IgxInputGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html)
+- [IgxAutocompleteDirective](mcp:get_api_reference?platform=angular&component=IgxAutocompleteDirective)
+- [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
+- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
 
 
 ## Theming Dependencies

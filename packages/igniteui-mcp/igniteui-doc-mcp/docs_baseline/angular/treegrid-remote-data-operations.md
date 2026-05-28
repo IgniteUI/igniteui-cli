@@ -99,7 +99,7 @@ export class TreeGridRemoteFilteringSampleComponent implements OnInit, AfterView
 By default, the Tree Grid uses its own logic for performing data operations.
 You can perform these tasks remotely and feed the resulting data to the Tree Grid by taking advantage of certain inputs and events, which are exposed by the Tree Grid.
 ### Remote Filtering
-To provide remote filtering, you need to subscribe to the [`filteringExpressionsTreeChange`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filteringExpressionsTreeChange) output so that you make the appropriate request based on the arguments received. Let's use a flat collection as a data source for our Tree Grid by providing a [`primaryKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#primaryKey) and a [`foreignKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#foreignKey).
+To provide remote filtering, you need to subscribe to the [`filteringExpressionsTreeChange`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filteringExpressionsTreeChange) output so that you make the appropriate request based on the arguments received. Let's use a flat collection as a data source for our Tree Grid by providing a [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=primaryKey) and a [`foreignKey`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=foreignKey).
 We will also take advantage of the **rxjs** `debounceTime` function, which emits a value from the source Observable only after a particular time span has passed without another source emission. This way the remote operation will be triggered only when the specified amount of time has passed without the user interrupting it.
 ```typescript
 const DEBOUNCE_TIME = 300;
@@ -114,7 +114,7 @@ public ngAfterViewInit() {
     });
 }
 ```
-When remote filtering is provided, usually we do not need the built-in filtering of the Tree Grid. We can disable it by setting the [`filterStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#filterStrategy) input of the Tree Grid to the `NoopFilteringStrategy` instance.
+When remote filtering is provided, usually we do not need the built-in filtering of the Tree Grid. We can disable it by setting the [`filterStrategy`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filterStrategy) input of the Tree Grid to the `NoopFilteringStrategy` instance.
 ```html
 <!-- tree-grid-remote-filtering-sample.html -->
 <igx-tree-grid #treeGrid [data]="remoteData | async" primaryKey="ID" foreignKey="ParentID"
@@ -146,13 +146,13 @@ The remote filtering will have to be performed over the flat collection directly
 <!-- markdownlint-disable-next-line MD051 -->
 You can see the result of the code from above at the beginning of this article in the [Demo](#angular-tree-grid-remote-data-operations-overview-example) section.
 ## Unique Column Values Strategy
-The list items inside the Excel Style Filtering dialog represent the unique values for the respective column. The Tree Grid generates these values based on its data source by default. In case of remote filtering, the grid data does not contain all the data from the server. In order to provide the unique values manually and load them on demand, we can take advantage of the Tree Grid's [`uniqueColumnValuesStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#uniqueColumnValuesStrategy) input. This input is actually a method that provides three arguments:
+The list items inside the Excel Style Filtering dialog represent the unique values for the respective column. The Tree Grid generates these values based on its data source by default. In case of remote filtering, the grid data does not contain all the data from the server. In order to provide the unique values manually and load them on demand, we can take advantage of the Tree Grid's [`uniqueColumnValuesStrategy`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=uniqueColumnValuesStrategy) input. This input is actually a method that provides three arguments:
 - **column**  - The respective column instance.
 - **filteringExpressionsTree** - The filtering expressions tree, which is reduced based on the respective column.
 - **done** - Callback that should be called with the newly generated column values when they are retrieved from the server.
 The developer can manually generate the necessary unique column values based on the information, that is provided by the **column** and the **filteringExpressionsTree** arguments and then invoke the **done** callback.
 > [!NOTE]
-> When the [`uniqueColumnValuesStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#uniqueColumnValuesStrategy) input is provided, the default unique values generating process in the excel style filtering will not be used.
+> When the [`uniqueColumnValuesStrategy`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=uniqueColumnValuesStrategy) input is provided, the default unique values generating process in the excel style filtering will not be used.
 ```html
 <igx-tree-grid #treeGrid [data]="data" [filterMode]="'excelStyleFilter'" [uniqueColumnValuesStrategy]="columnValuesStrategy">
     ...
@@ -277,7 +277,7 @@ export class RemotePagingService {
 ```
 After declaring the service, we need to create a component, which will be responsible for the Tree Grid construction and data subscription.
 }
-In this sample we will demonstrate how to display a certain number of root records per page no matter how many child records they have. In order to cancel the built-in Tree Grid paging algorithm, which displays a certain number of records no matter their level (root or child), we have to set the [`perPage`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#perPage) property to `Number.MAX_SAFE_INTEGER`.
+In this sample we will demonstrate how to display a certain number of root records per page no matter how many child records they have. In order to cancel the built-in Tree Grid paging algorithm, which displays a certain number of records no matter their level (root or child), we have to set the [`perPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPage) property to `Number.MAX_SAFE_INTEGER`.
 ```html
 <igx-tree-grid #treeGrid ...>
         <igx-paginator [perPage]="maxPerPage">
@@ -289,7 +289,7 @@ public maxPerPage = Number.MAX_SAFE_INTEGER;
 ```
 Now we can choose between setting-up our own _custom paging template_ or using the default one that the `igx-paginator` provides. Let's first take a look what is necessary to set-up remote paging by using the _default paging template_.
 ### Remote paging with default template
-If you want to use the _default paging template_ you need to set the Paginator's [`totalRecords`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#totalRecords) property, only then the grid will be able to calculate the _total page number_ based on total remote records. When performing a remote pagination the Paginator will pass to the Grid only the data for the current page, so the grid will not try to paginate the provided data source. That's why we should set Grid's [`pagingMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#pagingMode) property to _GridPagingMode.remote_. Also it is necessary to either subscribe to [`pagingDone`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#pagingDone) or [`perPageChange`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#perPageChange) events in order to fetch the data from your remote service, it depends on the use case which event will be used.
+If you want to use the _default paging template_ you need to set the Paginator's [`totalRecords`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=totalRecords) property, only then the grid will be able to calculate the _total page number_ based on total remote records. When performing a remote pagination the Paginator will pass to the Grid only the data for the current page, so the grid will not try to paginate the provided data source. That's why we should set Grid's [`pagingMode`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=pagingMode) property to _GridPagingMode.remote_. Also it is necessary to either subscribe to [`pagingDone`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=pagingDone) or [`perPageChange`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPageChange) events in order to fetch the data from your remote service, it depends on the use case which event will be used.
 ```html
 <igx-tree-grid #treeGrid [data]="data | async" childDataKey="Content" [pagingMode]="mode">
     <igx-column field="Name"></igx-column>
@@ -446,7 +446,7 @@ export class TreeGridRemotePagingDefaultTemplateComponent implements OnInit, Aft
 ```
 <div class="divider--half"></div>
 ### Remote Paging with custom igx-paginator-content
-When we define a custom paginator content we need to define the content in a way to get the data only for the requested page and to pass the correct **skip** and **top** parameters to the remote service according to the selected page and items [`perPage`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#perPage). We are going to use the `<igx-paginator>` in order to ease our example configuration, along with the [`IgxPageSizeSelectorComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPageSizeSelectorComponent.html) and [`IgxPageNavigationComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPageNavigationComponent.html) that were introduced - `igx-page-size` will add the per page dropdown and label and `igx-page-nav` will add the navigation action buttons and labels.
+When we define a custom paginator content we need to define the content in a way to get the data only for the requested page and to pass the correct **skip** and **top** parameters to the remote service according to the selected page and items [`perPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPage). We are going to use the `<igx-paginator>` in order to ease our example configuration, along with the [`IgxPageSizeSelectorComponent`](mcp:get_api_reference?platform=angular&component=IgxPageSizeSelectorComponent) and [`IgxPageNavigationComponent`](mcp:get_api_reference?platform=angular&component=IgxPageNavigationComponent) that were introduced - `igx-page-size` will add the per page dropdown and label and `igx-page-nav` will add the navigation action buttons and labels.
 ```html
 <igx-paginator #paginator
     [totalRecords]="totalCount"
@@ -615,11 +615,11 @@ export class TreeGridRemotePagingSampleComponent implements OnInit, AfterViewIni
   - Row Expand/collapse
   - Row Editing
   - Row Pinning
-- In remote data scenarios, when the grid has a `primaryKey` set, [`rowSelectionChanging.oldSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/IRowSelectionEventArgs.html#oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
+- In remote data scenarios, when the grid has a `primaryKey` set, [`rowSelectionChanging.oldSelection`](mcp:get_api_reference?platform=angular&component=IRowSelectionEventArgs&member=oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
 ## API References
 <div class="divider--half"></div>
-- [IgxPaginatorComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html)
-- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxPaginatorComponent API](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent)
+- [IgxTreeGridComponent API](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 - [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

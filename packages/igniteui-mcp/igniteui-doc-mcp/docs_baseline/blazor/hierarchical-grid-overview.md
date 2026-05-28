@@ -441,16 +441,16 @@ function buildUrl(dataState) {
 
 ## Hide/Show row expand indicators
 
-If you have a way to provide information whether a row has children prior to its expanding, you could use the [`HasChildrenKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbHierarchicalGridBaseDirective_HasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
+If you have a way to provide information whether a row has children prior to its expanding, you could use the [`HasChildrenKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGridBaseDirective&member=HasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
 
 ```razor
 <IgbHierarchicalGrid Data="data" PrimaryKey="ID" HasChildrenKey="hasChildren">
 </IgbHierarchicalGrid>
 ```
 
-Note that setting the [`HasChildrenKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbHierarchicalGridBaseDirective_HasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
+Note that setting the [`HasChildrenKey`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGridBaseDirective&member=HasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
 
-Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`ShowExpandAll`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbHierarchicalGridBaseDirective_ShowExpandAll) property.
+Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`ShowExpandAll`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGridBaseDirective&member=ShowExpandAll) property.
 This UI is disabled by default for performance reasons and it is not recommended to enable it in grids with large data or grids with load on demand.
 
 ## Features
@@ -799,10 +799,10 @@ public class SingersData
 
 ## API References
 
-- [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)
-- [`IgbRowIsland`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowIsland.html)
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
+- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
+- [`IgbRowIsland`](mcp:get_api_reference?platform=blazor&component=IgbRowIsland)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 - `Cell`
 
 <!-- TODO: uncomment when all of the topics are ready -->

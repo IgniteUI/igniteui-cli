@@ -116,7 +116,7 @@ In addition to the built-in `always` and `onSort` modes, the grid allows you to 
 
 ### Merge Strategy Class
 
-A custom merge strategy must implement the [`IgcGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridmergestrategy.html) class:
+A custom merge strategy must implement the [`IgcGridMergeStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcGridMergeStrategy) class:
 
 ```ts
 export declare class IgcGridMergeStrategy {
@@ -138,11 +138,11 @@ export declare class IgcGridMergeStrategy {
 
 <!-- ComponentStart: TreeGrid -->
 
-The [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) provides two built-in strategies that implement the `IGridMergeStrategy` interface: [`IgcDefaultTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcdefaulttreegridmergestrategy.html) and [`IgcByLevelTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcbyleveltreegridmergestrategy.html). [`IgcDefaultTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcdefaulttreegridmergestrategy.html) merges all cells with the same value, regardless of their hierarchical level. In contrast, [`IgcByLevelTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcbyleveltreegridmergestrategy.html) only merges cells if they have the same value and are located at the same level, making level a required condition for merging.
+The [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) provides two built-in strategies that implement the `IGridMergeStrategy` interface: [`IgcDefaultTreeGridMergeStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcDefaultTreeGridMergeStrategy) and [`IgcByLevelTreeGridMergeStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcByLevelTreeGridMergeStrategy). [`IgcDefaultTreeGridMergeStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcDefaultTreeGridMergeStrategy) merges all cells with the same value, regardless of their hierarchical level. In contrast, [`IgcByLevelTreeGridMergeStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcByLevelTreeGridMergeStrategy) only merges cells if they have the same value and are located at the same level, making level a required condition for merging.
 
 ### Extending the Default Strategy
 
-If you only want to customize part of the behavior (for example, the comparer logic), you can extend one of the built-in strategies, either [`IgcDefaultTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcdefaulttreegridmergestrategy.html) or [`IgcByLevelTreeGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcbyleveltreegridmergestrategy.html), and override the relevant methods.
+If you only want to customize part of the behavior (for example, the comparer logic), you can extend one of the built-in strategies, either [`IgcDefaultTreeGridMergeStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcDefaultTreeGridMergeStrategy) or [`IgcByLevelTreeGridMergeStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcByLevelTreeGridMergeStrategy), and override the relevant methods.
 
 ```ts
 export class MyCustomStrategy extends IgcDefaultTreeGridMergeStrategy {
@@ -461,7 +461,7 @@ Due to the specific behavior of merged cells it has to be noted how exactly it t
 
 ## API References
 
-- [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)
+- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
 
 ## Additional Resources
 

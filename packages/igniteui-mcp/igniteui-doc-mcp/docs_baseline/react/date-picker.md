@@ -14,7 +14,7 @@ The Ignite UI for React Date Picker is a feature rich component used for enterin
 The Ignite UI for React Date Picker Component lets users pick a single date through a month-view calendar dropdown or editable input field. The React Date Picker also supports a dialog mode for selection from the calendar only, locale-aware and customizable date formatting and validation integration.
 
 > [!NOTE]
-> The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) is a brand new component from Ignite UI for React version 18.7.0. The old [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) prior to this version has been renamed to `XDatePicker` and its respective documentation page can be found under "Deprecated Components"
+> The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) is a brand new component from Ignite UI for React version 18.7.0. The old [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) prior to this version has been renamed to `XDatePicker` and its respective documentation page can be found under "Deprecated Components"
 
 ## React Date Picker Example
 
@@ -53,7 +53,7 @@ First, you need to install the Ignite UI for React by running the following comm
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker), its necessary CSS, and register its module, like so:
 
 ```tsx
 import { IgrDatePicker } from 'igniteui-react';
@@ -66,7 +66,7 @@ For a complete introduction to the Ignite UI for React, read the [**Getting Star
 
 ### Display Date Picker
 
-To instantiate a [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) in its default `dropdown` state, use the following code:
+To instantiate a [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) in its default `dropdown` state, use the following code:
 
 ```tsx
 <IgrDatePicker></IgrDatePicker>
@@ -74,7 +74,7 @@ To instantiate a [`IgrDatePicker`](https://www.infragistics.com/products/ignite-
 
 ### Options
 
-The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) can be bound to a `date`.
+The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) can be bound to a `date`.
 
 ```tsx
 const date = new Date();
@@ -127,7 +127,7 @@ The picker's action buttons can be templated using the `actions` slot:
 
 ### Keyboard Navigation
 
-The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different DateParts among others without having to touch the mouse.
+The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different DateParts among others without having to touch the mouse.
 
 |Keys|Description|
 |----|-----------|
@@ -146,7 +146,7 @@ The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs
 
 ### Dialog Mode
 
-The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) also supports a `dialog` mode:
+The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) also supports a `dialog` mode:
 
 ```tsx
 <IgrDatePicker mode="dialog"></IgrDatePicker>
@@ -179,13 +179,13 @@ root.render(<App/>);
 
 ### Display and input format
 
-[`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#inputFormat) and [`displayFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#displayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#inputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
+[`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=inputFormat) and [`displayFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=displayFormat) are properties which can be set to make the picker's editor follow a specified format. The [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=inputFormat) is locale based, so if none is provided, the picker will default to the one used by the browser.
 
 A good thing to note is that the Date Picker Component will always add a leading zero on the `date` and `month` portions if they were provided in a format that does not have it, e.g. `d/M/yy` becomes `dd/MM/yy`. This applies only during editing.
 
-[`displayFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#displayFormat) is used to format the picker's input when it is not focused. If no [`displayFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#displayFormat) is provided, the picker will use the [`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#inputFormat) as its [`displayFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#displayFormat).
+[`displayFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=displayFormat) is used to format the picker's input when it is not focused. If no [`displayFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=displayFormat) is provided, the picker will use the [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=inputFormat) as its [`displayFormat`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=displayFormat).
 
-More information about these can be found in the [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html) format section.
+More information about these can be found in the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) format section.
 
 ```tsx
 import React, { useRef } from 'react';
@@ -214,7 +214,7 @@ root.render(<App/>);
 
 ### Increment and decrement
 
-The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) exposes [`stepUp`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#stepUp) and [`stepDown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#stepDown) methods. Both of which come from the [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html) and can be used for incrementing and decrementing a specific `DatePart` of the currently set date.
+The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) exposes [`stepUp`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=stepUp) and [`stepDown`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=stepDown) methods. Both of which come from the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) and can be used for incrementing and decrementing a specific `DatePart` of the currently set date.
 
 ```tsx
 <IgrDatePicker>
@@ -235,7 +235,7 @@ The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs
 
 ### In Forms
 
-The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) could be used in a form element, the component's [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#max) properties act as form validators.
+The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) could be used in a form element, the component's [`min`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=min) and [`max`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=max) properties act as form validators.
 
 In forms, we can handle the `change` event of the component and update the value of the label.
 
@@ -304,13 +304,13 @@ root.render(<App />);
 
 ### Calendar Specific settings
 
-The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) can modify some of the calendar's settings via the properties that the Date Picker exposes. Some of these include [`visibleMonths`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#visibleMonths) which allows more than one calendar to be displayed when the picker expands, [`weekStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#weekStart) which determines the starting day of the week, [`showWeekNumbers`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#showWeekNumbers) which shows the number for each week in the year and more.
+The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) can modify some of the calendar's settings via the properties that the Date Picker exposes. Some of these include [`visibleMonths`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=visibleMonths) which allows more than one calendar to be displayed when the picker expands, [`weekStart`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=weekStart) which determines the starting day of the week, [`showWeekNumbers`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=showWeekNumbers) which shows the number for each week in the year and more.
 
 ## Internationalization
 
-The localization of the [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) can be controlled through its [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html#locale) input.
+The localization of the [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) can be controlled through its [`locale`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=locale) input.
 
-Here is how a [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) with Japanese locale definition would look like:
+Here is how a [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) with Japanese locale definition would look like:
 
 ```tsx
 <IgrDatePicker locale="ja-JP"></IgrDatePicker>
@@ -318,7 +318,7 @@ Here is how a [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-
 
 ## Styling
 
-The [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) component derives from the [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) and [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html) component, so it exposes all available CSS parts. See [Input Styling](../inputs/input.md#styling) and [Calendar Styling](calendar.md#styling) for reference.
+The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) component derives from the [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) and [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) component, so it exposes all available CSS parts. See [Input Styling](../inputs/input.md#styling) and [Calendar Styling](calendar.md#styling) for reference.
 
 ```css
 igc-date-picker::part(header) {
@@ -411,9 +411,9 @@ root.render(<App/>);
 
 ## API References
 
-- [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html)
-- [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html)
-- [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html)
+- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
+- [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)
+- [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

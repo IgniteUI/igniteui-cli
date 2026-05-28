@@ -24,7 +24,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcDateTimeInput } from 'igniteui-webcomponents';
@@ -37,7 +37,7 @@ For a complete introduction to the Ignite UI for Web Components, read the [**Get
 
 ### Value binding
 
-The easiest way to set the value of the [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) component is by passing a Date object to the [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#value) property:
+The easiest way to set the value of the [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) component is by passing a Date object to the [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=value) property:
 
 ```typescript
 const input = document.querySelector('igc-date-time-input') as IgcDateTimeInputComponent;
@@ -46,13 +46,13 @@ const date = new Date();
 input.value = date;
 ```
 
-The [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) also accepts [ISO 8601](https://tc39.es/ecma262/#sec-date-time-string-format) strings.
+The [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) also accepts [ISO 8601](https://tc39.es/ecma262/#sec-date-time-string-format) strings.
 
 The string can be a full `ISO` string, in the format `YYYY-MM-DDTHH:mm:ss.sssZ` or it could be separated into date-only and time-only portions.
 
 #### Date-only
 
-If a date-only string is bound to the [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#value) property of the component, it needs to be in the format `YYYY-MM-DD`. The [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#inputFormat) is still used when typing values in the input and it does not have to be in the same format. Additionally, when binding a date-only string, the directive will prevent time shifts by coercing the time to be `T00:00:00`.
+If a date-only string is bound to the [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=value) property of the component, it needs to be in the format `YYYY-MM-DD`. The [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) is still used when typing values in the input and it does not have to be in the same format. Additionally, when binding a date-only string, the directive will prevent time shifts by coercing the time to be `T00:00:00`.
 
 #### Time-only
 
@@ -66,7 +66,7 @@ All falsy values, including `InvalidDate` will be parsed as `null`. Incomplete d
 
 ### Keyboard Navigation
 
-The [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different `DateParts` among others without having to touch the mouse.
+The [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different `DateParts` among others without having to touch the mouse.
 
 |Keys|Description|
 |----|-----------|
@@ -82,13 +82,13 @@ The [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-u
 
 ## Setting formats
 
-The [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) supports different display and input formats.
+The [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) supports different display and input formats.
 
-It uses [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) which allows it to support predefined format options, such as `long` and `short`, `medium` and `full`. Additionally, it can also accept a custom string constructed from supported characters, such as `dd-MM-yy`. Also, if no [`displayFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#displayFormat) is provided, the component will use the [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#inputFormat) as such.
+It uses [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) which allows it to support predefined format options, such as `long` and `short`, `medium` and `full`. Additionally, it can also accept a custom string constructed from supported characters, such as `dd-MM-yy`. Also, if no [`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=displayFormat) is provided, the component will use the [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) as such.
 
 ### Input Format
 
-The table bellow shows formats that are supported by the component's [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#inputFormat):
+The table bellow shows formats that are supported by the component's [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat):
 
 |Format|Description|
 |-------|----------|
@@ -106,7 +106,7 @@ The table bellow shows formats that are supported by the component's [`inputForm
 | `mm` | Minutes with an explicitly set leading zero. |
 | `tt` | AM/PM section for 12-hour format. |
 
-To set a specific input format, pass it as a string to the [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html). This will set both the expected user input format and the `mask`. Additionally, the [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#inputFormat) is locale based, so if none is provided, the editor will default to `dd/MM/yyyy`.
+To set a specific input format, pass it as a string to the [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent). This will set both the expected user input format and the `mask`. Additionally, the [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) is locale based, so if none is provided, the editor will default to `dd/MM/yyyy`.
 
 ```html
 <igc-date-time-input input-format="dd-MM-yy" display-format="medium"/>
@@ -172,7 +172,7 @@ Furthermore, users can construct a displayFormat string using the supported symb
 
 ## Min/max value
 
-You can specify [`min`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#max) properties to restrict input and control the validity of the component. Just like the [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#value) property, they can be of type `string`.
+You can specify [`min`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=min) and [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=max) properties to restrict input and control the validity of the component. Just like the [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=value) property, they can be of type `string`.
 
 ```ts
 const input = document.querySelector('igc-date-time-input') as IgcDateTimeInputComponent;
@@ -193,11 +193,11 @@ If all went well, the component will be `invalid` if the value is greater or low
 
 ## Step up/down
 
-The [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) exposes public [`stepUp`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#stepUp) and [`stepDown`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#stepDown) methods. They increment or decrement a specific `DatePart` of the currently set date and time and can be used in a couple of ways.
+The [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) exposes public [`stepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepUp) and [`stepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepDown) methods. They increment or decrement a specific `DatePart` of the currently set date and time and can be used in a couple of ways.
 
-In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#inputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
+In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
 
-Additionally, [`spinDelta`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#spinDelta) is a property that can be used to apply a different delta to each date time segment. It will be applied when spinning with the keyboard, mouse wheel or with the [`stepUp`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#stepUp) and [`stepDown`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#stepDown) methods, as long as they don't have the delta parameter provided since it will take precedence over [`spinDelta`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#spinDelta).
+Additionally, [`spinDelta`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=spinDelta) is a property that can be used to apply a different delta to each date time segment. It will be applied when spinning with the keyboard, mouse wheel or with the [`stepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepUp) and [`stepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepDown) methods, as long as they don't have the delta parameter provided since it will take precedence over [`spinDelta`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=spinDelta).
 
 ```ts
 const input = document.getElementById('dateTimeInput') as IgcDateTimeInputComponent;
@@ -220,7 +220,7 @@ Try it in the example below:
 
 ## Styling
 
-The [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -277,10 +277,10 @@ igc-date-time-input {
 
 ## API References
 
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html)
-- [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html)
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
-- [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html)
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
+- [`IgcMaskInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+- [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

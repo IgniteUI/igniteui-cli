@@ -13,11 +13,11 @@ _premium: true
 
 # Blazor Hierarchical Grid State Persistence
 
-The Ignite UI for Blazor State Persistence in Blazor Hierarchical Grid allows developers to easily save and restore the grid state. When the [`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) is applied on the Blazor [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html), it exposes the `GetStateAsStringAsync` and `ApplyStateFromStringAsync` methods that developers can use to achieve state persistence in any scenario.
+The Ignite UI for Blazor State Persistence in Blazor Hierarchical Grid allows developers to easily save and restore the grid state. When the [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) is applied on the Blazor [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), it exposes the `GetStateAsStringAsync` and `ApplyStateFromStringAsync` methods that developers can use to achieve state persistence in any scenario.
 
 ## Supported Features
 
-[`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) supports saving and restoring the state of the following features:
+[`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) supports saving and restoring the state of the following features:
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -72,7 +72,7 @@ gridState.ApplyStateFromStringAsync(gridStateString, new string[0]);
 gridState.ApplyStateFromStringAsync(sortingFilteringStates, new string[0])
 ```
 
-The [`Options`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridStateBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridStateBaseDirective_Options) object implements the [`IgbGridStateOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridStateOptions.html) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. `GetStateAsStringAsync` methods will not put the state of these features in the returned value and `ApplyStateFromStringAsync` methods will not restore state for them.
+The [`Options`](mcp:get_api_reference?platform=blazor&component=IgbGridStateBaseDirective&member=Options) object implements the [`IgbGridStateOptions`](mcp:get_api_reference?platform=blazor&component=IgbGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. `GetStateAsStringAsync` methods will not put the state of these features in the returned value and `ApplyStateFromStringAsync` methods will not restore state for them.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
@@ -145,7 +145,7 @@ The simple to use single-point API's allows to achieve a full state persistence 
 
 ## Restoring Child Grids
 
-Saving / Restoring state for the child grids is controlled by the `RowIslands` property and is enabled by default. [`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) will use the same options for saving/restoring features both for the root grid and all child grids down the hierarchy. For example, if we pass the following options:
+Saving / Restoring state for the child grids is controlled by the `RowIslands` property and is enabled by default. [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) will use the same options for saving/restoring features both for the root grid and all child grids down the hierarchy. For example, if we pass the following options:
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
@@ -174,9 +174,9 @@ Saving / Restoring state for the child grids is controlled by the `RowIslands` p
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-Then the [`GetState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html#IgniteUI_Blazor_Controls_IgbGridState_GetState) API will return the state for all grids (root grid and child grids) features excluding `Selection` and `Sorting`. If later on the developer wants to restore only the `Filtering` state for all grids, use:
+Then the [`GetState`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=GetState) API will return the state for all grids (root grid and child grids) features excluding `Selection` and `Sorting`. If later on the developer wants to restore only the `Filtering` state for all grids, use:
 
-Then the [`GetState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html#IgniteUI_Blazor_Controls_IgbGridState_GetState) API will return the state for all grids (root grid and child grids) features excluding `Selection` and `Sorting`. If later on the developer wants to restore only the `Filtering` state for all grids, use:
+Then the [`GetState`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=GetState) API will return the state for all grids (root grid and child grids) features excluding `Selection` and `Sorting`. If later on the developer wants to restore only the `Filtering` state for all grids, use:
 
 ```razor
 gridState.ApplyStateFromStringAsync(gridStateString, new string[] { "filtering", "rowIslands" });
@@ -579,7 +579,7 @@ public class SingersData
 
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
 
-- [`GetStateAsString`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html#IgniteUI_Blazor_Controls_IgbGridState_GetStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) component will ignore the columns `Formatter`, [`Filters`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotConfiguration.html#IgniteUI_Blazor_Controls_IgbPivotConfiguration_Filters), `Summaries`, `SortStrategy`, `CellClasses`, `CellStyles`, `HeaderTemplate` and `BodyTemplate` properties.
+- [`GetStateAsString`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=GetStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) component will ignore the columns `Formatter`, [`Filters`](mcp:get_api_reference?platform=blazor&component=IgbPivotConfiguration&member=Filters), `Summaries`, `SortStrategy`, `CellClasses`, `CellStyles`, `HeaderTemplate` and `BodyTemplate` properties.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
 

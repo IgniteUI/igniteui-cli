@@ -62,7 +62,7 @@ You can also control whether the sort operations for string columns should be ca
 
 ## Single and multi-sorting
 
-The Grid Lite supports both single and multi-column sorting. Multi-column is enabled by default and can be configured through the [`IgbSortingOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSortingOptions.html) property of the grid. The [`Mode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSortingOptions.html#IgniteUI_Blazor_Controls_IgbSortingOptions_Mode) property accepts `GridLiteSortingMode.Single` or `GridLiteSortingMode.Multiple` as values.
+The Grid Lite supports both single and multi-column sorting. Multi-column is enabled by default and can be configured through the [`IgbSortingOptions`](mcp:get_api_reference?platform=blazor&component=IgbSortingOptions) property of the grid. The [`Mode`](mcp:get_api_reference?platform=blazor&component=IgbSortingOptions&member=Mode) property accepts `GridLiteSortingMode.Single` or `GridLiteSortingMode.Multiple` as values.
 
 ```razor
 // Enable single-column sorting
@@ -86,7 +86,7 @@ where `None` is the initial state of the data, that is to say with no sorting ap
 
 When multi-column sort is enabled, the column headers will display a sorting indicator, which is a number representing the order in which the sorting operations were applied.
 
-The following sample shows the grid [`IgbSortingOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSortingOptions.html) property and how it controls the grid sorting behavior.
+The following sample shows the grid [`IgbSortingOptions`](mcp:get_api_reference?platform=blazor&component=IgbSortingOptions) property and how it controls the grid sorting behavior.
 
 ```razor
 @page "/"

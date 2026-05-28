@@ -15,9 +15,9 @@ In Ignite UI for Web Components, markers are visual elements that display the va
 
 ## Web Components Chart Marker Example
 
-In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the [`MarkerType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.markertype.html) property to [`Circle`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.markertype.html#Circle) enum value.
+In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the [`MarkerType`](mcp:get_api_reference?platform=webcomponents&component=MarkerType) property to [`Circle`](mcp:get_api_reference?platform=webcomponents&component=MarkerType&member=Circle) enum value.
 
-The colors of the markers are also managed by setting the [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#markerBrushes) and [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#markerOutlines) properties in the sample below. The markers and [`chartType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#chartType) is configurable in this sample by using the drop-downs as well.
+The colors of the markers are also managed by setting the [`markerBrushes`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=markerBrushes) and [`markerOutlines`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=markerOutlines) properties in the sample below. The markers and [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) is configurable in this sample by using the drop-downs as well.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -56,7 +56,7 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 
 ## Web Components Chart Marker Templates
 
-In addition to marker properties, you can implement your own marker by setting a function to the  `MarkerTemplate` property of a series rendered in the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) control as it is demonstrated in example below.
+In addition to marker properties, you can implement your own marker by setting a function to the  `MarkerTemplate` property of a series rendered in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control as it is demonstrated in example below.
 
 ```css
 /* shared styles are loaded from: */
@@ -76,7 +76,7 @@ You can find more information about related chart features in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-- [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#markerBrushes)
-- [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#markerOutlines)
-- [`MarkerType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.markertype.html)
-- [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html)
+- [`markerBrushes`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=markerBrushes)
+- [`markerOutlines`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=markerOutlines)
+- [`MarkerType`](mcp:get_api_reference?platform=webcomponents&component=MarkerType)
+- [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)

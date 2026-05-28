@@ -197,7 +197,7 @@ Due to the specific behavior of merged cells it has to be noted how exactly it t
 
 ## API References
 
-- [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
+- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
 
 ## Additional Resources
 

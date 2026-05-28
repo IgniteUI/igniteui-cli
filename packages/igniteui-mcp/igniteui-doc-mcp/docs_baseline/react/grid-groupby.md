@@ -11,7 +11,7 @@ _premium: true
 
 # React Grid Group By
 
-The Ignite UI for React Group By behavior in React IgrGrid creates grouped data rows based on the column values. The Group By in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) allows for visualizing the groups in a hierarchical structure. The grouped data rows can be expanded or collapsed and the order of grouping may be changed through the UI or API. When Row Selection is enabled, a Group By row selector is rendered in the left-most area of the group row. In case the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowSelection) property is set to single, checkboxes are disabled and only serve as an indication for the group where selection is placed. If the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowSelection) property is set to multiple, clicking over the Group By row selector selects all records belonging to this group.
+The Ignite UI for React Group By behavior in React IgrGrid creates grouped data rows based on the column values. The Group By in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) allows for visualizing the groups in a hierarchical structure. The grouped data rows can be expanded or collapsed and the order of grouping may be changed through the UI or API. When Row Selection is enabled, a Group By row selector is rendered in the left-most area of the group row. In case the [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) property is set to single, checkboxes are disabled and only serve as an indication for the group where selection is placed. If the [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowSelection) property is set to multiple, clicking over the Group By row selector selects all records belonging to this group.
 
 ## React Grid Group By Example
 
@@ -258,7 +258,7 @@ root.render(<Sample/>);
 
 ## Initial Grouping State
 
-It is possible to define initial grouping of the grid by assigning an array of expressions to the [`groupingExpressions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#groupingExpressions) property of the grid.
+It is possible to define initial grouping of the grid by assigning an array of expressions to the [`groupingExpressions`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpressions) property of the grid.
 
 ```typescript
 const expressions = [
@@ -295,7 +295,7 @@ Grouping is available through the UI and through a robust API exposed by the gri
 </IgrGrid>
 ```
 
-During runtime the expressions are gettable and settable from the `groupingExpressions` property. If you need to add or change an existing expression you may also use the [`groupBy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#groupBy) method with either a single or an array of expressions.
+During runtime the expressions are gettable and settable from the `groupingExpressions` property. If you need to add or change an existing expression you may also use the [`groupBy`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupBy) method with either a single or an array of expressions.
 
 ```typescript
 gridRef.current.groupBy([{ fieldName: 'ProductName', dir: SortingDirection.Desc, ignoreCase: true }]);
@@ -303,9 +303,9 @@ gridRef.current.groupBy([{ fieldName: 'ProductName', dir: SortingDirection.Desc,
 
 ### Expand/Collapse API
 
-In addition to grouping expressions you can also control the expansion states for group rows. They are stored in a separate property of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component [`groupingExpansionState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#groupingExpansionState) which is a collection of [`IgrGroupByExpandState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgroupbyexpandstate.html). Each expansion state is uniquely defined by the field name it is created for and the value it represents for each level of grouping, i.e. the identifier is a hierarchy array of [`IgrGroupByKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgroupbykey.html).
+In addition to grouping expressions you can also control the expansion states for group rows. They are stored in a separate property of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component [`groupingExpansionState`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpansionState) which is a collection of [`IgrGroupByExpandState`](mcp:get_api_reference?platform=react&component=IgrGroupByExpandState). Each expansion state is uniquely defined by the field name it is created for and the value it represents for each level of grouping, i.e. the identifier is a hierarchy array of [`IgrGroupByKey`](mcp:get_api_reference?platform=react&component=IgrGroupByKey).
 
-As with [`groupingExpressions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#groupingExpressions), setting a list of [`IgrGroupByExpandState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgroupbyexpandstate.html) directly to the [`groupingExpansionState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#groupingExpansionState) will change the expansion accordingly. Additionally [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) exposes a method [`toggleGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#toggleGroup) that toggles a group by the group record instance or via the [`expanded`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowdirective.html#expanded) property of the row.
+As with [`groupingExpressions`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpressions), setting a list of [`IgrGroupByExpandState`](mcp:get_api_reference?platform=react&component=IgrGroupByExpandState) directly to the [`groupingExpansionState`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupingExpansionState) will change the expansion accordingly. Additionally [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) exposes a method [`toggleGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=toggleGroup) that toggles a group by the group record instance or via the [`expanded`](mcp:get_api_reference?platform=react&component=IgrRowDirective&member=expanded) property of the row.
 
 ```typescript
 const groupRow = gridRef.current.getRowByIndex(0).groupRow;
@@ -317,20 +317,20 @@ const groupRow = gridRef.current.getRowByIndex(0);
 groupRow.expanded = false;
 ```
 
-Groups can be created expanded (**default**) or collapsed and the expansion states would generally only contain the state opposite to the default behavior. You can control whether groups should be created expanded or not through the [`groupsExpanded`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#groupsExpanded) property.
+Groups can be created expanded (**default**) or collapsed and the expansion states would generally only contain the state opposite to the default behavior. You can control whether groups should be created expanded or not through the [`groupsExpanded`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupsExpanded) property.
 
 ### Select/Deselect All Rows in a Group API
 
-Selecting/Deselecting all rows in a group is available through the [`selectRowsInGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#selectRowsInGroup) and [`deselectRowsInGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#deselectRowsInGroup) API methods.
+Selecting/Deselecting all rows in a group is available through the [`selectRowsInGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=selectRowsInGroup) and [`deselectRowsInGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=deselectRowsInGroup) API methods.
 
-The code snippet below can be used to select all rows within a group using the group record instance [`selectRowsInGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#selectRowsInGroup) method. Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
+The code snippet below can be used to select all rows within a group using the group record instance [`selectRowsInGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=selectRowsInGroup) method. Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
 ```typescript
 const groupRow = gridRef.current.getRowByIndex(0).groupRow;
 gridRef.current.selectRowsInGroup(groupRow);
 ```
 
-If you need to deselect all rows within a group programmatically, you can use the [`deselectRowsInGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#deselectRowsInGroup) method.
+If you need to deselect all rows within a group programmatically, you can use the [`deselectRowsInGroup`](mcp:get_api_reference?platform=react&component=IgrGrid&member=deselectRowsInGroup) method.
 
 ```typescript
 const groupRow = gridRef.current.getRowByIndex(0).groupRow;
@@ -341,7 +341,7 @@ gridRef.current.deselectRowsInGroup(groupRow);
 
 ### Group Row Templates
 
-The group row except for the expand/collapse UI is fully templatable. By default it renders a grouping icon and displays the field name and value it represents. The context to render the template against is of type [`IgrGroupByRecord`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgroupbyrecord.html).
+The group row except for the expand/collapse UI is fully templatable. By default it renders a grouping icon and displays the field name and value it represents. The context to render the template against is of type [`IgrGroupByRecord`](mcp:get_api_reference?platform=react&component=IgrGroupByRecord).
 
 As an example, the following template would make the group rows summary more verbose:
 
@@ -356,9 +356,9 @@ const template = (ctx: IgrGroupByRowTemplateContext) => {
 
 ### Group Row Selector Templates
 
-As mentioned above the group row except for the expand/collapse UI is fully templatable. To create a custom Group By row selector template use [`groupByRowSelectorTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#groupByRowSelectorTemplate). From the template, you can access the implicitly provided context variable, with properties that give you information about the Group By row's state.
+As mentioned above the group row except for the expand/collapse UI is fully templatable. To create a custom Group By row selector template use [`groupByRowSelectorTemplate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupByRowSelectorTemplate). From the template, you can access the implicitly provided context variable, with properties that give you information about the Group By row's state.
 
-The [`selectedCount`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgroupbyrowselectortemplatedetails.html#selectedCount) property shows how many of the group records are currently selected while [`totalCount`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgroupbyrowselectortemplatedetails.html#totalCount) shows how many records belong to the group.
+The [`selectedCount`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=selectedCount) property shows how many of the group records are currently selected while [`totalCount`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=totalCount) shows how many records belong to the group.
 
 ```tsx
 const template = (ctx: IgrGroupByRowSelectorTemplateContext) => {
@@ -368,7 +368,7 @@ const template = (ctx: IgrGroupByRowSelectorTemplateContext) => {
 }
 ```
 
-The [`groupRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgroupbyrowselectortemplatedetails.html#groupRow) property returns a reference to the group row.
+The [`groupRow`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=groupRow) property returns a reference to the group row.
 
 ```tsx
 const template = (ctx: IgrGroupByRowSelectorTemplateContext) => {
@@ -379,7 +379,7 @@ const template = (ctx: IgrGroupByRowSelectorTemplateContext) => {
 }
 ```
 
-The [`selectedCount`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgroupbyrowselectortemplatedetails.html#selectedCount) and [`totalCount`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgroupbyrowselectortemplatedetails.html#totalCount) properties can be used to determine if the Group By row selector should be checked or indeterminate (partially selected).
+The [`selectedCount`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=selectedCount) and [`totalCount`](mcp:get_api_reference?platform=react&component=IgrGroupByRowSelectorTemplateDetails&member=totalCount) properties can be used to determine if the Group By row selector should be checked or indeterminate (partially selected).
 
 ## React Grid Group By With Paging
 
@@ -580,7 +580,7 @@ The grouping UI supports the following keyboard interactions:
   - <kbd>ALT</kbd> + <kbd>LEFT</kbd> - Collapses the group
   - <kbd>SPACE</kbd> - selects all rows in the group, if <kbd>rowSelection</kbd> property is set to multiple
 
-- For group [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html) components in the group by area (focus should be on the chip)
+- For group [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip) components in the group by area (focus should be on the chip)
   - <kbd>SHIFT</kbd> + <kbd>LEFT</kbd> - moves the focused chip left, changing the grouping order, if possible
   - <kbd>SHIFT</kbd> + <kbd>RIGHT</kbd> - moves the focused chip right, changing the grouping order, if possible
   - <kbd>SPACE</kbd> - changes the sorting direction
@@ -1222,12 +1222,12 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
-- [`IgrGroupByRecord`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgroupbyrecord.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+- [`IgrGroupByRecord`](mcp:get_api_reference?platform=react&component=IgrGroupByRecord)
 - `ISortingExpression`
-- [`column`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgroupbyrecord.html#column)
+- [`column`](mcp:get_api_reference?platform=react&component=IgrGroupByRecord&member=column)
 - `IGroupByExpandState`
-- [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html)
+- [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip)
 
 ## Additional Resources
 

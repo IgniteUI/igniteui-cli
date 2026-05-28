@@ -51,14 +51,14 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-Before using the [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html), you need to register it as follows:
+Before using the [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating), you need to register it as follows:
 
 ```tsx
 import { IgrRating } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-The simplest way to start using the [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html) is as follows:
+The simplest way to start using the [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating) is as follows:
 
 ```tsx
   <IgrRating></IgrRating>
@@ -68,7 +68,7 @@ This will create a five-star rating component that can be used to input and read
 
 ## Using Custom Symbols
 
-The [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html) component allows you to use custom symbols in place of the default star symbols. If you want to use a different symbol, like SVG, icon or another unicode symbol, you should place [`IgrRatingSymbol`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrratingsymbol.html) components between the opening and closing brackets of the [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html):
+The [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating) component allows you to use custom symbols in place of the default star symbols. If you want to use a different symbol, like SVG, icon or another unicode symbol, you should place [`IgrRatingSymbol`](mcp:get_api_reference?platform=react&component=IgrRatingSymbol) components between the opening and closing brackets of the [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating):
 
 ```tsx
   <IgrRating className="size-large" label="Rate Experience" step={.5} hoverPreview={true}>
@@ -307,15 +307,15 @@ root.render(<RatingEmptyAndSelected/>);
 
 ### Single
 
-Turns on the [`single`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html#single) visual mode for the rating. Useful when using symbols that communicate unique values, like feedback emoji faces.
+Turns on the [`single`](mcp:get_api_reference?platform=react&component=IgrRating&member=single) visual mode for the rating. Useful when using symbols that communicate unique values, like feedback emoji faces.
 
 ### Value
 
-The [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html#value) attribute sets the current value of the component.
+The [`value`](mcp:get_api_reference?platform=react&component=IgrRating&member=value) attribute sets the current value of the component.
 
 ### Label
 
-The [`label`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html#label) attribute allows setting the label value of the rating component.
+The [`label`](mcp:get_api_reference?platform=react&component=IgrRating&member=label) attribute allows setting the label value of the rating component.
 
 ### Value Format
 
@@ -323,11 +323,11 @@ A format string which sets [aria-valuetext](https://developer.mozilla.org/en-US/
 
 ### Max Value
 
-The [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html#max) attribute sets the maximum allowed value of the rating component.
+The [`max`](mcp:get_api_reference?platform=react&component=IgrRating&member=max) attribute sets the maximum allowed value of the rating component.
 
 ### Step
 
-The [`step`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html#step) attribute sets the allowed fraction of steps between two symbols. Useful when splitting the rating symbols in halves.
+The [`step`](mcp:get_api_reference?platform=react&component=IgrRating&member=step) attribute sets the allowed fraction of steps between two symbols. Useful when splitting the rating symbols in halves.
 
 ### Hover Preview
 
@@ -335,25 +335,25 @@ The `hoverPreview` attribute makes the component show the possible outcome of us
 
 ### Read-Only
 
-The [`readOnly`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html#readOnly) attribute allows the users to set the [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html) in read-only mode. This attribute is useful when you want to use the component for information purposes only.
+The [`readOnly`](mcp:get_api_reference?platform=react&component=IgrRating&member=readOnly) attribute allows the users to set the [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating) in read-only mode. This attribute is useful when you want to use the component for information purposes only.
 
 ### Disabled
 
-The [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html#disabled) attribute disables the component, making it impossible to select a value using the mouse or keyboard.
+The [`disabled`](mcp:get_api_reference?platform=react&component=IgrRating&member=disabled) attribute disables the component, making it impossible to select a value using the mouse or keyboard.
 
 ## Methods
 
 ### Step Up
 
-The [`stepUp`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html#stepUp) method increments the value of the component by `n` steps. Determined by the `step` factor.
+The [`stepUp`](mcp:get_api_reference?platform=react&component=IgrRating&member=stepUp) method increments the value of the component by `n` steps. Determined by the `step` factor.
 
 ### Step Down
 
-The [`stepDown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html#stepDown) method decrements the value of the component by `n` steps. Determined by the `step` factor.
+The [`stepDown`](mcp:get_api_reference?platform=react&component=IgrRating&member=stepDown) method decrements the value of the component by `n` steps. Determined by the `step` factor.
 
 ## Events
 
-The [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html) component emits two separate events - `hover` and `change`.
+The [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating) component emits two separate events - `hover` and `change`.
 
 ### Hover Event
 
@@ -365,7 +365,7 @@ The `change` event is fired when the selected value changes.
 
 ## Styling
 
-The [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -446,7 +446,7 @@ root.render(<RatingStyling/>);
 
 ## API Reference
 
-- [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html)
+- [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

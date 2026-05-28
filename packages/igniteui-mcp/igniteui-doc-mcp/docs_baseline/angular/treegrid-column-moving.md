@@ -117,29 +117,29 @@ export class TreeGridColumnMovingSampleComponent {
 ```
 <div class="divider--half"></div>
 ## Overview
-**Column moving** feature is enabled on a per-grid level, meaning that the [**igx-tree-grid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) could have either movable or immovable columns. This is done via the [`moving`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#moving) input of the [`igx-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html).
+**Column moving** feature is enabled on a per-grid level, meaning that the [**igx-tree-grid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) could have either movable or immovable columns. This is done via the [`moving`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=moving) input of the [`igx-grid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent).
 ```html
 <igx-tree-grid [moving]="true"></igx-tree-grid>
 ```
 ## API
 In addition to the drag and drop functionality, the Column Moving feature also provides two API methods to allow moving a column/reordering columns programmatically:
-[`moveColumn`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `position` (representing a [`DropPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/dropposition.html) value), which determines whether to place the column before or after the target column.
+[`moveColumn`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `position` (representing a [`DropPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/dropposition.html) value), which determines whether to place the column before or after the target column.
 ```typescript
 // Move the ID column after the Name column
 const idColumn = grid.getColumnByName("ID");
 const nameColumn = grid.getColumnByName("Name");
 grid.moveColumn(idColumn, nameColumn, DropPosition.AfterDropTarget);
 ```
-[`move`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#move) - Moves a column to a specified visible index. If the passed index parameter is invalid (is negative, or exceeds the number of columns), or if the column is not allowed to move to this index (if inside another group), no operation is performed.
+[`move`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=move) - Moves a column to a specified visible index. If the passed index parameter is invalid (is negative, or exceeds the number of columns), or if the column is not allowed to move to this index (if inside another group), no operation is performed.
 ```typescript
 // Move the ID column at 3rd position.
 const idColumn = grid.getColumnByName("ID");
 idColumn.move(3);
 ```
-Note that when using the API, only the [`columnMovingEnd`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#columnMovingEnd) event will be emitted, if the operation was successful. Also note that in comparison to the drag and drop functionality, using the API does not require setting the `moving` property to true.
+Note that when using the API, only the [`columnMovingEnd`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=columnMovingEnd) event will be emitted, if the operation was successful. Also note that in comparison to the drag and drop functionality, using the API does not require setting the `moving` property to true.
 ## Events
-There are several events related to the column moving to provide a means for tapping into the columns' drag and drop operations. These are [`columnMovingStart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#columnMovingStart), [`columnMoving`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#columnMoving) and [`columnMovingEnd`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#columnMovingEnd).
-You can subscribe to the [`columnMovingEnd`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#columnMovingEnd) event of the [`igx-tree-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) to implement some custom logic when a column is dropped to a new position. For example, you can cancel dropping the Category after the Change On Year(%) column.
+There are several events related to the column moving to provide a means for tapping into the columns' drag and drop operations. These are [`columnMovingStart`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=columnMovingStart), [`columnMoving`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=columnMoving) and [`columnMovingEnd`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=columnMovingEnd).
+You can subscribe to the [`columnMovingEnd`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=columnMovingEnd) event of the [`igx-tree-grid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) to implement some custom logic when a column is dropped to a new position. For example, you can cancel dropping the Category after the Change On Year(%) column.
 ```html
 <igx-tree-grid #treeGrid [data]="data" primaryKey="ID" foreignKey="ParentID" [autoGenerate]="false" [moving]="true" (columnMovingEnd)="onColumnMovingEnd($event)">
     <igx-column [field]="'Name'" dataType="string" width="250px"></igx-column>
@@ -251,8 +251,8 @@ $dark-grid-column-moving-theme: grid-theme(
 >The sample will not be affected by the selected global theme from `Change Theme`.
 ## API References
 <div class="divider--half"></div>
-- [ColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
-- [IgxTreeGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [ColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Tree Grid overview](tree-grid.md)

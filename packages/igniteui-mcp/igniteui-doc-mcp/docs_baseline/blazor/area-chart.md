@@ -15,7 +15,7 @@ The Ignite UI for Blazor Area Chart renders as a collection of points connected 
 
 ## Blazor Area Chart Example
 
-You can create Blazor Category Area Chart in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control by binding your data to [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataSource) property and setting [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) property to **Area** enum, as shown in the example below.
+You can create Blazor Category Area Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=DataSource) property and setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to **Area** enum, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -145,7 +145,7 @@ There are several common use cases for choosing an Area Chart:
 
 ## Blazor Area Chart with Single Series
 
-Blazor Area Chart is often used to show the change of value over time such as the amount of renewable electricity produced. You can create this type of chart in [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control by binding your data and setting [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) property to `Area` value, as shown in the example below.
+Blazor Area Chart is often used to show the change of value over time such as the amount of renewable electricity produced. You can create this type of chart in [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to `Area` value, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -226,7 +226,7 @@ public class CountryRenewableElectricity
 
 ## Blazor Area Chart with Multiple Series
 
-Similarly to how you can show multiple [Line Chart](line-chart.md) and [Spline Chart](spline-chart.md), you may also combine multiple Area Charts in the same control. This is accomplished by binding multiple data source to [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataSource) property of the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control.
+Similarly to how you can show multiple [Line Chart](line-chart.md) and [Spline Chart](spline-chart.md), you may also combine multiple Area Charts in the same control. This is accomplished by binding multiple data source to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=DataSource) property of the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -427,11 +427,11 @@ public class CountryRenewableElectricity
 
 ## Advanced Types of Area Charts
 
-The following sections explain more advanced types of Blazor Area Charts that can be created using the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control instead of [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control with simplified API.
+The following sections explain more advanced types of Blazor Area Charts that can be created using the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control instead of [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control with simplified API.
 
 ## Blazor Step Area Chart
 
-The Blazor Step Area Chart belongs to a group of category charts and it is rendered using a collection of points connected by continuous vertical and horizontal lines with the area below lines filled in. Values are represented on the y-axis and categories are displayed on the x-axis. The step area chart emphasizes the amount of change over a period of time or compares multiple items. You can create this type of chart in [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control by binding your data and setting [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) property to `StepArea` value, as shown in the example below.
+The Blazor Step Area Chart belongs to a group of category charts and it is rendered using a collection of points connected by continuous vertical and horizontal lines with the area below lines filled in. Values are represented on the y-axis and categories are displayed on the x-axis. The step area chart emphasizes the amount of change over a period of time or compares multiple items. You can create this type of chart in [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to `StepArea` value, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -530,11 +530,11 @@ public class CountryRenewableElectricity
 
 <div class="divider--half"></div>
 
-The following sections explain more advanced types of Blazor Area Charts that can be created using the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control instead of [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control with simplified API.
+The following sections explain more advanced types of Blazor Area Charts that can be created using the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control instead of [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control with simplified API.
 
 ## Blazor Range Area Chart
 
-The Blazor Range Area Chart allows you show the area as a range between two values over time. You can create this type of chart in [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to [`IgbRangeAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRangeAreaSeries.html), as shown in the example below.
+The Blazor Range Area Chart allows you show the area as a range between two values over time. You can create this type of chart in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to [`IgbRangeAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbRangeAreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -680,7 +680,7 @@ public class TemperatureRangeData
 
 ## Blazor Stacked Area Chart
 
-The Blazor Stacked Area Chars is rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as Area Charts, with the only difference being that visually, the shaded areas are stacked on top of each other. You can create this type of chart in [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to [`IgbStackedAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedAreaSeries.html), as shown in the example below.
+The Blazor Stacked Area Chars is rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as Area Charts, with the only difference being that visually, the shaded areas are stacked on top of each other. You can create this type of chart in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to [`IgbStackedAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedAreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -860,7 +860,7 @@ public class ContinentsBirthRate
 
 ## Blazor Stacked 100% Area Chart
 
-The Blazor Stacked 100% Area Chart allows you represent your data as part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea. You can create this type of chart in [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to [`IgbStacked100AreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100AreaSeries.html), as shown in the example below.
+The Blazor Stacked 100% Area Chart allows you represent your data as part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea. You can create this type of chart in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to [`IgbStacked100AreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100AreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1037,7 +1037,7 @@ public class ContinentsBirthRate
 
 ## Blazor Stacked Spline Area Chart
 
-The Blazor Stacked Spline Area Chart is rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Chart follows all of the same requirements as area charts, with the only difference being that the visually shaded areas are stacked on top of each other. You can create this type of chart in [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to [`IgbStackedSplineAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedSplineAreaSeries.html), as shown in the example below.
+The Blazor Stacked Spline Area Chart is rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Chart follows all of the same requirements as area charts, with the only difference being that the visually shaded areas are stacked on top of each other. You can create this type of chart in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to [`IgbStackedSplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedSplineAreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1217,7 +1217,7 @@ public class ContinentsBirthRate
 
 ## Blazor Stacked 100% Spline Area Chart
 
-The Blazor Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea. You can create this type of chart in [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to [`IgbStacked100SplineAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100SplineAreaSeries.html), as shown in the example below.
+The Blazor Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea. You can create this type of chart in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to [`IgbStacked100SplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100SplineAreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1393,7 +1393,7 @@ public class ContinentsBirthRate
 
 ## Blazor Radial Area Chart
 
-The Blazor Radial Area Chart belongs to a group of [Radial Chart](radial-chart.md) and has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the Area Chart, but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to [`IgbRadialAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialAreaSeries.html), as shown in the example below.
+The Blazor Radial Area Chart belongs to a group of [Radial Chart](radial-chart.md) and has a shape of a filled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the Area Chart, but wraps the data points around a circular axis rather than stretching them horizontally. You can create this type of chart in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to [`IgbRadialAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialAreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1541,7 +1541,7 @@ public class FootballPlayerStats
 
 ## Blazor Polar Area Chart
 
-The Blazor Polar Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a straight line and then filling the area represented by the connected points. The Polar Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to [`IgbPolarAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarAreaSeries.html), as shown in the example below.
+The Blazor Polar Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a straight line and then filling the area represented by the connected points. The Polar Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to [`IgbPolarAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarAreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1694,7 +1694,7 @@ public class BoatSailingData
 
 ## Blazor Polar Spline Area Chart
 
-The Blazor Polar Spline Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a curved spline and then filling the area represented by the connected points. The Polar Spline Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to [`IgbPolarSplineAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarSplineAreaSeries.html), as shown in the example below.
+The Blazor Polar Spline Area Chart belongs to a group of [Polar Chart](polar-chart.md) and have a shape of a filled polygon, where vertices or corners are located at the polar (angle/radius) coordinates of data points and are connected by a curved spline and then filling the area represented by the connected points. The Polar Spline Area Chart uses the same concepts of data plotting as the Scatter Marker Chart, but instead wraps the points around a circle and fills in the area that is drawn, rather than stretching the points and area filled along a horizontal line. You can create this type of chart in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to [`IgbPolarSplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarSplineAreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1845,13 +1845,13 @@ The following table lists API members mentioned in above sections:
 
 | Chart Type               | Control Name    | API Members  |
 | -------------------------|-----------------|-----------------------|
-| Area                     | [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) | [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) = `Area`  |
-| Step Area                | [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) | [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) = `StepArea`  |
-| Range Area               | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)  | [`IgbRangeAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRangeAreaSeries.html)  |
-| Radial Area              | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)  | [`IgbRadialAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialAreaSeries.html)  |
-| Polar Area               | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)  | [`IgbPolarAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarAreaSeries.html)  |
-| Polar Spline Area        | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)  | [`IgbPolarSplineAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarSplineAreaSeries.html)  |
-| Stacked Area             | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)  | [`IgbStackedAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedAreaSeries.html)  |
-| Stacked Spline Area      | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)  | [`IgbStackedSplineAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedSplineAreaSeries.html)  |
-| Stacked 100% Area        | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)  | [`IgbStacked100AreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100AreaSeries.html)  |
-| Stacked 100% Spline Area | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)  | [`IgbStacked100SplineAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100SplineAreaSeries.html)  |
+| Area                     | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) | [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) = `Area`  |
+| Step Area                | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) | [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) = `StepArea`  |
+| Range Area               | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbRangeAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbRangeAreaSeries)  |
+| Radial Area              | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbRadialAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialAreaSeries)  |
+| Polar Area               | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbPolarAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarAreaSeries)  |
+| Polar Spline Area        | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbPolarSplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarSplineAreaSeries)  |
+| Stacked Area             | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbStackedAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedAreaSeries)  |
+| Stacked Spline Area      | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbStackedSplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedSplineAreaSeries)  |
+| Stacked 100% Area        | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbStacked100AreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100AreaSeries)  |
+| Stacked 100% Spline Area | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbStacked100SplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100SplineAreaSeries)  |

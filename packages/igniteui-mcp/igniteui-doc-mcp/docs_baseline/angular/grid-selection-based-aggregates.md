@@ -14,13 +14,13 @@ With the sample, illustrated beyond, you may see how multiple selection is being
 ## Topic Overview
 
 To achieve the selection-based aggregates functionality, you can use our [`Grid Selection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/components/grid/selection.html) feature, together with the [`Grid Summaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/components/grid/summaries.html).
-The Summaries are allowing for customization of the basic Summary feature functionality through extending one of the base classes, [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html), [`IgxNumberSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html) or [`IgxDateSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html), depending on the column data type and your needs.  
+The Summaries are allowing for customization of the basic Summary feature functionality through extending one of the base classes, [`IgxSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxSummaryOperand), [`IgxNumberSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand) or [`IgxDateSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxDateSummaryOperand), depending on the column data type and your needs.  
 
 ## Selection
 
-To start working with the data in the selected grid range, you will have to subscribe to events that are notifying of changes in the grid selection. That can be done by subscribing to the [`selected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#selected) event and to the [`rangeSelected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rangeSelected) event. You need to bind to both of them because the Selection feature differentiates between selecting a single cell and selecting a range of cells.
+To start working with the data in the selected grid range, you will have to subscribe to events that are notifying of changes in the grid selection. That can be done by subscribing to the [`selected`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=selected) event and to the [`rangeSelected`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rangeSelected) event. You need to bind to both of them because the Selection feature differentiates between selecting a single cell and selecting a range of cells.
 
-In the events subscription logic, you can extract the selected data using the grid's [`getSelectedData`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#getSelectedData) function and pass the selected data to the custom summary operand.
+In the events subscription logic, you can extract the selected data using the grid's [`getSelectedData`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=getSelectedData) function and pass the selected data to the custom summary operand.
 
 
 ## Summary
@@ -235,8 +235,8 @@ div.igx-grid__tfoot {
 
 ## API References
 
-- [IgxGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
-- [IgxGridCell API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
+- [IgxGridComponent API](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [IgxGridCell API](mcp:get_api_reference?platform=angular&component=IgxGridCell)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 
 ## Additional Resources
@@ -247,8 +247,8 @@ div.igx-grid__tfoot {
 - [Selection Service](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridselectionservice.html)
 - [Row Selection](row-selection.md)
 - [Cell Selection](cell-selection.md)
-- [IgxNumberSummaryOperand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html)
-- [IgxDateSummaryOperand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html)
+- [IgxNumberSummaryOperand](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand)
+- [IgxDateSummaryOperand](mcp:get_api_reference?platform=angular&component=IgxDateSummaryOperand)
 - [Summaries](summaries.md)
 - [Paging](paging.md)
 

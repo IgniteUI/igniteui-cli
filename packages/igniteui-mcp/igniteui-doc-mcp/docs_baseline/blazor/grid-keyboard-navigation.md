@@ -12,11 +12,11 @@ _premium: true
 
 # Blazor Grid Keyboard Navigation
 
-The Ignite UI for Blazor Keyboard Navigation feature in Blazor Grid provides a rich variety of keyboard interactions for the user. It enhances the accessibility of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) and allows the user to navigate through any type of elements inside (cell, row, column header, toolbar, footer, etc.). This functionality is enabled by default, and the developer has the option to override any of the default behaviors in an easy way.
+The Ignite UI for Blazor Keyboard Navigation feature in Blazor Grid provides a rich variety of keyboard interactions for the user. It enhances the accessibility of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) and allows the user to navigate through any type of elements inside (cell, row, column header, toolbar, footer, etc.). This functionality is enabled by default, and the developer has the option to override any of the default behaviors in an easy way.
 
-The tabulations of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) has been reduced so that the navigation is compliant with W3C accessibility standards and convenient to use.
+The tabulations of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) has been reduced so that the navigation is compliant with W3C accessibility standards and convenient to use.
 
-Currently, the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) introduces the following tab stops:
+Currently, the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) introduces the following tab stops:
 
 - **GroupBy or Toolbar area** (if enabled).
 - **Grid header**.
@@ -25,17 +25,17 @@ Currently, the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/Igni
 - **Grid paginator** (if enabled).
 
 > [!Note]
-> Due to this change, navigating between the cells with <kbd>TAB</kbd> and <kbd>SHIFT</kbd> + <kbd>TAB</kbd> is no longer supported in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
+> Due to this change, navigating between the cells with <kbd>TAB</kbd> and <kbd>SHIFT</kbd> + <kbd>TAB</kbd> is no longer supported in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
 > Pressing the <kbd>TAB</kbd> key now goes through the tab stops in the following order: **GroupBy** / **Toolbar** -> **Headers** -> **Body** -> **Summaries** -> **Footer / Paginator**.
 
 > [!Note]
-> Exposing any **focusable** element into the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) body via template may introduce **side effects** in the keyboard navigation, since the default
+> Exposing any **focusable** element into the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) body via template may introduce **side effects** in the keyboard navigation, since the default
 > browser behavior is not prevented. It is the developer's responsibility to prevent or modify it appropriately.
 
 ## Header Navigation
 
-A full **keyboard navigation** support in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) header is now introduced. Column headers can be easily traversed with the arrow keys. Additionally, there are a number of key combinations that trigger actions on the columns like **filtering**, **sorting**, **grouping** and etc.
-When the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) header container is focused, the following key combinations are available:
+A full **keyboard navigation** support in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) header is now introduced. Column headers can be easily traversed with the arrow keys. Additionally, there are a number of key combinations that trigger actions on the columns like **filtering**, **sorting**, **grouping** and etc.
+When the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) header container is focused, the following key combinations are available:
 
 ### Key Combinations
 
@@ -65,7 +65,7 @@ When the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.B
 
 ## Body navigation
 
-When the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) body is focused, the following key combinations are available:
+When the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) body is focused, the following key combinations are available:
 
 ### Key Combination
 
@@ -111,7 +111,7 @@ over Group Row - collapses the group.
 
 - <kbd>ALT</kbd> + <kbd>←</kbd> or <kbd>ALT</kbd> + <kbd>↑</kbd> - over Master Detail Row - collapses the details view.
 - <kbd>ALT</kbd> + <kbd>→</kbd> or <kbd>ALT</kbd> + <kbd>↓</kbd> - over Master Detail Row - expands the details view.
-- <kbd>SPACE</kbd> - over Group Row - selects all rows in the group, if [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelection) property is set to multiple.
+- <kbd>SPACE</kbd> - over Group Row - selects all rows in the group, if [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=RowSelection) property is set to multiple.
 
  <!-- ComponentEnd: Grid -->
 
@@ -123,8 +123,8 @@ Overriding the default behavior for a certain key or keys combination is one of 
 
 | API | Description | Arguments |
 |---------|-------------|-----------|
-| `GridKeydown` | An event that is emitted when any of key press/combinations described above is performed. Can be canceled. For any other key press/combination, use the default `onkeydown` event. | [`IgbGridKeydownEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridKeydownEventArgs.html) |
-| `ActiveNodeChange` | An event that is emitted when the active node is changed. You can use it to determine the Active focus position (header, tbody etc.), column index, row index or nested level. | [`IgbActiveNodeChangeEventArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbActiveNodeChangeEventArgs.html) |
+| `GridKeydown` | An event that is emitted when any of key press/combinations described above is performed. Can be canceled. For any other key press/combination, use the default `onkeydown` event. | [`IgbGridKeydownEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbGridKeydownEventArgs) |
+| `ActiveNodeChange` | An event that is emitted when the active node is changed. You can use it to determine the Active focus position (header, tbody etc.), column index, row index or nested level. | [`IgbActiveNodeChangeEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbActiveNodeChangeEventArgs) |
 
 <br />
 

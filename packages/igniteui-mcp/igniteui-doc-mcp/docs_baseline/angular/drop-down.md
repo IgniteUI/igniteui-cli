@@ -122,7 +122,7 @@ Now that you have the Ignite UI for Angular Drop Down module or directives impor
 
 ### Add Drop Down
 
-Let's create a simple drop-down that provides several option items to choose from. To achieve this, we will use the [IgxDropDownComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html) as well as the [IgxToggleAction](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoggleactiondirective.html) to open/close the drop-down.
+Let's create a simple drop-down that provides several option items to choose from. To achieve this, we will use the [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) as well as the [IgxToggleAction](mcp:get_api_reference?platform=angular&component=IgxToggleActionDirective) to open/close the drop-down.
 
 ```html
 <!-- dropdown.component.html -->
@@ -154,7 +154,7 @@ The default demo shows the use of a toggleable Drop Down List in Angular that le
 
 ### Predefined selected item
 
-Let's say we want to have a predefined selected item. One way to do this, is by handling the [opening](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html#opening) event of the drop-down component.
+Let's say we want to have a predefined selected item. One way to do this, is by handling the [opening](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=opening) event of the drop-down component.
 
 ```html
 <!-- dropdown.component.html -->
@@ -222,7 +222,7 @@ export class DropDownSample2Component {
 
 ### Grouping items
 
-To provide a more useful visual information, use the [isHeader](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownitemcomponent.html#isheader) property to group items semantically or the [disabled](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownitemcomponent.html#disabled) property to display an item as a non-interactive. You can also set the [selected](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownitemcomponent.html#selected) property on a particular item to make it the selected item. The `igx-drop-down` items have out-of-the-box support for `igxPrefix`, `igxSuffix`, and `igx-divider` directives that can contain or be set on HTML elements or other web components.
+To provide a more useful visual information, use the [isHeader](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=isheader) property to group items semantically or the [disabled](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=disabled) property to display an item as a non-interactive. You can also set the [selected](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=selected) property on a particular item to make it the selected item. The `igx-drop-down` items have out-of-the-box support for `igxPrefix`, `igxSuffix`, and `igx-divider` directives that can contain or be set on HTML elements or other web components.
 
 ```html
 <!-- dropdown.component.html -->
@@ -325,7 +325,7 @@ export class DropDownSample3Component {
 
 ### Grouping hierarchical data
 
-The `igx-drop-down` items can also be grouped using the [`igx-drop-down-item-group`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowngroupcomponent.html) container, making it easier for users to differentiate separate categories. The `igx-drop-down-item-group` accepts `igx-drop-down-item` elements as its content and renders them in a grouped fashion.
+The `igx-drop-down` items can also be grouped using the [`igx-drop-down-item-group`](mcp:get_api_reference?platform=angular&component=IgxDropDownGroupComponent) container, making it easier for users to differentiate separate categories. The `igx-drop-down-item-group` accepts `igx-drop-down-item` elements as its content and renders them in a grouped fashion.
 
 ```typescript
 // dropdown.component.ts
@@ -500,7 +500,7 @@ igx-switch {
 
 ### Drop Down as menu
 
-You can configure the drop-down to behave as a menu. To do this, set the [ISelectionEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iselectioneventargs.html) interface [cancel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iselectioneventargs.html#cancel) member to _true_ in the [selectionChanging](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html#selectionChanging) event handler. In this way, the selected item is not preserved when opening the menu and previous selections get invalidated. Still, you can get the clicked item through the [newSelection](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iselectioneventargs.html#newSelection) member value in the event.
+You can configure the drop-down to behave as a menu. To do this, set the [ISelectionEventArgs](mcp:get_api_reference?platform=angular&component=ISelectionEventArgs) interface [cancel](mcp:get_api_reference?platform=angular&component=ISelectionEventArgs&member=cancel) member to _true_ in the [selectionChanging](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=selectionChanging) event handler. In this way, the selected item is not preserved when opening the menu and previous selections get invalidated. Still, you can get the clicked item through the [newSelection](mcp:get_api_reference?platform=angular&component=ISelectionEventArgs&member=newSelection) member value in the event.
 
 ```html
 <!-- dropdown.component.html -->
@@ -641,9 +641,9 @@ export class DropdownMenuComponent {
 
 The following sample demonstrates how to implement a multi-level drop down menu that allows the user to quickly and easily navigate through a hierarchy of content by hovering on a series of nested menus.
 
-For the implementation of the multi-level drop down menu we will use the [`IgxDropDownComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html) as well as a custom directive and service described below.
+For the implementation of the multi-level drop down menu we will use the [`IgxDropDownComponent`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) as well as a custom directive and service described below.
 
-In order to configure the [`IgxDropDownItem`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownitemcomponent.html) to open an additional drop down, add the `multiLevel` directive that would handle the [`overlay settings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) of the nested drop down and manages its opened/closed state through its `innerDropdown` property.
+In order to configure the [`IgxDropDownItem`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent) to open an additional drop down, add the `multiLevel` directive that would handle the [`overlay settings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) of the nested drop down and manages its opened/closed state through its `innerDropdown` property.
 
 ```html
 <igx-drop-down #dropdown1>
@@ -659,7 +659,7 @@ In order to configure the [`IgxDropDownItem`](https://www.infragistics.com/produ
 </igx-drop-down>
 ```
 
-To configure the multi-level drop down to behave as a menu, you need to handle the [selectionChanging](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html#selectionChanging) event of all drop downs in the hierarchy and cancel the default behavior. Then, in order to handle the selection properly you could use the `MultiLevelService`'s `handleSelection` method and in order to prevent closing the drop down when clicking on a menu item, use the `MultiLevelService`'s `handleClosing` methods.
+To configure the multi-level drop down to behave as a menu, you need to handle the [selectionChanging](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=selectionChanging) event of all drop downs in the hierarchy and cancel the default behavior. Then, in order to handle the selection properly you could use the `MultiLevelService`'s `handleSelection` method and in order to prevent closing the drop down when clicking on a menu item, use the `MultiLevelService`'s `handleClosing` methods.
 
 ```ts
 @ViewChildren(IgxDropDownComponent, { read: IgxDropDownComponent })
@@ -948,9 +948,9 @@ $custom-button-theme: flat-button-theme(
 
 ### Navigation directive
 
-Use the [igxDropDownItemNavigation](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownitemnavigationdirective.html) directive to enable keyboard navigation for the `igxDropDown` component. In order to allow the directive to handle all triggered events, it should be applied to the active (focused) element or a parent container. By default, a drop-down or its items don't take focus, so the directive can be placed on a `button` or `input` that will control the drop-down. The navigation directive value should target a component that is an instance or a descendant of the [IgxDropDownBaseDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownbasedirective.html) class.
+Use the [igxDropDownItemNavigation](mcp:get_api_reference?platform=angular&component=IgxDropDownItemNavigationDirective) directive to enable keyboard navigation for the `igxDropDown` component. In order to allow the directive to handle all triggered events, it should be applied to the active (focused) element or a parent container. By default, a drop-down or its items don't take focus, so the directive can be placed on a `button` or `input` that will control the drop-down. The navigation directive value should target a component that is an instance or a descendant of the [IgxDropDownBaseDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownbasedirective.html) class.
 
-The following sample demonstrates an input that opens and closes the `igxDropDown` instance on click. Applying the [igxDropDownItemNavigation](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownitemnavigationdirective.html) directive on the input itself will enable keyboard navigation when using the up and down arrow keys. This relies on the default drop-down behavior with the [allowItemsFocus](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html#allowItemsFocus) property set to `false` to allow the input to maintain focus.
+The following sample demonstrates an input that opens and closes the `igxDropDown` instance on click. Applying the [igxDropDownItemNavigation](mcp:get_api_reference?platform=angular&component=IgxDropDownItemNavigationDirective) directive on the input itself will enable keyboard navigation when using the up and down arrow keys. This relies on the default drop-down behavior with the [allowItemsFocus](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=allowItemsFocus) property set to `false` to allow the input to maintain focus.
 
 ```html
 <!-- input-dropdown.component.html -->
@@ -1321,12 +1321,12 @@ $custom-drop-down-theme: drop-down-theme(
 
 ## API References
 
-- [IgxDropDownComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html)
+- [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
 - [IgxDropDownComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-drop-down-theme)
-- [IgxDropDownItemComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownitemcomponent.html).
-- [IgxOverlay](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html)
+- [IgxDropDownItemComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent).
+- [IgxOverlay](mcp:get_api_reference?platform=angular&component=OverlaySettings)
 - [IgxOverlay Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
-- [IgxDividerDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdividerdirective.html)
+- [IgxDividerDirective](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
 - [IgxDividerDirective Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-divider-theme)
 
 ## Theming Dependencies

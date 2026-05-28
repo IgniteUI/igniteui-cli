@@ -59,7 +59,7 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## Grid Setup
 
-Let's start by creating our [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) and binding it to our data. We will also enable both filtering and sorting for the columns.
+Let's start by creating our [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) and binding it to our data. We will also enable both filtering and sorting for the columns.
 
 ```html
 <igc-grid id="grid" auto-generate="false" width="100%" height="560px" allow-filtering="true">
@@ -80,9 +80,9 @@ Let's start by creating our [`IgcGridComponent`](https://www.infragistics.com/pr
 
 ## Toolbar's Column Hiding UI
 
-The built-in Column Hiding UI is placed inside an `DropDown` in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
+The built-in Column Hiding UI is placed inside an `DropDown` in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
 
-For this purpose all we have to do is set both the [`IgcGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractions.html) and the [`IgcGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhiding.html) inside of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
+For this purpose all we have to do is set both the [`IgcGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractions.html) and the [`IgcGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbarhiding.html) inside of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ```html
 <igc-grid>
@@ -104,9 +104,9 @@ For this purpose all we have to do is set both the [`IgcGridToolbarActions`](htt
 
 <!-- end: Web Components -->
 
-The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
+The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
 
-By using the [`title`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
+By using the [`title`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
 
 ```html
 <igc-grid id="grid">
@@ -132,7 +132,7 @@ You can see the result of the code from above at the beginning of this article i
 
 ### Disable hiding of a column
 
-We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`disableHiding`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#disableHiding) property to true.
+We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=disableHiding) property to true.
 
 ```html
 <igc-grid>
@@ -265,15 +265,15 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## API References
 
-In this article we learned how to use the built-in column hiding UI in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
+In this article we learned how to use the built-in column hiding UI in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
 
 - `ColumnActionsComponent`
 
 Additional components with relative APIs that were used:
 
-[`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) properties:
+[`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) properties:
 
-- [`disableHiding`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#disableHiding)
+- [`disableHiding`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=disableHiding)
 
 [`IgcGridToolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbar.html) properties:
 
@@ -285,7 +285,7 @@ Additional components with relative APIs that were used:
 - [`IgcGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbaractions.html)
 - [`IgcGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridtoolbartitle.html)
 
-[`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) events:
+[`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) events:
 
 - `ColumnVisibilityChanged`
 

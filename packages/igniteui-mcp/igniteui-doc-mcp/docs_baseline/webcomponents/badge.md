@@ -28,7 +28,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcBadgeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcBadgeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcBadgeComponent } from "igniteui-webcomponents";
@@ -39,13 +39,13 @@ defineComponents(IgcBadgeComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcBadgeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html) is as follows:
+The simplest way to start using the [`IgcBadgeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent) is as follows:
 
 ```html
 <igc-badge></igc-badge>
 ```
 
-To display a subtle border around the badge, you can set the [`outlined`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html#outlined) attribute of the badge.
+To display a subtle border around the badge, you can set the [`outlined`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent&member=outlined) attribute of the badge.
 
 ```html
 <igc-badge outlined></igc-badge>
@@ -55,7 +55,7 @@ To display a subtle border around the badge, you can set the [`outlined`](https:
 
 ### Variants
 
-The Ignite UI for Web Components badge supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `primary`(default), `info`, `success`, `warning`, or `danger` to the [`variant`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html#variant) attribute.
+The Ignite UI for Web Components badge supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `primary`(default), `info`, `success`, `warning`, or `danger` to the [`variant`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent&member=variant) attribute.
 
 ```html
 <igc-badge variant="success"></igc-badge>
@@ -68,7 +68,7 @@ The Ignite UI for Web Components badge supports several pre-defined stylistic va
 
 ### Shape
 
-The badge component supports `rounded`(default) and `square` shapes. These values can be assigned to the [`shape`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html#shape) attribute.
+The badge component supports `rounded`(default) and `square` shapes. These values can be assigned to the [`shape`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent&member=shape) attribute.
 
 ```html
 <igc-badge shape="square"></igc-badge>
@@ -94,7 +94,7 @@ The Ignite UI for Web Components badge component can also render as a minimal do
 
 ## Styling
 
-The [`IgcBadgeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html) component exposes a `base` CSS part that can be used to change all of its style properties.
+The [`IgcBadgeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent) component exposes a `base` CSS part that can be used to change all of its style properties.
 
 ```css
 igc-badge::part(base) {
@@ -118,7 +118,7 @@ igc-badge::part(base) {
 
 ## API References
 
-- [`IgcBadgeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html)
+- [`IgcBadgeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

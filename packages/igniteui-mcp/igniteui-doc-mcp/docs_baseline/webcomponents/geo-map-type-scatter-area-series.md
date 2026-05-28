@@ -46,16 +46,16 @@ The following table summarizes properties of GeographicScatterAreaSeries used fo
 ## Color Scale
 
 Use the ColorScale property of the [`IgcGeographicScatterAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html) to resolve colors values of points and thus fill surface of the geographic series. The colors are smoothly interpolated around the shape of the surface by applying a pixel-wise triangle rasterizer to a triangulation data. Because rendering of the surface is pixel-wise, the color scale uses colors instead of brushes.
-The provided [`IgcCustomPaletteColorScaleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccustompalettecolorscalecomponent.html) class should satisfy most coloring needs, but the ColorScale base class can be inherited by the application for custom coloring logic.
+The provided [`IgcCustomPaletteColorScaleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCustomPaletteColorScaleComponent) class should satisfy most coloring needs, but the ColorScale base class can be inherited by the application for custom coloring logic.
 
-The following table list properties of the [`IgcCustomPaletteColorScaleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccustompalettecolorscalecomponent.html) affecting surface coloring of the GeographicScatterAreaSeries.
+The following table list properties of the [`IgcCustomPaletteColorScaleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCustomPaletteColorScaleComponent) affecting surface coloring of the GeographicScatterAreaSeries.
 
 | Property Name  | Property Type   | Description   |
 |--------------|---------------| ---------------|
-|[`palette`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccustompalettecolorscalecomponent.html#palette)| ObservableCollection<Color> |Gets or sets the collection of colors to select from or to interpolate between.|
-|[`interpolationMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccustompalettecolorscalecomponent.html#interpolationMode)|[`ColorScaleInterpolationMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.colorscaleinterpolationmode.html)|Gets or sets the method getting a color from the Palette.|
-|[`maximumValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccustompalettecolorscalecomponent.html#maximumValue)|double|The highest value to assign a color. Any given value greater than this value will be Transparent.|
-|[`minimumValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccustompalettecolorscalecomponent.html#minimumValue)|double|The lowest value to assign a color. Any given value less than this value will be Transparent.|
+|[`palette`](mcp:get_api_reference?platform=webcomponents&component=IgcCustomPaletteColorScaleComponent&member=palette)| ObservableCollection<Color> |Gets or sets the collection of colors to select from or to interpolate between.|
+|[`interpolationMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCustomPaletteColorScaleComponent&member=interpolationMode)|[`ColorScaleInterpolationMode`](mcp:get_api_reference?platform=webcomponents&component=ColorScaleInterpolationMode)|Gets or sets the method getting a color from the Palette.|
+|[`maximumValue`](mcp:get_api_reference?platform=webcomponents&component=IgcCustomPaletteColorScaleComponent&member=maximumValue)|double|The highest value to assign a color. Any given value greater than this value will be Transparent.|
+|[`minimumValue`](mcp:get_api_reference?platform=webcomponents&component=IgcCustomPaletteColorScaleComponent&member=minimumValue)|double|The lowest value to assign a color. Any given value less than this value will be Transparent.|
 
 ## Code Snippet
 
@@ -131,7 +131,7 @@ createAreaSeries(data: any[]) {
 
 - [`colorMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html#colorMemberPath)
 - [`colorScale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html#colorScale)
-- [`IgcCustomPaletteColorScaleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccustompalettecolorscalecomponent.html)
+- [`IgcCustomPaletteColorScaleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCustomPaletteColorScaleComponent)
 - [`IgcGeographicContourLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographiccontourlineseriescomponent.html)
 - [`IgcGeographicScatterAreaSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicscatterareaseriescomponent.html)
 - `ItemsSource`

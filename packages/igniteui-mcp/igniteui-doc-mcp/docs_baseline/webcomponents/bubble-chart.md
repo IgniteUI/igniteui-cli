@@ -15,7 +15,7 @@ The Ignite UI for Web Components Bubble Chart is a type of [Scatter Chart](scatt
 
 ## Web Components Bubble Chart Example
 
-You can create Ignite UI for Web Components Bubble Chart in [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control using the [`IgcBubbleSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html) and two numeric axes, as shown in the example below.
+You can create Ignite UI for Web Components Bubble Chart in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control using the [`IgcBubbleSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent) and two numeric axes, as shown in the example below.
 
 ```typescript
 export class CountryStatsAfricaItem {
@@ -84,7 +84,7 @@ export class CountryStatsEurope extends Array<CountryStatsEuropeItem> {
 
 ## Web Components Bubble Chart with Single Series
 
-You can bind your data to `ItemsSource` property of [`IgcBubbleSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html) and map data columns using its [`xMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#xMemberPath), [`yMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#yMemberPath), [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#radiusMemberPath) properties, as shown in the example below:
+You can bind your data to `ItemsSource` property of [`IgcBubbleSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent) and map data columns using its [`xMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=xMemberPath), [`yMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=yMemberPath), [`radiusMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=radiusMemberPath) properties, as shown in the example below:
 
 ```typescript
 export class WorldStatsItem {
@@ -140,7 +140,7 @@ export class WorldStats extends Array<WorldStatsItem> {
 
 ## Web Components Bubble Chart with Multiple Series
 
-In Web Components Bubble Chart, binding multiple data sources works by setting each new data source to `ItemsSource` property of a additional [`IgcBubbleSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html), as shown in the example below:
+In Web Components Bubble Chart, binding multiple data sources works by setting each new data source to `ItemsSource` property of a additional [`IgcBubbleSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent), as shown in the example below:
 
 ```typescript
 export class CountryStatsAfricaItem {
@@ -209,7 +209,7 @@ export class CountryStatsEurope extends Array<CountryStatsEuropeItem> {
 
 ## Web Components Bubble Chart Styling
 
-In Web Components Bubble Chart, you can customize shape of bubble markers using [`markerType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#markerType) property, their size with [`radiusScale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#radiusScale) property, and their appearance using [`markerBrush`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#markerBrush), [`markerOutline`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#markerOutline), [`markerThickness`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#markerThickness) properties. In addition, you can also color bubble markers based on a data column using [`fillMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#fillMemberPath) and [`fillScale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#fillScale) properties. In this example, usage of above properties is demonstrated.
+In Web Components Bubble Chart, you can customize shape of bubble markers using [`markerType`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerType) property, their size with [`radiusScale`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=radiusScale) property, and their appearance using [`markerBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerBrush), [`markerOutline`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerOutline), [`markerThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerThickness) properties. In addition, you can also color bubble markers based on a data column using [`fillMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=fillMemberPath) and [`fillScale`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=fillScale) properties. In this example, usage of above properties is demonstrated.
 
 ```typescript
 export class WorldStatsItem {
@@ -272,17 +272,17 @@ export class WorldStats extends Array<WorldStatsItem> {
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html)
-- [`IgcBubbleSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html)
-- [`IgcScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcscatterseriescomponent.html)
+- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+- [`IgcBubbleSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent)
+- [`IgcScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSeriesComponent)
 - `ItemsSource`
-- [`fillMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#fillMemberPath)
-- [`fillScale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#fillScale)
-- [`markerType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#markerType)
-- [`markerBrush`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#markerBrush)
-- [`markerOutline`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#markerOutline)
-- [`markerThickness`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#markerThickness)
-- [`radiusScale`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#radiusScale)
-- [`radiusMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#radiusMemberPath)
-- [`xMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#xMemberPath)
-- [`yMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html#yMemberPath)
+- [`fillMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=fillMemberPath)
+- [`fillScale`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=fillScale)
+- [`markerType`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerType)
+- [`markerBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerBrush)
+- [`markerOutline`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerOutline)
+- [`markerThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=markerThickness)
+- [`radiusScale`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=radiusScale)
+- [`radiusMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=radiusMemberPath)
+- [`xMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=xMemberPath)
+- [`yMemberPath`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent&member=yMemberPath)

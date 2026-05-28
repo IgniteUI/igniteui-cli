@@ -15,7 +15,7 @@ The Ignite UI for Web Components Donut Chart is similar to the [Pie Chart](pie
 
 ## Web Components Donut Chart Example
 
-You can create Donut Chart using the [`IgcDoughnutChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdoughnutchartcomponent.html) control by binding your data as shown in the example below.
+You can create Donut Chart using the [`IgcDoughnutChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDoughnutChartComponent) control by binding your data as shown in the example below.
 
 ```typescript
 export class EnergyGlobalDemandItem {
@@ -178,8 +178,8 @@ You can find more information about related chart types in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgcDoughnutChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdoughnutchartcomponent.html)
-- [`allowSliceExplosion`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdoughnutchartcomponent.html#allowSliceExplosion)
-- [`allowSliceSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdoughnutchartcomponent.html#allowSliceSelection)
-- [`innerExtent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdoughnutchartcomponent.html#innerExtent)
+- [`IgcDoughnutChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDoughnutChartComponent)
+- [`allowSliceExplosion`](mcp:get_api_reference?platform=webcomponents&component=IgcDoughnutChartComponent&member=allowSliceExplosion)
+- [`allowSliceSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcDoughnutChartComponent&member=allowSliceSelection)
+- [`innerExtent`](mcp:get_api_reference?platform=webcomponents&component=IgcDoughnutChartComponent&member=innerExtent)
 - `SliceClick`

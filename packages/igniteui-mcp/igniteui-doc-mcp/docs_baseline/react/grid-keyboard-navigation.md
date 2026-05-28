@@ -12,11 +12,11 @@ _premium: true
 
 # React Grid Keyboard Navigation
 
-The Ignite UI for React Keyboard Navigation feature in React Grid provides a rich variety of keyboard interactions for the user. It enhances the accessibility of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) and allows the user to navigate through any type of elements inside (cell, row, column header, toolbar, footer, etc.). This functionality is enabled by default, and the developer has the option to override any of the default behaviors in an easy way.
+The Ignite UI for React Keyboard Navigation feature in React Grid provides a rich variety of keyboard interactions for the user. It enhances the accessibility of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) and allows the user to navigate through any type of elements inside (cell, row, column header, toolbar, footer, etc.). This functionality is enabled by default, and the developer has the option to override any of the default behaviors in an easy way.
 
-The tabulations of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) has been reduced so that the navigation is compliant with W3C accessibility standards and convenient to use.
+The tabulations of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) has been reduced so that the navigation is compliant with W3C accessibility standards and convenient to use.
 
-Currently, the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) introduces the following tab stops:
+Currently, the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) introduces the following tab stops:
 
 - **GroupBy or Toolbar area** (if enabled).
 - **Grid header**.
@@ -25,17 +25,17 @@ Currently, the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react
 - **Grid paginator** (if enabled).
 
 > [!Note]
-> Due to this change, navigating between the cells with <kbd>TAB</kbd> and <kbd>SHIFT</kbd> + <kbd>TAB</kbd> is no longer supported in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
+> Due to this change, navigating between the cells with <kbd>TAB</kbd> and <kbd>SHIFT</kbd> + <kbd>TAB</kbd> is no longer supported in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 > Pressing the <kbd>TAB</kbd> key now goes through the tab stops in the following order: **GroupBy** / **Toolbar** -> **Headers** -> **Body** -> **Summaries** -> **Footer / Paginator**.
 
 > [!Note]
-> Exposing any **focusable** element into the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) body via template may introduce **side effects** in the keyboard navigation, since the default
+> Exposing any **focusable** element into the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) body via template may introduce **side effects** in the keyboard navigation, since the default
 > browser behavior is not prevented. It is the developer's responsibility to prevent or modify it appropriately.
 
 ## Header Navigation
 
-A full **keyboard navigation** support in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) header is now introduced. Column headers can be easily traversed with the arrow keys. Additionally, there are a number of key combinations that trigger actions on the columns like **filtering**, **sorting**, **grouping** and etc.
-When the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) header container is focused, the following key combinations are available:
+A full **keyboard navigation** support in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) header is now introduced. Column headers can be easily traversed with the arrow keys. Additionally, there are a number of key combinations that trigger actions on the columns like **filtering**, **sorting**, **grouping** and etc.
+When the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) header container is focused, the following key combinations are available:
 
 ### Key Combinations
 
@@ -65,7 +65,7 @@ When the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/
 
 ## Body navigation
 
-When the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) body is focused, the following key combinations are available:
+When the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) body is focused, the following key combinations are available:
 
 ### Key Combination
 
@@ -111,7 +111,7 @@ over Group Row - collapses the group.
 
 - <kbd>ALT</kbd> + <kbd>←</kbd> or <kbd>ALT</kbd> + <kbd>↑</kbd> - over Master Detail Row - collapses the details view.
 - <kbd>ALT</kbd> + <kbd>→</kbd> or <kbd>ALT</kbd> + <kbd>↓</kbd> - over Master Detail Row - expands the details view.
-- <kbd>SPACE</kbd> - over Group Row - selects all rows in the group, if [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowSelection) property is set to multiple.
+- <kbd>SPACE</kbd> - over Group Row - selects all rows in the group, if [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowSelection) property is set to multiple.
 
  <!-- ComponentEnd: Grid -->
 

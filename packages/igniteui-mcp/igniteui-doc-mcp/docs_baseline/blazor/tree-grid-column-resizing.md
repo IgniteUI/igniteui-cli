@@ -13,7 +13,7 @@ _premium: true
 
 # Blazor  Tree Grid Column Resizing Overview
 
-The Ignite UI for Blazor Column Resizing feature in Blazor Tree Grid allows users to easily adjust the width of the columns of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html). By default, they will see a temporary resize indicator while the drag resizing operation is in effect. There are several resizing options available - Resizing Columns in Pixels/Percentages, Restrict Column Resizing, Auto-Size Columns on Double Click, and Auto-Size Columns on Initialization.
+The Ignite UI for Blazor Column Resizing feature in Blazor Tree Grid allows users to easily adjust the width of the columns of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid). By default, they will see a temporary resize indicator while the drag resizing operation is in effect. There are several resizing options available - Resizing Columns in Pixels/Percentages, Restrict Column Resizing, Auto-Size Columns on Double Click, and Auto-Size Columns on Initialization.
 
 ## Blazor  Tree Grid Column Resizing Example
 
@@ -159,7 +159,7 @@ public class EmployeesFlatDetails
 }
 ```
 
-**Column resizing** is also enabled per-column level, meaning that the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) can have a mix of resizable and non-resizable columns. This is done via the [`Resizable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Resizable) input of the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html).
+**Column resizing** is also enabled per-column level, meaning that the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) can have a mix of resizable and non-resizable columns. This is done via the [`Resizable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Resizable) input of the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn).
 
 ```razor
 <IgbColumn Field="ID" Resizable=true Width="100px"></IgbColumn>
@@ -167,7 +167,7 @@ public class EmployeesFlatDetails
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
-You can subscribe to the `ColumnResized` event of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) to implement some custom logic when a column is resized. Both, previous and new column widths, as well as the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) object, are exposed through the event arguments.
+You can subscribe to the `ColumnResized` event of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) to implement some custom logic when a column is resized. Both, previous and new column widths, as well as the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) object, are exposed through the event arguments.
 
 ```razor
 <IgbTreeGrid Data=data AutoGenerate=false ColumnResized="onResize" PrimaryKey="ID" ForeignKey="ParentID">
@@ -216,7 +216,7 @@ When resizing columns with width in percentages, the horizontal amount of the mo
 
 ## Restrict Column Resizing
 
-You can also configure the minimum and maximum allowable column widths. This is done via the [`MinWidth`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_MinWidth) and [`MaxWidth`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_MaxWidth) inputs of the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html). In this case the resize indicator drag operation is restricted to notify the user that the column cannot be resized outside the boundaries defined by [`MinWidth`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_MinWidth) and [`MaxWidth`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_MaxWidth).
+You can also configure the minimum and maximum allowable column widths. This is done via the [`MinWidth`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=MinWidth) and [`MaxWidth`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=MaxWidth) inputs of the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). In this case the resize indicator drag operation is restricted to notify the user that the column cannot be resized outside the boundaries defined by [`MinWidth`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=MinWidth) and [`MaxWidth`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=MaxWidth).
 
 ```razor
 <IgbColumn Field="ContactTitle" Resizable=true Width="100px" MinWidth="60px" MaxWidth="230px"></IgbColumn>
@@ -244,9 +244,9 @@ or
 
 ## Auto-Size Columns on Double Click
 
-Each column can be **auto sized** by double clicking the right side of the header - the column will be sized to the longest currently visible cell value, including the header itself. This behavior is enabled by default, no additional configuration is needed. However, the column will not be auto-sized in case [`MaxWidth`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_MaxWidth) is set on that column and the new width exceeds that [`MaxWidth`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_MaxWidth) value. In this case the column will be sized according to preset [`MaxWidth`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_MaxWidth) value.
+Each column can be **auto sized** by double clicking the right side of the header - the column will be sized to the longest currently visible cell value, including the header itself. This behavior is enabled by default, no additional configuration is needed. However, the column will not be auto-sized in case [`MaxWidth`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=MaxWidth) is set on that column and the new width exceeds that [`MaxWidth`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=MaxWidth) value. In this case the column will be sized according to preset [`MaxWidth`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=MaxWidth) value.
 
-You can also auto-size a column dynamically using the exposed [`Autosize`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Autosize) method on [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html).
+You can also auto-size a column dynamically using the exposed [`Autosize`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Autosize) method on [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn).
 
 ```razor
 @code {
@@ -264,7 +264,7 @@ You can also auto-size a column dynamically using the exposed [`Autosize`](https
 
 ## Auto-Size Columns on Initialization
 
-Each column can be set to auto-size on initialization by setting [`Width`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Width) to 'auto':
+Each column can be set to auto-size on initialization by setting [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width) to 'auto':
 
 ```razor
 <IgbColumn Width="auto"></IgbColumn>
@@ -590,8 +590,8 @@ public class EmployeesFlatDetails
 
 ## API References
 
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
-- [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
 
 ## Additional Resources
 

@@ -13,7 +13,7 @@ The Web Components ZoomSlider control provides zooming functionality to range-en
 
 ## Web Components Zoom Slider Example
 
-The following sample demonstrates how to use [`IgcZoomSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igczoomslidercomponent.html) to navigate content in [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html).
+The following sample demonstrates how to use [`IgcZoomSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent) to navigate content in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent).
 
 ```typescript
 export class SampleScatterStats {
@@ -432,7 +432,7 @@ npm install --save igniteui-webcomponents-charts
 
 ## Component Modules
 
-The [`IgcZoomSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igczoomslidercomponent.html) requires the following modules:
+The [`IgcZoomSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent) requires the following modules:
 
 ```ts
 import { IgcZoomSliderModule } from 'igniteui-webcomponents-charts';
@@ -463,5 +463,5 @@ You can find more information about charts in [Chart Features](charts/chart-feat
 
 The following is a list of API members mentioned in the above sections:
 
-- [`IgcZoomSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igczoomslidercomponent.html)
-- [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html)
+- [`IgcZoomSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent)
+- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)

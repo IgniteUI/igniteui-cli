@@ -133,14 +133,14 @@ Copy behavior is working with the default interaction defined by the browser and
 - The current version of this feature covers only the `copy` from grid behavior. Later on we plan to expose `paste` within grid behavior.
  You can use a custom paste handler in order to configure `paste` behavior, have a look at our [Paste from Excel topic](paste-excel.md). 
 ## API Usage
-We expose [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#clipboardOptions) @Input property, which handles the following options:
-- [`enabled`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#clipboardoptions.enabled) Enables/disables copying of selected cells.
-- [`copyHeaders`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#clipboardoptions.copyHeaders) Include the associated headers when copying.
-- [`copyFormatters`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#clipboardoptions.copyFormatters) Apply any existing column formatters to the copied data.
-- [`separator`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#clipboardoptions.separator) The string separator to use the for formatting the data in the clipboard. Default is `/t`
+We expose [`clipboardOptions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboardOptions) @Input property, which handles the following options:
+- [`enabled`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboardoptions.enabled) Enables/disables copying of selected cells.
+- [`copyHeaders`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboardoptions.copyHeaders) Include the associated headers when copying.
+- [`copyFormatters`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboardoptions.copyFormatters) Apply any existing column formatters to the copied data.
+- [`separator`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboardoptions.separator) The string separator to use the for formatting the data in the clipboard. Default is `/t`
 > [!NOTE]
 > Excel can automatically detect text that is separated by tabs (tab-delimited `/t`) and properly paste the data into separate columns. When the paste format doesn't work, and everything you paste appears in a single column, then Excel's delimiter is set to another character, or your text is using spaces instead of tabs.
-- [`gridCopy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#gridCopy) Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#clipboardОptions)
+- [`gridCopy`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=gridCopy) Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboard%D0%9Eptions)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Grid overview](grid.md)

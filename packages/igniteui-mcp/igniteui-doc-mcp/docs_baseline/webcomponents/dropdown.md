@@ -44,7 +44,7 @@ defineComponents(IgcDropdownComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) is as follows:
+The simplest way to start using the [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) is as follows:
 
 ```html
 <igc-dropdown>
@@ -57,7 +57,7 @@ The simplest way to start using the [`IgcDropdownComponent`](https://www.infragi
 
 ### Target
 
-The Web Components Dropdown list is positioned relatively to its target. The `target` slot allows you to provide a built-in component which toggles the `open` property on click. In some cases you would want to use an external target or use another event to toggle the opening of the Dropdown. You can achieve this using the [`showTarget`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#showTarget), [`hide`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#hide) and [`toggleTarget`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#toggleTarget) methods which allow you to provide the target as a parameter. By default, the Dropdown list uses `absolute` CSS position. You will need to set the [`IgcPositionStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpositionstrategy.html) of the Web Components Dropdown to `fixed` when the target element is inside a fixed container, but the Dropdown is not. The Dropdown list is automatically sized based on its content, if you want the list to have the same width as the target, you should set the [`sameWidth`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#sameWidth) property to `true`.
+The Web Components Dropdown list is positioned relatively to its target. The `target` slot allows you to provide a built-in component which toggles the `open` property on click. In some cases you would want to use an external target or use another event to toggle the opening of the Dropdown. You can achieve this using the [`showTarget`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent&member=showTarget), [`hide`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent&member=hide) and [`toggleTarget`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent&member=toggleTarget) methods which allow you to provide the target as a parameter. By default, the Dropdown list uses `absolute` CSS position. You will need to set the [`IgcPositionStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcPositionStrategy) of the Web Components Dropdown to `fixed` when the target element is inside a fixed container, but the Dropdown is not. The Dropdown list is automatically sized based on its content, if you want the list to have the same width as the target, you should set the [`sameWidth`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent&member=sameWidth) property to `true`.
 
 ```css
 /* shared styles are loaded from: */
@@ -66,7 +66,7 @@ The Web Components Dropdown list is positioned relatively to its target. The `ta
 
 ### Position
 
-The preferred placement of the Web Components Dropdown can be set using the [`placement`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#placement) property. The default placement of the Dropdown is `bottom-start`. The [`flip`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#flip) property determines whether the placement should be flipped if there is not enough space to display the Dropdown at the specified placement. The distance from the Web Components Dropdown list to its target can be specified using the [`distance`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#distance) property.
+The preferred placement of the Web Components Dropdown can be set using the [`placement`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent&member=placement) property. The default placement of the Dropdown is `bottom-start`. The [`flip`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent&member=flip) property determines whether the placement should be flipped if there is not enough space to display the Dropdown at the specified placement. The distance from the Web Components Dropdown list to its target can be specified using the [`distance`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent&member=distance) property.
 
 ```css
 igc-dropdown::part(list) {
@@ -89,11 +89,11 @@ igc-dropdown::part(list) {
 
 ### Selection
 
-The [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) emits the `Change` event when the user selects an item. The [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#select) method of the Dropdown allows you to select an item by its index or value.
+The [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) emits the `Change` event when the user selects an item. The [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent&member=select) method of the Dropdown allows you to select an item by its index or value.
 
 ### Item
 
-The [`IgcDropdownItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html) represents a selectable item in the Dropdown list. You could predefine a selected item by setting the [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html#selected) property. You could also disable an item so that it can't be selected using the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html#disabled) property. The [`IgcDropdownItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html) has a default slot which allows you to specify the content of the item. You could also provide custom content to be rendered before or after the content using the `prefix` and `suffix` slots. The [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html#value) property allows you to provide a custom value to an item. If the [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html#value) is not set, it resolves to the text content of the item.
+The [`IgcDropdownItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownItemComponent) represents a selectable item in the Dropdown list. You could predefine a selected item by setting the [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownItemComponent&member=selected) property. You could also disable an item so that it can't be selected using the [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownItemComponent&member=disabled) property. The [`IgcDropdownItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownItemComponent) has a default slot which allows you to specify the content of the item. You could also provide custom content to be rendered before or after the content using the `prefix` and `suffix` slots. The [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownItemComponent&member=value) property allows you to provide a custom value to an item. If the [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownItemComponent&member=value) is not set, it resolves to the text content of the item.
 
 ```css
 /* shared styles are loaded from: */
@@ -102,7 +102,7 @@ The [`IgcDropdownItemComponent`](https://www.infragistics.com/products/ignite-ui
 
 ### Header
 
-You could use the [`IgcDropdownHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownheadercomponent.html) to provide a header for a group of items.
+You could use the [`IgcDropdownHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownHeaderComponent) to provide a header for a group of items.
 
 ```css
 /* shared styles are loaded from: */
@@ -111,7 +111,7 @@ You could use the [`IgcDropdownHeaderComponent`](https://www.infragistics.com/pr
 
 ### Group
 
-The Web Components Dropdown's items can also be grouped using the [`IgcDropdownGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowngroupcomponent.html), making it easier for users to differentiate separate categories. See it in action in this Web Components Dropdown List example:
+The Web Components Dropdown's items can also be grouped using the [`IgcDropdownGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownGroupComponent), making it easier for users to differentiate separate categories. See it in action in this Web Components Dropdown List example:
 
 ```css
 /* shared styles are loaded from: */
@@ -120,15 +120,15 @@ The Web Components Dropdown's items can also be grouped using the [`IgcDropdownG
 
 ### Scroll Strategy
 
-The [`scrollStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#scrollStrategy) property determines the behavior of the component during scrolling the container of the target element. The default value is `scroll` which means that the Dropdown will be scrolled with its target. Setting the property to `block` will block the scrolling if the Dropdown is opened. You could also set the property to `close` which means that the Dropdown will be closed automatically on scroll.
+The [`scrollStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent&member=scrollStrategy) property determines the behavior of the component during scrolling the container of the target element. The default value is `scroll` which means that the Dropdown will be scrolled with its target. Setting the property to `block` will block the scrolling if the Dropdown is opened. You could also set the property to `close` which means that the Dropdown will be closed automatically on scroll.
 
 ### Keep Open
 
-By default, the Dropdown is closed automatically when the user clicks outside of it or selects an item. You could prevent this behavior using the [`keepOpenOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#keepOpenOnOutsideClick) and [`keepOpenOnSelect`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#keepOpenOnSelect) properties.
+By default, the Dropdown is closed automatically when the user clicks outside of it or selects an item. You could prevent this behavior using the [`keepOpenOnOutsideClick`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent&member=keepOpenOnOutsideClick) and [`keepOpenOnSelect`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent&member=keepOpenOnSelect) properties.
 
 ## Styling
 
-You can change the appearance of the Dropdown and its items, by using the exposed CSS parts. The [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) exposes `base` and `list` parts, the [`IgcDropdownItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html) exposes `prefix`, `content` and `suffix` parts and the [`IgcDropdownGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowngroupcomponent.html) exposes `label` part.
+You can change the appearance of the Dropdown and its items, by using the exposed CSS parts. The [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) exposes `base` and `list` parts, the [`IgcDropdownItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownItemComponent) exposes `prefix`, `content` and `suffix` parts and the [`IgcDropdownGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownGroupComponent) exposes `label` part.
 
 ```css
 igc-dropdown::part(list) {
@@ -166,10 +166,10 @@ igc-dropdown-group::part(label) {
 
 ## API Reference
 
-- [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html)
-- [`IgcDropdownItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownitemcomponent.html)
-- [`IgcDropdownHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdownheadercomponent.html)
-- [`IgcDropdownGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowngroupcomponent.html)
+- [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent)
+- [`IgcDropdownItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownItemComponent)
+- [`IgcDropdownHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownHeaderComponent)
+- [`IgcDropdownGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownGroupComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

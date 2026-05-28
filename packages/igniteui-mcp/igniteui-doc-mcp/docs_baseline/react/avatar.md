@@ -54,18 +54,18 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html) and its necessary CSS, like so:
+You will then need to import the [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar) and its necessary CSS, like so:
 
 ```tsx
 import { IgrAvatar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-Before using the [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html), you need to register it as follows:
+Before using the [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html) is as simple as:
+The [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar) is as simple as:
 
 ```tsx
 <IgrAvatar />
@@ -81,7 +81,7 @@ The avatar has several attributes that allow rendering different content based o
 
 ### Initials
 
-If the [`initials`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html#initials) attribute is set all children elements of the avatar will be ignored and the string passed to this attribute will be displayed.
+If the [`initials`](mcp:get_api_reference?platform=react&component=IgrAvatar&member=initials) attribute is set all children elements of the avatar will be ignored and the string passed to this attribute will be displayed.
 
 ```tsx
 <IgrAvatar initials="AZ">
@@ -112,7 +112,7 @@ root.render(<AvatarInitials/>);
 
 ### Image
 
-The avatar can also display an image when the [`src`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html#src) attribute is assigned a valid URL to a static asset. In that case the [`initials`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html#initials) value will be ignored and children elements will not be rendered.
+The avatar can also display an image when the [`src`](mcp:get_api_reference?platform=react&component=IgrAvatar&member=src) attribute is assigned a valid URL to a static asset. In that case the [`initials`](mcp:get_api_reference?platform=react&component=IgrAvatar&member=initials) value will be ignored and children elements will not be rendered.
 
 ```tsx
 <IgrAvatar initials="AZ"
@@ -230,7 +230,7 @@ root.render(<AvatarSize/>);
 
 ### Styling
 
-The [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html) component exposes several CSS parts, giving you full control over its style:
+The [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar) component exposes several CSS parts, giving you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -339,7 +339,7 @@ root.render(<AvatarStyling/>);
 
 ## API References
 
-- [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html)
+- [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

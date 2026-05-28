@@ -53,16 +53,16 @@ export class TreeGridAdvancedFilteringSampleComponent implements OnInit {
 ```
 <div class="divider--half"></div>
 ## Interaction
-In order to open the advanced filtering dialog, the **Advanced Filtering** button in the grid toolbar should be clicked. The dialog is using the [`IgxQueryBuilder`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxquerybuildercomponent.html) component to generate,display and edit the filtering logic. You can have a look at the [`Query Builder topic`](../query-builder.md#getting-started-with-ignite-ui-for-angular-query-builder) for details on the interaction process.
+In order to open the advanced filtering dialog, the **Advanced Filtering** button in the grid toolbar should be clicked. The dialog is using the [`IgxQueryBuilder`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent) component to generate,display and edit the filtering logic. You can have a look at the [`Query Builder topic`](../query-builder.md#getting-started-with-ignite-ui-for-angular-query-builder) for details on the interaction process.
 In order to filter the data once you are ready with creating the filtering conditions and groups, you should click the **Apply** button. If you have modified the advanced filter, but you don't want to preserve the changes, you should click the **Cancel** button. You could also clear the advanced filter by clicking the **Clear Filter** button.
 ## Usage
-To enable the advanced filtering, the [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#allowAdvancedFiltering) input property should be set to `true`.
+To enable the advanced filtering, the [`allowAdvancedFiltering`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=allowAdvancedFiltering) input property should be set to `true`.
 ```html
 <igx-tree-grid [data]="data" [autoGenerate]="true" [allowAdvancedFiltering]="true">
     <igx-grid-toolbar></igx-grid-toolbar>
 </igx-tree-grid>
 ```
-The advanced filtering generates a [`FilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/filteringexpressionstree.html) which is stored in the [`advancedFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#advancedFilteringExpressionsTree) input property. You could use this property to set an initial state of the advanced filtering.
+The advanced filtering generates a [`FilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) which is stored in the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=advancedFilteringExpressionsTree) input property. You could use this property to set an initial state of the advanced filtering.
 ```typescript
 ngAfterViewInit(): void {
     const tree = new FilteringExpressionsTree(FilteringLogic.And);
@@ -90,7 +90,7 @@ ngAfterViewInit(): void {
     this.treeGrid.advancedFilteringExpressionsTree = tree;
 }
 ```
-In case you don't want to show the Tree Grid toolbar, you could use the [`openAdvancedFilteringDialog`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#openAdvancedFilteringDialog) and [`closeAdvancedFilteringDialog`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#closeAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
+In case you don't want to show the Tree Grid toolbar, you could use the [`openAdvancedFilteringDialog`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=openAdvancedFilteringDialog) and [`closeAdvancedFilteringDialog`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=closeAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
 >[!NOTE]
 >You can enable both the `quickFilter`/`excelStyleFilter` and the advanced filtering user interfaces in the Tree Grid. Both filtering user interfaces will work independently of one another. The final filtered result in the Tree Grid is the intersection between the results of the two filters.
 ## External Advanced filtering
@@ -173,7 +173,7 @@ export class TreeGridExternalAdvancedFilteringComponent {
 }
 ```
 ### Usage
-It's super easy to configure the advanced filtering to work outside of the Tree Grid. All you need to do is to create the dialog and set its [`grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbaradvancedfilteringcomponent.html#grid) property:
+It's super easy to configure the advanced filtering to work outside of the Tree Grid. All you need to do is to create the dialog and set its [`grid`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarAdvancedFilteringComponent&member=grid) property:
 ```html
 <igx-advanced-filtering-dialog [grid]="treegrid1">
 </igx-advanced-filtering-dialog>
@@ -187,7 +187,7 @@ To get started with styling the Advanced Filtering dialog, we need to import the
 // IMPORTANT: Prior to Ignite UI for Angular version 13 use:
 // @import '~igniteui-angular/lib/core/styles/themes/index';
 ```
-Since the Advanced Filtering dialog uses the [`IgxQueryBuilder`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxquerybuildercomponent.html) component, you can use the [`query-builder-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#query-builder-theme) to style it. To style the header title, you can create a custom theme that extends the [`query-builder-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#query-builder-theme) and set the `$header-foreground` parameter.
+Since the Advanced Filtering dialog uses the [`IgxQueryBuilder`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent) component, you can use the [`query-builder-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#query-builder-theme) to style it. To style the header title, you can create a custom theme that extends the [`query-builder-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#query-builder-theme) and set the `$header-foreground` parameter.
 ```scss
 $custom-query-builder: query-builder-theme(
   $header-foreground: #512da8
@@ -288,8 +288,8 @@ $custom-query-builder: query-builder-theme(
 <div class="divider--half"></div>
 ## API References
 <div class="divider--half"></div>
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
-- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [IgxTreeGridComponent API](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 - [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

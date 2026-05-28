@@ -143,6 +143,134 @@ describe('createGetApiReferenceHandler', () => {
     // Should return full content (all sections) when section defaults to "all"
     expect(result.content[0].text).toContain('Properties');
   });
+
+  describe('member-targeted lookup', () => {
+    const checkboxContent = [
+      '## Properties',
+      '',
+      '- **checked** `boolean` — Whether the checkbox is checked.',
+      '- **disabled** `boolean` — Whether disabled.',
+      '',
+      '## Methods',
+      '',
+      '- **click()** — Toggles the checkbox.',
+      '',
+      '## Events',
+      '',
+      '- **igcChange** — Fired on state change.',
+      '',
+    ].join('\n');
+
+    const makeCheckboxEntry = () => makeEntry({
+      component: 'IgcCheckboxComponent',
+      platform: 'webcomponents',
+      content: checkboxContent,
+    });
+
+    it('returns a single property line when member matches a property', async () => {
+      const loader = makeLoader({ get: vi.fn().mockReturnValue(makeCheckboxEntry()) });
+      const handler = createGetApiReferenceHandler(loader);
+      const result = await handler({
+        platform: 'webcomponents',
+        component: 'IgcCheckboxComponent',
+        section: 'all',
+        member: 'checked',
+      });
+
+      expect(result.isError).toBeUndefined();
+      expect(result.content[0].text).toContain('IgcCheckboxComponent.checked (property)');
+      expect(result.content[0].text).toContain('**checked**');
+      expect(result.content[0].text).not.toContain('**disabled**');
+    });
+
+    it('returns a single method line when member matches a method', async () => {
+      const loader = makeLoader({ get: vi.fn().mockReturnValue(makeCheckboxEntry()) });
+      const handler = createGetApiReferenceHandler(loader);
+      const result = await handler({
+        platform: 'webcomponents',
+        component: 'IgcCheckboxComponent',
+        section: 'all',
+        member: 'click',
+      });
+
+      expect(result.isError).toBeUndefined();
+      expect(result.content[0].text).toContain('(method)');
+      expect(result.content[0].text).toContain('**click()**');
+    });
+
+    it('returns a single event line when member matches an event', async () => {
+      const loader = makeLoader({ get: vi.fn().mockReturnValue(makeCheckboxEntry()) });
+      const handler = createGetApiReferenceHandler(loader);
+      const result = await handler({
+        platform: 'webcomponents',
+        component: 'IgcCheckboxComponent',
+        section: 'all',
+        member: 'igcChange',
+      });
+
+      expect(result.isError).toBeUndefined();
+      expect(result.content[0].text).toContain('(event)');
+      expect(result.content[0].text).toContain('igcChange');
+    });
+
+    it('returns isError when member does not exist on the component', async () => {
+      const loader = makeLoader({ get: vi.fn().mockReturnValue(makeCheckboxEntry()) });
+      const handler = createGetApiReferenceHandler(loader);
+      const result = await handler({
+        platform: 'webcomponents',
+        component: 'IgcCheckboxComponent',
+        section: 'all',
+        member: 'nonexistent',
+      });
+
+      expect(result.isError).toBe(true);
+      expect(result.content[0].text).toContain('Member "nonexistent" not found');
+      expect(result.content[0].text).toContain('IgcCheckboxComponent');
+    });
+
+    it('parses "Component#member" passed in `component` and resolves the member', async () => {
+      const loader = makeLoader({ get: vi.fn().mockReturnValue(makeCheckboxEntry()) });
+      const handler = createGetApiReferenceHandler(loader);
+      const result = await handler({
+        platform: 'webcomponents',
+        component: 'IgcCheckboxComponent#checked',
+        section: 'all',
+      } as any);
+
+      expect(result.isError).toBeUndefined();
+      expect(result.content[0].text).toContain('IgcCheckboxComponent.checked (property)');
+      expect(result.content[0].text).toContain('**checked**');
+    });
+
+    it('explicit `member` parameter wins over a `#`-suffix in `component`', async () => {
+      const loader = makeLoader({ get: vi.fn().mockReturnValue(makeCheckboxEntry()) });
+      const handler = createGetApiReferenceHandler(loader);
+      const result = await handler({
+        platform: 'webcomponents',
+        component: 'IgcCheckboxComponent#click',
+        section: 'all',
+        member: 'checked',
+      });
+
+      expect(result.isError).toBeUndefined();
+      expect(result.content[0].text).toContain('.checked (property)');
+    });
+
+    it('takes precedence over section: returns single line even when section is set', async () => {
+      const loader = makeLoader({ get: vi.fn().mockReturnValue(makeCheckboxEntry()) });
+      const handler = createGetApiReferenceHandler(loader);
+      const result = await handler({
+        platform: 'webcomponents',
+        component: 'IgcCheckboxComponent',
+        section: 'methods',
+        member: 'checked',
+      });
+
+      expect(result.isError).toBeUndefined();
+      expect(result.content[0].text).toContain('.checked (property)');
+      expect(result.content[0].text).not.toContain('**click()**');
+    });
+  });
 });
 
 describe('createSearchApiHandler', () => {

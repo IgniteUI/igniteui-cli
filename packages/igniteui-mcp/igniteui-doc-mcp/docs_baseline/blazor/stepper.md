@@ -123,17 +123,17 @@ builder.Services.AddIgniteUIBlazor(
 );
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-Now you can start with a basic configuration of the Blazor [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html) and its steps.
+Now you can start with a basic configuration of the Blazor [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) and its steps.
 
 ## How To Use Blazor Stepper
 
-The [`IgbStep`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStep.html) is the representation of every step that belongs to the [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html). Steps provide [`Invalid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStep.html#IgniteUI_Blazor_Controls_IgbStep_Invalid), [`Active`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStep.html#IgniteUI_Blazor_Controls_IgbStep_Active), [`Optional`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStep.html#IgniteUI_Blazor_Controls_IgbStep_Optional), [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStep.html#IgniteUI_Blazor_Controls_IgbStep_Disabled) and [`Complete`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStep.html#IgniteUI_Blazor_Controls_IgbStep_Complete) properties, which give you the ability to configure the step states according to your business requirement.
+The [`IgbStep`](mcp:get_api_reference?platform=blazor&component=IgbStep) is the representation of every step that belongs to the [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper). Steps provide [`Invalid`](mcp:get_api_reference?platform=blazor&component=IgbStep&member=Invalid), [`Active`](mcp:get_api_reference?platform=blazor&component=IgbStep&member=Active), [`Optional`](mcp:get_api_reference?platform=blazor&component=IgbStep&member=Optional), [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbStep&member=Disabled) and [`Complete`](mcp:get_api_reference?platform=blazor&component=IgbStep&member=Complete) properties, which give you the ability to configure the step states according to your business requirement.
 
 ### Declaring Blazor Stepper
 
@@ -168,7 +168,7 @@ Steps can be declared using one of the following approaches.
 For each step the user has the ability to configure indicator, title and subtitle using the `Indicator`, `Title` and `Subtitle` slots as follows:
 
 > [!Note]
-> The `Default` [`IgbStep`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStep.html) slot renders the content of the step.
+> The `Default` [`IgbStep`](mcp:get_api_reference?platform=blazor&component=IgbStep) slot renders the content of the step.
 
 ```razor
 <IgbStepper>
@@ -188,18 +188,18 @@ For each step the user has the ability to configure indicator, title and subtitl
 
 ### Orientation in Blazor Stepper
 
-You can customize the stepper orientation through the exposed [`Orientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html#IgniteUI_Blazor_Controls_IgbStepper_Orientation) property. It could be set to **horizontal** **(default value)** or **vertical**.
+You can customize the stepper orientation through the exposed [`Orientation`](mcp:get_api_reference?platform=blazor&component=IgbStepper&member=Orientation) property. It could be set to **horizontal** **(default value)** or **vertical**.
 
 **Horizontal Stepper Orientation**
 
-**horizontal**is the default value for the [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html) orientation property.
-When the Blazor stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html) [`ContentTop`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html#IgniteUI_Blazor_Controls_IgbStepper_ContentTop) boolean property, which default value is **false**. In case it is enabled the steps’ content would be displayed above the steps’ headers.
+**horizontal**is the default value for the [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) orientation property.
+When the Blazor stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) [`ContentTop`](mcp:get_api_reference?platform=blazor&component=IgbStepper&member=ContentTop) boolean property, which default value is **false**. In case it is enabled the steps’ content would be displayed above the steps’ headers.
 
 <img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 800px"  src="../../images/stepper/stepper-contentTop.png" alt="stepper-contentTop" />
 
 **Vertical Stepper Orientation**
 
-You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`Orientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html#IgniteUI_Blazor_Controls_IgbStepper_Orientation) property to **vertical**.
+You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`Orientation`](mcp:get_api_reference?platform=blazor&component=IgbStepper&member=Orientation) property to **vertical**.
 
 The sample below demonstrates how stepper orientation and titles position could be changed runtime.
 
@@ -321,7 +321,7 @@ The sample below demonstrates how stepper orientation and titles position could 
 
 ### Step States
 
-Blazor [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html) supports five steps states and each of them apply different styles by default:
+Blazor [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) supports five steps states and each of them apply different styles by default:
 
 - **active** - Determines whether the step is the currently displayed. By design, if the user does not explicitly set some step’s active attribute to **true**, the initial active step would be the first non-disabled step.
 - **disabled** - Determines whether the step is intractable. By default, the disabled attribute of a step is set to **false**.
@@ -331,7 +331,7 @@ Blazor [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 
 ### Linear Blazor Stepper
 
-The Blazor [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html) gives you the opportunity to set its steps flow using the [`Linear`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html#IgniteUI_Blazor_Controls_IgbStepper_Linear) property. By default, linear is set to **false** and the user is enabled to select any non-disabled step in the [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html).
+The Blazor [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) gives you the opportunity to set its steps flow using the [`Linear`](mcp:get_api_reference?platform=blazor&component=IgbStepper&member=Linear) property. By default, linear is set to **false** and the user is enabled to select any non-disabled step in the [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper).
 
 ```razor
 <IgbStepper Linear="true">
@@ -353,7 +353,7 @@ If the current non-optional step is not valid you cannot go forward to the next 
 
 ### Step Interactions
 
-[`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html) provides the following API methods for step interactions:
+[`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) provides the following API methods for step interactions:
 
 - **navigateTo** – activates the step by given index.
 - **next** - activates the next non-disabled step.
@@ -367,7 +367,7 @@ If the current non-optional step is not valid you cannot go forward to the next 
 
 The Ignite UI for Blazor Stepper gives you the ability to configure different options for titles, indicators and more.
 
-This could be achieved through the [`StepType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html#IgniteUI_Blazor_Controls_IgbStepper_StepType) property of the [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html). It takes the following values:
+This could be achieved through the [`StepType`](mcp:get_api_reference?platform=blazor&component=IgbStepper&member=StepType) property of the [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper). It takes the following values:
 
 - Full **(default value)**
 - Indicator
@@ -378,7 +378,7 @@ This could be achieved through the [`StepType`](https://www.infragistics.com/bla
 If titles and subtitles are defined, with this setup both indicators and titles would be rendered.
 
 The user would also have the ability to define the position of the title for the steps, so it could be placed before, after, above or below the step indicator.
-The user can configure the title position using the [`TitlePosition`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html#IgniteUI_Blazor_Controls_IgbStepper_TitlePosition) property. It takes the following values:
+The user can configure the title position using the [`TitlePosition`](mcp:get_api_reference?platform=blazor&component=IgbStepper&member=TitlePosition) property. It takes the following values:
 
 - undefined **(default value)**
 - end
@@ -386,7 +386,7 @@ The user can configure the title position using the [`TitlePosition`](https://ww
 - bottom
 - top
 
-When the Blazor [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html) is horizontally orientated and the title position **is not defined**, the titles would be displayed **below** the indicators.
+When the Blazor [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) is horizontally orientated and the title position **is not defined**, the titles would be displayed **below** the indicators.
 
 When the orientation is set to vertical and the title position **is not defined**, the titles would be displayed **after** the indicators.
 
@@ -397,7 +397,7 @@ When the orientation is set to vertical and the title position **is not defined*
 
 If you want to display only indicators for the steps, set the stepType option to **indicator**.
 
-The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) or [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html) as step indicators.
+The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) or [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar) as step indicators.
 
 **Title**
 
@@ -455,15 +455,15 @@ The sample below demonstrates all exposed step types and how they could be chang
 
 ### Stepper Animations
 
-The Blazor [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html) Animations provide the end-users with a beautiful experience interacting with the defined steps. The available animation options differ depending on the orientation of the stepper.
+The Blazor [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) Animations provide the end-users with a beautiful experience interacting with the defined steps. The available animation options differ depending on the orientation of the stepper.
 
-When the stepper is horizontally orientated, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`HorizontalAnimation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html#IgniteUI_Blazor_Controls_IgbStepper_HorizontalAnimation) input.
+When the stepper is horizontally orientated, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`HorizontalAnimation`](mcp:get_api_reference?platform=blazor&component=IgbStepper&member=HorizontalAnimation) input.
 
-In a vertically orientated layout, the animation type could be defined using the [`VerticalAnimation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html#IgniteUI_Blazor_Controls_IgbStepper_VerticalAnimation) property. By default, its value is set to `grow` and the user has the ability to set it to `fade` as well.
+In a vertically orientated layout, the animation type could be defined using the [`VerticalAnimation`](mcp:get_api_reference?platform=blazor&component=IgbStepper&member=VerticalAnimation) property. By default, its value is set to `grow` and the user has the ability to set it to `fade` as well.
 
 Setting `none` to both animation type inputs disables stepper animations.
 
-The [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html) component also gives you the ability to configure the duration of the transition between the steps. This could be achieved through the `animationDuration` property, which takes a number as an argument and it is common to both orientations. The default value is set to 320ms.
+The [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) component also gives you the ability to configure the duration of the transition between the steps. This could be achieved through the `animationDuration` property, which takes a number as an argument and it is common to both orientations. The default value is set to 320ms.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -571,7 +571,7 @@ The [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bla
 ## Keyboard Navigation
 
 The Ignite UI for Blazor Stepper provides a rich variety of keyboard interactions to the end-user. This functionality is enabled by default and allows end-users to easily navigate through the steps.
-The Blazor [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html) navigation is compliant with [W3 accessability standards](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/) and convenient to use.
+The Blazor [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) navigation is compliant with [W3 accessability standards](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/) and convenient to use.
 
 **Key Combinations**
 
@@ -587,7 +587,7 @@ The Blazor [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/Ignit
 
 ## Styling Blazor Stepper
 
-You can change the appearance of the [`IgbStep`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStep.html), by using some of the exposed CSS parts listed below:
+You can change the appearance of the [`IgbStep`](mcp:get_api_reference?platform=blazor&component=IgbStep), by using some of the exposed CSS parts listed below:
 
 | Part name | Description |
 | ---------|------------ |
@@ -610,7 +610,7 @@ You can change the appearance of the [`IgbStep`](https://www.infragistics.com/bl
 | `body` | Wrapper of the step's content. |
 | `content` | The steps content. |
 
-Using these CSS parts we can customize thе appearance of the [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html) component like this:
+Using these CSS parts we can customize thе appearance of the [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) component like this:
 
 ```css
 igc-step::part(title) {
@@ -729,10 +729,10 @@ igc-step::part(indicator) {
 
 ## API References
 
-- [`IgbStepper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStepper.html)
-- [`IgbStep`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStep.html)
-- [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html)
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
+- [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper)
+- [`IgbStep`](mcp:get_api_reference?platform=blazor&component=IgbStep)
+- [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

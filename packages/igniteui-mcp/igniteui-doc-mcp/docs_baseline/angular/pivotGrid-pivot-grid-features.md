@@ -601,8 +601,8 @@ Chips from these areas can not be moved to the `values` area and chips from the 
 
 ## API References
 
-- [IgxPivotGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpivotgridcomponent.html)
-- [IgxPivotDataSelectorComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpivotdataselectorcomponent.html)
+- [IgxPivotGridComponent](mcp:get_api_reference?platform=angular&component=IgxPivotGridComponent)
+- [IgxPivotDataSelectorComponent](mcp:get_api_reference?platform=angular&component=IgxPivotDataSelectorComponent)
 
 
 ## Additional Resources

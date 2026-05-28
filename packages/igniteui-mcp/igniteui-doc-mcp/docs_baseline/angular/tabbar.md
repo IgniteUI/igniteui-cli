@@ -11,7 +11,7 @@ _tocName: Bottom Navigation
 <p class="highlight">The Ignite UI for Angular Bottom Navigation component enables the user to navigate among a number of content panels displayed in a single view. The navigation through the panels is accomplished with the tab buttons located at bottom of your application.</p>
 
 > [!NOTE]
-> `igx-tab-bar` selector is deprecated. You could use [`igx-bottom-nav`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbottomnavcomponent.html) instead. `IgxTabBarComponent` class is renamed to [`IgxBottomNavComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbottomnavcomponent.html). `IgxTabBarModule` is renamed to `IgxBottomNavModule`.
+> `igx-tab-bar` selector is deprecated. You could use [`igx-bottom-nav`](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent) instead. `IgxTabBarComponent` class is renamed to [`IgxBottomNavComponent`](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent). `IgxTabBarModule` is renamed to `IgxBottomNavModule`.
 
 ## Angular Bottom Navigation Example
 
@@ -851,9 +851,9 @@ At the end your bottom nav should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxBottomNavComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbottomnavcomponent.html)
+- [IgxBottomNavComponent](mcp:get_api_reference?platform=angular&component=IgxBottomNavComponent)
 - [IgxBottomNavComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-bottom-nav-theme)
-- [IgxIconComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconcomponent.html)
+- [IgxIconComponent](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
 
 ## Theming Dependencies
 

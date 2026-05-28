@@ -13,7 +13,7 @@ _premium: true
 
 # React Hierarchical Grid Toolbar
 
-The Ignite UI for React Toolbar in is a container for UI operations in the React Hierarchical Grid. The React toolbar is located at the top of the React component, i.e., the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) and it matches its horizontal size. The toolbar container can host any custom content or set of predefined UI controls. The default set for the React Hierarchical Grid includes:
+The Ignite UI for React Toolbar in is a container for UI operations in the React Hierarchical Grid. The React toolbar is located at the top of the React component, i.e., the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) and it matches its horizontal size. The toolbar container can host any custom content or set of predefined UI controls. The default set for the React Hierarchical Grid includes:
 
 - Column Hiding
 - Column Pinning
@@ -26,7 +26,7 @@ The toolbar and the predefined UI components support React events and expose API
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-The predefined [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) and [`IgrGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbartitle.html) UI components are added inside the [`IgrGridToolbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbar.html) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
+The predefined [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions) and [`IgrGridToolbarTitle`](mcp:get_api_reference?platform=react&component=IgrGridToolbarTitle) UI components are added inside the [`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar) and this is all needed to have a toolbar providing default interactions with the corresponding Grid features:
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -49,7 +49,7 @@ The predefined [`IgrGridToolbarActions`](https://www.infragistics.com/products/i
 <!-- ComponentEnd: HierarchicalGrid -->
 
 > [!Note]
-> As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
+> As seen in the code snippet above, the predefined `Actions` UI components are wrapped in the [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions) container. This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
 
 Of course, each of these UIs can be added independently of each other, or may not be added at all. This way the toolbar container will be rendered empty:
 
@@ -70,7 +70,7 @@ For a comprehensive look over each of the default UI components, continue readin
 
 ## Toolbar with Child Grids
 
-Due to certain limitations in how the child grids of an [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) are implemented and how DI scope works, to define a toolbar component inside the [`IgrRowIsland`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowisland.html), use the `ToolbarTemplate` input property. This allows child grids to create their own separate toolbar instances:
+Due to certain limitations in how the child grids of an [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) are implemented and how DI scope works, to define a toolbar component inside the [`IgrRowIsland`](mcp:get_api_reference?platform=react&component=IgrRowIsland), use the `ToolbarTemplate` input property. This allows child grids to create their own separate toolbar instances:
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -113,7 +113,7 @@ Listed below are the main features of the toolbar with example code for each of 
 
 ### Title
 
-Setting a title for the toolbar in your grid is achieved by using the [`IgrGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbartitle.html).
+Setting a title for the toolbar in your grid is achieved by using the [`IgrGridToolbarTitle`](mcp:get_api_reference?platform=react&component=IgrGridToolbarTitle).
 
 Users can provide anything from simple text to more involved templates.
 
@@ -131,7 +131,7 @@ Users can provide anything from simple text to more involved templates.
 
 ### Actions
 
-The [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) is where users can place actions/interactions in relation to the parent grid.
+The [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions) is where users can place actions/interactions in relation to the parent grid.
 As with the title portion of the toolbar, users can provide anything inside that template part, including the default
 toolbar interaction components.
 
@@ -149,7 +149,7 @@ toolbar interaction components.
 
 ### Column Pinning
 
-The [`IgrGridToolbarPinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarpinning.html) component provides the default UI for interacting with column pinning in the grid.
+The [`IgrGridToolbarPinning`](mcp:get_api_reference?platform=react&component=IgrGridToolbarPinning) component provides the default UI for interacting with column pinning in the grid.
 
 The component is setup to work out of the box with the parent grid containing the toolbar as well as several input properties for customizing the UI, such as the component title, the placeholder for the component input and the height of the dropdown itself.
 
@@ -167,7 +167,7 @@ The component is setup to work out of the box with the parent grid containing th
 
 ### Column Hiding
 
-The [`IgrGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarhiding.html) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
+The [`IgrGridToolbarHiding`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding) provides the default UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
 title, the placeholder for the component input and the height of the dropdown itself.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
@@ -203,12 +203,12 @@ Toolbar Advanced Filtering component provides the default UI for the Advanced Fi
 <!-- ComponentStart: HierarchicalGrid -->
 
 > [!Note]
-> When exporting the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) or any of its child grids down the hierarchy, the exported data will be a flat collection of rows
+> When exporting the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) or any of its child grids down the hierarchy, the exported data will be a flat collection of rows
 > belonging to their respective grid (the child grids will not be included in the exported data).
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-As with the rest of the toolbar actions, exporting is provided through a [`IgrGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarexporter.html) out of the box.
+As with the rest of the toolbar actions, exporting is provided through a [`IgrGridToolbarExporter`](mcp:get_api_reference?platform=react&component=IgrGridToolbarExporter) out of the box.
 
 The toolbar exporter component exposes several input properties for customizing both the UI and the exporting experience.
 
@@ -452,7 +452,7 @@ root.render(<Sample/>);
 
 When using the default toolbar exporter component, whenever an export operation takes place the toolbar will show a progress indicator while the operation is in progress.
 
-Moreover, users can set the toolbar [`showProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbar.html#showProgress) property and use for their own long running operations or just as another way to signify an action taking place in the grid.
+Moreover, users can set the toolbar [`showProgress`](mcp:get_api_reference?platform=react&component=IgrGridToolbar&member=showProgress) property and use for their own long running operations or just as another way to signify an action taking place in the grid.
 
 The sample belows uses has significant amount of data, in order to increase the time needed for data export so the progressbar can be seen. Additionally it has another button that simulates a long running operation in the grid:
 
@@ -2400,14 +2400,14 @@ root.render(<Sample/>);
 
 The Grid Toolbar service has a few more APIs to explore, which are listed below.
 
-- [`IgrGridToolbarAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaradvancedfiltering.html)
-- [`IgrGridToolbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbar.html)
-- [`IgrGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarexporter.html)
-- [`IgrGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarhiding.html)
-- [`IgrGridToolbarPinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarpinning.html)
-- [`IgrGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbartitle.html)
+- [`IgrGridToolbarAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrGridToolbarAdvancedFiltering)
+- [`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar)
+- [`IgrGridToolbarExporter`](mcp:get_api_reference?platform=react&component=IgrGridToolbarExporter)
+- [`IgrGridToolbarHiding`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding)
+- [`IgrGridToolbarPinning`](mcp:get_api_reference?platform=react&component=IgrGridToolbarPinning)
+- [`IgrGridToolbarTitle`](mcp:get_api_reference?platform=react&component=IgrGridToolbarTitle)
 
-[`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) Events:
+[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) Events:
 
 - `ToolbarExporting`
 

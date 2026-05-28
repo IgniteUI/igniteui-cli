@@ -129,7 +129,7 @@ In addition to the built-in `always` and `onSort` modes, the grid allows you to 
 
 ### Merge Strategy Class
 
-A custom merge strategy must implement the [`IgcGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridmergestrategy.html) class:
+A custom merge strategy must implement the [`IgcGridMergeStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcGridMergeStrategy) class:
 
 ```ts
 export declare class IgcGridMergeStrategy {
@@ -153,7 +153,7 @@ export declare class IgcGridMergeStrategy {
 
 ### Extending the Default Strategy
 
-If you only want to customize part of the behavior (for example, the comparer logic), you can extend the built-in [`IgcDefaultMergeStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcdefaultmergestrategy.html) and override the relevant methods.
+If you only want to customize part of the behavior (for example, the comparer logic), you can extend the built-in [`IgcDefaultMergeStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcDefaultMergeStrategy) and override the relevant methods.
 
 ```ts
 export class MyCustomStrategy extends IgcDefaultMergeStrategy {
@@ -227,7 +227,7 @@ Due to the specific behavior of merged cells it has to be noted how exactly it t
 
 ## API References
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 
 ## Additional Resources
 

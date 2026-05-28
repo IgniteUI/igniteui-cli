@@ -13,7 +13,7 @@ The Infragistics Blazor Dock Manager provides a means to manage the layout of yo
 
 ## Blazor Dock Manager Example
 
-This example shows most functionalities and docking options of the [`IgbDockManager`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDockManager.html) that you can use in your application.
+This example shows most functionalities and docking options of the [`IgbDockManager`](mcp:get_api_reference?platform=blazor&component=IgbDockManager) that you can use in your application.
 
 ```razor
 @inject IJSRuntime JSRuntime;
@@ -1591,9 +1591,9 @@ igc-card-content {
 
 ## API References
 
-- [`IgbDockManager`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDockManager.html)
-- [`IgbDocumentHost`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDocumentHost.html)
-- [`IgbDockManagerLayout`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDockManagerLayout.html)
-- [`IgbContentPane`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbContentPane.html)
-- [`IgbSplitPane`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSplitPane.html)
-- [`IgbTabGroupPane`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabGroupPane.html)
+- [`IgbDockManager`](mcp:get_api_reference?platform=blazor&component=IgbDockManager)
+- [`IgbDocumentHost`](mcp:get_api_reference?platform=blazor&component=IgbDocumentHost)
+- [`IgbDockManagerLayout`](mcp:get_api_reference?platform=blazor&component=IgbDockManagerLayout)
+- [`IgbContentPane`](mcp:get_api_reference?platform=blazor&component=IgbContentPane)
+- [`IgbSplitPane`](mcp:get_api_reference?platform=blazor&component=IgbSplitPane)
+- [`IgbTabGroupPane`](mcp:get_api_reference?platform=blazor&component=IgbTabGroupPane)

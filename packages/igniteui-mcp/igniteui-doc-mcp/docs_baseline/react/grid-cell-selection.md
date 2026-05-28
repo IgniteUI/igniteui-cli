@@ -13,7 +13,7 @@ _premium: true
 
 # React Grid Cell Selection
 
-The Ignite UI for React Cell Selection in React Grid enables rich data select capabilities and offers powerful API in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component. The React Grid supports three selection modes:
+The Ignite UI for React Cell Selection in React Grid enables rich data select capabilities and offers powerful API in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component. The React Grid supports three selection modes:
 
 - Grid Multiple Cell Selection
 - Grid Single Selection
@@ -23,7 +23,7 @@ Let's dive deeper into each of these options.
 
 ## React Grid Cell Selection Example
 
-The sample below demonstrates the three types of [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)'s **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
+The sample below demonstrates the three types of [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)'s **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
 
 ```css
 /* shared styles are loaded from: */
@@ -378,13 +378,13 @@ root.render(<App/>);
 
 ### Grid Single Selection
 
-When you set the [`cellSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#cellSelection) to **single**, this allows you to have only one selected cell in the grid at a time. Also the mode **mouse drag** will not work and instead of selecting a cell, this will make default text selection.
+When you set the [`cellSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=cellSelection) to **single**, this allows you to have only one selected cell in the grid at a time. Also the mode **mouse drag** will not work and instead of selecting a cell, this will make default text selection.
 
-> When single cell is selected [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected) event is emitted, no matter if the **selection mode** is **single** or **multiple**. In multi-cell selection mode when you select a range of cells `RangeSelected` event is emitted.
+> When single cell is selected [`selected`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selected) event is emitted, no matter if the **selection mode** is **single** or **multiple**. In multi-cell selection mode when you select a range of cells `RangeSelected` event is emitted.
 
 ### Grid None Selection
 
-If you want to disable cell selection you can just set [`cellSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#cellSelection) to **none**. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the **activation style** is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
+If you want to disable cell selection you can just set [`cellSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=cellSelection) to **none**. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the **activation style** is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
 
 ## Keyboard Navigation Interactions
 
@@ -413,7 +413,7 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 ### Select range
 
-[`selectRange`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#selectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
+[`selectRange`](mcp:get_api_reference?platform=react&component=IgrGrid&member=selectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -426,7 +426,7 @@ gridRef.current.selectRange(range)
 
 ### Clear cell selection
 
-[`clearCellSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#clearCellSelection) will clear the current cell selection.
+[`clearCellSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=clearCellSelection) will clear the current cell selection.
 
 ```tsx
 gridRef.current.clearCellSelection();
@@ -434,7 +434,7 @@ gridRef.current.clearCellSelection();
 
 ### Get Selected Data
 
-[`getSelectedData`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
+[`getSelectedData`](mcp:get_api_reference?platform=react&component=IgrGrid&member=getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
 
 - If three different single cells are selected:
 
@@ -504,8 +504,8 @@ The multi-cell selection is index based (DOM elements selection).
 - `Filtering` - When filtering is performed selection will not be cleared. If filtering is cleared it will return - the initially selected cells.
 - `Resizing` - On column resizing selected cells will not be cleared.
 - `Hiding` - It will not clear the selected cells. If column is hidden, the cells from the next visible column will be selected.
-- [`pinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#pinning) - Selected cell will not be cleared. Same as hiding
-- [`groupBy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#groupBy) - On column grouping selected cells will not be cleared.
+- [`pinning`](mcp:get_api_reference?platform=react&component=IgrGrid&member=pinning) - Selected cell will not be cleared. Same as hiding
+- [`groupBy`](mcp:get_api_reference?platform=react&component=IgrGrid&member=groupBy) - On column grouping selected cells will not be cleared.
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
@@ -657,7 +657,7 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 
 ## Additional Resources
 

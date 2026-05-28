@@ -13,11 +13,11 @@ _premium: true
 
 # Blazor Grid State Persistence
 
-The Ignite UI for Blazor State Persistence in Blazor Grid allows developers to easily save and restore the grid state. When the [`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) is applied on the Blazor [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html), it exposes the `GetStateAsStringAsync` and `ApplyStateFromStringAsync` methods that developers can use to achieve state persistence in any scenario.
+The Ignite UI for Blazor State Persistence in Blazor Grid allows developers to easily save and restore the grid state. When the [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) is applied on the Blazor [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), it exposes the `GetStateAsStringAsync` and `ApplyStateFromStringAsync` methods that developers can use to achieve state persistence in any scenario.
 
 ## Supported Features
 
-[`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) supports saving and restoring the state of the following features:
+[`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) supports saving and restoring the state of the following features:
 
 <!-- ComponentStart: Grid, TreeGrid -->
 
@@ -71,7 +71,7 @@ gridState.ApplyStateFromStringAsync(gridStateString, new string[0]);
 gridState.ApplyStateFromStringAsync(sortingFilteringStates, new string[0])
 ```
 
-The [`Options`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridStateBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridStateBaseDirective_Options) object implements the [`IgbGridStateOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridStateOptions.html) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. `GetStateAsStringAsync` methods will not put the state of these features in the returned value and `ApplyStateFromStringAsync` methods will not restore state for them.
+The [`Options`](mcp:get_api_reference?platform=blazor&component=IgbGridStateBaseDirective&member=Options) object implements the [`IgbGridStateOptions`](mcp:get_api_reference?platform=blazor&component=IgbGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. `GetStateAsStringAsync` methods will not put the state of these features in the returned value and `ApplyStateFromStringAsync` methods will not restore state for them.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
@@ -435,7 +435,7 @@ public class CustomersData
 
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
 
-- [`GetStateAsString`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html#IgniteUI_Blazor_Controls_IgbGridState_GetStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgbGridState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridState.html) component will ignore the columns `Formatter`, [`Filters`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotConfiguration.html#IgniteUI_Blazor_Controls_IgbPivotConfiguration_Filters), `Summaries`, `SortStrategy`, `CellClasses`, `CellStyles`, `HeaderTemplate` and `BodyTemplate` properties.
+- [`GetStateAsString`](mcp:get_api_reference?platform=blazor&component=IgbGridState&member=GetStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgbGridState`](mcp:get_api_reference?platform=blazor&component=IgbGridState) component will ignore the columns `Formatter`, [`Filters`](mcp:get_api_reference?platform=blazor&component=IgbPivotConfiguration&member=Filters), `Summaries`, `SortStrategy`, `CellClasses`, `CellStyles`, `HeaderTemplate` and `BodyTemplate` properties.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
 
