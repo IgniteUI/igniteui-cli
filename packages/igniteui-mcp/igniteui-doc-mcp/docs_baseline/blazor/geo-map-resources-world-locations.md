@@ -653,4 +653,4 @@ The resource topic provides implementation of data utility for generating geogra
 
 ## API References
 
-- [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html)
+- [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)

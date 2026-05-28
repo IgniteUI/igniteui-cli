@@ -10,7 +10,7 @@ _premium: true
 
 # Blazor Imagery from Azure Maps <label class="badge badge--preview">PREVIEW</label>
 
-The Blazor [`IgbAzureMapsImagery`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAzureMapsImagery.html) is geographic imagery mapping service provided by Microsoft®. It provides several styles of geographic imagery tiles of the world. This geographic imagery service is accessible directly on the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">www.azure.microsoft.com</a> web site. The Ignite UI for Blazor map component can display geographic imagery from Azure Maps in the map’s background content using the [`IgbAzureMapsImagery`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAzureMapsImagery.html) class.
+The Blazor [`IgbAzureMapsImagery`](mcp:get_api_reference?platform=blazor&component=IgbAzureMapsImagery) is geographic imagery mapping service provided by Microsoft®. It provides several styles of geographic imagery tiles of the world. This geographic imagery service is accessible directly on the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">www.azure.microsoft.com</a> web site. The Ignite UI for Blazor map component can display geographic imagery from Azure Maps in the map’s background content using the [`IgbAzureMapsImagery`](mcp:get_api_reference?platform=blazor&component=IgbAzureMapsImagery) class.
 
 ## Blazor Displaying Imagery from Azure Maps - Overview
 
@@ -258,7 +258,7 @@ igc-dialog::part(content) {
 
 ## Blazor Displaying Imagery from Azure Maps - Code Example
 
-The following code snippet shows how to display geographic imagery tiles from Azure Maps in Blazor [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html) using [`IgbAzureMapsImagery`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAzureMapsImagery.html) class.
+The following code snippet shows how to display geographic imagery tiles from Azure Maps in Blazor [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap) using [`IgbAzureMapsImagery`](mcp:get_api_reference?platform=blazor&component=IgbAzureMapsImagery) class.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -290,7 +290,7 @@ The following code snippet shows how to display geographic imagery tiles from Az
 
 ## Blazor Overlaying Imagery from Azure Maps - Overview
 
-When working with the [`IgbGeographicTileSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicTileSeries.html), you can combine **overlays** (traffic, weather, labels) on top of a **base map style** such as eg. **Satellite**, **Road**, or **DarkGrey**. Using **TerraOverlay** with eg. **Satellite** to visualize terrain.
+When working with the [`IgbGeographicTileSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicTileSeries), you can combine **overlays** (traffic, weather, labels) on top of a **base map style** such as eg. **Satellite**, **Road**, or **DarkGrey**. Using **TerraOverlay** with eg. **Satellite** to visualize terrain.
 
 - **Base Styles**: Satellite, Road, Terra, and DarkGrey provide the core background tiles.
 - **Overlay Styles**: Traffic and Weather imagery (e.g., `TrafficRelativeOverlay`, `WeatherRadarOverlay`) are designed to be layered on top of a base style by assigning them to a tile series.
@@ -308,7 +308,7 @@ This design allows you to build richer maps, for example:
 
 ## Blazor Overlaying Imagery from Azure Maps - Code Example
 
-The following code snippet shows how to display geographic imagery tiles on top of a background imagery joining eg. traffic with a dark grey map for the Blazor [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html) using [`IgbAzureMapsImagery`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAzureMapsImagery.html) and [`IgbGeographicTileSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicTileSeries.html) classes.
+The following code snippet shows how to display geographic imagery tiles on top of a background imagery joining eg. traffic with a dark grey map for the Blazor [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap) using [`IgbAzureMapsImagery`](mcp:get_api_reference?platform=blazor&component=IgbAzureMapsImagery) and [`IgbGeographicTileSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicTileSeries) classes.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -351,15 +351,15 @@ The following code snippet shows how to display geographic imagery tiles on top 
 
 ## Properties
 
-The following table summarizes properties of the [`IgbAzureMapsImagery`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAzureMapsImagery.html) class:
+The following table summarizes properties of the [`IgbAzureMapsImagery`](mcp:get_api_reference?platform=blazor&component=IgbAzureMapsImagery) class:
 
 | Property Name  | Property Type   | Description   |
 |----------------|-----------------|---------------|
-|[`ApiKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAzureMapsImagery.html#IgniteUI_Blazor_Controls_IgbAzureMapsImagery_ApiKey)|string|Represents the property for setting an API key required for the Azure Maps imagery service. You must obtain this key from the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">azure.microsoft.com</a> website.|
-|[`ImageryStyle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAzureMapsImagery.html#IgniteUI_Blazor_Controls_IgbAzureMapsImagery_ImageryStyle)|`AzureMapsImageryStyle`|Represents the property for setting the Azure Maps imagery tiles map style. This property can be set to the following `AzureMapsImageryStyle` enumeration values:<ul><li>Satellite - Specifies the Satellite map style without road or labels overlay</li><li>Road - Specifies the Aerial map style with road and labels overlay</li><li>DarkGrey - Specifies a dark grey basemap style for contrast and highlighting overlays</li><li>TerraOverlay - Specifies a terrain map style with shaded relief to highlight elevation and landscape features</li><li>LabelsRoadOverlay - One of several overlays of city labels without an aerial overlay</li><li>HybridRoadOverlay - Satellite background combined with road and label overlays</li><li>HybridDarkGreyOverlay - Satellite background combined with dark grey label overlays</li><li>LabelsDarkGreyOverlay - One of several overlays of city labels over a dark grey basemap</li><li>TrafficDelayOverlay - Displays traffic delays and congestion areas in real time</li><li>TrafficAbsoluteOverlay - Displays current traffic speeds as absolute values</li><li>TrafficReducedOverlay - Displays reduced traffic flow with light-based visualization</li><li>TrafficRelativeOverlay - Displays traffic speeds relative to normal conditions</li><li>TrafficRelativeDarkOverlay - Displays traffic speeds relative to normal conditions over a dark basemap for enhanced contrast</li><li>WeatherRadarOverlay - Displays near real-time radar imagery of precipitation</li><li>WeatherInfraredOverlay - Displays infrared satellite imagery of cloud cover</li></ul> |
+|[`ApiKey`](mcp:get_api_reference?platform=blazor&component=IgbAzureMapsImagery&member=ApiKey)|string|Represents the property for setting an API key required for the Azure Maps imagery service. You must obtain this key from the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">azure.microsoft.com</a> website.|
+|[`ImageryStyle`](mcp:get_api_reference?platform=blazor&component=IgbAzureMapsImagery&member=ImageryStyle)|`AzureMapsImageryStyle`|Represents the property for setting the Azure Maps imagery tiles map style. This property can be set to the following `AzureMapsImageryStyle` enumeration values:<ul><li>Satellite - Specifies the Satellite map style without road or labels overlay</li><li>Road - Specifies the Aerial map style with road and labels overlay</li><li>DarkGrey - Specifies a dark grey basemap style for contrast and highlighting overlays</li><li>TerraOverlay - Specifies a terrain map style with shaded relief to highlight elevation and landscape features</li><li>LabelsRoadOverlay - One of several overlays of city labels without an aerial overlay</li><li>HybridRoadOverlay - Satellite background combined with road and label overlays</li><li>HybridDarkGreyOverlay - Satellite background combined with dark grey label overlays</li><li>LabelsDarkGreyOverlay - One of several overlays of city labels over a dark grey basemap</li><li>TrafficDelayOverlay - Displays traffic delays and congestion areas in real time</li><li>TrafficAbsoluteOverlay - Displays current traffic speeds as absolute values</li><li>TrafficReducedOverlay - Displays reduced traffic flow with light-based visualization</li><li>TrafficRelativeOverlay - Displays traffic speeds relative to normal conditions</li><li>TrafficRelativeDarkOverlay - Displays traffic speeds relative to normal conditions over a dark basemap for enhanced contrast</li><li>WeatherRadarOverlay - Displays near real-time radar imagery of precipitation</li><li>WeatherInfraredOverlay - Displays infrared satellite imagery of cloud cover</li></ul> |
 
 ## API References
 
 - `AzureMapsImageryStyle`
-- [`IgbAzureMapsImagery`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAzureMapsImagery.html)
-- [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html)
+- [`IgbAzureMapsImagery`](mcp:get_api_reference?platform=blazor&component=IgbAzureMapsImagery)
+- [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)

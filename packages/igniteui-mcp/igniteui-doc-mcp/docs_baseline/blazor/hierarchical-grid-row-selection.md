@@ -13,7 +13,7 @@ _premium: true
 
 # Blazor Hierarchical Grid Row Selection
 
-The Ignite UI for Blazor Row Selection feature in Blazor Hierarchical Grid allows users to interactively select, highlight, or deselect a single or multiple rows of data. There are several selection modes available in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html):
+The Ignite UI for Blazor Row Selection feature in Blazor Hierarchical Grid allows users to interactively select, highlight, or deselect a single or multiple rows of data. There are several selection modes available in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid):
 
 - None Selection
 - Multiple Selection
@@ -23,7 +23,7 @@ The Ignite UI for Blazor Row Selection feature in Blazor Hierarchical Grid allow
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
 
-The sample below demonstrates the three types of [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to _hide_ or _show_ the row selector checkboxes.
+The sample below demonstrates the three types of [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to _hide_ or _show_ the row selector checkboxes.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
@@ -291,7 +291,7 @@ public class SingersData
 
 ## Setup
 
-In order to setup row selection in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html), you just need to set the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelection) property. This property accepts `GridSelectionMode` enumeration.
+In order to setup row selection in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), you just need to set the [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=RowSelection) property. This property accepts `GridSelectionMode` enumeration.
 
 `GridSelectionMode` exposes the following modes:
 
@@ -303,11 +303,11 @@ Below we will take a look at each of them in more detail.
 
 ### None Selection
 
-In the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) by default row selection is disabled ([`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelection) is None). So you can **not** select or deselect a row through interaction with the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) UI, the only way to complete these actions is to use the provided API methods.
+In the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) by default row selection is disabled ([`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=RowSelection) is None). So you can **not** select or deselect a row through interaction with the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) UI, the only way to complete these actions is to use the provided API methods.
 
 ### Single Selection
 
-Single row selection can now be easily set up, the only thing you need to do, is to set [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelection) to `Single` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the <kbd>SPACE</kbd> key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected `RowSelectionChanging` event is emitted.
+Single row selection can now be easily set up, the only thing you need to do, is to set [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=RowSelection) to `Single` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the <kbd>SPACE</kbd> key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected `RowSelectionChanging` event is emitted.
 
 ```razor
     <IgbHierarchicalGrid Width="100%"
@@ -330,7 +330,7 @@ Single row selection can now be easily set up, the only thing you need to do, is
 
 ### Multiple Selection
 
-To enable multiple row selection in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) just set the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelection) property to `Multiple`. This will enable a row selector field on each row and in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and click on another while holding the <kbd>SHIFT</kbd> key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row will be toggled and the previous selection will be preserved.
+To enable multiple row selection in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) just set the [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=RowSelection) property to `Multiple`. This will enable a row selector field on each row and in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and click on another while holding the <kbd>SHIFT</kbd> key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row will be toggled and the previous selection will be preserved.
 
 ```razor
     <IgbHierarchicalGrid Width="100%"
@@ -351,14 +351,14 @@ To enable multiple row selection in the [`IgbHierarchicalGrid`](https://www.infr
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 - Row selection will trigger `RowSelectionChanging` event. This event gives you information about the **new selection**, **old selection**, the rows that have been **added** and **removed** from the old selection. Also the event is **cancellable**, so this allows you to prevent selection.
-- When row selection is enabled row selectors are displayed, but if you don't want to show them, you can set [`HideRowSelectors`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_HideRowSelectors) to **true**.
+- When row selection is enabled row selectors are displayed, but if you don't want to show them, you can set [`HideRowSelectors`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=HideRowSelectors) to **true**.
 - When you switch between row selection modes at runtime, this will clear the previous row selection state.
 
 ## API usage
 
 ### Select Rows Programmatically
 
-The code snippet below can be used to select one or multiple rows simultaneously (via [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
+The code snippet below can be used to select one or multiple rows simultaneously (via [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=PrimaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
 ```razor
     <IgbHierarchicalGrid Width="100%"
@@ -381,11 +381,11 @@ The code snippet below can be used to select one or multiple rows simultaneously
     }
 ```
 
-This will add the rows which correspond to the data entries with IDs 1, 2 and 5 to the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) selection.
+This will add the rows which correspond to the data entries with IDs 1, 2 and 5 to the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) selection.
 
 ### Deselect Rows
 
-If you need to deselect rows programmatically, you can use the [`DeselectRows`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_DeselectRows) method.
+If you need to deselect rows programmatically, you can use the [`DeselectRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=DeselectRows) method.
 
 ```razor
     <IgbHierarchicalGrid Width="100%"
@@ -444,17 +444,17 @@ When there is some change in the row selection `RowSelectionChanging` event is e
 
 ### Select All Rows
 
-Another useful API method that [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) provides is [`SelectAllRows`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SelectAllRows). By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. If you call the method with **false** parameter, `SelectAllRows(false)` will always select all data in the grid, even if filtering is applied.
+Another useful API method that [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) provides is [`SelectAllRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=SelectAllRows). By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. If you call the method with **false** parameter, `SelectAllRows(false)` will always select all data in the grid, even if filtering is applied.
 
-> **Note** Keep in mind that [`SelectAllRows`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SelectAllRows) will not select the rows that are deleted.
+> **Note** Keep in mind that [`SelectAllRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=SelectAllRows) will not select the rows that are deleted.
 
 ### Deselect All Rows
 
-[`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) provides a [`DeselectAllRows`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_DeselectAllRows) method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. If you call the method with **false** parameter, `DeselectAllRows(false)` will always clear all row selection state even if filtering is applied.
+[`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) provides a [`DeselectAllRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=DeselectAllRows) method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. If you call the method with **false** parameter, `DeselectAllRows(false)` will always clear all row selection state even if filtering is applied.
 
 ### How to get Selected Rows
 
-If you need to see which rows are currently selected, you can get their row IDs with the [`SelectedRows`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SelectedRows) getter.
+If you need to see which rows are currently selected, you can get their row IDs with the [`SelectedRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=SelectedRows) getter.
 
 ```razor
     <IgbHierarchicalGrid Width="100%"
@@ -476,7 +476,7 @@ If you need to see which rows are currently selected, you can get their row IDs 
     }
 ```
 
-Additionally, assigning row IDs to [`SelectedRows`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_SelectedRows) will allow you to change the grid's selection state.
+Additionally, assigning row IDs to [`SelectedRows`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=SelectedRows) will allow you to change the grid's selection state.
 
 ```razor
 <IgbHierarchicalGrid Width="100%"
@@ -497,15 +497,15 @@ Additionally, assigning row IDs to [`SelectedRows`](https://www.infragistics.com
 
 ### Row Selector Templates
 
-You can template header and row selectors in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) and also access their contexts which provide useful functionality for different scenarios.
+You can template header and row selectors in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) and also access their contexts which provide useful functionality for different scenarios.
 
-By default, the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`Click`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html#IgniteUI_Blazor_Controls_IgbCheckbox_Click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
+By default, the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`Click`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=Click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
 
 #### Row Template
 
-To create a custom row selector template,  within the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) you can use the [`RowSelectorTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_RowSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the row's state.
+To create a custom row selector template,  within the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) you can use the [`RowSelectorTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=RowSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the row's state.
 
-The [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbRowSelectorTemplateDetails_Selected) property shows whether the current row is selected or not while the [`Index`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbRowSelectorTemplateDetails_Index) property can be used to access the row index.
+The [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbRowSelectorTemplateDetails&member=Selected) property shows whether the current row is selected or not while the [`Index`](mcp:get_api_reference?platform=blazor&component=IgbRowSelectorTemplateDetails&member=Index) property can be used to access the row index.
 
 ```razor
 igRegisterScript("WebGridRowSelectorTemplate", (ctx) => {
@@ -524,22 +524,22 @@ igRegisterScript("WebGridRowSelectorTemplate", (ctx) => {
 }, false);
 ```
 
-The [`RowID`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbRowSelectorTemplateDetails_RowID) property can be used to get a reference of an [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) row. This is useful when you implement a `click` handler on the row selector element.
+The [`RowID`](mcp:get_api_reference?platform=blazor&component=IgbRowSelectorTemplateDetails&member=RowID) property can be used to get a reference of an [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) row. This is useful when you implement a `click` handler on the row selector element.
 
-In the above example we are using an [`IgbCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html) and we bind `rowContext.selected` to its [`Checked`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html#IgniteUI_Blazor_Controls_IgbCheckbox_Checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
+In the above example we are using an [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) and we bind `rowContext.selected` to its [`Checked`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox&member=Checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
 
 <!-- ComponentStart: HierarchicalGrid -->
 
 > [!Note]
-> The `rowContext.select()` and `rowContext.deselect()` methods are exposed in the template context of an [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html). They make it easier to toggle the current row, especially in a child grid, when you implement a click handler that overrides the base functionality.
+> The `rowContext.select()` and `rowContext.deselect()` methods are exposed in the template context of an [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). They make it easier to toggle the current row, especially in a child grid, when you implement a click handler that overrides the base functionality.
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
 ### Header Template
 
-To create a custom header selector template, within the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html), you can use the [`HeadSelectorTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_HeadSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the header's state.
+To create a custom header selector template, within the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), you can use the [`HeadSelectorTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=HeadSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the header's state.
 
-The [`SelectedCount`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHeadSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbHeadSelectorTemplateDetails_SelectedCount) property shows you how many rows are currently selected while [`TotalCount`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHeadSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbHeadSelectorTemplateDetails_TotalCount) shows you how many rows there are in the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) in total.
+The [`SelectedCount`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails&member=SelectedCount) property shows you how many rows are currently selected while [`TotalCount`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails&member=TotalCount) shows you how many rows there are in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) in total.
 
 ```razor
 public RenderFragment<IgbHeadSelectorTemplateContext> Template = (context) =>
@@ -548,20 +548,20 @@ public RenderFragment<IgbHeadSelectorTemplateContext> Template = (context) =>
 };
 ```
 
-The [`SelectedCount`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHeadSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbHeadSelectorTemplateDetails_SelectedCount) and [`TotalCount`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHeadSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbHeadSelectorTemplateDetails_TotalCount) properties can be used to determine if the head selector should be checked or indeterminate (partially selected).
+The [`SelectedCount`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails&member=SelectedCount) and [`TotalCount`](mcp:get_api_reference?platform=blazor&component=IgbHeadSelectorTemplateDetails&member=TotalCount) properties can be used to determine if the head selector should be checked or indeterminate (partially selected).
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-Each hierarchy level in an [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) can have its own row and header templating.
+Each hierarchy level in an [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) can have its own row and header templating.
 
 > [!Note]
-> The `headContext.selectAll()` and `headContext.deselectAll()` methods are exposed in the template context of an [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html). They make it easier to toggle all rows, especially in a child grid, when you implement a click handler that overrides the base functionality.
+> The `headContext.selectAll()` and `headContext.deselectAll()` methods are exposed in the template context of an [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). They make it easier to toggle all rows, especially in a child grid, when you implement a click handler that overrides the base functionality.
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
 ### Row Numbering Demo
 
-This demo shows the usage of custom header and row selectors. The latter uses [`Index`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbRowSelectorTemplateDetails_Index) to display row numbers and an [`IgbCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCheckbox.html) bound to [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRowSelectorTemplateDetails.html#IgniteUI_Blazor_Controls_IgbRowSelectorTemplateDetails_Selected).
+This demo shows the usage of custom header and row selectors. The latter uses [`Index`](mcp:get_api_reference?platform=blazor&component=IgbRowSelectorTemplateDetails&member=Index) to display row numbers and an [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) bound to [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbRowSelectorTemplateDetails&member=Selected).
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1032,7 +1032,7 @@ public class SingersData
 
 ## API References
 
-- [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)
+- [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)
 - `HierarchicalGridRow`
 
 ## Additional Resources

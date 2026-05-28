@@ -12,7 +12,7 @@ _tocName: Filtering
 
 # Web Components Tree Grid Filtering
 
-The Ignite UI for Web Components Filtering in Web Components Tree Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
+The Ignite UI for Web Components Filtering in Web Components Tree Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
 
 - Quick filtering
 - [Excel Style Filtering](excel-style-filtering.md)
@@ -20,7 +20,7 @@ The Ignite UI for Web Components Filtering in Web Components Tree Grid is a feat
 
 ## Web Components Tree Grid Filtering Example
 
-The sample below demonstrates [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)'s **Quick Filter** user experience.
+The sample below demonstrates [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)'s **Quick Filter** user experience.
 
 ```typescript
 export class OrdersDataItem {
@@ -62,24 +62,24 @@ export class OrdersData extends Array<OrdersDataItem> {
 
 ## Setup
 
-In order to specify if filtering is enabled and which filtering mode should be used, the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) exposes the following properties - [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#allowFiltering), [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#allowAdvancedFiltering), [`filterMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#filterMode) and [`filterable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#filterable).
+In order to specify if filtering is enabled and which filtering mode should be used, the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) exposes the following properties - [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowFiltering), [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowAdvancedFiltering), [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterMode) and [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable).
 
-Property [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#allowFiltering) enables you to specify the following options:
+Property [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowFiltering) enables you to specify the following options:
 
 - **false** - the filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the filtering for the corresponding grid will be enabled.
 
-Property [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#allowAdvancedFiltering) enables you to specify the following options:
+Property [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowAdvancedFiltering) enables you to specify the following options:
 
 - **false** - the advanced filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the advanced filtering for the corresponding grid will be enabled.
 
-Property [`filterMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#filterMode) enables you to specify the following options:
+Property [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterMode) enables you to specify the following options:
 
 - **QuickFilter** - a simplistic filtering UI. This is the default value.
 - **ExcelStyleFilter** - an Excel-like filtering UI.
 
-Property [`filterable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#filterable) enables you to specify the following options:
+Property [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) enables you to specify the following options:
 
 - **true** - the filtering for the corresponding column will be enabled. This is the default value.
 - **false** - the filtering for the corresponding column will be disabled.
@@ -93,7 +93,7 @@ Property [`filterable`](https://www.infragistics.com/products/ignite-ui-web-comp
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
-To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#allowAdvancedFiltering) input property to **true**
+To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowAdvancedFiltering) input property to **true**
 
 ```html
 <igc-tree-grid  data="data" auto-generate="true" allow-advanced-filtering="true">
@@ -101,7 +101,7 @@ To enable the [Advanced filtering](advanced-filtering.md) however, you need to s
 ```
 
 > [!Note]
-> You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) is the intersection between the results of the two filters.
+> You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) is the intersection between the results of the two filters.
 
 ## Interaction
 
@@ -111,9 +111,9 @@ While some filtering conditions have been applied to a column, and the filter ro
 
 ## Usage
 
-There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the `IgnoreCase` and the initial `Condition` properties.
+There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the `IgnoreCase` and the initial `Condition` properties.
 
-The filtering feature is enabled for the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) component by setting the [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#allowFiltering) input to **true**. The default [`filterMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#filterable) input to **false**.
+The filtering feature is enabled for the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) component by setting the [`allowFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=allowFiltering) input to **true**. The default [`filterMode`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) input to **false**.
 
 <!-- ComponentStart: Grid, TreeGrid -->
 
@@ -126,19 +126,19 @@ The filtering feature is enabled for the [`IgcTreeGridComponent`](https://www.in
 ```
 
 > [!Note]
-> If values of type **string** are used by a column of data type **date**, the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
+> If values of type **string** are used by a column of data type **date**, the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
 
-You can filter any column or a combination of columns through the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) API. The [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) exposes several methods for this task - [`filter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#filter), [`filterGlobal`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#filterGlobal) and [`clearFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#clearFilter).
+You can filter any column or a combination of columns through the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) API. The [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) exposes several methods for this task - [`filter`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filter), [`filterGlobal`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterGlobal) and [`clearFilter`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=clearFilter).
 
-- [`filter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#filter) - filter a single column or a combination of columns.
+- [`filter`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filter) - filter a single column or a combination of columns.
 
 There are five filtering operand classes exposed:
 
-- [`IgcFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcfilteringoperand.html): this is a base filtering operand, which can be inherited when defining custom filtering conditions.
-- [`IgcBooleanFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcbooleanfilteringoperand.html) defines all default filtering conditions for **boolean** type.
-- [`IgcNumberFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcnumberfilteringoperand.html) defines all default filtering conditions for **numeric** type.
-- [`IgcStringFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcstringfilteringoperand.html) defines all default filtering conditions for **string** type.
-- [`IgcDateFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcdatefilteringoperand.html) defines all default filtering conditions for **date** type.
+- [`IgcFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringOperand): this is a base filtering operand, which can be inherited when defining custom filtering conditions.
+- [`IgcBooleanFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcBooleanFilteringOperand) defines all default filtering conditions for **boolean** type.
+- [`IgcNumberFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcNumberFilteringOperand) defines all default filtering conditions for **numeric** type.
+- [`IgcStringFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcStringFilteringOperand) defines all default filtering conditions for **string** type.
+- [`IgcDateFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcDateFilteringOperand) defines all default filtering conditions for **date** type.
 
 ```typescript
 // Single column filtering
@@ -150,7 +150,7 @@ this.grid.filter('ProductName', 'myproduct', IgcStringFilteringOperand.instance(
 The only required parameters are the column field key and the filtering term. Both the condition and the case sensitivity will be inferred from the column properties if not provided. In the case of multiple filtering, the method accepts an array of filtering expressions.
 
 > [!Note]
-> The filtering operation **DOES NOT** change the underlying data source of the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html).
+> The filtering operation **DOES NOT** change the underlying data source of the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
 
 ```typescript
 // Multi column filtering
@@ -179,7 +179,7 @@ gridFilteringExpressionsTree.filteringOperands.push(priceFilteringExpressionsTre
 this.grid.filteringExpressionsTree = gridFilteringExpressionsTree;
 ```
 
-- [`filterGlobal`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#filterGlobal) - clears all existing filters and applies the new filtering condition to all Tree Grid's columns.
+- [`filterGlobal`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filterGlobal) - clears all existing filters and applies the new filtering condition to all Tree Grid's columns.
 
 ```typescript
 // Filter all cells for a value which contains `myproduct`
@@ -187,7 +187,7 @@ this.grid.filteringLogic = FilteringLogic.Or;
 this.grid.filterGlobal('myproduct', IgcStringFilteringOperand.instance().condition('contains'), false);
 ```
 
-- [`clearFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#clearFilter) - removes any applied filtering from the target column. If called with no arguments it will clear the filtering of all columns.
+- [`clearFilter`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=clearFilter) - removes any applied filtering from the target column. If called with no arguments it will clear the filtering of all columns.
 
 ```typescript
 // Remove the filtering state from the ProductName column
@@ -199,7 +199,7 @@ this.grid.clearFilter();
 
 ## Initial filtered state
 
-To set the initial filtering state of the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), set the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#filteringExpressionsTree) property to an array of [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#filteringExpressionsTree) for each column to be filtered.
+To set the initial filtering state of the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), set the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) [`filteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filteringExpressionsTree) property to an array of [`filteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filteringExpressionsTree) for each column to be filtered.
 
 ```typescript
 constructor() {
@@ -226,7 +226,7 @@ constructor() {
 
 ### Filtering logic
 
-The [`filteringLogic`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#filteringLogic) property of the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) controls how filtering multiple columns will resolve in the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html). You can change it at any time through the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) API, or through the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) input property.
+The [`filteringLogic`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=filteringLogic) property of the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) controls how filtering multiple columns will resolve in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). You can change it at any time through the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) API, or through the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) input property.
 
 ```typescript
 import { FilteringLogic } from "igniteui-webcomponents-grids/grids";
@@ -240,11 +240,11 @@ When set to `OR`, a row will be returned when either the 'ProductName' cell valu
 
 ## Custom Filtering Operands
 
-You can customize the filtering menu by adding, removing or modifying the filtering operands. By default, the filtering menu contains certain operands based on the column’s data type ([`IgcBooleanFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcbooleanfilteringoperand.html), [`IgcDateFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcdatefilteringoperand.html), [`IgcNumberFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcnumberfilteringoperand.html) and [`IgcStringFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcstringfilteringoperand.html)). You can extend these classes or their base class [`IgcFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcfilteringoperand.html) to change the filtering menu items’ behavior.
+You can customize the filtering menu by adding, removing or modifying the filtering operands. By default, the filtering menu contains certain operands based on the column’s data type ([`IgcBooleanFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcBooleanFilteringOperand), [`IgcDateFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcDateFilteringOperand), [`IgcNumberFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcNumberFilteringOperand) and [`IgcStringFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcStringFilteringOperand)). You can extend these classes or their base class [`IgcFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringOperand) to change the filtering menu items’ behavior.
 
 In the sample below, inspect the “Product Name” and “Discontinued” columns filters menus. For the “Discontinued” column filter, we have limited the number of operands to All, True and False. For the “Product Name” column filter – we have modified the Contains and Does Not Contain operands logic to perform case sensitive search and added also Empty and Not Empty operands.
 
-To do that, extend the [`IgcStringFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcstringfilteringoperand.html) and [`IgcBooleanFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcbooleanfilteringoperand.html), modify the operations and their logic, and set the column `filters` input to the new operands.
+To do that, extend the [`IgcStringFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcStringFilteringOperand) and [`IgcBooleanFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcBooleanFilteringOperand), modify the operations and their logic, and set the column `filters` input to the new operands.
 
 ```typescript
 
@@ -468,8 +468,8 @@ export class OrdersData extends Array<OrdersDataItem> {
 
 ## API References
 
-- [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
+- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 
 ## Additional Resources
 

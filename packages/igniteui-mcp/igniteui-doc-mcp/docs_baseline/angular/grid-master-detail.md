@@ -286,7 +286,7 @@ Context of the template is the master record data, so that values from the maste
 
 ## API
 
-The expansion states can be controlled via the [`expansionStates`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#expansionStates) input of the `igxGrid`. States are stored in key-value pairs [row identifier, expansion state]. The property gets/sets the current expansion states and supports two-way binding:
+The expansion states can be controlled via the [`expansionStates`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=expansionStates) input of the `igxGrid`. States are stored in key-value pairs [row identifier, expansion state]. The property gets/sets the current expansion states and supports two-way binding:
 
 ```html
   <igx-grid [(expansionStates)]='expansionState' >
@@ -296,11 +296,11 @@ The expansion states can be controlled via the [`expansionStates`](https://www.i
 
 Additional API methods for controlling the expansion states are also exposed:
 
-- [`expandAll`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#expandAll)
-- [`collapseAll`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#collapseAll)
-- [`toggleRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#toggleRow)
-- [`expandRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#expandRow)
-- [`collapseRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#collapseRow)
+- [`expandAll`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=expandAll)
+- [`collapseAll`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=collapseAll)
+- [`toggleRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=toggleRow)
+- [`expandRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=expandRow)
+- [`collapseRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=collapseRow)
 
 ## Keyboard navigation
 
@@ -329,10 +329,10 @@ Additional API methods for controlling the expansion states are also exposed:
 
 ## API References
 
-- [IgxGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
+- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
-- [IgxGridRow](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridrow.html)
-- [IgxTreeGridRow](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridrow.html)
-- [IgxHierarchicalGridRow](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridrow.html)
-- [IgxGridCell](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [IgxGridRow](mcp:get_api_reference?platform=angular&component=IgxGridRow)
+- [IgxTreeGridRow](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
+- [IgxHierarchicalGridRow](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridRow)
+- [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell)

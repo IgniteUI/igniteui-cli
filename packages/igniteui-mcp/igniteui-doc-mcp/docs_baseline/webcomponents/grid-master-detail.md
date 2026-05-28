@@ -10,7 +10,7 @@ _premium: true
 
 # Web Components Master-Detail Grid
 
-The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content. When specified each record acts as a master, which upon expansion shows a customizable details template with contextual data for the current record.
+The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content. When specified each record acts as a master, which upon expansion shows a customizable details template with contextual data for the current record.
 
 This mode is useful when you need to display master-detail style data in a hierarchical structure.
 
@@ -58,7 +58,7 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## Configuration
 
-To configure the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) to display in master-detail mode you need to specify a template for the grid:
+To configure the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) to display in master-detail mode you need to specify a template for the grid:
 
 ```ts
 constructor() {
@@ -88,11 +88,11 @@ Context of the template is the master record data, so that values from the maste
 
 Additional API methods for controlling the expansion states are also exposed:
 
-- [`expandAll`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#expandAll)
-- [`collapseAll`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#collapseAll)
-- [`toggleRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#toggleRow)
-- [`expandRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#expandRow)
-- [`collapseRow`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#collapseRow)
+- [`expandAll`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=expandAll)
+- [`collapseAll`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=collapseAll)
+- [`toggleRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=toggleRow)
+- [`expandRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=expandRow)
+- [`collapseRow`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=collapseRow)
 
 ## Keyboard navigation
 
@@ -117,6 +117,6 @@ Additional API methods for controlling the expansion states are also exposed:
 
 ## API References
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 - `HierarchicalGridRow`

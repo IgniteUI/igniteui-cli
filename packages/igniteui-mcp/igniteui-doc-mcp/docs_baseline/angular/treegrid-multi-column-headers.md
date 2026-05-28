@@ -8,7 +8,7 @@ _tocName: Multi-column Headers
 _premium: true
 ---
 # Angular Tree Grid Multi-column Headers Overview
-[`IgxTreeGrid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) supports `multi-column headers` which allows you to group columns by placing them under a common multi headers. Each multi-column headers group could be a representation of combinations between other groups or columns within the Material UI grid.
+[`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) supports `multi-column headers` which allows you to group columns by placing them under a common multi headers. Each multi-column headers group could be a representation of combinations between other groups or columns within the Material UI grid.
 ## Angular Tree Grid Multi-column Headers Overview Example
 ```typescript
 import { Component, ViewChild } from '@angular/core';
@@ -102,7 +102,7 @@ export class TreeGridMultiColumnHeadersSampleComponent {
     margin-right: 5px;
 }
 ```
-The declaration of `Multi-column header` could be achieved by wrapping a set of columns into [`igx-column-group`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumngroupcomponent.html) component with [`header`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumngroupcomponent.html#header) title passed.
+The declaration of `Multi-column header` could be achieved by wrapping a set of columns into [`igx-column-group`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent) component with [`header`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=header) title passed.
 ```html
 <igx-tree-grid [data]="data" primaryKey="ID" foreignKey="ParentID">
     <igx-column-group header="Contact Information">
@@ -112,7 +112,7 @@ The declaration of `Multi-column header` could be achieved by wrapping a set of 
     </igx-column-group>
 </igx-tree-grid>
 ```
-For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`igx-column-group`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumngroupcomponent.html) leads to the desired result.
+For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`igx-column-group`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent) leads to the desired result.
 ```html
 <igx-tree-grid [data]="data" primaryKey="ID" foreignKey="ParentID" [moving]="true">
     <igx-column-group [pinned]="false" header="General Information">
@@ -125,7 +125,7 @@ For achieving `n-th` level of nested headers, the declaration above should be fo
     </igx-column-group>
 </igx-tree-grid>
 ```
-Every [`igx-column-group`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumngroupcomponent.html) supports [`moving`](column-moving.md), [`pinning`](column-pinning.md) and [`hiding`](column-hiding.md).
+Every [`igx-column-group`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent) supports [`moving`](column-moving.md), [`pinning`](column-pinning.md) and [`hiding`](column-hiding.md).
 > [!NOTE]
 > When there is a set of columns and column groups, pinning works only for top level column parents. More specifically pinning per nested `column groups` or `columns` is not allowed. <br />
 > Please note that when using Pinning with Multi-Column Headers, the entire Group gets pinned. <br />
@@ -154,7 +154,7 @@ The `ng-template` is provided with the column group object as a context.
 </igx-column-group>
 ...
 ```
-If you want to re-use a single template for several column groups, you could set the [`headerTemplate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumngroupcomponent.html#headertemplate) property of the column group like this:
+If you want to re-use a single template for several column groups, you could set the [`headerTemplate`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=headertemplate) property of the column group like this:
 ```html
 <ng-template #columnGroupHeaderTemplate let-columnGroup>
     {{ columnGroup.header | uppercase }}
@@ -382,9 +382,9 @@ $custom-theme: grid-theme(
 >The sample will not be affected by the selected global theme from `Change Theme`.
 ## API References
 <div class="divider--half"></div>
-- [IgxTreeGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 - [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [IgxColumnGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumngroupcomponent.html)
+- [IgxColumnGroupComponent](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent)
 <div class="divider--half"></div>
 ## Additional Resources
 <div class="divider--half"></div>

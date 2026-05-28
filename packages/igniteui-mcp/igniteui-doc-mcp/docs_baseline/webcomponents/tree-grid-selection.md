@@ -18,7 +18,7 @@ With the Ignite UI for Web Components Select feature in Web Components Tree Grid
 - Cell selection
 - Column selection
 
-With the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#rowSelection) property, you can specify:
+With the [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowSelection) property, you can specify:
 
 - None
 - Single
@@ -26,7 +26,7 @@ With the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-co
 
 ## Web Components Tree Grid Selection Example
 
-The sample below demonstrates three types of **cell selection** behaviors in the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html). Use the buttons below to enable each of the available selection modes.
+The sample below demonstrates three types of **cell selection** behaviors in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). Use the buttons below to enable each of the available selection modes.
 
 ```typescript
 export class EmployeesFlatDataItem {
@@ -69,10 +69,10 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 
 ### Web Components Tree Grid Row Selection
 
-Property [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#rowSelection) enables you to specify the following options:
+Property [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowSelection) enables you to specify the following options:
 
-- `None` - Row selection would be disabled for the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html).
-- `Single` - Selection of only one row within the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) would be available.
+- `None` - Row selection would be disabled for the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
+- `Single` - Selection of only one row within the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) would be available.
 - `Multiple` - Multi-row selection would be available by using the row selectors, with a key combination like <kbd>CTRL</kbd> + <kbd>click</kbd>, or by pressing the <kbd>space key</kbd> once a cell is focused.
 
 <!-- ComponentStart: TreeGrid, HierarchicalGrid -->
@@ -85,11 +85,11 @@ Property [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-co
 
 ### Web Components Tree Grid Cell Selection
 
-Property [`cellSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#cellSelection) enables you to specify the following options:
+Property [`cellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=cellSelection) enables you to specify the following options:
 
-- `None` - Cell selection would be disabled for the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html).
-- `Single` - Selection of only one cell within the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) would be available.
-- `Multiple` - Currently, this is the default state of the selection in the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
+- `None` - Cell selection would be disabled for the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent).
+- `Single` - Selection of only one cell within the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) would be available.
+- `Multiple` - Currently, this is the default state of the selection in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -99,7 +99,7 @@ Property [`cellSelection`](https://www.infragistics.com/products/ignite-ui-web-c
 
 ### Web Components Tree Grid Column Selection
 
-The [`selectable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selectable) property enables you to specify the following options for each [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
+The [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable) property enables you to specify the following options for each [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
 
 This leads to the following three variations:
 
@@ -115,7 +115,7 @@ This leads to the following three variations:
 
 ## Known Issues and Limitations
 
-When the grid has no [`primaryKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+When the grid has no [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 - Row Expand/collapse
@@ -124,7 +124,7 @@ When the grid has no [`primaryKey`](https://www.infragistics.com/products/ignite
 
 ## API References
 
-- [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)
+- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
 
 ## Additional Resources
 

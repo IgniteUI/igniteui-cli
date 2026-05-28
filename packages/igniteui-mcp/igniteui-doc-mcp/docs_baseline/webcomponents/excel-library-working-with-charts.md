@@ -139,7 +139,7 @@ In order to add a chart to a worksheet, you must use the `AddChart` method of th
 
 The `AddChart` method returns the worksheet chart element to be added to the worksheet. Once you have this, you can use the [`setSourceData`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetchart.html#setSourceData) method on the chart to set a cell address of the region of worksheet cells that you wish to use as a data source, as well as whether or not you want to switch the mapping of columns and rows to the X and Y axis.
 
-There are over 70 supported chart types, including `Line`, `Area`, [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html), and `Pie`.
+There are over 70 supported chart types, including `Line`, `Area`, [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent), and `Pie`.
 
 The following code demonstrates how to use the Excel charting feature. The below snippet will add a column chart to between the first cell and the 13th cell in the first row of the worksheet. The source data is then set for the data in the region of A2:M6, switching the mapping of columns and rows for the X and Y axis of the column chart:
 
@@ -155,7 +155,7 @@ chart.setSourceData("A2:M6", true);
 
 - `AddChart`
 - `Area`
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 - `Line`
 - `Pie`
 - [`WorksheetChart`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.worksheetchart.html)

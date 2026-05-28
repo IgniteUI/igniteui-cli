@@ -12,17 +12,17 @@ _premium: true
 
 # Blazor Grid Remote Data Operations
 
-By default, the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) uses its own logic for performing data operations.
+By default, the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) uses its own logic for performing data operations.
 
-You can perform these tasks remotely and feed the resulting data to the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) by taking advantage of certain inputs and events, which are exposed by the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
+You can perform these tasks remotely and feed the resulting data to the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) by taking advantage of certain inputs and events, which are exposed by the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
 
 ## Infinite Scroll
 
-A popular design for scenarios requiring fetching data by chunks from an end-point is the so-called infinite scroll. For data grids, it is characterized by continuous increase of the loaded data triggered by the end-user scrolling all the way to the bottom. The next paragraphs explain how you can use the available API to easily achieve infinite scrolling in [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
+A popular design for scenarios requiring fetching data by chunks from an end-point is the so-called infinite scroll. For data grids, it is characterized by continuous increase of the loaded data triggered by the end-user scrolling all the way to the bottom. The next paragraphs explain how you can use the available API to easily achieve infinite scrolling in [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
 
 To implement infinite scroll, you have to fetch the data in chunks. The data that is already fetched should be stored locally and you have to determine the length of a chunk and how many chunks there are. You also have to keep a track of the last visible data row index in the grid. In this way, using the `StartIndex` and `ChunkSize` properties, you can determine if the user scrolls up and you have to show them already fetched data or scrolls down and you have to fetch more data from the end-point.
 
-The first thing to do is fetch the first chunk of the data. Setting the [`TotalItemCount`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_TotalItemCount) property is important, as it allows the grid to size its scrollbar correctly.
+The first thing to do is fetch the first chunk of the data. Setting the [`TotalItemCount`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=TotalItemCount) property is important, as it allows the grid to size its scrollbar correctly.
 
 ```razor
 @code {
@@ -326,7 +326,7 @@ As Blazor Server is already a remote instance, unlike the demos in the other pla
 
 <!-- ComponentEnd: Grid -->
 
-After declaring the service, we need to create a component, which will be responsible for the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) construction and data subscription.
+After declaring the service, we need to create a component, which will be responsible for the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) construction and data subscription.
 
 <!-- ComponentStart: Grid -->
 
@@ -1740,7 +1740,7 @@ namespace Infragistics.Samples
 
 ## Known Issues and Limitations
 
-- When the grid has no [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridBaseDirective.html#IgniteUI_Blazor_Controls_IgbGridBaseDirective_PrimaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+- When the grid has no [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=PrimaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 
@@ -1752,8 +1752,8 @@ namespace Infragistics.Samples
 
 ## API References
 
-- [`IgbPaginator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPaginator.html)
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+- [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ## Additional Resources
 

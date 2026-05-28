@@ -64,14 +64,14 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html) and its necessary CSS, like so:
+You will then need to import the [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton) and its necessary CSS, like so:
 
 ```tsx
 import { IgrButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-The simplest way to start using the [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html) is as follows:
+The simplest way to start using the [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton) is as follows:
 
 ```tsx
 <IgrButton />
@@ -79,7 +79,7 @@ The simplest way to start using the [`IgrButton`](https://www.infragistics.com/p
 
 ## Prefix / Suffix
 
-With `prefix` and `suffix` slots of the [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html) component, we can add different content before and after the main content of the button.
+With `prefix` and `suffix` slots of the [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton) component, we can add different content before and after the main content of the button.
 
 ```tsx
 <IgrButton type="button" variant="contained">
@@ -89,8 +89,8 @@ With `prefix` and `suffix` slots of the [`IgrButton`](https://www.infragistics.c
 
 ## Type
 
-The button component will change its internal structure from a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) type element when the [`href`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#href) attribute is set. In that case the button can be thought of as a regular link. Setting the [`href`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#href) attribute will allow you to also set the [`rel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#rel), [`target`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#target) and [`download`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#download) attributes.
-In the case when the button component uses an actual [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element internally, we can specify its [`displayType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#displayType) by setting the property to any of the following values:
+The button component will change its internal structure from a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) type element when the [`href`](mcp:get_api_reference?platform=react&component=IgrButton&member=href) attribute is set. In that case the button can be thought of as a regular link. Setting the [`href`](mcp:get_api_reference?platform=react&component=IgrButton&member=href) attribute will allow you to also set the [`rel`](mcp:get_api_reference?platform=react&component=IgrButton&member=rel), [`target`](mcp:get_api_reference?platform=react&component=IgrButton&member=target) and [`download`](mcp:get_api_reference?platform=react&component=IgrButton&member=download) attributes.
+In the case when the button component uses an actual [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element internally, we can specify its [`displayType`](mcp:get_api_reference?platform=react&component=IgrButton&member=displayType) by setting the property to any of the following values:
 
 - `Submit` - when we want to submit the form data
 - `reset` - when we want to reset form data to its initial values
@@ -100,7 +100,7 @@ In the case when the button component uses an actual [`<button>`](https://develo
 
 ### Contained Button
 
-Use the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#variant) attribute to add a simple contained button in your component template. Note that if you do not set variant, by default it will be set to contained.
+Use the [`variant`](mcp:get_api_reference?platform=react&component=IgrButton&member=variant) attribute to add a simple contained button in your component template. Note that if you do not set variant, by default it will be set to contained.
 
 ```tsx
 <IgrButton variant="contained"><span>Contained</span></IgrButton>
@@ -139,7 +139,7 @@ root.render(<ButtonContained/>);
 
 ### Outlined Button
 
-All you have to do to create an `outlined` button is to change the value of the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#variant) property:
+All you have to do to create an `outlined` button is to change the value of the [`variant`](mcp:get_api_reference?platform=react&component=IgrButton&member=variant) property:
 
 ```tsx
 <IgrButton variant="outlined"><span>Outlined</span></IgrButton>
@@ -217,7 +217,7 @@ root.render(<ButtonFlat/>);
 
 ### Floating Action Button
 
-We can create a floating action button by setting the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#variant) property to `fab`:
+We can create a floating action button by setting the [`variant`](mcp:get_api_reference?platform=react&component=IgrButton&member=variant) property to `fab`:
 
 ```tsx
 <IgrButton variant="fab"><span>Fab</span></IgrButton>
@@ -259,7 +259,7 @@ root.render(<ButtonFab/>);
 
 ## Button Sizing
 
-Users can change the size of the [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html) using the `--ig-size` CSS variable. In the following example, we will add some radio buttons to display all size values. This way whenever one gets selected, we will change the size of the button.
+Users can change the size of the [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton) using the `--ig-size` CSS variable. In the following example, we will add some radio buttons to display all size values. This way whenever one gets selected, we will change the size of the button.
 
 ```tsx
 import { IgrButton, IgrRadio, IgrRadioGroup } from 'igniteui-react';
@@ -379,7 +379,7 @@ root.render(<ButtonSize/>);
 
 ### Download
 
-Setting the [`download`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#download) property will prompt the user to save the linked URL instead of navigating to it.
+Setting the [`download`](mcp:get_api_reference?platform=react&component=IgrButton&member=download) property will prompt the user to save the linked URL instead of navigating to it.
 
 ```tsx
 <IgrButton
@@ -424,7 +424,7 @@ root.render(<ButtonDownload/>);
 
 ## Styling
 
-The [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html) exposes three CSS parts which we can use for styling:
+The [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton) exposes three CSS parts which we can use for styling:
 
 |Name|Description|
 |--|--|
@@ -486,12 +486,12 @@ root.render(<ButtonStyling/>);
 
 ## API References
 
-- [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html)
-- [`displayType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#displayType)
-- [`download`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#download)
-- [`href`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html#href)
-- [`IgrRadioGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html)
-- [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html)
+- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
+- [`displayType`](mcp:get_api_reference?platform=react&component=IgrButton&member=displayType)
+- [`download`](mcp:get_api_reference?platform=react&component=IgrButton&member=download)
+- [`href`](mcp:get_api_reference?platform=react&component=IgrButton&member=href)
+- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
+- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

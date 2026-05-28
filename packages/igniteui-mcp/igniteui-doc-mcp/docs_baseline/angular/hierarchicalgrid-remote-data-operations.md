@@ -22,13 +22,13 @@ You can perform these tasks remotely and feed the resulting data to the Hierarch
 
  <!-- TODO -->
 ## Unique Column Values Strategy
-The list items inside the Excel Style Filtering dialog represent the unique values for the respective column. The Hierarchical Grid generates these values based on its data source by default. In case of remote filtering, the grid data does not contain all the data from the server. In order to provide the unique values manually and load them on demand, we can take advantage of the Hierarchical Grid's [`uniqueColumnValuesStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#uniqueColumnValuesStrategy) input. This input is actually a method that provides three arguments:
+The list items inside the Excel Style Filtering dialog represent the unique values for the respective column. The Hierarchical Grid generates these values based on its data source by default. In case of remote filtering, the grid data does not contain all the data from the server. In order to provide the unique values manually and load them on demand, we can take advantage of the Hierarchical Grid's [`uniqueColumnValuesStrategy`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=uniqueColumnValuesStrategy) input. This input is actually a method that provides three arguments:
 - **column**  - The respective column instance.
 - **filteringExpressionsTree** - The filtering expressions tree, which is reduced based on the respective column.
 - **done** - Callback that should be called with the newly generated column values when they are retrieved from the server.
 The developer can manually generate the necessary unique column values based on the information, that is provided by the **column** and the **filteringExpressionsTree** arguments and then invoke the **done** callback.
 > [!NOTE]
-> When the [`uniqueColumnValuesStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#uniqueColumnValuesStrategy) input is provided, the default unique values generating process in the excel style filtering will not be used.
+> When the [`uniqueColumnValuesStrategy`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=uniqueColumnValuesStrategy) input is provided, the default unique values generating process in the excel style filtering will not be used.
 ```html
 <igx-hierarchical-grid #hierarchicalGrid [primaryKey]="'Artist'" [data]="data" [filterMode]="'excelStyleFilter'"
                        [uniqueColumnValuesStrategy]="singersColumnValuesStrategy">
@@ -224,7 +224,7 @@ export class HGridRemotePagingSampleComponent implements OnInit, AfterViewInit, 
 }
 Now we can choose between setting-up our own _custom paging template_ or using the default one that the `igx-paginator` provides. Let's first take a look what is necessary to set-up remote paging by using the _default paging template_.
 ### Remote paging with default template
-If you want to use the _default paging template_ you need to set the Paginator's [`totalRecords`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#totalRecords) property, only then the grid will be able to calculate the _total page number_ based on total remote records. When performing a remote pagination the Paginator will pass to the Grid only the data for the current page, so the grid will not try to paginate the provided data source. That's why we should set Grid's [`pagingMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#pagingMode) property to _GridPagingMode.remote_. Also it is necessary to either subscribe to [`pagingDone`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#pagingDone) or [`perPageChange`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#perPageChange) events in order to fetch the data from your remote service, it depends on the use case which event will be used.
+If you want to use the _default paging template_ you need to set the Paginator's [`totalRecords`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=totalRecords) property, only then the grid will be able to calculate the _total page number_ based on total remote records. When performing a remote pagination the Paginator will pass to the Grid only the data for the current page, so the grid will not try to paginate the provided data source. That's why we should set Grid's [`pagingMode`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=pagingMode) property to _GridPagingMode.remote_. Also it is necessary to either subscribe to [`pagingDone`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=pagingDone) or [`perPageChange`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPageChange) events in order to fetch the data from your remote service, it depends on the use case which event will be used.
 ```html
 <igx-hierarchical-grid #hierarchicalGrid [primaryKey]="'CustomerID'" [pagingMode]="mode">
     <igx-column field="CustomerID"></igx-column>
@@ -418,7 +418,7 @@ export class HGridRemotePagingDefaultTemplateComponent implements OnInit, AfterV
 ```
 <div class="divider--half"></div>
 ### Remote Paging with custom igx-paginator-content
-When we define a custom paginator content we need to define the content in a way to get the data only for the requested page and to pass the correct **skip** and **top** parameters to the remote service according to the selected page and items [`perPage`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#perPage). We are going to use the `<igx-paginator>` in order to ease our example configuration, along with the [`IgxPageSizeSelectorComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPageSizeSelectorComponent.html) and [`IgxPageNavigationComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPageNavigationComponent.html) that were introduced - `igx-page-size` will add the per page dropdown and label and `igx-page-nav` will add the navigation action buttons and labels.
+When we define a custom paginator content we need to define the content in a way to get the data only for the requested page and to pass the correct **skip** and **top** parameters to the remote service according to the selected page and items [`perPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPage). We are going to use the `<igx-paginator>` in order to ease our example configuration, along with the [`IgxPageSizeSelectorComponent`](mcp:get_api_reference?platform=angular&component=IgxPageSizeSelectorComponent) and [`IgxPageNavigationComponent`](mcp:get_api_reference?platform=angular&component=IgxPageNavigationComponent) that were introduced - `igx-page-size` will add the per page dropdown and label and `igx-page-nav` will add the navigation action buttons and labels.
 ```html
 <igx-paginator #paginator
     [totalRecords]="totalCount"
@@ -655,11 +655,11 @@ export class HGridRemotePagingSampleComponent implements OnInit, AfterViewInit, 
   - Row Expand/collapse
   - Row Editing
   - Row Pinning
-- In remote data scenarios, when the grid has a `primaryKey` set, [`rowSelectionChanging.oldSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/IRowSelectionEventArgs.html#oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
+- In remote data scenarios, when the grid has a `primaryKey` set, [`rowSelectionChanging.oldSelection`](mcp:get_api_reference?platform=angular&component=IRowSelectionEventArgs&member=oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
 ## API References
 <div class="divider--half"></div>
-- [IgxPaginatorComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html)
-- [IgxHierarchicalGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
+- [IgxPaginatorComponent API](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent)
+- [IgxHierarchicalGridComponent API](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
 - [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

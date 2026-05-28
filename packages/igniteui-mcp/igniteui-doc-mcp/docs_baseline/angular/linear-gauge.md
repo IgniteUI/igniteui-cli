@@ -11,11 +11,11 @@ _premium: true
 
 # Angular Linear Gauge Overview
 
-The Ignite UI for Angular linear gauge component allows for visualizing data in the form of a linear gauge. The [`IgxLinearGaugeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html) provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html#transitionDuration) property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
+The Ignite UI for Angular linear gauge component allows for visualizing data in the form of a linear gauge. The [`IgxLinearGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent) provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=transitionDuration) property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Angular Linear Gauge Example
 
-The following sample demonstrates how setting multiple properties on the same [`IgxLinearGaugeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html) can transform it to completely different linear gauge.
+The following sample demonstrates how setting multiple properties on the same [`IgxLinearGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent) can transform it to completely different linear gauge.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -374,7 +374,7 @@ npm install --save igniteui-angular-gauges
 
 ## Component Modules
 
-The [`IgxLinearGaugeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html) requires the following modules:
+The [`IgxLinearGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent) requires the following modules:
 
 ```ts
 // app.module.ts
@@ -528,7 +528,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Highlight Needle
 
-The linear gauge can be modified to show a second needle. This will make the main needle's [`value`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html#value) appear with a lower opacity. To enable this first set [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html#highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html#highlightValue).
+The linear gauge can be modified to show a second needle. This will make the main needle's [`value`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=value) appear with a lower opacity. To enable this first set [`highlightValueDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=highlightValue).
 
 ```html
 <igx-linear-gauge
@@ -1008,7 +1008,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Scale
 
-The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using [`isScaleInverted`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html#isScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using [`isScaleInverted`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=isScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```html
 <igx-linear-gauge
@@ -1182,8 +1182,8 @@ For your convenience, all above code snippets are combined into one code block b
 
 The following is a list of API members mentioned in the above sections:
 
-- [`IgxLinearGaugeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html)
-- [`IgxLinearGraphRangeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargraphrangecomponent.html)
+- [`IgxLinearGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent)
+- [`IgxLinearGraphRangeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGraphRangeComponent)
 
 ## Additional Resources
 

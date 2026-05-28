@@ -77,7 +77,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-Before using the [`IgrTabs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html), you need to import it as follows:
+Before using the [`IgrTabs`](mcp:get_api_reference?platform=react&component=IgrTabs), you need to import it as follows:
 
 ```tsx
 import { IgrTabs, IgrTab } from "igniteui-react";
@@ -85,7 +85,7 @@ import { IgrTabs, IgrTab } from "igniteui-react";
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Simple [`IgrTabs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html) declaration is done as follows:
+Simple [`IgrTabs`](mcp:get_api_reference?platform=react&component=IgrTabs) declaration is done as follows:
 
 ```tsx
 <IgrTabs>
@@ -102,19 +102,19 @@ Simple [`IgrTabs`](https://www.infragistics.com/products/ignite-ui-react/docs/ty
 </IgrTabs>
 ```
 
-Tab text can be set either as simple string using the [`label`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtab.html#label) property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
+Tab text can be set either as simple string using the [`label`](mcp:get_api_reference?platform=react&component=IgrTab&member=label) property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
 
 ### Selection
 
-The [`IgrTabs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html) emits `Change` event when the user selects an item either by key press or click. The [`select`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html#select) method allows you to select a tab by specifying the [`IgrTab`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtab.html) or its id.
+The [`IgrTabs`](mcp:get_api_reference?platform=react&component=IgrTabs) emits `Change` event when the user selects an item either by key press or click. The [`select`](mcp:get_api_reference?platform=react&component=IgrTabs&member=select) method allows you to select a tab by specifying the [`IgrTab`](mcp:get_api_reference?platform=react&component=IgrTab) or its id.
 
 If the selected tab is not specified on initial load, the first tab that is not disabled will be selected.
 
-The default behavior, which selects a tab when the user is navigating with the arrow keys, could be modified by the [`activation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html#activation) property. Setting it to `Manual` will focus the next/previous tab on arrow key press, but the tab will be selected only after pressing <kbd>SPACE</kbd> or <kbd>ENTER</kbd>
+The default behavior, which selects a tab when the user is navigating with the arrow keys, could be modified by the [`activation`](mcp:get_api_reference?platform=react&component=IgrTabs&member=activation) property. Setting it to `Manual` will focus the next/previous tab on arrow key press, but the tab will be selected only after pressing <kbd>SPACE</kbd> or <kbd>ENTER</kbd>
 
 ### Disabled Tab
 
-A tab is disabled by setting the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtab.html#disabled) attribute:
+A tab is disabled by setting the [`disabled`](mcp:get_api_reference?platform=react&component=IgrTab&member=disabled) attribute:
 
 ```tsx
 <IgrTab label="Tab 1" disabled={true}></IgrTab>
@@ -122,7 +122,7 @@ A tab is disabled by setting the [`disabled`](https://www.infragistics.com/produ
 
 ### Alignment
 
-The [`alignment`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html#alignment) property controls how React tabs are positioned. It accepts the following values:
+The [`alignment`](mcp:get_api_reference?platform=react&component=IgrTabs&member=alignment) property controls how React tabs are positioned. It accepts the following values:
 
 - `Start` (default): the width of the tab depends on the content (label, icon, both) and all tabs have equal padding. First tab is aligned to the tabs container's left side.
 - `Center`: the width of the tab depends on the content and occupies the tabs container's center.
@@ -228,11 +228,11 @@ root.render(<Scrolling />);
 
 |Keys|Description|
 |----|-----------|
-| <kbd>←</kbd> | Selects previous (next in Right-to-Left mode) tab. If [`activation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html#activation) is set to `Manual` only focuses the tab. Scrolls to end if on first tab. |
-| <kbd>→</kbd> | Selects next (previous in Right-to-Left mode) tab. If [`activation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html#activation) is set to `Manual` only focuses the tab. Scrolls to start if on last tab. |
+| <kbd>←</kbd> | Selects previous (next in Right-to-Left mode) tab. If [`activation`](mcp:get_api_reference?platform=react&component=IgrTabs&member=activation) is set to `Manual` only focuses the tab. Scrolls to end if on first tab. |
+| <kbd>→</kbd> | Selects next (previous in Right-to-Left mode) tab. If [`activation`](mcp:get_api_reference?platform=react&component=IgrTabs&member=activation) is set to `Manual` only focuses the tab. Scrolls to start if on last tab. |
 | <kbd>HOME</kbd> | Selects the first tab. |
 | <kbd>END</kbd> | Selects the last tab. |
-| <kbd>ENTER</kbd> / <kbd>SPACE</kbd> | Selects the focused tab when [`activation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html#activation) is `Manual` |
+| <kbd>ENTER</kbd> / <kbd>SPACE</kbd> | Selects the focused tab when [`activation`](mcp:get_api_reference?platform=react&component=IgrTabs&member=activation) is `Manual` |
 
 ### Prefix / Suffix
 
@@ -315,7 +315,7 @@ root.render(<PrefixSuffix/>);
 
 ## Styling
 
-The [`IgrTabs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html) component exposes several CSS parts, giving you full control over its style:
+The [`IgrTabs`](mcp:get_api_reference?platform=react&component=IgrTabs) component exposes several CSS parts, giving you full control over its style:
 
 | Name | Description |
 |--|--|
@@ -323,7 +323,7 @@ The [`IgrTabs`](https://www.infragistics.com/products/ignite-ui-react/docs/types
 | `start-scroll-button` | The start scroll button displayed when the tabs overflow. |
 | `end-scroll-button` | The end scroll button displayed when the tabs overflow. |
 
-The [`IgrTab`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtab.html) component exposes the following CSS parts:
+The [`IgrTab`](mcp:get_api_reference?platform=react&component=IgrTab) component exposes the following CSS parts:
 
 |Name|Description|
 |--|--|
@@ -459,11 +459,11 @@ root.render(<TabsStyling/>);
 
 ## API Reference
 
-- [`IgrTabs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html)
-- [`IgrTab`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtab.html)
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
-- [`IgrIconButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igriconbutton.html)
-- [`IgrRadioGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html)
+- [`IgrTabs`](mcp:get_api_reference?platform=react&component=IgrTabs)
+- [`IgrTab`](mcp:get_api_reference?platform=react&component=IgrTab)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+- [`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton)
+- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

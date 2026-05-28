@@ -9,7 +9,7 @@ _tocName: Button Group
 
 # React Button Group Overview
 
-The React Button Group component is used to organize [`IgrToggleButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html)'s into styled button groups with horizontal/vertical alignment, single/multiple selection and toggling.
+The React Button Group component is used to organize [`IgrToggleButton`](mcp:get_api_reference?platform=react&component=IgrToggleButton)'s into styled button groups with horizontal/vertical alignment, single/multiple selection and toggling.
 
 ## React Button Example
 
@@ -104,7 +104,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html) and its necessary CSS, like so:
+You will then need to import the [`IgrButtonGroup`](mcp:get_api_reference?platform=react&component=IgrButtonGroup) and its necessary CSS, like so:
 
 ```tsx
 import { IgrButtonGroup } from 'igniteui-react';
@@ -113,9 +113,9 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Now that you have the Ignite UI for React Button Group imported, you can start with a basic configuration of the [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html) and its buttons.
+Now that you have the Ignite UI for React Button Group imported, you can start with a basic configuration of the [`IgrButtonGroup`](mcp:get_api_reference?platform=react&component=IgrButtonGroup) and its buttons.
 
-Use the [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html) selector to wrap your [`IgrToggleButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html)s and display them into a button group. If you want a button to be selected by default, use the [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html#selected) attribute:
+Use the [`IgrButtonGroup`](mcp:get_api_reference?platform=react&component=IgrButtonGroup) selector to wrap your [`IgrToggleButton`](mcp:get_api_reference?platform=react&component=IgrToggleButton)s and display them into a button group. If you want a button to be selected by default, use the [`selected`](mcp:get_api_reference?platform=react&component=IgrToggleButton&member=selected) attribute:
 
 ```tsx
 <IgrButtonGroup>
@@ -142,7 +142,7 @@ Use the [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react
 
 ### Alignment
 
-Use the [`alignment`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html#alignment) property to set the orientation of the buttons in the button group.
+Use the [`alignment`](mcp:get_api_reference?platform=react&component=IgrButtonGroup&member=alignment) property to set the orientation of the buttons in the button group.
 
 ```css
 igc-button-group {
@@ -202,13 +202,13 @@ root.render(<ButtonGroupAlignment/>);
 
 ### Selection
 
-In order to configure the Ignite UI for React [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html) selection, you could use its [`selection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html#selection) property. This property accepts the following three modes:
+In order to configure the Ignite UI for React [`IgrButtonGroup`](mcp:get_api_reference?platform=react&component=IgrButtonGroup) selection, you could use its [`selection`](mcp:get_api_reference?platform=react&component=IgrButtonGroup&member=selection) property. This property accepts the following three modes:
 
 - **single** - default selection mode of the button group. A single button can be selected/deselected by the user.
 - **single-required** - mimics a radio group behavior. Only one button can be selected and once initial selection is made, deselection is not possible through user interaction.
 - **multiple** - multiple buttons in the group can be selected and deselected.
 
-The sample below demonstrates the exposed [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html) selection modes:
+The sample below demonstrates the exposed [`IgrButtonGroup`](mcp:get_api_reference?platform=react&component=IgrButtonGroup) selection modes:
 
 ```css
 .radio-group-container {
@@ -318,7 +318,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ButtonGroupSelectionSample/>);
 ```
 
-A [`IgrToggleButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html) could be marked as selected via its [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html#selected) attribute or through the [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html) [`selectedItems`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html#selectedItems) attribute:
+A [`IgrToggleButton`](mcp:get_api_reference?platform=react&component=IgrToggleButton) could be marked as selected via its [`selected`](mcp:get_api_reference?platform=react&component=IgrToggleButton&member=selected) attribute or through the [`IgrButtonGroup`](mcp:get_api_reference?platform=react&component=IgrButtonGroup) [`selectedItems`](mcp:get_api_reference?platform=react&component=IgrButtonGroup&member=selectedItems) attribute:
 
 ```tsx
 <IgrButtonGroup selectedItems={['bold']}>
@@ -338,7 +338,7 @@ A [`IgrToggleButton`](https://www.infragistics.com/products/ignite-ui-react/docs
 ```
 
 > [!Note]
-> Setting [`IgrToggleButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html) [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html#value) attribute is mandatory for using the [`selectedItems`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html#selectedItems) property of the [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html).
+> Setting [`IgrToggleButton`](mcp:get_api_reference?platform=react&component=IgrToggleButton) [`value`](mcp:get_api_reference?platform=react&component=IgrToggleButton&member=value) attribute is mandatory for using the [`selectedItems`](mcp:get_api_reference?platform=react&component=IgrButtonGroup&member=selectedItems) property of the [`IgrButtonGroup`](mcp:get_api_reference?platform=react&component=IgrButtonGroup).
 
 ### Size
 
@@ -392,8 +392,8 @@ root.render(<ButtonGroupSize/>);
 
 ## Styling
 
-The [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html) component exposes `group` CSS part that allows us to style the button group container.
-Also, the [`IgrToggleButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html)s provide `toggle` CSS part that could be used to style the button element.
+The [`IgrButtonGroup`](mcp:get_api_reference?platform=react&component=IgrButtonGroup) component exposes `group` CSS part that allows us to style the button group container.
+Also, the [`IgrToggleButton`](mcp:get_api_reference?platform=react&component=IgrToggleButton)s provide `toggle` CSS part that could be used to style the button element.
 
 ```css
 igc-button-group::part(group) {
@@ -483,10 +483,10 @@ root.render(<ButtonGroupStyling/>);
 
 ## API Reference
 
-- [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html)
-- [`IgrToggleButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtogglebutton.html)
-- [`IgrRipple`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrripple.html)
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
+- [`IgrButtonGroup`](mcp:get_api_reference?platform=react&component=IgrButtonGroup)
+- [`IgrToggleButton`](mcp:get_api_reference?platform=react&component=IgrToggleButton)
+- [`IgrRipple`](mcp:get_api_reference?platform=react&component=IgrRipple)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

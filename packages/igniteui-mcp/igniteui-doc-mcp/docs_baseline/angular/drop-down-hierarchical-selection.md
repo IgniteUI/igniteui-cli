@@ -12,19 +12,19 @@ The following samples demonstrate how to create a multi-select hierarchical drop
 
 ## Topic Overview
 
-For the drop-down list we will use the [IgxDropDownComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html) as well as the [IgxToggleActionDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoggleactiondirective.html) to open/close the drop-down.
+For the drop-down list we will use the [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) as well as the [IgxToggleActionDirective](mcp:get_api_reference?platform=angular&component=IgxToggleActionDirective) to open/close the drop-down.
 
-To visualize the hierarchical data in the drop-down, you can use either the [IgxTreeComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html) or the [IgxTreeGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html).
+To visualize the hierarchical data in the drop-down, you can use either the [IgxTreeComponent](mcp:get_api_reference?platform=angular&component=IgxTreeComponent) or the [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent).
 
-The [`IgxChipComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html) is used to display the selected items.
+The [`IgxChipComponent`](mcp:get_api_reference?platform=angular&component=IgxChipComponent) is used to display the selected items.
 
 ## Selection
 
-To display selected nodes/rows from the list use the [`IgxChipComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html) by handling the events that notify of selection changes and populate the `selectedNodes` / `selectedRows` array. This can be done by subscribing to the IgxTreeComponent's [`nodeSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html#nodeSelection) event and to the IgxTreeGridComponent's [`rowSelectionChanging`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowSelectionChanging) event.
+To display selected nodes/rows from the list use the [`IgxChipComponent`](mcp:get_api_reference?platform=angular&component=IgxChipComponent) by handling the events that notify of selection changes and populate the `selectedNodes` / `selectedRows` array. This can be done by subscribing to the IgxTreeComponent's [`nodeSelection`](mcp:get_api_reference?platform=angular&component=IgxTreeComponent&member=nodeSelection) event and to the IgxTreeGridComponent's [`rowSelectionChanging`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowSelectionChanging) event.
 
-To remove the chip from the DOM and deselect the item from the tree/grid, you have to handle the IgxChipComponent's [`remove`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html#remove) event.
+To remove the chip from the DOM and deselect the item from the tree/grid, you have to handle the IgxChipComponent's [`remove`](mcp:get_api_reference?platform=angular&component=IgxChipComponent&member=remove) event.
 
-Additionally, a way to prevent the drop-down from closing on chip deletion would be to check the event's composite path for an `igx-chip` node and then cancel the event in the `IgxDropDownComponent`'s [`closing`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html#closing) event handler.
+Additionally, a way to prevent the drop-down from closing on chip deletion would be to check the event's composite path for an `igx-chip` node and then cancel the event in the `IgxDropDownComponent`'s [`closing`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=closing) event handler.
 
 ### Demo
 
@@ -255,12 +255,12 @@ button {
 
 ## API References
 
-- [IgxDropDownComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html)
-- [IgxChipComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipcomponent.html)
-- [IgxChipsAreaComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchipsareacomponent.html)
-- [IgxTreeComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreecomponent.html)
-- [IgxTreeNodeComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreenodecomponent.html)
-- [IgxTreeGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
+- [IgxChipComponent](mcp:get_api_reference?platform=angular&component=IgxChipComponent)
+- [IgxChipsAreaComponent](mcp:get_api_reference?platform=angular&component=IgxChipsAreaComponent)
+- [IgxTreeComponent](mcp:get_api_reference?platform=angular&component=IgxTreeComponent)
+- [IgxTreeNodeComponent](mcp:get_api_reference?platform=angular&component=IgxTreeNodeComponent)
+- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 
 ## Additional Resources
 

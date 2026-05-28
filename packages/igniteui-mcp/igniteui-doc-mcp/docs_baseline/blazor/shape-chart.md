@@ -15,9 +15,9 @@ The Ignite UI for Blazor Shape Charts are a group of charts that take array of s
 
 ## Blazor Scatter Polygon Chart
 
-The Blazor Scatter Polygon Chart renders an array or array of arrays of polygons in the Cartesian (x, y) coordinate system using [`IgbScatterPolygonSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolygonSeries.html) in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control. This chart can be used to filled shapes of plot diagrams, blueprints, or even the floor plan of buildings.
+The Blazor Scatter Polygon Chart renders an array or array of arrays of polygons in the Cartesian (x, y) coordinate system using [`IgbScatterPolygonSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolygonSeries) in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control. This chart can be used to filled shapes of plot diagrams, blueprints, or even the floor plan of buildings.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbScatterPolygonSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolygonSeries.html), as shown in the example below:
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbScatterPolygonSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolygonSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -106,9 +106,9 @@ You can create this type of chart in the [`IgbDataChart`](https://www.infragisti
 
 ## Blazor Scatter Polyline Chart
 
-The Blazor Scatter Polyline Chart renders an array or array of arrays of polylines in the Cartesian (x, y) coordinate system using [`IgbScatterPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolylineSeries.html) in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control. This chart can be used to outlines of plot diagrams, blueprints, or even the floor plan of buildings. Also, it can visualizes complex relationships between a large amount of elements.
+The Blazor Scatter Polyline Chart renders an array or array of arrays of polylines in the Cartesian (x, y) coordinate system using [`IgbScatterPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolylineSeries) in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control. This chart can be used to outlines of plot diagrams, blueprints, or even the floor plan of buildings. Also, it can visualizes complex relationships between a large amount of elements.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbScatterPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolylineSeries.html), as shown in the example below:
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbScatterPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolylineSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -205,12 +205,12 @@ You can find more information about related chart types in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
-- [`IgbScatterPolygonSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolygonSeries.html)
-- [`IgbScatterPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolylineSeries.html)
-- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolygonSeries.html#IgniteUI_Blazor_Controls_IgbScatterPolygonSeries_DataSource)
-- [`ShapeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolygonSeries.html#IgniteUI_Blazor_Controls_IgbScatterPolygonSeries_ShapeMemberPath)
-- [`IgbNumericXAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericXAxis.html)
-- [`IgbNumericYAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericYAxis.html)
+- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
+- [`IgbScatterPolygonSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolygonSeries)
+- [`IgbScatterPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolylineSeries)
+- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolygonSeries&member=DataSource)
+- [`ShapeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolygonSeries&member=ShapeMemberPath)
+- [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis)
+- [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis)
 - `YAxisName`
 - `XAxisName`

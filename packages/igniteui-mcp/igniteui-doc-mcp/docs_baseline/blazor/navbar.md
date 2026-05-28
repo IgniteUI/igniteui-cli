@@ -13,7 +13,7 @@ The Ignite UI for Blazor Navbar informs the user of their current position in an
 
 ## Blazor Navbar Example
 
-The following example represents a [`IgbNavbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavbar.html) with icons and text header:
+The following example represents a [`IgbNavbar`](mcp:get_api_reference?platform=blazor&component=IgbNavbar) with icons and text header:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -83,7 +83,7 @@ The following example represents a [`IgbNavbar`](https://www.infragistics.com/bl
 
 ## Usage
 
-Before using the [`IgbNavbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavbar.html), you need to register it as follows:
+Before using the [`IgbNavbar`](mcp:get_api_reference?platform=blazor&component=IgbNavbar), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -93,13 +93,13 @@ builder.Services.AddIgniteUIBlazor(typeof(IgbNavbarModule));
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbNavbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavbar.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbNavbar`](mcp:get_api_reference?platform=blazor&component=IgbNavbar) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-Then in the template of [`IgbNavbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavbar.html), you can add the following code to show a basic [`IgbNavbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavbar.html) with a title only:
+Then in the template of [`IgbNavbar`](mcp:get_api_reference?platform=blazor&component=IgbNavbar), you can add the following code to show a basic [`IgbNavbar`](mcp:get_api_reference?platform=blazor&component=IgbNavbar) with a title only:
 
 ```razor
 <IgbNavbar>Navigation Title</IgbNavbar>
@@ -107,7 +107,7 @@ Then in the template of [`IgbNavbar`](https://www.infragistics.com/blazor/docs/a
 
 ### Content
 
-You can enhance the [`IgbNavbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavbar.html) component by adding [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) or other components at the start or end position as content, allowing users to navigate to key positions directly from the bar:
+You can enhance the [`IgbNavbar`](mcp:get_api_reference?platform=blazor&component=IgbNavbar) component by adding [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) or other components at the start or end position as content, allowing users to navigate to key positions directly from the bar:
 
 ```Razor
 <IgbNavbar>
@@ -239,8 +239,8 @@ If all went well, you should see the following in your browser:
 
 ## API References
 
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
-- [`IgbNavbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavbar.html)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+- [`IgbNavbar`](mcp:get_api_reference?platform=blazor&component=IgbNavbar)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

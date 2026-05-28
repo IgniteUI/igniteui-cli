@@ -32,7 +32,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the Web Components [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html), you need to register it as follows:
+Before using the Web Components [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcToastComponent } from 'igniteui-webcomponents';
@@ -42,7 +42,7 @@ defineComponents(IgcToastComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the toast component is to use its [`show`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html#show) method and call it on a button click.
+The simplest way to display the toast component is to use its [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=show) method and call it on a button click.
 
 ```html
 <igc-button onclick="toast.show()" variant="contained">Show Toast</igc-button>
@@ -53,9 +53,9 @@ The simplest way to display the toast component is to use its [`show`](https://w
 
 ### Properties
 
-Use the [`displayTime`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html#displayTime) property to configure how long the toast component is visible. By default, it's set to 4000 milliseconds.
+Use the [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=displayTime) property to configure how long the toast component is visible. By default, it's set to 4000 milliseconds.
 
-By default, the toast component is hidden automatically after a period specified by the [`displayTime`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html#displayTime). You can use [`keepOpen`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html#keepOpen) property to change this behavior. In this way, the toast will remain visible.
+By default, the toast component is hidden automatically after a period specified by the [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=displayTime). You can use [`keepOpen`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=keepOpen) property to change this behavior. In this way, the toast will remain visible.
 
 ```html
 <igc-button onclick="toast.toggle()" variant="contained">Toggle Toast</igc-button>
@@ -79,7 +79,7 @@ By default, the toast component is hidden automatically after a period specified
 
 ## Styling
 
-You can style the Web Components [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html) notifications directly using its tag selector:
+You can style the Web Components [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent) notifications directly using its tag selector:
 
 ```css
 igc-toast {
@@ -103,11 +103,11 @@ igc-toast {
 
 ## API References
 
-- [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html)
-- [`displayTime`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html#displayTime)
-- [`keepOpen`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html#keepOpen)
-- [`show`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html#show)
-- [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html)
+- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)
+- [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=displayTime)
+- [`keepOpen`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=keepOpen)
+- [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent&member=show)
+- [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

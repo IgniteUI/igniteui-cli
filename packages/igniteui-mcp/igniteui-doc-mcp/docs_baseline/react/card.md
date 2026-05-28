@@ -114,14 +114,14 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrCard`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcard.html) and its necessary CSS, like so:
+You will then need to import the [`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard) and its necessary CSS, like so:
 
 ```tsx
 import { IgrCard, IgrCardHeader, IgrCardContent, IgrCardMedia, IgrCardActions } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-Before using the [`IgrCard`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcard.html), you need to register it as follows:
+Before using the [`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -159,19 +159,19 @@ Then, to represent the demo card template, we can add the following code:
 </IgrCard>
 ```
 
-You will notice a few things above. First, when we want to _tag_ an element as a header title, like the `h3` heading, we place it between the [`IgrCardHeader`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardheader.html) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
+You will notice a few things above. First, when we want to _tag_ an element as a header title, like the `h3` heading, we place it between the [`IgrCardHeader`](mcp:get_api_reference?platform=react&component=IgrCardHeader) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
 
-Any image or video we want to show in the card, we wrap inside the [`IgrCardMedia`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardmedia.html) tags. The [`IgrCardMedia`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardmedia.html) allows us to size the content placed inside so that it maintains its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
+Any image or video we want to show in the card, we wrap inside the [`IgrCardMedia`](mcp:get_api_reference?platform=react&component=IgrCardMedia) tags. The [`IgrCardMedia`](mcp:get_api_reference?platform=react&component=IgrCardMedia) allows us to size the content placed inside so that it maintains its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
 
-You can place anything inside the [`IgrCardContent`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardcontent.html) tags. Usually text goes there.
+You can place anything inside the [`IgrCardContent`](mcp:get_api_reference?platform=react&component=IgrCardContent) tags. Usually text goes there.
 
-Finally, the [`IgrCardActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardactions.html) is where you'd place any actionable items, like buttons.
+Finally, the [`IgrCardActions`](mcp:get_api_reference?platform=react&component=IgrCardActions) is where you'd place any actionable items, like buttons.
 
 ### Media, Thumbs, and Avatars
 
 If you want to show an image or icon in the card header next to the title and subtitle, you can do it by assigning the element's slot property to `thumbnail`.
 
-Taking the card above as an example, we can edit the contents of the [`IgrCardHeader`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardheader.html) and add an avatar with `slot="thumbnail"`:
+Taking the card above as an example, we can edit the contents of the [`IgrCardHeader`](mcp:get_api_reference?platform=react&component=IgrCardHeader) and add an avatar with `slot="thumbnail"`:
 
 ```tsx
 <IgrCardHeader>
@@ -219,7 +219,7 @@ Here's an example of an outlined horizontal card:
 </IgrCard>
 ```
 
-We are using an additional `div` element to bundle the [`IgrCardHeader`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardheader.html) and [`IgrCardContent`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardcontent.html) together, keeping them aligned vertically, and applying the `.card-horizontal` class to the wrapping `div` element to align the two sections of the card horizontally.
+We are using an additional `div` element to bundle the [`IgrCardHeader`](mcp:get_api_reference?platform=react&component=IgrCardHeader) and [`IgrCardContent`](mcp:get_api_reference?platform=react&component=IgrCardContent) together, keeping them aligned vertically, and applying the `.card-horizontal` class to the wrapping `div` element to align the two sections of the card horizontally.
 
 The styles that `.card-horizontal` class applies are:
 
@@ -313,9 +313,9 @@ root.render(<CardHorizontal/>);
 
 ### Alternative layouts
 
-You can get even more creative with the layout of the [`IgrCard`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcard.html).
+You can get even more creative with the layout of the [`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard).
 
-Below is an example showing how you can create a semi-horizontal card, where we have every section of the card laid out vertically, while the [`IgrCardMedia`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardmedia.html) appears alongside the vertical sections.
+Below is an example showing how you can create a semi-horizontal card, where we have every section of the card laid out vertically, while the [`IgrCardMedia`](mcp:get_api_reference?platform=react&component=IgrCardMedia) appears alongside the vertical sections.
 
 ```tsx
 <IgrCard>
@@ -471,7 +471,7 @@ You can also add more content in-between by simply omitting the slot property an
 
 ## Styling
 
-Since the card is a container that wraps different elements, styling is done by styling its building blocks - the [`IgrCardHeader`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardheader.html), [`IgrCardContent`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardcontent.html), [`IgrCardMedia`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardmedia.html) and [`IgrCardActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardactions.html) sub-components.
+Since the card is a container that wraps different elements, styling is done by styling its building blocks - the [`IgrCardHeader`](mcp:get_api_reference?platform=react&component=IgrCardHeader), [`IgrCardContent`](mcp:get_api_reference?platform=react&component=IgrCardContent), [`IgrCardMedia`](mcp:get_api_reference?platform=react&component=IgrCardMedia) and [`IgrCardActions`](mcp:get_api_reference?platform=react&component=IgrCardActions) sub-components.
 
 ```css
 igc-card {
@@ -603,15 +603,15 @@ In this article we covered a lot of ground with the card component. We created a
 
 ## API References
 
-- [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html)
-- [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html)
-- [`IgrCardActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardactions.html)
-- [`IgrCardContent`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardcontent.html)
-- [`IgrCardHeader`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardheader.html)
-- [`IgrCardMedia`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcardmedia.html)
-- [`IgrCard`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcard.html)
-- [`IgrIconButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igriconbutton.html)
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
+- [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)
+- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
+- [`IgrCardActions`](mcp:get_api_reference?platform=react&component=IgrCardActions)
+- [`IgrCardContent`](mcp:get_api_reference?platform=react&component=IgrCardContent)
+- [`IgrCardHeader`](mcp:get_api_reference?platform=react&component=IgrCardHeader)
+- [`IgrCardMedia`](mcp:get_api_reference?platform=react&component=IgrCardMedia)
+- [`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard)
+- [`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

@@ -12,11 +12,11 @@ _premium: true
 
 # Blazor Grid Pagination Overview
 
-The Ignite UI for Blazor Pagination feature in Blazor Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) pagination is configurable via a separate component projected in the grid tree by defining a [`IgbPaginator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPaginator.html)  tag, similar to adding of a column. As in any Blazor table, the pagination in the Blazor Grid supports template for custom pages.
+The Ignite UI for Blazor Pagination feature in Blazor Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) pagination is configurable via a separate component projected in the grid tree by defining a [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)  tag, similar to adding of a column. As in any Blazor table, the pagination in the Blazor Grid supports template for custom pages.
 
 ## Blazor Grid Pagination Example
 
-The following example represents [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) pagination and exposes the options usage of items per page and how paging can be enabled. The user can also quickly navigate through the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) pages via "Go to last page" and "Go to first page" buttons.
+The following example represents [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) pagination and exposes the options usage of items per page and how paging can be enabled. The user can also quickly navigate through the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) pages via "Go to last page" and "Go to first page" buttons.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -181,7 +181,7 @@ Integration between Paging and Group By is described in the [Group By](groupby.m
 
 ## Usage
 
-The [`IgbPaginator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPaginator.html) component is used along with the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component in the example below, but you can use it with any other component in case paging functionality is needed.
+The [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator) component is used along with the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component in the example below, but you can use it with any other component in case paging functionality is needed.
 
 <!-- ComponentStart: Grid, TreeGrid -->
 
@@ -370,8 +370,8 @@ public class AthletesData
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
-- [`IgbPaginator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPaginator.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+- [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)
 
 ## Additional Resources
 

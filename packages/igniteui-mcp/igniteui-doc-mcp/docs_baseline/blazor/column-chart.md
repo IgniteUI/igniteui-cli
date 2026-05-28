@@ -15,7 +15,7 @@ The Ignite UI for Blazor Column Char, Column Graph, or Vertical Bar Chart is amo
 
 ## Blazor Column Chart Example
 
-You can create Blazor Column Chart in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control by binding your data and setting [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) to **Column** enum, as shown in the example below:
+You can create Blazor Column Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) to **Column** enum, as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -141,7 +141,7 @@ There are several uses cases for Column Charts. When you:
 
 Column Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the bottom to top of the chart towards the values of data points.
 
-You can create this type of chart in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control by binding your data and setting the [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) property to **Column** value, as shown in the example below:
+You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to **Column** value, as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -222,7 +222,7 @@ public class TemperatureAverageData
 
 ## Blazor Column Chart with Multiple Series
 
-The Column Chart is able to render multiple columns per category for comparison purposes. You can create this type of chart in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control by binding your data and setting the [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) property to **Column** value, as shown in the example below:
+The Column Chart is able to render multiple columns per category for comparison purposes. You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to **Column** value, as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -322,7 +322,7 @@ public class HighestGrossingMovies
 
 The Blazor Column Chart has many options for styling and modification of the visual appearance.
 
-You can create this type of chart in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control by binding your data, as shown in the example below:
+You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data, as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -425,13 +425,13 @@ public class EnergyRenewableConsumption
 
 ## Advanced Types of Column Charts
 
-The following sections explain more advanced types of Blazor Column Charts that can be created using the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control instead of [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control with simplified API.
+The following sections explain more advanced types of Blazor Column Charts that can be created using the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control instead of [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control with simplified API.
 
 ## Blazor Waterfall Chart
 
 The Waterfall Chart belongs to a group of category charts and it is rendered using a collection of vertical columns that show the difference between consecutive data points. The columns are color coded for distinguishing between positive and negative changes in value. The Waterfall Chart is similar in appearance to the [Range Column Chart](column-chart.md#blazor-range-column-chart), but it requires only one numeric data column rather than two columns for each data point.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbWaterfallSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbWaterfallSeries.html), as shown in the example below:
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbWaterfallSeries`](mcp:get_api_reference?platform=blazor&component=IgbWaterfallSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -558,7 +558,7 @@ public class CompanyIncomeData
 
 The Stacked Column Chart is similar to the [Category Column Chart](column-chart.md#blazor-column-chart-example) in all aspects, except the series are represented on top of one another rather than to the side. The Stacked Column Chart is used to show comparing results between series. Each stacked fragment in the collection represents one visual element in each stack. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the Y-Axis, and all negative values are grouped on the negative side of the Y-Axis. The Stacked Column Chart uses the same concepts of data plotting as the [Stacked Bar Chart](stacked-chart.md#blazor-stacked-bar-chart) but data points are stacked along vertical line (Y-Axis) rather than along horizontal line (X-Axis).
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStackedBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedBarSeries.html), as shown in the example below:
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -738,7 +738,7 @@ public class ContinentsBirthRate
 
 The Stacked 100% Column Chart is identical to the [Stacked Column Chart](stacked-chart.md#blazor-stacked-column-chart) in all aspects except in their treatment of the values on Y-Axis. Instead of presenting a direct representation of the data, the Stacked 100 Column Chart presents the data in terms of percent of the sum of all values in a data point.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStacked100BarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100BarSeries.html), as shown in the example below:
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -896,7 +896,7 @@ The Blazor Range Column Chart belongs to a group of range charts and is rendered
 
 The Range Column Chart is identical to the [Range Area Chart](area-chart.md)(area-chart.md#blazor-range-area-chart) in all aspects except that the ranges are represented as a set of vertical columns rather than a filled area.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbRangeColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRangeColumnSeries.html), as shown in the example below:
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbRangeColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRangeColumnSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1044,7 +1044,7 @@ public class TemperatureRangeData
 
 The Radial Column Chart belongs to a group of [Radial Chart](radial-chart.md), and is visualized by using a collection of rectangles that extend from the center of the chart toward the locations of data points. This utilizes the same concepts of data plotting as the [Category Column Chart](column-chart.md#blazor-column-chart-example), but wraps data points around a circle rather than stretching them horizontally.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbRadialColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialColumnSeries.html), as shown in the example below:
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbRadialColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialColumnSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1203,9 +1203,9 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type          | Control Name       | API Members  |
 | --------------------|--------------------|------------------------|
-| Column              | [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html)    | [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) = **Column** |
-| Radial Column       | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)     | [`IgbRadialColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialColumnSeries.html) |
-| Range Column        | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)     | [`IgbRangeColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRangeColumnSeries.html) |
-| Stacked Column      | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)     | [`IgbStackedColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedColumnSeries.html) |
-| Stacked 100% Column | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)     | [`IgbStacked100ColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100ColumnSeries.html) |
-| Waterfall           | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)     | [`IgbWaterfallSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbWaterfallSeries.html) |
+| Column              | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)    | [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) = **Column** |
+| Radial Column       | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbRadialColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialColumnSeries) |
+| Range Column        | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbRangeColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRangeColumnSeries) |
+| Stacked Column      | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbStackedColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedColumnSeries) |
+| Stacked 100% Column | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbStacked100ColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100ColumnSeries) |
+| Waterfall           | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbWaterfallSeries`](mcp:get_api_reference?platform=blazor&component=IgbWaterfallSeries) |

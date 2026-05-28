@@ -13,17 +13,17 @@ _premium: true
 
 # Row Actions in Web Components Grid
 
-The Ignite UI for Web Components Row Actions feature in Web Components Grid enables developers to use an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) and utilize CRUD for row/cell components and row pinning. There are several predefined UI controls for these operations that are applicable to a specific row in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) – editing and pinning.
+The Ignite UI for Web Components Row Actions feature in Web Components Grid enables developers to use an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) and utilize CRUD for row/cell components and row pinning. There are several predefined UI controls for these operations that are applicable to a specific row in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) – editing and pinning.
 
 ## Usage
 
 The predefined actions UI components are:
 
-- [`IgcGridEditingActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgrideditingactions.html) - includes functionality and UI specifically designed for the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`rowEditable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#rowEditable) option and row deletion of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
+- [`IgcGridEditingActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgrideditingactions.html) - includes functionality and UI specifically designed for the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`rowEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowEditable) option and row deletion of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
-- [`IgcGridPinningActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridpinningactions.html) - includes functionality and UI specifically designed for the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
+- [`IgcGridPinningActions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridpinningactions.html) - includes functionality and UI specifically designed for the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
 
-They are added inside the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) and this is all needed to have an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) providing default interactions.
+They are added inside the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) and this is all needed to have an [`IgcActionStrip`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcactionstrip.html) providing default interactions.
 
 ```html
 <igc-grid row-editable="true" primary-key="ID">
@@ -36,7 +36,7 @@ They are added inside the [`IgcGridComponent`](https://www.infragistics.com/prod
 ```
 
 > [!Note]
-> When `ActionStripComponent` is a child component of the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), hovering a row will automatically show the UI.
+> When `ActionStripComponent` is a child component of the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), hovering a row will automatically show the UI.
 
 ## Custom Implementation
 

@@ -8,13 +8,13 @@ _premium: true
 
 # How to use the Transaction service
 
-You may get advantage of the [`Transaction Service`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/transactionservice.html) when using any component that needs to preserve the state of its data source and to commit many transactions at once.
+You may get advantage of the [`Transaction Service`](mcp:get_api_reference?platform=angular&component=TransactionService) when using any component that needs to preserve the state of its data source and to commit many transactions at once.
 
-When working with the Ignite UI for Angular grid components, you may use the [`igxTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtransactionservice.html) and [`igxHierarchicalTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicaltransactionservice.html) that are integrated with the grids and provide batch editing out of the box. However, if you need to use transactions with any other Ignite UI for Angular or custom component, you may again use the [`igxTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtransactionservice.html) and implement similar behavior.
+When working with the Ignite UI for Angular grid components, you may use the [`igxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and [`igxHierarchicalTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicaltransactionservice.html) that are integrated with the grids and provide batch editing out of the box. However, if you need to use transactions with any other Ignite UI for Angular or custom component, you may again use the [`igxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and implement similar behavior.
 
 ## Angular How to use the Transaction service Example
 
-In this topic we will use [`igxList`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html) component to demonstrate how to enable transactions. We will demonstrate how to add transactions, how to transform the data through a [pipe](https://angular.io/guide/pipes) and how to visually update the view in order to let the user see the changes that are about to be committed.
+In this topic we will use [`igxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) component to demonstrate how to enable transactions. We will demonstrate how to add transactions, how to transform the data through a [pipe](https://angular.io/guide/pipes) and how to visually update the view in order to let the user see the changes that are about to be committed.
 
 
 ```typescript
@@ -252,7 +252,7 @@ export class TransactionBaseComponent { }
 
 ### Inject Transaction Service in component
 
-In our `ts` file, we should import [`igxTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtransactionservice.html) from the `igniteui-angular` library, as well as the [`State`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/state.html) and [`Transaction`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/transaction.html) interfaces and the [`TransactionType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/TransactionType.html) enum, which will be needed by our application:
+In our `ts` file, we should import [`igxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) from the `igniteui-angular` library, as well as the [`State`](mcp:get_api_reference?platform=angular&component=State) and [`Transaction`](mcp:get_api_reference?platform=angular&component=Transaction) interfaces and the [`TransactionType`](mcp:get_api_reference?platform=angular&component=TransactionType) enum, which will be needed by our application:
 
 ```typescript
 import { IgxTransactionService, State, Transaction, TransactionType } from 'igniteui-angular/core';
@@ -267,7 +267,7 @@ constructor(private _transactions: IgxTransactionService<Transaction, State>) { 
 
 ## Define igxList
 
-In our html template, we define an [`igxList`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html) component with **edit**, **delete** and **add** actions, which modify the list and its items:
+In our html template, we define an [`igxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) component with **edit**, **delete** and **add** actions, which modify the list and its items:
 
 ```html
 <igx-list>
@@ -468,7 +468,7 @@ We will also add a representation of the current state of our list. It will show
 
 ## Commit pending transactions
 
-Once we are done with all our changes, we may commit them all at once using the [`commit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtransactionservice.html#commit) method of the [`igxTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtransactionservice.html). It applies all transactions over the provided data:
+Once we are done with all our changes, we may commit them all at once using the [`commit`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=commit) method of the [`igxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService). It applies all transactions over the provided data:
 
 ```html
 <button igxButton="contained" (click)="onCommit()" [disabled]="this.getTransactionLog().length === 0">Commit Transactions</button>
@@ -482,7 +482,7 @@ public onCommit(): void {
 
 ```
 
-If we are using the [`igxHierarchicalTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicaltransactionservice.html) we can also use an overload of the [`commit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtransactionservice.html#commit) method which expects primaryKey and childDataKey as arguments.
+If we are using the [`igxHierarchicalTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicaltransactionservice.html) we can also use an overload of the [`commit`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=commit) method which expects primaryKey and childDataKey as arguments.
 
 ```typescript
 public onCommit(): void {
@@ -492,7 +492,7 @@ public onCommit(): void {
 
 ## Clear pending transactions
 
-At any point of our interaction with the list, we may clear the Transaction log, using the [`clear`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtransactionservice.html#clear) method.
+At any point of our interaction with the list, we may clear the Transaction log, using the [`clear`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=clear) method.
 
 ```html
 <button igxButton="contained" (click)="onClear()" [disabled]="this.getTransactionLog().length === 0">Clear Transactions</button>
@@ -509,6 +509,6 @@ public onClear(): void {
 
 <div class="divider--half"></div>
 
-- [Transaction Service API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/transactionservice.html)
+- [Transaction Service API](mcp:get_api_reference?platform=angular&component=TransactionService)
 - [Transaction Service](transaction.md)
 - [Transaction Service class hierarchy](transaction-classes.md)

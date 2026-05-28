@@ -78,7 +78,7 @@ For more information and other types of usage, go to our [GitHub Repository](htt
 
 <div class="divider--half"></div>
 
-[`IgxIconService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconservice.html)
+[`IgxIconService`](mcp:get_api_reference?platform=angular&component=IgxIconService)
 
 Our community is active and always welcoming to new ideas.
 

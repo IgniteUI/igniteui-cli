@@ -60,7 +60,7 @@ For a complete introduction to the Ignite UI for Angular, read the [_getting sta
 The first step is to import the `IgxCalendarModule` inside our **app.module.ts** file.
 
 >[!NOTE]
-> The [**IgxMonthPickerComponent**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmonthpickercomponent.html) also depends on the [`BrowserAnimationsModule`](https://angular.io/api/platform-browser/animations/BrowserAnimationsModule) and **optionally** the [`HammerModule`](https://angular.io/api/platform-browser/HammerModule) for touch interactions, so they need to be added to the AppModule as well:
+> The [**IgxMonthPickerComponent**](mcp:get_api_reference?platform=angular&component=IgxMonthPickerComponent) also depends on the [`BrowserAnimationsModule`](https://angular.io/api/platform-browser/animations/BrowserAnimationsModule) and **optionally** the [`HammerModule`](https://angular.io/api/platform-browser/HammerModule) for touch interactions, so they need to be added to the AppModule as well:
 
 ```typescript
 // app.module.ts
@@ -102,7 +102,7 @@ export class HomeComponent {}
 Now that you have the Ignite UI for Angular Calendar module or Month Picker component imported, you can start using the `igx-month-picker` component.
 
 > [!NOTE]
-> Note that the [`IgxMonthPickerComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmonthpickercomponent.html) uses the [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat) WebAPI for localization and formatting of dates.
+> Note that the [`IgxMonthPickerComponent`](mcp:get_api_reference?platform=angular&component=IgxMonthPickerComponent) uses the [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat) WebAPI for localization and formatting of dates.
 > Consider using the [appropriate polyfills](https://github.com/andyearnshaw/Intl.js/) if your target platform does not support them.
 
 ## Using the Angular Month Picker
@@ -117,7 +117,7 @@ To add the Angular Month Picker in a template, use the following code:
 
 ### Setting date
 
-Set a date to [`IgxMonthPickerComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmonthpickercomponent.html) using the [`value`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmonthpickercomponent.html#value) input.
+Set a date to [`IgxMonthPickerComponent`](mcp:get_api_reference?platform=angular&component=IgxMonthPickerComponent) using the [`value`](mcp:get_api_reference?platform=angular&component=IgxMonthPickerComponent&member=value) input.
 
 ```typescript
 // month-picker-sample.component.ts
@@ -141,7 +141,7 @@ To create a two-way data-binding, set `ngModel` like this:
 
 ### Formatting
 
-Change the month picker display format, using the [`formatOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmonthpickercomponent.html#formatoptions) inputs.
+Change the month picker display format, using the [`formatOptions`](mcp:get_api_reference?platform=angular&component=IgxMonthPickerComponent&member=formatoptions) inputs.
 
 ```html
 <!-- month-picker-sample.component.html -->
@@ -160,7 +160,7 @@ public numericFormatOptions = {
 
 ### Localization
 
-Use the [`locale`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmonthpickercomponent.html#locale) input, to customize the Ignite UI for Angular Month Picker localization.
+Use the [`locale`](mcp:get_api_reference?platform=angular&component=IgxMonthPickerComponent&member=locale) input, to customize the Ignite UI for Angular Month Picker localization.
 
 ```html
 <!-- month-picker-sample.component.html -->
@@ -377,8 +377,8 @@ At the end your month picker should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxMonthPickerComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmonthpickercomponent.html)
-- [IgxCalendarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html)
+- [IgxMonthPickerComponent](mcp:get_api_reference?platform=angular&component=IgxMonthPickerComponent)
+- [IgxCalendarComponent](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent)
 - [IgxCalendarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-calendar-theme)
 
 

@@ -61,7 +61,7 @@ The Ignite UI for Blazor ComboBox component allows defining custom templates for
 
 ### Item Template
 
-The [`ItemTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_ItemTemplate) is a custom template that if defined should be used when rendering items in the list of options.
+The [`ItemTemplate`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ItemTemplate) is a custom template that if defined should be used when rendering items in the list of options.
 
 To template your items in a Blazor app, you need to define a template in a separate JavaScript file. Let's create a new file under the `wwwroot` directory called `templates.js`.
 
@@ -77,7 +77,7 @@ Then in our application we can refer to the template we declared via the `ItemTe
 
 ### Group Header Template
 
-The [`GroupHeaderTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_GroupHeaderTemplate) is a custom template that if defined should be used when rendering group headers in the list of options.
+The [`GroupHeaderTemplate`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=GroupHeaderTemplate) is a custom template that if defined should be used when rendering group headers in the list of options.
 
 First define the group header template:
 

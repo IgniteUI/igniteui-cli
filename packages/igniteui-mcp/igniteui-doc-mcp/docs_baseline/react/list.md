@@ -9,11 +9,11 @@ _tocName: List
 
 # React List Overview
 
-The Ignite UI for React List element is extremely useful when presenting a group of items. You can create a simple list of textual items, or a more complex one, containing an array of different layout elements. The [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html) component displays rows of items and supports one or more headers as well. Each list item is completely templatable and will support any valid HTML or other components.
+The Ignite UI for React List element is extremely useful when presenting a group of items. You can create a simple list of textual items, or a more complex one, containing an array of different layout elements. The [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList) component displays rows of items and supports one or more headers as well. Each list item is completely templatable and will support any valid HTML or other components.
 
 ## React List Example
 
-The following example represents a list populated with contacts with a name and a phone number properties. The [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html) component demonstrated below uses the [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html) and [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html) elements to enrich the user experience and expose the capabilities of setting avatar picture and buttons for text and call actions.
+The following example represents a list populated with contacts with a name and a phone number properties. The [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList) component demonstrated below uses the [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar) and [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton) elements to enrich the user experience and expose the capabilities of setting avatar picture and buttons for text and call actions.
 
 ```css
 .size-small {
@@ -142,14 +142,14 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html) and its necessary CSS, like so:
+You will then need to import the [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList) and its necessary CSS, like so:
 
 ```tsx
 import { IgrList, IgrListHeader, IgrListItem } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-Before using the [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html), you need to register it as follows:
+Before using the [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -285,7 +285,7 @@ root.render(<ListItemContent/>);
 
 ### Adding Avatar and Buttons
 
-We can use some of our other components in conjunction with the [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html) component to enrich the experience and add some functionality. We can have a nice picture avatar to the left of the name and phone values. Additionally, we can add some buttons to the right of them to allow the user to text and call contacts, so let's update our contacts list component to show the avatar and the buttons. We can do that by using some of the list item's slots.
+We can use some of our other components in conjunction with the [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList) component to enrich the experience and add some functionality. We can have a nice picture avatar to the left of the name and phone values. Additionally, we can add some buttons to the right of them to allow the user to text and call contacts, so let's update our contacts list component to show the avatar and the buttons. We can do that by using some of the list item's slots.
 
 ```tsx
 <IgrList>
@@ -346,9 +346,9 @@ We can use some of our other components in conjunction with the [`IgrList`](http
 </IgrList>
 ```
 
-The `start` slot is meant to be used for adding some kind of media before all other content of our list items. The target element, in our case the [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html) component, will also be provided with a default position and spacing.
+The `start` slot is meant to be used for adding some kind of media before all other content of our list items. The target element, in our case the [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar) component, will also be provided with a default position and spacing.
 
-The `end` slot is meant to be used for list items that have some kind of action or metadata, represented, for example, by a switch, a button, a checkbox, etc. We will use [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html) components.
+The `end` slot is meant to be used for list items that have some kind of action or metadata, represented, for example, by a switch, a button, a checkbox, etc. We will use [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton) components.
 
 Let's also allow the user to change the size of the list using the `--ig-size` CSS variable. We will add some radio buttons to display all size values. This way whenever one gets selected, we will change the size of the list.
 
@@ -493,7 +493,7 @@ root.render(<ListOverview/>);
 
 ## Styling
 
-The [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html) exposes several CSS parts, giving you full control over its style:
+The [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList) exposes several CSS parts, giving you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -624,19 +624,19 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<ListStyling/>);
 ```
 
-In this article we covered a lot of ground with the [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html) component. First, we created a simple list with text items. Then, we created a list of contact items and added functionality to them by using some additional Ignite UI for React components, like the [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html) and [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html). Finally, we changed the component's appearance through the exposed CSS parts.
+In this article we covered a lot of ground with the [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList) component. First, we created a simple list with text items. Then, we created a list of contact items and added functionality to them by using some additional Ignite UI for React components, like the [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar) and [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton). Finally, we changed the component's appearance through the exposed CSS parts.
 
 <div class="divider--half"></div>
 
 ## API References
 
-- [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html)
-- [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html)
-- [`IgrRadioGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html)
-- [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html)
-- [`IgrListHeader`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlistheader.html)
-- [`IgrListItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlistitem.html)
-- [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html)
+- [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)
+- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
+- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
+- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
+- [`IgrListHeader`](mcp:get_api_reference?platform=react&component=IgrListHeader)
+- [`IgrListItem`](mcp:get_api_reference?platform=react&component=IgrListItem)
+- [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

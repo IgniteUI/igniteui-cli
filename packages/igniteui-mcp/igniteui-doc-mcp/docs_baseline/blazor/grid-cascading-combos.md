@@ -13,11 +13,11 @@ _premium: true
 
 # Blazor Grid with Cascading Combos
 
-The Grid's Editing functionality provides with the opportunity to use Cascading Combobox components. By selecting the value in any preceding [`IgbCombo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html), the users will receive only the data that is relevant to their selection within the next Blazor Combobox component.
+The Grid's Editing functionality provides with the opportunity to use Cascading Combobox components. By selecting the value in any preceding [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo), the users will receive only the data that is relevant to their selection within the next Blazor Combobox component.
 
 ## Angular Grid with Cascading Combos Sample Overview
 
-The sample below demonstrates how [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) works with nested Cascading [`IgbCombo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html) components.
+The sample below demonstrates how [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) works with nested Cascading [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo) components.
 
 <!-- ComponentStart: Grid -->
 
@@ -130,11 +130,11 @@ public class WorldCitiesAbove500K
 
 ## Setup
 
-In order enable column editing, make sure [`Editable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Editable) property is set to `true`.
+In order enable column editing, make sure [`Editable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Editable) property is set to `true`.
 
-Once the column editing is enabled, you can start by adding your [`IgbCombo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html). Please note that here in order to have only one single selection available, you will need to use set the [`SingleSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_SingleSelect) property.
+Once the column editing is enabled, you can start by adding your [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo). Please note that here in order to have only one single selection available, you will need to use set the [`SingleSelect`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=SingleSelect) property.
 
-To get started with the [`IgbCombo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html), first you need to import it:
+To get started with the [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo), first you need to import it:
 
 ```razor
 builder.Services.AddIgniteUIBlazor(
@@ -158,7 +158,7 @@ Then you should define the column template with the combo:
 
 ```
 
-- [`DisplayKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_DisplayKey) - Required for object arrays - Specifies which property will be used for the items' text. If no value is specified for [`DisplayKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_DisplayKey), the  combo will use the specified [`ValueKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html#IgniteUI_Blazor_Controls_IgbCombo_ValueKey) (if any).
+- [`DisplayKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=DisplayKey) - Required for object arrays - Specifies which property will be used for the items' text. If no value is specified for [`DisplayKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=DisplayKey), the  combo will use the specified [`ValueKey`](mcp:get_api_reference?platform=blazor&component=IgbCombo&member=ValueKey) (if any).
 
 In order to handle the selection change, we need the `onChange` event. The emitted event arguments contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
 
@@ -184,7 +184,7 @@ igRegisterScript("CountryChange", (ctx) => {
 });
 ```
 
-And lastly, adding the [`IgbLinearProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html), which is required while loading the list of data.
+And lastly, adding the [`IgbLinearProgress`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress), which is required while loading the list of data.
 
 ```razor
     public static RenderFragment<IgbCellTemplateContext> WebGridRegionDropDownTemplate = (context) =>
@@ -202,6 +202,6 @@ And lastly, adding the [`IgbLinearProgress`](https://www.infragistics.com/blazor
 
 ## Blazor Grid API Members
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
-- [`IgbCombo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCombo.html)
-- [`IgbLinearProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+- [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbCombo)
+- [`IgbLinearProgress`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress)

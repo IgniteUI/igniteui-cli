@@ -15,7 +15,7 @@ The Ignite UI for Blazor Step Chart belongs to a group of category charts that r
 
 ## Blazor Step Area Chart
 
-You can create Blazor Step Area Chart in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control by setting [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) property to `StepArea` enum, as shown in the example below.
+You can create Blazor Step Area Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to `StepArea` enum, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -118,7 +118,7 @@ public class CountryRenewableElectricity
 
 The Blazor Step Line Chart is very similar to Step Area Chart, except that the area below lines are filled in.
 
-You can create Step Line Chart in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control by binding your data and setting [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) property to `StepLine` value, as shown in the example below.
+You can create Step Line Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to `StepLine` value, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -216,7 +216,7 @@ public class CountryRenewableElectricity
 
 ## Blazor Step Chart Styling
 
-If you need Step Charts with more features such as composite other series, you can configure the [`MarkerTypes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerTypes), [`MarkerBrushes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerBrushes), [`MarkerOutlines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerOutlines), lines' [`Brushes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_Brushes), and lines' [`Outlines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_Outlines) properties on the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control as demonstrated below.
+If you need Step Charts with more features such as composite other series, you can configure the [`MarkerTypes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerTypes), [`MarkerBrushes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerBrushes), [`MarkerOutlines`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerOutlines), lines' [`Brushes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=Brushes), and lines' [`Outlines`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=Outlines) properties on the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control as demonstrated below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -327,12 +327,12 @@ You can find more information about related chart types in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html)
-- [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType)
+- [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
+- [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType)
 - `StepArea`
 - `StepLine`
-- [`Brushes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_Brushes)
-- [`Outlines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_Outlines)
-- [`MarkerBrushes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerBrushes)
-- [`MarkerOutlines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerOutlines)
-- [`MarkerTypes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_MarkerTypes)
+- [`Brushes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=Brushes)
+- [`Outlines`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=Outlines)
+- [`MarkerBrushes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerBrushes)
+- [`MarkerOutlines`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerOutlines)
+- [`MarkerTypes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=MarkerTypes)

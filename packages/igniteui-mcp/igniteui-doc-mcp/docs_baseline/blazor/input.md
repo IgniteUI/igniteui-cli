@@ -43,13 +43,13 @@ To get started with the Input component, you first need to register its module.
 builder.Services.AddIgniteUIBlazor(typeof(IgbInputModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-After we import the [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html) component we are ready to start using it, so let's add our first Input.
+After we import the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) component we are ready to start using it, so let's add our first Input.
 
 ```razor
 <IgbInput DisplayType="@InputType.Email" Label="Subscribe" Placeholder="john.doe@mail.com" />
@@ -120,7 +120,7 @@ The `helper-text` slot provides a hint placed below the Input. Let's add some he
 
 ## Input Sizing
 
-We can allow the user to change the size of the [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html) using the `--ig-size` CSS variable. То do this, we will add some radio buttons to display all size values. This way whenever one gets selected, we will change the size of the Input:
+We can allow the user to change the size of the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) using the `--ig-size` CSS variable. То do this, we will add some radio buttons to display all size values. This way whenever one gets selected, we will change the size of the Input:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -166,7 +166,7 @@ In the sample above we have demonstrated the use of the following attributes:
 
 ## Styling
 
-The [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -245,9 +245,9 @@ igc-input::part(suffix) {
 
 ## API References
 
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
-- [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html)
-- [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+- [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
+- [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

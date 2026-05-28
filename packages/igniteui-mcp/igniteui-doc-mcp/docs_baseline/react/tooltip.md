@@ -54,13 +54,13 @@ root.render(<TooltipOverview />);
 
 ### Getting Started
 
-To start using the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html), first, you need to install the Ignite UI for React by running the following command:
+To start using the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip), first, you need to install the Ignite UI for React by running the following command:
 
 ```cmd
 npm install igniteui-react
 ```
 
-After that, you need to import the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) component and its necessary CSS as follows:
+After that, you need to import the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) component and its necessary CSS as follows:
 
 ```tsx
 import { IgrTooltip } from 'igniteui-react';
@@ -69,7 +69,7 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Now you can start with a basic configuration of the React [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html).
+Now you can start with a basic configuration of the React [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip).
 
 ```tsx
 <IgrTooltip anchor="hover-button">
@@ -83,7 +83,7 @@ Now you can start with a basic configuration of the React [`IgrTooltip`](https:/
 
 ### Tooltip target
 
-To attach a tooltip to the desired element, use the [`anchor`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#anchor) property of the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) and set it to the ID of the target element.
+To attach a tooltip to the desired element, use the [`anchor`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=anchor) property of the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) and set it to the ID of the target element.
 
 ```tsx
 <IgrButton id="target-button">Hover me</IgrButton>
@@ -109,7 +109,7 @@ tooltip.anchor = anchor;
 
 ### Tooltip content
 
-The tooltip content is defined by placing custom content between the opening and closing tags of the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html).
+The tooltip content is defined by placing custom content between the opening and closing tags of the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip).
 
 ```tsx
 <IgrTooltip>
@@ -117,13 +117,13 @@ The tooltip content is defined by placing custom content between the opening and
 </IgrTooltip>
 ```
 
-Alternatively, to set simple text, you can use the [`message`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#message) property.
+Alternatively, to set simple text, you can use the [`message`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=message) property.
 
 ```tsx
 <IgrTooltip message="This is my custom content here."></IgrTooltip>
 ```
 
-If you use both approaches (slotted content and the [`message`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#message) property), the slotted content will take priority and the [`message`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#message) value will be ignored.
+If you use both approaches (slotted content and the [`message`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=message) property), the slotted content will take priority and the [`message`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=message) value will be ignored.
 
 ```tsx
 <IgrButton id="target-button">Hover me</IgrButton>
@@ -132,9 +132,9 @@ If you use both approaches (slotted content and the [`message`](https://www.infr
 </IgrTooltip>
 ```
 
-In this example, the slotted content (“I will be shown!”) will be displayed instead of the [`message`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#message) property value.
+In this example, the slotted content (“I will be shown!”) will be displayed instead of the [`message`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=message) property value.
 
-The [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) content can be more than just simple text. Since the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) is a regular element in the markup, you can enhance its content by adding any elements you need and styling them accordingly.
+The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) content can be more than just simple text. Since the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) is a regular element in the markup, you can enhance its content by adding any elements you need and styling them accordingly.
 
 ```css
 /* shared styles are loaded from: */
@@ -224,7 +224,7 @@ root.render(<TooltipRich />);
 
 ### Show/Hide delay settings
 
-If you want to control the delay before showing and hiding the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html), you can use the [`showDelay`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#showDelay) and [`hideDelay`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#hideDelay) properties. Both properties accept a number value representing time in milliseconds.
+If you want to control the delay before showing and hiding the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip), you can use the [`showDelay`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=showDelay) and [`hideDelay`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hideDelay) properties. Both properties accept a number value representing time in milliseconds.
 
 ```tsx
 <IgrTooltip showDelay="600" hideDelay="800">
@@ -233,17 +233,17 @@ If you want to control the delay before showing and hiding the [`IgrTooltip`](ht
 ```
 
 > [!NOTE]
-> It's important to note that the Tooltip API methods — [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#show), [`hide`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#hide), and [`toggle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#toggle) — DO NOT take the [`showDelay`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#showDelay) and [`hideDelay`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#hideDelay) properties into account. They act immediately when invoked.
+> It's important to note that the Tooltip API methods — [`show`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=show), [`hide`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hide), and [`toggle`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=toggle) — DO NOT take the [`showDelay`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=showDelay) and [`hideDelay`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hideDelay) properties into account. They act immediately when invoked.
 
 ### Placement
 
-The [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) can also be positioned relative to its target element with ease. All you need to do is use the [`placement`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#placement) property along with one of the `PopoverPlacement` options.
+The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) can also be positioned relative to its target element with ease. All you need to do is use the [`placement`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=placement) property along with one of the `PopoverPlacement` options.
 
-If the [`placement`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#placement) property is not set, the default value is `Bottom`, which places the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) below the target element.
+If the [`placement`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=placement) property is not set, the default value is `Bottom`, which places the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) below the target element.
 
-Additionally, you can make the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) "sticky" using the [`sticky`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#sticky) property, which adds a close button and keeps the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) visible until the user closes it manually - either by clicking the close button or pressing the `Esc` key. This behavior overrides the default hover behavior, preventing the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) from disappearing when the user stops hovering over the target element.
+Additionally, you can make the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) "sticky" using the [`sticky`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=sticky) property, which adds a close button and keeps the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) visible until the user closes it manually - either by clicking the close button or pressing the `Esc` key. This behavior overrides the default hover behavior, preventing the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) from disappearing when the user stops hovering over the target element.
 
-The [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) also includes an optional arrow indicator that can be configured via the [`withArrow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#withArrow) property. The arrow visually connects the tooltip to its anchor element and its position automatically adjusts based on the tooltip's [`placement`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#placement).
+The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) also includes an optional arrow indicator that can be configured via the [`withArrow`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=withArrow) property. The arrow visually connects the tooltip to its anchor element and its position automatically adjusts based on the tooltip's [`placement`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=placement).
 
 ```tsx
 <IgrButton id="target-button">Hover me</IgrButton>
@@ -252,7 +252,7 @@ The [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/ty
 </IgrTooltip>
 ```
 
-In the following example, you can see a demonstration of all tooltip placement options, arrow positioning behavior, and the [`sticky`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#sticky) property in action:
+In the following example, you can see a demonstration of all tooltip placement options, arrow positioning behavior, and the [`sticky`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=sticky) property in action:
 
 ```css
 /* shared styles are loaded from: */
@@ -338,7 +338,7 @@ root.render(<TooltipPlacement />);
 
 ### Triggers
 
-By default, the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) is triggered only while hovering over the target element. However, you can change this behavior using the [`showTriggers`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#showTriggers) and [`hideTriggers`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#hideTriggers) properties, which allow you to control when the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) in different scenarios.
+By default, the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) is triggered only while hovering over the target element. However, you can change this behavior using the [`showTriggers`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=showTriggers) and [`hideTriggers`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hideTriggers) properties, which allow you to control when the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) in different scenarios.
 
 ```css
 /* shared styles are loaded from: */
@@ -515,8 +515,8 @@ root.render(<TooltipTriggers />);
 
 ### Advanced Example
 
-The [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) integrates seamlessly with other components, allowing you to create advanced tooltips that contain components within them.
-In the following example, you can see how we create descriptive tooltips by using the [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html), [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html), [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html), [`IgrBadge`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbadge.html), [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html), [`IgrCard`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcard.html) and [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) components.
+The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) integrates seamlessly with other components, allowing you to create advanced tooltips that contain components within them.
+In the following example, you can see how we create descriptive tooltips by using the [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList), [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar), [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon), [`IgrBadge`](mcp:get_api_reference?platform=react&component=IgrBadge), [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton), [`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard) and [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) components.
 
 ```typescript
 export class IncomeTaxesItem {
@@ -1295,36 +1295,36 @@ root.render(<TooltipAdvanced />);
 
 ### Additional Properties
 
-Apart from the properties we've already covered, the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) component offers a variety of additional properties that allow you to further configure its behavior, position, and appearance.
+Apart from the properties we've already covered, the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) component offers a variety of additional properties that allow you to further configure its behavior, position, and appearance.
 
 |Name|Type|Description|
 |--|--|--|
-| [`open`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#open) | boolean | Determines whether the tooltip is visible. |
-| [`withArrow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#withArrow) | boolean | Determines whether to render an arrow indicator for the tooltip. |
-| [`offset`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#offset) | number | Sets the pixel distance between the tooltip and its [`anchor`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#anchor). |
+| [`open`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=open) | boolean | Determines whether the tooltip is visible. |
+| [`withArrow`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=withArrow) | boolean | Determines whether to render an arrow indicator for the tooltip. |
+| [`offset`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=offset) | number | Sets the pixel distance between the tooltip and its [`anchor`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=anchor). |
 
 ### Methods
 
-In addition to its configurable properties, the [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) also exposes three methods that you can use:
+In addition to its configurable properties, the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) also exposes three methods that you can use:
 
 |Name|Description|
 |--|--|
-| [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#show) | Displays the tooltip if it’s not already shown. If a target is provided, it sets the target as a transient [`anchor`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#anchor). |
-| [`hide`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#hide) | Hides the tooltip if it’s not already hidden. |
-| [`toggle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#toggle) |  Toggles the tooltip between the shown and hidden states. |
+| [`show`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=show) | Displays the tooltip if it’s not already shown. If a target is provided, it sets the target as a transient [`anchor`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=anchor). |
+| [`hide`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=hide) | Hides the tooltip if it’s not already hidden. |
+| [`toggle`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=toggle) |  Toggles the tooltip between the shown and hidden states. |
 
 ## Accessibility & ARIA Support
 
-The [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) is built with accessibility in mind and includes the following ARIA attributes:
+The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) is built with accessibility in mind and includes the following ARIA attributes:
 
-- `role` - When the tooltip is in its default behavior, `role="tooltip"` is applied. If the [`sticky`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html#sticky) property is enabled, the role changes to `status`.
+- `role` - When the tooltip is in its default behavior, `role="tooltip"` is applied. If the [`sticky`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=sticky) property is enabled, the role changes to `status`.
 - `inert` - Dynamically toggled based on visibility. When the tooltip is hidden, it becomes inert.
 - `aria-atomic` - Set to true, ensuring that the entire tooltip content is announced when it changes.
 - `aria-live` - Set to polite, indicating to screen readers that updates should be announced only when the user is idle.
 
 ## Styling
 
-The [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html) component exposes two CSS parts that you can use for styling:
+The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) component exposes two CSS parts that you can use for styling:
 
 |Name|Description|
 |--|--|
@@ -1396,14 +1396,14 @@ root.render(<TooltipStyling />);
 
 ## API References
 
-- [`IgrTooltip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtooltip.html)
-- [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html)
-- [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html)
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
-- [`IgrCard`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcard.html)
-- [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html)
-- [`IgrBadge`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbadge.html)
-- [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html)
+- [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip)
+- [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)
+- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+- [`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard)
+- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
+- [`IgrBadge`](mcp:get_api_reference?platform=react&component=IgrBadge)
+- [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList)
 - [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html)
 - [`Styling & Themes`](../themes/overview.md)
 

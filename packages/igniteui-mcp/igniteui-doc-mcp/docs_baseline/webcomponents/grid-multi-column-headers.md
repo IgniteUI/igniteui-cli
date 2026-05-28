@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Grid Multi-Column Headers Overview
 
-The Ignite UI for Web Components Multi-Column Headers feature in Web Components Grid allows you to group columns by placing them under a common multi-header. Each multi-column headers group in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) could be a representation of combinations between other groups or columns. This feature is particularly useful when dealing with large datasets where scrolling horizontally might be cumbersome.
+The Ignite UI for Web Components Multi-Column Headers feature in Web Components Grid allows you to group columns by placing them under a common multi-header. Each multi-column headers group in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) could be a representation of combinations between other groups or columns. This feature is particularly useful when dealing with large datasets where scrolling horizontally might be cumbersome.
 
 ## Web Components Grid Multi-Column Headers Example
 
@@ -57,7 +57,7 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-The declaration of multi-column headers is achieved by wrapping a set of columns into an [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup) component with [`header`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#header) title information passed.
+The declaration of multi-column headers is achieved by wrapping a set of columns into an [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup) component with [`header`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=header) title information passed.
 
 ```html
 <igc-grid allow-filtering="true">
@@ -71,7 +71,7 @@ The declaration of multi-column headers is achieved by wrapping a set of columns
 
 <!-- ComponentEnd: Grid -->
 
-For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup) leads to the desired result.
+For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup) leads to the desired result.
 
 ```html
 <igc-grid height="600px" allow-filtering="true">
@@ -87,7 +87,7 @@ For achieving `n-th` level of nested headers, the declaration above should be fo
 
 <!-- ComponentEnd: Grid -->
 
-Every [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
+Every [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
 
 > [!Note]
 > When there is a set of columns and column groups, pinning works only for top level column parents. More specifically pinning per nested column groups or columns is not allowed. <br />
@@ -109,7 +109,7 @@ Every [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-compon
 
 ## Multi-Column Header Template
 
-Each of the column groups of the grid can be templated separately. The following code snippet demonstrates how to use the [`headerTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#headerTemplate) of a column group:
+Each of the column groups of the grid can be templated separately. The following code snippet demonstrates how to use the [`headerTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=headerTemplate) of a column group:
 
 ```html
 <igc-column-group id="addressInfo" header="Address Information">
@@ -129,7 +129,7 @@ public columnGroupHeaderTemplate = (ctx: IgcColumnTemplateContext) => {
 }
 ```
 
-If you want to re-use a single template for several column groups, you could set the [`headerTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#headerTemplate) property of the column group like this:
+If you want to re-use a single template for several column groups, you could set the [`headerTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=headerTemplate) property of the column group like this:
 
 ```html
 <igc-column-group id="generalInfo" header="General Information">
@@ -279,8 +279,8 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## API References
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
-- [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+- [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup)
 
 ## Additional Resources
 

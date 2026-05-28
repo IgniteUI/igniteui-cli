@@ -12,17 +12,17 @@ _premium: true
 
 # React Grid Remote Data Operations
 
-By default, the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) uses its own logic for performing data operations.
+By default, the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) uses its own logic for performing data operations.
 
-You can perform these tasks remotely and feed the resulting data to the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) by taking advantage of certain inputs and events, which are exposed by the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
+You can perform these tasks remotely and feed the resulting data to the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) by taking advantage of certain inputs and events, which are exposed by the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
 ## Infinite Scroll
 
-A popular design for scenarios requiring fetching data by chunks from an end-point is the so-called infinite scroll. For data grids, it is characterized by continuous increase of the loaded data triggered by the end-user scrolling all the way to the bottom. The next paragraphs explain how you can use the available API to easily achieve infinite scrolling in [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
+A popular design for scenarios requiring fetching data by chunks from an end-point is the so-called infinite scroll. For data grids, it is characterized by continuous increase of the loaded data triggered by the end-user scrolling all the way to the bottom. The next paragraphs explain how you can use the available API to easily achieve infinite scrolling in [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
 To implement infinite scroll, you have to fetch the data in chunks. The data that is already fetched should be stored locally and you have to determine the length of a chunk and how many chunks there are. You also have to keep a track of the last visible data row index in the grid. In this way, using the `StartIndex` and `ChunkSize` properties, you can determine if the user scrolls up and you have to show them already fetched data or scrolls down and you have to fetch more data from the end-point.
 
-The first thing to do is fetch the first chunk of the data. Setting the [`totalItemCount`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#totalItemCount) property is important, as it allows the grid to size its scrollbar correctly.
+The first thing to do is fetch the first chunk of the data. Setting the [`totalItemCount`](mcp:get_api_reference?platform=react&component=IgrGrid&member=totalItemCount) property is important, as it allows the grid to size its scrollbar correctly.
 
 Additionally, you have to subscribe to the `DataPreLoad` output, so that you can provide the data needed by the grid when it tries to display a different chunk, rather than the currently loaded one. In the event handler, you have to determine whether to fetch new data or return data, that's already cached locally.
 
@@ -274,7 +274,7 @@ export class RemoteService {
 
 <!-- ComponentEnd: Grid -->
 
-After declaring the service, we need to create a component, which will be responsible for the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) construction and data subscription.
+After declaring the service, we need to create a component, which will be responsible for the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) construction and data subscription.
 
 <!-- ComponentStart: Grid -->
 
@@ -475,7 +475,7 @@ and finally set up the behaviour for the RowIslands:
 
 ## Known Issues and Limitations
 
-- When the grid has no [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+- When the grid has no [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 
@@ -487,8 +487,8 @@ and finally set up the behaviour for the RowIslands:
 
 ## API References
 
-- [`IgrPaginator`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpaginator.html)
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
+- [`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 
 ## Additional Resources
 

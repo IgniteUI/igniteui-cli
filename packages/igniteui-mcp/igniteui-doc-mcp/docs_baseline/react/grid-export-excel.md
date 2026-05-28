@@ -13,7 +13,7 @@ _premium: true
 
 # React Grid Exporting
 
-The Ignite UI for React Grid provides data export functionality through the Grid Toolbar Exporter component. You can export the displayed data to Excel, CSV, or PDF formats. Excel exports use the MS Excel table format, which supports features like filtering and sorting. To enable exporting, place the [`IgrGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarexporter.html) inside the grid's toolbar. By default, all export formats are enabled.
+The Ignite UI for React Grid provides data export functionality through the Grid Toolbar Exporter component. You can export the displayed data to Excel, CSV, or PDF formats. Excel exports use the MS Excel table format, which supports features like filtering and sorting. To enable exporting, place the [`IgrGridToolbarExporter`](mcp:get_api_reference?platform=react&component=IgrGridToolbarExporter) inside the grid's toolbar. By default, all export formats are enabled.
 
 ## React Exporting Example
 
@@ -203,19 +203,19 @@ root.render(<Sample/>);
 
 ## Export Grouped Data
 
-To export grouped data, group the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) by one or more columns. The browser will download a file named "ExportedDataFile.xlsx" that contains the data from the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component in Excel format, grouped by the selected columns. You can find an example at the beginning of the topic.
+To export grouped data, group the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) by one or more columns. The browser will download a file named "ExportedDataFile.xlsx" that contains the data from the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component in Excel format, grouped by the selected columns. You can find an example at the beginning of the topic.
 
 <!-- ComponentEnd: Grid -->
 
 ## Export Multi Column Headers Grid
 
-You can export [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` `IgnoreMultiColumnHeaders` to `true`.
+You can export [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` `IgnoreMultiColumnHeaders` to `true`.
 
 > [!Note]
-> The exported [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) will not be formatted as a table, since Excel tables do not support multiple column headers.
+> The exported [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) will not be formatted as a table, since Excel tables do not support multiple column headers.
 
 > [!Note]
-> [`IgrGridToolbarExporter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarexporter.html) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
+> [`IgrGridToolbarExporter`](mcp:get_api_reference?platform=react&component=IgrGridToolbarExporter) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
 >
 > - `exportExcel`, `exportCsv`, `exportPdf`
 
@@ -472,7 +472,7 @@ function exportEventFreezeHeaders(args: IgrExporterEventArgs) {
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 
 ## Additional Resources
 

@@ -19,7 +19,7 @@ The following examples demonstrates two high performance scenarios of Blazor cha
 
 ## Blazor Chart with High-Frequency
 
-In High-Frequency scenario, the Blazor Charts can render data items that are updating in real time or at specified milliseconds intervals. You will experience no lag, no screen-flicker, and no visual delays, even as you interact with the chart on a touch-device. The following sample demonstrates the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) in High-Frequency scenario.
+In High-Frequency scenario, the Blazor Charts can render data items that are updating in real time or at specified milliseconds intervals. You will experience no lag, no screen-flicker, and no visual delays, even as you interact with the chart on a touch-device. The following sample demonstrates the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) in High-Frequency scenario.
 
 ```razor
 @using System.Collections.ObjectModel
@@ -152,7 +152,7 @@ In High-Frequency scenario, the Blazor Charts can render data items that are upd
 
 ## Blazor Chart with High-Volume
 
-In High-Volume scenario, the Blazor Charts can render 1 million of data points while the chart keeps providing smooth performance when end-users tries zooming in/out or navigating chart content. The following sample demonstrates the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) in High-Volume scenario.
+In High-Volume scenario, the Blazor Charts can render 1 million of data points while the chart keeps providing smooth performance when end-users tries zooming in/out or navigating chart content. The following sample demonstrates the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) in High-Volume scenario.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -251,7 +251,7 @@ This section lists guidelines and chart features that add to the overhead and pr
 
 ### Data Size
 
-If you need to plot data sources with large number of data points (e.g. 10,000+), we recommend using Blazor [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) with one of the following type of series which where designed for specially for that purpose.
+If you need to plot data sources with large number of data points (e.g. 10,000+), we recommend using Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) with one of the following type of series which where designed for specially for that purpose.
 
 - [Scatter HD Chart](../types/scatter-chart.md#blazor-scatter-high-density-chart) instead of [Category Point Chart](../types/point-chart.md) or [Scatter Marker Chart](../types/scatter-chart.md#blazor-scatter-marker-chart)
 - [Scatter Polyline Chart](../types/shape-chart.md#blazor-scatter-polyline-chart) instead of [Category Line Chart](../types/line-chart.md#blazor-line-chart-example) or [Scatter Line Chart](../types/scatter-chart.md#blazor-scatter-line-chart)
@@ -259,7 +259,7 @@ If you need to plot data sources with large number of data points (e.g. 10,000+)
 
 ### Data Structure
 
-Although Blazor charts support rendering of multiple data sources by binding array of arrays of data points to [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataSource) property. It is much faster for charts if multiple data sources are flatten into single data source where each data item contains multiple data columns rather just one data column. For example:
+Although Blazor charts support rendering of multiple data sources by binding array of arrays of data points to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=DataSource) property. It is much faster for charts if multiple data sources are flatten into single data source where each data item contains multiple data columns rather just one data column. For example:
 
 ```razor
 this.CategoryChart.DataSource = FlattenDataSource.Create();
@@ -308,7 +308,7 @@ public static class MultiDataSources
 
 ### Data Filtering
 
-Blazor [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) and the [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) controls have built-in data adapter that analyzes your data and generates chart series for you. However, it works faster if you use [`IncludedProperties`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_IncludedProperties) and [`ExcludedProperties`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ExcludedProperties) to filter only those data columns that you actually want to render. For example,
+Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) and the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) controls have built-in data adapter that analyzes your data and generates chart series for you. However, it works faster if you use [`IncludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=IncludedProperties) and [`ExcludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ExcludedProperties) to filter only those data columns that you actually want to render. For example,
 
 ```razor
 this.Chart.IncludedProperties = new string[] { "Year", "USA", "RUS" };
@@ -319,7 +319,7 @@ this.Chart.ExcludedProperties = new string[] { "CHN",  "FRN", "GER" };
 
 ### Chart Types
 
-Simpler chart types such as [Line Chart](../types/line-chart.md) have faster performance than using [Spline Chart](../types/spline-chart.md) because of the complex interpolation of spline lines between data points. Therefore, you should use [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) property of Blazor [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) or the [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) control to select type of chart that renders faster. Alternatively, you can change a type of series to a faster series in Blazor [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control.
+Simpler chart types such as [Line Chart](../types/line-chart.md) have faster performance than using [Spline Chart](../types/spline-chart.md) because of the complex interpolation of spline lines between data points. Therefore, you should use [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property of Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) or the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) control to select type of chart that renders faster. Alternatively, you can change a type of series to a faster series in Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control.
 
 The following table lists chart types in order from the fastest performance to slower performance in each group of charts:
 
@@ -372,7 +372,7 @@ this.LineSeries.MarkerType = MarkerType.None;
 
 ### Chart Resolution
 
-Setting the [`Resolution`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_Resolution) property to a higher value will improve performance, but it will lower the graphical fidelity of lines of plotted series. As such, it can be increased up until the fidelity is unacceptable.
+Setting the [`Resolution`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=Resolution) property to a higher value will improve performance, but it will lower the graphical fidelity of lines of plotted series. As such, it can be increased up until the fidelity is unacceptable.
 
 This code snippet shows how to decrease resolution in the Blazor charts.
 
@@ -398,9 +398,9 @@ Enabling [Chart Trendlines](chart-trendlines.md) will slightly decrease performa
 Usage of x-axis with DateTime support is not recommended if spaces between data points, based on the amount of time span between them, are not important. Instead, ordinal/category axis should be used because it is more efficient in the way it coalesces data. Also, ordinal/category axis doesn’t perform any sorting on the data like the time-based x-axis does.
 
 > [!Note]
-> The [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) already uses ordinal/category axis so there is no need to change its properties.
+> The [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) already uses ordinal/category axis so there is no need to change its properties.
 
-This code snippet shows how to ordinal/category x-axis in the [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) and [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) controls.
+This code snippet shows how to ordinal/category x-axis in the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) controls.
 
 ```razor
 <IgbFinancialChart XAxisMode="FinancialChartXAxisMode.Ordinal"/>
@@ -412,7 +412,7 @@ This code snippet shows how to ordinal/category x-axis in the [`IgbFinancialChar
 
 ### Axis Intervals
 
-By default, Blazor charts will automatically calculate [`YAxisInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisInterval) based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing [`YAxisInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisInterval) property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
+By default, Blazor charts will automatically calculate [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisInterval) based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisInterval) property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
 
 > [!Note]
 > We do not recommend setting axis minor interval as it will decrease chart performance.
@@ -432,7 +432,7 @@ This code snippet shows how to set axis major interval in the Blazor charts.
 
 ### Axis Scale
 
-Setting the [`YAxisIsLogarithmic`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisIsLogarithmic) property to false is recommended for higher performance, as fewer operations are needed than calculating axis range and values of axis labels in logarithmic scale.
+Setting the [`YAxisIsLogarithmic`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisIsLogarithmic) property to false is recommended for higher performance, as fewer operations are needed than calculating axis range and values of axis labels in logarithmic scale.
 
 ### Axis Labels Visibility
 
@@ -459,7 +459,7 @@ This code snippet shows how to hide axis labels in the Blazor charts.
 
 ### Axis Labels Abbreviation
 
-Although, the Blazor charts support abbreviation of large numbers (e.g. 10,000+) displayed in axis labels when [`YAxisAbbreviateLargeNumbers`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisAbbreviateLargeNumbers) is set to true. We recommend, instead pre-processing large values in your data items by dividing them a common factor and then setting [`YAxisTitle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisTitle) to a string that represents factor used used to abbreviate your data values.
+Although, the Blazor charts support abbreviation of large numbers (e.g. 10,000+) displayed in axis labels when [`YAxisAbbreviateLargeNumbers`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisAbbreviateLargeNumbers) is set to true. We recommend, instead pre-processing large values in your data items by dividing them a common factor and then setting [`YAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisTitle) to a string that represents factor used used to abbreviate your data values.
 
 This code snippet shows how to set axis title in the Blazor charts.
 
@@ -494,19 +494,19 @@ The following code snippet shows how to set a fixed extent for labels on y-axis 
 
 Enabling additional axis visuals (e.g. axis titles) or changing their default values might decrease performance in the Blazor charts.
 
-For example, changing these properties on the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) or [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) control:
+For example, changing these properties on the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) or [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) control:
 
 | Axis Visual          | X-Axis Properties | Y-Axis Properties |
 | ---------------------|-------------------|------------------- |
-| All Axis Visual      | [`XAxisInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisInterval)<br>  [`XAxisMinorInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisMinorInterval) | [`YAxisInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_YAxisInterval)<br>  [`YAxisMinorInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_YAxisMinorInterval) |
-| Axis Tickmarks       | [`XAxisTickStroke`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisTickStroke) <br>  [`XAxisTickStrokeThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisTickStrokeThickness)<br>  [`XAxisTickLength`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisTickLength)<br>  | [`YAxisTickStroke`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisTickStroke) <br>  [`YAxisTickStrokeThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisTickStrokeThickness)<br>  [`YAxisTickLength`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisTickLength)<br> |
-| Axis Major Gridlines | [`XAxisMajorStroke`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisMajorStroke)<br>  [`XAxisMajorStrokeThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisMajorStrokeThickness)<br>   | [`YAxisMajorStroke`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisMajorStroke)<br>  [`YAxisMajorStrokeThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisMajorStrokeThickness)<br> |
-| Axis Minor Gridlines | [`XAxisMinorStroke`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisMinorStroke)<br>  [`XAxisMinorStrokeThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisMinorStrokeThickness)<br>   | [`YAxisMinorStroke`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisMinorStroke)<br>  [`YAxisMinorStrokeThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisMinorStrokeThickness)<br> |
-| Axis Main Line       | [`XAxisStroke`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisStroke)<br>  [`XAxisStrokeThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisStrokeThickness)<br>   | [`YAxisStroke`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisStroke)<br>  [`YAxisStrokeThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisStrokeThickness)<br> |
-| Axis Titles          | [`XAxisTitle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisTitle)<br>  [`XAxisTitleAngle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisTitleAngle)<br>    | [`YAxisTitle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisTitle)<br>  [`YAxisTitleAngle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisTitleAngle)<br> |
-| Axis Strips          | [`XAxisStrip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisStrip)<br>   | [`YAxisStrip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisStrip)<br> |
+| All Axis Visual      | [`XAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisInterval)<br>  [`XAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMinorInterval) | [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisInterval)<br>  [`YAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisMinorInterval) |
+| Axis Tickmarks       | [`XAxisTickStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisTickStroke) <br>  [`XAxisTickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisTickStrokeThickness)<br>  [`XAxisTickLength`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisTickLength)<br>  | [`YAxisTickStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisTickStroke) <br>  [`YAxisTickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisTickStrokeThickness)<br>  [`YAxisTickLength`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisTickLength)<br> |
+| Axis Major Gridlines | [`XAxisMajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMajorStroke)<br>  [`XAxisMajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMajorStrokeThickness)<br>   | [`YAxisMajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisMajorStroke)<br>  [`YAxisMajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisMajorStrokeThickness)<br> |
+| Axis Minor Gridlines | [`XAxisMinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMinorStroke)<br>  [`XAxisMinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMinorStrokeThickness)<br>   | [`YAxisMinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisMinorStroke)<br>  [`YAxisMinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisMinorStrokeThickness)<br> |
+| Axis Main Line       | [`XAxisStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisStroke)<br>  [`XAxisStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisStrokeThickness)<br>   | [`YAxisStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisStroke)<br>  [`YAxisStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisStrokeThickness)<br> |
+| Axis Titles          | [`XAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisTitle)<br>  [`XAxisTitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisTitleAngle)<br>    | [`YAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisTitle)<br>  [`YAxisTitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisTitleAngle)<br> |
+| Axis Strips          | [`XAxisStrip`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisStrip)<br>   | [`YAxisStrip`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisStrip)<br> |
 
-Or changing properties of an [`IgbAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAxis.html) in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control:
+Or changing properties of an [`IgbAxis`](mcp:get_api_reference?platform=blazor&component=IgbAxis) in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control:
 
 | Axis Visual          | Axis Properties |
 | ---------------------|------------------- |
@@ -515,56 +515,56 @@ Or changing properties of an [`IgbAxis`](https://www.infragistics.com/blazor/doc
 | Axis Major Gridlines | `MajorStroke`, `MajorStrokeThickness` |
 | Axis Minor Gridlines | `MinorStroke`, `MinorStrokeThickness` |
 | Axis Main Line       | `Stroke`, `StrokeThickness` |
-| Axis Titles          | [`ChartTitle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ChartTitle), `TitleAngle` |
+| Axis Titles          | [`ChartTitle`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ChartTitle), `TitleAngle` |
 | Axis Strips          | `Strip` |
 
 ## Performance in Financial Chart
 
-In addition to above performance guidelines, the Blazor [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) control has the following unique features that affect performance.
+In addition to above performance guidelines, the Blazor [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) control has the following unique features that affect performance.
 
 ### Y-Axis Mode
 
-Setting the [`YAxisMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_YAxisMode) option to `Numeric` is recommended for higher performance, as fewer operations are needed than using `PercentChange` mode.
+Setting the [`YAxisMode`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisMode) option to `Numeric` is recommended for higher performance, as fewer operations are needed than using `PercentChange` mode.
 
 ### Chart Panes
 
-Setting a lot of panes using [`IndicatorTypes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_IndicatorTypes) and [`OverlayTypes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_OverlayTypes) options, might decrease performance and it is recommended to use a few financial indicators and one financial overlay.
+Setting a lot of panes using [`IndicatorTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=IndicatorTypes) and [`OverlayTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=OverlayTypes) options, might decrease performance and it is recommended to use a few financial indicators and one financial overlay.
 
 ### Zoom Slider
 
-Setting the [`ZoomSliderType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_ZoomSliderType) option to `None` will improve chart performance and enable more vertical space for other indicators and the volume pane.
+Setting the [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ZoomSliderType) option to `None` will improve chart performance and enable more vertical space for other indicators and the volume pane.
 
 ### Volume Type
 
-Setting the [`VolumeType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_VolumeType) property can have the following impact on chart performance:
+Setting the [`VolumeType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=VolumeType) property can have the following impact on chart performance:
 
 - `None` - is the least expensive since it does not display the volume pane.
 - `Line` - is more expensive volume type to render and it is recommended when rendering a lot of data points or when plotting a lot of data sources.
 - `Area` - is more expensive to render than the `Line` volume type.
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) - is more expensive to render than the `Area` volume type and it is recommended when rendering volume data of 1-3 stocks.
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) - is more expensive to render than the `Area` volume type and it is recommended when rendering volume data of 1-3 stocks.
 
 ## Performance in Data Chart
 
-In addition to the general performance guidelines, the Blazor [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control has the following unique features that affect performance.
+In addition to the general performance guidelines, the Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control has the following unique features that affect performance.
 
 ### Axes Collection
 
-Adding too many axis to the [`Axes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Axes) collection of the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control will decrease chart performance and we recommend [Sharing Axes](chart-axis-layouts.md#axis-sharing-example) between series.
+Adding too many axis to the [`Axes`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Axes) collection of the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control will decrease chart performance and we recommend [Sharing Axes](chart-axis-layouts.md#axis-sharing-example) between series.
 
 ### Series Collection
 
-Also, adding a lot of series to the [`Series`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html#IgniteUI_Blazor_Controls_IgbDataChart_Series) collection of the Blazor [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control will add overhead to rendering because each series has its own rendering canvas. This is especially important if you have more than 10 series in the Data Chart. We recommend combining multiple data sources into flatten data source (see [Data Structure](#data-structure) section) and then using conditional styling feature of the following series:
+Also, adding a lot of series to the [`Series`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Series) collection of the Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control will add overhead to rendering because each series has its own rendering canvas. This is especially important if you have more than 10 series in the Data Chart. We recommend combining multiple data sources into flatten data source (see [Data Structure](#data-structure) section) and then using conditional styling feature of the following series:
 
 | Slower Performance Scenario | Faster Scenario with Conditional Styling |
 | ----------------------------|---------------------------------------- |
-| 10+ of [`IgbLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLineSeries.html)         | Single [`IgbScatterLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterLineSeries.html) |
-| 20+ of [`IgbLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLineSeries.html)         | Single [`IgbScatterPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolylineSeries.html) |
-| 10+ of [`IgbScatterLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterLineSeries.html)  | Single [`IgbScatterPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolylineSeries.html) |
-| 10+ of [`IgbPointSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPointSeries.html)        | Single [`IgbScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterSeries.html) |
-| 20+ of [`IgbPointSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPointSeries.html)        | Single [`IgbHighDensityScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHighDensityScatterSeries.html) |
-| 20+ of [`IgbScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterSeries.html)      | Single [`IgbHighDensityScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHighDensityScatterSeries.html) |
-| 10+ of [`IgbAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAreaSeries.html)         | Single [`IgbScatterPolygonSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolygonSeries.html) |
-| 10+ of [`IgbColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnSeries.html)       | Single [`IgbScatterPolygonSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterPolygonSeries.html) |
+| 10+ of [`IgbLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries)         | Single [`IgbScatterLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterLineSeries) |
+| 20+ of [`IgbLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries)         | Single [`IgbScatterPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolylineSeries) |
+| 10+ of [`IgbScatterLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterLineSeries)  | Single [`IgbScatterPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolylineSeries) |
+| 10+ of [`IgbPointSeries`](mcp:get_api_reference?platform=blazor&component=IgbPointSeries)        | Single [`IgbScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSeries) |
+| 20+ of [`IgbPointSeries`](mcp:get_api_reference?platform=blazor&component=IgbPointSeries)        | Single [`IgbHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbHighDensityScatterSeries) |
+| 20+ of [`IgbScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSeries)      | Single [`IgbHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbHighDensityScatterSeries) |
+| 10+ of [`IgbAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbAreaSeries)         | Single [`IgbScatterPolygonSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolygonSeries) |
+| 10+ of [`IgbColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbColumnSeries)       | Single [`IgbScatterPolygonSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterPolygonSeries) |
 
 ## Additional Resources
 
@@ -596,17 +596,17 @@ You can find more information about related chart types in these topics:
 
 The following table lists API members mentioned in above sections:
 
-- [`Resolution`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_Resolution)
-- [`IndicatorTypes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_IndicatorTypes)
-- [`OverlayTypes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_OverlayTypes)
-- [`VolumeType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_VolumeType)
-- [`ZoomSliderType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_ZoomSliderType)
-- [`XAxisMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_XAxisMode)
-- [`YAxisMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_YAxisMode)
-- [`XAxisInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisInterval)
-- [`YAxisInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisInterval)
-- [`XAxisMinorInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisMinorInterval)
-- [`YAxisMinorInterval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisMinorInterval)
-- [`XAxisLabelVisibility`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_XAxisLabelVisibility)
-- [`YAxisLabelVisibility`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisLabelVisibility)
-- [`YAxisIsLogarithmic`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_YAxisIsLogarithmic)
+- [`Resolution`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=Resolution)
+- [`IndicatorTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=IndicatorTypes)
+- [`OverlayTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=OverlayTypes)
+- [`VolumeType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=VolumeType)
+- [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ZoomSliderType)
+- [`XAxisMode`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisMode)
+- [`YAxisMode`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisMode)
+- [`XAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisInterval)
+- [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisInterval)
+- [`XAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMinorInterval)
+- [`YAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisMinorInterval)
+- [`XAxisLabelVisibility`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisLabelVisibility)
+- [`YAxisLabelVisibility`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisLabelVisibility)
+- [`YAxisIsLogarithmic`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=YAxisIsLogarithmic)

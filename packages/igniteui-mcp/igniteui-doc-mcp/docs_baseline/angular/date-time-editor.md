@@ -99,11 +99,11 @@ Now that you have the Ignite UI for Angular Date Time Editor module or directive
 
 ## Using the Angular Date Time Editor Directive
 
-To use an input as a date time editor, set an igxDateTimeEditor directive and a valid date object as value. In order to have complete editor look and feel, wrap the input in an [igx-input-group](input-group.md). This will allow you to not only take advantage of the following directives [`igxInput`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputdirective.html), [`igxLabel`](label-input.md), [`igx-prefix`](input-group.md#prefix--suffix), [`igx-suffix`](input-group.md#prefix--suffix), [`igx-hint`](input-group.md#hints), but will cover common scenarios when dealing with form inputs as well.
+To use an input as a date time editor, set an igxDateTimeEditor directive and a valid date object as value. In order to have complete editor look and feel, wrap the input in an [igx-input-group](input-group.md). This will allow you to not only take advantage of the following directives [`igxInput`](mcp:get_api_reference?platform=angular&component=IgxInputDirective), [`igxLabel`](label-input.md), [`igx-prefix`](input-group.md#prefix--suffix), [`igx-suffix`](input-group.md#prefix--suffix), [`igx-hint`](input-group.md#hints), but will cover common scenarios when dealing with form inputs as well.
 
 ### Binding
 
-A basic configuration scenario setting a Date object as a [`value`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#value):
+A basic configuration scenario setting a Date object as a [`value`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=value):
 
 ```typescript
 public date = new Date();
@@ -133,7 +133,7 @@ The string can be a full `ISO` string, in the format `YYYY-MM-DDTHH:mm:ss.sssZ` 
 
 ##### Date-only
 
-If a date-only string is bound to the directive, it needs to follow the format - `YYYY-MM-DD`. This applies only when binding a string value to the directive, the [`inputFormat`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#inputFormat) is still used when typing values in the editor and it does not have to be in the same format. Additionally, when binding a date-only string, the directive will prevent time shifts by coercing the time to be `T00:00:00`.
+If a date-only string is bound to the directive, it needs to follow the format - `YYYY-MM-DD`. This applies only when binding a string value to the directive, the [`inputFormat`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=inputFormat) is still used when typing values in the editor and it does not have to be in the same format. Additionally, when binding a date-only string, the directive will prevent time shifts by coercing the time to be `T00:00:00`.
 
 ##### Time-only
 
@@ -151,7 +151,7 @@ Date Time Editor Directive has intuitive keyboard navigation that makes it easy 
 
 - <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>Arrow Left</kbd> / <kbd>Right</kbd> - navigates between date sections. On <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>Right</kbd> it goes to the end of the section. If already there it goes to the end of next section if any. It works in a similar fashion in the opposite direction.
 
-- <kbd>Arrow Up</kbd> / <kbd>Down</kbd> - increment/decrement date portions. See related [`spinLoop`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#spinLoop)
+- <kbd>Arrow Up</kbd> / <kbd>Down</kbd> - increment/decrement date portions. See related [`spinLoop`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=spinLoop)
 
 - <kbd>Ctrl</kbd> / <kbd>Cmd</kbd> + <kbd>;</kbd> - set the current day and time in the editor.
 
@@ -159,12 +159,12 @@ Date Time Editor Directive has intuitive keyboard navigation that makes it easy 
 
 ### Display and input format
 
-The [`IgxDateTimeEditor`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html) supports different display and input formats.
+The [`IgxDateTimeEditor`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective) supports different display and input formats.
 
-It uses Angular's [`DatePipe`](https://angular.io/api/common/DatePipe), which allows it to support predefined format options, such as `shortDate` and `longDate`. It can also accept a constructed format string using characters supported by the `DatePipe`, e.g. `EE/MM/yyyy`. Notice that formats like `shortDate`, `longDate`, etc., can be used as [`displayFormat`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#displayFormat) only. Also, if no [`displayFormat`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#displayFormat) is provided, the editor will use the [`inputFormat`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#inputformat) as its [`displayFormat`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#displayFormat).
-Alternatively, if the [`inputFormat`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#inputFormat) property is not set, the input format will be inferred from the [`displayFormat`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#displayFormat) in case it can be parsed as containing numeric date-time parts only.
+It uses Angular's [`DatePipe`](https://angular.io/api/common/DatePipe), which allows it to support predefined format options, such as `shortDate` and `longDate`. It can also accept a constructed format string using characters supported by the `DatePipe`, e.g. `EE/MM/yyyy`. Notice that formats like `shortDate`, `longDate`, etc., can be used as [`displayFormat`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=displayFormat) only. Also, if no [`displayFormat`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=displayFormat) is provided, the editor will use the [`inputFormat`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=inputformat) as its [`displayFormat`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=displayFormat).
+Alternatively, if the [`inputFormat`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=inputFormat) property is not set, the input format will be inferred from the [`displayFormat`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=displayFormat) in case it can be parsed as containing numeric date-time parts only.
 
-To set a specific input format, pass it as a string to the IgxDateTimeEditor directive. This will set both the expected user input format and the [mask](mask.md) for the editor. Additionally, the [`inputFormat`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#inputFormat) is locale based, so if none is provided, the editor will default to the one used by the browser.
+To set a specific input format, pass it as a string to the IgxDateTimeEditor directive. This will set both the expected user input format and the [mask](mask.md) for the editor. Additionally, the [`inputFormat`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=inputFormat) is locale based, so if none is provided, the editor will default to the one used by the browser.
 
 ```html
 <igx-input-group>
@@ -172,7 +172,7 @@ To set a specific input format, pass it as a string to the IgxDateTimeEditor dir
 </igx-input-group>
 ```
 
-The table bellow shows formats that are supported by the directive's [`inputFormat`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#inputFormat):
+The table bellow shows formats that are supported by the directive's [`inputFormat`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=inputFormat):
 
 |  Format | Description                                                                 |
 | :------ | :-------------------------------------------------------------------------- |
@@ -195,7 +195,7 @@ The table bellow shows formats that are supported by the directive's [`inputForm
 
 ### Min max value
 
-You can specify [`minValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#minValue) and [`maxValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#maxValue) properties to restrict input and control the validity of the ngModel.
+You can specify [`minValue`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=minValue) and [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=maxValue) properties to restrict input and control the validity of the ngModel.
 
 ```typescript
 public minDate = new Date(2020, 1, 15);
@@ -209,13 +209,13 @@ public maxDate = new Date(2020, 11, 1);
 
 ```
 
-The [`minValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#minValue) and [`minValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#minValue) inputs can also be of type `string`, see [Binding to ISO strings](#iso).
+The [`minValue`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=minValue) and [`minValue`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=minValue) inputs can also be of type `string`, see [Binding to ISO strings](#iso).
 
 ### Increment and decrement <a name="increment-decrement"></a>
 
-[`igxDateTimeEditor`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html) directive exposes public [`increment`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#increment) and [`decrement`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#decrement) methods. They increment or decrement a specific [`DatePart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/datepart.html) of the currently set date and time and can be used in a couple of ways.
+[`igxDateTimeEditor`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective) directive exposes public [`increment`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=increment) and [`decrement`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=decrement) methods. They increment or decrement a specific [`DatePart`](mcp:get_api_reference?platform=angular&component=DatePart) of the currently set date and time and can be used in a couple of ways.
 
-In the first scenario, if no specific [`DatePart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/datepart.html) is passed to the method, a default [`DatePart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/datepart.html) will increment or decrement, based on the specified [`inputFormat`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#inputFormat) and the internal directive implementation. In the second scenario, you can explicitly specify what [`DatePart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/datepart.html) to manipulate as it may suite different requirements.
+In the first scenario, if no specific [`DatePart`](mcp:get_api_reference?platform=angular&component=DatePart) is passed to the method, a default [`DatePart`](mcp:get_api_reference?platform=angular&component=DatePart) will increment or decrement, based on the specified [`inputFormat`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=inputFormat) and the internal directive implementation. In the second scenario, you can explicitly specify what [`DatePart`](mcp:get_api_reference?platform=angular&component=DatePart) to manipulate as it may suite different requirements.
 Also, both methods accept an optional `delta` parameter of type `number` which can be used to set the increment/decrement step.
 
 You may compare both in the following sample:
@@ -242,7 +242,7 @@ export class DateTimeAdvancedComponent {
 
 <div class="divider--half"></div>
 
-Additionally, `spinDelta` is an input property of type [`DatePartDeltas`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html) and it can be used to apply a different delta to each date time segment. It will be applied when spinning with the keyboard, as well as when spinning with the [`increment`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#increment) and [`decrement`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html#decrement) methods, as long as they don't have the `delta` parameter provided since it will take precedence over `spinDelta`.
+Additionally, `spinDelta` is an input property of type [`DatePartDeltas`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective) and it can be used to apply a different delta to each date time segment. It will be applied when spinning with the keyboard, as well as when spinning with the [`increment`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=increment) and [`decrement`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective&member=decrement) methods, as long as they don't have the `delta` parameter provided since it will take precedence over `spinDelta`.
 
 ### In Angular Forms
 
@@ -266,7 +266,7 @@ Template-driven form example:
 
 ### Text Selection
 
-You can force the component to select all of the input text on focus using [`igxTextSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtextselectiondirective.html). Find more info on [`igxTextSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtextselectiondirective.html) at [Label & Input](label-input.md#focus--text-selection).
+You can force the component to select all of the input text on focus using [`igxTextSelection`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective). Find more info on [`igxTextSelection`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective) at [Label & Input](label-input.md#focus--text-selection).
 
 ```html
 <igx-input-group>
@@ -275,7 +275,7 @@ You can force the component to select all of the input text on focus using [`igx
 ```
 
 > [!NOTE]
-> In order for the component to work properly, it is crucial to set [`igxTextSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtextselectiondirective.html) after the [`igxDateTimeEditor`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html) directive. The reason for this is both directives operate on the input `focus` event so text selection should happen after the mask is set.
+> In order for the component to work properly, it is crucial to set [`igxTextSelection`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective) after the [`igxDateTimeEditor`](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective) directive. The reason for this is both directives operate on the input `focus` event so text selection should happen after the mask is set.
 
 ## Styling
 
@@ -284,10 +284,10 @@ For details check out the [`Input Group styling guide`](input-group.md#styling).
 
 ## API References
 
-- [IgxDateTimeEditorDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html)
-- [IgxHintDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhintdirective.html)
-- [IgxInputDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputdirective.html)
-- [IgxInputGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html)
+- [IgxDateTimeEditorDirective](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective)
+- [IgxHintDirective](mcp:get_api_reference?platform=angular&component=IgxHintDirective)
+- [IgxInputDirective](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
+- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
 - [IgxInputGroupComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme)
 
 <div class="divider--half"></div>

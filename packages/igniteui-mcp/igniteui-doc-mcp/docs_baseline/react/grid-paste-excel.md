@@ -10,11 +10,11 @@ _premium: true
 
 # React Grid Paste from Excel
 
-The Ignite UI for React [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) can read Excel data that is copied to the clipboard. In this section we will show you how to do this with some custom code.
+The Ignite UI for React [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) can read Excel data that is copied to the clipboard. In this section we will show you how to do this with some custom code.
 
 ## React Paste from Excel Example
 
-This sample demonstrates how to implement pasting from Excel into the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) Material UI table.
+This sample demonstrates how to implement pasting from Excel into the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) Material UI table.
 To work with the sample open up any Excel spreadsheet, copy some rows, and paste it into the grid using the keyboard (<kbd>CTRL</kbd> + <kbd>V</kbd>, <kbd>SHIFT</kbd> + <kbd>INSERT</kbd>,<kbd>CMD</kbd> + <kbd>V</kbd>).
 
 On the top there is a dropdown button with 2 options:
@@ -563,7 +563,7 @@ public updateRecords(processedData: any[]) {
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 
 ## Additional Resources
 

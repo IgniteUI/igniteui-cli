@@ -73,7 +73,7 @@ root.render(<IconSizing/>);
 
 ## Usage
 
-Before using the [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html), you need to register it as follows:
+Before using the [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon), you need to register it as follows:
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
@@ -81,20 +81,20 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon), its necessary CSS, and register its module, like so:
 
 ```tsx
 import { IgrIcon } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-The [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) doesn't contain any icons on its own. It's a conduit for displaying any _registered_ SVG images.
+The [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) doesn't contain any icons on its own. It's a conduit for displaying any _registered_ SVG images.
 
 ### Adding Icons
 
-To register an image as an icon, all you need to do is call one of the 2 "register" methods on a single [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) element that allow you to add icons to an icon collection on your page.
+To register an image as an icon, all you need to do is call one of the 2 "register" methods on a single [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) element that allow you to add icons to an icon collection on your page.
 
-The [`registerIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html#registerIcon) method allows you to register an SVG image as an icon from an external file:
+The [`registerIcon`](mcp:get_api_reference?platform=react&component=IgrIcon&member=registerIcon) method allows you to register an SVG image as an icon from an external file:
 
 ```tsx
 constructor() {
@@ -106,13 +106,13 @@ constructor() {
 
 The method above will add an icon named `search` to a cached collection named `material`.
 
-In order to use the newly registered icon, all you have to do is to pass the name and collection to the [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) element:
+In order to use the newly registered icon, all you have to do is to pass the name and collection to the [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) element:
 
 ```tsx
 <IgrIcon name="search" collection="material" />
 ```
 
-The second method for registering icons is by passing an SVG string to the [`registerIconFromText`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html#registerIconFromText) method:
+The second method for registering icons is by passing an SVG string to the [`registerIconFromText`](mcp:get_api_reference?platform=react&component=IgrIcon&member=registerIconFromText) method:
 
 ```tsx
 const searchIcon =
@@ -225,7 +225,7 @@ Some icons need to look a little different when used in Right-to-Left(RTL) mode.
 
 ## Styling
 
-The icon component can be styled by applying styles directly to the [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) element;
+The icon component can be styled by applying styles directly to the [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) element;
 
 ```css
 igc-icon {
@@ -283,8 +283,8 @@ root.render(<IconStyling/>);
 
 ## API References
 
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
-- [`registerIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html#registerIcon)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+- [`registerIcon`](mcp:get_api_reference?platform=react&component=IgrIcon&member=registerIcon)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

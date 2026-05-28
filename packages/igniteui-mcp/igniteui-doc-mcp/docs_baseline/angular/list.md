@@ -12,7 +12,7 @@ The Ignite UI for Angular List component displays rows of items and supports one
 
 ## Angular List Example
 
-The following example represents a list populated with contacts with a _name_ and a _phone number_ properties. The [`IgxList`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html) component uses [`igx-avatar`](avatar.md) and [`igx-icon`](icon.md) to enrich the user experience and expose the capabilities of setting avatar picture and different icon for _favorite a contact_. In addition, the List View expose sorting capabilities achieved by using our filtering pipe.
+The following example represents a list populated with contacts with a _name_ and a _phone number_ properties. The [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) component uses [`igx-avatar`](avatar.md) and [`igx-icon`](icon.md) to enrich the user experience and expose the capabilities of setting avatar picture and different icon for _favorite a contact_. In addition, the List View expose sorting capabilities achieved by using our filtering pipe.
 
 ```typescript
 import { Component, HostBinding, OnInit } from '@angular/core';
@@ -230,7 +230,7 @@ Now that you have the Ignite UI for Angular List module or directives imported, 
 
 Then in the template of our contacts component we can create our list, but what if currently (or at some point in the future) we have no items in it?
 In this case, the Angular list provides us with a default template that is used when the list is empty.
-We can always provide our own template for the look of our empty list by simply using the [`igxEmptyList`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxemptylisttemplatedirective.html) directive. In this case, the default template will not be used:
+We can always provide our own template for the look of our empty list by simply using the [`igxEmptyList`](mcp:get_api_reference?platform=angular&component=IgxEmptyListTemplateDirective) directive. In this case, the default template will not be used:
 
 ```html
 <!--contacts.component.html-->
@@ -291,7 +291,7 @@ export class ListSample5Component {
 ```
 
 
-Sometimes there may be a delay in your data loading. In this case you can set the list's [`isLoading`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html#isLoading) property to `true` and a default template will inform the user regarding the ongoing data loading process. You can also provide your own loading template using the [`igxDataLoading`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdataloadingtemplatedirective.html) directive:
+Sometimes there may be a delay in your data loading. In this case you can set the list's [`isLoading`](mcp:get_api_reference?platform=angular&component=IgxListComponent&member=isLoading) property to `true` and a default template will inform the user regarding the ongoing data loading process. You can also provide your own loading template using the [`igxDataLoading`](mcp:get_api_reference?platform=angular&component=IgxDataLoadingTemplateDirective) directive:
 
 ```html
 <!--contacts.component.html-->
@@ -518,7 +518,7 @@ export class ListSample3Component {
 
 ### Adding Avatar and Icons
 
-We can use some of our other components in conjunction with the [`IgxList`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html) component to enrich the experience and add some functionality. We can have a nice picture avatar to the left of the name and phone values. Additionally, we can add a star icon to the right of them to allow the user to favorite a contact. To do that let's grab the [**IgxAvatar**](avatar.md) and [**IgxIcon**](icon.md) modules and import them in our app.module.ts file.
+We can use some of our other components in conjunction with the [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) component to enrich the experience and add some functionality. We can have a nice picture avatar to the left of the name and phone values. Additionally, we can add a star icon to the right of them to allow the user to favorite a contact. To do that let's grab the [**IgxAvatar**](avatar.md) and [**IgxIcon**](icon.md) modules and import them in our app.module.ts file.
 
 ```typescript
 // app.module.ts
@@ -814,17 +814,17 @@ igx-icon {
 ### List Items Panning
 
 Now that we have such a beautiful Angular list with contacts and their phone numbers, why don't we implement an ability to call a contact.
-The [`IgxList`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html) has the perfect solution for this - list item panning.
+The [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) has the perfect solution for this - list item panning.
 To do this you have to implement the following steps:
 
-- Enable the panning using the [`allowLeftPanning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html#allowLeftPanning) and/or the [`allowRightPanning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html#allowRightPanning) properties
+- Enable the panning using the [`allowLeftPanning`](mcp:get_api_reference?platform=angular&component=IgxListComponent&member=allowLeftPanning) and/or the [`allowRightPanning`](mcp:get_api_reference?platform=angular&component=IgxListComponent&member=allowRightPanning) properties
 - Define template(s) for the left and/or right panning
 - Handle the list item's panning event(s) and perform the desired action
 
-The following example demonstrates how to handle both left and right panning. The event handler for right panning shows a toast message. The event handler for the left panning deletes an item from the [`IgxList`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html).
+The following example demonstrates how to handle both left and right panning. The event handler for right panning shows a toast message. The event handler for the left panning deletes an item from the [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent).
 
 > [!NOTE]
-> Please note that the list item removal is an application task. The [`IgxList`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html) itself cannot remove items from the data source because the [`IgxList`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html) does not have reference to the data source.
+> Please note that the list item removal is an application task. The [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) itself cannot remove items from the data source because the [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) does not have reference to the data source.
 
 Here is the HTML code of the example:
 
@@ -914,7 +914,7 @@ public leftPanPerformed(args) {
 ```
 
 > [!NOTE]
-> When panning list items there is a threshold which must be reached in order for the panning events to be emitted. You can change the threshold using the [`IgxList`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html)'s [`panEndTriggeringThreshold`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html#panEndTriggeringThreshold) property. By default this property has a value of 0.5 which means 50% of list item's width.
+> When panning list items there is a threshold which must be reached in order for the panning events to be emitted. You can change the threshold using the [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent)'s [`panEndTriggeringThreshold`](mcp:get_api_reference?platform=angular&component=IgxListComponent&member=panEndTriggeringThreshold) property. By default this property has a value of 0.5 which means 50% of list item's width.
 
 Now try panning the list items for yourself:
 
@@ -1112,7 +1112,7 @@ Let's add an input field to the top in our Angular component template first and 
 </igx-input-group>
 ```
 
-It's time to import the `IgxFilterModule` and the `IgxInputGroupModule` in our app.module.ts file and [`IgxFilterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfilteroptions.html) in our contacts component:
+It's time to import the `IgxFilterModule` and the `IgxInputGroupModule` in our app.module.ts file and [`IgxFilterOptions`](mcp:get_api_reference?platform=angular&component=IgxFilterOptions) in our contacts component:
 
 ```typescript
 // app.module.ts
@@ -1143,7 +1143,7 @@ export class ContactListComponent {
 }
 ```
 
-After importing the [`IgxFilterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfilteroptions.html), we need to register a new getter method that will return the filtering options to be used by the pipe each time the `searchContact` property gets updated. For the filter to work we need to register a `key` to filter the contact object by. In our case that would be the `name` of each contact. The second property that has to be registered on the [`IgxFilterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfilteroptions.html) object is the value that we should check against when comparing our contact name. This would be the `searchContact` property that we bound to the input field above our contacts list.
+After importing the [`IgxFilterOptions`](mcp:get_api_reference?platform=angular&component=IgxFilterOptions), we need to register a new getter method that will return the filtering options to be used by the pipe each time the `searchContact` property gets updated. For the filter to work we need to register a `key` to filter the contact object by. In our case that would be the `name` of each contact. The second property that has to be registered on the [`IgxFilterOptions`](mcp:get_api_reference?platform=angular&component=IgxFilterOptions) object is the value that we should check against when comparing our contact name. This would be the `searchContact` property that we bound to the input field above our contacts list.
 
 Finally, we need to apply the filtering pipe to our contacts data before we can use it. So in our template we simply add:
 
@@ -2036,15 +2036,15 @@ At the end your list should look like this:
 
 In this article we covered a lot of ground with the Angular list component. We created a list of contact items. Used some additional Ignite UI for Angular components inside our list items, like avatars and icons. Created some custom item layout and styled it. Finally, we added list filtering. The list component has a few more APIs to explore, which are listed below.
 
-- [IgxListComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistcomponent.html)
+- [IgxListComponent API](mcp:get_api_reference?platform=angular&component=IgxListComponent)
 - [IgxListComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-list-theme)
-- [IgxListItemComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlistitemcomponent.html)
+- [IgxListItemComponent API](mcp:get_api_reference?platform=angular&component=IgxListItemComponent)
 
 Additional Angular components that were used:
 
-- [IgxAvatarComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxavatarcomponent.html)
+- [IgxAvatarComponent API](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent)
 - [IgxAvatarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-avatar-theme)
-- [IgxIconComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconcomponent.html)
+- [IgxIconComponent API](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
 - [IgxIconComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
 
 <div class="divider"></div>

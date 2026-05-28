@@ -13,7 +13,7 @@ The Ignite UI for Web Components ComboBox component exposes several features suc
 
 ## Combobox Features Example
 
-The following demo shows some [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) features that are enabled/disabled at runtime:
+The following demo shows some [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) features that are enabled/disabled at runtime:
 
 ```css
 /* shared styles are loaded from: */
@@ -26,7 +26,7 @@ The following demo shows some [`IgcComboComponent`](https://www.infragistics.com
 }
 ```
 
-In our sample we are going to use the [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) component, so we have to import them together with the combo:
+In our sample we are going to use the [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent) component, so we have to import them together with the combo:
 
 ```ts
 import { defineComponents, IgcComboComponent, IgcSwitchComponent } from 'igniteui-webcomponents';
@@ -57,7 +57,7 @@ switchDisable.addEventListener("igcChange", () => {
 });
 ```
 
-Note that grouping is enabled/disabled by setting the [`groupKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#groupKey) property to a corresponding data source field:
+Note that grouping is enabled/disabled by setting the [`groupKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=groupKey) property to a corresponding data source field:
 
 ```ts
 let switchGroup = document.getElementById('grouping') as IgcSwitchComponent;
@@ -71,9 +71,9 @@ switchGroup.addEventListener("igcChange", () => {
 
 ### Filtering
 
-By default, filtering in the ComboBox is enabled. It can be disabled by setting the [`disableFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#disableFiltering) property.
+By default, filtering in the ComboBox is enabled. It can be disabled by setting the [`disableFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=disableFiltering) property.
 
-Filtering options can be further enhanced by enabling the search case sensitivity. The case-sensitive icon can be turned on using the [`caseSensitiveIcon`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#caseSensitiveIcon) property so that end-users can control the case sensitivity.
+Filtering options can be further enhanced by enabling the search case sensitivity. The case-sensitive icon can be turned on using the [`caseSensitiveIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=caseSensitiveIcon) property so that end-users can control the case sensitivity.
 
 ```html
 <igc-combo disable-filtering case-sensitive-icon></igc-combo>
@@ -81,7 +81,7 @@ Filtering options can be further enhanced by enabling the search case sensitivit
 
 #### Filtering Options
 
-The Ignite UI for Web Components [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) exposes one more filtering property that allows passing configuration of both `FilterKey` and `CaseSensitive` options. The `FilterKey` indicates which data source field should be used for filtering the list of options. The `CaseSensitive` option indicates if the filtering should be case-sensitive or not.
+The Ignite UI for Web Components [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) exposes one more filtering property that allows passing configuration of both `FilterKey` and `CaseSensitive` options. The `FilterKey` indicates which data source field should be used for filtering the list of options. The `CaseSensitive` option indicates if the filtering should be case-sensitive or not.
 
 The following code snippet shows how to filter the cities from our data source by country instead of name. We are also making the filtering case-sensitive by default:
 
@@ -96,14 +96,14 @@ combo.filteringOptions = options;
 
 ### Grouping
 
-Defining a [`groupKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#groupKey) option will group the items, according to the provided key:
+Defining a [`groupKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=groupKey) option will group the items, according to the provided key:
 
 ```html
 <igc-combo group-key="region"></igc-combo>
 ```
 
 > [!Note]
-> The [`groupKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#groupKey) property will only have effect if your data source consists of complex objects.
+> The [`groupKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=groupKey) property will only have effect if your data source consists of complex objects.
 
 #### Sorting Direction
 
@@ -115,7 +115,7 @@ The ComboBox component also exposes an option for setting whether groups should 
 
 ### Label
 
-The [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) label can be set easily using the [`label`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#label) property:
+The [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) label can be set easily using the [`label`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=label) property:
 
 ```html
 <igc-combo label="Cities"></igc-combo>
@@ -139,7 +139,7 @@ If you want your ComboBox to be automatically focused on page load you can use t
 
 ### Search Input Focus
 
-The ComboBox search input is focused by default. To disable this feature and move the focus to the list of options use the [`autofocusList`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#autofocusList) property as shown below:
+The ComboBox search input is focused by default. To disable this feature and move the focus to the list of options use the [`autofocusList`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=autofocusList) property as shown below:
 
 ```html
 <igc-combo autofocus-list></igc-combo>
@@ -155,7 +155,7 @@ The ComboBox can be marked as required by setting the required property.
 
 ### Disable ComboBox
 
-You can disable the ComboBox using the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#disabled) property:
+You can disable the ComboBox using the [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=disabled) property:
 
 ```html
 <igc-combo disabled></igc-combo>
@@ -163,7 +163,7 @@ You can disable the ComboBox using the [`disabled`](https://www.infragistics.com
 
 ## API Reference
 
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html)
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent)
 
 ## Additional Resources
 

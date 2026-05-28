@@ -8,7 +8,7 @@ _tocName: Text Highlight
 
 # Angular Text Highlight Directive Overview
 
-The [`IgxTextHighlightDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtexthighlightdirective.html) and `IgxTextHighlightService` in Ignite UI for Angular are used to highlight parts of a text, providing options for case sensitive searches and to highlight only exact matches. They allow the developer to keep an active highlight, which can be any of the already highlighted parts.
+The [`IgxTextHighlightDirective`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective) and `IgxTextHighlightService` in Ignite UI for Angular are used to highlight parts of a text, providing options for case sensitive searches and to highlight only exact matches. They allow the developer to keep an active highlight, which can be any of the already highlighted parts.
 
 ## Angular Text Highlight Directive Example
 
@@ -594,7 +594,7 @@ export class TextHighlightSample1Component implements OnDestroy {
 
 ## Search across multiple elements
 
-The [`igxTextHighlight`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtexthighlightdirective.html) allows you to search across multiple elements which all share one active highlight. This is done by having the same [`groupName`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtexthighlightdirective.html#groupName) value across multiple TextHighlight directives. In order to setup the sample we will reuse the search box from the previous sample, but this time we will add two div elements. The [`column`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtexthighlightdirective.html#column) and [`row`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtexthighlightdirective.html#row) inputs are useful when you have multiple elements and in our case the second div has a different row value.
+The [`igxTextHighlight`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective) allows you to search across multiple elements which all share one active highlight. This is done by having the same [`groupName`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective&member=groupName) value across multiple TextHighlight directives. In order to setup the sample we will reuse the search box from the previous sample, but this time we will add two div elements. The [`column`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective&member=column) and [`row`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective&member=row) inputs are useful when you have multiple elements and in our case the second div has a different row value.
 
 ```html
 <div
@@ -893,7 +893,7 @@ export class TextHighlightSample2Component implements OnDestroy {
 
 ## Styles
 
-The [`IgxTextHighlight`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtexthighlightdirective.html) directive can be styled in terms of changing the color and the background of all occurrences of the given string. To get started, we need to import the `index` file, where all the theme functions and component mixins live:
+The [`IgxTextHighlight`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective) directive can be styled in terms of changing the color and the background of all occurrences of the given string. To get started, we need to import the `index` file, where all the theme functions and component mixins live:
 
 ```scss
 @use "igniteui-angular/theming" as *;
@@ -928,7 +928,7 @@ The last step is to **include** the newly created theme.
 
 ### Custom styles
 
-Let's say we want to provide an even richer styling to our highlighted text parts. In order to do this, we can take advantage of the [`cssClass`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtexthighlightdirective.html#cssclass) and the [`activeCssClass`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtexthighlightdirective.html#activecssclass) inputs of the [`IgxTextHighlight`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtexthighlightdirective.html) directive. We can combine these classes with the styles from the [`highlight-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-highlight-theme) and provide an awesome experience to our users!
+Let's say we want to provide an even richer styling to our highlighted text parts. In order to do this, we can take advantage of the [`cssClass`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective&member=cssclass) and the [`activeCssClass`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective&member=activecssclass) inputs of the [`IgxTextHighlight`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective) directive. We can combine these classes with the styles from the [`highlight-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-highlight-theme) and provide an awesome experience to our users!
 
 All we have to do is create a couple of css classes with some properties and attach them by using the inputs from above:
 
@@ -1155,11 +1155,11 @@ $dark-highlight: highlight-theme(
 
 For more detailed information regarding the TextHighlight directive's API, refer to the following link:
 
-- [`IgxTextHighlight API`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtexthighlightdirective.html)
+- [`IgxTextHighlight API`](mcp:get_api_reference?platform=angular&component=IgxTextHighlightDirective)
 
 Additional components that were used:
 
-- [`IgxInputGroupComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html)
+- [`IgxInputGroupComponent`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
 - [`IgxInputGroupComponent Styles`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-input-group-theme)
 
 <div class="divider"></div>

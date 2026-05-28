@@ -15,7 +15,7 @@ The Ignite UI for Web Components Point Chart renders a collection of points. Val
 
 ## Web Components Point Chart Example
 
-You can create the Web Components Point Chart in the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) control by binding your data to `ItemsSource` property and setting [`chartType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#chartType) property to **Point** enum, as shown in the example below.
+You can create the Web Components Point Chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data to `ItemsSource` property and setting [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to **Point** enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -171,7 +171,7 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 
 ## Advanced Types of Point Charts
 
-You can create more advanced types of Web Components Point Charts using the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control instead of [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) control by following these topics:
+You can create more advanced types of Web Components Point Charts using the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by following these topics:
 
 - [Scatter Bubble Chart](bubble-chart.md)
 - [Scatter Marker Chart](scatter-chart.md#web-components-scatter-marker-chart)
@@ -189,10 +189,10 @@ You can find more information about related chart features in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html)
-- [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html)
-- [`chartType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#chartType)
-- [`markerTypes`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerTypes)
-- [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerOutlines)
-- [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerBrushes)
-- [`markerThickness`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html#markerThickness)
+- [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+- [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType)
+- [`markerTypes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerTypes)
+- [`markerOutlines`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerOutlines)
+- [`markerBrushes`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerBrushes)
+- [`markerThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=markerThickness)

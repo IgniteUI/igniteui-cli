@@ -49,9 +49,9 @@ defineComponents(IgcIconComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Before using the [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html), you need to register it as follows:
+Before using the [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent), you need to register it as follows:
 
-The [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) doesn't contain any icons on its own. It's a conduit for displaying any _registered_ SVG images.
+The [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) doesn't contain any icons on its own. It's a conduit for displaying any _registered_ SVG images.
 
 ### Adding Icons
 
@@ -76,13 +76,13 @@ registerIcon(
 
 The method above will add an icon named `search` to a cached collection named `material`.
 
-In order to use the newly registered icon, all you have to do is to pass the name and collection to the [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) element:
+In order to use the newly registered icon, all you have to do is to pass the name and collection to the [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) element:
 
 ```html
 <igc-icon name="search" collection="material"></igc-icon>
 ```
 
-The second method for registering icons is by passing an SVG string to the [`registerIconFromText`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html#registerIconFromText) method:
+The second method for registering icons is by passing an SVG string to the [`registerIconFromText`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent&member=registerIconFromText) method:
 
 ```ts
 const searchIcon =
@@ -139,7 +139,7 @@ Some icons need to look a little different when used in Right-to-Left(RTL) mode.
 
 ## Styling
 
-The icon component can be styled by applying styles directly to the [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) element;
+The icon component can be styled by applying styles directly to the [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) element;
 
 ```css
 igc-icon {
@@ -165,8 +165,8 @@ igc-icon {
 
 ## API References
 
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
-- [`registerIcon`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html#registerIcon)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+- [`registerIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent&member=registerIcon)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

@@ -322,18 +322,18 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html) and its necessary CSS, like so:
+You will then need to import the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) and its necessary CSS, like so:
 
 ```tsx
 import { IgrStepper, IgrStep } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-Now you can start with a basic configuration of the React [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html) and its steps.
+Now you can start with a basic configuration of the React [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) and its steps.
 
 ## How To Use React Stepper
 
-The [`IgrStep`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstep.html) is the representation of every step that belongs to the [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html). Steps provide [`invalid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstep.html#invalid), [`active`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstep.html#active), [`optional`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstep.html#optional), [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstep.html#disabled) and [`complete`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstep.html#complete) properties, which give you the ability to configure the step states according to your business requirement.
+The [`IgrStep`](mcp:get_api_reference?platform=react&component=IgrStep) is the representation of every step that belongs to the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper). Steps provide [`invalid`](mcp:get_api_reference?platform=react&component=IgrStep&member=invalid), [`active`](mcp:get_api_reference?platform=react&component=IgrStep&member=active), [`optional`](mcp:get_api_reference?platform=react&component=IgrStep&member=optional), [`disabled`](mcp:get_api_reference?platform=react&component=IgrStep&member=disabled) and [`complete`](mcp:get_api_reference?platform=react&component=IgrStep&member=complete) properties, which give you the ability to configure the step states according to your business requirement.
 
 ### Declaring React Stepper
 
@@ -367,7 +367,7 @@ Steps can be declared using one of the following approaches.
 For each step the user has the ability to configure indicator, title and subtitle using the `Indicator`, `Title` and `Subtitle` slots as follows:
 
 > [!Note]
-> The `Default` [`IgrStep`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstep.html) slot renders the content of the step.
+> The `Default` [`IgrStep`](mcp:get_api_reference?platform=react&component=IgrStep) slot renders the content of the step.
 
 ```tsx
 <IgrStepper>
@@ -387,18 +387,18 @@ For each step the user has the ability to configure indicator, title and subtitl
 
 ### Orientation in React Stepper
 
-You can customize the stepper orientation through the exposed [`orientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html#orientation) property. It could be set to **horizontal** **(default value)** or **vertical**.
+You can customize the stepper orientation through the exposed [`orientation`](mcp:get_api_reference?platform=react&component=IgrStepper&member=orientation) property. It could be set to **horizontal** **(default value)** or **vertical**.
 
 **Horizontal Stepper Orientation**
 
-**horizontal**is the default value for the [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html) orientation property.
-When the React stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html) [`contentTop`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html#contentTop) boolean property, which default value is **false**. In case it is enabled the steps’ content would be displayed above the steps’ headers.
+**horizontal**is the default value for the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) orientation property.
+When the React stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) [`contentTop`](mcp:get_api_reference?platform=react&component=IgrStepper&member=contentTop) boolean property, which default value is **false**. In case it is enabled the steps’ content would be displayed above the steps’ headers.
 
 <img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 800px"  src="../../images/stepper/stepper-contentTop.png" alt="stepper-contentTop" />
 
 **Vertical Stepper Orientation**
 
-You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`orientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html#orientation) property to **vertical**.
+You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`orientation`](mcp:get_api_reference?platform=react&component=IgrStepper&member=orientation) property to **vertical**.
 
 The sample below demonstrates how stepper orientation and titles position could be changed runtime.
 
@@ -518,7 +518,7 @@ root.render(<StepperOrientationSample />);
 
 ### Step States
 
-React [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html) supports five steps states and each of them apply different styles by default:
+React [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) supports five steps states and each of them apply different styles by default:
 
 - **active** - Determines whether the step is the currently displayed. By design, if the user does not explicitly set some step’s active attribute to **true**, the initial active step would be the first non-disabled step.
 - **disabled** - Determines whether the step is intractable. By default, the disabled attribute of a step is set to **false**.
@@ -528,7 +528,7 @@ React [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/
 
 ### Linear React Stepper
 
-The React [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html) gives you the opportunity to set its steps flow using the [`linear`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html#linear) property. By default, linear is set to **false** and the user is enabled to select any non-disabled step in the [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html).
+The React [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) gives you the opportunity to set its steps flow using the [`linear`](mcp:get_api_reference?platform=react&component=IgrStepper&member=linear) property. By default, linear is set to **false** and the user is enabled to select any non-disabled step in the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper).
 
 ```tsx
 <IgrStepper linear={true}>
@@ -550,7 +550,7 @@ If the current non-optional step is not valid you cannot go forward to the next 
 
 ### Step Interactions
 
-[`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html) provides the following API methods for step interactions:
+[`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) provides the following API methods for step interactions:
 
 - **navigateTo** – activates the step by given index.
 - **next** - activates the next non-disabled step.
@@ -564,7 +564,7 @@ If the current non-optional step is not valid you cannot go forward to the next 
 
 The Ignite UI for React Stepper gives you the ability to configure different options for titles, indicators and more.
 
-This could be achieved through the [`stepType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html#stepType) property of the [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html). It takes the following values:
+This could be achieved through the [`stepType`](mcp:get_api_reference?platform=react&component=IgrStepper&member=stepType) property of the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper). It takes the following values:
 
 - Full **(default value)**
 - Indicator
@@ -575,7 +575,7 @@ This could be achieved through the [`stepType`](https://www.infragistics.com/pro
 If titles and subtitles are defined, with this setup both indicators and titles would be rendered.
 
 The user would also have the ability to define the position of the title for the steps, so it could be placed before, after, above or below the step indicator.
-The user can configure the title position using the [`titlePosition`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html#titlePosition) property. It takes the following values:
+The user can configure the title position using the [`titlePosition`](mcp:get_api_reference?platform=react&component=IgrStepper&member=titlePosition) property. It takes the following values:
 
 - undefined **(default value)**
 - end
@@ -583,7 +583,7 @@ The user can configure the title position using the [`titlePosition`](https://ww
 - bottom
 - top
 
-When the React [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html) is horizontally orientated and the title position **is not defined**, the titles would be displayed **below** the indicators.
+When the React [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) is horizontally orientated and the title position **is not defined**, the titles would be displayed **below** the indicators.
 
 When the orientation is set to vertical and the title position **is not defined**, the titles would be displayed **after** the indicators.
 
@@ -594,7 +594,7 @@ When the orientation is set to vertical and the title position **is not defined*
 
 If you want to display only indicators for the steps, set the stepType option to **indicator**.
 
-The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) or [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html) as step indicators.
+The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) or [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar) as step indicators.
 
 **Title**
 
@@ -670,15 +670,15 @@ root.render(<StepperStepTypes />);
 
 ### Stepper Animations
 
-The React [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html) Animations provide the end-users with a beautiful experience interacting with the defined steps. The available animation options differ depending on the orientation of the stepper.
+The React [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) Animations provide the end-users with a beautiful experience interacting with the defined steps. The available animation options differ depending on the orientation of the stepper.
 
-When the stepper is horizontally orientated, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`horizontalAnimation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html#horizontalAnimation) input.
+When the stepper is horizontally orientated, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`horizontalAnimation`](mcp:get_api_reference?platform=react&component=IgrStepper&member=horizontalAnimation) input.
 
-In a vertically orientated layout, the animation type could be defined using the [`verticalAnimation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html#verticalAnimation) property. By default, its value is set to `grow` and the user has the ability to set it to `fade` as well.
+In a vertically orientated layout, the animation type could be defined using the [`verticalAnimation`](mcp:get_api_reference?platform=react&component=IgrStepper&member=verticalAnimation) property. By default, its value is set to `grow` and the user has the ability to set it to `fade` as well.
 
 Setting `none` to both animation type inputs disables stepper animations.
 
-The [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html) component also gives you the ability to configure the duration of the transition between the steps. This could be achieved through the `animationDuration` property, which takes a number as an argument and it is common to both orientations. The default value is set to 320ms.
+The [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) component also gives you the ability to configure the duration of the transition between the steps. This could be achieved through the `animationDuration` property, which takes a number as an argument and it is common to both orientations. The default value is set to 320ms.
 
 ```css
 /* shared styles are loaded from: */
@@ -913,7 +913,7 @@ root.render(<StepperAnimations />);
 ## Keyboard Navigation
 
 The Ignite UI for React Stepper provides a rich variety of keyboard interactions to the end-user. This functionality is enabled by default and allows end-users to easily navigate through the steps.
-The React [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html) navigation is compliant with [W3 accessability standards](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/) and convenient to use.
+The React [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) navigation is compliant with [W3 accessability standards](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/) and convenient to use.
 
 **Key Combinations**
 
@@ -929,7 +929,7 @@ The React [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/d
 
 ## Styling React Stepper
 
-You can change the appearance of the [`IgrStep`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstep.html), by using some of the exposed CSS parts listed below:
+You can change the appearance of the [`IgrStep`](mcp:get_api_reference?platform=react&component=IgrStep), by using some of the exposed CSS parts listed below:
 
 | Part name | Description |
 | ---------|------------ |
@@ -952,7 +952,7 @@ You can change the appearance of the [`IgrStep`](https://www.infragistics.com/pr
 | `body` | Wrapper of the step's content. |
 | `content` | The steps content. |
 
-Using these CSS parts we can customize thе appearance of the [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html) component like this:
+Using these CSS parts we can customize thе appearance of the [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper) component like this:
 
 ```css
 igc-step::part(title) {
@@ -1268,10 +1268,10 @@ root.render(<StepperStyling />);
 
 ## API References
 
-- [`IgrStepper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstepper.html)
-- [`IgrStep`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrstep.html)
-- [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html)
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
+- [`IgrStepper`](mcp:get_api_reference?platform=react&component=IgrStepper)
+- [`IgrStep`](mcp:get_api_reference?platform=react&component=IgrStep)
+- [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

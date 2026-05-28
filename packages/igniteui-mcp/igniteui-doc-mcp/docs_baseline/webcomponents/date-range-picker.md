@@ -13,7 +13,7 @@ The Ignite UI for Web Components Date Range Picker is a lightweight component th
 
 ## Date Range Picker Example
 
-Below is a sample demonstrating the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) component in action, where a calendar pop-up allows users to select start and end dates.
+Below is a sample demonstrating the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component in action, where a calendar pop-up allows users to select start and end dates.
 
 ```css
 /* shared styles are loaded from: */
@@ -22,13 +22,13 @@ Below is a sample demonstrating the [`IgcDateRangePickerComponent`](https://www.
 
 ### Getting Started
 
-To start using the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html), you first need to install the Ignite UI for Web Components by running the following command:
+To start using the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent), you first need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
 
-After that, you need to import the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html), its necessary CSS, and register its module, as follows:
+After that, you need to import the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent), its necessary CSS, and register its module, as follows:
 
 ```ts
 import { defineComponents, IgcDateRangePickerComponent } from 'igniteui-webcomponents';
@@ -37,26 +37,26 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 defineComponents(IgcDateRangePickerComponent);
 ```
 
-Now you can start with a basic configuration of the Web Components [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html).
+Now you can start with a basic configuration of the Web Components [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent).
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
 ## Usage
 
-The [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) allows users to select a start and end date either by choosing a date range from a dropdown/calendar pop-up or by typing directly into the input fields - one for the start date and one for the end date. The picker offers two modes for displaying date values: single input and two inputs. Both provide editing and masking capabilities.
+The [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) allows users to select a start and end date either by choosing a date range from a dropdown/calendar pop-up or by typing directly into the input fields - one for the start date and one for the end date. The picker offers two modes for displaying date values: single input and two inputs. Both provide editing and masking capabilities.
 
 When the calendar is visible, a date range can be selected by choosing both a start and end date. Selecting a date will set both the start and end date, and once a second date is chosen, it will set the end date. If a range is already selected, clicking any other date on the calendar will start a new range selection.
 
 ### Display Date Range Picker
 
-To instantiate a [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) in its default single input mode, use the following code:
+To instantiate a [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) in its default single input mode, use the following code:
 
 ```html
 <igc-date-range-picker>
 </igc-date-range-picker>
 ```
 
-To switch the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) to use two inputs, set the [`useTwoInputs`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#useTwoInputs) property to `true`.
+To switch the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) to use two inputs, set the [`useTwoInputs`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=useTwoInputs) property to `true`.
 
 ```html
 <igc-date-range-picker use-two-inputs="true">
@@ -65,7 +65,7 @@ To switch the [`IgcDateRangePickerComponent`](https://www.infragistics.com/produ
 
 ### Value
 
-In addition to being selected or typed by the user, the range value of the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) can also be set using the [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#value) property. It's important to note that the value must follow the format: **{ start: startDate, end: endDate }**, where `startDate` and `endDate` are `Date` objects representing the selected range.
+In addition to being selected or typed by the user, the range value of the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) can also be set using the [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=value) property. It's important to note that the value must follow the format: **{ start: startDate, end: endDate }**, where `startDate` and `endDate` are `Date` objects representing the selected range.
 
 ```ts
 let dateRange = document.querySelector('igc-date-range-picker') as IgcDateRangePickerComponent;
@@ -83,14 +83,14 @@ In addition, the value can be set as attribute. In this case it should represent
 
 ### Read-only & Non-editable
 
-You can also make the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) read-only, which disables changing the range value through both typing and calendar selection, disables keyboard navigation, and makes the calendar and clear icons appear visually disabled. This is useful when the range is assigned via the value attribute and is intended to be display-only. To enable this behavior, simply set the [`readOnly`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#readOnly) property.
+You can also make the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) read-only, which disables changing the range value through both typing and calendar selection, disables keyboard navigation, and makes the calendar and clear icons appear visually disabled. This is useful when the range is assigned via the value attribute and is intended to be display-only. To enable this behavior, simply set the [`readOnly`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=readOnly) property.
 
 ```html
 <igc-date-range-picker use-two-inputs="true" readonly>
 </igc-date-range-picker>
 ```
 
-Alternatively, you can use the [`nonEditable`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#nonEditable) property, which, unlike [`readOnly`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#readOnly), only prevents editing the input(s) via typing, while still allowing selection through the calendar and clearing via the clear icon.
+Alternatively, you can use the [`nonEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=nonEditable) property, which, unlike [`readOnly`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=readOnly), only prevents editing the input(s) via typing, while still allowing selection through the calendar and clearing via the clear icon.
 
 ```html
 <igc-date-range-picker use-two-inputs="true" non-editable="true">
@@ -99,7 +99,7 @@ Alternatively, you can use the [`nonEditable`](https://www.infragistics.com/prod
 
 ### Popup modes
 
-By default, when clicked, the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) opens its calendar pop-up in `dropdown` mode. Alternatively, the calendar can be opened in `dialog` mode by setting the [`mode`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#mode) property to `dialog`.
+By default, when clicked, the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) opens its calendar pop-up in `dropdown` mode. Alternatively, the calendar can be opened in `dialog` mode by setting the [`mode`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=mode) property to `dialog`.
 
 ```html
 <igc-date-range-picker mode="dialog">
@@ -108,7 +108,7 @@ By default, when clicked, the [`IgcDateRangePickerComponent`](https://www.infrag
 
 ### Keyboard Navigation
 
-The [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) features intuitive keyboard navigation, allowing users to easily increment, decrement, or jump between different component parts, all without needing to use a mouse.
+The [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) features intuitive keyboard navigation, allowing users to easily increment, decrement, or jump between different component parts, all without needing to use a mouse.
 
 |Keys|Description|
 |----|-----------|
@@ -124,7 +124,7 @@ The [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite
 | <kbd>ALT</kbd> + <kbd>↓</kbd> | Opens the calendar dropdown |
 | <kbd>ALT</kbd> + <kbd>↑</kbd> | Closes the calendar dropdown |
 
-You can also navigate within the calendar pop-up using the keyboard. The navigation is the same as in the [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html) component.
+You can also navigate within the calendar pop-up using the keyboard. The navigation is the same as in the [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component.
 
 |Keys|Description|
 |----|-----------|
@@ -142,7 +142,7 @@ You can also navigate within the calendar pop-up using the keyboard. The navigat
 
 ### Label
 
-You can define a label for the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) component using the [`label`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#label) property when it is in single input mode. In two inputs mode, you can use the [`labelStart`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#labelStart) and [`labelEnd`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#labelEnd) properties to define labels for the start and end date input fields, respectively.
+You can define a label for the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component using the [`label`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=label) property when it is in single input mode. In two inputs mode, you can use the [`labelStart`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=labelStart) and [`labelEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=labelEnd) properties to define labels for the start and end date input fields, respectively.
 
 ```html
 <igc-date-range-picker label="Date Range">
@@ -156,9 +156,9 @@ You can define a label for the [`IgcDateRangePickerComponent`](https://www.infra
 
 ### Format
 
-You also have the option to customize the date format displayed in the input fields. There are three properties available for this purpose: [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#locale), [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#inputFormat), and [`displayFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#displayFormat).
+You also have the option to customize the date format displayed in the input fields. There are three properties available for this purpose: [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=locale), [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=inputFormat), and [`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=displayFormat).
 
-The [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#locale) property allows you to set the desired locale identifier, which determines how the date is formatted based on regional conventions.
+The [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=locale) property allows you to set the desired locale identifier, which determines how the date is formatted based on regional conventions.
 For example, to display the date in a Japanese format, you can set the locale property like this:
 
 ```html
@@ -166,14 +166,14 @@ For example, to display the date in a Japanese format, you can set the locale pr
 </igc-date-range-picker>
 ```
 
-If you want to manually define the date format, you can use the [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#inputFormat) property by passing a custom format string:
+If you want to manually define the date format, you can use the [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=inputFormat) property by passing a custom format string:
 
 ```html
 <igc-date-range-picker input-format="dd/MM/yy">
 </igc-date-range-picker>
 ```
 
-The [`displayFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#displayFormat) property also accepts a custom format string, but it only applies when the input field is idle (i.e., not focused). When the field is focused, the format reverts to the default or to the one defined by [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#inputFormat), if both properties are used together:
+The [`displayFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=displayFormat) property also accepts a custom format string, but it only applies when the input field is idle (i.e., not focused). When the field is focused, the format reverts to the default or to the one defined by [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=inputFormat), if both properties are used together:
 
 ```html
 <igc-date-range-picker input-format="dd/MM/yy" display-format="yy/MM/dd">
@@ -186,17 +186,17 @@ You can further customize the pop-up calendar using various properties:
 
 |Name|Type|Description|
 |--|--|--|
-| [`orientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#orientation) | 'vertical' or 'horizontal' | Allows you to set whether the calendar should be displayed vertically or horizontally. |
-| [`visibleMonths`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#visibleMonths) | string | Controls how many months are visible at a time, with a value of either 1 or 2. |
-| [`showWeekNumbers`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#showWeekNumbers) | string | Enables or disables the week number column in the calendar. |
-| [`open`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#open) | boolean | Determines whether the calendar picker is open. |
-| [`keepOpenOnSelect`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#keepOpenOnSelect) | boolean | Keeps the calendar picker open after a date selection. |
-| [`keepOpenOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#keepOpenOnOutsideClick) | boolean | Keeps the calendar picker open when clicking outside of it. |
-| [`weekStart`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#weekStart) | string | Sets the start day of the week. |
-| [`hideOutsideDays`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#hideOutsideDays) | boolean | Hides days that fall outside the current month view. |
-| [`hideHeader`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#hideHeader) | boolean | Hides the calendar header (applicable only in dialog mode). |
-| [`headerOrientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#headerOrientation) | 'vertical' or 'horizontal' | Aligns the calendar header vertically or horizontally (dialog mode only). |
-| [`activeDate`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#activeDate) | Date | Sets the date that is initially highlighted in the calendar. If not set, the current date becomes the active date. |
+| [`orientation`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=orientation) | 'vertical' or 'horizontal' | Allows you to set whether the calendar should be displayed vertically or horizontally. |
+| [`visibleMonths`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=visibleMonths) | string | Controls how many months are visible at a time, with a value of either 1 or 2. |
+| [`showWeekNumbers`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=showWeekNumbers) | string | Enables or disables the week number column in the calendar. |
+| [`open`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=open) | boolean | Determines whether the calendar picker is open. |
+| [`keepOpenOnSelect`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=keepOpenOnSelect) | boolean | Keeps the calendar picker open after a date selection. |
+| [`keepOpenOnOutsideClick`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=keepOpenOnOutsideClick) | boolean | Keeps the calendar picker open when clicking outside of it. |
+| [`weekStart`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=weekStart) | string | Sets the start day of the week. |
+| [`hideOutsideDays`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=hideOutsideDays) | boolean | Hides days that fall outside the current month view. |
+| [`hideHeader`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=hideHeader) | boolean | Hides the calendar header (applicable only in dialog mode). |
+| [`headerOrientation`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=headerOrientation) | 'vertical' or 'horizontal' | Aligns the calendar header vertically or horizontally (dialog mode only). |
+| [`activeDate`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=activeDate) | Date | Sets the date that is initially highlighted in the calendar. If not set, the current date becomes the active date. |
 
 ```html
 <igc-date-range-picker orientation="vertical" visible-months="1" show-week-numbers="true">
@@ -205,7 +205,7 @@ You can further customize the pop-up calendar using various properties:
 
 ### Min & Max
 
-You can also set the [`min`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#max) properties to restrict user input by disabling calendar dates outside the defined range. These properties act as validators, so even if the user manually types a date outside the range, the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) will become invalid.
+You can also set the [`min`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=min) and [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=max) properties to restrict user input by disabling calendar dates outside the defined range. These properties act as validators, so even if the user manually types a date outside the range, the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) will become invalid.
 
 ```html
 <igc-date-range-picker min="2025-05-06" max="2025-05-10">
@@ -214,7 +214,7 @@ You can also set the [`min`](https://www.infragistics.com/products/ignite-ui-web
 
 ### Custom & Predefined Date Ranges
 
-You can also add custom date range chips to the calendar pop-up for faster range selection using the [`customRanges`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#customRanges) property. For example, you can create a custom date range chip to quickly select the range for the upcoming 7 days, ending with the current date. In addition, by setting the [`usePredefinedRanges`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#usePredefinedRanges) property, a set of predefined ranges chips will be displayed along with the custom ones.
+You can also add custom date range chips to the calendar pop-up for faster range selection using the [`customRanges`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=customRanges) property. For example, you can create a custom date range chip to quickly select the range for the upcoming 7 days, ending with the current date. In addition, by setting the [`usePredefinedRanges`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=usePredefinedRanges) property, a set of predefined ranges chips will be displayed along with the custom ones.
 
 ```ts
 const today = new Date();
@@ -248,7 +248,7 @@ Now, when you click the newly created **"Next 7 days"** chip in the calendar pop
 
 ### Disabled & Special dates
 
-You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#disabledDates) property.
+You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`disabledDates`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=disabledDates) property.
 
 ```ts
 let dateRange = document.querySelector('igc-date-range-picker') as IgcDateRangePickerComponent;
@@ -264,13 +264,13 @@ dateRange.disabledDates = [
 ] as DateRangeDescriptor[];
 ```
 
-You can see more information about all the possibilities that the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#disabledDates) property offers here: [Disabled dates](./calendar.md#disabled-dates)
+You can see more information about all the possibilities that the [`disabledDates`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=disabledDates) property offers here: [Disabled dates](./calendar.md#disabled-dates)
 
-You can also do the same if you want to set one or more special dates in the calendar; the only difference is that you need to use the [`specialDates`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#specialDates) property instead. [Special dates](./calendar.md#special-dates)
+You can also do the same if you want to set one or more special dates in the calendar; the only difference is that you need to use the [`specialDates`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=specialDates) property instead. [Special dates](./calendar.md#special-dates)
 
 ### Forms
 
-The [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) component can also be used seamlessly with the HTML form element. The [`min`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#min), [`max`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#max), and [`required`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#required) properties act as form validators.
+The [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component can also be used seamlessly with the HTML form element. The [`min`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=min), [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=max), and [`required`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=required) properties act as form validators.
 
 ```css
 /* shared styles are loaded from: */
@@ -285,22 +285,22 @@ igc-button {
 
 ### Properties
 
-In addition to the properties we've already covered, the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) component offers a variety of additional properties that allow you to further configure its behavior.
+In addition to the properties we've already covered, the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component offers a variety of additional properties that allow you to further configure its behavior.
 
 |Name|Type|Description|
 |--|--|--|
-| [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#disabled) | boolean | Disables the component. |
-| [`nonEditable`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#nonEditable) | boolean | Disables typing in the input field(s). |
-| [`placeholder`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#placeholder) | string | Placeholder text for the single input mode. |
-| [`placeholderStart`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#placeholderStart) | string | Placeholder text for the start date input (two inputs mode). |
-| [`placeholderEnd`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#placeholderEnd) | string | Placeholder text for the end date input (two inputs mode). |
-| [`outlined`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#outlined) | boolean | Determines whether the input part will have outline appearance in the [Material theme](../themes/overview.md). |
-| [`prompt`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#prompt) | string | The prompt character used for unfilled parts of the input(s) mask. |
-| [`resourceStrings`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#resourceStrings) | IgcDateRangePickerResourceStrings | Resource strings for localization of the date-range picker and the calendar. |
+| [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=disabled) | boolean | Disables the component. |
+| [`nonEditable`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=nonEditable) | boolean | Disables typing in the input field(s). |
+| [`placeholder`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=placeholder) | string | Placeholder text for the single input mode. |
+| [`placeholderStart`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=placeholderStart) | string | Placeholder text for the start date input (two inputs mode). |
+| [`placeholderEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=placeholderEnd) | string | Placeholder text for the end date input (two inputs mode). |
+| [`outlined`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=outlined) | boolean | Determines whether the input part will have outline appearance in the [Material theme](../themes/overview.md). |
+| [`prompt`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=prompt) | string | The prompt character used for unfilled parts of the input(s) mask. |
+| [`resourceStrings`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=resourceStrings) | IgcDateRangePickerResourceStrings | Resource strings for localization of the date-range picker and the calendar. |
 
 ### Slots
 
-You also have the ability to add custom content and modify the appearance of the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) component using the available slots.
+You also have the ability to add custom content and modify the appearance of the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component using the available slots.
 
 The `prefix` and `suffix` slots allow you to insert custom content before or after the input field (only available in single input mode):
 
@@ -338,7 +338,7 @@ The `actions` slot allows you to insert a custom action button with your own log
 </igc-date-range-picker>
 ```
 
-In addition to the slots we've already covered, the following slots are also available in the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) component:
+In addition to the slots we've already covered, the following slots are also available in the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component:
 
 |Name|Description|
 |--|--|
@@ -373,20 +373,20 @@ h3:nth-of-type(1) {
 
 ### Methods
 
-In addition to the properties and slots, the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) also exposes few methods that you can use:
+In addition to the properties and slots, the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) also exposes few methods that you can use:
 
 |Name|Description|
 |--|--|
-| [`show`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#show) | Displays the calendar picker component. |
-| [`hide`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#hide) | Hides the calendar picker component. |
-| [`toggle`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#toggle) | Toggles the calendar picker between the shown and hidden states. |
-| [`clear`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#clear) | Clears the input fields, removing any user input. |
-| [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#select) | Selects a date range value in the picker. |
-| [`setCustomValidity`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html#setCustomValidity) | Sets a custom validation message. If the provided message is not empty, the input will be marked as invalid. |
+| [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=show) | Displays the calendar picker component. |
+| [`hide`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=hide) | Hides the calendar picker component. |
+| [`toggle`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=toggle) | Toggles the calendar picker between the shown and hidden states. |
+| [`clear`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=clear) | Clears the input fields, removing any user input. |
+| [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=select) | Selects a date range value in the picker. |
+| [`setCustomValidity`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent&member=setCustomValidity) | Sets a custom validation message. If the provided message is not empty, the input will be marked as invalid. |
 
 ## Styling
 
-Since the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) component uses the [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html) component, it also inherits the Calendar's CSS parts, allowing you to style both components seamlessly. You can find the full list of exposed Calendar CSS parts here: [Calendar Styling](calendar.md#styling). In addition to the Calendar's CSS parts, the [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) also exposes some unique CSS parts that you can use to customize its appearance:
+Since the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) component uses the [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) component, it also inherits the Calendar's CSS parts, allowing you to style both components seamlessly. You can find the full list of exposed Calendar CSS parts here: [Calendar Styling](calendar.md#styling). In addition to the Calendar's CSS parts, the [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) also exposes some unique CSS parts that you can use to customize its appearance:
 
 |Name|Description|
 |--|--|
@@ -462,11 +462,11 @@ igc-date-range-picker::part(clear-icon-end) {
 
 ## API References
 
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html)
-- [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html)
-- [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html)
-- [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html)
-- [`IgcDialogComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdialogcomponent.html)
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
+- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)
+- [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent)
+- [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent)
+- [`IgcDialogComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDialogComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

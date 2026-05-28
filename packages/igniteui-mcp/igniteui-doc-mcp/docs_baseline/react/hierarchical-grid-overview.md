@@ -361,16 +361,16 @@ function buildUrl(dataState: any) {
 
 ## Hide/Show row expand indicators
 
-If you have a way to provide information whether a row has children prior to its expanding, you could use the [`hasChildrenKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgridbasedirective.html#hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
+If you have a way to provide information whether a row has children prior to its expanding, you could use the [`hasChildrenKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGridBaseDirective&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
 
 ```tsx
 <IgrHierarchicalGrid data={data} primaryKey="ID" hasChildrenKey="hasChildren">
 </IgrHierarchicalGrid>
 ```
 
-Note that setting the [`hasChildrenKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgridbasedirective.html#hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
+Note that setting the [`hasChildrenKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGridBaseDirective&member=hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row.
 
-Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`showExpandAll`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgridbasedirective.html#showExpandAll) property.
+Additionally if you wish to show/hide the header expand/collapse all indicator you can use the [`showExpandAll`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGridBaseDirective&member=showExpandAll) property.
 This UI is disabled by default for performance reasons and it is not recommended to enable it in grids with large data or grids with load on demand.
 
 ## Features
@@ -647,10 +647,10 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html)
-- [`IgrRowIsland`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowisland.html)
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
+- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
+- [`IgrRowIsland`](mcp:get_api_reference?platform=react&component=IgrRowIsland)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 - `Cell`
 
 <!-- TODO: uncomment when all of the topics are ready -->

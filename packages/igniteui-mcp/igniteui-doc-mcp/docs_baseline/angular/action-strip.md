@@ -215,11 +215,11 @@ To initialize and position the Action Strip correctly, it needs to be inside a r
 </div>
 ```
 
-By default, the Action Strip will not be visible, but this can be configured via the [`hidden`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxactionstripcomponent.html#hidden) @Input property.
+By default, the Action Strip will not be visible, but this can be configured via the [`hidden`](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent&member=hidden) @Input property.
 
 ### Menu look and feel
 
-For scenarios where more than three action items will be shown, it is best to use [`IgxActionStripMenuItem`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxactionstripmenuitemdirective.html) directive. Any item within the Action Strip marked with the `*igxActionStripMenuItem` structural directive will be shown in a dropdown, revealed upon toggling the more button i.e. the three dots representing the last action.
+For scenarios where more than three action items will be shown, it is best to use [`IgxActionStripMenuItem`](mcp:get_api_reference?platform=angular&component=IgxActionStripMenuItemDirective) directive. Any item within the Action Strip marked with the `*igxActionStripMenuItem` structural directive will be shown in a dropdown, revealed upon toggling the more button i.e. the three dots representing the last action.
 
 ```html
 <div style="position:relative; width:100px; height:100px;">
@@ -363,8 +363,8 @@ export class ActionStripParagraphMenuComponent {
 ### Reusing the Action Strip
 
 The same Action Strip instance can be used in multiple places in the document as long as the actions need not be visible simultaneously for them.
-The Action Strip can change its parent container, which is possible by changing the [`context`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxactionstripcomponent.html#context).
-The best way to do so is via the [`show`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxactionstripcomponent.html#show) API method and passing the `context` as an argument. The `context` should be an instance of a component and should have an accessible `element` property of the `ElementRef` type.
+The Action Strip can change its parent container, which is possible by changing the [`context`](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent&member=context).
+The best way to do so is via the [`show`](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent&member=show) API method and passing the `context` as an argument. The `context` should be an instance of a component and should have an accessible `element` property of the `ElementRef` type.
 
 > [!NOTE]
 > The `show` API method uses [Angular Renderer2](https://angular.io/api/core/Renderer2) to append the Action Strip to that `element`.
@@ -374,8 +374,8 @@ The best way to do so is via the [`show`](https://www.infragistics.com/products/
 The Action Strip provides additional functionality and UI for the IgxGrid.
 This can be utilized via grid action components and we are providing two default ones:
 
-- [`IgxGridEditingActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgrideditingactionscomponent.html) - includes functionality and UI related to grid editing. It allows you to quickly toggle edit mode for cells or rows, depending on the value of the `rowEditable` option of the grid and whether deleting rows is allowed.
-- [`IgxGridPinningActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridpinningactionscomponent.html) - includes functionality and UI related to grid row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
+- [`IgxGridEditingActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent) - includes functionality and UI related to grid editing. It allows you to quickly toggle edit mode for cells or rows, depending on the value of the `rowEditable` option of the grid and whether deleting rows is allowed.
+- [`IgxGridPinningActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent) - includes functionality and UI related to grid row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
 
 ```html
 <igx-grid [data]="data" [rowEditable]="true" [primaryKey]="'ID'">
@@ -389,7 +389,7 @@ This can be utilized via grid action components and we are providing two default
 ```
 
 > [!NOTE]
-> These components inherit [`IgxGridActionsBaseDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridactionsbasedirective.html) and when creating a custom grid action component, it should also inherit `IgxGridActionsBaseDirective`.
+> These components inherit [`IgxGridActionsBaseDirective`](mcp:get_api_reference?platform=angular&component=IgxGridActionsBaseDirective) and when creating a custom grid action component, it should also inherit `IgxGridActionsBaseDirective`.
 > [!NOTE]
 > When `IgxActionStripComponent` is a child component of the grid, hovering a row will automatically show the UI.
 
@@ -586,7 +586,7 @@ $custom-strip: action-strip-theme(
 
 For more detailed information regarding the Action Strip API, refer to the following links:
 
-- [`IgxActionStripComponent API`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxactionstripcomponent.html)
+- [`IgxActionStripComponent API`](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent)
 
 The following built-in CSS styles helped us achieve this Action Strip layout:
 
@@ -594,10 +594,10 @@ The following built-in CSS styles helped us achieve this Action Strip layout:
 
 Additional components and/or directives that can be used within the Action Strip:
 
-- [`IgxGridActionsBaseDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridactionsbasedirective.html)
-- [`IgxGridPinningActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridpinningactionscomponent.html)
-- [`IgxGridEditingActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgrideditingactionscomponent.html)
-- [`IgxDividerDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdividerdirective.html)
+- [`IgxGridActionsBaseDirective`](mcp:get_api_reference?platform=angular&component=IgxGridActionsBaseDirective)
+- [`IgxGridPinningActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent)
+- [`IgxGridEditingActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent)
+- [`IgxDividerDirective`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
 
 <div class="divider"></div>
 

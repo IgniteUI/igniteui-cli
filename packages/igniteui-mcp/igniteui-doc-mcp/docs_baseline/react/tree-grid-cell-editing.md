@@ -188,15 +188,15 @@ You can exit edit mode and **commit** the changes in one of the following ways:
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 - on key press <kbd>TAB</kbd>;
-- on single click to another cell - when you click on another cell in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), your changes will be submitted.
+- on single click to another cell - when you click on another cell in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
 > [!Note]
-> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html). This is valid for both cell editing and row editing.
+> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). This is valid for both cell editing and row editing.
 
 ### Editing through API
 
-You can also modify the cell value through the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) API but only if primary key is defined:
+You can also modify the cell value through the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) API but only if primary key is defined:
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -470,11 +470,11 @@ root.render(<Sample/>);
 > [!Note]
 > Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
-The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) provides a straightforward API for basic CRUD operations.
+The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) provides a straightforward API for basic CRUD operations.
 
 ### Adding a new record
 
-The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) component exposes the [`addRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#addRow) method which will add the provided data to the data source itself.
+The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) component exposes the [`addRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=addRow) method which will add the provided data to the data source itself.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -492,7 +492,7 @@ public addNewChildRow() {
 
 ### Updating data in the Tree Grid
 
-Updating data in the Tree Grid is achieved through [`updateRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#updateRow) and [`updateCell`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
+Updating data in the Tree Grid is achieved through [`updateRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=updateRow) and [`updateCell`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -515,7 +515,7 @@ row.update(newData);
 
 ### Deleting data from the Tree Grid
 
-Please keep in mind that [`deleteRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#deleteRow) method will remove the specified row only if a [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#primaryKey) is defined.
+Please keep in mind that [`deleteRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=deleteRow) method will remove the specified row only if a [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey) is defined.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -529,7 +529,7 @@ row.delete();
 
 ### Cell Validation on Edit Event
 
-Using the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)'s editing events, we can alter how the user interacts with the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html).
+Using the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)'s editing events, we can alter how the user interacts with the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
 
 In this example, we'll validate a cell based on the data entered in it by binding to the `CellEdit` event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
 
@@ -568,7 +568,7 @@ public webTreeGridCellEdit(args: IgrGridEditEventArgs): void {
 
 <!-- ComponentEnd: TreeGrid -->
 
-The result of the above validation being applied to our [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) can be seen in the below demo:
+The result of the above validation being applied to our [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) can be seen in the below demo:
 
 ```typescript
 export class EmployeesNestedTreeDataItem {
@@ -890,7 +890,7 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
-- [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html)
+- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
+- [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker)
 
 ## Additional Resources

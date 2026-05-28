@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Tree Grid Cell Selection
 
-The Ignite UI for Web Components Cell Selection in Web Components Tree Grid enables rich data select capabilities and offers powerful API in the [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) component. The Web Components Tree Grid supports three selection modes:
+The Ignite UI for Web Components Cell Selection in Web Components Tree Grid enables rich data select capabilities and offers powerful API in the [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) component. The Web Components Tree Grid supports three selection modes:
 
 - Tree Grid Multiple Cell Selection
 - Tree Grid Single Selection
@@ -23,7 +23,7 @@ Let's dive deeper into each of these options.
 
 ## Web Components Tree Grid Cell Selection Example
 
-The sample below demonstrates the three types of [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)'s **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
+The sample below demonstrates the three types of [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)'s **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
 
 ```typescript
 export class EmployeesFlatDataItem {
@@ -148,13 +148,13 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 
 ### Tree Grid Single Selection
 
-When you set the [`cellSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#cellSelection) to **single**, this allows you to have only one selected cell in the grid at a time. Also the mode **mouse drag** will not work and instead of selecting a cell, this will make default text selection.
+When you set the [`cellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=cellSelection) to **single**, this allows you to have only one selected cell in the grid at a time. Also the mode **mouse drag** will not work and instead of selecting a cell, this will make default text selection.
 
-> When single cell is selected [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selected) event is emitted, no matter if the **selection mode** is **single** or **multiple**. In multi-cell selection mode when you select a range of cells `RangeSelected` event is emitted.
+> When single cell is selected [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected) event is emitted, no matter if the **selection mode** is **single** or **multiple**. In multi-cell selection mode when you select a range of cells `RangeSelected` event is emitted.
 
 ### Tree Grid None Selection
 
-If you want to disable cell selection you can just set [`cellSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#cellSelection) to **none**. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the **activation style** is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
+If you want to disable cell selection you can just set [`cellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=cellSelection) to **none**. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the **activation style** is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
 
 ## Keyboard Navigation Interactions
 
@@ -183,7 +183,7 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 ### Select range
 
-[`selectRange`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#selectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
+[`selectRange`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=selectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
 
 ```ts
 const range = { rowStart: 2, rowEnd: 2, columnStart: 1, columnEnd: 1 };
@@ -194,7 +194,7 @@ this.grid.selectRange(range);
 
 ### Clear cell selection
 
-[`clearCellSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#clearCellSelection) will clear the current cell selection.
+[`clearCellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=clearCellSelection) will clear the current cell selection.
 
 ```ts
 this.grid.clearCellSelection();
@@ -202,7 +202,7 @@ this.grid.clearCellSelection();
 
 ### Get Selected Data
 
-[`getSelectedData`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
+[`getSelectedData`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
 
 - If three different single cells are selected:
 
@@ -272,7 +272,7 @@ The multi-cell selection is index based (DOM elements selection).
 - `Filtering` - When filtering is performed selection will not be cleared. If filtering is cleared it will return - the initially selected cells.
 - `Resizing` - On column resizing selected cells will not be cleared.
 - `Hiding` - It will not clear the selected cells. If column is hidden, the cells from the next visible column will be selected.
-- [`pinning`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#pinning) - Selected cell will not be cleared. Same as hiding
+- [`pinning`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=pinning) - Selected cell will not be cleared. Same as hiding
 - `GroupBy` - On column grouping selected cells will not be cleared.
 
 <!-- ComponentEnd: Grid, TreeGrid -->
@@ -349,7 +349,7 @@ export class OrdersTreeData extends Array<OrdersTreeDataItem> {
 
 ## API References
 
-- [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)
+- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
 
 ## Additional Resources
 

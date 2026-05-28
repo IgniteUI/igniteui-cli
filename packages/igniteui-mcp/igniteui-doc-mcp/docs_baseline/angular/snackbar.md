@@ -103,7 +103,7 @@ Now that you have the Ignite UI for Angular Snackbar module or component importe
 
 ### Show Snackbar
 
-In order to display the snackbar component, use its [`open()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsnackbarcomponent.html#open) method and call it on a button click.
+In order to display the snackbar component, use its [`open()`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=open) method and call it on a button click.
 
 ```html
 <!--sample.component.html-->
@@ -115,7 +115,7 @@ In order to display the snackbar component, use its [`open()`](https://www.infra
 ```
 
 If the sample is configured properly, you should see the demo sample. A snackbar appears displaying a text message when the button is clicked.
-As you can see in the code snippet above, one way to set the massage displayed in the snackbar is to use the content projection. But if you need to switch the value programmatically based on some custom logic you can just pass the value as a parameter to the [`open()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsnackbarcomponent.html#open) method.
+As you can see in the code snippet above, one way to set the massage displayed in the snackbar is to use the content projection. But if you need to switch the value programmatically based on some custom logic you can just pass the value as a parameter to the [`open()`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=open) method.
 
 ```html
 <!--sample.component.html-->
@@ -129,7 +129,7 @@ As you can see in the code snippet above, one way to set the massage displayed i
 
 ### Hide/Auto Hide
 
-Once opened, the snackbar disappears after a period specified by the [`displayTime`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsnackbarcomponent.html#displayTime) input which is set initially to 4000 milliseconds. This behavior is enabled by default but you can change it by setting [`autoHide`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsnackbarcomponent.html#autoHide) to **false**. In this way, the snackbar will remain visible. Using the snackbar [`close()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsnackbarcomponent.html#close) method, you can close the component in the code.
+Once opened, the snackbar disappears after a period specified by the [`displayTime`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=displayTime) input which is set initially to 4000 milliseconds. This behavior is enabled by default but you can change it by setting [`autoHide`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=autoHide) to **false**. In this way, the snackbar will remain visible. Using the snackbar [`close()`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=close) method, you can close the component in the code.
 
 ```html
 <!--sample.component.html-->
@@ -148,7 +148,7 @@ public close(element) {
 }
 ```
 
-If the sample is configured properly, the first snackbar appears when the button is clicked, showing both the _message_ and _action button_. The auto-hide feature is disabled and the snackbar disappears on 'CLOSE' button click. Another snackbar passes a different message through the [`open()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsnackbarcomponent.html#open) method and hides it when the _display time_ expires. The third component passes a message as a param to the [`open()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsnackbarcomponent.html#open) method and adds an icon using content projection.
+If the sample is configured properly, the first snackbar appears when the button is clicked, showing both the _message_ and _action button_. The auto-hide feature is disabled and the snackbar disappears on 'CLOSE' button click. Another snackbar passes a different message through the [`open()`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=open) method and hides it when the _display time_ expires. The third component passes a message as a param to the [`open()`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=open) method and adds an icon using content projection.
 
 ```typescript
 import { Component } from '@angular/core';
@@ -212,7 +212,7 @@ button {
 
 ### Display Time
 
-Use [`displayTime`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsnackbarcomponent.html#displayTime) and set it to an interval in milliseconds to configure how long the snackbar component is visible. By default, as we said, it's initially set to 4000 milliseconds.
+Use [`displayTime`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=displayTime) and set it to an interval in milliseconds to configure how long the snackbar component is visible. By default, as we said, it's initially set to 4000 milliseconds.
 
 ### Customize Snackbar
 
@@ -485,7 +485,7 @@ export class SnackbarSample4Component implements OnInit {
 
 ### Positioning
 
-Use [`positionSettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsnackbarcomponent.html#positionSettings) property to configure where the snackbar appears. By default, it is displayed at the bottom of the page. In the sample below, we set notification to appear at the top position.
+Use [`positionSettings`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=positionSettings) property to configure where the snackbar appears. By default, it is displayed at the bottom of the page. In the sample below, we set notification to appear at the top position.
 
 ```html
 <!--sample.component.html-->
@@ -649,9 +649,9 @@ At the end your snackbar should look like this:
 
 ## API References
 
-In this article we learned how to use and configure the [`IgxSnackbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsnackbarcomponent.html). For more details in regards its API, take a look at the links below:
+In this article we learned how to use and configure the [`IgxSnackbarComponent`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent). For more details in regards its API, take a look at the links below:
 
-- [`IgxSnackbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsnackbarcomponent.html)
+- [`IgxSnackbarComponent`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent)
 
 Styles:
 

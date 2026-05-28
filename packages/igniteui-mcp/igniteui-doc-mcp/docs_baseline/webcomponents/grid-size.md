@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Grid Size
 
-The Ignite UI for Web Components Size feature in Web Components Grid allows users to control the spacing and layout of data within the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content. They can choose from three size options:
+The Ignite UI for Web Components Size feature in Web Components Grid allows users to control the spacing and layout of data within the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content. They can choose from three size options:
 
 - `--ig-size-large`
 - `--ig-size-medium`
@@ -79,7 +79,7 @@ export class InvoicesData extends Array<InvoicesDataItem> {
 
 ## Usage
 
-As you can see in the demo above, the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) provides three size options:  **small**, **medium** and **large**. The code snippet below shows how to set `--ig-size` either inline or part of a CSS class:
+As you can see in the demo above, the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides three size options:  **small**, **medium** and **large**. The code snippet below shows how to set `--ig-size` either inline or part of a CSS class:
 
 ```css
 .gridSize {
@@ -92,11 +92,11 @@ As you can see in the demo above, the [`IgcGridComponent`](https://www.infragist
 </igc-grid>
 ```
 
-And now let's see in details how each option reflects on the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) component. When you switch between different size options the height of each [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) element and the corresponding paddings will be changed. Also if you want to apply custom column [`width`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#width), please consider the fact that it must be bigger than the sum of left and right padding:
+And now let's see in details how each option reflects on the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component. When you switch between different size options the height of each [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) element and the corresponding paddings will be changed. Also if you want to apply custom column [`width`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=width), please consider the fact that it must be bigger than the sum of left and right padding:
 
-- **large** - this is the default [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`width`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#width) is `80px`;
-- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`width`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#width) is `64px`;
-- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`width`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#width) is `56px`;
+- **large** - this is the default [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`width`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=width) is `80px`;
+- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`width`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=width) is `64px`;
+- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`width`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=width) is `56px`;
 
 > [!Note]
 > Please keep in mind that currently you **can not** override any of the sizes.
@@ -212,14 +212,14 @@ public webGridSetGridSize(sender: any, args: IgcPropertyEditorPropertyDescriptio
 }
 ```
 
-Another option that [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) provides for you, in order to be able to change the height of the rows in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), is the property [`rowHeight`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#rowHeight). So let's see in action how this property affects the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) layout along with the `--ig-size`.
+Another option that [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) provides for you, in order to be able to change the height of the rows in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), is the property [`rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowHeight). So let's see in action how this property affects the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) layout along with the `--ig-size`.
 
 Please keep in mind the following:
 
-- `--ig-size` CSS variable will have no impact on row height **if there is [`rowHeight`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#rowHeight) specified**.
+- `--ig-size` CSS variable will have no impact on row height **if there is [`rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowHeight) specified**.
 - `--ig-size` will **affect all of the rest elements in the Grid**, as it has been described above.
 
-We can now extend our sample and add [`rowHeight`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#rowHeight) property to the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html):
+We can now extend our sample and add [`rowHeight`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowHeight) property to the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent):
 
 ```html
 <igc-grid id="grid" class="gridSize" row-height="80px" width="100%" height="550px" allow-filtering="true">
@@ -228,8 +228,8 @@ We can now extend our sample and add [`rowHeight`](https://www.infragistics.com/
 
 ## API References
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 
 <!-- ComponentStart: Grid -->
 

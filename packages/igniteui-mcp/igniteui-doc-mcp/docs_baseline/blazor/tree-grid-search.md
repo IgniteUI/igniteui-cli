@@ -12,11 +12,11 @@ _premium: true
 
 # Blazor Tree Grid Search Filter
 
-The Ignite UI for Blazor Search Filter feature in Blazor Tree Grid enables the process of finding values in the collection of data. We make it easier to set up this functionality and it can be implemented with a search input box, buttons, keyboard navigation and other useful features for an even better user experience. While browsers natively provide content search functionality, most of the time the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) virtualizes its columns and rows that are out of view. In these cases, the native browser search is unable to search data in the virtualized cells, since they are not part of the DOM. We have extended the Blazor Material table-based grid with a **search API** that allows you to search through the **virtualized content** of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html).
+The Ignite UI for Blazor Search Filter feature in Blazor Tree Grid enables the process of finding values in the collection of data. We make it easier to set up this functionality and it can be implemented with a search input box, buttons, keyboard navigation and other useful features for an even better user experience. While browsers natively provide content search functionality, most of the time the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) virtualizes its columns and rows that are out of view. In these cases, the native browser search is unable to search data in the virtualized cells, since they are not part of the DOM. We have extended the Blazor Material table-based grid with a **search API** that allows you to search through the **virtualized content** of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid).
 
 ## Blazor Search Example
 
-The following example represents [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) with search input box that allows searching in all columns and rows, as well as specific filtering options for each column.
+The following example represents [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) with search input box that allows searching in all columns and rows, as well as specific filtering options for each column.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -191,7 +191,7 @@ Let's start by creating our grid and binding it to our data. We will also add so
 
 <!-- ComponentEnd: TreeGrid -->
 
-Great, and now let's prepare for the search API of our [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)! We can create a few properties, which can be used for storing the currently searched text and whether the search is case sensitive and/or by an exact match.
+Great, and now let's prepare for the search API of our [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)! We can create a few properties, which can be used for storing the currently searched text and whether the search is case sensitive and/or by an exact match.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -207,9 +207,9 @@ public bool exactMatch = false;
 
 ### Blazor Search Box Input
 
-Now let's create our search input! By binding our `SearchText` to the `Value` property to our newly created input and subscribe to the `ValueChanging` event, we can detect every single `SearchText` modification by the user. This will allow us to use the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)'s [`FindNext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FindNext) and [`FindPrev`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FindPrev) methods to highlight all the occurrences of the `SearchText` and scroll to the next/previous one (depending on which method we have invoked).
+Now let's create our search input! By binding our `SearchText` to the `Value` property to our newly created input and subscribe to the `ValueChanging` event, we can detect every single `SearchText` modification by the user. This will allow us to use the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)'s [`FindNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindNext) and [`FindPrev`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindPrev) methods to highlight all the occurrences of the `SearchText` and scroll to the next/previous one (depending on which method we have invoked).
 
-Both the [`FindNext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FindNext) and the [`FindPrev`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FindPrev) methods have three arguments:
+Both the [`FindNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindNext) and the [`FindPrev`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindPrev) methods have three arguments:
 
 - `Text`: **string** (the text we are searching for)
 - (optional) `CaseSensitive`: **boolean** (should the search be case sensitive or not, default value is false)
@@ -217,7 +217,7 @@ Both the [`FindNext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.
 
 When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '_software_' and '_Software_' are an exact match with a disregard for the case sensitivity.
 
-The methods from above return a **number** value (the number of times the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) contains the given string).
+The methods from above return a **number** value (the number of times the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) contains the given string).
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -234,7 +234,7 @@ public void NextSearch()
 
 ### Add Search Buttons
 
-In order to freely search and navigate among our search results, let's create a couple of buttons by invoking the [`FindNext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FindNext) and the [`FindPrev`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FindPrev) methods inside the buttons' respective click event handlers.
+In order to freely search and navigate among our search results, let's create a couple of buttons by invoking the [`FindNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindNext) and the [`FindPrev`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindPrev) methods inside the buttons' respective click event handlers.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -263,7 +263,7 @@ In order to freely search and navigate among our search results, let's create a 
 
 ### Add Keyboard Search
 
-We can also allow the users to navigate the results by using the keyboard's arrow keys and the <kbd>ENTER</kbd> key. In order to achieve this, we can handle the **keydown** event of our search input by preventing the default caret movement of the input with the `PreventDefault` method and invoke the [`FindNext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FindNext)/[`FindPrev`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FindPrev) methods depending on which key the user has pressed.
+We can also allow the users to navigate the results by using the keyboard's arrow keys and the <kbd>ENTER</kbd> key. In order to achieve this, we can handle the **keydown** event of our search input by preventing the default caret movement of the input with the `PreventDefault` method and invoke the [`FindNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindNext)/[`FindPrev`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindPrev) methods depending on which key the user has pressed.
 
 ```razor
 <IgbInput ValueChanging="OnValueChanging" Value="@searchText" @onkeydown="OnSearchKeyDown" />
@@ -319,13 +319,13 @@ Now let's allow the user to choose whether the search should be case sensitive a
 
 ### Persistence
 
-What if we would like to filter and sort our [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) or even to add and remove records? After such operations, the highlights of our current search automatically update and persist over any text that matches the `SearchText`! Furthermore, the search will work with paging and will persist the highlights through changes of the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)'s `PerPage` property.
+What if we would like to filter and sort our [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) or even to add and remove records? After such operations, the highlights of our current search automatically update and persist over any text that matches the `SearchText`! Furthermore, the search will work with paging and will persist the highlights through changes of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)'s `PerPage` property.
 
 ### Adding icons
 
 By using some of our other components, we can create an enriched user interface and improve the overall design of our entire search bar! We can have a nice search or delete icon on the left of the search input, a couple of chips for our search options and some material design icons combined with nice ripple styled buttons for our navigation on the right.
 
-To do this, let's go and grab the [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html), [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html), [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html) and the [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html) modules.
+To do this, let's go and grab the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput), [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon), [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton) and the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip) modules.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -435,7 +435,7 @@ On the right in our input group, let's create three separate containers with the
 }
 ```
 
-- For the search navigation buttons, we have added two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the [`FindNext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FindNext)/[`FindPrev`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FindPrev) methods.
+- For the search navigation buttons, we have added two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the [`FindNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindNext)/[`FindPrev`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindPrev) methods.
 
 ```razor
 <div class="searchButtons" slot="suffix">
@@ -463,31 +463,31 @@ On the right in our input group, let's create three separate containers with the
 
 |Limitation|Description|
 |--- |--- |
-|Searching in cells with a template|The search functionality highlights work only for the default cell templates. If you have a column with custom cell template, the highlights will not work so you should either use alternative approaches, such as a column formatter, or set the [`Searchable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Searchable) property on the column to false.|
+|Searching in cells with a template|The search functionality highlights work only for the default cell templates. If you have a column with custom cell template, the highlights will not work so you should either use alternative approaches, such as a column formatter, or set the [`Searchable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Searchable) property on the column to false.|
 |Remote Virtualization| The search will not work properly when using remote virtualization|
 |Cells with cut off text| When the text in the cell is too large to fit and the text we are looking for is cut off by the ellipsis, we will still scroll to the cell and include it in the match count, but nothing will be highlighted |
 
 ## API References
 
-In this article we implemented our own search bar for the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) with some additional functionality when it comes to navigating between the search results. We also used some additional Ignite UI for Blazor components like icons, chips and inputs. The search API is listed below.
+In this article we implemented our own search bar for the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) with some additional functionality when it comes to navigating between the search results. We also used some additional Ignite UI for Blazor components like icons, chips and inputs. The search API is listed below.
 
-[`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) methods:
+[`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) methods:
 
-- [`FindNext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FindNext)
-- [`FindPrev`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FindPrev)
-- [`ClearSearch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_ClearSearch)
-- [`RefreshSearch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_RefreshSearch)
+- [`FindNext`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindNext)
+- [`FindPrev`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FindPrev)
+- [`ClearSearch`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=ClearSearch)
+- [`RefreshSearch`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RefreshSearch)
 
-[`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) properties:
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) properties:
 
-- [`Searchable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Searchable)
+- [`Searchable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Searchable)
 
 Additional components with relative APIs that were used:
 
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
-- [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html)
-- [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html)
-- [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+- [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip)
+- [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
+- [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton)
 
 ## Additional Resources
 

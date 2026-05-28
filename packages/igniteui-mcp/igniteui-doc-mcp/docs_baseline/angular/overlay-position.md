@@ -72,7 +72,7 @@ There are five positioning strategies:
 
 ### Global
 
-Positions the content, based on the directions passed in through [`positionSettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionsettings.html). These are Left/Center/Right for [`horizontalDirection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionsettings.html#horizontalDirection) and Top/Middle/Bottom for [`verticalDirection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionsettings.html#verticalDirection). Defaults are:
+Positions the content, based on the directions passed in through [`positionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings). These are Left/Center/Right for [`horizontalDirection`](mcp:get_api_reference?platform=angular&component=PositionSettings&member=horizontalDirection) and Top/Middle/Bottom for [`verticalDirection`](mcp:get_api_reference?platform=angular&component=PositionSettings&member=verticalDirection). Defaults are:
 
 | horizontalDirection        | verticalDirection        |
 | :------------------------- | :----------------------- |
@@ -92,7 +92,7 @@ Positions the content as `GlobalPositionStrategy`. Instead of position related t
 
 ### Connected
 
-Positions the element based on the start point from [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) and directions passed in through [`positionSettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionsettings.html). It is possible to either pass a start point (type [`Point`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/point.html)) or an `HTMLElement` as a positioning base. Defaults are:
+Positions the element based on the start point from [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) and directions passed in through [`positionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings). It is possible to either pass a start point (type [`Point`](mcp:get_api_reference?platform=angular&component=Point)) or an `HTMLElement` as a positioning base. Defaults are:
 
 | target          | horizontalDirection       |  verticalDirection       | horizontalStartPoint     | verticalStartPoint       |
 | :-------------- | :------------------------ | :----------------------- | :----------------------- | :----------------------- |
@@ -112,7 +112,7 @@ Positions the element the same way as the **Connected** positioning strategy. It
 
 ### Elastic
 
-Positions the element like the **Connected** positioning strategy and re-sizes the element to fit inside the view port (re-calculating width and/or height) in case the element is partially out of view. [`minSize`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionsettings.html#minSize) can be passed in [`positionSettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionSettings.html) to prevent resizing if it would put the element's dimensions below a certain threshold. Defaults are:
+Positions the element like the **Connected** positioning strategy and re-sizes the element to fit inside the view port (re-calculating width and/or height) in case the element is partially out of view. [`minSize`](mcp:get_api_reference?platform=angular&component=PositionSettings&member=minSize) can be passed in [`positionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings) to prevent resizing if it would put the element's dimensions below a certain threshold. Defaults are:
 
 | target          | horizontalDirection       |  verticalDirection       | horizontalStartPoint     | verticalStartPoint       | minSize                 |
 | :-------------- | :------------------------ | :----------------------- | :----------------------- | :----------------------- | :---------------------- |
@@ -145,7 +145,7 @@ import {
 
 ```
 
-Then specify the positioning strategy to be used by the overlay. The position strategy is passed in as a property in the [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) parameter when the [`overlay.attach()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#attach) method is called. In the example below we are changing the default `GlobalPositionStrategy` with `ConnectedPositionStrategy`:
+Then specify the positioning strategy to be used by the overlay. The position strategy is passed in as a property in the [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) parameter when the [`overlay.attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method is called. In the example below we are changing the default `GlobalPositionStrategy` with `ConnectedPositionStrategy`:
 
 ```typescript
 // Initialize and use overlay settings
@@ -323,7 +323,7 @@ export class OverlayPositionSample2Component implements OnDestroy {
 
 ### Changing Strategies
 
-You can also change the positioning strategy, used by the overlay, by overriding the [`positionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ipositionstrategy.html) property of the [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) object that is passed to the overlay:
+You can also change the positioning strategy, used by the overlay, by overriding the [`positionStrategy`](mcp:get_api_reference?platform=angular&component=IPositionStrategy) property of the [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) object that is passed to the overlay:
 
 ```typescript
 const myPositionStrategy = new AutoPositionStrategy();
@@ -432,12 +432,12 @@ overlay.setOffset(this._overlayId, deltaX, deltaY, OffsetMode.Set);
 
 ## API References
 
-- [IPositionStrategy](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ipositionstrategy.html)
+- [IPositionStrategy](mcp:get_api_reference?platform=angular&component=IPositionStrategy)
 
 ## Additional Resources
 
 - [Overlay Main Topic](overlay.md)
 - [Scroll Strategies](overlay-scroll.md)
 - [Styling Topic](overlay-styling.md)
-- [IgxOverlayService](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html)
+- [IgxOverlayService](mcp:get_api_reference?platform=angular&component=IgxOverlayService)
 - [IgxOverlay Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)

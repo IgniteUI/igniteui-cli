@@ -28,7 +28,7 @@ First, you need to install the Ignite UI for Web Components npm package by runni
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html), you need to register it as follows:
+Before using the [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcAvatarComponent } from 'igniteui-webcomponents';
@@ -38,7 +38,7 @@ defineComponents(IgcAvatarComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html) is as simple as:
+The [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent) is as simple as:
 
 ```html
 <igc-avatar></igc-avatar>
@@ -54,7 +54,7 @@ The avatar has several attributes that allow rendering different content based o
 
 ### Initials
 
-If the [`initials`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html#initials) attribute is set all children elements of the avatar will be ignored and the string passed to this attribute will be displayed.
+If the [`initials`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent&member=initials) attribute is set all children elements of the avatar will be ignored and the string passed to this attribute will be displayed.
 
 ```html
 <!-- Initials("AZ") will be displayed instead of the icon. -->
@@ -71,7 +71,7 @@ If the [`initials`](https://www.infragistics.com/products/ignite-ui-web-componen
 
 ### Image
 
-The avatar can also display an image when the [`src`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html#src) attribute is assigned a valid URL to a static asset. In that case the [`initials`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html#initials) value will be ignored and children elements will not be rendered.
+The avatar can also display an image when the [`src`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent&member=src) attribute is assigned a valid URL to a static asset. In that case the [`initials`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent&member=initials) value will be ignored and children elements will not be rendered.
 
 ```html
 <igc-avatar
@@ -131,7 +131,7 @@ igc-avatar {
 
 ### Styling
 
-The [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html) component exposes several CSS parts, giving you full control over its style:
+The [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent) component exposes several CSS parts, giving you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -166,7 +166,7 @@ igc-avatar::part(base) {
 
 ## API References
 
-- [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html)
+- [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

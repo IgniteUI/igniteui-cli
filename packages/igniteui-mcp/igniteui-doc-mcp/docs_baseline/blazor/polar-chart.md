@@ -15,7 +15,7 @@ The Ignite UI for Blazor Polar Chart uses the polar coordinate system (angle, ra
 
 ## Blazor Polar Area Chart
 
-The Polar Area Chart renders using a collection of polygons connecting data points and it uses the same concepts of data plotting as the [Category Area Chart](area-chart.md#blazor-area-chart-example) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbPolarAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarAreaSeries.html), as shown in the example below:
+The Polar Area Chart renders using a collection of polygons connecting data points and it uses the same concepts of data plotting as the [Category Area Chart](area-chart.md#blazor-area-chart-example) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbPolarAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarAreaSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -168,7 +168,7 @@ public class BoatSailingData
 
 ## Blazor Polar Spline Area Chart
 
-The Polar Spline Area Chart renders also as a collection of polygons but they have curved splines connecting data points instead of straight lines like [Polar Area Chart](polar-chart.md#blazor-polar-area-chart) does. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbPolarAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarAreaSeries.html), as shown in the example below:
+The Polar Spline Area Chart renders also as a collection of polygons but they have curved splines connecting data points instead of straight lines like [Polar Area Chart](polar-chart.md#blazor-polar-area-chart) does. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbPolarAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarAreaSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -304,7 +304,7 @@ public class BoatSailingData
 
 ## Blazor Polar Marker Chart
 
-The Polar Marker Chart renders using a collection of markers representing data points in polar (angle/radius) coordinate system. This chart uses the same concepts of data plotting as the [Scatter Marker Chart](scatter-chart.md#blazor-scatter-marker-chart) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbPolarScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarScatterSeries.html), as shown in the example below:
+The Polar Marker Chart renders using a collection of markers representing data points in polar (angle/radius) coordinate system. This chart uses the same concepts of data plotting as the [Scatter Marker Chart](scatter-chart.md#blazor-scatter-marker-chart) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbPolarScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarScatterSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -436,7 +436,7 @@ public class BoatSailingData
 
 ## Blazor Polar Line Chart
 
-The Polar Line Chart renders using a collection of straight lines connecting data points in polar (angle/radius) coordinate system. This chart uses the same concepts of data plotting as the [Scatter Line Chart](scatter-chart.md#blazor-scatter-line-chart) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbPolarLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarLineSeries.html), as shown in the example below:
+The Polar Line Chart renders using a collection of straight lines connecting data points in polar (angle/radius) coordinate system. This chart uses the same concepts of data plotting as the [Scatter Line Chart](scatter-chart.md#blazor-scatter-line-chart) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbPolarLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarLineSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -587,7 +587,7 @@ public class BoatSailingData
 
 ## Blazor Polar Spline Chart
 
-The Polar Spline Chart renders using a collection of curved splines connecting data points in polar (angle/radius) coordinate system. This Chart uses the same concepts of data plotting as the [Scatter Spline Chart](scatter-chart.md#blazor-scatter-spline-chart) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbPolarSplineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarSplineSeries.html), as shown in the example below:
+The Polar Spline Chart renders using a collection of curved splines connecting data points in polar (angle/radius) coordinate system. This Chart uses the same concepts of data plotting as the [Scatter Spline Chart](scatter-chart.md#blazor-scatter-spline-chart) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbPolarSplineSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarSplineSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -721,7 +721,7 @@ public class BoatSailingData
 
 ## Blazor Polar Chart Styling
 
-Once our polar chart is created, we may want to make some further styling customizations such as a change of the line colors, marker types, or outline colors of those markers. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbPolarAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarAreaSeries.html), as shown in the example below:
+Once our polar chart is created, we may want to make some further styling customizations such as a change of the line colors, marker types, or outline colors of those markers. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbPolarAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarAreaSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -886,14 +886,14 @@ You can find more information about related chart types in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
-- [`IgbPolarAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarAreaSeries.html)
-- [`IgbPolarLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarLineSeries.html)
-- [`IgbPolarSplineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarSplineSeries.html)
-- [`IgbPolarSplineAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarSplineAreaSeries.html)
-- [`IgbPolarScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarScatterSeries.html)
-- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarAreaSeries.html#IgniteUI_Blazor_Controls_IgbPolarAreaSeries_DataSource)
-- [`AngleMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarAreaSeries.html#IgniteUI_Blazor_Controls_IgbPolarAreaSeries_AngleMemberPath)
-- [`RadiusMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPolarAreaSeries.html#IgniteUI_Blazor_Controls_IgbPolarAreaSeries_RadiusMemberPath)
-- [`IgbNumericAngleAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericAngleAxis.html)
-- [`IgbNumericRadiusAxis`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNumericRadiusAxis.html)
+- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
+- [`IgbPolarAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarAreaSeries)
+- [`IgbPolarLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarLineSeries)
+- [`IgbPolarSplineSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarSplineSeries)
+- [`IgbPolarSplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarSplineAreaSeries)
+- [`IgbPolarScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarScatterSeries)
+- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbPolarAreaSeries&member=DataSource)
+- [`AngleMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbPolarAreaSeries&member=AngleMemberPath)
+- [`RadiusMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbPolarAreaSeries&member=RadiusMemberPath)
+- [`IgbNumericAngleAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericAngleAxis)
+- [`IgbNumericRadiusAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericRadiusAxis)

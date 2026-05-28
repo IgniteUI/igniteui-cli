@@ -31,9 +31,9 @@ The Ignite UI for Blazor Switch component is a binary choice selection component
 
 ## Usage
 
-At its core, the [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html) component allows for toggling between on/off states. The default styling is done according to the selection controls specification in the Material Design guidelines.
+At its core, the [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch) component allows for toggling between on/off states. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
-Before using the [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html), you need to register it as follows:
+Before using the [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -41,20 +41,20 @@ Before using the [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/
 builder.Services.AddIgniteUIBlazor(typeof(IgbSwitchModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-The simplest way to start using the [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html) is as follows:
+The simplest way to start using the [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch) is as follows:
 
 ```razor
 <IgbSwitch />
 ```
 
 > [!WARNING]
-> The [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
+> The [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples
 
@@ -66,7 +66,7 @@ To provide a meaningful label for the switch, simply place some text between the
 <IgbSwitch>Label</IgbSwitch>
 ```
 
-You can specify if the label should be positioned before or after the switch toggle by setting the [`LabelPosition`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html#IgniteUI_Blazor_Controls_IgbSwitch_LabelPosition) attribute of the switch. Allowed values are `before` and `after`(default):
+You can specify if the label should be positioned before or after the switch toggle by setting the [`LabelPosition`](mcp:get_api_reference?platform=blazor&component=IgbSwitch&member=LabelPosition) attribute of the switch. Allowed values are `before` and `after`(default):
 
 ```razor
 <IgbSwitch LabelPosition="@ToggleLabelPosition.Before">Label</IgbSwitch>
@@ -165,7 +165,7 @@ You can use the `name` and `value` attributes when using the switch with `Form`.
 
 ## Styling
 
-The [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html) component exposes several CSS parts to give you full control over its styling:
+The [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch) component exposes several CSS parts to give you full control over its styling:
 
 |Name|Description|
 |--|--|
@@ -201,8 +201,8 @@ The [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blaz
 
 ## API References
 
-- [`LabelPosition`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html#IgniteUI_Blazor_Controls_IgbSwitch_LabelPosition)
-- [`IgbSwitch`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSwitch.html)
+- [`LabelPosition`](mcp:get_api_reference?platform=blazor&component=IgbSwitch&member=LabelPosition)
+- [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

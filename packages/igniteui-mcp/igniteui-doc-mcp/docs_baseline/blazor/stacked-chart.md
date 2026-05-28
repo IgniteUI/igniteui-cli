@@ -15,7 +15,7 @@ The Ignite UI for Blazor Stacked Chart belongs to a special group of charts that
 
 ## Blazor Stacked Chart Types
 
-The following example, you can use the drop-down to switch between all of the different types stacked charts available in the Blazor [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control.
+The following example, you can use the drop-down to switch between all of the different types stacked charts available in the Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -233,7 +233,7 @@ The following sections demonstrate individual types of Ignite UI for Blazor Stac
 
 Stacked Area Charts are rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as [Area Chart](area-chart.md), with the only difference being that visually, the shaded areas are stacked on top of each other.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStackedAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedAreaSeries.html), as shown in the example below.
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStackedAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedAreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -415,7 +415,7 @@ public class ContinentsBirthRate
 
 Sometimes the series represent part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStacked100AreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100AreaSeries.html), as shown in the example below.
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStacked100AreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100AreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -596,7 +596,7 @@ A Stacked Bar Chart, or Stacked Bar Graph, is a type of category chart that is u
 
 The Stacked Bar Chart differs from the [Bar Chart](bar-chart.md) in that the data points representing your data are stacked next to each other horizontally to visually group your data. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the X-Axis, and all negative values are grouped on the negative side of the X-Axis.
 
-In this example of an Stacked Bar Chart, we have a Numeric X Axis (bottom labels of the chart) and a Category Y Axis (left labels of the chart). You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStackedBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedBarSeries.html), as shown in the example below.
+In this example of an Stacked Bar Chart, we have a Numeric X Axis (bottom labels of the chart) and a Category Y Axis (left labels of the chart). You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -765,7 +765,7 @@ public class EnergyRenewableConsumption
 
 The Blazor Stacked 100% Bar Chart is identical to the Blazor stacked bar chart in all aspects except in their treatment of the values on X-Axis (bottom labels of the chart). Instead of presenting a direct representation of the data, the stacked 100% bar chart presents the data in terms of percent of the sum of all values in a data point.
 
-In this example of a Stacked 100% Bar Chart, the Energy Product values are shown as a 100% value of all of the data in the fragments of the horizontal bars. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStacked100BarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100BarSeries.html), as shown in the example below.
+In this example of a Stacked 100% Bar Chart, the Energy Product values are shown as a 100% value of all of the data in the fragments of the horizontal bars. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -933,7 +933,7 @@ public class EnergyRenewableConsumption
 
 The Stacked Column Chart is identical to the [Column Chart](column-chart.md) in all aspects, except the series are represented on top of one another rather than to the side. The Stacked Column Chart is used to show comparing results between series. Each stacked fragment in the collection represents one visual element in each stack. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the Y-Axis, and all negative values are grouped on the negative side of the Y-Axis. The Stacked Column Chart uses the same concepts of data plotting as the Stacked Bar Chart but data points are stacked along vertical line (Y-Axis) rather than along horizontal line (X-Axis).
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStackedColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedColumnSeries.html), as shown in the example below.
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStackedColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedColumnSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1113,7 +1113,7 @@ public class ContinentsBirthRate
 
 The Stacked 100% Column Chart is identical to the Stacked Column Chart in all aspects except in their treatment of the values on Y-Axis. Instead of presenting a direct representation of the data, the Stacked 100% Column Chart presents the data in terms of percent of the sum of all values in a data point.
 
-The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStacked100ColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100ColumnSeries.html), as shown in the example below.
+The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStacked100ColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100ColumnSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1267,7 +1267,7 @@ public class OnlineTrafficByDevice
 
 ## Blazor Stacked Line Chart
 
-The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStackedLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedLineSeries.html), as shown in the example below:
+The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStackedLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedLineSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1449,7 +1449,7 @@ public class ContinentsBirthRate
 
 The Stacked 100% Line Chart is identical to the Stacked Line Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Line Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStacked100LineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100LineSeries.html), as shown in the example below:
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStacked100LineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100LineSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1627,7 +1627,7 @@ public class ContinentsBirthRate
 
 Stacked Spline Area Charts are rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Charts follow all of the same requirements as [Area Chart](area-chart.md), with the only difference being that the visually shaded areas are stacked on top of each other.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStackedSplineAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedSplineAreaSeries.html), as shown in the example below.
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStackedSplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedSplineAreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1809,7 +1809,7 @@ public class ContinentsBirthRate
 
 The Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStacked100SplineAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100SplineAreaSeries.html), as shown in the example below.
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStacked100SplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100SplineAreaSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1985,7 +1985,7 @@ public class ContinentsBirthRate
 
 ## Blazor Stacked Spline Chart
 
-The Stacked Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStackedSplineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedSplineSeries.html), as shown in the example below.
+The Stacked Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStackedSplineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedSplineSeries), as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -2167,7 +2167,7 @@ public class ContinentsBirthRate
 
 The Stacked 100% Spline Chart is identical to the Stacked Spline Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStacked100SplineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100SplineSeries.html).
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStacked100SplineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100SplineSeries).
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -2356,15 +2356,15 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type               | Control Name   | API Members |
 | -------------------------|----------------|-------------------------------- |
-| Stacked Area             | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbStackedAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedAreaSeries.html) |
-| Stacked Bar              | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbStackedBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedBarSeries.html) |
-| Stacked Column           | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbStackedColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedColumnSeries.html) |
-| Stacked Line             | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbStackedLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedLineSeries.html) |
-| Stacked Spline           | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbStackedSplineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedSplineSeries.html) |
-| Stacked Spline Area      | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbStackedSplineAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedSplineAreaSeries.html) |
-| Stacked 100% Area        | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbStacked100AreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100AreaSeries.html) |
-| Stacked 100% Bar         | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbStacked100BarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100BarSeries.html) |
-| Stacked 100% Column      | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbStacked100ColumnSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100ColumnSeries.html) |
-| Stacked 100% Line        | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbStacked100LineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100LineSeries.html) |
-| Stacked 100% Spline      | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbStacked100SplineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100SplineSeries.html) |
-| Stacked 100% Spline Area | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbStacked100SplineAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100SplineAreaSeries.html) |
+| Stacked Area             | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbStackedAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedAreaSeries) |
+| Stacked Bar              | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries) |
+| Stacked Column           | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbStackedColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedColumnSeries) |
+| Stacked Line             | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbStackedLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedLineSeries) |
+| Stacked Spline           | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbStackedSplineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedSplineSeries) |
+| Stacked Spline Area      | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbStackedSplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedSplineAreaSeries) |
+| Stacked 100% Area        | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbStacked100AreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100AreaSeries) |
+| Stacked 100% Bar         | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries) |
+| Stacked 100% Column      | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbStacked100ColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100ColumnSeries) |
+| Stacked 100% Line        | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbStacked100LineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100LineSeries) |
+| Stacked 100% Spline      | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbStacked100SplineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100SplineSeries) |
+| Stacked 100% Spline Area | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbStacked100SplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100SplineAreaSeries) |

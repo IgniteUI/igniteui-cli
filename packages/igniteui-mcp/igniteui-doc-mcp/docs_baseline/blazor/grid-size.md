@@ -13,7 +13,7 @@ _premium: true
 
 # Blazor Grid Size
 
-The Ignite UI for Blazor Size feature in Blazor Grid allows users to control the spacing and layout of data within the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content. They can choose from three size options:
+The Ignite UI for Blazor Size feature in Blazor Grid allows users to control the spacing and layout of data within the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). By changing `--ig-size`, you can significantly improve the user experience when interacting with large amounts of content. They can choose from three size options:
 
 - `--ig-size-large`
 - `--ig-size-medium`
@@ -284,7 +284,7 @@ public class InvoicesData
 
 ## Usage
 
-As you can see in the demo above, the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) provides three size options:  **small**, **medium** and **large**. The code snippet below shows how to set `--ig-size` either inline or part of a CSS class:
+As you can see in the demo above, the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) provides three size options:  **small**, **medium** and **large**. The code snippet below shows how to set `--ig-size` either inline or part of a CSS class:
 
 ```css
 .gridSize {
@@ -297,11 +297,11 @@ As you can see in the demo above, the [`IgbGrid`](https://www.infragistics.com/b
 </IgbGrid>
 ```
 
-And now let's see in details how each option reflects on the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component. When you switch between different size options the height of each [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) element and the corresponding paddings will be changed. Also if you want to apply custom column [`Width`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Width), please consider the fact that it must be bigger than the sum of left and right padding:
+And now let's see in details how each option reflects on the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component. When you switch between different size options the height of each [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) element and the corresponding paddings will be changed. Also if you want to apply custom column [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width), please consider the fact that it must be bigger than the sum of left and right padding:
 
-- **large** - this is the default [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`Width`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Width) is `80px`;
-- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`Width`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Width) is `64px`;
-- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`Width`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Width) is `56px`;
+- **large** - this is the default [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) size with the lowest intense and row height equal to `50px`. Left and Right paddings are `24px`; Minimal column [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width) is `80px`;
+- **medium** - this is the middle intense size with `40px` row height. Left and Right paddings are `16px`; Minimal column [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width) is `64px`;
+- **small** - this is the size with highest intense and `32px` row height. Left and Right paddings are `12px`; Minimal column [`Width`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Width) is `56px`;
 
 > [!Note]
 > Please keep in mind that currently you **can not** override any of the sizes.
@@ -385,14 +385,14 @@ Finally, let's provide the necessary logic in order to actually apply the size:
 }
 ```
 
-Another option that [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) provides for you, in order to be able to change the height of the rows in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html), is the property [`RowHeight`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowHeight). So let's see in action how this property affects the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) layout along with the `--ig-size`.
+Another option that [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) provides for you, in order to be able to change the height of the rows in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), is the property [`RowHeight`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowHeight). So let's see in action how this property affects the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) layout along with the `--ig-size`.
 
 Please keep in mind the following:
 
-- `--ig-size` CSS variable will have no impact on row height **if there is [`RowHeight`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowHeight) specified**.
+- `--ig-size` CSS variable will have no impact on row height **if there is [`RowHeight`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowHeight) specified**.
 - `--ig-size` will **affect all of the rest elements in the Grid**, as it has been described above.
 
-We can now extend our sample and add [`RowHeight`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowHeight) property to the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html):
+We can now extend our sample and add [`RowHeight`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowHeight) property to the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid):
 
 ```razor
 <IgbGrid
@@ -413,8 +413,8 @@ We can now extend our sample and add [`RowHeight`](https://www.infragistics.com/
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 
 <!-- ComponentStart: Grid -->
 
