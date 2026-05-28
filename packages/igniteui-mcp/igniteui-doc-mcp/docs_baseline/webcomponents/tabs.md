@@ -30,7 +30,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html), you need to import it as follows:
+Before using the [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent), you need to import it as follows:
 
 ```ts
 import { defineComponents, IgcTabsComponent } from 'igniteui-webcomponents';
@@ -40,7 +40,7 @@ defineComponents(IgcTabsComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Simple [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html) declaration is done as follows:
+Simple [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) declaration is done as follows:
 
 ```html
 <igc-tabs>
@@ -57,19 +57,19 @@ Simple [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-
 </igc-tabs>
 ```
 
-Tab text can be set either as simple string using the [`label`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabcomponent.html#label) property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
+Tab text can be set either as simple string using the [`label`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent&member=label) property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
 
 ### Selection
 
-The [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html) emits `Change` event when the user selects an item either by key press or click. The [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html#select) method allows you to select a tab by specifying the [`IgcTabComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabcomponent.html) or its id.
+The [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) emits `Change` event when the user selects an item either by key press or click. The [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=select) method allows you to select a tab by specifying the [`IgcTabComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent) or its id.
 
 If the selected tab is not specified on initial load, the first tab that is not disabled will be selected.
 
-The default behavior, which selects a tab when the user is navigating with the arrow keys, could be modified by the [`activation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html#activation) property. Setting it to `Manual` will focus the next/previous tab on arrow key press, but the tab will be selected only after pressing <kbd>SPACE</kbd> or <kbd>ENTER</kbd>
+The default behavior, which selects a tab when the user is navigating with the arrow keys, could be modified by the [`activation`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=activation) property. Setting it to `Manual` will focus the next/previous tab on arrow key press, but the tab will be selected only after pressing <kbd>SPACE</kbd> or <kbd>ENTER</kbd>
 
 ### Disabled Tab
 
-A tab is disabled by setting the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabcomponent.html#disabled) attribute:
+A tab is disabled by setting the [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent&member=disabled) attribute:
 
 ```html
 <igc-tab label="Tab 1" disabled></igc-tab>
@@ -77,7 +77,7 @@ A tab is disabled by setting the [`disabled`](https://www.infragistics.com/produ
 
 ### Alignment
 
-The [`alignment`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html#alignment) property controls how Web Components tabs are positioned. It accepts the following values:
+The [`alignment`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=alignment) property controls how Web Components tabs are positioned. It accepts the following values:
 
 - `Start` (default): the width of the tab depends on the content (label, icon, both) and all tabs have equal padding. First tab is aligned to the tabs container's left side.
 - `Center`: the width of the tab depends on the content and occupies the tabs container's center.
@@ -104,11 +104,11 @@ Scroll buttons are shown when the available space is not enough to render all We
 
 |Keys|Description|
 |----|-----------|
-| <kbd>←</kbd> | Selects previous (next in Right-to-Left mode) tab. If [`activation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html#activation) is set to `Manual` only focuses the tab. Scrolls to end if on first tab. |
-| <kbd>→</kbd> | Selects next (previous in Right-to-Left mode) tab. If [`activation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html#activation) is set to `Manual` only focuses the tab. Scrolls to start if on last tab. |
+| <kbd>←</kbd> | Selects previous (next in Right-to-Left mode) tab. If [`activation`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=activation) is set to `Manual` only focuses the tab. Scrolls to end if on first tab. |
+| <kbd>→</kbd> | Selects next (previous in Right-to-Left mode) tab. If [`activation`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=activation) is set to `Manual` only focuses the tab. Scrolls to start if on last tab. |
 | <kbd>HOME</kbd> | Selects the first tab. |
 | <kbd>END</kbd> | Selects the last tab. |
-| <kbd>ENTER</kbd> / <kbd>SPACE</kbd> | Selects the focused tab when [`activation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html#activation) is `Manual` |
+| <kbd>ENTER</kbd> / <kbd>SPACE</kbd> | Selects the focused tab when [`activation`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent&member=activation) is `Manual` |
 
 ### Prefix / Suffix
 
@@ -129,7 +129,7 @@ igc-icon-button {
 
 ## Styling
 
-The [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html) component exposes several CSS parts, giving you full control over its style:
+The [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) component exposes several CSS parts, giving you full control over its style:
 
 | Name | Description |
 |--|--|
@@ -137,7 +137,7 @@ The [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-com
 | `start-scroll-button` | The start scroll button displayed when the tabs overflow. |
 | `end-scroll-button` | The end scroll button displayed when the tabs overflow. |
 
-The [`IgcTabComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabcomponent.html) component exposes the following CSS parts:
+The [`IgcTabComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent) component exposes the following CSS parts:
 
 |Name|Description|
 |--|--|
@@ -227,11 +227,11 @@ igc-tab::part(tab-header)::before {
 
 ## API Reference
 
-- [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html)
-- [`IgcTabComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabcomponent.html)
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
-- [`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html)
-- [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html)
+- [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent)
+- [`IgcTabComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+- [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent)
+- [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

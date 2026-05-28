@@ -10,7 +10,7 @@ _premium: true
 
 # React Master-Detail Grid
 
-The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content. When specified each record acts as a master, which upon expansion shows a customizable details template with contextual data for the current record.
+The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content. When specified each record acts as a master, which upon expansion shows a customizable details template with contextual data for the current record.
 
 This mode is useful when you need to display master-detail style data in a hierarchical structure.
 
@@ -167,7 +167,7 @@ root.render(<Sample/>);
 
 ## Configuration
 
-To configure the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) to display in master-detail mode you need to specify a template for the grid:
+To configure the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) to display in master-detail mode you need to specify a template for the grid:
 
 ```ts
 <IgrGrid detailTemplate={masterDetailTemplate} autoGenerate="false" data={nwindData}>
@@ -192,11 +192,11 @@ const masterDetailTemplate = (args: IgrGridMasterDetailContext) => {
 
 Additional API methods for controlling the expansion states are also exposed:
 
-- [`expandAll`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#expandAll)
-- [`collapseAll`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#collapseAll)
-- [`toggleRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#toggleRow)
-- [`expandRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#expandRow)
-- [`collapseRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#collapseRow)
+- [`expandAll`](mcp:get_api_reference?platform=react&component=IgrGrid&member=expandAll)
+- [`collapseAll`](mcp:get_api_reference?platform=react&component=IgrGrid&member=collapseAll)
+- [`toggleRow`](mcp:get_api_reference?platform=react&component=IgrGrid&member=toggleRow)
+- [`expandRow`](mcp:get_api_reference?platform=react&component=IgrGrid&member=expandRow)
+- [`collapseRow`](mcp:get_api_reference?platform=react&component=IgrGrid&member=collapseRow)
 
 ## Keyboard navigation
 
@@ -221,6 +221,6 @@ Additional API methods for controlling the expansion states are also exposed:
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 - `HierarchicalGridRow`

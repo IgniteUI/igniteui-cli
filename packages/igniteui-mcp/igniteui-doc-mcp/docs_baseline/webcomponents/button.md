@@ -33,7 +33,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcButtonComponent } from "igniteui-webcomponents";
@@ -44,7 +44,7 @@ defineComponents(IgcButtonComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) is as follows:
+The simplest way to start using the [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) is as follows:
 
 ```html
 <igc-button>Click me</igc-button>
@@ -52,7 +52,7 @@ The simplest way to start using the [`IgcButtonComponent`](https://www.infragist
 
 ## Prefix / Suffix
 
-With `prefix` and `suffix` slots of the [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) component, we can add different content before and after the main content of the button.
+With `prefix` and `suffix` slots of the [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) component, we can add different content before and after the main content of the button.
 
 ```html
 <igc-button type="button" variant="contained">
@@ -62,8 +62,8 @@ With `prefix` and `suffix` slots of the [`IgcButtonComponent`](https://www.infra
 
 ## Type
 
-The button component will change its internal structure from a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) type element when the [`href`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#href) attribute is set. In that case the button can be thought of as a regular link. Setting the [`href`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#href) attribute will allow you to also set the [`rel`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#rel), [`target`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#target) and [`download`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#download) attributes.
-In the case when the button component uses an actual [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element internally, we can specify its [`Type`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#Type) by setting the property to any of the following values:
+The button component will change its internal structure from a [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) to an [`<a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) type element when the [`href`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=href) attribute is set. In that case the button can be thought of as a regular link. Setting the [`href`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=href) attribute will allow you to also set the [`rel`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=rel), [`target`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=target) and [`download`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=download) attributes.
+In the case when the button component uses an actual [`<button>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) element internally, we can specify its [`Type`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=Type) by setting the property to any of the following values:
 
 - `Submit` - when we want to submit the form data
 - `reset` - when we want to reset form data to its initial values
@@ -73,7 +73,7 @@ In the case when the button component uses an actual [`<button>`](https://develo
 
 ### Contained Button
 
-Use the [`variant`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#variant) attribute to add a simple contained button in your component template. Note that if you do not set variant, by default it will be set to contained.
+Use the [`variant`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=variant) attribute to add a simple contained button in your component template. Note that if you do not set variant, by default it will be set to contained.
 
 ```html
 <igc-button variant="contained">Contained</igc-button>
@@ -86,7 +86,7 @@ Use the [`variant`](https://www.infragistics.com/products/ignite-ui-web-componen
 
 ### Outlined Button
 
-All you have to do to create an `outlined` button is to change the value of the [`variant`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#variant) property:
+All you have to do to create an `outlined` button is to change the value of the [`variant`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=variant) property:
 
 ```html
 <igc-button variant="outlined">Outlined</igc-button>
@@ -112,7 +112,7 @@ Analogically, we can switch to `flat` variant.
 
 ### Floating Action Button
 
-We can create a floating action button by setting the [`variant`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#variant) property to `fab`:
+We can create a floating action button by setting the [`variant`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=variant) property to `fab`:
 
 ```html
 <igc-button variant="fab">Fab</igc-button>
@@ -125,7 +125,7 @@ We can create a floating action button by setting the [`variant`](https://www.in
 
 ## Button Sizing
 
-Users can change the size of the [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) using the `--ig-size` CSS variable. In the following example, we will add some radio buttons to display all size values. This way whenever one gets selected, we will change the size of the button.
+Users can change the size of the [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) using the `--ig-size` CSS variable. In the following example, we will add some radio buttons to display all size values. This way whenever one gets selected, we will change the size of the button.
 
 ```ts
 import { defineComponents, IgcButtonComponent, IgcRadioComponent, IgcRadioGroupComponent } from 'igniteui-webcomponents';
@@ -177,7 +177,7 @@ The result of implementing the above code should look like the following:
 
 ### Download
 
-Setting the [`download`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#download) property will prompt the user to save the linked URL instead of navigating to it.
+Setting the [`download`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=download) property will prompt the user to save the linked URL instead of navigating to it.
 
 ```html
 <igc-button
@@ -196,7 +196,7 @@ Setting the [`download`](https://www.infragistics.com/products/ignite-ui-web-com
 
 ## Styling
 
-The [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) exposes three CSS parts which we can use for styling:
+The [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) exposes three CSS parts which we can use for styling:
 
 |Name|Description|
 |--|--|
@@ -228,12 +228,12 @@ igc-button::part(base) {
 
 ## API References
 
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html)
-- [`Type`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#Type)
-- [`download`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#download)
-- [`href`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html#href)
-- [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html)
-- [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html)
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
+- [`Type`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=Type)
+- [`download`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=download)
+- [`href`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent&member=href)
+- [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)
+- [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

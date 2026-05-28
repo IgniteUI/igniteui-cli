@@ -36,7 +36,7 @@ The Ignite UI for Blazor Expansion Panel is a lightweight accordion component wh
 
 ## Usage
 
-The simplest way to start using the [`IgbExpansionPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbExpansionPanel.html) is as follows:
+The simplest way to start using the [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) is as follows:
 
 ## Binding to events
 
@@ -113,11 +113,11 @@ The following sample demonstrates how we can add some logic to our component to 
 
 ## Component Customization
 
-The [`IgbExpansionPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbExpansionPanel.html) control allows all sorts of content to be added inside of its body. It can render [input](../inputs/input.md), charts and even other expansion panels!
+The [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) control allows all sorts of content to be added inside of its body. It can render [input](../inputs/input.md), charts and even other expansion panels!
 
-The [`IgbExpansionPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbExpansionPanel.html) allows for easy customization of the header through the exposed **title**, **subTitle** and **indicator** slots.
+The [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) allows for easy customization of the header through the exposed **title**, **subTitle** and **indicator** slots.
 
-Configuring the position of the expansion indicator can be done through the [`IndicatorPosition`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbExpansionPanel.html#IgniteUI_Blazor_Controls_IgbExpansionPanel_IndicatorPosition) property of the Expansion Panel. The possible options are **start**, **end** or **none**.
+Configuring the position of the expansion indicator can be done through the [`IndicatorPosition`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel&member=IndicatorPosition) property of the Expansion Panel. The possible options are **start**, **end** or **none**.
 
 The next code sample demonstrates how to configure the component's button to go on the **right**side.
 
@@ -194,7 +194,7 @@ The Ignite UI for Blazor Expansion Panel keyboard navigation is compliant with W
 
 ## Styling
 
-The [`IgbExpansionPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbExpansionPanel.html) component exposes several CSS parts, giving you full control over its style:
+The [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel) component exposes several CSS parts, giving you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -301,7 +301,7 @@ igc-expansion-panel::part(subtitle) {
 
 ## API References
 
-- [`IgbExpansionPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbExpansionPanel.html)
+- [`IgbExpansionPanel`](mcp:get_api_reference?platform=blazor&component=IgbExpansionPanel)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

@@ -12,7 +12,7 @@ _premium: true
 
 In Ignite UI for Angular, you can annotate the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) with slice, strip, and point annotations at runtime using the user annotations feature. This allows the end user to add more details to the plot such as calling out single important events such as company quarter reports by using the slice annotation or events that have a duration by using the strip annotation. You can also call out individual points on the plotted series by using the point annotation or any combination of these three.
 
-This is directly integrated with the available tools of the [`IgxToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html). The following topic explains, with examples, how you can utilize the [`IgxToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html) to add user annotations to the plot area of the chart, as well as how to do add these user annotations programmatically.
+This is directly integrated with the available tools of the [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent). The following topic explains, with examples, how you can utilize the [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) to add user annotations to the plot area of the chart, as well as how to do add these user annotations programmatically.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -277,7 +277,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Using the User Annotations with the Toolbar
 
-The [`IgxToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html) exposes an Annotations menu item with two tools with the labels of "Annotate Chart" and "Delete Note." In order for this menu item to appear, you first need to set the [`isUserAnnotationsEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#isUserAnnotationsEnabled) property on the corresponding chart to `true`.
+The [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) exposes an Annotations menu item with two tools with the labels of "Annotate Chart" and "Delete Note." In order for this menu item to appear, you first need to set the [`isUserAnnotationsEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#isUserAnnotationsEnabled) property on the corresponding chart to `true`.
 
 The "Annotate Chart" option that appears after opening allows you to annotate the plot area of the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html). This can be done by adding slice, strip, or point annotations. You can add a slice annotation by clicking on a label on the X or Y axis. You can add a strip annotation by clicking and dragging in the plot area. Also, you can add a point annotation by clicking on a point in a series plotted in the chart.
 
@@ -340,7 +340,7 @@ The following is a list of API members mentioned in the above sections:
 - [`IgxUserSliceAnnotation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxusersliceannotation.html)
 - [`IgxUserStripAnnotation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxuserstripannotation.html)
 - [`IgxUserPointAnnotation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxuserpointannotation.html)
-- [`IgxToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html)
+- [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent)
 
 ## Additional Resources
 

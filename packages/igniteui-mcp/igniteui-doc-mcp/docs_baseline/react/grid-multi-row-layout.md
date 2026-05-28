@@ -266,14 +266,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-The declaration of Multi-row Layout is achieved through [`columnLayout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnLayout) component. Each [`columnLayout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnLayout) component should be considered as a block, containing one or multiple [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more [`columnLayout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnLayout) blocks if the layout allows it. There should be no columns outside of those blocks and no usage of [`columnGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnGroup) when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
+The declaration of Multi-row Layout is achieved through [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout) component. Each [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout) component should be considered as a block, containing one or multiple [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout) blocks if the layout allows it. There should be no columns outside of those blocks and no usage of [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup) when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
 
-The [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) component exposes four [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) properties to determine the location and span of each cell:
+The [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) component exposes four [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) properties to determine the location and span of each cell:
 
-- [`colStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#colStart) - column index from which the field is starting. This property is **mandatory**.
-- [`rowStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#rowStart) - row index from which the field is starting. This property is **mandatory**.
-- [`colEnd`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#colEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to **colStart + 1**.
-- [`rowEnd`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#rowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to **rowStart + 1**.
+- [`colStart`](mcp:get_api_reference?platform=react&component=IgrColumn&member=colStart) - column index from which the field is starting. This property is **mandatory**.
+- [`rowStart`](mcp:get_api_reference?platform=react&component=IgrColumn&member=rowStart) - row index from which the field is starting. This property is **mandatory**.
+- [`colEnd`](mcp:get_api_reference?platform=react&component=IgrColumn&member=colEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to **colStart + 1**.
+- [`rowEnd`](mcp:get_api_reference?platform=react&component=IgrColumn&member=rowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to **rowStart + 1**.
 
 ```tsx
 <IgrColumnLayout>
@@ -302,11 +302,11 @@ The result of the above configuration can be seen on the screenshot below:
 <img src="../../../images/multi-row-layout-1.png" alt="multi-row-layout" style="width: 100%"/>
 
 > [!Note]
-> [`rowStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#rowStart) and [`colStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#colStart) properties must be set for each [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) into a [`columnLayout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnLayout). The [`columnLayout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnLayout) component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
+> [`rowStart`](mcp:get_api_reference?platform=react&component=IgrColumn&member=rowStart) and [`colStart`](mcp:get_api_reference?platform=react&component=IgrColumn&member=colStart) properties must be set for each [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) into a [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout). The [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout) component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
 
 ## Feature Integration
 
-Due to the completely different rendering approach of Multi-row Layout, some of the column features will work only on [`columnLayout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnLayout) component. Such features are Column Pinning and Column Hiding. Otherwise - Sorting and Grouping will work in the same way - on the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) component.
+Due to the completely different rendering approach of Multi-row Layout, some of the column features will work only on [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout) component. Such features are Column Pinning and Column Hiding. Otherwise - Sorting and Grouping will work in the same way - on the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) component.
 
 - Filtering - only Excel Style Filtering is supported. Setting `FilterMode` explicitly to `FilterMode.quickFilter` has no effect.
 - Paging - works on records, not visual rows.
@@ -321,7 +321,7 @@ The following features are currently **not** supported:
 
 ## Keyboard Navigation
 
-[`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) with Multi-Row Layouts provides build-in keyboard navigation.
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) with Multi-Row Layouts provides build-in keyboard navigation.
 
 ### Horizontal Navigation
 
@@ -820,9 +820,9 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
-- [`columnLayout`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnLayout)
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+- [`columnLayout`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnLayout)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 
 ## Additional Resources
 

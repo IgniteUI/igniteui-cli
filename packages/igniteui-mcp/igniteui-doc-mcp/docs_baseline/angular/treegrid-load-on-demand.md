@@ -9,7 +9,7 @@ _premium: true
 
 # Tree Grid Load On Demand
 
-The Ignite UI for Angular [`IgxTreeGrid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) can be rendered in such way that it requires the minimal amount of data to get from the server so the user could see it as quickly as possible. Then, only after the user expands a row, the children for that particular parent row will be loaded. This mechanism, also known as Load on Demand, can be easily configured to work with any remote data.
+The Ignite UI for Angular [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) can be rendered in such way that it requires the minimal amount of data to get from the server so the user could see it as quickly as possible. Then, only after the user expands a row, the children for that particular parent row will be loaded. This mechanism, also known as Load on Demand, can be easily configured to work with any remote data.
 
 ## Angular Tree Grid Load On Demand Example
 
@@ -68,7 +68,7 @@ export class TreeGridLoadOnDemandSampleComponent implements OnInit {
 
 ### Usage
 
-The Load on Demand feature is compatible with both types of Tree Grid data sources - [`primary and foreign keys`](tree-grid.md#primary-and-foreign-keys) or [`child collection`](tree-grid.md#child-collection). You only need to load the root level data in the Tree Grid and specify the necessary keys for one of the data source types. In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`loadChildrenOnDemand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#loadChildrenOnDemand).
+The Load on Demand feature is compatible with both types of Tree Grid data sources - [`primary and foreign keys`](tree-grid.md#primary-and-foreign-keys) or [`child collection`](tree-grid.md#child-collection). You only need to load the root level data in the Tree Grid and specify the necessary keys for one of the data source types. In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`loadChildrenOnDemand`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=loadChildrenOnDemand).
 
 ```html
 <igx-tree-grid #treeGrid [data]="data" primaryKey="ID" foreignKey="ParentID"
@@ -77,7 +77,7 @@ The Load on Demand feature is compatible with both types of Tree Grid data sourc
 </igx-tree-grid>
 ```
 
-The [`loadChildrenOnDemand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#loadChildrenOnDemand) callback provides two parameters:
+The [`loadChildrenOnDemand`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=loadChildrenOnDemand) callback provides two parameters:
 
 - parentID - the ID of the parent row that is being expanded.
 - done - callback that should be called with the children when they are retrieved from the server.
@@ -90,7 +90,7 @@ public loadChildren = (parentID: any, done: (children: any[]) => void) => {
 
 After the user clicks the expand icon, it is replaced by a loading indicator. When the `done` callback is called, the loading indicator disappears and the children are loaded. The Tree Grid adds the children to the underlying data source and populates the necessary keys automatically.
 
-If you have a way to provide an information whether a row has children prior to its expanding, you could use the [`hasChildrenKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
+If you have a way to provide an information whether a row has children prior to its expanding, you could use the [`hasChildrenKey`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
 
 ```html
 <igx-tree-grid #treeGrid [data]="data" primaryKey="ID" foreignKey="ParentID"
@@ -99,7 +99,7 @@ If you have a way to provide an information whether a row has children prior to 
 </igx-tree-grid>
 ```
 
-Note that setting the [`hasChildrenKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row. After expanding a row that has no children, you still need to call the `done` callback with undefined or empty array. In this case after the loading indicator disappears, the expansion indicator never shows up.
+Note that setting the [`hasChildrenKey`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row. After expanding a row that has no children, you still need to call the `done` callback with undefined or empty array. In this case after the loading indicator disappears, the expansion indicator never shows up.
 
 If you want to provide your own custom loading indicator, you may create an ng-template and mark it with the `igxRowLoadingIndicator` directive. The following code snippet demonstrates how to define such custom template:
 
@@ -121,7 +121,7 @@ If you want to provide your own custom loading indicator, you may create an ng-t
 
 <div class="divider--half"></div>
 
-- [IgxTreeGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 
 ## Additional Resources

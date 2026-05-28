@@ -13,7 +13,7 @@ The Web Components `ComboBox` supports single-selection mode and quick filtering
 
 ## Web Components Single Selection Example
 
-To enable single-selection and quick filtering, set the [`singleSelect`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#singleSelect) property on the [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html). The user experience and keyboard navigation will mostly stay the same, but instead of having to type in your search query into a special filtering box above the list of options, the main input box will be used.
+To enable single-selection and quick filtering, set the [`singleSelect`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=singleSelect) property on the [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent). The user experience and keyboard navigation will mostly stay the same, but instead of having to type in your search query into a special filtering box above the list of options, the main input box will be used.
 
 ```html
 <igc-combo single-select></igc-combo>
@@ -34,9 +34,9 @@ To enable single-selection and quick filtering, set the [`singleSelect`](https:/
 
 ## Selection API
 
-The selection API for a ComboBox with the [`singleSelect`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#singleSelect) property applied mostly remains the same, however, there are some important differences compared to ComboBoxes that don't have this property set.
+The selection API for a ComboBox with the [`singleSelect`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=singleSelect) property applied mostly remains the same, however, there are some important differences compared to ComboBoxes that don't have this property set.
 
-The main difference is that only one item can be selected at any time. For example, if you have specified a [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) for your combo component, passing more than one item to the [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#select)/[`deselect`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#deselect) methods will have no effect. This also means that any previously selected items will automatically get deselected upon making a new selection.
+The main difference is that only one item can be selected at any time. For example, if you have specified a [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) for your combo component, passing more than one item to the [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=select)/[`deselect`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=deselect) methods will have no effect. This also means that any previously selected items will automatically get deselected upon making a new selection.
 
 Here's how to select/deselect an item programmatically in a single selection combo.
 
@@ -47,7 +47,7 @@ Here's how to select/deselect an item programmatically in a single selection com
 combo.select('BG01');
 ```
 
-To deselect an item without making a new selection, call the [`deselect`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#deselect) method.
+To deselect an item without making a new selection, call the [`deselect`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=deselect) method.
 
 #### Deselecting items
 
@@ -62,11 +62,11 @@ Naturally, some configuration options will have no effect in a single selection 
 
 ### Placeholder
 
-Assigning a value to the [`placeholderSearch`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#placeholderSearch) property will yield no result since the filtering input that usually is placed above the list of options will not be present in a single selection ComboBox.
+Assigning a value to the [`placeholderSearch`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=placeholderSearch) property will yield no result since the filtering input that usually is placed above the list of options will not be present in a single selection ComboBox.
 
 ### Auto-focusing the list of options
 
-Setting the [`autofocusList`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#autofocusList) option on a single selection ComboBox will also have no effect.
+Setting the [`autofocusList`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=autofocusList) option on a single selection ComboBox will also have no effect.
 
 ## Keyboard Navigation
 
@@ -78,7 +78,7 @@ All other features will behave the same as in a non-single selection ComboBox co
 
 ## API Reference
 
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html)
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent)
 
 ## Additional Resources
 

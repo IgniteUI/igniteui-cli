@@ -54,7 +54,7 @@ This sample demonstrates how to create a Dialog component in Blazor.
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Before using the Blazor [`IgbDialog`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html), you need to register it as follows:
+Before using the Blazor [`IgbDialog`](mcp:get_api_reference?platform=blazor&component=IgbDialog), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -62,7 +62,7 @@ Before using the Blazor [`IgbDialog`](https://www.infragistics.com/blazor/docs/a
 builder.Services.AddIgniteUIBlazor(typeof(IgbDialogModule));
 ```
 
-The simplest way to display the dialog component is to use its [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_Show) method and call it on a button click.
+The simplest way to display the dialog component is to use its [`Show`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=Show) method and call it on a button click.
 
 ```razor
 <div class="container vertical">
@@ -89,17 +89,17 @@ The simplest way to display the dialog component is to use its [`Show`](https://
 }
 ```
 
-The Dialog component provides an [`Open`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_Open) property, which gives you the ability to configure its state as per your application scenario.
+The Dialog component provides an [`Open`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=Open) property, which gives you the ability to configure its state as per your application scenario.
 
-Use the [`Title`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_Title) property to set the title of the dialog. However, if any content is provided in the `title` slot, it will take precedence over the property.
+Use the [`Title`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=Title) property to set the title of the dialog. However, if any content is provided in the `title` slot, it will take precedence over the property.
 
-Action buttons or additional information can be placed in the bottom part of the dialog via the `footer` slot. If no content is added there, a default `OK` button will be shown that closes the Dialog when clicked. In case you do not want this button to be shown you can set the [`HideDefaultAction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_HideDefaultAction) property to **true**. The default value is **false**.
+Action buttons or additional information can be placed in the bottom part of the dialog via the `footer` slot. If no content is added there, a default `OK` button will be shown that closes the Dialog when clicked. In case you do not want this button to be shown you can set the [`HideDefaultAction`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=HideDefaultAction) property to **true**. The default value is **false**.
 
 ### Closing
 
-By default, the Dialog is closed automatically when the user presses `ESC`. You could prevent this behavior using the [`KeepOpenOnEscape`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_KeepOpenOnEscape) property. The default value is **false**. If there is an open dropdown (or any other element that should handle `ESC` internally) in the dialog, pressing `ESC` once will close the dropdown and pressing it again will close the dialog.
+By default, the Dialog is closed automatically when the user presses `ESC`. You could prevent this behavior using the [`KeepOpenOnEscape`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=KeepOpenOnEscape) property. The default value is **false**. If there is an open dropdown (or any other element that should handle `ESC` internally) in the dialog, pressing `ESC` once will close the dropdown and pressing it again will close the dialog.
 
-Use the [`CloseOnOutsideClick`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_CloseOnOutsideClick) property to configure if the dialog should be closed when clicking outside of it. The default value is **false**.
+Use the [`CloseOnOutsideClick`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=CloseOnOutsideClick) property to configure if the dialog should be closed when clicking outside of it. The default value is **false**.
 
 ### Form
 
@@ -171,7 +171,7 @@ Form elements can close a Dialog if they have the attribute `method="dialog"`. S
 
 ## Styling
 
-The [`IgbDialog`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html) component exposes several CSS parts to give you full control over its style:
+The [`IgbDialog`](mcp:get_api_reference?platform=blazor&component=IgbDialog) component exposes several CSS parts to give you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -243,13 +243,13 @@ igc-dialog::part(footer) {
 
 ## API References
 
-- [`KeepOpenOnEscape`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_KeepOpenOnEscape)
-- [`CloseOnOutsideClick`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_CloseOnOutsideClick)
-- [`Hide`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_Hide)
-- [`HideDefaultAction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_HideDefaultAction)
-- [`Open`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_Open)
-- [`Title`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html#IgniteUI_Blazor_Controls_IgbDialog_Title)
-- [`IgbDialog`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html)
+- [`KeepOpenOnEscape`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=KeepOpenOnEscape)
+- [`CloseOnOutsideClick`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=CloseOnOutsideClick)
+- [`Hide`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=Hide)
+- [`HideDefaultAction`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=HideDefaultAction)
+- [`Open`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=Open)
+- [`Title`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=Title)
+- [`IgbDialog`](mcp:get_api_reference?platform=blazor&component=IgbDialog)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

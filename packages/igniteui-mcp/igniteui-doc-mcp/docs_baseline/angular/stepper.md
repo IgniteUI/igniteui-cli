@@ -1394,7 +1394,7 @@ Now that you have the Angular Stepper module or directives imported, you can sta
 
 ## Using the Angular Stepper
 
-[IgxStepComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html) is the representation of every step that belongs to the [IgxStepperComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html). Steps provide [isValid](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html#isValid), [active](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html#active), [optional](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html#optional), [disabled](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html#disabled) and [completed](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html#completed) properties, which give you the ability to configure the step states according to your business requirement.
+[IgxStepComponent](mcp:get_api_reference?platform=angular&component=IgxStepComponent) is the representation of every step that belongs to the [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent). Steps provide [isValid](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=isValid), [active](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=active), [optional](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=optional), [disabled](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=disabled) and [completed](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=completed) properties, which give you the ability to configure the step states according to your business requirement.
 
 ### Declaring a Stepper
 
@@ -1453,18 +1453,18 @@ For each step the user has the ability to configure indicator, title, subtitle a
 
 ### Changing the Stepper Orientation
 
-You can customize the stepper orientation through the exposed [orientation](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#orientation) property. It takes a member of the `IgxStepperOrientation` enum - `Horizontal` _(default value)_ or `Vertical`.
+You can customize the stepper orientation through the exposed [orientation](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) property. It takes a member of the `IgxStepperOrientation` enum - `Horizontal` _(default value)_ or `Vertical`.
 
 **Horizontal Stepper Orientation**
 
-`horizontal` is the default value for the `igx-stepper` [orientation](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#orientation) property.
-When the stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [IgxStepperComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html) [contentTop](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#contentTop) boolean property, which default value is `false`. In case it is enabled the steps’ content would be displayed above the steps’ headers.
+`horizontal` is the default value for the `igx-stepper` [orientation](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) property.
+When the stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) [contentTop](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=contentTop) boolean property, which default value is `false`. In case it is enabled the steps’ content would be displayed above the steps’ headers.
 
 <img class="responsive-img" style="margin-bottom:10px; -webkit-box-shadow: 4px 4px 4px 4px #ccc; -moz-box-shadow: 4px 4px 4px 4px #ccc; box-shadow: 4px 4px 4px 4px #ccc; max-width: 800px"  src="../images/stepper/stepper-contentTop.png" alt="Ignite UI for Angular Stepper Content Rendered Above Stepper" />
 
 **Vertical Stepper Orientation**
 
-You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [orientation](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#orientation) property to `vertical`.
+You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [orientation](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) property to `vertical`.
 
 ```html
 <igx-stepper [orientation]="'vertical'">
@@ -1478,7 +1478,7 @@ You can easily switch from the horizontal to vertical layout. In order to change
 </igx-stepper>
 ```
 
-The sample below demonstrates how stepper [orientation](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#orientation) and [titles position](stepper.md#customizing-the-steps) could be changed runtime.
+The sample below demonstrates how stepper [orientation](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) and [titles position](stepper.md#customizing-the-steps) could be changed runtime.
 
 ```typescript
 import { Component } from '@angular/core';
@@ -1598,21 +1598,21 @@ $sample-gap: 20px;
 
 ### Step States
 
-[IgxStepperComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html) supports four steps states and each of them apply different styles by default:
+[IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) supports four steps states and each of them apply different styles by default:
 
-- [**active**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html#active) - Determines whether the step is the currently displayed. By design, if the user does not explicitly set some step’s active attribute to `true`, the initial active step would be the first non-disabled step.
-- [**disabled**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html#disabled) - Determines whether the step is interactable. By default, the disabled attribute of a step is set to `false`.
-- [**optional**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html#optional) - By default, the optional attribute of a step is set to `false`. If validity of a step in linear stepper is not required, then the optional attribute can be enabled in order to be able to move forward independently from the step validity.
-- [**completed**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html#completed) - By default, the completed attribute of a step returns `false`. The user, however, can override this default completed behavior by setting the completed attribute as needed. When step is marked as completed not only that the style of the step header is changed by default, but also the style of the progress line between the completed step and the next one. Both styles could be modified using the exposed [CSS variables](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-stepper-theme).
+- [**active**](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=active) - Determines whether the step is the currently displayed. By design, if the user does not explicitly set some step’s active attribute to `true`, the initial active step would be the first non-disabled step.
+- [**disabled**](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=disabled) - Determines whether the step is interactable. By default, the disabled attribute of a step is set to `false`.
+- [**optional**](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=optional) - By default, the optional attribute of a step is set to `false`. If validity of a step in linear stepper is not required, then the optional attribute can be enabled in order to be able to move forward independently from the step validity.
+- [**completed**](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=completed) - By default, the completed attribute of a step returns `false`. The user, however, can override this default completed behavior by setting the completed attribute as needed. When step is marked as completed not only that the style of the step header is changed by default, but also the style of the progress line between the completed step and the next one. Both styles could be modified using the exposed [CSS variables](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-stepper-theme).
 
-The [IgxStepperComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html) gives you the opportunity to set validation logic for each step through the two-way bindable [**isValid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html#isValid) property. Based on its value it is decided whether the user will have the ability to move forward in linear stepper mode.
-By default, the [isValid](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html#isValid) property of a step is set to `true`.
+The [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) gives you the opportunity to set validation logic for each step through the two-way bindable [**isValid**](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=isValid) property. Based on its value it is decided whether the user will have the ability to move forward in linear stepper mode.
+By default, the [isValid](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=isValid) property of a step is set to `true`.
 
 ### Linear Stepper
 
-The `igx-stepper` gives you the opportunity to set its steps flow using the [linear](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#linear) property. By default, linear is set to `false` and the user is enabled to select any non-disabled step in the [IgxStepperComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html).
+The `igx-stepper` gives you the opportunity to set its steps flow using the [linear](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=linear) property. By default, linear is set to `false` and the user is enabled to select any non-disabled step in the [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent).
 
-When the [linear](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#linear) property is set to `true`, the stepper will require the current non-optional step to be valid before proceeding to the next one.
+When the [linear](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=linear) property is set to `true`, the stepper will require the current non-optional step to be valid before proceeding to the next one.
 
 If the current non-optional step is not valid you cannot go forward to the next step until you validate the current one.
 
@@ -1822,12 +1822,12 @@ igx-radio {
 
 ### Step Interactions
 
-[IgxStepperComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html) provides the following API methods for step interactions:
+[IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) provides the following API methods for step interactions:
 
-- [**navigateTo**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#navigateTo) – activates the step by given index.
-- [**next**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#next) - activates the next non-disabled step.
-- [**prev**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#prev) – activates the previous non-disabled step.
-- [**reset**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#reset) – resets the stepper to its initial state.
+- [**navigateTo**](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=navigateTo) – activates the step by given index.
+- [**next**](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=next) - activates the next non-disabled step.
+- [**prev**](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=prev) – activates the previous non-disabled step.
+- [**reset**](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=reset) – resets the stepper to its initial state.
 
 > [!NOTE]
 > The reset method would not clear the step`s content. This should be done manually.
@@ -1836,7 +1836,7 @@ igx-radio {
 
 The Ignite UI for Angular Stepper gives you the ability to configure different options for titles, indicators and more.
 
-This could be achieved through the [stepType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#stepType) property of the [IgxStepperComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html). It takes a member of the `IgxStepType` enum:
+This could be achieved through the [stepType](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=stepType) property of the [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent). It takes a member of the `IgxStepType` enum:
 
 - Full _(default value)_
 - Indicator
@@ -1847,7 +1847,7 @@ This could be achieved through the [stepType](https://www.infragistics.com/produ
 If titles and subtitles are defined, with this setup both indicators and titles would be rendered.
 
 The user would also have the ability to define the position of the title for the steps, so it could be placed before, after, above or below the step indicator.
-The user can configure the title position using the [titlePosition](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#titlePosition) property. Both properties take member of `IgxStepperTitlePosition` enum:
+The user can configure the title position using the [titlePosition](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=titlePosition) property. Both properties take member of `IgxStepperTitlePosition` enum:
 
 - end
 - start
@@ -1859,17 +1859,17 @@ When the `igx-stepper` is horizontally orientated, the title position default va
 When the orientation is set to vertical layout the title position by default is `end`.
 
 > [!NOTE]
-> [titlePosition](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#titlePosition) property is applicable **only** when the stepper [stepType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#stepType) property is set to `full`.
+> [titlePosition](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=titlePosition) property is applicable **only** when the stepper [stepType](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=stepType) property is set to `full`.
 
 **Indicator**
 
-If you want to display only indicators for the steps, set the [stepType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#stepType) option to `indicator`.
+If you want to display only indicators for the steps, set the [stepType](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=stepType) option to `indicator`.
 
 The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [IgxIconComponent](icon.md) or [IgxAvatarComponent](avatar.md) as step indicators.
 
 **Title**
 
-If you want to display only titles for the steps, set the [stepType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#stepType) option to `title`.
+If you want to display only titles for the steps, set the [stepType](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=stepType) option to `title`.
 
 In this way if subtitles are defined, they will also be rendered below the step title.
 
@@ -1958,7 +1958,7 @@ $sample-gap: 20px;
 
 <div class="divider--half"></div>
 
-The [IgxStepperComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html) also allows you to customize the rendered indicators for active, invalid and completed steps. This could be achieved through the `igxStepActiveIndicator`, `igxStepInvalidIndicator` and `igxStepCompletedIndicator` directives:
+The [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) also allows you to customize the rendered indicators for active, invalid and completed steps. This could be achieved through the `igxStepActiveIndicator`, `igxStepInvalidIndicator` and `igxStepCompletedIndicator` directives:
 
 ```html
 <igx-stepper>
@@ -1984,18 +1984,18 @@ The [IgxStepperComponent](https://www.infragistics.com/products/ignite-ui-angula
 
 Angular Stepper Animations provide the end-users with a beautiful experience interacting with the defined steps. The available animation options differ depending on the orientation of the stepper.
 
-When the stepper is **horizontally orientated**, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [horizontalAnimationType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#horizontalAnimationType) input.
+When the stepper is **horizontally orientated**, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [horizontalAnimationType](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=horizontalAnimationType) input.
 
-In **vertically orientated** layout, the animation type could be defined using the [verticalAnimationType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#verticalAnimationType) property. By default, its value is `grow` and the user has the ability to set it to `fade` as well.
+In **vertically orientated** layout, the animation type could be defined using the [verticalAnimationType](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=verticalAnimationType) property. By default, its value is `grow` and the user has the ability to set it to `fade` as well.
 
 Setting `none` to the both animation type inputs disables stepper animations.
 
-[IgxStepperComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html) gives you the ability to configure the duration of the transition between the steps. This could be achieved through the [animationDuration](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html#animationDuration) property, which takes a number as an argument and it is common to the both orientations.
+[IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) gives you the ability to configure the duration of the transition between the steps. This could be achieved through the [animationDuration](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=animationDuration) property, which takes a number as an argument and it is common to the both orientations.
 
 ## Keyboard Navigation
 
 Angular Stepper provides a rich variety of keyboard interactions to the end-user. This functionality is enabled by default and allows end-users to easily navigate through the steps.
-The [IgxStepperComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html) navigation is compliant with [W3 accessibility standards](https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html#accessibilityfeatures) and convenient to use.
+The [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) navigation is compliant with [W3 accessibility standards](https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html#accessibilityfeatures) and convenient to use.
 
 **Key Combinations**
 
@@ -2260,8 +2260,8 @@ At the end your stepper should look like this:
 
 ## API Reference
 
-- [IgxStepperComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsteppercomponent.html)
-- [IgxStepComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxstepcomponent.html)
+- [IgxStepperComponent](mcp:get_api_reference?platform=angular&component=IgxStepperComponent)
+- [IgxStepComponent](mcp:get_api_reference?platform=angular&component=IgxStepComponent)
 
 ## Additional Resources
 

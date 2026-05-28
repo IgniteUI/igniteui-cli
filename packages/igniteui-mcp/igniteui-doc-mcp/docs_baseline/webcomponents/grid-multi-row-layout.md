@@ -56,14 +56,14 @@ export class CustomersData extends Array<CustomersDataItem> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-The declaration of Multi-row Layout is achieved through [`columnLayout`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnLayout) component. Each [`columnLayout`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnLayout) component should be considered as a block, containing one or multiple [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more [`columnLayout`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnLayout) blocks if the layout allows it. There should be no columns outside of those blocks and no usage of [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup) when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
+The declaration of Multi-row Layout is achieved through [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout) component. Each [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout) component should be considered as a block, containing one or multiple [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout) blocks if the layout allows it. There should be no columns outside of those blocks and no usage of [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup) when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
 
-The [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) component exposes four [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) properties to determine the location and span of each cell:
+The [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) component exposes four [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) properties to determine the location and span of each cell:
 
-- [`colStart`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#colStart) - column index from which the field is starting. This property is **mandatory**.
-- [`rowStart`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#rowStart) - row index from which the field is starting. This property is **mandatory**.
-- [`colEnd`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#colEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to **colStart + 1**.
-- [`rowEnd`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#rowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to **rowStart + 1**.
+- [`colStart`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=colStart) - column index from which the field is starting. This property is **mandatory**.
+- [`rowStart`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=rowStart) - row index from which the field is starting. This property is **mandatory**.
+- [`colEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=colEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to **colStart + 1**.
+- [`rowEnd`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=rowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to **rowStart + 1**.
 
 ```html
 <igc-column-layout>
@@ -92,11 +92,11 @@ The result of the above configuration can be seen on the screenshot below:
 <img src="../../../images/multi-row-layout-1.png" alt="multi-row-layout" style="width: 100%"/>
 
 > [!Note]
-> [`rowStart`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#rowStart) and [`colStart`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#colStart) properties must be set for each [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) into a [`columnLayout`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnLayout). The [`columnLayout`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnLayout) component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
+> [`rowStart`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=rowStart) and [`colStart`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=colStart) properties must be set for each [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) into a [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout). The [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout) component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
 
 ## Feature Integration
 
-Due to the completely different rendering approach of Multi-row Layout, some of the column features will work only on [`columnLayout`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnLayout) component. Such features are Column Pinning and Column Hiding. Otherwise - Sorting and Grouping will work in the same way - on the [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) component.
+Due to the completely different rendering approach of Multi-row Layout, some of the column features will work only on [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout) component. Such features are Column Pinning and Column Hiding. Otherwise - Sorting and Grouping will work in the same way - on the [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) component.
 
 - Filtering - only Excel Style Filtering is supported. Setting `FilterMode` explicitly to `FilterMode.quickFilter` has no effect.
 - Paging - works on records, not visual rows.
@@ -111,7 +111,7 @@ The following features are currently **not** supported:
 
 ## Keyboard Navigation
 
-[`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) with Multi-Row Layouts provides build-in keyboard navigation.
+[`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) with Multi-Row Layouts provides build-in keyboard navigation.
 
 ### Horizontal Navigation
 
@@ -261,9 +261,9 @@ export class CustomersData extends Array<CustomersDataItem> {
 
 ## API References
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
-- [`columnLayout`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnLayout)
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+- [`columnLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnLayout)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 
 ## Additional Resources
 

@@ -12,11 +12,11 @@ _premium: true
 
 # React Grid Search Filter
 
-The Ignite UI for React Search Filter feature in React Grid enables the process of finding values in the collection of data. We make it easier to set up this functionality and it can be implemented with a search input box, buttons, keyboard navigation and other useful features for an even better user experience. While browsers natively provide content search functionality, most of the time the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) virtualizes its columns and rows that are out of view. In these cases, the native browser search is unable to search data in the virtualized cells, since they are not part of the DOM. We have extended the React Material table-based grid with a **search API** that allows you to search through the **virtualized content** of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
+The Ignite UI for React Search Filter feature in React Grid enables the process of finding values in the collection of data. We make it easier to set up this functionality and it can be implemented with a search input box, buttons, keyboard navigation and other useful features for an even better user experience. While browsers natively provide content search functionality, most of the time the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) virtualizes its columns and rows that are out of view. In these cases, the native browser search is unable to search data in the virtualized cells, since they are not part of the DOM. We have extended the React Material table-based grid with a **search API** that allows you to search through the **virtualized content** of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
 ## React Search Example
 
-The following example represents [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) with search input box that allows searching in all columns and rows, as well as specific filtering options for each column.
+The following example represents [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) with search input box that allows searching in all columns and rows, as well as specific filtering options for each column.
 
 ```typescript
 export class MarketRecord {
@@ -249,7 +249,7 @@ Let's start by creating our grid and binding it to our data. We will also add so
 
 <!-- ComponentEnd: Grid -->
 
-Great, and now let's prepare for the search API of our [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)! We can create a few properties, which can be used for storing the currently searched text and whether the search is case sensitive and/or by an exact match.
+Great, and now let's prepare for the search API of our [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)! We can create a few properties, which can be used for storing the currently searched text and whether the search is case sensitive and/or by an exact match.
 
 ```tsx
 const gridRef = useRef<IgrGrid>(null);
@@ -262,9 +262,9 @@ const [searchText, setSearchText] = useState('');
 
 ### React Search Box Input
 
-Now let's create our search input! By binding our `searchText` to the `value` property to our newly created input and subscribe to the `inputOccured` event, we can detect every single `searchText` modification by the user. This will allow us to use the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)'s `findNext` and `findPrev` methods to highlight all the occurrences of the `searchText` and scroll to the next/previous one (depending on which method we have invoked).
+Now let's create our search input! By binding our `searchText` to the `value` property to our newly created input and subscribe to the `inputOccured` event, we can detect every single `searchText` modification by the user. This will allow us to use the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)'s `findNext` and `findPrev` methods to highlight all the occurrences of the `searchText` and scroll to the next/previous one (depending on which method we have invoked).
 
-Both the [`findNext`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#findNext) and the [`findPrev`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#findPrev) methods have three arguments:
+Both the [`findNext`](mcp:get_api_reference?platform=react&component=IgrGrid&member=findNext) and the [`findPrev`](mcp:get_api_reference?platform=react&component=IgrGrid&member=findPrev) methods have three arguments:
 
 - `Text`: **string** (the text we are searching for)
 - (optional) `CaseSensitive`: **boolean** (should the search be case sensitive or not, default value is false)
@@ -272,7 +272,7 @@ Both the [`findNext`](https://www.infragistics.com/products/ignite-ui-react/docs
 
 When searching by an exact match, the search API will highlight as results only the cell values that match entirely the `SearchText` by taking the case sensitivity into account as well. For example the strings '_software_' and '_Software_' are an exact match with a disregard for the case sensitivity.
 
-The methods from above return a **number** value (the number of times the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) contains the given string).
+The methods from above return a **number** value (the number of times the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) contains the given string).
 
 ```tsx
 const handleOnSearchChange = (event: IgrComponentValueChangedEventArgs) => {
@@ -288,7 +288,7 @@ const handleOnSearchChange = (event: IgrComponentValueChangedEventArgs) => {
 
 ### Add Search Buttons
 
-In order to freely search and navigate among our search results, let's create a couple of buttons by invoking the [`findNext`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#findNext) and the [`findPrev`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#findPrev) methods inside the buttons' respective click event handlers.
+In order to freely search and navigate among our search results, let's create a couple of buttons by invoking the [`findNext`](mcp:get_api_reference?platform=react&component=IgrGrid&member=findNext) and the [`findPrev`](mcp:get_api_reference?platform=react&component=IgrGrid&member=findPrev) methods inside the buttons' respective click event handlers.
 
 <!-- ComponentEnd: Grid -->
 
@@ -309,7 +309,7 @@ const nextSearch = (text: string, caseSensitive: boolean, exactMatch: boolean) =
 
 ### Add Keyboard Search
 
-We can also allow the users to navigate the results by using the keyboard's arrow keys and the <kbd>ENTER</kbd> key. In order to achieve this, we can handle the **keydown** event of our search input by preventing the default caret movement of the input with the `PreventDefault` method and invoke the [`findNext`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#findNext)/[`findPrev`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#findPrev) methods depending on which key the user has pressed.
+We can also allow the users to navigate the results by using the keyboard's arrow keys and the <kbd>ENTER</kbd> key. In order to achieve this, we can handle the **keydown** event of our search input by preventing the default caret movement of the input with the `PreventDefault` method and invoke the [`findNext`](mcp:get_api_reference?platform=react&component=IgrGrid&member=findNext)/[`findPrev`](mcp:get_api_reference?platform=react&component=IgrGrid&member=findPrev) methods depending on which key the user has pressed.
 
 <!-- ComponentStart: Grid -->
 
@@ -335,7 +335,7 @@ const searchKeyDown = (e: KeyboardEvent<HTMLElement>) => {
 
 <!-- ComponentStart: Grid -->
 
-Now let's allow the user to choose whether the search should be case sensitive and/or by an exact match. For this purpose we can use the [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html) component along with a boolean state variable to indicate whether the IgrChip is selected.
+Now let's allow the user to choose whether the search should be case sensitive and/or by an exact match. For this purpose we can use the [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip) component along with a boolean state variable to indicate whether the IgrChip is selected.
 
 ```tsx
 const [caseSensitiveSelected, setCaseSensitiveSelected] = useState<boolean>(false);
@@ -361,13 +361,13 @@ const handleExactMatchChange = (event: IgrComponentBoolValueChangedEventArgs) =>
 
 ### Persistence
 
-What if we would like to filter and sort our [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) or even to add and remove records? After such operations, the highlights of our current search automatically update and persist over any text that matches the `SearchText`! Furthermore, the search will work with paging and will persist the highlights through changes of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)'s `PerPage` property.
+What if we would like to filter and sort our [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) or even to add and remove records? After such operations, the highlights of our current search automatically update and persist over any text that matches the `SearchText`! Furthermore, the search will work with paging and will persist the highlights through changes of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)'s `PerPage` property.
 
 ### Adding icons
 
 By using some of our other components, we can create an enriched user interface and improve the overall design of our entire search bar! We can have a nice search or delete icon on the left of the search input, a couple of chips for our search options and some material design icons combined with nice ripple styled buttons for our navigation on the right.
 
-Let's begin by creating the search navigation buttons on the right of the input by adding two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the [`findNext`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#findNext)/[`findPrev`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#findPrev) methods.
+Let's begin by creating the search navigation buttons on the right of the input by adding two ripple styled buttons with material icons. The handlers for the click events remain the same - invoking the [`findNext`](mcp:get_api_reference?platform=react&component=IgrGrid&member=findNext)/[`findPrev`](mcp:get_api_reference?platform=react&component=IgrGrid&member=findPrev) methods.
 
 - For displaying a couple of chips that toggle the `CaseSensitive` and the `ExactMatch` properties. We have replaced the checkboxes with two stylish chips. Whenever a chip is clicked, we invoke its respective handler.
 
@@ -444,29 +444,29 @@ useEffect(() => {
 
 |Limitation|Description|
 |--- |--- |
-|Searching in cells with a template|The search functionality highlights work only for the default cell templates. If you have a column with custom cell template, the highlights will not work so you should either use alternative approaches, such as a column formatter, or set the [`searchable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#searchable) property on the column to false.|
+|Searching in cells with a template|The search functionality highlights work only for the default cell templates. If you have a column with custom cell template, the highlights will not work so you should either use alternative approaches, such as a column formatter, or set the [`searchable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=searchable) property on the column to false.|
 |Remote Virtualization| The search will not work properly when using remote virtualization|
 |Cells with cut off text| When the text in the cell is too large to fit and the text we are looking for is cut off by the ellipsis, we will still scroll to the cell and include it in the match count, but nothing will be highlighted |
 
 ## API References
 
-In this article we implemented our own search bar for the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) with some additional functionality when it comes to navigating between the search results. We also used some additional Ignite UI for React components like icons, chips and inputs. The search API is listed below.
+In this article we implemented our own search bar for the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) with some additional functionality when it comes to navigating between the search results. We also used some additional Ignite UI for React components like icons, chips and inputs. The search API is listed below.
 
-[`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) methods:
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) methods:
 
-- [`findNext`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#findNext)
-- [`findPrev`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#findPrev)
-- [`clearSearch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#clearSearch)
-- [`refreshSearch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#refreshSearch)
+- [`findNext`](mcp:get_api_reference?platform=react&component=IgrGrid&member=findNext)
+- [`findPrev`](mcp:get_api_reference?platform=react&component=IgrGrid&member=findPrev)
+- [`clearSearch`](mcp:get_api_reference?platform=react&component=IgrGrid&member=clearSearch)
+- [`refreshSearch`](mcp:get_api_reference?platform=react&component=IgrGrid&member=refreshSearch)
 
-[`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) properties:
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) properties:
 
-- [`searchable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#searchable)
+- [`searchable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=searchable)
 
 Additional components with relative APIs that were used:
 
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
-- [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+- [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip)
 
 ## Additional Resources
 

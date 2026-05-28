@@ -13,7 +13,7 @@ Ignite UI for Web Components Tree, also known as TreeView component, is a high-p
 
 For end-users this means they can easily navigate across different app pages, use selection, checkboxes, add texts, icons, images and more.
 
-The Ignite UI for Web Components Tree component allows users to represent hierarchical data in a tree-view structure, maintaining parent-child relationships, as well as to define static tree-view structure without a corresponding data model. Its primary purpose is to allow end-users to visualize and navigate within hierarchical data structures. The [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) component also provides load on demand capabilities, item activation, multiple and cascade selection of items through built-in checkboxes, built-in keyboard navigation and more.
+The Ignite UI for Web Components Tree component allows users to represent hierarchical data in a tree-view structure, maintaining parent-child relationships, as well as to define static tree-view structure without a corresponding data model. Its primary purpose is to allow end-users to visualize and navigate within hierarchical data structures. The [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) component also provides load on demand capabilities, item activation, multiple and cascade selection of items through built-in checkboxes, built-in keyboard navigation and more.
 
 ## Web Components Tree Example
 
@@ -41,7 +41,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html), you need to register it as follows:
+Before using the [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcTreeComponent } from 'igniteui-webcomponents';
@@ -50,13 +50,13 @@ defineComponents(IgcTreeComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) is as follows:
+The simplest way to start using the [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) is as follows:
 
 ### Declaring a tree
 
-[`IgcTreeItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html) is the representation of every item that belongs to the [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html).
-Items provide [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#disabled), [`active`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#active), [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#selected) and [`expanded`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#expanded) properties, which give you opportunity to configure the states of the item as per your requirement.
-The [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#value) property can be used to add a reference to the data entry the item represents.
+[`IgcTreeItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent) is the representation of every item that belongs to the [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent).
+Items provide [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent&member=disabled), [`active`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent&member=active), [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent&member=selected) and [`expanded`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent&member=expanded) properties, which give you opportunity to configure the states of the item as per your requirement.
+The [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent&member=value) property can be used to add a reference to the data entry the item represents.
 
 Items can be declared using one of the following approaches.
 
@@ -80,7 +80,7 @@ Items can be bound to a data model so that their expanded and selected states ar
 
 - Declaring a tree by creating static unbound items
 
-In order to render a tree you do not necessarily need a data set - individual items can be created without an underlying data model using the exposed [`label`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#label) property or provide a custom slot content for the [`IgcTreeItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html) label.
+In order to render a tree you do not necessarily need a data set - individual items can be created without an underlying data model using the exposed [`label`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent&member=label) property or provide a custom slot content for the [`IgcTreeItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent) label.
 
 ```html
 <igc-tree>
@@ -105,14 +105,14 @@ In order to render a tree you do not necessarily need a data set - individual it
 ```
 
 > [!Note]
-> You can provide a custom slot content for each [`IgcTreeItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html)'s indentation, expansion and label area respectively using the provided `indentation`, `indicator` and `label` slots.
+> You can provide a custom slot content for each [`IgcTreeItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent)'s indentation, expansion and label area respectively using the provided `indentation`, `indicator` and `label` slots.
 
 ### Item Interactions
 
-[`IgcTreeItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html) could be expanded or collapsed:
+[`IgcTreeItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent) could be expanded or collapsed:
 
 - by clicking on the item expand indicator (default behavior).
-- by clicking on the item if the [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) [`toggleNodeOnClick`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html#toggleNodeOnClick) property is set to `true`.
+- by clicking on the item if the [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) [`toggleNodeOnClick`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent&member=toggleNodeOnClick) property is set to `true`.
 
 ```html
 <igc-tree toggle-node-on-click="true">
@@ -127,7 +127,7 @@ In order to render a tree you do not necessarily need a data set - individual it
 </igc-tree>
 ```
 
-By default, multiple items could be expanded at the same time. In order to change this behavior and allow expanding only single branch at a time, the [`singleBranchExpand`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html#singleBranchExpand) property could be enabled. This way when an item is expanded, all of the others already expanded branches in the same level will be collapsed.
+By default, multiple items could be expanded at the same time. In order to change this behavior and allow expanding only single branch at a time, the [`singleBranchExpand`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent&member=singleBranchExpand) property could be enabled. This way when an item is expanded, all of the others already expanded branches in the same level will be collapsed.
 
 ```html
 <igc-tree single-branch-expand="true">
@@ -142,24 +142,24 @@ By default, multiple items could be expanded at the same time. In order to chang
 </igc-tree>
 ```
 
-In addition, the [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) provides the following API methods for item interactions:
+In addition, the [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) provides the following API methods for item interactions:
 
-- [`expand`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#expand) - expands all items. If an items array is passed, expands only the specified items.
-- [`collapse`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html#collapse) - collapses all items. If an items array is passed, collapses only the specified items.
-- [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) - selects all items. If an items array is passed, selects only the specified items. Does not emit `selection` event.
+- [`expand`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent&member=expand) - expands all items. If an items array is passed, expands only the specified items.
+- [`collapse`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent&member=collapse) - collapses all items. If an items array is passed, collapses only the specified items.
+- [`IgcSelectComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent) - selects all items. If an items array is passed, selects only the specified items. Does not emit `selection` event.
 - `Tree.Deselect` - deselects all items. If an items array is passed, deselects only the specified items. Does not emit `selection` event.
 
 ## Web Components Tree Selection
 
-In order to setup item selection in the Ignite UI for Web Components Tree component, you just need to set its [`selection`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html#selection) property. This property accepts the following three modes: **None**, **Multiple** and **Cascade**. Below we will take a look at each of them in more detail.
+In order to setup item selection in the Ignite UI for Web Components Tree component, you just need to set its [`selection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent&member=selection) property. This property accepts the following three modes: **None**, **Multiple** and **Cascade**. Below we will take a look at each of them in more detail.
 
 ### None
 
-In the [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) by default item selection is disabled. Users cannot select or deselect an item through UI interaction, but these actions can still be completed through the provided API method.
+In the [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) by default item selection is disabled. Users cannot select or deselect an item through UI interaction, but these actions can still be completed through the provided API method.
 
 ### Multiple
 
-To enable multiple item selection in the [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) just set the [`selection`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html#selection) property to **multiple**. This will render a checkbox for every item. Each item has two states - selected or not. This mode supports multiple selection.
+To enable multiple item selection in the [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) just set the [`selection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent&member=selection) property to **multiple**. This will render a checkbox for every item. Each item has two states - selected or not. This mode supports multiple selection.
 
 ```html
 <igc-tree selection="multiple">
@@ -168,7 +168,7 @@ To enable multiple item selection in the [`IgcTreeComponent`](https://www.infrag
 
 ### Cascade
 
-To enable cascade item selection in the [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html), just set the selection property to **cascade**. This will render a checkbox for every item.
+To enable cascade item selection in the [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent), just set the selection property to **cascade**. This will render a checkbox for every item.
 
 ```html
 <igc-tree selection="Cascade">
@@ -179,9 +179,9 @@ In this mode a parent's selection state entirely depends on the selection state 
 
 ## Keyboard Navigation
 
-Keyboard navigation in [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) provides a rich variety of keyboard interactions for the user. This functionality is enabled by default and allows users to navigate through the items.
+Keyboard navigation in [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) provides a rich variety of keyboard interactions for the user. This functionality is enabled by default and allows users to navigate through the items.
 
-The [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) navigation is compliant with W3C accessibility standards and convenient to use.
+The [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) navigation is compliant with W3C accessibility standards and convenient to use.
 
 **Key Combinations**
 
@@ -630,7 +630,7 @@ igc-tree {
 
 After the user clicks the expand icon, it is replaced by a loading indicator. When the loading property resolves to false, the loading indicator disappears and the children are loaded.
 
-You can provide a custom slot content for the loading area using the `loadingIndicator` slot. If such slot is not defined, the [`IgcCircularProgressComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccircularprogresscomponent.html) is used.
+You can provide a custom slot content for the loading area using the `loadingIndicator` slot. If such slot is not defined, the [`IgcCircularProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCircularProgressComponent) is used.
 
 ### Load On Demand With Virtualization
 
@@ -1037,7 +1037,7 @@ export const DATA: SelectableItemData[] = [
 
 ## Styling
 
-You can change the appearance of the [`IgcTreeItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html), by using some of the exposed CSS parts listed below:
+You can change the appearance of the [`IgcTreeItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent), by using some of the exposed CSS parts listed below:
 
 | Part name | Description |
 | ---------|------------ |
@@ -1050,7 +1050,7 @@ You can change the appearance of the [`IgcTreeItemComponent`](https://www.infrag
 | `text` | The tree item displayed text. |
 | `select` | The checkbox of the tree item when selection is enabled. |
 
-Using these CSS parts we can customize thе appearance of the [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) component like this:
+Using these CSS parts we can customize thе appearance of the [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) component like this:
 
 ```css
 igc-tree-item {
@@ -1081,10 +1081,10 @@ igc-tree {
 
 ## API References
 
-- [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html)
-- [`IgcTreeItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html)
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
-- [`IgcCircularProgressComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccircularprogresscomponent.html)
+- [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent)
+- [`IgcTreeItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+- [`IgcCircularProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCircularProgressComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

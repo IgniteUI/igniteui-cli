@@ -88,7 +88,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the React [`IgrDialog`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html) and its necessary CSS, like so:
+You will then need to import the React [`IgrDialog`](mcp:get_api_reference?platform=react&component=IgrDialog) and its necessary CSS, like so:
 
 ```tsx
 import { IgrDialog } from 'igniteui-react';
@@ -97,7 +97,7 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the dialog component is to use its [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#show) method and call it on a button click.
+The simplest way to display the dialog component is to use its [`show`](mcp:get_api_reference?platform=react&component=IgrDialog&member=show) method and call it on a button click.
 
 ```tsx
 <IgrButton variant="contained" clicked={this.onDialogShow}>
@@ -120,17 +120,17 @@ public onDialogShow() {
 }
 ```
 
-The Dialog component provides an [`open`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#open) property, which gives you the ability to configure its state as per your application scenario.
+The Dialog component provides an [`open`](mcp:get_api_reference?platform=react&component=IgrDialog&member=open) property, which gives you the ability to configure its state as per your application scenario.
 
-Use the [`title`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#title) property to set the title of the dialog. However, if any content is provided in the `title` slot, it will take precedence over the property.
+Use the [`title`](mcp:get_api_reference?platform=react&component=IgrDialog&member=title) property to set the title of the dialog. However, if any content is provided in the `title` slot, it will take precedence over the property.
 
-Action buttons or additional information can be placed in the bottom part of the dialog via the `footer` slot. If no content is added there, a default `OK` button will be shown that closes the Dialog when clicked. In case you do not want this button to be shown you can set the [`hideDefaultAction`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#hideDefaultAction) property to **true**. The default value is **false**.
+Action buttons or additional information can be placed in the bottom part of the dialog via the `footer` slot. If no content is added there, a default `OK` button will be shown that closes the Dialog when clicked. In case you do not want this button to be shown you can set the [`hideDefaultAction`](mcp:get_api_reference?platform=react&component=IgrDialog&member=hideDefaultAction) property to **true**. The default value is **false**.
 
 ### Closing
 
-By default, the Dialog is closed automatically when the user presses `ESC`. You could prevent this behavior using the [`keepOpenOnEscape`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#keepOpenOnEscape) property. The default value is **false**. If there is an open dropdown (or any other element that should handle `ESC` internally) in the dialog, pressing `ESC` once will close the dropdown and pressing it again will close the dialog.
+By default, the Dialog is closed automatically when the user presses `ESC`. You could prevent this behavior using the [`keepOpenOnEscape`](mcp:get_api_reference?platform=react&component=IgrDialog&member=keepOpenOnEscape) property. The default value is **false**. If there is an open dropdown (or any other element that should handle `ESC` internally) in the dialog, pressing `ESC` once will close the dropdown and pressing it again will close the dialog.
 
-Use the [`closeOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#closeOnOutsideClick) property to configure if the dialog should be closed when clicking outside of it. The default value is **false**.
+Use the [`closeOnOutsideClick`](mcp:get_api_reference?platform=react&component=IgrDialog&member=closeOnOutsideClick) property to configure if the dialog should be closed when clicking outside of it. The default value is **false**.
 
 ```css
 /* shared styles are loaded from: */
@@ -295,7 +295,7 @@ root.render(<DialogForm/>);
 
 ## Styling
 
-The [`IgrDialog`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html) component exposes several CSS parts to give you full control over its style:
+The [`IgrDialog`](mcp:get_api_reference?platform=react&component=IgrDialog) component exposes several CSS parts to give you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -396,13 +396,13 @@ root.render(<DialogStyling/>);
 
 ## API References
 
-- [`keepOpenOnEscape`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#keepOpenOnEscape)
-- [`closeOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#closeOnOutsideClick)
-- [`hide`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#hide)
-- [`hideDefaultAction`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#hideDefaultAction)
-- [`open`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#open)
-- [`title`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html#title)
-- [`IgrDialog`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html)
+- [`keepOpenOnEscape`](mcp:get_api_reference?platform=react&component=IgrDialog&member=keepOpenOnEscape)
+- [`closeOnOutsideClick`](mcp:get_api_reference?platform=react&component=IgrDialog&member=closeOnOutsideClick)
+- [`hide`](mcp:get_api_reference?platform=react&component=IgrDialog&member=hide)
+- [`hideDefaultAction`](mcp:get_api_reference?platform=react&component=IgrDialog&member=hideDefaultAction)
+- [`open`](mcp:get_api_reference?platform=react&component=IgrDialog&member=open)
+- [`title`](mcp:get_api_reference?platform=react&component=IgrDialog&member=title)
+- [`IgrDialog`](mcp:get_api_reference?platform=react&component=IgrDialog)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

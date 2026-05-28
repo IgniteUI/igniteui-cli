@@ -108,7 +108,7 @@ The Ignite UI for Blazor Banner component provides a way to easily display a pro
 
 ## Usage
 
-Before using the [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html), you need to register it as follows:
+Before using the [`IgbBanner`](mcp:get_api_reference?platform=blazor&component=IgbBanner), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -116,7 +116,7 @@ Before using the [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/
 builder.Services.AddIgniteUIBlazor(typeof(IgbBannerModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbBanner`](mcp:get_api_reference?platform=blazor&component=IgbBanner) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -126,7 +126,7 @@ For a complete introduction to the Ignite UI for Blazor, read the [**Getting Sta
 
 ### Show Banner
 
-In order to display the banner component, use its [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html#IgniteUI_Blazor_Controls_IgbBanner_Show) method and call it on a button click. The banner appears relative to where the element was inserted in the page template, moving all other content. It typically shows some non-intrusive content that requires minimal user interaction to be dismissed.
+In order to display the banner component, use its [`Show`](mcp:get_api_reference?platform=blazor&component=IgbBanner&member=Show) method and call it on a button click. The banner appears relative to where the element was inserted in the page template, moving all other content. It typically shows some non-intrusive content that requires minimal user interaction to be dismissed.
 
 ```razor
 <IgbButton @onclick="ShowBanner">Show Banner</IgbButton>
@@ -146,15 +146,15 @@ In order to display the banner component, use its [`Show`](https://www.infragist
 ```
 
 > [!NOTE]
-> The [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html) includes a default action button `OK`, which closes the banner.
+> The [`IgbBanner`](mcp:get_api_reference?platform=blazor&component=IgbBanner) includes a default action button `OK`, which closes the banner.
 
 ## Examples
 
-The [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html) component allows templating of its content while still sticking as closely as possible to the material design banner guidelines.
+The [`IgbBanner`](mcp:get_api_reference?platform=blazor&component=IgbBanner) component allows templating of its content while still sticking as closely as possible to the material design banner guidelines.
 
 ### Changing the banner message
 
-Configuring the message displayed in the banner is easy - just change the content you are passing to the [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html) tag. The text will show up in the specified banner area and the banner will use its default template when displaying it. Below, we will change the content of our sample banner to be a bit more descriptive:
+Configuring the message displayed in the banner is easy - just change the content you are passing to the [`IgbBanner`](mcp:get_api_reference?platform=blazor&component=IgbBanner) tag. The text will show up in the specified banner area and the banner will use its default template when displaying it. Below, we will change the content of our sample banner to be a bit more descriptive:
 
 ```razor
 <IgbBanner @ref="bannerRef">
@@ -164,12 +164,12 @@ Configuring the message displayed in the banner is easy - just change the conten
 
 ### Adding an icon
 
-An [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) can be displayed in the banner by using the banner's `prefix` slot. The icon will always be positioned at the beginning of the banner message.
+An [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) can be displayed in the banner by using the banner's `prefix` slot. The icon will always be positioned at the beginning of the banner message.
 
 > [!NOTE]
-> If several [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) elements are inserted, the banner will try to position all of them at the beginning. It is strongly advised to pass only one [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) directly to the banner.
+> If several [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) elements are inserted, the banner will try to position all of them at the beginning. It is strongly advised to pass only one [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) directly to the banner.
 
-To pass an [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) to your banner, use the `prefix` slot:
+To pass an [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) to your banner, use the `prefix` slot:
 
 ```razor
 <IgbBanner @ref="bannerRef">
@@ -178,7 +178,7 @@ To pass an [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI
 </IgbBanner>
 ```
 
-If you want to use an [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html) in your banner message, simply insert it in the banner's content:
+If you want to use an [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon) in your banner message, simply insert it in the banner's content:
 
 ```razor
 <IgbBanner @ref="bannerRef">
@@ -189,7 +189,7 @@ If you want to use an [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/a
 
 ### Changing the banner button
 
-The [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html) exposes the `actions` slot for templating the banner buttons. This allows you to override the default banner button (`OK`) and add user-defined custom actions.
+The [`IgbBanner`](mcp:get_api_reference?platform=blazor&component=IgbBanner) exposes the `actions` slot for templating the banner buttons. This allows you to override the default banner button (`OK`) and add user-defined custom actions.
 
 ```razor
 <IgbBanner @ref="bannerRef">
@@ -386,9 +386,9 @@ Let's create a banner with two custom buttons - one for dismissing the notificat
 }
 ```
 
-> According to Google's [Material Design](https://material.io/design/components/banners.html#anatomy) guidelines, a banner should have a maximum of 2 buttons present. The [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html) does not explicitly limit the number of elements under the `actions` slot, but it is strongly recommended to use up to 2 if you want to adhere to the material design guidelines.
+> According to Google's [Material Design](https://material.io/design/components/banners.html#anatomy) guidelines, a banner should have a maximum of 2 buttons present. The [`IgbBanner`](mcp:get_api_reference?platform=blazor&component=IgbBanner) does not explicitly limit the number of elements under the `actions` slot, but it is strongly recommended to use up to 2 if you want to adhere to the material design guidelines.
 
-The dismiss option (**Continue Offline**) doesn't need any further logic, so it can just call the [`Hide`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html#IgniteUI_Blazor_Controls_IgbBanner_Hide) method. The confirm action (**Turn On Wifi**), however, requires some additional logic, so we have to define it in the component. Then, we will add an event listener for the `click` event. The last step is to call the `refreshBanner()` method on each change, which will toggle the banner depending on the `wifiState`.
+The dismiss option (**Continue Offline**) doesn't need any further logic, so it can just call the [`Hide`](mcp:get_api_reference?platform=blazor&component=IgbBanner&member=Hide) method. The confirm action (**Turn On Wifi**), however, requires some additional logic, so we have to define it in the component. Then, we will add an event listener for the `click` event. The last step is to call the `refreshBanner()` method on each change, which will toggle the banner depending on the `wifiState`.
 
 The navbar will have a Wifi icon and we will add an event listener for its `click` event as well. As the `refreshBanner()` method is called on each change, the icon will not only toggle the banner, but change according to the state of the connection:
 
@@ -431,7 +431,7 @@ The navbar will have a Wifi icon and we will add an event listener for its `clic
 }
 ```
 
-Finally, we will add a [`IgbToast`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html), displaying a message about the WiFi state. The results of the templated banner can be seen in the demo below:
+Finally, we will add a [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast), displaying a message about the WiFi state. The results of the templated banner can be seen in the demo below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -571,7 +571,7 @@ Finally, we will add a [`IgbToast`](https://www.infragistics.com/blazor/docs/api
 
 ## Styling
 
-The [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html) component exposes several CSS parts which give you full control over its style:
+The [`IgbBanner`](mcp:get_api_reference?platform=blazor&component=IgbBanner) component exposes several CSS parts which give you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -743,12 +743,12 @@ igc-banner::part(content) {
 
 ## API References
 
-- [`IgbBanner`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBanner.html)
-- [`IgbCard`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCard.html)
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
-- [`IgbNavbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavbar.html)
-- [`IgbToast`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html)
-- [`IgbRipple`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRipple.html)
+- [`IgbBanner`](mcp:get_api_reference?platform=blazor&component=IgbBanner)
+- [`IgbCard`](mcp:get_api_reference?platform=blazor&component=IgbCard)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+- [`IgbNavbar`](mcp:get_api_reference?platform=blazor&component=IgbNavbar)
+- [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast)
+- [`IgbRipple`](mcp:get_api_reference?platform=blazor&component=IgbRipple)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

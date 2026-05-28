@@ -295,9 +295,9 @@ The ctx parameter provides different contextual data depending on what is being 
 | Context Type                | Provided Data                                                                                                          |
 | --------------------------- | -----------------------------------------------------------------------------------------------------------------------|
 | `ChatRenderContext`       | `instance` (the chat component instance).                                               |
-| `ChatInputRenderContext`      | Inherits `ChatRenderContext` and adds `attachments` (array of [`IgrChatMessageAttachment`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrchatmessageattachment.html)) and `value` (current input text). |
-| `ChatMessageRenderContext`    | Inherits `ChatRenderContext` and adds [`IgrChatMessage`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrchatmessage.html) (the [`IgrChatMessage`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrchatmessage.html) being rendered).                                     |
-| `ChatAttachmentRenderContext` | Inherits `ChatMessageRenderContext` and adds `attachment` (the [`IgrChatMessageAttachment`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrchatmessageattachment.html) being rendered).                     |
+| `ChatInputRenderContext`      | Inherits `ChatRenderContext` and adds `attachments` (array of [`IgrChatMessageAttachment`](mcp:get_api_reference?platform=react&component=IgrChatMessageAttachment)) and `value` (current input text). |
+| `ChatMessageRenderContext`    | Inherits `ChatRenderContext` and adds [`IgrChatMessage`](mcp:get_api_reference?platform=react&component=IgrChatMessage) (the [`IgrChatMessage`](mcp:get_api_reference?platform=react&component=IgrChatMessage) being rendered).                                     |
+| `ChatAttachmentRenderContext` | Inherits `ChatMessageRenderContext` and adds `attachment` (the [`IgrChatMessageAttachment`](mcp:get_api_reference?platform=react&component=IgrChatMessageAttachment) being rendered).                     |
 
 #### Available Renderers
 
@@ -761,9 +761,9 @@ root.render(<ChatStyling />);
 
 - [`IgrChatComponent`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchatcomponent.html)
 - [`IgrChatOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/types/igniteui-react.igrchatoptions.html)
-- [`IgrChatMessage`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrchatmessage.html)
-- [`IgrChatMessageAttachment`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.igrchatmessageattachment.html)
-- [`ChatRenderers`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/interfaces/igniteui-react.chatrenderers.html)
+- [`IgrChatMessage`](mcp:get_api_reference?platform=react&component=IgrChatMessage)
+- [`IgrChatMessageAttachment`](mcp:get_api_reference?platform=react&component=IgrChatMessageAttachment)
+- [`ChatRenderers`](mcp:get_api_reference?platform=react&component=ChatRenderers)
 - [`ChatTemplateRenderer`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/types/igniteui-react.chattemplaterenderer.html)
 - [Styling & Themes](../themes/overview.md)
 

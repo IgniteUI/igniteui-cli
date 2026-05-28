@@ -22,8 +22,8 @@ import { IgxActionStripModule } from 'igniteui-angular/action-strip';
 })
 ```
 The predefined `actions` UI components are:
-- [`IgxGridEditingActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgrideditingactionscomponent.html) - includes functionality and UI specifically designed for the grid editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`rowEditable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxGridComponent.html#rowEditable) option and row deletion of the grid.
-- [`IgxGridPinningActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridpinningactionscomponent.html) - includes functionality and UI specifically designed for the grid row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
+- [`IgxGridEditingActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent) - includes functionality and UI specifically designed for the grid editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditable) option and row deletion of the grid.
+- [`IgxGridPinningActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent) - includes functionality and UI specifically designed for the grid row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
 They are added inside the `<igx-action-strip>` and this is all needed to have an Action Strip providing default interactions.
 ```html
 <igx-grid [data]="data" [rowEditable]="true" [primaryKey]="'ID'">
@@ -137,9 +137,9 @@ export class GridActionStripSampleComponent {
 > The predefined actions inherit [`IgxGridActionsBaseDirective`]({environment:infragisticsBaseUrl}/classes/igxgridactionsbasedirective.html) and when creating a custom grid action component, it should also inherit `IgxGridActionsBaseDirective`.
 ## API References
 For more detailed information regarding the Action Strip API, refer to the following links:
-- [`IgxActionStripComponent API`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxactionstripcomponent.html)
+- [`IgxActionStripComponent API`](mcp:get_api_reference?platform=angular&component=IgxActionStripComponent)
 Additional components and/or directives that can be used within the Action Strip:
-- [`IgxGridActionsBaseDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridactionsbasedirective.html)
-- [`IgxGridPinningActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridpinningactionscomponent.html)
-- [`IgxGridEditingActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgrideditingactionscomponent.html)
-- [`IgxDividerDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdividerdirective.html)
+- [`IgxGridActionsBaseDirective`](mcp:get_api_reference?platform=angular&component=IgxGridActionsBaseDirective)
+- [`IgxGridPinningActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent)
+- [`IgxGridEditingActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent)
+- [`IgxDividerDirective`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)

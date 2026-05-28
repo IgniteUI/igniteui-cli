@@ -308,7 +308,7 @@ In addition to the built-in `always` and `onSort` modes, the grid allows you to 
 
 ### Merge Strategy Class
 
-A custom merge strategy must implement the [`IgrGridMergeStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridmergestrategy.html) class:
+A custom merge strategy must implement the [`IgrGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrGridMergeStrategy) class:
 
 ```ts
 export declare class IgrGridMergeStrategy {
@@ -332,7 +332,7 @@ export declare class IgrGridMergeStrategy {
 
 ### Extending the Default Strategy
 
-If you only want to customize part of the behavior (for example, the comparer logic), you can extend the built-in [`IgrDefaultMergeStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrdefaultmergestrategy.html) and override the relevant methods.
+If you only want to customize part of the behavior (for example, the comparer logic), you can extend the built-in [`IgrDefaultMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrDefaultMergeStrategy) and override the relevant methods.
 
 ```ts
 export class MyCustomStrategy extends IgrDefaultMergeStrategy {
@@ -660,7 +660,7 @@ Due to the specific behavior of merged cells it has to be noted how exactly it t
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 
 ## Additional Resources
 

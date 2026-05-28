@@ -62,7 +62,7 @@ The Blazor Tabs example below displays three different tabs aligned in a single 
 
 ## How to use Tabs with Ignite UI for Blazor
 
-Before using the [`IgbTabs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html), you need to import it as follows:
+Before using the [`IgbTabs`](mcp:get_api_reference?platform=blazor&component=IgbTabs), you need to import it as follows:
 
 ```razor
 // in Program.cs file
@@ -72,7 +72,7 @@ builder.Services.AddIgniteUIBlazor(typeof(IgbTabsModule));
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Simple [`IgbTabs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html) declaration is done as follows:
+Simple [`IgbTabs`](mcp:get_api_reference?platform=blazor&component=IgbTabs) declaration is done as follows:
 
 ```razor
 <IgbTabs>
@@ -89,19 +89,19 @@ Simple [`IgbTabs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bla
 </IgbTabs>
 ```
 
-Tab text can be set either as simple string using the [`Label`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTab.html#IgniteUI_Blazor_Controls_IgbTab_Label) property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
+Tab text can be set either as simple string using the [`Label`](mcp:get_api_reference?platform=blazor&component=IgbTab&member=Label) property or by assigning children to the `label` slot. Any remaining children in the default slot are rendered as the tab content.
 
 ### Selection
 
-The [`IgbTabs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html) emits `Change` event when the user selects an item either by key press or click. The [`Select`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html#IgniteUI_Blazor_Controls_IgbTabs_Select) method allows you to select a tab by specifying the [`IgbTab`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTab.html) or its id.
+The [`IgbTabs`](mcp:get_api_reference?platform=blazor&component=IgbTabs) emits `Change` event when the user selects an item either by key press or click. The [`Select`](mcp:get_api_reference?platform=blazor&component=IgbTabs&member=Select) method allows you to select a tab by specifying the [`IgbTab`](mcp:get_api_reference?platform=blazor&component=IgbTab) or its id.
 
 If the selected tab is not specified on initial load, the first tab that is not disabled will be selected.
 
-The default behavior, which selects a tab when the user is navigating with the arrow keys, could be modified by the [`Activation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html#IgniteUI_Blazor_Controls_IgbTabs_Activation) property. Setting it to `Manual` will focus the next/previous tab on arrow key press, but the tab will be selected only after pressing <kbd>SPACE</kbd> or <kbd>ENTER</kbd>
+The default behavior, which selects a tab when the user is navigating with the arrow keys, could be modified by the [`Activation`](mcp:get_api_reference?platform=blazor&component=IgbTabs&member=Activation) property. Setting it to `Manual` will focus the next/previous tab on arrow key press, but the tab will be selected only after pressing <kbd>SPACE</kbd> or <kbd>ENTER</kbd>
 
 ### Disabled Tab
 
-A tab is disabled by setting the [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTab.html#IgniteUI_Blazor_Controls_IgbTab_Disabled) attribute:
+A tab is disabled by setting the [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbTab&member=Disabled) attribute:
 
 ```razor
 <IgbTab Label="Tab 1" Disabled></IgbTab>
@@ -109,7 +109,7 @@ A tab is disabled by setting the [`Disabled`](https://www.infragistics.com/blazo
 
 ### Alignment
 
-The [`Alignment`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html#IgniteUI_Blazor_Controls_IgbTabs_Alignment) property controls how Blazor tabs are positioned. It accepts the following values:
+The [`Alignment`](mcp:get_api_reference?platform=blazor&component=IgbTabs&member=Alignment) property controls how Blazor tabs are positioned. It accepts the following values:
 
 - `Start` (default): the width of the tab depends on the content (label, icon, both) and all tabs have equal padding. First tab is aligned to the tabs container's left side.
 - `Center`: the width of the tab depends on the content and occupies the tabs container's center.
@@ -216,11 +216,11 @@ Scroll buttons are shown when the available space is not enough to render all Bl
 
 |Keys|Description|
 |----|-----------|
-| <kbd>←</kbd> | Selects previous (next in Right-to-Left mode) tab. If [`Activation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html#IgniteUI_Blazor_Controls_IgbTabs_Activation) is set to `Manual` only focuses the tab. Scrolls to end if on first tab. |
-| <kbd>→</kbd> | Selects next (previous in Right-to-Left mode) tab. If [`Activation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html#IgniteUI_Blazor_Controls_IgbTabs_Activation) is set to `Manual` only focuses the tab. Scrolls to start if on last tab. |
+| <kbd>←</kbd> | Selects previous (next in Right-to-Left mode) tab. If [`Activation`](mcp:get_api_reference?platform=blazor&component=IgbTabs&member=Activation) is set to `Manual` only focuses the tab. Scrolls to end if on first tab. |
+| <kbd>→</kbd> | Selects next (previous in Right-to-Left mode) tab. If [`Activation`](mcp:get_api_reference?platform=blazor&component=IgbTabs&member=Activation) is set to `Manual` only focuses the tab. Scrolls to start if on last tab. |
 | <kbd>HOME</kbd> | Selects the first tab. |
 | <kbd>END</kbd> | Selects the last tab. |
-| <kbd>ENTER</kbd> / <kbd>SPACE</kbd> | Selects the focused tab when [`Activation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html#IgniteUI_Blazor_Controls_IgbTabs_Activation) is `Manual` |
+| <kbd>ENTER</kbd> / <kbd>SPACE</kbd> | Selects the focused tab when [`Activation`](mcp:get_api_reference?platform=blazor&component=IgbTabs&member=Activation) is `Manual` |
 
 ### Prefix / Suffix
 
@@ -280,7 +280,7 @@ Besides the `label` slot to display information - icon, text or both, each tab a
 
 ## Styling
 
-The [`IgbTabs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html) component exposes several CSS parts, giving you full control over its style:
+The [`IgbTabs`](mcp:get_api_reference?platform=blazor&component=IgbTabs) component exposes several CSS parts, giving you full control over its style:
 
 | Name | Description |
 |--|--|
@@ -293,7 +293,7 @@ The [`IgbTabs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor
 | `end-scroll-button` | The end scroll button displayed when the tabs overflow. |
 | `content` | The container for the content where the data is displayed. |
 
-The [`IgbTab`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTab.html) component exposes the following CSS parts:
+The [`IgbTab`](mcp:get_api_reference?platform=blazor&component=IgbTab) component exposes the following CSS parts:
 
 |Name|Description|
 |--|--|
@@ -385,11 +385,11 @@ igc-tab::part(tab-header)::before {
 
 ## API Reference
 
-- [`IgbTabs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTabs.html)
-- [`IgbTab`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTab.html)
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
-- [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html)
-- [`IgbRadioGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadioGroup.html)
+- [`IgbTabs`](mcp:get_api_reference?platform=blazor&component=IgbTabs)
+- [`IgbTab`](mcp:get_api_reference?platform=blazor&component=IgbTab)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+- [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton)
+- [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

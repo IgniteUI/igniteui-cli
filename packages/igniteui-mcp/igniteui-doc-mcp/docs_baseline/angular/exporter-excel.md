@@ -11,7 +11,7 @@ _premium: true
 
 <p class="highlight">
 
-The Ignite UI for Angular Excel Exporter service can export data in Microsoft® Excel® format from raw data (array) or from the [**IgxGrid**](grid/grid.md), [**IgxTreeGrid**](treegrid/tree-grid.md) and [**IgxHierarchicalGrid**](hierarchicalgrid/hierarchical-grid.md) components. The exporting functionality is encapsulated in the [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html) class and the data is exported in MS Excel table format. This format allows features like filtering, sorting, etc.
+The Ignite UI for Angular Excel Exporter service can export data in Microsoft® Excel® format from raw data (array) or from the [**IgxGrid**](grid/grid.md), [**IgxTreeGrid**](treegrid/tree-grid.md) and [**IgxHierarchicalGrid**](hierarchicalgrid/hierarchical-grid.md) components. The exporting functionality is encapsulated in the [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) class and the data is exported in MS Excel table format. This format allows features like filtering, sorting, etc.
 </p>
 <div class="divider"></div>
 
@@ -58,7 +58,7 @@ export class ExcelExportComponent {
 
 ## Usage
 
-To start using the IgniteUI Excel Exporter first import the [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html) in the app.module.ts file and add the service to the `providers` array:
+To start using the IgniteUI Excel Exporter first import the [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) in the app.module.ts file and add the service to the `providers` array:
 
 ```typescript
 // app.module.ts
@@ -83,7 +83,7 @@ To initiate an export process you may use the handler of a button in your compon
 <button (click)="exportButtonHandler()">Export Data to Excel</button>
 ```
 
-You may access the exporter service by defining an argument of type [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html) in the component's constructor and the Angular framework will provide an instance of the service. To export some data in MS Excel format you need to invoke the exporter service's [`exportData`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#exportdata) method. This method accepts as a first argument the data you want to export and the second argument is of type [`IgxExcelExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporteroptions.html) and allows you to configure the export process.
+You may access the exporter service by defining an argument of type [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) in the component's constructor and the Angular framework will provide an instance of the service. To export some data in MS Excel format you need to invoke the exporter service's [`exportData`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService&member=exportdata) method. This method accepts as a first argument the data you want to export and the second argument is of type [`IgxExcelExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterOptions) and allows you to configure the export process.
 
 Here is the code which will execute the export process in the component's typescript file:
 
@@ -114,7 +114,7 @@ If all went well, you should see an export button. When pressed, it will trigger
 
 ## Customizing the Exported Content
 
-In the above examples the Excel Exporter service was exporting all available data. There are situations in which you may want to skip exporting a row or even an entire column. To achieve this you may hook to the [`columnExporting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#columnexporting) and/or [`rowExporting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html#rowexporting) events which are fired respectively for each column and/or each row and cancel the respective event by setting the event argument object's [`cancel`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/irowexportingeventargs.html#cancel) property to `true`.
+In the above examples the Excel Exporter service was exporting all available data. There are situations in which you may want to skip exporting a row or even an entire column. To achieve this you may hook to the [`columnExporting`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService&member=columnexporting) and/or [`rowExporting`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService&member=rowexporting) events which are fired respectively for each column and/or each row and cancel the respective event by setting the event argument object's [`cancel`](mcp:get_api_reference?platform=angular&component=IRowExportingEventArgs&member=cancel) property to `true`.
 
 The following example will exclude a column from the export if its header is "Age" and if its index is 1:
 
@@ -133,8 +133,8 @@ this.excelExportService.export(this.igxGrid1, new IgxExcelExporterOptions('Expor
 
 The Excel Exporter service has a few more APIs to explore, which are listed below.
 
-- [`IgxExcelExporterService API`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html)
-- [`IgxExcelExporterOptions API`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporteroptions.html)
+- [`IgxExcelExporterService API`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService)
+- [`IgxExcelExporterOptions API`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterOptions)
 
 Grids Excel Exporters:
 
@@ -143,7 +143,7 @@ Grids Excel Exporters:
 
 Additional components that were used:
 
-- [IgxGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
+- [IgxGridComponent API](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 
 <div class="divider"></div>

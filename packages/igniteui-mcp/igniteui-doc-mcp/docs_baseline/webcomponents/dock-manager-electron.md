@@ -38,7 +38,7 @@ For the Dock Manager pane contents we have used **iframe** elements which host d
 
 ### Drag and drop
 
-In order to support dragging panes outside the application window we have replaced the built-in drag/drop which creates in-application floating panes with a custom implementation based on the [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API). We have subscribed to the `PaneHeaderConnected` and `TabHeaderConnected` events which are fired when a header element is connected to the DOM. When a header element is connected we reset the built-in [`dragService`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcpaneheaderelement.html#dragService) and attach `DragStart` and `DragEnd` event listeners.
+In order to support dragging panes outside the application window we have replaced the built-in drag/drop which creates in-application floating panes with a custom implementation based on the [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API). We have subscribed to the `PaneHeaderConnected` and `TabHeaderConnected` events which are fired when a header element is connected to the DOM. When a header element is connected we reset the built-in [`dragService`](mcp:get_api_reference?platform=webcomponents&component=IgcPaneHeaderElement&member=dragService) and attach `DragStart` and `DragEnd` event listeners.
 
 ```ts
 const paneHeaderConnected = (event: CustomEvent<IgcPaneHeaderConnectionEventArgs>) => {
@@ -57,7 +57,7 @@ const paneHeaderConnected = (event: CustomEvent<IgcPaneHeaderConnectionEventArgs
 dockManager.addEventListener('paneHeaderConnected', paneHeaderConnected);
 ```
 
-In the `PaneHeaderDragStart` function we set the [`draggedPane`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#draggedPane) property of the Dock Manager component which will notify it that a drag operation has been started.
+In the `PaneHeaderDragStart` function we set the [`draggedPane`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=draggedPane) property of the Dock Manager component which will notify it that a drag operation has been started.
 
 ```ts
 const paneHeaderDragStart = async (pane: IgcContentPane, event: DragEvent) => {
@@ -67,7 +67,7 @@ const paneHeaderDragStart = async (pane: IgcContentPane, event: DragEvent) => {
 }
 ```
 
-We have subscribed to the `DragOver` and `drop` events of the `document` element. In the `DragOver` listener we notify the Dock Manager that the mouse is dragged over it by setting its [`dropPosition`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#dropPosition)) property. This forces the Dock Manager to display its docking indicators.
+We have subscribed to the `DragOver` and `drop` events of the `document` element. In the `DragOver` listener we notify the Dock Manager that the mouse is dragged over it by setting its [`dropPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=dropPosition)) property. This forces the Dock Manager to display its docking indicators.
 
 ```ts
 const handleDocumentDragOver = (event: DragEvent) => {
@@ -117,7 +117,7 @@ const handleDocumentDrop = async (event: DragEvent) => {
 }
 ```
 
-When a pane is dropped out of its current window, we need to remove the [`draggedPane`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#draggedPane) from its Dock Manager component and update the layout.
+When a pane is dropped out of its current window, we need to remove the [`draggedPane`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=draggedPane) from its Dock Manager component and update the layout.
 
 ```ts
 const draggedPane = dockManager.draggedPane as IgcContentPane;
@@ -155,7 +155,7 @@ For the full source code please clone the [repository](https://github.com/Ignite
 
 ## API References
 
-- [`IgcDockManagerComponent`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html)
-- [`IgcDocumentHost`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcdocumenthost.html)
-- [`IgcDockManagerLayout`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcdockmanagerlayout.html)
-- [`IgcContentPane`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igccontentpane.html)
+- [`IgcDockManagerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent)
+- [`IgcDocumentHost`](mcp:get_api_reference?platform=webcomponents&component=IgcDocumentHost)
+- [`IgcDockManagerLayout`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerLayout)
+- [`IgcContentPane`](mcp:get_api_reference?platform=webcomponents&component=IgcContentPane)

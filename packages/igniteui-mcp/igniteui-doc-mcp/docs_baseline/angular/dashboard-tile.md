@@ -10,7 +10,7 @@ _premium: true
 
 # Angular Dashboard Tile <label class="badge badge--preview">PREVIEW</label>
 
-The Angular Dashboard Tile is a automatic data visualization component which determines via analysis of a DataSource collection/array or single data point what would be the most appropriate visualization to display. It then also provides a further suite of tools in its embedded [`IgxToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html) that let you alter the visualization that is presented in a variety of ways.
+The Angular Dashboard Tile is a automatic data visualization component which determines via analysis of a DataSource collection/array or single data point what would be the most appropriate visualization to display. It then also provides a further suite of tools in its embedded [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) that let you alter the visualization that is presented in a variety of ways.
 
 A wide variety of visualizations may be selected for display depending on the shape of the provided data including, but not limited to: Category Charts, Radial and Polar Charts, Scatter Charts, Geographic Maps, Radial and Linear Gauges, Financial Charts and Stacked Charts.
 
@@ -151,7 +151,7 @@ Depending on what you bind the Dashboard Tile's `DataSource` property to will de
 - [IgxLinear Gauge](linear-gauge.md)
 - [IgxRadialGauge](radial-gauge.md)
 
-The data visualization that is chosen by default is mainly dependent on the schema and the count of the `DataSource` that you have bound. For example, if you bind a single numeric value, you will get a [`IgxRadialGaugeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html), but if you bind a collection of value-label pairs that are easy to distinguish from each other, you will likely get a `XamDataPieChart`. If you bind an `DataSource` that has more value paths, you will receive a [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) with multiple column series or line series, depending mainly on the count of the collection bound. You can also bind to a `ShapeDataSource` or data the appears to contain geographic points to receive a [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html).
+The data visualization that is chosen by default is mainly dependent on the schema and the count of the `DataSource` that you have bound. For example, if you bind a single numeric value, you will get a [`IgxRadialGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent), but if you bind a collection of value-label pairs that are easy to distinguish from each other, you will likely get a `XamDataPieChart`. If you bind an `DataSource` that has more value paths, you will receive a [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) with multiple column series or line series, depending mainly on the count of the collection bound. You can also bind to a `ShapeDataSource` or data the appears to contain geographic points to receive a [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html).
 
 You are not locked into a single visualization when you bind the `DataSource`, and you can tell the control that you want to see a particular visualization by setting its `VisualizationType` property. For example, if you specifically wanted to see a line chart, you could define the Dashboard Tile like so:
 
@@ -245,7 +245,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 
-The visualization or properties of the visualization are also configurable using the [`IgxToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html) at the top of the control. This [`IgxToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html) has the default tools for the current visualization with the addition of four Dashboard Tile specific ones, highlighted below:
+The visualization or properties of the visualization are also configurable using the [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) at the top of the control. This [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) has the default tools for the current visualization with the addition of four Dashboard Tile specific ones, highlighted below:
 
 <img src="../images/dashboard-tile-toolbar.png" alt="Dashboard Tile Toolbar"/>
 
@@ -437,13 +437,13 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## API References
 
-- [`IgxToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html)
+- [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent)
 - [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html)
 - [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)
 - [`IgxDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatapiechartcomponent.html)
 - [`IgxGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicmapcomponent.html)
-- [`IgxLinearGaugeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html)
-- [`IgxRadialGaugeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html)
+- [`IgxLinearGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent)
+- [`IgxRadialGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent)
 
 ## Additional Resources
 

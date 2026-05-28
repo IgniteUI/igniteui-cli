@@ -13,7 +13,7 @@ _premium: true
 
 # React Grid Summaries
 
-The Ignite UI for React Summaries feature in React Grid functions on a per-column level as group footer. React IgrGrid summaries is powerful feature which enables the user to see column information in a separate container with a predefined set of default summary items, depending on the type of data within the column or by implementing a custom  template in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
+The Ignite UI for React Summaries feature in React Grid functions on a per-column level as group footer. React IgrGrid summaries is powerful feature which enables the user to see column information in a separate container with a predefined set of default summary items, depending on the type of data within the column or by implementing a custom  template in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
 ## React Grid Summaries Overview Example
 
@@ -133,9 +133,9 @@ root.render(<Sample/>);
 > [!Note]
 > The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
 
-[`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) summaries can also be enabled on a per-column level in Ignite UI for React, which means that you can activate it only for columns that you need. [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) summaries gives you a predefined set of default summaries, depending on the type of data in the column, so that you can save some time:
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) summaries can also be enabled on a per-column level in Ignite UI for React, which means that you can activate it only for columns that you need. [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) summaries gives you a predefined set of default summaries, depending on the type of data in the column, so that you can save some time:
 
-For `string` and `boolean` [`dataType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#dataType), the following function is available:
+For `string` and `boolean` [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType), the following function is available:
 
 - Count
 
@@ -155,7 +155,7 @@ For `date` data type, the following functions are available:
 
 All available column data types could be found in the official [Column types topic](column-types.md#default-template).
 
-[`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) summaries are enabled per-column by setting [`hasSummary`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#hasSummary) property to **true**. It is also important to keep in mind that the summaries for each column are resolved according to the column data type. In the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) the default column data type is `string`, so if you want `number` or `date` specific summaries you should specify the [`dataType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#dataType) property as `number` or `date`. Note that the summary values will be displayed localized, according to the grid [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#locale) and column [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pipeArgs).
+[`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) summaries are enabled per-column by setting [`hasSummary`](mcp:get_api_reference?platform=react&component=IgrColumn&member=hasSummary) property to **true**. It is also important to keep in mind that the summaries for each column are resolved according to the column data type. In the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) the default column data type is `string`, so if you want `number` or `date` specific summaries you should specify the [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) property as `number` or `date`. Note that the summary values will be displayed localized, according to the grid [`locale`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=locale) and column [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs).
 
 ```tsx
 <IgrGrid autoGenerate={false} height="800px" width="800px">
@@ -170,7 +170,7 @@ All available column data types could be found in the official [Column types top
 
 <!-- ComponentEnd: Grid -->
 
-The other way to enable/disable summaries for a specific column or a list of columns is to use the public method [`enableSummaries`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#enableSummaries)/[`disableSummaries`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#disableSummaries) of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
+The other way to enable/disable summaries for a specific column or a list of columns is to use the public method [`enableSummaries`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=enableSummaries)/[`disableSummaries`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=disableSummaries) of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
 <!-- ComponentStart: Grid -->
 
@@ -201,7 +201,7 @@ const disableSummary = () => {
 
 ### Summary Template
 
-[`summaryTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#summaryTemplate) targets the column summary providing as a context the column summary results.
+[`summaryTemplate`](mcp:get_api_reference?platform=react&component=IgrColumn&member=summaryTemplate) targets the column summary providing as a context the column summary results.
 
 ```tsx
 const summaryTemplate = (ctx: IgrSummaryTemplateContext) => {
@@ -216,7 +216,7 @@ const summaryTemplate = (ctx: IgrSummaryTemplateContext) => {
 <IgrColumn hasSummary={true} summaryTemplate={summaryTemplate}></IgrColumn>
 ```
 
-When a default summary is defined, the height of the summary area is calculated by design depending on the column with the largest number of summaries and the `--ig-size` of the grid. Use the [`summaryRowHeight`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#summaryRowHeight) input property to override the default value. As an argument it expects a number value, and setting a falsy value will trigger the default sizing behavior of the grid footer.
+When a default summary is defined, the height of the summary area is calculated by design depending on the column with the largest number of summaries and the `--ig-size` of the grid. Use the [`summaryRowHeight`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=summaryRowHeight) input property to override the default value. As an argument it expects a number value, and setting a falsy value will trigger the default sizing behavior of the grid footer.
 
 ```css
 /* shared styles are loaded from: */
@@ -483,7 +483,7 @@ root.render(<Sample/>);
 
 ## Disabled Summaries
 
-The [`disabledSummaries`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#disabledSummaries) property provides precise per-column control over the React Grid summary feature. This property enables users to customize the summaries displayed for each column in the IgrGrid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as **\['count', 'min', 'max']** by specifying their summary keys in an array.
+The [`disabledSummaries`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disabledSummaries) property provides precise per-column control over the React Grid summary feature. This property enables users to customize the summaries displayed for each column in the IgrGrid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as **\['count', 'min', 'max']** by specifying their summary keys in an array.
 
 This property can also be modified **dynamically at runtime** through code, providing flexibility to adapt the IgrGrid's summaries to changing application states or user actions.
 
@@ -516,9 +516,9 @@ The following examples illustrate how to use the `disabledSummaries` property to
 
 For `UnitPrice`, default summaries like `count`, `sum`, and `average` are disabled, leaving others like `min` and `max` active.
 
-For `UnitsInStock`, custom summaries such as `discontinued` and `totalDiscontinued` are excluded using the [`disabledSummaries`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#disabledSummaries) property.
+For `UnitsInStock`, custom summaries such as `discontinued` and `totalDiscontinued` are excluded using the [`disabledSummaries`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disabledSummaries) property.
 
-At runtime, summaries can also be dynamically disabled using the [`disabledSummaries`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#disabledSummaries) property. For example, you can set or update the property on specific columns programmatically to adapt the displayed summaries based on user actions or application state changes.
+At runtime, summaries can also be dynamically disabled using the [`disabledSummaries`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disabledSummaries) property. For example, you can set or update the property on specific columns programmatically to adapt the displayed summaries based on user actions or application state changes.
 
 ```css
 .grid-wrapper {
@@ -1080,7 +1080,7 @@ root.render(<DisabledSummariesSample />);
 
 ## Formatting summaries
 
-By default, summary results, produced by the built-in summary operands, are localized and formatted according to the grid [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#locale) and column [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pipeArgs). When using custom operands, the [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#locale) and [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pipeArgs) are not applied. If you want to change the default appearance of the summary results, you may format them using the [`summaryFormatter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#summaryFormatter) property.
+By default, summary results, produced by the built-in summary operands, are localized and formatted according to the grid [`locale`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=locale) and column [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs). When using custom operands, the [`locale`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=locale) and [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) are not applied. If you want to change the default appearance of the summary results, you may format them using the [`summaryFormatter`](mcp:get_api_reference?platform=react&component=IgrColumn&member=summaryFormatter) property.
 
 ```tsx
 const summaryFormatter = (summary: IgrSummaryResult, summaryOperand: IgrSummaryOperand): string => {
@@ -1208,23 +1208,23 @@ root.render(<Sample/>);
 
 ## Summaries with Group By
 
-When you have grouped by columns, the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) allows you to change the summary position and calculation mode using the [`summaryCalculationMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#summaryCalculationMode) and [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#summaryPosition) properties. Along with these two properties the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) exposes and [`showSummaryOnCollapse`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#showSummaryOnCollapse) property which allows you to determine whether the summary row stays visible when the group row that refers to is collapsed.
+When you have grouped by columns, the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) allows you to change the summary position and calculation mode using the [`summaryCalculationMode`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=summaryCalculationMode) and [`summaryPosition`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=summaryPosition) properties. Along with these two properties the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) exposes and [`showSummaryOnCollapse`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=showSummaryOnCollapse) property which allows you to determine whether the summary row stays visible when the group row that refers to is collapsed.
 
-The available values of the [`summaryCalculationMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#summaryCalculationMode) property are:
+The available values of the [`summaryCalculationMode`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=summaryCalculationMode) property are:
 
 - `RootLevelOnly` - Summaries are calculated only for the root level.
 - `ChildLevelsOnly` - Summaries are calculated only for the child levels.
 - `RootAndChildLevels` - Summaries are calculated for both root and child levels. This is the default value.
 
-The available values of the [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#summaryPosition) property are:
+The available values of the [`summaryPosition`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=summaryPosition) property are:
 
 - `Top` - The summary row appears before the group by row children.
 - `Bottom` - The summary row appears after the group by row children. This is the default value.
 
-The [`showSummaryOnCollapse`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#showSummaryOnCollapse) property is boolean. Its default value is set to **false**, which means that the summary row would be hidden when the group row is collapsed. If the property is set to **true** the summary row stays visible when group row is collapsed.
+The [`showSummaryOnCollapse`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=showSummaryOnCollapse) property is boolean. Its default value is set to **false**, which means that the summary row would be hidden when the group row is collapsed. If the property is set to **true** the summary row stays visible when group row is collapsed.
 
 > [!Note]
-> The [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#summaryPosition) property applies only for the child level summaries. The root level summaries appear always fixed at the bottom of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
+> The [`summaryPosition`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=summaryPosition) property applies only for the child level summaries. The root level summaries appear always fixed at the bottom of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
 ### Demo
 
@@ -1714,11 +1714,11 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrSummaryOperand`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrsummaryoperand.html)
-- [`IgrNumberSummaryOperand`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrnumbersummaryoperand.html)
-- [`IgrDateSummaryOperand`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrdatesummaryoperand.html)
-- [`columnGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnGroup)
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
+- [`IgrSummaryOperand`](mcp:get_api_reference?platform=react&component=IgrSummaryOperand)
+- [`IgrNumberSummaryOperand`](mcp:get_api_reference?platform=react&component=IgrNumberSummaryOperand)
+- [`IgrDateSummaryOperand`](mcp:get_api_reference?platform=react&component=IgrDateSummaryOperand)
+- [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 
 ## Additional Resources
 

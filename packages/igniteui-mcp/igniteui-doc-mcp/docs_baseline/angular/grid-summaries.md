@@ -210,7 +210,7 @@ export class GridSample3Component {
 > [!NOTE]
 > The summary of the column is a **function of all column values**, unless filtering is applied, then the summary of the column will be **function of the filtered result values**
 **Grid summaries** can also be enabled on a per-column level in Ignite UI for Angular, which means that you can activate it only for columns that you need. Grid summaries gives you a predefined set of default summaries, depending on the type of data in the column, so that you can save some time:
-For `string` and `boolean` [`data types`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#dataType), the following function is available:
+For `string` and `boolean` [`data types`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=dataType), the following function is available:
 - count
 For `number`, `currency` and `percent` data types, the following functions are available:
 - count
@@ -223,7 +223,7 @@ For `date` data type, the following functions are available:
 - earliest
 - latest
 All available column data types could be found in the official [Column types topic](column-types.md#default-template).
-**Grid summaries** are enabled per-column by setting [`hasSummary`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#hasSummary) property to `true`. It is also important to keep in mind that the summaries for each column are resolved according to the column data type. In the `igx-grid` the default column data type is `string`, so if you want `number` or `date` specific summaries you should specify the [`dataType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#datatype) property as `number` or `date`. Note that the summary values will be displayed localized, according to the grid [`locale`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#locale) and column [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#pipeArgs).
+**Grid summaries** are enabled per-column by setting [`hasSummary`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=hasSummary) property to `true`. It is also important to keep in mind that the summaries for each column are resolved according to the column data type. In the `igx-grid` the default column data type is `string`, so if you want `number` or `date` specific summaries you should specify the [`dataType`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=datatype) property as `number` or `date`. Note that the summary values will be displayed localized, according to the grid [`locale`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=locale) and column [`pipeArgs`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=pipeArgs).
 ```html
 <igx-grid #grid1 [data]="data" [autoGenerate]="false" height="800px" width="800px" (columnInit)="initColumn($event)">
     <igx-column field="ProductID" header="Product ID" width="200px" [sortable]="true"></igx-column>
@@ -231,7 +231,7 @@ All available column data types could be found in the official [Column types top
     <igx-column field="ReorderLevel" width="200px" [editable]="true" [dataType]="'number'" [hasSummary]="true"></igx-column>
 </igx-grid>
 ```
-The other way to enable/disable summaries for a specific column or a list of columns is to use the public method [`enableSummaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#enableSummaries)/[`disableSummaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#disableSummaries) of the **igx-grid**.
+The other way to enable/disable summaries for a specific column or a list of columns is to use the public method [`enableSummaries`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=enableSummaries)/[`disableSummaries`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=disableSummaries) of the **igx-grid**.
 ```html
 <igx-grid #grid1 [data]="data" [autoGenerate]="false" height="800px" width="800px" (columnInit)="initColumn($event)" >
     <igx-column field="ProductID" header="Product ID" width="200px"  [sortable]="true"></igx-column>
@@ -253,7 +253,7 @@ public disableSummary() {
 }
 ```
 ## Custom Grid Summaries
-If these functions do not fulfill your requirements you can provide a custom summary for the specific columns. In order to achieve this you have to override one of the base classes [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html), [`IgxNumberSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html) or [`IgxDateSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html) according to the column data type and your needs. This way you can redefine the existing function or you can add new functions. [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html) class provides the default implementation only for the [`count`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html#count) method. [`IgxNumberSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html) extends [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html) and provides implementation for the [`min`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html#min), [`max`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html#max), [`sum`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html#sum) and [`average`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html#average). [`IgxDateSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html) extends [`IgxSummaryOperand`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html) and additionally gives you [`earliest`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html#earliest) and [`latest`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html#latest).
+If these functions do not fulfill your requirements you can provide a custom summary for the specific columns. In order to achieve this you have to override one of the base classes [`IgxSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxSummaryOperand), [`IgxNumberSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand) or [`IgxDateSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxDateSummaryOperand) according to the column data type and your needs. This way you can redefine the existing function or you can add new functions. [`IgxSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxSummaryOperand) class provides the default implementation only for the [`count`](mcp:get_api_reference?platform=angular&component=IgxSummaryOperand&member=count) method. [`IgxNumberSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand) extends [`IgxSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxSummaryOperand) and provides implementation for the [`min`](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand&member=min), [`max`](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand&member=max), [`sum`](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand&member=sum) and [`average`](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand&member=average). [`IgxDateSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxDateSummaryOperand) extends [`IgxSummaryOperand`](mcp:get_api_reference?platform=angular&component=IgxSummaryOperand) and additionally gives you [`earliest`](mcp:get_api_reference?platform=angular&component=IgxDateSummaryOperand&member=earliest) and [`latest`](mcp:get_api_reference?platform=angular&component=IgxDateSummaryOperand&member=latest).
 ```typescript
 import { IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxSummaryOperand, IgxNumberSummaryOperand, IgxDateSummaryOperand } from 'igniteui-angular/grids/core';
@@ -274,8 +274,8 @@ class MySummary extends IgxNumberSummaryOperand {
     }
 }
 ```
-As seen in the examples, the base classes expose the [`operate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html#operate) method, so you can choose to get all default summaries and modify the result, or calculate entirely new summary results.
-The method returns a list of [`IgxSummaryResult`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxsummaryresult.html).
+As seen in the examples, the base classes expose the [`operate`](mcp:get_api_reference?platform=angular&component=IgxSummaryOperand&member=operate) method, so you can choose to get all default summaries and modify the result, or calculate entirely new summary results.
+The method returns a list of [`IgxSummaryResult`](mcp:get_api_reference?platform=angular&component=IgxSummaryResult).
 ```typescript
 interface IgxSummaryResult {
     key: string;
@@ -286,8 +286,8 @@ interface IgxSummaryResult {
 and take optional parameters for calculating the summaries.
 See [Custom summaries, which access all data](#custom-summaries-which-access-all-data) section below.
 > [!NOTE]
-> In order to calculate the summary row height properly, the Grid needs the [`operate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html#operate) method to always return an array of [`IgxSummaryResult`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxsummaryresult.html) with the proper length even when the data is empty.
-And now let's add our custom summary to the column `UnitsInStock`. We will achieve that by setting the [`summaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#summaries) property to the class we create below.
+> In order to calculate the summary row height properly, the Grid needs the [`operate`](mcp:get_api_reference?platform=angular&component=IgxSummaryOperand&member=operate) method to always return an array of [`IgxSummaryResult`](mcp:get_api_reference?platform=angular&component=IgxSummaryResult) with the proper length even when the data is empty.
+And now let's add our custom summary to the column `UnitsInStock`. We will achieve that by setting the [`summaries`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=summaries) property to the class we create below.
 ```html
 <igx-grid #grid1 [data]="data" [autoGenerate]="false" height="800px" width="800px" (columnInit)="initColumn($event)" >
     <igx-column field="ProductID" width="200px"  [sortable]="true">
@@ -417,9 +417,9 @@ export class GridAllDataSummaryComponent {
     </ng-template>
 </igx-column>
 ```
-When a default summary is defined, the height of the summary area is calculated by design depending on the column with the largest number of summaries and the size of the grid. Use the [summaryRowHeight](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#summaryRowHeight) input property to override the default value. As an argument it expects a number value, and setting a false value will trigger the default sizing behavior of the grid footer.
+When a default summary is defined, the height of the summary area is calculated by design depending on the column with the largest number of summaries and the size of the grid. Use the [summaryRowHeight](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=summaryRowHeight) input property to override the default value. As an argument it expects a number value, and setting a false value will trigger the default sizing behavior of the grid footer.
 > [!NOTE]
-> Column summary template could be defined through API by setting the column [summaryTemplate](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#summaryTemplate) property to the required TemplateRef.
+> Column summary template could be defined through API by setting the column [summaryTemplate](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=summaryTemplate) property to the required TemplateRef.
 ```typescript
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { IgxColumnComponent, IgxNumberSummaryOperand, IgxSummaryTemplateDirective } from 'igniteui-angular/grids/core';
@@ -604,7 +604,7 @@ igx-buttongroup {
 }
 ```
 ## Disable Summaries
-The [`disabledSummaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#disabledSummaries) property provides precise per-column control over the Ignite UI for Angular grid summary feature. This property enables users to customize the summaries displayed for each column in the grid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as `['count', 'min', 'max']`, by specifying their summary keys in an array.
+The [`disabledSummaries`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=disabledSummaries) property provides precise per-column control over the Ignite UI for Angular grid summary feature. This property enables users to customize the summaries displayed for each column in the grid, ensuring that only the most relevant and meaningful data is shown. For example, you can exclude specific summary types, such as `['count', 'min', 'max']`, by specifying their summary keys in an array.
 This property can also be modified **dynamically at runtime** through code, providing flexibility to adapt the grid's summaries to changing application states or user actions.
 The following examples illustrate how to use the `disabledSummaries` property to manage summaries for different columns and exclude specific default and custom summary types in the Ignite UI for Angular grid:
 ```html
@@ -1065,7 +1065,7 @@ export class GridDisableSummariesComponent implements OnInit, AfterViewInit {
 }
 ```
 ## Formatting summaries
-By default, summary results, produced by the built-in summary operands, are localized and formatted according to the grid [`locale`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#locale) and column [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#pipeArgs). When using custom operands, the `locale` and `pipeArgs` are not applied. If you want to change the default appearance of the summary results, you may format them using the [`summaryFormatter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#summaryFormatter) property.
+By default, summary results, produced by the built-in summary operands, are localized and formatted according to the grid [`locale`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=locale) and column [`pipeArgs`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=pipeArgs). When using custom operands, the `locale` and `pipeArgs` are not applied. If you want to change the default appearance of the summary results, you may format them using the [`summaryFormatter`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=summaryFormatter) property.
 ```typescript
 public dateSummaryFormat(summary: IgxSummaryResult, summaryOperand: IgxSummaryOperand): string {
     const result = summary.summaryResult;
@@ -1149,17 +1149,17 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
 }
 ```
 ## Summaries with Group By
-When you have grouped by columns, the Grid allows you to change the summary position and calculation mode using the [`summaryCalculationMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#summaryCalculationMode) and [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#summaryPosition) properties. Along with these two properties the IgxGrid exposes and [`showSummaryOnCollapse`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#showSummaryOnCollapse) property which allows you to determine whether the summary row stays visible when the group row that refers to is collapsed.
-The available values of the [`summaryCalculationMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#summaryCalculationMode) property are:
+When you have grouped by columns, the Grid allows you to change the summary position and calculation mode using the [`summaryCalculationMode`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=summaryCalculationMode) and [`summaryPosition`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=summaryPosition) properties. Along with these two properties the IgxGrid exposes and [`showSummaryOnCollapse`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=showSummaryOnCollapse) property which allows you to determine whether the summary row stays visible when the group row that refers to is collapsed.
+The available values of the [`summaryCalculationMode`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=summaryCalculationMode) property are:
 - rootLevelOnly - Summaries are calculated only for the root level.
 - childLevelsOnly - Summaries are calculated only for the child levels.
 - rootAndChildLevels - Summaries are calculated for both root and child levels. This is the default value.
-The available values of the [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#summaryPosition) property are:
+The available values of the [`summaryPosition`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=summaryPosition) property are:
 - top - The summary row appears before the group by row children.
 - bottom - The summary row appears after the group by row children. This is the default value.
-The [`showSummaryOnCollapse`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#showSummaryOnCollapse) property is boolean. Its default value is set to **false**, which means that the summary row would be hidden when the group row is collapsed. If the property is set to **true** the summary row stays visible when group row is collapsed.
+The [`showSummaryOnCollapse`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=showSummaryOnCollapse) property is boolean. Its default value is set to **false**, which means that the summary row would be hidden when the group row is collapsed. If the property is set to **true** the summary row stays visible when group row is collapsed.
 > [!NOTE]
-> The [`summaryPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#summaryPosition) property applies only for the child level summaries. The root level summaries appear always fixed at the bottom of the Grid.
+> The [`summaryPosition`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=summaryPosition) property applies only for the child level summaries. The root level summaries appear always fixed at the bottom of the Grid.
 ### Demo
 ```typescript
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
@@ -1330,8 +1330,8 @@ igx-buttongroup{
 ```
 <div class="divider--half"></div>
 ## Exporting Summaries
-There is an [`exportSummaries`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxExcelExporterOptions.html#exportSummaries) option in `IgxExcelExporterOptions` that specifies whether the exported data should include the grid's summaries. Default `exportSummaries` value is **false**.
-The [`IgxExcelExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxExcelExporterService.html) will export the default summaries for all column types as their equivalent excel functions so they will continue working properly when the sheet is modified. Try it for yourself in the example below:
+There is an [`exportSummaries`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterOptions&member=exportSummaries) option in `IgxExcelExporterOptions` that specifies whether the exported data should include the grid's summaries. Default `exportSummaries` value is **false**.
+The [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) will export the default summaries for all column types as their equivalent excel functions so they will continue working properly when the sheet is modified. Try it for yourself in the example below:
 ```typescript
 import { Component, ViewChild, inject } from '@angular/core';
 import { ColumnType, IgxSummaryResult } from 'igniteui-angular/core';
@@ -1784,14 +1784,14 @@ $custom-theme: grid-summary-theme(
 }
 ```
 ## API References
-- [IgxGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
+- [IgxGridComponent API](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 - [IgxGridSummaries Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-summary-theme)
-- [IgxSummaryOperand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsummaryoperand.html)
-- [IgxNumberSummaryOperand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnumbersummaryoperand.html)
-- [IgxDateSummaryOperand](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatesummaryoperand.html)
-- [IgxColumnGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumngroupcomponent.html)
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
+- [IgxSummaryOperand](mcp:get_api_reference?platform=angular&component=IgxSummaryOperand)
+- [IgxNumberSummaryOperand](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand)
+- [IgxDateSummaryOperand](mcp:get_api_reference?platform=angular&component=IgxDateSummaryOperand)
+- [IgxColumnGroupComponent](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Grid overview](grid.md)

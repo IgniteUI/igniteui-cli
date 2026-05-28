@@ -55,6 +55,66 @@ export function searchApiDocs(
   return hits.slice(0, limit);
 }
 
+const MEMBER_SECTIONS: ReadonlyArray<{ key: 'property' | 'method' | 'event'; aliases: ReadonlyArray<string> }> = [
+  { key: 'property', aliases: ['properties', 'accessors'] },
+  { key: 'method', aliases: ['methods', 'functions'] },
+  { key: 'event', aliases: ['events', 'outputs', 'fires'] },
+];
+
+// Allow TypeScript modifier keywords (static, readonly, static readonly, ...)
+// between the bullet marker and the member name in **bold**.
+const MEMBER_BULLET_RE = /^\s*[-*]\s+(?:\w+\s+){0,3}\*\*([A-Za-z_$][A-Za-z0-9_$]*)\b/;
+
+export interface MemberMatch {
+  section: 'property' | 'method' | 'event';
+  name: string;
+  line: string;
+}
+
+// When the markdown lacks ## Properties / ## Methods / ## Events headings
+// (the shape produced by Astro's llms-full.txt), classify each bullet from
+// its syntax:
+//   - **name**(args): T   → method (signature follows the name)
+//   - **name**: `EventEmitter<...>` → event
+//   - otherwise           → property
+function inferSectionFromBullet(line: string): MemberMatch['section'] {
+  const afterName = line.replace(/^.*?\*\*[A-Za-z_$][A-Za-z0-9_$]*\*\*/, '');
+  if (afterName.startsWith('(')) return 'method';
+  // Angular/WC/React emit events as EventEmitter<T>; Blazor uses EventCallback<T>;
+  // Angular signal-based outputs use OutputEmitterRef<T>.
+  if (/\b(?:EventEmitter|EventCallback|OutputEmitterRef)\b/.test(afterName)) return 'event';
+  return 'property';
+}
+
+export function extractMember(markdown: string, member: string): MemberMatch | null {
+  const lines = markdown.split(/\r?\n/);
+  const memberLower = member.toLowerCase();
+
+  for (const caseInsensitive of [false, true]) {
+    let currentSection: MemberMatch['section'] | null = null;
+
+    for (const line of lines) {
+      const heading = line.match(/^##\s+(.+?)\s*$/);
+      if (heading) {
+        const normalized = heading[1].toLowerCase().replace(/\s+/g, ' ').trim();
+        currentSection = MEMBER_SECTIONS.find(s => s.aliases.includes(normalized))?.key ?? null;
+        continue;
+      }
+
+      const bullet = MEMBER_BULLET_RE.exec(line);
+      if (!bullet) continue;
+      const name = bullet[1].trim();
+      const matches = caseInsensitive ? name.toLowerCase() === memberLower : name === member;
+      if (matches) {
+        const section = currentSection ?? inferSectionFromBullet(line);
+        return { section, name, line: line.trim() };
+      }
+    }
+  }
+
+  return null;
+}
+
 export function extractSection(markdown: string, section: string): string | null {
   const headingMap: Record<string, string[]> = {
     properties: ['properties', 'accessors'],
@@ -96,9 +156,27 @@ export function extractSection(markdown: string, section: string): string | null
     matches.push(lines.slice(currentStart).join('\n').trimEnd());
   }
 
-  if (matches.length === 0) {
-    return null;
+  if (matches.length > 0) {
+    return matches.join('\n\n');
   }
 
-  return matches.join('\n\n');
+  // Fallback for flat bullet lists (real llms-full.txt shape — no ## headings).
+  // Classify each bullet by its syntax and return only those matching the target.
+  const sectionKey = section.toLowerCase();
+  const targetKind: MemberMatch['section'] | null =
+    sectionKey === 'properties' || sectionKey === 'accessors' ? 'property' :
+    sectionKey === 'methods'    || sectionKey === 'functions' ? 'method' :
+    sectionKey === 'events'     || sectionKey === 'outputs' || sectionKey === 'fires' ? 'event' :
+    null;
+  if (!targetKind) return null;
+
+  const bullets: string[] = [];
+  for (const line of lines) {
+    if (!MEMBER_BULLET_RE.test(line)) continue;
+    if (inferSectionFromBullet(line) === targetKind) {
+      bullets.push(line.trim());
+    }
+  }
+
+  return bullets.length > 0 ? bullets.join('\n') : null;
 }

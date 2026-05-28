@@ -100,7 +100,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgrCarousel`](mcp:get_api_reference?platform=react&component=IgrCarousel), its necessary CSS, and register its module, like so:
 
 ```tsx
 import { IgrCarousel, IgrCarouselSlide } from 'igniteui-react';
@@ -109,9 +109,9 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Now that you have the Ignite UI for React Carousel imported, you can start with a basic configuration of the [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html) and its slides.
+Now that you have the Ignite UI for React Carousel imported, you can start with a basic configuration of the [`IgrCarousel`](mcp:get_api_reference?platform=react&component=IgrCarousel) and its slides.
 
-Use the [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html) selector to wrap your slides. The slides may feature any valid html content inside, including other components.
+Use the [`IgrCarousel`](mcp:get_api_reference?platform=react&component=IgrCarousel) selector to wrap your slides. The slides may feature any valid html content inside, including other components.
 
 ```tsx
 <IgrCarousel>
@@ -148,7 +148,7 @@ If you want a slide to be active by default, use the `Active` attribute:
 
 ### Carousel Configuration
 
-By default, the [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html) has its [`disableLoop`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#disableLoop) property set to **false** (looping occurs when the first slide comes after the last by navigating using the Next action, or when the last slide comes after the first by using the Previous action). The looping behavior can be disabled by setting the value of the [`disableLoop`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#disableLoop) property to **true**.
+By default, the [`IgrCarousel`](mcp:get_api_reference?platform=react&component=IgrCarousel) has its [`disableLoop`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=disableLoop) property set to **false** (looping occurs when the first slide comes after the last by navigating using the Next action, or when the last slide comes after the first by using the Previous action). The looping behavior can be disabled by setting the value of the [`disableLoop`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=disableLoop) property to **true**.
 
 ```tsx
 <IgrCarousel disableLoop={true}>
@@ -156,7 +156,7 @@ By default, the [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-
 </IgrCarousel>
 ```
 
-To keep track of each slide index, the carousel has indicators that are positioned at the `end` of the carousel by default. In order to change this behavior, use the [`indicatorsOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#indicatorsOrientation) property and assign it to `start`.
+To keep track of each slide index, the carousel has indicators that are positioned at the `end` of the carousel by default. In order to change this behavior, use the [`indicatorsOrientation`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=indicatorsOrientation) property and assign it to `start`.
 
 ```tsx
 <IgrCarousel indicatorsOrientation={CarouselIndicatorsOrientation.Start}>
@@ -164,7 +164,7 @@ To keep track of each slide index, the carousel has indicators that are position
 </IgrCarousel>
 ```
 
-By default, the [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html) displays its navigation buttons and indicators. Use the [`hideIndicators`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#hideIndicators) property to hide the indicators and the [`hideNavigation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#hideNavigation) property to hide the navigation buttons.
+By default, the [`IgrCarousel`](mcp:get_api_reference?platform=react&component=IgrCarousel) displays its navigation buttons and indicators. Use the [`hideIndicators`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=hideIndicators) property to hide the indicators and the [`hideNavigation`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=hideNavigation) property to hide the navigation buttons.
 
 ```tsx
 <IgrCarousel hideNavigation={true} hideIndicators={true}>
@@ -172,7 +172,7 @@ By default, the [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-
 </IgrCarousel>
 ```
 
-The [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html) supports vertical mode. Use the [`vertical`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#vertical) property to enable it.
+The [`IgrCarousel`](mcp:get_api_reference?platform=react&component=IgrCarousel) supports vertical mode. Use the [`vertical`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=vertical) property to enable it.
 
 ```tsx
 <IgrCarousel vertical={true}>
@@ -182,7 +182,7 @@ The [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-react/docs/t
 
 ### Custom indicators
 
-To add React custom carousel indicators, use the [`IgrCarouselIndicator`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarouselindicator.html):
+To add React custom carousel indicators, use the [`IgrCarouselIndicator`](mcp:get_api_reference?platform=react&component=IgrCarouselIndicator):
 
 ```tsx
 <IgrCarousel>
@@ -382,7 +382,7 @@ Animated slide transitions provide the end-users a nice experience when interact
 
 The carousel is configured to use the `slide` animation by default, but it also supports `fade` as an alternative animation.
 
-Use the [`animationType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#animationType) property to change the animation.
+Use the [`animationType`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=animationType) property to change the animation.
 
 ```tsx
 <IgrCarousel animationType="fade">
@@ -390,7 +390,7 @@ Use the [`animationType`](https://www.infragistics.com/products/ignite-ui-react/
 </IgrCarousel>
 ```
 
-Setting `none` to the [`animationType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#animationType) property disables the animations.
+Setting `none` to the [`animationType`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=animationType) property disables the animations.
 
 ### Demo
 
@@ -644,11 +644,11 @@ The carousel [animations](carousel.md#animations) are fully supported on touch d
 
 ### Automatic transitioning
 
-The [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html) can be easily configured to change the slides automatically, without any user interaction. This way you can create your own slideshow by only setting a transition interval to the [`interval`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#interval) property, which determines the amount of time in milliseconds between slides transition.
+The [`IgrCarousel`](mcp:get_api_reference?platform=react&component=IgrCarousel) can be easily configured to change the slides automatically, without any user interaction. This way you can create your own slideshow by only setting a transition interval to the [`interval`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=interval) property, which determines the amount of time in milliseconds between slides transition.
 
 > [!NOTE]
 > Hovering the mouse over any carousel content or moving keyboard focus to any of the carousel content pauses automatic transitioning. Automatic transitioning resumes when the mouse moves away from the carousel or when keyboard focus moves out of the carousel content.
-> This can be prevented by setting [`disablePauseOnInteraction`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#disablePauseOnInteraction) property to **true**.
+> This can be prevented by setting [`disablePauseOnInteraction`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=disablePauseOnInteraction) property to **true**.
 
 ```tsx
 <IgrCarousel interval={2000} disablePauseOnInteraction={true}>
@@ -662,11 +662,11 @@ Let's create a fully automated carousel with looping enabled. We will configure 
 
 To achieve this goal, we have to do the following configurations to the carousel:
 
-- enable the [`disablePauseOnInteraction`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#disablePauseOnInteraction) property
-- enable the [`hideNavigation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#hideNavigation) property
-- enable the [`vertical`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#vertical) property
-- add transition [`interval`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#interval)
-- add custom [`IgrCarouselIndicator`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarouselindicator.html) for each slide
+- enable the [`disablePauseOnInteraction`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=disablePauseOnInteraction) property
+- enable the [`hideNavigation`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=hideNavigation) property
+- enable the [`vertical`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=vertical) property
+- add transition [`interval`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=interval)
+- add custom [`IgrCarouselIndicator`](mcp:get_api_reference?platform=react&component=IgrCarouselIndicator) for each slide
 
 Our carousel will look like this in the template:
 
@@ -846,7 +846,7 @@ root.render(<CarouselThumbnail />);
 
 - **Attributes**
   - [aria-roledescription](https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription) set to "carousel".
-  - [aria-live](https://www.w3.org/TR/wai-aria-1.1/#aria-live) - used to set the priority with which screen reader should treat updates to live regions - the possible settings are: **off** and **polite**. The default setting is **polite** and is set to the element that serves as the container for the set of slides. When the [`interval`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html#interval) option is set and the carousel is in playing state, the **aria-live** attribute would be set to **off**.
+  - [aria-live](https://www.w3.org/TR/wai-aria-1.1/#aria-live) - used to set the priority with which screen reader should treat updates to live regions - the possible settings are: **off** and **polite**. The default setting is **polite** and is set to the element that serves as the container for the set of slides. When the [`interval`](mcp:get_api_reference?platform=react&component=IgrCarousel&member=interval) option is set and the carousel is in playing state, the **aria-live** attribute would be set to **off**.
   - [aria-label](https://www.w3.org/TR/wai-aria/states_and_properties#aria-label) (navigation buttons) - "Previous slide"/"Next slide".
 
 #### Slide component
@@ -864,12 +864,12 @@ root.render(<CarouselThumbnail />);
 
 ## API References
 
-- [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html)
-- [`IgrCarouselSlide`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarouselslide.html)
-- [`IgrCarouselIndicator`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarouselindicator.html)
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
-- [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html)
-- [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html)
+- [`IgrCarousel`](mcp:get_api_reference?platform=react&component=IgrCarousel)
+- [`IgrCarouselSlide`](mcp:get_api_reference?platform=react&component=IgrCarouselSlide)
+- [`IgrCarouselIndicator`](mcp:get_api_reference?platform=react&component=IgrCarouselIndicator)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
+- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
 
 ## Additional Resources
 

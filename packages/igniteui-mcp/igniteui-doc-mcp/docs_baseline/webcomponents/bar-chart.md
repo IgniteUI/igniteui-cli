@@ -15,7 +15,7 @@ The Ignite UI for Web Components Bar Chart, Bar Graph, or Horizontal Bar Chart, 
 
 ## Web Components Bar Chart Example
 
-You can create Web Components Bar Chart in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control by binding your data sources to multiple [`IgcBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbarseriescomponent.html), as shown in the example below:
+You can create Web Components Bar Chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data sources to multiple [`IgcBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent), as shown in the example below:
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -103,7 +103,7 @@ These use cases are commonly used for the following scenarios:
 
 ## Web Components Bar Chart with Single Series
 
-Bar Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the left to right of the chart towards the values of data points. You can create this type of chart in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control by binding your data to a [`IgcBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbarseriescomponent.html), as shown in the example below:
+Bar Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the left to right of the chart towards the values of data points. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent), as shown in the example below:
 
 ```typescript
 export class OnlineShoppingSearchesItem {
@@ -143,7 +143,7 @@ export class OnlineShoppingSearches extends Array<OnlineShoppingSearchesItem> {
 
 ## Web Components Bar Chart with Multiple Series
 
-The Bar Chart is able to render multiple bars per category for comparison purposes. In this example, the Bar Chart is comparing box office revenue amongst popular movie franchises. You can create this type of chart in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control by binding your data to multiple [`IgcBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbarseriescomponent.html), as shown in the example below:
+The Bar Chart is able to render multiple bars per category for comparison purposes. In this example, the Bar Chart is comparing box office revenue amongst popular movie franchises. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to multiple [`IgcBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent), as shown in the example below:
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -181,7 +181,7 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 
 ## Web Components Bar Chart Styling
 
-The Bar Chart can be styled, and allows for the ability to use [annotation values](../features/chart-annotations.md) for each bar, for example, to demonstrate percent comparisons. You can create this type of chart in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control by binding your data to a [`IgcBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbarseriescomponent.html) and adding a [`IgcCalloutLayerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccalloutlayercomponent.html), as shown in the example below:
+The Bar Chart can be styled, and allows for the ability to use [annotation values](../features/chart-annotations.md) for each bar, for example, to demonstrate percent comparisons. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent) and adding a [`IgcCalloutLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent), as shown in the example below:
 
 ```typescript
 export class OnlineShoppingSearchesItem {
@@ -225,7 +225,7 @@ A Stacked Bar Chart, or Stacked Bar Graph, is a type of category chart that is u
 
 The Stacked Bar Chart differs from the Bar Chart in that the data points representing your data are stacked next to each other horizontally to visually group your data. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the X-Axis, and all negative values are grouped on the negative side of the X-Axis.
 
-You can create this type of chart in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control by binding your data to a [`IgcStackedBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcstackedbarseriescomponent.html), as shown in the example below:
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent), as shown in the example below:
 
 ```typescript
 export class EnergyRenewableConsumptionItem {
@@ -268,7 +268,7 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 
 The Web Components Stacked 100% Bar Chart is identical to the Web Components Stacked Bar Chart in all aspects except in their treatment of the values on X-Axis (bottom labels of the chart). Instead of presenting a direct representation of the data, the stacked 100 bar chart presents the data in terms of percent of the sum of all values in a data point.
 
-You can create this type of chart in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control by binding your data to a [`IgcStacked100BarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcstacked100barseriescomponent.html), as shown in the example below:
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100BarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent), as shown in the example below:
 
 ```typescript
 export class EnergyRenewableConsumptionItem {
@@ -321,10 +321,10 @@ You can find more information about related chart types in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html)
+- [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
 - `ItemsSource`
-- [`IgcBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbarseriescomponent.html)
-- [`IgcCalloutLayerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccalloutlayercomponent.html)
-- [`IgcStackedBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcstackedbarseriescomponent.html)
-- [`IgcStacked100BarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcstacked100barseriescomponent.html)
-- [`IgcStackedBarSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcstackedbarseriescomponent.html)
+- [`IgcBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent)
+- [`IgcCalloutLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent)
+- [`IgcStackedBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent)
+- [`IgcStacked100BarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent)
+- [`IgcStackedBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent)

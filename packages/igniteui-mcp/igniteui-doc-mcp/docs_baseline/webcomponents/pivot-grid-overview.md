@@ -14,8 +14,8 @@ The Web Components Pivot Grid is used for summing up and representing voluminous
 
 The Web Components Pivot Grid presents data in a pivot table and helps users performing complex analysis on the supplied data set. This sophisticated Pivot Grid control is used for organizing, summarizing, and filtering large volumes of data which is later displayed in a cross-table format. Key features of an Web Components Pivot Grid are row dimensions, column dimensions, aggregations, and filters.
 
-The [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html) gives the ability to users to configure and display their data in a multi-dimensional pivot table structure.
-The rows and columns represent distinct data groups, and the data cell values represent aggregations. This allows complex data analysis based on a simple flat data set. The [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html) is a feature-rich pivot table that provides easy configuration of the different dimensions and values as well as additional data operations on them like filtering and sorting.
+The [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent) gives the ability to users to configure and display their data in a multi-dimensional pivot table structure.
+The rows and columns represent distinct data groups, and the data cell values represent aggregations. This allows complex data analysis based on a simple flat data set. The [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent) is a feature-rich pivot table that provides easy configuration of the different dimensions and values as well as additional data operations on them like filtering and sorting.
 
 ## Web Components Pivot Grid Example
 
@@ -104,7 +104,7 @@ export class PivotSalesData extends Array<PivotSalesDataItem> {
 
 ## Getting Started With Web Components Pivot Grid
 
-The Web Components IgcPivotGrid can be configured via the [`pivotConfiguration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#pivotConfiguration) property.
+The Web Components IgcPivotGrid can be configured via the [`pivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) property.
 
 ```html
 <igc-pivot-grid #grid1 data="data" pivot-configuration="pivotConfigHierarchy">
@@ -117,13 +117,13 @@ A filter can also be defined via the **filters** configuration property. It can 
 
 ### Dimensions Configuration
 
-Each basic dimension configuration requires a [`memberName`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdimension.html#memberName) that matches a field from the provided **data**.
+Each basic dimension configuration requires a [`memberName`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension&member=memberName) that matches a field from the provided **data**.
 
 Multiple sibling dimensions can be defined, which creates a more complex nested group in the related row or column dimension area.
 
 The dimensions can be reordered or moved from one area to another via their corresponding chips using drag & drop.
 
-A dimension can also describe an expandable hierarchy via the [`childLevel`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdimension.html#childLevel) property, for example:
+A dimension can also describe an expandable hierarchy via the [`childLevel`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension&member=childLevel) property, for example:
 
 ```typescript
    {
@@ -138,13 +138,13 @@ A dimension can also describe an expandable hierarchy via the [`childLevel`](htt
     }
 ```
 
-In this case the dimension renders an expander in the related section of the grid (row or column) and allows the children to be expanded or collapsed as part of the hierarchy. By default the row dimensions are initially expanded. This behavior can be controlled with the [`defaultExpandState`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#defaultExpandState) property of the Pivot Grid.
+In this case the dimension renders an expander in the related section of the grid (row or column) and allows the children to be expanded or collapsed as part of the hierarchy. By default the row dimensions are initially expanded. This behavior can be controlled with the [`defaultExpandState`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=defaultExpandState) property of the Pivot Grid.
 
 ### Predefined Dimensions
 
 As part of the Pivot Grid some additional predefined dimensions are exposed for easier configuration:
 
-- [`IgcPivotDateDimension`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdatedimension.html)
+- [`IgcPivotDateDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDateDimension)
     Can be used for date fields. Describes the following hierarchy by default:
   - All Periods
   - Years
@@ -187,7 +187,7 @@ A value configuration requires a **member** that matches a field from the provid
 - `PivotAggregate` - for any other data types. This is the base aggregation.
     Contains the following aggregation functions: `COUNT`.
 
-The current aggregation function can be changed at runtime using the value chip's drop-down. By default, it displays a list of available aggregations based on the field's data type. A custom list of aggregations can also be set via the [`aggregateList`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotvalue.html#aggregateList) property, for example:
+The current aggregation function can be changed at runtime using the value chip's drop-down. By default, it displays a list of available aggregations based on the field's data type. A custom list of aggregations can also be set via the [`aggregateList`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue&member=aggregateList) property, for example:
 
 ```typescript
 public pivotConfigHierarchy: IgcPivotConfiguration = {
@@ -229,12 +229,12 @@ public static totalMax: PivotAggregation = (members, data: any) => {
 };
 ```
 
-The pivot value also provides a [`displayName`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdatedimension.html#displayName) property. It can be used to display a custom name for this value in the column header.
+The pivot value also provides a [`displayName`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDateDimension&member=displayName) property. It can be used to display a custom name for this value in the column header.
 
 ### Enable Property
 
-[`pivotConfiguration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#pivotConfiguration) is the interface that describes the current state of the [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html) component. With it the developer can declare fields of the data as **rows**, **columns**, **filters** or **values**. The configuration allows enabling or disabling each of these elements separately. Only enabled elements are included in the current state of the Pivot Grid. The [`IgcPivotDataSelectorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdataselectorcomponent.html) component utilizes the same configuration and shows a list of all elements - enabled and disabled. For each of them there is a checkbox in the appropriate state. End-users can easily tweak the pivot state by toggling the different elements using these checkboxes.
-The `Enable` property controls if a given [`IgcPivotDimension`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdimension.html) or [`IgcPivotValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotvalue.html) is active and takes part in the pivot view rendered by the Pivot Grid.
+[`pivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) is the interface that describes the current state of the [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent) component. With it the developer can declare fields of the data as **rows**, **columns**, **filters** or **values**. The configuration allows enabling or disabling each of these elements separately. Only enabled elements are included in the current state of the Pivot Grid. The [`IgcPivotDataSelectorComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDataSelectorComponent) component utilizes the same configuration and shows a list of all elements - enabled and disabled. For each of them there is a checkbox in the appropriate state. End-users can easily tweak the pivot state by toggling the different elements using these checkboxes.
+The `Enable` property controls if a given [`IgcPivotDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension) or [`IgcPivotValue`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue) is active and takes part in the pivot view rendered by the Pivot Grid.
 
 ### Full Configuration Code
 
@@ -341,19 +341,19 @@ export class PivotDataFlat extends Array<PivotDataFlatItem> {
 
 ### Auto generate configuration
 
-The [`autoGenerateConfig`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#autoGenerateConfig) property automatically generates dimensions and values based on the data source fields:
+The [`autoGenerateConfig`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=autoGenerateConfig) property automatically generates dimensions and values based on the data source fields:
 
 - Numeric Fields:
-  - Created as [`IgcPivotValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotvalue.html) using `PivotNumericAggregate.sum` aggregator.
+  - Created as [`IgcPivotValue`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue) using `PivotNumericAggregate.sum` aggregator.
   - Added to the values collection and enabled by default.
 
 - Non-Numeric Fields:
-  - Created as [`IgcPivotDimension`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdimension.html).
+  - Created as [`IgcPivotDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension).
   - Disabled by default.
   - Added to the columns collection.
 
 - Date Fields(only the first `date` field is enabled, the other `date` fields apply non-numeric fields rule):
-  - Created as [`IgcPivotDateDimension`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdatedimension.html)
+  - Created as [`IgcPivotDateDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDateDimension)
   - Enabled by default
   - added to the rows collection.
 
@@ -378,7 +378,7 @@ A more detailed view of how they are used can be seen bellow in example data, wh
 ];
 ```
 
-All of these are stored in the **pivotKeys** property which is part of the [`pivotConfiguration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#pivotConfiguration) and can be used to change the default pivot keys.
+All of these are stored in the **pivotKeys** property which is part of the [`pivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration) and can be used to change the default pivot keys.
 
 - **children** - Field that stores children for hierarchy building. It represents a map from grouped values and all the pivotGridRecords that are based on that value. It can be utilized in very specific scenarios, where there is a need to do something while creating the hierarchies. No need to change this for common usage.
 - **records** - Field that stores reference to the original data records. Can be seen in the example from above - **AllProducts_records**. Avoid setting fields in the data with the same name as this property. If your data records has **records** property, you can specify different and unique value for it using the **pivotKeys**.
@@ -407,17 +407,17 @@ The default values are:
 
 |Limitation|Description|
 |--- |--- |
-| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`columns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
-| Setting duplicate [`memberName`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdimension.html#memberName) or [`member`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotvalue.html#member) property values for dimensions/values. | These properties should be unique for each dimension/value. Duplication may result in loss of data from the final result. |
+| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`columns`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
+| Setting duplicate [`memberName`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension&member=memberName) or [`member`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotValue&member=member) property values for dimensions/values. | These properties should be unique for each dimension/value. Duplication may result in loss of data from the final result. |
 | Row Selection is only supported in **Single** mode. | Multiple selection is currently not supported. |
 
 ## API References
 
-- [`pivotConfiguration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html#pivotConfiguration)
-- [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html)
-- [`IgcPivotDataSelectorComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdataselectorcomponent.html)
-- [`IgcPivotDateDimension`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdatedimension.html)
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
+- [`pivotConfiguration`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=pivotConfiguration)
+- [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent)
+- [`IgcPivotDataSelectorComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDataSelectorComponent)
+- [`IgcPivotDateDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDateDimension)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
 
 <!-- ## Additional Resources -->
 

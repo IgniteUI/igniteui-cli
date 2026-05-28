@@ -13,11 +13,11 @@ _premium: true
 
 # React Hierarchical Grid State Persistence
 
-The Ignite UI for React State Persistence in React Hierarchical Grid allows developers to easily save and restore the grid state. When the [`IgrGridState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html) is applied on the React [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html), it exposes the [`getState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#getState), [`getStateAsString`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#getStateAsString), [`applyState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#applyState) and [`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#applyStateFromString) methods that developers can use to achieve state persistence in any scenario.
+The Ignite UI for React State Persistence in React Hierarchical Grid allows developers to easily save and restore the grid state. When the [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) is applied on the React [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), it exposes the [`getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState), [`getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString), [`applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState) and [`applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) methods that developers can use to achieve state persistence in any scenario.
 
 ## Supported Features
 
-[`IgrGridState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html) supports saving and restoring the state of the following features:
+[`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) supports saving and restoring the state of the following features:
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -43,9 +43,9 @@ The Ignite UI for React State Persistence in React Hierarchical Grid allows deve
 
 ## Usage
 
-The [`getState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#getState) method returns the grid state in a [`IgrGridStateInfo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstateinfo.html) object, containing all the state info. Additional steps may be required in order to save it.
+The [`getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState) method returns the grid state in a [`IgrGridStateInfo`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo) object, containing all the state info. Additional steps may be required in order to save it.
 
-The [`getStateAsString`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#getStateAsString) returns a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc).
+The [`getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) returns a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc).
 
 The developer may choose to get only the state for a certain feature/features, by passing in an array with feature names as an argument. Empty array will result to using the default state options.
 
@@ -72,9 +72,9 @@ const stateString: string = gridStateRef.current.getStateAsString([]);
 const sortingFilteringStates: IgrGridStateInfo = gridStateRef.current.getState(['sorting', 'filtering']);
 ```
 
-[`applyState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#applyState) - The method accepts a [`IgrGridStateInfo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstateinfo.html) object as argument and will restore the state of each feature found in the object or specified features as second argument.
+[`applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState) - The method accepts a [`IgrGridStateInfo`](mcp:get_api_reference?platform=react&component=IgrGridStateInfo) object as argument and will restore the state of each feature found in the object or specified features as second argument.
 
-[`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#applyStateFromString) - The method accepts a serialized JSON string as argument and will restore the state of each feature found in the JSON string or specified features as second argument.
+[`applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) - The method accepts a serialized JSON string as argument and will restore the state of each feature found in the JSON string or specified features as second argument.
 
 ```tsx
 gridStateRef.current.applyState(gridState, []);
@@ -82,7 +82,7 @@ gridStateRef.current.applyStateFromString(gridStateString, []);
 gridStateRef.current.applyState(sortingFilteringStates, [])
 ```
 
-The [`options`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstatebasedirective.html#options) object implements the [`IgrGridStateOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstateoptions.html) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#getState)/[`getStateAsString`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#getStateAsString) methods will not put the state of these features in the returned value and [`applyState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#applyState)/[`applyStateFromString`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#applyStateFromString) methods will not restore state for them.
+The [`options`](mcp:get_api_reference?platform=react&component=IgrGridStateBaseDirective&member=options) object implements the [`IgrGridStateOptions`](mcp:get_api_reference?platform=react&component=IgrGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState)/[`getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) methods will not put the state of these features in the returned value and [`applyState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyState)/[`applyStateFromString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=applyStateFromString) methods will not restore state for them.
 
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid, PivotGrid -->
 
@@ -144,7 +144,7 @@ const restoreGridState = () => {
 
 ## Restoring Child Grids
 
-Saving / Restoring state for the child grids is controlled by the `RowIslands` property and is enabled by default. [`IgrGridState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html) will use the same options for saving/restoring features both for the root grid and all child grids down the hierarchy. For example, if we pass the following options:
+Saving / Restoring state for the child grids is controlled by the `RowIslands` property and is enabled by default. [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) will use the same options for saving/restoring features both for the root grid and all child grids down the hierarchy. For example, if we pass the following options:
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
@@ -162,7 +162,7 @@ Saving / Restoring state for the child grids is controlled by the `RowIslands` p
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-Then the [`getState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#getState) API will return the state for all grids (root grid and child grids) features excluding `Selection` and `Sorting`. If later on the developer wants to restore only the `Filtering` state for all grids, use:
+Then the [`getState`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getState) API will return the state for all grids (root grid and child grids) features excluding `Selection` and `Sorting`. If later on the developer wants to restore only the `Filtering` state for all grids, use:
 
 ```tsx
 state.applyState(state, ['filtering', 'rowIslands']);
@@ -600,7 +600,7 @@ state.applyState(gridState.columnSelection);
 
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
 
-- [`getStateAsString`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html#getStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgrGridState`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridstate.html) component will ignore the columns `Formatter`, [`filters`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotconfiguration.html#filters), `Summaries`, `SortStrategy`, `CellClasses`, `CellStyles`, `HeaderTemplate` and `BodyTemplate` properties.
+- [`getStateAsString`](mcp:get_api_reference?platform=react&component=IgrGridState&member=getStateAsString) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgrGridState`](mcp:get_api_reference?platform=react&component=IgrGridState) component will ignore the columns `Formatter`, [`filters`](mcp:get_api_reference?platform=react&component=IgrPivotConfiguration&member=filters), `Summaries`, `SortStrategy`, `CellClasses`, `CellStyles`, `HeaderTemplate` and `BodyTemplate` properties.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
 

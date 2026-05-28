@@ -14,7 +14,7 @@ Tabs in Angular are extremely useful when you’re building a web page with plen
 
 <p class="highlight">
 
-The [`igx-tabs`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabscomponent.html) component in Ignite UI for Angular is used to organize or switch between similar data sets. It functions as a wrapper for [`igx-tab-item`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabitemcomponent.html) which respectively represent the container for the data and the tab header. The Angular Tabs Component places tabs at the top and allows scrolling when there are multiple tab items on the screen.
+The [`igx-tabs`](mcp:get_api_reference?platform=angular&component=IgxTabsComponent) component in Ignite UI for Angular is used to organize or switch between similar data sets. It functions as a wrapper for [`igx-tab-item`](mcp:get_api_reference?platform=angular&component=IgxTabItemComponent) which respectively represent the container for the data and the tab header. The Angular Tabs Component places tabs at the top and allows scrolling when there are multiple tab items on the screen.
 
 </p>
 
@@ -250,7 +250,7 @@ igx-tab-content {
 
 ## Angular Tabs Alignment
 
-`IgxTabs` [`tabAlignment`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabscomponent.html#tabAlignment) input property controls how tabs are positioned and arranged. It accepts four different values - start, center, end and justify.
+`IgxTabs` [`tabAlignment`](mcp:get_api_reference?platform=angular&component=IgxTabsComponent&member=tabAlignment) input property controls how tabs are positioned and arranged. It accepts four different values - start, center, end and justify.
 
 - **Start** (default): the width of the tab header depends on the content (label, icon, both) and all tabs have equal padding. First tab is aligned to the tabs container left side.
 - **Center**: the width of the tab header depends on the content and occupies the tabs container center. If the space is not enough to fit all items, scroll buttons are displayed.
@@ -1153,13 +1153,13 @@ At the end your tabs should look like this:
 
 <div class="divider"></div>
 
-- [IgxIconComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconcomponent.html)
-- [IgxNavbarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbarcomponent.html)
-- [IgxTabsComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabscomponent.html)
+- [IgxIconComponent](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
+- [IgxNavbarComponent](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent)
+- [IgxTabsComponent](mcp:get_api_reference?platform=angular&component=IgxTabsComponent)
 - [IgxTabsComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-tabs-theme)
-- [IgxTabItemComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabitemcomponent.html)
-- [IgxTabHeaderComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabheadercomponent.html)
-- [IgxTabContentComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtabcontentcomponent.html)
+- [IgxTabItemComponent](mcp:get_api_reference?platform=angular&component=IgxTabItemComponent)
+- [IgxTabHeaderComponent](mcp:get_api_reference?platform=angular&component=IgxTabHeaderComponent)
+- [IgxTabContentComponent](mcp:get_api_reference?platform=angular&component=IgxTabContentComponent)
 
 ## Theming Dependencies
 

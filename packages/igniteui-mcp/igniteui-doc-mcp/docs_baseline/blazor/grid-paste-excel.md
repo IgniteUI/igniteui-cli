@@ -10,11 +10,11 @@ _premium: true
 
 # Blazor Grid Paste from Excel
 
-The Ignite UI for Blazor [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) can read Excel data that is copied to the clipboard. In this section we will show you how to do this with some custom code.
+The Ignite UI for Blazor [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) can read Excel data that is copied to the clipboard. In this section we will show you how to do this with some custom code.
 
 ## Blazor Paste from Excel Example
 
-This sample demonstrates how to implement pasting from Excel into the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) Material UI table.
+This sample demonstrates how to implement pasting from Excel into the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) Material UI table.
 To work with the sample open up any Excel spreadsheet, copy some rows, and paste it into the grid using the keyboard (<kbd>CTRL</kbd> + <kbd>V</kbd>, <kbd>SHIFT</kbd> + <kbd>INSERT</kbd>,<kbd>CMD</kbd> + <kbd>V</kbd>).
 
 On the top there is a dropdown button with 2 options:
@@ -372,7 +372,7 @@ function updateRecords(processedData) {
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ## Additional Resources
 

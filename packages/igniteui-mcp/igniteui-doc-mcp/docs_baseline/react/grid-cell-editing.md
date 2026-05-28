@@ -212,15 +212,15 @@ You can exit edit mode and **commit** the changes in one of the following ways:
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 - on key press <kbd>TAB</kbd>;
-- on single click to another cell - when you click on another cell in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html), your changes will be submitted.
+- on single click to another cell - when you click on another cell in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
 > [!Note]
-> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). This is valid for both cell editing and row editing.
+> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). This is valid for both cell editing and row editing.
 
 ### Editing through API
 
-You can also modify the cell value through the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) API but only if primary key is defined:
+You can also modify the cell value through the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) API but only if primary key is defined:
 
 ```typescript
 function updateCell() {
@@ -487,7 +487,7 @@ root.render(<Sample/>);
 
 Using Excel Style Editing allows the user to navigate trough the cells just as he would using the Excel, and ever so quickly edit them.
 
-Implementing this custom functionality can be done by utilizing the events of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). First we hook up to the grid's keydown events, and from there we can implement two functionalities:
+Implementing this custom functionality can be done by utilizing the events of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). First we hook up to the grid's keydown events, and from there we can implement two functionalities:
 
 ```tsx
 const gridRef = useRef<IgrGrid>();
@@ -665,11 +665,11 @@ Main benefits of the above approach include:
 > [!Note]
 > Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
-The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) provides a straightforward API for basic CRUD operations.
+The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) provides a straightforward API for basic CRUD operations.
 
 ### Adding a new record
 
-The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component exposes the [`addRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#addRow) method which will add the provided data to the data source itself.
+The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component exposes the [`addRow`](mcp:get_api_reference?platform=react&component=IgrGrid&member=addRow) method which will add the provided data to the data source itself.
 
 ```typescript
 // Adding a new record
@@ -682,7 +682,7 @@ grid1Ref.current.addRow(record);
 
 ### Updating data in the Grid
 
-Updating data in the Grid is achieved through [`updateRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#updateRow) and [`updateCell`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
+Updating data in the Grid is achieved through [`updateRow`](mcp:get_api_reference?platform=react&component=IgrGrid&member=updateRow) and [`updateCell`](mcp:get_api_reference?platform=react&component=IgrGrid&member=updateCell) methods but **only if the PrimaryKey for the grid is defined**. You can also directly update a cell and/or a row value through their respective **update** methods.
 
 <!-- ComponentStart: Grid -->
 
@@ -705,7 +705,7 @@ row.update(newData);
 
 ### Deleting data from the Grid
 
-Please keep in mind that [`deleteRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#deleteRow) method will remove the specified row only if a [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#primaryKey) is defined.
+Please keep in mind that [`deleteRow`](mcp:get_api_reference?platform=react&component=IgrGrid&member=deleteRow) method will remove the specified row only if a [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrGrid&member=primaryKey) is defined.
 
 <!-- ComponentStart: Grid -->
 
@@ -719,7 +719,7 @@ row.delete();
 
 ### Cell Validation on Edit Event
 
-Using the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)'s editing events, we can alter how the user interacts with the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
+Using the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)'s editing events, we can alter how the user interacts with the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
 In this example, we'll validate a cell based on the data entered in it by binding to the `CellEdit` event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
 
@@ -759,7 +759,7 @@ If the value entered in a cell under the **Units On Order** column is larger tha
 
 <!-- ComponentEnd: TreeGrid -->
 
-The result of the above validation being applied to our [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) can be seen in the below demo:
+The result of the above validation being applied to our [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) can be seen in the below demo:
 
 ```css
 /* shared styles are loaded from: */
@@ -1028,8 +1028,8 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
-- [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+- [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker)
 
 ## Additional Resources
 

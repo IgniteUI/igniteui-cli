@@ -60,7 +60,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcBannerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbannercomponent.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcBannerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBannerComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcBannerComponent } from "igniteui-webcomponents";
@@ -73,7 +73,7 @@ For a complete introduction to the Ignite UI for Web Components, read the [**Get
 
 ### Show Banner
 
-In order to display the banner component, use its [`show`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbannercomponent.html#show) method and call it on a button click. The banner appears relative to where the element was inserted in the page template, moving all other content. It typically shows some non-intrusive content that requires minimal user interaction to be dismissed.
+In order to display the banner component, use its [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcBannerComponent&member=show) method and call it on a button click. The banner appears relative to where the element was inserted in the page template, moving all other content. It typically shows some non-intrusive content that requires minimal user interaction to be dismissed.
 
 ```html
 <igc-button onclick="banner.show()">Show Banner</igc-button>
@@ -84,11 +84,11 @@ In order to display the banner component, use its [`show`](https://www.infragist
 ```
 
 > [!NOTE]
-> The [`IgcBannerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbannercomponent.html) includes a default action button `OK`, which closes the banner.
+> The [`IgcBannerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBannerComponent) includes a default action button `OK`, which closes the banner.
 
 ## Examples
 
-The [`IgcBannerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbannercomponent.html) component allows templating of its content while still sticking as closely as possible to the material design banner guidelines.
+The [`IgcBannerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBannerComponent) component allows templating of its content while still sticking as closely as possible to the material design banner guidelines.
 
 ### Changing the banner message
 
@@ -102,12 +102,12 @@ Configuring the message displayed in the banner is easy - just change the conten
 
 ### Adding an icon
 
-An [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) can be displayed in the banner by using the banner's `prefix` slot. The icon will always be positioned at the beginning of the banner message.
+An [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) can be displayed in the banner by using the banner's `prefix` slot. The icon will always be positioned at the beginning of the banner message.
 
 > [!NOTE]
-> If several [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) elements are inserted, the banner will try to position all of them at the beginning. It is strongly advised to pass only one [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) directly to the banner.
+> If several [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) elements are inserted, the banner will try to position all of them at the beginning. It is strongly advised to pass only one [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) directly to the banner.
 
-To pass an [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) to your banner, use the `prefix` slot:
+To pass an [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) to your banner, use the `prefix` slot:
 
 ```html
 <igc-banner id="banner">
@@ -116,7 +116,7 @@ To pass an [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-
 </igc-banner>
 ```
 
-If you want to use an [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) in your banner message, simply insert it in the banner's content:
+If you want to use an [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) in your banner message, simply insert it in the banner's content:
 
 ```html
 <igc-banner id="banner">
@@ -127,7 +127,7 @@ If you want to use an [`IgcIconComponent`](https://www.infragistics.com/products
 
 ### Changing the banner button
 
-The [`IgcBannerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbannercomponent.html) exposes the `actions` slot for templating the banner buttons. This allows you to override the default banner button (`OK`) and add user-defined custom actions.
+The [`IgcBannerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBannerComponent) exposes the `actions` slot for templating the banner buttons. This allows you to override the default banner button (`OK`) and add user-defined custom actions.
 
 ```html
 <igc-banner id="banner">
@@ -225,9 +225,9 @@ Let's create a banner with two custom buttons - one for dismissing the notificat
 </igc-banner>
 ```
 
-> According to Google's [Material Design](https://material.io/design/components/banners.html#anatomy) guidelines, a banner should have a maximum of 2 buttons present. The [`IgcBannerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbannercomponent.html) does not explicitly limit the number of elements under the `actions` slot, but it is strongly recommended to use up to 2 if you want to adhere to the material design guidelines.
+> According to Google's [Material Design](https://material.io/design/components/banners.html#anatomy) guidelines, a banner should have a maximum of 2 buttons present. The [`IgcBannerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBannerComponent) does not explicitly limit the number of elements under the `actions` slot, but it is strongly recommended to use up to 2 if you want to adhere to the material design guidelines.
 
-The dismiss option (**Continue Offline**) doesn't need any further logic, so it can just call the [`hide`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbannercomponent.html#hide) method. The confirm action (**Turn On Wifi**), however, requires some additional logic, so we have to define it in the component. Then, we will add an event listener for the `click` event. The last step is to call the `refreshBanner()` method on each change, which will toggle the banner depending on the `wifiState`.
+The dismiss option (**Continue Offline**) doesn't need any further logic, so it can just call the [`hide`](mcp:get_api_reference?platform=webcomponents&component=IgcBannerComponent&member=hide) method. The confirm action (**Turn On Wifi**), however, requires some additional logic, so we have to define it in the component. Then, we will add an event listener for the `click` event. The last step is to call the `refreshBanner()` method on each change, which will toggle the banner depending on the `wifiState`.
 
 The navbar will have a Wifi icon and we will add an event listener for its `click` event as well. As the `refreshBanner()` method is called on each change, the icon will not only toggle the banner, but change according to the state of the connection:
 
@@ -277,7 +277,7 @@ public refreshBanner() {
 }
 ```
 
-Finally, we will add a [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html), displaying a message about the WiFi state. The results of the templated banner can be seen in the demo below:
+Finally, we will add a [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent), displaying a message about the WiFi state. The results of the templated banner can be seen in the demo below:
 
 ```css
 .offline-banner {
@@ -320,7 +320,7 @@ img {
 
 ## Styling
 
-The [`IgcBannerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbannercomponent.html) component exposes several CSS parts which give you full control over its style:
+The [`IgcBannerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBannerComponent) component exposes several CSS parts which give you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -399,12 +399,12 @@ img {
 
 ## API References
 
-- [`IgcBannerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbannercomponent.html)
-- [`IgcCardComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcomponent.html)
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
-- [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html)
-- [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html)
-- [`IgcRippleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcripplecomponent.html)
+- [`IgcBannerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBannerComponent)
+- [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+- [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent)
+- [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent)
+- [`IgcRippleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRippleComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

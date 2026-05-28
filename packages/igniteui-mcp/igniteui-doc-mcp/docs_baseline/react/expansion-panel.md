@@ -64,14 +64,14 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrExpansionPanel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel), its necessary CSS, and register its module, like so:
 
 ```tsx
 import { IgrExpansionPanel } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-The simplest way to start using the [`IgrExpansionPanel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html) is as follows:
+The simplest way to start using the [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) is as follows:
 
 ```tsx
 <IgrExpansionPanel>
@@ -192,11 +192,11 @@ root.render(<ExpansionPanelPropertiesAndEvents/>);
 
 ## Component Customization
 
-The [`IgrExpansionPanel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html) control allows all sorts of content to be added inside of its body. It can render [input](../inputs/input.md), charts and even other expansion panels!
+The [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) control allows all sorts of content to be added inside of its body. It can render [input](../inputs/input.md), charts and even other expansion panels!
 
-The [`IgrExpansionPanel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html) allows for easy customization of the header through the exposed **title**, **subTitle** and **indicator** slots.
+The [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) allows for easy customization of the header through the exposed **title**, **subTitle** and **indicator** slots.
 
-Configuring the position of the expansion indicator can be done through the [`indicatorPosition`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html#indicatorPosition) property of the Expansion Panel. The possible options are **start**, **end** or **none**.
+Configuring the position of the expansion indicator can be done through the [`indicatorPosition`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel&member=indicatorPosition) property of the Expansion Panel. The possible options are **start**, **end** or **none**.
 
 The next code sample demonstrates how to configure the component's button to go on the **right**side.
 
@@ -289,7 +289,7 @@ The Ignite UI for React Expansion Panel keyboard navigation is compliant with W3
 
 ## Styling
 
-The [`IgrExpansionPanel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html) component exposes several CSS parts, giving you full control over its style:
+The [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) component exposes several CSS parts, giving you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -414,7 +414,7 @@ root.render(<ExpansionPanelStyling/>);
 
 ## API References
 
-- [`IgrExpansionPanel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html)
+- [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

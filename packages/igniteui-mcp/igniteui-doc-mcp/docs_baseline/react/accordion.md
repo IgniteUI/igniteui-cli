@@ -18,7 +18,7 @@ Users are enabled to interact and navigate among a list of items, such as thumbn
 
 The following is a basic Ignite UI for React Accordion example of a FAQ section. It operates as an accordion, with individually working sections. You can toggle each text block with a single click, while expanding multiple panels at the same time. This way you can read information more easily, without having to go back and forth between an automatically expanding and collapsing panel, which conceals the previously opened section every time.
 
-In it, you can see how to define an accordion and its expansion panels. The sample also demonstrates the two types of expansion behavior. The switch button sets the [`singleExpand`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html#singleExpand) property to toggle between single and multiple branches to be expanded at a time.
+In it, you can see how to define an accordion and its expansion panels. The sample also demonstrates the two types of expansion behavior. The switch button sets the [`singleExpand`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=singleExpand) property to toggle between single and multiple branches to be expanded at a time.
 
 ```css
 igc-accordion {
@@ -120,7 +120,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrAccordion`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html) and the [`IgrExpansionPanel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html) and its necessary CSS, like so:
+You will then need to import the [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion) and the [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel) and its necessary CSS, like so:
 
 ```tsx
 import {
@@ -131,9 +131,9 @@ import "igniteui-webcomponents/themes/light/bootstrap.css";
 
 ```
 
-Before using the [`IgrAccordion`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html), you need to register it as follows:
+Before using the [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion), you need to register it as follows:
 
-Now you can start with a basic configuration of the [`IgrAccordion`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html) and its panels.
+Now you can start with a basic configuration of the [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion) and its panels.
 
 ## Usage
 
@@ -157,18 +157,18 @@ The accordion wraps all expansion panels declared inside it.
 </IgrAccordion>
 ```
 
-As demonstrated above, the [`singleExpand`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html#singleExpand)property gives you the ability to set whether single or multiple panels can be expanded at a time.
+As demonstrated above, the [`singleExpand`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=singleExpand)property gives you the ability to set whether single or multiple panels can be expanded at a time.
 
-By using the [`hideAll`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html#hideAll) and [`showAll`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html#showAll) methods you can respectively collapse and expand all [`IgrExpansionPanel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html)s of the [`IgrAccordion`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html) programmatically.
+By using the [`hideAll`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=hideAll) and [`showAll`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=showAll) methods you can respectively collapse and expand all [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel)s of the [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion) programmatically.
 
 > [!Note]
-> If [`singleExpand`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html#singleExpand) property is set to **true** calling [`showAll`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html#showAll) method would expand only the focused panel.
+> If [`singleExpand`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=singleExpand) property is set to **true** calling [`showAll`](mcp:get_api_reference?platform=react&component=IgrAccordion&member=showAll) method would expand only the focused panel.
 
 ### React Accordion Customization Example
 
 With the React Accordion, you can customize the header and content panel's appearance.
 
-The sample below demonstrates how elaborate filtering options can be implemented using the built-in slots of the [`IgrExpansionPanel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html).
+The sample below demonstrates how elaborate filtering options can be implemented using the built-in slots of the [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel).
 
 ```css
 igc-accordion {
@@ -438,7 +438,7 @@ root.render(<AccordionCustomization />);
 
 ### Nested React Accordions Scenario
 
-In the following React Accordion example is created a complex FAQ section in order to illustrate how you can go about this common application scenario. In the sample nested [`IgrAccordion`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html) is achieved by adding an accordion inside an expansion panel.
+In the following React Accordion example is created a complex FAQ section in order to illustrate how you can go about this common application scenario. In the sample nested [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion) is achieved by adding an accordion inside an expansion panel.
 
 ```css
 igc-accordion {
@@ -587,8 +587,8 @@ The Accordion navigation is compliant with W3C accessibility standards and conve
 
 ## API References
 
-- [`IgrAccordion`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igraccordion.html)
-- [`IgrExpansionPanel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrexpansionpanel.html)
+- [`IgrAccordion`](mcp:get_api_reference?platform=react&component=IgrAccordion)
+- [`IgrExpansionPanel`](mcp:get_api_reference?platform=react&component=IgrExpansionPanel)
 
 ## Additional Resources
 

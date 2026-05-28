@@ -24,13 +24,13 @@ igc-avatar {
 
 ### Getting Started
 
-To start using the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html), first, you need to install the Ignite UI for Web Components by running the following command:
+To start using the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent), first, you need to install the Ignite UI for Web Components by running the following command:
 
 ```cmd
 npm install igniteui-webcomponents
 ```
 
-After that, you need to import the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html), its necessary CSS, and register its module, as follows:
+After that, you need to import the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent), its necessary CSS, and register its module, as follows:
 
 ```ts
 import { defineComponents, IgcTooltipComponent } from 'igniteui-webcomponents';
@@ -41,7 +41,7 @@ defineComponents(IgcTooltipComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Now you can start with a basic configuration of the Web Components [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html).
+Now you can start with a basic configuration of the Web Components [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent).
 
 ```html
 <igc-tooltip anchor="hover-button">
@@ -55,7 +55,7 @@ Now you can start with a basic configuration of the Web Components [`IgcTooltipC
 
 ### Tooltip target
 
-To attach a tooltip to the desired element, use the [`anchor`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#anchor) property of the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) and set it to the ID of the target element.
+To attach a tooltip to the desired element, use the [`anchor`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=anchor) property of the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) and set it to the ID of the target element.
 
 ```html
 <igc-button id="target-button">Hover me</igc-button>
@@ -83,7 +83,7 @@ constructor() {
 
 ### Tooltip content
 
-The tooltip content is defined by placing custom content between the opening and closing tags of the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html).
+The tooltip content is defined by placing custom content between the opening and closing tags of the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent).
 
 ```html
 <igc-tooltip>
@@ -91,13 +91,13 @@ The tooltip content is defined by placing custom content between the opening and
 </igc-tooltip>
 ```
 
-Alternatively, to set simple text, you can use the [`message`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#message) property.
+Alternatively, to set simple text, you can use the [`message`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=message) property.
 
 ```html
 <igc-tooltip message="This is my custom content here."></igc-tooltip>
 ```
 
-If you use both approaches (slotted content and the [`message`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#message) property), the slotted content will take priority and the [`message`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#message) value will be ignored.
+If you use both approaches (slotted content and the [`message`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=message) property), the slotted content will take priority and the [`message`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=message) value will be ignored.
 
 ```html
 <igc-button id="target-button">Hover me</igc-button>
@@ -106,9 +106,9 @@ If you use both approaches (slotted content and the [`message`](https://www.infr
 </igc-tooltip>
 ```
 
-In this example, the slotted content (“I will be shown!”) will be displayed instead of the [`message`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#message) property value.
+In this example, the slotted content (“I will be shown!”) will be displayed instead of the [`message`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=message) property value.
 
-The [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) content can be more than just simple text. Since the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) is a regular element in the markup, you can enhance its content by adding any elements you need and styling them accordingly.
+The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) content can be more than just simple text. Since the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) is a regular element in the markup, you can enhance its content by adding any elements you need and styling them accordingly.
 
 ```css
 /* shared styles are loaded from: */
@@ -148,7 +148,7 @@ igc-tooltip::part(base) {
 
 ### Show/Hide delay settings
 
-If you want to control the delay before showing and hiding the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html), you can use the [`showDelay`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#showDelay) and [`hideDelay`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#hideDelay) properties. Both properties accept a number value representing time in milliseconds.
+If you want to control the delay before showing and hiding the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent), you can use the [`showDelay`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=showDelay) and [`hideDelay`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hideDelay) properties. Both properties accept a number value representing time in milliseconds.
 
 ```html
 <igc-tooltip show-delay="600" hide-delay="800">
@@ -157,17 +157,17 @@ If you want to control the delay before showing and hiding the [`IgcTooltipCompo
 ```
 
 > [!NOTE]
-> It's important to note that the Tooltip API methods — [`show`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#show), [`hide`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#hide), and [`toggle`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#toggle) — DO NOT take the [`showDelay`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#showDelay) and [`hideDelay`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#hideDelay) properties into account. They act immediately when invoked.
+> It's important to note that the Tooltip API methods — [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=show), [`hide`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hide), and [`toggle`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=toggle) — DO NOT take the [`showDelay`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=showDelay) and [`hideDelay`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hideDelay) properties into account. They act immediately when invoked.
 
 ### Placement
 
-The [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) can also be positioned relative to its target element with ease. All you need to do is use the [`placement`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#placement) property along with one of the `PopoverPlacement` options.
+The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) can also be positioned relative to its target element with ease. All you need to do is use the [`placement`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=placement) property along with one of the `PopoverPlacement` options.
 
-If the [`placement`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#placement) property is not set, the default value is `Bottom`, which places the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) below the target element.
+If the [`placement`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=placement) property is not set, the default value is `Bottom`, which places the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) below the target element.
 
-Additionally, you can make the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) "sticky" using the [`sticky`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#sticky) property, which adds a close button and keeps the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) visible until the user closes it manually - either by clicking the close button or pressing the `Esc` key. This behavior overrides the default hover behavior, preventing the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) from disappearing when the user stops hovering over the target element.
+Additionally, you can make the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) "sticky" using the [`sticky`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=sticky) property, which adds a close button and keeps the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) visible until the user closes it manually - either by clicking the close button or pressing the `Esc` key. This behavior overrides the default hover behavior, preventing the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) from disappearing when the user stops hovering over the target element.
 
-The [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) also includes an optional arrow indicator that can be configured via the [`withArrow`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#withArrow) property. The arrow visually connects the tooltip to its anchor element and its position automatically adjusts based on the tooltip's [`placement`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#placement).
+The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) also includes an optional arrow indicator that can be configured via the [`withArrow`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=withArrow) property. The arrow visually connects the tooltip to its anchor element and its position automatically adjusts based on the tooltip's [`placement`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=placement).
 
 ```html
 <igc-button id="target-button">Hover me</igc-button>
@@ -176,7 +176,7 @@ The [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-
 </igc-tooltip>
 ```
 
-In the following example, you can see a demonstration of all tooltip placement options, arrow positioning behavior, and the [`sticky`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#sticky) property in action:
+In the following example, you can see a demonstration of all tooltip placement options, arrow positioning behavior, and the [`sticky`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=sticky) property in action:
 
 ```css
 /* shared styles are loaded from: */
@@ -196,7 +196,7 @@ igc-button::part(base) {
 
 ### Triggers
 
-By default, the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) is triggered only while hovering over the target element. However, you can change this behavior using the [`showTriggers`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#showTriggers) and [`hideTriggers`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#hideTriggers) properties, which allow you to control when the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) in different scenarios.
+By default, the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) is triggered only while hovering over the target element. However, you can change this behavior using the [`showTriggers`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=showTriggers) and [`hideTriggers`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hideTriggers) properties, which allow you to control when the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) in different scenarios.
 
 ```css
 /* shared styles are loaded from: */
@@ -232,8 +232,8 @@ By default, the [`IgcTooltipComponent`](https://www.infragistics.com/products/ig
 
 ### Advanced Example
 
-The [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) integrates seamlessly with other components, allowing you to create advanced tooltips that contain components within them.
-In the following example, you can see how we create descriptive tooltips by using the [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html), [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html), [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html), [`IgcBadgeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html), [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html), [`IgcCardComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcomponent.html) and [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) components.
+The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) integrates seamlessly with other components, allowing you to create advanced tooltips that contain components within them.
+In the following example, you can see how we create descriptive tooltips by using the [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent), [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent), [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent), [`IgcBadgeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent), [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent), [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent) and [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) components.
 
 ```typescript
 export class IncomeTaxesItem {
@@ -702,36 +702,36 @@ igc-tooltip::part(base) {
 
 ### Additional Properties
 
-Apart from the properties we've already covered, the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) component offers a variety of additional properties that allow you to further configure its behavior, position, and appearance.
+Apart from the properties we've already covered, the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) component offers a variety of additional properties that allow you to further configure its behavior, position, and appearance.
 
 |Name|Type|Description|
 |--|--|--|
-| [`open`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#open) | boolean | Determines whether the tooltip is visible. |
-| [`withArrow`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#withArrow) | boolean | Determines whether to render an arrow indicator for the tooltip. |
-| [`offset`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#offset) | number | Sets the pixel distance between the tooltip and its [`anchor`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#anchor). |
+| [`open`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=open) | boolean | Determines whether the tooltip is visible. |
+| [`withArrow`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=withArrow) | boolean | Determines whether to render an arrow indicator for the tooltip. |
+| [`offset`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=offset) | number | Sets the pixel distance between the tooltip and its [`anchor`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=anchor). |
 
 ### Methods
 
-In addition to its configurable properties, the [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) also exposes three methods that you can use:
+In addition to its configurable properties, the [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) also exposes three methods that you can use:
 
 |Name|Description|
 |--|--|
-| [`show`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#show) | Displays the tooltip if it’s not already shown. If a target is provided, it sets the target as a transient [`anchor`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#anchor). |
-| [`hide`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#hide) | Hides the tooltip if it’s not already hidden. |
-| [`toggle`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#toggle) |  Toggles the tooltip between the shown and hidden states. |
+| [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=show) | Displays the tooltip if it’s not already shown. If a target is provided, it sets the target as a transient [`anchor`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=anchor). |
+| [`hide`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=hide) | Hides the tooltip if it’s not already hidden. |
+| [`toggle`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=toggle) |  Toggles the tooltip between the shown and hidden states. |
 
 ## Accessibility & ARIA Support
 
-The [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) is built with accessibility in mind and includes the following ARIA attributes:
+The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) is built with accessibility in mind and includes the following ARIA attributes:
 
-- `role` - When the tooltip is in its default behavior, `role="tooltip"` is applied. If the [`sticky`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html#sticky) property is enabled, the role changes to `status`.
+- `role` - When the tooltip is in its default behavior, `role="tooltip"` is applied. If the [`sticky`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=sticky) property is enabled, the role changes to `status`.
 - `inert` - Dynamically toggled based on visibility. When the tooltip is hidden, it becomes inert.
 - `aria-atomic` - Set to true, ensuring that the entire tooltip content is announced when it changes.
 - `aria-live` - Set to polite, indicating to screen readers that updates should be announced only when the user is idle.
 
 ## Styling
 
-The [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html) component exposes two CSS parts that you can use for styling:
+The [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) component exposes two CSS parts that you can use for styling:
 
 |Name|Description|
 |--|--|
@@ -772,15 +772,15 @@ igc-tooltip::part(bottom) {
 
 ## API References
 
-- [`IgcTooltipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctooltipcomponent.html)
-- [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html)
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html)
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
-- [`IgcCardComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcomponent.html)
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html)
-- [`IgcBadgeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html)
-- [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html)
-- [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html)
+- [`IgcTooltipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent)
+- [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent)
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+- [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent)
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
+- [`IgcBadgeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent)
+- [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent)
+- [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

@@ -1,3 +1,9 @@
+# Unreleased
+
+## What's Changed
+* **MCP — API reference links in docs:** Infragistics API documentation links embedded in the docs served by the MCP server are now rewritten to deterministic `get_api_reference` tool references (e.g. `mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=checked`). AI assistants reading the docs resolve API links through the in-tool API lookup instead of fetching external HTML pages.
+* **MCP `get_api_reference` — member-level lookup:** The `get_api_reference` tool now accepts an optional `member` parameter to return a single property, method, or event entry instead of the full component (for example `member="checked"`). It takes precedence over `section`, tolerates `Component#member` fragment-style references, reports the canonical member-name casing in the response, and returns a clear error when the requested member does not exist on the component.
+
 # 15.2.1 (2026-05-20)
 
 ## What's Changed

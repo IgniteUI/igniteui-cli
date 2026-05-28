@@ -13,7 +13,7 @@ The Ignite UI for Blazor Navigation Drawer provides side navigation that can be 
 
 ## Blazor Navigation Drawer Example
 
-This sample demonstrates how to create [`IgbNavDrawer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavDrawer.html) component.
+This sample demonstrates how to create [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer) component.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -104,7 +104,7 @@ This sample demonstrates how to create [`IgbNavDrawer`](https://www.infragistics
 
 ## Usage
 
-Before using the [`IgbNavDrawer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavDrawer.html), you need to register it as follows:
+Before using the [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -115,7 +115,7 @@ builder.Services.AddIgniteUIBlazor(
 );
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbNavDrawer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavDrawer.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ For a complete introduction to the Ignite UI for Blazor, read the [**Getting Sta
 
 ## Adding Navigation Drawer Items
 
-The simplest way to start using the [`IgbNavDrawer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavDrawer.html) is as follows:
+The simplest way to start using the [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer) is as follows:
 
 ```razor
 <IgbNavDrawer Open="true">
@@ -234,9 +234,9 @@ If all went well, you should see the following in your browser:
 
 ## Navbar Integration
 
-While any content can be provided in the drawer, the [`IgbNavDrawerItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavDrawerItem.html) is available to apply out-of-the-box styling to the items.
+While any content can be provided in the drawer, the [`IgbNavDrawerItem`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawerItem) is available to apply out-of-the-box styling to the items.
 
-To enhance our component a bit, we can use it in conjunction with the [`IgbNavbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavbar.html). This way we can achieve a more completed look and use the drawer's methods. Let's look at how we can use this in the next example:
+To enhance our component a bit, we can use it in conjunction with the [`IgbNavbar`](mcp:get_api_reference?platform=blazor&component=IgbNavbar). This way we can achieve a more completed look and use the drawer's methods. Let's look at how we can use this in the next example:
 
 ```razor
 <IgbNavbar>
@@ -587,7 +587,7 @@ And here's the result:
 
 ## Styling
 
-The [`IgbNavDrawer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavDrawer.html) exposes several CSS parts - `base`, `main`, and `mini`, giving you full control over their styling.
+The [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer) exposes several CSS parts - `base`, `main`, and `mini`, giving you full control over their styling.
 
 ```scss
 igc-nav-drawer::part(base) {
@@ -731,14 +731,14 @@ igc-nav-drawer-header-item {
 
 ## API References
 
-- [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html)
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
-- [`IgbNavDrawerHeaderItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavDrawerHeaderItem.html)
-- [`IgbNavDrawerItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavDrawerItem.html)
-- [`IgbNavDrawer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavDrawer.html)
-- [`IgbNavbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbNavbar.html)
-- [`IgbRadioGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadioGroup.html)
-- [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html)
+- [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+- [`IgbNavDrawerHeaderItem`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawerHeaderItem)
+- [`IgbNavDrawerItem`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawerItem)
+- [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer)
+- [`IgbNavbar`](mcp:get_api_reference?platform=blazor&component=IgbNavbar)
+- [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)
+- [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

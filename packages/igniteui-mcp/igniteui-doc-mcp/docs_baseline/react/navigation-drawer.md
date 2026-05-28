@@ -13,7 +13,7 @@ The Ignite UI for React Navigation Drawer provides side navigation that can be e
 
 ## React Navigation Drawer Example
 
-This sample demonstrates how to create [`IgrNavDrawer`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavdrawer.html) component.
+This sample demonstrates how to create [`IgrNavDrawer`](mcp:get_api_reference?platform=react&component=IgrNavDrawer) component.
 
 ```tsx
 import React from 'react';
@@ -114,20 +114,20 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrNavDrawer`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavdrawer.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgrNavDrawer`](mcp:get_api_reference?platform=react&component=IgrNavDrawer), its necessary CSS, and register its module, like so:
 
 ```tsx
 import { IgrNavDrawer, IgrNavDrawerHeaderItem, IgrNavDrawerItem } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-Before using the [`IgrNavDrawer`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavdrawer.html), you need to register it as follows:
+Before using the [`IgrNavDrawer`](mcp:get_api_reference?platform=react&component=IgrNavDrawer), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
 ## Adding Navigation Drawer Items
 
-The simplest way to start using the [`IgrNavDrawer`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavdrawer.html) is as follows:
+The simplest way to start using the [`IgrNavDrawer`](mcp:get_api_reference?platform=react&component=IgrNavDrawer) is as follows:
 
 ```tsx
 <IgrNavDrawer open={true}>
@@ -244,9 +244,9 @@ root.render(<NavDrawerAddDrawerItems />);
 
 ## Navbar Integration
 
-While any content can be provided in the drawer, the [`IgrNavDrawerItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavdraweritem.html) is available to apply out-of-the-box styling to the items.
+While any content can be provided in the drawer, the [`IgrNavDrawerItem`](mcp:get_api_reference?platform=react&component=IgrNavDrawerItem) is available to apply out-of-the-box styling to the items.
 
-To enhance our component a bit, we can use it in conjunction with the [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html). This way we can achieve a more completed look and use the drawer's methods. Let's look at how we can use this in the next example:
+To enhance our component a bit, we can use it in conjunction with the [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar). This way we can achieve a more completed look and use the drawer's methods. Let's look at how we can use this in the next example:
 
 ```tsx
 <IgrNavbar>
@@ -585,7 +585,7 @@ root.render(<NavDrawerAddMini />);
 
 ## Styling
 
-The [`IgrNavDrawer`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavdrawer.html) exposes several CSS parts - `base`, `main`, and `mini`, giving you full control over their styling.
+The [`IgrNavDrawer`](mcp:get_api_reference?platform=react&component=IgrNavDrawer) exposes several CSS parts - `base`, `main`, and `mini`, giving you full control over their styling.
 
 ```scss
 igc-nav-drawer::part(base) {
@@ -733,14 +733,14 @@ root.render(<NavDrawerStyling />);
 
 ## API References
 
-- [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html)
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
-- [`IgrNavDrawerHeaderItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavdrawerheaderitem.html)
-- [`IgrNavDrawerItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavdraweritem.html)
-- [`IgrNavDrawer`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavdrawer.html)
-- [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html)
-- [`IgrRadioGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html)
-- [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html)
+- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+- [`IgrNavDrawerHeaderItem`](mcp:get_api_reference?platform=react&component=IgrNavDrawerHeaderItem)
+- [`IgrNavDrawerItem`](mcp:get_api_reference?platform=react&component=IgrNavDrawerItem)
+- [`IgrNavDrawer`](mcp:get_api_reference?platform=react&component=IgrNavDrawer)
+- [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar)
+- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
+- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

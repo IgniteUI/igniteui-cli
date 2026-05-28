@@ -13,7 +13,7 @@ _premium: true
 
 # React Tree Grid Row Selection
 
-The Ignite UI for React Row Selection feature in React Tree Grid allows users to interactively select, highlight, or deselect a single or multiple rows of data. There are several selection modes available in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html):
+The Ignite UI for React Row Selection feature in React Tree Grid allows users to interactively select, highlight, or deselect a single or multiple rows of data. There are several selection modes available in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid):
 
 - None Selection
 - Multiple Selection
@@ -23,7 +23,7 @@ The Ignite UI for React Row Selection feature in React Tree Grid allows users to
 
 <!-- ComponentStart: TreeGrid -->
 
-The sample below demonstrates the four types of [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)'s **row selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box. Use the switch button to _hide_ or _show_ the row selector checkbox.
+The sample below demonstrates the four types of [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)'s **row selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box. Use the switch button to _hide_ or _show_ the row selector checkbox.
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -209,7 +209,7 @@ root.render(<Sample/>);
 
 ## Setup
 
-In order to setup row selection in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), you just need to set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowSelection) property. This property accepts `GridSelectionMode` enumeration.
+In order to setup row selection in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), you just need to set the [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowSelection) property. This property accepts `GridSelectionMode` enumeration.
 
 `GridSelectionMode` exposes the following modes:
 
@@ -227,11 +227,11 @@ Below we will take a look at each of them in more detail.
 
 ### None Selection
 
-In the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) by default row selection is disabled ([`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowSelection) is None). So you can **not** select or deselect a row through interaction with the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) UI, the only way to complete these actions is to use the provided API methods.
+In the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) by default row selection is disabled ([`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowSelection) is None). So you can **not** select or deselect a row through interaction with the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) UI, the only way to complete these actions is to use the provided API methods.
 
 ### Single Selection
 
-Single row selection can now be easily set up, the only thing you need to do, is to set [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowSelection) to `Single` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the <kbd>SPACE</kbd> key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected `RowSelectionChanging` event is emitted.
+Single row selection can now be easily set up, the only thing you need to do, is to set [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowSelection) to `Single` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the <kbd>SPACE</kbd> key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected `RowSelectionChanging` event is emitted.
 
 ```tsx
 const handleRowSelection = (args: IgrRowSelectionEventArgs) => {
@@ -246,7 +246,7 @@ const handleRowSelection = (args: IgrRowSelectionEventArgs) => {
 
 ### Multiple Selection
 
-To enable multiple row selection in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) just set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowSelection) property to `Multiple`. This will enable a row selector field on each row and in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and click on another while holding the <kbd>SHIFT</kbd> key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row will be toggled and the previous selection will be preserved.
+To enable multiple row selection in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) just set the [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowSelection) property to `Multiple`. This will enable a row selector field on each row and in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and click on another while holding the <kbd>SHIFT</kbd> key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row will be toggled and the previous selection will be preserved.
 
 ```tsx
 <IgrTreeGrid primaryKey="ProductID" rowSelection="multiple"
@@ -258,7 +258,7 @@ To enable multiple row selection in the [`IgrTreeGrid`](https://www.infragistics
 
 ### Cascade Selection
 
-To enable cascade row selection in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) just set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowSelection) property to `MultipleCascade`. This will enable a row selector field on each row and in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) header. The row selector allows users to select multiple rows which would select all children in the tree below. The selection persists through scrolling, paging, and data operations, such as sorting and filtering. The row can also be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and **click** on another while holding the <kbd>SHIFT</kbd> key, the selection of a parent record will select all of its children even if they are not in the selected range. In this selection mode, when you **click** on a single row, the previously selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row and its children will be toggled and the previous selection will be preserved.
+To enable cascade row selection in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) just set the [`rowSelection`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowSelection) property to `MultipleCascade`. This will enable a row selector field on each row and in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) header. The row selector allows users to select multiple rows which would select all children in the tree below. The selection persists through scrolling, paging, and data operations, such as sorting and filtering. The row can also be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and **click** on another while holding the <kbd>SHIFT</kbd> key, the selection of a parent record will select all of its children even if they are not in the selected range. In this selection mode, when you **click** on a single row, the previously selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row and its children will be toggled and the previous selection will be preserved.
 
 ```tsx
 <IgrTreeGrid primaryKey="ID" foreignKey="ParentID" autoGenerate={true}
@@ -273,14 +273,14 @@ In this mode a parent's selection state entirely depends on the selection state 
 **Notes**
 
 - Row selection will trigger `RowSelectionChanging` event. This event gives you information about the **new selection**, **old selection**, the rows that have been **added** and **removed** from the old selection. Also the event is **cancellable**, so this allows you to prevent selection.
-- When row selection is enabled row selectors are displayed, but if you don't want to show them, you can set [`hideRowSelectors`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#hideRowSelectors) to **true**.
+- When row selection is enabled row selectors are displayed, but if you don't want to show them, you can set [`hideRowSelectors`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=hideRowSelectors) to **true**.
 - When you switch between row selection modes at runtime, this will clear the previous row selection state.
 
 ## API usage
 
 ### Select Rows Programmatically
 
-The code snippet below can be used to select one or multiple rows simultaneously (via [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#primaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
+The code snippet below can be used to select one or multiple rows simultaneously (via [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=primaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
 ```tsx
 function onClickSelect() {
@@ -292,11 +292,11 @@ function onClickSelect() {
 <button onClick={onClickSelect}>Select 1,2 and 5</button>
 ```
 
-This will add the rows which correspond to the data entries with IDs 1, 2 and 5 to the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) selection.
+This will add the rows which correspond to the data entries with IDs 1, 2 and 5 to the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) selection.
 
 ### Deselect Rows
 
-If you need to deselect rows programmatically, you can use the [`deselectRows`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#deselectRows) method.
+If you need to deselect rows programmatically, you can use the [`deselectRows`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=deselectRows) method.
 
 ```tsx
 function onClickDeselect() {
@@ -330,17 +330,17 @@ const handleRowSelectionChange = (args: IgrRowSelectionEventArgs) => {
 
 ### Select All Rows
 
-Another useful API method that [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) provides is [`selectAllRows`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#selectAllRows). By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. If you call the method with **false** parameter, `SelectAllRows(false)` will always select all data in the grid, even if filtering is applied.
+Another useful API method that [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) provides is [`selectAllRows`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=selectAllRows). By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. If you call the method with **false** parameter, `SelectAllRows(false)` will always select all data in the grid, even if filtering is applied.
 
-> **Note** Keep in mind that [`selectAllRows`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#selectAllRows) will not select the rows that are deleted.
+> **Note** Keep in mind that [`selectAllRows`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=selectAllRows) will not select the rows that are deleted.
 
 ### Deselect All Rows
 
-[`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) provides a [`deselectAllRows`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#deselectAllRows) method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. If you call the method with **false** parameter, `DeselectAllRows(false)` will always clear all row selection state even if filtering is applied.
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) provides a [`deselectAllRows`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=deselectAllRows) method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. If you call the method with **false** parameter, `DeselectAllRows(false)` will always clear all row selection state even if filtering is applied.
 
 ### How to get Selected Rows
 
-If you need to see which rows are currently selected, you can get their row IDs with the [`selectedRows`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#selectedRows) getter.
+If you need to see which rows are currently selected, you can get their row IDs with the [`selectedRows`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=selectedRows) getter.
 
 ```tsx
 function getSelectedRows() {
@@ -348,7 +348,7 @@ function getSelectedRows() {
 }
 ```
 
-Additionally, assigning row IDs to [`selectedRows`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#selectedRows) will allow you to change the grid's selection state.
+Additionally, assigning row IDs to [`selectedRows`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=selectedRows) will allow you to change the grid's selection state.
 
 ```tsx
 const mySelectedRows = [1,2,3];
@@ -359,15 +359,15 @@ const mySelectedRows = [1,2,3];
 
 ### Row Selector Templates
 
-You can template header and row selectors in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) and also access their contexts which provide useful functionality for different scenarios.
+You can template header and row selectors in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) and also access their contexts which provide useful functionality for different scenarios.
 
-By default, the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`click`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
+By default, the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`click`](mcp:get_api_reference?platform=react&component=IgrCheckbox&member=click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
 
 #### Row Template
 
-To create a custom row selector template,  within the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) you can use the [`rowSelectorTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#rowSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the row's state.
+To create a custom row selector template,  within the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) you can use the [`rowSelectorTemplate`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=rowSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the row's state.
 
-The [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowselectortemplatedetails.html#selected) property shows whether the current row is selected or not while the [`index`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowselectortemplatedetails.html#index) property can be used to access the row index.
+The [`selected`](mcp:get_api_reference?platform=react&component=IgrRowSelectorTemplateDetails&member=selected) property shows whether the current row is selected or not while the [`index`](mcp:get_api_reference?platform=react&component=IgrRowSelectorTemplateDetails&member=index) property can be used to access the row index.
 
 ```tsx
 const rowSelectorTemplate = (ctx: IgrRowSelectorTemplateContext) => {
@@ -396,7 +396,7 @@ const rowSelectorTemplate = (ctx: IgrRowSelectorTemplateContext) => {
 </IgrTreeGrid>
 ```
 
-The [`rowID`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowselectortemplatedetails.html#rowID) property can be used to get a reference of an [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) row. This is useful when you implement a `click` handler on the row selector element.
+The [`rowID`](mcp:get_api_reference?platform=react&component=IgrRowSelectorTemplateDetails&member=rowID) property can be used to get a reference of an [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) row. This is useful when you implement a `click` handler on the row selector element.
 
 ```tsx
 const rowSelectorTemplate = (ctx: IgrRowSelectorTemplateContext) => {
@@ -409,13 +409,13 @@ const rowSelectorTemplate = (ctx: IgrRowSelectorTemplateContext) => {
 }
 ```
 
-In the above example we are using an [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) and we bind `rowContext.selected` to its [`checked`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
+In the above example we are using an [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox) and we bind `rowContext.selected` to its [`checked`](mcp:get_api_reference?platform=react&component=IgrCheckbox&member=checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
 
 ### Header Template
 
-To create a custom header selector template, within the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), you can use the [`headSelectorTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridbasedirective.html#headSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the header's state.
+To create a custom header selector template, within the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), you can use the [`headSelectorTemplate`](mcp:get_api_reference?platform=react&component=IgrGridBaseDirective&member=headSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the header's state.
 
-The [`selectedCount`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrheadselectortemplatedetails.html#selectedCount) property shows you how many rows are currently selected while [`totalCount`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrheadselectortemplatedetails.html#totalCount) shows you how many rows there are in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) in total.
+The [`selectedCount`](mcp:get_api_reference?platform=react&component=IgrHeadSelectorTemplateDetails&member=selectedCount) property shows you how many rows are currently selected while [`totalCount`](mcp:get_api_reference?platform=react&component=IgrHeadSelectorTemplateDetails&member=totalCount) shows you how many rows there are in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) in total.
 
 ```tsx
 const headSelectorTemplate = (ctx: IgrHeadSelectorTemplateContext) => {
@@ -427,7 +427,7 @@ const headSelectorTemplate = (ctx: IgrHeadSelectorTemplateContext) => {
 };
 ```
 
-The [`selectedCount`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrheadselectortemplatedetails.html#selectedCount) and [`totalCount`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrheadselectortemplatedetails.html#totalCount) properties can be used to determine if the head selector should be checked or indeterminate (partially selected).
+The [`selectedCount`](mcp:get_api_reference?platform=react&component=IgrHeadSelectorTemplateDetails&member=selectedCount) and [`totalCount`](mcp:get_api_reference?platform=react&component=IgrHeadSelectorTemplateDetails&member=totalCount) properties can be used to determine if the head selector should be checked or indeterminate (partially selected).
 
 ```tsx
 const headSelectorTemplate = (ctx: IgrHeadSelectorTemplateContext) => {
@@ -458,7 +458,7 @@ const headSelectorTemplate = (ctx: IgrHeadSelectorTemplateContext) => {
 
 ### Row Numbering Demo
 
-This demo shows the usage of custom header and row selectors. The latter uses [`index`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowselectortemplatedetails.html#index) to display row numbers and an [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) bound to [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowselectortemplatedetails.html#selected).
+This demo shows the usage of custom header and row selectors. The latter uses [`index`](mcp:get_api_reference?platform=react&component=IgrRowSelectorTemplateDetails&member=index) to display row numbers and an [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox) bound to [`selected`](mcp:get_api_reference?platform=react&component=IgrRowSelectorTemplateDetails&member=selected).
 
 ```typescript
 export class EmployeesFlatDataItem {
@@ -962,7 +962,7 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
+- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
 - `TreeGridRow`
 
 ## Additional Resources

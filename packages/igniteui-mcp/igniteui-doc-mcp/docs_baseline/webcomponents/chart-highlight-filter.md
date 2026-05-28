@@ -74,60 +74,21 @@ export class CountryRenewableElectricityFiltered extends Array<CountryRenewableE
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-Note that data highlighting feature is supported by the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) and [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html), but it is configured in different ways in those controls due to the nature of how those controls work. One thing remains constant with this feature though, in that you need to set the [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#highlightedValuesDisplayMode) property to `Overlay` if you want to see the highlight. The following will explain the different configurations for the highlight filter feature.
+Note that data highlighting feature is supported by the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) and [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), but it is configured in different ways in those controls due to the nature of how those controls work. One thing remains constant with this feature though, in that you need to set the [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightedValuesDisplayMode) property to `Overlay` if you want to see the highlight. The following will explain the different configurations for the highlight filter feature.
 
 ## Using Highlight Filter with DataChart
 
-In the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html), much of the highlight filter API happens on the series themselves, mainly by setting the [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#highlightedDataSource) property to a collection representing a subset of the data you want to highlight. The count of the items in the [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#highlightedDataSource) needs to match the count of the data bound to the `ItemsSource` of the series that you are looking to highlight, and in the case of category series, it will use the `ValueMemberPath` that you have defined as the highlight path by default. The sample at the top of this page uses the [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#highlightedDataSource) in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) to show the overlay.
+In the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent), much of the highlight filter API happens on the series themselves, mainly by setting the [`highlightedDataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightedDataSource) property to a collection representing a subset of the data you want to highlight. The count of the items in the [`highlightedDataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightedDataSource) needs to match the count of the data bound to the `ItemsSource` of the series that you are looking to highlight, and in the case of category series, it will use the `ValueMemberPath` that you have defined as the highlight path by default. The sample at the top of this page uses the [`highlightedDataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightedDataSource) in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) to show the overlay.
 
-In the case that the schema does not match between the [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#highlightedDataSource) and the `ItemsSource` of the series, you can configure this using the `HighlightedValueMemberPath` property on the series. Additionally, if you would like to use the `ItemsSource` of the series itself as the highlight source and have a path on your data item that represents the subset, you can do this. This is done by simply setting the `HighlightedValueMemberPath` property to that path and not providing a [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#highlightedDataSource).
+In the case that the schema does not match between the [`highlightedDataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightedDataSource) and the `ItemsSource` of the series, you can configure this using the `HighlightedValueMemberPath` property on the series. Additionally, if you would like to use the `ItemsSource` of the series itself as the highlight source and have a path on your data item that represents the subset, you can do this. This is done by simply setting the `HighlightedValueMemberPath` property to that path and not providing a [`highlightedDataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightedDataSource).
 
-The reduced opacity of the column and area series types is configurable by setting the [`highlightedValuesFadeOpacity`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#highlightedValuesFadeOpacity) property on the series. You can also set the [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#highlightedValuesDisplayMode) property to `Hidden` if you do not wish to see the overlay at all.
+The reduced opacity of the column and area series types is configurable by setting the [`highlightedValuesFadeOpacity`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=highlightedValuesFadeOpacity) property on the series. You can also set the [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightedValuesDisplayMode) property to `Hidden` if you do not wish to see the overlay at all.
 
-The part of the series shown by the highlight filter will be represented in the legend and tooltip layers of the chart separately. You can configure the title that this is given in the tooltip and legend by setting the [`highlightedTitleSuffix`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#highlightedTitleSuffix). This will append the value that you provide to the end of the [`chartTitle`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#chartTitle) of the series.
+The part of the series shown by the highlight filter will be represented in the legend and tooltip layers of the chart separately. You can configure the title that this is given in the tooltip and legend by setting the [`highlightedTitleSuffix`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=highlightedTitleSuffix). This will append the value that you provide to the end of the [`chartTitle`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartTitle) of the series.
 
-If the `DataLegend` or [`IgcDataToolTipLayerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatatooltiplayercomponent.html) is used then the highlighted series will appear grouped. This can be managed by setting the [`highlightedValuesDataLegendGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#highlightedValuesDataLegendGroup) property on the series to categorize them appropriately.
+If the `DataLegend` or [`IgcDataToolTipLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataToolTipLayerComponent) is used then the highlighted series will appear grouped. This can be managed by setting the [`highlightedValuesDataLegendGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=highlightedValuesDataLegendGroup) property on the series to categorize them appropriately.
 
-The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control using the [`highlightedValuesDataLegendGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#highlightedValuesDataLegendGroup):
-
-```typescript
-export class OlympicMedalsTopCountriesWithTotalsItem {
-    public constructor(init: Partial<OlympicMedalsTopCountriesWithTotalsItem>) {
-        Object.assign(this, init);
-    }
-
-    public year: string;
-    public america: number;
-    public americaGold: number;
-    public china: number;
-    public chinaGold: number;
-    public russia: number;
-    public russiaGold: number;
-    public total: number;
-
-}
-export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopCountriesWithTotalsItem> {
-    public constructor(items: Array<OlympicMedalsTopCountriesWithTotalsItem> | number = -1) {
-        if (Array.isArray(items)) {
-            super(...items);
-        } else {
-            const newItems = [
-                new OlympicMedalsTopCountriesWithTotalsItem({ year: `1996`, america: 148, americaGold: 50, china: 110, chinaGold: 40, russia: 95, russiaGold: 20, total: 353 }),
-                new OlympicMedalsTopCountriesWithTotalsItem({ year: `2000`, america: 142, americaGold: 40, china: 115, chinaGold: 45, russia: 91, russiaGold: 40, total: 348 }),
-                new OlympicMedalsTopCountriesWithTotalsItem({ year: `2004`, america: 134, americaGold: 35, china: 121, chinaGold: 55, russia: 86, russiaGold: 25, total: 341 }),
-                // ... 3 more items
-            ];
-            super(...newItems.slice(0));
-        }
-    }
-}
-```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
-```
-
-The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control using the [`highlightedValuesDataLegendGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#highlightedValuesDataLegendGroup):
+The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control using the [`highlightedValuesDataLegendGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=highlightedValuesDataLegendGroup):
 
 ```typescript
 export class OlympicMedalsTopCountriesWithTotalsItem {
@@ -166,7 +127,46 @@ export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopC
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-The following example demonstrates the usage of the data highlighting overlay feature within the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) control using the `HighlightedValueMemberPath`:
+The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control using the [`highlightedValuesDataLegendGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=highlightedValuesDataLegendGroup):
+
+```typescript
+export class OlympicMedalsTopCountriesWithTotalsItem {
+    public constructor(init: Partial<OlympicMedalsTopCountriesWithTotalsItem>) {
+        Object.assign(this, init);
+    }
+
+    public year: string;
+    public america: number;
+    public americaGold: number;
+    public china: number;
+    public chinaGold: number;
+    public russia: number;
+    public russiaGold: number;
+    public total: number;
+
+}
+export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopCountriesWithTotalsItem> {
+    public constructor(items: Array<OlympicMedalsTopCountriesWithTotalsItem> | number = -1) {
+        if (Array.isArray(items)) {
+            super(...items);
+        } else {
+            const newItems = [
+                new OlympicMedalsTopCountriesWithTotalsItem({ year: `1996`, america: 148, americaGold: 50, china: 110, chinaGold: 40, russia: 95, russiaGold: 20, total: 353 }),
+                new OlympicMedalsTopCountriesWithTotalsItem({ year: `2000`, america: 142, americaGold: 40, china: 115, chinaGold: 45, russia: 91, russiaGold: 40, total: 348 }),
+                new OlympicMedalsTopCountriesWithTotalsItem({ year: `2004`, america: 134, americaGold: 35, china: 121, chinaGold: 55, russia: 86, russiaGold: 25, total: 341 }),
+                // ... 3 more items
+            ];
+            super(...newItems.slice(0));
+        }
+    }
+}
+```
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+```
+
+The following example demonstrates the usage of the data highlighting overlay feature within the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control using the `HighlightedValueMemberPath`:
 
 ```typescript
 export class OlympicMedalsTopCountriesWithTotalsItem {
@@ -207,15 +207,15 @@ export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopC
 
 ## Using Highlight Filter in CategoryChart
 
-The [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) highlight filter happens on the chart by setting the [`initialHighlightFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#initialHighlightFilter) property. Since the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) takes all of the properties on your underlying data item into account by default, you will need to define the [`initialGroups`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#initialGroups) on the chart as well so that the data can be grouped and aggregated in a way that you can have a subset of the data to filter on. You can set the [`initialGroups`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#initialGroups) to a value path in your underlying data item to group by a path that has duplicate values.
+The [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) highlight filter happens on the chart by setting the [`initialHighlightFilter`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=initialHighlightFilter) property. Since the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) takes all of the properties on your underlying data item into account by default, you will need to define the [`initialGroups`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=initialGroups) on the chart as well so that the data can be grouped and aggregated in a way that you can have a subset of the data to filter on. You can set the [`initialGroups`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=initialGroups) to a value path in your underlying data item to group by a path that has duplicate values.
 
 <!-- Unsure of this part. Need to review -->
 
 <!-- ????? The `InitialHighlightFilter` is done using OData filter query syntax. The syntax for this is an abbreviation of the filter operator. For example, if you wanted to have an InitialHighlightFilter of "Month not equals January" it would be represented as "Month ne 'January'"-->
 
-Similar to the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html), the [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#highlightedValuesDisplayMode) property is also exposed on the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html). In the case that you do not want to see the overlay, you can set this property to `Hidden`.
+Similar to the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent), the [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightedValuesDisplayMode) property is also exposed on the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent). In the case that you do not want to see the overlay, you can set this property to `Hidden`.
 
-The following example demonstrates the usage of the data highlighting overlay feature within the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) control:
+The following example demonstrates the usage of the data highlighting overlay feature within the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control:
 
 ```typescript
 export class SalesDataItem {
@@ -275,13 +275,13 @@ You can find more information about related chart features in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-| [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) Properties                    | [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) Properties |
+| [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) Properties                    | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) Properties |
 | ----------------------------------------------|---------------------------|
-| [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#highlightedDataSource)        | [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#highlightedDataSource)  |
-| [`highlightedTitleSuffix`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#highlightedTitleSuffix)        | [`highlightedTitleSuffix`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#highlightedTitleSuffix)  |
+| [`highlightedDataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightedDataSource)        | [`highlightedDataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightedDataSource)  |
+| [`highlightedTitleSuffix`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=highlightedTitleSuffix)        | [`highlightedTitleSuffix`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=highlightedTitleSuffix)  |
 | `CategoryChart.HighlightedValueMemberPath`    | `Series.HighlightedValueMemberPath`     |
-| [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#highlightedValuesDisplayMode)  | [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#highlightedValuesDisplayMode)   |
-| [`highlightedValuesFadeOpacity`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#highlightedValuesFadeOpacity)  | [`highlightedValuesFadeOpacity`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#highlightedValuesFadeOpacity)   |
-| [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#highlightedValuesDisplayMode)  | [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#highlightedValuesDisplayMode)   |
-| [`initialHighlightFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#initialHighlightFilter)        |  |
-| [`initialGroups`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#initialGroups)                 |  |
+| [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightedValuesDisplayMode)  | [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=highlightedValuesDisplayMode)   |
+| [`highlightedValuesFadeOpacity`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=highlightedValuesFadeOpacity)  | [`highlightedValuesFadeOpacity`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=highlightedValuesFadeOpacity)   |
+| [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightedValuesDisplayMode)  | [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=highlightedValuesDisplayMode)   |
+| [`initialHighlightFilter`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=initialHighlightFilter)        |  |
+| [`initialGroups`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=initialGroups)                 |  |

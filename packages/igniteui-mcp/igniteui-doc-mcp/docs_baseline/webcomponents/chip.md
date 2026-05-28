@@ -28,7 +28,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-You will then need to import the [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html), its necessary CSS, and register its module, like so:
+You will then need to import the [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent), its necessary CSS, and register its module, like so:
 
 ```ts
 import { defineComponents, IgcChipComponent } from 'igniteui-webcomponents';
@@ -39,19 +39,19 @@ defineComponents(IgcChipComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html) is as follows:
+The simplest way to start using the [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) is as follows:
 
 ```html
 <igc-chip></igc-chip>
 ```
 
-To display a selectable chip, you can use the [`selectable`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html#selectable) property of the chip.
+To display a selectable chip, you can use the [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=selectable) property of the chip.
 
 ```html
 <igc-chip selectable></igc-chip>
 ```
 
-To display a removable chip, you can use the [`removable`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html#removable) property of the chip.
+To display a removable chip, you can use the [`removable`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=removable) property of the chip.
 
 ```html
 <igc-chip removable></igc-chip>
@@ -61,7 +61,7 @@ To display a removable chip, you can use the [`removable`](https://www.infragist
 
 ### Variants
 
-The Ignite UI for Web Components chip supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `Primary`, `Info`, `Success`, `Warning`, or `Danger` to the [`variant`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html#variant) property.
+The Ignite UI for Web Components chip supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `Primary`, `Info`, `Success`, `Warning`, or `Danger` to the [`variant`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=variant) property.
 
 ```html
 <igc-chip variant="success"></igc-chip>
@@ -74,7 +74,7 @@ The Ignite UI for Web Components chip supports several pre-defined stylistic var
 
 ### Disabled
 
-The Ignite UI for Web Components chip can be disabled by using the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html#disabled) property.
+The Ignite UI for Web Components chip can be disabled by using the [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent&member=disabled) property.
 
 ```html
 <igc-chip disabled></igc-chip>
@@ -82,7 +82,7 @@ The Ignite UI for Web Components chip can be disabled by using the [`disabled`](
 
 ### Prefix / Suffix
 
-With the `Prefix` and `Suffix` parts of the [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html) component and their slots, we can add different content before and after the main content of the chip. We provide default select and remove icons but you can customize them using the [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) and `Remove` slots. You can add additional content before or after the main content, using the `Start` and `End` slots.
+With the `Prefix` and `Suffix` parts of the [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) component and their slots, we can add different content before and after the main content of the chip. We provide default select and remove icons but you can customize them using the [`IgcSelectComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent) and `Remove` slots. You can add additional content before or after the main content, using the `Start` and `End` slots.
 
 ```html
 <igc-chip selectable removable>
@@ -101,7 +101,7 @@ With the `Prefix` and `Suffix` parts of the [`IgcChipComponent`](https://www.inf
 
 ## Size
 
-We allow the user to choose the size of the [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html) by utilizing the `--ig-size` CSS variable:
+We allow the user to choose the size of the [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) by utilizing the `--ig-size` CSS variable:
 
 ```css
 .size-small {
@@ -141,7 +141,7 @@ We allow the user to choose the size of the [`IgcChipComponent`](https://www.inf
 
 ## Styling
 
-The [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html) component exposes a `base`, `prefix`, `suffix` CSS parts that can be used to change all of its style properties.
+The [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) component exposes a `base`, `prefix`, `suffix` CSS parts that can be used to change all of its style properties.
 
 ```css
 igc-chip::part(base) {
@@ -171,7 +171,7 @@ igc-chip::part(suffix) {
 
 ## API References
 
-- [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html)
+- [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

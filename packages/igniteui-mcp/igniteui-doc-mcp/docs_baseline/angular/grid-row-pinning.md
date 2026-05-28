@@ -98,17 +98,17 @@ The built-in row pinning UI is enabled by adding an `igxActionStrip` component w
 </igx-grid>
 ```
 ## Row Pinning API
-Row pinning is controlled through the `pinned` input of the [`row`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/rowtype.html). Pinned rows are rendered at the top of the Grid by default and stay fixed through vertical scrolling of the unpinned rows in the Grid body.
+Row pinning is controlled through the `pinned` input of the [`row`](mcp:get_api_reference?platform=angular&component=RowType). Pinned rows are rendered at the top of the Grid by default and stay fixed through vertical scrolling of the unpinned rows in the Grid body.
 ```typescript
 this.grid.getRowByIndex(0).pinned = true;
 ```
-You may also use the Grid's [`pinRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#pinRow) or [`unpinRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#unpinRow) methods of the [`IgxGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) to pin or unpin records by their ID:
+You may also use the Grid's [`pinRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=pinRow) or [`unpinRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=unpinRow) methods of the [`IgxGridComponent`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) to pin or unpin records by their ID:
 ```typescript
 this.grid.pinRow('ALFKI');
 this.grid.unpinRow('ALFKI');
 ```
-Note that the row ID is the primary key value, defined by the [`primaryKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
-A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the [`rowPinning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#rowPinning) event and changing the [`insertAtIndex`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ipinroweventargs.html#insertAtIndex) property of the event arguments to the desired position index.
+Note that the row ID is the primary key value, defined by the [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
+A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the [`rowPinning`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowPinning) event and changing the [`insertAtIndex`](mcp:get_api_reference?platform=angular&component=IPinRowEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
 ```html
 <igx-grid #grid1 [data]="data" [autoGenerate]="true" (rowPinning)="rowPinning($event)">
 </igx-grid>
@@ -119,7 +119,7 @@ public rowPinning(event) {
 }
 ```
 ## Pinning Position
-You can change the row pinning position via the [`pinning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
+You can change the row pinning position via the [`pinning`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
 When set to Bottom pinned rows are rendered at the bottom of the grid, after the unpinned rows. Unpinned rows can be scrolled vertically, while the pinned rows remain fixed at the bottom.
 ```html
 <igx-grid [data]="data" [autoGenerate]="true" [pinning]="pinningConfig"></igx-grid>
@@ -551,11 +551,11 @@ $custom-theme: grid-theme(
 >[!NOTE]
 >The sample will not be affected by the selected global theme from `Change Theme`.
 ## API References
-- [IgxGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
-- [IgxGridRow](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridrow.html)
-- [IgxTreeGridRow](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridrow.html)
-- [IgxHierarchicalGridRow](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridrow.html)
-- [RowType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/RowType.html)
+- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
+- [IgxGridRow](mcp:get_api_reference?platform=angular&component=IgxGridRow)
+- [IgxTreeGridRow](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
+- [IgxHierarchicalGridRow](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridRow)
+- [RowType](mcp:get_api_reference?platform=angular&component=RowType)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

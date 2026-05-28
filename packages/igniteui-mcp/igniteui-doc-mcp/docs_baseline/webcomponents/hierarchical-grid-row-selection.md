@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Hierarchical Grid Row Selection
 
-The Ignite UI for Web Components Row Selection feature in Web Components Hierarchical Grid allows users to interactively select, highlight, or deselect a single or multiple rows of data. There are several selection modes available in the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html):
+The Ignite UI for Web Components Row Selection feature in Web Components Hierarchical Grid allows users to interactively select, highlight, or deselect a single or multiple rows of data. There are several selection modes available in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent):
 
 - None Selection
 - Multiple Selection
@@ -23,7 +23,7 @@ The Ignite UI for Web Components Row Selection feature in Web Components Hierarc
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
 
-The sample below demonstrates the three types of [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to _hide_ or _show_ the row selector checkboxes.
+The sample below demonstrates the three types of [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)'s **row selection** behavior. Use the drop-down below to enable each of the available selection modes. Use the checkbox to _hide_ or _show_ the row selector checkboxes.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
@@ -34,7 +34,7 @@ The sample below demonstrates the three types of [`IgcHierarchicalGridComponent`
 
 ## Setup
 
-In order to setup row selection in the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), you just need to set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowSelection) property. This property accepts `GridSelectionMode` enumeration.
+In order to setup row selection in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), you just need to set the [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelection) property. This property accepts `GridSelectionMode` enumeration.
 
 `GridSelectionMode` exposes the following modes:
 
@@ -46,11 +46,11 @@ Below we will take a look at each of them in more detail.
 
 ### None Selection
 
-In the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) by default row selection is disabled ([`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowSelection) is None). So you can **not** select or deselect a row through interaction with the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) UI, the only way to complete these actions is to use the provided API methods.
+In the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) by default row selection is disabled ([`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelection) is None). So you can **not** select or deselect a row through interaction with the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) UI, the only way to complete these actions is to use the provided API methods.
 
 ### Single Selection
 
-Single row selection can now be easily set up, the only thing you need to do, is to set [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowSelection) to `Single` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the <kbd>SPACE</kbd> key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected `RowSelectionChanging` event is emitted.
+Single row selection can now be easily set up, the only thing you need to do, is to set [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelection) to `Single` property. This gives you the opportunity to **select only one row within a grid**. You can select a row by clicking on a cell or pressing the <kbd>SPACE</kbd> key when you focus on a cell of the row, and of course you can select a row by clicking on the row selector field. When row is selected or deselected `RowSelectionChanging` event is emitted.
 
 ```html
 <igc-hierarchical-grid id="grid" row-selection="Single" auto-generate="true"
@@ -76,7 +76,7 @@ public handleRowSelection(args: IgcRowSelectionEventArgs) {
 
 ### Multiple Selection
 
-To enable multiple row selection in the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) just set the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowSelection) property to `Multiple`. This will enable a row selector field on each row and in the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and click on another while holding the <kbd>SHIFT</kbd> key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row will be toggled and the previous selection will be preserved.
+To enable multiple row selection in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) just set the [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelection) property to `Multiple`. This will enable a row selector field on each row and in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) header. The row selector allows users to select multiple rows, with the selection persisting through scrolling, paging, and data operations, such as sorting and filtering. The row also can be selected by clicking on a cell or by pressing the <kbd>SPACE</kbd> key when a cell is focused. If you have selected one row and click on another while holding the <kbd>SHIFT</kbd> key, this will select the whole range of rows. In this selection mode, when you click on a single row, the previous selected rows will be deselected. If you **click** while holding the <kbd>CTRL</kbd> key, the row will be toggled and the previous selection will be preserved.
 
 ```html
 <igc-hierarchical-grid id="grid" primary-key="ProductID" row-selection="Multiple"
@@ -91,14 +91,14 @@ To enable multiple row selection in the [`IgcHierarchicalGridComponent`](https:/
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 - Row selection will trigger `RowSelectionChanging` event. This event gives you information about the **new selection**, **old selection**, the rows that have been **added** and **removed** from the old selection. Also the event is **cancellable**, so this allows you to prevent selection.
-- When row selection is enabled row selectors are displayed, but if you don't want to show them, you can set [`hideRowSelectors`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#hideRowSelectors) to **true**.
+- When row selection is enabled row selectors are displayed, but if you don't want to show them, you can set [`hideRowSelectors`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=hideRowSelectors) to **true**.
 - When you switch between row selection modes at runtime, this will clear the previous row selection state.
 
 ## API usage
 
 ### Select Rows Programmatically
 
-The code snippet below can be used to select one or multiple rows simultaneously (via [`primaryKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#primaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
+The code snippet below can be used to select one or multiple rows simultaneously (via [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=primaryKey)). Additionally, the second parameter of this method is a boolean property through which you may choose whether the previous row selection will be cleared or not. The previous selection is preserved by default.
 
 ```html
 <igc-hierarchical-grid id="grid"
@@ -120,11 +120,11 @@ public onClickSelect() {
 }
 ```
 
-This will add the rows which correspond to the data entries with IDs 1, 2 and 5 to the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) selection.
+This will add the rows which correspond to the data entries with IDs 1, 2 and 5 to the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) selection.
 
 ### Deselect Rows
 
-If you need to deselect rows programmatically, you can use the [`deselectRows`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#deselectRows) method.
+If you need to deselect rows programmatically, you can use the [`deselectRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=deselectRows) method.
 
 ```html
 <igc-hierarchical-grid id="grid"
@@ -182,17 +182,17 @@ public handleRowSelectionChange(args) {
 
 ### Select All Rows
 
-Another useful API method that [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) provides is [`selectAllRows`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#selectAllRows). By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. If you call the method with **false** parameter, `SelectAllRows(false)` will always select all data in the grid, even if filtering is applied.
+Another useful API method that [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) provides is [`selectAllRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=selectAllRows). By default this method will select all data rows, but if filtering is applied, it will select only the rows that match the filter criteria. If you call the method with **false** parameter, `SelectAllRows(false)` will always select all data in the grid, even if filtering is applied.
 
-> **Note** Keep in mind that [`selectAllRows`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#selectAllRows) will not select the rows that are deleted.
+> **Note** Keep in mind that [`selectAllRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=selectAllRows) will not select the rows that are deleted.
 
 ### Deselect All Rows
 
-[`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) provides a [`deselectAllRows`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#deselectAllRows) method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. If you call the method with **false** parameter, `DeselectAllRows(false)` will always clear all row selection state even if filtering is applied.
+[`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) provides a [`deselectAllRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=deselectAllRows) method, which by default will deselect all data rows, but if filtering is applied will deselect only the rows that match the filter criteria. If you call the method with **false** parameter, `DeselectAllRows(false)` will always clear all row selection state even if filtering is applied.
 
 ### How to get Selected Rows
 
-If you need to see which rows are currently selected, you can get their row IDs with the [`selectedRows`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#selectedRows) getter.
+If you need to see which rows are currently selected, you can get their row IDs with the [`selectedRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=selectedRows) getter.
 
 ```ts
 public getSelectedRows() {
@@ -201,7 +201,7 @@ public getSelectedRows() {
 }
 ```
 
-Additionally, assigning row IDs to [`selectedRows`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#selectedRows) will allow you to change the grid's selection state.
+Additionally, assigning row IDs to [`selectedRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=selectedRows) will allow you to change the grid's selection state.
 
 ```ts
 public mySelectedRows = [1, 2, 3]; // an array of row IDs
@@ -214,15 +214,15 @@ constructor() {
 
 ### Row Selector Templates
 
-You can template header and row selectors in the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) and also access their contexts which provide useful functionality for different scenarios.
+You can template header and row selectors in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) and also access their contexts which provide useful functionality for different scenarios.
 
-By default, the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`click`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
+By default, the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) **handles all row selection interactions** on the row selector's parent container or on the row itself, leaving just the state visualization for the template. Overriding the base functionality should generally be done using the [RowSelectionChanging event](#row-selection-event). In case you implement a custom template with a [`click`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=click) handler which overrides the base functionality, you should stop the event's propagation to preserve the correct row state.
 
 #### Row Template
 
-To create a custom row selector template,  within the `igc-hierarchical-grid` you can use the [`rowSelectorTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#rowSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the row's state.
+To create a custom row selector template,  within the `igc-hierarchical-grid` you can use the [`rowSelectorTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=rowSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the row's state.
 
-The [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowselectortemplatedetails.html#selected) property shows whether the current row is selected or not while the [`index`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowselectortemplatedetails.html#index) property can be used to access the row index.
+The [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcRowSelectorTemplateDetails&member=selected) property shows whether the current row is selected or not while the [`index`](mcp:get_api_reference?platform=webcomponents&component=IgcRowSelectorTemplateDetails&member=index) property can be used to access the row index.
 
 ```ts
 public rowSelectorTemplate = (ctx: IgcRowSelectorTemplateContext) => {
@@ -240,7 +240,7 @@ public rowSelectorTemplate = (ctx: IgcRowSelectorTemplateContext) => {
 }
 ```
 
-The [`rowID`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowselectortemplatedetails.html#rowID) property can be used to get a reference of an `igc-hierarchical-grid` row. This is useful when you implement a `click` handler on the row selector element.
+The [`rowID`](mcp:get_api_reference?platform=webcomponents&component=IgcRowSelectorTemplateDetails&member=rowID) property can be used to get a reference of an `igc-hierarchical-grid` row. This is useful when you implement a `click` handler on the row selector element.
 
 ```ts
 public rowSelectorTemplate = (ctx: IgcRowSelectorTemplateContext) => {
@@ -254,7 +254,7 @@ public rowSelectorTemplate = (ctx: IgcRowSelectorTemplateContext) => {
 }
 ```
 
-In the above example we are using an [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) and we bind `rowContext.selected` to its [`checked`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html#checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
+In the above example we are using an [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) and we bind `rowContext.selected` to its [`checked`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=checked) property. See this in action in our [Row Numbering Demo](#row-numbering-demo).
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -265,9 +265,9 @@ In the above example we are using an [`IgcCheckboxComponent`](https://www.infrag
 
 ### Header Template
 
-To create a custom header selector template, within the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), you can use the [`headSelectorTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridbasedirective.html#headSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the header's state.
+To create a custom header selector template, within the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), you can use the [`headSelectorTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcGridBaseDirective&member=headSelectorTemplate) property. From the template you can access the implicitly provided context variable, with properties that give you information about the header's state.
 
-The [`selectedCount`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcheadselectortemplatedetails.html#selectedCount) property shows you how many rows are currently selected while [`totalCount`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcheadselectortemplatedetails.html#totalCount) shows you how many rows there are in the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) in total.
+The [`selectedCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails&member=selectedCount) property shows you how many rows are currently selected while [`totalCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails&member=totalCount) shows you how many rows there are in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) in total.
 
 ```ts
 public headSelectorTemplate = (ctx: IgcHeadSelectorTemplateContext) => {
@@ -275,7 +275,7 @@ public headSelectorTemplate = (ctx: IgcHeadSelectorTemplateContext) => {
 };
 ```
 
-The [`selectedCount`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcheadselectortemplatedetails.html#selectedCount) and [`totalCount`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcheadselectortemplatedetails.html#totalCount) properties can be used to determine if the head selector should be checked or indeterminate (partially selected).
+The [`selectedCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails&member=selectedCount) and [`totalCount`](mcp:get_api_reference?platform=webcomponents&component=IgcHeadSelectorTemplateDetails&member=totalCount) properties can be used to determine if the head selector should be checked or indeterminate (partially selected).
 
 ```html
 <igc-hierarchical-grid id="grid"
@@ -314,7 +314,7 @@ Each hierarchy level in an `igc-hierarchical-grid` can have its own row and head
 
 ### Row Numbering Demo
 
-This demo shows the usage of custom header and row selectors. The latter uses [`index`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowselectortemplatedetails.html#index) to display row numbers and an [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) bound to [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowselectortemplatedetails.html#selected).
+This demo shows the usage of custom header and row selectors. The latter uses [`index`](mcp:get_api_reference?platform=webcomponents&component=IgcRowSelectorTemplateDetails&member=index) to display row numbers and an [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) bound to [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcRowSelectorTemplateDetails&member=selected).
 
 ```css
 /* shared styles are loaded from: */
@@ -332,7 +332,7 @@ This demo prevents some rows from being selected using the `RowSelectionChanging
 
 ## API References
 
-- [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)
+- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
 - `HierarchicalGridRow`
 
 ## Additional Resources

@@ -65,11 +65,11 @@ export class TreeGridColumnResizingSampleComponent {
 }
 ```
 <div class="divider--half"></div>
-**Column resizing** is also enabled per-column level, meaning that the [**igx-tree-grid**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) can have a mix of resizable and non-resizable columns. This is done via the [`resizable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#resizable) input of the [`igx-column`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html).
+**Column resizing** is also enabled per-column level, meaning that the [**igx-tree-grid**](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) can have a mix of resizable and non-resizable columns. This is done via the [`resizable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=resizable) input of the [`igx-column`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent).
 ```html
 <igx-column [field]="'ID'" width="100px" [resizable]="true"></igx-column>
 ```
-You can subscribe to the [`columnResized`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#columnResized) event of the [`igx-tree-grid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) to implement some custom logic when a column is resized. Both, previous and new column widths, as well as the [`IgxColumnComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html) object, are exposed through the event arguments.
+You can subscribe to the [`columnResized`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=columnResized) event of the [`igx-tree-grid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) to implement some custom logic when a column is resized. Both, previous and new column widths, as well as the [`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) object, are exposed through the event arguments.
 ```html
 <igx-tree-grid [data]="data" primaryKey="ID" foreignKey="ParentID" (columnResized)="onResize($event)" [autoGenerate]="false">
     <igx-column [field]="'Title'" [resizable]="true" [width]="'100px'"></igx-column>
@@ -100,7 +100,7 @@ Resizing columns with width in pixels works by directly adding or subtracting th
 **Percentages**
 When resizing columns with width in percentages, the horizontal amount of the mouse movement in pixels translates roughly to its percentage amount relative to the grid width. The columns remain responsive and any future grid resizing will still reflect on the columns as well.
 ## Restrict column resizing
-You can also configure the minimum and maximum allowable column widths. This is done via the [`minWidth`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#minWidth) and [`maxWidth`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#maxWidth) inputs of the [`igx-column`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html). In this case the resize indicator drag operation is restricted to notify the user that the column cannot be resized outside the boundaries defined by [`minWidth`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#minWidth) and [`maxWidth`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#maxWidth).
+You can also configure the minimum and maximum allowable column widths. This is done via the [`minWidth`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=minWidth) and [`maxWidth`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=maxWidth) inputs of the [`igx-column`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent). In this case the resize indicator drag operation is restricted to notify the user that the column cannot be resized outside the boundaries defined by [`minWidth`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=minWidth) and [`maxWidth`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=maxWidth).
 ```html
 <igx-column [field]="'ID'" width="100px" [resizable]="true"
             [minWidth]="'60px'" [maxWidth]="'230px'"></igx-column>
@@ -117,8 +117,8 @@ or
             [minWidth]="'5%'" [maxWidth]="'15%'"></igx-column>
 ```
 ## Auto-size columns on double click
-Each column can be **auto sized** by double clicking the right side of the header - the column will be sized to the longest currently visible cell value, including the header itself. This behavior is enabled by default, no additional configuration is needed. However, the column will not be auto-sized in case [`maxWidth`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#maxWidth) is set on that column and the new width exceeds that [`maxWidth`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#maxWidth) value. In this case the column will be sized according to preset [`maxWidth`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#maxWidth) value.
-You can also auto-size a column dynamically using the exposed [`autosize()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#autosize) method on [`IgxColumnComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html).
+Each column can be **auto sized** by double clicking the right side of the header - the column will be sized to the longest currently visible cell value, including the header itself. This behavior is enabled by default, no additional configuration is needed. However, the column will not be auto-sized in case [`maxWidth`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=maxWidth) is set on that column and the new width exceeds that [`maxWidth`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=maxWidth) value. In this case the column will be sized according to preset [`maxWidth`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=maxWidth) value.
+You can also auto-size a column dynamically using the exposed [`autosize()`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=autosize) method on [`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent).
 ```typescript
 @ViewChild('treeGrid') treeGrid: IgxTreeGridComponent;
 let column = this.treeGrid.columnList.filter(c => c.field === 'ID')[0];
@@ -263,8 +263,8 @@ $custom-grid-theme: grid-theme(
 >The sample will not be affected by the selected global theme from `Change Theme`.
 ## API References
 <div class="divider--half"></div>
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
-- [IgxTreeGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 - [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-grid)
 ## Additional Resources
 <div class="divider--half"></div>

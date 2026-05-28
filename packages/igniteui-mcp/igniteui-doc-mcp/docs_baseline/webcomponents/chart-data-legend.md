@@ -11,11 +11,11 @@ _premium: true
 
 # Web Components Data Legend
 
-In Ignite UI for Web Components, the [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) is highly-customizable version of the [`IgcLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igclegendcomponent.html), that shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values. This legend updates when moving the mouse inside of the plot area of the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html), [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html), and [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html). Also, it has a persistent state that remembers the last hovered point when the user's mouse pointer exits the plot area. It displays this content using a set of three type of rows (header, series, summary) and four types of columns (title, label, value, unit).
+In Ignite UI for Web Components, the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) is highly-customizable version of the [`IgcLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLegendComponent), that shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values. This legend updates when moving the mouse inside of the plot area of the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent), and [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). Also, it has a persistent state that remembers the last hovered point when the user's mouse pointer exits the plot area. It displays this content using a set of three type of rows (header, series, summary) and four types of columns (title, label, value, unit).
 
 ## Web Components Data Legend Rows
 
-The rows of the [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) include the header row, series row(s), and the summary row. The header row displays the axis label of the point that is hovered, and can be changed using the [`headerText`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#headerText) property.
+The rows of the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) include the header row, series row(s), and the summary row. The header row displays the axis label of the point that is hovered, and can be changed using the [`headerText`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerText) property.
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -51,19 +51,19 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 
 ### Header Row
 
-The header row displays the current label of x-axis when hovering mouse over category series and financial series. You can use [`headerFormatDate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#headerFormatDate) and [`headerFormatTime`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#headerFormatTime) properties to format date and time in the [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) if the x-axis shows dates. For other types of series, the [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) does not render the header row.
+The header row displays the current label of x-axis when hovering mouse over category series and financial series. You can use [`headerFormatDate`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerFormatDate) and [`headerFormatTime`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerFormatTime) properties to format date and time in the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) if the x-axis shows dates. For other types of series, the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) does not render the header row.
 
 ### Series Row
 
-The series row represents each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol or unit of measurement, if specified. You can filter series rows by setting [`includedSeries`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#includedSeries) or [`excludedSeries`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#excludedSeries) properties to a collection of series' indexes (1, 2, 3) or series' titles (Tesla, Microsoft).
+The series row represents each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol or unit of measurement, if specified. You can filter series rows by setting [`includedSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedSeries) or [`excludedSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedSeries) properties to a collection of series' indexes (1, 2, 3) or series' titles (Tesla, Microsoft).
 
 ### Summary Row
 
-Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`summaryTitleText`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#summaryTitleText) property of the legend. Also, you can use the [`summaryType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#summaryType) property to customize whether you display the [`Total`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datalegendsummarytype.html#Total), [`Min`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datalegendsummarytype.html#Min), [`Max`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datalegendsummarytype.html#Max), or [`Average`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datalegendsummarytype.html#Average) of series values in the summary row.
+Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`summaryTitleText`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=summaryTitleText) property of the legend. Also, you can use the [`summaryType`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=summaryType) property to customize whether you display the [`Total`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datalegendsummarytype.html#Total), [`Min`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datalegendsummarytype.html#Min), [`Max`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datalegendsummarytype.html#Max), or [`Average`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.datalegendsummarytype.html#Average) of series values in the summary row.
 
 ## Web Components Data Legend Columns
 
-The columns of the [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) include the series title, label, value of data column, and optional unit associated with the value. Some series in the chart can have multiple columns for label, value, and units. For example, financial price series has **High**, **Low**, **Open**, and **Close** data columns which can be filtered in the [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) using the [`includedColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#includedColumns) or [`excludedColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#excludedColumns) properties.
+The columns of the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) include the series title, label, value of data column, and optional unit associated with the value. Some series in the chart can have multiple columns for label, value, and units. For example, financial price series has **High**, **Low**, **Open**, and **Close** data columns which can be filtered in the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) using the [`includedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedColumns) or [`excludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedColumns) properties.
 
 ```typescript
 //begin async data
@@ -179,7 +179,7 @@ export class MultipleStocks extends Array<Array<StockItem>> {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-Setting values on the [`includedColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#includedColumns) and [`excludedColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#excludedColumns) properties, depends on type of series and how many data columns they support. For example, you can set [`includedColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#includedColumns) property to a collection of **Open** and **Close** strings and the legend will show only open and close values for stock prices when the chart is plotting financial series. The following table lists all column names that can be use to filter columns in data legend.
+Setting values on the [`includedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedColumns) and [`excludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedColumns) properties, depends on type of series and how many data columns they support. For example, you can set [`includedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedColumns) property to a collection of **Open** and **Close** strings and the legend will show only open and close values for stock prices when the chart is plotting financial series. The following table lists all column names that can be use to filter columns in data legend.
 
 |  Type of Series  | Column Names |
 | -----------------|-------------- |
@@ -195,19 +195,19 @@ Where the **TypicalPrice** and percentage **Change** of OHLC prices are automati
 
 ### Title Column
 
-The title column displays legend badges and series titles, which come from the [`title`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#title) property of the different [`IgcSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html) plotted in the chart.
+The title column displays legend badges and series titles, which come from the [`title`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=title) property of the different [`IgcSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent) plotted in the chart.
 
 ### Label Column
 
-The label column displays short name on the left side of value column, e.g. "O" for **Open** stock price. You can toggle visibility of this column using the [`labelDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#labelDisplayMode) property.
+The label column displays short name on the left side of value column, e.g. "O" for **Open** stock price. You can toggle visibility of this column using the [`labelDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=labelDisplayMode) property.
 
 ### Value Column
 
-The value column displays values of series as abbreviated text which can be formatted using the [`valueFormatAbbreviation`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to [`Shared`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Shared). Alternatively, a user can select other abbreviations such as [`Independent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Independent), [`Kilo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Kilo), [`Million`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Million), etc. Precision of abbreviated values is controlled using the [`valueFormatMinFractions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatMinFractions) and [`valueFormatMaxFractions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatMaxFractions) for minimum and maximum digits, respectively.
+The value column displays values of series as abbreviated text which can be formatted using the [`valueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to [`Shared`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Shared). Alternatively, a user can select other abbreviations such as [`Independent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Independent), [`Kilo`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Kilo), [`Million`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Million), etc. Precision of abbreviated values is controlled using the [`valueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMinFractions) and [`valueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMaxFractions) for minimum and maximum digits, respectively.
 
 ### Unit Column
 
-The unit column displays an abbreviation symbol on the right side of value column. The unit symbol depends on the [`valueFormatAbbreviation`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatAbbreviation) property, e.g. "M" for the [`Million`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Million) abbreviation.
+The unit column displays an abbreviation symbol on the right side of value column. The unit symbol depends on the [`valueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatAbbreviation) property, e.g. "M" for the [`Million`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_core.dataabbreviationmode.html#Million) abbreviation.
 
 ### Customizing Columns
 
@@ -221,11 +221,11 @@ You can customize text displayed in the **Label** and **Unit** columns using  pr
 | Range Series | HighMemberAsLegendLabel="H:" <br> HighMemberAsLegendUnit="K" <br> LowMemberAsLegendLabel="L:" <br> LowMemberAsLegendUnit="K" |
 | Financial Series | OpenMemberAsLegendLabel="O:" <br> OpenMemberAsLegendUnit="K" <br> HighMemberAsLegendLabel="H:" <br> HighMemberAsLegendUnit="K" <br> LowMemberAsLegendLabel="L:" <br> LowMemberAsLegendUnit="K" <br> CloseMemberAsLegendLabel="C:" <br> CloseMemberAsLegendUnit="K" <br> |
 
-Also, you can use the `UnitText` property on the [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) to change text displayed in all Unit columns.
+Also, you can use the `UnitText` property on the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) to change text displayed in all Unit columns.
 
 ## Layout Mode
 
-Legend items can be positioned in a vertical or table structure via the [`layoutMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#layoutMode) property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
+Legend items can be positioned in a vertical or table structure via the [`layoutMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=layoutMode) property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
 
 eg.
 
@@ -233,7 +233,7 @@ eg.
 
 ## Web Components Data Legend Styling
 
-The [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) provides properties for styling each type of column. Each of these properties begins with **Title**, **Label**, **Value**, or **Units**. You can style the text's color, font, and margin. For example, if you wanted to set the text color of all columns, you would set the [`titleTextColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#titleTextColor), [`labelTextColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#labelTextColor), [`valueTextColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueTextColor), and [`unitsTextColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#unitsTextColor) properties. The following example demonstrates a utilization of the styling properties mentioned above:
+The [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) provides properties for styling each type of column. Each of these properties begins with **Title**, **Label**, **Value**, or **Units**. You can style the text's color, font, and margin. For example, if you wanted to set the text color of all columns, you would set the [`titleTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=titleTextColor), [`labelTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=labelTextColor), [`valueTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueTextColor), and [`unitsTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=unitsTextColor) properties. The following example demonstrates a utilization of the styling properties mentioned above:
 
 ```typescript
 //begin data
@@ -1244,7 +1244,7 @@ export class StockItem {
 
 ## Web Components Data Legend Value Formatting
 
-The [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) provides automatic abbreviation of large numbers using its [`valueFormatAbbreviation`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`valueFormatMinFractions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatMinFractions) and [`valueFormatMaxFractions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
+The [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) provides automatic abbreviation of large numbers using its [`valueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`valueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMinFractions) and [`valueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
 The following example demonstrates how to use those properties:
 
 ```typescript
@@ -1281,7 +1281,7 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 
 ## Web Components Data Legend Value Mode
 
-You have the ability to change the default decimal display of values within the [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) to a currency by changing the [`valueFormatMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatMode) property. Also, you can change the culture of the displayed currency symbol by setting the [`valueFormatCulture`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatCulture) property a culture tag. For example, the following example data legend with the [`valueFormatCulture`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatCulture) set to "en-GB" to display British Pounds (£) symbol:
+You have the ability to change the default decimal display of values within the [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) to a currency by changing the [`valueFormatMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMode) property. Also, you can change the culture of the displayed currency symbol by setting the [`valueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatCulture) property a culture tag. For example, the following example data legend with the [`valueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatCulture) set to "en-GB" to display British Pounds (£) symbol:
 
 ```typescript
 //begin async data
@@ -1399,8 +1399,8 @@ export class MultipleStocks extends Array<Array<StockItem>> {
 
 ## Web Components Data Legend Grouping
 
-[`dataLegendGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriescomponent.html#dataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
-By default, DataLegend will hide names of groups, but you can display group names by setting the [`groupRowVisible`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#groupRowVisible) property to true.
+[`dataLegendGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent&member=dataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
+By default, DataLegend will hide names of groups, but you can display group names by setting the [`groupRowVisible`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupRowVisible) property to true.
 
 ```typescript
 export class OlympicMedalsTopCountriesWithTotalsItem {
@@ -1445,21 +1445,21 @@ Several properties are exposed including grouping portions of the legend.
 
 - `GroupRowMargin`
 - `GroupTextMargin`
-- [`groupTextColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#groupTextColor)
+- [`groupTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=groupTextColor)
 - `GroupTextFontSize`
 - `GroupTextFontFamily`
 - `GroupTextFontStyle`
 - `GroupTextFontStretch`
 - `GroupTextFontWeight`
 - `HeaderTextMargin`
-- [`headerTextColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#headerTextColor)
+- [`headerTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerTextColor)
 - `HeaderTextFontSize`
 - `HeaderTextFontFamily`
 - `HeaderTextFontStyle`
 - `HeaderTextFontStretch`
 - `HeaderTextFontWeight`
 
-The [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html) has several events that fire when rendering their corresponding row, even during mouse interactions where the values are updating. These events are listed below with a description of what they are designed to be used for:
+The [`IgcDataLegendComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent) has several events that fire when rendering their corresponding row, even during mouse interactions where the values are updating. These events are listed below with a description of what they are designed to be used for:
 
 - `StyleGroupRow`: This event fires for each group to style text displayed in group rows.
 - `StyleHeaderRow`: This event fires when rendering the header row.
@@ -1468,9 +1468,9 @@ The [`IgcDataLegendComponent`](https://www.infragistics.com/products/ignite-ui-w
 - `StyleSummaryRow`: This event fires once when rendering the summary row.
 - `StyleSummaryColumn`: This event fires once when rendering the summary column.
 
-Some of the events exposes a [`IgcDataLegendStylingRowEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendstylingroweventargs.html) parameter as its arguments, which lets you customize each item's text, text color, and the overall visibility of the row. The event arguments also expose event-specific properties. For example, since the `StyleSeriesRow` event fires for each series, the event arguments will return the series index and series title for the row that represents the series.
+Some of the events exposes a [`IgcDataLegendStylingRowEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendStylingRowEventArgs) parameter as its arguments, which lets you customize each item's text, text color, and the overall visibility of the row. The event arguments also expose event-specific properties. For example, since the `StyleSeriesRow` event fires for each series, the event arguments will return the series index and series title for the row that represents the series.
 
-`StyleSummaryColumn` and `SeriesStyleColumn` events expose a [`IgcDataLegendStylingColumnEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendstylingcolumneventargs.html) parameter as its arguments, for customizing each field in the series. The event arguments also expose event-specific properties such as column index and value member related properties about the columns.
+`StyleSummaryColumn` and `SeriesStyleColumn` events expose a [`IgcDataLegendStylingColumnEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendStylingColumnEventArgs) parameter as its arguments, for customizing each field in the series. The event arguments also expose event-specific properties such as column index and value member related properties about the columns.
 
 ```typescript
 export class OlympicMedalsTopCountriesWithTotalsItem {
@@ -1511,30 +1511,30 @@ export class OlympicMedalsTopCountriesWithTotals extends Array<OlympicMedalsTopC
 
 ## API References
 
-- [`excludedColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#excludedColumns)
-- [`excludedSeries`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#excludedSeries)
-- [`headerFormatDate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#headerFormatDate)
-- [`headerFormatTime`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#headerFormatTime)
-- [`headerText`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#headerText)
-- [`includedColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#includedColumns)
-- [`includedSeries`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#includedSeries)
-- [`labelDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#labelDisplayMode)
-- [`labelTextColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendstylingcolumneventargs.html#labelTextColor)
+- [`excludedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedColumns)
+- [`excludedSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=excludedSeries)
+- [`headerFormatDate`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerFormatDate)
+- [`headerFormatTime`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerFormatTime)
+- [`headerText`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=headerText)
+- [`includedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedColumns)
+- [`includedSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=includedSeries)
+- [`labelDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=labelDisplayMode)
+- [`labelTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendStylingColumnEventArgs&member=labelTextColor)
 - `StyleHeaderRow`:
 - `StyleSeriesColumn`:
 - `StyleSeriesRow`
 - `StyleSeriesRow`:
 - `StyleSummaryColumn`:
 - `StyleSummaryRow`:
-- [`summaryTitleText`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#summaryTitleText)
-- [`summaryType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#summaryType)
-- [`titleTextColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#titleTextColor)
+- [`summaryTitleText`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=summaryTitleText)
+- [`summaryType`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=summaryType)
+- [`titleTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=titleTextColor)
 - `UnitText`
-- [`unitsTextColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendstylingcolumneventargs.html#unitsTextColor)
-- [`valueFormatAbbreviation`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatAbbreviation)
-- [`valueFormatCulture`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatCulture)
-- [`valueFormatMaxFractions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatMaxFractions)
-- [`valueFormatMaxFractions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatMaxFractions)
-- [`valueFormatMinFractions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatMinFractions)
-- [`valueFormatMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendcomponent.html#valueFormatMode)
-- [`valueTextColor`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatalegendstylingcolumneventargs.html#valueTextColor)
+- [`unitsTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendStylingColumnEventArgs&member=unitsTextColor)
+- [`valueFormatAbbreviation`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatAbbreviation)
+- [`valueFormatCulture`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatCulture)
+- [`valueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMaxFractions)
+- [`valueFormatMaxFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMaxFractions)
+- [`valueFormatMinFractions`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMinFractions)
+- [`valueFormatMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendComponent&member=valueFormatMode)
+- [`valueTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcDataLegendStylingColumnEventArgs&member=valueTextColor)

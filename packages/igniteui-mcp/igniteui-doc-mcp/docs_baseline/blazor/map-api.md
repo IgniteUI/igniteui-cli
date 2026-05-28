@@ -11,84 +11,84 @@ _premium: true
 
 # Blazor Geographic Map API
 
-The Blazor [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html) has the following API members:
+The Blazor [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap) has the following API members:
 
-- [`Zoomable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_Zoomable)
-- [`ZoomToGeographic`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_ZoomToGeographic)
-- [`WorldRect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_WorldRect)
-- [`WindowRect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_WindowRect)
-- [`WindowScale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_WindowScale)
-- [`GetGeographicFromZoom`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_GetGeographicFromZoom)
-- [`GetGeographicPoint`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_GetGeographicPoint)
-- [`GetPixelPoint`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html#IgniteUI_Blazor_Controls_IgbGeographicMap_GetPixelPoint)
+- [`Zoomable`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=Zoomable)
+- [`ZoomToGeographic`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=ZoomToGeographic)
+- [`WorldRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WorldRect)
+- [`WindowRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WindowRect)
+- [`WindowScale`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WindowScale)
+- [`GetGeographicFromZoom`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=GetGeographicFromZoom)
+- [`GetGeographicPoint`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=GetGeographicPoint)
+- [`GetPixelPoint`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=GetPixelPoint)
 
 ## Blazor Geographic Series Types
 
-The Blazor [`IgbGeographicMap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicMap.html) has 7 types of series and they have the [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataSource) property for data binding.
+The Blazor [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap) has 7 types of series and they have the [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource) property for data binding.
 
-- [`IgbGeographicHighDensityScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicHighDensityScatterSeries.html)
-- [`IgbGeographicSymbolSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html)
-- [`IgbGeographicProportionalSymbolSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicProportionalSymbolSeries.html)
-- [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicPolylineSeries.html)
-- [`IgbGeographicShapeSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicShapeSeries.html)
-- [`IgbGeographicScatterAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicScatterAreaSeries.html)
-- [`IgbGeographicContourLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicContourLineSeries.html)
+- [`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries)
+- [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries)
+- [`IgbGeographicProportionalSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries)
+- [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries)
+- [`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries)
+- [`IgbGeographicScatterAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries)
+- [`IgbGeographicContourLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries)
 
 In addition, each type of series has specific properties for mapping data items and styling their appearance:
 
 ## Blazor Geographic Symbol Series API
 
-The Blazor [`IgbGeographicSymbolSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html) (Geographic Marker Series) has the following API members:
+The Blazor [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) (Geographic Marker Series) has the following API members:
 
-- [`LatitudeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_LatitudeMemberPath)
-- [`LongitudeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_LongitudeMemberPath)
-- [`MarkerType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_MarkerType)
-- [`MarkerBrush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_MarkerBrush)
-- [`MarkerOutline`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_MarkerOutline)
+- [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LatitudeMemberPath)
+- [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LongitudeMemberPath)
+- [`MarkerType`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=MarkerType)
+- [`MarkerBrush`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=MarkerBrush)
+- [`MarkerOutline`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=MarkerOutline)
 
 ## Blazor Geographic Bubble Series API
 
-The Blazor [`IgbGeographicProportionalSymbolSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicProportionalSymbolSeries.html) (Geographic Bubble Series) has the following API members:
+The Blazor [`IgbGeographicProportionalSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries) (Geographic Bubble Series) has the following API members:
 
-- [`LatitudeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicProportionalSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicProportionalSymbolSeries_LatitudeMemberPath)
-- [`LongitudeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicProportionalSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicProportionalSymbolSeries_LongitudeMemberPath)
-- [`RadiusMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicProportionalSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicProportionalSymbolSeries_RadiusMemberPath)
-- [`RadiusScale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicProportionalSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicProportionalSymbolSeries_RadiusScale)
-- [`FillScale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicProportionalSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicProportionalSymbolSeries_FillScale)
-- [`FillMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicProportionalSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicProportionalSymbolSeries_FillMemberPath)
+- [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries&member=LatitudeMemberPath)
+- [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries&member=LongitudeMemberPath)
+- [`RadiusMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries&member=RadiusMemberPath)
+- [`RadiusScale`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries&member=RadiusScale)
+- [`FillScale`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries&member=FillScale)
+- [`FillMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicProportionalSymbolSeries&member=FillMemberPath)
 
 ## Blazor Geographic Shape Series API
 
-The Blazor [`IgbGeographicShapeSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicShapeSeries.html) and [`IgbGeographicPolylineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicPolylineSeries.html) have the same API members:
+The Blazor [`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries) and [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) have the same API members:
 
-- [`ShapeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicShapeSeries.html#IgniteUI_Blazor_Controls_IgbGeographicShapeSeries_ShapeMemberPath)
-- [`Thickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_Thickness)
-- [`Brush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_Brush)
-- [`Outline`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_Outline)
+- [`ShapeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries&member=ShapeMemberPath)
+- [`Thickness`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=Thickness)
+- [`Brush`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=Brush)
+- [`Outline`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=Outline)
 
 ## Blazor Geographic Area Series API
 
-The Blazor [`IgbGeographicScatterAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicScatterAreaSeries.html) has the following API members:
+The Blazor [`IgbGeographicScatterAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries) has the following API members:
 
-- [`LatitudeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_LatitudeMemberPath)
-- [`LongitudeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_LongitudeMemberPath)
-- [`ColorMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicScatterAreaSeries.html#IgniteUI_Blazor_Controls_IgbGeographicScatterAreaSeries_ColorMemberPath)
-- [`ColorScale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicScatterAreaSeries.html#IgniteUI_Blazor_Controls_IgbGeographicScatterAreaSeries_ColorScale)
+- [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LatitudeMemberPath)
+- [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LongitudeMemberPath)
+- [`ColorMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=ColorMemberPath)
+- [`ColorScale`](mcp:get_api_reference?platform=blazor&component=IgbGeographicScatterAreaSeries&member=ColorScale)
 
 ## Blazor Geographic Contour Series API
 
-The Blazor [`IgbGeographicContourLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicContourLineSeries.html) has the following API members:
+The Blazor [`IgbGeographicContourLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries) has the following API members:
 
-- [`LatitudeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_LatitudeMemberPath)
-- [`LongitudeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicSymbolSeries.html#IgniteUI_Blazor_Controls_IgbGeographicSymbolSeries_LongitudeMemberPath)
-- [`ValueMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicContourLineSeries.html#IgniteUI_Blazor_Controls_IgbGeographicContourLineSeries_ValueMemberPath)
-- [`FillScale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicContourLineSeries.html#IgniteUI_Blazor_Controls_IgbGeographicContourLineSeries_FillScale)
+- [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LatitudeMemberPath)
+- [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries&member=LongitudeMemberPath)
+- [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries&member=ValueMemberPath)
+- [`FillScale`](mcp:get_api_reference?platform=blazor&component=IgbGeographicContourLineSeries&member=FillScale)
 
 ## Blazor Geographic HD Series API
 
-The Blazor [`IgbGeographicHighDensityScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicHighDensityScatterSeries.html) has the following API members:
+The Blazor [`IgbGeographicHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries) has the following API members:
 
-- [`LatitudeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicHighDensityScatterSeries.html#IgniteUI_Blazor_Controls_IgbGeographicHighDensityScatterSeries_LatitudeMemberPath)
-- [`LongitudeMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicHighDensityScatterSeries.html#IgniteUI_Blazor_Controls_IgbGeographicHighDensityScatterSeries_LongitudeMemberPath)
-- [`HeatMaximumColor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicHighDensityScatterSeries.html#IgniteUI_Blazor_Controls_IgbGeographicHighDensityScatterSeries_HeatMaximumColor)
-- [`HeatMinimumColor`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGeographicHighDensityScatterSeries.html#IgniteUI_Blazor_Controls_IgbGeographicHighDensityScatterSeries_HeatMinimumColor)
+- [`LatitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries&member=LatitudeMemberPath)
+- [`LongitudeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries&member=LongitudeMemberPath)
+- [`HeatMaximumColor`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries&member=HeatMaximumColor)
+- [`HeatMinimumColor`](mcp:get_api_reference?platform=blazor&component=IgbGeographicHighDensityScatterSeries&member=HeatMinimumColor)

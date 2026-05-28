@@ -43,7 +43,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html) and [`IgcRangeSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcrangeslidercomponent.html), you need to register them as follows:
+Before using the [`IgcSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent) and [`IgcRangeSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeSliderComponent), you need to register them as follows:
 
 ```ts
 import { defineComponents, IgcSliderComponent, IgcRangeSliderComponent } from "igniteui-webcomponents";
@@ -54,7 +54,7 @@ defineComponents(IgcSliderComponent, IgcRangeSliderComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html) and [`IgcRangeSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcrangeslidercomponent.html) is as follows:
+The simplest way to start using the [`IgcSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent) and [`IgcRangeSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeSliderComponent) is as follows:
 
 ```html
 <igc-slider value="40"></igc-slider>
@@ -63,9 +63,9 @@ The simplest way to start using the [`IgcSliderComponent`](https://www.infragist
 
 ### Value
 
-The main difference between the Slider and Range Slider components is that the Slider component has a single thumb, while the Range Slider component has two thumbs. The single thumb of the Slider component displays its [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#value) property. The two thumbs of the Range Slider component display its [`lower`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcrangeslidercomponent.html#lower) and [`upper`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcrangeslidercomponent.html#upper) value properties.
+The main difference between the Slider and Range Slider components is that the Slider component has a single thumb, while the Range Slider component has two thumbs. The single thumb of the Slider component displays its [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=value) property. The two thumbs of the Range Slider component display its [`lower`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeSliderComponent&member=lower) and [`upper`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeSliderComponent&member=upper) value properties.
 
-Both sliders emit two events when any of the values is changed. The [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) event is emitted whenever a value is changed using keyboard or drag interaction while the `Change` event is emitted when the value change is committed on drag end or keyboard interaction.
+Both sliders emit two events when any of the values is changed. The [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) event is emitted whenever a value is changed using keyboard or drag interaction while the `Change` event is emitted when the value change is committed on drag end or keyboard interaction.
 
 ```css
 igc-slider,
@@ -87,11 +87,11 @@ igc-range-slider {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-While dragging a slider thumb, it displays its value in a tooltip. You could hide this tooltip using the [`hideTooltip`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#hideTooltip) property.
+While dragging a slider thumb, it displays its value in a tooltip. You could hide this tooltip using the [`hideTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=hideTooltip) property.
 
 ### Disabled
 
-You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#disabled) property of the sliders to disable their user interactions.
+You can use the [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=disabled) property of the sliders to disable their user interactions.
 
 ```css
 igc-slider {
@@ -105,7 +105,7 @@ igc-slider {
 
 ### Constraints
 
-The track of the sliders has a minimum and maximum values which are configured using the [`min`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html#max) properties. Additionally, you can restrict the thumb dragging using the [`lowerBound`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#lowerBound) and [`upperBound`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#upperBound) properties.
+The track of the sliders has a minimum and maximum values which are configured using the [`min`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent&member=min) and [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent&member=max) properties. Additionally, you can restrict the thumb dragging using the [`lowerBound`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=lowerBound) and [`upperBound`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=upperBound) properties.
 
 ```css
 igc-slider {
@@ -119,7 +119,7 @@ igc-slider {
 
 ### Step
 
-The [`step`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html#step) property specifies the granularity of the slider that the value must adhere to. By default, the slider track looks continuous. Setting the [`discreteTrack`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#discreteTrack) property of the slider to **true** will make it to display the steps on the track.
+The [`step`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent&member=step) property specifies the granularity of the slider that the value must adhere to. By default, the slider track looks continuous. Setting the [`discreteTrack`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=discreteTrack) property of the slider to **true** will make it to display the steps on the track.
 
 ```css
 igc-slider {
@@ -131,11 +131,11 @@ igc-slider {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-If the [`step`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html#step) property is set to `0`, no stepping is implied and any value in the slider range is allowed. In this case, the slider will look continuous even if [`discreteTrack`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#discreteTrack) is set to **true**.
+If the [`step`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent&member=step) property is set to `0`, no stepping is implied and any value in the slider range is allowed. In this case, the slider will look continuous even if [`discreteTrack`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=discreteTrack) is set to **true**.
 
 ### Tick Marks
 
-The slider components could display tick marks and labels. The slider components support two types of tick marks: primary and secondary. In order to display the primary tick marks, you should set the [`primaryTicks`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#primaryTicks) property to a value greater than `1`. The number of primary ticks will be evenly distributed on the track. In order to display the secondary tick marks, you should set the [`secondaryTicks`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#secondaryTicks) property to a value greater than `0`. The value of [`secondaryTicks`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#secondaryTicks) specifies the number of secondary ticks between every two primary ticks.
+The slider components could display tick marks and labels. The slider components support two types of tick marks: primary and secondary. In order to display the primary tick marks, you should set the [`primaryTicks`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=primaryTicks) property to a value greater than `1`. The number of primary ticks will be evenly distributed on the track. In order to display the secondary tick marks, you should set the [`secondaryTicks`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=secondaryTicks) property to a value greater than `0`. The value of [`secondaryTicks`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=secondaryTicks) specifies the number of secondary ticks between every two primary ticks.
 
 ```css
 igc-slider {
@@ -147,9 +147,9 @@ igc-slider {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-Additionally, you could configure the orientation of the tick marks using the [`tickOrientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#tickOrientation) property. By default, the [`tickOrientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#tickOrientation) value is `end` which displays the ticks below the slider track. You could set it to `start` which displays them above the track and `mirror` which mirrors the ticks above and below the track.
+Additionally, you could configure the orientation of the tick marks using the [`tickOrientation`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=tickOrientation) property. By default, the [`tickOrientation`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=tickOrientation) value is `end` which displays the ticks below the slider track. You could set it to `start` which displays them above the track and `mirror` which mirrors the ticks above and below the track.
 
-By default, the tick marks display labels with their values. You could modify the rotation of the tick labels using the `SliderTickLabelRotation` property. Additionally, you could hide the labels of the primary and secondary ticks using the [`hidePrimaryLabels`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#hidePrimaryLabels) and [`hideSecondaryLabels`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#hideSecondaryLabels) properties.
+By default, the tick marks display labels with their values. You could modify the rotation of the tick labels using the `SliderTickLabelRotation` property. Additionally, you could hide the labels of the primary and secondary ticks using the [`hidePrimaryLabels`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=hidePrimaryLabels) and [`hideSecondaryLabels`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=hideSecondaryLabels) properties.
 
 ```css
 igc-slider {
@@ -163,7 +163,7 @@ igc-slider {
 
 ### Value Format
 
-If you want to format the thumb and tick label values, the slider provides [`valueFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#valueFormat), [`valueFormatOptions`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#valueFormatOptions) and [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#locale) properties. Тhe [`valueFormatOptions`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#valueFormatOptions) allows you to specify the number of fraction and significant digits, style (decimal, currency, percent, unit), notation and others taking into account the specified [`locale`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#locale). The [`valueFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#valueFormat) is a string which may contain the `{0}` identifier which will be replaced by the value with applied format options.
+If you want to format the thumb and tick label values, the slider provides [`valueFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=valueFormat), [`valueFormatOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=valueFormatOptions) and [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=locale) properties. Тhe [`valueFormatOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=valueFormatOptions) allows you to specify the number of fraction and significant digits, style (decimal, currency, percent, unit), notation and others taking into account the specified [`locale`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=locale). The [`valueFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=valueFormat) is a string which may contain the `{0}` identifier which will be replaced by the value with applied format options.
 
 ```css
 igc-slider {
@@ -177,7 +177,7 @@ igc-slider {
 
 ### Labels
 
-In some cases you would want to format the values of the slider as string values i.e. map the values **\[0, 1, 2]** to **\['Low', 'Medium', 'High']**. For this scenario the slider allows you to define [`IgcSliderLabelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsliderlabelcomponent.html) elements inside it. The text content of the slider labels is going to be used for thumb and tick labels. Please note that when slider labels are provided, the [`min`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#min), [`max`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#max) and [`step`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#step) properties are automatically calculated so that they do not allow values that do not map to the provided labels. In the case of 'Low', 'Medium' and 'High' labels, [`min`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#min) is set to `0`, [`max`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#max) is set to `2` and [`step`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#step) is set to `1`.
+In some cases you would want to format the values of the slider as string values i.e. map the values **\[0, 1, 2]** to **\['Low', 'Medium', 'High']**. For this scenario the slider allows you to define [`IgcSliderLabelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderLabelComponent) elements inside it. The text content of the slider labels is going to be used for thumb and tick labels. Please note that when slider labels are provided, the [`min`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=min), [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=max) and [`step`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=step) properties are automatically calculated so that they do not allow values that do not map to the provided labels. In the case of 'Low', 'Medium' and 'High' labels, [`min`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=min) is set to `0`, [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=max) is set to `2` and [`step`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=step) is set to `1`.
 
 ```css
 igc-slider {
@@ -192,7 +192,7 @@ igc-slider {
 
 ## Styling
 
-The [`IgcSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgcSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -262,19 +262,19 @@ igc-range-slider {
 
 ## API References
 
-- [`hidePrimaryLabels`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#hidePrimaryLabels)
-- [`hideSecondaryLabels`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#hideSecondaryLabels)
-- [`hideTooltip`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#hideTooltip)
-- [`primaryTicks`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#primaryTicks)
-- [`IgcRangeSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcrangeslidercomponent.html)
-- [`secondaryTicks`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#secondaryTicks)
-- [`IgcSliderLabelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsliderlabelcomponent.html)
-- [`IgcSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html)
+- [`hidePrimaryLabels`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=hidePrimaryLabels)
+- [`hideSecondaryLabels`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=hideSecondaryLabels)
+- [`hideTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=hideTooltip)
+- [`primaryTicks`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=primaryTicks)
+- [`IgcRangeSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeSliderComponent)
+- [`secondaryTicks`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=secondaryTicks)
+- [`IgcSliderLabelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderLabelComponent)
+- [`IgcSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent)
 - `SliderTickLabelRotation`
-- [`tickOrientation`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#tickOrientation)
-- [`upperBound`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#upperBound)
-- [`valueFormatOptions`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#valueFormatOptions)
-- [`valueFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html#valueFormat)
+- [`tickOrientation`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=tickOrientation)
+- [`upperBound`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=upperBound)
+- [`valueFormatOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=valueFormatOptions)
+- [`valueFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent&member=valueFormat)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

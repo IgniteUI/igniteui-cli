@@ -50,7 +50,7 @@ Clicking on the (AND or OR) button placed above each group, will open a menu wit
 Since every condition is related to a specific field from a particular entity changing the entity will lead to resetting all preset conditions and groups.
 
 You can start using the component by setting the `Entities` property to an array describing the entity name and an array of its fields, where each field is defined by its name and data type. Once a field is selected it will automatically assign the corresponding operands based on the data type.
-The Query Builder has the [`IgcExpressionTree`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcexpressiontree.html) property. You could use it to set an initial state of the control and access the user-specified filtering logic.
+The Query Builder has the [`IgcExpressionTree`](mcp:get_api_reference?platform=webcomponents&component=IgcExpressionTree) property. You could use it to set an initial state of the control and access the user-specified filtering logic.
 
 ```html
 <igc-query-builder id="queryBuilder">
@@ -89,7 +89,7 @@ private initFields(): void {
 }
 ```
 
-The [`IgcExpressionTree`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcexpressiontree.html) is a bindable property which means you can subscribe to the `ExpressionTreeChange` event to receive notifications when the end-user changes the UI by creating, editing or removing conditions.
+The [`IgcExpressionTree`](mcp:get_api_reference?platform=webcomponents&component=IgcExpressionTree) is a bindable property which means you can subscribe to the `ExpressionTreeChange` event to receive notifications when the end-user changes the UI by creating, editing or removing conditions.
 
 ```ts
 this.queryBuilder.addEventListener('expressionTreeChange', (e: CustomEvent<IgcExpressionTree>) => {
@@ -388,10 +388,10 @@ We’ve created this example to show you the templating and formatter functional
 
 - `QueryBuilder`
 - `QueryBuilderHeader`
-- [`IgcExpressionTree`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcexpressiontree.html)
-- [`IgcFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcfilteringexpressionstree.html)
+- [`IgcExpressionTree`](mcp:get_api_reference?platform=webcomponents&component=IgcExpressionTree)
+- [`IgcFilteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcFilteringExpressionsTree)
 - `FilteringLogic`
-- [`IgcStringFilteringOperand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcstringfilteringoperand.html)
+- [`IgcStringFilteringOperand`](mcp:get_api_reference?platform=webcomponents&component=IgcStringFilteringOperand)
 - `QueryBuilderSearchValueContext`
 - [Styling & Themes](../themes/overview.md)
 

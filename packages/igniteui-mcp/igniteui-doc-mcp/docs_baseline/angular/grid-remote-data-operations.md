@@ -218,8 +218,8 @@ export class RemoteFilteringSampleComponent implements OnInit, AfterViewInit, On
 By default, the Grid uses its own logic for performing data operations.
 You can perform these tasks remotely and feed the resulting data to the Grid by taking advantage of certain inputs and events, which are exposed by the Grid.
 ## Remote Virtualization
-The [IgxGrid](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) supports the scenario in which the data chunks are requested from a remote service, exposing the behavior implemented in the [`igxForOf`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html) directive it uses internally.
-To utilize this feature, you need to subscribe to the [`dataPreLoad`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#dataPreLoad) output so that you make the appropriate request based on the arguments received, as well as set the public [IgxGrid](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) property [`totalItemCount`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#totalItemCount) with the respective information coming from the service.
+The [IgxGrid](mcp:get_api_reference?platform=angular&component=IgxGridComponent) supports the scenario in which the data chunks are requested from a remote service, exposing the behavior implemented in the [`igxForOf`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective) directive it uses internally.
+To utilize this feature, you need to subscribe to the [`dataPreLoad`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=dataPreLoad) output so that you make the appropriate request based on the arguments received, as well as set the public [IgxGrid](mcp:get_api_reference?platform=angular&component=IgxGridComponent) property [`totalItemCount`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=totalItemCount) with the respective information coming from the service.
 ```html
 <igx-grid #grid [data]="remoteData | async" [autoGenerate]="false"
           (dataPreLoad)="processData(false)"
@@ -250,9 +250,9 @@ public processData(reset) {
     });
 }
 ```
-When requesting data, you need to utilize the [`IForOfState`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iforofstate.html) interface, which provides the [`startIndex`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iforofstate.html#startIndex) and [`chunkSize`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iforofstate.html#chunkSize) properties.
+When requesting data, you need to utilize the [`IForOfState`](mcp:get_api_reference?platform=angular&component=IForOfState) interface, which provides the [`startIndex`](mcp:get_api_reference?platform=angular&component=IForOfState&member=startIndex) and [`chunkSize`](mcp:get_api_reference?platform=angular&component=IForOfState&member=chunkSize) properties.
 >[!NOTE]
->The first [`chunkSize`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/iforofstate.html#chunkSize) will always be 0 and should be determined by you based on the specific application scenario.
+>The first [`chunkSize`](mcp:get_api_reference?platform=angular&component=IForOfState&member=chunkSize) will always be 0 and should be determined by you based on the specific application scenario.
 ### Remote Virtualization Demo
 ```typescript
 import { ChangeDetectorRef, Component, TemplateRef, ViewChild, OnInit, AfterViewInit, OnDestroy, inject } from '@angular/core';
@@ -753,7 +753,7 @@ export class GridRemoteVirtualizationAddRowSampleComponent implements AfterViewI
 }
 ```
 ## Remote Sorting/Filtering
-To provide remote sorting and filtering, you need to subscribe to the [`dataPreLoad`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#dataPreLoad), [`sortingExpressionsChange`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#sortingExpressionsChange) and [`filteringExpressionsTreeChange`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#filteringexpressionstreechange) outputs, so that you make the appropriate request based on the arguments received, as well as set the public [IgxGrid](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) property [`totalItemCount`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#totalItemCount) with the respective information coming from the service.
+To provide remote sorting and filtering, you need to subscribe to the [`dataPreLoad`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=dataPreLoad), [`sortingExpressionsChange`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=sortingExpressionsChange) and [`filteringExpressionsTreeChange`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=filteringexpressionstreechange) outputs, so that you make the appropriate request based on the arguments received, as well as set the public [IgxGrid](mcp:get_api_reference?platform=angular&component=IgxGridComponent) property [`totalItemCount`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=totalItemCount) with the respective information coming from the service.
 We will also take advantage of the **rxjs** `debounceTime` function, which emits a value from the source Observable only after a particular time span has passed without another source emission. This way the remote operation will be triggered only when the specified amount of time has passed without the user interrupting it.
 ```typescript
 const DEBOUNCE_TIME = 300;
@@ -782,7 +782,7 @@ public ngAfterViewInit() {
     });
 }
 ```
-When remote sorting and filtering are provided, usually we do not need the built-in sorting and filtering of the grid. We can disable them by setting the [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#sortStrategy) and the [`filterStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#filterStrategy) inputs of the grid to the `NoopSortingStrategy` and the `NoopFilteringStrategy` respective instances.
+When remote sorting and filtering are provided, usually we do not need the built-in sorting and filtering of the grid. We can disable them by setting the [`sortStrategy`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=sortStrategy) and the [`filterStrategy`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=filterStrategy) inputs of the grid to the `NoopSortingStrategy` and the `NoopFilteringStrategy` respective instances.
 ```html
 <igx-grid #grid [data]="remoteData | async" [height]="'500px'" [width]="'100%'" [autoGenerate]='false'
         [filterStrategy]="noopFilterStrategy"
@@ -801,13 +801,13 @@ public noopSortStrategy = NoopSortingStrategy.instance();
 <!-- markdownlint-disable-next-line MD051 -->
 You can see the result of the code from above at the beginning of this article in the [Demo](#angular-grid-remote-data-operations-overview-example) section.
 ## Unique Column Values Strategy
-The list items inside the Excel Style Filtering dialog represent the unique values for the respective column. The Grid generates these values based on its data source by default. In case of remote filtering, the grid data does not contain all the data from the server. In order to provide the unique values manually and load them on demand, we can take advantage of the Grid's [`uniqueColumnValuesStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#uniqueColumnValuesStrategy) input. This input is actually a method that provides three arguments:
+The list items inside the Excel Style Filtering dialog represent the unique values for the respective column. The Grid generates these values based on its data source by default. In case of remote filtering, the grid data does not contain all the data from the server. In order to provide the unique values manually and load them on demand, we can take advantage of the Grid's [`uniqueColumnValuesStrategy`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=uniqueColumnValuesStrategy) input. This input is actually a method that provides three arguments:
 - **column**  - The respective column instance.
 - **filteringExpressionsTree** - The filtering expressions tree, which is reduced based on the respective column.
 - **done** - Callback that should be called with the newly generated column values when they are retrieved from the server.
 The developer can manually generate the necessary unique column values based on the information, that is provided by the **column** and the **filteringExpressionsTree** arguments and then invoke the **done** callback.
 > [!NOTE]
-> When the [`uniqueColumnValuesStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#uniqueColumnValuesStrategy) input is provided, the default unique values generating process in the excel style filtering will not be used.
+> When the [`uniqueColumnValuesStrategy`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=uniqueColumnValuesStrategy) input is provided, the default unique values generating process in the excel style filtering will not be used.
 ```html
 <igx-grid #grid1 [data]="data" [filterMode]="'excelStyleFilter'" [uniqueColumnValuesStrategy]="columnValuesStrategy">
     ...
@@ -960,7 +960,7 @@ export class RemotePagingGridSample implements OnInit, AfterViewInit, OnDestroy 
 }
 Now we can choose between setting-up our own _custom paging template_ or using the default one that the `igx-paginator` provides. Let's first take a look what is necessary to set-up remote paging by using the _default paging template_.
 ### Remote paging with default template
-If you want to use the _default paging template_ you need to set the Paginator's [`totalRecords`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#totalRecords) property, only then the grid will be able to calculate the _total page number_ based on total remote records. When performing a remote pagination the Paginator will pass to the Grid only the data for the current page, so the grid will not try to paginate the provided data source. That's why we should set Grid's [`pagingMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#pagingMode) property to _GridPagingMode.remote_. Also it is necessary to either subscribe to [`pagingDone`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#pagingDone) or [`perPageChange`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#perPageChange) events in order to fetch the data from your remote service, it depends on the use case which event will be used.
+If you want to use the _default paging template_ you need to set the Paginator's [`totalRecords`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=totalRecords) property, only then the grid will be able to calculate the _total page number_ based on total remote records. When performing a remote pagination the Paginator will pass to the Grid only the data for the current page, so the grid will not try to paginate the provided data source. That's why we should set Grid's [`pagingMode`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=pagingMode) property to _GridPagingMode.remote_. Also it is necessary to either subscribe to [`pagingDone`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=pagingDone) or [`perPageChange`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPageChange) events in order to fetch the data from your remote service, it depends on the use case which event will be used.
 ```html
 <igx-grid #grid1 [data]="data | async" [isLoading]="isLoading" [pagingMode]="mode">
     <igx-column field="ID"></igx-column>
@@ -1102,7 +1102,7 @@ export class RemotePagingDefaultTemplateComponent implements OnInit, AfterViewIn
 }
 ```
 ### Remote Paging with custom igx-paginator-content
-When we define a custom paginator content we need to define the content in a way to get the data only for the requested page and to pass the correct **skip** and **top** parameters to the remote service according to the selected page and items [`perPage`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#perPage). We are going to use the `<igx-paginator>` in order to ease our example configuration, along with the [`IgxPageSizeSelectorComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPageSizeSelectorComponent.html) and [`IgxPageNavigationComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPageNavigationComponent.html) that were introduced - `igx-page-size` will add the per page dropdown and label and `igx-page-nav` will add the navigation action buttons and labels.
+When we define a custom paginator content we need to define the content in a way to get the data only for the requested page and to pass the correct **skip** and **top** parameters to the remote service according to the selected page and items [`perPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPage). We are going to use the `<igx-paginator>` in order to ease our example configuration, along with the [`IgxPageSizeSelectorComponent`](mcp:get_api_reference?platform=angular&component=IgxPageSizeSelectorComponent) and [`IgxPageNavigationComponent`](mcp:get_api_reference?platform=angular&component=IgxPageNavigationComponent) that were introduced - `igx-page-size` will add the per page dropdown and label and `igx-page-nav` will add the navigation action buttons and labels.
 ```html
 <igx-paginator #paginator
     [totalRecords]="totalCount"
@@ -1884,11 +1884,11 @@ igx-paginator {
   - Row Expand/collapse
   - Row Editing
   - Row Pinning
-- In remote data scenarios, when the grid has a `primaryKey` set, [`rowSelectionChanging.oldSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/IRowSelectionEventArgs.html#oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
+- In remote data scenarios, when the grid has a `primaryKey` set, [`rowSelectionChanging.oldSelection`](mcp:get_api_reference?platform=angular&component=IRowSelectionEventArgs&member=oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
 ## API References
 <div class="divider--half"></div>
-- [IgxPaginatorComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html)
-- [IgxGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
+- [IgxPaginatorComponent API](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent)
+- [IgxGridComponent API](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

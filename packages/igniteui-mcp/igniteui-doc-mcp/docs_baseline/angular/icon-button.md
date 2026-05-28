@@ -103,7 +103,7 @@ Now that you have the Ignite UI for Angular Icon Button directive imported, you 
 
 ### Flat Icon Button
 
-Use the [`igxIconButton`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconbuttondirective.html) directive to add a simple flat icon button in your component template:
+Use the [`igxIconButton`](mcp:get_api_reference?platform=angular&component=IgxIconButtonDirective) directive to add a simple flat icon button in your component template:
 
 ```html
 <button igxIconButton="flat">
@@ -161,7 +161,7 @@ If you want to disable an icon button, you can use the [`disabled`](https://www.
 
 ### SVG Icons
 
-In addition to material icons, the `igxIconButton` directive also supports usage of SVG images as icons. To do so, first we should inject the [`IgxIconService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconservice.html) dependency and then use the [`addSvgIcon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconservice.html#addSvgIcon) method to import the SVG file in cache. For further information, you can read the [SVG section](icon.md#svg-icons) in the icon topic.
+In addition to material icons, the `igxIconButton` directive also supports usage of SVG images as icons. To do so, first we should inject the [`IgxIconService`](mcp:get_api_reference?platform=angular&component=IgxIconService) dependency and then use the [`addSvgIcon`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=addSvgIcon) method to import the SVG file in cache. For further information, you can read the [SVG section](icon.md#svg-icons) in the icon topic.
 
 ```typescript
 constructor(private _iconService: IgxIconService) { }
@@ -675,9 +675,9 @@ At the end your icon buttons should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxIconButtonDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconbuttondirective.html)
+- [IgxIconButtonDirective](mcp:get_api_reference?platform=angular&component=IgxIconButtonDirective)
 - [IgxIconButton Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-button-theme)
-- [IgxRippleDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxrippledirective.html)
+- [IgxRippleDirective](mcp:get_api_reference?platform=angular&component=IgxRippleDirective)
 
 ## Additional Resources
 

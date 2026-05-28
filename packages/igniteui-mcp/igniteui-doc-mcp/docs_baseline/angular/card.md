@@ -787,7 +787,7 @@ The card component is capable of displaying more different layouts worth explori
 
 For more detailed information regarding the card's API, refer to the following links:
 
-- [`IgxCardComponent API`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcardcomponent.html)
+- [`IgxCardComponent API`](mcp:get_api_reference?platform=angular&component=IgxCardComponent)
 
 The following built-in CSS styles helped us achieve this card layout:
 
@@ -795,10 +795,10 @@ The following built-in CSS styles helped us achieve this card layout:
 
 Additional components and/or directives that were used:
 
-- [`IgxAvatarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxavatarcomponent.html)
-- [`IgxIconComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconcomponent.html)
-- [`IgxButtonDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbuttondirective.html)
-- [`IgxDividerDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdividerdirective.html)
+- [`IgxAvatarComponent`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent)
+- [`IgxIconComponent`](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
+- [`IgxButtonDirective`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective)
+- [`IgxDividerDirective`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
 
 Styles:
 

@@ -12,7 +12,14 @@ export const getApiReferenceSchema = z.object({
     .min(1, 'Component name is required')
     .max(MAX_COMPONENT_LENGTH, `Component name must be at most ${MAX_COMPONENT_LENGTH} characters`)
     .describe('Component or class name (case-insensitive). Use the exact name returned by search_api. Examples: "IgxGridComponent", "IgrGrid", "IgcSelect"'),
-  section: z.enum(['properties', 'methods', 'events', 'all']).default('all').describe('Section to return: "properties" (types and descriptions), "methods" (signatures and docs), "events" (names and descriptions), or "all" (full entry). Defaults to "all". Use a specific section to reduce response size.')
+  section: z.enum(['properties', 'methods', 'events', 'all']).default('all').describe('Section to return: "properties" (types and descriptions), "methods" (signatures and docs), "events" (names and descriptions), or "all" (full entry). Defaults to "all". Use a specific section to reduce response size. Ignored when "member" is also supplied.'),
+  member: z
+    .string()
+    .trim()
+    .min(1, 'Member name must not be empty')
+    .max(MAX_COMPONENT_LENGTH, `Member name must be at most ${MAX_COMPONENT_LENGTH} characters`)
+    .optional()
+    .describe('Optional member name (property, method, or event) to return only that entry instead of the full component. Examples: "checked", "click", "igcChange". Takes precedence over "section" when both are supplied.')
 });
 
 export const searchApiSchema = z.object({

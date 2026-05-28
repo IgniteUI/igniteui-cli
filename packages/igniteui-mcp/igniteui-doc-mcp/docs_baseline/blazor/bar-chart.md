@@ -15,7 +15,7 @@ The Ignite UI for Blazor Bar Chart, Bar Graph, or Horizontal Bar Chart, is among
 
 ## Blazor Bar Chart Example
 
-You can create Blazor Bar Chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data sources to multiple [`IgbBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBarSeries.html), as shown in the example below:
+You can create Blazor Bar Chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data sources to multiple [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -218,7 +218,7 @@ These use cases are commonly used for the following scenarios:
 
 ## Blazor Bar Chart with Single Series
 
-Bar Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the left to right of the chart towards the values of data points. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBarSeries.html), as shown in the example below:
+Bar Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the left to right of the chart towards the values of data points. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -342,7 +342,7 @@ public class OnlineShoppingSearches
 
 ## Blazor Bar Chart with Multiple Series
 
-The Bar Chart is able to render multiple bars per category for comparison purposes. In this example, the Bar Chart is comparing box office revenue amongst popular movie franchises. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to multiple [`IgbBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBarSeries.html), as shown in the example below:
+The Bar Chart is able to render multiple bars per category for comparison purposes. In this example, the Bar Chart is comparing box office revenue amongst popular movie franchises. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to multiple [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -495,7 +495,7 @@ public class HighestGrossingMovies
 
 ## Blazor Bar Chart Styling
 
-The Bar Chart can be styled, and allows for the ability to use [annotation values](../features/chart-annotations.md) for each bar, for example, to demonstrate percent comparisons. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBarSeries.html) and adding a [`IgbCalloutLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalloutLayer.html), as shown in the example below:
+The Bar Chart can be styled, and allows for the ability to use [annotation values](../features/chart-annotations.md) for each bar, for example, to demonstrate percent comparisons. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries) and adding a [`IgbCalloutLayer`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -640,7 +640,7 @@ A Stacked Bar Chart, or Stacked Bar Graph, is a type of category chart that is u
 
 The Stacked Bar Chart differs from the Bar Chart in that the data points representing your data are stacked next to each other horizontally to visually group your data. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the X-Axis, and all negative values are grouped on the negative side of the X-Axis.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStackedBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedBarSeries.html), as shown in the example below:
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -809,7 +809,7 @@ public class EnergyRenewableConsumption
 
 The Blazor Stacked 100% Bar Chart is identical to the Blazor Stacked Bar Chart in all aspects except in their treatment of the values on X-Axis (bottom labels of the chart). Instead of presenting a direct representation of the data, the stacked 100 bar chart presents the data in terms of percent of the sum of all values in a data point.
 
-You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbStacked100BarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100BarSeries.html), as shown in the example below:
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -987,10 +987,10 @@ You can find more information about related chart types in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
-- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBarSeries.html#IgniteUI_Blazor_Controls_IgbBarSeries_DataSource)
-- [`IgbBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBarSeries.html)
-- [`IgbCalloutLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalloutLayer.html)
-- [`IgbStackedBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedBarSeries.html)
-- [`IgbStacked100BarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStacked100BarSeries.html)
-- [`IgbStackedBarSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbStackedBarSeries.html)
+- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
+- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries&member=DataSource)
+- [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries)
+- [`IgbCalloutLayer`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer)
+- [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries)
+- [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries)
+- [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries)

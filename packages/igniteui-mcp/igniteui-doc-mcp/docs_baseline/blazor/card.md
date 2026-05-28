@@ -93,7 +93,7 @@ Cards allow you to easily display content composed of different types of objects
 
 ### Getting Started
 
-Before using the [`IgbCard`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCard.html), you need to register it as follows:
+Before using the [`IgbCard`](mcp:get_api_reference?platform=blazor&component=IgbCard), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -101,7 +101,7 @@ Before using the [`IgbCard`](https://www.infragistics.com/blazor/docs/api/api/Ig
 builder.Services.AddIgniteUIBlazor(typeof(IgbCardModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbCard`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCard.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbCard`](mcp:get_api_reference?platform=blazor&component=IgbCard) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -144,19 +144,19 @@ Then, to represent the demo card template, we can add the following code:
 </IgbCard>
 ```
 
-You will notice a few things above. First, when we want to _tag_ an element as a header title, like the `h3` heading, we place it between the [`IgbCardHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardHeader.html) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
+You will notice a few things above. First, when we want to _tag_ an element as a header title, like the `h3` heading, we place it between the [`IgbCardHeader`](mcp:get_api_reference?platform=blazor&component=IgbCardHeader) tags and set its slot name to `title`. Conversely, if we wanted to make another heading element a `subtitle` we would name its slot `subtitle`.
 
-Any image or video we want to show in the card, we wrap inside the [`IgbCardMedia`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardMedia.html) tags. The [`IgbCardMedia`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardMedia.html) allows us to size the content placed inside so that it maintains its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
+Any image or video we want to show in the card, we wrap inside the [`IgbCardMedia`](mcp:get_api_reference?platform=blazor&component=IgbCardMedia) tags. The [`IgbCardMedia`](mcp:get_api_reference?platform=blazor&component=IgbCardMedia) allows us to size the content placed inside so that it maintains its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
 
-You can place anything inside the [`IgbCardContent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardContent.html) tags. Usually text goes there.
+You can place anything inside the [`IgbCardContent`](mcp:get_api_reference?platform=blazor&component=IgbCardContent) tags. Usually text goes there.
 
-Finally, the [`IgbCardActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardActions.html) is where you'd place any actionable items, like buttons.
+Finally, the [`IgbCardActions`](mcp:get_api_reference?platform=blazor&component=IgbCardActions) is where you'd place any actionable items, like buttons.
 
 ### Media, Thumbs, and Avatars
 
 If you want to show an image or icon in the card header next to the title and subtitle, you can do it by assigning the element's slot property to `thumbnail`.
 
-Taking the card above as an example, we can edit the contents of the [`IgbCardHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardHeader.html) and add an avatar with `slot="thumbnail"`:
+Taking the card above as an example, we can edit the contents of the [`IgbCardHeader`](mcp:get_api_reference?platform=blazor&component=IgbCardHeader) and add an avatar with `slot="thumbnail"`:
 
 ```razor
 <IgbCardHeader>
@@ -205,7 +205,7 @@ Here's an example of an outlined horizontal card:
 </IgbCard>
 ```
 
-We are using an additional `div` element to bundle the [`IgbCardHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardHeader.html) and [`IgbCardContent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardContent.html) together, keeping them aligned vertically, and applying the `.card-horizontal` class to the wrapping `div` element to align the two sections of the card horizontally.
+We are using an additional `div` element to bundle the [`IgbCardHeader`](mcp:get_api_reference?platform=blazor&component=IgbCardHeader) and [`IgbCardContent`](mcp:get_api_reference?platform=blazor&component=IgbCardContent) together, keeping them aligned vertically, and applying the `.card-horizontal` class to the wrapping `div` element to align the two sections of the card horizontally.
 
 The styles that `.card-horizontal` class applies are:
 
@@ -268,9 +268,9 @@ If everything went well, our card should look like this:
 
 ### Alternative layouts
 
-You can get even more creative with the layout of the [`IgbCard`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCard.html).
+You can get even more creative with the layout of the [`IgbCard`](mcp:get_api_reference?platform=blazor&component=IgbCard).
 
-Below is an example showing how you can create a semi-horizontal card, where we have every section of the card laid out vertically, while the [`IgbCardMedia`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardMedia.html) appears alongside the vertical sections.
+Below is an example showing how you can create a semi-horizontal card, where we have every section of the card laid out vertically, while the [`IgbCardMedia`](mcp:get_api_reference?platform=blazor&component=IgbCardMedia) appears alongside the vertical sections.
 
 ```razor
 <IgbCard>
@@ -375,7 +375,7 @@ You can also add more content in-between by simply omitting the slot property an
 
 ## Styling
 
-Since the card is a container that wraps different elements, styling is done by styling its building blocks - the [`IgbCardHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardHeader.html), [`IgbCardContent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardContent.html), [`IgbCardMedia`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardMedia.html) and [`IgbCardActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardActions.html) sub-components.
+Since the card is a container that wraps different elements, styling is done by styling its building blocks - the [`IgbCardHeader`](mcp:get_api_reference?platform=blazor&component=IgbCardHeader), [`IgbCardContent`](mcp:get_api_reference?platform=blazor&component=IgbCardContent), [`IgbCardMedia`](mcp:get_api_reference?platform=blazor&component=IgbCardMedia) and [`IgbCardActions`](mcp:get_api_reference?platform=blazor&component=IgbCardActions) sub-components.
 
 ```css
 igc-card {
@@ -497,15 +497,15 @@ In this article we covered a lot of ground with the card component. We created a
 
 ## API References
 
-- [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html)
-- [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html)
-- [`IgbCardActions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardActions.html)
-- [`IgbCardContent`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardContent.html)
-- [`IgbCardHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardHeader.html)
-- [`IgbCardMedia`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCardMedia.html)
-- [`IgbCard`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCard.html)
-- [`IgbIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIconButton.html)
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
+- [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar)
+- [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
+- [`IgbCardActions`](mcp:get_api_reference?platform=blazor&component=IgbCardActions)
+- [`IgbCardContent`](mcp:get_api_reference?platform=blazor&component=IgbCardContent)
+- [`IgbCardHeader`](mcp:get_api_reference?platform=blazor&component=IgbCardHeader)
+- [`IgbCardMedia`](mcp:get_api_reference?platform=blazor&component=IgbCardMedia)
+- [`IgbCard`](mcp:get_api_reference?platform=blazor&component=IgbCard)
+- [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources
