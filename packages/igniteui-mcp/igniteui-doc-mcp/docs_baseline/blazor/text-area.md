@@ -36,13 +36,13 @@ The Ignite UI for Blazor Text Area represents a multi-line plain-text editing co
 builder.Services.AddIgniteUIBlazor(typeof(IgbTextareaModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbTextarea`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTextarea.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbTextarea`](mcp:get_api_reference?platform=blazor&component=IgbTextarea) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-After we import the [`IgbTextarea`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTextarea.html) component we are ready to start using it, so let's add our first Text Area.
+After we import the [`IgbTextarea`](mcp:get_api_reference?platform=blazor&component=IgbTextarea) component we are ready to start using it, so let's add our first Text Area.
 
 ```razor
 <IgbTextarea Rows="5" Label="Tell us your story:">It was a dark and stormy night...</IgbTextarea>
@@ -81,7 +81,7 @@ With `prefix` and `suffix` slots we can add different content before and after t
 
 ## Text Area Resizing
 
-There are three different resize options of the [`IgbTextarea`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTextarea.html). When set to `none`, the text area does not resize and uses a scroll bar to show overflow text. When set to `vertical` (the default option), the text area lets the user resize it vertically. When set to `auto`, the text area shows all the user input at once. Overflow text wraps onto a new line and expands the text area automatically.
+There are three different resize options of the [`IgbTextarea`](mcp:get_api_reference?platform=blazor&component=IgbTextarea). When set to `none`, the text area does not resize and uses a scroll bar to show overflow text. When set to `vertical` (the default option), the text area lets the user resize it vertically. When set to `auto`, the text area shows all the user input at once. Overflow text wraps onto a new line and expands the text area automatically.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -117,7 +117,7 @@ There are three different resize options of the [`IgbTextarea`](https://www.infr
 
 ## Form Integration
 
-The sample below shows how a [`IgbTextarea`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTextarea.html) could be integrated into a form.
+The sample below shows how a [`IgbTextarea`](mcp:get_api_reference?platform=blazor&component=IgbTextarea) could be integrated into a form.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -153,7 +153,7 @@ The sample below shows how a [`IgbTextarea`](https://www.infragistics.com/blazor
 
 ## Styling
 
-The [`IgbTextarea`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTextarea.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgbTextarea`](mcp:get_api_reference?platform=blazor&component=IgbTextarea) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -232,9 +232,9 @@ igc-textarea::part(suffix) {
 
 ## API References
 
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
-- [`IgbTextarea`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTextarea.html)
-- [`IgbToast`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToast.html)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+- [`IgbTextarea`](mcp:get_api_reference?platform=blazor&component=IgbTextarea)
+- [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

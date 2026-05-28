@@ -19,7 +19,7 @@ All notable changes for each version of Ignite UI for React are documented on th
 
 #### Changed
 
-- [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html): Updated to use the latest `igniteui-dockmanager@2.1.0` with new `minResizeWidth` and `minResizeHeight` properties, `paneFlyoutToggle` event; additional `layoutChange` event detail and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-dockmanager/blob/master/CHANGELOG.md#210).
+- [`IgrDockManager`](mcp:get_api_reference?platform=react&component=IgrDockManager): Updated to use the latest `igniteui-dockmanager@2.1.0` with new `minResizeWidth` and `minResizeHeight` properties, `paneFlyoutToggle` event; additional `layoutChange` event detail and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-dockmanager/blob/master/CHANGELOG.md#210).
 - Updated to use the latest `igniteui-webcomponents@7.1.0` including new [`IgrSplitter`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitter.html) and `Highlight` container components and fixes. See the [full changelog](https://github.com/IgniteUI/igniteui-webcomponents/blob/master/CHANGELOG.md#710---2026-03-19).
 
 #### New Features
@@ -84,18 +84,18 @@ All notable changes for each version of Ignite UI for React are documented on th
 
 ### igniteui-react-grids (Grids)
 
-- [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid), [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html), [`IgrPivotGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html)
+- [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid), [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid)
   - Improved performance by dynamically adjusting the scroll throttle based on the data displayed in grid.
 
 **Breaking Changes**
 
-- [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid), [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html), [`IgrPivotGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html)
+- [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid), [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid)
   - Original `data` array mutations (like adding/removing/moving records in the original array) are no longer detected automatically. Components need an array reference change for the change to be detected.
 
 **Localization(i18n)**
 
-- [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid), [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html), [`IgrPivotGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html), [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html), `DatePicker`, [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html), [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html), [`IgrCarousel`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcarousel.html), [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html), [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html), [`IgrTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtree.html)
-  - New `Intl` implementation for the grid components that format and render data like dates and numbers. Updated `Intl` implementation for [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html), `DatePicker`, and [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html).
+- [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid), [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid), [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid), [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo), `DatePicker`, [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker), [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar), [`IgrCarousel`](mcp:get_api_reference?platform=react&component=IgrCarousel), [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip), [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput), [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree)
+  - New `Intl` implementation for the grid components that format and render data like dates and numbers. Updated `Intl` implementation for [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar), `DatePicker`, and [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker).
   - New localization implementation for the currently supported languages for all components that have resource strings in the currently supported languages.
   - New public localization API and package named `igniteui-i18n-resources` containing the new resources that are used in conjunction.
 
@@ -187,7 +187,7 @@ Ability for axis annotations to automatically detect collisions and truncate to 
 
 ### igniteui-react-grids (Grids)
 
-- [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid), [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html)
+- [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid), [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
   - Introduced a new cell merging feature that allows you to configure and merge cells in a column based on same data or other custom condition, into a single cell.
 
         ````
@@ -517,11 +517,11 @@ Please note that the maximum size available for the icons is 24x24. You can prov
 
 ### Removed
 
-- [`IgrCheckboxChangeEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxchangeeventargs.html) removed, use [`IgrCheckboxChangeEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxchangeeventargs.html) instead.
-- [`IgrRadioChangeEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiochangeeventargs.html) removed, use [`IgrRadioChangeEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiochangeeventargs.html) instead.
-- [`IgrRangeSliderValue`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrangeslidervalue.html) removed, use [`IgrRangeSliderValueEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrangeslidervalueeventargs.html) instead.
-- `ActiveStepChangingArgs` removed, use [`IgrActiveStepChangingEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igractivestepchangingeventargs.html) instead.
-- `ActiveStepChangedArgs` removed, use [`IgrActiveStepChangedEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igractivestepchangedeventargs.html) instead.
+- [`IgrCheckboxChangeEventArgs`](mcp:get_api_reference?platform=react&component=IgrCheckboxChangeEventArgs) removed, use [`IgrCheckboxChangeEventArgs`](mcp:get_api_reference?platform=react&component=IgrCheckboxChangeEventArgs) instead.
+- [`IgrRadioChangeEventArgs`](mcp:get_api_reference?platform=react&component=IgrRadioChangeEventArgs) removed, use [`IgrRadioChangeEventArgs`](mcp:get_api_reference?platform=react&component=IgrRadioChangeEventArgs) instead.
+- [`IgrRangeSliderValue`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrangeslidervalue.html) removed, use [`IgrRangeSliderValueEventArgs`](mcp:get_api_reference?platform=react&component=IgrRangeSliderValueEventArgs) instead.
+- `ActiveStepChangingArgs` removed, use [`IgrActiveStepChangingEventArgs`](mcp:get_api_reference?platform=react&component=IgrActiveStepChangingEventArgs) instead.
+- `ActiveStepChangedArgs` removed, use [`IgrActiveStepChangedEventArgs`](mcp:get_api_reference?platform=react&component=IgrActiveStepChangedEventArgs) instead.
 
 ### Enhancements
 
@@ -545,7 +545,7 @@ igr-tab-panel component is removed. The igr-tab now encompasses both the tab hea
 
 #### List
 
-- Added new property on [`IgrListItem`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlistitem.html) called [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlistitem.html#selected)
+- Added new property on [`IgrListItem`](mcp:get_api_reference?platform=react&component=IgrListItem) called [`selected`](mcp:get_api_reference?platform=react&component=IgrListItem&member=selected)
 
 #### Accordion
 
@@ -554,7 +554,7 @@ igr-tab-panel component is removed. The igr-tab now encompasses both the tab hea
 ### igniteui-react-grids
 
 - **All Grids**
-  - Allow applying initial filtering through [`IgrFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrfilteringexpressionstree.html) property
+  - Allow applying initial filtering through [`IgrFilteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrFilteringExpressionsTree) property
 
 ### Deprecations
 
@@ -565,10 +565,10 @@ igr-tab-panel component is removed. The igr-tab now encompasses both the tab hea
 | Bug Number | Control | Description      |
 |------------|---------|------------------|
 |25602 | `DataGrid` | Loading a layout with one of the date-specific filter operators results in a TypeError console error|
-|28480 | [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html) | Undefined reference error is thrown when a datasource is replaced|
+|28480 | [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) | Undefined reference error is thrown when a datasource is replaced|
 |30319 | `DataGrid` | Records are sorted despite no value changed|
 |32598 | `DataGrid` | Multi-selection is not working correctly
-|36374 | [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html) | A previous value was bound when a form was submitted on any touch device|
+|36374 | [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput) | A previous value was bound when a form was submitted on any touch device|
 
 ## **18.8.1 (March 2025)**
 
@@ -591,7 +591,7 @@ The following table lists the bug fixes made for the Ignite UI for React toolset
 ### igniteui-react
 
 - Added new `allowSplitterDock` property for `Dockmanager` that allows docking directly in a split.
-- Added new `useFixedSize` property for the [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html) of `Dockmanager` that allows new resize behavior.
+- Added new `useFixedSize` property for the [`IgrSplitPane`](mcp:get_api_reference?platform=react&component=IgrSplitPane) of `Dockmanager` that allows new resize behavior.
 
 ### Enhancements
 
@@ -614,7 +614,7 @@ The following table lists the bug fixes made for the Ignite UI for React toolset
 |35498 | `DataChart` | Tooltips for the series specified in IncludedSeries are not displayed|
 |34324 | [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid) | Column hiding through condition in the grid template is not working|
 |34678 | [`grid`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrdatagridcelleventargs.html#grid) | Enum values coerced to strings, breaking expected numeric behavior in some grid properties|
-|32093 | [`IgrPivotGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html) | PivotDateDimensionOptions are not applied to the PivotDateDimension|
+|32093 | [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid) | PivotDateDimensionOptions are not applied to the PivotDateDimension|
 |34053 | `RadialGauge` | The position of the scale label is shifted|
 |35496 | [`IgrSpreadsheet`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_spreadsheet.igrspreadsheet.html) | Error when setting styles in Excel with images|
 |36176 | Excel Library | Exception occurs when loading an Excel workbook that has a LET function|
@@ -649,7 +649,7 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 ### General
 
 - New [Carousel](layouts/carousel.md) component.
-- [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html)
+- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
   - Changed `change` event argument type from [`IgrComponentDataValueChangedEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcomponentdatavaluechangedeventargs.html) to [`IgrComponentValueChangedEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcomponentvaluechangedeventargs.html)
 
 ## **18.7.0 (September 2024)**
@@ -677,55 +677,55 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 
 - New [Banner](notifications/banner.md) component.
 - New [DatePicker](scheduling/date-picker.md) component.
-- New [`IgrDivider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdivider.html) component.
+- New [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider) component.
 - Added support for native events to all components.
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
   - Added `setIconRef` method. This allows to register and replace icons by SVG files.
   - All components now use icons by reference internally so that it's easy to replace them without explicitly providing custom templates.
-- [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html), `DatePicker`, [`IgrDialog`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html), [`IgrDropdown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html),  `ExpansionPanel`, [`IgrNavDrawer`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavdrawer.html), [`IgrToast`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html), [`IgrSnackbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html), **IgrSelectComponent**
+- [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo), `DatePicker`, [`IgrDialog`](mcp:get_api_reference?platform=react&component=IgrDialog), [`IgrDropdown`](mcp:get_api_reference?platform=react&component=IgrDropdown),  `ExpansionPanel`, [`IgrNavDrawer`](mcp:get_api_reference?platform=react&component=IgrNavDrawer), [`IgrToast`](mcp:get_api_reference?platform=react&component=IgrToast), [`IgrSnackbar`](mcp:get_api_reference?platform=react&component=IgrSnackbar), **IgrSelectComponent**
   - Toggle methods `show`, `hide`, `toggle` methods return **true** now on success, otherwise **false**.
-- **IgrButtonComponent**, [`IgrIconButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igriconbutton.html), [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html), [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html), [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html), [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html), [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html), [`IgrMaskInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html), [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html), **IgrSelectComponent**, [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html)
+- **IgrButtonComponent**, [`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton), [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox), [`IgrSwitch`](mcp:get_api_reference?platform=react&component=IgrSwitch), [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo), [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput), [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput), [`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput), [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio), **IgrSelectComponent**, [`IgrTextarea`](mcp:get_api_reference?platform=react&component=IgrTextarea)
   - Deprecated custom `focus` and `blur` events. Use the native `onFocus` and `onBlur` events instead
-- [`IgrRadioGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html)
-  - Added [`name`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html#name) and [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiogroup.html#value) properties.
+- [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)
+  - Added [`name`](mcp:get_api_reference?platform=react&component=IgrRadioGroup&member=name) and [`value`](mcp:get_api_reference?platform=react&component=IgrRadioGroup&member=value) properties.
 
 **Breaking Changes**
 
 - Renamed old **IgrDatePicker** to **IgrXDatePicker**.
 - Removed `Form` component. Use native form instead.
 - Removed `size` property in favor of the `--ig-size` CSS custom property for the following components:
-  - [`IgrAvatar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igravatar.html),  **IgrButtonComponent**, [`IgrIconButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igriconbutton.html), [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html), [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html), [`IgrDropdown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html), [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html), [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html), [`IgrList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlist.html), [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html), [`IgrSnackbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsnackbar.html), [`IgrTabs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabs.html), [`IgrTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtree.html)
-- [`IgrBadge`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbadge.html), [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html), [`IgrLinearProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrlinearprogress.html), [`IgrCircularProgress`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcircularprogress.html)
+  - [`IgrAvatar`](mcp:get_api_reference?platform=react&component=IgrAvatar),  **IgrButtonComponent**, [`IgrIconButton`](mcp:get_api_reference?platform=react&component=IgrIconButton), [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar), [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip), [`IgrDropdown`](mcp:get_api_reference?platform=react&component=IgrDropdown), [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon), [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput), [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList), [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating), [`IgrSnackbar`](mcp:get_api_reference?platform=react&component=IgrSnackbar), [`IgrTabs`](mcp:get_api_reference?platform=react&component=IgrTabs), [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree)
+- [`IgrBadge`](mcp:get_api_reference?platform=react&component=IgrBadge), [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip), [`IgrLinearProgress`](mcp:get_api_reference?platform=react&component=IgrLinearProgress), [`IgrCircularProgress`](mcp:get_api_reference?platform=react&component=IgrCircularProgress)
   - Renamed `Variant` property type to `StyleVariant`.
-- [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html)
+- [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)
   - Renamed `WeekStart` property type to `WeekDays`.
-- [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html), [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html)
-  - Changed `change` event argument type from [`IgrComponentBoolValueChangedEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcomponentboolvaluechangedeventargs.html) to [`IgrCheckboxChangeEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckboxchangeeventargs.html).
-- [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html), **IgrSelectComponent**
+- [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox), [`IgrSwitch`](mcp:get_api_reference?platform=react&component=IgrSwitch)
+  - Changed `change` event argument type from [`IgrComponentBoolValueChangedEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcomponentboolvaluechangedeventargs.html) to [`IgrCheckboxChangeEventArgs`](mcp:get_api_reference?platform=react&component=IgrCheckboxChangeEventArgs).
+- [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo), **IgrSelectComponent**
   - Removed `positionStrategy`, `flip`, `sameWidth` properties.
-- [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html)
+- [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput)
   - Removed `maxValue` and `minValue` properties. Use `max` and `min` instead.
-- [`IgrDropdown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html)
+- [`IgrDropdown`](mcp:get_api_reference?platform=react&component=IgrDropdown)
   - Removed `positionStrategy` property.
-- [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html)
+- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
   - Removed old named `maxlength` and `minlength` properties. Use `maxLength` and `minLength`.
   - Removed old named `readonly` and `inputmode` properties. Use `readOnly` and `inputMode`.
   - Changed `inputMode` type also to `string`.
-- [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html)
-  - Changed `change` event argument type from [`IgrComponentBoolValueChangedEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcomponentboolvaluechangedeventargs.html) to [`IgrRadioChangeEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradiochangeeventargs.html).
-- [`IgrRangeSlider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrangeslider.html)
+- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)
+  - Changed `change` event argument type from [`IgrComponentBoolValueChangedEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcomponentboolvaluechangedeventargs.html) to [`IgrRadioChangeEventArgs`](mcp:get_api_reference?platform=react&component=IgrRadioChangeEventArgs).
+- [`IgrRangeSlider`](mcp:get_api_reference?platform=react&component=IgrRangeSlider)
   - Removed `ariaThumbLower` and `ariaThumbUpper` properties. Use `thumbLabelLower` and `thumbLabelUpper` instead.
-- [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html)
+- [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating)
   - Renamed `readonly` property to `readOnly`.
 
 ### igniteui-react-grids
 
 - **All Grids**
   - Added new `RowClick` event.
-- [`IgrPivotGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html)
-  - Added `sortable` property for a [`IgrPivotDimension`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotdimension.html).
+- [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid)
+  - Added `sortable` property for a [`IgrPivotDimension`](mcp:get_api_reference?platform=react&component=IgrPivotDimension).
   - Added horizontal layout. Can be enabled inside the new `pivotUI` property as `rowLayout` `horizontal`.
-  - Added row dimension summaries for horizontal layout only. Can be enabled for each [`IgrPivotDimension`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotdimension.html) by setting `horizontalSummary` to **true**.
+  - Added row dimension summaries for horizontal layout only. Can be enabled for each [`IgrPivotDimension`](mcp:get_api_reference?platform=react&component=IgrPivotDimension) by setting `horizontalSummary` to **true**.
   - Added `horizontalSummariesPosition` property to the `pivotUI`, configuring horizontal summaries position.
   - Added row headers for the row dimensions. Can be enabled inside the new `pivotUI` property as `showHeaders` **true**.
   - Keyboard navigation now can move in to row headers back and forth from any row dimension headers or column headers.
@@ -734,35 +734,35 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 **Breaking Changes**
 
 - **All Grids**
-  - [`IgrRowIsland`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowisland.html)
+  - [`IgrRowIsland`](mcp:get_api_reference?platform=react&component=IgrRowIsland)
   - Removed `displayDensity` deprecated property.
   - Renamed `actualColumns`, `contentColumns` properties to `actualColumnList` and `contentColumnList`. Use `columns` or `columnList` property to get all columns now.
-  - Renamed `rowDelete` and `rowAdd` event argument type to [`IgrRowDataCancelableEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowdatacancelableeventargs.html).
-  - Renamed `contextMenu` event argument type to [`IgrGridContextMenuEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridcontextmenueventargs.html).
-  - Removed [`IgrGridEditEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridediteventargs.html),  [`IgrGridEditDoneEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrideditdoneeventargs.html), [`IgrPinRowEventArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpinroweventargs.html) events `rowID` and `primaryKey` properties. Use `rowKey` instead.
-- [`IgrPivotGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html)
+  - Renamed `rowDelete` and `rowAdd` event argument type to [`IgrRowDataCancelableEventArgs`](mcp:get_api_reference?platform=react&component=IgrRowDataCancelableEventArgs).
+  - Renamed `contextMenu` event argument type to [`IgrGridContextMenuEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridContextMenuEventArgs).
+  - Removed [`IgrGridEditEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditEventArgs),  [`IgrGridEditDoneEventArgs`](mcp:get_api_reference?platform=react&component=IgrGridEditDoneEventArgs), [`IgrPinRowEventArgs`](mcp:get_api_reference?platform=react&component=IgrPinRowEventArgs) events `rowID` and `primaryKey` properties. Use `rowKey` instead.
+- [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid)
   - removed `showPivotConfigurationUI` property. Use `pivotUI` and set inside it the new `showConfiguration` option.
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
   - Removed `movable` property. Use Grid's `moving` property now.
   - Removed `columnChildren` property. Use `childColumns` instead.
-- [`columnGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnGroup)
+- [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup)
   - Removed `children` property. Use `childColumns` instead.
-- [`IgrPaginator`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpaginator.html)
+- [`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator)
   - Removed `isFirstPageDisabled` and `isLastPageDisabled` properties. Use `isFirstPage` and `isLastPage` instead.
 
 ## **18.6.1 (June 2024)**
 
 ### igniteui-react
 
-- [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html), [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html) - exposed [`validateOnly`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html#validateOnly) to enable validation rules being enforced without restricting user input.
-- [`IgrDropdown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html) - [`IgrPositionStrategy`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpositionstrategy.html) property is deprecated. The dropdown now uses the `Popover` API to render its container in the top layer of the browser viewport, making the property obsolete.
-- [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html) - [`IgrSplitPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html) [`isMaximized`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#isMaximized) is deprecated. Having isMaximized set to true on a split pane level has no real effect as split panes serve as containers only, meaning they have no actual content to be shown maximized. Use the [`isMaximized`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrsplitpane.html#isMaximized) property of [`IgrTabGroupPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtabgrouppane.html) and/or [`IgrContentPane`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcontentpane.html) instead.
+- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput), [`IgrTextarea`](mcp:get_api_reference?platform=react&component=IgrTextarea) - exposed [`validateOnly`](mcp:get_api_reference?platform=react&component=IgrTextarea&member=validateOnly) to enable validation rules being enforced without restricting user input.
+- [`IgrDropdown`](mcp:get_api_reference?platform=react&component=IgrDropdown) - [`IgrPositionStrategy`](mcp:get_api_reference?platform=react&component=IgrPositionStrategy) property is deprecated. The dropdown now uses the `Popover` API to render its container in the top layer of the browser viewport, making the property obsolete.
+- [`IgrDockManager`](mcp:get_api_reference?platform=react&component=IgrDockManager) - [`IgrSplitPane`](mcp:get_api_reference?platform=react&component=IgrSplitPane) [`isMaximized`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=isMaximized) is deprecated. Having isMaximized set to true on a split pane level has no real effect as split panes serve as containers only, meaning they have no actual content to be shown maximized. Use the [`isMaximized`](mcp:get_api_reference?platform=react&component=IgrSplitPane&member=isMaximized) property of [`IgrTabGroupPane`](mcp:get_api_reference?platform=react&component=IgrTabGroupPane) and/or [`IgrContentPane`](mcp:get_api_reference?platform=react&component=IgrContentPane) instead.
 
 ### igniteui-react-grids
 
 - `DisplayDensity` deprecated in favor of the `--ig-size` CSS custom property. Check out the [Grid Size](grids/grid/size.md) topic for more.
 
-- [`IgrPivotGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpivotgrid.html) - Configuration of the component can now be applied correctly.
+- [`IgrPivotGrid`](mcp:get_api_reference?platform=react&component=IgrPivotGrid) - Configuration of the component can now be applied correctly.
 
 ### igniteui-react-charts (Charts)
 
@@ -795,7 +795,7 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 
 ### igniteui-react-grids
 
-- New [[`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html)](grids/hierarchical-grid/overview.md) component
+- New [[`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)](grids/hierarchical-grid/overview.md) component
 
 ### igniteui-react-gauges
 
@@ -810,22 +810,22 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
 
 ### igniteui-react
 
-- New [`IgrTextarea`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtextarea.html) component
-- New [`IgrButtonGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbuttongroup.html) component
-- [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html)
-  - New [`proximityDock`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#proximityDock) property. If enabled, docking indicators are not visible and the end user can dock the dragged pane by dragging it close to the target pane edges.
-  - New [`containedInBoundaries`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#containedInBoundaries) property. Determines whether the floating panes are kept inside the Dock Manager boundaries. Defaults to `false`.
-  - New [`showPaneHeaders`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html#showPaneHeaders) property. Determines whether pane headers are only shown on hover or always visible. Defaults to `always`.
-- [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html), [`IgrMaskInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html), [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html), [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html)
-  - `Readonly` has been renamed to [`readOnly`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html#readOnly)
-- [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html)
-  - `Maxlength` has been renamed to [`maxLength`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#maxLength)
-  - `Minlength` has been renamed to [`minLength`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html#minLength)
-- [`IgrTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtree.html)
+- New [`IgrTextarea`](mcp:get_api_reference?platform=react&component=IgrTextarea) component
+- New [`IgrButtonGroup`](mcp:get_api_reference?platform=react&component=IgrButtonGroup) component
+- [`IgrDockManager`](mcp:get_api_reference?platform=react&component=IgrDockManager)
+  - New [`proximityDock`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=proximityDock) property. If enabled, docking indicators are not visible and the end user can dock the dragged pane by dragging it close to the target pane edges.
+  - New [`containedInBoundaries`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=containedInBoundaries) property. Determines whether the floating panes are kept inside the Dock Manager boundaries. Defaults to `false`.
+  - New [`showPaneHeaders`](mcp:get_api_reference?platform=react&component=IgrDockManager&member=showPaneHeaders) property. Determines whether pane headers are only shown on hover or always visible. Defaults to `always`.
+- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput), [`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput), [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput), [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating)
+  - `Readonly` has been renamed to [`readOnly`](mcp:get_api_reference?platform=react&component=IgrRating&member=readOnly)
+- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
+  - `Maxlength` has been renamed to [`maxLength`](mcp:get_api_reference?platform=react&component=IgrInput&member=maxLength)
+  - `Minlength` has been renamed to [`minLength`](mcp:get_api_reference?platform=react&component=IgrInput&member=minLength)
+- [`IgrTree`](mcp:get_api_reference?platform=react&component=IgrTree)
   - Added `toggleNodeOnClick` property that determines whether clicking over a node will change its expanded state or not. Defaults to `false`.
-- [`IgrRating`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrating.html)
+- [`IgrRating`](mcp:get_api_reference?platform=react&component=IgrRating)
   - `allowReset` added. When enabled selecting the same value will reset the component. **Behavioral change** - In previous releases this was the default behavior of the rating component. Make sure to set `allowReset` if you need to keep this behavior in your application.
-- [`select`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrmulticolumncombobox.html#select), [`IgrDropdown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdropdown.html)
+- [`select`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_grids.igrmulticolumncombobox.html#select), [`IgrDropdown`](mcp:get_api_reference?platform=react&component=IgrDropdown)
   - exposed `selectedItem`, `items` and `groups` getters
 
 #### Deprecations
@@ -837,18 +837,18 @@ DashboardTile <label class="badge badge--preview">PREVIEW</label>
         --ig-size: var(--ig-size-small);
     }
     ```
-- [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html)
-  - `MinValue` and `MaxValue` properties have been deprecated. Please, use [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#max) instead.
-- [`IgrRangeSlider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrangeslider.html)
-  - `AriaLabelLower` and `AriaLabelUpper` properties have been deprecated. Please, use [`thumbLabelLower`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrangeslider.html#thumbLabelLower) and [`thumbLabelUpper`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrrangeslider.html#thumbLabelUpper) instead.
+- [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput)
+  - `MinValue` and `MaxValue` properties have been deprecated. Please, use [`min`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=min) and [`max`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=max) instead.
+- [`IgrRangeSlider`](mcp:get_api_reference?platform=react&component=IgrRangeSlider)
+  - `AriaLabelLower` and `AriaLabelUpper` properties have been deprecated. Please, use [`thumbLabelLower`](mcp:get_api_reference?platform=react&component=IgrRangeSlider&member=thumbLabelLower) and [`thumbLabelUpper`](mcp:get_api_reference?platform=react&component=IgrRangeSlider&member=thumbLabelUpper) instead.
 
 #### Removed
 
 - Removed our own `dir` attribute which shadowed the default one. This is a non-breaking change.
-- [`IgrSlider`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrslider.html) - `ariaLabel` shadowed property. This is a non-breaking change.
-- [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) - `ariaLabelledBy` shadowed attribute. This is a non-breaking change.
-- [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html) - `ariaLabelledBy` shadowed attribute. This is a non-breaking change.
-- [`IgrRadio`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrradio.html) - `ariaLabelledBy` shadowed attribute. This is a non-breaking change.
+- [`IgrSlider`](mcp:get_api_reference?platform=react&component=IgrSlider) - `ariaLabel` shadowed property. This is a non-breaking change.
+- [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox) - `ariaLabelledBy` shadowed attribute. This is a non-breaking change.
+- [`IgrSwitch`](mcp:get_api_reference?platform=react&component=IgrSwitch) - `ariaLabelledBy` shadowed attribute. This is a non-breaking change.
+- [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio) - `ariaLabelledBy` shadowed attribute. This is a non-breaking change.
 
 ## **18.5.0 (January 2024)**
 

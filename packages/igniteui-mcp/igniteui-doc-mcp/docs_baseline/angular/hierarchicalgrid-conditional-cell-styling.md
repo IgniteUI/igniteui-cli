@@ -11,17 +11,17 @@ _premium: true
 If you need to provide any custom styling in the IgxHierarchicalGrid component, you can do it on either row or cell level.
 ## Hierarchical Grid Conditional Row Styling
 The IgxHierarchicalGrid component in Ignite UI for Angular provides two ways to **conditional styling of rows** based on custom rules.
-- By setting [`rowClasses`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowClasses) input on the IgxHierarchicalGrid component;
-- By setting [`rowStyles`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowStyles) input on the IgxHierarchicalGrid component;
+- By setting [`rowClasses`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowClasses) input on the IgxHierarchicalGrid component;
+- By setting [`rowStyles`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowStyles) input on the IgxHierarchicalGrid component;
 Further in this topic wi will cover both of them in more details.
 ### Using rowClasses
-You can conditionally style the IgxHierarchicalGrid rows by setting the [`rowClasses`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowClasses) input and define custom rules.
+You can conditionally style the IgxHierarchicalGrid rows by setting the [`rowClasses`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowClasses) input and define custom rules.
 ```html
 <igx-hierarchical-grid  #hierarchicalGrid class="hgrid" [data]="localData" [height]="'580px'" [width]="'100%'" [rowStyles]="rowStyles">
     ...
 </igx-hierarchical-grid>
 ```
-The [`rowClasses`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`rowClasses`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 ```typescript
 // sample.component.ts
 public rowClasses = {
@@ -306,7 +306,7 @@ export class HGridRowStylesSampleComponent implements OnInit {
 ## Hierarchical Grid Conditional Cell Styling
 ## Overview
 The IgxHierarchicalGrid component in Ignite UI for Angular provides two ways to **conditional styling of cells** based on custom rules.
-- By setting the [`IgxColumnComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html) input [`cellClasses`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
+- By setting the [`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) input [`cellClasses`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
 ```ts
 // component.ts file
 public beatsPerMinuteClasses = {
@@ -328,12 +328,12 @@ private downFontCondition = (rowData: any, columnKey: any): boolean => {
 }
 ```
 ### Using cellClasses
-You can conditionally style the IgxHierarchicalGrid cells by setting the [`IgxColumnComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html) [`cellClasses`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#cellClasses) input and define custom rules.
+You can conditionally style the IgxHierarchicalGrid cells by setting the [`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) [`cellClasses`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=cellClasses) input and define custom rules.
 ```html
 <!-- sample.component.html -->
 <igx-column field="GrammyNominations" header="Grammy Nominations" dataType="number" [cellClasses]="grammyClasses"></igx-column>
 ```
-The [`cellClasses`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`cellClasses`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 ```typescript
 // sample.component.ts
 private upGrammyCondition = (rowData: any, columnKey: any): boolean => {
@@ -364,7 +364,7 @@ public grammyClasses = {
 ### Demo
 <!-- TODO -->
 <div class="divider--half"></div>
-- By using the [`IgxColumnComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html) input [`cellStyles`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#cellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
+- By using the [`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) input [`cellStyles`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=cellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 ```ts
 public styles = {
     'background': 'linear-gradient(180deg, #dd4c4c 0%, firebrick 100%)',
@@ -465,7 +465,7 @@ Define a `popin` animation
 <div class="divider--half"></div>
 ## Known issues and limitations
 - If there are cells bind to the same condition (from different columns) and one cell is updated, the other cells won't be updated based on the new value, if the condition is met.
-A pipe check should be performed in order to apply the changes to the rest of the cells. The example below shows how to do that with a `spread operator(...)` on [`onCellEdit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#onCellEdit) event. This will copy the original object with a new instance, and lead pure pipe to be fired.
+A pipe check should be performed in order to apply the changes to the rest of the cells. The example below shows how to do that with a `spread operator(...)` on [`onCellEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=onCellEdit) event. This will copy the original object with a new instance, and lead pure pipe to be fired.
 ```ts
 public backgroundClasses = {
     myBackground: (rowData: any, columnKey: string) => {
@@ -486,8 +486,8 @@ editDone(evt) {
 ```
 ## API References
 <div class="divider--half"></div>
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
-- [IgxHierarchicalGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [IgxHierarchicalGridComponent](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
 - [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#mixin-grid)
 ## Additional Resources
 <div class="divider--half"></div>

@@ -13,17 +13,17 @@ _premium: true
 
 # Row Actions in React Tree Grid
 
-The Ignite UI for React Row Actions feature in React Tree Grid enables developers to use an [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) and utilize CRUD for row/cell components and row pinning. There are several predefined UI controls for these operations that are applicable to a specific row in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) – editing and pinning.
+The Ignite UI for React Row Actions feature in React Tree Grid enables developers to use an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) and utilize CRUD for row/cell components and row pinning. There are several predefined UI controls for these operations that are applicable to a specific row in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) – editing and pinning.
 
 ## Usage
 
 The predefined actions UI components are:
 
-- [`IgrGridEditingActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrideditingactions.html) - includes functionality and UI specifically designed for the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`rowEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowEditable) option and row deletion of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html).
+- [`IgrGridEditingActions`](mcp:get_api_reference?platform=react&component=IgrGridEditingActions) - includes functionality and UI specifically designed for the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) editing. It allows you to quickly toggle edit mode for cells or rows, depending on the [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable) option and row deletion of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
 
-- [`IgrGridPinningActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridpinningactions.html) - includes functionality and UI specifically designed for the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
+- [`IgrGridPinningActions`](mcp:get_api_reference?platform=react&component=IgrGridPinningActions) - includes functionality and UI specifically designed for the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) row pinning. It allows you to quickly pin rows and navigate between pinned rows and their disabled counterparts.
 
-They are added inside the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) and this is all needed to have an [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) providing default interactions.
+They are added inside the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) and this is all needed to have an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) providing default interactions.
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -43,11 +43,11 @@ They are added inside the [`IgrTreeGrid`](https://www.infragistics.com/products/
 <!-- ComponentEnd: TreeGrid -->
 
 > [!Note]
-> When `ActionStripComponent` is a child component of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), hovering a row will automatically show the UI.
+> When `ActionStripComponent` is a child component of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), hovering a row will automatically show the UI.
 
 ## Custom Implementation
 
-These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html).
+These components expose templates giving flexibility for customization. For instance, if we would like to use the [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) for a Gmail scenario with row actions such as **delete**, **edit** and etc. You can simply create button component with icon, add click event to it and insert it into the [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip).
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -245,8 +245,8 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrGridPinningActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridpinningactions.html)
-- [`IgrGridEditingActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrideditingactions.html)
+- [`IgrGridPinningActions`](mcp:get_api_reference?platform=react&component=IgrGridPinningActions)
+- [`IgrGridEditingActions`](mcp:get_api_reference?platform=react&component=IgrGridEditingActions)
 
 Our community is active and always welcoming to new ideas.
 

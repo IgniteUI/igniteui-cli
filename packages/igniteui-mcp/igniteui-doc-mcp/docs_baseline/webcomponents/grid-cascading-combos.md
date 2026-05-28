@@ -13,11 +13,11 @@ _premium: true
 
 # Web Components Grid with Cascading Combos
 
-The Grid's Editing functionality provides with the opportunity to use Cascading Combobox components. By selecting the value in any preceding [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html), the users will receive only the data that is relevant to their selection within the next Web Components Combobox component.
+The Grid's Editing functionality provides with the opportunity to use Cascading Combobox components. By selecting the value in any preceding [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent), the users will receive only the data that is relevant to their selection within the next Web Components Combobox component.
 
 ## Angular Grid with Cascading Combos Sample Overview
 
-The sample below demonstrates how [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) works with nested Cascading [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) components.
+The sample below demonstrates how [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) works with nested Cascading [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) components.
 
 <!-- ComponentStart: Grid -->
 
@@ -59,11 +59,11 @@ export class WorldCitiesAbove500K extends Array<WorldCitiesAbove500KItem> {
 
 ## Setup
 
-In order enable column editing, make sure [`editable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#editable) property is set to `true`.
+In order enable column editing, make sure [`editable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=editable) property is set to `true`.
 
-Once the column editing is enabled, you can start by adding your [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html). Please note that here in order to have only one single selection available, you will need to use set the [`singleSelect`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#singleSelect) property.
+Once the column editing is enabled, you can start by adding your [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent). Please note that here in order to have only one single selection available, you will need to use set the [`singleSelect`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=singleSelect) property.
 
-To get started with the [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html), first you need to import it:
+To get started with the [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent), first you need to import it:
 
 ```ts
 import { IgcComboComponent, defineAllComponents } from 'igniteui-webcomponents';
@@ -80,7 +80,7 @@ public webGridCountryDropDownTemplate: IgcRenderFunction<IgcCellTemplateContext>
 }
 ```
 
-- [`displayKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#displayKey) - Required for object arrays - Specifies which property will be used for the items' text. If no value is specified for [`displayKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#displayKey), the  combo will use the specified [`valueKey`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#valueKey) (if any).
+- [`displayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey) - Required for object arrays - Specifies which property will be used for the items' text. If no value is specified for [`displayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey), the  combo will use the specified [`valueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) (if any).
 
 In order to handle the selection change, we need the `onChange` event. The emitted event arguments contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
 
@@ -117,7 +117,7 @@ public bindEventsCountryCombo(rowId: any, cell: any) {
     }
 ```
 
-And lastly, adding the [`IgcLinearProgressComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclinearprogresscomponent.html), which is required while loading the list of data.
+And lastly, adding the [`IgcLinearProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent), which is required while loading the list of data.
 The `id` is necessary to set the value of `id` attribute.
 
 ```ts
@@ -138,6 +138,6 @@ The `id` is necessary to set the value of `id` attribute.
 
 ## Web Components Grid API Members
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html)
-- [`IgcLinearProgressComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclinearprogresscomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent)
+- [`IgcLinearProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent)

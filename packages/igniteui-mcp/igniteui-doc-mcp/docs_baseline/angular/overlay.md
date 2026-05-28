@@ -73,7 +73,7 @@ export class OverlaySampleMain1Component implements OnDestroy {
 
 ## Getting Started
 
-First we need to import the [`IgxOverlayService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html) in the component and `inject` a reference to it in the component's constructor:
+First we need to import the [`IgxOverlayService`](mcp:get_api_reference?platform=angular&component=IgxOverlayService) in the component and `inject` a reference to it in the component's constructor:
 
 ```typescript
 
@@ -129,7 +129,7 @@ export class MyOverlayComponent {
 
 ```
 
-If we want to pass an already existing `ElementRef` from the page to the [`IgxOverlayService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html), we can do it as follows:
+If we want to pass an already existing `ElementRef` from the page to the [`IgxOverlayService`](mcp:get_api_reference?platform=angular&component=IgxOverlayService), we can do it as follows:
 
 ```HTML
 <!-- my-overlay-component.component.html -->
@@ -162,7 +162,7 @@ export class MyOverlayComponent {
 
 <div class="divider--half"></div>
 
-The Overlay Service's [`attach()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#attach) method has two overloads:
+The Overlay Service's [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method has two overloads:
 
 - `attach(element, settings?)`
 - `attach(component, viewContainerRef, settings?)`
@@ -172,21 +172,21 @@ The first parameter in both overloads is mandatory and represents the content th
 - A component definition - When passing a component in as the first argument, the overlay service creates a new instance of that component and dynamically attaches its `ElementRef` to the `overlay` DOM. This method also accepts a second mandatory parameter `ViewContainerRef` which is a reference to the container where the created component's host view will be inserted.
 - An `ElementRef` to an existing DOM element (illustrated in the sample above) - Any view that is already rendered on the page can be passed through the overlay service and be rendered in the overlay DOM.
 
-In both cases the [`attach()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#attach) method will:
+In both cases the [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method will:
 
 - Get the reference to the passed view from Angular
 - Detach the view from the DOM and leave an anchor in its place
-- Re-attach the view to the overlay using the provided [`OverlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) or falling back to the default overlay ones
+- Re-attach the view to the overlay using the provided [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) or falling back to the default overlay ones
 
-Calling then [`show(id)`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#show) will play the open animation, if there is any, and will show the attached content. Calling [`hide(id)`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#hide) will play close animation, if there is any, and will hide the attached content.
+Calling then [`show(id)`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=show) will play the open animation, if there is any, and will show the attached content. Calling [`hide(id)`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=hide) will play close animation, if there is any, and will hide the attached content.
 
-Finally calling [`detach(id)`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#detach) method will re-attach the view back to its original location in the DOM. If a component was provided to the [`attach()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#attach) method calling [`detach(id)`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#detach) will destroy the created instance.
+Finally calling [`detach(id)`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=detach) method will re-attach the view back to its original location in the DOM. If a component was provided to the [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method calling [`detach(id)`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=detach) will destroy the created instance.
 
 <div class="divider--half"></div>
 
 ## Attaching Components
 
-In the below demo, we can pass the [IgxCard](card.md#angular-card-example) component through the Overlay Service's [`attach()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#attach) method to generate an ID. Then we call the [`show()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#show) method with the provided ID to dynamically attach the card to the DOM in a modal container.
+In the below demo, we can pass the [IgxCard](card.md#angular-card-example) component through the Overlay Service's [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method to generate an ID. Then we call the [`show()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=show) method with the provided ID to dynamically attach the card to the DOM in a modal container.
 
 
 ```typescript
@@ -245,9 +245,9 @@ export class OverlaySampleMain1Component implements OnDestroy {
 
 ## Overlay Settings
 
-The [`attach()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#attach) method also accepts an object of the [`OverlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) type, which configures the way the content is shown. If no such object is provided, the Overlay Service will use its default settings to render the passed content.
+The [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method also accepts an object of the [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) type, which configures the way the content is shown. If no such object is provided, the Overlay Service will use its default settings to render the passed content.
 
-For example, if we want the content to be positioned relative to an element, we can pass a different [`target`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#target) and [`positioningStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#positioningStrategy) to the [`attach()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#attach) method, e.g. [`ConnectedPositioningStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/connectedpositioningstrategy.html). In order to configure how the component is shown, we need to create an [`OverlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) object first:
+For example, if we want the content to be positioned relative to an element, we can pass a different [`target`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=target) and [`positioningStrategy`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=positioningStrategy) to the [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method, e.g. [`ConnectedPositioningStrategy`](mcp:get_api_reference?platform=angular&component=ConnectedPositioningStrategy). In order to configure how the component is shown, we need to create an [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) object first:
 
 ```typescript
 // my-overlay-component.component.ts
@@ -285,15 +285,15 @@ Clicking on the button will now show `MyDynamicComponent` positioned relative to
 
 ## Preset Overlay Settings
 
-The [`IgxOverlayService.createAbsolutePositionSettings()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#createAbsolutePositionSettings) and [`IgxOverlayService.createRelativePositionSettings()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#createRelativePositionSettings) methods provide an easy way to create an [`OverlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) based on a predefined settings sets.
+The [`IgxOverlayService.createAbsolutePositionSettings()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=createAbsolutePositionSettings) and [`IgxOverlayService.createRelativePositionSettings()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=createRelativePositionSettings) methods provide an easy way to create an [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) based on a predefined settings sets.
 
-The [`IgxOverlayService.createAbsolutePositionSettings()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#createAbsolutePositionSettings) method creates non-modal [`OverlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) with [`GlobalPositionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/globalpositionstrategy.html) or [`ContainerPositionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/containerpositionstrategy.html) in case the `outlet` parameter is provided. The `AbsolutePosition` enumeration defines the possible positions to choose from: `Center`, `Top` or `Bottom`. The default position is `Center`.
+The [`IgxOverlayService.createAbsolutePositionSettings()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=createAbsolutePositionSettings) method creates non-modal [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) with [`GlobalPositionStrategy`](mcp:get_api_reference?platform=angular&component=GlobalPositionStrategy) or [`ContainerPositionStrategy`](mcp:get_api_reference?platform=angular&component=ContainerPositionStrategy) in case the `outlet` parameter is provided. The `AbsolutePosition` enumeration defines the possible positions to choose from: `Center`, `Top` or `Bottom`. The default position is `Center`.
 
 ```typescript
 const globalOverlaySettings = IgxOverlayService.createAbsoluteOverlaySettings(AbsolutePosition.Top);
 ```
 
-The [`IgxOverlayService.createRelativePositionSettings()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#createRelativePositionSettings) method creates [`OverlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) with [`AutoPositionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/autopositionstrategy.html), [`ConnectedPositioningStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/connectedpositioningstrategy.html) or [`ElasticPositionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/elasticpositionstrategy.html). Accepts target, position and strategy. The `target` is the attaching point or element for the component to show. The `position` is a `RelativePosition` enumeration with the following options: `Above`, `Below`, `Before`, `After` and `Default`. The `Default` option positions the element below the target, left aligned. The position strategy can be set through the `RelativePositionStrategy` enumeration, which default value is `Auto`.
+The [`IgxOverlayService.createRelativePositionSettings()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=createRelativePositionSettings) method creates [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) with [`AutoPositionStrategy`](mcp:get_api_reference?platform=angular&component=AutoPositionStrategy), [`ConnectedPositioningStrategy`](mcp:get_api_reference?platform=angular&component=ConnectedPositioningStrategy) or [`ElasticPositionStrategy`](mcp:get_api_reference?platform=angular&component=ElasticPositionStrategy). Accepts target, position and strategy. The `target` is the attaching point or element for the component to show. The `position` is a `RelativePosition` enumeration with the following options: `Above`, `Below`, `Before`, `After` and `Default`. The `Default` option positions the element below the target, left aligned. The position strategy can be set through the `RelativePositionStrategy` enumeration, which default value is `Auto`.
 
 ```typescript
 const targetElement = this.myAnchorButton.nativeElement;
@@ -647,9 +647,9 @@ export class OverlayPresetSettingsSampleComponent implements OnInit, OnDestroy {
 
 ## Hiding the Overlay
 
-The [`hide(id)`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#hide) hides the overlay content. All of the elements rendered by the overlay service have a unique ID, assigned to them by the service. The [`attach()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#attach) method returns the identifier of the rendered content. To hide the content this ID needs to be passed to the overlay's [`hide(id)`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#hide) method. To hide all overlays [`hideAll()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#hideAll) method could be called.
+The [`hide(id)`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=hide) hides the overlay content. All of the elements rendered by the overlay service have a unique ID, assigned to them by the service. The [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method returns the identifier of the rendered content. To hide the content this ID needs to be passed to the overlay's [`hide(id)`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=hide) method. To hide all overlays [`hideAll()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=hideAll) method could be called.
 
-When rendered content is not needed anymore [`detach(id)`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#detach) method should be called. This method removes the content from the overlay and, if applicable, re-attaches it to its original location in the DOM. [`detach(id)`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#detach) method also accepts as mandatory parameter the ID generated from [`attach()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#attach) method. To remove all the overlays [`detachAll()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#detachAll) method could be called.
+When rendered content is not needed anymore [`detach(id)`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=detach) method should be called. This method removes the content from the overlay and, if applicable, re-attaches it to its original location in the DOM. [`detach(id)`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=detach) method also accepts as mandatory parameter the ID generated from [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method. To remove all the overlays [`detachAll()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=detachAll) method could be called.
 
 We can modify the previously defined overlay method to not only show but also hide the overlay element
 
@@ -707,7 +707,7 @@ export class MyOverlayComponent implements OnDestroy {
 
 ## Attaching Settings
 
-Using the [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) parameter of the [`attach()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html#attach) method, we can change how the content is shown - e.g. where the content is positioned, how the scroll should behave and if the container is modal or not
+Using the [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) parameter of the [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method, we can change how the content is shown - e.g. where the content is positioned, how the scroll should behave and if the container is modal or not
 
 
 ```typescript
@@ -780,7 +780,7 @@ export class OverlaySampleMain2Component implements OnDestroy {
 <div class="divider--half"></div>
 
 
-If **no** [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) are configured, the toggled element gets the **default display settings**:
+If **no** [`overlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) are configured, the toggled element gets the **default display settings**:
 
 ```typescript
 defaultOverlaySettings = {
@@ -796,7 +796,7 @@ defaultOverlaySettings = {
 
 ## Integration with igxToggle
 
-The [`IgxToggleDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoggledirective.html) is fully integrated with the [`IgxOverlayService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html). As such, the Toggle Directive's [`toggle()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoggledirective.html#toggle) method allows for custom overlay settings to be passed when toggling the content.
+The [`IgxToggleDirective`](mcp:get_api_reference?platform=angular&component=IgxToggleDirective) is fully integrated with the [`IgxOverlayService`](mcp:get_api_reference?platform=angular&component=IgxOverlayService). As such, the Toggle Directive's [`toggle()`](mcp:get_api_reference?platform=angular&component=IgxToggleDirective&member=toggle) method allows for custom overlay settings to be passed when toggling the content.
 
 An example of how to pass configuration settings to the toggle's method is shown below:
 
@@ -844,7 +844,7 @@ If you show the overlay in an outlet, and if the outlet is a child of an element
 
 ## API References
 
-- [IgxOverlayService](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html)
+- [IgxOverlayService](mcp:get_api_reference?platform=angular&component=IgxOverlayService)
 - [IgxOverlay Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
 
 ## Additional Resources

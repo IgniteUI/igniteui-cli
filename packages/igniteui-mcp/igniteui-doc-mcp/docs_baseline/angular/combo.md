@@ -111,7 +111,7 @@ Now that you have the Ignite UI for Angular Combo module or directives imported,
 
 ## Using the Angular ComboBox Component
 
-After the initial setup, you can bind the [igx-combo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcombocomponent.html) to data.
+After the initial setup, you can bind the [igx-combo](mcp:get_api_reference?platform=angular&component=IgxComboComponent) to data.
 
 ```typescript
 @Component({
@@ -134,7 +134,7 @@ Our combobox is now bound to the array of cities, but we still haven't told the 
 
 ### Data value and display properties
 
-Since the combobox is bound to an array of complex data (i.e. objects), we need to specify a property that the control will use to handle the selected items. The control exposes two `@Input` properties - [valueKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#valueKey) and [displayKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#displayKey):
+Since the combobox is bound to an array of complex data (i.e. objects), we need to specify a property that the control will use to handle the selected items. The control exposes two `@Input` properties - [valueKey](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=valueKey) and [displayKey](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=displayKey):
 
 - `valueKey` - _Optional, recommended for object arrays_ - Specifies which property of the data entries will be stored for the combobox's selection. If `valueKey` is omitted, the combobox value will use references to the data entries (i.e. the selection will be an array of entries from `igxCombo.data`).
 - `displayKey` - _Required for object arrays_ - Specifies which property will be used for the items' text. If no value is specified for `displayKey`, the combobox will use the specified `valueKey` (if any).
@@ -337,7 +337,7 @@ button {
 
 The combobox component exposes API that allows getting and manipulating the current selection state of the control.
 
-One way to get the combobox's selection is via the [selection](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcombocomponent.html#selection) property. It returns an array of values which correspond to the selected items, depending on the specified [valueKey](#data-value-and-display-properties) (if any).
+One way to get the combobox's selection is via the [selection](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selection) property. It returns an array of values which correspond to the selected items, depending on the specified [valueKey](#data-value-and-display-properties) (if any).
 
 In our example, `selection` will return an array of the selected cities' `id`s:
 
@@ -348,7 +348,7 @@ export class MyCombo {
 }
 ```
 
-Using the selection API, you can also change the combobox's selected items without user interaction with the control - via a button click, as a response to an Observable changing, etc. For example, we can implement a button that selects a set of cities, using the [select()](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcombocomponent.html#select) method:
+Using the selection API, you can also change the combobox's selected items without user interaction with the control - via a button click, as a response to an Observable changing, etc. For example, we can implement a button that selects a set of cities, using the [select()](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=select) method:
 
 ```html
 <igx-combo [data]="cities" displayKey="name" valueKey="id"></igx-combo>
@@ -368,7 +368,7 @@ export class MyExampleCombo {
 }
 ```
 
-The combobox also fires an event every time its selection changes - [selectionChanging()](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#selectionChanging). The emitted event arguments, [IComboSelectionChangingEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/icomboselectionchangingeventargs.html), contain information about the selection prior to the change, the current selection and the items that were added or removed. The event can also be cancelled, preventing the selection update with the new array of items.
+The combobox also fires an event every time its selection changes - [selectionChanging()](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selectionChanging). The emitted event arguments, [IComboSelectionChangingEventArgs](mcp:get_api_reference?platform=angular&component=IComboSelectionChangingEventArgs), contain information about the selection prior to the change, the current selection and the items that were added or removed. The event can also be cancelled, preventing the selection update with the new array of items.
 
 Binding to the event can be done through the proper `@Output` property on the `igx-combo` tag:
 
@@ -394,7 +394,7 @@ export class MyExampleCombo {
 }
 ```
 
-Additionally, the combobox fires a [selectionChanged](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxComboComponent.html#selectionChanged) event after the selection is committed and the component state has been updated. The emitted event arguments, [IComboSelectionChangedEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/icomboselectionchangedeventargs.html), contain information about the previous selection, the current selection and the items that were added or removed. Unlike `selectionChanging`, this event is not cancellable and is guaranteed to reflect the final committed selection state. When the combobox is used with `ngModel` or Angular forms, `selectionChanged` is emitted after the value change callback is invoked.
+Additionally, the combobox fires a [selectionChanged](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selectionChanged) event after the selection is committed and the component state has been updated. The emitted event arguments, [IComboSelectionChangedEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/icomboselectionchangedeventargs.html), contain information about the previous selection, the current selection and the items that were added or removed. Unlike `selectionChanging`, this event is not cancellable and is guaranteed to reflect the final committed selection state. When the combobox is used with `ngModel` or Angular forms, `selectionChanged` is emitted after the value change callback is invoked.
 
 Binding to the event can be done through the proper `@Output` property on the `igx-combo` tag:
 
@@ -573,7 +573,7 @@ $custom-combo-theme: combo-theme(
 );
 ```
 
-The [`IgxComboComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcombocomponent.html) uses the [`IgxDropDownComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html) internally as an item container. It also includes the [`IgxInputGroup`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html) and the [`IgxCheckbox`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcheckboxcomponent.html) components. Creating new themes, that extend these components' themes, and scoping them under the respective classes will let you change the combobox styles:
+The [`IgxComboComponent`](mcp:get_api_reference?platform=angular&component=IgxComboComponent) uses the [`IgxDropDownComponent`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) internally as an item container. It also includes the [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent) and the [`IgxCheckbox`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent) components. Creating new themes, that extend these components' themes, and scoping them under the respective classes will let you change the combobox styles:
 
 ```scss
 $custom-drop-down-theme: drop-down-theme(
@@ -598,7 +598,7 @@ The last step is to include the component's theme.
 ```
 
 > [!NOTE]
-> The [`IgxCombo`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcombocomponent.html) component uses the [`IgxOverlay`](overlay.md) service to hold and display the combobox items list container. To properly scope your styles you might have to use an [`OverlaySetting.outlet`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#outlet). For more details check the [`IgxOverlay Styling Guide`](overlay-styling.md). Also is necessary to use `::ng-deep` when we are styling the components.
+> The [`IgxCombo`](mcp:get_api_reference?platform=angular&component=IgxComboComponent) component uses the [`IgxOverlay`](overlay.md) service to hold and display the combobox items list container. To properly scope your styles you might have to use an [`OverlaySetting.outlet`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=outlet). For more details check the [`IgxOverlay Styling Guide`](overlay-styling.md). Also is necessary to use `::ng-deep` when we are styling the components.
 > [!Note]
 > The default `type` of the `IgxCombo` is `box` unlike the [`IgxSelect`](select.md) where it is `line`.
 
@@ -731,14 +731,14 @@ At the end your combo should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxComboComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcombocomponent.html)
+- [IgxComboComponent](mcp:get_api_reference?platform=angular&component=IgxComboComponent)
 - [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)
 
 Additional [angular components](https://www.infragistics.com/products/ignite-ui-angular) and/or directives with relative APIs that were used:
 
-- [IgxDropDownComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html)
-- [IgxInputGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html)
-- [IgxCheckboxComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcheckboxcomponent.html)
+- [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
+- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
+- [IgxCheckboxComponent](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent)
 
 ## Theming Dependencies
 

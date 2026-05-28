@@ -10,7 +10,7 @@ _premium: true
 
 # Web Components Grid Customize Icons
 
-The Ignite UI for Web Components [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) icons can be customized to use custom icons from a different collection set using the exposed API methods:
+The Ignite UI for Web Components [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) icons can be customized to use custom icons from a different collection set using the exposed API methods:
 
 - `registerIconFromText`
 - `registerIcon`
@@ -275,7 +275,7 @@ Here's a breakdown of all icons as used by component:
 
 ## API References
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 
 ## Additional Resources
 

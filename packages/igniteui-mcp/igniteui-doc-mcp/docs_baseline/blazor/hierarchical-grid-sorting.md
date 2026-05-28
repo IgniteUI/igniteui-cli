@@ -13,13 +13,13 @@ _premium: true
 
 # Blazor Hierarchical Grid Sorting
 
-The Ignite UI for Blazor Data Sorting feature in Blazor Hierarchical Grid is enabled on a per-column level, meaning that the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) can have a mix of sortable and non-sortable columns. Performing Blazor sort actions enables you to change the display order of the records based on specified criteria.
+The Ignite UI for Blazor Data Sorting feature in Blazor Hierarchical Grid is enabled on a per-column level, meaning that the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) can have a mix of sortable and non-sortable columns. Performing Blazor sort actions enables you to change the display order of the records based on specified criteria.
 
 ## Blazor Hierarchical Grid Sorting Overview Example
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-Additionally there is a custom contextmenu added for sorting using [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html)'s `ContextMenu` Output.
+Additionally there is a custom contextmenu added for sorting using [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid)'s `ContextMenu` Output.
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
@@ -301,7 +301,7 @@ public class SingersData
 }
 ```
 
-This is done via the [`Sortable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Sortable) input. With the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) sorting, you can also set the [`SortingIgnoreCase`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_SortingIgnoreCase) property to perform case sensitive sorting:
+This is done via the [`Sortable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Sortable) input. With the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) sorting, you can also set the [`SortingIgnoreCase`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=SortingIgnoreCase) property to perform case sensitive sorting:
 
 ```razor
 <IgbColumn Field="Title" Sortable="true"></IgbColumn>
@@ -311,7 +311,7 @@ This is done via the [`Sortable`](https://www.infragistics.com/blazor/docs/api/a
 
 Having a certain amount of sorted columns could be really confusing if there is no indication of the sorted order.
 
-The [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) provides a solution for this problem by indicating the index of each sorted column.
+The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) provides a solution for this problem by indicating the index of each sorted column.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -608,7 +608,7 @@ public class SingersData
 
 ## Sorting through the API
 
-You can sort any column or a combination of columns through the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) API using the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) [`Sort`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_Sort) method:
+You can sort any column or a combination of columns through the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) API using the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) [`Sort`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=Sort) method:
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -630,9 +630,9 @@ You can sort any column or a combination of columns through the [`IgbHierarchica
 <!-- ComponentEnd: HierarchicalGrid -->
 
 > [!Note]
-> Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
+> Sorting is performed using our `DefaultSortingStrategy` algorithm. Any [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) or `ISortingExpression` can use a custom implementation of the `ISortingStrategy` as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
 
-As with the filtering behavior, you can clear the sorting state by using the [`ClearSort`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_ClearSort) method:
+As with the filtering behavior, you can clear the sorting state by using the [`ClearSort`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=ClearSort) method:
 
 ```razor
 @code {
@@ -647,14 +647,14 @@ As with the filtering behavior, you can clear the sorting state by using the [`C
 <!-- ComponentEnd: HierarchicalGrid -->
 
 > [!Note]
-> The [`SortStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_SortStrategy) of the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) is of different type compared to the [`SortStrategy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_SortStrategy) of the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html), since they work in different scopes and expose different parameters.
+> The [`SortStrategy`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=SortStrategy) of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) is of different type compared to the [`SortStrategy`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=SortStrategy) of the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn), since they work in different scopes and expose different parameters.
 
 > [!Note]
-> The sorting operation **DOES NOT** change the underlying data source of the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html).
+> The sorting operation **DOES NOT** change the underlying data source of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 
 ## Initial Sorting State
 
-It is possible to set the initial sorting state of the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) by passing an array of sorting expressions to the [`SortingExpressions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_SortingExpressions) property of the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html).
+It is possible to set the initial sorting state of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) by passing an array of sorting expressions to the [`SortingExpressions`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=SortingExpressions) property of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid).
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -678,13 +678,13 @@ It is possible to set the initial sorting state of the [`IgbHierarchicalGrid`](h
 <!-- ComponentEnd: HierarchicalGrid -->
 
 > [!Note]
-> If values of type `string` are used by a column of [`DataType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DataType) `Date`, the [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) won't parse them to `Date` objects and using [`IgbHierarchicalGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
+> If values of type `string` are used by a column of [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) `Date`, the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) won't parse them to `Date` objects and using [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) `Sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
 
 ## Sorting Indicators Templates
 
 The sorting indicator icon in the column header can be customized using a template. The following properties are available for templating the sorting indicator for any sorting state (ascending, descending, none):
 
-- [`SortHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_SortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
+- [`SortHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=SortHeaderIconTemplate) – re-templates the sorting icon when no sorting is applied.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -701,7 +701,7 @@ The sorting indicator icon in the column header can be customized using a templa
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-- [`SortAscendingHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_SortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
+- [`SortAscendingHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=SortAscendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in ascending order.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -718,7 +718,7 @@ The sorting indicator icon in the column header can be customized using a templa
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
-- [`SortDescendingHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHierarchicalGrid.html#IgniteUI_Blazor_Controls_IgbHierarchicalGrid_SortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
+- [`SortDescendingHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=SortDescendingHeaderIconTemplate) – re-templates the sorting icon when the column is sorted in descending order.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -1037,7 +1037,7 @@ public class SingersData
 
 ## API References
 
-- [`IgbSortingExpression`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSortingExpression.html)
+- [`IgbSortingExpression`](mcp:get_api_reference?platform=blazor&component=IgbSortingExpression)
 
 ## Additional Resources
 

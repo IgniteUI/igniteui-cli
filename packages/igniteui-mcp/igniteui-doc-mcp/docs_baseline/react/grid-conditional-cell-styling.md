@@ -13,27 +13,27 @@ _premium: true
 
 # React Grid Conditional Styling
 
-The Ignite UI for React Conditional Styling feature in React Grid allows custom styling on a row or cell level. The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
+The Ignite UI for React Conditional Styling feature in React Grid allows custom styling on a row or cell level. The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
 
 ## Grid Conditional Row Styling
 
-The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component in Ignite UI for React provides two ways to **conditional styling of rows** based on custom rules.
+The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component in Ignite UI for React provides two ways to **conditional styling of rows** based on custom rules.
 
-- By setting [`rowClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowClasses) input on the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component;
-- By setting [`rowStyles`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowStyles) input on the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component;
+- By setting [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) input on the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component;
+- By setting [`rowStyles`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowStyles) input on the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component;
 
 Further in this topic we will cover both of them in more details.
 
 ### Using Row Classes
 
-You can conditionally style the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) rows by setting the [`rowClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowClasses) input and define custom rules.
+You can conditionally style the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) rows by setting the [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) input and define custom rules.
 
 ```tsx
 <IgrGrid id="grid" height="600px" width="100%" rowClasses={rowClasses}>
 </IgrGrid>
 ```
 
-The [`rowClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 ```tsx
 const rowClasses = {
@@ -152,9 +152,9 @@ root.render(<Sample/>);
 
 ### Using Row Styles
 
-The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) control exposes the [`rowStyles`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowStyles) property which allows conditional styling of the data rows. Similar to [`rowClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
+The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) control exposes the [`rowStyles`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowStyles) property which allows conditional styling of the data rows. Similar to [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
 
-> The callback signature for both [`rowStyles`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowStyles) and [`rowClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#rowClasses) is:
+> The callback signature for both [`rowStyles`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowStyles) and [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrGrid&member=rowClasses) is:
 
 ```tsx
 (row: IgrRowType) => boolean
@@ -455,13 +455,13 @@ root.render(<Sample/>);
 
 ## Overview
 
-The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component in Ignite UI for React provides two ways to **conditional styling of cells** based on custom rules.
+The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component in Ignite UI for React provides two ways to **conditional styling of cells** based on custom rules.
 
-- By setting the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) input [`cellClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
+- By setting the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) input [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
 
 ### Using Cell Classes
 
-You can conditionally style the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) cells by setting the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) [`cellClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellClasses) input and define custom rules.
+You can conditionally style the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) cells by setting the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) input and define custom rules.
 
 ```tsx
 <IgrColumn field="BeatsPerMinute" dataType="number" cellClasses={beatsPerMinuteClasses}></IgrColumn>
@@ -469,7 +469,7 @@ You can conditionally style the [`IgrGrid`](https://www.infragistics.com/product
 
 <!-- ComponentEnd: Grid -->
 
-The [`cellClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 <!-- ComponentStart: Grid -->
 
@@ -678,7 +678,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-- By using the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) input [`cellStyles`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
+- By using the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) input [`cellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 
 > The callback signature for both `cellStyles` and `cellClasses` is now changed to:
 
@@ -688,7 +688,7 @@ root.render(<Sample/>);
 
 ### Using Cell Styles
 
-Columns expose the [`cellStyles`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellStyles) property which allows conditional styling of the column cells. Similar to [`cellClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
+Columns expose the [`cellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles) property which allows conditional styling of the column cells. Similar to [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
 
 Let's define our styles:
 
@@ -890,8 +890,8 @@ const editDone = (event: IgrGridEditEventArgs) => {
 
 ## API References
 
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 
 ## Additional Resources
 

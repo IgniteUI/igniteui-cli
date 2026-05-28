@@ -9,11 +9,11 @@ _tocName: List
 
 # Blazor List Overview
 
-The Ignite UI for Blazor List element is extremely useful when presenting a group of items. You can create a simple list of textual items, or a more complex one, containing an array of different layout elements. The [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html) component displays rows of items and supports one or more headers as well. Each list item is completely templatable and will support any valid HTML or other components.
+The Ignite UI for Blazor List element is extremely useful when presenting a group of items. You can create a simple list of textual items, or a more complex one, containing an array of different layout elements. The [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList) component displays rows of items and supports one or more headers as well. Each list item is completely templatable and will support any valid HTML or other components.
 
 ## Blazor List Example
 
-The following example represents a list populated with contacts with a name and a phone number properties. The [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html) component demonstrated below uses the [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html) and [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html) elements to enrich the user experience and expose the capabilities of setting avatar picture and buttons for text and call actions.
+The following example represents a list populated with contacts with a name and a phone number properties. The [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList) component demonstrated below uses the [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar) and [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton) elements to enrich the user experience and expose the capabilities of setting avatar picture and buttons for text and call actions.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -69,7 +69,7 @@ The following example represents a list populated with contacts with a name and 
 
 At its core the list web component allows you to easily display a vertical list of items.
 
-Before using the [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html), you need to register it as follows:
+Before using the [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -77,7 +77,7 @@ Before using the [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/Ig
 builder.Services.AddIgniteUIBlazor(typeof(IgbListModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -183,7 +183,7 @@ After implementing the above code, our list component should now look like the f
 
 ### Adding Avatar and Buttons
 
-We can use some of our other components in conjunction with the [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html) component to enrich the experience and add some functionality. We can have a nice picture avatar to the left of the name and phone values. Additionally, we can add some buttons to the right of them to allow the user to text and call contacts, so let's update our contacts list component to show the avatar and the buttons. We can do that by using some of the list item's slots.
+We can use some of our other components in conjunction with the [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList) component to enrich the experience and add some functionality. We can have a nice picture avatar to the left of the name and phone values. Additionally, we can add some buttons to the right of them to allow the user to text and call contacts, so let's update our contacts list component to show the avatar and the buttons. We can do that by using some of the list item's slots.
 
 ```razor
 <IgbList>
@@ -214,9 +214,9 @@ We can use some of our other components in conjunction with the [`IgbList`](http
 </IgbList>
 ```
 
-The `start` slot is meant to be used for adding some kind of media before all other content of our list items. The target element, in our case the [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html) component, will also be provided with a default position and spacing.
+The `start` slot is meant to be used for adding some kind of media before all other content of our list items. The target element, in our case the [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar) component, will also be provided with a default position and spacing.
 
-The `end` slot is meant to be used for list items that have some kind of action or metadata, represented, for example, by a switch, a button, a checkbox, etc. We will use [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html) components.
+The `end` slot is meant to be used for list items that have some kind of action or metadata, represented, for example, by a switch, a button, a checkbox, etc. We will use [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton) components.
 
 Let's also allow the user to change the size of the list using the `--ig-size` CSS variable. We will add some radio buttons to display all size values. This way whenever one gets selected, we will change the size of the list.
 
@@ -309,7 +309,7 @@ The result of implementing the above code should look like the following:
 
 ## Styling
 
-The [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html) exposes several CSS parts, giving you full control over its style:
+The [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList) exposes several CSS parts, giving you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -394,19 +394,19 @@ igc-list-item::part(subtitle) {
 }
 ```
 
-In this article we covered a lot of ground with the [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html) component. First, we created a simple list with text items. Then, we created a list of contact items and added functionality to them by using some additional Ignite UI for Blazor components, like the [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html) and [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html). Finally, we changed the component's appearance through the exposed CSS parts.
+In this article we covered a lot of ground with the [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList) component. First, we created a simple list with text items. Then, we created a list of contact items and added functionality to them by using some additional Ignite UI for Blazor components, like the [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar) and [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton). Finally, we changed the component's appearance through the exposed CSS parts.
 
 <div class="divider--half"></div>
 
 ## API References
 
-- [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html)
-- [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html)
-- [`IgbRadioGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadioGroup.html)
-- [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html)
-- [`IgbListHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbListHeader.html)
-- [`IgbListItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbListItem.html)
-- [`IgbList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbList.html)
+- [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar)
+- [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
+- [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)
+- [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)
+- [`IgbListHeader`](mcp:get_api_reference?platform=blazor&component=IgbListHeader)
+- [`IgbListItem`](mcp:get_api_reference?platform=blazor&component=IgbListItem)
+- [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

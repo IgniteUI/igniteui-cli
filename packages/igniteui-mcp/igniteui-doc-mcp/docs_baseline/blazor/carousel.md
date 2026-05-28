@@ -78,7 +78,7 @@ The Blazor Carousel demo you see below shows slides containing only images.
 
 ## Usage
 
-Before using the [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html), you need to register it as follows:
+Before using the [`IgbCarousel`](mcp:get_api_reference?platform=blazor&component=IgbCarousel), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -86,7 +86,7 @@ Before using the [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/ap
 builder.Services.AddIgniteUIBlazor(typeof(IgbCarouselModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbCarousel`](mcp:get_api_reference?platform=blazor&component=IgbCarousel) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -94,9 +94,9 @@ You will also need to link an additional CSS file to apply the styling to the [`
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Now that you have the Ignite UI for Blazor Carousel imported, you can start with a basic configuration of the [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html) and its slides.
+Now that you have the Ignite UI for Blazor Carousel imported, you can start with a basic configuration of the [`IgbCarousel`](mcp:get_api_reference?platform=blazor&component=IgbCarousel) and its slides.
 
-Use the [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html) selector to wrap your slides. The slides may feature any valid html content inside, including other components.
+Use the [`IgbCarousel`](mcp:get_api_reference?platform=blazor&component=IgbCarousel) selector to wrap your slides. The slides may feature any valid html content inside, including other components.
 
 ```razor
 <IgbCarousel>
@@ -133,7 +133,7 @@ If you want a slide to be active by default, use the `Active` attribute:
 
 ### Carousel Configuration
 
-By default, the [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html) has its [`DisableLoop`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_DisableLoop) property set to **false** (looping occurs when the first slide comes after the last by navigating using the Next action, or when the last slide comes after the first by using the Previous action). The looping behavior can be disabled by setting the value of the [`DisableLoop`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_DisableLoop) property to **true**.
+By default, the [`IgbCarousel`](mcp:get_api_reference?platform=blazor&component=IgbCarousel) has its [`DisableLoop`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=DisableLoop) property set to **false** (looping occurs when the first slide comes after the last by navigating using the Next action, or when the last slide comes after the first by using the Previous action). The looping behavior can be disabled by setting the value of the [`DisableLoop`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=DisableLoop) property to **true**.
 
 ```razor
 <IgbCarousel DisableLoop="true">
@@ -141,7 +141,7 @@ By default, the [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api
 </IgbCarousel>
 ```
 
-To keep track of each slide index, the carousel has indicators that are positioned at the `end` of the carousel by default. In order to change this behavior, use the [`IndicatorsOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_IndicatorsOrientation) property and assign it to `start`.
+To keep track of each slide index, the carousel has indicators that are positioned at the `end` of the carousel by default. In order to change this behavior, use the [`IndicatorsOrientation`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=IndicatorsOrientation) property and assign it to `start`.
 
 ```razor
 <IgbCarousel IndicatorsOrientation="@CarouselIndicatorsOrientation.Start">
@@ -149,7 +149,7 @@ To keep track of each slide index, the carousel has indicators that are position
 </IgbCarousel>
 ```
 
-By default, the [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html) displays its navigation buttons and indicators. Use the [`HideIndicators`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_HideIndicators) property to hide the indicators and the [`HideNavigation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_HideNavigation) property to hide the navigation buttons.
+By default, the [`IgbCarousel`](mcp:get_api_reference?platform=blazor&component=IgbCarousel) displays its navigation buttons and indicators. Use the [`HideIndicators`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=HideIndicators) property to hide the indicators and the [`HideNavigation`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=HideNavigation) property to hide the navigation buttons.
 
 ```razor
 <IgbCarousel HideNavigation="true" HideIndicators="true">
@@ -157,7 +157,7 @@ By default, the [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api
 </IgbCarousel>
 ```
 
-The [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html) supports vertical mode. Use the [`Vertical`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_Vertical) property to enable it.
+The [`IgbCarousel`](mcp:get_api_reference?platform=blazor&component=IgbCarousel) supports vertical mode. Use the [`Vertical`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=Vertical) property to enable it.
 
 ```razor
 <IgbCarousel Vertical="true">
@@ -167,7 +167,7 @@ The [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bl
 
 ### Custom indicators
 
-To add Blazor custom carousel indicators, use the [`IgbCarouselIndicator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarouselIndicator.html):
+To add Blazor custom carousel indicators, use the [`IgbCarouselIndicator`](mcp:get_api_reference?platform=blazor&component=IgbCarouselIndicator):
 
 ```razor
 <IgbCarousel>
@@ -329,7 +329,7 @@ Animated slide transitions provide the end-users a nice experience when interact
 
 The carousel is configured to use the `slide` animation by default, but it also supports `fade` as an alternative animation.
 
-Use the [`AnimationType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_AnimationType) property to change the animation.
+Use the [`AnimationType`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=AnimationType) property to change the animation.
 
 ```razor
 <IgbCarousel AnimationType="@CarouselAnimationType.Fade">
@@ -337,7 +337,7 @@ Use the [`AnimationType`](https://www.infragistics.com/blazor/docs/api/api/Ignit
 </IgbCarousel>
 ```
 
-Setting `none` to the [`AnimationType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_AnimationType) property disables the animations.
+Setting `none` to the [`AnimationType`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=AnimationType) property disables the animations.
 
 ### Demo
 
@@ -524,11 +524,11 @@ The carousel [animations](carousel.md#animations) are fully supported on touch d
 
 ### Automatic transitioning
 
-The [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html) can be easily configured to change the slides automatically, without any user interaction. This way you can create your own slideshow by only setting a transition interval to the [`Interval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_Interval) property, which determines the amount of time in milliseconds between slides transition.
+The [`IgbCarousel`](mcp:get_api_reference?platform=blazor&component=IgbCarousel) can be easily configured to change the slides automatically, without any user interaction. This way you can create your own slideshow by only setting a transition interval to the [`Interval`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=Interval) property, which determines the amount of time in milliseconds between slides transition.
 
 > [!NOTE]
 > Hovering the mouse over any carousel content or moving keyboard focus to any of the carousel content pauses automatic transitioning. Automatic transitioning resumes when the mouse moves away from the carousel or when keyboard focus moves out of the carousel content.
-> This can be prevented by setting [`DisablePauseOnInteraction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_DisablePauseOnInteraction) property to **true**.
+> This can be prevented by setting [`DisablePauseOnInteraction`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=DisablePauseOnInteraction) property to **true**.
 
 ```razor
 <IgbCarousel Interval="2000" DisablePauseOnInteraction="true">
@@ -542,11 +542,11 @@ Let's create a fully automated carousel with looping enabled. We will configure 
 
 To achieve this goal, we have to do the following configurations to the carousel:
 
-- enable the [`DisablePauseOnInteraction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_DisablePauseOnInteraction) property
-- enable the [`HideNavigation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_HideNavigation) property
-- enable the [`Vertical`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_Vertical) property
-- add transition [`Interval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_Interval)
-- add custom [`IgbCarouselIndicator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarouselIndicator.html) for each slide
+- enable the [`DisablePauseOnInteraction`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=DisablePauseOnInteraction) property
+- enable the [`HideNavigation`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=HideNavigation) property
+- enable the [`Vertical`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=Vertical) property
+- add transition [`Interval`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=Interval)
+- add custom [`IgbCarouselIndicator`](mcp:get_api_reference?platform=blazor&component=IgbCarouselIndicator) for each slide
 
 Our carousel will look like this in the template:
 
@@ -725,7 +725,7 @@ These configurations will have the following result:
 
 - **Attributes**
   - [aria-roledescription](https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription) set to "carousel".
-  - [aria-live](https://www.w3.org/TR/wai-aria-1.1/#aria-live) - used to set the priority with which screen reader should treat updates to live regions - the possible settings are: **off** and **polite**. The default setting is **polite** and is set to the element that serves as the container for the set of slides. When the [`Interval`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html#IgniteUI_Blazor_Controls_IgbCarousel_Interval) option is set and the carousel is in playing state, the **aria-live** attribute would be set to **off**.
+  - [aria-live](https://www.w3.org/TR/wai-aria-1.1/#aria-live) - used to set the priority with which screen reader should treat updates to live regions - the possible settings are: **off** and **polite**. The default setting is **polite** and is set to the element that serves as the container for the set of slides. When the [`Interval`](mcp:get_api_reference?platform=blazor&component=IgbCarousel&member=Interval) option is set and the carousel is in playing state, the **aria-live** attribute would be set to **off**.
   - [aria-label](https://www.w3.org/TR/wai-aria/states_and_properties#aria-label) (navigation buttons) - "Previous slide"/"Next slide".
 
 #### Slide component
@@ -743,12 +743,12 @@ These configurations will have the following result:
 
 ## API References
 
-- [`IgbCarousel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarousel.html)
-- [`IgbCarouselSlide`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarouselSlide.html)
-- [`IgbCarouselIndicator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCarouselIndicator.html)
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
-- [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html)
-- [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html)
+- [`IgbCarousel`](mcp:get_api_reference?platform=blazor&component=IgbCarousel)
+- [`IgbCarouselSlide`](mcp:get_api_reference?platform=blazor&component=IgbCarouselSlide)
+- [`IgbCarouselIndicator`](mcp:get_api_reference?platform=blazor&component=IgbCarouselIndicator)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+- [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
+- [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
 
 ## Additional Resources
 

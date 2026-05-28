@@ -199,4 +199,4 @@ this.dockManager.layout = {
 
 ## API References
 
-- [`IgrDockManager`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdockmanager.html)
+- [`IgrDockManager`](mcp:get_api_reference?platform=react&component=IgrDockManager)

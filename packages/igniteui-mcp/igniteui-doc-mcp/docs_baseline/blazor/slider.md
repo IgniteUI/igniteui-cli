@@ -57,7 +57,7 @@ The Blazor Slider & Range Slider components allow selection in a given range by 
 
 ## Usage
 
-Before using the [`IgbSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html) and [`IgbRangeSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRangeSlider.html), you need to register them as follows:
+Before using the [`IgbSlider`](mcp:get_api_reference?platform=blazor&component=IgbSlider) and [`IgbRangeSlider`](mcp:get_api_reference?platform=blazor&component=IgbRangeSlider), you need to register them as follows:
 
 ```razor
 // in Program.cs file
@@ -68,7 +68,7 @@ builder.Services.AddIgniteUIBlazor(
 );
 ```
 
-The simplest way to start using the [`IgbSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html) and [`IgbRangeSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRangeSlider.html) is as follows:
+The simplest way to start using the [`IgbSlider`](mcp:get_api_reference?platform=blazor&component=IgbSlider) and [`IgbRangeSlider`](mcp:get_api_reference?platform=blazor&component=IgbRangeSlider) is as follows:
 
 ```razor
 <IgbSlider Value="40" />
@@ -77,9 +77,9 @@ The simplest way to start using the [`IgbSlider`](https://www.infragistics.com/b
 
 ### Value
 
-The main difference between the Slider and Range Slider components is that the Slider component has a single thumb, while the Range Slider component has two thumbs. The single thumb of the Slider component displays its [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_Value) property. The two thumbs of the Range Slider component display its [`Lower`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRangeSlider.html#IgniteUI_Blazor_Controls_IgbRangeSlider_Lower) and [`Upper`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRangeSlider.html#IgniteUI_Blazor_Controls_IgbRangeSlider_Upper) value properties.
+The main difference between the Slider and Range Slider components is that the Slider component has a single thumb, while the Range Slider component has two thumbs. The single thumb of the Slider component displays its [`Value`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=Value) property. The two thumbs of the Range Slider component display its [`Lower`](mcp:get_api_reference?platform=blazor&component=IgbRangeSlider&member=Lower) and [`Upper`](mcp:get_api_reference?platform=blazor&component=IgbRangeSlider&member=Upper) value properties.
 
-Both sliders emit two events when any of the values is changed. The [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html) event is emitted whenever a value is changed using keyboard or drag interaction while the `Change` event is emitted when the value change is committed on drag end or keyboard interaction.
+Both sliders emit two events when any of the values is changed. The [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) event is emitted whenever a value is changed using keyboard or drag interaction while the `Change` event is emitted when the value change is committed on drag end or keyboard interaction.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -141,11 +141,11 @@ Both sliders emit two events when any of the values is changed. The [`IgbInput`]
 }
 ```
 
-While dragging a slider thumb, it displays its value in a tooltip. You could hide this tooltip using the [`HideTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_HideTooltip) property.
+While dragging a slider thumb, it displays its value in a tooltip. You could hide this tooltip using the [`HideTooltip`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=HideTooltip) property.
 
 ### Disabled
 
-You can use the [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_Disabled) property of the sliders to disable their user interactions.
+You can use the [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=Disabled) property of the sliders to disable their user interactions.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -172,7 +172,7 @@ igc-slider {
 
 ### Constraints
 
-The track of the sliders has a minimum and maximum values which are configured using the [`Min`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html#IgniteUI_Blazor_Controls_IgbInput_Min) and [`Max`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html#IgniteUI_Blazor_Controls_IgbInput_Max) properties. Additionally, you can restrict the thumb dragging using the [`LowerBound`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_LowerBound) and [`UpperBound`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_UpperBound) properties.
+The track of the sliders has a minimum and maximum values which are configured using the [`Min`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=Min) and [`Max`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=Max) properties. Additionally, you can restrict the thumb dragging using the [`LowerBound`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=LowerBound) and [`UpperBound`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=UpperBound) properties.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -203,7 +203,7 @@ igc-slider {
 
 ### Step
 
-The [`Step`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html#IgniteUI_Blazor_Controls_IgbInput_Step) property specifies the granularity of the slider that the value must adhere to. By default, the slider track looks continuous. Setting the [`DiscreteTrack`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_DiscreteTrack) property of the slider to **true** will make it to display the steps on the track.
+The [`Step`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=Step) property specifies the granularity of the slider that the value must adhere to. By default, the slider track looks continuous. Setting the [`DiscreteTrack`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=DiscreteTrack) property of the slider to **true** will make it to display the steps on the track.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -231,11 +231,11 @@ The [`Step`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Co
 }
 ```
 
-If the [`Step`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html#IgniteUI_Blazor_Controls_IgbInput_Step) property is set to `0`, no stepping is implied and any value in the slider range is allowed. In this case, the slider will look continuous even if [`DiscreteTrack`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_DiscreteTrack) is set to **true**.
+If the [`Step`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=Step) property is set to `0`, no stepping is implied and any value in the slider range is allowed. In this case, the slider will look continuous even if [`DiscreteTrack`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=DiscreteTrack) is set to **true**.
 
 ### Tick Marks
 
-The slider components could display tick marks and labels. The slider components support two types of tick marks: primary and secondary. In order to display the primary tick marks, you should set the [`PrimaryTicks`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_PrimaryTicks) property to a value greater than `1`. The number of primary ticks will be evenly distributed on the track. In order to display the secondary tick marks, you should set the [`SecondaryTicks`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_SecondaryTicks) property to a value greater than `0`. The value of [`SecondaryTicks`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_SecondaryTicks) specifies the number of secondary ticks between every two primary ticks.
+The slider components could display tick marks and labels. The slider components support two types of tick marks: primary and secondary. In order to display the primary tick marks, you should set the [`PrimaryTicks`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=PrimaryTicks) property to a value greater than `1`. The number of primary ticks will be evenly distributed on the track. In order to display the secondary tick marks, you should set the [`SecondaryTicks`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=SecondaryTicks) property to a value greater than `0`. The value of [`SecondaryTicks`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=SecondaryTicks) specifies the number of secondary ticks between every two primary ticks.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -262,9 +262,9 @@ The slider components could display tick marks and labels. The slider components
 }
 ```
 
-Additionally, you could configure the orientation of the tick marks using the [`TickOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_TickOrientation) property. By default, the [`TickOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_TickOrientation) value is `end` which displays the ticks below the slider track. You could set it to `start` which displays them above the track and `mirror` which mirrors the ticks above and below the track.
+Additionally, you could configure the orientation of the tick marks using the [`TickOrientation`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=TickOrientation) property. By default, the [`TickOrientation`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=TickOrientation) value is `end` which displays the ticks below the slider track. You could set it to `start` which displays them above the track and `mirror` which mirrors the ticks above and below the track.
 
-By default, the tick marks display labels with their values. You could modify the rotation of the tick labels using the `SliderTickLabelRotation` property. Additionally, you could hide the labels of the primary and secondary ticks using the [`HidePrimaryLabels`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_HidePrimaryLabels) and [`HideSecondaryLabels`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_HideSecondaryLabels) properties.
+By default, the tick marks display labels with their values. You could modify the rotation of the tick labels using the `SliderTickLabelRotation` property. Additionally, you could hide the labels of the primary and secondary ticks using the [`HidePrimaryLabels`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=HidePrimaryLabels) and [`HideSecondaryLabels`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=HideSecondaryLabels) properties.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -295,7 +295,7 @@ By default, the tick marks display labels with their values. You could modify th
 
 ### Value Format
 
-If you want to format the thumb and tick label values, the slider provides [`ValueFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_ValueFormat), [`ValueFormatOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_ValueFormatOptions) and [`Locale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_Locale) properties. Тhe [`ValueFormatOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_ValueFormatOptions) allows you to specify the number of fraction and significant digits, style (decimal, currency, percent, unit), notation and others taking into account the specified [`Locale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_Locale). The [`ValueFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_ValueFormat) is a string which may contain the `{0}` identifier which will be replaced by the value with applied format options.
+If you want to format the thumb and tick label values, the slider provides [`ValueFormat`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=ValueFormat), [`ValueFormatOptions`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=ValueFormatOptions) and [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=Locale) properties. Тhe [`ValueFormatOptions`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=ValueFormatOptions) allows you to specify the number of fraction and significant digits, style (decimal, currency, percent, unit), notation and others taking into account the specified [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=Locale). The [`ValueFormat`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=ValueFormat) is a string which may contain the `{0}` identifier which will be replaced by the value with applied format options.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -363,7 +363,7 @@ If you want to format the thumb and tick label values, the slider provides [`Val
 
 ### Labels
 
-In some cases you would want to format the values of the slider as string values i.e. map the values **\[0, 1, 2]** to **\['Low', 'Medium', 'High']**. For this scenario the slider allows you to define [`IgbSliderLabel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderLabel.html) elements inside it. The text content of the slider labels is going to be used for thumb and tick labels. Please note that when slider labels are provided, the [`Min`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_Min), [`Max`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_Max) and [`Step`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_Step) properties are automatically calculated so that they do not allow values that do not map to the provided labels. In the case of 'Low', 'Medium' and 'High' labels, [`Min`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_Min) is set to `0`, [`Max`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_Max) is set to `2` and [`Step`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_Step) is set to `1`.
+In some cases you would want to format the values of the slider as string values i.e. map the values **\[0, 1, 2]** to **\['Low', 'Medium', 'High']**. For this scenario the slider allows you to define [`IgbSliderLabel`](mcp:get_api_reference?platform=blazor&component=IgbSliderLabel) elements inside it. The text content of the slider labels is going to be used for thumb and tick labels. Please note that when slider labels are provided, the [`Min`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=Min), [`Max`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=Max) and [`Step`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=Step) properties are automatically calculated so that they do not allow values that do not map to the provided labels. In the case of 'Low', 'Medium' and 'High' labels, [`Min`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=Min) is set to `0`, [`Max`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=Max) is set to `2` and [`Step`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=Step) is set to `1`.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -396,7 +396,7 @@ In some cases you would want to format the values of the slider as string values
 
 ## Styling
 
-The [`IgbSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgbSlider`](mcp:get_api_reference?platform=blazor&component=IgbSlider) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -485,19 +485,19 @@ The following sample demonstrates how to style the track fill and thumb parts:
 
 ## API References
 
-- [`HidePrimaryLabels`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_HidePrimaryLabels)
-- [`HideSecondaryLabels`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_HideSecondaryLabels)
-- [`HideTooltip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_HideTooltip)
-- [`PrimaryTicks`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_PrimaryTicks)
-- [`IgbRangeSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRangeSlider.html)
-- [`SecondaryTicks`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_SecondaryTicks)
-- [`IgbSliderLabel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSliderLabel.html)
-- [`IgbSlider`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html)
+- [`HidePrimaryLabels`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=HidePrimaryLabels)
+- [`HideSecondaryLabels`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=HideSecondaryLabels)
+- [`HideTooltip`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=HideTooltip)
+- [`PrimaryTicks`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=PrimaryTicks)
+- [`IgbRangeSlider`](mcp:get_api_reference?platform=blazor&component=IgbRangeSlider)
+- [`SecondaryTicks`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=SecondaryTicks)
+- [`IgbSliderLabel`](mcp:get_api_reference?platform=blazor&component=IgbSliderLabel)
+- [`IgbSlider`](mcp:get_api_reference?platform=blazor&component=IgbSlider)
 - `SliderTickLabelRotation`
-- [`TickOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_TickOrientation)
-- [`UpperBound`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_UpperBound)
-- [`ValueFormatOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_ValueFormatOptions)
-- [`ValueFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSlider.html#IgniteUI_Blazor_Controls_IgbSlider_ValueFormat)
+- [`TickOrientation`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=TickOrientation)
+- [`UpperBound`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=UpperBound)
+- [`ValueFormatOptions`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=ValueFormatOptions)
+- [`ValueFormat`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=ValueFormat)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

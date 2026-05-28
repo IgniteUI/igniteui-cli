@@ -215,24 +215,24 @@ Now that you have the Ignite UI for Angular Drag and Drop module or directives i
 
 ## Using the Angular Drag Directive
 
-When an element inside your Angular application needs to be dragged from one place to another on the page, the [`igxDrag`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html) directive is designed to help achieve this behavior. In combination with the [`igxDrop`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdirective.html) directive, the placing of the dragged element can be done as well, so you can have fully interactive application.
+When an element inside your Angular application needs to be dragged from one place to another on the page, the [`igxDrag`](mcp:get_api_reference?platform=angular&component=IgxDragDirective) directive is designed to help achieve this behavior. In combination with the [`igxDrop`](mcp:get_api_reference?platform=angular&component=IgxDropDirective) directive, the placing of the dragged element can be done as well, so you can have fully interactive application.
 
 ### Dragging Fundamentals
 
-A drag operation starts when the end user swipes at least 5px in any direction. This is customizable and can be changed using the [`dragTolerance`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#dragTolerance) input. Otherwise the interaction is considered as a click and a `dragClick` event is triggered.
+A drag operation starts when the end user swipes at least 5px in any direction. This is customizable and can be changed using the [`dragTolerance`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragTolerance) input. Otherwise the interaction is considered as a click and a `dragClick` event is triggered.
 
-When the dragging starts, the [`dragStart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#dragStart) event is triggered. To prevent any actual movement to occur, the event can be canceled by setting the [`cancel`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/idragstarteventargs.html#cancel) property to `true`.
+When the dragging starts, the [`dragStart`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragStart) event is triggered. To prevent any actual movement to occur, the event can be canceled by setting the [`cancel`](mcp:get_api_reference?platform=angular&component=IDragStartEventArgs&member=cancel) property to `true`.
 
-Before any actual movement is about to be performed, the [`dragMove`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#dragMove) event is also triggered, containing the last and next position of the pointer. It is triggered every time a movement is detected while dragging an element around.
+Before any actual movement is about to be performed, the [`dragMove`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragMove) event is also triggered, containing the last and next position of the pointer. It is triggered every time a movement is detected while dragging an element around.
 
-After the user releases the mouse/touch the drag ghost element is removed from the DOM and the [`dragEnd`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#dragEnd) event will be emitted.
+After the user releases the mouse/touch the drag ghost element is removed from the DOM and the [`dragEnd`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragEnd) event will be emitted.
 
 > [!Note]
-> Due to the nature of the [`dragMove`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#dragMove) event, it can be triggered many times in a short period of time, which may cause performance issues for complex operations done when triggered.
+> Due to the nature of the [`dragMove`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragMove) event, it can be triggered many times in a short period of time, which may cause performance issues for complex operations done when triggered.
 
 ### Dragging With Ghost
 
-The [`igxDrag`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html) directive can be applied on any DOM element by just adding it to its template.
+The [`igxDrag`](mcp:get_api_reference?platform=angular&component=IgxDragDirective) directive can be applied on any DOM element by just adding it to its template.
 
 ```html
 <div igxDrag>Drag me</div>
@@ -240,13 +240,13 @@ The [`igxDrag`](https://www.infragistics.com/products/ignite-ui-angular/docs/typ
 
 The default behavior of `igxDrag` directive is to leave the base element unmodified and to create a ghost element when drag operation is performed by the end user.
 
-Before the ghost is rendered on the page, a [`ghostCreate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#ghostCreate) event is triggered containing information of the ghost element that is about to be added. The event is triggered right after the [`dragStart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#dragStart) event. If the [`dragStart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#dragStart) is canceled, no ghost will be created and the [`ghostCreate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#ghostCreate) event will not trigger accordingly.
+Before the ghost is rendered on the page, a [`ghostCreate`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=ghostCreate) event is triggered containing information of the ghost element that is about to be added. The event is triggered right after the [`dragStart`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragStart) event. If the [`dragStart`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragStart) is canceled, no ghost will be created and the [`ghostCreate`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=ghostCreate) event will not trigger accordingly.
 
-Right before the ghost is about to be removed, the [`ghostDestroy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#ghostDestroy) event will be triggered.
+Right before the ghost is about to be removed, the [`ghostDestroy`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=ghostDestroy) event will be triggered.
 
 ### Customizing The Ghost
 
-The ghost element by default is a copy of the base element the `igxDrag` is used on. It can be customized by providing a template reference to the [`ghostTemplate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#ghostTemplate) input directly.
+The ghost element by default is a copy of the base element the `igxDrag` is used on. It can be customized by providing a template reference to the [`ghostTemplate`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=ghostTemplate) input directly.
 
 ```html
 <div class="email-content flexlist"
@@ -273,7 +273,7 @@ The ghost element by default is a copy of the base element the `igxDrag` is used
 
 ### Dragging Without Ghost
 
-If you would like to move the base element, to which the `igxDrag` directive is applied, you can do that by setting the [`ghost`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#ghost) input to `false`. That way there will be no extra ghost element rendered and if you need to apply custom styling when dragging and element, you can apply it directly to the base element.
+If you would like to move the base element, to which the `igxDrag` directive is applied, you can do that by setting the [`ghost`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=ghost) input to `false`. That way there will be no extra ghost element rendered and if you need to apply custom styling when dragging and element, you can apply it directly to the base element.
 
 ```html
 <div igxDrag [ghost]="false">Drag me</div>
@@ -409,13 +409,13 @@ export class DragDialogSampleComponent {
 
 When an element is being dragged, there are no animations applied by default.
 
-You can apply transition animation to the `igxDrag` at any time, but it is advised to use it when dragging ends or the element is not currently dragged. This can be achieved by using the [`transitionToOrigin`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#transitionToOrigin) and the [`transitionTo`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#transitionTo) methods.
+You can apply transition animation to the `igxDrag` at any time, but it is advised to use it when dragging ends or the element is not currently dragged. This can be achieved by using the [`transitionToOrigin`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=transitionToOrigin) and the [`transitionTo`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=transitionTo) methods.
 
 The `transitionToOrigin` method, as the name suggests, animates the currently dragged element or its ghost to the start position, where the dragging began. The `transitionTo` method animates the element to a specific location relative to the page (i.e. `pageX` and `pageY`) or to the position of a specified element. If the element is not being currently dragged, it will animate anyway or create ghost and animate it to the desired position.
 
 Both functions have arguments that you can set to customize the transition animation and set duration, timing function or delay. If specific start location is set it will animate the element starting from there.
 
-When the transition animation ends, if a ghost is created, it will be removed and the `igxDrag` directive will return to its initial state. If no ghost is created, it will keep its position. In both cases, then the [`transitioned`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#transitioned) event will be triggered, depending on how long the animation lasts. If no animation is applied, it will be triggered instantly.
+When the transition animation ends, if a ghost is created, it will be removed and the `igxDrag` directive will return to its initial state. If no ghost is created, it will keep its position. In both cases, then the [`transitioned`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=transitioned) event will be triggered, depending on how long the animation lasts. If no animation is applied, it will be triggered instantly.
 
 You can have other types of animations that involve element transformations. That can be done like any other element either using the Angular Animations or straight CSS Animations to either the base `igxDrag` element or its ghost. If you want to apply them to the ghost, you would need to define a custom ghost and apply animations to its element.
 
@@ -605,7 +605,7 @@ export class ListReorderSampleComponent {
 
 ### Ignoring draggable elements
 
-If the user wants to have interactable children of the main element which have igxDrag instanced, he can set the [`igxDragIgnore`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragignoredirective.html) directive in order to make them be ignored by the igxDrag and not perform any dragging action. This will leave these elements be fully interactable and receive all mouse events.
+If the user wants to have interactable children of the main element which have igxDrag instanced, he can set the [`igxDragIgnore`](mcp:get_api_reference?platform=angular&component=IgxDragIgnoreDirective) directive in order to make them be ignored by the igxDrag and not perform any dragging action. This will leave these elements be fully interactable and receive all mouse events.
 
 ```html
 <div [igxDrag]="myData">
@@ -616,23 +616,23 @@ If the user wants to have interactable children of the main element which have i
 
 ## Using the Angular Drop Directive
 
-When an element that is being dragged using the [`igxDrag`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html) directive needs to be placed in an area, the [`igxDrop`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdirective.html) can be used to achieve this behavior. It provides events that you can use to determine if an element is entering the boundaries of the element it is applied to and if it is being released inside it.
+When an element that is being dragged using the [`igxDrag`](mcp:get_api_reference?platform=angular&component=IgxDragDirective) directive needs to be placed in an area, the [`igxDrop`](mcp:get_api_reference?platform=angular&component=IgxDropDirective) can be used to achieve this behavior. It provides events that you can use to determine if an element is entering the boundaries of the element it is applied to and if it is being released inside it.
 
-The [`igxDrop`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdirective.html) directive can be applied to any DOM element just like the [`igxDrag`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html) directive.
+The [`igxDrop`](mcp:get_api_reference?platform=angular&component=IgxDropDirective) directive can be applied to any DOM element just like the [`igxDrag`](mcp:get_api_reference?platform=angular&component=IgxDragDirective) directive.
 
-By default, the [`igxDrop`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdirective.html) directive doesn't apply any logic for modifying the dragged element position in the DOM. That's why you need to specify a [`dropStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdirective.html#dropStrategy) or apply custom logic. Drop strategies are discussed in the next section.
+By default, the [`igxDrop`](mcp:get_api_reference?platform=angular&component=IgxDropDirective) directive doesn't apply any logic for modifying the dragged element position in the DOM. That's why you need to specify a [`dropStrategy`](mcp:get_api_reference?platform=angular&component=IgxDropDirective&member=dropStrategy) or apply custom logic. Drop strategies are discussed in the next section.
 
 ### Drop Strategies
 
 The `igxDrop` comes with 4 drop strategies which are: `Default`, `Prepend`, `Insert` and `Append`:
 
-- `Default` - does not perform any action when an element is dropped onto an `igxDrop` element and is implemented as a class named [`IgxDefaultDropStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdefaultdropstrategy.html).
+- `Default` - does not perform any action when an element is dropped onto an `igxDrop` element and is implemented as a class named [`IgxDefaultDropStrategy`](mcp:get_api_reference?platform=angular&component=IgxDefaultDropStrategy).
 
-- `Append` - always inserts the dropped element as a last child  and is implemented as a class named [`IgxAppendDropStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxappenddropstrategy.html).
+- `Append` - always inserts the dropped element as a last child  and is implemented as a class named [`IgxAppendDropStrategy`](mcp:get_api_reference?platform=angular&component=IgxAppendDropStrategy).
 
-- `Prepend` - always inserts the dropped element as first child and is implemented as a class named [`IgxPrependDropStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxprependdropstrategy.html).
+- `Prepend` - always inserts the dropped element as first child and is implemented as a class named [`IgxPrependDropStrategy`](mcp:get_api_reference?platform=angular&component=IgxPrependDropStrategy).
 
-- `Insert` - inserts the dragged element at last position. If there is a child under the element when it was dropped though, the `igxDrag` instanced element will be inserted at that child's position and the other children will be shifted. It is implemented as a class named [`IgxInsertDropStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinsertdropstrategy.html).
+- `Insert` - inserts the dragged element at last position. If there is a child under the element when it was dropped though, the `igxDrag` instanced element will be inserted at that child's position and the other children will be shifted. It is implemented as a class named [`IgxInsertDropStrategy`](mcp:get_api_reference?platform=angular&component=IgxInsertDropStrategy).
 
 The way a strategy can be applied is by setting the `dropStrategy` input to one of the listed classes above. The value provided has to be a type and not an instance, since the `igxDrop` needs to create and manage the instance itself.
 
@@ -646,7 +646,7 @@ public appendStrategy = IgxAppendDropStrategy;
 
 #### Canceling a drop strategy
 
-When using a specific drop strategy, its behavior can be canceled in the [`dropped`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdirective.html#dropped) events by setting the `cancel` property to true. The `dropped` event is specific to the `igxDrop`. If you does not have drop strategy applied to the `igxDrop` canceling the event would have no side effects.
+When using a specific drop strategy, its behavior can be canceled in the [`dropped`](mcp:get_api_reference?platform=angular&component=IgxDropDirective&member=dropped) events by setting the `cancel` property to true. The `dropped` event is specific to the `igxDrop`. If you does not have drop strategy applied to the `igxDrop` canceling the event would have no side effects.
 
 _Example:_
 
@@ -666,7 +666,7 @@ If you would like to implement your own drop logic, we advise binding to the `dr
 
 ### Linking Drag to Drop Element
 
-Using the [`dragChannel`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html#dragChannel) and [`dropChannel`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdirective.html#dropChannel) input on respectively `igxDrag` and `igxDrop` directives, you can link different elements to interact only between each other. For example, if an `igxDrag` element needs to be constrained so it can be dropped on specific `igxDrop` element and not all available, this can easily be achieved by assigning them the same channel.
+Using the [`dragChannel`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragChannel) and [`dropChannel`](mcp:get_api_reference?platform=angular&component=IgxDropDirective&member=dropChannel) input on respectively `igxDrag` and `igxDrop` directives, you can link different elements to interact only between each other. For example, if an `igxDrag` element needs to be constrained so it can be dropped on specific `igxDrop` element and not all available, this can easily be achieved by assigning them the same channel.
 
 
 ```html
@@ -1304,12 +1304,12 @@ igx-card {
 
 ## API
 
-- [IgxDragDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdragdirective.html)
-- [IgxDropDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdirective.html)
-- [IgxDefaultDropStrategy](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdefaultdropstrategy.html)
-- [IgxAppendDropStrategy](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxappenddropstrategy.html)
-- [IgxPrependDropStrategy](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxprependdropstrategy.html)
-- [IgxInsertDropStrategy](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinsertdropstrategy.html)
+- [IgxDragDirective](mcp:get_api_reference?platform=angular&component=IgxDragDirective)
+- [IgxDropDirective](mcp:get_api_reference?platform=angular&component=IgxDropDirective)
+- [IgxDefaultDropStrategy](mcp:get_api_reference?platform=angular&component=IgxDefaultDropStrategy)
+- [IgxAppendDropStrategy](mcp:get_api_reference?platform=angular&component=IgxAppendDropStrategy)
+- [IgxPrependDropStrategy](mcp:get_api_reference?platform=angular&component=IgxPrependDropStrategy)
+- [IgxInsertDropStrategy](mcp:get_api_reference?platform=angular&component=IgxInsertDropStrategy)
 
 ## References
 

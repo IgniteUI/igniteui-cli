@@ -28,7 +28,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) component, you need to register it together with its additional components:
+Before using the [`IgcSelectComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent) component, you need to register it together with its additional components:
 
 ```ts
 import {
@@ -46,7 +46,7 @@ For a complete introduction to the Ignite UI for Web Components, read the [**Get
 > [!Note]
 > Please note that the select header and group components are not mandatory unless you want to use them.
 
-To start using the component add the [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) along with a list of [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectitemcomponent.html)'s to choose from:
+To start using the component add the [`IgcSelectComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent) along with a list of [`IgcSelectItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectItemComponent)'s to choose from:
 
 ```html
 <igc-select>
@@ -59,11 +59,11 @@ To start using the component add the [`IgcSelectComponent`](https://www.infragis
 
 ### Select
 
-The [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) component can be used inside a `Form` component, thus it exposes a [`name`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html#name) property to be registered with. It also has a [`label`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html#label), and [`placeholder`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html#placeholder) properties. The [`outlined`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html#outlined) property is used for styling purposes only when it comes to the Material theme. Except for the default slot, the component provides a few other slots including `header`, `footer`, `helper-text`, `prefix`, `suffix`, and `toggle-icon`. The component size can be changed using the `--ig-size` CSS variable.
+The [`IgcSelectComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent) component can be used inside a `Form` component, thus it exposes a [`name`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent&member=name) property to be registered with. It also has a [`label`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent&member=label), and [`placeholder`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent&member=placeholder) properties. The [`outlined`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent&member=outlined) property is used for styling purposes only when it comes to the Material theme. Except for the default slot, the component provides a few other slots including `header`, `footer`, `helper-text`, `prefix`, `suffix`, and `toggle-icon`. The component size can be changed using the `--ig-size` CSS variable.
 
 ### Item
 
-The [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectitemcomponent.html) component allows the users to declaratively specify a list of options to be used by the [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) control. Each item provides a [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html#value) property that represents the data it carries upon selection. The [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectitemcomponent.html) has a default slot which allows you to specify the text content of the item. This text content will be used as value in case the [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html#value) property is not present on the [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectitemcomponent.html). You could also provide custom content to be rendered before or after the [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectitemcomponent.html) content using the `prefix` and `suffix` slots. You could predefine a selected item by setting the `Selected` property. You could also disable some or all items via the [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html#disabled) property.
+The [`IgcSelectItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectItemComponent) component allows the users to declaratively specify a list of options to be used by the [`IgcSelectComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent) control. Each item provides a [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent&member=value) property that represents the data it carries upon selection. The [`IgcSelectItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectItemComponent) has a default slot which allows you to specify the text content of the item. This text content will be used as value in case the [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent&member=value) property is not present on the [`IgcSelectItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectItemComponent). You could also provide custom content to be rendered before or after the [`IgcSelectItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectItemComponent) content using the `prefix` and `suffix` slots. You could predefine a selected item by setting the `Selected` property. You could also disable some or all items via the [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent&member=disabled) property.
 
 ```css
 /* shared styles are loaded from: */
@@ -72,7 +72,7 @@ The [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite-ui-w
 
 ### Header
 
-You can use the [`IgcSelectHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectheadercomponent.html) to provide a header for a group of items.
+You can use the [`IgcSelectHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectHeaderComponent) to provide a header for a group of items.
 
 ```css
 /* shared styles are loaded from: */
@@ -87,7 +87,7 @@ You can use the [`IgcSelectHeaderComponent`](https://www.infragistics.com/produc
 
 ### Group
 
-Multiple [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectitemcomponent.html)s can be placed between the opening and closing brackets of an [`IgcSelectGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectgroupcomponent.html) component so that users can visually group them together. The [`IgcSelectGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectgroupcomponent.html) can be labelled via its `label` slot and disabled via its [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectgroupcomponent.html#disabled) property.
+Multiple [`IgcSelectItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectItemComponent)s can be placed between the opening and closing brackets of an [`IgcSelectGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectGroupComponent) component so that users can visually group them together. The [`IgcSelectGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectGroupComponent) can be labelled via its `label` slot and disabled via its [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectGroupComponent&member=disabled) property.
 
 > [!Note]
 > Keep in mind that if a select group is disabled, you cannot enable separate items of it.
@@ -125,7 +125,7 @@ Multiple [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite
 
 ## Validation
 
-In addition, the [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) supports most of the [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) properties, such as [`required`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html#required), [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html#disabled), [`autofocus`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html#autofocus), etc. The component also exposes a method bound to its validation:
+In addition, the [`IgcSelectComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent) supports most of the [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) properties, such as [`required`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent&member=required), [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent&member=disabled), [`autofocus`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent&member=autofocus), etc. The component also exposes a method bound to its validation:
 
 - `reportValidity` - checks for validity and focuses the component if invalid.
 
@@ -133,8 +133,8 @@ In addition, the [`IgcSelectComponent`](https://www.infragistics.com/products/ig
 
 When the select is focused and the list of options is **not visible**:
 
-- Open the [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html#select) using the <kbd>ALT</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> combination or by clicking on the <kbd>SPACE</kbd> or the <kbd>ENTER</kbd> key.
-- Close the [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html#select) using the <kbd>ALT</kbd> + <kbd>↑</kbd> or <kbd>↓</kbd> combination or any of the <kbd>ENTER</kbd>, <kbd>SPACE</kbd>, <kbd>ESC</kbd> or [`IgcTabComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabcomponent.html) keys.
+- Open the [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent&member=select) using the <kbd>ALT</kbd> + <kbd>↑</kbd> <kbd>↓</kbd> combination or by clicking on the <kbd>SPACE</kbd> or the <kbd>ENTER</kbd> key.
+- Close the [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent&member=select) using the <kbd>ALT</kbd> + <kbd>↑</kbd> or <kbd>↓</kbd> combination or any of the <kbd>ENTER</kbd>, <kbd>SPACE</kbd>, <kbd>ESC</kbd> or [`IgcTabComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabComponent) keys.
 - Using the <kbd>←</kbd> <kbd>→</kbd> keys will select the previous item in the list.
 - Using the <kbd>↑</kbd> <kbd>↓</kbd> keys will select the next item in the list.
 - Using the <kbd>HOME</kbd> or <kbd>END</kbd> keys will select the first or last item in the list.
@@ -148,11 +148,11 @@ When the select is focused and the list of options is **visible**:
 - Using the <kbd>HOME</kbd> or <kbd>END</kbd> keys will activate the first or last item in the list.
 
 > [!Note]
-> The [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) component supports only **single** selection of items.
+> The [`IgcSelectComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent) component supports only **single** selection of items.
 
 ## Styling
 
-You can change the appearance of the Ignite UI for Web Components [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html) component and its items, by using the exposed CSS parts listed below:
+You can change the appearance of the Ignite UI for Web Components [`IgcSelectComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent) component and its items, by using the exposed CSS parts listed below:
 
 **Select Component**
 
@@ -226,10 +226,10 @@ igc-select::part(suffix) {
 
 ## API Reference
 
-- [`IgcSelectComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectcomponent.html)
-- [`IgcSelectItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectitemcomponent.html)
-- [`IgcSelectHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectheadercomponent.html)
-- [`IgcSelectGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcselectgroupcomponent.html)
+- [`IgcSelectComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectComponent)
+- [`IgcSelectItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectItemComponent)
+- [`IgcSelectHeaderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectHeaderComponent)
+- [`IgcSelectGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSelectGroupComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

@@ -12,7 +12,7 @@ _tocName: Filtering
 
 # React Grid Filtering
 
-The Ignite UI for React Filtering in React Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
+The Ignite UI for React Filtering in React Grid is a feature that allows for selectively displaying or hiding data based on specific criteria or conditions. There is a bound data container through which the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) Component provides rich filtering API and all the filtering capabilities. The available filtering types here are three:
 
 - Quick filtering
 - [Excel Style Filtering](excel-style-filtering.md)
@@ -20,7 +20,7 @@ The Ignite UI for React Filtering in React Grid is a feature that allows for sel
 
 ## React Grid Filtering Example
 
-The sample below demonstrates [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)'s **Quick Filter** user experience.
+The sample below demonstrates [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)'s **Quick Filter** user experience.
 
 ```css
 /* shared styles are loaded from: */
@@ -124,24 +124,24 @@ root.render(<Sample/>);
 
 ## Setup
 
-In order to specify if filtering is enabled and which filtering mode should be used, the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) exposes the following properties - [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#allowFiltering), [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#allowAdvancedFiltering), [`filterMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#filterMode) and [`filterable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#filterable).
+In order to specify if filtering is enabled and which filtering mode should be used, the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) exposes the following properties - [`allowFiltering`](mcp:get_api_reference?platform=react&component=IgrGrid&member=allowFiltering), [`allowAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrGrid&member=allowAdvancedFiltering), [`filterMode`](mcp:get_api_reference?platform=react&component=IgrGrid&member=filterMode) and [`filterable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=filterable).
 
-Property [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#allowFiltering) enables you to specify the following options:
+Property [`allowFiltering`](mcp:get_api_reference?platform=react&component=IgrGrid&member=allowFiltering) enables you to specify the following options:
 
 - **false** - the filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the filtering for the corresponding grid will be enabled.
 
-Property [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#allowAdvancedFiltering) enables you to specify the following options:
+Property [`allowAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrGrid&member=allowAdvancedFiltering) enables you to specify the following options:
 
 - **false** - the advanced filtering for the corresponding grid will be disabled. This is the default value.
 - **true** - the advanced filtering for the corresponding grid will be enabled.
 
-Property [`filterMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#filterMode) enables you to specify the following options:
+Property [`filterMode`](mcp:get_api_reference?platform=react&component=IgrGrid&member=filterMode) enables you to specify the following options:
 
 - **QuickFilter** - a simplistic filtering UI. This is the default value.
 - **ExcelStyleFilter** - an Excel-like filtering UI.
 
-Property [`filterable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#filterable) enables you to specify the following options:
+Property [`filterable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=filterable) enables you to specify the following options:
 
 - **true** - the filtering for the corresponding column will be enabled. This is the default value.
 - **false** - the filtering for the corresponding column will be disabled.
@@ -155,7 +155,7 @@ Property [`filterable`](https://www.infragistics.com/products/ignite-ui-react/do
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
-To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#allowAdvancedFiltering) input property to **true**
+To enable the [Advanced filtering](advanced-filtering.md) however, you need to set the [`allowAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrGrid&member=allowAdvancedFiltering) input property to **true**
 
 ```tsx
 <IgrGrid data={nwindData} autoGenerate={false} ref={gridRef} allowAdvancedFiltering={true}>
@@ -163,7 +163,7 @@ To enable the [Advanced filtering](advanced-filtering.md) however, you need to s
 ```
 
 > [!Note]
-> You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) is the intersection between the results of the two filters.
+> You can enable both the `QuickFilter` or `ExcelStyleFilter` and the advanced filtering user interfaces in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) is the intersection between the results of the two filters.
 
 ## Interaction
 
@@ -173,9 +173,9 @@ While some filtering conditions have been applied to a column, and the filter ro
 
 ## Usage
 
-There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the `IgnoreCase` and the initial `Condition` properties.
+There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) of the column, the correct set of **filtering operations** is loaded inside the filter UI dropdown. Additionally, you can set the `IgnoreCase` and the initial `Condition` properties.
 
-The filtering feature is enabled for the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component by setting the [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#allowFiltering) input to **true**. The default [`filterMode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#filterable) input to **false**.
+The filtering feature is enabled for the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component by setting the [`allowFiltering`](mcp:get_api_reference?platform=react&component=IgrGrid&member=allowFiltering) input to **true**. The default [`filterMode`](mcp:get_api_reference?platform=react&component=IgrGrid&member=filterMode) is `QuickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=filterable) input to **false**.
 
 <!-- ComponentStart: Grid, TreeGrid -->
 
@@ -188,11 +188,11 @@ The filtering feature is enabled for the [`IgrGrid`](https://www.infragistics.co
 ```
 
 > [!Note]
-> If values of type **string** are used by a column of data type **date**, the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
+> If values of type **string** are used by a column of data type **date**, the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) won't parse them to **date** objects and using filtering conditions won't be possible. If you want to use **string** objects, additional logic should be implemented on the application level, in order to parse the values to **date** objects.
 
 ## Initial filtered state
 
-To set the initial filtering state of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html), set the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#filteringExpressionsTree) property to an array of [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#filteringExpressionsTree) for each column to be filtered.
+To set the initial filtering state of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid), set the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) [`filteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrGrid&member=filteringExpressionsTree) property to an array of [`filteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrGrid&member=filteringExpressionsTree) for each column to be filtered.
 
 ```tsx
 const filteringExpressions: IgrFilteringExpressionsTree = {
@@ -225,7 +225,7 @@ return (
 
 ### Filtering logic
 
-The [`filteringLogic`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#filteringLogic) property of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) controls how filtering multiple columns will resolve in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). You can change it at any time through the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) API, or through the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) input property.
+The [`filteringLogic`](mcp:get_api_reference?platform=react&component=IgrGrid&member=filteringLogic) property of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) controls how filtering multiple columns will resolve in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). You can change it at any time through the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) API, or through the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) input property.
 
 ```tsx
 import { FilteringLogic } from "igniteui-react-grids";
@@ -460,8 +460,8 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 
 ## Additional Resources
 

@@ -13,7 +13,7 @@ _premium: true
 
 # Blazor Grid Cell Selection
 
-The Ignite UI for Blazor Cell Selection in Blazor Grid enables rich data select capabilities and offers powerful API in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component. The Blazor Grid supports three selection modes:
+The Ignite UI for Blazor Cell Selection in Blazor Grid enables rich data select capabilities and offers powerful API in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component. The Blazor Grid supports three selection modes:
 
 - Grid Multiple Cell Selection
 - Grid Single Selection
@@ -23,7 +23,7 @@ Let's dive deeper into each of these options.
 
 ## Blazor Grid Cell Selection Example
 
-The sample below demonstrates the three types of [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)'s **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
+The sample below demonstrates the three types of [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)'s **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -325,13 +325,13 @@ How to select cells:
 
 ### Grid Single Selection
 
-When you set the [`CellSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_CellSelection) to **single**, this allows you to have only one selected cell in the grid at a time. Also the mode **mouse drag** will not work and instead of selecting a cell, this will make default text selection.
+When you set the [`CellSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=CellSelection) to **single**, this allows you to have only one selected cell in the grid at a time. Also the mode **mouse drag** will not work and instead of selecting a cell, this will make default text selection.
 
-> When single cell is selected [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selected) event is emitted, no matter if the **selection mode** is **single** or **multiple**. In multi-cell selection mode when you select a range of cells `RangeSelected` event is emitted.
+> When single cell is selected [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected) event is emitted, no matter if the **selection mode** is **single** or **multiple**. In multi-cell selection mode when you select a range of cells `RangeSelected` event is emitted.
 
 ### Grid None Selection
 
-If you want to disable cell selection you can just set [`CellSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_CellSelection) to **none**. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the **activation style** is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
+If you want to disable cell selection you can just set [`CellSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=CellSelection) to **none**. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the **activation style** is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
 
 ## Keyboard Navigation Interactions
 
@@ -360,7 +360,7 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 ### Select range
 
-[`SelectRange`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_SelectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
+[`SelectRange`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=SelectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
 
 <!-- ComponentEnd: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -389,7 +389,7 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 ### Clear cell selection
 
-[`ClearCellSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ClearCellSelection) will clear the current cell selection.
+[`ClearCellSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ClearCellSelection) will clear the current cell selection.
 
 ```razor
 @code {
@@ -402,7 +402,7 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 ### Get Selected Data
 
-[`GetSelectedData`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GetSelectedData) will return array of the selected data in Dictionary format. Examples below:
+[`GetSelectedData`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=GetSelectedData) will return array of the selected data in Dictionary format. Examples below:
 
 ```razor
 <IgbGrid @ref=grid  CellSelection="GridSelectionMode.Multiple" AutoGenerate=true></<IgbGrid>
@@ -426,8 +426,8 @@ The multi-cell selection is index based (DOM elements selection).
 - `Filtering` - When filtering is performed selection will not be cleared. If filtering is cleared it will return - the initially selected cells.
 - `Resizing` - On column resizing selected cells will not be cleared.
 - `Hiding` - It will not clear the selected cells. If column is hidden, the cells from the next visible column will be selected.
-- [`Pinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Pinning) - Selected cell will not be cleared. Same as hiding
-- [`GroupBy`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_GroupBy) - On column grouping selected cells will not be cleared.
+- [`Pinning`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=Pinning) - Selected cell will not be cleared. Same as hiding
+- [`GroupBy`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=GroupBy) - On column grouping selected cells will not be cleared.
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
@@ -547,7 +547,7 @@ public class CustomersData
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ## Additional Resources
 

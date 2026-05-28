@@ -13,7 +13,7 @@ _premium: true
 
 # React Hierarchical Grid Multi-Column Headers Overview
 
-The Ignite UI for React Multi-Column Headers feature in React Hierarchical Grid allows you to group columns by placing them under a common multi-header. Each multi-column headers group in the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) could be a representation of combinations between other groups or columns. This feature is particularly useful when dealing with large datasets where scrolling horizontally might be cumbersome.
+The Ignite UI for React Multi-Column Headers feature in React Hierarchical Grid allows you to group columns by placing them under a common multi-header. Each multi-column headers group in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) could be a representation of combinations between other groups or columns. This feature is particularly useful when dealing with large datasets where scrolling horizontally might be cumbersome.
 
 ## React Hierarchical Grid Multi-Column Headers Example
 
@@ -337,7 +337,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-The declaration of multi-column headers is achieved by wrapping a set of columns into an [`columnGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnGroup) component with [`header`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#header) title information passed.
+The declaration of multi-column headers is achieved by wrapping a set of columns into an [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup) component with [`header`](mcp:get_api_reference?platform=react&component=IgrColumn&member=header) title information passed.
 
 ```tsx
 <IgrHierarchicalGrid autoGenerate={false} data={hierarchicalCustomers} ref={hierarchicalGridRef} id="hierarchicalGrid" primaryKey="ID" moving={true} allowFiltering={true}>
@@ -359,7 +359,7 @@ The declaration of multi-column headers is achieved by wrapping a set of columns
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`columnGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnGroup) leads to the desired result.
+For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup) leads to the desired result.
 
 ```tsx
 <IgrHierarchicalGrid autoGenerate={false} data={hierarchicalCustomers} ref={hierarchicalGridRef} id="hierarchicalGrid" primaryKey="ID" moving={true} allowFiltering={true}>
@@ -376,7 +376,7 @@ For achieving `n-th` level of nested headers, the declaration above should be fo
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-Every [`columnGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnGroup) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
+Every [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
 
 > [!Note]
 > When there is a set of columns and column groups, pinning works only for top level column parents. More specifically pinning per nested column groups or columns is not allowed. <br />
@@ -1048,8 +1048,8 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html)
-- [`columnGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnGroup)
+- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
+- [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup)
 
 ## Additional Resources
 

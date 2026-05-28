@@ -9,7 +9,7 @@ _premium: true
 
 # Hierarchical Grid Load On Demand
 
-The Ignite UI for Angular [`IgxHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html) allows fast rendering by requesting the minimum amount of data to be retrieved from the server so that the user can see the result in view and interact with the visible data as quickly as possible. Initially only the root grid’s data is retrieved and rendered, only after the user expands a row containing a child grid, he will receive the data for that particular child grid. This mechanism, also known as Load on Demand, can be easily configured to work with any remote data.
+The Ignite UI for Angular [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) allows fast rendering by requesting the minimum amount of data to be retrieved from the server so that the user can see the result in view and interact with the visible data as quickly as possible. Initially only the root grid’s data is retrieved and rendered, only after the user expands a row containing a child grid, he will receive the data for that particular child grid. This mechanism, also known as Load on Demand, can be easily configured to work with any remote data.
 
 This topic demonstrates how to configure Load on Demand by requesting data from a [Northwind WebAPI](https://data-northwind.indigo.design/swagger/index.html). Here's the working demo and later we will go through it step by step and describe the process of creating it.
 
@@ -181,7 +181,7 @@ export class HierarchicalGridLoDSampleComponent implements OnInit, AfterViewInit
 
 ### Hierarchical Grid Setup
 
-Let's setup our hierarchical grid. First we will define our hierarchical grid template with the levels of hierarchy that we expect to have. We know that our root grid [`primaryKey`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#primaryKey) for the customers is their `customerId`, for their orders on the first level - `orderId` and respectively for order details - `productId`. Knowing each database table and their keys allows us to define our initial template:
+Let's setup our hierarchical grid. First we will define our hierarchical grid template with the levels of hierarchy that we expect to have. We know that our root grid [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=primaryKey) for the customers is their `customerId`, for their orders on the first level - `orderId` and respectively for order details - `productId`. Knowing each database table and their keys allows us to define our initial template:
 
 ```html
 <igx-hierarchical-grid #hGrid [primaryKey]="'customerId'" [autoGenerate]="true" [height]="'600px'" [width]="'100%'">
@@ -194,17 +194,17 @@ Let's setup our hierarchical grid. First we will define our hierarchical grid te
 
 We will easily set the data of the root grid after getting its data from the endpoint in our code later, since we can use the `#hGrid` reference. Setting the data for any child that has been expanded is a bit different.
 
-When a row is expanded for the first time, a new child `IgxHierarchicalGrid` is rendered for it and we need to get the reference for the newly created grid to set its data. That is why each [`IgxRowIsland`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxrowislandcomponent.html) component provides the [`gridCreated`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxrowislandcomponent.html#gridCreated) event that is fired when a new child grid is created for that specific row island. We can use that to get the reference we need for the new grid, request its data from the endpoint, and apply it.
+When a row is expanded for the first time, a new child `IgxHierarchicalGrid` is rendered for it and we need to get the reference for the newly created grid to set its data. That is why each [`IgxRowIsland`](mcp:get_api_reference?platform=angular&component=IgxRowIslandComponent) component provides the [`gridCreated`](mcp:get_api_reference?platform=angular&component=IgxRowIslandComponent&member=gridCreated) event that is fired when a new child grid is created for that specific row island. We can use that to get the reference we need for the new grid, request its data from the endpoint, and apply it.
 
 We can use one method for all row islands since the endpoint only needs the key of the row island, the primary key of the parent row, and its unique identifier. All this information can be accessed directly from the event arguments.
 
 #### Setup of loading indication
 
-Now let's improve the user experience by informing the user that the data is still loading so he doesn't have to look at an empty grid in the meantime. That's why the [`IgxHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html) supports a loading indicator that can be displayed while the grid is empty.
+Now let's improve the user experience by informing the user that the data is still loading so he doesn't have to look at an empty grid in the meantime. That's why the [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) supports a loading indicator that can be displayed while the grid is empty.
 
-We display a loading indicator by setting the [`isLoading`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#isloading) property to `true` while there is no data. We need to set it initially for the root grid and also when creating new child grids, until their data is loaded. We could always set it to `true` in our template, but we want to hide it (by setting it to `false`) and display that the grid has no data if the service returns an empty array.
+We display a loading indicator by setting the [`isLoading`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=isloading) property to `true` while there is no data. We need to set it initially for the root grid and also when creating new child grids, until their data is loaded. We could always set it to `true` in our template, but we want to hide it (by setting it to `false`) and display that the grid has no data if the service returns an empty array.
 
-Finally, let's turn the [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#autoGenerate) property off and define the columns collection in the markup.
+Finally, let's turn the [`autoGenerate`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) property off and define the columns collection in the markup.
 
 The template file `hierarchical-grid-lod.component.html`, after all changes added, would look like this:
 
@@ -236,7 +236,7 @@ The template file `hierarchical-grid-lod.component.html`, after all changes adde
 
 ### Advanced filtering
 
-In order to use Advanced Filtering in the `IgxHierarchicalGrid` with load on demand, you need to set the [`schema`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#schema) property of the grid to an entity with hierarchical structure, specifying child entities and fields with their data types. This ensures that filtering expressions with nested queries can be created even before any child grid data is loaded and that the grid can correctly interpret and apply these filters to the data.
+In order to use Advanced Filtering in the `IgxHierarchicalGrid` with load on demand, you need to set the [`schema`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=schema) property of the grid to an entity with hierarchical structure, specifying child entities and fields with their data types. This ensures that filtering expressions with nested queries can be created even before any child grid data is loaded and that the grid can correctly interpret and apply these filters to the data.
 
 In our case, this is the correct hierarchical structure:
 
@@ -280,7 +280,7 @@ public schema: EntityType[] = [
 
 #### Setting initial filter
 
-Now let's add initial filtering rules to our grid so that the root grid is filtered when first loaded. We will create a [`FilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/filteringexpressionstree.html) and set it to the [`advancedFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#advancedFilteringExpressionsTree) property of the `IgxHierarchicalGrid` using the `ngOnInit` lifecycle hook.
+Now let's add initial filtering rules to our grid so that the root grid is filtered when first loaded. We will create a [`FilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) and set it to the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=advancedFilteringExpressionsTree) property of the `IgxHierarchicalGrid` using the `ngOnInit` lifecycle hook.
 
 Let's say we want to filter customers that have order's freight at least `500`. We will take advantage of the ability to create nested queries in the filtering expressions and this is the result:
 
@@ -351,7 +351,7 @@ Next we will define how we should build our URL for the GET request in order to 
 
 <img class="responsive-img" alt="Relational Hierarchical Database" src="../../images/hgrid-database.jpg" />
 
-Finally, we need to implement our `gridCreated` method that will request data for any new child grid created. It will be similar to getting the root level grid data, just this time we will use the data provided in the event [`gridCreated`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxrowislandcomponent.html#gridCreated) and build our URL with it:
+Finally, we need to implement our `gridCreated` method that will request data for any new child grid created. It will be similar to getting the root level grid data, just this time we will use the data provided in the event [`gridCreated`](mcp:get_api_reference?platform=angular&component=IgxRowIslandComponent&member=gridCreated) and build our URL with it:
 
 ````TypeScript
 public gridCreated(event: IGridCreatedEventArgs) {
@@ -373,8 +373,8 @@ private buildUrl(event: IGridCreatedEventArgs) {
 
 ## API References
 
-- [IgxHierarchicalGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
-- [IgxRowIslandComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxrowislandcomponent.html)
+- [IgxHierarchicalGridComponent](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
+- [IgxRowIslandComponent](mcp:get_api_reference?platform=angular&component=IgxRowIslandComponent)
 
 ## Additional Resources
 

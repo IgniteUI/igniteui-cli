@@ -15,7 +15,7 @@ The Ignite UI for Blazor Scatter Chart belongs to a group of charts that show th
 
 ## Blazor Scatter Marker Chart
 
-Blazor Scatter Marker Chart renders as a collection of markers, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterSeries.html), as shown in the example below:
+Blazor Scatter Marker Chart renders as a collection of markers, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -190,7 +190,7 @@ public class CountryDemographicEurope
 
 ## Blazor Scatter Line Chart
 
-Blazor Scatter Line Chart renders as a collection of markers connected by a straight lines, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbScatterLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterLineSeries.html), as shown in the example below:
+Blazor Scatter Line Chart renders as a collection of markers connected by a straight lines, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbScatterLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterLineSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -374,7 +374,7 @@ public class HealthDataForGermany
 
 ## Blazor Scatter Spline Chart
 
-Blazor Scatter Spline Chart renders as a collection of markers connected by a curved spline, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbScatterSplineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterSplineSeries.html), as shown in the example below:
+Blazor Scatter Spline Chart renders as a collection of markers connected by a curved spline, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbScatterSplineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSplineSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -558,7 +558,7 @@ public class HealthDataForGermany
 
 ## Blazor Scatter High Density Chart
 
-Use the Blazor Scatter High Density (HD) Chart to bind and show scatter data ranging from thousands to millions of data points with very little loading time. Due to this chart type being designed for such a large amount of points, it is visualized as tiny dots as opposed to full sized markers, and displays areas with the most data using a higher color density representing a cluster of data points. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbHighDensityScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHighDensityScatterSeries.html), as shown in the example below:
+Use the Blazor Scatter High Density (HD) Chart to bind and show scatter data ranging from thousands to millions of data points with very little loading time. Due to this chart type being designed for such a large amount of points, it is visualized as tiny dots as opposed to full sized markers, and displays areas with the most data using a higher color density representing a cluster of data points. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbHighDensityScatterSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -621,7 +621,7 @@ Use the Blazor Scatter High Density (HD) Chart to bind and show scatter data ran
 
 ## Blazor Scatter Area Chart
 
-Blazor Scatter Area Chart draws a colored surface based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbScatterAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterAreaSeries.html), as shown in the example below:
+Blazor Scatter Area Chart draws a colored surface based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbScatterAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterAreaSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -687,7 +687,7 @@ Blazor Scatter Area Chart draws a colored surface based on a triangulation of X 
 
 ## Blazor Scatter Contour Chart
 
-Blazor Scatter Contour Chart draws colored contour lines based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control by binding your data to a [`IgbScatterContourSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterContourSeries.html), as shown in the example below:
+Blazor Scatter Contour Chart draws colored contour lines based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a [`IgbScatterContourSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterContourSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -767,9 +767,9 @@ The following table lists API members mentioned in the above sections:
 
 |Chart Type                  | Control Name   | API Members |
 |----------------------------|----------------|------------------------ |
-|Scatter Marker              | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterSeries.html) |
-|Scatter Line                | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbScatterLineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterLineSeries.html) |
-|Scatter Spline              | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbScatterSplineSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterSplineSeries.html) |
-|High Density Scatter        | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbHighDensityScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbHighDensityScatterSeries.html) |
-|Scatter Area                | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbScatterAreaSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterAreaSeries.html) |
-|Scatter Contour             | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbScatterContourSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterContourSeries.html) |
+|Scatter Marker              | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSeries) |
+|Scatter Line                | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbScatterLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterLineSeries) |
+|Scatter Spline              | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbScatterSplineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSplineSeries) |
+|High Density Scatter        | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbHighDensityScatterSeries) |
+|Scatter Area                | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbScatterAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterAreaSeries) |
+|Scatter Contour             | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbScatterContourSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterContourSeries) |

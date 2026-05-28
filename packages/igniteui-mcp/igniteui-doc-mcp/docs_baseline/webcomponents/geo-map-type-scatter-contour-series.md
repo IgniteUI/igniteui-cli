@@ -52,8 +52,8 @@ The following table list properties of the CustomPaletteColorScale affecting the
 | Property Name  | Property Type   | Description   |
 |--------------|---------------| ---------------|
 |[`brushes`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html#brushes)|BrushCollection|Gets or sets the collection of brushes for filling contours of the [`IgcGeographicContourLineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographiccontourlineseriescomponent.html)|
-|[`maximumValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccustompalettecolorscalecomponent.html#maximumValue)|double|The highest value to assign a brush in a fill scale.|
-|[`minimumValue`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccustompalettecolorscalecomponent.html#minimumValue)|double|The lowest value to assign a brush in a fill scale.|
+|[`maximumValue`](mcp:get_api_reference?platform=webcomponents&component=IgcCustomPaletteColorScaleComponent&member=maximumValue)|double|The highest value to assign a brush in a fill scale.|
+|[`minimumValue`](mcp:get_api_reference?platform=webcomponents&component=IgcCustomPaletteColorScaleComponent&member=minimumValue)|double|The lowest value to assign a brush in a fill scale.|
 
 ## Code Snippet
 
@@ -136,5 +136,5 @@ createContourSeries(data: any[])
 - [`longitudeMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographiccontourlineseriescomponent.html#longitudeMemberPath)
 - [`trianglesSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographiccontourlineseriescomponent.html#trianglesSource)
 - `TriangulationSource`
-- [`IgcValueBrushScaleComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcvaluebrushscalecomponent.html)
+- [`IgcValueBrushScaleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueBrushScaleComponent)
 - [`valueMemberPath`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographiccontourlineseriescomponent.html#valueMemberPath)

@@ -41,7 +41,7 @@ The Ignite UI for Blazor Mask Input is an input field that allows the developer 
 
 ## Usage
 
-Before using the [`IgbMaskInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html), you need to register it as follows:
+Before using the [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -49,7 +49,7 @@ Before using the [`IgbMaskInput`](https://www.infragistics.com/blazor/docs/api/a
 builder.Services.AddIgniteUIBlazor(typeof(IgbMaskInputModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbMaskInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -78,7 +78,7 @@ These flags also participate in the component validation - i.e., the input becom
 
 ### Applying Mask
 
-Applying the mask is pretty straightforward. All you need to do is provide a predetermined pattern to the [`Mask`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html#IgniteUI_Blazor_Controls_IgbMaskInput_Mask) property of the input.
+Applying the mask is pretty straightforward. All you need to do is provide a predetermined pattern to the [`Mask`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=Mask) property of the input.
 
 In the example below, we will apply a mask for a phone number with an extension code.
 
@@ -118,7 +118,7 @@ After that you should see the following in your browser:
 
 ### Prompt Character
 
-Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`Prompt`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html#IgniteUI_Blazor_Controls_IgbMaskInput_Prompt) property:
+Developers can customize the prompt symbol used for unfilled parts of the mask. To do this, simply provide any character to the [`Prompt`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=Prompt) property:
 
 ```razor
 <IgbMaskInput @ref="MaskInputRef" Mask="(####) 00-00-00 Ext. 9999" Prompt="-"></IgbMaskInput>
@@ -128,7 +128,7 @@ By default, the `prompt` character is **underscore**.
 
 ### Placeholder
 
-Developers can also take advantage of the [`Placeholder`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html#IgniteUI_Blazor_Controls_IgbMaskInput_Placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
+Developers can also take advantage of the [`Placeholder`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=Placeholder) property, which serves the purpose of the native input placeholder attribute. If no value is provided for the placeholder, the value of the mask is used as such.
 
 ```razor
 <IgbMaskInput @ref="MaskInputRef" Mask="00/00/0000" Placeholder="dd/MM/yyyy"></IgbMaskInput>
@@ -136,7 +136,7 @@ Developers can also take advantage of the [`Placeholder`](https://www.infragisti
 
 ### Value Modes
 
-The [`IgbMaskInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html) exposes a [`ValueMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html#IgniteUI_Blazor_Controls_IgbMaskInput_ValueMode) property that lets you choose between `raw` and `withFormatting` options to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`ValueMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html#IgniteUI_Blazor_Controls_IgbMaskInput_ValueMode) is set to `raw`. Try it for yourself in the example below:
+The [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput) exposes a [`ValueMode`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=ValueMode) property that lets you choose between `raw` and `withFormatting` options to configure which input value (formatted or raw) to bind in your form when a specific mask is applied. By default, [`ValueMode`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput&member=ValueMode) is set to `raw`. Try it for yourself in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -192,7 +192,7 @@ The [`IgbMaskInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.B
 
 ## Styling
 
-The [`IgbMaskInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -261,11 +261,11 @@ igc-mask-input::part(input)::placeholder {
 
 ## API References
 
-- [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html)
-- [`IgbMaskInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbMaskInput.html)
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
-- [`IgbRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadio.html)
-- [`IgbRadioGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadioGroup.html)
+- [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
+- [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+- [`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)
+- [`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

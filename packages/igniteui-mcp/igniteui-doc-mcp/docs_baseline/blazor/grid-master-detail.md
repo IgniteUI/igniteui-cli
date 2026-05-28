@@ -10,7 +10,7 @@ _premium: true
 
 # Blazor Master-Detail Grid
 
-The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content. When specified each record acts as a master, which upon expansion shows a customizable details template with contextual data for the current record.
+The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component supports specifying a detail template that displays additional details for a particular row by expanding/collapsing its content. When specified each record acts as a master, which upon expansion shows a customizable details template with contextual data for the current record.
 
 This mode is useful when you need to display master-detail style data in a hierarchical structure.
 
@@ -128,7 +128,7 @@ public class CustomersData
 
 ## Configuration
 
-To configure the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) to display in master-detail mode you need to specify a template for the grid:
+To configure the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) to display in master-detail mode you need to specify a template for the grid:
 
 ```razor
     <IgbGrid DetailTemplateScript="DetailTemplate"  AutoGenerate=true  Data=northwindEmployees></IgbGrid>
@@ -153,11 +153,11 @@ igRegisterScript("DetailTemplate", (ctx) => {
 
 Additional API methods for controlling the expansion states are also exposed:
 
-- [`ExpandAll`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ExpandAll)
-- [`CollapseAll`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_CollapseAll)
-- [`ToggleRow`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ToggleRow)
-- [`ExpandRow`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ExpandRow)
-- [`CollapseRow`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_CollapseRow)
+- [`ExpandAll`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ExpandAll)
+- [`CollapseAll`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=CollapseAll)
+- [`ToggleRow`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ToggleRow)
+- [`ExpandRow`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ExpandRow)
+- [`CollapseRow`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=CollapseRow)
 
 ## Keyboard navigation
 
@@ -182,6 +182,6 @@ Additional API methods for controlling the expansion states are also exposed:
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 - `HierarchicalGridRow`

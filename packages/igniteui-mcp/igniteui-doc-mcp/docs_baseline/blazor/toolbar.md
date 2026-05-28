@@ -10,7 +10,7 @@ _premium: true
 
 # Blazor Toolbar Overview
 
-The Blazor Toolbar component is a companion container for UI operations to be used primarily with our charting components. The toolbar will dynamically update with a preset of properties and tool items when linked to our [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) or [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) components. You'll be able to create custom tools for your project allowing end users to provide changes, offering an endless amount of customization.
+The Blazor Toolbar component is a companion container for UI operations to be used primarily with our charting components. The toolbar will dynamically update with a preset of properties and tool items when linked to our [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) or [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) components. You'll be able to create custom tools for your project allowing end users to provide changes, offering an endless amount of customization.
 
 ## Blazor Toolbar Example
 
@@ -128,7 +128,7 @@ Add the **IgniteUI.Blazor.Controls** namespace in the **\_Imports.razor** file:
 @using IgniteUI.Blazor.Controls
 ```
 
-The following modules are required when using the [`IgbToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html) with the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) component and it's features.
+The following modules are required when using the [`IgbToolbar`](mcp:get_api_reference?platform=blazor&component=IgbToolbar) with the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) component and it's features.
 
 ```razor
 // in Program.cs file
@@ -144,7 +144,7 @@ builder.Services.AddIgniteUIBlazor(
 );
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbToolbar`](mcp:get_api_reference?platform=blazor&component=IgbToolbar) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -154,22 +154,22 @@ You will also need to link an additional CSS file to apply the styling to the [`
 
 ### Tool Actions
 
-The following is a list of the different [`IgbToolAction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html) items that you can add to the Toolbar.
+The following is a list of the different [`IgbToolAction`](mcp:get_api_reference?platform=blazor&component=IgbToolAction) items that you can add to the Toolbar.
 
-- [`IgbToolActionButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionButton.html)
-- [`IgbToolActionCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionCheckbox.html)
-- [`IgbToolActionIconButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionIconButton.html)
-- [`IgbToolActionIconMenu`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionIconMenu.html)
-- [`IgbToolActionLabel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionLabel.html)
-- [`IgbToolActionNumberInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionNumberInput.html)
-- [`IgbToolActionRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionRadio.html)
-- [`IgbToolActionSubPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionSubPanel.html)
+- [`IgbToolActionButton`](mcp:get_api_reference?platform=blazor&component=IgbToolActionButton)
+- [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox)
+- [`IgbToolActionIconButton`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconButton)
+- [`IgbToolActionIconMenu`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu)
+- [`IgbToolActionLabel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionLabel)
+- [`IgbToolActionNumberInput`](mcp:get_api_reference?platform=blazor&component=IgbToolActionNumberInput)
+- [`IgbToolActionRadio`](mcp:get_api_reference?platform=blazor&component=IgbToolActionRadio)
+- [`IgbToolActionSubPanel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionSubPanel)
 
-Each of these tools exposes an `OnCommand` event that is triggered by mouse click. Note, the [`IgbToolActionIconMenu`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionIconMenu.html) is a wrapper for other tools that can also be wrapped inside a [`IgbToolActionIconMenu`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionIconMenu.html).
+Each of these tools exposes an `OnCommand` event that is triggered by mouse click. Note, the [`IgbToolActionIconMenu`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu) is a wrapper for other tools that can also be wrapped inside a [`IgbToolActionIconMenu`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu).
 
-New and existing tools can be repositioned and marked hidden using the [`OverlayId`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html#IgniteUI_Blazor_Controls_IgbToolAction_OverlayId), [`BeforeId`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html#IgniteUI_Blazor_Controls_IgbToolAction_BeforeId) and [`AfterId`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html#IgniteUI_Blazor_Controls_IgbToolAction_AfterId) properties on the [`IgbToolAction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html) object. ToolActions also expose a [`Visibility`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html#IgniteUI_Blazor_Controls_IgbToolAction_Visibility) property.
+New and existing tools can be repositioned and marked hidden using the [`OverlayId`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=OverlayId), [`BeforeId`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=BeforeId) and [`AfterId`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=AfterId) properties on the [`IgbToolAction`](mcp:get_api_reference?platform=blazor&component=IgbToolAction) object. ToolActions also expose a [`Visibility`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=Visibility) property.
 
-The following example demonstrates a couple of features. First you can group tools together in the [`IgbToolActionSubPanel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionSubPanel.html) including hiding built in tools such as the **ZoomReset** and **AnalyzeMenu** menu tool actions. In this example a new instance of the **ZoomReset** tool action within the **ZoomMenu** by using the the [`AfterId`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html#IgniteUI_Blazor_Controls_IgbToolAction_AfterId) property and assigning that to **ZoomOut** to be precise with it's placement. It is also highlighted via the [`IsHighlighted`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html#IgniteUI_Blazor_Controls_IgbToolAction_IsHighlighted) property on the tool.
+The following example demonstrates a couple of features. First you can group tools together in the [`IgbToolActionSubPanel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionSubPanel) including hiding built in tools such as the **ZoomReset** and **AnalyzeMenu** menu tool actions. In this example a new instance of the **ZoomReset** tool action within the **ZoomMenu** by using the the [`AfterId`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=AfterId) property and assigning that to **ZoomOut** to be precise with it's placement. It is also highlighted via the [`IsHighlighted`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=IsHighlighted) property on the tool.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -474,7 +474,7 @@ public class CountryRenewableElectricity
 
 ### Blazor Data Chart Integration
 
-The Blazor Toolbar contains a [`Target`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html#IgniteUI_Blazor_Controls_IgbToolbar_Target) property. This is used to link a component, such as the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) as shown in the code below:
+The Blazor Toolbar contains a [`Target`](mcp:get_api_reference?platform=blazor&component=IgbToolbar&member=Target) property. This is used to link a component, such as the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) as shown in the code below:
 
 ```razor
   <IgbToolbar
@@ -489,47 +489,47 @@ The Blazor Toolbar contains a [`Target`](https://www.infragistics.com/blazor/doc
   </IgbDataChart>
 ```
 
-Several pre-existing [`IgbToolAction`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html) items and menus become available when the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) is linked with the Toolbar. Here is a list of the built-in Blazor [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) Tool Actions and their associated [`OverlayId`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html#IgniteUI_Blazor_Controls_IgbToolAction_OverlayId):
+Several pre-existing [`IgbToolAction`](mcp:get_api_reference?platform=blazor&component=IgbToolAction) items and menus become available when the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) is linked with the Toolbar. Here is a list of the built-in Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) Tool Actions and their associated [`OverlayId`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=OverlayId):
 
 Zooming Actions
 
-- `ZoomMenu`: A [`IgbToolActionIconMenu`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionIconMenu.html) that exposes three [`IgbToolActionLabel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionLabel.html) items to invoke the [`ZoomIn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ZoomIn) and [`ZoomOut`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ZoomOut) methods on the chart for increasing/decreasing the chart's zoom level including `ZoomReset`, a [`IgbToolActionLabel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionLabel.html) that invokes the [`ResetZoom`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_ResetZoom) method on the chart to reset the zoom level to it's default position.
+- `ZoomMenu`: A [`IgbToolActionIconMenu`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu) that exposes three [`IgbToolActionLabel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionLabel) items to invoke the [`ZoomIn`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ZoomIn) and [`ZoomOut`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ZoomOut) methods on the chart for increasing/decreasing the chart's zoom level including `ZoomReset`, a [`IgbToolActionLabel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionLabel) that invokes the [`ResetZoom`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ResetZoom) method on the chart to reset the zoom level to it's default position.
 
 Trend Actions
 
-- `AnalyzeMenu`: A [`IgbToolActionIconMenu`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionIconMenu.html) that contains several options for configuring different options of the chart.
+- `AnalyzeMenu`: A [`IgbToolActionIconMenu`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu) that contains several options for configuring different options of the chart.
 - `AnalyzeHeader`: A sub section header.
   - `LinesMenu`: A sub menu containing various tools for showing different dashed horizontal lines on the chart.
   - `LinesHeader`: A sub menu section header for the following three tools:
-    - `MaxValue`: A [`IgbToolActionCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionCheckbox.html) that displays a dashed horizontal line along the yAxis at the maximum value of the series.
-    - `MinValue`: A [`IgbToolActionCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionCheckbox.html) that displays a dashed horizontal line along the yAxis at the minimum value of the series.
-    - `Average`:  A [`IgbToolActionCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionCheckbox.html) that displays a dashed horizontal line along the yAxis at the average value of the series.
-  - `TrendsMenu`: A sub menu containing tools for applying various trendlines to the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) plot area.
+    - `MaxValue`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that displays a dashed horizontal line along the yAxis at the maximum value of the series.
+    - `MinValue`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that displays a dashed horizontal line along the yAxis at the minimum value of the series.
+    - `Average`:  A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that displays a dashed horizontal line along the yAxis at the average value of the series.
+  - `TrendsMenu`: A sub menu containing tools for applying various trendlines to the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) plot area.
   - `TrendsHeader`: A sub menu section header for the following three tools:
-    - **Exponential**: A [`IgbToolActionRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionRadio.html) that sets the [`TrendLineType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_TrendLineType) on each series in the chart to **ExponentialFit**.
-    - **Linear**: A [`IgbToolActionRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionRadio.html) that sets the [`TrendLineType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_TrendLineType) on each series in the chart to **LinearFit**.
-    - **Logarithmic**: A [`IgbToolActionRadio`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionRadio.html) that sets the [`TrendLineType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_TrendLineType) on each series in the the chart to **LogarithmicFit**.
+    - **Exponential**: A [`IgbToolActionRadio`](mcp:get_api_reference?platform=blazor&component=IgbToolActionRadio) that sets the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=TrendLineType) on each series in the chart to **ExponentialFit**.
+    - **Linear**: A [`IgbToolActionRadio`](mcp:get_api_reference?platform=blazor&component=IgbToolActionRadio) that sets the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=TrendLineType) on each series in the chart to **LinearFit**.
+    - **Logarithmic**: A [`IgbToolActionRadio`](mcp:get_api_reference?platform=blazor&component=IgbToolActionRadio) that sets the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=TrendLineType) on each series in the the chart to **LogarithmicFit**.
 - `HelpersHeader`: A sub section header.
-  - `SeriesAvg`: A [`IgbToolActionCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionCheckbox.html) that adds or removes a [`IgbValueLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbValueLayer.html) to the chart's series collection using the `ValueLayerValueMode` of type `Average`.
-  - `ValueLabelsMenu`: A sub menu containing various tools for showing different annotations on the [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)'s plot area.
+  - `SeriesAvg`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that adds or removes a [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) to the chart's series collection using the `ValueLayerValueMode` of type `Average`.
+  - `ValueLabelsMenu`: A sub menu containing various tools for showing different annotations on the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)'s plot area.
   - `ValueLabelsHeader`: A sub menu section header for the following tools:
-    - `ShowValueLabels`: A [`IgbToolActionCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionCheckbox.html) that toggles data point values by using a [`IgbCalloutLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalloutLayer.html).
-    - `ShowLastValueLabel`: A [`IgbToolActionCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionCheckbox.html) that toggles final value axis annotations by using a [`IgbFinalValueLayer`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinalValueLayer.html).
-- `ShowCrosshairs`: A [`IgbToolActionCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionCheckbox.html) that toggles mouse-over crosshair annotations via the chart's [`CrosshairsDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_CrosshairsDisplayMode) property.
-- `ShowGridlines`: A [`IgbToolActionCheckbox`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionCheckbox.html) that toggles extra gridlines by applying a `MajorStroke` to the X-Axis.
+    - `ShowValueLabels`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that toggles data point values by using a [`IgbCalloutLayer`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer).
+    - `ShowLastValueLabel`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that toggles final value axis annotations by using a [`IgbFinalValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbFinalValueLayer).
+- `ShowCrosshairs`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that toggles mouse-over crosshair annotations via the chart's [`CrosshairsDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=CrosshairsDisplayMode) property.
+- `ShowGridlines`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that toggles extra gridlines by applying a `MajorStroke` to the X-Axis.
 
 Save to Image Action
 
-- `CopyAsImage`: A [`IgbToolActionLabel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolActionLabel.html) that exposes an option to copy the chart to the clipboard.
+- `CopyAsImage`: A [`IgbToolActionLabel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionLabel) that exposes an option to copy the chart to the clipboard.
 - `CopyHeader`: A sub section header.
 
 ### SVG Icons
 
-When adding tools manually, icons can be assigned using the `RenderIconFromText` method. There are three parameters to pass in this method. The first is the icon collection name defined on the tool eg. [`IconCollectionName`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html#IgniteUI_Blazor_Controls_IgbToolAction_IconCollectionName). The second is the name of the icon defined on the tool eg. [`IconName`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolAction.html#IgniteUI_Blazor_Controls_IgbToolAction_IconName), followed by adding the SVG string.
+When adding tools manually, icons can be assigned using the `RenderIconFromText` method. There are three parameters to pass in this method. The first is the icon collection name defined on the tool eg. [`IconCollectionName`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=IconCollectionName). The second is the name of the icon defined on the tool eg. [`IconName`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=IconName), followed by adding the SVG string.
 
 ### Data URL Icons
 
-Similarly to adding svg, you can also add an Icon image from a URL via the [`RegisterIconFromDataURL`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html#IgniteUI_Blazor_Controls_IgbToolbar_RegisterIconFromDataURL). The method's third parameter would be used to enter a string URL.
+Similarly to adding svg, you can also add an Icon image from a URL via the [`RegisterIconFromDataURL`](mcp:get_api_reference?platform=blazor&component=IgbToolbar&member=RegisterIconFromDataURL). The method's third parameter would be used to enter a string URL.
 
 The following snippet shows both methods of adding an Icon.
 
@@ -588,7 +588,7 @@ The following snippet shows both methods of adding an Icon.
 
 ### Vertical Orientation
 
-By default the Blazor Toolbar is shown horizontally, but it also has the ability to shown vertically by setting the [`Orientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html#IgniteUI_Blazor_Controls_IgbToolbar_Orientation) property.
+By default the Blazor Toolbar is shown horizontally, but it also has the ability to shown vertically by setting the [`Orientation`](mcp:get_api_reference?platform=blazor&component=IgbToolbar&member=Orientation) property.
 
 ```razor
 <IgbToolbar Orientation="ToolbarOrientation.Vertical" />
@@ -886,8 +886,8 @@ The icon component can be styled by using it's `BaseTheme` property directly to 
 
 ## API References
 
-- [`IgbToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbToolbar.html)
-- [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
+- [`IgbToolbar`](mcp:get_api_reference?platform=blazor&component=IgbToolbar)
+- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
 
 ## Additional Resources
 

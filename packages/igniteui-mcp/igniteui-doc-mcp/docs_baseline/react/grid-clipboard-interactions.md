@@ -13,7 +13,7 @@ _premium: true
 
 # React Grid Clipboard Overview
 
-Copy to clipboard operations are now available in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). This functionality provides a fast, easy and customizable way to copy data of the React [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) through the current multi cell data select. System Clipboard behavior gives the user ability to copy data from the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) into Excel or other external programs.
+Copy to clipboard operations are now available in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). This functionality provides a fast, easy and customizable way to copy data of the React [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) through the current multi cell data select. System Clipboard behavior gives the user ability to copy data from the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) into Excel or other external programs.
 
 ## React Grid Clipboard Example
 
@@ -270,7 +270,7 @@ Copy behavior is working with the default interaction defined by the browser and
 
 ## API Usage
 
-We expose [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#clipboardOptions) property, which handles the following options:
+We expose [`clipboardOptions`](mcp:get_api_reference?platform=react&component=IgrGrid&member=clipboardOptions) property, which handles the following options:
 
 - `Enabled` Enables/disables copying of selected cells.
 - `CopyHeaders` Include the associated headers when copying.
@@ -280,7 +280,7 @@ We expose [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-r
 > [!Note]
 > Excel can automatically detect text that is separated by tabs (tab-delimited `/t`) and properly paste the data into separate columns. When the paste format doesn't work, and everything you paste appears in a single column, then Excel's delimiter is set to another character, or your text is using spaces instead of tabs.
 
-- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#clipboardOptions).
+- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](mcp:get_api_reference?platform=react&component=IgrGrid&member=clipboardOptions).
 
 ## Additional Resources
 

@@ -22,7 +22,7 @@ The Blazor Grid Column Moving feature in Ignite UI for Blazor allows quick and e
 > If a column header is templated and the Column Moving is enabled or the corresponding column is groupable, then the templated elements need to have the **draggable** attribute set to **false**!
 
 > [!Note]
-> If the pinned area exceeds its maximum allowed width (80% of the total [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) width), a visual clue notifies the end user that the drop operation is forbidden and pinning is not possible. This means you won't be allowed to drop a column in the pinned area.
+> If the pinned area exceeds its maximum allowed width (80% of the total [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) width), a visual clue notifies the end user that the drop operation is forbidden and pinning is not possible. This means you won't be allowed to drop a column in the pinned area.
 
 ```razor
     public RenderFragment<IgbColumnTemplateContext> headerTemplate => (context) =>
@@ -286,7 +286,7 @@ public class FinancialDataAll
 
 ## Overview
 
-**Column moving** feature is enabled on a per-grid level, meaning that the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) could have either movable or immovable columns. This is done via the [`Moving`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Moving) input of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
+**Column moving** feature is enabled on a per-grid level, meaning that the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) could have either movable or immovable columns. This is done via the [`Moving`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=Moving) input of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
 
 <!-- ComponentStart: Grid -->
 
@@ -300,7 +300,7 @@ public class FinancialDataAll
 
 In addition to the drag and drop functionality, the Column Moving feature also provides API methods to allow moving a column/reordering columns programmatically:
 
-[`MoveColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_MoveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `Position` (representing a `DropPosition` value), which determines whether to place the column before or after the target column.
+[`MoveColumn`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=MoveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `Position` (representing a `DropPosition` value), which determines whether to place the column before or after the target column.
 
 ```razor
     public async void HandleClick()
@@ -311,7 +311,7 @@ In addition to the drag and drop functionality, the Column Moving feature also p
     }
 ```
 
-[`Move`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Move) - Moves a column to a specified visible index. If the passed index parameter is invalid (is negative, or exceeds the number of columns), or if the column is not allowed to move to this index (if inside another group), no operation is performed.
+[`Move`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Move) - Moves a column to a specified visible index. If the passed index parameter is invalid (is negative, or exceeds the number of columns), or if the column is not allowed to move to this index (if inside another group), no operation is performed.
 
 ```razor
     public async void HandleClick()
@@ -321,13 +321,13 @@ In addition to the drag and drop functionality, the Column Moving feature also p
     }
 ```
 
-Note that when using the column moving feature, the `ColumnMovingEnd` event will be emitted if the operation was successful. Also note that in comparison to the drag and drop functionality, using the column moving feature does not require setting the [`Moving`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Moving) property to true.
+Note that when using the column moving feature, the `ColumnMovingEnd` event will be emitted if the operation was successful. Also note that in comparison to the drag and drop functionality, using the column moving feature does not require setting the [`Moving`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=Moving) property to true.
 
 ## Events
 
 There are several events related to the column moving to provide a means for tapping into the columns' drag and drop operations. These are `ColumnMovingStart`, `ColumnMoving` and `ColumnMovingEnd`.
 
-You can subscribe to the `ColumnMovingEnd` event of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) to implement some custom logic when a column is dropped to a new position. For example, you can cancel dropping the **Category** column after the **Change On Year(%)** column in the following code snippet.
+You can subscribe to the `ColumnMovingEnd` event of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) to implement some custom logic when a column is dropped to a new position. For example, you can cancel dropping the **Category** column after the **Change On Year(%)** column in the following code snippet.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
@@ -619,8 +619,8 @@ public class FinancialDataAll
 
 ## API References
 
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ## Additional Resources
 

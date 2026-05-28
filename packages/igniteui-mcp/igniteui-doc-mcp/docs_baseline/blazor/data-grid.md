@@ -260,9 +260,9 @@ Now that we have the grid packages imported, let’s get started with the basic 
 <IgbGrid Id="grid1" Data="data" AutoGenerate="true"></IgbGrid>
 ```
 
-The [`Id`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while `data` binds the grid, in this case to local data.
+The [`Id`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=Id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while `data` binds the grid, in this case to local data.
 
-The [`AutoGenerate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_AutoGenerate) property tells the grid to auto generate the grid's [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
+The [`AutoGenerate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AutoGenerate) property tells the grid to auto generate the grid's [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
 
 ## Editable Blazor Grid
 
@@ -272,11 +272,11 @@ Following this topic you will learn more about [cell template](data-grid.md#cell
 
 ## Grid Column Configuration
 
-[`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) is used to define the grid's columns collection and to enable features per column like **sorting** and **filtering**. Cell, header, and footer templates are also available.
+[`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) is used to define the grid's columns collection and to enable features per column like **sorting** and **filtering**. Cell, header, and footer templates are also available.
 
 ### Defining Columns
 
-Let's turn the [`AutoGenerate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_AutoGenerate) property off and define the columns collection in the markup:
+Let's turn the [`AutoGenerate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AutoGenerate) property off and define the columns collection in the markup:
 
 ```razor
 <IgbGrid AutoGenerate=false AllowFiltering=true>
@@ -370,7 +370,7 @@ When properly implemented, the cell editing template also ensures that the cell'
 ### Cell Editing Template
 
 The column also accepts one last template that will be used when a cell is in edit mode. As with the other column templates, the provided context object is again the cell value and the cell object itself. Of course in order to make the edit-mode template accessible to end users, you need
-to set the [`Editable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Editable) property of the column to true.
+to set the [`Editable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Editable) property of the column to true.
 
 ```razor
 <IgbColumn Field="Price" Editable=true DataType="GridColumnDataType.Number" InlineEditorTemplateScript="PriceCellTemplate" />
@@ -396,7 +396,7 @@ Make sure to check the API for the `Cell` in order to get accustomed with the pr
 
 ### Column Template API
 
-Each of the column templates can be changed programmatically at any point through the [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html) object itself. For example in the code below, we have declared two templates for our user data. In our TypeScript code we'll get references to the templates themselves and then based on some condition we will render the appropriate template for the column in our application.
+Each of the column templates can be changed programmatically at any point through the [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn) object itself. For example in the code below, we have declared two templates for our user data. In our TypeScript code we'll get references to the templates themselves and then based on some condition we will render the appropriate template for the column in our application.
 
 ```razor
 <IgbGrid ColumnInit=OnColumnInit />
@@ -451,11 +451,11 @@ The code above will make the **ProductName** column sortable and editable and wi
 
 There are optional parameters for formatting:
 
-- [`Format`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnPipeArgs.html#IgniteUI_Blazor_Controls_IgbColumnPipeArgs_Format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
-- [`Timezone`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnPipeArgs.html#IgniteUI_Blazor_Controls_IgbColumnPipeArgs_Timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
-- [`DigitsInfo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnPipeArgs.html#IgniteUI_Blazor_Controls_IgbColumnPipeArgs_DigitsInfo) - decimal representation objects. Default to **1.0-3**
+- [`Format`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=Format) - determines what date/time parts are displayed, defaults to `'mediumDate'`, equivalent to **'MMM d, y'**
+- [`Timezone`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=Timezone) - the timezone offset for dates. By default uses the end-user's local system timezone
+- [`DigitsInfo`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=DigitsInfo) - decimal representation objects. Default to **1.0-3**
 
-To allow customizing the display format by these parameters, the [`PipeArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_PipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`PipeArgs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_PipeArgs) is set. Example:
+To allow customizing the display format by these parameters, the [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`PipeArgs`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=PipeArgs) is set. Example:
 
 ```razor
 <IgbColumn Field="OrderDate"
@@ -467,7 +467,7 @@ To allow customizing the display format by these parameters, the [`PipeArgs`](ht
            PipeArgs=@(new IgbColumnPipeArgs() { Timezone="UTC+0", DigitsInfo="1.2-2", Format = "longDate" }) />
 ```
 
-The `OrderDate` column will respect only the [`Format`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnPipeArgs.html#IgniteUI_Blazor_Controls_IgbColumnPipeArgs_Format) and [`Timezone`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnPipeArgs.html#IgniteUI_Blazor_Controls_IgbColumnPipeArgs_Timezone) properties, while the `UnitPrice` will only respect the [`DigitsInfo`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnPipeArgs.html#IgniteUI_Blazor_Controls_IgbColumnPipeArgs_DigitsInfo).
+The `OrderDate` column will respect only the [`Format`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=Format) and [`Timezone`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=Timezone) properties, while the `UnitPrice` will only respect the [`DigitsInfo`](mcp:get_api_reference?platform=blazor&component=IgbColumnPipeArgs&member=DigitsInfo).
 
 All available column data types could be found in the official [Column types topic](grid/column-types.md#default-template).
 
@@ -505,7 +505,7 @@ For example, in order to display the weights of a given amino acid in the grid t
 <IgbColumn Field="Weight.Residue" />
 ```
 
-An alternative way to bind complex data, or to visualize composite data (from more than one column) in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) is to use a custom body template for the column. Generally, one can:
+An alternative way to bind complex data, or to visualize composite data (from more than one column) in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) is to use a custom body template for the column. Generally, one can:
 
 - use the `value` of the cell, that contains the nested data
 
@@ -778,7 +778,7 @@ public class EmployeesNestedData
 
 ### Working with Flat Data Overview
 
-The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`Data`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_Data) property of the [`IgbGridRow`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridRow.html).
+The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`Data`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=Data) property of the [`IgbGridRow`](mcp:get_api_reference?platform=blazor&component=IgbGridRow).
 
 Since the Blazor grid is a component for **rendering**, **manipulating** and **preserving** data records, having access to **every data record** gives you the opportunity to customize the approach of handling it. The `data` property provides you this opportunity.
 
@@ -869,7 +869,7 @@ igRegisterScript("AddressEditCellTemplate", (ctx) => {
 
 ### Working with Flat Data Example
 
-Using code snippets from previous section will result in the following example of [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+Using code snippets from previous section will result in the following example of [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1000,7 +1000,7 @@ public class CustomersData
 
 ## Keyboard Navigation
 
-Keyboard navigation of the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) provides a rich variety of keyboard interactions for the user. It enhances accessibility and allows intuitive navigation through any type of elements inside (cell, row, column header, toolbar, footer, etc.).
+Keyboard navigation of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) provides a rich variety of keyboard interactions for the user. It enhances accessibility and allows intuitive navigation through any type of elements inside (cell, row, column header, toolbar, footer, etc.).
 
 <!-- The sizing topic is still not available thus the Sizing section is commented out. -->
 
@@ -1041,13 +1041,13 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 - `Cell`
-- [`IgbCellTemplateContext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCellTemplateContext.html)
-- [`IgbGridRow`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridRow.html)
-- [`IgbGridToolbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbar.html)
-- [`IgbPaginator`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPaginator.html)
+- [`IgbCellTemplateContext`](mcp:get_api_reference?platform=blazor&component=IgbCellTemplateContext)
+- [`IgbGridRow`](mcp:get_api_reference?platform=blazor&component=IgbGridRow)
+- [`IgbGridToolbar`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbar)
+- [`IgbPaginator`](mcp:get_api_reference?platform=blazor&component=IgbPaginator)
 
 ## Additional Resources
 

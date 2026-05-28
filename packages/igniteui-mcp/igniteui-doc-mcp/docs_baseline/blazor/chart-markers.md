@@ -17,7 +17,7 @@ In Ignite UI for Blazor, markers are visual elements that display the values of 
 
 In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the `MarkerType` property to `Circle` enum value.
 
-The colors of the markers are also managed by setting the [`MarkerBrushes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_MarkerBrushes) and [`MarkerOutlines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_MarkerOutlines) properties in the sample below. The markers and [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) is configurable in this sample by using the drop-downs as well.
+The colors of the markers are also managed by setting the [`MarkerBrushes`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=MarkerBrushes) and [`MarkerOutlines`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=MarkerOutlines) properties in the sample below. The markers and [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) is configurable in this sample by using the drop-downs as well.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -150,7 +150,7 @@ public class CountryRenewableElectricity
 
 ## Blazor Chart Marker Templates
 
-In addition to marker properties, you can implement your own marker by setting a function to the  `MarkerTemplate` property of a series rendered in the [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html) control as it is demonstrated in example below.
+In addition to marker properties, you can implement your own marker by setting a function to the  `MarkerTemplate` property of a series rendered in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control as it is demonstrated in example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -208,7 +208,7 @@ You can find more information about related chart features in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-- [`MarkerBrushes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_MarkerBrushes)
-- [`MarkerOutlines`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_MarkerOutlines)
+- [`MarkerBrushes`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=MarkerBrushes)
+- [`MarkerOutlines`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=MarkerOutlines)
 - `MarkerType`
-- [`IgbCategoryChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html)
+- [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)

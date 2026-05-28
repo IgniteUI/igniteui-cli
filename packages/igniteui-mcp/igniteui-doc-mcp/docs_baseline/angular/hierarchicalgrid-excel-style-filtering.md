@@ -142,20 +142,20 @@ igx-buttongroup{
 ```
 <div class="divider--half"></div>
 ## Usage
-To turn on the grid excel filtering, two inputs should be set. The [`allowFiltering`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#allowFiltering) should be set to `true` and the [`filterMode`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#filterMode) should be set to `excelStyleFilter`.
+To turn on the grid excel filtering, two inputs should be set. The [`allowFiltering`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=allowFiltering) should be set to `true` and the [`filterMode`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=filterMode) should be set to `excelStyleFilter`.
 ```html
 <igx-hierarchical-grid [data]="data" [autoGenerate]="true" [allowFiltering]="true" [filterMode]="'excelStyleFilter'">
 </igx-hierarchical-grid>
 ```
 ## Interactions
 In order to open the filter menu for a particular column, the Angular filter icon in the header should be clicked. Additionally, you can use the `Ctrl + Shift + L` combination on a selected header. If the column can be sorted, pinned, moved, selected or hidden along with the filtering functionality, there will be buttons available for the features that are turned on.
-If no filter is applied, all the items in the list will be selected. They can be filtered from the input above the list. In order to filter the data, you can select/deselect the items in the list and either click the Apply button, or press `Enter`. The filtering applied through the list items creates filter expressions with `equals` operator and the logic operator between the expressions is [`OR`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/filteringlogic.html#or).
+If no filter is applied, all the items in the list will be selected. They can be filtered from the input above the list. In order to filter the data, you can select/deselect the items in the list and either click the Apply button, or press `Enter`. The filtering applied through the list items creates filter expressions with `equals` operator and the logic operator between the expressions is [`OR`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=or).
 If you type something in the search box and apply the filter, only the items that match the search criteria will be selected. If you want to add items to the currently filtered ones, however, you should select the option `Add current selection to filter`.
 If you want to clear the filter, you can check the `Select All` option and then click the Apply button.
 To apply a filter with different expressions, you can click the **Text filter**, which will open a sub menu with all available filter operators for the particular column. Selecting one of them will open the custom filter dialog, where you can add as many expressions as you want with different filter and logic operators. There is also a clear button, which can clear the filter.
 <div class="divider--half"></div>
 ## Configure Menu Features
-Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`sortable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#sortable), [`selected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#selected), [`disablePinning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#disablePinning), [`disableHiding`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#disableHiding).
+Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`sortable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortable), [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selected), [`disablePinning`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=disablePinning), [`disableHiding`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=disableHiding).
 ```html
 <igx-hierarchical-grid class="hgrid" [data]="localdata" [autoGenerate]="false" [moving]="true" [allowFiltering]='true' filterMode="excelStyleFilter"
     [height]="'650px'" [width]="'100%'" [rowHeight]="'65px'" #hierarchicalGrid>
@@ -282,7 +282,7 @@ If you want to further customize the Excel style filter menu without disabling t
 - `IgxExcelStyleColumnOperationsTemplateDirective` - re-templates the area with all column operations like sorting, pinning, etc.
 - `IgxExcelStyleFilterOperationsTemplateDirective` - re-templates the area with all filter specific operations.
 You could either re-template only one of those areas or both of them. You could put any custom content inside those directives or you could use any of our built-in Excel style filtering components.
-The following code demonstrates how to define a custom Excel style filter menu using the [`igx-excel-style-header`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleheadercomponent.html), [`igx-excel-style-sorting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylesortingcomponent.html) and [`igx-excel-style-search`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylesearchcomponent.html) components.
+The following code demonstrates how to define a custom Excel style filter menu using the [`igx-excel-style-header`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleHeaderComponent), [`igx-excel-style-sorting`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSortingComponent) and [`igx-excel-style-search`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSearchComponent) components.
 ```html
 <igx-hierarchical-grid class="hgrid" [data]="localdata" [autoGenerate]="false" [allowFiltering]='true' filterMode="excelStyleFilter"
     [height]="'650px'" [width]="'100%'" [rowHeight]="'65px'" #hierarchicalGrid>
@@ -454,20 +454,20 @@ export class HGridExcelStyleFilteringSample3Component {
 }
 ```
 Here is the full list of Excel style filtering components that you could use:
-- [`igx-excel-style-header`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleheadercomponent.html)
-- [`igx-excel-style-sorting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylesortingcomponent.html)
-- [`igx-excel-style-moving`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylemovingcomponent.html)
-- [`igx-excel-style-pinning`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylepinningcomponent.html)
-- [`igx-excel-style-hiding`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylehidingcomponent.html)
-- [`igx-excel-style-selecting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleselectingcomponent.html)
-- [`igx-excel-style-clear-filters`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleclearfilterscomponent.html)
-- [`igx-excel-style-conditional-filter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstyleconditionalfiltercomponent.html)
-- [`igx-excel-style-search`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelstylesearchcomponent.html)
+- [`igx-excel-style-header`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleHeaderComponent)
+- [`igx-excel-style-sorting`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSortingComponent)
+- [`igx-excel-style-moving`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleMovingComponent)
+- [`igx-excel-style-pinning`](mcp:get_api_reference?platform=angular&component=IgxExcelStylePinningComponent)
+- [`igx-excel-style-hiding`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleHidingComponent)
+- [`igx-excel-style-selecting`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSelectingComponent)
+- [`igx-excel-style-clear-filters`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleClearFiltersComponent)
+- [`igx-excel-style-conditional-filter`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleConditionalFilterComponent)
+- [`igx-excel-style-search`](mcp:get_api_reference?platform=angular&component=IgxExcelStyleSearchComponent)
 <div class="divider--half"></div>
 ## Unique Column Values Strategy
 The list items inside the Excel Style Filtering dialog represent the unique values for the respective column. These values can be provided manually and loaded on demand, which is demonstrated in the [`Hierarchical Grid Remote Data Operations`](remote-data-operations.md#unique-column-values-strategy) topic.
 ## Formatted Values Filtering Strategy
-By default, the Hierarchical Grid component filters the data based on the original cell values, however in some cases you may want to filter the data based on the formatted values. @@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') { In order to do that you can use the [`FormattedValuesFilteringStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/formattedvaluesfilteringstrategy.html). }  The following sample demonstrates how to format the numeric values of a column as strings and filter the Hierarchical Grid based on the string values:
+By default, the Hierarchical Grid component filters the data based on the original cell values, however in some cases you may want to filter the data based on the formatted values. @@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') { In order to do that you can use the [`FormattedValuesFilteringStrategy`](mcp:get_api_reference?platform=angular&component=FormattedValuesFilteringStrategy). }  The following sample demonstrates how to format the numeric values of a column as strings and filter the Hierarchical Grid based on the string values:
 ```typescript
 import { Component, ViewChild } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -662,7 +662,7 @@ export class HGridExternalExcelStyleFilteringComponent implements AfterViewInit{
 ```
 <div class="divider--half"></div>
 ### Usage
-In order to configure the Excel style filtering component, you should set its [`column`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridexcelstylefilteringcomponent.html#column) property to one of the Hierarchical Grid's columns. In the sample above, we have bound the [`column`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridexcelstylefilteringcomponent.html#column) property to the value of an IgxSelectComponent that displays the Hierarchical Grid's columns.
+In order to configure the Excel style filtering component, you should set its [`column`](mcp:get_api_reference?platform=angular&component=IgxGridExcelStyleFilteringComponent&member=column) property to one of the Hierarchical Grid's columns. In the sample above, we have bound the [`column`](mcp:get_api_reference?platform=angular&component=IgxGridExcelStyleFilteringComponent&member=column) property to the value of an IgxSelectComponent that displays the Hierarchical Grid's columns.
 ```html
 <igx-select #gridColums value="Artist">
    <label igxLabel>Columns:</label>
@@ -675,7 +675,7 @@ In order to configure the Excel style filtering component, you should set its [`
 ```
 ## External Outlet
 The Hierarchical Grid's [`z-index`](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) creates separate stacking context for each grid in the DOM. This ensures that all descendant elements of the grid will render as intended, without overlapping one another.
-However, elements that go outside of the grid (e.g. Excel Style filter) will conflict with outside elements with the same `z-index` (e.g. having two grids one under another) resulting in false rendering. The solution for this issue is to set the [`outlet`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#outlet) property to an external outlet directive which allows the overlay elements to always appear on top.
+However, elements that go outside of the grid (e.g. Excel Style filter) will conflict with outside elements with the same `z-index` (e.g. having two grids one under another) resulting in false rendering. The solution for this issue is to set the [`outlet`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=outlet) property to an external outlet directive which allows the overlay elements to always appear on top.
 ### Demo
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -1039,8 +1039,8 @@ $custom-drop-down: drop-down-theme(
 <div class="divider--half"></div>
 ## API References
 <div class="divider--half"></div>
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
-- [IgxHierarchicalGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
+- [IgxHierarchicalGridComponent API](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
 - [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources
 <div class="divider--half"></div>

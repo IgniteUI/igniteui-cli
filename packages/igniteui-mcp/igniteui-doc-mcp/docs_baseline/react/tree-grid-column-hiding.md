@@ -203,7 +203,7 @@ root.render(<Sample/>);
 
 ## Tree Grid Setup
 
-Let's start by creating our [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) and binding it to our data. We will also enable both filtering and sorting for the columns.
+Let's start by creating our [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) and binding it to our data. We will also enable both filtering and sorting for the columns.
 
 ```tsx
 <IgrTreeGrid autoGenerate={false} data={employeesFlatDetails} width="100%" height="560px" allowFiltering={true}>
@@ -225,9 +225,9 @@ Let's start by creating our [`IgrTreeGrid`](https://www.infragistics.com/product
 
 ## Toolbar's Column Hiding UI
 
-The built-in Column Hiding UI is placed inside an `DropDown` in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
+The built-in Column Hiding UI is placed inside an `DropDown` in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)'s toolbar. We can show/hide the Column Hiding UI by using this exact dropdown.
 
-For this purpose all we have to do is set both the [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html) and the [`IgrGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarhiding.html) inside of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html).
+For this purpose all we have to do is set both the [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions) and the [`IgrGridToolbarHiding`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding) inside of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
 
 <!-- Web Components -->
 
@@ -253,9 +253,9 @@ For this purpose all we have to do is set both the [`IgrGridToolbarActions`](htt
 
 <!-- end: Web Components -->
 
-The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
+The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
 
-By using the [`title`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
+By using the [`title`](mcp:get_api_reference?platform=react&component=IgrColumn&member=title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
 
 <!-- Web Components -->
 
@@ -285,7 +285,7 @@ You can see the result of the code from above at the beginning of this article i
 
 ### Disable hiding of a column
 
-We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`disableHiding`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#disableHiding) property to true.
+We can easily prevent the user from being able to hide columns through the column hiding UI by simply setting their [`disableHiding`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disableHiding) property to true.
 
 ```tsx
 <IgrTreeGrid>
@@ -566,27 +566,27 @@ root.render(<Sample/>);
 
 ## API References
 
-In this article we learned how to use the built-in column hiding UI in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
+In this article we learned how to use the built-in column hiding UI in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)'s toolbar. The column hiding UI has a few more APIs to explore, which are listed below.
 
 - `ColumnActionsComponent`
 
 Additional components with relative APIs that were used:
 
-[`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) properties:
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) properties:
 
-- [`disableHiding`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#disableHiding)
+- [`disableHiding`](mcp:get_api_reference?platform=react&component=IgrColumn&member=disableHiding)
 
-[`IgrGridToolbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbar.html) properties:
+[`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar) properties:
 
 - `showProgress`
 
-[`IgrGridToolbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbar.html) methods:
+[`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar) methods:
 
-- [`IgrGridToolbarHiding`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbarhiding.html)
-- [`IgrGridToolbarActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbaractions.html)
-- [`IgrGridToolbarTitle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbartitle.html)
+- [`IgrGridToolbarHiding`](mcp:get_api_reference?platform=react&component=IgrGridToolbarHiding)
+- [`IgrGridToolbarActions`](mcp:get_api_reference?platform=react&component=IgrGridToolbarActions)
+- [`IgrGridToolbarTitle`](mcp:get_api_reference?platform=react&component=IgrGridToolbarTitle)
 
-[`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) events:
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) events:
 
 - `ColumnVisibilityChanged`
 

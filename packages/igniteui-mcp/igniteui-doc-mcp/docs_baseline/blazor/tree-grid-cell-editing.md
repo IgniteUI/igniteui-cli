@@ -153,15 +153,15 @@ You can exit edit mode and **commit** the changes in one of the following ways:
 - on key press <kbd>ENTER</kbd>;
 - on key press <kbd>F2</kbd>;
 - on key press <kbd>TAB</kbd>;
-- on single click to another cell - when you click on another cell in the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html), your changes will be submitted.
+- on single click to another cell - when you click on another cell in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid), your changes will be submitted.
 - operations like paging, resize, pin or move will exit edit mode and changes will be submitted.
 
 > [!Note]
-> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html). This is valid for both cell editing and row editing.
+> The cell remains in edit mode when you scroll vertically or horizontally or click outside the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid). This is valid for both cell editing and row editing.
 
 ### Editing through API
 
-You can also modify the cell value through the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) API but only if primary key is defined:
+You can also modify the cell value through the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) API but only if primary key is defined:
 
 ```razor
 @code {
@@ -357,11 +357,11 @@ public class RoleplayTreeGridData
 > [!Note]
 > Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
 
-The [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) provides a straightforward API for basic CRUD operations.
+The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) provides a straightforward API for basic CRUD operations.
 
 ### Adding a new record
 
-The [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) component exposes the `AddRow` method which will add the provided data to the data source itself.
+The [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component exposes the `AddRow` method which will add the provided data to the data source itself.
 
 ```razor
 //Assuming we have a `GetNewRecord` method returning the new row data.
@@ -396,7 +396,7 @@ Updating data in the Tree Grid is achieved through `UpdateRow` and `UpdateCell` 
 
 ### Deleting data from the Tree Grid
 
-Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_PrimaryKey) is defined.
+Please keep in mind that `DeleteRow` method will remove the specified row only if a [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=PrimaryKey) is defined.
 
 ```razor
 @code {
@@ -410,7 +410,7 @@ Please keep in mind that `DeleteRow` method will remove the specified row only i
 
 ### Cell Validation on Edit Event
 
-Using the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)'s editing events, we can alter how the user interacts with the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html).
+Using the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)'s editing events, we can alter how the user interacts with the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid).
 
 In this example, we'll validate a cell based on the data entered in it by binding to the `CellEdit` event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event.
 
@@ -447,7 +447,7 @@ igRegisterScript("HandleCellEdit", (ev) => {
 
 <!-- ComponentEnd: TreeGrid -->
 
-The result of the above validation being applied to our [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) can be seen in the below demo:
+The result of the above validation being applied to our [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) can be seen in the below demo:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -677,7 +677,7 @@ public class EmployeesNestedTreeData
 
 ## API References
 
-- [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
-- [`IgbDatePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDatePicker.html)
+- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+- [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)
 
 ## Additional Resources

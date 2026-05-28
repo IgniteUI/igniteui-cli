@@ -13,7 +13,7 @@ The Ignite UI for Blazor Snackbar component is used to provide feedback about an
 
 ## Ignite UI for Blazor Snackbar Example
 
-This sample demonstrates how to create [`IgbSnackbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html) component.
+This sample demonstrates how to create [`IgbSnackbar`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar) component.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -33,7 +33,7 @@ This sample demonstrates how to create [`IgbSnackbar`](https://www.infragistics.
 
 ### Usage
 
-Before using the [`IgbSnackbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html), you need to register it as follows:
+Before using the [`IgbSnackbar`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -41,7 +41,7 @@ Before using the [`IgbSnackbar`](https://www.infragistics.com/blazor/docs/api/ap
 builder.Services.AddIgniteUIBlazor(typeof(IgbSnackbarModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbSnackbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbSnackbar`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -49,7 +49,7 @@ You will also need to link an additional CSS file to apply the styling to the [`
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the snackbar component is to use its [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_Show) method and call it on a button click.
+The simplest way to display the snackbar component is to use its [`Show`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar&member=Show) method and call it on a button click.
 
 ```razor
 <div class="container vertical">
@@ -62,7 +62,7 @@ The simplest way to display the snackbar component is to use its [`Show`](https:
 
 ### Display Time
 
-Use the [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_DisplayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
+Use the [`DisplayTime`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar&member=DisplayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -107,7 +107,7 @@ Use the [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteU
 
 ### Action Text
 
-By default, the snackbar component is hidden automatically after a period specified by the [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_DisplayTime). You can use [`KeepOpen`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_KeepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`ActionText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_ActionText) you can display an action button inside the component.
+By default, the snackbar component is hidden automatically after a period specified by the [`DisplayTime`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar&member=DisplayTime). You can use [`KeepOpen`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar&member=KeepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`ActionText`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar&member=ActionText) you can display an action button inside the component.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -144,7 +144,7 @@ By default, the snackbar component is hidden automatically after a period specif
 
 ## Styling
 
-The [`IgbSnackbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html) component exposes several CSS parts to give you full control over its styling:
+The [`IgbSnackbar`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar) component exposes several CSS parts to give you full control over its styling:
 
 |Name|Description|
 |--|--|
@@ -187,11 +187,11 @@ igc-snackbar::part(base) {
 
 ## API References
 
-- [`ActionText`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_ActionText)
-- [`DisplayTime`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_DisplayTime)
-- [`KeepOpen`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_KeepOpen)
-- [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html#IgniteUI_Blazor_Controls_IgbSnackbar_Show)
-- [`IgbSnackbar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSnackbar.html)
+- [`ActionText`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar&member=ActionText)
+- [`DisplayTime`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar&member=DisplayTime)
+- [`KeepOpen`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar&member=KeepOpen)
+- [`Show`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar&member=Show)
+- [`IgbSnackbar`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

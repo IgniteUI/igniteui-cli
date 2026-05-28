@@ -8,7 +8,7 @@ _tocName: Toolbar
 _premium: true
 ---
 # Angular Tree Grid Toolbar
-The Tree Grid in Ignite UI for Angular provides an [`IgxGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarcomponent.html) which is essentially a container for **UI** operations. The Angular toolbar is located at the top of the Angular component, i.e the Tree Grid and it matches its horizontal size. The toolbar container can host predefined UI controls for the following Tree Grid's features:
+The Tree Grid in Ignite UI for Angular provides an [`IgxGridToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarComponent) which is essentially a container for **UI** operations. The Angular toolbar is located at the top of the Angular component, i.e the Tree Grid and it matches its horizontal size. The toolbar container can host predefined UI controls for the following Tree Grid's features:
 - Column Hiding
 - Column Pinning
 - Exporting to Excel, CSV and PDF
@@ -100,7 +100,7 @@ The predefined `actions` and `title` UI components are added inside the `<igx-gr
     </igx-grid-toolbar>
 </igx-tree-grid>
 ```
-> Note: As seen in the code snippet above, the predefined `actions` UI components are wrapped in the [`<igx-grid-toolbar-actions>` container](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbaractionscomponent.html). This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
+> Note: As seen in the code snippet above, the predefined `actions` UI components are wrapped in the [`<igx-grid-toolbar-actions>` container](mcp:get_api_reference?platform=angular&component=IgxGridToolbarActionsComponent). This way, the toolbar title is aligned to the left of the toolbar and the actions are aligned to the right of the toolbar.
 Of course, each of these UIs can be added independently of each other, or may not be added at all. This way the toolbar container will be rendered empty:
 ```html
 <igx-tree-grid [data]="data" primaryKey="ID" foreignKey="ParentID" [autoGenerate]="true">
@@ -220,7 +220,7 @@ export class TreeGridToolbarSample1Component {
 }
 ```
 ### Title
-Setting a title for the toolbar in your grid is achieved by using the [IgxGridToolbarTitleComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbartitlecomponent.html).
+Setting a title for the toolbar in your grid is achieved by using the [IgxGridToolbarTitleComponent](mcp:get_api_reference?platform=angular&component=IgxGridToolbarTitleComponent).
 Users can provide anything from simple text to more involved templates.
 ```html
 <igx-grid-toolbar>
@@ -228,7 +228,7 @@ Users can provide anything from simple text to more involved templates.
 </igx-grid-toolbar>
 ```
 ### Actions
-The toolbar exposes a [specific container](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbaractionscomponent.html) where users can place actions/interactions in relation to the parent grid.
+The toolbar exposes a [specific container](mcp:get_api_reference?platform=angular&component=IgxGridToolbarActionsComponent) where users can place actions/interactions in relation to the parent grid.
 As with the title portion of the toolbar, users can provide anything inside that template part, including the default
 toolbar interaction components.
 ```html
@@ -240,7 +240,7 @@ toolbar interaction components.
     </igx-grid-toolbar-actions>
 </igx-grid-toolbar>
 ```
-Each action now exposes a way to change the overlay settings of the actions dialog by using the [`overlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarhidingcomponent.html#overlaySettings) input, example:
+Each action now exposes a way to change the overlay settings of the actions dialog by using the [`overlaySettings`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarHidingComponent&member=overlaySettings) input, example:
 ```html
 <igx-grid-toolbar-actions>
     <igx-grid-toolbar-pinning [overlaySettings]="overlaySettingsScaleCenter"></igx-grid-toolbar-pinning>
@@ -272,7 +272,7 @@ constructor() {
 ```
 The default overlaySettings are using _ConnectedPositionStrategy_ with _Absolute_ scroll strategy, _modal_ set to false, with enabled _close on escape_ and _close on outside click_ interactions.
 ### Column pinning
-[Toolbar Pinning component](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarpinningcomponent.html) provides the default UI for interacting with column pinning in the grid.
+[Toolbar Pinning component](mcp:get_api_reference?platform=angular&component=IgxGridToolbarPinningComponent) provides the default UI for interacting with column pinning in the grid.
 The component is setup to work out of the box with the parent grid containing the toolbar as well as several input properties for customizing the UI, such as the component
 title, the placeholder for the component input and the height of the dropdown itself.
 ```html
@@ -288,7 +288,7 @@ title, the placeholder for the component input and the height of the dropdown it
 </igx-grid-toolbar>
 ```
 ### Column hiding
-[Toolbar Hiding component](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarhidingcomponent.html) provides the default
+[Toolbar Hiding component](mcp:get_api_reference?platform=angular&component=IgxGridToolbarHidingComponent) provides the default
 UI for interacting with column hiding. Exposes the same input properties for customizing the UI, such as the component
 title, the placeholder for the component input and the height of the dropdown itself.
 ```html
@@ -304,7 +304,7 @@ title, the placeholder for the component input and the height of the dropdown it
 </igx-grid-toolbar>
 ```
 ### Advanced filtering
-[Toolbar Advanced Filtering component](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbaradvancedfilteringcomponent.html) provides the default UI for the Advanced Filtering feature. The component exposes a way to change the default text of the button.
+[Toolbar Advanced Filtering component](mcp:get_api_reference?platform=angular&component=IgxGridToolbarAdvancedFilteringComponent) provides the default UI for the Advanced Filtering feature. The component exposes a way to change the default text of the button.
 ```html
 <igx-grid-toolbar>
     <igx-grid-toolbar-actions>
@@ -313,8 +313,8 @@ title, the placeholder for the component input and the height of the dropdown it
 </igx-grid-toolbar>
 ```
 ### Data exporting
-As with the rest of the toolbar actions, exporting is provided through a [Toolbar Exporter component](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarexportercomponent.html) out of the box.
-The exporting component is using the respective service for the target data format ([Excel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxexcelexporterservice.html), [CSV](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcsvexporterservice.html), [PDF](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html)). That means if the respective service is not provided through the dependency injection chain, the component
+As with the rest of the toolbar actions, exporting is provided through a [Toolbar Exporter component](mcp:get_api_reference?platform=angular&component=IgxGridToolbarExporterComponent) out of the box.
+The exporting component is using the respective service for the target data format ([Excel](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService), [CSV](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService), [PDF](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html)). That means if the respective service is not provided through the dependency injection chain, the component
 won't be able to export anything.
 If you need a refresher on the DI in Angular, check the [official guide](https://angular.io/guide/dependency-injection). Here is a sample snippet showing how to enable
 all export services for your application.
@@ -332,7 +332,7 @@ export class AppModule { ... }
 > In v12.2.1 and later, the exporter services are provided in root, which means you no longer need to declare them in the AppModule providers.
 The toolbar exporter component exposes several input properties for customizing both the UI and the exporting experience.
 These range from changing the display text, to enabling/disabling options in the dropdown to customizing the name of the
-generated file. For full reference, consult the [API documentation](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarexportercomponent.html) for the toolbar exporter component.
+generated file. For full reference, consult the [API documentation](mcp:get_api_reference?platform=angular&component=IgxGridToolbarExporterComponent) for the toolbar exporter component.
 Here is a snippet showing some of the options which can be customized through the Angular template:
 ```html
 <igx-grid-toolbar>
@@ -355,7 +355,7 @@ Here is a snippet showing some of the options which can be customized through th
     </igx-grid-toolbar-actions>
 </igx-grid-toolbar>
 ```
-In addition to changing the exported filename, the user can further configure the exporter options by waiting for the [toolbarExporting](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#toolbarExporting) event and customizing the options entry in the event properties.
+In addition to changing the exported filename, the user can further configure the exporter options by waiting for the [toolbarExporting](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=toolbarExporting) event and customizing the options entry in the event properties.
 > [!NOTE]
 > By default when exporting to CSV the exporter exports using a comma separator and uses a '.csv' extension for the output file.
 > You can customize these exporting parameters by subscribing to events of the exporter or changing the values of the exporter options fields.
@@ -497,7 +497,7 @@ export class TreeGridToolbarSample2Component {
 <div class="divider"></div>
 ## Exporting Indicator
 When using the default toolbar exporter component, whenever an export operation takes place the toolbar will show a progress indicator while the operation is in progress.
-Moreover, users can set the toolbar [showProgress](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarcomponent.html#showProgress) property and use for their own long running operations
+Moreover, users can set the toolbar [showProgress](mcp:get_api_reference?platform=angular&component=IgxGridToolbarComponent&member=showProgress) property and use for their own long running operations
 or just as another way to signify an action taking place in the grid.
 The sample below has significant amount of data. While the data is being exported, the progress bar is shown. Additionally, it has another button that simulates a long running operation in the grid:
 ```typescript
@@ -845,15 +845,15 @@ $dark-grid-toolbar-theme: grid-toolbar-theme(
 <div class="divider"></div>
 ## API References
 The Grid Toolbar service has a few more APIs to explore, which are listed below.
-- [`IgxGridToolbarActionsComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbaractionscomponent.html)
-- [`IgxGridToolbarAdvancedFilteringComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbaradvancedfilteringcomponent.html)
-- [`IgxGridToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarcomponent.html)
-- [`IgxGridToolbarExporterComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarexportercomponent.html)
-- [`IgxGridToolbarHidingComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarhidingcomponent.html)
-- [`IgxGridToolbarPinningComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbarpinningcomponent.html)
-- [`IgxGridToolbarTitleComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridtoolbartitlecomponent.html)
-[`IgxTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html) events:
-- [`toolbarExporting`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#toolbarExporting)
+- [`IgxGridToolbarActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarActionsComponent)
+- [`IgxGridToolbarAdvancedFilteringComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarAdvancedFilteringComponent)
+- [`IgxGridToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarComponent)
+- [`IgxGridToolbarExporterComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarExporterComponent)
+- [`IgxGridToolbarHidingComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarHidingComponent)
+- [`IgxGridToolbarPinningComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarPinningComponent)
+- [`IgxGridToolbarTitleComponent`](mcp:get_api_reference?platform=angular&component=IgxGridToolbarTitleComponent)
+[`IgxTreeGridComponent`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) events:
+- [`toolbarExporting`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=toolbarExporting)
 Styles:
 - [`IgxTreeGridComponent Styles`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 ## Additional Resources

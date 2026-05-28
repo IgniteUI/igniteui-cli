@@ -18,7 +18,7 @@ With the Ignite UI for Web Components Select feature in Web Components Grid you 
 - Cell selection
 - Column selection
 
-With the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#rowSelection) property, you can specify:
+With the [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) property, you can specify:
 
 - None
 - Single
@@ -26,7 +26,7 @@ With the [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-co
 
 ## Web Components Grid Selection Example
 
-The sample below demonstrates three types of **cell selection** behaviors in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html). Use the buttons below to enable each of the available selection modes.
+The sample below demonstrates three types of **cell selection** behaviors in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). Use the buttons below to enable each of the available selection modes.
 
 ```css
 /* shared styles are loaded from: */
@@ -37,27 +37,27 @@ The sample below demonstrates three types of **cell selection** behaviors in the
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
 
-The Ignite UI for Web Components [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html). In order to change/enable selection mode you can use [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#rowSelection), [`cellSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#cellSelection) or [`selectable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selectable) properties.
+The Ignite UI for Web Components [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). In order to change/enable selection mode you can use [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection), [`cellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=cellSelection) or [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable) properties.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ### Web Components Grid Row Selection
 
-Property [`rowSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#rowSelection) enables you to specify the following options:
+Property [`rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) enables you to specify the following options:
 
-- `None` - Row selection would be disabled for the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
-- `Single` - Selection of only one row within the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) would be available.
+- `None` - Row selection would be disabled for the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+- `Single` - Selection of only one row within the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) would be available.
 - `Multiple` - Multi-row selection would be available by using the row selectors, with a key combination like <kbd>CTRL</kbd> + <kbd>click</kbd>, or by pressing the <kbd>space key</kbd> once a cell is focused.
 
 > Go to [Row selection topic](row-selection.md) for more information.
 
 ### Web Components Grid Cell Selection
 
-Property [`cellSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#cellSelection) enables you to specify the following options:
+Property [`cellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=cellSelection) enables you to specify the following options:
 
-- `None` - Cell selection would be disabled for the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
-- `Single` - Selection of only one cell within the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) would be available.
-- `Multiple` - Currently, this is the default state of the selection in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
+- `None` - Cell selection would be disabled for the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
+- `Single` - Selection of only one cell within the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) would be available.
+- `Multiple` - Currently, this is the default state of the selection in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -67,7 +67,7 @@ Property [`cellSelection`](https://www.infragistics.com/products/ignite-ui-web-c
 
 ### Web Components Grid Column Selection
 
-The [`selectable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selectable) property enables you to specify the following options for each [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
+The [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable) property enables you to specify the following options for each [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
 
 This leads to the following three variations:
 
@@ -85,7 +85,7 @@ This leads to the following three variations:
 
 ## Web Components Grid Context Menu
 
-Using the `ContextMenu` event you can add a custom context menu to facilitate your work with [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html). With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
+Using the `ContextMenu` event you can add a custom context menu to facilitate your work with [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
 
 If there is a **multi-cell selection**, we will put logic, which will check whether the selected cell is in the area of the multi-cell selection. If it is, we will also emit the values of the selected cells.
 
@@ -164,7 +164,7 @@ The context menu will have the following functions:
     }
 ```
 
-The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) will fetch the copied data and will paste it in a container element.
+The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) will fetch the copied data and will paste it in a container element.
 
 The template we are going to use to combine the grid with the context menu:
 
@@ -374,7 +374,7 @@ export class NwindData extends Array<NwindDataItem> {
 
 ## Known Issues and Limitations
 
-When the grid has no [`primaryKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+When the grid has no [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 - Row Expand/collapse
@@ -383,7 +383,7 @@ When the grid has no [`primaryKey`](https://www.infragistics.com/products/ignite
 
 ## API References
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 
 ## Additional Resources
 

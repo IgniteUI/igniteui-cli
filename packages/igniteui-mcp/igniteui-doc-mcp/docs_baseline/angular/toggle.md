@@ -113,7 +113,7 @@ Now that you have the Ignite UI for Angular Toggle module or directive imported,
 
 ### Display Toggle
 
-In order to show and hide the toggle content, use its [open](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoggledirective.html#open) and [close](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoggledirective.html#close) methods:
+In order to show and hide the toggle content, use its [open](mcp:get_api_reference?platform=angular&component=IgxToggleDirective&member=open) and [close](mcp:get_api_reference?platform=angular&component=IgxToggleDirective&member=close) methods:
 
 ```typescript
 import { IgxToggleDirective } from 'igniteui-angular/directives'
@@ -151,10 +151,10 @@ Then in the template of our component, we can apply the directive on the element
 
 In the next sample, we'll use a different positioning strategy so that the content is displayed below the button.
 
-The `igxToggle` directive uses the [`IgxOverlayService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html) provider. The `open`, `close` and `toggle` methods accept optional overlay settings that control how the content is displayed. If omitted, the default overlay settings are used as seen in the previous sample.
+The `igxToggle` directive uses the [`IgxOverlayService`](mcp:get_api_reference?platform=angular&component=IgxOverlayService) provider. The `open`, `close` and `toggle` methods accept optional overlay settings that control how the content is displayed. If omitted, the default overlay settings are used as seen in the previous sample.
 
 >[!NOTE]
-> By default, the [`closeOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#closeOnOutsideClick) property is set to `true`. In order to disable this functionality, the property has to be set to `false`. Additionally, the [`closeOnEscape`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#closeOnEscape) property defaults to `false`, so in order to make use of it, we have to set it to `true`.
+> By default, the [`closeOnOutsideClick`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnOutsideClick) property is set to `true`. In order to disable this functionality, the property has to be set to `false`. Additionally, the [`closeOnEscape`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnEscape) property defaults to `false`, so in order to make use of it, we have to set it to `true`.
 
 ```typescript
 // template.component.ts
@@ -236,7 +236,7 @@ In order to avoid using the `open` and `close` methods, we can use a directive, 
 If we would like to take advantage of this functionality, we will have to use the `IgxToggleActionDirective` from the `IgxToggleModule` and assign the `IgxToggleDirective` to it.
 
 >[!NOTE]
-> The [`IgxToggleActionDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoggleactiondirective.html) should be declared on the element we are planing to use like a trigger (toggle).
+> The [`IgxToggleActionDirective`](mcp:get_api_reference?platform=angular&component=IgxToggleActionDirective) should be declared on the element we are planing to use like a trigger (toggle).
 
 ```html
 <!--template.component.html-->
@@ -276,11 +276,11 @@ export class ToggleSample2Component { }
 
 
 >[!NOTE]
-> By default `IgxToggleActionDirective` excludes its host element from the [`closeOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#closeOnOutsideClick) property. Therefore, clicking on the host element will not fire any event. Additionally, this directive will set its host element as the overlay settings [`target`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#target).
+> By default `IgxToggleActionDirective` excludes its host element from the [`closeOnOutsideClick`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnOutsideClick) property. Therefore, clicking on the host element will not fire any event. Additionally, this directive will set its host element as the overlay settings [`target`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=target).
 
 ### Automatic Toggle Service Provider
 
-There is a convenient way to keep the state of the `igxToggle` directive and command it via the [`igxNavigationService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavigationservice.html) provider. We just need to set an identifier for our `igxToggle` element, which will be used to register the toggle with the service. If we would like to control its state automatically, we have to pass this identifier to the `igxToggleActionDirective`.
+There is a convenient way to keep the state of the `igxToggle` directive and command it via the [`igxNavigationService`](mcp:get_api_reference?platform=angular&component=IgxNavigationService) provider. We just need to set an identifier for our `igxToggle` element, which will be used to register the toggle with the service. If we would like to control its state automatically, we have to pass this identifier to the `igxToggleActionDirective`.
 
 ```html
 <!--template.component.html-->
@@ -379,14 +379,14 @@ export class ToggleSample4Component {
 
 <div class="divider"></div>
 
-- [IgxToggleDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoggledirective.html)
-- [IgxToggleActionDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtoggleactiondirective.html)
+- [IgxToggleDirective](mcp:get_api_reference?platform=angular&component=IgxToggleDirective)
+- [IgxToggleActionDirective](mcp:get_api_reference?platform=angular&component=IgxToggleActionDirective)
 
 Additional components and/or directives with relative APIs that were used:
 
-- [IgxOverlayOutletDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayoutletdirective.html)
-- [IgxOverlayService](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxoverlayservice.html)
-- [igxNavigationService](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavigationservice.html)
+- [IgxOverlayOutletDirective](mcp:get_api_reference?platform=angular&component=IgxOverlayOutletDirective)
+- [IgxOverlayService](mcp:get_api_reference?platform=angular&component=IgxOverlayService)
+- [igxNavigationService](mcp:get_api_reference?platform=angular&component=IgxNavigationService)
 
 ## Theming Dependencies
 

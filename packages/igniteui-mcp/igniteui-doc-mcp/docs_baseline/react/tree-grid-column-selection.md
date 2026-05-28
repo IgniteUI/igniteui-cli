@@ -13,11 +13,11 @@ _premium: true
 
 # React Tree Grid Column Selection Overview
 
-The React Tree Grid Column Selection feature in Ignite UI for React offers a simplified and Excel-like way to select and highlight an entire column with a single click. It can be enabled through the [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#columnSelection) input. Thanks to the rich API, the feature allows for easy manipulation of the selection state, data extraction from the selected fractions, data analysis operations, and visualizations.
+The React Tree Grid Column Selection feature in Ignite UI for React offers a simplified and Excel-like way to select and highlight an entire column with a single click. It can be enabled through the [`columnSelection`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=columnSelection) input. Thanks to the rich API, the feature allows for easy manipulation of the selection state, data extraction from the selected fractions, data analysis operations, and visualizations.
 
 ## React Tree Grid Column Selection Example
 
-The sample below demonstrates the three types of [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)'s **column selection** behavior. Use the column selection dropdown below to enable each of the available selection modes.
+The sample below demonstrates the three types of [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)'s **column selection** behavior. Use the column selection dropdown below to enable each of the available selection modes.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -183,14 +183,14 @@ root.render(<Sample/>);
 
 ## Basic Usage
 
-The column selection feature can be enabled through the [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#columnSelection) input, which takes `GridSelectionMode` values.
+The column selection feature can be enabled through the [`columnSelection`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=columnSelection) input, which takes `GridSelectionMode` values.
 
 ## Interactions
 
-The default selection mode is `None`. If set to `Single` or `Multiple`, all of the presented columns will be [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selectable). With that being said, in order to select a column, we just need to click on one, which will mark it as [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected). If the column is not selectable, no selection style will be applied on the header, while hovering.
+The default selection mode is `None`. If set to `Single` or `Multiple`, all of the presented columns will be [`selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable). With that being said, in order to select a column, we just need to click on one, which will mark it as [`selected`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selected). If the column is not selectable, no selection style will be applied on the header, while hovering.
 
 > [!Note]
-> The [Multi Column Headers](multi-column-headers.md) feature does not reflect on the [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selectable) input. The `ColumnGroupComponent` is [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected) if all of its [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selectable) descendants are [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected).
+> The [Multi Column Headers](multi-column-headers.md) feature does not reflect on the [`selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable) input. The `ColumnGroupComponent` is [`selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`selected`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selected) if all of its [`selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable) descendants are [`selected`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selected).
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -373,7 +373,7 @@ root.render(<Sample/>);
 ## Keyboard Combinations
 
 > [!Note]
-> The keyboard combinations are available only when the grid [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#columnSelection) input is set to `multiple`.
+> The keyboard combinations are available only when the grid [`columnSelection`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=columnSelection) input is set to `multiple`.
 
 There are two scenarios for keyboard navigation of the **Column Selection** feature:
 
@@ -382,10 +382,10 @@ There are two scenarios for keyboard navigation of the **Column Selection** feat
 
 ## API Manipulations
 
-The **API** provides some additional capabilities when it comes to the **non-visible** columns such that, every **hidden** column could be marked as [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected) by setting the corresponding **setter**.
+The **API** provides some additional capabilities when it comes to the **non-visible** columns such that, every **hidden** column could be marked as [`selected`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selected) by setting the corresponding **setter**.
 
 > [!Note]
-> The above statement also applies to the `ColumnGroupComponent`, except that when the [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected) property is changed it changes the state of its descendants.
+> The above statement also applies to the `ColumnGroupComponent`, except that when the [`selected`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selected) property is changed it changes the state of its descendants.
 
 More information regarding the API manipulations could be found in the [API References](#api-references) section.
 
@@ -599,30 +599,30 @@ root.render(<Sample/>);
 
 The column selection UI has a few more APIs to explore, which are listed below.
 
-- [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
-- [`columnGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnGroup)
+- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+- [`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup)
 
-[`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) properties:
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) properties:
 
-- [`columnSelection`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#columnSelection)
-- [`selectedColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#selectedColumns)
-- [`selectColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#selectColumns)
-- [`deselectColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#deselectColumns)
-- [`selectAllColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#selectAllColumns)
-- [`deselectAllColumns`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#deselectAllColumns)
+- [`columnSelection`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=columnSelection)
+- [`selectedColumns`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=selectedColumns)
+- [`selectColumns`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=selectColumns)
+- [`deselectColumns`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=deselectColumns)
+- [`selectAllColumns`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=selectAllColumns)
+- [`deselectAllColumns`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=deselectAllColumns)
 
-[`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) properties:
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) properties:
 
-- [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selectable)
-- [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected)
+- [`selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable)
+- [`selected`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selected)
 
-[`columnGroup`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#columnGroup) properties:
+[`columnGroup`](mcp:get_api_reference?platform=react&component=IgrColumn&member=columnGroup) properties:
 
-- [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selectable)
-- [`selected`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#selected)
+- [`selectable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selectable)
+- [`selected`](mcp:get_api_reference?platform=react&component=IgrColumn&member=selected)
 
-[`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) events:
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) events:
 
 - `OnColumnsSelectionChange`
 

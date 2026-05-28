@@ -69,7 +69,7 @@ Added OthersCategoryBrush and OthersCategoryOutline to DataPieChart and Proporti
 
 In Ignite UI for Angular, you can now annotate the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) with slice, strip, and point annotations at runtime using the new user annotations feature. This allows the end user to add more details to the plot such as calling out single important events such as company quarter reports by using the slice annotation or events that have a duration by using the strip annotation. You can also call out individual points on the plotted series by using the point annotation or any combination of these three.
 
-This is directly integrated with the available tools of the [`IgxToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html).
+This is directly integrated with the available tools of the [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent).
 
 <img class="responsive-img" src="../images/charts/data-chart-user-annotation-create.gif"
 alt="Angular user-annotation-create"/>
@@ -242,9 +242,9 @@ There is a new property called [`useInsetOutlines`](https://www.infragistics.com
 
 #### Toolbar
 
-- Added new `GroupHeaderTextStyle` property to [`IgxToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html) and [`IgxToolPanelComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolpanelcomponent.html). If set, it will apply to all [`IgxToolActionGroupHeaderComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolactiongroupheadercomponent.html) actions.
-- Added new property on [`IgxToolActionComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolactioncomponent.html) called [`titleHorizontalAlignment`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolactioncomponent.html#titleHorizontalAlignment) which controls the horizontal alignment of the title text.
-- Added new property on [`IgxToolActionSubPanelComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolactionsubpanelcomponent.html) called [`itemSpacing`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolactionsubpanelcomponent.html#itemSpacing) which controls the spacing between items inside the panel.
+- Added new `GroupHeaderTextStyle` property to [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) and [`IgxToolPanelComponent`](mcp:get_api_reference?platform=angular&component=IgxToolPanelComponent). If set, it will apply to all [`IgxToolActionGroupHeaderComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionGroupHeaderComponent) actions.
+- Added new property on [`IgxToolActionComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent) called [`titleHorizontalAlignment`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent&member=titleHorizontalAlignment) which controls the horizontal alignment of the title text.
+- Added new property on [`IgxToolActionSubPanelComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionSubPanelComponent) called [`itemSpacing`](mcp:get_api_reference?platform=angular&component=IgxToolActionSubPanelComponent&member=itemSpacing) which controls the spacing between items inside the panel.
 
 ### Bug Fixes
 
@@ -285,7 +285,7 @@ The following table lists the bug fixes made for the Ignite UI for Angular tools
 
 - <label class="badge badge--new">NEW</label> [Proportional Category Angle Axis](charts/types/radial-chart.md) - New axes for the Radial Pie Series in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html), to plot slices similar to a pie chart, a type of data visualization where data points are represented as segments within a circular graph.
 
-- [`IgxToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html)
+- [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent)
   - New ToolActionCheckboxList
     A new CheckboxList ToolAction that displays a collection of items with checkboxes for selecting. A grid inside ToolAction CheckboxList grows in height up to 5 items, then a scrollbar is displayed.
     Requires IgxCheckboxListModule to be registered.
@@ -311,12 +311,12 @@ The following table lists the bug fixes made for the Ignite UI for Angular tools
 
 - [Treemap Percent-based Highlighting](charts/types/treemap-chart.md#angular-treemap-percent-based-highlighting) - New percent-based highlighting, allowing nodes to represent progress or subset of a collection. The appearance is shown as a fill-in of its backcolor up to a specific value either by a member on your data item or by supplying a new [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#highlightedDataSource). Can be toggled via [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#highlightedValuesDisplayMode) and styled via `FillBrushes`.
 
-- [`IgxToolbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html) - New `IsHighlighted` option for ToolAction for outlining a border around specific tools of choice.
+- [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) - New `IsHighlighted` option for ToolAction for outlining a border around specific tools of choice.
 
 ### igniteui-angular-gauges (Gauges)
 
-- [`IgxRadialGaugeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html)
-  - New label for the highlight needle. [`highlightLabelText`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html#highlightLabelText) and [`highlightLabelSnapsToNeedlePivot`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html#highlightLabelSnapsToNeedlePivot) and many other styling related properties for the HighlightLabel were added.
+- [`IgxRadialGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent)
+  - New label for the highlight needle. [`highlightLabelText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightLabelText) and [`highlightLabelSnapsToNeedlePivot`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightLabelSnapsToNeedlePivot) and many other styling related properties for the HighlightLabel were added.
 
 ## **17.3.0 (March 2024)**
 
@@ -330,14 +330,14 @@ The following table lists the bug fixes made for the Ignite UI for Angular tools
 
 ### igniteui-angular-gauges
 
-- [`IgxRadialGaugeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html)
-  - New title/subtitle properties. [`titleText`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html#titleText), [`subtitleText`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html#subtitleText) will appear near the bottom the gauge. In addition, the various title/subtitle font properties were added such as `TitleFontSize`, `TitleFontFamily`, `TitleFontStyle`, `TitleFontWeight` and [`titleExtent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html#titleExtent). Finally, the new [`titleDisplaysValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html#titleDisplaysValue) will allow the value to correspond with the needle's position.
-  - New [`opticalScalingEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html#opticalScalingEnabled) and [`opticalScalingSize`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html#opticalScalingSize) properties for the [`IgxRadialGaugeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html). This new feature will manage the size at which labels, titles, and subtitles of the gauge have 100% optical scaling. You can read more about this new feature in this [topic](radial-gauge.md#optical-scaling)
-  - New highlight needle was added. [`highlightValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html#highlightValue) and [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxradialgaugecomponent.html#highlightValueDisplayMode) when both are provided a value and 'Overlay' setting, this will make the main needle to appear faded and a new needle will appear.
-- [`IgxLinearGaugeComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html)
-  - New highlight needle was added. [`highlightValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html#highlightValue) and [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxlineargaugecomponent.html#highlightValueDisplayMode) when both are provided a value and 'Overlay' setting, this will make the main needle to appear faded and a new needle will appear.
-- [`IgxBulletGraphComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html)
-  - The Performance bar will now reflect a difference between the value and new [`highlightValue`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html#highlightValue) when the [`highlightValueDisplayMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_gauges.igxbulletgraphcomponent.html#highlightValueDisplayMode) is applied to the 'Overlay' setting. The highlight value will show a filtered/subset completed measured percentage as a filled in color while the remaining bar's appearance will appear faded to the assigned value, illustrating the performance in real-time.
+- [`IgxRadialGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent)
+  - New title/subtitle properties. [`titleText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleText), [`subtitleText`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=subtitleText) will appear near the bottom the gauge. In addition, the various title/subtitle font properties were added such as `TitleFontSize`, `TitleFontFamily`, `TitleFontStyle`, `TitleFontWeight` and [`titleExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleExtent). Finally, the new [`titleDisplaysValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=titleDisplaysValue) will allow the value to correspond with the needle's position.
+  - New [`opticalScalingEnabled`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=opticalScalingEnabled) and [`opticalScalingSize`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=opticalScalingSize) properties for the [`IgxRadialGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent). This new feature will manage the size at which labels, titles, and subtitles of the gauge have 100% optical scaling. You can read more about this new feature in this [topic](radial-gauge.md#optical-scaling)
+  - New highlight needle was added. [`highlightValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightValue) and [`highlightValueDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightValueDisplayMode) when both are provided a value and 'Overlay' setting, this will make the main needle to appear faded and a new needle will appear.
+- [`IgxLinearGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent)
+  - New highlight needle was added. [`highlightValue`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=highlightValue) and [`highlightValueDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=highlightValueDisplayMode) when both are provided a value and 'Overlay' setting, this will make the main needle to appear faded and a new needle will appear.
+- [`IgxBulletGraphComponent`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent)
+  - The Performance bar will now reflect a difference between the value and new [`highlightValue`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=highlightValue) when the [`highlightValueDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=highlightValueDisplayMode) is applied to the 'Overlay' setting. The highlight value will show a filtered/subset completed measured percentage as a filled in color while the remaining bar's appearance will appear faded to the assigned value, illustrating the performance in real-time.
 
 ## **17.2.0 (January 2024)**
 
@@ -350,7 +350,7 @@ The following table lists the bug fixes made for the Ignite UI for Angular tools
 ### igniteui-angular - Toolbar - <label class="badge badge--preview">PREVIEW</label>
 
 - Save tool action has been added to save the chart to an image via the clipboard.
-- Vertical orientation has been added via the toolbar's [`orientation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html#orientation) property. By default the toolbar is horizontal, now the toolbar can be shown in vertical orientation where the tools will popup to the left/right respectfully.
+- Vertical orientation has been added via the toolbar's [`orientation`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent&member=orientation) property. By default the toolbar is horizontal, now the toolbar can be shown in vertical orientation where the tools will popup to the left/right respectfully.
 - Custom SVG icons support was added via the toolbar's `renderImageFromText` method, further enhancing custom tool creation.
 
 ## **16.1.0 (June 2023)**
@@ -514,7 +514,7 @@ for example:
 
 #### Chart Legend
 
-- Added horizontal [`orientation`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_layouts.igxtoolbarcomponent.html#orientation) property to ItemLegend that can be used with Bubble, Donut, and Pie Chart
+- Added horizontal [`orientation`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent&member=orientation) property to ItemLegend that can be used with Bubble, Donut, and Pie Chart
 - Added [`legendHighlightingMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#legendHighlightingMode) property - Enables series highlighting when hovering over legend items
 
 ### igniteui-angular-maps (GeoMap)

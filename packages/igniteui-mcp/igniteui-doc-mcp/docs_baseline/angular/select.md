@@ -8,7 +8,7 @@ _tocName: Select
 
 # Angular Select Component Overview
 
-Angular Select is a form component used for selecting a single value from a list of predefined values. The Angular Select Component provides functionality identical to the native HTML select element, but offers a lot more customization options. It is based on the [IgxDropDownComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html) and supports all of its features, including templating, virtualization, and customizing the dropdown list items.
+Angular Select is a form component used for selecting a single value from a list of predefined values. The Angular Select Component provides functionality identical to the native HTML select element, but offers a lot more customization options. It is based on the [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) and supports all of its features, including templating, virtualization, and customizing the dropdown list items.
 
 ## Angular Select Example
 
@@ -107,7 +107,7 @@ Now that you have the Ignite UI for Angular Select module or directives imported
 
 ## Using the Angular Select
 
-Add the `igx-select` along with a list of items to choose from. We use [`igx-select-item`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxselectitemcomponent.html) to display the items that the `igx-select` contains.
+Add the `igx-select` along with a list of items to choose from. We use [`igx-select-item`](mcp:get_api_reference?platform=angular&component=IgxSelectItemComponent) to display the items that the `igx-select` contains.
 
 ```html
 <igx-select>
@@ -205,7 +205,7 @@ export class SelectInputDirectivesComponent {
 ```
 
 >[!NOTE]
->If no [`placeholder`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxselectcomponent.html#placeholder) is specified for the Select component and there is no selection made, the `igxLabel` will transition and appear where you would expect the placeholder to be.
+>If no [`placeholder`](mcp:get_api_reference?platform=angular&component=IgxSelectComponent&member=placeholder) is specified for the Select component and there is no selection made, the `igxLabel` will transition and appear where you would expect the placeholder to be.
 
 ### Group Select Items
 
@@ -342,7 +342,7 @@ igx-select-item {
 ### Header & Footer
 
 Currently, there are no default header and footer templates for the Select component. However, you can add a header or a footer template by marking them respectively with `igxSelectHeader` or `igxSelectFooter`. As these are custom templates, you should define their styling as well.
-In this example, there are both header and footer ng-templates defined. In the header there is a basic filtering, implemented via [`igx-buttongroup`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbuttongroupcomponent.html). The footer includes static summary of all of the items, based on the delivery method.
+In this example, there are both header and footer ng-templates defined. In the header there is a basic filtering, implemented via [`igx-buttongroup`](mcp:get_api_reference?platform=angular&component=IgxButtonGroupComponent). The footer includes static summary of all of the items, based on the delivery method.
 
 ```html
 <igx-select>
@@ -612,7 +612,7 @@ $custom-button-group: button-group-theme(
 
 ### Custom Toggle Button in Angular Select
 
-You can customize the default toggle button, using the `igxSelectToggleIcon` directive or setting a `TemplateRef` to the [`toggleIconTemplate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxselectcomponent.html#toggleIconTemplate) property.
+You can customize the default toggle button, using the `igxSelectToggleIcon` directive or setting a `TemplateRef` to the [`toggleIconTemplate`](mcp:get_api_reference?platform=angular&component=IgxSelectComponent&member=toggleIconTemplate) property.
 
 ```html
 <igx-select #select>
@@ -641,7 +641,7 @@ You can also try out the [drag and drop App Builder™](https://www.infragistics
 
 ## Custom Overlay Settings
 
-You can create custom [`OverlaySettings`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html). To do this you first define your template like so:
+You can create custom [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings). To do this you first define your template like so:
 
 ```html
 <igx-select [overlaySettings]="customOverlaySettings">
@@ -682,7 +682,7 @@ export class MyClass implements OnInit {
 }
 ```
 
-You can see that we create a [_PositionSettings_](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionsettings.html) object that is directly passed to our [_ConnectedPositioningStrategy_](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/connectedpositioningstrategy.html), it is not required to do it, but since we want to define a custom positioning, we use them to override the strategy's default settings.
+You can see that we create a [_PositionSettings_](mcp:get_api_reference?platform=angular&component=PositionSettings) object that is directly passed to our [_ConnectedPositioningStrategy_](mcp:get_api_reference?platform=angular&component=ConnectedPositioningStrategy), it is not required to do it, but since we want to define a custom positioning, we use them to override the strategy's default settings.
 
 - You can set all settings inside of the [_ngOnInit_](https://angular.io/api/core/OnInit) hook and this will automatically affect your template upon the component's generation.
 
@@ -747,7 +747,7 @@ export class SelectSample4Component implements OnInit {
 ```
 
 
-You can also pass in a customized [OverlaySettings](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html) object to the [IgxSelectComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxselectcomponent.html#open)'s open function, where your template should look like this:
+You can also pass in a customized [OverlaySettings](mcp:get_api_reference?platform=angular&component=OverlaySettings) object to the [IgxSelectComponent](mcp:get_api_reference?platform=angular&component=IgxSelectComponent&member=open)'s open function, where your template should look like this:
 
 ```html
 <igx-select>
@@ -943,15 +943,15 @@ At the end your select should look like this:
 
 ## API Reference
 
-- [IgxSelectComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxselectcomponent.html)
-- [IgxSelectItemComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxselectitemcomponent.html)
-- [IgxDropDownComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html)
-- [IgxDropDownItemComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownitemcomponent.html)
-- [OverlaySettings](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html)
-- [ConnectedPositioningStrategy](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/connectedpositioningstrategy.html)
-- [GlobalPositionStrategy](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/globalpositionstrategy.html#constructor)
-- [AbsoluteScrollStrategy](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/absolutescrollstrategy.html)
-- [PositionSettings](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/positionsettings.html)
+- [IgxSelectComponent](mcp:get_api_reference?platform=angular&component=IgxSelectComponent)
+- [IgxSelectItemComponent](mcp:get_api_reference?platform=angular&component=IgxSelectItemComponent)
+- [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
+- [IgxDropDownItemComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent)
+- [OverlaySettings](mcp:get_api_reference?platform=angular&component=OverlaySettings)
+- [ConnectedPositioningStrategy](mcp:get_api_reference?platform=angular&component=ConnectedPositioningStrategy)
+- [GlobalPositionStrategy](mcp:get_api_reference?platform=angular&component=GlobalPositionStrategy&member=constructor)
+- [AbsoluteScrollStrategy](mcp:get_api_reference?platform=angular&component=AbsoluteScrollStrategy)
+- [PositionSettings](mcp:get_api_reference?platform=angular&component=PositionSettings)
 
 ## Theming Dependencies
 

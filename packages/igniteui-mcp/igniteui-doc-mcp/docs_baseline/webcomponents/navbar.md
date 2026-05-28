@@ -13,7 +13,7 @@ The Ignite UI for Web Components Navbar informs the user of their current positi
 
 ## Web Components Navbar Example
 
-The following example represents a [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html) with icons and text header:
+The following example represents a [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent) with icons and text header:
 
 ```css
 /* shared styles are loaded from: */
@@ -28,7 +28,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html), you need to register it as follows:
+Before using the [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcNavbarComponent } from 'igniteui-webcomponents';
@@ -38,7 +38,7 @@ defineComponents(IgcNavbarComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Then in the template of [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html), you can add the following code to show a basic [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html) with a title only:
+Then in the template of [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent), you can add the following code to show a basic [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent) with a title only:
 
 ```html
 <igc-navbar>Navigation Title</igc-navbar>
@@ -46,7 +46,7 @@ Then in the template of [`IgcNavbarComponent`](https://www.infragistics.com/prod
 
 ### Content
 
-You can enhance the [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html) component by adding [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) or other components at the start or end position as content, allowing users to navigate to key positions directly from the bar:
+You can enhance the [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent) component by adding [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) or other components at the start or end position as content, allowing users to navigate to key positions directly from the bar:
 
 ```html
 <igc-navbar>
@@ -108,8 +108,8 @@ igc-navbar::part(middle) {
 
 ## API References
 
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
-- [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
+- [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

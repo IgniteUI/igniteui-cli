@@ -8,7 +8,7 @@ _tocName: Navbar
 
 # Angular Navbar Component Overview
 
-The Ignite UI for Angular [`IgxNavbarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbarcomponent.html) is an application header component that informs the user of their current position in an app, and helps them move back (much like the “back” button in a browser). The Navigation Bar can also provide links to quick actions such as search or favorite, helping users navigate smoothly through an application without trying to move to invalid routes or states. The bar sits at the top of the container it is placed in.
+The Ignite UI for Angular [`IgxNavbarComponent`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent) is an application header component that informs the user of their current position in an app, and helps them move back (much like the “back” button in a browser). The Navigation Bar can also provide links to quick actions such as search or favorite, helping users navigate smoothly through an application without trying to move to invalid routes or states. The bar sits at the top of the container it is placed in.
 
 ## Angular Navbar Example
 
@@ -104,7 +104,7 @@ In order to add a menu button, we will show the action button using the `actionB
 ```
 
 > [!NOTE]
-> The [`actionButtonIcon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbarcomponent.html#actionButtonIcon) uses the Material fontset by design.
+> The [`actionButtonIcon`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=actionButtonIcon) uses the Material fontset by design.
 
 ### Add Icon Buttons
 
@@ -270,7 +270,7 @@ export class NavbarSample2Component { }
 
 ### Add Navigation Icon
 
-If we want to create a navbar with an icon navigating back, we should follow a couple of steps. First, we can use the `actionButtonIcon` property to choose a suitable icon from the Material fontset. Then, we can make a simple check if there are any previously visited pages to go back to, and pass the result to the [`isActionButtonVisible`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbarcomponent.html#isActionButtonVisible) property. The last step is to create a method for navigating back and hook it to the [`action`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbarcomponent.html#action) property.
+If we want to create a navbar with an icon navigating back, we should follow a couple of steps. First, we can use the `actionButtonIcon` property to choose a suitable icon from the Material fontset. Then, we can make a simple check if there are any previously visited pages to go back to, and pass the result to the [`isActionButtonVisible`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=isActionButtonVisible) property. The last step is to create a method for navigating back and hook it to the [`action`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=action) property.
 
 ```html
 <!--navbar.component.html-->
@@ -336,7 +336,7 @@ export class NavbarSample3Component {
 ```
 
 > [!NOTE]
-> If [`igx-navbar-action`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbaractiondirective.html) or [`igxNavbarAction`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbaractiondirective.html) is provided, the default [`actionButtonIcon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbarcomponent.html#actionButtonIcon) will not be used.
+> If [`igx-navbar-action`](mcp:get_api_reference?platform=angular&component=IgxNavbarActionDirective) or [`igxNavbarAction`](mcp:get_api_reference?platform=angular&component=IgxNavbarActionDirective) is provided, the default [`actionButtonIcon`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=actionButtonIcon) will not be used.
 
 <div class="divider--half"></div>
 
@@ -381,7 +381,7 @@ If we want to provide a custom content for a navbar's title, we can achieve this
 ```
 
 > [!NOTE]
-> If [`igx-navbar-title`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbartitledirective.html) or [`igxNavbarTitle`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbartitledirective.html) is provided, the default [`title`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbarcomponent.html#title) will not be used.
+> If [`igx-navbar-title`](mcp:get_api_reference?platform=angular&component=IgxNavbarTitleDirective) or [`igxNavbarTitle`](mcp:get_api_reference?platform=angular&component=IgxNavbarTitleDirective) is provided, the default [`title`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=title) will not be used.
 
 ```typescript
 import { Component } from '@angular/core';
@@ -595,14 +595,14 @@ At the end your navbar should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxNavbarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbarcomponent.html)
-- [IgxNavbarActionDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbaractiondirective.html)
-- [IgxNavbarTitleDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavbartitledirective.html)
+- [IgxNavbarComponent](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent)
+- [IgxNavbarActionDirective](mcp:get_api_reference?platform=angular&component=IgxNavbarActionDirective)
+- [IgxNavbarTitleDirective](mcp:get_api_reference?platform=angular&component=IgxNavbarTitleDirective)
 - [IgxNavbarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-navbar-theme)
 
 Additional components and/or directives with relative APIs that were used:
 
-- [IgxIconComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxiconcomponent.html)
+- [IgxIconComponent](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
 - [IgxIconComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-icon-theme)
 
 ## Theming Dependencies

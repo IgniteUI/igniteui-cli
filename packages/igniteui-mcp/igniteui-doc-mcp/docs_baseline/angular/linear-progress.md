@@ -97,11 +97,11 @@ After that, you should see the demo sample in your browser.
 
 ### Progress Types
 
-You can set the type of your bar, using the [`type`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#type) attribute. There are five types of linear progress bars - `default`, `error`, `success`, `info`, and `warning`.
+You can set the type of your bar, using the [`type`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=type) attribute. There are five types of linear progress bars - `default`, `error`, `success`, `info`, and `warning`.
 
 ### Striped Progress
 
-You can make the bar striped, using the [`striped`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#type) property and by setting it to `true`.
+You can make the bar striped, using the [`striped`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=type) property and by setting it to `true`.
 
 Let's see how we can create different types of progress bars that can be both striped or not.
 
@@ -148,11 +148,11 @@ export class LinearProgressbarSample1Component {}
 
 ### Indeterminate Progress
 
-If you want to track a process that is not determined precisely, you can set the [`indeterminate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcircularprogressbarcomponent.html#indeterminate) input property to `true`.
+If you want to track a process that is not determined precisely, you can set the [`indeterminate`](mcp:get_api_reference?platform=angular&component=IgxCircularProgressBarComponent&member=indeterminate) input property to `true`.
 
 ### Animation Duration
 
-The [`animationDuration`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcircularprogressbarcomponent.html#animationDuration) input property is used to specify how long the animation cycle should take.
+The [`animationDuration`](mcp:get_api_reference?platform=angular&component=IgxCircularProgressBarComponent&member=animationDuration) input property is used to specify how long the animation cycle should take.
 
 The following example specifies the animation duration set to 5 seconds.
 
@@ -162,13 +162,13 @@ The following example specifies the animation duration set to 5 seconds.
 
 ### Text Properties
 
-You can align the text, using the [`textAlign`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#textAlign) property. Permitted values are `left`, `center`, and `right`.
+You can align the text, using the [`textAlign`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=textAlign) property. Permitted values are `left`, `center`, and `right`.
 
-To hide the text, use the [`textVisibility`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#textVisibility) property and set its value to `false`.
+To hide the text, use the [`textVisibility`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=textVisibility) property and set its value to `false`.
 
-Set the [`textTop`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#textTop) property to `true` to move the text above the bar.
+Set the [`textTop`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=textTop) property to `true` to move the text above the bar.
 
-The [`text`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#text) property can be used to customize the value of the text itself.
+The [`text`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=text) property can be used to customize the value of the text itself.
 
 Let's update our previous sample by using the aforementioned text properties. We will also throw an indeterminate progress bar in the mix.
 
@@ -202,7 +202,7 @@ Let's update our previous sample by using the aforementioned text properties. We
 </div>
 ```
 
-And do not forget to import the [`IgxTextAlign`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/igxtextalign.html) enumerator in your component if you're using the `textAlign` property.
+And do not forget to import the [`IgxTextAlign`](mcp:get_api_reference?platform=angular&component=IgxTextAlign) enumerator in your component if you're using the `textAlign` property.
 
 ```typescript
 import { ..., IgxTextAlign } from 'igniteui-angular/progressbar';
@@ -276,9 +276,9 @@ export class LinearProgressbarSample2Component {
 <div class="divider--half"></div>
 
 > [!NOTE]
-> If the [`step`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#step) input value is not defined, the progress update is **1% of the [`max`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#max) value**. In case you want the progress to be faster, the [`step`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#step) value should be greater than (**[`max`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#max) * 1%**), respectfully for slower progress the [`step`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#step) should be less than the default progress update.
+> If the [`step`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=step) input value is not defined, the progress update is **1% of the [`max`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=max) value**. In case you want the progress to be faster, the [`step`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=step) value should be greater than (**[`max`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=max) * 1%**), respectfully for slower progress the [`step`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=step) should be less than the default progress update.
 > [!NOTE]
-> If the [`step`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#step) value is defined greater than the [`value`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html#value) input, there is only one update, which gets **the value that is passed for progress update**.
+> If the [`step`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=step) value is defined greater than the [`value`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent&member=value) input, there is only one update, which gets **the value that is passed for progress update**.
 
 <div class="divider--half"></div>
 
@@ -455,6 +455,6 @@ $custom-theme: progress-linear-theme(
 
 <div class="divider--half"></div>
 
-- [IgxLinearProgressBarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlinearprogressbarcomponent.html)
+- [IgxLinearProgressBarComponent](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBarComponent)
 - [IgxLinearProgressBarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-progress-linear-theme)
-- [IgxTextAlign](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/igxtextalign.html)
+- [IgxTextAlign](mcp:get_api_reference?platform=angular&component=IgxTextAlign)

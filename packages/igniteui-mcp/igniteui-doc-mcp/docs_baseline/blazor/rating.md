@@ -21,7 +21,7 @@ The Ignite UI for Blazor Rating component allows users to view and provide feedb
 @code { }
 ```
 
-Before using the [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html), you need to register it as follows:
+Before using the [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -29,13 +29,13 @@ Before using the [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/
 builder.Services.AddIgniteUIBlazor(typeof(IgbRatingModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-The simplest way to start using the [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html) is as follows:
+The simplest way to start using the [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating) is as follows:
 
 ```razor
 <IgbRating></IgbRating>
@@ -45,7 +45,7 @@ This will create a five-star rating component that can be used to input and read
 
 ## Using Custom Symbols
 
-The [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html) component allows you to use custom symbols in place of the default star symbols. If you want to use a different symbol, like SVG, icon or another unicode symbol, you should place [`IgbRatingSymbol`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRatingSymbol.html) components between the opening and closing brackets of the [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html):
+The [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating) component allows you to use custom symbols in place of the default star symbols. If you want to use a different symbol, like SVG, icon or another unicode symbol, you should place [`IgbRatingSymbol`](mcp:get_api_reference?platform=blazor&component=IgbRatingSymbol) components between the opening and closing brackets of the [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating):
 
 ```razor
 <IgbRating>
@@ -211,15 +211,15 @@ The Ignite UI for Blazor Rating component allows users to use different icons/el
 
 ### Single
 
-Turns on the [`Single`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html#IgniteUI_Blazor_Controls_IgbRating_Single) visual mode for the rating. Useful when using symbols that communicate unique values, like feedback emoji faces.
+Turns on the [`Single`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=Single) visual mode for the rating. Useful when using symbols that communicate unique values, like feedback emoji faces.
 
 ### Value
 
-The [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html#IgniteUI_Blazor_Controls_IgbRating_Value) attribute sets the current value of the component.
+The [`Value`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=Value) attribute sets the current value of the component.
 
 ### Label
 
-The [`Label`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html#IgniteUI_Blazor_Controls_IgbRating_Label) attribute allows setting the label value of the rating component.
+The [`Label`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=Label) attribute allows setting the label value of the rating component.
 
 ### Value Format
 
@@ -227,37 +227,37 @@ A format string which sets [aria-valuetext](https://developer.mozilla.org/en-US/
 
 ### Max Value
 
-The [`Max`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html#IgniteUI_Blazor_Controls_IgbRating_Max) attribute sets the maximum allowed value of the rating component.
+The [`Max`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=Max) attribute sets the maximum allowed value of the rating component.
 
 ### Step
 
-The [`Step`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html#IgniteUI_Blazor_Controls_IgbRating_Step) attribute sets the allowed fraction of steps between two symbols. Useful when splitting the rating symbols in halves.
+The [`Step`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=Step) attribute sets the allowed fraction of steps between two symbols. Useful when splitting the rating symbols in halves.
 
 ### Hover Preview
 
-The [`HoverPreview`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html#IgniteUI_Blazor_Controls_IgbRating_HoverPreview) attribute makes the component show the possible outcome of user selection on hover. It is useful when you want to give instant feedback about what the selected value could be.
+The [`HoverPreview`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=HoverPreview) attribute makes the component show the possible outcome of user selection on hover. It is useful when you want to give instant feedback about what the selected value could be.
 
 ### Read-Only
 
-The [`ReadOnly`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html#IgniteUI_Blazor_Controls_IgbRating_ReadOnly) attribute allows the users to set the [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html) in read-only mode. This attribute is useful when you want to use the component for information purposes only.
+The [`ReadOnly`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=ReadOnly) attribute allows the users to set the [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating) in read-only mode. This attribute is useful when you want to use the component for information purposes only.
 
 ### Disabled
 
-The [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html#IgniteUI_Blazor_Controls_IgbRating_Disabled) attribute disables the component, making it impossible to select a value using the mouse or keyboard.
+The [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=Disabled) attribute disables the component, making it impossible to select a value using the mouse or keyboard.
 
 ## Methods
 
 ### Step Up
 
-The [`StepUp`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html#IgniteUI_Blazor_Controls_IgbRating_StepUp) method increments the value of the component by `n` steps. Determined by the `step` factor.
+The [`StepUp`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=StepUp) method increments the value of the component by `n` steps. Determined by the `step` factor.
 
 ### Step Down
 
-The [`StepDown`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html#IgniteUI_Blazor_Controls_IgbRating_StepDown) method decrements the value of the component by `n` steps. Determined by the `step` factor.
+The [`StepDown`](mcp:get_api_reference?platform=blazor&component=IgbRating&member=StepDown) method decrements the value of the component by `n` steps. Determined by the `step` factor.
 
 ## Events
 
-The [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html) component emits two separate events - `Hover` and `Change`.
+The [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating) component emits two separate events - `Hover` and `Change`.
 
 ### Hover Event
 
@@ -269,7 +269,7 @@ The `Change` event is fired when the selected value changes.
 
 ## Styling
 
-The [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -309,7 +309,7 @@ igc-rating::part(empty) {
 
 ## API Reference
 
-- [`IgbRating`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRating.html)
+- [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

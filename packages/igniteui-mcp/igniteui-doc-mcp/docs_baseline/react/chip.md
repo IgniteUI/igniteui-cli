@@ -61,26 +61,26 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html) and its necessary CSS, like so:
+You will then need to import the [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip) and its necessary CSS, like so:
 
 ```tsx
 import { IgrChip } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-The simplest way to start using the [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html) is as follows:
+The simplest way to start using the [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip) is as follows:
 
 ```tsx
 <IgrChip></IgrChip>
 ```
 
-To display a selectable chip, you can use the [`selectable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html#selectable) property of the chip.
+To display a selectable chip, you can use the [`selectable`](mcp:get_api_reference?platform=react&component=IgrChip&member=selectable) property of the chip.
 
 ```tsx
 <IgrChip selectable={true}></IgrChip>
 ```
 
-To display a removable chip, you can use the [`removable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html#removable) property of the chip.
+To display a removable chip, you can use the [`removable`](mcp:get_api_reference?platform=react&component=IgrChip&member=removable) property of the chip.
 
 ```tsx
 <IgrChip removable={true}></IgrChip>
@@ -90,7 +90,7 @@ To display a removable chip, you can use the [`removable`](https://www.infragist
 
 ### Variants
 
-The Ignite UI for React chip supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `Primary`, `Info`, `Success`, `Warning`, or `Danger` to the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html#variant) property.
+The Ignite UI for React chip supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `Primary`, `Info`, `Success`, `Warning`, or `Danger` to the [`variant`](mcp:get_api_reference?platform=react&component=IgrChip&member=variant) property.
 
 ```tsx
 <IgrChip variant="success"></IgrChip>
@@ -148,7 +148,7 @@ root.render(<ChipVariants/>);
 
 ### Disabled
 
-The Ignite UI for React chip can be disabled by using the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html#disabled) property.
+The Ignite UI for React chip can be disabled by using the [`disabled`](mcp:get_api_reference?platform=react&component=IgrChip&member=disabled) property.
 
 ```tsx
 <IgrChip disabled={true}></IgrChip>
@@ -156,7 +156,7 @@ The Ignite UI for React chip can be disabled by using the [`disabled`](https://w
 
 ### Prefix / Suffix
 
-With the `Prefix` and `Suffix` parts of the [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html) component and their slots, we can add different content before and after the main content of the chip. We provide default select and remove icons but you can customize them using the [`IgrSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrselect.html) and `Remove` slots. You can add additional content before or after the main content, using the `Start` and `End` slots.
+With the `Prefix` and `Suffix` parts of the [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip) component and their slots, we can add different content before and after the main content of the chip. We provide default select and remove icons but you can customize them using the [`IgrSelect`](mcp:get_api_reference?platform=react&component=IgrSelect) and `Remove` slots. You can add additional content before or after the main content, using the `Start` and `End` slots.
 
 ```css
 /* shared styles are loaded from: */
@@ -246,7 +246,7 @@ root.render(<ChipMultiple/>);
 
 ## Size
 
-We allow the user to choose the size of the [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html) by utilizing the `--ig-size` CSS variable:
+We allow the user to choose the size of the [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip) by utilizing the `--ig-size` CSS variable:
 
 ```tsx
 <IgrChip className="size-small" selectable={true} removable={true}>
@@ -332,7 +332,7 @@ root.render(<ChipSize/>);
 
 ## Styling
 
-The [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html) component exposes a `base`, `prefix`, `suffix` CSS parts that can be used to change all of its style properties.
+The [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip) component exposes a `base`, `prefix`, `suffix` CSS parts that can be used to change all of its style properties.
 
 ```css
 igc-chip::part(base) {
@@ -396,7 +396,7 @@ root.render(<ChipStyling/>);
 
 ## API References
 
-- [`IgrChip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchip.html)
+- [`IgrChip`](mcp:get_api_reference?platform=react&component=IgrChip)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

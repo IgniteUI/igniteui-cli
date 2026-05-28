@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Grid Advanced Filtering
 
-The Ignite UI for Web Components Advanced Filtering in Web Components Grid allows you to manipulate data by providing you with a dialog where you can create different groups with filtering conditions across all columns in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html).
+The Ignite UI for Web Components Advanced Filtering in Web Components Grid allows you to manipulate data by providing you with a dialog where you can create different groups with filtering conditions across all columns in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent).
 
 ## Web Components Grid Advanced Filtering Example
 
@@ -26,7 +26,7 @@ The Ignite UI for Web Components Advanced Filtering in Web Components Grid allow
 
 In order to open the advanced filtering dialog, the **Advanced Filtering** button in the grid toolbar should be clicked. If no advanced filter is applied, you should start with creating a group of filtering conditions linked with **AND** or **OR**. After that, you can add filtering conditions or sub-groups.
 
-In order to add a filtering condition, you have to select any of the [`filterable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#filterable) columns, an operand based on the column [`dataType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#dataType) and a value if the operand is not unary. Once the condition is committed, a chip with the condition information appears. By hovering or clicking the chip, you have the options to modify it or add another condition or group right after it.
+In order to add a filtering condition, you have to select any of the [`filterable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=filterable) columns, an operand based on the column [`dataType`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=dataType) and a value if the operand is not unary. Once the condition is committed, a chip with the condition information appears. By hovering or clicking the chip, you have the options to modify it or add another condition or group right after it.
 
 If you select more than one filtering condition chip, a context menu appears with options to create a group or delete the filters. If you choose to create a group with the selected conditions, the newly created group will appear where the topmost selected condition was placed.
 
@@ -36,7 +36,7 @@ In order to filter the data once you are ready with creating the filtering condi
 
 ## Usage
 
-To enable the advanced filtering, the [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#allowAdvancedFiltering) input property should be set to **true**.
+To enable the advanced filtering, the [`allowAdvancedFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=allowAdvancedFiltering) input property should be set to **true**.
 
 <!-- ComponentStart: Grid -->
 
@@ -55,7 +55,7 @@ constructor() {
 
 <!-- ComponentEnd: Grid -->
 
-The advanced filtering generates a [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#filteringExpressionsTree) which is stored in the [`advancedFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#advancedFilteringExpressionsTree) input property. You could use the [`advancedFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#advancedFilteringExpressionsTree) property to set an initial state of the advanced filtering.
+The advanced filtering generates a [`filteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filteringExpressionsTree) which is stored in the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=advancedFilteringExpressionsTree) input property. You could use the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=advancedFilteringExpressionsTree) property to set an initial state of the advanced filtering.
 
 ```typescript
 connectedCallback(): void {
@@ -84,10 +84,10 @@ connectedCallback(): void {
 }
 ```
 
-In case you don't want to show the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) toolbar, you could use the [`openAdvancedFilteringDialog`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#openAdvancedFilteringDialog) and [`closeAdvancedFilteringDialog`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#closeAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
+In case you don't want to show the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) toolbar, you could use the [`openAdvancedFilteringDialog`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=openAdvancedFilteringDialog) and [`closeAdvancedFilteringDialog`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=closeAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
 
 > [!Note]
-> You can enable both the **QuickFilter**/**ExcelStyleFilter** and the advanced filtering user interfaces in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) is the intersection between the results of the two filters.
+> You can enable both the **QuickFilter**/**ExcelStyleFilter** and the advanced filtering user interfaces in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) is the intersection between the results of the two filters.
 
 ## Styling
 
@@ -133,8 +133,8 @@ Then set the related CSS properties to this class:
 
 ## API References
 
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 
 ## Additional Resources
 

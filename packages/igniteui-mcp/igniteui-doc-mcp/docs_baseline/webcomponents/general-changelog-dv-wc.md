@@ -77,18 +77,18 @@ All notable changes for each version of Ignite UI for Web Components are documen
 
 ### igniteui-webcomponents-grids (Grids)
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent)
   - Improved performance by dynamically adjusting the scroll throttle based on the data displayed in grid.
 
 **Breaking Changes**
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent)
   - Original `data` array mutations (like adding/removing/moving records in the original array) are no longer detected automatically. Components need an array reference change for the change to be detected.
 
 **Localization(i18n)**
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html), [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html), [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html), [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html), [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html), [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html), [`IgcCarouselComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccarouselcomponent.html), [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html), [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html), [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html)
-  - New `Intl` implementation for the grid components that format and render data like dates and numbers. Updated `Intl` implementation for [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html), [`IgcDatePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html), and [`IgcDateRangePickerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdaterangepickercomponent.html) that previously used it in `igniteui-webcomponents`.
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent), [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent), [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent), [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent), [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent), [`IgcCarouselComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCarouselComponent), [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent), [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent), [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent)
+  - New `Intl` implementation for the grid components that format and render data like dates and numbers. Updated `Intl` implementation for [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent), [`IgcDatePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent), and [`IgcDateRangePickerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateRangePickerComponent) that previously used it in `igniteui-webcomponents`.
   - New localization implementation for the currently supported languages for all components that have resource strings in the currently supported languages.
   - New public localization API and package named `igniteui-i18n-resources` containing the new resources that are used in conjunction.
         **PDF export**
@@ -127,9 +127,9 @@ Added OthersCategoryBrush and OthersCategoryOutline to DataPieChart and Proporti
 
 #### <label class="badge badge--preview">PREVIEW</label> User Annotations
 
-In Ignite UI for Web Components, you can now annotate the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) with slice, strip, and point annotations at runtime using the new user annotations feature. This allows the end user to add more details to the plot such as calling out single important events such as company quarter reports by using the slice annotation or events that have a duration by using the strip annotation. You can also call out individual points on the plotted series by using the point annotation or any combination of these three.
+In Ignite UI for Web Components, you can now annotate the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) with slice, strip, and point annotations at runtime using the new user annotations feature. This allows the end user to add more details to the plot such as calling out single important events such as company quarter reports by using the slice annotation or events that have a duration by using the strip annotation. You can also call out individual points on the plotted series by using the point annotation or any combination of these three.
 
-This is directly integrated with the available tools of the [`toolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#toolbar).
+This is directly integrated with the available tools of the [`toolbar`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=toolbar).
 
 <img class="responsive-img" src="../images/charts/data-chart-user-annotation-create.gif"
 alt="Web Components user-annotation-create"/>
@@ -158,11 +158,11 @@ Ability for axis annotations to automatically detect collisions and truncate to 
 
 ### New Components
 
-- Added [`IgcChatComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchatcomponent.html) component
+- Added [`IgcChatComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChatComponent) component
 
 ### igniteui-webcomponents-grids (Grids)
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html), [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html), [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
   - Introduced a new cell merging feature that allows you to configure and merge cells in a column based on same data or other custom condition, into a single cell.
 
         ````
@@ -264,11 +264,11 @@ Added `CompanionAxis` properties to the X and Y axis that allow you to quickly c
 
 #### <label class="badge badge--preview">PREVIEW</label> RadialPieSeries Inset Outlines
 
-There is a new property called `UseInsetOutlines` to control how outlines on the [`IgcRadialPieSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcradialpieseriescomponent.html) are rendered. Setting this value to **true** will inset the outlines within the slice shape, whereas a **false** (default) value will place the outlines half-in half-out along the edge of the slice shape.
+There is a new property called `UseInsetOutlines` to control how outlines on the [`IgcRadialPieSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialPieSeriesComponent) are rendered. Setting this value to **true** will inset the outlines within the slice shape, whereas a **false** (default) value will place the outlines half-in half-out along the edge of the slice shape.
 
 **Breaking Changes**
 
-- A fix was made due to an issue where the `PlotAreaPosition` and `ChartPosition` properties on [`IgcChartMouseEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcchartmouseeventargs.html) class were reversed. This will change the values that [`plotAreaPosition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcchartmouseeventargs.html#plotAreaPosition) and [`chartPosition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcchartmouseeventargs.html#chartPosition) return.
+- A fix was made due to an issue where the `PlotAreaPosition` and `ChartPosition` properties on [`IgcChartMouseEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcChartMouseEventArgs) class were reversed. This will change the values that [`plotAreaPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcChartMouseEventArgs&member=plotAreaPosition) and [`chartPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcChartMouseEventArgs&member=chartPosition) return.
 
 ### igniteui-webcomponents-grids
 
@@ -298,8 +298,8 @@ Please note that the maximum size available for the icons is 24x24. You can prov
 |27304| `DataChart` | Zoom rectangle is not positioned the same as the background rectangle|
 |37930| `DataChart` | Data Annotation Overlay Text Color not working|
 |30600| `DoughnutChart` | No textStyle property for either the chart or series (pie chart has this)|
-|31624| [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) | Resizing the containing window of the Category Chart causes the chart to fail to render the series|
-|38231| [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) | Unpinned column does not return to the original position if hidden columns exist|
+|31624| [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) | Resizing the containing window of the Category Chart causes the chart to fail to render the series|
+|38231| [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) | Unpinned column does not return to the original position if hidden columns exist|
 |33861| Excel Library | Adding line chart corrupts excel File for German culture|
 
 ### Enhancements
@@ -314,9 +314,9 @@ Please note that the maximum size available for the icons is 24x24. You can prov
 
 - New properties added to the DataLegend to aid in styling: `ContentBackground`, `ContentBorderBrush`, and `ContentBorderThickness`. The `ContentBorderBrush` and `ContentBorderThickness` default to transparent and 0 respectively, so in order to see these borders, you will need to set these properties.
 
-- Added a new property to [`IgcChartMouseEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcchartmouseeventargs.html) called [`worldPosition`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcchartmouseeventargs.html#worldPosition) that provides the world relative position of the mouse. This position will be a value between 0 and 1 for both the X and Y axis within the axis space.
+- Added a new property to [`IgcChartMouseEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcChartMouseEventArgs) called [`worldPosition`](mcp:get_api_reference?platform=webcomponents&component=IgcChartMouseEventArgs&member=worldPosition) that provides the world relative position of the mouse. This position will be a value between 0 and 1 for both the X and Y axis within the axis space.
 
-- Added [`highlightingFadeOpacity`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#highlightingFadeOpacity) to [`IgcSeriesViewerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html) and [`IgcDomainChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdomainchartcomponent.html). This allows you to configure the opacity applied to highlighted series.
+- Added [`highlightingFadeOpacity`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=highlightingFadeOpacity) to [`IgcSeriesViewerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent) and [`IgcDomainChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent). This allows you to configure the opacity applied to highlighted series.
 
 - Expose `CalloutLabelUpdating` event for domain charts.
 
@@ -431,7 +431,7 @@ Please note that the maximum size available for the icons is 24x24. You can prov
 
 - The [Data Tooltip](charts/features/chart-data-tooltip.md) and [Data Legend](charts/features/chart-data-legend.md) expose <label class="badge badge--preview">PREVIEW</label> `LayoutMode` property that you can use to layout the contents of the tooltip or legend in a table or vertical layout structure.
 
-- <label class="badge badge--preview">PREVIEW</label> The [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#defaultInteraction) property of the charts has been updated to include a new enumeration - `DragSelect` in which the dragged preview Rect will select the points contained within.
+- <label class="badge badge--preview">PREVIEW</label> The [`defaultInteraction`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=defaultInteraction) property of the charts has been updated to include a new enumeration - `DragSelect` in which the dragged preview Rect will select the points contained within.
 
 - <label class="badge badge--preview">PREVIEW</label> The [ValueOverlay and ValueLayer](charts/features/chart-overlays.md), in addition to the <label class="badge badge--preview">PREVIEW</label> [Chart Data Annotations](charts/features/chart-data-annotations.md) listed above now expose an `OverlayText` property that can be used to overlay additional annotation text in the plot area. These appearance of these annotations can be configured by using the many OverlayText-prefixed properties. For example, the `OverlayTextBrush` property will configure the color of the overlay text.
 
@@ -472,17 +472,17 @@ Please note that the maximum size available for the icons is 24x24. You can prov
 ### igniteui-webcomponents-grids
 
 - **All Grids**
-  - Allow applying initial filtering through [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#filteringExpressionsTree) property
+  - Allow applying initial filtering through [`filteringExpressionsTree`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=filteringExpressionsTree) property
 
 ### Bug Fixes
 
 | Bug Number | Control | Description      |
 |------------|---------|------------------|
-| 28480 | [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) | Undefined reference error is thrown when a datasource is replaced|
+| 28480 | [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) | Undefined reference error is thrown when a datasource is replaced|
 | 25602 | `DataGrid` | Loading a layout with one of the date-specific filter operators results in a TypeError console error|
 | 30319 | `DataGrid` | Records are sorted despite no value changed|
 | 32598 | `DataGrid` | Multi-selection is not working correctly
-| 36374 | [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) | A previous value was bound when a form was submitted on any touch device|
+| 36374 | [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) | A previous value was bound when a form was submitted on any touch device|
 
 ## **5.3.0 (February 2025)**
 
@@ -490,7 +490,7 @@ Please note that the maximum size available for the icons is 24x24. You can prov
 
 #### Toolbar
 
-- Added new `GroupHeaderTextStyle` property to [`toolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#toolbar) and [`IgcToolPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolpanelcomponent.html). If set, it will apply to all [`IgcToolActionGroupHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactiongroupheadercomponent.html) actions.
+- Added new `GroupHeaderTextStyle` property to [`toolbar`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=toolbar) and [`IgcToolPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolpanelcomponent.html). If set, it will apply to all [`IgcToolActionGroupHeaderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactiongroupheadercomponent.html) actions.
 - Added new property on [`IgcToolActionComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html) called [`titleHorizontalAlignment`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactioncomponent.html#titleHorizontalAlignment) which controls the horizontal alignment of the title text.
 - Added new property on [`IgcToolActionSubPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionsubpanelcomponent.html) called [`itemSpacing`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolactionsubpanelcomponent.html#itemSpacing) which controls the spacing between items inside the panel.
 
@@ -536,11 +536,11 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 ### igniteui-webcomponents-charts
 
-- New [Data Pie Chart](charts/types/data-pie-chart.md) - The [`IgcDataPieChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatapiechartcomponent.html) is a new component that renders a pie chart. This component works similarly to the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html), in that it will automatically detect the properties on your underlying data model while allowing selection, highlighting, animation and legend support via the ItemLegend component.
+- New [Data Pie Chart](charts/types/data-pie-chart.md) - The [`IgcDataPieChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataPieChartComponent) is a new component that renders a pie chart. This component works similarly to the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), in that it will automatically detect the properties on your underlying data model while allowing selection, highlighting, animation and legend support via the ItemLegend component.
 
-- New [Proportional Category Angle Axis](charts/types/radial-chart.md) - New axes for the Radial Pie Series in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html), to plot slices similar to a pie chart, a type of data visualization where data points are represented as segments within a circular graph.
+- New [Proportional Category Angle Axis](charts/types/radial-chart.md) - New axes for the Radial Pie Series in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent), to plot slices similar to a pie chart, a type of data visualization where data points are represented as segments within a circular graph.
 
-- [`toolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#toolbar)
+- [`toolbar`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=toolbar)
 
   - New ToolActionCheckboxList
         A new CheckboxList ToolAction that displays a collection of items with checkboxes for selecting. A grid inside ToolAction CheckboxList grows in height up to 5 items, then a scrollbar is displayed.
@@ -557,10 +557,10 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 - **All Grids**
   - Added new `RowClick` event.
-- [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html)
-  - Added `sortable` property for a [`IgcPivotDimension`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdimension.html).
+- [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent)
+  - Added `sortable` property for a [`IgcPivotDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension).
   - Added horizontal layout. Can be enabled inside the new `pivotUI` property as `rowLayout` `horizontal`.
-  - Added row dimension summaries for horizontal layout only. Can be enabled for each [`IgcPivotDimension`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdimension.html) by setting `horizontalSummary` to **true**.
+  - Added row dimension summaries for horizontal layout only. Can be enabled for each [`IgcPivotDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDimension) by setting `horizontalSummary` to **true**.
   - Added `horizontalSummariesPosition` property to the `pivotUI`, configuring horizontal summaries position.
   - Added row headers for the row dimensions. Can be enabled inside the new `pivotUI` property as `showHeaders` **true**.
   - Keyboard navigation now can move in to row headers back and forth from any row dimension headers or column headers.
@@ -572,15 +572,15 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
   - [`IgcRowIsland`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowisland.html)
   - Removed `displayDensity` deprecated property.
   - Renamed `actualColumns`, `contentColumns` properties to `actualColumnList` and `contentColumnList`. Use `column` or `columnList` property to get all columns now.
-  - Renamed `rowDelete` and `rowAdd` event argument type to [`IgcRowDataCancelableEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowdatacancelableeventargs.html).
-  - Renamed `contextMenu` event argument type to [`IgcGridContextMenuEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcontextmenueventargs.html).
-  - Removed [`IgcGridEditEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridediteventargs.html),  [`IgcGridEditDoneEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgrideditdoneeventargs.html), [`IgcPinRowEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpinroweventargs.html) events `rowID` and `primaryKey` properties. Use `rowKey` instead.
-- [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html)
+  - Renamed `rowDelete` and `rowAdd` event argument type to [`IgcRowDataCancelableEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcRowDataCancelableEventArgs).
+  - Renamed `contextMenu` event argument type to [`IgcGridContextMenuEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridContextMenuEventArgs).
+  - Removed [`IgcGridEditEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditEventArgs),  [`IgcGridEditDoneEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcGridEditDoneEventArgs), [`IgcPinRowEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcPinRowEventArgs) events `rowID` and `primaryKey` properties. Use `rowKey` instead.
+- [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent)
   - removed `showPivotConfigurationUI` property. Use `pivotUI` and set inside it the new `showConfiguration` option.
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
   - Removed `movable` property. Use Grid's `moving` property now.
   - Removed `columnChildren` property. Use `childColumns` instead.
-- [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup)
+- [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup)
   - Removed `children` property. Use `childColumns` instead.
 - [`IgcPaginator`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpaginator.html)
   - Removed `isFirstPageDisabled` and `isLastPageDisabled` properties. Use `isFirstPage` and `isLastPage` instead.
@@ -589,9 +589,9 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 ### igniteui-webcomponents
 
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html), [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) - exposed [`validateOnly`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html#validateOnly) to enable validation rules being enforced without restricting user input.
-- [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) - [`IgcPositionStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpositionstrategy.html) property is deprecated. The dropdown now uses the `Popover` API to render its container in the top layer of the browser viewport, making the property obsolete.
-- [`IgcDockManagerComponent`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html) - [`IgcSplitPane`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcsplitpane.html) [`isMaximized`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcsplitpane.html#isMaximized) is deprecated. Having isMaximized set to true on a split pane level has no real effect as split panes serve as containers only, meaning they have no actual content to be shown maximized. Use the [`isMaximized`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcsplitpane.html#isMaximized) property of [`IgcTabGroupPane`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igctabgrouppane.html) and/or [`IgcContentPane`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igccontentpane.html) instead.
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent), [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) - exposed [`validateOnly`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent&member=validateOnly) to enable validation rules being enforced without restricting user input.
+- [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) - [`IgcPositionStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcPositionStrategy) property is deprecated. The dropdown now uses the `Popover` API to render its container in the top layer of the browser viewport, making the property obsolete.
+- [`IgcDockManagerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent) - [`IgcSplitPane`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitPane) [`isMaximized`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitPane&member=isMaximized) is deprecated. Having isMaximized set to true on a split pane level has no real effect as split panes serve as containers only, meaning they have no actual content to be shown maximized. Use the [`isMaximized`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitPane&member=isMaximized) property of [`IgcTabGroupPane`](mcp:get_api_reference?platform=webcomponents&component=IgcTabGroupPane) and/or [`IgcContentPane`](mcp:get_api_reference?platform=webcomponents&component=IgcContentPane) instead.
 
 ### igniteui-webcomponents-grids
 
@@ -599,17 +599,17 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 ### igniteui-webcomponents-charts
 
-- [Data Legend Grouping](charts/features/chart-data-legend.md#web-components-data-legend-grouping) & [Data Tooltip Grouping](charts/features/chart-data-tooltip.md#web-components-data-tooltip-grouping-for-data-chart) - New grouping feature added. The property `GroupRowVisible` toggles grouping with each series opting in can assign group text via the [`dataLegendGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccrosshairlayercomponent.html#dataLegendGroup) property. If the same value is applied to more than one series then they will appear grouped. Useful for large datasets that need to be categorized and organized for all users.
+- [Data Legend Grouping](charts/features/chart-data-legend.md#web-components-data-legend-grouping) & [Data Tooltip Grouping](charts/features/chart-data-tooltip.md#web-components-data-tooltip-grouping-for-data-chart) - New grouping feature added. The property `GroupRowVisible` toggles grouping with each series opting in can assign group text via the [`dataLegendGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcCrosshairLayerComponent&member=dataLegendGroup) property. If the same value is applied to more than one series then they will appear grouped. Useful for large datasets that need to be categorized and organized for all users.
 
-- [Chart Selection](charts/features/chart-data-selection.md) - New series selection styling. This is adopted broadly across all category, financial and radial series for [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) and [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html). Series can be clicked and shown a different color, brightened or faded, and focus outlines. Manage which items are effected through individual series or entire data item. Multiple series and markers are supported. Useful for illustrating various differences or similarities between values of a particular data item. Also  `SelectedSeriesItemsChanged` event and [`selectedSeriesItems`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#selectedSeriesItems) are available for additional help to build out robust business requirements surrounding other actions that can take place within an application such as a popup or other screen with data analysis based on the selection.
+- [Chart Selection](charts/features/chart-data-selection.md) - New series selection styling. This is adopted broadly across all category, financial and radial series for [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) and [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). Series can be clicked and shown a different color, brightened or faded, and focus outlines. Manage which items are effected through individual series or entire data item. Multiple series and markers are supported. Useful for illustrating various differences or similarities between values of a particular data item. Also  `SelectedSeriesItemsChanged` event and [`selectedSeriesItems`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=selectedSeriesItems) are available for additional help to build out robust business requirements surrounding other actions that can take place within an application such as a popup or other screen with data analysis based on the selection.
 
-- [Proportional Category Angle Axis](charts/types/radial-chart.md) - New axes for the Radial Pie Series in the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html), to enable creating pie charts in the allowing robust visualizations using all the added power of the data chart.
+- [Proportional Category Angle Axis](charts/types/radial-chart.md) - New axes for the Radial Pie Series in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent), to enable creating pie charts in the allowing robust visualizations using all the added power of the data chart.
 
-- [Treemap Highlighting](charts/types/treemap-chart.md#web-components-treemap-highlighting) - Now exposes a [`highlightingMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#highlightingMode) property that allows you to configure the mouse-over highlighting of the items in the tree map. This property takes two options: `Brighten` where the highlight will apply to the item that you hover the mouse over only, and `FadeOthers` where the highlight of the hovered item will remain the same, but everything else will fade out. This highlight is animated, and can be controlled using the [`highlightingTransitionDuration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#highlightingTransitionDuration) property.
+- [Treemap Highlighting](charts/types/treemap-chart.md#web-components-treemap-highlighting) - Now exposes a [`highlightingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=highlightingMode) property that allows you to configure the mouse-over highlighting of the items in the tree map. This property takes two options: `Brighten` where the highlight will apply to the item that you hover the mouse over only, and `FadeOthers` where the highlight of the hovered item will remain the same, but everything else will fade out. This highlight is animated, and can be controlled using the [`highlightingTransitionDuration`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=highlightingTransitionDuration) property.
 
-- [Treemap Percent-based Highlighting](charts/types/treemap-chart.md#web-components-treemap-percent-based-highlighting) - New percent-based highlighting, allowing nodes to represent progress or subset of a collection. The appearance is shown as a fill-in of its backcolor up to a specific value either by a member on your data item or by supplying a new [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#highlightedDataSource). Can be toggled via [`highlightedValuesDisplayMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#highlightedValuesDisplayMode) and styled via `FillBrushes`.
+- [Treemap Percent-based Highlighting](charts/types/treemap-chart.md#web-components-treemap-percent-based-highlighting) - New percent-based highlighting, allowing nodes to represent progress or subset of a collection. The appearance is shown as a fill-in of its backcolor up to a specific value either by a member on your data item or by supplying a new [`highlightedDataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=highlightedDataSource). Can be toggled via [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=highlightedValuesDisplayMode) and styled via `FillBrushes`.
 
-- [`toolbar`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#toolbar) - New `IsHighlighted` option for ToolAction for outlining a border around specific tools of choice.
+- [`toolbar`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=toolbar) - New `IsHighlighted` option for ToolAction for outlining a border around specific tools of choice.
 
 ### igniteui-webcomponents-gauges
 
@@ -620,15 +620,15 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 ### igniteui-webcomponents-grids
 
-- New [[`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)](grids/hierarchical-grid/overview.md) component.
+- New [[`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)](grids/hierarchical-grid/overview.md) component.
 
 ### igniteui-webcomponents-charts
 
-- New Data Filtering via the [`initialFilter`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#initialFilter) property. Apply filter expressions to filter the chart data to a subset of records. Can be used for drill down large data.
+- New Data Filtering via the [`initialFilter`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=initialFilter) property. Apply filter expressions to filter the chart data to a subset of records. Can be used for drill down large data.
 
 - `XamRadialChart`
   - New Label Mode
-        The [`IgcCategoryAngleAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategoryangleaxiscomponent.html) for the now exposes a [`labelMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategoryangleaxiscomponent.html#labelMode) property that allows you to further configure the location of the labels. This allows you to toggle between the default mode by selecting the `Center` enum, or use the new mode, `ClosestPoint`, which will bring the labels closer to the circular plot area.
+        The [`IgcCategoryAngleAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryAngleAxisComponent) for the now exposes a [`labelMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryAngleAxisComponent&member=labelMode) property that allows you to further configure the location of the labels. This allows you to toggle between the default mode by selecting the `Center` enum, or use the new mode, `ClosestPoint`, which will bring the labels closer to the circular plot area.
 
 ### igniteui-webcomponents-gauges
 
@@ -645,7 +645,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 ### igniteui-webcomponents-charts
 
-- [Chart Highlight Filter](charts/features/chart-highlight-filter.md) - The [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) and [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) now expose a way to highlight and animate in and out of a subset of data. The display of this highlight depends on the series type. For column and area series, the subset will be shown on top of the total set of data where the subset will be colored by the actual brush of the series, and the total set will have a reduced opacity. For line series, the subset will be shown as a dotted line.
+- [Chart Highlight Filter](charts/features/chart-highlight-filter.md) - The [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) and [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) now expose a way to highlight and animate in and out of a subset of data. The display of this highlight depends on the series type. For column and area series, the subset will be shown on top of the total set of data where the subset will be colored by the actual brush of the series, and the total set will have a reduced opacity. For line series, the subset will be shown as a dotted line.
 
 ## **4.6.0 (December 2023)**
 
@@ -666,19 +666,19 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 ### igniteui-webcomponents-layouts
 
-- <label class="badge badge--preview">PREVIEW</label> [Toolbar](menus/toolbar.md) - This component is a companion container for UI operations to be used primarily with our charting components. The toolbar will dynamically update with a preset of properties and tool items when linked to our [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html) or [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) components. You'll be able to create custom tools for your project allowing end users to provide changes, offering an endless amount of customization.
+- <label class="badge badge--preview">PREVIEW</label> [Toolbar](menus/toolbar.md) - This component is a companion container for UI operations to be used primarily with our charting components. The toolbar will dynamically update with a preset of properties and tool items when linked to our [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) or [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) components. You'll be able to create custom tools for your project allowing end users to provide changes, offering an endless amount of customization.
 
 ### igniteui-webcomponents-charts
 
-- [ValueLayer](charts/features/chart-overlays.md#web-components-value-layer) - A new series type named the [`IgcValueLayerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcvaluelayercomponent.html) is now exposed which can allow you to render an overlay for different focal points of the plotted data such as Maximum, Minimum, and Average. This is applied to the [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html) and [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html) by adding to the new [`valueLines`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#valueLines) collection.
+- [ValueLayer](charts/features/chart-overlays.md#web-components-value-layer) - A new series type named the [`IgcValueLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcValueLayerComponent) is now exposed which can allow you to render an overlay for different focal points of the plotted data such as Maximum, Minimum, and Average. This is applied to the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) and [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) by adding to the new [`valueLines`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=valueLines) collection.
 
-- It is now possible to apply a **dash array** to the different parts of the series of the [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html). You can apply this to the [series](charts/types/line-chart.md#web-components-styling-line-chart) plotted in the chart, the [gridlines](charts/features/chart-axis-gridlines.md#web-components-axis-gridlines-properties) of the chart, and the [trendlines](charts/features/chart-trendlines.md#web-components-chart-trendlines-dash-array-example) of the series plotted in the chart.
+- It is now possible to apply a **dash array** to the different parts of the series of the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). You can apply this to the [series](charts/types/line-chart.md#web-components-styling-line-chart) plotted in the chart, the [gridlines](charts/features/chart-axis-gridlines.md#web-components-axis-gridlines-properties) of the chart, and the [trendlines](charts/features/chart-trendlines.md#web-components-chart-trendlines-dash-array-example) of the series plotted in the chart.
 
 ## **4.2.5 (April 2023)**
 
 ### igniteui-webcomponents-grids
 
-- A new argument [`primaryKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#primaryKey) has been introduced to [`IgcRowDataEventArgs`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcrowdataeventargs.html), and part of the event arguments that are emitted by the `RowAdded` and `RowDeleted` events. When the grid has a primary key attribute added, then the emitted primaryKey event argument represents the row ID, otherwise it defaults to undefined.
+- A new argument [`primaryKey`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=primaryKey) has been introduced to [`IgcRowDataEventArgs`](mcp:get_api_reference?platform=webcomponents&component=IgcRowDataEventArgs), and part of the event arguments that are emitted by the `RowAdded` and `RowDeleted` events. When the grid has a primary key attribute added, then the emitted primaryKey event argument represents the row ID, otherwise it defaults to undefined.
 
 - `RowSelectionChanging` event arguments are changed. Now, the `OldSelection`, `NewSelection`, `Added` and `Removed` collections no longer consist of the row keys of the selected elements when the grid has set a primaryKey, but now in any case the row data is emitted.
 
@@ -690,15 +690,15 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 - The `OnDensityChanged` event has been renamed to `DensityChanged` to not violate the no on-prefixed outputs convention. All components exposing this event are affected.
 
-- [`IgcPivotGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotgridcomponent.html): The [`IgcPivotDateDimension`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdatedimension.html) properties `InBaseDimension` and `InOption` have been deprecated and renamed to [`baseDimension`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdatedimension.html#baseDimension) and [`options`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpivotdatedimension.html#options) respectively.
+- [`IgcPivotGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent): The [`IgcPivotDateDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDateDimension) properties `InBaseDimension` and `InOption` have been deprecated and renamed to [`baseDimension`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDateDimension&member=baseDimension) and [`options`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotDateDimension&member=options) respectively.
 
 ### igniteui-webcomponents-inputs
 
-- [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html), the StepDownAsync(DateTimeInputDatePart.Date, SpinDelta.Date) is now trimmed down to DatePart instead of DateTimeInputDatePart
-- [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html) and [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html), added component validation along with styles for invalid state
+- [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent), the StepDownAsync(DateTimeInputDatePart.Date, SpinDelta.Date) is now trimmed down to DatePart instead of DateTimeInputDatePart
+- [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent) and [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent), added component validation along with styles for invalid state
 - `Mask`, added the capability to escape mask pattern literals.
-- [`IgcBadgeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html) added a [`shape`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html#shape) property that controls the shape of the badge and can be either `Square` or `Rounded`. The default shape of the badge is rounded.
-- [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html), the `RoundShape` property has been deprecated and will be removed in a future version. Users can control the shape of the avatar by the newly added [`shape`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html#shape) attribute that can be `Square`, `Rounded` or `Circle`. The default shape of the avatar is `Square`.
+- [`IgcBadgeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent) added a [`shape`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent&member=shape) property that controls the shape of the badge and can be either `Square` or `Rounded`. The default shape of the badge is rounded.
+- [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent), the `RoundShape` property has been deprecated and will be removed in a future version. Users can control the shape of the avatar by the newly added [`shape`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent&member=shape) attribute that can be `Square`, `Rounded` or `Circle`. The default shape of the avatar is `Square`.
 
 ## **4.0.4 (December 2022)**
 
@@ -728,7 +728,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 - Added marker properties to StackedFragmentSeries.
 
-- Added [`shouldPanOnMaximumZoom`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#shouldPanOnMaximumZoom) property.
+- Added [`shouldPanOnMaximumZoom`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=shouldPanOnMaximumZoom) property.
 
 - New Category Axis Properties:
   - ZoomMaximumCategoryRange
@@ -751,7 +751,7 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
   - GroupSortDescriptions
 
 > [!Note]
-> [Chart Aggregation](charts/features/chart-data-aggregations.md) will not work when using [`includedProperties`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#includedProperties) | [`excludedProperties`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#excludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
+> [Chart Aggregation](charts/features/chart-data-aggregations.md) will not work when using [`includedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=includedProperties) | [`excludedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=excludedProperties). These properties on the chart are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render. The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
 
 ## **3.2.1 (June 2022)**
 
@@ -764,18 +764,18 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 - Added the highly-configurable [DataLegend](charts/features/chart-data-legend.md) component, which works much like the `Legend`, but it shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values.
 - Added the highly-configurable [DataToolTip](charts/features/chart-data-tooltip.md) which displays values and titles of series as well as legend badges of series in a tooltip. This is now the default tooltip for all chart types.
-- Added animation and transition-in support for Stacked Series. Animations can be enabled by setting the [`isTransitionInEnabled`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#isTransitionInEnabled) property to true. From there, you can set the [`transitionInDuration`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#transitionInDuration) property to determine how long your animation should take to complete and the [`transitionInMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#transitionInMode) to determine the type of animation that takes place.
-- Added `AssigningCategoryStyle` event, is now available to all series in [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html). This event is handled when you want to conditionally configure aspects of the series items such as `Fill` background-color and highlighting.
-- New [`allowedPositions`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccalloutlayercomponent.html#allowedPositions) enumeration for CalloutLayer. Used to limit where the callouts are to be placed within the chart. By default, the callouts are intelligently placed in the best place but this used to force for example `TopLeft`, `TopRight`, `BottomLeft` or `BottomRight`.
+- Added animation and transition-in support for Stacked Series. Animations can be enabled by setting the [`isTransitionInEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=isTransitionInEnabled) property to true. From there, you can set the [`transitionInDuration`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=transitionInDuration) property to determine how long your animation should take to complete and the [`transitionInMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=transitionInMode) to determine the type of animation that takes place.
+- Added `AssigningCategoryStyle` event, is now available to all series in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent). This event is handled when you want to conditionally configure aspects of the series items such as `Fill` background-color and highlighting.
+- New [`allowedPositions`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=allowedPositions) enumeration for CalloutLayer. Used to limit where the callouts are to be placed within the chart. By default, the callouts are intelligently placed in the best place but this used to force for example `TopLeft`, `TopRight`, `BottomLeft` or `BottomRight`.
 - New corner radius properties added for Annotation Layers; used to round-out the corners of each of the callouts. Note, a corner radius has now been added by default.
-  - [`calloutCornerRadius`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccalloutlayercomponent.html#calloutCornerRadius) for CalloutLayer
-  - [`axisAnnotationBackgroundCornerRadius`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinalvaluelayercomponent.html#axisAnnotationBackgroundCornerRadius) for FinalValueLayer
-  - [`xAxisAnnotationBackgroundCornerRadius`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccrosshairlayercomponent.html#xAxisAnnotationBackgroundCornerRadius) and [`yAxisAnnotationBackgroundCornerRadius`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccrosshairlayercomponent.html#yAxisAnnotationBackgroundCornerRadius) for CrosshairLayer
-- New [`horizontalViewScrollbarMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#horizontalViewScrollbarMode) and [`verticalViewScrollbarMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#verticalViewScrollbarMode) enumeration to enable scrollbars in various ways. When paired with [`isVerticalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#isVerticalZoomEnabled) or [`isHorizontalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html#isHorizontalZoomEnabled), you'll be able to persist or fade-in and out the scrollbars along the axes to navigate the chart.
-- New `FavorLabellingScaleEnd`, determines whether the axis should favor emitting a label at the end of the scale. Only compatible with numeric axes (e.g. [`IgcNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcnumericxaxiscomponent.html), [`IgcNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcnumericyaxiscomponent.html), `PercentChangeAxis`).
-- New [`isSplineShapePartOfRange`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#isSplineShapePartOfRange) determines whether to include the spline shape in the axis range requested of the axis.
-- New [`xAxisMaximumGap`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#xAxisMaximumGap), determines the maximum allowed value for the plotted series when using [`xAxisGap`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#xAxisGap). The gap determines the amount of space between columns or bars of plotted series.
-- New [`xAxisMinimumGapSize`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#xAxisMinimumGapSize), determines the minimum allowed pixel-based value for the plotted series when using [`xAxisGap`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html#xAxisGap) to ensure there is always some spacing between each category.
+  - [`calloutCornerRadius`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutCornerRadius) for CalloutLayer
+  - [`axisAnnotationBackgroundCornerRadius`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent&member=axisAnnotationBackgroundCornerRadius) for FinalValueLayer
+  - [`xAxisAnnotationBackgroundCornerRadius`](mcp:get_api_reference?platform=webcomponents&component=IgcCrosshairLayerComponent&member=xAxisAnnotationBackgroundCornerRadius) and [`yAxisAnnotationBackgroundCornerRadius`](mcp:get_api_reference?platform=webcomponents&component=IgcCrosshairLayerComponent&member=yAxisAnnotationBackgroundCornerRadius) for CrosshairLayer
+- New [`horizontalViewScrollbarMode`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=horizontalViewScrollbarMode) and [`verticalViewScrollbarMode`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=verticalViewScrollbarMode) enumeration to enable scrollbars in various ways. When paired with [`isVerticalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isVerticalZoomEnabled) or [`isHorizontalZoomEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=isHorizontalZoomEnabled), you'll be able to persist or fade-in and out the scrollbars along the axes to navigate the chart.
+- New `FavorLabellingScaleEnd`, determines whether the axis should favor emitting a label at the end of the scale. Only compatible with numeric axes (e.g. [`IgcNumericXAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericXAxisComponent), [`IgcNumericYAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent), `PercentChangeAxis`).
+- New [`isSplineShapePartOfRange`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=isSplineShapePartOfRange) determines whether to include the spline shape in the axis range requested of the axis.
+- New [`xAxisMaximumGap`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisMaximumGap), determines the maximum allowed value for the plotted series when using [`xAxisGap`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisGap). The gap determines the amount of space between columns or bars of plotted series.
+- New [`xAxisMinimumGapSize`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisMinimumGapSize), determines the minimum allowed pixel-based value for the plotted series when using [`xAxisGap`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisGap) to ensure there is always some spacing between each category.
 
 ## **1.4.2 (December 2021)**
 
@@ -818,29 +818,29 @@ The following table lists the bug fixes made for the Ignite UI for Web Component
 
 This release introduces a few improvements and simplifications to visual design and configuration options for the geographic map and all chart components.
 
-- Changed [`yAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#yAxisLabelLocation) property's type to **YAxisLabelLocation** from **AxisLabelLocation** in [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html) and [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html)
-- Changed [`xAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#xAxisLabelLocation) property's type to **XAxisLabelLocation** from **AxisLabelLocation** in [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html)
-- Added [`xAxisLabelLocation`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#xAxisLabelLocation) property to [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html)
+- Changed [`yAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=yAxisLabelLocation) property's type to **YAxisLabelLocation** from **AxisLabelLocation** in [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) and [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+- Changed [`xAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=xAxisLabelLocation) property's type to **XAxisLabelLocation** from **AxisLabelLocation** in [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)
+- Added [`xAxisLabelLocation`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=xAxisLabelLocation) property to [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
 - Added support for representing geographic series of [`IgcGeographicMapComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_maps.igcgeographicmapcomponent.html) in a legend
-- Added crosshair lines by default in [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html) and [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html)
-- Added crosshair annotations by default in [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html) and [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html)
-- Added final value annotation by default in [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html)
+- Added crosshair lines by default in [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) and [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+- Added crosshair annotations by default in [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) and [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+- Added final value annotation by default in [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)
 - Added new properties in Category Chart and Financial Chart:
-  - [`crosshairsLineThickness`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#crosshairsLineThickness) and other properties for customizing crosshairs lines
-  - [`crosshairsAnnotationXAxisBackground`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#crosshairsAnnotationXAxisBackground) and other properties for customizing crosshairs annotations
-  - [`finalValueAnnotationsBackground`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#finalValueAnnotationsBackground) and other properties for customizing final value annotations
-  - [`areaFillOpacity`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#areaFillOpacity) that allow changing opacity of series fill (e.g. Area chart)
-  - [`markerThickness`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#markerThickness) that allows changing thickness of markers
+  - [`crosshairsLineThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=crosshairsLineThickness) and other properties for customizing crosshairs lines
+  - [`crosshairsAnnotationXAxisBackground`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=crosshairsAnnotationXAxisBackground) and other properties for customizing crosshairs annotations
+  - [`finalValueAnnotationsBackground`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=finalValueAnnotationsBackground) and other properties for customizing final value annotations
+  - [`areaFillOpacity`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=areaFillOpacity) that allow changing opacity of series fill (e.g. Area chart)
+  - [`markerThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=markerThickness) that allows changing thickness of markers
 - Added new properties in Category Chart, Financial Chart, Data Chart, and Geographic Map:
-  - [`markerAutomaticBehavior`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#markerAutomaticBehavior) that allows which marker type is assigned to multiple series in the same chart
-  - [`legendItemBadgeShape`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#legendItemBadgeShape) for setting badge shape of all series represented in a legend
-  - [`legendItemBadgeMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#legendItemBadgeMode) for setting badge complexity on all series in a legend
+  - [`markerAutomaticBehavior`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=markerAutomaticBehavior) that allows which marker type is assigned to multiple series in the same chart
+  - [`legendItemBadgeShape`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=legendItemBadgeShape) for setting badge shape of all series represented in a legend
+  - [`legendItemBadgeMode`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=legendItemBadgeMode) for setting badge complexity on all series in a legend
 - Added new properties in Series in Data Chart and Geographic Map:
-  - [`legendItemBadgeShape`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#legendItemBadgeShape) for setting badge shape on specific series represented in a legend
-  - [`legendItemBadgeMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#legendItemBadgeMode) for setting badge complexity on specific series in a legend
+  - [`legendItemBadgeShape`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=legendItemBadgeShape) for setting badge shape on specific series represented in a legend
+  - [`legendItemBadgeMode`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=legendItemBadgeMode) for setting badge complexity on specific series in a legend
 - Changed default vertical crosshair line stroke from <span style="color:#000000">#000000</span> to <span style="color:#BBBBBB">#BBBBBB</span> in category chart and series
-- Changed shape of markers to circle for all series plotted in the same chart. This can be reverted by setting chart's [`markerAutomaticBehavior`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#markerAutomaticBehavior) property to `SmartIndexed` enum value
-- Simplified shapes of series in chart's legend to display only circle, line, or square. This can be reverted by setting chart's [`legendItemBadgeMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#legendItemBadgeMode) property to `MatchSeries` enum value
+- Changed shape of markers to circle for all series plotted in the same chart. This can be reverted by setting chart's [`markerAutomaticBehavior`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=markerAutomaticBehavior) property to `SmartIndexed` enum value
+- Simplified shapes of series in chart's legend to display only circle, line, or square. This can be reverted by setting chart's [`legendItemBadgeMode`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=legendItemBadgeMode) property to `MatchSeries` enum value
 - Changed color palette of series and markers displayed in all charts to improve accessibility
 
 | Old brushes/outlines | New outline/brushes |
@@ -856,7 +856,7 @@ This release introduces a few improvements and simplifications to visual design 
   - Added [`EditModeClickAction`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_grids.editmodeclickaction.html) property - By default double-clicking is required to enter edit mode. This can be set to [`SingleClick`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_grids.editmodeclickaction.html#SingleClick) to allow for edit mode to occur when selecting a new cell.
   - Added [`EnterKeyBehaviors`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_grids.enterkeybehaviors.html) property - aka Excel-style Navigation (Enter Behavior) – controls the behavior of the enter key, e.g. Options are (none, edit, move up, down, left, right)
   - Added [`EnterKeyBehaviorAfterEdit`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_grids.enterkeybehaviorafteredit.html) property - While in edit-mode, this property controls when enter is pressed, e.g. Options are (moves to the cell below, above, right, left)
-  - Added [`selectAllRows`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html#selectAllRows) - method.
+  - Added [`selectAllRows`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=selectAllRows) - method.
   - Added Row Range Selection - With `GridSelectionMode` property set to MultipleRow the following new functionality is now included:
   - Click and drag to select rows
   - <kbd>SHIFT</kbd> and click to select multiple rows.
@@ -868,13 +868,13 @@ This release introduces a few improvements and simplifications to visual design 
 
 - Date Picker:
   - `ShowTodayButton` - Toggles Today button visibility
-  - [`label`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#label) - Adds a label above the date value
-  - [`placeholder`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#placeholder) property - adds custom text when no value is selected
+  - [`label`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=label) - Adds a label above the date value
+  - [`placeholder`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=placeholder) property - adds custom text when no value is selected
   - `FormatString` - Customize input date string e.g. (`yyyy-MM-dd`)
   - `DateFormat` - Specifies whether to display selected dates as LongDate or ShortDate
   - `FirstDayOfWeek` - Specifies first day of week
   - `FirstWeekOfYear` - Specifies when to display first week of the year, e.g. (First Full Week, First Four day Week)
-  - [`showWeekNumbers`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#showWeekNumbers) - Toggles Week number visibility
+  - [`showWeekNumbers`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=showWeekNumbers) - Toggles Week number visibility
   - `MinDate` & `MaxDate` - Date limits, specifying a range of available selectable dates.
   - Added Accessibility
 
@@ -890,30 +890,30 @@ This release introduces a few improvements and simplifications to visual design 
 
 ### igniteui-webcomponents-charts
 
-This release introduces several new and improved visual design and configuration options for all of the chart components, e.g. [`IgcDataChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcdatachartcomponent.html), [`IgcCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igccategorychartcomponent.html), and [`IgcFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcfinancialchartcomponent.html).
+This release introduces several new and improved visual design and configuration options for all of the chart components, e.g. [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent), [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), and [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent).
 
 - Changed Bar/Column/Waterfall series to have square corners instead of rounded corners
 - Changed Scatter High Density series’ colors for heat min property from <span style="color:#8a5bb1">#8a5bb1</span> to <span style="color:#000000">#000000</span>
 - Changed Scatter High Density series’ colors for heat max property from <span style="color:#ee5879">#ee5879</span> to <span style="color:#ee5879">#ee5879</span>
 - Changed Financial/Waterfall series’ `NegativeBrush` and `NegativeOutline` properties from <span style="color:#C62828">#C62828</span> to <span style="color:#ee5879">#ee5879</span>
 - Changed marker's thickness to 2px from 1px
-- Changed marker's fill to match the marker's outline for [`IgcPointSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpointseriescomponent.html), [`IgcBubbleSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcbubbleseriescomponent.html), [`IgcScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcscatterseriescomponent.html), [`IgcPolarScatterSeriesComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcpolarscatterseriescomponent.html). You can use set [`markerFillMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#markerFillMode) property to Normal to undo this change
-- Compressed labelling for the [`IgcTimeXAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igctimexaxiscomponent.html) and [`IgcOrdinalTimeXAxisComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcordinaltimexaxiscomponent.html)
+- Changed marker's fill to match the marker's outline for [`IgcPointSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPointSeriesComponent), [`IgcBubbleSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBubbleSeriesComponent), [`IgcScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSeriesComponent), [`IgcPolarScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarScatterSeriesComponent). You can use set [`markerFillMode`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=markerFillMode) property to Normal to undo this change
+- Compressed labelling for the [`IgcTimeXAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTimeXAxisComponent) and [`IgcOrdinalTimeXAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcOrdinalTimeXAxisComponent)
 - New Marker Properties:
-  - series.[`markerFillMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#markerFillMode) - Can be set to `MatchMarkerOutline` so the marker depends on the outline
-  - series.[`markerFillOpacity`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#markerFillOpacity) - Can be set to a value 0 to 1
-  - series.[`markerOutlineMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#markerOutlineMode) - Can be set to `MatchMarkerBrush` so the marker's outline depends on the fill brush color
+  - series.[`markerFillMode`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=markerFillMode) - Can be set to `MatchMarkerOutline` so the marker depends on the outline
+  - series.[`markerFillOpacity`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=markerFillOpacity) - Can be set to a value 0 to 1
+  - series.[`markerOutlineMode`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=markerOutlineMode) - Can be set to `MatchMarkerBrush` so the marker's outline depends on the fill brush color
 - New Series Property:
-  - series.[`outlineMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#outlineMode) - Can be set to toggle the series outline visibility. Note, for Data Chart, the property is on the series
-- New chart properties that define bleed over area introduced into the viewport when the chart is at the default zoom level. A common use case is to provide space between the axes and first/last data points. Note, the [`computedPlotAreaMarginMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#computedPlotAreaMarginMode), listed below, will automatically set the margin when markers are enabled. The others are designed to specify a `Double` to represent the thickness, where PlotAreaMarginLeft etc. adjusts the space to all four sides of the chart:
-  - chart.[`plotAreaMarginLeft`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#plotAreaMarginLeft)
-  - chart.[`plotAreaMarginTop`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#plotAreaMarginTop)
-  - chart.[`plotAreaMarginRight`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#plotAreaMarginRight)
-  - chart.[`plotAreaMarginBottom`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#plotAreaMarginBottom)
-  - chart.[`computedPlotAreaMarginMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcxychartcomponent.html#computedPlotAreaMarginMode)
+  - series.[`outlineMode`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=outlineMode) - Can be set to toggle the series outline visibility. Note, for Data Chart, the property is on the series
+- New chart properties that define bleed over area introduced into the viewport when the chart is at the default zoom level. A common use case is to provide space between the axes and first/last data points. Note, the [`computedPlotAreaMarginMode`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=computedPlotAreaMarginMode), listed below, will automatically set the margin when markers are enabled. The others are designed to specify a `Double` to represent the thickness, where PlotAreaMarginLeft etc. adjusts the space to all four sides of the chart:
+  - chart.[`plotAreaMarginLeft`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=plotAreaMarginLeft)
+  - chart.[`plotAreaMarginTop`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=plotAreaMarginTop)
+  - chart.[`plotAreaMarginRight`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=plotAreaMarginRight)
+  - chart.[`plotAreaMarginBottom`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=plotAreaMarginBottom)
+  - chart.[`computedPlotAreaMarginMode`](mcp:get_api_reference?platform=webcomponents&component=IgcXYChartComponent&member=computedPlotAreaMarginMode)
 - New Highlighting Properties
-  - chart.[`highlightingMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#highlightingMode) - Sets whether hovered or non-hovered series to fade, brighten
-  - chart.[`highlightingBehavior`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#highlightingBehavior) - Sets whether the series highlights depending on mouse position e.g. directly over or nearest item
+  - chart.[`highlightingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=highlightingMode) - Sets whether hovered or non-hovered series to fade, brighten
+  - chart.[`highlightingBehavior`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=highlightingBehavior) - Sets whether the series highlights depending on mouse position e.g. directly over or nearest item
   - Note, in previous releases the highlighting was limited to fade on hover.
 - Added Highlighting Stacked, Scatter, Polar, Radial, and Shape series:
 - Added Annotation layers to Stacked, Scatter, Polar, Radial, and Shape series:
@@ -937,7 +937,7 @@ for example:
 #### Chart Legend
 
 - Added horizontal [`orientation`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_layouts.igctoolbarcomponent.html#orientation) property to ItemLegend that can be used with Bubble, Donut, and Pie Chart
-- Added [`legendHighlightingMode`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcseriesviewercomponent.html#legendHighlightingMode) property - Enables series highlighting when hovering over legend items
+- Added [`legendHighlightingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesViewerComponent&member=legendHighlightingMode) property - Enables series highlighting when hovering over legend items
 
 ## **1.1.3 (November 2020)**
 
@@ -1081,46 +1081,46 @@ import { IgcLiveGridComponent } from 'igniteui-webcomponents-data-grids/ES5/igc-
 
 ### **5.0.0 (August 2024)**
 
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html)
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
   - Added `setIconRef` method. This allows to register and replace icons by SVG files.
   - All components now use icons by reference internally so that it's easy to replace them without explicitly providing custom templates.
-- [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html)
+- [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)
   - Added `name` and `value` properties.
 
 **Breaking Changes**
 
 - Removed `Form` component. Use native form instead.
 - Removed `size` property in favor of the `--ig-size` CSS custom property for the following components:
-  - [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html), [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html),[`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html), [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html), [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html), [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html), [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html), [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html), [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html), [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html), [`IgcSnackbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html), [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html), [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html)
+  - [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent), [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent),[`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent), [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent), [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent), [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent), [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent), [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent), [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent), [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent), [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent), [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent), [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent)
 - Removed custom `igcFocus` and `igcBlur` events. Use the native `focus` and `blur` events instead for the following components:
-  - [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html), [`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html), [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html), [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html), [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html), [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html), [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html), [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html), [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html), **IgcSelectComponent**, [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html)
-- [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html), [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) ,[`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html)
+  - [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent), [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent), [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent), [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent), [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent), [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent), [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent), [`IgcMaskInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent), [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent), **IgcSelectComponent**, [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent)
+- [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent), [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent) ,[`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent)
   - Changed `igcChange` event arguments from `CustomEvent<boolean>` to `CustomEvent<{ checked: boolean; value: string | undefined }>`
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html), **IgcSelectComponent**
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent), **IgcSelectComponent**
   - Removed `positionStrategy`, `flip`, `sameWidth` properties.
-- [`IgcDialogComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdialogcomponent.html)
+- [`IgcDialogComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDialogComponent)
   - Renamed The `closeOnEscape` property to `keepOpenOnEscape`.
-- [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html)
+- [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent)
   - Removed `positionStrategy` property.
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html)
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
   - Removed `maxlength` and `minlength` properties. Use the native `maxLength` and `minLength` properties or `max` and `min` instead.
   - Renamed `readonly` and `inputmode` properties to `readOnly` and `inputMode`.
-- [`IgcRangeSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcrangeslidercomponent.html)
+- [`IgcRangeSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeSliderComponent)
   - Renamed `ariaThumbLower`/`ariaThumbUpper` properties to `thumbLabelLower`/`thumbLabelUpper`.
-- [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html)
+- [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent)
   - Renamed `readonly` property to `readOnly`.
 
 ### **4.11.1 (July 2024)**
 
 #### Changed
 
-- [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) - Design changes in vertical mode.
+- [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) - Design changes in vertical mode.
 
 ### **4.11.0 (July 2024)**
 
 #### Changed
 
-- [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html), [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html), [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) - Styling changes in Indigo Theme.
+- [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent), [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent), [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) - Styling changes in Indigo Theme.
 
 ### **4.10.0 (July 2024)**
 
@@ -1129,136 +1129,136 @@ import { IgcLiveGridComponent } from 'igniteui-webcomponents-data-grids/ES5/igc-
 - New [Banner](notifications/banner.md) component
 - New [Divider](layouts/divider.md) component
 - New [DatePicker](scheduling/date-picker.md) component
-- [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html) - Bind underlying radio components name and checked state through the radio group.
+- [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent) - Bind underlying radio components name and checked state through the radio group.
 
 #### Deprecated
 
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) `Inputmode` property. Aligned with the native `inputMode` DOM property instead.
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) `Inputmode` property. Aligned with the native `inputMode` DOM property instead.
 
 #### Fixed
 
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html), [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) - passing `undefined` to value sets the underlying input value to undefined.
-- [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html) - after a form `reset` call correctly update underlying input value and placeholder state.
-- [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) - setting `--ig-size` on the item `indicator` CSS Part will now change the size of the icon.
-- [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) - double emit of `igcChange` in certain scenarios.
-- [`IgcNavDrawerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawercomponent.html) - mini variant is not initially rendered when not in an open state.
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html):
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent), [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) - passing `undefined` to value sets the underlying input value to undefined.
+- [`IgcMaskInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent) - after a form `reset` call correctly update underlying input value and placeholder state.
+- [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) - setting `--ig-size` on the item `indicator` CSS Part will now change the size of the icon.
+- [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) - double emit of `igcChange` in certain scenarios.
+- [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) - mini variant is not initially rendered when not in an open state.
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent):
   - Selecting an entry using the <kbd>ENTER</kbd> key now correctly works in single selection mode.
-  - Turning on the [`disableFiltering`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#disableFiltering) option now clears any previously entered search term.
+  - Turning on the [`disableFiltering`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=disableFiltering) option now clears any previously entered search term.
   - Entering a search term in single selection mode that already matches the selected item now works correctly.
 
 ### **4.9.0 (April 2024)**
 
 #### Added
 
-- [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html) - now allows resetting the selection state via the [`selectedItems`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html#selectedItems) property.
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html), [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) - exposed [`validateOnly`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html#validateOnly) to enable validation rules being enforced without restricting user input.
+- [`IgcButtonGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent) - now allows resetting the selection state via the [`selectedItems`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent&member=selectedItems) property.
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent), [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) - exposed [`validateOnly`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent&member=validateOnly) to enable validation rules being enforced without restricting user input.
 
 #### Changed
 
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html), [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#select) and [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) - now use the native `Popover` API.
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent), [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=select) and [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) - now use the native `Popover` API.
 
 #### Deprecated
 
-- [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) - [`IgcPositionStrategy`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcpositionstrategy.html) property is deprecated. The dropdown now uses the `Popover` API to render its container in the top layer of the browser viewport, making the property obsolete.
+- [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) - [`IgcPositionStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcPositionStrategy) property is deprecated. The dropdown now uses the `Popover` API to render its container in the top layer of the browser viewport, making the property obsolete.
 
 #### Fixed
 
-- [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) - Label in Material theme is broken when component is in read-only mode.
+- [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) - Label in Material theme is broken when component is in read-only mode.
 
 ### **4.8.2 (April 2024)**
 
 #### Fixed
 
-- [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) - resize handle position for non-suffixed textarea.
-- [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html) - error when dynamically creating and adding a tab group and tabs in a single call stack.
-- [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html)/[`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) - participate in form submission when initially checked.
-- [`IgcDialogComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdialogcomponent.html) - `igcClosed` fired before the component was actually closed/hidden.
+- [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) - resize handle position for non-suffixed textarea.
+- [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) - error when dynamically creating and adding a tab group and tabs in a single call stack.
+- [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent)/[`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent) - participate in form submission when initially checked.
+- [`IgcDialogComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDialogComponent) - `igcClosed` fired before the component was actually closed/hidden.
 
 ### **4.8.1 (April 2024)**
 
 #### Fixed
 
-- [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) - [`inputFormat`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html#inputFormat) is not applied to an already set value.
-- [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html), [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html), [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) - apply form validation synchronously.
-- [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#select), [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) - Unable to select item when clicking on a wrapping element inside the dropdown/select item slot.
-- [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) - active state is correctly applied to the correct tree node on click.
+- [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) - [`inputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) is not applied to an already set value.
+- [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent), [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent), [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent) - apply form validation synchronously.
+- [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=select), [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) - Unable to select item when clicking on a wrapping element inside the dropdown/select item slot.
+- [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) - active state is correctly applied to the correct tree node on click.
 
 ### **4.8.0 (March 2024)**
 
 #### Added
 
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) can now set [`groupSorting`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#groupSorting) to none which shows the groups in the order of the provided data.
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html)/[`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html) - updated visual looks across themes, new states.
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) can now set [`groupSorting`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=groupSorting) to none which shows the groups in the order of the provided data.
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent)/[`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent) - updated visual looks across themes, new states.
 - `NavBar` - added border in Bootstrap theme.
 
 #### Changed
 
-- Grouping in [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) no longer sorts the data. [`groupSorting`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#groupSorting) property now affects the sorting direction only of the groups. **Behavioral change**: In previous release the sorting directions of the groups sorted the items as well. If you want to achieve this behavior you can pass already sorted data to the [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html).
+- Grouping in [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) no longer sorts the data. [`groupSorting`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=groupSorting) property now affects the sorting direction only of the groups. **Behavioral change**: In previous release the sorting directions of the groups sorted the items as well. If you want to achieve this behavior you can pass already sorted data to the [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent).
 
 #### Deprecated
 
-- [`IgcSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html) - `aria-label-upper` and `aria-label-lower` are deprecated and will be removed in the next major release. Use `thumb-label-upper` and `thumb-label-lower` instead.
+- [`IgcSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent) - `aria-label-upper` and `aria-label-lower` are deprecated and will be removed in the next major release. Use `thumb-label-upper` and `thumb-label-lower` instead.
 
 #### Fixed
 
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) - Slotted icon size.
-- [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html)
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) - Slotted icon size.
+- [`IgcButtonGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent)
   - Updated Fluent theme look.
   - Disabled state in Safari.
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html)/[`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#select) - Style issues.
-- [`IgcSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html)
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent)/[`select`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=select) - Style issues.
+- [`IgcSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent)
   - Clicks on the slider track now use the track element width as a basis for the calculation.
   - Input events are no longer emitted while continuously dragging the slider thumb and exceeding upper/lower bounds.
   - When setting `upper-bound`/`lower-bound` before `min`/`max`, the slider will no longer overwrite the bound properties with the previous values of `min`/`max`.
   - The `aria-label` bound to the slider thumb is no longer reset on consequent renders.
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html)
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
   - Default validators are run synchronously.
   - Style issues.
-- [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) - `setRangeText()` updates underlying value.
+- [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) - `setRangeText()` updates underlying value.
 
 ### **4.7.0 (January 2024)**
 
 #### Added
 
-- [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) - Added [`toggleNodeOnClick`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html#toggleNodeOnClick) property that determines whether clicking over a node will change its expanded state or not. Defaults to `false`.
+- [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) - Added [`toggleNodeOnClick`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent&member=toggleNodeOnClick) property that determines whether clicking over a node will change its expanded state or not. Defaults to `false`.
 
-- [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) - [`allowReset`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html#allowReset) added. When enabled selecting the same value will reset the component. **Behavioral change**: In previous releases this was the default behavior of the rating component. Make sure to set `allowReset` if you need to keep this behavior in your application.
+- [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) - [`allowReset`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=allowReset) added. When enabled selecting the same value will reset the component. **Behavioral change**: In previous releases this was the default behavior of the rating component. Make sure to set `allowReset` if you need to keep this behavior in your application.
 
 #### Changed
 
-- Improved WAI-ARIA compliance for [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html), [`IgcBadgeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html) and [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html).
+- Improved WAI-ARIA compliance for [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent), [`IgcBadgeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent) and [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent).
 
 #### Fixed
 
-- Active item visual styles for [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html), [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html#select) and [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html).
-- [`IgcNavDrawerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawercomponent.html) - mini variant broken visual style.
+- Active item visual styles for [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent), [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent&member=select) and [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent).
+- [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) - mini variant broken visual style.
 
 ### **4.6.0 (December 2023)**
 
 #### Added
 
-- `action` slot added to [`IgcSnackbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html).
-- `indicator-expanded` slot added to [`IgcExpansionPanelComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcexpansionpanelcomponent.html).
-- `toggle-icon-expanded` slot added to [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#select).
-- [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#select), [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) - exposed `selectedItem`, `items` and `groups` getters.
+- `action` slot added to [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent).
+- `indicator-expanded` slot added to [`IgcExpansionPanelComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcExpansionPanelComponent).
+- `toggle-icon-expanded` slot added to [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=select).
+- [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=select), [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) - exposed `selectedItem`, `items` and `groups` getters.
 
 #### Changed
 
 - Updated the package to Lit v3.
 - Components dark variants are now bound to their shadow root.
 - Components implement default sizes based on current theme.
-- [`IgcButtonGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttongroupcomponent.html) - changed events to non-cancellable.
+- [`IgcButtonGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonGroupComponent) - changed events to non-cancellable.
 - Optimized components CSS and reduced bundle size.
-- WAI-ARIA improvements for [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html), [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#select), [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) and [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html).
+- WAI-ARIA improvements for [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent), [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=select), [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) and [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent).
 
 #### Fixed
 
-- [`IgcTextareaComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctextareacomponent.html) missing styling parts.
-- [`IgcTreeItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html) disabled styles.
-- [`IgcSnackbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html) removed unnecessary styles.
-- [`IgcTreeItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html) hover state visual design.
-- [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html) not keeping focus state when switching views.
+- [`IgcTextareaComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTextareaComponent) missing styling parts.
+- [`IgcTreeItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent) disabled styles.
+- [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent) removed unnecessary styles.
+- [`IgcTreeItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent) hover state visual design.
+- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) not keeping focus state when switching views.
 
 ### **4.5.0 (October 2023)**
 
@@ -1266,13 +1266,13 @@ import { IgcLiveGridComponent } from 'igniteui-webcomponents-data-grids/ES5/igc-
 
 - New [Text Area](inputs/text-area.md) component.
 - New [Button Group](inputs/button-group.md) component.
-- New [`IgcToggleButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctogglebuttoncomponent.html).
-- [`IgcNavDrawerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawercomponent.html) now supports CSS transitions.
-- Position attribute for [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html) and [`IgcSnackbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html).
+- New [`IgcToggleButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToggleButtonComponent).
+- [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) now supports CSS transitions.
+- Position attribute for [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent) and [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent).
 
 #### Deprecated
 
-The `size` property and attribute have been deprecated for all components. Use the `--ig-size` CSS custom property instead. The following example sets the size of the [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html) component to small:
+The `size` property and attribute have been deprecated for all components. Use the `--ig-size` CSS custom property instead. The following example sets the size of the [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent) component to small:
 
 ```css
 igc-avatar {
@@ -1294,92 +1294,92 @@ igc-avatar {
 
 - The following components are now Form Associated Custom Elements. They are automatically associated with a parent `<form>`
     and behave like a browser-provided control:
-  - [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) & [`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html)
-  - [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html)
-  - [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html)
-  - [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html)
-  - [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html)
-  - [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html)
-  - [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html)
-  - [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html)
-  - Single [`IgcSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html)
-  - [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#select)
-  - [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html)
-- [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) now supports animations.
+  - [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) & [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent)
+  - [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent)
+  - [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent)
+  - [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent)
+  - [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
+  - [`IgcMaskInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent)
+  - [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent)
+  - [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent)
+  - Single [`IgcSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent)
+  - [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=select)
+  - [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent)
+- [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) now supports animations.
 
 #### Changed
 
-- [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) fluent theme colors.
-- [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html) indicator styles and color schemas.
+- [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) fluent theme colors.
+- [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent) indicator styles and color schemas.
 
 #### Deprecated
 
 - `Form` component is deprecated.
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html):
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent):
   - `minlength` property is deprecated and will be removed in the next major version. Use `minLength` instead.
   - `maxlength` property is deprecated and will be removed in the next major version. Use `maxLength` instead.
   - `readonly` property is deprecated and will be removed in the next major version. Use `readOnly` instead.
-- [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html):
+- [`IgcMaskInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent):
   - `readonly` property is deprecated and will be removed in the next major version. Use `readOnly` instead.
-- [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html):
+- [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent):
   - `readonly` property is deprecated and will be removed in the next major version. Use `readOnly` instead.
   - `minValue` property is deprecated and will be removed in the next major version. Use `min` instead.
   - `maxValue` property is deprecated and will be removed in the next major version. Use `max` instead.
-- [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html):
+- [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent):
   - `readonly` property is deprecated and will be removed in the next major version. Use `readOnly` instead.
 
 #### Removed
 
 - Removed our own `dir` attribute which shadowed the default one. This is a **non-breaking change**.
-- [`IgcSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html) - `ariaLabel` shadowed property. This is a **non-breaking change**.
-- [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) - `ariaLabelledBy` shadowed attribute. This is a **non-breaking change**.
-- [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) - `ariaLabelledBy` shadowed attribute. This is a **non-breaking change**.
-- [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html) - `ariaLabelledBy` shadowed attribute. This is a **non-breaking change**.
+- [`IgcSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent) - `ariaLabel` shadowed property. This is a **non-breaking change**.
+- [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) - `ariaLabelledBy` shadowed attribute. This is a **non-breaking change**.
+- [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent) - `ariaLabelledBy` shadowed attribute. This is a **non-breaking change**.
+- [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent) - `ariaLabelledBy` shadowed attribute. This is a **non-breaking change**.
 
 #### Fixed
 
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) - outlined variant styling issues and indigo theme issues.
-- [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html#select) - outlined variant styling issues
-- [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html) - `spinUp/spinDown` calls moving the caret when the input is focused.
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) - outlined variant styling issues and indigo theme issues.
+- [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent&member=select) - outlined variant styling issues
+- [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) - `spinUp/spinDown` calls moving the caret when the input is focused.
 
 ### **4.3.1 (August 2023)**
 
 #### Added
 
-- [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) - component animations.
+- [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) - component animations.
 - Components border radius is consumed from their schemas.
 
 #### Changed
 
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html), [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html), [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html#select) - schema colors.
-- [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) - schema colors.
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) - updated theming styles and size.
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent), [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent), [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent&member=select) - schema colors.
+- [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) - schema colors.
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) - updated theming styles and size.
 
 #### Fixed
 
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) - single selection not working in certain scenarios.
-- [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) - various styling fixes.
-- [`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html) - border radius with ripple.
-- [`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html) - fixed wrong color in Fluent theme.
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) - various styling fixes.
-- [`IgcTreeItemComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreeitemcomponent.html) - assign closest **igc-tree-item** ancestor as a parent.
-- [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html) - internal **hidden** styles and custom display property.
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) - single selection not working in certain scenarios.
+- [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) - various styling fixes.
+- [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent) - border radius with ripple.
+- [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent) - fixed wrong color in Fluent theme.
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) - various styling fixes.
+- [`IgcTreeItemComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeItemComponent) - assign closest **igc-tree-item** ancestor as a parent.
+- [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) - internal **hidden** styles and custom display property.
 
 ### **4.3.0 (June 2023)**
 
 #### Added
 
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html):
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent):
   - `matchDiacritics` to the filtering options property. Defaults to **false**. If set to **true** the filter distinguishes between accented letters and their base letters. Otherwise strings are normalized and then matched.
   - `selection` property which returns the current selection as an array of data objects.
-- [`IgcCardComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcomponent.html): Support explicit height
-- [`IgcDialogComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdialogcomponent.html): Added animations
-- [`IgcSnackbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html): Added animations
-- [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html): Added animations
+- [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent): Support explicit height
+- [`IgcDialogComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDialogComponent): Added animations
+- [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent): Added animations
+- [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent): Added animations
 
 #### Changed
 
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html):
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent):
   - `value` is no longer readonly and can be explicitly set. The value attribute also supports declarative binding,
         accepting a valid JSON stringified array.
   - `value` type changed from `string[]` to `ComboValue<T>[]` where
@@ -1397,74 +1397,74 @@ igc-avatar {
 
 #### Deprecated
 
-- [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#select): Deprecated `sameWidth`, `positionStrategy` and `flip`. They will be removed in the next major release.
+- [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=select): Deprecated `sameWidth`, `positionStrategy` and `flip`. They will be removed in the next major release.
 
 #### Fixed
 
-- [`select`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html#select): `prefix`/`suffix`/`helper-text` slots not being rendered.
-- [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html): Nested tabs selection.
-- [`IgcDialogComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdialogcomponent.html): Backdrop doesn't overlay elements.
-- [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html): Listbox position on initial open state.
-- [`IgcStepperComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsteppercomponent.html): Stretch vertically in parent container.
-- [`IgcNavbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavbarcomponent.html): Wrong colors in fluent theme.
+- [`select`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=select): `prefix`/`suffix`/`helper-text` slots not being rendered.
+- [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent): Nested tabs selection.
+- [`IgcDialogComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDialogComponent): Backdrop doesn't overlay elements.
+- [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent): Listbox position on initial open state.
+- [`IgcStepperComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStepperComponent): Stretch vertically in parent container.
+- [`IgcNavbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavbarComponent): Wrong colors in fluent theme.
 - Animation player throws errors when height is unspecified.
-- [`IgcDateTimeInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatetimeinputcomponent.html): Intl.DateTimeFormat issues in Chromium based browsers.
+- [`IgcDateTimeInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent): Intl.DateTimeFormat issues in Chromium based browsers.
 
 ### **4.2.3 (April 2023)**
 
 #### Deprecated
 
-- [`IgcDialogComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdialogcomponent.html) - Property `closeOnEscape` is deprecated in favor of new property `keepOpenOnEscape`.
+- [`IgcDialogComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDialogComponent) - Property `closeOnEscape` is deprecated in favor of new property `keepOpenOnEscape`.
 
 #### Fixed
 
-- [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html)- colors in selected focus state.
-- [`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html) - set icon size to match other design system products.
-- [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html) - removed outline styles for Fluent and Material themes.
-- [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html) - navigation to date on set value.
-- [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html) - not taking the full height of their parents.
+- [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent)- colors in selected focus state.
+- [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent) - set icon size to match other design system products.
+- [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) - removed outline styles for Fluent and Material themes.
+- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) - navigation to date on set value.
+- [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) - not taking the full height of their parents.
 
 ### **4.2.2 (March 2023)**
 
 #### Deprecated
 
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) - The `prefix`/`suffix` slots are no longer needed and will be removed in the next major release.
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) - The `prefix`/`suffix` slots are no longer needed and will be removed in the next major release.
 
 #### Fixed
 
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) - UI inconsistencies.
-- [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html) - Fluent theme inconsistencies.
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) - Selection via API doesn't work on a searched list.
-- [`IgcDialogComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdialogcomponent.html) - Fluent theme inconsistency.
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) - UI inconsistencies.
-- [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html) - Fluent theme inconsistency.
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) - UI inconsistencies.
+- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) - Fluent theme inconsistencies.
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) - Selection via API doesn't work on a searched list.
+- [`IgcDialogComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDialogComponent) - Fluent theme inconsistency.
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) - UI inconsistencies.
+- [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent) - Fluent theme inconsistency.
 - Components missing in defineAllComponents.
-- Wrong host sizes for [`IgcAvatarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcavatarcomponent.html), [`IgcBadgeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html), [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) and [`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html).
+- Wrong host sizes for [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent), [`IgcBadgeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent), [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) and [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent).
 
 ### **4.2.1 (February 2023)**
 
 #### Fixed
 
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) - Matching item not activated on filtering in single selection mode.
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) - Matching item not activated on filtering in single selection mode.
 
 ### **4.2.0 (January 2023)**
 
 #### Added
 
-- [`IgcComboComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccombocomponent.html) - Single Selection mode via the `single-select` attribute.
+- [`IgcComboComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) - Single Selection mode via the `single-select` attribute.
 
 #### Fixed
 
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) - UI inconsistencies.
-- [`IgcBadgeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbadgecomponent.html) - Doesn't correctly render `igc-icon` and font icons.
-- [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html) - UI inconsistencies.
-- [`IgcNavDrawerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawercomponent.html) - Can't override item margin.
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) - UI inconsistencies.
+- [`IgcBadgeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBadgeComponent) - Doesn't correctly render `igc-icon` and font icons.
+- [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent) - UI inconsistencies.
+- [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) - Can't override item margin.
 
 ### **4.1.1 (January 2023)**
 
 #### Fixed
 
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html)
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent)
   - position label based on component size.
   - material themes don't match design.
   - do not cache the underlying input.
@@ -1478,11 +1478,11 @@ igc-avatar {
 
 - New [Stepper](layouts/stepper.md) component.
 - New [Combo](inputs/combo/overview.md) component.
-- [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html) - Skip literal positions when deleting symbols in the component
+- [`IgcMaskInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent) - Skip literal positions when deleting symbols in the component
 
 #### Fixed
 
-- [`IgcMaskInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcmaskinputcomponent.html) - Validation state on user input.
+- [`IgcMaskInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcMaskInputComponent) - Validation state on user input.
 
 ### **4.0.0 (November 2022)**
 
@@ -1504,12 +1504,12 @@ igc-avatar {
 
 #### Changed
 
-- [`IgcSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html) - updated theme with the latest fluent spec.
-- [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html) - updated weekend days color.
+- [`IgcSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent) - updated theme with the latest fluent spec.
+- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) - updated weekend days color.
 
 #### Fixed
 
-- [`IgcTabsComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctabscomponent.html) `selected` attribute breaks content visibility on init.
+- [`IgcTabsComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTabsComponent) `selected` attribute breaks content visibility on init.
 
 ### **3.4.0 (September 2022)**
 
@@ -1520,24 +1520,24 @@ igc-avatar {
 
 #### Fixed
 
-- [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html) - range selection a11y improvements.
-- [`IgcRangeSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcrangeslidercomponent.html) - a11y improvements for choosing range values.
-- [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) - improved a11y with assistive software now reading the total number of items.
-- [`IgcToastComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctoastcomponent.html) - added `role="alert"` to the message container for assistive software to read it without the need of focusing.
-- [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html) - made remove button accessible with the keyboard.
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) `prefix`/`suffix` does not align icons to the button text.
+- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent) - range selection a11y improvements.
+- [`IgcRangeSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRangeSliderComponent) - a11y improvements for choosing range values.
+- [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) - improved a11y with assistive software now reading the total number of items.
+- [`IgcToastComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcToastComponent) - added `role="alert"` to the message container for assistive software to read it without the need of focusing.
+- [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent) - made remove button accessible with the keyboard.
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) `prefix`/`suffix` does not align icons to the button text.
 
 ### **3.3.1 (August 2022)**
 
 #### Changed
 
-- [`IgcTreeComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igctreecomponent.html) - Removed theme-specified height.
+- [`IgcTreeComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeComponent) - Removed theme-specified height.
 
 #### Fixed
 
-- [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) - Dispose of top-level event listeners.
-- [`IgcLinearProgressComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclinearprogresscomponent.html) - Indeterminate animation in Safari.
-- [`IgcRadioGroupComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiogroupcomponent.html) - Child radio components auto-registration.
+- [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) - Dispose of top-level event listeners.
+- [`IgcLinearProgressComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLinearProgressComponent) - Indeterminate animation in Safari.
+- [`IgcRadioGroupComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent) - Child radio components auto-registration.
 
 ### **3.3.0 (July 2022)**
 
@@ -1550,8 +1550,8 @@ igc-avatar {
 
 #### Changed
 
-- [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) - Added support for single selection and empty symbols.
-- [`IgcSliderComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcslidercomponent.html) - Improved slider steps rendering.
+- [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) - Added support for single selection and empty symbols.
+- [`IgcSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent) - Improved slider steps rendering.
 - Components will now auto register their dependencies when they are registered in `defineComponents`
 
 ```typescript
@@ -1566,11 +1566,11 @@ Check the official [documentation](https://www.infragistics.com/products/ignite-
 #### Fixed
 
 - Remove input helper text container when it is empty.
-- [`IgcIconComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconcomponent.html) not showing in Safari.
-- [`IgcCheckboxComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccheckboxcomponent.html) not showing in Safari.
-- [`IgcButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcbuttoncomponent.html) stretches correctly in flex containers.
+- [`IgcIconComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent) not showing in Safari.
+- [`IgcCheckboxComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent) not showing in Safari.
+- [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent) stretches correctly in flex containers.
 - Various theming issues.
-- [`IgcDropdownComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdropdowncomponent.html) - bug fixes and improvements.
+- [`IgcDropdownComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDropdownComponent) - bug fixes and improvements.
 
 ### **3.2.0 (May 2022)**
 
@@ -1579,31 +1579,31 @@ Check the official [documentation](https://www.infragistics.com/products/ignite-
 - New [MaskInput](inputs/mask-input.md) component.
 - New [ExpansionPanel](layouts/expansion-panel.md) component.
 - New [Tree](grids/tree.md) component.
-- [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) - Added `selected` CSS part and exposed CSS variable to control symbol sizes.
-- [`IgcIconButtonComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igciconbuttoncomponent.html) - Allow slotted content.
+- [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) - Added `selected` CSS part and exposed CSS variable to control symbol sizes.
+- [`IgcIconButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcIconButtonComponent) - Allow slotted content.
 
 #### Fixed
 
-- [`IgcNavDrawerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawercomponent.html) - Various styles fixes.
+- [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) - Various styles fixes.
 - Buttons - Vertical align and focus management.
-- [`IgcInputComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcinputcomponent.html) - Overflow for `suffix`/`prefix`.
-- [`IgcSwitchComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcswitchcomponent.html) - Collapse with small sizes.
-- [`IgcListComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igclistcomponent.html) - Overflow behavior.
+- [`IgcInputComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) - Overflow for `suffix`/`prefix`.
+- [`IgcSwitchComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSwitchComponent) - Collapse with small sizes.
+- [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent) - Overflow behavior.
 
 ### **3.1.0 (April 2022)**
 
 #### Added
 
-- [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html): Added `prefix` and `suffix` slots.
-- [`IgcSnackbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html): Added `toggle` method.
+- [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent): Added `prefix` and `suffix` slots.
+- [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent): Added `toggle` method.
 
 #### Deprecated
 
-- [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html): Previously exposed `start` and `end` slots are replaced by `prefix` and `suffix`. They remain active, but are now deprecated and will be removed in a future version.
+- [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent): Previously exposed `start` and `end` slots are replaced by `prefix` and `suffix`. They remain active, but are now deprecated and will be removed in a future version.
 
 #### Fixed
 
-- [`IgcChipComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcchipcomponent.html):
+- [`IgcChipComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcChipComponent):
   - Auto load internal icons.
   - Selected chip is misaligned.
 - Package: ESM internal import paths.
@@ -1619,7 +1619,7 @@ Check the official [documentation](https://www.infragistics.com/products/ignite-
 #### Added
 
 - New [DropDown](inputs/dropdown.md) component.
-- [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html): Active date can be set via an attribute.
+- [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent): Active date can be set via an attribute.
 
 ### **2.1.1 (March 2022)**
 
@@ -1656,18 +1656,18 @@ Example:
 - Dark Themes
 - New [Slider](inputs/slider.md) component.
 - New [RangeSlider](inputs/slider.md) component.
-- Support `required` property in [`IgcRadioComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcradiocomponent.html) component.
+- Support `required` property in [`IgcRadioComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioComponent) component.
 
 #### Changed
 
 - Fix checkbox/switch validity status
-- Split [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html)'s `value: Date | Date[]` property into two properties - `value: Date` and `values: Date[]`
-- Replaced [`IgcCalendarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccalendarcomponent.html)'s `hasHeader` property & `has-header` attribute with `hideHeader` & `hide-header` respectively.
-- Replaced [`IgcCardComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igccardcomponent.html)'s `outlined` property with `elevated`.
+- Split [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)'s `value: Date | Date[]` property into two properties - `value: Date` and `values: Date[]`
+- Replaced [`IgcCalendarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalendarComponent)'s `hasHeader` property & `has-header` attribute with `hideHeader` & `hide-header` respectively.
+- Replaced [`IgcCardComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCardComponent)'s `outlined` property with `elevated`.
 
 #### Removed
 
-- Removed `igcOpening`, `igcOpened`, `igcClosing` and `igcClosed` events from [`IgcNavDrawerComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcnavdrawercomponent.html) component.
+- Removed `igcOpening`, `igcOpened`, `igcClosing` and `igcClosed` events from [`IgcNavDrawerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNavDrawerComponent) component.
 
 ### **1.0.0 (November 2021)**
 
@@ -1699,7 +1699,7 @@ Initial release of Ignite UI Web Components
 
 #### Deprecated
 
-- [`IgcSplitPane`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcsplitpane.html) [`isMaximized`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcsplitpane.html#isMaximized) is deprecated. Having isMaximized set to true on a split pane level has no real effect as split panes serve as containers only, meaning they have no actual content to be shown maximized. Use the [`isMaximized`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igcsplitpane.html#isMaximized) property of [`IgcTabGroupPane`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igctabgrouppane.html) and/or [`IgcContentPane`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igccontentpane.html) instead.
+- [`IgcSplitPane`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitPane) [`isMaximized`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitPane&member=isMaximized) is deprecated. Having isMaximized set to true on a split pane level has no real effect as split panes serve as containers only, meaning they have no actual content to be shown maximized. Use the [`isMaximized`](mcp:get_api_reference?platform=webcomponents&component=IgcSplitPane&member=isMaximized) property of [`IgcTabGroupPane`](mcp:get_api_reference?platform=webcomponents&component=IgcTabGroupPane) and/or [`IgcContentPane`](mcp:get_api_reference?platform=webcomponents&component=IgcContentPane) instead.
 
 ### **1.14.3**
 
@@ -1735,14 +1735,14 @@ Initial release of Ignite UI Web Components
 #### Fixed
 
 - Maximizing and unpinning panes leads to unclickable panes.
-- Center dock is possible in a pane that has [`acceptsInnerDock`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/interfaces/igccontentpane.html#acceptsInnerDock) set to **true** if the `AllowInnerDock` of [`IgcDockManagerComponent`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html) is set to **false**.
+- Center dock is possible in a pane that has [`acceptsInnerDock`](mcp:get_api_reference?platform=webcomponents&component=IgcContentPane&member=acceptsInnerDock) set to **true** if the `AllowInnerDock` of [`IgcDockManagerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent) is set to **false**.
 
 ### **1.13.0**
 
 #### New features
 
-- Add [`focusPane`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#focusPane) method.
-- Add [`allowInnerDock`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#allowInnerDock) and `AcceptsInnerDock` properties.
+- Add [`focusPane`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=focusPane) method.
+- Add [`allowInnerDock`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=allowInnerDock) and `AcceptsInnerDock` properties.
 
 #### Enhancements
 
@@ -1793,7 +1793,7 @@ Initial release of Ignite UI Web Components
 #### Enhancements
 
 - Include pane information in `splitterResizeStart` and `splitterResizeEnd` events.
-- [`IgcDockManagerComponent`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html) is now exported as class.
+- [`IgcDockManagerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent) is now exported as class.
 
 #### Fixed
 
@@ -1833,7 +1833,7 @@ Initial release of Ignite UI Web Components
 
 #### New features
 
-- Add options for [`showHeaderIconOnHover`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#showHeaderIconOnHover) property for different buttons
+- Add options for [`showHeaderIconOnHover`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=showHeaderIconOnHover) property for different buttons
 - Add `horizontal` and `vertical` options for `splitter-handle` CSS part
 - Add `header-title` CSS part
 - Add `hover` option for `tab-header-close-button` CSS part in active/inactive states
@@ -1843,7 +1843,7 @@ Initial release of Ignite UI Web Components
 
 #### New features
 
-- Add [`showHeaderIconOnHover`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#showHeaderIconOnHover) property.
+- Add [`showHeaderIconOnHover`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=showHeaderIconOnHover) property.
 
 #### Fixed
 
@@ -1871,10 +1871,10 @@ Initial release of Ignite UI Web Components
 #### New features
 
 - Customizable floating pane header.
-- [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcdatepickercomponent.html#disabled) property per pane.
+- [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=disabled) property per pane.
 - `DocumentOnly` property which allows content pane to be docked only inside a document host.
 - `AllowEmpty` property for split and tab group panes which allows displaying empty areas.
-- [`disableKeyboardNavigation`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#disableKeyboardNavigation) property on the dock manager.
+- [`disableKeyboardNavigation`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=disableKeyboardNavigation) property on the dock manager.
 
 #### Fixed
 
@@ -1894,7 +1894,7 @@ Initial release of Ignite UI Web Components
 
 #### New features
 
-- [`allowMaximize`](https://www.infragistics.com/products/ignite-ui/dock-manager/docs/typescript/latest/classes/igcdockmanagercomponent.html#allowMaximize) property per pane.
+- [`allowMaximize`](mcp:get_api_reference?platform=webcomponents&component=IgcDockManagerComponent&member=allowMaximize) property per pane.
 
 #### Fixed
 

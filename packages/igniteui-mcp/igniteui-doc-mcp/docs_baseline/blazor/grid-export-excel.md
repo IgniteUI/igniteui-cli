@@ -13,7 +13,7 @@ _premium: true
 
 # Blazor Grid Exporting
 
-The Ignite UI for Blazor Grid provides data export functionality through the Grid Toolbar Exporter component. You can export the displayed data to Excel, CSV, or PDF formats. Excel exports use the MS Excel table format, which supports features like filtering and sorting. To enable exporting, place the [`IgbGridToolbarExporter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarExporter.html) inside the grid's toolbar. By default, all export formats are enabled.
+The Ignite UI for Blazor Grid provides data export functionality through the Grid Toolbar Exporter component. You can export the displayed data to Excel, CSV, or PDF formats. Excel exports use the MS Excel table format, which supports features like filtering and sorting. To enable exporting, place the [`IgbGridToolbarExporter`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter) inside the grid's toolbar. By default, all export formats are enabled.
 
 ## Blazor Exporting Example
 
@@ -189,21 +189,21 @@ public class InvoicesData
 
 ## Export Grouped Data
 
-To export grouped data, group the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) by one or more columns. The browser will download a file named "ExportedDataFile.xlsx" that contains the data from the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component in Excel format, grouped by the selected columns. You can find an example at the beginning of the topic.
+To export grouped data, group the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) by one or more columns. The browser will download a file named "ExportedDataFile.xlsx" that contains the data from the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component in Excel format, grouped by the selected columns. You can find an example at the beginning of the topic.
 
 <!-- ComponentEnd: Grid -->
 
 ## Export Multi Column Headers Grid
 
-You can export [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` `IgnoreMultiColumnHeaders` to `true`.
+You can export [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) with defined [multi-column headers](multi-column-headers.md). All headers are reflected in the exported Excel file as they are displayed in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). If you want to exclude the defined multi-column headers from the exported data, set the `ExporterOption` `IgnoreMultiColumnHeaders` to `true`.
 
 > [!Note]
-> The exported [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) will not be formatted as a table, since Excel tables do not support multiple column headers.
+> The exported [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) will not be formatted as a table, since Excel tables do not support multiple column headers.
 
 > [!Note]
-> [`IgbGridToolbarExporter`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarExporter.html) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
+> [`IgbGridToolbarExporter`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter) is also configured to demonstrate how you can control which export formats are available to end users. Use the toolbar exporter options to toggle Excel, CSV, or PDF buttons:
 >
-> - [`ExportExcel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGridToolbarExporter.html#IgniteUI_Blazor_Controls_IgbGridToolbarExporter_ExportExcel), `ExportCsv`, `ExportPdf`
+> - [`ExportExcel`](mcp:get_api_reference?platform=blazor&component=IgbGridToolbarExporter&member=ExportExcel), `ExportCsv`, `ExportPdf`
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -452,7 +452,7 @@ igRegisterScript("WebGridExportEventFreezeHeaders", (ev) => {
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ## Additional Resources
 

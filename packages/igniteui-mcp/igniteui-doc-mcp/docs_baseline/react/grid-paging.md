@@ -12,11 +12,11 @@ _premium: true
 
 # React Grid Pagination Overview
 
-The Ignite UI for React Pagination feature in React Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) pagination is configurable via a separate component projected in the grid tree by defining a [`IgrPaginator`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpaginator.html)  tag, similar to adding of a column. As in any React table, the pagination in the React Grid supports template for custom pages.
+The Ignite UI for React Pagination feature in React Grid is used to split a large set of data into a sequence of pages that have similar content. React grid pagination improves user experience and data interaction. [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) pagination is configurable via a separate component projected in the grid tree by defining a [`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator)  tag, similar to adding of a column. As in any React table, the pagination in the React Grid supports template for custom pages.
 
 ## React Grid Pagination Example
 
-The following example represents [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) pagination and exposes the options usage of items per page and how paging can be enabled. The user can also quickly navigate through the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) pages via "Go to last page" and "Go to first page" buttons.
+The following example represents [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) pagination and exposes the options usage of items per page and how paging can be enabled. The user can also quickly navigate through the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) pages via "Go to last page" and "Go to first page" buttons.
 
 ```typescript
 export class AthletesDataItem {
@@ -214,7 +214,7 @@ Integration between Paging and Group By is described in the [Group By](groupby.m
 
 ## Usage
 
-The [`IgrPaginator`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpaginator.html) component is used along with the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) component in the example below, but you can use it with any other component in case paging functionality is needed.
+The [`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator) component is used along with the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) component in the example below, but you can use it with any other component in case paging functionality is needed.
 
 ```tsx
 const selectOptions = [5, 15, 20, 50];
@@ -432,8 +432,8 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
-- [`IgrPaginator`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpaginator.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+- [`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator)
 
 ## Additional Resources
 

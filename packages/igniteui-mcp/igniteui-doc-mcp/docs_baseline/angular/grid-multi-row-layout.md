@@ -89,12 +89,12 @@ export class GridMultiRowLayoutComponent {
     padding: 16px;
 }
 ```
-The declaration of Multi-row Layout is achieved through [`igx-column-layout`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnlayoutcomponent.html) component. Each `igx-column-layout` component should be considered as a block, containing one or multiple `igx-column` components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more `igx-column-layout` blocks if the layout allows it. There should be no columns outside of those blocks and no usage of `IgxColumnGroupComponent` when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
+The declaration of Multi-row Layout is achieved through [`igx-column-layout`](mcp:get_api_reference?platform=angular&component=IgxColumnLayoutComponent) component. Each `igx-column-layout` component should be considered as a block, containing one or multiple `igx-column` components. Some of the grid features work on block level (those are listed in the "Feature Integration" section below). For example the virtualization will use the block to determine the virtual chunks, so for better performance split the columns into more `igx-column-layout` blocks if the layout allows it. There should be no columns outside of those blocks and no usage of `IgxColumnGroupComponent` when configuring a multi-row layout. Multi-row Layout is implemented on top of the [grid layout](https://www.w3.org/TR/css-grid-1/) specification and should conform to its requirements.
 `IgxColumnComponent` exposes four `@Input` properties to determine the location and span of each cell:
-- [`colStart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#colStart) - column index from which the field is starting. This property is **mandatory**.
-- [`rowStart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#rowStart) - row index from which the field is starting. This property is **mandatory**.
-- [`colEnd`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#colEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to `colStart + 1`.
-- [`rowEnd`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#rowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to `rowStart + 1`.
+- [`colStart`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=colStart) - column index from which the field is starting. This property is **mandatory**.
+- [`rowStart`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=rowStart) - row index from which the field is starting. This property is **mandatory**.
+- [`colEnd`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=colEnd) - column index where the current field should end. The amount of columns between colStart and colEnd will determine the amount of spanning columns to that field. This property is **optional**. If not set defaults to `colStart + 1`.
+- [`rowEnd`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=rowEnd) - row index where the current field should end. The amount of rows between rowStart and rowEnd will determine the amount of spanning rows to that field. This property is **optional**. If not set defaults to `rowStart + 1`.
 ```html
 <igx-column-layout>
  <igx-column [rowStart]="1" [colStart]="1" [rowEnd]="3" field="ID"></igx-column>
@@ -119,7 +119,7 @@ The declaration of Multi-row Layout is achieved through [`igx-column-layout`](ht
 The result of the above configuration can be seen on the screenshot below:
 <img src="../../images/multi-row-layout-1.png" alt="Multi-row Layout Example" style="width: 100%"/>
 > [!Note]
-> [`rowStart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#rowStart) and [`colStart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#colStart) properties must be set for each `igx-column` into `igx-column-layout`. The `igxColumnLayout` component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
+> [`rowStart`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=rowStart) and [`colStart`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=colStart) properties must be set for each `igx-column` into `igx-column-layout`. The `igxColumnLayout` component is not verifying if the layout is correct and not throwing errors or warnings about that. The developers must make sure that the declaration of their layout is correct and complete, otherwise they may end up in broken layout with misalignments, overlaps and browser inconsistencies.
 ## Feature Integration
 Due to the completely different rendering approach of Multi-row Layout, some of the column features will work only on `igx-column-layout` component. Such features are Column Pinning and Column Hiding. Others like - Sorting and Grouping will work in the same way - on `igx-column` component.
 - Filtering - only Excel Style Filtering is supported. Setting `filterMode` explicitly to `FilterMode.quickFilter` has no effect.
@@ -145,8 +145,8 @@ IgxGridComponent with Multi-Row Layouts provides build-in keyboard navigation.
 > Selection and multi cell selection are working on layout, meaning that when a cell is active, its layout will be selected. Also all features of multiple selection like drag selection are applicable and will work per layout not per cell.
 ### Custom Keyboard Navigation
 The grid allows customizing the default navigation behavior when a certain key is pressed. Actions like `going to the next cell` or `cell below` could be handled easily with the powerful keyboard navigation API:
-- [`gridKeydown`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#gridKeydown) is exposed. The event will emit [`IGridKeydownEventArgs`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igridkeydowneventargs.html). This event is available only through the keyboard key combinations mentioned above, for all other key actions you can use `keydown` event `(keydown)="onKeydown($event)"`
-- [`navigateTo`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#navigateTo) - this method allows you to navigate to a position based on provided `rowindex` and `visibleColumnIndex`
+- [`gridKeydown`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=gridKeydown) is exposed. The event will emit [`IGridKeydownEventArgs`](mcp:get_api_reference?platform=angular&component=IGridKeydownEventArgs). This event is available only through the keyboard key combinations mentioned above, for all other key actions you can use `keydown` event `(keydown)="onKeydown($event)"`
+- [`navigateTo`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=navigateTo) - this method allows you to navigate to a position based on provided `rowindex` and `visibleColumnIndex`
 The demo below adds additional navigation down/up via the <kbd>Enter</kbd> and <kbd>Shift</kbd> + <kbd>Enter</kbd> keys, similar to the behavior observed in Excel.
 ### Demo
 ```typescript
@@ -220,7 +220,7 @@ export class GridMRLCustomNavigationComponent {
 }
 ```
 ## Layout Configurator
-Sometimes when configuring a column layout it might be a challenge to calculate and set the proper [`colStart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#colStart)  and [`colEnd`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#colEnd)  or [`rowStart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#rowStart)  and [`rowEnd`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#rowEnd). Especially when there are a lot of columns in a single layout. That is why we have created a small configurator, so you can easily do that and have a similar preview of how it would look inside the igxGrid when applied. You can do the following interactions with it:
+Sometimes when configuring a column layout it might be a challenge to calculate and set the proper [`colStart`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=colStart)  and [`colEnd`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=colEnd)  or [`rowStart`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=rowStart)  and [`rowEnd`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=rowEnd). Especially when there are a lot of columns in a single layout. That is why we have created a small configurator, so you can easily do that and have a similar preview of how it would look inside the igxGrid when applied. You can do the following interactions with it:
 - Set number of rows for the whole configuration. All layouts must have the same amount of rows.
 - Add/Remove column layouts by clicking the `Add Layout` chip or reordering them by dragging a layout chip left/right.
 - Set specific settings for each layout as number of columns and how wide they will be. The setting refer to the currently selected layout.
@@ -355,10 +355,10 @@ $custom-theme: grid-theme(
 >The sample will not be affected by the selected global theme from `Change Theme`.
 ## API References
 <div class="divider--half"></div>
-- [IgxGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
+- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [IgxColumnLayoutComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumnlayoutcomponent.html)
-- [IgxColumnComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html)
+- [IgxColumnLayoutComponent](mcp:get_api_reference?platform=angular&component=IgxColumnLayoutComponent)
+- [IgxColumnComponent](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
 <div class="divider--half"></div>
 ## Additional Resources
 <div class="divider--half"></div>

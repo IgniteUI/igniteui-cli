@@ -71,7 +71,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html), its necessary CSS, like so:
+You will then need to import the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput), its necessary CSS, like so:
 
 ```tsx
 import { IgrDateTimeInput } from 'igniteui-react';
@@ -80,19 +80,19 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 ### Value binding
 
-The easiest way to set the value of the [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html) component is by passing a Date object to the [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#value) property:
+The easiest way to set the value of the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) component is by passing a Date object to the [`value`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=value) property:
 
 ```tsx
 <IgrDateTimeInput value={someValue}></IgrDateTimeInput>
 ```
 
-The [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html) also accepts [ISO 8601](https://tc39.es/ecma262/#sec-date-time-string-format) strings.
+The [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) also accepts [ISO 8601](https://tc39.es/ecma262/#sec-date-time-string-format) strings.
 
 The string can be a full `ISO` string, in the format `YYYY-MM-DDTHH:mm:ss.sssZ` or it could be separated into date-only and time-only portions.
 
 #### Date-only
 
-If a date-only string is bound to the [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#value) property of the component, it needs to be in the format `YYYY-MM-DD`. The [`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#inputFormat) is still used when typing values in the input and it does not have to be in the same format. Additionally, when binding a date-only string, the directive will prevent time shifts by coercing the time to be `T00:00:00`.
+If a date-only string is bound to the [`value`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=value) property of the component, it needs to be in the format `YYYY-MM-DD`. The [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) is still used when typing values in the input and it does not have to be in the same format. Additionally, when binding a date-only string, the directive will prevent time shifts by coercing the time to be `T00:00:00`.
 
 #### Time-only
 
@@ -106,7 +106,7 @@ All falsy values, including `InvalidDate` will be parsed as `null`. Incomplete d
 
 ### Keyboard Navigation
 
-The [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different `DateParts` among others without having to touch the mouse.
+The [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) has intuitive keyboard navigation that makes it easy to increment, decrement, or jump through different `DateParts` among others without having to touch the mouse.
 
 |Keys|Description|
 |----|-----------|
@@ -122,13 +122,13 @@ The [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/d
 
 ## Setting formats
 
-The [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html) supports different display and input formats.
+The [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) supports different display and input formats.
 
-It uses [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) which allows it to support predefined format options, such as `long` and `short`, `medium` and `full`. Additionally, it can also accept a custom string constructed from supported characters, such as `dd-MM-yy`. Also, if no [`displayFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#displayFormat) is provided, the component will use the [`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#inputFormat) as such.
+It uses [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) which allows it to support predefined format options, such as `long` and `short`, `medium` and `full`. Additionally, it can also accept a custom string constructed from supported characters, such as `dd-MM-yy`. Also, if no [`displayFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=displayFormat) is provided, the component will use the [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) as such.
 
 ### Input Format
 
-The table bellow shows formats that are supported by the component's [`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#inputFormat):
+The table bellow shows formats that are supported by the component's [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat):
 
 |Format|Description|
 |-------|----------|
@@ -146,7 +146,7 @@ The table bellow shows formats that are supported by the component's [`inputForm
 | `mm` | Minutes with an explicitly set leading zero. |
 | `tt` | AM/PM section for 12-hour format. |
 
-To set a specific input format, pass it as a string to the [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html). This will set both the expected user input format and the `mask`. Additionally, the [`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#inputFormat) is locale based, so if none is provided, the editor will default to `dd/MM/yyyy`.
+To set a specific input format, pass it as a string to the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput). This will set both the expected user input format and the `mask`. Additionally, the [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) is locale based, so if none is provided, the editor will default to `dd/MM/yyyy`.
 
 ```tsx
 <IgrDateTimeInput inputFormat="dd-MM-yy" displayFormat="medium"></IgrDateTimeInput>
@@ -258,7 +258,7 @@ Furthermore, users can construct a displayFormat string using the supported symb
 
 ## Min/max value
 
-You can specify [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#max) properties to restrict input and control the validity of the component. Just like the [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#value) property, they can be of type `string`.
+You can specify [`min`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=min) and [`max`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=max) properties to restrict input and control the validity of the component. Just like the [`value`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=value) property, they can be of type `string`.
 
 ```tsx
  <IgrDateTimeInput min={minDate} max={maxDate}></IgrDateTimeInput>
@@ -320,9 +320,9 @@ root.render(<DateTimeInputMinMaxValue/>);
 
 ## Step up/down
 
-The [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html) exposes public [`stepUp`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#stepUp) and [`stepDown`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#stepDown) methods. They increment or decrement a specific `DatePart` of the currently set date and time and can be used in a couple of ways.
+The [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) exposes public [`stepUp`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=stepUp) and [`stepDown`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=stepDown) methods. They increment or decrement a specific `DatePart` of the currently set date and time and can be used in a couple of ways.
 
-In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html#inputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
+In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
 
 Try it in the example below:
 
@@ -380,7 +380,7 @@ root.render(<DateTimeInputStepUpDown/>);
 
 ## Styling
 
-The [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -484,10 +484,10 @@ root.render(<DateTimeInputStyling/>);
 
 ## API References
 
-- [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html)
-- [`IgrMaskInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrmaskinput.html)
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
-- [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html)
+- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
+- [`IgrMaskInput`](mcp:get_api_reference?platform=react&component=IgrMaskInput)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+- [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

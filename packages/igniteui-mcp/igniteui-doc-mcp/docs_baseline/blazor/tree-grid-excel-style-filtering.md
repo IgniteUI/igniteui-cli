@@ -176,7 +176,7 @@ public class FoodsData
 
 ## Usage
 
-To turn on the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) component's Excel-style filtering, two inputs should be set. The [`AllowFiltering`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_AllowFiltering) should be set to **true** and the [`FilterMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_FilterMode) should be set to `ExcelStyleFilter` value.
+To turn on the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component's Excel-style filtering, two inputs should be set. The [`AllowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=AllowFiltering) should be set to **true** and the [`FilterMode`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=FilterMode) should be set to `ExcelStyleFilter` value.
 
 ```razor
 <IgbTreeGrid AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" >
@@ -197,7 +197,7 @@ To apply a filter with different expressions, you can click the **Text filter**,
 
 ## Configure Menu Features
 
-Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`Sortable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Sortable), [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selected), [`DisablePinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisablePinning), [`DisableHiding`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisableHiding).
+Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`Sortable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Sortable), [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected), [`DisablePinning`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisablePinning), [`DisableHiding`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisableHiding).
 
 ```razor
 <IgbTreeGrid AutoGenerate="false" Data="FoodsData" PrimaryKey="ID" ForeignKey="ParentID" Moving="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter">
@@ -347,9 +347,9 @@ public class FoodsData
 
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the [`ExcelStyleHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_ExcelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`ExcelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=ExcelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the [`ExcelStyleHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_ExcelStyleHeaderIconTemplate):
+The following code demonstrates how to customize the Excel style filter menu using the [`ExcelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=ExcelStyleHeaderIconTemplate):
 
 ```razor
 <IgbTreeGrid
@@ -651,8 +651,8 @@ public class FoodsData
 
 ## API References
 
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
-- [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
 
 ## Additional Resources
 

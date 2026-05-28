@@ -54,7 +54,9 @@ Use this when you already know the exact component name — from the user's code
 
 Returns formatted markdown with the class/interface summary, properties (with types and descriptions), methods (with signatures), and events. Use section="properties", "methods", or "events" to retrieve only that section and reduce response size. Defaults to section="all".
 
-Component name must be ≤128 characters. Returns isError with a suggestion to use search_api if not found.
+Supply member="<name>" (e.g. "checked", "click", "igcChange") to return only a single property/method/event line instead of the full entry — useful when the user is asking about one specific member. Takes precedence over section when both are supplied.
+
+Component name must be ≤128 characters. Returns isError with a suggestion to use search_api if not found, or if a supplied member name does not exist on the component.
 `,
 
   search_api: `Search Ignite UI API entries by keyword, feature name, or partial component name. Returns up to 10 results ranked by relevance across all four frameworks: angular, react, webcomponents, and blazor.

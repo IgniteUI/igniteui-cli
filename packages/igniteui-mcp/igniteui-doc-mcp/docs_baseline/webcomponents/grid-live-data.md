@@ -11,7 +11,7 @@ _premium: true
 
 # Web Components Grid Live Data Updates
 
-The Ignite UI for Web Components Live Data Updates feature in Web Components Grid is used for enabling real-time or near-real-time updates of data displayed within the grid. This is extremely useful in apps where data is constantly changing, like stock market trackers, live sports scores, or IoT (Internet of Things) dashboards. The [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html) can handle thousands of updates per second, while staying responsive for user interactions.
+The Ignite UI for Web Components Live Data Updates feature in Web Components Grid is used for enabling real-time or near-real-time updates of data displayed within the grid. This is extremely useful in apps where data is constantly changing, like stock market trackers, live sports scores, or IoT (Internet of Things) dashboards. The [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) can handle thousands of updates per second, while staying responsive for user interactions.
 
 ## Web Components Live-data Update Example
 
@@ -1331,7 +1331,7 @@ Updating the view works the same way for columns with a default template and for
 
 ## API References
 
-- [`IgcGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igcgridcomponent.html)
+- [`IgcGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent)
 
 ## Additional Resources
 

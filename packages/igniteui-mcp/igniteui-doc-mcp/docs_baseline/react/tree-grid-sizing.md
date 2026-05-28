@@ -12,23 +12,23 @@ _premium: true
 
 # React Tree Grid Sizing
 
-The Ignite UI for React Sizing feature in React Tree Grid is an important aspect of creating responsive and user-friendly grid interfaces. The React Tree Grid Sizing feature enables users to adjust the [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) and [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#height) of the grid to accommodate different screen sizes, content, or user preferences. In terms of border and padding size for the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), they are taken into its width/height size calculations or also known as [Border box](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing) sizing. It is applied in all scenarios.
+The Ignite UI for React Sizing feature in React Tree Grid is an important aspect of creating responsive and user-friendly grid interfaces. The React Tree Grid Sizing feature enables users to adjust the [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) and [`height`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=height) of the grid to accommodate different screen sizes, content, or user preferences. In terms of border and padding size for the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), they are taken into its width/height size calculations or also known as [Border box](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing) sizing. It is applied in all scenarios.
 
 > [!Note]
-> If the Border box sizing is overridden by the user we cannot guarantee that the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) will size correctly.
+> If the Border box sizing is overridden by the user we cannot guarantee that the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) will size correctly.
 
 ## React Tree Grid Width
 
-If the [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) input does not have value assigned, its default value is `100%` and the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) tries to fill the available space. You can check how the grid reacts to it in the `Percentages` section.
+If the [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) input does not have value assigned, its default value is `100%` and the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) tries to fill the available space. You can check how the grid reacts to it in the `Percentages` section.
 
 > [!Note]
-> Setting manually the [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) style of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) itself will result in an unexpected behavior.
+> Setting manually the [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) style of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) itself will result in an unexpected behavior.
 
 ### Null
 
-The grid's [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) can accepts value of `null`, which when set, renders all columns in the DOM. The grid sizes accordingly so there is no grid horizontal scrollbar since column virtualization is not applied.
+The grid's [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) can accepts value of `null`, which when set, renders all columns in the DOM. The grid sizes accordingly so there is no grid horizontal scrollbar since column virtualization is not applied.
 
-- If there are 6 columns and none of them has width defined, the grid will have [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) of `816px`, because each column by default have assigned [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) of `136px` in this scenario. Same will happen if the columns have [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) in percentages. If vertical scrollbar is rendered or there are features that render additional columns their width will be added also.
+- If there are 6 columns and none of them has width defined, the grid will have [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) of `816px`, because each column by default have assigned [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) of `136px` in this scenario. Same will happen if the columns have [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) in percentages. If vertical scrollbar is rendered or there are features that render additional columns their width will be added also.
 
 <img src="../../../images/grid_sizing/columns-default-gridWidth-null-v2.jpg" alt="columns-default-gridWidth-null-v2" style="width: 80%"/>
 
@@ -49,22 +49,22 @@ The grid's [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/
 
 ### Pixels
 
-When the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) has its [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) input is set to pixels it will set the whole grid size to that value and it will be static. It will not react to any browser resizing or changes in the DOM, although this is not the case for the grid content:
+When the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) has its [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) input is set to pixels it will set the whole grid size to that value and it will be static. It will not react to any browser resizing or changes in the DOM, although this is not the case for the grid content:
 
-- When width is set in pixels in order for the grid to render horizontal scrollbar, its content width needs to exceed the specified grid [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width). Let's, for example, have the combined width of the columns exceed `1200px`. In this case a horizontal scrollbar will be rendered.
+- When width is set in pixels in order for the grid to render horizontal scrollbar, its content width needs to exceed the specified grid [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width). Let's, for example, have the combined width of the columns exceed `1200px`. In this case a horizontal scrollbar will be rendered.
 
 <img src="../../../images/grid_sizing/width-cols-scrollbar-v2.jpg" alt="width-cols-scrollbar-v2" style="width: 80%"/>
 
-- For scenarios where the grid has a parent element, it depends on the parent styling if it will render scrollbar or not. Everything else related to the grid itself is still retained. If the parent element width is smaller than the grid's width and has overflow style set to `auto` or `scroll`, it will render scrollbar natively. For example, if the parent has `width` set to `1000px` and the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) `width` is still `1200px`, it will look similar to the following illustrations:
+- For scenarios where the grid has a parent element, it depends on the parent styling if it will render scrollbar or not. Everything else related to the grid itself is still retained. If the parent element width is smaller than the grid's width and has overflow style set to `auto` or `scroll`, it will render scrollbar natively. For example, if the parent has `width` set to `1000px` and the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) `width` is still `1200px`, it will look similar to the following illustrations:
 
 <img src="../../../images/grid_sizing/width-cols-scroll-parent-noscroll-v2.jpg" alt="width-cols-scroll-parent-noscroll-v2" style="width: 80%"/>
 <img src="../../../images/grid_sizing/width-cols-scroll-parent-scroll-v2.jpg" alt="width-cols-scroll-parent-scroll-v2" style="width: 80%"/>
 
 ### Percentages
 
-When the [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) is set to percentages it will size the grid according to the parent element's width. If the parent element does not have width specified the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) will size relative to the browser window.
+When the [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) is set to percentages it will size the grid according to the parent element's width. If the parent element does not have width specified the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) will size relative to the browser window.
 
-- For example, if we set the grid [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) input to `100%` and there is no parent element it will fill 100% of the available width of the browser window. If it is resized the grid will resize as well accordingly.
+- For example, if we set the grid [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) input to `100%` and there is no parent element it will fill 100% of the available width of the browser window. If it is resized the grid will resize as well accordingly.
 
 <img src="../../../images/grid_sizing/width-percent-100p-v2.jpg" alt="width-percent-100p-v2" style="width: 80%"/>
 
@@ -72,21 +72,21 @@ When the [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/ty
 
 <img src="../../../images/grid_sizing/width-percent-parent-100p-v2.jpg" alt="width-percent-parent-100p-v2" style="width: 80%"/>
 
-- If we have a parent element with [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) of `1000px` and have the grid's [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) set to `150%`, the calculated grid width will be `1500px`. In this case the grid will still render fully visible but if we set `overflow: auto` of the parent, that parent will render scrollbar on its own.
+- If we have a parent element with [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) of `1000px` and have the grid's [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) set to `150%`, the calculated grid width will be `1500px`. In this case the grid will still render fully visible but if we set `overflow: auto` of the parent, that parent will render scrollbar on its own.
 
 <img src="../../../images/grid_sizing/width-percent-150p-parent-noscroll-v2.jpg" alt="width-percent-150p-parent-noscroll-v2" style="width: 80%"/>
 <img src="../../../images/grid_sizing/width-percent-150p-parent-scroll-v2.jpg" alt="width-percent-150p-parent-scroll-v2" style="width: 80%"/>
 
 ## React Tree Grid Height
 
-By default if no height is defined for the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), it will be set to `100%`. You can check how the grid reacts depending on the DOM structure in the `Percentages` section.
+By default if no height is defined for the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), it will be set to `100%`. You can check how the grid reacts depending on the DOM structure in the `Percentages` section.
 
 > [!Note]
-> Setting manually the [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#height) style of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) itself will result in an unexpected behavior.
+> Setting manually the [`height`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=height) style of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) itself will result in an unexpected behavior.
 
 ### Null
 
-The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#height) input can accept `null` value, which when set, displays all rows with no scrollbar no matter how many they are. In this case, there is no vertical virtualization since the grid renders all rows anyway.
+The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) [`height`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=height) input can accept `null` value, which when set, displays all rows with no scrollbar no matter how many they are. In this case, there is no vertical virtualization since the grid renders all rows anyway.
 
 - If we have data with 14 rows in this case the grid will render all 14 of them and size the grid so all are visible without any empty space inside the grid.
 
@@ -96,7 +96,7 @@ The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/t
 
 <img src="../../../images/grid_sizing/height-null-24rows-v2.jpg" alt="height-null-24rows-v2" style="width: 80%"/>
 
-- If there is a parent element with defined [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#height), the grid will still render all rows and not be affected. Let's say the parent has [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#height) of `650px`. If it has `overflow` set to `auto` or `scroll`, it will render a vertical scrollbar but the grid will still be unaffected:
+- If there is a parent element with defined [`height`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=height), the grid will still render all rows and not be affected. Let's say the parent has [`height`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=height) of `650px`. If it has `overflow` set to `auto` or `scroll`, it will render a vertical scrollbar but the grid will still be unaffected:
 
 <img src="../../../images/grid_sizing/height-null-24rows-parent-noscroll-v2.jpg" alt="height-null-24rows-parent-noscroll-v2" style="width: 80%"/>
 <img src="../../../images/grid_sizing/height-null-24rows-parent-scroll-v2.jpg" alt="height-null-24rows-parent-scroll-v2" style="width: 80%"/>
@@ -106,28 +106,28 @@ The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/t
 
 ### Pixels
 
-Setting the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#height) in pixels is more straightforward since the grid will size to that specific size in all occasions similarly to how [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) is set in pixels.
+Setting the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) [`height`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=height) in pixels is more straightforward since the grid will size to that specific size in all occasions similarly to how [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) is set in pixels.
 
 - If we set, for example, the height `500px` with 4 rows for our data the grid will sit to that size and since 4 rows are not enough to fill the visible area it is expected to have some empty area.
 
 <img src="../../../images/grid_sizing/height-500px-4rows-v2.jpg" alt="height-500px-4rows-v2" style="width: 80%"/>
 
-- If the number of rows exceeds the visible area of the grid when [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#height) is set to pixels a vertical scrollbar will be rendered. For example, a grid with `500px` height set and 14 rows will be rendered the following way:
+- If the number of rows exceeds the visible area of the grid when [`height`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=height) is set to pixels a vertical scrollbar will be rendered. For example, a grid with `500px` height set and 14 rows will be rendered the following way:
 
 <img src="../../../images/grid_sizing/height-500px-14rows-v2.jpg" alt="height-500px-14rows-v2" style="width: 80%"/>
 
-- If there is a parent element with [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#height) defined, unless it has `overflow` set to `auto` or `scroll`, the grid will still be fully visible. Otherwise it will render a scrollbar.
+- If there is a parent element with [`height`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=height) defined, unless it has `overflow` set to `auto` or `scroll`, the grid will still be fully visible. Otherwise it will render a scrollbar.
 
 <img src="../../../images/grid_sizing/height-700px-14rows-parent-noscroll-v2.jpg" alt="height-700px-14rows-parent-noscroll-v2" style="width: 80%"/>
 <img src="../../../images/grid_sizing/height-700px-14rows-parent-scroll-v2.jpg" alt="height-700px-14rows-parent-scroll-v2" style="width: 80%"/>
 
 ### Percentages
 
-When the [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#height) input is set to percentages, the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) will size based on the parent element height. If the parent element has its [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#height) set in pixels or percentages, the grid will size relative to the size of the parent.
+When the [`height`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=height) input is set to percentages, the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) will size based on the parent element height. If the parent element has its [`height`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=height) set in pixels or percentages, the grid will size relative to the size of the parent.
 
 When the parent element does not have defined height, the browser does not assign height to it initially and sizes it based on its children and their size. That is why there is no way for the grid to know what base height to use in order to apply percentage sizing based on it. For this reason, it will render a maximum of 10 rows and if they are more rows, a vertical scrollbar will be rendered. Otherwise, the grid will fit to number of rendered rows. We will look in this scenario in more detail in the next examples.
 
-Let's have [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) set to `1200px` and the parent element not having any size applied to it:
+Let's have [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) set to `1200px` and the parent element not having any size applied to it:
 
 - If there are less than 10 rows the grid will try to fit all rows in the visible area without having an empty space between the last row and the bottom of the visible area. For example, let's have the grid data to consist of 7 rows. The grid will render all 7 rows without vertical scrollbar and without empty space inside the grid.
 
@@ -137,11 +137,11 @@ Let's have [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/
 
 <img src="../../../images/grid_sizing/height-undefined-14rows-v2.jpg" alt="height-undefined-14rows-v2" style="width: 80%"/>
 
-- If we set the parent element height to `800px` and the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) to `100%` height this means that the grid will be sized to 100 percentages of `800px`.
+- If we set the parent element height to `800px` and the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) to `100%` height this means that the grid will be sized to 100 percentages of `800px`.
 
 <img src="../../../images/grid_sizing/height-percent-100-parent-800px-v2.jpg" alt="height-percent-100-parent-800px-v2" style="width: 80%"/>
 
-- If the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) [`height`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#height) is set to a number bigger than `100%` and the parent element has height, for the parent to render scrollbar it again needs to have `overflow` set to `auto` or `scroll`. Otherwise the grid will be fully visibly and size relative to the parent size.
+- If the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) [`height`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=height) is set to a number bigger than `100%` and the parent element has height, for the parent to render scrollbar it again needs to have `overflow` set to `auto` or `scroll`. Otherwise the grid will be fully visibly and size relative to the parent size.
 
 <img src="../../../images/grid_sizing/height-percent-130p-parent-noscroll-v2.jpg" alt="height-percent-130p-parent-noscroll-v2" style="width: 80%"/>
 <img src="../../../images/grid_sizing/height-percent-130p-parent-scroll-v2.jpg" alt="height-percent-130p-parent-scroll-v2" style="width: 80%"/>
@@ -160,7 +160,7 @@ By default when a column doesn't have a specified width it will try to autosize,
 
 When the grid is resized in these scenarios, the column width is also updated to reflect the changes, so it fills any new empty space available.
 
-- If a column does not have specified [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) and the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) has [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) set to `null`, it will be sized to the minimum of `136px`. This means that for a grid with [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) `null` and 6 columns that don't have width, each column will be sized to `136px`.
+- If a column does not have specified [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) and the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) has [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) set to `null`, it will be sized to the minimum of `136px`. This means that for a grid with [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) `null` and 6 columns that don't have width, each column will be sized to `136px`.
 
 <img src="../../../images/grid_sizing/columns-default-gridWidth-null-v2.jpg" alt="columns-default-gridWidth-null-v2" style="width: 80%"/>
 
@@ -168,15 +168,15 @@ When the grid is resized in these scenarios, the column width is also updated to
 
 <img src="../../../images/grid_sizing/columns-default-all-row-selectors-v2.jpg" alt="columns-default-all-row-selectors-v2" style="width: 80%"/>
 
-- If there is available empty space, so that each autosized column will be less than `136px`, all autosized columns will default to `136px` and the grid will render horizontal scrollbar. In the next example let's have 12 autosized columns and the grid [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) set to `1000px`.
+- If there is available empty space, so that each autosized column will be less than `136px`, all autosized columns will default to `136px` and the grid will render horizontal scrollbar. In the next example let's have 12 autosized columns and the grid [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) set to `1000px`.
 
 <img src="../../../images/grid_sizing/columns-default-all-min-136px-v2.jpg" alt="columns-default-all-min-136px-v2" style="width: 80%"/>
 
-- If a column does not have [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) specified, but all other columns have either [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) in pixels or percentages, that column will try to also fill the available space. For example, if we don't have width set to the first column and all other 5 have [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) of `100px`, the first will fill the rest.
+- If a column does not have [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) specified, but all other columns have either [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) in pixels or percentages, that column will try to also fill the available space. For example, if we don't have width set to the first column and all other 5 have [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) of `100px`, the first will fill the rest.
 
 <img src="../../../images/grid_sizing/columns-default-first-rest-100px-v2.jpg" alt="columns-default-first-rest-100px-v2" style="width: 80%"/>
 
-- Same applies if multiple columns does not have [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) specified, all will divide the available space between each other equally. In the next illustration the first column has [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) set to `100px`.
+- Same applies if multiple columns does not have [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) specified, all will divide the available space between each other equally. In the next illustration the first column has [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) set to `100px`.
 
 <img src="../../../images/grid_sizing/columns-default-all-first-100px-v2.jpg" alt="columns-default-all-first-100px-v2" style="width: 80%"/>
 
@@ -185,19 +185,19 @@ When the grid is resized in these scenarios, the column width is also updated to
 
 ### Pixels
 
-When columns have set specific [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) in pixels, they stick to that size, unless they are resized manually. Since the combined [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) of the columns is static, it can be less than the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) or exceed it.
+When columns have set specific [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) in pixels, they stick to that size, unless they are resized manually. Since the combined [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) of the columns is static, it can be less than the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) or exceed it.
 
-- If the combined `width` of all columns is less than the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width), there would be an empty are inside the grid that the columns wouldn't be able to fill. This is the expected behavior of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html). In the next example the columns have `150px` width.
+- If the combined `width` of all columns is less than the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width), there would be an empty are inside the grid that the columns wouldn't be able to fill. This is the expected behavior of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). In the next example the columns have `150px` width.
 
 <img src="../../../images/grid_sizing/columns-150px-empty-area-v2.jpg" alt="columns-150px-empty-area-v2" style="width: 80%"/>
 
-- If the combined [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) of all columns is bigger than the actual [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width), a horizontal scrollbar will be rendered. In the next example each of the 6 columns have width of `300px` and grid has width of `1200px`, which means that the columns combined have excess of `600px` that goes out of bounds.
+- If the combined [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) of all columns is bigger than the actual [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width), a horizontal scrollbar will be rendered. In the next example each of the 6 columns have width of `300px` and grid has width of `1200px`, which means that the columns combined have excess of `600px` that goes out of bounds.
 
 <img src="../../../images/grid_sizing/columns-150px-extra-area-v2.jpg" alt="columns-150px-extra-area-v2" style="width: 80%"/>
 
 ### Percentages
 
-When columns have set [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) in percentages, their size is calculated relatively to the grid size. It is similar to how width in pixels works, but provides also responsiveness to the columns which means that when the grid is resized, the columns also will resize accordingly.
+When columns have set [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) in percentages, their size is calculated relatively to the grid size. It is similar to how width in pixels works, but provides also responsiveness to the columns which means that when the grid is resized, the columns also will resize accordingly.
 
 - If the combined width of all columns is less than `100%`, similarly to when in pixels, there could be an empty area of the grid that the columns do not cover.
 
@@ -211,13 +211,13 @@ When columns have set [`width`](https://www.infragistics.com/products/ignite-ui-
 
 <img src="../../../images/grid_sizing/columns-percent-bigger-100p-v2.jpg" alt="columns-percent-bigger-100p-v2" alt="columns-percent-bigger-100p-v2" style="width: 80%"/>
 
-- If columns are set in percentages and the grid [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) is set to `null`, it would apply [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) of `136px` to each column. That is because the columns cannot be sized relatively to the grid, since it doesn't have [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) itself and relies on its content to be sized when its [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) is `null`. In the following example all 6 columns have [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#width) set to `50%`:
+- If columns are set in percentages and the grid [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) is set to `null`, it would apply [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) of `136px` to each column. That is because the columns cannot be sized relatively to the grid, since it doesn't have [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) itself and relies on its content to be sized when its [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) is `null`. In the following example all 6 columns have [`width`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=width) set to `50%`:
 
 <img src="../../../images/grid_sizing/columns-percent-gridWidth-null-v2.jpg" alt="columns-percent-gridWidth-null-v2" style="width: 80%"/>
 
 ## API References
 
-- [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
+- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
 
 ## Additional Resources
 

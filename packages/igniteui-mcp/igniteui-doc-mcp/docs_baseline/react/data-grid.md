@@ -237,9 +237,9 @@ Now that we have the grid packages imported, let’s get started with the basic 
 <IgrGrid id="grid1" autoGenerate={true} data={localData}></IgrGrid>
 ```
 
-The [`id`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while `data` binds the grid, in this case to local data.
+The [`id`](mcp:get_api_reference?platform=react&component=IgrGrid&member=id) property is a string value and is the unique identifier of the grid which will be auto-generated if not provided, while `data` binds the grid, in this case to local data.
 
-The [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#autoGenerate) property tells the grid to auto generate the grid's [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
+The [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=autoGenerate) property tells the grid to auto generate the grid's [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) components based on the data source fields. It will also try to deduce the appropriate data type for the column if possible. Otherwise, the developer needs to explicitly define the columns and the mapping to the data source fields.
 
 ## Editable React Grid
 
@@ -249,11 +249,11 @@ Following this topic you will learn more about [cell template](data-grid.md#cell
 
 ## Grid Column Configuration
 
-[`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) is used to define the grid's columns collection and to enable features per column like **sorting** and **filtering**. Cell, header, and footer templates are also available.
+[`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) is used to define the grid's columns collection and to enable features per column like **sorting** and **filtering**. Cell, header, and footer templates are also available.
 
 ### Defining Columns
 
-Let's turn the [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#autoGenerate) property off and define the columns collection in the markup:
+Let's turn the [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=autoGenerate) property off and define the columns collection in the markup:
 
 ```tsx
 <IgrGrid id="grid1" autoGenerate={false} allowFiltering={true} data={localData}>
@@ -354,7 +354,7 @@ When properly implemented, the cell editing template also ensures that the cell'
 ### Cell Editing Template
 
 The column also accepts one last template that will be used when a cell is in edit mode. As with the other column templates, the provided context object is again the cell value and the cell object itself. Of course in order to make the edit-mode template accessible to end users, you need
-to set the [`editable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#editable) property of the column to true.
+to set the [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) property of the column to true.
 
 ```tsx
 function priceCellTemplate(ctx: IgrCellTemplateContext) {
@@ -380,7 +380,7 @@ Make sure to check the API for the `Cell` in order to get accustomed with the pr
 
 ### Column Template API
 
-Each of the column templates can be changed programmatically at any point through the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) object itself. For example in the code below, we have declared two templates for our user data. In our TypeScript code we'll get references to the templates themselves and then based on some condition we will render the appropriate template for the column in our application.
+Each of the column templates can be changed programmatically at any point through the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) object itself. For example in the code below, we have declared two templates for our user data. In our TypeScript code we'll get references to the templates themselves and then based on some condition we will render the appropriate template for the column in our application.
 
 ```tsx
 <IgrGrid ref={grid}>
@@ -436,7 +436,7 @@ There are optional parameters for formatting:
 - `Timezone` - the timezone offset for dates. By default uses the end-user's local system timezone
 - `DigitsInfo` - decimal representation objects. Default to **1.0-3**
 
-To allow customizing the display format by these parameters, the [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pipeArgs) is set. Example:
+To allow customizing the display format by these parameters, the [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) input is exposed. A column will respect only the corresponding properties for its data type, if [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) is set. Example:
 
 ```tsx
 const columnPipeArgs: IgrColumnPipeArgs = {
@@ -454,7 +454,7 @@ All available column data types could be found in the official [Column types top
 
 ## Grid Data Structure
 
-The [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) handles **flat data** and nested **POJO (Plain old Java objects)**. The data structure specific for rendering is in the form:
+The [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) handles **flat data** and nested **POJO (Plain old Java objects)**. The data structure specific for rendering is in the form:
 
 ```typescript
 const OBJECT_ARRAY = [{
@@ -484,7 +484,7 @@ const POJO = [{
 > **WARNING**:
 > **The key values must not contain arrays**.
 
-> If you use [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#autoGenerate) columns **the data keys must be identical.**
+> If you use [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=autoGenerate) columns **the data keys must be identical.**
 
 ## Grid Data Binding
 
@@ -508,7 +508,7 @@ function fetchData(url: string): void {
 }
 ```
 
-**Note**: The grid [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
+**Note**: The grid [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=autoGenerate) property is best to be avoided when binding to remote data for now. It assumes that the data is available in order to inspect it and generate the appropriate columns. This is usually not the case until the remote service responds, and the grid will throw an error. Making [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrGrid&member=autoGenerate) available, when binding to remote service, is on our roadmap for future versions.
 
 ## Complex Data Binding
 
@@ -541,7 +541,7 @@ For example, in order to display the weights of a given amino acid in the grid t
 <IgrColumn field="weight.residue"></IgrColumn>
 ```
 
-An alternative way to bind complex data, or to visualize composite data (from more than one column) in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) is to use a custom body template for the column. Generally, one can:
+An alternative way to bind complex data, or to visualize composite data (from more than one column) in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) is to use a custom body template for the column. Generally, one can:
 
 - use the `value` of the cell, that contains the nested data
 - use the `cell` object in the template, from which to access the `ctx.cell.id.rowIndex` or `ctx.cell.id.rowID` to get the row via the grid's API and retrieve any value from it and interpolate those in the template.
@@ -844,7 +844,7 @@ root.render(<Sample/>);
 
 ### Working with Flat Data Overview
 
-The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`data`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#data) property of the [`IgrGridRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrow.html).
+The flat data binding approach is similar to the one that we already described above, but instead of **cell value** we are going to use the [`data`](mcp:get_api_reference?platform=react&component=IgrGrid&member=data) property of the [`IgrGridRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrow.html).
 
 Since the React grid is a component for **rendering**, **manipulating** and **preserving** data records, having access to **every data record** gives you the opportunity to customize the approach of handling it. The `data` property provides you this opportunity.
 
@@ -953,7 +953,7 @@ function addressEditCellTemplate(ctx: IgrCellTemplateContext) {
 
 ### Working with Flat Data Example
 
-Using code snippets from previous section will result in the following example of [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
+Using code snippets from previous section will result in the following example of [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 
 ```typescript
 export class CustomersDataItem {
@@ -1212,7 +1212,7 @@ root.render(<Sample/>);
 
 ## Keyboard Navigation
 
-Keyboard navigation of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) provides a rich variety of keyboard interactions for the user. It enhances accessibility and allows intuitive navigation through any type of elements inside (cell, row, column header, toolbar, footer, etc.).
+Keyboard navigation of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) provides a rich variety of keyboard interactions for the user. It enhances accessibility and allows intuitive navigation through any type of elements inside (cell, row, column header, toolbar, footer, etc.).
 
 <!-- The sizing topic is still not available thus the Sizing section is commented out. -->
 
@@ -1253,13 +1253,13 @@ Then set the `--header-background` and `--header-text-color` CSS properties for 
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 - `Cell`
-- [`IgrCellTemplateContext`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcelltemplatecontext.html)
+- [`IgrCellTemplateContext`](mcp:get_api_reference?platform=react&component=IgrCellTemplateContext)
 - [`IgrGridRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrow.html)
-- [`IgrGridToolbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridtoolbar.html)
-- [`IgrPaginator`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrpaginator.html)
+- [`IgrGridToolbar`](mcp:get_api_reference?platform=react&component=IgrGridToolbar)
+- [`IgrPaginator`](mcp:get_api_reference?platform=react&component=IgrPaginator)
 
 ## Additional Resources
 

@@ -108,7 +108,7 @@ For a complete introduction to the Ignite UI for Angular, read the [_getting sta
 The first step is to import the `IgxNavigationDrawerModule` inside our **app.module.ts** file.
 
 > [!NOTE]
-> The [`IgxNavigationDrawerComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavigationdrawercomponent.html) also depends on the [`BrowserAnimationsModule`](https://angular.io/api/platform-browser/animations/BrowserAnimationsModule) and **optionally** the [`HammerModule`](https://angular.io/api/platform-browser/HammerModule) for touch interactions, so they need to be added to the AppModule as well:
+> The [`IgxNavigationDrawerComponent`](mcp:get_api_reference?platform=angular&component=IgxNavigationDrawerComponent) also depends on the [`BrowserAnimationsModule`](https://angular.io/api/platform-browser/animations/BrowserAnimationsModule) and **optionally** the [`HammerModule`](https://angular.io/api/platform-browser/HammerModule) for touch interactions, so they need to be added to the AppModule as well:
 
 ```typescript
 // app.module.ts
@@ -189,7 +189,7 @@ With the dependencies imported, the Navigation Drawer can be defined in the app 
 ```
 
 The content for the drawer should be provided via `<ng-template>` decorated with `igxDrawer` directive.
-While any content can be provided in the template, the [`igxDrawerItem`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavdraweritemdirective.html) directive (see [Item styling](#styling)) is available to apply out-of-the-box styling to items.
+While any content can be provided in the template, the [`igxDrawerItem`](mcp:get_api_reference?platform=angular&component=IgxNavDrawerItemDirective) directive (see [Item styling](#styling)) is available to apply out-of-the-box styling to items.
 The directive has two `@Input` properties:
 
 - `active` to style an item as selected.
@@ -255,7 +255,7 @@ There are various ways to open and close the drawer. Input properties can be bou
 <button (click)="drawer.toggle()">Menu</button>
 ```
 
-The Navigation Drawer also integrates with [`igxNavigationService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavigationservice.html) and can be targeted by id with an [`igxToggleAction`](toggle.md#automatic-toggle-actions) directive.
+The Navigation Drawer also integrates with [`igxNavigationService`](mcp:get_api_reference?platform=angular&component=IgxNavigationService) and can be targeted by id with an [`igxToggleAction`](toggle.md#automatic-toggle-actions) directive.
 
 Let's replace the `<main>` in **app.component.html** with the following, adding [`igxIconButton`](icon-button.md) and [Icon component](icon.md) to style our toggle:
 
@@ -300,11 +300,11 @@ Unpinned (elevated above the content) mode is the normal behavior where the draw
 The drawer can be pinned to take advantage of larger screens, placing it within normal content flow with relative position. Depending on whether the app provides a way to toggle the drawer, the pinned mode can be used to achieve either [permanent or persistent behavior](https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-behavior).
 
 > [!NOTE]
-> By default the Navigation Drawer is responsive, actively changing between unpinned and pinned mode based on screen size. This behavior is controlled by the [`pinThreshold`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavigationdrawercomponent.html#pinThreshold) property and can be disabled by setting a falsy value (e.g. 0).
+> By default the Navigation Drawer is responsive, actively changing between unpinned and pinned mode based on screen size. This behavior is controlled by the [`pinThreshold`](mcp:get_api_reference?platform=angular&component=IgxNavigationDrawerComponent&member=pinThreshold) property and can be disabled by setting a falsy value (e.g. 0).
 
 ### Pinned (persistent) setup
 
-Pin changes the position of the drawer from `fixed` to `relative` to put it on the same flow as content. Therefore, the app styling should account for such layout, especially if the drawer needs to be toggled in this mode. While there's more than one way to achieve such fluid layout (including programmatically), the easiest way is using [`igxLayout`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlayoutdirective.html) and [`igxFlex`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxflexdirective.html) directives.
+Pin changes the position of the drawer from `fixed` to `relative` to put it on the same flow as content. Therefore, the app styling should account for such layout, especially if the drawer needs to be toggled in this mode. While there's more than one way to achieve such fluid layout (including programmatically), the easiest way is using [`igxLayout`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective) and [`igxFlex`](mcp:get_api_reference?platform=angular&component=IgxFlexDirective) directives.
 
 Here's how that would look applied to the previous example:
 
@@ -929,5 +929,5 @@ $custom-theme: navdrawer-theme(
 
 ## API and Style References
 
-- [IgxNavigationDrawerComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxnavigationdrawercomponent.html)
+- [IgxNavigationDrawerComponent API](mcp:get_api_reference?platform=angular&component=IgxNavigationDrawerComponent)
 - [IgxNavigationDrawerComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-navdrawer-theme)

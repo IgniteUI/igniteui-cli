@@ -11,7 +11,7 @@ _premium: true
 
 # Blazor Grid Live Data Updates
 
-The Ignite UI for Blazor Live Data Updates feature in Blazor Grid is used for enabling real-time or near-real-time updates of data displayed within the grid. This is extremely useful in apps where data is constantly changing, like stock market trackers, live sports scores, or IoT (Internet of Things) dashboards. The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) can handle thousands of updates per second, while staying responsive for user interactions.
+The Ignite UI for Blazor Live Data Updates feature in Blazor Grid is used for enabling real-time or near-real-time updates of data displayed within the grid. This is extremely useful in apps where data is constantly changing, like stock market trackers, live sports scores, or IoT (Internet of Things) dashboards. The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) can handle thousands of updates per second, while staying responsive for user interactions.
 
 ## Blazor Live-data Update Example
 
@@ -1676,7 +1676,7 @@ Updating the view works the same way for columns with a default template and for
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ## Additional Resources
 

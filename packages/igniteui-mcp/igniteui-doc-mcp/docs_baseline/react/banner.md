@@ -116,7 +116,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrBanner`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbanner.html) and its necessary CSS, like so:
+You will then need to import the [`IgrBanner`](mcp:get_api_reference?platform=react&component=IgrBanner) and its necessary CSS, like so:
 
 ```tsx
 import { IgrBanner } from 'igniteui-react';
@@ -127,7 +127,7 @@ For a complete introduction to the Ignite UI for React, read the [**Getting Star
 
 ### Show Banner
 
-In order to display the banner component, use its [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbanner.html#show) method and call it on a button click. The banner appears relative to where the element was inserted in the page template, moving all other content. It typically shows some non-intrusive content that requires minimal user interaction to be dismissed.
+In order to display the banner component, use its [`show`](mcp:get_api_reference?platform=react&component=IgrBanner&member=show) method and call it on a button click. The banner appears relative to where the element was inserted in the page template, moving all other content. It typically shows some non-intrusive content that requires minimal user interaction to be dismissed.
 
 ```tsx
 <IgrButton onClick={() => bannerRef.current.show()}>
@@ -140,15 +140,15 @@ In order to display the banner component, use its [`show`](https://www.infragist
 ```
 
 > [!NOTE]
-> The [`IgrBanner`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbanner.html) includes a default action button `OK`, which closes the banner.
+> The [`IgrBanner`](mcp:get_api_reference?platform=react&component=IgrBanner) includes a default action button `OK`, which closes the banner.
 
 ## Examples
 
-The [`IgrBanner`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbanner.html) component allows templating of its content while still sticking as closely as possible to the material design banner guidelines.
+The [`IgrBanner`](mcp:get_api_reference?platform=react&component=IgrBanner) component allows templating of its content while still sticking as closely as possible to the material design banner guidelines.
 
 ### Changing the banner message
 
-Configuring the message displayed in the banner is easy - just change the content you are passing to the [`IgrBanner`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbanner.html) tag. The text will show up in the specified banner area and the banner will use its default template when displaying it. Below, we will change the content of our sample banner to be a bit more descriptive:
+Configuring the message displayed in the banner is easy - just change the content you are passing to the [`IgrBanner`](mcp:get_api_reference?platform=react&component=IgrBanner) tag. The text will show up in the specified banner area and the banner will use its default template when displaying it. Below, we will change the content of our sample banner to be a bit more descriptive:
 
 ```tsx
 <IgrBanner ref={bannerRef}>
@@ -158,12 +158,12 @@ Configuring the message displayed in the banner is easy - just change the conten
 
 ### Adding an icon
 
-An [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) can be displayed in the banner by using the banner's `prefix` slot. The icon will always be positioned at the beginning of the banner message.
+An [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) can be displayed in the banner by using the banner's `prefix` slot. The icon will always be positioned at the beginning of the banner message.
 
 > [!NOTE]
-> If several [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) elements are inserted, the banner will try to position all of them at the beginning. It is strongly advised to pass only one [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) directly to the banner.
+> If several [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) elements are inserted, the banner will try to position all of them at the beginning. It is strongly advised to pass only one [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) directly to the banner.
 
-To pass an [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) to your banner, use the `prefix` slot:
+To pass an [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) to your banner, use the `prefix` slot:
 
 ```tsx
 <IgrBanner ref={bannerRef}>
@@ -172,7 +172,7 @@ To pass an [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/doc
 </IgrBanner>
 ```
 
-If you want to use an [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) in your banner message, simply insert it in the banner's content:
+If you want to use an [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) in your banner message, simply insert it in the banner's content:
 
 ```tsx
 <IgrBanner ref={bannerRef}>
@@ -183,7 +183,7 @@ If you want to use an [`IgrIcon`](https://www.infragistics.com/products/ignite-u
 
 ### Changing the banner button
 
-The [`IgrBanner`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbanner.html) exposes the `actions` slot for templating the banner buttons. This allows you to override the default banner button (`OK`) and add user-defined custom actions.
+The [`IgrBanner`](mcp:get_api_reference?platform=react&component=IgrBanner) exposes the `actions` slot for templating the banner buttons. This allows you to override the default banner button (`OK`) and add user-defined custom actions.
 
 ```tsx
 <IgrBanner ref={bannerRef}>
@@ -341,9 +341,9 @@ Let's create a banner with two custom buttons - one for dismissing the notificat
 </IgrBanner>
 ```
 
-> According to Google's [Material Design](https://material.io/design/components/banners.html#anatomy) guidelines, a banner should have a maximum of 2 buttons present. The [`IgrBanner`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbanner.html) does not explicitly limit the number of elements under the `actions` slot, but it is strongly recommended to use up to 2 if you want to adhere to the material design guidelines.
+> According to Google's [Material Design](https://material.io/design/components/banners.html#anatomy) guidelines, a banner should have a maximum of 2 buttons present. The [`IgrBanner`](mcp:get_api_reference?platform=react&component=IgrBanner) does not explicitly limit the number of elements under the `actions` slot, but it is strongly recommended to use up to 2 if you want to adhere to the material design guidelines.
 
-The dismiss option (**Continue Offline**) doesn't need any further logic, so it can just call the [`hide`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbanner.html#hide) method. The confirm action (**Turn On Wifi**), however, requires some additional logic, so we have to define it in the component. Then, we will add an event listener for the `click` event. The last step is to call the `refreshBanner()` method on each change, which will toggle the banner depending on the `wifiState`.
+The dismiss option (**Continue Offline**) doesn't need any further logic, so it can just call the [`hide`](mcp:get_api_reference?platform=react&component=IgrBanner&member=hide) method. The confirm action (**Turn On Wifi**), however, requires some additional logic, so we have to define it in the component. Then, we will add an event listener for the `click` event. The last step is to call the `refreshBanner()` method on each change, which will toggle the banner depending on the `wifiState`.
 
 The navbar will have a Wifi icon and we will add an event listener for its `click` event as well. As the `refreshBanner()` method is called on each change, the icon will not only toggle the banner, but change according to the state of the connection:
 
@@ -387,7 +387,7 @@ return(
 );
 ```
 
-Finally, we will add a [`IgrToast`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html), displaying a message about the WiFi state. The results of the templated banner can be seen in the demo below:
+Finally, we will add a [`IgrToast`](mcp:get_api_reference?platform=react&component=IgrToast), displaying a message about the WiFi state. The results of the templated banner can be seen in the demo below:
 
 ```css
 .offline-banner {
@@ -530,7 +530,7 @@ root.render(<BannerAdvancedSample />);
 
 ## Styling
 
-The [`IgrBanner`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbanner.html) component exposes several CSS parts which give you full control over its style:
+The [`IgrBanner`](mcp:get_api_reference?platform=react&component=IgrBanner) component exposes several CSS parts which give you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -708,12 +708,12 @@ root.render(<BannerStyling />);
 
 ## API References
 
-- [`IgrBanner`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbanner.html)
-- [`IgrCard`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcard.html)
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
-- [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html)
-- [`IgrToast`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html)
-- [`IgrRipple`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrripple.html)
+- [`IgrBanner`](mcp:get_api_reference?platform=react&component=IgrBanner)
+- [`IgrCard`](mcp:get_api_reference?platform=react&component=IgrCard)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+- [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar)
+- [`IgrToast`](mcp:get_api_reference?platform=react&component=IgrToast)
+- [`IgrRipple`](mcp:get_api_reference?platform=react&component=IgrRipple)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

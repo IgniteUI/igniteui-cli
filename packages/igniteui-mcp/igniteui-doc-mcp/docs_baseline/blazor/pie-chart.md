@@ -15,7 +15,7 @@ The Ignite UI for Blazor Pie Chart, or Pie Graph, is a part-to-whole chart that 
 
 ## Blazor Pie Chart Example
 
-You can create the Blazor Pie Chart in the [`IgbPieChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html) by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization. In this case, the example shows the overall breakdown of budget spend by department.
+You can create the Blazor Pie Chart in the [`IgbPieChart`](mcp:get_api_reference?platform=blazor&component=IgbPieChart) by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization. In this case, the example shows the overall breakdown of budget spend by department.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -151,9 +151,9 @@ Do Not Use Pie Chart When:
 
 Legends are used to show information about each point, to know about its contribution towards the total sum. You can collapse the point using legend click.
 
-In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`Legend`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_Legend) property. The [`LegendLabelMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_LegendLabelMemberPath) can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
+In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`Legend`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=Legend) property. The [`LegendLabelMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=LegendLabelMemberPath) can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
 
-Additionally you can use the [`LegendItemTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_LegendItemTemplate) and [`LegendItemBadgeTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_LegendItemBadgeTemplate) properties and the various font properties on ItemLegend to further customize the look of the legend items.
+Additionally you can use the [`LegendItemTemplate`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=LegendItemTemplate) and [`LegendItemBadgeTemplate`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=LegendItemBadgeTemplate) properties and the various font properties on ItemLegend to further customize the look of the legend items.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -250,9 +250,9 @@ public class EnergyGlobalDemand
 
 Sometimes, the underlying data for the pie chart will contain many items with small values. In this case, the Others category will permit automatic aggregation of several data values into a single slice
 
-In the sample below, the [`OthersCategoryThreshold`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_OthersCategoryThreshold) is set to 2, and [`OthersCategoryType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_OthersCategoryType) is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
+In the sample below, the [`OthersCategoryThreshold`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=OthersCategoryThreshold) is set to 2, and [`OthersCategoryType`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=OthersCategoryType) is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
 
-If you set [`OthersCategoryType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_OthersCategoryType) to Percent, then [`OthersCategoryThreshold`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_OthersCategoryThreshold) will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever [`OthersCategoryType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_OthersCategoryType) is most appropriate for your application.
+If you set [`OthersCategoryType`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=OthersCategoryType) to Percent, then [`OthersCategoryThreshold`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=OthersCategoryThreshold) will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever [`OthersCategoryType`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=OthersCategoryType) is most appropriate for your application.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -472,9 +472,9 @@ The pie chart supports explosion of individual pie slices as well as a `SliceCli
 
 ## Blazor Pie Chart Selection
 
-The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the [`SelectedItems`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_SelectedItems) property. The selected slices are then highlighted.
+The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the [`SelectedItems`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=SelectedItems) property. The selected slices are then highlighted.
 
-There is a property called [`SelectionMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_SelectionMode) which is how you set what mode you want the pie chart to use. The default value is `Single`. In order to disable selection, set the property to `Manual`.
+There is a property called [`SelectionMode`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=SelectionMode) which is how you set what mode you want the pie chart to use. The default value is `Single`. In order to disable selection, set the property to `Manual`.
 
 The pie chart supports three different selection modes.
 
@@ -491,7 +491,7 @@ The pie chart has 4 events associated with selection:
 
 The events that end in “Changing” are cancelable events which means you can stop the selection of a slice by setting the event argument property `Cancel` to true. When set to true the associated property will not update and the slice will not become selected. This is useful for scenarios where you want to keep users from being able to select certain slices based on the data inside it.
 
-For scenarios where you click on the Others slice, the pie chart will return an object called [`IgbPieSliceOthersContext`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieSliceOthersContext.html). This object contains a list of the data items contained within the Others slice.
+For scenarios where you click on the Others slice, the pie chart will return an object called [`IgbPieSliceOthersContext`](mcp:get_api_reference?platform=blazor&component=IgbPieSliceOthersContext). This object contains a list of the data items contained within the Others slice.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -913,14 +913,14 @@ public class FootballPlayerStats
 
 The following table lists API members mentioned in the above sections:
 
-- [`LegendItemBadgeTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_LegendItemBadgeTemplate)
-- [`LegendItemTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_LegendItemTemplate)
-- [`LegendLabelMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_LegendLabelMemberPath)
-- [`OthersCategoryThreshold`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_OthersCategoryThreshold)
-- [`OthersCategoryType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_OthersCategoryType)
-- [`SelectionMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html#IgniteUI_Blazor_Controls_IgbPieChart_SelectionMode)
+- [`LegendItemBadgeTemplate`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=LegendItemBadgeTemplate)
+- [`LegendItemTemplate`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=LegendItemTemplate)
+- [`LegendLabelMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=LegendLabelMemberPath)
+- [`OthersCategoryThreshold`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=OthersCategoryThreshold)
+- [`OthersCategoryType`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=OthersCategoryType)
+- [`SelectionMode`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=SelectionMode)
 
 |Chart Type       | Control Name   | API Members |
 |-----------------|----------------|------------ |
-|Pie Chart      | [`IgbPieChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPieChart.html)     | `PieChart` |
-|Radial Pie Chart | [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) | [`IgbRadialPieSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbRadialPieSeries.html) |
+|Pie Chart      | [`IgbPieChart`](mcp:get_api_reference?platform=blazor&component=IgbPieChart)     | `PieChart` |
+|Radial Pie Chart | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | [`IgbRadialPieSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialPieSeries) |

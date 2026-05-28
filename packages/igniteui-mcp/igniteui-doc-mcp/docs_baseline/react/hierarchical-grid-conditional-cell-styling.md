@@ -13,27 +13,27 @@ _premium: true
 
 # React Hierarchical Grid Conditional Styling
 
-The Ignite UI for React Conditional Styling feature in React Hierarchical Grid allows custom styling on a row or cell level. The [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
+The Ignite UI for React Conditional Styling feature in React Hierarchical Grid allows custom styling on a row or cell level. The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) Conditional Styling functionality is used to visually emphasize or highlight data that meets certain criteria, making it easier for users to identify important information or trends within the grid.
 
 ## Hierarchical Grid Conditional Row Styling
 
-The [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) component in Ignite UI for React provides two ways to **conditional styling of rows** based on custom rules.
+The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) component in Ignite UI for React provides two ways to **conditional styling of rows** based on custom rules.
 
-- By setting [`rowClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#rowClasses) input on the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) component;
-- By setting [`rowStyles`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#rowStyles) input on the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) component;
+- By setting [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowClasses) input on the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) component;
+- By setting [`rowStyles`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowStyles) input on the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) component;
 
 Further in this topic we will cover both of them in more details.
 
 ### Using Row Classes
 
-You can conditionally style the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) rows by setting the [`rowClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#rowClasses) input and define custom rules.
+You can conditionally style the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) rows by setting the [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowClasses) input and define custom rules.
 
 ```tsx
 <IgrHierarchicalGrid id="grid" height="600px" width="100%" rowClasses={rowClasses}>
 </IgrHierarchicalGrid>
 ```
 
-The [`rowClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 ```tsx
 const rowClasses = {
@@ -246,9 +246,9 @@ root.render(<Sample/>);
 
 ### Using Row Styles
 
-The [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) control exposes the [`rowStyles`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#rowStyles) property which allows conditional styling of the data rows. Similar to [`rowClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
+The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) control exposes the [`rowStyles`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowStyles) property which allows conditional styling of the data rows. Similar to [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling (without any conditions).
 
-> The callback signature for both [`rowStyles`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#rowStyles) and [`rowClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#rowClasses) is:
+> The callback signature for both [`rowStyles`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowStyles) and [`rowClasses`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=rowClasses) is:
 
 ```tsx
 (row: IgrRowType) => boolean
@@ -478,13 +478,13 @@ root.render(<Sample/>);
 
 ## Overview
 
-The [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) component in Ignite UI for React provides two ways to **conditional styling of cells** based on custom rules.
+The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) component in Ignite UI for React provides two ways to **conditional styling of cells** based on custom rules.
 
-- By setting the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) input [`cellClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
+- By setting the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) input [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) to an object literal containing key-value pairs. The key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value. The result is a convenient material styling of the cell.
 
 ### Using Cell Classes
 
-You can conditionally style the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) cells by setting the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) [`cellClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellClasses) input and define custom rules.
+You can conditionally style the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) cells by setting the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) input and define custom rules.
 
 ```tsx
 <IgrColumn field="BeatsPerMinute" dataType="number" cellClasses={grammyNominationsCellClassesHandler}></IgrColumn>
@@ -492,7 +492,7 @@ You can conditionally style the [`IgrHierarchicalGrid`](https://www.infragistics
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
-The [`cellClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
+The [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) input accepts an object literal, containing key-value pairs, where the key is the name of the CSS class, while the value is either a callback function that returns a boolean, or boolean value.
 
 <!-- ComponentStart: HierarchicalGrid -->
 
@@ -711,7 +711,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-- By using the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) input [`cellStyles`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
+- By using the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) input [`cellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles) which accepts an object literal where the keys are style properties and the values are expressions for evaluation.
 
 > The callback signature for both `cellStyles` and `cellClasses` is now changed to:
 
@@ -721,7 +721,7 @@ root.render(<Sample/>);
 
 ### Using Cell Styles
 
-Columns expose the [`cellStyles`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellStyles) property which allows conditional styling of the column cells. Similar to [`cellClasses`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#cellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
+Columns expose the [`cellStyles`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellStyles) property which allows conditional styling of the column cells. Similar to [`cellClasses`](mcp:get_api_reference?platform=react&component=IgrColumn&member=cellClasses) it accepts an object literal where the keys are style properties and the values are expressions for evaluation. Also, you can apply regular styling with ease (without any conditions).
 
 Let's define our styles:
 
@@ -977,8 +977,8 @@ const editDone = (event: IgrGridEditEventArgs) => {
 
 ## API References
 
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
-- [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
 
 ## Additional Resources
 

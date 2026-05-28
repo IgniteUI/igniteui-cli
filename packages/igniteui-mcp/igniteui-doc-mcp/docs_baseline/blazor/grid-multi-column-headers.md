@@ -13,7 +13,7 @@ _premium: true
 
 # Blazor Grid Multi-Column Headers Overview
 
-The Ignite UI for Blazor Multi-Column Headers feature in Blazor Grid allows you to group columns by placing them under a common multi-header. Each multi-column headers group in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) could be a representation of combinations between other groups or columns. This feature is particularly useful when dealing with large datasets where scrolling horizontally might be cumbersome.
+The Ignite UI for Blazor Multi-Column Headers feature in Blazor Grid allows you to group columns by placing them under a common multi-header. Each multi-column headers group in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) could be a representation of combinations between other groups or columns. This feature is particularly useful when dealing with large datasets where scrolling horizontally might be cumbersome.
 
 ## Blazor Grid Multi-Column Headers Example
 
@@ -226,7 +226,7 @@ public class CustomersData
 }
 ```
 
-The declaration of multi-column headers is achieved by wrapping a set of columns into an [`IgbColumnGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html) component with [`Header`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Header) title information passed.
+The declaration of multi-column headers is achieved by wrapping a set of columns into an [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) component with [`Header`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Header) title information passed.
 
 <!-- ComponentStart: Grid -->
 
@@ -242,7 +242,7 @@ The declaration of multi-column headers is achieved by wrapping a set of columns
 
 <!-- ComponentEnd: Grid -->
 
-For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`IgbColumnGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html) leads to the desired result.
+For achieving `n-th` level of nested headers, the declaration above should be followed. So by nesting [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) leads to the desired result.
 
 <!-- ComponentStart: Grid -->
 
@@ -260,7 +260,7 @@ For achieving `n-th` level of nested headers, the declaration above should be fo
 
 <!-- ComponentEnd: Grid -->
 
-Every [`IgbColumnGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
+Every [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) supports [moving](column-moving.md), [pinning](column-pinning.md) and [hiding](column-hiding.md).
 
 > [!Note]
 > When there is a set of columns and column groups, pinning works only for top level column parents. More specifically pinning per nested column groups or columns is not allowed. <br />
@@ -284,7 +284,7 @@ Every [`IgbColumnGroup`](https://www.infragistics.com/blazor/docs/api/api/Ignite
 
 ## Multi-Column Header Template
 
-Each of the column groups of the grid can be templated separately. The column group expects `RenderFragment` for the [`HeaderTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_HeaderTemplate) property.
+Each of the column groups of the grid can be templated separately. The column group expects `RenderFragment` for the [`HeaderTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=HeaderTemplate) property.
 The expression is provided with the column group object as a context.
 
 ```razor
@@ -299,7 +299,7 @@ The expression is provided with the column group object as a context.
 }
 ```
 
-If you want to re-use a single template for several column groups, you could set the [`HeaderTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_HeaderTemplate) property of the column group like this:
+If you want to re-use a single template for several column groups, you could set the [`HeaderTemplate`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=HeaderTemplate) property of the column group like this:
 
 ```razor
 <IgbColumnGroup Header="General Information" HeaderTemplate="Template">
@@ -700,8 +700,8 @@ public class CustomersData
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
-- [`IgbColumnGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
+- [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup)
 
 ## Additional Resources
 

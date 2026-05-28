@@ -50,7 +50,7 @@ root.render(<CheckboxOverview/>);
 
 ## Usage
 
-At its core, the [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) allows for a choice between selected/unselected state. The default styling is done according to the selection controls specification in the Material Design guidelines.
+At its core, the [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox) allows for a choice between selected/unselected state. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
 First, you need to the install the corresponding Ignite UI for React npm package by running the following command:
 
@@ -58,7 +58,7 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) and its necessary CSS, like so:
+You will then need to import the [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox) and its necessary CSS, like so:
 
 ```tsx
 import { IgrCheckbox } from 'igniteui-react';
@@ -67,14 +67,14 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 <div class="divider--half"></div>
 
-The simplest way to start using the [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) is as follows:
+The simplest way to start using the [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox) is as follows:
 
 ```tsx
 <IgrCheckbox></IgrCheckbox>
 ```
 
 > [!WARNING]
-> The [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) component doesn't work with the standard `<form>` element. Use `Form` instead.
+> The [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox) component doesn't work with the standard `<form>` element. Use `Form` instead.
 
 ## Examples
 
@@ -144,7 +144,7 @@ root.render(<CheckboxLabel/>);
 
 ### Checked
 
-You can use the [`checked`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
+You can use the [`checked`](mcp:get_api_reference?platform=react&component=IgrCheckbox&member=checked) attribute of the component to determine whether the checkbox should be toggled on or off by default.
 
 ```tsx
 <IgrCheckbox checked={true}></IgrCheckbox>
@@ -185,7 +185,7 @@ root.render(<CheckboxChecked/>);
 
 ### Indeterminate
 
-You can use the [`indeterminate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#indeterminate) property of the component to set the checkbox's value to neither **true** nor **false**.
+You can use the [`indeterminate`](mcp:get_api_reference?platform=react&component=IgrCheckbox&member=indeterminate) property of the component to set the checkbox's value to neither **true** nor **false**.
 
 ```tsx
 <IgrCheckbox indeterminate={true}></IgrCheckbox>
@@ -226,7 +226,7 @@ root.render(<CheckboxIndeterminate/>);
 
 ### Required
 
-You can use the [`required`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#required) property to mark the checkbox as required.
+You can use the [`required`](mcp:get_api_reference?platform=react&component=IgrCheckbox&member=required) property to mark the checkbox as required.
 
 ```tsx
 <IgrCheckbox required={true}></IgrCheckbox>
@@ -234,7 +234,7 @@ You can use the [`required`](https://www.infragistics.com/products/ignite-ui-rea
 
 ### Invalid
 
-You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#invalid) attribute to mark the checkbox as invalid.
+You can use the [`invalid`](mcp:get_api_reference?platform=react&component=IgrCheckbox&member=invalid) attribute to mark the checkbox as invalid.
 
 ```tsx
 <IgrCheckbox invalid={true}></IgrCheckbox>
@@ -242,7 +242,7 @@ You can use the [`invalid`](https://www.infragistics.com/products/ignite-ui-reac
 
 ### Disabled
 
-You can use the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#disabled) attribute to disable the checkbox.
+You can use the [`disabled`](mcp:get_api_reference?platform=react&component=IgrCheckbox&member=disabled) attribute to disable the checkbox.
 
 ```tsx
 <IgrCheckbox disabled={true}></IgrCheckbox>
@@ -283,7 +283,7 @@ root.render(<CheckboxDisabled/>);
 
 ### Forms
 
-You can use the [`name`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#name) and [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#value) attributes when using the checkbox with `Form`.
+You can use the [`name`](mcp:get_api_reference?platform=react&component=IgrCheckbox&member=name) and [`value`](mcp:get_api_reference?platform=react&component=IgrCheckbox&member=value) attributes when using the checkbox with `Form`.
 
 ```tsx
 <IgrCheckbox name="wifi" value="enabled"></IgrCheckbox>
@@ -291,7 +291,7 @@ You can use the [`name`](https://www.infragistics.com/products/ignite-ui-react/d
 
 ## Styling
 
-The [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) component exposes four CSS parts which we can use for styling:
+The [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox) component exposes four CSS parts which we can use for styling:
 
 |Name|Description|
 |--|--|
@@ -355,9 +355,9 @@ root.render(<CheckboxStyling/>);
 
 ## API References
 
-- [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html)
-- [`checked`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#checked)
-- [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html#disabled)
+- [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox)
+- [`checked`](mcp:get_api_reference?platform=react&component=IgrCheckbox&member=checked)
+- [`disabled`](mcp:get_api_reference?platform=react&component=IgrCheckbox&member=disabled)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

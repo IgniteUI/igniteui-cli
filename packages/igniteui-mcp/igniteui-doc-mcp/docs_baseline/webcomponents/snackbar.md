@@ -13,7 +13,7 @@ The Ignite UI for Web Components Snackbar component is used to provide feedback 
 
 ## Ignite UI for Web Components Snackbar Example
 
-This sample demonstrates how to create [`IgcSnackbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html) component.
+This sample demonstrates how to create [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent) component.
 
 ```css
 /* shared styles are loaded from: */
@@ -30,7 +30,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcSnackbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html), you need to register it as follows:
+Before using the [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcSnackbarComponent } from 'igniteui-webcomponents';
@@ -40,7 +40,7 @@ defineComponents(IgcSnackbarComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the snackbar component is to use its [`show`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html#show) method and call it on a button click.
+The simplest way to display the snackbar component is to use its [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=show) method and call it on a button click.
 
 ```html
 <igc-button onclick="snackbar.show()" variant="contained">Show Snackbar</igc-button>
@@ -51,7 +51,7 @@ The simplest way to display the snackbar component is to use its [`show`](https:
 
 ### Display Time
 
-Use the [`displayTime`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html#displayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
+Use the [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=displayTime) property to configure how long the snackbar component is visible. By default, it's set to 4000 milliseconds.
 
 ```css
 /* shared styles are loaded from: */
@@ -60,7 +60,7 @@ Use the [`displayTime`](https://www.infragistics.com/products/ignite-ui-web-comp
 
 ### Action Text
 
-By default, the snackbar component is hidden automatically after a period specified by the [`displayTime`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html#displayTime). You can use [`keepOpen`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html#keepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`actionText`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html#actionText) you can display an action button inside the component.
+By default, the snackbar component is hidden automatically after a period specified by the [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=displayTime). You can use [`keepOpen`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=keepOpen) property to change this behavior. In this way, the snackbar will remain visible. Using the snackbar [`actionText`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=actionText) you can display an action button inside the component.
 
 ```css
 /* shared styles are loaded from: */
@@ -69,7 +69,7 @@ By default, the snackbar component is hidden automatically after a period specif
 
 ## Styling
 
-The [`IgcSnackbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html) component exposes several CSS parts to give you full control over its styling:
+The [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent) component exposes several CSS parts to give you full control over its styling:
 
 |Name|Description|
 |--|--|
@@ -102,11 +102,11 @@ igc-snackbar::part(base) {
 
 ## API References
 
-- [`actionText`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html#actionText)
-- [`displayTime`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html#displayTime)
-- [`keepOpen`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html#keepOpen)
-- [`show`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html#show)
-- [`IgcSnackbarComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcsnackbarcomponent.html)
+- [`actionText`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=actionText)
+- [`displayTime`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=displayTime)
+- [`keepOpen`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=keepOpen)
+- [`show`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent&member=show)
+- [`IgcSnackbarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSnackbarComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

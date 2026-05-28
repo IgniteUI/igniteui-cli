@@ -13,11 +13,11 @@ _premium: true
 
 # React Tree Grid Row Editing
 
-The Ignite UI for React Row Editing feature in React Tree Grid allows editing data directly within the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html). On top of this convenient way to manipulate data, there’s a powerful API for full CRUD operations. You can perform grid row editing by clicking on a row and pressing **Enter key**. Another quick way is to double click with the mouse on the row that needs to be modified.
+The Ignite UI for React Row Editing feature in React Tree Grid allows editing data directly within the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). On top of this convenient way to manipulate data, there’s a powerful API for full CRUD operations. You can perform grid row editing by clicking on a row and pressing **Enter key**. Another quick way is to double click with the mouse on the row that needs to be modified.
 
 ## React Tree Grid Row Editing Example
 
-The following sample demonstrates how to enable row editing in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html). Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
+The following sample demonstrates how to enable row editing in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
 
 ```typescript
 export class EmployeesNestedTreeDataItem {
@@ -171,7 +171,7 @@ root.render(<Sample/>);
 
 ## Row Editing Usage
 
-Define a [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) with bound data source and [`rowEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowEditable) set to true:
+Define a [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) with bound data source and [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable) set to true:
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -190,10 +190,10 @@ Define a [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/d
 > Setting primary key is mandatory for row editing operations.
 
 > [!Note]
-> Enabling editing for individual columns is not necessary. Using the [`rowEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowEditable) property in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), all rows, with defined [`field`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#field) property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`editable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#editable) input of that column to `false`.
+> Enabling editing for individual columns is not necessary. Using the [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable) property in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), all rows, with defined [`field`](mcp:get_api_reference?platform=react&component=IgrColumn&member=field) property (excluding the primary row) will be editable. If you want to disable editing for a specific column, simply set the [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) input of that column to `false`.
 
 > [!Note]
-> The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
+> The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) utilizes `BaseTransactionService` - an internal provider that holds pending cell changes until the row state is either submitted or cancelled.
 
 ## Positioning
 
@@ -213,13 +213,13 @@ Define a [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/d
 
 - If row is in edit mode, then clicking a cell from another row will finish the current row edit and will submit new row changes (the same behavior clicking "Done" button). If the new cell that gets focus is editable, then the new row also enters edit mode, while if the cell is not editable, then only the previous row exits edit mode.
 
-- If row is in edit mode and [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) is scrolled so that row goes outside the visible area, the latter will be still in edit mode. When [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) is scrolled, so that the row is visible again, the row will be still in edit mode. When clicked outside the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html), the cell will also stay in edit mode.
+- If row is in edit mode and [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) is scrolled so that row goes outside the visible area, the latter will be still in edit mode. When [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) is scrolled, so that the row is visible again, the row will be still in edit mode. When clicked outside the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), the cell will also stay in edit mode.
 
 - When perform **sorting**, **filtering**, **searching** and **hiding** operations, will revert all current changes in the row and row will exit edit mode.
 
 - When perform **paging**, **resizing**, **pinning** and **moving** operations, will exit edit mode and will submit latest value.
 
-- Each modified cell gets edited style until row edit is finished. This is the behavior, when [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) is not provided with transactions. When transactions are available - then cell edit style is applied until all the changes are committed.
+- Each modified cell gets edited style until row edit is finished. This is the behavior, when [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) is not provided with transactions. When transactions are available - then cell edit style is applied until all the changes are committed.
 
 ## Keyboard Navigation
 
@@ -456,7 +456,7 @@ root.render(<Sample/>);
 
 ## Known Issues and Limitations
 
-- When the grid has no [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+- When the grid has no [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 
@@ -468,15 +468,15 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`rowEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowEditable)
+- [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable)
 - `RowEditEnter`
 - `RowEdit`
 - `RowEditDone`
-- [`endEdit`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#endEdit)
-- [`field`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#field)
-- [`editable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#editable)
-- [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#primaryKey)
-- [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
+- [`endEdit`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=endEdit)
+- [`field`](mcp:get_api_reference?platform=react&component=IgrColumn&member=field)
+- [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable)
+- [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey)
+- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
 
 ## Additional Resources
 

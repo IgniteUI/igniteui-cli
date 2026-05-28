@@ -15,7 +15,7 @@ _premium: true
 
 <!-- ComponentStart: TreeGrid -->
 
-The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) provides a convenient way to perform data manipulations through inline row adding and a powerful API for React CRUD operations. Add an [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) component with editing actions enabled in the grid's template, hover a row and use the provided button, press <kbd>ALT</kbd> + <kbd>+</kbd> to spawn the row adding UI or <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>+</kbd> to spawn the UI for adding a child for the selected row.
+The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) provides a convenient way to perform data manipulations through inline row adding and a powerful API for React CRUD operations. Add an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with editing actions enabled in the grid's template, hover a row and use the provided button, press <kbd>ALT</kbd> + <kbd>+</kbd> to spawn the row adding UI or <kbd>ALT</kbd> + <kbd>SHIFT</kbd> + <kbd>+</kbd> to spawn the UI for adding a child for the selected row.
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -177,7 +177,7 @@ root.render(<Sample/>);
 
 ## Row Adding Usage
 
-Then define a [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) with bound data source, [`rowEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowEditable) set to true and an [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) component with editing actions enabled. The [`addRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#addRow) input controls the visibility of the button that spawns the row adding UI.
+Then define a [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) with bound data source, [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable) set to true and an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with editing actions enabled. The [`addRow`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=addRow) input controls the visibility of the button that spawns the row adding UI.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -206,31 +206,31 @@ Then define a [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-re
 > Setting primary key is mandatory for row adding operations.
 
 > **Note**:
-> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`editable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#editable) column's input to `false`.
+> Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`editable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=editable) column's input to `false`.
 
 <!-- ComponentStart: TreeGrid -->
 
 > **Note**:
-> The [`IgrGridEditingActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrideditingactions.html) inputs controlling the visibility of the add row and add child buttons may use the action strip context (which is of type [`IgrRowType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowtype.html) to fine tune which records the buttons show for.
+> The [`IgrGridEditingActions`](mcp:get_api_reference?platform=react&component=IgrGridEditingActions) inputs controlling the visibility of the add row and add child buttons may use the action strip context (which is of type [`IgrRowType`](mcp:get_api_reference?platform=react&component=IgrRowType) to fine tune which records the buttons show for.
 
 <!-- ComponentEnd: TreeGrid -->
 
-The internal `BaseTransactionService` is automatically provided for [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html). It holds pending cell changes until the row state is submitted or cancelled.
+The internal `BaseTransactionService` is automatically provided for [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). It holds pending cell changes until the row state is submitted or cancelled.
 
 ## Start Row Adding Programmatically
 
-[`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) allows to programmatically spawn the add row UI by using two different public methods. One that accepts a row ID for specifying the row under which the UI should spawn and another that works by index. You can use these methods to spawn the UI anywhere within the current data view. Changing the page or specifying a row that is e.g. filtered out is not supported.
+[`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) allows to programmatically spawn the add row UI by using two different public methods. One that accepts a row ID for specifying the row under which the UI should spawn and another that works by index. You can use these methods to spawn the UI anywhere within the current data view. Changing the page or specifying a row that is e.g. filtered out is not supported.
 
 <!-- ComponentStart: TreeGrid -->
 
-Using [`beginAddRowById`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. The second parameter controls if the row is added as a child to the context row or as a sibling. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
+Using [`beginAddRowById`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=beginAddRowById) requires you to specify the row to use as context for the operation by its `RowID` (PK). The method then functions as though the end-user clicked on the add row action strip button for the specified row, spawning the UI under it. The second parameter controls if the row is added as a child to the context row or as a sibling. You can also make the UI spawn as the very first row in the grid by passing `null` for the first parameter.
 
 ```typescript
 this.treeGrid.beginAddRowById('ALFKI', true);   // Spawns the add row UI to add a child for the row with PK 'ALFKI'
 this.treeGrid.beginAddRowById(null);            // Spawns the add row UI as the first record
 ```
 
-The [`beginAddRowByIndex`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#beginAddRowByIndex) method works similarly but the row to use as context is specified by index.
+The [`beginAddRowByIndex`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=beginAddRowByIndex) method works similarly but the row to use as context is specified by index.
 
 ```typescript
 this.treeGrid.beginAddRowByIndex(10, true);   // Spawns the add row UI to add a child for the row at index 10
@@ -243,7 +243,7 @@ this.treeGrid.beginAddRowByIndex(null);       // Spawns the add row UI as the fi
 
 - The default position of row add UI is below the row that the end user clicked the add row button for.
 
-- The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) scrolls to fully display the add row UI automatically.
+- The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) scrolls to fully display the add row UI automatically.
 
 - The overlay for the add row UI maintains its position during scrolling.
 
@@ -251,7 +251,7 @@ this.treeGrid.beginAddRowByIndex(null);       // Spawns the add row UI as the fi
 
 The add row UI has the same behavior as the row editing one as they are designed to provide a consistent editing experience to end users. Please, refer to the [Tree Grid Row Editing](row-editing.md) topic for more information.
 
-After a new row is added through the row adding UI, its position and/or visibility is determined by the sorting, filtering and grouping state of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html). In a [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) that does not have any of these states applied, it appears as the last record. A snackbar is briefly displayed containing a button the end user may use to scroll the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) to its position if it is not in view.
+After a new row is added through the row adding UI, its position and/or visibility is determined by the sorting, filtering and grouping state of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). In a [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) that does not have any of these states applied, it appears as the last record. A snackbar is briefly displayed containing a button the end user may use to scroll the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) to its position if it is not in view.
 
 ## Keyboard Navigation
 
@@ -269,7 +269,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 ## Feature Integration
 
-- Any row adding operation will stop if the data view of the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) gets modified. Any changes made by the end user are submitted. Operations that change the data view include but are not limited to sorting, grouping, filtering, paging, etc.
+- Any row adding operation will stop if the data view of the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) gets modified. Any changes made by the end user are submitted. Operations that change the data view include but are not limited to sorting, grouping, filtering, paging, etc.
 
 - Summaries are updated after the row add operation finishes. The same is valid for the other data view dependant features such as sorting, filtering, etc.
 
@@ -277,7 +277,7 @@ After a new row is added through the row adding UI, its position and/or visibili
 
 ### Customizing Text
 
-Customizing the text of the row adding overlay is possible using the [`rowAddTextTemplate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowAddTextTemplate).
+Customizing the text of the row adding overlay is possible using the [`rowAddTextTemplate`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowAddTextTemplate).
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -295,7 +295,7 @@ gridRef.current.rowAddTextTemplate = (ctx: IgrGridEmptyTemplateContext) => {
 
 ## Styling
 
-The row adding UI comprises the buttons in the [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) editing actions, the editing editors and overlay, as well as the snackbar which allows end users to scroll to the newly added row. To style these components you may refer to these comprehensive guides in their respective topics:
+The row adding UI comprises the buttons in the [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) editing actions, the editing editors and overlay, as well as the snackbar which allows end users to scroll to the newly added row. To style these components you may refer to these comprehensive guides in their respective topics:
 
 - [Tree Grid Row Editing](row-editing.md#styling)
 - [Snackbar](../../notifications/snackbar.md#styling)
@@ -304,14 +304,14 @@ The row adding UI comprises the buttons in the [`IgrActionStrip`](https://www.in
 
 ## API References
 
-- [`rowEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#rowEditable)
+- [`rowEditable`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowEditable)
 - `RowEditEnter`
 - `RowEdit`
 - `RowEditDone`
 - `RowEditCancel`
-- [`endEdit`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#endEdit)
-- [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#primaryKey)
-- [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
+- [`endEdit`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=endEdit)
+- [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=primaryKey)
+- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
 
 ## Additional Resources
 

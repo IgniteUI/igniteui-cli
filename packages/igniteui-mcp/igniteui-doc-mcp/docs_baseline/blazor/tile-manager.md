@@ -203,12 +203,12 @@ The following Ignite UI for Blazor Tile Manager Example shows the component in a
 
 ## Usage
 
-The [`IgbTileManager`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html) provides a base tile layout behavior, managing the placement of tiles in maximized or normal state. The tiles can be sized independently of each other and used to form complex layouts. End users can reorder tiles by dragging and dropping them, providing a flexible and intuitive experience.
+The [`IgbTileManager`](mcp:get_api_reference?platform=blazor&component=IgbTileManager) provides a base tile layout behavior, managing the placement of tiles in maximized or normal state. The tiles can be sized independently of each other and used to form complex layouts. End users can reorder tiles by dragging and dropping them, providing a flexible and intuitive experience.
 
 The Tile Manager offers two components that we can use:
 
-- [`IgbTile`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html) - This component represents an individual tile displayed within the Tile Manager.
-- [`IgbTileManager`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html) - This is the main component that contains all of the tile components, serving as the container for the entire tile layout.
+- [`IgbTile`](mcp:get_api_reference?platform=blazor&component=IgbTile) - This component represents an individual tile displayed within the Tile Manager.
+- [`IgbTileManager`](mcp:get_api_reference?platform=blazor&component=IgbTileManager) - This is the main component that contains all of the tile components, serving as the container for the entire tile layout.
 
 ### Getting Started
 
@@ -220,7 +220,7 @@ Before using the Tile Manager, you need to import it as follows:
 builder.Services.AddIgniteUIBlazor(typeof(IgbTileManagerModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbTileManager`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbTileManager`](mcp:get_api_reference?platform=blazor&component=IgbTileManager) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -248,7 +248,7 @@ For a complete introduction to the Ignite UI for Blazor, read the [**Getting Sta
 
 ### Columns and Rows
 
-We can specify the number of grid columns for our Tile Manager. To do this, simply set the [`ColumnCount`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html#IgniteUI_Blazor_Controls_IgbTileManager_ColumnCount) property to the desired number of columns. If the number is less than one or the property is not set, the Tile Manager will create as many columns as can fit, with each column being at least 200px wide and expanding to equally share the available space. When the viewport dimensions change, the tiles will also rearrange themselves to maximize the use of space.
+We can specify the number of grid columns for our Tile Manager. To do this, simply set the [`ColumnCount`](mcp:get_api_reference?platform=blazor&component=IgbTileManager&member=ColumnCount) property to the desired number of columns. If the number is less than one or the property is not set, the Tile Manager will create as many columns as can fit, with each column being at least 200px wide and expanding to equally share the available space. When the viewport dimensions change, the tiles will also rearrange themselves to maximize the use of space.
 
 ```razor
 <IgbTileManager ColumnCount="2">
@@ -272,7 +272,7 @@ In this code snippet, the three tiles in the Tile Manager will be arranged into 
 
 ### Gap
 
-Another property that can be used in the Tile Manager is the [`Gap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html#IgniteUI_Blazor_Controls_IgbTileManager_Gap) property, which defines the space between tiles. The value of the [`Gap`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html#IgniteUI_Blazor_Controls_IgbTileManager_Gap) property must be a number followed by a length unit (e.g., px, rem, em, ...). This value will apply to both the horizontal gap (width) and the vertical gap (height) between tiles.
+Another property that can be used in the Tile Manager is the [`Gap`](mcp:get_api_reference?platform=blazor&component=IgbTileManager&member=Gap) property, which defines the space between tiles. The value of the [`Gap`](mcp:get_api_reference?platform=blazor&component=IgbTileManager&member=Gap) property must be a number followed by a length unit (e.g., px, rem, em, ...). This value will apply to both the horizontal gap (width) and the vertical gap (height) between tiles.
 
 ```razor
 <IgbTileManager Gap="20px">
@@ -290,7 +290,7 @@ Another property that can be used in the Tile Manager is the [`Gap`](https://www
 
 ### Minimum width and height
 
-We also have properties for setting the minimum width of the columns ([`MinColumnWidth`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html#IgniteUI_Blazor_Controls_IgbTileManager_MinColumnWidth)) and the minimum height of the rows ([`MinRowHeight`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html#IgniteUI_Blazor_Controls_IgbTileManager_MinRowHeight)) in the Tile Manager. Similar to the gap property, the values for these properties must be a number followed by a length unit. These values will define the minimum width for all columns and the minimum height for all rows in the Tile Manager.
+We also have properties for setting the minimum width of the columns ([`MinColumnWidth`](mcp:get_api_reference?platform=blazor&component=IgbTileManager&member=MinColumnWidth)) and the minimum height of the rows ([`MinRowHeight`](mcp:get_api_reference?platform=blazor&component=IgbTileManager&member=MinRowHeight)) in the Tile Manager. Similar to the gap property, the values for these properties must be a number followed by a length unit. These values will define the minimum width for all columns and the minimum height for all rows in the Tile Manager.
 
 ```razor
 <IgbTileManager MinColumnWidth="200px" MinRowHeight="150px">
@@ -372,13 +372,13 @@ We also have properties for setting the minimum width of the columns ([`MinColum
 
 The Tile component has properties that can be set individually for each tile. Some of these properties include:
 
-- The [`ColSpan`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html#IgniteUI_Blazor_Controls_IgbTile_ColSpan) property specifies how many columns the tile will span across in the layout, allowing you to control its horizontal size.
-- The [`RowSpan`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html#IgniteUI_Blazor_Controls_IgbTile_RowSpan) property determines how many rows the tile will span vertically, adjusting the tile's height within the layout.
-- The [`ColStart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html#IgniteUI_Blazor_Controls_IgbTile_ColStart) property specifies the starting column where the tile is placed.
-- The [`RowStart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html#IgniteUI_Blazor_Controls_IgbTile_RowStart) property specifies the starting row where the tile is placed.
-- The [`DisableFullscreen`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html#IgniteUI_Blazor_Controls_IgbTile_DisableFullscreen) property hides the default fullscreen action button.
-- The [`DisableMaximize`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html#IgniteUI_Blazor_Controls_IgbTile_DisableMaximize) property hides the default maximize toggle action button.
-- The [`DisableResize`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html#IgniteUI_Blazor_Controls_IgbTile_DisableResize) property prevents the tile from being resized by the user.
+- The [`ColSpan`](mcp:get_api_reference?platform=blazor&component=IgbTile&member=ColSpan) property specifies how many columns the tile will span across in the layout, allowing you to control its horizontal size.
+- The [`RowSpan`](mcp:get_api_reference?platform=blazor&component=IgbTile&member=RowSpan) property determines how many rows the tile will span vertically, adjusting the tile's height within the layout.
+- The [`ColStart`](mcp:get_api_reference?platform=blazor&component=IgbTile&member=ColStart) property specifies the starting column where the tile is placed.
+- The [`RowStart`](mcp:get_api_reference?platform=blazor&component=IgbTile&member=RowStart) property specifies the starting row where the tile is placed.
+- The [`DisableFullscreen`](mcp:get_api_reference?platform=blazor&component=IgbTile&member=DisableFullscreen) property hides the default fullscreen action button.
+- The [`DisableMaximize`](mcp:get_api_reference?platform=blazor&component=IgbTile&member=DisableMaximize) property hides the default maximize toggle action button.
+- The [`DisableResize`](mcp:get_api_reference?platform=blazor&component=IgbTile&member=DisableResize) property prevents the tile from being resized by the user.
 
 ```razor
 <IgbTileManager>
@@ -415,7 +415,7 @@ By default, the header section includes two action buttons:
 
 <img src="../../images/tile-manager-actions.png" alt="tile-manager-actions"/>
 
-If you want to display just one of the two buttons, you can set either [`DisableMaximize`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html#IgniteUI_Blazor_Controls_IgbTile_DisableMaximize) or [`DisableFullscreen`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html#IgniteUI_Blazor_Controls_IgbTile_DisableFullscreen) property. To customize the appearance you can use the `maximize-action` slot for the maximize button, or the `fullscreen-action` slot for the fullscreen button.
+If you want to display just one of the two buttons, you can set either [`DisableMaximize`](mcp:get_api_reference?platform=blazor&component=IgbTile&member=DisableMaximize) or [`DisableFullscreen`](mcp:get_api_reference?platform=blazor&component=IgbTile&member=DisableFullscreen) property. To customize the appearance you can use the `maximize-action` slot for the maximize button, or the `fullscreen-action` slot for the fullscreen button.
 
 ```razor
 <IgbTileManager>
@@ -501,7 +501,7 @@ To ensure smooth resizing, a ghost element is used instead of directly modifying
 
 The Tile Manager automatically rearranges itself when a tile changes size, ensuring that there is minimal empty space. That's why expanding a tile may push adjacent tiles into new positions, while shrinking creates gaps that other tiles may fill dynamically. This ensures that the Tile Manager stays as compact as possible, without any overlapping tiles, and that all movements remain within the defined grid structure.
 
-We can use the [`ResizeMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html#IgniteUI_Blazor_Controls_IgbTileManager_ResizeMode) property to control how resizing is applied in the Tile Manager. It can be set to `none`, `hover` or `always`, which determines when the resize adorners are visible. The default value is `none` and the tile could not be resized.
+We can use the [`ResizeMode`](mcp:get_api_reference?platform=blazor&component=IgbTileManager&member=ResizeMode) property to control how resizing is applied in the Tile Manager. It can be set to `none`, `hover` or `always`, which determines when the resize adorners are visible. The default value is `none` and the tile could not be resized.
 
 ```razor
 <IgbTileManager ResizeMode="TileManagerResizeMode.Hover">
@@ -602,12 +602,12 @@ Grid gaps are also considered, keeping the layout consistent during resizing.
 
 There are several constraints and limitations in the resizing process:
 
-- A tile cannot be resized smaller than its defined minimum width or height ([`MinColumnWidth`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html#IgniteUI_Blazor_Controls_IgbTileManager_MinColumnWidth), [`MinRowHeight`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html#IgniteUI_Blazor_Controls_IgbTileManager_MinRowHeight)).
+- A tile cannot be resized smaller than its defined minimum width or height ([`MinColumnWidth`](mcp:get_api_reference?platform=blazor&component=IgbTileManager&member=MinColumnWidth), [`MinRowHeight`](mcp:get_api_reference?platform=blazor&component=IgbTileManager&member=MinRowHeight)).
 - A tile cannot exceed the maximum available horizontal space in the grid.
 
 ## Reorder
 
-You can reorder tiles in the Tile Manager using the drag-and-drop feature. By default, tiles are not draggable. To enable this functionality, set the [`DragMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html#IgniteUI_Blazor_Controls_IgbTileManager_DragMode) property on the Tile Manager to either `tile` or `tile-header`.
+You can reorder tiles in the Tile Manager using the drag-and-drop feature. By default, tiles are not draggable. To enable this functionality, set the [`DragMode`](mcp:get_api_reference?platform=blazor&component=IgbTileManager&member=DragMode) property on the Tile Manager to either `tile` or `tile-header`.
 
 - With the `tile` option, you can click and hold anywhere on an individual tile to start dragging it.
 - With the `tile-header` option, you can only click and hold in the tile's header section to start the dragging process.
@@ -690,8 +690,8 @@ Similar to resizing, when you initiate the drag-and-drop process, a ghost elemen
 
 The Tile Manager provides methods that help manage the layout of tiles:
 
-- The [`SaveLayout`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html#IgniteUI_Blazor_Controls_IgbTileManager_SaveLayout) method allows you to save the current arrangement of tiles in the Tile Manager, it captures the current order, size and position of all tiles, so you can later restore it to this exact configuration.
-- The [`LoadLayout`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html#IgniteUI_Blazor_Controls_IgbTileManager_LoadLayout) method enables you to load a previously saved layout. When called, it restores the tiles to the exact state they were in when the layout was saved, including their order, size and position.
+- The [`SaveLayout`](mcp:get_api_reference?platform=blazor&component=IgbTileManager&member=SaveLayout) method allows you to save the current arrangement of tiles in the Tile Manager, it captures the current order, size and position of all tiles, so you can later restore it to this exact configuration.
+- The [`LoadLayout`](mcp:get_api_reference?platform=blazor&component=IgbTileManager&member=LoadLayout) method enables you to load a previously saved layout. When called, it restores the tiles to the exact state they were in when the layout was saved, including their order, size and position.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -741,9 +741,9 @@ The Tile Manager provides methods that help manage the layout of tiles:
 
 ## Styling
 
-You can also customize the appearance of the two components - [`IgbTileManager`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html) and [`IgbTile`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html).
-The [`IgbTileManager`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html) exposes only one CSS property - `base` which can be used for styling the base wrapper of the Tile Manager.
-The [`IgbTile`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html) exposes several CSS properties we can use:
+You can also customize the appearance of the two components - [`IgbTileManager`](mcp:get_api_reference?platform=blazor&component=IgbTileManager) and [`IgbTile`](mcp:get_api_reference?platform=blazor&component=IgbTile).
+The [`IgbTileManager`](mcp:get_api_reference?platform=blazor&component=IgbTileManager) exposes only one CSS property - `base` which can be used for styling the base wrapper of the Tile Manager.
+The [`IgbTile`](mcp:get_api_reference?platform=blazor&component=IgbTile) exposes several CSS properties we can use:
 
 | Part name | Description |
 | ---------|------------ |
@@ -840,13 +840,13 @@ You can also change the icon of the adorners to a custom one using the `side-ado
 
 ## API Reference
 
-- [`IgbTileManager`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html)
-- [`IgbTile`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html)
+- [`IgbTileManager`](mcp:get_api_reference?platform=blazor&component=IgbTileManager)
+- [`IgbTile`](mcp:get_api_reference?platform=blazor&component=IgbTile)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources
 
-- [`IgbTile`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTile.html)
-- [`IgbTileManager`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTileManager.html)
+- [`IgbTile`](mcp:get_api_reference?platform=blazor&component=IgbTile)
+- [`IgbTileManager`](mcp:get_api_reference?platform=blazor&component=IgbTileManager)
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)
 - [Ignite UI for Blazor **GitHub**](https://github.com/IgniteUI/igniteui-blazor)
