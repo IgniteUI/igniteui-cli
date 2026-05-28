@@ -248,6 +248,27 @@ describe('extractSection', () => {
       expect(props).not.toContain('**GroupingDone**');
     });
 
+    it('classifies Angular OutputEmitterRef bullets as events', () => {
+      const angular = [
+        '### [IgxChatComponent](https://example.com)',
+        '- readonly **attachmentClick**: `OutputEmitterRef<IgcChatMessageAttachment>` — Emitted when an attachment is clicked',
+        '- readonly **draftMessage**: `InputSignal<any>` — Draft message with text and optional attachments',
+        '- readonly **messageCreated**: `OutputEmitterRef<IgcChatMessage>` — Emitted when a new message is created',
+        '- **ngOnInit**(): void',
+      ].join('\n');
+
+      const events = extractSection(angular, 'events');
+      expect(events).not.toBeNull();
+      expect(events).toContain('**attachmentClick**');
+      expect(events).toContain('**messageCreated**');
+      expect(events).not.toContain('**draftMessage**');
+      expect(events).not.toContain('**ngOnInit**');
+
+      const props = extractSection(angular, 'properties');
+      expect(props).toContain('**draftMessage**');
+      expect(props).not.toContain('**attachmentClick**');
+    });
+
     it('returns null when no bullets match the requested kind', () => {
       const eventsOnly = '- **change**: `EventEmitter<void>` — Fires on change.';
       expect(extractSection(eventsOnly, 'methods')).toBeNull();

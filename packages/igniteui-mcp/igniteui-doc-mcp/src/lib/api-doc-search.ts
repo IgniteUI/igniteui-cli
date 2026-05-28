@@ -80,8 +80,9 @@ export interface MemberMatch {
 function inferSectionFromBullet(line: string): MemberMatch['section'] {
   const afterName = line.replace(/^.*?\*\*[A-Za-z_$][A-Za-z0-9_$]*\*\*/, '');
   if (afterName.startsWith('(')) return 'method';
-  // Angular/WC/React emit events as EventEmitter<T>; Blazor uses EventCallback<T>.
-  if (/\b(?:EventEmitter|EventCallback)\b/.test(afterName)) return 'event';
+  // Angular/WC/React emit events as EventEmitter<T>; Blazor uses EventCallback<T>;
+  // Angular signal-based outputs use OutputEmitterRef<T>.
+  if (/\b(?:EventEmitter|EventCallback|OutputEmitterRef)\b/.test(afterName)) return 'event';
   return 'property';
 }
 
