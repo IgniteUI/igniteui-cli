@@ -20,13 +20,13 @@ npx @igniteui/mcp-server
 
 In order to run the MCP from this repository, git submodules must be initialized first. The repo already includes the submodule entries, but a fresh clone still needs to fetch them locally.
 
-The `blazor/api-docs` submodule is required for local API markdown generation for all four platforms (Angular, React, Web Components, and Blazor).
+The `common/api-docs` submodule is required for local API markdown generation for all four platforms (Angular, React, Web Components, and Blazor).
 
 Recommended first-time setup:
 
 ```bash
 cd packages/igniteui-mcp/igniteui-doc-mcp
-git submodule update --init blazor/api-docs
+git submodule update --init common/api-docs
 npm install
 npm run build:docs:all
 npm run build

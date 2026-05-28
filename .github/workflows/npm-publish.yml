@@ -13,6 +13,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.CLASSIC_PAT_GITHUB }}
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -23,6 +25,15 @@ jobs:
 
       - name: Install packages
         run: yarn install --frozen-lockfile
+
+      - name: Configure git auth for private submodules
+        env:
+          TOKEN: ${{ secrets.CLASSIC_PAT_GITHUB }}
+        run: git config --global url."https://x-access-token:${TOKEN}@github.com/".insteadOf "https://github.com/"
+
+      - name: Build MCP API docs
+        working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+        run: npm run build:docs:all
 
       - name: Build packages
         run: |

@@ -29,10 +29,10 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 │   ├── inject-blazor-docs.ts          # Inject Blazor sample code (github-src based, .razor/.razor.cs/.css files)
 │   ├── compress-blazor-docs.ts        # LLM-based compression with Blazor-specific prompt (Igb prefix, no suffix, supports --batch mode)
 │   ├── validate-docs.ts               # LLM-as-Judge validation of compressed docs (platform-independent)
-│   ├── export-angular-api.ts          # Build Angular API docs from blazor/api-docs submodule → docs/angular-api/
-│   ├── export-react-api.ts            # Build React API docs from blazor/api-docs submodule → docs/react-api/
-│   ├── export-wc-api.ts               # Build Web Components API docs from blazor/api-docs submodule → docs/webcomponents-api/
-│   └── export-blazor-api.ts           # Build Blazor API docs from blazor/api-docs submodule → docs/blazor-api/
+│   ├── export-angular-api.ts          # Build Angular API docs from common/api-docs submodule → docs/angular-api/
+│   ├── export-react-api.ts            # Build React API docs from common/api-docs submodule → docs/react-api/
+│   ├── export-wc-api.ts               # Build Web Components API docs from common/api-docs submodule → docs/webcomponents-api/
+│   └── export-blazor-api.ts           # Build Blazor API docs from common/api-docs submodule → docs/blazor-api/
 ├── docs/
 │   ├── knowledgebase.md                # Lessons learned and issues for cross-platform reference (32 entries)
 │   ├── db.md                           # SQLite + FTS4 database integration (IMPLEMENTED)
@@ -84,7 +84,7 @@ npm start          # run MCP server in local mode (default, uses bundled SQLite 
 
 ### API Docs Generation
 
-The `blazor/api-docs` submodule provides the Astro build pipeline used by all four platforms. Run these scripts once (or when upstream API data changes) to populate the `docs/*-api/` directories:
+The `common/api-docs` submodule provides the Astro build pipeline used by all four platforms. Run these scripts once (or when upstream API data changes) to populate the `docs/*-api/` directories:
 
 ```bash
 npm run build:docs:angular-api     # Angular: Astro build → docs/angular-api/
