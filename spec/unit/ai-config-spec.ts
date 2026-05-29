@@ -104,19 +104,19 @@ describe("Unit - ai-config command", () => {
 			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
 		});
 
-		it("is a no-op and logs when both servers are already configured", () => {
+		it("rewrites when both servers are already configured", () => {
 			const mockFs = createMockFs(JSON.stringify({
 				servers: {
 					[IGNITEUI_SERVER_KEY]: igniteuiServer,
 					[IGNITEUI_THEMING_SERVER_KEY]: igniteuiThemingServer
 				}
-			}));
+			}, null, 2));
 			App.container.set(FS_TOKEN, mockFs);
 
 			configureMCP(["vscode"]);
 
-			expect(mockFs.writeFile).not.toHaveBeenCalled();
-			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("already configured"));
+			expect(mockFs.writeFile).toHaveBeenCalled();
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("MCP servers configured"));
 		});
 
 		it("preserves existing third-party servers when adding igniteui servers", () => {
