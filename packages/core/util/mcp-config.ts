@@ -81,8 +81,9 @@ export function addMcpServers(
 
 	for (const [key, value] of Object.entries(servers)) {
 		const edits = jsonc.modify(text, [rootKey, key], value, { formattingOptions });
-		if (edits.length) {
-			text = jsonc.applyEdits(text, edits);
+		const newText = jsonc.applyEdits(text, edits);
+		if (newText !== text) {
+			text = newText;
 			modified = true;
 		}
 	}
