@@ -29,10 +29,18 @@ jobs:
           npm run build-pack
           node scripts/build-task.js
 
+      - name: Validate MCP package contents
+        run: npm run validate:package --workspace=@igniteui/mcp-server -- --expected-version "$VERSION"
+
       - name: Define npm tag
         run: |
-          if [[ ${VERSION} == *"alpha"* || ${VERSION} == *"beta"* || ${VERSION} == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
-          echo ${NPM_TAG}
+          if [[ ${VERSION} == *"alpha"* || ${VERSION} == *"beta"* || ${VERSION} == *"rc"* ]]; then
+            NPM_TAG=next
+          else
+            NPM_TAG=latest
+          fi
+          echo "NPM_TAG=$NPM_TAG" >> $GITHUB_ENV
+          echo "$NPM_TAG"
 
       - name: Publish packages
         # use npm run as yarn run changes the registry and publishes to https://registry.yarnpkg.com

@@ -1,7 +1,7 @@
 {
   "name": "@igniteui/mcp-server",
   "mcpName": "io.github.IgniteUI/mcp-server",
-  "version": "15.2.1",
+  "version": "15.2.2-alpha.3",
   "description": "Unified MCP server for Ignite UI — documentation, GitHub API, and CLI scaffolding",
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
     "build:db": "npx tsx scripts/build-db.ts",
+    "validate:package": "npx tsx scripts/validate-package.ts",
     "inspector": "npx @modelcontextprotocol/inspector dist/index.js",
     "clear": "npx tsx -e \"import{rmSync}from'fs';rmSync('dist',{recursive:true,force:true})\"",
     "clear:angular": "npx tsx -e \"import{rmSync}from'fs';['docs_processing','docs_prepeared','docs_final'].forEach(d=>{rmSync('dist/'+d+'/angular',{recursive:true,force:true})})\"",
