@@ -80,15 +80,10 @@ export function addMcpServers(
 	let modified = false;
 
 	for (const [key, value] of Object.entries(servers)) {
-		const isBuiltIn = key in IGNITEUI_MCP_SERVERS;
-		const needsUpdate = !existing[key] || isBuiltIn;
-		if (needsUpdate) {
+		if (!existing[key] || (key in IGNITEUI_MCP_SERVERS && JSON.stringify(existing[key]) !== JSON.stringify(value))) {
 			const edits = jsonc.modify(text, [rootKey, key], value, { formattingOptions });
-			const updatedText = jsonc.applyEdits(text, edits);
-			if (updatedText !== text) {
-				text = updatedText;
-				modified = true;
-			}
+			text = jsonc.applyEdits(text, edits);
+			modified = true;
 		}
 	}
 
