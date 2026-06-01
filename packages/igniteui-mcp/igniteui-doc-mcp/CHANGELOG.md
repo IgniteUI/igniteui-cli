@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 15.2.2 (2026-06-01)
+
+
 ## 15.2.1 (2026-05-20)
 
 ### Bug Fixes

@@ -1,4 +1,4 @@
-# Unreleased
+# 15.2.2 (2026-06-01)
 
 ## What's Changed
 * **Template package updates:** updated scaffolded package references for Angular, React, and Web Components templates — `igniteui-angular` to `~21.2.5`, `igniteui-react` / `igniteui-react-grids` / `igniteui-react-dockmanager` to `~19.7.0`, `igniteui-webcomponents` to `~7.2.0`, and `igniteui-webcomponents-grids` to `~7.1.0`.
