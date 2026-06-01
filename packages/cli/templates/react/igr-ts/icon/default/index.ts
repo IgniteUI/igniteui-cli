@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_PACKAGE } from "../../constants";
 
 class IgrIconTemplate extends IgniteUIForReactTemplate {
 	constructor() {
@@ -10,7 +11,7 @@ class IgrIconTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Icon";
 		this.description = "basic IgrIcon";
-		this.packages = ["igniteui-react@~19.5.2"];
+		this.packages = [IGNITEUI_REACT_PACKAGE];
 	}
 }
 module.exports = new IgrIconTemplate();

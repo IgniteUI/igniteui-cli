@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_PACKAGE } from "../../constants";
 
 class IgrInputTemplate extends IgniteUIForReactTemplate {
 	constructor() {
@@ -10,7 +11,7 @@ class IgrInputTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Input";
 		this.description = "basic IgrInput";
-		this.packages = ["igniteui-react@~19.5.2"];
+		this.packages = [IGNITEUI_REACT_PACKAGE];
 	}
 }
 module.exports = new IgrInputTemplate();

@@ -1,4 +1,5 @@
 import { AGENTS_TEMPLATE_FILE, AI_CONFIG_PROJECT_ID, AI_SKILLS_DIR_NAME, App, Framework, Util } from "@igniteui/cli-core";
+import { IGNITEUI_REACT_GRIDS_PACKAGE, IGNITEUI_REACT_PACKAGE } from "../../packages/cli/templates/react/igr-ts/constants";
 import path from "path";
 import * as fs from "fs";
 
@@ -30,6 +31,45 @@ describe("React templates", () => {
 				)
 					.withContext(`Template ${element.id} can overwrite ${target.id}`)
 					.toBeTruthy();
+			}
+		}
+	});
+
+	it("Igr templates and project package.json files should use the shared React package constants", async () => {
+		const reactFramework: Framework = require(templatesLocation);
+		const projLibrary = reactFramework.projectLibraries.find(x => x.projectType === "igr-ts");
+		const expectedPackages: Record<string, string> = {
+			[IGNITEUI_REACT_PACKAGE.split("@")[0]]: IGNITEUI_REACT_PACKAGE.split("@")[1],
+			[IGNITEUI_REACT_GRIDS_PACKAGE.split("@")[0]]: IGNITEUI_REACT_GRIDS_PACKAGE.split("@")[1]
+		};
+
+		projLibrary.templates
+			.flatMap(t => t.packages || [])
+			.filter(p => typeof p === "string")
+			.forEach(p => {
+				const [pkg, version] = p.split("@");
+				if (expectedPackages[pkg]) {
+					expect(version)
+						.withContext(`Unexpected React package version: ${p}`)
+						.toBe(expectedPackages[pkg]);
+				}
+			});
+
+		const roots = [
+			...new Set(projLibrary.projects.flatMap(p => p.templatePaths))
+		];
+
+		for (const root of roots) {
+			const file = path.resolve(process.cwd(), root, "package.json");
+			if (!fs.existsSync(file)) continue;
+
+			const { dependencies = {}, devDependencies = {} } = require(file);
+			const deps = { ...dependencies, ...devDependencies };
+
+			for (const [pkg, version] of Object.entries(expectedPackages)) {
+				if (deps[pkg]) {
+					expect(deps[pkg]).toBe(version);
+				}
 			}
 		}
 	});

@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_PACKAGE } from "../../constants";
 
 class IgrCardTemplate extends IgniteUIForReactTemplate {
 	constructor() {
@@ -10,7 +11,7 @@ class IgrCardTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Card";
 		this.description = "basic IgrCard";
-		this.packages = ["igniteui-react@~19.5.2"];
+		this.packages = [IGNITEUI_REACT_PACKAGE];
 	}
 }
 module.exports = new IgrCardTemplate();
