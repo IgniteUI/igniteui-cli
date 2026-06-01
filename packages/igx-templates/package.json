@@ -12,7 +12,7 @@
   "author": "Infragistics",
   "license": "MIT",
   "dependencies": {
-    "@igniteui/cli-core": "^15.2.2",
+    "@igniteui/cli-core": "~15.2.2",
     "typescript": "~5.5.4"
   }
 }
