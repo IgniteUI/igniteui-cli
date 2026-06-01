@@ -1,7 +1,7 @@
 import * as path from "path";
 import { App, Config, FS_TOKEN, FsFileSystem, GoogleAnalytics, IFileSystem, InquirerWrapper, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import * as coreDetect from "../../packages/core/util/detect-framework";
-import { configureMCP, configureSkills } from "../../packages/cli/lib/commands/ai-config";
+import { configureMCP, configureSkills, configureInstructions } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 import { addMcpServers } from "../../packages/core/util/mcp-config";
 
@@ -220,8 +220,10 @@ describe("Unit - ai-config command", () => {
 
 			configureSkills(["claude"], "angular");
 
-			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("Failed to write 1 skill file(s) out of 1"), "yellow");
-			expect(Util.log).not.toHaveBeenCalled();
+			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("Failed to write 1 AI skill file(s) out of 1"), "yellow");
+			const logCalls = (Util.log as jasmine.Spy).calls.allArgs().map(a => a[0] as string);
+			expect(logCalls.some(m => m.includes("Created"))).toBe(false);
+			expect(logCalls.some(m => m.includes("Updated"))).toBe(false);
 		});
 
 		it("logs up-to-date when all files are already current", () => {
@@ -282,6 +284,308 @@ describe("Unit - ai-config command", () => {
 
 			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("1 AI skill file(s) created or updated"));
 			expect(Util.warn).not.toHaveBeenCalled();
+		});
+
+		it("logs per-file Created messages for new skill files", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
+
+			configureSkills(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith("  Created .claude/skills/angular.md");
+		});
+
+		it("logs per-file Updated messages for changed skill files", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const destFile = ".claude/skills/angular.md";
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json" || p === destFile
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("old content"),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("new content");
+
+			configureSkills(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith("  Updated .claude/skills/angular.md");
+		});
+
+		it("does not log per-file messages for skipped (up-to-date) files", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const destFile = ".claude/skills/angular.md";
+			const content = "# Ignite UI skills";
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json" || p === destFile
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue(content),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content);
+
+			configureSkills(["claude"], "angular");
+
+			const logCalls = (Util.log as jasmine.Spy).calls.allArgs().map(a => a[0] as string);
+			expect(logCalls.some(m => m.includes("Created"))).toBe(false);
+			expect(logCalls.some(m => m.includes("Updated"))).toBe(false);
+		});
+
+		it("logs package source with version when skills come from npm package", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
+				if (p === "node_modules/igniteui-angular/package.json") {
+					return JSON.stringify({ version: "18.2.0" });
+				}
+				return "skill content";
+			});
+
+			configureSkills(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith("Using skills from igniteui-angular@18.2.0");
+		});
+
+		it("logs bundled source when skills come from templates", () => {
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.returnValue(false),
+				readFile: jasmine.createSpy("readFile").and.returnValue(""),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.returnValue(false),
+				glob: jasmine.createSpy("glob").and.returnValue([])
+			} as unknown as IFileSystem;
+
+			App.container.set(FS_TOKEN, mockFs);
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {
+					projectLibraries: [{
+						getProject: (id: string) => id === "ai-config" ? { templatePaths: ["/fake/files"] } : null
+					}]
+				}
+			}));
+
+			const fakeSkillsRoot = path.join("/fake/files", "skills");
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === fakeSkillsRoot ? [path.join(fakeSkillsRoot, "angular.md")] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("# skill content");
+
+			configureSkills(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith("Using bundled Ignite UI skills");
+		});
+
+		it("suppresses per-file and source messages when verbose is false", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
+				if (p === "node_modules/igniteui-angular/package.json") {
+					return JSON.stringify({ version: "18.2.0" });
+				}
+				return "skill content";
+			});
+
+			configureSkills(["claude"], "angular", false);
+
+			const logCalls = (Util.log as jasmine.Spy).calls.allArgs().map(a => a[0] as string);
+			expect(logCalls.some(m => m.includes("Created"))).toBe(false);
+			expect(logCalls.some(m => m.includes("Using skills from"))).toBe(false);
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("AI skill file(s) created or updated"));
+		});
+	});
+
+	describe("configureInstructions", () => {
+		it("logs per-file Created messages for new instruction files", () => {
+			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
+
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("# Instructions content");
+
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {
+					projectLibraries: [{
+						getProject: (id: string) => id === "ai-config" ? { templatePaths: ["/fake/files"] } : null
+					}]
+				}
+			}));
+
+			configureInstructions(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith("  Created .claude/CLAUDE.md");
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("1 instruction file(s) created or updated"));
+		});
+
+		it("logs per-file Updated messages for changed instruction files", () => {
+			const destFile = ".claude/CLAUDE.md";
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === destFile
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("old instructions"),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists"),
+				glob: jasmine.createSpy("glob").and.returnValue([])
+			};
+			App.container.set(FS_TOKEN, mockFs);
+
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("new instructions");
+
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {
+					projectLibraries: [{
+						getProject: (id: string) => id === "ai-config" ? { templatePaths: ["/fake/files"] } : null
+					}]
+				}
+			}));
+
+			configureInstructions(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith("  Updated .claude/CLAUDE.md");
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("1 instruction file(s) created or updated"));
+		});
+
+		it("logs up-to-date when all instruction files are current", () => {
+			const content = "# Instructions";
+			const destFile = ".claude/CLAUDE.md";
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === destFile
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue(content),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists"),
+				glob: jasmine.createSpy("glob").and.returnValue([])
+			};
+			App.container.set(FS_TOKEN, mockFs);
+
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content);
+
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {
+					projectLibraries: [{
+						getProject: (id: string) => id === "ai-config" ? { templatePaths: ["/fake/files"] } : null
+					}]
+				}
+			}));
+
+			configureInstructions(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("instruction file(s) already up-to-date"));
+		});
+
+		it("does not log when source content is not found", () => {
+			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
+
+			spyOn(FsFileSystem.prototype, "readFile").and.throwError("ENOENT");
+
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {
+					projectLibraries: [{
+						getProject: (id: string) => id === "ai-config" ? { templatePaths: ["/fake/files"] } : null
+					}]
+				}
+			}));
+
+			configureInstructions(["claude"], "angular");
+
+			expect(Util.log).not.toHaveBeenCalled();
+		});
+
+		it("suppresses per-file messages but keeps summary when verbose is false", () => {
+			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
+
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("# Instructions content");
+
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {
+					projectLibraries: [{
+						getProject: (id: string) => id === "ai-config" ? { templatePaths: ["/fake/files"] } : null
+					}]
+				}
+			}));
+
+			configureInstructions(["claude"], "angular", false);
+
+			const logCalls = (Util.log as jasmine.Spy).calls.allArgs().map(a => a[0] as string);
+			expect(logCalls.some(m => m.includes("Created"))).toBe(false);
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("instruction file(s) created or updated"));
 		});
 	});
 

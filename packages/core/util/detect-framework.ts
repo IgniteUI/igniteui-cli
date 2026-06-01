@@ -1,18 +1,19 @@
 import { App } from "./App";
 import { IFileSystem, FS_TOKEN } from "../types/FileSystem";
 import { ProjectConfig } from "./ProjectConfig";
+import { Util } from "./Util";
 
 type Framework = "angular" | "react" | "webcomponents" | "blazor" | "jquery";
 
 /**
  * Attempt to detect project framework by first checking for local cli-config,
- * then falling back to package.json analysis of `detectFrameworkFromPackageJson()`.
+ * then falling back to .csproj / package.json analysis.
+ * Logs the detection source when a framework is found.
  * @returns The detected framework Id or `null` if no framework could be detected.
  */
 export function detectFramework():  Framework | null {
 	let framework: Framework | null = null;
 	try {
-		// try project config first:
 		if (ProjectConfig.hasLocalConfig()) {
 			framework = ProjectConfig.getConfig().project?.framework?.toLowerCase() as Framework ?? null;
 		}
@@ -54,13 +55,16 @@ export function detectFrameworkFromPackageJson(): Exclude<Framework, "jquery"> |
 	]);
 
 	if (deps.has("@angular/core")) {
+		Util.log("Detected Angular project (from package.json)");
 		return "angular";
 	}
 	if (deps.has("react")) {
+		Util.log("Detected React project (from package.json)");
 		return "react";
 	}
 
 	// for now assume webcomponents as default fallback
+	Util.log("Assuming Web Components (no Angular/React deps found in package.json)");
 	return "webcomponents";
 }
 
@@ -135,6 +139,10 @@ export function detectBlazorFromCsproj(): boolean {
 		}
 	}
 
-	return csprojFiles.some(csproj => isBlazorProject(fs, csproj));
+	const detected = csprojFiles.some(csproj => isBlazorProject(fs, csproj));
+	if (detected) {
+		Util.log("Detected Blazor project (from .csproj)");
+	}
+	return detected;
 }
 //#endregion Blazor detection
