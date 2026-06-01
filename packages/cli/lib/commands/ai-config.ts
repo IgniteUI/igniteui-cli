@@ -16,6 +16,7 @@ import {
 	App,
 	type BaseTemplateManager,
 	TEMPLATE_MANAGER,
+	type AISkillsCopyResult,
 } from "@igniteui/cli-core";
 import { ArgumentsCamelCase, CommandModule } from "yargs";
 
@@ -25,32 +26,77 @@ export function configureMCP(assistants: AiCodingAssistant[]): void {
 		const modified = addMcpServers(assistant);
 
 		if (!modified) {
-			Util.log(` Ignite UI MCP servers already configured in ${mcpFilePath}`);
+			Util.log(Util.greenCheck() + ` Ignite UI MCP servers already configured in ${mcpFilePath}`);
 		} else {
 			Util.log(Util.greenCheck() + ` MCP servers configured in ${mcpFilePath}`);
 		}
 	}
 }
 
-export function configureSkills(agents: AIAgentTarget[], framework: string): void {
+function logFileActions(result: AISkillsCopyResult): void {
+	for (const detail of result.details) {
+		if (detail.action === "created") {
+			Util.log(`  Created ${detail.path}`);
+		} else if (detail.action === "updated") {
+			Util.log(`  Updated ${detail.path}`);
+		}
+	}
+}
+
+function logResultSummary(result: AISkillsCopyResult, label: string): void {
+	if (result.failed > 0) {
+		Util.warn(`Failed to write ${result.failed} ${label} file(s) out of ${result.found}.`, "yellow");
+	} else if (result.found > 0 && result.skipped === result.found) {
+		Util.log(Util.greenCheck() + ` ${label} file(s) already up-to-date.`);
+	} else if (result.found > 0) {
+		const written = result.found - result.skipped;
+		Util.log(Util.greenCheck() + ` ${written} ${label} file(s) created or updated.`);
+	}
+}
+
+export function configureSkills(agents: AIAgentTarget[], framework: string, verbose = true): void {
 	const result = copyAISkillsToProject(agents, framework);
 	if (result.found === 0) {
 		Util.warn("No AI skill files found. Make sure packages are installed (npm install) " +
 			"and your Ignite UI packages are up-to-date.", "yellow");
-	} else if (result.failed > 0) {
-		Util.warn(`Failed to write ${result.failed} skill file(s) out of ${result.found}.`, "yellow");
-	} else if (result.skipped === result.found) {
-		Util.log("Everything is already up-to-date.");
-	} else {
-		const written = result.found - result.skipped;
-		Util.log(Util.greenCheck() + ` ${written} AI skill file(s) created or updated.`);
+		return;
 	}
+
+	if (verbose) {
+		for (const source of result.sources) {
+			if (source.type === "package") {
+				Util.log(`Using skills from ${source.packageName}@${source.packageVersion}`);
+			} else {
+				Util.log("Using bundled Ignite UI skills");
+			}
+		}
+		logFileActions(result);
+	}
+
+	logResultSummary(result, "AI skill");
+}
+
+export function configureInstructions(agents: AIAgentTarget[], framework: string, verbose = true): void {
+	const result = copyAgentInstructionFiles(agents, framework);
+	if (verbose) {
+		logFileActions(result);
+	}
+	logResultSummary(result, "instruction");
 }
 
 type AIAgentOption = AIAgentTarget | "none";
 type AIAssistantOption = AiCodingAssistant | "none";
 
-export async function configure(framework: string, agents: AIAgentOption[] = [], assistants: AIAssistantOption[] = [], skills = true): Promise<{ agents: AIAgentTarget[], assistants: AiCodingAssistant[] }> {
+interface ConfigureOptions {
+	agents?: AIAgentOption[];
+	assistants?: AIAssistantOption[];
+	skills?: boolean;
+	verbose?: boolean;
+}
+
+export async function configure(framework: string, options: ConfigureOptions = {}): Promise<{ agents: AIAgentTarget[], assistants: AiCodingAssistant[] }> {
+	const { skills = true, verbose = true } = options;
+	let { agents = [], assistants = [] } = options;
 	if (framework === "jquery") {
 		// currently not supported
 		return { agents: [], assistants: [] };
@@ -76,9 +122,9 @@ export async function configure(framework: string, agents: AIAgentOption[] = [],
 		Util.log("No AI configuration selected. Skipping.");
 	} else {
 		if (skills) {
-			configureSkills(resolvedAgents, framework);
+			configureSkills(resolvedAgents, framework, verbose);
 		}
-		copyAgentInstructionFiles(resolvedAgents, framework);
+		configureInstructions(resolvedAgents, framework, verbose);
 	}
 
 	return { agents: resolvedAgents, assistants: resolvedAssistants };
@@ -194,7 +240,7 @@ const command: CommandModule = {
 			Util.log("AI Config currently not available for jQuery projects.");
 		}
 
-		const result = await configure(framework, agents, assistants);
+		const result = await configure(framework, { agents, assistants });
 
 		GoogleAnalytics.post({
 			t: "event",
