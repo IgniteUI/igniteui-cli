@@ -1,4 +1,4 @@
-import { App, IFileSystem, ProjectConfig } from "@igniteui/cli-core";
+import { App, IFileSystem, ProjectConfig, Util } from "@igniteui/cli-core";
 import {
 	detectBlazorFromCsproj,
 	detectFramework,
@@ -19,9 +19,13 @@ function makeFs(pkgJson?: object): jasmine.SpyObj<IFileSystem> {
 }
 
 describe("Unit - detectFrameworkFromPackageJson", () => {
+	beforeEach(() => {
+		spyOn(Util, "log");
+	});
 	it("returns null when package.json is absent", () => {
 		spyOn(App.container, "get").and.returnValue(makeFs());
 		expect(detectFrameworkFromPackageJson()).toBeNull();
+		expect(Util.log).not.toHaveBeenCalled();
 	});
 
 	it("returns null when package.json is malformed JSON", () => {
@@ -38,6 +42,7 @@ describe("Unit - detectFrameworkFromPackageJson", () => {
 				makeFs({ dependencies: { "@angular/core": "^17.0.0" } })
 			);
 			expect(detectFrameworkFromPackageJson()).toBe("angular");
+			expect(Util.log).toHaveBeenCalledWith("Detected Angular project (from package.json)");
 		});
 
 		it("detects angular when @angular/core is in devDependencies", () => {
@@ -54,6 +59,7 @@ describe("Unit - detectFrameworkFromPackageJson", () => {
 				makeFs({ dependencies: { "react": "^19.0.0", "react-dom": "^19.0.0" } })
 			);
 			expect(detectFrameworkFromPackageJson()).toBe("react");
+			expect(Util.log).toHaveBeenCalledWith("Detected React project (from package.json)");
 		});
 
 		it("detects react when react is in devDependencies", () => {
@@ -68,6 +74,7 @@ describe("Unit - detectFrameworkFromPackageJson", () => {
 		it("returns webcomponents for an empty package.json (no known framework)", () => {
 			spyOn(App.container, "get").and.returnValue(makeFs({}));
 			expect(detectFrameworkFromPackageJson()).toBe("webcomponents");
+			expect(Util.log).toHaveBeenCalledWith("Assuming Web Components (no Angular/React deps found in package.json)");
 		});
 
 		it("returns webcomponents when only unrelated packages are present", () => {
@@ -103,6 +110,10 @@ describe("Unit - detectFrameworkFromPackageJson", () => {
 });
 
 describe("Unit - detectFramework", () => {
+	beforeEach(() => {
+		spyOn(Util, "log");
+	});
+
 	it("returns framework from ProjectConfig when local config is present", () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
 		spyOn(ProjectConfig, "getConfig").and.returnValue({
@@ -168,9 +179,21 @@ describe("Unit - detectFramework", () => {
 		spyOn(App.container, "get").and.returnValue(fs);
 		expect(detectFramework()).toBe("blazor");
 	});
+
+	it("does not log when detection fails", () => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+		spyOn(App.container, "get").and.returnValue(makeFs());
+
+		detectFramework();
+
+		expect(Util.log).not.toHaveBeenCalled();
+	});
 });
 
 describe("Unit - detectBlazorFromCsproj", () => {
+	beforeEach(() => {
+		spyOn(Util, "log");
+	});
 	const makeCsProj = (sdk: string, ...refs: string[]) =>
 		`<Project Sdk="${sdk}">
 			<PropertyGroup>
@@ -208,6 +231,7 @@ describe("Unit - detectBlazorFromCsproj", () => {
 		);
 		spyOn(App.container, "get").and.returnValue(fs);
 		expect(detectBlazorFromCsproj()).toBe(true);
+		expect(Util.log).toHaveBeenCalledWith("Detected Blazor project (from .csproj)");
 	});
 
 	it("returns true for a Web SDK project in CWD", () => {
@@ -259,6 +283,7 @@ describe("Unit - detectBlazorFromCsproj", () => {
 		);
 		spyOn(App.container, "get").and.returnValue(fs);
 		expect(detectBlazorFromCsproj()).toBe(false);
+		expect(Util.log).not.toHaveBeenCalled();
 	});
 
 	it("returns false when no .csproj or solution files exist", () => {
