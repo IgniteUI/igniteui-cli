@@ -13,7 +13,7 @@ _premium: true
 
 # React Tree Grid Advanced Filtering
 
-The Ignite UI for React Advanced Filtering in React Tree Grid allows you to manipulate data by providing you with a dialog where you can create different groups with filtering conditions across all columns in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html).
+The Ignite UI for React Advanced Filtering in React Tree Grid allows you to manipulate data by providing you with a dialog where you can create different groups with filtering conditions across all columns in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid).
 
 ## React Tree Grid Advanced Filtering Example
 
@@ -167,7 +167,7 @@ root.render(<Sample/>);
 
 In order to open the advanced filtering dialog, the **Advanced Filtering** button in the grid toolbar should be clicked. If no advanced filter is applied, you should start with creating a group of filtering conditions linked with **AND** or **OR**. After that, you can add filtering conditions or sub-groups.
 
-In order to add a filtering condition, you have to select any of the [`filterable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#filterable) columns, an operand based on the column [`dataType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#dataType) and a value if the operand is not unary. Once the condition is committed, a chip with the condition information appears. By hovering or clicking the chip, you have the options to modify it or add another condition or group right after it.
+In order to add a filtering condition, you have to select any of the [`filterable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=filterable) columns, an operand based on the column [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) and a value if the operand is not unary. Once the condition is committed, a chip with the condition information appears. By hovering or clicking the chip, you have the options to modify it or add another condition or group right after it.
 
 If you select more than one filtering condition chip, a context menu appears with options to create a group or delete the filters. If you choose to create a group with the selected conditions, the newly created group will appear where the topmost selected condition was placed.
 
@@ -177,7 +177,7 @@ In order to filter the data once you are ready with creating the filtering condi
 
 ## Usage
 
-To enable the advanced filtering, the [`allowAdvancedFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#allowAdvancedFiltering) input property should be set to **true**.
+To enable the advanced filtering, the [`allowAdvancedFiltering`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=allowAdvancedFiltering) input property should be set to **true**.
 
 <!-- ComponentEnd: TreeGrid -->
 
@@ -191,7 +191,7 @@ To enable the advanced filtering, the [`allowAdvancedFiltering`](https://www.inf
 
 <!-- ComponentEnd: TreeGrid -->
 
-The advanced filtering generates a [`filteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#filteringExpressionsTree) which is stored in the [`advancedFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#advancedFilteringExpressionsTree) input property. You could use the [`advancedFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#advancedFilteringExpressionsTree) property to set an initial state of the advanced filtering.
+The advanced filtering generates a [`filteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=filteringExpressionsTree) which is stored in the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=advancedFilteringExpressionsTree) input property. You could use the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=advancedFilteringExpressionsTree) property to set an initial state of the advanced filtering.
 
 <!-- ComponentStart: Grid, HierarchicalGrid, TreeGrid -->
 
@@ -227,10 +227,10 @@ const filteringTree: IgrFilteringExpressionsTree = {
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
 
-In case you don't want to show the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) toolbar, you could use the [`openAdvancedFilteringDialog`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#openAdvancedFilteringDialog) and [`closeAdvancedFilteringDialog`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#closeAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
+In case you don't want to show the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) toolbar, you could use the [`openAdvancedFilteringDialog`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=openAdvancedFilteringDialog) and [`closeAdvancedFilteringDialog`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=closeAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
 
 > [!Note]
-> You can enable both the **QuickFilter**/**ExcelStyleFilter** and the advanced filtering user interfaces in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) is the intersection between the results of the two filters.
+> You can enable both the **QuickFilter**/**ExcelStyleFilter** and the advanced filtering user interfaces in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) is the intersection between the results of the two filters.
 
 ## Styling
 
@@ -413,8 +413,8 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
-- [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
 
 ## Additional Resources
 

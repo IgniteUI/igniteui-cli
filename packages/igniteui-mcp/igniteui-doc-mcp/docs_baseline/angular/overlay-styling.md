@@ -71,7 +71,7 @@ For example, let's take the `igx-combo` - its item [styles](combo.md#styling) us
 }
 ```
 
-The items in our combo's list **are not** descendants of our component `host` - they are currently being displayed in the default overlay outlet, at the end of the document's body. You can change this by using the [`outlet`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#outlet) property in the `overlaySettings`. The `outlet` controls where the overlay container should be rendered.
+The items in our combo's list **are not** descendants of our component `host` - they are currently being displayed in the default overlay outlet, at the end of the document's body. You can change this by using the [`outlet`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=outlet) property in the `overlaySettings`. The `outlet` controls where the overlay container should be rendered.
 
 Here, we can pass a reference to the element where we'd like our container to be:
 

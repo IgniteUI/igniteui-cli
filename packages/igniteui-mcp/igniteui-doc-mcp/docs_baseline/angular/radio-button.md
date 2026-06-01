@@ -563,9 +563,9 @@ import { IgxRadioModule } from 'igniteui-angular/radio';
 })
 ```
 
-To get started, create an [`igxRadioGroup`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxradiogroupdirective.html) and add several [`igxRadio`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxradiocomponent.html) components.
+To get started, create an [`igxRadioGroup`](mcp:get_api_reference?platform=angular&component=IgxRadioGroupDirective) and add several [`igxRadio`](mcp:get_api_reference?platform=angular&component=IgxRadioComponent) components.
 
-Note that, setting a [`name`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxradiogroupdirective.html#name) property for the radio group is **mandatory**.
+Note that, setting a [`name`](mcp:get_api_reference?platform=angular&component=IgxRadioGroupDirective&member=name) property for the radio group is **mandatory**.
 
 ```html
 <!--radio-group.component.html-->
@@ -583,7 +583,7 @@ public fruits = ["Apple", "Mango", "Banana", "Orange"];
 
 ### Alignment
 
-Use the [`alignment`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxradiogroupdirective.html#alignment) input property to change the orientation of the `igxRadio` components in the radio group. Users can choose between `horizontal` and `vertical`. By default the radio group alignment is horizontal.
+Use the [`alignment`](mcp:get_api_reference?platform=angular&component=IgxRadioGroupDirective&member=alignment) input property to change the orientation of the `igxRadio` components in the radio group. Users can choose between `horizontal` and `vertical`. By default the radio group alignment is horizontal.
 
 ```typescript
 //sample.component.ts
@@ -641,8 +641,8 @@ igx-radio {
 
 <div class="divider--half"></div>
 
-- [IgxRadioGroupDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxradiogroupdirective.html)
-- [IgxRadioComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxradiocomponent.html)
+- [IgxRadioGroupDirective](mcp:get_api_reference?platform=angular&component=IgxRadioGroupDirective)
+- [IgxRadioComponent](mcp:get_api_reference?platform=angular&component=IgxRadioComponent)
 - [IgxRadioComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-radio-theme)
 
 ## Theming Dependencies

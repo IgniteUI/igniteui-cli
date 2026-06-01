@@ -9,11 +9,11 @@ _premium: true
 # Angular Hierarchical Grid Column Types
 Ignite UI for Angular Hierarchical Grid provides a default handling of _number_, _string_, _date_, _boolean_, _currency_ and _percent_ column data types, based on which the appearance of the default and editing templates will be present.
 ## Default template
-If you want to enable a data type-specific template, you should set the column [`dataType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#dataType) input otherwise the column will be treated as a string column since that is the default value for column dataType. Let's see what are the default templates for each type.
+If you want to enable a data type-specific template, you should set the column [`dataType`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=dataType) input otherwise the column will be treated as a string column since that is the default value for column dataType. Let's see what are the default templates for each type.
 ### String
-This column [`dataType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#dataType) is not changing the appearance or format of the cell value.
+This column [`dataType`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=dataType) is not changing the appearance or format of the cell value.
 ### Number
-If the [`dataType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#dataType) is set to _number_, the cell value will be formatted based on application or grid's [`locale`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#locale) settings, as well as when [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#pipeArgs) property is specified. Then the number format will be changed based on them, for example it might change the:
+If the [`dataType`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=dataType) is set to _number_, the cell value will be formatted based on application or grid's [`locale`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=locale) settings, as well as when [`pipeArgs`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=pipeArgs) property is specified. Then the number format will be changed based on them, for example it might change the:
 - Number of digits after the decimal point
 - Decimal separator with `,` or `.`
 ```ts
@@ -27,7 +27,7 @@ public formatOptions = this.options;
 </igx-column>
 ```
 ### DateTime, Date and Time
-The appearance of the date portions will be set (e.g. day, month, year) based on [`locale`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#locale) format or [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#pipeArgs) input. The pipe arguments can be used to specify a custom [date format](https://angular.io/api/common/DatePipe#pre-defined-format-options) or [timezone](https://angular.io/api/common/DatePipe#parameters):
+The appearance of the date portions will be set (e.g. day, month, year) based on [`locale`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=locale) format or [`pipeArgs`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=pipeArgs) input. The pipe arguments can be used to specify a custom [date format](https://angular.io/api/common/DatePipe#pre-defined-format-options) or [timezone](https://angular.io/api/common/DatePipe#parameters):
 - **format** - The default value for formatting the date is 'mediumDate'. Other available options are 'short', 'long', 'shortDate', 'fullDate', 'longTime', 'fullTime' and etc. This is a full list of all available [pre-defined Angular format options](https://angular.io/api/common/DatePipe#pre-defined-format-options) (legacy).
 - **timezone** - The user's local system timezone is the default value. The timezone offset or standard GMT/UTC or continental US timezone abbreviation can also be passed. Different timezone examples which will display the corresponding time of the location anywhere in the world:
 
@@ -73,9 +73,9 @@ public timeFormats = [
 ```
 #### Cell editing
 When it comes to cell editing based on the column type a different editor will appear:
-- dateTime - [IgxDateTimeEditor directive](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatetimeeditordirective.html) will be used. This editor will give you a mask directions for the input elements part of the DateTime object.
-- date - [IgxDatePicker component](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatepickercomponent.html) will be used.
-- time - [IgxTimePicker component](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtimepickercomponent.html) will be used.
+- dateTime - [IgxDateTimeEditor directive](mcp:get_api_reference?platform=angular&component=IgxDateTimeEditorDirective) will be used. This editor will give you a mask directions for the input elements part of the DateTime object.
+- date - [IgxDatePicker component](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) will be used.
+- time - [IgxTimePicker component](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent) will be used.
 #### Filtering
 The same editors listed above will be used when it comes to Quick Filtering/Excel-style Filtering. These are the following filtering operands that each type exposes:
 - dateTime and date - Equals, Does Not Equal, Before, After, Today, Yesterday, This Month, Last Month, Next Month, This Year, Last Year, Next Year, Empty, Not Empty, Null, Not Null;
@@ -87,14 +87,14 @@ Time type column sorts based on the time portion of the object, ms will be disre
 Date type column sorts based on the date portion, disregards the time portion.
 DateTime column sorts based on the full date
 ### Boolean
-The default template is using material icons for visualization of boolean values - 'clear' icon for _false_ values and 'check' icon for _true_ values. As for the editing template, it is using [igx-checkbox](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcheckboxcomponent.html) component.
+The default template is using material icons for visualization of boolean values - 'clear' icon for _false_ values and 'check' icon for _true_ values. As for the editing template, it is using [igx-checkbox](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent) component.
 ```html
 <igx-column [dataType]="'boolean'">
 </igx-column>
 ```
 ### Currency
 #### Default template
-The default template will show a numeric value with currency symbol that would be either prefixed or suffixed. Both currency symbol location and number value formatting is based on the provided Application [`LOCALE_ID`](https://angular.io/api/core/LOCALE_ID) or Hierarchical Grid [`locale`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#locale).
+The default template will show a numeric value with currency symbol that would be either prefixed or suffixed. Both currency symbol location and number value formatting is based on the provided Application [`LOCALE_ID`](https://angular.io/api/core/LOCALE_ID) or Hierarchical Grid [`locale`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=locale).
 _By using LOCALE_ID_
 ```ts
 import { LOCALE_ID } from '@angular/core';
@@ -111,7 +111,7 @@ _By using Grid's locale_
 <igx-grid [locale]="'fr-FR'" [data]="data">
 </igx-grid>
 ```
-By using the [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#pipeArgs) input the end-user can customize the number format by _decimal point_, _currencyCode_ and _display_.
+By using the [`pipeArgs`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=pipeArgs) input the end-user can customize the number format by _decimal point_, _currencyCode_ and _display_.
 ```ts
 public options = {
   digitsInfo: '3.4-4',
@@ -165,7 +165,7 @@ Default template is using the value coming from the data as an image source to a
 <igx-column [dataType]="'image'">
 </igx-column>
 ```
-When [auto-generating](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#autoGenerate) columns, the grid analyses the values in the first data record. If a value is of type string and matches the pattern of a url ending in an image extension (gif, jpg, jpeg, tiff, png, webp, bmp) then the column will automatically be marked as `dataType === GridColumnDataType.Image` and a default image template will be rendered.
+When [auto-generating](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=autoGenerate) columns, the grid analyses the values in the first data record. If a value is of type string and matches the pattern of a url ending in an image extension (gif, jpg, jpeg, tiff, png, webp, bmp) then the column will automatically be marked as `dataType === GridColumnDataType.Image` and a default image template will be rendered.
 ## Default editing template
 See the editing templates part of [Hierarchical Grid Editing topic](editing.md#editing-templates)
 ## Custom editing template and formatter
@@ -196,10 +196,10 @@ public init(column: IgxColumnComponent) {
 }
 ```
 ## API References
-- [IgxGridCell](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
-- Column [pipeArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#pipeArgs)
-- Hierarchical Grid [locale](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#locale)
-- Column [dataType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#dataType)
+- [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell)
+- Column [pipeArgs](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=pipeArgs)
+- Hierarchical Grid [locale](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=locale)
+- Column [dataType](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=dataType)
 ## Additional Resources
 <div class="divider--half"></div>
 - For custom templates you can see [cell editing topic](cell-editing.md#cell-editing-templates)

@@ -11,11 +11,11 @@ _premium: true
 
 # Blazor Linear Gauge Overview
 
-The Ignite UI for Blazor linear gauge component allows for visualizing data in the form of a linear gauge. The [`IgbLinearGauge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html) provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html#IgniteUI_Blazor_Controls_IgbLinearGauge_TransitionDuration) property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
+The Ignite UI for Blazor linear gauge component allows for visualizing data in the form of a linear gauge. The [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge) provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=TransitionDuration) property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Blazor Linear Gauge Example
 
-The following sample demonstrates how setting multiple properties on the same [`IgbLinearGauge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html) can transform it to completely different linear gauge.
+The following sample demonstrates how setting multiple properties on the same [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge) can transform it to completely different linear gauge.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -376,7 +376,7 @@ The following sample demonstrates how setting multiple properties on the same [`
 
 ## Component Modules
 
-The [`IgbLinearGauge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html) requires the following modules:
+The [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge) requires the following modules:
 
 ```razor
 // in Program.cs file
@@ -470,7 +470,7 @@ This is the primary measure displayed by the linear gauge component and is visua
 
 ## Highlight Needle
 
-The linear gauge can be modified to show a second needle. This will make the main needle's [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html#IgniteUI_Blazor_Controls_IgbLinearGauge_Value) appear with a lower opacity. To enable this first set [`HighlightValueDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html#IgniteUI_Blazor_Controls_IgbLinearGauge_HighlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html#IgniteUI_Blazor_Controls_IgbLinearGauge_HighlightValue).
+The linear gauge can be modified to show a second needle. This will make the main needle's [`Value`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=Value) appear with a lower opacity. To enable this first set [`HighlightValueDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=HighlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=HighlightValue).
 
 ```razor
 <IgbLinearGauge Height="80px" Width="100%"
@@ -723,7 +723,7 @@ The backing element represents background and border of the linear gauge compone
 
 ## Scale
 
-The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using [`IsScaleInverted`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html#IgniteUI_Blazor_Controls_IgbLinearGauge_IsScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using [`IsScaleInverted`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=IsScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```razor
 <IgbLinearGauge Height="80px" Width="100%"
@@ -852,8 +852,8 @@ For your convenience, all above code snippets are combined into one code block b
 
 The following is a list of API members mentioned in the above sections:
 
-- [`IgbLinearGauge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGauge.html)
-- [`IgbLinearGraphRange`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGraphRange.html)
+- [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge)
+- [`IgbLinearGraphRange`](mcp:get_api_reference?platform=blazor&component=IgbLinearGraphRange)
 
 ## Additional Resources
 

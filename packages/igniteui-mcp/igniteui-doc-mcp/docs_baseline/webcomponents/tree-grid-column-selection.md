@@ -13,11 +13,11 @@ _premium: true
 
 # Web Components Tree Grid Column Selection Overview
 
-The Web Components Tree Grid Column Selection feature in Ignite UI for Web Components offers a simplified and Excel-like way to select and highlight an entire column with a single click. It can be enabled through the [`columnSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#columnSelection) input. Thanks to the rich API, the feature allows for easy manipulation of the selection state, data extraction from the selected fractions, data analysis operations, and visualizations.
+The Web Components Tree Grid Column Selection feature in Ignite UI for Web Components offers a simplified and Excel-like way to select and highlight an entire column with a single click. It can be enabled through the [`columnSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=columnSelection) input. Thanks to the rich API, the feature allows for easy manipulation of the selection state, data extraction from the selected fractions, data analysis operations, and visualizations.
 
 ## Web Components Tree Grid Column Selection Example
 
-The sample below demonstrates the three types of [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)'s **column selection** behavior. Use the column selection dropdown below to enable each of the available selection modes.
+The sample below demonstrates the three types of [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)'s **column selection** behavior. Use the column selection dropdown below to enable each of the available selection modes.
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -62,14 +62,14 @@ export class FoodsData extends Array<FoodsDataItem> {
 
 ## Basic Usage
 
-The column selection feature can be enabled through the [`columnSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#columnSelection) input, which takes `GridSelectionMode` values.
+The column selection feature can be enabled through the [`columnSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=columnSelection) input, which takes `GridSelectionMode` values.
 
 ## Interactions
 
-The default selection mode is `None`. If set to `Single` or `Multiple`, all of the presented columns will be [`selectable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selectable). With that being said, in order to select a column, we just need to click on one, which will mark it as [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selected). If the column is not selectable, no selection style will be applied on the header, while hovering.
+The default selection mode is `None`. If set to `Single` or `Multiple`, all of the presented columns will be [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable). With that being said, in order to select a column, we just need to click on one, which will mark it as [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected). If the column is not selectable, no selection style will be applied on the header, while hovering.
 
 > [!Note]
-> The [Multi Column Headers](multi-column-headers.md) feature does not reflect on the [`selectable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selectable) input. The `ColumnGroupComponent` is [`selectable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selected) if all of its [`selectable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selectable) descendants are [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selected).
+> The [Multi Column Headers](multi-column-headers.md) feature does not reflect on the [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable) input. The `ColumnGroupComponent` is [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected) if all of its [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable) descendants are [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected).
 
 <!-- ComponentStart: TreeGrid -->
 
@@ -123,7 +123,7 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 ## Keyboard Combinations
 
 > [!Note]
-> The keyboard combinations are available only when the grid [`columnSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#columnSelection) input is set to `multiple`.
+> The keyboard combinations are available only when the grid [`columnSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=columnSelection) input is set to `multiple`.
 
 There are two scenarios for keyboard navigation of the **Column Selection** feature:
 
@@ -132,10 +132,10 @@ There are two scenarios for keyboard navigation of the **Column Selection** feat
 
 ## API Manipulations
 
-The **API** provides some additional capabilities when it comes to the **non-visible** columns such that, every **hidden** column could be marked as [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selected) by setting the corresponding **setter**.
+The **API** provides some additional capabilities when it comes to the **non-visible** columns such that, every **hidden** column could be marked as [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected) by setting the corresponding **setter**.
 
 > [!Note]
-> The above statement also applies to the `ColumnGroupComponent`, except that when the [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selected) property is changed it changes the state of its descendants.
+> The above statement also applies to the `ColumnGroupComponent`, except that when the [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected) property is changed it changes the state of its descendants.
 
 More information regarding the API manipulations could be found in the [API References](#api-references) section.
 
@@ -221,30 +221,30 @@ export class EmployeesFlatDetails extends Array<EmployeesFlatDetailsItem> {
 
 The column selection UI has a few more APIs to explore, which are listed below.
 
-- [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)
-- [`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html)
-- [`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup)
+- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
+- [`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent)
+- [`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup)
 
-[`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) properties:
+[`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) properties:
 
-- [`columnSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#columnSelection)
-- [`selectedColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#selectedColumns)
-- [`selectColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#selectColumns)
-- [`deselectColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#deselectColumns)
-- [`selectAllColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#selectAllColumns)
-- [`deselectAllColumns`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#deselectAllColumns)
+- [`columnSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=columnSelection)
+- [`selectedColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=selectedColumns)
+- [`selectColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=selectColumns)
+- [`deselectColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=deselectColumns)
+- [`selectAllColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=selectAllColumns)
+- [`deselectAllColumns`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=deselectAllColumns)
 
-[`IgcColumnComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html) properties:
+[`IgcColumnComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent) properties:
 
-- [`selectable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selectable)
-- [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selected)
+- [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable)
+- [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected)
 
-[`columnGroup`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#columnGroup) properties:
+[`columnGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=columnGroup) properties:
 
-- [`selectable`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selectable)
-- [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selected)
+- [`selectable`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selectable)
+- [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected)
 
-[`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html) events:
+[`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent) events:
 
 - `OnColumnsSelectionChange`
 

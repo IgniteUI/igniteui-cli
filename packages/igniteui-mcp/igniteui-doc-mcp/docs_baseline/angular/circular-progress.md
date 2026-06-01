@@ -105,20 +105,20 @@ To have a better understanding how everything works, let's create a simple examp
 After that, we should have the demo sample in your browser.
 
 > [!NOTE]
-> The **igx-circular-bar** emits [`onProgressChanged`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcircularprogressbarcomponent.html#onProgressChanged) event that outputs an object like this `{currentValue: 65, previousValue: 64}` on each step.
+> The **igx-circular-bar** emits [`onProgressChanged`](mcp:get_api_reference?platform=angular&component=IgxCircularProgressBarComponent&member=onProgressChanged) event that outputs an object like this `{currentValue: 65, previousValue: 64}` on each step.
 > [!NOTE]
-> The default progress increments by **1% of the [`max`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcircularprogressbarcomponent.html#max) value** per update cycle, this happens if the [`step`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcircularprogressbarcomponent.html#step) value is not defined. To change the update rate, the [`step`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcircularprogressbarcomponent.html#step) value should be defined.```
+> The default progress increments by **1% of the [`max`](mcp:get_api_reference?platform=angular&component=IgxCircularProgressBarComponent&member=max) value** per update cycle, this happens if the [`step`](mcp:get_api_reference?platform=angular&component=IgxCircularProgressBarComponent&member=step) value is not defined. To change the update rate, the [`step`](mcp:get_api_reference?platform=angular&component=IgxCircularProgressBarComponent&member=step) value should be defined.```
 
 ### Indeterminate Progress
 
-If you want to track a process that is not determined precisely, you can set the [`indeterminate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcircularprogressbarcomponent.html#indeterminate) input property to `true`.
+If you want to track a process that is not determined precisely, you can set the [`indeterminate`](mcp:get_api_reference?platform=angular&component=IgxCircularProgressBarComponent&member=indeterminate) input property to `true`.
 
 ```html
 <igx-circular-bar [animate]="false" [indeterminate]="true" [textVisibility]="false"></igx-circular-bar>
 ```
 
 > [!NOTE]
-> You can hide the text of the circular progress bar by setting the [`textVisibility`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcircularprogressbarcomponent.html#textVisibility) property to `false`.
+> You can hide the text of the circular progress bar by setting the [`textVisibility`](mcp:get_api_reference?platform=angular&component=IgxCircularProgressBarComponent&member=textVisibility) property to `false`.
 
 The final result should be:
 
@@ -221,7 +221,7 @@ Add some styles:
 ### Gradient Progress
 
 One way to customize the progress bar is by using a color gradient instead of a solid color.
-This can be done in one of two ways - by using the [`IgxProgressBarGradientDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcircularprogressbarcomponent.html#gradienttemplate) directive or by implementing a custom theme, which supports up to two color stops.
+This can be done in one of two ways - by using the [`IgxProgressBarGradientDirective`](mcp:get_api_reference?platform=angular&component=IgxCircularProgressBarComponent&member=gradienttemplate) directive or by implementing a custom theme, which supports up to two color stops.
 
 To create a gradient with just two color stops using a custom theme, you need to create a list of colors and pass it to the `$fill-color-default` theme parameter:
 
@@ -414,5 +414,5 @@ igx-circular-bar {
 
 <div class="divider--half"></div>
 
-- [IgxCircularProgressBarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcircularprogressbarcomponent.html)
+- [IgxCircularProgressBarComponent](mcp:get_api_reference?platform=angular&component=IgxCircularProgressBarComponent)
 - [IgxCircularProgressBarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-progress-circular-theme)

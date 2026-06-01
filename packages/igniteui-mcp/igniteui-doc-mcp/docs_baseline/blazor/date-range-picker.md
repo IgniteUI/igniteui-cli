@@ -13,7 +13,7 @@ The Ignite UI for Blazor Date Range Picker is a lightweight component that inclu
 
 ## Date Range Picker Example
 
-Below is a sample demonstrating the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) component in action, where a calendar pop-up allows users to select start and end dates.
+Below is a sample demonstrating the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component in action, where a calendar pop-up allows users to select start and end dates.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -39,7 +39,7 @@ Below is a sample demonstrating the [`IgbDateRangePicker`](https://www.infragist
 
 ### Getting Started
 
-To get started with the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) component, first we need to register its module as follows:
+To get started with the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component, first we need to register its module as follows:
 
 ```razor
 // in Program.cs file
@@ -47,31 +47,31 @@ To get started with the [`IgbDateRangePicker`](https://www.infragistics.com/blaz
 builder.Services.AddIgniteUIBlazor(typeof(IgbDateRangePickerModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) component. The following needs to be placed in the wwwroot/index.html file in a Blazor Web Assembly project or the Pages/\_Host.cshtml file in a Blazor Server project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component. The following needs to be placed in the wwwroot/index.html file in a Blazor Web Assembly project or the Pages/\_Host.cshtml file in a Blazor Server project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-Now you can start with a basic configuration of the Blazor [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html).
+Now you can start with a basic configuration of the Blazor [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker).
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
 ## Usage
 
-The [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) allows users to select a start and end date either by choosing a date range from a dropdown/calendar pop-up or by typing directly into the input fields - one for the start date and one for the end date. The picker offers two modes for displaying date values: single input and two inputs. Both provide editing and masking capabilities.
+The [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) allows users to select a start and end date either by choosing a date range from a dropdown/calendar pop-up or by typing directly into the input fields - one for the start date and one for the end date. The picker offers two modes for displaying date values: single input and two inputs. Both provide editing and masking capabilities.
 
 When the calendar is visible, a date range can be selected by choosing both a start and end date. Selecting a date will set both the start and end date, and once a second date is chosen, it will set the end date. If a range is already selected, clicking any other date on the calendar will start a new range selection.
 
 ### Display Date Range Picker
 
-To instantiate a [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) in its default single input mode, use the following code:
+To instantiate a [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) in its default single input mode, use the following code:
 
 ```razor
 <IgbDateRangePicker @ref="DateRangePicker"></IgbDateRangePicker>
 ```
 
-To switch the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) to use two inputs, set the [`UseTwoInputs`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_UseTwoInputs) property to `true`.
+To switch the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) to use two inputs, set the [`UseTwoInputs`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=UseTwoInputs) property to `true`.
 
 ```razor
 <IgbDateRangePicker UseTwoInputs="true"></IgbDateRangePicker>
@@ -79,7 +79,7 @@ To switch the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/ap
 
 ### Value
 
-In addition to being selected or typed by the user, the range value of the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) can also be set using the [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Value) property. It's important to note that the value must follow the format: **{ start: startDate, end: endDate }**, where `startDate` and `endDate` are `Date` objects representing the selected range.
+In addition to being selected or typed by the user, the range value of the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) can also be set using the [`Value`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Value) property. It's important to note that the value must follow the format: **{ start: startDate, end: endDate }**, where `startDate` and `endDate` are `Date` objects representing the selected range.
 
 ```razor
  <IgbDateRangePicker @ref="DateRangePicker" Value="@Range" Label="Date Range"/>
@@ -97,13 +97,13 @@ In addition to being selected or typed by the user, the range value of the [`Igb
 
 ### Read-only & Non-editable
 
-You can also make the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) read-only, which disables changing the range value through both typing and calendar selection, disables keyboard navigation, and makes the calendar and clear icons appear visually disabled. This is useful when the range is assigned via the value attribute and is intended to be display-only. To enable this behavior, simply set the [`ReadOnly`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_ReadOnly) property.
+You can also make the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) read-only, which disables changing the range value through both typing and calendar selection, disables keyboard navigation, and makes the calendar and clear icons appear visually disabled. This is useful when the range is assigned via the value attribute and is intended to be display-only. To enable this behavior, simply set the [`ReadOnly`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=ReadOnly) property.
 
 ```razor
  <IgbDateRangePicker UseTwoInputs="true" ReadOnly="true"/>
 ```
 
-Alternatively, you can use the [`NonEditable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_NonEditable) property, which, unlike [`ReadOnly`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_ReadOnly), only prevents editing the input(s) via typing, while still allowing selection through the calendar and clearing via the clear icon.
+Alternatively, you can use the [`NonEditable`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=NonEditable) property, which, unlike [`ReadOnly`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=ReadOnly), only prevents editing the input(s) via typing, while still allowing selection through the calendar and clearing via the clear icon.
 
 ```razor
  <IgbDateRangePicker UseTwoInputs="true" NonEditable="true"/>
@@ -111,7 +111,7 @@ Alternatively, you can use the [`NonEditable`](https://www.infragistics.com/blaz
 
 ### Popup modes
 
-By default, when clicked, the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) opens its calendar pop-up in `dropdown` mode. Alternatively, the calendar can be opened in `dialog` mode by setting the [`Mode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Mode) property to `dialog`.
+By default, when clicked, the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) opens its calendar pop-up in `dropdown` mode. Alternatively, the calendar can be opened in `dialog` mode by setting the [`Mode`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Mode) property to `dialog`.
 
 ```razor
  <IgbDateRangePicker Mode="PickerMode.Dialog"/>
@@ -119,7 +119,7 @@ By default, when clicked, the [`IgbDateRangePicker`](https://www.infragistics.co
 
 ### Keyboard Navigation
 
-The [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) features intuitive keyboard navigation, allowing users to easily increment, decrement, or jump between different component parts, all without needing to use a mouse.
+The [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) features intuitive keyboard navigation, allowing users to easily increment, decrement, or jump between different component parts, all without needing to use a mouse.
 
 |Keys|Description|
 |----|-----------|
@@ -135,7 +135,7 @@ The [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/Igni
 | <kbd>ALT</kbd> + <kbd>↓</kbd> | Opens the calendar dropdown |
 | <kbd>ALT</kbd> + <kbd>↑</kbd> | Closes the calendar dropdown |
 
-You can also navigate within the calendar pop-up using the keyboard. The navigation is the same as in the [`IgbCalendar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html) component.
+You can also navigate within the calendar pop-up using the keyboard. The navigation is the same as in the [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component.
 
 |Keys|Description|
 |----|-----------|
@@ -153,7 +153,7 @@ You can also navigate within the calendar pop-up using the keyboard. The navigat
 
 ### Label
 
-You can define a label for the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) component using the [`Label`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Label) property when it is in single input mode. In two inputs mode, you can use the [`LabelStart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_LabelStart) and [`LabelEnd`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_LabelEnd) properties to define labels for the start and end date input fields, respectively.
+You can define a label for the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component using the [`Label`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Label) property when it is in single input mode. In two inputs mode, you can use the [`LabelStart`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=LabelStart) and [`LabelEnd`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=LabelEnd) properties to define labels for the start and end date input fields, respectively.
 
 ```razor
  <IgbDateRangePicker Label="Date Range"/>
@@ -165,22 +165,22 @@ You can define a label for the [`IgbDateRangePicker`](https://www.infragistics.c
 
 ### Format
 
-You also have the option to customize the date format displayed in the input fields. There are three properties available for this purpose: [`Locale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Locale), [`InputFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_InputFormat), and [`DisplayFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_DisplayFormat).
+You also have the option to customize the date format displayed in the input fields. There are three properties available for this purpose: [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Locale), [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=InputFormat), and [`DisplayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=DisplayFormat).
 
-The [`Locale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Locale) property allows you to set the desired locale identifier, which determines how the date is formatted based on regional conventions.
+The [`Locale`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Locale) property allows you to set the desired locale identifier, which determines how the date is formatted based on regional conventions.
 For example, to display the date in a Japanese format, you can set the locale property like this:
 
 ```razor
  <IgbDateRangePicker Locale="ja-JP"/>
 ```
 
-If you want to manually define the date format, you can use the [`InputFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_InputFormat) property by passing a custom format string:
+If you want to manually define the date format, you can use the [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=InputFormat) property by passing a custom format string:
 
 ```razor
  <IgbDateRangePicker InputFormat="dd/MM/yy"/>
 ```
 
-The [`DisplayFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_DisplayFormat) property also accepts a custom format string, but it only applies when the input field is idle (i.e., not focused). When the field is focused, the format reverts to the default or to the one defined by [`InputFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_InputFormat), if both properties are used together:
+The [`DisplayFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=DisplayFormat) property also accepts a custom format string, but it only applies when the input field is idle (i.e., not focused). When the field is focused, the format reverts to the default or to the one defined by [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=InputFormat), if both properties are used together:
 
 ```razor
  <IgbDateRangePicker InputFormat="dd/MM/yy" DisplayFormat='yy/MM/dd'/>
@@ -192,17 +192,17 @@ You can further customize the pop-up calendar using various properties:
 
 |Name|Type|Description|
 |--|--|--|
-| [`Orientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Orientation) | 'vertical' or 'horizontal' | Allows you to set whether the calendar should be displayed vertically or horizontally. |
-| [`VisibleMonths`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_VisibleMonths) | string | Controls how many months are visible at a time, with a value of either 1 or 2. |
-| [`ShowWeekNumbers`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_ShowWeekNumbers) | string | Enables or disables the week number column in the calendar. |
-| [`Open`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Open) | boolean | Determines whether the calendar picker is open. |
-| [`KeepOpenOnSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_KeepOpenOnSelect) | boolean | Keeps the calendar picker open after a date selection. |
-| [`KeepOpenOnOutsideClick`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_KeepOpenOnOutsideClick) | boolean | Keeps the calendar picker open when clicking outside of it. |
-| [`WeekStart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_WeekStart) | string | Sets the start day of the week. |
-| [`HideOutsideDays`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_HideOutsideDays) | boolean | Hides days that fall outside the current month view. |
-| [`HideHeader`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_HideHeader) | boolean | Hides the calendar header (applicable only in dialog mode). |
-| [`HeaderOrientation`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_HeaderOrientation) | 'vertical' or 'horizontal' | Aligns the calendar header vertically or horizontally (dialog mode only). |
-| [`ActiveDate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_ActiveDate) | Date | Sets the date that is initially highlighted in the calendar. If not set, the current date becomes the active date. |
+| [`Orientation`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Orientation) | 'vertical' or 'horizontal' | Allows you to set whether the calendar should be displayed vertically or horizontally. |
+| [`VisibleMonths`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=VisibleMonths) | string | Controls how many months are visible at a time, with a value of either 1 or 2. |
+| [`ShowWeekNumbers`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=ShowWeekNumbers) | string | Enables or disables the week number column in the calendar. |
+| [`Open`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Open) | boolean | Determines whether the calendar picker is open. |
+| [`KeepOpenOnSelect`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=KeepOpenOnSelect) | boolean | Keeps the calendar picker open after a date selection. |
+| [`KeepOpenOnOutsideClick`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=KeepOpenOnOutsideClick) | boolean | Keeps the calendar picker open when clicking outside of it. |
+| [`WeekStart`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=WeekStart) | string | Sets the start day of the week. |
+| [`HideOutsideDays`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=HideOutsideDays) | boolean | Hides days that fall outside the current month view. |
+| [`HideHeader`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=HideHeader) | boolean | Hides the calendar header (applicable only in dialog mode). |
+| [`HeaderOrientation`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=HeaderOrientation) | 'vertical' or 'horizontal' | Aligns the calendar header vertically or horizontally (dialog mode only). |
+| [`ActiveDate`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=ActiveDate) | Date | Sets the date that is initially highlighted in the calendar. If not set, the current date becomes the active date. |
 
 ```razor
  <IgbDateRangePicker Orientation="ContentOrientation.Vertical" VisibleMonths="1" ShowWeekNumbers="true"/>
@@ -210,7 +210,7 @@ You can further customize the pop-up calendar using various properties:
 
 ### Min & Max
 
-You can also set the [`Min`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Min) and [`Max`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Max) properties to restrict user input by disabling calendar dates outside the defined range. These properties act as validators, so even if the user manually types a date outside the range, the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) will become invalid.
+You can also set the [`Min`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Min) and [`Max`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Max) properties to restrict user input by disabling calendar dates outside the defined range. These properties act as validators, so even if the user manually types a date outside the range, the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) will become invalid.
 
 ```razor
  <IgbDateRangePicker Min="@MinDate" Max="@MaxDate"/>
@@ -223,7 +223,7 @@ You can also set the [`Min`](https://www.infragistics.com/blazor/docs/api/api/Ig
 
 ### Custom & Predefined Date Ranges
 
-You can also add custom date range chips to the calendar pop-up for faster range selection using the [`CustomRanges`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_CustomRanges) property. For example, you can create a custom date range chip to quickly select the range for the upcoming 7 days, ending with the current date. In addition, by setting the [`UsePredefinedRanges`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_UsePredefinedRanges) property, a set of predefined ranges chips will be displayed along with the custom ones.
+You can also add custom date range chips to the calendar pop-up for faster range selection using the [`CustomRanges`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=CustomRanges) property. For example, you can create a custom date range chip to quickly select the range for the upcoming 7 days, ending with the current date. In addition, by setting the [`UsePredefinedRanges`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=UsePredefinedRanges) property, a set of predefined ranges chips will be displayed along with the custom ones.
 
 ```razor
 <IgbDateRangePicker CustomRanges="@CustomRanges" UsePredefinedRanges="true" Label="Custom Ranges" />
@@ -293,7 +293,7 @@ Now, when you click the newly created **"Next 7 days"** chip in the calendar pop
 
 ### Disabled & Special dates
 
-You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`DisabledDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_DisabledDates) property.
+You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`DisabledDates`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=DisabledDates) property.
 
 ```razor
 <IgbDateRangePicker DisabledDates="@DisabledDates" />
@@ -308,13 +308,13 @@ You also have the ability to set disabled dates in the calendar to narrow the ra
 }
 ```
 
-You can see more information about all the possibilities that the [`DisabledDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_DisabledDates) property offers here: [Disabled dates](./calendar.md#disabled-dates)
+You can see more information about all the possibilities that the [`DisabledDates`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=DisabledDates) property offers here: [Disabled dates](./calendar.md#disabled-dates)
 
-You can also do the same if you want to set one or more special dates in the calendar; the only difference is that you need to use the [`SpecialDates`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_SpecialDates) property instead. [Special dates](./calendar.md#special-dates)
+You can also do the same if you want to set one or more special dates in the calendar; the only difference is that you need to use the [`SpecialDates`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=SpecialDates) property instead. [Special dates](./calendar.md#special-dates)
 
 ### Forms
 
-The [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) component can also be used seamlessly with the HTML form element. The [`Min`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Min), [`Max`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Max), and [`Required`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Required) properties act as form validators.
+The [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component can also be used seamlessly with the HTML form element. The [`Min`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Min), [`Max`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Max), and [`Required`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Required) properties act as form validators.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -389,22 +389,22 @@ The [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/Igni
 
 ### Properties
 
-In addition to the properties we've already covered, the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) component offers a variety of additional properties that allow you to further configure its behavior.
+In addition to the properties we've already covered, the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component offers a variety of additional properties that allow you to further configure its behavior.
 
 |Name|Type|Description|
 |--|--|--|
-| [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Disabled) | boolean | Disables the component. |
-| [`NonEditable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_NonEditable) | boolean | Disables typing in the input field(s). |
-| [`Placeholder`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Placeholder) | string | Placeholder text for the single input mode. |
-| [`PlaceholderStart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_PlaceholderStart) | string | Placeholder text for the start date input (two inputs mode). |
-| [`PlaceholderEnd`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_PlaceholderEnd) | string | Placeholder text for the end date input (two inputs mode). |
-| [`Outlined`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Outlined) | boolean | Determines whether the input part will have outline appearance in the [Material theme](../themes/overview.md). |
-| [`Prompt`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Prompt) | string | The prompt character used for unfilled parts of the input(s) mask. |
-| [`ResourceStrings`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_ResourceStrings) | IgcDateRangePickerResourceStrings | Resource strings for localization of the date-range picker and the calendar. |
+| [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Disabled) | boolean | Disables the component. |
+| [`NonEditable`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=NonEditable) | boolean | Disables typing in the input field(s). |
+| [`Placeholder`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Placeholder) | string | Placeholder text for the single input mode. |
+| [`PlaceholderStart`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=PlaceholderStart) | string | Placeholder text for the start date input (two inputs mode). |
+| [`PlaceholderEnd`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=PlaceholderEnd) | string | Placeholder text for the end date input (two inputs mode). |
+| [`Outlined`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Outlined) | boolean | Determines whether the input part will have outline appearance in the [Material theme](../themes/overview.md). |
+| [`Prompt`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Prompt) | string | The prompt character used for unfilled parts of the input(s) mask. |
+| [`ResourceStrings`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=ResourceStrings) | IgcDateRangePickerResourceStrings | Resource strings for localization of the date-range picker and the calendar. |
 
 ### Slots
 
-You also have the ability to add custom content and modify the appearance of the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) component using the available slots.
+You also have the ability to add custom content and modify the appearance of the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component using the available slots.
 
 The `prefix` and `suffix` slots allow you to insert custom content before or after the input field (only available in single input mode):
 
@@ -442,7 +442,7 @@ The `actions` slot allows you to insert a custom action button with your own log
 </IgbDateRangePicker>
 ```
 
-In addition to the slots we've already covered, the following slots are also available in the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) component:
+In addition to the slots we've already covered, the following slots are also available in the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component:
 
 |Name|Description|
 |--|--|
@@ -552,20 +552,20 @@ In addition to the slots we've already covered, the following slots are also ava
 
 ### Methods
 
-In addition to the properties and slots, the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) also exposes few methods that you can use:
+In addition to the properties and slots, the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) also exposes few methods that you can use:
 
 |Name|Description|
 |--|--|
-| [`Show`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Show) | Displays the calendar picker component. |
-| [`Hide`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Hide) | Hides the calendar picker component. |
-| [`Toggle`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Toggle) | Toggles the calendar picker between the shown and hidden states. |
-| [`Clear`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Clear) | Clears the input fields, removing any user input. |
-| [`Select`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_Select) | Selects a date range value in the picker. |
-| [`SetCustomValidity`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html#IgniteUI_Blazor_Controls_IgbDateRangePicker_SetCustomValidity) | Sets a custom validation message. If the provided message is not empty, the input will be marked as invalid. |
+| [`Show`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Show) | Displays the calendar picker component. |
+| [`Hide`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Hide) | Hides the calendar picker component. |
+| [`Toggle`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Toggle) | Toggles the calendar picker between the shown and hidden states. |
+| [`Clear`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Clear) | Clears the input fields, removing any user input. |
+| [`Select`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=Select) | Selects a date range value in the picker. |
+| [`SetCustomValidity`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=SetCustomValidity) | Sets a custom validation message. If the provided message is not empty, the input will be marked as invalid. |
 
 ## Styling
 
-Since the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) component uses the [`IgbCalendar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html) component, it also inherits the Calendar's CSS parts, allowing you to style both components seamlessly. You can find the full list of exposed Calendar CSS parts here: [Calendar Styling](calendar.md#styling). In addition to the Calendar's CSS parts, the [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html) also exposes some unique CSS parts that you can use to customize its appearance:
+Since the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component uses the [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component, it also inherits the Calendar's CSS parts, allowing you to style both components seamlessly. You can find the full list of exposed Calendar CSS parts here: [Calendar Styling](calendar.md#styling). In addition to the Calendar's CSS parts, the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) also exposes some unique CSS parts that you can use to customize its appearance:
 
 |Name|Description|
 |--|--|
@@ -681,11 +681,11 @@ igc-date-range-picker::part(clear-icon-end) {
 
 ## API References
 
-- [`IgbInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbInput.html)
-- [`IgbCalendar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html)
-- [`IgbDateRangePicker`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateRangePicker.html)
-- [`IgbDateTimeInput`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDateTimeInput.html)
-- [`IgbDialog`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDialog.html)
+- [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput)
+- [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)
+- [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker)
+- [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput)
+- [`IgbDialog`](mcp:get_api_reference?platform=blazor&component=IgbDialog)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

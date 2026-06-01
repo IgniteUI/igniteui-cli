@@ -72,7 +72,7 @@ For a complete introduction to the Ignite UI for Angular, read the [_getting sta
 The next step is to import the `IgxCalendarModule` in your **app.module.ts** file.
 
 >[!NOTE]
-> The [**IgxCalendarComponent**](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html) also depends on the [`BrowserAnimationsModule`](https://angular.io/api/platform-browser/animations/BrowserAnimationsModule) and **optionally** the [`HammerModule`](https://angular.io/api/platform-browser/HammerModule) for touch interactions, so they need to be added to the AppModule as well:
+> The [**IgxCalendarComponent**](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent) also depends on the [`BrowserAnimationsModule`](https://angular.io/api/platform-browser/animations/BrowserAnimationsModule) and **optionally** the [`HammerModule`](https://angular.io/api/platform-browser/HammerModule) for touch interactions, so they need to be added to the AppModule as well:
 
 ```typescript
 // app.module.ts
@@ -114,7 +114,7 @@ export class HomeComponent {}
 Now that you have the Ignite UI for Angular Calendar module or directives imported, you can start using the `igx-calendar` component.
 
 > [!NOTE]
-> The [`IgxCalendarComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html) uses the [Intl Web API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat) for localization and formatting of dates.
+> The [`IgxCalendarComponent`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent) uses the [Intl Web API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat) for localization and formatting of dates.
 Consider using [appropriate polyfills](https://github.com/andyearnshaw/Intl.js/) if your target platform does not support them.
 
 ## Using the Angular Calendar
@@ -131,7 +131,7 @@ Instantiating the `IgxCalendarComponent` is as easy as placing its selector elem
 
 ### Angular Calendar Multiselect  
 
-We can easily change the default mode using the [`selection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#selection) property:
+We can easily change the default mode using the [`selection`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=selection) property:
 
 ```html
 <!-- app.component.html -->
@@ -224,7 +224,7 @@ export class CalendarSample8Component { }
 
 ### Localization and Formatting
 
-Due to their very nature, localization and formatting are essential to any calendar. In the `IgxCalendarComponent` those are controlled and customized through the following properties - [`locale`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#locale), [`formatOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#formatoptions), [`formatViews`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#formatViews), [`weekStart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#weekStart).
+Due to their very nature, localization and formatting are essential to any calendar. In the `IgxCalendarComponent` those are controlled and customized through the following properties - [`locale`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=locale), [`formatOptions`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=formatoptions), [`formatViews`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=formatViews), [`weekStart`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=weekStart).
 
 Let's go ahead and try those along with other customizations from the `IgxCalendarComponent API`. First thing we need to set is the `weekStart`, which controls the starting day of the week. It defaults to 0, which corresponds to Sunday, so we will set a value of 1 for Monday. In the markup below we are also binding the `formatOptions` and `formatViews` properties to customize the display formatting. Finally, we are binding the `locale` property to a value, based on the user's location choice:
 
@@ -348,9 +348,9 @@ export class CalendarSample2Component implements OnInit{
 
 ### How to Disable Dates In Angular Calendar
 
-This section demonstrates the usage of [`disabledDates`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#disabledDates) functionality. For this purpose, different single dates or ranges can be added to an array and then passed to the `disabledDates` descriptor.
+This section demonstrates the usage of [`disabledDates`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=disabledDates) functionality. For this purpose, different single dates or ranges can be added to an array and then passed to the `disabledDates` descriptor.
 
-The [`DateRangeType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/daterangetype.html) is used to specify a range that is going to be disabled.
+The [`DateRangeType`](mcp:get_api_reference?platform=angular&component=DateRangeType) is used to specify a range that is going to be disabled.
 
 Let's create a sample that is disabling the dates between the 3rd and the 8th of the current month:
 
@@ -440,9 +440,9 @@ export class CalendarSample6Component implements OnInit{
 
 ### Special dates
 
-The [`specialDates`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#specialDates) feature is using almost the same configuration principles as the `disabledDates`. The ability to select and focus `specialDates` is what differs them from the `disabled` ones.
+The [`specialDates`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=specialDates) feature is using almost the same configuration principles as the `disabledDates`. The ability to select and focus `specialDates` is what differs them from the `disabled` ones.
 
-Let's add some `specialDates` to our `igxCalendar`. In order to do this, we have to create a [`DateRangeDescriptor`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/daterangedescriptor.html) item of type [`DateRangeType.Specific`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/daterangetype.html#specific) and pass an array of dates as a [`dateRange`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/daterangedescriptor.html#dateRange):
+Let's add some `specialDates` to our `igxCalendar`. In order to do this, we have to create a [`DateRangeDescriptor`](mcp:get_api_reference?platform=angular&component=DateRangeDescriptor) item of type [`DateRangeType.Specific`](mcp:get_api_reference?platform=angular&component=DateRangeType&member=specific) and pass an array of dates as a [`dateRange`](mcp:get_api_reference?platform=angular&component=DateRangeDescriptor&member=dateRange):
 
 ```typescript
 export class CalendarSample7Component {
@@ -556,7 +556,7 @@ export class CalendarSample7Component {
 
 ### Week numbers
 
-You can now use [`showWeekNumbers`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#showWeekNumbers) input to show the week numbers for both Calendar and DatePicker components.
+You can now use [`showWeekNumbers`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=showWeekNumbers) input to show the week numbers for both Calendar and DatePicker components.
 
 ```html
 
@@ -605,9 +605,9 @@ export class CalendarSample1Component { }
 
 Let's explore the events emitted by the calendar:
 
-- [`selected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#selected) - emitted when selecting date(s) in the calendar.
-- [`viewDateChanged`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#viewDateChanged) - emitted every time when the presented month/year is changed - for example after navigating to the `next` or `previous` month.
-- [`activeViewChanged`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#activeViewChanged) - emitted after the active view is changed - for example after the user has clicked on the `month` or `year` section in the header.
+- [`selected`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=selected) - emitted when selecting date(s) in the calendar.
+- [`viewDateChanged`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=viewDateChanged) - emitted every time when the presented month/year is changed - for example after navigating to the `next` or `previous` month.
+- [`activeViewChanged`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=activeViewChanged) - emitted after the active view is changed - for example after the user has clicked on the `month` or `year` section in the header.
 
 ```html
 <!-- app.component.html -->
@@ -618,7 +618,7 @@ Let's explore the events emitted by the calendar:
 </igx-calendar>
 ```
 
-The [`selected`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#selected) event is suitable to build input validation logic. Use the code from below to alert the user if selection exceeds 5 days, and then reset the selection:
+The [`selected`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=selected) event is suitable to build input validation logic. Use the code from below to alert the user if selection exceeds 5 days, and then reset the selection:
 
 ```typescript
 // app.component.ts
@@ -753,7 +753,7 @@ export class CalendarSample3Component {
 
 There are separate views provided by the `IgxCalendarModule` that can be used independently:
 
-- Angular Calendar Days View  - [`igx-days-view`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdaysviewcomponent.html)
+- Angular Calendar Days View  - [`igx-days-view`](mcp:get_api_reference?platform=angular&component=IgxDaysViewComponent)
 
 
 ```typescript
@@ -792,7 +792,7 @@ export class CalendarDaysViewComponent { }
 ```
 
 
-- Angular Calendar Month View  - [`igx-months-view`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxmonthsviewcomponent.html)
+- Angular Calendar Month View  - [`igx-months-view`](mcp:get_api_reference?platform=angular&component=IgxMonthsViewComponent)
 
 
 ```typescript
@@ -831,7 +831,7 @@ export class CalendarMonthsViewComponent { }
 ```
 
 
-- Angular Calendar Year View  - [`igx-years-view`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxyearsviewcomponent.html)
+- Angular Calendar Year View  - [`igx-years-view`](mcp:get_api_reference?platform=angular&component=IgxYearsViewComponent)
 
 
 ```typescript
@@ -932,7 +932,7 @@ When an `year` inside the decade view is focused, use:
 
 ## Multi View Calendar
 
-Multi-view calendar supports all three types of selection. Use the [`monthsViewNumber`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#monthsViewNumber) input to set the number of displayed months, which will be shown horizontally in a flex container. There is no limit on the max value set. While using a multi view calendar, you may want to hide the days that do not belong to the current month. You are able to do it with the [`hideOutsideDays`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html#hideOutsideDays) property.  Keyboard navigation moves to next/previous months when those are in view.
+Multi-view calendar supports all three types of selection. Use the [`monthsViewNumber`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=monthsViewNumber) input to set the number of displayed months, which will be shown horizontally in a flex container. There is no limit on the max value set. While using a multi view calendar, you may want to hide the days that do not belong to the current month. You are able to do it with the [`hideOutsideDays`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=hideOutsideDays) property.  Keyboard navigation moves to next/previous months when those are in view.
 
 
 ```typescript
@@ -1777,10 +1777,10 @@ At the end your calendar should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxCalendarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcalendarcomponent.html)
+- [IgxCalendarComponent](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent)
 - [IgxCalendarComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-calendar-theme)
-- [DateRangeType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/daterangetype.html)
-- [DateRangeDescriptor](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/daterangedescriptor.html)
+- [DateRangeType](mcp:get_api_reference?platform=angular&component=DateRangeType)
+- [DateRangeDescriptor](mcp:get_api_reference?platform=angular&component=DateRangeDescriptor)
 
 ## Additional Resources
 

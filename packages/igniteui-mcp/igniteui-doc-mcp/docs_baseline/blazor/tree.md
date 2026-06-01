@@ -13,7 +13,7 @@ Ignite UI for Blazor Tree, also known as TreeView component, is a high-performan
 
 For end-users this means they can easily navigate across different app pages, use selection, checkboxes, add texts, icons, images and more.
 
-The Ignite UI for Blazor Tree component allows users to represent hierarchical data in a tree-view structure, maintaining parent-child relationships, as well as to define static tree-view structure without a corresponding data model. Its primary purpose is to allow end-users to visualize and navigate within hierarchical data structures. The [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html) component also provides load on demand capabilities, item activation, multiple and cascade selection of items through built-in checkboxes, built-in keyboard navigation and more.
+The Ignite UI for Blazor Tree component allows users to represent hierarchical data in a tree-view structure, maintaining parent-child relationships, as well as to define static tree-view structure without a corresponding data model. Its primary purpose is to allow end-users to visualize and navigate within hierarchical data structures. The [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) component also provides load on demand capabilities, item activation, multiple and cascade selection of items through built-in checkboxes, built-in keyboard navigation and more.
 
 ## Blazor Tree Example
 
@@ -59,7 +59,7 @@ In this basic Ignite UI for Blazor Tree example, you can see how to define a tre
 
 ## How to Use Ignite UI for Blazor Tree With Ignite UI
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -74,13 +74,13 @@ builder.Services.AddIgniteUIBlazor(
 );
 ```
 
-The simplest way to start using the [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html) is as follows:
+The simplest way to start using the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) is as follows:
 
 ### Declaring a tree
 
-[`IgbTreeItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html) is the representation of every item that belongs to the [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html).
-Items provide [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html#IgniteUI_Blazor_Controls_IgbTreeItem_Disabled), [`Active`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html#IgniteUI_Blazor_Controls_IgbTreeItem_Active), [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html#IgniteUI_Blazor_Controls_IgbTreeItem_Selected) and [`Expanded`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html#IgniteUI_Blazor_Controls_IgbTreeItem_Expanded) properties, which give you opportunity to configure the states of the item as per your requirement.
-The [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html#IgniteUI_Blazor_Controls_IgbTreeItem_Value) property can be used to add a reference to the data entry the item represents.
+[`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem) is the representation of every item that belongs to the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree).
+Items provide [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=Disabled), [`Active`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=Active), [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=Selected) and [`Expanded`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=Expanded) properties, which give you opportunity to configure the states of the item as per your requirement.
+The [`Value`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=Value) property can be used to add a reference to the data entry the item represents.
 
 Items can be declared using one of the following approaches.
 
@@ -100,7 +100,7 @@ Items can be bound to a data model so that their expanded and selected states ar
 
 - Declaring a tree by creating static unbound items
 
-In order to render a tree you do not necessarily need a data set - individual items can be created without an underlying data model using the exposed [`Label`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html#IgniteUI_Blazor_Controls_IgbTreeItem_Label) property or provide a custom slot content for the [`IgbTreeItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html) label.
+In order to render a tree you do not necessarily need a data set - individual items can be created without an underlying data model using the exposed [`Label`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem&member=Label) property or provide a custom slot content for the [`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem) label.
 
 ```razor
 <IgbTree>
@@ -122,28 +122,28 @@ In order to render a tree you do not necessarily need a data set - individual it
 ```
 
 > [!Note]
-> You can provide a custom slot content for each [`IgbTreeItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html)'s indentation, expansion and label area respectively using the provided `indentation`, `indicator` and `label` slots.
+> You can provide a custom slot content for each [`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem)'s indentation, expansion and label area respectively using the provided `indentation`, `indicator` and `label` slots.
 
 ### Item Interactions
 
-[`IgbTreeItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html) could be expanded or collapsed:
+[`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem) could be expanded or collapsed:
 
 - by clicking on the item expand indicator (default behavior).
-- by clicking on the item if the [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html) [`ToggleNodeOnClick`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html#IgniteUI_Blazor_Controls_IgbTree_ToggleNodeOnClick) property is set to `true`.
+- by clicking on the item if the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) [`ToggleNodeOnClick`](mcp:get_api_reference?platform=blazor&component=IgbTree&member=ToggleNodeOnClick) property is set to `true`.
 
-By default, multiple items could be expanded at the same time. In order to change this behavior and allow expanding only single branch at a time, the [`SingleBranchExpand`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html#IgniteUI_Blazor_Controls_IgbTree_SingleBranchExpand) property could be enabled. This way when an item is expanded, all of the others already expanded branches in the same level will be collapsed.
+By default, multiple items could be expanded at the same time. In order to change this behavior and allow expanding only single branch at a time, the [`SingleBranchExpand`](mcp:get_api_reference?platform=blazor&component=IgbTree&member=SingleBranchExpand) property could be enabled. This way when an item is expanded, all of the others already expanded branches in the same level will be collapsed.
 
 ## Blazor Tree Selection
 
-In order to setup item selection in the Ignite UI for Blazor Tree component, you just need to set its [`Selection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html#IgniteUI_Blazor_Controls_IgbTree_Selection) property. This property accepts the following three modes: **None**, **Multiple** and **Cascade**. Below we will take a look at each of them in more detail.
+In order to setup item selection in the Ignite UI for Blazor Tree component, you just need to set its [`Selection`](mcp:get_api_reference?platform=blazor&component=IgbTree&member=Selection) property. This property accepts the following three modes: **None**, **Multiple** and **Cascade**. Below we will take a look at each of them in more detail.
 
 ### None
 
-In the [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html) by default item selection is disabled. Users cannot select or deselect an item through UI interaction, but these actions can still be completed through the provided API method.
+In the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) by default item selection is disabled. Users cannot select or deselect an item through UI interaction, but these actions can still be completed through the provided API method.
 
 ### Multiple
 
-To enable multiple item selection in the [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html) just set the [`Selection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html#IgniteUI_Blazor_Controls_IgbTree_Selection) property to **multiple**. This will render a checkbox for every item. Each item has two states - selected or not. This mode supports multiple selection.
+To enable multiple item selection in the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) just set the [`Selection`](mcp:get_api_reference?platform=blazor&component=IgbTree&member=Selection) property to **multiple**. This will render a checkbox for every item. Each item has two states - selected or not. This mode supports multiple selection.
 
 ```razor
 <IgbTree Selection=TreeSelection.Multiple>
@@ -152,7 +152,7 @@ To enable multiple item selection in the [`IgbTree`](https://www.infragistics.co
 
 ### Cascade
 
-To enable cascade item selection in the [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html), just set the selection property to **cascade**. This will render a checkbox for every item.
+To enable cascade item selection in the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree), just set the selection property to **cascade**. This will render a checkbox for every item.
 
 ```razor
 <IgbTree Selection=TreeSelection.Cascade>
@@ -163,9 +163,9 @@ In this mode a parent's selection state entirely depends on the selection state 
 
 ## Keyboard Navigation
 
-Keyboard navigation in [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html) provides a rich variety of keyboard interactions for the user. This functionality is enabled by default and allows users to navigate through the items.
+Keyboard navigation in [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) provides a rich variety of keyboard interactions for the user. This functionality is enabled by default and allows users to navigate through the items.
 
-The [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html) navigation is compliant with W3C accessibility standards and convenient to use.
+The [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) navigation is compliant with W3C accessibility standards and convenient to use.
 
 **Key Combinations**
 
@@ -191,7 +191,7 @@ When selection is enabled, end-user selection of items is only allowed through t
 
 ## Styling
 
-You can change the appearance of the [`IgbTreeItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html), by using some of the exposed CSS parts listed below:
+You can change the appearance of the [`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem), by using some of the exposed CSS parts listed below:
 
 | Part name | Description |
 | ---------|------------ |
@@ -204,7 +204,7 @@ You can change the appearance of the [`IgbTreeItem`](https://www.infragistics.co
 | `text` | The tree item displayed text. |
 | `select` | The checkbox of the tree item when selection is enabled. |
 
-Using these CSS parts we can customize thе appearance of the [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html) component like this:
+Using these CSS parts we can customize thе appearance of the [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree) component like this:
 
 ```css
 igc-tree-item {
@@ -253,10 +253,10 @@ igc-tree-item {
 
 ## API References
 
-- [`IgbTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTree.html)
-- [`IgbTreeItem`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeItem.html)
-- [`IgbIcon`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbIcon.html)
-- [`IgbCircularProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCircularProgress.html)
+- [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree)
+- [`IgbTreeItem`](mcp:get_api_reference?platform=blazor&component=IgbTreeItem)
+- [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon)
+- [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

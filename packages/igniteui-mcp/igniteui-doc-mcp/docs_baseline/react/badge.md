@@ -54,20 +54,20 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrBadge`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbadge.html) and its necessary CSS like so:
+You will then need to import the [`IgrBadge`](mcp:get_api_reference?platform=react&component=IgrBadge) and its necessary CSS like so:
 
 ```tsx
 import { IgrBadge } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-The simplest way to start using the [`IgrBadge`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbadge.html) is as follows:
+The simplest way to start using the [`IgrBadge`](mcp:get_api_reference?platform=react&component=IgrBadge) is as follows:
 
 ```tsx
 <IgrBadge />
 ```
 
-To display a subtle border around the badge, you can set the [`outlined`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbadge.html#outlined) attribute of the badge.
+To display a subtle border around the badge, you can set the [`outlined`](mcp:get_api_reference?platform=react&component=IgrBadge&member=outlined) attribute of the badge.
 
 ```tsx
 <IgrBadge outlined={true} ></IgrBadge>
@@ -77,7 +77,7 @@ To display a subtle border around the badge, you can set the [`outlined`](https:
 
 ### Variants
 
-The Ignite UI for React badge supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `primary`(default), `info`, `success`, `warning`, or `danger` to the [`variant`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbadge.html#variant) attribute.
+The Ignite UI for React badge supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `primary`(default), `info`, `success`, `warning`, or `danger` to the [`variant`](mcp:get_api_reference?platform=react&component=IgrBadge&member=variant) attribute.
 
 ```tsx
 <IgrBadge variant="success" ></IgrBadge>
@@ -116,7 +116,7 @@ root.render(<BadgeVariants/>);
 
 ### Shape
 
-The badge component supports `rounded`(default) and `square` shapes. These values can be assigned to the [`shape`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbadge.html#shape) attribute.
+The badge component supports `rounded`(default) and `square` shapes. These values can be assigned to the [`shape`](mcp:get_api_reference?platform=react&component=IgrBadge&member=shape) attribute.
 
 ```tsx
 <IgrBadge shape="square" ></IgrBadge>
@@ -165,7 +165,7 @@ The Ignite UI for React badge component can also render as a minimal dot indicat
 
 ## Styling
 
-The [`IgrBadge`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbadge.html) component exposes a `base` CSS part that can be used to change all of its style properties.
+The [`IgrBadge`](mcp:get_api_reference?platform=react&component=IgrBadge) component exposes a `base` CSS part that can be used to change all of its style properties.
 
 ```css
 igc-badge::part(base) {
@@ -214,7 +214,7 @@ root.render(<BadgeStyling/>);
 
 ## API References
 
-- [`IgrBadge`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbadge.html)
+- [`IgrBadge`](mcp:get_api_reference?platform=react&component=IgrBadge)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

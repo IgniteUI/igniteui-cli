@@ -223,7 +223,7 @@ public class NwindData
 
 ## Usage
 
-To turn on the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component's Excel-style filtering, two inputs should be set. The [`AllowFiltering`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_AllowFiltering) should be set to **true** and the [`FilterMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_FilterMode) should be set to `ExcelStyleFilter` value.
+To turn on the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component's Excel-style filtering, two inputs should be set. The [`AllowFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AllowFiltering) should be set to **true** and the [`FilterMode`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=FilterMode) should be set to `ExcelStyleFilter` value.
 
 ```razor
 <IgbGrid AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" >
@@ -244,7 +244,7 @@ To apply a filter with different expressions, you can click the **Text filter**,
 
 ## Configure Menu Features
 
-Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`Sortable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Sortable), [`Selected`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selected), [`DisablePinning`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisablePinning), [`DisableHiding`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DisableHiding).
+Sorting, pinning and hiding features can be removed from the filter menu using the corresponding inputs: [`Sortable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Sortable), [`Selected`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selected), [`DisablePinning`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisablePinning), [`DisableHiding`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DisableHiding).
 
 ```razor
 <IgbGrid AutoGenerate="false" Data=northwindEmployees AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter">
@@ -256,7 +256,7 @@ Sorting, pinning and hiding features can be removed from the filter menu using t
 </IgbGrid>
 ```
 
-In the sample below **Product Name** and **Discontinued** columns have all four features enabled, **Quantity Per Unit** have all three disabled, **Unit Price** has only sorting and **Order Date** has only pinning and hiding and all are [`Selectable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selectable).
+In the sample below **Product Name** and **Discontinued** columns have all four features enabled, **Quantity Per Unit** have all three disabled, **Unit Price** has only sorting and **Order Date** has only pinning and hiding and all are [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable).
 
 <!-- ComponentEnd: Grid -->
 
@@ -438,9 +438,9 @@ public class NwindData
 
 ## Templates
 
-If you want to further customize the Excel style filter menu, you can use the [`ExcelStyleHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ExcelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
+If you want to further customize the Excel style filter menu, you can use the [`ExcelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ExcelStyleHeaderIconTemplate) property to define a custom template for the header icon of the menu.
 
-The following code demonstrates how to customize the Excel style filter menu using the [`ExcelStyleHeaderIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ExcelStyleHeaderIconTemplate):
+The following code demonstrates how to customize the Excel style filter menu using the [`ExcelStyleHeaderIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ExcelStyleHeaderIconTemplate):
 
 ```razor
 <IgbGrid
@@ -842,8 +842,8 @@ public class NwindData
 
 ## API References
 
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ## Additional Resources
 

@@ -25,7 +25,7 @@ First, you need to install the Ignite UI for Web Components by running the follo
 npm install igniteui-webcomponents
 ```
 
-Before using the [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html), you need to register it as follows:
+Before using the [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent), you need to register it as follows:
 
 ```ts
 import { defineComponents, IgcRatingComponent } from "igniteui-webcomponents";
@@ -36,7 +36,7 @@ defineComponents(IgcRatingComponent);
 
 For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to start using the [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) is as follows:
+The simplest way to start using the [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) is as follows:
 
 ```html
 <igc-rating></igc-rating>
@@ -46,7 +46,7 @@ This will create a five-star rating component that can be used to input and read
 
 ## Using Custom Symbols
 
-The [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) component allows you to use custom symbols in place of the default star symbols. If you want to use a different symbol, like SVG, icon or another unicode symbol, you should place [`IgcRatingSymbolComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingsymbolcomponent.html) components between the opening and closing brackets of the [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html):
+The [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) component allows you to use custom symbols in place of the default star symbols. If you want to use a different symbol, like SVG, icon or another unicode symbol, you should place [`IgcRatingSymbolComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingSymbolComponent) components between the opening and closing brackets of the [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent):
 
 ```html
 <igc-rating>
@@ -108,15 +108,15 @@ The Ignite UI for Web Components Rating component allows users to use different 
 
 ### Single
 
-Turns on the [`single`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html#single) visual mode for the rating. Useful when using symbols that communicate unique values, like feedback emoji faces.
+Turns on the [`single`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=single) visual mode for the rating. Useful when using symbols that communicate unique values, like feedback emoji faces.
 
 ### Value
 
-The [`value`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html#value) attribute sets the current value of the component.
+The [`value`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=value) attribute sets the current value of the component.
 
 ### Label
 
-The [`label`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html#label) attribute allows setting the label value of the rating component.
+The [`label`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=label) attribute allows setting the label value of the rating component.
 
 ### Value Format
 
@@ -124,11 +124,11 @@ A format string which sets [aria-valuetext](https://developer.mozilla.org/en-US/
 
 ### Max Value
 
-The [`max`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html#max) attribute sets the maximum allowed value of the rating component.
+The [`max`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=max) attribute sets the maximum allowed value of the rating component.
 
 ### Step
 
-The [`step`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html#step) attribute sets the allowed fraction of steps between two symbols. Useful when splitting the rating symbols in halves.
+The [`step`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=step) attribute sets the allowed fraction of steps between two symbols. Useful when splitting the rating symbols in halves.
 
 ### Hover Preview
 
@@ -136,25 +136,25 @@ The `hover-preview` attribute makes the component show the possible outcome of u
 
 ### Read-Only
 
-The [`readOnly`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html#readOnly) attribute allows the users to set the [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) in read-only mode. This attribute is useful when you want to use the component for information purposes only.
+The [`readOnly`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=readOnly) attribute allows the users to set the [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) in read-only mode. This attribute is useful when you want to use the component for information purposes only.
 
 ### Disabled
 
-The [`disabled`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html#disabled) attribute disables the component, making it impossible to select a value using the mouse or keyboard.
+The [`disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=disabled) attribute disables the component, making it impossible to select a value using the mouse or keyboard.
 
 ## Methods
 
 ### Step Up
 
-The [`stepUp`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html#stepUp) method increments the value of the component by `n` steps. Determined by the `step` factor.
+The [`stepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=stepUp) method increments the value of the component by `n` steps. Determined by the `step` factor.
 
 ### Step Down
 
-The [`stepDown`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html#stepDown) method decrements the value of the component by `n` steps. Determined by the `step` factor.
+The [`stepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent&member=stepDown) method decrements the value of the component by `n` steps. Determined by the `step` factor.
 
 ## Events
 
-The [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) component emits two separate events - `igcHover` and `igcChange`.
+The [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) component emits two separate events - `igcHover` and `igcChange`.
 
 ### Hover Event
 
@@ -166,7 +166,7 @@ The `igcChange` event is fired when the selected value changes.
 
 ## Styling
 
-The [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
+The [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) component exposes CSS parts for almost all of its inner elements. The following table lists all of the exposed CSS parts:
 
 |Name|Description|
 |--|--|
@@ -227,7 +227,7 @@ igc-rating::part(symbols) {
 
 ## API Reference
 
-- [`IgcRatingComponent`](https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/latest/classes/igcratingcomponent.html)
+- [`IgcRatingComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

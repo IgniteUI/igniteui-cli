@@ -15,7 +15,7 @@ The Ignite UI for Blazor Stock Chart, sometimes referred to as Blazor Financial 
 
 ## Blazor Stock Chart Example
 
-You can create Stock Chart using the [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html) control by binding your data and optionally setting [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) property to `Line` value, as shown in the example below.
+You can create Stock Chart using the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) control by binding your data and optionally setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to `Line` value, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -224,7 +224,7 @@ If you need a Stock Chart with more features such as composite other series, you
 
 ## Blazor Chart Annotations
 
-The Crosshair Annotation Layer provides crossing lines that meet at the actual value of every targeted series. Crosshair types include: Horizontal, Vertical, and Both. The Crosshairs can also be configured to snap to data points by setting the [`CrosshairsSnapToData`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_CrosshairsSnapToData) property to true, otherwise the crosshairs will be interpolated between data points. Annotations can also be enabled to display the crosshair's value along the axis.
+The Crosshair Annotation Layer provides crossing lines that meet at the actual value of every targeted series. Crosshair types include: Horizontal, Vertical, and Both. The Crosshairs can also be configured to snap to data points by setting the [`CrosshairsSnapToData`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=CrosshairsSnapToData) property to true, otherwise the crosshairs will be interpolated between data points. Annotations can also be enabled to display the crosshair's value along the axis.
 
 The Final Value Layer provides a quick view along the axis of the ending value displayed in a series.
 
@@ -456,7 +456,7 @@ The following panes are available:
 Financial Indicators are often used by traders to measure changes and to show trends in stock prices. These indicators are usually displayed below the price pane because they do not share the same Y-Axis scale.
 
 By default the indicator panes are not displayed. The toolbar allows the end user to select which indicator to display at run time.
-In order to display an indicator pane initially, the [`IndicatorTypes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_IndicatorTypes) property must be set to a least one type of indicator, as demonstrated in the following code:
+In order to display an indicator pane initially, the [`IndicatorTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=IndicatorTypes) property must be set to a least one type of indicator, as demonstrated in the following code:
 
 ### Volume Pane
 
@@ -470,9 +470,9 @@ Note that is recommended to use line chart type if plotting multiple data source
 
 ### Zoom Pane
 
-This pane controls the zoom of all the displayed panes. This pane is displayed by default. It can be turned off by setting the [`ZoomSliderType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_ZoomSliderType) to `none` as demonstrated in the following code:
+This pane controls the zoom of all the displayed panes. This pane is displayed by default. It can be turned off by setting the [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ZoomSliderType) to `none` as demonstrated in the following code:
 
-Note that you should set the [`ZoomSliderType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_ZoomSliderType) option to the same value as the [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType) option is set to. This way, the zoom slider will show correct preview of the price pane. The following code demonstrates how to do this:
+Note that you should set the [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ZoomSliderType) option to the same value as the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) option is set to. This way, the zoom slider will show correct preview of the price pane. The following code demonstrates how to do this:
 
 In this example, the stock chart is plotting revenue for United States.
 
@@ -534,9 +534,9 @@ You can find more information about related chart features in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`ChartType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCategoryChart.html#IgniteUI_Blazor_Controls_IgbCategoryChart_ChartType)
-- [`CrosshairsSnapToData`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_CrosshairsSnapToData)
-- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDomainChart.html#IgniteUI_Blazor_Controls_IgbDomainChart_DataSource)
-- [`IgbFinancialChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html)
-- [`IndicatorTypes`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_IndicatorTypes)
-- [`ZoomSliderType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbFinancialChart.html#IgniteUI_Blazor_Controls_IgbFinancialChart_ZoomSliderType)
+- [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType)
+- [`CrosshairsSnapToData`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=CrosshairsSnapToData)
+- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=DataSource)
+- [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart)
+- [`IndicatorTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=IndicatorTypes)
+- [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ZoomSliderType)

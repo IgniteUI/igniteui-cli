@@ -79,7 +79,7 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 
 ## Usage
 
-The Load on Demand feature is compatible with both types of Tree Grid data sources - primary and foreign keys or child collection. You only need to load the root level data in the Tree Grid and specify the necessary keys for one of the data source types. In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`loadChildrenOnDemand`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#loadChildrenOnDemand).
+The Load on Demand feature is compatible with both types of Tree Grid data sources - primary and foreign keys or child collection. You only need to load the root level data in the Tree Grid and specify the necessary keys for one of the data source types. In order to load the child rows when the user expands a row, the Tree Grid provides the callback input property [`loadChildrenOnDemand`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=loadChildrenOnDemand).
 
 ```html
 <igc-tree-grid id="treeGrid"></igc-tree-grid>
@@ -110,17 +110,17 @@ After the user clicks the expand icon, it is replaced by a loading indicator. Wh
 
 ### Expanding Indicator Visibility
 
-If you have a way to provide an information whether a row has children prior to its expanding, you could use the [`hasChildrenKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
+If you have a way to provide an information whether a row has children prior to its expanding, you could use the [`hasChildrenKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=hasChildrenKey) input property. This way you could provide a boolean property from the data objects which indicates whether an expansion indicator should be displayed.
 
 ```html
 <igc-tree-grid id="treeGrid" primary-key="ID" foreign-key="ParentID" has-children-key="hasEmployees"></igc-tree-grid>
 ```
 
-Note that setting the [`hasChildrenKey`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row. After expanding a row that has no children, you still need to call the done callback with undefined or empty array. In this case after the loading indicator disappears, the expansion indicator never shows up.
+Note that setting the [`hasChildrenKey`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=hasChildrenKey) property is not required. In case you don't provide it, expansion indicators will be displayed for each row. After expanding a row that has no children, you still need to call the done callback with undefined or empty array. In this case after the loading indicator disappears, the expansion indicator never shows up.
 
 ### Custom Loading Indicator
 
-If you want to provide your own custom loading indicator, you can use the [`rowLoadingIndicatorTemplate`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html#rowLoadingIndicatorTemplate) option to set a custom template.The following code snippet demonstrates how set to it:
+If you want to provide your own custom loading indicator, you can use the [`rowLoadingIndicatorTemplate`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowLoadingIndicatorTemplate) option to set a custom template.The following code snippet demonstrates how set to it:
 
 ```ts
 constructor() {
@@ -139,7 +139,7 @@ public rowLoadingTemplate() {
 
 ## API References
 
-- [`IgcTreeGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igctreegridcomponent.html)
+- [`IgcTreeGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
 
 ## Additional Resources
 

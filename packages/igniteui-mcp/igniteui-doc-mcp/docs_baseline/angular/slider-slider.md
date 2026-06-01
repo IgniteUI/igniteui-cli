@@ -169,8 +169,8 @@ Now that you have the Ignite UI for Angular Slider module or directives imported
 By default, the Slider Component is set to discrete type. A discrete slider provides a visualization of the current value with a numeric label (bubble). The bubble can be shown upon hovering on the slider thumb.  
 You can also use the slider with predefined steps to track only meaningful values for the user.  
 
-In the following example, we define a discrete slider that displays values from 0% to 100% and the [`step`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#step) is set to 10% per increment/decrement.  
-We also bind the slider [`value`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#value) to a property in our component called "completion", using Angular [`ngModel`](https://angular.io/guide/built-in-directives#ngModel), to allow two way binding with an input component.
+In the following example, we define a discrete slider that displays values from 0% to 100% and the [`step`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=step) is set to 10% per increment/decrement.  
+We also bind the slider [`value`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=value) to a property in our component called "completion", using Angular [`ngModel`](https://angular.io/guide/built-in-directives#ngModel), to allow two way binding with an input component.
 
 ```html
 <!--sample.component.html-->
@@ -264,7 +264,7 @@ export class SliderSample3Component {
 
 ### Continuous Slider
 
-First, specify the slider type by setting the [`continuous`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#continuous) input to true. Next, define the minimum and maximum values using [`minValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#minValue) and [`maxValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#maxValue).  
+First, specify the slider type by setting the [`continuous`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=continuous) input to true. Next, define the minimum and maximum values using [`minValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=minValue) and [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=maxValue).  
 
 > [!NOTE]
 > Continuous slider doesn't have step indicators over the track and visible thumb labels during interaction.
@@ -282,7 +282,7 @@ First, specify the slider type by setting the [`continuous`](https://www.infragi
 <label igxLabel for="slider">Volume: {{volume}}</label>
 ```
 
-Lets also bind the slider [`value`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#value) to a property in our component called "volume".
+Lets also bind the slider [`value`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=value) to a property in our component called "volume".
 
 ```typescript
 // sample.component.ts 
@@ -334,7 +334,7 @@ export class SliderSample2Component implements OnInit {
 
 ### Range Slider
 
-First, set the slider [`type`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#type) to [`RANGE`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/slidertype.html#range). Next, we bind the slider value to an object with properties for `lower` and `upper` values.
+First, set the slider [`type`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=type) to [`RANGE`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/slidertype.html#range). Next, we bind the slider value to an object with properties for `lower` and `upper` values.
 
 ```html
 <!--sample.component.html-->
@@ -440,8 +440,8 @@ export class SliderSample4Component {
 >[!NOTE]
 > When using a slider of type RANGE, binding to `ngModel` will work only in the direction of updating the model from the slider. In order to use two-way binding for both values, you can take advantage of the `lowerValue` and `upperValue` bindings.
 
-In some cases, values near to the minimum and maximum are not appropriate. You can further provide a useful range to limit the user choice along with setting [`minValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#minValue) and [`maxValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#maxValue).
-This can be done by setting [`lowerBound`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#lowerBound) and [`upperBound`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#upperBound). Now, the user will not be able to move the thumb in the range of 0 to 100 and in the range of 900 to 1000.
+In some cases, values near to the minimum and maximum are not appropriate. You can further provide a useful range to limit the user choice along with setting [`minValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=minValue) and [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=maxValue).
+This can be done by setting [`lowerBound`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=lowerBound) and [`upperBound`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=upperBound). Now, the user will not be able to move the thumb in the range of 0 to 100 and in the range of 900 to 1000.
 
 ```html
 <!--sample.component.html-->
@@ -505,10 +505,10 @@ We've seen only numbers in the thumbs so far, although there is another approach
 >[!NOTE]
 > Your array of primitive values should contains at least two values, otherwise `labelsView` won't be enabled.
 
-Once we have the definition that corresponds to the preceding rule, we are ready to give it to the `labels` **input** property, which would handle our data by spreading it equally over the `track`. Now, label values represent every primitive value we've defined in our collection. They could be accessed at any time through the API by requesting either [lowerLabel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#lowerLabel) or [upperLabel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#upperLabel).
+Once we have the definition that corresponds to the preceding rule, we are ready to give it to the `labels` **input** property, which would handle our data by spreading it equally over the `track`. Now, label values represent every primitive value we've defined in our collection. They could be accessed at any time through the API by requesting either [lowerLabel](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=lowerLabel) or [upperLabel](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=upperLabel).
 
 >[!NOTE]
-> Please take into account the fact that when [`labelsView`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#labelsView) is enabled, your control over the [`maxValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#maxValue), [`minValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#minValue) and [`step`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#step) inputs will be taken.
+> Please take into account the fact that when [`labelsView`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=labelsView) is enabled, your control over the [`maxValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=maxValue), [`minValue`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=minValue) and [`step`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=step) inputs will be taken.
 
 Another important factor is the way that the `slider` handles the update process when `labelsView` is enabled.
 It simply operates with the `index(es)` of the collection, which respectively means that the `value`, `lowerBound` and `upperBound` **properties** control the `track` by following/setting them (`index(es)`).
@@ -568,12 +568,12 @@ export class SliderSample6Component {
 ```
 
 
-As we see from the sample above, setting `boundaries` is still a valid operation. Addressing [`lowerBound`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#lowerbound) and [`upperBound`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#upperbound), limits the range you can slide through.
+As we see from the sample above, setting `boundaries` is still a valid operation. Addressing [`lowerBound`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=lowerbound) and [`upperBound`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=upperbound), limits the range you can slide through.
 
 ### Labels templating
 
-During the showcase above, we've intentionally shown how we can provide our custom `label` template, by using both  [igxSliderThumbFrom](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxSliderThumbFrom.html) and [igxSliderThumbTo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxSliderThumbTo.html) directives. Intuitively we can assume that [igxSliderThumbFrom](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxSliderThumbFrom.html) corresponds to the  [lowerLabel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#lowerLabel) and [igxSliderThumbTo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxSliderThumbTo.html) to the [upperLabel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#upperLabel). <br>
-The [context](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#context) here gives us implicitly a reference to the `value` **input** property and explicitly a reference to the `labels` **input** if `labelsView` is enabled.
+During the showcase above, we've intentionally shown how we can provide our custom `label` template, by using both  [igxSliderThumbFrom](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxSliderThumbFrom.html) and [igxSliderThumbTo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxSliderThumbTo.html) directives. Intuitively we can assume that [igxSliderThumbFrom](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxSliderThumbFrom.html) corresponds to the  [lowerLabel](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=lowerLabel) and [igxSliderThumbTo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/igxSliderThumbTo.html) to the [upperLabel](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=upperLabel). <br>
+The [context](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=context) here gives us implicitly a reference to the `value` **input** property and explicitly a reference to the `labels` **input** if `labelsView` is enabled.
 
 ```html
   <ng-template igxSliderThumbFrom let-value let-labels="labels">
@@ -590,9 +590,9 @@ The [context](https://www.infragistics.com/products/ignite-ui-angular/docs/types
 
 ### Enable ticks
 
-We can enable the **ticks** of the slider by setting the [`showTicks`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#showTicks) to **true**.
-Use [`primaryTicks`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#primaryTicks) to set the number of primary ticks.  
-Use [`SecondaryTicks`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#secondaryTicks) to set the number of secondary ticks.
+We can enable the **ticks** of the slider by setting the [`showTicks`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=showTicks) to **true**.
+Use [`primaryTicks`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=primaryTicks) to set the number of primary ticks.  
+Use [`SecondaryTicks`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=secondaryTicks) to set the number of secondary ticks.
 
 ```html
 <!--sample.component.html-->
@@ -643,7 +643,7 @@ export class SliderDiscreteTicksBottomComponent {
 
 ### Labels orientation and visibility
 
-In the following sample we disable all **secondary labels** by setting [`secondaryTickLabels`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#secondaryTickLabels) to **false**.  
+In the following sample we disable all **secondary labels** by setting [`secondaryTickLabels`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=secondaryTickLabels) to **false**.  
 
 ```html
 <igx-slider
@@ -659,7 +659,7 @@ In the following sample we disable all **secondary labels** by setting [`seconda
 </igx-slider>
 ```
 
-We also rotate all viable labels by setting the [`TickLabelsOrientation`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/ticklabelsorientation.html#range) to [`BottomToTop`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/ticklabelsorientation.html)
+We also rotate all viable labels by setting the [`TickLabelsOrientation`](mcp:get_api_reference?platform=angular&component=TickLabelsOrientation&member=range) to [`BottomToTop`](mcp:get_api_reference?platform=angular&component=TickLabelsOrientation)
 
 ```
 ```typescript
@@ -733,7 +733,7 @@ Let’s move on and see how to change the position of the **ticks**.
 </div>
 ```
 
-The position change has come from the [`ticksOrientation`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#ticksOrientation) input, which is changed from **Bottom**(default) to **Mirror**.
+The position change has come from the [`ticksOrientation`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=ticksOrientation) input, which is changed from **Bottom**(default) to **Mirror**.
 This mirrors the visualization of the **ticks** and displays them above and below the slider.
 
 ```typescript
@@ -781,7 +781,7 @@ export class SliderSecondaryTicksMirrorComponent {
 >
 ### Orientation
 
-> When the [`ticksOrientation`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#ticksOrientation) is set to **Top** or **Mirror** and there are visible **tick labels** the **thumb label** is hidden intentionally. This prevents a bad user experience and overlapping between the two labels.
+> When the [`ticksOrientation`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=ticksOrientation) is set to **Top** or **Mirror** and there are visible **tick labels** the **thumb label** is hidden intentionally. This prevents a bad user experience and overlapping between the two labels.
 
 ### Slider ticks with labels view
 
@@ -832,7 +832,7 @@ export class SliderTimeframeComponent {
 ```
 
 
-Here, the [`primaryTicks`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#primaryTicks) input has not been set, because it won’t be reflected in any way. The **length** of the collection takes precedence over it. This does not mean that [`secondaryTicks`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#secondaryTicks) cannot be set. All **secondary ticks** will be empty (without any **labels**).
+Here, the [`primaryTicks`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=primaryTicks) input has not been set, because it won’t be reflected in any way. The **length** of the collection takes precedence over it. This does not mean that [`secondaryTicks`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=secondaryTicks) cannot be set. All **secondary ticks** will be empty (without any **labels**).
 
 ### Template labels
 
@@ -849,7 +849,7 @@ Lastly, we will see how we can provide a custom template for the **tick labels**
 </igx-slider>
 ```
 
-Applying [`IgxTickLabelTemplateDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxticklabeltemplatedirective.html) to the `ng-template` assigns the template over all **tick labels**.
+Applying [`IgxTickLabelTemplateDirective`](mcp:get_api_reference?platform=angular&component=IgxTickLabelTemplateDirective) to the `ng-template` assigns the template over all **tick labels**.
 
 > [!NOTE]
 > The [`context`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtickscomponent.html#context) executes per each tick.
@@ -859,7 +859,7 @@ Which means that it provides a reference to:
 - each corresponding tick **value**
 - If that tick is **primary**.
 - **tick** index.
-- And the [`labels`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html#labels) collection if we have such one.
+- And the [`labels`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=labels) collection if we have such one.
 
 ```typescript
   public tickLabel(value, primary, index) {
@@ -1213,12 +1213,12 @@ At the end your slider should look like this:
 
 <div class="divider--half"></div>
 
-- [IgxSliderComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxslidercomponent.html)
+- [IgxSliderComponent](mcp:get_api_reference?platform=angular&component=IgxSliderComponent)
 - [IgxSliderComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-slider-theme)
 - [SliderType](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/variables/IgxSliderType-1.html)
-- [IRangeSliderValue](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/irangeslidervalue.html)
-- [TicksOrientation](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxSliderComponent.html#ticksOrientation)
-- [TickLabelsOrientation](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxSliderComponent.html#tickLabelsOrientation)
+- [IRangeSliderValue](mcp:get_api_reference?platform=angular&component=IRangeSliderValue)
+- [TicksOrientation](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=ticksOrientation)
+- [TickLabelsOrientation](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=tickLabelsOrientation)
 
 <div class="divider--half"></div>
 

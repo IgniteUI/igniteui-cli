@@ -13,7 +13,7 @@ _premium: true
 
 # Blazor Grid Advanced Filtering
 
-The Ignite UI for Blazor Advanced Filtering in Blazor Grid allows you to manipulate data by providing you with a dialog where you can create different groups with filtering conditions across all columns in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
+The Ignite UI for Blazor Advanced Filtering in Blazor Grid allows you to manipulate data by providing you with a dialog where you can create different groups with filtering conditions across all columns in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
 
 ## Blazor Grid Advanced Filtering Example
 
@@ -163,7 +163,7 @@ public class NwindData
 
 In order to open the advanced filtering dialog, the **Advanced Filtering** button in the grid toolbar should be clicked. If no advanced filter is applied, you should start with creating a group of filtering conditions linked with **AND** or **OR**. After that, you can add filtering conditions or sub-groups.
 
-In order to add a filtering condition, you have to select any of the [`Filterable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Filterable) columns, an operand based on the column [`DataType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_DataType) and a value if the operand is not unary. Once the condition is committed, a chip with the condition information appears. By hovering or clicking the chip, you have the options to modify it or add another condition or group right after it.
+In order to add a filtering condition, you have to select any of the [`Filterable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Filterable) columns, an operand based on the column [`DataType`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=DataType) and a value if the operand is not unary. Once the condition is committed, a chip with the condition information appears. By hovering or clicking the chip, you have the options to modify it or add another condition or group right after it.
 
 If you select more than one filtering condition chip, a context menu appears with options to create a group or delete the filters. If you choose to create a group with the selected conditions, the newly created group will appear where the topmost selected condition was placed.
 
@@ -173,7 +173,7 @@ In order to filter the data once you are ready with creating the filtering condi
 
 ## Usage
 
-To enable the advanced filtering, the [`AllowAdvancedFiltering`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_AllowAdvancedFiltering) input property should be set to **true**.
+To enable the advanced filtering, the [`AllowAdvancedFiltering`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AllowAdvancedFiltering) input property should be set to **true**.
 
 ```razor
 <IgbGrid Data=data AutoGenerate="true" AllowAdvancedFiltering="true">
@@ -183,12 +183,12 @@ To enable the advanced filtering, the [`AllowAdvancedFiltering`](https://www.inf
 
 <!-- ComponentEnd: Grid -->
 
-The advanced filtering generates a [`FilteringExpressionsTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_FilteringExpressionsTree) which is stored in the [`AdvancedFilteringExpressionsTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_AdvancedFilteringExpressionsTree) input property. You could use the [`AdvancedFilteringExpressionsTree`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_AdvancedFilteringExpressionsTree) property to set an initial state of the advanced filtering.
+The advanced filtering generates a [`FilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=FilteringExpressionsTree) which is stored in the [`AdvancedFilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AdvancedFilteringExpressionsTree) input property. You could use the [`AdvancedFilteringExpressionsTree`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=AdvancedFilteringExpressionsTree) property to set an initial state of the advanced filtering.
 
-In case you don't want to show the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) toolbar, you could use the [`OpenAdvancedFilteringDialog`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_OpenAdvancedFilteringDialog) and [`CloseAdvancedFilteringDialog`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_CloseAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
+In case you don't want to show the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) toolbar, you could use the [`OpenAdvancedFilteringDialog`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=OpenAdvancedFilteringDialog) and [`CloseAdvancedFilteringDialog`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=CloseAdvancedFilteringDialog) methods to open and close the advanced filtering dialog programmatically.
 
 > [!Note]
-> You can enable both the **QuickFilter**/**ExcelStyleFilter** and the advanced filtering user interfaces in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) is the intersection between the results of the two filters.
+> You can enable both the **QuickFilter**/**ExcelStyleFilter** and the advanced filtering user interfaces in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). Both filtering user interfaces will work independently of one another. The final filtered result in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) is the intersection between the results of the two filters.
 
 ## Styling
 
@@ -351,8 +351,8 @@ public class NwindData
 
 ## API References
 
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ## Additional Resources
 

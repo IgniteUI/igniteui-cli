@@ -127,7 +127,7 @@ export class AppModule {}
 
 ### Template Configuration
 
-Next, we need to create the drop-down component's template, looping through the data using [`*igxFor`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html) instead of `*ngFor`. The `*igxFor` directive needs some additional configuration in order to properly display all of the items:
+Next, we need to create the drop-down component's template, looping through the data using [`*igxFor`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective) instead of `*ngFor`. The `*igxFor` directive needs some additional configuration in order to properly display all of the items:
 
 ```html
 <!-- drop-down-virtual.component.html -->
@@ -159,15 +159,15 @@ The additional parameters passed to the `*igxFor` directive are:
 - `containerSize` - the size of the virtualized container (in `px`). This needs to be enforced on the wrapping `<div>` as well
 - `itemSize` - the size of the items that will be displayed (in `px`)
 
-In order to assure uniqueness of the items, pass `item` inside of the [`value`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownitemcomponent.html#value) input and `index` inside of the [`index`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownitemcomponent.html#index) input of the `igx-drop-down-item`.
+In order to assure uniqueness of the items, pass `item` inside of the [`value`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=value) input and `index` inside of the [`index`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=index) input of the `igx-drop-down-item`.
 To preserve selection while scrolling, the drop-down item needs to have a reference to the data items it is bound to.
 
 > [!NOTE]
-> For the drop-down to work with a virtualized list of items, [`value`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownitemcomponent.html#value) and [`index`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdownitemcomponent.html#index) inputs **must** be passed to all items.
+> For the drop-down to work with a virtualized list of items, [`value`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=value) and [`index`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent&member=index) inputs **must** be passed to all items.
 > [!NOTE]
 > It is strongly advised for each item to have an unique value passed to the `[value]` input. Otherwise, it might lead to unexpected results (incorrect selection).
 > [!NOTE]
-> When the drop-down uses virtualized items, the type of [`dropdown.selectedItem`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html#selecteditem) becomes `{ value: any, index: number }`, where `value` is a reference to the data item passed inside of the `[value]` input and `index` is the item's index in the data set
+> When the drop-down uses virtualized items, the type of [`dropdown.selectedItem`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=selecteditem) becomes `{ value: any, index: number }`, where `value` is a reference to the data item passed inside of the `[value]` input and `index` is the item's index in the data set
 
 
 ### Component Definition
@@ -331,7 +331,7 @@ export class DropDownRemoteComponent implements OnInit, OnDestroy {
 }
 ```
 
-Inside of the `ngAfterViewInit` hook, we call to get data for the initial state and subscribe to the `igxForOf` directive's [`chunkPreload`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html#chunkPreload) emitter. This subscription will be responsible for fetching data every time the loaded chunk changes. We use `pipe(takeUntil(this.destroy$))` so we can easily unsubscribe from the emitter on component destroy.
+Inside of the `ngAfterViewInit` hook, we call to get data for the initial state and subscribe to the `igxForOf` directive's [`chunkPreload`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective&member=chunkPreload) emitter. This subscription will be responsible for fetching data every time the loaded chunk changes. We use `pipe(takeUntil(this.destroy$))` so we can easily unsubscribe from the emitter on component destroy.
 
 ### Remote Virtualization - Demo
 
@@ -467,13 +467,13 @@ Using the drop-down with a virtualized list of items enforces some limitations. 
 - The drop-down items that are being looped need to be passed in a wrapping element (e.g. `<div>`) which has the following css: `overflow: hidden` and `height` equal to `containerSize` in `px`
 - `<igx-drop-down-item-group>` cannot be used for grouping items when the list is virtualized. Use the `isHeader` property instead
 - The `items` accessor will return only the list of non-header drop-down items that are currently in the virtualized view.
-- [`dropdown.selectedItem`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html#selectedItem) is of type `{ value: any, index: number }`
-- The object emitted by [`selection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html#selection) changes to `const emittedEvent: { newSelection: { value: any, index: number }, oldSelection: { value: any, index: number }, cancel: boolean, }`
+- [`dropdown.selectedItem`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=selectedItem) is of type `{ value: any, index: number }`
+- The object emitted by [`selection`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=selection) changes to `const emittedEvent: { newSelection: { value: any, index: number }, oldSelection: { value: any, index: number }, cancel: boolean, }`
 - `dropdown.setSelectedItem` should be called with the **item's index in the data set**
 - setting the drop-down item's `[selected]` input will **not** mark the item in the drop-down selection
 
 ## API References
 
-- [IgxForOfDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxforofdirective.html)
-- [IgxDropDownComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html)
+- [IgxForOfDirective](mcp:get_api_reference?platform=angular&component=IgxForOfDirective)
+- [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
 

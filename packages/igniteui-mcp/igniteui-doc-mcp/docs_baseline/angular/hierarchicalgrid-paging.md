@@ -90,7 +90,7 @@ export class HGridPagingSampleComponent {
 }
 ```
 <div class="divider--half"></div>
-Adding a [`igx-paginator`](../paginator.md) component will control whether the feature is present, you can enable/disable it by using a simple `*ngIf` with a toggle property. The [`perPage`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxPaginatorComponent.html#perPage) input controls the visible records per page. Let’s update our Hierarchical Grid to enable paging:
+Adding a [`igx-paginator`](../paginator.md) component will control whether the feature is present, you can enable/disable it by using a simple `*ngIf` with a toggle property. The [`perPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPage) input controls the visible records per page. Let’s update our Hierarchical Grid to enable paging:
 ```html
 <igx-hierarchical-grid #hierarchicalGrid [data]="data" [height]="'500px'" [width]="'100%'">
     <igx-paginator [perPage]="10">
@@ -482,7 +482,7 @@ $dark-drop-down-theme: drop-down-theme(
 }
 ```
 ## API References
-- [IgxHierarchicalGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
+- [IgxHierarchicalGridComponent API](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
 - [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
 - [IgxGridPaginator Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-paginator-theme)
 ## Additional Resources

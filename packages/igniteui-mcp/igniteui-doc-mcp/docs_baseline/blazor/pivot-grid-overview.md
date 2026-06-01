@@ -14,8 +14,8 @@ The Blazor Pivot Grid is used for summing up and representing voluminous multidi
 
 The Blazor Pivot Grid presents data in a pivot table and helps users performing complex analysis on the supplied data set. This sophisticated Pivot Grid control is used for organizing, summarizing, and filtering large volumes of data which is later displayed in a cross-table format. Key features of an Blazor Pivot Grid are row dimensions, column dimensions, aggregations, and filters.
 
-The [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html) gives the ability to users to configure and display their data in a multi-dimensional pivot table structure.
-The rows and columns represent distinct data groups, and the data cell values represent aggregations. This allows complex data analysis based on a simple flat data set. The [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html) is a feature-rich pivot table that provides easy configuration of the different dimensions and values as well as additional data operations on them like filtering and sorting.
+The [`IgbPivotGrid`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid) gives the ability to users to configure and display their data in a multi-dimensional pivot table structure.
+The rows and columns represent distinct data groups, and the data cell values represent aggregations. This allows complex data analysis based on a simple flat data set. The [`IgbPivotGrid`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid) is a feature-rich pivot table that provides easy configuration of the different dimensions and values as well as additional data operations on them like filtering and sorting.
 
 ## Blazor Pivot Grid Example
 
@@ -185,7 +185,7 @@ public class PivotSalesData
 
 ## Getting Started With Blazor Pivot Grid
 
-The Blazor PivotGrid can be configured via the [`PivotConfiguration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_PivotConfiguration) property.
+The Blazor PivotGrid can be configured via the [`PivotConfiguration`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid&member=PivotConfiguration) property.
 
 ```razor
 <IgbPivotGrid PivotConfiguration="PivotConfiguration" Data="PivotData">
@@ -198,13 +198,13 @@ A filter can also be defined via the **filters** configuration property. It can 
 
 ### Dimensions Configuration
 
-Each basic dimension configuration requires a [`MemberName`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDimension.html#IgniteUI_Blazor_Controls_IgbPivotDimension_MemberName) that matches a field from the provided **data**.
+Each basic dimension configuration requires a [`MemberName`](mcp:get_api_reference?platform=blazor&component=IgbPivotDimension&member=MemberName) that matches a field from the provided **data**.
 
 Multiple sibling dimensions can be defined, which creates a more complex nested group in the related row or column dimension area.
 
 The dimensions can be reordered or moved from one area to another via their corresponding chips using drag & drop.
 
-A dimension can also describe an expandable hierarchy via the [`ChildLevel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDimension.html#IgniteUI_Blazor_Controls_IgbPivotDimension_ChildLevel) property, for example:
+A dimension can also describe an expandable hierarchy via the [`ChildLevel`](mcp:get_api_reference?platform=blazor&component=IgbPivotDimension&member=ChildLevel) property, for example:
 
 ```razor
 @code {
@@ -219,13 +219,13 @@ A dimension can also describe an expandable hierarchy via the [`ChildLevel`](htt
 }
 ```
 
-In this case the dimension renders an expander in the related section of the grid (row or column) and allows the children to be expanded or collapsed as part of the hierarchy. By default the row dimensions are initially expanded. This behavior can be controlled with the [`DefaultExpandState`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_DefaultExpandState) property of the Pivot Grid.
+In this case the dimension renders an expander in the related section of the grid (row or column) and allows the children to be expanded or collapsed as part of the hierarchy. By default the row dimensions are initially expanded. This behavior can be controlled with the [`DefaultExpandState`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid&member=DefaultExpandState) property of the Pivot Grid.
 
 ### Predefined Dimensions
 
 As part of the Pivot Grid some additional predefined dimensions are exposed for easier configuration:
 
-- [`IgbPivotDateDimension`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDateDimension.html)
+- [`IgbPivotDateDimension`](mcp:get_api_reference?platform=blazor&component=IgbPivotDateDimension)
     Can be used for date fields. Describes the following hierarchy by default:
   - All Periods
   - Years
@@ -281,7 +281,7 @@ A value configuration requires a **member** that matches a field from the provid
 - `PivotAggregate` - for any other data types. This is the base aggregation.
     Contains the following aggregation functions: `COUNT`.
 
-The current aggregation function can be changed at runtime using the value chip's drop-down. By default, it displays a list of available aggregations based on the field's data type. A custom list of aggregations can also be set via the [`AggregateList`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotValue.html#IgniteUI_Blazor_Controls_IgbPivotValue_AggregateList) property, for example:
+The current aggregation function can be changed at runtime using the value chip's drop-down. By default, it displays a list of available aggregations based on the field's data type. A custom list of aggregations can also be set via the [`AggregateList`](mcp:get_api_reference?platform=blazor&component=IgbPivotValue&member=AggregateList) property, for example:
 
 ```razor
 @code {
@@ -300,12 +300,12 @@ The current aggregation function can be changed at runtime using the value chip'
     pivotConfiguration1.Values.Add(pivotValue);
 ```
 
-The pivot value also provides a [`DisplayName`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDateDimension.html#IgniteUI_Blazor_Controls_IgbPivotDateDimension_DisplayName) property. It can be used to display a custom name for this value in the column header.
+The pivot value also provides a [`DisplayName`](mcp:get_api_reference?platform=blazor&component=IgbPivotDateDimension&member=DisplayName) property. It can be used to display a custom name for this value in the column header.
 
 ### Enable Property
 
-[`PivotConfiguration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_PivotConfiguration) is the interface that describes the current state of the [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html) component. With it the developer can declare fields of the data as **rows**, **columns**, **filters** or **values**. The configuration allows enabling or disabling each of these elements separately. Only enabled elements are included in the current state of the Pivot Grid. The [`IgbPivotDataSelector`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDataSelector.html) component utilizes the same configuration and shows a list of all elements - enabled and disabled. For each of them there is a checkbox in the appropriate state. End-users can easily tweak the pivot state by toggling the different elements using these checkboxes.
-The `Enable` property controls if a given [`IgbPivotDimension`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDimension.html) or [`IgbPivotValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotValue.html) is active and takes part in the pivot view rendered by the Pivot Grid.
+[`PivotConfiguration`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid&member=PivotConfiguration) is the interface that describes the current state of the [`IgbPivotGrid`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid) component. With it the developer can declare fields of the data as **rows**, **columns**, **filters** or **values**. The configuration allows enabling or disabling each of these elements separately. Only enabled elements are included in the current state of the Pivot Grid. The [`IgbPivotDataSelector`](mcp:get_api_reference?platform=blazor&component=IgbPivotDataSelector) component utilizes the same configuration and shows a list of all elements - enabled and disabled. For each of them there is a checkbox in the appropriate state. End-users can easily tweak the pivot state by toggling the different elements using these checkboxes.
+The `Enable` property controls if a given [`IgbPivotDimension`](mcp:get_api_reference?platform=blazor&component=IgbPivotDimension) or [`IgbPivotValue`](mcp:get_api_reference?platform=blazor&component=IgbPivotValue) is active and takes part in the pivot view rendered by the Pivot Grid.
 
 ### Full Configuration Code
 
@@ -499,19 +499,19 @@ public class PivotDataFlat
 
 ### Auto generate configuration
 
-The [`AutoGenerateConfig`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_AutoGenerateConfig) property automatically generates dimensions and values based on the data source fields:
+The [`AutoGenerateConfig`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid&member=AutoGenerateConfig) property automatically generates dimensions and values based on the data source fields:
 
 - Numeric Fields:
-  - Created as [`IgbPivotValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotValue.html) using `PivotNumericAggregate.sum` aggregator.
+  - Created as [`IgbPivotValue`](mcp:get_api_reference?platform=blazor&component=IgbPivotValue) using `PivotNumericAggregate.sum` aggregator.
   - Added to the values collection and enabled by default.
 
 - Non-Numeric Fields:
-  - Created as [`IgbPivotDimension`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDimension.html).
+  - Created as [`IgbPivotDimension`](mcp:get_api_reference?platform=blazor&component=IgbPivotDimension).
   - Disabled by default.
   - Added to the columns collection.
 
 - Date Fields(only the first `date` field is enabled, the other `date` fields apply non-numeric fields rule):
-  - Created as [`IgbPivotDateDimension`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDateDimension.html)
+  - Created as [`IgbPivotDateDimension`](mcp:get_api_reference?platform=blazor&component=IgbPivotDateDimension)
   - Enabled by default
   - added to the rows collection.
 
@@ -536,7 +536,7 @@ A more detailed view of how they are used can be seen bellow in example data, wh
 ];
 ```
 
-All of these are stored in the **pivotKeys** property which is part of the [`PivotConfiguration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_PivotConfiguration) and can be used to change the default pivot keys.
+All of these are stored in the **pivotKeys** property which is part of the [`PivotConfiguration`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid&member=PivotConfiguration) and can be used to change the default pivot keys.
 
 - **children** - Field that stores children for hierarchy building. It represents a map from grouped values and all the pivotGridRecords that are based on that value. It can be utilized in very specific scenarios, where there is a need to do something while creating the hierarchies. No need to change this for common usage.
 - **records** - Field that stores reference to the original data records. Can be seen in the example from above - **AllProducts_records**. Avoid setting fields in the data with the same name as this property. If your data records has **records** property, you can specify different and unique value for it using the **pivotKeys**.
@@ -563,7 +563,7 @@ The default values are:
 > [!Note]
 > If you have data field values that contain the default keys, make sure to change the separators that match to any other symbols that you are not currently using. Otherwise could lead to unexpected behavior in calculating and showing the aggregated values.
 
-When overriding the [`IgbPivotKeys`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotKeys.html) in Blazor, currently you will need to define all other keys, since assigning a new PivotKeys object, it replaces completely the default ones:
+When overriding the [`IgbPivotKeys`](mcp:get_api_reference?platform=blazor&component=IgbPivotKeys) in Blazor, currently you will need to define all other keys, since assigning a new PivotKeys object, it replaces completely the default ones:
 
 ```razor
 @code {
@@ -584,17 +584,17 @@ When overriding the [`IgbPivotKeys`](https://www.infragistics.com/blazor/docs/ap
 
 |Limitation|Description|
 |--- |--- |
-| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`Columns`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_Columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
-| Setting duplicate [`MemberName`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDimension.html#IgniteUI_Blazor_Controls_IgbPivotDimension_MemberName) or [`Member`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotValue.html#IgniteUI_Blazor_Controls_IgbPivotValue_Member) property values for dimensions/values. | These properties should be unique for each dimension/value. Duplication may result in loss of data from the final result. |
+| Setting columns declaratively is not supported. | The Pivot grid generates its columns based on the [`Columns`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid&member=Columns) configuration, so setting them declaratively, like in the base grid, is not supported. Such columns are disregarded. |
+| Setting duplicate [`MemberName`](mcp:get_api_reference?platform=blazor&component=IgbPivotDimension&member=MemberName) or [`Member`](mcp:get_api_reference?platform=blazor&component=IgbPivotValue&member=Member) property values for dimensions/values. | These properties should be unique for each dimension/value. Duplication may result in loss of data from the final result. |
 | Row Selection is only supported in **Single** mode. | Multiple selection is currently not supported. |
 
 ## API References
 
-- [`PivotConfiguration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html#IgniteUI_Blazor_Controls_IgbPivotGrid_PivotConfiguration)
-- [`IgbPivotGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotGrid.html)
-- [`IgbPivotDataSelector`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDataSelector.html)
-- [`IgbPivotDateDimension`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbPivotDateDimension.html)
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
+- [`PivotConfiguration`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid&member=PivotConfiguration)
+- [`IgbPivotGrid`](mcp:get_api_reference?platform=blazor&component=IgbPivotGrid)
+- [`IgbPivotDataSelector`](mcp:get_api_reference?platform=blazor&component=IgbPivotDataSelector)
+- [`IgbPivotDateDimension`](mcp:get_api_reference?platform=blazor&component=IgbPivotDateDimension)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 
 <!-- ## Additional Resources -->
 

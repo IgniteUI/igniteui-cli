@@ -49,14 +49,14 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrRipple`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrripple.html) and its necessary CSS, like so:
+You will then need to import the [`IgrRipple`](mcp:get_api_reference?platform=react&component=IgrRipple) and its necessary CSS, like so:
 
 ```tsx
 import { IgrRipple } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-The simplest way to start using the [`IgrRipple`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrripple.html) is as follows:
+The simplest way to start using the [`IgrRipple`](mcp:get_api_reference?platform=react&component=IgrRipple) is as follows:
 
 ```tsx
 <IgrButton>
@@ -65,7 +65,7 @@ The simplest way to start using the [`IgrRipple`](https://www.infragistics.com/p
 </IgrButton>
 ```
 
-You can add the [`IgrRipple`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrripple.html) component to any web element as long as its CSS `position` property is set to any other value than `static`;
+You can add the [`IgrRipple`](mcp:get_api_reference?platform=react&component=IgrRipple) component to any web element as long as its CSS `position` property is set to any other value than `static`;
 
 ## Examples
 
@@ -113,8 +113,8 @@ root.render(<RippleColor/>);
 
 ## API References
 
-- [`IgrButton`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrbutton.html)
-- [`IgrRipple`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrripple.html)
+- [`IgrButton`](mcp:get_api_reference?platform=react&component=IgrButton)
+- [`IgrRipple`](mcp:get_api_reference?platform=react&component=IgrRipple)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

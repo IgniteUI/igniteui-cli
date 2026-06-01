@@ -15,7 +15,7 @@ The Ignite UI for Blazor Bubble Chart is a type of [Scatter Chart](scatter-chart
 
 ## Blazor Bubble Chart Example
 
-You can create Ignite UI for Blazor Bubble Chart in [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html) control using the [`IgbBubbleSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html) and two numeric axes, as shown in the example below.
+You can create Ignite UI for Blazor Bubble Chart in [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control using the [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries) and two numeric axes, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -254,7 +254,7 @@ public class CountryStatsEurope
 
 ## Blazor Bubble Chart with Single Series
 
-You can bind your data to [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataSource) property of [`IgbBubbleSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html) and map data columns using its [`XMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_XMemberPath), [`YMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_YMemberPath), [`RadiusMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_RadiusMemberPath) properties, as shown in the example below:
+You can bind your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource) property of [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries) and map data columns using its [`XMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=XMemberPath), [`YMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=YMemberPath), [`RadiusMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=RadiusMemberPath) properties, as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -424,7 +424,7 @@ public class WorldStats
 
 ## Blazor Bubble Chart with Multiple Series
 
-In Blazor Bubble Chart, binding multiple data sources works by setting each new data source to [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataSource) property of a additional [`IgbBubbleSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html), as shown in the example below:
+In Blazor Bubble Chart, binding multiple data sources works by setting each new data source to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource) property of a additional [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -663,7 +663,7 @@ public class CountryStatsEurope
 
 ## Blazor Bubble Chart Styling
 
-In Blazor Bubble Chart, you can customize shape of bubble markers using [`MarkerType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_MarkerType) property, their size with [`RadiusScale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_RadiusScale) property, and their appearance using [`MarkerBrush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_MarkerBrush), [`MarkerOutline`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_MarkerOutline), [`MarkerThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_MarkerThickness) properties. In addition, you can also color bubble markers based on a data column using [`FillMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_FillMemberPath) and [`FillScale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_FillScale) properties. In this example, usage of above properties is demonstrated.
+In Blazor Bubble Chart, you can customize shape of bubble markers using [`MarkerType`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerType) property, their size with [`RadiusScale`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=RadiusScale) property, and their appearance using [`MarkerBrush`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerBrush), [`MarkerOutline`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerOutline), [`MarkerThickness`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerThickness) properties. In addition, you can also color bubble markers based on a data column using [`FillMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=FillMemberPath) and [`FillScale`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=FillScale) properties. In this example, usage of above properties is demonstrated.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -845,17 +845,17 @@ public class WorldStats
 
 The following table lists API members mentioned in the above sections:
 
-- [`IgbDataChart`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbDataChart.html)
-- [`IgbBubbleSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html)
-- [`IgbScatterSeries`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbScatterSeries.html)
-- [`DataSource`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSeries.html#IgniteUI_Blazor_Controls_IgbSeries_DataSource)
-- [`FillMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_FillMemberPath)
-- [`FillScale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_FillScale)
-- [`MarkerType`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_MarkerType)
-- [`MarkerBrush`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_MarkerBrush)
-- [`MarkerOutline`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_MarkerOutline)
-- [`MarkerThickness`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_MarkerThickness)
-- [`RadiusScale`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_RadiusScale)
-- [`RadiusMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_RadiusMemberPath)
-- [`XMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_XMemberPath)
-- [`YMemberPath`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBubbleSeries.html#IgniteUI_Blazor_Controls_IgbBubbleSeries_YMemberPath)
+- [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
+- [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries)
+- [`IgbScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSeries)
+- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataSource)
+- [`FillMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=FillMemberPath)
+- [`FillScale`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=FillScale)
+- [`MarkerType`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerType)
+- [`MarkerBrush`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerBrush)
+- [`MarkerOutline`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerOutline)
+- [`MarkerThickness`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerThickness)
+- [`RadiusScale`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=RadiusScale)
+- [`RadiusMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=RadiusMemberPath)
+- [`XMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=XMemberPath)
+- [`YMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=YMemberPath)

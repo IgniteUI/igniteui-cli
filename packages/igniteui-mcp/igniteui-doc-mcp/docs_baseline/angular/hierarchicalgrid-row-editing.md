@@ -103,7 +103,7 @@ import { IgxHierarchicalGridModule } from 'igniteui-angular';
 })
 export class AppModule {}
 ```
-Then define a Hierarchical Grid with bound data source and [`rowEditable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowEditable) set to true:
+Then define a Hierarchical Grid with bound data source and [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowEditable) set to true:
 ```html
 <igx-hierarchical-grid [data]="localdata" [autoGenerate]="false" [rowEditable]="true">
     <igx-column field="Artist" [editable]="true" [dataType]="'string'"></igx-column>
@@ -138,7 +138,7 @@ Then define a Hierarchical Grid with bound data source and [`rowEditable`](https
 > [!NOTE]
 > Setting primary key is mandatory for row editing operations.
 > [!NOTE]
-> It's not needed to enable editing for individual columns. Using the [`rowEditable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowEditable) property in the Hierarchical Grid, will mean that all rows, with defined `field` property, excluding primary one, will be editable. If you want to disable editing for specific column, then you set the [`editable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#editable) column's input to `false`.
+> It's not needed to enable editing for individual columns. Using the [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowEditable) property in the Hierarchical Grid, will mean that all rows, with defined `field` property, excluding primary one, will be editable. If you want to disable editing for specific column, then you set the [`editable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable) column's input to `false`.
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxRowIslandComponent, IgxHierarchicalGridComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -164,7 +164,7 @@ export class HGridRowEditingSampleComponent implements OnInit {
 }
 ```
 > [!NOTE]
-> The Hierarchical Grid uses internally a provider [`IgxBaseTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxbasetransactionservice.html) that holds pending cell changes, until row state submitted or cancelled.
+> The Hierarchical Grid uses internally a provider [`IgxBaseTransactionService`](mcp:get_api_reference?platform=angular&component=IgxBaseTransactionService) that holds pending cell changes, until row state submitted or cancelled.
 ## Positioning
 - Default position of the overlay will be below the row that is in edit mode
 - If there is no space below the row then overlay will appear above the row.
@@ -382,16 +382,16 @@ igx-hierarchical-grid {
   - Row Editing
   - Row Pinning
 ## API References
-- [rowEditable](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowEditable)
-- [onRowEditEnter](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#onRowEditEnter)
-- [onRowEdit](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#onRowEdit)
-- [rowEditDone](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#rowEditDone)
-- [onRowEditCancel](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#onRowEditCancel)
-- [endEdit](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#endEdit)
-- [field](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#field)
-- [editable](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#editable)
-- [primaryKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html#primaryKey)
-- [IgxHierarchicalGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicalgridcomponent.html)
+- [rowEditable](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowEditable)
+- [onRowEditEnter](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=onRowEditEnter)
+- [onRowEdit](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=onRowEdit)
+- [rowEditDone](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=rowEditDone)
+- [onRowEditCancel](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=onRowEditCancel)
+- [endEdit](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=endEdit)
+- [field](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=field)
+- [editable](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable)
+- [primaryKey](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=primaryKey)
+- [IgxHierarchicalGridComponent](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Build CRUD operations with igxGrid](../general/how-to/how-to-perform-crud.md)

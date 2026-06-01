@@ -32,12 +32,12 @@ describe('getApiReferenceSchema', () => {
   });
 
   it('rejects unknown platform', () => {
-    expect(getApiReferenceSchema.safeParse({ platform: 'blazor', component: 'IgbGrid' }).success).toBe(false);
     expect(getApiReferenceSchema.safeParse({ platform: 'vue', component: 'Component' }).success).toBe(false);
+    expect(getApiReferenceSchema.safeParse({ platform: 'svelte', component: 'Component' }).success).toBe(false);
   });
 
   it('accepts all valid platforms', () => {
-    for (const platform of ['angular', 'react', 'webcomponents'] as const) {
+    for (const platform of ['angular', 'react', 'webcomponents', 'blazor'] as const) {
       expect(getApiReferenceSchema.safeParse({ platform, component: 'IgxGrid' }).success).toBe(true);
     }
   });
@@ -50,6 +50,44 @@ describe('getApiReferenceSchema', () => {
 
   it('rejects invalid section values', () => {
     expect(getApiReferenceSchema.safeParse({ platform: 'angular', component: 'IgxGrid', section: 'slots' }).success).toBe(false);
+  });
+
+  it('accepts an optional member name', () => {
+    expect(getApiReferenceSchema.safeParse({
+      platform: 'angular',
+      component: 'IgxGridComponent',
+      member: 'rowSelection',
+    }).success).toBe(true);
+  });
+
+  it('leaves member undefined when omitted', () => {
+    const result = getApiReferenceSchema.parse({ platform: 'angular', component: 'IgxGrid' });
+    expect(result.member).toBeUndefined();
+  });
+
+  it('trims whitespace from member name', () => {
+    const result = getApiReferenceSchema.parse({
+      platform: 'angular',
+      component: 'IgxGrid',
+      member: '  checked  ',
+    });
+    expect(result.member).toBe('checked');
+  });
+
+  it('rejects empty member name', () => {
+    expect(getApiReferenceSchema.safeParse({
+      platform: 'angular',
+      component: 'IgxGrid',
+      member: '',
+    }).success).toBe(false);
+  });
+
+  it('rejects member name exceeding 128 characters', () => {
+    expect(getApiReferenceSchema.safeParse({
+      platform: 'angular',
+      component: 'IgxGrid',
+      member: 'x'.repeat(129),
+    }).success).toBe(false);
   });
 });
 
@@ -76,7 +114,14 @@ describe('searchApiSchema', () => {
   });
 
   it('rejects unknown platform', () => {
-    expect(searchApiSchema.safeParse({ query: 'grid', platform: 'blazor' }).success).toBe(false);
+    expect(searchApiSchema.safeParse({ query: 'grid', platform: 'vue' }).success).toBe(false);
+    expect(searchApiSchema.safeParse({ query: 'grid', platform: 'svelte' }).success).toBe(false);
+  });
+
+  it('accepts all valid platforms', () => {
+    for (const platform of ['angular', 'react', 'webcomponents', 'blazor'] as const) {
+      expect(searchApiSchema.safeParse({ query: 'grid', platform }).success).toBe(true);
+    }
   });
 
   it('platform is optional', () => {

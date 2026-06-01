@@ -13,7 +13,7 @@ The Ignite UI for React Date Range Picker is a lightweight component that includ
 
 ## Date Range Picker Example
 
-Below is a sample demonstrating the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) component in action, where a calendar pop-up allows users to select start and end dates.
+Below is a sample demonstrating the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) component in action, where a calendar pop-up allows users to select start and end dates.
 
 ```tsx
 import React from "react";
@@ -41,38 +41,38 @@ root.render(<DrpOverview />);
 
 ### Getting Started
 
-To start using the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html), you first need to install the Ignite UI for React by running the following command:
+To start using the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker), you first need to install the Ignite UI for React by running the following command:
 
 ```cmd
 npm install igniteui-react
 ```
 
-After that, you need to import the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) and its necessary CSS, as follows:
+After that, you need to import the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) and its necessary CSS, as follows:
 
 ```tsx
 import { IgrDateRangePicker } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-Now you can start with a basic configuration of the React [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html).
+Now you can start with a basic configuration of the React [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker).
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
 ## Usage
 
-The [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) allows users to select a start and end date either by choosing a date range from a dropdown/calendar pop-up or by typing directly into the input fields - one for the start date and one for the end date. The picker offers two modes for displaying date values: single input and two inputs. Both provide editing and masking capabilities.
+The [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) allows users to select a start and end date either by choosing a date range from a dropdown/calendar pop-up or by typing directly into the input fields - one for the start date and one for the end date. The picker offers two modes for displaying date values: single input and two inputs. Both provide editing and masking capabilities.
 
 When the calendar is visible, a date range can be selected by choosing both a start and end date. Selecting a date will set both the start and end date, and once a second date is chosen, it will set the end date. If a range is already selected, clicking any other date on the calendar will start a new range selection.
 
 ### Display Date Range Picker
 
-To instantiate a [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) in its default single input mode, use the following code:
+To instantiate a [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) in its default single input mode, use the following code:
 
 ```tsx
 <IgrDateRangePicker/>
 ```
 
-To switch the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) to use two inputs, set the [`useTwoInputs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#useTwoInputs) property to `true`.
+To switch the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) to use two inputs, set the [`useTwoInputs`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=useTwoInputs) property to `true`.
 
 ```tsx
 <IgrDateRangePicker useTwoInputs/>
@@ -80,7 +80,7 @@ To switch the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignit
 
 ### Value
 
-In addition to being selected or typed by the user, the range value of the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) can also be set using the [`value`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#value) property. It's important to note that the value must follow the format: **{ start: startDate, end: endDate }**, where `startDate` and `endDate` are `Date` objects representing the selected range.
+In addition to being selected or typed by the user, the range value of the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) can also be set using the [`value`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=value) property. It's important to note that the value must follow the format: **{ start: startDate, end: endDate }**, where `startDate` and `endDate` are `Date` objects representing the selected range.
 
 ```tsx
 const dateRangeRef = useRef<IgrDateRangePicker>();
@@ -103,13 +103,13 @@ In addition, the value can be set as attribute. In this case it should represent
 
 ### Read-only & Non-editable
 
-You can also make the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) read-only, which disables changing the range value through both typing and calendar selection, disables keyboard navigation, and makes the calendar and clear icons appear visually disabled. This is useful when the range is assigned via the value attribute and is intended to be display-only. To enable this behavior, simply set the [`readOnly`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#readOnly) property.
+You can also make the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) read-only, which disables changing the range value through both typing and calendar selection, disables keyboard navigation, and makes the calendar and clear icons appear visually disabled. This is useful when the range is assigned via the value attribute and is intended to be display-only. To enable this behavior, simply set the [`readOnly`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=readOnly) property.
 
 ```tsx
 <IgrDateRangePicker useTwoInputs readOnly/>
 ```
 
-Alternatively, you can use the [`nonEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#nonEditable) property, which, unlike [`readOnly`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#readOnly), only prevents editing the input(s) via typing, while still allowing selection through the calendar and clearing via the clear icon.
+Alternatively, you can use the [`nonEditable`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=nonEditable) property, which, unlike [`readOnly`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=readOnly), only prevents editing the input(s) via typing, while still allowing selection through the calendar and clearing via the clear icon.
 
 ```tsx
 <IgrDateRangePicker useTwoInputs nonEditable/>
@@ -117,7 +117,7 @@ Alternatively, you can use the [`nonEditable`](https://www.infragistics.com/prod
 
 ### Popup modes
 
-By default, when clicked, the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) opens its calendar pop-up in `dropdown` mode. Alternatively, the calendar can be opened in `dialog` mode by setting the [`mode`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#mode) property to `dialog`.
+By default, when clicked, the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) opens its calendar pop-up in `dropdown` mode. Alternatively, the calendar can be opened in `dialog` mode by setting the [`mode`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=mode) property to `dialog`.
 
 ```tsx
 <IgrDateRangePicker mode='dialog'/>
@@ -125,7 +125,7 @@ By default, when clicked, the [`IgrDateRangePicker`](https://www.infragistics.co
 
 ### Keyboard Navigation
 
-The [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) features intuitive keyboard navigation, allowing users to easily increment, decrement, or jump between different component parts, all without needing to use a mouse.
+The [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) features intuitive keyboard navigation, allowing users to easily increment, decrement, or jump between different component parts, all without needing to use a mouse.
 
 |Keys|Description|
 |----|-----------|
@@ -141,7 +141,7 @@ The [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react
 | <kbd>ALT</kbd> + <kbd>↓</kbd> | Opens the calendar dropdown |
 | <kbd>ALT</kbd> + <kbd>↑</kbd> | Closes the calendar dropdown |
 
-You can also navigate within the calendar pop-up using the keyboard. The navigation is the same as in the [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html) component.
+You can also navigate within the calendar pop-up using the keyboard. The navigation is the same as in the [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) component.
 
 |Keys|Description|
 |----|-----------|
@@ -159,7 +159,7 @@ You can also navigate within the calendar pop-up using the keyboard. The navigat
 
 ### Label
 
-You can define a label for the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) component using the [`label`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#label) property when it is in single input mode. In two inputs mode, you can use the [`labelStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#labelStart) and [`labelEnd`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#labelEnd) properties to define labels for the start and end date input fields, respectively.
+You can define a label for the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) component using the [`label`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=label) property when it is in single input mode. In two inputs mode, you can use the [`labelStart`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=labelStart) and [`labelEnd`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=labelEnd) properties to define labels for the start and end date input fields, respectively.
 
 ```tsx
 <IgrDateRangePicker label='Date Range'/>
@@ -171,22 +171,22 @@ You can define a label for the [`IgrDateRangePicker`](https://www.infragistics.c
 
 ### Format
 
-You also have the option to customize the date format displayed in the input fields. There are three properties available for this purpose: [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#locale), [`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#inputFormat), and [`displayFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#displayFormat).
+You also have the option to customize the date format displayed in the input fields. There are three properties available for this purpose: [`locale`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=locale), [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=inputFormat), and [`displayFormat`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=displayFormat).
 
-The [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#locale) property allows you to set the desired locale identifier, which determines how the date is formatted based on regional conventions.
+The [`locale`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=locale) property allows you to set the desired locale identifier, which determines how the date is formatted based on regional conventions.
 For example, to display the date in a Japanese format, you can set the locale property like this:
 
 ```tsx
 <IgrDateRangePicker locale='ja-JP'/>
 ```
 
-If you want to manually define the date format, you can use the [`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#inputFormat) property by passing a custom format string:
+If you want to manually define the date format, you can use the [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=inputFormat) property by passing a custom format string:
 
 ```tsx
 <IgrDateRangePicker inputFormat='dd/MM/yy'/>
 ```
 
-The [`displayFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#displayFormat) property also accepts a custom format string, but it only applies when the input field is idle (i.e., not focused). When the field is focused, the format reverts to the default or to the one defined by [`inputFormat`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#inputFormat), if both properties are used together:
+The [`displayFormat`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=displayFormat) property also accepts a custom format string, but it only applies when the input field is idle (i.e., not focused). When the field is focused, the format reverts to the default or to the one defined by [`inputFormat`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=inputFormat), if both properties are used together:
 
 ```tsx
 <IgrDateRangePicker inputFormat='dd/MM/yy' displayFormat='yy/MM/dd'/>
@@ -198,17 +198,17 @@ You can further customize the pop-up calendar using various properties:
 
 |Name|Type|Description|
 |--|--|--|
-| [`orientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#orientation) | 'vertical' or 'horizontal' | Allows you to set whether the calendar should be displayed vertically or horizontally. |
-| [`visibleMonths`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#visibleMonths) | string | Controls how many months are visible at a time, with a value of either 1 or 2. |
-| [`showWeekNumbers`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#showWeekNumbers) | string | Enables or disables the week number column in the calendar. |
-| [`open`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#open) | boolean | Determines whether the calendar picker is open. |
-| [`keepOpenOnSelect`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#keepOpenOnSelect) | boolean | Keeps the calendar picker open after a date selection. |
-| [`keepOpenOnOutsideClick`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#keepOpenOnOutsideClick) | boolean | Keeps the calendar picker open when clicking outside of it. |
-| [`weekStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#weekStart) | string | Sets the start day of the week. |
-| [`hideOutsideDays`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#hideOutsideDays) | boolean | Hides days that fall outside the current month view. |
-| [`hideHeader`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#hideHeader) | boolean | Hides the calendar header (applicable only in dialog mode). |
-| [`headerOrientation`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#headerOrientation) | 'vertical' or 'horizontal' | Aligns the calendar header vertically or horizontally (dialog mode only). |
-| [`activeDate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#activeDate) | Date | Sets the date that is initially highlighted in the calendar. If not set, the current date becomes the active date. |
+| [`orientation`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=orientation) | 'vertical' or 'horizontal' | Allows you to set whether the calendar should be displayed vertically or horizontally. |
+| [`visibleMonths`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=visibleMonths) | string | Controls how many months are visible at a time, with a value of either 1 or 2. |
+| [`showWeekNumbers`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=showWeekNumbers) | string | Enables or disables the week number column in the calendar. |
+| [`open`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=open) | boolean | Determines whether the calendar picker is open. |
+| [`keepOpenOnSelect`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=keepOpenOnSelect) | boolean | Keeps the calendar picker open after a date selection. |
+| [`keepOpenOnOutsideClick`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=keepOpenOnOutsideClick) | boolean | Keeps the calendar picker open when clicking outside of it. |
+| [`weekStart`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=weekStart) | string | Sets the start day of the week. |
+| [`hideOutsideDays`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=hideOutsideDays) | boolean | Hides days that fall outside the current month view. |
+| [`hideHeader`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=hideHeader) | boolean | Hides the calendar header (applicable only in dialog mode). |
+| [`headerOrientation`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=headerOrientation) | 'vertical' or 'horizontal' | Aligns the calendar header vertically or horizontally (dialog mode only). |
+| [`activeDate`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=activeDate) | Date | Sets the date that is initially highlighted in the calendar. If not set, the current date becomes the active date. |
 
 ```tsx
 <IgrDateRangePicker orientation='vertical' visibleMonths={1} showWeekNumbers/>
@@ -216,7 +216,7 @@ You can further customize the pop-up calendar using various properties:
 
 ### Min & Max
 
-You can also set the [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#min) and [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#max) properties to restrict user input by disabling calendar dates outside the defined range. These properties act as validators, so even if the user manually types a date outside the range, the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) will become invalid.
+You can also set the [`min`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=min) and [`max`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=max) properties to restrict user input by disabling calendar dates outside the defined range. These properties act as validators, so even if the user manually types a date outside the range, the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) will become invalid.
 
 ```tsx
 <IgrDateRangePicker min={new Date('2025-05-06')} max={new Date('2025-05-10')}/>
@@ -224,7 +224,7 @@ You can also set the [`min`](https://www.infragistics.com/products/ignite-ui-rea
 
 ### Custom & Predefined Date Ranges
 
-You can also add custom date range chips to the calendar pop-up for faster range selection using the [`customRanges`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#customRanges) property. For example, you can create a custom date range chip to quickly select the range for the upcoming 7 days, ending with the current date. In addition, by setting the [`usePredefinedRanges`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#usePredefinedRanges) property, a set of predefined ranges chips will be displayed along with the custom ones.
+You can also add custom date range chips to the calendar pop-up for faster range selection using the [`customRanges`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=customRanges) property. For example, you can create a custom date range chip to quickly select the range for the upcoming 7 days, ending with the current date. In addition, by setting the [`usePredefinedRanges`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=usePredefinedRanges) property, a set of predefined ranges chips will be displayed along with the custom ones.
 
 ```tsx
 const today = new Date();
@@ -294,7 +294,7 @@ root.render(<DrpCustom/>);
 
 ### Disabled & Special dates
 
-You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#disabledDates) property.
+You also have the ability to set disabled dates in the calendar to narrow the range of dates the user can choose from. To set the disabled dates, you can use the [`disabledDates`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=disabledDates) property.
 
 ```tsx
 const dateRangeRef = useRef<IgrDateRangePicker>();
@@ -314,13 +314,13 @@ return (
 );
 ```
 
-You can see more information about all the possibilities that the [`disabledDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#disabledDates) property offers here: [Disabled dates](./calendar.md#disabled-dates)
+You can see more information about all the possibilities that the [`disabledDates`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=disabledDates) property offers here: [Disabled dates](./calendar.md#disabled-dates)
 
-You can also do the same if you want to set one or more special dates in the calendar; the only difference is that you need to use the [`specialDates`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#specialDates) property instead. [Special dates](./calendar.md#special-dates)
+You can also do the same if you want to set one or more special dates in the calendar; the only difference is that you need to use the [`specialDates`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=specialDates) property instead. [Special dates](./calendar.md#special-dates)
 
 ### Forms
 
-The [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) component can also be used seamlessly with the HTML form element. The [`min`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#min), [`max`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#max), and [`required`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#required) properties act as form validators.
+The [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) component can also be used seamlessly with the HTML form element. The [`min`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=min), [`max`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=max), and [`required`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=required) properties act as form validators.
 
 ```css
 igc-button {
@@ -393,22 +393,22 @@ root.render(<DrpForm/>);
 
 ### Properties
 
-In addition to the properties we've already covered, the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) component offers a variety of additional properties that allow you to further configure its behavior.
+In addition to the properties we've already covered, the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) component offers a variety of additional properties that allow you to further configure its behavior.
 
 |Name|Type|Description|
 |--|--|--|
-| [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#disabled) | boolean | Disables the component. |
-| [`nonEditable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#nonEditable) | boolean | Disables typing in the input field(s). |
-| [`placeholder`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#placeholder) | string | Placeholder text for the single input mode. |
-| [`placeholderStart`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#placeholderStart) | string | Placeholder text for the start date input (two inputs mode). |
-| [`placeholderEnd`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#placeholderEnd) | string | Placeholder text for the end date input (two inputs mode). |
-| [`outlined`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#outlined) | boolean | Determines whether the input part will have outline appearance in the [Material theme](../themes/overview.md). |
-| [`prompt`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#prompt) | string | The prompt character used for unfilled parts of the input(s) mask. |
-| [`resourceStrings`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#resourceStrings) | IgcDateRangePickerResourceStrings | Resource strings for localization of the date-range picker and the calendar. |
+| [`disabled`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=disabled) | boolean | Disables the component. |
+| [`nonEditable`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=nonEditable) | boolean | Disables typing in the input field(s). |
+| [`placeholder`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=placeholder) | string | Placeholder text for the single input mode. |
+| [`placeholderStart`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=placeholderStart) | string | Placeholder text for the start date input (two inputs mode). |
+| [`placeholderEnd`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=placeholderEnd) | string | Placeholder text for the end date input (two inputs mode). |
+| [`outlined`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=outlined) | boolean | Determines whether the input part will have outline appearance in the [Material theme](../themes/overview.md). |
+| [`prompt`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=prompt) | string | The prompt character used for unfilled parts of the input(s) mask. |
+| [`resourceStrings`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=resourceStrings) | IgcDateRangePickerResourceStrings | Resource strings for localization of the date-range picker and the calendar. |
 
 ### Slots
 
-You also have the ability to add custom content and modify the appearance of the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) component using the available slots.
+You also have the ability to add custom content and modify the appearance of the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) component using the available slots.
 
 The `prefix` and `suffix` slots allow you to insert custom content before or after the input field (only available in single input mode):
 
@@ -453,7 +453,7 @@ return (
 );
 ```
 
-In addition to the slots we've already covered, the following slots are also available in the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) component:
+In addition to the slots we've already covered, the following slots are also available in the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) component:
 
 |Name|Description|
 |--|--|
@@ -561,20 +561,20 @@ root.render(<DrpSlots />);
 
 ### Methods
 
-In addition to the properties and slots, the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) also exposes few methods that you can use:
+In addition to the properties and slots, the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) also exposes few methods that you can use:
 
 |Name|Description|
 |--|--|
-| [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#show) | Displays the calendar picker component. |
-| [`hide`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#hide) | Hides the calendar picker component. |
-| [`toggle`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#toggle) | Toggles the calendar picker between the shown and hidden states. |
-| [`clear`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#clear) | Clears the input fields, removing any user input. |
-| [`select`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#select) | Selects a date range value in the picker. |
-| [`setCustomValidity`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html#setCustomValidity) | Sets a custom validation message. If the provided message is not empty, the input will be marked as invalid. |
+| [`show`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=show) | Displays the calendar picker component. |
+| [`hide`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=hide) | Hides the calendar picker component. |
+| [`toggle`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=toggle) | Toggles the calendar picker between the shown and hidden states. |
+| [`clear`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=clear) | Clears the input fields, removing any user input. |
+| [`select`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=select) | Selects a date range value in the picker. |
+| [`setCustomValidity`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker&member=setCustomValidity) | Sets a custom validation message. If the provided message is not empty, the input will be marked as invalid. |
 
 ## Styling
 
-Since the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) component uses the [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html) component, it also inherits the Calendar's CSS parts, allowing you to style both components seamlessly. You can find the full list of exposed Calendar CSS parts here: [Calendar Styling](calendar.md#styling). In addition to the Calendar's CSS parts, the [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html) also exposes some unique CSS parts that you can use to customize its appearance:
+Since the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) component uses the [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) component, it also inherits the Calendar's CSS parts, allowing you to style both components seamlessly. You can find the full list of exposed Calendar CSS parts here: [Calendar Styling](calendar.md#styling). In addition to the Calendar's CSS parts, the [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker) also exposes some unique CSS parts that you can use to customize its appearance:
 
 |Name|Description|
 |--|--|
@@ -685,11 +685,11 @@ root.render(<DrpOverview />);
 
 ## API References
 
-- [`IgrInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrinput.html)
-- [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html)
-- [`IgrDateRangePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdaterangepicker.html)
-- [`IgrDateTimeInput`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatetimeinput.html)
-- [`IgrDialog`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdialog.html)
+- [`IgrInput`](mcp:get_api_reference?platform=react&component=IgrInput)
+- [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)
+- [`IgrDateRangePicker`](mcp:get_api_reference?platform=react&component=IgrDateRangePicker)
+- [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput)
+- [`IgrDialog`](mcp:get_api_reference?platform=react&component=IgrDialog)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

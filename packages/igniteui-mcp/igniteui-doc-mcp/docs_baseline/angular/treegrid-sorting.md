@@ -12,7 +12,7 @@ In Ignite UI for Angular Tree Grid, data sorting is enabled on a per-column leve
 >[!NOTE]
 > Up until now, grouping/sorting worked in conjunction with each other. In 13.2 version, a new behavior which decouples grouping from sorting is introduced. For example - clearing the grouping will not clear sorting expressions in the grid or vice versa. Still, if a column is both sorted and grouped, grouped expressions take precedence.
 ## Angular Tree Grid Sorting Overview Example
-Additionally there is a custom context menu added for sorting using **igx-tree-grid**'s [`contextMenu`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#contextMenu) Output.
+Additionally there is a custom context menu added for sorting using **igx-tree-grid**'s [`contextMenu`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=contextMenu) Output.
 ```typescript
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { DefaultSortingStrategy, ISortingOptions, SortingDirection } from 'igniteui-angular/core';
@@ -171,7 +171,7 @@ export class TreeGridSortingSampleComponent implements OnInit, AfterViewInit {
 }
 ```
 <div class="divider--half"></div>
-This is done via the [`sortable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#sortable) input. With the Tree Grid sorting, you can also set the [`sortingIgnoreCase`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#sortingIgnoreCase) property to perform case sensitive sorting:
+This is done via the [`sortable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortable) input. With the Tree Grid sorting, you can also set the [`sortingIgnoreCase`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortingIgnoreCase) property to perform case sensitive sorting:
 ```html
 <igx-column field="Name" header="Order Product" [dataType]="'string'" sortable="true"></igx-column>
 ```
@@ -264,7 +264,7 @@ export class GridSortingIndicatorsComponent implements OnInit, AfterViewInit {
 ```
 }
 ## Sorting through the API
-You can sort any column or a combination of columns through the Tree Grid API using the Tree Grid [`sort`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#sort) method:
+You can sort any column or a combination of columns through the Tree Grid API using the Tree Grid [`sort`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=sort) method:
 ```typescript
 import { SortingDirection } from 'igniteui-angular/core';
 // import { SortingDirection } from '@infragistics/igniteui-angular'; for licensed package
@@ -277,8 +277,8 @@ this.treeGrid.sort([
 ]);
 ```
 > [!NOTE]
-> Sorting is performed using our [`DefaultSortingStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/defaultsortingstrategy.html) algorithm. Any [`IgxColumnComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#sortStrategy) or [`ISortingExpression`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isortingexpression.html#strategy) can use a custom implementation of the [`ISortingStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isortingstrategy.html) as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
-As with the filtering behavior, you can clear the sorting state by using the [`clearSort`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#clearsort) method:
+> Sorting is performed using our [`DefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy) algorithm. Any [`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortStrategy) or [`ISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression&member=strategy) can use a custom implementation of the [`ISortingStrategy`](mcp:get_api_reference?platform=angular&component=ISortingStrategy) as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
+As with the filtering behavior, you can clear the sorting state by using the [`clearSort`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=clearsort) method:
 ```typescript
 // Removes the sorting state from the ProductName column
 this.treeGrid.clearSort('Name');
@@ -286,11 +286,11 @@ this.treeGrid.clearSort('Name');
 this.treeGrid.clearSort();
 ```
 > [!NOTE]
-> The [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#sortStrategy) of the **Tree Grid** is of different type compared to the [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#sortStrategy) of the **column**, since they work in different scopes and expose different parameters.
+> The [`sortStrategy`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=sortStrategy) of the **Tree Grid** is of different type compared to the [`sortStrategy`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortStrategy) of the **column**, since they work in different scopes and expose different parameters.
 > [!NOTE]
 > The sorting operation **DOES NOT** change the underlying data source of the Tree Grid.
 ## Initial sorting state
-It is possible to set the initial sorting state of the Tree Grid by passing an array of sorting expressions to the [`sortingExpressions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#sortingExpressions) property of the Tree Grid.
+It is possible to set the initial sorting state of the Tree Grid by passing an array of sorting expressions to the [`sortingExpressions`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=sortingExpressions) property of the Tree Grid.
 ```typescript
 public ngAfterViewInit(): void {
     this.treeGrid.sortingExpressions = [
@@ -302,7 +302,7 @@ public ngAfterViewInit(): void {
 }
 ```
 > [!NOTE]
-> If values of type `string` are used by a column of [`dataType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#dataType) `Date`, the Tree Grid won't parse them to `Date` objects and using Tree Grid `sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
+> If values of type `string` are used by a column of [`dataType`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=dataType) `Date`, the Tree Grid won't parse them to `Date` objects and using Tree Grid `sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
 <div class="divider--half"></div>
 ## Sorting Indicators Templates
 The sorting indicator icon in the column header can be customized using a template. The following directives are available for templating the sorting indicator for any sorting state (ascending, descending, none):
@@ -437,9 +437,9 @@ $custom-theme: grid-theme(
 >[!NOTE]
 >The sample will not be affected by the selected global theme from `Change Theme`.
 ## API References
-- [IgxTreeGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [IgxTreeGridComponent API](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 - [IgxTreeGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [ISortingExpression](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isortingexpression.html)
+- [ISortingExpression](mcp:get_api_reference?platform=angular&component=ISortingExpression)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Tree Grid overview](tree-grid.md)

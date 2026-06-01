@@ -44,7 +44,7 @@ The Ignite UI for Blazor Avatar helps to display initials, images, or icons in y
 
 ## Usage
 
-Before using the [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html), you need to register it as follows:
+Before using the [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -52,7 +52,7 @@ Before using the [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/
 builder.Services.AddIgniteUIBlazor(typeof(IgbAvatarModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -60,7 +60,7 @@ You will also need to link an additional CSS file to apply the styling to the [`
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html) is as simple as:
+The [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar) is capable of displaying images, initials, or any other content, including icons. Declaring an [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar) is as simple as:
 
 ```razor
 <IgbAvatar />
@@ -76,7 +76,7 @@ The avatar has several attributes that allow rendering different content based o
 
 ### Initials
 
-If the [`Initials`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html#IgniteUI_Blazor_Controls_IgbAvatar_Initials) attribute is set all children elements of the avatar will be ignored and the string passed to this attribute will be displayed.
+If the [`Initials`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=Initials) attribute is set all children elements of the avatar will be ignored and the string passed to this attribute will be displayed.
 
 ```razor
 <!-- Initials("AZ") will be displayed instead of the icon. -->
@@ -102,7 +102,7 @@ If the [`Initials`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Bl
 
 ### Image
 
-The avatar can also display an image when the [`Src`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html#IgniteUI_Blazor_Controls_IgbAvatar_Src) attribute is assigned a valid URL to a static asset. In that case the [`Initials`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html#IgniteUI_Blazor_Controls_IgbAvatar_Initials) value will be ignored and children elements will not be rendered.
+The avatar can also display an image when the [`Src`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=Src) attribute is assigned a valid URL to a static asset. In that case the [`Initials`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&member=Initials) value will be ignored and children elements will not be rendered.
 
 ```razor
 <IgbAvatar Initials="AZ"
@@ -183,7 +183,7 @@ igc-avatar {
 
 ### Styling
 
-The [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html) component exposes several CSS parts, giving you full control over its style:
+The [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar) component exposes several CSS parts, giving you full control over its style:
 
 |Name|Description|
 |--|--|
@@ -226,7 +226,7 @@ igc-avatar::part(base) {
 
 ## API References
 
-- [`IgbAvatar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbAvatar.html)
+- [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

@@ -13,7 +13,7 @@ _premium: true
 
 # React  Grid Column Resizing Overview
 
-The Ignite UI for React Column Resizing feature in React Grid allows users to easily adjust the width of the columns of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). By default, they will see a temporary resize indicator while the drag resizing operation is in effect. There are several resizing options available - Resizing Columns in Pixels/Percentages, Restrict Column Resizing, Auto-Size Columns on Double Click, and Auto-Size Columns on Initialization.
+The Ignite UI for React Column Resizing feature in React Grid allows users to easily adjust the width of the columns of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). By default, they will see a temporary resize indicator while the drag resizing operation is in effect. There are several resizing options available - Resizing Columns in Pixels/Percentages, Restrict Column Resizing, Auto-Size Columns on Double Click, and Auto-Size Columns on Initialization.
 
 ## React  Grid Column Resizing Example
 
@@ -177,7 +177,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-**Column resizing** is also enabled per-column level, meaning that the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) can have a mix of resizable and non-resizable columns. This is done via the [`resizable`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#resizable) input of the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html).
+**Column resizing** is also enabled per-column level, meaning that the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) can have a mix of resizable and non-resizable columns. This is done via the [`resizable`](mcp:get_api_reference?platform=react&component=IgrColumn&member=resizable) input of the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn).
 
 ```tsx
 <IgrColumn field="ID" resizable={true} width="100px"></IgrColumn>
@@ -185,7 +185,7 @@ root.render(<Sample/>);
 
 <!-- ComponentEnd: Grid, TreeGrid -->
 
-You can subscribe to the `ColumnResized` event of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) to implement some custom logic when a column is resized. Both, previous and new column widths, as well as the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html) object, are exposed through the event arguments.
+You can subscribe to the `ColumnResized` event of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) to implement some custom logic when a column is resized. Both, previous and new column widths, as well as the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn) object, are exposed through the event arguments.
 
 ```tsx
 const onResize = (event: IgrColumnResizeEventArgs) => {
@@ -231,7 +231,7 @@ When resizing columns with width in percentages, the horizontal amount of the mo
 
 ## Restrict Column Resizing
 
-You can also configure the minimum and maximum allowable column widths. This is done via the [`minWidth`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#minWidth) and [`maxWidth`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#maxWidth) inputs of the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html). In this case the resize indicator drag operation is restricted to notify the user that the column cannot be resized outside the boundaries defined by [`minWidth`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#minWidth) and [`maxWidth`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#maxWidth).
+You can also configure the minimum and maximum allowable column widths. This is done via the [`minWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=minWidth) and [`maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=maxWidth) inputs of the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn). In this case the resize indicator drag operation is restricted to notify the user that the column cannot be resized outside the boundaries defined by [`minWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=minWidth) and [`maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=maxWidth).
 
 ```tsx
 <IgrColumn field="ID" width="100px" resizable={true}
@@ -262,9 +262,9 @@ or
 
 ## Auto-Size Columns on Double Click
 
-Each column can be **auto sized** by double clicking the right side of the header - the column will be sized to the longest currently visible cell value, including the header itself. This behavior is enabled by default, no additional configuration is needed. However, the column will not be auto-sized in case [`maxWidth`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#maxWidth) is set on that column and the new width exceeds that [`maxWidth`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#maxWidth) value. In this case the column will be sized according to preset [`maxWidth`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#maxWidth) value.
+Each column can be **auto sized** by double clicking the right side of the header - the column will be sized to the longest currently visible cell value, including the header itself. This behavior is enabled by default, no additional configuration is needed. However, the column will not be auto-sized in case [`maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=maxWidth) is set on that column and the new width exceeds that [`maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=maxWidth) value. In this case the column will be sized according to preset [`maxWidth`](mcp:get_api_reference?platform=react&component=IgrColumn&member=maxWidth) value.
 
-You can also auto-size a column dynamically using the exposed [`autosize`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#autosize) method on [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html).
+You can also auto-size a column dynamically using the exposed [`autosize`](mcp:get_api_reference?platform=react&component=IgrColumn&member=autosize) method on [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn).
 
 ```tsx
 const column = grid.getColumnByName('ID');
@@ -275,7 +275,7 @@ column.autosize();
 
 ## Auto-Size Columns on Initialization
 
-Each column can be set to auto-size on initialization by setting [`width`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#width) to 'auto':
+Each column can be set to auto-size on initialization by setting [`width`](mcp:get_api_reference?platform=react&component=IgrColumn&member=width) to 'auto':
 
 ```tsx
 <IgrColumn width='auto'>
@@ -600,8 +600,8 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 
 ## Additional Resources
 

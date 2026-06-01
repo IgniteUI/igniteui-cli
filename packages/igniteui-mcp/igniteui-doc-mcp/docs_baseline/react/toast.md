@@ -59,18 +59,18 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the React [`IgrToast`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html) and its necessary CSS, like so:
+You will then need to import the React [`IgrToast`](mcp:get_api_reference?platform=react&component=IgrToast) and its necessary CSS, like so:
 
 ```tsx
 import { IgrToast } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-Before using the React [`IgrToast`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html), you need to register it as follows:
+Before using the React [`IgrToast`](mcp:get_api_reference?platform=react&component=IgrToast), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
-The simplest way to display the toast component is to use its [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#show) method and call it on a button click.
+The simplest way to display the toast component is to use its [`show`](mcp:get_api_reference?platform=react&component=IgrToast&member=show) method and call it on a button click.
 
 ```tsx
 <IgrButton variant="contained" onClick={onShowButtonClicked}>
@@ -92,9 +92,9 @@ const onShowButtonClicked = () => {
 
 ### Properties
 
-Use the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#displayTime) property to configure how long the toast component is visible. By default, it's set to 4000 milliseconds.
+Use the [`displayTime`](mcp:get_api_reference?platform=react&component=IgrToast&member=displayTime) property to configure how long the toast component is visible. By default, it's set to 4000 milliseconds.
 
-By default, the toast component is hidden automatically after a period specified by the [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#displayTime). You can use [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#keepOpen) property to change this behavior. In this way, the toast will remain visible.
+By default, the toast component is hidden automatically after a period specified by the [`displayTime`](mcp:get_api_reference?platform=react&component=IgrToast&member=displayTime). You can use [`keepOpen`](mcp:get_api_reference?platform=react&component=IgrToast&member=keepOpen) property to change this behavior. In this way, the toast will remain visible.
 
 ```tsx
 <div>
@@ -186,7 +186,7 @@ root.render(<ToastProperties />);
 
 ## Styling
 
-You can style the React [`IgrToast`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html) notifications directly using its tag selector:
+You can style the React [`IgrToast`](mcp:get_api_reference?platform=react&component=IgrToast) notifications directly using its tag selector:
 
 ```css
 igc-toast {
@@ -239,11 +239,11 @@ root.render(<ToastStyling />);
 
 ## API References
 
-- [`IgrCalendar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcalendar.html)
-- [`displayTime`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#displayTime)
-- [`keepOpen`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#keepOpen)
-- [`show`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html#show)
-- [`IgrToast`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrtoast.html)
+- [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)
+- [`displayTime`](mcp:get_api_reference?platform=react&component=IgrToast&member=displayTime)
+- [`keepOpen`](mcp:get_api_reference?platform=react&component=IgrToast&member=keepOpen)
+- [`show`](mcp:get_api_reference?platform=react&component=IgrToast&member=show)
+- [`IgrToast`](mcp:get_api_reference?platform=react&component=IgrToast)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

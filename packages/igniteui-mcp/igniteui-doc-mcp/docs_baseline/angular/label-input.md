@@ -106,7 +106,7 @@ Now that you have the Ignite UI for Angular Input Group module or directives imp
 The default styling of the Label and Input directives follows the text fields specification in the Material Design
 [**guidelines**](https://material.io/guidelines/components/text-fields.html).
 
-To use the [`igxInput`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputdirective.html) and [`igxLabel`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlabeldirective.html), you have to wrap them in an `<igx-input-group>` container:
+To use the [`igxInput`](mcp:get_api_reference?platform=angular&component=IgxInputDirective) and [`igxLabel`](mcp:get_api_reference?platform=angular&component=IgxLabelDirective), you have to wrap them in an `<igx-input-group>` container:
 
 ```html
 <igx-input-group>
@@ -119,7 +119,7 @@ The `igxInput` directive could be applied to `<input>` and `<textarea>` HTML ele
 
 ### Validation
 
-We can validate an `input` using the [`required`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputdirective.html#required) attribute. This will add an asterisk next to the label, indicating that this field must be completed. The input will turn green/red depending on whether the validation passes/fails.
+We can validate an `input` using the [`required`](mcp:get_api_reference?platform=angular&component=IgxInputDirective&member=required) attribute. This will add an asterisk next to the label, indicating that this field must be completed. The input will turn green/red depending on whether the validation passes/fails.
 
 ```html
 <igx-input-group>
@@ -182,7 +182,7 @@ in our markup:
 
 ### Focus & Text Selection
 
-You can add logic to force `focus` on input elements using the [`igxFocus`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfocusdirective.html) directive.
+You can add logic to force `focus` on input elements using the [`igxFocus`](mcp:get_api_reference?platform=angular&component=IgxFocusDirective) directive.
 
 ```html
 <igx-input-group>
@@ -192,9 +192,9 @@ You can add logic to force `focus` on input elements using the [`igxFocus`](http
 ```
 
 > [!NOTE]
-> To use the [`igxFocus`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfocusdirective.html) directive, you have to import the [`IgxFocusModule`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfocusmodule.html).
+> To use the [`igxFocus`](mcp:get_api_reference?platform=angular&component=IgxFocusDirective) directive, you have to import the [`IgxFocusModule`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxfocusmodule.html).
 
-If you want the text in an input element, marked with `igxInput`, to be selected on focus, you have to enable the [`igxTextSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtextselectiondirective.html) directive.
+If you want the text in an input element, marked with `igxInput`, to be selected on focus, you have to enable the [`igxTextSelection`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective) directive.
 
 ```html
 <igx-input-group>
@@ -209,7 +209,7 @@ If you want the text in an input element, marked with `igxInput`, to be selected
 ```
 
 > [!NOTE]
-> To use the [`igxTextSelection`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtextselectiondirective.html) directive, you have to import the [`IgxTextSelectionModule`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtextselectionmodule.html).
+> To use the [`igxTextSelection`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective) directive, you have to import the [`IgxTextSelectionModule`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtextselectionmodule.html).
 
 ```typescript
 import { Component } from '@angular/core';
@@ -267,9 +267,9 @@ The Ignite UI for Angular Input Group component helps developers to create easy-
 
 <div class="divider--half"></div>
 
-- [IgxLabelDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxlabeldirective.html)
-- [IgxInputDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputdirective.html)
-- [IgxInputGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html)
+- [IgxLabelDirective](mcp:get_api_reference?platform=angular&component=IgxLabelDirective)
+- [IgxInputDirective](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
+- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
 
 ## Additional Resources
 

@@ -13,7 +13,7 @@ _premium: true
 
 # Row Dragging in Blazor Tree Grid
 
-The Ignite UI for Blazor Row Dragging feature in Blazor Tree Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse. It is initialized on the root [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) component and is configurable via the [`RowDraggable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_RowDraggable) input.
+The Ignite UI for Blazor Row Dragging feature in Blazor Tree Grid is easily configurable and is used for rearranging rows within the grid by dragging and dropping them to a new position using the mouse. It is initialized on the root [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) component and is configurable via the [`RowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowDraggable) input.
 
 ## Blazor Tree Grid Row Drag Example
 
@@ -180,7 +180,7 @@ public class EmployeesNestedData
 
 ## Configuration
 
-In order to enable row-dragging for your [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html), all you need to do is set the grid's [`RowDraggable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_RowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's `RowDragStart` event to fire. Releasing the click at any time will cause `RowDragEnd` event to fire.
+In order to enable row-dragging for your [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid), all you need to do is set the grid's [`RowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowDraggable) to **true**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging. Clicking on the drag-handle and **moving the cursor** while holding down the button will cause the grid's `RowDragStart` event to fire. Releasing the click at any time will cause `RowDragEnd` event to fire.
 
 ```razor
 <IgbTreeGrid RowDraggable="true">
@@ -189,7 +189,7 @@ In order to enable row-dragging for your [`IgbTreeGrid`](https://www.infragistic
 
 ### Templating the Drag Icon
 
-The drag handle icon can be templated using the grid's [`DragIndicatorIconTemplate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_DragIndicatorIconTemplate). In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
+The drag handle icon can be templated using the grid's [`DragIndicatorIconTemplate`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=DragIndicatorIconTemplate). In the example we're building, let's change the icon from the default one (**drag_indicator**) to **drag_handle**.
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
@@ -226,16 +226,16 @@ With the help of the grid's row drag events you can create a grid that allows yo
 <!-- ComponentEnd: TreeGrid -->
 
 > [!Note]
-> Make sure that there is a [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_PrimaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
+> Make sure that there is a [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=PrimaryKey) specified for the grid! The logic needs an unique identifier for the rows so they can be properly reordered.
 
-Once [`RowDraggable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_RowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
+Once [`RowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowDraggable) is enabled and a drop zone has been defined, you need to implement a simple handler for the drop event. When a row is dragged, check the following:
 
 <!-- ComponentStart: TreeGrid, HierarchicalGrid -->
 
 - Is the row expanded? If so, collapse it.
 - Was the row dropped inside of the grid?
 - If so, on which **other** row was the dragged row dropped?
-- Once you've found the **target** row, swap the records' places in the [`Data`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_Data) array
+- Once you've found the **target** row, swap the records' places in the [`Data`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=Data) array
 - Was the row initially selected? If so, mark it as selected.
 
 <!-- ComponentEnd: TreeGrid, HierarchicalGrid -->
@@ -426,14 +426,14 @@ public class EmployeesNestedTreeData
 
 ## Limitations
 
-Currently, there are no known limitations for the [`RowDraggable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_RowDraggable).
+Currently, there are no known limitations for the [`RowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowDraggable).
 
 ## API References
 
-- [`RowDraggable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html#IgniteUI_Blazor_Controls_IgbTreeGrid_RowDraggable)
+- [`RowDraggable`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=RowDraggable)
 - `RowDragStart`
 - `RowDragEnd`
-- [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
+- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
 
 ## Additional Resources
 

@@ -13,7 +13,7 @@ _premium: true
 
 # Blazor Tree Grid Collapsible Column Groups Overview
 
-The Ignite UI for Blazor Collapsible Column Groups feature in Blazor Tree Grid allows you to organize and manage multiple levels of nested columns and column groups in the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) by grouping them together and providing the option to collapse or expand these groups for improved data visualization and navigation.
+The Ignite UI for Blazor Collapsible Column Groups feature in Blazor Tree Grid allows you to organize and manage multiple levels of nested columns and column groups in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) by grouping them together and providing the option to collapse or expand these groups for improved data visualization and navigation.
 
 ## Blazor Tree Grid Collapsible Column Groups Example
 
@@ -224,7 +224,7 @@ public class EmployeesFlatDetails
 
 ## Setup
 
-To get started with the [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html) and the **Collapsible multi-column headers** feature, first you need to install Ignite UI for Blazor by typing the following command:
+To get started with the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) and the **Collapsible multi-column headers** feature, first you need to install Ignite UI for Blazor by typing the following command:
 
 ```cmd
 > dotnet add package IgniteUI.Blazor --version 25.2.83 (March 2026)
@@ -238,9 +238,9 @@ Also, we strongly suggest that you take a brief look at [multi-column headers](m
 
 **Collapsible Column Groups** is a part of the multi-column headers feature which provides a way to collapse/expand a column group to a smaller set of data. When a column group is collapsed, a subset of the columns will be shown to the end-user and the other child columns of the group will hide. Each collapsed/expanded column can be bound to the grid data source, or it may be unbound, thus calculated.
 
-In order to define a column group as collapsible, you need to set the [`Collapsible`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html#IgniteUI_Blazor_Controls_IgbColumnGroup_Collapsible) property on the [`IgbColumnGroup`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html) to **true**.
+In order to define a column group as collapsible, you need to set the [`Collapsible`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=Collapsible) property on the [`IgbColumnGroup`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup) to **true**.
 
-You need to define the property [`VisibleWhenCollapsed`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html#IgniteUI_Blazor_Controls_IgbColumnGroup_VisibleWhenCollapsed) to at least two child columns. At least one column must be visible when the group is collapsed ([`VisibleWhenCollapsed`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html#IgniteUI_Blazor_Controls_IgbColumnGroup_VisibleWhenCollapsed) set to **true**) and at least one column must be hidden when the group is expanded ([`VisibleWhenCollapsed`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html#IgniteUI_Blazor_Controls_IgbColumnGroup_VisibleWhenCollapsed) set to `false`), otherwise the **collapsible functionality will be disabled**. If [`VisibleWhenCollapsed`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html#IgniteUI_Blazor_Controls_IgbColumnGroup_VisibleWhenCollapsed) is not specified for some of the child columns, then this column will be always visible regardless of whether the parent state is expanded or collapsed.
+You need to define the property [`VisibleWhenCollapsed`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=VisibleWhenCollapsed) to at least two child columns. At least one column must be visible when the group is collapsed ([`VisibleWhenCollapsed`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=VisibleWhenCollapsed) set to **true**) and at least one column must be hidden when the group is expanded ([`VisibleWhenCollapsed`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=VisibleWhenCollapsed) set to `false`), otherwise the **collapsible functionality will be disabled**. If [`VisibleWhenCollapsed`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=VisibleWhenCollapsed) is not specified for some of the child columns, then this column will be always visible regardless of whether the parent state is expanded or collapsed.
 
 Let's see the markup below:
 
@@ -265,7 +265,7 @@ To summarize, every child column has three states:
 - Can be visible, when its parent is collapsed.
 - Can be hidden, when its parent is collapsed.
 
-The initial state of the column group which is specified as collapsible is [`Expanded`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumnGroup.html#IgniteUI_Blazor_Controls_IgbColumnGroup_Expanded) set to **true**, but you can easily change this behavior by setting it to **false**.
+The initial state of the column group which is specified as collapsible is [`Expanded`](mcp:get_api_reference?platform=blazor&component=IgbColumnGroup&member=Expanded) set to **true**, but you can easily change this behavior by setting it to **false**.
 
 > **Note**
 > Please keep in mind that initially collapse group option takes precedence over column hidden - If you declared your column to be hidden using the property
@@ -273,8 +273,8 @@ The initial state of the column group which is specified as collapsible is [`Exp
 
 ## API References
 
-- [`IgbTreeGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbTreeGrid.html)
-- [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html)
+- [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
+- [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn)
 
 ## Additional Resources
 

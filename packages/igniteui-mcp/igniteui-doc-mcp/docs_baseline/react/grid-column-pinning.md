@@ -13,11 +13,11 @@ _premium: true
 
 # React Grid Column Pinning
 
-The Ignite UI for React Column Pinning feature in React Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html). There’s an integrated UI for Column Pinning, accessible via the React Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
+The Ignite UI for React Column Pinning feature in React Grid enables developers to lock specific columns in a desired order, ensuring visibility all the time even when users scroll horizontally through the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid). There’s an integrated UI for Column Pinning, accessible via the React Grid toolbar. Additionally, developers have the flexibility to build a custom user interface which changes the pin state of the columns.
 
 ## React Grid Column Pinning Example
 
-This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
+This example demonstrates how you can pin a column or multiple columns to the left or right side of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
 ```css
 /* shared styles are loaded from: */
@@ -145,7 +145,7 @@ root.render(<Sample/>);
 
 ## Column Pinning API
 
-Column pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrow.html#pinned) property of the [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html). Pinned columns are rendered on the left side of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) body.
+Column pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridrow.html#pinned) property of the [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn). Pinned columns are rendered on the left side of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) by default and stay fixed through horizontal scrolling of the unpinned columns in the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) body.
 
 ```tsx
 <IgrGrid data={nwindData} autoGenerate={false}>
@@ -157,7 +157,7 @@ Column pinning is controlled through the [`pinned`](https://www.infragistics.com
 
 <!-- ComponentEnd: Grid -->
 
-You may also use the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)'s [`pinColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#pinColumn) or [`unpinColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#unpinColumn) methods of the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) to pin or unpin columns by their field name:
+You may also use the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)'s [`pinColumn`](mcp:get_api_reference?platform=react&component=IgrGrid&member=pinColumn) or [`unpinColumn`](mcp:get_api_reference?platform=react&component=IgrGrid&member=unpinColumn) methods of the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) to pin or unpin columns by their field name:
 
 <!-- ComponentStart: Grid -->
 
@@ -186,7 +186,7 @@ const columnPinning = (event: IgrPinColumnCancellableEventArgs) = {
 
 ## Pinning Position
 
-You can change the column pinning position via the [`pinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html#pinning) configuration option. It allows you to set the columns position to either Start or End.
+You can change the column pinning position via the [`pinning`](mcp:get_api_reference?platform=react&component=IgrGrid&member=pinning) configuration option. It allows you to set the columns position to either Start or End.
 When set to End the columns are rendered at the end of the grid, after the unpinned columns. Unpinned columns can be scrolled horizontally, while the pinned columns remain fixed on the right.
 
 ```typescript
@@ -853,7 +853,7 @@ root.render(<Sample/>);
 
 ## Pinning Limitations
 
-- Setting column widths in percentage (%) explicitly makes the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html).
+- Setting column widths in percentage (%) explicitly makes the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) body and header content to be misaligned when there are pinned columns. For column pinning to function correctly the column widths should be in pixels (px) or auto-assigned by the [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid).
 
 <!-- WebComponents, Blazor, React -->
 
@@ -1031,8 +1031,8 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgrid.html)
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
+- [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
 
 ## Additional Resources
 

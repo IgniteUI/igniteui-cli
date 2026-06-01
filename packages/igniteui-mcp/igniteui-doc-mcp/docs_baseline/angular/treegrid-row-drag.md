@@ -8,7 +8,7 @@ _tocName: Row Drag
 _premium: true
 ---
 # Row Dragging in Angular Tree Grid
-In Ignite UI for Angular Tree Grid, **RowDrag** is initialized on the root `igx-tree-grid` component and is configurable via the [`rowDraggable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowDraggable) input. Enabling row dragging provides users with a row drag-handle with which they can initiate dragging of a row.
+In Ignite UI for Angular Tree Grid, **RowDrag** is initialized on the root `igx-tree-grid` component and is configurable via the [`rowDraggable`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowDraggable) input. Enabling row dragging provides users with a row drag-handle with which they can initiate dragging of a row.
 ## Angular Tree Grid Row Drag Example
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -114,13 +114,13 @@ export class TreeGridRowDragBaseComponent {
 ```
 <div class="divider--half"></div>
 ## Configuration
-In order to enable row-dragging for your `igx-tree-grid`, all you need to do is set the grid's [`rowDraggable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowDraggable) to **`true`**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging.
+In order to enable row-dragging for your `igx-tree-grid`, all you need to do is set the grid's [`rowDraggable`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowDraggable) to **`true`**. Once this is enabled, a row-drag handle will be displayed on each row. This handle can be used to initiate row dragging.
 ```html
 <igx-tree-grid [rowDraggable]="true">
  ...
 </igx-tree-grid>
 ```
-Clicking on the drag-handle and _moving the cursor_ while holding down the button will cause the grid's [`rowDragStart`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowDragStart) event to fire. Releasing the click at any time will cause [`rowDragEnd`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowDragEnd) event to fire.
+Clicking on the drag-handle and _moving the cursor_ while holding down the button will cause the grid's [`rowDragStart`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowDragStart) event to fire. Releasing the click at any time will cause [`rowDragEnd`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowDragEnd) event to fire.
 Below, you can find a walkthrough on how to configure an `igx-tree-grid` to support row dragging and how to properly handle the drop event.
 @@if (igxName === 'IgxTreeGrid' || igxName === 'IgxHierarchicalGrid') {
 In this example, we'll handle dragging a row from a grid to a designated area and, when dropping it, removing it from the grid.
@@ -147,7 +147,7 @@ Then, in our template, we define a drop-area using the directive's selector:
 </div>
 ```
 }
-You may enable animation when a row is dropped on a non-droppable area using the `animation` parameter of the [`rowDragEnd`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowDragEnd) event. If set to true, the dragged row will animate back to its' original position when dropped over a non-droppable area.
+You may enable animation when a row is dropped on a non-droppable area using the `animation` parameter of the [`rowDragEnd`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowDragEnd) event. If set to true, the dragged row will animate back to its' original position when dropped over a non-droppable area.
 You may enable animation like this:
 ```typescript
 export class IgxTreeGridRowDragComponent {
@@ -158,7 +158,7 @@ export class IgxTreeGridRowDragComponent {
 }
 ```
 ### Drop Area Event Handlers
-Once we've defined our drop-area in the template, we have to declare our handlers for the `igxDrop`'s [`enter`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdirective.html#enter), [`leave`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdirective.html#leave) and [`dropped`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdirective.html#dropped) events in our component's `.ts` file.
+Once we've defined our drop-area in the template, we have to declare our handlers for the `igxDrop`'s [`enter`](mcp:get_api_reference?platform=angular&component=IgxDropDirective&member=enter), [`leave`](mcp:get_api_reference?platform=angular&component=IgxDropDirective&member=leave) and [`dropped`](mcp:get_api_reference?platform=angular&component=IgxDropDirective&member=dropped) events in our component's `.ts` file.
 First, let's take a look at our `enter` and `leave` handlers. In those methods, we just want to change the icon of the drag's _ghost_ so we can indicate to the user that they are above an area that allows them to drop the row:
 ```typescript
 export class IgxTreeGridRowDragComponent {
@@ -201,7 +201,7 @@ export class IgxTreeGridRowDragComponent {
     }
 }
 ```
-Once the row is dropped, we just call the row's [`delete()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxTreeGridRowComponent.html#delete) method
+Once the row is dropped, we just call the row's [`delete()`](mcp:get_api_reference?platform=angular&component=IgxTreeGridRowComponent&member=delete) method
 }
 > [!NOTE]
 > When using row data from the event arguments (`args.dragData.data`) or any other row property, note that the entire row is passed in the arguments as a reference, which means that you must clone the data you need, if you want to distinguish it from the one in the source grid.
@@ -344,7 +344,7 @@ export class TreeGridMultiRowDragComponent {
 ```
 <div class="divider--half"></div>
 ### Templating the drag icon
-The drag handle icon can be templated using the grid's [`dragIndicatorIconTemplate`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#dragIndicatorIconTemplate). In the example we're building, let's change the icon from the default one (`drag_indicator`) to `drag_handle`.
+The drag handle icon can be templated using the grid's [`dragIndicatorIconTemplate`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=dragIndicatorIconTemplate). In the example we're building, let's change the icon from the default one (`drag_indicator`) to `drag_handle`.
 To do so, we can use the `igxDragIndicatorIcon` to pass a template inside of the `igx-tree-grid`'s body:
 ```html
 <igx-tree-grid>
@@ -707,10 +707,10 @@ export class TreeGridRowReorderComponent {
 ## Limitations
 Currently, there are no known limitations for the `rowDraggable` directive.
 ## API References
-- [rowDraggable](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowDraggable)
-- [rowDragStart](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowDragStart)
-- [rowDragEnd](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html#rowDragEnd)
-- [IgxTreeGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtreegridcomponent.html)
+- [rowDraggable](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowDraggable)
+- [rowDragStart](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowDragStart)
+- [rowDragEnd](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowDragEnd)
+- [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Tree Grid Overview](tree-grid.md)

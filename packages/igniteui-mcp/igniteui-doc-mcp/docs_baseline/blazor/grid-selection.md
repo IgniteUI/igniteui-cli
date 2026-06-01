@@ -18,7 +18,7 @@ With the Ignite UI for Blazor Select feature in Blazor Grid you can easily inter
 - Cell selection
 - Column selection
 
-With the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowSelection) property, you can specify:
+With the [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowSelection) property, you can specify:
 
 - None
 - Single
@@ -26,7 +26,7 @@ With the [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/Ignit
 
 ## Blazor Grid Selection Example
 
-The sample below demonstrates three types of **cell selection** behaviors in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). Use the buttons below to enable each of the available selection modes.
+The sample below demonstrates three types of **cell selection** behaviors in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). Use the buttons below to enable each of the available selection modes.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -176,27 +176,27 @@ public class NwindData
 
 <!-- ComponentStart: Grid, HierarchicalGrid -->
 
-The Ignite UI for Blazor [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). In order to change/enable selection mode you can use [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowSelection), [`CellSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_CellSelection) or [`Selectable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selectable) properties.
+The Ignite UI for Blazor [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) component provides three different selection modes - [Row selection](row-selection.md), [Cell selection](cell-selection.md) and [Column selection](column-selection.md). By default only **Multi-cell selection** mode is enabled in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). In order to change/enable selection mode you can use [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowSelection), [`CellSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=CellSelection) or [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable) properties.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid -->
 
 ### Blazor Grid Row Selection
 
-Property [`RowSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_RowSelection) enables you to specify the following options:
+Property [`RowSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=RowSelection) enables you to specify the following options:
 
-- `None` - Row selection would be disabled for the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
-- `Single` - Selection of only one row within the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) would be available.
+- `None` - Row selection would be disabled for the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
+- `Single` - Selection of only one row within the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) would be available.
 - `Multiple` - Multi-row selection would be available by using the row selectors, with a key combination like <kbd>CTRL</kbd> + <kbd>click</kbd>, or by pressing the <kbd>space key</kbd> once a cell is focused.
 
 > Go to [Row selection topic](row-selection.md) for more information.
 
 ### Blazor Grid Cell Selection
 
-Property [`CellSelection`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_CellSelection) enables you to specify the following options:
+Property [`CellSelection`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=CellSelection) enables you to specify the following options:
 
-- `None` - Cell selection would be disabled for the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html).
-- `Single` - Selection of only one cell within the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) would be available.
-- `Multiple` - Currently, this is the default state of the selection in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
+- `None` - Cell selection would be disabled for the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid).
+- `Single` - Selection of only one cell within the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) would be available.
+- `Multiple` - Currently, this is the default state of the selection in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). Multi-cell selection is available by mouse dragging over the cells, after a left button mouse clicked continuously.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
 
@@ -206,7 +206,7 @@ Property [`CellSelection`](https://www.infragistics.com/blazor/docs/api/api/Igni
 
 ### Blazor Grid Column Selection
 
-The [`Selectable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html#IgniteUI_Blazor_Controls_IgbColumn_Selectable) property enables you to specify the following options for each [`IgbColumn`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbColumn.html). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
+The [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Selectable) property enables you to specify the following options for each [`IgbColumn`](mcp:get_api_reference?platform=blazor&component=IgbColumn). The corresponding column selection will be enabled or disabled if this property is set to true or false, respectively.
 
 This leads to the following three variations:
 
@@ -224,7 +224,7 @@ This leads to the following three variations:
 
 ## Blazor Grid Context Menu
 
-Using the `ContextMenu` event you can add a custom context menu to facilitate your work with [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
+Using the `ContextMenu` event you can add a custom context menu to facilitate your work with [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). With a **right click** on the grid's body, the event emits the cell on which it is triggered. The **context menu** will operate with the emitted cell.
 
 If there is a **multi-cell selection**, we will put logic, which will check whether the selected cell is in the area of the multi-cell selection. If it is, we will also emit the values of the selected cells.
 
@@ -278,7 +278,7 @@ The context menu will have the following functions:
     }
 ```
 
-The [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) will fetch the copied data and will paste it in a container element.
+The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) will fetch the copied data and will paste it in a container element.
 
 The template we are going to use to combine the grid with the context menu:
 
@@ -590,7 +590,7 @@ public class NwindData
 
 ## Known Issues and Limitations
 
-When the grid has no [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_PrimaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
+When the grid has no [`PrimaryKey`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=PrimaryKey) set and remote data scenarios are enabled (when paging, sorting, filtering, scrolling trigger requests to a remote server to retrieve the data to be displayed in the grid), a row will lose the following state after a data request completes:
 
 - Row Selection
 - Row Expand/collapse
@@ -599,7 +599,7 @@ When the grid has no [`PrimaryKey`](https://www.infragistics.com/blazor/docs/api
 
 ## API References
 
-- [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html)
+- [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid)
 
 ## Additional Resources
 

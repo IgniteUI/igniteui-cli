@@ -17,7 +17,7 @@ The Ignite UI for Blazor bullet graph component provides you with the ability to
 
 ## Blazor Bullet Graph Example
 
-The following sample demonstrates how setting multiple properties on the same [`IgbBulletGraph`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html) can transform it to completely different bullet graph.
+The following sample demonstrates how setting multiple properties on the same [`IgbBulletGraph`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph) can transform it to completely different bullet graph.
 
 ```razor
 @using System.Collections.ObjectModel
@@ -381,12 +381,12 @@ The following sample demonstrates how setting multiple properties on the same [`
 
 <div class="divider--half"></div>
 
-The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_TransitionDuration) property.
+The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=TransitionDuration) property.
 The features of the bullet graph include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Component Modules
 
-The [`IgbBulletGraph`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html) requires the following modules:
+The [`IgbBulletGraph`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph) requires the following modules:
 
 ```razor
 // in Program.cs file
@@ -484,7 +484,7 @@ Performance value is the primary measure displayed by the component and it is vi
 
 ## Highlight Value
 
-The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_Value) appear with a lower opacity. A good example is if [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_Value) is 50 and  [`HighlightValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_HighlightValue) is set to 25. This would represent a performance of 50% regardless of what the value of [`TargetValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_TargetValue) is set to. To enable this first set [`HighlightValueDisplayMode`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_HighlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_HighlightValue) to something lower than [`Value`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_Value).
+The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the [`Value`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=Value) appear with a lower opacity. A good example is if [`Value`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=Value) is 50 and  [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=HighlightValue) is set to 25. This would represent a performance of 50% regardless of what the value of [`TargetValue`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=TargetValue) is set to. To enable this first set [`HighlightValueDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=HighlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=HighlightValue) to something lower than [`Value`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=Value).
 
 ```razor
 <IgbBulletGraph Height="80px" Width="100%"
@@ -735,7 +735,7 @@ The backing element represents background and border of the bullet graph compone
 
 ## Scale
 
-The scale is visual element that highlights the full range of values in the gauge. You can customize appearance and shape of the scale. The scale can also be inverted (using [`IsScaleInverted`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html#IgniteUI_Blazor_Controls_IgbBulletGraph_IsScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is visual element that highlights the full range of values in the gauge. You can customize appearance and shape of the scale. The scale can also be inverted (using [`IsScaleInverted`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=IsScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```razor
 <IgbBulletGraph Height="80px" Width="100%"
@@ -847,8 +847,8 @@ For your convenience, all above code snippets are combined into one code block b
 
 The following is a list of API members mentioned in the above sections:
 
-- [`IgbBulletGraph`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBulletGraph.html)
-- [`IgbLinearGraphRange`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearGraphRange.html)
+- [`IgbBulletGraph`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph)
+- [`IgbLinearGraphRange`](mcp:get_api_reference?platform=blazor&component=IgbLinearGraphRange)
 
 ## Additional Resources
 

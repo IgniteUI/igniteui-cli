@@ -9,7 +9,7 @@ _tocName: Linear Progress
 
 # Blazor Linear Progress Overview
 
-The Ignite UI for Blazor Linear Progress Indicator component provides a visual indicator of an application’s process as it changes. The [`IgbLinearProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html) indicator updates its appearance as its state changes. Also, you can style this component with a choice of colors in stripes or solids.
+The Ignite UI for Blazor Linear Progress Indicator component provides a visual indicator of an application’s process as it changes. The [`IgbLinearProgress`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress) indicator updates its appearance as its state changes. Also, you can style this component with a choice of colors in stripes or solids.
 
 ## Blazor Linear Progress Example
 
@@ -31,7 +31,7 @@ The Ignite UI for Blazor Linear Progress Indicator component provides a visual i
 
 ## Usage
 
-Before using the [`IgbLinearProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html), you need to register it as follows:
+Before using the [`IgbLinearProgress`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -39,13 +39,13 @@ Before using the [`IgbLinearProgress`](https://www.infragistics.com/blazor/docs/
 builder.Services.AddIgniteUIBlazor(typeof(IgbLinearProgressModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbCalendar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-The simplest way to start using the [`IgbLinearProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html) is as follows:
+The simplest way to start using the [`IgbLinearProgress`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress) is as follows:
 
 ```razor
 <IgbLinearProgress Value=100 />
@@ -53,7 +53,7 @@ The simplest way to start using the [`IgbLinearProgress`](https://www.infragisti
 
 ### Progress Types
 
-You can set the type of your indicator, using  the [`Variant`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_Variant) attribute. There are five types of linear progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
+You can set the type of your indicator, using  the [`Variant`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress&member=Variant) attribute. There are five types of linear progress indicators - **primary** (default), **error**, **success**, **info**, and **warning**.
 
 ```razor
 <IgbLinearProgress Value=100 Variant=@ProgressBaseVariant.Success />
@@ -61,7 +61,7 @@ You can set the type of your indicator, using  the [`Variant`](https://www.infra
 
 ### Striped Progress
 
-You can make the indicator striped, using the [`Striped`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_Striped) property:
+You can make the indicator striped, using the [`Striped`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress&member=Striped) property:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -89,11 +89,11 @@ You can make the indicator striped, using the [`Striped`](https://www.infragisti
 
 ### Indeterminate Progress
 
-If you want to track a process that is not determined precisely, you can set the [`Indeterminate`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_Indeterminate) property.
+If you want to track a process that is not determined precisely, you can set the [`Indeterminate`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress&member=Indeterminate) property.
 
 ### Animation Duration
 
-The [`AnimationDuration`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_AnimationDuration) property is used to specify how long the animation cycle should take. It takes as value a number which represents the animation duration in milliseconds.
+The [`AnimationDuration`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress&member=AnimationDuration) property is used to specify how long the animation cycle should take. It takes as value a number which represents the animation duration in milliseconds.
 
 ```razor
 <IgbLinearProgress AnimationDuration=5000 Indeterminate=true />
@@ -101,11 +101,11 @@ The [`AnimationDuration`](https://www.infragistics.com/blazor/docs/api/api/Ignit
 
 ### Text Properties
 
-You can align the default value, using the [`LabelAlign`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_LabelAlign) property. Permitted values are **top**, **bottom**, **top-start**, **top-end**, **bottom-start** and **bottom-end**.
+You can align the default value, using the [`LabelAlign`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress&member=LabelAlign) property. Permitted values are **top**, **bottom**, **top-start**, **top-end**, **bottom-start** and **bottom-end**.
 
-To hide the default label of the progress indicator, use the [`HideLabel`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_HideLabel) attribute.
+To hide the default label of the progress indicator, use the [`HideLabel`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress&member=HideLabel) attribute.
 
-The [`LabelFormat`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html#IgniteUI_Blazor_Controls_IgbLinearProgress_LabelFormat) property can be used to customize the [`IgbLinearProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html) default label.
+The [`LabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress&member=LabelFormat) property can be used to customize the [`IgbLinearProgress`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress) default label.
 
 The following sample demonstrates the above configuration:
 
@@ -202,7 +202,7 @@ You can dynamically change the value of the progress indicator by using external
 
 ## Styling
 
-The [`IgbLinearProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html) component exposes CSS parts for almost all of its inner elements:
+The [`IgbLinearProgress`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress) component exposes CSS parts for almost all of its inner elements:
 
 |Name|Description|
 |--|--|
@@ -263,9 +263,9 @@ igc-linear-progress::part(label){
 
 ## API References
 
-- [`IgbButton`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbButton.html)
-- [`IgbCalendar`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbCalendar.html)
-- [`IgbLinearProgress`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbLinearProgress.html)
+- [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton)
+- [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)
+- [`IgbLinearProgress`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

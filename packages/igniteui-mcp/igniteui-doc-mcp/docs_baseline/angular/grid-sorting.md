@@ -131,7 +131,7 @@ igx-simple-combo {
 }
 ```
 <div class="divider--half"></div>
-This is done via the [`sortable`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#sortable) input. With the Grid sorting, you can also set the [`sortingIgnoreCase`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#sortingIgnoreCase) property to perform case sensitive sorting:
+This is done via the [`sortable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortable) input. With the Grid sorting, you can also set the [`sortingIgnoreCase`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortingIgnoreCase) property to perform case sensitive sorting:
 ```html
 <igx-column field="ProductName" header="Product Name" [dataType]="'string'" sortable="true"></igx-column>
 ```
@@ -224,7 +224,7 @@ export class GridSortingIndicatorsComponent implements OnInit, AfterViewInit {
 ```
 }
 ## Sorting through the API
-You can sort any column or a combination of columns through the Grid API using the Grid [`sort`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#sort) method:
+You can sort any column or a combination of columns through the Grid API using the Grid [`sort`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=sort) method:
 ```typescript
 import { SortingDirection } from 'igniteui-angular/core';
 // import { SortingDirection } from '@infragistics/igniteui-angular'; for licensed package
@@ -237,8 +237,8 @@ this.grid.sort([
 ]);
 ```
 > [!NOTE]
-> Sorting is performed using our [`DefaultSortingStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/defaultsortingstrategy.html) algorithm. Any [`IgxColumnComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#sortStrategy) or [`ISortingExpression`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isortingexpression.html#strategy) can use a custom implementation of the [`ISortingStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isortingstrategy.html) as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
-As with the filtering behavior, you can clear the sorting state by using the [`clearSort`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#clearsort) method:
+> Sorting is performed using our [`DefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy) algorithm. Any [`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortStrategy) or [`ISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression&member=strategy) can use a custom implementation of the [`ISortingStrategy`](mcp:get_api_reference?platform=angular&component=ISortingStrategy) as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
+As with the filtering behavior, you can clear the sorting state by using the [`clearSort`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clearsort) method:
 ```typescript
 // Removes the sorting state from the ProductName column
 this.grid.clearSort('ProductName');
@@ -246,11 +246,11 @@ this.grid.clearSort('ProductName');
 this.grid.clearSort();
 ```
 > [!NOTE]
-> The [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#sortStrategy) of the **Grid** is of different type compared to the [`sortStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#sortStrategy) of the **column**, since they work in different scopes and expose different parameters.
+> The [`sortStrategy`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=sortStrategy) of the **Grid** is of different type compared to the [`sortStrategy`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortStrategy) of the **column**, since they work in different scopes and expose different parameters.
 > [!NOTE]
 > The sorting operation **DOES NOT** change the underlying data source of the Grid.
 ## Initial sorting state
-It is possible to set the initial sorting state of the Grid by passing an array of sorting expressions to the [`sortingExpressions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#sortingExpressions) property of the Grid.
+It is possible to set the initial sorting state of the Grid by passing an array of sorting expressions to the [`sortingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=sortingExpressions) property of the Grid.
 ```typescript
 public ngAfterViewInit(): void {
     this.grid.sortingExpressions = [
@@ -262,7 +262,7 @@ public ngAfterViewInit(): void {
 }
 ```
 > [!NOTE]
-> If values of type `string` are used by a column of [`dataType`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcolumncomponent.html#dataType) `Date`, the Grid won't parse them to `Date` objects and using Grid `sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
+> If values of type `string` are used by a column of [`dataType`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=dataType) `Date`, the Grid won't parse them to `Date` objects and using Grid `sorting` won't work as expected. If you want to use `string` objects, additional logic should be implemented on an application level, in order to parse the values to `Date` objects.
 <div class="divider--half"></div>
 ## Remote Sorting
 The Grid supports remote sorting, which is demonstrated in the [`Grid Remote Data Operations`](remote-data-operations.md) topic.
@@ -429,9 +429,9 @@ $custom-theme: grid-theme(
 >[!NOTE]
 >The sample will not be affected by the selected global theme from `Change Theme`.
 ## API References
-- [IgxGridComponent API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
+- [IgxGridComponent API](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-- [ISortingExpression](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isortingexpression.html)
+- [ISortingExpression](mcp:get_api_reference?platform=angular&component=ISortingExpression)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Grid overview](grid.md)

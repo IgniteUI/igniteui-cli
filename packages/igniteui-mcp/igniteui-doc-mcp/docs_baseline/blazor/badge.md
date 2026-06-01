@@ -30,7 +30,7 @@ The Ignite UI for Blazor Badge is a component used in conjunction with avatars, 
 
 ## Usage
 
-Before using the [`IgbBadge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBadge.html), you need to register it as follows:
+Before using the [`IgbBadge`](mcp:get_api_reference?platform=blazor&component=IgbBadge), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -38,19 +38,19 @@ Before using the [`IgbBadge`](https://www.infragistics.com/blazor/docs/api/api/I
 builder.Services.AddIgniteUIBlazor(typeof(IgbBadgeModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbBadge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBadge.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbBadge`](mcp:get_api_reference?platform=blazor&component=IgbBadge) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-The simplest way to start using the [`IgbBadge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBadge.html) is as follows:
+The simplest way to start using the [`IgbBadge`](mcp:get_api_reference?platform=blazor&component=IgbBadge) is as follows:
 
 ```razor
 <IgbBadge />
 ```
 
-To display a subtle border around the badge, you can set the [`Outlined`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBadge.html#IgniteUI_Blazor_Controls_IgbBadge_Outlined) attribute of the badge.
+To display a subtle border around the badge, you can set the [`Outlined`](mcp:get_api_reference?platform=blazor&component=IgbBadge&member=Outlined) attribute of the badge.
 
 ```razor
 <IgbBadge Outlined="true" />
@@ -60,7 +60,7 @@ To display a subtle border around the badge, you can set the [`Outlined`](https:
 
 ### Variants
 
-The Ignite UI for Blazor badge supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `primary`(default), `info`, `success`, `warning`, or `danger` to the [`Variant`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBadge.html#IgniteUI_Blazor_Controls_IgbBadge_Variant) attribute.
+The Ignite UI for Blazor badge supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `primary`(default), `info`, `success`, `warning`, or `danger` to the [`Variant`](mcp:get_api_reference?platform=blazor&component=IgbBadge&member=Variant) attribute.
 
 ```razor
 <IgbBadge Variant="@BadgeVariant.Success" />
@@ -81,7 +81,7 @@ The Ignite UI for Blazor badge supports several pre-defined stylistic variants. 
 
 ### Shape
 
-The badge component supports `rounded`(default) and `square` shapes. These values can be assigned to the [`Shape`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBadge.html#IgniteUI_Blazor_Controls_IgbBadge_Shape) attribute.
+The badge component supports `rounded`(default) and `square` shapes. These values can be assigned to the [`Shape`](mcp:get_api_reference?platform=blazor&component=IgbBadge&member=Shape) attribute.
 
 ```razor
 <IgbBadge Shape="@BadgeShape.Square" />
@@ -112,7 +112,7 @@ The Ignite UI for Blazor badge component can also render as a minimal dot indica
 
 ## Styling
 
-The [`IgbBadge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBadge.html) component exposes a `base` CSS part that can be used to change all of its style properties.
+The [`IgbBadge`](mcp:get_api_reference?platform=blazor&component=IgbBadge) component exposes a `base` CSS part that can be used to change all of its style properties.
 
 ```css
 igc-badge::part(base) {
@@ -138,7 +138,7 @@ igc-badge::part(base) {
 
 ## API References
 
-- [`IgbBadge`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbBadge.html)
+- [`IgbBadge`](mcp:get_api_reference?platform=blazor&component=IgbBadge)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

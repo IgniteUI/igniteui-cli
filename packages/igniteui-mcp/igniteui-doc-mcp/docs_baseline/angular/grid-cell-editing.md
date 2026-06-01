@@ -277,7 +277,7 @@ public updateCell() {
     this.grid1.updateCell(newValue, rowID, 'ReorderLevel');
 }
 ```
-Another way to update cell is directly through [`update`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html#update) method of [`IgxGridCell`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html):
+Another way to update cell is directly through [`update`](mcp:get_api_reference?platform=angular&component=IgxGridCell&member=update) method of [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell):
 ```typescript
 public updateCell() {
     const cell = this.grid1.getCellByColumn(rowIndex, 'ReorderLevel');
@@ -288,7 +288,7 @@ public updateCell() {
 ```
 ### Cell Editing Templates
 You can see and learn more for default cell editing templates in the [general editing topic](editing.md#editing-templates).
-If you want to provide a custom template which will be applied when a cell is in edit mode, you can make use of the [`igxCellEditor` directive](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcelltemplatedirective.html). To do this, you need to pass an `ng-template` marked with the `igxCellEditor` directive and properly bind your custom control to the [`cell.editValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html#editValue):
+If you want to provide a custom template which will be applied when a cell is in edit mode, you can make use of the [`igxCellEditor` directive](mcp:get_api_reference?platform=angular&component=IgxCellTemplateDirective). To do this, you need to pass an `ng-template` marked with the `igxCellEditor` directive and properly bind your custom control to the [`cell.editValue`](mcp:get_api_reference?platform=angular&component=IgxGridCell&member=editValue):
 ```html
 <igx-column field="class" header="Class" [editable]="true">
     <ng-template igxCellEditor let-cell="cell" let-value>
@@ -398,7 +398,7 @@ export class GridSelectComponent implements OnInit {
 ```
 <div class="divider--half"></div>
 > [!NOTE]
-> Any changes made to the cell's [`editValue`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html#editValue) in edit mode, will trigger the appropriate [editing event](editing.md#event-arguments-and-sequence) on exit and apply to the [transaction state](batch-editing.md) (if transactions are enabled).
+> Any changes made to the cell's [`editValue`](mcp:get_api_reference?platform=angular&component=IgxGridCell&member=editValue) in edit mode, will trigger the appropriate [editing event](editing.md#event-arguments-and-sequence) on exit and apply to the [transaction state](batch-editing.md) (if transactions are enabled).
 > [!NOTE]
 > The cell template [`igxCell`](../grid/grid.md#cell-template) controls how a column's cells are shown when outside of edit mode.
 > The cell editing template directive `igxCellEditor`, handles how a column's cells in edit mode are displayed and controls the edited cell's edit value.
@@ -651,9 +651,9 @@ Main benefits of the above approach include:
 ## CRUD operations
 > [!NOTE]
 > Please keep in mind that when you perform some **CRUD operation** all of the applied pipes like **filtering**, **sorting** and **grouping** will be re-applied and your view will be automatically updated.
-The [`IgxGridComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) provides a straightforward API for basic CRUD operations.
+The [`IgxGridComponent`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) provides a straightforward API for basic CRUD operations.
 ### Adding a new record
-The Grid component exposes the [`addRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#addRow) method which will add the provided data to the data source itself.
+The Grid component exposes the [`addRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=addRow) method which will add the provided data to the data source itself.
 ```typescript
 // Adding a new record
 // Assuming we have a `getNewRecord` method returning the new row data.
@@ -661,7 +661,7 @@ const record = this.getNewRecord();
 this.grid.addRow(record);
 ```
 ### Updating data in the Grid
-Updating data in the Grid is achieved through [`updateRow`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#updateRow) and [`updateCell`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#updateCell) methods but **only if primary key for the grid is defined**. You can also directly update a cell and/or a row value through their respective `update` methods.
+Updating data in the Grid is achieved through [`updateRow`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=updateRow) and [`updateCell`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=updateCell) methods but **only if primary key for the grid is defined**. You can also directly update a cell and/or a row value through their respective `update` methods.
 ```typescript
 // Updating the whole row
 this.grid.updateRow(newData, this.selectedCell.cellID.rowID);
@@ -674,7 +674,7 @@ const row = this.grid.getRowByKey(rowID);
 row.update(newData);
 ```
 ### Deleting data from the Grid
-Please keep in mind that [`deleteRow()`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#deleteRow) method will remove the specified row only if primary key is defined.
+Please keep in mind that [`deleteRow()`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=deleteRow) method will remove the specified row only if primary key is defined.
 ```typescript
 // Delete row through Grid API
 this.grid.deleteRow(this.selectedCell.cellID.rowID);
@@ -689,7 +689,7 @@ These can be wired to user interactions, not necessarily related to the **igx-gr
 <div class="divider--half"></div>
 ### Cell validation on edit event
 Using the grid's editing events we can alter how the user interacts with the grid.
-In this example, we'll validate a cell based on the data entered in it by binding to the [`cellEdit`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html#cellEdit) event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event (`event.cancel = true`). We'll also display a custom error message using [`IgxToast`](../toast.md).
+In this example, we'll validate a cell based on the data entered in it by binding to the [`cellEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEdit) event. If the new value of the cell does not meet our predefined criteria, we'll prevent it from reaching the data source by cancelling the event (`event.cancel = true`). We'll also display a custom error message using [`IgxToast`](../toast.md).
 The first thing we need to is bind to the grid's event:
 ```html
 <igx-grid (cellEdit)="handleCellEdit($event)"
@@ -944,15 +944,15 @@ $input-theme: input-group-theme(
 >The sample will not be affected by the selected global theme from `Change Theme`.
 <div class="divider--half"></div>
 ## API References
-- [IgxGridCell](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcell.html)
+- [IgxGridCell](mcp:get_api_reference?platform=angular&component=IgxGridCell)
 - [IgxGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)
-_[IgxGridRow](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridrow.html)
-- [IgxInputDirective](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputdirective.html)
-- [IgxDatePickerComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdatepickercomponent.html)
+_[IgxGridRow](mcp:get_api_reference?platform=angular&component=IgxGridRow)
+- [IgxInputDirective](mcp:get_api_reference?platform=angular&component=IgxInputDirective)
+- [IgxDatePickerComponent](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent)
 - [IgxDatePickerComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-date-picker-theme)
-- [IgxCheckboxComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxcheckboxcomponent.html)
+- [IgxCheckboxComponent](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent)
 - [IgxCheckboxComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-checkbox-theme)
-- [IgxOverlay](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html)
+- [IgxOverlay](mcp:get_api_reference?platform=angular&component=OverlaySettings)
 - [IgxOverlay Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-overlay-theme)
 ## Additional Resources
 <div class="divider--half"></div>

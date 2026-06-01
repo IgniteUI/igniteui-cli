@@ -207,7 +207,7 @@ Now that you have the Ignite UI for Angular Simple ComboBox module or directives
 
 ## Using the Angular Simple ComboBox
 
-Just like the regular combobox, you can bind the [igx-simple-combo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html) to data.
+Just like the regular combobox, you can bind the [igx-simple-combo](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent) to data.
 
 ```typescript
 export class MySimpleComboComponent implements OnInit {
@@ -227,7 +227,7 @@ Our simple combobox is now bound to the array of cities.
 
 ### Data value and display properties
 
-Since the simple combobox is bound to an array of complex data (i.e. objects), we need to specify a property that the control will use to handle the selected items. The control exposes two `@Input` properties - [valueKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxSimpleComboComponent.html#valueKey) and [displayKey](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxSimpleComboComponent.html#displayKey):
+Since the simple combobox is bound to an array of complex data (i.e. objects), we need to specify a property that the control will use to handle the selected items. The control exposes two `@Input` properties - [valueKey](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent&member=valueKey) and [displayKey](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent&member=displayKey):
 
 - `valueKey` - _Optional, recommended for object arrays_ - Specifies which property of the data entries will be stored for the simple combobox's selection. If `valueKey` is omitted, the simple combobox value will use references to the data entries (i.e. the selection will be an array of entries from `igxSimpleCombo.data`).
 - `displayKey` - _Required for object arrays_ - Specifies which property will be used for the items' text. If no value is specified for `displayKey`, the simple combobox will use the specified `valueKey` (if any).
@@ -329,7 +329,7 @@ export class MySimpleComboComponent {
 
 The simple combobox component exposes API that allows getting and manipulating the current selection state of the control.
 
-One way to get its selection is via the [selection](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html#selection) property. It returns a value which corresponds to the selected item, depending on the specified [valueKey](#data-value-and-display-properties) (if any).
+One way to get its selection is via the [selection](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent&member=selection) property. It returns a value which corresponds to the selected item, depending on the specified [valueKey](#data-value-and-display-properties) (if any).
 
 In our example, `selection` will return the selected city's `id`:
 
@@ -340,7 +340,7 @@ export class MySimpleComboComponent {
 }
 ```
 
-Using the selection API, you can also change the simple combobox's selected item without user interaction with the control - via a button click, as a response to an Observable changing, etc. For example, we can implement a button that selects a city, using the [select](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html#select) method:
+Using the selection API, you can also change the simple combobox's selected item without user interaction with the control - via a button click, as a response to an Observable changing, etc. For example, we can implement a button that selects a city, using the [select](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent&member=select) method:
 
 ```html
 <igx-simple-combo [data]="cities" [displayKey]="'name'" [valueKey]="'id'"></igx-simple-combo>
@@ -360,7 +360,7 @@ export class MySimpleComboComponent {
 }
 ```
 
-The simple combobox also fires an event every time its selection changes - [selectionChanging](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxSimpleComboComponent.html#selectionChanging). The emitted event arguments, [ISimpleComboSelectionChangingEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isimplecomboselectionchangingeventargs.html), contain information about the selection prior to the change, the current selection and the displayed item. The event can also be cancelled, preventing the selection from taking place.
+The simple combobox also fires an event every time its selection changes - [selectionChanging](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent&member=selectionChanging). The emitted event arguments, [ISimpleComboSelectionChangingEventArgs](mcp:get_api_reference?platform=angular&component=ISimpleComboSelectionChangingEventArgs), contain information about the selection prior to the change, the current selection and the displayed item. The event can also be cancelled, preventing the selection from taking place.
 
 Binding to the event can be done through the proper `@Output` property on the `igx-simple-combo` tag:
 
@@ -370,7 +370,7 @@ Binding to the event can be done through the proper `@Output` property on the `i
 </igx-simple-combo>
 ```
 
-Additionally, the simple combobox fires a [selectionChanged](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxSimpleComboComponent.html#selectionChanged) event after the selection is committed and the component state has been updated. The emitted event arguments, [ISimpleComboSelectionChangedEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isimplecomboselectionchangedeventargs.html), contain information about the previous selection, the current selection and the displayed item. Unlike `selectionChanging`, this event is not cancellable and is guaranteed to reflect the final committed selection state. When the simple combobox is used with `ngModel` or Angular forms, `selectionChanged` is emitted after the form value has been updated.
+Additionally, the simple combobox fires a [selectionChanged](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent&member=selectionChanged) event after the selection is committed and the component state has been updated. The emitted event arguments, [ISimpleComboSelectionChangedEventArgs](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/isimplecomboselectionchangedeventargs.html), contain information about the previous selection, the current selection and the displayed item. Unlike `selectionChanging`, this event is not cancellable and is guaranteed to reflect the final committed selection state. When the simple combobox is used with `ngModel` or Angular forms, `selectionChanged` is emitted after the form value has been updated.
 
 Binding to the event can be done through the proper `@Output` property on the `igx-simple-combo` tag:
 
@@ -421,7 +421,7 @@ When the simple combobox is opened and allow custom values are enabled, and add 
 
 ## Cascading Scenario
 
-The following sample demonstrates a scenario where the [igx-simple-combo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html) is used:
+The following sample demonstrates a scenario where the [igx-simple-combo](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent) is used:
 
 
 ```typescript
@@ -619,7 +619,7 @@ The Ignite UI for Angular Simple ComboBox Component exposes an API that allows b
 
 ### Demo
 
-The sample below demonstrates remote binding using the [dataPreLoad](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/IgxSimpleComboComponent.html#dataPreLoad) property to load new chunk of remote data and following the steps described in [ComboBox Remote Binding](combo-remote.md):
+The sample below demonstrates remote binding using the [dataPreLoad](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent&member=dataPreLoad) property to load new chunk of remote data and following the steps described in [ComboBox Remote Binding](combo-remote.md):
 
 ```typescript
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
@@ -793,7 +793,7 @@ $custom-simple-combo-theme: combo-theme(
 );
 ```
 
-The [`IgxSimpleComboComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html) uses the [`IgxDropDownComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html) internally as an item container. It also includes the [`IgxInputGroup`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html) component. Creating new themes, that extend these components' themes, and scoping them under the respective classes will let's you change the simple combobox styles:
+The [`IgxSimpleComboComponent`](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent) uses the [`IgxDropDownComponent`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent) internally as an item container. It also includes the [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent) component. Creating new themes, that extend these components' themes, and scoping them under the respective classes will let's you change the simple combobox styles:
 
 ```scss
 $custom-drop-down-theme: drop-down-theme(
@@ -825,7 +825,7 @@ The last step is to include the component's theme.
 ```
 
 > [!NOTE]
-> The [`IgxSimpleCombo`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html) component uses the [`IgxOverlay`](overlay.md) service to hold and display the simple combobox items list container. To properly scope your styles you might have to use an [`OverlaySetting.outlet`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/overlaysettings.html#outlet). For more details check the [`IgxOverlay Styling Guide`](overlay-styling.md). Also is necessary to use `::ng-deep` when we are styling the components.
+> The [`IgxSimpleCombo`](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent) component uses the [`IgxOverlay`](overlay.md) service to hold and display the simple combobox items list container. To properly scope your styles you might have to use an [`OverlaySetting.outlet`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=outlet). For more details check the [`IgxOverlay Styling Guide`](overlay-styling.md). Also is necessary to use `::ng-deep` when we are styling the components.
 > [!Note]
 > The default `type` of the `IgxSimpleCombo` is `box` unlike the [`IgxSelect`](select.md) where it is `line`.
 
@@ -899,7 +899,7 @@ $custom-drop-down-theme: drop-down-theme(
 
 ## Known Issues
 
-- The simple combobox does not have input for sizing its height. In the future, the [IgxInputGroup](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html) component will expose an option that allows custom sizing, and then the [IgxSimpleCombo](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html) will use the same functionality for proper styling and better consistency.
+- The simple combobox does not have input for sizing its height. In the future, the [IgxInputGroup](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent) component will expose an option that allows custom sizing, and then the [IgxSimpleCombo](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent) will use the same functionality for proper styling and better consistency.
 - When the simple combobox is bound to an array of primitive data which contains `undefined` (i.e. `[ undefined, ...]`), `undefined` is not displayed in the dropdown. When it is bound to an array of complex data (i.e. objects) and the value used for `valueKey` is `undefined`, the item will be displayed in the dropdown, but cannot be selected.
 - When the simple combobox is bound via `ngModel` and is marked as `required`, `null`, `undefined` and `''` values cannot be selected.
 - When the simple combobox is bound to a remote service and there is a predefined selection, its input will remain blank until the requested data is loaded.
@@ -911,13 +911,13 @@ $custom-drop-down-theme: drop-down-theme(
 
 <div class="divider--half"></div>
 
-- [IgxSimpleComboComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxsimplecombocomponent.html)
+- [IgxSimpleComboComponent](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent)
 - [IgxComboComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-combo-theme)
 
 Additional components and/or directives with relative APIs that were used:
 
-- [IgxDropDownComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxdropdowncomponent.html)
-- [IgxInputGroupComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxinputgroupcomponent.html)
+- [IgxDropDownComponent](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
+- [IgxInputGroupComponent](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
 
 ## Theming Dependencies
 

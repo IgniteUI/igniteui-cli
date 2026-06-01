@@ -13,7 +13,7 @@ _premium: true
 
 # Web Components Hierarchical Grid Cell Selection
 
-The Ignite UI for Web Components Cell Selection in Web Components Hierarchical Grid enables rich data select capabilities and offers powerful API in the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) component. The Web Components Hierarchical Grid supports three selection modes:
+The Ignite UI for Web Components Cell Selection in Web Components Hierarchical Grid enables rich data select capabilities and offers powerful API in the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) component. The Web Components Hierarchical Grid supports three selection modes:
 
 - Hierarchical Grid Multiple Cell Selection
 - Hierarchical Grid Single Selection
@@ -21,7 +21,7 @@ The Ignite UI for Web Components Cell Selection in Web Components Hierarchical G
 
 <!-- ComponentStart: HierarchicalGrid -->
 
-In the [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html) you can specify the cell selection mode on grid level. So for example in the parent grid multi-cell selection can be enabled, but in child grids cell selection mode can be single or disabled.
+In the [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent) you can specify the cell selection mode on grid level. So for example in the parent grid multi-cell selection can be enabled, but in child grids cell selection mode can be single or disabled.
 
 <!-- ComponentEnd: HierarchicalGrid -->
 
@@ -29,7 +29,7 @@ Let's dive deeper into each of these options.
 
 ## Web Components Hierarchical Grid Cell Selection Example
 
-The sample below demonstrates the three types of [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)'s **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
+The sample below demonstrates the three types of [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)'s **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
 
 ```css
 /* shared styles are loaded from: */
@@ -58,13 +58,13 @@ How to select cells:
 
 ### Hierarchical Grid Single Selection
 
-When you set the [`cellSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#cellSelection) to **single**, this allows you to have only one selected cell in the grid at a time. Also the mode **mouse drag** will not work and instead of selecting a cell, this will make default text selection.
+When you set the [`cellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=cellSelection) to **single**, this allows you to have only one selected cell in the grid at a time. Also the mode **mouse drag** will not work and instead of selecting a cell, this will make default text selection.
 
-> When single cell is selected [`selected`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igccolumncomponent.html#selected) event is emitted, no matter if the **selection mode** is **single** or **multiple**. In multi-cell selection mode when you select a range of cells `RangeSelected` event is emitted.
+> When single cell is selected [`selected`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent&member=selected) event is emitted, no matter if the **selection mode** is **single** or **multiple**. In multi-cell selection mode when you select a range of cells `RangeSelected` event is emitted.
 
 ### Hierarchical Grid None Selection
 
-If you want to disable cell selection you can just set [`cellSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#cellSelection) to **none**. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the **activation style** is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
+If you want to disable cell selection you can just set [`cellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=cellSelection) to **none**. In this mode when you click over the cell or try to navigate with keyboard, the cell is **not selected**, only the **activation style** is applied and it is going to be lost when you scroll or click over other element on the page. The only way for you to define selection is by using the API methods that are described below.
 
 ## Keyboard Navigation Interactions
 
@@ -93,7 +93,7 @@ Below are the methods that you can use in order to select ranges, clear selectio
 
 ### Select range
 
-[`selectRange`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#selectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
+[`selectRange`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=selectRange) - Select a range of cells with the API. rowStart and rowEnd should use row indexes and columnStart and columnEnd could use column index or column data field value.
 
 ```ts
 const range = { rowStart: 2, rowEnd: 2, columnStart: 1, columnEnd: 1 };
@@ -104,7 +104,7 @@ this.grid.selectRange(range);
 
 ### Clear cell selection
 
-[`clearCellSelection`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#clearCellSelection) will clear the current cell selection.
+[`clearCellSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=clearCellSelection) will clear the current cell selection.
 
 ```ts
 this.grid.clearCellSelection();
@@ -112,7 +112,7 @@ this.grid.clearCellSelection();
 
 ### Get Selected Data
 
-[`getSelectedData`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
+[`getSelectedData`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=getSelectedData) will return array of the selected data in format depending on the selection. Examples below:
 
 - If three different single cells are selected:
 
@@ -182,7 +182,7 @@ The multi-cell selection is index based (DOM elements selection).
 - `Filtering` - When filtering is performed selection will not be cleared. If filtering is cleared it will return - the initially selected cells.
 - `Resizing` - On column resizing selected cells will not be cleared.
 - `Hiding` - It will not clear the selected cells. If column is hidden, the cells from the next visible column will be selected.
-- [`pinning`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html#pinning) - Selected cell will not be cleared. Same as hiding
+- [`pinning`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=pinning) - Selected cell will not be cleared. Same as hiding
 - `GroupBy` - On column grouping selected cells will not be cleared.
 
 <!-- ComponentEnd: Grid, TreeGrid -->
@@ -226,7 +226,7 @@ Then set the related CSS properties for that class:
 
 ## API References
 
-- [`IgcHierarchicalGridComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_grids_grids.igchierarchicalgridcomponent.html)
+- [`IgcHierarchicalGridComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent)
 
 ## Additional Resources
 

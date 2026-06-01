@@ -13,7 +13,7 @@ _premium: true
 
 # React Hierarchical Grid Row Pinning
 
-The Ignite UI for React Row Pinning feature in React Hierarchical Grid allows you to  pin one or multiple rows to the top or bottom of grid. Row Pinning allows end-users to pin rows in a particular order, duplicating them in a special area that is always visible even when they scroll the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) vertically. The React Hierarchical Grid has a built-in row pinning UI, which is enabled by initializing an [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) component in the context of Hierarchical Grid. In addition, you can define custom UI and change the pin state of the rows via the Row Pinning API.
+The Ignite UI for React Row Pinning feature in React Hierarchical Grid allows you to  pin one or multiple rows to the top or bottom of grid. Row Pinning allows end-users to pin rows in a particular order, duplicating them in a special area that is always visible even when they scroll the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) vertically. The React Hierarchical Grid has a built-in row pinning UI, which is enabled by initializing an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component in the context of Hierarchical Grid. In addition, you can define custom UI and change the pin state of the rows via the Row Pinning API.
 
 ## React Hierarchical Grid Row Pinning Example
 
@@ -239,7 +239,7 @@ root.render(<Sample/>);
 
 ## Row Pinning UI
 
-The built-in row pinning UI is enabled by adding an [`IgrActionStrip`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igractionstrip.html) component with the [`IgrGridPinningActions`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrgridpinningactions.html) component. The action strip is automatically shown when hovering a row and will display a pin or unpin button icon based on the state of the row it is shown for. An additional action allowing to scroll the copy of the pinned row into view is shown for each pinned row as well.
+The built-in row pinning UI is enabled by adding an [`IgrActionStrip`](mcp:get_api_reference?platform=react&component=IgrActionStrip) component with the [`IgrGridPinningActions`](mcp:get_api_reference?platform=react&component=IgrGridPinningActions) component. The action strip is automatically shown when hovering a row and will display a pin or unpin button icon based on the state of the row it is shown for. An additional action allowing to scroll the copy of the pinned row into view is shown for each pinned row as well.
 
 <!-- ComponentEnd: Grid, HierarchicalGrid, TreeGrid -->
 
@@ -259,20 +259,20 @@ The built-in row pinning UI is enabled by adding an [`IgrActionStrip`](https://w
 
 ## Row Pinning API
 
-Row pinning is controlled through the [`pinned`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html) body.
+Row pinning is controlled through the [`pinned`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pinned) input of the `Row`. Pinned rows are rendered at the top of the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) by default and stay fixed through vertical scrolling of the unpinned rows in the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) body.
 
 ```tsx
 gridRef.current.getRowByIndex(0).pinned = true;
 ```
 
-You may also use the [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html)'s [`pinRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#pinRow) or [`unpinRow`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#unpinRow) methods of the to pin or unpin records by their ID:
+You may also use the [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)'s [`pinRow`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=pinRow) or [`unpinRow`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=unpinRow) methods of the to pin or unpin records by their ID:
 
 ```tsx
 gridRef.current.pinRow('ALFKI');
 gridRef.current.unpinRow('ALFKI');
 ```
 
-Note that the row ID is the primary key value, defined by the [`primaryKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
+Note that the row ID is the primary key value, defined by the [`primaryKey`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
 
 A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the `RowPinning` event and changing the `InsertAtIndex` property of the event arguments to the desired position index.
 
@@ -289,7 +289,7 @@ const rowPinning = (event: IgrPinRowEventArgs) => {
 
 ## Pinning Position
 
-You can change the row pinning position via the [`pinning`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html#pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
+You can change the row pinning position via the [`pinning`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid&member=pinning) configuration option. It allows you to set the pin area position to either Top or Bottom.
 When set to Bottom pinned rows are rendered at the bottom of the grid, after the unpinned rows. Unpinned rows can be scrolled vertically, while the pinned rows remain fixed at the bottom.
 
 <!-- ComponentStart: Grid, TreeGrid, HierarchicalGrid -->
@@ -841,9 +841,9 @@ root.render(<Sample/>);
 
 ## API References
 
-- [`IgrHierarchicalGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrhierarchicalgrid.html)
+- [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid)
 - `HierarchicalGridRow`
-- [`IgrRowType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrrowtype.html)
+- [`IgrRowType`](mcp:get_api_reference?platform=react&component=IgrRowType)
 
 ## Additional Resources
 

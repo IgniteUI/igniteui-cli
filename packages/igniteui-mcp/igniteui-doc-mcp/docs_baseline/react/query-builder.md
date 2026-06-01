@@ -262,7 +262,7 @@ Clicking on the (AND or OR) button placed above each group, will open a menu wit
 Since every condition is related to a specific field from a particular entity changing the entity will lead to resetting all preset conditions and groups.
 
 You can start using the component by setting the `Entities` property to an array describing the entity name and an array of its fields, where each field is defined by its name and data type. Once a field is selected it will automatically assign the corresponding operands based on the data type.
-The Query Builder has the [`IgrExpressionTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrexpressiontree.html) property. You could use it to set an initial state of the control and access the user-specified filtering logic.
+The Query Builder has the [`IgrExpressionTree`](mcp:get_api_reference?platform=react&component=IgrExpressionTree) property. You could use it to set an initial state of the control and access the user-specified filtering logic.
 
 ```tsx
 private queryBuilderRef: React.RefObject<IgcQueryBuilderComponent>;
@@ -328,7 +328,7 @@ public render(): JSX.Element {
 }
 ```
 
-The [`IgrExpressionTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrexpressiontree.html) is stored in the component state which means you can subscribe to the `ExpressionTreeChange` event to receive notifications when the end-user changes the UI by creating, editing or removing conditions. The event listener is attached in `componentDidMount` and cleaned up in `componentWillUnmount`.
+The [`IgrExpressionTree`](mcp:get_api_reference?platform=react&component=IgrExpressionTree) is stored in the component state which means you can subscribe to the `ExpressionTreeChange` event to receive notifications when the end-user changes the UI by creating, editing or removing conditions. The event listener is attached in `componentDidMount` and cleaned up in `componentWillUnmount`.
 
 ```tsx
 private handleExpressionTreeChange = (event: CustomEvent<IgcExpressionTree>) => {
@@ -1104,10 +1104,10 @@ root.render(<Sample/>);
 
 - `QueryBuilder`
 - `QueryBuilderHeader`
-- [`IgrExpressionTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrexpressiontree.html)
-- [`IgrFilteringExpressionsTree`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrfilteringexpressionstree.html)
+- [`IgrExpressionTree`](mcp:get_api_reference?platform=react&component=IgrExpressionTree)
+- [`IgrFilteringExpressionsTree`](mcp:get_api_reference?platform=react&component=IgrFilteringExpressionsTree)
 - `FilteringLogic`
-- [`IgrStringFilteringOperand`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrstringfilteringoperand.html)
+- [`IgrStringFilteringOperand`](mcp:get_api_reference?platform=react&component=IgrStringFilteringOperand)
 - `QueryBuilderSearchValueContext`
 - [Styling & Themes](../themes/overview.md)
 

@@ -13,7 +13,7 @@ The Ignite UI for React Navbar informs the user of their current position in an 
 
 ## React Navbar Example
 
-The following example represents a [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html) with icons and text header:
+The following example represents a [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar) with icons and text header:
 
 ```tsx
 import React from 'react';
@@ -67,7 +67,7 @@ root.render(<NavbarOverview/>);
 
 ## Usage
 
-Before using the [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html), you need to register it as follows:
+Before using the [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -77,14 +77,14 @@ First, you need to the install the corresponding Ignite UI for React npm package
 npm install igniteui-react
 ```
 
-You will then need to import the [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html) and its necessary CSS like so:
+You will then need to import the [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar) and its necessary CSS like so:
 
 ```tsx
 import { IgrNavbar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-Then in the template of [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html), you can add the following code to show a basic [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html) with a title only:
+Then in the template of [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar), you can add the following code to show a basic [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar) with a title only:
 
 ```tsx
 <IgrNavbar>
@@ -94,7 +94,7 @@ Then in the template of [`IgrNavbar`](https://www.infragistics.com/products/igni
 
 ### Content
 
-You can enhance the [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html) component by adding [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html) or other components at the start or end position as content, allowing users to navigate to key positions directly from the bar:
+You can enhance the [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar) component by adding [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon) or other components at the start or end position as content, allowing users to navigate to key positions directly from the bar:
 
 ```tsx
  <IgrNavbar>
@@ -218,8 +218,8 @@ root.render(<NavbarStyling/>);
 
 ## API References
 
-- [`IgrIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igricon.html)
-- [`IgrNavbar`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrnavbar.html)
+- [`IgrIcon`](mcp:get_api_reference?platform=react&component=IgrIcon)
+- [`IgrNavbar`](mcp:get_api_reference?platform=react&component=IgrNavbar)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

@@ -9,11 +9,11 @@ _premium: true
 
 # Angular Grid Paste from Excel
 
-The Ignite UI for Angular [`IgxGrid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) can read Excel data that is copied to the clipboard. In this section we will show you how to do this with some custom code.
+The Ignite UI for Angular [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) can read Excel data that is copied to the clipboard. In this section we will show you how to do this with some custom code.
 
 ## Angular Paste from Excel Example
 
-This sample demonstrates how to implement pasting from Excel into the [`igxGrid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) Material UI table.
+This sample demonstrates how to implement pasting from Excel into the [`igxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) Material UI table.
 To work with the sample open up any Excel spreadsheet, copy some rows, and paste it into the grid using the keyboard (Ctrl + V, Shift + Insert, Command + V).
 
 On the top there is a dropdown button with 2 options:
@@ -238,7 +238,7 @@ export class GridPasteSampleComponent {
 
 ## Usage
 
-You should add the `paste-handler` directive (you can find its code in the next section) to the [`igxGrid`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html) and handle its `onDataProcessed` event. The `onDataProcessed` event has one parameter that gives you access to the Excel data in the form of an array. For reference see the `addRecords` and `updateRecords` methods.
+You should add the `paste-handler` directive (you can find its code in the next section) to the [`igxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) and handle its `onDataProcessed` event. The `onDataProcessed` event has one parameter that gives you access to the Excel data in the form of an array. For reference see the `addRecords` and `updateRecords` methods.
 
 ```html
 <igx-grid #grid1 [data]="data" [width]="'100%'" [height]="'505px'" [autoGenerate]="false" paste-handler (onDataProcessed)="dataPasted($event)" [primaryKey]="'ID'">
@@ -427,7 +427,7 @@ export class PasteHandler {
 
 ## API References
 
-- [IgxGridComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridcomponent.html)
+- [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
 
 ## Additional Resources
 

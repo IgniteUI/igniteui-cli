@@ -131,7 +131,7 @@ We can change the avatar shape through the `shape` attribute setting its value t
 
 ### Avatar displaying initials
 
-To get a simple avatar with [`initials`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxavatarcomponent.html#initials) (i.e. JS  for  'Jack Sock'), add the following code inside the component template:
+To get a simple avatar with [`initials`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent&member=initials) (i.e. JS  for  'Jack Sock'), add the following code inside the component template:
 
 ```html
 <igx-avatar initials="JS" shape="circle"></igx-avatar>
@@ -183,7 +183,7 @@ If all went well, you should see something like the following in the browser:
 
 ### Avatar displaying icon
 
-Analogically, the avatar can display an icon via the [`icon`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxavatarcomponent.html#icon) property. Currently all icons from the material icon set are supported.
+Analogically, the avatar can display an icon via the [`icon`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent&member=icon) property. Currently all icons from the material icon set are supported.
 
 ```html
 <igx-avatar icon="person"
@@ -394,7 +394,7 @@ Learn more about it in the [Size](display-density.md) article.
 
 <div class="divider--half"></div>
 
-- [IgxAvatarComponent](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxavatarcomponent.html)
+- [IgxAvatarComponent](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent)
 
 
 ## Theming Dependencies

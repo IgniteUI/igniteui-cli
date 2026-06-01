@@ -13,7 +13,7 @@ _premium: true
 
 # Blazor Grid Clipboard Overview
 
-Copy to clipboard operations are now available in the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html). This functionality provides a fast, easy and customizable way to copy data of the Blazor [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) through the current multi cell data select. System Clipboard behavior gives the user ability to copy data from the [`IgbGrid`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html) into Excel or other external programs.
+Copy to clipboard operations are now available in the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid). This functionality provides a fast, easy and customizable way to copy data of the Blazor [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) through the current multi cell data select. System Clipboard behavior gives the user ability to copy data from the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) into Excel or other external programs.
 
 ## Blazor Grid Clipboard Example
 
@@ -167,7 +167,7 @@ Copy behavior is working with the default interaction defined by the browser and
 
 ## API Usage
 
-We expose [`ClipboardOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ClipboardOptions) property, which handles the following options:
+We expose [`ClipboardOptions`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ClipboardOptions) property, which handles the following options:
 
 - `Enabled` Enables/disables copying of selected cells.
 - `CopyHeaders` Include the associated headers when copying.
@@ -177,7 +177,7 @@ We expose [`ClipboardOptions`](https://www.infragistics.com/blazor/docs/api/api/
 > [!Note]
 > Excel can automatically detect text that is separated by tabs (tab-delimited `/t`) and properly paste the data into separate columns. When the paste format doesn't work, and everything you paste appears in a single column, then Excel's delimiter is set to another character, or your text is using spaces instead of tabs.
 
-- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`ClipboardOptions`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbGrid.html#IgniteUI_Blazor_Controls_IgbGrid_ClipboardOptions).
+- `GridCopy` Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`ClipboardOptions`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=ClipboardOptions).
 
 ## Additional Resources
 

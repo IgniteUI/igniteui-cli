@@ -15,7 +15,7 @@ The Ignite UI for Web Components Sparkline is a lightweight charting control. It
 
 ## Web Components Sparkline Example
 
-The following example shows all the different types of [`Sparkline`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.sparkline.html) available. The type is defined by setting the [`displayType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#displayType) property. If the [`displayType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#displayType) property is not specified, then by default, the [`Line`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.sparklinedisplaytype.html#Line) type is displayed.
+The following example shows all the different types of [`Sparkline`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_excel.sparkline.html) available. The type is defined by setting the [`displayType`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=displayType) property. If the [`displayType`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=displayType) property is not specified, then by default, the [`Line`](mcp:get_api_reference?platform=webcomponents&component=SparklineDisplayType&member=Line) type is displayed.
 
 ```css
 /* shared styles are loaded from: */
@@ -58,12 +58,12 @@ The Web Components Sparkline has the ability to mark the data points with ellipt
 
 ## Sparkline Types
 
-The Web Components Sparkline supports the following types of sparklines by setting the [`displayType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#displayType) property accordingly:
+The Web Components Sparkline supports the following types of sparklines by setting the [`displayType`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=displayType) property accordingly:
 
-- [`Line`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.sparklinedisplaytype.html#Line):  Displays the line chart type of Sparkline with numeric data, connecting the data points with line segments. At least two data points must be supplied to visualize the data in Sparkline.
-- [`Area`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.sparklinedisplaytype.html#Area): Displays the Area chart type of Sparkline with numeric data. This is like line type with additional steps of closing the area after each line is drawn. At least two data points must be supplied to visualize the data in Sparkline.
-- [`Column`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.sparklinedisplaytype.html#Column): Displays the Column chart type of Sparkline with numeric data. Some may refer to it as vertical bars. This type can render a single data point, but it would require specifying the minimum value range property (minimum) in Sparkline so the supplied single data point can be visible, otherwise the value will be treated as the minimum value and will not be visible.
-- [`WinLoss`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.sparklinedisplaytype.html#WinLoss): This type is similar in its visual appearance to Column chart type, in which the value of each column is equal to either the positive maximum (for positive values) or the negative minimum (for negative value) of the data set. The idea is to indicate a win or loss scenario. For the Win/Loss chart to display properly, the data set must have both positive and negative values. If the WinLoss sparkline is bound to the same data as the other types such as the Line type, which can be bound to a collection of numeric values, then the Web Components Sparkline will select two values from the collection - the highest and the lowest - and will render the sparkline based upon those values.
+- [`Line`](mcp:get_api_reference?platform=webcomponents&component=SparklineDisplayType&member=Line):  Displays the line chart type of Sparkline with numeric data, connecting the data points with line segments. At least two data points must be supplied to visualize the data in Sparkline.
+- [`Area`](mcp:get_api_reference?platform=webcomponents&component=SparklineDisplayType&member=Area): Displays the Area chart type of Sparkline with numeric data. This is like line type with additional steps of closing the area after each line is drawn. At least two data points must be supplied to visualize the data in Sparkline.
+- [`Column`](mcp:get_api_reference?platform=webcomponents&component=SparklineDisplayType&member=Column): Displays the Column chart type of Sparkline with numeric data. Some may refer to it as vertical bars. This type can render a single data point, but it would require specifying the minimum value range property (minimum) in Sparkline so the supplied single data point can be visible, otherwise the value will be treated as the minimum value and will not be visible.
+- [`WinLoss`](mcp:get_api_reference?platform=webcomponents&component=SparklineDisplayType&member=WinLoss): This type is similar in its visual appearance to Column chart type, in which the value of each column is equal to either the positive maximum (for positive values) or the negative minimum (for negative value) of the data set. The idea is to indicate a win or loss scenario. For the Win/Loss chart to display properly, the data set must have both positive and negative values. If the WinLoss sparkline is bound to the same data as the other types such as the Line type, which can be bound to a collection of numeric values, then the Web Components Sparkline will select two values from the collection - the highest and the lowest - and will render the sparkline based upon those values.
 
 ```css
 /* shared styles are loaded from: */
@@ -74,7 +74,7 @@ The Web Components Sparkline supports the following types of sparklines by setti
 
 ## Markers
 
-The Web Components Sparkline allows you to show markers as circular-colored icons on your series to indicate the individual data points based on X/Y coordinates. Markers can be set on sparklines of display types of [`Line`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.sparklinedisplaytype.html#Line), [`Area`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.sparklinedisplaytype.html#Area), and [`Column`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.sparklinedisplaytype.html#Column). The [`WinLoss`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.sparklinedisplaytype.html#WinLoss) type of sparkline does not currently accept markers. By default, markers are not displayed, but they can be enabled by setting the corresponding marker visibility property.
+The Web Components Sparkline allows you to show markers as circular-colored icons on your series to indicate the individual data points based on X/Y coordinates. Markers can be set on sparklines of display types of [`Line`](mcp:get_api_reference?platform=webcomponents&component=SparklineDisplayType&member=Line), [`Area`](mcp:get_api_reference?platform=webcomponents&component=SparklineDisplayType&member=Area), and [`Column`](mcp:get_api_reference?platform=webcomponents&component=SparklineDisplayType&member=Column). The [`WinLoss`](mcp:get_api_reference?platform=webcomponents&component=SparklineDisplayType&member=WinLoss) type of sparkline does not currently accept markers. By default, markers are not displayed, but they can be enabled by setting the corresponding marker visibility property.
 
 Markers in the sparkline can be placed in any combination of the following locations:
 
@@ -85,7 +85,7 @@ Markers in the sparkline can be placed in any combination of the following locat
 - `Last`: Display a marker on the last data point in the sparkline.
 - `Negative`: Display markers on the negative data points plotted in the sparkline.
 
-All of the markers mentioned above can be customized using the related marker type's property in aspects of color, visibility, and size. For example, the `Low` markers above will have properties [`lowMarkerBrush`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#lowMarkerBrush), [`lowMarkerVisibility`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#lowMarkerVisibility), and [`lowMarkerSize`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#lowMarkerSize).
+All of the markers mentioned above can be customized using the related marker type's property in aspects of color, visibility, and size. For example, the `Low` markers above will have properties [`lowMarkerBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=lowMarkerBrush), [`lowMarkerVisibility`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=lowMarkerVisibility), and [`lowMarkerSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=lowMarkerSize).
 
 ```typescript
 export class SparklineProfitDataItem {
@@ -124,15 +124,15 @@ export class SparklineProfitData extends Array<SparklineProfitDataItem> {
 
 The normal range feature of the Web Components Sparkline is a horizontal stripe representing some pre-defined meaningful range when the data is being visualized. The normal range can be set as a shaded area outlined with the desired color.
 
-The normal range can be wider than the maximum data point or beyond, and it can also be as thin as the sparkline's [`Line`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/enums/igniteui_webcomponents_charts.sparklinedisplaytype.html#Line) display type, to serve as a threshold indicator, for instance. The width of the normal range is determined by the following three properties, which serve as the minimum settings required for displaying the normal range:
+The normal range can be wider than the maximum data point or beyond, and it can also be as thin as the sparkline's [`Line`](mcp:get_api_reference?platform=webcomponents&component=SparklineDisplayType&member=Line) display type, to serve as a threshold indicator, for instance. The width of the normal range is determined by the following three properties, which serve as the minimum settings required for displaying the normal range:
 
-- [`normalRangeVisibility`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#normalRangeVisibility): Whether the normal range is visible.
-- [`normalRangeMaximum`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#normalRangeMaximum): The bottom border of the range.
-- [`normalRangeMinimum`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#normalRangeMinimum): The top border of the range.
+- [`normalRangeVisibility`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=normalRangeVisibility): Whether the normal range is visible.
+- [`normalRangeMaximum`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=normalRangeMaximum): The bottom border of the range.
+- [`normalRangeMinimum`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=normalRangeMinimum): The top border of the range.
 
-By default, the normal range is not displayed. When enabled, the normal range shows up with a light gray color appearance, which can also be configured using the [`normalRangeFill`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#normalRangeFill) property.
+By default, the normal range is not displayed. When enabled, the normal range shows up with a light gray color appearance, which can also be configured using the [`normalRangeFill`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=normalRangeFill) property.
 
-You can also configure whether to show the normal range in front of or behind the plotted series in your Web Components Sparkline by setting the [`displayNormalRangeInFront`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#displayNormalRangeInFront) property.
+You can also configure whether to show the normal range in front of or behind the plotted series in your Web Components Sparkline by setting the [`displayNormalRangeInFront`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=displayNormalRangeInFront) property.
 
 ```typescript
 export class SparklineMixedDataItem {
@@ -169,9 +169,9 @@ export class SparklineMixedData extends Array<SparklineMixedDataItem> {
 
 ## Trendlines
 
-The Web Components Sparkline has support for a range of trendlines that display as another layer on top of the actual sparkline layer. To display a sparkline, you can use the [`trendLineType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#trendLineType) property.
+The Web Components Sparkline has support for a range of trendlines that display as another layer on top of the actual sparkline layer. To display a sparkline, you can use the [`trendLineType`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=trendLineType) property.
 
-The trendlines are calculated according to the algorithm specified by the [`trendLineType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#trendLineType) property using the values of the data the the chart is bound to.
+The trendlines are calculated according to the algorithm specified by the [`trendLineType`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=trendLineType) property using the values of the data the the chart is bound to.
 
 Trendlines can only be displayed one at a time and by default, the trendline is not displayed.
 
@@ -214,7 +214,7 @@ export class SparklineMixedData extends Array<SparklineMixedDataItem> {
 
 The Web Components Sparkline can detect unknown values and render the space for unknown values through a specified interpolation algorithm. If your data contains null values and you do not use this feature, meaning no interpolation is specified, the unknown value will not be plotted.
 
-To plot the unknown values, you can set the [`unknownValuePlotting`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#unknownValuePlotting) property of the Web Components Sparkline. The sample below shows the differences between the values of the [`unknownValuePlotting`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#unknownValuePlotting) property, allowing you to toggle it on or off using a checkbox:
+To plot the unknown values, you can set the [`unknownValuePlotting`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=unknownValuePlotting) property of the Web Components Sparkline. The sample below shows the differences between the values of the [`unknownValuePlotting`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=unknownValuePlotting) property, allowing you to toggle it on or off using a checkbox:
 
 ```typescript
 export class SparklineUnknownDataItem {
@@ -386,11 +386,11 @@ You can find more information about related chart types in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-- [`displayNormalRangeInFront`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#displayNormalRangeInFront)
-- [`displayType`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#displayType)
-- [`lowMarkerBrush`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#lowMarkerBrush)
-- [`lowMarkerSize`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#lowMarkerSize)
-- [`lowMarkerVisibility`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#lowMarkerVisibility)
-- [`normalRangeFill`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#normalRangeFill)
-- [`unknownValuePlotting`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html#unknownValuePlotting)
-- [`IgcSparklineComponent`](https://www.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/classes/igniteui_webcomponents_charts.igcsparklinecomponent.html)
+- [`displayNormalRangeInFront`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=displayNormalRangeInFront)
+- [`displayType`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=displayType)
+- [`lowMarkerBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=lowMarkerBrush)
+- [`lowMarkerSize`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=lowMarkerSize)
+- [`lowMarkerVisibility`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=lowMarkerVisibility)
+- [`normalRangeFill`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=normalRangeFill)
+- [`unknownValuePlotting`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent&member=unknownValuePlotting)
+- [`IgcSparklineComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSparklineComponent)

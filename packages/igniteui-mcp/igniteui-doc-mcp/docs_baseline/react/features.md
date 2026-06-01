@@ -13,7 +13,7 @@ The Ignite UI for React ComboBox component exposes several features such as filt
 
 ## Combobox Features Example
 
-The following demo shows some [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html) features that are enabled/disabled at runtime:
+The following demo shows some [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) features that are enabled/disabled at runtime:
 
 ```typescript
 interface City {
@@ -112,7 +112,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<ComboFeatures />);
 ```
 
-In our sample we are going to use the [`IgrSwitch`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrswitch.html) component, so we have to import them together with the combo:
+In our sample we are going to use the [`IgrSwitch`](mcp:get_api_reference?platform=react&component=IgrSwitch) component, so we have to import them together with the combo:
 
 ```tsx
 import { IgrCombo, IgrSwitch  } from 'igniteui-react';
@@ -155,7 +155,7 @@ const [comboDisabled, setComboDisabled] = useState(false);
 </IgrSwitch>
 ```
 
-Note that grouping is enabled/disabled by setting the [`groupKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#groupKey) property to a corresponding data source field:
+Note that grouping is enabled/disabled by setting the [`groupKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=groupKey) property to a corresponding data source field:
 
 ```tsx
 groupKey={groupingEnabled ? "country" : undefined}
@@ -165,9 +165,9 @@ groupKey={groupingEnabled ? "country" : undefined}
 
 ### Filtering
 
-By default, filtering in the ComboBox is enabled. It can be disabled by setting the [`disableFiltering`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#disableFiltering) property.
+By default, filtering in the ComboBox is enabled. It can be disabled by setting the [`disableFiltering`](mcp:get_api_reference?platform=react&component=IgrCombo&member=disableFiltering) property.
 
-Filtering options can be further enhanced by enabling the search case sensitivity. The case-sensitive icon can be turned on using the [`caseSensitiveIcon`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#caseSensitiveIcon) property so that end-users can control the case sensitivity.
+Filtering options can be further enhanced by enabling the search case sensitivity. The case-sensitive icon can be turned on using the [`caseSensitiveIcon`](mcp:get_api_reference?platform=react&component=IgrCombo&member=caseSensitiveIcon) property so that end-users can control the case sensitivity.
 
 ```tsx
 <IgrCombo disableFiltering={true} caseSensitiveIcon={true}></IgrCombo>
@@ -175,7 +175,7 @@ Filtering options can be further enhanced by enabling the search case sensitivit
 
 #### Filtering Options
 
-The Ignite UI for React [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html) exposes one more filtering property that allows passing configuration of both `FilterKey` and `CaseSensitive` options. The `FilterKey` indicates which data source field should be used for filtering the list of options. The `CaseSensitive` option indicates if the filtering should be case-sensitive or not.
+The Ignite UI for React [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) exposes one more filtering property that allows passing configuration of both `FilterKey` and `CaseSensitive` options. The `FilterKey` indicates which data source field should be used for filtering the list of options. The `CaseSensitive` option indicates if the filtering should be case-sensitive or not.
 
 The following code snippet shows how to filter the cities from our data source by country instead of name. We are also making the filtering case-sensitive by default:
 
@@ -190,14 +190,14 @@ const options = {
 
 ### Grouping
 
-Defining a [`groupKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#groupKey) option will group the items, according to the provided key:
+Defining a [`groupKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=groupKey) option will group the items, according to the provided key:
 
 ```tsx
 <IgrCombo groupKey="region" />
 ```
 
 > [!Note]
-> The [`groupKey`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#groupKey) property will only have effect if your data source consists of complex objects.
+> The [`groupKey`](mcp:get_api_reference?platform=react&component=IgrCombo&member=groupKey) property will only have effect if your data source consists of complex objects.
 
 #### Sorting Direction
 
@@ -209,7 +209,7 @@ The ComboBox component also exposes an option for setting whether groups should 
 
 ### Label
 
-The [`IgrCombo`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html) label can be set easily using the [`label`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#label) property:
+The [`IgrCombo`](mcp:get_api_reference?platform=react&component=IgrCombo) label can be set easily using the [`label`](mcp:get_api_reference?platform=react&component=IgrCombo&member=label) property:
 
 ```tsx
 <IgrCombo label="Cities" />
@@ -233,7 +233,7 @@ If you want your ComboBox to be automatically focused on page load you can use t
 
 ### Search Input Focus
 
-The ComboBox search input is focused by default. To disable this feature and move the focus to the list of options use the [`autofocusList`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#autofocusList) property as shown below:
+The ComboBox search input is focused by default. To disable this feature and move the focus to the list of options use the [`autofocusList`](mcp:get_api_reference?platform=react&component=IgrCombo&member=autofocusList) property as shown below:
 
 ```tsx
 <IgrCombo autofocusList={true} />
@@ -249,7 +249,7 @@ The ComboBox can be marked as required by setting the required property.
 
 ### Disable ComboBox
 
-You can disable the ComboBox using the [`disabled`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcombo.html#disabled) property:
+You can disable the ComboBox using the [`disabled`](mcp:get_api_reference?platform=react&component=IgrCombo&member=disabled) property:
 
 ```tsx
 <IgrCombo disabled={true} />

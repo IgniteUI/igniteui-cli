@@ -34,7 +34,7 @@ Ignite UI for Blazor Chips help people enter information, make selections, filte
 
 ## Usage
 
-Before using the [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html), you need to register it as follows:
+Before using the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip), you need to register it as follows:
 
 ```razor
 // in Program.cs file
@@ -42,13 +42,13 @@ Before using the [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/Ig
 builder.Services.AddIgniteUIBlazor(typeof(IgbChipModule));
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/\_Host.cshtml** file in a **Blazor Server** project:
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-The simplest way to start using the [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html) is as follows:
+The simplest way to start using the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip) is as follows:
 
 ```razor
 <div class="container sample vertical">
@@ -65,13 +65,13 @@ The simplest way to start using the [`IgbChip`](https://www.infragistics.com/bla
 }
 ```
 
-To display a selectable chip, you can use the [`Selectable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html#IgniteUI_Blazor_Controls_IgbChip_Selectable) property of the chip.
+To display a selectable chip, you can use the [`Selectable`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=Selectable) property of the chip.
 
 ```razor
 <IgbChip Selectable="true"></IgbChip>
 ```
 
-To display a removable chip, you can use the [`Removable`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html#IgniteUI_Blazor_Controls_IgbChip_Removable) property of the chip.
+To display a removable chip, you can use the [`Removable`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=Removable) property of the chip.
 
 ```razor
 <IgbChip Removable="true"></IgbChip>
@@ -81,7 +81,7 @@ To display a removable chip, you can use the [`Removable`](https://www.infragist
 
 ### Variants
 
-The Ignite UI for Blazor chip supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `Primary`, `Info`, `Success`, `Warning`, or `Danger` to the [`Variant`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html#IgniteUI_Blazor_Controls_IgbChip_Variant) property.
+The Ignite UI for Blazor chip supports several pre-defined stylistic variants. You can change the variant by assigning one of the supported values - `Primary`, `Info`, `Success`, `Warning`, or `Danger` to the [`Variant`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=Variant) property.
 
 ```razor
 <IgbChip Variant="ChipVariant.Success"></IgbChip>
@@ -120,11 +120,11 @@ The Ignite UI for Blazor chip supports several pre-defined stylistic variants. Y
 
 ### Disabled
 
-The Ignite UI for Blazor chip can be disabled by using the [`Disabled`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html#IgniteUI_Blazor_Controls_IgbChip_Disabled) property.
+The Ignite UI for Blazor chip can be disabled by using the [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbChip&member=Disabled) property.
 
 ### Prefix / Suffix
 
-With the `Prefix` and `Suffix` parts of the [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html) component and their slots, we can add different content before and after the main content of the chip. We provide default select and remove icons but you can customize them using the [`IgbSelect`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbSelect.html) and `Remove` slots. You can add additional content before or after the main content, using the `Start` and `End` slots.
+With the `Prefix` and `Suffix` parts of the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip) component and their slots, we can add different content before and after the main content of the chip. We provide default select and remove icons but you can customize them using the [`IgbSelect`](mcp:get_api_reference?platform=blazor&component=IgbSelect) and `Remove` slots. You can add additional content before or after the main content, using the `Start` and `End` slots.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -206,7 +206,7 @@ With the `Prefix` and `Suffix` parts of the [`IgbChip`](https://www.infragistics
 
 ## Size
 
-We allow the user to choose the size of the [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html) by utilizing the `--ig-size` CSS variable:
+We allow the user to choose the size of the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip) by utilizing the `--ig-size` CSS variable:
 
 ```css
 .size-small {
@@ -248,7 +248,7 @@ We allow the user to choose the size of the [`IgbChip`](https://www.infragistics
 
 ## Styling
 
-The [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html) component exposes a `base`, `prefix`, `suffix` CSS parts that can be used to change all of its style properties.
+The [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip) component exposes a `base`, `prefix`, `suffix` CSS parts that can be used to change all of its style properties.
 
 ```css
 igc-chip::part(base) {
@@ -279,7 +279,7 @@ igc-chip::part(suffix) {
 
 ## API References
 
-- [`IgbChip`](https://www.infragistics.com/blazor/docs/api/api/IgniteUI.Blazor.Controls.IgbChip.html)
+- [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip)
 - [`Styling & Themes`](../themes/overview.md)
 
 ## Additional Resources

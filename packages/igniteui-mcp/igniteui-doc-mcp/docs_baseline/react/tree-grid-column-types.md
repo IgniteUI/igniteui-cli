@@ -471,17 +471,17 @@ root.render(<Sample />);
 
 ## React Tree Grid Default Template
 
-If you want to enable a data type-specific template, you should set the column [`dataType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#dataType) input, otherwise the column will be treated as a string column since that is the default value for column [`dataType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#dataType).
+If you want to enable a data type-specific template, you should set the column [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) input, otherwise the column will be treated as a string column since that is the default value for column [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType).
 
-The following sections describe the default templates for each [`dataType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#dataType).
+The following sections describe the default templates for each [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType).
 
 ### String
 
-This column [`dataType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#dataType) is not changing the appearance or format of the cell value.
+This column [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) is not changing the appearance or format of the cell value.
 
 ### Number
 
-If the [`dataType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#dataType) is set to **number**, the cell value will be formatted based on application or grid's [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#locale) settings, as well as when [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pipeArgs) property is specified. Then the number format will be changed based on them, for example it might change the:
+If the [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType) is set to **number**, the cell value will be formatted based on application or grid's [`locale`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=locale) settings, as well as when [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) property is specified. Then the number format will be changed based on them, for example it might change the:
 
 - Number of digits after the decimal point
 - Decimal separator with `,` or `.`
@@ -496,7 +496,7 @@ const formatOptions : IgrColumnPipeArgs = {
 
 ### DateTime, Date and Time
 
-The appearance of the date portions will be set (e.g. day, month, year) based on [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#locale) format or [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pipeArgs) input. The pipe arguments can be used to specify a custom date format or timezone:
+The appearance of the date portions will be set (e.g. day, month, year) based on [`locale`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=locale) format or [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) input. The pipe arguments can be used to specify a custom date format or timezone:
 
 - **format** - The default value for formatting the date is `'mediumDate'`. Other available options are `'short'`, `'long'`, `'shortDate'`, `'fullDate'`, `'longTime'`, `'fullTime'` and etc.
 - **timezone** - The user's local system timezone is the default value. The timezone offset or standard GMT/UTC or continental US timezone abbreviation can also be passed. Different timezone examples which will display the corresponding time of the location anywhere in the world:
@@ -525,7 +525,7 @@ Available timezones:
 | Hawaii Standard Time      |‘UTC-10’                   |
 | India Standard Time       |‘UTC+4’                    |
 
-The [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html) accepts date values of type **Date object**, **Number (milliseconds)**, **An ISO date-time string**. This section shows [how to configure a custom display format](../data-grid.md#custom-display-format).
+The [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid) accepts date values of type **Date object**, **Number (milliseconds)**, **An ISO date-time string**. This section shows [how to configure a custom display format](../data-grid.md#custom-display-format).
 
 As you can see in the sample, we specify a different format options in order to showcase the available formats for the specific column type. For example, below you can find the format options for the **time** portion of the date object:
 
@@ -543,7 +543,7 @@ const timeFormats = [
 When it comes to cell editing based on the column type a different editor will appear:
 
 - `DateTime` - `DateTimeEditor` will be used. This editor will give you a mask directions for the input elements part of the `DateTime` object.
-- `Date` - [`IgrDatePicker`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrdatepicker.html) will be used.
+- `Date` - [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) will be used.
 - `Time` - `TimePicker` will be used.
 
 #### Filtering
@@ -565,7 +565,7 @@ The available Summary operands will be **Count**, **Earliest** (date/time) and *
 
 ### Boolean
 
-The default template is using material icons for visualization of boolean values - 'clear' icon for **false** values and 'check' icon for **true** values. As for the editing template, it is using [`IgrCheckbox`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrcheckbox.html) component.
+The default template is using material icons for visualization of boolean values - 'clear' icon for **false** values and 'check' icon for **true** values. As for the editing template, it is using [`IgrCheckbox`](mcp:get_api_reference?platform=react&component=IgrCheckbox) component.
 
 ```tsx
 <IgrColumn dataType="boolean"></IgrColumn>
@@ -579,7 +579,7 @@ Default template is using the value coming from the data as an image source to a
 <IgrColumn field="Image" dataType="image"></IgrColumn>
 ```
 
-When [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#autoGenerate) is used for the columns, the grid analyses the values in the first data record. If a value is of type string and matches the pattern of a url ending in an image extension (gif, jpg, jpeg, tiff, png, webp, bmp) then the column will automatically be marked as `dataType === GridColumnDataType.Image` and a default image template will be rendered.
+When [`autoGenerate`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=autoGenerate) is used for the columns, the grid analyses the values in the first data record. If a value is of type string and matches the pattern of a url ending in an image extension (gif, jpg, jpeg, tiff, png, webp, bmp) then the column will automatically be marked as `dataType === GridColumnDataType.Image` and a default image template will be rendered.
 
 ### Currency
 
@@ -587,7 +587,7 @@ When [`autoGenerate`](https://www.infragistics.com/products/ignite-ui-react/docs
 
 The default template will show a numeric value with currency symbol that would be either prefixed or suffixed.
 
-By using the [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
+By using the [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs) input the end-user can customize the number format by **decimal point**, **currencyCode** and **display**.
 
 ```tsx
 const formatOptions : IgrColumnPipeArgs = {
@@ -670,11 +670,11 @@ const formatCurrency = (value: number) => {
 ## API References
 
 - `Cell`
-- [`IgrColumn`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html)
-- [`pipeArgs`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#pipeArgs)
-- [`IgrTreeGrid`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html)
-- [`locale`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrtreegrid.html#locale)
-- [`dataType`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react-grids.igrcolumn.html#dataType)
+- [`IgrColumn`](mcp:get_api_reference?platform=react&component=IgrColumn)
+- [`pipeArgs`](mcp:get_api_reference?platform=react&component=IgrColumn&member=pipeArgs)
+- [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid)
+- [`locale`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=locale)
+- [`dataType`](mcp:get_api_reference?platform=react&component=IgrColumn&member=dataType)
 
 ## Additional Resources
 
