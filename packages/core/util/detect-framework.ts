@@ -64,7 +64,7 @@ export function detectFrameworkFromPackageJson(): Exclude<Framework, "jquery"> |
 	}
 
 	// for now assume webcomponents as default fallback
-	Util.log("Detected Web Components project (from package.json)");
+	Util.log("Assuming Web Components (no Angular/React deps found in package.json)");
 	return "webcomponents";
 }
 

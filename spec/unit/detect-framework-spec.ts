@@ -74,7 +74,7 @@ describe("Unit - detectFrameworkFromPackageJson", () => {
 		it("returns webcomponents for an empty package.json (no known framework)", () => {
 			spyOn(App.container, "get").and.returnValue(makeFs({}));
 			expect(detectFrameworkFromPackageJson()).toBe("webcomponents");
-			expect(Util.log).toHaveBeenCalledWith("Detected Web Components project (from package.json)");
+			expect(Util.log).toHaveBeenCalledWith("Assuming Web Components (no Angular/React deps found in package.json)");
 		});
 
 		it("returns webcomponents when only unrelated packages are present", () => {
