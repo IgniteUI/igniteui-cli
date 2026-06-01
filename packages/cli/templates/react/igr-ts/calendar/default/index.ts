@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_PACKAGE } from "../../constants";
 
 class IgrCalendarTemplate extends IgniteUIForReactTemplate {
 constructor() {
@@ -10,7 +11,7 @@ this.id = "calendar";
 this.projectType = "igr-ts";
 this.name = "Calendar";
 this.description = "basic IgrCalendar";
-this.packages = ["igniteui-react@~19.5.2"];
+this.packages = [IGNITEUI_REACT_PACKAGE];
 }
 }
 module.exports = new IgrCalendarTemplate();

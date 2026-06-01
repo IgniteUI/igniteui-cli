@@ -1,6 +1,7 @@
 # 15.2.2
 
 ## What's Changed
+* **Template package updates:** updated scaffolded package references for Angular, React, and Web Components templates — `igniteui-angular` to `~21.2.5`, `igniteui-react` / `igniteui-react-grids` / `igniteui-react-dockmanager` to `~19.7.0`, `igniteui-webcomponents` to `~7.2.0`, and `igniteui-webcomponents-grids` to `~7.1.0`.
 * **MCP — API reference links in docs:** Infragistics API documentation links embedded in the docs served by the MCP server are now rewritten to deterministic `get_api_reference` tool references (e.g. `mcp:get_api_reference?platform=webcomponents&component=IgcCheckboxComponent&member=checked`). AI assistants reading the docs resolve API links through the in-tool API lookup instead of fetching external HTML pages.
 * **MCP `get_api_reference` — member-level lookup:** The `get_api_reference` tool now accepts an optional `member` parameter to return a single property, method, or event entry instead of the full component (for example `member="checked"`). It takes precedence over `section`, tolerates `Component#member` fragment-style references, reports the canonical member-name casing in the response, and returns a clear error when the requested member does not exist on the component.
 
