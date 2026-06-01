@@ -3,6 +3,7 @@ import { App, Config, FS_TOKEN, FsFileSystem, GoogleAnalytics, IFileSystem, Inqu
 import * as coreDetect from "../../packages/core/util/detect-framework";
 import { configureMCP, configureSkills } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
+import { addMcpServers } from "../../packages/core/util/mcp-config";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
 const IGNITEUI_THEMING_SERVER_KEY = "igniteui-theming";
@@ -104,19 +105,37 @@ describe("Unit - ai-config command", () => {
 			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
 		});
 
-		it("is a no-op and logs when both servers are already configured", () => {
+		it("is a no-op when both servers are already configured", () => {
 			const mockFs = createMockFs(JSON.stringify({
 				servers: {
 					[IGNITEUI_SERVER_KEY]: igniteuiServer,
 					[IGNITEUI_THEMING_SERVER_KEY]: igniteuiThemingServer
 				}
-			}));
+			}, null, 2));
 			App.container.set(FS_TOKEN, mockFs);
 
-			configureMCP(["vscode"]);
+			const result = addMcpServers("vscode");
 
+			expect(result).toBe(false);
 			expect(mockFs.writeFile).not.toHaveBeenCalled();
-			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("already configured"));
+		});
+
+		it("updates config when server configuration is outdated", () => {
+			const mockFs = createMockFs(JSON.stringify({
+				servers: {
+					[IGNITEUI_SERVER_KEY]: { command: "npx", args: ["-y", "igniteui-cli", "old-command"] },
+					[IGNITEUI_THEMING_SERVER_KEY]: igniteuiThemingServer
+				}
+			}, null, 2));
+			App.container.set(FS_TOKEN, mockFs);
+
+			const result = addMcpServers("vscode");
+
+			expect(result).toBe(true);
+			expect(mockFs.writeFile).toHaveBeenCalled();
+			const config = writtenConfig(mockFs);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
 		});
 
 		it("preserves existing third-party servers when adding igniteui servers", () => {
