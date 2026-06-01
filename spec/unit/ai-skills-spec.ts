@@ -1,5 +1,5 @@
 import * as path from "path";
-import { App, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, IFileSystem, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import { App, copyAgentInstructionFiles, copyAISkillsToProject, FS_TOKEN, FsFileSystem, getInstructionFilePath, IFileSystem, type SkillsSource, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 
 function skillsDir(pkgName: string) {
 	return `node_modules/${pkgName}/skills`;
@@ -621,6 +621,113 @@ describe("Unit - copyAISkillsToProject", () => {
 				{ path: ".agents/skills/angular.md", action: "created" }
 			]);
 		});
+	});
+});
+
+describe("Unit - copyAISkillsToProject sources metadata", () => {
+	beforeEach(() => {
+		spyOn(Util, "log");
+		spyOn(Util, "greenCheck").and.returnValue("✓");
+	});
+
+	it("should return package source with name and version when npm package is found", () => {
+		const angularSkillsDir = skillsDir("igniteui-angular");
+		const skillFilePath = skillFile("igniteui-angular", "angular.md");
+
+		spySrcFs({
+			glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
+				dir === angularSkillsDir ? [skillFilePath] : []
+			),
+			readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
+				if (p === "node_modules/igniteui-angular/package.json") {
+					return JSON.stringify({ name: "igniteui-angular", version: "18.2.0" });
+				}
+				return "# skill content";
+			})
+		});
+
+		const destFs = makeDestFs({
+			directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+				p === angularSkillsDir
+			)
+		});
+		App.container.set(FS_TOKEN, destFs);
+
+		const result = copyAISkillsToProject(["claude"], "angular");
+
+		expect(result.sources.length).toBe(1);
+		const source = result.sources[0] as SkillsSource & { type: "package" };
+		expect(source.type).toBe("package");
+		expect(source.packageName).toBe("igniteui-angular");
+		expect(source.packageVersion).toBe("18.2.0");
+		expect(source.path).toBe(angularSkillsDir);
+	});
+
+	it("should return bundled source when no npm package is found", () => {
+		const FAKE_TEMPLATE_PATH = "/fake/template";
+
+		spySrcFs({
+			glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) => {
+				const expected = path.join(FAKE_TEMPLATE_PATH, "skills");
+				return dir === expected ? [path.join(expected, "angular.md")] : [];
+			}),
+			readFile: spyOn(FsFileSystem.prototype, "readFile").and.returnValue("# skill")
+		});
+
+		const destFs = makeDestFs();
+		App.container.set(FS_TOKEN, destFs);
+		mockTemplateManager([FAKE_TEMPLATE_PATH]);
+
+		const result = copyAISkillsToProject(["claude"], "angular");
+
+		expect(result.sources.length).toBe(1);
+		expect(result.sources[0].type).toBe("bundled");
+		expect(result.sources[0].path).toBe(path.join(FAKE_TEMPLATE_PATH, "skills"));
+	});
+
+	it("should default packageVersion to 'unknown' when package.json is unreadable", () => {
+		const angularSkillsDir = skillsDir("igniteui-angular");
+		const skillFilePath = skillFile("igniteui-angular", "angular.md");
+
+		spySrcFs({
+			glob: spyOn(FsFileSystem.prototype, "glob").and.callFake((dir: string) =>
+				dir === angularSkillsDir ? [skillFilePath] : []
+			),
+			readFile: spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
+				if (p === "node_modules/igniteui-angular/package.json") {
+					throw new Error("ENOENT");
+				}
+				return "# skill content";
+			})
+		});
+
+		const destFs = makeDestFs({
+			directoryExists: jasmine.createSpy("destFs.directoryExists").and.callFake((p: string) =>
+				p === angularSkillsDir
+			)
+		});
+		App.container.set(FS_TOKEN, destFs);
+
+		const result = copyAISkillsToProject(["claude"], "angular");
+
+		expect(result.sources.length).toBe(1);
+		const source = result.sources[0] as SkillsSource & { type: "package" };
+		expect(source.type).toBe("package");
+		expect(source.packageVersion).toBe("unknown");
+	});
+
+	it("should return empty sources when no skills are found anywhere", () => {
+		spySrcFs({
+			glob: spyOn(FsFileSystem.prototype, "glob").and.returnValue([])
+		});
+
+		const destFs = makeDestFs();
+		App.container.set(FS_TOKEN, destFs);
+		mockTemplateManager([]);
+
+		const result = copyAISkillsToProject(["claude"], "angular");
+
+		expect(result.sources).toEqual([]);
 	});
 });
 
