@@ -4,8 +4,8 @@ import { BaseWithHomeIgrTsProject } from "../_base_with_home";
 
 export class EmptyIgrTsProject extends BaseWithHomeIgrTsProject implements ProjectTemplate {
 	public id: string = "empty";
-	public name = "Empty project";
-	public description = "Empty project structure with home page and routing";
+	public name = "Empty Project";
+	public description = "Starter project with routing and a home page";
 	public dependencies: string[] = [];
 	public framework: string = "react";
 	public projectType: string = "igr-ts";

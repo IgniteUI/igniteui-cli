@@ -7,14 +7,23 @@
   flex-flow: column nowrap;
   justify-content: stretch;
   align-items: center;
-  padding: 40px 24px 40px 24px;
+  padding: 24px;
+  box-sizing: border-box;
   overflow: inherit;
 }
 
 @include b(content) {
   @extend %content-display;
 
+  h4 {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.4;
+    max-width: 1120px;
+  }
+
   p {
+    font-size: 16px;
     margin: 0px 0px 8px 0px;
 
     &:nth-last-child(2) {
@@ -22,18 +31,27 @@
     }
   }
 
+  @include e(link) {
+    font-size: 16px;
+  }
+
   @include e(header) {
     color: color($default-palette, "primary");
+    font-size: 80px;
+    font-weight: 300;
+    line-height: 1.2;
   }
 
   @include e(subject) {
+    margin-top: 0;
     margin-bottom: 16px;
   }
 
   @include e(container, $m: wide) {
     display: flex;
-    flex-flow: row;
+    flex-flow: row wrap;
     justify-content: center;
+    gap: 24px;
   }
 
   @include e(link, $m: github) {
@@ -41,10 +59,7 @@
     display: flex;
     flex-flow: row;
     align-items: center;
-
-    &:not(:first-child) {
-      margin-left: 24px;
-    }
+    font-size: 16px;
 
     &::before {
       position: relative;
@@ -60,8 +75,18 @@
   }
 
   @include e(image) {
-    margin-bottom: 48px;
-    max-height: 480px;
+    margin-bottom: 32px;
+    max-height: 400px;
     max-width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    @include e(header) {
+      font-size: 40px;
+    }
+
+    h4 {
+      font-size: 20px;
+    }
   }
 }

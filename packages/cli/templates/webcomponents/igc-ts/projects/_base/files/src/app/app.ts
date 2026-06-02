@@ -6,6 +6,11 @@ import { routes } from './app-routing.js';
 @customElement('app-root')
 export default class App extends LitElement {
   static styles = css`
+    :host {
+      display: block;
+      min-height: 100vh;
+    }
+
     router-outlet {
       width: 100%;
     }
@@ -13,7 +18,7 @@ export default class App extends LitElement {
     .outer-wrapper {
       display: flex;
       justify-content: center;
-      height: 100%;
+      min-height: 100vh;
     }
   `;
 
