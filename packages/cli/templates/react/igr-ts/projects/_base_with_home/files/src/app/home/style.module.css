@@ -1,36 +1,91 @@
-:local(.logo) {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+:local(.content) {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: "Titillium Web", "Segoe UI", Arial, sans-serif;
+  color: #000;
 }
 
 :local(.header) {
-  padding-top: 5em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: #333;
+  color: #09f;
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+
+:local(.subject) {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0 0 32px;
+  max-width: 1120px;
+}
+
+:local(.logo) {
+  display: block;
+  margin-bottom: 32px;
+  width: 500px;
+  height: 350px;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 :local(.link) {
-  color: #61dafb;
+  font-size: 16px;
 }
 
-:local(.app__name) {
-  padding-top: 1em;
+:local(.subtitle) {
+  font-size: 16px;
+  margin: 16px 0 8px;
+}
+
+:local(.githubLinks) {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 24px;
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+:local(.githubItem) {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+:local(.githubLink) {
+  font-size: 16px;
+}
+
+:local(.githubIcon) {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  flex: 0 0 24px;
+  display: block;
+}
+
+:local(.content) p {
+  margin: 0 0 8px;
+}
+
+@media (max-width: 768px) {
+  :local(.header) {
+    font-size: 40px;
   }
-  to {
-    transform: rotate(360deg);
+
+  :local(.subject) {
+    font-size: 20px;
+  }
+
+  :local(.logo) {
+    width: 100%;
+    height: 240px;
   }
 }
