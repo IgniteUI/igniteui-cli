@@ -1,6 +1,9 @@
 import logo from "/logo.svg";
-import githubLogo from "/github.svg";
+import { github } from "@igniteui/material-icons-extended";
+import { IgrIcon, registerIconFromText } from "igniteui-react";
 import styles from "./style.module.css";
+
+registerIconFromText(github.name, github.value, "imx-icons");
 
 export default function App() {
   return (
@@ -35,24 +38,36 @@ export default function App() {
 
       <p className={styles.subtitle}>We are also on GitHub</p>
       <p className={styles.githubLinks}>
-        <a
-          className={styles.githubLink}
-          target="_blank"
-          href="https://github.com/IgniteUI/igniteui-react"
-          rel="noopener noreferrer"
-        >
-          <img src={githubLogo} alt="" />
-          Ignite UI for React
-        </a>
-        <a
-          className={styles.githubLink}
-          target="_blank"
-          href="https://github.com/IgniteUI/igniteui-cli"
-          rel="noopener noreferrer"
-        >
-          <img src={githubLogo} alt="" />
-          Ignite UI CLI
-        </a>
+        <span className={styles.githubItem}>
+          <IgrIcon
+            className={styles.githubIcon}
+            name="github"
+            collection="imx-icons"
+          />
+          <a
+            className={styles.githubLink}
+            target="_blank"
+            href="https://github.com/IgniteUI/igniteui-react"
+            rel="noopener noreferrer"
+          >
+            Ignite UI for React
+          </a>
+        </span>
+        <span className={styles.githubItem}>
+          <IgrIcon
+            className={styles.githubIcon}
+            name="github"
+            collection="imx-icons"
+          />
+          <a
+            className={styles.githubLink}
+            target="_blank"
+            href="https://github.com/IgniteUI/igniteui-cli"
+            rel="noopener noreferrer"
+          >
+            Ignite UI CLI
+          </a>
+        </span>
       </p>
     </main>
   );

@@ -27,10 +27,12 @@
 }
 
 :local(.logo) {
+  display: block;
   margin-bottom: 32px;
-  width: 560px;
-  max-height: 440px;
+  width: 500px;
+  height: 350px;
   max-width: 100%;
+  object-fit: contain;
 }
 
 :local(.link) {
@@ -51,18 +53,22 @@
   margin: 0;
 }
 
-:local(.githubLink) {
+:local(.githubItem) {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+}
+
+:local(.githubLink) {
   font-size: 16px;
 }
 
-:local(.githubLink) img {
+:local(.githubIcon) {
   width: 24px;
   height: 24px;
   margin-right: 8px;
   flex: 0 0 24px;
+  display: block;
 }
 
 p {
@@ -76,5 +82,10 @@ p {
 
   :local(.subject) {
     font-size: 20px;
+  }
+
+  :local(.logo) {
+    width: 100%;
+    height: 240px;
   }
 }

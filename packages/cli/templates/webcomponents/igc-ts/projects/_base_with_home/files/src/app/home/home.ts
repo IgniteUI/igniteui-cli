@@ -1,5 +1,14 @@
 import { html, css, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
+import { github } from '@igniteui/material-icons-extended';
+import {
+  defineComponents,
+  IgcIconComponent,
+  registerIconFromText,
+} from 'igniteui-webcomponents';
+
+defineComponents(IgcIconComponent);
+registerIconFromText(github.name, github.value, 'imx-icons');
 
 @customElement('app-home')
 export class HomeComponent extends LitElement {
@@ -46,28 +55,28 @@ export class HomeComponent extends LitElement {
       gap: 24px;
     }
 
-    .content__link--github {
+    .content__github-item {
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
     }
 
-    .content__link--github::before {
-      content: "";
-      display: block;
+    .content__github-icon {
+      display: inline-flex;
       width: 24px;
       height: 24px;
       margin-right: 8px;
-      background-image: url("./src/assets/GitHub/github.svg");
-      background-repeat: no-repeat;
-      background-size: 24px 24px;
       flex: 0 0 24px;
+      color: #000;
     }
 
     img {
+      display: block;
+      width: 500px;
+      height: 350px;
       margin-bottom: 32px;
-      max-height: 480px;
       max-width: 100%;
+      object-fit: contain;
     }
 
     a {
@@ -81,6 +90,11 @@ export class HomeComponent extends LitElement {
 
       h4 {
         font-size: 20px;
+      }
+
+      img {
+        width: 100%;
+        height: 240px;
       }
     }
   `;
@@ -103,12 +117,18 @@ export class HomeComponent extends LitElement {
       </p>
       <p class="ig-typography__subtitle-1">We are also on GitHub</p>
       <p class="content__container--wide">
-        <a href="https://github.com/IgniteUI/igniteui-webcomponents" target="_blank" rel="noopener noreferrer" class="content__link--github">
-          Ignite UI Web Components
-        </a>
-        <a href="https://github.com/IgniteUI/igniteui-cli" target="_blank" rel="noopener noreferrer" class="content__link--github">
-          Ignite UI CLI
-        </a>
+        <span class="content__github-item">
+          <igc-icon class="content__github-icon" name="github" collection="imx-icons" aria-hidden="true"></igc-icon>
+          <a href="https://github.com/IgniteUI/igniteui-webcomponents" target="_blank" rel="noopener noreferrer" class="content__link--github">
+            Ignite UI Web Components
+          </a>
+        </span>
+        <span class="content__github-item">
+          <igc-icon class="content__github-icon" name="github" collection="imx-icons" aria-hidden="true"></igc-icon>
+          <a href="https://github.com/IgniteUI/igniteui-cli" target="_blank" rel="noopener noreferrer" class="content__link--github">
+            Ignite UI CLI
+          </a>
+        </span>
       </p>
     `;
   }
