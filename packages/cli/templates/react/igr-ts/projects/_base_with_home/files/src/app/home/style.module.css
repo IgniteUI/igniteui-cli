@@ -71,7 +71,7 @@
   display: block;
 }
 
-p {
+:local(.content) p {
   margin: 0 0 8px;
 }
 
