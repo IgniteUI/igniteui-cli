@@ -137,6 +137,13 @@ describe("Unit - Util", () => {
 		});
 	});
 
+	it("spawnSync accepts the 'dotnet' command", () => {
+		// compile-time guarantee that 'dotnet' is in the allowed command union
+		const cmd: Parameters<typeof Util.spawnSync>[0] = "dotnet";
+		expect(cmd).toBe("dotnet");
+		expect(typeof Util.spawnSync).toBe("function");
+	});
+
 	describe("canPrompt", () => {
 		let originalStdoutIsTTY: boolean | undefined;
 		let originalStdinIsTTY: boolean | undefined;

@@ -2,7 +2,7 @@ import * as path from "path";
 import { Separator } from "@inquirer/prompts";
 import { BaseTemplateManager } from "../templates";
 import {
-	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
+	BaseTemplate, Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "../types";
 import { App, ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
@@ -60,20 +60,44 @@ export abstract class BasePromptSession {
 			// project options:
 			theme = await this.getTheme(projLibrary);
 
-			Util.log("  Generating project structure.");
-			const config = projTemplate.generateConfig(projectName, theme);
-			for (const templatePath of projTemplate.templatePaths) {
-				await Util.processTemplates(templatePath, path.join(process.cwd(), projectName),
-				config, projTemplate.delimiters, false);
+			if (projTemplate.hasExtraConfiguration) {
+				await this.customizeTemplateTask(projTemplate);
 			}
 
-			Util.log(Util.greenCheck() + " Project structure generated.");
-			if (!this.config.skipGit) {
-				Util.gitInit(process.cwd(), projectName);
+			if (typeof projTemplate.scaffold === "function") {
+				Util.log("  Generating project structure.");
+				const success = await projTemplate.scaffold({
+					name: projectName,
+					theme,
+					skipInstall: false,
+					skipGit: this.config.skipGit
+				});
+				if (!success) {
+					return;
+				}
+				// the scaffold service never touches git, so git-init here to match the `ig new` path
+				if (!this.config.skipGit) {
+					Util.gitInit(process.cwd(), projectName);
+				}
+				// move cwd to project folder
+				process.chdir(projectName);
+				await this.configureAI(framework.id);
+			} else {
+				Util.log("  Generating project structure.");
+				const config = projTemplate.generateConfig(projectName, theme);
+				for (const templatePath of projTemplate.templatePaths) {
+					await Util.processTemplates(templatePath, path.join(process.cwd(), projectName),
+					config, projTemplate.delimiters, false);
+				}
+
+				Util.log(Util.greenCheck() + " Project structure generated.");
+				if (!this.config.skipGit) {
+					Util.gitInit(process.cwd(), projectName);
+				}
+				// move cwd to project folder
+				process.chdir(projectName);
+				await this.configureAI(framework.id);
 			}
-			// move cwd to project folder
-			process.chdir(projectName);
-			await this.configureAI(framework.id);
 		}
 		await this.chooseActionLoop(projLibrary);
 		//TODO: restore cwd?
@@ -279,7 +303,7 @@ export abstract class BasePromptSession {
 	}
 
 	/** Create prompts from template extra configuration and assign user answers to the template */
-	protected async customizeTemplateTask(template: Template) {
+	protected async customizeTemplateTask(template: BaseTemplate) {
 		const extraPrompt = this.createQuestions(template.getExtraConfiguration());
 		const extraConfigAnswers = [];
 		for (const question of extraPrompt) {
@@ -404,6 +428,23 @@ export abstract class BasePromptSession {
 			break;
 		case "Complete & Run":
 			const config = ProjectConfig.localConfig();
+
+			if (!config.project) {
+				// Blazor (scaffolded via dotnet) has no cli-config — print next-steps instead of
+				// routing through completeAndRun (npm + start.start, which requires a cli-config).
+				const projectName = path.basename(process.cwd());
+				if (Util.canPrompt() && await InquirerWrapper.confirm({
+					message: "Run the app now (dotnet run)?",
+					default: false
+				})) {
+					Util.spawnSync("dotnet", ["run", "--project", projectName], { stdio: "inherit" });
+				} else {
+					Util.log("");
+					Util.log("Next Steps:");
+					Util.log(`  dotnet run --project ${projectName}`);
+				}
+				break;
+			}
 
 			if (config.project.framework === "angular" &&
 				config.project.projectType === "igx-ts" &&

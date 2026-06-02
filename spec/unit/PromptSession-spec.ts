@@ -408,6 +408,85 @@ describe("Unit - PromptSession", () => {
 		expect(Util.directoryExists).toHaveBeenCalledWith("Th15 w1ll");
 		expect(aiConfig.configure).toHaveBeenCalledTimes(1);
 	});
+	it("start - Should call scaffold (not processTemplates) and run extra-config for Blazor", async () => {
+		const mockProjectTemplate = {
+			name: "Blazor Web App",
+			framework: "blazor",
+			projectType: "igb",
+			hasExtraConfiguration: true,
+			isHidden: false,
+			templatePaths: [],
+			delimiters: {},
+			scaffold: jasmine.createSpy("scaffold").and.returnValue(Promise.resolve(true)),
+			generateConfig: jasmine.createSpy("generateConfig"),
+			getExtraConfiguration: () => [
+				{ choices: ["Server", "Wasm", "Auto"], default: "Server", key: "Hosting", message: "h", type: ControlExtraConfigType.Choice },
+				{ choices: ["light", "dark"], default: "light", key: "Variant", message: "v", type: ControlExtraConfigType.Choice }
+			],
+			setExtraConfiguration: jasmine.createSpy("setExtraConfiguration")
+		};
+		const mockProjectLibrary = {
+			themes: ["bootstrap"],
+			projectIds: ["empty"],
+			projects: [mockProjectTemplate]
+		};
+		const mockFramework = { id: "blazor", name: "Blazor", projectLibraries: [mockProjectLibrary] };
+		const mockTemplate = jasmine.createSpyObj("mockTemplate", {
+			getFrameworkByName: mockFramework,
+			getFrameworkById: mockFramework,
+			getFrameworkNames: ["Blazor"],
+			getProjectLibraryNames: ["Ignite UI for Blazor"],
+			getProjectLibraryByName: mockProjectLibrary
+		});
+		App.container.set(TEMPLATE_MANAGER, mockTemplate);
+		const mockSession = new PromptSession();
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+		spyOn(ProjectConfig, "getConfig").and.returnValue({ skipGit: false } as unknown as Config);
+		spyOn(Util, "log");
+		spyOn(Util, "directoryExists").and.returnValue(false);
+		spyOn(Util, "getAvailableName").and.returnValue("Test Project");
+		spyOn(Util, "gitInit");
+		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+		spyOn(InquirerWrapper, "input").and.returnValue(Promise.resolve("Test Project"));
+		spyOn(InquirerWrapper, "select").and.returnValues(
+			Promise.resolve("Auto"),
+			Promise.resolve("dark")
+		);
+		spyOn(process, "chdir");
+		spyOn(mockSession, "chooseActionLoop");
+
+		await mockSession.start();
+
+		expect(mockProjectTemplate.setExtraConfiguration).toHaveBeenCalledWith(["Auto", "dark"]);
+		expect(mockProjectTemplate.scaffold).toHaveBeenCalledWith({
+			name: "Test Project",
+			theme: "bootstrap",
+			skipInstall: false,
+			skipGit: false
+		});
+		expect(Util.processTemplates).not.toHaveBeenCalled();
+		expect(mockProjectTemplate.generateConfig).not.toHaveBeenCalled();
+		expect(Util.gitInit).toHaveBeenCalled();
+		expect(aiConfig.configure).toHaveBeenCalledWith("blazor");
+	});
+	it("Complete & Run - with empty localConfig prints dotnet next-steps and skips completeAndRun", async () => {
+		App.container.set(TEMPLATE_MANAGER, {} as any);
+		const mockSession = new PromptSession();
+		spyOn(ProjectConfig, "localConfig").and.returnValue({} as unknown as Config);
+		spyOn(mockSession as any, "generateActionChoices").and.returnValue([]);
+		spyOn(mockSession as any, "getUserInput").and.returnValue(Promise.resolve("Complete & Run"));
+		spyOn(mockSession as any, "completeAndRun");
+		spyOn(Util, "canPrompt").and.returnValue(false);
+		spyOn(Util, "spawnSync");
+		spyOn(Util, "log");
+		spyOn(process, "cwd").and.returnValue(path.join("root", "my-blazor"));
+
+		await mockSession.chooseActionLoop({} as any);
+
+		expect((mockSession as any).completeAndRun).not.toHaveBeenCalled();
+		expect(Util.spawnSync).not.toHaveBeenCalled();
+		expect(Util.log).toHaveBeenCalledWith("  dotnet run --project my-blazor");
+	});
 	it("chooseActionLoop - should run through properly - Add Component", async () => {
 		const mockExtraConfigurations = [{
 			default: "Choice 1",

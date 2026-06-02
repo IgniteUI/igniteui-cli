@@ -1,5 +1,19 @@
 import { BaseTemplate } from "./BaseTemplate";
 
+/** Options passed to a project template's `scaffold` method. */
+export interface ScaffoldOptions {
+	/** Project name (already validated alphanumeric-ext by the host). */
+	name: string;
+	/** Theme to apply, one of the library's themes (e.g. bootstrap|material|fluent|indigo). */
+	theme: string;
+	/** Skip restoring/installing packages after scaffolding. */
+	skipInstall?: boolean;
+	/** Skip git initialization. */
+	skipGit?: boolean;
+	/** Additional template-specific configuration (e.g. { Hosting, Variant }). */
+	extraConfig?: { [key: string]: any };
+}
+
 /** Interface for project templates */
 export interface ProjectTemplate extends BaseTemplate {
 	/** This method should be called after generateConfig completes. */
@@ -15,4 +29,12 @@ export interface ProjectTemplate extends BaseTemplate {
 
 	/** Generates template files. */
 	generateConfig(name: string, theme: string, ...options: any[]): {[key: string]: any};
+
+	/**
+	 * Optional alternative scaffolding strategy. When implemented, the host calls this
+	 * instead of the generateConfig → processTemplates → installPackages pipeline.
+	 * @param options Scaffold options
+	 * @returns true on success, false on failure.
+	 */
+	scaffold?(options: ScaffoldOptions): Promise<boolean>;
 }
