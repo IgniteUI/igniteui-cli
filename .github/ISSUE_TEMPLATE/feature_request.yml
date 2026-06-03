@@ -40,6 +40,7 @@ body:
         - list
         - doc
         - upgrade-packages
+        - ai-config
         - Not command-specific
     validations:
       required: false
@@ -52,6 +53,7 @@ body:
       options:
         - New template / component
         - CLI command improvement
+        - MCP improvement
         - Project scaffolding
         - Developer experience
         - Documentation
