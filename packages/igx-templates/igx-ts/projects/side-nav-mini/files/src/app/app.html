@@ -18,7 +18,7 @@
     </ng-template>
     <ng-template igxDrawerMini>
       @for (link of topNavLinks; track link) {
-        <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" [routerLink]="link.path">
+        <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" [routerLink]="link.path" [attr.aria-label]="link.name" [attr.title]="link.name">
           <igx-icon fontSet="material">{{link.icon}}</igx-icon>
         </span>
       }
