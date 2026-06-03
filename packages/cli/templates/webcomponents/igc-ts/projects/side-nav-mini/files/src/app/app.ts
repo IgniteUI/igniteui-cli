@@ -102,10 +102,27 @@ export default class App extends LitElement {
     .app__drawer {
       flex: 0 0 auto;
       height: 100%;
-      --ig-nav-drawer-size: 280px;
-      --ig-navdrawer-item-active-background: #e0f2ff;
-      --ig-navdrawer-item-active-text-color: #0075d2;
-      --ig-navdrawer-item-active-icon-color: #0075d2;
+      --menu-full-width: 280px;
+      --ig-nav-drawer-item-active-background: #e0f2ff;
+      --ig-nav-drawer-item-active-text-color: #0075d2;
+      --ig-nav-drawer-item-active-icon-color: #0075d2;
+    }
+
+    .app--mini .app__drawer {
+      --menu-full-width: 68px;
+    }
+
+    igc-nav-drawer.app__drawer::part(base) {
+      transition: width 0.3s ease-out;
+      overflow: hidden;
+    }
+
+    .app--mini igc-nav-drawer-item::part(base) {
+      justify-content: center;
+    }
+
+    .app--mini igc-nav-drawer-item::part(content) {
+      display: none;
     }
 
     igc-nav-drawer-item[active]::part(base) {
@@ -149,10 +166,10 @@ export default class App extends LitElement {
           </button>
           <h1 class="app__title">$(name)</h1>
         </header>
-        <div class="app__body">
+        <div class=${this.drawerOpen ? 'app__body' : 'app__body app--mini'}>
           <igc-nav-drawer
             class="app__drawer"
-            ?open=${this.drawerOpen}
+            ?open=${true}
             position="relative"
           >
             ${visibleRoutes.map((route) => html`
@@ -167,20 +184,6 @@ export default class App extends LitElement {
                   style=${this.currentPath === route.path ? 'color: #0075D2;' : ''}
                 ></igc-icon>
                 <span slot="content">${route.name}</span>
-              </igc-nav-drawer-item>
-            `)}
-            ${visibleRoutes.map((route) => html`
-              <igc-nav-drawer-item
-                slot="mini"
-                ?active=${this.currentPath === route.path}
-                @click=${() => this.navigate(route.path)}
-              >
-                <igc-icon
-                  slot="icon"
-                  name=${route.icon || 'apps'}
-                  collection="material"
-                  style=${this.currentPath === route.path ? 'color: #0075D2;' : ''}
-                ></igc-icon>
               </igc-nav-drawer-item>
             `)}
           </igc-nav-drawer>

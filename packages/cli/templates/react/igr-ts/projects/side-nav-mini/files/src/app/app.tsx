@@ -67,8 +67,8 @@ export default function App() {
         </button>
         <h1 className="app__title">$(name)</h1>
       </header>
-      <div className="app__body">
-        <IgrNavDrawer className="app__drawer" open={drawerOpen} position="relative">
+      <div className={!drawerOpen ? 'app__body app--mini' : 'app__body'}>
+        <IgrNavDrawer className="app__drawer" open position="relative">
           {navRoutes.map((route: any) => (
             <IgrNavDrawerItem
               key={route.path}
@@ -82,21 +82,6 @@ export default function App() {
                 style={location.pathname === route.path ? { color: '#0075D2' } : undefined}
               />
               <span slot="content">{route.text}</span>
-            </IgrNavDrawerItem>
-          ))}
-          {navRoutes.map((route: any) => (
-            <IgrNavDrawerItem
-              key={`mini-${route.path}`}
-              slot="mini"
-              active={location.pathname === route.path}
-              onClick={() => navigate(route.path)}
-            >
-              <IgrIcon
-                slot="icon"
-                name={route.icon || 'apps'}
-                collection="material"
-                style={location.pathname === route.path ? { color: '#0075D2' } : undefined}
-              />
             </IgrNavDrawerItem>
           ))}
         </IgrNavDrawer>
