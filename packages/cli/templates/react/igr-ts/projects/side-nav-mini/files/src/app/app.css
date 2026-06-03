@@ -1,0 +1,38 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-navbar {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.row-layout {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.view-container {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.nav-toggle-btn {
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+  .nav-toggle-btn {
+    display: none;
+  }
+}
