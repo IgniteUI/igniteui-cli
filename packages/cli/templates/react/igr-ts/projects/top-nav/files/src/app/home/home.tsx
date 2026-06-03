@@ -14,7 +14,7 @@ export default function App() {
 
       <img src={logo} className={styles.logo} alt="Ignite UI for React" />
 
-      <div className={styles.resources} aria-label="Ignite UI resources">
+      <div className={styles.resources} role="navigation" aria-label="Ignite UI resources">
         <a
           className={styles.resource}
           target="_blank"
