@@ -27,8 +27,9 @@ body:
       options:
         - Angular
         - React
-        - jQuery
         - Web Components
+        - Blazor
+        - jQuery
     validations:
       required: true
 
