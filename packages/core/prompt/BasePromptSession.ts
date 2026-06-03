@@ -75,7 +75,7 @@ export abstract class BasePromptSession {
 				if (!success) {
 					return;
 				}
-				// the scaffold service never touches git, so git-init here to match the `ig new` path
+				// the scaffold service never touches git, so initialize git here when requested
 				if (!this.config.skipGit) {
 					Util.gitInit(process.cwd(), projectName);
 				}
