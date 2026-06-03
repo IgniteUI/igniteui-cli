@@ -1,62 +1,76 @@
 .app {
-  text-align: center;
   display: flex;
-  flex-flow: column;
-  min-height: 100vh;
+  flex-flow: column nowrap;
+  height: 100%;
+  overflow: hidden;
+}
+
+.app__navbar {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  height: 56px;
+  padding: 0 16px;
+  background: #239ef0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .24);
+  box-sizing: border-box;
+}
+
+.app__title {
+  margin: 0 0 0 16px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #000;
+}
+
+.app__menu-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: #000;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.app__menu-button igr-icon {
+  font-size: 24px;
+}
+
+.app__body {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.app__drawer {
+  flex: 0 0 auto;
+  height: 100%;
+  --ig-nav-drawer-size: 280px;
+  --ig-navdrawer-item-active-background: #e0f2ff;
+  --ig-navdrawer-item-active-text-color: #0075d2;
+  --ig-navdrawer-item-active-icon-color: #0075d2;
+}
+
+igc-nav-drawer-item[active]::part(base) {
+  background: #e0f2ff;
+  color: #0075d2;
+}
+
+igc-nav-drawer-item[active] igr-icon {
+  color: #0075d2;
 }
 
 .content {
-  flex: 1 0 auto;
-  padding: 1em;
-}
-
-/* quick nav menubar */
-nav,
-.app__name {
-  background-color: rgb(0, 153, 255);
-  box-sizing: border-box;
-}
-.app__name {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 32px;
-  padding-left: 24px;
-  text-align: left;
-  color: #fff;
-  padding-bottom: 8px;
-}
-
-nav ul {
-  list-style: none;
+  flex: 1 1 auto;
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul a {
-  color: #fff;
-  line-height: 2;
-  text-decoration: none;
-  margin: 0 5px;
-}
-
-nav ul a.active {
-  color: #fff;
-  font-weight: 600;
-}
-
-nav ul li {
-  margin: 0px 16px;
-  box-sizing: border-box;
-  border-bottom: 1px solid transparent;
-}
-
-nav ul li.active {
-  border-bottom: 2px solid #fff;
-}
-
-nav ul li:not(.active):hover {
-  border-bottom: 1px solid #fff;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: stretch;
+  min-width: 0;
+  overflow: auto;
 }
