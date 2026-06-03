@@ -437,7 +437,10 @@ export abstract class BasePromptSession {
 					message: "Run the app now (dotnet run)?",
 					default: false
 				})) {
-					Util.spawnSync("dotnet", ["run", "--project", projectName], { stdio: "inherit" });
+					const result = Util.spawnSync("dotnet", ["run", "--project", projectName], { stdio: "inherit" });
+					if (result.error || result.status !== 0) {
+						Util.error("dotnet run failed (see dotnet output above).", "red");
+					}
 				} else {
 					Util.log("");
 					Util.log("Next Steps:");
