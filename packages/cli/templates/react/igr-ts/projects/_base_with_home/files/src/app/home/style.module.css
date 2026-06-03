@@ -44,6 +44,10 @@
   margin: 16px 0 8px;
 }
 
+:local(.content) p:nth-last-child(2) {
+  padding-top: 16px;
+}
+
 :local(.githubLinks) {
   display: flex;
   flex-flow: row wrap;
