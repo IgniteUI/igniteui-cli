@@ -119,6 +119,11 @@ export default class App extends LitElement {
 
     .app--mini igc-nav-drawer-item::part(base) {
       justify-content: center;
+      width: 40px;
+      min-height: 40px;
+      padding: 0;
+      margin: 4px auto;
+      border-radius: 8px;
     }
 
     .app--mini igc-nav-drawer-item::part(content) {

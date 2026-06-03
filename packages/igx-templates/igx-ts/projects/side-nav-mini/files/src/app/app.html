@@ -8,7 +8,6 @@
 <div class="row-layout">
   <igx-nav-drawer #nav [pin]="true" [pinThreshold]="0" [isOpen]="initiallyOpen" width="280px" miniWidth="68px">
     <ng-template igxDrawer>
-      <span igxDrawerItem [isHeader]="true">Views</span>
       @for (link of topNavLinks; track link) {
         <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" [routerLink]="link.path">
           <igx-icon fontSet="material">{{link.icon}}</igx-icon>
