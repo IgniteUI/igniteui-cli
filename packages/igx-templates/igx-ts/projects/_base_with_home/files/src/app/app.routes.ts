@@ -5,7 +5,7 @@ import { UncaughtError } from './error-routing/error/uncaught-error';
 
 export const routes: Routes = [
 	{ path: '', redirectTo: '/home', pathMatch: 'full'},
-	{ path: 'home', component: Home, data: { text: 'Home' }},
+	{ path: 'home', component: Home, data: { text: 'Home', icon: 'home' }},
 	{ path: 'error', component: UncaughtError },
 	{ path: '**', component: NotFound } // must always be last
 ];
