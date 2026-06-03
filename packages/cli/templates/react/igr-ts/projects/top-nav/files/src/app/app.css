@@ -61,7 +61,7 @@ igc-nav-drawer-item[active]::part(base) {
   color: #0075d2;
 }
 
-igc-nav-drawer-item[active] igr-icon {
+igc-nav-drawer-item[active] igc-icon {
   color: #0075d2;
 }
 
