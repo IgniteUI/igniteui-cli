@@ -137,7 +137,8 @@ export class HomeComponent extends LitElement {
       }
 
       .home__resources {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 300px);
+        justify-content: center;
         gap: 4px;
       }
     }
