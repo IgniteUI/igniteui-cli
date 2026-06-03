@@ -6,7 +6,7 @@ import {
   IgcIconComponent,
   IgcNavDrawerComponent,
   IgcNavDrawerItemComponent,
-  registerIconFromText,
+  registerIcon,
 } from 'igniteui-webcomponents';
 import { routes } from './app-routing.js';
 
@@ -16,24 +16,24 @@ type AppRoute = {
   icon?: string;
 };
 
-const icons = [
-  {
-    name: 'home',
-    value: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>',
-  },
-  {
-    name: 'menu',
-    value: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>',
-  },
-];
-
 defineComponents(
   IgcIconComponent,
   IgcNavDrawerComponent,
   IgcNavDrawerItemComponent,
 );
 
-icons.forEach((icon) => registerIconFromText(icon.name, icon.value, 'material'));
+const materialIcons = [
+  ['home', 'action/svg/production/ic_home_24px.svg'],
+  ['menu', 'navigation/svg/production/ic_menu_24px.svg'],
+  ['apps', 'navigation/svg/production/ic_apps_24px.svg'],
+  ['code', 'action/svg/production/ic_code_24px.svg'],
+  ['build', 'action/svg/production/ic_build_24px.svg'],
+  ['palette', 'image/svg/production/ic_palette_24px.svg'],
+] as const;
+
+materialIcons.forEach(([name, path]) =>
+  registerIcon(name, `https://unpkg.com/material-design-icons@3.0.1/${path}`, 'material')
+);
 
 @customElement('app-root')
 export default class App extends LitElement {
