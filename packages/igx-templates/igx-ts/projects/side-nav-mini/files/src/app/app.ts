@@ -60,12 +60,7 @@ export class App implements OnInit, AfterViewInit {
   public ngOnInit(): void {
     this.router.events.pipe(
       filter((x): x is NavigationStart => x instanceof NavigationStart)
-    ).subscribe(() => {
-      // On small screens the nav stays in mini mode — nothing to close
-      if (window.innerWidth <= MINI_BREAKPOINT) {
-        return;
-      }
-    });
+    ).subscribe(() => this.updateDrawerState());
   }
 
   public ngAfterViewInit(): void {
