@@ -159,7 +159,7 @@ export class HomeComponent extends LitElement {
           alt="Ignite UI for Web Components"
         >
 
-        <div class="home__resources" aria-label="Ignite UI resources">
+        <div class="home__resources" role="navigation" aria-label="Ignite UI resources">
           <a class="home__resource" href="https://www.infragistics.com/products/ignite-ui-web-components" target="_blank" rel="noopener noreferrer">
             <igc-icon name="apps" collection="material"></igc-icon>
             <span>
