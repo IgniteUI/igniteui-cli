@@ -1,0 +1,104 @@
+:local(.home) {
+  width: 100%;
+  max-width: 920px;
+  margin: auto;
+  padding: 48px 24px;
+  box-sizing: border-box;
+  font-family: "Titillium Web", "Segoe UI", Arial, sans-serif;
+}
+
+:local(.intro) {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+:local(.header) {
+  margin: 0 0 12px;
+  color: #09f;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+:local(.description) {
+  margin: 0;
+  color: #000;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+:local(.logo) {
+  display: block;
+  width: 500px;
+  height: 350px;
+  margin: 0 auto 28px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+:local(.resources) {
+  display: grid;
+  grid-template-columns: repeat(2, 300px);
+  justify-content: center;
+  margin: 0 auto;
+  gap: 4px 64px;
+}
+
+:local(.resource) {
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  padding: 6px 0;
+  color: rgba(0, 0, 0, .74);
+  text-align: left;
+  text-decoration: none;
+}
+
+:local(.resource):hover strong {
+  text-decoration: underline;
+}
+
+:local(.resourceIcon) {
+  flex: 0 0 28px;
+  margin-right: 16px;
+  color: #09f;
+  font-size: 28px;
+}
+
+:local(.resource) strong,
+:local(.resource) small {
+  display: block;
+}
+
+:local(.resource) strong {
+  margin-bottom: 2px;
+  color: #731963;
+  font-size: 1rem;
+}
+
+:local(.resource) small {
+  color: #000;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  :local(.home) {
+    padding: 32px 16px;
+  }
+
+  :local(.header) {
+    font-size: 2.25rem;
+  }
+
+  :local(.logo) {
+    width: 100%;
+    height: 240px;
+  }
+
+  :local(.resources) {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

@@ -1,143 +1,229 @@
 import { html, css, LitElement } from 'lit';
-import type { PropertyValues } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, state } from 'lit/decorators.js';
 import {
   defineComponents,
-  IgcNavbarComponent,
-  IgcNavDrawerComponent,
-  IgcIconButtonComponent,
   IgcIconComponent,
-  IgcRippleComponent,
+  IgcNavDrawerComponent,
+  IgcNavDrawerItemComponent,
   registerIconFromText,
 } from 'igniteui-webcomponents';
 import { Router } from '@vaadin/router';
 import { routes, type AppRoute } from './app-routing.js';
 
+const icons = [
+  {
+    name: 'home',
+    value: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>',
+  },
+  {
+    name: 'apps',
+    value: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 8h4V4H4zm6 12h4v-4h-4zm-6 0h4v-4H4zm0-6h4v-4H4zm6 0h4v-4h-4zm6-10v4h4V4zm-6 4h4V4h-4zm6 6h4v-4h-4zm0 6h4v-4h-4z"/></svg>',
+  },
+  {
+    name: 'menu',
+    value: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>',
+  },
+];
+
 defineComponents(
-  IgcNavbarComponent,
-  IgcNavDrawerComponent,
-  IgcIconButtonComponent,
   IgcIconComponent,
-  IgcRippleComponent,
+  IgcNavDrawerComponent,
+  IgcNavDrawerItemComponent,
 );
 
-const HOME_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>';
-const APPS_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M4 8h4V4H4zm6 12h4v-4h-4zm-6 0h4v-4H4zm0-6h4v-4H4zm6 0h4v-4h-4zm6-10v4h4V4zm-6 4h4V4h-4zm6 6h4v-4h-4zm0 6h4v-4h-4z"/></svg>';
-const MENU_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3zm0-5h18v-2H3zM3 6v2h18V6z"/></svg>';
-
-registerIconFromText('home', HOME_ICON, 'nav-icons');
-registerIconFromText('apps', APPS_ICON, 'nav-icons');
-registerIconFromText('menu', MENU_ICON, 'nav-icons');
-
-const MINI_BREAKPOINT = 1024;
-const navRoutes: AppRoute[] = routes.filter(r => r.name);
+icons.forEach((icon) => registerIconFromText(icon.name, icon.value, 'material'));
 
 @customElement('app-root')
 export default class App extends LitElement {
+  @state()
+  private drawerOpen = true;
+
+  @state()
+  private currentPath = window.location.pathname;
+
+  private mediaQuery?: MediaQueryList;
+
   static styles = css`
     :host {
       display: flex;
-      flex-direction: column;
       height: 100%;
     }
 
-    igc-navbar {
-      flex-shrink: 0;
+    .app {
+      display: flex;
+      flex-flow: column nowrap;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
 
-    .row-layout {
+    .app__navbar {
       display: flex;
-      flex-direction: row;
+      align-items: center;
+      flex: 0 0 auto;
+      height: 56px;
+      padding: 0 16px;
+      background: #239ef0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .24);
+      box-sizing: border-box;
+    }
+
+    .app__menu-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      color: #000;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .app__menu-button igc-icon {
+      font-size: 24px;
+    }
+
+    .app__title {
+      margin: 0 0 0 16px;
+      color: #000;
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .app__body {
+      display: flex;
       flex: 1 1 auto;
       min-height: 0;
     }
 
-    igc-nav-drawer {
-      flex-shrink: 0;
+    .app__drawer {
+      flex: 0 0 auto;
+      height: 100%;
+      --ig-nav-drawer-size: 280px;
+      --ig-navdrawer-item-active-background: #e0f2ff;
+      --ig-navdrawer-item-active-text-color: #0075d2;
+      --ig-navdrawer-item-active-icon-color: #0075d2;
     }
 
-    .view-container {
+    igc-nav-drawer-item[active]::part(base) {
+      background: #e0f2ff;
+      color: #0075d2;
+    }
+
+    igc-nav-drawer-item[active] igc-icon {
+      color: #0075d2;
+    }
+
+    router-outlet {
       flex: 1 1 auto;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
       min-width: 0;
       overflow: auto;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 1rem;
-      box-sizing: border-box;
-    }
-
-    .nav-toggle-btn {
-      display: flex;
     }
 
     @media (max-width: 1024px) {
-      .nav-toggle-btn {
+      .app__menu-button {
         display: none;
       }
     }
   `;
 
-  @property({ type: Boolean })
-  drawerOpen = window.innerWidth > MINI_BREAKPOINT;
-
-  private _onResize = () => {
-    if (window.innerWidth <= MINI_BREAKPOINT && this.drawerOpen) {
-      this.drawerOpen = false;
-    }
-  };
-
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener('resize', this._onResize);
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    window.removeEventListener('resize', this._onResize);
-  }
-
-  protected firstUpdated(_changedProperties: PropertyValues): void {
-    const outlet = this.shadowRoot?.querySelector('router-outlet');
-    const router = new Router(outlet);
-    router.setRoutes(routes);
-    this._onResize();
-  }
-
-  private _toggleDrawer() {
-    this.drawerOpen = !this.drawerOpen;
-  }
-
   render() {
+    const visibleRoutes = (routes as AppRoute[]).filter((route) => route.name);
+
     return html`
-      <igc-navbar>
-        <igc-icon-button class="nav-toggle-btn" slot="start" variant="flat" @click="${this._toggleDrawer}">
-          <igc-icon collection="nav-icons" name="menu"></igc-icon>
-        </igc-icon-button>
-        <span>Ignite UI CLI</span>
-      </igc-navbar>
-      <div class="row-layout">
-        <igc-nav-drawer ?open="${this.drawerOpen}" position="relative">
-          ${navRoutes.map(({ path, name, icon }) => html`
-            <igc-nav-drawer-item>
-              <a slot="icon" href="${path}" aria-label="${name}">
-                <igc-icon collection="nav-icons" name="${icon ?? 'apps'}"></igc-icon>
-              </a>
-              <a slot="content" href="${path}">${name}<igc-ripple></igc-ripple></a>
-            </igc-nav-drawer-item>
-          `)}
-          ${navRoutes.map(({ path, name, icon }) => html`
-            <igc-nav-drawer-item slot="mini">
-              <a slot="icon" href="${path}" aria-label="${name}">
-                <igc-icon collection="nav-icons" name="${icon ?? 'apps'}"></igc-icon>
-              </a>
-            </igc-nav-drawer-item>
-          `)}
-        </igc-nav-drawer>
-        <div class="view-container">
+      <div class="app">
+        <header class="app__navbar">
+          <button
+            class="app__menu-button"
+            type="button"
+            aria-label="Toggle navigation"
+            @click=${this.toggleDrawer}
+          >
+            <igc-icon name="menu" collection="material"></igc-icon>
+          </button>
+          <h1 class="app__title">$(name)</h1>
+        </header>
+        <div class="app__body">
+          <igc-nav-drawer
+            class="app__drawer"
+            ?open=${this.drawerOpen}
+            position="relative"
+          >
+            ${visibleRoutes.map((route) => html`
+              <igc-nav-drawer-item
+                ?active=${this.currentPath === route.path}
+                @click=${() => this.navigate(route.path)}
+              >
+                <igc-icon
+                  slot="icon"
+                  name=${route.icon || 'apps'}
+                  collection="material"
+                  style=${this.currentPath === route.path ? 'color: #0075D2;' : ''}
+                ></igc-icon>
+                <span slot="content">${route.name}</span>
+              </igc-nav-drawer-item>
+            `)}
+            ${visibleRoutes.map((route) => html`
+              <igc-nav-drawer-item
+                slot="mini"
+                ?active=${this.currentPath === route.path}
+                @click=${() => this.navigate(route.path)}
+              >
+                <igc-icon
+                  slot="icon"
+                  name=${route.icon || 'apps'}
+                  collection="material"
+                  style=${this.currentPath === route.path ? 'color: #0075D2;' : ''}
+                ></igc-icon>
+              </igc-nav-drawer-item>
+            `)}
+          </igc-nav-drawer>
           <router-outlet></router-outlet>
         </div>
       </div>
     `;
   }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.mediaQuery = window.matchMedia('(min-width: 1025px)');
+    this.updateDrawerState();
+    this.mediaQuery.addEventListener('change', this.updateDrawerState);
+    window.addEventListener('popstate', this.updateCurrentPath);
+  }
+
+  disconnectedCallback() {
+    this.mediaQuery?.removeEventListener('change', this.updateDrawerState);
+    window.removeEventListener('popstate', this.updateCurrentPath);
+    super.disconnectedCallback();
+  }
+
+  firstUpdated() {
+    const outlet = this.shadowRoot?.querySelector('router-outlet');
+    const router = new Router(outlet);
+    router.setRoutes(routes);
+  }
+
+  private toggleDrawer = () => {
+    this.drawerOpen = !this.drawerOpen;
+  };
+
+  private navigate(path: string) {
+    this.currentPath = path;
+    Router.go(path);
+  }
+
+  private updateDrawerState = () => {
+    this.drawerOpen = Boolean(this.mediaQuery?.matches);
+  };
+
+  private updateCurrentPath = () => {
+    this.currentPath = window.location.pathname;
+  };
 }
