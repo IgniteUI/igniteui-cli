@@ -51,9 +51,6 @@
   flex: 0 0 auto;
   height: 100%;
   --ig-nav-drawer-size: 280px;
-  --ig-navdrawer-item-active-background: #e0f2ff;
-  --ig-navdrawer-item-active-text-color: #0075d2;
-  --ig-navdrawer-item-active-icon-color: #0075d2;
 }
 
 igc-nav-drawer-item[active]::part(base) {

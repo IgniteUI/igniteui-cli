@@ -99,9 +99,6 @@ export default class App extends LitElement {
       flex: 0 0 auto;
       height: 100%;
       --menu-full-width: 280px;
-      --ig-nav-drawer-item-active-background: #e0f2ff;
-      --ig-nav-drawer-item-active-text-color: #0075d2;
-      --ig-nav-drawer-item-active-icon-color: #0075d2;
     }
 
     .app--mini .app__drawer {
