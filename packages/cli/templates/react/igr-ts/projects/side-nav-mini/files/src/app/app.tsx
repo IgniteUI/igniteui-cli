@@ -53,7 +53,7 @@ export default function App() {
       </header>
       <div className={!drawerOpen ? 'app__body app--mini' : 'app__body'}>
         <IgrNavDrawer className="app__drawer" open position="relative">
-          {navRoutes.map((route: any) => (
+          {navRoutes.map((route) => (
             <IgrNavDrawerItem
               key={route.path}
               active={location.pathname === route.path}
