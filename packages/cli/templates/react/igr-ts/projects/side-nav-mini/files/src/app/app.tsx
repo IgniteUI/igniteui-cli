@@ -23,7 +23,7 @@ materialIcons.forEach(([name, path]) =>
   registerIcon(name, `https://unpkg.com/material-design-icons@3.0.1/${path}`, 'material')
 );
 
-const navRoutes = routes.filter((r: any) => r.text);
+const navRoutes = routes.filter((r) => r.text);
 
 export default function App() {
   const [drawerOpen, setDrawerOpen] = useState(true);
