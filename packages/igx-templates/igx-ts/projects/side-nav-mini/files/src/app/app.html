@@ -1,0 +1,29 @@
+<igx-navbar class="app-navbar" title="<%=name%>">
+  <igx-navbar-action>
+    <button type="button" igxIconButton="flat" class="nav-toggle-btn" aria-label="Toggle navigation" (click)="toggleNav()">
+      <igx-icon>menu</igx-icon>
+    </button>
+  </igx-navbar-action>
+</igx-navbar>
+<div class="row-layout">
+  <igx-nav-drawer #nav [pin]="true" [pinThreshold]="0" [isOpen]="initiallyOpen" width="280px" miniWidth="68px">
+    <ng-template igxDrawer>
+      @for (link of topNavLinks; track link) {
+        <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" [routerLink]="link.path">
+          <igx-icon fontSet="material">{{link.icon}}</igx-icon>
+          <span>{{link.name}}</span>
+        </span>
+      }
+    </ng-template>
+    <ng-template igxDrawerMini>
+      @for (link of topNavLinks; track link) {
+        <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" [routerLink]="link.path" [attr.aria-label]="link.name" [attr.title]="link.name">
+          <igx-icon fontSet="material">{{link.icon}}</igx-icon>
+        </span>
+      }
+    </ng-template>
+  </igx-nav-drawer>
+  <div class="view-container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
