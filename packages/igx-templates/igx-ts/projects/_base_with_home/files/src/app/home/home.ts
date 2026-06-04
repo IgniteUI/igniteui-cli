@@ -1,7 +1,9 @@
 import { Component, signal } from '@angular/core';
+import { IgxIconComponent } from 'igniteui-angular';
 
 @Component({
   selector: 'app-home',
+  imports: [IgxIconComponent],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })

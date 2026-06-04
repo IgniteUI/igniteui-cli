@@ -8,6 +8,7 @@ import {
   IgxRippleDirective,
   IgxFlexDirective,
   IgxNavbarComponent,
+  IgxIconComponent,
 } from 'igniteui-angular';
 import { filter } from 'rxjs/operators';
 import { routes } from './app.routes';
@@ -27,13 +28,15 @@ import { routes } from './app.routes';
     RouterLink,
     IgxFlexDirective,
     IgxNavbarComponent,
+    IgxIconComponent,
     RouterOutlet
   ]
 })
 export class App implements OnInit {
   public topNavLinks: {
     path: string,
-    name: string
+    name: string,
+    icon: string
   }[] = [];
 
   public navdrawer = viewChild.required(IgxNavigationDrawerComponent);
@@ -45,7 +48,8 @@ export class App implements OnInit {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
           name: route.data['text'],
-          path: '/' + route.path
+          path: '/' + route.path,
+          icon: route.data['icon'] || 'home'
         });
       }
     }
