@@ -107,7 +107,7 @@ export default class App extends LitElement {
     .app__drawer {
       flex: 0 0 auto;
       height: 100%;
-      --ig-nav-drawer-size: 280px;
+      --menu-full-width: 280px;
     }
 
     igc-nav-drawer-item[active]::part(base) {
