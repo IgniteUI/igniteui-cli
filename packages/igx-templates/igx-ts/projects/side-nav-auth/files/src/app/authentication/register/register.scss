@@ -29,7 +29,7 @@ button[type='submit'] {
   min-height: 40px;
   width: 100%;
   font-weight: 600;
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 button[type='submit']:not(:disabled) {

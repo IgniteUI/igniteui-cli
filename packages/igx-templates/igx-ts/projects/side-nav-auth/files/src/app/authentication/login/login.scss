@@ -29,7 +29,7 @@ button[type='submit'] {
   min-height: 40px;
   width: 100%;
   font-weight: 600;
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 button[type='submit']:not(:disabled) {
@@ -68,5 +68,11 @@ button[type='submit']:disabled {
   }
   button.microsoft {
     background-color: rgb(27, 158, 245);
+  }
+
+  button.google,
+  button.facebook,
+  button.microsoft {
+    color: #fff;
   }
 }
