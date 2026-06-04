@@ -1,21 +1,18 @@
 @if (!userStore.currentUser) {
-  <button igxRipple="white" igxButton="flat" igxButtonColor="white"
+  <button class="navbar-login" igxRipple igxButton="contained" igxButtonBackground="white" igxButtonColor="#0075d2"
     (click)="openDialog()">Log In</button>
 }
 
 @if (userStore.currentUser) {
-  <button class="login-button" igxRipple="white" igxButton="flat" igxButtonBackground="c"
-    igxButtonColor="white" [igxToggleAction]="options">
-    <igx-avatar [initials]="userStore.initials ?? ''" [src]="userStore.currentUser.picture ?? ''"
-      shape="circle" size="small" bgColor="white">
-    </igx-avatar>
-    <igx-icon>keyboard_arrow_down</igx-icon>
-  </button>
+  <igx-avatar class="profile-avatar" igxRipple [igxToggleAction]="options" [overlaySettings]="menuOverlaySettings"
+    [initials]="userStore.initials ?? ''" [src]="userStore.currentUser.picture ?? ''" shape="circle" size="small"
+    bgColor="white" role="button" tabindex="0" aria-label="Open profile menu">
+  </igx-avatar>
 }
 
-<igx-drop-down #options (selectionChanging)="menuSelect($event)">
-  <igx-drop-down-item [index]="0" igxRipple>Profile</igx-drop-down-item>
-  <igx-drop-down-item [index]="1" igxRipple>Log Out</igx-drop-down-item>
+<igx-drop-down class="profile-menu" #options (selectionChanging)="menuSelect($event)">
+  <igx-drop-down-item [index]="0" [selected]="isProfileRoute" igxRipple="#0075d2">Profile</igx-drop-down-item>
+  <igx-drop-down-item [index]="1" [selected]="false" igxRipple="#0075d2">Log Out</igx-drop-down-item>
 </igx-drop-down>
 
 <app-login-dialog></app-login-dialog>

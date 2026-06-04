@@ -1,3 +1,6 @@
+// ⚠ DEVELOPMENT ONLY — simulates POST /login, /register, /extlogin using localStorage.
+// Before going to production: remove BackendProvider from provide-authentication.ts
+// and replace it with calls to your real API. See authentication.ts for the endpoints.
 import {
   HttpEvent,
   HttpHandler,

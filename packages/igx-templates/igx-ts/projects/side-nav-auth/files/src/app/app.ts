@@ -7,12 +7,14 @@ import {
   IgxNavDrawerItemDirective,
   IgxRippleDirective,
   IgxFlexDirective,
-  IgxNavbarComponent
+  IgxNavbarComponent,
+  IgxIconComponent,
 } from 'igniteui-angular';
 import { filter } from 'rxjs/operators';
 
 import { routes } from './app.routes';
 import { LoginBar } from './authentication/login-bar/login-bar';
+import { UserStore } from './authentication/services/user-store';
 
 @Component({
   selector: 'app-root',
@@ -30,25 +32,53 @@ import { LoginBar } from './authentication/login-bar/login-bar';
     RouterLink,
     IgxFlexDirective,
     IgxNavbarComponent,
+    IgxIconComponent,
     RouterOutlet]
 })
 export class App implements OnInit {
-  public topNavLinks: {
+  public appTitle = '<%=name%>';
+
+  private readonly homeNavLinks: {
     path: string,
-    name: string
-  }[] = [];
+    name: string,
+    icon: string
+  }[] = [
+    {
+      name: 'Home',
+      path: '/home',
+      icon: 'home'
+    }
+  ];
+
+  private readonly profileNavLinks: {
+    path: string,
+    name: string,
+    icon: string
+  }[] = [
+    {
+      name: 'Profile',
+      path: '/auth/profile',
+      icon: 'account_circle'
+    }
+  ];
+
+  public get topNavLinks() {
+    return this.userStore.currentUser ? this.profileNavLinks : this.homeNavLinks;
+  }
 
   public navdrawer = viewChild.required(IgxNavigationDrawerComponent);
 
+  public userStore = inject(UserStore);
   private router = inject(Router);
 
   constructor() {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
-        this.topNavLinks.push({
+        this.homeNavLinks[0] = {
           name: route.data['text'],
-          path: '/' + route.path
-        });
+          path: '/' + route.path,
+          icon: route.data['icon'] || 'home'
+        };
       }
     }
   }

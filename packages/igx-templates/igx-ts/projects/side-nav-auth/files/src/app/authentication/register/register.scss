@@ -1,18 +1,55 @@
 form {
   display: flex;
   flex-flow: column;
-  align-items: center;
-  padding: 10px;
+  gap: 16px;
+  padding: 8px 0 0;
+
   > * {
     width: 100%;
   }
 }
 
-button {
-  width: 100%;
-  margin-top: 10px;
+igx-input-group {
+  --ig-input-group-focused-secondary-color: #239ef0;
+  --ig-input-group-filled-text-color: #2d2d2d;
+
+  igx-icon {
+    color: #0075d2;
+  }
 }
 
-a {
-  cursor: pointer;
+.button-wrapper {
+  display: flex;
+  flex-flow: column;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+button[type='submit'] {
+  min-height: 40px;
+  width: 100%;
+  font-weight: 600;
+  text-transform: none;
+}
+
+button[type='submit']:not(:disabled) {
+  color: #fff;
+  background: #239ef0;
+}
+
+button[type='submit']:disabled {
+  color: #767676;
+  background: #e0e0e0;
+}
+
+.button-wrapper .auth-link {
+  align-self: center;
+  color: #0075d2;
+  background: transparent;
+  text-transform: none;
+}
+
+.button-wrapper .auth-link:hover,
+.button-wrapper .auth-link:focus-visible {
+  color: #005da8;
 }

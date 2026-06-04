@@ -68,23 +68,19 @@ describe('LoginBar', () => {
   });
 
   it('should switch between buttons based on logged user ', () => {
-    let buttons = fixture.debugElement.queryAll(By.css('button'));
-    expect(buttons.length).toBe(2);
-    expect(buttons[0].nativeElement.innerText).toBe('Log In');
+    expect(fixture.debugElement.query(By.css('.navbar-login')).nativeElement.innerText).toBe('Log In');
     const userStore = TestBed.inject(UserStore);
     vi.spyOn(userStore, 'currentUser', 'get').mockReturnValue({
       picture: 'picture'
     } as any);
     fixture.detectChanges();
-    buttons = fixture.debugElement.queryAll(By.css('button'));
-    expect(buttons.length).toBe(2);
-    expect(buttons[0].nativeElement.children.length).toEqual(2);
+    expect(fixture.debugElement.query(By.css('.navbar-login'))).toBeNull();
     const avatar: IgxAvatarComponent = fixture.debugElement.query(By.css('igx-avatar')).componentInstance;
     expect(avatar.src).toBe('picture');
   });
 
   it('should open dialog on button click (not logged)', () => {
-    const button = fixture.debugElement.query(By.css('button'));
+    const button = fixture.debugElement.query(By.css('.navbar-login'));
     vi.spyOn(component.loginDialog(), 'open');
     button.triggerEventHandler('click', {});
     expect(component.loginDialog().open).toHaveBeenCalled();
@@ -97,8 +93,8 @@ describe('LoginBar', () => {
     } as any);
     fixture.detectChanges();
 
-    const button = fixture.debugElement.query(By.css('button'));
-    button.triggerEventHandler('click', {});
+    const avatar = fixture.debugElement.query(By.css('.profile-avatar'));
+    avatar.triggerEventHandler('click', {});
     await fixture.whenStable();
     expect(component.igxDropDown().collapsed).toBeFalsy();
   });

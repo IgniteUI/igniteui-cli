@@ -1,8 +1,46 @@
-.login-button {
-  height: 3rem;
-  vertical-align: middle;
+@use "igniteui-angular/theming" as *;
+
+$profile-menu-theme: drop-down-theme(
+  $schema: $light-material-schema,
+  $background-color: #fff,
+  $selected-item-background: #e0f2ff,
+  $selected-item-text-color: #0075d2,
+  $selected-item-icon-color: #0075d2,
+  $selected-hover-item-background: #e0f2ff,
+  $selected-hover-item-text-color: #0075d2,
+  $selected-hover-item-icon-color: #0075d2
+);
+
+.navbar-login {
+  min-height: 36px;
+  font-weight: 600;
+  text-transform: none;
+  color: #0075d2;
+  background: #fff;
+  border: 1px solid rgba(0, 117, 210, 0.35);
+}
+
+.profile-avatar {
+  cursor: pointer;
+  color: #0075d2;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .24);
+  transition: box-shadow .15s ease, transform .15s ease;
+}
+
+.profile-avatar:hover {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .28);
+}
+
+.profile-avatar:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 igx-drop-down-item {
   position: relative;
+}
+
+.profile-menu {
+  @include tokens($profile-menu-theme);
 }

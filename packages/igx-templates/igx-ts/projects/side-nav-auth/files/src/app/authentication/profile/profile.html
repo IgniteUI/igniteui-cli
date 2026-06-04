@@ -1,3 +1,27 @@
-<h3>
-  Hello {{this.userStore.currentUser!.name.toUpperCase()}}, you are now logged in!
-</h3>
+<section class="profile">
+  <div class="profile__content">
+    <div class="profile__header">
+      <div class="profile__avatar">{{userStore.initials || 'U'}}</div>
+      <div class="profile__intro">
+        <p class="profile__status">Signed in</p>
+        <h1>{{userStore.currentUser?.name || 'Your profile'}}</h1>
+        <p>Your account details are available on this protected route.</p>
+      </div>
+    </div>
+
+    <dl class="profile__details">
+      <div>
+        <dt>First name</dt>
+        <dd>{{userStore.currentUser?.given_name || 'Not provided'}}</dd>
+      </div>
+      <div>
+        <dt>Last name</dt>
+        <dd>{{userStore.currentUser?.family_name || 'Not provided'}}</dd>
+      </div>
+      <div>
+        <dt>Email</dt>
+        <dd>{{userStore.currentUser?.email || 'No email available'}}</dd>
+      </div>
+    </dl>
+  </div>
+</section>
