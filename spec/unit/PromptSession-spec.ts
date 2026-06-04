@@ -831,7 +831,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(InquirerWrapper, "input").and.returnValues(Promise.resolve("Test1"));
 		spyOn(InquirerWrapper, "select").and.returnValues(
 			Promise.resolve("Angular"),
-			Promise.resolve("Default side navigation"),
+			Promise.resolve("Side navigation default"),
 			Promise.resolve("Custom")
 		);
 		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
@@ -871,7 +871,7 @@ describe("Unit - PromptSession", () => {
 		spyOn(InquirerWrapper, "input").and.returnValues(Promise.resolve("Test1"));
 		spyOn(InquirerWrapper, "select").and.returnValues(
 			Promise.resolve("Angular"),
-			Promise.resolve("Default side navigation"),
+			Promise.resolve("Side navigation default"),
 			Promise.resolve("Default"));
 		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
