@@ -3,6 +3,7 @@ import { customElement, state } from 'lit/decorators.js';
 import { Router } from '@vaadin/router';
 import { defineComponents, IgcAvatarComponent, IgcButtonComponent } from 'igniteui-webcomponents';
 import { UserStore } from '../services/userStore.js';
+import { ExternalAuth } from '../services/externalAuth.js';
 import type { User } from '../models/user.js';
 import '../login-dialog/login-dialog.js';
 
@@ -132,6 +133,7 @@ export class LoginBarElement extends LitElement {
     if (action === 'profile') {
       Router.go('/auth/profile');
     } else {
+      ExternalAuth.logout();
       UserStore.clearUser();
       this.currentUser = null;
       Router.go('/');

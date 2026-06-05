@@ -3,6 +3,7 @@ import { customElement, state } from 'lit/decorators.js';
 import { Router } from '@vaadin/router';
 import { defineComponents, IgcDialogComponent, IgcIconComponent } from 'igniteui-webcomponents';
 import { Authentication } from '../services/authentication.js';
+import { ExternalAuth } from '../services/externalAuth.js';
 import { UserStore } from '../services/userStore.js';
 import type { User } from '../models/user.js';
 
@@ -105,6 +106,34 @@ export class LoginDialogElement extends LitElement {
       text-decoration: underline;
       padding: 0;
     }
+
+    .social-login {
+      display: grid;
+      gap: 8px;
+      padding-top: 16px;
+      border-top: 1px solid #d7d7d7;
+    }
+
+    .social-btn {
+      width: 100%;
+      min-height: 36px;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: .875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: filter .15s;
+    }
+
+    .social-btn:hover {
+      filter: brightness(0.9);
+    }
+
+    .google   { background: rgb(255, 19, 74); }
+    .facebook { background: rgb(19, 119, 213); }
+    .microsoft { background: rgb(27, 158, 245); }
   `;
 
   private dialogRef: IgcDialogComponent | null = null;
@@ -189,6 +218,22 @@ export class LoginDialogElement extends LitElement {
         <button class="link-btn" type="button" @click=${() => { this.showLogin = false; this.error = ''; }}>
           Create new account
         </button>
+        ${ExternalAuth.hasProvider() ? html`
+          <div class="social-login">
+            ${ExternalAuth.hasProvider('google') ? html`
+              <button class="social-btn google" type="button"
+                @click=${() => ExternalAuth.login('google')}>Sign Up Google</button>
+            ` : ''}
+            ${ExternalAuth.hasProvider('facebook') ? html`
+              <button class="social-btn facebook" type="button"
+                @click=${() => ExternalAuth.login('facebook')}>Sign Up Facebook</button>
+            ` : ''}
+            ${ExternalAuth.hasProvider('microsoft') ? html`
+              <button class="social-btn microsoft" type="button"
+                @click=${() => ExternalAuth.login('microsoft')}>Sign Up Microsoft</button>
+            ` : ''}
+          </div>
+        ` : ''}
       </form>
     `;
 

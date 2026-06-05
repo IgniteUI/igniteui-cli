@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { IgrIcon } from 'igniteui-react';
 import { useAuth } from '../AuthContext';
+import { ExternalAuth } from '../services/externalAuth';
 import type { Login as LoginData } from '../../models/login';
 import styles from './Login.module.css';
 
@@ -65,6 +66,22 @@ export function Login({ onRegister, onSuccess }: LoginProps) {
           Create new account
         </button>
       </div>
+      {ExternalAuth.hasProvider() && (
+        <div className={styles.socialLogin}>
+          {ExternalAuth.hasProvider('google') && (
+            <button className={`${styles.socialBtn} ${styles.google}`} type="button"
+              onClick={() => ExternalAuth.login('google')}>Sign Up Google</button>
+          )}
+          {ExternalAuth.hasProvider('facebook') && (
+            <button className={`${styles.socialBtn} ${styles.facebook}`} type="button"
+              onClick={() => ExternalAuth.login('facebook')}>Sign Up Facebook</button>
+          )}
+          {ExternalAuth.hasProvider('microsoft') && (
+            <button className={`${styles.socialBtn} ${styles.microsoft}`} type="button"
+              onClick={() => ExternalAuth.login('microsoft')}>Sign Up Microsoft</button>
+          )}
+        </div>
+      )}
     </form>
   );
 }

@@ -2,14 +2,17 @@ import { createContext, useContext, useState, useCallback, type ReactNode } from
 import type { User } from './models/user';
 import type { Login } from './models/login';
 import type { RegisterInfo } from './models/register-info';
+import type { ExternalLogin } from './models/external-login';
 import { Authentication } from './services/authentication';
 import { UserStore } from './services/userStore';
+import { ExternalAuth } from './services/externalAuth';
 
 interface AuthContextType {
   currentUser: User | null;
   initials: string | null;
   login: (data: Login) => Promise<string | null>;
   register: (data: RegisterInfo) => Promise<string | null>;
+  loginWith: (data: ExternalLogin) => Promise<string | null>;
   logout: () => void;
 }
 
@@ -40,13 +43,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return result.error ?? 'Registration failed';
   }, []);
 
+  const loginWith = useCallback(async (data: ExternalLogin): Promise<string | null> => {
+    const result = await Authentication.loginWith(data);
+    if (result.user) {
+      UserStore.setUser(result.user);
+      setCurrentUser(result.user);
+      return null;
+    }
+    return result.error ?? 'Social login failed';
+  }, []);
+
   const logout = useCallback(() => {
+    ExternalAuth.logout();
     UserStore.clearUser();
     setCurrentUser(null);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ currentUser, initials, login, register, logout }}>
+    <AuthContext.Provider value={{ currentUser, initials, login, register, loginWith, logout }}>
       {children}
     </AuthContext.Provider>
   );
