@@ -16,14 +16,6 @@
   box-sizing: border-box;
 }
 
-.app__title {
-  margin: 0 0 0 16px;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1;
-  color: #000;
-}
-
 .app__menu-button {
   display: inline-flex;
   align-items: center;
@@ -35,10 +27,15 @@
   border: 0;
   background: transparent;
   cursor: pointer;
+  font-size: 24px;
 }
 
-.app__menu-button igc-icon {
-  font-size: 24px;
+.app__title {
+  margin: 0 0 0 16px;
+  color: #000;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .app__body {
@@ -50,7 +47,7 @@
 .app__drawer {
   flex: 0 0 auto;
   height: 100%;
-  --ig-nav-drawer-size: 280px;
+  --menu-full-width: 280px;
 }
 
 igc-nav-drawer-item[active]::part(base) {
@@ -62,12 +59,39 @@ igc-nav-drawer-item[active] igc-icon {
   color: #0075d2;
 }
 
-.content {
-  flex: 1 1 auto;
-  display: flex;
-  flex-flow: row nowrap;
+.app--mini .app__drawer {
+  --menu-full-width: 68px;
+}
+
+igc-nav-drawer.app__drawer::part(base) {
+  transition: width 0.3s ease-out;
+  overflow: hidden;
+}
+
+.app--mini igc-nav-drawer-item::part(base) {
   justify-content: center;
-  align-items: stretch;
+  width: 40px;
+  min-height: 40px;
+  padding: 0;
+  margin: 4px auto;
+  border-radius: 8px;
+}
+
+.app--mini igc-nav-drawer-item::part(content) {
+  display: none;
+}
+
+.app__content {
+  flex: 1 1 auto;
   min-width: 0;
   overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media (max-width: 1024px) {
+  .app__menu-button {
+    display: none;
+  }
 }

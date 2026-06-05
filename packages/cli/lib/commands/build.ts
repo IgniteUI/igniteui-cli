@@ -14,7 +14,7 @@ const command: BuildCommandType = {
 			t: "screenview",
 			cd: "Build"
 		});
-		command.build(argv);
+		await command.build();
 	},
 	async build() {
 		Util.log("Build started.");
@@ -39,22 +39,15 @@ const command: BuildCommandType = {
 
 		await PackageManager.installPackages();
 		if (config.project.theme.includes(".less") || config.project.theme.includes(".sass")) {
-			fs.mkdirSync("./themes");
-			const source = path.join(config.project.igniteuiSource, "/css/themes/", config.project.theme.split(".")[0]);
+			const source = path.join(config.project.igniteuiSource, "css", "themes", config.project.theme.split(".")[0]);
 			const destination = path.join(config.project.sourceRoot, "themes");
 
 			Util.ensureDirectoryExists(destination);
-			if (!Util.isDirectory(source)) {
-				fs.copyFileSync(source, destination);
-				return;
+			if (Util.isDirectory(source)) {
+				fs.cpSync(source, destination, { recursive: true, force: true });
+			} else {
+				fs.copyFileSync(source, path.join(destination, path.basename(source)));
 			}
-
-			const entries = fs.readdirSync(source, { withFileTypes: true });
-			entries.forEach((entry) => {
-				const sourcePath = path.join(source, entry.name);
-				const destinationPath = path.join(destination, entry.name);
-				fs.copyFileSync(sourcePath, destinationPath);
-			});
 		}
 	}
 };

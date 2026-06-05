@@ -1,17 +1,20 @@
-import { Component, OnInit, viewChild, ViewEncapsulation, inject } from '@angular/core';
+import { Component, HostListener, OnInit, AfterViewInit, viewChild, ViewEncapsulation, inject } from '@angular/core';
 import { NavigationStart, Router, RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 import {
   IgxNavigationDrawerComponent,
-  IgxLayoutDirective,
   IgxNavDrawerTemplateDirective,
+  IgxNavDrawerMiniTemplateDirective,
   IgxNavDrawerItemDirective,
   IgxRippleDirective,
-  IgxFlexDirective,
   IgxNavbarComponent,
+  IgxNavbarActionDirective,
   IgxIconComponent,
+  IgxIconButtonDirective,
 } from 'igniteui-angular';
 import { filter } from 'rxjs/operators';
 import { routes } from './app.routes';
+
+const MINI_BREAKPOINT = 1024;
 
 @Component({
   selector: 'app-root',
@@ -19,25 +22,24 @@ import { routes } from './app.routes';
   styleUrl: './app.scss',
   encapsulation: ViewEncapsulation.None,
   imports: [
-    IgxLayoutDirective,
     IgxNavigationDrawerComponent,
     IgxNavDrawerTemplateDirective,
+    IgxNavDrawerMiniTemplateDirective,
     IgxNavDrawerItemDirective,
     IgxRippleDirective,
     RouterLinkActive,
     RouterLink,
-    IgxFlexDirective,
     IgxNavbarComponent,
+    IgxNavbarActionDirective,
     IgxIconComponent,
+    IgxIconButtonDirective,
     RouterOutlet
   ]
 })
-export class App implements OnInit {
-  public topNavLinks: {
-    path: string,
-    name: string,
-    icon: string
-  }[] = [];
+export class App implements OnInit, AfterViewInit {
+  // Start open on wide screens, collapsed (mini) on narrow screens
+  public readonly initiallyOpen = window.innerWidth > MINI_BREAKPOINT;
+  public topNavLinks: Array<{ path: string; name: string; icon: string }> = [];
 
   public navdrawer = viewChild.required(IgxNavigationDrawerComponent);
 
@@ -48,8 +50,8 @@ export class App implements OnInit {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
         this.topNavLinks.push({
           name: route.data['text'],
-          path: '/' + route.path,
-          icon: route.data['icon'] || 'home'
+          icon: route.data['icon'] ?? 'radio_button_unchecked',
+          path: '/' + route.path
         });
       }
     }
@@ -58,12 +60,24 @@ export class App implements OnInit {
   public ngOnInit(): void {
     this.router.events.pipe(
       filter((x): x is NavigationStart => x instanceof NavigationStart)
-    )
-      .subscribe((event: NavigationStart) => {
-        if (event.url !== '/' && !this.navdrawer().pin) {
-          // Close drawer when selecting a view on mobile (unpinned)
-          this.navdrawer().close();
-        }
-      });
+    ).subscribe(() => this.updateDrawerState());
+  }
+
+  public ngAfterViewInit(): void {
+    this.updateDrawerState();
+  }
+
+  /** Burger menu toggle — only active on large screens */
+  public toggleNav(): void {
+    this.navdrawer().toggle();
+  }
+
+  @HostListener('window:resize')
+  public updateDrawerState(): void {
+    const isWide = window.innerWidth > MINI_BREAKPOINT;
+    if (!isWide && this.navdrawer().isOpen) {
+      // Collapse to mini on small screens
+      this.navdrawer().close();
+    }
   }
 }

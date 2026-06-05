@@ -1,0 +1,55 @@
+// Root element fills the viewport and stacks navbar above content
+app-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+// Navbar spans full width; height is determined by igx-navbar itself
+.app-navbar {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+// Row container holds the nav drawer and the page content side by side
+.row-layout {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+  min-height: 0; // allow flex children to shrink below their content height
+}
+
+// Page content fills remaining horizontal space and scrolls independently
+.view-container {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-start;
+
+  > *:not(router-outlet) {
+    padding: 0 24px;
+    width: 100%;
+  }
+
+  p {
+    margin: 15px;
+  }
+}
+
+// On small screens: hide the burger button — the nav is always in mini mode
+@media only screen and (max-width: 1024px) {
+  .nav-toggle-btn {
+    display: none;
+  }
+
+  .view-container {
+    justify-content: flex-start;
+
+    > *:not(router-outlet) {
+      padding: 0 15px;
+    }
+  }
+}

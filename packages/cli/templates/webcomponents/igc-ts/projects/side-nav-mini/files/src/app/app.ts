@@ -1,5 +1,4 @@
-import { Router } from '@vaadin/router';
-import { css, html, LitElement } from 'lit';
+import { html, css, LitElement } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import {
   defineComponents,
@@ -8,13 +7,8 @@ import {
   IgcNavDrawerItemComponent,
   registerIcon,
 } from 'igniteui-webcomponents';
-import { routes } from './app-routing.js';
-
-type AppRoute = {
-  path: string;
-  name?: string;
-  icon?: string;
-};
+import { Router } from '@vaadin/router';
+import { routes, type AppRoute } from './app-routing.js';
 
 defineComponents(
   IgcIconComponent,
@@ -39,9 +33,6 @@ materialIcons.forEach(([name, path]) =>
 export default class App extends LitElement {
   @state()
   private drawerOpen = true;
-
-  @state()
-  private drawerPosition: 'relative' | 'start' = 'relative';
 
   @state()
   private currentPath = window.location.pathname;
@@ -107,7 +98,29 @@ export default class App extends LitElement {
     .app__drawer {
       flex: 0 0 auto;
       height: 100%;
-      --ig-nav-drawer-size: 280px;
+      --menu-full-width: 280px;
+    }
+
+    .app--mini .app__drawer {
+      --menu-full-width: 68px;
+    }
+
+    igc-nav-drawer.app__drawer::part(base) {
+      transition: width 0.3s ease-out;
+      overflow: hidden;
+    }
+
+    .app--mini igc-nav-drawer-item::part(base) {
+      justify-content: center;
+      width: 40px;
+      min-height: 40px;
+      padding: 0;
+      margin: 4px auto;
+      border-radius: 8px;
+    }
+
+    .app--mini igc-nav-drawer-item::part(content) {
+      display: none;
     }
 
     igc-nav-drawer-item[active]::part(base) {
@@ -127,6 +140,12 @@ export default class App extends LitElement {
       min-width: 0;
       overflow: auto;
     }
+
+    @media (max-width: 1024px) {
+      .app__menu-button {
+        display: none;
+      }
+    }
   `;
 
   render() {
@@ -145,11 +164,11 @@ export default class App extends LitElement {
           </button>
           <h1 class="app__title">$(name)</h1>
         </header>
-        <div class="app__body">
+        <div class=${this.drawerOpen ? 'app__body' : 'app__body app--mini'}>
           <igc-nav-drawer
             class="app__drawer"
-            ?open=${this.drawerOpen}
-            position=${this.drawerPosition}
+            ?open=${true}
+            position="relative"
           >
             ${visibleRoutes.map((route) => html`
               <igc-nav-drawer-item
@@ -158,7 +177,7 @@ export default class App extends LitElement {
               >
                 <igc-icon
                   slot="icon"
-                  name=${route.icon || 'home'}
+                  name=${route.icon || 'apps'}
                   collection="material"
                   style=${this.currentPath === route.path ? 'color: #0075D2;' : ''}
                 ></igc-icon>
@@ -174,7 +193,6 @@ export default class App extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-
     this.mediaQuery = window.matchMedia('(min-width: 1025px)');
     this.updateDrawerState();
     this.mediaQuery.addEventListener('change', this.updateDrawerState);
@@ -184,7 +202,6 @@ export default class App extends LitElement {
   disconnectedCallback() {
     this.mediaQuery?.removeEventListener('change', this.updateDrawerState);
     window.removeEventListener('popstate', this.updateCurrentPath);
-
     super.disconnectedCallback();
   }
 
@@ -201,17 +218,10 @@ export default class App extends LitElement {
   private navigate(path: string) {
     this.currentPath = path;
     Router.go(path);
-
-    if (!this.mediaQuery?.matches) {
-      this.drawerOpen = false;
-    }
   }
 
   private updateDrawerState = () => {
-    const pinned = Boolean(this.mediaQuery?.matches);
-
-    this.drawerOpen = pinned;
-    this.drawerPosition = pinned ? 'relative' : 'start';
+    this.drawerOpen = Boolean(this.mediaQuery?.matches);
   };
 
   private updateCurrentPath = () => {

@@ -1,23 +1,19 @@
-:host {
-  display: flex;
-  width: 100%;
-  min-height: 100%;
-}
-
-.home {
+:local(.home) {
   width: 100%;
   max-width: 920px;
   margin: auto;
   padding: 48px 24px;
+  box-sizing: border-box;
+  font-family: "Titillium Web", "Segoe UI", Arial, sans-serif;
 }
 
-.home__intro {
+:local(.intro) {
   max-width: 720px;
   margin: 0 auto 24px;
   text-align: center;
 }
 
-h1 {
+:local(.header) {
   margin: 0 0 12px;
   color: #09f;
   font-size: 3rem;
@@ -25,14 +21,14 @@ h1 {
   line-height: 1.2;
 }
 
-.home__description {
+:local(.description) {
   margin: 0;
   color: #000;
   font-size: 1.125rem;
   line-height: 1.5;
 }
 
-.home__image {
+:local(.logo) {
   display: block;
   width: 500px;
   height: 350px;
@@ -41,15 +37,15 @@ h1 {
   object-fit: contain;
 }
 
-.home__resources {
+:local(.resources) {
   display: grid;
   grid-template-columns: repeat(2, 300px);
   justify-content: center;
   margin: 0 auto;
-  gap: 12px 64px;
+  gap: 4px 64px;
 }
 
-.home__resource {
+:local(.resource) {
   display: flex;
   align-items: center;
   min-height: 64px;
@@ -59,49 +55,49 @@ h1 {
   text-decoration: none;
 }
 
-.home__resource:hover strong {
+:local(.resource):hover strong {
   text-decoration: underline;
 }
 
-.home__resource igx-icon {
+:local(.resourceIcon) {
   flex: 0 0 28px;
   margin-right: 16px;
   color: #09f;
   font-size: 28px;
 }
 
-.home__resource strong,
-.home__resource small {
+:local(.resource) strong,
+:local(.resource) small {
   display: block;
 }
 
-.home__resource strong {
+:local(.resource) strong {
   margin-bottom: 2px;
   color: #731963;
   font-size: 1rem;
 }
 
-.home__resource small {
+:local(.resource) small {
   color: #000;
   font-size: 0.875rem;
   line-height: 1.4;
 }
 
-@media only screen and (max-width: 768px) {
-  .home {
+@media (max-width: 768px) {
+  :local(.home) {
     padding: 32px 16px;
   }
 
-  h1 {
+  :local(.header) {
     font-size: 2.25rem;
   }
 
-  .home__image {
+  :local(.logo) {
     width: 100%;
     height: 240px;
   }
 
-  .home__resources {
+  :local(.resources) {
     grid-template-columns: minmax(0, 300px);
     justify-content: center;
     gap: 4px;
