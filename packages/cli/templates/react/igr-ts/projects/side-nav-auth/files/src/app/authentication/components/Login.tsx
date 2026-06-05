@@ -25,6 +25,7 @@ export function Login({ onRegister, onSuccess }: LoginProps) {
     if (err) {
       setError(err);
     } else {
+      setPassword('');
       onSuccess();
     }
   };

@@ -137,6 +137,8 @@ export class LoginDialogElement extends LitElement {
       password: data.get('password') as string,
     });
     if (result.user) {
+      form.reset();
+      this._loginValid = false;
       UserStore.setUser(result.user as User);
       this.dialogRef?.hide();
       this.dispatchEvent(new CustomEvent('auth-change', { bubbles: true, composed: true }));
@@ -158,6 +160,8 @@ export class LoginDialogElement extends LitElement {
       password: data.get('password') as string,
     });
     if (result.user) {
+      form.reset();
+      this._registerValid = false;
       UserStore.setUser(result.user as User);
       this.dialogRef?.hide();
       this.dispatchEvent(new CustomEvent('auth-change', { bubbles: true, composed: true }));

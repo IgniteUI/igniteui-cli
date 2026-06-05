@@ -32,6 +32,7 @@ export function Register({ onLogin, onSuccess }: RegisterProps) {
     if (err) {
       setError(err);
     } else {
+      setPassword('');
       onSuccess();
     }
   };
