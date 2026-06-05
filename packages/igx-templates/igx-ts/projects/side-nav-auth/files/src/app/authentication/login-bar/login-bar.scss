@@ -3,12 +3,10 @@
 $profile-menu-theme: drop-down-theme(
   $schema: $light-material-schema,
   $background-color: #fff,
-  $selected-item-background: #e0f2ff,
-  $selected-item-text-color: #0075d2,
-  $selected-item-icon-color: #0075d2,
-  $selected-hover-item-background: #e0f2ff,
-  $selected-hover-item-text-color: #0075d2,
-  $selected-hover-item-icon-color: #0075d2
+  $hover-item-background: #e8f3fc,
+  $hover-item-text-color: #0075d2,
+  $focused-item-background: #e8f3fc,
+  $focused-item-text-color: #0075d2
 );
 
 .navbar-login {

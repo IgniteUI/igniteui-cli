@@ -16,62 +16,15 @@
   background: #e8f3fc;
 }
 
-.avatarWrapper {
-  position: relative;
-}
-
-.avatar {
-  width: 36px;
-  height: 36px;
-  border: 2px solid rgba(0, 117, 210, 0.35);
-  border-radius: 50%;
-  background: #fff;
+.profileAvatar {
   cursor: pointer;
-  overflow: hidden;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.avatarImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.avatarInitials {
-  font-size: .75rem;
-  font-weight: 700;
   color: #0075d2;
-  line-height: 1;
+  --ig-avatar-background: #fff;
+  --ig-avatar-color: #0075d2;
 }
 
-.menu {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 6px);
-  margin: 0;
-  padding: 4px 0;
-  list-style: none;
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
-  min-width: 140px;
-  z-index: 1000;
+.profileAvatar:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
-.menuItem {
-  width: 100%;
-  border: none;
-  background: transparent;
-  padding: 10px 16px;
-  text-align: left;
-  font-size: .875rem;
-  color: #2d2d2d;
-  cursor: pointer;
-}
-
-.menuItem:hover {
-  background: #f5f5f5;
-}
