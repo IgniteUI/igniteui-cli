@@ -8,7 +8,7 @@ import { fakeLogin, fakeRegister } from './fakeBackend.js';
 export const Authentication = {
   async login(data: Login): Promise<LoginResult> {
     try {
-      const token = fakeLogin(data);
+      const token = await fakeLogin(data);
       return { user: parseUser(token) };
     } catch (e: any) {
       return { error: e.message };
@@ -17,7 +17,7 @@ export const Authentication = {
 
   async register(data: RegisterInfo): Promise<LoginResult> {
     try {
-      const token = fakeRegister(data);
+      const token = await fakeRegister(data);
       return { user: parseUser(token) };
     } catch (e: any) {
       return { error: e.message };
