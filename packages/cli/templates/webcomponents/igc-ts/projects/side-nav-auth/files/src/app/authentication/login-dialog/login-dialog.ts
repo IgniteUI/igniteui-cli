@@ -1,11 +1,12 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
-import { defineComponents, IgcDialogComponent } from 'igniteui-webcomponents';
+import { Router } from '@vaadin/router';
+import { defineComponents, IgcDialogComponent, IgcIconComponent } from 'igniteui-webcomponents';
 import { Authentication } from '../services/authentication.js';
 import { UserStore } from '../services/userStore.js';
 import type { User } from '../models/user.js';
 
-defineComponents(IgcDialogComponent);
+defineComponents(IgcDialogComponent, IgcIconComponent);
 
 @customElement('auth-login-dialog')
 export class LoginDialogElement extends LitElement {
@@ -34,22 +35,14 @@ export class LoginDialogElement extends LitElement {
     }
 
     .field {
-      display: flex;
-      flex-flow: column;
-      gap: 4px;
-    }
-
-    label {
-      font-size: .875rem;
-      font-weight: 600;
-      color: #2d2d2d;
+      position: relative;
     }
 
     input {
       box-sizing: border-box;
       width: 100%;
       height: 40px;
-      padding: 0 12px;
+      padding: 0 36px 0 12px;
       border: 1px solid #c4c4c4;
       border-radius: 4px;
       font-size: 1rem;
@@ -61,6 +54,18 @@ export class LoginDialogElement extends LitElement {
       border-color: #239ef0;
     }
 
+    .input-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #0075d2;
+      --igc-icon-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+
     .error {
       margin: 0;
       font-size: .875rem;
@@ -69,12 +74,12 @@ export class LoginDialogElement extends LitElement {
 
     .submit-btn {
       width: 100%;
-      min-height: 40px;
+      min-height: 36px;
       border: none;
       border-radius: 4px;
       background: #239ef0;
       color: #fff;
-      font-size: 1rem;
+      font-size: .875rem;
       font-weight: 600;
       text-transform: uppercase;
       cursor: pointer;
@@ -135,6 +140,7 @@ export class LoginDialogElement extends LitElement {
       UserStore.setUser(result.user as User);
       this.dialogRef?.hide();
       this.dispatchEvent(new CustomEvent('auth-change', { bubbles: true, composed: true }));
+      Router.go('/auth/profile');
     } else {
       this.error = result.error ?? 'Login failed';
     }
@@ -155,24 +161,24 @@ export class LoginDialogElement extends LitElement {
       UserStore.setUser(result.user as User);
       this.dialogRef?.hide();
       this.dispatchEvent(new CustomEvent('auth-change', { bubbles: true, composed: true }));
+      Router.go('/auth/profile');
     } else {
       this.error = result.error ?? 'Registration failed';
     }
   };
 
   render() {
-    const title = this.showLogin ? 'Log In' : 'Create Account';
+    const title = this.showLogin ? 'Login' : 'Register';
 
     const loginForm = html`
       <form class="form" @submit=${this.handleLoginSubmit} @input=${this.checkLoginValidity} novalidate>
         <div class="field">
-          <label for="loginEmail">Email</label>
-          <input id="loginEmail" name="email" type="email" autocomplete="email" required />
-        </div>
+          <input id="loginEmail" name="email" type="email" placeholder="Email" autocomplete="email" required />
+          <igc-icon name="account_circle" collection="material" class="input-icon"></igc-icon>
         </div>
         <div class="field">
-          <label for="loginPassword">Password</label>
-          <input id="loginPassword" name="password" type="password" autocomplete="current-password" required />
+          <input id="loginPassword" name="password" type="password" placeholder="Password" autocomplete="current-password" required />
+          <igc-icon name="lock" collection="material" class="input-icon"></igc-icon>
         </div>
         ${this.error ? html`<p class="error">${this.error}</p>` : ''}
         <button class="submit-btn" type="submit" ?disabled=${!this._loginValid}>Log In</button>
@@ -185,20 +191,20 @@ export class LoginDialogElement extends LitElement {
     const registerForm = html`
       <form class="form" @submit=${this.handleRegisterSubmit} @input=${this.checkRegisterValidity} novalidate>
         <div class="field">
-          <label for="regFirst">First Name</label>
-          <input id="regFirst" name="given_name" type="text" autocomplete="given-name" required />
+          <input id="regFirst" name="given_name" type="text" placeholder="First Name" autocomplete="given-name" required />
+          <igc-icon name="assignment_ind" collection="material" class="input-icon"></igc-icon>
         </div>
         <div class="field">
-          <label for="regLast">Last Name</label>
-          <input id="regLast" name="family_name" type="text" autocomplete="family-name" />
+          <input id="regLast" name="family_name" type="text" placeholder="Last Name" autocomplete="family-name" />
+          <igc-icon name="assignment_ind" collection="material" class="input-icon"></igc-icon>
         </div>
         <div class="field">
-          <label for="regEmail">Email</label>
-          <input id="regEmail" name="email" type="email" autocomplete="email" required />
+          <input id="regEmail" name="email" type="email" placeholder="Email" autocomplete="email" required />
+          <igc-icon name="account_circle" collection="material" class="input-icon"></igc-icon>
         </div>
         <div class="field">
-          <label for="regPassword">Password</label>
-          <input id="regPassword" name="password" type="password" autocomplete="new-password" required />
+          <input id="regPassword" name="password" type="password" placeholder="Password" autocomplete="new-password" required />
+          <igc-icon name="lock" collection="material" class="input-icon"></igc-icon>
         </div>
         ${this.error ? html`<p class="error">${this.error}</p>` : ''}
         <button class="submit-btn" type="submit" ?disabled=${!this._registerValid}>Sign Up</button>
@@ -207,9 +213,8 @@ export class LoginDialogElement extends LitElement {
         </button>
       </form>
     `;
-
     return html`
-      <igc-dialog .title=${title}>
+      <igc-dialog .title=${title} ?closeOnOutsideClick=${true}>
         ${this.showLogin ? loginForm : registerForm}
         <span slot="footer"></span>
       </igc-dialog>

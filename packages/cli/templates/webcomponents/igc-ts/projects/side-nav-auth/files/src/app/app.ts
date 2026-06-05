@@ -25,6 +25,9 @@ const materialIcons = [
   ['code', 'action/svg/production/ic_code_24px.svg'],
   ['build', 'action/svg/production/ic_build_24px.svg'],
   ['palette', 'image/svg/production/ic_palette_24px.svg'],
+  ['account_circle', 'action/svg/production/ic_account_circle_24px.svg'],
+  ['lock', 'action/svg/production/ic_lock_24px.svg'],
+  ['assignment_ind', 'action/svg/production/ic_assignment_ind_24px.svg'],
 ] as const;
 
 materialIcons.forEach(([name, path]) =>

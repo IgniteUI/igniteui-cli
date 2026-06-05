@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Login } from './Login';
 import { Register } from './Register';
 import styles from './LoginDialog.module.css';
@@ -11,6 +12,7 @@ interface LoginDialogProps {
 export function LoginDialog({ open, onClose }: LoginDialogProps) {
   const [showLogin, setShowLogin] = useState(true);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -33,13 +35,13 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
 
   const handleSuccess = () => {
     dialogRef.current?.close();
+    navigate('/auth/profile');
   };
 
   return (
     <dialog ref={dialogRef} className={styles.dialog} onClick={e => { if (e.target === dialogRef.current) dialogRef.current?.close(); }}>
       <div className={styles.header}>
-        <h2 className={styles.title}>{showLogin ? 'Log In' : 'Create Account'}</h2>
-        <button className={styles.closeBtn} type="button" aria-label="Close" onClick={() => dialogRef.current?.close()}>✕</button>
+        <h2 className={styles.title}>{showLogin ? 'Login' : 'Register'}</h2>
       </div>
       <div className={styles.body}>
         {showLogin

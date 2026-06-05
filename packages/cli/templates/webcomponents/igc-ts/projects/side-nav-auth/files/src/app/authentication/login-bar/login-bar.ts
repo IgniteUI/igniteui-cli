@@ -19,19 +19,20 @@ export class LoginBarElement extends LitElement {
     }
 
     .login-btn {
-      border: none;
-      background: transparent;
-      color: #fff;
+      border: 1px solid rgba(0, 117, 210, 0.35);
+      background: #fff;
+      color: #0075d2;
       font-size: .875rem;
       font-weight: 600;
       cursor: pointer;
-      padding: 6px 12px;
+      padding: 10px 20px;
       border-radius: 4px;
       white-space: nowrap;
+      text-transform: none;
     }
 
     .login-btn:hover {
-      background: rgba(255, 255, 255, .15);
+      background: #e8f3fc;
     }
 
     .avatar-wrapper {
@@ -41,9 +42,9 @@ export class LoginBarElement extends LitElement {
     .avatar-btn {
       width: 36px;
       height: 36px;
-      border: 2px solid rgba(255, 255, 255, .6);
+      border: 2px solid rgba(0, 117, 210, 0.35);
       border-radius: 50%;
-      background: #1a8fd8;
+      background: #fff;
       cursor: pointer;
       overflow: hidden;
       padding: 0;
@@ -61,7 +62,7 @@ export class LoginBarElement extends LitElement {
     .avatar-initials {
       font-size: .75rem;
       font-weight: 700;
-      color: #fff;
+      color: #0075d2;
       line-height: 1;
     }
 

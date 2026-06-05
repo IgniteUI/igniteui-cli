@@ -22,7 +22,7 @@ export const routes: AppRoute[] = [
     path: '/auth/profile',
     component: 'app-profile',
     name: 'Profile',
-    icon: 'apps',
+    icon: 'account_circle',
     requiresAuth: true,
     action: authGuard,
   },

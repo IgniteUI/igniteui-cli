@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { IgrIcon } from 'igniteui-react';
 import { useAuth } from '../AuthContext';
 import type { RegisterInfo } from '../../models/register-info';
 import styles from './Register.module.css';
@@ -38,24 +39,24 @@ export function Register({ onLogin, onSuccess }: RegisterProps) {
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       <div className={styles.field}>
-        <label className={styles.label} htmlFor="regFirst">First Name</label>
-        <input id="regFirst" className={styles.input} type="text" autoComplete="given-name"
+        <input id="regFirst" className={styles.input} type="text" placeholder="First Name" autoComplete="given-name"
           value={givenName} onChange={e => setGivenName(e.target.value)} required />
+        <IgrIcon name="assignment_ind" collection="material" className={styles.inputIcon} />
       </div>
       <div className={styles.field}>
-        <label className={styles.label} htmlFor="regLast">Last Name</label>
-        <input id="regLast" className={styles.input} type="text" autoComplete="family-name"
+        <input id="regLast" className={styles.input} type="text" placeholder="Last Name" autoComplete="family-name"
           value={familyName} onChange={e => setFamilyName(e.target.value)} />
+        <IgrIcon name="assignment_ind" collection="material" className={styles.inputIcon} />
       </div>
       <div className={styles.field}>
-        <label className={styles.label} htmlFor="regEmail">Email</label>
-        <input id="regEmail" className={styles.input} type="email" autoComplete="email"
+        <input id="regEmail" className={styles.input} type="email" placeholder="Email" autoComplete="email"
           value={email} onChange={e => setEmail(e.target.value)} required />
+        <IgrIcon name="account_circle" collection="material" className={styles.inputIcon} />
       </div>
       <div className={styles.field}>
-        <label className={styles.label} htmlFor="regPassword">Password</label>
-        <input id="regPassword" className={styles.input} type="password" autoComplete="new-password"
+        <input id="regPassword" className={styles.input} type="password" placeholder="Password" autoComplete="new-password"
           value={password} onChange={e => setPassword(e.target.value)} required />
+        <IgrIcon name="lock" collection="material" className={styles.inputIcon} />
       </div>
       {error && <p className={styles.error}>{error}</p>}
       <div className={styles.actions}>

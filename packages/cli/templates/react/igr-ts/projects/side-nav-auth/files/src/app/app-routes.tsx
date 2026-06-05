@@ -12,7 +12,7 @@ export const routes = [
       </AuthGuard>
     ),
     text: 'Profile',
-    icon: 'apps',
+    icon: 'account_circle',
     requiresAuth: true
   }
 ];

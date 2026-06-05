@@ -44,8 +44,13 @@ button[type='submit']:disabled {
 
 .button-wrapper .auth-link {
   align-self: center;
-  color: #0075d2;
+  border: none;
   background: transparent;
+  color: #0075d2;
+  font-size: .875rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
   text-transform: none;
 }
 

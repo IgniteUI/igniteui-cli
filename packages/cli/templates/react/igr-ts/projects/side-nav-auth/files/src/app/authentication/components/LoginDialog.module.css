@@ -12,9 +12,6 @@
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 20px 24px 12px;
   border-bottom: 1px solid #e0e0e0;
 }
@@ -23,22 +20,6 @@
   margin: 0;
   font-size: 1.125rem;
   font-weight: 600;
-  color: #2d2d2d;
-}
-
-.closeBtn {
-  border: none;
-  background: transparent;
-  font-size: 1rem;
-  color: #767676;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 4px;
-  line-height: 1;
-}
-
-.closeBtn:hover {
-  background: #f5f5f5;
   color: #2d2d2d;
 }
 

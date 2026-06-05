@@ -6,22 +6,14 @@
 }
 
 .field {
-  display: flex;
-  flex-flow: column;
-  gap: 4px;
-}
-
-.label {
-  font-size: .875rem;
-  font-weight: 600;
-  color: #2d2d2d;
+  position: relative;
 }
 
 .input {
   box-sizing: border-box;
   width: 100%;
   height: 40px;
-  padding: 0 12px;
+  padding: 0 36px 0 12px;
   border: 1px solid #c4c4c4;
   border-radius: 4px;
   font-size: 1rem;
@@ -32,6 +24,17 @@
 
 .input:focus {
   border-color: #239ef0;
+}
+
+.inputIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #0075d2;
+  width: 20px;
+  height: 20px;
 }
 
 .error {
@@ -49,12 +52,12 @@
 
 .submitBtn {
   width: 100%;
-  min-height: 40px;
+  min-height: 36px;
   border: none;
   border-radius: 4px;
   background: #239ef0;
   color: #fff;
-  font-size: 1rem;
+  font-size: .875rem;
   font-weight: 600;
   text-transform: uppercase;
   cursor: pointer;

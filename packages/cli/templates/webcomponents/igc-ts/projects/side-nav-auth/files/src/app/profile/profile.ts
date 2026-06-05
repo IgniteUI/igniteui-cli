@@ -14,6 +14,7 @@ export default class ProfilePage extends LitElement {
     }
 
     .card {
+      align-self: flex-start;
       width: 100%;
       max-width: 640px;
       background: #fff;

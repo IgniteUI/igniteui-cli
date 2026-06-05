@@ -47,7 +47,7 @@ export class LoginBar {
   private router = inject(Router);
 
   public get isProfileRoute() {
-    return this.router.url === '/auth/profile';
+    return false;
   }
 
   openDialog() {
