@@ -1,0 +1,76 @@
+.loginBtn {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: .875rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: background .15s;
+}
+
+.loginBtn:hover {
+  background: rgba(255, 255, 255, .15);
+}
+
+.avatarWrapper {
+  position: relative;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(255, 255, 255, .6);
+  border-radius: 50%;
+  background: #1a8fd8;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarInitials {
+  font-size: .75rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
+  min-width: 140px;
+  z-index: 1000;
+}
+
+.menuItem {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 10px 16px;
+  text-align: left;
+  font-size: .875rem;
+  color: #2d2d2d;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background: #f5f5f5;
+}

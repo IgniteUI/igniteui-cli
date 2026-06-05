@@ -1,0 +1,47 @@
+.dialog {
+  box-sizing: border-box;
+  width: min(24rem, calc(100vw - 48px));
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .2);
+}
+
+.dialog::backdrop {
+  background: rgba(0, 0, 0, .4);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2d2d2d;
+}
+
+.closeBtn {
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  color: #767676;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.closeBtn:hover {
+  background: #f5f5f5;
+  color: #2d2d2d;
+}
+
+.body {
+  padding: 16px 24px 24px;
+}
