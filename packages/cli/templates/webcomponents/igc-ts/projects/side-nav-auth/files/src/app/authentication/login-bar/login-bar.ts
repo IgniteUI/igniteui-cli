@@ -95,12 +95,7 @@ export class LoginBarElement extends LitElement {
     }
   `;
 
-  private dialogRef: any = null;
   private _outsideClickHandler?: (e: MouseEvent) => void;
-
-  firstUpdated() {
-    this.dialogRef = this.shadowRoot?.querySelector('auth-login-dialog') ?? null;
-  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -145,7 +140,7 @@ export class LoginBarElement extends LitElement {
   render() {
     if (!this.currentUser) {
       return html`
-        <button class="login-btn" type="button" @click=${() => this.dialogRef?.open()}>Log In</button>
+        <button class="login-btn" type="button" @click=${() => (this.shadowRoot?.querySelector('auth-login-dialog') as any)?.open()}>Log In</button>
         <auth-login-dialog @auth-change=${this.handleAuthChange}></auth-login-dialog>
       `;
     }

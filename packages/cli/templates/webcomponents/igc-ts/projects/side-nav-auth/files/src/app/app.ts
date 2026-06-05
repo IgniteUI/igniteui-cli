@@ -70,6 +70,8 @@ export default class App extends LitElement {
       background: #239ef0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .24);
       box-sizing: border-box;
+      position: relative;
+      z-index: 10;
     }
 
     .app__menu-button {

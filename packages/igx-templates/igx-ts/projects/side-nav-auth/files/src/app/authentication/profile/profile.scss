@@ -9,6 +9,11 @@
 .profile__content {
   width: 100%;
   max-width: 640px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .08);
+  padding: 32px;
+  box-sizing: border-box;
 }
 
 .profile__header {

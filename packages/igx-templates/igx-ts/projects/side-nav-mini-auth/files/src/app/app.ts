@@ -52,7 +52,9 @@ export class App implements OnInit, AfterViewInit {
   ];
 
   public get topNavLinks() {
-    return this.userStore.currentUser ? this.profileNavLinks : this.homeNavLinks;
+    return this.userStore.currentUser
+      ? [...this.homeNavLinks, ...this.profileNavLinks]
+      : this.homeNavLinks;
   }
 
   public readonly initiallyOpen = window.innerWidth > MINI_BREAKPOINT;

@@ -63,7 +63,9 @@ export class App implements OnInit {
   ];
 
   public get topNavLinks() {
-    return this.userStore.currentUser ? this.profileNavLinks : this.homeNavLinks;
+    return this.userStore.currentUser
+      ? [...this.homeNavLinks, ...this.profileNavLinks]
+      : this.homeNavLinks;
   }
 
   public navdrawer = viewChild.required(IgxNavigationDrawerComponent);

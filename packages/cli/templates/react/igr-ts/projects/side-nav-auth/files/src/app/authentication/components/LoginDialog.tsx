@@ -36,7 +36,7 @@ export function LoginDialog({ open, onClose }: LoginDialogProps) {
   };
 
   return (
-    <dialog ref={dialogRef} className={styles.dialog}>
+    <dialog ref={dialogRef} className={styles.dialog} onClick={e => { if (e.target === dialogRef.current) dialogRef.current?.close(); }}>
       <div className={styles.header}>
         <h2 className={styles.title}>{showLogin ? 'Log In' : 'Create Account'}</h2>
         <button className={styles.closeBtn} type="button" aria-label="Close" onClick={() => dialogRef.current?.close()}>✕</button>

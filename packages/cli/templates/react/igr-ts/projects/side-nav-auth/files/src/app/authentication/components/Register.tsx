@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useAuth } from '../AuthContext';
 import type { RegisterInfo } from '../../models/register-info';
 import styles from './Register.module.css';
@@ -10,20 +10,22 @@ interface RegisterProps {
 
 export function Register({ onLogin, onSuccess }: RegisterProps) {
   const { register } = useAuth();
+  const [givenName, setGivenName] = useState('');
+  const [familyName, setFamilyName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const firstRef = useRef<HTMLInputElement>(null);
-  const lastRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
+
+  const canSubmit = givenName.trim() !== '' && email.trim() !== '' && password !== '';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     const data: RegisterInfo = {
-      given_name: firstRef.current?.value ?? '',
-      family_name: lastRef.current?.value ?? '',
-      email: emailRef.current?.value ?? '',
-      password: passwordRef.current?.value ?? ''
+      given_name: givenName,
+      family_name: familyName,
+      email,
+      password
     };
     const err = await register(data);
     if (err) {
@@ -37,23 +39,27 @@ export function Register({ onLogin, onSuccess }: RegisterProps) {
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       <div className={styles.field}>
         <label className={styles.label} htmlFor="regFirst">First Name</label>
-        <input ref={firstRef} id="regFirst" className={styles.input} type="text" autoComplete="given-name" required />
+        <input id="regFirst" className={styles.input} type="text" autoComplete="given-name"
+          value={givenName} onChange={e => setGivenName(e.target.value)} required />
       </div>
       <div className={styles.field}>
         <label className={styles.label} htmlFor="regLast">Last Name</label>
-        <input ref={lastRef} id="regLast" className={styles.input} type="text" autoComplete="family-name" />
+        <input id="regLast" className={styles.input} type="text" autoComplete="family-name"
+          value={familyName} onChange={e => setFamilyName(e.target.value)} />
       </div>
       <div className={styles.field}>
         <label className={styles.label} htmlFor="regEmail">Email</label>
-        <input ref={emailRef} id="regEmail" className={styles.input} type="email" autoComplete="email" required />
+        <input id="regEmail" className={styles.input} type="email" autoComplete="email"
+          value={email} onChange={e => setEmail(e.target.value)} required />
       </div>
       <div className={styles.field}>
         <label className={styles.label} htmlFor="regPassword">Password</label>
-        <input ref={passwordRef} id="regPassword" className={styles.input} type="password" autoComplete="new-password" required />
+        <input id="regPassword" className={styles.input} type="password" autoComplete="new-password"
+          value={password} onChange={e => setPassword(e.target.value)} required />
       </div>
       {error && <p className={styles.error}>{error}</p>}
       <div className={styles.actions}>
-        <button className={styles.submitBtn} type="submit">Sign Up</button>
+        <button className={styles.submitBtn} type="submit" disabled={!canSubmit}>Sign Up</button>
         <button className={styles.linkBtn} type="button" onClick={onLogin}>
           Have an account?
         </button>

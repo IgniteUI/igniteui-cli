@@ -11,6 +11,8 @@ defineComponents(IgcDialogComponent);
 export class LoginDialogElement extends LitElement {
   @state() private showLogin = true;
   @state() private error = '';
+  @state() private _loginValid = false;
+  @state() private _registerValid = false;
 
   static styles = css`
     igc-dialog::part(base) {
@@ -82,6 +84,12 @@ export class LoginDialogElement extends LitElement {
       background: #1a8fd8;
     }
 
+    .submit-btn:disabled {
+      background: #e0e0e0;
+      color: #767676;
+      cursor: default;
+    }
+
     .link-btn {
       align-self: center;
       border: none;
@@ -105,6 +113,14 @@ export class LoginDialogElement extends LitElement {
   firstUpdated() {
     this.dialogRef = this.shadowRoot?.querySelector('igc-dialog') ?? null;
   }
+
+  private checkLoginValidity = (e: Event) => {
+    this._loginValid = (e.currentTarget as HTMLFormElement).checkValidity();
+  };
+
+  private checkRegisterValidity = (e: Event) => {
+    this._registerValid = (e.currentTarget as HTMLFormElement).checkValidity();
+  };
 
   private handleLoginSubmit = async (e: Event) => {
     e.preventDefault();
@@ -148,17 +164,18 @@ export class LoginDialogElement extends LitElement {
     const title = this.showLogin ? 'Log In' : 'Create Account';
 
     const loginForm = html`
-      <form class="form" @submit=${this.handleLoginSubmit} novalidate>
+      <form class="form" @submit=${this.handleLoginSubmit} @input=${this.checkLoginValidity} novalidate>
         <div class="field">
           <label for="loginEmail">Email</label>
           <input id="loginEmail" name="email" type="email" autocomplete="email" required />
+        </div>
         </div>
         <div class="field">
           <label for="loginPassword">Password</label>
           <input id="loginPassword" name="password" type="password" autocomplete="current-password" required />
         </div>
         ${this.error ? html`<p class="error">${this.error}</p>` : ''}
-        <button class="submit-btn" type="submit">Log In</button>
+        <button class="submit-btn" type="submit" ?disabled=${!this._loginValid}>Log In</button>
         <button class="link-btn" type="button" @click=${() => { this.showLogin = false; this.error = ''; }}>
           Create new account
         </button>
@@ -166,7 +183,7 @@ export class LoginDialogElement extends LitElement {
     `;
 
     const registerForm = html`
-      <form class="form" @submit=${this.handleRegisterSubmit} novalidate>
+      <form class="form" @submit=${this.handleRegisterSubmit} @input=${this.checkRegisterValidity} novalidate>
         <div class="field">
           <label for="regFirst">First Name</label>
           <input id="regFirst" name="given_name" type="text" autocomplete="given-name" required />
@@ -184,7 +201,7 @@ export class LoginDialogElement extends LitElement {
           <input id="regPassword" name="password" type="password" autocomplete="new-password" required />
         </div>
         ${this.error ? html`<p class="error">${this.error}</p>` : ''}
-        <button class="submit-btn" type="submit">Sign Up</button>
+        <button class="submit-btn" type="submit" ?disabled=${!this._registerValid}>Sign Up</button>
         <button class="link-btn" type="button" @click=${() => { this.showLogin = true; this.error = ''; }}>
           Have an account?
         </button>
@@ -192,7 +209,7 @@ export class LoginDialogElement extends LitElement {
     `;
 
     return html`
-      <igc-dialog .title=${title} keep-open-on-outside-click>
+      <igc-dialog .title=${title}>
         ${this.showLogin ? loginForm : registerForm}
         <span slot="footer"></span>
       </igc-dialog>
