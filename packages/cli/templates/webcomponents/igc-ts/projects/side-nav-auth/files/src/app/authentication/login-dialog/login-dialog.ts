@@ -194,6 +194,7 @@ export class LoginDialogElement extends LitElement {
     return html`
       <igc-dialog .title=${title} keep-open-on-outside-click>
         ${this.showLogin ? loginForm : registerForm}
+        <span slot="footer"></span>
       </igc-dialog>
     `;
   }

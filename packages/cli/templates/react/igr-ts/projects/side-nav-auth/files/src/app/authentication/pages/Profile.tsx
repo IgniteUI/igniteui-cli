@@ -1,4 +1,4 @@
-import { useAuth } from '../../AuthContext';
+import { useAuth } from '../AuthContext';
 import styles from './Profile.module.css';
 
 export default function Profile() {

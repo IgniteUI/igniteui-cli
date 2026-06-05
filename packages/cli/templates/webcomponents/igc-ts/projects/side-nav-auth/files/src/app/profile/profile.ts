@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { UserStore } from '../../authentication/services/userStore.js';
+import { UserStore } from '../authentication/services/userStore.js';
 
 @customElement('app-profile')
 export default class ProfilePage extends LitElement {

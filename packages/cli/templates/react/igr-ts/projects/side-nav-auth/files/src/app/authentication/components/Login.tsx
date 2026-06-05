@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useAuth } from '../../AuthContext';
+import { useAuth } from '../AuthContext';
 import type { Login as LoginData } from '../../models/login';
 import styles from './Login.module.css';
 

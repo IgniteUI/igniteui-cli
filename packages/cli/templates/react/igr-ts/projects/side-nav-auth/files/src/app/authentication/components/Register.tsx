@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useAuth } from '../../AuthContext';
+import { useAuth } from '../AuthContext';
 import type { RegisterInfo } from '../../models/register-info';
 import styles from './Register.module.css';
 
