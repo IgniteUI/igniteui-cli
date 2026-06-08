@@ -203,15 +203,15 @@ export class LoginDialogElement extends LitElement {
           <div class="social-login">
             ${ExternalAuth.hasProvider('google') ? html`
               <igc-button class="social-btn google" variant="contained" type="button"
-                @click=${() => ExternalAuth.login('google')}>Sign Up Google</igc-button>
+                @click=${() => ExternalAuth.login('google')}>Sign in with Google</igc-button>
             ` : ''}
             ${ExternalAuth.hasProvider('facebook') ? html`
               <igc-button class="social-btn facebook" variant="contained" type="button"
-                @click=${() => ExternalAuth.login('facebook')}>Sign Up Facebook</igc-button>
+                @click=${() => ExternalAuth.login('facebook')}>Sign in with Facebook</igc-button>
             ` : ''}
             ${ExternalAuth.hasProvider('microsoft') ? html`
               <igc-button class="social-btn microsoft" variant="contained" type="button"
-                @click=${() => ExternalAuth.login('microsoft')}>Sign Up Microsoft</igc-button>
+                @click=${() => ExternalAuth.login('microsoft')}>Sign in with Microsoft</igc-button>
             ` : ''}
           </div>
         ` : ''}

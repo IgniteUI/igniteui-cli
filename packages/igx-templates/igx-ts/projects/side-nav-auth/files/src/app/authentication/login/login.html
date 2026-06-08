@@ -21,17 +21,17 @@
   </div>
   @if (externalAuth.hasProvider()) {
     <div class="social-login">
-      @if (externalAuth.hasProvider(providers.Facebook)) {
-        <button type="button" class="facebook" igxButton="contained"
-          (click)="signUpFb()">Sign Up Facebook</button>
-      }
       @if (externalAuth.hasProvider(providers.Google)) {
-        <button type="button" class="google" igxButton="contained"
-          (click)="signUpG()">Sign Up Google</button>
+        <button type="button" class="google" igxButton="contained" igxRipple
+          (click)="signUpG()">Sign in with Google</button>
+      }
+      @if (externalAuth.hasProvider(providers.Facebook)) {
+        <button type="button" class="facebook" igxButton="contained" igxRipple
+          (click)="signUpFb()">Sign in with Facebook</button>
       }
       @if (externalAuth.hasProvider(providers.Microsoft)) {
-        <button type="button" class="microsoft" igxButton="contained"
-          (click)="signUpMS()">Sign Up Microsoft</button>
+        <button type="button" class="microsoft" igxButton="contained" igxRipple
+          (click)="signUpMS()">Sign in with Microsoft</button>
       }
     </div>
   }

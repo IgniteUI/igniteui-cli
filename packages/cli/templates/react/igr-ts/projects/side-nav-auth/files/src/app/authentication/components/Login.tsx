@@ -52,15 +52,15 @@ export function Login({ onRegister, onSuccess }: LoginProps) {
         <div className={styles.socialLogin}>
           {ExternalAuth.hasProvider('google') && (
             <IgrButton variant="contained" type="button" className={`${styles.socialBtn} ${styles.google}`}
-              onClick={() => ExternalAuth.login('google')}><span>Sign Up Google</span></IgrButton>
+              onClick={() => ExternalAuth.login('google')}><span>Sign in with Google</span></IgrButton>
           )}
           {ExternalAuth.hasProvider('facebook') && (
             <IgrButton variant="contained" type="button" className={`${styles.socialBtn} ${styles.facebook}`}
-              onClick={() => ExternalAuth.login('facebook')}><span>Sign Up Facebook</span></IgrButton>
+              onClick={() => ExternalAuth.login('facebook')}><span>Sign in with Facebook</span></IgrButton>
           )}
           {ExternalAuth.hasProvider('microsoft') && (
             <IgrButton variant="contained" type="button" className={`${styles.socialBtn} ${styles.microsoft}`}
-              onClick={() => ExternalAuth.login('microsoft')}><span>Sign Up Microsoft</span></IgrButton>
+              onClick={() => ExternalAuth.login('microsoft')}><span>Sign in with Microsoft</span></IgrButton>
           )}
         </div>
       )}
