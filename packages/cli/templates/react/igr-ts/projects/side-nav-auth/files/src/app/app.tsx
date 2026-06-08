@@ -6,11 +6,14 @@ import {
   IgrNavDrawerItem,
   registerIcon,
 } from "igniteui-react";
+import { configureTheme } from "igniteui-webcomponents";
 import { AuthProvider, useAuth } from "./authentication/AuthContext";
 import { LoginBar } from "./authentication/components/LoginBar";
 import { routes } from "./app-routes";
-import "igniteui-webcomponents/themes/light/bootstrap.css";
+import "igniteui-webcomponents/themes/light/material.css";
 import "./app.css";
+
+configureTheme('material', 'light');
 
 const materialIcons = [
   ['home', 'action/svg/production/ic_home_24px.svg'],
@@ -20,6 +23,7 @@ const materialIcons = [
   ['build', 'action/svg/production/ic_build_24px.svg'],
   ['palette', 'image/svg/production/ic_palette_24px.svg'],
   ['account_circle', 'action/svg/production/ic_account_circle_24px.svg'],
+  ['alternate_email', 'communication/svg/production/ic_alternate_email_24px.svg'],
   ['lock', 'action/svg/production/ic_lock_24px.svg'],
   ['assignment_ind', 'action/svg/production/ic_assignment_ind_24px.svg'],
 ] as const;
@@ -97,7 +101,7 @@ function AppContent() {
                 name={route.icon || "home"}
                 collection="material"
                 style={{
-                  color: location.pathname === route.path ? "#0075D2" : undefined,
+                  color: location.pathname === route.path ? "#0075D2" : "#2d2d2d",
                 }}
               />
               <span slot="content">{route.text}</span>

@@ -17,7 +17,7 @@
   <div class="button-wrapper">
     <button igxButton="contained" type="submit" igxRipple igxButtonBackground="#239ef0" igxButtonColor="white"
       [disabled]="!loginForm.valid">Log In</button>
-    <button id="register" type="button" class="auth-link"
+    <button id="register" type="button" class="auth-link" igxButton="flat" igxRipple
       (click)="showRegistrationForm()">Create new account</button>
   </div>
   @if (externalAuth.hasProvider()) {

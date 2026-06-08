@@ -5,36 +5,15 @@
   padding: 8px 0 0;
 }
 
-.field {
-  position: relative;
-}
-
-.input {
-  box-sizing: border-box;
+.form igc-input {
   width: 100%;
-  height: 40px;
-  padding: 0 36px 0 12px;
-  border: 1px solid #c4c4c4;
-  border-radius: 4px;
-  font-size: 1rem;
-  color: #2d2d2d;
-  outline: none;
-  transition: border-color .15s;
+  --ig-input-group-focused-secondary-color: #239ef0;
+  --ig-input-group-focused-border-color: #239ef0;
+  --ig-input-group-filled-text-color: #2d2d2d;
 }
 
-.input:focus {
-  border-color: #239ef0;
-}
-
-.inputIcon {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
+.form igc-input igc-icon {
   color: #0075d2;
-  width: 20px;
-  height: 20px;
 }
 
 .error {
@@ -51,41 +30,38 @@
 }
 
 .submitBtn {
-  width: 100%;
-  min-height: 36px;
-  border: none;
-  border-radius: 4px;
-  background: #239ef0;
-  color: #fff;
-  font-size: .875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background .15s;
+  display: block;
 }
 
-.submitBtn:hover {
+.submitBtn::part(base) {
+  width: 100%;
+  min-height: 40px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.submitBtn:not([disabled])::part(base) {
+  background: #239ef0;
+  color: #fff;
+}
+
+.submitBtn:not([disabled])::part(base):hover {
   background: #1a8fd8;
 }
 
-.submitBtn:disabled {
+.submitBtn[disabled]::part(base) {
   background: #e0e0e0;
   color: #767676;
-  cursor: default;
 }
 
-.linkBtn {
-  align-self: center;
-  border: none;
-  background: transparent;
+.linkBtn::part(base) {
   color: #0075d2;
   font-size: .875rem;
-  cursor: pointer;
   text-decoration: underline;
-  padding: 0;
+  text-transform: none;
 }
 
-.linkBtn:hover {
+.linkBtn::part(base):hover {
   color: #005da8;
 }
 
@@ -97,22 +73,17 @@
 }
 
 .socialBtn {
+  display: block;
+}
+
+.socialBtn::part(base) {
   width: 100%;
-  min-height: 36px;
-  border: none;
-  border-radius: 4px;
+  min-height: 40px;
   color: #fff;
-  font-size: .875rem;
   font-weight: 600;
   text-transform: uppercase;
-  cursor: pointer;
-  transition: filter .15s;
 }
 
-.socialBtn:hover {
-  filter: brightness(0.9);
-}
-
-.google  { background: rgb(255, 19, 74); }
-.facebook { background: rgb(19, 119, 213); }
-.microsoft { background: rgb(27, 158, 245); }
+.google::part(base)   { background: rgb(255, 19, 74); }
+.facebook::part(base) { background: rgb(19, 119, 213); }
+.microsoft::part(base){ background: rgb(27, 158, 245); }

@@ -1,3 +1,4 @@
+import { IgrAvatar } from 'igniteui-react';
 import { useAuth } from '../AuthContext';
 import styles from './Profile.module.css';
 
@@ -9,12 +10,13 @@ export default function Profile() {
     <div className={styles.container}>
       <div className={styles.card}>
         <div className={styles.header}>
-          <div className={styles.avatar}>
-            {currentUser?.picture
-              ? <img className={styles.avatarImg} src={currentUser.picture} alt={currentUser.name} />
-              : initials
-            }
-          </div>
+          <IgrAvatar
+            className={styles.avatar}
+            shape="circle"
+            size="medium"
+            initials={initials}
+            src={currentUser?.picture ?? ''}
+          />
           <div className={styles.intro}>
             <p className={styles.status}>Signed in</p>
             <h1 className={styles.name}>{currentUser?.name || 'Your profile'}</h1>

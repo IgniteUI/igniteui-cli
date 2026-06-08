@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IgrIcon } from 'igniteui-react';
+import { IgrButton, IgrIcon, IgrInput } from 'igniteui-react';
 import { useAuth } from '../AuthContext';
 import type { RegisterInfo } from '../../models/register-info';
 import styles from './Register.module.css';
@@ -39,32 +39,30 @@ export function Register({ onLogin, onSuccess }: RegisterProps) {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
-      <div className={styles.field}>
-        <input id="regFirst" className={styles.input} type="text" placeholder="First Name" autoComplete="given-name"
-          value={givenName} onChange={e => setGivenName(e.target.value)} required />
-        <IgrIcon name="assignment_ind" collection="material" className={styles.inputIcon} />
-      </div>
-      <div className={styles.field}>
-        <input id="regLast" className={styles.input} type="text" placeholder="Last Name" autoComplete="family-name"
-          value={familyName} onChange={e => setFamilyName(e.target.value)} />
-        <IgrIcon name="assignment_ind" collection="material" className={styles.inputIcon} />
-      </div>
-      <div className={styles.field}>
-        <input id="regEmail" className={styles.input} type="email" placeholder="Email" autoComplete="email"
-          value={email} onChange={e => setEmail(e.target.value)} required />
-        <IgrIcon name="account_circle" collection="material" className={styles.inputIcon} />
-      </div>
-      <div className={styles.field}>
-        <input id="regPassword" className={styles.input} type="password" placeholder="Password" autoComplete="new-password"
-          value={password} onChange={e => setPassword(e.target.value)} required />
-        <IgrIcon name="lock" collection="material" className={styles.inputIcon} />
-      </div>
+      <IgrInput outlined type="text" name="given_name" label="First Name" autoComplete="given-name" required={true}
+        value={givenName} onInput={(e: any) => setGivenName(e.detail ?? '')}>
+        <IgrIcon slot="suffix" name="assignment_ind" collection="material" />
+      </IgrInput>
+      <IgrInput outlined type="text" name="family_name" label="Last Name" autoComplete="family-name"
+        value={familyName} onInput={(e: any) => setFamilyName(e.detail ?? '')}>
+        <IgrIcon slot="suffix" name="assignment_ind" collection="material" />
+      </IgrInput>
+      <IgrInput outlined type="email" name="email" label="Email" autoComplete="email" required={true}
+        value={email} onInput={(e: any) => setEmail(e.detail ?? '')}>
+        <IgrIcon slot="suffix" name="alternate_email" collection="material" />
+      </IgrInput>
+      <IgrInput outlined type="password" name="password" label="Password" autoComplete="new-password" required={true}
+        value={password} onInput={(e: any) => setPassword(e.detail ?? '')}>
+        <IgrIcon slot="suffix" name="lock" collection="material" />
+      </IgrInput>
       {error && <p className={styles.error}>{error}</p>}
       <div className={styles.actions}>
-        <button className={styles.submitBtn} type="submit" disabled={!canSubmit}>Sign Up</button>
-        <button className={styles.linkBtn} type="button" onClick={onLogin}>
-          Have an account?
-        </button>
+        <IgrButton variant="contained" type="submit" className={styles.submitBtn} disabled={!canSubmit}>
+          <span>Sign Up</span>
+        </IgrButton>
+        <IgrButton variant="flat" type="button" className={styles.linkBtn} onClick={onLogin}>
+          <span>Have an account?</span>
+        </IgrButton>
       </div>
     </form>
   );

@@ -1,18 +1,14 @@
-.loginBtn {
-  border: 1px solid rgba(0, 117, 210, 0.35);
-  background: #fff;
+.loginBtn::part(base) {
   color: #0075d2;
-  font-size: .875rem;
+  background: #fff;
+  border-color: rgba(0, 117, 210, 0.35);
   font-weight: 600;
-  cursor: pointer;
-  padding: 10px 20px;
-  border-radius: 4px;
   white-space: nowrap;
   text-transform: none;
   transition: background .15s;
 }
 
-.loginBtn:hover {
+.loginBtn::part(base):hover {
   background: #e8f3fc;
 }
 

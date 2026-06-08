@@ -18,20 +18,16 @@ export class LoginBarElement extends LitElement {
       display: contents;
     }
 
-    .login-btn {
-      border: 1px solid rgba(0, 117, 210, 0.35);
-      background: #fff;
+    .login-btn::part(base) {
       color: #0075d2;
-      font-size: .875rem;
+      background: #fff;
+      border-color: rgba(0, 117, 210, 0.35);
       font-weight: 600;
-      cursor: pointer;
-      padding: 10px 20px;
-      border-radius: 4px;
       white-space: nowrap;
       text-transform: none;
     }
 
-    .login-btn:hover {
+    .login-btn::part(base):hover {
       background: #e8f3fc;
     }
 
@@ -79,7 +75,7 @@ export class LoginBarElement extends LitElement {
   render() {
     if (!this.currentUser) {
       return html`
-        <button class="login-btn" type="button" @click=${() => (this.shadowRoot?.querySelector('auth-login-dialog') as any)?.open()}>Log In</button>
+        <igc-button variant="outlined" class="login-btn" @click=${() => (this.shadowRoot?.querySelector('auth-login-dialog') as any)?.open()}>Log In</igc-button>
         <auth-login-dialog @auth-change=${this.handleAuthChange}></auth-login-dialog>
       `;
     }

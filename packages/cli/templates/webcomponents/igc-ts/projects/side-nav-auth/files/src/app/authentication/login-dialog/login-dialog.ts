@@ -1,13 +1,13 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { Router } from '@vaadin/router';
-import { defineComponents, IgcDialogComponent, IgcIconComponent } from 'igniteui-webcomponents';
+import { defineComponents, IgcButtonComponent, IgcDialogComponent, IgcIconComponent, IgcInputComponent } from 'igniteui-webcomponents';
 import { Authentication } from '../services/authentication.js';
 import { ExternalAuth } from '../services/externalAuth.js';
 import { UserStore } from '../services/userStore.js';
 import type { User } from '../models/user.js';
 
-defineComponents(IgcDialogComponent, IgcIconComponent);
+defineComponents(IgcButtonComponent, IgcDialogComponent, IgcIconComponent, IgcInputComponent);
 
 @customElement('auth-login-dialog')
 export class LoginDialogElement extends LitElement {
@@ -33,39 +33,21 @@ export class LoginDialogElement extends LitElement {
       display: flex;
       flex-flow: column;
       gap: 16px;
-      padding: 4px 0;
+      padding: 8px 0 0;
     }
 
-    .field {
-      position: relative;
-    }
-
-    input {
-      box-sizing: border-box;
+    .form > * {
       width: 100%;
-      height: 40px;
-      padding: 0 36px 0 12px;
-      border: 1px solid #c4c4c4;
-      border-radius: 4px;
-      font-size: 1rem;
-      color: #2d2d2d;
-      outline: none;
     }
 
-    input:focus {
-      border-color: #239ef0;
+    igc-input {
+      --ig-input-group-focused-secondary-color: #239ef0;
+      --ig-input-group-focused-border-color: #239ef0;
+      --ig-input-group-filled-text-color: #2d2d2d;
     }
 
-    .input-icon {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
+    igc-input igc-icon {
       color: #0075d2;
-      --igc-icon-size: 20px;
-      width: 20px;
-      height: 20px;
     }
 
     .error {
@@ -75,37 +57,39 @@ export class LoginDialogElement extends LitElement {
     }
 
     .submit-btn {
-      width: 100%;
-      min-height: 36px;
-      border: none;
-      border-radius: 4px;
-      background: #239ef0;
-      color: #fff;
-      font-size: .875rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      cursor: pointer;
+      display: block;
     }
 
-    .submit-btn:hover {
+    .submit-btn::part(base) {
+      width: 100%;
+      min-height: 40px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .submit-btn:not([disabled])::part(base) {
+      background: #239ef0;
+      color: #fff;
+    }
+
+    .submit-btn:not([disabled])::part(base):hover {
       background: #1a8fd8;
     }
 
-    .submit-btn:disabled {
+    .submit-btn[disabled]::part(base) {
       background: #e0e0e0;
       color: #767676;
-      cursor: default;
     }
 
-    .link-btn {
-      align-self: center;
-      border: none;
-      background: transparent;
+    .link-btn::part(base) {
       color: #0075d2;
       font-size: .875rem;
-      cursor: pointer;
       text-decoration: underline;
-      padding: 0;
+      text-transform: none;
+    }
+
+    .link-btn::part(base):hover {
+      color: #005da8;
     }
 
     .social-login {
@@ -116,25 +100,20 @@ export class LoginDialogElement extends LitElement {
     }
 
     .social-btn {
+      display: block;
+    }
+
+    .social-btn::part(base) {
       width: 100%;
-      min-height: 36px;
-      border: none;
-      border-radius: 4px;
+      min-height: 40px;
       color: #fff;
-      font-size: .875rem;
       font-weight: 600;
       text-transform: uppercase;
-      cursor: pointer;
-      transition: filter .15s;
     }
 
-    .social-btn:hover {
-      filter: brightness(0.9);
-    }
-
-    .google   { background: rgb(255, 19, 74); }
-    .facebook { background: rgb(19, 119, 213); }
-    .microsoft { background: rgb(27, 158, 245); }
+    .google::part(base)    { background: rgb(255, 19, 74); }
+    .facebook::part(base)  { background: rgb(19, 119, 213); }
+    .microsoft::part(base) { background: rgb(27, 158, 245); }
   `;
 
   private dialogRef: IgcDialogComponent | null = null;
@@ -206,32 +185,30 @@ export class LoginDialogElement extends LitElement {
 
     const loginForm = html`
       <form class="form" @submit=${this.handleLoginSubmit} @input=${this.checkLoginValidity} novalidate>
-        <div class="field">
-          <input id="loginEmail" name="email" type="email" placeholder="Email" autocomplete="email" required />
-          <igc-icon name="account_circle" collection="material" class="input-icon"></igc-icon>
-        </div>
-        <div class="field">
-          <input id="loginPassword" name="password" type="password" placeholder="Password" autocomplete="current-password" required />
-          <igc-icon name="lock" collection="material" class="input-icon"></igc-icon>
-        </div>
+        <igc-input outlined type="email" name="email" label="Email" autocomplete="email" required>
+          <igc-icon slot="suffix" name="account_circle" collection="material"></igc-icon>
+        </igc-input>
+        <igc-input outlined type="password" name="password" label="Password" autocomplete="current-password" required>
+          <igc-icon slot="suffix" name="lock" collection="material"></igc-icon>
+        </igc-input>
         ${this.error ? html`<p class="error">${this.error}</p>` : ''}
-        <button class="submit-btn" type="submit" ?disabled=${!this._loginValid}>Log In</button>
-        <button class="link-btn" type="button" @click=${() => { this.showLogin = false; this.error = ''; }}>
+        <igc-button class="submit-btn" variant="contained" type="submit" ?disabled=${!this._loginValid}>Log In</igc-button>
+        <igc-button class="link-btn" variant="flat" type="button" @click=${() => { this.showLogin = false; this.error = ''; }}>
           Create new account
-        </button>
+        </igc-button>
         ${ExternalAuth.hasProvider() ? html`
           <div class="social-login">
             ${ExternalAuth.hasProvider('google') ? html`
-              <button class="social-btn google" type="button"
-                @click=${() => ExternalAuth.login('google')}>Sign Up Google</button>
+              <igc-button class="social-btn google" variant="contained" type="button"
+                @click=${() => ExternalAuth.login('google')}>Sign Up Google</igc-button>
             ` : ''}
             ${ExternalAuth.hasProvider('facebook') ? html`
-              <button class="social-btn facebook" type="button"
-                @click=${() => ExternalAuth.login('facebook')}>Sign Up Facebook</button>
+              <igc-button class="social-btn facebook" variant="contained" type="button"
+                @click=${() => ExternalAuth.login('facebook')}>Sign Up Facebook</igc-button>
             ` : ''}
             ${ExternalAuth.hasProvider('microsoft') ? html`
-              <button class="social-btn microsoft" type="button"
-                @click=${() => ExternalAuth.login('microsoft')}>Sign Up Microsoft</button>
+              <igc-button class="social-btn microsoft" variant="contained" type="button"
+                @click=${() => ExternalAuth.login('microsoft')}>Sign Up Microsoft</igc-button>
             ` : ''}
           </div>
         ` : ''}
@@ -240,31 +217,28 @@ export class LoginDialogElement extends LitElement {
 
     const registerForm = html`
       <form class="form" @submit=${this.handleRegisterSubmit} @input=${this.checkRegisterValidity} novalidate>
-        <div class="field">
-          <input id="regFirst" name="given_name" type="text" placeholder="First Name" autocomplete="given-name" required />
-          <igc-icon name="assignment_ind" collection="material" class="input-icon"></igc-icon>
-        </div>
-        <div class="field">
-          <input id="regLast" name="family_name" type="text" placeholder="Last Name" autocomplete="family-name" />
-          <igc-icon name="assignment_ind" collection="material" class="input-icon"></igc-icon>
-        </div>
-        <div class="field">
-          <input id="regEmail" name="email" type="email" placeholder="Email" autocomplete="email" required />
-          <igc-icon name="account_circle" collection="material" class="input-icon"></igc-icon>
-        </div>
-        <div class="field">
-          <input id="regPassword" name="password" type="password" placeholder="Password" autocomplete="new-password" required />
-          <igc-icon name="lock" collection="material" class="input-icon"></igc-icon>
-        </div>
+        <igc-input outlined type="text" name="given_name" label="First Name" autocomplete="given-name" required>
+          <igc-icon slot="suffix" name="assignment_ind" collection="material"></igc-icon>
+        </igc-input>
+        <igc-input outlined type="text" name="family_name" label="Last Name" autocomplete="family-name">
+          <igc-icon slot="suffix" name="assignment_ind" collection="material"></igc-icon>
+        </igc-input>
+        <igc-input outlined type="email" name="email" label="Email" autocomplete="email" required>
+          <igc-icon slot="suffix" name="alternate_email" collection="material"></igc-icon>
+        </igc-input>
+        <igc-input outlined type="password" name="password" label="Password" autocomplete="new-password" required>
+          <igc-icon slot="suffix" name="lock" collection="material"></igc-icon>
+        </igc-input>
         ${this.error ? html`<p class="error">${this.error}</p>` : ''}
-        <button class="submit-btn" type="submit" ?disabled=${!this._registerValid}>Sign Up</button>
-        <button class="link-btn" type="button" @click=${() => { this.showLogin = true; this.error = ''; }}>
+        <igc-button class="submit-btn" variant="contained" type="submit" ?disabled=${!this._registerValid}>Sign Up</igc-button>
+        <igc-button class="link-btn" variant="flat" type="button" @click=${() => { this.showLogin = true; this.error = ''; }}>
           Have an account?
-        </button>
+        </igc-button>
       </form>
     `;
     return html`
-      <igc-dialog .title=${title} ?keepOpenOnOutsideClick=${false}>
+      <igc-dialog .title=${title} .closeOnOutsideClick=${true}>
+        <span slot="footer"></span>
         ${this.showLogin ? loginForm : registerForm}
       </igc-dialog>
     `;

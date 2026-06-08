@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IgrIcon } from 'igniteui-react';
+import { IgrButton, IgrIcon, IgrInput } from 'igniteui-react';
 import { useAuth } from '../AuthContext';
 import { ExternalAuth } from '../services/externalAuth';
 import type { Login as LoginData } from '../../models/login';
@@ -33,52 +33,36 @@ export function Login({ onRegister, onSuccess }: LoginProps) {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
-      <div className={styles.field}>
-        <input
-          id="loginEmail"
-          className={styles.input}
-          type="email"
-          placeholder="Email"
-          autoComplete="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-        />
-        <IgrIcon name="account_circle" collection="material" className={styles.inputIcon} />
-      </div>
-      <div className={styles.field}>
-        <input
-          id="loginPassword"
-          className={styles.input}
-          type="password"
-          placeholder="Password"
-          autoComplete="current-password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required
-        />
-        <IgrIcon name="lock" collection="material" className={styles.inputIcon} />
-      </div>
+      <IgrInput outlined type="email" name="email" label="Email" autoComplete="email" required={true}
+        value={email} onInput={(e: any) => setEmail(e.detail ?? '')}>
+        <IgrIcon slot="suffix" name="account_circle" collection="material" />
+      </IgrInput>
+      <IgrInput outlined type="password" name="password" label="Password" autoComplete="current-password" required={true}
+        value={password} onInput={(e: any) => setPassword(e.detail ?? '')}>
+        <IgrIcon slot="suffix" name="lock" collection="material" />
+      </IgrInput>
       {error && <p className={styles.error}>{error}</p>}
       <div className={styles.actions}>
-        <button className={styles.submitBtn} type="submit" disabled={!canSubmit}>Log In</button>
-        <button className={styles.linkBtn} type="button" onClick={onRegister}>
-          Create new account
-        </button>
+        <IgrButton variant="contained" type="submit" className={styles.submitBtn} disabled={!canSubmit}>
+          <span>Log In</span>
+        </IgrButton>
+        <IgrButton variant="flat" type="button" className={styles.linkBtn} onClick={onRegister}>
+          <span>Create new account</span>
+        </IgrButton>
       </div>
       {ExternalAuth.hasProvider() && (
         <div className={styles.socialLogin}>
           {ExternalAuth.hasProvider('google') && (
-            <button className={`${styles.socialBtn} ${styles.google}`} type="button"
-              onClick={() => ExternalAuth.login('google')}>Sign Up Google</button>
+            <IgrButton variant="contained" type="button" className={`${styles.socialBtn} ${styles.google}`}
+              onClick={() => ExternalAuth.login('google')}><span>Sign Up Google</span></IgrButton>
           )}
           {ExternalAuth.hasProvider('facebook') && (
-            <button className={`${styles.socialBtn} ${styles.facebook}`} type="button"
-              onClick={() => ExternalAuth.login('facebook')}>Sign Up Facebook</button>
+            <IgrButton variant="contained" type="button" className={`${styles.socialBtn} ${styles.facebook}`}
+              onClick={() => ExternalAuth.login('facebook')}><span>Sign Up Facebook</span></IgrButton>
           )}
           {ExternalAuth.hasProvider('microsoft') && (
-            <button className={`${styles.socialBtn} ${styles.microsoft}`} type="button"
-              onClick={() => ExternalAuth.login('microsoft')}>Sign Up Microsoft</button>
+            <IgrButton variant="contained" type="button" className={`${styles.socialBtn} ${styles.microsoft}`}
+              onClick={() => ExternalAuth.login('microsoft')}><span>Sign Up Microsoft</span></IgrButton>
           )}
         </div>
       )}

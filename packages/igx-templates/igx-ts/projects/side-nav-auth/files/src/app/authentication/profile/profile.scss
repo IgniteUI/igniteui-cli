@@ -25,17 +25,9 @@
 }
 
 .profile__avatar {
-  display: flex;
-  flex: 0 0 64px;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  color: #0075d2;
+  flex: 0 0 auto;
   background: #e0f2ff;
-  font-size: 1.5rem;
-  font-weight: 700;
+  color: #0075d2;
 }
 
 .profile__intro {

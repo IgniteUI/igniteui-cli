@@ -1,6 +1,9 @@
 import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js';
+import { defineComponents, IgcAvatarComponent } from 'igniteui-webcomponents';
 import { UserStore } from '../authentication/services/userStore.js';
+
+defineComponents(IgcAvatarComponent);
 
 @customElement('app-profile')
 export default class ProfilePage extends LitElement {
@@ -33,24 +36,9 @@ export default class ProfilePage extends LitElement {
     }
 
     .avatar {
-      flex: 0 0 64px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: #e0f2ff;
-      color: #0075d2;
-      font-size: 1.5rem;
-      font-weight: 700;
-      overflow: hidden;
-    }
-
-    .avatar-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      flex: 0 0 auto;
+      --ig-avatar-background: #e0f2ff;
+      --ig-avatar-color: #0075d2;
     }
 
     .intro {
@@ -115,12 +103,13 @@ export default class ProfilePage extends LitElement {
     return html`
       <div class="card">
         <div class="header">
-          <div class="avatar">
-            ${user?.picture
-              ? html`<img class="avatar-img" src=${user.picture} alt=${user.name} />`
-              : html`${initials}`
-            }
-          </div>
+          <igc-avatar
+            class="avatar"
+            shape="circle"
+            size="medium"
+            src=${user?.picture ?? ''}
+            initials=${user?.picture ? '' : initials}
+          ></igc-avatar>
           <div class="intro">
             <p class="status">Signed in</p>
             <h1 class="name">${user?.name || 'Your profile'}</h1>

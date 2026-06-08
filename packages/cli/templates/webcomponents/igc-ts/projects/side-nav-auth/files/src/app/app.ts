@@ -26,6 +26,7 @@ const materialIcons = [
   ['build', 'action/svg/production/ic_build_24px.svg'],
   ['palette', 'image/svg/production/ic_palette_24px.svg'],
   ['account_circle', 'action/svg/production/ic_account_circle_24px.svg'],
+  ['alternate_email', 'communication/svg/production/ic_alternate_email_24px.svg'],
   ['lock', 'action/svg/production/ic_lock_24px.svg'],
   ['assignment_ind', 'action/svg/production/ic_assignment_ind_24px.svg'],
 ] as const;
@@ -118,6 +119,11 @@ export default class App extends LitElement {
       --menu-full-width: 280px;
     }
 
+    igc-nav-drawer-item::part(base) {
+      min-height: 48px;
+      color: #2d2d2d;
+    }
+
     igc-nav-drawer-item[active]::part(base) {
       background: #e0f2ff;
       color: #0075d2;
@@ -125,6 +131,10 @@ export default class App extends LitElement {
 
     igc-nav-drawer-item[active] igc-icon {
       color: #0075d2;
+    }
+
+    igc-nav-drawer-item:not([active]) igc-icon {
+      color: #2d2d2d;
     }
 
     router-outlet {
@@ -174,7 +184,6 @@ export default class App extends LitElement {
                   slot="icon"
                   name=${route.icon || 'home'}
                   collection="material"
-                  style=${this.currentPath === route.path ? 'color: #0075D2;' : ''}
                 ></igc-icon>
                 <span slot="content">${route.name}</span>
               </igc-nav-drawer-item>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IgrAvatar, IgrDropdown, IgrDropdownItem } from 'igniteui-react';
+import { IgrAvatar, IgrButton, IgrDropdown, IgrDropdownItem } from 'igniteui-react';
 import { useAuth } from '../AuthContext';
 import { LoginDialog } from './LoginDialog';
 import styles from './LoginBar.module.css';
@@ -13,9 +13,9 @@ export function LoginBar() {
   if (!currentUser) {
     return (
       <>
-        <button className={styles.loginBtn} type="button" onClick={() => setDialogOpen(true)}>
-          Log In
-        </button>
+        <IgrButton variant="outlined" className={styles.loginBtn} onClick={() => setDialogOpen(true)}>
+          <span>Log In</span>
+        </IgrButton>
         <LoginDialog open={dialogOpen} onClose={() => setDialogOpen(false)} />
       </>
     );

@@ -1,7 +1,12 @@
 <section class="profile">
   <div class="profile__content">
     <div class="profile__header">
-      <div class="profile__avatar">{{userStore.initials || 'U'}}</div>
+    <igx-avatar class="profile__avatar"
+      [initials]="userStore.initials || 'U'"
+      [src]="userStore.currentUser?.picture ?? ''"
+      shape="circle"
+      size="medium">
+    </igx-avatar>
       <div class="profile__intro">
         <p class="profile__status">Signed in</p>
         <h1>{{userStore.currentUser?.name || 'Your profile'}}</h1>
