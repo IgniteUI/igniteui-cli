@@ -1,6 +1,6 @@
 // Social login configuration.
-// To enable a provider, uncomment its entry and replace the placeholder value(s) with your
-// real credentials from the provider's developer console.
+// To enable a provider, set its entry in oauthConfig below with your real credentials
+// from the provider's developer console.
 //
 // Redirect URIs to register in each provider's app settings:
 //   {your-origin}/auth/redirect-google
@@ -15,19 +15,29 @@
 export type OAuthProvider = 'google' | 'facebook' | 'microsoft';
 
 export interface OAuthConfig {
-  // TODO: Uncomment and replace with your Google OAuth Client ID (type: Web application)
-  // google?: { clientId: string };
+  google?: { clientId: string };
 
-  // TODO: Uncomment and replace with your Microsoft Application (client) ID
-  //       tenantId defaults to 'common' (multi-tenant). Set it for single-tenant apps.
-  // microsoft?: { clientId: string; tenantId?: string };
+  // tenantId defaults to 'common' (multi-tenant). Set it for single-tenant apps.
+  // IMPORTANT: The redirect URI must be registered as a SPA redirect URI in Azure
+  // (not "Web"), otherwise the token exchange will fail with a CORS error.
+  // See: https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow
+  microsoft?: { clientId: string; tenantId?: string };
 
-  // TODO: Uncomment and replace with your Facebook App ID.
-  //       Also add the Facebook JS SDK to your index.html <head>:
-  //       <script async defer crossorigin="anonymous"
-  //         src="https://connect.facebook.net/en_US/sdk.js"></script>
-  // facebook?: { clientId: string };
+  // Facebook login uses the JS SDK (popup flow). The SDK script must be loaded in
+  // index.html (see below). In the Facebook app dashboard you must also:
+  //   - Enable "Login with the JavaScript SDK"
+  //   - Add your domain to "Allowed Domains for the JavaScript SDK"
+  //   - Add the redirect URI to "Valid OAuth Redirect URIs"
+  //   - Serve the app over HTTPS
+  // See: https://developers.facebook.com/docs/facebook-login/web
+  facebook?: { clientId: string };
 }
 
-// Active OAuth configuration — uncomment provider(s) above to enable social login.
+// Active OAuth configuration — fill in the providers you want to enable, for example:
+//
+// export const oauthConfig: OAuthConfig = {
+//   google: { clientId: 'YOUR_GOOGLE_CLIENT_ID' },
+//   microsoft: { clientId: 'YOUR_AZURE_APP_CLIENT_ID', tenantId: 'common' },
+//   facebook: { clientId: 'YOUR_FACEBOOK_APP_ID' },
+// };
 export const oauthConfig: OAuthConfig = {};

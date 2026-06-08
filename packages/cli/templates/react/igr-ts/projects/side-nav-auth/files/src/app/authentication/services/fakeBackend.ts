@@ -73,7 +73,7 @@ export function fakeExtLogin(data: ExternalLogin): string {
     existing.family_name = family_name;
     saveUsers(users);
   } else {
-    saveUsers([...users, { given_name, family_name, email: data.email, password: '' }]);
+    saveUsers([...users, { given_name, family_name, email: data.email, passwordHash: '' }]);
   }
   return makeJwt({ name: data.name, given_name, family_name, email: data.email, picture: data.picture });
 }

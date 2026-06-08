@@ -40,8 +40,10 @@ export class Login {
   }
 
   signUpFb() {
+    // Do NOT emit loggedIn here — Facebook uses a popup flow (FB.login).
+    // The redirect to /auth/redirect-facebook (and then /auth/profile) will
+    // navigate the user away naturally once authentication completes.
     this.externalAuth.login(ExternalAuthProvider.Facebook);
-    this.loggedIn.emit();
   }
 
   async tryLogin() {

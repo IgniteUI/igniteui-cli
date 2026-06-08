@@ -5,6 +5,7 @@ import { generateCodeVerifier, generateCodeChallenge, buildAuthUrl } from './pkc
 
 // sessionStorage keys
 const VERIFIER_KEY = '_pkce_verifier';
+const STATE_KEY = '_oauth_state';
 const FB_USER_KEY = '_fb_user';
 const ACTIVE_PROVIDER_KEY = '_ext_active_provider';
 
@@ -35,6 +36,8 @@ export const ExternalAuth = {
       const verifier = generateCodeVerifier();
       const challenge = await generateCodeChallenge(verifier);
       sessionStorage.setItem(VERIFIER_KEY, verifier);
+      const state = crypto.randomUUID();
+      sessionStorage.setItem(STATE_KEY, state);
       const redirectUri = `${window.location.origin}/auth/redirect-google`;
       window.location.href = buildAuthUrl('https://accounts.google.com/o/oauth2/v2/auth', {
         response_type: 'code',
@@ -43,7 +46,7 @@ export const ExternalAuth = {
         scope: 'openid profile email',
         code_challenge: challenge,
         code_challenge_method: 'S256',
-        state: crypto.randomUUID(),
+        state,
       });
     } else if (provider === 'microsoft') {
       const cfg = oauthConfig.microsoft!;
@@ -51,6 +54,8 @@ export const ExternalAuth = {
       const verifier = generateCodeVerifier();
       const challenge = await generateCodeChallenge(verifier);
       sessionStorage.setItem(VERIFIER_KEY, verifier);
+      const state = crypto.randomUUID();
+      sessionStorage.setItem(STATE_KEY, state);
       const redirectUri = `${window.location.origin}/auth/redirect-microsoft`;
       window.location.href = buildAuthUrl(
         `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize`,
@@ -61,11 +66,13 @@ export const ExternalAuth = {
           scope: 'openid profile email',
           code_challenge: challenge,
           code_challenge_method: 'S256',
-          state: crypto.randomUUID(),
+          state,
         }
       );
     } else if (provider === 'facebook') {
       const cfg = oauthConfig.facebook!;
+      // The Facebook SDK must be loaded and initialised before calling FB.login().
+      // Ensure the SDK script is present in index.html and that fbAsyncInit has fired.
       FB.init({ appId: cfg.clientId, xfbml: false, version: 'v3.1' });
       FB.login(
         (response: any) => {
@@ -79,7 +86,8 @@ export const ExternalAuth = {
                   given_name: res.first_name,
                   family_name: res.last_name,
                   email: res.email,
-                  picture: res.picture,
+                  // Facebook returns picture as an object: { data: { url, width, height } }
+                  picture: res.picture?.data?.url,
                   externalToken: FB.getAuthResponse()?.accessToken ?? '',
                 };
                 sessionStorage.setItem(FB_USER_KEY, JSON.stringify(user));
@@ -111,6 +119,14 @@ export const ExternalAuth = {
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
     if (!code) throw new Error('Missing authorization code in redirect URL.');
+
+    // Validate the state parameter to prevent CSRF attacks.
+    const returnedState = params.get('state');
+    const savedState = sessionStorage.getItem(STATE_KEY);
+    sessionStorage.removeItem(STATE_KEY);
+    if (!returnedState || returnedState !== savedState) {
+      throw new Error('OAuth state mismatch. The request may have been tampered with.');
+    }
 
     const verifier = sessionStorage.getItem(VERIFIER_KEY);
     if (!verifier) throw new Error('Missing PKCE code verifier. Please try again.');

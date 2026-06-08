@@ -201,11 +201,15 @@ export default class App extends LitElement {
     this.updateDrawerState();
     this.mediaQuery.addEventListener('change', this.updateDrawerState);
     window.addEventListener('popstate', this.updateCurrentPath);
+    // Listen globally so redirect components (Google/Facebook/Microsoft) in the router
+    // outlet can also trigger a shell state update after a successful OAuth redirect.
+    window.addEventListener('auth-change', this.handleAuthChange);
   }
 
   disconnectedCallback() {
     this.mediaQuery?.removeEventListener('change', this.updateDrawerState);
     window.removeEventListener('popstate', this.updateCurrentPath);
+    window.removeEventListener('auth-change', this.handleAuthChange);
 
     super.disconnectedCallback();
   }
