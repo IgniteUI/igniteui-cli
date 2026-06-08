@@ -6,7 +6,11 @@ $profile-menu-theme: drop-down-theme(
   $hover-item-background: #e8f3fc,
   $hover-item-text-color: #0075d2,
   $focused-item-background: #e8f3fc,
-  $focused-item-text-color: #0075d2
+  $focused-item-text-color: #0075d2,
+  $selected-item-background: #e8f3fc,
+  $selected-item-text-color: #0075d2,
+  $selected-hover-item-background: #e8f3fc,
+  $selected-hover-item-text-color: #0075d2
 );
 
 .navbar-login {

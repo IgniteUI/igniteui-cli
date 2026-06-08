@@ -39,6 +39,7 @@ export default class ProfilePage extends LitElement {
       flex: 0 0 auto;
       --ig-avatar-background: #e0f2ff;
       --ig-avatar-color: #0075d2;
+      --ig-avatar-size: 4rem;
     }
 
     .intro {
@@ -106,7 +107,6 @@ export default class ProfilePage extends LitElement {
           <igc-avatar
             class="avatar"
             shape="circle"
-            size="medium"
             src=${user?.picture ?? ''}
             initials=${user?.picture ? '' : initials}
           ></igc-avatar>

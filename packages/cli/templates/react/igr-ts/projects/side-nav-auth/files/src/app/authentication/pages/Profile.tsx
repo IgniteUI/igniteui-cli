@@ -13,7 +13,6 @@ export default function Profile() {
           <IgrAvatar
             className={styles.avatar}
             shape="circle"
-            size="medium"
             initials={initials}
             src={currentUser?.picture ?? ''}
           />

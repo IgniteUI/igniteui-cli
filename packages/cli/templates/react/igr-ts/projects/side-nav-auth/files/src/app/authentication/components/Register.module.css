@@ -5,13 +5,16 @@
   padding: 8px 0 0;
 }
 
-.form igr-input {
+.form igc-input {
   width: 100%;
-  --ig-input-group-focused-secondary-color: #239ef0;  --ig-input-group-focused-border-color: #239ef0;  --ig-input-group-filled-text-color: #2d2d2d;
+  --ig-input-group-focused-secondary-color: #239ef0;
+  --ig-input-group-focused-border-color: #239ef0;
+  --ig-input-group-filled-text-color: #2d2d2d;
 }
 
-.form igr-input igr-icon {
+.form igc-input igc-icon {
   color: #0075d2;
+  --ig-icon-size: 1.50rem;
 }
 
 .error {
@@ -52,11 +55,18 @@
   color: #767676;
 }
 
-.linkBtn::part(base) {
+.linkBtn {
+  align-self: center;
   color: #0075d2;
   font-size: .875rem;
+  cursor: pointer;
   text-decoration: underline;
   text-transform: none;
+}
+
+.linkBtn:hover,
+.linkBtn:focus-visible {
+  color: #005da8;
 }
 
 .linkBtn::part(base):hover {

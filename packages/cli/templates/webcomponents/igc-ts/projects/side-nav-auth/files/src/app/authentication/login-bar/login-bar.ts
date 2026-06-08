@@ -39,6 +39,24 @@ export class LoginBarElement extends LitElement {
       --ig-avatar-initials-font-size: 0.875rem;
     }
 
+    igc-dropdown-item:hover,
+    igc-dropdown-item[active]:hover {
+      background: #e8f3fc;
+      color: #0075d2;
+    }
+
+    igc-dropdown-item[active] {
+      background: #e8f3fc;
+      color: #0075d2;
+    }
+
+    igc-dropdown-item[selected],
+    igc-dropdown-item[selected]:hover,
+    igc-dropdown-item[selected][active] {
+      background: #e8f3fc;
+      color: #0075d2;
+    }
+
     .profile-avatar:focus-visible {
       outline: 2px solid #fff;
       outline-offset: 2px;

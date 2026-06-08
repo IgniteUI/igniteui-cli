@@ -48,6 +48,7 @@ export class LoginDialogElement extends LitElement {
 
     igc-input igc-icon {
       color: #0075d2;
+      --ig-icon-size: 1.50rem;
     }
 
     .error {
@@ -81,14 +82,18 @@ export class LoginDialogElement extends LitElement {
       color: #767676;
     }
 
-    .link-btn::part(base) {
+    .link-btn {
+      align-self: center;
+      text-align: center;
       color: #0075d2;
       font-size: .875rem;
+      cursor: pointer;
       text-decoration: underline;
       text-transform: none;
     }
 
-    .link-btn::part(base):hover {
+    .link-btn:hover,
+    .link-btn:focus-visible {
       color: #005da8;
     }
 
@@ -193,9 +198,7 @@ export class LoginDialogElement extends LitElement {
         </igc-input>
         ${this.error ? html`<p class="error">${this.error}</p>` : ''}
         <igc-button class="submit-btn" variant="contained" type="submit" ?disabled=${!this._loginValid}>Log In</igc-button>
-        <igc-button class="link-btn" variant="flat" type="button" @click=${() => { this.showLogin = false; this.error = ''; }}>
-          Create new account
-        </igc-button>
+        <a class="link-btn" @click=${() => { this.showLogin = false; this.error = ''; }} role="button" tabindex="0">Create new account</a>
         ${ExternalAuth.hasProvider() ? html`
           <div class="social-login">
             ${ExternalAuth.hasProvider('google') ? html`
@@ -224,16 +227,14 @@ export class LoginDialogElement extends LitElement {
           <igc-icon slot="suffix" name="assignment_ind" collection="material"></igc-icon>
         </igc-input>
         <igc-input outlined type="email" name="email" label="Email" autocomplete="email" required>
-          <igc-icon slot="suffix" name="alternate_email" collection="material"></igc-icon>
+          <igc-icon slot="suffix" name="account_circle" collection="material"></igc-icon>
         </igc-input>
         <igc-input outlined type="password" name="password" label="Password" autocomplete="new-password" required>
           <igc-icon slot="suffix" name="lock" collection="material"></igc-icon>
         </igc-input>
         ${this.error ? html`<p class="error">${this.error}</p>` : ''}
         <igc-button class="submit-btn" variant="contained" type="submit" ?disabled=${!this._registerValid}>Sign Up</igc-button>
-        <igc-button class="link-btn" variant="flat" type="button" @click=${() => { this.showLogin = true; this.error = ''; }}>
-          Have an account?
-        </igc-button>
+        <a class="link-btn" @click=${() => { this.showLogin = true; this.error = ''; }} role="button" tabindex="0">Have an account?</a>
       </form>
     `;
     return html`

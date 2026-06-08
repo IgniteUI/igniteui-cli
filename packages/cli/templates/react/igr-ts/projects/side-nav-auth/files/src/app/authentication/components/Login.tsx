@@ -46,9 +46,7 @@ export function Login({ onRegister, onSuccess }: LoginProps) {
         <IgrButton variant="contained" type="submit" className={styles.submitBtn} disabled={!canSubmit}>
           <span>Log In</span>
         </IgrButton>
-        <IgrButton variant="flat" type="button" className={styles.linkBtn} onClick={onRegister}>
-          <span>Create new account</span>
-        </IgrButton>
+        <a className={styles.linkBtn} onClick={onRegister} role="button" tabIndex={0}>Create new account</a>
       </div>
       {ExternalAuth.hasProvider() && (
         <div className={styles.socialLogin}>

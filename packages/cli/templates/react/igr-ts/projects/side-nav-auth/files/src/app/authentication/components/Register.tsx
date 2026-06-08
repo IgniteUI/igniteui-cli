@@ -49,7 +49,7 @@ export function Register({ onLogin, onSuccess }: RegisterProps) {
       </IgrInput>
       <IgrInput outlined type="email" name="email" label="Email" autoComplete="email" required={true}
         value={email} onInput={(e: any) => setEmail(e.detail ?? '')}>
-        <IgrIcon slot="suffix" name="alternate_email" collection="material" />
+        <IgrIcon slot="suffix" name="account_circle" collection="material" />
       </IgrInput>
       <IgrInput outlined type="password" name="password" label="Password" autoComplete="new-password" required={true}
         value={password} onInput={(e: any) => setPassword(e.detail ?? '')}>
@@ -60,9 +60,7 @@ export function Register({ onLogin, onSuccess }: RegisterProps) {
         <IgrButton variant="contained" type="submit" className={styles.submitBtn} disabled={!canSubmit}>
           <span>Sign Up</span>
         </IgrButton>
-        <IgrButton variant="flat" type="button" className={styles.linkBtn} onClick={onLogin}>
-          <span>Have an account?</span>
-        </IgrButton>
+        <a className={styles.linkBtn} onClick={onLogin} role="button" tabIndex={0}>Have an account?</a>
       </div>
     </form>
   );

@@ -17,7 +17,7 @@
     <input igxInput id="registerEmail" name="email" formControlName="email" type="text" />
     <label igxLabel for="registerEmail">Email</label>
     <igx-suffix>
-      <igx-icon>alternate_email</igx-icon>
+      <igx-icon>account_circle</igx-icon>
     </igx-suffix>
   </igx-input-group>
   <igx-input-group type="border">
@@ -30,7 +30,6 @@
   <div class="button-wrapper">
     <button igxButton="contained" type="submit" igxRipple igxButtonBackground="#239ef0" igxButtonColor="white"
       [disabled]="!registrationForm.valid">Sign Up</button>
-    <button type="button" class="auth-link" igxButton="flat" igxRipple
-      (click)="showLoginForm()">Have an account?</button>
+    <a class="auth-link" (click)="showLoginForm()" role="button" tabindex="0">Have an account?</a>
   </div>
 </form>

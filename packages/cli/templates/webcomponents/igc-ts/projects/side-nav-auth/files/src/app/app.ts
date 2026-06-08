@@ -26,7 +26,6 @@ const materialIcons = [
   ['build', 'action/svg/production/ic_build_24px.svg'],
   ['palette', 'image/svg/production/ic_palette_24px.svg'],
   ['account_circle', 'action/svg/production/ic_account_circle_24px.svg'],
-  ['alternate_email', 'communication/svg/production/ic_alternate_email_24px.svg'],
   ['lock', 'action/svg/production/ic_lock_24px.svg'],
   ['assignment_ind', 'action/svg/production/ic_assignment_ind_24px.svg'],
 ] as const;

@@ -14,6 +14,7 @@
 
 .form igc-input igc-icon {
   color: #0075d2;
+  --ig-icon-size: 1.50rem;
 }
 
 .error {
@@ -54,14 +55,17 @@
   color: #767676;
 }
 
-.linkBtn::part(base) {
+.linkBtn {
+  align-self: center;
   color: #0075d2;
   font-size: .875rem;
+  cursor: pointer;
   text-decoration: underline;
   text-transform: none;
 }
 
-.linkBtn::part(base):hover {
+.linkBtn:hover,
+.linkBtn:focus-visible {
   color: #005da8;
 }
 
