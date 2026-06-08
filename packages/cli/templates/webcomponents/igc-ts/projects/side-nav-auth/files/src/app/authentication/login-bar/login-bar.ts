@@ -40,6 +40,7 @@ export class LoginBarElement extends LitElement {
       color: #0075d2;
       --ig-avatar-background: #fff;
       --ig-avatar-color: #0075d2;
+      --ig-avatar-initials-font-size: 0.875rem;
     }
 
     .profile-avatar:focus-visible {

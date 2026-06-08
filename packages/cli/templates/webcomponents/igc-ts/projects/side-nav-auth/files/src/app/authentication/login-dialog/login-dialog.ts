@@ -26,6 +26,7 @@ export class LoginDialogElement extends LitElement {
       font-size: 1.125rem;
       font-weight: 600;
       color: #2d2d2d;
+      border-bottom: none;
     }
 
     .form {
@@ -263,9 +264,8 @@ export class LoginDialogElement extends LitElement {
       </form>
     `;
     return html`
-      <igc-dialog .title=${title} ?closeOnOutsideClick=${true}>
+      <igc-dialog .title=${title} ?keepOpenOnOutsideClick=${false}>
         ${this.showLogin ? loginForm : registerForm}
-        <span slot="footer"></span>
       </igc-dialog>
     `;
   }
