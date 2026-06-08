@@ -6,11 +6,14 @@ import {
   IgrIcon,
   registerIcon,
 } from 'igniteui-react';
+import { configureTheme } from 'igniteui-webcomponents';
 import { AuthProvider, useAuth } from './authentication/AuthContext';
 import { LoginBar } from './authentication/components/LoginBar';
 import { routes } from './app-routes';
-import 'igniteui-webcomponents/themes/light/bootstrap.css';
+import 'igniteui-webcomponents/themes/light/material.css';
 import './app.css';
+
+configureTheme('material', 'light');
 
 const materialIcons = [
   ['home', 'action/svg/production/ic_home_24px.svg'],
