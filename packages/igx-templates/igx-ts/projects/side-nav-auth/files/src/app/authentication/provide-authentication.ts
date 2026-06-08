@@ -1,6 +1,6 @@
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ENVIRONMENT_INITIALIZER, EnvironmentProviders, inject, Provider } from '@angular/core';
-import { OpenIdConfiguration, provideAuth } from 'angular-auth-oidc-client';
+import { OidcSecurityService, OpenIdConfiguration, provideAuth } from 'angular-auth-oidc-client';
 
 import { BackendProvider } from './services/fake-backend';
 import { JwtInterceptor } from './services/jwt.interceptor';
