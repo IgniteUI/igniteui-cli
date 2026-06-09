@@ -11,6 +11,7 @@ interface StoredUser {
   family_name: string;
   email: string;
   passwordHash: string;
+  externalId?: string;
 }
 
 function getUsers(): StoredUser[] {
@@ -68,16 +69,20 @@ export function fakeExtLogin(data: ExternalLogin): string {
     ?? users.find(u => u.externalId === data.id);
   const given_name = data.given_name ?? data.name?.split(' ')[0] ?? '';
   const family_name = data.family_name ?? data.name?.split(' ').slice(1).join(' ') ?? '';
+  // Resolve email: prefer what the provider returned, fall back to what we stored previously.
+  const email = data.email ?? existing?.email;
   if (existing) {
-    // Update profile fields from provider (name/picture may change)
+    // Update profile fields from provider (name/picture may change).
+    // Also store externalId if this user was originally created by email (first social login).
     existing.given_name = given_name;
     existing.family_name = family_name;
+    if (!existing.externalId) existing.externalId = data.id;
     saveUsers(users);
   } else {
-    if (!data.email) {
+    if (!email) {
       throw new Error('Cannot create an account without an email address.');
     }
-    saveUsers([...users, { given_name, family_name, email: data.email, passwordHash: '' }]);
+    saveUsers([...users, { given_name, family_name, email, passwordHash: '', externalId: data.id }]);
   }
-  return makeJwt({ name: data.name, given_name, family_name, email: data.email, picture: data.picture });
+  return makeJwt({ name: data.name, given_name, family_name, email, picture: data.picture });
 }

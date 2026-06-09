@@ -17,6 +17,17 @@ declare const FB: any;
 let fbInitialized = false;
 
 /**
+ * Decode a JWT payload segment. Handles Base64URL encoding (no padding, - and _ chars)
+ * which `atob()` does not accept natively - missing padding causes `InvalidCharacterError`.
+ */
+function decodeJwtPayload(token: string): any {
+  const base64url = token.split('.')[1];
+  const base64 = base64url.replace(/-/g, '+').replace(/_/g, '/');
+  const padded = base64.padEnd(base64.length + (4 - base64.length % 4) % 4, '=');
+  return JSON.parse(atob(padded));
+}
+
+/**
  * Waits until the Facebook JS SDK has loaded and is available on window.
  * The SDK is loaded with `async defer` so it may not be ready when login() is called.
  */
@@ -167,8 +178,8 @@ export const ExternalAuth = {
       });
       if (!res.ok) throw new Error('Google token exchange failed.');
       const data = await res.json();
-      // Decode the id_token to extract user claims — no extra userinfo request needed
-      const payload = JSON.parse(atob(data.id_token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
+      // Decode the id_token to extract user claims - no extra userinfo request needed
+      const payload = decodeJwtPayload(data.id_token);
       return {
         id: payload.sub,
         name: payload.name,
@@ -200,7 +211,7 @@ export const ExternalAuth = {
       );
       if (!res.ok) throw new Error('Microsoft token exchange failed.');
       const data = await res.json();
-      const payload = JSON.parse(atob(data.id_token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
+      const payload = decodeJwtPayload(data.id_token);
       return {
         id: payload.oid ?? payload.sub,
         name: payload.name,
@@ -254,7 +265,7 @@ export const ExternalAuth = {
           FB.logout();
         }
       } catch {
-        // SDK not loaded — nothing to do
+        // SDK not loaded - nothing to do
       }
     }
   },
