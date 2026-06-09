@@ -172,7 +172,9 @@ export function extractSection(markdown: string, section: string): string | null
 
   const bullets: string[] = [];
   for (const line of lines) {
-    if (!MEMBER_BULLET_RE.test(line)) continue;
+    const bullet = MEMBER_BULLET_RE.exec(line);
+    if (!bullet) continue;
+    if (bullet[1] === 'constructor') continue;
     if (inferSectionFromBullet(line) === targetKind) {
       bullets.push(line.trim());
     }
