@@ -12,7 +12,14 @@ export const UserStore = {
   getUser(): User | null {
     try {
       const raw = localStorage.getItem(USER_KEY);
-      return raw ? JSON.parse(raw) : null;
+      if (!raw) return null;
+      const parsed: User = JSON.parse(raw);
+      // Discard expired tokens so a stale session is never silently restored.
+      if (parsed.exp && Date.now() / 1000 > parsed.exp) {
+        localStorage.removeItem(USER_KEY);
+        return null;
+      }
+      return parsed;
     } catch {
       return null;
     }

@@ -12,6 +12,23 @@ const ACTIVE_PROVIDER_KEY = '_ext_active_provider';
 // Declared by the Facebook JS SDK (loaded via script tag in index.html)
 declare const FB: any;
 
+// Set to true once FB.init() has been called in this session.
+// Prevents FB.logout() from being called before initialization.
+let fbInitialized = false;
+
+/**
+ * Waits until the Facebook JS SDK has loaded and is available on window.
+ * The SDK is loaded with `async defer` so it may not be ready when login() is called.
+ */
+function waitForFB(): Promise<void> {
+  return new Promise(resolve => {
+    if (typeof (window as any).FB !== 'undefined') { resolve(); return; }
+    const id = setInterval(() => {
+      if (typeof (window as any).FB !== 'undefined') { clearInterval(id); resolve(); }
+    }, 50);
+  });
+}
+
 /**
  * External (social) authentication service.
  * Supports Google and Microsoft via OIDC/PKCE, and Facebook via the JS SDK.
@@ -71,9 +88,11 @@ export const ExternalAuth = {
       );
     } else if (provider === 'facebook') {
       const cfg = oauthConfig.facebook!;
-      // The Facebook SDK must be loaded and initialised before calling FB.login().
-      // Ensure the SDK script is present in index.html and that fbAsyncInit has fired.
+      // Wait for the SDK to load (it is included with `async defer` in index.html
+      // and may not be available yet when the user clicks the login button).
+      await waitForFB();
       FB.init({ appId: cfg.clientId, xfbml: false, version: 'v3.1' });
+      fbInitialized = true;
       FB.login(
         (response: any) => {
           if (response.authResponse) {
@@ -228,9 +247,10 @@ export const ExternalAuth = {
     }
 
     if (provider === 'facebook') {
-      // FB.logout is only available when the SDK is loaded and the user is connected.
+      // Only call FB.logout() when the SDK was initialised in this session.
+      // Calling it on a fresh page load (before FB.init) throws an error.
       try {
-        if (typeof FB !== 'undefined') {
+        if (fbInitialized && typeof FB !== 'undefined') {
           FB.logout();
         }
       } catch {

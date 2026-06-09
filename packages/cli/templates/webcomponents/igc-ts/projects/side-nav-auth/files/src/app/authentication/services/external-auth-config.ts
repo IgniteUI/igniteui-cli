@@ -38,6 +38,7 @@ export interface OAuthConfig {
 // export const oauthConfig: OAuthConfig = {
 //   google: { clientId: 'YOUR_GOOGLE_CLIENT_ID' },
 //   microsoft: { clientId: 'YOUR_AZURE_APP_CLIENT_ID', tenantId: 'common' },
+//   // Note: Facebook requires HTTPS even for local dev - use ngrok or a local SSL proxy.
 //   facebook: { clientId: 'YOUR_FACEBOOK_APP_ID' },
 // };
 export const oauthConfig: OAuthConfig = {};

@@ -46,6 +46,7 @@ export const appConfig: ApplicationConfig = {
       // TODO: Uncomment and replace with your Microsoft Client ID + Tenant ID
       // microsoft: { clientId: 'YOUR_MICROSOFT_CLIENT_ID', tenantId: 'YOUR_TENANT_ID' },
       // TODO: Uncomment and replace with your Facebook App ID
+      // Note: Facebook requires HTTPS even for local dev - use ngrok or a local SSL proxy.
       // facebook: { clientId: 'YOUR_FACEBOOK_CLIENT_ID' },
     })
   ]

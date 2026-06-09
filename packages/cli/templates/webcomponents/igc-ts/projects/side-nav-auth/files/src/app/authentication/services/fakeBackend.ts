@@ -64,7 +64,8 @@ export async function fakeRegister(data: RegisterInfo): Promise<string> {
 /** Upsert a user from a social (external) auth provider and return a JWT. */
 export function fakeExtLogin(data: ExternalLogin): string {
   const users = getUsers();
-  const existing = users.find(u => u.email === data.email);
+  const existing = users.find(u => u.email === data.email && data.email != null)
+    ?? users.find(u => u.externalId === data.id);
   const given_name = data.given_name ?? data.name?.split(' ')[0] ?? '';
   const family_name = data.family_name ?? data.name?.split(' ').slice(1).join(' ') ?? '';
   if (existing) {
@@ -73,7 +74,10 @@ export function fakeExtLogin(data: ExternalLogin): string {
     existing.family_name = family_name;
     saveUsers(users);
   } else {
-    saveUsers([...users, { given_name, family_name, email: data.email, password: '' }]);
+    if (!data.email) {
+      throw new Error('Cannot create an account without an email address.');
+    }
+    saveUsers([...users, { given_name, family_name, email: data.email, passwordHash: '' }]);
   }
   return makeJwt({ name: data.name, given_name, family_name, email: data.email, picture: data.picture });
 }
