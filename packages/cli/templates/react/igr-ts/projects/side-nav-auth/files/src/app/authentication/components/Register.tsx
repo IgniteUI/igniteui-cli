@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { IgrButton, IgrIcon, IgrInput } from 'igniteui-react';
 import { useAuth } from '../AuthContext';
-import type { RegisterInfo } from '../../models/register-info';
+import type { RegisterInfo } from '../models/register-info';
 import styles from './Register.module.css';
 
 interface RegisterProps {
@@ -19,7 +19,7 @@ export function Register({ onLogin, onSuccess }: RegisterProps) {
 
   const canSubmit = givenName.trim() !== '' && email.trim() !== '' && password !== '';
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError('');
     const data: RegisterInfo = {

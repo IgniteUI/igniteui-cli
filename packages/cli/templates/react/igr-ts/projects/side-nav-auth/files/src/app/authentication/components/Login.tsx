@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { IgrButton, IgrIcon, IgrInput } from 'igniteui-react';
 import { useAuth } from '../AuthContext';
 import { ExternalAuth } from '../services/externalAuth';
-import type { Login as LoginData } from '../../models/login';
+import type { Login as LoginData } from '../models/login';
 import styles from './Login.module.css';
 
 interface LoginProps {
@@ -18,7 +18,7 @@ export function Login({ onRegister, onSuccess }: LoginProps) {
 
   const canSubmit = email.trim() !== '' && password !== '';
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError('');
     const data: LoginData = { email, password };
