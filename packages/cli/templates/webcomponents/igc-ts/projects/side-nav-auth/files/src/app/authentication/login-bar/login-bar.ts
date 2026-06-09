@@ -24,7 +24,6 @@ export class LoginBarElement extends LitElement {
       border-color: rgba(0, 117, 210, 0.35);
       font-weight: 600;
       white-space: nowrap;
-      text-transform: none;
     }
 
     .login-btn::part(base):hover {
