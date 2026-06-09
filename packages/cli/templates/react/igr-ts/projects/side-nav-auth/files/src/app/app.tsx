@@ -107,7 +107,7 @@ function AppContent() {
             </IgrNavDrawerItem>
           ))}
         </IgrNavDrawer>
-        <main className="content">
+        <main className="app__content">
           <Outlet />
         </main>
       </div>

@@ -73,7 +73,7 @@ igc-nav-drawer-item[active] igc-icon {
   color: #0075d2;
 }
 
-.content {
+.app__content {
   flex: 1 1 auto;
   display: flex;
   flex-flow: row nowrap;

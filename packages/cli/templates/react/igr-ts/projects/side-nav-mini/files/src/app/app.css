@@ -27,6 +27,9 @@
   border: 0;
   background: transparent;
   cursor: pointer;
+}
+
+.app__menu-button igc-icon {
   font-size: 24px;
 }
 

@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { IgxLayoutModule, IgxNavbarModule, IgxNavigationDrawerModule, IgxRippleModule } from 'igniteui-angular';
 import { App } from './app';
 import { provideAuthentication } from './authentication/provide-authentication';
 
@@ -11,10 +10,6 @@ describe('App', () => {
       imports: [
         NoopAnimationsModule,
         RouterModule.forRoot([]),
-        IgxNavigationDrawerModule,
-        IgxNavbarModule,
-        IgxLayoutModule,
-        IgxRippleModule,
         App
       ],
       providers: [

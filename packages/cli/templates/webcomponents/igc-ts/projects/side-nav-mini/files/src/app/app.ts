@@ -188,7 +188,6 @@ export default class App extends LitElement {
                   slot="icon"
                   name=${route.icon || 'apps'}
                   collection="material"
-                  style=${this.currentPath === route.path ? 'color: #0075D2;' : ''}
                 ></igc-icon>
                 <span slot="content">${route.name}</span>
               </igc-nav-drawer-item>

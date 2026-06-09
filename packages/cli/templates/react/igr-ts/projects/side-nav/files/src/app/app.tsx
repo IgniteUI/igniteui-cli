@@ -95,7 +95,7 @@ export default function App() {
             </IgrNavDrawerItem>
           ))}
         </IgrNavDrawer>
-        <main className="content">
+        <main className="app__content">
           <Outlet />
         </main>
       </div>
