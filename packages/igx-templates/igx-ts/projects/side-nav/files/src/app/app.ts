@@ -33,6 +33,8 @@ import { routes } from './app.routes';
   ]
 })
 export class App implements OnInit {
+  public appTitle = '<%=name%>';
+
   public topNavLinks: {
     path: string,
     name: string,

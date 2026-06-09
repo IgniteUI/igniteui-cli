@@ -1,34 +1,35 @@
 <form class="input-group-form" id="registrationForm" [formGroup]="registrationForm" (ngSubmit)="tryRegister()">
-  <igx-input-group>
-    <igx-prefix>
-      <igx-icon>assignment_ind</igx-icon>
-    </igx-prefix>
-    <label igxLabel for="given_name">First Name</label>
+  <igx-input-group type="border">
     <input igxInput id="given_name" name="given_name" formControlName="given_name" type="text" />
-  </igx-input-group>
-  <igx-input-group>
-    <igx-prefix>
+    <label igxLabel for="given_name">First Name</label>
+    <igx-suffix>
       <igx-icon>assignment_ind</igx-icon>
-    </igx-prefix>
-    <label igxLabel for="family_name">Last Name</label>
+    </igx-suffix>
+  </igx-input-group>
+  <igx-input-group type="border">
     <input igxInput id="family_name" name="family_name" formControlName="family_name" type="text" />
+    <label igxLabel for="family_name">Last Name</label>
+    <igx-suffix>
+      <igx-icon>assignment_ind</igx-icon>
+    </igx-suffix>
   </igx-input-group>
-  <igx-input-group>
-    <igx-prefix>
-      <igx-icon>alternate_email</igx-icon>
-    </igx-prefix>
-    <label igxLabel for="email">Email</label>
+  <igx-input-group type="border">
     <input igxInput id="registerEmail" name="email" formControlName="email" type="text" />
+    <label igxLabel for="registerEmail">Email</label>
+    <igx-suffix>
+      <igx-icon>account_circle</igx-icon>
+    </igx-suffix>
   </igx-input-group>
-  <igx-input-group>
-    <igx-prefix>
-      <igx-icon>lock</igx-icon>
-    </igx-prefix>
+  <igx-input-group type="border">
     <input igxInput id="registerPassword" name="password" type="password" formControlName="password" />
-    <label igxLabel for="password">Password</label>
+    <label igxLabel for="registerPassword">Password</label>
+    <igx-suffix>
+      <igx-icon>lock</igx-icon>
+    </igx-suffix>
   </igx-input-group>
-  <div>
-    <button igxButton="raised" type="submit" igxRipple [disabled]="!registrationForm.valid">SIGN UP</button>
-    <a (click)="showLoginForm()">Have an account?</a>
+  <div class="button-wrapper">
+    <button igxButton="contained" type="submit" igxRipple igxButtonBackground="#239ef0" igxButtonColor="white"
+      [disabled]="!registrationForm.valid">Sign Up</button>
+    <a class="auth-link" (click)="showLoginForm()" role="button" tabindex="0">Have an account?</a>
   </div>
 </form>

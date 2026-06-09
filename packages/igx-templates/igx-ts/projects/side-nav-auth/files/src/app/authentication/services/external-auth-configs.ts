@@ -1,3 +1,4 @@
+/** Base path for auth routes. OAuth redirect URIs are built as: {origin}/auth/redirect-google|facebook|microsoft */
 export const AUTH_BASE_PATH = 'auth';
 
 export enum ExternalAuthProvider {

@@ -107,7 +107,12 @@ export default class App extends LitElement {
     .app__drawer {
       flex: 0 0 auto;
       height: 100%;
-      --ig-nav-drawer-size: 280px;
+      --menu-full-width: 280px;
+    }
+
+    igc-nav-drawer-item::part(base) {
+      min-height: 48px;
+      color: #2d2d2d;
     }
 
     igc-nav-drawer-item[active]::part(base) {
@@ -117,6 +122,10 @@ export default class App extends LitElement {
 
     igc-nav-drawer-item[active] igc-icon {
       color: #0075d2;
+    }
+
+    igc-nav-drawer-item:not([active]) igc-icon {
+      color: #2d2d2d;
     }
 
     router-outlet {
@@ -160,7 +169,6 @@ export default class App extends LitElement {
                   slot="icon"
                   name=${route.icon || 'home'}
                   collection="material"
-                  style=${this.currentPath === route.path ? 'color: #0075D2;' : ''}
                 ></igc-icon>
                 <span slot="content">${route.name}</span>
               </igc-nav-drawer-item>

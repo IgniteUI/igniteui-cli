@@ -1,18 +1,20 @@
-<div class="outer-wrapper" igxLayout>
-  <igx-nav-drawer #nav id="project-menu" [isOpen]="true" [enableGestures]="true" width="280px">
-    <ng-template igxDrawer>
-      <span igxDrawerItem [isHeader]="true">Views</span>
-      @for (route of topNavLinks; track route) {
-        <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" [routerLink]="route.path">{{route.name}}</span>
-      }
-    </ng-template>
-  </igx-nav-drawer>
-  <div class="main" igxFlex igxLayout igxLayoutDir="columns">
-    <igx-navbar title="<%=name%>" actionButtonIcon="menu" (action)="nav.toggle()">
-      <app-login-bar></app-login-bar>
+<div class="outer-wrapper">
+  <igx-navbar [title]="appTitle" actionButtonIcon="menu" (action)="nav.toggle()">
+    <app-login-bar></app-login-bar>
   </igx-navbar>
-    <div class="content" igxFlex>
+  <div class="app-body" igxLayout>
+    <igx-nav-drawer #nav id="project-menu" [isOpen]="true" [enableGestures]="true" [pinThreshold]="1024" width="280px">
+      <ng-template igxDrawer>
+        @for (route of topNavLinks; track route) {
+          <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" [routerLink]="route.path">
+            <igx-icon>{{route.icon}}</igx-icon>
+            <span>{{route.name}}</span>
+          </span>
+        }
+      </ng-template>
+    </igx-nav-drawer>
+    <main class="content" igxFlex>
       <router-outlet></router-outlet>
-    </div>
+    </main>
   </div>
 </div>

@@ -1,3 +1,5 @@
 .sign-dialog {
-  width: 20rem;
+  box-sizing: border-box;
+  width: min(24rem, calc(100vw - 48px));
+  padding: 4px 8px 8px;
 }

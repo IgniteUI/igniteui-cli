@@ -4,7 +4,7 @@ import { BaseWithHomeIgrTsProject } from "../_base_with_home";
 
 export class SideNavIgrTsProject extends BaseWithHomeIgrTsProject implements ProjectTemplate {
 	public id: string = "side-nav";
-	public name = "Default side navigation";
+	public name = "Side navigation default";
 	public description = "Project structure with side navigation drawer";
 	public dependencies: string[] = [];
 	public framework: string = "react";
