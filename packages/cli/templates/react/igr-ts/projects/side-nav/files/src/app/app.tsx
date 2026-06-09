@@ -6,9 +6,12 @@ import {
   IgrNavDrawerItem,
   registerIcon,
 } from "igniteui-react";
+import { configureTheme } from "igniteui-webcomponents";
 import { routes } from "./app-routes";
-import "igniteui-webcomponents/themes/light/bootstrap.css";
+import "igniteui-webcomponents/themes/light/material.css";
 import "./app.css";
+
+configureTheme('material', 'light');
 
 const materialIcons = [
   ['home', 'action/svg/production/ic_home_24px.svg'],
