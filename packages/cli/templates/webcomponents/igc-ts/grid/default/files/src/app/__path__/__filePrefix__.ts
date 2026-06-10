@@ -10,15 +10,43 @@ IgcGridComponent.register();
 export default class $(ClassName) extends LitElement {
   static styles = css`
     :host {
-      height: 100%;
-      margin: 0px;
-      padding-right: 20px;
-      width: calc(100% - 600px);
-    }
-    igc-grid img {
-      object-fit: contain;
-      height: 100%;
+      display: block;
       width: 100%;
+    }
+
+    .page {
+      width: 100%;
+      margin-top: 40px;
+      padding: 0 48px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .title {
+      color: rgb(0, 153, 255);
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 32px;
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    .subtitle a {
+      color: rgb(0, 153, 255);
+    }
+
+    .grid-wrapper {
+      width: 100%;
+      max-width: 1200px;
     }
   `;
 
@@ -53,24 +81,42 @@ export default class $(ClassName) extends LitElement {
     { fieldName: 'status', dir: SortingDirection.Desc },
   ];
 
+  private flagTemplate = ({ cell }: any) => html`
+    <img src="${cell.value}" style="width:32px;height:20px;object-fit:contain;vertical-align:middle;" />
+  `;
+
   render() {
     return html`
       <style>${gridThemeLightMaterial}</style>
-      <igc-grid
-        class="ig-typography"
-        .data=${this.data}
-        .groupingExpressions=${this.groupingExpressions}
-        filter-mode="excelStyleFilter"
-      >
-        <igc-column field="productID" header="ID" width="90px"></igc-column>
-        <igc-column field="productName" header="Product" width="160px"></igc-column>
-        <igc-column field="countryFlag" header="Country" data-type="image" width="100px"></igc-column>
-        <igc-column field="orderItems" header="Orders" data-type="number" width="100px"></igc-column>
-        <igc-column field="orderValue" header="Order Value" data-type="currency" width="140px"></igc-column>
-        <igc-column field="orderDate" header="Order Date" data-type="date"></igc-column>
-        <igc-column field="margin" header="Margin" data-type="percent" width="100px"></igc-column>
-        <igc-column field="status" header="Status" width="100px" groupable></igc-column>
-      </igc-grid>
+      <div class="page">
+        <p class="title">$(name)</p>
+        <p class="subtitle">
+          IgcGrid component with auto generated columns and local data.<br />
+          You can read more about configuring the IgcGrid component in the
+          <a href="https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/grids/data-grid.html" target="_blank">
+            official documentation
+          </a>.
+        </p>
+        <div class="grid-wrapper">
+          <igc-grid
+            class="ig-typography"
+            .data=${this.data}
+            .groupingExpressions=${this.groupingExpressions}
+            filter-mode="excelStyleFilter"
+            height="600px"
+            width="100%"
+          >
+            <igc-column field="productID" header="ID" width="90px"></igc-column>
+            <igc-column field="productName" header="Product" width="160px"></igc-column>
+            <igc-column field="countryFlag" header="Country" .bodyTemplate=${this.flagTemplate} width="100px"></igc-column>
+            <igc-column field="orderItems" header="Orders" data-type="number" width="100px"></igc-column>
+            <igc-column field="orderValue" header="Order Value" data-type="currency" width="140px"></igc-column>
+            <igc-column field="orderDate" header="Order Date" data-type="date"></igc-column>
+            <igc-column field="margin" header="Margin" data-type="percent" width="100px"></igc-column>
+            <igc-column field="status" header="Status" width="100px" groupable></igc-column>
+          </igc-grid>
+        </div>
+      </div>
     `;
   }
 }

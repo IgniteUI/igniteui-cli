@@ -176,7 +176,7 @@ export default class App extends LitElement {
           >
             ${visibleRoutes.map((route) => html`
               <igc-nav-drawer-item
-                ?active=${this.currentPath === route.path}
+                ?active=${this.currentPath === this.toAbsPath(route.path)}
                 @click=${() => this.navigate(route.path)}
               >
                 <igc-icon
@@ -220,12 +220,16 @@ export default class App extends LitElement {
     router.setRoutes(routes);
   }
 
+  private toAbsPath(p: string) {
+    return p.startsWith('/') ? p : '/' + p;
+  }
+
   private toggleDrawer = () => {
     this.drawerOpen = !this.drawerOpen;
   };
 
   private navigate(path: string) {
-    this.currentPath = path;
+    this.currentPath = this.toAbsPath(path);
     Router.go(path);
 
     if (!this.mediaQuery?.matches) {
