@@ -52,7 +52,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 			!(options && options.skipRoute) &&
 			App.container.get<IFileSystem>(FS_TOKEN).fileExists(routeModulePath)
 		) {
-			const modulePath = `./${Util.lowerDashed(fullName)}/${Util.lowerDashed(fullName)}-routing`
+			const modulePath = `./${Util.lowerDashed(fullName)}/${Util.lowerDashed(fullName)}-routing`;
 			const componentTag = `app-${this.fileName(fullName)}`;
 			const child: RouteLike = {
 				identifierName: ROUTES_VARIABLE_NAME,
