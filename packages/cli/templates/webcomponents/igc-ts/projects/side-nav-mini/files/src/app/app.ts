@@ -229,8 +229,10 @@ export default class App extends LitElement {
   };
 
   private navigate(path: string) {
-    this.currentPath = this.toAbsPath(path);
-    Router.go(path);
+    const targetPath = this.toAbsPath(path);
+
+    this.currentPath = targetPath;
+    Router.go(targetPath);
   }
 
   private updateDrawerState = () => {
