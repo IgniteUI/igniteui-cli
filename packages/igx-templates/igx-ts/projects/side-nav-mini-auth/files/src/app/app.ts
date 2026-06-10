@@ -43,18 +43,16 @@ const MINI_BREAKPOINT = 1024;
 export class App implements OnInit, AfterViewInit {
   public appTitle = '<%=name%>';
 
-  private readonly homeNavLinks: { path: string; name: string; icon: string }[] = [
-    { name: 'Home', path: '/home', icon: 'home' }
-  ];
+  private readonly homeNavLinks: { path: string; name: string; icon: string }[] = [];
 
   private readonly profileNavLinks: { path: string; name: string; icon: string }[] = [
     { name: 'Profile', path: '/auth/profile', icon: 'account_circle' }
   ];
 
   public get topNavLinks() {
-    return this.userStore.currentUser
-      ? [...this.homeNavLinks, ...this.profileNavLinks]
-      : this.homeNavLinks;
+    if (!this.userStore.currentUser) return this.homeNavLinks;
+    const [home, ...rest] = this.homeNavLinks;
+    return [home, ...this.profileNavLinks, ...rest];
   }
 
   public readonly initiallyOpen = window.innerWidth > MINI_BREAKPOINT;
@@ -66,11 +64,11 @@ export class App implements OnInit, AfterViewInit {
   constructor() {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
-        this.homeNavLinks[0] = {
+        this.homeNavLinks.push({
           name: route.data['text'],
           path: '/' + route.path,
           icon: route.data['icon'] || 'home'
-        };
+        });
       }
     }
   }
