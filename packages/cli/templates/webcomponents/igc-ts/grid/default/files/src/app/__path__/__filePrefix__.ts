@@ -82,7 +82,7 @@ export default class $(ClassName) extends LitElement {
   ];
 
   private flagTemplate = ({ cell }: any) => html`
-    <img src="${cell.value}" style="width:32px;height:20px;object-fit:contain;vertical-align:middle;" />
+    <img src="${cell.value}" alt="" style="width:32px;height:20px;object-fit:contain;vertical-align:middle;" />
   `;
 
   render() {
