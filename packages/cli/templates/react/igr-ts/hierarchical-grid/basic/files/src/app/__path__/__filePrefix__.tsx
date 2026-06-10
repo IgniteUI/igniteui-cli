@@ -30,7 +30,7 @@ export default function $(ClassName)() {
             <IgrColumn field="BillboardReview" header="Billboard Review" dataType="number" />
             <IgrColumn field="USBillboard200" header="US Billboard 200" dataType="number" />
             <IgrRowIsland childDataKey="Songs" primaryKey="TrackNumber" autoGenerate={false}>
-              <IgrColumn field="TrackNumber" header="Track" dataType="number" />
+              <IgrColumn field="TrackNumber" header="Track" dataType="string" />
               <IgrColumn field="Title" dataType="string" />
               <IgrColumn field="Released" dataType="string" />
               <IgrColumn field="Genre" dataType="string" />
