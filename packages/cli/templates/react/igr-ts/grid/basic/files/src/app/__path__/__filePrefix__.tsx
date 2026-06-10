@@ -13,7 +13,7 @@ export default function $(ClassName)() {
       <p className={style.subtitle}>
         IgrGrid component with auto generated columns and local data.<br />
         You can read more about configuring the IgrGrid component in the&nbsp;
-        <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/grids/data-grid.html" target="_blank">
+        <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/grids/data-grid.html" target="_blank" rel="noopener noreferrer">
           official documentation
         </a>.
       </p>
