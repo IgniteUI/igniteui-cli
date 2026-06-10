@@ -13,7 +13,7 @@ export default function $(ClassName)() {
       <p className={style.subtitle}>
         IgrTreeGrid component displaying hierarchical data using a child collection.<br />
         You can read more about configuring the IgrTreeGrid component in the&nbsp;
-        <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/grids/tree-grid/overview.html" target="_blank">
+        <a href="https://www.infragistics.com/products/ignite-ui-react/react/components/grids/tree-grid/overview.html" target="_blank" rel="noopener noreferrer">
           official documentation
         </a>.
       </p>
