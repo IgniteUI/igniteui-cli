@@ -134,6 +134,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
         framework: FRAMEWORK_ENUM,
         name: z
           .string()
+          .min(1, 'Doc name must not be empty.')
           .describe(
             'Exact doc name in kebab-case without the .md extension. ' +
             'Examples: "grid-editing", "combo-overview", "accordion". ' +
