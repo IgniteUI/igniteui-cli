@@ -2,7 +2,7 @@ import style from './style.module.css';
 import { IgrGrid, IgrColumn } from 'igniteui-react-grids';
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css';
 
-import data from './data';
+import { employeesData } from './data';
 
 export default function $(ClassName)() {
   const title = '$(name)';
@@ -18,31 +18,41 @@ export default function $(ClassName)() {
         </a>.
       </p>
       <div className={style.grid}>
-        <IgrGrid data={data} height="600px" width="100%">
+        <IgrGrid data={employeesData} height="600px" width="100%">
           <IgrColumn
-            field="ProductID"
-            header="Product ID"
-            dataType="number">
-          </IgrColumn>
-          <IgrColumn
-            field="ProductName"
-            header="Product Name"
+            field="EmployeeID"
+            header="Employee ID"
             dataType="string">
           </IgrColumn>
           <IgrColumn
-            field="QuantityPerUnit"
-            header="Quantity Per Unit"
+            field="FirstName"
+            header="First Name"
             dataType="string">
           </IgrColumn>
           <IgrColumn
-            field="UnitsInStock"
-            header="Units In Stock"
+            field="LastName"
+            header="Last Name"
+            dataType="string">
+          </IgrColumn>
+          <IgrColumn
+            field="Country"
+            header="Country"
+            dataType="string">
+          </IgrColumn>
+          <IgrColumn
+            field="Age"
+            header="Age"
             dataType="number">
           </IgrColumn>
           <IgrColumn
-            field="OrderDate"
-            header="Order Date"
+            field="RegistererDate"
+            header="Registered Date"
             dataType="date">
+          </IgrColumn>
+          <IgrColumn
+            field="IsActive"
+            header="Active"
+            dataType="boolean">
           </IgrColumn>
         </IgrGrid>
       </div>

@@ -1,5 +1,8 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
 import { IGNITEUI_REACT_GRIDS_PACKAGE } from "../../constants";
+import * as path from "path";
+
+const SHARED_DATA_ROOT = path.join(__dirname, "../../../../../shared-data");
 
 class PivotGridTemplate extends IgniteUIForReactTemplate {
 	constructor() {
@@ -13,6 +16,13 @@ class PivotGridTemplate extends IgniteUIForReactTemplate {
 		this.controlGroup = "Data Grids";
 		this.packages = [IGNITEUI_REACT_GRIDS_PACKAGE];
 		this.hasExtraConfiguration = false;
+	}
+
+	public get templatePaths(): string[] {
+		return [
+			...super.templatePaths,
+			path.join(SHARED_DATA_ROOT, "pivot-grid", "files")
+		];
 	}
 }
 module.exports = new PivotGridTemplate();
