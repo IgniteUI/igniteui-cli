@@ -487,4 +487,96 @@ describe("Unit - New command", () => {
 			expect(configureSpy).not.toHaveBeenCalled();
 		});
 	});
+
+	describe("scaffold project template path", () => {
+		let scaffoldSpy: jasmine.Spy;
+		let generateConfigSpy: jasmine.Spy;
+
+		function createScaffoldMocks(scaffoldResult = true) {
+			scaffoldSpy = jasmine.createSpy("scaffold").and.returnValue(Promise.resolve(scaffoldResult));
+			generateConfigSpy = jasmine.createSpy("generateConfig").and.returnValue({});
+			const mockTemplate = {
+				framework: "blazor",
+				projectType: "igb",
+				scaffold: scaffoldSpy,
+				generateConfig: generateConfigSpy,
+				templatePaths: ["test"]
+			};
+			const mockProjLib = {
+				getProject: () => mockTemplate,
+				projectIds: ["empty"],
+				projectType: "igb",
+				themes: ["bootstrap", "material"]
+			};
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: { id: "blazor" },
+				getProjectLibrary: mockProjLib
+			}));
+			spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+			spyOn(Util, "gitInit");
+		}
+
+		it("calls scaffold instead of the npm pipeline", async () => {
+			createScaffoldMocks();
+
+			await newCmd.handler({
+				name: "my-blazor", framework: "blazor", theme: "material",
+				hosting: "Auto", variant: "dark", _: ["new"], $0: "new"
+			});
+
+			expect(scaffoldSpy).toHaveBeenCalledWith({
+				name: "my-blazor",
+				theme: "material",
+				skipInstall: false,
+				skipGit: false,
+				extraConfig: { Hosting: "Auto", Variant: "dark" }
+			});
+			expect(generateConfigSpy).not.toHaveBeenCalled();
+			expect(Util.processTemplates).not.toHaveBeenCalled();
+			expect(PackageManager.installPackages).not.toHaveBeenCalled();
+		});
+
+		it("omits unset hosting/variant from extraConfig and never passes a weather flag", async () => {
+			createScaffoldMocks();
+
+			await newCmd.handler({ name: "my-blazor", framework: "blazor", _: ["new"], $0: "new" });
+
+			const options = scaffoldSpy.calls.mostRecent().args[0];
+			expect(options.extraConfig).toEqual({});
+			expect(JSON.stringify(options)).not.toContain("Weather");
+		});
+
+		it("runs configure and gitInit then prints dotnet next-steps on success", async () => {
+			createScaffoldMocks();
+
+			await newCmd.handler({ name: "my-blazor", framework: "blazor", _: ["new"], $0: "new" });
+
+			expect(aiConfig.configure as jasmine.Spy).toHaveBeenCalledWith("blazor", undefined, undefined);
+			expect(Util.gitInit).toHaveBeenCalled();
+			expect(Util.log).toHaveBeenCalledWith("  dotnet run --project my-blazor");
+		});
+
+		it("skips gitInit and next-steps when scaffold fails", async () => {
+			createScaffoldMocks(false);
+
+			await newCmd.handler({ name: "my-blazor", framework: "blazor", _: ["new"], $0: "new" });
+
+			expect(aiConfig.configure as jasmine.Spy).not.toHaveBeenCalled();
+			expect(Util.gitInit).not.toHaveBeenCalled();
+			expect(Util.log).not.toHaveBeenCalledWith("  dotnet run --project my-blazor");
+		});
+
+		it("honors skip-install (→ SkipRestore) and skip-git", async () => {
+			createScaffoldMocks();
+
+			await newCmd.handler({
+				name: "my-blazor", framework: "blazor",
+				skipInstall: true, "skip-git": true, _: ["new"], $0: "new"
+			});
+
+			const options = scaffoldSpy.calls.mostRecent().args[0];
+			expect(options.skipInstall).toBeTrue();
+			expect(Util.gitInit).not.toHaveBeenCalled();
+		});
+	});
 });

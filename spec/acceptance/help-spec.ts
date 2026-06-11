@@ -62,10 +62,14 @@ describe("Help command", () => {
 			-v, --version             Show current Ignite UI CLI version         [boolean]
 			-h, --help                Show help                                  [boolean]
 			-f, --framework           Framework to scaffold the project for.
-				[string] [choices: "angular", "jquery", "react", "webcomponents"] [default:
-																				"angular"]
+				[string] [choices: "angular", "blazor", "jquery", "react", "webcomponents"]
+																		[default: "angular"]
 			-t, --type                Project type (depends on framework)         [string]
 				--theme, --th         Project theme (depends on project type)     [string]
+				--hosting             Blazor hosting model (Blazor projects only)
+											[string] [choices: "Server", "Wasm", "Auto"]
+				--variant             Theme variant (Blazor projects only)
+													[string] [choices: "light", "dark"]
 				--skip-git, --sg      Do not initialize a git repository for the project
 																				[boolean]
 				--skip-install, --si  Do not install packages after scaffolding  [boolean]
