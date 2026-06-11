@@ -78,7 +78,7 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'combo-single-selection': 'single-selection',
         'combobox-single-selection': 'single-selection',
         // Grid
-        grid: 'data-grid',
+        grid: 'grid-grid',
         // Grid -overview suffix
         'hierarchical-grid': 'hierarchical-grid-overview',
         'tree-grid': 'tree-grid-overview',
