@@ -56,7 +56,7 @@ export class SchematicsPromptSession extends BasePromptSession {
 		return super.nameIsValid(name, checkFolder);
 	}
 
-	protected completeAndRun(_port?: number) {
+	protected async complete() {
 		// TODO?
 	}
 
