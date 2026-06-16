@@ -2,7 +2,7 @@ import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIF
 import { IGNITEUI_REACT_GRIDS_PACKAGE } from "../../constants";
 import * as path from "path";
 
-const SHARED_DATA_ROOT = path.join(__dirname, "../../../../../shared-data");
+const SHARED_DATA_ROOT = path.join(path.dirname(require.resolve("@igniteui/angular-templates/package.json")), "shared-data");
 
 class TreeGridTemplate extends IgniteUIForReactTemplate {
 	constructor() {

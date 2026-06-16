@@ -2,7 +2,7 @@ import { ControlExtraConfigType, ControlExtraConfiguration, TemplateDependency }
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 import * as path from "path";
 
-const SHARED_DATA_ROOT = path.join(__dirname, "../../../../cli/shared-data");
+const SHARED_DATA_ROOT = path.join(__dirname, "../../../shared-data");
 
 class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {} = {};

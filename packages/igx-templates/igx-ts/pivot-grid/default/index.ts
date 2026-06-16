@@ -2,7 +2,7 @@ import { IGNITEUI_ANGULAR_PACKAGE } from "../../../constants";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
 import * as path from "path";
 
-const SHARED_DATA_ROOT = path.join(__dirname, "../../../../cli/shared-data");
+const SHARED_DATA_ROOT = path.join(__dirname, "../../../shared-data");
 
 class IgxPivotGridTemplate extends IgniteUIForAngularTemplate {
         constructor() {

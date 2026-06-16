@@ -1,7 +1,7 @@
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
 import * as path from "path";
 
-const SHARED_DATA_ROOT = path.join(__dirname, "../../../../../shared-data");
+const SHARED_DATA_ROOT = path.join(path.dirname(require.resolve("@igniteui/angular-templates/package.json")), "shared-data");
 
 class IgcPivotGridTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
