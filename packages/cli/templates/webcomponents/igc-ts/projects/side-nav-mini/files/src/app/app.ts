@@ -123,6 +123,11 @@ export default class App extends LitElement {
       display: none;
     }
 
+    igc-nav-drawer-item::part(base) {
+      min-height: 48px;
+      color: #2d2d2d;
+    }
+
     igc-nav-drawer-item[active]::part(base) {
       background: #e0f2ff;
       color: #0075d2;
@@ -130,6 +135,10 @@ export default class App extends LitElement {
 
     igc-nav-drawer-item[active] igc-icon {
       color: #0075d2;
+    }
+
+    igc-nav-drawer-item:not([active]) igc-icon {
+      color: #2d2d2d;
     }
 
     router-outlet {
@@ -179,7 +188,6 @@ export default class App extends LitElement {
                   slot="icon"
                   name=${route.icon || 'apps'}
                   collection="material"
-                  style=${this.currentPath === route.path ? 'color: #0075D2;' : ''}
                 ></igc-icon>
                 <span slot="content">${route.name}</span>
               </igc-nav-drawer-item>

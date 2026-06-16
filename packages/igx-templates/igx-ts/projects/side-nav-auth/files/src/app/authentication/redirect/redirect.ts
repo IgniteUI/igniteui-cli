@@ -26,7 +26,14 @@ export class Redirect implements OnInit {
 
   async ngOnInit() {
     try {
-      await firstValueFrom(this.oidcSecurityService.checkAuth());
+      // Facebook uses the JS SDK (popup), not OIDC — skip checkAuth to avoid
+      // querying an OIDC config that does not exist for this provider.
+      if (this.provider !== ExternalAuthProvider.Facebook) {
+        // Pass the configId so the correct OIDC config is used when multiple providers
+        // are active. Without it, angular-auth-oidc-client falls back to the first config.
+        const configId = this.externalAuth.activeProvider;
+        await firstValueFrom(this.oidcSecurityService.checkAuth(undefined, configId));
+      }
       const userInfo: ExternalLogin = await this.externalAuth.getUserInfo(this.provider);
       const result = await this.authentication.loginWith(userInfo);
       if (!result.error) {

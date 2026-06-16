@@ -235,7 +235,30 @@ export abstract class BasePromptSession {
 			message: "Choose project template:",
 			choices: Util.formatChoices(visibleProjects)
 		});
-		return visibleProjects.find(x => x.name === componentNameRes);
+		const selected = visibleProjects.find(x => x.name === componentNameRes);
+		if (!selected) {
+			throw new Error(`Project template '${componentNameRes}' not found.`);
+		}
+
+		// If the selected template has an auth variant (id: "<template-id>-auth"), offer it
+		const authVariant = projectLibrary.getProject(`${selected.id}-auth`);
+		if (authVariant) {
+			const wantsAuth = await InquirerWrapper.confirm({
+				message: "Would you like to add authentication (login, register, social login)?",
+				default: false
+			});
+			GoogleAnalytics.post({
+				t: "event",
+				ec: "$ig wizard",
+				el: "Include authentication?",
+				ea: `projTemplate: ${selected.id}; auth: ${wantsAuth}`
+			});
+			if (wantsAuth) {
+				return authVariant;
+			}
+		}
+
+		return selected;
 	}
 
 	/**

@@ -50,6 +50,10 @@ export class UserStore {
 
   /** Save new login as current user */
   public setCurrentUser(user: User) {
+    // In production the user is kept in memory only (not written to localStorage)
+    // to avoid exposing the token to XSS. On page refresh the user will need to
+    // log in again. To persist sessions securely, use an HttpOnly cookie set by
+    // your backend instead of relying on localStorage.
     if (isDevMode()) {
       this.localStorage.setItem(USER_TOKEN, JSON.stringify(user));
     }

@@ -1,36 +1,37 @@
 <form id="loginForm" [formGroup]="loginForm" (ngSubmit)="tryLogin()">
-  <igx-input-group>
-    <igx-prefix>
-      <igx-icon>account_circle</igx-icon>
-    </igx-prefix>
-    <label igxLabel for="email">Email</label>
+  <igx-input-group type="border">
     <input igxInput id="loginEmail" name="email" formControlName="email" type="text" />
+    <label igxLabel for="loginEmail">Email</label>
+    <igx-suffix>
+      <igx-icon>account_circle</igx-icon>
+    </igx-suffix>
   </igx-input-group>
-  <igx-input-group>
-    <igx-prefix>
-      <igx-icon>lock</igx-icon>
-    </igx-prefix>
+  <igx-input-group type="border">
     <input igxInput id="loginPassword" name="password" type="password" formControlName="password" />
-    <label igxLabel for="password">Password</label>
+    <label igxLabel for="loginPassword">Password</label>
+    <igx-suffix>
+      <igx-icon>lock</igx-icon>
+    </igx-suffix>
   </igx-input-group>
 
   <div class="button-wrapper">
-    <button igxButton="raised" type="submit" igxRipple [disabled]="!loginForm.valid">LOG IN</button>
-    <a id="register" (click)="showRegistrationForm()">Create new account?</a>
+    <button igxButton="contained" type="submit" igxRipple igxButtonBackground="#239ef0" igxButtonColor="white"
+      [disabled]="!loginForm.valid">Log In</button>
+    <a class="auth-link" (click)="showRegistrationForm()" role="button" tabindex="0">Create new account</a>
   </div>
   @if (externalAuth.hasProvider()) {
     <div class="social-login">
-      @if (externalAuth.hasProvider(providers.Facebook)) {
-        <button type="button" class="facebook" igxButton="raised"
-          (click)="signUpFb()">Sign Up Facebook</button>
-      }
       @if (externalAuth.hasProvider(providers.Google)) {
-        <button type="button" class="google" igxButton="raised"
-          (click)="signUpG()">Sign Up Google</button>
+        <button type="button" class="google" igxButton="contained" igxRipple
+          (click)="signUpG()">Sign in with Google</button>
+      }
+      @if (externalAuth.hasProvider(providers.Facebook)) {
+        <button type="button" class="facebook" igxButton="contained" igxRipple
+          (click)="signUpFb()">Sign in with Facebook</button>
       }
       @if (externalAuth.hasProvider(providers.Microsoft)) {
-        <button type="button" class="microsoft" igxButton="raised"
-          (click)="signUpMS()">Sign Up Microsoft</button>
+        <button type="button" class="microsoft" igxButton="contained" igxRipple
+          (click)="signUpMS()">Sign in with Microsoft</button>
       }
     </div>
   }

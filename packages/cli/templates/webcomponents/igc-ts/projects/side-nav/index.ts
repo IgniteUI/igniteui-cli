@@ -4,7 +4,7 @@ import { BaseWithHomeIgcProject } from "../_base_with_home";
 
 export class SideNavProject extends BaseWithHomeIgcProject implements ProjectTemplate {
 	public id: string = "side-nav";
-	public name = "Default side navigation";
+	public name = "Side navigation default";
 	public description = "Project structure with side navigation drawer";
 	public framework: string = "webcomponents";
 	public projectType: string = "igc-ts";

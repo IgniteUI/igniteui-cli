@@ -1,5 +1,5 @@
 <div class="outer-wrapper">
-  <igx-navbar title="<%=name%>" actionButtonIcon="menu" (action)="nav.toggle()"></igx-navbar>
+  <igx-navbar [title]="appTitle" actionButtonIcon="menu" (action)="nav.toggle()"></igx-navbar>
   <div class="app-body" igxLayout>
     <igx-nav-drawer #nav id="project-menu" [isOpen]="true" [enableGestures]="true" [pinThreshold]="1024" width="280px">
       <ng-template igxDrawer>

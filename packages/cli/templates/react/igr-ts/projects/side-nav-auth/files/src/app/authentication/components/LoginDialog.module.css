@@ -1,0 +1,14 @@
+.dialog::part(base) {
+  max-width: 24rem;
+  width: calc(100vw - 48px);
+}
+
+.dialog::part(title) {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2d2d2d;
+}
+
+.body {
+  padding: 4px 0;
+}

@@ -1,3 +1,12 @@
+# 15.3.0 (2026-06-09)
+
+## What's Changed
+* **New `side-nav-mini` project template:** Added a collapsible mini navigation project template for Angular, React, and Web Components. The template provides a compact side navigation that collapses to icon-only mode, following the same layout and responsiveness patterns as the standard `side-nav` template. [#1716](https://github.com/IgniteUI/igniteui-cli/pull/1716)
+* **Templates — Side Navigation layout alignment:** Unified the Side Navigation template layout, styles, and responsiveness across Angular, React, and Web Components, including an improved auth template UI and selection flow. [#1721](https://github.com/IgniteUI/igniteui-cli/pull/1721), [#1725](https://github.com/IgniteUI/igniteui-cli/pull/1725)
+* **Templates — Empty project alignment:** Aligned empty project base templates across frameworks — consistent home page markup, scoped styles, and updated GitHub icon usage via `material-icons-extended`. [#1715](https://github.com/IgniteUI/igniteui-cli/pull/1715)
+* **fix(cli):** Fixed jQuery theme assets not being copied during project scaffolding. [#1723](https://github.com/IgniteUI/igniteui-cli/pull/1723)
+* **fix(mcp):** Excluded the constructor from the methods section in `get_api_reference` responses. [#1722](https://github.com/IgniteUI/igniteui-cli/pull/1722)
+
 # 15.2.2 (2026-06-01)
 
 ## What's Changed

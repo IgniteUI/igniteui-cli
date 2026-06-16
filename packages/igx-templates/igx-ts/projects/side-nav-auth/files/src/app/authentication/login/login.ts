@@ -1,7 +1,7 @@
 import { Component, inject, output } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
+import { IgxInputGroupComponent, IgxSuffixDirective, IgxIconComponent, IgxLabelDirective,
   IgxInputDirective, IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular';
 
 import { Authentication } from '../services/authentication';
@@ -13,7 +13,7 @@ import { UserStore } from '../services/user-store';
   selector: 'app-login',
   templateUrl: './login.html',
   styleUrl: './login.scss',
-  imports: [ReactiveFormsModule, IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
+  imports: [ReactiveFormsModule, IgxInputGroupComponent, IgxSuffixDirective, IgxIconComponent, IgxLabelDirective,
     IgxInputDirective, IgxButtonDirective, IgxRippleDirective]
 })
 export class Login {
@@ -29,7 +29,6 @@ export class Login {
   });
   public viewChange = output<void>();
   public loggedIn = output<void>();
-  /** expose to template */
   public providers = ExternalAuthProvider;
 
   signUpG() {
@@ -41,8 +40,10 @@ export class Login {
   }
 
   signUpFb() {
+    // Do NOT emit loggedIn here — Facebook uses a popup flow (FB.login).
+    // The redirect to /auth/redirect-facebook (and then /auth/profile) will
+    // navigate the user away naturally once authentication completes.
     this.externalAuth.login(ExternalAuthProvider.Facebook);
-    this.loggedIn.emit();
   }
 
   async tryLogin() {
@@ -54,7 +55,6 @@ export class Login {
       this.userStore.setCurrentUser(response.user!);
       this.router.navigate(['/auth/profile']);
       this.loginForm.reset();
-      // https://github.com/angular/angular/issues/15741
       Object.keys(this.loginForm.controls).forEach(key => {
         this.loginForm.get(key)?.setErrors(null);
       });
