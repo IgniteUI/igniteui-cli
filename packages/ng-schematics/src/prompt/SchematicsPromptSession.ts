@@ -57,7 +57,7 @@ export class SchematicsPromptSession extends BasePromptSession {
 	}
 
 	protected async complete() {
-		// TODO?
+		// No-op: package installation is managed by the Angular CLI schematic runner
 	}
 
 	protected async configureAI(_frameworkId: string): Promise<void> {

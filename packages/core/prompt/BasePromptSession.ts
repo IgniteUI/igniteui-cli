@@ -463,7 +463,7 @@ export abstract class BasePromptSession {
 		Util.log("");
 		Util.log("Next Steps:");
 		if (this._newProjectName) {
-			Util.log(`  cd ${this._newProjectName}`);
+			Util.log(`  cd "${this._newProjectName}"`);
 		}
 		Util.log("  ig add      start guided mode for adding views to the app");
 		Util.log("  ig start    starts a web server and opens the app in the default browser");
