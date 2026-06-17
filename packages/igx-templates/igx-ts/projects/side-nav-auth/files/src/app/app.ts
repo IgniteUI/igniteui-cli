@@ -42,13 +42,7 @@ export class App implements OnInit {
     path: string,
     name: string,
     icon: string
-  }[] = [
-    {
-      name: 'Home',
-      path: '/home',
-      icon: 'home'
-    }
-  ];
+  }[] = [];
 
   private readonly profileNavLinks: {
     path: string,
@@ -63,9 +57,9 @@ export class App implements OnInit {
   ];
 
   public get topNavLinks() {
-    return this.userStore.currentUser
-      ? [...this.homeNavLinks, ...this.profileNavLinks]
-      : this.homeNavLinks;
+    if (!this.userStore.currentUser) return this.homeNavLinks;
+    const [home, ...rest] = this.homeNavLinks;
+    return [home, ...this.profileNavLinks, ...rest];
   }
 
   public navdrawer = viewChild.required(IgxNavigationDrawerComponent);
@@ -76,11 +70,11 @@ export class App implements OnInit {
   constructor() {
     for (const route of routes) {
       if (route.path && route.data && route.path.indexOf('*') === -1) {
-        this.homeNavLinks[0] = {
+        this.homeNavLinks.push({
           name: route.data['text'],
           path: '/' + route.path,
           icon: route.data['icon'] || 'home'
-        };
+        });
       }
     }
   }

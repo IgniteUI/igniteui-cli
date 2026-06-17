@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ColumnType, IgxGridComponent, IgxPaginatorComponent } from '<%=igxPackage%>';
-import { Employee, employeesData } from './localData';
+import { Employee, employeesData } from './data';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
