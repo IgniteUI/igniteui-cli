@@ -431,7 +431,8 @@ describe("Unit - PromptSession", () => {
 		const mockProjectLibrary = {
 			themes: ["bootstrap"],
 			projectIds: ["empty"],
-			projects: [mockProjectTemplate]
+			projects: [mockProjectTemplate],
+			getProject: () => undefined
 		};
 		const mockFramework = { id: "blazor", name: "Blazor", projectLibraries: [mockProjectLibrary] };
 		const mockTemplate = jasmine.createSpyObj("mockTemplate", {
@@ -470,7 +471,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.processTemplates).not.toHaveBeenCalled();
 		expect(mockProjectTemplate.generateConfig).not.toHaveBeenCalled();
 		expect(Util.gitInit).toHaveBeenCalled();
-		expect(aiConfig.configure).toHaveBeenCalledWith("blazor");
+		expect(aiConfig.configure).toHaveBeenCalledWith("blazor", { verbose: false });
 	});
 	it("Complete & Run - with empty localConfig prints dotnet next-steps and skips completeAndRun", async () => {
 		App.container.set(TEMPLATE_MANAGER, {} as any);

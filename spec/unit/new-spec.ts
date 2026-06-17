@@ -551,7 +551,7 @@ describe("Unit - New command", () => {
 
 			await newCmd.handler({ name: "my-blazor", framework: "blazor", _: ["new"], $0: "new" });
 
-			expect(aiConfig.configure as jasmine.Spy).toHaveBeenCalledWith("blazor", undefined, undefined);
+			expect(aiConfig.configure as jasmine.Spy).toHaveBeenCalledWith("blazor", { agents: undefined, assistants: undefined });
 			expect(Util.gitInit).toHaveBeenCalled();
 			expect(Util.log).toHaveBeenCalledWith("  dotnet run --project my-blazor");
 		});
