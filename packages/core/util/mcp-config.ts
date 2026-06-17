@@ -16,8 +16,8 @@ interface AssistantMcpConfig {
 }
 
 export const AI_ASSISTANT_LABELS: Record<AiCodingAssistant, string> = {
-	"generic":	".mcp.json (generic for Claude Code, VS Code, and other assistants)",
-	"vscode":	"VS Code (GitHub Copilot)",
+	"generic":	".mcp.json (generic for Claude Code, GitHub Copilot, and other assistants)",
+	"vscode":	"VS Code",
 	"cursor":	"Cursor",
 	"gemini":	"Gemini",
 	"junie":	"JetBrains Junie",

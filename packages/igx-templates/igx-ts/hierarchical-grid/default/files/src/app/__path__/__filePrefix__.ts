@@ -9,5 +9,6 @@ import { IgxHierarchicalGridComponent, IgxColumnComponent, IgxRowIslandComponent
   imports: [IgxHierarchicalGridComponent, IgxColumnComponent, IgxRowIslandComponent]
 })
 export class <%=ClassName%> {
+  public title = '<%=name%>';
   public localData: Artist[] = ARTISTS;
 }
