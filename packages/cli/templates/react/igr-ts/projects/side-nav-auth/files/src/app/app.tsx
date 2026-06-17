@@ -60,8 +60,10 @@ function AppContent() {
     return () => mediaQuery.removeEventListener("change", updateDrawerState);
   }, []);
 
+  const toAbsPath = (p: string) => p.startsWith('/') ? p : `/${p}`;
+
   const handleRouteClick = (path: string) => {
-    navigate(path);
+    navigate(toAbsPath(path));
 
     if (window.matchMedia("(max-width: 1024px)").matches) {
       setDrawerOpen(false);
@@ -92,7 +94,7 @@ function AppContent() {
           {visibleRoutes.map((route) => (
             <IgrNavDrawerItem
               key={route.path}
-              active={location.pathname === route.path}
+              active={location.pathname === toAbsPath(route.path)}
               onClick={() => handleRouteClick(route.path)}
             >
               <IgrIcon
@@ -100,7 +102,7 @@ function AppContent() {
                 name={route.icon || "home"}
                 collection="material"
                 style={{
-                  color: location.pathname === route.path ? "#0075D2" : "#2d2d2d",
+                  color: location.pathname === toAbsPath(route.path) ? "#0075D2" : "#2d2d2d",
                 }}
               />
               <span slot="content">{route.text}</span>
