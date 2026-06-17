@@ -1,8 +1,8 @@
 import { Component, inject, output } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective, IgxInputDirective, IgxButtonDirective,
-	IgxRippleDirective } from 'igniteui-angular';
+import { IgxInputGroupComponent, IgxSuffixDirective, IgxIconComponent, IgxLabelDirective, IgxInputDirective, IgxButtonDirective,
+  IgxRippleDirective } from 'igniteui-angular';
 import { RegisterInfo } from '../models/register-info';
 import { Authentication } from '../services/authentication';
 import { UserStore } from '../services/user-store';
@@ -11,8 +11,8 @@ import { UserStore } from '../services/user-store';
   selector: 'app-register',
   templateUrl: './register.html',
   styleUrl: './register.scss',
-  imports: [ReactiveFormsModule, IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective,
-	IgxInputDirective, IgxButtonDirective, IgxRippleDirective]
+  imports: [ReactiveFormsModule, IgxInputGroupComponent, IgxSuffixDirective, IgxIconComponent, IgxLabelDirective,
+    IgxInputDirective, IgxButtonDirective, IgxRippleDirective]
 })
 export class Register {
 

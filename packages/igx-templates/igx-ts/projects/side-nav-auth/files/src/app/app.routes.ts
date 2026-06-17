@@ -5,6 +5,6 @@ import { AUTH_BASE_PATH } from './authentication/services/external-auth-configs'
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: Home, data: { text: 'Home' } },
+  { path: 'home', component: Home, data: { text: 'Home', icon: 'home' } },
   { path: AUTH_BASE_PATH, children: AUTH_ROUTES }
 ];

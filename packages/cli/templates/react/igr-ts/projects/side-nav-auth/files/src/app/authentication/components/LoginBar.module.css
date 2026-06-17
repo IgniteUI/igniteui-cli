@@ -1,0 +1,42 @@
+.loginBtn::part(base) {
+  color: #0075d2;
+  background: #fff;
+  border-color: rgba(0, 117, 210, 0.35);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background .15s;
+}
+
+.loginBtn::part(base):hover {
+  background: #e8f3fc;
+}
+
+.profileAvatar {
+  cursor: pointer;
+  color: #0075d2;
+  --ig-avatar-background: #fff;
+  --ig-avatar-color: #0075d2;
+}
+
+:global(igc-dropdown-item:hover),
+:global(igc-dropdown-item[active]:hover) {
+  background: #e8f3fc;
+  color: #0075d2;
+}
+
+:global(igc-dropdown-item[active]) {
+  background: #e8f3fc;
+  color: #0075d2;
+}
+
+:global(igc-dropdown-item[selected]),
+:global(igc-dropdown-item[selected]:hover),
+:global(igc-dropdown-item[selected][active]) {
+  background: #e8f3fc;
+  color: #0075d2;
+}
+
+.profileAvatar:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}

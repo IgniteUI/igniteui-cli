@@ -39,7 +39,7 @@ export class PromptSession extends BasePromptSession {
 	}
 
 	protected override async configureAI(frameworkId: string): Promise<void> {
-		await aiConfigure(frameworkId);
+		await aiConfigure(frameworkId, { verbose: false });
 	}
 
 	protected override templateSelectedTask(type: "component" | "view" = "component"): Task<PromptTaskContext> {

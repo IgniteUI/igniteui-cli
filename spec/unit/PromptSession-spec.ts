@@ -138,7 +138,8 @@ describe("Unit - PromptSession", () => {
 		const mockProjectLibrary = {
 			themes: ["infragistics", "infragistics.less"],
 			projectIds: ["empty"],
-			projects: [mockProject]
+			projects: [mockProject],
+			getProject: jasmine.createSpy().and.returnValue(undefined)
 		};
 		const projectLibraries = ["jQuery", "Angular", "React"];
 		const mockFramework1 = {
@@ -250,7 +251,8 @@ describe("Unit - PromptSession", () => {
 		const mockProjectLibrary = {
 			themes: ["infragistics"],
 			projectIds: ["empty"],
-			projects: [mockProjectTemplate]
+			projects: [mockProjectTemplate],
+			getProject: jasmine.createSpy().and.returnValue(undefined)
 		};
 		const projectLibraries = [
 			{ projectType: "ig-ts", name: "Ignite UI Angular Wrappers" },
@@ -315,7 +317,7 @@ describe("Unit - PromptSession", () => {
 		expect(Util.log).toHaveBeenCalledWith(" Project structure generated.");
 		expect(Util.gitInit).toHaveBeenCalled();
 		expect(mockSession.chooseActionLoop).toHaveBeenCalled();
-		expect(aiConfig.configure).toHaveBeenCalledOnceWith("angular");
+		expect(aiConfig.configure).toHaveBeenCalledOnceWith("angular", jasmine.objectContaining({ verbose: false }));
 	});
 	it("start - New project - missing IFs", async () => {
 		const mockProject = {
@@ -326,7 +328,8 @@ describe("Unit - PromptSession", () => {
 		const mockProjectLibrary = {
 			projectIds: ["empty"],
 			themes: ["infragistics", "infragistics.less"],
-			projects: [mockProject]
+			projects: [mockProject],
+			getProject: jasmine.createSpy().and.returnValue(undefined)
 		};
 		const projectLibraries = ["jQuery", "Angular", "React"];
 		const mockFramework1 = {
@@ -910,9 +913,10 @@ describe("Unit - PromptSession", () => {
 		spyOn(InquirerWrapper, "input").and.returnValues(Promise.resolve("Test1"));
 		spyOn(InquirerWrapper, "select").and.returnValues(
 			Promise.resolve("Angular"),
-			Promise.resolve("Default side navigation"),
+			Promise.resolve("Side navigation default"),
 			Promise.resolve("Custom")
 		);
+		spyOn(InquirerWrapper, "confirm").and.returnValue(Promise.resolve(false));
 		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
@@ -950,8 +954,9 @@ describe("Unit - PromptSession", () => {
 		spyOn(InquirerWrapper, "input").and.returnValues(Promise.resolve("Test1"));
 		spyOn(InquirerWrapper, "select").and.returnValues(
 			Promise.resolve("Angular"),
-			Promise.resolve("Default side navigation"),
+			Promise.resolve("Side navigation default"),
 			Promise.resolve("Default"));
+		spyOn(InquirerWrapper, "confirm").and.returnValue(Promise.resolve(false));
 		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve([]));
 		spyOn(mockSession, "chooseActionLoop").and.returnValue(Promise.resolve());
 		spyOn(process, "chdir");
@@ -967,7 +972,8 @@ describe("Unit - PromptSession", () => {
 		const visibleProject1 = createMockProjectTemplate({ ...mockBaseTemplate, name: "empty", isHidden: false });
 		const visibleProject2 = createMockProjectTemplate({ ...mockBaseTemplate, name: "top-nav", isHidden: false });
 		const mockProjectLibrary = {
-			projects: [hiddenProject, visibleProject1, visibleProject2]
+			projects: [hiddenProject, visibleProject1, visibleProject2],
+			getProject: jasmine.createSpy().and.returnValue(undefined)
 		} as unknown as ProjectLibrary;
 
 		const mockTemplate = jasmine.createSpyObj("mockTemplate", ["getProjectLibrary"]);

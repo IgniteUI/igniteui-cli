@@ -1,6 +1,6 @@
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ENVIRONMENT_INITIALIZER, EnvironmentProviders, inject, Provider } from '@angular/core';
-import { OpenIdConfiguration, provideAuth } from 'angular-auth-oidc-client';
+import { OidcSecurityService, OpenIdConfiguration, provideAuth } from 'angular-auth-oidc-client';
 
 import { BackendProvider } from './services/fake-backend';
 import { JwtInterceptor } from './services/jwt.interceptor';
@@ -57,7 +57,9 @@ export function provideAuthentication(authProviders: AuthProviders = {}): (Provi
       redirectUrl: `${window.location.origin}/${AUTH_BASE_PATH}/${ExternalAuthRedirectUrl.Microsoft}`,
       postLogoutRedirectUri: window.location.origin,
       clientId: authProviders.microsoft.clientId,
-      scope: 'openid profile email',
+      // offline_access is required by Microsoft to receive refresh tokens in auth-code + PKCE flows.
+      // See: https://learn.microsoft.com/en-us/entra/identity-platform/scopes-oidc#offline_access
+      scope: 'openid profile email offline_access',
       responseType: 'code',
       silentRenew: true,
       useRefreshToken: true,
@@ -80,6 +82,10 @@ export function provideAuthentication(authProviders: AuthProviders = {}): (Provi
         if (authProviders.google) { externalAuth.addGoogle(); }
         if (authProviders.microsoft) { externalAuth.addMicrosoft(); }
         if (authProviders.facebook) { externalAuth.addFacebook(authProviders.facebook.clientId); }
+        // Restore any stored OIDC auth state on app load (handles refresh and deep-link scenarios).
+        // See: https://nice-hill-002425310.azurestaticapps.net/docs/documentation/public-api
+        const oidc = inject(OidcSecurityService);
+        oidc.checkAuth().subscribe();
       }
     }
   ];

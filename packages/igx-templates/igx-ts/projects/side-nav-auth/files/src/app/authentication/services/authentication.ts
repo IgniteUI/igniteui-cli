@@ -34,7 +34,7 @@ export class Authentication {
       const data = await this.http.post(endpoint, userData).toPromise() as string;
       user = parseUser(data);
     } catch (e: any) {
-      return { error: e.message };
+      return { error: e?.error?.message ?? e?.message ?? 'Authentication failed.' };
     }
 
     return { user };

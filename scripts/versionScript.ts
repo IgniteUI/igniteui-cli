@@ -4,14 +4,18 @@ import * as path from "path";
 import { generateChangelog } from "./changelogScript";
 
 let version: string;
+let coreVersion: string;
 const packageFolders = ["cli", "core", "igx-templates", "ng-schematics", "igniteui-mcp/igniteui-doc-mcp"];
 const updatedPackages = ["@igniteui/angular-templates", "@igniteui/angular-schematics"];
+const coreVersionedPackages = ["@igniteui/cli-core", "@igniteui/mcp-server"];
+const DEP_RANGE_PREFIX = "~";
 
 function getVersion() {
 	const igxPackageJson = JSON.parse(readFileSync("packages/igx-templates/igx-ts/projects/_base/files/package.json", "utf-8"));
 	const versionIG = igxPackageJson.dependencies["igniteui-angular"].replace(/^[^0-9]+/, "");
 	const majorMinor = versionIG.split(".").slice(0, 2).join(".");
 	const versionCLI = JSON.parse(readFileSync("packages/core/package.json").toString());
+	coreVersion = versionCLI.version;
 	let patch = versionCLI.version;
 	if (patch.indexOf("-") > -1) {
 		const prerelease = patch.split("-");
@@ -30,8 +34,12 @@ function updatePackageJson(fileLocation: string) {
 	}
 	for (const pkg of updatedPackages) {
 		if (pkgJson.dependencies[pkg]) {
-			const prefix = pkgJson.dependencies[pkg].match(/[~\^]/g);
-			pkgJson.dependencies[pkg] = `${prefix ? prefix[0] : ""}${version}`;
+			pkgJson.dependencies[pkg] = `${DEP_RANGE_PREFIX}${version}`;
+		}
+	}
+	for (const pkg of coreVersionedPackages) {
+		if (pkgJson.dependencies?.[pkg]) {
+			pkgJson.dependencies[pkg] = `${DEP_RANGE_PREFIX}${coreVersion}`;
 		}
 	}
 	writeFileSync(fileLocation, JSON.stringify(pkgJson, null, 2) + "\n");
