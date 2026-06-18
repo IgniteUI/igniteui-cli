@@ -10,7 +10,7 @@ class IgxGeographicMapTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Geographic Map";
 		this.description = "Basic IgxGeographicMap.";
-		this.packages = ["igniteui-angular-core@~21.0.0", "igniteui-angular-charts@~21.0.0", "igniteui-angular-maps@~21.0.0"];
+		this.packages = ["igniteui-angular-core@~22.0.0", "igniteui-angular-charts@~22.0.0", "igniteui-angular-maps@~22.0.0"];
 	}
 }
 module.exports = new IgxGeographicMapTemplate();
