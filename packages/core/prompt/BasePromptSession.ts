@@ -467,6 +467,7 @@ export abstract class BasePromptSession {
 				} else {
 					Util.log("");
 					Util.log("Next Steps:");
+					Util.log(`  cd ${projectName}`);
 					Util.log(`  dotnet run --project ${projectName}`);
 				}
 				break;
