@@ -7,14 +7,27 @@ import { NewProjectOptions } from "./schema";
 
 export default function(options: NewProjectOptions): Rule {
 	return (tree: Tree, _context: SchematicContext) => {
-		const config = options.projTemplate.generateConfig(options.name, options.theme);
+		let config: { [key: string]: any };
+		let templateId = options.templateId;
+		let templatePaths = options.templatePaths || [];
+
+		if (options.projTemplate) {
+			config = options.projTemplate.generateConfig(options.name, options.theme);
+			templateId = options.projTemplate.id;
+			templatePaths = options.projTemplate.templatePaths;
+		} else {
+			if (!options.config || !templatePaths.length) {
+				throw new Error("Missing app-projects template data.");
+			}
+			config = options.config;
+		}
 		// update version with schematics one
 		config.cliVersion = Util.version(join(__dirname, "../../package.json"));
 		return chain([
 			(_tree: Tree, context: SchematicContext) => {
-				context.logger.debug(`Project template: ${options.projTemplate.id}`);
+				context.logger.debug(`Project template: ${templateId}`);
 			},
-			...options.projTemplate.templatePaths.map(templatePath =>
+			...templatePaths.map(templatePath =>
 				mergeWith(
 					apply(url(Util.relativePath(__filename, templatePath, true)), [
 						template(config)

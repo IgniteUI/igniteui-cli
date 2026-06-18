@@ -103,7 +103,9 @@ export function newProject(options: OptionsSchema): Rule {
 					const views = (projLibrary as any).customTemplates;
 
 					projectOptions = {
-						projTemplate,
+						config: projTemplate.generateConfig(options.name, theme),
+						templateId: projTemplate.id,
+						templatePaths: [...projTemplate.templatePaths],
 						theme,
 						name: options.name
 					};
@@ -163,7 +165,7 @@ export function newProject(options: OptionsSchema): Rule {
 				if (prompt.userAnswers && prompt.userAnswers.get("upgradePackages")) {
 					return defer(async () => {
 						setVirtual(tree);
-						await projectOptions.projTemplate.upgradeIgniteUIPackages(options.name || "", "");
+						await projTemplate.upgradeIgniteUIPackages(options.name || "", "");
 						return tree;
 					});
 				}
