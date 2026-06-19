@@ -192,13 +192,14 @@ export default class App extends LitElement {
           >
             ${visibleRoutes.map((route) => html`
               <igc-nav-drawer-item
-                ?active=${this.currentPath === route.path}
+                ?active=${this.currentPath === this.toAbsPath(route.path)}
                 @click=${() => this.navigate(route.path)}
               >
                 <igc-icon
                   slot="icon"
                   name=${route.icon || 'apps'}
                   collection="material"
+                  style=${this.currentPath === this.toAbsPath(route.path) ? 'color: #0075D2;' : ''}
                 ></igc-icon>
                 <span slot="content">${route.name}</span>
               </igc-nav-drawer-item>
@@ -234,13 +235,19 @@ export default class App extends LitElement {
     router.setRoutes(routes);
   }
 
+  private toAbsPath(p: string) {
+    return p.startsWith('/') ? p : '/' + p;
+  }
+
   private toggleDrawer = () => {
     this.drawerOpen = !this.drawerOpen;
   };
 
   private navigate(path: string) {
-    this.currentPath = path;
-    Router.go(path);
+    const targetPath = this.toAbsPath(path);
+
+    this.currentPath = targetPath;
+    Router.go(targetPath);
   }
 
   private updateDrawerState = () => {

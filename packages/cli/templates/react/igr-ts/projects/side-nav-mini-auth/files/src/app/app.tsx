@@ -36,6 +36,7 @@ function AppContent() {
   const navigate = useNavigate();
   const location = useLocation();
   const { currentUser } = useAuth();
+  const toAbsPath = (p: string) => p.startsWith('/') ? p : `/${p}`;
 
   const navRoutes = useMemo(() => routes.filter((r) => {
     if (!r.text) return false;
@@ -71,14 +72,14 @@ function AppContent() {
           {navRoutes.map((route) => (
             <IgrNavDrawerItem
               key={route.path}
-              active={location.pathname === route.path}
-              onClick={() => navigate(route.path)}
+              active={location.pathname === toAbsPath(route.path)}
+              onClick={() => navigate(toAbsPath(route.path))}
             >
               <IgrIcon
                 slot="icon"
                 name={route.icon || 'apps'}
                 collection="material"
-                style={location.pathname === route.path ? { color: '#0075D2' } : undefined}
+                style={location.pathname === toAbsPath(route.path) ? { color: '#0075D2' } : undefined}
               />
               <span slot="content">{route.text}</span>
             </IgrNavDrawerItem>

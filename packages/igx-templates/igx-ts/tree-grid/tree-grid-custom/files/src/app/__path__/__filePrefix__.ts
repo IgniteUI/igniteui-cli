@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee, EMPLOYEE_DATA } from './localData';
+import { Employee, EMPLOYEE_DATA } from './data';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
