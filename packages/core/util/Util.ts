@@ -257,6 +257,15 @@ export class Util {
 	}
 
 	/**
+	 * Wraps a value in double quotes when it contains whitespace, so it survives as a single
+	 * argument when copied into a shell. Returns it unchanged otherwise.
+	 * @param value Text to quote if needed
+	 */
+	public static quoteIfNeeded(value: string): string {
+		return /\s/.test(value) ? `"${value}"` : value;
+	}
+
+	/**
 	 * Separate provided name to words on each space and/or dash and capitalize first letter of each
 	 * resulting word.
 	 * @param name Text to convert to proper class name

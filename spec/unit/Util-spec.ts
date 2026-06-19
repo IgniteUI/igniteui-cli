@@ -22,6 +22,12 @@ describe("Unit - Util", () => {
 		}
 	});
 
+	it("quoteIfNeeded should wrap values with whitespace in double quotes", () => {
+		expect(Util.quoteIfNeeded("IG Project")).toEqual(`"IG Project"`);
+		expect(Util.quoteIfNeeded("my-app")).toEqual("my-app");
+		expect(Util.quoteIfNeeded("plain")).toEqual("plain");
+	});
+
 	it("should read the existing app folder name and return incremented app name ", () => {
 		const defaultName = "IG Project";
 

@@ -201,10 +201,11 @@ const command: NewCommandType = {
 				Util.gitInit(process.cwd(), argv.name);
 			}
 
+			const quotedName = Util.quoteIfNeeded(argv.name);
 			Util.log("");
 			Util.log("Next Steps:");
-			Util.log(`  cd ${argv.name}`);
-			Util.log(`  dotnet run --project ${argv.name}`);
+			Util.log(`  cd ${quotedName}`);
+			Util.log(`  dotnet run --project ${quotedName}`);
 			return;
 		}
 
@@ -235,7 +236,7 @@ const command: NewCommandType = {
 
 		Util.log("");
 		Util.log("Next Steps:");
-		Util.log(`  cd ${argv.name}`);
+		Util.log(`  cd ${Util.quoteIfNeeded(argv.name)}`);
 		Util.log("  ig add      start guided mode for adding views to the app");
 		Util.log("  ig start    starts a web server and opens the app in the default browser");
 	},
