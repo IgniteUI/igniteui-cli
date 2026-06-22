@@ -5,7 +5,7 @@ class IgbBlazorProjectLibrary extends BaseProjectLibrary {
 		super(__dirname);
 		this.name = "Ignite UI for Blazor";
 		this.projectType = "igb";
-		this.themes = ["default"];
+		this.themes = ["bootstrap", "material", "fluent", "indigo"];
 	}
 }
 module.exports = new IgbBlazorProjectLibrary();

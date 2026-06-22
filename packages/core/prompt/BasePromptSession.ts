@@ -2,7 +2,7 @@ import * as path from "path";
 import { Separator } from "@inquirer/prompts";
 import { BaseTemplateManager } from "../templates";
 import {
-	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
+	BaseTemplate, Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "../types";
 import { App, ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
@@ -12,6 +12,7 @@ import { InquirerWrapper } from "./InquirerWrapper";
 
 export abstract class BasePromptSession {
 	protected config: Config;
+	private _newProjectName: string | null = null;
 
 	protected get templateManager(): BaseTemplateManager {
 		return App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
@@ -60,20 +61,50 @@ export abstract class BasePromptSession {
 			// project options:
 			theme = await this.getTheme(projLibrary);
 
-			Util.log("  Generating project structure.");
-			const config = projTemplate.generateConfig(projectName, theme);
-			for (const templatePath of projTemplate.templatePaths) {
-				await Util.processTemplates(templatePath, path.join(process.cwd(), projectName),
-				config, projTemplate.delimiters, false);
+			if (projTemplate.hasExtraConfiguration) {
+				await this.customizeTemplateTask(projTemplate);
 			}
 
-			Util.log(Util.greenCheck() + " Project structure generated.");
-			if (!this.config.skipGit) {
-				Util.gitInit(process.cwd(), projectName);
+			if (typeof projTemplate.scaffold === "function") {
+				Util.log("  Generating project structure.");
+				const success = await projTemplate.scaffold({
+					name: projectName,
+					theme,
+					skipInstall: false,
+					skipGit: this.config.skipGit
+				});
+				if (!success) {
+					return;
+				}
+				// move cwd to project folder
+				process.chdir(projectName);
+				await this.configureAI(framework.id);
+				// the scaffold service never touches git; init after AI config so generated files are committed
+				if (!this.config.skipGit) {
+					process.chdir("..");
+					Util.gitInit(process.cwd(), projectName);
+					process.chdir(projectName);
+				}
+			} else {
+				Util.log("  Generating project structure.");
+				const config = projTemplate.generateConfig(projectName, theme);
+				for (const templatePath of projTemplate.templatePaths) {
+					await Util.processTemplates(templatePath, path.join(process.cwd(), projectName),
+					config, projTemplate.delimiters, false);
+				}
+
+				Util.log(Util.greenCheck() + " Project structure generated.");
+				// move cwd to project folder
+				process.chdir(projectName);
+				await this.configureAI(framework.id);
+				// init git after AI config so generated files are part of the initial commit
+				if (!this.config.skipGit) {
+					process.chdir("..");
+					Util.gitInit(process.cwd(), projectName);
+					process.chdir(projectName);
+				}
 			}
-			// move cwd to project folder
-			process.chdir(projectName);
-			await this.configureAI(framework.id);
+			this._newProjectName = projectName;
 		}
 		await this.chooseActionLoop(projLibrary);
 		//TODO: restore cwd?
@@ -95,8 +126,8 @@ export abstract class BasePromptSession {
 		}
 	}
 
-	/** Install packages and run project */
-	protected abstract completeAndRun(port?: number);
+	/** Install packages */
+	protected abstract complete(): Promise<void>;
 
 	/** Upgrade packages to use private Infragistics feed */
 	protected abstract upgradePackages();
@@ -302,7 +333,7 @@ export abstract class BasePromptSession {
 	}
 
 	/** Create prompts from template extra configuration and assign user answers to the template */
-	protected async customizeTemplateTask(template: Template) {
+	protected async customizeTemplateTask(template: BaseTemplate) {
 		const extraPrompt = this.createQuestions(template.getExtraConfiguration());
 		const extraConfigAnswers = [];
 		for (const question of extraPrompt) {
@@ -395,7 +426,7 @@ export abstract class BasePromptSession {
 			name: "action",
 			message: "Choose an action:",
 			choices: this.generateActionChoices(context.projectLibrary),
-			default: "Complete & Run"
+			default: "Complete and Install packages"
 		});
 
 		runner.clearPending();
@@ -425,8 +456,29 @@ export abstract class BasePromptSession {
 			runner.addTask(this.templateSelectedTask("view"));
 			runner.addTask(run => Promise.resolve(run.resetTasks()));
 			break;
-		case "Complete & Run":
+		case "Complete and Install packages":
 			const config = ProjectConfig.localConfig();
+
+			if (!config.project || config.project.framework === "blazor") {
+				// Blazor (scaffolded via dotnet) has no cli-config — print next-steps instead of
+				// routing through completeAndRun (npm + start.start, which requires a cli-config).
+				const projectName = path.basename(process.cwd());
+				if (Util.canPrompt() && await InquirerWrapper.confirm({
+					message: "Run the app now (dotnet run)?",
+					default: false
+				})) {
+					const result = Util.spawnSync("dotnet", ["run", "--project", projectName], { stdio: "inherit" });
+					if (result.error || result.status !== 0) {
+						Util.error("dotnet run failed (see dotnet output above).", "red");
+					}
+				} else {
+					Util.log("");
+					Util.log("Next Steps:");
+					Util.log(`  cd ${Util.quoteIfNeeded(projectName)}`);
+					Util.log(`  dotnet run --project ${Util.quoteIfNeeded(projectName)}`);
+				}
+				break;
+			}
 
 			if (config.project.framework === "angular" &&
 				config.project.projectType === "igx-ts" &&
@@ -450,28 +502,21 @@ export abstract class BasePromptSession {
 				}
 			}
 
-			const defaultPort = config.project.defaultPort;
-			const port = await this.getUserInput({
-				type: "input",
-				name: "port",
-				message: "Choose app host port:",
-				default: defaultPort,
-				validate: (input: string) => {
-					if (!Number(input)) {
-						Util.log(""); /* new line */
-						Util.error(`port should be a number. Input valid port or use the suggested default port`, "red");
-						return false;
-					}
-					return true;
-				}
-			});
-			config.project.defaultPort = parseInt(port, 10);
-			ProjectConfig.setConfig(config);
-
-			await this.completeAndRun(config.project.defaultPort);
+			await this.complete();
+			this.showNextSteps();
 			break;
 		}
 		return true;
+	}
+
+	private showNextSteps() {
+		Util.log("");
+		Util.log("Next Steps:");
+		if (this._newProjectName) {
+			Util.log(`  cd "${this._newProjectName}"`);
+		}
+		Util.log("  ig add      start guided mode for adding views to the app");
+		Util.log("  ig start    starts a web server and opens the app in the default browser");
 	}
 
 	/**
@@ -631,7 +676,7 @@ export abstract class BasePromptSession {
 	 */
 	private generateActionChoices(projectLibrary: ProjectLibrary): Array<{}> {
 		const actionChoices: ChoiceItem[] = [
-			{ name: "Complete & Run", description: "install packages and run in the default browser" }
+			{ name: "Complete and Install packages", description: "install packages and show next steps" }
 		];
 
 		/* istanbul ignore next */

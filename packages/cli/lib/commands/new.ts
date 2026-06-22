@@ -45,6 +45,16 @@ const command: NewCommandType = {
 				describe: "Project theme (depends on project type)",
 				type: "string"
 			})
+			.option("hosting", {
+				describe: "Blazor hosting model (Blazor projects only)",
+				type: "string",
+				choices: ["Server", "Wasm", "Auto"]
+			})
+			.option("variant", {
+				describe: "Theme variant (Blazor projects only)",
+				type: "string",
+				choices: ["light", "dark"]
+			})
 			.option("skip-git", {
 				alias: "sg",
 				describe: "Do not initialize a git repository for the project",
@@ -155,6 +165,50 @@ const command: NewCommandType = {
 			cd14: theme
 		});
 
+		if (typeof projTemplate.scaffold === "function") {
+			if (!/^[a-zA-Z][a-zA-Z0-9-]*$/.test(argv.name)) {
+				Util.warn(`The project namespace will be derived from the name '${argv.name}'. ` +
+					"Use only letters, digits and dashes for a clean identifier.", "yellow");
+			}
+
+			const extraConfig: { [key: string]: any } = {};
+			if (argv.hosting) {
+				extraConfig.Hosting = argv.hosting;
+			}
+			if (argv.variant) {
+				extraConfig.Variant = argv.variant;
+			}
+
+			const success = await projTemplate.scaffold({
+				name: argv.name,
+				theme,
+				skipInstall: !!argv.skipInstall,
+				skipGit: !!argv.skipGit,
+				extraConfig
+			});
+			if (!success) {
+				return;
+			}
+
+			process.chdir(argv.name);
+			await configure(argv.framework, {
+				agents: argv.agents as (AIAgentTarget | "none")[],
+				assistants: argv.assistants as (AiCodingAssistant | "none")[]
+			});
+			process.chdir("..");
+
+			if (!argv["skip-git"] && !ProjectConfig.getConfig().skipGit) {
+				Util.gitInit(process.cwd(), argv.name);
+			}
+
+			const quotedName = Util.quoteIfNeeded(argv.name);
+			Util.log("");
+			Util.log("Next Steps:");
+			Util.log(`  cd ${quotedName}`);
+			Util.log(`  dotnet run --project ${quotedName}`);
+			return;
+		}
+
 		const config = projTemplate.generateConfig(argv.name, theme);
 		for (const templatePath of projTemplate.templatePaths) {
 			await Util.processTemplates(templatePath, path.join(process.cwd(), argv.name),
@@ -182,7 +236,7 @@ const command: NewCommandType = {
 
 		Util.log("");
 		Util.log("Next Steps:");
-		Util.log(`  cd ${argv.name}`);
+		Util.log(`  cd ${Util.quoteIfNeeded(argv.name)}`);
 		Util.log("  ig add      start guided mode for adding views to the app");
 		Util.log("  ig start    starts a web server and opens the app in the default browser");
 	},
