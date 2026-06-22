@@ -457,7 +457,7 @@ export abstract class BasePromptSession {
 		case "Complete & Run":
 			const config = ProjectConfig.localConfig();
 
-			if (!config.project) {
+			if (!config.project || config.project.framework === "blazor") {
 				// Blazor (scaffolded via dotnet) has no cli-config — print next-steps instead of
 				// routing through completeAndRun (npm + start.start, which requires a cli-config).
 				const projectName = path.basename(process.cwd());
