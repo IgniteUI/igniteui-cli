@@ -75,13 +75,15 @@ export abstract class BasePromptSession {
 				if (!success) {
 					return;
 				}
-				// the scaffold service never touches git, so initialize git here when requested
-				if (!this.config.skipGit) {
-					Util.gitInit(process.cwd(), projectName);
-				}
 				// move cwd to project folder
 				process.chdir(projectName);
 				await this.configureAI(framework.id);
+				// the scaffold service never touches git; init after AI config so generated files are committed
+				if (!this.config.skipGit) {
+					process.chdir("..");
+					Util.gitInit(process.cwd(), projectName);
+					process.chdir(projectName);
+				}
 			} else {
 				Util.log("  Generating project structure.");
 				const config = projTemplate.generateConfig(projectName, theme);
@@ -91,12 +93,15 @@ export abstract class BasePromptSession {
 				}
 
 				Util.log(Util.greenCheck() + " Project structure generated.");
-				if (!this.config.skipGit) {
-					Util.gitInit(process.cwd(), projectName);
-				}
 				// move cwd to project folder
 				process.chdir(projectName);
 				await this.configureAI(framework.id);
+				// init git after AI config so generated files are part of the initial commit
+				if (!this.config.skipGit) {
+					process.chdir("..");
+					Util.gitInit(process.cwd(), projectName);
+					process.chdir(projectName);
+				}
 			}
 		}
 		await this.chooseActionLoop(projLibrary);
