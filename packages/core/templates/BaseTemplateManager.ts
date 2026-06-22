@@ -24,7 +24,7 @@ export abstract class BaseTemplateManager {
 		return this.frameworks.filter(f => includeHidden || !f.hidden).map(f => f.id);
 	}
 	public getFrameworkNames(includeHidden = false): string[] {
-		// exclude WebComponents from the Step-By-Step wizard
+		// hidden frameworks are excluded from the Step-By-Step wizard unless includeHidden is set
 		return this.frameworks.filter(f => includeHidden || !f.hidden).map(f => f.name);
 	}
 	/**  Returns framework found by its name or undefined. */

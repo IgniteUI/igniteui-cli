@@ -257,6 +257,15 @@ export class Util {
 	}
 
 	/**
+	 * Wraps a value in double quotes when it contains whitespace, so it survives as a single
+	 * argument when copied into a shell. Returns it unchanged otherwise.
+	 * @param value Text to quote if needed
+	 */
+	public static quoteIfNeeded(value: string): string {
+		return /\s/.test(value) ? `"${value}"` : value;
+	}
+
+	/**
 	 * Separate provided name to words on each space and/or dash and capitalize first letter of each
 	 * resulting word.
 	 * @param name Text to convert to proper class name
@@ -367,13 +376,14 @@ export class Util {
 	 * @param command Command to be executed
 	 * NOTE: `spawn` without `shell` (unsafe) is **not** equivalent to `exec` & requires direct path to run the correct process on win,
 	 * e.g. `npm.cmd` but that is also blocked in node@24+ for security reasons
-	 * Do not call with/add commands that are not known binaries without validating first
+	 * Do not call with/add commands that are not known binaries without validating first.
+	 * Allowed binaries: `node`, `git`, `dotnet` (all real PATH binaries on every OS, no `.cmd`-shim issue).
 	 * @param args Command arguments
 	 * @param options Command options
 	 * @returns {SpawnSyncReturns} object with status and stdout
 	 * @remarks Consuming code MUST handle the result and check for failure status!
 	 */
-	public static spawnSync(command: 'node' | 'git', args: string[], options?: Omit<SpawnSyncOptions, 'shell'>) {
+	public static spawnSync(command: 'node' | 'git' | 'dotnet', args: string[], options?: Omit<SpawnSyncOptions, 'shell'>) {
 		return spawnSync(command, args, options);
 	}
 
