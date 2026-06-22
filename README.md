@@ -145,7 +145,7 @@ ig start
 
 ## Configure AI Tooling
 
-To configure Ignite UI AI tooling — MCP servers and AI coding skills — run:
+Ignite UI provides rich [AI assisted development toolchain](https://www.infragistics.com/ai-assisted-app-development). To configure Ignite UI AI tooling — MCP servers and AI coding skills — run:
 
 ```bash
 ig ai-config

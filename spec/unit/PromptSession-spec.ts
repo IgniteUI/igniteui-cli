@@ -500,21 +500,20 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("Custom Group 1"),				// select a component group
 			Promise.resolve("Custom Group 1 Component 2"),	// select a component
 			Promise.resolve("Template 1"),					// select a template
-			Promise.resolve("Complete & Run")				// finalize the app
+			Promise.resolve("Complete and Install packages")	// finalize the app
 		);
 
 		spyOn(InquirerWrapper, "input").and.returnValues(
-			Promise.resolve("Template 1 Custom Name"),		// enter a custom name for the template, invoked immediately after a template has been selected
-			Promise.resolve("7777")							// choose a port to run the app on
+			Promise.resolve("Template 1 Custom Name")		// enter a custom name for the template, invoked immediately after a template has been selected
 		);
 
 		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.select).toHaveBeenCalledTimes(9);
-		expect(Util.log).toHaveBeenCalledTimes(3);
+		expect(Util.log).toHaveBeenCalledTimes(7);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
-		expect(start.start).toHaveBeenCalledTimes(1);
+		expect(start.start).not.toHaveBeenCalled();
 
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.input).toHaveBeenCalledWith({
@@ -573,13 +572,12 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("Back"),					// return to the previous menu
 			Promise.resolve("Add scenario"),			// attempt to add a scenario
 			Promise.resolve("Custom Template 1"),		// select a template
-			Promise.resolve("Complete & Run"),			// finalize the app
+			Promise.resolve("Complete and Install packages"),	// finalize the app
 			Promise.resolve("no")						// do not use paid angular
 		);
 
 		spyOn(InquirerWrapper, "input").and.returnValues(
-			Promise.resolve("Custom Template Name"),	// enter a custom name for the template, invoked immediately after a template has been selected
-			Promise.resolve("7777")						// choose a port to run the app on
+			Promise.resolve("Custom Template Name")	// enter a custom name for the template, invoked immediately after a template has been selected
 		);
 
 		spyOn(ProjectConfig, "setConfig");
@@ -588,10 +586,10 @@ describe("Unit - PromptSession", () => {
 		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.select).toHaveBeenCalledTimes(5);
-		expect(InquirerWrapper.input).toHaveBeenCalledTimes(2);
-		expect(Util.log).toHaveBeenCalledTimes(3);
+		expect(InquirerWrapper.input).toHaveBeenCalledTimes(1);
+		expect(Util.log).toHaveBeenCalledTimes(7);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
-		expect(start.start).toHaveBeenCalledTimes(1);
+		expect(start.start).not.toHaveBeenCalled();
 
 		expect(Util.getAvailableName).toHaveBeenCalledTimes(1);
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
@@ -698,7 +696,7 @@ describe("Unit - PromptSession", () => {
 			Promise.resolve("Custom Group 1 Component 2"),	// select a component
 			Promise.resolve("Template 1"),					// select a template
 			Promise.resolve("Choice 1"),					// setup extra configuration for the template
-			Promise.resolve("Complete & Run")				// finalize the app
+			Promise.resolve("Complete and Install packages")	// finalize the app
 		);
 
 		spyOn(InquirerWrapper, "checkbox").and.returnValues(
@@ -706,19 +704,18 @@ describe("Unit - PromptSession", () => {
 		);
 
 		spyOn(InquirerWrapper, "input").and.returnValues(
-			Promise.resolve("Template 1 Custom Name"),		// enter a custom name for the template, invoked immediately after a template has been selected
-			Promise.resolve("7777")							// choose a port to run the app on
+			Promise.resolve("Template 1 Custom Name")		// enter a custom name for the template, invoked immediately after a template has been selected
 		);
 
 		spyOn(ProjectConfig, "setConfig");
 		await mockSession.chooseActionLoop(mockProjectLibrary);
 		expect(mockSession.chooseActionLoop).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.select).toHaveBeenCalledTimes(10);
-		expect(InquirerWrapper.input).toHaveBeenCalledTimes(2);
+		expect(InquirerWrapper.input).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(1);
-		expect(Util.log).toHaveBeenCalledTimes(3);
+		expect(Util.log).toHaveBeenCalledTimes(7);
 		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
-		expect(start.start).toHaveBeenCalledTimes(1);
+		expect(start.start).not.toHaveBeenCalled();
 
 		expect(add.addTemplate).toHaveBeenCalledTimes(1);
 		expect(InquirerWrapper.checkbox).toHaveBeenCalledWith({
@@ -729,7 +726,7 @@ describe("Unit - PromptSession", () => {
 			choices: ["Choice 1", "Choice 2", "Choice 3"]
 		});
 	});
-	it("chooseActionLoop - Complete and Run should update default port", async () => {
+	it("chooseActionLoop - Complete should install packages and show next steps", async () => {
 		const mockProject = {
 			generateConfig: () => Promise.resolve(true)
 		};
@@ -760,33 +757,21 @@ describe("Unit - PromptSession", () => {
 		App.container.set(TEMPLATE_MANAGER, mockTemplate);
 		const mockSession = new PromptSession();
 		spyOn(mockSession, "chooseActionLoop").and.callThrough();
+		spyOn(Util, "log");
 		spyOn(InquirerWrapper, "select").and.returnValues(
-			Promise.resolve("Complete & Run"),
+			Promise.resolve("Complete and Install packages"),
 		);
-		spyOn(InquirerWrapper, "input").and.returnValues(
-			Promise.resolve("7777")
-		);
-		mockProjectConfig.project.defaultPort = 7777;
+		spyOn(PackageManager, "flushQueue").and.returnValue(Promise.resolve());
+		spyOn(PackageManager, "installPackages").and.returnValue(Promise.resolve());
 		spyOn(start, "start");
-		spyOn(ProjectConfig, "setConfig");
 
 		await mockSession.chooseActionLoop(mockProjectLibrary);
-		expect(start.start).toHaveBeenCalledWith({ port: 7777 });
-		expect(ProjectConfig.setConfig).toHaveBeenCalledWith(mockProjectConfig);
-
-		// validate:
-		spyOn(Util, "log");
-		spyOn(Util, "error");
-		const lastCallArgs = (InquirerWrapper.input as jasmine.Spy).calls.mostRecent().args[0];
-		expect(lastCallArgs.validate).toEqual(jasmine.any(Function));
-
-		expect(lastCallArgs.validate("not a number")).toBe(false);
-		expect(lastCallArgs.validate("1a")).toBe(false);
-		expect(Util.error).toHaveBeenCalledWith(
-			"port should be a number. Input valid port or use the suggested default port",
-			"red");
-		expect(lastCallArgs.validate("3210")).toBe(true);
-		expect(Util.error).toHaveBeenCalledTimes(2);
+		expect(start.start).not.toHaveBeenCalled();
+		expect(PackageManager.installPackages).toHaveBeenCalledTimes(1);
+		expect(PackageManager.flushQueue).toHaveBeenCalledWith(true);
+		expect(Util.log).toHaveBeenCalledWith("Next Steps:");
+		expect(Util.log).toHaveBeenCalledWith("  ig add      start guided mode for adding views to the app");
+		expect(Util.log).toHaveBeenCalledWith("  ig start    starts a web server and opens the app in the default browser");
 	});
 	it("chooseActionLoop - should call `upgradePackages` when update angular is true", async () => {
 		const mockProjectConfig = {
@@ -804,11 +789,10 @@ describe("Unit - PromptSession", () => {
 		const mockSession = new PromptSession();
 		spyOn(mockSession as any, "generateActionChoices").and.returnValues([]);
 		spyOn(mockSession as any, "getUserInput").and.returnValues(
-			Promise.resolve("Complete & Run"),
-			Promise.resolve("yes"),
-			Promise.resolve(4200)
+			Promise.resolve("Complete and Install packages"),
+			Promise.resolve("yes")
 			);
-		spyOn(mockSession as any, "completeAndRun").and.returnValues(Promise.resolve());
+		spyOn(mockSession as any, "complete").and.returnValues(Promise.resolve());
 		spyOn(upgrade, "upgrade").and.returnValue();
 
 		await mockSession.chooseActionLoop({} as any);

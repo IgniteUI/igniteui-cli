@@ -1,0 +1,34 @@
+:host {
+  width: 100%;
+}
+
+.page {
+  width: 100%;
+  margin-top: 40px;
+  padding: 0 48px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  color: rgb(0, 153, 255);
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 32px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.grid-wrapper {
+  width: 100%;
+  max-width: 1200px;
+}

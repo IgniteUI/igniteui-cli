@@ -9,6 +9,7 @@ import { IPivotConfiguration, IgxPivotNumericAggregate, IgxPivotGridComponent } 
   imports: [IgxPivotGridComponent]
 })
 export class <%=ClassName%> {
+  public title = '<%=name%>';
   public data = DATA;
   public pivotConfigHierarchy: IPivotConfiguration = {
       columns: [

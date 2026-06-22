@@ -29,9 +29,9 @@ export class PromptSession extends BasePromptSession {
 		return result;
 	}
 
-	protected override async completeAndRun(port?: number) {
+	protected override async complete() {
+		await PackageManager.installPackages();
 		await PackageManager.flushQueue(true);
-		await start.start({ port });
 	}
 
 	protected override async upgradePackages() {

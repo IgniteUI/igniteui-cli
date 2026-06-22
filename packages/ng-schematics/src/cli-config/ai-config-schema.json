@@ -45,8 +45,8 @@
         "multiselect": true,
         "items": [
           { "value": "none", "label": "None (skip MCP configuration)" },
-          { "value": "generic", "label": ".mcp.json (generic for Claude Code, VS Code, and other assistants)" },
-          { "value": "vscode", "label": "VS Code (GitHub Copilot)" },
+          { "value": "generic", "label": ".mcp.json (generic for Claude Code, GitHub Copilot, and other assistants)" },
+          { "value": "vscode", "label": "VS Code" },
           { "value": "cursor", "label": "Cursor" },
           { "value": "gemini", "label": "Gemini" },
           { "value": "junie", "label": "JetBrains Junie" }
