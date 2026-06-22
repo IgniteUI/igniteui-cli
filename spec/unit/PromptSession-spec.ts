@@ -478,8 +478,8 @@ describe("Unit - PromptSession", () => {
 		const mockSession = new PromptSession();
 		spyOn(ProjectConfig, "localConfig").and.returnValue({} as unknown as Config);
 		spyOn(mockSession as any, "generateActionChoices").and.returnValue([]);
-		spyOn(mockSession as any, "getUserInput").and.returnValue(Promise.resolve("Complete & Run"));
-		spyOn(mockSession as any, "completeAndRun");
+		spyOn(mockSession as any, "getUserInput").and.returnValue(Promise.resolve("Complete and Install packages"));
+		spyOn(mockSession as any, "complete");
 		spyOn(Util, "canPrompt").and.returnValue(false);
 		spyOn(Util, "spawnSync");
 		spyOn(Util, "log");
@@ -487,7 +487,7 @@ describe("Unit - PromptSession", () => {
 
 		await mockSession.chooseActionLoop({} as any);
 
-		expect((mockSession as any).completeAndRun).not.toHaveBeenCalled();
+		expect((mockSession as any).complete).not.toHaveBeenCalled();
 		expect(Util.spawnSync).not.toHaveBeenCalled();
 		expect(Util.log).toHaveBeenCalledWith("  dotnet run --project my-blazor");
 	});
