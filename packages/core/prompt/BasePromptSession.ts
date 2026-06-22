@@ -12,6 +12,7 @@ import { InquirerWrapper } from "./InquirerWrapper";
 
 export abstract class BasePromptSession {
 	protected config: Config;
+	private _newProjectName: string | null = null;
 
 	protected get templateManager(): BaseTemplateManager {
 		return App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
@@ -103,6 +104,7 @@ export abstract class BasePromptSession {
 					process.chdir(projectName);
 				}
 			}
+			this._newProjectName = projectName;
 		}
 		await this.chooseActionLoop(projLibrary);
 		//TODO: restore cwd?
@@ -124,8 +126,8 @@ export abstract class BasePromptSession {
 		}
 	}
 
-	/** Install packages and run project */
-	protected abstract completeAndRun(port?: number);
+	/** Install packages */
+	protected abstract complete(): Promise<void>;
 
 	/** Upgrade packages to use private Infragistics feed */
 	protected abstract upgradePackages();
@@ -424,7 +426,7 @@ export abstract class BasePromptSession {
 			name: "action",
 			message: "Choose an action:",
 			choices: this.generateActionChoices(context.projectLibrary),
-			default: "Complete & Run"
+			default: "Complete and Install packages"
 		});
 
 		runner.clearPending();
@@ -454,7 +456,7 @@ export abstract class BasePromptSession {
 			runner.addTask(this.templateSelectedTask("view"));
 			runner.addTask(run => Promise.resolve(run.resetTasks()));
 			break;
-		case "Complete & Run":
+		case "Complete and Install packages":
 			const config = ProjectConfig.localConfig();
 
 			if (!config.project || config.project.framework === "blazor") {
@@ -500,28 +502,21 @@ export abstract class BasePromptSession {
 				}
 			}
 
-			const defaultPort = config.project.defaultPort;
-			const port = await this.getUserInput({
-				type: "input",
-				name: "port",
-				message: "Choose app host port:",
-				default: defaultPort,
-				validate: (input: string) => {
-					if (!Number(input)) {
-						Util.log(""); /* new line */
-						Util.error(`port should be a number. Input valid port or use the suggested default port`, "red");
-						return false;
-					}
-					return true;
-				}
-			});
-			config.project.defaultPort = parseInt(port, 10);
-			ProjectConfig.setConfig(config);
-
-			await this.completeAndRun(config.project.defaultPort);
+			await this.complete();
+			this.showNextSteps();
 			break;
 		}
 		return true;
+	}
+
+	private showNextSteps() {
+		Util.log("");
+		Util.log("Next Steps:");
+		if (this._newProjectName) {
+			Util.log(`  cd "${this._newProjectName}"`);
+		}
+		Util.log("  ig add      start guided mode for adding views to the app");
+		Util.log("  ig start    starts a web server and opens the app in the default browser");
 	}
 
 	/**
@@ -681,7 +676,7 @@ export abstract class BasePromptSession {
 	 */
 	private generateActionChoices(projectLibrary: ProjectLibrary): Array<{}> {
 		const actionChoices: ChoiceItem[] = [
-			{ name: "Complete & Run", description: "install packages and run in the default browser" }
+			{ name: "Complete and Install packages", description: "install packages and show next steps" }
 		];
 
 		/* istanbul ignore next */
