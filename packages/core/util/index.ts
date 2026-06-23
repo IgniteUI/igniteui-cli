@@ -3,6 +3,7 @@ export * from './detect-framework';
 export * from './GoogleAnalytics';
 export * from './mcp-config';
 export * from './Util';
+export * from './DotnetTemplateManager';
 export * from './ProjectConfig';
 export * from './Schematics';
 export * from './App';

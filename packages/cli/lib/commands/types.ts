@@ -14,6 +14,12 @@ export interface PositionalArgs {
 	/** Which theme to use when creating a new project. */
 	theme?: string;
 
+	/** Blazor hosting model (Blazor projects only). */
+	hosting?: string;
+
+	/** Theme variant (Blazor projects only). */
+	variant?: string;
+
 	template?: string;
 
 	module?: string;

@@ -2,7 +2,7 @@ import * as path from "path";
 import { Separator } from "@inquirer/prompts";
 import { BaseTemplateManager } from "../templates";
 import {
-	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
+	BaseTemplate, Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "../types";
 import { App, ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
@@ -61,21 +61,50 @@ export abstract class BasePromptSession {
 			// project options:
 			theme = await this.getTheme(projLibrary);
 
-			Util.log("  Generating project structure.");
-			const config = projTemplate.generateConfig(projectName, theme);
-			for (const templatePath of projTemplate.templatePaths) {
-				await Util.processTemplates(templatePath, path.join(process.cwd(), projectName),
-				config, projTemplate.delimiters, false);
+			if (projTemplate.hasExtraConfiguration) {
+				await this.customizeTemplateTask(projTemplate);
 			}
 
-			Util.log(Util.greenCheck() + " Project structure generated.");
-			if (!this.config.skipGit) {
-				Util.gitInit(process.cwd(), projectName);
+			if (typeof projTemplate.scaffold === "function") {
+				Util.log("  Generating project structure.");
+				const success = await projTemplate.scaffold({
+					name: projectName,
+					theme,
+					skipInstall: false,
+					skipGit: this.config.skipGit
+				});
+				if (!success) {
+					return;
+				}
+				// move cwd to project folder
+				process.chdir(projectName);
+				await this.configureAI(framework.id);
+				// the scaffold service never touches git; init after AI config so generated files are committed
+				if (!this.config.skipGit) {
+					process.chdir("..");
+					Util.gitInit(process.cwd(), projectName);
+					process.chdir(projectName);
+				}
+			} else {
+				Util.log("  Generating project structure.");
+				const config = projTemplate.generateConfig(projectName, theme);
+				for (const templatePath of projTemplate.templatePaths) {
+					await Util.processTemplates(templatePath, path.join(process.cwd(), projectName),
+					config, projTemplate.delimiters, false);
+				}
+
+				Util.log(Util.greenCheck() + " Project structure generated.");
+				// move cwd to project folder
+				process.chdir(projectName);
+				await this.configureAI(framework.id);
+				// init git after AI config so generated files are part of the initial commit
+				if (!this.config.skipGit) {
+					process.chdir("..");
+					Util.gitInit(process.cwd(), projectName);
+					process.chdir(projectName);
+				}
 			}
-			// move cwd to project folder
 			this._newProjectName = projectName;
-			process.chdir(projectName);
-			await this.configureAI(framework.id);
 		}
 		await this.chooseActionLoop(projLibrary);
 		//TODO: restore cwd?
@@ -304,7 +333,7 @@ export abstract class BasePromptSession {
 	}
 
 	/** Create prompts from template extra configuration and assign user answers to the template */
-	protected async customizeTemplateTask(template: Template) {
+	protected async customizeTemplateTask(template: BaseTemplate) {
 		const extraPrompt = this.createQuestions(template.getExtraConfiguration());
 		const extraConfigAnswers = [];
 		for (const question of extraPrompt) {
@@ -429,6 +458,27 @@ export abstract class BasePromptSession {
 			break;
 		case "Complete and Install packages":
 			const config = ProjectConfig.localConfig();
+
+			if (!config.project || config.project.framework === "blazor") {
+				// Blazor (scaffolded via dotnet) has no cli-config — print next-steps instead of
+				// routing through completeAndRun (npm + start.start, which requires a cli-config).
+				const projectName = path.basename(process.cwd());
+				if (Util.canPrompt() && await InquirerWrapper.confirm({
+					message: "Run the app now (dotnet run)?",
+					default: false
+				})) {
+					const result = Util.spawnSync("dotnet", ["run", "--project", projectName], { stdio: "inherit" });
+					if (result.error || result.status !== 0) {
+						Util.error("dotnet run failed (see dotnet output above).", "red");
+					}
+				} else {
+					Util.log("");
+					Util.log("Next Steps:");
+					Util.log(`  cd ${Util.quoteIfNeeded(projectName)}`);
+					Util.log(`  dotnet run --project ${Util.quoteIfNeeded(projectName)}`);
+				}
+				break;
+			}
 
 			if (config.project.framework === "angular" &&
 				config.project.projectType === "igx-ts" &&

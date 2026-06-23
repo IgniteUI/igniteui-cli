@@ -4,7 +4,7 @@ class BlazorFramework implements Framework {
 	public id: string;
 	public name: string;
 	public projectLibraries: ProjectLibrary[];
-	public hidden = true;
+	public hidden = false;
 
 	constructor() {
 		this.id = "blazor";
