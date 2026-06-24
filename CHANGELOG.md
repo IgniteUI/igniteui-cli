@@ -1,3 +1,13 @@
+# 15.4.0 (2026-06-24)
+
+## What's Changed
+* **New: Blazor project scaffolding:** Added Blazor project creation to the `new` command with `hosting` and `variant` options. Introduced the `EmptyIgbProject` template for scaffolding Blazor Web Apps via `dotnet new igb-blazor`, with support for the bootstrap, material, fluent, and indigo themes. [#1719](https://github.com/IgniteUI/igniteui-cli/pull/1719)
+* **Angular 22 update:** Updated `igniteui-angular` and `@angular/core` to `~22.0.0` across CLI templates and schematics. [#1735](https://github.com/IgniteUI/igniteui-cli/pull/1735)
+* **fix(cli):** Added grid component type selection (tree, hierarchical, and pivot grid options for React) during project creation. [#1730](https://github.com/IgniteUI/igniteui-cli/pull/1730)
+* **change(cli):** Renamed the `completeAndRun` prompt-session method to `complete` and updated related install/run logic; project names are now quoted in next-steps output for better shell compatibility. [#1733](https://github.com/IgniteUI/igniteui-cli/pull/1733)
+* **fix(mcp):** Updated AI assistant labels for clarity in the MCP config and schema. [#1731](https://github.com/IgniteUI/igniteui-cli/pull/1731)
+* **fix(mcp):** Improved `get_doc` name resolution with normalization and an alias map. [#1727](https://github.com/IgniteUI/igniteui-cli/pull/1727)
+
 # 15.3.0 (2026-06-09)
 
 ## What's Changed
