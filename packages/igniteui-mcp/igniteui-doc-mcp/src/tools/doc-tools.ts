@@ -35,6 +35,136 @@ export function sanitizeSearchDocsQuery(queryText: string): string | null {
   return sanitized || null;
 }
 
+/**
+ * Normalise a doc name to kebab-case so callers can pass component class
+ * names (e.g. IgxCarousel, IgrCarousel, Carousel) in addition to the
+ * canonical kebab-case doc names (e.g. carousel).
+ *
+ * Steps:
+ *   1. Strip Ignite UI framework prefix: Igx (Angular), Igr (React),
+ *      Igc (Web Components), Igb (Blazor)
+ *   2. Strip trailing "Component" suffix (e.g. IgxGridComponent → Grid)
+ *   3. Convert PascalCase / camelCase to kebab-case and lowercase
+ */
+export function normalizeDocName(name: string): string {
+  let normalized = name.replace(/^Ig[xrcb]/i, '');
+  normalized = normalized.replace(/Component$/i, '');
+  normalized = normalized.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+  return normalized || name.toLowerCase();
+}
+
+/**
+ * Per-framework alias maps: normalized kebab-case name → actual doc key.
+ *
+ * Covers cases where the doc key cannot be derived mechanically:
+ *   - Combo Box overview is keyed as "overview" not "combo" / "combo-box"
+ *   - Combo sub-docs use bare generic names: "features", "templates", "single-selection"
+ *   - Grid overview is "grid-grid" or "data-grid", not "grid"
+ *   - Several components append "-overview" or "-chart" suffix
+ *   - "radio" covers both Radio and Radio Group
+ *   - "slider" covers both Slider and Range Slider
+ */
+const DOC_ALIASES: Record<string, Record<string, string>> = {
+    react: {
+        // Combo Box
+        combo: 'overview',
+        'combo-box': 'overview',
+        combobox: 'overview',
+        'combo-overview': 'overview',
+        'combo-features': 'features',
+        'combobox-features': 'features',
+        'combo-templates': 'templates',
+        'combobox-templates': 'templates',
+        'combo-single-selection': 'single-selection',
+        'combobox-single-selection': 'single-selection',
+        // Grid types
+        grid: 'data-grid',
+        'hierarchical-grid': 'hierarchical-grid-overview',
+        'tree-grid': 'tree-grid-overview',
+        'pivot-grid': 'pivot-grid-overview',
+        'grid-lite': 'grid-lite-overview',
+        spreadsheet: 'spreadsheet-overview',
+        'zoom-slider': 'zoomslider-overview',
+        zoomslider: 'zoomslider-overview',
+        // Non-obvious renames
+        treemap: 'treemap-chart',
+        'radio-group': 'radio',
+        'radio-and-radio-group': 'radio',
+        'range-slider': 'slider',
+        dashboard: 'dashboard-tile',
+        themes: 'themes-overview',
+        theme: 'themes-overview',
+        'geographic-map': 'geo-map',
+        'geo-map-overview': 'geo-map',
+        'geographic-map-features': 'geo-map',
+    },
+    angular: {
+        // Combo Box
+        'combo-box': 'combo',
+        combobox: 'combo',
+        // Grid types
+        grid: 'grid-grid',
+        'hierarchical-grid': 'hierarchicalgrid-hierarchical-grid',
+        'tree-grid': 'treegrid-tree-grid',
+        'pivot-grid': 'pivotgrid-pivot-grid',
+        spreadsheet: 'spreadsheet-overview',
+        'zoom-slider': 'zoomslider-overview',
+        zoomslider: 'zoomslider-overview',
+        // Non-obvious renames
+        treemap: 'types-treemap-chart',
+        'radio-group': 'radio-button',
+        'range-slider': 'slider',
+        'geographic-map': 'geo-map',
+        'geo-map-overview': 'geo-map',
+    },
+    webcomponents: {
+        // Combo Box
+        combo: 'overview',
+        'combo-box': 'overview',
+        combobox: 'overview',
+        // Grid types
+        grid: 'data-grid',
+        'hierarchical-grid': 'hierarchical-grid-overview',
+        'tree-grid': 'tree-grid-overview',
+        'pivot-grid': 'pivot-grid-overview',
+        'grid-lite': 'grid-lite-overview',
+        spreadsheet: 'spreadsheet-overview',
+        'zoom-slider': 'zoomslider-overview',
+        zoomslider: 'zoomslider-overview',
+        // Non-obvious renames
+        treemap: 'treemap-chart',
+        'radio-group': 'radio',
+        'range-slider': 'slider',
+        'geographic-map': 'geo-map',
+        'geo-map-overview': 'geo-map',
+    },
+    blazor: {
+        // Combo Box
+        combo: 'overview',
+        'combo-box': 'overview',
+        combobox: 'overview',
+        // Grid types
+        grid: 'data-grid',
+        'hierarchical-grid': 'hierarchical-grid-overview',
+        'tree-grid': 'tree-grid-overview',
+        'pivot-grid': 'pivot-grid-overview',
+        'zoom-slider': 'zoomslider-overview',
+        zoomslider: 'zoomslider-overview',
+        // Non-obvious renames
+        treemap: 'treemap-chart',
+        'radio-group': 'radio',
+        'range-slider': 'slider',
+        'geographic-map': 'geo-map',
+        'geo-map-overview': 'geo-map',
+    },
+};
+
+
+/** Apply the alias map after normalizeDocName. Returns the alias if one exists, otherwise the input unchanged. */
+export function applyDocAlias(framework: string, normalizedName: string): string {
+  return DOC_ALIASES[framework]?.[normalizedName] ?? normalizedName;
+}
+
 // Build the setup-guide response for the requested framework.
 // For Blazor, combine the base .NET guide with any MCP-fetched docs
 // that are available for the configured setup document names.

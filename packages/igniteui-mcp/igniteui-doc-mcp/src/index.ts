@@ -12,7 +12,7 @@ import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
 import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
 import { getApiReferenceSchema, searchApiSchema } from "./tools/schemas.js";
 import { createGetApiReferenceHandler, createSearchApiHandler } from "./tools/handlers.js";
-import { buildProjectSetupGuide, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
+import { applyDocAlias, buildProjectSetupGuide, normalizeDocName, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
 import { ApiDocLoader } from "./lib/api-doc-loader.js";
 import { getPlatforms } from "./config/platforms.js";
 
@@ -134,6 +134,7 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
         framework: FRAMEWORK_ENUM,
         name: z
           .string()
+          .min(1, 'Doc name must not be empty.')
           .describe(
             'Exact doc name in kebab-case without the .md extension. ' +
             'Examples: "grid-editing", "combo-overview", "accordion". ' +
@@ -143,8 +144,9 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     },
     async ({ framework, name }) => {
       const start = performance.now();
-      const { text, found } = await docsProvider.getDoc(framework, name);
-      log("get_doc", { framework, name }, text, Math.round(performance.now() - start));
+      const resolvedName = applyDocAlias(framework, normalizeDocName(name.trim()));
+      const { text, found } = await docsProvider.getDoc(framework, resolvedName);
+      log("get_doc", { framework, name: resolvedName }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }], ...(found ? {} : { isError: true }) };
     }
   );
