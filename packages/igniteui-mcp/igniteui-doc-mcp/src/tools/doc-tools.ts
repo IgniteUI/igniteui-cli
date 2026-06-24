@@ -59,7 +59,7 @@ export function normalizeDocName(name: string): string {
  * Covers cases where the doc key cannot be derived mechanically:
  *   - Combo Box overview is keyed as "overview" not "combo" / "combo-box"
  *   - Combo sub-docs use bare generic names: "features", "templates", "single-selection"
- *   - Grid overview is "data-grid", not "grid"
+ *   - Grid overview is "grid-grid" or "data-grid", not "grid"
  *   - Several components append "-overview" or "-chart" suffix
  *   - "radio" covers both Radio and Radio Group
  *   - "slider" covers both Slider and Range Slider
@@ -78,7 +78,7 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'combo-single-selection': 'single-selection',
         'combobox-single-selection': 'single-selection',
         // Grid
-        grid: 'grid-grid',
+        grid: 'data-grid',
         // Grid -overview suffix
         'hierarchical-grid': 'hierarchical-grid-overview',
         'tree-grid': 'tree-grid-overview',
@@ -104,6 +104,7 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'combo-box': 'combo',
         combobox: 'combo',
         // Grid -overview suffix
+        grid: 'grid-grid',
         'hierarchical-grid': 'hierarchicalgrid-hierarchical-grid',
         'tree-grid': 'treegrid-tree-grid',
         'pivot-grid': 'pivotgrid-pivot-grid',
@@ -123,6 +124,7 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'combo-box': 'overview',
         combobox: 'overview',
         // Grid -overview suffix
+        grid: 'data-grid',
         'hierarchical-grid': 'hierarchical-grid-overview',
         'tree-grid': 'tree-grid-overview',
         'pivot-grid': 'pivot-grid-overview',
@@ -143,6 +145,7 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'combo-box': 'overview',
         combobox: 'overview',
         // Grid -overview suffix
+        grid: 'grid-grid',
         'hierarchical-grid': 'hierarchical-grid-overview',
         'tree-grid': 'tree-grid-overview',
         'pivot-grid': 'pivot-grid-overview',

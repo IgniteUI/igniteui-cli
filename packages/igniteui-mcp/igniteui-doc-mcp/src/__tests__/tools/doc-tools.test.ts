@@ -143,7 +143,7 @@ describe('applyDocAlias', () => {
   });
 
   it('resolves react grid to grid-grid', () => {
-    expect(applyDocAlias('react', 'grid')).toBe('grid-grid');
+    expect(applyDocAlias('react', 'grid')).toBe('data-grid');
   });
 
   it('resolves react hierarchical-grid to hierarchical-grid-overview', () => {
@@ -187,7 +187,7 @@ describe('applyDocAlias', () => {
 
   it('IgxGridComponent normalizes then aliases correctly for angular', () => {
     const normalized = normalizeDocName('IgxGridComponent');
-    expect(applyDocAlias('angular', normalized)).toBe('grid');
+    expect(applyDocAlias('angular', normalized)).toBe('grid-grid');
   });
 
   it('IgrCombo normalizes then aliases correctly for react', () => {
