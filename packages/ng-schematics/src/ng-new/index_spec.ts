@@ -167,7 +167,12 @@ describe("Schematics ng-new", () => {
 		const myTree = Tree.empty();
 		const workingDirectory = "my-test-project";
 
-		const mockProject: Pick<ProjectTemplate, "upgradeIgniteUIPackages"> = {
+		const mockProject: Partial<ProjectTemplate> = {
+			id: "mock-template-id",
+			framework: "angular",
+			projectType: "ts",
+			templatePaths: ["/path/to/template"],
+			generateConfig: jasmine.createSpy().and.returnValue({}),
 			upgradeIgniteUIPackages: jasmine.createSpy().and.returnValue(Promise.resolve(true))
 		};
 
@@ -234,7 +239,11 @@ describe("Schematics ng-new", () => {
 
 			const userAnswers = new Map<string, any>();
 			userAnswers.set("upgradePackages", false);
-			spyOnProperty(SchematicsPromptSession.prototype, "userAnswers", "get").and.returnValue(userAnswers);
+			Object.defineProperty(SchematicsPromptSession.prototype, "userAnswers", {
+				configurable: true,
+				get: () => userAnswers,
+				set: () => void 0
+			});
 
 			return runner.runSchematic("ng-new", { version: "8.0.3", name: workingDirectory, skipInstall: true, skipGit: true }, myTree);
 		}
