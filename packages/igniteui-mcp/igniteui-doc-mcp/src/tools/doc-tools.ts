@@ -77,9 +77,8 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'combobox-templates': 'templates',
         'combo-single-selection': 'single-selection',
         'combobox-single-selection': 'single-selection',
-        // Grid
+        // Grid types
         grid: 'data-grid',
-        // Grid -overview suffix
         'hierarchical-grid': 'hierarchical-grid-overview',
         'tree-grid': 'tree-grid-overview',
         'pivot-grid': 'pivot-grid-overview',
@@ -103,7 +102,7 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         // Combo Box
         'combo-box': 'combo',
         combobox: 'combo',
-        // Grid -overview suffix
+        // Grid types
         grid: 'grid-grid',
         'hierarchical-grid': 'hierarchicalgrid-hierarchical-grid',
         'tree-grid': 'treegrid-tree-grid',
@@ -123,7 +122,7 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         combo: 'overview',
         'combo-box': 'overview',
         combobox: 'overview',
-        // Grid -overview suffix
+        // Grid types
         grid: 'data-grid',
         'hierarchical-grid': 'hierarchical-grid-overview',
         'tree-grid': 'tree-grid-overview',
@@ -144,8 +143,8 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         combo: 'overview',
         'combo-box': 'overview',
         combobox: 'overview',
-        // Grid -overview suffix
-        grid: 'grid-grid',
+        // Grid types
+        grid: 'data-grid',
         'hierarchical-grid': 'hierarchical-grid-overview',
         'tree-grid': 'tree-grid-overview',
         'pivot-grid': 'pivot-grid-overview',

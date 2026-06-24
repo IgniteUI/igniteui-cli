@@ -142,7 +142,7 @@ describe('applyDocAlias', () => {
     expect(applyDocAlias('react', 'combo-box')).toBe('overview');
   });
 
-  it('resolves react grid to grid-grid', () => {
+  it('resolves react grid to data-grid', () => {
     expect(applyDocAlias('react', 'grid')).toBe('data-grid');
   });
 
