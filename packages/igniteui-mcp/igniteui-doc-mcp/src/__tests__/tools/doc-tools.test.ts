@@ -158,8 +158,16 @@ describe('applyDocAlias', () => {
     expect(applyDocAlias('angular', 'hierarchical-grid')).toBe('hierarchicalgrid-hierarchical-grid');
   });
 
+  it('resolves angular grid to grid-grid', () => {
+    expect(applyDocAlias('angular', 'grid')).toBe('grid-grid');
+  });
+
   it('resolves webcomponents combo to overview', () => {
     expect(applyDocAlias('webcomponents', 'combo')).toBe('overview');
+  });
+
+  it('resolves webcomponents grid to data-grid', () => {
+    expect(applyDocAlias('webcomponents', 'grid')).toBe('data-grid');
   });
 
   it('resolves blazor radio-group to radio', () => {
@@ -170,6 +178,9 @@ describe('applyDocAlias', () => {
     expect(applyDocAlias('blazor', 'range-slider')).toBe('slider');
   });
 
+  it('resolves blazor grid to data-grid', () => {
+    expect(applyDocAlias('blazor', 'grid')).toBe('data-grid');
+  });
   it('returns input unchanged for unknown framework', () => {
     expect(applyDocAlias('unknown-fw', 'combo')).toBe('combo');
   });
