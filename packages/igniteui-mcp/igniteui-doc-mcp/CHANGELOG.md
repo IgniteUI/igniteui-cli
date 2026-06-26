@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 15.4.1 (2026-06-26)
+
+
+## 15.4.0 (2026-06-24)
+
+
 ## 15.3.0 (2026-06-10)
 * **fix(mcp):** Excluded the constructor from the methods section in `get_api_reference` responses. [#1722](https://github.com/IgniteUI/igniteui-cli/pull/1722)
 
