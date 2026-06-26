@@ -32,7 +32,7 @@ export async function addFontsToIndexHtml(tree: Tree) {
 		// newer version of angular.json has index either as string or as object with input property
 		let targetFile = typeof indexOptions === "string" ? indexOptions : indexOptions?.input;
 		if (!targetFile && project.sourceRoot) {
-			targetFile = path.join(project.sourceRoot, "index.html");
+			targetFile = path.posix.join(project.sourceRoot, "index.html");
 		}
 
 		if (targetFile && tree.exists(targetFile)) {
