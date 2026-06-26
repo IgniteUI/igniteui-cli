@@ -27,7 +27,10 @@ export async function addFontsToIndexHtml(tree: Tree) {
 	const materialIcons = '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
 	const projects = await getProjects(tree);
 	projects.forEach(project => {
-		const targetFile = project.targets.get("build")?.options?.index as string;
+		let targetFile = project.targets.get("build")?.options?.index as string;
+		if (!targetFile) {
+			targetFile = project.sourceRoot ? path.join(project.sourceRoot, "index.html") : '';
+		}
 
 		if (targetFile && tree.exists(targetFile)) {
 			let content = tree.read(targetFile)!.toString();
