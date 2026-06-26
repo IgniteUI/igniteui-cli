@@ -27,9 +27,12 @@ export async function addFontsToIndexHtml(tree: Tree) {
 	const materialIcons = '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
 	const projects = await getProjects(tree);
 	projects.forEach(project => {
-		let targetFile = project.targets.get("build")?.options?.index as string;
-		if (!targetFile) {
-			targetFile = project.sourceRoot ? path.join(project.sourceRoot, "index.html") : '';
+		const indexOptions = project.targets.get("build")?.options?.index as any;
+
+		// newer version of angular.json has index either as string or as object with input property
+		let targetFile = typeof indexOptions === "string" ? indexOptions : indexOptions?.input;
+		if (!targetFile && project.sourceRoot) {
+			targetFile = path.join(project.sourceRoot, "index.html");
 		}
 
 		if (targetFile && tree.exists(targetFile)) {
