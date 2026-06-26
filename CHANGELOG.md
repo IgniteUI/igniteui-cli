@@ -1,3 +1,8 @@
+# 15.4.1 (2026-06-26)
+
+## What's Changed
+* **fix(schematics):** `ng add igniteui-angular`/`cli-config` correctly adds default font and materials icon links in the index.html and provideAnimations to the providers in the app.config.ts file. [#1740](https://github.com/IgniteUI/igniteui-cli/pull/1740)
+
 # 15.4.0 (2026-06-24)
 
 ## What's Changed
