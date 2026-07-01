@@ -7,12 +7,12 @@
     "source": "github",
     "url": "https://github.com/IgniteUI/igniteui-cli"
   },
-  "version": "15.4.0",
+  "version": "15.4.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@igniteui/mcp-server",
-      "version": "15.4.0",
+      "version": "15.4.1",
       "transport": {
         "type": "stdio"
       }

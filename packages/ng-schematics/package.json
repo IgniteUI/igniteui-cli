@@ -1,6 +1,6 @@
 {
   "name": "@igniteui/angular-schematics",
-  "version": "22.0.1540",
+  "version": "22.0.1541",
   "description": "Ignite UI for Angular Schematics for ng new and ng generate",
   "repository": {
     "type": "git",
@@ -20,18 +20,18 @@
   "dependencies": {
     "@angular-devkit/core": "^22.0.0",
     "@angular-devkit/schematics": "^22.0.0",
-    "@igniteui/angular-templates": "~22.0.1540",
-    "@igniteui/cli-core": "~15.4.0",
+    "@igniteui/angular-templates": "~22.0.1541",
+    "@igniteui/cli-core": "~15.4.1",
     "@schematics/angular": "^22.0.0",
     "minimatch": "^10.0.1",
-    "rxjs": "~7.8.1"
+    "rxjs": "~7.8.1",
+    "typescript": "~5.6.2"
   },
   "devDependencies": {
     "@types/jasmine": "^5.1.4",
     "@types/minimatch": "^5.1.2",
     "@types/node": "^22.5.5",
-    "jasmine": "^5.12.0",
-    "typescript": "~5.6.2"
+    "jasmine": "^5.12.0"
   },
   "ng-update": {
     "migrations": "./src/migrations/migration-collection.json"

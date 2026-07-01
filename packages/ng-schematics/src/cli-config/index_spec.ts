@@ -129,6 +129,75 @@ describe("cli-config schematic", () => {
 		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Material+Icons");
 	});
 
+	it("should add Titillium and Material Icons when build options do not have index", async () => {
+		const targetFile = "/src/index.html";
+		const ngJsonWithoutBuildIndex = {
+			projects: {
+				testProj: {
+					root: "",
+					sourceRoot,
+					architect: {
+						build: {
+							options: {
+								main: `${sourceRoot}/main.ts`,
+								polyfills: `${sourceRoot}/polyfills.ts`,
+								scripts: []
+							}
+						},
+						serve: {},
+						test: {}
+					}
+				}
+			},
+			version: 1
+		};
+
+		tree.overwrite("/angular.json", JSON.stringify(ngJsonWithoutBuildIndex));
+		await runner.runSchematic("cli-config", {}, tree);
+
+		const content = tree.readContent(targetFile);
+		const headContentsRegex = /(?:<head>)([\s\S]*)(?:<\/head>)/;
+		expect(headContentsRegex.test(content)).toBeTruthy();
+		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Titillium+Web");
+		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Material+Icons");
+	});
+
+	it("should add Titillium and Material Icons when build index is an object input", async () => {
+		const targetFile = "/src/index.html";
+		const ngJsonWithIndexObject = {
+			projects: {
+				testProj: {
+					root: "",
+					sourceRoot,
+					architect: {
+						build: {
+							options: {
+								main: `${sourceRoot}/main.ts`,
+								polyfills: `${sourceRoot}/polyfills.ts`,
+								scripts: [],
+								index: {
+									input: `${sourceRoot}/index.html`
+								}
+							}
+						},
+						serve: {},
+						test: {}
+					}
+				}
+			},
+			version: 1
+		};
+
+		tree.overwrite("/angular.json", JSON.stringify(ngJsonWithIndexObject));
+		await runner.runSchematic("cli-config", {}, tree);
+
+		const content = tree.readContent(targetFile);
+		const headContentsRegex = /(?:<head>)([\s\S]*)(?:<\/head>)/;
+		expect(headContentsRegex.test(content)).toBeTruthy();
+		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Titillium+Web");
+		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Material+Icons");
+	});
+
 	it("should add the default scss theme correctly", async () => {
 		const targetFile = "/src/styles.scss";
 		tree.create(targetFile, "");
