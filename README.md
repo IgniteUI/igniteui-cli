@@ -306,7 +306,7 @@ npm run build-pack
 
 After step 5, `npm pack` from the repo root or `packages/cli/` will produce a tarball with the MCP server, documentation database, and API reference docs all included.
 
-> **Skipping API docs:** If you skip step 3, the MCP server will still work for `list_components`, `get_doc`, `search_docs`, and `generate_ignite_app` tools using the bundled SQLite database. Only the `get_api_reference` and `search_api` tools require API docs.
+> **Skipping API docs:** If you skip step 3, the MCP server will still work for `list_components`, `get_doc`, `search_docs`, and `get_project_setup_guide` tools using the bundled SQLite database. Only the `get_api_reference` and `search_api` tools require API docs.
 
 ## Data Collection
 
