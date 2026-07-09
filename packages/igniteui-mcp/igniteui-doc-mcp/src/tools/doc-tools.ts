@@ -12,6 +12,11 @@ export const MISSING_FRAMEWORK_MESSAGE =
 // at both index and query time (e.g. "grid-editing" stays as one phrase).
 // Preserve trailing * — FTS4 prefix queries (e.g. grid*) rely on it,
 // and the DB is built with prefix="2,3" indexes to support this.
+//
+// Multi-word queries use implicit AND (space-separated in FTS4), meaning all
+// terms must appear in the document. This is far more precise than OR:
+//   "virtual scroll" → `"virtual" "scroll"` (both required)
+// Single-word and prefix queries are unaffected by this change.
 export function sanitizeSearchDocsQuery(queryText: string): string | null {
   const sanitized = queryText
     .replace(/["(){}[\]:@]/g, ' ')
@@ -30,7 +35,7 @@ export function sanitizeSearchDocsQuery(queryText: string): string | null {
       return `"${term}"`;
     })
     .filter((term): term is string => Boolean(term))
-    .join(' OR ');
+    .join(' ');
 
   return sanitized || null;
 }
@@ -86,6 +91,13 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         spreadsheet: 'spreadsheet-overview',
         'zoom-slider': 'zoomslider-overview',
         zoomslider: 'zoomslider-overview',
+        // Virtualization
+        virtualization: 'grid-virtualization',
+        'virtual-scroll': 'grid-virtualization',
+        'virtual-scrolling': 'grid-virtualization',
+        'grid-performance': 'grid-virtualization',
+        'hierarchical-grid-virtualization': 'hierarchical-grid-virtualization',
+        'tree-grid-virtualization': 'tree-grid-virtualization',
         // Non-obvious renames
         treemap: 'treemap-chart',
         'radio-group': 'radio',
@@ -110,6 +122,20 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         spreadsheet: 'spreadsheet-overview',
         'zoom-slider': 'zoomslider-overview',
         zoomslider: 'zoomslider-overview',
+        // Virtualization — Angular uses different naming convention (hierarchicalgrid-, treegrid-)
+        virtualization: 'grid-virtualization',
+        'virtual-scroll': 'grid-virtualization',
+        'virtual-scrolling': 'grid-virtualization',
+        'grid-performance': 'grid-virtualization',
+        'hierarchical-grid-virtualization': 'hierarchicalgrid-virtualization',
+        'tree-grid-virtualization': 'treegrid-virtualization',
+        // igxFor / virtual-for directive
+        'for-of': 'for-of',
+        igxfor: 'for-of',
+        igxforof: 'for-of',
+        forof: 'for-of',
+        'virtual-for': 'for-of',
+        'igx-for-of': 'for-of',
         // Non-obvious renames
         treemap: 'types-treemap-chart',
         'radio-group': 'radio-button',
@@ -131,6 +157,13 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         spreadsheet: 'spreadsheet-overview',
         'zoom-slider': 'zoomslider-overview',
         zoomslider: 'zoomslider-overview',
+        // Virtualization
+        virtualization: 'grid-virtualization',
+        'virtual-scroll': 'grid-virtualization',
+        'virtual-scrolling': 'grid-virtualization',
+        'grid-performance': 'grid-virtualization',
+        'hierarchical-grid-virtualization': 'hierarchical-grid-virtualization',
+        'tree-grid-virtualization': 'tree-grid-virtualization',
         // Non-obvious renames
         treemap: 'treemap-chart',
         'radio-group': 'radio',
@@ -150,6 +183,13 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'pivot-grid': 'pivot-grid-overview',
         'zoom-slider': 'zoomslider-overview',
         zoomslider: 'zoomslider-overview',
+        // Virtualization
+        virtualization: 'grid-virtualization',
+        'virtual-scroll': 'grid-virtualization',
+        'virtual-scrolling': 'grid-virtualization',
+        'grid-performance': 'grid-virtualization',
+        'hierarchical-grid-virtualization': 'hierarchical-grid-virtualization',
+        'tree-grid-virtualization': 'tree-grid-virtualization',
         // Non-obvious renames
         treemap: 'treemap-chart',
         'radio-group': 'radio',

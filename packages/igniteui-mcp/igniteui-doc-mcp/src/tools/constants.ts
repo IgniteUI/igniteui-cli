@@ -32,20 +32,22 @@ No pagination — the full result set is returned in one call.
 
   get_doc: `Retrieve the full markdown content of one specific Ignite UI component doc by its exact name. The name is kebab-case without the .md extension (e.g. "grid-editing", "combo-overview", "accordion").
 
-Use this after discovering doc names from list_components or search_docs. Do NOT guess doc names — call one of those discovery tools first if the name is unknown.
+For grid feature docs, the bare feature name works without the "grid-" prefix — e.g. "sorting" resolves to "grid-sorting", "remote-data-operations" resolves to "grid-remote-data-operations". Common aliases are also handled: "virtualization" → "grid-virtualization", "virtual-scroll" → "grid-virtualization". For completely unknown names, use list_components or search_docs to discover the exact name first.
 
 Returns YAML frontmatter (component, keywords, summary) followed by the complete markdown body with code samples, tables, and links.
 
 Returns isError if the doc name is not found, with a suggestion to use list_components.
 `,
 
-  search_docs: `Full-text search across all Ignite UI documentation for a specific framework. Supports prefix matching with trailing * (e.g. "grid*" matches grid, grids, grid-editing) and hyphenated terms (e.g. "grid-editing" matched as a phrase).
+  search_docs: `Full-text search across all Ignite UI documentation for a specific framework.
 
-Use this when the user asks "how do I..." or describes a feature need — e.g. "column pinning", "data validation", "tree*". For browsing by component name instead, use list_components.
+Use this when the user asks "how do I..." or describes a feature need — e.g. "column pinning", "data validation", "virtual scroll", "remote data", "tree*". For browsing by component name instead, use list_components. For a known doc name, use get_doc directly.
 
-Returns up to 20 results ranked by relevance. Each result includes: doc name (pass to get_doc for full content), display name, summary, and a text excerpt with matching terms highlighted between >>> and <<<.
+Returns up to 20 results ranked by relevance — results are title- and keyword-weighted, so the first result is typically the dedicated feature doc for the query. Each result includes: doc name (pass to get_doc for full content), display name, summary, and a text excerpt with matching terms highlighted between >>> and <<<.
 
-Query must be non-empty. Special characters are sanitized automatically — only * for prefix matching needs to be passed explicitly.
+Query syntax: multi-word queries require ALL terms to appear (implicit AND) — "virtual scroll" matches docs containing both words. Prefix matching with trailing * (e.g. "grid*"). Hyphenated terms matched as a phrase (e.g. "grid-editing"). Special characters are sanitized automatically — only * needs to be passed explicitly.
+
+Query must be non-empty.
 `,
 
   get_api_reference: `Look up the full API reference for a specific Ignite UI component or class by exact name. Case-insensitive matching. Covers all four frameworks: angular, react, webcomponents, and blazor.

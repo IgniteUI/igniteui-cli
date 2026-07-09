@@ -2,8 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { applyDocAlias, normalizeDocName, sanitizeSearchDocsQuery } from '../../tools/doc-tools.js';
 
 describe('sanitizeSearchDocsQuery', () => {
-  it('quotes plain terms with OR', () => {
-    expect(sanitizeSearchDocsQuery('grid selection')).toBe('"grid" OR "selection"');
+  it('quotes plain terms with AND (implicit in FTS4)', () => {
+    expect(sanitizeSearchDocsQuery('grid selection')).toBe('"grid" "selection"');
   });
 
   it('quotes a single term', () => {
@@ -15,7 +15,7 @@ describe('sanitizeSearchDocsQuery', () => {
   });
 
   it('handles mix of prefix and plain terms', () => {
-    expect(sanitizeSearchDocsQuery('grid* selection')).toBe('grid* OR "selection"');
+    expect(sanitizeSearchDocsQuery('grid* selection')).toBe('grid* "selection"');
   });
 
   it('strips double quotes (FTS4 phrase delimiter)', () => {
@@ -23,11 +23,11 @@ describe('sanitizeSearchDocsQuery', () => {
   });
 
   it('strips parentheses (FTS4 grouping operators)', () => {
-    expect(sanitizeSearchDocsQuery('(grid OR combo)')).toBe('"grid" OR "OR" OR "combo"');
+    expect(sanitizeSearchDocsQuery('(grid OR combo)')).toBe('"grid" "OR" "combo"');
   });
 
   it('strips colons (FTS4 column filters)', () => {
-    expect(sanitizeSearchDocsQuery('title:grid')).toBe('"title" OR "grid"');
+    expect(sanitizeSearchDocsQuery('title:grid')).toBe('"title" "grid"');
   });
 
   it('strips @ characters (FTS4 internal)', () => {
@@ -35,7 +35,7 @@ describe('sanitizeSearchDocsQuery', () => {
   });
 
   it('strips curly braces and brackets', () => {
-    expect(sanitizeSearchDocsQuery('{grid} [combo]')).toBe('"grid" OR "combo"');
+    expect(sanitizeSearchDocsQuery('{grid} [combo]')).toBe('"grid" "combo"');
   });
 
   it('preserves hyphens (porter tokenizer handles them)', () => {
@@ -67,11 +67,11 @@ describe('sanitizeSearchDocsQuery', () => {
   });
 
   it('collapses multiple spaces', () => {
-    expect(sanitizeSearchDocsQuery('grid   selection')).toBe('"grid" OR "selection"');
+    expect(sanitizeSearchDocsQuery('grid   selection')).toBe('"grid" "selection"');
   });
 
   it('handles realistic user query: column pinning', () => {
-    expect(sanitizeSearchDocsQuery('column pinning')).toBe('"column" OR "pinning"');
+    expect(sanitizeSearchDocsQuery('column pinning')).toBe('"column" "pinning"');
   });
 
   it('handles realistic user query: tree* prefix search', () => {
@@ -79,7 +79,7 @@ describe('sanitizeSearchDocsQuery', () => {
   });
 
   it('handles realistic user query with special chars injected', () => {
-    expect(sanitizeSearchDocsQuery('grid" OR "1=1')).toBe('"grid" OR "OR" OR "1=1"');
+    expect(sanitizeSearchDocsQuery('grid" OR "1=1')).toBe('"grid" "OR" "1=1"');
   });
 });
 
