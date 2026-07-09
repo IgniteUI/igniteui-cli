@@ -139,8 +139,10 @@ export class LocalDocsProvider implements DocsProvider {
     }
     stmt.free();
 
+    const displayQuery = query.replace(/["*]/g, '').replace(/\s+/g, ' ').trim();
+
     if (rawRows.length === 0) {
-      return `No results found for "${query}" in ${framework} docs.`;
+      return `No results found for "${displayQuery}" in ${framework} docs.`;
     }
 
     // Field-weighted re-ranking: FTS4 BM25 treats all columns equally and ranks
@@ -155,7 +157,7 @@ export class LocalDocsProvider implements DocsProvider {
       .filter((t) => t.length > 2)
       .map((t) => t.toLowerCase());
 
-    const scored = rawRows.map((r) => {
+    const scored = rawRows.map((r, idx) => {
       const toc  = ((r.toc_name  as string) || '').toLowerCase();
       const fn   = ((r.filename  as string) || '').toLowerCase();
       const kw   = ((r.keywords  as string) || '').toLowerCase();
@@ -168,11 +170,11 @@ export class LocalDocsProvider implements DocsProvider {
         if (sm.includes(t))  score += 3;  // summary mentions the concept
         // content matches are already captured by FTS; no extra boost needed
       }
-      return { row: r, score };
+      return { row: r, score, idx };
     });
 
     const top20 = scored
-      .sort((a, b) => b.score - a.score)
+      .sort((a, b) => (b.score - a.score) || (a.idx - b.idx))
       .slice(0, 20)
       .map((x) => x.row);
 
@@ -187,6 +189,6 @@ export class LocalDocsProvider implements DocsProvider {
         .join("\n");
     });
 
-    return `Found ${top20.length} results for "${query}" in **${framework}**:\n\n${lines.join("\n")}`;
+    return `Found ${top20.length} results for "${displayQuery}" in **${framework}**:\n\n${lines.join("\n")}`;
   }
 }

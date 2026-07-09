@@ -113,7 +113,8 @@ public class DocsController(SqliteConnection db) : ControllerBase
         cmd.Parameters.AddWithValue("@q", query);
         cmd.Parameters.AddWithValue("@fw", framework);
 
-        var results = new List<(int score, string filename, string? component, string? tocName, string? summary, string excerpt)>();
+        var results = new List<(int score, int idx, string filename, string? component, string? tocName, string? summary, string excerpt)>();
+        var rowIdx = 0;
         using var reader = cmd.ExecuteReader();
         while (reader.Read())
         {
@@ -139,11 +140,12 @@ public class DocsController(SqliteConnection db) : ControllerBase
                 // content matches are already captured by FTS; no extra boost needed
             }
 
-            results.Add((score, filename, component, tocName, summary, excerpt));
+            results.Add((score, rowIdx++, filename, component, tocName, summary, excerpt));
         }
 
         var ranked = results
             .OrderByDescending(r => r.score)
+            .ThenBy(r => r.idx)
             .Take(20);
 
         var sb = new StringBuilder();
@@ -155,7 +157,8 @@ public class DocsController(SqliteConnection db) : ControllerBase
             sb.Append($"**{docName}**{comp}\n{r.excerpt}");
         }
 
-        var text = sb.Length > 0 ? sb.ToString() : $"No results found for \"{query}\".";
+        var displayQuery = System.Text.RegularExpressions.Regex.Replace(query.Replace('"', ' ').Replace('*', ' '), @"\s+", " ").Trim();
+        var text = sb.Length > 0 ? sb.ToString() : $"No results found for \"{displayQuery}\".";
         return Content(text, "text/plain");
     }
 }

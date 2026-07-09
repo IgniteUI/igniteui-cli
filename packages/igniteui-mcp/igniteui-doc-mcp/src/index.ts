@@ -151,12 +151,16 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
       // already start with a component-type prefix, try "grid-{name}".
       // This handles bare feature names like "sorting", "remote-data-operations",
       // "row-editing" etc. without needing an explicit alias for every grid sub-doc.
+      let servedName = resolvedName;
       if (!found && !/^(grid|hierarchical|tree|pivot|hierarchicalgrid|treegrid|pivotgrid|combo|drop-down|select|for-of)[-]/.test(resolvedName)) {
         const withGridPrefix = await docsProvider.getDoc(framework, `grid-${resolvedName}`);
-        if (withGridPrefix.found) ({ text, found } = withGridPrefix);
+        if (withGridPrefix.found) {
+          ({ text, found } = withGridPrefix);
+          servedName = `grid-${resolvedName}`;
+        }
       }
 
-      log("get_doc", { framework, name: resolvedName }, text, Math.round(performance.now() - start));
+      log("get_doc", { framework, name: servedName }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }], ...(found ? {} : { isError: true }) };
     }
   );
