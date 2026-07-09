@@ -231,4 +231,56 @@ public class DocsControllerTests
         Assert.That(result.Content, Does.Not.Contain("grid-editing"));
         Assert.That(result.Content, Does.Not.Contain("grid-filtering"));
     }
+
+    [Test]
+    public void Search_TitleAndKeywordMatchesOutrankBodyOnlyMatch()
+    {
+        // Isolated DB: one doc has the query term in toc_name + keywords (dedicated feature doc),
+        // the other only mentions it once in the body (generic doc that references it in passing).
+        // Verifies that field-weighted re-ranking surfaces the dedicated doc first.
+        using var rankDb = new SqliteConnection("Data Source=:memory:");
+        rankDb.Open();
+
+        void Exec(string sql) { var c = rankDb.CreateCommand(); c.CommandText = sql; c.ExecuteNonQuery(); }
+
+        Exec(@"CREATE TABLE docs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            framework TEXT NOT NULL, filename TEXT NOT NULL, component TEXT NOT NULL,
+            toc_name TEXT, premium INTEGER DEFAULT 0,
+            keywords TEXT, summary TEXT, content TEXT NOT NULL,
+            UNIQUE(framework, filename))");
+
+        Exec(@"CREATE VIRTUAL TABLE docs_fts USING fts4(
+            component, toc_name, keywords, summary, content,
+            content='docs', tokenize=porter)");
+
+        Exec(@"INSERT INTO docs (framework, filename, component, toc_name, premium, keywords, summary, content)
+            VALUES ('angular', 'grid-virtualization.md', 'IgxGridComponent',
+                    'Virtualization and Performance', 0,
+                    'virtualization, performance, scrolling',
+                    'How grid virtualization works.',
+                    'Virtualization improves rendering performance.')");
+
+        Exec(@"INSERT INTO docs (framework, filename, component, toc_name, premium, keywords, summary, content)
+            VALUES ('angular', 'grid-editing.md', 'IgxGridComponent',
+                    'Grid Editing', 0,
+                    'editing, cell',
+                    'How to edit grid cells.',
+                    'The grid uses virtualization internally for performance.')");
+
+        Exec("INSERT INTO docs_fts (rowid, component, toc_name, keywords, summary, content) SELECT id, component, toc_name, keywords, summary, content FROM docs");
+
+        var controller = new DocsController(rankDb);
+        var result = controller.Search("angular", "\"virtualization\"") as ContentResult;
+
+        Assert.That(result, Is.Not.Null);
+        var content = result!.Content!;
+        var dedicatedPos = content.IndexOf("**grid-virtualization**", StringComparison.Ordinal);
+        var genericPos   = content.IndexOf("**grid-editing**",        StringComparison.Ordinal);
+
+        Assert.That(dedicatedPos, Is.GreaterThanOrEqualTo(0), "grid-virtualization should appear in results");
+        Assert.That(genericPos,   Is.GreaterThanOrEqualTo(0), "grid-editing should appear in results");
+        Assert.That(dedicatedPos, Is.LessThan(genericPos),
+            "grid-virtualization (title + keyword match) should rank before grid-editing (body-only match)");
+    }
 }
