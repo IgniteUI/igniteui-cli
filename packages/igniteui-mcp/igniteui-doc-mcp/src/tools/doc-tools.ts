@@ -96,8 +96,6 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'virtual-scroll': 'grid-virtualization',
         'virtual-scrolling': 'grid-virtualization',
         'grid-performance': 'grid-virtualization',
-        'hierarchical-grid-virtualization': 'hierarchical-grid-virtualization',
-        'tree-grid-virtualization': 'tree-grid-virtualization',
         // Non-obvious renames
         treemap: 'treemap-chart',
         'radio-group': 'radio',
@@ -162,8 +160,6 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'virtual-scroll': 'grid-virtualization',
         'virtual-scrolling': 'grid-virtualization',
         'grid-performance': 'grid-virtualization',
-        'hierarchical-grid-virtualization': 'hierarchical-grid-virtualization',
-        'tree-grid-virtualization': 'tree-grid-virtualization',
         // Non-obvious renames
         treemap: 'treemap-chart',
         'radio-group': 'radio',
@@ -188,8 +184,6 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'virtual-scroll': 'grid-virtualization',
         'virtual-scrolling': 'grid-virtualization',
         'grid-performance': 'grid-virtualization',
-        'hierarchical-grid-virtualization': 'hierarchical-grid-virtualization',
-        'tree-grid-virtualization': 'tree-grid-virtualization',
         // Non-obvious renames
         treemap: 'treemap-chart',
         'radio-group': 'radio',
