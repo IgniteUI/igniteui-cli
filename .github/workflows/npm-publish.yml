@@ -3,15 +3,19 @@ on:
   release:
     types: [created]
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           registry-url: "https://registry.npmjs.org"
 
       - run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
@@ -25,14 +29,19 @@ jobs:
           npm run build-pack
           node scripts/build-task.js
 
+      - name: Validate MCP package contents
+        run: npm run validate:package --workspace=@igniteui/mcp-server -- --expected-version "$VERSION"
+
       - name: Define npm tag
         run: |
-          if [[ ${VERSION} == *"alpha"* || ${VERSION} == *"beta"* || ${VERSION} == *"rc"* ]]; then echo "NPM_TAG=next"; else echo "NPM_TAG=latest"; fi >> $GITHUB_ENV
-          echo ${NPM_TAG}
+          if [[ ${VERSION} == *"alpha"* || ${VERSION} == *"beta"* || ${VERSION} == *"rc"* ]]; then
+            NPM_TAG=next
+          else
+            NPM_TAG=latest
+          fi
+          echo "NPM_TAG=$NPM_TAG" >> $GITHUB_ENV
+          echo "$NPM_TAG"
 
       - name: Publish packages
         # use npm run as yarn run changes the registry and publishes to https://registry.yarnpkg.com
         run: npm run deploy ${NPM_TAG}
-        # define env variable for the specific run
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
