@@ -1,4 +1,4 @@
-# Ignite UI for Web Components Dock Manager latest — Full API Reference
+# Ignite UI for Web Components Dock Manager vlatest — Full API Reference
 
 > Complete API reference for the Ignite UI for Web Components Dock Manager package (latest). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
 
