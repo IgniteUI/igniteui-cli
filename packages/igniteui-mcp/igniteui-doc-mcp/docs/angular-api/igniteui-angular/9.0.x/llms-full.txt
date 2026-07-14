@@ -4086,33 +4086,6 @@ Version: 9.0.x
 ### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
 `noop(): void`
 
-### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
-`noop(): void`
-
-### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
-`noop(): void`
-
-### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
-`noop(): void`
-
-### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
-`noop(): void`
-
-### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
-`noop(): void`
-
-### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
-`noop(): void`
-
-### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
-`noop(): void`
-
-### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
-`noop(): void`
-
-### [noop](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/noop)
-`noop(): void`
-
 ### [notifyChanges](https://www.infragistics.com/api/angular/igniteui-angular/9.0.x/functions/notifyChanges)
 `notifyChanges(repaint: boolean): (Anonymous function)`
 
