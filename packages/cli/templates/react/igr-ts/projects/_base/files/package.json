@@ -16,7 +16,7 @@
     "@igniteui/material-icons-extended": "^3.0.2",
     "element-internals-polyfill": "^3.0.2",
     "functions-have-names": "^1.2.3",
-    "igniteui-react": "~19.7.0",
+    "igniteui-react": "~19.8.1",
     "react": "^19.2.4",
     "react-app-polyfill": "^3.0.0",
     "react-dom": "^19.2.4",

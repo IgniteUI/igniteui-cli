@@ -13,7 +13,7 @@ class IgcTreeGridTemplate extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Tree Grid";
 		this.description = "IgcTreeGrid with hierarchical data";
-		this.packages = [ "igniteui-webcomponents-grids@~7.1.0" ];
+		this.packages = [ "igniteui-webcomponents-grids@~7.2.1" ];
 	}
 
 	public get templatePaths(): string[] {

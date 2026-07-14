@@ -10,7 +10,7 @@ class IgcGridEditingTemplate extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Grid Editing";
 		this.description = "IgcGrid with editing enabled";
-		this.packages = [ "igniteui-webcomponents-grids@~7.1.0" ];
+		this.packages = [ "igniteui-webcomponents-grids@~7.2.1" ];
 	}
 }
 module.exports = new IgcGridEditingTemplate();
