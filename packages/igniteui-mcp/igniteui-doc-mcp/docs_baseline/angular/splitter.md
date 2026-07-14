@@ -13,13 +13,14 @@ The Ignite UI for Angular Splitter component provides the ability to create layo
 ## Angular Splitter Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSplitterComponent, IgxSplitterPaneComponent, SplitterType } from 'igniteui-angular/splitter';
 
 @Component({
     selector: 'app-splitter-horizontal-sample',
     styleUrls: ['splitter-horizontal-sample.component.scss'],
     templateUrl: 'splitter-horizontal-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSplitterComponent, IgxSplitterPaneComponent]
 })
 export class SplitterHorizontalSampleComponent {
@@ -159,7 +160,7 @@ You can make the splitter collapsible or not by showing or hiding the splitter's
 ```
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSplitterComponent, IgxSplitterPaneComponent } from 'igniteui-angular/splitter';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 
@@ -167,6 +168,7 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-splitter-collapsible-sample',
     styleUrls: ['splitter-collapsible-sample.component.scss'],
     templateUrl: 'splitter-collapsible-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSplitterComponent, IgxSplitterPaneComponent, IgxButtonDirective]
 })
 export class SplitterCollapsibleSampleComponent {
@@ -268,13 +270,14 @@ public typeVertical = SplitterType.Vertical;
 ### Demo
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSplitterComponent, IgxSplitterPaneComponent, SplitterType } from 'igniteui-angular/splitter';
 
 @Component({
     selector: 'app-splitter-nested-sample',
     styleUrls: ['splitter-nested-sample.component.scss'],
     templateUrl: 'splitter-nested-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSplitterComponent, IgxSplitterPaneComponent]
 })
 export class SplitterNestedSampleComponent {
@@ -399,13 +402,14 @@ This is the final result from applying your new theme.
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSplitterComponent, IgxSplitterPaneComponent, SplitterType } from 'igniteui-angular/splitter';
 
 @Component({
     selector: 'app-splitter-styling-sample',
     styleUrls: ['splitter-styling-sample.component.scss'],
     templateUrl: 'splitter-styling-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSplitterComponent, IgxSplitterPaneComponent]
 })
 export class SplitterStylingSampleComponent {

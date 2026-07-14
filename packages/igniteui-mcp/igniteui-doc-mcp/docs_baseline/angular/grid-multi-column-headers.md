@@ -10,7 +10,7 @@ _premium: true
 [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) supports `multi-column headers` which allows you to group columns by placing them under a common multi headers. Each multi-column headers group could be a representation of combinations between other groups or columns within the Material UI grid.
 ## Angular Grid Multi-column Headers Overview Example
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -21,6 +21,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-multi-column-headers',
     styleUrls: ['multi-column-headers.scss'],
     templateUrl: 'multi-column-headers.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnGroupComponent, IgxButtonDirective]
 })
 export class GridMultiColumnHeadersComponent {
@@ -114,7 +115,7 @@ If you want to re-use a single template for several column groups, you could set
 ```
 The following sample demonstrates how to implement collapsible column groups using header templates.
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -125,6 +126,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-multi-column-header-template',
     styleUrls: ['multi-column-header-template.scss'],
     templateUrl: 'multi-column-header-template.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnGroupComponent]
 })
 export class GridMultiColumnHeaderTemplateComponent {
@@ -184,7 +186,7 @@ The last step is to **include** the component mixins:
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
 import { DATA } from '../../data/customers';
@@ -194,6 +196,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-multi-column-headers-styling',
     styleUrls: ['./multi-column-headers-styling.component.scss'],
     templateUrl: './multi-column-headers-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnGroupComponent]
 })
 export class GridMultiColumnHeadersStylingComponent {

@@ -169,7 +169,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 The [`IgxGeographicShapeSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicshapeseriescomponent.html) works a lot like the [`IgxGeographicPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographicpolylineseriescomponent.html) except that geo-spatial data is rendered with polygons instead of polylines.

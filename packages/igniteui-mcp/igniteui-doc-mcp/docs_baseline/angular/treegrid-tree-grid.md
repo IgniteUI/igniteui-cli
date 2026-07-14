@@ -15,7 +15,7 @@ The Ignite UI for Angular Tree Grid is used to display and manipulate hierarchic
 In this example, you can see how users can display hierarchical data. We have included filtering and sorting options, pinning and hiding, row selection, export to excel, csv and pdf, and cell templating that uses our [Sparkline](../charts/types/sparkline-chart.md) component. In addition, you can see an example of custom pagination with [Angular Pagination](paging.md).
 
 ```typescript
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxCSVTextDirective, IgxCellTemplateDirective, IgxColumnComponent, IgxExcelTextDirective, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarTitleComponent, IColumnExportingEventArgs, IgxCsvExporterService, IgxExcelExporterService } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -27,6 +27,7 @@ import { IgxSparklineCoreModule } from 'igniteui-angular-charts';
     selector: 'app-tree-grid-childdatakey-sample',
     styleUrls: ['./tree-grid-childdatakey-sample.component.scss'],
     templateUrl: './tree-grid-childdatakey-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarExporterComponent, IgxExcelTextDirective, IgxCSVTextDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxSparklineCoreModule]
 })
 export class TreeGridChilddatakeySampleComponent implements OnInit {
@@ -366,7 +367,7 @@ In addition we will enable the row selection feature of the tree grid by using t
 And here is the final result:
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { Data } from './data';
@@ -377,6 +378,7 @@ import { IgxSparklineCoreModule } from 'igniteui-angular-charts';
     selector: 'app-tree-grid-primaryforeignkey-sample',
     styleUrls: ['./tree-grid-primaryforeignkey-sample.component.scss'],
     templateUrl: './tree-grid-primaryforeignkey-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxSparklineCoreModule]
 })
 export class TreeGridPrimaryforeignkeySampleComponent implements OnInit {

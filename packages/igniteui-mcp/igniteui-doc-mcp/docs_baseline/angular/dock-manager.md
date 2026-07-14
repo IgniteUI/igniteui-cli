@@ -15,7 +15,7 @@ The Ignite UI Dock Manager component provides means to manage the layout of your
 
 
 ```typescript
-import { Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@angular/core';
 import { IgcDockManagerLayout,
          IgcDockManagerPaneType,
          IgcSplitPaneOrientation } from 'igniteui-dockmanager';
@@ -24,6 +24,7 @@ import { IgcDockManagerLayout,
     selector: 'app-dock-manager',
     styleUrls: ['./dock-manager.component.scss'],
     templateUrl: './dock-manager.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DockManagerComponent {

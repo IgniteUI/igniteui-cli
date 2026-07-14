@@ -224,10 +224,6 @@ igc-list-item::part(subtitle) {
   color: var(--ig-primary-300);
 }
 ```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
-```
 
 In this article we covered a lot of ground with the [`IgcListComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcListComponent) component. First, we created a simple list with text items. Then, we created a list of contact items and added functionality to them by using some additional Ignite UI for Web Components components, like the [`IgcAvatarComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAvatarComponent) and [`IgcButtonComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcButtonComponent). Finally, we changed the component's appearance through the exposed CSS parts.
 

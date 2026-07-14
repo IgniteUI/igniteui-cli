@@ -18,7 +18,8 @@
 import {
   existsSync,
   mkdirSync,
-  copyFileSync,
+  readFileSync,
+  writeFileSync,
   readdirSync,
   statSync,
 } from 'fs';
@@ -33,6 +34,34 @@ const OUTPUT_DIR = join(ROOT, 'docs', 'angular-api');
 function run(cmd: string, cwd: string): void {
   console.log(`\n▶ ${cmd}`);
   execSync(cmd, { cwd, stdio: 'inherit' });
+}
+
+/**
+ * Remove duplicate `### heading` sections from an llms-full.txt file.
+ * Two sections are considered duplicates when their `### …` heading line is
+ * identical. Only the first occurrence is kept.
+ */
+function deduplicateLlmsFull(content: string): string {
+  const lines = content.split('\n');
+  const seenHeadings = new Set<string>();
+  const result: string[] = [];
+  let skip = false;
+
+  for (const line of lines) {
+    if (line.startsWith('### ')) {
+      if (seenHeadings.has(line)) {
+        skip = true;
+      } else {
+        seenHeadings.add(line);
+        skip = false;
+      }
+    }
+    if (!skip) {
+      result.push(line);
+    }
+  }
+
+  return result.join('\n');
 }
 
 // ── Step 1: verify submodule is present ───────────────────────────────────
@@ -85,7 +114,9 @@ for (const pkgName of readdirSync(ASTRO_DIST)) {
     mkdirSync(destDir, { recursive: true });
 
     const destFile = join(destDir, 'llms-full.txt');
-    copyFileSync(srcFile, destFile);
+    const raw = readFileSync(srcFile, 'utf-8');
+    const deduped = deduplicateLlmsFull(raw);
+    writeFileSync(destFile, deduped, 'utf-8');
     console.log(`  ✓ ${pkgName}/${versionName}/llms-full.txt`);
     copied++;
   }

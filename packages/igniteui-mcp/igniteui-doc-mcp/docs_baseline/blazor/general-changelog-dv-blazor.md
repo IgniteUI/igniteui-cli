@@ -20,12 +20,24 @@ All notable changes for each version of Ignite UI for Blazor are documented on t
 
 ## **25.2.83 (March 2026)**
 
+### Enhancements
+
+#### IgniteUI.Blazor
+
+- Added `Checkmark` option to the `MarkerType` enum. Use `MarkerType.Checkmark` on a series to display a V-shaped checkmark icon inside a circle. The new `MarkerAutomaticBehavior.Checkmark` enum value allows applying the checkmark shape to all series in the chart, and the `SeriesViewer.CheckmarkMarkerTemplate` property can be used to customize its template.
+
 ### Bug Fixes
 
 | Bug Number | Control | Description |
 |------------|---------|-------------|
 | 3229  | Grids | Latest version of Blazor Grids shows Trial watermark for Licensed version |
 | 2754  | IgbTabs | Changing the check state for IgbSwitch inside the tab causes the tab content to disappear |
+
+### Enhancements
+
+### IgniteUI.Blazor
+
+- Added `RangeBarSeries` support for horizontal range rendering in `DataChart`.
 
 ## **25.2.77 (March 2026)**
 

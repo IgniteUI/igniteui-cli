@@ -12,7 +12,7 @@ The Tree Grid provides a convenient way to perform data manipulations through in
 ## Angular Tree Grid Row Adding Example
 The following sample demonstrates how to enable native row adding in the Tree Grid. Changing a cell value and then clicking or navigating to another cell on the same row doesn't update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxActionStripComponent } from 'igniteui-angular/action-strip';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridEditingActionsComponent } from 'igniteui-angular/grids/core';
@@ -24,6 +24,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-add-row-sample',
     styleUrls: ['./tree-grid-add-row-sample.component.scss'],
     templateUrl: './tree-grid-add-row-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxIconComponent, IgxActionStripComponent, IgxGridEditingActionsComponent]
 })
 export class TreeGridAddRowSampleComponent implements OnInit {
@@ -54,7 +55,7 @@ export class TreeGridAddRowSampleComponent implements OnInit {
         </igx-column>
         <igx-column [field]="'Age'" dataType="number"></igx-column>
         <igx-action-strip #actionstrip>
-            <igx-grid-editing-actions [addRow]="true" [addChild]="actionstrip.context?.treeRow.level < 2">
+            <igx-grid-editing-actions [addRow]="true" [addChild]="$safeNavigationMigration(actionstrip.context?.treeRow.level) < 2">
             </igx-grid-editing-actions>
         </igx-action-strip>
     </igx-tree-grid>

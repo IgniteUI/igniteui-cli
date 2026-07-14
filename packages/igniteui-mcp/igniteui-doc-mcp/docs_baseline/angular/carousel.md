@@ -19,7 +19,7 @@ The Angular Carousel component allows you to use animations, slide transitions, 
 The Angular Carousel demo you see below shows slides containing only images. We’ve enabled navigation buttons allowing users to easily move from one slide to another – going back and forth.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCarouselComponent, IgxSlideComponent } from 'igniteui-angular/carousel';
 
 
@@ -27,6 +27,7 @@ import { IgxCarouselComponent, IgxSlideComponent } from 'igniteui-angular/carous
     selector: 'app-carousel',
     styleUrls: ['./carousel.component.scss'],
     templateUrl: './carousel.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCarouselComponent, IgxSlideComponent]
 })
 
@@ -328,7 +329,7 @@ This carousel is going to contain slides with forms and images:
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCarouselComponent, IgxSlideComponent } from 'igniteui-angular/carousel';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -339,6 +340,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-carousel',
     styleUrls: ['./carousel-with-components-sample.component.scss'],
     templateUrl: './carousel-with-components-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCarouselComponent, IgxSlideComponent, FormsModule, IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective, IgxInputDirective, IgxButtonDirective]
 })
 
@@ -464,7 +466,7 @@ The demo below demonstrates the different types of animations, which the carouse
 
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCarouselComponent, IgxSlideComponent } from 'igniteui-angular/carousel';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
 import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
@@ -478,6 +480,7 @@ import { TitleCasePipe } from '@angular/common';
     selector: 'app-carousel',
     styleUrls: ['./carousel-animations-sample.component.scss'],
     templateUrl: './carousel-animations-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSelectComponent, IgxSwitchComponent, FormsModule, IgxSelectItemComponent, IgxCarouselComponent, IgxSlideComponent, IgxCardComponent, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardContentDirective, IgxCardMediaDirective, IgxCardActionsComponent, IgxButtonDirective, IgxPrefixDirective, TitleCasePipe]
 })
 export class CarouselAnimationsSampleComponent {
@@ -710,7 +713,7 @@ syncing the components by hooking up on carousel's [`slideChanged`](mcp:get_api_
 These configurations will have the following result:
 
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ISlideEventArgs, IgxCarouselComponent, IgxSlideComponent } from 'igniteui-angular/carousel';
 import { IListItemClickEventArgs, IgxListComponent, IgxListItemComponent, IgxListThumbnailDirective } from 'igniteui-angular/list';
 import { NgStyle, NgClass, CurrencyPipe } from '@angular/common';
@@ -719,6 +722,7 @@ import { NgStyle, NgClass, CurrencyPipe } from '@angular/common';
     selector: 'app-carousel',
     styleUrls: ['./carousel-no-navigation-sample.component.scss'],
     templateUrl: './carousel-no-navigation-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCarouselComponent, IgxSlideComponent, NgStyle, NgClass, IgxListComponent, IgxListItemComponent, IgxListThumbnailDirective, CurrencyPipe]
 })
 export class CarouselNoNavigationSampleComponent implements OnInit {
@@ -1215,13 +1219,14 @@ The last step is to include the component's theme.
 The sample below demonstrates a simple styling applied through the [Ignite UI for Angular Theming](themes/index.md).
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCarouselComponent, IgxSlideComponent } from 'igniteui-angular/carousel';
 
 @Component({
     selector: 'app-carousel',
     styleUrls: ['./carousel-styling-sample.component.scss'],
     templateUrl: './carousel-styling-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCarouselComponent, IgxSlideComponent]
 })
 

@@ -10,12 +10,12 @@ _premium: true
 # Angular Hierarchical Grid Export to Excel and PDF Service
 @@if (igxName === 'IgxGrid' || igxName === 'IgxTreeGrid') {
 <p class="highlight">
-Whether your audience needs a spreadsheet for deeper analysis or a polished PDF they can share right away, the Ignite UI exporters help you deliver the right file from the IgxHierarchicalGrid in seconds. Inject the [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html), call the respective [`export`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService&member=export)/[`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html#export) method, and the component handles the rest—from honoring filters and sorting to shaping the output format.
+Whether your audience needs a spreadsheet for deeper analysis or a polished PDF they can share right away, the Ignite UI exporters help you deliver the right file from the IgxHierarchicalGrid in seconds. Inject the [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) or [`IgxPdfExporterService`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService), call the respective [`export`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService&member=export)/[`export`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService&member=export) method, and the component handles the rest—from honoring filters and sorting to shaping the output format.
 </p>
 }
 @@if (igxName === 'IgxHierarchicalGrid' || igxName === 'IgxPivotGrid') {
 <p class="highlight">
-The Ignite UI Excel and PDF Exporter services treat the IgxHierarchicalGrid exactly like your users see it on screen—complete with hierarchical layouts and summaries. Inject the [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html), call the appropriate [`export`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService&member=export)/[`export`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html#export) method, and let the service generate the final document.
+The Ignite UI Excel and PDF Exporter services treat the IgxHierarchicalGrid exactly like your users see it on screen—complete with hierarchical layouts and summaries. Inject the [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) or [`IgxPdfExporterService`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService), call the appropriate [`export`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService&member=export)/[`export`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService&member=export) method, and let the service generate the final document.
 </p>
 }
 The sections below walk through setup, usage patterns, and tips for tailoring each export so that your users receive data that is ready to consume, no matter which file type they prefer.
@@ -23,7 +23,7 @@ The sections below walk through setup, usage patterns, and tips for tailoring ea
 ## Angular Excel Exporter Example
 This live example demonstrates the standard Excel and PDF export workflow for the Hierarchical Grid—bound data, two export buttons (Excel and PDF), and the resulting `.xlsx` and `.pdf` files with preserved filtering and sorting state. Share it with stakeholders who want to preview the experience before wiring it into their application.
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { Singer, SINGERS } from '../../data/artistData';
@@ -32,6 +32,7 @@ import { Singer, SINGERS } from '../../data/artistData';
     selector: 'app-hierarchical-grid-excel-export-sample',
     styleUrls: ['hierarchical-grid-excel-export.sample.scss'],
     templateUrl: 'hierarchical-grid-excel-export.sample.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxRowIslandComponent]
 })
 export class HGridExcelExportSampleComponent {
@@ -58,7 +59,7 @@ export class HGridExcelExportSampleComponent {
 <div class="divider--half"></div>
 ## Exporting Hierarchical Grid's Data
 Getting the exporters into your project takes only a few lines of code. Follow these steps and you will have reusable services that can create either Excel or PDF outputs on demand:
-1. Import the [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) and/or [`IgxPdfExporterService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html) in your root module.
+1. Import the [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) and/or [`IgxPdfExporterService`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService) in your root module.
 2. Inject whichever exporter you need and call its `export` method when the user requests a file.
 ```typescript
 // component.ts
@@ -108,7 +109,7 @@ Grouping is a popular way to summarize customer segments, product categories, or
 If you need flat data in the exported file, clear the grouping prior to calling `export` or handle the `rowExporting` event to reshape the output.
 Example:
 ```typescript
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { GridColumnDataType, ISortingExpression, SortingDirection } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxExcelExporterService } from 'igniteui-angular/grids/core';
@@ -119,6 +120,7 @@ import { INVOICE_DATA } from '../data/invoiceData';
     selector: 'app-excel-export-sample-1',
     styleUrls: ['./excel-export-sample-1.component.scss'],
     templateUrl: './excel-export-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarExporterComponent, IgxColumnComponent]
 })
 export class ExcelExportSample1Component implements OnInit {
@@ -203,7 +205,7 @@ Dashboards often rely on [multi-column headers](multi-column-headers.md) to add 
 }
 @@if (igxName === 'IgxGrid') {
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxColumnComponent, IgxColumnGroupComponent, IgxExporterEvent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -215,6 +217,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-multi-column-headers-export',
     styleUrls: ['multi-column-headers-export.component.scss'],
     templateUrl: 'multi-column-headers-export.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxSwitchComponent, FormsModule, IgxGridToolbarPinningComponent, IgxGridToolbarHidingComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxColumnGroupComponent]
 })
 export class GridMultiColumnHeadersExportComponent {
@@ -275,7 +278,7 @@ export class GridMultiColumnHeadersExportComponent {
 }
 @@if (igxName === 'IgxTreeGrid') {
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxColumnGroupComponent, IgxExporterEvent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -287,6 +290,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-tree-grid-multi-column-headers-export-sample',
     styleUrls: ['./tree-grid-multi-column-headers-export.component.scss'],
     templateUrl: './tree-grid-multi-column-headers-export.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxSwitchComponent, FormsModule, IgxGridToolbarPinningComponent, IgxGridToolbarHidingComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxColumnGroupComponent]
 })
 export class TreeGridMultiColumnHeadersExportComponent {
@@ -345,7 +349,7 @@ export class TreeGridMultiColumnHeadersExportComponent {
 }
 @@if (igxName === 'IgxHierarchicalGrid') {
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxColumnComponent, IgxColumnGroupComponent, IgxExporterEvent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -357,6 +361,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-hierarchical-grid-multi-column-export',
     styleUrls: ['./hierarchical-grid-multi-column-export.component.scss'],
     templateUrl: 'hierarchical-grid-multi-column-export.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxSwitchComponent, FormsModule, IgxGridToolbarPinningComponent, IgxGridToolbarHidingComponent, IgxGridToolbarExporterComponent, IgxColumnGroupComponent, IgxColumnComponent, IgxRowIslandComponent]
 })
 
@@ -479,7 +484,7 @@ this.excelExportService.columnExporting.subscribe((args: IColumnExportingEventAr
 });
 this.excelExportService.export(this.hierarchicalGrid, new IgxExcelExporterOptions('ExportedDataFile'));
 ```
-When you are exporting data from the Hierarchical Grid component, the services automatically respect sorting, filtering, summaries, and hidden columns so the file reflects what the user currently sees. Need the full dataset instead? Toggle the relevant flags on [`IgxExcelExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterOptions) or [`IgxPdfExporterOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporteroptions.html) to include filtered rows, hidden columns, or custom metadata.
+When you are exporting data from the Hierarchical Grid component, the services automatically respect sorting, filtering, summaries, and hidden columns so the file reflects what the user currently sees. Need the full dataset instead? Toggle the relevant flags on [`IgxExcelExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterOptions) or [`IgxPdfExporterOptions`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterOptions) to include filtered rows, hidden columns, or custom metadata.
 ## Known Limitations
 Before shipping exports to production users, review the following platform constraints so you can set expectations and provide helpful guidance within your app.
 | Limitation               | Description                                                                                                                                                                                                                  |
@@ -493,8 +498,8 @@ Before shipping exports to production users, review the following platform const
 The Excel and PDF Exporter services have a few more APIs to explore, which are listed below.
 - [IgxExcelExporterService API](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService)
 - [IgxExcelExporterOptions API](mcp:get_api_reference?platform=angular&component=IgxExcelExporterOptions)
-- [IgxPdfExporterService API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html)
-- [IgxPdfExporterOptions API](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporteroptions.html)
+- [IgxPdfExporterService API](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService)
+- [IgxPdfExporterOptions API](mcp:get_api_reference?platform=angular&component=IgxPdfExporterOptions)
 Additional components that were used:
 - [IgxHierarchicalGridComponent API](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent)
 - [IgxHierarchicalGridComponent Styles](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-grid-theme)

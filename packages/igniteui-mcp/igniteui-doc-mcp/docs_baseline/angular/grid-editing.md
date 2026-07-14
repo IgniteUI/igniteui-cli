@@ -71,7 +71,7 @@ The grid exposes a wide array of events that provide greater control over the ed
 - `RowEdit` - Committing cell is possible, but not the whole row. The row will stay in edit mode and the row transaction will be considered open. Hitting **Done** does not commit or close the row. **Cancel** button closes the editing process and the transaction without committing the changes.
 The following sample demonstrates the editing execution sequence in action:
 ```typescript
-import { Component, ElementRef, Renderer2, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { contains } from '@igniteui/material-icons-extended';
 import { DATA } from '../../data/nwindData';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -85,6 +85,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-editing-lifecycle',
     templateUrl: 'grid-editing-lifecycle.component.html',
     styleUrls: ['grid-editing-lifecycle.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxButtonDirective, IgxIconComponent]
 })
 export class GridEditingLifecycleComponent {

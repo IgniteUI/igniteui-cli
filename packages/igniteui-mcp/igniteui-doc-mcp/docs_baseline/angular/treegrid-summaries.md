@@ -11,7 +11,7 @@ _premium: true
 The Angular UI grid in Ignite UI for Angular has a **summaries** feature that functions on a per-column level as group footer. Angular grid summaries is powerful feature which enables the user to see column information in a separate container with a predefined set of default summary items, depending on the type of data within the column or by implementing a custom angular template in the Tree Grid.
 ## Angular Tree Grid Summaries Overview Example
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -24,6 +24,7 @@ import { DatePipe } from '@angular/common';
     selector: 'app-tree-grid-summary-sample',
     styleUrls: ['./tree-grid-summary-sample.component.scss'],
     templateUrl: './tree-grid-summary-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxCellHeaderTemplateDirective, IgxIconComponent, DatePipe]
 })
 export class TreeGridSummarySampleComponent {
@@ -321,7 +322,7 @@ class MySummary extends IgxNumberSummaryOperand {
 }
 ```
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxColumnComponent, IgxSummaryOperand } from 'igniteui-angular/grids/core';
 import { IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -330,7 +331,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
 
 class PTOSummary {
 
-    public operate(data?: any[], allData = [], fieldName = ''): IgxSummaryResult[] {
+    public operate(data?: any[], allData: any[] = [], fieldName = ''): IgxSummaryResult[] {
       const result = [];
       result.push({
         key: 'totalOnPTO', label: 'Employees On PTO',
@@ -368,6 +369,7 @@ class PTOSummary {
     selector: 'app-treegrid-all-data-summary-sample',
     styleUrls: ['./treegrid-allData-summary.component.scss'],
     templateUrl: './treegrid-allData-summary.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class TreeGridAllDataSummaryComponent implements OnInit {
@@ -420,7 +422,7 @@ When a default summary is defined, the height of the summary area is calculated 
 > [!NOTE]
 > Column summary template could be defined through API by setting the column [summaryTemplate](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=summaryTemplate) property to the required TemplateRef.
 ```typescript
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxColumnComponent, IgxSummaryOperand, IgxSummaryTemplateDirective } from 'igniteui-angular/grids/core';
 import { IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
@@ -433,7 +435,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
 
 class PTOSummary {
 
-    public operate(data?: any[], allData = [], fieldName = ''): IgxSummaryResult[] {
+    public operate(data?: any[], allData: any[] = [], fieldName = ''): IgxSummaryResult[] {
         const result = [];
         result.push({
             key: 'totalOnPTO', label: 'Employees On PTO',
@@ -471,6 +473,7 @@ class PTOSummary {
     selector: 'app-treegrid-summary-template',
     styleUrls: ['./treegrid-summary-template.component.scss'],
     templateUrl: './treegrid-summary-template.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxSwitchComponent, IgxButtonGroupComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxSummaryTemplateDirective]
 })
 export class TreeGridSummaryTemplateComponent implements OnInit {
@@ -639,13 +642,14 @@ For `UnitPrice`, default summaries like `count`, `sum`, and `average` are disabl
 At runtime, summaries can also be dynamically disabled using the `disabledSummaries` property. For example, you can set or update the property on specific columns programmatically to adapt the displayed summaries based on user actions or application state changes.
 ```typescript
 import {
-    Component,
-    ViewChild,
-    OnInit,
-    AfterViewInit,
-    ElementRef,
-    QueryList,
-    ViewChildren
+  Component,
+  ViewChild,
+  OnInit,
+  AfterViewInit,
+  ElementRef,
+  QueryList,
+  ViewChildren,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { ConnectedPositioningStrategy, HorizontalAlignment, IgxSummaryResult, OverlaySettings, VerticalAlignment } from 'igniteui-angular/core';
@@ -773,6 +777,7 @@ class DeliveredSummary {
     selector: "app-tree-grid-summary-sample",
     styleUrls: ["./tree-grid-disable-summaries.component.scss"],
     templateUrl: "./tree-grid-disable-summaries.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     IgxTreeGridComponent,
     IgxPreventDocumentScrollDirective,
@@ -1081,7 +1086,7 @@ public dateSummaryFormat(summary: IgxSummaryResult, summaryOperand: IgxSummaryOp
 ```
 ```typescript
 import { DatePipe } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxDateSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
 import { IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -1092,6 +1097,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-summary-formatter',
     styleUrls: ['./tree-grid-summary-formatter.component.scss'],
     templateUrl: 'tree-grid-summary-formatter.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 
@@ -1168,7 +1174,7 @@ The [`showSummaryOnCollapse`](mcp:get_api_reference?platform=angular&component=I
 > [!NOTE]
 > The [`summaryPosition`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=summaryPosition) property applies only for the child level summaries. The root level summaries appear always fixed at the bottom of the Tree Grid.
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DefaultSortingStrategy, GridSummaryCalculationMode, ISortingExpression, IgxSummaryResult, SortingDirection } from 'igniteui-angular/core';
 import { GridSummaryPosition, IgxCellTemplateDirective, IgxColumnComponent, IgxNumberSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -1196,6 +1202,7 @@ class AvgSummary {
     selector: 'app-tree-grid-summary2-sample',
     styleUrls: ['./tree-grid-summary2-sample.component.scss'],
     templateUrl: './tree-grid-summary2-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxSwitchComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 export class TreeGridSummary2SampleComponent implements OnInit {
@@ -1339,7 +1346,7 @@ igx-buttongroup{
 There is an [`exportSummaries`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterOptions&member=exportSummaries) option in `IgxExcelExporterOptions` that specifies whether the exported data should include the grid's summaries. Default `exportSummaries` value is **false**.
 The [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) will export the default summaries for all column types as their equivalent excel functions so they will continue working properly when the sheet is modified. Try it for yourself in the example below:
 ```typescript
-import { Component, ViewChild, inject } from '@angular/core';
+import { Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -1353,6 +1360,7 @@ import { DatePipe } from '@angular/common';
     selector: 'app-tree-grid-summary-export',
     styleUrls: ['./tree-grid-summary-export.component.scss'],
     templateUrl: './tree-grid-summary-export.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxCellHeaderTemplateDirective, IgxIconComponent, DatePipe]
 })
 export class TreeGridSummaryExportComponent {
@@ -1621,7 +1629,7 @@ The last step is to **include** the component custom theme:
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -1634,6 +1642,7 @@ import { DatePipe } from '@angular/common';
     selector: 'app-tree-grid-summary-styling',
     styleUrls: ['./tree-grid-summary-styling.component.scss'],
     templateUrl: './tree-grid-summary-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxCellHeaderTemplateDirective, IgxIconComponent, DatePipe]
 })
 export class TreeGridSummaryStylingComponent {
@@ -1735,17 +1744,25 @@ export class TreeGridSummaryStylingComponent {
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
+$summaries-background: #eef4e5;
+
 $custom-theme: grid-summary-theme(
-  $background-color: #e0f3ff,
-  $label-color: #e41c77,
-  $result-color: black,
-  $pinned-border-width: 2px,
-  $pinned-border-style: dotted,
-  $pinned-border-color: #e41c77
+    $background-color: $summaries-background,
+    $label-color: #486821,
+    $result-color: #172505,
+    $pinned-border-width: 2px,
+    $pinned-border-style: dotted,
+    $pinned-border-color: #172505,
 );
 
 :host {
-    @include tokens($custom-theme);
+    ::ng-deep {
+        igx-grid-summary-row {
+            --summaries-patch-background: #{$summaries-background};
+
+            @include tokens($custom-theme);
+        }
+    }
 }
 ```
 ## API References

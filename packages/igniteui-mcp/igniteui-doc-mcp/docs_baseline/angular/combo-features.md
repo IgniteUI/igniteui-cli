@@ -18,7 +18,7 @@ The following demo demonstrates some of the combobox features that are enabled/d
 
 
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxComboComponent } from 'igniteui-angular/combo';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 import { localData } from './local-data';
@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-combo',
     styleUrls: ['./combo-features.component.scss'],
     templateUrl: './combo-features.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxComboComponent, IgxSwitchComponent, FormsModule]
 })
 export class ComboFeaturesComponent implements OnInit{
@@ -186,7 +187,7 @@ If everything is set up correctly, the combobox's list will display centered, us
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { GlobalPositionStrategy, OverlaySettings } from 'igniteui-angular/core';
 import { IgxComboComponent } from 'igniteui-angular/combo';
 import { scaleInCenter, scaleOutCenter } from 'igniteui-angular/animations';
@@ -195,6 +196,7 @@ import { scaleInCenter, scaleOutCenter } from 'igniteui-angular/animations';
     selector: 'app-combo-overlay',
     templateUrl: 'combo-overlay.component.html',
     styleUrls: ['combo-overlay.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxComboComponent]
 })
 export class ComboOverlayComponent {

@@ -154,7 +154,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 This topic takes you step-by-step towards displaying multiple geographic series that will plot following geo-spatial data:

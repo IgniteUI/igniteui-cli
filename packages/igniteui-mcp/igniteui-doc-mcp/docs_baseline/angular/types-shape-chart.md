@@ -192,7 +192,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Angular Scatter Polyline Chart
@@ -373,7 +372,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Additional Resources
@@ -392,7 +390,7 @@ The following table lists API members mentioned in the above sections:
 - [`IgxScatterPolygonSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterpolygonseriescomponent.html)
 - [`IgxScatterPolylineSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterpolylineseriescomponent.html)
 - `ItemsSource`
-- [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxshapeseriesbasecomponent.html#shapeMemberPath)
+- [`shapeMemberPath`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxscatterpolygonseriescomponent.html#shapeMemberPath)
 - [`IgxNumericXAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericxaxiscomponent.html)
 - [`IgxNumericYAxisComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxnumericyaxiscomponent.html)
 - `YAxisName`

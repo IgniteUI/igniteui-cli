@@ -360,7 +360,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies
@@ -525,7 +524,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Highlight Needle
 
 The linear gauge can be modified to show a second needle. This will make the main needle's [`value`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=value) appear with a lower opacity. To enable this first set [`highlightValueDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=highlightValue).
@@ -622,7 +620,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Ranges
 
@@ -724,7 +721,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Tick Marks
 
@@ -830,7 +826,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Labels
 
 The labels indicate the measures on the scale.
@@ -919,7 +914,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Backing
 
 The backing element represents background and border of the linear gauge component. It is always the first element rendered and all the rest of elements such as labels, and tick marks are overlaid on top of it.
@@ -1004,7 +998,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Scale
 
@@ -1097,7 +1090,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Summary
 

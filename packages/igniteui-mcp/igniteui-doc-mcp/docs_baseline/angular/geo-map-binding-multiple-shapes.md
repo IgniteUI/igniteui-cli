@@ -234,7 +234,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 This topic takes you step-by-step towards displaying multiple geographic series in the map component. All geographic series plot following geo-spatial data loaded from shape files using the [`IgxShapeDataSource`](mcp:get_api_reference?platform=angular&component=IgxShapeDataSource) class. Refer to the [Binding Shape Files](geo-map-binding-shp-file.md) topic for more information about [`IgxShapeDataSource`](mcp:get_api_reference?platform=angular&component=IgxShapeDataSource) object.

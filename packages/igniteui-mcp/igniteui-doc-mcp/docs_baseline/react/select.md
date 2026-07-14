@@ -503,21 +503,18 @@ export default function SelectGroup() {
               <IgrIcon name="place" collection="material"></IgrIcon>
             </span>
             <span> Germany </span>
-            <span slot="suffix">DE</span>
           </IgrSelectItem>
           <IgrSelectItem>
             <span slot="prefix">
               <IgrIcon name="place" collection="material"></IgrIcon>
             </span>
             <span> France </span>
-            <span slot="suffix">FR</span>
           </IgrSelectItem>
           <IgrSelectItem selected>
             <span slot="prefix">
               <IgrIcon name="place" collection="material"></IgrIcon>
             </span>
             <span> Spain </span>
-            <span slot="suffix">ES</span>
           </IgrSelectItem>
         </IgrSelectGroup>
 
@@ -528,21 +525,18 @@ export default function SelectGroup() {
               <IgrIcon name="place" collection="material"></IgrIcon>
             </span>
             <span> USA </span>
-            <span slot="suffix">US</span>
           </IgrSelectItem>
           <IgrSelectItem>
             <span slot="prefix">
               <IgrIcon name="place" collection="material"></IgrIcon>
             </span>
             <span> Canada </span>
-            <span slot="suffix">CA</span>
           </IgrSelectItem>
           <IgrSelectItem>
             <span slot="prefix">
               <IgrIcon name="place" collection="material"></IgrIcon>
             </span>
             <span> Mexico </span>
-            <span slot="suffix">MX</span>
           </IgrSelectItem>
         </IgrSelectGroup>
       </IgrSelect>

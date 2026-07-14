@@ -118,7 +118,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Treemap Recommendations
@@ -326,7 +325,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Layout Types
@@ -527,7 +525,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ### Angular Treemap Highlighting
 
 In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set [`highlightingMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#highlightingMode)to Brighten or FadeOthers.
@@ -675,7 +672,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Angular Treemap Percent based highlighting
 
 - [`highlightedDataSource`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxtreemapcomponent.html#highlightedDataSource): Specifies the datasource to read highlighted values from. If null, then highlighted values are read from the ItemsSource property.
@@ -795,7 +791,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 

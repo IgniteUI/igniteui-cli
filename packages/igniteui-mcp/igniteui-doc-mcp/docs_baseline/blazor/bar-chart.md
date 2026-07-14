@@ -3,7 +3,7 @@ title: Blazor Bar Chart and Graph | Ignite UI for Blazor
 _description: Blazor Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories. Try for FREE.
 _keywords: Blazor Charts, Bar Chart, Bar Graph, Horizontal Chart, Infragistics
 _license: commercial
-mentionedTypes: ["XamDataChart", "BarSeries", "StackedBarSeries", "Stacked100BarSeries", "Series"]
+mentionedTypes: ["XamDataChart", "BarSeries", "StackedBarSeries", "Stacked100BarSeries", "RangeBarSeries", "Series"]
 namespace: Infragistics.Controls.Charts
 _tocName: Bar Chart
 _premium: true
@@ -973,6 +973,158 @@ public class EnergyRenewableConsumption
 
 <div class="divider--half"></div>
 
+## Blazor Range Bar Chart
+
+The Blazor Range Bar Chart belongs to a group of range charts and is rendered using horizontal rectangles that can appear in the middle of the plot area of the chart, rather than stretching from the left like the traditional [Category Bar Chart](bar-chart.md#blazor-bar-chart-example). This type of series emphasizes the amount of change between low values and high values in the same data point over a period of time or compares multiple items.
+
+Range values are represented on the X-Axis and categories are displayed on the Y-Axis. Because each bar visualizes both a low value and a high value, this chart is useful for scenarios such as showing daily temperature ranges, minimum and maximum prices, or any bounded measurements where a single value is not sufficient.
+
+The Range Bar Chart is identical to the [Range Column Chart](column-chart.md#blazor-range-column-chart) in all aspects except that the ranges are represented as a set of horizontal bars rather than vertical columns.
+
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a `RangeBarSeries`. The series reads low and high values from `LowMemberPath` and `HighMemberPath`, and it typically uses a [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) with a [`IgbCategoryYAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryYAxis), as shown in the example below:
+
+```razor
+@using IgniteUI.Blazor.Controls
+
+<div class="container vertical">
+    <div class="legend-title">
+        Monthly Temperature Range in LA and NYC
+    </div>
+    <div class="legend">
+        <IgbLegend
+        Name="legend"
+        @ref="legend"
+        Orientation="LegendOrientation.Horizontal">
+        </IgbLegend>
+
+    </div>
+    <div class="container vertical fill">
+        <IgbDataChart
+        Name="chart"
+        @ref="chart"
+        IsHorizontalZoomEnabled="false"
+        IsVerticalZoomEnabled="false">
+            <IgbCategoryYAxis
+            Name="yAxis"
+            @ref="yAxis"
+            Label="Month"
+            Interval="1"
+            DataSource="TemperatureRangeData">
+            </IgbCategoryYAxis>
+
+            <IgbNumericXAxis
+            Name="xAxis"
+            @ref="xAxis"
+            Title="Temperature (in Celsius)"
+            TitleAngle="0"
+            TitleTopMargin="10">
+            </IgbNumericXAxis>
+
+            <IgbRangeBarSeries
+            Name="RangeBarSeries1"
+            @ref="rangeBarSeries1"
+            XAxisName="xAxis"
+            YAxisName="yAxis"
+            Title="Los Angeles"
+            LowMemberPath="LowLA"
+            HighMemberPath="HighLA"
+            ShowDefaultTooltip="false"
+            DataSource="TemperatureRangeData">
+            </IgbRangeBarSeries>
+
+            <IgbRangeBarSeries
+            Name="RangeBarSeries2"
+            @ref="rangeBarSeries2"
+            XAxisName="xAxis"
+            YAxisName="yAxis"
+            Title="New York"
+            LowMemberPath="LowNY"
+            HighMemberPath="HighNY"
+            ShowDefaultTooltip="false"
+            DataSource="TemperatureRangeData">
+            </IgbRangeBarSeries>
+
+            <IgbDataToolTipLayer
+            Name="dataToolTipLayer"
+            @ref="dataToolTipLayer">
+            </IgbDataToolTipLayer>
+
+        </IgbDataChart>
+
+    </div>
+</div>
+
+@code {
+
+    private Action BindElements { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var legend = this.legend;
+        var chart = this.chart;
+        var yAxis = this.yAxis;
+        var xAxis = this.xAxis;
+        var rangeBarSeries1 = this.rangeBarSeries1;
+        var rangeBarSeries2 = this.rangeBarSeries2;
+        var dataToolTipLayer = this.dataToolTipLayer;
+
+        this.BindElements = () => {
+            chart.Legend = this.legend;
+        };
+        this.BindElements();
+
+    }
+
+    private IgbLegend legend;
+    private IgbDataChart chart;
+    private IgbCategoryYAxis yAxis;
+    private IgbNumericXAxis xAxis;
+    private IgbRangeBarSeries rangeBarSeries1;
+    private IgbRangeBarSeries rangeBarSeries2;
+    private IgbDataToolTipLayer dataToolTipLayer;
+
+    private TemperatureRangeData _temperatureRangeData = null;
+    public TemperatureRangeData TemperatureRangeData
+    {
+        get
+        {
+            if (_temperatureRangeData == null)
+            {
+                _temperatureRangeData = new TemperatureRangeData();
+            }
+            return _temperatureRangeData;
+        }
+    }
+
+}
+```
+```csharp
+using System;
+using System.Collections.Generic;
+public class TemperatureRangeDataItem
+{
+    public string Month { get; set; }
+    public double HighNY { get; set; }
+    public double LowNY { get; set; }
+    public double HighLA { get; set; }
+    public double LowLA { get; set; }
+}
+
+public class TemperatureRangeData
+    : List<TemperatureRangeDataItem>
+{
+    public TemperatureRangeData()
+    {
+        this.Add(new TemperatureRangeDataItem() { Month = @"Jan", HighNY = 10.6, LowNY = -6.6, HighLA = 28.3, LowLA = 7.8 });
+        this.Add(new TemperatureRangeDataItem() { Month = @"Feb", HighNY = 7.8, LowNY = -9.9, HighLA = 31.1, LowLA = 5.6 });
+        this.Add(new TemperatureRangeDataItem() { Month = @"Mar", HighNY = 12.2, LowNY = -3.8, HighLA = 27.8, LowLA = 8.3 });
+        // ... 9 more items
+    }
+}
+```
+
+<div class="divider--half"></div>
+
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
@@ -993,4 +1145,4 @@ The following table lists API members mentioned in the above sections:
 - [`IgbCalloutLayer`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer)
 - [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries)
 - [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries)
-- [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries)
+- `RangeBarSeries`

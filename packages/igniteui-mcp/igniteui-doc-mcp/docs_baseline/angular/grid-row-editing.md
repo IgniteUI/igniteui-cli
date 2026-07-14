@@ -11,7 +11,7 @@ The Grid provides a convenient way to perform data manipulations through inline 
 ## Angular Grid Row Editing Example
 The following sample demonstrates how to enable row editing in the Grid. Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DATA } from '../../data/nwindData';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellEditorTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-grid-row-edit',
     styleUrls: [`grid-row-editing-sample.component.scss`],
     templateUrl: 'grid-row-editing-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellEditorTemplateDirective, IgxInputGroupComponent, FormsModule, IgxInputDirective, IgxFocusDirective]
 })
 export class GridRowEditSampleComponent {
@@ -230,7 +231,7 @@ We scope our `@include` statement in `.custom-buttons` so that it is only applie
 ### Demo
 After styling the banner and buttons, we also define a custom style for [the cell in edit mode](cell-editing.md#styling). The result of all the combined styles can be seen below:
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DATA } from '../../data/nwindData';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellEditorTemplateDirective, IgxColumnComponent, IgxRowEditActionsDirective, IgxRowEditTabStopDirective, IgxRowEditTextDirective } from 'igniteui-angular/grids/core';
@@ -244,6 +245,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-grid-row-edit-style',
     styleUrls: [`grid-row-editing-style.component.scss`],
     templateUrl: 'grid-row-editing-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellEditorTemplateDirective, IgxInputGroupComponent, FormsModule, IgxInputDirective, IgxFocusDirective, IgxRowEditTextDirective, IgxRowEditActionsDirective, IgxIconButtonDirective, IgxRowEditTabStopDirective, IgxIconComponent]
 })
 export class GridRowEditStyleComponent {

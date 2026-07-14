@@ -14,7 +14,7 @@ _tocName: Virtual For Directive
 
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxFilterOptions, IgxFilterPipe, IgxForOfDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxInputDirective, IgxInputGroupComponent, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-igx-for-list',
     styleUrls: ['./igxFor.component.scss'],
     templateUrl: './igxFor.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, FormsModule, IgxInputDirective, IgxPrefixDirective, IgxIconComponent, IgxSuffixDirective, IgxListComponent, IgxListItemComponent, IgxForOfDirective, IgxRippleDirective, IgxAvatarComponent, IgxListThumbnailDirective, IgxListLineTitleDirective, IgxListActionDirective, IgxFilterPipe]
 })
 export class IgxForComponent implements OnInit {
@@ -269,7 +270,7 @@ _**Note:**_ It is strongly advised that the parent container of the [`igxForOf`]
 
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxFilterOptions, IgxFilterPipe, IgxForOfDirective } from 'igniteui-angular/directives';
 import { IgxInputDirective, IgxInputGroupComponent, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -283,6 +284,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-igx-for-horizontal',
     styleUrls: ['./igxFor-horizontal.component.scss'],
     templateUrl: './igxFor-horizontal.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, FormsModule, IgxInputDirective, IgxPrefixDirective, IgxIconComponent, IgxSuffixDirective, IgxListComponent, IgxListItemComponent, IgxForOfDirective, IgxAvatarComponent, IgxFilterPipe]
 })
 export class IgxForHorizontalComponent implements OnInit {

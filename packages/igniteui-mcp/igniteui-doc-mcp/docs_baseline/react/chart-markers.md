@@ -1,9 +1,9 @@
 ---
 title: React Chart Markers | Data Visualization | Infragistics
 _description: Infragistics' React Chart Markers
-_keywords: React Charts, Markers, Infragistics
+_keywords: React Charts, Markers, Marker Size, Infragistics
 _license: commercial
-mentionedTypes: ["CategoryChart", "CategoryChartType", "MarkerType"]
+mentionedTypes: ["CategoryChart", "CategoryChartType", "MarkerType", "MarkerSeries", "ScatterLineSeries", "ScatterSplineSeries", "ScatterSeries", "LineSeries", "SplineSeries", "MarkerAutomaticBehavior", "SeriesViewer"]
 namespace: Infragistics.Controls.Charts
 _tocName: Chart Markers
 _premium: true
@@ -15,7 +15,7 @@ In Ignite UI for React, markers are visual elements that display the values of d
 
 ## React Chart Marker Example
 
-In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the [`MarkerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.markertype.html) property to [`Circle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.markertype.html#Circle) enum value.
+In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the [`markerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmarkerseries.html#markerType) property to [`Circle`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.markertype.html#Circle) enum value.
 
 The colors of the markers are also managed by setting the [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#markerBrushes) and [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#markerOutlines) properties in the sample below. The markers and [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) is configurable in this sample by using the drop-downs as well.
 
@@ -120,8 +120,8 @@ export default class Sample extends React.Component<any, any> {
                         label="Marker Type"
                         shouldOverrideDefaultEditor="true"
                         valueType="EnumValue"
-                        dropDownValues={["Circle", "Automatic", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "None"]}
-                        dropDownNames={["Circle", "Automatic", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "None"]}
+                        dropDownValues={["Circle", "Checkmark", "Automatic", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "None"]}
+                        dropDownNames={["Circle", "Checkmark", "Automatic", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "None"]}
                         primitiveValue="Circle"
                         changed={this.editorChangeUpdateMarkerType}>
                     </IgrPropertyEditorPropertyDescription>
@@ -183,9 +183,327 @@ root.render(<Sample/>);
 
 <div class="divider--half"></div>
 
+## React Chart Marker Size
+
+You can control the exact device-independent pixel dimensions of data point markers by setting the `MarkerSize` property on any series that supports markers. This gives you precise control over how large markers appear on screen, regardless of the marker template or style being used.
+
+By default, marker sizing is determined by the series marker template. When you set `MarkerSize` to a specific numeric value, all markers in that series render at that exact device-independent pixel width and height. Setting `MarkerSize` back to `NaN` restores the default template-driven sizing.
+
+The `MarkerSize` property is available on all series types that derive from [`IgrMarkerSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmarkerseries.html), including [`IgrLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrlineseries.html), [`IgrSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrsplineseries.html), [`IgrAreaSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrareaseries.html), [`IgrColumnSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcolumnseries.html), [`IgrScatterSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterseries.html), [`IgrScatterLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterlineseries.html), [`IgrScatterSplineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscattersplineseries.html), and polar/radial series types.
+
+The following code examples show how to set `MarkerSize` to 30 device-independent pixels on a [`IgrScatterLineSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrscatterlineseries.html) in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control:
+
+```tsx
+<IgrDataChart>
+    <IgrScatterLineSeries
+        markerSize={30}
+        markerType="Circle"
+        xMemberPath="X"
+        yMemberPath="Y"
+        xAxisName="xAxis"
+        yAxisName="yAxis" />
+</IgrDataChart>
+```
+
+To reset markers to their default template-driven size, set `MarkerSize` to `NaN` (or remove the attribute in markup):
+
+```tsx
+<IgrLineSeries markerSize={NaN} markerType="Circle" ... />
+```
+
+The following sample demonstrates `MarkerSize` on scatter series with an interactive editor:
+
+```typescript
+export class CountryDemographicAfricanItem {
+    public constructor(init: Partial<CountryDemographicAfricanItem>) {
+        Object.assign(this, init);
+    }
+
+    public population: number;
+    public birthRate: number;
+    public deathRate: number;
+    public name: string;
+
+}
+export class CountryDemographicAfrican extends Array<CountryDemographicAfricanItem> {
+    public constructor(items: Array<CountryDemographicAfricanItem> | number = -1) {
+        if (Array.isArray(items)) {
+            super(...items);
+        } else {
+            const newItems = [
+                new CountryDemographicAfricanItem({ population: 39728000, birthRate: 23.9, deathRate: 4.77, name: `Algeria` }),
+                new CountryDemographicAfricanItem({ population: 27884000, birthRate: 42.32, deathRate: 8.68, name: `Angola` }),
+                new CountryDemographicAfricanItem({ population: 10576000, birthRate: 37.43, deathRate: 9.32, name: `Benin` }),
+                // ... 51 more items
+            ];
+            super(...newItems.slice(0));
+        }
+    }
+}
+```
+```typescript
+export class CountryDemographicEuropeItem {
+    public constructor(init: Partial<CountryDemographicEuropeItem>) {
+        Object.assign(this, init);
+    }
+
+    public population: number;
+    public birthRate: number;
+    public deathRate: number;
+    public name: string;
+
+}
+export class CountryDemographicEurope extends Array<CountryDemographicEuropeItem> {
+    public constructor(items: Array<CountryDemographicEuropeItem> | number = -1) {
+        if (Array.isArray(items)) {
+            super(...items);
+        } else {
+            const newItems = [
+                new CountryDemographicEuropeItem({ population: 2891000, birthRate: 11.88, deathRate: 7.22, name: `Albania` }),
+                new CountryDemographicEuropeItem({ population: 8679000, birthRate: 9.8, deathRate: 9.6, name: `Austria` }),
+                new CountryDemographicEuropeItem({ population: 9439000, birthRate: 12.5, deathRate: 12.6, name: `Belarus` }),
+                // ... 42 more items
+            ];
+            super(...newItems.slice(0));
+        }
+    }
+}
+```
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+```
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+
+import { IgrPropertyEditorPanelModule } from 'igniteui-react-layouts';
+import { IgrLegendModule, IgrDataChartCoreModule, IgrDataChartScatterModule, IgrDataChartScatterCoreModule, IgrDataChartInteractivityModule, IgrDataChartAnnotationModule } from 'igniteui-react-charts';
+import { IgrPropertyEditorPanel, IgrPropertyEditorPropertyDescription } from 'igniteui-react-layouts';
+import { IgrLegend, IgrDataChart, IgrNumericXAxis, IgrNumericYAxis, IgrScatterSeries } from 'igniteui-react-charts';
+import { ComponentRenderer, PropertyEditorPanelDescriptionModule, LegendDescriptionModule, DataChartCoreDescriptionModule, DataChartScatterDescriptionModule, DataChartScatterCoreDescriptionModule, DataChartInteractivityDescriptionModule, DataChartAnnotationDescriptionModule } from 'igniteui-react-core';
+import { CountryDemographicEuropeItem, CountryDemographicEurope } from './CountryDemographicEurope';
+import { CountryDemographicAfricanItem, CountryDemographicAfrican } from './CountryDemographicAfrican';
+import { IgrPropertyEditorPropertyDescriptionChangedEventArgs } from 'igniteui-react-layouts';
+
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
+
+const mods: any[] = [
+    IgrPropertyEditorPanelModule,
+    IgrLegendModule,
+    IgrDataChartCoreModule,
+    IgrDataChartScatterModule,
+    IgrDataChartScatterCoreModule,
+    IgrDataChartInteractivityModule,
+    IgrDataChartAnnotationModule
+];
+mods.forEach((m) => m.register());
+
+export default class Sample extends React.Component<any, any> {
+    private propertyEditor: IgrPropertyEditorPanel
+    private propertyEditorRef(r: IgrPropertyEditorPanel) {
+        this.propertyEditor = r;
+        this.setState({});
+    }
+    private markerSizeEditor: IgrPropertyEditorPropertyDescription
+    private markerTypeEditor: IgrPropertyEditorPropertyDescription
+    private legend: IgrLegend
+    private legendRef(r: IgrLegend) {
+        this.legend = r;
+        this.setState({});
+    }
+    private chart: IgrDataChart
+    private chartRef(r: IgrDataChart) {
+        this.chart = r;
+        this.setState({});
+    }
+    private xAxis: IgrNumericXAxis
+    private yAxis: IgrNumericYAxis
+    private scatterSeries1: IgrScatterSeries
+    private scatterSeries2: IgrScatterSeries
+
+    constructor(props: any) {
+        super(props);
+
+        this.propertyEditorRef = this.propertyEditorRef.bind(this);
+        this.editorChangeUpdateDataChartMarkerSize = this.editorChangeUpdateDataChartMarkerSize.bind(this);
+        this.editorChangeUpdateDataChartMarkerType = this.editorChangeUpdateDataChartMarkerType.bind(this);
+        this.legendRef = this.legendRef.bind(this);
+        this.chartRef = this.chartRef.bind(this);
+    }
+
+    public render(): JSX.Element {
+        return (
+        <div className="container sample">
+            <div className="options vertical">
+                <IgrPropertyEditorPanel
+                    ref={this.propertyEditorRef}
+                    componentRenderer={this.renderer}
+                    target={this.chart}
+                    descriptionType="DataChart"
+                    isHorizontal="true"
+                    isWrappingEnabled="true">
+                    <IgrPropertyEditorPropertyDescription
+                        propertyPath="MarkerSizeHandler"
+                        name="MarkerSizeEditor"
+                        label="Marker Size"
+                        shouldOverrideDefaultEditor="true"
+                        valueType="EnumValue"
+                        dropDownNames={["3", "5", "7", "10", "12", "15", "20", "25", "30"]}
+                        dropDownValues={["3", "5", "7", "10", "12", "15", "20", "25", "30"]}
+                        primitiveValue="10"
+                        changed={this.editorChangeUpdateDataChartMarkerSize}>
+                    </IgrPropertyEditorPropertyDescription>
+                    <IgrPropertyEditorPropertyDescription
+                        propertyPath="MarkerTypeHandler"
+                        name="MarkerTypeEditor"
+                        label="Marker Type"
+                        shouldOverrideDefaultEditor="true"
+                        valueType="EnumValue"
+                        dropDownValues={["Circle", "Checkmark", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "Hidden", "Automatic", "None"]}
+                        dropDownNames={["Circle", "Checkmark", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "Hidden", "Automatic", "None"]}
+                        primitiveValue="Circle"
+                        changed={this.editorChangeUpdateDataChartMarkerType}>
+                    </IgrPropertyEditorPropertyDescription>
+                </IgrPropertyEditorPanel>
+            </div>
+
+            <div className="legend-title">
+                Population Statistics for Selected Continents
+            </div>
+
+            <div className="legend">
+                <IgrLegend
+                    ref={this.legendRef}
+                    orientation="Horizontal">
+                </IgrLegend>
+            </div>
+
+            <div className="container fill">
+                <IgrDataChart
+                    ref={this.chartRef}
+                    legend={this.legend}>
+                    <IgrNumericXAxis
+                        name="xAxis"
+                        title="Death Rate (per 1,000 people)"
+                        minimumValue="5"
+                        maximumValue="15">
+                    </IgrNumericXAxis>
+                    <IgrNumericYAxis
+                        name="yAxis"
+                        title="Birth Rate (per 1,000 people)"
+                        minimumValue="0"
+                        maximumValue="50"
+                        interval="10">
+                    </IgrNumericYAxis>
+                    <IgrScatterSeries
+                        name="scatterSeries1"
+                        title="Europe"
+                        xAxisName="xAxis"
+                        yAxisName="yAxis"
+                        xMemberPath="deathRate"
+                        yMemberPath="birthRate"
+                        dataSource={this.countryDemographicEurope}
+                        markerType="Circle"
+                        markerSize="10"
+                        showDefaultTooltip="true">
+                    </IgrScatterSeries>
+                    <IgrScatterSeries
+                        name="scatterSeries2"
+                        title="Africa"
+                        xAxisName="xAxis"
+                        yAxisName="yAxis"
+                        xMemberPath="deathRate"
+                        yMemberPath="birthRate"
+                        dataSource={this.countryDemographicAfrican}
+                        markerType="Circle"
+                        markerSize="10"
+                        showDefaultTooltip="true">
+                    </IgrScatterSeries>
+                </IgrDataChart>
+            </div>
+        </div>
+        );
+    }
+
+    private _countryDemographicEurope: CountryDemographicEurope = null;
+    public get countryDemographicEurope(): CountryDemographicEurope {
+        if (this._countryDemographicEurope == null)
+        {
+            this._countryDemographicEurope = new CountryDemographicEurope();
+        }
+        return this._countryDemographicEurope;
+    }
+
+    private _countryDemographicAfrican: CountryDemographicAfrican = null;
+    public get countryDemographicAfrican(): CountryDemographicAfrican {
+        if (this._countryDemographicAfrican == null)
+        {
+            this._countryDemographicAfrican = new CountryDemographicAfrican();
+        }
+        return this._countryDemographicAfrican;
+    }
+
+    private _componentRenderer: ComponentRenderer = null;
+    public get renderer(): ComponentRenderer {
+        if (this._componentRenderer == null) {
+            this._componentRenderer = new ComponentRenderer();
+            var context = this._componentRenderer.context;
+            PropertyEditorPanelDescriptionModule.register(context);
+            LegendDescriptionModule.register(context);
+            DataChartCoreDescriptionModule.register(context);
+            DataChartScatterDescriptionModule.register(context);
+            DataChartScatterCoreDescriptionModule.register(context);
+            DataChartInteractivityDescriptionModule.register(context);
+            DataChartAnnotationDescriptionModule.register(context);
+        }
+        return this._componentRenderer;
+    }
+
+    public editorChangeUpdateDataChartMarkerSize(sender: any, args: IgrPropertyEditorPropertyDescriptionChangedEventArgs): void {
+        var chart = this.chart;
+        var markerSizeVal = parseInt(args.newValue);
+        var series = chart.actualSeries;
+        for (var i = 0; i < series.length; i++) {
+            (series[i] as any).markerSize = markerSizeVal;
+        }
+    }
+
+    public editorChangeUpdateDataChartMarkerType(sender: any, args: IgrPropertyEditorPropertyDescriptionChangedEventArgs): void {
+        var chart = this.chart;
+        var markerTypeVal = args.newValue;
+        var series = chart.actualSeries;
+        for (var i = 0; i < series.length; i++) {
+            (series[i] as any).markerType = markerTypeVal;
+        }
+    }
+
+}
+
+// rendering above component in the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Sample/>);
+```
+
+> [!NOTE]
+> For [`IgrBubbleSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html), the `MarkerSize` property does not override the bubble radius, which is controlled by the radius data column and the [`radiusScale`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrbubbleseries.html#radiusScale). Bubble sizes remain entirely driven by the data and scale configuration.
+
+<div class="divider--half"></div>
+
+## React Chart Checkmark Marker Type
+
+The Ignite UI for React charts include a `Checkmark` option in the [`markerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmarkerseries.html#markerType) enum. This marker renders a V-shaped checkmark icon inside a circle on data points in your chart.
+
+You can apply the `Checkmark` marker type to an individual series by setting its [`markerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmarkerseries.html#markerType) property to `MarkerType.Checkmark`. To use the checkmark shape for all series in the chart simultaneously, set the chart's [`markerAutomaticBehavior`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#markerAutomaticBehavior) property to `MarkerAutomaticBehavior.Checkmark`.
+
+The `SeriesViewer.CheckmarkMarkerTemplate` property defines the marker template used for series with a checkmark marker type, and can be used to customize its appearance across the chart.
+
+<div class="divider--half"></div>
+
 ## React Chart Marker Templates
 
-In addition to marker properties, you can implement your own marker by setting a function to the  `MarkerTemplate` property of a series rendered in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control as it is demonstrated in example below.
+In addition to marker properties, you can implement your own marker by setting a function to the  [`markerTemplate`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmarkerseries.html#markerTemplate) property of a series rendered in the [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html) control as it is demonstrated in example below.
 
 ```tsx
 import React from 'react';
@@ -361,5 +679,10 @@ The following is a list of API members mentioned in the above sections:
 
 - [`markerBrushes`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#markerBrushes)
 - [`markerOutlines`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#markerOutlines)
-- [`MarkerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.markertype.html)
+- `MarkerSize`
+- [`markerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrmarkerseries.html#markerType)
+- `UseLightweightMarkers`
+- [`markerAutomaticBehavior`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#markerAutomaticBehavior)
+- `SeriesViewer.CheckmarkMarkerTemplate`
 - [`IgrCategoryChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html)
+- [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html)

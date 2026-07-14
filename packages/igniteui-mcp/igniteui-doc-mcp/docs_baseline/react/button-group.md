@@ -175,19 +175,19 @@ export default function ButtonGroupAlignment() {
         <div className="container sample">
             <IgrButtonGroup alignment="vertical">
                 <IgrToggleButton value="sofia">
-                    <span>Sofia</span>
+                    Sofia
                     <IgrRipple/>
                 </IgrToggleButton>
                 <IgrToggleButton value="london">
-                    <span>London</span>
+                    London
                     <IgrRipple/>
                 </IgrToggleButton>
                 <IgrToggleButton value="new york" selected={true}>
-                    <span>New York</span>
+                    New York
                     <IgrRipple/>
                 </IgrToggleButton>
                 <IgrToggleButton value="tokyo" >
-                    <span >Tokio</span>
+                    Tokyo
                     <IgrRipple />
                 </IgrToggleButton>
             </IgrButtonGroup>
@@ -285,13 +285,13 @@ export default function ButtonGroupSelectionSample() {
                 <label>Selection Mode</label>
                 <IgrRadioGroup alignment="horizontal">
                     <IgrRadio name="mode" value="single" checked onChange={onRadioChange}>
-                        <span>Single</span>
+                        Single
                     </IgrRadio>
                     <IgrRadio name="mode" value="single-required" onChange={onRadioChange}>
-                        <span>Single-Required</span>
+                        Single-Required
                     </IgrRadio>
                     <IgrRadio name="mode" value="multiple" onChange={onRadioChange}>
-                        <span>Multiple</span>
+                        Multiple
                     </IgrRadio>
                 </IgrRadioGroup>
             </div>
@@ -372,13 +372,13 @@ export default function ButtonGroupSize() {
         <div className="container sample">
             <IgrButtonGroup onSelect={onSelect} style={style}>
                 <IgrToggleButton value="small">
-                    <span>Small</span>
+                    Small
                 </IgrToggleButton>
                 <IgrToggleButton value="medium">
-                    <span>Medium</span>
+                    Medium
                 </IgrToggleButton>
                 <IgrToggleButton value="large">
-                    <span>Large</span>
+                    Large
                 </IgrToggleButton>
             </IgrButtonGroup>
       </div>
@@ -456,19 +456,19 @@ export default function ButtonGroupStyling() {
         <div className="container sample">
             <IgrButtonGroup alignment="vertical">
                 <IgrToggleButton value="sofia">
-                    <span>Sofia</span>
+                    Sofia
                     <IgrRipple/>
                 </IgrToggleButton>
                 <IgrToggleButton value="london">
-                    <span>London</span>
+                    London
                     <IgrRipple/>
                 </IgrToggleButton>
                 <IgrToggleButton value="new york">
-                    <span>New York</span>
+                    New York
                     <IgrRipple/>
                 </IgrToggleButton>
                 <IgrToggleButton value="tokyo" disabled={true}>
-                    <span>Tokio</span>
+                    Tokyo
                     <IgrRipple/>
                 </IgrToggleButton>
             </IgrButtonGroup>

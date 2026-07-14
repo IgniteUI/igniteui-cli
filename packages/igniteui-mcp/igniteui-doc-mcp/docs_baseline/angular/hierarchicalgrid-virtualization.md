@@ -11,7 +11,7 @@ _premium: true
 In Ignite UI for Angular, the [IgxHierarchicalGrid](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) control now utilizes the [`igxForOf`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective) directive and virtualizes its content both vertically and horizontally.
 ## Angular Hierarchical Grid Virtualization and Performance Example
 ```typescript
-import { AfterViewInit, Component, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IGX_HIERARCHICAL_GRID_DIRECTIVES, IGridCreatedEventArgs, IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { EntityType, FilteringExpressionsTree, FilteringLogic, IgxNumberFilteringOperand, IgxStringFilteringOperand } from 'igniteui-angular/core';
@@ -24,6 +24,7 @@ const API_ENDPOINT = 'https://data-northwind.indigo.design';
     selector: 'app-hierarchical-grid-lod',
     styleUrls: ['./hierarchical-grid-lod.component.scss'],
     templateUrl: './hierarchical-grid-lod.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IGX_HIERARCHICAL_GRID_DIRECTIVES, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent]
 })
 export class HierarchicalGridLoDSampleComponent implements OnInit, AfterViewInit {

@@ -176,7 +176,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Bar Chart Recommendations
@@ -368,7 +367,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Angular Bar Chart with Multiple Series
@@ -534,7 +532,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Angular Bar Chart Styling
@@ -693,7 +690,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -875,7 +871,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Angular Stacked 100% Bar Chart
@@ -1051,7 +1046,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 

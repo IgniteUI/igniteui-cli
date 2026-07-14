@@ -11,7 +11,7 @@ _premium: true
 The Ignite UI for Angular Tree Grid provides an [`IgxColumnActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent) with an [`IgxColumnHidingDirective`](mcp:get_api_reference?platform=angular&component=IgxColumnHidingDirective) which allows users to perform column hiding directly through the user interface or by using the Angular component. The Material UI Grid has a built-in column hiding UI, which can be used through the Tree Grid's toolbar to change the visible state of the columns. In addition, developers can always define the column hiding UI as a separate component and place it anywhere they want on the page.
 ## Angular Tree Grid Column Hiding Example
 ```typescript
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { generateEmployeeDetailedFlatData } from '../data/employees-flat-detailed';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
@@ -21,6 +21,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-column-hiding-toolbar-sample',
     styleUrls: ['./tree-grid-column-hiding-toolbar-sample.component.scss'],
     templateUrl: './tree-grid-column-hiding-toolbar-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxColumnComponent]
 })
 export class TreeGridColumnHidingToolbarSampleComponent implements OnInit {
@@ -293,7 +294,7 @@ We can easily prevent the user from being able to hide columns through the colum
 If all went well, this is how our column hiding UI component should look like:
 @@if (igxName === 'IgxGrid') {
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DATA } from '../../data/customers';
 import { IgxColumnActionsComponent, IgxColumnComponent, IgxColumnHidingDirective } from 'igniteui-angular/grids/core';
 import { IgxRadioComponent } from 'igniteui-angular/radio';
@@ -304,6 +305,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-column-hiding-sample',
     styleUrls: ['./grid-column-hiding-sample.component.scss'],
     templateUrl: './grid-column-hiding-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxColumnActionsComponent, IgxColumnHidingDirective, IgxRadioComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class GridColumnHidingSampleComponent implements OnInit {
@@ -387,7 +389,7 @@ export class GridColumnHidingSampleComponent implements OnInit {
 }
 @@if (igxName === 'IgxTreeGrid') {
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { generateEmployeeDetailedFlatData } from '../data/employees-flat-detailed';
 import { IgxColumnActionsComponent, IgxColumnComponent, IgxColumnHidingDirective } from 'igniteui-angular/grids/core';
 import { IgxRadioComponent } from 'igniteui-angular/radio';
@@ -398,6 +400,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-column-hiding-sample',
     styleUrls: ['./tree-grid-column-hiding-sample.component.scss'],
     templateUrl: './tree-grid-column-hiding-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxColumnActionsComponent, IgxColumnHidingDirective, IgxRadioComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class TreeGridColumnHidingSampleComponent implements OnInit {
@@ -531,7 +534,7 @@ The last step is to **include** the component mixins, each with its respective t
 ```
 ### Demo
 ```typescript
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { generateEmployeeDetailedFlatData } from '../data/employees-flat-detailed';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
@@ -541,6 +544,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-column-hiding-toolbar-style',
     styleUrls: ['./tree-grid-column-hiding-toolbar-style.component.scss'],
     templateUrl: './tree-grid-column-hiding-toolbar-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxColumnComponent]
 })
 export class TreeGridColumnHidingToolbarStyleComponent implements OnInit {
@@ -583,19 +587,46 @@ export class TreeGridColumnHidingToolbarStyleComponent implements OnInit {
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
+$background: #292826;
+$foreground: #ffcd0f;
+
 $custom-column-actions-theme: column-actions-theme(
-  $background-color: steelblue,
-  $title-color: gold
+    $background: $background,
+    $title-color: $foreground,
 );
 
-$custom-button: flat-button-theme(
-  $foreground: gold,
-  $disabled-foreground: black
+$custom-flat-button: flat-button-theme(
+    $foreground: $foreground,
 );
 
-:host ::ng-deep{
-  @include tokens($custom-column-actions-theme);
-  @include tokens($custom-button);
+$custom-checkbox-theme: checkbox-theme(
+    $label-color: $foreground,
+    $empty-color: $foreground,
+    $fill-color: $foreground,
+    $tick-color: $background,
+);
+
+$input-group-theme: input-group-theme(
+    $box-background: $background,
+    $idle-bottom-line-color: $foreground,
+);
+
+:host ::ng-deep {
+    .igx-column-actions {
+        @include tokens($custom-column-actions-theme);
+
+        igx-input-group {
+            @include tokens($input-group-theme);
+        }
+
+        igx-checkbox {
+            @include tokens($custom-checkbox-theme);
+        }
+
+        .igx-button--flat {
+            @include tokens($custom-flat-button);
+        }
+    }
 }
 ```
 <div class="divider--half"></div>

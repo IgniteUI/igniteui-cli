@@ -127,7 +127,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Angular Chart Trendlines Dash Array Example
@@ -263,7 +262,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 

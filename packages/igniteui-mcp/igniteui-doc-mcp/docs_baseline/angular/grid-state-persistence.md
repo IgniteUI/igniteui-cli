@@ -129,7 +129,7 @@ public onColumnInit(column: IgxColumnComponent) {
 ## Demo
 ```typescript
 /* eslint-disable max-len */
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NavigationStart, Router, RouterLink } from '@angular/router';
 import { FilteringExpressionsTree, FilteringLogic, IgxSummaryResult } from 'igniteui-angular/core';
 import { GridFeatures, IGridState, IGridStateOptions, IgxColumnComponent, IgxGridStateDirective, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxNumberSummaryOperand } from 'igniteui-angular/grids/core';
@@ -161,6 +161,7 @@ class MySummary {
     selector: 'app-grid',
     styleUrls: ['./grid-state.component.scss'],
     templateUrl: './grid-state.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxIconComponent, RouterLink, IgxCheckboxComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridStateDirective, IgxPaginatorComponent, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxColumnComponent]
 })
 
@@ -220,7 +221,7 @@ export class GridSaveStateComponent implements OnInit, AfterViewInit {
     public ngOnInit() {
       this.localData = employeesData;
       this.columns = this.initialColumns;
-      this.router.events.pipe(take(1)).subscribe((event: NavigationStart) => {
+      this.router.events.pipe(take(1)).subscribe(() => {
           this.saveGridState();
       });
     }
@@ -456,7 +457,7 @@ public restoreState() {
 }
 ```
 ```typescript
-import { Component, TemplateRef, ViewChild, inject } from '@angular/core';
+import { Component, TemplateRef, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { IGridStateOptions, IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent, IgxGridStateDirective } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -475,6 +476,7 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-grid-state-persistance-sample',
     styleUrls: ['./grid-state-persistance-sample.component.scss'],
     templateUrl: 'grid-state-persistance-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxIconComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridStateDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxCellHeaderTemplateDirective, IgxBadgeComponent, AsyncPipe]
 })
 

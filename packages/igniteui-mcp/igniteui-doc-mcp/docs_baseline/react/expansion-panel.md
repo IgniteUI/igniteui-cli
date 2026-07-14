@@ -22,7 +22,6 @@ igc-expansion-panel{
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import './ExpansionPanelUsage.css';
 import { IgrExpansionPanel } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
@@ -37,8 +36,8 @@ export default class ExpansionPanelUsage extends React.Component<any, any> {
         return (
             <div className="container sample">
                 <IgrExpansionPanel>
-                    <h1 slot="title">Golden Retriever</h1>
-                    <h3 slot="subtitle">Medium-large gun dog</h3>
+                    <span slot="title">Golden Retriever</span>
+                    <span slot="subtitle">Medium-large gun dog</span>
                     <span>The Golden Retriever is a medium-large gun dog that retrieves shot waterfowl, such as ducks
                         and upland game birds, during hunting and shooting parties.[3] The name retriever refers to the breeds ability
                         to retrieve shot game undamaged due to their soft mouth. Golden retrievers have an instinctive love of water, and
@@ -128,7 +127,6 @@ igc-expansion-panel{
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import './ExpansionPanelPropsAndEvents.css';
 import { IgrExpansionPanel } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
@@ -147,8 +145,8 @@ export default class ExpansionPanelPropertiesAndEvents extends React.Component<a
         return (
             <div className="container sample center">
                 <IgrExpansionPanel onClosed={this.onExpansionPanelClosed} onOpened={this.onExpansionPanelOpened}>
-                    <h1 slot="title">Golden Retriever</h1>
-                    <h3 className={this.state.subtitleClass} slot="subtitle">Medium-large gun dog</h3>
+                    <span slot="title">Golden Retriever</span>
+                    <span className={this.state.subtitleClass} slot="subtitle">Medium-large gun dog</span>
                     <div slot="indicator">{this.state.expansionText}</div>
                     <span>The Golden Retriever is a medium-large gun dog that retrieves shot waterfowl, such as ducks
                         and upland game birds, during hunting and shooting parties.[3] The name retriever refers to the breeds ability
@@ -226,7 +224,6 @@ img {
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import './ExpansionPanelCustomization.css';
 import { IgrExpansionPanel, IgrButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
@@ -245,8 +242,8 @@ export default class ExpansionPanelComponentCustomization extends React.Componen
         return (
             <div className="container sample">
                 <IgrExpansionPanel onClosed={this.onExpansionPanelClosed} onOpened={this.onExpansionPanelOpened} indicatorPosition="end">
-                    <h1 slot="title">Golden Retriever</h1>
-                    <h3 slot="subtitle">Medium-large gun dog</h3>
+                    <span slot="title">Golden Retriever</span>
+                    <span slot="subtitle">Medium-large gun dog</span>
                     <div slot="indicator">{this.state.expansionText}</div>
                     <img height="100" src="https://i.ibb.co/6ZdY7cn/Untitled-design-3.png" alt=""></img>
                     <span>The Golden Retriever is a medium-large gun dog that retrieves shot waterfowl, such as ducks
@@ -374,7 +371,6 @@ img {
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import './ExpansionPanelStyling.css';
 import { IgrExpansionPanel, IgrButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
@@ -389,8 +385,8 @@ export default class ExpansionPanelStyling extends React.Component<any, any> {
         return (
             <div className="container sample">
                 <IgrExpansionPanel indicatorPosition="end">
-                    <h1 slot="title">Golden Retriever</h1>
-                    <h3 slot="subtitle">Medium-large gun dog</h3>
+                    <span slot="title">Golden Retriever</span>
+                    <span slot="subtitle">Medium-large gun dog</span>
                     <img height="100" src="https://i.ibb.co/6ZdY7cn/Untitled-design-3.png" alt=""></img>
                         <span>The Golden Retriever is a medium-large gun dog that retrieves shot waterfowl, such as ducks
                             and upland game birds, during hunting and shooting parties.[3] The name retriever refers to the breeds ability

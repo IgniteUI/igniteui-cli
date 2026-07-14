@@ -59,7 +59,7 @@ With `prefix` and `suffix` slots we can add different content before and after t
 <div class="container center">
     <IgbTextarea Label="Your feedback">
        <IgbIcon @ref="RegisterIconRef" IconName="feedback" Collection="material" slot="prefix"></IgbIcon>
-        <p slot="helper-text">Give us a short description of what you liked/disliked</p>
+        <span slot="helper-text">Give us a short description of what you liked/disliked</span>
     </IgbTextarea>
 </div>
 
@@ -87,10 +87,6 @@ There are three different resize options of the [`IgbTextarea`](mcp:get_api_refe
 @using IgniteUI.Blazor.Controls
 
 <style>
-    p {
-        margin: 0;
-    }
-
     .container {
         display: flex;
         flex-direction: column;
@@ -100,13 +96,13 @@ There are three different resize options of the [`IgbTextarea`](mcp:get_api_refe
 
 <div class="container center">
     <IgbTextarea Label="Resize: none" Resize="TextareaResize.None">
-        <p slot="helper-text">This textarea does not resize and uses a scroll bar to show overflow text.</p>
+        <span slot="helper-text">This textarea does not resize and uses a scroll bar to show overflow text.</span>
     </IgbTextarea>
     <IgbTextarea Label="Resize: vertical (default)" Resize="TextareaResize.Vertical">
-        <p slot="helper-text">This textarea lets the user resize vertically.</p>
+        <span slot="helper-text">This textarea lets the user resize vertically.</span>
     </IgbTextarea>
     <IgbTextarea Label="Resize: auto" Resize="TextareaResize.Auto">
-        <p slot="helper-text">This textarea shows all the user input at once. Overflow text wraps onto a new line and expands the text area.</p>
+        <span slot="helper-text">This textarea shows all the user input at once. Overflow text wraps onto a new line and expands the text area.</span>
     </IgbTextarea>
 </div>
 
@@ -207,7 +203,7 @@ igc-textarea::part(suffix) {
 <div class="container center">
     <IgbTextarea Label="Steps to reproduce">
        <IgbIcon @ref="RegisterIconRef" IconName="feedback" Collection="material" slot="prefix"></IgbIcon>
-        <p slot="helper-text">Provide a detailed description of the steps that led to the issue you experienced</p>
+        <span slot="helper-text">Provide a detailed description of the steps that led to the issue you experienced</span>
     </IgbTextarea>
 </div>
 

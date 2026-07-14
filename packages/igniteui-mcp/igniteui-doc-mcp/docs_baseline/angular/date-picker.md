@@ -18,7 +18,7 @@ Below you can see a sample that demonstrates how the Angular Date Picker works w
 
 <!-- TODO: date picker sample with several options enabled -->
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDatePickerComponent } from 'igniteui-angular/date-picker';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
 import { FormsModule } from '@angular/forms';
@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-datepicker-sample-1',
     styleUrls: ['./datepicker-sample-1.component.scss'],
     templateUrl: './datepicker-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDatePickerComponent, FormsModule, IgxLabelDirective]
 })
 export class DatepickerSample1Component {
@@ -249,7 +250,7 @@ The [`IgxDatePickerComponent`](mcp:get_api_reference?platform=angular&component=
 ```
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDatePickerComponent } from 'igniteui-angular/date-picker';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
 
@@ -257,6 +258,7 @@ import { IgxLabelDirective } from 'igniteui-angular/input-group';
     selector: 'app-datepicker-sample-2',
     styleUrls: ['./datepicker-sample-2.component.scss'],
     templateUrl: './datepicker-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDatePickerComponent, IgxLabelDirective]
 })
 export class DatepickerSample2Component {
@@ -291,7 +293,7 @@ Alternatively, if the [`inputFormat`](mcp:get_api_reference?platform=angular&com
 More information about these can be found in the [`IgxDateTimeEditor`](date-time-editor.md#examples) examples section.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDatePickerComponent } from 'igniteui-angular/date-picker';
 import { FormsModule } from '@angular/forms';
 
@@ -299,6 +301,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-datepicker-sample-3',
     styleUrls: ['./datepicker-sample-3.component.scss'],
     templateUrl: './datepicker-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDatePickerComponent, FormsModule]
 })
 export class DatepickerSample3Component {
@@ -355,7 +358,7 @@ In some cases when the IgxDatePicker and the [`IgxTimePicker`](time-picker.md) a
 To achieve that in template driven forms, use the `ngModel` to bind both components to the same Date object.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDatePickerComponent } from 'igniteui-angular/date-picker';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxTimePickerComponent } from 'igniteui-angular/time-picker';
@@ -365,6 +368,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-datetimepicker-template-driven-form',
     styleUrls: ['./template-driven-form.component.scss'],
     templateUrl: './template-driven-form.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDatePickerComponent, FormsModule, IgxLabelDirective, IgxTimePickerComponent]
 })
 export class DateTimePickerTDFSampleComponent {
@@ -417,7 +421,7 @@ export class DateTimePickerTDFSampleComponent {
 In reactive forms, we can handle the [`valueChange`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=valueChange) event of each component and update the value of the other.
 
 ```typescript
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IgxDatePickerComponent } from 'igniteui-angular/date-picker';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
@@ -427,6 +431,7 @@ import { IgxTimePickerComponent } from 'igniteui-angular/time-picker';
     selector: 'app-datetimepicker-reactive-form',
     styleUrls: ['./reactive-form.component.scss'],
     templateUrl: './reactive-form.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, IgxDatePickerComponent, IgxLabelDirective, IgxTimePickerComponent]
 })
 export class DateTimePickerRFSampleComponent {
@@ -558,7 +563,7 @@ The last step is to pass the custom Date Picker theme:
 ```
 
 ```typescript
-import { Component, ElementRef, inject } from '@angular/core';
+import { Component, ElementRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxOverlayService } from 'igniteui-angular/core';
 import { IgxDatePickerComponent } from 'igniteui-angular/date-picker';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
@@ -567,6 +572,7 @@ import { IgxLabelDirective } from 'igniteui-angular/input-group';
     selector: 'app-datepicker-sample-1',
     styleUrls: ['./datepicker-styling-sample.component.scss'],
     templateUrl: './datepicker-styling-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDatePickerComponent, IgxLabelDirective]
 })
 export class DatepickerStylingSampleComponent {    element = inject(ElementRef);

@@ -15,7 +15,7 @@ _tocName: Navigation Drawer
 <div class="divider--half"></div>
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxNavDrawerItemDirective, IgxNavDrawerTemplateDirective, IgxNavigationDrawerComponent } from 'igniteui-angular/navigation-drawer';
 import { IgxIconButtonDirective, IgxRippleDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -25,6 +25,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-nav-drawer-simple',
     styleUrls: ['./nav-drawer-simple.component.scss'],
     templateUrl: './nav-drawer-simple.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavigationDrawerComponent, IgxNavDrawerTemplateDirective, IgxNavDrawerItemDirective, IgxRippleDirective, IgxIconComponent, IgxIconButtonDirective, IgxToggleActionDirective]
 })
 export class NavDrawerSimpleComponent  {
@@ -333,7 +334,7 @@ Here's how that would look applied to the previous example:
 Now the changed example should look like that:
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxFlexDirective, IgxIconButtonDirective, IgxLayoutDirective, IgxRippleDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxNavDrawerItemDirective, IgxNavDrawerTemplateDirective, IgxNavigationDrawerComponent } from 'igniteui-angular/navigation-drawer';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -343,6 +344,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-nav-drawer-pin',
     styleUrls: ['./nav-drawer-pin.component.scss'],
     templateUrl: './nav-drawer-pin.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxLayoutDirective, IgxNavigationDrawerComponent, IgxNavDrawerTemplateDirective, IgxNavDrawerItemDirective, IgxRippleDirective, IgxIconComponent, IgxFlexDirective, IgxIconButtonDirective, IgxToggleActionDirective]
 })
 export class NavDrawerPinComponent  {
@@ -452,7 +454,7 @@ The mini variant is commonly used in a persistent setup, so we've set `pin` and 
 ```
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxFlexDirective, IgxIconButtonDirective, IgxLayoutDirective, IgxRippleDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxNavDrawerItemDirective, IgxNavDrawerMiniTemplateDirective, IgxNavDrawerTemplateDirective, IgxNavigationDrawerComponent } from 'igniteui-angular/navigation-drawer';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -462,6 +464,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-nav-drawer-mini',
     styleUrls: ['./nav-drawer-mini.component.scss'],
     templateUrl: './nav-drawer-mini.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxLayoutDirective, IgxNavigationDrawerComponent, IgxNavDrawerTemplateDirective, IgxNavDrawerItemDirective, IgxRippleDirective, IgxIconComponent, IgxNavDrawerMiniTemplateDirective, IgxFlexDirective, IgxIconButtonDirective, IgxToggleActionDirective]
 })
 export class NavDrawerMiniComponent  {
@@ -599,7 +602,7 @@ import { RouterModule } from '@angular/router';
 After all the steps above are completed, your app should look like that:
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxNavDrawerItemDirective, IgxNavDrawerTemplateDirective, IgxNavigationDrawerComponent } from 'igniteui-angular/navigation-drawer';
 import { IgxIconButtonDirective, IgxRippleDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -610,6 +613,7 @@ import { RouterLinkActive, RouterLink } from '@angular/router';
     selector: 'app-nav-drawer-routing',
     styleUrls: ['./nav-drawer-routing.component.scss'],
     templateUrl: './nav-drawer-routing.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavigationDrawerComponent, IgxNavDrawerTemplateDirective, IgxNavDrawerItemDirective, IgxRippleDirective, RouterLinkActive, RouterLink, IgxIconButtonDirective, IgxToggleActionDirective, IgxIconComponent]
 })
 export class NavDrawerRoutingComponent {
@@ -733,7 +737,7 @@ There's also child routing extracted from the `children` property of the routes.
 The example below presents the capabilities of a hierarchical structure by using predefined data with topic names and links. The structure allows users to easily generate functional and detailed navigations and to have the ability to define each element whether to be displayed as a link or as an indicator.
 
 ```typescript
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTreeComponent, IgxTreeNodeComponent, IgxTreeNodeLinkDirective } from 'igniteui-angular/tree';
 import { IgxFlexDirective, IgxIconButtonDirective, IgxLayoutDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxNavDrawerTemplateDirective, IgxNavigationDrawerComponent } from 'igniteui-angular/navigation-drawer';
@@ -745,6 +749,7 @@ import { RouterLink } from '@angular/router';
     selector: 'app-nav-drawer-hierarchical',
     templateUrl: './nav-drawer-hierarchical.component.html',
     styleUrls: ['./nav-drawer-hierarchical.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxLayoutDirective, IgxNavigationDrawerComponent, IgxNavDrawerTemplateDirective, IgxTreeComponent, IgxTreeNodeComponent, IgxTreeNodeLinkDirective, RouterLink, IgxFlexDirective, IgxIconButtonDirective, IgxToggleActionDirective, IgxIconComponent]
 })
 export class NavDrawerHierarchicalComponent implements AfterViewInit {
@@ -896,13 +901,14 @@ The last step is to **include** the component theme in our application.
 ```
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NavDrawerRoutingComponent } from '../nav-drawer-routing/nav-drawer-routing.component';
 
 @Component({
     selector: 'app-nav-drawer-styling',
     styleUrls: ['./nav-drawer-styling.component.scss'],
     templateUrl: './nav-drawer-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NavDrawerRoutingComponent]
 })
 export class NavDrawerStylingComponent { }

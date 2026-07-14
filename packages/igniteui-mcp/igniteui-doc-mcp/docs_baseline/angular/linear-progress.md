@@ -13,13 +13,14 @@ _tocName: Linear Progress
 ## Angular Linear Progress Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxLinearProgressBarComponent } from 'igniteui-angular/progressbar';
 
 @Component({
     selector: 'app-linear-progressbar',
     styleUrls: ['./linear-progressbar.component.scss'],
     templateUrl: './linear-progressbar.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxLinearProgressBarComponent]
 })
 export class LinearProgressbarComponent { }
@@ -118,13 +119,14 @@ Let's see how we can create different types of progress bars that can be both st
 So if we set up everything correctly, you should see the following in your browser:
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxLinearProgressBarComponent } from 'igniteui-angular/progressbar';
 
 @Component({
     selector: 'app-linear-progressbar-sample-1',
     styleUrls: ['./linear-progressbar-sample-1.component.scss'],
     templateUrl: './linear-progressbar-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxLinearProgressBarComponent]
 })
 export class LinearProgressbarSample1Component {}
@@ -216,13 +218,14 @@ public positionEnd: IgxTextAlign = IgxTextAlign.END;
 Let's take a look at how this turned out:
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxLinearProgressBarComponent, IgxTextAlign } from 'igniteui-angular/progressbar';
 
 @Component({
     selector: 'app-linear-progressbar-sample-2',
     styleUrls: ['./linear-progressbar-sample-2.component.scss'],
     templateUrl: './linear-progressbar-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxLinearProgressBarComponent]
 })
 export class LinearProgressbarSample2Component {
@@ -331,7 +334,7 @@ public decrementProgress() {
 After completing the steps above, our progress bar should look like this:
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxLinearProgressBarComponent } from 'igniteui-angular/progressbar';
 import { IgxIconButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -340,6 +343,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-linear-dynamic-sample',
     styleUrls: ['./linear-dynamic-sample.component.scss'],
     templateUrl: './linear-dynamic-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxLinearProgressBarComponent, IgxIconButtonDirective, IgxIconComponent]
 })
 export class LinearDynamicSampleComponent implements OnInit{
@@ -423,13 +427,14 @@ The last step is to **include** the component theme in our application.
 ### Demo
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxLinearProgressBarComponent } from 'igniteui-angular/progressbar';
 
 @Component({
     selector: 'app-linear-progressbar-styling',
     styleUrls: ['./linear-progressbar-styling-sample.component.scss'],
     templateUrl: './linear-progressbar-styling-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxLinearProgressBarComponent]
 })
 export class LinearProgressbarStylingComponent { }

@@ -10,7 +10,7 @@ _premium: true
 The Advanced filtering provides a dialog which allows the creation of groups with filtering conditions across all columns for any [Angular table](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid) like the Grid.
 ## Angular Grid Advanced Filtering Example
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { DATA } from '../../data/nwindData';
@@ -21,6 +21,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-advanced-filtering-sample',
     styleUrls: ['./grid-advanced-filtering-sample.component.scss'],
     templateUrl: 'grid-advanced-filtering-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxColumnComponent, IgxCellTemplateDirective]
 })
 export class GridAdvancedFilteringSampleComponent implements OnInit {
@@ -117,7 +118,7 @@ In case you don't want to show the Grid toolbar, you could use the [`openAdvance
 As you see the demo above the Advanced filtering dialog is hosted in an overlay on top of the Grid. When the setup in the dialog is ready, the apply or close actions would hide that dialog. There is a way to make that dialog stay always visible - be used as a standalone component. In the demo below, the advanced filtering dialog is declared separately of the Grid.
 ### Demo
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxAdvancedFilteringDialogComponent, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { DATA } from '../../data/nwindData';
@@ -127,6 +128,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-grid-external-advanced-filtering',
     templateUrl: './grid-external-advanced-filtering.component.html',
     styleUrls: ['./grid-external-advanced-filtering.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxAdvancedFilteringDialogComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, CurrencyPipe]
 })
 export class GridExternalAdvancedFilteringComponent {
@@ -242,7 +244,7 @@ $custom-query-builder: query-builder-theme(
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { DATA } from '../../data/nwindData';
@@ -253,6 +255,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-adf-style-sample',
     styleUrls: ['./grid-advanced-filtering-style.component.scss'],
     templateUrl: 'grid-advanced-filtering-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxColumnComponent, IgxCellTemplateDirective]
 })
 export class GridAdvancedFilteringStyleComponent implements OnInit {
@@ -301,16 +304,15 @@ export class GridAdvancedFilteringStyleComponent implements OnInit {
 @use "igniteui-angular/theming" as *;
 
 $custom-query-builder: query-builder-theme(
-  $header-foreground: #512da8,
-  $color-expression-group-and:  #eb0000,
-  $color-expression-group-or: #0000f3,
-  $subquery-header-background: var(--ig-gray-300),
-  $subquery-border-color: var(--ig-warn-500),
-  $subquery-border-radius: rem(4px)
+    $background: #1f2836,
+    $foreground: #f5f6e6,
+    $accent-color: #f5f6e6
 );
 
-:host {
-    @include tokens($custom-query-builder);
+:host ::ng-deep {
+    igx-advanced-filtering-dialog {
+        @include tokens($custom-query-builder);
+    }
 }
 ```
 >[!NOTE]

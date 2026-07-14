@@ -14,13 +14,14 @@ The Chat component provides a complete solution for building conversational inte
 Unlike a static message list, the Chat component is interactive and designed for **real-time communication**. It manages input, rendering, and user interaction while giving you full control over how messages and attachments are displayed. It also exposes an extensive rendering API that lets you override any part of its layout or visuals.
 
 ```typescript
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { IgxChatComponent, IgxChatOptions } from 'igniteui-angular/chat';
 
 @Component({
     selector: 'app-chat-overview-sample',
     styleUrls: ['./overview-sample.component.scss'],
     templateUrl: './overview-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxChatComponent]
 })
 export class ChatOverviewSampleComponent {
@@ -126,7 +127,7 @@ To get started, install Ignite UI for Angular package as well as the Ignite UI f
 npm install igniteui-angular igniteui-webcomponents
 ```
 
-[`IgxChatComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchatcomponent.html) provides Angular bindings (events, templates, DI, change detection, pipes), while the visual chat UI is rendered by the Web Component. Installing both ensures the chat behaves natively in Angular while leveraging the full Web Component UI.
+[`IgxChatComponent`](mcp:get_api_reference?platform=angular&component=IgxChatComponent) provides Angular bindings (events, templates, DI, change detection, pipes), while the visual chat UI is rendered by the Web Component. Installing both ensures the chat behaves natively in Angular while leveraging the full Web Component UI.
 
 For a complete introduction to the Ignite UI for Angular, read the [_getting started_](general/getting-started.md) topic.
 
@@ -267,7 +268,7 @@ This level of granularity means you can tweak just one part (for example, how at
 
 Here:
 - `let-message` exposes the message object.
-- The [`igxChatMessageContext`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchatmessagecontextdirective.html) directive ensures proper typing for message templates.
+- The [`igxChatMessageContext`](mcp:get_api_reference?platform=angular&component=IgxChatMessageContextDirective) directive ensures proper typing for message templates.
 
 #### Custom Input Area
 By default, the chat input is a text area. You can override it to provide a more tailored experience, such as adding a voice input button:
@@ -383,7 +384,7 @@ You can listen for these events and sync them with your backend:
 
 ```typescript
 import { AsyncPipe } from '@angular/common';
-import { Component, effect, signal, viewChild } from '@angular/core';
+import { Component, effect, signal, viewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxChatComponent, IgxChatMessageContextDirective, type IgxChatOptions } from 'igniteui-angular/chat';
 import { MarkdownPipe } from 'igniteui-angular/chat-extras';
 
@@ -391,6 +392,7 @@ import { MarkdownPipe } from 'igniteui-angular/chat-extras';
     selector: 'app-chat-features-sample',
     styleUrls: ['./features-sample.component.scss'],
     templateUrl: './features-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxChatComponent, IgxChatMessageContextDirective, AsyncPipe, MarkdownPipe]
 })
 export class ChatFeaturesSampleComponent {
@@ -643,187 +645,177 @@ We highly recommend using the standard Web Component styling approaches before r
 - `<link>` elements – For larger stylesheets, inject them inside the Shadow DOM.
 - Inline `<style>` tags – For small, scoped style overrides.
 
+### Chat theme
+
+Apart from the **CSS parts** and **slots**, the Chat component also has a [`chat-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chat-theme) function exposed by our theming engine.
+
+In order to style the Chat component using the theme function, first we need to import the theming module, where all the theme functions and component mixins live:
+
+```scss
+@use "igniteui-angular/theming" as *;
+
+// IMPORTANT: Prior to Ignite UI for Angular version 13 use:
+// @import '~igniteui-angular/lib/core/styles/themes/index';
+```
+
+Then, we create a new theme that extends the [`chat-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chat-theme) and provide the `$header-background`, `$sent-message-background` and `$received-message-background` parameters. Based on these parameter values, the `$header-color`, `$sent-message-color` and `$received-message-color` are automatically set to black or white, depending on which provides better contrast with the background.
+
+```scss
+$custom-chat-theme: chat-theme(
+  $header-background: #4a4a4a,
+  $sent-message-background: #fb8500,
+  $received-message-background: #e2d8c9
+);
+```
+
+Finally, **include** the custom theme in your application:
+
+```scss
+:host {
+  @include tokens($custom-chat-theme);
+}
+```
+
 ```typescript
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, signal, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@angular/core';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 import { IgxChatComponent, IgxChatOptions } from 'igniteui-angular/chat';
 
 @Component({
-    selector: 'app-chat-styling-sample',
-    styleUrls: ['./styling-sample.component.scss'],
-    templateUrl: './styling-sample.component.html',
-    imports: [IgxAvatarComponent, IgxChatComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  selector: 'app-chat-styling-sample',
+  styleUrls: ['./styling-sample.component.scss'],
+  templateUrl: './styling-sample.component.html',
+  imports: [IgxAvatarComponent, IgxChatComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
+
 export class ChatStylingSampleComponent {
-    public draftMessage = { text: '', attachments: [] };
+  public draftMessage = { text: '', attachments: [] };
 
-    public messages = signal([
+  public messages = signal([
+    {
+      id: '1',
+      text: `Hi, I have a question about my recent order, #7890.`,
+      sender: 'user',
+      timestamp: (Date.now() - 3500000).toString()
+    },
+    {
+      id: '2',
+      text: `Hello! I can help with that. What is your question regarding order #7890?`,
+      sender: 'support',
+      timestamp: (Date.now() - 3400000).toString()
+    },
+    {
+      id: '3',
+      text: `The tracking status shows 'delivered', but I haven't received it yet. Can you confirm the delivery location?`,
+      sender: 'user',
+      timestamp: (Date.now() - 3300000).toString()
+    },
+    {
+      id: '4',
+      text: `I've reviewed the delivery details. It seems the package was left in a different spot. Here's a photo from our delivery driver showing where it was placed. Please check your porch and side door.`,
+      sender: 'support',
+      timestamp: (Date.now() - 3200000).toString(),
+      attachments: [
         {
-            id: '1',
-            text: `Hi, I have a question about my recent order, #7890.`,
-            sender: 'user',
-            timestamp: (Date.now() - 3500000).toString()
-        },
-        {
-            id: '2',
-            text: `Hello! I can help with that. What is your question regarding order #7890?`,
-            sender: 'support',
-            timestamp: (Date.now() - 3400000).toString()
-        },
-        {
-            id: '3',
-            text: `The tracking status shows 'delivered', but I haven't received it yet. Can you confirm the delivery location?`,
-            sender: 'user',
-            timestamp: (Date.now() - 3300000).toString()
-        },
-        {
-            id: '4',
-            text: `I've reviewed the delivery details. It seems the package was left in a different spot. Here's a photo from our delivery driver showing where it was placed. Please check your porch and side door.`,
-            sender: 'support',
-            timestamp: (Date.now() - 3200000).toString(),
-            attachments: [
-                {
-                id: 'delivery-location-image',
-                name: 'Delivery location',
-                url: 'https://media.istockphoto.com/id/1207972183/photo/merchandise-delivery-from-online-ordering.jpg?s=612x612&w=0&k=20&c=cGcMqd_8FALv4Tueh7sllYZuDXurkfkqoJf6IAIWhJk=',
-                type: 'image'
-                }
-            ]
+          id: 'delivery-location-image',
+          name: 'Delivery location',
+          url: 'https://media.istockphoto.com/id/1207972183/photo/merchandise-delivery-from-online-ordering.jpg?s=612x612&w=0&k=20&c=cGcMqd_8FALv4Tueh7sllYZuDXurkfkqoJf6IAIWhJk=',
+          type: 'image'
         }
-    ]);
-
-    public options = signal<IgxChatOptions>({
-        disableAutoScroll: false,
-        disableInputAttachments: false,
-        suggestions: [`It's there. Thanks.`, `It's not there.`],
-        inputPlaceholder: 'Type your message here...',
-        headerText: 'Customer Support',
-        adoptRootStyles: true
-    });
-
-    constructor() {}
-
-    public onMessageCreated(msg: any): void {
-        const newMessage = msg;
-        this.messages.update(messages => ([...messages, newMessage]));
-        this.options.update(options => ({ ...options, isTyping: true, suggestions: [] }));
-
-
-        const messageText = msg.text.toLowerCase();
-        const responseText = messageText.includes('not there')
-        ? `We're sorry to hear that. Checking with the delivery service for more details.`
-        : messageText.includes('it\'s there')
-            ? `Glad to hear that! If you have any more questions or need further assistance, feel free to ask. We're here to help!`
-            : `Our support team is currently unavailable. We'll get back to you as soon as possible.`;
-
-        const responseMessage = {
-            id: Date.now().toString(),
-            text: responseText,
-            sender: 'support',
-            timestamp: Date.now().toString()
-        };
-
-        this.draftMessage = { text: '', attachments: [] };
-        this.messages.update(messages => [...messages, responseMessage]);
-        this.options.update(options => ({ ...options, isTyping: false }));
+      ]
     }
+  ]);
+
+  public options = signal<IgxChatOptions>({
+    disableAutoScroll: false,
+    disableInputAttachments: false,
+    suggestions: [`It's there. Thanks.`, `It's not there.`],
+    inputPlaceholder: 'Type your message here...',
+    headerText: 'Customer Support',
+    adoptRootStyles: true
+  });
+
+  constructor() { }
+
+  public onMessageCreated(msg: any): void {
+    const newMessage = msg;
+    this.messages.update(messages => ([...messages, newMessage]));
+    this.options.update(options => ({ ...options, isTyping: true, suggestions: [] }));
+
+
+    const messageText = msg.text.toLowerCase();
+    const responseText = messageText.includes('not there')
+      ? `We're sorry to hear that. Checking with the delivery service for more details.`
+      : messageText.includes('it\'s there')
+        ? `Glad to hear that! If you have any more questions or need further assistance, feel free to ask. We're here to help!`
+        : `Our support team is currently unavailable. We'll get back to you as soon as possible.`;
+
+    const responseMessage = {
+      id: Date.now().toString(),
+      text: responseText,
+      sender: 'support',
+      timestamp: Date.now().toString()
+    };
+
+    this.draftMessage = { text: '', attachments: [] };
+    this.messages.update(messages => [...messages, responseMessage]);
+    this.options.update(options => ({ ...options, isTyping: false }));
+  }
 }
 ```
 ```html
 <div class="sample-column">
-    <igx-chat
-        [options]="options()"
-        [messages]="messages()"
-        [draftMessage]="draftMessage"
-        [templates]="{ messageHeader: messageHeader }"
-        (messageCreated)="onMessageCreated($event)">
-
-        <ng-template #messageHeader let-message>
-            @if (message.sender !== 'user') {
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <igx-avatar
-                        shape="circle"
-                        src="https://www.infragistics.com/angular-demos/assets/images/men/1.jpg"
-                        size="small"
-                    >
-                    </igx-avatar>
-                    <span style="font-weight: bold; color: #c00000;"
-                    >Customer Support</span>
-                </div>
-            }
-        </ng-template>
-    </igx-chat>
+  <igx-chat [options]="options()" [messages]="messages()" [draftMessage]="draftMessage"
+    [templates]="{ messageHeader: messageHeader }" (messageCreated)="onMessageCreated($event)">
+    <ng-template #messageHeader let-message>
+      @if (message.sender !== 'user') {
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <igx-avatar shape="circle" src="assets/images/men/1.jpg" size="small">
+          </igx-avatar>
+          <span>Customer Support</span>
+        </div>
+      }
+    </ng-template>
+  </igx-chat>
 </div>
 ```
 ```scss
-// @use "igniteui-angular/theming" as *;
-igx-chat {
-    height: 870px;
+@use "igniteui-angular/theming" as *;
+@use "layout.scss";
 
-    ::ng-deep {
-        igc-chat::part(header) {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid var(--ig-gray-300);
-            background-color: var(--ig-gray-200);
-            font-family: 'Franklin Gothic Medium';
-            color: var(--ig-gray-700);
-        }
+$custom-chat-theme: chat-theme(
+  $background: #f7f5f1,
+  $header-background: linear-gradient(135deg, #2b2b2b, #4a4a4a),
+  $header-color: #ffc641,
+  $sent-message-background: linear-gradient(135deg, #ffb703, #fb8500),
+  $sent-message-color: #1a1a1a,
+  $received-message-background: #e2d8c9,
+  $received-message-color: #2b2b2b,
+  $message-actions-color: #b26a2a,
+  $message-border-radius: 8px,
+  $image-background: #fff3d6,
+  $image-border: #fb8500,
+  $image-attachment-icon: #fb8500,
+  $chat-input-border: #e2d8c9,
+  $progress-indicator-color: #ffc641,
+);
 
-        igc-chat::part(message-container) {
-            background: var(--igc-chat-bubble-bg, #eee);
-            color: var(--igc-chat-text-color, #222);
-            padding: 12px;
-            border-radius: 8px;
-            transition: background .15s;
-        }
-
-        igc-chat::part(message-sent) {
-            background: var(--igc-chat-sent-bubble-bg, #e6f4ff);
-            color: var(--igc-chat-sent-text-color, #03396b);
-        }
-
-        igc-chat::part(message-header) {
-            color: #c00000;
-            font-weight: bold;
-            margin: 8px;
-        }
-
-        igc-chat::part(message-actions-container) {
-            border-top: 1px solid var(--ig-gray-300);
-        }
-
-        igc-chat::part(suggestion) {
-            background-color: var(--ig-primary-100);
-            color: var(--ig-primary-800);
-            margin: .125rem;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        igc-chat::part(message-attachment) {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            background: var(--igc-chat-sent-bubble-bg);
-        }
-
-        igc-chat::part(input-attachments-container) {
-            border: 5px solid var(--ig-gray-300);
-        }
-    }
+:host {
+  @include tokens($custom-chat-theme);
 }
 ```
 
 ## API Reference
 
-- [`IgxChatComponent`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchatcomponent.html)
+- [`IgxChatComponent`](mcp:get_api_reference?platform=angular&component=IgxChatComponent)
 - [`IgxChatOptions`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/types/igxchatoptions.html)
 - [`IgxChatTemplates`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/types/igxchattemplates.html)
-- [`IgxChatMessageContextDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchatmessagecontextdirective.html)
-- [`IgxChatInputContextDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchatinputcontextdirective.html)
-- [`IgxChatAttachmentContextDirective`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxchatattachmentcontextdirective.html)
+- [`IgxChatMessageContextDirective`](mcp:get_api_reference?platform=angular&component=IgxChatMessageContextDirective)
+- [`IgxChatInputContextDirective`](mcp:get_api_reference?platform=angular&component=IgxChatInputContextDirective)
+- [`IgxChatAttachmentContextDirective`](mcp:get_api_reference?platform=angular&component=IgxChatAttachmentContextDirective)
+- [`chat-theme`](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/themes#function-chat-theme)
 - [`Styling & Themes`](./themes/index.md)
 
 ## Additional Resources

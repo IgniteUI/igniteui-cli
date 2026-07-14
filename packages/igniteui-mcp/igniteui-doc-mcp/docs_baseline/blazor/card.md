@@ -36,8 +36,8 @@ The Ignite UI for Blazor Card displays text, images, icons, and buttons in a vis
                 <img src="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=50">
             </IgbCardMedia>
             <IgbCardHeader>
-                <h3 style="font-size: 1.25rem;" slot="title">New York City</h3>
-                <h5 style="font-size: 1.00rem;" slot="subtitle">City in New York</h5>
+                <span style="font-size: 1.25rem;" slot="title">New York City</span>
+                <span style="font-size: 1.00rem;" slot="subtitle">City in New York</span>
             </IgbCardHeader>
 
             <IgbCardContent>
@@ -239,8 +239,8 @@ If everything went well, our card should look like this:
                 <div>
                     <IgbCardHeader>
                         <img slot="thumbnail" src="https://dl.infragistics.com/x/img/music/rozes.jpg" width="64" height="64"/>
-                        <h5 slot="title">Rozes</h5>
-                        <h5 slot="subtitle">Under the Grave (2016)</h5>
+                        <span slot="title">Rozes</span>
+                        <span slot="subtitle">Under the Grave (2016)</span>
                     </IgbCardHeader>
                     <IgbCardContent>
                         <p>
@@ -321,8 +321,8 @@ Below is an example showing how you can create a semi-horizontal card, where we 
                 <div>
                     <IgbCardHeader>
                         <IgbAvatar Src="https://dl.infragistics.com/x/img/music/singer_with_mic.jpg" slot="thumbnail"/>
-                        <h5 slot="title">HERE</h5>
-                        <h5 slot="subtitle">by Mellow D</h5>
+                        <span slot="title">HERE</span>
+                        <span slot="subtitle">by Mellow D</span>
                     </IgbCardHeader>
                     <IgbCardContent>
                       <p>Far far away, behind the word mountains,
@@ -438,8 +438,8 @@ igc-icon-button::part(base) {
             </IgbCardMedia>
 
             <IgbCardHeader>
-                <h3 style="font-size: 1.25rem;" slot="title">Jane Doe</h3>
-                <h5 style="font-size: 1.00rem;" slot="subtitle">Professional Photographer</h5>
+                <span style="font-size: 1.25rem;" slot="title">Jane Doe</span>
+                <span style="font-size: 1.00rem;" slot="subtitle">Professional Photographer</span>
             </IgbCardHeader>
 
             <IgbCardContent>

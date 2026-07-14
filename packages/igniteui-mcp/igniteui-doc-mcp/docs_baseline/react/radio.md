@@ -35,10 +35,10 @@ export default class RadioGroup extends React.Component<any, any> {
             <div className="container sample">
                 <div className="container" style={{width: "430px", height: "25px", border: "1px solid gainsboro"}}>
                     <IgrRadioGroup alignment="horizontal">
-                        <IgrRadio name="fruit" value="apple"><span>Apple</span></IgrRadio>
-                        <IgrRadio name="fruit" value="banana" checked={true}><span>Banana</span></IgrRadio>
-                        <IgrRadio name="fruit" value="Mango"><span>Mango</span></IgrRadio>
-                        <IgrRadio name="fruit" value="orange"><span>Orange</span></IgrRadio>
+                        <IgrRadio name="fruit" value="apple">Apple</IgrRadio>
+                        <IgrRadio name="fruit" value="banana" checked={true}>Banana</IgrRadio>
+                        <IgrRadio name="fruit" value="Mango">Mango</IgrRadio>
+                        <IgrRadio name="fruit" value="orange">Orange</IgrRadio>
                     </IgrRadioGroup>
                 </div>
             </div>
@@ -135,7 +135,7 @@ export default class RadioLabel extends React.Component<any, any> {
             <div className="container sample">
                 <div className="container" style={{width: "430px", height:"60px", border: "1px solid gainsboro"}}>
                     <IgrRadioGroup alignment="vertical">
-                        <IgrRadio name="fruit" value="apple" labelPosition="before"><span>Apple</span></IgrRadio>
+                        <IgrRadio name="fruit" value="apple" labelPosition="before">Apple</IgrRadio>
                         <div className="wrapper">
                         <span id="radio-label">Orange</span>
                         <IgrRadio
@@ -192,10 +192,10 @@ export default class RadioGroup extends React.Component<any, any> {
             <div className="container sample">
                 <div className="container" style={{width: "430px", height: "25px", border: "1px solid gainsboro"}}>
                     <IgrRadioGroup alignment="horizontal">
-                        <IgrRadio name="fruit" value="apple"><span>Apple</span></IgrRadio>
-                        <IgrRadio name="fruit" value="banana" checked={true}><span>Banana</span></IgrRadio>
-                        <IgrRadio name="fruit" value="Mango"><span>Mango</span></IgrRadio>
-                        <IgrRadio name="fruit" value="orange"><span>Orange</span></IgrRadio>
+                        <IgrRadio name="fruit" value="apple">Apple</IgrRadio>
+                        <IgrRadio name="fruit" value="banana" checked={true}>Banana</IgrRadio>
+                        <IgrRadio name="fruit" value="Mango">Mango</IgrRadio>
+                        <IgrRadio name="fruit" value="orange">Orange</IgrRadio>
                     </IgrRadioGroup>
                 </div>
             </div>
@@ -230,14 +230,14 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 export default class RadioInvalid extends React.Component<any, any> {
 
     constructor(props: any) {
-        super(props);           
+        super(props);
     }
 
     public render(): JSX.Element {
         return (
             <div className="container sample">
                 <div className="container" style={{width: "430px", height: "25px", border: "1px solid gainsboro"}}>
-                    <IgrRadio value="banana" invalid={true}><span>Invalid</span></IgrRadio>
+                    <IgrRadio value="banana" invalid={true}>Invalid</IgrRadio>
                 </div>
             </div>
         );
@@ -284,10 +284,10 @@ export default class RadioDisabled extends React.Component<any, any> {
             <div className="container sample">
                 <div className="container" style={{width: "430px", height: "25px", border: "1px solid gainsboro"}}>
                     <IgrRadioGroup alignment="horizontal">
-                        <IgrRadio name="fruit" value="banana" disabled={true}><span>Banana</span></IgrRadio>
-                        <IgrRadio name="fruit" value="Mango"><span>Mango</span></IgrRadio>
-                        <IgrRadio name="fruit" value="apple"><span>Apple</span></IgrRadio>
-                        <IgrRadio name="fruit" value="orange"><span>Orange</span></IgrRadio>
+                        <IgrRadio name="fruit" value="banana" disabled={true}>Banana</IgrRadio>
+                        <IgrRadio name="fruit" value="Mango">Mango</IgrRadio>
+                        <IgrRadio name="fruit" value="apple">Apple</IgrRadio>
+                        <IgrRadio name="fruit" value="orange">Orange</IgrRadio>
                     </IgrRadioGroup>
                 </div>
             </div>
@@ -335,10 +335,10 @@ export default class RadioAlignment extends React.Component<any, any> {
             <div className="container sample">
                 <div className="container" style={{width: "430px", height: "25px", border: "1px solid gainsboro"}}>
                     <IgrRadioGroup alignment="horizontal">
-                        <IgrRadio name="fruit" value="apple"><span>Apple</span></IgrRadio>
-                        <IgrRadio name="fruit" value="banana" checked={true}><span>Banana</span></IgrRadio>
-                        <IgrRadio name="fruit" value="Mango"><span>Mango</span></IgrRadio>
-                        <IgrRadio name="fruit" value="orange"><span>Orange</span></IgrRadio>
+                        <IgrRadio name="fruit" value="apple">Apple</IgrRadio>
+                        <IgrRadio name="fruit" value="banana" checked={true}>Banana</IgrRadio>
+                        <IgrRadio name="fruit" value="Mango">Mango</IgrRadio>
+                        <IgrRadio name="fruit" value="orange">Orange</IgrRadio>
                     </IgrRadioGroup>
                 </div>
             </div>
@@ -417,10 +417,10 @@ export default class RadioStyling extends React.Component<any, any> {
             <div className="container sample">
                 <div className="container" style={{width: "430px", height: "120px", border: "1px solid gainsboro"}}>
                     <IgrRadioGroup alignment="vertical">
-                        <IgrRadio name="fruit" value="apple"><span>Apple</span></IgrRadio>
-                        <IgrRadio name="fruit" value="banana" checked={true}><span>Banana</span></IgrRadio>
-                        <IgrRadio name="fruit" value="Mango"><span>Mango</span></IgrRadio>
-                        <IgrRadio name="fruit" value="orange"><span>Orange</span></IgrRadio>
+                        <IgrRadio name="fruit" value="apple">Apple</IgrRadio>
+                        <IgrRadio name="fruit" value="banana" checked={true}>Banana</IgrRadio>
+                        <IgrRadio name="fruit" value="Mango">Mango</IgrRadio>
+                        <IgrRadio name="fruit" value="orange">Orange</IgrRadio>
                     </IgrRadioGroup>
                 </div>
             </div>

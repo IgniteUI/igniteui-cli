@@ -119,7 +119,7 @@ For the purposes of our example of Angular reactive form validation, the fie
 So, if you enter values for movie title, full name, phone, and email, they will be highlighted in green. But if you forget to select `favorite genre`, this field will be highlighted in red, indicating incomplete value inputs. Once the values are all set right, the field will be highlighted in green, indicating correct value inputs. The `book button` will be activated and the form can be successfully submitted afterwards.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DateRange, IgxPickerToggleComponent } from 'igniteui-angular/core';
 import { IRangeSliderValue, IgxSliderComponent } from 'igniteui-angular/slider';
@@ -159,6 +159,7 @@ export interface User{
     selector: 'app-reactive-form',
     styleUrls: ['./reactive-forms.component.scss'],
     templateUrl: './reactive-forms.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, IgxSelectComponent, IgxSelectGroupComponent, IgxSelectItemComponent, IgxLabelDirective, IgxSelectToggleIconDirective, IgxIconComponent, IgxInputGroupComponent, IgxInputDirective, IgxSuffixDirective, IgxHintDirective, IgxPrefixDirective, IgxComboComponent, IgxDatePickerComponent, IgxPickerToggleComponent, IgxTimePickerComponent, IgcFormControlDirective, IgxCheckboxComponent, IgxRadioGroupDirective, IgxRadioComponent, IgxSwitchComponent, IgxDateRangePickerComponent, IgxSliderComponent, IgxCalendarComponent, IgxCardComponent, IgxMonthPickerComponent, IgxButtonDirective, IgxRippleDirective]
 })
 export class ReactiveFormsSampleComponent {
@@ -292,7 +293,7 @@ public valueChangeHandler() {
           }
         </igx-input-group>
         <igx-combo #combo1 class="input-container" [itemsMaxHeight]="130" [data]="genres" [valueKey]="'type'"
-          [displayKey]="'type'" type="line" formControlName="genres" placeholder="Select your favorite genres"
+          [displayKey]="'type'" formControlName="genres" placeholder="Select your favorite genres"
           searchPlaceholder="Search...">
         </igx-combo>
         <igx-date-picker name="date" formControlName="date" [minValue]="minDate" [maxValue]="maxDate" placeholder="Date">

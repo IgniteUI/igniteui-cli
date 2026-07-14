@@ -3,7 +3,7 @@ title: Blazor Stock/Financial Charts | Ignite UI for Blazor
 _description: The Ignite UI for Blazor Stock Chart is a composite visualization that renders stock ticker data, or price data in an interactive time-series display. Try for FREE.
 _keywords: Blazor Charts, Stock Chart, Financial Chart, Candlestick Chart, OHLC Chart, Infragistics
 _license: commercial
-mentionedTypes: ["DomainChart", "FinancialChart", "FinancialChartType", "IndicatorTypes", "ZoomSliderType", "Series", "FinancialChartType"]
+mentionedTypes: ["DomainChart", "FinancialChart", "FinancialChartType", "IndicatorTypes", "ZoomSliderType", "Series"]
 namespace: Infragistics.Controls.Charts
 _tocName: Financial / Stock Chart
 _premium: true
@@ -15,7 +15,7 @@ The Ignite UI for Blazor Stock Chart, sometimes referred to as Blazor Financial 
 
 ## Blazor Stock Chart Example
 
-You can create Stock Chart using the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) control by binding your data and optionally setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to `Line` value, as shown in the example below.
+You can create Stock Chart using the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) control by binding your data and optionally setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ChartType) property to `Line` value, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -472,7 +472,7 @@ Note that is recommended to use line chart type if plotting multiple data source
 
 This pane controls the zoom of all the displayed panes. This pane is displayed by default. It can be turned off by setting the [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ZoomSliderType) to `none` as demonstrated in the following code:
 
-Note that you should set the [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ZoomSliderType) option to the same value as the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) option is set to. This way, the zoom slider will show correct preview of the price pane. The following code demonstrates how to do this:
+Note that you should set the [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ZoomSliderType) option to the same value as the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ChartType) option is set to. This way, the zoom slider will show correct preview of the price pane. The following code demonstrates how to do this:
 
 In this example, the stock chart is plotting revenue for United States.
 
@@ -534,9 +534,8 @@ You can find more information about related chart features in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType)
+- [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ChartType)
 - [`CrosshairsSnapToData`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=CrosshairsSnapToData)
-- [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=DataSource)
 - [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart)
 - [`IndicatorTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=IndicatorTypes)
 - [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ZoomSliderType)

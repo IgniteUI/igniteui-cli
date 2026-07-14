@@ -72,7 +72,7 @@ The grid exposes a wide array of events that provide greater control over the ed
 - `RowEdit` - Committing cell is possible, but not the whole row. The row will stay in edit mode and the row transaction will be considered open. Hitting **Done** does not commit or close the row. **Cancel** button closes the editing process and the transaction without committing the changes.
 The following sample demonstrates the editing execution sequence in action:
 ```typescript
-import { Component, ElementRef, Renderer2, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { generateEmployeeFlatData } from '../data/employees-flat';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -85,6 +85,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tgrid-editing-lifecycle',
     templateUrl: 'tgrid-editing-lifecycle.component.html',
     styleUrls: ['tgrid-editing-lifecycle.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxButtonDirective, IgxIconComponent]
 })
 export class TGridEditingLifecycleComponent {

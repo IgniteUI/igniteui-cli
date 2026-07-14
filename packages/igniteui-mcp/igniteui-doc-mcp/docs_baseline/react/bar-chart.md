@@ -3,7 +3,7 @@ title: React Bar Chart and Graph | Ignite UI for React
 _description: React Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories. Try for FREE.
 _keywords: React Charts, Bar Chart, Bar Graph, Horizontal Chart, Infragistics
 _license: commercial
-mentionedTypes: ["XamDataChart", "BarSeries", "StackedBarSeries", "Stacked100BarSeries", "Series"]
+mentionedTypes: ["XamDataChart", "BarSeries", "StackedBarSeries", "Stacked100BarSeries", "RangeBarSeries", "Series"]
 namespace: Infragistics.Controls.Charts
 _tocName: Bar Chart
 _premium: true
@@ -1045,6 +1045,173 @@ root.render(<Sample/>);
 
 <div class="divider--half"></div>
 
+## React Range Bar Chart
+
+The React Range Bar Chart belongs to a group of range charts and is rendered using horizontal rectangles that can appear in the middle of the plot area of the chart, rather than stretching from the left like the traditional [Category Bar Chart](bar-chart.md#react-bar-chart-example). This type of series emphasizes the amount of change between low values and high values in the same data point over a period of time or compares multiple items.
+
+Range values are represented on the X-Axis and categories are displayed on the Y-Axis. Because each bar visualizes both a low value and a high value, this chart is useful for scenarios such as showing daily temperature ranges, minimum and maximum prices, or any bounded measurements where a single value is not sufficient.
+
+The Range Bar Chart is identical to the [Range Column Chart](column-chart.md#react-range-column-chart) in all aspects except that the ranges are represented as a set of horizontal bars rather than vertical columns.
+
+You can create this type of chart in the [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) control by binding your data to a `RangeBarSeries`. The series reads low and high values from `LowMemberPath` and `HighMemberPath`, and it typically uses a [`IgrNumericXAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrnumericxaxis.html) with a [`IgrCategoryYAxis`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategoryyaxis.html), as shown in the example below:
+
+```typescript
+export class TemperatureRangeDataItem {
+    public constructor(init: Partial<TemperatureRangeDataItem>) {
+        Object.assign(this, init);
+    }
+
+    public month: string;
+    public highNY: number;
+    public lowNY: number;
+    public highLA: number;
+    public lowLA: number;
+
+}
+export class TemperatureRangeData extends Array<TemperatureRangeDataItem> {
+    public constructor(items: Array<TemperatureRangeDataItem> | number = -1) {
+        if (Array.isArray(items)) {
+            super(...items);
+        } else {
+            const newItems = [
+                new TemperatureRangeDataItem({ month: `Jan`, highNY: 10.6, lowNY: -6.6, highLA: 28.3, lowLA: 7.8 }),
+                new TemperatureRangeDataItem({ month: `Feb`, highNY: 7.8, lowNY: -9.9, highLA: 31.1, lowLA: 5.6 }),
+                new TemperatureRangeDataItem({ month: `Mar`, highNY: 12.2, lowNY: -3.8, highLA: 27.8, lowLA: 8.3 }),
+                // ... 9 more items
+            ];
+            super(...newItems.slice(0));
+        }
+    }
+}
+```
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+```
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+
+import { IgrDataChartAnnotationModule, IgrDataChartCategoryModule, IgrDataChartCoreModule, IgrDataChartInteractivityModule, IgrDataChartVerticalCategoryModule, IgrLegendModule, IgrRangeBarSeriesModule } from 'igniteui-react-charts';
+import { IgrLegend, IgrDataChart, IgrCategoryYAxis, IgrNumericXAxis, IgrRangeBarSeries, IgrDataToolTipLayer } from 'igniteui-react-charts';
+import { TemperatureRangeDataItem, TemperatureRangeData } from './TemperatureRangeData';
+
+const mods: any[] = [
+    IgrDataChartAnnotationModule,
+    IgrDataChartCategoryModule,
+    IgrDataChartCoreModule,
+    IgrDataChartInteractivityModule,
+    IgrDataChartVerticalCategoryModule,
+    IgrLegendModule,
+    IgrRangeBarSeriesModule
+];
+mods.forEach((m) => m.register());
+
+export default class Sample extends React.Component<any, any> {
+    private legend: IgrLegend
+    private legendRef(r: IgrLegend) {
+        this.legend = r;
+        this.setState({});
+    }
+    private chart: IgrDataChart
+    private chartRef(r: IgrDataChart) {
+        this.chart = r;
+        this.setState({});
+    }
+    private yAxis: IgrCategoryYAxis
+    private xAxis: IgrNumericXAxis
+    private rangeBarSeries1: IgrRangeBarSeries
+    private rangeBarSeries2: IgrRangeBarSeries
+    private dataToolTipLayer: IgrDataToolTipLayer
+
+    constructor(props: any) {
+        super(props);
+
+        this.legendRef = this.legendRef.bind(this);
+        this.chartRef = this.chartRef.bind(this);
+    }
+
+    public render(): JSX.Element {
+        return (
+        <div className="container sample">
+
+            <div className="legend-title">
+                Monthly Temperature Range in LA and NYC
+            </div>
+
+            <div className="legend">
+                <IgrLegend
+                    ref={this.legendRef}
+                    orientation="Horizontal">
+                </IgrLegend>
+            </div>
+
+            <div className="container fill">
+                <IgrDataChart
+                    ref={this.chartRef}
+                    isHorizontalZoomEnabled="false"
+                    isVerticalZoomEnabled="false"
+                    legend={this.legend}>
+                    <IgrCategoryYAxis
+                        name="yAxis"
+                        label="month"
+                        interval="1"
+                        dataSource={this.temperatureRangeData}>
+                    </IgrCategoryYAxis>
+                    <IgrNumericXAxis
+                        name="xAxis"
+                        title="Temperature (in Celsius)"
+                        titleAngle="0"
+                        titleTopMargin="10">
+                    </IgrNumericXAxis>
+                    <IgrRangeBarSeries
+                        name="RangeBarSeries1"
+                        xAxisName="xAxis"
+                        yAxisName="yAxis"
+                        title="Los Angeles"
+                        lowMemberPath="lowLA"
+                        highMemberPath="highLA"
+                        showDefaultTooltip="false"
+                        dataSource={this.temperatureRangeData}>
+                    </IgrRangeBarSeries>
+                    <IgrRangeBarSeries
+                        name="RangeBarSeries2"
+                        xAxisName="xAxis"
+                        yAxisName="yAxis"
+                        title="New York"
+                        lowMemberPath="lowNY"
+                        highMemberPath="highNY"
+                        showDefaultTooltip="false"
+                        dataSource={this.temperatureRangeData}>
+                    </IgrRangeBarSeries>
+                    <IgrDataToolTipLayer
+                        name="dataToolTipLayer">
+                    </IgrDataToolTipLayer>
+                </IgrDataChart>
+            </div>
+        </div>
+        );
+    }
+
+    private _temperatureRangeData: TemperatureRangeData = null;
+    public get temperatureRangeData(): TemperatureRangeData {
+        if (this._temperatureRangeData == null)
+        {
+            this._temperatureRangeData = new TemperatureRangeData();
+        }
+        return this._temperatureRangeData;
+    }
+
+}
+
+// rendering above component in the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Sample/>);
+```
+
+<div class="divider--half"></div>
+
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
@@ -1065,4 +1232,4 @@ The following table lists API members mentioned in the above sections:
 - [`IgrCalloutLayer`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcalloutlayer.html)
 - [`IgrStackedBarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedbarseries.html)
 - [`IgrStacked100BarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstacked100barseries.html)
-- [`IgrStackedBarSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrstackedbarseries.html)
+- `RangeBarSeries`

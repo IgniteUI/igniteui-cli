@@ -150,10 +150,13 @@ igc-avatar::part(base) {
 ```
 
 ```css
+igc-avatar {
+  --ig-avatar-size: 60px;
+  --ig-avatar-color: var(--ig-success-500-contrast);
+  --ig-avatar-background: var(--ig-success-500);
+}
+
 igc-avatar::part(base) {
-  --size: 60px;
-  color: var(--ig-success-500-contrast);
-  background: var(--ig-success-500);;
   border-radius: 20px;
 }
 ```

@@ -161,8 +161,8 @@ useAnimation(fadeIn, {
 <div class="divider"></div>
 
 - [Animations](https://www.infragistics.com/products/ignite-ui-angular/docs/sass/latest/animations)
-- [AnimationSettings](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/animationsettings.html)
-- [IAnimationParams](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/interfaces/ianimationparams.html)
+- [AnimationSettings](mcp:get_api_reference?platform=angular&component=AnimationSettings)
+- [IAnimationParams](mcp:get_api_reference?platform=angular&component=IAnimationParams)
 
 ## Additional Resources
 

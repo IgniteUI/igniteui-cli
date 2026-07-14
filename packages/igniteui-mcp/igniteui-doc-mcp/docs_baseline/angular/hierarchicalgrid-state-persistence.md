@@ -139,7 +139,7 @@ this.state.setState(state, ['filtering', 'rowIslands']);
 ```
 ## Demo
 ```typescript
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NavigationStart, Router, RouterLink } from '@angular/router';
 import { GridFeatures, IGridState, IGridStateOptions, IgxCellTemplateDirective, IgxColumnComponent, IgxGridStateDirective, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxNumberSummaryOperand } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -171,6 +171,7 @@ class MySummary {
     selector: 'app-hgrid',
     styleUrls: ['./hGrid-state.component.scss'],
     templateUrl: './hGrid-state.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxIconComponent, RouterLink, IgxCheckboxComponent, IgxHierarchicalGridComponent, IgxGridStateDirective, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 
@@ -219,7 +220,7 @@ export class HGridSaveStateComponent implements OnInit, AfterViewInit {
     }
 
     public ngOnInit() {
-      this.router.events.pipe(take(1)).subscribe((event: NavigationStart) => {
+      this.router.events.pipe(take(1)).subscribe(() => {
           this.saveGridState();
       });
     }

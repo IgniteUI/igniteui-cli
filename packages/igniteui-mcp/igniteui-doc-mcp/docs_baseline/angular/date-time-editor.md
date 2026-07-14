@@ -13,7 +13,7 @@ _tocName: Date Time Editor
 ## Angular Date Time Editor Directive Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxDateTimeEditorDirective, IgxTextSelectionDirective } from 'igniteui-angular/directives';
 
@@ -21,6 +21,7 @@ import { IgxDateTimeEditorDirective, IgxTextSelectionDirective } from 'igniteui-
     selector: 'app-datetime-basic',
     styleUrls: ['./datetime-basic.component.scss'],
     templateUrl: './datetime-basic.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, IgxInputDirective, IgxDateTimeEditorDirective, IgxTextSelectionDirective]
 })
 export class DateTimeBasicComponent {
@@ -220,7 +221,7 @@ Also, both methods accept an optional `delta` parameter of type `number` which c
 
 You may compare both in the following sample:
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DatePart } from 'igniteui-angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxDateTimeEditorDirective } from 'igniteui-angular/directives';
@@ -231,6 +232,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-datetime-advanced',
     styleUrls: ['./datetime-advanced.scss'],
     templateUrl: './datetime-advanced.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, FormsModule, IgxInputDirective, IgxDateTimeEditorDirective, IgxSuffixDirective, IgxIconComponent]
 })
 

@@ -11,7 +11,7 @@ IgniteUI for [Angular Tree Grid component](https://www.infragistics.com/products
 ## Angular Tree Grid Filtering Example
 The sample below demonstrates Tree Grid's **Quick filtering** user experience. API [filter()](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filter) method is used to apply _contains_ condition on the _ProductName column_ through external _igxInputGroup component_.  
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxStringFilteringOperand } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxInputDirective, IgxInputGroupComponent } from 'igniteui-angular/input-group';
@@ -24,6 +24,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-filtering-sample',
     styleUrls: ['./tree-grid-filtering-sample.component.scss'],
     templateUrl: 'tree-grid-filtering-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxInputDirective, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 
@@ -322,7 +323,7 @@ export class BooleanFilteringOperand extends IgxBooleanFilteringOperand {
 </igx-tree-grid>
 ```
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IFilteringOperation, IgxBooleanFilteringOperand, IgxStringFilteringOperand } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -334,6 +335,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-filtering-custom-sample',
     styleUrls: ['./tree-grid-filtering-custom-sample.component.scss'],
     templateUrl: './tree-grid-filtering-custom-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 export class TreeGridFilteringCustomSampleComponent implements OnInit {
@@ -449,7 +451,7 @@ export class BooleanFilteringOperand extends IgxBooleanFilteringOperand {
 ## Re-templating filter cell
 You can add a template marked with `igxFilterCellTemplate` in order to retemplate the filter cell. In the sample below, an input is added for the string columns and IgxDatePicker for the date column. When the user types or selects a value, a filter with contains operator for string columns and equals operator for date columns, is applied using grid's public API.
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnType, GridColumnDataType, IgxDateFilteringOperand, IgxNumberFilteringOperand, IgxPickerClearComponent, IgxPickerToggleComponent, IgxStringFilteringOperand } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxFilterCellTemplateDirective } from 'igniteui-angular/grids/core';
@@ -464,6 +466,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-tree-grid-filtering-template-sample',
     styleUrls: ['./tree-grid-filtering-template-sample.component.scss'],
     templateUrl: 'tree-grid-filtering-template-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxFilterCellTemplateDirective, IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxInputDirective, IgxSuffixDirective, IgxDatePickerComponent, IgxPickerToggleComponent, IgxPickerClearComponent, CurrencyPipe]
 })
 
@@ -734,7 +737,7 @@ The last step is to **include** the component mixins, each with its respective t
 ```
 ### Demo
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ORDERS_DATA } from '../data/orders';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -745,6 +748,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-filtering-style',
     styleUrls: ['./tree-grid-filtering-style.component.scss'],
     templateUrl: './tree-grid-filtering-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 export class TreeGridFilteringStyleComponent implements OnInit {

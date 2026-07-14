@@ -12,7 +12,7 @@ With row selection in Ignite UI for Angular, there is row selector column that p
 ## Angular Row Selection Example
 The sample below demonstrates the four types of Tree Grid's **row selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box. Use the switch button to _hide_ or _show_ the row selector checkbox.
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IRowSelectionEventArgs, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -28,6 +28,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-selection-sample',
     styleUrls: ['./tree-grid-selection-sample.component.scss'],
     templateUrl: './tree-grid-selection-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxButtonGroupComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxSnackbarComponent, IgxIconComponent]
 })
 export class TreeGridSelectionSampleComponent implements OnInit {
@@ -353,7 +354,7 @@ The `selectedCount` and `totalCount` properties can be used to determine if the 
 ### Row Numbering Demo
 This demo shows the usage of custom header and row selectors. The latter uses `rowContext.index` to display row numbers and an `igx-checkbox` bound to `rowContext.selected`.
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { generateEmployeeFlatData } from '../data/employees-flat';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -365,6 +366,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-selection-template-numbers',
     styleUrls: ['./tree-grid-selection-template-numbers.component.scss'],
     templateUrl: './tree-grid-selection-template-numbers.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxHeadSelectorDirective, IgxRowSelectorDirective, IgxCheckboxComponent]
 })
 export class TreeGridSelectionTemplateNumbersSampleComponent implements OnInit {
@@ -443,7 +445,7 @@ export class TreeGridSelectionTemplateNumbersSampleComponent implements OnInit {
 ### Conditional Selection Demo
 This demo prevents some rows from being selected using the `rowSelectionChanging` event and a custom template with disabled checkbox for non-selectable rows.
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IRowSelectionEventArgs, IgxColumnComponent, IgxRowSelectorDirective } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -455,6 +457,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-conditional-row-selectors',
     styleUrls: ['./tree-grid-conditional-row-selectors.component.scss'],
     templateUrl: 'tree-grid-conditional-row-selectors.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxRowSelectorDirective, IgxCheckboxComponent]
 })
 

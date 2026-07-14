@@ -135,9 +135,13 @@ export default class Sample extends React.Component<any, any> {
                     id="grid"
                     groupingExpressions={this.groupingExpression1}
                     hideGroupedColumns={true}>
-                    <IgrGridToolbar>
-                        <IgrGridToolbarActions>
-                            <IgrGridToolbarExporter>
+                    <IgrGridToolbar
+                    >
+                        <IgrGridToolbarActions
+                        >
+                            <IgrGridToolbarExporter
+                                exportCSV={false}
+                                exportExcel={true}>
                             </IgrGridToolbarExporter>
                         </IgrGridToolbarActions>
                     </IgrGridToolbar>
@@ -312,16 +316,19 @@ export default class Sample extends React.Component<any, any> {
                     data={this.customersData}
                     moving={true}
                     allowFiltering={true}>
-                    <IgrGridToolbar>
-                        <IgrGridToolbarActions>
-                            <IgrGridToolbarHiding>
+                    <IgrGridToolbar
+                    >
+                        <IgrGridToolbarActions
+                        >
+                            <IgrGridToolbarHiding
+                            >
                             </IgrGridToolbarHiding>
-                            <IgrGridToolbarPinning>
+                            <IgrGridToolbarPinning
+                            >
                             </IgrGridToolbarPinning>
                             <IgrGridToolbarExporter
                                 exportCSV={false}
                                 exportExcel={true}
-                                exportPDF={true}
                                 onExportStarted={this.webGridExportEventMultiColumnHeaders}>
                             </IgrGridToolbarExporter>
                         </IgrGridToolbarActions>

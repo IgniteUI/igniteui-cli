@@ -60,8 +60,8 @@ export default function CardOverview() {
             <img src="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=50"></img>
           </IgrCardMedia>
           <IgrCardHeader>
-            <h3 slot="title">New York City</h3>
-            <h5 slot="subtitle">City in New York</h5>
+            <span slot="title">New York City</span>
+            <span slot="subtitle">City in New York</span>
           </IgrCardHeader>
           <IgrCardContent>
             <p>
@@ -285,8 +285,8 @@ export default function CardHorizontal() {
                         <div>
                             <IgrCardHeader>
                                 <img src="https://dl.infragistics.com/x/img/music/rozes.jpg" slot="thumbnail"></img>
-                                <h5 slot="title">Rozes</h5>
-                                <h5 slot="subtitle">Under the Grave (2016)</h5>
+                                <span slot="title">Rozes</span>
+                                <span slot="subtitle">Under the Grave (2016)</span>
                             </IgrCardHeader>
                             <IgrCardContent>
                                 <p>As I have always said: I write what’s real and what’s true,
@@ -409,8 +409,8 @@ export default function CardSemiHorizontal() {
                   src="https://dl.infragistics.com/x/img/music/singer_with_mic.jpg"
                   slot="thumbnail"
                 />
-                <h5 slot="title">HERE</h5>
-                <h5 slot="subtitle">by Mellow D</h5>
+                <span slot="title">HERE</span>
+                <span slot="subtitle">by Mellow D</span>
               </IgrCardHeader>
 
               <IgrCardContent>
@@ -560,8 +560,8 @@ export default function CardStyling() {
             <img src="https://images.unsplash.com/photo-1541516160071-4bb0c5af65ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"></img>
           </IgrCardMedia>
           <IgrCardHeader className="header">
-            <h3 slot="title">Jane Doe</h3>
-            <h5 slot="subtitle">Professional Photographer</h5>
+            <span slot="title">Jane Doe</span>
+            <span slot="subtitle">Professional Photographer</span>
           </IgrCardHeader>
           <IgrCardContent>
             <p>

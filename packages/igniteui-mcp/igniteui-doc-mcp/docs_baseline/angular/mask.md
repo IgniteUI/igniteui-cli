@@ -13,7 +13,7 @@ By applying the [`igxMask`](mcp:get_api_reference?platform=angular&component=Igx
 ## Angular Mask Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxMaskDirective } from 'igniteui-angular/directives';
@@ -22,6 +22,7 @@ import { IgxMaskDirective } from 'igniteui-angular/directives';
     selector: 'app-mask-sample-2',
     styleUrls: ['./mask-sample-2.component.scss'],
     templateUrl: './mask-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxLabelDirective, IgxInputDirective, IgxMaskDirective]
 })
 export class MaskSample2Component {
@@ -185,7 +186,7 @@ public clear() {
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxMaskDirective } from 'igniteui-angular/directives';
@@ -196,6 +197,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-mask-sample-3',
     styleUrls: ['./mask-sample-3.component.scss'],
     templateUrl: './mask-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxInputGroupComponent, IgxLabelDirective, IgxInputDirective, IgxMaskDirective]
 })
 export class MaskSample3Component {
@@ -275,7 +277,7 @@ private notify(snackbar, message, input) {
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxMaskDirective, IgxTextSelectionDirective } from 'igniteui-angular/directives';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
@@ -284,6 +286,7 @@ import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
     selector: 'app-mask-sample-1',
     styleUrls: ['./mask-sample-1.component.scss'],
     templateUrl: './mask-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, IgxInputDirective, IgxMaskDirective, IgxTextSelectionDirective, IgxSnackbarComponent]
 })
 
@@ -413,7 +416,7 @@ As a result, a '%' sign should be appended to the value on blur (i.e. when the u
 
 
 ```typescript
-import { Component, Pipe, PipeTransform } from '@angular/core';
+import { Component, Pipe, PipeTransform, ChangeDetectionStrategy } from '@angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxMaskDirective, IgxTextSelectionDirective } from 'igniteui-angular/directives';
 import { FormsModule } from '@angular/forms';
@@ -421,6 +424,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
     selector: 'app-mask-sample-4',
     templateUrl: './mask-sample-4.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxMaskDirective, IgxTextSelectionDirective]
 })
 export class MaskSample4Component {
@@ -493,7 +497,7 @@ value = null;
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxMaskDirective } from 'igniteui-angular/directives';
 import { FormsModule } from '@angular/forms';
@@ -501,6 +505,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
     selector: 'app-mask-sample-5',
     templateUrl: './mask-sample-5.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxMaskDirective]
 })
 

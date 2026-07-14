@@ -127,8 +127,8 @@ public onColumnInit(column: IgxColumnComponent) {
 ```
 ## Demo
 ```typescript
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit, inject } from '@angular/core';
-import { NavigationStart, Router, RouterLink } from '@angular/router';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { FilteringExpressionsTree, FilteringLogic } from 'igniteui-angular/core';
 import { GridFeatures, IGridState, IGridStateOptions, IgxColumnComponent, IgxGridStateDirective } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -145,6 +145,7 @@ import { EMPLOYEE_DATA } from './data';
     selector: 'app-tgrid',
     styleUrls: ['./tGrid-state.component.scss'],
     templateUrl: './tGrid-state.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxIconComponent, RouterLink, IgxCheckboxComponent, IgxTreeGridComponent, IgxGridStateDirective, IgxPaginatorComponent, IgxColumnComponent]
 })
 
@@ -194,7 +195,7 @@ export class TGridSaveStateComponent implements OnInit, AfterViewInit {
     }
 
     public ngOnInit() {
-      this.router.events.pipe(take(1)).subscribe((event: NavigationStart) => {
+      this.router.events.pipe(take(1)).subscribe(() => {
           this.saveGridState();
       });
     }

@@ -25,7 +25,7 @@ The Ignite UI for React Query Builder provides a rich UI that allows developers 
 }
 ```
 ```tsx
-import React from 'react';
+import { useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { 
@@ -51,27 +51,91 @@ interface Entity {
   fields: Field[];
 }
 
-interface SampleState {
-  expressionTree: IgrExpressionTree | null;
-}
+const customersFields: Field[] = [
+  { field: 'customerId', dataType: 'string' },
+  { field: 'companyName', dataType: 'string' },
+  { field: 'contactName', dataType: 'string' },
+  { field: 'contactTitle', dataType: 'string' }
+];
 
-export default class Sample extends React.Component<any, SampleState> {
-  private queryBuilderRef: React.RefObject<IgrQueryBuilder>;
-  private gridRef: React.RefObject<IgrGrid>;
+const ordersFields: Field[] = [
+  { field: 'orderId', dataType: 'number' },
+  { field: 'customerId', dataType: 'string' },
+  { field: 'employeeId', dataType: 'number' },
+  { field: 'shipperId', dataType: 'number' },
+  { field: 'orderDate', dataType: 'date' },
+  { field: 'requiredDate', dataType: 'date' },
+  { field: 'shipVia', dataType: 'string' },
+  { field: 'freight', dataType: 'number' },
+  { field: 'shipName', dataType: 'string' },
+  { field: 'completed', dataType: 'boolean' }
+];
 
-  constructor(props: any) {
-    super(props);
+const entities: Entity[] = [
+  { name: 'Customers', fields: customersFields },
+  { name: 'Orders', fields: ordersFields }
+];
 
-    this.queryBuilderRef = React.createRef();
-    this.gridRef = React.createRef();
+function Sample() {
+  const queryBuilderRef = useRef<IgrQueryBuilder>(null);
+  const gridRef = useRef<IgrGrid>(null);
 
-    this.state = {
-      expressionTree: null
-    };
-  }
+  const calculateColumnsInView = (tree: IgrExpressionTree) => {
+    if (!gridRef.current) return;
 
-  componentDidMount() {
-    // Initialize expression tree
+    const grid = gridRef.current;
+    const returnFields = tree.returnFields ?? [];
+
+    if (returnFields.length === 0 || returnFields[0] === '*') {
+      const selectedEntity = entities.find(e => e.name === tree.entity);
+      const selectedEntityFields = (selectedEntity?.fields ?? []).map(f => f.field);
+
+      grid.columns.forEach((column: any) => {
+        column.hidden = !selectedEntityFields.includes(column.field);
+      });
+    } else {
+      grid.columns.forEach((column: any) => {
+        column.hidden = !returnFields.includes(column.field);
+      });
+    }
+  };
+
+  const fetchData = async (tree: IgrExpressionTree) => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    grid.isLoading = true;
+
+    try {
+      const response = await fetch(`${API_ENDPOINT}/QueryBuilder/ExecuteQuery`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(tree)
+      });
+
+      if (!response.ok) {
+        throw new Error(`ExecuteQuery failed: ${response.status} ${response.statusText}`);
+      }
+
+      const json = await response.json();
+      const data = (Object.values(json)[0] as any[]) ?? [];
+      grid.data = data;
+
+      await new Promise(resolve => requestAnimationFrame(() => resolve(null)));
+      calculateColumnsInView(tree);
+    } catch (err) {
+      console.error(err);
+      grid.data = [];
+    } finally {
+      grid.isLoading = false;
+    }
+  };
+
+  const handleExpressionTreeChange = (event: any) => {
+    fetchData(event.detail);
+  };
+
+  useEffect(() => {
     const tree = new IgrFilteringExpressionsTree();
     tree.operator = FilteringLogic.And;
     tree.entity = 'Orders';
@@ -88,149 +152,41 @@ export default class Sample extends React.Component<any, SampleState> {
       'completed'
     ];
 
-    this.setState({ expressionTree: tree });
+    if (gridRef.current) {
+      gridRef.current.height = '420px';
+      gridRef.current.autoGenerate = true;
+    }
 
-    // Set up query builder
-    if (this.queryBuilderRef.current && tree) {
-      const queryBuilder = this.queryBuilderRef.current;
-      queryBuilder.entities = this.entities as any;
+    if (queryBuilderRef.current) {
+      const queryBuilder = queryBuilderRef.current;
+      queryBuilder.entities = entities as any;
       queryBuilder.expressionTree = tree;
-
-      queryBuilder.addEventListener('expressionTreeChange', this.handleExpressionTreeChange);
+      queryBuilder.addEventListener('expressionTreeChange', handleExpressionTreeChange);
     }
 
-    // Set up grid
-    if (this.gridRef.current) {
-      const grid = this.gridRef.current;
-      grid.height = '420px';
-      grid.autoGenerate = true;
-    }
-  }
+    fetchData(tree);
 
-  componentDidUpdate(prevProps: any, prevState: any) {
-    // Fetch data when expression tree changes
-    if (prevState.expressionTree !== this.state.expressionTree && this.state.expressionTree) {
-      this.fetchData();
-    }
-
-    // Update query builder if expression tree changed
-    if (this.queryBuilderRef.current && this.state.expressionTree && 
-        prevState.expressionTree !== this.state.expressionTree) {
-      const queryBuilder = this.queryBuilderRef.current;
-      queryBuilder.expressionTree = this.state.expressionTree;
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.queryBuilderRef.current) {
-      this.queryBuilderRef.current.removeEventListener('expressionTreeChange', this.handleExpressionTreeChange);
-    }
-  }
-
-  private handleExpressionTreeChange = (event: any) => {
-    this.setState({ expressionTree: event.detail });
-  };
-
-  private get customersFields(): Field[] {
-    return [
-      { field: 'customerId', dataType: 'string' },
-      { field: 'companyName', dataType: 'string' },
-      { field: 'contactName', dataType: 'string' },
-      { field: 'contactTitle', dataType: 'string' }
-    ];
-  }
-
-  private get ordersFields(): Field[] {
-    return [
-      { field: 'orderId', dataType: 'number' },
-      { field: 'customerId', dataType: 'string' },
-      { field: 'employeeId', dataType: 'number' },
-      { field: 'shipperId', dataType: 'number' },
-      { field: 'orderDate', dataType: 'date' },
-      { field: 'requiredDate', dataType: 'date' },
-      { field: 'shipVia', dataType: 'string' },
-      { field: 'freight', dataType: 'number' },
-      { field: 'shipName', dataType: 'string' },
-      { field: 'completed', dataType: 'boolean' }
-    ];
-  }
-
-  private get entities(): Entity[] {
-    return [
-      { name: 'Customers', fields: this.customersFields },
-      { name: 'Orders', fields: this.ordersFields }
-    ];
-  }
-
-  private calculateColumnsInView = () => {
-    if (!this.gridRef.current || !this.state.expressionTree) return;
-
-    const grid = this.gridRef.current;
-    const expressionTree = this.state.expressionTree;
-    const returnFields = expressionTree.returnFields ?? [];
-
-    if (returnFields.length === 0 || returnFields[0] === '*') {
-      const selectedEntity = this.entities.find(e => e.name === expressionTree.entity);
-      const selectedEntityFields = (selectedEntity?.fields ?? []).map(f => f.field);
-      
-      grid.columns.forEach(column => {
-        column.hidden = !selectedEntityFields.includes(column.field);
-      });
-    } else {
-      grid.columns.forEach(column => {
-        column.hidden = !returnFields.includes(column.field);
-      });
-    }
-  };
-
-  private async fetchData() {
-    const grid = this.gridRef.current;
-    const expressionTree = this.state.expressionTree;
-
-    if (!grid || !expressionTree) return;
-
-    grid.isLoading = true;
-
-    try {
-      const response = await fetch(`${API_ENDPOINT}/QueryBuilder/ExecuteQuery`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(expressionTree)
-      });
-
-      if (!response.ok) {
-        throw new Error(`ExecuteQuery failed: ${response.status} ${response.statusText}`);
+    return () => {
+      if (queryBuilderRef.current) {
+        queryBuilderRef.current.removeEventListener('expressionTreeChange', handleExpressionTreeChange);
       }
+    };
+  }, []);
 
-      const json = await response.json();
-      const data = (Object.values(json)[0] as any[]) ?? [];
-      grid.data = data;
+  return (
+    <div className="container sample ig-typography">
+      <div className="wrapper">
+        <IgrQueryBuilder ref={queryBuilderRef} id="queryBuilder"></IgrQueryBuilder>
 
-      // Calculate column visibility after data loads
-      await new Promise(resolve => requestAnimationFrame(() => resolve(null)));
-      this.calculateColumnsInView();
-    } catch (err) {
-      console.error(err);
-      grid.data = [];
-    } finally {
-      grid.isLoading = false;
-    }
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div className="container sample ig-typography">
-        <div className="wrapper">
-          <IgrQueryBuilder ref={this.queryBuilderRef} id="queryBuilder"></IgrQueryBuilder>
-          
-          <div className="output-area">
-            <IgrGrid ref={this.gridRef} id="grid"></IgrGrid>
-          </div>
+        <div className="output-area">
+          <IgrGrid ref={gridRef} id="grid"></IgrGrid>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default Sample;
 
 // rendering above component in the React DOM
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -668,50 +624,30 @@ We’ve created this example to show you the templating and formatter functional
 }
 ```
 ```tsx
-import React from 'react';
+import { useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import { 
   IgrQueryBuilder,
-  IgrQueryBuilderModule,
   IgrQueryBuilderHeader,
   IgrFilteringExpressionsTree,
-  IgrExpressionTree,
   FilteringLogic,
   IgrStringFilteringOperand
 } from 'igniteui-react-grids';
 
 import {
   IgrDatePicker,
-  IgrDatePickerModule,
   IgrDateTimeInput,
-  IgrDateTimeInputModule,
   IgrSelect,
-  IgrSelectModule,
   IgrSelectItem,
   IgrRadioGroup,
-  IgrRadioGroupModule,
   IgrRadio,
   IgrInput,
-  IgrInputModule,
-  IgrIcon,
-  IgrIconModule
+  IgrIcon
 } from 'igniteui-react';
 
 import 'igniteui-react-grids/grids/themes/light/material.css';
-
-// Register components
-const mods: any[] = [
-  IgrQueryBuilderModule,
-  IgrDatePickerModule,
-  IgrDateTimeInputModule,
-  IgrSelectModule,
-  IgrRadioGroupModule,
-  IgrInputModule,
-  IgrIconModule
-];
-mods.forEach((m) => m.register());
 
 // Types
 interface Field {
@@ -742,45 +678,270 @@ interface QueryBuilderSearchValueContext {
   defaultSearchValueTemplate?: any;
 }
 
-interface SampleState {
-  expressionTree: IgrExpressionTree | null;
-}
+const regionOptions: RegionOption[] = [
+  { text: 'Central North America', value: 'CNA' },
+  { text: 'Central Europe', value: 'CEU' },
+  { text: 'Mediterranean region', value: 'MED' },
+  { text: 'Central Asia', value: 'CAS' },
+  { text: 'South Asia', value: 'SAS' },
+  { text: 'Western Africa', value: 'WAF' },
+  { text: 'Amazonia', value: 'AMZ' },
+  { text: 'Southern Africa', value: 'SAF' },
+  { text: 'Northern Australia', value: 'NAU' }
+];
 
-export default class Sample extends React.Component<any, SampleState> {
-  private queryBuilderRef: React.RefObject<IgrQueryBuilder>;
-  private expressionOutputRef: React.RefObject<HTMLPreElement>;
+const statusOptions: StatusOption[] = [
+  { text: 'New', value: 1 },
+  { text: 'Shipped', value: 2 },
+  { text: 'Done', value: 3 }
+];
 
-  private regionOptions: RegionOption[] = [
-    { text: 'Central North America', value: 'CNA' },
-    { text: 'Central Europe', value: 'CEU' },
-    { text: 'Mediterranean region', value: 'MED' },
-    { text: 'Central Asia', value: 'CAS' },
-    { text: 'South Asia', value: 'SAS' },
-    { text: 'Western Africa', value: 'WAF' },
-    { text: 'Amazonia', value: 'AMZ' },
-    { text: 'Southern Africa', value: 'SAF' },
-    { text: 'Northern Australia', value: 'NAU' }
-  ];
+const ordersFields: Field[] = [
+  { field: 'CompanyID', dataType: 'string' },
+  { field: 'OrderID', dataType: 'number' },
+  { field: 'Freight', dataType: 'number' },
+  { field: 'ShipCountry', dataType: 'string' },
+  { field: 'IsRushOrder', dataType: 'boolean' },
+  {
+    field: 'RequiredTime',
+    dataType: 'time',
+    formatter: (value: any) => {
+      if (!value || !(value instanceof Date)) return '';
+      return value.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+  },
+  {
+    field: 'OrderDate',
+    dataType: 'date',
+    formatter: (value: any) => {
+      if (!value || !(value instanceof Date)) return '';
+      return value.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+    }
+  },
+  {
+    field: 'Region',
+    dataType: 'string',
+    formatter: (value: any) => value?.text ?? value?.value ?? value
+  },
+  {
+    field: 'OrderStatus',
+    dataType: 'number',
+    formatter: (value: number) => statusOptions.find(option => option.value === value)?.text ?? value
+  }
+];
 
-  private statusOptions: StatusOption[] = [
-    { text: 'New', value: 1 },
-    { text: 'Shipped', value: 2 },
-    { text: 'Done', value: 3 }
-  ];
+const entities: Entity[] = [
+  {
+    name: 'Orders',
+    fields: ordersFields
+  }
+];
 
-  constructor(props: any) {
-    super(props);
+const setImplicitValue = (ctx: QueryBuilderSearchValueContext, value: any) => {
+  queueMicrotask(() => {
+    ctx.implicit.value = value;
+  });
+};
 
-    this.queryBuilderRef = React.createRef();
-    this.expressionOutputRef = React.createRef();
+const normalizeTimeValue = (value: unknown): Date | null => {
+  if (!value) return null;
+  if (value instanceof Date) return value;
 
-    this.state = {
-      expressionTree: null
-    };
+  if (typeof value === 'string') {
+    const isoCandidate = value.includes('T') ? value : `1970-01-01T${value}`;
+    const parsed = new Date(isoCandidate);
+    return isNaN(parsed.getTime()) ? null : parsed;
   }
 
-  componentDidMount() {
-    // Initialize expression tree
+  if (typeof value === 'number') {
+    const parsed = new Date(value);
+    return isNaN(parsed.getTime()) ? null : parsed;
+  }
+
+  return null;
+};
+
+const buildRegionSelect = (ctx: QueryBuilderSearchValueContext) => {
+  const currentValue = ctx?.implicit?.value?.value ?? '';
+  const key = `region-select-${currentValue}`;
+
+  return (
+    <IgrSelect
+      className="qb-select"
+      key={key}
+      value={currentValue}
+      onChange={(sender: any) => {
+        const value = sender.detail.value;
+        const currentKey = ctx?.implicit?.value?.value ?? '';
+
+        if (!value || value === currentKey) return;
+
+        setImplicitValue(ctx, regionOptions.find(option => option.value === value) ?? null);
+      }}>
+      {regionOptions.map(option => (
+        <IgrSelectItem key={option.value} value={option.value}>
+          <span>{option.text}</span>
+        </IgrSelectItem>
+      ))}
+    </IgrSelect>
+  );
+};
+
+const buildStatusRadios = (ctx: QueryBuilderSearchValueContext) => {
+  const implicitValue = ctx.implicit?.value;
+  const currentValue = implicitValue == null ? '' : implicitValue.toString();
+
+  return (
+    <IgrRadioGroup
+      style={{ gap: '5px' }}
+      alignment="horizontal">
+      {statusOptions.map(option => (
+        <IgrRadio
+          key={option.value}
+          name="status"
+          value={option.value.toString()}
+          checked={option.value.toString() === currentValue}
+          onChange={(e: any) => {
+            if (!e.detail.checked) return;
+            const numericValue = Number(e.detail.value);
+            if (ctx.implicit.value === numericValue) return;
+            setImplicitValue(ctx, numericValue);
+          }}>
+            <span>{option.text}</span>
+        </IgrRadio>
+      ))}
+    </IgrRadioGroup>
+  );
+};
+
+const buildDatePicker = (ctx: QueryBuilderSearchValueContext) => {
+  const implicitValue = ctx.implicit?.value;
+  const currentValue = implicitValue instanceof Date
+    ? implicitValue
+    : implicitValue
+      ? new Date(implicitValue)
+      : null;
+
+  const allowedConditions = ['equals', 'doesNotEqual', 'before', 'after'];
+  const isEnabled = allowedConditions.indexOf(ctx.selectedCondition ?? '') !== -1;
+  const key = `date-picker-${currentValue}`;
+
+  return (
+    <IgrDatePicker
+      key={key}
+      value={currentValue}
+      disabled={!isEnabled}
+      onChange={(sender: any) => {
+        setImplicitValue(ctx, sender.detail);
+      }}>
+    </IgrDatePicker>
+  );
+};
+
+const buildTimeInput = (ctx: QueryBuilderSearchValueContext) => {
+  const currentValue = normalizeTimeValue(ctx.implicit?.value);
+  const allowedConditions = ['at', 'not_at', 'at_before', 'at_after', 'before', 'after'];
+  const isDisabled = ctx.selectedField == null || allowedConditions.indexOf(ctx.selectedCondition ?? '') === -1;
+  const key = `time-input-${currentValue}`;
+
+  return (
+    <IgrDateTimeInput
+      key={key}
+      inputFormat="hh:mm tt"
+      value={currentValue}
+      disabled={isDisabled}
+      onChange={(sender: any) => {
+        setImplicitValue(ctx, sender.detail);
+      }}>
+      <div slot="prefix">
+        <IgrIcon name="clock" collection="material" />
+      </div>
+    </IgrDateTimeInput>
+  );
+};
+
+const buildDefaultInput = (ctx: QueryBuilderSearchValueContext, matchesEqualityCondition: boolean) => {
+  const selectedField = ctx.selectedField;
+  const dataType = selectedField?.dataType;
+  const isNumber = dataType === 'number';
+  const isBoolean = dataType === 'boolean';
+
+  const placeholder = ctx.selectedCondition === 'inQuery' || ctx.selectedCondition === 'notInQuery'
+    ? 'Sub-query results'
+    : 'Value';
+
+  const currentValue = typeof ctx.implicit?.value === 'object' && (ctx.implicit.value && 'text' in ctx.implicit.value)
+    ? matchesEqualityCondition ? ctx.implicit.value.text : ''
+    : ctx.implicit?.value;
+
+  const inputValue = currentValue == null ? '' : currentValue;
+  const disabledConditions = ['empty', 'notEmpty', 'null', 'notNull', 'inQuery', 'notInQuery'];
+  const isDisabled = isBoolean || selectedField == null || disabledConditions.indexOf(ctx.selectedCondition ?? '') !== -1;
+  const key = `default-input-${inputValue}`;
+
+  return (
+    <IgrInput 
+      key={key}
+      value={inputValue?.toString() || ''}
+      disabled={isDisabled}
+      placeholder={placeholder}
+      type={isNumber ? 'number' : 'text'}
+      onInput={(sender: any) => {
+        const value = sender.detail;
+        setImplicitValue(ctx, isNumber
+          ? value === '' ? null : Number(value)
+          : value);
+      }}>
+    </IgrInput>
+  );
+};
+
+const buildSearchValueTemplate = (ctx: QueryBuilderSearchValueContext) => {
+  const field = ctx.selectedField?.field;
+  const condition = ctx.selectedCondition;
+  const matchesEqualityCondition = condition === 'equals' || condition === 'doesNotEqual';
+
+  if (!ctx.implicit) {
+    ctx.implicit = { value: null };
+  }
+
+  if (field === 'Region' && matchesEqualityCondition) {
+    return buildRegionSelect(ctx);
+  }
+
+  if (field === 'OrderStatus' && matchesEqualityCondition) {
+    return buildStatusRadios(ctx);
+  }
+
+  if (ctx.selectedField?.dataType === 'date') {
+    return buildDatePicker(ctx);
+  }
+
+  if (ctx.selectedField?.dataType === 'time') {
+    return buildTimeInput(ctx);
+  }
+
+  return buildDefaultInput(ctx, matchesEqualityCondition);
+};
+
+function Sample() {
+  const queryBuilderRef = useRef<IgrQueryBuilder>(null);
+  const expressionOutputRef = useRef<HTMLPreElement>(null);
+
+  const handleExpressionTreeChange = (event: any) => {
+    if (expressionOutputRef.current) {
+      expressionOutputRef.current.textContent = JSON.stringify(event.detail, null, 2);
+    }
+  };
+
+  useEffect(() => {
     const tree = new IgrFilteringExpressionsTree();
     tree.operator = FilteringLogic.And;
     tree.entity = 'Orders';
@@ -789,311 +950,52 @@ export default class Sample extends React.Component<any, SampleState> {
       fieldName: 'Region',
       condition: IgrStringFilteringOperand.instance().condition('equals'),
       conditionName: 'equals',
-      searchVal: this.regionOptions[0]
+      searchVal: regionOptions[0]
     } as any);
     tree.filteringOperands.push({
       fieldName: 'OrderStatus',
       condition: IgrStringFilteringOperand.instance().condition('equals'),
       conditionName: 'equals',
-      searchVal: this.statusOptions[0].value
+      searchVal: statusOptions[0].value
     } as any);
 
-    this.setState({ expressionTree: tree });
-
-    // Set up query builder
-    if (this.queryBuilderRef.current && tree) {
-      const queryBuilder = this.queryBuilderRef.current;
-      queryBuilder.entities = this.entities as any;
+    if (queryBuilderRef.current) {
+      const queryBuilder = queryBuilderRef.current;
+      queryBuilder.entities = entities as any;
       queryBuilder.expressionTree = tree;
-
-      queryBuilder.addEventListener('expressionTreeChange', this.handleExpressionTreeChange);
-    }
-  }
-
-  componentDidUpdate(prevProps: any, prevState: any) {
-    // Update query builder if expression tree changed
-    if (this.queryBuilderRef.current && this.state.expressionTree && 
-        prevState.expressionTree !== this.state.expressionTree) {
-      const queryBuilder = this.queryBuilderRef.current;
-      queryBuilder.expressionTree = this.state.expressionTree;
+      queryBuilder.addEventListener('expressionTreeChange', handleExpressionTreeChange);
     }
 
-    // Render expression tree output
-    if (this.expressionOutputRef.current && this.state.expressionTree && 
-        prevState.expressionTree !== this.state.expressionTree) {
-      this.expressionOutputRef.current.textContent = JSON.stringify(this.state.expressionTree, null, 2);
+    if (expressionOutputRef.current) {
+      expressionOutputRef.current.textContent = JSON.stringify(tree, null, 2);
     }
-  }
 
-  componentWillUnmount() {
-    if (this.queryBuilderRef.current) {
-      this.queryBuilderRef.current.removeEventListener('expressionTreeChange', this.handleExpressionTreeChange);
-    }
-  }
-
-  private handleExpressionTreeChange = (event: any) => {
-    this.setState({ expressionTree: event.detail });
-  };
-
-  private get ordersFields(): Field[] {
-    return [
-      { field: 'CompanyID', dataType: 'string' },
-      { field: 'OrderID', dataType: 'number' },
-      { field: 'Freight', dataType: 'number' },
-      { field: 'ShipCountry', dataType: 'string' },
-      { field: 'IsRushOrder', dataType: 'boolean' },
-      {
-        field: 'RequiredTime',
-        dataType: 'time',
-        formatter: (value: any) => {
-          if (!value || !(value instanceof Date)) return '';
-          return value.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit'
-          });
-        }
-      },
-      {
-        field: 'OrderDate',
-        dataType: 'date',
-        formatter: (value: any) => {
-          if (!value || !(value instanceof Date)) return '';
-          return value.toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric'
-          });
-        }
-      },
-      {
-        field: 'Region',
-        dataType: 'string',
-        formatter: (value: any) => value?.text ?? value?.value ?? value
-      },
-      {
-        field: 'OrderStatus',
-        dataType: 'number',
-        formatter: (value: number) => this.statusOptions.find(option => option.value === value)?.text ?? value
+    return () => {
+      if (queryBuilderRef.current) {
+        queryBuilderRef.current.removeEventListener('expressionTreeChange', handleExpressionTreeChange);
       }
-    ];
-  }
+    };
+  }, []);
 
-  private get entities(): Entity[] {
-    return [
-      {
-        name: 'Orders',
-        fields: this.ordersFields
-      }
-    ];
-  }
-
-  private setImplicitValue(ctx: QueryBuilderSearchValueContext, value: any) {
-    queueMicrotask(() => {
-      ctx.implicit.value = value;
-    });
-  }
-
-  private normalizeTimeValue = (value: unknown): Date | null => {
-    if (!value) return null;
-    if (value instanceof Date) return value;
-    
-    if (typeof value === 'string') {
-      const isoCandidate = value.includes('T') ? value : `1970-01-01T${value}`;
-      const parsed = new Date(isoCandidate);
-      return isNaN(parsed.getTime()) ? null : parsed;
-    }
-    
-    if (typeof value === 'number') {
-      const parsed = new Date(value);
-      return isNaN(parsed.getTime()) ? null : parsed;
-    }
-    
-    return null;
-  };
-
-  private buildSearchValueTemplate = (ctx: QueryBuilderSearchValueContext) => {
-    const field = ctx.selectedField?.field;
-    const condition = ctx.selectedCondition;
-    const matchesEqualityCondition = condition === 'equals' || condition === 'doesNotEqual';
-
-    if (!ctx.implicit) {
-      ctx.implicit = { value: null };
-    }
-
-    if (field === 'Region' && matchesEqualityCondition) {
-      return this.buildRegionSelect(ctx);
-    }
-
-    if (field === 'OrderStatus' && matchesEqualityCondition) {
-      return this.buildStatusRadios(ctx);
-    }
-
-    if (ctx.selectedField?.dataType === 'date') {
-      return this.buildDatePicker(ctx);
-    }
-
-    if (ctx.selectedField?.dataType === 'time') {
-      return this.buildTimeInput(ctx);
-    }
-
-    return this.buildDefaultInput(ctx, matchesEqualityCondition);
-  };
-
-  private buildRegionSelect = (ctx: QueryBuilderSearchValueContext) => {
-    const currentValue = ctx?.implicit?.value?.value ?? '';
-    const key = `region-select-${currentValue}`;
-
-    return (
-      <IgrSelect
-        className="qb-select"
-        key={key}
-        value={currentValue}
-        change={(sender: any) => {
-          const value = sender.value;
-          const currentKey = ctx?.implicit?.value?.value ?? '';
-
-          if (!value || value === currentKey) return;
-
-          this.setImplicitValue(ctx, this.regionOptions.find(option => option.value === value) ?? null);
-        }}>
-        {this.regionOptions.map(option => (
-          <IgrSelectItem key={option.value} value={option.value}>
-            <span>{option.text}</span>
-          </IgrSelectItem>
-        ))}
-      </IgrSelect>
-    );
-  };
-
-  private buildStatusRadios = (ctx: QueryBuilderSearchValueContext) => {
-    const implicitValue = ctx.implicit?.value;
-    const currentValue = implicitValue == null ? '' : implicitValue.toString();
-
-    return (
-      <IgrRadioGroup
-        style={{ gap: '5px' }}
-        alignment="horizontal">
-        {this.statusOptions.map(option => (
-          <IgrRadio
-            key={option.value}
-            name="status"
-            value={option.value.toString()}
-            checked={option.value.toString() === currentValue}
-            onChange={(e: any) => {
-              if (!e.detail.checked) return;
-              const numericValue = Number(e.detail.value);
-              if (ctx.implicit.value === numericValue) return;
-              this.setImplicitValue(ctx, numericValue);
-            }}>
-              <span>{option.text}</span>
-          </IgrRadio>
-        ))}
-      </IgrRadioGroup>
-    );
-  };
-
-  private buildDatePicker = (ctx: QueryBuilderSearchValueContext) => {
-    const implicitValue = ctx.implicit?.value;
-    const currentValue = implicitValue instanceof Date
-      ? implicitValue
-      : implicitValue
-        ? new Date(implicitValue)
-        : null;
-
-    const allowedConditions = ['equals', 'doesNotEqual', 'before', 'after'];
-    const isEnabled = allowedConditions.indexOf(ctx.selectedCondition ?? '') !== -1;
-    const key = `date-picker-${currentValue}`;
-
-    return (
-      <IgrDatePicker
-        key={key}
-        value={currentValue}
-        disabled={!isEnabled}
-        click={(sender: any) => sender.show()}
-        change={(sender: any) => {
-          this.setImplicitValue(ctx, sender.value);
-        }}>
-      </IgrDatePicker>
-    );
-  };
-
-  private buildTimeInput = (ctx: QueryBuilderSearchValueContext) => {
-    const currentValue = this.normalizeTimeValue(ctx.implicit?.value);
-    const allowedConditions = ['at', 'not_at', 'at_before', 'at_after', 'before', 'after'];
-    const isDisabled = ctx.selectedField == null || allowedConditions.indexOf(ctx.selectedCondition ?? '') === -1;
-    const key = `time-input-${currentValue}`;
-
-    return (
-      <IgrDateTimeInput
-        key={key}
-        inputFormat="hh:mm tt"
-        value={currentValue}
-        disabled={isDisabled}
-        change={(sender: any) => {
-          this.setImplicitValue(ctx, sender.value);
-        }}>
-        <div slot="prefix">
-          <IgrIcon name="clock" collection="material" />
-        </div>
-      </IgrDateTimeInput>
-    );
-  };
-
-  private buildDefaultInput = (ctx: QueryBuilderSearchValueContext, matchesEqualityCondition: boolean) => {
-    const selectedField = ctx.selectedField;
-    const dataType = selectedField?.dataType;
-    const isNumber = dataType === 'number';
-    const isBoolean = dataType === 'boolean';
-
-    const placeholder = ctx.selectedCondition === 'inQuery' || ctx.selectedCondition === 'notInQuery'
-      ? 'Sub-query results'
-      : 'Value';
-
-    const currentValue = typeof ctx.implicit?.value === 'object' && (ctx.implicit.value && 'text' in ctx.implicit.value)
-      ? matchesEqualityCondition ? ctx.implicit.value.text : ''
-      : ctx.implicit?.value;
-
-    const inputValue = currentValue == null ? '' : currentValue;
-    const disabledConditions = ['empty', 'notEmpty', 'null', 'notNull', 'inQuery', 'notInQuery'];
-    const isDisabled = isBoolean || selectedField == null || disabledConditions.indexOf(ctx.selectedCondition ?? '') !== -1;
-    const key = `default-input-${inputValue}`;
-
-    return (
-      <IgrInput 
-        key={key}
-        value={inputValue?.toString() || ''}
-        disabled={isDisabled}
-        placeholder={placeholder}
-        type={isNumber ? 'number' : 'text'}
-        input={(sender: any) => {
-          const value = sender.value;
-          this.setImplicitValue(ctx, isNumber
-            ? value === '' ? null : Number(value)
-            : value);
-        }}>
-      </IgrInput>
-    );
-  };
-
-  public render(): JSX.Element {
-    return (
-      <div className="container sample ig-typography">
-        <div className="wrapper">
-          <IgrQueryBuilder 
-            ref={this.queryBuilderRef} 
-            id="queryBuilder"
-            searchValueTemplate={this.buildSearchValueTemplate}>
-            <IgrQueryBuilderHeader title="Query Builder Template Sample"></IgrQueryBuilderHeader>
-          </IgrQueryBuilder>
-          
-          <div className="output-area">
-            <pre ref={this.expressionOutputRef} id="expressionOutput"></pre>
-          </div>
+  return (
+    <div className="container sample ig-typography">
+      <div className="wrapper">
+        <IgrQueryBuilder 
+          ref={queryBuilderRef} 
+          id="queryBuilder"
+          searchValueTemplate={buildSearchValueTemplate}>
+          <IgrQueryBuilderHeader title="Query Builder Template Sample"></IgrQueryBuilderHeader>
+        </IgrQueryBuilder>
+        
+        <div className="output-area">
+          <pre ref={expressionOutputRef} id="expressionOutput"></pre>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default Sample;
 
 // rendering above component in the React DOM
 const root = ReactDOM.createRoot(document.getElementById('root'));

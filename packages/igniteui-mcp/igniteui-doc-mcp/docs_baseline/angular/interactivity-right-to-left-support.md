@@ -27,7 +27,7 @@ Currently the following components have only partial RTL support:
 This section shows the accessibility (ARIA) support of the framework as well as how easily manageable the `directionality` of the components is.
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCalendarComponent } from 'igniteui-angular/calendar';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 
@@ -35,6 +35,7 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-calendar',
     styleUrls: ['./calendar-rtl-sample.component.scss'],
     templateUrl: './calendar-rtl-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxCalendarComponent]
 })
 export class CalendarRtlSampleComponent {

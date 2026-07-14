@@ -18,7 +18,7 @@ The sample below demonstrates remote binding using the [dataPreLoad](mcp:get_api
 
 
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IComboSearchInputEventArgs, IComboSelectionChangingEventArgs, IgxComboComponent } from 'igniteui-angular/combo';
 import { IForOfState } from 'igniteui-angular/directives';
 import { IgxToastComponent } from 'igniteui-angular/toast';
@@ -31,6 +31,7 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-combo-remote',
     styleUrls: ['./combo-remote.component.scss'],
     templateUrl: './combo-remote.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxComboComponent, IgxToastComponent, AsyncPipe]
 })
 export class ComboRemoteComponent implements OnInit, AfterViewInit {
