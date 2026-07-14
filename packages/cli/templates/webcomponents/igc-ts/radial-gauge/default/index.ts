@@ -1,4 +1,5 @@
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
+import { IGNITEUI_WEBCOMPONENTS_CORE_PACKAGE, IGNITEUI_WEBCOMPONENTS_GAUGES_PACKAGE } from "../../constants";
 
 class IgcradialGaugeTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
@@ -11,8 +12,8 @@ class IgcradialGaugeTemplate extends IgniteUIForWebComponentsTemplate {
 		this.name = "Radial Gauge";
 		this.description = "IgcRadialGauge";
 		this.packages = [
-			"igniteui-webcomponents-core@~7.0.0",
-			"igniteui-webcomponents-gauges@~7.0.0"
+			IGNITEUI_WEBCOMPONENTS_CORE_PACKAGE,
+			IGNITEUI_WEBCOMPONENTS_GAUGES_PACKAGE
 		];
 	}
 }

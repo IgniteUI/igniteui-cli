@@ -1,4 +1,5 @@
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
+import { IGNITEUI_WEBCOMPONENTS_GRIDS_PACKAGE } from "../../constants";
 import * as path from "path";
 
 const SHARED_DATA_ROOT = path.join(path.dirname(require.resolve("@igniteui/angular-templates/package.json")), "shared-data");
@@ -13,7 +14,7 @@ class IgcTreeGridTemplate extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Tree Grid";
 		this.description = "IgcTreeGrid with hierarchical data";
-		this.packages = [ "igniteui-webcomponents-grids@~7.2.1" ];
+		this.packages = [ IGNITEUI_WEBCOMPONENTS_GRIDS_PACKAGE ];
 	}
 
 	public get templatePaths(): string[] {
