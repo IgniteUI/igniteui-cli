@@ -3,7 +3,7 @@ title: React Stock/Financial Charts | Ignite UI for React
 _description: The Ignite UI for React Stock Chart is a composite visualization that renders stock ticker data, or price data in an interactive time-series display. Try for FREE.
 _keywords: React Charts, Stock Chart, Financial Chart, Candlestick Chart, OHLC Chart, Infragistics
 _license: commercial
-mentionedTypes: ["DomainChart", "FinancialChart", "FinancialChartType", "IndicatorTypes", "ZoomSliderType", "Series", "FinancialChartType"]
+mentionedTypes: ["DomainChart", "FinancialChart", "FinancialChartType", "IndicatorTypes", "ZoomSliderType", "Series"]
 namespace: Infragistics.Controls.Charts
 _tocName: Financial / Stock Chart
 _premium: true
@@ -15,7 +15,7 @@ The Ignite UI for React Stock Chart, sometimes referred to as React Financial Ch
 
 ## React Stock Chart Example
 
-You can create Stock Chart using the [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) control by binding your data and optionally setting [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) property to [`Line`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.financialcharttype.html#Line) value, as shown in the example below.
+You can create Stock Chart using the [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html) control by binding your data and optionally setting [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#chartType) property to [`Line`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.financialcharttype.html#Line) value, as shown in the example below.
 
 ```typescript
 export default class StocksHistory {
@@ -1255,7 +1255,7 @@ Note that is recommended to use line chart type if plotting multiple data source
 
 This pane controls the zoom of all the displayed panes. This pane is displayed by default. It can be turned off by setting the [`zoomSliderType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#zoomSliderType) to `none` as demonstrated in the following code:
 
-Note that you should set the [`zoomSliderType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#zoomSliderType) option to the same value as the [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType) option is set to. This way, the zoom slider will show correct preview of the price pane. The following code demonstrates how to do this:
+Note that you should set the [`zoomSliderType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#zoomSliderType) option to the same value as the [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#chartType) option is set to. This way, the zoom slider will show correct preview of the price pane. The following code demonstrates how to do this:
 
 In this example, the stock chart is plotting revenue for United States.
 
@@ -1484,9 +1484,8 @@ You can find more information about related chart features in these topics:
 
 The following table lists API members mentioned in the above sections:
 
-- [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrcategorychart.html#chartType)
+- [`chartType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#chartType)
 - [`crosshairsSnapToData`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdomainchart.html#crosshairsSnapToData)
-- `ItemsSource`
 - [`IgrFinancialChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html)
 - [`indicatorTypes`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#indicatorTypes)
 - [`zoomSliderType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrfinancialchart.html#zoomSliderType)

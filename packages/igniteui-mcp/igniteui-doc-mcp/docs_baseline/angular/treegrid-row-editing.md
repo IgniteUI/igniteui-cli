@@ -13,7 +13,7 @@ The Tree Grid provides a convenient way to perform data manipulations through in
 The following sample demonstrates how to enable row editing in the Tree Grid. Changing a cell value and then clicking or navigating to another cell on the same row won't  update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
 ```typescript
 /* eslint-disable max-len */
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { generateEmployeeFlatData, IEmployee } from '../data/employees-flat';
@@ -24,6 +24,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-row-editing-sample',
     styleUrls: ['tree-grid-row-editing-sample.component.scss'],
     templateUrl: 'tree-grid-row-editing-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class TreeGridRowEditSampleComponent implements OnInit {
@@ -257,7 +258,7 @@ We scope our `@include` statement in `.custom-buttons` so that it is only applie
 ### Demo
 After styling the banner and buttons, we also define a custom style for [the cell in edit mode](cell-editing.md#styling). The result of all the combined styles can be seen below:
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxRowEditActionsDirective, IgxRowEditTabStopDirective, IgxRowEditTextDirective } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxIconButtonDirective } from 'igniteui-angular/directives';
@@ -270,6 +271,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-row-edit-style',
     styleUrls: ['tree-grid-row-edit-style.component.scss'],
     templateUrl: 'tree-grid-row-edit-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowEditTextDirective, IgxRowEditActionsDirective, IgxIconButtonDirective, IgxRowEditTabStopDirective, IgxIconComponent]
 })
 export class TreeGridRowEditStyleComponent implements OnInit {
@@ -315,20 +317,22 @@ export class TreeGridRowEditStyleComponent implements OnInit {
 </div>
 ```
 ```scss
-@use "layout.scss";
-@use "igniteui-angular/theming" as *;
+@use 'layout.scss';
+@use 'igniteui-angular/theming' as *;
 
-$banner-theme: banner-theme(
-  $banner-background: #e3e3e3,
-  $banner-message-color: color($purple-palette, "secondary", 600)
+$grid-theme: grid-theme(
+	$edit-mode-color: #9311ea,
+	$cell-editing-background: #e4d9f4,
 );
 
-:host {
-  @include tokens($banner-theme);
-}
+$banner-theme: banner-theme(
+	$banner-background: #e4d9f4,
+	$banner-message-color: #000,
+);
 
-igx-tree-grid{
-  @include palette($purple-palette);
+igx-tree-grid {
+	@include tokens($banner-theme);
+	@include tokens($grid-theme);
 }
 ```
 >[!NOTE]

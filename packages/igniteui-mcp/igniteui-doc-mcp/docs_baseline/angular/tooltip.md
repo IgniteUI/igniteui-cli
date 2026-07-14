@@ -14,7 +14,7 @@ While most tooltips have a limited number of available positions, with the [`igx
 ## Angular Tooltip Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 import { IgxTooltipDirective, IgxTooltipTargetDirective } from 'igniteui-angular/directives';
 
@@ -22,6 +22,7 @@ import { IgxTooltipDirective, IgxTooltipTargetDirective } from 'igniteui-angular
     selector: 'app-tooltip-simple',
     styleUrls: ['./tooltip-simple.component.scss'],
     templateUrl: './tooltip-simple.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxAvatarComponent, IgxTooltipTargetDirective, IgxTooltipDirective]
 })
 export class TooltipSimpleComponent { }
@@ -290,7 +291,7 @@ Now for the tooltip! For its content, we will create a container that will be po
 If all went well, this is how our location and tooltip should look like:
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxTooltipDirective, IgxTooltipTargetDirective } from 'igniteui-angular/directives';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
@@ -299,6 +300,7 @@ import { IgxAvatarComponent } from 'igniteui-angular/avatar';
     selector: 'app-tooltip-rich',
     styleUrls: ['./tooltip-rich.component.scss'],
     templateUrl: './tooltip-rich.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconComponent, IgxTooltipTargetDirective, IgxTooltipDirective, IgxAvatarComponent]
 })
 export class TooltipRichComponent { }
@@ -363,7 +365,7 @@ The tooltip integrates seamlessly with other components, allowing you to create 
 In the following example, you can see how we create descriptive tooltips by using the [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent), [`IgxAvatar`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent), [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent), [`IgxBadge`](mcp:get_api_reference?platform=angular&component=IgxBadgeComponent), [`IgxButton`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective), [`IgxCard`](mcp:get_api_reference?platform=angular&component=IgxCardComponent) and [`IgxCategoryChart`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html) components.
 
 ```typescript
-import { Component, inject } from "@angular/core";
+import { Component, inject, ChangeDetectionStrategy } from "@angular/core";
 import { IgxButtonDirective, IgxTooltipDirective, IgxTooltipTargetDirective } from 'igniteui-angular/directives';
 import { IgxListActionDirective, IgxListComponent, IgxListItemComponent, IgxListLineTitleDirective, IgxListThumbnailDirective } from 'igniteui-angular/list';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
@@ -378,6 +380,7 @@ import { IncomeTaxes } from "./IncomeTaxes";
     selector: "app-tooltip-advanced",
     styleUrls: ["./tooltip-advanced.component.scss"],
     templateUrl: "./tooltip-advanced.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         IgxOverlayOutletDirective,
         IgxTooltipTargetDirective,
@@ -503,7 +506,7 @@ export class TooltipAdvancedComponent {
                 <div class="avatarWrapper" igxListThumbnail>
                     <igx-avatar
                         id="avatar"
-                        src="https://www.infragistics.com/angular-demos-lob/assets/images/avatar/10.jpg"
+                        src="assets/images/avatar/10.jpg"
                         shape="circle"
                     >
                     </igx-avatar>
@@ -519,7 +522,7 @@ export class TooltipAdvancedComponent {
         <div class="avatarWrapper">
             <igx-avatar
                 id="avatar"
-                src="https://www.infragistics.com/angular-demos-lob/assets/images/avatar/10.jpg"
+                src="assets/images/avatar/10.jpg"
                 shape="circle"
             >
             </igx-avatar>
@@ -543,7 +546,7 @@ export class TooltipAdvancedComponent {
                 <div class="avatarWrapper" igxListThumbnail>
                     <igx-avatar
                         id="avatar"
-                        src="https://www.infragistics.com/angular-demos-lob/assets/images/avatar/5.jpg"
+                        src="assets/images/avatar/5.jpg"
                         shape="circle"
                     >
                     </igx-avatar>
@@ -1054,7 +1057,7 @@ What if we want to control the amount of time that should pass before showing an
 By default, the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) is triggered only while hovering over the [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective). However, you can change this behavior using the [`showTriggers`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=showtriggers) and [`hideTriggers`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hidetriggers) properties, which allow you to control when the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) appears and disappears. These properties accept event names as values—such as `click`, `focus`, or `keypress`—letting you trigger the [`igxTooltip`](mcp:get_api_reference?platform=angular&component=IgxTooltipDirective) in different scenarios.
 
 ```typescript
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from "@angular/core";
 import {
     IgxTooltipTargetDirective,
     IgxTooltipDirective,
@@ -1073,6 +1076,7 @@ defineComponents(IgcInputComponent);
     styleUrls: ["./tooltip-triggers.component.scss"],
     templateUrl: "./tooltip-triggers.component.html",
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     IgxTooltipTargetDirective,
     IgxTooltipDirective,
@@ -1308,7 +1312,7 @@ The arrow element is positioned based on the provided position settings. If the 
 In the following example, you can see a demonstration of all position options and the arrow positioning behavior in action:
 
 ```typescript
-import { Component, QueryList, ViewChild, ViewChildren } from "@angular/core";
+import { Component, QueryList, ViewChild, ViewChildren, ChangeDetectionStrategy } from "@angular/core";
 import { IgxButtonDirective, IgxTooltipDirective, TooltipPositionStrategy } from 'igniteui-angular/directives';
 import { HorizontalAlignment, OverlaySettings, PositionSettings, VerticalAlignment } from 'igniteui-angular/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -1317,6 +1321,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: "app-tooltip-placement",
     styleUrls: ["./tooltip-placement.component.scss"],
     templateUrl: "./tooltip-placement.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxTooltipDirective, IgxIconComponent]
 })
 export class TooltipPlacementComponent {
@@ -1546,7 +1551,7 @@ So now our styled tooltip should look like this:
 ### Demo
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 import { IgxTooltipDirective, IgxTooltipTargetDirective } from 'igniteui-angular/directives';
 import { IgxOverlayOutletDirective } from 'igniteui-angular/core';
@@ -1555,6 +1560,7 @@ import { IgxOverlayOutletDirective } from 'igniteui-angular/core';
     selector: 'app-tooltip-style',
     styleUrls: ['./tooltip-style.component.scss'],
     templateUrl: './tooltip-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxAvatarComponent, IgxTooltipTargetDirective, IgxOverlayOutletDirective, IgxTooltipDirective]
 })
 export class TooltipStyleComponent { }
@@ -1647,7 +1653,7 @@ Extra care should be taken in the following scenarios:
 
 | Limitation                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | :---------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Custom position strategy with arrow | The [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) directive uses the [`TooltipPositionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/tooltippositionstrategy.html) to position the tooltip and arrow element. If a custom [`positionStrategy`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=positionstrategy) is used and [`hasArrow`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hasarrow) is set to `true`, the custom strategy should extend the [`TooltipPositionStrategy`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/tooltippositionstrategy.html). Otherwise, the arrow will not be displayed. |
+| Custom position strategy with arrow | The [`igxTooltipTarget`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective) directive uses the [`TooltipPositionStrategy`](mcp:get_api_reference?platform=angular&component=TooltipPositionStrategy) to position the tooltip and arrow element. If a custom [`positionStrategy`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=positionstrategy) is used and [`hasArrow`](mcp:get_api_reference?platform=angular&component=IgxTooltipTargetDirective&member=hasarrow) is set to `true`, the custom strategy should extend the [`TooltipPositionStrategy`](mcp:get_api_reference?platform=angular&component=TooltipPositionStrategy). Otherwise, the arrow will not be displayed. |
 
 
 ## API References

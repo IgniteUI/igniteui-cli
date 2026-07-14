@@ -16,7 +16,7 @@ This topic demonstrates how to configure Load on Demand by requesting data from 
 ## Angular Hierarchical Grid Load On Demand Example
 
 ```typescript
-import { AfterViewInit, Component, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IGX_HIERARCHICAL_GRID_DIRECTIVES, IGridCreatedEventArgs, IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { EntityType, FilteringExpressionsTree, FilteringLogic, IgxNumberFilteringOperand, IgxStringFilteringOperand } from 'igniteui-angular/core';
@@ -29,6 +29,7 @@ const API_ENDPOINT = 'https://data-northwind.indigo.design';
     selector: 'app-hierarchical-grid-lod',
     styleUrls: ['./hierarchical-grid-lod.component.scss'],
     templateUrl: './hierarchical-grid-lod.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IGX_HIERARCHICAL_GRID_DIRECTIVES, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent]
 })
 export class HierarchicalGridLoDSampleComponent implements OnInit, AfterViewInit {

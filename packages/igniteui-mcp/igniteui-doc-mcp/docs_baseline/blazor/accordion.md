@@ -353,39 +353,7 @@ In the following Blazor Accordion example is created a complex FAQ section in or
 <div class="container vertical scrollable">
     <IgbSwitch Change="OnSwitchChange">Single Expand</IgbSwitch>
     <IgbAccordion SingleExpand="@SingleExpand">
-        <IgbExpansionPanel>
-            <span slot="title">What has changed about subscription and pricing model?</span>
-            <span>
-                We have moved to a subscription-based pricing model for all our developer tools. This makes it easier
-                for you to manage your license subscriptions and allows us to provide a better level of service for you. We
-                updated our pricing and packages to provide you with flexible options and the best value. This includes Ignite UI
-                (formerly Ignite UI for JavaScript) which includes all of our JavaScript framework components for web development,
-                including: Angular, ASP.NET (Core and MVC), Blazor, JQuery, React and Web Components), as well as Infragistics Professional,
-                Infragistics Ultimate, our Ultimate UI products. We also offer multi-year subscriptions options with a built-in discount,
-                so you can see the value up front. With these updates we are confident that we are providing the best platforms and the best
-                price.
-            </span>
-        </IgbExpansionPanel>
-        <IgbExpansionPanel>
-            <span slot="title">Who will the updated changes impact?</span>
-            <span>
-                The license updates will impact all new and current customers using Ignite UI, Infragistics Professional and
-                Infragistics Ultimate. Specifically, we have also made updates to our product and packaging for Ignite UI for JavaScript,
-                Ignite UI for Angular, Ignite UI for React and Ignite UI for Web components. For more information, please refer to this
-                blog: Announcement: Changes to Ignite UI Product & Packaging The pricing has been updated for all products and packages.
-                So, all new or additional licenses will be sold based on our new pricing and packages. All existing license agreements will
-                be honored and renewed based upon the current agreement.
-            </span>
-        </IgbExpansionPanel>
-        <IgbExpansionPanel>
-            <span slot="title">What is the difference between your old model and your current subscription model for Ignite UI?</span>
-            <span>
-                For Ignite UI customers, we are moving away from NPM for licensed packages. The current NPM packages will be replaced with
-                packages that include a “Trial Version” watermark. Licensed packages for Ignite UI will be available from our cloud hosted ProGet
-                server. For more information, please refer to this article: Moving from Trial to Licensed Ignite UI NPM Packages
-            </span>
-        </IgbExpansionPanel>
-        <IgbExpansionPanel>
+        <IgbExpansionPanel Open>
             <span slot="title">Common questions about renewal.</span>
             <IgbAccordion SingleExpand="@SingleExpand">
                 <IgbExpansionPanel>
@@ -411,31 +379,27 @@ In the following Blazor Accordion example is created a complex FAQ section in or
             </IgbAccordion>
         </IgbExpansionPanel>
         <IgbExpansionPanel>
-            <span slot="title">I split my work across two computers. Can I install on both using my single-user license?</span>
+            <span slot="title">What has changed about subscription and pricing model?</span>
             <span>
-                The Infragistics Ultimate license is tied to the user, and not the computer. That means you're welcome to install and use Ignite UI,
-                Infragistics Professional, and Infragistics Ultimate on any computer you use. However, if we notice a large number of activations using the
-                same license, we may contact you to verify this behavior.
+                We have moved to a subscription-based pricing model for all our developer tools. This makes it easier
+                for you to manage your license subscriptions and allows us to provide a better level of service for you. We
+                updated our pricing and packages to provide you with flexible options and the best value. This includes Ignite UI
+                (formerly Ignite UI for JavaScript) which includes all of our JavaScript framework components for web development,
+                including: Angular, ASP.NET (Core and MVC), Blazor, JQuery, React and Web Components), as well as Infragistics Professional,
+                Infragistics Ultimate, our Ultimate UI products. We also offer multi-year subscriptions options with a built-in discount,
+                so you can see the value up front. With these updates we are confident that we are providing the best platforms and the best
+                price.
             </span>
         </IgbExpansionPanel>
         <IgbExpansionPanel>
-            <span slot="title">I used up my trial for an earlier version of Infragistics Ultimate. Can I start a new trial when a major version is released?</span>
+            <span slot="title">Who will the updated changes impact?</span>
             <span>
-                Yes! If you have tried a previous version in the past, and used up your 30-day trial, you can try the next major version for another 30 days!
-                You can do this in the following two ways:
-                <ul>
-                    <li>
-                        If you have days remaining in your 30-day trial period for the current version (e.g., the
-                        Version 15.1 Volume Release), use the Check for Update option inside the Platform Installer or
-                        your account. You will be able to start a fresh trial for the next major version (e.g., 20.1
-                        Volume Release)
-                    </li>
-                    <li>
-                        If you have used up the 30-day trial for the previous major version (e.g., the 19.2 Volume
-                        Release), simply download and install Infragistics Ultimate from our <a href="https://www.infragistics.com/products/ultimate">website</a> (This will also allow you
-                        to start a new trial.)
-                    </li>
-                </ul>
+                The license updates will impact all new and current customers using Ignite UI, Infragistics Professional and
+                Infragistics Ultimate. Specifically, we have also made updates to our product and packaging for Ignite UI for JavaScript,
+                Ignite UI for Angular, Ignite UI for React and Ignite UI for Web components. For more information, please refer to this
+                blog: Announcement: Changes to Ignite UI Product & Packaging The pricing has been updated for all products and packages.
+                So, all new or additional licenses will be sold based on our new pricing and packages. All existing license agreements will
+                be honored and renewed based upon the current agreement.
             </span>
         </IgbExpansionPanel>
     </IgbAccordion>

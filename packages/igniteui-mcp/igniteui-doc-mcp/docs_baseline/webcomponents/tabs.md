@@ -89,6 +89,10 @@ If the space is not enough to fit all tabs, scroll buttons are displayed.
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-radio-group {
+  padding-block-end: 12px;
+}
 ```
 
 ### Scrolling

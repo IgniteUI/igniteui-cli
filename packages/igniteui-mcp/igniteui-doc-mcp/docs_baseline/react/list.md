@@ -63,55 +63,37 @@ export default class ListOverview extends React.Component<any, any> {
                         <span>Contacts</span>
                     </IgrListHeader>
                     <IgrListItem>
-                        <div slot="start">
-                            <IgrAvatar src="https://dl.infragistics.com/x/img/avatars/8.jpg" shape="circle" />
-                        </div>                        
-                        <h2 slot="title">Terrance Orta</h2>
+                        <IgrAvatar slot="start" src="https://dl.infragistics.com/x/img/avatars/8.jpg" shape="circle" />
+                        <span slot="title">Terrance Orta</span>
                         <span slot="subtitle">770-504-2217</span>
-                        <div slot="end">
-                            <IgrButton variant="outlined">
-                                <span>Text</span>
-                            </IgrButton>
-                        </div>
-                        <div slot="end">
-                            <IgrButton variant="outlined">
-                                <span>Call</span>
-                            </IgrButton>
-                        </div>
+                        <IgrButton slot="end" variant="outlined">
+                            <span>Text</span>
+                        </IgrButton>
+                        <IgrButton slot="end" variant="outlined">
+                            <span>Call</span>
+                        </IgrButton>
                     </IgrListItem>
                     <IgrListItem>
-                        <div slot="start">
-                            <IgrAvatar src="https://dl.infragistics.com/x/img/avatars/17.jpg" shape="circle" />
-                        </div>
-                        <h2 slot="title">Richard Mahoney</h2>
+                        <IgrAvatar slot="start" src="https://dl.infragistics.com/x/img/avatars/17.jpg" shape="circle" />
+                        <span slot="title">Richard Mahoney</span>
                         <span slot="subtitle">423-676-2869</span>
-                        <div slot="end">
-                            <IgrButton variant="outlined">
-                                <span>Text</span>
-                            </IgrButton>
-                        </div>
-                        <div slot="end">
-                            <IgrButton variant="outlined">
-                                <span>Call</span>
-                            </IgrButton>
-                        </div>
+                        <IgrButton slot="end" variant="outlined">
+                            <span>Text</span>
+                        </IgrButton>
+                        <IgrButton slot="end" variant="outlined">
+                            <span>Call</span>
+                        </IgrButton>
                     </IgrListItem>
                     <IgrListItem>
-                        <div slot="start">
-                            <IgrAvatar src="https://dl.infragistics.com/x/img/avatars/9.jpg" shape="circle" />
-                        </div>
-                        <h2 slot="title">Donna Price</h2>
+                        <IgrAvatar slot="start" src="https://dl.infragistics.com/x/img/avatars/9.jpg" shape="circle" />
+                        <span slot="title">Donna Price</span>
                         <span slot="subtitle">859-496-2817</span>
-                        <div slot="end">
-                            <IgrButton variant="outlined">
-                                <span>Text</span>
-                            </IgrButton>
-                        </div>
-                        <div slot="end">
-                            <IgrButton variant="outlined">
-                                <span>Call</span>
-                            </IgrButton>
-                        </div>
+                        <IgrButton slot="end" variant="outlined">
+                            <span>Text</span>
+                        </IgrButton>
+                        <IgrButton slot="end" variant="outlined">
+                            <span>Call</span>
+                        </IgrButton>
                     </IgrListItem>
                 </IgrList>
             </div>
@@ -197,13 +179,13 @@ export default class ListAddListItems extends React.Component<any, any> {
                         <span>Header</span>
                     </IgrListHeader>
                     <IgrListItem>
-                        <h2 slot="title">Item 1</h2>
+                        <span slot="title">Item 1</span>
                     </IgrListItem>
                     <IgrListItem>
-                        <h2 slot="title">Item 2</h2>
+                        <span slot="title">Item 2</span>
                     </IgrListItem>
                     <IgrListItem>
-                        <h2 slot="title">Item 3</h2>
+                        <span slot="title">Item 3</span>
                     </IgrListItem>
                 </IgrList>
             </div>
@@ -261,15 +243,15 @@ export default class ListItemContent extends React.Component<any, any> {
                         <span>Contacts</span>
                     </IgrListHeader>
                     <IgrListItem>
-                        <h2 slot="title">Terrance Orta</h2>
+                        <span slot="title">Terrance Orta</span>
                         <span slot="subtitle">770-504-2217</span>
                     </IgrListItem>
                     <IgrListItem>
-                        <h2 slot="title">Richard Mahoney</h2>
+                        <span slot="title">Richard Mahoney</span>
                         <span slot="subtitle">423-676-2869</span>
                     </IgrListItem>
                     <IgrListItem>
-                        <h2 slot="title">Donna Price</h2>
+                        <span slot="title">Donna Price</span>
                         <span slot="subtitle">859-496-2817</span>
                     </IgrListItem>
                 </IgrList>
@@ -424,55 +406,37 @@ export default class ListOverview extends React.Component<any, any> {
                         <span>Contacts</span>
                     </IgrListHeader>
                     <IgrListItem>
-                        <div slot="start">
-                            <IgrAvatar src="https://dl.infragistics.com/x/img/avatars/8.jpg" shape="circle" />
-                        </div>                        
-                        <h2 slot="title">Terrance Orta</h2>
+                        <IgrAvatar slot="start" src="https://dl.infragistics.com/x/img/avatars/8.jpg" shape="circle" />
+                        <span slot="title">Terrance Orta</span>
                         <span slot="subtitle">770-504-2217</span>
-                        <div slot="end">
-                            <IgrButton variant="outlined">
-                                <span>Text</span>
-                            </IgrButton>
-                        </div>
-                        <div slot="end">
-                            <IgrButton variant="outlined">
-                                <span>Call</span>
-                            </IgrButton>
-                        </div>
+                        <IgrButton slot="end" variant="outlined">
+                            <span>Text</span>
+                        </IgrButton>
+                        <IgrButton slot="end" variant="outlined">
+                            <span>Call</span>
+                        </IgrButton>
                     </IgrListItem>
                     <IgrListItem>
-                        <div slot="start">
-                            <IgrAvatar src="https://dl.infragistics.com/x/img/avatars/17.jpg" shape="circle" />
-                        </div>
-                        <h2 slot="title">Richard Mahoney</h2>
+                        <IgrAvatar slot="start" src="https://dl.infragistics.com/x/img/avatars/17.jpg" shape="circle" />
+                        <span slot="title">Richard Mahoney</span>
                         <span slot="subtitle">423-676-2869</span>
-                        <div slot="end">
-                            <IgrButton variant="outlined">
-                                <span>Text</span>
-                            </IgrButton>
-                        </div>
-                        <div slot="end">
-                            <IgrButton variant="outlined">
-                                <span>Call</span>
-                            </IgrButton>
-                        </div>
+                        <IgrButton slot="end" variant="outlined">
+                            <span>Text</span>
+                        </IgrButton>
+                        <IgrButton slot="end" variant="outlined">
+                            <span>Call</span>
+                        </IgrButton>
                     </IgrListItem>
                     <IgrListItem>
-                        <div slot="start">
-                            <IgrAvatar src="https://dl.infragistics.com/x/img/avatars/9.jpg" shape="circle" />
-                        </div>
-                        <h2 slot="title">Donna Price</h2>
+                        <IgrAvatar slot="start" src="https://dl.infragistics.com/x/img/avatars/9.jpg" shape="circle" />
+                        <span slot="title">Donna Price</span>
                         <span slot="subtitle">859-496-2817</span>
-                        <div slot="end">
-                            <IgrButton variant="outlined">
-                                <span>Text</span>
-                            </IgrButton>
-                        </div>
-                        <div slot="end">
-                            <IgrButton variant="outlined">
-                                <span>Call</span>
-                            </IgrButton>
-                        </div>
+                        <IgrButton slot="end" variant="outlined">
+                            <span>Text</span>
+                        </IgrButton>
+                        <IgrButton slot="end" variant="outlined">
+                            <span>Call</span>
+                        </IgrButton>
                     </IgrListItem>
                 </IgrList>
             </div>
@@ -544,7 +508,6 @@ igc-list-item::part(end) {
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import './ListStyling.css';
 import { IgrList, IgrListItem, IgrListHeader, IgrAvatar, IgrButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
@@ -563,55 +526,37 @@ export default class ListStyling extends React.Component<any, any> {
                         <span>Contacts</span>
                     </IgrListHeader>
                     <IgrListItem>
-                        <div slot="start">
-                            <IgrAvatar src="https://dl.infragistics.com/x/img/avatars/8.jpg" shape="circle" />
-                        </div>                        
-                        <h2 slot="title">Terrance Orta</h2>
+                        <IgrAvatar slot="start" src="https://dl.infragistics.com/x/img/avatars/8.jpg" shape="circle" />      
+                        <span slot="title">Terrance Orta</span>
                         <span slot="subtitle">770-504-2217</span>
-                        <div slot="end">
-                            <IgrButton variant="contained">
-                                <span>Text</span>
-                            </IgrButton>
-                        </div>
-                        <div slot="end">
-                            <IgrButton variant="contained">
-                                <span>Call</span>
-                            </IgrButton>
-                        </div>
+                        <IgrButton slot="end" variant="contained">
+                            <span>Text</span>
+                        </IgrButton>
+                        <IgrButton slot="end" variant="contained">
+                            <span>Call</span>
+                        </IgrButton>
                     </IgrListItem>
                     <IgrListItem>
-                        <div slot="start">
-                            <IgrAvatar src="https://dl.infragistics.com/x/img/avatars/17.jpg" shape="circle" />
-                        </div>
-                        <h2 slot="title">Richard Mahoney</h2>
+                        <IgrAvatar slot="start" src="https://dl.infragistics.com/x/img/avatars/17.jpg" shape="circle" />
+                        <span slot="title">Richard Mahoney</span>
                         <span slot="subtitle">423-676-2869</span>
-                        <div slot="end">
-                            <IgrButton variant="contained">
-                                <span>Text</span>
-                            </IgrButton>
-                        </div>
-                        <div slot="end">
-                            <IgrButton variant="contained">
-                                <span>Call</span>
-                            </IgrButton>
-                        </div>
+                        <IgrButton slot="end" variant="contained">
+                            <span>Text</span>
+                        </IgrButton>
+                        <IgrButton slot="end" variant="contained">
+                            <span>Call</span>
+                        </IgrButton>
                     </IgrListItem>
                     <IgrListItem>
-                        <div slot="start">
-                            <IgrAvatar src="https://dl.infragistics.com/x/img/avatars/9.jpg" shape="circle" />
-                        </div>
-                        <h2 slot="title">Donna Price</h2>
+                        <IgrAvatar slot="start" src="https://dl.infragistics.com/x/img/avatars/9.jpg" shape="circle" />
+                        <span slot="title">Donna Price</span>
                         <span slot="subtitle">859-496-2817</span>
-                        <div slot="end">
-                            <IgrButton variant="contained">
-                                <span>Text</span>
-                            </IgrButton>
-                        </div>
-                        <div slot="end">
-                            <IgrButton variant="contained">
-                                <span>Call</span>
-                            </IgrButton>
-                        </div>
+                        <IgrButton slot="end" variant="contained">
+                            <span>Text</span>
+                        </IgrButton>
+                        <IgrButton slot="end" variant="contained">
+                            <span>Call</span>
+                        </IgrButton>
                     </IgrListItem>
                 </IgrList>
             </div>

@@ -23,7 +23,7 @@ The [`igx-tabs`](mcp:get_api_reference?platform=angular&component=IgxTabsCompone
 This is a basic example of Angular Nested Tabs where we have one tab within another where only one view can be seen at the time. Using nested tabs in Angular, we can display information in a better, structured way.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTabContentComponent, IgxTabHeaderComponent, IgxTabHeaderIconDirective, IgxTabHeaderLabelDirective, IgxTabItemComponent, IgxTabsComponent } from 'igniteui-angular/tabs';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
@@ -31,6 +31,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-tabs-sample-3',
     styleUrls: ['./tabs-sample-3.component.scss'],
     templateUrl: './tabs-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTabsComponent, IgxTabItemComponent, IgxTabHeaderComponent, IgxIconComponent, IgxTabHeaderIconDirective, IgxTabHeaderLabelDirective, IgxTabContentComponent]
 })
 export class TabsSample3Component { }
@@ -194,13 +195,14 @@ If the sample is configured properly, the final result should look like that:
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTabContentComponent, IgxTabHeaderComponent, IgxTabHeaderLabelDirective, IgxTabItemComponent, IgxTabsComponent } from 'igniteui-angular/tabs';
 
 @Component({
     selector: 'app-tabs-sample-1',
     styleUrls: ['./tabs-sample-1.component.scss'],
     templateUrl: './tabs-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTabsComponent, IgxTabItemComponent, IgxTabHeaderComponent, IgxTabHeaderLabelDirective, IgxTabContentComponent]
 })
 export class TabsSample1Component { }
@@ -261,13 +263,14 @@ igx-tab-content {
 Sample below demonstrates how tabs get aligned when switching between `tabAlignment` property values.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxTabContentComponent, IgxTabHeaderComponent, IgxTabHeaderLabelDirective, IgxTabItemComponent, IgxTabsComponent } from 'igniteui-angular/tabs';
 
 @Component({
     selector: 'app-tabs-alignment',
     templateUrl: './tabs-alignment.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxTabsComponent, IgxTabItemComponent, IgxTabHeaderComponent, IgxTabHeaderLabelDirective, IgxTabContentComponent]
 })
 export class TabsAlignmentComponent {
@@ -373,7 +376,7 @@ If the sample is configured properly, the tabs should look like the following ex
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTabContentComponent, IgxTabHeaderComponent, IgxTabHeaderIconDirective, IgxTabHeaderLabelDirective, IgxTabItemComponent, IgxTabsComponent } from 'igniteui-angular/tabs';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
@@ -381,6 +384,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-tabs-sample-3',
     styleUrls: ['./tabs-sample-3.component.scss'],
     templateUrl: './tabs-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTabsComponent, IgxTabItemComponent, IgxTabHeaderComponent, IgxIconComponent, IgxTabHeaderIconDirective, IgxTabHeaderLabelDirective, IgxTabContentComponent]
 })
 export class TabsSample3Component { }
@@ -446,7 +450,7 @@ If setting the labels and icons is not enough, you can also provide your own cus
 You can also add you own custom tab header's prefix and suffix simply by using `igxPrefix` and `igxSuffix` directives. The sample below demonstrates how to add a tab with custom header content and prefix/suffix.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTabContentComponent, IgxTabHeaderComponent, IgxTabItemComponent, IgxTabsComponent } from 'igniteui-angular/tabs';
 import { IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconButtonDirective } from 'igniteui-angular/directives';
@@ -456,6 +460,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
 @Component({
     selector: 'app-tabs-header-prefix-suffix',
     templateUrl: './tabs-header-prefix-suffix.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTabsComponent, IgxTabItemComponent, IgxTabHeaderComponent, IgxPrefixDirective, IgxIconButtonDirective, IgxSuffixDirective, IgxIconComponent, IgxTabContentComponent]
 })
 export class TabsHeaderPrefixSuffixComponent {
@@ -595,7 +600,7 @@ The above code creates an `igx-tabs` component with three tab items. Each tab it
 
 
 ```typescript
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NavigationEnd, Router, RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { IgxTabHeaderComponent, IgxTabHeaderLabelDirective, IgxTabItemComponent, IgxTabsComponent } from 'igniteui-angular/tabs';
@@ -604,6 +609,7 @@ import { IgxTabHeaderComponent, IgxTabHeaderLabelDirective, IgxTabItemComponent,
     selector: 'app-tabs-sample-4',
     styleUrls: ['./tabs-sample-4.component.scss'],
     templateUrl: './tabs-sample-4.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTabsComponent, IgxTabItemComponent, RouterLinkActive, IgxTabHeaderComponent, RouterLink, IgxTabHeaderLabelDirective, RouterOutlet]
 })
 export class TabsSample4Component implements OnInit {
@@ -1049,7 +1055,7 @@ The last step is to **include** the component theme in our application.
 ### Demo
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTabContentComponent, IgxTabHeaderComponent, IgxTabHeaderIconDirective, IgxTabHeaderLabelDirective, IgxTabItemComponent, IgxTabsComponent } from 'igniteui-angular/tabs';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
@@ -1057,6 +1063,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-tabs-style',
     styleUrls: ['./tabs-style.component.scss'],
     templateUrl: './tabs-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTabsComponent, IgxTabItemComponent, IgxTabHeaderComponent, IgxIconComponent, IgxTabHeaderIconDirective, IgxTabHeaderLabelDirective, IgxTabContentComponent]
 })
 export class TabsStyleComponent { }

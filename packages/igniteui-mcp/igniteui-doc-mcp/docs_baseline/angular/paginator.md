@@ -19,7 +19,7 @@ Ignite UI for Angular Paginator allows you to divide a set of data into a number
 The following Angular Pagination example shows a Paginator template demonstrating how users can navigate through 4 pages with different items and select the number of items to be displayed from a drop-down menu.
 
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
 import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
 import { IgxButtonDirective, IgxIconButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
@@ -31,6 +31,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-pagination-sample',
     styleUrls: ['./pagination-sample.component.scss'],
     templateUrl: './pagination-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCardComponent, IgxCardMediaDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardContentDirective, IgxCardHeaderSubtitleDirective, IgxCardActionsComponent, IgxButtonDirective, IgxRippleDirective, IgxIconButtonDirective, IgxIconComponent, IgxPaginatorComponent, CurrencyPipe]
 })
 export class PaginationSampleComponent implements AfterViewInit {

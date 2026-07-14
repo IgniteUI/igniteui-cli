@@ -10,7 +10,7 @@ _premium: true
 The Ignite UI for Angular Grid supports remote data operations such as remote virtualization, remote sorting, remote filtering and others. This allows the developer to perform these tasks on a server, retrieve the data that is produced and display it in the Grid.
 ## Angular Grid Remote Data Operations Overview Example
 ```typescript
-import { ChangeDetectorRef, Component, OnInit, ViewChild, AfterViewInit, OnDestroy, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild, AfterViewInit, OnDestroy, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { NoopFilteringStrategy, NoopSortingStrategy } from 'igniteui-angular/core';
 import { IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -28,6 +28,7 @@ const DEBOUNCE_TIME = 300;
     selector: 'app-grid-remote-filtering-sample',
     styleUrls: ['./remote-filtering-sample.component.scss'],
     templateUrl: './remote-filtering-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxBadgeComponent, AsyncPipe]
 })
 export class RemoteFilteringSampleComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -255,7 +256,7 @@ When requesting data, you need to utilize the [`IForOfState`](mcp:get_api_refere
 >The first [`chunkSize`](mcp:get_api_reference?platform=angular&component=IForOfState&member=chunkSize) will always be 0 and should be determined by you based on the specific application scenario.
 ### Remote Virtualization Demo
 ```typescript
-import { ChangeDetectorRef, Component, TemplateRef, ViewChild, OnInit, AfterViewInit, OnDestroy, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, TemplateRef, ViewChild, OnInit, AfterViewInit, OnDestroy, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxBadgeComponent } from 'igniteui-angular/badge';
@@ -269,6 +270,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-remote-virtualization-sample',
     styleUrls: ['grid-sample-4.component.scss'],
     templateUrl: 'grid-sample-4.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCellTemplateDirective, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellHeaderTemplateDirective, IgxBadgeComponent, AsyncPipe]
 })
 
@@ -555,7 +557,7 @@ public handlePreLoad() {
 ```
 ### Infinite Scroll Demo
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, ViewChild, OnInit, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ViewChild, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxBadgeComponent } from 'igniteui-angular/badge';
@@ -568,6 +570,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-remote-virtualization-sample',
     styleUrls: ['grid-sample-5.component.scss'],
     templateUrl: 'grid-sample-5.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxBadgeComponent]
 })
 
@@ -823,8 +826,8 @@ public columnValuesStrategy = (column: ColumnType,
 ```
 ### Unique Column Values Strategy Demo
 ```typescript
-import { Component, OnInit, inject } from '@angular/core';
-import { IFilteringExpressionsTree } from 'igniteui-angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ColumnType, IFilteringExpressionsTree } from 'igniteui-angular/core';
 import { IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { RemoteValuesService } from './remoteValues.service';
@@ -835,6 +838,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     styleUrls: ['./grid-excel-style-filtering-load-on-demand.component.scss'],
     templateUrl: './grid-excel-style-filtering-load-on-demand.component.html',
     providers: [RemoteValuesService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxColumnComponent]
 })
 export class GridExcelStyleFilteringLoadOnDemandComponent implements OnInit {
@@ -843,7 +847,7 @@ export class GridExcelStyleFilteringLoadOnDemandComponent implements OnInit {
 
     public data: any[];
 
-    public columnValuesStrategy = (column: IgxColumnComponent,
+    public columnValuesStrategy = (column: ColumnType,
                                    columnExprTree: IFilteringExpressionsTree,
                                    done: (uniqueValues: any[]) => void) => {
         // Get specific column data.
@@ -1002,7 +1006,7 @@ public paginate(page: number) {
 }
 ```
 ```typescript
-import { AfterViewInit, Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation, inject } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation, inject, ChangeDetectionStrategy } from '@angular/core';
 import { GridPagingMode, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -1017,6 +1021,7 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-remote-paging-default-template',
     styleUrls: ['./remote-paging-default-template.component.scss'],
     templateUrl: './remote-paging-default-template.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, AsyncPipe]
 })
 export class RemotePagingDefaultTemplateComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -1158,7 +1163,7 @@ The last step will be to declare the paginator content based on your requirement
 ```
 After all the changes above, the following result will be achieved.
 ```typescript
-import { AfterViewInit, Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation, inject } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation, inject, ChangeDetectionStrategy } from '@angular/core';
 import { GridPagingMode, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxPageNavigationComponent, IgxPageSizeSelectorComponent, IgxPaginatorComponent, IgxPaginatorContentDirective } from 'igniteui-angular/paginator';
@@ -1172,6 +1177,7 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-remote-paging-grid-sample',
     styleUrls: ['./remote-paging-sample.component.scss'],
     templateUrl: './remote-paging-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxPageSizeSelectorComponent, IgxPageNavigationComponent, AsyncPipe]
 })
 export class RemotePagingGridSampleComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -1266,7 +1272,7 @@ export class RemotePagingGridSampleComponent implements OnInit, AfterViewInit, O
 ### Remote Paging with custom paginator
 In some cases you may want to define your own paging behavior and this is when we can take advantage of the Paging template and add our custom logic along with it. We are going to extend the Remote Paging example in order to demonstrate this:
 ```typescript
-import { AfterViewInit, Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation, inject } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxPaginatorComponent, IgxPaginatorContentDirective } from 'igniteui-angular/paginator';
@@ -1282,6 +1288,7 @@ import { RouterLink } from '@angular/router';
     selector: 'app-custom-remote-paging-grid-sample',
     styleUrls: ['./custom-remote-paging-sample.component.scss'],
     templateUrl: './custom-remote-paging-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxButtonDirective, RouterLink, AsyncPipe]
 })
 export class CustomRemotePagingGridSampleComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -1592,7 +1599,7 @@ As you can see in the **paginate** method, custom pagination logic is performed,
 #### Remote Paging with Batch Editing Demo
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation, inject } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { Transaction } from 'igniteui-angular/core';
@@ -1610,6 +1617,7 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-remote-paging-batch-editing',
     styleUrls: ['./batch-editing-remote-paging.component.scss'],
     templateUrl: './batch-editing-remote-paging.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxButtonDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxDialogComponent, AsyncPipe]
 })
 export class RemotePagingBatchEditingComponent implements OnInit, AfterViewInit, OnDestroy {

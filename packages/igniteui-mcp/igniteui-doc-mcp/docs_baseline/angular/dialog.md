@@ -13,7 +13,7 @@ _tocName: Dialog Window
 ## Angular Dialog Window Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 
@@ -21,6 +21,7 @@ import { IgxDialogComponent } from 'igniteui-angular/dialog';
     selector: 'app-dialog-sample-1',
     styleUrls: ['./dialog-sample-1.component.scss'],
     templateUrl: './dialog-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxRippleDirective, IgxDialogComponent]
 })
 export class DialogSample1Component { }
@@ -148,7 +149,7 @@ To create a standard dialog, in the template of our file manager component, we a
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 
@@ -156,6 +157,7 @@ import { IgxDialogComponent } from 'igniteui-angular/dialog';
     selector: 'app-dialog-sample-2',
     styleUrls: ['./dialog-sample-2.component.scss'],
     templateUrl: './dialog-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxRippleDirective, IgxDialogComponent]
 })
 export class DialogSample2Component {
@@ -233,7 +235,7 @@ We add two input groups consisting of a label and and input decorated with the [
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxDialogActionsDirective, IgxDialogComponent, IgxDialogTitleDirective } from 'igniteui-angular/dialog';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -244,6 +246,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-dialog-sample-3',
     styleUrls: ['./dialog-sample-3.component.scss'],
     templateUrl: './dialog-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxRippleDirective, IgxDialogComponent, IgxDialogTitleDirective, IgxIconComponent, FormsModule, IgxInputGroupComponent, IgxPrefixDirective, IgxLabelDirective, IgxInputDirective, IgxDialogActionsDirective]
 })
 export class DialogSample3Component {
@@ -494,7 +497,7 @@ The last step is to **include** the component theme in our application.
 
 ```typescript
 import { useAnimation } from '@angular/animations';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CloseScrollStrategy, GlobalPositionStrategy, IgxOverlayOutletDirective, PositionSettings } from 'igniteui-angular/core';
 import { IgxDialogActionsDirective, IgxDialogComponent, IgxDialogTitleDirective } from 'igniteui-angular/dialog';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
@@ -505,6 +508,7 @@ import { slideInBottom, slideOutTop } from 'igniteui-angular/animations';
     selector: 'app-dialog-styling-sample',
     styleUrls: ['./dialog-styling-sample.component.scss'],
     templateUrl: './dialog-styling-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxOverlayOutletDirective, IgxButtonDirective, IgxRippleDirective, IgxDialogComponent, IgxDialogTitleDirective, IgxIconComponent, IgxDialogActionsDirective]
 })
 export class DialogStylingSampleComponent implements OnInit {

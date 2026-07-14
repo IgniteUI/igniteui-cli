@@ -12,7 +12,7 @@ Pagination is used to split a large set of data into a sequence of pages that ha
 ## Angular Pagination Example
 The following example represents Hierarchical Grid pagination and exposes the options usage of `items per page` and how paging can be enabled. The user can also quickly navigate through the Hierarchical Grid pages via "Go to last page" and "Go to first page" buttons.
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -23,6 +23,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-paging',
     styleUrls: ['./hierarchical-grid-paging.component.scss'],
     templateUrl: 'hierarchical-grid-paging.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxPaginatorDirective, IgxPaginatorComponent]
 })
 
@@ -150,7 +151,7 @@ Due to certain limitations in how the child grids of an IgxHierarchicalGrid are 
 ```
 ### Paginator Component Demo
 ```typescript
-import { Component, OnInit, ViewChild, AfterViewInit, PLATFORM_ID, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, PLATFORM_ID, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IPaginatorResourceStrings } from 'igniteui-angular/core';
 import { IgxPageNavigationComponent, IgxPageSizeSelectorComponent, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxPaginatorDirective } from 'igniteui-angular/paginator';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -166,6 +167,7 @@ import { isPlatformBrowser } from '@angular/common';
     selector: 'app-hierarchical-grid-pager-sample',
     styleUrls: ['./hierarchical-grid-pager-sample.component.scss'],
     templateUrl: './hierarchical-grid-pager-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxPageSizeSelectorComponent, IgxPageNavigationComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxPaginatorDirective, IgxSwitchComponent, FormsModule]
 })
 export class HierarchicalGridPagerSampleComponent implements OnInit, AfterViewInit {
@@ -341,7 +343,7 @@ The last step is to **include** the component mixins, each with its respective t
 ```
 ### Demo
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxPaginatorComponent, IgxPaginatorDirective } from 'igniteui-angular/paginator';
@@ -352,6 +354,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-paging',
     styleUrls: ['./hierarchical-grid-paging-style.component.scss'],
     templateUrl: 'hierarchical-grid-paging-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxPaginatorDirective]
 })
 
@@ -415,70 +418,29 @@ export class HGridPagingStyleSampleComponent {
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
-$my-primary: #231c2c;
-$my-secondary: #d0ab23;
-$dark-gray: #333;
-$light-gray: #999;
-$inactive-color: #826217;
+$background: #19171b;
+$foreground: #eeece1;
+$accent: #ffcd0f;
 
-$dark-paginator: paginator-theme(
-  $text-color: $my-secondary,
-  $background-color: $my-primary,
-  $border-color: $my-secondary
+$grid-theme: grid-theme(
+	$background: $background,
+	$foreground: $foreground,
+	$accent-color: $accent,
 );
 
-$dark-button: flat-icon-button-theme(
-  $foreground: $my-secondary,
-  $hover-foreground: $dark-gray,
-  $hover-background: $my-secondary,
-  $focus-foreground: $dark-gray,
-  $focus-background: $my-secondary,
-  $border-color: $my-secondary,
-  $focus-border-color: $my-secondary,
-  $disabled-foreground: $inactive-color
+$paginator-theme: paginator-theme(
+	$foreground: #ff570f,
+	$background: #130425FF,
+	$border-color: #ff570f,
+	$accent-color: #ff570f,
 );
 
-$dark-select: select-theme(
-  $toggle-button-background: $my-primary,
-  $toggle-button-foreground: $inactive-color,
-  $toggle-button-foreground-filled: $inactive-color,
-  $toggle-button-foreground-focus: $inactive-color,
-  $toggle-button-background-focus--border: $my-primary,
-);
+igx-hierarchical-grid {
+	@include tokens($grid-theme);
+}
 
-$dark-input-group: input-group-theme(
-  $filled-text-color: $my-secondary,
-  $idle-text-color: $my-secondary,
-  $filled-text-hover-color: $my-secondary,
-  $focused-text-color: $my-secondary,
-  $border-color: darken($inactive-color, 10%),
-  $focused-border-color: $my-secondary,
-  $input-suffix-color: $my-secondary,
-);
-
-$dark-drop-down-theme: drop-down-theme(
-  $background-color: $my-primary,
-  $item-text-color: $my-secondary,
-  $selected-item-background: $my-secondary,
-  $selected-item-text-color: $dark-gray,
-  $focused-item-background: $my-secondary,
-  $focused-item-text-color: $dark-gray,
-  $selected-focus-item-background: $my-secondary,
-  $selected-focus-item-text-color: $dark-gray,
-  $selected-hover-item-background: $my-secondary,
-  $selected-hover-item-text-color: $dark-gray
-);
-
-
-:host {
-    @include tokens($dark-drop-down-theme);
-    @include tokens($dark-paginator);
-
-    igx-paginator {
-        @include tokens($dark-button);
-        @include tokens($dark-input-group);
-        @include tokens($dark-select);
-    }
+igx-paginator {
+	@include tokens($paginator-theme);
 }
 ```
 ## API References

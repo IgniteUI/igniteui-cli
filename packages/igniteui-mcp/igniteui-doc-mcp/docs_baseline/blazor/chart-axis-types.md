@@ -207,6 +207,7 @@ public class ContinentsBirthRate
 The [`IgbCategoryYAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryYAxis) works very similarly to the [`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis) described above, but it is placed vertically rather than horizontally. Also, this axis requires you to provide a `DataSource` and a `Label` in order to plot data with it. The [`IgbCategoryYAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryYAxis) is generally used with the [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) to plot the following type of series:
 
 - [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries)
+- `RangeBarSeries`
 - [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries)
 - [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries)
 
@@ -361,11 +362,12 @@ public class HighestGrossingMovies
 
 ### Numeric X-Axis
 
-The [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) treats its data as continuously varying numerical data items. Labels on this axis are placed horizontally along the X-Axis. The location of the [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) labels depends on the `XMemberPath` property of the various [Scatter Series](../types/scatter-chart.md) that it supports if combined with a [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis). Alternatively, if combined with the [`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis), these labels will be placed corresponding to the `ValueMemberPath` of the [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries), [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries), and [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries).
+The [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) treats its data as continuously varying numerical data items. Labels on this axis are placed horizontally along the X-Axis. The location of the [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) labels depends on the `XMemberPath` property of the various [Scatter Series](../types/scatter-chart.md) that it supports if combined with a [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis). Alternatively, if combined with the [`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis), these labels will be placed corresponding to the `ValueMemberPath` of the [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries), `RangeBarSeries`, [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries), and [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries).
 
 The [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) is compatible with the following type of series:
 
 - [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries)
+- `RangeBarSeries`
 - [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries)
 - [`IgbHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbHighDensityScatterSeries)
 - [`IgbScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSeries)

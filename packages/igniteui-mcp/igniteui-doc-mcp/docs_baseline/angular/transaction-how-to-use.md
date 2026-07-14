@@ -10,7 +10,7 @@ _premium: true
 
 You may get advantage of the [`Transaction Service`](mcp:get_api_reference?platform=angular&component=TransactionService) when using any component that needs to preserve the state of its data source and to commit many transactions at once.
 
-When working with the Ignite UI for Angular grid components, you may use the [`igxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and [`igxHierarchicalTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicaltransactionservice.html) that are integrated with the grids and provide batch editing out of the box. However, if you need to use transactions with any other Ignite UI for Angular or custom component, you may again use the [`igxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and implement similar behavior.
+When working with the Ignite UI for Angular grid components, you may use the [`igxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and [`igxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) that are integrated with the grids and provide batch editing out of the box. However, if you need to use transactions with any other Ignite UI for Angular or custom component, you may again use the [`igxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and implement similar behavior.
 
 ## Angular How to use the Transaction service Example
 
@@ -18,7 +18,7 @@ In this topic we will use [`igxList`](mcp:get_api_reference?platform=angular&com
 
 
 ```typescript
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTransactionService, State, Transaction, TransactionType } from 'igniteui-angular/core';
 import { IgxCardComponent } from 'igniteui-angular/card';
 import { IgxListActionDirective, IgxListComponent, IgxListItemComponent, IgxListLineSubTitleDirective, IgxListLineTitleDirective } from 'igniteui-angular/list';
@@ -33,6 +33,7 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-transaction-base',
     styleUrls: ['./transaction-base.component.scss'],
     templateUrl: 'transaction-base.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxCardComponent, IgxListComponent, IgxListItemComponent, NgClass, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxIconComponent, IgxListActionDirective, TransactionBasePipe]
 })
 export class TransactionBaseComponent {
@@ -482,7 +483,7 @@ public onCommit(): void {
 
 ```
 
-If we are using the [`igxHierarchicalTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicaltransactionservice.html) we can also use an overload of the [`commit`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=commit) method which expects primaryKey and childDataKey as arguments.
+If we are using the [`igxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) we can also use an overload of the [`commit`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=commit) method which expects primaryKey and childDataKey as arguments.
 
 ```typescript
 public onCommit(): void {

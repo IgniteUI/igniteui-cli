@@ -13,7 +13,7 @@ The Ignite UI for Angular Input and Label directives are used to decorate and st
 ## Angular Label & Input Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BaseInputGroupSampleComponent } from '../base-input.component';
 import { FormsModule } from '@angular/forms';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
@@ -22,6 +22,7 @@ import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'ig
     selector: 'app-input-group-sample-1',
     styleUrls: ['./input-group-sample-1.component.scss'],
     templateUrl: './input-group-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, IgxInputGroupComponent, IgxInputDirective, IgxLabelDirective]
 })
 export class InputGroupSample1Component extends BaseInputGroupSampleComponent { }
@@ -129,7 +130,7 @@ We can validate an `input` using the [`required`](mcp:get_api_reference?platform
 ```
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BaseInputGroupSampleComponent } from '../base-input.component';
 import { FormsModule } from '@angular/forms';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
@@ -138,6 +139,7 @@ import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'ig
     selector: 'app-input-group-sample-2',
     styleUrls: ['./input-group-sample-2.component.scss'],
     templateUrl: './input-group-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, IgxInputGroupComponent, IgxInputDirective, IgxLabelDirective]
 })
 export class InputGroupSample2Component extends BaseInputGroupSampleComponent { }
@@ -212,7 +214,7 @@ If you want the text in an input element, marked with `igxInput`, to be selected
 > To use the [`igxTextSelection`](mcp:get_api_reference?platform=angular&component=IgxTextSelectionDirective) directive, you have to import the [`IgxTextSelectionModule`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxtextselectionmodule.html).
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxFocusDirective, IgxTextSelectionDirective } from 'igniteui-angular/directives';
@@ -221,6 +223,7 @@ import { IgxFocusDirective, IgxTextSelectionDirective } from 'igniteui-angular/d
     selector: 'app-input-text-selection',
     templateUrl: './input-text-selection.component.html',
     styleUrls: ['./input-text-selection.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, IgxInputGroupComponent, IgxInputDirective, IgxTextSelectionDirective, IgxLabelDirective, IgxFocusDirective]
 })
 export class InputTextSelectionComponent {

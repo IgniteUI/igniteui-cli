@@ -12,7 +12,7 @@ With Ignite UI for Angular Tree Grid you can easily select data by using variety
 The sample below demonstrates the three types of Tree Grid's **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
 <div class="divider--half"></div>
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -26,6 +26,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-cell-selection',
     styleUrls: ['./tree-grid-cellSelection.component.scss'],
     templateUrl: 'tree-grid-cellSelection.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxSnackbarComponent, IgxIconComponent]
 })
 export class TreeGridCellSelectionComponent implements OnInit {

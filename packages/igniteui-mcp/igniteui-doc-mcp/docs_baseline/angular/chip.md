@@ -13,7 +13,7 @@ _tocName: Chip
 ## Angular Chip Example
 
 ```typescript
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IBaseChipEventArgs, IgxChipComponent } from 'igniteui-angular/chips';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -23,6 +23,7 @@ import { IgxPrefixDirective } from 'igniteui-angular/input-group';
     selector: 'app-chip-simple',
     styleUrls: ['./chip-simple.component.scss'],
     templateUrl: './chip-simple.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxChipComponent, IgxIconComponent, IgxPrefixDirective]
 })
 
@@ -261,7 +262,7 @@ public chipRemoved(event: IBaseChipEventArgs) {
 If everything went well, you should see this in your browser:
 
 ```typescript
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IBaseChipEventArgs, IgxChipComponent } from 'igniteui-angular/chips';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -271,6 +272,7 @@ import { IgxPrefixDirective } from 'igniteui-angular/input-group';
     selector: 'app-chip-simple',
     styleUrls: ['./chip-simple.component.scss'],
     templateUrl: './chip-simple.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxChipComponent, IgxIconComponent, IgxPrefixDirective]
 })
 
@@ -457,7 +459,7 @@ If everything went well, you should see this in your browser:
 
 
 ```typescript
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IBaseChipEventArgs, IgxChipComponent } from 'igniteui-angular/chips';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -467,6 +469,7 @@ import { IgxPrefixDirective } from 'igniteui-angular/input-group';
     selector: 'app-chip-simple',
     styleUrls: ['./chip-simple.component.scss'],
     templateUrl: './chip-simple.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxChipComponent, IgxIconComponent, IgxPrefixDirective]
 })
 
@@ -681,7 +684,7 @@ If everything's set up correctly, you should see this in your browser:
 ### Demo
 
 ```typescript
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IBaseChipEventArgs, IChipsAreaReorderEventArgs, IgxChipComponent, IgxChipsAreaComponent } from 'igniteui-angular/chips';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 import { IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -692,6 +695,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-chip-area-sample',
     styleUrls: ['./chip-area-sample.component.scss'],
     templateUrl: './chip-area-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxChipsAreaComponent, IgxChipComponent, IgxAvatarComponent, IgxPrefixDirective, IgxIconComponent]
 })
 
@@ -931,7 +935,7 @@ Finally, **include** the custom theme in your application:
 In the sample below, you can see how using the chip component with customized CSS variables allows you to create a design that visually resembles the chip used in the [`Ant`](https://ant.design/components/tag?theme=light#tag-demo-icon) design system.
 
 ```typescript
-import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { facebook, linkedin } from '@igniteui/material-icons-extended';
 import { IgxChipComponent, IgxChipsAreaComponent } from 'igniteui-angular/chips';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
@@ -942,6 +946,7 @@ import { NgClass } from '@angular/common';
   selector: 'app-chip',
   styleUrls: ['./chip-styling.component.scss'],
   templateUrl: './chip-styling.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [IgxChipsAreaComponent, IgxChipComponent, IgxIconComponent, IgxPrefixDirective, NgClass]
 })
 

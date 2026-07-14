@@ -71,21 +71,22 @@ Switch Copilot Chat to Agent mode and confirm that `plan`, `execute`, and `plan_
 1. Open your Claude Desktop configuration file:
   - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
   - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+
 2. Add the `maker` entry to the `mcpServers` block:
 
-```json
-{
-  "mcpServers": {
-    "maker": {
-      "command": "npx",
-      "args": ["-y", "@igniteui/maker-mcp", "--stdio"],
-      "env": {
-        "Executor__AIProviderKeys__Anthropic": "<your-anthropic-key>"
+    ```json
+    {
+      "mcpServers": {
+        "maker": {
+          "command": "npx",
+          "args": ["-y", "@igniteui/maker-mcp", "--stdio"],
+          "env": {
+            "Executor__AIProviderKeys__Anthropic": "<your-anthropic-key>"
+          }
+        }
       }
     }
-  }
-}
-```
+    ```
 
 3. Restart Claude Desktop. The first start downloads the native binary (~30 s on a typical connection).
 

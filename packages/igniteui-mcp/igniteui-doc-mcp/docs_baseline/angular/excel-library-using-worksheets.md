@@ -334,18 +334,18 @@ You can specify the region to apply the filter by using the [`setRegion`](https:
 
 Below is a list of methods and their descriptions that you can use to add a filter to a worksheet:
 
-| Method                                                                                                                                                                                                      | Description                                                                                                                                                                                                      |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`applyAverageFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyAverageFilter)                     | Represents a filter which can filter data based on whether the data is below or above the average of the entire data range.                                                                                      |
-| [`applyDatePeriodFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyDatePeriodFilter)               | Represents a filter which can filter dates in a Month, or quarter of any year.                                                                                                                                   |
-| [`applyFillFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyFillFilter)                           | Represents a filter which will filter cells based on their background fills. This filter specifies a single CellFill. Cells of with this fill will be visible in the data range. All other cells will be hidden. |
-| `ApplyFixedValuesFilter`                                                                                                                                                                                    | Represents a filter which can filter cells based on specific, fixed values, which are allowed to display.                                                                                                        |
-| [`applyFontColorFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyFontColorFilter)                 | Represents a filter which will filter cells based on their font colors. This filter specifies a single color. Cells with this color font will be visible in the data range. All other cells will be hidden.      |
-| [`applyIconFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyIconFilter)                           | Represents a filter which can filter cells based on their conditional formatting icon.                                                                                                                           |
-| [`applyRelativeDateRangeFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyRelativeDateRangeFilter) | Represents a filter which can filter date cells based on dates relative to the when the filter was applied.                                                                                                      |
-| [`applyTopOrBottomFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyTopOrBottomFilter)             | Represents a filter which can filter in cells in the upper or lower portion of the sorted values.                                                                                                                |
-| [`applyYearToDateFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyYearToDateFilter)               | Represents a filter which can filter in date cells if the dates occur between the start of the current year and the time when the filter is evaluated.                                                           |
-| [`applyCustomFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyCustomFilter)                       | Represents a filter which can filter data based on one or two custom conditions. These two filter conditions can be combined with a logical "and" or a logical "or" operation.                                   |
+| Method        | Description |
+| --------------|-------------|
+|[`applyAverageFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyAverageFilter)|Represents a filter which can filter data based on whether the data is below or above the average of the entire data range.|
+|[`applyDatePeriodFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyDatePeriodFilter)|Represents a filter which can filter dates in a Month, or quarter of any year.|
+|[`applyFillFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyFillFilter)|Represents a filter which will filter cells based on their background fills. This filter specifies a single CellFill. Cells of with this fill will be visible in the data range. All other cells will be hidden.|
+|`ApplyFixedValuesFilter`|Represents a filter which can filter cells based on specific, fixed values, which are allowed to display.|
+|[`applyFontColorFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyFontColorFilter)|Represents a filter which will filter cells based on their font colors. This filter specifies a single color. Cells with this color font will be visible in the data range. All other cells will be hidden.|
+|[`applyIconFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyIconFilter)|Represents a filter which can filter cells based on their conditional formatting icon.|
+|[`applyRelativeDateRangeFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyRelativeDateRangeFilter)|Represents a filter which can filter date cells based on dates relative to the when the filter was applied.|
+|[`applyTopOrBottomFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyTopOrBottomFilter)|Represents a filter which can filter in cells in the upper or lower portion of the sorted values.|
+|[`applyYearToDateFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyYearToDateFilter)|Represents a filter which can filter in date cells if the dates occur between the start of the current year and the time when the filter is evaluated.|
+|[`applyCustomFilter`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html#applyCustomFilter)|Represents a filter which can filter data based on one or two custom conditions. These two filter conditions can be combined with a logical "and" or a logical "or" operation.|
 
 You can use the following code snippet as an example to add a filter to a worksheet region:
 
@@ -407,12 +407,7 @@ The following code snippet demonstrates how to apply a sort to a region of cells
 var workbook = new Workbook(WorkbookFormat.Excel2007);
 var worksheet = workbook.worksheets().add("Sheet1");
 
-worksheet.sortSettings
-  .sortConditions()
-  .addItem(
-    new RelativeIndex(0),
-    new OrderedSortCondition(SortDirection.Ascending),
-  );
+worksheet.sortSettings.sortConditions().addItem(new RelativeIndex(0), new OrderedSortCondition(SortDirection.Ascending));
 ```
 
 ## Worksheet Protection
@@ -449,7 +444,7 @@ Many of the conditional formats that you can add to your worksheet have a [`cell
 
 There are a few conditional formats that do not have a [`cellFormat`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetcell.html#cellFormat) property, as their visualization on the worksheet cell behaves differently. These conditional formats are the [`DataBarConditionalFormat`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.databarconditionalformat.html), [`ColorScaleConditionalFormat`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.colorscaleconditionalformat.html), and [`IconSetConditionalFormat`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.iconsetconditionalformat.html).
 
-When loading a pre-existing [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.sheet.html#workbook) from Excel, the formats will be preserved when that [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.sheet.html#workbook) is loaded. The same is true for when you save the [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.sheet.html#workbook) out to an Excel file.
+When loading a pre-existing [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheet.html#workbook) from Excel, the formats will be preserved when that [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheet.html#workbook) is loaded. The same is true for when you save the [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheet.html#workbook) out to an Excel file.
 
 The following code example demonstrates usage of conditional formats on a worksheet:
 
@@ -460,9 +455,7 @@ var worksheet = workbook.worksheets().add("Sheet1");
 var color = new Color();
 color.colorString = "Red";
 
-var format = worksheet
-  .conditionalFormats()
-  .addAverageCondition("A1:A10", FormatConditionAboveBelow.AboveAverage);
+var format = worksheet.conditionalFormats().addAverageCondition("A1:A10", FormatConditionAboveBelow.AboveAverage);
 format.cellFormat.font.colorInfo = new WorkbookColorInfo(color);
 ```
 
@@ -477,7 +470,7 @@ format.cellFormat.font.colorInfo = new WorkbookColorInfo(color);
 - [`showGridlines`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.displayoptions.html#showGridlines)
 - [`showRowAndColumnHeaders`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.displayoptions.html#showRowAndColumnHeaders)
 - [`sortSettings`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheet.html#sortSettings)
-- [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.sheet.html#workbook)
+- [`workbook`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheet.html#workbook)
 - [`WorksheetCell`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetcell.html)
 - [`WorksheetColumn`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetcolumn.html)
 - [`WorksheetFilterSettings`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_excel.worksheetfiltersettings.html)

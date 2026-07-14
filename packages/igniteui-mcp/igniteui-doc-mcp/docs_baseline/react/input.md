@@ -168,7 +168,6 @@ We can allow the user to change the size of the [`IgrInput`](mcp:get_api_referen
 #radioGroup {
     display: flex;
     margin: 0 auto;
-    width: 15%;
 }
 ```
 ```css

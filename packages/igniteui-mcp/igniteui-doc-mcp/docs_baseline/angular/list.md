@@ -15,7 +15,7 @@ The Ignite UI for Angular List component displays rows of items and supports one
 The following example represents a list populated with contacts with a _name_ and a _phone number_ properties. The [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) component uses [`igx-avatar`](avatar.md) and [`igx-icon`](icon.md) to enrich the user experience and expose the capabilities of setting avatar picture and different icon for _favorite a contact_. In addition, the List View expose sorting capabilities achieved by using our filtering pipe.
 
 ```typescript
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxFilterOptions, IgxFilterPipe, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxInputDirective, IgxInputGroupComponent, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-contact-list2',
     styleUrls: ['./list-sample-4.component.scss'],
     templateUrl: './list-sample-4.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, FormsModule, IgxInputDirective, IgxSuffixDirective, IgxListComponent, IgxListItemComponent, IgxRippleDirective, IgxAvatarComponent, IgxListThumbnailDirective, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxListActionDirective, IgxFilterPipe]
 })
 export class ListSample4Component implements OnInit {
@@ -259,13 +260,14 @@ If all went great, this is how our empty list should look like:
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxEmptyListTemplateDirective, IgxListComponent } from 'igniteui-angular/list';
 
 @Component({
     selector: 'app-list-sample-5',
     styleUrls: ['./list-sample-5.component.scss'],
     templateUrl: './list-sample-5.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxListComponent, IgxEmptyListTemplateDirective]
 })
 export class ListSample5Component {
@@ -315,7 +317,7 @@ Sometimes there may be a delay in your data loading. In this case you can set th
 ```
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDataLoadingTemplateDirective, IgxEmptyListTemplateDirective, IgxListComponent, IgxListItemComponent } from 'igniteui-angular/list';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
@@ -324,6 +326,7 @@ import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directi
     selector: 'app-list-sample-6',
     styleUrls: ['./list-sample-6.component.scss'],
     templateUrl: './list-sample-6.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxListComponent, IgxListItemComponent, IgxRippleDirective, IgxEmptyListTemplateDirective, IgxButtonDirective, IgxDataLoadingTemplateDirective]
 })
 export class ListSample6Component {
@@ -392,13 +395,14 @@ If all went well, you should see the following in your browser:
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxListComponent, IgxListItemComponent } from 'igniteui-angular/list';
 
 @Component({
     selector: 'app-igx-list-simple',
     styleUrls: ['./list-sample-2.component.scss'],
     templateUrl: './list-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxListComponent, IgxListItemComponent]
 })
 export class ListSample2Component {
@@ -464,7 +468,7 @@ After all that our Angular list should now look like that:
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxListComponent, IgxListItemComponent, IgxListLineSubTitleDirective, IgxListLineTitleDirective } from 'igniteui-angular/list';
 import { IgxRippleDirective } from 'igniteui-angular/directives';
 
@@ -472,6 +476,7 @@ import { IgxRippleDirective } from 'igniteui-angular/directives';
     selector: 'app-contact-list',
     styleUrls: ['./list-sample-3.component.scss'],
     templateUrl: './list-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxListComponent, IgxListItemComponent, IgxRippleDirective, IgxListLineTitleDirective, IgxListLineSubTitleDirective]
 })
 export class ListSample3Component {
@@ -659,7 +664,7 @@ And here's the result of all that work:
 
 
 ```typescript
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxFilterOptions, IgxFilterPipe, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxInputDirective, IgxInputGroupComponent, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
@@ -672,6 +677,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-contact-list2',
     styleUrls: ['./list-sample-4.component.scss'],
     templateUrl: './list-sample-4.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, FormsModule, IgxInputDirective, IgxSuffixDirective, IgxListComponent, IgxListItemComponent, IgxRippleDirective, IgxAvatarComponent, IgxListThumbnailDirective, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxListActionDirective, IgxFilterPipe]
 })
 export class ListSample4Component implements OnInit {
@@ -920,7 +926,7 @@ Now try panning the list items for yourself:
 
 
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 import { IgxListActionDirective, IgxListComponent, IgxListItemComponent, IgxListItemLeftPanningTemplateDirective, IgxListItemRightPanningTemplateDirective, IgxListLineSubTitleDirective, IgxListLineTitleDirective, IgxListThumbnailDirective } from 'igniteui-angular/list';
 import { IgxToastComponent } from 'igniteui-angular/toast';
@@ -935,6 +941,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-contact-list2',
     styleUrls: ['./list-sample-7.component.scss'],
     templateUrl: './list-sample-7.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent, FormsModule, IgxListComponent, IgxListItemLeftPanningTemplateDirective, IgxIconComponent, IgxListItemRightPanningTemplateDirective, IgxListItemComponent, IgxRippleDirective, IgxAvatarComponent, IgxListThumbnailDirective, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxListActionDirective, IgxToastComponent, IgxButtonDirective]
 })
 export class ListSample7Component implements OnInit {
@@ -1164,7 +1171,7 @@ The list items have a `selected` property that helps us track which items are "s
 Here's an example illustrating how the visual style of the items changes when using the `selected` property:
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxFilterOptions, IgxFilterPipe, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxInputDirective, IgxInputGroupComponent, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -1176,6 +1183,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-list-item-selection',
     templateUrl: './list-item-selection.component.html',
     styleUrls: ['./list-item-selection.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, FormsModule, IgxInputDirective, IgxSuffixDirective, IgxListComponent, IgxListItemComponent, IgxAvatarComponent, IgxListThumbnailDirective, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxListActionDirective, IgxRippleDirective, IgxFilterPipe]
 })
 export class ListItemSelectionComponent {
@@ -1341,7 +1349,7 @@ If you prefer to use the list theming function, there are parameters available t
 The following sample demonstrates how to create a simple chat component using **IgxList**.
 
 ```typescript
-import { AfterViewInit, Component, ElementRef, TemplateRef, ViewChild, ViewEncapsulation, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, TemplateRef, ViewChild, ViewEncapsulation, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ContactsService } from './services/contacts.service';
 import { IMessage, MessagesService } from './services/messages.service';
 import { FormsModule } from '@angular/forms';
@@ -1357,6 +1365,7 @@ import { NgClass, NgTemplateOutlet, DatePipe } from '@angular/common';
     selector: 'app-list-chat-sample',
     styleUrls: ['./list-chat-sample.component.scss'],
     templateUrl: './list-chat-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, IgxListComponent, IgxListItemComponent, IgxAvatarComponent, NgClass, NgTemplateOutlet, IgxInputGroupComponent, IgxInputDirective, IgxSuffixDirective, IgxIconButtonDirective, IgxIconComponent, DatePipe]
 })
 export class ListChatSampleComponent implements AfterViewInit {
@@ -1894,7 +1903,7 @@ The last step is to **include** the newly created themes.
 The result is the following:
 
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 import { IgxListActionDirective, IgxListComponent, IgxListItemComponent, IgxListLineSubTitleDirective, IgxListLineTitleDirective, IgxListThumbnailDirective } from 'igniteui-angular/list';
 import { IgxToastComponent } from 'igniteui-angular/toast';
@@ -1907,6 +1916,7 @@ import { IgxRippleDirective } from 'igniteui-angular/directives';
     selector: 'app-list-8',
     styleUrls: ['./list-sample-8.component.scss'],
     templateUrl: './list-sample-8.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxListComponent, IgxListItemComponent, IgxAvatarComponent, IgxListThumbnailDirective, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxIconComponent, IgxListActionDirective, IgxRippleDirective]
 })
 export class ListSample8Component implements OnInit {

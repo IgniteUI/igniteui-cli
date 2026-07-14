@@ -37,7 +37,7 @@ column.filteringCaseSensitive = true;
 ```
 
 ```typescript
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { defineComponents, IgcCheckboxComponent } from 'igniteui-webcomponents';
 import { GridLiteDataService, User } from '../grid-lite-data.service';
@@ -50,6 +50,7 @@ defineComponents(IgcCheckboxComponent);
   selector: 'app-grid-lite-filtering-simple',
   templateUrl: './grid-lite-filtering-simple.component.html',
   styleUrls: ['./grid-lite-filtering-simple.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
     IgxGridLiteComponent,
@@ -207,7 +208,7 @@ onFiltered(event: IgxFilteredEvent) { ... }
 ```
 
 ```typescript
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { defineComponents, IgcCheckboxComponent } from 'igniteui-webcomponents';
 import { GridLiteDataService, User } from '../grid-lite-data.service';
@@ -224,6 +225,7 @@ defineComponents(IgcCheckboxComponent);
   selector: 'app-grid-lite-filtering-events',
   templateUrl: './grid-lite-filtering-events.component.html',
   styleUrls: ['./grid-lite-filtering-events.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
     IgxGridLiteComponent,
@@ -375,7 +377,7 @@ The custom callback can be async as the grid will wait for it until it resolves.
 The following example mocks remote filter operation, reflecting the REST endpoint generated based on the filter state of the component.
 
 ```typescript
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { defineComponents, IgcCheckboxComponent, IgcCircularProgressComponent } from 'igniteui-webcomponents';
 import { GridLiteDataService, User } from '../grid-lite-data.service';
@@ -389,6 +391,7 @@ defineComponents(IgcCheckboxComponent, IgcCircularProgressComponent);
   selector: 'app-grid-lite-filtering-pipeline',
   templateUrl: './grid-lite-filtering-pipeline.component.html',
   styleUrls: ['./grid-lite-filtering-pipeline.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
     IgxGridLiteComponent,

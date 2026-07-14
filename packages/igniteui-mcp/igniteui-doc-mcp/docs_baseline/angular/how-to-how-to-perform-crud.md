@@ -151,7 +151,7 @@ this._crudService.delete(event.data).subscribe({
 See the demo that was built following the guidance. Play around with it and try the examples for customization to fit your scenario in the best possible way.
 
 ```typescript
-import { ChangeDetectorRef, Component, OnInit, ViewChild, OnDestroy, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild, OnDestroy, inject, ChangeDetectionStrategy } from '@angular/core';
 import { GridPagingMode, IGridEditDoneEventArgs, IRowDataEventArgs, IgxColumnComponent, IgxGridEditingActionsComponent, IgxGridRow } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
@@ -168,6 +168,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-crud-sample',
     styleUrls: ['./crud-sample.component.scss'],
     templateUrl: './crud-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxActionStripComponent, IgxGridEditingActionsComponent, IgxSnackbarComponent]
 })
 export class CRUDSampleComponent implements OnInit, OnDestroy {

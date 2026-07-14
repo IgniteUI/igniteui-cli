@@ -21,7 +21,7 @@ The exporting functionality is encapsulated in the [`IgxCsvExporterService`](mcp
 
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { CsvFileTypes, IgxCsvExporterOptions, IgxCsvExporterService } from 'igniteui-angular/grids/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -30,6 +30,7 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-csv-export',
     styleUrls: ['./csv-export.component.scss'],
     templateUrl: './csv-export.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective]
 })
 export class CsvExportComponent {
@@ -162,7 +163,7 @@ public exportButtonHandler() {
 
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, ViewChild, inject } from '@angular/core';
+import { Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxCsvExporterService } from 'igniteui-angular/grids/core';
@@ -172,6 +173,7 @@ import { IgxPreventDocumentScrollDirective } from '../../../directives/prevent-s
     selector: 'app-csv-export-sample-1',
     styleUrls: ['./csv-export-sample-1.component.scss'],
     templateUrl: './csv-export-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarExporterComponent]
 })
 export class CsvExportSample1Component {

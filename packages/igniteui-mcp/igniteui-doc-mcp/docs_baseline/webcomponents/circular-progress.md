@@ -16,13 +16,13 @@ The Ignite UI for Web Components Circular Progress Indicator component provides 
 
 ```css
 #circular-progress{
-    margin: 20px;
-    --diameter: 50px;
+  margin: 20px;
+  --diameter: 50px;
 }
-```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+main {
+  margin-top: 20px;
+}
 ```
 
 <div class="divider--half"></div>
@@ -72,13 +72,13 @@ The following sample demonstrates the above configuration:
 
 ```css
 #circular-progress {
-    margin: 20px;
-	--diameter: 50px;
+  margin: 20px;
+  --diameter: 50px;
 }
-```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+main {
+  margin-top: 20px;
+}
 ```
 
 <div class="divider--half"></div>
@@ -100,7 +100,7 @@ Customizing the progress bar in order to use a color gradient instead of a solid
     width: 300px;
     display: flex;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 #circularProgress {
@@ -109,10 +109,6 @@ Customizing the progress bar in order to use a color gradient instead of a solid
     --diameter: 50px;
     --stroke-thickness: 3px;
 }
-```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
 > [!Note]
@@ -186,6 +182,10 @@ igc-circular-progress::part(track) {
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+main {
+  margin-top: 20px;
+}
 ```
 
 ## API References

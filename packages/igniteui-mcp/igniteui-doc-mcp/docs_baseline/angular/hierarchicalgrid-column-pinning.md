@@ -11,7 +11,7 @@ _premium: true
 A column or multiple columns can be pinned to the left or right side of the Angular UI Grid. **Column Pinning** in Ignite UI for Angular allows the end users to lock column in a particular column order, this will allow them to see it while horizontally scrolling the Hierarchical Grid. The Material UI Grid has a built-in column pinning UI, which can be used through the Hierarchical Grid's toolbar to change the pin state of the columns. In addition, you can define a custom UI and change the pin state of the columns via the Column Pinning API.
 ## Angular Hierarchical Grid Column Pinning  Example
 ```typescript
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CUSTOMERS } from '../../data/hierarchical-data';
 import { ActivatedRoute } from '@angular/router';
 import { NgClass } from '@angular/common';
@@ -23,6 +23,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-toolbar-pinning',
     styleUrls: ['./hierarchical-grid-toolbar-pinning.component.scss'],
     templateUrl: 'hierarchical-grid-toolbar-pinning.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NgClass, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarPinningComponent, IgxColumnComponent, IgxRowIslandComponent]
 })
 export class HGridToolbarPinningComponent implements OnInit {
@@ -140,7 +141,7 @@ public pinningConfig: IPinningConfig = { columns: ColumnPinningPosition.End };
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
 import { IPinningConfig, IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -158,6 +159,7 @@ import { DatePipe } from '@angular/common';
     selector: 'hierarchical-grid-sample',
     styleUrls: ['hierarchical-grid-right-pinning.component.scss'],
     templateUrl: 'hierarchical-grid-right-pinning.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarPinningComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxTooltipTargetDirective, IgxTooltipDirective, IgxAvatarComponent, IgxCellHeaderTemplateDirective, IgxIconComponent, IgxRowIslandComponent, DatePipe]
 })
 
@@ -317,8 +319,8 @@ img.country-flag {
 ### Column Pinning on Both Sides
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
 ```typescript
-import { Component, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
-import { ColumnPinningPosition } from 'igniteui-angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from "@angular/core";
+import { ColumnPinningPosition, ColumnType } from 'igniteui-angular/core';
 import { IPinningConfig, IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxButtonDirective, IgxTooltipDirective, IgxTooltipTargetDirective } from 'igniteui-angular/directives';
@@ -334,6 +336,7 @@ import { DatePipe } from "@angular/common";
     selector: "hierarchical-grid-sample-both-side-pinning",
     styleUrls: ["hierarchical-grid-both-sides-pinning.component.scss"],
     templateUrl: "hierarchical-grid-both-sides-pinning.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         IgxHierarchicalGridComponent,
         IgxGridToolbarComponent,
@@ -389,7 +392,7 @@ export class HierarchicalGridBothSidePinningSampleComponent implements OnInit {
     }
 
     public pinLeft() {
-        this.grid1.selectedColumns().forEach((col: IgxColumnComponent) => {
+        this.grid1.selectedColumns().forEach((col: ColumnType) => {
             if (col.pinned) {
                 col.unpin();
             }
@@ -398,7 +401,7 @@ export class HierarchicalGridBothSidePinningSampleComponent implements OnInit {
     }
 
     public pinRight() {
-        this.grid1.selectedColumns().forEach((col: IgxColumnComponent) => {
+        this.grid1.selectedColumns().forEach((col: ColumnType) => {
             if (col.pinned) {
                 col.unpin();
             }
@@ -407,7 +410,7 @@ export class HierarchicalGridBothSidePinningSampleComponent implements OnInit {
     }
 
     public unpinColumn() {
-        this.grid1.selectedColumns().forEach((col: IgxColumnComponent) => {
+        this.grid1.selectedColumns().forEach((col: ColumnType) => {
                 col.unpin();
         });
     }
@@ -592,7 +595,7 @@ public toggleColumn(col: ColumnType) {
 ```
 ### Demo
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
 import { IgxCellHeaderTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -606,6 +609,7 @@ const FILTERING_ICONS_FONT_SET = 'filtering-icons';
     selector: 'app-hierarchical-grid-pinning',
     styleUrls: ['./hierarchical-grid-pinning.component.scss'],
     templateUrl: 'hierarchical-grid-pinning.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCellHeaderTemplateDirective, IgxIconComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent]
 })
 

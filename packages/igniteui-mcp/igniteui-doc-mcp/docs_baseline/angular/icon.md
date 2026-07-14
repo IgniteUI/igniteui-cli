@@ -13,13 +13,14 @@ _tocName: Icon
 ## Angular Icon Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
 @Component({
     selector: 'app-icon-sample-1',
     styleUrls: ['./icon-sample-1.component.scss'],
     templateUrl: './icon-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconComponent]
 })
 export class IconSample1Component { }
@@ -192,13 +193,14 @@ public ngOnInit() {
 ```
 
 ```typescript
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
 
 @Component({
     selector: 'app-svg-icon-sample',
     styleUrls: ['./svg-icon-sample.component.scss'],
     templateUrl: './svg-icon-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconComponent]
 })
 export class SvgIconSampleComponent implements OnInit {
@@ -290,13 +292,14 @@ Now, we are ready to add the desired icon into our markup and customize it using
 ```
 
 ```typescript
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
 
 @Component({
     selector: 'app-material-symbols',
     templateUrl: './material-symbols.component.html',
     styleUrls: ['./material-symbols.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconComponent]
 })
 export class MaterialSymbolsComponent implements OnInit {
@@ -412,13 +415,14 @@ The last step is to pass the custom icon theme in our application:
 ### Demo
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
 @Component({
     selector: 'app-icon-styling-sample',
     styleUrls: ['./icon-styling-sample.component.scss'],
     templateUrl: './icon-styling-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconComponent]
 })
 export class IconStylingSampleComponent { }

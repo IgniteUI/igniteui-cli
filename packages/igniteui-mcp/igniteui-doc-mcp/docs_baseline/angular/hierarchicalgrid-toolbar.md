@@ -16,7 +16,7 @@ The Hierarchical Grid in Ignite UI for Angular provides an [`IgxGridToolbarCompo
 or just any other custom content. The toolbar and the predefined UI components support Angular events and expose API for developers.
 ## Angular Toolbar Grid Example
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarComponent, IgxGridToolbarDirective, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
@@ -26,6 +26,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-toolbar-title',
     styleUrls: ['./hierarchical-grid-toolbar-title.component.scss'],
     templateUrl: 'hierarchical-grid-toolbar-title.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxGridToolbarDirective]
 })
 
@@ -168,7 +169,7 @@ These features can be enabled independently from each other by following a patte
 the Ignite UI for Angular suite.
 Listed below are the main features of the toolbar with example code for each of them.
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -182,6 +183,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-toolbar-options',
     styleUrls: ['./hierarchical-grid-toolbar-options.component.scss'],
     templateUrl: 'hierarchical-grid-toolbar-options.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxSwitchComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarAdvancedFilteringComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 
@@ -382,7 +384,7 @@ title, the placeholder for the component input and the height of the dropdown it
 > When exporting the Hierarchical Grid or any of its child grids down the hierarchy, the exported data will be a flat collection of rows
 > belonging to their respective grid (the child grids will not be included in the exported data).
 As with the rest of the toolbar actions, exporting is provided through a [Toolbar Exporter component](mcp:get_api_reference?platform=angular&component=IgxGridToolbarExporterComponent) out of the box.
-The exporting component is using the respective service for the target data format ([Excel](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService), [CSV](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService), [PDF](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html)). That means if the respective service is not provided through the dependency injection chain, the component
+The exporting component is using the respective service for the target data format ([Excel](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService), [CSV](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService), [PDF](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService)). That means if the respective service is not provided through the dependency injection chain, the component
 won't be able to export anything.
 If you need a refresher on the DI in Angular, check the [official guide](https://angular.io/guide/dependency-injection). Here is a sample snippet showing how to enable
 all export services for your application.
@@ -461,7 +463,7 @@ Here is a sample snippet:
 ```
 The following sample demonstrates how to add an additional button to the toolbar to clear the sorting set by clicking on the columns' headers:
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarDirective, IgxGridToolbarHidingComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
@@ -473,6 +475,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-toolbar-custom',
     styleUrls: ['./hierarchical-grid-toolbar-custom.component.scss'],
     templateUrl: 'hierarchical-grid-toolbar-custom.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxButtonDirective, IgxRippleDirective, IgxIconComponent, IgxGridToolbarHidingComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxGridToolbarDirective]
 })
 
@@ -626,7 +629,7 @@ The last step is to **include** the newly created themes.
 ```
 ### Demo
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
@@ -636,6 +639,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-toolbar-style',
     styleUrls: ['./hierarchical-grid-toolbar-style.component.scss'],
     templateUrl: './hierarchical-grid-toolbar-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 export class HierarchicalGridToolbarStyleComponent {
@@ -697,29 +701,31 @@ export class HierarchicalGridToolbarStyleComponent {
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
-$dark-button-theme: outlined-button-theme(
-  $background: #ffcd0f,
-  $foreground: #292826,
-  $hover-background: #404040,
-  $hover-foreground: #ffcd0f
+$background: #19171b;
+$foreground: #eeece1;
+$accent: #ffcd0f;
+
+$grid-theme: grid-theme(
+	$background: $background,
+	$foreground: $foreground,
+	$accent-color: $accent,
 );
 
-$dark-grid-toolbar-theme: grid-toolbar-theme(
-  $background-color: #292826,
-  $title-text-color: #ffcd0f
+$grid-toolbar-theme: grid-toolbar-theme(
+	$background: #170237,
+	$border-color: $accent,
+	$title-text-color: #f6d8d8,
+	$item-hover-background: rgb(246 216 216 / 0.3),
 );
 
-:host {
-    @include tokens($dark-grid-toolbar-theme);
-
-    .igx-grid-toolbar__actions {
-        @include tokens($dark-button-theme);
-
-        .igx-button--outlined {
-            margin-left: 0.5rem;
-            border: none;
-        }
-    }
+:host ::ng-deep {
+	igx-hierarchical-grid {
+		@include tokens($grid-theme);
+	}
+	
+	igx-grid-toolbar {
+		@include tokens($grid-toolbar-theme);
+	}
 }
 ```
 <div class="divider"></div>

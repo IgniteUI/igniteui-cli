@@ -15,7 +15,7 @@ The Ignite UI for React Pie Chart, or Pie Graph, is a part-to-whole chart that s
 
 ## React Pie Chart Example
 
-You can create the React Pie Chart in the [`IgrPieChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html) by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization. In this case, the example shows the overall breakdown of budget spend by department.
+You can create the React Pie Chart in the [`IgrPieChart`](mcp:get_api_reference?platform=react&component=IgrPieChart) by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization. In this case, the example shows the overall breakdown of budget spend by department.
 
 ```typescript
 export class EnergyGlobalDemandItem {
@@ -176,9 +176,9 @@ Do Not Use Pie Chart When:
 
 Legends are used to show information about each point, to know about its contribution towards the total sum. You can collapse the point using legend click.
 
-In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`IgrLegend`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrlegend.html) property. The [`legendLabelMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#legendLabelMemberPath) can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
+In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`IgrLegend`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrlegend.html) property. The [`legendLabelMemberPath`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=legendLabelMemberPath) can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
 
-Additionally you can use the [`legendItemTemplate`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#legendItemTemplate) and [`legendItemBadgeTemplate`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#legendItemBadgeTemplate) properties and the various font properties on ItemLegend to further customize the look of the legend items.
+Additionally you can use the [`legendItemTemplate`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=legendItemTemplate) and [`legendItemBadgeTemplate`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=legendItemBadgeTemplate) properties and the various font properties on ItemLegend to further customize the look of the legend items.
 
 ```typescript
 export class EnergyGlobalDemandItem {
@@ -300,9 +300,9 @@ root.render(<Sample/>);
 
 Sometimes, the underlying data for the pie chart will contain many items with small values. In this case, the Others category will permit automatic aggregation of several data values into a single slice
 
-In the sample below, the [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#othersCategoryThreshold) is set to 2, and [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#othersCategoryType) is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
+In the sample below, the [`othersCategoryThreshold`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=othersCategoryThreshold) is set to 2, and [`othersCategoryType`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=othersCategoryType) is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
 
-If you set [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#othersCategoryType) to Percent, then [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#othersCategoryThreshold) will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#othersCategoryType) is most appropriate for your application.
+If you set [`othersCategoryType`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=othersCategoryType) to Percent, then [`othersCategoryThreshold`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=othersCategoryThreshold) will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever [`othersCategoryType`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=othersCategoryType) is most appropriate for your application.
 
 ```typescript
 export class EnergyGlobalDemandItem {
@@ -525,9 +525,9 @@ root.render(<PieChartExplosion/>);
 
 ## React Pie Chart Selection
 
-The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the [`selectedItems`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#selectedItems) property. The selected slices are then highlighted.
+The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the [`selectedItems`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=selectedItems) property. The selected slices are then highlighted.
 
-There is a property called [`selectionMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#selectionMode) which is how you set what mode you want the pie chart to use. The default value is `Single`. In order to disable selection, set the property to `Manual`.
+There is a property called [`selectionMode`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=selectionMode) which is how you set what mode you want the pie chart to use. The default value is `Single`. In order to disable selection, set the property to `Manual`.
 
 The pie chart supports three different selection modes.
 
@@ -1054,14 +1054,14 @@ root.render(<Sample/>);
 
 The following table lists API members mentioned in the above sections:
 
-- [`legendItemBadgeTemplate`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#legendItemBadgeTemplate)
-- [`legendItemTemplate`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#legendItemTemplate)
-- [`legendLabelMemberPath`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#legendLabelMemberPath)
-- [`othersCategoryThreshold`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#othersCategoryThreshold)
-- [`othersCategoryType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#othersCategoryType)
-- [`selectionMode`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html#selectionMode)
+- [`legendItemBadgeTemplate`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=legendItemBadgeTemplate)
+- [`legendItemTemplate`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=legendItemTemplate)
+- [`legendLabelMemberPath`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=legendLabelMemberPath)
+- [`othersCategoryThreshold`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=othersCategoryThreshold)
+- [`othersCategoryType`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=othersCategoryType)
+- [`selectionMode`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=selectionMode)
 
 |Chart Type       | Control Name   | API Members |
 |-----------------|----------------|------------ |
-|Pie Chart      | [`IgrPieChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrpiechart.html)     | `PieChart` |
+|Pie Chart      | [`IgrPieChart`](mcp:get_api_reference?platform=react&component=IgrPieChart)     | `PieChart` |
 |Radial Pie Chart | [`IgrDataChart`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrdatachart.html) | [`IgrRadialPieSeries`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/classes/igniteui_react_charts.igrradialpieseries.html) |

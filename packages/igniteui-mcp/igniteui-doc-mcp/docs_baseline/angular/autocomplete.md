@@ -20,7 +20,7 @@ The [`igxAutocomplete`](mcp:get_api_reference?platform=angular&component=IgxAuto
 The Angular Autocomplete example below generates a dropdown suggestion list as users start typing the name of a town in the input textbox.
 
 ```typescript
-import { Component, Pipe, PipeTransform, forwardRef } from '@angular/core';
+import { Component, Pipe, PipeTransform, forwardRef, ChangeDetectionStrategy } from '@angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxAutocompleteDirective, IgxDropDownComponent, IgxDropDownItemComponent } from 'igniteui-angular/drop-down';
 import { FormsModule } from '@angular/forms';
@@ -30,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-autocomplete',
     styleUrls: ['./autocomplete.component.scss'],
     templateUrl: './autocomplete.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxAutocompleteDirective, IgxDropDownComponent, IgxDropDownItemComponent, forwardRef(() => AutocompletePipeStartsWith)]
 })
 export class AutocompleteBasicComponent {
@@ -270,7 +271,7 @@ If everything went right, you should see this in your browser:
 
 
 ```typescript
-import { Component, Pipe, PipeTransform } from '@angular/core';
+import { Component, Pipe, PipeTransform, ChangeDetectionStrategy } from '@angular/core';
 import { ConnectedPositioningStrategy, VerticalAlignment } from 'igniteui-angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxAutocompleteDirective, IgxDropDownComponent, IgxDropDownGroupComponent, IgxDropDownItemComponent } from 'igniteui-angular/drop-down';
@@ -281,6 +282,7 @@ import { AutocompletePipeStartsWith } from '../autocomplete/autocomplete.compone
     selector: 'app-movie-availability',
     styleUrls: ['./movie.component.scss'],
     templateUrl: './movie.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxAutocompleteDirective, IgxDropDownComponent, IgxDropDownGroupComponent, IgxDropDownItemComponent, AutocompletePipeStartsWith]
 })
 export class MovieComponent {

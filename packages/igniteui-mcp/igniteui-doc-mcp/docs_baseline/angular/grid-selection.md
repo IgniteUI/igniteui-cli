@@ -11,7 +11,7 @@ With Ignite UI for Angular Grid you can easily select data by using variety of e
 The sample below demonstrates the three types of Grid's **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
 <div class="divider--half"></div>
 ```typescript
-import { Component, ElementRef, OnInit, Renderer2, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
@@ -26,6 +26,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-cell-selection',
     styleUrls: ['./grid-cellSelection.component.scss'],
     templateUrl: 'grid-cellSelection.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxButtonDirective, IgxIconComponent, IgxSnackbarComponent]
 })
 export class GridCellSelectionComponent implements OnInit {
@@ -329,7 +330,7 @@ The template we are going to use to combine the grid with the context menu:
  Select multiple cells and press the `right mouse` button. The context menu will appear and after selecting `Copy cells data` the selected data will appear in the right empty box.
  The result is:
 ```typescript
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DefaultSortingStrategy, SortingDirection } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -342,6 +343,7 @@ import { ContextmenuComponent } from './contextmenu/contextmenu.component';
     selector: 'app-grid-contextmenu-sample',
     styleUrls: ['./grid-contextmenu-sample.component.scss'],
     templateUrl: './grid-contextmenu-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, ContextmenuComponent]
 })
 

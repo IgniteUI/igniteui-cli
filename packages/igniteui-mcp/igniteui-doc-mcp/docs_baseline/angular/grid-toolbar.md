@@ -15,7 +15,7 @@ The Grid in Ignite UI for Angular provides an [`IgxGridToolbarComponent`](mcp:ge
 or just any other custom content. The toolbar and the predefined UI components support Angular events and expose API for developers.
 ## Angular Toolbar Grid Example
 ```typescript
-import { Component} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { athletesData } from '../../data/athletesData';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarAdvancedFilteringComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
@@ -26,6 +26,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-toolbar-sample-1',
     styleUrls: ['./grid-toolbar-sample-1.component.scss'],
     templateUrl: './grid-toolbar-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarAdvancedFilteringComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent]
 })
 export class GridToolbarSample1Component {
@@ -153,7 +154,7 @@ These features can be enabled independently from each other by following a patte
 the Ignite UI for Angular suite.
 Listed below are the main features of the toolbar with example code for each of them.
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AbsoluteScrollStrategy, AutoPositionStrategy, GlobalPositionStrategy } from 'igniteui-angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -170,6 +171,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-toolbar-sample-2',
     styleUrls: ['./grid-toolbar-sample-2.component.scss'],
     templateUrl: './grid-toolbar-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxSwitchComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarAdvancedFilteringComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent]
 })
 export class GridToolbarSample2Component {
@@ -411,7 +413,7 @@ title, the placeholder for the component input and the height of the dropdown it
 ```
 ### Data exporting
 As with the rest of the toolbar actions, exporting is provided through a [Toolbar Exporter component](mcp:get_api_reference?platform=angular&component=IgxGridToolbarExporterComponent) out of the box.
-The exporting component is using the respective service for the target data format ([Excel](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService), [CSV](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService), [PDF](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxpdfexporterservice.html)). That means if the respective service is not provided through the dependency injection chain, the component
+The exporting component is using the respective service for the target data format ([Excel](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService), [CSV](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService), [PDF](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService)). That means if the respective service is not provided through the dependency injection chain, the component
 won't be able to export anything.
 If you need a refresher on the DI in Angular, check the [official guide](https://angular.io/guide/dependency-injection). Here is a sample snippet showing how to enable
 all export services for your application.
@@ -489,7 +491,7 @@ configureExport(args: IGridToolbarExportEventArgs) {
 ```
 The following sample demonstrates how to customize the exported files:
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
     CsvFileTypes,
     IColumnExportingEventArgs,
@@ -513,6 +515,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-toolbar-sample-3',
     styleUrls: ['./grid-toolbar-sample-3.component.scss'],
     templateUrl: './grid-toolbar-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent]
 })
 export class GridToolbarSample3Component {
@@ -635,7 +638,7 @@ Moreover, users can set the toolbar [showProgress](mcp:get_api_reference?platfor
 or just as another way to signify an action taking place in the grid.
 The sample below has significant amount of data. While the data is being exported, the progress bar is shown. Additionally, it has another button that simulates a long running operation in the grid:
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DATA } from '../../data/nwindData';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent } from 'igniteui-angular/grids/core';
@@ -647,6 +650,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-grid-export-visualization',
     templateUrl: './grid-export-visualization.component.html',
     styleUrls: ['./grid-export-visualization.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxButtonDirective, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, CurrencyPipe]
 })
 export class GridExportVisualizationComponent {
@@ -748,7 +752,7 @@ Here is a sample snippet:
 ```
 The following sample demonstrates how to add an additional button to the toolbar to clear the sorting set by clicking on the columns' headers:
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { athletesData } from '../../data/athletesData';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
@@ -761,6 +765,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-toolbar-sample-4',
     styleUrls: ['./grid-toolbar-sample-4.component.scss'],
     templateUrl: './grid-toolbar-sample-4.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxButtonDirective, IgxRippleDirective, IgxIconComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent]
 })
 export class GridToolbarSample4Component {
@@ -927,7 +932,7 @@ The last step is to **include** the newly created themes.
 ```
 ### Demo
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { athletesData } from '../../data/athletesData';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
@@ -938,6 +943,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-toolbar-style',
     styleUrls: ['./grid-toolbar-style.component.scss'],
     templateUrl: './grid-toolbar-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent]
 })
 export class GridToolbarStyleComponent {
@@ -1012,51 +1018,31 @@ export class GridToolbarStyleComponent {
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
-$my-dark-palette: palette(
-  $primary: #2466ff,
-  $secondary: #ffcd0f,
-  $surface: #2a2b2f,
-  $gray: #fff,
+$background: #19171b;
+$foreground: #eeece1;
+$accent: #ffcd0f;
+
+$grid-theme: grid-theme(
+    $background: $background,
+    $foreground: $foreground,
+    $accent-color: $accent,
 );
 
-$my-dark-color: color($my-dark-palette, 'surface');
-
-$dark-button-theme: flat-button-theme(
-  $hover-foreground: color($my-dark-palette, 'secondary')
+$grid-toolbar-theme: grid-toolbar-theme(
+    $background: #170237,
+    $border-color: $accent,
+    $title-text-color: #f6d8d8,
+    $item-hover-background: rgb(246 216 216 / 0.3),
 );
 
-$dark-grid-toolbar-theme: grid-toolbar-theme(
-  $background-color: $my-dark-color,
-  $title-text-color: color($my-dark-palette, 'secondary'),
-  $dropdown-background: $my-dark-color,
-);
-
-$dark-column-actions-theme: column-actions-theme(
-  $title-color: color($my-dark-palette, 'secondary'),
-  $background-color: color($my-dark-palette, 'surface')
-);
-
-$dark-checkbox-theme: checkbox-theme(
-  $tick-color: $my-dark-color,
-);
-
-igx-grid {
-  @include palette($my-dark-palette);
-  @include tokens($dark-grid-toolbar-theme);
-  @include tokens($dark-column-actions-theme);
-  @include tokens($dark-checkbox-theme);
-  @include tokens($dark-button-theme);
-}
-
-:host {
-  ::ng-deep {
-    .igx-grid-toolbar__actions {
-      .igx-button--outlined {
-        margin-left: 0.5rem;
-        border: none;
-      }
+:host ::ng-deep {
+    igx-grid {
+        @include tokens($grid-theme);
     }
-  }
+  
+    igx-grid-toolbar {
+        @include tokens($grid-toolbar-theme);
+    }
 }
 ```
 <div class="divider"></div>

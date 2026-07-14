@@ -17,7 +17,7 @@ _tocName: Layout Manager
 
 
 ```typescript
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { IgxFlexDirective, IgxLayoutDirective } from 'igniteui-angular/directives';
 
 @Component({
@@ -25,6 +25,7 @@ import { IgxFlexDirective, IgxLayoutDirective } from 'igniteui-angular/directive
     selector: 'app-layout-sample',
     styleUrls: ['./layout-sample.component.scss'],
     templateUrl: './layout-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxLayoutDirective, IgxFlexDirective]
 })
 
@@ -97,7 +98,7 @@ Use the [**igxLayout**](mcp:get_api_reference?platform=angular&component=IgxLayo
 Use [`igxLayoutDir`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=dir)`="row"`.
 
 ```typescript
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonGroupAlignment, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxButtonDirective, IgxFlexDirective, IgxLayoutDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
@@ -107,6 +108,7 @@ import { IgxButtonDirective, IgxFlexDirective, IgxLayoutDirective, IgxRippleDire
     selector: 'app-layout-direction-row',
     styleUrls: ['./layout-direction-row.component.scss'],
     templateUrl: './layout-direction-row.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective, IgxLayoutDirective, IgxFlexDirective]
 })
 
@@ -173,7 +175,7 @@ igx-buttongroup {
 Use [`igxLayoutDir`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=dir)`="column"`.
 
 ```typescript
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonGroupAlignment, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxButtonDirective, IgxFlexDirective, IgxLayoutDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
@@ -183,6 +185,7 @@ import { IgxButtonDirective, IgxFlexDirective, IgxLayoutDirective, IgxRippleDire
     selector: 'app-layout-direction-column',
     styleUrls: ['./layout-direction-column.component.scss'],
     templateUrl: './layout-direction-column.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective, IgxLayoutDirective, IgxFlexDirective]
 })
 
@@ -255,7 +258,7 @@ Customize the order of the element by using `igxFlexOrder`.
 
 
 ```typescript
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonGroupAlignment } from 'igniteui-angular/button-group';
 import { IgxFlexDirective, IgxLayoutDirective } from 'igniteui-angular/directives';
 
@@ -264,6 +267,7 @@ import { IgxFlexDirective, IgxLayoutDirective } from 'igniteui-angular/directive
     selector: 'app-layout-custom-order',
     styleUrls: ['./layout-custom-order.component.scss'],
     templateUrl: './layout-custom-order.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxLayoutDirective, IgxFlexDirective]
 })
 
@@ -310,7 +314,7 @@ igx-buttongroup {
 Use [`igxLayoutJustify`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=justify)`="space-between | space-around"`.
 
 ```typescript
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonGroupAlignment, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxButtonDirective, IgxLayoutDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
@@ -320,6 +324,7 @@ import { IgxButtonDirective, IgxLayoutDirective, IgxRippleDirective } from 'igni
     selector: 'app-layout-content-space',
     styleUrls: ['./layout-content-space.component.scss'],
     templateUrl: './layout-content-space.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective, IgxLayoutDirective]
 })
 
@@ -386,7 +391,7 @@ igx-buttongroup {
 Use [`igxLayoutJustify`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=justify)`="flex-start | center | flex-end"` to specify the elements position along the main axis according to your preferences.
 
 ```typescript
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonGroupAlignment, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxButtonDirective, IgxLayoutDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
@@ -396,6 +401,7 @@ import { IgxButtonDirective, IgxLayoutDirective, IgxRippleDirective } from 'igni
     selector: 'app-layout-justify-content',
     styleUrls: ['./layout-justify-content.component.scss'],
     templateUrl: './layout-justify-content.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective, IgxLayoutDirective]
 })
 
@@ -473,7 +479,7 @@ igx-buttongroup {
 Use [`igxLayoutItemAlign`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=itemalign)`="flex-start | center | flex-end"` to specify the elements position along the cross axis according to your preferences.
 
 ```typescript
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonGroupAlignment, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxButtonDirective, IgxFlexDirective, IgxLayoutDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
@@ -483,6 +489,7 @@ import { IgxButtonDirective, IgxFlexDirective, IgxLayoutDirective, IgxRippleDire
     selector: 'app-layout-align-items',
     styleUrls: ['./layout-align-items.component.scss'],
     templateUrl: './layout-align-items.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective, IgxLayoutDirective, IgxFlexDirective]
 })
 
@@ -564,7 +571,7 @@ igx-buttongroup {
 Use [`igxLayoutWrap`](mcp:get_api_reference?platform=angular&component=IgxLayoutDirective&member=wrap)`="wrap"`.
 
 ```typescript
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { IgxFlexDirective, IgxLayoutDirective } from 'igniteui-angular/directives';
 
 @Component({
@@ -572,6 +579,7 @@ import { IgxFlexDirective, IgxLayoutDirective } from 'igniteui-angular/directive
     selector: 'app-layout-wrap',
     styleUrls: ['./layout-wrap.component.scss'],
     templateUrl: './layout-wrap.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxLayoutDirective, IgxFlexDirective]
 })
 

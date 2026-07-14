@@ -15,19 +15,15 @@ The React Button Component lets you enable clickable elements that trigger actio
 
 ```css
 .button-container {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
 }
-```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import './ButtonOverviewStyle.css';
 import { IgrButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
@@ -42,9 +38,9 @@ export default class ButtonOverview extends React.Component<any, any> {
         return (
             <div className="container sample">
                 <div className="button-container">
-                    <IgrButton variant="flat"><span>Flat</span></IgrButton>
-                    <IgrButton variant="contained"><span>Contained</span></IgrButton>
-                    <IgrButton variant="outlined"><span>Outlined</span></IgrButton>
+                    <IgrButton variant="flat">Flat</IgrButton>
+                    <IgrButton variant="contained">Contained</IgrButton>
+                    <IgrButton variant="outlined">Outlined</IgrButton>
                 </div>
             </div>
         );
@@ -109,6 +105,11 @@ Use the [`variant`](mcp:get_api_reference?platform=react&component=IgrButton&mem
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-button {
+  width: 40%;
+  margin: auto;
+}
 ```
 ```tsx
 import React from 'react';
@@ -126,7 +127,7 @@ export default class ButtonContained extends React.Component<any, any> {
     public render(): JSX.Element {
         return (
             <div className="container sample">
-                <IgrButton variant="contained"><span>Contained</span></IgrButton>
+                <IgrButton variant="contained">Contained</IgrButton>
             </div>
         );
     }
@@ -148,6 +149,11 @@ All you have to do to create an `outlined` button is to change the value of the 
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-button {
+  width: 40%;
+  margin: auto;
+}
 ```
 ```tsx
 import React from 'react';
@@ -165,7 +171,7 @@ export default class ButtonOutlined extends React.Component<any, any> {
     public render(): JSX.Element {
         return (
             <div className="container sample">
-                <IgrButton variant="outlined"><span>Outlined</span></IgrButton>
+                <IgrButton variant="outlined">Outlined</IgrButton>
             </div>
         );
     }
@@ -187,6 +193,16 @@ Analogically, we can switch to `flat` variant.
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+.container {
+  background: var(--ig-surface-600);
+}
+
+igc-button {
+  width: 40%;
+  margin: auto;
+  background: var(--ig-surface-50);
+}
 ```
 ```tsx
 import React from 'react';
@@ -204,7 +220,7 @@ export default class ButtonFlat extends React.Component<any, any> {
     public render(): JSX.Element {
         return (
             <div className="container sample">
-                <IgrButton variant="flat"><span>Flat</span></IgrButton>
+                <IgrButton variant="flat">Flat</IgrButton>
             </div>
         );
     }
@@ -226,6 +242,11 @@ We can create a floating action button by setting the [`variant`](mcp:get_api_re
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-button {
+  width: 40%;
+  margin: auto;
+}
 ```
 ```tsx
 import React from 'react';
@@ -245,7 +266,7 @@ export default class ButtonFab extends React.Component<any, any> {
             <div className="container sample">
                 <IgrButton variant="fab">
                     <span slot="prefix">+</span>
-                    <span>Add</span>
+                    Add
                 </IgrButton>                    
             </div>
         );
@@ -304,7 +325,12 @@ The result of implementing the above code should look like the following:
 .button-container {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     margin-top: 20px;
+}
+
+.container {
+    justify-content: center;
 }
 
 .size-small {
@@ -319,14 +345,9 @@ The result of implementing the above code should look like the following:
     --ig-size: var(--ig-size-large);
 }
 ```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
-```
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import './ButtonSizingStyle.css';
 import { IgrButton, IgrRadio, IgrRadioGroup } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
@@ -342,23 +363,23 @@ export default class ButtonSize extends React.Component<any, any> {
     public render(): JSX.Element {
         return (
             <div className="container sample">
-                <IgrRadioGroup alignment="horizontal" style={{display: 'flex', margin: '0 auto', width: '15%'}}>
+                <IgrRadioGroup alignment="horizontal" style={{display: 'flex', justifyContent: 'center'}}>
                     <IgrRadio name="size" value="small" labelPosition="after" onChange={this.onRadioChange}>
-                        <span>Small</span>
+                        Small
                     </IgrRadio>
                     <IgrRadio name="size" value="medium" labelPosition="after" onChange={this.onRadioChange} checked={this.state.size === "medium"}>
-                        <span>Medium</span>
+                        Medium
                     </IgrRadio>
                     <IgrRadio name="size" value="large" labelPosition="after" onChange={this.onRadioChange}>
-                        <span>Large</span>
+                        Large
                     </IgrRadio>
                 </IgrRadioGroup>
 
                 <div className="button-container">
-                    <IgrButton className={'size-' + this.state.size} variant="flat"><span>Flat</span></IgrButton>
-                    <IgrButton className={'size-' + this.state.size} variant="contained"><span>Contained</span></IgrButton>
-                    <IgrButton className={'size-' + this.state.size} variant="outlined"><span>Outlined</span></IgrButton>
-                    <IgrButton className={'size-' + this.state.size} variant="fab"><span>Like</span></IgrButton>
+                    <IgrButton className={'size-' + this.state.size} variant="flat">Flat</IgrButton>
+                    <IgrButton className={'size-' + this.state.size} variant="contained">Contained</IgrButton>
+                    <IgrButton className={'size-' + this.state.size} variant="outlined">Outlined</IgrButton>
+                    <IgrButton className={'size-' + this.state.size} variant="fab">Like</IgrButton>
                 </div>
             </div>
         );
@@ -394,6 +415,11 @@ Setting the [`download`](mcp:get_api_reference?platform=react&component=IgrButto
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-button {
+  width: 40%;
+  margin: auto;
+}
 ```
 ```tsx
 import React from 'react';
@@ -411,7 +437,7 @@ export default class ButtonDownload extends React.Component<any, any> {
     public render(): JSX.Element {
         return (
             <div className="container sample">
-                 <IgrButton href="" variant="contained" download="url" target="_blank" ><span>Download</span></IgrButton>
+                 <IgrButton href="" variant="contained" download="url" target="_blank">Download</IgrButton>
             </div>
         );
     }
@@ -444,17 +470,18 @@ igc-button::part(base) {
 
 ```css
 igc-button::part(base) {
-    color: #011627;
-}
-
-igc-button::part(base)::before {
-    background-color: #e99221;
-    padding: 18px;
+  background-color: var(--ig-warn-700);
+  color: var(--ig-warn-700-contrast);
 }
 ```
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-button {
+  width: 40%;
+  margin: auto;
+}
 ```
 ```tsx
 import React from 'react';
@@ -473,7 +500,7 @@ export default class ButtonStyling extends React.Component<any, any> {
     public render(): JSX.Element {
         return (
             <div className="container sample">
-                <IgrButton variant="contained"><span>Contained</span></IgrButton>
+                <IgrButton variant="contained">Contained</IgrButton>
             </div>
         );
     }

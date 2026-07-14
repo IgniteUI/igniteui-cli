@@ -81,7 +81,7 @@ Practice all of the above mentioned actions in the demo sample below. Focus any 
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-shadow */
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CellType, IActiveNodeChangeEventArgs, IgxColumnComponent, IgxColumnGroupComponent, IgxGridDetailTemplateDirective, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxEmptyListTemplateDirective, IgxListComponent, IgxListItemComponent, IgxListLineSubTitleDirective, IgxListLineTitleDirective } from 'igniteui-angular/list';
@@ -247,6 +247,7 @@ const summaryCombinations: Item[] = [
             ])
         ])
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPaginatorComponent, IgxGridToolbarComponent, IgxGridDetailTemplateDirective, IgxColumnGroupComponent, IgxColumnComponent, IgxListComponent, IgxListItemComponent, NgClass, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxCheckboxComponent, IgxEmptyListTemplateDirective]
 })
 export class GridKeyboardnavGuide implements OnInit, OnDestroy {
@@ -644,7 +645,7 @@ $custom-checkbox-theme: checkbox-theme(
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-shadow */
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CellType, IgxColumnComponent, IgxColumnGroupComponent, IgxGridToolbarComponent, IgxGridToolbarDirective } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxEmptyListTemplateDirective, IgxListComponent, IgxListItemComponent, IgxListLineSubTitleDirective, IgxListLineTitleDirective } from 'igniteui-angular/list';
@@ -808,6 +809,7 @@ const summaryCombinations: Item[] = [
             ])
         ])
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPaginatorComponent, IgxGridToolbarComponent, IgxColumnComponent, IgxColumnGroupComponent, IgxRowIslandComponent, IgxGridToolbarDirective, IgxListComponent, IgxListItemComponent, NgClass, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxCheckboxComponent, IgxEmptyListTemplateDirective]
 })
 export class HGridKeyboardnavGuide implements OnInit, OnDestroy {
@@ -1251,7 +1253,7 @@ $custom-checkbox-theme: checkbox-theme(
 /* eslint-disable @angular-eslint/component-class-suffix */
 /* eslint-disable @typescript-eslint/naming-convention */
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CellType, IActiveNodeChangeEventArgs, IgxCellTemplateDirective, IgxColumnComponent, IgxColumnGroupComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { IgxEmptyListTemplateDirective, IgxListComponent, IgxListItemComponent, IgxListLineSubTitleDirective, IgxListLineTitleDirective } from 'igniteui-angular/list';
@@ -1426,6 +1428,7 @@ const summaryCombinations: Item[] = [
             ])
         ])
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPaginatorComponent, IgxGridToolbarComponent, IgxColumnComponent, IgxColumnGroupComponent, IgxCellTemplateDirective, IgxListComponent, IgxListItemComponent, NgClass, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxCheckboxComponent, IgxEmptyListTemplateDirective]
 })
 export class TGridKeyboardnavGuide implements OnInit, OnDestroy {
@@ -1835,7 +1838,7 @@ Use the demo below to try out the custom scenarios that we just implemented:
 - Double click or press <kbd>F2</kbd> key on a cell in the `Age` column, change the value to `16` and press <kbd>tab</kbd> key. Prompt message will be shown.
 - Select a cell and press <kbd>Enter</kbd> key a couple of times. Every key press will move the focus to a cell in the next row, under the same column.
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CellType, GridSelectionMode, IGridKeydownEventArgs, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -1846,6 +1849,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-keyboard-navigation-sample',
     styleUrls: ['./tree-grid-keyboard-navigation-sample.component.scss'],
     templateUrl: './tree-grid-keyboard-navigation-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent]
 })
 export class TreeGridKBNavigationComponent implements OnInit {

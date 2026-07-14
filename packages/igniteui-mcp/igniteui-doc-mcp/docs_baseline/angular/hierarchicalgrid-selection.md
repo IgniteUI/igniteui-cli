@@ -12,7 +12,7 @@ With Ignite UI for Angular Hierarchical Grid you can easily select data by using
 The sample below demonstrates the three types of Hierarchical Grid's **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
 <div class="divider--half"></div>
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { GridSelectionMode, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -26,6 +26,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-cell-selection',
     styleUrls: ['./hierarchical-grid-cellSelection.component.scss'],
     templateUrl: 'hierarchical-grid-cellSelection.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent, IgxSnackbarComponent, IgxIconComponent]
 })
 export class HierarchicalGridCellSelectionComponent implements OnInit {

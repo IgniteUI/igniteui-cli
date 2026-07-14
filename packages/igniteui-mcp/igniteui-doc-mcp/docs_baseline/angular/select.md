@@ -15,7 +15,7 @@ Angular Select is a form component used for selecting a single value from a list
 Below is a basic Angular Select example. It has a simple contextual menu that displays a list of several choices opening per click.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
 
@@ -24,6 +24,7 @@ import { IgxLabelDirective } from 'igniteui-angular/input-group';
     selector: 'app-select-sample-1',
     styleUrls: ['select-sample-1.component.scss'],
     templateUrl: 'select-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSelectComponent, IgxLabelDirective, IgxSelectItemComponent]
 })
 export class SelectSample1Component {
@@ -175,7 +176,7 @@ The Select component supports the following directives applicable to the [Input 
 > This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
 import { IgxHintDirective, IgxLabelDirective, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -186,6 +187,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-select-input-directives',
     styleUrls: ['select-input-directives.scss'],
     templateUrl: 'select-input-directives.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSelectComponent, FormsModule, IgxLabelDirective, IgxPrefixDirective, IgxSuffixDirective, IgxIconComponent, IgxHintDirective, IgxSelectItemComponent]
 })
 
@@ -250,7 +252,7 @@ Then in your template file you can iterate over the objects and access their ite
 ```
 
 ```typescript
-import { Component, ElementRef, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSelectComponent, IgxSelectGroupComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -260,6 +262,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-select-sample-2',
     styleUrls: ['select-sample-2.component.scss'],
     templateUrl: 'select-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSelectComponent, IgxLabelDirective, IgxSelectGroupComponent, IgxSelectItemComponent, IgxIconComponent]
 })
 export class SelectSample2Component {
@@ -396,7 +399,7 @@ In this example, there are both header and footer ng-templates defined. In the h
 ```
 
 ```typescript
-import { ChangeDetectorRef, Component, ElementRef, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSelectComponent, IgxSelectFooterDirective, IgxSelectHeaderDirective, IgxSelectItemComponent } from 'igniteui-angular/select';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -407,6 +410,7 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-select-header-footer',
     styleUrls: ['select-header-footer.component.scss'],
     templateUrl: 'select-header-footer.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSelectComponent, IgxLabelDirective, IgxSelectItemComponent, IgxIconComponent, IgxSelectHeaderDirective, IgxButtonGroupComponent, IgxButtonDirective, IgxSelectFooterDirective]
 })
 export class SelectHeaderFooterComponent implements OnInit {
@@ -688,7 +692,7 @@ You can see that we create a [_PositionSettings_](mcp:get_api_reference?platform
 
 
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { AbsoluteScrollStrategy, ConnectedPositioningStrategy, HorizontalAlignment, OverlaySettings, PositionSettings, VerticalAlignment } from 'igniteui-angular/core';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
@@ -699,6 +703,7 @@ import { scaleInTop, scaleOutBottom } from 'igniteui-angular/animations';
     selector: 'app-select-sample-4',
     styleUrls: ['select-sample-4.component.scss'],
     templateUrl: 'select-sample-4.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSelectComponent, IgxLabelDirective, IgxSelectItemComponent]
 })
 export class SelectSample4Component implements OnInit {
@@ -837,7 +842,7 @@ The last step is to pass the custom radio theme in our application:
 ```
 
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { AbsoluteScrollStrategy, ConnectedPositioningStrategy, HorizontalAlignment, OverlaySettings, PositionSettings, VerticalAlignment } from 'igniteui-angular/core';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
@@ -848,6 +853,7 @@ import { scaleInTop, scaleOutBottom } from 'igniteui-angular/animations';
     selector: 'app-select-styling',
     styleUrls: ['select-styling.component.scss'],
     templateUrl: 'select-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSelectComponent, IgxLabelDirective, IgxSelectItemComponent]
 })
 export class SelectStylingComponent implements OnInit {

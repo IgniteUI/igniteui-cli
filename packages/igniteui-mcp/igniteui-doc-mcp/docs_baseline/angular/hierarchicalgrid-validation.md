@@ -24,7 +24,7 @@ To validate that a column input would be set and the value is going to be format
 ```
 The following sample demonstrates how to use the prebuilt `required`, `email` and `min` validator directives in a Hierarchical Grid.
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 import { IgxColumnComponent, IgxColumnMaxValidatorDirective, IgxColumnMinValidatorDirective, IgxColumnRequiredValidatorDirective } from 'igniteui-angular/grids/core';
@@ -35,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-hierarchical-grid-validator-service',
     styleUrls: ['./hierarchical-grid-validator-service.component.scss'],
     templateUrl: './hierarchical-grid-validator-service.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxHierarchicalGridComponent, IgxColumnComponent, IgxColumnRequiredValidatorDirective, IgxRowIslandComponent, IgxColumnMinValidatorDirective, IgxColumnMaxValidatorDirective]
 })
 export class HierarchicalGridValidatorServiceComponent implements OnInit {
@@ -183,7 +184,7 @@ public cellEdit(evt) {
 ### Example
 The below example demonstrates the above-mentioned customization options.
 ```typescript
-import { Component, Directive, Input, ViewChild } from '@angular/core';
+import { Component, Directive, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IGridFormGroupCreatedEventArgs, IgxCellValidationErrorDirective, IgxColumnComponent, IgxColumnRequiredValidatorDirective, IgxGridToolbarComponent, IgxGridToolbarDirective } from 'igniteui-angular/grids/core';
@@ -220,6 +221,7 @@ export function unique(value, index, self) {
     selector: 'app-hierarchical-grid-validator-service-extended',
     styleUrls: ['./hierarchical-grid-validator-service-extended.component.scss'],
     templateUrl: './hierarchical-grid-validator-service-extended.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxColumnComponent, IgxColumnRequiredValidatorDirective, HGridPhoneFormatDirective, IgxCellValidationErrorDirective, NgTemplateOutlet, IgxRowIslandComponent, IgxGridToolbarDirective, IgxGridToolbarComponent, IgxButtonDirective]
 })
 export class HierarchicalGridValidatorServiceExtendedComponent {
@@ -499,7 +501,7 @@ Errors and the detailed messages can be determined based on the row and cell's v
 ### Cross-field example
 The below sample demonstrates cross-field validation in a Hierarchical Grid for both the root and child data.
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CellType, IGridEditEventArgs, IGridFormGroupCreatedEventArgs, IgxCellEditorTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent, IgxColumnRequiredValidatorDirective, IgxGridToolbarComponent, IgxGridToolbarDirective } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -514,6 +516,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'hierarchical-grid-cross-field-validation',
     styleUrls: ['./hierarchical-grid-cross-field-validation.component.scss'],
     templateUrl: 'hierarchical-grid-cross-field-validation.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxTooltipTargetDirective, IgxTooltipDirective, IgxColumnRequiredValidatorDirective, IgxCellEditorTemplateDirective, IgxSelectComponent, ReactiveFormsModule, IgxFocusDirective, IgxSelectItemComponent, IgxRowIslandComponent, IgxGridToolbarDirective, IgxGridToolbarComponent, IgxButtonDirective]
 })
 
@@ -797,7 +800,7 @@ public cellStyles = {
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellValidationErrorDirective, IgxColumnComponent, IgxColumnRequiredValidatorDirective, RowType } from 'igniteui-angular/grids/core';
@@ -810,6 +813,7 @@ import { NgTemplateOutlet } from '@angular/common';
     selector: 'app-hierarchical-grid-validation-style',
     styleUrls: ['./hierarchical-grid-validation-style.component.scss'],
     templateUrl: 'hierarchical-grid-validation-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnRequiredValidatorDirective, IgxCellValidationErrorDirective, NgTemplateOutlet, IgxRowIslandComponent]
 })
 export class HGridValidationStyleComponent {

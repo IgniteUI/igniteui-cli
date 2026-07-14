@@ -52,7 +52,7 @@ The next step is to choose a theme for your application. Selecting the default o
 
 
 
-After completing the above steps, the application structure is generated, a Git repository is initialized, and the project is committed. You will then be asked whether to complete the process or add a new view to your application:
+After completing the above steps, the application structure is generated. The wizard then prompts you to [configure AI coding assistants](#configure-ai-assistants). Once AI configuration is complete, a Git repository is initialized, the project is committed, and you are asked whether to complete the process or add a new view to your application:
 
 
 
@@ -83,3 +83,43 @@ To add more Ignite UI for Angular views to a project later without the wizard, u
 ```bash
 ig add [template] [name]
 ```
+
+## Configure AI assistants
+
+After choosing your framework, project type, template, and theme, the wizard prompts you to configure AI coding assistant integration. This step runs the same logic as `ig ai-config` but is embedded in the project creation flow.
+
+### Choose coding assistants
+
+You will be prompted to select which coding assistants to configure MCP servers for. Use the SPACE key to toggle selections and ENTER to confirm:
+
+
+
+- **Generic** (Claude Code, VS Code, and others) - writes `.mcp.json`
+- **VS Code** (GitHub Copilot) - writes `.vscode/mcp.json`
+- **Cursor** - writes `.cursor/mcp.json`
+- **Gemini** - writes `.gemini/settings.json`
+- **JetBrains Junie** - writes `.junie/mcp/mcp.json`
+- **None** - skips MCP configuration
+
+The default selection is **Generic**. Selecting **None** skips MCP server configuration entirely.
+
+### Choose AI agents
+
+Next, you will be prompted to select which AI agents to configure skill files and instructions for:
+
+
+
+- **Generic** - `.agents/skills/` and `AGENTS.md`
+- **Claude** - `.claude/skills/` and `.claude/CLAUDE.md`
+- **Copilot** - `.github/skills/` and `.github/copilot-instructions.md`
+- **Cursor** - `.cursor/skills/` and `.cursor/rules/cursor.mdc`
+- **Codex** - `.codex/skills/` and `.codex/instructions.md`
+- **Windsurf** - `.windsurf/skills/` and `.windsurf/rules/guidelines.md`
+- **Gemini** - `.gemini/skills/` and `.gemini/GEMINI.md`
+- **Junie** - `.junie/skills/` and `.junie/guidelines.md`
+- **None** - skips skill files and instructions
+
+The default selections are **Generic** and **Claude**. Selecting **None** skips agent configuration entirely.
+
+> [!NOTE]
+> To skip AI configuration prompts entirely during non-interactive project creation, pass `--assistants none --agents none` to `ig new`. To re-run AI configuration later, use `ig ai-config` from the project root.

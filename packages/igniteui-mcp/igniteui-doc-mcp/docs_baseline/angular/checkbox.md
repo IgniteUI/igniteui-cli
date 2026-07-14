@@ -17,13 +17,14 @@ The Ignite UI for Angular Checkbox component is a selection control that allows 
 See the checkbox in action in the following Angular Checkbox example below.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
 
 @Component({
     selector: 'app-checkbox-sample-1',
     styleUrls: ['./checkbox-sample-1.component.scss'],
     templateUrl: './checkbox-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCheckboxComponent]
 })
 export class CheckboxSample1Component { }
@@ -148,7 +149,7 @@ igx-checkbox {
 
 The final result would be something like that:
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
 
@@ -156,6 +157,7 @@ import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
     selector: 'app-checkbox-sample-2',
     styleUrls: ['./checkbox-sample-2.component.scss'],
     templateUrl: './checkbox-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCheckboxComponent]
 })
 export class CheckboxSample2Component {
@@ -276,7 +278,7 @@ public toggleAll() {
 
 After all that is done, our application should look like this:
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
 import { FormsModule } from '@angular/forms';
 
@@ -285,6 +287,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-checkbox-sample-3',
     styleUrls: ['./checkbox-sample-3.component.scss'],
     templateUrl: './checkbox-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCheckboxComponent, FormsModule]
 })
 export class CheckboxSample3Component {
@@ -479,7 +482,7 @@ Finally, **include** the custom theme in your application:
 In the sample below, you can see how using the checkbox component with customized CSS variables allows you to create a design that visually resembles the checkbox used in the [`SAP UI5`](https://ui5.sap.com/#/entity/sap.m.CheckBox/sample/sap.m.sample.CheckBox) design system.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
 import { THEME_TOKEN, ThemeToken } from 'igniteui-angular/core';
 
@@ -488,6 +491,7 @@ import { THEME_TOKEN, ThemeToken } from 'igniteui-angular/core';
   styleUrls: ['./checkbox-styling.component.scss'],
   templateUrl: './checkbox-styling.component.html',
   providers: [{ provide: THEME_TOKEN, useFactory: () => new ThemeToken('fluent') }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [IgxCheckboxComponent]
 })
 export class CheckboxStylingComponent {

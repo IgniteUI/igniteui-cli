@@ -22,7 +22,7 @@ The Tree Grid component in Ignite UI for Angular provides the **Column Moving** 
 ```
 ## Angular Tree Grid Column Moving Overview Example
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellHeaderTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -35,6 +35,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-column-moving-sample',
     styleUrls: ['./tree-grid-column-moving-sample.component.scss'],
     templateUrl: './tree-grid-column-moving-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCellHeaderTemplateDirective, IgxIconComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent]
 })
 export class TreeGridColumnMovingSampleComponent {
@@ -123,7 +124,7 @@ export class TreeGridColumnMovingSampleComponent {
 ```
 ## API
 In addition to the drag and drop functionality, the Column Moving feature also provides two API methods to allow moving a column/reordering columns programmatically:
-[`moveColumn`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `position` (representing a [`DropPosition`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/enums/dropposition.html) value), which determines whether to place the column before or after the target column.
+[`moveColumn`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `position` (representing a [`DropPosition`](mcp:get_api_reference?platform=angular&component=DropPosition) value), which determines whether to place the column before or after the target column.
 ```typescript
 // Move the ID column after the Name column
 const idColumn = grid.getColumnByName("ID");
@@ -179,7 +180,7 @@ The last step is to **include** the component mixins with its respective theme:
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellHeaderTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -192,6 +193,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-column-moving-styled-sample',
     styleUrls: ['./tree-grid-column-moving-styled-sample.component.scss'],
     templateUrl: './tree-grid-column-moving-styled-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCellHeaderTemplateDirective, IgxIconComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent]
 })
 export class TreeGridColumnMovingStyledSampleComponent {

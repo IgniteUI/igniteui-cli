@@ -10,7 +10,7 @@ IgniteUI for [Angular Grid component](https://www.infragistics.com/products/igni
 ## Angular Grid Filtering Example
 The sample below demonstrates Grid's **Quick filtering** user experience. API [filter()](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=filter) method is used to apply _contains_ condition on the _ProductName column_ through external _igxInputGroup component_.  
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxStringFilteringOperand } from 'igniteui-angular/core';
 import { IgxInputDirective, IgxInputGroupComponent } from 'igniteui-angular/input-group';
@@ -23,6 +23,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-grid-sample',
     styleUrls: ['./grid-filtering-sample.component.scss'],
     templateUrl: 'grid-filtering-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxInputDirective, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, CurrencyPipe]
 })
 
@@ -317,7 +318,7 @@ export class BooleanFilteringOperand extends IgxBooleanFilteringOperand {
 </igx-grid>
 ```
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IFilteringOperation, IgxBooleanFilteringOperand, IgxStringFilteringOperand } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -329,6 +330,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-grid-custom-filtering',
     styleUrls: ['./grid-custom-filtering.component.scss'],
     templateUrl: './grid-custom-filtering.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, CurrencyPipe]
 })
 export class GridCustomFilteringComponent implements OnInit {
@@ -438,7 +440,7 @@ export class BooleanFilteringOperand extends IgxBooleanFilteringOperand {
 ## Re-templating filter cell
 You can add a template marked with `igxFilterCellTemplate` in order to retemplate the filter cell. In the sample below, an input is added for the string columns and IgxDatePicker for the date column. When the user types or selects a value, a filter with contains operator for string columns and equals operator for date columns, is applied using grid's public API.
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnType, GridColumnDataType, IgxDateFilteringOperand, IgxNumberFilteringOperand, IgxPickerClearComponent, IgxPickerToggleComponent, IgxStringFilteringOperand } from 'igniteui-angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxFilterCellTemplateDirective } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -453,6 +455,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-grid-sample',
     styleUrls: ['./grid-filtering-template-sample.component.scss'],
     templateUrl: 'grid-filtering-template-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxFilterCellTemplateDirective, IgxInputGroupComponent, IgxPrefixDirective, IgxIconComponent, IgxInputDirective, IgxSuffixDirective, IgxDatePickerComponent, IgxPickerToggleComponent, IgxPickerClearComponent, CurrencyPipe]
 })
 
@@ -705,7 +708,7 @@ The last step is to **include** the component mixins, each with its respective t
 ```
 ### Demo
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DATA } from '../../data/nwindData';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -716,6 +719,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-grid-filtering-style',
     styleUrls: ['./grid-filtering-style.component.scss'],
     templateUrl: './grid-filtering-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, CurrencyPipe]
 })
 export class GridFilteringStyleComponent implements OnInit {

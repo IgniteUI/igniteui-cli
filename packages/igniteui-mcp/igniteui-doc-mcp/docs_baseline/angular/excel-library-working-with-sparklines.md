@@ -231,7 +231,6 @@ export class AppComponent implements OnInit {
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Supported Sparklines

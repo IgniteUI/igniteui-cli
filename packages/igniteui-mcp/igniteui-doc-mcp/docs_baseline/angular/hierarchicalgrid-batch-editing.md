@@ -10,13 +10,13 @@ _premium: true
 @@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') {
 The Batch Editing feature of the IgxHierarchicalGrid is based on the [`TransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxTransactionService` and details how it is implemented.
 }
-In order to use the [`HierarchicalTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicaltransactionservice.html) with [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent), but have it accumulating separate transaction logs for each island, a service factory should be provided instead. One is exported and ready for use as [`IgxHierarchicalTransactionServiceFactory`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#igxhierarchicaltransactionservicefactory).
+In order to use the [`HierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) with [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent), but have it accumulating separate transaction logs for each island, a service factory should be provided instead. One is exported and ready for use as [`IgxHierarchicalTransactionServiceFactory`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/index.html#igxhierarchicaltransactionservicefactory).
 Below is a detailed example of how is Batch Editing enabled for the Hierarchical Grid component.
 ## Angular Hierarchical Grid Batch Editing and Transactions Example
 The following sample demonstrates a scenario, where the hierarchicalGrid has [`batchEditing`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=batchEditing) enabled and has row editing enabled. The latter will ensure that transaction will be added after the entire row edit is confirmed.
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { Transaction } from 'igniteui-angular/core';
@@ -34,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-hierarchical-grid-batch-editing',
     styleUrls: ['./hierarchical-grid-batch-editing.component.scss'],
     templateUrl: 'hierarchical-grid-batch-editing.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxGridToolbarDirective, IgxGridToolbarComponent, IgxDialogComponent, IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxCheckboxComponent, IgxGridComponent]
 })
 

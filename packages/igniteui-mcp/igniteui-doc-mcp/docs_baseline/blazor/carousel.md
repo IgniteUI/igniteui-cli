@@ -414,7 +414,7 @@ igc-card-header {
             <div class="slide-wrapper">
                 <IgbCard>
                     <IgbCardHeader>
-                        <h3 slot="title">Ignite UI for Angular</h3>
+                        <span slot="title">Ignite UI for Angular</span>
                     </IgbCardHeader>
                     <IgbCardContent>
                         <p>30+ Material-based Angular components to code speedy web apps faster.</p>
@@ -434,7 +434,7 @@ igc-card-header {
             <div class="slide-wrapper">
                 <IgbCard>
                     <IgbCardHeader>
-                        <h3 slot="title">Ignite UI for Javascript</h3>
+                        <span slot="title">Ignite UI for Javascript</span>
                     </IgbCardHeader>
                     <IgbCardContent>
                         <p>A complete JavaScript UI library empowering you to build data-rich responsive web apps.</p>
@@ -454,7 +454,7 @@ igc-card-header {
             <div class="slide-wrapper">
                 <IgbCard>
                     <IgbCardHeader>
-                        <h3 slot="title">Ultimate UI for ASP.NET</h3>
+                        <span slot="title">Ultimate UI for ASP.NET</span>
                     </IgbCardHeader>
                     <IgbCardContent>
                         <p>Build full-featured business apps with the most versatile set of ASP.NET AJAX UI controls.</p>

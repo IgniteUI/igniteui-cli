@@ -87,7 +87,7 @@ $my-light-palette: palette(
 Here is an example showcasing the custom theming from above.
 
 ```typescript
-import { Component, OnInit, inject, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, inject, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { defineComponents, IgcSwitchComponent } from 'igniteui-webcomponents';
 import { GridLiteDataService, ProductInfo } from '../grid-lite-data.service';
@@ -101,6 +101,7 @@ defineComponents(IgcSwitchComponent);
   templateUrl: './grid-lite-styling-custom.component.html',
   styleUrls: ['./grid-lite-styling-custom.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
     IgxGridLiteComponent,

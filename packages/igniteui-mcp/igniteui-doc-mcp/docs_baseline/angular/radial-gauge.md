@@ -426,7 +426,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Dependencies
@@ -589,7 +588,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Scale
 
 The scale is visual element that highlights full range of values in the gauge which can be created by supplying [`minimumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minimumValue) and [`maximumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=maximumValue) values. Together with backing, it defines overall shape of gauge. The [`scaleStartAngle`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleStartAngle) and [`scaleEndAngle`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleEndAngle) properties define bounds of arc of the scale. While, the [`scaleSweepDirection`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleSweepDirection) property specifies whether the scale sweeps in clockwise or counter-clockwise direction. You can customize appearance of the scale by setting [`scaleBrush`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleBrush), [`scaleStartExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleStartExtent), and [`scaleEndExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=scaleEndExtent) properties.
@@ -678,7 +676,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Labels and Titles
 
@@ -769,7 +766,6 @@ export class AppComponent implements OnInit {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Title & Subtitle
 
@@ -885,7 +881,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Tick Marks
 
 Tick marks are thin lines radiating from the center of the radial gauge. There are two types of tick marks: major and minor. Major tick marks are displayed at the [`interval`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=interval) between the [`minimumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minimumValue) and [`maximumValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=maximumValue) properties. Use the [`minorTickCount`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minorTickCount) property to specify the number of minor tick marks displayed between each major tick mark. You can control the length of tick marks by setting a fraction (between 0 and 1) to [`tickStartExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=tickStartExtent), [`tickEndExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=tickEndExtent), [`minorTickStartExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minorTickStartExtent), and [`minorTickEndExtent`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=minorTickEndExtent) properties.
@@ -985,7 +980,6 @@ export class AppComponent implements OnInit {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Ranges
 
@@ -1090,7 +1084,6 @@ export class AppComponent implements OnInit {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Needle
 
@@ -1202,7 +1195,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Highlight Needle
 
 The radial gauge can be modified to show a second needle. This will make the main needle's [`value`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=value) appear with a lower opacity. To enable this first set [`highlightValueDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent&member=highlightValue).
@@ -1295,7 +1287,6 @@ export class AppComponent implements OnInit {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Summary
 

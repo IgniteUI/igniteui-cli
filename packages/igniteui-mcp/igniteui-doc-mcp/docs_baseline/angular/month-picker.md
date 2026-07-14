@@ -15,7 +15,7 @@ _tocName: Month Picker
 What you see here is a basic Angular Month Picker example with a the component's default view, enabling users to select the year and the month.  
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCardComponent } from 'igniteui-angular/card';
 import { IgxMonthPickerComponent } from 'igniteui-angular/calendar';
 
@@ -23,6 +23,7 @@ import { IgxMonthPickerComponent } from 'igniteui-angular/calendar';
     selector: 'app-monthpicker-sample-1',
     styleUrls: ['./monthpicker-sample-1.component.scss'],
     templateUrl: './monthpicker-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCardComponent, IgxMonthPickerComponent]
 })
 export class MonthpickerSample1Component {
@@ -182,7 +183,7 @@ Here is an example of localizing and formatting the month picker component:
 
 ```typescript
 import { registerLocaleData } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IFormattingOptions, IgxMonthPickerComponent } from 'igniteui-angular/calendar';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
 import { IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -197,6 +198,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-monthpicker-sample-3',
     styleUrls: ['./monthpicker-sample-3.component.scss'],
     templateUrl: './monthpicker-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSelectComponent, FormsModule, IgxPrefixDirective, IgxSelectItemComponent, IgxCardComponent, IgxMonthPickerComponent]
 })
 export class MonthpickerSample3Component implements OnInit {
@@ -303,13 +305,14 @@ After everything's done, your component should look like this:
 ### Demo
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxMonthPickerComponent } from 'igniteui-angular/calendar';
 
 @Component({
     selector: 'app-monthpicker-styling',
     styleUrls: ['./monthpicker-styling.component.scss'],
     templateUrl: './monthpicker-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxMonthPickerComponent]
 })
 export class MonthpickerStylingComponent {

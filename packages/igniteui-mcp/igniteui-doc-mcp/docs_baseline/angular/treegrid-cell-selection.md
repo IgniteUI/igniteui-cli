@@ -14,7 +14,7 @@ But let's dive deeper in each of these options.
 The sample below demonstrates the three types of Tree Grid's **cell selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box.
 <div class="divider--half"></div>
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -28,6 +28,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-cell-selection',
     styleUrls: ['./tree-grid-cellSelection.component.scss'],
     templateUrl: 'tree-grid-cellSelection.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxSnackbarComponent, IgxIconComponent]
 })
 export class TreeGridCellSelectionComponent implements OnInit {
@@ -144,7 +145,7 @@ How to select cells:
 - Continuous multiple cell selection is available, by clicking with the mouse and dragging.
 #### Demo
 ```typescript
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxToastComponent } from 'igniteui-angular/toast';
@@ -158,6 +159,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-multi-cell-selection-sample',
     styleUrls: ['./tree-grid-multi-cell-selection.component.scss'],
     templateUrl: './tree-grid-multi-cell-selection.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxGridComponent, IgxToastComponent]
 })
 export class TreeGridMultiCellSelectionComponent {
@@ -418,7 +420,7 @@ Afterwards, all we need to do is include the mixin in our component's style (cou
 With the custom theme applied, the selected grid cells are highlighted with our selected colors:
 ### Demo
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { ORDERS_DATA } from '../data/orders';
@@ -428,6 +430,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-multi-cell-selection-style-sample',
     styleUrls: ['./tree-grid-multi-cell-selection-style.component.scss'],
     templateUrl: './tree-grid-multi-cell-selection-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class TreeGridMultiCellSelectionStyleComponent {

@@ -16,7 +16,7 @@ Drag and drop icon to reposition it.
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { IgxDragDirective, IgxDropDirective } from 'igniteui-angular/directives';
 
@@ -24,6 +24,7 @@ import { IgxDragDirective, IgxDropDirective } from 'igniteui-angular/directives'
     selector: 'app-icons-sample',
     styleUrls: ['./icons-sample.component.scss'],
     templateUrl: './icons-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDragDirective, IgxDropDirective]
 })
 
@@ -298,7 +299,7 @@ You can specify an element that is a child of the `igxDrag` by which to drag, si
 Drag the dialog using the handle in the following demo.
 
 ```typescript
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GlobalPositionStrategy, NoOpScrollStrategy, OverlaySettings } from 'igniteui-angular/core';
 import { IgxButtonDirective, IgxDragDirective, IgxDragHandleDirective, IgxDragLocation, IgxToggleDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -307,6 +308,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-drag-dialog-sample',
     templateUrl: './drag-dialog-sample.component.html',
     styleUrls: ['./drag-dialog-sample.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleDirective, IgxDragDirective, IgxIconComponent, IgxDragHandleDirective]
 })
 export class DragDialogSampleComponent {
@@ -423,11 +425,12 @@ Reorder items in the list using the drag handle. While dragging a list item othe
 
 ```typescript
 import {
-    Component,
-    ElementRef,
-    QueryList,
-    ViewChild,
-    ViewChildren
+  Component,
+  ElementRef,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { IDragBaseEventArgs, IDragMoveEventArgs, IgxDragDirective, IgxDragHandleDirective, IgxDragLocation, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxListActionDirective, IgxListComponent, IgxListItemComponent, IgxListLineSubTitleDirective, IgxListLineTitleDirective } from 'igniteui-angular/list';
@@ -438,6 +441,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-list-reorder-sample',
     templateUrl: './list-reorder-sample.component.html',
     styleUrls: ['./list-reorder-sample.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxListComponent, IgxListItemComponent, IgxDropDirective, IgxDragDirective, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxIconComponent, IgxDragHandleDirective, IgxListActionDirective]
 })
 export class ListReorderSampleComponent {
@@ -684,7 +688,7 @@ Drag e-mails on the right into the folders on the left.
 
 
 ```typescript
-import { ChangeDetectorRef, Component, Input, Renderer2, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, Renderer2, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxListComponent, IgxListItemComponent, IgxListLineSubTitleDirective, IgxListLineTitleDirective, IgxListThumbnailDirective } from 'igniteui-angular/list';
 import { IgxDragDirective, IgxDropDirective } from 'igniteui-angular/directives';
@@ -696,6 +700,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-email-sample',
     templateUrl: './email-sample.component.html',
     styleUrls: ['./email-sample.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconComponent, IgxListComponent, IgxListItemComponent, IgxDropDirective, IgxListThumbnailDirective, IgxListLineTitleDirective, IgxDragDirective, IgxListLineSubTitleDirective, IgxCheckboxComponent, FormsModule]
 })
 
@@ -927,7 +932,7 @@ Drag items around the kanban board.
 ```typescript
 /* eslint-disable no-shadow */
 /* eslint-disable @typescript-eslint/naming-convention */
-import { ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IDropBaseEventArgs, IDropDroppedEventArgs, IgxDragDirective, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxChipComponent } from 'igniteui-angular/chips';
 import { IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective } from 'igniteui-angular/card';
@@ -948,6 +953,7 @@ interface IListItem {
     selector: 'app-kanban-sample',
     templateUrl: './kanban-sample.component.html',
     styleUrls: ['./kanban-sample.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDropDirective, IgxChipComponent, IgxCardComponent, IgxDragDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardContentDirective]
 })
 export class KanbanSampleComponent implements OnInit {

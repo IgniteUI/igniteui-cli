@@ -10,7 +10,7 @@ _premium: true
 **IgxGrid** design is based on [Material Design Guidelines](https://material.io/design). We currently provide an option to choose between predefined set of size options that will bring a small, medium, or large view respectively. By selecting the right size for your Material UI table / Material UI grid you can significantly improve the user experience when interacting with large amounts of content.
 ## Angular Grid Size Example
 ```typescript
-import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxColumnGroupComponent, IgxNumberSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
@@ -39,6 +39,7 @@ class CustomNumberSummary {
     selector: 'app-grid-displaydensity-sample',
     styleUrls: ['./grid-displaydensity-sample.component.scss'],
     templateUrl: './grid-displaydensity-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnGroupComponent, IgxColumnComponent, IgxCellTemplateDirective, DatePipe]
 })
 export class GridDisplayDensitySampleComponent implements OnInit {

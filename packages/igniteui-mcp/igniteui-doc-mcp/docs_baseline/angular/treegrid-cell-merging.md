@@ -10,7 +10,7 @@ _premium: true
 The Ignite UI for Angular Tree Grid provides a Cell Merging feature that combines two or more adjacent cells with the same value into a single, larger cell. Merging is applied vertically within a column and helps improve readability by reducing duplicate values. The feature can be configured to merge cells either by default matching data values or by applying a custom condition.
 ## Angular Cell Merging Example
 ```typescript
-import { ChangeDetectorRef, Component, inject, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { GridCellMergeMode, IgxColumnComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-tree-grid-cell-merge-sample',
     styleUrls: ['./tree-grid-cell-merge-sample.component.scss'],
     templateUrl: './tree-grid-cell-merge-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         IgxTreeGridComponent,
         IgxPreventDocumentScrollDirective,
@@ -208,7 +209,7 @@ protected customStrategy = new MyCustomStrategy();
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { GridCellMergeMode, IgxColumnComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
@@ -222,6 +223,7 @@ import { generateEmployeeDetailedFlatData2 } from '../data/employees-flat-detail
     selector: 'app-tree-grid-cell-merge-custom-sample',
     styleUrls: ['./tree-grid-cell-merge-custom-sample.component.scss'],
     templateUrl: './tree-grid-cell-merge-custom-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         IgxTreeGridComponent,
         IgxPreventDocumentScrollDirective,

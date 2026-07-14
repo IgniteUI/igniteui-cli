@@ -46,15 +46,15 @@ export default class Overview extends React.Component<any, any> {
       <div className="container sample">
         <IgrTabs>
           <IgrTab>
-            <span slot="label"><IgrIcon name='home' collection="material"></IgrIcon></span>
+            <IgrIcon slot="label" name='home' collection="material"></IgrIcon>
             <span>Home tab panel</span>
           </IgrTab>
           <IgrTab>
-             <span slot="label"><IgrIcon name='search' collection="material"></IgrIcon></span>
+             <IgrIcon slot="label" name='search' collection="material"></IgrIcon>
              <span>Search tab panel</span>
           </IgrTab>
           <IgrTab>
-             <span slot="label"><IgrIcon name='favorite' collection="material"></IgrIcon></span>
+             <IgrIcon slot="label" name='favorite' collection="material"></IgrIcon>
              <span>Favorite tab panel</span>
           </IgrTab>
         </IgrTabs>
@@ -134,6 +134,10 @@ If the space is not enough to fit all tabs, scroll buttons are displayed.
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-radio-group {
+    padding-block-end: 12px;
+}
 ```
 ```tsx
 import React from "react";
@@ -434,15 +438,15 @@ export default class TabsStyling extends React.Component<any, any> {
       <div className="container sample">
         <IgrTabs>
           <IgrTab>
-            <span slot="label"><IgrIcon name='home' collection="material"></IgrIcon></span>
+            <IgrIcon slot="label" name='home' collection="material"></IgrIcon>
             <span>Home tab panel</span>
           </IgrTab>
           <IgrTab>
-             <span slot="label"><IgrIcon name='search' collection="material"></IgrIcon></span>
+             <IgrIcon slot="label" name='search' collection="material"></IgrIcon>
              <span>Search tab panel</span>
           </IgrTab>
           <IgrTab>
-             <span slot="label"><IgrIcon name='favorite' collection="material"></IgrIcon></span>
+             <IgrIcon slot="label" name='favorite' collection="material"></IgrIcon>
              <span>Favorite tab panel</span>
           </IgrTab>
         </IgrTabs>

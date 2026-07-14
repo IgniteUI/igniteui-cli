@@ -13,7 +13,7 @@ _tocName: Slider
 ## Angular Slider Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSliderComponent, IgxSliderType } from 'igniteui-angular/slider';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective } from 'igniteui-angular/input-group';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-slider-sample-1',
     styleUrls: ['./slider-sample-1.component.scss'],
     templateUrl: './slider-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective, FormsModule, IgxInputDirective]
 })
 export class SliderSample1Component {
@@ -208,7 +209,7 @@ We should now see two-way data binding between our two components.
 
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxSliderComponent } from 'igniteui-angular/slider';
 import { FormsModule } from '@angular/forms';
@@ -217,6 +218,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-slider-sample-3',
     styleUrls: ['./slider-sample-3.component.scss'],
     templateUrl: './slider-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent, FormsModule, IgxInputGroupComponent, IgxInputDirective, IgxLabelDirective, IgxSuffixDirective]
 })
 export class SliderSample3Component {
@@ -295,7 +297,7 @@ If the sample is configured properly, dragging the slider thumb should update th
 
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSliderComponent } from 'igniteui-angular/slider';
 import { FormsModule } from '@angular/forms';
 
@@ -303,6 +305,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-slider-sample-2',
     styleUrls: ['./slider-sample-2.component.scss'],
     templateUrl: './slider-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent, FormsModule]
 })
 export class SliderSample2Component implements OnInit {
@@ -384,7 +387,7 @@ export class SampleComponent {
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSliderComponent, IgxSliderType } from 'igniteui-angular/slider';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective } from 'igniteui-angular/input-group';
 import { FormsModule } from '@angular/forms';
@@ -393,6 +396,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-slider-sample-4',
     styleUrls: ['./slider-sample-4.component.scss'],
     templateUrl: './slider-sample-4.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective, FormsModule, IgxInputDirective]
 })
 export class SliderSample4Component {
@@ -459,13 +463,14 @@ This can be done by setting [`lowerBound`](mcp:get_api_reference?platform=angula
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSliderComponent, IgxSliderType } from 'igniteui-angular/slider';
 
 @Component({
     selector: 'app-slider-sample-5',
     styleUrls: ['./slider-sample-5.component.scss'],
     templateUrl: './slider-sample-5.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent]
 })
 export class SliderSample5Component {
@@ -533,13 +538,14 @@ public labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturd
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSliderComponent, IgxSliderType, IgxThumbFromTemplateDirective, IgxThumbToTemplateDirective } from 'igniteui-angular/slider';
 
 @Component({
     selector: 'app-slider-sample-6',
     styleUrls: ['./slider-sample-6.component.scss'],
     templateUrl: './slider-sample-6.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent, IgxThumbFromTemplateDirective, IgxThumbToTemplateDirective]
 })
 export class SliderSample6Component {
@@ -616,13 +622,14 @@ public type = SliderType.RANGE;
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSliderComponent, IgxSliderType } from 'igniteui-angular/slider';
 
 @Component({
     selector: 'app-discrete-slider-bottom-ticks',
     styleUrls: ['./discrete-slider-ticks-bottom.component.scss'],
     templateUrl: './discrete-slider-ticks-bottom.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent]
 })
 export class SliderDiscreteTicksBottomComponent {
@@ -673,13 +680,14 @@ We also rotate all viable labels by setting the [`TickLabelsOrientation`](mcp:ge
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSliderComponent, IgxSliderType, TickLabelsOrientation } from 'igniteui-angular/slider';
 
 @Component({
     selector: 'app-slider-ticks-bottomtotop-labels',
     styleUrls: ['./slider-ticks-bottomtotop-labels.component.scss'],
     templateUrl: './slider-ticks-bottomtotop-labels.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent]
 })
 export class SliderTicksBottomtotopLabelsComponent {
@@ -744,13 +752,14 @@ This mirrors the visualization of the **ticks** and displays them above and belo
 
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSliderComponent, TicksOrientation } from 'igniteui-angular/slider';
 
 @Component({
     selector: 'app-slider-bottom-ticks',
     styleUrls: ['./slider-secondary-ticks-mirror.component.scss'],
     templateUrl: './slider-secondary-ticks-mirror.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent]
 })
 export class SliderSecondaryTicksMirrorComponent {
@@ -802,13 +811,14 @@ This example show how the tick labels and the thumb label works together.
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSliderComponent, IgxSliderType } from 'igniteui-angular/slider';
 
 @Component({
     selector: 'app-slider-timeframe',
     styleUrls: ['./slider-timeframe.component.scss'],
     templateUrl: './slider-timeframe.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent]
 })
 export class SliderTimeframeComponent {
@@ -875,13 +885,14 @@ In the **tickLabel** callback above, we are rounding the **value** of every **pr
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSliderComponent, IgxTickLabelTemplateDirective } from 'igniteui-angular/slider';
 
 @Component({
     selector: 'app-tick-labels-template',
     styleUrls: ['./tick-labels-template.component.scss'],
     templateUrl: './tick-labels-template.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent, IgxTickLabelTemplateDirective]
 })
 export class TickLabelsTemplateComponent {
@@ -1129,13 +1140,14 @@ The last step is to include the newly created component theme in our application
 This is the final result from applying our new theme.
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSliderComponent, TicksOrientation } from 'igniteui-angular/slider';
 
 @Component({
     selector: 'app-slider-styling',
     styleUrls: ['./app-slider-styling.component.scss'],
     templateUrl: './app-slider-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent]
 })
 export class AppSliderStylingComponent {

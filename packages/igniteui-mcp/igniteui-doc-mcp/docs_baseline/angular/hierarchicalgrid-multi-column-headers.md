@@ -11,7 +11,7 @@ _premium: true
 [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) supports `multi-column headers` which allows you to group columns by placing them under a common multi headers. Each multi-column headers group could be a representation of combinations between other groups or columns within the Material UI grid.
 ## Angular Hierarchical Grid Multi-column Headers Overview Example
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -22,6 +22,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-multi-column',
     styleUrls: ['./hierarchical-grid-multi-column.component.scss'],
     templateUrl: 'hierarchical-grid-multi-column.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnGroupComponent, IgxRowIslandComponent, IgxButtonDirective]
 })
 
@@ -207,7 +208,7 @@ If you want to re-use a single template for several column groups, you could set
 ```
 The following sample demonstrates how to implement collapsible column groups using header templates.
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -218,6 +219,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-multi-column-template',
     styleUrls: ['./hierarchical-grid-multi-column-template.component.scss'],
     templateUrl: 'hierarchical-grid-multi-column-template.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnGroupComponent, IgxRowIslandComponent]
 })
 
@@ -369,7 +371,7 @@ The last step is to **include** the component mixins:
 ```
 ### Demo
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CUSTOMERS } from '../../data/hierarchical-data';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
@@ -379,6 +381,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-multi-column-styling',
     styleUrls: ['./hierarchical-grid-multi-column-styling.component.scss'],
     templateUrl: 'hierarchical-grid-multi-column-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnGroupComponent, IgxRowIslandComponent]
 })
 
@@ -450,19 +453,18 @@ export class HGridMultiHeadersStylingComponent implements OnInit {
 </div>
 ```
 ```scss
-@use "layout.scss";
-@use "igniteui-angular/theming" as *;
+@use 'layout.scss';
+@use 'igniteui-angular/theming' as *;
 
 $custom-theme: grid-theme(
-  $header-background: #e0f3ff,
-  $header-text-color: #e41c77,
-  $header-border-width: 1px,
-  $header-border-style: solid,
-  $header-border-color: rgba(0, 0, 0, 0.08)
+	$header-background: #f8f8ed,
+	$header-text-color: #7a6551,
+	$header-border-style: dashed,
+	$header-border-color: rgba(0, 0, 0, 0.08)
 );
 
 :host {
-  @include tokens($custom-theme);
+	@include tokens($custom-theme);
 }
 ```
 >[!NOTE]

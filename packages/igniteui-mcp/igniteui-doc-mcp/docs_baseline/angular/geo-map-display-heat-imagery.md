@@ -151,7 +151,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 When a [`IgxShapeDataSource`](mcp:get_api_reference?platform=angular&component=IgxShapeDataSource) loads its shape files, it converts that data into [`IgxShapefileRecord`](mcp:get_api_reference?platform=angular&component=IgxShapefileRecord) objects. These objects can be retrieved from the `GetPointData()` method of the [`IgxShapeDataSource`](mcp:get_api_reference?platform=angular&component=IgxShapeDataSource) and can then be used to create a heat-map through usage of a [`IgxTileGeneratorMapImagery`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxtilegeneratormapimagery.html) object with a [`IgxHeatTileGenerator`](mcp:get_api_reference?platform=angular&component=IgxHeatTileGenerator) assigned to its `TileGenerator` property. This [`IgxTileGeneratorMapImagery`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxtilegeneratormapimagery.html) can then be used in a [`IgxGeographicTileSeriesComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographictileseriescomponent.html) as its [`tileImagery`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_maps.igxgeographictileseriescomponent.html#tileImagery) source.

@@ -10,7 +10,7 @@ _premium: true
 One or multiple rows can be pinned to the top or bottom of the Angular UI Grid. **Row Pinning** in Ignite UI for Angular allows end-users to pin rows in a particular order, duplicating them in a special area that is always visible even when they scroll the Grid vertically. The Material UI Grid has a built-in row pinning UI, which is enabled by initializing an `igxActionStrip` component in the context of Grid. In addition, you can define custom UI and change the pin state of the rows via the Row Pinning API.
 ## Angular Grid Row Pinning Example
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IPinningConfig, IgxColumnComponent, IgxGridEditingActionsComponent, IgxGridPinningActionsComponent, RowPinningPosition } from 'igniteui-angular/grids/core';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -22,6 +22,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-row-pinning',
     templateUrl: 'grid-row-pinning.component.html',
     styleUrls: ['./grid-row-pinning.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxActionStripComponent, IgxGridPinningActionsComponent, IgxGridEditingActionsComponent]
 })
 
@@ -158,7 +159,7 @@ public togglePinning(row: IgxGridRow, event) {
 ```
 #### Demo
 ```typescript
-import { AfterViewInit, Component, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
@@ -174,6 +175,7 @@ const FILTERING_ICONS_FONT_SET = 'filtering-icons';
     selector: 'app-grid-row-pinning-extra-column',
     templateUrl: 'grid-row-pinning-extra-column.component.html',
     styleUrls: ['./grid-row-pinning-extra-column.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxIconComponent]
 })
 
@@ -301,7 +303,7 @@ public onDropAllowed(args) {
 This would allow reordering the rows and moving them between the pinned and unpinned row collections.
 #### Demo
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IPinningConfig, IRowDragStartEventArgs, IgxColumnComponent, IgxGridPinningActionsComponent, IgxRowDirective, RowPinningPosition, RowType } from 'igniteui-angular/grids/core';
@@ -313,6 +315,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-row-pinning-drag-sample',
     styleUrls: ['./grid-row-pinning-drag.component.scss'],
     templateUrl: 'grid-row-pinning-drag.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxDropDirective, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxActionStripComponent, IgxGridPinningActionsComponent]
 })
 
@@ -482,7 +485,7 @@ The last step is to pass the custom grid theme:
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IPinningConfig, IgxColumnComponent, IgxGridPinningActionsComponent, RowPinningPosition } from 'igniteui-angular/grids/core';
 import { IgxActionStripComponent } from 'igniteui-angular/action-strip';
@@ -493,6 +496,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-row-pinning-styling',
     templateUrl: 'grid-row-pinning-styling.component.html',
     styleUrls: ['./grid-row-pinning-styling.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxActionStripComponent, IgxGridPinningActionsComponent]
 })
 

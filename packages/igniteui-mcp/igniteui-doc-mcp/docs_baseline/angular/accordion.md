@@ -21,7 +21,7 @@ The following is a basic Angular Accordion example of a FAQ section. It operates
 In it, you can see how to define an `igx-accrodion` and its [expansion panels](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent). The sample also demonstrates the two types of expansion behavior. The switch button sets the [singleBranchExpand](mcp:get_api_reference?platform=angular&component=IgxAccordionComponent&member=singleBranchExpand) property to toggle between single and multiple branches to be expanded at a time.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 import { IgxAccordionComponent } from 'igniteui-angular/accordion';
 import { IgxExpansionPanelBodyComponent, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective } from 'igniteui-angular/expansion-panel';
@@ -31,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-accordion-sample-1',
     styleUrls: ['./accordion-sample-1.component.scss'],
     templateUrl: './accordion-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxAccordionComponent, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective, IgxExpansionPanelBodyComponent]
 })
 export class AccordionSample1Component {
@@ -325,7 +326,7 @@ With the Angular [Accordion component](mcp:get_api_reference?platform=angular&co
 The sample below demonstrates how elaborate filtering options can be implemented using the built-in templating functionality of the [IgxExpansionPanel](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent).
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSliderComponent, IgxSliderType } from 'igniteui-angular/slider';
 import { IgxAccordionComponent } from 'igniteui-angular/accordion';
 import { IgxExpansionPanelBodyComponent, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective } from 'igniteui-angular/expansion-panel';
@@ -341,6 +342,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-accordion-sample-3',
     styleUrls: ['./accordion-sample-3.component.scss'],
     templateUrl: './accordion-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxAccordionComponent, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective, IgxExpansionPanelBodyComponent, IgxCheckboxComponent, FormsModule, IgxSliderComponent, IgxRadioComponent, IgxIconComponent, IgxTimePickerComponent, IgxLabelDirective]
 })
 export class AccordionSample3Component {
@@ -515,7 +517,7 @@ In the following Angular accordion example, we are going to create a complex FAQ
 You can see the result below.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 import { IgxAccordionComponent } from 'igniteui-angular/accordion';
 import { IgxExpansionPanelBodyComponent, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective } from 'igniteui-angular/expansion-panel';
@@ -525,6 +527,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-accordion-sample-2',
     styleUrls: ['./accordion-sample-2.component.scss'],
     templateUrl: './accordion-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxAccordionComponent, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective, IgxExpansionPanelBodyComponent]
 })
 export class AccordionSample2Component {
@@ -767,7 +770,7 @@ The last step is to include the component's theme.
 ### Demo
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxAccordionComponent } from 'igniteui-angular/accordion';
 import { IgxExpansionPanelBodyComponent, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective } from 'igniteui-angular/expansion-panel';
 import { FormsModule } from '@angular/forms';
@@ -776,6 +779,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-accordion-style',
     styleUrls: ['./accordion-style.component.scss'],
     templateUrl: './accordion-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, IgxAccordionComponent, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective, IgxExpansionPanelBodyComponent]
 })
 export class AccordionStyleComponent {

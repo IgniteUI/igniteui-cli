@@ -22,7 +22,7 @@ We’ve created this Angular Query Builder example to show you the default funct
 
 ```typescript
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FilteringExpressionsTree, FilteringLogic, IExpressionTree } from 'igniteui-angular/core';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -34,6 +34,7 @@ const API_ENDPOINT = 'https://data-northwind.indigo.design';
     selector: 'query-builder-request-sample',
     styleUrls: ['./query-builder-request-sample.component.scss'],
     templateUrl: 'query-builder-request-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxQueryBuilderComponent, IgxGridComponent, IgxColumnComponent]
 })
 export class QueryBuilderRequestSampleComponent implements OnInit, AfterViewInit {
@@ -381,7 +382,7 @@ We’ve created this Angular Query Builder example to show you the templating an
 
 ```typescript
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FilteringExpressionsTree, FilteringLogic, IExpressionTree, IgxNumberFilteringOperand, IgxStringFilteringOperand } from 'igniteui-angular/core';
 import { IgxComboModule } from 'igniteui-angular/combo';
@@ -393,6 +394,7 @@ import { IgxSelectModule } from 'igniteui-angular/select';
     selector: 'app-query-builder-template-sample',
     styleUrls: ['./query-builder-template-sample.component.scss'],
     templateUrl: 'query-builder-template-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     IgxQueryBuilderComponent,
     IgxQueryBuilderHeaderComponent,
@@ -632,13 +634,14 @@ The last step is to **include** the new component themes using the `tokens` mixi
 ### Demo
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxQueryBuilderComponent } from 'igniteui-angular/query-builder';
 
 @Component({
     selector: 'app-query-builder-style-sample',
     styleUrls: ['./query-builder-style.component.scss'],
     templateUrl: 'query-builder-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxQueryBuilderComponent]
 })
 export class QueryBuilderStyleComponent implements OnInit {

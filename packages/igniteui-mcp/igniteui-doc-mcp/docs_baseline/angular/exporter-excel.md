@@ -20,7 +20,7 @@ The Ignite UI for Angular Excel Exporter service can export data in Microsoft® 
 
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { IgxExcelExporterOptions, IgxExcelExporterService } from 'igniteui-angular/grids/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -29,6 +29,7 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-excel-export',
     styleUrls: ['./excel-export.component.scss'],
     templateUrl: './excel-export.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective]
 })
 export class ExcelExportComponent {
