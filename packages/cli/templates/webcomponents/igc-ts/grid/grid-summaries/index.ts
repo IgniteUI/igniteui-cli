@@ -1,4 +1,5 @@
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
+import { IGNITEUI_WEBCOMPONENTS_GRIDS_PACKAGE } from "../../constants";
 
 class IgcGridSummariesTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
@@ -10,7 +11,7 @@ class IgcGridSummariesTemplate extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Grid Summaries";
 		this.description = "IgcGrid with column summaries";
-		this.packages = [ "igniteui-webcomponents-grids@~7.2.1" ];
+		this.packages = [ IGNITEUI_WEBCOMPONENTS_GRIDS_PACKAGE ];
 	}
 }
 module.exports = new IgcGridSummariesTemplate();

@@ -1,4 +1,10 @@
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
+import {
+	IGNITEUI_WEBCOMPONENTS_CORE_PACKAGE,
+	IGNITEUI_WEBCOMPONENTS_GRIDS_PACKAGE,
+	IGNITEUI_WEBCOMPONENTS_INPUTS_PACKAGE,
+	IGNITEUI_WEBCOMPONENTS_LAYOUTS_PACKAGE
+} from "../../constants";
 
 class IgcTreeTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
@@ -11,10 +17,10 @@ class IgcTreeTemplate extends IgniteUIForWebComponentsTemplate {
 		this.name = "Tree";
 		this.description = "basic IgcTree";
 		this.packages = [
-			"igniteui-webcomponents-core@~7.0.0",
-			"igniteui-webcomponents-grids@~7.2.1",
-			"igniteui-webcomponents-inputs@~7.0.0",
-			"igniteui-webcomponents-layouts@~7.0.0"
+			IGNITEUI_WEBCOMPONENTS_CORE_PACKAGE,
+			IGNITEUI_WEBCOMPONENTS_GRIDS_PACKAGE,
+			IGNITEUI_WEBCOMPONENTS_INPUTS_PACKAGE,
+			IGNITEUI_WEBCOMPONENTS_LAYOUTS_PACKAGE
 		];
 	}
 }
