@@ -39,7 +39,7 @@ jobs:
         find ./dist/assets -type f -name "*.js" -exec sed -i 's|src/assets|${{ github.event.repository.name }}/assets|g' {} +;
         find ./dist/assets -type f -name "*.js" -exec sed -i 's|/static-data/|/${{ github.event.repository.name }}/static-data/|g' {} +
     - name: Copy Resources to dist
-      run: mkdir -p ./dist/assets && cp -R ./src/assets/* ./dist/assets/
+      run: if [ -d "./src/assets" ]; then mkdir -p ./dist/assets && cp -R ./src/assets/* ./dist/assets/; fi
     - name: SPA routing handling
       run: cp ./dist/index.html ./dist/404.html
     - name: Upload build artifact to GitHub Pages

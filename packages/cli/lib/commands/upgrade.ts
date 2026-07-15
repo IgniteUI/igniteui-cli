@@ -1,20 +1,26 @@
-import { GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, BaseTemplateManager, detectFrameworkFromPackageJson, GoogleAnalytics, ProjectConfig, TEMPLATE_MANAGER,
+	type ProjectTemplate, Util } from "@igniteui/cli-core";
 import { PositionalArgs, UpgradeCommandType } from "./types";
 import { ArgumentsCamelCase } from "yargs";
 
+const FRAMEWORK_PROJECT_TYPE_MAP: Record<string, string> = {
+	angular: "igx-ts",
+	react: "igr-ts",
+	webcomponents: "igc-ts"
+};
+
 const command: UpgradeCommandType = {
 	command: "upgrade-packages",
-	describe: "upgrades Ignite UI Packages",
-	templateManager: null,
+	aliases: ["upgrade"],
+	describe: "Upgrades Ignite UI packages",
 	builder: (yargs) => {
 		return yargs
 			.option("skip-install", {
 				alias: "si",
 				default: false,
-				describe: "Runs upgrade command without performing install",
+				describe: "Run upgrade without installing packages",
 				type: "boolean"
-			})
-			.usage(""); // do not show any usage instructions before the commands list
+			});
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
@@ -26,8 +32,23 @@ const command: UpgradeCommandType = {
 	},
 	async upgrade(argv: ArgumentsCamelCase<PositionalArgs>) {
 		const config = ProjectConfig.getConfig();
-		const framework = config.project.framework;
-		const projectType = config.project.projectType;
+		let framework = config.project?.framework;
+		let projectType = config.project?.projectType;
+
+		if (!framework) {
+			const detected = detectFrameworkFromPackageJson();
+			if (!detected) {
+				Util.warn("Unable to determine the project framework. " +
+					"Please ensure you are running this command in a project directory with a package.json file, " +
+					"or create an ignite-ui-cli.json configuration file.", "yellow");
+				return;
+			}
+			framework = detected;
+		}
+
+		if (!projectType) {
+			projectType = FRAMEWORK_PROJECT_TYPE_MAP[framework.toLowerCase()] || "";
+		}
 
 		switch (framework.toLowerCase()) {
 			case "jquery":
@@ -37,9 +58,10 @@ const command: UpgradeCommandType = {
 			case "react":
 			case "webcomponents":
 				if (projectType === "igx-ts" || projectType === "igr-ts" || projectType === "igc-ts") {
-					const projectLibrary = command.templateManager.getProjectLibrary(framework, projectType);
-					let project;
-					if (!config.project.projectTemplate || !projectLibrary.hasProject(config.project.projectTemplate)) {
+					const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+					const projectLibrary = templateManager.getProjectLibrary(framework, projectType);
+					let project: ProjectTemplate;
+					if (!config.project?.projectTemplate || !projectLibrary.hasProject(config.project.projectTemplate)) {
 						// in case project template is missing from the config we provide backward.
 						project = projectLibrary.getProject(projectLibrary.projectIds[0]);
 					} else {

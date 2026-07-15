@@ -1,0 +1,18 @@
+<div class="outer-wrapper">
+  <igx-navbar [title]="appTitle" actionButtonIcon="menu" (action)="nav.toggle()"></igx-navbar>
+  <div class="app-body" igxLayout>
+    <igx-nav-drawer #nav id="project-menu" [isOpen]="true" [enableGestures]="true" [pinThreshold]="1024" width="280px">
+      <ng-template igxDrawer>
+        @for (route of topNavLinks; track route) {
+          <span igxDrawerItem igxRipple routerLinkActive="igx-nav-drawer__item--active" [routerLink]="route.path">
+            <igx-icon>{{route.icon}}</igx-icon>
+            <span>{{route.name}}</span>
+          </span>
+        }
+      </ng-template>
+    </igx-nav-drawer>
+    <main class="content" igxFlex>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

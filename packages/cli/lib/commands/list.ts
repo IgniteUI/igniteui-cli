@@ -1,4 +1,4 @@
-import { Config, Framework, GoogleAnalytics, ProjectConfig, ProjectLibrary, Util } from "@igniteui/cli-core";
+import { App, BaseTemplateManager, Config, Framework, GoogleAnalytics, ProjectConfig, ProjectLibrary, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import { CommandType, PositionalArgs } from "./types";
 import { ArgumentsCamelCase } from "yargs";
 
@@ -7,21 +7,22 @@ const command: CommandType = {
 	command: "list",
 	// use aliases here, instead of alias. With single alias yargs does not build correctly argv
 	aliases: ["l"],
-	describe: "list all templates",
-	builder: {
-		framework: {
-			alias: "f",
-			default: "jquery",
-			describe: "Framework to list templates for",
-			type: "string"
-		},
-		type: {
-			alias: "t",
-			describe: "Project type (depends on framework)",
-			type: "string"
-		}
+	describe: "Lists frameworks, project templates and component templates",
+	builder: (yargs) => {
+		return yargs
+			.option("framework", {
+				alias: "f",
+				describe: "Framework to list templates for",
+				type: "string"
+			})
+			.option("type", {
+				alias: "t",
+				describe: "Project type (depends on framework)",
+				type: "string"
+			})
+			.example("$0 list", "Show all frameworks and their project templates")
+			.example("$0 list -f angular", "List component templates for Angular");
 	},
-	templateManager: null,
 	handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
 			t: "screenview",
@@ -37,22 +38,30 @@ const command: CommandType = {
 			inProject = true;
 		}
 
+		if (!inProject && !argv.framework) {
+			if (argv.type) {
+				return Util.error("'--type' requires '--framework'", "red");
+			}
+			return listAllFrameworks();
+		}
+
 		const templatesByGroup = [];
 		const controlGroups: string[] = [];
 
-		const framework: Framework = this.templateManager.getFrameworkById(argv.framework);
+		const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+		const framework: Framework = templateManager.getFrameworkById(argv.framework);
 		if (!framework) {
 			return Util.error("Wrong framework provided", "red");
 		}
 
 		let projectLib: ProjectLibrary;
 		if (argv.type) {
-			projectLib = command.templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
+			projectLib = templateManager.getProjectLibrary(argv.framework, argv.type) as ProjectLibrary;
 			if (!projectLib) {
 				return Util.error(`Project type '${argv.type}' not found in framework '${argv.framework}'`, "red");
 			}
 		} else {
-			projectLib = command.templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
+			projectLib = templateManager.getProjectLibrary(argv.framework) as ProjectLibrary;
 		}
 
 		let maxIdLength = 0;
@@ -104,5 +113,43 @@ const command: CommandType = {
 		}
 	}
 };
+
+function listAllFrameworks() {
+	const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+	const frameworkIds: string[] = templateManager.getFrameworkIds();
+	const frameworks: Framework[] = frameworkIds
+		.map(id => templateManager.getFrameworkById(id))
+		.filter(f => !!f);
+
+	GoogleAnalytics.post({
+		t: "event",
+		ec: "$ig list",
+		ea: "all frameworks"
+	});
+
+	Util.log("Available frameworks and project templates:");
+	for (const framework of frameworks) {
+		Util.log("");
+		Util.log(`${framework.name} (${framework.id})`);
+		for (const lib of framework.projectLibraries) {
+			Util.log(`\t${lib.name} (${lib.projectType})`);
+			const visibleProjects = lib.projects.filter(p => !p.isHidden);
+			if (visibleProjects.length === 0) {
+				Util.log("\t\t(no project templates)");
+				continue;
+			}
+			const formattedItems = Util.formatChoices(
+				visibleProjects.map(p => ({ name: p.id, description: p.description }))
+			);
+			for (const item of formattedItems) {
+				Util.log("\t\t" + item.name);
+			}
+		}
+	}
+
+	Util.log("");
+	Util.log("Run 'ig new <name> --framework <framework> --type <projectType>' to scaffold a project.");
+	Util.log("Run 'ig list -f <framework> [-t <projectType>]' to list component templates.");
+}
 
 export default command;

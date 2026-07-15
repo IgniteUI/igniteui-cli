@@ -13,11 +13,18 @@ resolve("igniteui-cli", { basedir: process.cwd() }, function (err, res) {
 		const localVersion = require(path.join(process.cwd(), "node_modules/igniteui-cli/package.json"))["version"];
 		const globalVersion = require(path.join(__dirname, "../package.json"))["version"];
 		if (globalVersion !== localVersion) {
-			console.log("Different igniteui-cli global and local version");
+			console.log("Different igniteui-cli global and local version");			
+		}		
+		if (args[0] === "ai-config") {
+			cli = require("../lib/cli");
+		} else {
+			cli = require(res);
 		}
-		cli = require(res);
 	} else {
 		cli = require("../lib/cli");
 	}
-	cli.run(args);
+	cli.run(args).catch(function (err) {
+		console.error("Error: " + (err.message || err));
+		process.exit(1);
+	});
 });

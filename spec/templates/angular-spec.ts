@@ -1,35 +1,23 @@
-import { Framework, Util } from "@igniteui/cli-core";
+import { AGENTS_TEMPLATE_FILE, AI_CONFIG_PROJECT_ID, AI_SKILLS_DIR_NAME, App, Framework, Util } from "@igniteui/cli-core";
+import { IGNITEUI_ANGULAR_PACKAGE } from "../../packages/igx-templates/constants";
+import path from "path";
+import * as fs from "fs";
 
 const templatesLocation = "../../packages/cli/templates/angular";
 
 describe("Angular templates", () => {
+	beforeAll(() => {
+		App.initialize();
+	});
 
-	// tslint:disable-next-line:only-arrow-functions
 	it("Templates should have IDs", async function() {
 		const angularFramework = require(templatesLocation);
 		expect(angularFramework.projectLibraries[0]).toBeDefined();
-		expect(angularFramework.projectLibraries[1]).toBeDefined();
 
 		for (const template of angularFramework.projectLibraries[0].templates) {
-			expect(template.id).toBeDefined("No ID: " + template.name + " type: " + template.projectType);
-		}
-		for (const template of angularFramework.projectLibraries[1].templates) {
-			expect(template.id).toBeDefined("No ID: " + template.name + " type: " + template.projectType);
-		}
-	});
-
-	it("Ig templates should have no internal collisions", async () => {
-		const angularFramework: Framework = require(templatesLocation);
-		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "ig-ts");
-		for (let i = 0; i < projLibrary.templates.length; i++) {
-			const element = projLibrary.templates[i];
-			for (let j = i + 1; j < projLibrary.templates.length; j++) {
-				const target = projLibrary.templates[j];
-				// pass some __path__ so those won't match
-				expect(
-					(Util as any).validateTemplate(element["rootPath"] + "/files", target["rootPath"] + "/files", {path: "1"}, {})
-				).toBeTruthy(`Template ${element.id} can overwrite ${target.id}`);
-			}
+			expect(template.id)
+				.withContext("No ID: " + template.name + " type: " + template.projectType)
+				.toBeDefined();
 		}
 	});
 
@@ -43,8 +31,59 @@ describe("Angular templates", () => {
 				// pass some __path__ so those won't match
 				expect(
 					(Util as any).validateTemplate(element["rootPath"] + "/files", target["rootPath"] + "/files", {path: "1"}, {})
-				).toBeTruthy(`Template ${element.id} can overwrite ${target.id}`);
+				)
+					.withContext(`Template ${element.id} can overwrite ${target.id}`)
+					.toBeTruthy();
 			}
 		}
+	});
+
+	it("Igx templates and project package.json files should use the same igniteui-angular version as the const", async () => {
+		const angularFramework: Framework = require(templatesLocation);
+		const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
+		const [pkg, version] = IGNITEUI_ANGULAR_PACKAGE.split("@");
+
+		projLibrary.templates
+			.flatMap(t => t.packages || [])
+			.filter(p => typeof p === "string" && p.startsWith(`${pkg}@`))
+			.forEach(p => expect(p).toBe(IGNITEUI_ANGULAR_PACKAGE));
+
+		const roots = [
+			...new Set(projLibrary.projects.flatMap(p => p.templatePaths))
+		];
+
+		for (const root of roots) {
+			const file = path.resolve(process.cwd(), root, "package.json");
+			if (!fs.existsSync(file)) continue;
+
+			const { dependencies = {}, devDependencies = {} } = require(file);
+			const deps = { ...dependencies, ...devDependencies };
+
+			if (deps[pkg]) {
+				expect(deps[pkg]).toBe(version);
+			}
+		}
+	});
+
+	describe("ai-config template file presence", () => {
+		it("ai-config project template must be registered", () => {
+			const angularFramework: Framework = require(templatesLocation);
+			const projLibrary = angularFramework.projectLibraries.find(x => x.projectType === "igx-ts");
+			expect(projLibrary.getProject(AI_CONFIG_PROJECT_ID)).toBeDefined();
+		});
+
+		const filesDir = path.resolve(__dirname, "../..", `packages/igx-templates/igx-ts/projects/${AI_CONFIG_PROJECT_ID}/files`);
+
+		it("AGENTS.md must exist in files/", () => {
+			expect(fs.existsSync(path.join(filesDir, AGENTS_TEMPLATE_FILE)))
+				.withContext(`Missing ${AGENTS_TEMPLATE_FILE} in ${filesDir}`)
+				.toBeTrue();
+		});
+
+		it("skills/ directory must exist in files/", () => {
+			expect(fs.existsSync(path.join(filesDir, AI_SKILLS_DIR_NAME)))
+				.withContext(`Missing ${AI_SKILLS_DIR_NAME}/ in ${filesDir}`)
+				.toBeTrue();
+		});
 	});
 });

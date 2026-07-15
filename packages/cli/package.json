@@ -1,6 +1,6 @@
 {
   "name": "igniteui-cli",
-  "version": "14.6.4",
+  "version": "15.4.1",
   "description": "CLI tool for creating Ignite UI projects",
   "keywords": [
     "CLI",
@@ -21,16 +21,6 @@
     "url": "https://github.com/IgniteUI/igniteui-cli/issues"
   },
   "main": "lib/cli.js",
-  "scripts": {
-    "build": "node ./node_modules/typescript/lib/tsc.js && npm run config-schema",
-    "build-pack": "node ./node_modules/typescript/lib/tsc.js -p tsconfig-pack.json && npm run config-schema",
-    "pretest": "npm run lint && npm run build",
-    "test": "nyc npm run jasmine",
-    "jasmine": "node spec/jasmine-runner.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "tslint --project tsconfig.json",
-    "config-schema": "typescript-json-schema packages/core/types/Config.ts Config -o packages/core/config/Config.schema.json"
-  },
   "files": [
     "ignite-ui-cli.txt",
     "bin/*",
@@ -76,10 +66,10 @@
     "all": true
   },
   "dependencies": {
-    "@igniteui/angular-templates": "~20.1.1464",
-    "@igniteui/cli-core": "~14.6.4",
-    "@inquirer/prompts": "^5.4.0",
-    "@types/yargs": "^17.0.33",
+    "@igniteui/angular-templates": "~22.0.1541",
+    "@igniteui/cli-core": "~15.4.1",
+    "@igniteui/mcp-server": "~15.4.1",
+    "@inquirer/prompts": "^7.9.0",
     "chalk": "^5.3.0",
     "glob": "^11.0.0",
     "open": "^10.1.0",
@@ -89,20 +79,20 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@angular-devkit/core": "^19.0.0",
-    "@angular-devkit/schematics": "^19.0.0",
-    "@schematics/angular": "~19.0.0",
+    "@angular-devkit/core": "^22.0.0",
+    "@angular-devkit/schematics": "^22.0.0",
+    "@schematics/angular": "^22.0.0",
     "@types/jasmine": "^5.1.4",
     "@types/node": "^22.5.5",
+    "@types/yargs": "^17.0.33",
     "browser-sync": "^3.0.3",
     "coveralls-next": "^4.2.1",
-    "jasmine": "^5.3.0",
+    "jasmine": "^5.12.0",
     "jasmine-spec-reporter": "^7.0.0",
     "nyc": "^17.0.0",
-    "rxjs": "^7.8.1",
+    "rxjs": "~7.8.1",
     "source-map-support": "^0.5.21",
     "ts-node": "~10.9.2",
-    "tslint": "~6.1.0",
     "typescript-json-schema": "^0.65.1"
   },
   "ng-update": {

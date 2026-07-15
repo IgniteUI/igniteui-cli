@@ -2,14 +2,21 @@ import * as path from "path";
 
 import { EmptyTree } from "@angular-devkit/schematics";
 import { SchematicTestRunner, UnitTestTree } from "@angular-devkit/schematics/testing";
-import { FEED_ANGULAR, NPM_ANGULAR } from "@igniteui/cli-core";
+import { App, FEED_ANGULAR, NPM_ANGULAR, TEMPLATE_MANAGER } from "@igniteui/cli-core";
+import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 
 describe("cli-config schematic", () => {
 	const collectionPath = path.join(__dirname, "../collection.json");
 	const runner: SchematicTestRunner = new SchematicTestRunner("cli-schematics", collectionPath);
 	let tree: UnitTestTree;
 	const sourceRoot = "src";
-	// tslint:disable: object-literal-sort-keys
+	// TODO:
+	// TS compiles export * from "./util", __createBinding defines each re-exported name as an accessor descriptor (getter-only, no setter, writable is N/A on accessor descriptors)
+	// Require the leaf module directly so spyOn works — cliCore re-exports via __createBinding getter chains
+	// (index → util/index → ai-skills), making the property non-writable at the top level.
+	// The leaf module's exports object uses plain assignments, which are writable and spyable.
+	const aiSkillsModule = require("@igniteui/cli-core/util/ai-skills");
+
 	const ngJsonConfig = {
 		projects: {
 			testProj: {
@@ -85,13 +92,13 @@ describe("cli-config schematic", () => {
 			 </body>`);
 		createIgPkgJson();
 		populatePkgJson();
+		spyOn(aiSkillsModule, "copyAISkillsToProject");
+		spyOn(aiSkillsModule, "copyAgentInstructionFiles");
 	});
 
-	it("should create the needed files correctly", () => {
-		expect(tree).toBeTruthy();
-		expect(tree.exists("/angular.json")).toBeTruthy();
-		expect(tree.exists("/package.json")).toBeTruthy();
-		expect(tree.exists("/src/index.html"));
+	it("should set the template manager correctly", async () => {
+		await runner.runSchematic("cli-config", {}, tree);
+		expect(App.container.get(TEMPLATE_MANAGER)).toBeInstanceOf(SchematicsTemplateManager);
 	});
 
 	it("should create an ignite-ui-cli.json file correctly", async () => {
@@ -117,6 +124,75 @@ describe("cli-config schematic", () => {
 		const content = tree.readContent(targetFile);
 		const headContentsRegex = /(?:<head>)([\s\S]*)(?:<\/head>)/;
 
+		expect(headContentsRegex.test(content)).toBeTruthy();
+		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Titillium+Web");
+		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Material+Icons");
+	});
+
+	it("should add Titillium and Material Icons when build options do not have index", async () => {
+		const targetFile = "/src/index.html";
+		const ngJsonWithoutBuildIndex = {
+			projects: {
+				testProj: {
+					root: "",
+					sourceRoot,
+					architect: {
+						build: {
+							options: {
+								main: `${sourceRoot}/main.ts`,
+								polyfills: `${sourceRoot}/polyfills.ts`,
+								scripts: []
+							}
+						},
+						serve: {},
+						test: {}
+					}
+				}
+			},
+			version: 1
+		};
+
+		tree.overwrite("/angular.json", JSON.stringify(ngJsonWithoutBuildIndex));
+		await runner.runSchematic("cli-config", {}, tree);
+
+		const content = tree.readContent(targetFile);
+		const headContentsRegex = /(?:<head>)([\s\S]*)(?:<\/head>)/;
+		expect(headContentsRegex.test(content)).toBeTruthy();
+		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Titillium+Web");
+		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Material+Icons");
+	});
+
+	it("should add Titillium and Material Icons when build index is an object input", async () => {
+		const targetFile = "/src/index.html";
+		const ngJsonWithIndexObject = {
+			projects: {
+				testProj: {
+					root: "",
+					sourceRoot,
+					architect: {
+						build: {
+							options: {
+								main: `${sourceRoot}/main.ts`,
+								polyfills: `${sourceRoot}/polyfills.ts`,
+								scripts: [],
+								index: {
+									input: `${sourceRoot}/index.html`
+								}
+							}
+						},
+						serve: {},
+						test: {}
+					}
+				}
+			},
+			version: 1
+		};
+
+		tree.overwrite("/angular.json", JSON.stringify(ngJsonWithIndexObject));
+		await runner.runSchematic("cli-config", {}, tree);
+
+		const content = tree.readContent(targetFile);
+		const headContentsRegex = /(?:<head>)([\s\S]*)(?:<\/head>)/;
 		expect(headContentsRegex.test(content)).toBeTruthy();
 		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Titillium+Web");
 		expect(headContentsRegex.exec(content)!.pop()).toContain("family=Material+Icons");
@@ -215,7 +291,7 @@ describe("cli-config schematic", () => {
 		expect(content.includes(`@use "${FEED_ANGULAR}`)).toBeTruthy();
 	});
 
-	it("should add BrowserAnimationsModule to app.module.ts", async () => {
+	it("should add BrowserAnimationsModule to app-module.ts", async () => {
 		const moduleContent =
 `import { NgModule } from '@angular/core';
 @NgModule({
@@ -234,7 +310,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 export class AppModule {
 }
 `;
-		const targetFile = "./src/app/app.module.ts";
+		const targetFile = "./src/app/app-module.ts";
 		tree.create(targetFile, moduleContent);
 
 		await runner.runSchematic("cli-config", {}, tree);
@@ -308,5 +384,154 @@ export const appConfig: ApplicationConfig = {
 
 		await runner.runSchematic("cli-config", {}, tree);
 		expect(warns).toContain(jasmine.stringMatching(pattern));
+	});
+
+	it("should schedule the ai-config schematic task", async () => {
+		await runner.runSchematic("cli-config", {}, tree);
+
+		const taskOptions = runner.tasks.map(task => task.options);
+		expect(taskOptions).toContain(jasmine.objectContaining({ name: "ai-config" }));
+	});
+
+
+	describe("ai-config schematic", () => {
+		const mcpFilePath = "/.vscode/mcp.json";
+
+		it("should call copyAISkillsToProject with claude and generic defaults when no options", async () => {
+			await runner.runSchematic("ai-config", {}, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["claude", "generic"], "angular");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "generic"], "angular");
+		});
+
+		it("should create .vscode/mcp.json with igniteui and angular-cli servers when file does not exist", async () => {
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
+
+			expect(tree.exists(mcpFilePath)).toBeTruthy();
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+			expect(content.servers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
+		});
+
+		it("should add all three servers to existing .vscode/mcp.json that has no servers", async () => {
+			tree.create(mcpFilePath, JSON.stringify({ servers: {} }));
+
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
+
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+			expect(content.servers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
+		});
+
+		it("should add missing servers when only some are already present", async () => {
+			tree.create(mcpFilePath, JSON.stringify({
+				servers: {
+					"igniteui-cli": { command: "npx", args: ["-y", "igniteui-cli", "mcp"] }
+				}
+			}));
+
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
+
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			expect(content.servers["igniteui-theming"]).toEqual({ command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] });
+			expect(content.servers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
+		});
+
+		it("should not modify .vscode/mcp.json if all servers are already present", async () => {
+			const existing = {
+				servers: {
+					"igniteui-cli": { command: "npx", args: ["-y", "igniteui-cli", "mcp"] },
+					"igniteui-theming": { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] },
+					"angular-cli": { command: "npx", args: ["-y", "@angular/cli", "mcp"] }
+				}
+			};
+			tree.create(mcpFilePath, JSON.stringify(existing));
+
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
+
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content).toEqual(existing);
+		});
+
+		it("should preserve existing servers when adding new ones", async () => {
+			tree.create(mcpFilePath, JSON.stringify({
+				servers: {
+					"other-server": { command: "node", args: ["server.js"] }
+				}
+			}));
+
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
+
+			const content = JSON.parse(tree.readContent(mcpFilePath));
+			expect(content.servers["other-server"]).toEqual({ command: "node", args: ["server.js"] });
+			expect(content.servers["igniteui-cli"]).toBeDefined();
+			expect(content.servers["igniteui-theming"]).toBeDefined();
+			expect(content.servers["angular-cli"]).toBeDefined();
+		});
+
+		it("should pass agents when agents option is provided", async () => {
+			await runner.runSchematic("ai-config", { agents: ["cursor"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["cursor"], "angular");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["cursor"], "angular");
+		});
+
+		it("should pass agents for copilot agents", async () => {
+			await runner.runSchematic("ai-config", { agents: ["copilot"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["copilot"], "angular");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["copilot"], "angular");
+		});
+
+		it("should pass agents for generic agents", async () => {
+			await runner.runSchematic("ai-config", { agents: ["generic"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["generic"], "angular");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["generic"], "angular");
+		});
+
+		it("should configure multiple agents", async () => {
+			await runner.runSchematic("ai-config", { agents: ["claude", "cursor"] }, tree);
+
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledTimes(1);
+			expect(aiSkillsModule.copyAISkillsToProject).toHaveBeenCalledWith(["claude", "cursor"], "angular");
+			expect(aiSkillsModule.copyAgentInstructionFiles).toHaveBeenCalledWith(["claude", "cursor"], "angular");
+		});
+
+		it("should default MCP config to .vscode/mcp.json with servers key", async () => {
+			await runner.runSchematic("ai-config", { assistants: ["vscode"] }, tree);
+
+			const filePath = "/.vscode/mcp.json";
+			expect(tree.exists(filePath)).toBeTruthy();
+			const content = JSON.parse(tree.readContent(filePath));
+			expect(content.servers).toBeDefined();
+			expect(content.servers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+		});
+
+		it("should write to .cursor/mcp.json with mcpServers key when assistant is cursor", async () => {
+			await runner.runSchematic("ai-config", { assistants: ["cursor"] }, tree);
+
+			const filePath = "/.cursor/mcp.json";
+			expect(tree.exists(filePath)).toBeTruthy();
+			const content = JSON.parse(tree.readContent(filePath));
+			expect(content.mcpServers).toBeDefined();
+			expect(content.mcpServers["igniteui-cli"]).toEqual({ command: "npx", args: ["-y", "igniteui-cli", "mcp"] });
+			expect(content.mcpServers["angular-cli"]).toEqual({ command: "npx", args: ["-y", "@angular/cli", "mcp"] });
+			expect(content.servers).toBeUndefined();
+		});
+
+		it("should write to .mcp.json when assistant is claude-code", async () => {
+			await runner.runSchematic("ai-config", { assistants: ["generic"] }, tree);
+
+			const filePath = "/.mcp.json";
+			expect(tree.exists(filePath)).toBeTruthy();
+			const content = JSON.parse(tree.readContent(filePath));
+			expect(content.mcpServers["igniteui-cli"]).toBeDefined();
+			expect(content.mcpServers["angular-cli"]).toBeDefined();
+		});
 	});
 });

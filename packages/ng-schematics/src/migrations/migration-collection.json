@@ -2,11 +2,10 @@
   "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "encapsulation": "true",
   "schematics": {
-  "migration-01": {
-    "version": "17.1.0",
-    "description": "Updates Ignite UI for Angular Schematics project from 17.0.x to 17.1.x",
-    "factory": "./update-1",
-    "schema": "./schema.json"
-  }
+    "legacy-type": {
+      "version": "21.1.1500",
+      "description": "Updates Ignite UI for Angular Schematics legacy project type to igx-ts",
+      "factory": "./legacy-type"
+    }
   }
 }

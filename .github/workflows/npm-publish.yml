@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -29,6 +29,9 @@ jobs:
           npm run build-pack
           node scripts/build-task.js
 
+      - name: Validate MCP package contents
+        run: npm run validate:package --workspace=@igniteui/mcp-server -- --expected-version "$VERSION"
+
       - name: Define npm tag
         run: |
           if [[ ${VERSION} == *"alpha"* || ${VERSION} == *"beta"* || ${VERSION} == *"rc"* ]]; then
@@ -37,7 +40,8 @@ jobs:
             NPM_TAG=latest
           fi
           echo "NPM_TAG=$NPM_TAG" >> $GITHUB_ENV
-          echo ${NPM_TAG}
+          echo "$NPM_TAG"
+
 
       - name: Publish packages
         # use npm run as yarn run changes the registry and publishes to https://registry.yarnpkg.com

@@ -6,24 +6,26 @@ export abstract class BaseTemplateManager {
 	protected frameworks: Framework[] = [];
 
 	constructor(private templatesAbsPath: string) {
+		this.loadFrameworks();
+		this.loadExternalTemplates();
+	}
 
+	/** Populate `frameworks` prop with frameworks from templates */
+	protected loadFrameworks() {
 		// read dirs and push dir names into frameworks
 		const frameworks = Util.getDirectoryNames(this.templatesAbsPath);
 		// load and initialize templates
 		for (const framework of frameworks) {
 			this.frameworks.push(require(path.join(this.templatesAbsPath, framework)) as Framework);
 		}
-
-		// load external templates
-		this.loadExternalTemplates();
 	}
 
-	public getFrameworkIds(): string[] {
-		return this.frameworks.map(f => f.id);
+	public getFrameworkIds(includeHidden = false): string[] {
+		return this.frameworks.filter(f => includeHidden || !f.hidden).map(f => f.id);
 	}
-	public getFrameworkNames(): string[] {
-		// еxclude WebComponents from the Step-By-Step wizard
-		return this.frameworks.map(f => f.name);
+	public getFrameworkNames(includeHidden = false): string[] {
+		// hidden frameworks are excluded from the Step-By-Step wizard unless includeHidden is set
+		return this.frameworks.filter(f => includeHidden || !f.hidden).map(f => f.name);
 	}
 	/**  Returns framework found by its name or undefined. */
 	public getFrameworkByName(name: string): Framework {
@@ -106,36 +108,31 @@ export abstract class BaseTemplateManager {
 		const config = ProjectConfig.getConfig();
 		const customTemplates: Template[] = [];
 		for (const entry of config.customTemplates) {
-			let template: Template;
-			// tslint:disable-next-line:prefer-const
-			let [protocol, value] = entry.split(/(^[^:]+):/).filter(x => x);
-			switch (protocol) {
-				default:
-					// in case just path is passed:
-					value = entry;
-				case "file":
-				case "path":
-					value = value.replace(/template\.json$/, "");
-					if (Util.directoryExists(value)) {
-						// try single template
-						template = this.loadFromConfig(path.join(value, "template.json"));
-						if (template !== null) {
-							customTemplates.push(template);
-							break;
-						}
-						// try folder of templates:
-						for (const folder of Util.getDirectoryNames(value)) {
-							template = this.loadFromConfig(path.join(value, folder, "template.json"));
-							if (template !== null) {
-								customTemplates.push(template);
-							}
-						}
-					} else {
-						// TODO: Util.log(`Ignored: Incorrect custom template path for "${entry}".`);
-					}
-					break;
-				case "ignored":
-					break;
+			const [protocol, value] = entry.split(/(^[^:]+):/).filter(x => x);
+
+			let templateDir = protocol === "file" || protocol === "path"
+				? value
+				: entry;
+			templateDir = templateDir.replace(/template\.json$/, "");
+
+			if (!Util.directoryExists(templateDir)) {
+				// TODO: Util.log(`Ignored: Incorrect custom template path for "${entry}".`);
+				continue;
+			}
+
+			// try single template
+			let template = this.loadFromConfig(path.join(templateDir, "template.json"));
+			if (template !== null) {
+				customTemplates.push(template);
+				continue;
+			}
+
+			// try folder of templates:
+			for (const folder of Util.getDirectoryNames(templateDir)) {
+				template = this.loadFromConfig(path.join(templateDir, folder, "template.json"));
+				if (template !== null) {
+					customTemplates.push(template);
+				}
 			}
 		}
 		this.addTemplates(customTemplates);

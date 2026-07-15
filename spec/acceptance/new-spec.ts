@@ -1,4 +1,4 @@
-import { GoogleAnalytics, GoogleAnalyticsParameters, PackageManager, Util } from "@igniteui/cli-core";
+import { GoogleAnalytics, GoogleAnalyticsParameters, InquirerWrapper, PackageManager, Util } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as cli from "../../packages/cli/lib/cli";
 import { deleteAll, filesDiff, resetSpy } from "../helpers/utils";
@@ -11,6 +11,7 @@ describe("New command", () => {
 		spyOn(console, "error");
 		spyOn(GoogleAnalytics, "post");
 		spyOn(PackageManager, "installPackages");
+		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
 		process.chdir("./output");
 	});
 
@@ -58,24 +59,11 @@ describe("New command", () => {
 		await cli.run(["new", "React Proj", "--framework=react", "--skip-install"]);
 
 		expect(fs.existsSync("./React Proj")).toBeTruthy();
-		expect(filesDiff("../templates/react/es6/projects/empty/files", "./React Proj")).toEqual([]);
+		expect(filesDiff("../templates/react/igr-ts/projects/empty/files", "./React Proj")).toEqual([]);
 		const packageText = fs.readFileSync("./React Proj/package.json", "utf-8");
 		expect(JSON.parse(packageText).name).toEqual("react-proj");
 		expect(fs.existsSync("./React Proj/.gitignore")).toBeTruthy();
 		testFolder = "./React Proj";
-	});
-
-	it("Creates Angular project", async () => {
-		// process.argv = ["new", "reactProj", "--framework=react"];
-
-		await cli.run(["new", "ngx Proj", "--framework=angular", "--type=igx-ts", "--skip-install"]);
-
-		expect(fs.existsSync("./ngx Proj")).toBeTruthy();
-		expect(filesDiff("../templates/angular/ig-ts/projects/empty/files", "./ngx Proj")).toEqual([]);
-		const packageText = fs.readFileSync("./ngx Proj/package.json", "utf-8");
-		expect(JSON.parse(packageText).name).toEqual("ngx-proj");
-		expect(fs.existsSync("./ngx Proj/.gitignore")).toBeTruthy();
-		testFolder = "./ngx Proj";
 	});
 
 	it("Creates Ignite UI for Angular project", async () => {
@@ -88,6 +76,18 @@ describe("New command", () => {
 		expect(JSON.parse(packageText).name).toEqual("ignite-ui-for-angular");
 		expect(fs.existsSync("./Ignite UI for Angular/.gitignore")).toBeTruthy();
 		testFolder = "./Ignite UI for Angular";
+	});
+
+	it("Creates Ignite UI for Angular project by default", async () => {
+
+		await cli.run(["new", "Default Angular Project", "--theme=default", "--skip-install"]);
+
+		expect(fs.existsSync("./Default Angular Project")).toBeTruthy();
+		expect(filesDiff("../templates/angular/igx-ts/projects/empty/files", "./Default Angular Project")).toEqual([]);
+		const packageText = fs.readFileSync("./Default Angular Project/package.json", "utf-8");
+		expect(JSON.parse(packageText).name).toEqual("default-angular-project");
+		expect(fs.existsSync("./Default Angular Project/.gitignore")).toBeTruthy();
+		testFolder = "./Default Angular Project";
 	});
 
 	it("Should not work on existing folders", async () => {
@@ -111,18 +111,18 @@ describe("New command", () => {
 
 		await cli.run(["new", "testProj2", "--skip-install"]);
 		expect(fs.existsSync("./testProj2")).toBeTruthy();
-		expect(fs.existsSync("./testProj2/ignite-cli-views.js")).toBeTruthy();
+		expect(fs.existsSync("./testProj2/ignite-ui-cli.json")).toBeTruthy();
 
-		fs.writeFileSync("./testProj2/ignite-cli-views.js", "text");
+		fs.writeFileSync("./testProj2/ignite-ui-cli.json", "text");
 		await cli.run(["new", "testProj2"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj2" already exists!/));
-		expect(fs.readFileSync("./testProj2/ignite-cli-views.js").toString())
+		expect(fs.readFileSync("./testProj2/ignite-ui-cli.json").toString())
 			.toEqual("text", "Shouldn't overwrite existing project files!");
 
 		resetSpy(console.error);
 		await cli.run(["new", "   testProj2  \t  ", "--skip-install"]);
 		expect(console.error).toHaveBeenCalledWith(jasmine.stringMatching(/Folder "testProj2" already exists!/));
-		expect(fs.readFileSync("./testProj2/ignite-cli-views.js").toString())
+		expect(fs.readFileSync("./testProj2/ignite-ui-cli.json").toString())
 			.toEqual("text", "Shouldn't overwrite existing project files!");
 
 		testFolder = "./testProj2";
@@ -135,7 +135,7 @@ describe("New command", () => {
 		process.chdir(projectName);
 		expect(fs.existsSync(".git")).toBeTruthy();
 		expect(Util.execSync("git log -1 --pretty=format:'%s'").toString())
-			.toMatch("Initial commit for project: " + projectName);
+			.toMatch("Initial commit for project");
 		process.chdir("../");
 		testFolder = "./angularProj";
 	});

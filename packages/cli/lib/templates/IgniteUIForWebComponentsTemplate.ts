@@ -16,6 +16,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 	public framework: string = "webcomponents";
 	public projectType = "igc-ts";
 	public hasExtraConfiguration: boolean = false;
+	public isHidden: boolean = false;
 	public packages = [];
 	public dependencies: TemplateDependency[] = [];
 	public delimiters = defaultDelimiters;
@@ -51,7 +52,8 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 			!(options && options.skipRoute) &&
 			App.container.get<IFileSystem>(FS_TOKEN).fileExists(routeModulePath)
 		) {
-			const modulePath = `./${Util.lowerDashed(fullName)}/${Util.lowerDashed(fullName)}-routing`
+			const modulePath = `./${Util.lowerDashed(fullName)}/${Util.lowerDashed(fullName)}-routing`;
+			const componentTag = `app-${this.fileName(fullName)}`;
 			const child: RouteLike = {
 				identifierName: ROUTES_VARIABLE_NAME,
 				aliasName: options.routerChildren,
@@ -60,7 +62,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 			if (defaultPath) {
 				routingModule.addRoute({
 						path: "",
-						redirectTo: options.selector,
+						redirectTo: componentTag,
 						name: Util.nameFromPath(fullName)
 					}
 				);
@@ -71,7 +73,7 @@ export class IgniteUIForWebComponentsTemplate implements Template {
 
 			routingModule.addRoute({
 					path: this.fileName(fullName),
-					identifierName: options.selector,
+					identifierName: componentTag,
 					name: Util.nameFromPath(fullName)
 				},
 				false // multiline

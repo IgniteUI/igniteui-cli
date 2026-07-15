@@ -8,6 +8,11 @@ import { ArgumentsCamelCase } from "yargs";
 
 const execSyncNpmStart = (port: number, options: ExecSyncOptions): void => {
 	if (port) {
+		// Validate port is a number to prevent command injection
+		if (!Number.isInteger(port) || port < 0 || port > 65535) {
+			Util.error(`Invalid port number: ${port}`, "red");
+			return;
+		}
 		Util.execSync(`npm start -- --port=${port}`, options);
 		return;
 	}
@@ -16,16 +21,14 @@ const execSyncNpmStart = (port: number, options: ExecSyncOptions): void => {
 
 const command: StartCommandType = {
 	command: "start",
-	describe: "starts the project",
-	templateManager: null,
+	describe: "Starts the project",
 	builder: (yargs) => {
 		return yargs
 			.option("port", {
 				alias: "p",
-				describe: "serve app port",
+				describe: "Port to serve the app on",
 				type: "number"
-			})
-			.usage(""); // do not show any usage instructions before the commands
+			});
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 		GoogleAnalytics.post({
@@ -60,7 +63,7 @@ const command: StartCommandType = {
 			cd14: config.project.theme
 		});
 
-		let port = Number(argv.port) || defaultPort;
+		const port = Number(argv.port) || defaultPort;
 		// TODO: consider piping the stdin so that we handle the cp's termination
 		// this may require additional logic to be implemented if the cp asks for input
 		const options: ExecSyncOptions = { stdio: "inherit", killSignal: "SIGINT" };
@@ -77,23 +80,11 @@ const command: StartCommandType = {
 
 				browserSync.init(bsConfig);
 				break;
-			case "react":
-				if (port) {
-					if (projectType === "igr-ts") {
-						execSyncNpmStart(port, options);
-					} else {
-						// https://facebook.github.io/create-react-app/docs/advanced-configuration
-						// react-scripts start "--port=dafaultPort" is not a valid command for all environments.
-						// .env file is included and used by both igr-es6 and es6 now,
-						// to specify the port for all environments (Windows, Mac, etc)
-						process.env.PORT = `${port}`;
-						port = null;
-					}
-				}
-			/* falls through */
 			case "angular":
+			case "react":
 			case "webcomponents":
 				execSyncNpmStart(port, options);
+				break;
 			default:
 				break;
 		}

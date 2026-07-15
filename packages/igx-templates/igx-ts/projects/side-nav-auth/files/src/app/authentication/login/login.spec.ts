@@ -1,0 +1,116 @@
+import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { IgxButtonModule, IgxIconModule, IgxInputGroupModule, IgxRippleModule } from 'igniteui-angular';
+import { Authentication } from '../services/authentication';
+import { ExternalAuthProvider } from '../services/external-auth-configs';
+import { ExternalAuth } from '../services/external-auth';
+import { UserStore } from '../services/user-store';
+import { Login } from './login';
+
+const MAIL_GROUP_NAME = 'email';
+const PASSWORD_GROUP_NAME = 'password';
+
+describe('Login', () => {
+  let component: Login;
+  let fixture: ComponentFixture<Login>;
+  const extAuthSpy = { login: vi.fn(), hasProvider: vi.fn() };
+  const authSpy = { login: vi.fn() };
+  const userServSpy = { setCurrentUser: vi.fn() };
+
+  afterEach(() => { vi.restoreAllMocks(); });
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [Login, ReactiveFormsModule, RouterTestingModule, NoopAnimationsModule,
+        IgxInputGroupModule, IgxButtonModule, IgxIconModule, IgxRippleModule],
+      providers: [
+        { provide: ExternalAuth, useValue: extAuthSpy },
+        { provide: Authentication, useValue: authSpy },
+        { provide: UserStore, useValue: userServSpy }
+      ]
+    })
+      .compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(Login);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should submit login data', async () => {
+    const router: Router = TestBed.inject(Router);
+    vi.spyOn(router, 'navigate');
+    expect(component.loginForm.valid).toBeFalsy();
+    component.loginForm.controls[MAIL_GROUP_NAME].setValue('test@example.com');
+    expect(component.loginForm.valid).toBeFalsy();
+    component.loginForm.controls[PASSWORD_GROUP_NAME].setValue('123456');
+    expect(component.loginForm.valid).toBeTruthy();
+    vi.spyOn(component.loggedIn, 'emit');
+    authSpy.login.mockResolvedValue({
+      error: null,
+      user: { name: 'TEST' }
+    });
+    await component.tryLogin();
+    expect(authSpy.login).toHaveBeenCalledTimes(1);
+    expect(authSpy.login).toHaveBeenCalledWith({
+      email: 'test@example.com',
+      password: '123456'
+    });
+    expect(userServSpy.setCurrentUser).toHaveBeenCalledWith({ name: 'TEST' });
+    expect(component.loggedIn.emit).toHaveBeenCalled();
+    expect(router.navigate).toHaveBeenCalledWith(['/auth/profile']);
+
+    authSpy.login.mockResolvedValue({
+      error: 'Err'
+    });
+    vi.spyOn(window, 'alert').mockImplementation(() => {});
+    await component.tryLogin();
+    expect(window.alert).toHaveBeenCalledWith('Err');
+  });
+
+  it('should enable external auth buttons when configured', () => {
+    let activeProvider = ExternalAuthProvider.Facebook;
+    const has = (provider: ExternalAuthProvider) => provider ? provider === activeProvider : true;
+    extAuthSpy.hasProvider.mockImplementation(has);
+    fixture.detectChanges();
+    expect(fixture.debugElement.query(By.css('button.facebook'))).toEqual(expect.any(DebugElement));
+    expect(fixture.debugElement.query(By.css('button.google'))).toBeNull();
+    expect(fixture.debugElement.query(By.css('button.microsoft'))).toBeNull();
+    activeProvider = ExternalAuthProvider.Google;
+    fixture.detectChanges();
+    expect(fixture.debugElement.query(By.css('button.facebook'))).toBeNull();
+    expect(fixture.debugElement.query(By.css('button.google'))).toEqual(expect.any(DebugElement));
+    expect(fixture.debugElement.query(By.css('button.microsoft'))).toBeNull();
+  });
+
+  it('should call correct external auth login per button', () => {
+    extAuthSpy.hasProvider.mockReturnValue(true);
+    fixture.detectChanges();
+    vi.spyOn(component.loggedIn, 'emit');
+    fixture.debugElement.query(By.css('button.facebook')).nativeElement.click();
+    expect(extAuthSpy.login).toHaveBeenCalledWith(ExternalAuthProvider.Facebook);
+    expect(component.loggedIn.emit).toHaveBeenCalled();
+
+    fixture.debugElement.query(By.css('button.google')).nativeElement.click();
+    expect(extAuthSpy.login).toHaveBeenCalledWith(ExternalAuthProvider.Google);
+
+    fixture.debugElement.query(By.css('button.microsoft')).nativeElement.click();
+    expect(extAuthSpy.login).toHaveBeenCalledWith(ExternalAuthProvider.Microsoft);
+  });
+
+  it('should emit viewChange on "create account" click', () => {
+    vi.spyOn(fixture.componentInstance.viewChange, 'emit');
+    fixture.debugElement.query(By.css('#register')).nativeElement.click();
+    expect(fixture.componentInstance.viewChange.emit).toHaveBeenCalled();
+  });
+});

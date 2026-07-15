@@ -14,12 +14,6 @@ describe("component",  () => {
 
 	it("works", () => {
 		const runner = new SchematicTestRunner("schematics", collectionPath);
-		const mockInst = {
-			generateConfig: jasmine.createSpy(),
-			packages: [],
-			registerInProject: jasmine.createSpy(),
-			templatePaths: []
-		};
 		const mockBaseTemplate: BaseTemplate = {
 			id: "mock-template-id",
 			name: "mock-template",
@@ -32,6 +26,7 @@ describe("component",  () => {
 			framework: "angular",
 			projectType: "ts",
 			hasExtraConfiguration: true,
+			isHidden: false,
 			templatePaths: ["/path/to/template"],
 			generateConfig: jasmine.createSpy().and.returnValue({}),
 			getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
@@ -111,10 +106,10 @@ describe("component",  () => {
 		projConfigSpy.and.returnValue(mockConfig);
 
 		const tree = runner.runSchematic("component",
-			{ name: "my-combo", template: "combo", templateInst: mockInst, skipRoute: false }, Tree.empty());
+			{ name: "my-combo", template: "combo", skipRoute: false }, Tree.empty());
 		tree.then(state => {
-			expect(mockInst.generateConfig).toHaveBeenCalledWith("my-combo", {});
-			expect(mockInst.registerInProject).toHaveBeenCalledWith("", "my-combo", { skipRoute: false, modulePath: undefined });
+			expect(mockTemplate.generateConfig).toHaveBeenCalledWith("my-combo", {});
+			expect(mockTemplate.registerInProject).toHaveBeenCalledWith("", "my-combo", { skipRoute: false, modulePath: undefined });
 			expect(projLibSpy).toHaveBeenCalledWith("angular", "igx-ts");
 			expect(mockLib.hasTemplate).toHaveBeenCalledWith("combo");
 			expect(mockLib.getTemplateById).toHaveBeenCalledWith("combo");

@@ -4,12 +4,13 @@ import { BaseWithHomeProject } from "../_base_with_home";
 
 export class SideNavProject extends BaseWithHomeProject implements ProjectTemplate {
 	public id: string = "side-nav";
-	public name = "Default side navigation";
+	public name = "Side navigation default";
 	public description = "Project structure with side navigation drawer";
 	public dependencies: string[] = [];
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";
-	public hasExtraConfiguration: boolean = false;
+	public hasExtraConfiguration = false;
+	public isHidden: boolean = false;
 
 	public get templatePaths() {
 		return [...super.templatePaths, path.join(__dirname, "files")];

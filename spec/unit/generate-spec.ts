@@ -1,4 +1,4 @@
-import { GoogleAnalytics, Util } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import os from "os";
 import * as fs from "fs";
 import * as path from "path";
@@ -43,10 +43,10 @@ describe("Unit - Generate command", () => {
 		const projectLib = {
 			generateTemplateFolderPath: "somePath"
 		};
-		generateCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: projectLib
-		});
+		}));
 
 		spyOn(config, "addHandler").and.stub();
 
@@ -76,7 +76,6 @@ describe("Unit - Generate command", () => {
 		const addHandlerExpectedParameter = {
 			property: "customTemplates",
 			value: "path:" + outDir,
-			// tslint:disable-next-line:object-literal-sort-keys
 			global: true,
 			skipAnalytics: true,
 			_: ["config"],
@@ -117,9 +116,9 @@ describe("Unit - Generate command", () => {
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "directoryExists").and.returnValue(false);
 
-		generateCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: undefined
-		});
+		}));
 
 		await generateCmd.handler({ name: "custom-template", framework: "wrongFramework", type: "js", _: ["generate"], $0: "generate" });
 
@@ -133,10 +132,10 @@ describe("Unit - Generate command", () => {
 		spyOn(Util, "isAlphanumericExt").and.returnValue(true);
 		spyOn(Util, "directoryExists").and.returnValue(false);
 
-		generateCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: undefined
-		});
+		}));
 
 		await generateCmd.handler({ name: "custom-template", framework: "jquery", type: "wrongType", _: ["generate"], $0: "generate" });
 
@@ -151,10 +150,10 @@ describe("Unit - Generate command", () => {
 		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "processTemplates").and.returnValue(new Promise<boolean>((res, rej) => { res(false); }));
 
-		generateCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: {}
-		});
+		}));
 
 		await generateCmd.handler({ name: "custom-template", framework: "jquery", type: "js", _: ["generate"], $0: "generate" });
 
@@ -172,10 +171,10 @@ describe("Unit - Generate command", () => {
 		const projectLib = {
 			generateTemplateFolderPath: "somePath"
 		};
-		generateCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: projectLib
-		});
+		}));
 
 		spyOn(config, "addHandler").and.stub();
 

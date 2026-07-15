@@ -1,6 +1,5 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-	"typescript.tsdk": "./node_modules/typescript/lib",
 	"editor.insertSpaces": false,
 	"editor.detectIndentation": false,
 	"files.exclude": {
@@ -18,9 +17,5 @@
 		"migrations/**/*.js": {"when": "$(basename).ts"},
 		"schematics/**/*.js.map": true,
 		"schematics/**/*.js": {"when": "$(basename).ts"}
-	},
-	"tslint.exclude": [ 
-		"**/files/**/*.ts",
-		"./output/**/*.ts"
-	]
+	}
 }

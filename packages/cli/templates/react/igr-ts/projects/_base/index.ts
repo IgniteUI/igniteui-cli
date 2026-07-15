@@ -9,6 +9,7 @@ export class BaseIgrTsProject implements ProjectTemplate {
 	public projectType: string = "tsx";
 	public dependencies: string[];
 	public hasExtraConfiguration: boolean = false;
+	public isHidden: boolean = true;
 	public delimiters = defaultDelimiters;
 
 	public get templatePaths(): string[] {

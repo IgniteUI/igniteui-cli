@@ -1,21 +1,24 @@
-import { checkbox, input, select, Separator } from '@inquirer/prompts';
+import { checkbox, confirm, input, select, Separator } from '@inquirer/prompts';
 import { Context } from '@inquirer/type';
 
 // ref - node_modules\@inquirer\input\dist\cjs\types\index.d.ts - bc for some reason this is not publicly exported
 type InputConfig = {
-    message: string;
-    default?: string;
-    required?: boolean;
+	message: string;
+	default?: string;
+	required?: boolean;
 	type?: string;
 	name?: string;
-	choices?: (string | Separator)[];
-    transformer?: (value: string, { isFinal }: {
-        isFinal: boolean;
-    }) => string;
+	transformer?: (value: string, { isFinal }: {
+		isFinal: boolean;
+	}) => string;
 
 	// TODO: consider typing these by extracting the types from the inquirer package
-    validate?: any;
-    theme?: unknown;
+	validate?: any;
+	theme?: any;
+};
+
+type InputChoicesConfig = Omit<InputConfig, "transformer"> & {
+	choices: (string | Separator)[] | ({ value: string; name?: string; checked?: boolean } | Separator)[];
 };
 
 export class InquirerWrapper {
@@ -25,11 +28,15 @@ export class InquirerWrapper {
 		return input(message, context);
 	}
 
-	public static async select(message: InputConfig & { choices: (string | Separator)[] }, context?: Context): Promise<string> {
+	public static async select(message: InputChoicesConfig, context?: Context): Promise<string> {
 		return select(message, context);
 	}
 
-	public static async checkbox(message: InputConfig & { choices: (string | Separator)[] }, context?: Context): Promise<string[]> {
+	public static async checkbox(message: InputChoicesConfig, context?: Context): Promise<string[]> {
 		return checkbox(message, context);
+	}
+
+	public static async confirm(message: { message: string; default?: boolean }, context?: Context): Promise<boolean> {
+		return confirm(message, context);
 	}
 }

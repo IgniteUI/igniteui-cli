@@ -2,10 +2,12 @@ import { html, css, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
+  IgcButtonComponent,
   IgcCardComponent,
+  IgcIconButtonComponent,
 } from 'igniteui-webcomponents';
 
-defineComponents(IgcCardComponent);
+defineComponents(IgcCardComponent, IgcButtonComponent, IgcIconButtonComponent);
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {
@@ -20,7 +22,7 @@ export default class $(ClassName) extends LitElement {
       <igc-card>
         <igc-card-media style="max-height: 194px">
           <img
-            src="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=180"
+            src="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=320&amp;q=180"
           />
         </igc-card-media>
         <igc-card-header>
@@ -46,9 +48,9 @@ export default class $(ClassName) extends LitElement {
           style="height: 1px; margin: 0 0 8px 0; background-color: rgba(0,0,0, 0.2); border: 0px"
         />
         <igc-card-actions>
-          <igc-button slot="start" variant="flat">Like</igc-button>
-          <igc-button slot="start" variant="flat">Learn More</igc-button>
-          <igc-icon slot="end" name="home" collection="default"></igc-icon>
+          <igc-button slot="start">Like</igc-button>
+          <igc-button slot="start">Learn More</igc-button>
+          <igc-icon-button slot="end" name="home" collection="default"></igc-icon-button>
         </igc-card-actions>
       </igc-card>
     `;

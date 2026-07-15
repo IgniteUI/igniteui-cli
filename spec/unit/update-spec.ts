@@ -10,7 +10,6 @@ interface MockFile {
 	expected: string;
 }
 
-// tslint:disable: object-literal-sort-keys
 describe("updateWorkspace", () => {
 	let fsSpy: IFileSystem;
 
@@ -111,11 +110,11 @@ describe("updateWorkspace", () => {
 				content: "",
 				expected:
 `@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/
-//packages.infragistics.com/npm/js-licensed/:always-auth=true
+//packages.infragistics.com/npm/js-licensed/:auth-type=legacy
 `};
 			(fsSpy.glob as jasmine.Spy).and.returnValues(// per workspace
 				["package.json"], // root package.json
-				["src/home.component.ts", "src/app.module.ts"], // logic files
+				["src/home.component.ts", "src/app-module.ts"], // logic files
 				["src/home.component.scss"], [], [], // for each style extension
 				[] // inner package.json files
 			);
@@ -148,7 +147,7 @@ describe("updateWorkspace", () => {
 		it("Should not modify existing npmrc file", async () => {
 			(fsSpy.glob as jasmine.Spy).and.returnValues(// per workspace
 				["package.json"], // root package.json
-				["src/home.component.ts", "src/app.module.ts"], // logic files
+				["src/home.component.ts", "src/app-module.ts"], // logic files
 				["src/home.component.scss"], [], [], // for each style extension
 				[] // inner package.json files
 			);
@@ -260,7 +259,7 @@ export class HomeComponent {
 		"test-e2e": {}
 	}
 }`}, {
-				path: "src/app.module.ts",
+				path: "src/app-module.ts",
 				content:
 `import { something } from 'module';
 import { bait } from 'igniteui-angular-core';
@@ -290,7 +289,7 @@ title = 'igniteui-angular example';
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
 `},
@@ -305,7 +304,7 @@ title = 'igniteui-angular example';
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
 `},
@@ -321,7 +320,7 @@ title = 'igniteui-angular example';
     - script: |
         echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
         echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
       displayName: 'Authenticate'
       env:
         NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
@@ -330,7 +329,7 @@ title = 'igniteui-angular example';
 `}];
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
-				["src/home.component.ts", "src/app.module.ts"], // logic files
+				["src/home.component.ts", "src/app-module.ts"], // logic files
 				["src/home.component.scss"], [], [], // for each style extension
 				[]); // inner package.json files
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
@@ -484,8 +483,8 @@ title = 'igniteui-angular example';
 
 		it("Should fail if no packages.json is found", async () => {
 			const upgradeable: pkgResolve.PackageDefinition = {
-				trial: pkgResolve.NPM_REACT,
-				licensed: pkgResolve.FEED_REACT
+				trial: pkgResolve.NPM_REACT_DOCK_MANAGER,
+				licensed: pkgResolve.FEED_REACT_DOCK_MANAGER
 			};
 			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([upgradeable]);
 			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
@@ -500,8 +499,8 @@ title = 'igniteui-angular example';
 				someName: "testValue"
 			};
 			const upgradeable: pkgResolve.PackageDefinition = {
-				trial: pkgResolve.NPM_REACT,
-				licensed: pkgResolve.FEED_REACT
+				trial: pkgResolve.NPM_REACT_DOCK_MANAGER,
+				licensed: pkgResolve.FEED_REACT_DOCK_MANAGER
 			};
 			spyOn(pkgResolve, "getUpgradeablePackages").and.returnValue([upgradeable]);
 			(fsSpy.directoryExists as jasmine.Spy).and.returnValue(false);
@@ -510,13 +509,14 @@ title = 'igniteui-angular example';
 			expect(await updateWorkspace("")).toEqual(false);
 		});
 
-		it("Should update package.json file, removing non-scoped igniteui-react packages", async () => {
+		it("Should update package.json file, removing non-scoped igniteui-react-* packages", async () => {
 			const mockPackageJSON = {
 				dependencies: {
 					"@alphabetically-sorted-scope/package": "^0.0.0",
 					"alphabetically-second-package": "^0.0.0",
 					"igniteui-react": "^18.5.1",
-					"igniteui-dockmanager": "^1.0.0",
+					"igniteui-react-grids": "^18.5.1",
+					"igniteui-react-dockmanager": "^1.0.0",
 					"some-package": "^0.0.0"
 				}
 			};
@@ -540,9 +540,10 @@ title = 'igniteui-angular example';
 			expect(fsSpy.writeFile).toHaveBeenCalledWith("package.json", Util.formatPackageJson({
 				dependencies: {
 					"@alphabetically-sorted-scope/package": "^0.0.0",
-					"@infragistics/igniteui-react": "^18.5.1",
-					"@infragistics/igniteui-dockmanager": "^1.0.0",
+					"@infragistics/igniteui-react-dockmanager": "^1.0.0",
+					"@infragistics/igniteui-react-grids": "^18.5.1",
 					"alphabetically-second-package": "^0.0.0",
+					"igniteui-react": "^18.5.1",
 					"some-package": "^0.0.0"
 				}
 			}));
@@ -568,8 +569,8 @@ title = 'igniteui-angular example';
 					`{
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
-    "@infragistics/igniteui-react": "^18.5.1",
     "@infragistics/igniteui-react-grids": "^18.5.1",
+    "igniteui-react": "^18.5.1",
     "some-package": "^0.0.0"
   }
 }
@@ -581,11 +582,9 @@ title = 'igniteui-angular example';
 `import { something } from 'module';
 import { bait } from 'igniteui-react-other';
 import 'igniteui-react-grids/grids';
-import { IgrGridModule, IgrGrid, IgrColumn } from 'igniteui-react-grids';
+import { IgrGrid, IgrColumn } from 'igniteui-react-grids';
 import { IgcDockManager } from 'igniteui-dockmanager';
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css'
-
-IgrGridModule.register();
 
 export default function Home() {
 	const title = 'igniteui-react example';
@@ -594,11 +593,9 @@ export default function Home() {
 `import { something } from 'module';
 import { bait } from 'igniteui-react-other';
 import '@infragistics/igniteui-react-grids/grids';
-import { IgrGridModule, IgrGrid, IgrColumn } from '@infragistics/igniteui-react-grids';
+import { IgrGrid, IgrColumn } from '@infragistics/igniteui-react-grids';
 import { IgcDockManager } from '@infragistics/igniteui-dockmanager';
 import '@infragistics/igniteui-react-grids/grids/themes/light/bootstrap.css'
-
-IgrGridModule.register();
 
 export default function Home() {
 	const title = 'igniteui-react example';
@@ -613,7 +610,7 @@ export default function Home() {
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
 `},
@@ -628,7 +625,7 @@ export default function Home() {
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
 `},
@@ -644,7 +641,7 @@ export default function Home() {
     - script: |
         echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
         echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
       displayName: 'Authenticate'
       env:
         NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
@@ -743,8 +740,8 @@ export default function Home() {
   "name": "root-project",
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
-    "@infragistics/igniteui-react": "^18.5.1",
     "@infragistics/igniteui-react-grids": "^18.5.1",
+    "igniteui-react": "^18.5.1",
     "some-package": "^0.0.0"
   },
   "workspaces": [
@@ -771,8 +768,8 @@ export default function Home() {
   "name": "charts-project",
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
-    "@infragistics/igniteui-react": "^18.5.1",
     "@infragistics/igniteui-react-grids": "^18.5.1",
+    "igniteui-react": "^18.5.1",
     "some-package": "^0.0.0"
   }
 }
@@ -796,8 +793,8 @@ export default function Home() {
   "name": "charts-project",
   "dependencies": {
     "@infragistics/igniteui-dockmanager": "^1.0.0",
-    "@infragistics/igniteui-react": "^18.5.1",
     "@infragistics/igniteui-react-grids": "^18.5.1",
+    "igniteui-react": "^18.5.1",
     "some-package": "^0.0.0"
   }
 }
@@ -808,7 +805,7 @@ export default function Home() {
 			(fsSpy.directoryExists as jasmine.Spy).and.callFake((dirPath: string) => {
 				return dirPath.includes("projects/charts") || dirPath.includes("projects") || dirPath.endsWith("/src");
 			});
-			
+
 			// Mock glob to simulate finding workspace directories and files
 			(fsSpy.glob as jasmine.Spy).and.callFake((dirPath: string, pattern: string) => {
 				if (pattern === "projects/*") {
@@ -830,7 +827,7 @@ export default function Home() {
 				}
 				return [];
 			});
-			
+
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") < 0) {
 					return;
@@ -846,7 +843,7 @@ export default function Home() {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			// Expect: 1 for projects/*, 1 for package.json files at root, 1 for logic files, 1 for style files, 1 for package.json in workspace, 1 for vite.config.ts  
+			// Expect: 1 for projects/*, 1 for package.json files at root, 1 for logic files, 1 for style files, 1 for package.json in workspace, 1 for vite.config.ts
 			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
 		});
 
@@ -965,14 +962,14 @@ export default defineConfig({
 				{
 					path: "projects/erp-hierarchical-grid/src/app.tsx",
 					content:
-`import { IgrGridModule, IgrGrid } from 'igniteui-react-grids';
+`import { IgrGrid } from 'igniteui-react-grids';
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css';
 
 export default function App() {
 	return <IgrGrid />;
 }`,
 					expected:
-`import { IgrGridModule, IgrGrid } from '@infragistics/igniteui-react-grids';
+`import { IgrGrid } from '@infragistics/igniteui-react-grids';
 import '@infragistics/igniteui-react-grids/grids/themes/light/bootstrap.css';
 
 export default function App() {
@@ -1000,7 +997,7 @@ export const GridComponent = () => {
 			(fsSpy.directoryExists as jasmine.Spy).and.callFake((dirPath: string) => {
 				return dirPath === "projects" || dirPath.endsWith("/projects") || dirPath.includes("projects/") || dirPath === "src" || dirPath.endsWith("/src");
 			});
-			
+
 			// Mock glob to simulate finding projects directories and files
 			(fsSpy.glob as jasmine.Spy).and.callFake((dirPath: string, pattern: string) => {
 				if (pattern === "package.json") {
@@ -1025,7 +1022,7 @@ export const GridComponent = () => {
 				}
 				return [];
 			});
-			
+
 			(fsSpy.readFile as jasmine.Spy).and.callFake((filePath: string) => {
 				if (filePath.indexOf("package.json") > -1) {
 					return mockFileArray.find(entry => entry.path === "package.json").content;
@@ -1191,7 +1188,7 @@ export default class App extends LitElement {
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with \'npm ci\' after committing lock file from first install
 # end content
 `},
@@ -1206,7 +1203,7 @@ export default class App extends LitElement {
 `# start content
     - run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install
 # end content
 `},
@@ -1222,7 +1219,7 @@ export default class App extends LitElement {
     - script: |
         echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
         echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
       displayName: 'Authenticate'
       env:
         NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
@@ -1244,7 +1241,7 @@ export default class App extends LitElement {
 <body class="ig-scrollbar">
 	<app-root></app-root>
 
-	<script type="module" src="./dist/src/index.js"></script>
+	<script type="module" src="./src/index.ts"></script>
 </body>
 </html>
 	`,
@@ -1261,7 +1258,7 @@ export default class App extends LitElement {
 <body class="ig-scrollbar">
 	<app-root></app-root>
 
-	<script type="module" src="./dist/src/index.js"></script>
+	<script type="module" src="./src/index.ts"></script>
 </body>
 </html>
 	`

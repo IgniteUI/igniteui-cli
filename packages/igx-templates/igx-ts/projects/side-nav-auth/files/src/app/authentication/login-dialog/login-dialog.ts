@@ -1,0 +1,33 @@
+import { Component, viewChild } from '@angular/core';
+import { IgxDialogComponent } from 'igniteui-angular';
+
+import { Register } from '../register/register';
+import { Login } from '../login/login';
+
+@Component({
+  selector: 'app-login-dialog',
+  templateUrl: './login-dialog.html',
+  styleUrl: './login-dialog.scss',
+  imports: [IgxDialogComponent, Login, Register]
+})
+export class LoginDialog {
+  public showLogin = true;
+  public get title() { return this.showLogin ? 'Login' : 'Register'; }
+  public loginDialog = viewChild.required(IgxDialogComponent);
+
+  open() {
+    this.loginDialog().open();
+  }
+
+  close() {
+    this.loginDialog().close();
+  }
+
+  onOpen() {
+    this.showLogin = true;
+  }
+
+  toggleView() {
+    this.showLogin = !this.showLogin;
+  }
+}

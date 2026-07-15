@@ -1,0 +1,28 @@
+# Source and config
+src/
+tsconfig.json
+.env
+.env.*
+.gitattributes
+CLAUDE.md
+test.json
+
+# Pipeline scripts
+scripts/
+
+# Documentation submodules and processing artifacts
+angular/
+blazor/
+react/
+webcomponents/
+common/
+docs_baseline/
+dist/docs_processing/
+dist/docs_prepeared/
+dist/docs_final/
+dist/diff-manifest.json
+tmp/
+
+# Dev files
+node_modules/
+*.tgz

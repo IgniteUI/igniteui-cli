@@ -5,11 +5,17 @@ import * as path from "path";
 export class SchematicsTemplateManager extends BaseTemplateManager {
 	constructor() {
 		super("");
+	}
+
+	protected override loadFrameworks() {
+		const projectLibrary = require("@igniteui/angular-templates").default as ProjectLibrary[];
 		this.frameworks.push({
 			id: "angular",
 			name: "angular",
-			projectLibraries: require("@igniteui/angular-templates").default as ProjectLibrary[]
+			projectLibraries: projectLibrary
 		});
+		// cache projectIds before swapping to virtFs; TODO: Refactor away folder imports legacy;
+		projectLibrary[0].projectIds;
 	}
 
 	protected loadFromConfig(filePath: string): Template {

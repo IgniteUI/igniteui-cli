@@ -36,11 +36,12 @@ export function decodeBase64Url(base64Url: string) {
     return decodeURIComponent(decoded.split('')
       .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
       .join(''));
-  } catch (er) {
+  } catch {
     return decoded;
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export function encodeBase64Url(input: {}) {
   const encodedToURI: string = encodeURI(JSON.stringify(input));
   let result = '';

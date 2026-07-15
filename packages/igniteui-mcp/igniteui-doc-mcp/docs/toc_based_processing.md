@@ -1,0 +1,127 @@
+# Plan: Use toc.yml as Source of Truth for Documentation Processing
+
+## Problem
+
+The current `export-angular-docs.ts` script collects **all `.md` files** from the `igniteui-docfx/en/components/` directory recursively. This includes files that are not part of the published documentation (e.g. `chart-legends.md` which is only TODO stubs). The `toc.yml` file is the definitive list of files that are actually built and published on the documentation website.
+
+Additionally, `toc.yml` contains valuable metadata per entry:
+- **`name`** — the human-readable display name (e.g. "Excel Style Filtering", "Date Range Picker")
+- **`premium: true`** — marks components that require a paid license
+- **`new: true`** / **`updated: true`** — freshness indicators
+- **`header: true`** — section headers (some have an `href` and should still be processed)
+- **`items`** — nested child entries (hierarchical structure)
+
+This metadata is currently discarded. The `name` and `premium` status are especially useful for the MCP server's frontmatter and search.
+
+## Current Behavior
+
+```
+export-angular-docs.ts:
+  collectFiles(DOCFX_ARTICLES, ".md")  →  processes ALL .md files recursively
+```
+
+This results in:
+- Stub/TODO files (like `chart-legends.md`) being processed and then hallucinated by the LLM compressor
+- No `name` or `premium` metadata carried forward into the pipeline
+
+## Proposed Changes
+
+### 1. Parse `toc.yml` in `export-angular-docs.ts`
+
+Add a function to parse `toc.yml` and extract a flat list of entries with their metadata:
+
+```typescript
+interface TocEntry {
+  name: string;        // display name, e.g. "Excel Style Filtering"
+  href: string;        // relative path, e.g. "grid/excel-style-filtering.md"
+  premium: boolean;    // true if premium: true in toc
+}
+
+function parseToc(tocPath: string): TocEntry[]
+```
+
+The parser should:
+- Read the YAML file (use a simple line-by-line parser or add `js-yaml` as a dependency)
+- Recursively traverse `items` arrays to flatten nested entries
+- Skip entries without an `href` field (this naturally excludes `header: true` entries that are pure section dividers, while keeping headers that have an associated article)
+- Skip commented-out entries (lines starting with `#`)
+- Collect `name`, `href`, and `premium` (default `false`) for each entry
+
+### 2. Use toc entries as the file list instead of `collectFiles()`
+
+Replace:
+```typescript
+const allMdFiles = collectFiles(DOCFX_ARTICLES, ".md");
+```
+
+With:
+```typescript
+const tocEntries = parseToc(join(DOCFX_ARTICLES, "toc.yml"));
+```
+
+Then iterate over `tocEntries` instead of raw file paths. Each entry's `href` resolves to the source `.md` file. The grid template expansion still applies — entries with hrefs like `treegrid/sorting.md` or `grid/filtering.md` will match expanded template outputs.
+
+### 3. Inject `name` and `premium` into the exported markdown
+
+Before writing each exported file, prepend metadata as a YAML frontmatter comment or augment the existing frontmatter. The simplest approach: add lines to the existing docfx frontmatter block:
+
+```yaml
+---
+title: ...
+_description: ...
+_tocName: Excel Style Filtering
+_premium: true
+---
+```
+
+These fields will flow through the inject step untouched and be available to the compress step's LLM, which can use them to:
+- Set the frontmatter `component` field more accurately
+- Add `premium: true` to the output frontmatter for the MCP server to filter on
+
+### 4. Update the compress prompt to handle `_tocName` and `_premium`
+
+Add to the system prompt's frontmatter rules:
+
+```
+- **premium**: If the input frontmatter contains `_premium: true`, include `premium: true` in your output frontmatter. Otherwise omit it.
+- Use the `_tocName` from the input frontmatter as a hint for the component display name.
+```
+
+### 5. Output directory flattening
+
+Currently the compress step flattens subdirectory structure (e.g. `charts/features/chart-data-legend.md` → `chart-data-legend.md`). With toc-based file selection, the pipeline should preserve the relative path from toc as the canonical identifier instead of just the filename. This avoids potential name collisions (unlikely but possible) and keeps the relationship to the toc clear.
+
+## Files to Change
+
+| File | Change |
+|---|---|
+| `scripts/export-angular-docs.ts` | Add `parseToc()`, replace `collectFiles()` with toc-based iteration, inject `_tocName`/`_premium` into frontmatter |
+| `scripts/compress-angular-docs.ts` | Update system prompt to preserve `premium` field from input frontmatter |
+
+## Dependencies
+
+The toc.yml is standard YAML. Options:
+- **Option A (recommended):** Add `js-yaml` or `yaml` npm package for robust parsing
+- **Option B:** Write a simple line-based parser (toc.yml uses a simple subset of YAML — indentation-based nesting with string/boolean values)
+
+## Grid Template Consideration
+
+Grid template entries in toc.yml reference paths like `treegrid/sorting.md`, `hierarchicalgrid/filtering.md`, etc. These don't exist as source files — they are generated by `expandGridTemplates()` from `grids_templates/`. The logic should:
+1. Parse toc entries → get set of expected hrefs
+2. Run grid template expansion → produces files at expanded paths
+3. For each toc entry href:
+   - If it matches an expanded grid template output → use that
+   - Otherwise → read from `DOCFX_ARTICLES/{href}`
+4. Skip any href whose source file doesn't exist (log a warning)
+
+This is largely the same logic as today, just driven by toc entries instead of filesystem enumeration.
+
+## Verification
+
+1. Run `npm run export:angular` and compare output file count:
+   - Current: all `.md` files in components/ (~300+)
+   - Expected: only files listed in toc.yml (~250-280, minus headers and commented entries)
+2. Confirm `chart-legends.md` is NOT in the output (not in toc.yml)
+3. Confirm grid docs (treegrid/sorting.md, etc.) ARE in the output
+4. Spot-check that `_tocName` and `_premium` appear in exported frontmatter
+5. Run full pipeline on a few files and verify `premium: true` flows through to final output

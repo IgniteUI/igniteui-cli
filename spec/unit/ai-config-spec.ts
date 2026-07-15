@@ -1,0 +1,818 @@
+import * as path from "path";
+import { App, Config, FS_TOKEN, FsFileSystem, GoogleAnalytics, IFileSystem, InquirerWrapper, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
+import * as coreDetect from "../../packages/core/util/detect-framework";
+import { configureMCP, configureSkills, configureInstructions } from "../../packages/cli/lib/commands/ai-config";
+import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
+import { addMcpServers } from "../../packages/core/util/mcp-config";
+
+const IGNITEUI_SERVER_KEY = "igniteui-cli";
+const IGNITEUI_THEMING_SERVER_KEY = "igniteui-theming";
+const igniteuiServer = { command: "npx", args: ["-y", "igniteui-cli", "mcp"] };
+const igniteuiThemingServer = { command: "npx", args: ["-y", "igniteui-theming", "igniteui-theming-mcp"] };
+
+function createMockFs(existingContent?: string): IFileSystem {
+	return {
+		fileExists: jasmine.createSpy("fileExists"),
+		readFile: existingContent
+			? jasmine.createSpy("readFile").and.returnValue(existingContent)
+			: jasmine.createSpy("readFile").and.throwError("ENOENT"),
+		writeFile: jasmine.createSpy("writeFile"),
+		directoryExists: jasmine.createSpy("directoryExists"),
+		glob: jasmine.createSpy("glob").and.returnValue([])
+	};
+}
+
+describe("Unit - ai-config command", () => {
+	const configPath = path.join(process.cwd(), ".vscode", "mcp.json");
+
+	beforeAll(() => {
+		spyOn(GoogleAnalytics, "post");
+	});
+
+	beforeEach(() => {
+		spyOn(Util, "log");
+		spyOn(Util, "greenCheck").and.returnValue("✓");
+	});
+
+	function writtenConfig(mockFs: IFileSystem): Record<string, unknown> {
+		const content = (mockFs.writeFile as jasmine.Spy).calls.mostRecent().args[1] as string;
+		return JSON.parse(content);
+	}
+
+	describe("configureMCP", () => {
+		it("creates .vscode/mcp.json with both servers when file does not exist", () => {
+			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
+
+			configureMCP(["vscode"]);
+
+			expect(mockFs.writeFile).toHaveBeenCalled();
+			const config = writtenConfig(mockFs);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+
+		it("creates config with mcpServers key for non-vscode assistants", () => {
+			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
+
+			configureMCP(["cursor"]);
+
+			expect(mockFs.writeFile).toHaveBeenCalledWith(".cursor/mcp.json", jasmine.any(String));
+			const config = writtenConfig(mockFs);
+			expect((config.mcpServers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+			expect((config.mcpServers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+			expect(config.servers).toBeUndefined();
+		});
+
+		it("adds both servers when file exists but servers object is empty", () => {
+			const mockFs = createMockFs(JSON.stringify({ servers: {} }));
+			App.container.set(FS_TOKEN, mockFs);
+
+			configureMCP(["vscode"]);
+
+			expect(mockFs.writeFile).toHaveBeenCalled();
+			const config = writtenConfig(mockFs);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+
+		it("adds missing igniteui-theming server when only igniteui-cli is present", () => {
+			const mockFs = createMockFs(JSON.stringify({
+				servers: { [IGNITEUI_SERVER_KEY]: igniteuiServer }
+			}));
+			App.container.set(FS_TOKEN, mockFs);
+
+			configureMCP(["vscode"]);
+
+			expect(mockFs.writeFile).toHaveBeenCalled();
+			const config = writtenConfig(mockFs);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+
+		it("adds missing igniteui-cli server when only igniteui-theming is present", () => {
+			const mockFs = createMockFs(JSON.stringify({
+				servers: { [IGNITEUI_THEMING_SERVER_KEY]: igniteuiThemingServer }
+			}));
+			App.container.set(FS_TOKEN, mockFs);
+
+			configureMCP(["vscode"]);
+
+			expect(mockFs.writeFile).toHaveBeenCalled();
+			const config = writtenConfig(mockFs);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+
+		it("is a no-op when both servers are already configured", () => {
+			const mockFs = createMockFs(JSON.stringify({
+				servers: {
+					[IGNITEUI_SERVER_KEY]: igniteuiServer,
+					[IGNITEUI_THEMING_SERVER_KEY]: igniteuiThemingServer
+				}
+			}, null, 2));
+			App.container.set(FS_TOKEN, mockFs);
+
+			const result = addMcpServers("vscode");
+
+			expect(result).toBe(false);
+			expect(mockFs.writeFile).not.toHaveBeenCalled();
+		});
+
+		it("updates config when server configuration is outdated", () => {
+			const mockFs = createMockFs(JSON.stringify({
+				servers: {
+					[IGNITEUI_SERVER_KEY]: { command: "npx", args: ["-y", "igniteui-cli", "old-command"] },
+					[IGNITEUI_THEMING_SERVER_KEY]: igniteuiThemingServer
+				}
+			}, null, 2));
+			App.container.set(FS_TOKEN, mockFs);
+
+			const result = addMcpServers("vscode");
+
+			expect(result).toBe(true);
+			expect(mockFs.writeFile).toHaveBeenCalled();
+			const config = writtenConfig(mockFs);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+
+		it("preserves existing third-party servers when adding igniteui servers", () => {
+			const thirdPartyServer = { command: "node", args: ["server.js"] };
+			const mockFs = createMockFs(JSON.stringify({
+				servers: { "other-server": thirdPartyServer }
+			}));
+			App.container.set(FS_TOKEN, mockFs);
+
+			configureMCP(["vscode"]);
+
+			expect(mockFs.writeFile).toHaveBeenCalled();
+			const config = writtenConfig(mockFs);
+			expect((config.servers as any)["other-server"]).toEqual(thirdPartyServer);
+			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+	});
+
+	describe("configureSkills", () => {
+		const angularSkillsDir = "node_modules/igniteui-angular/skills";
+
+		beforeEach(() => {
+			spyOn(Util, "warn");
+		});
+
+		function setupAngularConfig() {
+			spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(true);
+			spyOn(ProjectConfig, "getConfig").and.returnValue({
+				project: { framework: "angular" }
+			} as unknown as Config);
+		}
+
+		it("warns when no skill files are found", () => {
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue(""),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.returnValue(false),
+				glob: jasmine.createSpy("glob").and.returnValue([])
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.callFake(token => {
+				if (token === FS_TOKEN) {
+					return mockFs;
+				}
+				if (token === TEMPLATE_MANAGER) {
+					return { getFrameworkById: () => null } as any;
+				}
+			})
+
+			configureSkills(["claude"], "angular");
+
+			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("No AI skill files found"), "yellow");
+			expect(Util.log).not.toHaveBeenCalled();
+		});
+
+		it("warns with failure count when some writes fail", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				writeFile: jasmine.createSpy("writeFile").and.throwError("EACCES: permission denied"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			// srcFs reads (FsFileSystem.prototype) for source content
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
+
+			configureSkills(["claude"], "angular");
+
+			expect(Util.warn).toHaveBeenCalledWith(jasmine.stringContaining("Failed to write 1 AI skill file(s) out of 1"), "yellow");
+			const logCalls = (Util.log as jasmine.Spy).calls.allArgs().map(a => a[0] as string);
+			expect(logCalls.some(m => m.includes("Created"))).toBe(false);
+			expect(logCalls.some(m => m.includes("Updated"))).toBe(false);
+		});
+
+		it("logs up-to-date when all files are already current", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const destFile = ".claude/skills/angular.md";
+			const content = "# Ignite UI skills";
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json" || p === destFile
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue(content),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			// srcFs reads (FsFileSystem.prototype) for source content
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content);
+
+			configureSkills(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("already up-to-date"));
+			expect(Util.warn).not.toHaveBeenCalled();
+		});
+
+		it("logs created/updated count when skills are written successfully", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			// srcFs reads (FsFileSystem.prototype) for source content
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
+
+			configureSkills(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("1 AI skill file(s) created or updated"));
+			expect(Util.warn).not.toHaveBeenCalled();
+		});
+
+		it("logs per-file Created messages for new skill files", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("skill content");
+
+			configureSkills(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith("  Created .claude/skills/angular.md");
+		});
+
+		it("logs per-file Updated messages for changed skill files", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const destFile = ".claude/skills/angular.md";
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json" || p === destFile
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("old content"),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("new content");
+
+			configureSkills(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith("  Updated .claude/skills/angular.md");
+		});
+
+		it("does not log per-file messages for skipped (up-to-date) files", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const destFile = ".claude/skills/angular.md";
+			const content = "# Ignite UI skills";
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json" || p === destFile
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue(content),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content);
+
+			configureSkills(["claude"], "angular");
+
+			const logCalls = (Util.log as jasmine.Spy).calls.allArgs().map(a => a[0] as string);
+			expect(logCalls.some(m => m.includes("Created"))).toBe(false);
+			expect(logCalls.some(m => m.includes("Updated"))).toBe(false);
+		});
+
+		it("logs package source with version when skills come from npm package", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
+				if (p === "node_modules/igniteui-angular/package.json") {
+					return JSON.stringify({ version: "18.2.0" });
+				}
+				return "skill content";
+			});
+
+			configureSkills(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith("Using skills from igniteui-angular@18.2.0");
+		});
+
+		it("logs bundled source when skills come from templates", () => {
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.returnValue(false),
+				readFile: jasmine.createSpy("readFile").and.returnValue(""),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.returnValue(false),
+				glob: jasmine.createSpy("glob").and.returnValue([])
+			} as unknown as IFileSystem;
+
+			App.container.set(FS_TOKEN, mockFs);
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {
+					projectLibraries: [{
+						getProject: (id: string) => id === "ai-config" ? { templatePaths: ["/fake/files"] } : null
+					}]
+				}
+			}));
+
+			const fakeSkillsRoot = path.join("/fake/files", "skills");
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === fakeSkillsRoot ? [path.join(fakeSkillsRoot, "angular.md")] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("# skill content");
+
+			configureSkills(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith("Using bundled Ignite UI skills");
+		});
+
+		it("suppresses per-file and source messages when verbose is false", () => {
+			const skillFile = `${angularSkillsDir}/angular.md`;
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === "ignite-ui-cli.json"
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("skill content"),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists").and.callFake((p: string) =>
+					p === angularSkillsDir
+				),
+				glob: jasmine.createSpy("glob").and.callFake((d: string) =>
+					d === angularSkillsDir ? [skillFile] : []
+				)
+			} as unknown as IFileSystem;
+
+			spyOn(App.container, "get").and.returnValue(mockFs);
+			spyOn(FsFileSystem.prototype, "glob").and.callFake((d: string) =>
+				d === angularSkillsDir ? [skillFile] : []
+			);
+			spyOn(FsFileSystem.prototype, "readFile").and.callFake((p: string) => {
+				if (p === "node_modules/igniteui-angular/package.json") {
+					return JSON.stringify({ version: "18.2.0" });
+				}
+				return "skill content";
+			});
+
+			configureSkills(["claude"], "angular", false);
+
+			const logCalls = (Util.log as jasmine.Spy).calls.allArgs().map(a => a[0] as string);
+			expect(logCalls.some(m => m.includes("Created"))).toBe(false);
+			expect(logCalls.some(m => m.includes("Using skills from"))).toBe(false);
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("AI skill file(s) created or updated"));
+		});
+	});
+
+	describe("configureInstructions", () => {
+		it("logs per-file Created messages for new instruction files", () => {
+			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
+
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("# Instructions content");
+
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {
+					projectLibraries: [{
+						getProject: (id: string) => id === "ai-config" ? { templatePaths: ["/fake/files"] } : null
+					}]
+				}
+			}));
+
+			configureInstructions(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith("  Created .claude/CLAUDE.md");
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("1 instruction file(s) created or updated"));
+		});
+
+		it("logs per-file Updated messages for changed instruction files", () => {
+			const destFile = ".claude/CLAUDE.md";
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === destFile
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue("old instructions"),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists"),
+				glob: jasmine.createSpy("glob").and.returnValue([])
+			};
+			App.container.set(FS_TOKEN, mockFs);
+
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("new instructions");
+
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {
+					projectLibraries: [{
+						getProject: (id: string) => id === "ai-config" ? { templatePaths: ["/fake/files"] } : null
+					}]
+				}
+			}));
+
+			configureInstructions(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith("  Updated .claude/CLAUDE.md");
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("1 instruction file(s) created or updated"));
+		});
+
+		it("logs up-to-date when all instruction files are current", () => {
+			const content = "# Instructions";
+			const destFile = ".claude/CLAUDE.md";
+			const mockFs: IFileSystem = {
+				fileExists: jasmine.createSpy("fileExists").and.callFake((p: string) =>
+					p === destFile
+				),
+				readFile: jasmine.createSpy("readFile").and.returnValue(content),
+				writeFile: jasmine.createSpy("writeFile"),
+				directoryExists: jasmine.createSpy("directoryExists"),
+				glob: jasmine.createSpy("glob").and.returnValue([])
+			};
+			App.container.set(FS_TOKEN, mockFs);
+
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue(content);
+
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {
+					projectLibraries: [{
+						getProject: (id: string) => id === "ai-config" ? { templatePaths: ["/fake/files"] } : null
+					}]
+				}
+			}));
+
+			configureInstructions(["claude"], "angular");
+
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("instruction file(s) already up-to-date"));
+		});
+
+		it("does not log when source content is not found", () => {
+			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
+
+			spyOn(FsFileSystem.prototype, "readFile").and.throwError("ENOENT");
+
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {
+					projectLibraries: [{
+						getProject: (id: string) => id === "ai-config" ? { templatePaths: ["/fake/files"] } : null
+					}]
+				}
+			}));
+
+			configureInstructions(["claude"], "angular");
+
+			expect(Util.log).not.toHaveBeenCalled();
+		});
+
+		it("suppresses per-file messages but keeps summary when verbose is false", () => {
+			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
+
+			spyOn(FsFileSystem.prototype, "readFile").and.returnValue("# Instructions content");
+
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {
+					projectLibraries: [{
+						getProject: (id: string) => id === "ai-config" ? { templatePaths: ["/fake/files"] } : null
+					}]
+				}
+			}));
+
+			configureInstructions(["claude"], "angular", false);
+
+			const logCalls = (Util.log as jasmine.Spy).calls.allArgs().map(a => a[0] as string);
+			expect(logCalls.some(m => m.includes("Created"))).toBe(false);
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("instruction file(s) created or updated"));
+		});
+	});
+
+	describe("handler", () => {
+		beforeEach(() => {
+			(GoogleAnalytics.post as jasmine.Spy).calls.reset();
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: { projectLibraries: [] },
+				getFrameworkIds: ["angular"],
+				getFrameworkNames: ["Angular"],
+				getFrameworkByName: { id: "angular" }
+			}));
+			spyOn(Util, "warn");
+		});
+
+		it("prompts for agents when --agent is not provided", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
+			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+				Promise.resolve(["claude"]),
+				Promise.resolve(["vscode"])
+			);
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
+
+			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
+				message: "Which AI agents do you want to generate skills and instructions for?",
+				required: true
+			}));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: claude; assistant: vscode", cd1: "angular" }));
+		});
+
+		it("uses defaults without prompting when canPrompt returns false", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(false);
+			spyOn(InquirerWrapper, "checkbox");
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
+
+			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: generic, claude; assistant: generic", cd1: "angular" }));
+		});
+
+		it("logs skipping and does not post analytics when none is selected", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
+			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
+
+			expect(Util.log).toHaveBeenCalledWith(jasmine.stringContaining("Skipping"));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: none; assistant: none", cd1: "angular" }));
+		});
+
+		it("still configures MCP when none is selected for skills", async () => {
+			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
+			spyOn(Util, "canPrompt").and.returnValue(true);
+			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+				Promise.resolve(["none"]),
+				Promise.resolve(["vscode"])
+			);
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
+
+			expect(mockFs.writeFile).toHaveBeenCalled();
+			const config = writtenConfig(mockFs);
+			expect(config.servers).toBeDefined();
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: none; assistant: vscode", cd1: "angular" }));
+			expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(2);
+			expect(
+				(Util.log as jasmine.Spy).calls.allArgs()
+					.filter(([msg]) => String(msg).includes("Skipping"))
+			).toHaveSize(1);
+			expect(Util.log).toHaveBeenCalledWith("No AI configuration selected. Skipping.");
+		});
+
+		it("configures multiple agents when selected interactively", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
+			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+				Promise.resolve(["claude", "cursor"]),
+				Promise.resolve(["vscode"])
+			);
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
+
+			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
+				message: "Which AI agents do you want to generate skills and instructions for?"
+			}));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: claude, cursor; assistant: vscode", cd1: "angular" }));
+		});
+
+		it("skips prompt when --agent is provided", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
+			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["vscode"]));
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agents: ["cursor"], framework: "angular" });
+
+			expect(InquirerWrapper.checkbox).not.toHaveBeenCalledWith(jasmine.objectContaining({
+				message: "Which AI agents do you want to generate skills and instructions for?"
+			}));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor; assistant: vscode", cd1: "angular" }));
+		});
+
+		it("skips assistant prompt when --assistant is provided", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
+			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", assistants: ["cursor"], framework: "angular" });
+
+			expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(1);
+		});
+
+		it("prompts for assistant with correct message", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
+			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+				Promise.resolve(["claude"]),
+				Promise.resolve(["vscode"])
+			);
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
+
+			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
+				message: "Which coding assistants should MCP servers be configured for?"
+			}));
+		});
+
+		it("writes to correct config path for selected assistant", async () => {
+			const mockFs = createMockFs();
+			App.container.set(FS_TOKEN, mockFs);
+			spyOn(Util, "canPrompt").and.returnValue(true);
+			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+				Promise.resolve(["claude"]),
+				Promise.resolve(["generic"])
+			);
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
+
+			expect(mockFs.writeFile).toHaveBeenCalledWith(".mcp.json", jasmine.any(String));
+			const config = writtenConfig(mockFs);
+			expect((config.mcpServers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
+		});
+
+		it("logs and returns early when framework is jquery", async () => {
+			App.container.set(FS_TOKEN, createMockFs());
+			spyOn(Util, "canPrompt").and.returnValue(true);
+			spyOn(InquirerWrapper, "checkbox");
+
+			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "jquery" });
+
+			expect(Util.log).toHaveBeenCalledWith("AI Config currently not available for jQuery projects.");
+			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
+		});
+
+		describe("framework resolution", () => {
+			const NO_DETECT_MESSAGE = "Framework not provided and couldn't detect project from config or structure.";
+			beforeEach(() => {
+				App.container.set(FS_TOKEN, createMockFs());
+				spyOn(Util, "canPrompt").and.returnValue(true);
+				spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
+			});
+
+			it("uses detected framework when --framework is not provided", async () => {
+				spyOn(coreDetect, "detectFramework").and.returnValue("react");
+				spyOn(InquirerWrapper, "select");
+
+				await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+				expect(coreDetect.detectFramework).toHaveBeenCalled();
+				expect(InquirerWrapper.select).not.toHaveBeenCalled();
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", cd1: "react" }));
+			});
+
+			it("prompts for framework when --framework is absent and detection returns null", async () => {
+				spyOn(coreDetect, "detectFramework").and.returnValue(null);
+				spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("Angular"));
+
+				await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+				expect(Util.log).toHaveBeenCalledWith(NO_DETECT_MESSAGE);
+				expect(InquirerWrapper.select).toHaveBeenCalledWith(jasmine.objectContaining({
+					message: "Choose framework:"
+				}));
+			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", cd1: "angular" }));
+			});
+
+			it("shows framework choices from template manager when prompting", async () => {
+				spyOn(coreDetect, "detectFramework").and.returnValue(null);
+				spyOn(InquirerWrapper, "select").and.returnValue(Promise.resolve("Angular"));
+
+				await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+				expect(InquirerWrapper.select).toHaveBeenCalledWith(jasmine.objectContaining({
+					choices: ["Angular"]
+				}));
+			});
+
+			it("errors without prompting when framework is absent and canPrompt is false", async () => {
+				spyOn(coreDetect, "detectFramework").and.returnValue(null);
+				spyOn(InquirerWrapper, "select");
+				spyOn(Util, "error");
+				(Util.canPrompt as jasmine.Spy).and.returnValue(false);
+
+				await aiConfig.default.handler({ _: ["ai-config"], $0: "ig" });
+
+				expect(InquirerWrapper.select).not.toHaveBeenCalled();
+				expect(Util.log).toHaveBeenCalledWith(NO_DETECT_MESSAGE);
+				expect(Util.error).toHaveBeenCalledWith("Please provide --framework argument.", "red");
+			});
+
+			it("errors when provided framework is not supported", async () => {
+				spyOn(Util, "error");
+				// override the spy to return undefined (unknown framework)
+				(App.container.get(TEMPLATE_MANAGER) as jasmine.SpyObj<any>)
+					.getFrameworkById.and.returnValue(undefined);
+
+				await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "unknown" });
+
+				expect(Util.error).toHaveBeenCalledWith("Framework not supported", "red");
+			});
+		});
+	});
+});

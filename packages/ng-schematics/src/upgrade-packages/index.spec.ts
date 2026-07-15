@@ -7,7 +7,6 @@ import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 import { NgTreeFileSystem } from "../utils/NgFileSystem";
 
 describe("Schematics upgrade-packages", () => {
-	// tslint:disable: object-literal-sort-keys
 
 	let appTree: UnitTestTree;
 	const collectionPath = path.join(__dirname, "../collection.json");
@@ -44,6 +43,7 @@ describe("Schematics upgrade-packages", () => {
 			framework: "angular",
 			projectType: "ts",
 			hasExtraConfiguration: true,
+			isHidden: false,
 			templatePaths: ["/path/to/template"],
 			generateConfig: jasmine.createSpy().and.returnValue({}),
 			getExtraConfiguration: jasmine.createSpy().and.returnValue([]),

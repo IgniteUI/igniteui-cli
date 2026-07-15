@@ -1,8 +1,8 @@
 import { SchematicContext, Tree } from "@angular-devkit/schematics";
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import {
-	BasePromptSession, BaseTemplateManager, Framework,
-	IUserInputOptions, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task
+	BasePromptSession, Framework,
+	type UserInputOptions, ProjectConfig, ProjectLibrary, ProjectTemplate, PromptTaskContext, Task
 } from "@igniteui/cli-core";
 import { of } from "rxjs";
 import { TemplateOptions } from "../component/schema";
@@ -14,9 +14,8 @@ export class SchematicsPromptSession extends BasePromptSession {
 	public projectName: string;
 	public userAnswers: Map<string, any>;
 
-	constructor(
-		templateManager: BaseTemplateManager) {
-		super(templateManager);
+	constructor() {
+		super();
 		this.config = ProjectConfig.getConfig();
 	}
 
@@ -27,7 +26,10 @@ export class SchematicsPromptSession extends BasePromptSession {
 		this.userAnswers = new Map<string, any>();
 	}
 
-	public async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
+	public async getUserInput(
+		options: Exclude<UserInputOptions, { type: "checkbox" }>,
+		withBackChoice: boolean = false,
+	): Promise<string> {
 		return super.getUserInput(options, withBackChoice);
 	}
 
@@ -36,7 +38,8 @@ export class SchematicsPromptSession extends BasePromptSession {
 	}
 
 	public async getProjectLibraryByType(framework: Framework, type: string): Promise<ProjectLibrary> {
-		type = type === "igx-ts" || type === "igx-ts-legacy" ? type : "igx-ts";
+		type = type === "igx-ts" ? type : "igx-ts";
+		// narrow down projectLibraries so required option is auto-selected:
 		framework.projectLibraries = [framework.projectLibraries.find(lib => lib.projectType === type)!];
 		return super.getProjectLibrary(framework);
 	}
@@ -53,8 +56,12 @@ export class SchematicsPromptSession extends BasePromptSession {
 		return super.nameIsValid(name, checkFolder);
 	}
 
-	protected completeAndRun(_port?: number) {
-		// TODO?
+	protected async complete() {
+		// No-op: package installation is managed by the Angular CLI schematic runner
+	}
+
+	protected async configureAI(_frameworkId: string): Promise<void> {
+		// No-op in schematics context
 	}
 
 	protected async upgradePackages() {

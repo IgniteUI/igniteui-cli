@@ -5,11 +5,12 @@ import { BaseWithHomeProject } from "../_base_with_home";
 export class EmptyPageTemplate extends BaseWithHomeProject implements ProjectTemplate {
 	public id: string = "empty";
 	public name = "Empty Project";
-	public description = "Project structure with routing and a home page";
+	public description = "Starter project with routing and a home page";
 	public dependencies: string[] = [];
 	public framework: string = "angular";
 	public projectType: string = "igx-ts";
-	public hasExtraConfiguration: boolean = false;
+	public hasExtraConfiguration = false;
+	public isHidden: boolean = false;
 
 	public get templatePaths(): string[] {
 		return [...super.templatePaths, path.join(__dirname, "files")];

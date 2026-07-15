@@ -1,4 +1,4 @@
-import { Config, GoogleAnalytics, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, Config, GoogleAnalytics, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import { default as listCmd } from "../../packages/cli/lib/commands/list";
 
 describe("Unit - List command", () => {
@@ -29,10 +29,10 @@ describe("Unit - List command", () => {
 			templates: mockTemplates
 		};
 
-		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: framework,
 			getProjectLibrary: projectLib
-		});
+		}));
 
 		await listCmd.handler({ framework: "jQuery", type: "js", _: ["list"], $0: "list" });
 
@@ -66,10 +66,10 @@ describe("Unit - List command", () => {
 			templates: mockTemplates
 		};
 
-		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: framework,
 			getProjectLibrary: projectLib
-		});
+		}));
 
 		await listCmd.handler({ _: ["list"], $0: "list" });
 		expect(Util.error).toHaveBeenCalledTimes(0);
@@ -88,9 +88,9 @@ describe("Unit - List command", () => {
 	});
 
 	it("Should log error if called with wrong framework", async () => {
-		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: undefined
-		});
+		}));
 
 		await listCmd.handler({ framework: "wrongOne", type: "js", _: ["list"], $0: "list" });
 
@@ -98,23 +98,78 @@ describe("Unit - List command", () => {
 		expect(Util.error).toHaveBeenCalledWith("Wrong framework provided", "red");
 	});
 
-	it("Should log error if called without framework outside a project", async () => {
+	it("Should list all frameworks and their project templates when called without framework outside a project", async () => {
 		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
-		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
-			getFrameworkById: undefined
+
+		const angularFramework = {
+			id: "angular",
+			name: "Angular",
+			projectLibraries: [{
+				name: "Ignite UI for Angular",
+				projectType: "igx-ts",
+				projects: [
+					{ id: "default-side-nav", description: "Side navigation project", isHidden: false },
+					{ id: "hidden-one", description: "hidden", isHidden: true }
+				]
+			}]
+		};
+		const reactFramework = {
+			id: "react",
+			name: "React",
+			projectLibraries: [{
+				name: "Ignite UI for React",
+				projectType: "igr-ts",
+				projects: [
+					{ id: "default", description: "Default React project", isHidden: false }
+				]
+			}]
+		};
+
+		const mockTm = jasmine.createSpyObj("TemplateManager", {
+			getFrameworkIds: ["angular", "react"],
+			getFrameworkById: null
 		});
+		(mockTm.getFrameworkById as jasmine.Spy).and.callFake((id: string) => {
+			if (id === "angular") { return angularFramework; }
+			if (id === "react") { return reactFramework; }
+			return undefined;
+		});
+		App.container.set(TEMPLATE_MANAGER, mockTm);
 
 		await listCmd.handler({ _: ["list"], $0: "list" });
 
+		expect(Util.error).toHaveBeenCalledTimes(0);
+		expect(Util.log).toHaveBeenCalledWith("Available frameworks and project templates:");
+		expect(Util.log).toHaveBeenCalledWith("Angular (angular)");
+		expect(Util.log).toHaveBeenCalledWith("\tIgnite UI for Angular (igx-ts)");
+		const ansi = "(?:\\u001b\\[\\d+m)*";
+		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching(
+			new RegExp(`^\\t\\tdefault-side-nav${ansi}\\.{3}${ansi}Side navigation project${ansi}$`)));
+		expect(Util.log).toHaveBeenCalledWith("React (react)");
+		expect(Util.log).toHaveBeenCalledWith("\tIgnite UI for React (igr-ts)");
+		expect(Util.log).toHaveBeenCalledWith(jasmine.stringMatching(
+			new RegExp(`^\\t\\tdefault${ansi}\\.{11}${ansi}Default React project${ansi}$`)));
+		expect(Util.log).not.toHaveBeenCalledWith(jasmine.stringMatching(/hidden-one/));
+	});
+
+	it("Should log error if called with --type but no --framework outside a project", async () => {
+		spyOn(ProjectConfig, "hasLocalConfig").and.returnValue(false);
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+			getFrameworkIds: [],
+			getFrameworkById: undefined
+		}));
+
+		await listCmd.handler({ type: "igx-ts", _: ["list"], $0: "list" });
+
 		expect(Util.error).toHaveBeenCalledTimes(1);
-		expect(Util.error).toHaveBeenCalledWith("Wrong framework provided", "red");
+		expect(Util.error).toHaveBeenCalledWith("'--type' requires '--framework'", "red");
 	});
 
 	it("Should log error if called with wrong type", async () => {
-		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: undefined
-		});
+		}));
 
 		await listCmd.handler({ framework: "angular", type: "wrongType", _: ["list"], $0: "list" });
 
@@ -125,21 +180,21 @@ describe("Unit - List command", () => {
 	it("Should list templates for default type when type no provided", async () => {
 		const framework = { name: "React" };
 		const projectLib = {
-			projectType: "es6",
+			projectType: "igr-ts",
 			templates: mockTemplates
 		};
 
-		listCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: framework,
 			getProjectLibrary: projectLib
-		});
+		}));
 
 		await listCmd.handler({ framework: "react", _: ["list"], $0: "list" });
 
 		expect(Util.error).toHaveBeenCalledTimes(0);
 
 		expect(Util.log).toHaveBeenCalledTimes(9);
-		expect(Util.log).toHaveBeenCalledWith("Available templates for 'React' framework 'es6' type");
+		expect(Util.log).toHaveBeenCalledWith("Available templates for 'React' framework 'igr-ts' type");
 		expect(Util.log).toHaveBeenCalledWith("'group1' group:");
 		expect(Util.log).toHaveBeenCalledWith("	id1.1     Description for 1.1");
 		expect(Util.log).toHaveBeenCalledWith("	id1.2     Description for 1.2");

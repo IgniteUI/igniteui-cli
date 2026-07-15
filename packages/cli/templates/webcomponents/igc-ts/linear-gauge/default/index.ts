@@ -1,4 +1,5 @@
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
+import { IGNITEUI_WEBCOMPONENTS_CORE_PACKAGE, IGNITEUI_WEBCOMPONENTS_GAUGES_PACKAGE } from "../../constants";
 
 class IgcLinearGaugeTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
@@ -11,8 +12,8 @@ class IgcLinearGaugeTemplate extends IgniteUIForWebComponentsTemplate {
 		this.name = "Linear Gauge";
 		this.description = "IgcLinearGauge";
 		this.packages = [
-			"igniteui-webcomponents-core@~6.0.0",
-			"igniteui-webcomponents-gauges@~6.0.0"
+			IGNITEUI_WEBCOMPONENTS_CORE_PACKAGE,
+			IGNITEUI_WEBCOMPONENTS_GAUGES_PACKAGE
 		];
 	}
 }

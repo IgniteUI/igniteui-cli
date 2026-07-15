@@ -5,14 +5,13 @@ import { ArgumentsCamelCase } from "yargs";
 
 const doc: DocCommandType = {
 	command: "doc [term]",
-	describe: "opens the Infragistics search for the given term",
+	describe: "Opens the Infragistics search for the given term",
 	builder: (yargs) => {
 		return yargs
-			.option("term", {
-				describe: "The term you would like to search for",
+			.positional("term", {
+				describe: "Term to search for",
 				type: "string"
-			})
-			.usage(""); // do not show any usage instructions before the commands list
+			});
 	},
 	open: async (target) => {
 		const open = await import("open");
@@ -27,7 +26,7 @@ const doc: DocCommandType = {
 		if (!argv.term) {
 			const answer = await PromptSession.chooseTerm();
 			argv.term = answer;
-			await this.handler(argv);
+			await doc.handler(argv);
 		} else if (!Util.isAlphanumericExt(argv.term)) {
 			return Util.error(`The search term '${argv.term}' is not valid.` + "\n" +
 			"Name should start with a letter and can also contain numbers, dashes and spaces.",

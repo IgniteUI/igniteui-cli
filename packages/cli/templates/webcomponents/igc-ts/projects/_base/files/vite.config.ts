@@ -1,4 +1,6 @@
-import { defineConfig } from 'vite';
+/// <reference types="vitest/config" />
+import { playwright } from '@vitest/browser-playwright'
+import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
@@ -10,25 +12,27 @@ export default defineConfig({
         chunkFileNames: '[hash].js',
         assetFileNames: '[hash][extname]',
       },
-      onwarn: (warning, warn) => {
+      onwarn: (warning: any, warn: any) => {
         if (warning.code === 'THIS_IS_UNDEFINED') return;
         warn(warning);
       },
     },
     target: 'es2021',
     minify: 'terser',
-    emptyOutDir: false,
     chunkSizeWarningLimit: 10 * 1024 * 1024 // 10 MB
   },
   test: {
-    environment: 'jsdom',
-    include: ['test/src/app/**/*.test.js']
+    browser: {
+      enabled: true,
+      provider: playwright(),
+      instances: [{ browser: 'chromium' }]
+    }
   },
   plugins: [
     /** Copy static assets */
     viteStaticCopy({
       targets: [
-        { src: 'src/assets', dest: 'src' }
+        { src: 'src/assets', dest: '.' }
       ],
       silent: true,
     }),

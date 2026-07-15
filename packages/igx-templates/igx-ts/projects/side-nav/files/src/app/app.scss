@@ -1,0 +1,20 @@
+.outer-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  overflow: hidden;
+}
+
+.app-body {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: stretch;
+  overflow: auto;
+}

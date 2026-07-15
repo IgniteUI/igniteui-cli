@@ -12,7 +12,7 @@ import {
 	TaskId,
 	Tree } from "@angular-devkit/schematics";
 import { NodePackageInstallTask, RepositoryInitializerTask, RunSchematicTask } from "@angular-devkit/schematics/tasks";
-import { App, GoogleAnalytics, ProjectLibrary, ProjectTemplate, Util } from "@igniteui/cli-core";
+import { App, GoogleAnalytics, ProjectLibrary, ProjectTemplate, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import { defer, Observable } from "rxjs";
 import { NewProjectOptions } from "../app-projects/schema";
 import { SchematicsPromptSession } from "../prompt/SchematicsPromptSession";
@@ -35,7 +35,8 @@ export function newProject(options: OptionsSchema): Rule {
 		let projLibrary: ProjectLibrary;
 		let projectOptions: NewProjectOptions;
 		const templateManager = new SchematicsTemplateManager();
-		const prompt = new SchematicsPromptSession(templateManager);
+		App.container.set(TEMPLATE_MANAGER, templateManager);
+		const prompt = new SchematicsPromptSession();
 
 		// TODO:
 		const defaultProjName = "IG Project";
@@ -68,7 +69,6 @@ export function newProject(options: OptionsSchema): Rule {
 							name: "projectName",
 							message: "Enter a name for your project:",
 							default: Util.getAvailableName(defaultProjName, true),
-							choices: null as unknown as string[],
 							validate: prompt.nameIsValid
 						});
 						nameProvided = false;
@@ -87,8 +87,9 @@ export function newProject(options: OptionsSchema): Rule {
 					}
 
 					if (projTemplate === undefined) {
-						const projectTemplate = options.template || projLibrary.projectIds[0];
-						projTemplate = projLibrary.getProject(projectTemplate);
+						projTemplate = options.template
+							? projLibrary.getProject(options.template)
+							: projLibrary.projects.filter(p => !p.isHidden)[0];
 						if (!projTemplate) {
 							throw new SchematicsException(`template with id '${options.template}' not found`);
 						}
@@ -102,7 +103,9 @@ export function newProject(options: OptionsSchema): Rule {
 					const views = (projLibrary as any).customTemplates;
 
 					projectOptions = {
-						projTemplate,
+						config: projTemplate.generateConfig(options.name, theme),
+						templateId: projTemplate.id,
+						templatePaths: [...projTemplate.templatePaths],
 						theme,
 						name: options.name
 					};
@@ -150,7 +153,10 @@ export function newProject(options: OptionsSchema): Rule {
 							});
 						}
 					},
+					// run full schematic for args/prompts
+					schematic("ai-config", {}),
 					(_tree: Tree, _context: IgxSchematicContext) => {
+						// move late so name can be resolved before use
 						return move(options.name!);
 					}
 				]), MergeStrategy.Overwrite
@@ -159,7 +165,7 @@ export function newProject(options: OptionsSchema): Rule {
 				if (prompt.userAnswers && prompt.userAnswers.get("upgradePackages")) {
 					return defer(async () => {
 						setVirtual(tree);
-						await projectOptions.projTemplate.upgradeIgniteUIPackages(options.name || "", "");
+						await projTemplate.upgradeIgniteUIPackages(options.name || "", "");
 						return tree;
 					});
 				}
@@ -174,7 +180,7 @@ export function newProject(options: OptionsSchema): Rule {
 				}
 				if (!options.skipGit) {
 					const gitTask = context.addTask(
-						new RepositoryInitializerTask(options.name, { message: `Initial commit for project: ${options.name}` }),
+						new RepositoryInitializerTask(options.name, { message: `Initial commit for project` }),
 						[...installChain] //copy
 					);
 					installChain.push(gitTask);

@@ -1,7 +1,9 @@
 import child_process from "child_process";
 import path from "path";
-import { App, Config, IFileSystem, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, Config, IFileSystem, PackageManager, ProjectConfig, REGISTRY_ATTEMPT_LOGIN, Util } from "@igniteui/cli-core";
 import { resetSpy } from "../helpers/utils";
+
+const loginFlow = REGISTRY_ATTEMPT_LOGIN;
 
 describe("Unit - Package Manager", () => {
 	it("ensureIgniteUISource - Should run through properly when install now is set to true", async () => {
@@ -39,55 +41,43 @@ describe("Unit - Package Manager", () => {
 		};
 		// should ignore already installed
 		spyOn(App.container, "get").and.returnValue(mockFs);
-
-		const fakeSpawnSync = (cmd: any, args: string[], opts: any) => {
-			if (args.includes("whoami")) {
+		spyOn(Util, "execSync").and.callFake((cmd: string, opts) => {
+			if (cmd.includes("whoami")) {
 				throw new Error("");
 			}
-			return {
-                status: 0,
-                pid: 0,
-                output: [],
-            	stdout: "",
-				stderr: "",
-				signal: "SIGABRT"
-            };
-		};
-		spyOn(Util, 'spawnSync').and.callFake(fakeSpawnSync as any);
-
+			return "";
+		});
 		spyOn(Util, "log");
 		spyOn(PackageManager, "removePackage");
 		await PackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
-		expect(Util.log).toHaveBeenCalledTimes(4);
+		expect(Util.log).toHaveBeenCalledTimes(loginFlow ? 4 : 2);
 		expect(Util.log).toHaveBeenCalledWith(
 			"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
 			"gray"
 		);
-		expect(Util.log).toHaveBeenCalledWith(
-			"We are initiating the login process for you. This will be required only once per environment.",
-			"gray"
-		);
-		expect(Util.log).toHaveBeenCalledWith(
-			"Adding a registry user account for trial",
-			"yellow"
-		);
-		expect(Util.log).toHaveBeenCalledWith(
-			`Use your Infragistics account credentials. "@" is not supported, ` +
-			`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`,
-			"yellow"
-		);
-		expect(path.join).toHaveBeenCalled();
-		expect(Util.spawnSync).toHaveBeenCalledWith(
-			/^win/.test(process.platform) ? "npm.cmd" : "npm",
-			["adduser", `--registry=trial`, `--scope=@infragistics`, `--always-auth`],
-			{
-				stdio: "inherit"
-			}
-		);
-		expect(Util.spawnSync).toHaveBeenCalledWith(
-			"npm",
-			['config', 'set', `@infragistics:registry`, mockProjectConfig.igPackageRegistry]
-		);
+		if (loginFlow) {
+			expect(Util.log).toHaveBeenCalledWith(
+				"We are initiating the login process for you. This will be required only once per environment.",
+				"gray"
+			);
+			expect(Util.log).toHaveBeenCalledWith(
+				"Adding a registry user account for trial",
+				"yellow"
+			);
+			expect(Util.log).toHaveBeenCalledWith(
+				`Use your Infragistics account credentials. "@" is not supported, ` +
+				`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`,
+				"yellow"
+			);
+			expect(path.join).toHaveBeenCalled();
+			expect(Util.execSync).toHaveBeenCalledWith(
+				"npm login --registry=trial --scope=@infragistics --auth-type=legacy",
+				{
+					stdio: "inherit"
+				}
+			);
+			expect(Util.execSync).toHaveBeenCalledWith("npm config set @infragistics:registry trial");
+		}
 		expect(PackageManager.removePackage).toHaveBeenCalled();
 		expect(PackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"20.1"`, true);
 	});
@@ -120,75 +110,56 @@ describe("Unit - Package Manager", () => {
 		spyOn(ProjectConfig, "localConfig").and.returnValue(mockProjectConfig);
 		spyOn(ProjectConfig, "setConfig");
 		spyOn(TestPackageManager, "addPackage").and.returnValue(true);
-
-		const fakeSpawnSync = (cmd: any, args: string[], opts: any) => {
-			if (args.includes("whoami")) {
-				throw new Error("no user");
-			}
-			return {
-                status: 1,
-                pid: 0,
-                output: [],
-            	stdout: "",
-				stderr: "",
-				signal: "SIGABRT"
-            };
-		};
-		spyOn(Util, 'spawnSync').and.callFake(fakeSpawnSync as any);
-
+		spyOn(Util, "execSync").and.throwError("no user");
 		spyOn(Util, "log");
 		spyOn(TestPackageManager, "removePackage");
 		spyOn(TestPackageManager, "getPackageJSON").and.callFake(() => mockRequire);
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(ProjectConfig.localConfig).toHaveBeenCalled();
-		expect(Util.log).toHaveBeenCalledTimes(12);
+		expect(Util.log).toHaveBeenCalledTimes(loginFlow ? 12 /* [O.O] */: 2);
 		expect(Util.log).toHaveBeenCalledWith(
 			"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
 			"gray"
-		); // x2
-		expect(Util.log).toHaveBeenCalledWith(
-			"We are initiating the login process for you. This will be required only once per environment.",
-			"gray"
-		); // x2
-		expect(Util.log).toHaveBeenCalledWith(
-			"Adding a registry user account for trial",
-			"yellow"
-		); // x2
-		expect(Util.log).toHaveBeenCalledWith(
-			`Use your Infragistics account credentials. "@" is not supported, ` +
-			`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`,
-			"yellow"
-		); // x2
+		);
 		expect(Util.log).toHaveBeenCalledWith(
 			"Something went wrong, " +
 			"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages",
-			"red"
-		); // x2
-		expect(Util.log).toHaveBeenCalledWith(
-			"Something went wrong with upgrading Ignite UI to the full version. " +
-			`As a result only views using OSS components will run correctly.`,
-			"yellow"
-		); // x1
-		expect(Util.log).toHaveBeenCalledWith(
-			"Please visit https://www.igniteui.com/help/using-ignite-ui-npm-packages " +
-			`for instructions on how to install the full package.`,
-			"yellow"
-		); // x1
-		expect(Util.spawnSync).toHaveBeenCalledWith(
-			/^win/.test(process.platform) ? "npm.cmd" : "npm",
-			["adduser", `--registry=trial`, `--scope=@infragistics`, `--always-auth`],
-			{
-				stdio: "inherit"
-			}
+			loginFlow ? "red": "gray"
 		);
-		expect(Util.spawnSync).toHaveBeenCalledWith(
-			"npm",
-			['whoami', `--registry=${mockProjectConfig.igPackageRegistry}`],
-			{
-				stdio: "pipe",
-				encoding: "utf8"
-			}
-		);
+
+		if (loginFlow) {
+			expect(Util.log).toHaveBeenCalledWith(
+				"We are initiating the login process for you. This will be required only once per environment.",
+				"gray"
+			);
+			expect(Util.log).toHaveBeenCalledWith(
+				"Adding a registry user account for trial",
+				"yellow"
+			);
+			expect(Util.log).toHaveBeenCalledWith(
+				`Use your Infragistics account credentials. "@" is not supported, ` +
+				`use "!!", so "username@infragistics.com" should be entered as "username!!infragistics.com"`,
+				"yellow"
+			);
+			expect(Util.log).toHaveBeenCalledWith(
+				"Something went wrong with upgrading Ignite UI to the full version. " +
+				`As a result only views using OSS components will run correctly.`,
+				"yellow"
+			);
+			expect(Util.log).toHaveBeenCalledWith(
+				"Please visit https://www.igniteui.com/help/using-ignite-ui-npm-packages " +
+				`for instructions on how to install the full package.`,
+				"yellow"
+			);
+			expect(Util.execSync).toHaveBeenCalledWith(
+				"npm login --registry=trial --scope=@infragistics --auth-type=legacy",
+				{
+					stdio: "inherit"
+				}
+			);
+		}
+		expect(Util.execSync).toHaveBeenCalledTimes(loginFlow ? 4 /* ¯\(°_o)/¯ */ : 1);
+		expect(Util.execSync).toHaveBeenCalledWith(`npm whoami --registry=trial`, { stdio: "pipe", encoding: "utf8" });
 	});
 	it("ensureIgniteUISource - Should run through properly when install now is set to false", async () => {
 		spyOn(Util, "log");
@@ -254,7 +225,7 @@ describe("Unit - Package Manager", () => {
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"~20.1"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@"~20.1" --quiet --save`,
+			`npm install @infragistics/ignite-ui-full@~20.1 --quiet --save`,
 			jasmine.any(Object)
 		);
 		expect(TestPackageManager.removePackage).toHaveBeenCalledWith("ignite-ui", true);
@@ -265,17 +236,17 @@ describe("Unit - Package Manager", () => {
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
 		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@"^17.1"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@"^17.1" --quiet --save`,
+			`npm install @infragistics/ignite-ui-full@^17.1 --quiet --save`,
 			jasmine.any(Object)
 		);
 
-		mockDeps.dependencies["ignite-ui"] = ">=0.1.0 <0.2.0";
+		mockDeps.dependencies["ignite-ui"] = ">=0.1.0"; // ranges no longer supported, but check sanitize
 		mockProjectConfig.project.igniteuiSource = "./node_modules/ignite-ui";
 		mockTemplateMgr.generateConfig = mockProjectConfig;
 		await TestPackageManager.ensureIgniteUISource(true, mockTemplateMgr, true);
-		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@">=0.1.0 <0.2.0"`, true);
+		expect(TestPackageManager.addPackage).toHaveBeenCalledWith(`@infragistics/ignite-ui-full@">=0.1.0"`, true);
 		expect(Util.execSync).toHaveBeenCalledWith(
-			`npm install @infragistics/ignite-ui-full@">=0.1.0 <0.2.0" --quiet --save`,
+			`npm install @infragistics/ignite-ui-full@0.1.0 --quiet --save`,
 			jasmine.any(Object)
 		);
 	});
@@ -338,41 +309,27 @@ describe("Unit - Package Manager", () => {
 	});
 	it("Should run removePackage properly with error code", async () => {
 		spyOn(Util, "log");
-		const fakeSpawnSync = (cmd: any, args: string[], opts: any) => {
-			throw new Error("Error");
-		};
-		spyOn(Util, 'spawnSync').and.callFake(fakeSpawnSync as any);
+		spyOn(Util, "execSync").and.callFake(() => {
+			const err = new Error("Error");
+			err["status"] = 1;
+			throw err;
+		});
 		PackageManager.removePackage("example-package", true);
 		expect(Util.log).toHaveBeenCalledTimes(2);
 		expect(Util.log).toHaveBeenCalledWith(`Error uninstalling package example-package with npm`);
 		expect(Util.log).toHaveBeenCalledWith(`Error`);
-		expect(Util.spawnSync).toHaveBeenCalledWith(
-			`npm`,
-			['uninstall', "example-package", '--quiet', '--save'],
-			{ stdio: "pipe", encoding: "utf8" }
+		expect(Util.execSync).toHaveBeenCalledWith(
+			`npm uninstall example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" }
 		);
 	});
 	it("Should run removePackage properly without error code", async () => {
 		spyOn(Util, "log");
-		const fakeSpawnSync = (cmd: any, args: string[], opts: any) => {
-			return {
-                status: 0,
-                pid: 0,
-                output: [],
-            	stdout: "",
-				stderr: "",
-				signal: "SIGABRT"
-            };
-		};
-		spyOn(Util, 'spawnSync').and.callFake(fakeSpawnSync as any);
+		spyOn(Util, "execSync").and.returnValue("");
 		PackageManager.removePackage("example-package");
 		expect(Util.log).toHaveBeenCalledTimes(1);
 		expect(Util.log).toHaveBeenCalledWith(`Package example-package uninstalled successfully`);
-		expect(Util.spawnSync).toHaveBeenCalledWith(
-			`npm`,
-			['uninstall', "example-package", '--quiet', '--save'],
-			{ stdio: "pipe", encoding: "utf8" }
-		);
+		expect(Util.execSync).toHaveBeenCalledWith(
+			`npm uninstall example-package --quiet --save`, { stdio: "pipe", encoding: "utf8" });
 	});
 	it("Should run addPackage properly with error code", async () => {
 		spyOn(Util, "log");

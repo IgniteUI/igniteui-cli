@@ -1,14 +1,14 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 class LocalStorageFallback implements Storage {
   [name: string]: any;
-  readonly length: number = 0;
+  readonly length = 0;
   clear(): void { }
-  getItem(key: string): string | null { return null; }
-  key(index: number): string | null { return null; }
-  removeItem(key: string): void { }
-  setItem(key: string, value: string): void { }
+  getItem(_key: string): string | null { return null; }
+  key(_index: number): string | null { return null; }
+  removeItem(_key: string): void { }
+  setItem(_key: string, _value: string): void { }
 }
 
 @Injectable({
@@ -23,7 +23,8 @@ export class LocalStorageService implements Storage {
     return this.storage.length;
   }
 
-  constructor(@Inject(PLATFORM_ID) platformId: object) {
+  constructor() {
+    const platformId = inject(PLATFORM_ID);
     if (isPlatformBrowser(platformId)) {
       this.storage = localStorage;
     } else {

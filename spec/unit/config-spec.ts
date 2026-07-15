@@ -108,7 +108,6 @@ describe("Unit - Config command", () => {
 			const mockProjectConfig = { customTemplates: [] } as unknown as Config;
 			spyOn(ProjectConfig, "globalConfig").and.returnValue(mockProjectConfig);
 
-			// tslint:disable-next-line:quotemark
 			await configCmd.setHandler({ property: "customTemplates", value: '["Not", "empty", "array"]', global: true, _: ["config"], $0: "config" });
 
 			expect(Util.error).toHaveBeenCalledTimes(1);

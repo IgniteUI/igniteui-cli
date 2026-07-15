@@ -5,7 +5,6 @@ import * as path from "path";
 /**
  * Template with specific implementation for jQuery projects
  */
-// tslint:disable-next-line:class-name
 export class jQueryTemplate implements Template {
 	public components: string[];
 	public controlGroup: string;
@@ -18,6 +17,7 @@ export class jQueryTemplate implements Template {
 	public framework: string = "jquery";
 	public projectType: string;
 	public hasExtraConfiguration: boolean;
+	public isHidden: boolean = false;
 	public packages = [];
 	public delimiters = defaultDelimiters;
 
@@ -90,7 +90,6 @@ export class jQueryTemplate implements Template {
 		return builder;
 	}
 	protected getScriptTags(): string {
-		// tslint:disable-next-line:no-submodule-imports
 		const config = require("@igniteui/cli-core/packages/components");
 		let builder = "";
 		builder += this.getJqueryDependenciesScriptTag();

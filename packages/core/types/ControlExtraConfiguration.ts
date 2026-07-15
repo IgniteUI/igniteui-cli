@@ -6,7 +6,7 @@ import { ControlExtraConfigType } from "./enumerations/ControlExtraConfigType";
  */
 export interface ControlExtraConfiguration {
 	/** Prompt session works with choices except value - where the user should enter value */
-	choices: string[];
+	choices?: string[];
 
 	/** default value used when the user is prompted to choose or enter */
 	default: any;

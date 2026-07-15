@@ -22,6 +22,12 @@ describe("Unit - Util", () => {
 		}
 	});
 
+	it("quoteIfNeeded should wrap values with whitespace in double quotes", () => {
+		expect(Util.quoteIfNeeded("IG Project")).toEqual(`"IG Project"`);
+		expect(Util.quoteIfNeeded("my-app")).toEqual("my-app");
+		expect(Util.quoteIfNeeded("plain")).toEqual("plain");
+	});
+
 	it("should read the existing app folder name and return incremented app name ", () => {
 		const defaultName = "IG Project";
 
@@ -51,9 +57,8 @@ describe("Unit - Util", () => {
 		expect(Util.getAvailableName(defaultComponentName, false)).toEqual("grid 1");
 		expect(Util.getAvailableName(defaultComponentName, false, "jQuery")).toEqual("grid 1");
 		expect(Util.getAvailableName(defaultComponentName, false, "React")).toEqual("grid 1");
-		expect(Util.getAvailableName(defaultComponentName, false, "Angular", "ig-ts")).toEqual("grid 1");
 		expect(Util.getAvailableName(defaultComponentName, false, "Angular", "igx-ts")).toEqual("grid 1");
-		expect(Util.directoryExists).toHaveBeenCalledTimes(10);
+		expect(Util.directoryExists).toHaveBeenCalledTimes(8);
 	});
 
 	it("should read the existing component view name and return incremented view name ", () => {
@@ -68,7 +73,7 @@ describe("Unit - Util", () => {
 
 		expect(Util.getAvailableName("editors-calculation-form", false)).toEqual("editors-calculation-form 1");
 		expect(Util.getAvailableName("editors-calculation-form", false, "jQuery")).toEqual("editors-calculation-form 1");
-		expect(Util.getAvailableName("editors-calculation-form", false, "Angular", "ig-ts")).
+		expect(Util.getAvailableName("editors-calculation-form", false, "Angular", "igx-ts")).
 			toEqual("editors-calculation-form 1");
 		defaultViewName = "awesome-grid";
 		expect(Util.getAvailableName("awesome-grid", false, "Angular", "igx-ts")).toEqual("awesome-grid 1");
@@ -85,7 +90,7 @@ describe("Unit - Util", () => {
 			))
 			.toBe("./carousel/carousel.component", "Shared Win root, file to file => posix ");
 			expect(Util.relativePath(
-				"/home/app/app.module.ts",
+				"/home/app/app-module.ts",
 				"/home/app/grid/grid.component.ts", true, true
 			))
 			.toBe("./grid/grid.component", "Shared posix root, file to file => posix ");
@@ -135,6 +140,67 @@ describe("Unit - Util", () => {
 				"C:\\common\\dir1\\dir2\\target.ts", true, false
 			))
 			.toBe("../../../dir1/dir2/target.ts", "posix folder to Win style file, keep ext => posix");
+		});
+	});
+
+	it("spawnSync accepts the 'dotnet' command", () => {
+		// compile-time guarantee that 'dotnet' is in the allowed command union
+		const cmd: Parameters<typeof Util.spawnSync>[0] = "dotnet";
+		expect(cmd).toBe("dotnet");
+		expect(typeof Util.spawnSync).toBe("function");
+	});
+
+	describe("canPrompt", () => {
+		let originalStdoutIsTTY: boolean | undefined;
+		let originalStdinIsTTY: boolean | undefined;
+		let originalCI: string | undefined;
+
+		beforeEach(() => {
+			originalStdoutIsTTY = process.stdout.isTTY;
+			originalStdinIsTTY = process.stdin.isTTY;
+			originalCI = process.env.CI;
+		});
+
+		afterEach(() => {
+			(process.stdout as any).isTTY = originalStdoutIsTTY;
+			(process.stdin as any).isTTY = originalStdinIsTTY;
+			if (originalCI === undefined) {
+				delete process.env.CI;
+			} else {
+				process.env.CI = originalCI;
+			}
+		});
+
+		it("returns true when stdout and stdin are TTY and CI is not set", () => {
+			(process.stdout as any).isTTY = true;
+			(process.stdin as any).isTTY = true;
+			delete process.env.CI;
+
+			expect(Util.canPrompt()).toBe(true);
+		});
+
+		it("returns false when stdout is not TTY", () => {
+			(process.stdout as any).isTTY = false;
+			(process.stdin as any).isTTY = true;
+			delete process.env.CI;
+
+			expect(Util.canPrompt()).toBe(false);
+		});
+
+		it("returns false when stdin is not TTY", () => {
+			(process.stdout as any).isTTY = true;
+			(process.stdin as any).isTTY = false;
+			delete process.env.CI;
+
+			expect(Util.canPrompt()).toBe(false);
+		});
+
+		it("returns false when CI environment variable is set", () => {
+			(process.stdout as any).isTTY = true;
+			(process.stdin as any).isTTY = true;
+			process.env.CI = "true";
+
+			expect(Util.canPrompt()).toBe(false);
 		});
 	});
 });

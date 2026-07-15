@@ -19,7 +19,7 @@ export default [
 		//],
 		parser: typescriptParser,
 		parserOptions: {
-        	project: '**/tsconfig.json',
+        	project: ['tsconfig.json', 'packages/ng-schematics/tsconfig.json', 'packages/igniteui-mcp/igniteui-doc-mcp/tsconfig.json'],
         	sourceType: 'module',
 		},
     },
@@ -31,8 +31,10 @@ export default [
     },
     rules: {
       'complexity': 'off',
-      'eslint-plugin-import/no-extraneous-dependencies': 'warn',
-      'eslint-plugin-import/no-internal-modules': 'warn',
+      'eslint-plugin-import/no-extraneous-dependencies': [
+        'error',
+        {'packageDir': ['./packages/cli', './packages/core', './packages/igniteui-mcp/igniteui-doc-mcp', './packages/igx-templates', './packages/ng-schematics']}
+      ],
       'eslint-plugin-import/order': [
         'off',
         {
@@ -93,7 +95,7 @@ export default [
       'no-bitwise': 'off',
       'no-caller': 'error',
       'no-cond-assign': 'error',
-      'no-console': 'off',
+      'no-console': 'error',
       'no-debugger': 'error',
       'no-duplicate-case': 'error',
       'no-duplicate-imports': 'error',
@@ -133,12 +135,29 @@ export default [
     },
   },
   {
+    files: ['**/*.spec.ts', '**/*-spec.ts', 'spec/**/*.ts'],
+    rules: {
+      'eslint-plugin-import/no-extraneous-dependencies': 'off',
+      'no-console': 'off',
+    },
+  },
+  {
+    files: ['packages/igniteui-mcp/igniteui-doc-mcp/src/**/*.ts'],
+    rules: {
+      'no-console': 'off',
+    },
+  },
+  {
     ignores: [
-      '/node_modules/**/*',
-      '/coverage/**/*',
-      '/output/**/*',
-      '/packages/cli/templates/**/*',
-      '**/files/**/*'
+      'node_modules/**/*',
+      'coverage/**/*',
+      'output/**/*',
+      'packages/cli/templates/**/*',
+      '**/files/**/*',
+      'packages/igniteui-mcp/**/dist/**/*',
+      'packages/igniteui-mcp/**/*.test.ts',
+      'packages/igniteui-mcp/igniteui-doc-mcp/scripts/**/*',
+      'packages/igniteui-mcp/igniteui-doc-mcp/vitest.config.ts',
     ]
   },
 ];

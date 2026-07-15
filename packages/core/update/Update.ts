@@ -55,7 +55,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	}
 	const pkgJSON = JSON.parse(fileString);
 
-	const errorMsg = "Something went wrong, please follow the steps in this guide: " + guideLink;
+	const errorMsg = "Can't detect/setup Infragistics feed login required for licensed packages.\nSee: " + guideLink;
 	if (!PackageManager.ensureRegistryUser(config, errorMsg)) {
 		return false;
 	}
@@ -119,7 +119,7 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 				// For React and WebComponents projects without explicit workspaces,
 				// check for common project patterns like projects/* in addition to src/
 				workspaces.push(path.join(rootPath, "src"));
-				
+
 				// Check for projects/* pattern common in React demo/example repositories
 				// Only check if projects directory exists to avoid unnecessary glob calls
 				const projectsDir = path.join(rootPath, "projects");
@@ -266,7 +266,7 @@ function updateWorkflows(fs: IFileSystem): void {
 			oldCmd: "- run: npm i # replace with 'npm ci' after committing lock file from first install",
 			newCmd: `- run: echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
     - run: echo "//packages.infragistics.com/npm/js-licensed/:_auth=\${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
-    - run: echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+    - run: echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
     - run: npm i # replace with 'npm ci' after committing lock file from first install`
 		},
 		{
@@ -276,7 +276,7 @@ function updateWorkflows(fs: IFileSystem): void {
 			newCmd: `- script: |
         echo "@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/" >> ~/.npmrc
         echo "//packages.infragistics.com/npm/js-licensed/:_auth=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        echo "//packages.infragistics.com/npm/js-licensed/:always-auth=true" >> ~/.npmrc
+        echo "//packages.infragistics.com/npm/js-licensed/:auth-type=legacy" >> ~/.npmrc
       displayName: 'Authenticate'
       env:
         NPM_AUTH_TOKEN: $(NPM_AUTH_TOKEN)
@@ -306,7 +306,7 @@ function createNpmrc(
 	if (!fs.fileExists(npmrcPath)) {
 		const fileContent =
 `@infragistics:registry=https://packages.infragistics.com/npm/js-licensed/
-//packages.infragistics.com/npm/js-licensed/:always-auth=true
+//packages.infragistics.com/npm/js-licensed/:auth-type=legacy
 `;
 		fs.writeFile(npmrcPath, fileContent);
 	}

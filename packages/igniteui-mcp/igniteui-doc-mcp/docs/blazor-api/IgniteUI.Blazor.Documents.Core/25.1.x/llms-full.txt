@@ -1,0 +1,263 @@
+# Ignite UI for Blazor Documents Core v25.1.x — Full API Reference
+
+> Complete API reference for the Ignite UI for Blazor Documents Core package (25.1.x). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: Blazor
+Package: IgniteUI.Blazor.Documents.Core
+Version: 25.1.x
+
+## Classes
+
+### [Colors](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/classes/Colors)
+Static class that exposes various colors
+
+- **AliceBlue**: `Color` — Gets the color that has an ARGB value of #FFF0F8FF
+- **AntiqueWhite**: `Color` — Gets the color that has an ARGB value of #FFFAEBD7
+- **Aqua**: `Color` — Gets the color that has an ARGB value of #FF00FFFF
+- **Aquamarine**: `Color` — Gets the color that has an ARGB value of #FF7FFFD4
+- **Azure**: `Color` — Gets the color that has an ARGB value of #FFF0FFFF
+- **Beige**: `Color` — Gets the color that has an ARGB value of #FFF5F5DC
+- **Bisque**: `Color` — Gets the color that has an ARGB value of #FFFFE4C4
+- **Black**: `Color` — Gets the color that has an ARGB value of #FF000000
+- **BlanchedAlmond**: `Color` — Gets the color that has an ARGB value of #FFFFEBCD
+- **Blue**: `Color` — Gets the color that has an ARGB value of #FF0000FF
+- **BlueViolet**: `Color` — Gets the color that has an ARGB value of #FF8A2BE2
+- **Brown**: `Color` — Gets the color that has an ARGB value of #FFA52A2A
+- **BurlyWood**: `Color` — Gets the color that has an ARGB value of #FFDEB887
+- **CadetBlue**: `Color` — Gets the color that has an ARGB value of #FF5F9EA0
+- **Chartreuse**: `Color` — Gets the color that has an ARGB value of #FF7FFF00
+- **Chocolate**: `Color` — Gets the color that has an ARGB value of #FFD2691E
+- **Coral**: `Color` — Gets the color that has an ARGB value of #FFFF7F50
+- **CornflowerBlue**: `Color` — Gets the color that has an ARGB value of #FF6495ED
+- **Cornsilk**: `Color` — Gets the color that has an ARGB value of #FFFFF8DC
+- **Crimson**: `Color` — Gets the color that has an ARGB value of #FFDC143C
+- **Cyan**: `Color` — Gets the color that has an ARGB value of #FF00FFFF
+- **DarkBlue**: `Color` — Gets the color that has an ARGB value of #FF00008B
+- **DarkCyan**: `Color` — Gets the color that has an ARGB value of #FF008B8B
+- **DarkGoldenrod**: `Color` — Gets the color that has an ARGB value of #FFB8860B
+- **DarkGray**: `Color` — Gets the color that has an ARGB value of #FFA9A9A9
+- **DarkGreen**: `Color` — Gets the color that has an ARGB value of #FF006400
+- **DarkKhaki**: `Color` — Gets the color that has an ARGB value of #FFBDB76B
+- **DarkMagenta**: `Color` — Gets the color that has an ARGB value of #FF8B008B
+- **DarkOliveGreen**: `Color` — Gets the color that has an ARGB value of #FF556B2F
+- **DarkOrange**: `Color` — Gets the color that has an ARGB value of #FFFF8C00
+- **DarkOrchid**: `Color` — Gets the color that has an ARGB value of #FF9932CC
+- **DarkRed**: `Color` — Gets the color that has an ARGB value of #FF8B0000
+- **DarkSalmon**: `Color` — Gets the color that has an ARGB value of #FFE9967A
+- **DarkSeaGreen**: `Color` — Gets the color that has an ARGB value of #FF8FBC8F
+- **DarkSlateBlue**: `Color` — Gets the color that has an ARGB value of #FF483D8B
+- **DarkSlateGray**: `Color` — Gets the color that has an ARGB value of #FF2F4F4F
+- **DarkTurquoise**: `Color` — Gets the color that has an ARGB value of #FF00CED1
+- **DarkViolet**: `Color` — Gets the color that has an ARGB value of #FF9400D3
+- **DeepPink**: `Color` — Gets the color that has an ARGB value of #FFFF1493
+- **DeepSkyBlue**: `Color` — Gets the color that has an ARGB value of #FF00BFFF
+- **DimGray**: `Color` — Gets the color that has an ARGB value of #FF696969
+- **DodgerBlue**: `Color` — Gets the color that has an ARGB value of #FF1E90FF
+- **Firebrick**: `Color` — Gets the color that has an ARGB value of #FFB22222
+- **FloralWhite**: `Color` — Gets the color that has an ARGB value of #FFFFFAF0
+- **ForestGreen**: `Color` — Gets the color that has an ARGB value of #FF228B22
+- **Fuchsia**: `Color` — Gets the color that has an ARGB value of #FFFF00FF
+- **Gainsboro**: `Color` — Gets the color that has an ARGB value of #FFDCDCDC
+- **GhostWhite**: `Color` — Gets the color that has an ARGB value of #FFF8F8FF
+- **Gold**: `Color` — Gets the color that has an ARGB value of #FFFFD700
+- **Goldenrod**: `Color` — Gets the color that has an ARGB value of #FFDAA520
+- **Gray**: `Color` — Gets the color that has an ARGB value of #FF808080
+- **Green**: `Color` — Gets the color that has an ARGB value of #FF008000
+- **GreenYellow**: `Color` — Gets the color that has an ARGB value of #FFADFF2F
+- **Honeydew**: `Color` — Gets the color that has an ARGB value of #FFF0FFF0
+- **HotPink**: `Color` — Gets the color that has an ARGB value of #FFFF69B4
+- **IndianRed**: `Color` — Gets the color that has an ARGB value of #FFCD5C5C
+- **Indigo**: `Color` — Gets the color that has an ARGB value of #FF4B0082
+- **Ivory**: `Color` — Gets the color that has an ARGB value of #FFFFFFF0
+- **Khaki**: `Color` — Gets the color that has an ARGB value of #FFF0E68C
+- **Lavender**: `Color` — Gets the color that has an ARGB value of #FFE6E6FA
+- **LavenderBlush**: `Color` — Gets the color that has an ARGB value of #FFFFF0F5
+- **LawnGreen**: `Color` — Gets the color that has an ARGB value of #FF7CFC00
+- **LemonChiffon**: `Color` — Gets the color that has an ARGB value of #FFFFFACD
+- **LightBlue**: `Color` — Gets the color that has an ARGB value of #FFADD8E6
+- **LightCoral**: `Color` — Gets the color that has an ARGB value of #FFF08080
+- **LightCyan**: `Color` — Gets the color that has an ARGB value of #FFE0FFFF
+- **LightGoldenrodYellow**: `Color` — Gets the color that has an ARGB value of #FFFAFAD2
+- **LightGray**: `Color` — Gets the color that has an ARGB value of #FFD3D3D3
+- **LightGreen**: `Color` — Gets the color that has an ARGB value of #FF90EE90
+- **LightPink**: `Color` — Gets the color that has an ARGB value of #FFFFB6C1
+- **LightSalmon**: `Color` — Gets the color that has an ARGB value of #FFFFA07A
+- **LightSeaGreen**: `Color` — Gets the color that has an ARGB value of #FF20B2AA
+- **LightSkyBlue**: `Color` — Gets the color that has an ARGB value of #FF87CEFA
+- **LightSlateGray**: `Color` — Gets the color that has an ARGB value of #FF778899
+- **LightSteelBlue**: `Color` — Gets the color that has an ARGB value of #FFB0C4DE
+- **LightYellow**: `Color` — Gets the color that has an ARGB value of #FFFFFFE0
+- **Lime**: `Color` — Gets the color that has an ARGB value of #FF00FF00
+- **LimeGreen**: `Color` — Gets the color that has an ARGB value of #FF32CD32
+- **Linen**: `Color` — Gets the color that has an ARGB value of #FFFAF0E6
+- **Magenta**: `Color` — Gets the color that has an ARGB value of #FFFF00FF
+- **Maroon**: `Color` — Gets the color that has an ARGB value of #FF800000
+- **MediumAquamarine**: `Color` — Gets the color that has an ARGB value of #FF66CDAA
+- **MediumBlue**: `Color` — Gets the color that has an ARGB value of #FF0000CD
+- **MediumOrchid**: `Color` — Gets the color that has an ARGB value of #FFBA55D3
+- **MediumPurple**: `Color` — Gets the color that has an ARGB value of #FF9370DB
+- **MediumSeaGreen**: `Color` — Gets the color that has an ARGB value of #FF3CB371
+- **MediumSlateBlue**: `Color` — Gets the color that has an ARGB value of #FF7B68EE
+- **MediumSpringGreen**: `Color` — Gets the color that has an ARGB value of #FF00FA9A
+- **MediumTurquoise**: `Color` — Gets the color that has an ARGB value of #FF48D1CC
+- **MediumVioletRed**: `Color` — Gets the color that has an ARGB value of #FFC71585
+- **MidnightBlue**: `Color` — Gets the color that has an ARGB value of #FF191970
+- **MintCream**: `Color` — Gets the color that has an ARGB value of #FFF5FFFA
+- **MistyRose**: `Color` — Gets the color that has an ARGB value of #FFFFE4E1
+- **Moccasin**: `Color` — Gets the color that has an ARGB value of #FFFFE4B5
+- **NavajoWhite**: `Color` — Gets the color that has an ARGB value of #FFFFDEAD
+- **Navy**: `Color` — Gets the color that has an ARGB value of #FF000080
+- **OldLace**: `Color` — Gets the color that has an ARGB value of #FFFDF5E6
+- **Olive**: `Color` — Gets the color that has an ARGB value of #FF808000
+- **OliveDrab**: `Color` — Gets the color that has an ARGB value of #FF6B8E23
+- **Orange**: `Color` — Gets the color that has an ARGB value of #FFFFA500
+- **OrangeRed**: `Color` — Gets the color that has an ARGB value of #FFFF4500
+- **Orchid**: `Color` — Gets the color that has an ARGB value of #FFDA70D6
+- **PaleGoldenrod**: `Color` — Gets the color that has an ARGB value of #FFEEE8AA
+- **PaleGreen**: `Color` — Gets the color that has an ARGB value of #FF98FB98
+- **PaleTurquoise**: `Color` — Gets the color that has an ARGB value of #FFAFEEEE
+- **PaleVioletRed**: `Color` — Gets the color that has an ARGB value of #FFDB7093
+- **PapayaWhip**: `Color` — Gets the color that has an ARGB value of #FFFFEFD5
+- **PeachPuff**: `Color` — Gets the color that has an ARGB value of #FFFFDAB9
+- **Peru**: `Color` — Gets the color that has an ARGB value of #FFCD853F
+- **Pink**: `Color` — Gets the color that has an ARGB value of #FFFFC0CB
+- **Plum**: `Color` — Gets the color that has an ARGB value of #FFDDA0DD
+- **PowderBlue**: `Color` — Gets the color that has an ARGB value of #FFB0E0E6
+- **Purple**: `Color` — Gets the color that has an ARGB value of #FF800080
+- **Red**: `Color` — Gets the color that has an ARGB value of #FFFF0000
+- **RosyBrown**: `Color` — Gets the color that has an ARGB value of #FFBC8F8F
+- **RoyalBlue**: `Color` — Gets the color that has an ARGB value of #FF4169E1
+- **SaddleBrown**: `Color` — Gets the color that has an ARGB value of #FF8B4513
+- **Salmon**: `Color` — Gets the color that has an ARGB value of #FFFA8072
+- **SandyBrown**: `Color` — Gets the color that has an ARGB value of #FFF4A460
+- **SeaGreen**: `Color` — Gets the color that has an ARGB value of #FF2E8B57
+- **SeaShell**: `Color` — Gets the color that has an ARGB value of #FFFFF5EE
+- **Sienna**: `Color` — Gets the color that has an ARGB value of #FFA0522D
+- **Silver**: `Color` — Gets the color that has an ARGB value of #FFC0C0C0
+- **SkyBlue**: `Color` — Gets the color that has an ARGB value of #FF87CEEB
+- **SlateBlue**: `Color` — Gets the color that has an ARGB value of #FF6A5ACD
+- **SlateGray**: `Color` — Gets the color that has an ARGB value of #FF708090
+- **Snow**: `Color` — Gets the color that has an ARGB value of #FFFFFAFA
+- **SpringGreen**: `Color` — Gets the color that has an ARGB value of #FF00FF7F
+- **SteelBlue**: `Color` — Gets the color that has an ARGB value of #FF4682B4
+- **Tan**: `Color` — Gets the color that has an ARGB value of #FFD2B48C
+- **Teal**: `Color` — Gets the color that has an ARGB value of #FF008080
+- **Thistle**: `Color` — Gets the color that has an ARGB value of #FFD8BFD8
+- **Tomato**: `Color` — Gets the color that has an ARGB value of #FFFF6347
+- **Transparent**: `Color` — Gets the color that has an ARGB value of #00FFFFFF
+- **Turquoise**: `Color` — Gets the color that has an ARGB value of #FF40E0D0
+- **Violet**: `Color` — Gets the color that has an ARGB value of #FFEE82EE
+- **Wheat**: `Color` — Gets the color that has an ARGB value of #FFF5DEB3
+- **White**: `Color` — Gets the color that has an ARGB value of #FFFFFFFF
+- **WhiteSmoke**: `Color` — Gets the color that has an ARGB value of #FFF5F5F5
+- **Yellow**: `Color` — Gets the color that has an ARGB value of #FFFFFF00
+- **YellowGreen**: `Color` — Gets the color that has an ARGB value of #FF9ACD32
+
+### [DocumentEncryptedException](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/classes/DocumentEncryptedException)
+Represents an error that occurs when no password is used to open an encrypted document.
+
+- **constructor**(): void
+- **constructor**(message: string): void
+- **constructor**(message: string, innerException: Exception): void
+
+### [DocumentsCoreResourceCustomizer](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/classes/DocumentsCoreResourceCustomizer)
+Class used to provide the ability to customize resource strings.
+
+- **constructor**(): void
+- **GetCustomizedString**(name: string): string — Gets the customized string identified by the specified string resource name.
+- **ResetAllCustomizedStrings**(): void — Clears all strings customized by calls to method.
+- **ResetCustomizedString**(name: string): void — Resets a customized string identified by the specified string resource name so that it will load from the resource file.
+- **SetCustomizedString**(name: string, customizedText: string): void — Sets a customized string identified by the specified string resource name.
+
+### [EncryptionAlgorithmNotSupportedException](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/classes/EncryptionAlgorithmNotSupportedException)
+Represents an error that occurs an encrypted document is loaded with a supplied password, but the encryption algorithm used is unsupported.
+
+- **constructor**(): void
+- **constructor**(info: SerializationInfo, context: StreamingContext): void
+- **constructor**(message: string): void
+- **constructor**(message: string, innerException: Exception): void
+
+### [InvalidPasswordException](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/classes/InvalidPasswordException)
+Represents an error that occurs when an incorrect password is used to open document.
+
+- **constructor**(): void
+- **constructor**(info: SerializationInfo, context: StreamingContext): void
+- **constructor**(message: string): void
+- **constructor**(message: string, innerException: Exception): void
+
+### [Color](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/classes/Color)
+Represents a color
+
+- **constructor**(): void
+- **A**: `byte`
+- **B**: `byte`
+- **ColorString**: `string`
+- **G**: `byte`
+- **R**: `byte`
+- **Equals**(obj: object): bool — Determines if a Color is equivalent to another.
+- **FromArgb**(a_: byte, r_: byte, g_: byte, b_: byte): Color
+- **GetHashCode**(): int — Returns a code suitable for hashing
+- **ToString**(): string
+
+## Interfaces
+
+### [IPackage](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/interfaces/IPackage)
+Represents a container that can store multiple data objects.
+
+- **CreatePart(Uri, string)**: `IPackagePart` — Creates a new uncompressed part with a given URI and content type.
+- **CreateRelationship(Uri, RelationshipTargetMode, string, string)**: `IPackageRelationship` — Creates a package-level relationship to a part with a given URI, target mode, relationship type, and identifier (ID).
+- **GetPart(Uri)**: `IPackagePart` — Returns the part with a given URI.
+- **GetParts()**: `IEnumerable<IPackagePart>` — Returns a collection of all the parts in the package.
+- **GetRelationship(string)**: `IPackageRelationship` — Returns the relationship that has a specified IPackageRelationship.Id.
+- **GetRelationships()**: `IEnumerable<IPackageRelationship>` — Returns a collection of all the package-level relationships.
+- **PartExists(Uri)**: `bool` — Indicates whether a part with a given URI is in the package.
+
+### [IPackageFactory](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/interfaces/IPackageFactory)
+Factory class used to create an IPackage given a stream and a FileMode
+
+- **Open(Stream, FileMode)**: `IPackage` — Opens an IPackage with a given IO stream and file mode.
+
+### [IPackagePart](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/interfaces/IPackagePart)
+Provides a base class for parts stored in a System.IO.Packaging.Package. This class is abstract.
+
+- **ContentType**: `string` — Gets the MIME type of the content stream.
+- **CreateRelationship(Uri, RelationshipTargetMode, string, string)**: `IPackageRelationship` — Creates a part-level relationship between this IPackagePart to a specified target IPackagePart or external resource.
+- **GetRelationship(string)**: `IPackageRelationship` — Returns the relationship that has a specified IPackageRelationship.Id.
+- **GetRelationships()**: `IEnumerable<IPackageRelationship>` — Returns a collection of all the relationships that are owned by this part.
+- **GetStream(FileMode, FileAccess)**: `Stream` — Returns the part content stream opened with a specified System.IO.FileMode and System.IO.FileAccess.
+- **Package**: `IPackage` — Gets the parent Package of the part.
+- **Uri**: `Uri` — Gets the URI of the part.
+
+### [IPackageRelationship](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/interfaces/IPackageRelationship)
+Represents an association between a source IPackage or IPackagePart, and a target object which can be a IPackagePart or external resource.
+
+- **Id**: `string` — Gets a string that identifies the relationship.
+- **RelationshipType**: `string` — Gets the qualified type name of the relationship.
+- **SourceUri**: `Uri` — Gets the URI of the package or part that owns the relationship.
+- **TargetMode**: `RelationshipTargetMode` — Gets a value that indicates whether the target of the relationship is RelationshipTargetMode.Internal or RelationshipTargetMode.External to the IPackage.
+- **TargetUri**: `Uri` — Gets the URI of the target resource of the relationship.
+
+## Enumerations
+
+### [RelationshipTargetMode](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/enums/RelationshipTargetMode)
+Specifies whether the target of an IPackageRelationship is inside or outside the IPackage.
+
+- **External** — The relationship references a resource that is external to the package.
+- **Internal** — The relationship references a part that is inside the package.
+
+### [FileAccess](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/enums/FileAccess)
+Specifies File access rights
+
+- **Read** — Read access allowed only
+- **ReadWrite** — Read and write access allowed
+- **Write** — Write access allowed only
+
+### [FileMode](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Core/25.1.x/enums/FileMode)
+How the file is to be opened
+
+- **Append** — Opens an existing file, or creates a new one, and positions the file stream to the end of the file.
+- **Create** — Create a new file. If the file already exists it will be overwritten.
+- **CreateNew** — Create a new file. If the file already exists an exception is thrown.
+- **Open** — Opens an existing file. If the file is not found an exception will be thrown.
+- **OpenOrCreate** — Opens an existing file, or creates a new one.
+- **Truncate** — Opens an existing file and sets it to a 0 length

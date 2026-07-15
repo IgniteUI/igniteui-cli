@@ -1,4 +1,5 @@
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
+import { IGNITEUI_WEBCOMPONENTS_CHARTS_PACKAGE, IGNITEUI_WEBCOMPONENTS_CORE_PACKAGE } from "../../constants";
 
 class IgcPieChartTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
@@ -11,8 +12,8 @@ class IgcPieChartTemplate extends IgniteUIForWebComponentsTemplate {
 		this.name = "Pie Chart";
 		this.description = "IgcPieChart with local data";
 		this.packages = [
-			"igniteui-webcomponents-core@~6.0.0",
-			"igniteui-webcomponents-charts@~6.0.0"
+			IGNITEUI_WEBCOMPONENTS_CORE_PACKAGE,
+			IGNITEUI_WEBCOMPONENTS_CHARTS_PACKAGE
 		];
 	}
 }

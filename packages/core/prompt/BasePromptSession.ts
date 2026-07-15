@@ -2,17 +2,21 @@ import * as path from "path";
 import { Separator } from "@inquirer/prompts";
 import { BaseTemplateManager } from "../templates";
 import {
-	Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
+	BaseTemplate, Component, Config, ControlExtraConfigType, ControlExtraConfiguration, Framework,
 	FrameworkId, ProjectLibrary, ProjectTemplate, Template
 } from "../types";
 import { App, ChoiceItem, GoogleAnalytics, ProjectConfig, Util } from "../util";
+import { TEMPLATE_MANAGER } from "../util/GlobalConstants";
 import { Task, TaskRunner, WIZARD_BACK_OPTION } from "./TaskRunner";
 import { InquirerWrapper } from "./InquirerWrapper";
 
 export abstract class BasePromptSession {
 	protected config: Config;
+	private _newProjectName: string | null = null;
 
-	constructor(protected templateManager: BaseTemplateManager) { }
+	protected get templateManager(): BaseTemplateManager {
+		return App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+	}
 
 	/**
 	 * Start questions session for project creation
@@ -38,16 +42,15 @@ export abstract class BasePromptSession {
 				name: "projectName",
 				message: "Enter a name for your project:",
 				default: Util.getAvailableName(defaultProjName, true),
-				choices: null,
 				validate: this.nameIsValid
 			});
 
 			const frameRes: string = await this.getUserInput({
-				type: "list",
+				type: "select",
 				name: "framework",
 				message: "Choose framework:",
 				choices: this.getFrameworkNames(),
-				default: "jQuery"
+				default: "Angular"
 			});
 
 			const framework = this.templateManager.getFrameworkByName(frameRes);
@@ -58,19 +61,50 @@ export abstract class BasePromptSession {
 			// project options:
 			theme = await this.getTheme(projLibrary);
 
-			Util.log("  Generating project structure.");
-			const config = projTemplate.generateConfig(projectName, theme);
-			for (const templatePath of projTemplate.templatePaths) {
-				await Util.processTemplates(templatePath, path.join(process.cwd(), projectName),
-				config, projTemplate.delimiters, false);
+			if (projTemplate.hasExtraConfiguration) {
+				await this.customizeTemplateTask(projTemplate);
 			}
 
-			Util.log(Util.greenCheck() + " Project structure generated.");
-			if (!this.config.skipGit) {
-				Util.gitInit(process.cwd(), projectName);
+			if (typeof projTemplate.scaffold === "function") {
+				Util.log("  Generating project structure.");
+				const success = await projTemplate.scaffold({
+					name: projectName,
+					theme,
+					skipInstall: false,
+					skipGit: this.config.skipGit
+				});
+				if (!success) {
+					return;
+				}
+				// move cwd to project folder
+				process.chdir(projectName);
+				await this.configureAI(framework.id);
+				// the scaffold service never touches git; init after AI config so generated files are committed
+				if (!this.config.skipGit) {
+					process.chdir("..");
+					Util.gitInit(process.cwd(), projectName);
+					process.chdir(projectName);
+				}
+			} else {
+				Util.log("  Generating project structure.");
+				const config = projTemplate.generateConfig(projectName, theme);
+				for (const templatePath of projTemplate.templatePaths) {
+					await Util.processTemplates(templatePath, path.join(process.cwd(), projectName),
+					config, projTemplate.delimiters, false);
+				}
+
+				Util.log(Util.greenCheck() + " Project structure generated.");
+				// move cwd to project folder
+				process.chdir(projectName);
+				await this.configureAI(framework.id);
+				// init git after AI config so generated files are part of the initial commit
+				if (!this.config.skipGit) {
+					process.chdir("..");
+					Util.gitInit(process.cwd(), projectName);
+					process.chdir(projectName);
+				}
 			}
-			// move cwd to project folder
-			process.chdir(projectName);
+			this._newProjectName = projectName;
 		}
 		await this.chooseActionLoop(projLibrary);
 		//TODO: restore cwd?
@@ -92,11 +126,14 @@ export abstract class BasePromptSession {
 		}
 	}
 
-	/** Install packages and run project */
-	protected abstract completeAndRun(port?: number);
+	/** Install packages */
+	protected abstract complete(): Promise<void>;
 
 	/** Upgrade packages to use private Infragistics feed */
 	protected abstract upgradePackages();
+
+	/** Configure Ignite UI AI tooling (MCP servers and AI coding skills) for the project */
+	protected abstract configureAI(frameworkId: string): Promise<void>;
 
 	/**
 	 * Get user name and set template's extra configurations if any
@@ -110,9 +147,12 @@ export abstract class BasePromptSession {
 	 * @param options to use for the user input
 	 * @param withBackChoice Add a "Back" option to choices list
 	 */
-	protected async getUserInput(options: IUserInputOptions, withBackChoice: boolean = false): Promise<string> {
+	protected async getUserInput(
+		options: Exclude<UserInputOptions, { type: "checkbox" }>,
+		withBackChoice: boolean = false,
+	): Promise<string> {
 
-		if (options.choices) {
+		if ("choices" in options) {
 			if (options.choices.length < 2) {
 				// single choice to return:
 				let choice = options.choices[0];
@@ -126,8 +166,8 @@ export abstract class BasePromptSession {
 			options.choices = this.addSeparators(options.choices);
 		}
 
-		let result: string = null;
-		if (options.type === "list") {
+		let result = "";
+		if (options.type === "select") {
 			result = await InquirerWrapper.select(options);
 		} else {
 			result = await InquirerWrapper.input(options);
@@ -203,18 +243,15 @@ export abstract class BasePromptSession {
 	 * @param framework to get project library for
 	 */
 	protected async getProjectLibrary(framework: Framework): Promise<ProjectLibrary> {
-		let projectLibrary: ProjectLibrary;
 		const projectLibraries = this.getProjectLibNames(framework);
 
 		const projectRes = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "projectType",
 			message: "Choose the type of project:",
 			choices: projectLibraries
 		});
-		projectLibrary = this.templateManager.getProjectLibraryByName(framework, projectRes);
-
-		return projectLibrary;
+		return this.templateManager.getProjectLibraryByName(framework, projectRes);
 	}
 
 	/**
@@ -222,17 +259,37 @@ export abstract class BasePromptSession {
 	 * @param projectLibrary to get theme for
 	 */
 	protected async getProjectTemplate(projectLibrary: ProjectLibrary): Promise<ProjectTemplate> {
-		let projTemplate: ProjectTemplate;
-
+		const visibleProjects = projectLibrary.projects.filter(p => !p.isHidden);
 		const componentNameRes = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "projTemplate",
 			message: "Choose project template:",
-			choices: Util.formatChoices(projectLibrary.projects)
+			choices: Util.formatChoices(visibleProjects)
 		});
-		projTemplate = projectLibrary.projects.find(x => x.name === componentNameRes);
+		const selected = visibleProjects.find(x => x.name === componentNameRes);
+		if (!selected) {
+			throw new Error(`Project template '${componentNameRes}' not found.`);
+		}
 
-		return projTemplate;
+		// If the selected template has an auth variant (id: "<template-id>-auth"), offer it
+		const authVariant = projectLibrary.getProject(`${selected.id}-auth`);
+		if (authVariant) {
+			const wantsAuth = await InquirerWrapper.confirm({
+				message: "Would you like to add authentication (login, register, social login)?",
+				default: false
+			});
+			GoogleAnalytics.post({
+				t: "event",
+				ec: "$ig wizard",
+				el: "Include authentication?",
+				ea: `projTemplate: ${selected.id}; auth: ${wantsAuth}`
+			});
+			if (wantsAuth) {
+				return authVariant;
+			}
+		}
+
+		return selected;
 	}
 
 	/**
@@ -240,9 +297,8 @@ export abstract class BasePromptSession {
 	 * @param projectLibrary to get theme for
 	 */
 	protected async getTheme(projectLibrary: ProjectLibrary): Promise<string> {
-		let theme: string;
-		theme = await this.getUserInput({
-			type: "list",
+		const theme = await this.getUserInput({
+			type: "select",
 			name: "theme",
 			message: "Choose the theme for the project:",
 			choices: projectLibrary.themes,
@@ -266,7 +322,6 @@ export abstract class BasePromptSession {
 			name: `${type === "component" ? type : "customView"}Name`,
 			message: `Name your ${type}:`,
 			default: availableDefaultName,
-			choices: null,
 			validate: (input: string) => {
 				// TODO: GA post?
 				const name = Util.nameFromPath(input);
@@ -278,7 +333,7 @@ export abstract class BasePromptSession {
 	}
 
 	/** Create prompts from template extra configuration and assign user answers to the template */
-	protected async customizeTemplateTask(template: Template) {
+	protected async customizeTemplateTask(template: BaseTemplate) {
 		const extraPrompt = this.createQuestions(template.getExtraConfiguration());
 		const extraConfigAnswers = [];
 		for (const question of extraPrompt) {
@@ -329,27 +384,26 @@ export abstract class BasePromptSession {
 	 * Generate questions from extra configuration array
 	 * @param extraConfig
 	 */
-	private createQuestions(extraConfig: ControlExtraConfiguration[]): { type: string; name: string; message: string; choices: any[]; default: any; }[] {
-		const result = [];
+	private createQuestions(extraConfig: ControlExtraConfiguration[]): UserInputOptions[] {
+		const result: UserInputOptions[] = [];
 		for (const element of extraConfig) {
-			const currExtraConfig = {};
+			const base = {
+				default: element.default,
+				message: element.message,
+				name: element.key,
+			};
 			switch (element.type) {
 				case ControlExtraConfigType.Choice:
-					currExtraConfig["type"] = "select"; // formerly list
+					result.push({ ...base, type: "select", choices: element.choices ?? [] });
 					break;
 				case ControlExtraConfigType.MultiChoice:
-					currExtraConfig["type"] = "checkbox";
+					result.push({ ...base, type: "checkbox", choices: element.choices ?? [] });
 					break;
 				case ControlExtraConfigType.Value:
 				default:
-					currExtraConfig["type"] = "input";
+					result.push({ ...base, type: "input" });
 					break;
 			}
-			currExtraConfig["default"] = element.default;
-			currExtraConfig["message"] = element.message;
-			currExtraConfig["name"] = element.key;
-			currExtraConfig["choices"] = element.choices;
-			result.push(currExtraConfig);
 		}
 		return result;
 	}
@@ -368,11 +422,11 @@ export abstract class BasePromptSession {
 	private chooseActionTask: Task<PromptTaskContext> = async (runner, context) => {
 		Util.log(""); /* new line */
 		const action: string = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "action",
 			message: "Choose an action:",
 			choices: this.generateActionChoices(context.projectLibrary),
-			default: "Complete & Run"
+			default: "Complete and Install packages"
 		});
 
 		runner.clearPending();
@@ -402,8 +456,29 @@ export abstract class BasePromptSession {
 			runner.addTask(this.templateSelectedTask("view"));
 			runner.addTask(run => Promise.resolve(run.resetTasks()));
 			break;
-		case "Complete & Run":
+		case "Complete and Install packages":
 			const config = ProjectConfig.localConfig();
+
+			if (!config.project || config.project.framework === "blazor") {
+				// Blazor (scaffolded via dotnet) has no cli-config — print next-steps instead of
+				// routing through completeAndRun (npm + start.start, which requires a cli-config).
+				const projectName = path.basename(process.cwd());
+				if (Util.canPrompt() && await InquirerWrapper.confirm({
+					message: "Run the app now (dotnet run)?",
+					default: false
+				})) {
+					const result = Util.spawnSync("dotnet", ["run", "--project", projectName], { stdio: "inherit" });
+					if (result.error || result.status !== 0) {
+						Util.error("dotnet run failed (see dotnet output above).", "red");
+					}
+				} else {
+					Util.log("");
+					Util.log("Next Steps:");
+					Util.log(`  cd ${Util.quoteIfNeeded(projectName)}`);
+					Util.log(`  dotnet run --project ${Util.quoteIfNeeded(projectName)}`);
+				}
+				break;
+			}
 
 			if (config.project.framework === "angular" &&
 				config.project.projectType === "igx-ts" &&
@@ -412,7 +487,7 @@ export abstract class BasePromptSession {
 				Util.log("The project will be created using a Trial version of Ignite UI for Angular.");
 				Util.log("You can always run the upgrade-packages command once it's created.");
 				const shouldUpgrade = await this.getUserInput({
-					type: "list",
+					type: "select",
 					name: "shouldUpgrade",
 					message: "Would you like to upgrade to the licensed feed now?",
 					choices: [
@@ -427,29 +502,21 @@ export abstract class BasePromptSession {
 				}
 			}
 
-			const defaultPort = config.project.defaultPort;
-			const port = await this.getUserInput({
-				type: "input",
-				name: "port",
-				message: "Choose app host port:",
-				default: defaultPort,
-				choices: null,
-				validate: (input: string) => {
-					if (!Number(input)) {
-						Util.log(""); /* new line */
-						Util.error(`port should be a number. Input valid port or use the suggested default port`, "red");
-						return false;
-					}
-					return true;
-				}
-			});
-			config.project.defaultPort = parseInt(port, 10);
-			ProjectConfig.setConfig(config);
-
-			await this.completeAndRun(config.project.defaultPort);
+			await this.complete();
+			this.showNextSteps();
 			break;
 		}
 		return true;
+	}
+
+	private showNextSteps() {
+		Util.log("");
+		Util.log("Next Steps:");
+		if (this._newProjectName) {
+			Util.log(`  cd "${this._newProjectName}"`);
+		}
+		Util.log("  ig add      start guided mode for adding views to the app");
+		Util.log("  ig start    starts a web server and opens the app in the default browser");
 	}
 
 	/**
@@ -459,7 +526,7 @@ export abstract class BasePromptSession {
 	private getComponentGroupTask: Task<PromptTaskContext> = async (_runner, context) => {
 		const groups = context.projectLibrary.getComponentGroupNames();
 		const groupRes: string = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "componentGroup",
 			message: "Choose a group:",
 			choices: Util.formatChoices(context.projectLibrary.getComponentGroups()),
@@ -480,7 +547,7 @@ export abstract class BasePromptSession {
 	 */
 	private getComponentTask: Task<PromptTaskContext> = async (_runner, context) => {
 		const componentNameRes = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "component",
 			message: "Choose a component:",
 			choices: Util.formatChoices(context.projectLibrary.getComponentsByGroup(context.group))
@@ -500,11 +567,10 @@ export abstract class BasePromptSession {
 	 * @param component to get template for
 	 */
 	private getTemplateTask: Task<PromptTaskContext> = async (_runner, context) => {
-		let selectedTemplate: Template;
 		const templates: Template[] = context.component.templates;
 
 		const templateRes = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "template",
 			message: "Choose one:",
 			choices: Util.formatChoices(templates)
@@ -514,7 +580,7 @@ export abstract class BasePromptSession {
 			return WIZARD_BACK_OPTION;
 		}
 
-		selectedTemplate = templates.find((value, i, obj) => {
+		const selectedTemplate = templates.find((value, i, obj) => {
 			return value.name === templateRes;
 		});
 
@@ -535,7 +601,7 @@ export abstract class BasePromptSession {
 		const customTemplates: Template[] = context.projectLibrary.getCustomTemplates();
 
 		const customTemplateNameRes = await this.getUserInput({
-			type: "list",
+			type: "select",
 			name: "customTemplate",
 			message: "Choose custom view:",
 			choices: Util.formatChoices(customTemplates)
@@ -555,7 +621,7 @@ export abstract class BasePromptSession {
 		return false;
 	}
 
-	private logAutoSelected(options: IUserInputOptions, choice: any) {
+	private logAutoSelected(options: UserInputOptions, choice: any) {
 		let text;
 		switch (options.name) {
 			case "framework":
@@ -610,7 +676,7 @@ export abstract class BasePromptSession {
 	 */
 	private generateActionChoices(projectLibrary: ProjectLibrary): Array<{}> {
 		const actionChoices: ChoiceItem[] = [
-			{ name: "Complete & Run", description: "install packages and run in the default browser" }
+			{ name: "Complete and Install packages", description: "install packages and show next steps" }
 		];
 
 		/* istanbul ignore next */
@@ -630,15 +696,27 @@ export abstract class BasePromptSession {
 	}
 }
 
-/** Options for User Input */
-export interface IUserInputOptions {
-	type: string;
+type InputOptions = {
+	type: "input";
 	name: string;
 	message: string;
-	choices: any[];
 	default?: any;
 	validate?: (input: string) => string | boolean;
 }
+
+type SelectOptions = Omit<InputOptions, "type"> & {
+	type: "select";
+	// TODO: Expand type:
+	choices: any[];
+}
+
+type CheckboxOptions = Omit<SelectOptions, "type"> & {
+	type: "checkbox";
+	required?: boolean;
+}
+
+/** Options for User Input */
+export type UserInputOptions = InputOptions | SelectOptions | CheckboxOptions;
 
 /** Context type for prompt tasks */
 export interface PromptTaskContext {

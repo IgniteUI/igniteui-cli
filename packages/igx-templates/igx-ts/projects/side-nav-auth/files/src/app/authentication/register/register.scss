@@ -1,0 +1,60 @@
+form {
+  display: flex;
+  flex-flow: column;
+  gap: 16px;
+  padding: 8px 0 0;
+
+  > * {
+    width: 100%;
+  }
+}
+
+igx-input-group {
+  --ig-input-group-focused-secondary-color: #239ef0;
+  --ig-input-group-filled-text-color: #2d2d2d;
+
+  igx-icon {
+    color: #0075d2;
+  }
+}
+
+.button-wrapper {
+  display: flex;
+  flex-flow: column;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+button[type='submit'] {
+  min-height: 40px;
+  width: 100%;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+button[type='submit']:not(:disabled) {
+  color: #fff;
+  background: #239ef0;
+}
+
+button[type='submit']:disabled {
+  color: #767676;
+  background: #e0e0e0;
+}
+
+.button-wrapper .auth-link {
+  align-self: center;
+  border: none;
+  background: transparent;
+  color: #0075d2;
+  font-size: .875rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  text-transform: none;
+}
+
+.button-wrapper .auth-link:hover,
+.button-wrapper .auth-link:focus-visible {
+  color: #005da8;
+}

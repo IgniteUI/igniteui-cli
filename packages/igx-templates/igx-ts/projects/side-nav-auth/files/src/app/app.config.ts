@@ -1,33 +1,50 @@
-import { ApplicationConfig, Provider, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { BrowserModule, HammerModule } from '@angular/platform-browser';
+import { ApplicationConfig, importProvidersFrom, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import {
-  IgxNavigationDrawerModule,
-  IgxNavbarModule,
   IgxLayoutModule,
+  IgxNavbarModule,
+  IgxNavigationDrawerModule,
   IgxRippleModule,
 } from '<%=igxPackage%>';
 
-import { AuthenticationModule, ExternalAuthService } from './authentication';
+import { provideAuthentication } from './authentication';
 import { routes } from './app.routes';
 
-// provide the HAMMER_GESTURE_CONFIG token
-// to override the default settings of the HammerModule
-// { provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig }
-const providers: Provider = [
-  provideRouter(routes),
-  importProvidersFrom(
-    BrowserModule,
-    HammerModule,
-    IgxLayoutModule,
-    IgxNavbarModule,
-    IgxNavigationDrawerModule,
-    IgxRippleModule,
-    AuthenticationModule
-  ),
-  provideAnimations(),
-  ExternalAuthService
-];
-
-export const appConfig: ApplicationConfig = { providers };
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    importProvidersFrom(
+      IgxLayoutModule,
+      IgxNavbarModule,
+      IgxNavigationDrawerModule,
+      IgxRippleModule,
+    ),
+    provideAnimations(),
+    // Social login: uncomment the provider(s) you want and replace the placeholder client IDs.
+    // Each provider requires its redirect URI to be registered in the provider's developer console.
+    // Redirect URIs: {origin}/auth/redirect-google | /auth/redirect-facebook | /auth/redirect-microsoft
+    //
+    // Additional requirements per provider:
+    //   Google:    register both Authorised JavaScript origins AND redirect URIs; HTTPS required in production.
+    //              See: https://developers.google.com/identity/protocols/oauth2/web-server#prerequisites
+    //   Microsoft: register the redirect URI as a SPA (not "Web") platform in Azure to allow browser token exchange.
+    //              See: https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow
+    //   Facebook:  add the Facebook JS SDK to index.html, enable "Login with JavaScript SDK" in the dashboard,
+    //              and add your domain to "Allowed Domains". HTTPS required.
+    //              See: https://developers.facebook.com/docs/facebook-login/web
+    //
+    // Guide: https://github.com/IgniteUI/igniteui-cli/wiki/Angular-Authentication-Project-Template
+    provideAuthentication({
+      // TODO: Uncomment and replace with your Google OAuth Client ID
+      // google: { clientId: 'YOUR_GOOGLE_CLIENT_ID' },
+      // TODO: Uncomment and replace with your Microsoft Client ID + Tenant ID
+      // microsoft: { clientId: 'YOUR_MICROSOFT_CLIENT_ID', tenantId: 'YOUR_TENANT_ID' },
+      // TODO: Uncomment and replace with your Facebook App ID
+      // Note: Facebook requires HTTPS even for local dev - use ngrok or a local SSL proxy.
+      // facebook: { clientId: 'YOUR_FACEBOOK_CLIENT_ID' },
+    })
+  ]
+};

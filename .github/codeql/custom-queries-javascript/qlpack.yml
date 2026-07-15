@@ -1,0 +1,4 @@
+name: igniteui-cli-custom-javascript-queries
+version: 0.0.0
+dependencies:
+  codeql/javascript-queries: "*"

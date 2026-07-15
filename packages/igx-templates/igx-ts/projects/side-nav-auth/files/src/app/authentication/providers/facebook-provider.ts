@@ -25,22 +25,23 @@ export class FacebookProvider implements AuthProvider {
       if (response.authResponse) {
         FB.api(
           '/me?fields=id,email,name,first_name,last_name,picture',
-          (newResponse: { [key: string]: any; }) => {
+          (newResponse: any) => {
             this.user = {
               id: newResponse.id,
               name: newResponse.name,
               given_name: newResponse.first_name,
               family_name: newResponse.last_name,
               email: newResponse.email,
-              picture: newResponse.picture,
-              externalToken: FB.getAuthResponse()[accessToken]
+              // Facebook returns picture as an object: { data: { url, width, height } }
+              picture: newResponse.picture?.data?.url,
+              externalToken: FB.getAuthResponse()?.[accessToken] ?? ''
             };
             this.router.navigate([this.externalStsConfig.redirect_url]);
           });
       } else {
         console.log('User cancelled login or did not fully authorize.');
       }
-    }, { scope: 'public_profile' });
+    }, { scope: 'public_profile,email' });
   }
 
   public getUserInfo(): Promise<ExternalLogin> {
@@ -51,6 +52,6 @@ export class FacebookProvider implements AuthProvider {
   }
 
   public logout() {
-    FB.logout((response) => { });
+    FB.logout();
   }
 }

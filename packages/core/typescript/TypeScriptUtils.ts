@@ -1,4 +1,3 @@
-// tslint:disable-next-line:no-implicit-dependencies
 import * as ts from "typescript";
 import { FS_TOKEN, IFileSystem } from "../types/FileSystem";
 import { App } from "../util";

@@ -1,10 +1,13 @@
 import { exec } from "child_process";
 import * as path from "path";
-import { TemplateManager } from "../../cli/lib/TemplateManager";
+import { BaseTemplateManager } from "../templates";
 import { Config, FS_TOKEN, IFileSystem, ProjectTemplate } from "../types";
 import { App, ProjectConfig, Util } from "../util";
 
 import componentsConfig = require("./components");
+
+/** @internal */
+export const REGISTRY_ATTEMPT_LOGIN = false;
 
 export class PackageManager {
 	private static ossPackage: string = "ignite-ui";
@@ -28,7 +31,7 @@ export class PackageManager {
 	 */
 	public static async ensureIgniteUISource(
 		installNow: boolean = false,
-		templateManager: TemplateManager,
+		templateManager: BaseTemplateManager,
 		verbose: boolean = false
 	) {
 		const config = ProjectConfig.localConfig();
@@ -45,6 +48,10 @@ export class PackageManager {
 			const version = ossVersion ? `@"${ossVersion}"` : "";
 			const errorMsg = "Something went wrong, " +
 				"please follow the steps in this guide: https://www.igniteui.com/help/using-ignite-ui-npm-packages";
+			Util.log(
+				"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
+				"gray"
+			);
 			// fallback to @latest, in case when igniteui-full does not have a matching version to ossVersion
 			// ex: "ignite-ui": "^21.1.13" BUT  --> ignite-ui-full": "^21.1.11" (no 21.1.13 released).
 			// TODO: update temp fix - only working in 21.1.11 without errors
@@ -88,9 +95,8 @@ export class PackageManager {
 		const config = ProjectConfig.localConfig();
 		if (!config.packagesInstalled) {
 			let command: string;
-			let managerCommand: string;
+			const managerCommand = this.getManager();
 
-			managerCommand = this.getManager();
 			switch (managerCommand) {
 				case "npm":
 				/* passes through */
@@ -123,49 +129,50 @@ export class PackageManager {
 	}
 
 	public static removePackage(packageName: string, verbose: boolean = false): boolean {
+		let command: string;
 		const managerCommand = this.getManager();
-		let args: string[];
+		const sanitizePackage = Util.sanitizeShellArg(packageName);
 		switch (managerCommand) {
 			case "npm":
 			/* passes through */
 			default:
-				args = ['uninstall', packageName, '--quiet', '--save'];
+				command = `${managerCommand} uninstall ${sanitizePackage} --quiet --save`;
 				break;
 		}
 		try {
-			// tslint:disable-next-line:object-literal-sort-keys
-			Util.spawnSync(managerCommand, args, { stdio: "pipe", encoding: "utf8" });
+			Util.execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
-			Util.log(`Error uninstalling package ${packageName} with ${managerCommand}`);
+			Util.log(`Error uninstalling package ${sanitizePackage} with ${managerCommand}`);
 			if (verbose) {
 				Util.log(error.message);
 			}
 			return false;
 		}
 
-		Util.log(`Package ${packageName} uninstalled successfully`);
+		Util.log(`Package ${sanitizePackage} uninstalled successfully`);
 		return true;
 	}
 
 	public static addPackage(packageName: string, verbose: boolean = false): boolean {
 		const managerCommand = this.getManager();
-		const command = this.getInstallCommand(managerCommand, packageName);
+		const sanitizePackage = Util.sanitizeShellArg(packageName);
+		const command = this.getInstallCommand(managerCommand, sanitizePackage);
 		try {
-			// tslint:disable-next-line:object-literal-sort-keys
 			Util.execSync(command, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
-			Util.log(`Error installing package ${packageName} with ${managerCommand}`);
+			Util.log(`Error installing package ${sanitizePackage} with ${managerCommand}`);
 			if (verbose) {
 				Util.log(error.message);
 			}
 			return false;
 		}
-		Util.log(`Package ${packageName} installed successfully`);
+		Util.log(`Package ${sanitizePackage} installed successfully`);
 		return true;
 	}
 
 	public static async queuePackage(packageName: string, verbose = false) {
-		const command = this.getInstallCommand(this.getManager(), packageName).replace("--save", "--no-save");
+		const command = this.getInstallCommand(this.getManager(), Util.sanitizeShellArg(packageName))
+			.replace("--save", "--no-save");
 		const [packName, version] = packageName.split(/@(?=[^\/]+$)/);
 		const packageJSON = this.getPackageJSON();
 		if (!packageJSON.dependencies) {
@@ -222,16 +229,16 @@ export class PackageManager {
 	}
 
 	public static ensureRegistryUser(config: Config, message: string): boolean {
-		const fullPackageRegistry = config.igPackageRegistry;
+		const fullPackageRegistry = Util.sanitizeShellArg(config.igPackageRegistry);
 		try {
-			// tslint:disable-next-line:object-literal-sort-keys
-			Util.spawnSync('npm', ['whoami', `--registry=${fullPackageRegistry}`], { stdio: 'pipe', encoding: 'utf8' });
+			Util.execSync(`npm whoami --registry=${fullPackageRegistry}`, { stdio: "pipe", encoding: "utf8" });
 		} catch (error) {
+			if (!REGISTRY_ATTEMPT_LOGIN) {
+				Util.log(message, "gray");
+				return true;
+			}
+
 			// try registering the user:
-			Util.log(
-				"The project you've created requires the full version of Ignite UI from Infragistics private feed.",
-				"gray"
-			);
 			Util.log(
 				"We are initiating the login process for you. This will be required only once per environment.",
 				"gray"
@@ -246,20 +253,16 @@ export class PackageManager {
 			if (process.stdin.isTTY) {
 				process.stdin.setRawMode(true);
 			}
-			const cmd = /^win/.test(process.platform) ? "npm.cmd" : "npm"; //https://github.com/nodejs/node/issues/3675
-			const login = Util.spawnSync(cmd,
-				["adduser", `--registry=${fullPackageRegistry}`, `--scope=@infragistics`, `--always-auth`],
-				{ stdio: "inherit" }
-			);
-			if (login?.status === 0) {
+
+			try {
+				Util.execSync(
+					`npm login --registry=${fullPackageRegistry} --scope=@infragistics --auth-type=legacy`,
+					{ stdio: "inherit" }
+				);
 				//make sure scope is configured:
-				try {
-					Util.spawnSync('npm', ['config', 'set', `@infragistics:registry`, fullPackageRegistry]);
-					return true;
-				} catch (error) {
-					return false;
-				}
-			} else {
+				Util.execSync(`npm config set @infragistics:registry ${fullPackageRegistry}`);
+				return true;
+			} catch (error) {
 				Util.log(message, "red");
 				return false;
 			}
@@ -281,7 +284,7 @@ export class PackageManager {
 		}
 	}
 
-	private static getManager(/*config:Config*/): string {
+	private static getManager(/*config:Config*/): 'npm' {
 		//stub to potentially swap out managers
 		return "npm";
 	}

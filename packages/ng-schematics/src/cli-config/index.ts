@@ -1,11 +1,13 @@
 import * as ts from "typescript";
 import { DependencyNotFoundException } from "@angular-devkit/core";
 import { chain, FileDoesNotExistException, Rule, SchematicContext, Tree } from "@angular-devkit/schematics";
-import { addClassToBody, FormatSettings, NPM_ANGULAR, resolvePackage, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
+import { RunSchematicTask } from "@angular-devkit/schematics/tasks";
+import { addClassToBody, addMcpServers, AIAgentTarget, AiCodingAssistant, App, copyAgentInstructionFiles, copyAISkillsToProject, FormatSettings, McpServerEntry, NPM_ANGULAR, resolvePackage, TEMPLATE_MANAGER, TypeScriptAstTransformer, TypeScriptUtils } from "@igniteui/cli-core";
 import { AngularTypeScriptFileUpdate } from "@igniteui/angular-templates";
 import { createCliConfig } from "../utils/cli-config";
 import { setVirtual } from "../utils/NgFileSystem";
 import { addFontsToIndexHtml, getProjects, importDefaultTheme } from "../utils/theme-import";
+import { SchematicsTemplateManager } from "../SchematicsTemplateManager";
 
 function getDependencyVersion(pkg: string, tree: Tree): string {
 	const targetFile = "/package.json";
@@ -62,7 +64,7 @@ function importBrowserAnimations(): Rule {
 		const projects = await getProjects(tree);
 		projects.forEach(project => {
 			// TODO: Resolve hardcoded paths instead
-			const moduleFilePath = `${project.sourceRoot}/app/app.module.ts`;
+			const moduleFilePath = `${project.sourceRoot}/app/app-module.ts`;
 			if (tree.exists(moduleFilePath)) {
 				const mainModule = new AngularTypeScriptFileUpdate(
 					moduleFilePath,
@@ -117,16 +119,56 @@ function importStyles(): Rule {
 	};
 }
 
-// tslint:disable-next-line:space-before-function-paren
-export default function (): Rule {
+/** Initialize the App container with TemplateManager and virtual FS */
+function appInit(tree: Tree) {
+	App.initialize("angular-cli");
+	// must be initialized with physical fs first:
+	App.container.set(TEMPLATE_MANAGER, new SchematicsTemplateManager());
+	setVirtual(tree);
+}
+
+function aiConfig({ init, agents, assistants }: { init: boolean; agents: AIAgentTarget[]; assistants: AiCodingAssistant[] }): Rule {
 	return (tree: Tree) => {
-		setVirtual(tree);
+		if (init) {
+			appInit(tree);
+		}
+		copyAISkillsToProject(agents, "angular");
+		copyAgentInstructionFiles(agents, "angular");
+
+		const angularCliServer: Record<string, McpServerEntry> = {
+			"angular-cli": {
+				command: "npx",
+				args: ["-y", "@angular/cli", "mcp"]
+			}
+		};
+
+		for (const assistant of assistants) {
+			addMcpServers(assistant, angularCliServer);
+		}
+	};
+}
+
+/** Standalone `ai-config` schematic entry */
+export function addAIConfig(options: { agents?: AIAgentTarget[]; assistants?: string[] } = {}): Rule {
+	const selected = options.agents?.length ? options.agents : [] as AIAgentTarget[];
+	const agents = selected.includes("none" as any) ? [] : selected;
+	const selectedAssistants = options.assistants?.length ? options.assistants : [];
+	const assistants = (selectedAssistants.includes("none")? [] : selectedAssistants) as AiCodingAssistant[];
+	return aiConfig({ init: true, agents, assistants });
+}
+
+export default function (): Rule {
+	return (tree: Tree, context: SchematicContext) => {
+		appInit(tree);
+		// queue ai-config with prompts:
+		context.addTask(new RunSchematicTask("ai-config", {}));
+
 		return chain([
 			importStyles(),
 			addTypographyToProj(),
 			importBrowserAnimations(),
 			createCliConfig(),
-			displayVersionMismatch()
+			displayVersionMismatch(),
 		]);
 	};
 }

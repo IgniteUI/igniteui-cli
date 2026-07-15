@@ -1,0 +1,64 @@
+@use '<%=igxPackage%>/theming' as *;
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fontawesome.css");
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-regular.css");
+@import url("https://unpkg.com/@fortawesome/fontawesome-free-webfonts@^1.0.9/css/fa-solid.css");
+
+:host ::ng-deep {
+  $crm-grid-theme: grid-theme($background: #1f2836,
+      $foreground: #f5f6e6,
+      $header-background: #2f3744,
+      $header-text-color: #f5f6e6,
+      $accent-color: #f5f6e6,
+    );
+
+  $crm-toolbar-theme: grid-toolbar-theme($background: #1f2836,
+      $accent-color: #f5f6e6);
+
+
+  igx-grid {
+    @include tokens($crm-grid-theme);
+  }
+
+  igx-grid-toolbar {
+    @include tokens($crm-toolbar-theme);
+
+    igx-input-group[type="search"] {
+      --ig-size: var(--ig-size-small);
+      --search-resting-elevation: none;
+      --search-hover-elevation: none;
+      --search-disabled-elevation: none;
+    }
+  }
+
+  width: 95%;
+
+  .grid__wrapper {
+    margin: 0 auto;
+    padding: 16px;
+
+    &__inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .search-extras {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &__inner-container {
+      display: flex;
+    }
+  }
+
+  .search-results {
+    color: rgb(from var(--ig-grid-foreground) r g b / 0.5);
+    font-size: .875rem;
+  }
+
+  .case-sensitive--inactive {
+    color: rgb(from var(--ig-grid-foreground) r g b / 0.7);
+  }
+}

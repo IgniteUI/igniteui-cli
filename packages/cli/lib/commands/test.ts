@@ -4,14 +4,13 @@ import { ArgumentsCamelCase } from "yargs";
 
 const command: TestCommandType = {
 	command: "test",
-	describe: "executes project tests",
+	describe: "Executes project tests",
 	builder: (yargs) => {
 		return yargs
 			.option("e2e", {
-				describe: "Executes end-to-end tests",
+				describe: "Execute end-to-end tests",
 				type: "boolean"
-			})
-			.usage(""); // do not show any usage instructions before the commands list
+			});
 	},
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 

@@ -1,0 +1,93 @@
+.form {
+  display: flex;
+  flex-flow: column;
+  gap: 16px;
+  padding: 8px 0 0;
+}
+
+.form igc-input {
+  width: 100%;
+  --ig-input-group-focused-secondary-color: #239ef0;
+  --ig-input-group-focused-border-color: #239ef0;
+  --ig-input-group-filled-text-color: #2d2d2d;
+}
+
+.form igc-input igc-icon {
+  color: #0075d2;
+  --ig-icon-size: 1.50rem;
+}
+
+.error {
+  margin: 0;
+  font-size: .875rem;
+  color: #d32f2f;
+}
+
+.actions {
+  display: flex;
+  flex-flow: column;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.submitBtn {
+  display: block;
+}
+
+.submitBtn::part(base) {
+  width: 100%;
+  min-height: 40px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.submitBtn:not([disabled])::part(base) {
+  background: #239ef0;
+  color: #fff;
+}
+
+.submitBtn:not([disabled])::part(base):hover {
+  background: #1a8fd8;
+}
+
+.submitBtn[disabled]::part(base) {
+  background: #e0e0e0;
+  color: #767676;
+}
+
+.linkBtn {
+  align-self: center;
+  color: #0075d2;
+  font-size: .875rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-transform: none;
+}
+
+.linkBtn:hover,
+.linkBtn:focus-visible {
+  color: #005da8;
+}
+
+.socialLogin {
+  display: grid;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #d7d7d7;
+}
+
+.socialBtn {
+  display: block;
+}
+
+.socialBtn::part(base) {
+  width: 100%;
+  min-height: 40px;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.google::part(base)   { background: rgb(255, 19, 74); }
+.facebook::part(base) { background: rgb(19, 119, 213); }
+.microsoft::part(base){ background: rgb(27, 158, 245); }

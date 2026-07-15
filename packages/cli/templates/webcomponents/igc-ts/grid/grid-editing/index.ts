@@ -1,4 +1,5 @@
 import { IgniteUIForWebComponentsTemplate } from "../../../../../lib/templates/IgniteUIForWebComponentsTemplate";
+import { IGNITEUI_WEBCOMPONENTS_GRIDS_PACKAGE } from "../../constants";
 
 class IgcGridEditingTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
@@ -10,6 +11,7 @@ class IgcGridEditingTemplate extends IgniteUIForWebComponentsTemplate {
 		this.projectType = "igc-ts";
 		this.name = "Grid Editing";
 		this.description = "IgcGrid with editing enabled";
+		this.packages = [ IGNITEUI_WEBCOMPONENTS_GRIDS_PACKAGE ];
 	}
 }
 module.exports = new IgcGridEditingTemplate();

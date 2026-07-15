@@ -1,10 +1,9 @@
 import { IgniteUIForAngularTemplate } from "@igniteui/angular-templates";
 import { BaseTemplateManager, Template, Util } from "@igniteui/cli-core";
 import * as path from "path";
-import { AngularTemplate } from "./templates/AngularTemplate";
 import { IgniteUIForWebComponentsTemplate } from "./templates/IgniteUIForWebComponentsTemplate";
 import { jQueryTemplate } from "./templates/jQueryTemplate";
-import { ReactTemplate } from "./templates/ReactTemplate";
+import { IgniteUIForReactTemplate } from "./templates/IgniteUIForReactTemplate";
 
 const TEMPLATES_PATH = "../templates";
 
@@ -28,11 +27,8 @@ export class TemplateManager extends BaseTemplateManager {
 				case "jquery|js":
 					template = new jQueryTemplate(rootPath);
 					break;
-				case "react|es6":
-					template = new ReactTemplate(rootPath);
-					break;
-				case "angular|ig-ts":
-					template = new AngularTemplate(rootPath);
+				case "react|igr-ts":
+					template = new IgniteUIForReactTemplate(rootPath);
 					break;
 				case "angular|igx-ts":
 					template = new IgniteUIForAngularTemplate(rootPath);

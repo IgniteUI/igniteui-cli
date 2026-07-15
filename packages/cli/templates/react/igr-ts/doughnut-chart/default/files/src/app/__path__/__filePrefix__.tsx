@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { IgrDoughnutChartModule } from 'igniteui-react-charts';
 import { IgrDoughnutChart } from 'igniteui-react-charts';
 import { IgrRingSeriesModule } from 'igniteui-react-charts';
@@ -23,13 +23,8 @@ const data: any = [
 
 export default function $(ClassName)() {
   const title = 'Doughnut Chart';
-  const [chartData, setChartData] = useState([]);
-  const legendRef: any = useRef(null);
-  const chartRef: any = useRef(null);
-
-  useEffect(() => {
-    setChartData(data);
-  }, []);
+  const [chartData] = useState(data);
+  const [legend, setLegend] = useState<IgrItemLegend | null>(null);
 
   return (
     <div>
@@ -42,10 +37,10 @@ export default function $(ClassName)() {
       </div>
       <div className={style.container}>
         <div className={style.legend}>
-          <IgrItemLegend ref={legendRef} />
+          <IgrItemLegend ref={setLegend} />
         </div>
         <div className={style.chart}>
-          <IgrDoughnutChart ref={chartRef}
+          <IgrDoughnutChart
             width="300px"
             height="300px">
             <IgrRingSeries
@@ -53,7 +48,7 @@ export default function $(ClassName)() {
               dataSource={chartData}
               labelMemberPath="Company"
               valueMemberPath="MarketShare"
-              legend={legendRef.current}
+              legend={legend}
               />
           </IgrDoughnutChart>
         </div>

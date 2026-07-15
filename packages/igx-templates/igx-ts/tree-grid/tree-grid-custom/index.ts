@@ -1,5 +1,8 @@
 import { ControlExtraConfigType, ControlExtraConfiguration, TemplateDependency } from "@igniteui/cli-core";
 import { IgniteUIForAngularTemplate } from "../../../IgniteUIForAngularTemplate";
+import * as path from "path";
+
+const SHARED_DATA_ROOT = path.join(__dirname, "../../../shared-data");
 
 class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 	private userExtraConfiguration: {} = {};
@@ -55,7 +58,6 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 
 		const anchorWrapper = {
 			start: `<a href="`,
-			// tslint:disable-next-line:object-literal-sort-keys
 			href: ``,
 			middle: `" target="_blank">`,
 			text: ``,
@@ -208,5 +210,12 @@ class IgxCustomTreeGridTemplate extends IgniteUIForAngularTemplate {
 		columnFeatures.push(text);
 		columnBoolFeatures.push(text);
 	}
+
+        public get templatePaths(): string[] {
+                return [
+                        ...super.templatePaths,
+                        path.join(SHARED_DATA_ROOT, "tree-grid", "files")
+                ];
+        }
 }
 module.exports = new IgxCustomTreeGridTemplate();

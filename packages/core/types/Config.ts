@@ -26,7 +26,7 @@ export interface Config {
 
 		framework: string;
 
-		/** Stands for js, ts, es6 */
+		/** Stands for igx-ts, igr-ts, js, igc-ts */
 		projectType: string;
 
 		/** Stands for the project template from which it has been generated  */

@@ -1,8 +1,9 @@
-import { App, BaseTemplate, Config, GoogleAnalytics, PackageManager, ProjectConfig, ProjectTemplate, Util } from "@igniteui/cli-core";
+import { App, BaseTemplate, Config, FS_TOKEN, GoogleAnalytics, PackageManager, ProjectConfig, ProjectTemplate, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import * as path from "path";
 import { default as newCmd } from "../../packages/cli/lib/commands/new";
 import { PromptSession } from "../../packages/cli/lib/PromptSession";
 import { resetSpy } from "../helpers/utils";
+import * as aiConfig from "../../packages/cli/lib/commands/ai-config";
 
 function createMockBaseTemplate(): BaseTemplate {
 	return {
@@ -17,6 +18,7 @@ function createMockBaseTemplate(): BaseTemplate {
 		framework: "angular",
 		projectType: "ts",
 		hasExtraConfiguration: true,
+		isHidden: false,
 		templatePaths: ["/path/to/template"],
 		generateConfig: null,
 		getExtraConfiguration: jasmine.createSpy().and.returnValue([]),
@@ -34,6 +36,8 @@ describe("Unit - New command", () => {
 		spyOn(Util, "execSync");
 		spyOn(process, "chdir");
 		spyOn(PackageManager, "installPackages");
+		spyOn(aiConfig, "configure").and.returnValue(Promise.resolve({ agents: [], assistants: [] }));
+		spyOn(Util, "directoryExists").and.returnValue(false);
 	});
 
 	afterEach(() => {
@@ -75,29 +79,31 @@ describe("Unit - New command", () => {
 	it("Logs error for wrong framework", async () => {
 		spyOn(Util, "error");
 		//spied getFrameworkById won't return anything, i.e. not found
-		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", ["getFrameworkById", "getProjectLibrary"]);
+		const mockTemplateManager = jasmine.createSpyObj("TemplateManager", ["getFrameworkById", "getProjectLibrary"]);
+		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
 
 		await newCmd.handler({ name: "Test", framework: "jq", _: ["new"], $0: "new" });
 
-		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
+		expect(mockTemplateManager.getFrameworkById).toHaveBeenCalledWith("jq");
 		expect(Util.error).toHaveBeenCalledWith("Framework not supported", "red");
 		//no further attempts to get project:
-		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledTimes(0);
+		expect(mockTemplateManager.getProjectLibrary).toHaveBeenCalledTimes(0);
 		expect(Util.log).toHaveBeenCalledTimes(0);
 	});
 
 	it("Logs error for wrong project type", async () => {
 		spyOn(Util, "error");
-		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		const mockTemplateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			// return nothing, i.e. not found
 			getProjectLibrary: undefined
 		});
+		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
 
 		await newCmd.handler({ name: "Test", framework: "jq", type: "js", _: ["new"], $0: "new"});
 
-		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
-		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "js");
+		expect(mockTemplateManager.getFrameworkById).toHaveBeenCalledWith("jq");
+		expect(mockTemplateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "js");
 		expect(Util.error).toHaveBeenCalledWith(`Project type "js" not found in framework 'jq'`);
 		//no further attempts to get project:
 		expect(Util.log).toHaveBeenCalledTimes(0);
@@ -112,15 +118,16 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		const mockTemplateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
+		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
 		spyOn(mockProjLib, "getProject");
 		await newCmd.handler({ name: "Test", framework: "jq", type: "js", theme: "mega-custom", _: ["new"], $0: "new" });
 
-		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
-		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "js");
+		expect(mockTemplateManager.getFrameworkById).toHaveBeenCalledWith("jq");
+		expect(mockTemplateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "js");
 		expect(Util.error).toHaveBeenCalledWith("Theme not supported");
 		//no further attempts to get project:
 		expect(Util.log).toHaveBeenCalledTimes(0);
@@ -131,10 +138,10 @@ describe("Unit - New command", () => {
 		spyOn(ProjectConfig, "getConfig").and.returnValue(null);
 
 		const mockProjLib = {};
-		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
-		});
+		}));
 
 		const promptSession =  PromptSession.prototype;
 		spyOn(promptSession, "start");
@@ -153,15 +160,16 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		const mockTemplateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
+		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
 		spyOn(mockProjLib, "getProject");
 		await newCmd.handler({ name: "Test", framework: "jq", type: "type", _: ["new"], $0: "new" });
 
-		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
-		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
+		expect(mockTemplateManager.getFrameworkById).toHaveBeenCalledWith("jq");
+		expect(mockTemplateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type type, theme ig");
 		expect(mockProjLib.getProject).toHaveBeenCalled();
 		expect(Util.error).toHaveBeenCalledWith("Project template not found");
@@ -186,28 +194,28 @@ describe("Unit - New command", () => {
 			projectType: "js",
 			themes: ["ig"]
 		};
-		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		const mockTemplateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
+		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
 		//spyOn(newCmd.template, "getFrameworkById").and.returnValue({});
 		//spyOn(newCmd.template, "getProjectLibrary").and.returnValue(mockProjLib);
 
 		spyOn(process, "cwd").and.returnValue("Mock dir");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "fileExists").and.returnValue(false);
 
 		const mockFileSystem = {
 			fileExists: jasmine.createSpy().and.returnValue(false),
 			readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" }))
 		};
-		spyOn(App.container, 'get').and.returnValue(mockFileSystem);
+		App.container.set(FS_TOKEN, mockFileSystem);
 
 		await newCmd.handler({ name: "Test", framework: "jq", theme: "ig", _: ["new"], $0: "new" });
 
-		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
-		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledWith("jq");
+		expect(mockTemplateManager.getFrameworkById).toHaveBeenCalledWith("jq");
+		expect(mockTemplateManager.getProjectLibrary).toHaveBeenCalledWith("jq");
 		expect(Util.log).toHaveBeenCalledWith("Project Name: Test, framework jq, type js, theme ig");
 		expect(mockProjectTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
 		expect(Util.processTemplates)
@@ -234,26 +242,26 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		const mockTemplateManager = jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
 		});
+		App.container.set(TEMPLATE_MANAGER, mockTemplateManager);
 
 		spyOn(process, "cwd").and.returnValue("Mock dir");
 		spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
-		spyOn(Util, "directoryExists").and.returnValue(false);
 		spyOn(Util, "fileExists").and.returnValue(false);
 
 		const mockFileSystem = {
 			fileExists: jasmine.createSpy().and.returnValue(false),
 			readFile: jasmine.createSpy().and.returnValue(JSON.stringify({ key: "value" }))
 		};
-		spyOn(App.container, 'get').and.returnValue(mockFileSystem);
+		App.container.set(FS_TOKEN, mockFileSystem);
 
 		await newCmd.handler({ name: "Test", framework: "jq", type: "type", theme: "ig", _: ["new"], $0: "new" });
 
-		expect(newCmd.templateManager.getFrameworkById).toHaveBeenCalledWith("jq");
-		expect(newCmd.templateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
+		expect(mockTemplateManager.getFrameworkById).toHaveBeenCalledWith("jq");
+		expect(mockTemplateManager.getProjectLibrary).toHaveBeenCalledWith("jq", "type");
 		expect(mockTemplate.generateConfig).toHaveBeenCalledWith("Test", "ig");
 		expect(Util.processTemplates)
 		.toHaveBeenCalledWith("test", path.join("Mock dir", "Test"), mockConfig, mockBaseTemplate.delimiters, false);
@@ -279,29 +287,17 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
-		});
-
-		spyOn(Util, "spawnSync").and.returnValues({
-			status: 0,
-			pid: 0,
-			output: [],
-			stdout: "",
-			stderr: "",
-			signal: "SIGABRT"
-		});
+		}));
 
 		await newCmd.handler({ name: projectName, framework: "jq", _: ["new"], $0: "new" });
 
 		expect(Util.execSync).toHaveBeenCalledWith("git init", jasmine.any(Object));
 		expect(Util.execSync).toHaveBeenCalledWith("git add .", jasmine.any(Object));
-		expect(Util.spawnSync).toHaveBeenCalledWith(
-			"git",
-			['commit', '-m', `"Initial commit for project: ${projectName}"`],
-			{ cwd: path.join(process.cwd(), projectName), stdio: [process.stdin, "ignore", "ignore"] }
-		);
+		expect(Util.execSync).toHaveBeenCalledWith("git commit -m \"Initial commit for project\"",
+			jasmine.any(Object));
 		expect(Util.log).toHaveBeenCalledWith(
 			jasmine.stringMatching("Git Initialized and Project '" + projectName + "' Committed")
 		);
@@ -322,13 +318,12 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
-		});
+		}));
 
 		spyOn(Util, "gitInit");
-		spyOn(Util, "directoryExists").and.returnValue(false);
 
 		await newCmd.handler({ "name": projectName, "framework": "jq", "skip-git": true, _: ["new"], $0: "new" });
 
@@ -350,10 +345,10 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
-		});
+		}));
 
 		const mockProjectConfig = { skipGit: true } as unknown as Config;
 		spyOn(ProjectConfig, "getConfig").and.returnValue(mockProjectConfig);
@@ -377,16 +372,211 @@ describe("Unit - New command", () => {
 			projectType: "type",
 			themes: ["ig"]
 		};
-		newCmd.templateManager = jasmine.createSpyObj("TemplateManager", {
+		App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
 			getFrameworkById: {},
 			getProjectLibrary: mockProjLib
-		});
+		}));
 
 		spyOn(Util, "gitInit");
 
 		await newCmd.handler({ name: "title", framework: "jq", skipInstall: true, _: ["new"], $0: "new" });
 
 		expect(PackageManager.installPackages).not.toHaveBeenCalled();
-		expect(process.chdir).not.toHaveBeenCalled();
+	});
+
+	describe("AI agents configuration", () => {
+		let configureSpy: jasmine.Spy;
+
+		beforeEach(() => {
+			configureSpy = aiConfig.configure as jasmine.Spy;
+		});
+
+		function createProjectMocks() {
+			const mockTemplate = {
+				generateConfig: jasmine.createSpy().and.returnValue({ test: "test" }),
+				templatePaths: ["test"]
+			};
+			const mockProjLib = {
+				getProject: () => mockTemplate,
+				projectIds: ["empty"],
+				projectType: "type",
+				themes: ["ig"]
+			};
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: {},
+				getProjectLibrary: mockProjLib
+			}));
+			spyOn(Util, "gitInit");
+		}
+
+		it("calls configure with provided agents", async () => {
+			createProjectMocks();
+
+			await newCmd.handler({ name: "Test", framework: "jq", agents: ["claude", "cursor"], _: ["new"], $0: "new" });
+
+			expect(configureSpy).toHaveBeenCalledWith("jq", jasmine.objectContaining({ agents: ["claude", "cursor"] }));
+		});
+
+		it("calls configure with undefined when --agents is not provided", async () => {
+			createProjectMocks();
+
+			await newCmd.handler({ name: "Test", framework: "jq", _: ["new"], $0: "new" });
+
+			expect(configureSpy).toHaveBeenCalledWith("jq", jasmine.objectContaining({ agents: undefined }));
+		});
+
+		it("calls configure with single agent", async () => {
+			createProjectMocks();
+
+			await newCmd.handler({ name: "Test", framework: "jq", agents: ["generic"], _: ["new"], $0: "new" });
+
+			expect(configureSpy).toHaveBeenCalledWith("jq", jasmine.objectContaining({ agents: ["generic"] }));
+		});
+
+		it("calls configure before package install", async () => {
+			createProjectMocks();
+			const callOrder: string[] = [];
+			(PackageManager.installPackages as jasmine.Spy).and.callFake(() => {
+				callOrder.push("install");
+				return Promise.resolve();
+			});
+			configureSpy.and.callFake(() => {
+				callOrder.push("configure");
+				return Promise.resolve();
+			});
+
+			await newCmd.handler({ name: "Test", framework: "jq", agents: ["claude"], _: ["new"], $0: "new" });
+
+			expect(callOrder).toEqual(["configure", "install"]);
+		});
+
+		it("calls configure from within the project directory", async () => {
+			createProjectMocks();
+			let cwdDuringConfigure: string | undefined;
+			const chdirSpy = process.chdir as jasmine.Spy;
+			configureSpy.and.callFake(() => {
+				// capture the chdir calls made before configure was invoked
+				cwdDuringConfigure = chdirSpy.calls.mostRecent()?.args[0];
+				return Promise.resolve();
+			});
+
+			await newCmd.handler({ name: "MyProject", framework: "jq", agents: ["claude"], _: ["new"], $0: "new" });
+
+			expect(cwdDuringConfigure).toBe("MyProject");
+			// after configure, should chdir back
+			const allChdirCalls = chdirSpy.calls.allArgs().map((a: string[]) => a[0]);
+			const configureIdx = allChdirCalls.lastIndexOf("MyProject");
+			expect(allChdirCalls[configureIdx + 1]).toBe("..");
+		});
+
+		it("calls configure even when skipInstall is true", async () => {
+			createProjectMocks();
+
+			await newCmd.handler({ name: "Test", framework: "jq", skipInstall: true, agents: ["claude"], _: ["new"], $0: "new" });
+
+			expect(PackageManager.installPackages).not.toHaveBeenCalled();
+			expect(configureSpy).toHaveBeenCalledWith("jq", jasmine.objectContaining({ agents: ["claude"] }));
+		});
+
+		it("does not call configure when project creation fails (bad name)", async () => {
+			spyOn(Util, "error");
+			spyOn(ProjectConfig, "getConfig").and.returnValue(null);
+
+			await newCmd.handler({ name: "1invalid", _: ["new"], $0: "new" });
+
+			expect(configureSpy).not.toHaveBeenCalled();
+		});
+	});
+
+	describe("scaffold project template path", () => {
+		let scaffoldSpy: jasmine.Spy;
+		let generateConfigSpy: jasmine.Spy;
+
+		function createScaffoldMocks(scaffoldResult = true) {
+			scaffoldSpy = jasmine.createSpy("scaffold").and.returnValue(Promise.resolve(scaffoldResult));
+			generateConfigSpy = jasmine.createSpy("generateConfig").and.returnValue({});
+			const mockTemplate = {
+				framework: "blazor",
+				projectType: "igb",
+				scaffold: scaffoldSpy,
+				generateConfig: generateConfigSpy,
+				templatePaths: ["test"]
+			};
+			const mockProjLib = {
+				getProject: () => mockTemplate,
+				projectIds: ["empty"],
+				projectType: "igb",
+				themes: ["bootstrap", "material"]
+			};
+			App.container.set(TEMPLATE_MANAGER, jasmine.createSpyObj("TemplateManager", {
+				getFrameworkById: { id: "blazor" },
+				getProjectLibrary: mockProjLib
+			}));
+			spyOn(Util, "processTemplates").and.returnValue(Promise.resolve(true));
+			spyOn(Util, "gitInit");
+		}
+
+		it("calls scaffold instead of the npm pipeline", async () => {
+			createScaffoldMocks();
+
+			await newCmd.handler({
+				name: "my-blazor", framework: "blazor", theme: "material",
+				hosting: "Auto", variant: "dark", _: ["new"], $0: "new"
+			});
+
+			expect(scaffoldSpy).toHaveBeenCalledWith({
+				name: "my-blazor",
+				theme: "material",
+				skipInstall: false,
+				skipGit: false,
+				extraConfig: { Hosting: "Auto", Variant: "dark" }
+			});
+			expect(generateConfigSpy).not.toHaveBeenCalled();
+			expect(Util.processTemplates).not.toHaveBeenCalled();
+			expect(PackageManager.installPackages).not.toHaveBeenCalled();
+		});
+
+		it("omits unset hosting/variant from extraConfig and never passes a weather flag", async () => {
+			createScaffoldMocks();
+
+			await newCmd.handler({ name: "my-blazor", framework: "blazor", _: ["new"], $0: "new" });
+
+			const options = scaffoldSpy.calls.mostRecent().args[0];
+			expect(options.extraConfig).toEqual({});
+			expect(JSON.stringify(options)).not.toContain("Weather");
+		});
+
+		it("runs configure and gitInit then prints dotnet next-steps on success", async () => {
+			createScaffoldMocks();
+
+			await newCmd.handler({ name: "my-blazor", framework: "blazor", _: ["new"], $0: "new" });
+
+			expect(aiConfig.configure as jasmine.Spy).toHaveBeenCalledWith("blazor", { agents: undefined, assistants: undefined });
+			expect(Util.gitInit).toHaveBeenCalled();
+			expect(Util.log).toHaveBeenCalledWith("  dotnet run --project my-blazor");
+		});
+
+		it("skips gitInit and next-steps when scaffold fails", async () => {
+			createScaffoldMocks(false);
+
+			await newCmd.handler({ name: "my-blazor", framework: "blazor", _: ["new"], $0: "new" });
+
+			expect(aiConfig.configure as jasmine.Spy).not.toHaveBeenCalled();
+			expect(Util.gitInit).not.toHaveBeenCalled();
+			expect(Util.log).not.toHaveBeenCalledWith("  dotnet run --project my-blazor");
+		});
+
+		it("honors skip-install (→ SkipRestore) and skip-git", async () => {
+			createScaffoldMocks();
+
+			await newCmd.handler({
+				name: "my-blazor", framework: "blazor",
+				skipInstall: true, "skip-git": true, _: ["new"], $0: "new"
+			});
+
+			const options = scaffoldSpy.calls.mostRecent().args[0];
+			expect(options.skipInstall).toBeTrue();
+			expect(Util.gitInit).not.toHaveBeenCalled();
+		});
 	});
 });

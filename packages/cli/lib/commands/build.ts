@@ -1,4 +1,4 @@
-import { GoogleAnalytics, PackageManager, ProjectConfig, Util } from "@igniteui/cli-core";
+import { App, BaseTemplateManager, GoogleAnalytics, PackageManager, ProjectConfig, TEMPLATE_MANAGER, Util } from "@igniteui/cli-core";
 import * as fs from "fs";
 import * as path from "path";
 import { BuildCommandType, PositionalArgs } from "./types";
@@ -6,25 +6,23 @@ import { ArgumentsCamelCase } from "yargs";
 
 const command: BuildCommandType = {
 	command: "build",
-	describe: "builds the project",
-	builder: (yargs) => {
-		return yargs.usage(""); // do not show any usage instructions before the commands
-	},
-	templateManager: null,
+	describe: "Builds the project",
+	builder: (yargs) => yargs,
 	async handler(argv: ArgumentsCamelCase<PositionalArgs>) {
 
 		GoogleAnalytics.post({
 			t: "screenview",
 			cd: "Build"
 		});
-		command.build(argv);
+		await command.build();
 	},
 	async build() {
 		Util.log("Build started.");
-		await PackageManager.ensureIgniteUISource(true, command.templateManager);
+		const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
+		await PackageManager.ensureIgniteUISource(true, templateManager);
 
 		if (!ProjectConfig.hasLocalConfig()) {
-			Util.error("Add command is supported only on existing project created with igniteui-cli", "red");
+			Util.error("Build command is supported only on existing project created with igniteui-cli", "red");
 			return;
 		}
 
@@ -40,26 +38,16 @@ const command: BuildCommandType = {
 		});
 
 		await PackageManager.installPackages();
-		if (config.project.projectType === "es6") {
-			return;
-		}
 		if (config.project.theme.includes(".less") || config.project.theme.includes(".sass")) {
-			fs.mkdirSync("./themes");
-			const source = path.join(config.project.igniteuiSource, "/css/themes/", config.project.theme.split(".")[0]);
+			const source = path.join(config.project.igniteuiSource, "css", "themes", config.project.theme.split(".")[0]);
 			const destination = path.join(config.project.sourceRoot, "themes");
 
 			Util.ensureDirectoryExists(destination);
-			if (!Util.isDirectory(source)) {
-				fs.copyFileSync(source, destination);
-				return;
+			if (Util.isDirectory(source)) {
+				fs.cpSync(source, destination, { recursive: true, force: true });
+			} else {
+				fs.copyFileSync(source, path.join(destination, path.basename(source)));
 			}
-
-			const entries = fs.readdirSync(source, { withFileTypes: true });
-			entries.forEach((entry) => {
-				const sourcePath = path.join(source, entry.name);
-				const destinationPath = path.join(destination, entry.name);
-				fs.copyFileSync(sourcePath, destinationPath);
-			});
 		}
 	}
 };
