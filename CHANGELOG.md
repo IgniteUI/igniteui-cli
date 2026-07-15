@@ -1,3 +1,11 @@
+# 15.5.0 (2026-07-15)
+
+## What's Changed
+* **feat(wc, react):** Updated scaffolded Web Components, React, and React Grids package versions. [#1751](https://github.com/IgniteUI/igniteui-cli/pull/1751)
+* **refactor(igc-ts):** Centralized Web Components package version constants used by templates. [#1752](https://github.com/IgniteUI/igniteui-cli/pull/1752)
+* **fix(mcp):** Improved `search_docs` ranking and `get_doc` name resolution for more relevant results. [#1746](https://github.com/IgniteUI/igniteui-cli/pull/1746)
+* **docs(mcp):** Enhanced MCP server tool descriptions for better clarity and guidance. [#1737](https://github.com/IgniteUI/igniteui-cli/pull/1737)
+
 # 15.4.1 (2026-06-26)
 
 ## What's Changed
