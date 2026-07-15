@@ -40,7 +40,7 @@ jobs:
             NPM_TAG=latest
           fi
           echo "NPM_TAG=$NPM_TAG" >> $GITHUB_ENV
-          echo "$NPM_TAG"
+          echo ${NPM_TAG}
 
       - name: Publish packages
         # use npm run as yarn run changes the registry and publishes to https://registry.yarnpkg.com
