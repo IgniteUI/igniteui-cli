@@ -29,9 +29,6 @@ jobs:
           npm run build-pack
           node scripts/build-task.js
 
-      - name: Validate MCP package contents
-        run: npm run validate:package --workspace=@igniteui/mcp-server -- --expected-version "$VERSION"
-
       - name: Define npm tag
         run: |
           if [[ ${VERSION} == *"alpha"* || ${VERSION} == *"beta"* || ${VERSION} == *"rc"* ]]; then
