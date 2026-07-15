@@ -5,7 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 15.5.0 (2026-07-15)
 
-## What's Changed
+### What's Changed
 * **fix(mcp):** Improved `search_docs` ranking and `get_doc` name resolution for more relevant results. [#1746](https://github.com/IgniteUI/igniteui-cli/pull/1746)
 * **docs(mcp):** Enhanced MCP server tool descriptions for better clarity and guidance. [#1737](https://github.com/IgniteUI/igniteui-cli/pull/1737)
 
