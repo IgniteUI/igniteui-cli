@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 15.6.0 (2026-07-30)
+
+### What's Changed
+* **chore(mcp):** Release version alignment for `@igniteui/mcp-server` as part of the 15.6.0 CLI release.
+* No functional MCP server changes in this release.
+
 ## 15.5.0 (2026-07-15)
 
 ### What's Changed
