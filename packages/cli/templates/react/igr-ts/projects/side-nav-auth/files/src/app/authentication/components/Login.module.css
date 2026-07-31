@@ -5,14 +5,6 @@
   padding: 8px 0 0;
 }
 
-.form igc-input {
-  width: 100%;
-}
-
-.form igc-input igc-icon {
-  --ig-icon-size: 1.50rem;
-}
-
 .error {
   margin: 0;
   font-size: .875rem;
@@ -26,45 +18,8 @@
   padding-top: 4px;
 }
 
-.submitBtn {
-  display: block;
-}
-
-.submitBtn::part(base) {
-  width: 100%;
-  min-height: 40px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.linkBtn {
-  align-self: center;
-  color: var(--ig-primary-500);
-  font-size: .875rem;
-  cursor: pointer;
-  text-decoration: underline;
-  text-transform: none;
-}
-
 .socialLogin {
   display: grid;
   gap: 8px;
   padding-top: 16px;
-  border-top: 1px solid var(--ig-gray-300);
 }
-
-.socialBtn {
-  display: block;
-}
-
-.socialBtn::part(base) {
-  width: 100%;
-  min-height: 40px;
-  color: #fff;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.google::part(base)   { background: rgb(255, 19, 74); }
-.facebook::part(base) { background: rgb(19, 119, 213); }
-.microsoft::part(base){ background: rgb(27, 158, 245); }
