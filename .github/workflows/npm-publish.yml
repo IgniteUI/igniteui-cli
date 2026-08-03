@@ -45,3 +45,13 @@ jobs:
       - name: Publish packages
         # use npm run as yarn run changes the registry and publishes to https://registry.yarnpkg.com
         run: npm run deploy ${NPM_TAG}
+					
+      # MCP publishing (works for all package types)
+      - name: Download MCP Publisher
+        run: |
+          curl -L "https://github.com/modelcontextprotocol/registry/releases/download/latest/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
+      - name: Publish to MCP Registry
+        working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+        run: |
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish
