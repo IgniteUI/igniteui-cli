@@ -1,46 +1,40 @@
-# @igniteui/mcp-server
+# Ignite UI MCP Server
 
-MCP server for [Ignite UI](https://www.infragistics.com/products/ignite-ui) — provides AI assistants with component documentation search and retrieval for **Angular**, **React**, **Blazor**, and **Web Components**.
+MCP server for [Ignite UI](https://www.infragistics.com/products/ignite-ui) — gives AI assistants and coding agents accurate component documentation, API reference, and project setup guidance for **Angular**, **React**, **Blazor**, and **Web Components**.
 
-Ships with a bundled SQLite database containing pre-compressed, LLM-optimized documentation for all Ignite UI components.
+Ships fully self-contained: a bundled SQLite database of pre-compressed, LLM-optimized component docs plus pre-built API reference data for all four frameworks. No API keys, no network access, and no additional setup required.
 
-## Installation
+- **Registry name:** `io.github.IgniteUI/mcp-server`
+- **npm package:** [`@igniteui/mcp-server`](https://www.npmjs.com/package/@igniteui/mcp-server)
+- **Transport:** stdio
+- **Requirements:** Node.js 20 or newer
+
+## Why use it
+
+Ignite UI ships four separate component libraries with distinct component names, prop names, event shapes, and binding syntax (`IgxGrid` / `IgrGrid` / `IgbGrid` / `IgcGridComponent`). Assistants working from general training data routinely mix them, producing code that looks right and fails at runtime. This server keeps every lookup scoped to one framework and returns the real, current documentation and API surface for it.
+
+## Quick Start
+
+Run directly with `npx` — no install needed:
+
+```bash
+npx -y @igniteui/mcp-server
+```
+
+Or install globally:
 
 ```bash
 npm install -g @igniteui/mcp-server
-```
-
-Or use directly with `npx`:
-
-```bash
-npx @igniteui/mcp-server
-```
-
-## Running From Source
-
-In order to run the MCP from this repository, git submodules must be initialized first. The repo already includes the submodule entries, but a fresh clone still needs to fetch them locally.
-
-The `blazor/api-docs` submodule is required for local API markdown generation for all four platforms (Angular, React, Web Components, and Blazor).
-
-Recommended first-time setup:
-
-```bash
-cd packages/igniteui-mcp/igniteui-doc-mcp
-git submodule update --init blazor/api-docs
-npm install
-npm run build:docs:all
-npm run build
-```
-
-`npm run build:docs:all` generates the local API markdown artifacts used by the MCP API tools for all four platforms (Angular, React, Web Components, and Blazor). Run it before starting the server.
-
-If you need to refresh submodules to newer upstream commits later, use:
-
-```bash
-git submodule update --remote --merge
+igniteui-mcp
 ```
 
 ## MCP Client Configuration
+
+### Claude Code
+
+```bash
+claude mcp add igniteui -- npx -y @igniteui/mcp-server
+```
 
 ### VS Code
 
@@ -49,87 +43,123 @@ Add to `.vscode/mcp.json`:
 ```json
 {
   "servers": {
-    "igniteui-cli": {
+    "igniteui": {
+      "type": "stdio",
       "command": "npx",
-      "args": ["-y", "igniteui-cli", "mcp"]
+      "args": ["-y", "@igniteui/mcp-server"]
     }
   }
 }
 ```
 
 ### Claude Desktop
-If Ignite UI CLI is globally installed you can configure the MCP like this:
 
 Add to `claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
-    "igniteui-cli": {
+    "igniteui": {
       "command": "npx",
-      "args": ["-y", "igniteui-cli", "mcp"]
+      "args": ["-y", "@igniteui/mcp-server"]
     }
   }
 }
 ```
-### Cursor
-If Ignite UI CLI is globally installed you can configure the MCP like this:
 
-Add to Cursor MCP settings:
+### Cursor
+
+Add to your Cursor MCP settings:
 
 ```json
 {
   "mcpServers": {
-    "igniteui-cli": {
+    "igniteui": {
       "command": "npx",
-      "args": ["-y", "igniteui-cli", "mcp"]
+      "args": ["-y", "@igniteui/mcp-server"]
     }
   }
+}
+```
+
+### Via the Ignite UI CLI
+
+If you already use [`igniteui-cli`](https://www.npmjs.com/package/igniteui-cli), it bundles this server and can launch it for you — substitute this command in any of the configurations above:
+
+```json
+{
+  "command": "npx",
+  "args": ["-y", "igniteui-cli", "mcp"]
 }
 ```
 
 ## Available Tools
 
-All tools require a `framework` parameter: `angular`, `react`, `blazor`, or `webcomponents`.
+Every tool is scoped to a single framework — `angular`, `react`, `blazor`, or `webcomponents`. Documentation tools take a `framework` parameter; API reference tools take a `platform` parameter.
 
-| Tool | Description |
-|------|-------------|
-| `list_components` | List available Ignite UI component docs. Filter by framework and optional keyword match against filename, component name, keywords, or summary. |
-| `get_doc` | Return the full markdown content of a specific component doc by name (e.g., `grid-editing`, `accordion`). |
-| `search_docs` | Full-text search across Ignite UI docs for a specific framework. Returns top 20 results with excerpt snippets. Supports prefix matching (e.g., `grid*`). |
-| `search_api` | Search Ignite UI API entries by keyword, feature name, or partial component name. |
-| `get_api_reference` | Return the full API reference for a specific Ignite UI component or class by exact name. |
-| `get_project_setup_guide` | Returns setup guides for creating a new Ignite UI project. For Angular/React/Web Components: CLI scaffolding instructions. For Blazor: `dotnet new` + NuGet setup guide. |
+| Tool | Parameters | Description |
+|------|-----------|-------------|
+| `list_components` | `framework` (required), `filter` | List available Ignite UI component docs. `filter` is a case-insensitive substring match against filename, component name, keywords, and summary. Returns the full catalog when omitted — no pagination. |
+| `get_doc` | `framework` (required), `name` (required) | Return the full markdown content of one component doc by name, kebab-case without `.md` (e.g. `grid-editing`, `accordion`). Bare grid feature names resolve automatically (`sorting` → `grid-sorting`), and common aliases are handled (`virtual-scroll` → `grid-virtualization`). |
+| `search_docs` | `framework` (required), `query` (required) | Full-text search across the docs for one framework. Returns up to 20 title- and keyword-weighted results with highlighted excerpts. Multi-word queries are implicit AND; trailing `*` does prefix matching (`grid*`); hyphenated terms match as phrases. |
+| `search_api` | `query` (required), `platform` | Discover API entries by keyword, feature name, or partial component name. Returns up to 10 ranked results with framework tag, API type, and excerpt. Omit `platform` to search all four frameworks at once. |
+| `get_api_reference` | `platform` (required), `component` (required), `section`, `member` | Return the full API reference for an exact component or class name (case-insensitive). Narrow the response with `section` (`properties`, `methods`, `events`, `all` — default `all`) or `member` to fetch a single property/method/event. `member` takes precedence over `section`. |
+| `get_project_setup_guide` | `framework` (optional) | Setup guidance for a new Ignite UI project. Angular, React, and Web Components return Ignite UI CLI scaffolding steps; Blazor returns `dotnet new` + NuGet instructions. Read-only — creates no files and runs no commands. |
+
+All tools are read-only and do not reach outside the server in the default local mode.
 
 ## Available Prompts
 
 | Prompt | Description |
 |--------|-------------|
-| `igniteui-usage-guide` | Instructions for using Ignite UI tools — framework detection, documentation lookup, and project setup. |
+| `igniteui-usage-guide` | Instructions for using the Ignite UI tools — framework detection, documentation lookup, API reference, and project setup. |
 
 ## Framework Detection
 
-The server detects the Ignite UI framework from component prefixes in your code:
+The server detects the target framework from component prefixes in your code:
 
-| Framework | Prefix | Example | Package |
-|-----------|--------|---------|---------|
-| Angular | `Igx` | `IgxGrid`, `IgxCombo` | `igniteui-angular` |
-| React | `Igr` | `IgrGrid`, `IgrCombo` | `igniteui-react` |
-| Blazor | `Igb` | `IgbGrid`, `IgbCombo` | `IgniteUI.Blazor` |
-| Web Components | `Igc` + `Component` | `IgcGridComponent` | `igniteui-webcomponents` |
+| Framework | Value | Prefix | Example | Package |
+|-----------|-------|--------|---------|---------|
+| Angular | `angular` | `Igx` | `IgxGrid`, `IgxCombo` | `igniteui-angular` |
+| React | `react` | `Igr` | `IgrGrid`, `IgrCombo` | `igniteui-react` |
+| Blazor | `blazor` | `Igb` | `IgbGrid`, `IgbCombo` | `IgniteUI.Blazor` |
+| Web Components | `webcomponents` | `Igc` + `Component` suffix | `IgcGridComponent` | `igniteui-webcomponents` |
 
 File extensions also help: `.razor` → Blazor, `.tsx` → React, `.ts` + `.html` → Angular or Web Components.
+
+## Modes
+
+### Local (default)
+
+Fully self-contained — no network access or credentials required. Serves the bundled SQLite database with FTS4 full-text search via [sql.js](https://github.com/sql-js/sql.js/) (WebAssembly), and the API reference data shipped alongside it.
+
+### Remote
+
+Proxies documentation requests to a backend API. Requires the `--remote` flag with a URL:
+
+```bash
+igniteui-mcp --remote https://your-backend-url.com
+```
+
+The URL may also come from an environment variable, but the flag is still required to activate remote mode:
+
+```bash
+IGNITEUI_MCP_DOCS_BACKEND_URL=https://your-backend-url.com igniteui-mcp --remote
+```
+
+API reference tools always read the bundled local data in both modes.
 
 ## CLI Options
 
 ```bash
-# Local mode (default) — uses bundled SQLite database
+# Local mode (default) — bundled SQLite database
 igniteui-mcp
 
-# Remote mode — proxies to a backend API
+# Remote mode — proxy documentation requests to a backend
 igniteui-mcp --remote https://your-backend-url.com
 
-# Enable debug logging
+# Debug logging — appends tool inputs, output previews, and timings to mcp-server.log
+# next to the installed dist/index.js
 igniteui-mcp --debug
 ```
 
@@ -137,24 +167,34 @@ igniteui-mcp --debug
 
 | Variable | Description |
 |----------|-------------|
-| `DB_PATH` | Custom path to the SQLite database file |
-| `IGNITEUI_MCP_DOCS_BACKEND_URL` | Backend URL (used with `--remote` flag when no URL argument is provided) |
+| `DB_PATH` | Override the path to the SQLite database file. Defaults to the bundled `dist/igniteui-docs.db`. |
+| `IGNITEUI_MCP_DOCS_BACKEND_URL` | Backend URL used with `--remote` when no URL argument is given. Does not enable remote mode on its own. |
 
-## Modes
+## Building From Source
 
-### Local (default)
-
-Fully self-contained — no network access required. Uses a bundled SQLite database with FTS4 full-text search powered by [sql.js](https://github.com/sql-js/sql.js/) (WebAssembly).
-
-When running from a source checkout, make sure you have already run `npm run build:docs:all` before starting the MCP so the local API markdowns are present.
-
-### Remote
-
-Proxies documentation requests to a backend API. Requires the `--remote` flag with a URL argument:
+The bundled database and the pre-built API reference data are committed to the repository, so a source checkout needs no submodules or API keys to run the server:
 
 ```bash
-igniteui-mcp --remote https://your-backend-url.com
+git clone https://github.com/IgniteUI/igniteui-cli.git
+cd igniteui-cli/packages/igniteui-mcp/igniteui-doc-mcp
+npm install
+npm run build     # tsc + copy db/igniteui-docs.db and setup guides into dist/
+npm start         # local mode
 ```
+
+Test with the MCP Inspector:
+
+```bash
+npm run inspector
+```
+
+Regenerating the documentation database or the API reference data is a maintainer task requiring git submodules and an `OPENAI_API_KEY`. See the pipeline scripts in `package.json` (`build:docs:*`, `pipeline:*`, `build:db`) and `docs/knowledgebase.md` for details.
+
+## Links
+
+- [Ignite UI](https://www.infragistics.com/products/ignite-ui)
+- [Source repository](https://github.com/IgniteUI/igniteui-cli)
+- [Issue tracker](https://github.com/IgniteUI/igniteui-cli/issues)
 
 Or provide the URL via environment variable:
 
