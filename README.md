@@ -7,7 +7,7 @@
 [![npm version](https://badge.fury.io/js/igniteui-cli.svg)](https://badge.fury.io/js/igniteui-cli)
 [![Discord](https://img.shields.io/discord/836634487483269200?logo=discord&logoColor=ffffff)](https://discord.gg/39MjrTRqds)
 
-Quickly create projects including [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular) and [Ignite UI for jQuery](https://www.infragistics.com/products/ignite-ui) components for a variety of frameworks.
+Quickly create projects, including [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular) and [Ignite UI for Web Components](https://www.infragistics.com/products/ignite-ui-web-components), for a variety of frameworks.
 
 ## Overview
 ### Features:
@@ -38,7 +38,7 @@ This monorepo contains several packages that combine into the `igniteui-cli`:
 | [@igniteui/cli-core](https://www.npmjs.com/package/@igniteui/cli-core) | Contains the core functionality of the cli tool | [packages/core](./packages/core) |
 | [@igniteui/angular-templates](https://www.npmjs.com/package/@igniteui/angular-templates) | Contains the template definitions for Angular components | [packages/igx-templates](./packages/igx-templates) |
 | [@igniteui/angular-schematics](https://www.npmjs.com/package/@igniteui/angular-schematics) | IgniteUI CLI implementation to be used with Angular CLI's schematics engine | [packages/ng-schematics](./packages/ng-schematics) |
-| [igniteui-cli](https://www.npmjs.com/package/igniteui-cli) | Standalone IgniteUI CLI tool for React, jQuery and Angular | [packages/cli](./packages/cli) |
+| [igniteui-cli](https://www.npmjs.com/package/igniteui-cli) | Standalone IgniteUI CLI tool for React, Blazor, Angular, jQuery and Web Components | [packages/cli](./packages/cli) |
 | [@igniteui/mcp-server](https://www.npmjs.com/package/@igniteui/mcp-server) | MCP server providing AI assistants with Ignite UI documentation and API reference | [packages/igniteui-mcp/igniteui-doc-mcp](./packages/igniteui-mcp/igniteui-doc-mcp) |
 
 ## Table of Contents

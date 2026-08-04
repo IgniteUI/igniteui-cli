@@ -17,6 +17,9 @@
   "bin": {
     "igniteui-mcp": "./dist/index.js"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "publishConfig": {
     "access": "public"
   },
