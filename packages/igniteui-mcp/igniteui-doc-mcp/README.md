@@ -196,12 +196,6 @@ Regenerating the documentation database or the API reference data is a maintaine
 - [Source repository](https://github.com/IgniteUI/igniteui-cli)
 - [Issue tracker](https://github.com/IgniteUI/igniteui-cli/issues)
 
-Or provide the URL via environment variable:
-
-```bash
-IGNITEUI_MCP_DOCS_BACKEND_URL=https://your-backend-url.com igniteui-mcp --remote
-```
-
 ## License
 
 MIT © [Infragistics](https://www.infragistics.com/)
