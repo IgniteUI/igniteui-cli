@@ -95,7 +95,7 @@ If a column is set to be resizable, you can drag the right size of the column he
 In the sample below you can try out the different column properties and how they reflect in the rendered grid.
 
 ```typescript
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IgxButtonDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
@@ -125,6 +125,7 @@ defineComponents(IgcRatingComponent);
         IgxSwitchComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true
 })
 export class GridLiteColumnConfigDynamicComponent implements OnInit {

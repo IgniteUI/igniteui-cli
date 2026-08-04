@@ -16,6 +16,39 @@ The Ignite UI for Web Components Badge is a component used in conjunction with a
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+.wrapper {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  margin-block: 1rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--ig-gray-300);
+  border-radius: .25rem;
+}
+
+igc-avatar {
+  @container style(--ig-theme: indigo) {
+    --ig-size: var(--ig-size-large);
+  }
+
+  anchor-name: --avatar;
+}
+
+igc-badge {
+  --size: .75rem;
+
+  position: absolute;
+  inset-block-end: anchor(--avatar bottom);
+  inset-inline-end: anchor(--avatar right);
+}
+
+span {
+  display: block;
+  font-weight: 600;
+}
 ```
 
 <div class="divider"></div>

@@ -11,7 +11,7 @@ _premium: true
 With deferred grid column resizing, the user will see a temporary resize indicator while the Angular drag resizing operation is in effect. The new grid column width is applied once the drag operation has ended.
 ## Angular Hierarchical Grid Column Resizing Example
 ```typescript
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { RemoteValuesService } from '../../services/remoteValues.service';
@@ -23,6 +23,7 @@ import { IgxSparklineCoreModule } from 'igniteui-angular-charts';
     styleUrls: ['./hierarchical-grid-resizing.component.scss'],
     templateUrl: 'hierarchical-grid-resizing.component.html',
     providers: [RemoteValuesService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxSparklineCoreModule, IgxRowIslandComponent]
 })
 
@@ -209,7 +210,7 @@ Each column can be set to auto-size on initialization by setting `width` to 'aut
 When the column is first initialized in the view it resolves its width to the size of the longest visible cell or header. Note that cells that are outside of the visible rows are not included.
 This approach is more performance optimized than auto-sizing post initialization and is recommended especially in cases where you need to auto-size a large number of columns.
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CUSTOMERS } from '../../data/hierarchical-data';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -218,6 +219,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'hierarchical-grid-column-autosizing',
     styleUrls: ['./hgrid-column-autosizing.component.scss'],
     templateUrl: './hgrid-column-autosizing.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent]
 })
 
@@ -303,7 +305,7 @@ The last step is to **include** the component mixins with its respective theme:
 ```
 ### Demo
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -313,6 +315,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-resize-line-styling',
     styleUrls: ['./hierarchical-grid-resize-line-styling.component.scss'],
     templateUrl: './hierarchical-grid-resize-line-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 export class HGridResizeLineStylingComponent {
@@ -363,15 +366,15 @@ export class HGridResizeLineStylingComponent {
 </div>
 ```
 ```scss
-@use "layout.scss";
-@use "igniteui-angular/theming" as *;
+@use 'layout.scss';
+@use 'igniteui-angular/theming' as *;
 
 $custom-grid-theme: grid-theme(
-  $resize-line-color: #0288d1
+	$resize-line-color: #07ea07
 );
 
 :host {
-  @include tokens($custom-grid-theme);
+	@include tokens($custom-grid-theme);
 }
 ```
 >[!NOTE]

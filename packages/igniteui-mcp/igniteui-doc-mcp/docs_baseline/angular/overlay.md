@@ -18,7 +18,7 @@ The overlay service is fully integrated in the toggle directive.
 
 
 ```typescript
-import { Component, OnDestroy, ViewContainerRef, inject } from '@angular/core';
+import { Component, OnDestroy, ViewContainerRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxOverlayService } from 'igniteui-angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { MyDynamicCardComponent} from '../overlay-dynamic-card/overlay-dynamic-card.component';
@@ -26,6 +26,7 @@ import { MyDynamicCardComponent} from '../overlay-dynamic-card/overlay-dynamic-c
     selector: 'app-overlay-sample',
     templateUrl: `./overlay-main-sample-1.component.html`,
     styleUrls: [`./overlay-main-sample-1.component.scss`],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective]
 })
 export class OverlaySampleMain1Component implements OnDestroy {
@@ -190,7 +191,7 @@ In the below demo, we can pass the [IgxCard](card.md#angular-card-example) compo
 
 
 ```typescript
-import { Component, OnDestroy, ViewContainerRef, inject } from '@angular/core';
+import { Component, OnDestroy, ViewContainerRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxOverlayService } from 'igniteui-angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { MyDynamicCardComponent} from '../overlay-dynamic-card/overlay-dynamic-card.component';
@@ -198,6 +199,7 @@ import { MyDynamicCardComponent} from '../overlay-dynamic-card/overlay-dynamic-c
     selector: 'app-overlay-sample',
     templateUrl: `./overlay-main-sample-1.component.html`,
     styleUrls: [`./overlay-main-sample-1.component.scss`],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective]
 })
 export class OverlaySampleMain1Component implements OnDestroy {
@@ -307,7 +309,7 @@ const connectedOverlaySettings = IgxOverlayService.createRelativeOverlaySettings
 
 
 ```typescript
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AbsolutePosition, IgxOverlayService, OverlaySettings, RelativePosition, RelativePositionStrategy } from 'igniteui-angular/core';
 import { IButtonGroupEventArgs, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -321,6 +323,7 @@ import { NgTemplateOutlet } from '@angular/common';
     styleUrls: ['./overlay-preset-settings-sample.component.scss'],
     templateUrl: './overlay-preset-settings-sample.component.html',
     providers: [IgxOverlayService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconComponent, NgTemplateOutlet, IgxButtonGroupComponent, IgxButtonDirective]
 })
 export class OverlayPresetSettingsSampleComponent implements OnInit, OnDestroy {
@@ -711,7 +714,7 @@ Using the [`overlaySettings`](mcp:get_api_reference?platform=angular&component=O
 
 
 ```typescript
-import { Component, ElementRef, OnDestroy, ViewChild, ViewContainerRef, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild, ViewContainerRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ConnectedPositioningStrategy, IgxOverlayService } from 'igniteui-angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { CardSample1Component } from '../../../layouts/card/card-sample-1/card-sample-1.component';
@@ -720,6 +723,7 @@ import { CardSample1Component } from '../../../layouts/card/card-sample-1/card-s
     selector: 'app-overlay-sample',
     templateUrl: `./overlay-main-sample-2.component.html`,
     styleUrls: [`./overlay-main-sample-2.component.scss`],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective]
 })
 export class OverlaySampleMain2Component implements OnDestroy {

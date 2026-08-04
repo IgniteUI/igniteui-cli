@@ -12,7 +12,7 @@ _tocName: Ignite UI CLI
 
 Install the Ignite UI CLI globally using npm:
 
-```cmd
+```bash
 npm install -g igniteui-cli
 ```
 
@@ -76,6 +76,48 @@ The following arguments are available when creating a project:
 | `--template`     |        | The project template to use. See the template tables above for available options per framework.                      |
 | `--skip-git`     | `--sg` | Skips automatic Git repository initialization. Uses the global `skip-git` config value if omitted.                   |
 | `--skip-install` | `--si` | Skips npm package installation on project creation.                                                                  |
+| `--assistants`   |        | Configures MCP servers for the specified AI coding assistants. Values: `generic`, `vscode`, `cursor`, `gemini`, `junie`, `none`. |
+| `--agents`       |        | Copies Agent Skill files into the specified agents' skill directories. Values: `generic`, `claude`, `copilot`, `cursor`, `codex`, `windsurf`, `gemini`, `junie`, `none`. |
+
+### AI Configuration During Project Creation
+
+When `--agents` and `--assistants` flags are not provided, `ig new` prompts you to configure AI tooling as part of the project creation flow. After scaffolding the project, the wizard displays the following prompts:
+
+```bash
+? Which AI coding assistants do you want to configure MCP servers for? (Press <space> to select)
+❯◉ VS Code (GitHub Copilot)
+ ◉ Cursor
+ ◯ Generic (.mcp.json)
+ ◯ Gemini CLI
+ ◯ JetBrains (AI Assistant)
+ ◯ None
+```
+
+```bash
+? Which AI agents should receive skill files? (Press <space> to select)
+❯◉ GitHub Copilot (.agents/skills/)
+ ◉ Claude (.claude/skills/)
+ ◉ Cursor (.cursor/rules/)
+ ◯ Codex (.codex/)
+ ◯ Windsurf (.windsurfrules)
+ ◯ Gemini CLI (.gemini/)
+ ◯ JetBrains Junie (.junie/guidelines/)
+ ◯ None
+```
+
+Navigate through the options using the arrow keys, toggle selections with SPACE, and confirm with ENTER.
+
+To skip the AI configuration prompts entirely during project creation, pass `--assistants none --agents none`:
+
+```cmd
+ig new my-app --framework=react --type=igr-ts --template=top-nav --assistants none --agents none
+```
+
+To auto-configure AI tools without prompting, specify the desired values:
+
+```cmd
+ig new my-app --framework=react --type=igr-ts --template=top-nav --assistants vscode --agents copilot claude
+```
 
 ## Add a Component Template
 
@@ -164,19 +206,19 @@ The Ignite UI CLI includes a built-in **MCP (Model Context Protocol) server** th
 
 The CLI MCP server starts via `npx` without requiring a global install:
 
-```bash
+```cmd
 npx -y igniteui-cli mcp
 ```
 
 Or, if you have Ignite UI CLI installed globally:
 
-```bash
+```cmd
 ig mcp
 ```
 
 ### Quick Setup with `ig ai-config`
 
-To configure Ignite UI for Web Components Agent Skills and both MCP servers in a single step, run the following from your project root after installing Ignite UI for Web Components packages:
+The `ai-config` command configures MCP servers, copies framework-specific skill files into each agent's skills directory, and sets up instruction files - all in a single step. Run it from your project root:
 
 ```cmd
 npx igniteui-cli ai-config
@@ -188,7 +230,63 @@ If you have the CLI installed globally:
 ig ai-config
 ```
 
-This copies Ignite UI for Web Components Agent Skills into `.claude/skills/` and writes the full Ignite UI MCP server configuration, including the CLI and Theming servers, to `.vscode/mcp.json`. If the files already exist and are up-to-date, the command is a no-op. For AI clients other than VS Code, use the manual configuration below.
+> [!NOTE]
+> Without a version pin, `npx` may pull an older CLI version that does not recognize the `ai-config` subcommand and will instead launch an interactive project-creation prompt, scaffolding a new project inside your existing one. Make sure that you have installed CLI version 16.x.
+
+#### Interactive Mode
+
+If no parameters are provided, the command enters interactive mode. You are first prompted to select which AI coding assistants should receive MCP server configuration:
+
+```bash
+? Which AI coding assistants do you want to configure MCP servers for? (Press <space> to select)
+❯◉ VS Code (GitHub Copilot)     - writes .vscode/mcp.json
+ ◉ Cursor                      - writes .cursor/mcp.json
+ ◯ Generic (.mcp.json)         - writes .mcp.json
+ ◯ Gemini CLI                  - writes .gemini/settings.json
+ ◯ JetBrains (AI Assistant)    - writes .junie/mcp.json
+ ◯ None
+```
+
+Next, you are prompted to select which AI agents should receive skill files:
+
+```bash
+? Which AI agents should receive skill files? (Press <space> to select)
+❯◉ GitHub Copilot (.agents/skills/) - copies skills to .agents/skills/
+ ◉ Claude (.claude/skills/)      - copies skills to .claude/skills/
+ ◉ Cursor (.cursor/rules/)       - copies skills to .cursor/rules/
+ ◯ Codex (.codex/)               - copies skills to .codex/
+ ◯ Windsurf (.windsurfrules)     - copies skills to .windsurfrules/
+ ◯ Gemini CLI (.gemini/)         - copies skills to .gemini/
+ ◯ JetBrains Junie (.junie/)     - copies skills to .junie/guidelines/
+ ◯ None
+```
+
+Navigate through the options using the arrow keys, toggle selections with SPACE, and confirm with ENTER.
+
+#### Non-Interactive Mode
+
+Use `--assistants` to choose which coding assistants receive MCP config and `--agents` to choose which agents receive skill files:
+
+```cmd
+ig ai-config --assistants vscode --agents copilot
+```
+
+Target multiple assistants and agents in a single run:
+
+```cmd
+ig ai-config --assistants generic vscode --agents claude copilot cursor
+```
+
+| Flag | Values | Default |
+|:-----|:-------|:--------|
+| `--assistants` | `generic`, `vscode`, `cursor`, `gemini`, `junie`, `none` | Prompted interactively |
+| `--agents` | `generic`, `claude`, `copilot`, `cursor`, `codex`, `windsurf`, `gemini`, `junie`, `none` | Prompted interactively |
+
+#### Start the Servers
+
+After the command finishes, start the MCP servers in your AI client. The servers are configured but not yet running - the client needs to launch each server before its tools are available to the agent.
+
+**VS Code with GitHub Copilot:** Open `.vscode/mcp.json`. VS Code displays an inline **Start** button above each server entry. Click **Start** for both `igniteui` and `igniteui-theming`. Once started, VS Code shows the available tool count next to each server (for example, _"13 tools | 1 prompt"_). Alternatively, run **MCP: List Servers** from the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`), select each server, and choose **Start**.
 
 For full setup instructions across all AI clients and Agent Skills wiring, see [Agent Skills](./ai/skills.md) and [Ignite UI CLI MCP](./ai/cli-mcp.md).
 
@@ -246,5 +344,5 @@ A full list of available Ignite UI CLI commands is maintained on the [Ignite UI 
 | [ig test](https://github.com/IgniteUI/igniteui-cli/wiki/test)         |       | Executes the tests for the current project.                                                                                                                              |
 | ig upgrade-packages                                                   |       | Upgrades Ignite UI packages in the project from Trial to Licensed.                                                                                                       |
 | ig mcp                                                                |       | Starts the built-in MCP server for connecting AI coding assistants to Ignite UI for Web Components component documentation.                                                             |
-| ig ai-config                                                          |       | Copies Ignite UI for Web Components Agent Skills into `.claude/skills/` and writes Ignite UI MCP server configuration to `.vscode/mcp.json`. Run once per project.                      |
+| [ig ai-config](https://github.com/IgniteUI/igniteui-cli/wiki/ai-config)                                                        |       | Configures MCP servers and copies Agent Skills into each agent's skills directory. Supports `--assistants` and `--agents` flags or interactive mode.                      |
 | ig version                                                            | -v    | Shows the Ignite UI CLI version installed locally, or globally if no local installation is found.                                                                        |

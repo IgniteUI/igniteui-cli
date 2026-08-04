@@ -11,7 +11,7 @@ In Ignite UI for Angular Grid, **RowDrag** is initialized on the root `igx-grid`
 ## Angular Grid Row Drag Example
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -28,6 +28,7 @@ enum DragIcon {
     selector: 'app-grid-row-drag-base-sample',
     styleUrls: ['./grid-row-drag-base.component.scss'],
     templateUrl: 'grid-row-drag-base.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxDropDirective]
 })
 
@@ -264,7 +265,7 @@ The drag ghost can be templated using the `IgxRowDragGhost` directive, applied t
 The result of the configuration can be seem below in a `igx-grid` with row dragging and multiple selection enabled. The demo shows the count of the currently dragged rows:
 #### Example Demo
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxRowDragGhostDirective } from 'igniteui-angular/grids/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -275,6 +276,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-multiple-row-drag',
     styleUrls: ['./grid-multiple-row-drag.component.scss'],
     templateUrl: './grid-multiple-row-drag.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowDragGhostDirective, IgxIconComponent, IgxDropDirective]
 })
 export class GridMultipleRowDragComponent  {
@@ -450,7 +452,7 @@ The result of the configuration can be seem below:
 #### Example Demo
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, IgxDragIndicatorIconDirective } from 'igniteui-angular/grids/core';
@@ -468,6 +470,7 @@ enum DragIcon {
     selector: 'app-grid-row-drag-to-grid-sample',
     styleUrls: ['./grid-row-drag-to-grid.component.scss'],
     templateUrl: 'grid-row-drag-to-grid.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxDragIndicatorIconDirective, IgxIconComponent, IgxDropDirective]
 })
 
@@ -572,7 +575,7 @@ The following demo demonstrates how to use row drag event information to change 
 Try to drag moons from the grid and drop them to their corresponding planets. Row drag ghost background is dynamically changed, depending on the hovered planet. If you succeed then the row in the grid will be selected and dragging will be disabled for it. Clicking planets will give you useful information.
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, ViewChildren } from '@angular/core';
+import { Component, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { IgxColumnComponent, RowType } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxDropDirective } from 'igniteui-angular/directives';
@@ -591,6 +594,7 @@ enum HoverClassList {
     selector: 'app-grid-row-drag-sample',
     styleUrls: ['./grid-row-drag.component.scss'],
     templateUrl: 'grid-row-drag.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, PlanetComponent, IgxDropDirective]
 })
 
@@ -791,7 +795,7 @@ export class GridRowReorderComponent {
 With these few easy steps, you've configured a grid that allows reordering rows via drag/drop! You can see the above code in action in the following demo.
 Holding onto the drag icon will allow you to move a row anywhere in the grid:
 ```typescript
-import { Component, QueryList, ViewChild } from '@angular/core';
+import { Component, QueryList, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, IgxRowDirective, RowType } from 'igniteui-angular/grids/core';
 import { IgxDropDirective } from 'igniteui-angular/directives';
@@ -802,6 +806,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-row-reorder-sample',
     styleUrls: ['grid-row-reorder.scss'],
     templateUrl: 'grid-row-reorder.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxDropDirective, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class GridRowReorderComponent {
@@ -1036,7 +1041,7 @@ class MyGridScrollComponent {
 ```
 Following is the example of both scenarios described above - showing a drop indicator and scrolling the viewport when border's edge is reached.
 ```typescript
-import { Component, ViewChild, AfterViewInit, OnDestroy, Renderer2, inject } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnDestroy, Renderer2, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IDragMoveEventArgs, IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IRowDragStartEventArgs, IgxColumnComponent, IgxRowDirective } from 'igniteui-angular/grids/core';
@@ -1050,6 +1055,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-drop-indicator',
     styleUrls: ['grid-drop-indicator.scss'],
     templateUrl: 'grid-drop-indicator.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxDropDirective, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class GridDropIndicatorComponent implements AfterViewInit, OnDestroy {

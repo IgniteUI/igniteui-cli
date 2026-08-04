@@ -58,7 +58,7 @@ In the sample below, the grid has column auto-generation enabled. When you click
 the column collection is reset, and a new data source is bound to the grid.
 
 ```typescript
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GridLiteDataService, ProductInfo, UserSimple } from '../grid-lite-data.service';
 import { IgxGridLiteComponent, IgxGridLiteColumnComponent } from 'igniteui-angular/grids/lite';
@@ -68,6 +68,7 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
   selector: 'app-grid-lite-data-binding-dynamic',
   templateUrl: './grid-lite-data-binding-dynamic.component.html',
   styleUrls: ['./grid-lite-data-binding-dynamic.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
     IgxGridLiteComponent,

@@ -121,7 +121,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Angular Point Chart with Single Series
@@ -221,7 +220,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -332,7 +330,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -447,7 +444,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 

@@ -276,8 +276,11 @@ igc-avatar::part(base) {
     gap: 10px;
 }
 
+igc-avatar {
+    --ig-avatar-background: var(--ig-success-100);
+}
+
 igc-avatar::part(base) {
-    background: var(--ig-success-100);
     border: 2px solid var(--ig-error-500);
 }
 

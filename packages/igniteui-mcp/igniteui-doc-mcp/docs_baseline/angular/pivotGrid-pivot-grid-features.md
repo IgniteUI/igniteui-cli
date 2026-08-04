@@ -23,7 +23,7 @@ The pivot and flat grid component classes inherit from a common base and thus sh
 The Pivot Grid component has additional features and functionalities related to its dimensions as described below.
 
 ```typescript
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 
 import { IPivotConfiguration, IgxPivotDateDimension, IgxPivotNumericAggregate, PivotAggregation } from 'igniteui-angular/grids/core';
 import { FilteringExpressionsTree, FilteringLogic, IgxStringFilteringOperand } from 'igniteui-angular/core';
@@ -61,6 +61,7 @@ export class IgxTotalSaleAggregate {
     selector: 'app-pivot-features-sample',
     styleUrls: ['./pivot-features.component.scss'],
     templateUrl: './pivot-features.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxPivotGridComponent, IgxPivotDataSelectorComponent]
 })
 export class PivotFeaturesComponent {
@@ -357,7 +358,7 @@ public pivotUI: IPivotUISettings = { rowLayout: PivotRowLayoutType.Horizontal, h
 > The row summary related options - `horizontalSummary` and  `horizontalSummariesPosition` are applicable only for the `Horizontal` layout mode.
 
 ```typescript
-import { Component, ViewChild } from "@angular/core";
+import { Component, ViewChild, ChangeDetectionStrategy } from "@angular/core";
 
 import { IPivotConfiguration, IPivotUISettings, IgxPivotDateDimension, IgxPivotNumericAggregate, PivotAggregation, PivotRowLayoutType, PivotSummaryPosition } from 'igniteui-angular/grids/core';
 import { FilteringExpressionsTree, FilteringLogic, IgxStringFilteringOperand } from 'igniteui-angular/core';
@@ -397,6 +398,7 @@ export class IgxTotalSaleAggregate {
     selector: 'app-pivot-layout-sample',
     styleUrls: ['./pivot-layout.component.scss'],
     templateUrl: './pivot-layout.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, IgxPivotGridComponent]
 })
 export class PivotGridLayoutComponent {

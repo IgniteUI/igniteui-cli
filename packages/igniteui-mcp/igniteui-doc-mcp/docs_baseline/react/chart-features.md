@@ -731,8 +731,8 @@ export default class Sample extends React.Component<any, any> {
                         label="Marker Type"
                         shouldOverrideDefaultEditor="true"
                         valueType="EnumValue"
-                        dropDownValues={["Circle", "Automatic", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "None"]}
-                        dropDownNames={["Circle", "Automatic", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "None"]}
+                        dropDownValues={["Circle", "Checkmark", "Automatic", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "None"]}
+                        dropDownNames={["Circle", "Checkmark", "Automatic", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "None"]}
                         primitiveValue="Circle"
                         changed={this.editorChangeUpdateMarkerType}>
                     </IgrPropertyEditorPropertyDescription>

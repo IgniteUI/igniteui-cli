@@ -1,0 +1,97 @@
+# Ignite UI for React v17.5.0 — Full API Reference
+
+> Complete API reference for the Ignite UI for React package (17.5.0). This file lists all public classes, interfaces, enumerations, type aliases, functions, and variables with their signatures, parameters, and descriptions.
+
+Platform: React
+Package: igniteui-react
+Version: 17.5.0
+
+## Classes
+
+### [IgrDataGrid](https://www.infragistics.com/api/react/igniteui-react/17.5.0/classes/IgrDataGrid)
+Legacy data grid component.
+
+- **rows**: `any[]` — The row data for the grid.
+
+### [IgrPieChart](https://www.infragistics.com/api/react/igniteui-react/17.5.0/classes/IgrPieChart)
+A pie chart component.
+
+
+### [IgrTreeView](https://www.infragistics.com/api/react/igniteui-react/17.5.0/classes/IgrTreeView)
+A tree view component for hierarchical data.
+
+
+## Interfaces
+
+### [DataGridProps](https://www.infragistics.com/api/react/igniteui-react/17.5.0/interfaces/DataGridProps)
+Properties for the DataGrid component.
+
+- **autoGenerateColumns**: `boolean`
+
+### [PieChartProps](https://www.infragistics.com/api/react/igniteui-react/17.5.0/interfaces/PieChartProps)
+Properties for the PieChart component.
+
+
+### [TreeViewProps](https://www.infragistics.com/api/react/igniteui-react/17.5.0/interfaces/TreeViewProps)
+Properties for the TreeView component.
+
+
+## Enumerations
+
+### [DataGridMode](https://www.infragistics.com/api/react/igniteui-react/17.5.0/enums/DataGridMode)
+Data grid display modes.
+
+- **Standard** = "standard"
+- **Compact** = "compact"
+
+### [ChartLegendPosition](https://www.infragistics.com/api/react/igniteui-react/17.5.0/enums/ChartLegendPosition)
+Chart legend position options.
+
+- **Top** = "top"
+
+### [TreeNodeState](https://www.infragistics.com/api/react/igniteui-react/17.5.0/enums/TreeNodeState)
+Tree node state values.
+
+- **Expanded** = 1
+
+## Type Aliases
+
+### [GridSettings](https://www.infragistics.com/api/react/igniteui-react/17.5.0/types/GridSettings)
+`DataGridProps`
+Type alias for grid settings.
+
+### [ChartConfiguration](https://www.infragistics.com/api/react/igniteui-react/17.5.0/types/ChartConfiguration)
+`PieChartProps`
+Type alias for chart configuration.
+
+### [TreeOptions](https://www.infragistics.com/api/react/igniteui-react/17.5.0/types/TreeOptions)
+`TreeViewProps`
+Type alias for tree options.
+
+## Functions
+
+### [initDataGrid](https://www.infragistics.com/api/react/igniteui-react/17.5.0/functions/initDataGrid)
+`initDataGrid(): IgrDataGrid`
+Initializes a data grid.
+
+### [createPieChart](https://www.infragistics.com/api/react/igniteui-react/17.5.0/functions/createPieChart)
+`createPieChart(): IgrPieChart`
+Creates a pie chart.
+
+### [buildTreeView](https://www.infragistics.com/api/react/igniteui-react/17.5.0/functions/buildTreeView)
+`buildTreeView(): IgrTreeView`
+Builds a tree view component.
+
+## Variables
+
+### [DEFAULT_GRID_MODE](https://www.infragistics.com/api/react/igniteui-react/17.5.0/variables/DEFAULT_GRID_MODE)
+`DataGridMode`
+Default grid mode constant.
+
+### [DEFAULT_LEGEND_POSITION](https://www.infragistics.com/api/react/igniteui-react/17.5.0/variables/DEFAULT_LEGEND_POSITION)
+`ChartLegendPosition`
+Default legend position constant.
+
+### [LIBRARY_VERSION](https://www.infragistics.com/api/react/igniteui-react/17.5.0/variables/LIBRARY_VERSION)
+`string`
+Library version string.

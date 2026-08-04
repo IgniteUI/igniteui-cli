@@ -49,7 +49,7 @@ Change the selection to see summaries of the currently selected range.
 
 ```typescript
 import { formatDate } from '@angular/common';
-import { AfterViewInit, Component, ViewChild, OnInit, ChangeDetectorRef, inject } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, OnInit, ChangeDetectorRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxDateSummaryOperand, IgxGridFooterComponent, IgxNumberSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxSummaryResult } from 'igniteui-angular/core';
@@ -86,6 +86,7 @@ class MySummary {
     selector: 'app-grid-sample',
     styleUrls: ['./grid-custom-summaries-selection.component.scss'],
     templateUrl: 'grid-custom-summaries-selection.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxGridFooterComponent]
 })
 
@@ -244,7 +245,7 @@ div.igx-grid__tfoot {
 <div class="divider--half"></div>
 
 - [Grid overview](grid.md)
-- [Selection Service](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxgridselectionservice.html)
+- [Selection Service](mcp:get_api_reference?platform=angular&component=IgxGridSelectionService)
 - [Row Selection](row-selection.md)
 - [Cell Selection](cell-selection.md)
 - [IgxNumberSummaryOperand](mcp:get_api_reference?platform=angular&component=IgxNumberSummaryOperand)

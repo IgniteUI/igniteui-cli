@@ -372,7 +372,6 @@ export class AppComponent implements OnInit {
 }
 ```
 
-
 <div class="divider--half"></div>
 
 ## Change Default Font

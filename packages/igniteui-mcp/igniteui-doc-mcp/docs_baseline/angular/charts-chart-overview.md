@@ -212,7 +212,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Angular Pie Chart
@@ -318,7 +317,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -429,7 +427,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -547,7 +544,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Angular Area Chart
@@ -658,7 +654,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Angular Sparkline Chart
@@ -765,7 +760,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -983,7 +977,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Angular Financial / Stock Chart
@@ -1060,7 +1053,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1172,7 +1164,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1339,7 +1330,6 @@ export class AppComponent implements OnInit {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1512,7 +1502,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 <!-- ### Angular Pyramid Chart
@@ -1677,7 +1666,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -1858,7 +1846,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ### Angular Spline Chart
@@ -1966,7 +1953,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 <div class="divider--half"></div>
 
@@ -2079,7 +2065,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 <!-- ### Angular Timeline / Time-Series Charts
@@ -2191,7 +2176,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 ## Angular Charts Key Features
@@ -2259,9 +2243,6 @@ If you are considering any other Angular Charts on the market, here are a few th
 - We test against everyone elses performance. Everyone says they are fast and can handle lots of data, but we can prove it. See for yourself how we handle high-volume data and real-time data streaming.
 - We are here 24x5. Infragistics has global support that is always online. For North America, Asia Pacific, Middle East, and Europe, we are on the clock when you are!
 - We have many more UI controls in Angular besides the Charts. We offer a complete Angular solution to build your applications!
-
-<!---->
-
 - Ignite UI for Angular is built on Angular for the Angular developer, with zero 3rd party dependencies. We are 100% optimized for Angular.
 - We offer the world’s first, and only, end-to-end comprehensive design to code platform for UX Designers, Visual Designers, and Developers that will generate pixel-perfect Angular controls from Figma designs. With Indigo.Design, everything you craft in Figma from our Indigo Design System matches to our Ignite UI for Angular controls.
 

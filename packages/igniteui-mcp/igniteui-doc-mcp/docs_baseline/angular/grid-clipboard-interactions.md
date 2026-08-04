@@ -10,7 +10,7 @@ _premium: true
 Copy to clipboard operations are now available in the Grid. This functionality provides a fast, easy and customizable way to copy data of the Angular Data Grid through the current multi cell data select. System Clipboard behavior gives the user ability to copy data from the Grid into Excel or other external programs.
 ## Angular Grid Clipboard Interactions Example
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DATA } from '../../data/nwindData';
 import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -25,6 +25,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-clipboard-operations-sample',
     styleUrls: ['grid-clipboard-operations-sample.component.scss'],
     templateUrl: './grid-clipboard-operations-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxSuffixDirective, IgxIconComponent, IgxHintDirective, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxSwitchComponent, IgxButtonDirective]
 })
 export class GridClipboardSampleComponent {
@@ -140,7 +141,7 @@ We expose [`clipboardOptions`](mcp:get_api_reference?platform=angular&component=
 - [`separator`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboardoptions.separator) The string separator to use the for formatting the data in the clipboard. Default is `/t`
 > [!NOTE]
 > Excel can automatically detect text that is separated by tabs (tab-delimited `/t`) and properly paste the data into separate columns. When the paste format doesn't work, and everything you paste appears in a single column, then Excel's delimiter is set to another character, or your text is using spaces instead of tabs.
-- [`gridCopy`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=gridCopy) Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboard%D0%9Eptions)
+- [`gridCopy`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=gridCopy) Emitted when a copy operation is executed. Fired only if copy behavior is enabled through the [`clipboardOptions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=clipboard%25D0%259Eptions)
 ## Additional Resources
 <div class="divider--half"></div>
 - [Grid overview](grid.md)

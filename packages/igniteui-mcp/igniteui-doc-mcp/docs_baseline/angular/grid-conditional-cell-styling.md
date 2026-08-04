@@ -42,7 +42,7 @@ public activeRowCondition = (row: RowType) => this.grid?.navigation.activeNode?.
 > Use **`::ng-deep`** or **`ViewEncapsulation.None`** to force the custom styles down through the current component and its children.
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, RowType } from 'igniteui-angular/grids/core';
 import { DATA } from '../../data/nwindData';
@@ -52,6 +52,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-row-classes-sample',
     styleUrls: ['./grid-rowClasses.component.scss'],
     templateUrl: 'grid-rowClasses.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class GridRowClassesComponent implements OnInit {
@@ -150,7 +151,7 @@ public rowStyles = {
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild, inject } from '@angular/core';
+import { Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent, RowType } from 'igniteui-angular/grids/core';
 import { IgxBadgeComponent } from 'igniteui-angular/badge';
@@ -164,6 +165,7 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-grid-row-styles-sample',
     styleUrls: ['./grid-rowStyles.component.scss'],
     templateUrl: 'grid-rowStyles.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxBadgeComponent, AsyncPipe]
 })
 
@@ -349,7 +351,7 @@ public beatsPerMinuteClasses = {
 > Use **`::ng-deep`** or **`ViewEncapsulation.None`** to force the custom styles down through the current component and its children.
 ### Demo
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { athletesData } from '../../data/athletesData';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -360,6 +362,7 @@ import { DecimalPipe, PercentPipe } from '@angular/common';
     selector: 'app-grid-conditional-cell-style',
     styleUrls: ['./grid-conditional-cell-style.component.scss'],
     templateUrl: './grid-conditional-cell-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, DecimalPipe, PercentPipe]
 })
 export class GridConditionalCellStyleComponent implements OnInit {
@@ -614,7 +617,7 @@ Define a `popin` animation
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent } from 'igniteui-angular/input-group';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -626,6 +629,7 @@ import { JsonPipe } from '@angular/common';
     selector: 'app-grid-conditional-cell-style-2',
     styleUrls: ['./grid-conditional-cell-style-2.component.scss'],
     templateUrl: './grid-conditional-cell-style-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxInputDirective, IgxHintDirective, IgxButtonDirective, IgxGridComponent, IgxColumnComponent, JsonPipe]
 })
 export class GridConditionalCellStyle2Component implements OnInit {

@@ -11,7 +11,7 @@ _premium: true
 The grid Excel filtering provides an Excel like filtering UI for any Angular table like the Hierarchical Grid.
 ## Angular Hierarchical Grid Excel Style Filtering Example
 ```typescript
-import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent } from 'igniteui-angular/grids/core';
@@ -22,6 +22,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-excel-style-filtering-sample-1',
     styleUrls: ['./hierarchical-grid-excel-style-filtering-sample-1.component.scss'],
     templateUrl: 'hierarchical-grid-excel-style-filtering-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 
@@ -196,7 +197,7 @@ Sorting, pinning and hiding features can be removed from the filter menu using t
 In the sample below 'Artist' column have all three features enabled, 'Debut' have all three disabled, 'Grammy Nominations' has only pinning and hiding.
 <div class="divider--half"></div>
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent } from 'igniteui-angular/grids/core';
@@ -206,6 +207,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-excel-style-filtering-sample-2',
     styleUrls: ['./hierarchical-grid-excel-style-filtering-sample-2.component.scss'],
     templateUrl: 'hierarchical-grid-excel-style-filtering-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 
@@ -334,7 +336,7 @@ You could also re-template the Excel style filtering icon in the column header u
 ```
 <div class="divider--half"></div>
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxExcelStyleColumnOperationsTemplateDirective, IgxExcelStyleFilterOperationsTemplateDirective, IgxExcelStyleHeaderComponent, IgxExcelStyleHeaderIconDirective, IgxExcelStyleSearchComponent, IgxExcelStyleSortingComponent, IgxGridExcelStyleFilteringComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent } from 'igniteui-angular/grids/core';
@@ -345,6 +347,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-excel-style-filtering-sample-3',
     styleUrls: ['./hierarchical-grid-excel-style-filtering-sample-3.component.scss'],
     templateUrl: 'hierarchical-grid-excel-style-filtering-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxExcelStyleHeaderIconDirective, IgxIconComponent, IgxGridExcelStyleFilteringComponent, IgxExcelStyleColumnOperationsTemplateDirective, IgxExcelStyleHeaderComponent, IgxExcelStyleSortingComponent, IgxExcelStyleFilterOperationsTemplateDirective, IgxExcelStyleSearchComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 
@@ -469,7 +472,7 @@ The list items inside the Excel Style Filtering dialog represent the unique valu
 ## Formatted Values Filtering Strategy
 By default, the Hierarchical Grid component filters the data based on the original cell values, however in some cases you may want to filter the data based on the formatted values. @@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') { In order to do that you can use the [`FormattedValuesFilteringStrategy`](mcp:get_api_reference?platform=angular&component=FormattedValuesFilteringStrategy). }  The following sample demonstrates how to format the numeric values of a column as strings and filter the Hierarchical Grid based on the string values:
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { FormattedValuesFilteringStrategy } from 'igniteui-angular/core';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -480,6 +483,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-formatted-filtering-strategy',
     styleUrls: ['./hierarchical-grid-formatted-filtering-strategy.component.scss'],
     templateUrl: 'hierarchical-grid-formatted-filtering-strategy.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent]
 })
 
@@ -678,7 +682,7 @@ The Hierarchical Grid's [`z-index`](https://developer.mozilla.org/en-US/docs/Web
 However, elements that go outside of the grid (e.g. Excel Style filter) will conflict with outside elements with the same `z-index` (e.g. having two grids one under another) resulting in false rendering. The solution for this issue is to set the [`outlet`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=outlet) property to an external outlet directive which allows the overlay elements to always appear on top.
 ### Demo
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent } from 'igniteui-angular/grids/core';
@@ -689,6 +693,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-external-outlet',
     styleUrls: ['./hierarchical-grid-external-outlet-sample.component.scss'],
     templateUrl: 'hierarchical-grid-external-outlet-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxOverlayOutletDirective]
 })
 
@@ -899,7 +904,7 @@ The last step is to **include** each component’s custom theme. We will also se
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { SINGERS } from '../../data/singersData';
@@ -909,6 +914,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-excel-style-filtering-style',
     styleUrls: ['./hierarchical-grid-excel-style-filtering-style.component.scss'],
     templateUrl: 'hierarchical-grid-excel-style-filtering-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 export class HGridExcelStyleFilteringStyleComponent {
@@ -965,72 +971,21 @@ export class HGridExcelStyleFilteringStyleComponent {
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
-$yellow: #ffcd0f;
-$black: #292826;
+$background: #292826;
+$foreground: #eeece1;
+$accent: #ffcd0f;
 
 $custom-grid: grid-theme(
-  $filtering-row-background: $yellow
-);
-
-$custom-flat-button: flat-button-theme(
-  $background: $yellow,
-  $foreground: $black,
-  $hover-background: $black,
-  $hover-foreground: $yellow
-);
-
-$custom-contained-button: contained-button-theme(
-  $background: $black,
-  $foreground: $yellow,
-  $hover-background: $black,
-  $hover-foreground: $yellow
-);
-
-$custom-button-group: button-group-theme(
-  $item-background: $yellow,
-  $item-text-color: $black,
-  $item-hover-background: $black,
-  $item-hover-text-color: $yellow
-);
-
-$custom-input-group: input-group-theme(
-  $box-background: $yellow,
-  $idle-text-color: $black,
-  $focused-text-color: $black,
-  $filled-text-color: $black
-);
-
-$custom-list: list-theme(
-  $background: $yellow
-);
-
-$custom-checkbox: checkbox-theme(
-  $empty-color: $black,
-  $fill-color: $black,
-  $tick-color: $yellow,
-  $label-color: $black
-);
-
-$custom-drop-down: drop-down-theme(
-  $background-color: $yellow,
-  $selected-item-background: lighten($black, 10%),
-  $selected-focus-item-background: lighten($black, 15%),
-  $item-text-color: $black,
-  $hover-item-background: $black,
-  $hover-item-text-color: $yellow
+    $background: $background,
+    $foreground: $foreground,
+    $accent-color: $accent,
 );
 
 :host ::ng-deep {
     @include tokens($custom-grid);
-    @include tokens($custom-drop-down);
-    @include tokens($custom-input-group);
-    @include tokens($custom-checkbox);
-    @include tokens($custom-list);
-    @include tokens($custom-flat-button);
-    @include tokens($custom-button-group);
 
-    .igx-excel-filter__apply {
-      @include tokens($custom-contained-button);
+    igx-grid-excel-style-filtering {
+        --ig-excel-filtering-background: #444;
     }
 }
 ```

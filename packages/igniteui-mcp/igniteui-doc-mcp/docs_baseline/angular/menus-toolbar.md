@@ -155,7 +155,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 }
 ```
 
-
 ## Dependencies
 
 Install the Ignite UI for Angular layouts, inputs, charts and core packages:
@@ -556,7 +555,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 }
 ```
 
-
 ### Angular Data Chart Integration
 
 The Angular Toolbar contains a `Target` property. This is used to link a component, such as the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html) as shown in the code below:
@@ -800,7 +798,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ### Color Editor
 
 You can add a custom color editor tool to the the Angular Toolbar, which will also work with the Command event to perform custom styling to your application.
@@ -1007,7 +1004,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
     align-items: flex-end;
 }
 ```
-
 
 <!-- ## Styling/Theming
 

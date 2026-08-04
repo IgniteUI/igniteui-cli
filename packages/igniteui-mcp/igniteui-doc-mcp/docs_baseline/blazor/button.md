@@ -22,7 +22,8 @@ The Blazor Button Component lets you enable clickable elements that trigger acti
         .buttonContainer {
             display: flex;
             justify-content: space-evenly;
-            margin-top: 20px;
+            align-items: center;
+            height: 100%;
         }
     </style>
 
@@ -94,6 +95,12 @@ Use the [`Variant`](mcp:get_api_reference?platform=blazor&component=IgbButton&me
 
 
 <div class="container vertical">
+    <style>
+        igc-button {
+            width: 40%;
+            margin: auto;
+        }
+    </style>
     <IgbButton Variant="ButtonVariant.Contained">Contained</IgbButton>
 </div>
 
@@ -116,7 +123,13 @@ All you have to do to create an `outlined` button is to change the value of the 
 
 
 <div class="container vertical">
-    <IgbButton style="margin:5px" Variant="ButtonVariant.Outlined">Outlined</IgbButton>
+    <style>
+        igc-button {
+            width: 40%;
+            margin: auto;
+        }
+    </style>
+    <IgbButton Variant="ButtonVariant.Outlined">Outlined</IgbButton>
 </div>
 
 @code {
@@ -137,6 +150,17 @@ Analogically, we can switch to `flat` variant.
 
 
 <div class="container vertical">
+    <style>
+        .container {
+            background: var(--ig-surface-600);
+        }
+
+        igc-button {
+            width: 40%;
+            margin: auto;
+            background: var(--ig-surface-50);
+        }
+    </style>
     <IgbButton Variant="ButtonVariant.Flat">Flat</IgbButton>
 </div>
 
@@ -159,6 +183,12 @@ We can create a floating action button by setting the [`Variant`](mcp:get_api_re
 
 
 <div class="container vertical">
+    <style>
+        igc-button {
+            width: 40%;
+            margin: auto;
+        }
+    </style>
     <IgbButton Variant="ButtonVariant.Fab">
         <span slot="prefix">+</span>
         Add
@@ -212,16 +242,20 @@ The result of implementing the above code should look like the following:
 
 
 <style>
+    .container {
+        justify-content: center;
+    }
+
     .buttonContainer {
         display: flex;
         justify-content: space-evenly;
+        align-items: center;
         margin-top: 20px;
     }
 
     #radioGroup {
         display: flex;
-        margin: 0 auto;
-        width: 15%;
+        justify-content: center;
     }
 </style>
 
@@ -266,6 +300,12 @@ Setting the [`Download`](mcp:get_api_reference?platform=blazor&component=IgbButt
 
 
 <div class="container vertical">
+    <style>
+        igc-button {
+            width: 40%;
+            margin: auto;
+        }
+    </style>
     <IgbButton Variant="ButtonVariant.Contained" Download="Url" Href="https://www.infragistics.com/" Target="ButtonBaseTarget._blank">
         Download
     </IgbButton>
@@ -307,10 +347,13 @@ igc-button::part(base) {
             color: #011627;
             padding: 18px;
         }
+
+        igc-button {
+            width: 40%;
+            margin: auto;
+        }
     </style>
-    <div>
-        <IgbButton Variant="ButtonVariant.Contained">Contained</IgbButton>
-    </div>
+    <IgbButton Variant="ButtonVariant.Contained">Contained</IgbButton>
 
 </div>
 

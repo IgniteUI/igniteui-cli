@@ -16,7 +16,7 @@ The Ignite UI for Angular ComboBox Component allows defining custom templates fo
 
 
 ```typescript
-import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { localData } from './local-data';
 import { IgxComboAddItemDirective, IgxComboClearIconDirective, IgxComboComponent, IgxComboEmptyDirective, IgxComboFooterDirective, IgxComboHeaderDirective, IgxComboHeaderItemDirective, IgxComboItemDirective, IgxComboToggleIconDirective } from 'igniteui-angular/combo';
 import { IgxLabelDirective, IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -27,6 +27,7 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-combo-template',
     styleUrls: ['./combo-template.component.scss'],
     templateUrl: './combo-template.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxComboComponent, IgxLabelDirective, IgxPrefixDirective, IgxIconComponent, IgxComboItemDirective, IgxComboHeaderItemDirective, IgxComboHeaderDirective, IgxComboFooterDirective, IgxComboAddItemDirective, IgxButtonDirective, IgxComboToggleIconDirective, IgxComboClearIconDirective, IgxComboEmptyDirective]
 })
 export class ComboTemplateComponent implements OnInit {

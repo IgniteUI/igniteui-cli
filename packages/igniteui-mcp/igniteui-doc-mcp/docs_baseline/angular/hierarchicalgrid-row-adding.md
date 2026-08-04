@@ -12,7 +12,7 @@ The Hierarchical Grid provides a convenient way to perform data manipulations th
 ## Angular Hierarchical Grid Row Adding Example
 The following sample demonstrates how to enable native row adding in the Hierarchical Grid. Changing a cell value and then clicking or navigating to another cell on the same row doesn't update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxColumnComponent, IgxGridEditingActionsComponent } from 'igniteui-angular/grids/core';
@@ -23,6 +23,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-add-row',
     styleUrls: ['./hierarchical-grid-add-row.component.scss'],
     templateUrl: './hierarchical-grid-add-row.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxActionStripComponent, IgxGridEditingActionsComponent, IgxRowIslandComponent]
 })
 

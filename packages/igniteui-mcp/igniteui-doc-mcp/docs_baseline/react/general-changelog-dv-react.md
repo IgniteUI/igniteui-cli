@@ -15,6 +15,12 @@ All notable changes for each version of Ignite UI for React are documented on th
 
 ## **19.6.0 (March 2026)**
 
+### igniteui-react-charts
+
+#### New Features
+
+- Added `Checkmark` option to the [`MarkerType`](https://www.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/enums/igniteui_react_charts.markertype.html) enum. Use `MarkerType.Checkmark` on a series to display a V-shaped checkmark icon inside a circle. The new `MarkerAutomaticBehavior.Checkmark` enum value allows applying the checkmark shape to all series in the chart, and the `SeriesViewer.CheckmarkMarkerTemplate` property can be used to customize its template.
+
 ### igniteui-react
 
 #### Changed
@@ -43,6 +49,12 @@ All notable changes for each version of Ignite UI for React are documented on th
 | 41167 | Excel | Object's Formulas are not round-tripped - Added Excel support for round tripping the camera tool |
 | 41419 | Excel | Saving a VBA Signed Excel file does not keep a signature/certificate. |
 | 41594 | IgrDataChart | AssigningCategoryStyle args.GetItems is null or not working to update items in the fragment series. |
+
+### Enhancements
+
+### igniteui-react-charts
+
+- Added `RangeBarSeries` support for horizontal range rendering in `DataChart`.
 
 ## **19.5.1 (February 2026)**
 

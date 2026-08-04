@@ -16,32 +16,68 @@ The Ignite UI for React Badge is a component used in conjunction with avatars, n
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+.wrapper {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  margin-block: 1rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--ig-gray-300);
+  border-radius: .25rem;
+}
+
+igc-avatar {
+  @container style(--ig-theme: indigo) {
+    --ig-size: var(--ig-size-large);
+  }
+
+  anchor-name: --avatar;
+}
+
+igc-badge {
+  --size: .75rem;
+
+  position: absolute;
+  inset-block-end: anchor(--avatar bottom);
+  inset-inline-end: anchor(--avatar right);
+}
+
+span {
+  display: block;
+  font-weight: 600;
+}
 ```
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrBadge } from 'igniteui-react';
+import { IgrBadge, IgrAvatar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 export default class BadgeOutlined extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+  }
 
-    constructor(props: any) {
-        super(props);           
-    }
-
-    public render(): JSX.Element {
-        return (
-			<div className="sample">
-				<IgrBadge outlined={true} />
-			</div>            
-        );
-    }
+  public render(): JSX.Element {
+    return (
+      <section className="wrapper">
+        <header>
+          <IgrAvatar initials="TO" shape="circle" />
+          <IgrBadge outlined={true} variant="danger" />
+        </header>
+        <span>Terrance Orta</span>
+      </section>
+    );
+  }
 }
 
 // rendering above class to the React DOM
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<BadgeOutlined/>);
+root.render(<BadgeOutlined />);
 ```
 
 <div class="divider"></div>
@@ -161,7 +197,34 @@ The Ignite UI for React badge component can also render as a minimal dot indicat
 <IgrBadge dot={true} ></IgrBadge>
 ```
 
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+```
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { IgrBadge } from 'igniteui-react';
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
+export default class BadgeDot extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+  }
+
+  public render(): JSX.Element {
+    return (
+      <div className="sample">
+        <IgrBadge dot={true} />
+      </div>
+    );
+  }
+}
+
+// rendering above class to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<BadgeDot />);
+```
 
 ## Styling
 

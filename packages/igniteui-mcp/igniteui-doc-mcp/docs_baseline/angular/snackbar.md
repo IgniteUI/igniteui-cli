@@ -16,7 +16,7 @@ _tocName: Snackbar
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
 
@@ -24,6 +24,7 @@ import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
     selector: 'app-snackbar-sample-1',
     styleUrls: ['./snackbar-sample-1.component.scss'],
     templateUrl: './snackbar-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxSnackbarComponent]
 })
 export class SnackbarSample1Component { }
@@ -151,7 +152,7 @@ public close(element) {
 If the sample is configured properly, the first snackbar appears when the button is clicked, showing both the _message_ and _action button_. The auto-hide feature is disabled and the snackbar disappears on 'CLOSE' button click. Another snackbar passes a different message through the [`open()`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=open) method and hides it when the _display time_ expires. The third component passes a message as a param to the [`open()`](mcp:get_api_reference?platform=angular&component=IgxSnackbarComponent&member=open) method and adds an icon using content projection.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -160,6 +161,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-snackbar-sample-2',
     styleUrls: ['./snackbar-sample-2.component.scss'],
     templateUrl: './snackbar-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxSnackbarComponent, IgxIconComponent]
 })
 export class SnackbarSample2Component {
@@ -267,7 +269,7 @@ As a result, a message and three loading dots appear in the snackbar.
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
 
@@ -275,6 +277,7 @@ import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
     selector: 'app-snackbar-sample-5',
     styleUrls: ['./snackbar-sample-5.component.scss'],
     templateUrl: './snackbar-sample-5.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxSnackbarComponent]
 })
 export class SnackbarSample5Component { }
@@ -392,7 +395,7 @@ public restore() {
 ```
 
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
 import { IgxListActionDirective, IgxListComponent, IgxListItemComponent, IgxListLineTitleDirective, IgxListThumbnailDirective } from 'igniteui-angular/list';
 import { IgxIconButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
@@ -404,6 +407,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-snackbar-sample-4',
     styleUrls: ['./snackbar-sample-4.component.scss'],
     templateUrl: './snackbar-sample-4.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxListComponent, IgxListItemComponent, IgxRippleDirective, IgxAvatarComponent, IgxListThumbnailDirective, IgxListLineTitleDirective, IgxListActionDirective, IgxIconButtonDirective, IgxIconComponent, IgxSnackbarComponent]
 })
 export class SnackbarSample4Component implements OnInit {
@@ -564,7 +568,7 @@ The last step is to **include** the component theme in our application.
 ### Demo
 
 ```typescript
-import { Component, ElementRef, inject } from '@angular/core';
+import { Component, ElementRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
 
@@ -572,6 +576,7 @@ import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
     selector: 'app-snackbar-style',
     styleUrls: ['./snackbar-style.component.scss'],
     templateUrl: './snackbar-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxSnackbarComponent]
 })
 export class SnackbarStyleComponent {

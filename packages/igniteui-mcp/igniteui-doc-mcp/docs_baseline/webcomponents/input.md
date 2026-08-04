@@ -69,7 +69,6 @@ We can allow the user to change the size of the [`IgcInputComponent`](mcp:get_ap
 #radio-group {
     display: flex;
     margin: 0 auto;
-    width: 15%;
 }
 ```
 ```css

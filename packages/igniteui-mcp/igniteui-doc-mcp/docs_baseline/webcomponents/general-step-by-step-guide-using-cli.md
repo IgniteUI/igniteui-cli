@@ -62,6 +62,44 @@ Choose a theme for your application:
 - The **default** option includes a pre-compiled CSS file with the default Ignite UI for Web Components theme.
 - The **custom** option generates a Sass-based color palette and theme configuration using the [Theming API](./themes/overview.md).
 
+### Configure AI Tooling
+
+After theming, the wizard prompts you to configure AI coding assistants. First, select which assistants should receive MCP server configuration:
+
+```bash
+? Which AI coding assistants do you want to configure MCP servers for? (Press <space> to select)
+❯◉ VS Code (GitHub Copilot)
+ ◉ Cursor
+ ◯ Generic (.mcp.json)
+ ◯ Gemini CLI
+ ◯ JetBrains (AI Assistant)
+ ◯ None
+```
+
+Next, select which AI agents should receive skill files:
+
+```bash
+? Which AI agents should receive skill files? (Press <space> to select)
+❯◉ GitHub Copilot (.agents/skills/)
+ ◉ Claude (.claude/skills/)
+ ◉ Cursor (.cursor/rules/)
+ ◯ Codex (.codex/)
+ ◯ Windsurf (.windsurfrules)
+ ◯ Gemini CLI (.gemini/)
+ ◯ JetBrains Junie (.junie/guidelines/)
+ ◯ None
+```
+
+Navigate through the options using the arrow keys, toggle selections with SPACE, and confirm with ENTER. Selecting **None** for both skips AI configuration entirely.
+
+To bypass these prompts in non-interactive mode, pass `--assistants` and `--agents` flags directly to `ig new`:
+
+```cmd
+ig new my-app --framework=react --type=igr-ts --template=top-nav --assistants vscode --agents copilot claude
+```
+
+For more details on the available flag values, see [Ignite UI CLI Overview](general-cli-overview.md#ai-configuration-during-project-creation).
+
 ### Complete or continue
 
 After completing the above steps, the project structure is generated, a Git repository is initialized, and the project is committed. You will then be asked whether to complete the process or add a new view to your application.

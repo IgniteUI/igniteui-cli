@@ -13,7 +13,7 @@ _tocName: Button Group
 ## Angular Button Group Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -22,6 +22,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-button-group-sample-1',
     styleUrls: ['./button-group-sample-1.component.scss'],
     templateUrl: './button-group-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective, IgxIconComponent]
 })
 
@@ -175,7 +176,7 @@ public alignment = ButtonGroupAlignment.vertical;
 ```
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonGroupAlignment, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
@@ -183,6 +184,7 @@ import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directi
     selector: 'app-button-group-sample-2',
     styleUrls: ['./button-group-sample-2.component.scss'],
     templateUrl: './button-group-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective]
 })
 export class ButtonGroupSample2Component {
@@ -220,7 +222,7 @@ In order to configure the `igx-buttongroup` selection, you could use its [select
 The sample below demonstrates the exposed `igx-buttongroup` selection modes:
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxRadioComponent } from 'igniteui-angular/radio';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
@@ -231,6 +233,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-button-group-sample',
     styleUrls: ['./button-group-sample.component.scss'],
     templateUrl: './button-group-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxRadioComponent, FormsModule, IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective, IgxIconComponent]
 })
 export class ButtonGroupSampleComponent {
@@ -289,7 +292,7 @@ igx-buttongroup {
 ```
 
 ```typescript
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 
 type Button = {
@@ -302,6 +305,7 @@ type Button = {
     selector: 'app-button-group-sample-5',
     styleUrls: ['./button-group-sample-5.component.scss'],
     templateUrl: './button-group-sample-5.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent]
 })
 export class ButtonGroupSample5Component implements OnInit {
@@ -407,7 +411,7 @@ public ngOnInit() {
 ```
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 
 interface IButton {
@@ -444,6 +448,7 @@ class ToggleButton {
     selector: 'app-button-group-sample-3',
     styleUrls: ['./button-group-sample-3.component.scss'],
     templateUrl: './button-group-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent]
 })
 export class ButtonGroupSample3Component implements OnInit {
@@ -668,7 +673,7 @@ The last step is to include the component's theme.
 ### Demo
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ButtonGroupAlignment, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
@@ -676,6 +681,7 @@ import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directi
     selector: 'app-button-group-style',
     styleUrls: ['./button-group-style.component.scss'],
     templateUrl: './button-group-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective]
 })
 export class ButtonGroupStyleComponent {

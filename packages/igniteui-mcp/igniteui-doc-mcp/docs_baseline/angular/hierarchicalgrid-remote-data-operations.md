@@ -58,8 +58,8 @@ this.remoteValuesService.getColumnData(
 ```
 ### Unique Column Values Strategy Demo
 ```typescript
-import { Component, OnInit, inject } from '@angular/core';
-import { IFilteringExpressionsTree } from 'igniteui-angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ColumnType, IFilteringExpressionsTree } from 'igniteui-angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { RemoteValuesService } from '../../services/remoteValues.service';
@@ -70,6 +70,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     templateUrl: './hierarchical-grid-excel-style-filtering-load-on-demand.component.html',
     styleUrls: ['./hierarchical-grid-excel-style-filtering-load-on-demand.component.scss'],
     providers: [RemoteValuesService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 export class HierarchicalGridExcelStyleFilteringLoadOnDemandComponent implements OnInit {
@@ -78,7 +79,7 @@ export class HierarchicalGridExcelStyleFilteringLoadOnDemandComponent implements
 
     public localdata: any[];
 
-    public singersColumnValuesStrategy = (column: IgxColumnComponent,
+    public singersColumnValuesStrategy = (column: ColumnType,
                                           columnExprTree: IFilteringExpressionsTree,
                                           done: (uniqueValues: any[]) => void) => {
         // Get specific column data for the singers.
@@ -86,7 +87,7 @@ export class HierarchicalGridExcelStyleFilteringLoadOnDemandComponent implements
             null, 'Singers', column, columnExprTree, uniqueValues => done(uniqueValues));
     };
 
-    public albumsColumnValuesStrategy = (column: IgxColumnComponent,
+    public albumsColumnValuesStrategy = (column: ColumnType,
                                          columnExprTree: IFilteringExpressionsTree,
                                          done: (uniqueValues: any[]) => void) => {
     // Get specific column data for the albums of a specific singer.
@@ -266,7 +267,7 @@ public paginate(page: number) {
 }
 ```
 ```typescript
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { GridPagingMode, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IGridCreatedEventArgs, IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxPaginatorComponent, IgxPaginatorDirective } from 'igniteui-angular/paginator';
@@ -278,6 +279,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-remote-paging-default-template',
     styleUrls: ['./hierarchical-grid-remote-paging-default-template.component.scss'],
     templateUrl: 'hierarchical-grid-remote-paging-default-template.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxRowIslandComponent, IgxPaginatorDirective]
 })
 
@@ -474,7 +476,7 @@ The last step will be to declare the paginator content based on your requirement
 ```
 After all the changes above, the following result will be achieved.
 ```typescript
-import { AfterViewInit, Component, OnDestroy, OnInit, TemplateRef, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, TemplateRef, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { GridPagingMode, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IGridCreatedEventArgs, IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxPageNavigationComponent, IgxPageSizeSelectorComponent, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxPaginatorDirective } from 'igniteui-angular/paginator';
@@ -488,6 +490,7 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-hierarchical-grid-remote-paging',
     styleUrls: ['./hierarchical-grid-remote-paging.component.scss'],
     templateUrl: 'hierarchical-grid-remote-paging.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent, IgxPaginatorDirective, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxPageSizeSelectorComponent, IgxPageNavigationComponent, AsyncPipe]
 })
 

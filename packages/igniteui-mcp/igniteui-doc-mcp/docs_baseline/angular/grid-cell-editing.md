@@ -10,7 +10,7 @@ _premium: true
 Ignite UI for Angular Grid component provides a great data manipulation capabilities and powerful API for Angular CRUD operations. By default the Grid is using **in cell** editing and different editors will be shown based on the column data type, thanks to the **default cell editing template**. In addition, you can define your own custom templates for update-data actions and to override the default behavior for committing and discarding any changes.
 ## Angular Grid cell editing and edit templates Example
 ```typescript
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxSummaryResult, VerticalAlignment } from 'igniteui-angular/core';
@@ -54,6 +54,7 @@ class NumberSummary {
     selector: 'app-grid-editing-sample',
     styleUrls: ['./grid-editing-sample.component.scss'],
     templateUrl: './grid-editing-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxGridToolbarComponent, IgxButtonDirective, IgxIconComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxCellEditorTemplateDirective, FormsModule, IgxComboComponent, IgxFocusDirective, IgxIconButtonDirective, IgxToastComponent, IgxDialogComponent, IgxInputGroupComponent, IgxLabelDirective, IgxInputDirective, IgxDatePickerComponent, IgxCheckboxComponent, DatePipe]
 })
 export class GridEditingSampleComponent implements OnInit, AfterViewInit {
@@ -115,7 +116,6 @@ export class GridEditingSampleComponent implements OnInit, AfterViewInit {
         this.product = new Product(this.id);
     }
 
-    // eslint-disable-next-line @typescript-eslint/member-delimiter-style
     public parseArray(arr: { shop: string, lastInventory: string}[]): string {
         return  (arr || []).map((e) => e.shop).join(', ');
     }
@@ -303,7 +303,7 @@ If you want to provide a custom template which will be applied when a cell is in
 This code is used in the sample below which implements an [`IgxSelectComponent`](../select.md) in the cells of the `Race`, `Class` and `Alignment` columns.
 ```typescript
 import { Character } from './characters';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellEditorTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
@@ -316,6 +316,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-grid-select-sample',
     styleUrls: ['./grid-select-sample.component.scss'],
     templateUrl: './grid-select-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxColumnComponent, IgxCellEditorTemplateDirective, IgxSelectComponent, FormsModule, IgxFocusDirective, IgxSelectItemComponent]
 })
 export class GridSelectComponent implements OnInit {
@@ -468,7 +469,7 @@ return dataView.findIndex((rec, index) => index > currentRowIndex && this.isEdit
 Please check the full sample for further reference:
 ### Angular Grid Excel Style Editing Sample
 ```typescript
-import { ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { Transaction } from 'igniteui-angular/core';
@@ -480,6 +481,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-excel-style-editing-sample',
     styleUrls: [`grid-editing-excel-style.component.scss`],
     templateUrl: 'grid-editing-excel-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class GridExcelStyleEditingComponent implements OnInit {
@@ -718,7 +720,7 @@ export class MyGridEventsComponent {
 If the value entered in a cell under the **Ordered** column is larger than the available amount (the value under **Units in Stock**), the editing will be cancelled and a toast with an error message will be displayed.
 The result of the above validation being applied to our `igx-grid` can be seen in the below demo:
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { IGridEditEventArgs, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -731,6 +733,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-editing-event',
     templateUrl: 'grid-editing-events.component.html',
     styleUrls: ['grid-editing-events.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxToastComponent]
 })
 export class GridEditingEventsComponent implements OnInit {
@@ -832,7 +835,7 @@ The easiest way to apply our theme is with a `sass` `@include` statement in the 
 ### Demo
 In addition to the steps above, we can also style the controls that are used for the cells' editing templates: [`input-group`](../input-group.md#styling), [`datepicker`](../date-picker.md#styling) & [`checkbox`](../checkbox.md#styling)
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
 import { IgxCellEditorTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -845,6 +848,7 @@ import { DatePipe } from '@angular/common';
     selector: 'app-grid-editing-style-sample',
     styleUrls: ['./grid-editing-style-sample.component.scss'],
     templateUrl: './grid-editing-style-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxCellEditorTemplateDirective, FormsModule, DatePipe]
 })
 export class GridEditingStyleSampleComponent implements OnInit {
@@ -903,13 +907,14 @@ $color-palette: palette(
 
 $grid-theme: grid-theme(
   $cell-editing-background: $blue,
+  $cell-editing-foreground: $white,
   $cell-active-border-color: $blue,
   $cell-edited-value-color: $white,
-  $edit-mode-color: color($color-palette, "secondary", 200)
+  $edit-mode-color: color($color: "secondary", $variant: 200)
 );
 
 $checkbox-theme: checkbox-theme(
-  $empty-color: color($color-palette, "secondary", 200),
+  $empty-color: color($color: "secondary", $variant: 200),
   $fill-color: $white,
   $tick-color: $blue
 );
@@ -929,15 +934,12 @@ $input-theme: input-group-theme(
   $box-background: $blue
 );
 
-:host {
+igx-grid {
+    @include palette($color-palette);
     @include tokens($grid-theme);
     @include tokens($checkbox-theme);
     @include tokens($datepicker-theme);
     @include tokens($input-theme);
-}
-
-.igx-grid {
-  @include palette($color-palette);
 }
 ```
 >[!NOTE]

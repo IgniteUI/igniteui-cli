@@ -67,9 +67,13 @@ export default class Sample extends React.Component<any, any> {
                     primaryKey="ID"
                     allowFiltering={true}
                     filterMode="excelStyleFilter">
-                    <IgrGridToolbar>
-                        <IgrGridToolbarActions>
-                            <IgrGridToolbarExporter>
+                    <IgrGridToolbar
+                    >
+                        <IgrGridToolbarActions
+                        >
+                            <IgrGridToolbarExporter
+                                exportCSV={false}
+                                exportExcel={true}>
                             </IgrGridToolbarExporter>
                         </IgrGridToolbarActions>
                     </IgrGridToolbar>
@@ -278,7 +282,6 @@ export default class Sample extends React.Component<any, any> {
                             <IgrGridToolbarExporter
                                 exportCSV={false}
                                 exportExcel={true}
-                                exportPDF={true}
                                 onExportStarted={this.webHierarchicalGridExportMultiColumnHeaders}>
                             </IgrGridToolbarExporter>
                         </IgrGridToolbarActions>

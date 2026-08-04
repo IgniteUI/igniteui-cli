@@ -413,9 +413,9 @@ export class EmployeesNestedTreeData extends Array<EmployeesNestedTreeDataItem> 
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 
 #treeGrid {
-	--cell-editing-background: #4567bb;
-    --cell-active-border-color: #4567bb;
-    --cell-edited-value-color: #fff;
+    --ig-grid-edit-mode-color: #FFA500;
+    --ig-grid-cell-active-border-color: #AAFF00;
+    --ig-grid-cell-editing-background: #ADD8E6;
 }
 ```
 

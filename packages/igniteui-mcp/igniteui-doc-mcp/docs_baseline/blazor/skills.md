@@ -117,7 +117,7 @@ Use one of the options below to download and place the skill files into the appr
 
 ### **Option A - Use the Ignite UI CLI**
 
-The `ai-config` command configures MCP servers, copies framework-specific skill files into each agent's skills directory, and sets up instruction files — all in a single step. Use `--assistants` to choose which coding assistants receive MCP config and `--agents` to choose which agents receive skill files. Existing files are only updated if their content has changed. If no parameters are provided, the command enters interactive mode, prompting you to select assistants and agents. For available options, refer to the table below.
+The `ai-config` command configures MCP servers, copies framework-specific skill files into each agent's skills directory, and sets up instruction files - all in a single step. Use `--assistants` to choose which coding assistants receive MCP config and `--agents` to choose which agents receive skill files. Existing files are only updated if their content has changed. If no parameters are provided, the command enters interactive mode, prompting you to select assistants and agents. For available options, refer to the table below.
 
 ```bash
 ig ai-config --assistants generic --agents claude
@@ -134,6 +134,9 @@ ig ai-config --assistants generic vscode --agents claude copilot cursor
 | `--assistants` | `generic`, `vscode`, `cursor`, `gemini`, `junie`, `none` | Prompted interactively |
 | `--agents` | `generic`, `claude`, `copilot`, `cursor`, `codex`, `windsurf`, `gemini`, `junie`, `none` | Prompted interactively |
 
+> [!NOTE]
+> For Blazor, `ai-config` detects your project via `.csproj` or `.sln`. The `IgniteUI.Blazor` NuGet package does not need to be installed. If no project file is found, the command prompts you to select a framework.
+
 ### **Option B - Use the `GitHub CLI`**
 
 The GitHub CLI can be used to download skill files directly from the Ignite UI for Blazor repository. Run the following commands in your project root to start the installation process:
@@ -148,40 +151,6 @@ To update skills later, run the following command:
 
 ```bash
 gh skill update IgniteUI/igniteui-blazor
-```
-
-If Ignite UI for Blazor is already installed in your project, the skill files are available under `node_modules`. To copy them into your project (e.g. into `.agents/skills/`), run:
-
-**macOS / Linux / Windows (PowerShell)**
-
-```bash
-cp -r node_modules/IgniteUI.Blazor/skills/. .agents/skills/
-```
-
-**Windows (Command Prompt)**
-
-```cmd
-robocopy node_modules\IgniteUI.Blazor\skills .agents\skills /E
-```
-
-Or copy individual skill directories as needed:
-
-**macOS / Linux / Windows (PowerShell)**
-
-```bash
-cp -r node_modules/IgniteUI.Blazor/skills/igniteui-blazor-components .agents/skills/
-cp -r node_modules/IgniteUI.Blazor/skills/igniteui-blazor-grids .agents/skills/
-cp -r node_modules/IgniteUI.Blazor/skills/igniteui-blazor-theming .agents/skills/
-cp -r node_modules/IgniteUI.Blazor/skills/igniteui-blazor-generate-from-image-design .agents/skills/
-```
-
-**Windows (Command Prompt)**
-
-```cmd
-robocopy node_modules\IgniteUI.Blazor\skills\igniteui-blazor-components .agents\skills\igniteui-blazor-components /E
-robocopy node_modules\IgniteUI.Blazor\skills\igniteui-blazor-grids .agents\skills\igniteui-blazor-grids /E
-robocopy node_modules\IgniteUI.Blazor\skills\igniteui-blazor-theming .agents\skills\igniteui-blazor-theming /E
-robocopy node_modules\IgniteUI.Blazor\skills\igniteui-blazor-generate-from-image-design .agents\skills\igniteui-blazor-generate-from-image-design /E
 ```
 
 ### **Option C - Use the `gemini skills` CLI**
@@ -216,7 +185,7 @@ Once installed, the skill files are available in the respective location and wil
 The `skills` CLI is an interactive tool that downloads and installs skills directly into your project. Run the following command in your project root:
 
 ```bash
-npx skills add IgniteUI/IgniteUI.Blazor
+npx skills add IgniteUI/igniteui-blazor
 ```
 
 The CLI will guide you through a series of prompts to:
@@ -227,7 +196,7 @@ The CLI will guide you through a series of prompts to:
 
 Once complete, the skills are ready to use - no manual file copying required.
 
-> **Note:** Requires Node.js and an internet connection. The command fetches the latest skill files from the [IgniteUI/IgniteUI.Blazor](https://github.com/IgniteUI/igniteui-blazor) repository.
+> **Note:** Requires Node.js and an internet connection. The command fetches the latest skill files from the [IgniteUI/igniteui-blazor](https://github.com/IgniteUI/igniteui-blazor) repository.
 
 ---
 

@@ -123,6 +123,11 @@ If the space is not enough to fit all tabs, scroll buttons are displayed.
 
 
 <div class="container vertical">
+    <style>
+        igc-radio-group {
+            padding-block-end: 12px;
+        }
+    </style>
 
     <IgbRadioGroup Alignment=@ContentOrientation.Horizontal>
         <IgbRadio name="alignment" Value="Start" label-position="after" Checked=true Change="OnRadioOptionClick">Start</IgbRadio>

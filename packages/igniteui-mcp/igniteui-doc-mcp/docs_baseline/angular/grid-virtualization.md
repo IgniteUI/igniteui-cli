@@ -10,7 +10,7 @@ _premium: true
 In Ignite UI for Angular, the [IgxGrid](mcp:get_api_reference?platform=angular&component=IgxGridComponent) control now utilizes the [`igxForOf`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective) directive and virtualizes its content both vertically and horizontally.
 ## Angular Grid Virtualization and Performance Example
 ```typescript
-import { Component, Injectable, ViewChild, OnInit, inject } from '@angular/core';
+import { Component, Injectable, ViewChild, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -25,6 +25,7 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-grid-sample',
     styleUrls: ['./grid-sample-2.component.scss'],
     templateUrl: 'grid-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxBadgeComponent, AsyncPipe]
 })
 

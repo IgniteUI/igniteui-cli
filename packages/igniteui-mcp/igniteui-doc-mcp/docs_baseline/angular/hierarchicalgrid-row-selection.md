@@ -12,7 +12,7 @@ With row selection in Ignite UI for Angular, there is row selector column that p
 ## Angular Row Selection Example
 The sample below demonstrates the three types of Hierarchical Grid's **row selection** behavior. Use the buttons below to enable each of the available selection modes. A brief description will be provided on each button interaction through a snackbar message box. Use the switch button to _hide_ or _show_ the row selector checkbox.
 ```typescript
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IRowSelectionEventArgs, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -28,6 +28,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-selection',
     styleUrls: ['./hierarchical-grid-selection.component.scss'],
     templateUrl: 'hierarchical-grid-selection.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxButtonGroupComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxSnackbarComponent, IgxIconComponent]
 })
 
@@ -395,7 +396,7 @@ Each hierarchy level in an `igx-hierarchical-grid` can have its own row and head
 ### Row Numbering Demo
 This demo shows the usage of custom header and row selectors. The latter uses `rowContext.index` to display row numbers and an `igx-checkbox` bound to `rowContext.selected`.
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -407,6 +408,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-selection-template-numbers',
     styleUrls: ['./hierarchical-grid-selection-template-numbers.component.scss'],
     templateUrl: 'hierarchical-grid-selection-template-numbers.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxRowIslandComponent, IgxHeadSelectorDirective, IgxRowSelectorDirective, IgxCheckboxComponent]
 })
 
@@ -502,7 +504,7 @@ export class HGridSelectionTemplateNumbersSampleComponent {
 ### Conditional Selection Demo
 This demo prevents some rows from being selected using the `rowSelectionChanging` event and a custom template with disabled checkbox for non-selectable rows.
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IRowSelectionEventArgs, IgxColumnComponent, IgxRowSelectorDirective } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -514,6 +516,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-conditional-row-selectors',
     styleUrls: ['./hierarchical-grid-conditional-row-selectors.component.scss'],
     templateUrl: 'hierarchical-grid-conditional-row-selectors.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxRowIslandComponent, IgxRowSelectorDirective, IgxCheckboxComponent]
 })
 

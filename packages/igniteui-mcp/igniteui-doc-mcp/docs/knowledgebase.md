@@ -1,6 +1,6 @@
 # Documentation Processing Knowledgebase
 
-Lessons learned and issues encountered while building the documentation processing pipelines. Entries 1-16 are from the Angular pipeline; entries 17-21 from React; entries 22-26 from WebComponents and cross-platform improvements; entries 27-32 from Blazor, cross-platform architecture, and prompt improvements.
+Lessons learned and issues encountered while building the documentation processing pipelines. Entries 1-16 are from the Angular pipeline; entries 17-22 from React and MCP server; entries 23-28 from WebComponents and cross-platform improvements; entries 29-33 from Blazor, cross-platform architecture, and prompt improvements.
 
 ## 1. LLM Compression: Wrong Component Prefix (Hallucination)
 
@@ -209,7 +209,36 @@ Uses `&&` chaining so any step failure stops the pipeline.
 
 **Rule:** All platform compress prompts need these rules. LLMs have a strong tendency to "improve" code they compress. The prompt must explicitly forbid it.
 
-## 20. LLM Compression: Dropping Complex Examples Entirely
+## 20. FTS4 Ranking Buries Dedicated Feature Docs
+
+**Problem:** The MCP `search_docs` tool returns wrong results — generic grid feature docs (editing, filtering, pinning, etc.) rank higher than the dedicated doc for the feature being queried.
+
+**Root cause:** FTS4's BM25 scoring is distorted by corpus-wide term frequency. In a grid component library, most feature docs share a boilerplate sentence like *"The grid uses virtual scrolling / column pinning / keyboard navigation for..."*. This means almost any feature term appears across a large fraction of the corpus, collapsing its IDF weight. The dedicated feature doc (short, focused) is outscored by long generic docs that mention the term once in passing. Additionally, `search_docs` was using OR between query terms, which made multi-word queries match nearly half the corpus.
+
+Observed example: `grid-virtualization.md` ranked 34th of 89 for query "virtual scroll" — completely outside the 20-result cutoff — while `grid-cell-editing.md` ranked in the top 10.
+
+**Fix applied — two changes:**
+
+1. **Multi-word queries use AND, not OR** (`sanitizeSearchDocsQuery` in `src/tools/doc-tools.ts`):  
+   `"virtual scroll"` → `"virtual" OR "scroll"` (old, 151 matches) → `"virtual" "scroll"` (new, 89 matches). Reduces noise for any multi-word query.
+
+2. **Field-weighted re-ranking** (`LocalDocsProvider.ts` + `DocsController.cs`):  
+   FTS returns up to 200 candidates; each is scored in application code using per-field boosts:
+   - `toc_name` (title) → **+10** per matched term — strongest signal
+   - `keywords` → **+5** — curated metadata written for discoverability
+   - `filename` → **+4** — structural
+   - `summary` → **+3**
+   - content body → 0 (already used by FTS for candidate selection)
+
+   Results are sorted descending by score, then trimmed to 20. This generalizes to any query: a doc titled "Remote Data Operations" immediately scores +10+10 for query "remote data", while unrelated docs score 0.
+
+**Rule — keywords are the primary search signal:** The `keywords` frontmatter field in compressed docs is now the highest-weight signal after the title. The LLM compressor must include the exact natural-language phrases users would search for (e.g. "virtual scroll, virtual scrolling" on the virtualization doc; "infinite scroll, remote data" on the remote data operations doc). Vague or missing keywords directly hurt search quality.
+
+**Rule — `get_doc` aliases for non-mechanical names:** When testing reveals that LLMs consistently guess the wrong doc name (e.g. `"virtualization"` instead of `"grid-virtualization"`, `"remote-data-operations"` instead of `"grid-remote-data-operations"`), add an alias to `DOC_ALIASES` in `src/tools/doc-tools.ts`. For bare grid feature names that simply lack the `grid-` prefix, a generic fallback in `index.ts` automatically tries `grid-{name}` on a miss — no alias needed per feature.
+
+**Rule — the fix generalises:** Do not add per-query or per-feature heuristics. The field-boost scoring handles any future query automatically as long as the compressed docs have accurate `toc_name`, `keywords`, and `summary` frontmatter.
+
+## 21. LLM Compression: Dropping Complex Examples Entirely
 
 **Problem:** When a section has a large, complex code example (e.g. accordion customization showing IgrCheckbox, IgrRangeSlider, IgrDateTimeInput, IgrRating, IgrRadioGroup, and `registerIconFromText` in 260 lines), the LLM sometimes deletes the entire example and replaces it with a text pointer like "see the product examples". This loses the most instructive content in the doc.
 
@@ -220,7 +249,7 @@ Uses `&&` chaining so any step failure stops the pipeline.
 
 **Rule:** All platform compress prompts should include this. The LLM defaults to dropping content it can't easily shrink. The prompt must make clear that a trimmed 30-line version of a 260-line example is far more valuable than no example at all.
 
-## 21. LLM Compression: Code Block Self-Consistency
+## 22. LLM Compression: Code Block Self-Consistency
 
 **Problem:** The LLM removes variable definitions, data model fields, or component props from code blocks while keeping code that references them. Examples: removing `const mods = [...]` while keeping `mods.forEach(...)`, removing `highLA`/`lowLA` fields from a data model while keeping `lowMemberPath="lowLA"` in JSX, removing `name` prop from `<IgrDataToolTipLayer>`.
 
@@ -230,7 +259,7 @@ Uses `&&` chaining so any step failure stops the pipeline.
 
 **Rule:** All platform compress prompts need this. The LLM optimizes for size reduction without checking referential integrity. Broken code examples are worse than verbose ones.
 
-## 22. Token Counting with js-tiktoken
+## 23. Token Counting with js-tiktoken
 
 **Context:** Compressed docs are served to LLMs via the MCP server. Knowing the token count per file is essential for understanding context window consumption and budgeting.
 
@@ -244,7 +273,7 @@ Tokens are counted for all files including skipped (below min-size threshold) an
 
 **Rule:** Any new platform compress script must include token counting. Use the same `encodingForModel("gpt-4o")` call — the encoding is model-agnostic enough for estimation purposes even if the docs are ultimately consumed by a different model.
 
-## 23. Under-Compression on Code-Heavy Files
+## 24. Under-Compression on Code-Heavy Files
 
 **Problem:** Documents that are primarily code with little prose (e.g. `cell-template.md` with a large `GridLiteDataService` class, `bullet-graph.md` with many HTML attribute examples) consistently under-compress. Observed reductions: `cell-template.md` ~15%, `bullet-graph.md` ~35%, `card.md` ~31% — all well below the ~50% target.
 
@@ -254,7 +283,7 @@ Tokens are counted for all files including skipped (below min-size threshold) an
 
 **Rule:** Accept under-compression on code-heavy files as expected behavior. Do not tune the prompt to force deeper cuts — the ~50% target is an average across the full corpus, not a per-file requirement. Data service/utility class method bodies are the one area where deeper trimming is safe (keep signatures + one representative method, `// ...` the rest), but this is better handled in the inject step's `trimDataArrays` than by prompt tuning.
 
-## 24. LLM Compression: Synthesized Code Snippets for Prose-Only Sections
+## 25. LLM Compression: Synthesized Code Snippets for Prose-Only Sections
 
 **Problem:** When a documentation section describes a component feature in prose only (no code example in the original), the LLM occasionally synthesizes a small illustrative code snippet. Example: the WebComponents `card.md` "Outlined cards" section only had prose describing the `outlined` attribute, but the compressed version added `<igc-card outlined><!-- content --></igc-card>`.
 
@@ -262,7 +291,7 @@ Tokens are counted for all files including skipped (below min-size threshold) an
 
 **Rule:** The existing anti-hallucination prompt rule ("Do NOT invent or generate new content") should catch this, but LLMs still do it occasionally for very short/obvious snippets. During validation, flag these as minor issues but don't consider them blockers. The rule "every section that had a code example must keep one" should not be misread as "every section must have a code example" — sections that were prose-only in the original should stay prose-only.
 
-## 25. LLM Compression: Markdown Links Dropped in API References
+## 26. LLM Compression: Markdown Links Dropped in API References
 
 **Problem:** The LLM consistently strips markdown hyperlink syntax from API References and Additional Resources sections. `[Bar Chart](bar-chart.md)` becomes `- Bar Chart` or `Bar Chart (bar-chart.md)`. This was observed across all WebComponents compressed files and likely affects all platforms.
 
@@ -270,7 +299,7 @@ Tokens are counted for all files including skipped (below min-size threshold) an
 
 **Rule:** This is a known LLM behavior — models treat links as verbose boilerplate and strip them for compression. The current prompt doesn't explicitly address link preservation. If link preservation becomes important, add a rule: "Preserve markdown hyperlinks in API References and Additional Resources sections exactly as they appear in the original." For now, accept this as a minor quality trade-off.
 
-## 26. LLM Compression: Header Hierarchy Changes
+## 27. LLM Compression: Header Hierarchy Changes
 
 **Problem:** The LLM occasionally changes heading levels during compression — demoting `##` headers to `###` (e.g. in `area-chart.md` where chart variant sections were demoted), promoting `###` to `##` (e.g. Summary section in `card.md`), or merging similar sections under a combined header (e.g. "Stacked 100% Area / Spline Area"). Observed across WebComponents files.
 
@@ -278,7 +307,7 @@ Tokens are counted for all files including skipped (below min-size threshold) an
 
 **Rule:** The compress prompt says "preserve all markdown headers" but doesn't explicitly forbid changing their levels or merging them. If header fidelity is important, add: "Do not change heading levels (##, ###, ####) — keep them exactly as in the original. Do not merge separate sections into combined headers." For now this is a minor issue since the MCP server doesn't use header hierarchy for indexing.
 
-## 27. Blazor Sample File Types and Skip List
+## 28. Blazor Sample File Types and Skip List
 
 **Context:** Blazor samples use a different file structure than React (`.tsx`) or WebComponents (`.html`/`.ts`). The inject script must handle Blazor-specific extensions and skip boilerplate files.
 
@@ -291,7 +320,7 @@ Tokens are counted for all files including skipped (below min-size threshold) an
 
 **Rule:** Each platform's inject script needs a curated skip list. Blazor has more boilerplate files than React/WC. The skip list prevents project configuration from being inlined into documentation.
 
-## 28. Cross-Platform Architecture: Gulp Build First (Option A)
+## 29. Cross-Platform Architecture: Gulp Build First (Option A)
 
 **Context:** React, WebComponents, and Blazor docs all live in the shared `igniteui-xplat-docs` repo. Rather than reimplementing the complex `MarkdownTransformer` logic (variable replacement from `docConfig.json`, platform conditional sections, code fence filtering, grid template expansion, API link resolution via `apiMap/`), all three pipelines use Option A: run the gulp build first (`buildReact`, `buildWC`, `buildBlazor`), then process the fully-resolved output.
 
@@ -301,7 +330,7 @@ Tokens are counted for all files including skipped (below min-size threshold) an
 
 See `docs/xplat-docs-architecture.md` for detailed analysis of the xplat build system.
 
-## 29. Blazor Naming Inconsistency in docConfig.json
+## 30. Blazor Naming Inconsistency in docConfig.json
 
 **Problem:** In `docConfig.json`, the `{GridName}` replacement values for Blazor are inconsistent — only the base `GridName` has the `Igb` prefix (`IgbGrid`), while the others use unprefixed names (`TreeGrid`, `PivotGrid`, `HierarchicalGrid`). However, in actual Blazor code, component **tags** always use the `Igb` prefix: `<IgbGrid>`, `<IgbTreeGrid>`, `<IgbPivotGrid>`.
 
@@ -309,7 +338,7 @@ See `docs/xplat-docs-architecture.md` for detailed analysis of the xplat build s
 
 **Rule:** Be aware of this inconsistency when validating Blazor compressed docs. The compress prompt correctly specifies `Igb` prefix with no suffix, but validation shouldn't flag prose mentions of unprefixed grid names inherited from `docConfig.json` replacements.
 
-## 30. Xplat toc.json vs Angular toc.yml
+## 31. Xplat toc.json vs Angular toc.yml
 
 **Context:** Angular uses `toc.yml` (YAML, flat list with `name`, `href`, `premium` fields). React, WebComponents, and Blazor share `toc.json` (JSON, hierarchical with `exclude` arrays for platform filtering).
 
@@ -321,7 +350,7 @@ This is the opposite logic from what you might expect — `exclude` means "hide 
 
 **Rule:** When adding a new platform, filter toc.json entries by checking `!entry.exclude?.includes("PlatformName")`. The platform names are case-sensitive: `"Angular"`, `"React"`, `"WebComponents"`, `"Blazor"`.
 
-## 31. Backtick Sample Syntax vs code-view Tags
+## 32. Backtick Sample Syntax vs code-view Tags
 
 **Problem:** The xplat source docs use a backtick syntax for sample references (`` `sample="/gauges/bullet-graph/animation", height="155"` ``), not `<code-view>` tags like Angular. However, the xplat gulp build converts these backtick references into `<code-view>` HTML tags with `iframe-src` and `github-src` attributes during the build step.
 
@@ -329,7 +358,7 @@ This is the opposite logic from what you might expect — `exclude` means "hide 
 
 **Rule:** Always process post-build output (not raw source) for xplat platforms. The backtick-to-code-view conversion is handled by the gulp build, and the `github-src` attribute is the primary mechanism for locating sample files across all xplat platforms.
 
-## 32. LLM Compression: Variant Sections Merged and Examples Dropped
+## 33. LLM Compression: Variant Sections Merged and Examples Dropped
 
 **Problem:** In docs that cover multiple sub-types of the same component family (e.g., `area-chart.md` with Stacked Area, Stacked 100% Area, Stacked Spline Area, Stacked 100% Spline Area), the LLM treats these as "minor variations of the same pattern" and merges their sections under a combined heading (e.g., "### Stacked Area / Stacked Spline / Stacked 100% Variants"). This causes two issues simultaneously: header hierarchy changes (KB #26) and dropped examples (KB #20), since the merged section keeps only one example for all variants.
 

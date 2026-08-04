@@ -13,7 +13,7 @@ The sample below demonstrates the Grid performance when all records are updated 
 Feed the same data into the [Line Chart](../charts/types/line-chart.md) to experience the powerful charting capabilities of Ignite UI for Angular. The `Chart` button will show `Category Prices per Region` data for the selected rows and the `Chart` column button will show the same for the current row.
 <code-view style="height:700px"
            data-demos-base-url="{environment:lobDemosBaseUrl}"
-           iframe-src="{environment:lobDemosBaseUrl}/grid-finjs?theme-switch=false/" alt="Angular Live-data Update Example">
+           iframe-src="{environment:lobDemosBaseUrl}/grid-finjs/grid-finjs-sample?theme-switch=false/" alt="Angular Live-data Update Example">
 </code-view>
 ## Data binding and updates
 A service provides data to the component when the page loads, and when the slider controller is used to fetch a certain number of records. While in a real scenario updated data would be consumed from the service, here data is updated in code. This is done to keep the demo simple and focus on its main goal - demonstrate the grid performance.
@@ -50,7 +50,7 @@ The purpose of this demo is to showcase a financial screen board with Real-time 
 As you can see the igxGrid component handles with ease the high-frequency updates from the server. The code for the ASP.NET Core application using SignalR could be found in this [public GitHub repository](https://github.com/IgniteUI/finjs-web-api).
 ```typescript
 /* eslint-disable max-len */
-import { AfterViewInit, ChangeDetectorRef, Component, ComponentFactoryResolver, ElementRef, Renderer2, OnDestroy, OnInit, DoCheck, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Renderer2, OnDestroy, OnInit, DoCheck, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AbsoluteScrollStrategy, ConnectedPositioningStrategy, DefaultSortingStrategy, GridColumnDataType, IgxOverlayOutletDirective, OverlaySettings, SortingDirection } from 'igniteui-angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -75,13 +75,13 @@ import { AsyncPipe, CurrencyPipe } from '@angular/common';
     templateUrl: './grid-finjs-dock-manager.component.html',
     styleUrls: ['./grid-finjs-dock-manager.component.scss'],
     imports: [IgxSwitchComponent, FormsModule, IgxSelectComponent, IgxLabelDirective, IgxPrefixDirective, IgxIconComponent, IgxSelectItemComponent, IgxButtonDirective, IgxOverlayOutletDirective, IgxGridComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxPaginatorComponent, GridHostDirective, AsyncPipe, CurrencyPipe],
+    changeDetection: ChangeDetectionStrategy.Eager,
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterViewInit, DoCheck {
     dataService = inject(SignalRService);
     private paneService = inject(FloatingPanesService);
     private cdr = inject(ChangeDetectorRef);
-    private componentFactoryResolver = inject(ComponentFactoryResolver);
     private elementRef = inject(ElementRef);
     private renderer = inject(Renderer2);
 
@@ -340,8 +340,7 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
         this.cdr.detectChanges();
 
         // Create Dock Slot Component
-        const dockSlotComponentFactory = this.componentFactoryResolver.resolveComponentFactory(DockSlotComponent);
-        const dockSlotComponent = this.host.viewContainerRef.createComponent(dockSlotComponentFactory);
+        const dockSlotComponent = this.host.viewContainerRef.createComponent(DockSlotComponent);
         dockSlotComponent.instance.id = id;
         dockSlotComponent.instance.viewInit.pipe(first()).subscribe(() => {
             const gridViewContainerRef = dockSlotComponent.instance.gridHost.viewContainerRef;
@@ -350,10 +349,9 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
     }
 
     public loadGridComponent(viewContainerRef: ViewContainerRef, destructor: Subject<any>) {
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(IgxGridComponent);
         viewContainerRef.clear();
 
-        const componentRef = viewContainerRef.createComponent(componentFactory);
+        const componentRef = viewContainerRef.createComponent(IgxGridComponent);
         const grid = (componentRef.instance as IgxGridComponent);
         grid.autoGenerate = true;
         this.dataService.data.pipe(takeUntil(destructor)).subscribe(d => grid.data = d);

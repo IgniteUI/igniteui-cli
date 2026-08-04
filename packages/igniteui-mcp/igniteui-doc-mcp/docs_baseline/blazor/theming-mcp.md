@@ -19,7 +19,7 @@ _tocName: Theming MCP
 
 The Ignite UI Theming MCP server gives AI assistants the knowledge and tools to produce accurate theming code, including palettes with proper shade generation, typography, elevations, component design token overrides, and more.
 
-The server supports all four Ignite UI design systems (**Material**, **Bootstrap**, **Fluent**, and **Indigo**) in both light and dark variants. While this guide focuses on Blazor, the MCP server also works with all Ignite UI component libraries from Infragistics. The `detect_platform` tool reads your `package.json` and selects the correct import paths and selectors automatically.
+The server supports all four Ignite UI design systems (**Material**, **Bootstrap**, **Fluent**, and **Indigo**) in both light and dark variants. While this guide focuses on Blazor, the MCP server also works with all Ignite UI component libraries from Infragistics. The `detect_platform` tool identifies the project framework and selects the correct import paths and selectors automatically. For Blazor projects, which have no `package.json`, it returns `generic` - tell the AI explicitly: _"Use the Blazor platform."_
 
 Most tools can produce either **Sass** or **CSS** output. Sass output is the default and integrates with the `igniteui-theming` Sass module. CSS output generates ready-to-use CSS custom properties and can be used **without a local Sass toolchain** - the server compiles it for you.
 
@@ -40,18 +40,15 @@ The Ignite UI Theming MCP works alongside the Ignite UI CLI MCP. In practice, th
 Before configuring the MCP server, make sure you have:
 
 - **Node.js** (v18 or later) installed. This provides the `npx` command used to launch the server.
-- A project with an **Ignite UI package** listed as a dependency in `package.json`.
+- A project with the **`IgniteUI.Blazor`** NuGet package installed.
 - An **AI client with MCP support** - for example, VS Code with GitHub Copilot, Cursor, Claude Desktop, Claude Code, or a JetBrains IDE with the AI Assistant plugin.
 
-If you do not have Ignite UI Theming installed yet, run:
-
-```bash
-npm install igniteui-theming
-```
+> [!NOTE]
+> The Theming MCP server is an npm package launched directly via `npx` - no local npm install is required in your Blazor project. `npx -y` fetches it from the npm registry on first use and caches it automatically.
 
 ## Setup
 
-The MCP server is bundled with the `igniteui-theming` package and launched via `npx`. No separate installation is needed beyond having an Ignite UI package already in your project.
+The MCP server is launched via `npx` directly from the npm registry. It is not bundled with the `IgniteUI.Blazor` NuGet package - `npx -y` fetches and caches it automatically on first use.
 
 The canonical launch command is:
 
@@ -237,7 +234,7 @@ Here is a brief overview of each tool:
 
 | Tool | Description |
 |------|-------------|
-| `detect_platform` | Reads `package.json` and identifies whether the project uses Ignite UI for Angular, Web Components, React, or Blazor. Selects the correct import paths and component selectors for all subsequent tools. |
+| `detect_platform` | Identifies the project framework and selects the correct import paths and selectors. For Angular, React, and Web Components projects, reads `package.json`. For Blazor projects, which do not have a `package.json`, returns `generic` - tell the AI explicitly: _"Use the Blazor platform."_ |
 | `create_palette` | Generates a color palette with automatic shade variants (50-900, A100-A700) from your base brand colors. Accepts an `output` parameter (`sass` or `css`) and a `designSystem` to select the schema. |
 | `create_custom_palette` | Fine-grained palette creation. Specify exact hex values for every shade when automatic generation is not suitable. |
 | `create_typography` | Sets up a font family and type scale for a given design system. |
@@ -263,6 +260,12 @@ The following scenarios show what you can ask the AI to do once the MCP server i
 > _"I'm starting a new Blazor project with Ignite UI. Create a complete Material Design light theme with primary #2563eb, secondary #f97316, and Roboto font."_
 
 The AI will call `create_theme` and return a ready-to-use `styles.scss` file. The generated output will look similar to this:
+
+The Theming MCP generates **CSS custom properties** for Blazor projects. Tell the AI explicitly to use the Blazor platform and request CSS output:
+
+> _"Create a complete Material Design light theme for my Blazor app with primary #2563eb and secondary #f97316. Use the Blazor platform and generate CSS output."_
+
+Apply the generated CSS in your `wwwroot/css/app.css`.
 
 ### Dark Mode Variant
 
@@ -290,7 +293,7 @@ The AI will call `set_spacing` scoped to the calendar component and `set_size` a
 
 **Platform not detected**
 
-If `detect_platform` returns `null` or `generic`, make sure your `package.json` lists an Ignite UI package (e.g., `IgniteUI.Blazor`) as a dependency. You can also tell the AI explicitly: _"Use the Blazor platform."_
+Blazor projects do not have a `package.json`, so `detect_platform` will always return `generic`. Tell the AI explicitly: _"Use the Blazor platform."_
 
 **Luminance warning on colors**
 

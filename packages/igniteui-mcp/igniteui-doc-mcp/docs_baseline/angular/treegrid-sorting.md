@@ -14,7 +14,7 @@ In Ignite UI for Angular Tree Grid, data sorting is enabled on a per-column leve
 ## Angular Tree Grid Sorting Overview Example
 Additionally there is a custom context menu added for sorting using **igx-tree-grid**'s [`contextMenu`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=contextMenu) Output.
 ```typescript
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { DefaultSortingStrategy, ISortingOptions, SortingDirection } from 'igniteui-angular/core';
 import { IgxTreeGridComponent, IgxTreeGridGroupByAreaComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
@@ -31,6 +31,7 @@ import { TreeGridContextmenuComponent } from './tree-grid-contextmenu/tree-grid-
     selector: 'app-tree-grid-sorting-sample',
     styleUrls: ['./tree-grid-sorting-sample.component.scss'],
     templateUrl: 'tree-grid-sorting-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxButtonDirective, IgxGridToolbarActionsComponent, IgxSimpleComboComponent, FormsModule, IgxComboClearIconDirective, IgxComboItemDirective, IgxTreeGridGroupByAreaComponent, IgxColumnComponent, IgxCellTemplateDirective, TreeGridContextmenuComponent, UpperCasePipe]
 })
 
@@ -180,7 +181,7 @@ Having a certain amount of sorted columns could be really confusing if there is 
 The **IgxTreeGrid** provides a solution for this problem by indicating the index of each sorted column.
 @@if(igxName === "IgxGrid"){
 ```typescript
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { DefaultSortingStrategy } from 'igniteui-angular/core';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -192,6 +193,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-sorting-indicators',
     templateUrl: './grid-sorting-indicators.component.html',
     styleUrls: ['./grid-sorting-indicators.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class GridSortingIndicatorsComponent implements OnInit, AfterViewInit {
@@ -349,7 +351,7 @@ The last step is to **include** the component mixins:
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DefaultSortingStrategy, SortingDirection } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -361,6 +363,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-sorting-styling',
     styleUrls: ['./tree-grid-sorting-styling.component.scss'],
     templateUrl: 'tree-grid-sorting-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 
@@ -426,8 +429,8 @@ export class TreeGridSortingStylingComponent implements OnInit {
 @use "igniteui-angular/theming" as *;
 
 $custom-theme: grid-theme(
-  $sorted-header-icon-color: #ffb06a,
-  $sortable-header-icon-hover-color: black
+  $sorted-header-icon-color: #dc38e8,
+  $sortable-header-icon-hover-color: #5d1461
 );
 
 :host {

@@ -21,7 +21,7 @@ The following Ignite UI for Blazor Tile Manager Example shows the component in a
 <div class="container sample center">
     <IgbTileManager ColumnCount="3" Gap="20px" ResizeMode="TileManagerResizeMode.Always" DragMode="TileManagerDragMode.TileHeader">
         <IgbTile RowSpan="3">
-            <h3 slot="title">Order info</h3>
+            <span slot="title">Order info</span>
             <IgbList Class="list">
                 <IgbListItem>
                     <IgbAvatar slot="start" Shape="AvatarShape.Circle" Class="avatar">
@@ -80,7 +80,7 @@ The following Ignite UI for Blazor Tile Manager Example shows the component in a
             </IgbList>
         </IgbTile>
         <IgbTile ColSpan="2" RowSpan="2">
-            <h3 slot="title">Order Line Items</h3>
+            <span slot="title">Order Line Items</span>
             <div class="group">
                 <IgbCard Class="card">
                     <div class="group_1">
@@ -90,7 +90,7 @@ The following Ignite UI for Blazor Tile Manager Example shows the component in a
                                     <IgbIcon @ref="IconRef" IconName="product" Collection="material" Class="material-icons"></IgbIcon>
                                 </IgbAvatar>
                             </div>
-                            <h3 slot="title">Carnavon Tigers</h3>
+                            <span slot="title">Carnavon Tigers</span>
                         </IgbCardHeader>
                         <IgbCardContent Class="column">
                             <div class="body-content">
@@ -110,7 +110,7 @@ The following Ignite UI for Blazor Tile Manager Example shows the component in a
                                     <IgbIcon @ref="IconRef" IconName="product" Collection="material" Class="material-icons"></IgbIcon>
                                 </IgbAvatar>
                             </div>
-                            <h3 slot="title">Guarana Fantastica</h3>
+                            <span slot="title">Guarana Fantastica</span>
                         </IgbCardHeader>
                         <IgbCardContent Class="column">
                             <div class="body-content">
@@ -130,7 +130,7 @@ The following Ignite UI for Blazor Tile Manager Example shows the component in a
                                     <IgbIcon @ref="IconRef" IconName="product" Collection="material" Class="material-icons"></IgbIcon>
                                 </IgbAvatar>
                             </div>
-                            <h3 slot="title">Vegie-spread</h3>
+                            <span slot="title">Vegie-spread</span>
                         </IgbCardHeader>
                         <IgbCardContent Class="column">
                             <div class="body-content">
@@ -150,7 +150,7 @@ The following Ignite UI for Blazor Tile Manager Example shows the component in a
                                     <IgbIcon @ref="IconRef" IconName="product" Collection="material" Class="material-icons"></IgbIcon>
                                 </IgbAvatar>
                             </div>
-                            <h3 slot="title">Rhonbrau Klosterbier</h3>
+                            <span slot="title">Rhonbrau Klosterbier</span>
                         </IgbCardHeader>
                         <IgbCardContent Class="column">
                             <div class="body-content">
@@ -165,13 +165,13 @@ The following Ignite UI for Blazor Tile Manager Example shows the component in a
             </div>
         </IgbTile>
         <IgbTile>
-            <h3 slot="title">Order Value</h3>
+            <span slot="title">Order Value</span>
             <div class="string">
                 <h1>$8.66K</h1>
             </div>
         </IgbTile>
         <IgbTile>
-            <h3 slot="title">Item quantity</h3>
+            <span slot="title">Item quantity</span>
             <div class="string">
                 <h1>4</h1>
             </div>
@@ -436,15 +436,15 @@ You also have the option to disable both action buttons and create custom ones a
     <IgbIcon @ref="@RegisterIconRef" />
     <IgbTileManager ColumnCount="2" Gap="20px">
         <IgbTile>
-            <h3 slot="title">Default Actions</h3>
+            <span slot="title">Default Actions</span>
             <p>This tile has default actions and title.</p>
         </IgbTile>
         <IgbTile DisableFullscreen="true">
-            <h3 slot="title">No Fullscreen Action</h3>
+            <span slot="title">No Fullscreen Action</span>
             <p>Fullscreen is disabled via property.</p>
         </IgbTile>
         <IgbTile DisableFullscreen="true" DisableMaximize="true">
-            <h3 slot="title">Custom Actions</h3>
+            <span slot="title">Custom Actions</span>
             <IgbIconButton id="customOne" slot="actions" Variant="IconButtonVariant.Flat" Collection="material" onclick="customOneClick(event)"
             IconName="north_east" aria-label="north_east"></IgbIconButton>
             <p>Replace the default actions with custom ones, and include extra actions when the tile is maximized.</p>
@@ -454,7 +454,7 @@ You also have the option to disable both action buttons and create custom ones a
             <p>Display only custom actions in the header.</p>
         </IgbTile>
         <IgbTile DisableFullscreen="true" DisableMaximize="true">
-            <h3 slot="title">Only title</h3>
+            <span slot="title">Only title</span>
             <p>Display only title in the header.</p>
         </IgbTile>
         <IgbTile DisableFullscreen="true" DisableMaximize="true">

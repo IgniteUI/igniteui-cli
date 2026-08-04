@@ -19,10 +19,6 @@ igc-expansion-panel{
     width: 100%;
 }
 ```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
-```
 
 <div class="divider--half"></div>
 
@@ -74,21 +70,18 @@ We can do this by binding to the `igcOpened` and `igcClosed` event emitters:
 
 ```css
 igc-expansion-panel{
-    width: 100%;
-    height: 300px;
+  max-width: 500px;
+  border: 1px solid rgba(171, 171, 171, 0.3);
+  margin-inline-end: auto;
 }
 
 span#fired-event {
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 26px;
-    padding: 1rem 1.5rem;
-    color:white;
-    display: none;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 26px;
+  padding: 1rem 1.5rem;
+  color:white;
+  display: none;
 }
-```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
 <div class="divider--half"></div>
@@ -125,10 +118,6 @@ img {
     width: 100%;
     margin-bottom: 8px;
 }
-```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
 <div class="divider--half"></div>
@@ -209,10 +198,6 @@ igc-expansion-panel::part(title),
 igc-expansion-panel::part(subtitle) {
   color: var(--ig-warn-500);
 }
-```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```css
 igc-button {

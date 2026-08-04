@@ -203,12 +203,12 @@ The MCP server exposes the following tools to AI assistants:
 
 | Tool | Description |
 |------|-------------|
-| `list_components` | List available Ignite UI component docs for a framework |
-| `get_doc` | Fetch full markdown content of a specific component doc |
-| `search_docs` | Full-text search across Ignite UI documentation |
-| `get_api_reference` | Retrieve the full API reference for a component or class |
-| `search_api` | Search API entries by keyword or partial component name |
-| `generate_ignite_app` | Return a setup guide for a new Ignite UI project |
+| `list_components` | List available Ignite UI component docs. Filter by framework and optional keyword match against filename, component name, keywords, or summary. |
+| `get_doc` | Return the full markdown content of a specific component doc by name (e.g., `grid-editing`, `accordion`). |
+| `search_docs` | Full-text search across Ignite UI docs for a specific framework. Supports prefix matching (e.g., `grid*`). |
+| `search_api` | Search Ignite UI API entries by keyword, feature name, or partial component name. |
+| `get_api_reference` | Return the full API reference for a specific Ignite UI component or class by exact name. |
+| `get_project_setup_guide` | Returns setup guides for creating a new Ignite UI project. For Angular/React/Web Components: CLI scaffolding instructions. For Blazor: `dotnet new` + NuGet setup guide. |
 
 ### Testing with MCP Inspector
 
@@ -306,7 +306,7 @@ npm run build-pack
 
 After step 5, `npm pack` from the repo root or `packages/cli/` will produce a tarball with the MCP server, documentation database, and API reference docs all included.
 
-> **Skipping API docs:** If you skip step 3, the MCP server will still work for `list_components`, `get_doc`, `search_docs`, and `generate_ignite_app` tools using the bundled SQLite database. Only the `get_api_reference` and `search_api` tools require API docs.
+> **Skipping API docs:** If you skip step 3, the MCP server will still work for `list_components`, `get_doc`, `search_docs`, and `get_project_setup_guide` tools using the bundled SQLite database. Only the `get_api_reference` and `search_api` tools require API docs.
 
 ## Data Collection
 

@@ -12,7 +12,7 @@ In Ignite UI for Angular Tree Grid, **RowDrag** is initialized on the root `igx-
 ## Angular Tree Grid Row Drag Example
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent, RowType } from 'igniteui-angular/grids/core';
@@ -31,6 +31,7 @@ enum DragIcon {
     selector: 'app-tree-grid-row-drag-base',
     styleUrls: ['tree-grid-row-drag-base.component.scss'],
     templateUrl: 'tree-grid-row-drag-base.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDropDirective, IgxIconComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent]
 })
 export class TreeGridRowDragBaseComponent {
@@ -221,7 +222,7 @@ The drag ghost can be templated using the `IgxRowDragGhost` directive, applied t
 The result of the configuration can be seem below in a `igx-tree-grid` with row dragging and multiple selection enabled. The demo shows the count of the currently dragged rows:
 #### Example Demo
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxRowDragGhostDirective } from 'igniteui-angular/grids/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -234,6 +235,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-multi-row-drag',
     styleUrls: ['tree-grid-multi-row-drag.component.scss'],
     templateUrl: 'tree-grid-multi-row-drag.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDropDirective, IgxIconComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxRowDragGhostDirective]
 })
 export class TreeGridMultiRowDragComponent {
@@ -391,7 +393,7 @@ The result can be seen in the demo below:
 #### Example Demo
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent, IgxDragIndicatorIconDirective, RowType } from 'igniteui-angular/grids/core';
@@ -410,6 +412,7 @@ enum DragIcon {
     selector: 'app-tree-grid-row-drag',
     styleUrls: ['tree-grid-row-drag.component.scss'],
     templateUrl: 'tree-grid-row-drag.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDropDirective, IgxIconComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxDragIndicatorIconDirective]
 })
 export class TreeGridRowDragComponent {
@@ -583,7 +586,7 @@ export class TreeGridRowReorderComponent {
 With these few easy steps, you've configured a grid that allows reordering rows via drag/drop! You can see the above code in action in the following demo.
 Notice that we also have row selection enabled and we preserve the selection when dropping the dragged row.
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { GridSelectionMode, IgxColumnComponent, RowType } from 'igniteui-angular/grids/core';
@@ -596,6 +599,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-row-reorder',
     styleUrls: ['tree-grid-row-reorder.component.scss'],
     templateUrl: 'tree-grid-row-reorder.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxDropDirective, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent]
 })
 export class TreeGridRowReorderComponent {

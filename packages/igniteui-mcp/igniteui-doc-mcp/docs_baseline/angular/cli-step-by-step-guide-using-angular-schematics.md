@@ -64,7 +64,7 @@ Two theme options are available:
 
 <img class="responsive-img" src="../../../images/general/ig-step-by-step-new-project-theme.png" alt="Step by step prompt: choose default or custom theme" />
 
-After completing these four steps, the wizard generates the project structure, initializes a Git repository, and commits the initial state. It then asks whether to finish or continue by adding a component view.
+After completing these four steps, the wizard generates the project structure, then prompts you to [configure AI coding assistants](#ai-assistant-integration). Once AI configuration is complete, a Git repository is initialized and the initial state is committed. The wizard then asks whether to finish or continue by adding a component view.
 
 <img class="responsive-img" src="../../../images/general/ig-step-by-step-new-project-action.png" alt="Step by step prompt: finish or add a view" />
 
@@ -100,6 +100,44 @@ ng g @igniteui/angular-schematics:c [template] [name]
 
 ## AI Assistant Integration
 
-The Ignite UI CLI - which shares the same scaffolding toolchain as these Schematics - includes a built-in MCP server that connects AI coding assistants to live Ignite UI component documentation. If your workflow uses the Ignite UI CLI alongside the Angular CLI, start the server with `ig mcp` after installing the CLI globally.
+After choosing your bootstrapping type, project name, template, and theme, the wizard prompts you to configure AI coding assistant integration. This step runs the same logic as `ng generate @igniteui/angular-schematics:ai-config` but is embedded in the project creation flow.
+
+### Choose coding assistants
+
+You will be prompted to select which coding assistants to configure MCP servers for. Use the SPACE key to toggle selections and ENTER to confirm:
+
+
+
+- **Generic** (Claude Code, VS Code, and others) - writes `.mcp.json`
+- **VS Code** (GitHub Copilot) - writes `.vscode/mcp.json`
+- **Cursor** - writes `.cursor/mcp.json`
+- **Gemini** - writes `.gemini/settings.json`
+- **JetBrains Junie** - writes `.junie/mcp/mcp.json`
+- **None** - skips MCP configuration
+
+The default selection is **Generic**. Selecting **None** skips MCP server configuration entirely.
+
+### Choose AI agents
+
+Next, you will be prompted to select which AI agents to configure skill files and instructions for:
+
+
+
+- **Generic** - `.agents/skills/` and `AGENTS.md`
+- **Claude** - `.claude/skills/` and `.claude/CLAUDE.md`
+- **Copilot** - `.github/skills/` and `.github/copilot-instructions.md`
+- **Cursor** - `.cursor/skills/` and `.cursor/rules/cursor.mdc`
+- **Codex** - `.codex/skills/` and `.codex/instructions.md`
+- **Windsurf** - `.windsurf/skills/` and `.windsurf/rules/guidelines.md`
+- **Gemini** - `.gemini/skills/` and `.gemini/GEMINI.md`
+- **Junie** - `.junie/skills/` and `.junie/guidelines.md`
+- **None** - skips skill files and instructions
+
+The default selections are **Generic** and **Claude**. Selecting **None** skips agent configuration entirely.
+
+When run via the Angular schematic, an additional `angular-cli` MCP server entry is included automatically alongside the Ignite UI servers.
+
+> [!NOTE]
+> To skip AI configuration prompts entirely during non-interactive project creation, pass `--assistants none --agents none` to `ng new`. To re-run AI configuration later, use `ng generate @igniteui/angular-schematics:ai-config` from the project root.
 
 For MCP client configuration and a full description of available tools, see [Ignite UI CLI MCP](../../ai/cli-mcp.md).

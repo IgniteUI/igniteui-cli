@@ -113,12 +113,13 @@ In the sample below, you’ll see a 404 page built entirely with Tailwind utilit
 > You can see how to style each component by checking out the **Styling** section in its respective documentation topic.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     standalone: true,
     selector: 'app-tailwind-sample',
     styleUrls: ['./tailwind-sample.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './tailwind-sample.component.html'
 })
 

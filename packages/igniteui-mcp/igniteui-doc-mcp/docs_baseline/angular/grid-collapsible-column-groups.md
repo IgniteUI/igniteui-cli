@@ -10,7 +10,7 @@ _premium: true
 Multi-column headers allow you to have multiple levels of nested columns and column groups. They also provide the ability to mark each column group as **collapsible**. **Collapsible multi-column headers** make it possible to collapse/expand, i.e. to show and hide the nested headers under the current one, which will give you a shortened/summarized information for example.
 ## Angular Grid Collapsible Column Groups Overview Example
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxCollapsibleIndicatorTemplateDirective, IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -23,6 +23,7 @@ import { DatePipe } from '@angular/common';
     selector: 'app-grid-collapsible-column-groups',
     styleUrls: ['./grid-collapsible-column-groups.component.scss'],
     templateUrl: './grid-collapsible-column-groups.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnGroupComponent, IgxCollapsibleIndicatorTemplateDirective, IgxIconComponent, IgxTooltipTargetDirective, IgxTooltipDirective, IgxColumnComponent, IgxCellTemplateDirective, DatePipe]
 })
 export class GridCollapsibleColumnGroupsComponent implements OnInit {

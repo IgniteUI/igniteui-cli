@@ -29,7 +29,7 @@ Additionally, a way to prevent the drop-down from closing on chip deletion would
 ### Demo
 
 ```typescript
-import { AfterViewInit, Component, DoCheck, OnInit, ViewChild, ElementRef, PLATFORM_ID, inject } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, OnInit, ViewChild, ElementRef, PLATFORM_ID, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IBaseChipEventArgs, IgxChipComponent, IgxChipsAreaComponent } from 'igniteui-angular/chips';
 import { IgxDropDownComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
 import { ITreeNodeSelectionEvent, IgxTreeComponent, IgxTreeNodeComponent } from 'igniteui-angular/tree';
@@ -45,6 +45,7 @@ import { isPlatformBrowser } from '@angular/common';
     selector: 'app-dropdown-tree-hierarchical-selection',
     styleUrls: ['./dropdown-tree-hierarchical-selection.component.scss'],
     templateUrl: './dropdown-tree-hierarchical-selection.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxIconComponent, IgxChipsAreaComponent, IgxChipComponent, IgxDropDownComponent, IgxTreeComponent, IgxTreeNodeComponent]
 })
 export class DropdownTreeHierarchicalSelectionComponent implements OnInit, DoCheck, AfterViewInit {
@@ -145,7 +146,7 @@ igx-chip {
 ```
 
 ```typescript
-import { AfterViewInit, Component, ElementRef, OnInit, PLATFORM_ID, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, PLATFORM_ID, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IBaseChipEventArgs, IgxChipComponent, IgxChipsAreaComponent } from 'igniteui-angular/chips';
 import { IgxDropDownComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
 import { ConnectedPositioningStrategy, OverlaySettings } from 'igniteui-angular/core';
@@ -162,6 +163,7 @@ import { isPlatformBrowser } from '@angular/common';
     selector: 'app-dropdown-tree-grid-hierarchical-selection',
     styleUrls: ['./dropdown-tree-grid-hierarchical-selection.component.scss'],
     templateUrl: './dropdown-tree-grid-hierarchical-selection.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxIconComponent, IgxChipsAreaComponent, IgxChipComponent, IgxDropDownComponent, IgxTreeGridComponent, IgxColumnComponent]
 })
 export class DropdownTreeGridHierarchicalSelectionComponent implements OnInit, AfterViewInit {

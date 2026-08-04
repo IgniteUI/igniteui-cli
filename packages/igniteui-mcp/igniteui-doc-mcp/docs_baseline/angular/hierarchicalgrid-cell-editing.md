@@ -12,7 +12,7 @@ Ignite UI for Angular Hierarchical Grid component provides a great data manipula
 ## Angular Hierarchical Grid cell editing and edit templates Example
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxNumberSummaryOperand } from 'igniteui-angular/grids/core';
@@ -53,6 +53,7 @@ class MySummary {
     selector: 'app-hierarchical-grid-editing',
     styleUrls: ['./hierarchical-grid-editing.component.scss'],
     templateUrl: 'hierarchical-grid-editing.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxIconButtonDirective, IgxIconComponent, IgxRowIslandComponent, IgxDialogComponent, IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxCheckboxComponent]
 })
 
@@ -262,7 +263,7 @@ If you want to provide a custom template which will be applied when a cell is in
 This code is used in the sample below which implements an [`IgxSelectComponent`](../select.md) in the cells of the `Race`, `Class` and `Alignment` columns.
 ```typescript
 import { Character } from './characters';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellEditorTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
@@ -275,6 +276,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-grid-select-sample',
     styleUrls: ['./grid-select-sample.component.scss'],
     templateUrl: './grid-select-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxColumnComponent, IgxCellEditorTemplateDirective, IgxSelectComponent, FormsModule, IgxFocusDirective, IgxSelectItemComponent]
 })
 export class GridSelectComponent implements OnInit {
@@ -440,7 +442,7 @@ export class MyHGridEventsComponent {
 Here, we are validating two columns. If the user tries to change an artist's **Debut** year or an album's **Launch Date**, the grid will not allow any dates that are greater than today.
 The result of the above validation being applied to our `igx-hierarchical-grid` can be seen in the below demo:
 ```typescript
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IGridCreatedEventArgs, IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IGridEditEventArgs, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxToastComponent } from 'igniteui-angular/toast';
@@ -455,6 +457,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-editing-events',
     styleUrls: ['./hierarchical-grid-editing-events.component.scss'],
     templateUrl: 'hierarchical-grid-editing-events.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent, IgxToastComponent]
 })
 
@@ -570,7 +573,7 @@ The easiest way to apply our theme is with a `sass` `@include` statement in the 
 ### Demo
 In addition to the steps above, we can also style the controls that are used for the cells' editing templates: [`input-group`](../input-group.md#styling), [`datepicker`](../date-picker.md#styling) & [`checkbox`](../checkbox.md#styling)
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { SINGERS } from '../../data/singersData';
@@ -581,6 +584,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-editing-style',
     styleUrls: ['./hierarchical-grid-editing-style.component.scss'],
     templateUrl: 'hierarchical-grid-editing-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent]
 })
 
@@ -641,9 +645,21 @@ $color-palette: palette(
 
 $grid-theme: grid-theme(
   $cell-editing-background: $blue,
+  $cell-editing-foreground: $white,
+  $cell-active-border-color: $blue,
   $cell-edited-value-color: $white,
-  $cell-active-border-color: $white,
-  $edit-mode-color: color($color-palette, "secondary", 200)
+  $edit-mode-color: color($color: "secondary", $variant: 200)
+);
+
+$checkbox-theme: checkbox-theme(
+  $empty-color: color($color: "secondary", $variant: 200),
+  $fill-color: $white,
+  $tick-color: $blue
+);
+
+$datepicker-theme: calendar-theme(
+  $date-selected-foreground: $white,
+  $date-selected-background: $blue
 );
 
 $input-theme: input-group-theme(
@@ -656,26 +672,12 @@ $input-theme: input-group-theme(
   $box-background: $blue
 );
 
-$checkbox-theme: checkbox-theme(
-  $empty-color: color($color-palette, "secondary", 200),
-  $fill-color: $white,
-  $tick-color: $blue
-);
-
-$datepicker-theme: calendar-theme(
-  $date-selected-foreground: $white,
-  $date-selected-background: $blue
-);
-
-:host {
+igx-hierarchical-grid {
+    @include palette($color-palette);
     @include tokens($grid-theme);
     @include tokens($checkbox-theme);
-    @include tokens($input-theme);
     @include tokens($datepicker-theme);
-}
-
-igx-hierarchical-grid {
-  @include palette($color-palette);
+    @include tokens($input-theme);
 }
 ```
 >[!NOTE]

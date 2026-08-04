@@ -353,7 +353,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 <div class="divider--half"></div>
 
 The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=transitionDuration) property.
@@ -526,7 +525,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Highlight Value
 
 The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the [`value`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=value) appear with a lower opacity. A good example is if [`value`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=value) is 50 and  [`highlightValue`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=highlightValue) is set to 25. This would represent a performance of 50% regardless of what the value of [`targetValue`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=targetValue) is set to. To enable this first set [`highlightValueDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=highlightValue) to something lower than [`value`](mcp:get_api_reference?platform=angular&component=IgxBulletGraphComponent&member=value).
@@ -626,7 +624,6 @@ export class AppComponent implements OnInit {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Comparative Ranges
 
@@ -739,7 +736,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Tick Marks
 
 The tick marks serve as a visual division of the scale into intervals in order to increase the readability of the bullet graph.
@@ -845,7 +841,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Labels
 
 The labels indicate the measures on the scale.
@@ -937,7 +932,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Backing
 
 The backing element represents background and border of the bullet graph component. It is always the first element rendered and all the rest of elements such as labels, and tick marks are overlaid on top of it.
@@ -1025,7 +1019,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Scale
 
@@ -1115,7 +1108,6 @@ export class AppComponent {
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## Summary
 

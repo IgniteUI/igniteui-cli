@@ -132,31 +132,23 @@ With the `Prefix` and `Suffix` parts of the [`IgbChip`](mcp:get_api_reference?pl
 
 <div class="container sample center size-medium" style="flex-direction: row; gap: 8px">
     <IgbChip Selectable="true" Removable="true" RemoveScript="handleChipRemove">
-        <span slot="select">
-            <IgbIcon @ref="@SelectIconRef" IconName="custom-select" Collection="material" ></IgbIcon>
-        </span>
+        <IgbIcon slot="select" @ref="@SelectIconRef" IconName="custom-select" Collection="material" ></IgbIcon>
         Custom Icons
     </IgbChip>
 
     <IgbChip Selectable="false" Removable="false">
-         <span slot="start">
-            <IgbIcon @ref="@BrushIconRef" IconName="brush" Collection="material" ></IgbIcon>
-        </span>
+        <IgbIcon slot="start" @ref="@BrushIconRef" IconName="brush" Collection="material" ></IgbIcon>
         Start Slot
     </IgbChip>
 
     <IgbChip Selectable="false" Removable="false">
          End Slot
-        <span slot="end">
-            <IgbIcon @ref="@BrickWallIconRef" IconName="brick-wall" Collection="material"></IgbIcon>
-        </span>
+        <IgbIcon slot="end" @ref="@BrickWallIconRef" IconName="brick-wall" Collection="material"></IgbIcon>
     </IgbChip>
 
     <IgbChip Disabled="true">
          Disabled Slot
-        <span slot="end">
-            <IgbIcon @ref="@DogIconRef" IconName="dog-icon" Collection="material" ></IgbIcon>
-        </span>
+        <IgbIcon slot="end" @ref="@DogIconRef" IconName="dog-icon" Collection="material" ></IgbIcon>
     </IgbChip>
 </div>
 

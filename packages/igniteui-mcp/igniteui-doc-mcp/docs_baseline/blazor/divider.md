@@ -57,7 +57,7 @@ The [`IgbDivider`](mcp:get_api_reference?platform=blazor&component=IgbDivider) i
 If the [`Vertical`](mcp:get_api_reference?platform=blazor&component=IgbDivider&member=Vertical) attribute is set the direction of the divider would be changed from horizontal to vertical.
 
 ```razor
-<igrDivider Vertical></igrDivider>
+<IgbDivider vertical></IgbDivider>
 ```
 
 ```razor

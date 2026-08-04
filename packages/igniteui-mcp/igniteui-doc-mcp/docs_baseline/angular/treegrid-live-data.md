@@ -13,7 +13,7 @@ The Tree Grid component is able to handle thousands of updates per second, while
 The sample below demonstrates the Tree Grid performance when all records are updated multiple times per second. Use the UI controls to choose the number of records loaded and the frequency of updates.
 Feed the same data into the [Line Chart](../charts/types/line-chart.md) to experience the powerful charting capabilities of Ignite UI for Angular. The `Chart` button will show `Category Prices per Region` data for the selected rows and the `Chart` column button will show the same for the current row.
 ```typescript
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, HostBinding, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, OnDestroy, ViewChild, HostBinding, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AbsoluteScrollStrategy, ConnectedPositioningStrategy, DefaultSortingStrategy, HorizontalAlignment, IGroupingExpression, IgxOverlayOutletDirective, OverlaySettings, PositionSettings, TreeGridFilteringStrategy, VerticalAlignment } from 'igniteui-angular/core';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { ITreeGridAggregation, IgxGroupedTreeGridSorting, IgxTreeGridComponent, IgxTreeGridGroupByAreaComponent, IgxTreeGridGroupingPipe } from 'igniteui-angular/grids/tree-grid';
@@ -33,6 +33,7 @@ import { IgxPreventDocumentScrollDirective } from '../../../../../src/app/direct
     selector: 'app-tree-grid-finjs-sample',
     styleUrls: ['./tree-grid-finjs-sample.component.scss'],
     templateUrl: './tree-grid-finjs-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent, FormsModule, IgxButtonGroupComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarPinningComponent, IgxGridToolbarHidingComponent, IgxGridToolbarExporterComponent, IgxTreeGridGroupByAreaComponent, IgxColumnComponent, IgxCellEditorTemplateDirective, IgxSelectComponent, IgxFocusDirective, IgxSelectItemComponent, IgxCellTemplateDirective, IgxIconComponent, IgxOverlayOutletDirective, AsyncPipe, CurrencyPipe, DatePipe, IgxTreeGridGroupingPipe]
 })
 

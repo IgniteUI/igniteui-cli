@@ -63,7 +63,7 @@ Boston Marathon 2021 – In this angular grid example, you can see how users can
 
 
 ```typescript
-import { Component, HostListener, OnDestroy, OnInit, ViewChild, ElementRef, AfterViewInit, DOCUMENT, inject } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, ViewChild, ElementRef, AfterViewInit, DOCUMENT, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { CellType, IgxCellTemplateDirective, IgxColumnComponent, IgxNumberSummaryOperand } from 'igniteui-angular/grids/core';
 import { AbsolutePosition, IgxOverlayService, IgxStringFilteringOperand, IgxSummaryResult, OverlayClosingEventArgs, OverlaySettings } from 'igniteui-angular/core';
@@ -83,6 +83,7 @@ import { IgxSparklineCoreModule } from 'igniteui-angular-charts';
     selector: 'app-grid',
     styleUrls: ['./grid.component.scss'],
     templateUrl: './grid.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxInputGroupComponent, IgxInputDirective, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent, IgxBadgeComponent, IgxSparklineCoreModule, IgxCircularProgressBarComponent, NgClass, DecimalPipe]
 })
 export class GridComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -158,7 +159,7 @@ export class GridComponent implements OnInit, OnDestroy, AfterViewInit {
     public ngAfterViewInit(): void {
         this.overlaySettings = IgxOverlayService.createAbsoluteOverlaySettings(
             AbsolutePosition.Center,
-            this.grid1
+            true
         );
         this.overlaySettings.modal = true;
     }
@@ -713,6 +714,12 @@ igx-avatar {
 .grid__wrapper {
     margin: 0 auto;
     padding: 16px;
+
+    &__inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -1322,7 +1329,7 @@ configuration. Same goes for grouping and editing operations with or without tra
 
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { GridColumnDataType } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, IgxGridFooterComponent } from 'igniteui-angular/grids/core';
@@ -1334,6 +1341,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-nested-data-bind2',
     styleUrls: ['./grid-nested-data-bind2.scss'],
     templateUrl: './grid-nested-data-bind2.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxGridFooterComponent]
 })
 export class GridNestedDataBindAminoacidComponent implements OnInit {
@@ -1472,7 +1480,7 @@ And the result from this configuration is:
 
 
 ```typescript
-import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import {EMPLOYEE_DATA} from '../../data/nested-employee-data';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -1486,6 +1494,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-grid-nested-data-bind',
     styleUrls: ['./grid-nested-data-bind.scss'],
     templateUrl: './grid-nested-data-bind.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelDescriptionDirective, IgxExpansionPanelBodyComponent, IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, DatePipe]
 })
 
@@ -1580,7 +1589,7 @@ And the result is:
 
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DATA } from '../../data/customers';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellEditorTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -1592,6 +1601,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-grid-composite-data',
     styleUrls: ['./grid-composite-data.component.scss'],
     templateUrl: './grid-composite-data.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxCellEditorTemplateDirective, IgxInputGroupComponent, FormsModule, IgxInputDirective]
 })
 export class GridCompositeDataComponent implements OnInit {

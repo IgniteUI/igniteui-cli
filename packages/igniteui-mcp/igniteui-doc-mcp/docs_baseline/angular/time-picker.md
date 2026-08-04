@@ -19,7 +19,7 @@ _tocName: Time Picker
 In general, users can enter a preferred time either through text input or by choosing a time value from an Angular Time Picker dropdown. The basic Angular Time Picker example below shows how users can easily enter the value with the help of the dropdown or by using the keyboard.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { PickerInteractionMode } from 'igniteui-angular/core';
 import { IgxTimePickerComponent } from 'igniteui-angular/time-picker';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-timepicker-dropdown',
     styleUrls: ['./timepicker-dropdown.component.scss'],
     templateUrl: './timepicker-dropdown.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTimePickerComponent, FormsModule, IgxLabelDirective]
 })
 export class TimepickerDropdownComponent {
@@ -197,7 +198,7 @@ public date: Date = new Date();
 And here's our templated Ignite UI for Angular Time Picker:
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTimePickerComponent } from 'igniteui-angular/time-picker';
 import { IgxHintDirective, IgxLabelDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxPickerToggleComponent } from 'igniteui-angular/core';
@@ -208,6 +209,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-timepicker-sample-5',
     styleUrls: ['./timepicker-sample-5.component.scss'],
     templateUrl: './timepicker-sample-5.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTimePickerComponent, FormsModule, IgxLabelDirective, IgxPickerToggleComponent, IgxSuffixDirective, IgxIconComponent, IgxHintDirective]
 })
 
@@ -263,7 +265,7 @@ public selectNow(timePicker: IgxTimePickerComponent) {
 And there we have it, a re-templated time picker with dropdown, custom actions and two-way binding support:
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTimePickerComponent } from 'igniteui-angular/time-picker';
 import { IgxPickerActionsDirective, IgxPickerToggleComponent } from 'igniteui-angular/core';
 import { IgxHintDirective, IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -275,6 +277,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-timepicker-sample-6',
     styleUrls: ['./timepicker-sample-6.component.scss'],
     templateUrl: './timepicker-sample-6.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTimePickerComponent, FormsModule, IgxPickerToggleComponent, IgxPrefixDirective, IgxIconComponent, IgxHintDirective, IgxButtonDirective, IgxPickerActionsDirective]
 })
 export class TimePickerSample6Component {
@@ -379,7 +382,7 @@ or just change the [`mode`](mcp:get_api_reference?platform=angular&component=Igx
 In dialog mode, the dialog header displays the currently selected time in the picker's [`input format`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=inputformat). You can change the header position by setting the [`headerOrientation`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=headerOrientation) property.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTimePickerComponent } from 'igniteui-angular/time-picker';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
 
@@ -387,6 +390,7 @@ import { IgxLabelDirective } from 'igniteui-angular/input-group';
     selector: 'app-timepicker',
     styleUrls: ['./timepicker-sample-1.component.scss'],
     templateUrl: './timepicker-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTimePickerComponent, IgxLabelDirective]
 })
 export class TimePickerSample1Component { }
@@ -499,7 +503,7 @@ The dropdown displays values within the min/max range (09:15:30 AM~06:15:30 PM) 
 And there we have it:
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTimePickerComponent } from 'igniteui-angular/time-picker';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxToastComponent } from 'igniteui-angular/toast';
@@ -509,6 +513,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-timepicker',
     styleUrls: ['./timepicker-sample-4.component.scss'],
     templateUrl: './timepicker-sample-4.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTimePickerComponent, FormsModule, IgxLabelDirective, IgxToastComponent]
 })
 export class TimePickerSample4Component {
@@ -552,7 +557,7 @@ In some cases when the [`IgxDatePicker`](date-picker.md) and the IgxTimePicker a
 To achieve that in template driven forms, use the `ngModel` to bind both components to the same Date object.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDatePickerComponent } from 'igniteui-angular/date-picker';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxTimePickerComponent } from 'igniteui-angular/time-picker';
@@ -562,6 +567,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-datetimepicker-template-driven-form',
     styleUrls: ['./template-driven-form.component.scss'],
     templateUrl: './template-driven-form.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDatePickerComponent, FormsModule, IgxLabelDirective, IgxTimePickerComponent]
 })
 export class DateTimePickerTDFSampleComponent {
@@ -614,7 +620,7 @@ export class DateTimePickerTDFSampleComponent {
 In reactive forms, we can handle the [`valueChange`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=valueChange) event of each component and update the value of the other.
 
 ```typescript
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IgxDatePickerComponent } from 'igniteui-angular/date-picker';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
@@ -624,6 +630,7 @@ import { IgxTimePickerComponent } from 'igniteui-angular/time-picker';
     selector: 'app-datetimepicker-reactive-form',
     styleUrls: ['./reactive-form.component.scss'],
     templateUrl: './reactive-form.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, IgxDatePickerComponent, IgxLabelDirective, IgxTimePickerComponent]
 })
 export class DateTimePickerRFSampleComponent {
@@ -763,7 +770,7 @@ Now, the time picker's items are properly rendered **inside** of our component's
 ### Demo
 
 ```typescript
-import { Component, ElementRef, inject } from '@angular/core';
+import { Component, ElementRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTimePickerComponent } from 'igniteui-angular/time-picker';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -772,6 +779,7 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-timepicker',
     styleUrls: ['./timepicker-styling.component.scss'],
     templateUrl: './timepicker-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTimePickerComponent, IgxLabelDirective, IgxButtonDirective]
 })
 export class TimePickerStylingComponent {    element = inject(ElementRef);

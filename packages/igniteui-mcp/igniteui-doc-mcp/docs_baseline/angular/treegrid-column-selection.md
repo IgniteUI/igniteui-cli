@@ -14,7 +14,7 @@ The Column selection feature provides an easy way to select an entire column wit
 The sample below demonstrates the three types of Tree Grid's **column selection** behavior. Use the _column selection_ dropdown below to enable each of the available selection modes.
 *_Units_, _Unit Price_ and _Delivered_ are with disabled column selection.
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-tree-grid-column-selection',
     templateUrl: './tree-grid-column-selection.component.html',
     styleUrls: ['./tree-grid-column-selection.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxSelectComponent, FormsModule, IgxLabelDirective, IgxSelectItemComponent, IgxColumnComponent]
 })
 export class TreeGridColumnSelectionComponent implements OnInit, AfterViewInit {
@@ -91,7 +92,7 @@ export class TreeGridColumnSelectionComponent implements OnInit, AfterViewInit {
         [field] = "c.field"
         [header] = "c.header"
         [selectable] = "c.selectable"
-        [formatter] = "c?.formatter">
+        [formatter] = "$safeNavigationMigration(c?.formatter)">
       </igx-column>
     }
 
@@ -116,7 +117,7 @@ The default selection mode is `none`. If set to `single` or `multiple` all of th
 > [`Multi-column Headers`](multi-column-headers.md) don't reflect on the [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable) input. The [`IgxColumnGroupComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent) is [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=selected) if all of its `selectable` descendants are [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selected).
 *Under _Personal Details_ Column Group only column _ID_ and _Title_ are selectable.
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
 import { generateEmployeeDetailedFlatData } from '../data/employees-flat-detailed';
@@ -126,6 +127,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-column-group-selection',
     templateUrl: './column-group-selection.component.html',
     styleUrls: ['./column-group-selection.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnGroupComponent]
 })
 export class TreeGridColumnGroupSelectionComponent implements OnInit {
@@ -223,7 +225,7 @@ The last step is to include the custom `igx-grid` theme.
 ```
 ### Demo
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { ORDERS_DATA } from '../data/orders';
@@ -234,6 +236,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-column-selection-style',
     templateUrl: './tree-grid-column-selection-style.component.html',
     styleUrls: ['./tree-grid-column-selection-style.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class TreeGridColumnSelectionStylesComponent implements OnInit, AfterViewInit {
@@ -286,7 +289,7 @@ export class TreeGridColumnSelectionStylesComponent implements OnInit, AfterView
         [field] = "c.field"
         [header] = "c.header"
         [selectable] = "c.selectable"
-        [formatter] = "c?.formatter">
+        [formatter] = "$safeNavigationMigration(c?.formatter)">
       </igx-column>
     }
   </igx-tree-grid>
@@ -296,16 +299,27 @@ export class TreeGridColumnSelectionStylesComponent implements OnInit, AfterView
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
-$custom-grid-theme: grid-theme(
-  $row-selected-background: #011627,
-  $row-selected-text-color: #ecaa53,
-  $row-selected-hover-background: #011627,
-  $header-selected-text-color: #ecaa53,
-  $header-selected-background: #011627
+$background: #0b0119;
+$foreground: #eeece1;
+$accent: #f6b560;
+
+$grid-theme: grid-theme(
+	$background: $background,
+	$foreground: $foreground,
+	$accent-color: $accent,
+	
+	$row-selected-background: #012724,
+	$row-selected-text-color: $accent,
+	$header-selected-text-color: $accent,
+	$header-selected-background: #012427,
+	
+	// The intersection between row & column, visible when row is hovered
+	$row-selected-hover-background: hsl(from #012427 h s 10%),
+	$row-selected-hover-text-color: $accent,
 );
 
 :host {
-  @include tokens($custom-grid-theme);
+  @include tokens($grid-theme);
 }
 ```
 >[!NOTE]

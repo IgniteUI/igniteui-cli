@@ -10,13 +10,13 @@ _premium: true
 @@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') {
 The Batch Editing feature of the IgxTreeGrid is based on the [`TransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxTransactionService` and details how it is implemented.
 }
-The Batch Editing feature of the IgxTreeGrid is based on the [`HierarchicalTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicaltransactionservice.html). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxHierarchicalTransactionService` and details how it is implemented.
+The Batch Editing feature of the IgxTreeGrid is based on the [`HierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxHierarchicalTransactionService` and details how it is implemented.
 Below is a detailed example of how is Batch Editing enabled for the Tree Grid component.
 ## Angular Tree Grid Batch Editing and Transactions Example
 The following sample demonstrates a scenario, where the treeGrid has [`batchEditing`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=batchEditing) enabled and has row editing enabled. The latter will ensure that transaction will be added after the entire row edit is confirmed.
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -31,6 +31,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-batch-editing-sample',
     styleUrls: ['tree-grid-batch-editing-sample.component.scss'],
     templateUrl: 'tree-grid-batch-editing-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxButtonDirective, IgxDialogComponent, IgxGridComponent]
 })
 export class TreeGridBatchEditingSampleComponent implements OnInit {
@@ -265,7 +266,7 @@ After batch editing is enabled, define a `IgxTreeGrid` with bound data source an
         (click)="openCommitDialog()">Commit</button>
 ...
 ```
-The following code demonstrates the usage of the [`HierarchicalTransactionService`](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicaltransactionservice.html) API - undo, redo, commit.
+The following code demonstrates the usage of the [`HierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) API - undo, redo, commit.
 ```typescript
 export class TreeGridBatchEditingSampleComponent {
     @ViewChild('treeGrid', { read: IgxTreeGridComponent }) public treeGrid: IgxTreeGridComponent;
@@ -294,7 +295,7 @@ Deleting a parent node in `Tree Grid` has some peculiarities. If you are using a
 > [!NOTE]
 > Disabling [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditable) property will modify `Tree Grid` to create transactions on cell change and will not expose row editing overlay in the UI.
 ## API References
-- [HierarchicalTransactionService](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/classes/igxhierarchicaltransactionservice.html)
+- [HierarchicalTransactionService](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService)
 - [rowEditable](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditable)
 - [IgxTreeGridComponent](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 - [IgxGridComponent](mcp:get_api_reference?platform=angular&component=IgxGridComponent)

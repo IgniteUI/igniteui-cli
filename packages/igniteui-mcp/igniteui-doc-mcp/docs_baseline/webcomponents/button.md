@@ -17,12 +17,9 @@ The Web Components Button Component lets you enable clickable elements that trig
 .button-container {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 20px;
+    align-items: center;
+    height: 100%;
 }
-```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
 ## Usage
@@ -82,6 +79,11 @@ Use the [`variant`](mcp:get_api_reference?platform=webcomponents&component=IgcBu
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-button {
+  width: 40%;
+  margin: auto;
+}
 ```
 
 ### Outlined Button
@@ -95,6 +97,11 @@ All you have to do to create an `outlined` button is to change the value of the 
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-button {
+  width: 40%;
+  margin: auto;
+}
 ```
 
 ### Flat Button
@@ -108,6 +115,16 @@ Analogically, we can switch to `flat` variant.
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+.container {
+  background: var(--ig-surface-600);
+}
+
+igc-button {
+  width: 40%;
+  margin: auto;
+  background: var(--ig-surface-50);
+}
 ```
 
 ### Floating Action Button
@@ -121,6 +138,11 @@ We can create a floating action button by setting the [`variant`](mcp:get_api_re
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-button {
+  width: 40%;
+  margin: auto;
+}
 ```
 
 ## Button Sizing
@@ -158,16 +180,20 @@ this.radioGroup.addEventListener('click', (radio: any) => {
 The result of implementing the above code should look like the following:
 
 ```css
+.container {
+    justify-content: center;
+}
+
 .button-container {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     margin-top: 20px;
 }
 
 #radio-group {
     display: flex;
-    margin: 0 auto;
-    width: 15%;
+    justify-content: center;
 }
 ```
 ```css
@@ -192,6 +218,11 @@ Setting the [`download`](mcp:get_api_reference?platform=webcomponents&component=
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-button {
+  width: 40%;
+  margin: auto;
+}
 ```
 
 ## Styling
@@ -216,14 +247,19 @@ igc-button::part(base) {
 
 ```css
 igc-button::part(base) {
-  background-color: var(--ig-primary-500);
-  color: var(--ig-primary-500-contrast);
+  background-color: var(--ig-warn-700);
+  color: var(--ig-warn-700-contrast);
   padding: 18px;
 }
 ```
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+igc-button {
+  width: 40%;
+  margin: auto;
+}
 ```
 
 ## API References

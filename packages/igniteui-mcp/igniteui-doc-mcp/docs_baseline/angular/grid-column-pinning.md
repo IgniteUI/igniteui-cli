@@ -10,7 +10,7 @@ _premium: true
 A column or multiple columns can be pinned to the left or right side of the Angular UI Grid. **Column Pinning** in Ignite UI for Angular allows the end users to lock column in a particular column order, this will allow them to see it while horizontally scrolling the Grid. The Material UI Grid has a built-in column pinning UI, which can be used through the Grid's toolbar to change the pin state of the columns. In addition, you can define a custom UI and change the pin state of the columns via the Column Pinning API.
 ## Angular Grid Column Pinning  Example
 ```typescript
-import { Component, ViewChild, ViewEncapsulation, OnInit, inject } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { DATA } from '../../data/customers';
@@ -24,6 +24,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-sample',
     styleUrls: ['grid-toolbar-pinning.component.scss'],
     templateUrl: 'grid-toolbar-pinning.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NgClass, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarPinningComponent, IgxColumnComponent]
 })
 
@@ -126,7 +127,7 @@ public pinningConfig: IPinningConfig = { columns: ColumnPinningPosition.End };
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
 import { IPinningConfig, IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -143,6 +144,7 @@ import { DatePipe } from '@angular/common';
     selector: 'app-grid-sample',
     styleUrls: ['grid-right-pinning.component.scss'],
     templateUrl: 'grid-right-pinning.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarPinningComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxTooltipTargetDirective, IgxTooltipDirective, IgxAvatarComponent, IgxCellHeaderTemplateDirective, IgxIconComponent, DatePipe]
 })
 
@@ -289,12 +291,12 @@ img.country-flag {
 ### Column Pinning on Both Sides
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
 ```typescript
-import { Component, ViewChild, ViewEncapsulation, OnInit, inject } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { IPinningConfig, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
-import { ColumnPinningPosition } from 'igniteui-angular/core';
+import { ColumnPinningPosition, ColumnType } from 'igniteui-angular/core';
 import { DATA } from '../../data/customers';
 import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scroll.directive';
 
@@ -304,6 +306,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-sample',
     styleUrls: ['grid-toolbar-pinning-both-sides.component.scss'],
     templateUrl: 'grid-toolbar-pinning-both-sides.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         NgClass,
         IgxGridComponent,
@@ -339,7 +342,7 @@ export class GridBothSideToolbarPinningSampleComponent implements OnInit {
     }
 
     public pinLeft() {
-        this.grid1.selectedColumns().forEach((col: IgxColumnComponent) => {
+        this.grid1.selectedColumns().forEach((col: ColumnType) => {
             if (col.pinned) {
                 col.unpin();
             }
@@ -348,7 +351,7 @@ export class GridBothSideToolbarPinningSampleComponent implements OnInit {
     }
 
     public pinRight() {
-        this.grid1.selectedColumns().forEach((col: IgxColumnComponent) => {
+        this.grid1.selectedColumns().forEach((col: ColumnType) => {
             if (col.pinned) {
                 col.unpin();
             }
@@ -357,7 +360,7 @@ export class GridBothSideToolbarPinningSampleComponent implements OnInit {
     }
 
     public unpinColumn() {
-        this.grid1.selectedColumns().forEach((col: IgxColumnComponent) => {
+        this.grid1.selectedColumns().forEach((col: ColumnType) => {
             col.unpin();
         });
     }
@@ -441,7 +444,7 @@ public toggleColumn(col: ColumnType) {
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild, ViewEncapsulation, OnInit, AfterViewInit, inject } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, OnInit, AfterViewInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxCellHeaderTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
@@ -458,6 +461,7 @@ const FILTERING_ICONS_FONT_SET = 'filtering-icons';
     selector: 'app-grid-sample',
     styleUrls: ['grid-pinning.component.scss'],
     templateUrl: 'grid-pinning.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellHeaderTemplateDirective, IgxIconComponent]
 })
 
@@ -593,7 +597,7 @@ The easiest way to apply your theme is with a `sass` `@include` statement in the
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild, OnInit, inject } from "@angular/core";
+import { Component, ViewChild, OnInit, inject, ChangeDetectionStrategy } from "@angular/core";
 import { IgxCellHeaderTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
@@ -604,6 +608,7 @@ import { IgxPreventDocumentScrollDirective } from "../../directives/prevent-scro
     selector: "app-grid-sample",
     styleUrls: ["grid-pinning-styling.component.scss"],
     templateUrl: "grid-pinning-styling.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         IgxGridComponent,
         IgxPreventDocumentScrollDirective,

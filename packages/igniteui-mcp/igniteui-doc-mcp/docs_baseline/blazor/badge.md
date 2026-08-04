@@ -16,9 +16,14 @@ The Ignite UI for Blazor Badge is a component used in conjunction with avatars, 
 ```razor
 @using IgniteUI.Blazor.Controls
 
-
 <div class="sample center">
-    <IgbBadge Outlined="true" />
+  <section class="wrapper">
+    <header>
+      <IgbAvatar Initials="TO" Shape="AvatarShape.Circle" />
+      <IgbBadge Outlined="true" Variant="@StyleVariant.Danger" />
+    </header>
+    <span>Terrance Orta</span>
+  </section>
 </div>
 
 @code {
@@ -108,7 +113,17 @@ The Ignite UI for Blazor badge component can also render as a minimal dot indica
 <IgbBadge Dot="true" />
 ```
 
+```razor
+@using IgniteUI.Blazor.Controls
 
+<div class="sample center">
+  <IgbBadge Dot="true" />
+</div>
+
+@code {
+
+}
+```
 
 ## Styling
 

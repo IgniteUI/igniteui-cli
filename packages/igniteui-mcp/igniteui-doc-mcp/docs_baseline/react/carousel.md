@@ -518,9 +518,9 @@ export default function CarouselComponents() {
           <div className="slide-wrapper">
             <IgrCard>
               <IgrCardHeader>
-                <h3 slot="title">
+                <span slot="title">
                   Ignite UI for Angular
-                </h3>
+                </span>
               </IgrCardHeader>
               <IgrCardContent>
                 <p>
@@ -550,9 +550,9 @@ export default function CarouselComponents() {
           <div className="slide-wrapper">
             <IgrCard>
               <IgrCardHeader>
-                <h3 slot="title">
+                <span slot="title">
                   Ignite UI for Javascript
-                </h3>
+                </span>
               </IgrCardHeader>
               <IgrCardContent>
                 <p>
@@ -582,9 +582,9 @@ export default function CarouselComponents() {
           <div className="slide-wrapper">
             <IgrCard>
               <IgrCardHeader>
-                <h3 slot="title">
+                <span slot="title">
                   Ultimate UI for ASP.NET
-                </h3>
+                </span>
               </IgrCardHeader>
               <IgrCardContent>
                 <p>

@@ -87,10 +87,8 @@ export default function TextAreaSlots() {
     return (
         <div className="sample">
             <IgrTextarea label="Your feedback">
-                <span slot="prefix">
-                <IgrIcon name='feedback' collection="material"></IgrIcon>
-                </span>                    
-                <p slot="helper-text">Give us a short description of what you liked/disliked</p>
+                <IgrIcon slot="prefix" name='feedback' collection="material"></IgrIcon>                 
+                <span slot="helper-text">Give us a short description of what you liked/disliked</span>
             </IgrTextarea>
         </div>
     );
@@ -128,13 +126,13 @@ export default function TextAreaResize() {
     return (
         <div className="sample container">
            <IgrTextarea label="Resize: none" resize="none">                                      
-                <p slot="helper-text">This textarea does not resize and uses a scroll bar to show overflow text.</p>
+                <span slot="helper-text">This textarea does not resize and uses a scroll bar to show overflow text.</span>
             </IgrTextarea>
             <IgrTextarea label="Resize: vertical (default)">                                    
-                <p slot="helper-text">This textarea lets the user resize vertically.</p>
+                <span slot="helper-text">This textarea lets the user resize vertically.</span>
             </IgrTextarea>
             <IgrTextarea label="Resize: auto" resize="auto">                                       
-                <p slot="helper-text">This textarea shows all the user input at once. Overflow text wraps onto a new line and expands the text area.</p>
+                <span slot="helper-text">This textarea shows all the user input at once. Overflow text wraps onto a new line and expands the text area.</span>
             </IgrTextarea>
         </div>
     );
@@ -283,10 +281,8 @@ export default function TextAreaStyling() {
     return (
         <div className="sample">
             <IgrTextarea label="Steps to reproduce">
-                <span slot="prefix">
-                <IgrIcon name='feedback' collection="material"></IgrIcon>
-                </span>                    
-                <p slot="helper-text">Provide a detailed description of the steps that led to the issue you experienced</p>
+                <IgrIcon slot="prefix" name='feedback' collection="material"></IgrIcon>                 
+                <span slot="helper-text">Provide a detailed description of the steps that led to the issue you experienced</span>
             </IgrTextarea>
         </div>
     );

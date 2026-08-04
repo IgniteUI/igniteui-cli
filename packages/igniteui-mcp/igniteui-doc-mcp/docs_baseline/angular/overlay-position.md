@@ -13,7 +13,7 @@ Position strategies determine where the content is displayed in the provided `Ig
 
 
 ```typescript
-import { Component, OnDestroy, ViewContainerRef, inject } from '@angular/core';
+import { Component, OnDestroy, ViewContainerRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxOverlayService } from 'igniteui-angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { MyDynamicCardComponent} from '../overlay-dynamic-card/overlay-dynamic-card.component';
@@ -21,6 +21,7 @@ import { MyDynamicCardComponent} from '../overlay-dynamic-card/overlay-dynamic-c
     selector: 'app-overlay-sample',
     templateUrl: `./overlay-main-sample-1.component.html`,
     styleUrls: [`./overlay-main-sample-1.component.scss`],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective]
 })
 export class OverlaySampleMain1Component implements OnDestroy {
@@ -162,7 +163,7 @@ this._overlayId = this.overlayService.attach(MyDynamicCardComponent, this.viewCo
 
 
 ```typescript
-import { Component, ElementRef, OnDestroy, ViewChild, ViewContainerRef, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild, ViewContainerRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ConnectedPositioningStrategy, IgxOverlayService, OverlaySettings } from 'igniteui-angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { Subject } from 'rxjs';
@@ -172,6 +173,7 @@ import { MyDynamicCardComponent } from '../overlay-dynamic-card/overlay-dynamic-
     styleUrls: ['./overlay-position-sample-1.component.scss'],
     templateUrl: './overlay-position-sample-1.component.html',
     providers: [IgxOverlayService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective]
 })
 export class OverlayPositionSample1Component implements OnDestroy {
@@ -251,7 +253,7 @@ this._overlayId = this.overlayService.attach(MyDynamicCardComponent, this.viewCo
 
 
 ```typescript
-import { Component, ElementRef, OnDestroy, ViewChild, ViewContainerRef, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild, ViewContainerRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ConnectedPositioningStrategy, HorizontalAlignment, IgxOverlayService, OverlaySettings, PositionSettings, VerticalAlignment } from 'igniteui-angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { MyDynamicCardComponent } from '../overlay-dynamic-card/overlay-dynamic-card.component';
@@ -260,6 +262,7 @@ import { MyDynamicCardComponent } from '../overlay-dynamic-card/overlay-dynamic-
     styleUrls: ['./overlay-position-sample-2.component.scss'],
     templateUrl: './overlay-position-sample-2.component.html',
     providers: [IgxOverlayService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective]
 })
 export class OverlayPositionSample2Component implements OnDestroy {
@@ -331,7 +334,7 @@ overlay.attach(element, { positionStrategy: myPositionStrategy });
 ```
 
 ```typescript
-import { Component, ElementRef, OnDestroy, ViewChild, ViewContainerRef, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild, ViewContainerRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AutoPositionStrategy, IgxOverlayService } from 'igniteui-angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { MyDynamicCardComponent } from '../overlay-dynamic-card/overlay-dynamic-card.component';
@@ -340,6 +343,7 @@ import { MyDynamicCardComponent } from '../overlay-dynamic-card/overlay-dynamic-
     styleUrls: ['./overlay-position-sample-3.component.scss'],
     templateUrl: './overlay-position-sample-3.component.html',
     providers: [IgxOverlayService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective]
 })
 export class OverlayPositionSample3Component implements OnDestroy {

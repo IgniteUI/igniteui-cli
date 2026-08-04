@@ -15,7 +15,7 @@ Below is a detailed example of how is Batch Editing enabled for the Grid compone
 The following sample demonstrates a scenario, where the grid has [`batchEditing`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=batchEditing) enabled and has row editing enabled. The latter will ensure that transaction will be added after the entire row edit is confirmed.
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { Transaction } from 'igniteui-angular/core';
@@ -30,6 +30,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-row-edit',
     styleUrls: [`grid-batch-editing-sample.component.scss`],
     templateUrl: 'grid-batch-editing-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxButtonDirective, IgxDialogComponent]
 })
 export class GridBatchEditingSampleComponent implements OnInit {
@@ -266,7 +267,7 @@ export class GridBatchEditingSampleComponent {
 [Check out the full demo configuration](remote-data-operations.md#remote-paging-with-batch-editing)
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation, inject } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { Transaction } from 'igniteui-angular/core';
@@ -284,6 +285,7 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-remote-paging-batch-editing',
     styleUrls: ['./batch-editing-remote-paging.component.scss'],
     templateUrl: './batch-editing-remote-paging.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxButtonDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxDialogComponent, AsyncPipe]
 })
 export class RemotePagingBatchEditingComponent implements OnInit, AfterViewInit, OnDestroy {

@@ -11,7 +11,7 @@ _premium: true
 [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) supports `multi-column headers` which allows you to group columns by placing them under a common multi headers. Each multi-column headers group could be a representation of combinations between other groups or columns within the Material UI grid.
 ## Angular Tree Grid Multi-column Headers Overview Example
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -22,6 +22,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-multi-column-headers-sample',
     styleUrls: ['./tree-grid-multi-column-headers-sample.component.scss'],
     templateUrl: './tree-grid-multi-column-headers-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnGroupComponent, IgxButtonDirective]
 })
 export class TreeGridMultiColumnHeadersSampleComponent {
@@ -177,7 +178,7 @@ If you want to re-use a single template for several column groups, you could set
 ```
 The following sample demonstrates how to implement collapsible column groups using header templates.
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -188,6 +189,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-multi-column-header-template-sample',
     styleUrls: ['./tree-grid-multi-column-header-template-sample.component.scss'],
     templateUrl: './tree-grid-multi-column-header-template-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnGroupComponent]
 })
 export class TreeGridMultiColumnHeaderTemplateSampleComponent {
@@ -301,7 +303,7 @@ The last step is to **include** the component mixins:
 ```
 ### Demo
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { generateEmployeeDetailedFlatData } from '../data/employees-flat-detailed';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
@@ -311,6 +313,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-multi-column-headers-styling',
     styleUrls: ['./tree-grid-multi-column-headers-styling.component.scss'],
     templateUrl: './tree-grid-multi-column-headers-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnGroupComponent]
 })
 export class TreeGridMultiColumnHeadersStylingComponent {
@@ -363,19 +366,20 @@ export class TreeGridMultiColumnHeadersStylingComponent {
 </div>
 ```
 ```scss
-@use "layout.scss";
-@use "igniteui-angular/theming" as *;
+@use 'layout.scss';
+@use 'igniteui-angular/theming' as *;
 
 $custom-theme: grid-theme(
-  $header-background: #e0f3ff,
-  $header-text-color: #e41c77,
-  $header-border-width: 1px,
-  $header-border-style: solid,
-  $header-border-color: rgba(0, 0, 0, 0.08)
+	$header-background: #f1eaf6,
+	$header-text-color: #8c1bdd,
+	$header-border-width: 1px,
+	$header-border-style: solid,
+	$header-border-color: #d3b9e6,
+	$cell-active-border-color: #7409c1
 );
 
 :host {
-  @include tokens($custom-theme);
+	@include tokens($custom-theme);
 }
 ```
 >[!NOTE]

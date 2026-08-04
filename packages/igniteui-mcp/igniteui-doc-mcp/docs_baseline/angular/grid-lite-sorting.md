@@ -43,7 +43,7 @@ column.sortConfiguration = {
 ```
 
 ```typescript
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { defineComponents, IgcRatingComponent } from 'igniteui-webcomponents';
 import { GridLiteDataService, ProductInfo } from '../grid-lite-data.service';
@@ -61,6 +61,7 @@ defineComponents(IgcRatingComponent);
     IgxGridLiteColumnComponent,
     IgxGridLiteCellTemplateDirective
 ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class GridLiteSortingSimpleComponent implements OnInit {
@@ -135,7 +136,7 @@ When multi-column sort is enabled, the column headers will display a sorting ind
 The following sample shows the grid `sortingOptions` property and how it controls the grid sorting behavior.
 
 ```typescript
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject, ViewChild, ElementRef } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject, ViewChild, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { defineComponents, IgcRatingComponent, IgcSwitchComponent } from 'igniteui-webcomponents';
 import { IgcGridLite } from 'igniteui-grid-lite';
@@ -154,6 +155,7 @@ defineComponents(IgcRatingComponent, IgcSwitchComponent);
     IgxGridLiteColumnComponent,
     IgxGridLiteCellTemplateDirective
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class GridLiteSortingGridConfigComponent implements OnInit {
@@ -319,7 +321,7 @@ onSorted(event: IgxSortedEvent) { ... }
 In the following sample, when you try to sort the **Name** and **Rating** columns, the operation will be cancelled. Watch the event log below to see it in action.
 
 ```typescript
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { defineComponents, IgcRatingComponent } from 'igniteui-webcomponents';
 import { GridLiteDataService, ProductInfo } from '../grid-lite-data.service';
@@ -341,6 +343,7 @@ defineComponents(IgcRatingComponent);
       IgxGridLiteColumnComponent,
       IgxGridLiteCellTemplateDirective
     ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class GridLiteSortingEventsComponent implements OnInit {
@@ -467,7 +470,7 @@ The custom callback can be async as the grid will wait for it until it resolves.
 The following example mocks remote sorting operation, reflecting the REST endpoint generated based on the sort state of the component.
 
 ```typescript
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewChild, ElementRef, inject } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewChild, ElementRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { defineComponents, IgcRatingComponent } from 'igniteui-webcomponents';
 import { GridLiteDataService, ProductInfo } from '../grid-lite-data.service';
@@ -487,6 +490,7 @@ defineComponents(IgcRatingComponent);
         IgxGridLiteCellTemplateDirective,
         IgxCircularProgressBarComponent
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class GridLiteSortingPipelineComponent implements OnInit {

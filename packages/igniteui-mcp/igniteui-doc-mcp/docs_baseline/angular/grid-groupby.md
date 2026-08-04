@@ -17,7 +17,7 @@ This example presents the grouping capabilities of a large amount of data. Dragg
 
 
 ```typescript
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { DefaultSortingStrategy, ISortingExpression, SortingDirection } from 'igniteui-angular/core';
 import { GridSelectionMode, IgxCellTemplateDirective, IgxColumnComponent, IgxGroupByRowTemplateDirective } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -32,6 +32,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-groupby-sample',
     styleUrls: ['./grid-groupby-sample.component.scss'],
     templateUrl: './grid-groupby-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxGroupByRowTemplateDirective, IgxIconComponent, IgxBadgeComponent]
 })
 export class GridGroupBySampleComponent {
@@ -314,7 +315,7 @@ Groups that span multiple pages are split between them. The group row is visible
 
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DefaultSortingStrategy, ISortingExpression, SortingDirection } from 'igniteui-angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxGroupByRowTemplateDirective } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -328,6 +329,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-group-by-paging-sample',
     templateUrl: './grid-group-by-paging-sample.component.html',
     styleUrls: ['./grid-group-by-paging-sample.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxGroupByRowTemplateDirective, IgxIconComponent, IgxBadgeComponent]
 })
 export class GridGroupByPagingSampleComponent {
@@ -461,7 +463,7 @@ The sample below demonstrates custom grouping by `Date`, where the date values a
 
 ```typescript
 /* eslint-disable max-len */
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { DefaultSortingStrategy, SortingDirection } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarComponent, IgxGroupByRowTemplateDirective } from 'igniteui-angular/grids/core';
@@ -478,6 +480,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-groupby-custom-sample',
     styleUrls: ['./grid-groupby-custom-sample.component.scss'],
     templateUrl: './grid-groupby-custom-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxDropDownItemComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxGroupByRowTemplateDirective, IgxIconComponent, IgxBadgeComponent, CurrencyPipe, DatePipe]
 })
 export class GridGroupByCustomSampleComponent {
@@ -943,7 +946,7 @@ In our example, we need to use `::ng-deep` for our chip theme:
 
 
 ```typescript
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { DefaultSortingStrategy, ISortingExpression, SortingDirection } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -956,6 +959,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-groupby-sample',
     styleUrls: ['./grid-groupby-styling.component.scss'],
     templateUrl: './grid-groupby-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 export class GridGroupByStylingComponent {
@@ -1095,30 +1099,33 @@ $light-gray: #f8f8f8;
 $black: #222;
 
 $custom-theme: grid-theme(
-  $group-row-background: $gray,
-  $group-row-selected-background: #383838,
-  $group-label-column-name-text: $light-gray,
-  $group-label-icon: $yellow,
-  $group-label-text: $light-gray,
-  $group-count-background: $yellow,
-  $group-count-text-color: $black,
-  $expand-icon-color: $yellow,
-  $expand-icon-hover-color: rgb(223, 181, 13),
-  $cell-active-border-color: $yellow,
-  $row-selected-background: #fff6d3,
-  $row-selected-text-color: $black,
-  $drop-indicator-color: $yellow
+    $group-row-background: $gray,
+    $group-row-selected-background: #383838,
+    $group-label-column-name-text: $light-gray,
+    $group-label-icon: $yellow,
+    $group-label-text: $light-gray,
+    $group-count-background: $yellow,
+    $group-count-text-color: $black,
+    $expand-icon-color: $yellow,
+    $expand-icon-hover-color: rgb(223, 181, 13),
+    $cell-active-border-color: $yellow,
+    $row-selected-background: #fff6d3,
+    $row-selected-text-color: $black,
+    $drop-indicator-color: $yellow,
 );
 
 $custom-chips-theme: chip-theme(
-  $background: $gray,
-  $text-color: $light-gray,
-  $hover-text-color: #e7e7e7
+    $background: $gray,
+    $text-color: $light-gray,
+    $hover-text-color: #e7e7e7,
 );
 
-:host {
+:host ::ng-deep {
     @include tokens($custom-theme);
-    @include tokens($custom-chips-theme);
+
+    igx-chip {
+        @include tokens($custom-chips-theme);
+    }
 }
 ```
 

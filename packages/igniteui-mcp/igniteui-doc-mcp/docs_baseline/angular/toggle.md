@@ -14,13 +14,14 @@ _tocName: Toggle
 
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonDirective, IgxToggleDirective } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-toggle-sample-1',
     styleUrls: ['./toggle-sample-1.component.scss', '../toggle-samples.scss'],
     templateUrl: './toggle-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleDirective]
 })
 export class ToggleSample1Component {
@@ -184,7 +185,7 @@ This is how our toggle should look like now:
 
 
 ```typescript
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 import { ConnectedPositioningStrategy, HorizontalAlignment, OverlaySettings, VerticalAlignment } from 'igniteui-angular/core';
 import { IgxButtonDirective, IgxToggleDirective } from 'igniteui-angular/directives';
@@ -193,6 +194,7 @@ import { IgxButtonDirective, IgxToggleDirective } from 'igniteui-angular/directi
     selector: 'app-toggle',
     styleUrls: ['./toggle-samples.scss'],
     templateUrl: './toggle.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleDirective]
 })
 export class ToggleComponent {
@@ -252,13 +254,14 @@ After these changes the toggle should work exactly in the same way.
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonDirective, IgxToggleActionDirective, IgxToggleDirective } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-toggle-sample-2',
     styleUrls: ['../toggle-samples.scss'],
     templateUrl: './toggle-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleActionDirective, IgxToggleDirective]
 })
 export class ToggleSample2Component { }
@@ -296,13 +299,14 @@ If all went well, it will look like this:
 
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonDirective, IgxToggleActionDirective, IgxToggleDirective } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-toggle-sample-3',
     styleUrls: ['../toggle-samples.scss'],
     templateUrl: './toggle-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxToggleActionDirective, IgxButtonDirective, IgxToggleDirective]
 })
 export class ToggleSample3Component { }
@@ -344,13 +348,14 @@ public offsetToggleSet() {
 ```
 
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxButtonDirective, IgxToggleActionDirective, IgxToggleDirective } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-toggle-sample-4',
     styleUrls: ['../toggle-samples.scss'],
     templateUrl: './toggle-sample-4.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleActionDirective, IgxToggleDirective]
 })
 export class ToggleSample4Component {

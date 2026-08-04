@@ -11,7 +11,7 @@ _premium: true
 One or multiple rows can be pinned to the top or bottom of the Angular UI Grid. **Row Pinning** in Ignite UI for Angular allows end-users to pin rows in a particular order, duplicating them in a special area that is always visible even when they scroll the Hierarchical Grid vertically. The Material UI Grid has a built-in row pinning UI, which is enabled by initializing an `igxActionStrip` component in the context of Hierarchical Grid. In addition, you can define custom UI and change the pin state of the rows via the Row Pinning API.
 ## Angular Hierarchical Grid Row Pinning Example
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IPinningConfig, IgxCellTemplateDirective, IgxColumnComponent, IgxGridPinningActionsComponent, RowPinningPosition } from 'igniteui-angular/grids/core';
@@ -24,6 +24,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-row-pinning',
     styleUrls: ['./hierarchical-grid-row-pinning.component.scss'],
     templateUrl: 'hierarchical-grid-row-pinning.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxActionStripComponent, IgxGridPinningActionsComponent, IgxRowIslandComponent]
 })
 
@@ -176,7 +177,7 @@ public togglePinning(row: IgxGridRow, event) {
 ```
 #### Demo
 ```typescript
-import { Component, AfterViewInit, inject } from '@angular/core';
+import { Component, AfterViewInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
 import { IPinningConfig, IgxCellTemplateDirective, IgxColumnComponent, RowPinningPosition, RowType } from 'igniteui-angular/grids/core';
@@ -192,6 +193,7 @@ const FILTERING_ICONS_FONT_SET = 'filtering-icons';
     selector: 'app-hierarchical-grid-row-pinning-extra-column',
     styleUrls: ['./hierarchical-grid-row-pinning-extra-column.component.scss'],
     templateUrl: 'hierarchical-grid-row-pinning-extra-column.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxIconComponent, IgxRowIslandComponent]
 })
 
@@ -366,7 +368,7 @@ The last step is to pass the custom grid theme:
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IPinningConfig, IgxCellTemplateDirective, IgxColumnComponent, IgxGridPinningActionsComponent, RowPinningPosition } from 'igniteui-angular/grids/core';
@@ -378,6 +380,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-row-pinning-styling',
     styleUrls: ['./hierarchical-grid-row-pinning-styling.component.scss'],
     templateUrl: 'hierarchical-grid-row-pinning-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxActionStripComponent, IgxGridPinningActionsComponent, IgxRowIslandComponent]
 })
 
@@ -442,18 +445,22 @@ export class HGridRowPinningStylingSampleComponent implements OnInit {
 </div>
 ```
 ```scss
-@use "layout.scss";
-@use "igniteui-angular/theming" as *;
+@use 'layout.scss';
+@use 'igniteui-angular/theming' as *;
 
-$custom-theme: grid-theme(
-  $pinned-border-width: 5px,
-  $pinned-border-style: double,
-  $pinned-border-color: #ffcd0f,
-  $cell-active-border-color: #ffcd0f
+$background: #292826;
+$foreground: #eeece1;
+$accent: #ffcd0f;
+
+$custom-grid: grid-theme(
+	$background: $background,
+	$foreground: $foreground,
+	$accent-color: $accent,
+	$pinned-border-color: $accent,
 );
 
 :host {
-  @include tokens($custom-theme);
+	@include tokens($custom-grid);
 }
 ```
 >[!NOTE]

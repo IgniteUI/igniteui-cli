@@ -72,7 +72,7 @@ The grid exposes a wide array of events that provide greater control over the ed
 - `RowEdit` - Committing cell is possible, but not the whole row. The row will stay in edit mode and the row transaction will be considered open. Hitting **Done** does not commit or close the row. **Cancel** button closes the editing process and the transaction without committing the changes.
 The following sample demonstrates the editing execution sequence in action:
 ```typescript
-import { Component, ElementRef, Renderer2, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -85,6 +85,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hgrid-editing-lifecycle',
     templateUrl: 'hgrid-editing-lifecycle.component.html',
     styleUrls: ['hgrid-editing-lifecycle.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent, IgxButtonDirective, IgxIconComponent]
 })
 export class HGridEditingLifecycleComponent {

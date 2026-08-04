@@ -76,7 +76,7 @@ The scroll strategies can be passed to the [`overlaySettings`](mcp:get_api_refer
 The demo below illustrates the difference between the separate [`scrollStrategies`](mcp:get_api_reference?platform=angular&component=IScrollStrategy):
 
 ```typescript
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewContainerRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AbsoluteScrollStrategy, BlockScrollStrategy, CloseScrollStrategy, ConnectedPositioningStrategy, IgxOverlayService, NoOpScrollStrategy } from 'igniteui-angular/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { Subject } from 'rxjs';
@@ -87,6 +87,7 @@ import { MyDynamicCardComponent } from '../overlay-dynamic-card/overlay-dynamic-
     styleUrls: ['./overlay-scroll-sample-2.component.scss'],
     templateUrl: './overlay-scroll-sample-2.component.html',
     providers: [IgxOverlayService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconComponent, MyDynamicCardComponent]
 })
 export class OverlayScrollSample2Component implements OnInit, OnDestroy {
@@ -308,7 +309,7 @@ The [`overlaySettings`](mcp:get_api_reference?platform=angular&component=Overlay
 
 
 ```typescript
-import { Component, ElementRef, OnDestroy, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { AbsoluteScrollStrategy, AutoPositionStrategy, ConnectedPositioningStrategy, ElasticPositionStrategy, GlobalPositionStrategy, HorizontalAlignment, IgxOverlayService, OverlaySettings, PositionSettings, VerticalAlignment } from 'igniteui-angular/core';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -320,6 +321,7 @@ import { FormsModule } from '@angular/forms';
     styleUrls: ['./overlay-scroll-sample-1.component.scss'],
     templateUrl: './overlay-scroll-sample-1.component.html',
     providers: [IgxOverlayService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxIconComponent, IgxCardComponent, IgxCardHeaderComponent, IgxCardContentDirective]
 })
 export class OverlayScrollSample1Component implements OnDestroy {

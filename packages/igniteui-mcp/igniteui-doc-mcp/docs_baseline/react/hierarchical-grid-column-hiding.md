@@ -247,7 +247,7 @@ For this purpose all we have to do is set both the [`IgrGridToolbarActions`](mcp
 
 The [`IgrHierarchicalGrid`](mcp:get_api_reference?platform=react&component=IgrHierarchicalGrid) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
 
-By using the [`title`](mcp:get_api_reference?platform=react&component=IgrColumn&member=title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
+By using the [`title`](mcp:get_api_reference?platform=react&component=IgrColumn&member=title) and `Prompt` properties, we will set the title and filter prompt that are displayed inside the dropdown in the toolbar.
 
 <!-- Web Components -->
 
@@ -265,7 +265,7 @@ By using the [`title`](mcp:get_api_reference?platform=react&component=IgrColumn&
 <IgrHierarchicalGrid>
     <IgrGridToolbar>
         <IgrGridToolbarActions>
-            <IgrGridToolbarHiding title="Column Hiding"></IgrGridToolbarHiding>
+            <IgrGridToolbarHiding title="Column Hiding" prompt="Type here to search"></IgrGridToolbarHiding>
         </IgrGridToolbarActions>
     </IgrGridToolbar>
 </IgrHierarchicalGrid>

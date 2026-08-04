@@ -458,7 +458,7 @@ describe("Unit - MCP runtime", () => {
 		it("sanitizes search_docs queries while preserving hyphens and valid prefix operators", () => {
 			const result = sanitizeSearchDocsQuery('grid-editing @"row" tree*');
 
-			expect(result).toBe('"grid-editing" OR "row" OR tree*');
+			expect(result).toBe('"grid-editing" "row" tree*');
 		});
 
 		it("drops invalid all-asterisk terms and returns null when no search terms remain", () => {
@@ -471,12 +471,12 @@ describe("Unit - MCP runtime", () => {
 			expect(sanitizeSearchDocsQuery("")).toBeNull();
 		});
 
-		it("wraps plain space-separated terms in quotes joined by OR", () => {
+		it("wraps plain space-separated terms in quotes joined by AND (implicit in FTS4)", () => {
 			const result = sanitizeSearchDocsQuery("column pinning");
 
 			expect(result).toContain('"column"');
 			expect(result).toContain('"pinning"');
-			expect(result).toContain("OR");
+			expect(result).toBe('"column" "pinning"');
 		});
 
 		it("returns the framework prompt when no project setup framework is provided", async () => {

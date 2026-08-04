@@ -2,7 +2,8 @@
 title: Getting Started with Ignite UI CLI | Ignite UI for Angular | Infragistics
 _description: Install the Ignite UI CLI globally and use it to scaffold Angular projects, add component views, run a development server, and connect an MCP server to your AI coding assistant.
 _keywords: ignite ui cli, ignite ui for angular, angular scaffolding, getting started, infragistics
-last_updated: "2025-04-06"
+last_updated: "2026-04-21"
+_license: MIT
 _tocName: Getting Started with Ignite UI CLI
 ---
 
@@ -69,8 +70,26 @@ For a step-by-step walkthrough of the wizard options, see [Step-by-Step Guide Us
 To create an Angular project non-interactively, provide `angular` as the framework and `igx-ts` as the project type:
 
 ```cmd
-ig new <project-name> --framework=angular --type=igx-ts --template=side-nav
+ig new my-app --framework=angular --type=igx-ts --template=side-nav
 ```
+
+You can also specify AI assistant and agent configuration during project creation:
+
+```cmd
+ig new my-app --framework=angular --type=igx-ts --template=side-nav --assistants generic --agents claude copilot
+```
+
+To skip AI configuration entirely:
+
+```cmd
+ig new my-app --framework=angular --type=igx-ts --assistants none --agents none
+```
+
+**Sequence during `ig new`:**
+1. Project files are generated
+2. AI configuration runs inside the new project directory (prompts for assistants and agents unless flags are provided)
+3. Git is initialized (unless `--skip-git`)
+4. Dependencies are installed (unless `--skip-install`)
 
 > [!NOTE]
 > As of Ignite UI CLI v13.1.0, the `igx-ts` project type generates a project with standalone components by default. To use NgModule-based bootstrapping instead, set `--type=igx-ts-legacy`.
@@ -209,13 +228,37 @@ ig start
 
 The Ignite UI CLI includes a built-in MCP (Model Context Protocol) server that connects AI coding assistants - GitHub Copilot, Claude, Cursor - to live Ignite UI component documentation and API references. Once configured, your AI assistant can query component APIs, retrieve setup guides, and generate accurate Ignite UI for Angular code without switching context.
 
-Start the MCP server:
+If your project was created with `ig new`, the MCP configuration and Agent Skills are already generated during scaffolding. If you are working with an existing project, run `ig ai-config` from the project root to set up MCP servers, skill files, and instruction files in one step:
+
+```cmd
+ig ai-config
+```
+
+The command supports multiple coding assistants and AI agents:
+
+```cmd
+ig ai-config --assistants generic vscode --agents claude copilot
+```
+
+| Flag | Values | Default |
+|------|--------|---------|  
+| `--assistants` | `generic`, `vscode`, `cursor`, `gemini`, `junie`, `none` | Prompted interactively; `generic` in non-interactive mode |
+| `--agents` | `generic`, `claude`, `copilot`, `cursor`, `codex`, `windsurf`, `gemini`, `junie`, `none` | Prompted interactively; `generic` + `claude` in non-interactive mode |
+
+When run without flags, `ig ai-config` enters interactive mode and prompts you to select coding assistants and agents using SPACE to toggle and ENTER to confirm. The prompts mirror the wizard steps during `ig new`:
+
+1. **Choose coding assistants** - select one or more targets for MCP server configuration (Generic, VS Code, Cursor, Gemini, Junie), or None to skip.
+2. **Choose AI agents** - select one or more agents for skill files and instruction files (Generic, Claude, Copilot, Cursor, Codex, Windsurf, Gemini, Junie), or None to skip.
+
+Defaults in interactive mode are **Generic** for assistants and **Generic + Claude** for agents. For details on the wizard prompts, see [Step-by-Step Guide Using Ignite UI CLI - Configure AI assistants](step-by-step-guide-using-cli.md#configure-ai-assistants).
+
+If you want to configure your AI client manually, or use a client other than VS Code, start the MCP server directly:
 
 ```cmd
 ig mcp
 ```
 
-For client configuration (VS Code, Claude Desktop, Cursor) and a full description of available tools, see [Ignite UI CLI MCP](../../ai/cli-mcp.md).
+For client configuration (VS Code, Claude Desktop, Cursor, and others) and a full description of available tools, see [Ignite UI CLI MCP](../../ai/cli-mcp.md).
 
 ## Ignite UI CLI Commands
 
@@ -233,3 +276,4 @@ A complete list of available Ignite UI CLI commands is maintained on the [Ignite
 | [ig test](https://github.com/IgniteUI/igniteui-cli/wiki/test)         |       | Executes the tests for the current project.                                                                                                                                                          |
 | ig version                                                            | -v    | Shows the Ignite UI CLI version installed locally, or globally if no local installation is found.                                                                                                    |
 | ig mcp                                                                |       | Starts the Ignite UI MCP server, providing component documentation search and API reference tools to connected AI assistants. See [Ignite UI CLI MCP](../../ai/cli-mcp.md).                          |
+| ig ai-config                                                          |       | Sets up AI coding assistant integration - configures MCP servers, copies skill files, and populates instruction files for your chosen assistants and agents.                                          |

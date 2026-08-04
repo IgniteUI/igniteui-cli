@@ -13,7 +13,7 @@ The Ignite UI for Angular Icon Button directive is intended to turn any icon int
 ## Angular Icon Button Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxIconButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
@@ -21,6 +21,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-icon-button-overview',
     styleUrls: ['./icon-button-overview.component.scss'],
     templateUrl: './icon-button-overview.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconButtonDirective, IgxRippleDirective, IgxIconComponent]
 })
 export class IconButtonOverviewComponent { }
@@ -187,7 +188,7 @@ public ngOnInit() {
 Users can choose one of the three predefined `igxIconButton` sizes by using the `--ig-size` custom CSS property. By default, the size of the component is set medium.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxIconButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
@@ -195,6 +196,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-icon-button-size',
     styleUrls: ['./icon-button-size.component.scss'],
     templateUrl: './icon-button-size.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconButtonDirective, IgxRippleDirective, IgxIconComponent]
 })
 export class IconButtonSizeComponent { }
@@ -531,7 +533,7 @@ $custom-contained: contained-icon-button-theme(
 This will generate a fully themed `contained icon button`, including appropriate foreground and background colors for its various states like hover, focus, and active.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxIconButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
@@ -539,6 +541,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-icon-button-styling',
     styleUrls: ['./icon-button-styling.component.scss'],
     templateUrl: './icon-button-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconButtonDirective, IgxRippleDirective, IgxIconComponent]
 })
 export class IconButtonStylingComponent { }

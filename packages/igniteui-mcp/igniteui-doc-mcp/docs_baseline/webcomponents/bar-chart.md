@@ -3,7 +3,7 @@ title: Web Components Bar Chart and Graph | Ignite UI for Web Components
 _description: Web Components Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories. Try for FREE.
 _keywords: Web Components Charts, Bar Chart, Bar Graph, Horizontal Chart, Infragistics
 _license: commercial
-mentionedTypes: ["XamDataChart", "BarSeries", "StackedBarSeries", "Stacked100BarSeries", "Series"]
+mentionedTypes: ["XamDataChart", "BarSeries", "StackedBarSeries", "Stacked100BarSeries", "RangeBarSeries", "Series"]
 namespace: Infragistics.Controls.Charts
 _tocName: Bar Chart
 _premium: true
@@ -307,6 +307,52 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 
 <div class="divider--half"></div>
 
+## Web Components Range Bar Chart
+
+The Web Components Range Bar Chart belongs to a group of range charts and is rendered using horizontal rectangles that can appear in the middle of the plot area of the chart, rather than stretching from the left like the traditional [Category Bar Chart](bar-chart.md#web-components-bar-chart-example). This type of series emphasizes the amount of change between low values and high values in the same data point over a period of time or compares multiple items.
+
+Range values are represented on the X-Axis and categories are displayed on the Y-Axis. Because each bar visualizes both a low value and a high value, this chart is useful for scenarios such as showing daily temperature ranges, minimum and maximum prices, or any bounded measurements where a single value is not sufficient.
+
+The Range Bar Chart is identical to the [Range Column Chart](column-chart.md#web-components-range-column-chart) in all aspects except that the ranges are represented as a set of horizontal bars rather than vertical columns.
+
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a `RangeBarSeries`. The series reads low and high values from `LowMemberPath` and `HighMemberPath`, and it typically uses a [`IgcNumericXAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericXAxisComponent) with a [`IgcCategoryYAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryYAxisComponent), as shown in the example below:
+
+```typescript
+export class TemperatureRangeDataItem {
+    public constructor(init: Partial<TemperatureRangeDataItem>) {
+        Object.assign(this, init);
+    }
+
+    public month: string;
+    public highNY: number;
+    public lowNY: number;
+    public highLA: number;
+    public lowLA: number;
+
+}
+export class TemperatureRangeData extends Array<TemperatureRangeDataItem> {
+    public constructor(items: Array<TemperatureRangeDataItem> | number = -1) {
+        if (Array.isArray(items)) {
+            super(...items);
+        } else {
+            const newItems = [
+                new TemperatureRangeDataItem({ month: `Jan`, highNY: 10.6, lowNY: -6.6, highLA: 28.3, lowLA: 7.8 }),
+                new TemperatureRangeDataItem({ month: `Feb`, highNY: 7.8, lowNY: -9.9, highLA: 31.1, lowLA: 5.6 }),
+                new TemperatureRangeDataItem({ month: `Mar`, highNY: 12.2, lowNY: -3.8, highLA: 27.8, lowLA: 8.3 }),
+                // ... 9 more items
+            ];
+            super(...newItems.slice(0));
+        }
+    }
+}
+```
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+```
+
+<div class="divider--half"></div>
+
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
@@ -327,4 +373,4 @@ The following table lists API members mentioned in the above sections:
 - [`IgcCalloutLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent)
 - [`IgcStackedBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent)
 - [`IgcStacked100BarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent)
-- [`IgcStackedBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent)
+- `RangeBarSeries`

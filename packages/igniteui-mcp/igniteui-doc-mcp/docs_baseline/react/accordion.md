@@ -63,7 +63,7 @@ export default function AccordionOverview() {
             <div className="sample-wrapper">
                 <IgrAccordion singleExpand={singleExpand}>
                     <IgrExpansionPanel>
-                        <h1 slot="title">What has changed about subscription and pricing model?</h1>
+                        <span slot="title">What has changed about subscription and pricing model?</span>
                         <span>We have moved to a subscription-based pricing model for all our developer tools. This makes it easier
                             for you to manage your license subscriptions and allows us to provide a better level of service for you. We
                             updated our pricing and packages to provide you with flexible options and the best value. This includes Ignite UI
@@ -74,7 +74,7 @@ export default function AccordionOverview() {
                             price.</span>
                     </IgrExpansionPanel>
                     <IgrExpansionPanel>
-                        <h1 slot="title">Who will the updated changes impact?</h1>
+                        <span slot="title">Who will the updated changes impact?</span>
                         <span>The license updates will impact all new and current customers using Ignite UI, Infragistics Professional and
                             Infragistics Ultimate. Specifically, we have also made updates to our product and packaging for Ignite UI for JavaScript,
                             Ignite UI for Angular, Ignite UI for React and Ignite UI for Web components. For more information, please refer to this
@@ -83,17 +83,17 @@ export default function AccordionOverview() {
                             be honored and renewed based upon the current agreement.</span>
                     </IgrExpansionPanel>
                     <IgrExpansionPanel>
-                        <h1 slot="title">What is the difference between your old model and your current subscription model for Ignite UI?</h1>
+                        <span slot="title">What is the difference between your old model and your current subscription model for Ignite UI?</span>
                         <span>For Ignite UI customers, we are moving away from NPM for licensed packages. The current NPM packages will be replaced with
                             packages that include a “Trial Version” watermark. Licensed packages for Ignite UI will be available from our cloud hosted ProGet
                             server. For more information, please refer to this article: Moving from Trial to Licensed Ignite UI NPM Packages</span>
                     </IgrExpansionPanel>
                     <IgrExpansionPanel>
-                        <h1 slot="title">What happens if I don&apos;t renew my subscription?</h1>
+                        <span slot="title">What happens if I don&apos;t renew my subscription?</span>
                         <span>Any unlicensed or trial versions of Ignite UI for Angular, React and Web Components will now include this watermark.</span>
                     </IgrExpansionPanel>
                     <IgrExpansionPanel>
-                        <h1 slot="title">If I don&apos;t renew my subscription will I still have access to previous versions of Infragistics products?</h1>
+                        <span slot="title">If I don&apos;t renew my subscription will I still have access to previous versions of Infragistics products?</span>
                         <span>Any version of Infragistics software which you have downloaded can continue to be used perpetually. Access to download any new or
                             previous versions through our customer portal and package feeds will require maintaining an active subscription by continuing
                             to renew it.</span>
@@ -274,14 +274,14 @@ export default class AccordionCustomization extends React.Component<any, any> {
         <div className="sample-wrapper">
           <IgrAccordion>
             <IgrExpansionPanel>
-              <h1 slot="title">
+              <span slot="title">
                 Categories
                 {this.state.categories.some((c: Category) => c.checked) && ": "}
                 {this.state.categories
                   .filter((c: Category) => c.checked)
                   .map((c: Category) => c.type)
                   .join(", ")}
-              </h1>
+              </span>
               <span>
                 <div className="categories-container">
                   {this.state.categories.map((c: Category) => {
@@ -300,10 +300,10 @@ export default class AccordionCustomization extends React.Component<any, any> {
               </span>
             </IgrExpansionPanel>
             <IgrExpansionPanel>
-              <h1 slot="title">
+              <span slot="title">
                 Cost: $<span id="lowerCost">{this.state.cost.lower}</span> to $
                 <span id="upperCost">{this.state.cost.upper}</span>
-              </h1>
+              </span>
               <span>
                 <IgrRangeSlider
                   min={0}
@@ -315,10 +315,10 @@ export default class AccordionCustomization extends React.Component<any, any> {
               </span>
             </IgrExpansionPanel>
             <IgrExpansionPanel>
-              <h1 slot="title">
+              <span slot="title">
                 Rating{this.state.rating && ": "}
                 {this.state.rating}
-              </h1>
+              </span>
               <span>
                 <IgrRadioGroup alignment="horizontal">
                   {[1, 2, 3, 4].map((rating) => {
@@ -345,9 +345,9 @@ export default class AccordionCustomization extends React.Component<any, any> {
               </span>
             </IgrExpansionPanel>
             <IgrExpansionPanel>
-              <h1 slot="title">
+              <span slot="title">
                 {this.state.time}
-              </h1>
+              </span>
               <span>
                 <IgrDateTimeInput
                   className="size-small"
@@ -483,8 +483,31 @@ export default function AccordionNestedScenario() {
             <IgrSwitch onChange={switchChange}><span>Single Expand</span></IgrSwitch>
             <div className="sample-wrapper">
                 <IgrAccordion singleExpand={singleExpand}>
+                    <IgrExpansionPanel Open>
+                        <span slot="title">Common questions about renewal.</span>
+                        <span>
+                            <IgrAccordion>
+                                <IgrExpansionPanel>
+                                    <span slot="title">What happens if I don&apos;t renew my subscription?</span>
+                                    <span>Any unlicensed or trial versions of Ignite UI for Angular, React and Web Components will now include this watermark.</span>
+                                </IgrExpansionPanel>
+                                <IgrExpansionPanel>
+                                    <span slot="title">If I don&apos;t renew my subscription will I still have access to previous versions of Infragistics products?</span>
+                                    <span>Any version of Infragistics software which you have downloaded can continue to be used perpetually. Access to download any new or
+                                        previous versions through our customer portal and package feeds will require maintaining an active subscription by continuing
+                                        to renew it.</span>
+                                </IgrExpansionPanel>
+                                <IgrExpansionPanel>
+                                    <span slot="title">Will I be automatically charged for my renewal/ Can I be automatically charged for renewal?</span>
+                                    <span>Any new subscriptions purchased online, via our eCommerce system, will renew automatically. Subscription renewal can be canceled,
+                                        at any time, before the next automatic renewal date. Subscriptions purchased directly from Infragistics or Infragistics&apos; partners are
+                                        subject to the renewal terms that were agreed upon as part of that purchase.</span>
+                                </IgrExpansionPanel>
+                            </IgrAccordion>
+                        </span>
+                    </IgrExpansionPanel>
                     <IgrExpansionPanel>
-                        <h1 slot="title">What has changed about subscription and pricing model?</h1>
+                        <span slot="title">What has changed about subscription and pricing model?</span>
                         <span>We have moved to a subscription-based pricing model for all our developer tools. This makes it easier
                             for you to manage your license subscriptions and allows us to provide a better level of service for you. We
                             updated our pricing and packages to provide you with flexible options and the best value. This includes Ignite UI
@@ -495,63 +518,13 @@ export default function AccordionNestedScenario() {
                             price.</span>
                     </IgrExpansionPanel>
                     <IgrExpansionPanel>
-                        <h1 slot="title">Who will the updated changes impact?</h1>
+                        <span slot="title">Who will the updated changes impact?</span>
                         <span>The license updates will impact all new and current customers using Ignite UI, Infragistics Professional and
                             Infragistics Ultimate. Specifically, we have also made updates to our product and packaging for Ignite UI for JavaScript,
                             Ignite UI for Angular, Ignite UI for React and Ignite UI for Web components. For more information, please refer to this
                             blog: Announcement: Changes to Ignite UI Product & Packaging The pricing has been updated for all products and packages.
                             So, all new or additional licenses will be sold based on our new pricing and packages. All existing license agreements will
                             be honored and renewed based upon the current agreement.</span>
-                    </IgrExpansionPanel>
-                    <IgrExpansionPanel>
-                        <h1 slot="title">What is the difference between your old model and your current subscription model for Ignite UI?</h1>
-                        <span>For Ignite UI customers, we are moving away from NPM for licensed packages. The current NPM packages will be replaced with
-                            packages that include a “Trial Version” watermark. Licensed packages for Ignite UI will be available from our cloud hosted ProGet
-                            server. For more information, please refer to this article: Moving from Trial to Licensed Ignite UI NPM Packages</span>
-                    </IgrExpansionPanel>
-                    <IgrExpansionPanel>
-                        <h1 slot="title">Common questions about renewal.</h1>
-                        <span>
-                            <IgrAccordion>
-                                <IgrExpansionPanel>
-                                    <h1 slot="title">What happens if I don&apos;t renew my subscription?</h1>
-                                    <span>Any unlicensed or trial versions of Ignite UI for Angular, React and Web Components will now include this watermark.</span>
-                                </IgrExpansionPanel>
-                                <IgrExpansionPanel>
-                                    <h1 slot="title">If I don&apos;t renew my subscription will I still have access to previous versions of Infragistics products?</h1>
-                                    <span>Any version of Infragistics software which you have downloaded can continue to be used perpetually. Access to download any new or
-                                        previous versions through our customer portal and package feeds will require maintaining an active subscription by continuing
-                                        to renew it.</span>
-                                </IgrExpansionPanel>
-                                <IgrExpansionPanel>
-                                    <h1 slot="title">Will I be automatically charged for my renewal/ Can I be automatically charged for renewal?</h1>
-                                    <span>Any new subscriptions purchased online, via our eCommerce system, will renew automatically. Subscription renewal can be canceled,
-                                        at any time, before the next automatic renewal date. Subscriptions purchased directly from Infragistics or Infragistics&apos; partners are
-                                        subject to the renewal terms that were agreed upon as part of that purchase.</span>
-                                </IgrExpansionPanel>
-                            </IgrAccordion>
-                        </span>
-                    </IgrExpansionPanel>
-                    <IgrExpansionPanel>
-                        <h1 slot="title">I split my work across two computers. Can I install on both using my single-user license?</h1>
-                        <span>The Infragistics Ultimate license is tied to the user, and not the computer. That means you&apos;re welcome to install and use Ignite UI,
-                            Infragistics Professional, and Infragistics Ultimate on any computer you use. However, if we notice a large number of activations using the
-                            same license, we may contact you to verify this behavior.</span>
-                    </IgrExpansionPanel>
-                    <IgrExpansionPanel>
-                        <h1 slot="title">I used up my trial for an earlier version of Infragistics Ultimate. Can I start a new trial when a major version is released?</h1>
-                        <span>Yes! If you have tried a previous version in the past, and used up your 30-day trial, you can try the next major version for another 30 days!
-                            You can do this in the following two ways:
-                            <ul>
-                                <li>If you have days remaining in your 30-day trial period for the current version (e.g., the
-                                    Version 15.1 Volume Release), use the Check for Update option inside the Platform Installer or
-                                    your account. You will be able to start a fresh trial for the next major version (e.g., 20.1
-                                    Volume Release)</li>
-                                <li>If you have used up the 30-day trial for the previous major version (e.g., the 19.2 Volume
-                                    Release), simply download and install Infragistics Ultimate from our <a
-                                        href="https://www.infragistics.com/products/ultimate">website</a> (This will also allow you
-                                    to start a new trial.)</li>
-                            </ul></span>
                     </IgrExpansionPanel>
                 </IgrAccordion>
             </div>

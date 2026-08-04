@@ -11,7 +11,7 @@ The Grid's Editing functionality provides with the opportunity to use [Cascading
 ## Angular Grid with Cascading Combos Sample Overview
 The sample below demonstrates how `Grid` works with nested `Cascading Combos`.
 ```typescript
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { ISimpleComboSelectionChangingEventArgs, IgxSimpleComboComponent } from 'igniteui-angular/simple-combo';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -26,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'grid-cascading-combos',
     templateUrl: './grid-cascading-combos.component.html',
     styleUrls: ['./grid-cascading-combos.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxSimpleComboComponent, FormsModule, IgxLinearProgressBarComponent]
 })
 export class GridCascadingCombosComponent implements OnInit {

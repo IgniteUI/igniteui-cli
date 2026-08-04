@@ -207,31 +207,21 @@ export default class ChipMultiple extends React.Component<any, any> {
             <div className="container sample">
                 <div className="container" style={{flexDirection: "row", gap: "8px"}}>
                     <IgrChip selectable={true} removable={true} onRemove={this.handleChipRemove}>
-                        <span slot="select">
-                            <IgrIcon name="custom-select" collection="material"></IgrIcon>
-                        </span>
+                        <IgrIcon slot="select" name="custom-select" collection="material"></IgrIcon>
                         <span>Custom Icons</span>
-                        <span slot="remove">
-                            <IgrIcon name="custom-remove" collection="material"></IgrIcon>
-                        </span>
+                        <IgrIcon slot="remove" name="custom-remove" collection="material"></IgrIcon>
                     </IgrChip>
                     <IgrChip removable={true} onRemove={this.handleChipRemove}>
-                        <span slot="start">
-                            <IgrIcon name="brush" collection="material"></IgrIcon>
-                        </span>
+                        <IgrIcon slot="start" name="brush" collection="material"></IgrIcon>
                         <span>Start Slot</span>
                     </IgrChip>
                     <IgrChip selectable={true}>
                         <span>End Slot</span>
-                        <span slot="end">
-                            <IgrIcon name="brick-wall" collection="material"></IgrIcon>
-                        </span>
+                        <IgrIcon slot="end" name="brick-wall" collection="material"></IgrIcon>
                     </IgrChip>
                     <IgrChip disabled={true}>
                         <span>Disabled Chip</span>
-                        <span slot="end">
-                            <IgrIcon name="dog-icon" collection="material"></IgrIcon>
-                        </span>
+                        <IgrIcon slot="end" name="dog-icon" collection="material"></IgrIcon>
                     </IgrChip>
                 </div>
             </div>

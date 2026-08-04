@@ -24,7 +24,7 @@ To validate that a column input would be set and the value is going to be format
 ```
 The following sample demonstrates how to use the prebuilt `required`, `email` and `min` validator directives in a Grid.
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { employeesData } from '../../data/employeesData';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -37,6 +37,7 @@ import { DatePipe } from '@angular/common';
     selector: 'app-grid-validator-service',
     styleUrls: ['./grid-validator-service.component.scss'],
     templateUrl: './grid-validator-service.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxGridComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent, IgxColumnRequiredValidatorDirective, IgxColumnEmailValidatorDirective, IgxColumnMinValidatorDirective, DatePipe]
 })
 export class GridValidatorServiceComponent {
@@ -188,7 +189,7 @@ public cellEdit(evt) {
 ### Example
 The below example demonstrates the above-mentioned customization options.
 ```typescript
-import { Component, Directive, Input, ViewChild } from '@angular/core';
+import { Component, Directive, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IGridFormGroupCreatedEventArgs, IgxCellTemplateDirective, IgxCellValidationErrorDirective, IgxColumnComponent, IgxColumnEmailValidatorDirective, IgxColumnMinValidatorDirective, IgxColumnRequiredValidatorDirective } from 'igniteui-angular/grids/core';
@@ -222,6 +223,7 @@ export class PhoneFormatDirective extends Validators {
     selector: 'app-grid-validator-service-extended',
     styleUrls: ['./grid-validator-service-extended.component.scss'],
     templateUrl: './grid-validator-service-extended.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent, IgxColumnRequiredValidatorDirective, IgxColumnEmailValidatorDirective, PhoneFormatDirective, IgxCellValidationErrorDirective, NgTemplateOutlet, IgxColumnMinValidatorDirective, IgxButtonDirective, DatePipe]
 })
 export class GridValidatorServiceExtendedComponent {
@@ -476,7 +478,7 @@ public stateMessage(cell: CellType) {
 ### Cross-field example
 The below sample demonstrates the cross-field validation in action.
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn, FormsModule } from '@angular/forms';
 import { CellType, IGridEditEventArgs, IGridFormGroupCreatedEventArgs, IgxCellTemplateDirective, IgxCellValidationErrorDirective, IgxColumnComponent, IgxColumnEmailValidatorDirective, IgxColumnMinValidatorDirective, IgxColumnRequiredValidatorDirective } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -490,6 +492,7 @@ import { NgTemplateOutlet, DatePipe } from '@angular/common';
     selector: 'app-grid-validator-service-cross-field',
     styleUrls: ['./grid-validator-service-cross-field.component.scss'],
     templateUrl: './grid-validator-service-cross-field.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxGridComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent, IgxColumnRequiredValidatorDirective, IgxColumnEmailValidatorDirective, IgxCellValidationErrorDirective, NgTemplateOutlet, IgxColumnMinValidatorDirective, IgxTooltipTargetDirective, IgxTooltipDirective, IgxButtonDirective, DatePipe]
 })
 export class GridValidatorServiceCrossFieldComponent {
@@ -547,7 +550,8 @@ export class GridValidatorServiceCrossFieldComponent {
     }
 
     private rowValidator(): ValidatorFn {
-        return (formGroup: FormGroup): ValidationErrors | null => {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const formGroup = control as FormGroup;
             let returnObject = {};
             const createdOnRecord = formGroup.get('created_on');
             const lastActiveRecord = formGroup.get('last_activity');
@@ -580,7 +584,7 @@ export class GridValidatorServiceCrossFieldComponent {
             }
 
             return returnObject;
-        };
+        }
     }
 
     public isRowValid(cell: CellType) {
@@ -782,7 +786,7 @@ public cellStyles = {
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DATA } from '../../data/nwindData';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellValidationErrorDirective, IgxColumnComponent, IgxColumnRequiredValidatorDirective, RowType } from 'igniteui-angular/grids/core';
@@ -793,6 +797,7 @@ import { NgTemplateOutlet } from '@angular/common';
     selector: 'app-grid-validation-style',
     styleUrls: [`grid-validation-style.component.scss`],
     templateUrl: 'grid-validation-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnRequiredValidatorDirective, IgxCellValidationErrorDirective, NgTemplateOutlet]
 })
 export class GridValidationStyleComponent {

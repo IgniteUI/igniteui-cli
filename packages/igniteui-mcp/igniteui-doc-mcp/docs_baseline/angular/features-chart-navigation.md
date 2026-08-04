@@ -209,7 +209,7 @@ Like this sample? Get access to our complete Angular toolkit and start building 
 
 Whether or not zooming is on by default depends on the chart you are using. If you are using [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html), it is on by default, but it is not in the [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html). In order to enable or disable navigation in the UI, you need to set either the [`isHorizontalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#isHorizontalZoomEnabled) and/or the [`isVerticalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#isVerticalZoomEnabled) properties of the chart, depending on the direction that you wish to enable or disable zooming.
 
-It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#defaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#defaultInteraction) property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
+It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#defaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#defaultInteraction) property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
 
 ## Chart Navigation with Touch, Mouse and Keyboard
 
@@ -219,21 +219,21 @@ Navigation in the Angular data chart can happen with either touch, the mouse or 
 - **Zoom In**: Using the <kbd>PAGE UP</kbd> key on the keyboard, rolling the mouse wheel up, or pinching to zoom in via touch.
 - **Zoom Out**: Using the <kbd>PAGE DOWN</kbd> key on the keyboard, rolling the mouse wheel down, or pinching to zoom out via touch.
 - **Fit to Chart Plot Area**: Using the <kbd>HOME</kbd> key on the keyboard. There is no mouse or touch operation for this.
-- **Area Zoom**: Click and drag the mouse within the plot area with the [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#defaultInteraction) property set to its default - `DragZoom`.
+- **Area Zoom**: Click and drag the mouse within the plot area with the [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#defaultInteraction) property set to its default - `DragZoom`.
 
-The zoom and pan operations can also be enabled by using modifier keys by setting the [`dragModifier`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#dragModifier) and [`panModifier`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#panModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
+The zoom and pan operations can also be enabled by using modifier keys by setting the [`dragModifier`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#dragModifier) and [`panModifier`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#panModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
 
 | Modifier Value | Corresponding Key |
-| -------------- | ----------------- |
-| `Shift`        | <kbd>SHIFT</kbd>  |
-| `Control`      | <kbd>CTRL</kbd>   |
-| `Windows`      | <kbd>WIN</kbd>    |
-| `Apple`        | <kbd>APPLE</kbd>  |
-| `None`         | no keys           |
+| ---------------|------------------ |
+| `Shift`        | <kbd>SHIFT</kbd> |
+| `Control`      | <kbd>CTRL</kbd> |
+| `Windows`      | <kbd>WIN</kbd> |
+| `Apple`        | <kbd>APPLE</kbd> |
+| `None`         | no keys |
 
 ## Chart Navigation with Scrollbars
 
-The chart can be scrolled by enabling the [`verticalViewScrollbarMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#verticalViewScrollbarMode) and [`horizontalViewScrollbarMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#horizontalViewScrollbarMode) properties.
+The chart can be scrolled by enabling the [`verticalViewScrollbarMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#verticalViewScrollbarMode) and [`horizontalViewScrollbarMode`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#horizontalViewScrollbarMode) properties.
 
 These can be configured to the following options
 
@@ -345,9 +345,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Angular data chart provides several navigation properties that are updated each time a zoom or pan operation happens in the chart. You can also set each of these properties to zoom or pan the data chart programmatically. The following is a list of these properties:
 
-- [`windowPositionHorizontal`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#windowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
-- [`windowPositionVertical`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#windowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
-- [`windowRect`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#windowRect): A `Rect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`windowRect`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#windowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
+- [`windowPositionHorizontal`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#windowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
+- [`windowPositionVertical`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#windowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
+- [`windowRect`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#windowRect): A `Rect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`windowRect`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#windowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
 - [`windowScaleHorizontal`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#windowScaleHorizontal): A numeric value describing the width portion of the content view rectangle displayed by the data chart.
 - [`windowScaleVertical`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#windowScaleVertical): A numeric value describing the height portion of the content view rectangle displayed by the data chart.
 
@@ -362,11 +362,11 @@ You can find more information about related chart features in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-- [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#defaultInteraction)
-- [`dragModifier`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#dragModifier)
+- [`defaultInteraction`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#defaultInteraction)
+- [`dragModifier`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#dragModifier)
 - [`isHorizontalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#isHorizontalZoomEnabled)
 - [`isVerticalZoomEnabled`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#isVerticalZoomEnabled)
-- [`panModifier`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxseriesviewercomponent.html#panModifier)
+- [`panModifier`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html#panModifier)
 - [`IgxCategoryChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html)
 - [`IgxDataChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdatachartcomponent.html)
 - [`IgxFinancialChartComponent`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxfinancialchartcomponent.html)

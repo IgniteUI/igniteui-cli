@@ -104,7 +104,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 ## Dependencies
 
 Install the following packages in the Ignite UI for Angular toolset:
@@ -244,7 +243,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 The visualization or properties of the visualization are also configurable using the [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) at the top of the control. This [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) has the default tools for the current visualization with the addition of four Dashboard Tile specific ones, highlighted below:
 
 <img src="../images/dashboard-tile-toolbar.png" alt="Dashboard Tile Toolbar"/>
@@ -254,7 +252,7 @@ From left to right:
 - The first tool will show a data grid with the `DataSource` provided to the control. This is a toggle tool, so if you click it again after showing the grid, it will revert to the visualization.
 - The second tool allows you to configure the settings of the current data visualization.
 - The third tool allows you to change the current visualization, allowing you to plot a different series type or show a different type of visualization altogether. This can be set on the control by setting the `VisualizationType` property, mentioned above.
-- The last tool allows you to configure which properties on your underlying data item are included for the control. You can configure this by setting the [`includedProperties`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#includedProperties) or [`excludedProperties`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#excludedProperties) collection on the control.
+- The last tool allows you to configure which properties on your underlying data item are included for the control. You can configure this by setting the [`includedProperties`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#includedProperties) or [`excludedProperties`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxcategorychartcomponent.html#excludedProperties) collection on the control.
 
 This demo demonstrates dashboard tile integration with the Angular Pie Chart. The toolbar options at the top right provides access to styling and changing the data visualization.
 
@@ -344,7 +342,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-
 This demo demonstrates dashboard tile integration with the Angular Geographic Map. The toolbar options at the top right provides access to styling and changing the data visualization.
 
 ```typescript
@@ -433,7 +430,6 @@ export class AppComponent implements AfterViewInit
 https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
-
 
 ## API References
 

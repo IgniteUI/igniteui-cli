@@ -10,7 +10,7 @@ _premium: true
 The grid Excel filtering provides an Excel like filtering UI for any Angular table like the Grid.
 ## Angular Grid Excel Style Filtering Example
 ```typescript
-import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent } from 'igniteui-angular/grids/core';
@@ -22,6 +22,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-grid-sample',
     styleUrls: ['./grid-excel-style-filtering-sample-1.component.scss'],
     templateUrl: 'grid-excel-style-filtering-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxColumnComponent, IgxCellTemplateDirective, CurrencyPipe]
 })
 
@@ -181,7 +182,7 @@ Sorting, pinning and hiding features can be removed from the filter menu using t
 In the sample below **Product Name** and **Discontinued** columns have all four features enabled, **Quantity Per Unit** have all three disabled, **Unit Price** has only sorting and **Order Date** has only pinning and hiding and all are [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable).
 <div class="divider--half"></div>
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent } from 'igniteui-angular/grids/core';
 import { DATA } from '../../data/nwindData';
@@ -192,6 +193,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-grid-sample',
     styleUrls: ['./grid-excel-style-filtering-sample-2.component.scss'],
     templateUrl: 'grid-excel-style-filtering-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxColumnComponent, IgxCellTemplateDirective, CurrencyPipe]
 })
 
@@ -314,7 +316,7 @@ You could also re-template the Excel style filtering icon in the column header u
 ```
 <div class="divider--half"></div>
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxExcelStyleColumnOperationsTemplateDirective, IgxExcelStyleFilterOperationsTemplateDirective, IgxExcelStyleHeaderComponent, IgxExcelStyleHeaderIconDirective, IgxExcelStyleSearchComponent, IgxExcelStyleSortingComponent, IgxGridExcelStyleFilteringComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent } from 'igniteui-angular/grids/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -326,6 +328,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-grid-sample',
     styleUrls: ['./grid-excel-style-filtering-sample-3.component.scss'],
     templateUrl: 'grid-excel-style-filtering-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxExcelStyleHeaderIconDirective, IgxIconComponent, IgxGridExcelStyleFilteringComponent, IgxExcelStyleColumnOperationsTemplateDirective, IgxExcelStyleHeaderComponent, IgxExcelStyleSortingComponent, IgxExcelStyleFilterOperationsTemplateDirective, IgxExcelStyleSearchComponent, IgxColumnComponent, IgxCellTemplateDirective, CurrencyPipe]
 })
 
@@ -446,7 +449,7 @@ The list items inside the Excel Style Filtering dialog represent the unique valu
 ## Formatted Values Filtering Strategy
 By default, the Grid component filters the data based on the original cell values, however in some cases you may want to filter the data based on the formatted values. @@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') { In order to do that you can use the [`FormattedValuesFilteringStrategy`](mcp:get_api_reference?platform=angular&component=FormattedValuesFilteringStrategy). }  The following sample demonstrates how to format the numeric values of a column as strings and filter the Grid based on the string values:
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { FormattedValuesFilteringStrategy } from 'igniteui-angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -458,6 +461,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-sample',
     styleUrls: ['./grid-formatted-filtering-strategy.component.scss'],
     templateUrl: 'grid-formatted-filtering-strategy.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 export class GridFormattedFilteringStrategyComponent implements OnInit {
@@ -626,7 +630,7 @@ The Grid's [`z-index`](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
 However, elements that go outside of the grid (e.g. Excel Style filter) will conflict with outside elements with the same `z-index` (e.g. having two grids one under another) resulting in false rendering. The solution for this issue is to set the [`outlet`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=outlet) property to an external outlet directive which allows the overlay elements to always appear on top.
 ### Demo
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DATA } from '../../data/nwindData';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -638,6 +642,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-grid-external-outlet',
     styleUrls: ['./grid-external-outlet-sample.component.scss'],
     templateUrl: 'grid-external-outlet-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxOverlayOutletDirective, CurrencyPipe]
 })
 
@@ -814,7 +819,7 @@ The last step is to **include** each component’s custom theme. We will also se
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { DATA } from '../../data/nwindData';
@@ -825,6 +830,7 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-grid-esf-style-sample',
     styleUrls: ['./grid-excel-style-filtering-style.component.scss'],
     templateUrl: 'grid-excel-style-filtering-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, CurrencyPipe]
 })
 export class ExcelStyleFilteringStyleComponent implements OnInit {
@@ -884,62 +890,22 @@ export class ExcelStyleFilteringStyleComponent implements OnInit {
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
-$yellow: #ffcd0f;
-$black: #292826;
+$background: #292826;
+$foreground: #eeece1;
+$accent: #ffcd0f;
 
 $custom-grid: grid-theme(
-  $filtering-row-background: $yellow,
-  $excel-filtering-header-foreground: $black,
-  $excel-filtering-subheader-foreground: $black,
-  $excel-filtering-actions-foreground: #006400,
-  $excel-filtering-actions-hover-foreground: $yellow,
-  $excel-filtering-actions-disabled-foreground: var(--ig-gray-500)
+    $background: $background,
+    $foreground: $foreground,
+    $accent-color: $accent,
 );
 
-$custom-button: contained-button-theme(
-  $background: $black,
-  $foreground: $yellow,
-  $hover-background: $black,
-  $hover-foreground: $yellow
-);
-
-$flat-custom-button: flat-button-theme(
-  $foreground: $black,
-);
-
-$custom-input-group: input-group-theme(
-  $box-background: $yellow,
-  $idle-text-color: $black,
-  $focused-text-color: $black,
-  $filled-text-color: $black
-);
-
-$custom-list: list-theme(
-  $background: $yellow
-);
-
-$custom-checkbox: checkbox-theme(
-  $empty-color: $black,
-  $fill-color: $black,
-  $tick-color: $yellow,
-  $label-color: $black
-);
-
-$custom-drop-down: drop-down-theme(
-  $background-color: $yellow,
-  $item-text-color: $black,
-  $hover-item-background: $black,
-  $hover-item-text-color: $yellow
-);
-
-:host {
+:host ::ng-deep {
     @include tokens($custom-grid);
-    @include tokens($custom-drop-down);
-    @include tokens($custom-input-group);
-    @include tokens($custom-checkbox);
-    @include tokens($custom-list);
-    @include tokens($custom-button);
-    @include tokens($flat-custom-button);
+
+    igx-grid-excel-style-filtering {
+        --ig-excel-filtering-background: #444;
+    }
 }
 ```
 >[!NOTE]

@@ -11,7 +11,7 @@ Pagination is used to split a large set of data into a sequence of pages that ha
 ## Angular Pagination Example
 The following example represents Grid pagination and exposes the options usage of `items per page` and how paging can be enabled. The user can also quickly navigate through the Grid pages via "Go to last page" and "Go to first page" buttons.
 ```typescript
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -25,6 +25,7 @@ import { DecimalPipe } from '@angular/common';
     selector: 'app-grid-sample',
     styleUrls: ['./grid-paging-sample.component.scss'],
     templateUrl: 'grid-paging-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxLinearProgressBarComponent, DecimalPipe]
 })
 
@@ -148,7 +149,7 @@ The `igx-paginator` component is used along with the `igx-grid` component in the
 ```
 ### Paginator Component Demo
 ```typescript
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, PLATFORM_ID, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, PLATFORM_ID, inject, ChangeDetectionStrategy } from '@angular/core';
 import { athletesData } from '../../data/athletesData';
 import { IPaginatorResourceStrings } from 'igniteui-angular/core';
 import { IgxPageNavigationComponent, IgxPageSizeSelectorComponent, IgxPaginatorComponent, IgxPaginatorContentDirective } from 'igniteui-angular/paginator';
@@ -163,6 +164,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-grid-pager-sample',
     styleUrls: ['./grid-pager-sample.component.scss'],
     templateUrl: './grid-pager-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxPageSizeSelectorComponent, IgxPageNavigationComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxSwitchComponent, FormsModule, DecimalPipe]
 })
 export class GridPagerSampleComponent implements OnInit, AfterViewInit {
@@ -323,7 +325,7 @@ The last step is to **include** the component mixins, each with its respective t
 ```
 ### Pagination Style Example
 ```typescript
-import { Component, ViewChild, OnInit} from '@angular/core';
+import { Component, ViewChild, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -337,6 +339,7 @@ import { DecimalPipe } from '@angular/common';
     selector: 'app-custom-grid-paging-style-sample',
     styleUrls: ['custom-grid-paging-style.component.scss'],
     templateUrl: 'custom-grid-paging-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxIconButtonDirective, IgxIconComponent, DecimalPipe]
 })
 
@@ -397,69 +400,29 @@ export class CustomGridPagingStyleSampleComponent implements OnInit{
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
-$my-primary: #231c2c;
-$my-secondary: #d0ab23;
-$dark-gray: #333;
-$light-gray: #999;
-$inactive-color: #826217;
+$background: #19171b;
+$foreground: #eeece1;
+$accent: #ffcd0f;
 
-$dark-paginator: paginator-theme(
-  $text-color: $my-secondary,
-  $background-color: $my-primary,
-  $border-color: $my-secondary
+$grid-theme: grid-theme(
+    $background: $background,
+    $foreground: $foreground,
+    $accent-color: $accent,
 );
 
-$dark-button: flat-icon-button-theme(
-  $foreground: $my-secondary,
-  $hover-foreground: $dark-gray,
-  $hover-background: $my-secondary,
-  $focus-foreground: $dark-gray,
-  $focus-background: $my-secondary,
-  $border-color: $my-secondary,
-  $focus-border-color: $my-secondary,
-  $disabled-foreground: $inactive-color
-);
-
-$dark-select: select-theme(
-  $toggle-button-background: $my-primary,
-  $toggle-button-foreground: $inactive-color,
-  $toggle-button-foreground-filled: $inactive-color,
-  $toggle-button-foreground-focus: $inactive-color,
-  $toggle-button-background-focus--border: $my-primary,
-);
-
-$dark-input-group: input-group-theme(
-  $filled-text-color: $my-secondary,
-  $idle-text-color: $my-secondary,
-  $filled-text-hover-color: $my-secondary,
-  $focused-text-color: $my-secondary,
-  $border-color: darken($inactive-color, 10%),
-  $focused-border-color: $my-secondary,
-  $input-suffix-color: $my-secondary,
-);
-
-$dark-drop-down-theme: drop-down-theme(
-  $background-color: $my-primary,
-  $item-text-color: $my-secondary,
-  $selected-item-background: $my-secondary,
-  $selected-item-text-color: $dark-gray,
-  $focused-item-background: $my-secondary,
-  $focused-item-text-color: $dark-gray,
-  $selected-focus-item-background: $my-secondary,
-  $selected-focus-item-text-color: $dark-gray,
-  $selected-hover-item-background: $my-secondary,
-  $selected-hover-item-text-color: $dark-gray
+$paginator-theme: paginator-theme(
+    $foreground: #ff570f,
+    $background: #130425FF,
+    $border-color: #ff570f,
+    $accent-color: #ff570f,
 );
 
 igx-grid {
-    @include tokens($dark-paginator);
-    @include tokens($dark-drop-down-theme);
+    @include tokens($grid-theme);
 }
 
 igx-paginator {
-    @include tokens($dark-button);
-    @include tokens($dark-input-group);
-    @include tokens($dark-select);
+    @include tokens($paginator-theme);
 }
 ```
 <div class="divider--half"></div>

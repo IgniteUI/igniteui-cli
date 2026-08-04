@@ -11,7 +11,7 @@ _premium: true
 The grid Excel filtering provides an Excel like filtering UI for any Angular table like the Tree Grid.
 ## Angular Tree Grid Excel Style Filtering Example
 ```typescript
-import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { TreeGridFilteringStrategy } from 'igniteui-angular/core';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
@@ -24,6 +24,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-excel-style-filtering-sample-1',
     styleUrls: ['./tree-grid-excel-style-filtering-sample-1.component.scss'],
     templateUrl: 'tree-grid-excel-style-filtering-sample-1.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxColumnComponent, IgxCellTemplateDirective]
 })
 
@@ -195,7 +196,7 @@ Sorting, pinning and hiding features can be removed from the filter menu using t
 In the sample below 'Order Product', 'Category' and 'Units' columns have all three features enabled, 'Price' have all three disabled, 'Order Date' and 'Delivered' have only pinning and hiding.
 <div class="divider--half"></div>
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { ORDERS_DATA } from '../data/orders';
@@ -206,6 +207,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-excel-style-filtering-sample-2',
     styleUrls: ['./tree-grid-excel-style-filtering-sample-2.component.scss'],
     templateUrl: 'tree-grid-excel-style-filtering-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxColumnComponent, IgxCellTemplateDirective]
 })
 
@@ -339,7 +341,7 @@ You could also re-template the Excel style filtering icon in the column header u
 ```
 <div class="divider--half"></div>
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxExcelStyleColumnOperationsTemplateDirective, IgxExcelStyleFilterOperationsTemplateDirective, IgxExcelStyleHeaderComponent, IgxExcelStyleHeaderIconDirective, IgxExcelStyleSearchComponent, IgxExcelStyleSortingComponent, IgxGridExcelStyleFilteringComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent } from 'igniteui-angular/grids/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -351,6 +353,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-excel-style-filtering-sample-3',
     styleUrls: ['./tree-grid-excel-style-filtering-sample-3.component.scss'],
     templateUrl: 'tree-grid-excel-style-filtering-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxExcelStyleHeaderIconDirective, IgxIconComponent, IgxGridExcelStyleFilteringComponent, IgxExcelStyleColumnOperationsTemplateDirective, IgxExcelStyleHeaderComponent, IgxExcelStyleSortingComponent, IgxExcelStyleFilterOperationsTemplateDirective, IgxExcelStyleSearchComponent, IgxColumnComponent, IgxCellTemplateDirective]
 })
 
@@ -480,7 +483,7 @@ The list items inside the Excel Style Filtering dialog represent the unique valu
 ## Formatted Values Filtering Strategy
 By default, the Tree Grid component filters the data based on the original cell values, however in some cases you may want to filter the data based on the formatted values. @@if (igxName === 'IgxGrid' || igxName === 'IgxHierarchicalGrid') { In order to do that you can use the [`FormattedValuesFilteringStrategy`](mcp:get_api_reference?platform=angular&component=FormattedValuesFilteringStrategy). }  In order to do that you can use the [`TreeGridFormattedValuesFilteringStrategy`](mcp:get_api_reference?platform=angular&component=TreeGridFormattedValuesFilteringStrategy).  The following sample demonstrates how to format the numeric values of a column as strings and filter the Tree Grid based on the string values:
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { TreeGridFormattedValuesFilteringStrategy } from 'igniteui-angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -492,6 +495,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-formatted-filtering-strategy',
     styleUrls: ['./tree-grid-formatted-filtering-strategy.component.scss'],
     templateUrl: 'tree-grid-formatted-filtering-strategy.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 
@@ -764,7 +768,7 @@ The Tree Grid's [`z-index`](https://developer.mozilla.org/en-US/docs/Web/CSS/z-i
 However, elements that go outside of the grid (e.g. Excel Style filter) will conflict with outside elements with the same `z-index` (e.g. having two grids one under another) resulting in false rendering. The solution for this issue is to set the [`outlet`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=outlet) property to an external outlet directive which allows the overlay elements to always appear on top.
 ### Demo
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ORDERS_DATA } from '../data/orders';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent } from 'igniteui-angular/grids/core';
@@ -776,6 +780,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-external-outlet',
     styleUrls: ['./tree-grid-external-outlet-sample.component.scss'],
     templateUrl: 'tree-grid-external-outlet-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxOverlayOutletDirective]
 })
 
@@ -979,7 +984,7 @@ The last step is to **include** each component’s custom theme. We will also se
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { ORDERS_DATA } from '../data/orders';
@@ -990,6 +995,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-excel-style-filtering-style',
     styleUrls: ['./tree-grid-excel-style-filtering-style.component.scss'],
     templateUrl: 'tree-grid-excel-style-filtering-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 export class TreeGridExcelStyleFilteringStyleComponent implements OnInit {
@@ -1061,75 +1067,22 @@ export class TreeGridExcelStyleFilteringStyleComponent implements OnInit {
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
-$yellow: #ffcd0f;
-$black: #292826;
+$background: #292826;
+$foreground: #eeece1;
+$accent: #ffcd0f;
 
 $custom-grid: grid-theme(
-  $filtering-row-background: $yellow
+    $background: $background,
+    $foreground: $foreground,
+    $accent-color: $accent,
 );
 
-$custom-flat-button: flat-button-theme(
-  $background: $yellow,
-  $foreground: $black,
-  $hover-background: $black,
-  $hover-foreground: $yellow
-);
-
-$custom-contained-button: contained-button-theme(
-  $background: $black,
-  $foreground: $yellow,
-  $hover-background: $black,
-  $hover-foreground: $yellow
-);
-
-$custom-button-group: button-group-theme(
-  $item-background: $yellow,
-  $item-text-color: $black,
-  $item-hover-background: $black,
-  $item-hover-text-color: $yellow
-);
-
-$custom-input-group: input-group-theme(
-  $box-background: $yellow,
-  $idle-text-color: $black,
-  $focused-text-color: $black,
-  $filled-text-color: $black
-);
-
-$custom-list: list-theme(
-  $background: $yellow
-);
-
-$custom-checkbox: checkbox-theme(
-  $empty-color: $black,
-  $fill-color: $black,
-  $tick-color: $yellow,
-  $label-color: $black
-);
-
-$custom-drop-down: drop-down-theme(
-  $background-color: $yellow,
-  $selected-item-background: lighten($black, 10%),
-  $selected-focus-item-background: lighten($black, 15%),
-  $item-text-color: $black,
-  $hover-item-background: $black,
-  $hover-item-text-color: $yellow
-);
-
-:host {
-  ::ng-deep {
+:host ::ng-deep {
     @include tokens($custom-grid);
-    @include tokens($custom-drop-down);
-    @include tokens($custom-input-group);
-    @include tokens($custom-checkbox);
-    @include tokens($custom-list);
-    @include tokens($custom-flat-button);
-    @include tokens($custom-button-group);
 
-    .igx-excel-filter__apply {
-      @include tokens($custom-contained-button);
+    igx-grid-excel-style-filtering {
+        --ig-excel-filtering-background: #444;
     }
-  }
 }
 ```
 >[!NOTE]

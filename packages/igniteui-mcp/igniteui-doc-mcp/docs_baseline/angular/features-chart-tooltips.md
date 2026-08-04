@@ -166,11 +166,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The [`toolTipType`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/classes/igniteui_angular_charts.igxdomainchartcomponent.html#toolTipType) property is configurable and can be set to one of the following options:
 
-| Property Value                                                                                                                                                 | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| [`Default`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.tooltiptype.html#Default) Tooltip   | Display a tooltip for a single item when the pointer is positioned over it.                        |
-| [`Data`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.tooltiptype.html#Data) Tooltip         | Display the data tooltips for all series in the chart.                                             |
-| [`Item`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.tooltiptype.html#Item) Tooltip         | Display a tooltip for each data item in the category that the pointer is positioned over.          |
+| Property Value     | Description  |
+| -------------------|----------------|
+| [`Default`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.tooltiptype.html#Default)  Tooltip | Display a tooltip for a single item when the pointer is positioned over it. |
+| [`Data`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.tooltiptype.html#Data) Tooltip | Display the data tooltips for all series in the chart. |
+| [`Item`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.tooltiptype.html#Item)  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over. |
 | [`Category`](https://www.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/enums/igniteui_angular_charts.tooltiptype.html#Category) Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over. |
 
 <div class="divider--half"></div>

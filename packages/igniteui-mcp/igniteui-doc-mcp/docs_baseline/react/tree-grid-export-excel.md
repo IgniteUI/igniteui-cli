@@ -114,9 +114,13 @@ export default class Sample extends React.Component<any, any> {
                     id="treeGrid"
                     data={this.employeesNestedData}
                     childDataKey="Employees">
-                    <IgrGridToolbar>
-                        <IgrGridToolbarActions>
-                            <IgrGridToolbarExporter>
+                    <IgrGridToolbar
+                    >
+                        <IgrGridToolbarActions
+                        >
+                            <IgrGridToolbarExporter
+                                exportCSV={false}
+                                exportExcel={true}>
                             </IgrGridToolbarExporter>
                         </IgrGridToolbarActions>
                     </IgrGridToolbar>
@@ -271,16 +275,19 @@ export default class Sample extends React.Component<any, any> {
                     data={this.employeesFlatDetails}
                     foreignKey="ParentID"
                     primaryKey="ID">
-                    <IgrGridToolbar>
-                        <IgrGridToolbarActions>
-                            <IgrGridToolbarPinning>
+                    <IgrGridToolbar
+                    >
+                        <IgrGridToolbarActions
+                        >
+                            <IgrGridToolbarPinning
+                            >
                             </IgrGridToolbarPinning>
-                            <IgrGridToolbarHiding>
+                            <IgrGridToolbarHiding
+                            >
                             </IgrGridToolbarHiding>
                             <IgrGridToolbarExporter
                                 exportCSV={false}
                                 exportExcel={true}
-                                exportPDF={true}
                                 onExportStarted={this.webGridExportEventMultiColumnHeaders}>
                             </IgrGridToolbarExporter>
                         </IgrGridToolbarActions>

@@ -13,7 +13,7 @@ _tocName: Badge
 ## Angular Badge Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 import { IgxBadgeComponent } from 'igniteui-angular/badge';
 
@@ -21,6 +21,7 @@ import { IgxBadgeComponent } from 'igniteui-angular/badge';
     selector: 'app-badge-sample-2',
     styleUrls: ['./badge-sample-2.component.scss'],
     templateUrl: './badge-sample-2.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxAvatarComponent, IgxBadgeComponent]
 })
 export class BadgeSample2Component { }
@@ -33,8 +34,8 @@ export class BadgeSample2Component { }
 ```
 ```scss
 .wrapper {
-    position: relative;
-    margin-top: 15px;
+  position: relative;
+  margin: 15px 0 0 15px;
 }
 
 igx-badge {
@@ -170,14 +171,16 @@ igx-badge {
 
 ### Badge Value and Icon
 
-Use the `[value]` input to display text or a numeric count inside the badge. This is the recommended approach instead of projecting content directly:
+Use the `[value]` input to display text or a numeric count inside the badge:
 
 ```html
-<!-- Recommended -->
 <igx-badge [value]="model.value"></igx-badge>
+```
 
-<!-- Avoid -->
-<igx-badge>{{ model.value }}</igx-badge>
+Use the `[icon]` input to display an icon inside the badge:
+
+```html
+<igx-badge icon="check" type="success"></igx-badge>
 ```
 
 When both `[icon]` and `[value]` are set, the badge displays both simultaneously:
@@ -187,10 +190,16 @@ When both `[icon]` and `[value]` are set, the badge displays both simultaneously
 <igx-badge icon="check" value="5" type="success"></igx-badge>
 ```
 
-To display only a numeric value without an icon, make sure `[icon]` is not set:
+Or you can project content directly:
 
 ```html
-<igx-badge [value]="unreadCount" type="info"></igx-badge>
+  <igx-badge>{{ model.value }}</igx-badge>
+
+  <!-- When projecting both icon and text, wrap the text to keep correct padding. -->
+  <igx-badge>
+    <igx-icon>bluetooth</igx-icon>
+    <span>Bluetooth</span>
+  </igx-badge>
 ```
 
 ### Badge Icon
@@ -214,7 +223,7 @@ Then, just specify the icon name and family as follows:
 ```
 
 ```typescript
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { heartMonitor } from '@igniteui/material-icons-extended';
 import { IgxIconService } from 'igniteui-angular/icon';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
@@ -224,6 +233,7 @@ import { IgxBadgeComponent } from 'igniteui-angular/badge';
     selector: 'app-badge-icon',
     styleUrls: ['./badge-icon.component.scss'],
     templateUrl: './badge-icon.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxAvatarComponent, IgxBadgeComponent]
 })
 export class BadgeIconComponent implements OnInit {
@@ -243,8 +253,8 @@ export class BadgeIconComponent implements OnInit {
 ```
 ```scss
 .wrapper {
-    position: relative;
-    margin-top: 15px;
+  position: relative;
+  margin: 15px 0 0 15px;
 }
 
 igx-badge {
@@ -259,7 +269,7 @@ igx-badge {
 The `igx-badge` component can also render as a minimal dot indicator for notifications by enabling its `dot` property. Dot badges do not support content, but they can be outlined and can use any of the available dot types (e.g., primary, success, info, etc.).
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 import { IgxBadgeComponent } from 'igniteui-angular/badge';
 
@@ -267,6 +277,7 @@ import { IgxBadgeComponent } from 'igniteui-angular/badge';
     selector: 'app-badge-dot-sample',
     styleUrls: ['./badge-dot-sample.component.scss'],
     templateUrl: './badge-dot-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxAvatarComponent, IgxBadgeComponent]
 })
 export class BadgeDotSampleComponent { }
@@ -279,21 +290,21 @@ export class BadgeDotSampleComponent { }
 ```
 ```scss
 .wrapper {
-    display: flex;
-    position: relative;
-    margin-top: 15px;
+  display: flex;
+  position: relative;
+  margin: 15px 0 0 15px;
 
-    igx-avatar {
-        anchor-name: --avatar;
-    }
+  igx-avatar {
+    anchor-name: --avatar;
+  }
 
-    igx-badge {
-        position: absolute;
-        position-anchor: --avatar;
-        bottom: anchor(--avatar top);
-        left: anchor(right);
-        transform: translate(-75%, 75%);
-    }
+  igx-badge {
+    position: absolute;
+    position-anchor: --avatar;
+    bottom: anchor(--avatar top);
+    left: anchor(right);
+    transform: translate(-75%, 75%);
+  }
 }
 ```
 
@@ -421,7 +432,7 @@ Position the badge in its parent container:
 If the sample is configured properly, a list of members should be displayed and every member has an avatar and a badge, showing its current state.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Member } from '../model/member.model';
 import { IgxListComponent, IgxListItemComponent } from 'igniteui-angular/list';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
@@ -432,6 +443,7 @@ import { IgxBadgeComponent } from 'igniteui-angular/badge';
     selector: 'app-badge-sample-3',
     styleUrls: ['./badge-sample-3.component.scss'],
     templateUrl: './badge-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxListComponent, IgxListItemComponent, IgxAvatarComponent, IgxBadgeComponent]
 })
 export class BadgeSample3Component {
@@ -541,7 +553,7 @@ To include the new theme we use the `tokens` mixin:
 ### Demo
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Member } from '../model/member.model';
 import { IgxListComponent, IgxListItemComponent } from 'igniteui-angular/list';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
@@ -552,6 +564,7 @@ import { IgxBadgeComponent } from 'igniteui-angular/badge';
     selector: 'app-badge-styling-sample',
     styleUrls: ['./badge-styling-sample.component.scss'],
     templateUrl: './badge-styling-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxListComponent, IgxListItemComponent, IgxAvatarComponent, IgxBadgeComponent]
 })
 export class BadgeStylingSampleComponent {

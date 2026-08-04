@@ -11,7 +11,7 @@ _premium: true
 With deferred grid column resizing, the user will see a temporary resize indicator while the Angular drag resizing operation is in effect. The new grid column width is applied once the drag operation has ended.
 ## Angular Tree Grid Column Resizing Example
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { generateEmployeeDetailedFlatData } from '../data/employees-flat-detailed';
@@ -21,6 +21,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-column-resizing-sample',
     styleUrls: ['./tree-grid-column-resizing-sample.component.scss'],
     templateUrl: './tree-grid-column-resizing-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class TreeGridColumnResizingSampleComponent {
@@ -132,7 +133,7 @@ Each column can be set to auto-size on initialization by setting `width` to 'aut
 When the column is first initialized in the view it resolves its width to the size of the longest visible cell or header. Note that cells that are outside of the visible rows are not included.
 This approach is more performance optimized than auto-sizing post initialization and is recommended especially in cases where you need to auto-size a large number of columns.
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { generateEmployeeDetailedFlatData } from '../data/employees-flat-detailed';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -142,6 +143,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'tree-grid-columnAutoSizing-sample',
     styleUrls: ['./treegrid-column-autosizing.component.scss'],
     templateUrl: './treegrid-column-autosizing.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class TreeGridColumnAutoSizingSampleComponent {
@@ -200,7 +202,7 @@ The last step is to **include** the component mixins with its respective theme:
 ```
 ### Demo
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { generateEmployeeDetailedFlatData } from '../data/employees-flat-detailed';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -210,6 +212,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-resize-line-styling-sample',
     styleUrls: ['./tree-grid-resize-line-styling-sample.component.scss'],
     templateUrl: './tree-grid-resize-line-styling-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class TreeGridResizeLineStylingSampleComponent {
@@ -252,7 +255,7 @@ export class TreeGridResizeLineStylingSampleComponent {
 @use "igniteui-angular/theming" as *;
 
 $custom-grid-theme: grid-theme(
-  $resize-line-color: #0288d1
+  $resize-line-color: #dc38e8
 );
 
 :host {

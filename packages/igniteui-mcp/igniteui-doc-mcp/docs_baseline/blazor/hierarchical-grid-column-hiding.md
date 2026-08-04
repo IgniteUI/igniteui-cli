@@ -335,7 +335,7 @@ For this purpose all we have to do is set both the [`IgbGridToolbarActions`](mcp
 
 The [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) provides us with some useful properties when it comes to using the toolbar's column hiding UI.
 
-By using the [`Title`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Title) property, we will set the title that is displayed inside the dropdown button in the toolbar.
+By using the [`Title`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=Title) and `Prompt` properties, we will set the title and filter prompt that are displayed inside the dropdown in the toolbar.
 
 <!-- Web Components -->
 
@@ -347,7 +347,7 @@ By using the [`Title`](mcp:get_api_reference?platform=blazor&component=IgbColumn
 <IgbHierarchicalGrid Data=SingersData>
     <IgbGridToolbar>
         <IgbGridToolbarActions>
-            <IgbGridToolbarHiding Title="Column Hiding"></IgbGridToolbarHiding>
+            <IgbGridToolbarHiding Title="Column Hiding" Prompt="Type here to search"></IgbGridToolbarHiding>
         </IgbGridToolbarActions>
     </IgbGridToolbar>
 </IgbHierarchicalGrid>

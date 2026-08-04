@@ -92,7 +92,7 @@ Now, the combo's list of items are properly rendered **inside** of our component
 
 
 ```typescript
-import { Component, ElementRef, inject } from '@angular/core';
+import { Component, ElementRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxOverlayService } from 'igniteui-angular/core';
 import { IgxComboComponent } from 'igniteui-angular/combo';
 import { FormsModule } from '@angular/forms';
@@ -101,6 +101,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-overlay-styling',
     styleUrls: ['overlay-styling.component.scss'],
     templateUrl: 'overlay-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxComboComponent, FormsModule]
 })
 export class OverlayStylingComponent {

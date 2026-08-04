@@ -11,7 +11,7 @@ _premium: true
 The Ignite UI for Angular Hierarchical Grid provides an [`IgxColumnActionsComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnActionsComponent) with an [`IgxColumnHidingDirective`](mcp:get_api_reference?platform=angular&component=IgxColumnHidingDirective) which allows users to perform column hiding directly through the user interface or by using the Angular component. The Material UI Grid has a built-in column hiding UI, which can be used through the Hierarchical Grid's toolbar to change the visible state of the columns. In addition, developers can always define the column hiding UI as a separate component and place it anywhere they want on the page.
 ## Angular Hierarchical Grid Column Hiding Example
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarDirective, IgxGridToolbarHidingComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
@@ -21,6 +21,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-hiding',
     styleUrls: ['./hierarchical-grid-hiding.component.scss'],
     templateUrl: 'hierarchical-grid-hiding.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxGridToolbarDirective]
 })
 
@@ -286,7 +287,7 @@ The last step is to **include** the component mixins, each with its respective t
 ```
 ### Demo
 ```typescript
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarDirective, IgxGridToolbarHidingComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
 import { SINGERS } from '../../data/singersData';
@@ -296,6 +297,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-column-hiding-toolbar-style',
     styleUrls: ['./hierarchical-grid-column-hiding-toolbar-style.component.scss'],
     templateUrl: './hierarchical-grid-column-hiding-toolbar-style.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxGridToolbarDirective]
 })
 export class HierarchicalGridColumnHidingToolbarStyleComponent implements OnInit {
@@ -370,30 +372,46 @@ export class HierarchicalGridColumnHidingToolbarStyleComponent implements OnInit
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
+$background: #292826;
+$foreground: #ffcd0f;
+
 $custom-column-actions-theme: column-actions-theme(
-  $background-color: #292826,
-  $title-color: #ffcd0f
+    $background: $background,
+    $title-color: $foreground,
 );
 
-$custom-button: flat-button-theme(
-  $foreground: #ffcd0f,
-  $disabled-foreground: #292826
+$custom-flat-button: flat-button-theme(
+    $foreground: $foreground,
 );
 
-$dark-checkbox-theme: checkbox-theme(
-  $label-color: #ffcd0f,
-  $empty-color: #ffcd0f,
-  $fill-color: #ffcd0f,
-  $tick-color: #292826
+$custom-checkbox-theme: checkbox-theme(
+    $label-color: $foreground,
+    $empty-color: $foreground,
+    $fill-color: $foreground,
+    $tick-color: $background,
+);
+
+$input-group-theme: input-group-theme(
+    $box-background: $background,
+    $idle-bottom-line-color: $foreground,
 );
 
 :host ::ng-deep {
-  @include tokens($custom-column-actions-theme);
+    .igx-column-actions {
+        @include tokens($custom-column-actions-theme);
 
-  .igx-column-actions {
-    @include tokens($custom-button);
-    @include tokens($dark-checkbox-theme);
-  }
+        igx-input-group {
+            @include tokens($input-group-theme);
+        }
+
+        igx-checkbox {
+            @include tokens($custom-checkbox-theme);
+        }
+
+        .igx-button--flat {
+            @include tokens($custom-flat-button);
+        }
+    }
 }
 ```
 <div class="divider--half"></div>

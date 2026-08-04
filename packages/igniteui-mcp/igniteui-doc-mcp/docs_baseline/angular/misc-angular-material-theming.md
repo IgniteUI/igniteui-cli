@@ -23,7 +23,7 @@ The following article demonstrates how to use both Ignite UI and Angular Materia
 ## Angular Material Theming Example
 
 ```typescript
-import { Component, HostBinding, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
 import { IgxDialogActionsDirective, IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxOverlayOutletDirective } from 'igniteui-angular/core';
 import { IgxButtonDirective, IgxDividerDirective, IgxIconButtonDirective, IgxLayoutDirective } from 'igniteui-angular/directives';
@@ -46,6 +46,7 @@ import { MatInput } from '@angular/material/input';
     selector: 'app-angular-sample',
     styleUrls: ['./angular-sample.component.scss'],
     templateUrl: './angular-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatToolbar, IgxButtonDirective, MatMenuTrigger, IgxIconComponent, MatMenu, MatMenuItem, IgxLayoutDirective, IgxAvatarComponent, IgxIconButtonDirective, IgxCardComponent, IgxCardMediaDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardActionsComponent, MatButton, IgxDialogComponent, IgxDialogActionsDirective, IgxSuffixDirective, IgxOverlayOutletDirective, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective, IgxExpansionPanelDescriptionDirective, IgxExpansionPanelBodyComponent, MatSlider, MatSliderThumb, IgxDividerDirective, MatStepper, MatStep, FormsModule, ReactiveFormsModule, MatStepLabel, MatFormField, MatLabel, MatInput, MatStepperNext, MatStepperPrevious]
 })
 

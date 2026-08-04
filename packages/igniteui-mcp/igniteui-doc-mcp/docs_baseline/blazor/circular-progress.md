@@ -22,7 +22,6 @@ The Ignite UI for Blazor Circular Progress Indicator component provides a visual
 
     <style>
         #circularProgress {
-            margin: 20px;
             --diameter: 50px;
         }
     </style>
@@ -120,12 +119,10 @@ Customizing the progress bar in order to use a color gradient instead of a solid
         width: 300px;
         display: flex;
         align-items: center;
-        margin-top: 30px;
     }
 
     #circularProgress {
         margin-right: 50px;
-        margin-left: 20px;
         --diameter: 100px;
         --stroke-thickness: 5px;
     }
@@ -247,7 +244,6 @@ igc-circular-progress::part(track) {
 
     <style>
         igc-circular-progress {
-            margin: 20px;
             --diameter: 50px;
         }
 

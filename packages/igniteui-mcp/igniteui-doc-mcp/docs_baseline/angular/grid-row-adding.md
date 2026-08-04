@@ -11,7 +11,7 @@ The Grid provides a convenient way to perform data manipulations through inline 
 ## Angular Grid Row Adding Example
 The following sample demonstrates how to enable native row adding in the Grid. Changing a cell value and then clicking or navigating to another cell on the same row doesn't update the row value until confirmed by using the **Done** button, or discarded by using **Cancel** button.
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { DATA } from '../../data/nwindData';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellEditorTemplateDirective, IgxColumnComponent, IgxGridEditingActionsComponent } from 'igniteui-angular/grids/core';
@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-grid-add-row',
     styleUrls: [`grid-add-row-sample.component.scss`],
     templateUrl: 'grid-add-row-sample.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxColumnComponent, IgxCellEditorTemplateDirective, IgxInputGroupComponent, FormsModule, IgxInputDirective, IgxFocusDirective, IgxActionStripComponent, IgxGridEditingActionsComponent]
 })
 export class GridAddRowSampleComponent {

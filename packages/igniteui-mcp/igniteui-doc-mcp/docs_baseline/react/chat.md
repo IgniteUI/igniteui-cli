@@ -545,95 +545,103 @@ However, it comes with trade-offs:
 We highly recommend using the standard Web Component styling approaches before resorting to this property:
 
 - CSS Variables and ::part API – Prefer customizing via exposed parts and variables.
-- "<link>" elements – For larger stylesheets, inject them inside the Shadow DOM.
-- Inline "<style>" tags – For small, scoped style overrides.
+- `<link>` elements – For larger stylesheets, inject them inside the Shadow DOM.
+- Inline `<style>` tags – For small, scoped style overrides.
 
 #### Example
 
 ```css
 igc-chat::part(header) {
-  background: var(--ig-primary-100);
+  background-color: var(--ig-gray-800);
+  color: var(--ig-warn-400);
 }
 
 igc-chat::part(message-container) {
-  border-radius: 12px;
-  padding: 0.5rem;
+  background: var(--ig-warn-200);
+  color: var(--ig-warn-200-contrast);
 }
 
-igc-chat::part(empty-state) {
-  font-style: italic;
-  color: var(--ig-gray-500);
+igc-chat::part(message-sent) {
+  background: var(--ig-warn-500);
+  color: var(--ig-warn-500-contrast);
+}
+
+igc-chat::part(message-header) {
+  color: var(--ig-warn-A700); 
 }
 ```
 
 This allows you to style the [`IgrChatComponent`](https://www.infragistics.com/products/ignite-ui-react/docs/typescript/latest/classes/igniteui-react.igrchatcomponent.html) to match your brand without replacing its functionality.
 
 ```css
-.chat-wrapper {
-    width: 100%;
-    height: 100%;
-}
-
 igc-chat {
-    border: 2px solid var(--ig-gray-300);
+  --message-actions-color: var(--ig-warn-900);
+
+  background: var(--ig-warn-50);
 }
 
 igc-chat::part(header) {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid var(--ig-gray-300);
-    background-color: var(--ig-gray-200);
-    font-family: 'Franklin Gothic Medium';
-    color: var(--ig-gray-700);
+  background-color: var(--ig-gray-800);
+  color: var(--ig-warn-400);
 }
 
 igc-chat::part(message-container) {
-    background: var(--igc-chat-bubble-bg, #eee);
-    color: var(--igc-chat-text-color, #222);
-    padding: 12px;
-    border-radius: 8px;
-    transition: background .15s;
+  background: var(--ig-warn-200);
+  color: var(--ig-warn-200-contrast);
 }
 
 igc-chat::part(message-sent) {
-    background: var(--igc-chat-sent-bubble-bg, #e6f4ff);
-    color: var(--igc-chat-sent-text-color, #03396b);
+  background: var(--ig-warn-500);
+  color: var(--ig-warn-500-contrast);
 }
 
 igc-chat::part(message-header) {
-    color: #c00000; 
-    font-weight: bold; 
-    margin: 8px;
+  color: var(--ig-warn-A700);
 }
 
-igc-chat::part(message-actions-container) {
-    border-top: 1px solid var(--ig-gray-300);
+igc-chat::part(attachment-header) {
+  background: var(--ig-warn-100);
+}
+
+igc-chat::part(attachment-icon) {
+  color: var(--ig-warn-500);
 }
 
 igc-chat::part(suggestion) {
-    background-color: var(--ig-primary-100);
-    color: var(--ig-primary-800);
-    margin: .125rem;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+  background-color: var(--ig-warn-500);
+  color: var(--ig-warn-500-contrast);
 }
 
-igc-chat::part(message-attachment) {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    background: var(--igc-chat-sent-bubble-bg);
-
+igc-chat::part(suggestions-header) {
+  color: var(--ig-success-300);
 }
 
-igc-chat::part(input-attachments-container) {
-    border: 5px solid var(--ig-gray-300);
+igc-chat::part(input-area) {
+  border-color: var(--ig-surface-700);
+}
+
+igc-chat::part(text-input) {
+  --box-background: var(--ig-warn-100);
+  --box-background-hover: var(--ig-warn-100);
+  --box-background-focus: var(--ig-warn-200);
+  --idle-button-line-color: var(--ig-surface-700);
+  --hover-bottom-line-color: var(--ig-surface-700);
+  --focused-bottom-line-color: var(--ig-warn-300);
+}
+
+igc-chat::part(send-button) {
+  --background: var(--ig-warn-400);
+  --foreground: var(--ig-warn-400-contrast);
+  --hover-background: var(--ig-warn-400);
+  --hover-foreground: var(--ig-warn-400-contrast);
+  --disabled-background: var(--ig-gray-300);
+  --disabled-foreground: var(--ig-gray-700);
 }
 ```
 ```tsx
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./layout.css";
 import "./ChatStyling.css";
 import {
   ChatMessageRenderContext,
@@ -641,7 +649,7 @@ import {
   IgrChat,
   IgrChatOptions
 } from "igniteui-react";
-import "igniteui-webcomponents/themes/light/bootstrap.css";
+import "igniteui-webcomponents/themes/light/material.css";
 
 export default function ChatStyling() {
   const [draftMessage, setDraftMessage] = useState(null);
@@ -755,6 +763,26 @@ export default function ChatStyling() {
 // rendering above component to the React DOM
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<ChatStyling />);
+```
+```css
+.chat-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+igc-chat {
+  border-radius: .5rem;
+}
+
+igc-chat::part(message-container) {
+  border-radius: .5rem;
+}
+
+igc-chat::part(suggestion) {
+  margin: .125rem;
+  border-radius: 1.25rem;
+  cursor: pointer;
+}
 ```
 
 ## API Reference

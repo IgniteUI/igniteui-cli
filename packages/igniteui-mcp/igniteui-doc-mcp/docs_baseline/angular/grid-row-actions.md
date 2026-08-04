@@ -54,7 +54,7 @@ These components expose templates giving flexibility for customization. For inst
 </igx-grid>
 ```
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, IgxGridPinningActionsComponent, RowType } from 'igniteui-angular/grids/core';
 import { Transaction } from 'igniteui-angular/core';
@@ -69,6 +69,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-row-action-strip',
     styleUrls: [`grid-action-strip-sample.scss`],
     templateUrl: 'grid-action-strip-sample.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxActionStripComponent, IgxGridPinningActionsComponent, IgxIconButtonDirective, IgxRippleDirective, IgxIconComponent]
 })
 export class GridActionStripSampleComponent {

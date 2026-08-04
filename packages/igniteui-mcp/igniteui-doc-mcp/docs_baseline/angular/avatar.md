@@ -14,13 +14,14 @@ _tocName: Avatar
 ## Angular Avatar Example
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 
 @Component({
     selector: 'app-avatar-sample-3',
     styleUrls: ['./avatar-sample-3.component.scss'],
     templateUrl: './avatar-sample-3.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxAvatarComponent]
 })
 export class AvatarSample3Component {
@@ -59,11 +60,11 @@ export class AvatarSample3Component {
 }
 
 .avatar-sample.initials .igx-avatar{
-    background: #e41c77;
+    --ig-avatar-background: #e41c77;
 }
 
 .avatar-sample.icon .igx-avatar{
-    background: #9e9e9e;
+    --ig-avatar-background: #9e9e9e;
 }
 ```
 
@@ -269,13 +270,14 @@ If all went well, you should see something like the following in the browser:
 
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 
 @Component({
     selector: 'app-avatar-styling',
     styleUrls: ['./avatar-styling.component.scss'],
     templateUrl: './avatar-styling.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxAvatarComponent]
 })
 

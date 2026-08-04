@@ -510,8 +510,8 @@ Identify data points quickly, even if the value falls between major gridlines wi
             Label="Marker Type"
             ShouldOverrideDefaultEditor="true"
             ValueType="PropertyEditorValueType.EnumValue"
-            DropDownValues="@(new string[] { "Circle", "Automatic", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "None" })"
-            DropDownNames="@(new string[] { "Circle", "Automatic", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "None" })"
+            DropDownValues="@(new string[] { "Circle", "Checkmark", "Automatic", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "None" })"
+            DropDownNames="@(new string[] { "Circle", "Checkmark", "Automatic", "Triangle", "Pyramid", "Square", "Diamond", "Pentagon", "Hexagon", "Tetragram", "Pentagram", "Hexagram", "None" })"
             PrimitiveValue="@("Circle")"
             Changed="EditorChangeUpdateMarkerType">
             </IgbPropertyEditorPropertyDescription>

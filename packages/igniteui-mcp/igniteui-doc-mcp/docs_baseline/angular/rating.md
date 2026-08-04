@@ -18,7 +18,7 @@ The Ignite UI Angular Star Rating component can be easily installed from the ign
 This Angular Star Rating example demonstrates how you can use Ignite UI Angular to build simple five-star rating widget, comparing and displaying the score of different products.
 
 ```typescript
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IgxToastComponent } from 'igniteui-angular/toast';
 import { CellType, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -34,6 +34,7 @@ defineComponents(IgcRatingComponent);
     selector: 'app-grid-rating-sample',
     styleUrls: ['./grid-with-rating.component.scss'],
     templateUrl: 'grid-with-rating.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgcFormControlDirective, FormsModule, IgxToastComponent]
 })
 export class GridWithRatingComponent implements OnInit {
@@ -196,7 +197,7 @@ Add a rating with e.g. ngModel for value and it will two-way bind with your mode
 The following application shows one example of how this integration works in a real use-case with forms.
 
 ```typescript
-import { Component} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { IgcRatingComponent, defineComponents } from 'igniteui-webcomponents';
 import { FormsModule } from '@angular/forms';
 import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
@@ -211,6 +212,7 @@ defineComponents(IgcRatingComponent)
     selector: 'app-rating-sample',
     styleUrls: ['./rating-form.component.scss'],
     templateUrl: './rating-form.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, IgxCardComponent, IgxCardMediaDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardContentDirective, IgxCardHeaderSubtitleDirective, IgcFormControlDirective, IgxCardActionsComponent, IgxButtonDirective, IgxRippleDirective, IgxPrefixDirective, IgxIconButtonDirective, IgxSuffixDirective, IgxIconComponent, CurrencyPipe]
 })
 export class RatingInFormComponent {

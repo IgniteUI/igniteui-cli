@@ -12,7 +12,7 @@ In Ignite UI for Angular Hierarchical Grid, **RowDrag** is initialized on the ro
 ## Angular Hierarchical Grid Row Drag Example
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxColumnComponent, RowType } from 'igniteui-angular/grids/core';
@@ -30,6 +30,7 @@ enum DragIcon {
     selector: 'app-hierarchical-row-drag-base',
     styleUrls: ['./hierarchical-row-drag-base.component.scss'],
     templateUrl: 'hierarchical-row-drag-base.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDropDirective, IgxIconComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent]
 })
 
@@ -245,7 +246,7 @@ The drag ghost can be templated on every grid level, making it possible to have 
 </igx-hierarchical-grid>
 ```
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxRowDragGhostDirective, RowType } from 'igniteui-angular/grids/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -257,6 +258,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-multi-row-drag',
     styleUrls: ['./hierarchical-grid-multi-row-drag.component.scss'],
     templateUrl: 'hierarchical-grid-multi-row-drag.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDropDirective, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent, IgxRowDragGhostDirective, IgxIconComponent]
 })
 
@@ -441,7 +443,7 @@ The result can be seen in the demo below:
 #### Example Demo
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxColumnComponent, IgxDragIndicatorIconDirective, RowType } from 'igniteui-angular/grids/core';
@@ -459,6 +461,7 @@ enum DragIcon {
     selector: 'app-hierarchical-grid-row-drag',
     styleUrls: ['./hierarchical-grid-row-drag.component.scss'],
     templateUrl: 'hierarchical-grid-row-drag.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDropDirective, IgxIconComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent, IgxDragIndicatorIconDirective]
 })
 
@@ -626,7 +629,7 @@ export class HGridRowReorderComponent {
 With these few easy steps, you've configured a grid that allows reordering rows via drag/drop! You can see the above code in action in the following demo.
 Notice that we also have row selection enabled and we preserve the selection when dropping the dragged row.
 ```typescript
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { IDropDroppedEventArgs, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { GridSelectionMode, IgxColumnComponent, RowType } from 'igniteui-angular/grids/core';
@@ -638,6 +641,7 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-row-reorder',
     styleUrls: ['./hierarchical-grid-row-reorder.component.scss'],
     templateUrl: 'hierarchical-grid-row-reorder.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxDropDirective, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent]
 })
 export class HGridRowReorderComponent {
