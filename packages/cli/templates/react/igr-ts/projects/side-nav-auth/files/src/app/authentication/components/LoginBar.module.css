@@ -1,7 +1,14 @@
 .loginBtn::part(base) {
+  color: var(--ig-primary-500);
+  background: var(--ig-surface-500);
+  border-color: var(--ig-primary-500);
   font-weight: 600;
   white-space: nowrap;
   transition: background .15s;
+}
+
+.loginBtn::part(base):hover {
+  background: var(--ig-primary-100);
 }
 
 .profileAvatar {
@@ -9,6 +16,6 @@
 }
 
 .profileAvatar:focus-visible {
-  outline: 2px solid var(--ig-primary-500);
+  outline: 2px solid var(--ig-surface-500);
   outline-offset: 2px;
 }

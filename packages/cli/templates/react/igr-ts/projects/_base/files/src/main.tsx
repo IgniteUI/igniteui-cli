@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './app/app';
 import { routes } from "./app/app-routes";
 import 'react-app-polyfill/ie11';
+import 'igniteui-webcomponents/themes/light/material.css';
 
 const basename = import.meta.env.VITE_BASENAME || '/';
 

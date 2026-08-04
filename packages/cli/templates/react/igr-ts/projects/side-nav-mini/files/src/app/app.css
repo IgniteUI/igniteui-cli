@@ -60,11 +60,11 @@ igc-nav-drawer-item::part(base) {
 
 igc-nav-drawer-item[active]::part(base) {
   background: var(--ig-primary-100);
-  color: var(--ig-primary-700);
+  color: var(--ig-primary-500);
 }
 
 igc-nav-drawer-item[active] igc-icon {
-  color: var(--ig-primary-700);
+  color: var(--ig-primary-500);
 }
 
 igc-nav-drawer-item:not([active]) igc-icon {
