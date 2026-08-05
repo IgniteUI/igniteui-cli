@@ -290,7 +290,7 @@ npm run compress:blazor
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|
-| `--model <name>` | OpenAI model to use | `gpt-5.4-mini` |
+| `--model <name>` | OpenAI model to use | `gpt-5.6-luna` |
 | `--api-base <url>` | Custom OpenAI API base URL | OpenAI default |
 | `--min-size <kb>` | Skip files smaller than this (KB) | `0` |
 | `--delay <seconds>` | Delay between API calls | `0.5` |
