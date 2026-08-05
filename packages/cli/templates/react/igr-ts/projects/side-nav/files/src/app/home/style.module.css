@@ -4,7 +4,7 @@
   margin: auto;
   padding: 48px 24px;
   box-sizing: border-box;
-  font-family: "Titillium Web", "Segoe UI", Arial, sans-serif;
+  font-family: var(--ig-font-family);
 }
 
 :local(.intro) {
@@ -15,7 +15,7 @@
 
 :local(.header) {
   margin: 0 0 12px;
-  color: #09f;
+  color: var(--ig-primary-500);
   font-size: 3rem;
   font-weight: 600;
   line-height: 1.2;
@@ -23,7 +23,7 @@
 
 :local(.description) {
   margin: 0;
-  color: #000;
+  color: var(--ig-gray-900);
   font-size: 1.125rem;
   line-height: 1.5;
 }
@@ -50,7 +50,7 @@
   align-items: center;
   min-height: 64px;
   padding: 6px 0;
-  color: rgba(0, 0, 0, .74);
+  color: var(--ig-gray-700);
   text-align: left;
   text-decoration: none;
 }
@@ -62,7 +62,7 @@
 :local(.resourceIcon) {
   flex: 0 0 28px;
   margin-right: 16px;
-  color: #09f;
+  color: var(--ig-primary-500);
   font-size: 28px;
 }
 
@@ -73,12 +73,12 @@
 
 :local(.resource) strong {
   margin-bottom: 2px;
-  color: #731963;
+  color: var(--ig-secondary-500);
   font-size: 1rem;
 }
 
 :local(.resource) small {
-  color: #000;
+  color: var(--ig-gray-900);
   font-size: 0.875rem;
   line-height: 1.4;
 }
