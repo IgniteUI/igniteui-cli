@@ -57,10 +57,10 @@ export function Register({ onLogin, onSuccess }: RegisterProps) {
       </IgrInput>
       {error && <p className={styles.error}>{error}</p>}
       <div className={styles.actions}>
-        <IgrButton variant="contained" type="submit" className={styles.submitBtn} disabled={!canSubmit}>
+        <IgrButton variant="contained" type="submit" disabled={!canSubmit}>
           <span>Sign Up</span>
         </IgrButton>
-        <a className={styles.linkBtn} onClick={onLogin} role="button" tabIndex={0}>Have an account?</a>
+        <a onClick={onLogin} role="button" tabIndex={0}>Have an account?</a>
       </div>
     </form>
   );
