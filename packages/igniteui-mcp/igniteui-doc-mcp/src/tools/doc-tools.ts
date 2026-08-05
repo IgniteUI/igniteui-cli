@@ -496,7 +496,7 @@ export function mergeExamplesByHeading(examples: CodeExample[]): CodeExample[] {
   const merged: CodeExample[] = [];
   for (const ex of examples) {
     const last = merged[merged.length - 1];
-    if (last && last.heading === ex.heading) {
+    if (last && ex.heading && last.heading === ex.heading) {
       last.blocks.push(...ex.blocks);
     } else {
       merged.push({ heading: ex.heading, blocks: [...ex.blocks] });
