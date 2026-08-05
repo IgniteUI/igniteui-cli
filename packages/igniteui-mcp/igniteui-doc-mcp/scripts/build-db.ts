@@ -195,8 +195,15 @@ function main() {
   const backendDbPath = path.resolve("../docs-backend/docs-backend/igniteui-docs.db");
   const backendDir = path.dirname(backendDbPath);
   if (fs.existsSync(backendDir)) {
-    fs.copyFileSync(DB_PATH, backendDbPath);
-    console.log(`Copied DB to ${backendDbPath}`);
+    try {
+      fs.copyFileSync(DB_PATH, backendDbPath);
+      console.log(`Copied DB to ${backendDbPath}`);
+    } catch (err) {
+      console.warn(
+        `Could not copy DB to ${backendDbPath}: ${(err as Error).message}\n` +
+        `The DB was built and saved successfully — this copy is optional.`
+      );
+    }
   } else {
     console.warn(`Backend dir not found (${backendDir}), skipping copy.`);
   }
