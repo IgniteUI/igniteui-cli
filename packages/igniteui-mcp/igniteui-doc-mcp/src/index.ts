@@ -189,8 +189,9 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     },
     async ({ framework, component, topic, language }) => {
       const start = performance.now();
-      const requested = topic
-        ? `${normalizeDocName(component.trim())}-${topic.trim().toLowerCase().replace(/[\s_]+/g, "-")}`
+      const topicPart = topic?.trim();
+      const requested = topicPart
+        ? `${normalizeDocName(component)}-${normalizeDocName(topicPart)}`
         : component.trim();
 
       const { text, found, servedName, fuzzy } = await resolveDoc(docsProvider, framework, requested);
