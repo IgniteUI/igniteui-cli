@@ -1,3 +1,11 @@
+# 15.5.1 (2026-08-05)
+
+## What's Changed
+* **fix(mcp):** Updated the bundled MCP documentation database with the full set of documents, so `list_components`, `get_doc`, and `search_docs` resolve against complete Angular, React, Web Components, and Blazor docs. The `build:db` script no longer fails the build when the optional copy to the docs backend cannot be written. [#1767](https://github.com/IgniteUI/igniteui-cli/pull/1767)
+* **refactor(styles):** Removed hardcoded styles from the React templates — Login, Register, LoginBar, LoginDialog, Profile, and the side-nav / side-nav-mini / side-nav-auth layouts now use theme CSS variables. Also restored the missing theme import and styles in the React base template. [#1760](https://github.com/IgniteUI/igniteui-cli/pull/1760)
+* **feat(cd):** Added an MCP Publisher step to the npm publish workflow, including prerelease checks, so `@igniteui/mcp-server` is published to the MCP registry alongside npm. Updated the root and MCP README files. [#1764](https://github.com/IgniteUI/igniteui-cli/pull/1764)
+* **chore(mcp):** Updated `@modelcontextprotocol/sdk` to 1.30.0 and `@hono/node-server` to 2.0.12. [#1762](https://github.com/IgniteUI/igniteui-cli/pull/1762)
+
 # 15.5.0 (2026-07-15)
 
 ## What's Changed
