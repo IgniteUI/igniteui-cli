@@ -169,7 +169,10 @@ jobs:
   # pushed to a protected branch and nothing auto-merges.
   publish:
     needs: assemble
-    if: success()
+    # Not `success()`: at job level that evaluates the whole ancestor chain, so a run
+    # scoped to a subset of frameworks (leaving the others skipped) would make it false
+    # and silently skip publishing. Check the direct dependency's result instead.
+    if: always() && !cancelled() && needs.assemble.result == 'success'
     runs-on: ubuntu-latest
     permissions:
       contents: write
