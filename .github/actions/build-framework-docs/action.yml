@@ -28,8 +28,34 @@ runs:
   using: composite
   steps:
     - uses: actions/checkout@v6
-      with:
-        submodules: recursive
+
+    # Deliberately not `submodules: recursive` — that also clones blazor/api-docs,
+    # blazor/igniteui-blazor and react/igniteui-react. api-docs is a private repository
+    # the default token cannot read, and none of the three are used by the documentation
+    # pipeline. Only the sources this framework reads are checked out.
+    - name: Check out documentation submodules
+      shell: bash
+      env:
+        FW: ${{ inputs.framework }}
+      run: |
+        set -euo pipefail
+        BASE=packages/igniteui-mcp/igniteui-doc-mcp
+        case "$FW" in
+          angular)
+            SUBS="angular/igniteui-docfx angular/igniteui-angular-samples angular/igniteui-angular-examples" ;;
+          react)
+            SUBS="common/igniteui-xplat-docs react/igniteui-react-examples" ;;
+          blazor)
+            SUBS="common/igniteui-xplat-docs blazor/igniteui-blazor-examples" ;;
+          webcomponents)
+            SUBS="common/igniteui-xplat-docs webcomponents/igniteui-wc-examples" ;;
+          *)
+            echo "::error::Unknown framework '$FW'"; exit 1 ;;
+        esac
+        for sub in $SUBS; do
+          echo "--- $sub ---"
+          git submodule update --init "$BASE/$sub"
+        done
 
     - uses: actions/setup-node@v6
       with:
