@@ -120,9 +120,11 @@ function main() {
   }
 
   const isFullRebuild = !targetFramework;
+  // Captured before opening — opening the database creates the file.
+  const dbExisted = fs.existsSync(DB_PATH);
   let db: Database.Database;
 
-  if (isFullRebuild || !fs.existsSync(DB_PATH)) {
+  if (isFullRebuild || !dbExisted) {
     db = new Database(DB_PATH);
     db.exec("DROP TABLE IF EXISTS docs_fts");
     db.exec("DROP TABLE IF EXISTS docs");
@@ -172,6 +174,13 @@ function main() {
   }
 
   db.exec("INSERT INTO docs_fts(docs_fts) VALUES('rebuild')");
+
+  // DROP/DELETE frees pages but never shrinks the file, and this DB is committed to git.
+  // A file created by this run has no free pages, so only vacuum an inherited one.
+  if (dbExisted) {
+    db.exec("VACUUM");
+  }
+
   db.pragma("optimize");
 
   const totalRows = (db.prepare("SELECT COUNT(*) AS cnt FROM docs").get() as any).cnt;

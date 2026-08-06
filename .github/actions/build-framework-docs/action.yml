@@ -1,0 +1,148 @@
+name: Build framework documentation
+description: >
+  Runs the documentation pipeline for a single framework (export → inject → rewrite →
+  compress) and uploads the compressed docs and updated baseline as artifacts.
+  Deliberately stops before build:db — the database must be assembled once, from all
+  frameworks at the same time, or it ends up containing only this one.
+
+inputs:
+  framework:
+    description: angular | react | blazor | webcomponents
+    required: true
+  mode:
+    description: incremental | full
+    required: true
+  model:
+    description: Compression model override. Empty uses the compress scripts' default.
+    required: false
+    default: ""
+  submodule-branch:
+    description: Branch to move the documentation submodules to.
+    required: true
+    default: master
+  openai-api-key:
+    description: OpenAI API key used by the compression step.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v6
+      with:
+        submodules: recursive
+
+    - uses: actions/setup-node@v6
+      with:
+        node-version: 22.x
+        cache: yarn
+
+    # The cross-platform gulp build restores the docfx dotnet tool.
+    - uses: actions/setup-dotnet@v4
+      if: inputs.framework != 'angular'
+      with:
+        dotnet-version: 8.x
+
+    - name: Install packages
+      shell: bash
+      run: yarn --frozen-lockfile
+
+    - name: Move submodules to ${{ inputs.submodule-branch }}
+      shell: bash
+      working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+      run: ./switch-submodules.sh "${{ inputs.submodule-branch }}"
+
+    - name: Configure OpenAI credentials
+      shell: bash
+      working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+      run: echo "OPENAI_API_KEY=${{ inputs.openai-api-key }}" > .env
+
+    # dist/ is gitignored, so an incremental run starts with no compressed docs at all.
+    # Incremental compression only writes the files that changed, so without this the
+    # artifact would contain a handful of docs instead of the full set.
+    - name: Restore compressed docs from the committed DB
+      if: inputs.mode == 'incremental'
+      shell: bash
+      working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+      run: npx tsx scripts/restore-docs-final.ts --framework "${{ inputs.framework }}"
+
+    - name: Build documentation
+      shell: bash
+      working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+      env:
+        FW: ${{ inputs.framework }}
+        MODE: ${{ inputs.mode }}
+        COMPRESS_MODEL: ${{ inputs.model }}
+      run: |
+        set -euo pipefail
+
+        # Only the xplat gulp target uses an abbreviated name.
+        case "$FW" in
+          webcomponents) XPLAT="wc" ;;
+          angular)       XPLAT="" ;;
+          *)             XPLAT="$FW" ;;
+        esac
+
+        if [ "$MODE" = "full" ]; then
+          npm run "clear:$FW"
+        else
+          npm run clear:build
+        fi
+
+        if [ -n "$XPLAT" ]; then
+          npm run "build:xplat-$XPLAT"
+        fi
+
+        npm run "export:$FW"
+        npm run "inject:$FW"
+        npm run "rewrite-api-urls:$FW"
+
+        if [ "$MODE" = "full" ]; then
+          npm run "compress:$FW" -- --batch submit
+          npm run "compress:$FW" -- --batch poll
+          npx tsx scripts/update-baseline.ts --framework "$FW" --full
+        else
+          npm run "diff:$FW"
+          # An empty manifest means nothing changed upstream. batchSubmit exits without
+          # writing _batch_state.json, which would make the subsequent poll fail, so
+          # skip compression entirely — the restored docs are already current.
+          CHANGED=$(node -e "const m=require('./dist/diff-manifest.json');console.log((m.changed||[]).length+(m.added||[]).length)")
+          echo "Manifest reports $CHANGED changed/added document(s)"
+          if [ "$CHANGED" -gt 0 ]; then
+            npm run "compress:$FW" -- --batch submit --manifest dist/diff-manifest.json
+            npm run "compress:$FW" -- --batch poll
+          fi
+          npm run "update-baseline:$FW"
+        fi
+
+    - name: Report compression stats
+      shell: bash
+      working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+      run: |
+        STATS="dist/docs_final/${{ inputs.framework }}/_compression_stats.json"
+        COUNT=$(find "dist/docs_final/${{ inputs.framework }}" -name '*.md' -not -name '_*' | wc -l)
+        echo "### ${{ inputs.framework }}: $COUNT documents" >> "$GITHUB_STEP_SUMMARY"
+        if [ -f "$STATS" ]; then
+          node -e "const s=require('./$STATS');console.log('- model: '+s.model+'\n- tokens: '+(s.total_tokens||0))" >> "$GITHUB_STEP_SUMMARY"
+        fi
+
+    - name: Upload compressed docs
+      uses: actions/upload-artifact@v4
+      with:
+        name: docs-final-${{ inputs.framework }}
+        path: packages/igniteui-mcp/igniteui-doc-mcp/dist/docs_final/${{ inputs.framework }}
+        retention-days: 5
+
+    # build-db reads _tocName from here. Without it every row's toc_name would be NULL.
+    - name: Upload prepared docs
+      uses: actions/upload-artifact@v4
+      with:
+        name: docs-prepeared-${{ inputs.framework }}
+        path: packages/igniteui-mcp/igniteui-doc-mcp/dist/docs_prepeared/${{ inputs.framework }}
+        retention-days: 5
+
+    - name: Upload updated baseline
+      uses: actions/upload-artifact@v4
+      with:
+        name: docs-baseline-${{ inputs.framework }}
+        path: packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline/${{ inputs.framework }}
+        retention-days: 5
