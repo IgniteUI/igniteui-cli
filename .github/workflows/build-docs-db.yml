@@ -106,15 +106,15 @@ jobs:
       - name: Install packages
         run: yarn --frozen-lockfile
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: docs-final-*
           path: packages/igniteui-mcp/igniteui-doc-mcp/dist/docs_final
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: docs-prepeared-*
           path: packages/igniteui-mcp/igniteui-doc-mcp/dist/docs_prepeared
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: docs-baseline-*
           path: packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
@@ -139,13 +139,24 @@ jobs:
       # minimal docs_prepeared entries build-db needs to populate toc_name.
       - name: Restore frameworks not rebuilt in this run
         working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+        env:
+          REQUESTED: ${{ inputs.frameworks }}
         run: |
           set -euo pipefail
           for fw in angular react blazor webcomponents; do
-            if [ ! -d "dist/docs_final/$fw" ] || [ -z "$(ls -A dist/docs_final/$fw 2>/dev/null)" ]; then
-              echo "$fw was not rebuilt — restoring from the committed DB"
-              npx tsx scripts/restore-docs-final.ts --framework "$fw" --toc-stubs
+            if [ -d "dist/docs_final/$fw" ] && [ -n "$(ls -A "dist/docs_final/$fw" 2>/dev/null)" ]; then
+              continue
             fi
+            # A framework that was rebuilt but has no docs here means its artifact did
+            # not arrive. Restoring from the DB would silently publish stale docs for it
+            # with counts that look perfectly healthy, so fail instead.
+            if echo "$REQUESTED" | grep -qw "$fw"; then
+              echo "::error::$fw was part of this run but its artifact is missing — refusing to build a database from stale $fw documents."
+              ls -R dist/docs_final || true
+              exit 1
+            fi
+            echo "$fw was not part of this run — restoring from the committed DB"
+            npx tsx scripts/restore-docs-final.ts --framework "$fw" --toc-stubs
           done
 
       - name: Build database
@@ -157,7 +168,7 @@ jobs:
           npx tsc spec/unit/docs-db-counts-spec.ts --target es6 --module commonjs --esModuleInterop --skipLibCheck
           npx jasmine spec/unit/docs-db-counts-spec.js
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: igniteui-docs-db
           path: |
@@ -179,7 +190,7 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: igniteui-docs-db
           path: artifact

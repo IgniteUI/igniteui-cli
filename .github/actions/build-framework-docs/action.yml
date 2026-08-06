@@ -65,7 +65,7 @@ runs:
         cache: yarn
 
     # The cross-platform gulp build restores the docfx dotnet tool.
-    - uses: actions/setup-dotnet@v4
+    - uses: actions/setup-dotnet@v6
       if: inputs.framework != 'angular'
       with:
         dotnet-version: 8.x
@@ -153,7 +153,7 @@ runs:
           --mode "${{ inputs.mode }}" >> "$GITHUB_STEP_SUMMARY"
 
     - name: Upload compressed docs
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: docs-final-${{ inputs.framework }}
         path: packages/igniteui-mcp/igniteui-doc-mcp/dist/docs_final/${{ inputs.framework }}
@@ -161,14 +161,14 @@ runs:
 
     # build-db reads _tocName from here. Without it every row's toc_name would be NULL.
     - name: Upload prepared docs
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: docs-prepeared-${{ inputs.framework }}
         path: packages/igniteui-mcp/igniteui-doc-mcp/dist/docs_prepeared/${{ inputs.framework }}
         retention-days: 5
 
     - name: Upload updated baseline
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: docs-baseline-${{ inputs.framework }}
         path: packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline/${{ inputs.framework }}
