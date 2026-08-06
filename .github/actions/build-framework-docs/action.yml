@@ -57,9 +57,11 @@ runs:
           git submodule update --init "$BASE/$sub"
         done
 
+    # Node 24, not 22: rewrite-api-links.ts uses URLPattern, which only became a
+    # global in Node 24. On 22 it fails with "URLPattern is not defined".
     - uses: actions/setup-node@v6
       with:
-        node-version: 22.x
+        node-version: 24.x
         cache: yarn
 
     # The cross-platform gulp build restores the docfx dotnet tool.
