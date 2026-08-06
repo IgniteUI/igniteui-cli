@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+
 BRANCH="${1:-master}"
 BASE="$(cd "$(dirname "$0")" && pwd)"
 SUBMODULES=(

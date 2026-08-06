@@ -1,7 +1,8 @@
 import * as fs from "fs";
 import * as path from "path";
-import initSqlJs from "sql.js";
 
+const sqljs = require("sql.js");
+const initSqlJs: any = sqljs.default ?? sqljs;
 const DB_PATH = process.env.DOCS_DB_PATH ||
 	path.join(__dirname, "..", "..", "packages", "igniteui-mcp", "igniteui-doc-mcp", "db", "igniteui-docs.db");
 
