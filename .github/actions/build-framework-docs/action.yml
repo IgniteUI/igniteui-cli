@@ -142,16 +142,15 @@ runs:
           npm run "update-baseline:$FW"
         fi
 
-    - name: Report compression stats
+    # Always runs, so a framework that skipped compression still reports why.
+    - name: Report build summary
+      if: always()
       shell: bash
       working-directory: packages/igniteui-mcp/igniteui-doc-mcp
       run: |
-        STATS="dist/docs_final/${{ inputs.framework }}/_compression_stats.json"
-        COUNT=$(find "dist/docs_final/${{ inputs.framework }}" -name '*.md' -not -name '_*' | wc -l)
-        echo "### ${{ inputs.framework }}: $COUNT documents" >> "$GITHUB_STEP_SUMMARY"
-        if [ -f "$STATS" ]; then
-          node -e "const s=require('./$STATS');console.log('- model: '+s.model+'\n- tokens: '+(s.total_tokens||0))" >> "$GITHUB_STEP_SUMMARY"
-        fi
+        npx tsx scripts/report-build-summary.ts \
+          --framework "${{ inputs.framework }}" \
+          --mode "${{ inputs.mode }}" >> "$GITHUB_STEP_SUMMARY"
 
     - name: Upload compressed docs
       uses: actions/upload-artifact@v4
