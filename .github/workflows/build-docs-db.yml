@@ -184,11 +184,27 @@ jobs:
       - name: Apply rebuilt database and baselines
         run: |
           set -euo pipefail
-          cp artifact/db/igniteui-docs.db packages/igniteui-mcp/igniteui-doc-mcp/db/igniteui-docs.db
+
+          # upload-artifact roots an artifact at the least common ancestor of its paths,
+          # so the layout under artifact/ depends on which paths were uploaded together.
+          # Locate the contents instead of assuming a depth — this step runs after hours
+          # of compression, so it must not fail on a path guess.
+          DB=$(find artifact -type f -name igniteui-docs.db | head -1)
+          BASELINE=$(find artifact -type d -name docs_baseline | head -1)
+
+          if [ -z "$DB" ] || [ -z "$BASELINE" ]; then
+            echo "::error::Could not locate the database or baselines in the artifact."
+            find artifact
+            exit 1
+          fi
+          echo "Using DB: $DB"
+          echo "Using baselines: $BASELINE"
+
+          cp "$DB" packages/igniteui-mcp/igniteui-doc-mcp/db/igniteui-docs.db
           # Kept in sync with the doc-mcp copy, as every prior doc-update commit has done.
-          cp artifact/db/igniteui-docs.db packages/igniteui-mcp/docs-backend/docs-backend/igniteui-docs.db
+          cp "$DB" packages/igniteui-mcp/docs-backend/docs-backend/igniteui-docs.db
           rm -rf packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
-          cp -r artifact/docs_baseline packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+          cp -r "$BASELINE" packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
           rm -rf artifact
 
       - name: Commit and open pull request
