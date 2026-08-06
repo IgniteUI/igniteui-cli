@@ -1,0 +1,249 @@
+name: Build documentation DB
+
+# Manual trigger only. A rebuild costs real money (a full run compresses ~1230
+# documents, roughly 3.5M output tokens), so it is always a deliberate decision.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Recompress everything, or only what changed upstream
+        type: choice
+        options: [incremental, full]
+        default: incremental
+      frameworks:
+        description: Comma-separated subset to rebuild
+        type: string
+        default: angular,react,blazor,webcomponents
+      submodule_branch:
+        description: Branch to move the documentation submodules to
+        type: string
+        default: master
+      model:
+        description: Compression model override (empty uses the script default)
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  # The four compress jobs run strictly one after another. Their state is per-framework
+  # so they *could* run in parallel, but concurrent batch submissions contend for the
+  # same account-level OpenAI limits — in particular enqueued tokens per model.
+  angular:
+    if: contains(inputs.frameworks, 'angular')
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/build-framework-docs
+        with:
+          framework: angular
+          mode: ${{ inputs.mode }}
+          model: ${{ inputs.model }}
+          submodule-branch: ${{ inputs.submodule_branch }}
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+
+  react:
+    needs: angular
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && contains(inputs.frameworks, 'react')
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/build-framework-docs
+        with:
+          framework: react
+          mode: ${{ inputs.mode }}
+          model: ${{ inputs.model }}
+          submodule-branch: ${{ inputs.submodule_branch }}
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+
+  blazor:
+    needs: react
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && contains(inputs.frameworks, 'blazor')
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/build-framework-docs
+        with:
+          framework: blazor
+          mode: ${{ inputs.mode }}
+          model: ${{ inputs.model }}
+          submodule-branch: ${{ inputs.submodule_branch }}
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+
+  webcomponents:
+    needs: blazor
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && contains(inputs.frameworks, 'webcomponents')
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/build-framework-docs
+        with:
+          framework: webcomponents
+          mode: ${{ inputs.mode }}
+          model: ${{ inputs.model }}
+          submodule-branch: ${{ inputs.submodule_branch }}
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+
+  # The database is assembled exactly once, here, with every framework's docs present.
+  # A per-framework build:db on a fresh runner finds no existing DB and rebuilds from
+  # scratch with only that framework — the bug that shipped a 112-doc and later an
+  # angular-only database.
+  assemble:
+    needs: [angular, react, blazor, webcomponents]
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22.x
+          cache: yarn
+      - name: Install packages
+        run: yarn --frozen-lockfile
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: docs-final-*
+          path: packages/igniteui-mcp/igniteui-doc-mcp/dist/docs_final
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: docs-prepeared-*
+          path: packages/igniteui-mcp/igniteui-doc-mcp/dist/docs_prepeared
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: docs-baseline-*
+          path: packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+
+      # download-artifact nests each artifact under its own name; flatten to the
+      # framework directories that build-db expects.
+      - name: Flatten artifact layout
+        working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+        run: |
+          set -euo pipefail
+          for kind in docs_final:dist/docs_final docs_prepeared:dist/docs_prepeared docs_baseline:docs_baseline; do
+            prefix="${kind%%:*}"; dir="${kind##*:}"
+            for fw in angular react blazor webcomponents; do
+              src="$dir/${prefix//_/-}-$fw"
+              [ -d "$src" ] && rm -rf "$dir/$fw" && mv "$src" "$dir/$fw" || true
+            done
+          done
+          ls -la dist/docs_final
+
+      # Any framework missing from this run keeps the copy already committed, so the
+      # database is always assembled from a complete set. --toc-stubs also emits the
+      # minimal docs_prepeared entries build-db needs to populate toc_name.
+      - name: Restore frameworks not rebuilt in this run
+        working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+        run: |
+          set -euo pipefail
+          for fw in angular react blazor webcomponents; do
+            if [ ! -d "dist/docs_final/$fw" ] || [ -z "$(ls -A dist/docs_final/$fw 2>/dev/null)" ]; then
+              echo "$fw was not rebuilt — restoring from the committed DB"
+              npx tsx scripts/restore-docs-final.ts --framework "$fw" --toc-stubs
+            fi
+          done
+
+      - name: Build database
+        working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+        run: npm run build:db
+
+      - name: Verify document counts
+        run: |
+          npx tsc spec/unit/docs-db-counts-spec.ts --target es6 --module commonjs --esModuleInterop --skipLibCheck
+          npx jasmine spec/unit/docs-db-counts-spec.js
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: igniteui-docs-db
+          path: |
+            packages/igniteui-mcp/igniteui-doc-mcp/db/igniteui-docs.db
+            packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+          retention-days: 5
+
+  # The only job that writes to the repository. It opens a PR for review — nothing is
+  # pushed to a protected branch and nothing auto-merges.
+  publish:
+    needs: assemble
+    if: success()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/download-artifact@v4
+        with:
+          name: igniteui-docs-db
+          path: artifact
+
+      - name: Apply rebuilt database and baselines
+        run: |
+          set -euo pipefail
+
+          # upload-artifact roots an artifact at the least common ancestor of its paths,
+          # so the layout under artifact/ depends on which paths were uploaded together.
+          # Locate the contents instead of assuming a depth — this step runs after hours
+          # of compression, so it must not fail on a path guess.
+          DB=$(find artifact -type f -name igniteui-docs.db | head -1)
+          BASELINE=$(find artifact -type d -name docs_baseline | head -1)
+
+          if [ -z "$DB" ] || [ -z "$BASELINE" ]; then
+            echo "::error::Could not locate the database or baselines in the artifact."
+            find artifact
+            exit 1
+          fi
+          echo "Using DB: $DB"
+          echo "Using baselines: $BASELINE"
+
+          cp "$DB" packages/igniteui-mcp/igniteui-doc-mcp/db/igniteui-docs.db
+          # Kept in sync with the doc-mcp copy, as every prior doc-update commit has done.
+          cp "$DB" packages/igniteui-mcp/docs-backend/docs-backend/igniteui-docs.db
+          rm -rf packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+          cp -r "$BASELINE" packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+          rm -rf artifact
+
+      - name: Commit and open pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          BRANCH="chore/docs-db-${{ github.run_id }}"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout -b "$BRANCH"
+
+          # Submodule pointers are deliberately excluded — the release pipeline checks
+          # submodules out fresh, so recording them here would only add noise.
+          git add packages/igniteui-mcp/igniteui-doc-mcp/db/igniteui-docs.db \
+                  packages/igniteui-mcp/docs-backend/docs-backend/igniteui-docs.db \
+                  packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+
+          if git diff --cached --quiet; then
+            echo "No changes to publish — the documentation is already up to date."
+            exit 0
+          fi
+
+          git commit -m "chore(mcp): rebuild documentation database (${{ inputs.mode }})"
+          git push origin "$BRANCH"
+          gh pr create \
+            --base "${{ github.ref_name }}" \
+            --head "$BRANCH" \
+            --title "chore(mcp): rebuild documentation database" \
+            --body "Automated rebuild of the Ignite UI documentation database.
+
+          | | |
+          |---|---|
+          | mode | \`${{ inputs.mode }}\` |
+          | frameworks | \`${{ inputs.frameworks }}\` |
+          | submodule branch | \`${{ inputs.submodule_branch }}\` |
+          | model | \`${{ inputs.model || 'script default' }}\` |
+          | run | [#${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |
+
+          Document counts were verified by \`spec/unit/docs-db-counts-spec.ts\` before this PR was opened.
+
+          Requires manual review and merge."
