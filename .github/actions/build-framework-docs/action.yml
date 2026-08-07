@@ -155,7 +155,12 @@ runs:
         OUT=$(find "dist/docs_final/$FW" -name '*.md' -not -name '_*' | wc -l)
         if [ "$OUT" -lt "$IN" ]; then
           echo "::warning::$FW: $OUT of $IN documents present after compression — retrying failed batch entries"
-          npm run "compress:$FW" -- --batch retry || true
+          # `--batch retry` only submits a new batch; polling downloads its results.
+          # batchPoll reads state.retry_batch_id, so it follows the retry batch.
+          if npm run "compress:$FW" -- --batch retry; then
+            npm run "compress:$FW" -- --batch poll || true
+            npm run "derive-components:$FW" || true
+          fi
           OUT=$(find "dist/docs_final/$FW" -name '*.md' -not -name '_*' | wc -l)
         fi
         if [ "$OUT" -lt "$IN" ]; then
