@@ -187,7 +187,7 @@ await grid.Sort(new IgbGridLiteSortingExpression { Key = "Price", Direction = Gr
 await grid.Sort(new IgbGridLiteSortingExpression[]
 {
     new IgbGridLiteSortingExpression { Key = "Price", Direction = GridLiteSortingDirection.Descending },
-    new IgbGridLiteSortingExpression { Key = "Name", Direction = GridLiteSortingDirection.Descending }```
+    new IgbGridLiteSortingExpression { Key = "Name", Direction = GridLiteSortingDirection.Descending }```
 
 The `ClearSort()` method, as the name implies, clears the sort state of a single column or the whole grid component, depending
 on the passed arguments.

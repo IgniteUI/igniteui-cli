@@ -69,7 +69,6 @@ The following code shows how to bind the [`IgbGeographicPolylineSeries`](mcp:get
 ```razor
 @using IgniteUI.Blazor.Controls
 
-
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
     <IgbGeographicPolylineSeries Outline="Red" ShapefileDataSource="DataSource" />
 </IgbGeographicMap>

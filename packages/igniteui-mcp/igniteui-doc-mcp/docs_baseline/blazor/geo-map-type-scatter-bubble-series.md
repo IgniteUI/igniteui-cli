@@ -85,7 +85,6 @@ The following table summarizes the GeographicHighDensityScatterSeries series pro
 ```razor
 @using IgniteUI.Blazor.Controls
 
-
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
     <IgbGeographicProportionalSymbolSeries DataSource="WorldCities"
         MarkerType="MarkerType.Circle"

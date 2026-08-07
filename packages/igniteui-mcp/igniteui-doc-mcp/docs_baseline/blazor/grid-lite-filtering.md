@@ -124,7 +124,7 @@ await grid.Filter(new IgbGridLiteFilterExpression { Key = "FirstName", Condition
 await grid.Filter(new IgbGridLiteFilterExpression[]
 {
     new IgbGridLiteFilterExpression { Key = "FirstName", Condition = "startsWith", SearchTerm = "a" },
-    new IgbGridLiteFilterExpression { Key = "FirstName", Condition = "startsWith", SearchTerm = "g", Criteria = "or" }```
+    new IgbGridLiteFilterExpression { Key = "FirstName", Condition = "startsWith", SearchTerm = "g", Criteria = "or" }```
 
 The `ClearFilter()` method, as the name implies, clears the filter state of a single column or the whole grid component, depending on the passed arguments.
 
