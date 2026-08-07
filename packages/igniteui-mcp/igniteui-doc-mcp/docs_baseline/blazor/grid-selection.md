@@ -237,7 +237,6 @@ Basically the main function will look like this:
         this.MenuY = e.ClientY + "px";
     }
 
-
     public void onMenuShow(IgbGridCellEventArgs e)
     {
         IgbGridCellEventArgsDetail detail = e.Detail;
@@ -259,7 +258,6 @@ The context menu will have the following functions:
         this.SelectedData = this.ClickedCell.Value.ToString();
         StateHasChanged();
     }
-
 
     public async void CopyRowData()
     {
