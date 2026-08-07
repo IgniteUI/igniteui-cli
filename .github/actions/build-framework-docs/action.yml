@@ -146,6 +146,27 @@ runs:
           npm run "update-baseline:$FW"
         fi
 
+        # Compression must yield one document per input. A batch entry that fails is
+        # simply absent from docs_final — the pipeline continues, the DB is published
+        # short, and document-count floors are far too loose to notice one missing file.
+        # This is not hypothetical: a full run reported "375 succeeded, 1 failed" and
+        # silently dropped hierarchicalgrid-editing.md.
+        IN=$(find "dist/docs_prepeared/$FW" -name '*.md' -not -name '_*' | wc -l)
+        OUT=$(find "dist/docs_final/$FW" -name '*.md' -not -name '_*' | wc -l)
+        if [ "$OUT" -lt "$IN" ]; then
+          echo "::warning::$FW: $OUT of $IN documents present after compression — retrying failed batch entries"
+          npm run "compress:$FW" -- --batch retry || true
+          OUT=$(find "dist/docs_final/$FW" -name '*.md' -not -name '_*' | wc -l)
+        fi
+        if [ "$OUT" -lt "$IN" ]; then
+          echo "::error::$FW: compression produced only $OUT of $IN documents. Refusing to publish an incomplete set."
+          comm -23 \
+            <(find "dist/docs_prepeared/$FW" -name '*.md' -not -name '_*' -printf '%f\n' | sort) \
+            <(find "dist/docs_final/$FW" -name '*.md' -not -name '_*' -printf '%f\n' | sort)
+          exit 1
+        fi
+        echo "$FW: $OUT of $IN documents compressed"
+
     # Always runs, so a framework that skipped compression still reports why.
     - name: Report build summary
       if: always()

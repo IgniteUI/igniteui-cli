@@ -97,7 +97,13 @@ function derive(
   prefix: string,
   index: Map<string, string>
 ): string[] {
-  const supplied = modelValue.split(",").map(s => s.trim()).filter(Boolean);
+  // The model sometimes emits `component: ""` for documents with no library component
+  // (CLI guides, migration walkthroughs). Unquote so those become genuinely empty
+  // rather than a component literally named `""`.
+  const supplied = modelValue
+    .split(",")
+    .map(s => s.trim().replace(/^["']+|["']+$/g, "").trim())
+    .filter(Boolean);
   const headings = body.split("\n").filter(l => /^#{1,4}\s/.test(l)).join("\n");
   const fromHeadings = extract(headings, prefix, index);
 

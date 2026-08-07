@@ -87,11 +87,34 @@ describe("Unit - documentation database", () => {
 	it("should have required frontmatter on every document", () => {
 		const bad = rows(`
 			select framework, filename from docs
-			where component is null or trim(component) = ''
-				or summary is null or trim(summary) = ''
+			where summary is null or trim(summary) = ''
 				or keywords is null or trim(keywords) = ''
 		`);
 		expect(bad.map(r => `${r.framework}/${r.filename}`)).toEqual([]);
+	});
+
+	it("should only leave component empty when the document has no library component", () => {
+		// A few docs legitimately have none — CLI guides, migration walkthroughs. Any
+		// other empty value means the field was lost. Quote characters count as empty:
+		// the model has emitted `component: ""`, which reaches the DB as a component
+		// literally named `""` and shows up as one in list_components.
+		const bad = rows(`
+			select framework, filename, component, content from docs
+			where trim(replace(replace(coalesce(component, ''), '"', ''), '''', '')) = ''
+		`).filter(r => /\bIg[xrbc][A-Z]\w+/.test(r.content));
+		expect(bad.map(r => `${r.framework}/${r.filename}`)).toEqual([]);
+	});
+
+	it("should not index documents under sample-application class names", () => {
+		// Every listed name should carry an Ignite UI prefix, be a documented API class,
+		// or at minimum not look like demo code. Sample classes such as MyComponent or
+		// ReactiveFormsSampleComponent make a document unreachable via list_components.
+		const suspect = /(^My[A-Z]|Sample(Component|Page)?$|^App(Component|Module)?$|Validator(Directive)?$)/;
+		const bad = rows("select framework, filename, component from docs where component is not null")
+			.filter(r => (r.component || "").split(",")
+				.map((s: string) => s.trim())
+				.some((s: string) => s && !/^Ig[xrbc][A-Z]/.test(s) && suspect.test(s)));
+		expect(bad.map(r => `${r.framework}/${r.filename}: ${r.component}`)).toEqual([]);
 	});
 
 	it("should have a toc name on every document", () => {
