@@ -46,7 +46,7 @@ jobs:
 
   react:
     needs: angular
-    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && contains(inputs.frameworks, 'react')
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && contains(inputs.frameworks, 'react')
     runs-on: ubuntu-latest
     timeout-minutes: 330
     steps:
@@ -61,7 +61,7 @@ jobs:
 
   blazor:
     needs: react
-    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && contains(inputs.frameworks, 'blazor')
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && contains(inputs.frameworks, 'blazor')
     runs-on: ubuntu-latest
     timeout-minutes: 330
     steps:
@@ -76,7 +76,7 @@ jobs:
 
   webcomponents:
     needs: blazor
-    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && contains(inputs.frameworks, 'webcomponents')
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && contains(inputs.frameworks, 'webcomponents')
     runs-on: ubuntu-latest
     timeout-minutes: 330
     steps:
@@ -95,7 +95,7 @@ jobs:
   # angular-only database.
   assemble:
     needs: [angular, react, blazor, webcomponents]
-    if: always() && !cancelled() && !contains(needs.*.result, 'failure')
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
