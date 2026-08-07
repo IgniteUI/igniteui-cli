@@ -1,6 +1,6 @@
 # Documentation Processing Knowledgebase
 
-Lessons learned and issues encountered while building the documentation processing pipelines. Entries 1-16 are from the Angular pipeline; entries 17-22 from React and MCP server; entries 23-28 from WebComponents and cross-platform improvements; entries 29-33 from Blazor, cross-platform architecture, and prompt improvements.
+Lessons learned and issues encountered while building the documentation processing pipelines. Entries 1-16 are from the Angular pipeline; entries 17-22 from React and MCP server; entries 23-28 from WebComponents and cross-platform improvements; entries 29-34 from Blazor, cross-platform architecture, and prompt improvements.
 
 ## 1. LLM Compression: Wrong Component Prefix (Hallucination)
 
@@ -370,6 +370,32 @@ This is the opposite logic from what you might expect — `exclude` means "hide 
 3. **WHAT TO KEEP #3** (examples per section): Added explicit examples of variant sections that must each keep their own code example, plus anti-merge rule: "Do NOT merge separate sections into a combined section."
 
 **Rule:** This three-pronged approach is needed because the LLM's merge behavior is a chain: it first decides sections are "redundant" → merges headers → then drops examples from the merged section. Blocking any single step isn't enough — all three rules must reinforce each other.
+
+## 34. LLM Compression: `component` Frontmatter Drifts and Names Sample-App Classes
+
+**Problem:** The `component` field was decided entirely by the compression model, and it is not stable across runs. Two full rebuilds with the same model (`gpt-5.6-luna`) over effectively unchanged sources produced **1231 of 1232 documents with changed content and 374 with a changed `component` field** — 144 listing fewer components, 129 more, 64 genuinely different names, 37 merely reordered.
+
+The worst case was `angular/angular-reactive-form-validation.md`:
+
+```
+before: IgxSelectComponent, IgxInputDirective, IgxComboComponent, IgxDatePickerComponent, …
+after:  DateValueValidatorDirective, DateValueAsyncValidatorDirective, ReactiveFormsSampleComponent, MyComponent
+```
+
+The model listed the **sample application's own classes** while the document body still documented `IgxSelectComponent`, `IgxInputDirective` and a dozen more. The prompt invited this by asking for "the exact class name(s) **as found in the document's source code**" — which those demo classes literally are.
+
+**Impact:** `component` drives `list_components` and component-filtered `search_docs`. A document indexed under `MyComponent` is effectively unreachable. Dropped entries (`cli-component-templates.md` went 28 → 6) shrink discoverability, and pure reordering churns the committed DB binary for no benefit.
+
+**Fix:** Two layers, because neither is sufficient alone.
+
+1. **Prompt** (all four compress scripts): every name must carry the platform prefix; never list classes the sample application defines for itself; list every component the doc covers rather than a subset; order by first appearance with the primary subject first.
+2. **Deterministic post-pass** — `scripts/derive-components.ts`, wired into every `pipeline:*` after compression. It keeps a supplied name when it carries an Ignite UI prefix, or the API index knows it, or a heading names it; otherwise it drops it. It then puts the filename-derived primary first and adds indexed components named in headings.
+
+**Rule:** Prefer the **prefix** over API-index membership when deciding whether a name is real. The index built from `llms-full.txt` is incomplete — it lacks the data-visualisation components (`IgxCategoryChartComponent`), so filtering on index membership alone silently deletes valid entries. Equally, do not require the platform's own prefix exclusively: Angular docs legitimately reference `Igc*` Web Components wrappers (`IgcDockManagerComponent`, `IgcRatingComponent`, `IgcTileManagerComponent`), and the Excel library documents unprefixed classes (`Workbook`, `WorksheetChart`) that only the heading check preserves.
+
+**Rule:** Never let the derivation *substitute* when it has no positive evidence — falling back to "every component mentioned in the body" buries the subject under components used incidentally by demo code (`badge.md` became `IgxAvatarComponent, IgxBadgeComponent, IgxIconService, IgxListComponent…`). The one exception is when *every* supplied name was rejected, which means the model returned nothing usable.
+
+**Rule:** A `full` rebuild rewrites essentially the whole corpus even when nothing upstream changed. Prefer `incremental`, which only recompresses genuinely changed documents and therefore cannot churn metadata wholesale.
 
 ## Related Documentation
 

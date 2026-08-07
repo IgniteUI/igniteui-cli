@@ -123,7 +123,11 @@ premium: true
 ---
 
 Rules for frontmatter fields:
-- **component**: The exact Ignite UI for Angular component/directive class name(s) as found in the document's source code (e.g. IgxGridComponent, IgxButtonDirective, IgxComboComponent, IgxDatePickerComponent). Use the PascalCase Igx-prefixed name including the Component/Directive suffix as used in Angular. If the doc covers multiple components, comma-separate them.
+- **component**: The Ignite UI for Angular component/directive class name(s) documented here (e.g. IgxGridComponent, IgxButtonDirective, IgxComboComponent, IgxDatePickerComponent). Use the PascalCase Igx-prefixed name including the Component/Directive suffix as used in Angular. Comma-separate multiple names. These rules are strict:
+  - Every name MUST begin with \`Igx\`. A class in the sample code that does not start with \`Igx\` is application code, not a library component.
+  - NEVER list classes the sample application defines for itself — custom validators, \`MyComponent\`, \`AppComponent\`, \`*SampleComponent\`, demo services, demo pipes, or demo directives. List only components from the Ignite UI library, even when the sample's own classes are more prominent in the code.
+  - List EVERY Ignite UI component the document documents or demonstrates, not a representative subset. If it covers ten components, list all ten.
+  - Order them by first appearance in the document, with the document's primary subject first.
 - **keywords**: Do NOT repeat the component name from the \`component\` field. Include the short common name (e.g. grid, combo-box, date-picker), related UI concepts (e.g. filtering, sorting, paging, selection), and common synonyms developers might search for (e.g. card, avatar, badge, dropdown, dialog, modal, table). Use lowercase, comma-separated. Aim for 5-15 keywords.
 - **summary**: A concise 1-2 sentence description of what the document covers and what a developer can learn from it. Focus on the component's purpose and key capabilities.
 - **premium**: If the input frontmatter contains \`_premium: true\`, include \`premium: true\` in your output frontmatter. Otherwise omit the premium field entirely.

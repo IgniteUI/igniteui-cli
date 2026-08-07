@@ -127,6 +127,7 @@ runs:
         if [ "$MODE" = "full" ]; then
           npm run "compress:$FW" -- --batch submit
           npm run "compress:$FW" -- --batch poll
+          npm run "derive-components:$FW"
           npx tsx scripts/update-baseline.ts --framework "$FW" --full
         else
           npm run "diff:$FW"
@@ -138,6 +139,9 @@ runs:
           if [ "$CHANGED" -gt 0 ]; then
             npm run "compress:$FW" -- --batch submit --manifest dist/diff-manifest.json
             npm run "compress:$FW" -- --batch poll
+            # Only the freshly compressed docs need it; restored ones already carry
+            # derived values from the committed DB.
+            npm run "derive-components:$FW"
           fi
           npm run "update-baseline:$FW"
         fi
