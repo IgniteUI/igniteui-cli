@@ -22,6 +22,7 @@ Quickly create projects, including [Ignite UI for Angular](https://www.infragist
  * Angular
  * React
  * Web Components
+ * Blazor
  * jQuery
 
 ### Prerequisites
