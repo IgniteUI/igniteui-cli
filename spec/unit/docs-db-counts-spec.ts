@@ -108,7 +108,6 @@ describe("Unit - documentation database", () => {
 		expect(bad.map(r => `${r.framework}/${r.filename}`)).toEqual([]);
 	});
 
-
 	it("should have a toc name on every document", () => {
 		// build-db reads _tocName from docs_prepeared; if that directory is missing it
 		// silently writes NULL for every row instead of failing.
