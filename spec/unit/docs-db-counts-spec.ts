@@ -36,9 +36,9 @@ describe("Unit - documentation database", () => {
 			}, {}));
 	}
 
-	beforeAll(async () => {
-		expect(fs.existsSync(DB_PATH)).toBe(true, `Database not found at ${DB_PATH}. Run 'npm run build:db'.`);
-
+		expect(fs.existsSync(DB_PATH))
+			.withContext(`Database not found at ${DB_PATH}. Run 'npm run build:db'.`)
+			.toBeTrue();
 		const wasm = fs.readFileSync(require.resolve("sql.js/dist/sql-wasm.wasm"));
 		const SQL = await initSqlJs({
 			wasmBinary: wasm.buffer.slice(wasm.byteOffset, wasm.byteOffset + wasm.byteLength)
