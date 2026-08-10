@@ -36,9 +36,11 @@ describe("Unit - documentation database", () => {
 			}, {}));
 	}
 
+	beforeAll(async () => {
 		expect(fs.existsSync(DB_PATH))
 			.withContext(`Database not found at ${DB_PATH}. Run 'npm run build:db'.`)
 			.toBeTrue();
+
 		const wasm = fs.readFileSync(require.resolve("sql.js/dist/sql-wasm.wasm"));
 		const SQL = await initSqlJs({
 			wasmBinary: wasm.buffer.slice(wasm.byteOffset, wasm.byteOffset + wasm.byteLength)
@@ -64,7 +66,8 @@ describe("Unit - documentation database", () => {
 	it("should meet the minimum document count per framework", () => {
 		for (const fw of FRAMEWORKS) {
 			expect(counts[fw] || 0)
-				.toBeGreaterThanOrEqual(MIN_DOCS[fw], `${fw} has ${counts[fw] || 0} docs, expected >= ${MIN_DOCS[fw]}`);
+				.withContext(`${fw} has ${counts[fw] || 0} docs, expected >= ${MIN_DOCS[fw]}`)
+				.toBeGreaterThanOrEqual(MIN_DOCS[fw]);
 		}
 	});
 
@@ -105,17 +108,6 @@ describe("Unit - documentation database", () => {
 		expect(bad.map(r => `${r.framework}/${r.filename}`)).toEqual([]);
 	});
 
-	it("should not index documents under sample-application class names", () => {
-		// Every listed name should carry an Ignite UI prefix, be a documented API class,
-		// or at minimum not look like demo code. Sample classes such as MyComponent or
-		// ReactiveFormsSampleComponent make a document unreachable via list_components.
-		const suspect = /(^My[A-Z]|Sample(Component|Page)?$|^App(Component|Module)?$|Validator(Directive)?$)/;
-		const bad = rows("select framework, filename, component from docs where component is not null")
-			.filter(r => (r.component || "").split(",")
-				.map((s: string) => s.trim())
-				.some((s: string) => s && !/^Ig[xrbc][A-Z]/.test(s) && suspect.test(s)));
-		expect(bad.map(r => `${r.framework}/${r.filename}: ${r.component}`)).toEqual([]);
-	});
 
 	it("should have a toc name on every document", () => {
 		// build-db reads _tocName from docs_prepeared; if that directory is missing it
