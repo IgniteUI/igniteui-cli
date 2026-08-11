@@ -1,6 +1,8 @@
 
 ## Ignite UI CLI
 
+[![MCP Toplist](https://mcptoplist.com/badge/pulsemcp%2Figniteui.svg)](https://mcptoplist.com/server/pulsemcp%2Figniteui)
+
 <!-- Badges section here. -->
 ![Node.js CI](https://github.com/IgniteUI/igniteui-cli/workflows/Node.js%20CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/IgniteUI/igniteui-cli/badge.svg)](https://coveralls.io/github/IgniteUI/igniteui-cli)
