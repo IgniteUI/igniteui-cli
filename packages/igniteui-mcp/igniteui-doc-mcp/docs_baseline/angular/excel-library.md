@@ -37,7 +37,7 @@ import { IgxExcelModule } from "igniteui-angular-excel";
 export class AppModule {}
 ```
 ```typescript
-import { Component, ComponentFactoryResolver, Injector, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Workbook } from "igniteui-angular-excel";
 import { WorkbookFormat } from "igniteui-angular-excel";
 import { ExcelUtility } from "./ExcelUtility";
@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
     public worksheetTables: string[];
     public selectedTable: string;
 
-    constructor(private resolver: ComponentFactoryResolver, private injector: Injector) {
+    constructor() {
     }
 
     public ngOnInit() {
