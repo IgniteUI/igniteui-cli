@@ -397,6 +397,30 @@ The model listed the **sample application's own classes** while the document bod
 
 **Rule:** A `full` rebuild rewrites essentially the whole corpus even when nothing upstream changed. Prefer `incremental`, which only recompresses genuinely changed documents and therefore cannot churn metadata wholesale.
 
+## 35. TOC-Driven Grouping for `list_components`
+
+**Problem:** an unfiltered `list_components` returned every doc as a flat bullet list with a full summary each — 17–24k tokens per call, 77% of it the `summary` column, spent before any documentation was read.
+
+**Fix:** group docs by the documentation TOC both sources already maintain (`toc.yml` for Angular, `toc.json` for the xplat platforms) and pay for one group summary instead of hundreds of per-doc summaries. Coverage is 100% in all four frameworks — every doc in the DB is reachable from the TOC, so there is no "Other" bucket and no curated family map. Measured on the shipped corpus: **-89% to -90%** before group summaries are generated (angular 95,873 → 10,262 chars).
+
+**Rule: header nodes carry their own `href`.** A walker that does `if (header) continue;` drops the section landing pages (`Grids & Lists -> grids-and-lists.md`, `Charts -> charts/chart-overview.md`) and, worse, loses the section for every following sibling. The walker keeps headers for section tracking; the xplat exporters still filter their landing pages out of the *export*, exactly as before.
+
+**Rule: an excluded header still updates the section.** Otherwise an xplat platform that excludes a header inherits the previous section for every entry after it.
+
+**Rule: group membership is decided by the top-level node below the header, not by depth.** `Data Grid` carries both an `href` and children, so `grid/grid.md` has a one-element ancestor chain — the same length as `accordion.md`, which must land at section level. An `ancestors.length > 1` test files the group's own overview page outside its group, which is precisely the doc a caller drilling into it wants. That pair is the regression test; 17 docs move in angular alone.
+
+**Rule: keep the duplicate write for a cross-listed href.** `injectTocMetadata` runs per TOC entry, so the two writes differ — `dashboard-tile.md` ships with `toc_name = "Charting in Dashboards"` (the second entry) in all four frameworks. Skipping the second write flips `docs.toc_name` and its `ORDER BY toc_name` position. Cache only the resolved *filename*, so the page stays one doc.
+
+**Rule: flat mode must not read through `doc_toc`.** The join multiplies cross-listed docs and reorders by TOC position, breaking both the byte-identical criterion and `ORDER BY toc_name`. Where `group` narrows a flat listing, membership is resolved with a separate `SELECT DISTINCT filename` and applied as a filter.
+
+**Rule: never render a filtered group's count from `doc_groups.doc_count`.** That column stores the full group size and would print `(45)` above three listed docs. Counts come from the matched rows, deduplicated by `(group_key, filename)`.
+
+**Rule: `build:db` publishes through a temp file.** It builds into `dist/igniteui-docs.db.tmp`, wraps schema changes, deletes, inserts, the FTS rebuild and the gates in one transaction, validates the staged file on a separate read-only connection, then renames `dist/` → backend → `db/` last. `db/igniteui-docs.db` is authoritative (`scripts/build.ts` copies it into `dist/` on every build), so it is the seed for an incremental run and the last thing published. Every handle is closed before a rename — Windows refuses to rename over an open SQLite file.
+
+**Rule: a full rebuild preflights all four frameworks.** Deriving the set from what happens to be on disk turned a missing framework into a silent omission, and a full rebuild drops and recreates the tables — so the previously good rows for it were simply gone. See also the `clear:build` hazard: it wipes `docs_processing` and `docs_prepeared` for *every* framework, so a full `build:db` at the wrong moment writes `toc_name = NULL` for the three that were not just processed.
+
+**Rule: the group set comes from the TOC, never from the summary cache.** Loading `doc_groups` from `data/group-summaries/<fw>.json` would make a new or renamed group vanish along with all of its docs, instead of appearing with a NULL summary. NULL summaries are a development state; `--release` is what refuses to ship one.
+
 ## Related Documentation
 
 | Document | Description | Status |

@@ -172,6 +172,14 @@ runs:
         fi
         echo "$FW: $OUT of $IN documents compressed"
 
+    # The composite action inlines the pipeline rather than calling pipeline:*, so
+    # the summaries step has to be listed here too. Cached groups make no API call;
+    # credentials are already written by "Configure OpenAI credentials".
+    - name: Build group summaries
+      shell: bash
+      working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+      run: npm run build:group-summaries -- --framework "${{ inputs.framework }}"
+
     # Always runs, so a framework that skipped compression still reports why.
     - name: Report build summary
       if: always()
@@ -202,4 +210,23 @@ runs:
       with:
         name: docs-baseline-${{ inputs.framework }}
         path: packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline/${{ inputs.framework }}
+        retention-days: 5
+
+    # build-db's preflight requires a sidecar per framework. A silently absent one
+    # would surface hours later as an abort in assemble, with nothing pointing at
+    # the job that produced nothing — hence if-no-files-found: error.
+    - name: Upload TOC index
+      uses: actions/upload-artifact@v7
+      with:
+        name: toc-index-${{ inputs.framework }}
+        path: packages/igniteui-mcp/igniteui-doc-mcp/dist/toc-index/${{ inputs.framework }}.json
+        if-no-files-found: error
+        retention-days: 5
+
+    - name: Upload group summaries
+      uses: actions/upload-artifact@v7
+      with:
+        name: group-summaries-${{ inputs.framework }}
+        path: packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries/${{ inputs.framework }}.json
+        if-no-files-found: error
         retention-days: 5
