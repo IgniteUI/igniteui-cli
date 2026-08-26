@@ -40,10 +40,12 @@ public static class ComponentRenderer
     /// </summary>
     private static List<GroupedDocRow> Dedupe(IEnumerable<GroupedDocRow> rows)
     {
-        var best = new Dictionary<string, GroupedDocRow>(StringComparer.Ordinal);
+        // Keyed by the pair itself: concatenating with a separator would be
+        // ambiguous the moment either half could contain it.
+        var best = new Dictionary<(string GroupKey, string Filename), GroupedDocRow>();
         foreach (var row in rows)
         {
-            var key = row.GroupKey + " " + row.Filename;
+            var key = (row.GroupKey, row.Filename);
             if (!best.TryGetValue(key, out var existing) || row.Ord < existing.Ord) best[key] = row;
         }
         return best.Values.OrderBy(r => r.Ord).ToList();
