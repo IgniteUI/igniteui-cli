@@ -66,7 +66,6 @@ The following code snippet shows how to display Blazor geographic imagery tiles 
 ```razor
 @using IgniteUI.Blazor.Controls
 
-
 <IgbGeographicMap Height="100%" Width="100%"
     Zoomable="true"
     BackgroundContent="EsriImagery" />
@@ -88,7 +87,6 @@ Alternatively, you can use the [EsriUtility](geo-map-resources-esri.md) which de
 
 ```razor
 @using IgniteUI.Blazor.Controls
-
 
 <IgbGeographicMap Height="100%" Width="100%"
     Zoomable="true"

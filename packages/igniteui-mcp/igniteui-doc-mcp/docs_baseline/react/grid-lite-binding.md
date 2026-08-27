@@ -43,7 +43,6 @@ If the grid has `autoGenerate` enabled, it will "_infer_" the new column configu
 ```tsx
 const [data, setData] = React.useState([/* initial data */]);
 
-
 /** After the new binding the grid will infer the column collection from the bound data. */
 const updateData = () => {
   setData([/* new data */]);
