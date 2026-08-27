@@ -3,11 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## 15.6.0 (2026-07-30)
+## 15.6.0 (2026-xx-xx)
 
 ### What's Changed
 * **chore(mcp):** Release version alignment for `@igniteui/mcp-server` as part of the 15.6.0 CLI release.
-* No functional MCP server changes in this release.
+* **feat(mcp):** `list_components` now returns a grouped index built from the published documentation TOC, cutting an unfiltered call from ~17–24k tokens to well under 4k. New `group` argument drills into one group with per-doc summaries; an unknown value answers with the valid group names. `detail: "docs"` returns the previous flat list unchanged.
+* **feat(mcp):** the documentation database gains additive `doc_toc` and `doc_groups` tables. The `docs` table and its FTS index are untouched. A server running against a database without them — or one where only some frameworks have been migrated — renders flat per framework, exactly as before.
+* **feat(mcp):** `build:db` now builds into a temporary file, wraps every mutation and its validation gates in one transaction, and publishes `dist/` → backend → `db/` only after the staged database passes. `npm run release:db` adds the whole-database gates a release requires.
+* **feat(mcp):** new `npm run report:toc-coverage` reports TOC coverage per framework, and `validate:package` refuses to ship a partially grouped database or one with missing group summaries.
 
 ## 15.5.0 (2026-07-15)
 

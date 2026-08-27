@@ -156,6 +156,8 @@ export default [
       '**/files/**/*',
       'packages/igniteui-mcp/**/dist/**/*',
       'packages/igniteui-mcp/**/*.test.ts',
+      // Excluded from the package's tsconfig, so typed linting has no project for them.
+      'packages/igniteui-mcp/igniteui-doc-mcp/src/__tests__/**/*',
       'packages/igniteui-mcp/igniteui-doc-mcp/scripts/**/*',
       'packages/igniteui-mcp/igniteui-doc-mcp/vitest.config.ts',
     ]

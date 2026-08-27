@@ -1,6 +1,8 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync } from "fs";
 import { join, dirname, resolve, relative } from "path";
 import yaml from "js-yaml";
+import { walkTocYaml, type TocEntry, type TocNode } from "./lib/toc-index.js";
+import { TocSidecar, resolveUniqueName } from "./lib/toc-sidecar.js";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const DOCFX_ROOT = join(ROOT, "angular", "igniteui-docfx");
@@ -67,37 +69,10 @@ const gridsConfigs: Record<string, Record<string, string>> = {
   },
 };
 
-interface TocEntry {
-  name: string;
-  href: string;
-  premium: boolean;
-}
-
 function parseToc(tocPath: string): TocEntry[] {
   const raw = readFileSync(tocPath, "utf-8");
-  const entries: TocEntry[] = [];
-
-  function flatten(items: any[]) {
-    for (const item of items) {
-      if (item.href) {
-        entries.push({
-          name: item.name || "",
-          href: item.href,
-          premium: item.premium === true,
-        });
-      }
-      if (Array.isArray(item.items)) {
-        flatten(item.items);
-      }
-    }
-  }
-
-  const parsed = yaml.load(raw) as any[];
-  if (Array.isArray(parsed)) {
-    flatten(parsed);
-  }
-
-  return entries;
+  const parsed = yaml.load(raw) as TocNode[];
+  return Array.isArray(parsed) ? walkTocYaml(parsed) : [];
 }
 
 function injectTocMetadata(content: string, entry: TocEntry): string {
@@ -262,6 +237,9 @@ function main() {
 
   mkdirSync(OUTPUT_DIR, { recursive: true });
   let totalFiles = 0;
+  const usedNames = new Map<string, string>();
+  const writtenFiles = new Set<string>();
+  const sidecar = new TocSidecar("angular", ROOT);
 
   // Step 3: Process toc entries
   console.error("Processing toc entries...");
@@ -298,11 +276,23 @@ function main() {
     content = replaceEnvironmentVars(content);
     content = stripImages(content);
 
-    const flatName = flattenPath(relPath);
+    // A cross-listed page appears under two TOC paths. Reuse the name resolved
+    // the first time so it stays one doc, but still write: injectTocMetadata has
+    // already run for this entry and last-write-wins is observable in the DB.
+    let flatName = sidecar.nameFor(relPath);
+    if (!flatName) {
+      flatName = resolveUniqueName(flattenPath(relPath), relPath, usedNames);
+      usedNames.set(flatName, relPath);
+    }
+
     const outPath = join(OUTPUT_DIR, flatName);
     writeFileSync(outPath, content, "utf-8");
+    writtenFiles.add(flatName);
+    sidecar.record(entry, flatName);
     totalFiles++;
   }
+
+  sidecar.write(writtenFiles);
 
   console.error(`\nDone!`);
   console.error(`  Files exported: ${totalFiles}`);
