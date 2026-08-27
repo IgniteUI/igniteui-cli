@@ -1,0 +1,28 @@
+Found 7 component doc(s) for **angular** in 4 group(s). Pass `group` with any heading below to get that group's docs with summaries.
+
+## Grids & Lists (2)
+Grid and list components, plus the Excel interop utility.
+- **Grids & Lists** (`grids-and-lists`)
+  Section overview for grids and lists.
+- **Excel Utility** (`excel-utility`)
+  Load and save Excel workbooks.
+
+## Grids & Lists > Data Grid (3)
+Data grid: sorting, filtering, editing, virtualization, export.
+- **Data Grid** (`grid-grid`)
+  The data grid: setup, columns, binding.
+- **Sorting** (`grid-sorting`)
+  Sort grid rows by one or more columns.
+  ⭐ Premium
+- **Editing** (`grid-editing`)
+  Edit cells and rows, batch and transactional.
+
+## Layouts (2)
+- **Accordion** (`accordion`)
+  Expand and collapse stacked panels.
+- **no-component** (`no-component`)
+
+## Frameworks > Excel Library (1)
+Read, write and format Excel workbooks without Excel installed.
+- **Excel Utility** (`excel-utility`)
+  Load and save Excel workbooks.

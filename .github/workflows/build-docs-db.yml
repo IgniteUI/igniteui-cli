@@ -118,6 +118,14 @@ jobs:
         with:
           pattern: docs-baseline-*
           path: packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: toc-index-*
+          path: packages/igniteui-mcp/igniteui-doc-mcp/dist/toc-index
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: group-summaries-*
+          path: packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries
 
       # download-artifact nests each artifact under its own name; flatten to the
       # framework directories that build-db expects.
@@ -132,7 +140,19 @@ jobs:
               [ -d "$src" ] && rm -rf "$dir/$fw" && mv "$src" "$dir/$fw" || true
             done
           done
-          ls -la dist/docs_final
+
+          # These two artifacts are single files, not directories, so they need
+          # their own unwrapping. Overwriting the checkout's committed summaries
+          # for a rebuilt framework is deliberate — the regenerated ones must win.
+          for kind in toc-index:dist/toc-index group-summaries:data/group-summaries; do
+            prefix="${kind%%:*}"; dir="${kind##*:}"
+            for fw in angular react blazor webcomponents; do
+              src="$dir/$prefix-$fw/$fw.json"
+              [ -f "$src" ] && mv -f "$src" "$dir/$fw.json" && rm -rf "$dir/$prefix-$fw" || true
+            done
+          done
+
+          ls -la dist/docs_final dist/toc-index data/group-summaries || true
 
       # Any framework missing from this run keeps the copy already committed, so the
       # database is always assembled from a complete set. --toc-stubs also emits the
@@ -161,7 +181,7 @@ jobs:
 
       - name: Build database
         working-directory: packages/igniteui-mcp/igniteui-doc-mcp
-        run: npm run build:db
+        run: npm run release:db
 
       - name: Verify document counts
         run: |
@@ -174,6 +194,7 @@ jobs:
           path: |
             packages/igniteui-mcp/igniteui-doc-mcp/db/igniteui-docs.db
             packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+            packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries
           retention-days: 5
 
   # The only job that writes to the repository. It opens a PR for review — nothing is
@@ -205,9 +226,10 @@ jobs:
           # of compression, so it must not fail on a path guess.
           DB=$(find artifact -type f -name igniteui-docs.db | head -1)
           BASELINE=$(find artifact -type d -name docs_baseline | head -1)
+          SUMMARIES=$(find artifact -type d -name group-summaries | head -1)
 
-          if [ -z "$DB" ] || [ -z "$BASELINE" ]; then
-            echo "::error::Could not locate the database or baselines in the artifact."
+          if [ -z "$DB" ] || [ -z "$BASELINE" ] || [ -z "$SUMMARIES" ]; then
+            echo "::error::Could not locate the database, baselines or group summaries in the artifact."
             find artifact
             exit 1
           fi
@@ -219,6 +241,11 @@ jobs:
           cp "$DB" packages/igniteui-mcp/docs-backend/docs-backend/igniteui-docs.db
           rm -rf packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
           cp -r "$BASELINE" packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+          # Without this the run regenerates summaries, builds them into the shipped
+          # DB, then throws the sources away — the committed cache would drift
+          # permanently from the committed database.
+          rm -rf packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries
+          cp -r "$SUMMARIES" packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries
           rm -rf artifact
 
       - name: Commit and open pull request
@@ -235,7 +262,8 @@ jobs:
           # submodules out fresh, so recording them here would only add noise.
           git add packages/igniteui-mcp/igniteui-doc-mcp/db/igniteui-docs.db \
                   packages/igniteui-mcp/docs-backend/docs-backend/igniteui-docs.db \
-                  packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+                  packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline \
+                  packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries
 
           if git diff --cached --quiet; then
             echo "No changes to publish — the documentation is already up to date."

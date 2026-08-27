@@ -1,3 +1,4 @@
+import Database from "better-sqlite3";
 import { readdirSync, readFileSync, statSync, existsSync } from "fs";
 import { join, resolve } from "path";
 import { fileURLToPath } from "url";
@@ -6,6 +7,7 @@ const PKG_ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const DB_PATH = join(PKG_ROOT, "dist", "igniteui-docs.db");
 const DB_MIN_BYTES = 20 * 1024 * 1024; // 20 MB minimum for the SQLite DB
 const DOCS_ROOT = join(PKG_ROOT, "docs");
+const FRAMEWORKS = ["angular", "react", "blazor", "webcomponents"];
 const FRAMEWORK_DIRS = ["angular-api", "react-api", "webcomponents-api", "blazor-api"];
 const FRAMEWORK_MIN_BYTES = 300 * 1024; // 300 KB minimum for each docs/<framework>-api directory
 
@@ -85,6 +87,71 @@ if (!existsSync(DB_PATH)) {
     errors.push(`DB too small: ${formatSize(size)} < ${formatSize(DB_MIN_BYTES)} (${DB_PATH})`);
   } else {
     console.log(`OK  db  ${formatSize(size)}  ${DB_PATH}`);
+  }
+  validateGrouping(DB_PATH);
+}
+
+/**
+ * The shipped DB must be fully grouped. A NULL group summary is a valid
+ * development state — Phase 2 and the renderer both tolerate it — but shipping
+ * one means the index arrives as bare headings and name lists, and nothing else
+ * in the pipeline would complain.
+ */
+function validateGrouping(dbPath: string): void {
+  const db = new Database(dbPath, { readonly: true });
+  try {
+    const tables = db
+      .prepare(`SELECT name FROM sqlite_master WHERE type = 'table' AND name IN ('doc_toc', 'doc_groups')`)
+      .all() as { name: string }[];
+    if (tables.length !== 2) {
+      errors.push(`DB is not grouped: doc_toc/doc_groups missing — run build:db`);
+      return;
+    }
+
+    for (const framework of FRAMEWORKS) {
+      const { cnt } = db
+        .prepare(`SELECT COUNT(*) AS cnt FROM doc_toc WHERE framework = ?`)
+        .get(framework) as { cnt: number };
+      if (cnt === 0) errors.push(`DB has no TOC groups for ${framework}`);
+    }
+
+    const uncovered = db.prepare(`
+      SELECT framework, filename FROM docs d
+      WHERE NOT EXISTS (
+        SELECT 1 FROM doc_toc t WHERE t.framework = d.framework AND t.filename = d.filename
+      ) LIMIT 5
+    `).all() as { framework: string; filename: string }[];
+    if (uncovered.length > 0) {
+      errors.push(
+        `DB has docs with no TOC group, e.g. ` +
+        uncovered.map((r) => `${r.framework}/${r.filename}`).join(", ")
+      );
+    }
+
+    const nullToc = db
+      .prepare(`SELECT framework, COUNT(*) AS cnt FROM docs WHERE toc_name IS NULL GROUP BY framework`)
+      .all() as { framework: string; cnt: number }[];
+    if (nullToc.length > 0) {
+      errors.push(`DB has NULL toc_name rows: ${nullToc.map((r) => `${r.framework}=${r.cnt}`).join(", ")}`);
+    }
+
+    const noSummary = db.prepare(`
+      SELECT framework, group_key FROM doc_groups
+      WHERE summary IS NULL OR summary = '' LIMIT 5
+    `).all() as { framework: string; group_key: string }[];
+    if (noSummary.length > 0) {
+      errors.push(
+        `DB has groups with no summary — run build:group-summaries: ` +
+        noSummary.map((r) => `${r.framework}/${r.group_key}`).join(", ")
+      );
+    }
+
+    if (errors.length === 0) {
+      const { groups } = db.prepare(`SELECT COUNT(*) AS groups FROM doc_groups`).get() as { groups: number };
+      console.log(`OK  toc ${String(groups).padStart(10)}  groups across ${FRAMEWORKS.length} frameworks`);
+    }
+  } finally {
+    db.close();
   }
 }
 
