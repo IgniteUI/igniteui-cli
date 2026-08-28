@@ -98,7 +98,6 @@ The following code shows how to bind the [`IgbGeographicContourLineSeries`](mcp:
 ```razor
 @using IgniteUI.Blazor.Controls
 
-
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
     <IgbGeographicContourLineSeries LongitudeMemberPath="Lon"
         LatitudeMemberPath="Lat"

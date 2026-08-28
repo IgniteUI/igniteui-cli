@@ -16,7 +16,7 @@ Drag and drop icon to reposition it.
 
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { IgxDragDirective, IgxDropDirective } from 'igniteui-angular/directives';
 
@@ -24,7 +24,6 @@ import { IgxDragDirective, IgxDropDirective } from 'igniteui-angular/directives'
     selector: 'app-icons-sample',
     styleUrls: ['./icons-sample.component.scss'],
     templateUrl: './icons-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDragDirective, IgxDropDirective]
 })
 
@@ -299,7 +298,7 @@ You can specify an element that is a child of the `igxDrag` by which to drag, si
 Drag the dialog using the handle in the following demo.
 
 ```typescript
-import { Component, ElementRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { GlobalPositionStrategy, NoOpScrollStrategy, OverlaySettings } from 'igniteui-angular/core';
 import { IgxButtonDirective, IgxDragDirective, IgxDragHandleDirective, IgxDragLocation, IgxToggleDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -308,7 +307,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-drag-dialog-sample',
     templateUrl: './drag-dialog-sample.component.html',
     styleUrls: ['./drag-dialog-sample.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleDirective, IgxDragDirective, IgxIconComponent, IgxDragHandleDirective]
 })
 export class DragDialogSampleComponent {
@@ -353,54 +351,59 @@ export class DragDialogSampleComponent {
 ```html
 <button #dialogButton igxButton="contained" (click)="openDialog()">Show Dialog</button>
 
-<div class="dialog"
-    igxToggle
-    #toggleForm="toggle"
-    igxDrag
-    [ghost]="false"
-    [dragTolerance]="0"
+<article class="dialog" igxToggle #toggleForm="toggle" igxDrag [ghost]="false" [dragTolerance]="0"
     (dragMove)=onDragMove($event)>
-    <igx-icon class="dialog__icon" igxDragHandle>drag_indicator</igx-icon>
-    <span class="dialog__title">Draggable Dialog</span>
+    <header>
+        <span class="dialog__title">Draggable Dialog</span>
+        <igx-icon class="dialog__icon" igxDragHandle>drag_indicator</igx-icon>
+    </header>
     <span class="dialog__content">Grab the handle icon to drag.</span>
-</div>
+</article>
 ```
 ```scss
 @use '../../../../variables' as *;
 
-@include dialog(
-    dialog-theme(
-        $schema: $schema
-    )
+$theme: dialog-theme(
+    $schema: $schema
 );
-
-@include dialog-typography();
 
 :host {
     display: block;
     margin: 16px;
 
-    @include b(dialog) {
-        @extend %igx-dialog-window;
+    .dialog {
+        @include tokens($theme, $mode: 'scoped');
 
         display: flex;
         flex-direction: column;
-        max-width: rem(280px);
+        width: rem(280px);
+        min-width: rem(280px);
+        border: rem(1px) solid var-get($theme, 'border-color');
+        border-radius: var-get($theme, 'border-radius');
+        background: var-get($theme, 'background');
+        box-shadow: var-get($theme, 'elevation');
+        overflow: hidden;
 
-        @include e(icon) {
-            position: absolute;
-            right: rem(24px);
-            top: rem(24px);
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: rem(16px) rem(24px);
+        }
+
+        &__title {
+            display: inline-block;
+            color: var-get($theme, 'title-color');
+        }
+
+        &__icon {
             cursor: move;
         }
 
-        @include e(title) {
-            @extend %igx-dialog-title;
-        }
-
-        @include e(content) {
-            @extend %igx-dialog-content;
-        }
+        &__content {
+            color: var-get($theme, 'message-color');
+            padding: rem(14px) rem(24px);
+       }
     }
 }
 ```
@@ -441,7 +444,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-list-reorder-sample',
     templateUrl: './list-reorder-sample.component.html',
     styleUrls: ['./list-reorder-sample.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxListComponent, IgxListItemComponent, IgxDropDirective, IgxDragDirective, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxIconComponent, IgxDragHandleDirective, IgxListActionDirective]
 })
 export class ListReorderSampleComponent {
@@ -688,7 +690,7 @@ Drag e-mails on the right into the folders on the left.
 
 
 ```typescript
-import { ChangeDetectorRef, Component, Input, Renderer2, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, Renderer2, inject } from '@angular/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxListComponent, IgxListItemComponent, IgxListLineSubTitleDirective, IgxListLineTitleDirective, IgxListThumbnailDirective } from 'igniteui-angular/list';
 import { IgxDragDirective, IgxDropDirective } from 'igniteui-angular/directives';
@@ -700,7 +702,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-email-sample',
     templateUrl: './email-sample.component.html',
     styleUrls: ['./email-sample.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxIconComponent, IgxListComponent, IgxListItemComponent, IgxDropDirective, IgxListThumbnailDirective, IgxListLineTitleDirective, IgxDragDirective, IgxListLineSubTitleDirective, IgxCheckboxComponent, FormsModule]
 })
 
@@ -932,7 +933,7 @@ Drag items around the kanban board.
 ```typescript
 /* eslint-disable no-shadow */
 /* eslint-disable @typescript-eslint/naming-convention */
-import { ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild, inject } from '@angular/core';
 import { IDropBaseEventArgs, IDropDroppedEventArgs, IgxDragDirective, IgxDropDirective } from 'igniteui-angular/directives';
 import { IgxChipComponent } from 'igniteui-angular/chips';
 import { IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective } from 'igniteui-angular/card';
@@ -953,7 +954,6 @@ interface IListItem {
     selector: 'app-kanban-sample',
     templateUrl: './kanban-sample.component.html',
     styleUrls: ['./kanban-sample.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDropDirective, IgxChipComponent, IgxCardComponent, IgxDragDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardContentDirective]
 })
 export class KanbanSampleComponent implements OnInit {

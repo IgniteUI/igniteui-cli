@@ -20,7 +20,7 @@ The Angular Tree Component allows users to represent hierarchical data in a tree
 In this basic Angular Tree example, you can see how to define an `igx-tree` and its nodes by specifying the node hierarchy and iterating through a hierarchical data set.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { DATA } from '../../../data/animations-data';
 import { IgxTreeComponent, IgxTreeNodeComponent } from 'igniteui-angular/tree';
 
@@ -29,7 +29,6 @@ import { IgxTreeComponent, IgxTreeNodeComponent } from 'igniteui-angular/tree';
     selector: 'app-tree-basic-sample',
     templateUrl: './tree-basic-sample.component.html',
     styleUrls: ['./tree-basic-sample.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeComponent, IgxTreeNodeComponent]
 })
 export class TreeBasicSampleComponent {
@@ -407,7 +406,7 @@ The Ignite UI for Angular IgxTree can be rendered in such way that it requires t
 ### Demo
 
 ```typescript
-import { Component, AfterViewInit, OnDestroy, PLATFORM_ID, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, PLATFORM_ID, inject, ChangeDetectorRef } from '@angular/core';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
 import { IgxTreeComponent, IgxTreeNodeComponent } from 'igniteui-angular/tree';
 import { IgxTooltipDirective, IgxTooltipTargetDirective } from 'igniteui-angular/directives';
@@ -422,13 +421,13 @@ import { isPlatformBrowser, NgTemplateOutlet } from '@angular/common';
     templateUrl: './tree-advanced-sample.component.html',
     styleUrls: ['./tree-advanced-sample.component.scss'],
     providers: [DataService],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeComponent, IgxTreeNodeComponent, NgTemplateOutlet, IgxIconComponent, IgxTooltipTargetDirective, IgxTooltipDirective]
 })
 export class TreeAdvancedSampleComponent implements AfterViewInit, OnDestroy {
     private iconService = inject(IgxIconService);
     private dataService = inject(DataService);
     private platformId = inject(PLATFORM_ID);
+    private cdr = inject(ChangeDetectorRef);
 
     public family = 'tree-icons';
     public data = DATA;
@@ -441,6 +440,7 @@ export class TreeAdvancedSampleComponent implements AfterViewInit, OnDestroy {
         this.dataService.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
             this.loading = false;
             this.remoteData = data;
+            this.cdr.markForCheck();
         });
     }
 
@@ -480,6 +480,7 @@ export class TreeAdvancedSampleComponent implements AfterViewInit, OnDestroy {
                         }
                     });
                 }
+                this.cdr.markForCheck();
             });
         }
     }
@@ -667,7 +668,7 @@ The last step is to include the component's theme.
 ### Demo
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { DATA } from '../../../data/animations-data';
 import { IgxTreeComponent, IgxTreeNodeComponent } from 'igniteui-angular/tree';
 
@@ -676,7 +677,6 @@ import { IgxTreeComponent, IgxTreeNodeComponent } from 'igniteui-angular/tree';
     selector: 'app-tree-styling',
     templateUrl: './tree-styling.component.html',
     styleUrls: ['./tree-styling.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeComponent, IgxTreeNodeComponent]
 })
 export class TreeStylingComponent {

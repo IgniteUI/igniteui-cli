@@ -22,7 +22,7 @@ The rows and columns represent distinct data groups, and the data cell values re
 The following is an Angular Pivot Grid example in combination with the Angular Pivot Data Selector Component. This way you can have more flexible runtime configuration options.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { Component } from "@angular/core";
 import { GridColumnDataType } from 'igniteui-angular/core';
 import { IPivotConfiguration, IgxPivotDateDimension, IgxPivotNumericAggregate } from 'igniteui-angular/grids/core';
 import { IgxPivotDataSelectorComponent, IgxPivotGridComponent } from 'igniteui-angular/grids/pivot-grid';
@@ -31,7 +31,6 @@ import { SALES_DATA_NEW } from '../../data/salesDataNew';
     selector: 'app-pivot-data-selector-sample',
     styleUrls: ['./pivot-data-selector-sample.component.scss'],
     templateUrl: './pivot-data-selector-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxPivotGridComponent, IgxPivotDataSelectorComponent]
 })
 export class PivotDataSelectorSampleComponent {
@@ -409,7 +408,7 @@ public data = [
 Resulting in the following view, which groups the Product Categories unique columns, Sellers Names in unique rows and displays the related aggregations for the number of units in the related cells:
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { Component } from "@angular/core";
 import { DATA } from '../../data/pivot-data';
 
 import { IPivotConfiguration, IgxPivotNumericAggregate } from 'igniteui-angular/grids/core';
@@ -419,7 +418,6 @@ import { IgxPivotGridComponent } from 'igniteui-angular/grids/pivot-grid';
     selector: 'app-pivot-grid-basic-sample',
     styleUrls: ['./pivot-grid-basic-sample.component.scss'],
     templateUrl: './pivot-grid-basic-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxPivotGridComponent]
 })
 export class PivotGridBasicSampleComponent {
@@ -432,7 +430,7 @@ export class PivotGridBasicSampleComponent {
                 memberFunction: (data) => data.Product.Name,
                 enabled: true
             }
-            
+
         ],
         rows: [
             {

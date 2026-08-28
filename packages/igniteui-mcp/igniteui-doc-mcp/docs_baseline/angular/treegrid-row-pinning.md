@@ -11,7 +11,7 @@ _premium: true
 One or multiple rows can be pinned to the top or bottom of the Angular UI Grid. **Row Pinning** in Ignite UI for Angular allows end-users to pin rows in a particular order, duplicating them in a special area that is always visible even when they scroll the Tree Grid vertically. The Material UI Grid has a built-in row pinning UI, which is enabled by initializing an `igxActionStrip` component in the context of Tree Grid. In addition, you can define custom UI and change the pin state of the rows via the Row Pinning API.
 ## Angular Tree Grid Row Pinning Example
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IPinningConfig, IgxColumnComponent, IgxGridEditingActionsComponent, IgxGridPinningActionsComponent, RowPinningPosition } from 'igniteui-angular/grids/core';
@@ -25,7 +25,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-row-pinning',
     styleUrls: ['tree-grid-row-pinning.component.scss'],
     templateUrl: 'tree-grid-row-pinning.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxActionStripComponent, IgxGridPinningActionsComponent, IgxGridEditingActionsComponent]
 })
 export class TreeGridRowPinningSampleComponent implements OnInit {
@@ -165,7 +164,7 @@ public togglePinning(row: IgxGridRow, event) {
 ```
 #### Demo
 ```typescript
-import { AfterViewInit, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -182,7 +181,6 @@ const FILTERING_ICONS_FONT_SET = 'filtering-icons';
     selector: 'app-tree-grid-row-pinning-extra-column',
     styleUrls: ['tree-grid-row-pinning-extra-column.component.scss'],
     templateUrl: 'tree-grid-row-pinning-extra-column.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxIconComponent]
 })
 export class TreeGridRowPinningExtraColumnSampleComponent implements OnInit, AfterViewInit {
@@ -314,7 +312,7 @@ The last step is to pass the custom grid theme:
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IPinningConfig, IgxColumnComponent, IgxGridPinningActionsComponent, RowPinningPosition } from 'igniteui-angular/grids/core';
@@ -327,7 +325,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-row-pinning-styling',
     styleUrls: ['tree-grid-row-pinning-styling.component.scss'],
     templateUrl: 'tree-grid-row-pinning-styling.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxActionStripComponent, IgxGridPinningActionsComponent]
 })
 export class TreeGridRowPinningStylingSampleComponent implements OnInit {

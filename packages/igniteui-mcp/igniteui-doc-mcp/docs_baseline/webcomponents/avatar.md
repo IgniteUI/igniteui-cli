@@ -13,10 +13,7 @@ The Ignite UI for Web Components Avatar helps to display initials, images, or ic
 
 ## Web Components Icon Avatar Example
 
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
-```
+
 
 <div class="divider--half"></div>
 
@@ -64,10 +61,7 @@ If the [`initials`](mcp:get_api_reference?platform=webcomponents&component=IgcAv
 </igc-avatar>
 ```
 
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
-```
+
 
 ### Image
 
@@ -92,8 +86,68 @@ The avatar can also display an image when the [`src`](mcp:get_api_reference?plat
 The avatar supports three shapes - `circle`, `rounded`, and `square`. The default shape of the avatar is `square` and it can be changed via the `shape` attribute.
 
 ```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+.avatar-shape-sample {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: auto auto;
+  place-content: center;
+  place-items: center;
+  column-gap: 2.5rem;
+  row-gap: 0.5rem;
+  height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+:where(igc-avatar) {
+  --ig-size: var(--ig-size-small);
+  grid-row: 1;
+}
+
+:where(span) {
+  grid-row: 2;
+  text-align: center;
+  color: var(--ig-gray-600);
+  font-family: "Aktiv Grotesk", Arial, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin: 0;
+}
+
+:where(igc-badge) {
+  --ig-size: var(--ig-size-small);
+  --ig-badge-icon-color: #ffffff;
+  --ig-badge-text-color: #ffffff;
+
+  position: absolute;
+  inset-block-start: anchor(85.5%);
+  inset-inline-start: anchor(85.5%);
+  translate: -50% -50%;
+}
+
+.avatar-shape-sample igc-avatar:nth-of-type(1) {
+  anchor-name: --circle;
+}
+
+.avatar-shape-sample igc-avatar:nth-of-type(2) {
+  anchor-name: --square;
+}
+
+.avatar-shape-sample igc-avatar:nth-of-type(3) {
+  anchor-name: --rounded;
+}
+
+.avatar-shape-sample igc-badge:nth-of-type(1) {
+  position-anchor: --circle;
+}
+
+.avatar-shape-sample igc-badge:nth-of-type(2) {
+  position-anchor: --square;
+}
+
+.avatar-shape-sample igc-badge:nth-of-type(3) {
+  position-anchor: --rounded;
+}
 ```
 
 ### Size
@@ -107,26 +161,69 @@ igc-avatar {
 ```
 
 ```css
-.size-small {
-    --ig-size: var(--ig-size-small);
+.avatar-size-sample {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: auto auto;
+  place-content: center;
+  place-items: center;
+  column-gap: 3rem;
+  row-gap: 0.5rem;
+  height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
-.size-medium {
-    --ig-size: var(--ig-size-medium);
+:where(igc-avatar) {
+  grid-row: 1;
 }
 
-.size-large {
-    --ig-size: var(--ig-size-large);
+:where(span) {
+  grid-row: 2;
+  text-align: center;
+  color: var(--ig-gray-600);
+  font-family: "Aktiv Grotesk", Arial, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin: 0;
 }
 
-.sample {
-    flex-direction: row;
-    gap: 10px;
+:where(igc-badge) {
+  position: absolute;
+  inset-block-start: anchor(85.5%);
+  inset-inline-start: anchor(85.5%);
+  translate: -50% -50%;
 }
-```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+.avatar-size-sample igc-avatar:nth-of-type(1) {
+  --ig-size: var(--ig-size-large);
+  anchor-name: --large;
+}
+
+.avatar-size-sample igc-avatar:nth-of-type(2) {
+  --ig-size: var(--ig-size-medium);
+  anchor-name: --medium;
+}
+
+.avatar-size-sample igc-avatar:nth-of-type(3) {
+  --ig-size: var(--ig-size-small);
+  anchor-name: --small;
+}
+
+.avatar-size-sample igc-badge:nth-of-type(1) {
+  --ig-size: var(--ig-size-large);
+  position-anchor: --large;
+}
+
+.avatar-size-sample igc-badge:nth-of-type(2) {
+  --ig-size: var(--ig-size-medium);
+  position-anchor: --medium;
+}
+
+.avatar-size-sample igc-badge:nth-of-type(3) {
+  --ig-size: var(--ig-size-small);
+  position-anchor: --small;
+}
 ```
 
 ### Styling
@@ -150,19 +247,68 @@ igc-avatar::part(base) {
 ```
 
 ```css
-igc-avatar {
-  --ig-avatar-size: 60px;
-  --ig-avatar-color: var(--ig-success-500-contrast);
-  --ig-avatar-background: var(--ig-success-500);
+.sample {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-igc-avatar::part(base) {
-  border-radius: 20px;
+.chat-list {
+  --ig-list-header-text-color: var(--ig-gray-900);
+  max-width: 20.5rem;
 }
-```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+.chat-list * {
+  font-family: "Aktiv Grotesk", Arial, sans-serif;
+}
+
+.chat-list [slot="title"] {
+  font-weight: 600;
+}
+
+.chat-list [slot="end"] {
+  color: var(--ig-gray-600);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.chat-list-item--split {
+  --border-width: 0.0625rem;
+  --border-color: var(--ig-gray-300);
+}
+
+:where(igc-avatar) {
+  --ig-size: var(--ig-size-small);
+  --ig-avatar-background: var(--ig-gray-300);
+  --ig-avatar-color: var(--ig-gray-300-contrast);
+  --ig-avatar-icon-color: var(--ig-gray-300-contrast);
+}
+
+.avatar-icon {
+  --ig-size: var(--ig-size-small);
+}
+
+.avatar-with-badge {
+  position: relative;
+}
+
+:where(igc-badge) {
+  --ig-size: var(--ig-size-small);
+  --ig-badge-icon-color: #ffffff;
+  --ig-badge-text-color: #ffffff;
+}
+
+.avatar-status {
+  --ig-size: var(--ig-size-small);
+  position: absolute;
+  inset-inline-end: -0.25rem;
+  inset-block-end: -0.25rem;
+}
+
+.avatar-muted-badge {
+  --ig-badge-background-color: var(--ig-gray-500);
+}
 ```
 
 <div class="divider--half"></div>

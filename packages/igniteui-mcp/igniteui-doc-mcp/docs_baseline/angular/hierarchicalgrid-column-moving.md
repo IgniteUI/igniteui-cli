@@ -22,7 +22,7 @@ The Hierarchical Grid component in Ignite UI for Angular provides the **Column M
 ```
 ## Angular Hierarchical Grid Column Moving Overview Example
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCellHeaderTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -34,7 +34,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-moving',
     styleUrls: ['./hierarchical-grid-moving.component.scss'],
     templateUrl: 'hierarchical-grid-moving.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellHeaderTemplateDirective, IgxIconComponent, IgxRowIslandComponent]
 })
 
@@ -285,7 +284,7 @@ The last step is to **include** the component mixins with its respective theme:
 ```
 ### Demo
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCellHeaderTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -297,7 +296,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-moving-styled',
     styleUrls: ['./hierarchical-grid-moving-styled.component.scss'],
     templateUrl: 'hierarchical-grid-moving-styled.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellHeaderTemplateDirective, IgxIconComponent, IgxRowIslandComponent]
 })
 
