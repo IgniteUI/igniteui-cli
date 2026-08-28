@@ -12,38 +12,10 @@ _tocName: Badge
 
 ## Angular Badge Example
 
-```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { IgxAvatarComponent } from 'igniteui-angular/avatar';
-import { IgxBadgeComponent } from 'igniteui-angular/badge';
-
-@Component({
-    selector: 'app-badge-sample-2',
-    styleUrls: ['./badge-sample-2.component.scss'],
-    templateUrl: './badge-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxAvatarComponent, IgxBadgeComponent]
-})
-export class BadgeSample2Component { }
-```
-```html
-<div class="wrapper">
-    <igx-avatar icon="person" shape="circle" size="small"></igx-avatar>
-    <igx-badge icon="check" type="success" shape="square"></igx-badge>
-</div>
-```
-```scss
-.wrapper {
-  position: relative;
-  margin: 15px 0 0 15px;
-}
-
-igx-badge {
-  position: absolute;
-  bottom: 0;
-  left: 28px;
-}
-```
+<code-view style="height:100px"
+           data-demos-base-url="{environment:demosBaseUrl}"
+           iframe-src="{environment:demosBaseUrl}/data-display/badge-sample-2/" alt="Angular Badge Example">
+</code-view>
 
 <div class="divider--half"></div>
 
@@ -223,9 +195,7 @@ Then, just specify the icon name and family as follows:
 ```
 
 ```typescript
-import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
-import { heartMonitor } from '@igniteui/material-icons-extended';
-import { IgxIconService } from 'igniteui-angular/icon';
+import { Component } from '@angular/core';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 import { IgxBadgeComponent } from 'igniteui-angular/badge';
 
@@ -233,34 +203,72 @@ import { IgxBadgeComponent } from 'igniteui-angular/badge';
     selector: 'app-badge-icon',
     styleUrls: ['./badge-icon.component.scss'],
     templateUrl: './badge-icon.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxAvatarComponent, IgxBadgeComponent]
 })
-export class BadgeIconComponent implements OnInit {
-    protected _iconService = inject(IgxIconService);
-
-
-    public ngOnInit() {
-        this._iconService.addSvgIconFromText(heartMonitor.name, heartMonitor.value, 'imx-icons');
-    }
+export class BadgeIconComponent {
+    public badges = [
+        { icon: 'check', type: 'success', label: 'check' },
+        { icon: 'favorite_border', type: 'error', label: 'favorite' },
+        { icon: 'notifications', type: 'info', label: 'notification' },
+        { icon: 'star_border', type: 'warning', label: 'star' },
+        { icon: 'settings', type: 'info', label: 'settings' }
+    ];
 }
 ```
 ```html
-<div class="wrapper">
-    <igx-avatar icon="face" size="small" shape="rounded"></igx-avatar>
-    <igx-badge type="error" icon="heart-monitor" iconSet="imx-icons"></igx-badge>
-</div>
+@for (item of badges; track item.label) {
+    <igx-badge [icon]="item.icon" [type]="item.type"></igx-badge>
+    <span>{{ item.label }}</span>
+}
+
+<igx-avatar initials="AZ" shape="circle" size="small"></igx-avatar>
+<igx-badge icon="close" type="error" outlined></igx-badge>
+<span>on avatar</span>
 ```
 ```scss
-.wrapper {
-  position: relative;
-  margin: 15px 0 0 15px;
+@use "igniteui-theming/sass/typography" as *;
+
+:host {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: auto auto;
+    place-content: center;
+    place-items: center;
+    column-gap: rem(40px);
+    row-gap: rem(10px);
+    min-height: 8.5rem;
+    padding: rem(32px);
+}
+
+igx-avatar {
+    grid-row: 1;
+    anchor-name: --avatar;
 }
 
 igx-badge {
-  position: absolute;
-  bottom: 0;
-  left: 28px;
+    --ig-size: var(--ig-size-medium);
+
+    grid-row: 1;
+}
+
+span {
+    @include type-style("body-2") {
+        margin: 0;
+    }
+
+    grid-row: 2;
+    text-align: center;
+    color: var(--ig-gray-700);
+}
+
+igx-badge:last-of-type {
+    --ig-size: var(--ig-size-small);
+
+    position: absolute;
+    position-anchor: --avatar;
+    inset-block-start: anchor(14.5%);
+    inset-inline-start: anchor(85.5%);
+    translate: -50% -50%;
 }
 ```
 
@@ -268,45 +276,10 @@ igx-badge {
 
 The `igx-badge` component can also render as a minimal dot indicator for notifications by enabling its `dot` property. Dot badges do not support content, but they can be outlined and can use any of the available dot types (e.g., primary, success, info, etc.).
 
-```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { IgxAvatarComponent } from 'igniteui-angular/avatar';
-import { IgxBadgeComponent } from 'igniteui-angular/badge';
-
-@Component({
-    selector: 'app-badge-dot-sample',
-    styleUrls: ['./badge-dot-sample.component.scss'],
-    templateUrl: './badge-dot-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxAvatarComponent, IgxBadgeComponent]
-})
-export class BadgeDotSampleComponent { }
-```
-```html
-<div class="wrapper">
-    <igx-avatar icon="face" shape="rounded" size="small"></igx-avatar>
-    <igx-badge dot type="success"></igx-badge>
-</div>
-```
-```scss
-.wrapper {
-  display: flex;
-  position: relative;
-  margin: 15px 0 0 15px;
-
-  igx-avatar {
-    anchor-name: --avatar;
-  }
-
-  igx-badge {
-    position: absolute;
-    position-anchor: --avatar;
-    bottom: anchor(--avatar top);
-    left: anchor(right);
-    transform: translate(-75%, 75%);
-  }
-}
-```
+<code-view style="height: 100px"
+           data-demos-base-url="{environment:demosBaseUrl}"
+           iframe-src="{environment:demosBaseUrl}/data-display/badge-dot-sample/" >
+</code-view>
 
 ### Badge in List
 
@@ -431,70 +404,10 @@ Position the badge in its parent container:
 
 If the sample is configured properly, a list of members should be displayed and every member has an avatar and a badge, showing its current state.
 
-```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Member } from '../model/member.model';
-import { IgxListComponent, IgxListItemComponent } from 'igniteui-angular/list';
-import { IgxAvatarComponent } from 'igniteui-angular/avatar';
-import { IgxBadgeComponent } from 'igniteui-angular/badge';
-
-
-@Component({
-    selector: 'app-badge-sample-3',
-    styleUrls: ['./badge-sample-3.component.scss'],
-    templateUrl: './badge-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxListComponent, IgxListItemComponent, IgxAvatarComponent, IgxBadgeComponent]
-})
-export class BadgeSample3Component {
-  public members: Member[] = [
-    new Member('Terrance Orta', 'online'),
-    new Member('Donna Price', 'online'),
-    new Member('Lisa Landers', 'away'),
-    new Member('Dorothy H. Spencer', 'offline')
-  ];
-}
-```
-```html
-<igx-list>
-  <igx-list-item [isHeader]="true">
-    Team Members (4)
-  </igx-list-item>
-  @for (member of members; track member) {
-    <igx-list-item>
-      <div class="wrapper">
-        <div>
-          <igx-avatar icon="person" shape="circle" size="small"></igx-avatar>
-          <igx-badge [icon]="member.icon" [type]="member.type" class="badge-style"></igx-badge>
-        </div>
-        <div class="contact-container">
-          <span class="contact-name">{{ member.name }}</span>
-        </div>
-      </div>
-    </igx-list-item>
-  }
-</igx-list>
-```
-```scss
-.wrapper {
-    display: flex;
-    flex-direction: row;
-}
-
-.contact-name {
-    font-weight: 600;
-}
-
-.contact-container {
-    margin-left: 20px;
-}
-
-.badge-style {
-  position: absolute;
-  bottom: 2.5px;
-  left: 40px;
-}
-```
+<code-view style="height: 280px"
+           data-demos-base-url="{environment:demosBaseUrl}"
+           iframe-src="{environment:demosBaseUrl}/data-display/badge-sample-3/" >
+</code-view>
 
 ## Styling
 
@@ -552,63 +465,11 @@ To include the new theme we use the `tokens` mixin:
 
 ### Demo
 
-```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Member } from '../model/member.model';
-import { IgxListComponent, IgxListItemComponent } from 'igniteui-angular/list';
-import { IgxAvatarComponent } from 'igniteui-angular/avatar';
-import { IgxBadgeComponent } from 'igniteui-angular/badge';
-
-
-@Component({
-    selector: 'app-badge-styling-sample',
-    styleUrls: ['./badge-styling-sample.component.scss'],
-    templateUrl: './badge-styling-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxListComponent, IgxListItemComponent, IgxAvatarComponent, IgxBadgeComponent]
-})
-export class BadgeStylingSampleComponent {
-  public members: Member[] = [
-    new Member('Terrance Orta', 'online'),
-    new Member('Donna Price', 'online'),
-    new Member('Lisa Landers', 'away'),
-    new Member('Dorothy H. Spencer', 'offline')
-  ];
-}
-```
-```html
-<igx-list>
-  <igx-list-item [isHeader]="true">
-    Team Members (4)
-  </igx-list-item>
-  @for (member of members; track member) {
-    <igx-list-item>
-      <div class="wrapper">
-        <div>
-          <igx-avatar icon="person" shape="circle" size="small"></igx-avatar>
-          <igx-badge [icon]="member.icon" shape="square" class="badge-style"></igx-badge>
-        </div>
-        <div class="contact-container">
-          <span class="contact-name">{{ member.name }}</span>
-        </div>
-      </div>
-    </igx-list-item>
-  }
-</igx-list>
-```
-```scss
-@use "layout.scss";
-@use "igniteui-angular/theming" as *;
-
-$custom-badge-theme: badge-theme(
-  $background-color: #57a5cd,
-  $border-radius: 4px
-);
-
-:host {
-  @include tokens($custom-badge-theme);
-}
-```
+<code-view style="height:340px"
+           no-theming
+           data-demos-base-url="{environment:demosBaseUrl}"
+           iframe-src="{environment:demosBaseUrl}/data-display/badge-styling-sample/" >
+</code-view>
 
 ### Styling with Tailwind
 

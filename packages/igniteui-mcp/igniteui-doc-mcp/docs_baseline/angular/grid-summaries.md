@@ -10,10 +10,10 @@ _premium: true
 The Angular UI grid in Ignite UI for Angular has a **summaries** feature that functions on a per-column level as group footer. Angular grid summaries is powerful feature which enables the user to see column information in a separate container with a predefined set of default summary items, depending on the type of data within the column or by implementing a custom angular template in the Grid.
 ## Angular Grid Summaries Overview Example
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
-import { ColumnType, IgxSummaryResult } from 'igniteui-angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ColumnType, IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
+import { IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
-import { IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent, IgxNumberSummaryOperand } from 'igniteui-angular/grids/core';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { DATA } from '../../data/nwindData';
@@ -37,7 +37,6 @@ class MySummary  {
     selector: 'app-grid-sample-3',
     styleUrls: ['./grid-sample-3.component.scss'],
     templateUrl: './grid-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxCellHeaderTemplateDirective, IgxIconComponent, DatePipe]
 })
 export class GridSample3Component {
@@ -328,10 +327,10 @@ class MySummary extends IgxNumberSummaryOperand {
 }
 ```
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
-import { IgxColumnComponent, IgxNumberSummaryOperand } from 'igniteui-angular/grids/core';
-import { IgxSummaryResult } from 'igniteui-angular/core';
+import { IgxColumnComponent } from 'igniteui-angular/grids/core';
+import { IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
 import { DATA } from '../../data/nwindData';
 import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scroll.directive';
@@ -367,7 +366,6 @@ class DiscontinuedSummary {
     selector: 'app-grid-all-data-summary',
     styleUrls: ['./grid-allData-summary.component.scss'],
     templateUrl: './grid-allData-summary.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent]
 })
 export class GridAllDataSummaryComponent {
@@ -423,9 +421,9 @@ When a default summary is defined, the height of the summary area is calculated 
 > [!NOTE]
 > Column summary template could be defined through API by setting the column [summaryTemplate](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=summaryTemplate) property to the required TemplateRef.
 ```typescript
-import { Component, HostBinding, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { IgxColumnComponent, IgxNumberSummaryOperand, IgxSummaryTemplateDirective } from 'igniteui-angular/grids/core';
-import { IgxSummaryResult } from 'igniteui-angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { IgxColumnComponent, IgxSummaryTemplateDirective } from 'igniteui-angular/grids/core';
+import { IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
@@ -464,7 +462,6 @@ class DiscontinuedSummary {
     selector: 'app-grid-summary-template',
     styleUrls: ['./grid-summary-template.component.scss'],
     templateUrl: './grid-summary-template.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxSwitchComponent, IgxButtonGroupComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxSummaryTemplateDirective]
 })
 export class GridSummaryTemplateComponent implements OnInit {
@@ -646,8 +643,8 @@ import {
   ChangeDetectionStrategy
 } from "@angular/core";
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
-import { IgxColumnComponent, IgxNumberSummaryOperand } from 'igniteui-angular/grids/core';
-import { ConnectedPositioningStrategy, HorizontalAlignment, IgxSummaryResult, OverlaySettings, VerticalAlignment } from 'igniteui-angular/core';
+import { IgxColumnComponent } from 'igniteui-angular/grids/core';
+import { ConnectedPositioningStrategy, HorizontalAlignment, IgxNumberSummaryOperand, IgxSummaryResult, OverlaySettings, VerticalAlignment } from 'igniteui-angular/core';
 import { IgxButtonDirective, IgxToggleDirective } from 'igniteui-angular/directives';
 import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
 import { DATA } from "../../data/nwindData";
@@ -785,7 +782,6 @@ class DiscontinuedSummary {
     selector: "app-grid-summary-sample",
     styleUrls: ["./grid-disable-summaries.component.scss"],
     templateUrl: "grid-disable-summaries.component.html",
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     IgxGridComponent,
     IgxPreventDocumentScrollDirective,
@@ -1087,10 +1083,10 @@ public dateSummaryFormat(summary: IgxSummaryResult, summaryOperand: IgxSummaryOp
 ```
 ```typescript
 import { DatePipe } from '@angular/common';
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
-import { IgxCellTemplateDirective, IgxColumnComponent, IgxDateSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
+import { IgxDateSummaryOperand, IgxSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
-import { IgxSummaryResult } from 'igniteui-angular/core';
 import { DATA } from '../../data/nwindData';
 import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scroll.directive';
 
@@ -1098,7 +1094,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-summary-formatter',
     styleUrls: ['./grid-summary-formatter.component.scss'],
     templateUrl: './grid-summary-formatter.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 
@@ -1168,9 +1163,9 @@ The [`showSummaryOnCollapse`](mcp:get_api_reference?platform=angular&component=I
 > The [`summaryPosition`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=summaryPosition) property applies only for the child level summaries. The root level summaries appear always fixed at the bottom of the Grid.
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
-import { DefaultSortingStrategy, GridSummaryCalculationMode, ISortingExpression, IgxSummaryResult, SortingDirection } from 'igniteui-angular/core';
-import { GridSelectionMode, GridSummaryPosition, IgxColumnComponent, IgxNumberSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { DefaultSortingStrategy, GridSummaryCalculationMode, ISortingExpression, IgxNumberSummaryOperand, IgxSummaryOperand, IgxSummaryResult, SortingDirection } from 'igniteui-angular/core';
+import { GridSelectionMode, GridSummaryPosition, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -1208,7 +1203,6 @@ class SumSummary {
     selector: 'app-grid-groupby-summary-sample',
     styleUrls: ['./grid-groupby-summary-sample.component.scss'],
     templateUrl: './grid-groupby-summary-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxSwitchComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class GridGroupBySummarySampleComponent {
@@ -1340,17 +1334,10 @@ igx-buttongroup{
 There is an [`exportSummaries`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterOptions&member=exportSummaries) option in `IgxExcelExporterOptions` that specifies whether the exported data should include the grid's summaries. Default `exportSummaries` value is **false**.
 The [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) will export the default summaries for all column types as their equivalent excel functions so they will continue working properly when the sheet is modified. Try it for yourself in the example below:
 ```typescript
-import { Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
-import { ColumnType, IgxSummaryResult } from 'igniteui-angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
+import { ColumnType, IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
+import { IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent, IgxExcelExporterOptions, IgxExcelExporterService } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
-import {
-    IgxCellHeaderTemplateDirective,
-    IgxCellTemplateDirective,
-    IgxColumnComponent,
-    IgxNumberSummaryOperand,
-    IgxExcelExporterOptions,
-    IgxExcelExporterService
-} from 'igniteui-angular/grids/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { DATA } from '../../data/nwindData';
@@ -1374,7 +1361,6 @@ class MySummary {
     selector: 'app-grid-summary-export',
     styleUrls: ['./grid-summary-export.component.scss'],
     templateUrl: './grid-summary-export.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxCellHeaderTemplateDirective, IgxIconComponent, DatePipe]
 })
 export class GridSummaryExportComponent {
@@ -1624,9 +1610,9 @@ The last step is to **include** the component custom theme:
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
-import { DefaultSortingStrategy, GridSummaryCalculationMode, ISortingExpression, IgxSummaryResult, SortingDirection } from 'igniteui-angular/core';
-import { GridSelectionMode, GridSummaryPosition, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarPinningComponent, IgxNumberSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { DefaultSortingStrategy, GridSummaryCalculationMode, ISortingExpression, IgxNumberSummaryOperand, IgxSummaryOperand, IgxSummaryResult, SortingDirection } from 'igniteui-angular/core';
+import { GridSelectionMode, GridSummaryPosition, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { INVOICE_DATA } from '../../data/invoiceData';
@@ -1654,7 +1640,6 @@ class CustomSummary {
     selector: 'app-grid-groupby-summary-sample',
     styleUrls: ['./grid-groupby-summary-styling-sample.component.scss'],
     templateUrl: './grid-groupby-summary-styling-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarPinningComponent, IgxColumnComponent]
 })
 export class GridGroupBySummaryStylingSampleComponent {
