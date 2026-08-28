@@ -6,6 +6,8 @@ BASE="$(cd "$(dirname "$0")" && pwd)"
 SUBMODULES=(
   angular/igniteui-angular
   angular/igniteui-angular-examples
+  angular/igniteui-angular-samples
+  angular/igniteui-docfx
   blazor/igniteui-blazor-examples
   common/igniteui-xplat-docs
   react/igniteui-react-examples
