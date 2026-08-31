@@ -1,3 +1,10 @@
+# 15.6.0 (2026-08-31)
+
+## What's Changed
+* **chore(igx-ts, ng-schematics):** Updated Angular template and schematics package versions for the Ignite UI for Angular 22.1.0 release line (`@igniteui/angular-templates` and `@igniteui/angular-schematics` to `22.1.1560`) and aligned CLI package dependencies to `@igniteui/cli-core@15.6.0`.
+* **feat(mcp):** Added automation and guardrails for MCP documentation database build and publishing, including deterministic component metadata derivation, stronger validation gates, and safer staged artifact publishing. [#1777](https://github.com/IgniteUI/igniteui-cli/pull/1777)
+* **feat(mcp):** Enhanced documentation tooling: `list_components` is now TOC-grouped by default with `group`/`filter` options and `detail: "docs"` flat-mode compatibility, significantly reducing unfiltered response tokens. [#1778](https://github.com/IgniteUI/igniteui-cli/pull/1778)
+
 # 15.5.1 (2026-08-05)
 
 ## What's Changed
