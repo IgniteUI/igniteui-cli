@@ -15,14 +15,13 @@ _tocName: Ripple
 <div class="divider--half"></div>
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-ripple-sample-5',
     styleUrls: ['./ripple-sample-5.component.scss'],
     templateUrl: './ripple-sample-5.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxRippleDirective]
 })
 export class RippleSample5Component { }
@@ -114,14 +113,13 @@ You can easily change the default ripple color using the `igxRipple`:
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-ripple-sample-6',
     styleUrls: ['./ripple-sample-6.component.scss'],
     templateUrl: './ripple-sample-6.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxRippleDirective]
 })
 export class RippleSample6Component { }
@@ -147,14 +145,13 @@ By default, the ripple effect starts from the position of the click event. You c
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-ripple-sample-3',
     styleUrls: ['./ripple-sample-3.component.scss'],
     templateUrl: './ripple-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxRippleDirective]
 })
 export class RippleSample3Component { }
@@ -180,14 +177,13 @@ We can use the [`igxRippleDuration`](mcp:get_api_reference?platform=angular&comp
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-ripple-sample-4',
     styleUrls: ['./ripple-sample-4.component.scss'],
     templateUrl: './ripple-sample-4.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxRippleDirective]
 })
 export class RippleSample4Component { }
@@ -216,14 +212,13 @@ Use the [`igxRippleTarget`](mcp:get_api_reference?platform=angular&component=Igx
 Notice that no matter whether you click on the parent or the child element, the ripple effect will only appear on the button.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-ripple-sample-2',
     styleUrls: ['./ripple-sample-2.component.scss'],
     templateUrl: './ripple-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxRippleDirective, IgxButtonDirective]
 })
 export class RippleSample2Component { }
@@ -299,7 +294,7 @@ The next step is to pass the custom ripple theme:
 ### Demo
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective, IgxIconButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
@@ -308,7 +303,6 @@ import { IgxAvatarComponent } from 'igniteui-angular/avatar';
     selector: 'app-ripple-styling-sample',
     styleUrls: ['./ripple-styling-sample.component.scss'],
     templateUrl: './ripple-styling-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxRippleDirective, IgxIconButtonDirective, IgxIconComponent, IgxAvatarComponent]
 })
 export class RippleStylingSampleComponent { }

@@ -12,7 +12,7 @@ Pagination is used to split a large set of data into a sequence of pages that ha
 ## Angular Pagination Example
 The following example represents Tree Grid pagination and exposes the options usage of `items per page` and how paging can be enabled. The user can also quickly navigate through the Tree Grid pages via "Go to last page" and "Go to first page" buttons.
 ```typescript
-import { Component, OnInit, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -25,7 +25,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-paging-sample',
     styleUrls: ['./tree-grid-paging-sample.component.scss'],
     templateUrl: 'tree-grid-paging-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective]
 })
 
@@ -86,7 +85,7 @@ $progressBar-sample-theme: progress-linear-theme(
 );
 
 .grid__wrapper {
-    @include progress-linear($progressBar-sample-theme);
+    @include tokens($progressBar-sample-theme);
 
     --ig-size: var(--ig-size-medium);
     margin: 0 16px;
@@ -145,7 +144,7 @@ The `igx-paginator` component is used along with the `igx-tree-grid` component i
 ```
 ### Paginator Component Demo
 ```typescript
-import { Component, OnInit, ViewChild, AfterViewInit, PLATFORM_ID, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, PLATFORM_ID, inject } from '@angular/core';
 import { IPaginatorResourceStrings } from 'igniteui-angular/core';
 import { IgxPageNavigationComponent, IgxPageSizeSelectorComponent, IgxPaginatorComponent, IgxPaginatorContentDirective } from 'igniteui-angular/paginator';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -161,7 +160,6 @@ import { isPlatformBrowser } from '@angular/common';
     selector: 'app-tree-grid-pager-sample',
     styleUrls: ['./tree-grid-pager-sample.component.scss'],
     templateUrl: './tree-grid-pager-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxPageSizeSelectorComponent, IgxPageNavigationComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxSwitchComponent, FormsModule]
 })
 export class TreeGridPagerSampleComponent implements OnInit, AfterViewInit {
@@ -333,7 +331,7 @@ The last step is to **include** the component mixins, each with its respective t
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ORDERS_DATA } from '../data/orders';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -345,7 +343,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-paging-sample',
     styleUrls: ['./tree-grid-paging-style-sample.component.scss'],
     templateUrl: 'tree-grid-paging-style-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective]
 })
 

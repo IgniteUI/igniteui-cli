@@ -15,7 +15,7 @@ _tocName: Drop Down
 This Angular drop down example demonstrates the basic functionalities of a drop down list. Click on it to expand the preset options, select an item, and then close the drop down.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxDropDownComponent, IgxDropDownItemComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
 
@@ -24,7 +24,6 @@ import { IgxDropDownComponent, IgxDropDownItemComponent, IgxDropDownItemNavigati
     selector: 'app-dropdown-sample-1',
     styleUrls: ['./dropdown-sample-1.component.scss'],
     templateUrl: './dropdown-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxDropDownItemComponent]
 })
 export class DropDownSample1Component {
@@ -181,7 +180,7 @@ export class MyDropDownComponent {
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxDropDownComponent, IgxDropDownItemComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
 
@@ -191,7 +190,6 @@ import { IgxDropDownComponent, IgxDropDownItemComponent, IgxDropDownItemNavigati
     selector: 'app-dropdown-sample-2',
     styleUrls: ['./dropdown-sample-2.component.scss'],
     templateUrl: './dropdown-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxDropDownItemComponent]
 })
 export class DropDownSample2Component {
@@ -265,8 +263,8 @@ export class MyDropDownComponent {
 If the sample is configured properly, a list of countries should be displayed as a group under European Union header, France as a non-interactive item, and Bulgaria as a selected item:
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { IgxButtonDirective, IgxDividerDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
+import { Component } from '@angular/core';
+import { IgxButtonDirective, IgxDividerComponent, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxDropDownComponent, IgxDropDownItemComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
@@ -277,8 +275,7 @@ import { IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-g
     selector: 'app-dropdown-sample-3',
     styleUrls: ['./dropdown-sample-3.component.scss'],
     templateUrl: './dropdown-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxDropDownItemComponent, IgxIconComponent, IgxPrefixDirective, IgxSuffixDirective, IgxDividerDirective]
+    imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxDropDownItemComponent, IgxIconComponent, IgxPrefixDirective, IgxSuffixDirective, IgxDividerComponent]
 })
 export class DropDownSample3Component {
 
@@ -397,7 +394,7 @@ The group also has the additional functionality of disabling items inside of its
 You can see the results in the sample below:
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxDropDownComponent, IgxDropDownGroupComponent, IgxDropDownItemComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -409,7 +406,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-dropdown-sample-5',
     styleUrls: ['./dropdown-sample-5.component.scss'],
     templateUrl: './dropdown-sample-5.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxSwitchComponent, FormsModule, IgxDropDownComponent, IgxDropDownGroupComponent, IgxDropDownItemComponent]
 })
 export class DropDownSample5Component {
@@ -563,7 +559,7 @@ export class MyMenuComponent {
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { ConnectedPositioningStrategy, HorizontalAlignment, IgxOverlayOutletDirective, NoOpScrollStrategy, VerticalAlignment } from 'igniteui-angular/core';
 import { ISelectionEventArgs, IgxDropDownComponent, IgxDropDownItemComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
 import { IgxNavbarComponent } from 'igniteui-angular/navbar';
@@ -576,7 +572,6 @@ import { IgxLabelDirective } from 'igniteui-angular/input-group';
     selector: 'app-dropdown-menu',
     styleUrls: ['./dropdown-menu.component.scss'],
     templateUrl: './dropdown-menu.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent, IgxIconButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxIconComponent, IgxDropDownComponent, IgxDropDownItemComponent, IgxLabelDirective, IgxOverlayOutletDirective]
 })
 export class DropdownMenuComponent {
@@ -706,7 +701,7 @@ public ngAfterViewInit(): void {
 The result from the above configurations could be seen in the below sample.
 
 ```typescript
-import { AfterViewInit, Component, QueryList, ViewChild, ViewChildren, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, QueryList, ViewChild, ViewChildren, inject } from '@angular/core';
 import { IgxDropDownComponent, IgxDropDownItemComponent } from 'igniteui-angular/drop-down';
 import { ConnectedPositioningStrategy, HorizontalAlignment, OverlaySettings, VerticalAlignment } from 'igniteui-angular/core';
 import { IgxNavbarComponent, IgxNavbarTitleDirective } from 'igniteui-angular/navbar';
@@ -730,7 +725,6 @@ import { MultiLevelDirective } from './multi-level.directive';
     templateUrl: './dropdown-multi-level-menu.component.html',
     styleUrls: ['./dropdown-multi-level-menu.component.scss'],
     providers: [MultiLevelService],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent, IgxNavbarTitleDirective, IgxButtonDirective, IgxToggleActionDirective, IgxIconComponent, IgxDropDownComponent, IgxDropDownItemComponent, MultiLevelDirective, IgxSuffixDirective]
 })
 export class DropdownMultiLevelMenuComponent implements AfterViewInit {
@@ -1011,7 +1005,7 @@ export class InputDropDownComponent {
 ```
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ConnectedPositioningStrategy } from 'igniteui-angular/core';
 import { IgxDropDownComponent, IgxDropDownItemComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
 import { IgxInputDirective, IgxInputGroupComponent, IgxSuffixDirective } from 'igniteui-angular/input-group';
@@ -1023,7 +1017,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-dropdown-sample-4',
     styleUrls: ['./dropdown-sample-4.component.scss'],
     templateUrl: './dropdown-sample-4.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxToggleActionDirective, IgxInputDirective, IgxDropDownItemNavigationDirective, IgxSuffixDirective, IgxIconButtonDirective, IgxRippleDirective, IgxIconComponent, IgxDropDownComponent, IgxDropDownItemComponent]
 })
 export class DropDownSample4Component {
@@ -1048,6 +1041,10 @@ export class DropDownSample4Component {
 }
 ```
 ```html
+<p>
+    <b>Selected:&nbsp;</b>
+    <span>{{ dropDown.selectedItem?.value ?? 'N/A' }}</span>
+</p>
 <igx-input-group #inputGroup [igxToggleAction]="dropDown" class="input-group">
   <input #input class="input" type="text" igxInput [igxDropDownItemNavigation]="dropDown" readonly="true"
     placeholder="Choose an option" [value]="$safeNavigationMigration(dropDown.selectedItem?.value)" (keydown.ArrowDown)="openDropDown()" />
@@ -1055,7 +1052,6 @@ export class DropDownSample4Component {
       <igx-icon>arrow_drop{{ dropDown.collapsed ? '_down' : '_up' }}</igx-icon>
     </igx-suffix>
   </igx-input-group>
-  <span>Selected: {{ dropDown.selectedItem?.value }}</span>
   <igx-drop-down #dropDown [width]="'180px'">
     @for (item of items; track item) {
       <igx-drop-down-item [value]="item.field">
@@ -1066,24 +1062,12 @@ export class DropDownSample4Component {
 ```
 ```scss
 :host {
-    margin: 8px;
+    display: block;
+    padding: 0.5rem;
 }
 
-.input {
-    padding-left: 0.2rem;
-}
-
-.input-group {
-    width: 220px;
-}
-
-.igx-input-group {
-    display: inline-block;
-}
-
-span {
-    display: inline;
-    padding-left: 24px;
+igx-input-group {
+    max-width: 300px;
 }
 ```
 
@@ -1263,7 +1247,7 @@ The last step is to pass the custom drop-down theme:
 ### Demo
 
 ```typescript
-import { Component, ElementRef, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { ISelectionEventArgs, IgxDropDownComponent, IgxDropDownGroupComponent, IgxDropDownItemComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
 import { IgxButtonDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { getHeroClassData, IHeroClass } from '../../../data/heroData';
@@ -1273,7 +1257,6 @@ import { getHeroClassData, IHeroClass } from '../../../data/heroData';
     selector: 'app-dropdown-styling',
     styleUrls: ['./dropdown-styling.component.scss'],
     templateUrl: './dropdown-styling.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxDropDownGroupComponent, IgxDropDownItemComponent]
 })
 export class DropDownStylingComponent implements OnInit {

@@ -49,10 +49,10 @@ Change the selection to see summaries of the currently selected range.
 
 ```typescript
 import { formatDate } from '@angular/common';
-import { AfterViewInit, Component, ViewChild, OnInit, ChangeDetectorRef, inject, ChangeDetectionStrategy } from '@angular/core';
-import { IgxCellTemplateDirective, IgxColumnComponent, IgxDateSummaryOperand, IgxGridFooterComponent, IgxNumberSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
+import { AfterViewInit, Component, ViewChild, OnInit, ChangeDetectorRef, inject } from '@angular/core';
+import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridFooterComponent } from 'igniteui-angular/grids/core';
+import { IgxDateSummaryOperand, IgxNumberSummaryOperand, IgxSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
-import { IgxSummaryResult } from 'igniteui-angular/core';
 import { DATA } from '../../data/nwindData';
 import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scroll.directive';
 
@@ -86,7 +86,6 @@ class MySummary {
     selector: 'app-grid-sample',
     styleUrls: ['./grid-custom-summaries-selection.component.scss'],
     templateUrl: 'grid-custom-summaries-selection.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxGridFooterComponent]
 })
 

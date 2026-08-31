@@ -13,7 +13,7 @@ The Ignite UI for Angular [`IgxNavbarComponent`](mcp:get_api_reference?platform=
 ## Angular Navbar Example
 
 ```typescript
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { IgxNavbarComponent } from 'igniteui-angular/navbar';
 
 @Component({
@@ -21,7 +21,6 @@ import { IgxNavbarComponent } from 'igniteui-angular/navbar';
     selector: 'app-navbar',
     styleUrls: ['./navbar.component.scss'],
     templateUrl: './navbar.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent]
 })
 export class NavbarComponent { }
@@ -151,7 +150,7 @@ Next, we need to update our template with an icon button for each of the options
 If all went well, you should see the following in your browser:
 
 ```typescript
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { IgxNavbarActionDirective, IgxNavbarComponent } from 'igniteui-angular/navbar';
 import { IgxIconButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -161,7 +160,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-navbar-sample-1',
     styleUrls: ['./navbar-sample-1.component.scss'],
     templateUrl: './navbar-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent, IgxNavbarActionDirective, IgxIconButtonDirective, IgxIconComponent]
 })
 export class NavbarSample1Component { }
@@ -227,7 +225,7 @@ What if we want to use a custom template for our app navigation on the left-most
 Finally, this is how our navbar should look like with its custom action button icon:
 
 ```typescript
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { IgxNavbarActionDirective, IgxNavbarComponent } from 'igniteui-angular/navbar';
 import { IgxIconButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -237,7 +235,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-navbar-sample-2',
     styleUrls: ['./navbar-sample-2.component.scss'],
     templateUrl: './navbar-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent, IgxNavbarActionDirective, IgxIconButtonDirective, IgxIconComponent]
 })
 export class NavbarSample2Component { }
@@ -307,7 +304,7 @@ If the sample is configured properly, you should see the following in your brows
 
 ```typescript
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IgxNavbarComponent } from 'igniteui-angular/navbar';
 
 @Component({
@@ -315,7 +312,6 @@ import { IgxNavbarComponent } from 'igniteui-angular/navbar';
     selector: 'app-navbar',
     styleUrls: ['./navbar-sample-3.component.scss'],
     templateUrl: './navbar-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent]
 })
 export class NavbarSample3Component {
@@ -388,7 +384,7 @@ If we want to provide a custom content for a navbar's title, we can achieve this
 > If [`igx-navbar-title`](mcp:get_api_reference?platform=angular&component=IgxNavbarTitleDirective) or [`igxNavbarTitle`](mcp:get_api_reference?platform=angular&component=IgxNavbarTitleDirective) is provided, the default [`title`](mcp:get_api_reference?platform=angular&component=IgxNavbarComponent&member=title) will not be used.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxNavbarActionDirective, IgxNavbarComponent, IgxNavbarTitleDirective } from 'igniteui-angular/navbar';
 import { IgxIconButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -397,7 +393,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-navbar-custom-title',
     templateUrl: './navbar-custom-title.component.html',
     styleUrls: ['./navbar-custom-title.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent, IgxNavbarActionDirective, IgxIconButtonDirective, IgxIconComponent, IgxNavbarTitleDirective]
 })
 export class NavbarCustomTitleComponent { }
@@ -505,7 +500,7 @@ The last step is to pass the newly created theme to the `tokens` mixin:
 ### Demo
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxNavbarActionDirective, IgxNavbarComponent } from 'igniteui-angular/navbar';
 import { IgxIconButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -514,7 +509,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-navbar-style',
     styleUrls: ['./navbar-style.component.scss'],
     templateUrl: './navbar-style.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent, IgxNavbarActionDirective, IgxIconButtonDirective, IgxIconComponent]
 })
 

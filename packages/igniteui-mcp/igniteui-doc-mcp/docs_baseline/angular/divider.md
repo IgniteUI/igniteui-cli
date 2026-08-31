@@ -16,15 +16,14 @@ By default the divider is a solid horizontal line.
 
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { IgxDividerDirective } from 'igniteui-angular/directives';
+import { Component } from '@angular/core';
+import { IgxDividerComponent } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-divider-default',
     styleUrls: ['./divider-default.component.scss'],
     templateUrl: './divider-default.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxDividerDirective]
+    imports: [IgxDividerComponent]
 })
 export class DividerDefaultComponent {
 
@@ -114,15 +113,14 @@ By adding the `vertical` attribute and setting its value to `true`, you can chan
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { IgxDividerDirective } from 'igniteui-angular/directives';
+import { Component } from '@angular/core';
+import { IgxDividerComponent } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-divider-vertical',
     styleUrls: ['./divider-vertical.component.scss'],
     templateUrl: './divider-vertical.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxDividerDirective]
+    imports: [IgxDividerComponent]
 })
 export class DividerVerticalComponent {
 
@@ -176,15 +174,14 @@ To change the default look simply use the `type` attribute of the divider and se
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { IgxDividerDirective } from 'igniteui-angular/directives';
+import { Component } from '@angular/core';
+import { IgxDividerComponent } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-divider-dashed',
     styleUrls: ['./divider-dashed.component.scss'],
     templateUrl: './divider-dashed.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxDividerDirective]
+    imports: [IgxDividerComponent]
 })
 export class DividerDashedComponent {
 
@@ -237,15 +234,14 @@ To inset the divider, set the `middle` attribute of the divider to `true` and pr
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { IgxDividerDirective } from 'igniteui-angular/directives';
+import { Component } from '@angular/core';
+import { IgxDividerComponent } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-divider-inset',
     styleUrls: ['./divider-inset.component.scss'],
     templateUrl: './divider-inset.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxDividerDirective]
+    imports: [IgxDividerComponent]
 })
 export class DividerInsetComponent {
 

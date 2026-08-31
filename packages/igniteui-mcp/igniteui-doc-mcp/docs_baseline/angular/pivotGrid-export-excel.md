@@ -23,7 +23,7 @@ The sections below walk through setup, usage patterns, and tips for tailoring ea
 ## Angular Excel Exporter Example
 This live example demonstrates the standard Excel and PDF export workflow for the Pivot Grid—bound data, two export buttons (Excel and PDF), and the resulting `.xlsx` and `.pdf` files with preserved filtering and sorting state. Share it with stakeholders who want to preview the experience before wiring it into their application.
 ```typescript
-import { Component, ViewChild, inject, ChangeDetectionStrategy } from "@angular/core";
+import { Component, ViewChild, inject } from "@angular/core";
 
 import {
     IPivotConfiguration,
@@ -71,7 +71,6 @@ export class IgxTotalSaleAggregate {
     selector: 'app-pivot-export-sample',
     styleUrls: ['./pivot-export.component.scss'],
     templateUrl: './pivot-export.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxPivotGridComponent]
 })
 export class PivotExportComponent {
