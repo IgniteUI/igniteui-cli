@@ -16,7 +16,7 @@ Below is a detailed example of how is Batch Editing enabled for the Tree Grid co
 The following sample demonstrates a scenario, where the treeGrid has [`batchEditing`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=batchEditing) enabled and has row editing enabled. The latter will ensure that transaction will be added after the entire row edit is confirmed.
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -31,7 +31,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-batch-editing-sample',
     styleUrls: ['tree-grid-batch-editing-sample.component.scss'],
     templateUrl: 'tree-grid-batch-editing-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxButtonDirective, IgxDialogComponent, IgxGridComponent]
 })
 export class TreeGridBatchEditingSampleComponent implements OnInit {

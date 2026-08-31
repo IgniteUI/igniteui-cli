@@ -23,7 +23,7 @@ The sections below walk through setup, usage patterns, and tips for tailoring ea
 ## Angular Excel Exporter Example
 This live example demonstrates the standard Excel and PDF export workflow for the Hierarchical Grid—bound data, two export buttons (Excel and PDF), and the resulting `.xlsx` and `.pdf` files with preserved filtering and sorting state. Share it with stakeholders who want to preview the experience before wiring it into their application.
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { Singer, SINGERS } from '../../data/artistData';
@@ -32,7 +32,6 @@ import { Singer, SINGERS } from '../../data/artistData';
     selector: 'app-hierarchical-grid-excel-export-sample',
     styleUrls: ['hierarchical-grid-excel-export.sample.scss'],
     templateUrl: 'hierarchical-grid-excel-export.sample.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxRowIslandComponent]
 })
 export class HGridExcelExportSampleComponent {
@@ -109,7 +108,7 @@ Grouping is a popular way to summarize customer segments, product categories, or
 If you need flat data in the exported file, clear the grouping prior to calling `export` or handle the `rowExporting` event to reshape the output.
 Example:
 ```typescript
-import { Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { GridColumnDataType, ISortingExpression, SortingDirection } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxExcelExporterService } from 'igniteui-angular/grids/core';
@@ -120,7 +119,6 @@ import { INVOICE_DATA } from '../data/invoiceData';
     selector: 'app-excel-export-sample-1',
     styleUrls: ['./excel-export-sample-1.component.scss'],
     templateUrl: './excel-export-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarExporterComponent, IgxColumnComponent]
 })
 export class ExcelExportSample1Component implements OnInit {
@@ -205,7 +203,7 @@ Dashboards often rely on [multi-column headers](multi-column-headers.md) to add 
 }
 @@if (igxName === 'IgxGrid') {
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxColumnComponent, IgxColumnGroupComponent, IgxExporterEvent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -217,7 +215,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-multi-column-headers-export',
     styleUrls: ['multi-column-headers-export.component.scss'],
     templateUrl: 'multi-column-headers-export.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxSwitchComponent, FormsModule, IgxGridToolbarPinningComponent, IgxGridToolbarHidingComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxColumnGroupComponent]
 })
 export class GridMultiColumnHeadersExportComponent {
@@ -278,7 +275,7 @@ export class GridMultiColumnHeadersExportComponent {
 }
 @@if (igxName === 'IgxTreeGrid') {
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxColumnGroupComponent, IgxExporterEvent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -290,7 +287,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-tree-grid-multi-column-headers-export-sample',
     styleUrls: ['./tree-grid-multi-column-headers-export.component.scss'],
     templateUrl: './tree-grid-multi-column-headers-export.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxSwitchComponent, FormsModule, IgxGridToolbarPinningComponent, IgxGridToolbarHidingComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxColumnGroupComponent]
 })
 export class TreeGridMultiColumnHeadersExportComponent {
@@ -349,7 +345,7 @@ export class TreeGridMultiColumnHeadersExportComponent {
 }
 @@if (igxName === 'IgxHierarchicalGrid') {
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IgxColumnComponent, IgxColumnGroupComponent, IgxExporterEvent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -361,7 +357,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-hierarchical-grid-multi-column-export',
     styleUrls: ['./hierarchical-grid-multi-column-export.component.scss'],
     templateUrl: 'hierarchical-grid-multi-column-export.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxSwitchComponent, FormsModule, IgxGridToolbarPinningComponent, IgxGridToolbarHidingComponent, IgxGridToolbarExporterComponent, IgxColumnGroupComponent, IgxColumnComponent, IgxRowIslandComponent]
 })
 

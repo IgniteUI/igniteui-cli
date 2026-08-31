@@ -1,0 +1,245 @@
+[
+  {
+    "groupKey": "AI-Assisted Development",
+    "section": "AI-Assisted Development",
+    "groupLabel": "",
+    "summary": "Configure Agent Skills and MCP servers for scaffolding, component generation, documentation and API answers, palettes, themes, typography, CSS, Sass, design-token overrides, and step plans",
+    "hash": "d4d13f572a1100d09d2d131407de6f9a",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Charts",
+    "section": "Charts",
+    "groupLabel": "",
+    "summary": "Build area, bar, bubble, column, line, pie, donut, scatter, polar, radial, stock, treemap, and sparkline charts with series, data binding, axes, styling, and legends.",
+    "hash": "cf160d0edb6e45999dd967316a49338e",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Charts > Chart Features",
+    "section": "Charts",
+    "groupLabel": "Chart Features",
+    "summary": "Configure chart axes, annotations, animations, highlighting, markers, navigation, overlays, performance, tooltips, trendlines, filtering, and aggregation.",
+    "hash": "ec4b08d4c381c4f817ae8b68a6d7aaff",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Dashboards",
+    "section": "Dashboards",
+    "groupLabel": "",
+    "summary": "Configure dashboard tiles with automatic visualization selection, data binding, supported visualizations, and toolbar tools for changing and configuring views.",
+    "hash": "196a4f1cda43d6eda9a5a5711d252c52",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Data Entry & Display",
+    "section": "Data Entry & Display",
+    "groupLabel": "",
+    "summary": "Covers buttons, selection controls, inputs, masked date and time entry, dropdowns, progress indicators, badges, icons, chips, ratings, color editing, and styling.",
+    "hash": "f72097377f04e06007a2af48986489ca",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Data Entry & Display > Combo Box",
+    "section": "Data Entry & Display",
+    "groupLabel": "Combo Box",
+    "summary": "Covers ComboBox data binding, single selection, quick filtering, grouping, sorting, validation, keyboard navigation, styling, disabled states, and templates.",
+    "hash": "1086484e5a5921630dd8e27d104602d0",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Frameworks > Excel Library",
+    "section": "Frameworks",
+    "groupLabel": "Excel Library",
+    "summary": "Create, load, edit, and export workbooks with cells, tables, worksheets, charts, sparklines, formulas, formatting, filtering, sorting, and protection.",
+    "hash": "ab346db52f8f576373552f2dc8eb933b",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Gauges",
+    "section": "Gauges",
+    "groupLabel": "",
+    "summary": "Configure bullet graphs and linear or radial gauges with scales, needles, ranges, tick marks, labels, backing, highlights, animation, and dragging.",
+    "hash": "a74e8a92a3cc941fb6339b8dabe3de47",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "General",
+    "section": "General",
+    "groupLabel": "",
+    "summary": "Covers open-source versus Premium licensing, available controls, grid upgrades, and release notes for new components, API changes, breaking changes, and bug fixes.",
+    "hash": "3554387b18a229c563d250548c138c51",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "General > Getting Started",
+    "section": "General",
+    "groupLabel": "Getting Started",
+    "summary": "Create server, WebAssembly, Web App, and hybrid applications; install and register packages, configure styles and scripts, and render components",
+    "hash": "6e0698d58dd94293606c83a9fe70afba",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "General > Installation",
+    "section": "General",
+    "groupLabel": "Installation",
+    "summary": "Configure private NuGet feeds and install packages using Visual Studio, the .NET CLI, or Package Manager, with licensed and trial sources covered",
+    "hash": "19434fd8865f3735021242c27ad43fa2",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists",
+    "section": "Grids & Lists",
+    "groupLabel": "",
+    "summary": "Display text/contact and hierarchical data with headers, slots, avatars, buttons, static or data-bound items, expansion, selection, keyboard navigation, and styling",
+    "hash": "ad5ac512f0820f197a2871a02d9ddf2a",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists > Grid",
+    "section": "Grids & Lists",
+    "groupLabel": "Grid",
+    "summary": "Configure grids with data binding, columns, filtering, sorting, editing, grouping, selection, paging, virtualization, exporting, theming, and row actions.",
+    "hash": "a15870be3f0464018ffcdc2fc2ebbc04",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists > Grid Lite",
+    "section": "Grids & Lists",
+    "groupLabel": "Grid Lite",
+    "summary": "Covers Grid Lite setup, List<T> binding, column configuration, virtualization, keyboard navigation, filtering, sorting, theming, and CSS customization.",
+    "hash": "c9d9736231fd5612ce75d8cf1d1c91ee",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists > Hierarchical Grid",
+    "section": "Grids & Lists",
+    "groupLabel": "Hierarchical Grid",
+    "summary": "Configure hierarchical grids with nested data, row islands, load-on-demand, editing, filtering, sorting, selection, export, state, and virtualization.",
+    "hash": "a422873e40f0bcad5dbd77afc9619165",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists > Pivot Grid",
+    "section": "Grids & Lists",
+    "groupLabel": "Pivot Grid",
+    "summary": "Configure Pivot Grid rows, columns, values, filters, and aggregations; persist state and manage dimensions with sorting, resizing, selection, and compact mode.",
+    "hash": "d9f5e6092f70bd97cde111f7e50b76c0",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists > Tree Grid",
+    "section": "Grids & Lists",
+    "groupLabel": "Tree Grid",
+    "summary": "Configure hierarchical data, editing, filtering, sorting, selection, summaries, exporting, virtualization, state persistence, column and row APIs, and styling",
+    "hash": "279c8c630ed9accc6f1baf8e956fcfeb",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Interactions",
+    "section": "Interactions",
+    "groupLabel": "",
+    "summary": "Covers ripple animations and color customization, tooltips with anchors, placement, triggers, and accessibility, plus sliders with ranges, ticks, labels, and events.",
+    "hash": "a313de8ca9e21b98bb3f33ffc37a1ff7",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Interactivity",
+    "section": "Interactivity",
+    "groupLabel": "",
+    "summary": "Covers accessibility support against Section 508 and WCAG guidelines, including compliance matrices, legends, and WAI-ARIA guidance.",
+    "hash": "75d7c9b2a6f38a71d3392e5d95469421",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Layouts",
+    "section": "Layouts",
+    "groupLabel": "",
+    "summary": "Build expandable panels, cards, carousels, tabs, steppers, avatars, dividers, and resizable tiles with navigation, customization, reordering, and keyboard support",
+    "hash": "392b7c99a19822ba83ec1a98f9e0d863",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Layouts > Dock Manager",
+    "section": "Layouts",
+    "groupLabel": "Dock Manager",
+    "summary": "Configure split panes, document hosts, tab groups, pinned/floating panes; update content and embed charts, gauges, and maps with iframes, plus styling",
+    "hash": "34a7905d3d0e753c2bd3366d1878a296",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Maps",
+    "section": "Maps",
+    "groupLabel": "",
+    "summary": "Covers map navigation, coordinate conversion, data binding, and configuration for scatter area, contour, density, bubble, symbol, polygon, and polyline series",
+    "hash": "a941417a6bf4c1c4a4154da9b82e85f1",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Maps > Geographic Map Features",
+    "section": "Maps",
+    "groupLabel": "Geographic Map Features",
+    "summary": "Display geographic data on imagery maps, bind CSV, JSON, models, and shapefiles, overlay sources and series, configure imagery, navigation, and resources",
+    "hash": "3c1687542ef1a1d64b77cc1f5235fb01",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Menus",
+    "section": "Menus",
+    "groupLabel": "",
+    "summary": "Covers toolbars with chart components, custom actions, commands, icons, orientation, navbars, and expandable navigation drawers with mini mode and styling",
+    "hash": "9ef15ab69f98a67d4376a7e185cc69be",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Notifications",
+    "section": "Notifications",
+    "groupLabel": "",
+    "summary": "Display banners, snackbars, toasts, and dialogs with custom content, actions, timing, positioning, events, modal prompts, forms, behavior, and styling.",
+    "hash": "0322ccba726baaa05fd26d2c486f6465",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Scheduling",
+    "section": "Scheduling",
+    "groupLabel": "",
+    "summary": "Covers calendar date selection, disabled and special dates, keyboard navigation, date picker input and formatting, and date range binding and validation",
+    "hash": "d6f85e2e65c55a8c041a92f25528bf9d",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Styling & Themes",
+    "section": "Styling & Themes",
+    "groupLabel": "",
+    "summary": "Load and configure bundled themes, switch light and dark stylesheet paths, and customize type scales, font families, and individual styles with CSS variables.",
+    "hash": "e4d81ce2fc6175a01174e0792020bc8d",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  }
+]

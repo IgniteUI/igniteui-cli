@@ -13,14 +13,13 @@ _tocName: Circular Progress
 ## Angular Circular Progress Example
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCircularProgressBarComponent } from 'igniteui-angular/progressbar';
 
 @Component({
     selector: 'app-circular-progressbar',
     styleUrls: ['./circular-progressbar.component.scss'],
     templateUrl: './circular-progressbar.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCircularProgressBarComponent]
 })
 export class CircularProgressbarComponent { }
@@ -124,14 +123,13 @@ If you want to track a process that is not determined precisely, you can set the
 The final result should be:
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCircularProgressBarComponent } from 'igniteui-angular/progressbar';
 
 @Component({
     selector: 'app-circular-indeterminate-progressbar',
     styleUrls: ['./circular-indeterminate-progressbar.component.scss'],
     templateUrl: './circular-indeterminate-progressbar.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCircularProgressBarComponent]
 })
 export class CircularIndeterminateProgressbarComponent { }
@@ -269,7 +267,7 @@ To provide a gradient that has more than 2 color stops, we have to use the direc
 After reproducing the steps above, you should get this as a result:
 
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IgxCircularProgressBarComponent, IgxProgressBarGradientDirective } from 'igniteui-angular/progressbar';
 import { IgxIconButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -278,7 +276,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-circular-dynamic-sample',
     styleUrls: ['./circular-dynamic-sample.component.scss'],
     templateUrl: './circular-dynamic-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCircularProgressBarComponent, IgxProgressBarGradientDirective, IgxIconButtonDirective, IgxIconComponent]
 })
 export class CircularDynamicSampleComponent implements OnInit {
@@ -382,14 +379,13 @@ The last step is to **include** the component theme in our application.
 <div class="divider--half"></div>
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCircularProgressBarComponent } from 'igniteui-angular/progressbar';
 
 @Component({
     selector: 'app-circular-styling-sample',
     styleUrls: ['./circular-styling-sample.component.scss'],
     templateUrl: './circular-styling-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCircularProgressBarComponent]
 })
 export class CircularStylingSampleComponent { }

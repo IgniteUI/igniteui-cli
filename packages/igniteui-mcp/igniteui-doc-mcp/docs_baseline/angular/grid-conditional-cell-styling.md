@@ -42,7 +42,7 @@ public activeRowCondition = (row: RowType) => this.grid?.navigation.activeNode?.
 > Use **`::ng-deep`** or **`ViewEncapsulation.None`** to force the custom styles down through the current component and its children.
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, RowType } from 'igniteui-angular/grids/core';
 import { DATA } from '../../data/nwindData';
@@ -52,7 +52,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-row-classes-sample',
     styleUrls: ['./grid-rowClasses.component.scss'],
     templateUrl: 'grid-rowClasses.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class GridRowClassesComponent implements OnInit {
@@ -151,7 +150,7 @@ public rowStyles = {
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent, RowType } from 'igniteui-angular/grids/core';
 import { IgxBadgeComponent } from 'igniteui-angular/badge';
@@ -165,7 +164,6 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-grid-row-styles-sample',
     styleUrls: ['./grid-rowStyles.component.scss'],
     templateUrl: 'grid-rowStyles.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxBadgeComponent, AsyncPipe]
 })
 
@@ -175,10 +173,8 @@ export class GridRowStylesComponent {
     @ViewChild('grid1', { static: true }) public grid1: IgxGridComponent;
     public data: Observable<any[]>;
 
-    public  rowStyles = {
-        background: (row: RowType) => (+row.data['Change'] < 0  && +row.data['Change On Year(%)'] < 0) ? '#FF000088' : '#00000000',
-        border: (row: RowType) => (+row.data['Change'] < 0  && +row.data['Change On Year(%)'] < 0) ? '2px solid' : '1px solid',
-        'border-color': (row: RowType) => (+row.data['Change'] < 0  && +row.data['Change On Year(%)'] < 0) ? '#FF000099' : '#E9E9E9'
+    public rowClasses = {
+        'negative-row': (row: RowType) => +row.data['Change'] < 0 && +row.data['Change On Year(%)'] < 0
     };
 
     constructor() {
@@ -198,7 +194,7 @@ export class GridRowStylesComponent {
 ```html
 <div class="grid__wrapper">
   <igx-grid [igxPreventDocumentScroll]="true" #grid1 [data]="data | async" [height]="'500px'" width="100%"
-    [autoGenerate]="false" [allowFiltering]="true" [rowStyles]="rowStyles">
+    [autoGenerate]="false" [allowFiltering]="true" [rowClasses]="rowClasses">
     <igx-column [field]="'Category'" [width]="'120px'"></igx-column>
     <igx-column [field]="'Type'" [width]="'150px'" [filterable]="false"></igx-column>
     <igx-column [field]="'Open Price'" [width]="'120px'" dataType="number" [formatter]="formatCurrency">
@@ -208,20 +204,14 @@ export class GridRowStylesComponent {
       <ng-template igxHeader>
         <span>Change</span>
       </ng-template>
-
       <ng-template igxCell let-val>
-        <div class="currency-badge-container">
           @if (val > 0) {
-            <igx-badge type="success" position="bottom-right" icon="arrow_upward"
-            class="badge-left"></igx-badge>
+            <igx-badge type="success" icon="arrow_upward" class="badge-left"></igx-badge>
           }
           @if (val < 0) {
-            <igx-badge type="error" position="bottom-right" icon="arrow_downward"
-            class="error badge-left"></igx-badge>
+            <igx-badge type="error" icon="arrow_downward" class="error badge-left"></igx-badge>
           }
-          <span class="cellAlignSyle" [class.up]="val > 0" [class.down]="val < 0">{{ formatNumber(val)
-          }}</span>
-        </div>
+          <span class="cellAlignSyle" [class.up]="val > 0" [class.down]="val < 0">{{ formatNumber(val) }}</span>
       </ng-template>
     </igx-column>
     <igx-column [field]="'Change(%)'" [width]="'130px'" dataType="number" [formatter]="formatNumber">
@@ -231,18 +221,13 @@ export class GridRowStylesComponent {
     </igx-column>
     <igx-column [field]="'Change On Year(%)'" [width]="'150px'" dataType="number" [formatter]="formatNumber">
       <ng-template igxCell let-val>
-        <div class="currency-badge-container">
           @if (val > 0) {
-            <igx-badge type="success" position="bottom-right" icon="arrow_upward"
-            class="badge-left"></igx-badge>
+            <igx-badge type="success" icon="arrow_upward" class="badge-left"></igx-badge>
           }
           @if (val < 0) {
-            <igx-badge type="error" position="bottom-right" icon="arrow_downward"
-            class="error badge-left"></igx-badge>
+            <igx-badge type="error" icon="arrow_downward" class="error badge-left"></igx-badge>
           }
-          <span class="cellAlignSyle" [class.up]="val > 0" [class.down]="val < 0">{{ formatNumber(val)
-          }}%</span>
-        </div>
+          <span class="cellAlignSyle" [class.up]="val > 0" [class.down]="val < 0">{{ formatNumber(val) }}%</span>
       </ng-template>
     </igx-column>
     <igx-column [field]="'Buy'" [width]="'130px'" dataType="number" [formatter]="formatCurrency"></igx-column>
@@ -259,35 +244,23 @@ export class GridRowStylesComponent {
 </div>
 ```
 ```scss
-.cellAlignSyle {
-    text-align: right;
-    float:right;
-}
-.cellAlignSyle > span {
-    float:right;
-}
-.up {
-    color: green;
-}
-.down {
-    color: red;
-}
-.headerAlignSyle {
-    text-align: right !important;
-}
+:host {
+    igx-badge {
+        margin-inline-end: auto;
+    }
 
-.grid__wrapper {
-  margin: 0 auto;
-  padding: 16px;
-}
+    ::ng-deep .negative-row {
+        $bg-color: rgb(253 243 243);
 
-.currency-badge-container {
-    width: 80px;
-    float: right;
-}
+        --body-column-border-color-odd: $bg-color;
+        --body-column-border-color-even: $bg-color;
 
-.badge-left {
-    float: left;
+        background: $bg-color;
+        --row-border-color: #FF000099;
+        --row-border-style: dashed;
+
+        border-block-start: 1px var(--row-border-style) var(--row-border-color);
+    }
 }
 ```
 <div class="divider--half"></div>
@@ -351,7 +324,7 @@ public beatsPerMinuteClasses = {
 > Use **`::ng-deep`** or **`ViewEncapsulation.None`** to force the custom styles down through the current component and its children.
 ### Demo
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { athletesData } from '../../data/athletesData';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -362,7 +335,6 @@ import { DecimalPipe, PercentPipe } from '@angular/common';
     selector: 'app-grid-conditional-cell-style',
     styleUrls: ['./grid-conditional-cell-style.component.scss'],
     templateUrl: './grid-conditional-cell-style.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, DecimalPipe, PercentPipe]
 })
 export class GridConditionalCellStyleComponent implements OnInit {
@@ -617,7 +589,7 @@ Define a `popin` animation
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent } from 'igniteui-angular/input-group';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -629,7 +601,6 @@ import { JsonPipe } from '@angular/common';
     selector: 'app-grid-conditional-cell-style-2',
     styleUrls: ['./grid-conditional-cell-style-2.component.scss'],
     templateUrl: './grid-conditional-cell-style-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxInputDirective, IgxHintDirective, IgxButtonDirective, IgxGridComponent, IgxColumnComponent, JsonPipe]
 })
 export class GridConditionalCellStyle2Component implements OnInit {

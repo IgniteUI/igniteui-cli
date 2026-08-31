@@ -115,7 +115,6 @@ The following code shows how to bind the [`IgbGeographicSymbolSeries`](mcp:get_a
 ```razor
 @using IgniteUI.Blazor.Controls
 
-
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
     @for (int i = 0; i < this.DataSource.Count; i++)
     {

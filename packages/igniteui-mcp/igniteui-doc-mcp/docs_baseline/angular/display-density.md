@@ -18,7 +18,7 @@ Using the `--ig-size` custom CSS property, you can configure the size on an appl
 ## Angular Size Example
 
 ```typescript
-import { Component, HostBinding, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -28,7 +28,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-display-density',
     styleUrls: ['./display-density.component.scss'],
     templateUrl: './display-density.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxInputGroupComponent, FormsModule, IgxInputDirective, IgxLabelDirective, IgxPrefixDirective, IgxSuffixDirective, IgxIconComponent, IgxHintDirective]
 })
 
@@ -100,17 +99,10 @@ export class DisplayDensityComponent implements OnInit {
 ```
 ```scss
 :host {
-    display: block;
-    padding: 8px;
-}
-
-.density-chooser {
-    margin-bottom: 16px;
-}
-
-igx-buttongroup, igx-input-group {
-    display: block;
-    width: 500px;
+    display: grid;
+    gap: 16px;
+    padding: 16px;
+    max-width: 500px;
 }
 ```
 

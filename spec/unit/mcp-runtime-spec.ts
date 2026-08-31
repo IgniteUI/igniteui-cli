@@ -393,7 +393,7 @@ describe("Unit - MCP runtime", () => {
 			const fetchSpy = spyOn(globalThis, "fetch").and.resolveTo(new Response("grid docs", { status: 200 }));
 			const provider = new RemoteDocsProvider("https://docs.example.test/base/");
 
-			const result = await provider.listComponents("angular", "grid");
+			const result = await provider.listComponents("angular", { filter: "grid" });
 			const requestUrl = fetchSpy.calls.mostRecent().args[0] as URL;
 
 			expect(result).toBe("grid docs");
@@ -671,7 +671,7 @@ describe("Unit - MCP runtime", () => {
 			const provider = new LocalDocsProvider(dbFixturePath);
 			await provider.init();
 
-			const result = await provider.listComponents("angular", "grid");
+			const result = await provider.listComponents("angular", { filter: "grid" });
 
 			expect(result).toContain("Grid Editing");
 			expect(result).not.toContain("Combo Overview");

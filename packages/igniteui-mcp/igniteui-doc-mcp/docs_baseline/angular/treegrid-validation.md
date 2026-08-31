@@ -25,7 +25,7 @@ To validate that a column input would be set and the value is going to be format
 The following sample demonstrates how to use the prebuilt `required`, `email` and `min` validator directives in a Tree Grid.
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 import { IgxColumnComponent, IgxColumnMaxValidatorDirective, IgxColumnMinValidatorDirective, IgxColumnRequiredValidatorDirective } from 'igniteui-angular/grids/core';
@@ -37,7 +37,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-validator-service-component',
     styleUrls: ['tree-grid-validator-service.component.scss'],
     templateUrl: 'tree-grid-validator-service.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnRequiredValidatorDirective, IgxColumnMinValidatorDirective, IgxColumnMaxValidatorDirective]
 })
 export class TreeGridValidatorServiceComponent implements OnInit {
@@ -169,8 +168,8 @@ public cellEdit(evt) {
 The below example demonstrates the above-mentioned customization options.
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, Directive, Input, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
-import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Component, Directive, forwardRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AbstractControl, NG_VALIDATORS, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IGridFormGroupCreatedEventArgs, IgxCellValidationErrorDirective, IgxColumnComponent, IgxColumnMaxValidatorDirective, IgxColumnMinValidatorDirective, IgxColumnRequiredValidatorDirective } from 'igniteui-angular/grids/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -187,7 +186,7 @@ export function phoneFormatValidator(phoneReg: RegExp): ValidatorFn {
 
 @Directive({
     selector: '[phoneFormat]',
-    providers: [{ provide: NG_VALIDATORS, useExisting: TGridPhoneFormatDirective, multi: true }]
+    providers: [{ provide: NG_VALIDATORS, useExisting: forwardRef(() => TGridPhoneFormatDirective), multi: true }]
 })
 export class TGridPhoneFormatDirective extends Validators {
     @Input('phoneFormat')
@@ -203,7 +202,6 @@ export class TGridPhoneFormatDirective extends Validators {
     selector: 'app-tree-grid-validator-service-extended-component',
     styleUrls: ['tree-grid-validator-service-extended.component.scss'],
     templateUrl: 'tree-grid-validator-service-extended.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnMinValidatorDirective, IgxColumnRequiredValidatorDirective, IgxColumnMaxValidatorDirective, TGridPhoneFormatDirective, IgxCellValidationErrorDirective, NgTemplateOutlet, IgxButtonDirective]
 })
 export class TreeGridValidatorServiceExtendedComponent implements OnInit {
@@ -415,7 +413,7 @@ public stateMessage(cell: CellType) {
 The below sample demonstrates the cross-field validation in action.
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
 import { CellType, IGridEditEventArgs, IGridFormGroupCreatedEventArgs, IPinningConfig, IgxCellEditorTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent, IgxColumnMaxValidatorDirective, IgxColumnMinValidatorDirective, IgxColumnRequiredValidatorDirective } from 'igniteui-angular/grids/core';
@@ -431,7 +429,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-validator-service-cross-field-component',
     styleUrls: ['tree-grid-validator-service-cross-field.component.scss'],
     templateUrl: 'tree-grid-validator-service-cross-field.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnRequiredValidatorDirective, IgxColumnMinValidatorDirective, IgxColumnMaxValidatorDirective, IgxCellEditorTemplateDirective, IgxSelectComponent, ReactiveFormsModule, IgxFocusDirective, IgxSelectItemComponent, IgxCellTemplateDirective, IgxTooltipTargetDirective, IgxTooltipDirective, IgxButtonDirective]
 })
 export class TreeGridValidatorServiceCrossFieldComponent implements OnInit {
@@ -665,7 +662,7 @@ public cellStyles = {
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellValidationErrorDirective, IgxColumnComponent, IgxColumnRequiredValidatorDirective, RowType } from 'igniteui-angular/grids/core';
 import { generateEmployeeFlatData, IEmployee } from '../data/employees-flat';
@@ -676,7 +673,6 @@ import { NgTemplateOutlet } from '@angular/common';
     selector: 'app-tree-grid-validation-style',
     styleUrls: ['tree-grid-validation-style.component.scss'],
     templateUrl: 'tree-grid-validation-style.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnRequiredValidatorDirective, IgxCellValidationErrorDirective, NgTemplateOutlet]
 })
 export class TreeGridValidationStyleComponent implements OnInit {
