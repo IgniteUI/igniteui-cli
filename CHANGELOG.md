@@ -1,4 +1,4 @@
-# 15.6.0 (2026-XX-XX)
+# 15.6.0 (2026-08-31)
 
 ## What's Changed
 * **chore(igx-ts, ng-schematics):** Updated Angular template and schematics package versions for the Ignite UI for Angular 22.1.0 release line (`@igniteui/angular-templates` and `@igniteui/angular-schematics` to `22.1.1560`) and aligned CLI package dependencies to `@igniteui/cli-core@15.6.0`.
