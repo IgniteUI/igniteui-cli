@@ -19,7 +19,7 @@ The Ignite UI for Angular is a complete set of Material-based UI Widgets, Compon
 ## Demo
 
 ```typescript
-import { Component, HostBinding, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { IgxDialogActionsDirective, IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxOverlayOutletDirective } from 'igniteui-angular/core';
 import { IgxButtonDirective, IgxFlexDirective, IgxIconButtonDirective, IgxLayoutDirective } from 'igniteui-angular/directives';
@@ -34,7 +34,6 @@ import { NgbDropdown, NgbDropdownToggle, NgbDropdownMenu, NgbDropdownItem, NgbRa
     selector: 'app-bootstrap-sample',
     styleUrls: ['./bootstrap-sample.component.scss'],
     templateUrl: './bootstrap-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, NgbDropdown, NgbDropdownToggle, NgbDropdownMenu, NgbDropdownItem, IgxAvatarComponent, IgxIconButtonDirective, IgxIconComponent, IgxLayoutDirective, IgxCardComponent, IgxFlexDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardContentDirective, NgbRating, IgxCardActionsComponent, IgxDialogComponent, IgxDialogActionsDirective, IgxSuffixDirective, IgxOverlayOutletDirective, NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, IgxListComponent, IgxListItemComponent, IgxListLineTitleDirective, IgxListActionDirective]
 })
 
@@ -407,9 +406,8 @@ $custom-dark-palette: palette(
 $dark-primary: color($custom-dark-palette, "primary");
 $dark-secondary: color($custom-dark-palette, "secondary");
 
-.d-flex.align-items-center {
-    width: 100%;
-    padding: 0 16px;
+.d-flex {
+    align-items: center;
 }
 
 .card-wrapper {
@@ -554,6 +552,10 @@ $dark-secondary: color($custom-dark-palette, "secondary");
 ::ng-deep{
     /* Importing Bootstrap .scss file. */
     @import "bootstrap/scss/bootstrap";
+
+    .collapse {
+        visibility: visible;
+    }
 }
 ```
 

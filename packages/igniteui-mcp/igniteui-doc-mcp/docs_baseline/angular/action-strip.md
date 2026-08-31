@@ -15,7 +15,7 @@ The Ignite UI for Angular Action Strip component provides an overlay area contai
 ## Angular Action Strip Example
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxActionStripComponent } from 'igniteui-angular/action-strip';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -25,7 +25,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-action-strip-paragraph',
     styleUrls: ['./action-strip-paragraph.component.scss'],
     templateUrl: './action-strip-paragraph.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxActionStripComponent, IgxButtonGroupComponent, IgxButtonDirective, IgxIconComponent]
 })
 export class ActionStripParagraphComponent {
@@ -103,7 +102,7 @@ $custom-strip: action-strip-theme(
 );
 
 .my-action-strip {
-    @include action-strip($custom-strip);
+    @include tokens($custom-strip);
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -239,7 +238,7 @@ For scenarios where more than three action items will be shown, it is best to us
 ```
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxActionStripComponent, IgxActionStripMenuItemDirective } from 'igniteui-angular/action-strip';
 import { IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -248,7 +247,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-action-strip-paragraph-menu',
     styleUrls: ['./action-strip-paragraph-menu.component.scss'],
     templateUrl: './action-strip-paragraph-menu.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxActionStripComponent, IgxActionStripMenuItemDirective, IgxRippleDirective, IgxIconComponent]
 })
 export class ActionStripParagraphMenuComponent {
@@ -396,7 +394,7 @@ This can be utilized via grid action components and we are providing two default
 > When `IgxActionStripComponent` is a child component of the grid, hovering a row will automatically show the UI.
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, IgxGridPinningActionsComponent, RowType } from 'igniteui-angular/grids/core';
 import { Transaction } from 'igniteui-angular/core';
@@ -411,7 +409,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-row-action-strip',
     styleUrls: [`grid-action-strip-sample.scss`],
     templateUrl: 'grid-action-strip-sample.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxActionStripComponent, IgxGridPinningActionsComponent, IgxIconButtonDirective, IgxRippleDirective, IgxIconComponent]
 })
 export class GridActionStripSampleComponent {
@@ -510,7 +507,7 @@ The last step is to include the newly created component theme in our application
 ```
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxActionStripComponent } from 'igniteui-angular/action-strip';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -519,7 +516,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-action-strip-paragraph-styling',
     styleUrls: ['./action-strip-paragraph-styling.component.scss'],
     templateUrl: './action-strip-paragraph-styling.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxActionStripComponent, IgxButtonDirective, IgxIconComponent]
 })
 export class ActionStripStylingComponent {

@@ -11,7 +11,7 @@ _premium: true
 The Advanced filtering provides a dialog which allows the creation of groups with filtering conditions across all columns for any [Angular table](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid) like the Tree Grid.
 ## Angular Tree Grid Advanced Filtering Example
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { generateEmployeeFlatData } from '../data/employees-flat';
@@ -21,7 +21,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-advanced-filtering-sample',
     styleUrls: ['./tree-grid-advanced-filtering-sample.component.scss'],
     templateUrl: './tree-grid-advanced-filtering-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxColumnComponent]
 })
 export class TreeGridAdvancedFilteringSampleComponent implements OnInit {
@@ -98,7 +97,7 @@ In case you don't want to show the Tree Grid toolbar, you could use the [`openAd
 As you see the demo above the Advanced filtering dialog is hosted in an overlay on top of the Tree Grid. When the setup in the dialog is ready, the apply or close actions would hide that dialog. There is a way to make that dialog stay always visible - be used as a standalone component. In the demo below, the advanced filtering dialog is declared separately of the Tree Grid.
 ### Demo
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ORDERS_DATA } from '../data/orders';
 import { IgxAdvancedFilteringDialogComponent, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -109,7 +108,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-external-advanced-filtering',
     templateUrl: './tree-grid-external-advanced-filtering.component.html',
     styleUrls: ['./tree-grid-external-advanced-filtering.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxAdvancedFilteringDialogComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 export class TreeGridExternalAdvancedFilteringComponent {
@@ -234,7 +232,7 @@ $custom-query-builder: query-builder-theme(
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { generateEmployeeFlatData } from '../data/employees-flat';
@@ -244,7 +242,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-advanced-filtering-style',
     styleUrls: ['./tree-grid-advanced-filtering-style.component.scss'],
     templateUrl: './tree-grid-advanced-filtering-style.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxColumnComponent]
 })
 export class TreeGridAdvancedFilteringStyleComponent implements OnInit {
