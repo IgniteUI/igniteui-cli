@@ -4,6 +4,7 @@ import * as coreDetect from "../../packages/core/util/detect-framework";
 import { configureMCP, configureSkills, configureInstructions } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 import { addMcpServers } from "../../packages/core/util/mcp-config";
+import { applyExclusiveToggle } from "../../packages/core/prompt/ExclusiveCheckbox";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
 const IGNITEUI_THEMING_SERVER_KEY = "igniteui-theming";
@@ -152,6 +153,34 @@ describe("Unit - ai-config command", () => {
 			expect((config.servers as any)["other-server"]).toEqual(thirdPartyServer);
 			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
 			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+	});
+
+	describe("exclusive checkbox behavior", () => {
+		it("clears other selections when None is selected", () => {
+			const items = [
+				{ value: "none", name: "None", checked: false, disabled: false },
+				{ value: "generic", name: "Generic", checked: true, disabled: false },
+				{ value: "claude", name: "Claude", checked: true, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 0, ["none"]);
+
+			expect(result[0]).toEqual(jasmine.objectContaining({ checked: true }));
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: false }));
+			expect(result[2]).toEqual(jasmine.objectContaining({ checked: false }));
+		});
+
+		it("clears None when another selection is made", () => {
+			const items = [
+				{ value: "none", name: "None", checked: true, disabled: false },
+				{ value: "generic", name: "Generic", checked: false, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 1, ["none"]);
+
+			expect(result[0]).toEqual(jasmine.objectContaining({ checked: false }));
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: true }));
 		});
 	});
 

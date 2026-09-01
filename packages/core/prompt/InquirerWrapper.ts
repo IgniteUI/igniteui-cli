@@ -1,5 +1,6 @@
 import { checkbox, confirm, input, select, Separator } from '@inquirer/prompts';
 import { Context } from '@inquirer/type';
+import { exclusiveCheckbox, type ExclusiveCheckboxChoice } from "./ExclusiveCheckbox";
 
 // ref - node_modules\@inquirer\input\dist\cjs\types\index.d.ts - bc for some reason this is not publicly exported
 type InputConfig = {
@@ -22,6 +23,16 @@ type InputChoicesConfig = Omit<InputConfig, "transformer"> & {
 	pageSize?: number;
 };
 
+type ExclusiveCheckboxConfig = {
+	message: string;
+	choices: ReadonlyArray<string | ExclusiveCheckboxChoice<string> | Separator>;
+	required?: boolean;
+	exclusiveValues?: readonly string[];
+	pageSize?: number;
+	loop?: boolean;
+	theme?: unknown;
+};
+
 export class InquirerWrapper {
 	private constructor() { }
 
@@ -35,6 +46,10 @@ export class InquirerWrapper {
 
 	public static async checkbox(message: InputChoicesConfig, context?: Context): Promise<string[]> {
 		return checkbox(message, context);
+	}
+
+	public static async exclusiveCheckbox(message: ExclusiveCheckboxConfig, context?: Context): Promise<string[]> {
+		return exclusiveCheckbox(message, context);
 	}
 
 	public static async confirm(message: { message: string; default?: boolean }, context?: Context): Promise<boolean> {
