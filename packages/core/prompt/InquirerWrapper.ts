@@ -1,5 +1,7 @@
 import { checkbox, confirm, input, select, Separator } from '@inquirer/prompts';
-import { Context } from '@inquirer/type';
+import type { Context } from '@inquirer/type';
+import type { PartialDeep } from '@inquirer/type';
+import type { Theme } from '@inquirer/core';
 import { exclusiveCheckbox, type ExclusiveCheckboxChoice } from "./ExclusiveCheckbox";
 
 // ref - node_modules\@inquirer\input\dist\cjs\types\index.d.ts - bc for some reason this is not publicly exported
@@ -30,7 +32,7 @@ type ExclusiveCheckboxConfig = {
 	exclusiveValues?: readonly string[];
 	pageSize?: number;
 	loop?: boolean;
-	theme?: unknown;
+	theme?: PartialDeep<Theme>;
 };
 
 export class InquirerWrapper {
