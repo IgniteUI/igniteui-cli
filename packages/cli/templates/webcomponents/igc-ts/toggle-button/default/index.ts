@@ -8,7 +8,7 @@ class IgcToggleButtonTemplate extends IgniteUIForWebComponentsTemplate {
 		this.listInComponentTemplates = true;
 		this.id = "toggle-button";
 		this.projectType = "igc-ts";
-		this.name = "Toggle Button";
+		this.name = "Toggle button";
 		this.description = "basic IgcToggleButton";
 	}
 }
