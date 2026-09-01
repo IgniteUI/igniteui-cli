@@ -1,3 +1,8 @@
+# 15.6.1 (2026-09-01)
+
+## What's Changed
+* **fix(angular):** Updated generated Angular projects to Angular 22.1 tooling, removed leftover Hammer.js usage, corrected Dock Manager component registration and package compatibility, and aligned Fintech Grid row selection with the current API. [#1787](https://github.com/IgniteUI/igniteui-cli/pull/1787)
+
 # 15.6.0 (2026-08-31)
 
 ## What's Changed
