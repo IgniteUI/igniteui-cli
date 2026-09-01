@@ -4,7 +4,8 @@ import * as coreDetect from "../../packages/core/util/detect-framework";
 import { configureMCP, configureSkills, configureInstructions } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 import { addMcpServers } from "../../packages/core/util/mcp-config";
-import { applyExclusiveToggle } from "../../packages/core/prompt/ExclusiveCheckbox";
+import { applyExclusiveToggle, exclusiveCheckboxTesting } from "../../packages/core/prompt/ExclusiveCheckbox";
+import { Separator } from "@inquirer/prompts";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
 const IGNITEUI_THEMING_SERVER_KEY = "igniteui-theming";
@@ -181,6 +182,115 @@ describe("Unit - ai-config command", () => {
 
 			expect(result[0]).toEqual(jasmine.objectContaining({ checked: false }));
 			expect(result[1]).toEqual(jasmine.objectContaining({ checked: true }));
+		});
+
+		it("returns the same array when toggling a disabled option", () => {
+			const items = [
+				{ value: "none", name: "None", checked: false, disabled: true },
+				{ value: "generic", name: "Generic", checked: true, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 0, ["none"]);
+
+			expect(result).toBe(items);
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: true }));
+		});
+
+		it("preserves separators while clearing others for exclusive selection", () => {
+			const separator = new Separator("---");
+			const items = [
+				{ value: "none", name: "None", checked: false, disabled: false },
+				separator,
+				{ value: "generic", name: "Generic", checked: true, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 0, ["none"]);
+
+			expect(result[0]).toEqual(jasmine.objectContaining({ checked: true }));
+			expect(result[1]).toBe(separator);
+			expect(result[2]).toEqual(jasmine.objectContaining({ checked: false }));
+		});
+
+		it("does not clear others when turning an exclusive option off", () => {
+			const items = [
+				{ value: "none", name: "None", checked: true, disabled: false },
+				{ value: "generic", name: "Generic", checked: true, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 0, ["none"]);
+
+			expect(result[0]).toEqual(jasmine.objectContaining({ checked: false }));
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: true }));
+		});
+
+		it("keeps disabled exclusive options unchanged when selecting another option", () => {
+			const items = [
+				{ value: "none", name: "None", checked: true, disabled: true },
+				{ value: "generic", name: "Generic", checked: false, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 1, ["none"]);
+
+			expect(result[0]).toEqual(jasmine.objectContaining({ checked: true }));
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: true }));
+		});
+
+		it("normalizes primitive choices to selectable items", () => {
+			const result = exclusiveCheckboxTesting.normalizeChoice("vscode") as any;
+
+			expect(result).toEqual({
+				value: "vscode",
+				name: "vscode",
+				checked: false,
+				disabled: false
+			});
+		});
+
+		it("normalizes object choices and applies defaults", () => {
+			const result = exclusiveCheckboxTesting.normalizeChoice({
+				value: "claude",
+				checked: true
+			}) as any;
+
+			expect(result).toEqual({
+				value: "claude",
+				name: "claude",
+				checked: true,
+				disabled: false
+			});
+		});
+
+		it("detects separators as non-selectable and not checked", () => {
+			const separator = new Separator("---");
+
+			expect(exclusiveCheckboxTesting.isSelectable(separator as any)).toBe(false);
+			expect(exclusiveCheckboxTesting.isChecked(separator as any)).toBe(false);
+		});
+
+		it("moves to next selectable item when loop is disabled", () => {
+			const separator = new Separator("---");
+			const items = [
+				{ value: "none", name: "None", checked: false, disabled: false },
+				separator,
+				{ value: "generic", name: "Generic", checked: false, disabled: true },
+				{ value: "claude", name: "Claude", checked: false, disabled: false }
+			] as any;
+
+			const result = exclusiveCheckboxTesting.moveActiveIndex(items, 0, 1, false);
+
+			expect(result).toBe(3);
+		});
+
+		it("wraps to last selectable item when moving up with loop enabled", () => {
+			const items = [
+				{ value: "none", name: "None", checked: false, disabled: false },
+				{ value: "generic", name: "Generic", checked: false, disabled: true },
+				{ value: "claude", name: "Claude", checked: false, disabled: false }
+			] as any;
+
+			const result = exclusiveCheckboxTesting.moveActiveIndex(items, 0, -1, true);
+
+			expect(result).toBe(2);
 		});
 	});
 

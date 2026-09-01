@@ -137,6 +137,13 @@ export function applyExclusiveToggle<Value>(
 	return toggleExclusiveChoice(items, index, exclusiveValues);
 }
 
+export const exclusiveCheckboxTesting = {
+	normalizeChoice,
+	moveActiveIndex,
+	isSelectable,
+	isChecked,
+};
+
 export const exclusiveCheckbox = createPrompt<string[], ExclusiveCheckboxConfig<string>>((config, done) => {
 	const theme = makeTheme(config.theme);
 	const [status, setStatus] = useState<Status>("idle");
