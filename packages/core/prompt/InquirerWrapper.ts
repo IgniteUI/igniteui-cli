@@ -19,6 +19,7 @@ type InputConfig = {
 
 type InputChoicesConfig = Omit<InputConfig, "transformer"> & {
 	choices: (string | Separator)[] | ({ value: string; name?: string; checked?: boolean } | Separator)[];
+	pageSize?: number;
 };
 
 export class InquirerWrapper {
