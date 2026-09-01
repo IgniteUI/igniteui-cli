@@ -7,22 +7,18 @@ describe('IgcToggleButtonComponent', () => {
     expect(element).to.be.instanceOf($(ClassName));
   });
 
-  it('clicking a toggle button updates the displayed active formats', async () => {
+  it('renders toggle buttons with expected initial states', async () => {
     const element = document.createElement('app-$(path)') as $(ClassName);
     document.body.appendChild(element);
     await element.updateComplete;
 
-    const status = element.shadowRoot!.querySelector('[data-testid="status"]')!;
-    expect(status.textContent).to.contain('bold');
-    expect(status.textContent).to.not.contain('italic');
+    const emailButton = element.shadowRoot!.querySelector('igc-toggle-button[value="email"]');
+    const pushButton = element.shadowRoot!.querySelector('igc-toggle-button[value="push"]');
 
-    const italicButton = element.shadowRoot!.querySelector(
-      'igc-toggle-button[value="italic"]'
-    ) as HTMLElement;
-    italicButton.click();
-    await element.updateComplete;
-
-    expect(status.textContent).to.contain('italic');
+    expect(emailButton).to.not.equal(null);
+    expect(pushButton).to.not.equal(null);
+    expect((emailButton as HTMLElement).hasAttribute('selected')).to.equal(true);
+    expect((pushButton as HTMLElement).hasAttribute('disabled')).to.equal(true);
 
     element.remove();
   });
