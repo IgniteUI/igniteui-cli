@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
@@ -18,9 +18,15 @@ registerIconFromText(
 
 @customElement('app-$(path)')
 export default class IconButton extends LitElement {
+  static styles = css`
+    igc-icon-button {
+      --ig-size: var(--ig-size-large);
+    }
+  `;
+
   render() {
     return html`
-    <igc-icon-button name="thumb-up" collection="material" href="https://www.infragistics.com/support" variant="contained" size="large"></igc-icon-button>
+    <igc-icon-button name="thumb-up" collection="material" href="https://www.infragistics.com/support" variant="contained"></igc-icon-button>
     `;
   }
 }

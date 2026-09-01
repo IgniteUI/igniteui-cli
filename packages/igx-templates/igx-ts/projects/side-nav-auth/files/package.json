@@ -27,10 +27,10 @@
     "zone.js": "~0.16.0"
   },
   "devDependencies": {
-    "@angular/build": "~22.0.1",
-    "@angular/cli": "~22.0.1",
-    "@angular/compiler-cli": "~22.0.0",
-    "@angular/language-service": "~22.0.0",
+    "@angular/build": "~22.1.0",
+    "@angular/cli": "~22.1.0",
+    "@angular/compiler-cli": "~22.1.0",
+    "@angular/language-service": "~22.1.0",
     "@eslint/js": "^10.0.1",
     "@types/facebook-js-sdk": "~3.3.6",
     "@vitest/browser-playwright": "^4.1.0",

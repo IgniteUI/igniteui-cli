@@ -7,7 +7,7 @@ export default function $(ClassName)() {
     <div>
       <h1 className={style.title}>Icon Button</h1>
       <div className={style.container}>
-        <IgrIconButton name="thumb-up" collection="default" variant="contained" size="large" href="https://www.infragistics.com/support" />
+        <IgrIconButton className={style.large} name="thumb-up" collection="default" variant="contained" href="https://www.infragistics.com/support" />
       </div>
     </div>
   );
