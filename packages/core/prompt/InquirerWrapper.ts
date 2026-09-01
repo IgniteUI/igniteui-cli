@@ -35,26 +35,38 @@ type ExclusiveCheckboxConfig = {
 	theme?: PartialDeep<Theme>;
 };
 
+const promptDelegates = {
+	input,
+	select,
+	checkbox,
+	exclusiveCheckbox,
+	confirm,
+};
+
+export const inquirerWrapperTesting = {
+	promptDelegates,
+};
+
 export class InquirerWrapper {
 	private constructor() { }
 
 	public static async input(message: InputConfig, context?: Context): Promise<string> {
-		return input(message, context);
+		return promptDelegates.input(message, context);
 	}
 
 	public static async select(message: InputChoicesConfig, context?: Context): Promise<string> {
-		return select(message, context);
+		return promptDelegates.select(message, context);
 	}
 
 	public static async checkbox(message: InputChoicesConfig, context?: Context): Promise<string[]> {
-		return checkbox(message, context);
+		return promptDelegates.checkbox(message, context);
 	}
 
 	public static async exclusiveCheckbox(message: ExclusiveCheckboxConfig, context?: Context): Promise<string[]> {
-		return exclusiveCheckbox(message, context);
+		return promptDelegates.exclusiveCheckbox(message, context);
 	}
 
 	public static async confirm(message: { message: string; default?: boolean }, context?: Context): Promise<boolean> {
-		return confirm(message, context);
+		return promptDelegates.confirm(message, context);
 	}
 }
