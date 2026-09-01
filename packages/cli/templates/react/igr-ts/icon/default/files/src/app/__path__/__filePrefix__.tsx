@@ -9,11 +9,11 @@ export default function $(ClassName)() {
       <div className={style.container}>
         <div>
           <label>Home icon: </label>
-          <IgrIcon name="home" collection="default" size="large" />
+          <IgrIcon className={style.large} name="home" collection="default" />
         </div>
         <div>
           <label>Search icon: </label>
-          <IgrIcon name="search" collection="default" size="large" />
+          <IgrIcon className={style.large} name="search" collection="default" />
         </div>
       </div>
     </div>

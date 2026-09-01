@@ -1,5 +1,5 @@
 import style from './style.module.css';
-import { IgrPivotGrid } from 'igniteui-react-grids';
+import { IgrPivotGrid, type IgrPivotConfiguration } from 'igniteui-react-grids';
 import 'igniteui-react-grids/grids/themes/light/bootstrap.css';
 
 import { DATA } from './data';
@@ -7,7 +7,7 @@ import { DATA } from './data';
 export default function $(ClassName)() {
   const title = '$(name)';
 
-  const pivotConfiguration = {
+  const pivotConfiguration: IgrPivotConfiguration = {
     columns: [
       {
         memberName: 'Product',
@@ -32,8 +32,7 @@ export default function $(ClassName)() {
         },
         enabled: true
       }
-    ],
-    filters: null
+    ]
   };
 
   return (

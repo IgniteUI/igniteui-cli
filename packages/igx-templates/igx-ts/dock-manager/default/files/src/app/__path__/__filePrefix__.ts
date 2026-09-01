@@ -1,12 +1,13 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {
-  IgcDockManagerLayout,
+  defineComponents,
+  IgcDockManagerComponent,
   IgcDockManagerPaneType,
-  IgcSplitPaneOrientation
+  IgcSplitPaneOrientation,
+  type IgcDockManagerLayout
 } from '<%=dockManagerPackage%>';
-import { defineCustomElements } from '<%=dockManagerPackage%>/loader';
 
-defineCustomElements();
+defineComponents(IgcDockManagerComponent);
 
 @Component({
   selector: 'app-<%=filePrefix%>',
