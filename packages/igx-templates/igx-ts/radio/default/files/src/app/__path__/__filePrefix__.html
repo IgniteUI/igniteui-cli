@@ -1,0 +1,7 @@
+<p>igx-radio component sample.</p>
+<p>You can read more about configuring the igx-radio component in the
+<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/radio/README.md" target="_blank">README</a> or the
+<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/radio_button.html" target="_blank">official documentation</a>.</p>
+@for (option of options; track option) {
+  <igx-radio name="size" [value]="option" [(ngModel)]="selected">{{ option }}</igx-radio>
+}
