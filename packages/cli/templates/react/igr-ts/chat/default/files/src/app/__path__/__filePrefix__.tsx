@@ -10,7 +10,7 @@ const messages = [
 
 export default function $(ClassName)() {
   return (
-    <div>
+    <div className={style.page}>
       <h1 className={style.title}>Chat</h1>
       <div className={style.container}>
         <IgrChat messages={messages} options={{ currentUserId: 'user' }} />

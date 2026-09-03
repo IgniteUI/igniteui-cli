@@ -1,0 +1,14 @@
+:local(.container) {
+  padding-top: 24px;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+:local(.container) :global(igc-range-slider) {
+  width: min(100%, 480px);
+}
+:local(.title) {
+  color: rgb(0, 153, 255);
+}
