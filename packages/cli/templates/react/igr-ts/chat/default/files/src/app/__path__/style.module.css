@@ -1,0 +1,21 @@
+:local(.page) {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px 40px;
+  box-sizing: border-box;
+}
+:local(.container) {
+  width: 100%;
+}
+:local(.container) :global(igc-chat) {
+  display: block;
+  width: min(100%, 720px);
+  height: 560px;
+  margin: 0 auto;
+}
+:local(.title) {
+  margin: 0 0 20px;
+  color: rgb(0, 153, 255);
+}
