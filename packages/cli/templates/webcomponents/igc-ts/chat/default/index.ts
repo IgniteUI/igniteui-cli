@@ -4,7 +4,7 @@ class IgcChatTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Chat"];
-		this.controlGroup = "Data Entry & Display";
+		this.controlGroup = "Interactions";
 		this.listInComponentTemplates = true;
 		this.id = "chat";
 		this.projectType = "igc-ts";
