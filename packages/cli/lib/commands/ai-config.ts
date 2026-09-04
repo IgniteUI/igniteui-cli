@@ -154,10 +154,11 @@ const AI_ASSISTANT_CHECKBOX_CHOICES = [
 async function promptForAgents(): Promise<AIAgentOption[]> {
 	let selected: AIAgentOption[] = AI_AGENT_CHECKBOX_DEFAULTS;
 	if (Util.canPrompt()) {
-		const result = await InquirerWrapper.checkbox({
+		const result = await InquirerWrapper.exclusiveCheckbox({
 			message: "Which AI agents do you want to generate skills and instructions for?",
 			required: true,
-			choices: AI_AGENT_CHECKBOX_CHOICES
+			choices: AI_AGENT_CHECKBOX_CHOICES,
+			exclusiveValues: ["none"]
 		});
 		selected = result as AIAgentOption[];
 	}
@@ -167,10 +168,11 @@ async function promptForAgents(): Promise<AIAgentOption[]> {
 async function promptForAssistant(): Promise<AIAssistantOption[]> {
 	let selected: AIAssistantOption[] = AI_ASSISTANT_CHECKBOX_DEFAULTS;
 	if (Util.canPrompt()) {
-		const result = await InquirerWrapper.checkbox({
+		const result = await InquirerWrapper.exclusiveCheckbox({
 			message: "Which coding assistants should MCP servers be configured for?",
 			required: true,
-			choices: AI_ASSISTANT_CHECKBOX_CHOICES
+			choices: AI_ASSISTANT_CHECKBOX_CHOICES,
+			exclusiveValues: ["none"]
 		});
 		selected = result as AIAssistantOption[];
 	}

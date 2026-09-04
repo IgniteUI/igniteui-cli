@@ -4,6 +4,10 @@ import * as coreDetect from "../../packages/core/util/detect-framework";
 import { configureMCP, configureSkills, configureInstructions } from "../../packages/cli/lib/commands/ai-config";
 import * as aiConfig  from "../../packages/cli/lib/commands/ai-config";
 import { addMcpServers } from "../../packages/core/util/mcp-config";
+import { applyExclusiveToggle, exclusiveCheckbox, exclusiveCheckboxTesting } from "../../packages/core/prompt/ExclusiveCheckbox";
+import { InquirerWrapper as LocalInquirerWrapper, inquirerWrapperTesting } from "../../packages/core/prompt/InquirerWrapper";
+import { Separator } from "@inquirer/prompts";
+import { PassThrough, Writable } from "stream";
 
 const IGNITEUI_SERVER_KEY = "igniteui-cli";
 const IGNITEUI_THEMING_SERVER_KEY = "igniteui-theming";
@@ -152,6 +156,257 @@ describe("Unit - ai-config command", () => {
 			expect((config.servers as any)["other-server"]).toEqual(thirdPartyServer);
 			expect((config.servers as any)[IGNITEUI_SERVER_KEY]).toEqual(igniteuiServer);
 			expect((config.servers as any)[IGNITEUI_THEMING_SERVER_KEY]).toEqual(igniteuiThemingServer);
+		});
+	});
+
+	describe("exclusive checkbox behavior", () => {
+		async function runExclusivePrompt(keys: string[], config: any) {
+			const input = new PassThrough();
+			let rendered = "";
+			const output = new Writable({
+				write(chunk, _encoding, callback) {
+					rendered += chunk.toString();
+					callback();
+				}
+			});
+
+			const promise = exclusiveCheckbox(config, { input, output, clearPromptOnDone: true } as any);
+			for (const key of keys) {
+				input.write(key);
+			}
+
+			const result = await promise;
+			return { result, rendered };
+		}
+
+		it("clears other selections when None is selected", () => {
+			const items = [
+				{ value: "none", name: "None", checked: false, disabled: false },
+				{ value: "generic", name: "Generic", checked: true, disabled: false },
+				{ value: "claude", name: "Claude", checked: true, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 0, ["none"]);
+
+			expect(result[0]).toEqual(jasmine.objectContaining({ checked: true }));
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: false }));
+			expect(result[2]).toEqual(jasmine.objectContaining({ checked: false }));
+		});
+
+		it("clears None when another selection is made", () => {
+			const items = [
+				{ value: "none", name: "None", checked: true, disabled: false },
+				{ value: "generic", name: "Generic", checked: false, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 1, ["none"]);
+
+			expect(result[0]).toEqual(jasmine.objectContaining({ checked: false }));
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: true }));
+		});
+
+		it("returns the same array when toggling a disabled option", () => {
+			const items = [
+				{ value: "none", name: "None", checked: false, disabled: true },
+				{ value: "generic", name: "Generic", checked: true, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 0, ["none"]);
+
+			expect(result).toBe(items);
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: true }));
+		});
+
+		it("preserves separators while clearing others for exclusive selection", () => {
+			const separator = new Separator("---");
+			const items = [
+				{ value: "none", name: "None", checked: false, disabled: false },
+				separator,
+				{ value: "generic", name: "Generic", checked: true, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 0, ["none"]);
+
+			expect(result[0]).toEqual(jasmine.objectContaining({ checked: true }));
+			expect(result[1]).toBe(separator);
+			expect(result[2]).toEqual(jasmine.objectContaining({ checked: false }));
+		});
+
+		it("does not clear others when turning an exclusive option off", () => {
+			const items = [
+				{ value: "none", name: "None", checked: true, disabled: false },
+				{ value: "generic", name: "Generic", checked: true, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 0, ["none"]);
+
+			expect(result[0]).toEqual(jasmine.objectContaining({ checked: false }));
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: true }));
+		});
+
+		it("keeps disabled exclusive options unchanged when selecting another option", () => {
+			const items = [
+				{ value: "none", name: "None", checked: true, disabled: true },
+				{ value: "generic", name: "Generic", checked: false, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 1, ["none"]);
+
+			expect(result[0]).toEqual(jasmine.objectContaining({ checked: true }));
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: true }));
+		});
+
+		it("normalizes primitive choices to selectable items", () => {
+			const result = exclusiveCheckboxTesting.normalizeChoice("vscode") as any;
+
+			expect(result).toEqual({
+				value: "vscode",
+				name: "vscode",
+				checked: false,
+				disabled: false
+			});
+		});
+
+		it("normalizes object choices and applies defaults", () => {
+			const result = exclusiveCheckboxTesting.normalizeChoice({
+				value: "claude",
+				checked: true
+			}) as any;
+
+			expect(result).toEqual({
+				value: "claude",
+				name: "claude",
+				checked: true,
+				disabled: false
+			});
+		});
+
+		it("detects separators as non-selectable and not checked", () => {
+			const separator = new Separator("---");
+
+			expect(exclusiveCheckboxTesting.isSelectable(separator as any)).toBe(false);
+			expect(exclusiveCheckboxTesting.isChecked(separator as any)).toBe(false);
+		});
+
+		it("moves to next selectable item when loop is disabled", () => {
+			const separator = new Separator("---");
+			const items = [
+				{ value: "none", name: "None", checked: false, disabled: false },
+				separator,
+				{ value: "generic", name: "Generic", checked: false, disabled: true },
+				{ value: "claude", name: "Claude", checked: false, disabled: false }
+			] as any;
+
+			const result = exclusiveCheckboxTesting.moveActiveIndex(items, 0, 1, false);
+
+			expect(result).toBe(3);
+		});
+
+		it("wraps to last selectable item when moving up with loop enabled", () => {
+			const items = [
+				{ value: "none", name: "None", checked: false, disabled: false },
+				{ value: "generic", name: "Generic", checked: false, disabled: true },
+				{ value: "claude", name: "Claude", checked: false, disabled: false }
+			] as any;
+
+			const result = exclusiveCheckboxTesting.moveActiveIndex(items, 0, -1, true);
+
+			expect(result).toBe(2);
+		});
+
+		it("accepts numeric selection and submits selected value", async () => {
+			const { result, rendered } = await runExclusivePrompt(["2", "\r"], {
+				message: "Select agent",
+				choices: ["none", "claude"],
+				exclusiveValues: ["none"],
+				required: true,
+				loop: false
+			});
+
+			expect(result).toEqual(["claude"]);
+			expect(rendered).toContain("Select agent");
+		});
+
+		it("shows required error then allows completion after selection", async () => {
+			const { result, rendered } = await runExclusivePrompt(["\r", " ", "\r"], {
+				message: "Select at least one",
+				choices: ["none", "claude"],
+				exclusiveValues: ["none"],
+				required: true,
+				loop: true
+			});
+
+			expect(result).toEqual(["none"]);
+			expect(rendered).toContain("Select at least one option.");
+		});
+
+		it("supports arrow navigation and space toggle", async () => {
+			const { result } = await runExclusivePrompt(["\u001b[B", " ", "\r"], {
+				message: "Select with arrows",
+				choices: ["none", "claude"],
+				exclusiveValues: ["none"],
+				required: true,
+				loop: false
+			});
+
+			expect(result).toEqual(["claude"]);
+		});
+	});
+
+	describe("InquirerWrapper delegates", () => {
+		it("delegates input calls", async () => {
+			const context = {} as any;
+			const config = { message: "Input" } as any;
+			spyOn(inquirerWrapperTesting.promptDelegates, "input").and.returnValue(Promise.resolve("value") as any);
+
+			const result = await LocalInquirerWrapper.input(config, context);
+
+			expect(result).toBe("value");
+			expect(inquirerWrapperTesting.promptDelegates.input).toHaveBeenCalledWith(config, context);
+		});
+
+		it("delegates select calls", async () => {
+			const context = {} as any;
+			const config = { message: "Select", choices: ["A"] } as any;
+			spyOn(inquirerWrapperTesting.promptDelegates, "select").and.returnValue(Promise.resolve("A") as any);
+
+			const result = await LocalInquirerWrapper.select(config, context);
+
+			expect(result).toBe("A");
+			expect(inquirerWrapperTesting.promptDelegates.select).toHaveBeenCalledWith(config, context);
+		});
+
+		it("delegates checkbox calls", async () => {
+			const context = {} as any;
+			const config = { message: "Check", choices: ["A"] } as any;
+			spyOn(inquirerWrapperTesting.promptDelegates, "checkbox").and.returnValue(Promise.resolve(["A"]) as any);
+
+			const result = await LocalInquirerWrapper.checkbox(config, context);
+
+			expect(result).toEqual(["A"]);
+			expect(inquirerWrapperTesting.promptDelegates.checkbox).toHaveBeenCalledWith(config, context);
+		});
+
+		it("delegates exclusive checkbox calls", async () => {
+			const context = {} as any;
+			const config = { message: "Exclusive", choices: [{ value: "none" }], exclusiveValues: ["none"] } as any;
+			spyOn(inquirerWrapperTesting.promptDelegates, "exclusiveCheckbox").and.returnValue(Promise.resolve(["none"]) as any);
+
+			const result = await LocalInquirerWrapper.exclusiveCheckbox(config, context);
+
+			expect(result).toEqual(["none"]);
+			expect(inquirerWrapperTesting.promptDelegates.exclusiveCheckbox).toHaveBeenCalledWith(config, context);
+		});
+
+		it("delegates confirm calls", async () => {
+			const context = {} as any;
+			const config = { message: "Confirm", default: true };
+			spyOn(inquirerWrapperTesting.promptDelegates, "confirm").and.returnValue(Promise.resolve(true) as any);
+
+			const result = await LocalInquirerWrapper.confirm(config, context);
+
+			expect(result).toBe(true);
+			expect(inquirerWrapperTesting.promptDelegates.confirm).toHaveBeenCalledWith(config, context);
 		});
 	});
 
@@ -604,14 +859,14 @@ describe("Unit - ai-config command", () => {
 		it("prompts for agents when --agent is not provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(true);
-			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+			spyOn(InquirerWrapper, "exclusiveCheckbox").and.returnValues(
 				Promise.resolve(["claude"]),
 				Promise.resolve(["vscode"])
 			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
-			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
+			expect(InquirerWrapper.exclusiveCheckbox).toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which AI agents do you want to generate skills and instructions for?",
 				required: true
 			}));
@@ -622,18 +877,18 @@ describe("Unit - ai-config command", () => {
 		it("uses defaults without prompting when canPrompt returns false", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(false);
-			spyOn(InquirerWrapper, "checkbox");
+			spyOn(InquirerWrapper, "exclusiveCheckbox");
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
-			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
+			expect(InquirerWrapper.exclusiveCheckbox).not.toHaveBeenCalled();
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "event", ea: "agent: generic, claude; assistant: generic", cd1: "angular" }));
 		});
 
 		it("logs skipping and does not post analytics when none is selected", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(true);
-			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
+			spyOn(InquirerWrapper, "exclusiveCheckbox").and.returnValue(Promise.resolve(["none"]));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
@@ -646,7 +901,7 @@ describe("Unit - ai-config command", () => {
 			const mockFs = createMockFs();
 			App.container.set(FS_TOKEN, mockFs);
 			spyOn(Util, "canPrompt").and.returnValue(true);
-			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+			spyOn(InquirerWrapper, "exclusiveCheckbox").and.returnValues(
 				Promise.resolve(["none"]),
 				Promise.resolve(["vscode"])
 			);
@@ -658,7 +913,7 @@ describe("Unit - ai-config command", () => {
 			expect(config.servers).toBeDefined();
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ t: "screenview", cd: "Ai Config" }));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: none; assistant: vscode", cd1: "angular" }));
-			expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(2);
+			expect(InquirerWrapper.exclusiveCheckbox).toHaveBeenCalledTimes(2);
 			expect(
 				(Util.log as jasmine.Spy).calls.allArgs()
 					.filter(([msg]) => String(msg).includes("Skipping"))
@@ -669,14 +924,14 @@ describe("Unit - ai-config command", () => {
 		it("configures multiple agents when selected interactively", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(true);
-			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+			spyOn(InquirerWrapper, "exclusiveCheckbox").and.returnValues(
 				Promise.resolve(["claude", "cursor"]),
 				Promise.resolve(["vscode"])
 			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
-			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
+			expect(InquirerWrapper.exclusiveCheckbox).toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which AI agents do you want to generate skills and instructions for?"
 			}));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: claude, cursor; assistant: vscode", cd1: "angular" }));
@@ -685,11 +940,11 @@ describe("Unit - ai-config command", () => {
 		it("skips prompt when --agent is provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(true);
-			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["vscode"]));
+			spyOn(InquirerWrapper, "exclusiveCheckbox").and.returnValue(Promise.resolve(["vscode"]));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", agents: ["cursor"], framework: "angular" });
 
-			expect(InquirerWrapper.checkbox).not.toHaveBeenCalledWith(jasmine.objectContaining({
+			expect(InquirerWrapper.exclusiveCheckbox).not.toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which AI agents do you want to generate skills and instructions for?"
 			}));
 			expect(GoogleAnalytics.post).toHaveBeenCalledWith(jasmine.objectContaining({ ea: "agent: cursor; assistant: vscode", cd1: "angular" }));
@@ -698,24 +953,24 @@ describe("Unit - ai-config command", () => {
 		it("skips assistant prompt when --assistant is provided", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(true);
-			spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["claude"]));
+			spyOn(InquirerWrapper, "exclusiveCheckbox").and.returnValue(Promise.resolve(["claude"]));
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", assistants: ["cursor"], framework: "angular" });
 
-			expect(InquirerWrapper.checkbox).toHaveBeenCalledTimes(1);
+			expect(InquirerWrapper.exclusiveCheckbox).toHaveBeenCalledTimes(1);
 		});
 
 		it("prompts for assistant with correct message", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(true);
-			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+			spyOn(InquirerWrapper, "exclusiveCheckbox").and.returnValues(
 				Promise.resolve(["claude"]),
 				Promise.resolve(["vscode"])
 			);
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "angular" });
 
-			expect(InquirerWrapper.checkbox).toHaveBeenCalledWith(jasmine.objectContaining({
+			expect(InquirerWrapper.exclusiveCheckbox).toHaveBeenCalledWith(jasmine.objectContaining({
 				message: "Which coding assistants should MCP servers be configured for?"
 			}));
 		});
@@ -724,7 +979,7 @@ describe("Unit - ai-config command", () => {
 			const mockFs = createMockFs();
 			App.container.set(FS_TOKEN, mockFs);
 			spyOn(Util, "canPrompt").and.returnValue(true);
-			spyOn(InquirerWrapper, "checkbox").and.returnValues(
+			spyOn(InquirerWrapper, "exclusiveCheckbox").and.returnValues(
 				Promise.resolve(["claude"]),
 				Promise.resolve(["generic"])
 			);
@@ -739,12 +994,12 @@ describe("Unit - ai-config command", () => {
 		it("logs and returns early when framework is jquery", async () => {
 			App.container.set(FS_TOKEN, createMockFs());
 			spyOn(Util, "canPrompt").and.returnValue(true);
-			spyOn(InquirerWrapper, "checkbox");
+			spyOn(InquirerWrapper, "exclusiveCheckbox");
 
 			await aiConfig.default.handler({ _: ["ai-config"], $0: "ig", framework: "jquery" });
 
 			expect(Util.log).toHaveBeenCalledWith("AI Config currently not available for jQuery projects.");
-			expect(InquirerWrapper.checkbox).not.toHaveBeenCalled();
+			expect(InquirerWrapper.exclusiveCheckbox).not.toHaveBeenCalled();
 		});
 
 		describe("framework resolution", () => {
@@ -752,7 +1007,7 @@ describe("Unit - ai-config command", () => {
 			beforeEach(() => {
 				App.container.set(FS_TOKEN, createMockFs());
 				spyOn(Util, "canPrompt").and.returnValue(true);
-				spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
+				spyOn(InquirerWrapper, "exclusiveCheckbox").and.returnValue(Promise.resolve(["none"]));
 			});
 
 			it("uses detected framework when --framework is not provided", async () => {

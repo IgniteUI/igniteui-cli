@@ -50,6 +50,7 @@ export abstract class BasePromptSession {
 				name: "framework",
 				message: "Choose framework:",
 				choices: this.getFrameworkNames(),
+				pageSize: 10,
 				default: "Angular"
 			});
 
@@ -708,6 +709,7 @@ type SelectOptions = Omit<InputOptions, "type"> & {
 	type: "select";
 	// TODO: Expand type:
 	choices: any[];
+	pageSize?: number;
 }
 
 type CheckboxOptions = Omit<SelectOptions, "type"> & {
