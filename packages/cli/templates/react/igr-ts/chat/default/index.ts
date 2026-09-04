@@ -5,7 +5,7 @@ class IgrChatTemplate extends IgniteUIForReactTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Chat"];
-		this.controlGroup = "Data Entry & Display";
+		this.controlGroup = "Interactions";
 		this.listInComponentTemplates = true;
 		this.id = "chat";
 		this.projectType = "igr-ts";
