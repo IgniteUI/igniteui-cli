@@ -12,6 +12,9 @@ defineComponents(IgcCardComponent, IgcButtonComponent, IgcIconButtonComponent);
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {
   static styles = css`
+    igc-avatar {
+      --ig-size: var(--ig-size-small);
+    }
     igc-card {
       width: 400px;
     }
@@ -28,7 +31,6 @@ export default class $(ClassName) extends LitElement {
         <igc-card-header>
           <igc-avatar
             slot="thumbnail"
-            size="small"
             shape="rounded"
             src="https://www.infragistics.com/angular-demos/assets/images/men/1.jpg"
           >

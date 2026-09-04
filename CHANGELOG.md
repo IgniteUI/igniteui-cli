@@ -1,9 +1,19 @@
+# 15.6.1 (2026-09-01)
+
+## What's Changed
+* **fix(angular):** Updated generated Angular projects to Angular 22.1 tooling, removed leftover Hammer.js usage, corrected Dock Manager component registration and package compatibility, and aligned Fintech Grid row selection with the current API. [#1787](https://github.com/IgniteUI/igniteui-cli/pull/1787)
+
 # 15.6.0 (2026-08-31)
 
 ## What's Changed
-* **chore(igx-ts, ng-schematics):** Updated Angular template and schematics package versions for the Ignite UI for Angular 22.1.0 release line (`@igniteui/angular-templates` and `@igniteui/angular-schematics` to `22.1.1560`) and aligned CLI package dependencies to `@igniteui/cli-core@15.6.0`.
-* **feat(mcp):** Added automation and guardrails for MCP documentation database build and publishing, including deterministic component metadata derivation, stronger validation gates, and safer staged artifact publishing. [#1777](https://github.com/IgniteUI/igniteui-cli/pull/1777)
+* **chore(angular):** Updated scaffolded Angular projects and Ignite UI for Angular to `~22.1.0`, and aligned the CLI workspace packages with the 15.6.0 release. [#1759](https://github.com/IgniteUI/igniteui-cli/pull/1759)
+* **chore(webcomponents):** Updated scaffolded Web Components projects for the 7.3 release cycle, including `igniteui-webcomponents` `~7.3.0`, grids `~7.2.1`, and core, charts, gauges, inputs, and layouts `~7.1.0`. [#1779](https://github.com/IgniteUI/igniteui-cli/pull/1779)
+* **feat(angular):** Removed the obsolete `hammerjs` dependency from Angular project templates. [dcb4a9f](https://github.com/IgniteUI/igniteui-cli/commit/dcb4a9f49375551de91e7141cca958b36c29d93b)
+* **feat(mcp):** Added an automated documentation build and database workflow with deterministic component metadata derivation, stronger validation gates, build summaries, and safer staged artifact publishing. [#1769](https://github.com/IgniteUI/igniteui-cli/pull/1769), [#1777](https://github.com/IgniteUI/igniteui-cli/pull/1777)
 * **feat(mcp):** Enhanced documentation tooling: `list_components` is now TOC-grouped by default with `group`/`filter` options and `detail: "docs"` flat-mode compatibility, significantly reducing unfiltered response tokens. [#1778](https://github.com/IgniteUI/igniteui-cli/pull/1778)
+* **fix(mcp):** Added the missing documentation submodules to the submodule switching script. [#1781](https://github.com/IgniteUI/igniteui-cli/pull/1781)
+* **chore(mcp):** Refreshed the bundled documentation database and component group summaries across Angular, React, Web Components, and Blazor. [#1780](https://github.com/IgniteUI/igniteui-cli/pull/1780)
+* **docs(cli):** Added Blazor to the supported frameworks listed in the CLI documentation. [ee22827](https://github.com/IgniteUI/igniteui-cli/commit/ee2282704030c92f2cc16f4425caac4b3cc40f88)
 
 # 15.5.1 (2026-08-05)
 

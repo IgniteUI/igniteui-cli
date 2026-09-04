@@ -11,8 +11,7 @@ class IgcDockManagerTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Dock Manager";
 		this.description = "basic IgcDockManager";
-		// "igniteui-dockmanager@~1.0.0":
-		this.packages = [ `${resolvePackage(NPM_DOCK_MANAGER)}@~1.8.0` ];
+		this.packages = [ `${resolvePackage(NPM_DOCK_MANAGER)}@~2.1.1` ];
 	}
 }
 module.exports = new IgcDockManagerTemplate();

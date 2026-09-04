@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { defineCustomElements } from '<%=dockManagerPackage%>/loader';
+import { defineComponents, IgcDockManagerComponent } from '<%=dockManagerPackage%>';
 import { <%=ClassName%> } from './<%=filePrefix%>';
 
-defineCustomElements();
+defineComponents(IgcDockManagerComponent);
 
 describe('<%=ClassName%>', () => {
   let component: <%=ClassName%>;
