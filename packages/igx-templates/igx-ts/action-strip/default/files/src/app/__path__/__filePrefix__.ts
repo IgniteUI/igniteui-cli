@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { IgxActionStripComponent, IgxIconButtonDirective, IgxIconComponent } from '<%=igxPackage%>';
+import { IgxActionStripComponent, IgxButtonDirective, IgxIconComponent } from '<%=igxPackage%>';
 
 @Component({
   selector: 'app-<%=filePrefix%>',
   templateUrl: './<%=filePrefix%>.html',
   styleUrl: './<%=filePrefix%>.scss',
-  imports: [IgxActionStripComponent, IgxIconButtonDirective, IgxIconComponent],
+  imports: [IgxActionStripComponent, IgxButtonDirective, IgxIconComponent],
 })
 export class <%=ClassName%> {
   public onFavorite(): void {

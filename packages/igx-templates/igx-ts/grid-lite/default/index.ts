@@ -11,7 +11,7 @@ class IgxGridLiteTemplate extends IgniteUIForAngularTemplate {
 		this.projectType = "igx-ts";
 		this.name = "Grid Lite";
 		this.description = "Basic IgxGridLite sample";
-		this.packages = [IGNITEUI_ANGULAR_PACKAGE, "igniteui-grid-lite@~0.9.0"];
+		this.packages = [IGNITEUI_ANGULAR_PACKAGE, "igniteui-grid-lite@~0.10.0"];
 	}
 }
 module.exports = new IgxGridLiteTemplate();
