@@ -244,7 +244,7 @@ describe("Unit - ai-config command", () => {
 			expect(result[1]).toEqual(jasmine.objectContaining({ checked: true }));
 		});
 
-		it("keeps disabled exclusive options unchanged when selecting another option", () => {
+		it("rejects selecting another option when a disabled exclusive option is checked", () => {
 			const items = [
 				{ value: "none", name: "None", checked: true, disabled: true },
 				{ value: "generic", name: "Generic", checked: false, disabled: false }
@@ -252,8 +252,34 @@ describe("Unit - ai-config command", () => {
 
 			const result = applyExclusiveToggle(items, 1, ["none"]);
 
+			expect(result).toBe(items);
 			expect(result[0]).toEqual(jasmine.objectContaining({ checked: true }));
-			expect(result[1]).toEqual(jasmine.objectContaining({ checked: true }));
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: false }));
+		});
+
+		it("rejects selecting an exclusive option when a disabled non-exclusive option is already checked", () => {
+			const items = [
+				{ value: "generic", name: "Generic", checked: true, disabled: true },
+				{ value: "none", name: "None", checked: false, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 1, ["none"]);
+
+			expect(result).toBe(items);
+			expect(result[0]).toEqual(jasmine.objectContaining({ checked: true }));
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: false }));
+		});
+
+		it("allows toggling a disabled-checked item off without conflict", () => {
+			const items = [
+				{ value: "none", name: "None", checked: false, disabled: false },
+				{ value: "generic", name: "Generic", checked: true, disabled: false }
+			];
+
+			const result = applyExclusiveToggle(items, 1, ["none"]);
+
+			expect(result[0]).toEqual(jasmine.objectContaining({ checked: false }));
+			expect(result[1]).toEqual(jasmine.objectContaining({ checked: false }));
 		});
 
 		it("normalizes primitive choices to selectable items", () => {
@@ -312,6 +338,61 @@ describe("Unit - ai-config command", () => {
 			const result = exclusiveCheckboxTesting.moveActiveIndex(items, 0, -1, true);
 
 			expect(result).toBe(2);
+		});
+
+		it("returns every item unchanged when the list fits within pageSize", () => {
+			const items = [
+				{ value: "a", name: "A", checked: false, disabled: false },
+				{ value: "b", name: "B", checked: false, disabled: false },
+				{ value: "c", name: "C", checked: false, disabled: false }
+			] as any;
+
+			const result = exclusiveCheckboxTesting.getVisibleItems(items, 1, 5);
+
+			expect(result.map(entry => entry.index)).toEqual([0, 1, 2]);
+			expect(result.map(entry => entry.item)).toEqual(items);
+		});
+
+		it("windows the list around the active item when it exceeds pageSize", () => {
+			const items = Array.from({ length: 10 }, (_, i) => ({
+				value: `v${i}`,
+				name: `Item ${i}`,
+				checked: false,
+				disabled: false
+			})) as any;
+
+			const result = exclusiveCheckboxTesting.getVisibleItems(items, 8, 4);
+
+			expect(result.length).toBe(4);
+			expect(result.map(entry => entry.index)).toContain(8);
+			expect(result[0].index).toBeGreaterThanOrEqual(0);
+			expect(result[result.length - 1].index).toBeLessThan(items.length);
+		});
+
+		it("keeps the window within bounds when active is near the start", () => {
+			const items = Array.from({ length: 10 }, (_, i) => ({
+				value: `v${i}`,
+				name: `Item ${i}`,
+				checked: false,
+				disabled: false
+			})) as any;
+
+			const result = exclusiveCheckboxTesting.getVisibleItems(items, 0, 4);
+
+			expect(result.map(entry => entry.index)).toEqual([0, 1, 2, 3]);
+		});
+
+		it("renders only pageSize items in the interactive prompt output", async () => {
+			const choices = Array.from({ length: 10 }, (_, i) => `option-${i}`);
+			const { rendered } = await runExclusivePrompt(["\r"], {
+				message: "Select option",
+				choices,
+				pageSize: 3,
+				loop: false
+			});
+
+			const visibleCount = choices.filter(choice => rendered.includes(choice)).length;
+			expect(visibleCount).toBeLessThanOrEqual(3);
 		});
 
 		it("accepts numeric selection and submits selected value", async () => {

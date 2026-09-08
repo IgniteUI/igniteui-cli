@@ -86,6 +86,16 @@ function toggleExclusiveChoice<Value>(
 	const toggledOn = !choice.checked;
 	const isExclusive = exclusiveValues.some(value => Object.is(value, choice.value));
 
+	const hasConflictingDisabledSelection = toggledOn && items.some(item =>
+		!Separator.isSeparator(item) &&
+		!!item.disabled &&
+		item.checked &&
+		(isExclusive || exclusiveValues.some(value => Object.is(value, item.value)))
+	);
+	if (hasConflictingDisabledSelection) {
+		return items;
+	}
+
 	return items.map((item, itemIndex) => {
 		if (Separator.isSeparator(item)) {
 			return item;
@@ -137,11 +147,30 @@ export function applyExclusiveToggle<Value>(
 	return toggleExclusiveChoice(items, index, exclusiveValues);
 }
 
+const DEFAULT_PAGE_SIZE = 7;
+
+function getVisibleItems<Value>(
+	items: Array<NormalizedChoice<Value> | Separator>,
+	active: number,
+	pageSize: number,
+): Array<{ item: NormalizedChoice<Value> | Separator; index: number }> {
+	if (items.length <= pageSize) {
+		return items.map((item, index) => ({ item, index }));
+	}
+
+	let start = Math.max(0, active - Math.floor(pageSize / 2));
+	const end = Math.min(items.length, start + pageSize);
+	start = Math.max(0, end - pageSize);
+
+	return items.slice(start, end).map((item, i) => ({ item, index: start + i }));
+}
+
 export const exclusiveCheckboxTesting = {
 	normalizeChoice,
 	moveActiveIndex,
 	isSelectable,
 	isChecked,
+	getVisibleItems,
 };
 
 export const exclusiveCheckbox = createPrompt<string[], ExclusiveCheckboxConfig<string>>((config, done) => {
@@ -222,8 +251,9 @@ export const exclusiveCheckbox = createPrompt<string[], ExclusiveCheckboxConfig<
 		return `${prefix} ${config.message}\n${styleText("cyan", answer)}`;
 	}
 
-	const renderedItems = items
-		.map((item, index) => renderItem(item, index, index === active))
+	const pageSize = config.pageSize ?? DEFAULT_PAGE_SIZE;
+	const renderedItems = getVisibleItems(items, active, pageSize)
+		.map(({ item, index }) => renderItem(item, index, index === active))
 		.join("\n");
 
 	const helpLine = styleText("dim", "Use ↑↓ to navigate, space to toggle, enter to submit");
