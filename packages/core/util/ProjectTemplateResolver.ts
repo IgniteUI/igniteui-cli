@@ -23,7 +23,7 @@ function isUpgradeableProject(project: ProjectTemplate): boolean {
 export function resolveUpgradeableProject(
 	library: ProjectLibrary,
 	configuredTemplateId?: string
-): ProjectTemplate {
+): ProjectTemplate | null {
 	if (configuredTemplateId && library.hasProject(configuredTemplateId)) {
 		const configuredProject = library.getProject(configuredTemplateId);
 		if (isUpgradeableProject(configuredProject)) {

@@ -70,7 +70,9 @@ export class PackageManager {
 					if (projectLibrary) {
 						// TODO multiple projects?
 						const project = resolveUpgradeableProject(projectLibrary, config.project.projectTemplate);
-						if (project) {
+						if (!project) {
+							Util.warn("No valid Ignite UI project template found; skipping upgrade step.", "yellow");
+						} else {
 							await project.upgradeIgniteUIPackages(process.cwd(), `./node_modules/${this.fullPackage}/en`);
 						}
 					}
