@@ -1,8 +1,8 @@
 import { exec } from "child_process";
 import * as path from "path";
 import { BaseTemplateManager } from "../templates";
-import { Config, FS_TOKEN, IFileSystem, ProjectTemplate } from "../types";
-import { App, ProjectConfig, Util } from "../util";
+import { Config, FS_TOKEN, IFileSystem } from "../types";
+import { App, ProjectConfig, resolveUpgradeableProject, Util } from "../util";
 
 import componentsConfig = require("./components");
 
@@ -69,14 +69,12 @@ export class PackageManager {
 					const projectLibrary = templateManager.getProjectLibrary(config.project.framework, config.project.projectType);
 					if (projectLibrary) {
 						// TODO multiple projects?
-						let project: ProjectTemplate;
-						if (!config.project.projectTemplate) {
-							// in case project template is missing from the config we provide backward.
-							project = projectLibrary.getProject(projectLibrary.projectIds[0]);
+						const project = resolveUpgradeableProject(projectLibrary, config.project.projectTemplate);
+						if (!project) {
+							Util.warn("No valid Ignite UI project template found; skipping upgrade step.", "yellow");
 						} else {
-							project = projectLibrary.getProject(config.project.projectTemplate);
+							await project.upgradeIgniteUIPackages(process.cwd(), `./node_modules/${this.fullPackage}/en`);
 						}
-						await project.upgradeIgniteUIPackages(process.cwd(), `./node_modules/${this.fullPackage}/en`);
 					}
 				}
 			} else {
