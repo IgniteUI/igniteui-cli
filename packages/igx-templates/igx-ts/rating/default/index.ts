@@ -8,9 +8,7 @@ class IgxRatingTemplate extends IgniteUIForAngularTemplate {
 		this.listInComponentTemplates = true;
 		this.id = "rating";
 		this.projectType = "igx-ts";
-		this.name = "Rating";
-		this.description = "Basic igc-rating sample";
-		this.packages = ["igniteui-webcomponents@^7.2.1"];
+		this.description = "Basic igc-rating (Web Components) sample";
 	}
 }
 module.exports = new IgxRatingTemplate();
