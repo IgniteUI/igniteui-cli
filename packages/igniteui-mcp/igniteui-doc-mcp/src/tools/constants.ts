@@ -44,6 +44,17 @@ Returns YAML frontmatter (component, keywords, summary) followed by the complete
 Returns isError if the doc name is not found, with a suggestion to use list_components.
 `,
 
+  get_example: `Return only the runnable code examples for one Ignite UI component doc — no prose. Resolves the component to a single doc (the same name resolution as get_doc) and extracts the fenced code blocks, grouped per example and labelled by their section heading.
+
+Use this when the user wants to see how to use a component in code, not read the full documentation. For the surrounding explanation, tables, and API links, use get_doc instead.
+
+Pass component as a class name or kebab-case doc name (e.g. "grid", "IgxCombo", "date-picker"). Add topic to target a sub-feature doc (e.g. component "grid" + topic "editing" → grid-editing).
+
+Always pass language when the target language is known — it is by far the biggest lever on response size. Measured across the whole doc corpus, a language-filtered call returns ~59% fewer tokens than get_doc, against ~36% for an unfiltered one; on the largest chart and grid docs an unfiltered call saves almost nothing. Typical values: Angular → "typescript", "html", "scss"; React → "tsx"; Web Components → "typescript", "html"; Blazor → "razor", "csharp". Matching is alias-aware, so "typescript" also matches ts fences and "csharp" matches cs. Omit language only when the answer genuinely needs several languages side by side (e.g. an Angular component's TS + HTML + SCSS) — and in that case narrow with topic instead.
+
+Returns code blocks grouped under their section headings. Returns isError if the doc cannot be resolved (with a suggestion to use list_components or search_docs); returns a plain message if the doc exists but contains no matching code examples. Note: examples reflect the compressed docs, so large sample data sets may be trimmed to a representative subset.
+`,
+
   search_docs: `Full-text search across all Ignite UI documentation for a specific framework.
 
 Use this when the user asks "how do I..." or describes a feature need — e.g. "column pinning", "data validation", "virtual scroll", "remote data", "tree*". For browsing by component name instead, use list_components. For a known doc name, use get_doc directly.

@@ -12,7 +12,7 @@ import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
 import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
 import { getApiReferenceSchema, searchApiSchema } from "./tools/schemas.js";
 import { createGetApiReferenceHandler, createSearchApiHandler } from "./tools/handlers.js";
-import { applyDocAlias, buildProjectSetupGuide, normalizeDocName, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
+import { buildProjectSetupGuide, extractCodeExamples, formatCodeExamples, formatSubstitutionNotice, normalizeDocName, resolveDoc, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
 import { ApiDocLoader } from "./lib/api-doc-loader.js";
 import { getPlatforms } from "./config/platforms.js";
 
@@ -160,24 +160,76 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     },
     async ({ framework, name }) => {
       const start = performance.now();
-      const resolvedName = applyDocAlias(framework, normalizeDocName(name.trim()));
-      let { text, found } = await docsProvider.getDoc(framework, resolvedName);
+      const { text, found, servedName, fuzzy } = await resolveDoc(docsProvider, framework, name);
 
-      // Generic grid-prefix fallback: if the doc isn't found and the name doesn't
-      // already start with a component-type prefix, try "grid-{name}".
-      // This handles bare feature names like "sorting", "remote-data-operations",
-      // "row-editing" etc. without needing an explicit alias for every grid sub-doc.
-      let servedName = resolvedName;
-      if (!found && !/^(grid|hierarchical|tree|pivot|hierarchicalgrid|treegrid|pivotgrid|combo|drop-down|select|for-of)[-]/.test(resolvedName)) {
-        const withGridPrefix = await docsProvider.getDoc(framework, `grid-${resolvedName}`);
-        if (withGridPrefix.found) {
-          ({ text, found } = withGridPrefix);
-          servedName = `grid-${resolvedName}`;
-        }
+      const body = fuzzy ? `${formatSubstitutionNotice(name, servedName)}\n\n${text}` : text;
+
+      log("get_doc", { framework, name: servedName }, body, Math.round(performance.now() - start));
+      return { content: [{ type: "text" as const, text: body }], ...(found ? {} : { isError: true }) };
+    }
+  );
+
+  server.registerTool(
+    "get_example",
+    {
+      description: TOOL_DESCRIPTIONS.get_example,
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      inputSchema: {
+        framework: FRAMEWORK_ENUM,
+        component: z
+          .string()
+          .min(1, "Component name is required")
+          .describe(
+            'Component name (class name or kebab-case doc name). ' +
+            'Examples: "grid", "IgxCombo", "date-picker". Resolves to a single doc.'
+          ),
+        topic: z
+          .string()
+          .optional()
+          .describe(
+            'Optional sub-feature to target a specific doc for the component. ' +
+            'Example: component "grid" + topic "editing" → the grid-editing doc. ' +
+            'Omit to use the component\'s primary/overview doc.'
+          ),
+        language: z
+          .string()
+          .optional()
+          .describe(
+            'Fence language filter — return only blocks in this language. Pass it whenever ' +
+            'the target language is known: it roughly halves the response versus an unfiltered call. ' +
+            'Alias-aware: "typescript" also matches ts, "csharp" matches cs, "shell" matches cmd. ' +
+            'Angular → "typescript" / "html" / "scss", React → "tsx", Web Components → "typescript" / "html", ' +
+            'Blazor → "razor" / "csharp". Omit only when several languages are needed side by side.'
+          ),
+      },
+    },
+    async ({ framework, component, topic, language }) => {
+      const start = performance.now();
+      const topicPart = topic?.trim();
+      const requested = topicPart
+        ? `${normalizeDocName(component)}-${normalizeDocName(topicPart)}`
+        : component.trim();
+
+      const { text, found, servedName, fuzzy } = await resolveDoc(docsProvider, framework, requested);
+
+      if (!found) {
+        log("get_example", { framework, component, topic }, text, Math.round(performance.now() - start));
+        return { content: [{ type: "text" as const, text }], isError: true };
       }
 
-      log("get_doc", { framework, name: servedName }, text, Math.round(performance.now() - start));
-      return { content: [{ type: "text" as const, text }], ...(found ? {} : { isError: true }) };
+      const notice = fuzzy ? `${formatSubstitutionNotice(requested, servedName)}\n\n` : "";
+      const examples = extractCodeExamples(text, { language });
+
+      if (examples.length === 0) {
+        const langNote = language ? ` in \`${language}\`` : "";
+        const msg = `${notice}No code examples${langNote} found in \`${servedName}\` (${framework}). Use get_doc for the full doc, or try a different topic.`;
+        log("get_example", { framework, component, topic }, msg, Math.round(performance.now() - start));
+        return { content: [{ type: "text" as const, text: msg }] };
+      }
+
+      const result = notice + formatCodeExamples(examples, { framework, docName: servedName, language });
+      log("get_example", { framework, component, topic }, result, Math.round(performance.now() - start));
+      return { content: [{ type: "text" as const, text: result }] };
     }
   );
 
