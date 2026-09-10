@@ -5,7 +5,7 @@ class IgxChatTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Chat"];
-		this.controlGroup = "Interactions";
+		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
 		this.id = "chat";
 		this.projectType = "igx-ts";
