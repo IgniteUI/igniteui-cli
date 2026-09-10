@@ -1,0 +1,12 @@
+<p>igx-nav-drawer component sample.</p>
+<p>You can read more about configuring the igx-nav-drawer component in the
+<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/navigation-drawer/README.md" target="_blank">README</a> or the
+<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/navdrawer" target="_blank">official documentation</a>.</p>
+<button type="button" igxButton="contained" (click)="isOpen = !isOpen">Toggle drawer</button>
+<igx-nav-drawer [isOpen]="isOpen">
+  <ng-template igxDrawer>
+    <span igxDrawerItem [isHeader]="true">Drawer Title</span>
+    <span igxDrawerItem igxRipple>Home</span>
+    <span igxDrawerItem igxRipple [active]="true">Selected Item</span>
+  </ng-template>
+</igx-nav-drawer>

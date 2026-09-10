@@ -1,0 +1,24 @@
+<p>igx-card component sample.</p>
+<p>You can read more about configuring the igx-card component in the
+<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/card/README.md" target="_blank">README</a> or the
+<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/card.html" target="_blank">official documentation</a>.</p>
+<igx-card>
+  <igx-card-header>
+    <igx-avatar src="https://www.infragistics.com/angular-demos-lob/assets/images/card/media/coffeeshopdemo.jpg" shape="circle"></igx-avatar>
+    <h4 igxCardHeaderTitle>Coffee Shop</h4>
+    <h5 igxCardHeaderSubtitle>Downtown</h5>
+  </igx-card-header>
+
+  <igx-card-media>
+    <img src="https://www.infragistics.com/angular-demos-lob/assets/images/card/media/coffeeshopdemo.jpg" alt="Coffee shop" />
+  </igx-card-media>
+
+  <igx-card-content>
+    <p>A cozy place to enjoy a fresh cup of coffee and get some work done.</p>
+  </igx-card-content>
+
+  <igx-card-actions>
+    <button type="button" igxButton (click)="openUrl('https://www.infragistics.com')">Learn more</button>
+    <button type="button" igxButton (click)="openUrl('https://www.infragistics.com')">Share</button>
+  </igx-card-actions>
+</igx-card>
