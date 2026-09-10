@@ -7,7 +7,7 @@ class IgcChatComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name  = "Chat";
-		this.group = "Data Entry & Display";
+		this.group = "Interactions";
 		this.description = `Complete conversational UI with messages, attachments and suggestions`;
 	}
 }
