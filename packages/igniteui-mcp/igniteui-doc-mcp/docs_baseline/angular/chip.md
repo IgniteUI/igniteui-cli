@@ -13,7 +13,7 @@ _tocName: Chip
 ## Angular Chip Example
 
 ```typescript
-import { ChangeDetectorRef, Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { IBaseChipEventArgs, IgxChipComponent } from 'igniteui-angular/chips';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -23,7 +23,6 @@ import { IgxPrefixDirective } from 'igniteui-angular/input-group';
     selector: 'app-chip-simple',
     styleUrls: ['./chip-simple.component.scss'],
     templateUrl: './chip-simple.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxChipComponent, IgxIconComponent, IgxPrefixDirective]
 })
 
@@ -81,7 +80,7 @@ igx-chip {
 }
 
 .sample-container {
-    padding-top: 30px;
+    padding: 1rem 0 0 1rem;
 }
 ```
 
@@ -262,7 +261,7 @@ public chipRemoved(event: IBaseChipEventArgs) {
 If everything went well, you should see this in your browser:
 
 ```typescript
-import { ChangeDetectorRef, Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { IBaseChipEventArgs, IgxChipComponent } from 'igniteui-angular/chips';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -272,7 +271,6 @@ import { IgxPrefixDirective } from 'igniteui-angular/input-group';
     selector: 'app-chip-simple',
     styleUrls: ['./chip-simple.component.scss'],
     templateUrl: './chip-simple.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxChipComponent, IgxIconComponent, IgxPrefixDirective]
 })
 
@@ -330,7 +328,7 @@ igx-chip {
 }
 
 .sample-container {
-    padding-top: 30px;
+    padding: 1rem 0 0 1rem;
 }
 ```
 
@@ -459,7 +457,7 @@ If everything went well, you should see this in your browser:
 
 
 ```typescript
-import { ChangeDetectorRef, Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { IBaseChipEventArgs, IgxChipComponent } from 'igniteui-angular/chips';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -469,7 +467,6 @@ import { IgxPrefixDirective } from 'igniteui-angular/input-group';
     selector: 'app-chip-simple',
     styleUrls: ['./chip-simple.component.scss'],
     templateUrl: './chip-simple.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxChipComponent, IgxIconComponent, IgxPrefixDirective]
 })
 
@@ -527,7 +524,7 @@ igx-chip {
 }
 
 .sample-container {
-    padding-top: 30px;
+    padding: 1rem 0 0 1rem;
 }
 ```
 
@@ -684,7 +681,7 @@ If everything's set up correctly, you should see this in your browser:
 ### Demo
 
 ```typescript
-import { ChangeDetectorRef, Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { IBaseChipEventArgs, IChipsAreaReorderEventArgs, IgxChipComponent, IgxChipsAreaComponent } from 'igniteui-angular/chips';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 import { IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -695,7 +692,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-chip-area-sample',
     styleUrls: ['./chip-area-sample.component.scss'],
     templateUrl: './chip-area-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxChipsAreaComponent, IgxChipComponent, IgxAvatarComponent, IgxPrefixDirective, IgxIconComponent]
 })
 
@@ -779,7 +775,7 @@ igx-chip {
 }
 
 .sample-container {
-    padding-top: 30px;
+    padding: 1rem 0 0 1rem;
 }
 ```
 
@@ -935,7 +931,7 @@ Finally, **include** the custom theme in your application:
 In the sample below, you can see how using the chip component with customized CSS variables allows you to create a design that visually resembles the chip used in the [`Ant`](https://ant.design/components/tag?theme=light#tag-demo-icon) design system.
 
 ```typescript
-import { ChangeDetectorRef, Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { facebook, linkedin } from '@igniteui/material-icons-extended';
 import { IgxChipComponent, IgxChipsAreaComponent } from 'igniteui-angular/chips';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
@@ -946,7 +942,6 @@ import { NgClass } from '@angular/common';
   selector: 'app-chip',
   styleUrls: ['./chip-styling.component.scss'],
   templateUrl: './chip-styling.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [IgxChipsAreaComponent, IgxChipComponent, IgxIconComponent, IgxPrefixDirective, NgClass]
 })
 
@@ -998,49 +993,56 @@ export class ChipStylingSampleComponent implements OnInit {
 @use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
-// CSS variables approach
+igx-chips-area {
+    --ig-size: var(--ig-size-medium);
 
+    gap: rem(8px);
+}
+
+igx-icon {
+    --ig-icon-size: #{rem(13px)};
+}
+
+// CSS variables approach
 igx-chip {
     --text-color: #fff;
     --hover-text-color: #fff;
     --focus-text-color: #fff;
     --border-radius: #{rem(5px)};
+
+    &.xcom {
+        --background: #000;
+        --hover-background: #000;
+        --focus-background: #323232;
+    }
+
+    &.youtube {
+        --background: #cd201f;
+        --hover-background: #cd201f;
+        --focus-background: #9f1717;
+    }
+
+    &.facebook {
+        --background: #3b5999;
+        --hover-background: #3b5999;
+        --focus-background: #2c4378;
+    }
+
+    &.linkedin {
+        --background: #55acee;
+        --hover-background: #55acee;
+        --focus-background: #4682af;
+    }
 }
 
-.xcom {
-    --background: #000;
-    --hover-background: #000;
-    --focus-background: #323232;
-}
-
-.youtube {
-    --background: #cd201f;
-    --hover-background: #cd201f;
-    --focus-background: #9f1717;
-}
-
-.facebook {
-    --background: #3b5999;
-    --hover-background: #3b5999;
-    --focus-background: #2c4378;
-}
-
-.linkedin {
-    --background: #55acee;
-    --hover-background: #55acee;
-    --focus-background: #4682af;
-}
-
-// Sass theme approach
-
+//Sass theme approach
 // $custom-chip-theme: chip-theme(
-//     $background: #cd201f,
 //     $text-color: #fff,
-//     $hover-background: #cd201f,
-//     $focus-background: #9f1717,
+//     $hover-background: #fff,
+//     $focus-background: #fff,
 //     $border-radius: rem(5px)
 // );
-
+//
 // :host {
 //     @include tokens($custom-chip-theme);
 // }

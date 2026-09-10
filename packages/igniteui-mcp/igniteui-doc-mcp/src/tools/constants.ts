@@ -21,11 +21,16 @@ This tool is read-only: it does not create files, run commands, detect the curre
 Template rule: start with the base template unless the user explicitly needs multiple routed views. Use side-nav only when multi-view routing is actually required.
 `,
 
-  list_components: `List all available Ignite UI component documentation entries for a given framework. Optionally filter by keyword matched against filename, component name, keywords, or summary.
+  list_components: `Browse the Ignite UI component documentation index for a framework, grouped by the published documentation table of contents.
 
-Use this to discover what docs exist before calling get_doc — e.g. to browse available grid docs, filter with "grid". For feature-based or free-text queries ("how do I enable row editing"), use search_docs instead.
+By default returns a compact index: one heading per group with a short group summary and the doc names it contains. Use it to discover what docs exist before calling get_doc. For feature-based or free-text queries ("how do I enable row editing"), use search_docs instead.
 
-Returns a formatted list where each entry includes: doc name (pass this as the 'name' parameter to get_doc), display name, summary, and premium status. Without a filter, returns the full catalog for the framework.
+Narrowing, cheapest first:
+- 'group' — pass a heading exactly as printed by the index (e.g. "Grids & Lists > Data Grid") to get that group's docs with a summary each, in documentation order. An unknown value returns the valid headings rather than an error.
+- 'filter' — case-insensitive substring match on filename, component name, keywords, summary, or group name. Groups with no match are omitted; per-doc summaries are included when few enough docs match. Combine with 'group' to search inside one group.
+- 'detail: "docs"' — the flat per-doc list with a summary for every doc. This is the largest response by a wide margin; reach for it only when you genuinely need every summary at once. It matches the five doc columns only, not group names.
+
+Doc names printed by any mode are what you pass as the 'name' parameter to get_doc. ⭐ marks premium docs.
 
 No pagination — the full result set is returned in one call.
 `,

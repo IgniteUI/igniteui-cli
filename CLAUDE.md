@@ -10,9 +10,26 @@ npm run build                   # TypeScript compilation (tsc) + config schema g
 npm run test                    # lint + build + tests with coverage (via pretest hook)
 npm run jasmine                 # tests only — no lint/build/coverage
 npm run lint                    # ESLint (flat config in eslint.config.mjs)
+scripts/smoke-test.sh           # scaffold + add every template + install + build (see below)
 ```
 
 To run a single test: edit `spec/jasmine-runner.ts` to filter `spec_files`, then `npm run jasmine`. Tests are Jasmine specs under `spec/` (unit + acceptance) and within individual packages.
+
+### Template smoke test
+
+`scripts/smoke-test.sh` is the only check that a generated project actually installs and builds —
+the Jasmine specs stub `PackageManager.installPackages`. Run it after touching anything under
+`packages/cli/templates/` or `packages/igx-templates/`. Requires `npm run build` first.
+
+```bash
+scripts/smoke-test.sh -f angular --templates grid,combo   # fast path, ~2 min
+scripts/smoke-test.sh                                     # angular+react+webcomponents, ~20-30 min
+```
+
+Results in `output/smoke/results.tsv`, per-step logs in `output/smoke/logs/`. Two constraints when
+editing it: every `ig` call must precede `npm install` (otherwise `bin/execute.js` delegates to the
+project-local *published* CLI), and exit codes alone are not trustworthy (`Util.error` returns
+without setting one) — steps are also judged on a log scan plus an artifact check.
 
 ### MCP Server (`packages/igniteui-mcp/igniteui-doc-mcp`)
 

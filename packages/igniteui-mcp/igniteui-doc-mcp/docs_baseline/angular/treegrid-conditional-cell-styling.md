@@ -43,7 +43,7 @@ public activeRowCondition = (row: RowType) => this.grid?.navigation.activeNode?.
 > Use **`::ng-deep`** or **`ViewEncapsulation.None`** to force the custom styles down through the current component and its children.
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent, RowType } from 'igniteui-angular/grids/core';
 import { generateEmployeeFlatData, IEmployee } from '../data/employees-flat';
@@ -54,7 +54,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-row-classes-sample',
     styleUrls: ['tree-grid-rowClasses.component.scss'],
     templateUrl: 'tree-grid-rowClasses.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class TreeGridRowClassesComponent implements OnInit {
@@ -162,7 +161,7 @@ public rowStyles = {
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent, RowType } from 'igniteui-angular/grids/core';
 import { generateEmployeeFlatData, IEmployee } from '../data/employees-flat';
@@ -173,7 +172,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-row-styles-sample',
     styleUrls: ['tree-grid-rowStyle.component.scss'],
     templateUrl: 'tree-grid-rowStyle.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class TreeGridRowStylesComponent implements OnInit {
@@ -298,7 +296,7 @@ public priceClasses = {
 > Use **`::ng-deep`** or **`ViewEncapsulation.None`** to force the custom styles down through the current component and its children.
 ### Demo
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ORDERS_DATA } from '../data/orders';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -309,7 +307,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-conditional-cell-style-sample',
     styleUrls: ['./tree-grid-conditional-cell-style-sample.component.scss'],
     templateUrl: './tree-grid-conditional-cell-style-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective]
 })
 
@@ -543,7 +540,7 @@ Define a `popin` animation
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent } from 'igniteui-angular/input-group';
@@ -556,7 +553,6 @@ import { JsonPipe } from '@angular/common';
     selector: 'app-grid-conditional-cell-style-2',
     styleUrls: ['./tree-grid-conditional-cell-style-2.component.scss'],
     templateUrl: './tree-grid-conditional-cell-style-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxInputDirective, IgxHintDirective, IgxButtonDirective, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, JsonPipe]
 })
 export class TreeGridConditionalCellStyle2Component implements OnInit {

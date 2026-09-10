@@ -12,7 +12,7 @@ Pagination is used to split a large set of data into a sequence of pages that ha
 ## Angular Pagination Example
 The following example represents Hierarchical Grid pagination and exposes the options usage of `items per page` and how paging can be enabled. The user can also quickly navigate through the Hierarchical Grid pages via "Go to last page" and "Go to first page" buttons.
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -23,7 +23,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-paging',
     styleUrls: ['./hierarchical-grid-paging.component.scss'],
     templateUrl: 'hierarchical-grid-paging.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxPaginatorDirective, IgxPaginatorComponent]
 })
 
@@ -151,7 +150,7 @@ Due to certain limitations in how the child grids of an IgxHierarchicalGrid are 
 ```
 ### Paginator Component Demo
 ```typescript
-import { Component, OnInit, ViewChild, AfterViewInit, PLATFORM_ID, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, PLATFORM_ID, inject } from '@angular/core';
 import { IPaginatorResourceStrings } from 'igniteui-angular/core';
 import { IgxPageNavigationComponent, IgxPageSizeSelectorComponent, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxPaginatorDirective } from 'igniteui-angular/paginator';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
@@ -167,7 +166,6 @@ import { isPlatformBrowser } from '@angular/common';
     selector: 'app-hierarchical-grid-pager-sample',
     styleUrls: ['./hierarchical-grid-pager-sample.component.scss'],
     templateUrl: './hierarchical-grid-pager-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxPageSizeSelectorComponent, IgxPageNavigationComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxPaginatorDirective, IgxSwitchComponent, FormsModule]
 })
 export class HierarchicalGridPagerSampleComponent implements OnInit, AfterViewInit {
@@ -343,7 +341,7 @@ The last step is to **include** the component mixins, each with its respective t
 ```
 ### Demo
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxPaginatorComponent, IgxPaginatorDirective } from 'igniteui-angular/paginator';
@@ -354,7 +352,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-paging',
     styleUrls: ['./hierarchical-grid-paging-style.component.scss'],
     templateUrl: 'hierarchical-grid-paging-style.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxPaginatorDirective]
 })
 

@@ -40,7 +40,6 @@ Similar to the cell template, you can also pass a custom template renderer and c
 ```typescript
 import { html } from 'lit';
 
-
 const column = document.querySelector('igc-grid-lite-column');
 column.headerTemplate = () => html`<h3>⭐ Rating ⭐</h3>`;
 ```

@@ -23,6 +23,7 @@ import * as path from "path";
 const FRAMEWORKS = ["angular", "react", "blazor", "webcomponents"];
 const DOCS_FINAL_DIR = path.resolve("dist", "docs_final");
 const DOCS_PREPARED_DIR = path.resolve("dist", "docs_prepeared");
+const TOC_INDEX_DIR = path.resolve("dist", "toc-index");
 const DEFAULT_DB = path.resolve("db", "igniteui-docs.db");
 
 interface DocRow {
@@ -50,6 +51,52 @@ function buildDoc(row: DocRow): string {
 	// parseFrontmatter() strips exactly one newline after the closing ---, and the
 	// stored content keeps its own leading newline, so a single \n round-trips.
 	return `${lines.join("\n")}\n${row.content}`;
+}
+
+/**
+ * Rebuild dist/toc-index/<fw>.json from the committed DB's own doc_toc rows.
+ *
+ * Re-deriving it from a TOC would mean checking out a submodule this run never
+ * touched; round-tripping keeps a non-rebuilt framework's groups exactly as they
+ * were published. Only the columns build-db ingests are available here — the
+ * exporter's display-only fields are absent by design.
+ */
+function restoreSidecar(db: Database.Database, framework: string): number | null {
+	const hasDocToc =
+		db.prepare("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'doc_toc'").get() !== undefined;
+	if (!hasDocToc) return null;
+
+	const rows = db
+		.prepare(
+			"SELECT filename, group_key, section, group_label, path, ord, landing FROM doc_toc WHERE framework = ? ORDER BY ord"
+		)
+		.all(framework) as {
+			filename: string;
+			group_key: string;
+			section: string;
+			group_label: string;
+			path: string;
+			ord: number;
+			landing: number;
+		}[];
+	if (rows.length === 0) return 0;
+
+	const records = rows.map((r) => ({
+		file: r.filename,
+		section: r.section,
+		groupKey: r.group_key,
+		groupLabel: r.group_label,
+		path: r.path,
+		ord: r.ord,
+		landing: r.landing === 1
+	}));
+
+	fs.mkdirSync(TOC_INDEX_DIR, { recursive: true });
+	const out = path.join(TOC_INDEX_DIR, `${framework}.json`);
+	const tmp = `${out}.tmp`;
+	fs.writeFileSync(tmp, `${JSON.stringify(records, null, 2)}\n`, "utf-8");
+	fs.renameSync(tmp, out);
+	return records.length;
 }
 
 function main(): void {
@@ -104,6 +151,17 @@ function main(): void {
 
 		grandTotal += rows.length;
 		console.log(`  ${fw}: ${rows.length} docs restored to dist/docs_final/${fw}/${tocStubs ? " (+ toc stubs)" : ""}`);
+
+		if (tocStubs) {
+			const memberships = restoreSidecar(db, fw);
+			if (memberships === null) {
+				console.warn(`  [warn] ${fw}: ${path.basename(dbPath)} has no doc_toc table — no sidecar restored`);
+			} else if (memberships === 0) {
+				console.warn(`  [warn] ${fw}: no doc_toc rows in ${path.basename(dbPath)} — no sidecar restored`);
+			} else {
+				console.log(`  ${fw}: ${memberships} TOC membership(s) restored to dist/toc-index/${fw}.json`);
+			}
+		}
 	}
 
 	db.close();

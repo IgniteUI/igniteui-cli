@@ -37,7 +37,9 @@ describe("Unit - documentation database", () => {
 	}
 
 	beforeAll(async () => {
-		expect(fs.existsSync(DB_PATH)).toBe(true, `Database not found at ${DB_PATH}. Run 'npm run build:db'.`);
+		expect(fs.existsSync(DB_PATH))
+			.withContext(`Database not found at ${DB_PATH}. Run 'npm run build:db'.`)
+			.toBeTrue();
 
 		const wasm = fs.readFileSync(require.resolve("sql.js/dist/sql-wasm.wasm"));
 		const SQL = await initSqlJs({
@@ -64,7 +66,8 @@ describe("Unit - documentation database", () => {
 	it("should meet the minimum document count per framework", () => {
 		for (const fw of FRAMEWORKS) {
 			expect(counts[fw] || 0)
-				.toBeGreaterThanOrEqual(MIN_DOCS[fw], `${fw} has ${counts[fw] || 0} docs, expected >= ${MIN_DOCS[fw]}`);
+				.withContext(`${fw} has ${counts[fw] || 0} docs, expected >= ${MIN_DOCS[fw]}`)
+				.toBeGreaterThanOrEqual(MIN_DOCS[fw]);
 		}
 	});
 
@@ -87,10 +90,21 @@ describe("Unit - documentation database", () => {
 	it("should have required frontmatter on every document", () => {
 		const bad = rows(`
 			select framework, filename from docs
-			where component is null or trim(component) = ''
-				or summary is null or trim(summary) = ''
+			where summary is null or trim(summary) = ''
 				or keywords is null or trim(keywords) = ''
 		`);
+		expect(bad.map(r => `${r.framework}/${r.filename}`)).toEqual([]);
+	});
+
+	it("should only leave component empty when the document has no library component", () => {
+		// A few docs legitimately have none — CLI guides, migration walkthroughs. Any
+		// other empty value means the field was lost. Quote characters count as empty:
+		// the model has emitted `component: ""`, which reaches the DB as a component
+		// literally named `""` and shows up as one in list_components.
+		const bad = rows(`
+			select framework, filename, component, content from docs
+			where trim(replace(replace(coalesce(component, ''), '"', ''), '''', '')) = ''
+		`).filter(r => /\bIg[xrbc][A-Z]\w+/.test(r.content));
 		expect(bad.map(r => `${r.framework}/${r.filename}`)).toEqual([]);
 	});
 

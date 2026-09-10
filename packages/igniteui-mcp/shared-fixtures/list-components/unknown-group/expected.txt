@@ -1,0 +1,8 @@
+No group "Nope" in **angular**. Valid groups:
+
+- Grids & Lists
+- Grids & Lists > Data Grid
+- Layouts
+- Frameworks > Excel Library
+
+Omit `group` for the full grouped index, or pass `filter` to search across groups.

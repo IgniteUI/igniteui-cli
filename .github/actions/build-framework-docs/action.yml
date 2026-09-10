@@ -28,16 +28,44 @@ runs:
   using: composite
   steps:
     - uses: actions/checkout@v6
-      with:
-        submodules: recursive
 
+    # Deliberately not `submodules: recursive` — that also clones blazor/api-docs,
+    # blazor/igniteui-blazor and react/igniteui-react. api-docs is a private repository
+    # the default token cannot read, and none of the three are used by the documentation
+    # pipeline. Only the sources this framework reads are checked out.
+    - name: Check out documentation submodules
+      shell: bash
+      env:
+        FW: ${{ inputs.framework }}
+      run: |
+        set -euo pipefail
+        BASE=packages/igniteui-mcp/igniteui-doc-mcp
+        case "$FW" in
+          angular)
+            SUBS="angular/igniteui-docfx angular/igniteui-angular-samples angular/igniteui-angular-examples" ;;
+          react)
+            SUBS="common/igniteui-xplat-docs react/igniteui-react-examples" ;;
+          blazor)
+            SUBS="common/igniteui-xplat-docs blazor/igniteui-blazor-examples" ;;
+          webcomponents)
+            SUBS="common/igniteui-xplat-docs webcomponents/igniteui-wc-examples" ;;
+          *)
+            echo "::error::Unknown framework '$FW'"; exit 1 ;;
+        esac
+        for sub in $SUBS; do
+          echo "--- $sub ---"
+          git submodule update --init "$BASE/$sub"
+        done
+
+    # Node 24, not 22: rewrite-api-links.ts uses URLPattern, which only became a
+    # global in Node 24. On 22 it fails with "URLPattern is not defined".
     - uses: actions/setup-node@v6
       with:
-        node-version: 22.x
+        node-version: 24.x
         cache: yarn
 
     # The cross-platform gulp build restores the docfx dotnet tool.
-    - uses: actions/setup-dotnet@v4
+    - uses: actions/setup-dotnet@v6
       if: inputs.framework != 'angular'
       with:
         dotnet-version: 8.x
@@ -99,6 +127,7 @@ runs:
         if [ "$MODE" = "full" ]; then
           npm run "compress:$FW" -- --batch submit
           npm run "compress:$FW" -- --batch poll
+          npm run "derive-components:$FW"
           npx tsx scripts/update-baseline.ts --framework "$FW" --full
         else
           npm run "diff:$FW"
@@ -110,23 +139,59 @@ runs:
           if [ "$CHANGED" -gt 0 ]; then
             npm run "compress:$FW" -- --batch submit --manifest dist/diff-manifest.json
             npm run "compress:$FW" -- --batch poll
+            # Only the freshly compressed docs need it; restored ones already carry
+            # derived values from the committed DB.
+            npm run "derive-components:$FW"
           fi
           npm run "update-baseline:$FW"
         fi
 
-    - name: Report compression stats
+        # Compression must yield one document per input. A batch entry that fails is
+        # simply absent from docs_final — the pipeline continues, the DB is published
+        # short, and document-count floors are far too loose to notice one missing file.
+        # This is not hypothetical: a full run reported "375 succeeded, 1 failed" and
+        # silently dropped hierarchicalgrid-editing.md.
+        IN=$(find "dist/docs_prepeared/$FW" -name '*.md' -not -name '_*' | wc -l)
+        OUT=$(find "dist/docs_final/$FW" -name '*.md' -not -name '_*' | wc -l)
+        if [ "$OUT" -lt "$IN" ]; then
+          echo "::warning::$FW: $OUT of $IN documents present after compression — retrying failed batch entries"
+          # `--batch retry` only submits a new batch; polling downloads its results.
+          # batchPoll reads state.retry_batch_id, so it follows the retry batch.
+          if npm run "compress:$FW" -- --batch retry; then
+            npm run "compress:$FW" -- --batch poll || true
+            npm run "derive-components:$FW" || true
+          fi
+          OUT=$(find "dist/docs_final/$FW" -name '*.md' -not -name '_*' | wc -l)
+        fi
+        if [ "$OUT" -lt "$IN" ]; then
+          echo "::error::$FW: compression produced only $OUT of $IN documents. Refusing to publish an incomplete set."
+          comm -23 \
+            <(find "dist/docs_prepeared/$FW" -name '*.md' -not -name '_*' -printf '%f\n' | sort) \
+            <(find "dist/docs_final/$FW" -name '*.md' -not -name '_*' -printf '%f\n' | sort)
+          exit 1
+        fi
+        echo "$FW: $OUT of $IN documents compressed"
+
+    # The composite action inlines the pipeline rather than calling pipeline:*, so
+    # the summaries step has to be listed here too. Cached groups make no API call;
+    # credentials are already written by "Configure OpenAI credentials".
+    - name: Build group summaries
+      shell: bash
+      working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+      run: npm run build:group-summaries -- --framework "${{ inputs.framework }}"
+
+    # Always runs, so a framework that skipped compression still reports why.
+    - name: Report build summary
+      if: always()
       shell: bash
       working-directory: packages/igniteui-mcp/igniteui-doc-mcp
       run: |
-        STATS="dist/docs_final/${{ inputs.framework }}/_compression_stats.json"
-        COUNT=$(find "dist/docs_final/${{ inputs.framework }}" -name '*.md' -not -name '_*' | wc -l)
-        echo "### ${{ inputs.framework }}: $COUNT documents" >> "$GITHUB_STEP_SUMMARY"
-        if [ -f "$STATS" ]; then
-          node -e "const s=require('./$STATS');console.log('- model: '+s.model+'\n- tokens: '+(s.total_tokens||0))" >> "$GITHUB_STEP_SUMMARY"
-        fi
+        npx tsx scripts/report-build-summary.ts \
+          --framework "${{ inputs.framework }}" \
+          --mode "${{ inputs.mode }}" >> "$GITHUB_STEP_SUMMARY"
 
     - name: Upload compressed docs
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: docs-final-${{ inputs.framework }}
         path: packages/igniteui-mcp/igniteui-doc-mcp/dist/docs_final/${{ inputs.framework }}
@@ -134,15 +199,34 @@ runs:
 
     # build-db reads _tocName from here. Without it every row's toc_name would be NULL.
     - name: Upload prepared docs
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: docs-prepeared-${{ inputs.framework }}
         path: packages/igniteui-mcp/igniteui-doc-mcp/dist/docs_prepeared/${{ inputs.framework }}
         retention-days: 5
 
     - name: Upload updated baseline
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: docs-baseline-${{ inputs.framework }}
         path: packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline/${{ inputs.framework }}
+        retention-days: 5
+
+    # build-db's preflight requires a sidecar per framework. A silently absent one
+    # would surface hours later as an abort in assemble, with nothing pointing at
+    # the job that produced nothing — hence if-no-files-found: error.
+    - name: Upload TOC index
+      uses: actions/upload-artifact@v7
+      with:
+        name: toc-index-${{ inputs.framework }}
+        path: packages/igniteui-mcp/igniteui-doc-mcp/dist/toc-index/${{ inputs.framework }}.json
+        if-no-files-found: error
+        retention-days: 5
+
+    - name: Upload group summaries
+      uses: actions/upload-artifact@v7
+      with:
+        name: group-summaries-${{ inputs.framework }}
+        path: packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries/${{ inputs.framework }}.json
+        if-no-files-found: error
         retention-days: 5

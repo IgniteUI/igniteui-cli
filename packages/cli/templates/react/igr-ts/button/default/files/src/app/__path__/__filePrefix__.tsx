@@ -7,7 +7,7 @@ export default function $(ClassName)() {
     <div>
       <h1 className={style.title}>Button</h1>
       <div className={style.container}>
-        <IgrButton size="large"><span>Large button</span></IgrButton>
+        <IgrButton className={style.large}><span>Large button</span></IgrButton>
       </div>
     </div>
   );

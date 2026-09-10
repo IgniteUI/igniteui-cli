@@ -14,9 +14,7 @@ The Infragistics Blazor Excel Engine's `WorksheetTable` functionality allows you
 
 <!--## Blazor Using Tables Example
 
-
 `sample="/excel/excel-library/working-with-tables", height="500", alt="Blazor Using Tables Example"`
-
 
 -->
 

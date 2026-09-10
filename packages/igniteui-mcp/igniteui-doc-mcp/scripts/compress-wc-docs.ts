@@ -123,7 +123,11 @@ premium: true
 ---
 
 Rules for frontmatter fields:
-- **component**: The exact Ignite UI for Web Components component class name(s) as found in the document's source code (e.g. IgcGridComponent, IgcButtonComponent, IgcComboComponent, IgcDatePickerComponent). Use the PascalCase Igc-prefixed name with the Component suffix as used in Web Components. If the doc covers multiple components, comma-separate them.
+- **component**: The Ignite UI for Web Components component class name(s) documented here (e.g. IgcGridComponent, IgcButtonComponent, IgcComboComponent, IgcDatePickerComponent). Use the PascalCase Igc-prefixed name with the Component suffix as used in Web Components. Comma-separate multiple names. These rules are strict:
+  - Every name MUST begin with \`Igc\`. A class in the sample code that does not start with \`Igc\` is application code, not a library component.
+  - NEVER list classes the sample application defines for itself — \`App\`, \`MyComponent\`, \`*Sample\`, demo services, or local data types. List only components from the Ignite UI library, even when the sample's own classes are more prominent.
+  - List the components the document actually explains or demonstrates in its own sections — not every class that happens to appear somewhere in the sample code. About 15 is plenty; a long tail of incidental references is noise.
+  - Order them by first appearance in the document, with the document's primary subject first.
 - **keywords**: Do NOT repeat the component name from the \`component\` field. Include the short common name (e.g. grid, combo-box, date-picker), related UI concepts (e.g. filtering, sorting, paging, selection), and common synonyms developers might search for (e.g. card, avatar, badge, dropdown, dialog, modal, table). Use lowercase, comma-separated. Aim for 5-15 keywords.
 - **summary**: A concise 1-2 sentence description of what the document covers and what a developer can learn from it. Focus on the component's purpose and key capabilities.
 - **premium**: If the input frontmatter contains \`_premium: true\`, include \`premium: true\` in your output frontmatter. Otherwise omit the premium field entirely.
@@ -497,10 +501,44 @@ async function processBatchResults(
       if (result.response?.status_code === 200) {
         let compressed = result.response.body.choices?.[0]?.message?.content ?? "";
         compressed = stripResponseWrapper(compressed);
-        const { valid, issues } = validateStructure(compressed);
+        let { valid, issues } = validateStructure(compressed);
 
         if (!valid) {
-          console.log(`  INVALID ${name}: ${issues.join(", ")}`);
+          // finish_reason and usage explain WHY a response was unusable. "length" means
+          // the model exhausted max_completion_tokens — reasoning tokens count against
+          // the same ceiling — and returned a truncated or empty body with no frontmatter.
+          const choice = result.response.body.choices?.[0];
+          const usage = result.response.body.usage;
+          console.log(
+            `  INVALID ${name}: ${issues.join(", ")} ` +
+            `[finish_reason=${choice?.finish_reason ?? "?"}, ` +
+            `completion=${usage?.completion_tokens ?? "?"}, ` +
+            `reasoning=${usage?.completion_tokens_details?.reasoning_tokens ?? "?"}, ` +
+            `chars=${compressed.length}]`
+          );
+
+          // The sync path retries once on a validation failure; the batch path used to
+          // discard the document instead, which is how a full run published 375 of 376
+          // Angular documents with nothing failing. Retry inline before giving up.
+          if (originalContent) {
+            console.log(`  RETRY ${name}...`);
+            try {
+              const retried = await compressWithLLM(client, originalContent, state.model);
+              const recheck = validateStructure(retried);
+              if (recheck.valid) {
+                compressed = retried;
+                valid = true;
+                console.log(`  RECOVERED ${name}`);
+              } else {
+                console.log(`  still invalid after retry: ${recheck.issues.join(", ")}`);
+              }
+            } catch (err) {
+              console.log(`  retry errored: ${(err as Error).message}`);
+            }
+          }
+        }
+
+        if (!valid) {
           invalidCount++;
           invalidFiles.push(name);
           continue;

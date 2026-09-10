@@ -1,0 +1,11 @@
+Found 1 component doc(s) for **angular** matching "excel" in 2 group(s). Pass `group` with any heading below to get that group's docs with summaries.
+
+## Grids & Lists (1)
+Grid and list components, plus the Excel interop utility.
+- **Excel Utility** (`excel-utility`)
+  Load and save Excel workbooks.
+
+## Frameworks > Excel Library (1)
+Read, write and format Excel workbooks without Excel installed.
+- **Excel Utility** (`excel-utility`)
+  Load and save Excel workbooks.

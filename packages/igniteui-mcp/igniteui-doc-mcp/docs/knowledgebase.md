@@ -1,6 +1,6 @@
 # Documentation Processing Knowledgebase
 
-Lessons learned and issues encountered while building the documentation processing pipelines. Entries 1-16 are from the Angular pipeline; entries 17-22 from React and MCP server; entries 23-28 from WebComponents and cross-platform improvements; entries 29-33 from Blazor, cross-platform architecture, and prompt improvements.
+Lessons learned and issues encountered while building the documentation processing pipelines. Entries 1-16 are from the Angular pipeline; entries 17-22 from React and MCP server; entries 23-28 from WebComponents and cross-platform improvements; entries 29-34 from Blazor, cross-platform architecture, and prompt improvements.
 
 ## 1. LLM Compression: Wrong Component Prefix (Hallucination)
 
@@ -370,6 +370,56 @@ This is the opposite logic from what you might expect — `exclude` means "hide 
 3. **WHAT TO KEEP #3** (examples per section): Added explicit examples of variant sections that must each keep their own code example, plus anti-merge rule: "Do NOT merge separate sections into a combined section."
 
 **Rule:** This three-pronged approach is needed because the LLM's merge behavior is a chain: it first decides sections are "redundant" → merges headers → then drops examples from the merged section. Blocking any single step isn't enough — all three rules must reinforce each other.
+
+## 34. LLM Compression: `component` Frontmatter Drifts and Names Sample-App Classes
+
+**Problem:** The `component` field was decided entirely by the compression model, and it is not stable across runs. Two full rebuilds with the same model (`gpt-5.6-luna`) over effectively unchanged sources produced **1231 of 1232 documents with changed content and 374 with a changed `component` field** — 144 listing fewer components, 129 more, 64 genuinely different names, 37 merely reordered.
+
+The worst case was `angular/angular-reactive-form-validation.md`:
+
+```
+before: IgxSelectComponent, IgxInputDirective, IgxComboComponent, IgxDatePickerComponent, …
+after:  DateValueValidatorDirective, DateValueAsyncValidatorDirective, ReactiveFormsSampleComponent, MyComponent
+```
+
+The model listed the **sample application's own classes** while the document body still documented `IgxSelectComponent`, `IgxInputDirective` and a dozen more. The prompt invited this by asking for "the exact class name(s) **as found in the document's source code**" — which those demo classes literally are.
+
+**Impact:** `component` drives `list_components` and component-filtered `search_docs`. A document indexed under `MyComponent` is effectively unreachable. Dropped entries (`cli-component-templates.md` went 28 → 6) shrink discoverability, and pure reordering churns the committed DB binary for no benefit.
+
+**Fix:** Two layers, because neither is sufficient alone.
+
+1. **Prompt** (all four compress scripts): every name must carry the platform prefix; never list classes the sample application defines for itself; list every component the doc covers rather than a subset; order by first appearance with the primary subject first.
+2. **Deterministic post-pass** — `scripts/derive-components.ts`, wired into every `pipeline:*` after compression. It keeps a supplied name when it carries an Ignite UI prefix, or the API index knows it, or a heading names it; otherwise it drops it. It then puts the filename-derived primary first and adds indexed components named in headings.
+
+**Rule:** Prefer the **prefix** over API-index membership when deciding whether a name is real. The index built from `llms-full.txt` is incomplete — it lacks the data-visualisation components (`IgxCategoryChartComponent`), so filtering on index membership alone silently deletes valid entries. Equally, do not require the platform's own prefix exclusively: Angular docs legitimately reference `Igc*` Web Components wrappers (`IgcDockManagerComponent`, `IgcRatingComponent`, `IgcTileManagerComponent`), and the Excel library documents unprefixed classes (`Workbook`, `WorksheetChart`) that only the heading check preserves.
+
+**Rule:** Never let the derivation *substitute* when it has no positive evidence — falling back to "every component mentioned in the body" buries the subject under components used incidentally by demo code (`badge.md` became `IgxAvatarComponent, IgxBadgeComponent, IgxIconService, IgxListComponent…`). The one exception is when *every* supplied name was rejected, which means the model returned nothing usable.
+
+**Rule:** A `full` rebuild rewrites essentially the whole corpus even when nothing upstream changed. Prefer `incremental`, which only recompresses genuinely changed documents and therefore cannot churn metadata wholesale.
+
+## 35. TOC-Driven Grouping for `list_components`
+
+**Problem:** an unfiltered `list_components` returned every doc as a flat bullet list with a full summary each — 17–24k tokens per call, 77% of it the `summary` column, spent before any documentation was read.
+
+**Fix:** group docs by the documentation TOC both sources already maintain (`toc.yml` for Angular, `toc.json` for the xplat platforms) and pay for one group summary instead of hundreds of per-doc summaries. Coverage is 100% in all four frameworks — every doc in the DB is reachable from the TOC, so there is no "Other" bucket and no curated family map. Measured on the shipped corpus: **-89% to -90%** before group summaries are generated (angular 95,873 → 10,262 chars).
+
+**Rule: header nodes carry their own `href`.** A walker that does `if (header) continue;` drops the section landing pages (`Grids & Lists -> grids-and-lists.md`, `Charts -> charts/chart-overview.md`) and, worse, loses the section for every following sibling. The walker keeps headers for section tracking; the xplat exporters still filter their landing pages out of the *export*, exactly as before.
+
+**Rule: an excluded header still updates the section.** Otherwise an xplat platform that excludes a header inherits the previous section for every entry after it.
+
+**Rule: group membership is decided by the top-level node below the header, not by depth.** `Data Grid` carries both an `href` and children, so `grid/grid.md` has a one-element ancestor chain — the same length as `accordion.md`, which must land at section level. An `ancestors.length > 1` test files the group's own overview page outside its group, which is precisely the doc a caller drilling into it wants. That pair is the regression test; 17 docs move in angular alone.
+
+**Rule: keep the duplicate write for a cross-listed href.** `injectTocMetadata` runs per TOC entry, so the two writes differ — `dashboard-tile.md` ships with `toc_name = "Charting in Dashboards"` (the second entry) in all four frameworks. Skipping the second write flips `docs.toc_name` and its `ORDER BY toc_name` position. Cache only the resolved *filename*, so the page stays one doc.
+
+**Rule: flat mode must not read through `doc_toc`.** The join multiplies cross-listed docs and reorders by TOC position, breaking both the byte-identical criterion and `ORDER BY toc_name`. Where `group` narrows a flat listing, membership is resolved with a separate `SELECT DISTINCT filename` and applied as a filter.
+
+**Rule: never render a filtered group's count from `doc_groups.doc_count`.** That column stores the full group size and would print `(45)` above three listed docs. Counts come from the matched rows, deduplicated by `(group_key, filename)`.
+
+**Rule: `build:db` publishes through a temp file.** It builds into `dist/igniteui-docs.db.tmp`, wraps schema changes, deletes, inserts, the FTS rebuild and the gates in one transaction, validates the staged file on a separate read-only connection, then renames `dist/` → backend → `db/` last. `db/igniteui-docs.db` is authoritative (`scripts/build.ts` copies it into `dist/` on every build), so it is the seed for an incremental run and the last thing published. Every handle is closed before a rename — Windows refuses to rename over an open SQLite file.
+
+**Rule: a full rebuild preflights all four frameworks.** Deriving the set from what happens to be on disk turned a missing framework into a silent omission, and a full rebuild drops and recreates the tables — so the previously good rows for it were simply gone. See also the `clear:build` hazard: it wipes `docs_processing` and `docs_prepeared` for *every* framework, so a full `build:db` at the wrong moment writes `toc_name = NULL` for the three that were not just processed.
+
+**Rule: the group set comes from the TOC, never from the summary cache.** Loading `doc_groups` from `data/group-summaries/<fw>.json` would make a new or renamed group vanish along with all of its docs, instead of appearing with a NULL summary. NULL summaries are a development state; `--release` is what refuses to ship one.
 
 ## Related Documentation
 

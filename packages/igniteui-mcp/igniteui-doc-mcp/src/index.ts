@@ -111,16 +111,32 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
           .string()
           .optional()
           .describe(
-            "Keyword to match against filename, component name, keywords, or summary. " +
-            "Case-insensitive substring match. Example: 'grid', 'combo', 'chart'. " +
-            "Omit to return all docs for the framework."
+            "Keyword to match against filename, component name, keywords, summary, or " +
+            "group name. Case-insensitive substring match. Example: 'grid', 'combo', 'chart'. " +
+            "Omit to return the full index for the framework."
+          ),
+        group: z
+          .string()
+          .optional()
+          .describe(
+            "A group heading exactly as printed by the grouped index, e.g. " +
+            "'Grids & Lists > Data Grid'. Returns that group's docs with summaries. " +
+            "An unknown value returns the list of valid groups."
+          ),
+        detail: z
+          .enum(["groups", "docs"])
+          .optional()
+          .describe(
+            "'groups' (default) returns the compact grouped index. 'docs' returns the " +
+            "flat per-doc list with a summary for every doc — far larger; prefer " +
+            "'group' or 'filter' first."
           ),
       },
     },
-    async ({ framework, filter }) => {
+    async ({ framework, filter, group, detail }) => {
       const start = performance.now();
-      const text = await docsProvider.listComponents(framework, filter);
-      log("list_components", { framework, filter }, text, Math.round(performance.now() - start));
+      const text = await docsProvider.listComponents(framework, { filter, group, detail });
+      log("list_components", { framework, filter, group, detail }, text, Math.round(performance.now() - start));
       return { content: [{ type: "text" as const, text }] };
     }
   );

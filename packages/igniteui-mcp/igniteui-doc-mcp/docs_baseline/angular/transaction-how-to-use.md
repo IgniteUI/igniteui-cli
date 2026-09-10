@@ -18,7 +18,7 @@ In this topic we will use [`igxList`](mcp:get_api_reference?platform=angular&com
 
 
 ```typescript
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IgxTransactionService, State, Transaction, TransactionType } from 'igniteui-angular/core';
 import { IgxCardComponent } from 'igniteui-angular/card';
 import { IgxListActionDirective, IgxListComponent, IgxListItemComponent, IgxListLineSubTitleDirective, IgxListLineTitleDirective } from 'igniteui-angular/list';
@@ -33,7 +33,6 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-transaction-base',
     styleUrls: ['./transaction-base.component.scss'],
     templateUrl: 'transaction-base.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxCardComponent, IgxListComponent, IgxListItemComponent, NgClass, IgxListLineTitleDirective, IgxListLineSubTitleDirective, IgxIconComponent, IgxListActionDirective, TransactionBasePipe]
 })
 export class TransactionBaseComponent {

@@ -17,14 +17,13 @@ The Ignite UI for Angular Checkbox component is a selection control that allows 
 See the checkbox in action in the following Angular Checkbox example below.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
 
 @Component({
     selector: 'app-checkbox-sample-1',
     styleUrls: ['./checkbox-sample-1.component.scss'],
     templateUrl: './checkbox-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCheckboxComponent]
 })
 export class CheckboxSample1Component { }
@@ -149,7 +148,7 @@ igx-checkbox {
 
 The final result would be something like that:
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
 
@@ -157,7 +156,6 @@ import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
     selector: 'app-checkbox-sample-2',
     styleUrls: ['./checkbox-sample-2.component.scss'],
     templateUrl: './checkbox-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCheckboxComponent]
 })
 export class CheckboxSample2Component {
@@ -278,7 +276,7 @@ public toggleAll() {
 
 After all that is done, our application should look like this:
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
 import { FormsModule } from '@angular/forms';
 
@@ -287,7 +285,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-checkbox-sample-3',
     styleUrls: ['./checkbox-sample-3.component.scss'],
     templateUrl: './checkbox-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCheckboxComponent, FormsModule]
 })
 export class CheckboxSample3Component {
@@ -482,7 +479,7 @@ Finally, **include** the custom theme in your application:
 In the sample below, you can see how using the checkbox component with customized CSS variables allows you to create a design that visually resembles the checkbox used in the [`SAP UI5`](https://ui5.sap.com/#/entity/sap.m.CheckBox/sample/sap.m.sample.CheckBox) design system.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
 import { THEME_TOKEN, ThemeToken } from 'igniteui-angular/core';
 
@@ -491,53 +488,54 @@ import { THEME_TOKEN, ThemeToken } from 'igniteui-angular/core';
   styleUrls: ['./checkbox-styling.component.scss'],
   templateUrl: './checkbox-styling.component.html',
   providers: [{ provide: THEME_TOKEN, useFactory: () => new ThemeToken('fluent') }],
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [IgxCheckboxComponent]
 })
 export class CheckboxStylingComponent {
 }
 ```
 ```html
-<igx-checkbox id="checkbox-1" [disableRipple]="true" [checked]="true">
+<igx-checkbox id="checkbox-1" disableRipple [checked]="true">
   Styled checkbox
 </igx-checkbox>
 ```
 ```scss
-@use "layout.scss";
+@use "sass:map";
 @use "igniteui-angular/theming" as *;
 
-// CSS variables approach
+:host {
+    --ig-font-family: Arial, Helvetica, sans-serif;
+    --ig-subtitle-1-font-size: #{rem(14px)};
 
-igx-checkbox {
-    --tick-color: #0064d9;
-    --tick-color-hover: #e3f0ff;
-    --tick-width: 2;
-    --fill-color: transparent;
-    --fill-color-hover: #e3f0ff;
-    --label-color: #131e29;
-    --focus-outline-color: #0032a5;
-    --border-radius: #{rem(4px)};
+    display: block;
+    padding: rem(18px) 0 0 rem(18px);
 }
 
-igx-checkbox:hover {
-    --empty-fill-color: #e3f0ff;
+// CSS variables approach
+.igx-checkbox {
+    --tick-color: black;
+    --tick-color-hover: black;
+    --tick-width: 4;
+    --fill-color: orange;
+    --fill-color-hover: oklch(from var(--fill-color) calc(l * 0.9) c h);
+    --label-color: black;
+    --empty-color: orange;
+    --border-width: #{rem(3px)};
+    --border-radius: #{rem(3px)};
 }
 
 // Sass theme approach
-
 // $custom-checkbox-theme: checkbox-theme(
-//     $tick-color: #0064d9,
-//     $tick-width: 2,
-//     $tick-color-hover: #e3f0ff,
-//     $fill-color: transparent,
-//     $fill-color-hover: #e3f0ff,
-//     $label-color: #131e29,
-//     $focus-outline-color: #0032a5,
-//     $empty-color: #131e29,
-//     $border-radius: rem(4px),
+//     $tick-color: black,
+//     $tick-color-hover: black,
+//     $tick-width: 4,
+//     $fill-color: orange,
+//     $fill-color-hover: oklch(from var(--fill-color) calc(l * 0.9) c h),
+//     $label-color: black,
+//     $empty-color: orange,
+//     $border-radius: rem(3px),
 // );
-
-// :host {
+//
+// :host ::ng-deep {
 //     @include tokens($custom-checkbox-theme);
 // }
 ```

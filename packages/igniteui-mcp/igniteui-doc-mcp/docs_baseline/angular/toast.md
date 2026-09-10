@@ -14,7 +14,7 @@ _tocName: Toast
 
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxToastComponent } from 'igniteui-angular/toast';
 
@@ -22,7 +22,6 @@ import { IgxToastComponent } from 'igniteui-angular/toast';
     selector: 'app-toast-sample-2',
     styleUrls: ['./toast-sample-2.component.scss'],
     templateUrl: './toast-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToastComponent]
 })
 
@@ -154,7 +153,7 @@ If the sample is configured properly, the toast will appear when the _Show butto
 In the other two components you can see in action how to pass different messages through the [`open()`](mcp:get_api_reference?platform=angular&component=IgxToastComponent&member=open) method and use content projection.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxToastComponent } from 'igniteui-angular/toast';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -163,7 +162,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-toast-sample-3',
     styleUrls: ['./toast-sample-3.component.scss'],
     templateUrl: './toast-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToastComponent, IgxIconComponent]
 })
 
@@ -257,7 +255,7 @@ public open(toast) {
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { VerticalAlignment } from 'igniteui-angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxToastComponent } from 'igniteui-angular/toast';
@@ -265,7 +263,6 @@ import { IgxToastComponent } from 'igniteui-angular/toast';
     selector: 'app-toast-sample-5',
     styleUrls: ['./toast-sample-5.component.scss'],
     templateUrl: './toast-sample-5.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToastComponent]
 })
 
@@ -346,7 +343,7 @@ The last step is to pass the custom toast theme:
 ### Demo
 
 ```typescript
-import { Component, ElementRef, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, inject } from '@angular/core';
 import { IgxToastComponent } from 'igniteui-angular/toast';
 import { VerticalAlignment } from 'igniteui-angular/core';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
@@ -355,7 +352,6 @@ import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directi
     selector: 'app-toast-style',
     styleUrls: ['./toast-style.component.scss'],
     templateUrl: './toast-style.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxRippleDirective, IgxToastComponent]
 })
 export class ToastStyleComponent {

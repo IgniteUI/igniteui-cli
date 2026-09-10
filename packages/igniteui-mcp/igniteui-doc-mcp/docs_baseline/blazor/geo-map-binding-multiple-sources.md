@@ -119,7 +119,6 @@ For your convenience, all above code snippets are combined into one code block b
 ```razor
 @using IgniteUI.Blazor.Controls
 
-
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
     <IgbGeographicPolylineSeries DataSource="Flights" ShapeMemberPath="Points"
         ShapeStroke="rgba(196, 14, 14, 0.05)" ShapeStrokeThickness="4" />

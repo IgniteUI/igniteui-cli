@@ -1,0 +1,16 @@
+Found 7 components for **angular**:
+
+- **no-component** (`no-component`)
+- **Accordion** (`accordion`)
+  Expand and collapse stacked panels.
+- **Data Grid** (`grid-grid`)
+  The data grid: setup, columns, binding.
+- **Editing** (`grid-editing`)
+  Edit cells and rows, batch and transactional.
+- **Excel Utility** (`excel-utility`)
+  Load and save Excel workbooks.
+- **Grids & Lists** (`grids-and-lists`)
+  Section overview for grids and lists.
+- **Sorting** (`grid-sorting`)
+  Sort grid rows by one or more columns.
+  ⭐ Premium

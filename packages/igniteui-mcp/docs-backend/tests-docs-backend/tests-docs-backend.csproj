@@ -25,4 +25,10 @@
         <ProjectReference Include="..\docs-backend\docs-backend.csproj" />
     </ItemGroup>
 
+    <!-- Rendered output is pinned by fixtures shared with the MCP server's vitest
+         suite, so `dotnet test` picks up fixture edits with no manual copy step. -->
+    <ItemGroup>
+        <Content Include="..\..\shared-fixtures\**\*" CopyToOutputDirectory="PreserveNewest" LinkBase="shared-fixtures" />
+    </ItemGroup>
+
 </Project>

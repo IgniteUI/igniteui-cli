@@ -1,0 +1,254 @@
+[
+  {
+    "groupKey": "AI-Assisted Development",
+    "section": "AI-Assisted Development",
+    "groupLabel": "",
+    "summary": "Configure Agent Skills and MCP servers to scaffold projects, generate components, answer API questions, create themes, and orchestrate validated AI workflows.",
+    "hash": "9a5f628e6c1f82c312fa2639ea4b80a9",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Charts",
+    "section": "Charts",
+    "groupLabel": "",
+    "summary": "Create area, bar, line, pie, polar, radial, scatter, stock, treemap, sparkline, stacked, combo, and step charts with data binding, styling, interaction, and APIs",
+    "hash": "f5884031a310933714342205e9eaf7ee",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Charts > Chart Features",
+    "section": "Charts",
+    "groupLabel": "Chart Features",
+    "summary": "Configure axes, annotations, animations, navigation, overlays, tooltips, trendlines, selection, highlighting, legends, filtering, and performance.",
+    "hash": "50d06c6a42ecafdc6f8efe9a1b2325eb",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Dashboards",
+    "section": "Dashboards",
+    "groupLabel": "",
+    "summary": "Dashboard tiles automatically select visualizations from data sources, with toolbar tools to change visualization types and configure data and display settings.",
+    "hash": "db4226a2f7b1a044c6b021ddea6b0364",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Data Entry & Display",
+    "section": "Data Entry & Display",
+    "groupLabel": "",
+    "summary": "Covers badges, buttons, inputs, selection controls, dropdowns, color and date-time editing, file uploads, progress indicators, icons, ratings, chips, Text Area, and styling.",
+    "hash": "1214040bfbaed664be72ad3bc0c193a9",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Data Entry & Display > Combo Box",
+    "section": "Data Entry & Display",
+    "groupLabel": "Combo Box",
+    "summary": "Covers ComboBox setup, data binding, filtering, grouping, selection, validation, keyboard navigation, disabled states, styling, templates, and content slots.",
+    "hash": "661eb86e82e97a493401dcb4c927f8ce",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Frameworks > Excel Library",
+    "section": "Frameworks",
+    "groupLabel": "Excel Library",
+    "summary": "Load and save Excel workbooks, configure worksheets, manipulate cells and tables, and support charts, sparklines, filtering, sorting, and protection.",
+    "hash": "079e3ba5be9fe3706f21bd12822556e7",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Gauges",
+    "section": "Gauges",
+    "groupLabel": "",
+    "summary": "Configure bullet graphs, linear gauges, and radial gauges with measures, scales, needles, ranges, labels, tick marks, backing, highlights, and animation.",
+    "hash": "cf3304e266884ee2d2f997fe925c64e9",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "General",
+    "section": "General",
+    "groupLabel": "",
+    "summary": "Install and configure components via CLI or npm, localize dates and numbers, manage licensing and npm feeds, compare editions, and review release changes.",
+    "hash": "6eb3a8465fae9c45a8b9bd0bb5d5ef3c",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "General > How to",
+    "section": "General",
+    "groupLabel": "How to",
+    "summary": "Follow an end-to-end workflow for scaffolding, extending, documenting, and theming an app through AI chat, with CLI MCP and Theming MCP working together.",
+    "hash": "26552f71a235dd677afbe29054b7e448",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "General > Ignite UI CLI",
+    "section": "General",
+    "groupLabel": "Ignite UI CLI",
+    "summary": "Install and use the CLI to scaffold projects, select templates and themes, add component views, run applications, and configure AI assistants through MCP.",
+    "hash": "fbcd06c425c2430282aad43ac9cac904",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists",
+    "section": "Grids & Lists",
+    "groupLabel": "",
+    "summary": "Display templated lists and hierarchical trees with headers, slots, actions, selection, keyboard navigation, load on demand, virtualization, and styling.",
+    "hash": "3fe064142806e729470555cf8b08ea85",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists > Grid",
+    "section": "Grids & Lists",
+    "groupLabel": "Grid",
+    "summary": "Configure grid data, columns, editing, filtering, sorting, grouping, selection, paging, virtualization, clipboard, export, state persistence, sizing, and theming",
+    "hash": "7312dd667ad44cbaca4da99e548ffdec",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists > Grid Lite",
+    "section": "Grids & Lists",
+    "groupLabel": "Grid Lite",
+    "summary": "Configure data binding, columns, cells, headers, filtering, sorting, themes, and runtime updates with custom templates, events, remote operations, and styling",
+    "hash": "1f753e3b5de7686de2bcc685f21738a4",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists > Hierarchical Grid",
+    "section": "Grids & Lists",
+    "groupLabel": "Hierarchical Grid",
+    "summary": "Configure hierarchical data binding, load-on-demand, editing, selection, filtering, sorting, exporting, styling, sizing, virtualization, and state persistence.",
+    "hash": "8d2e90a7751b224573653dd745d192f0",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists > Pivot Grid",
+    "section": "Grids & Lists",
+    "groupLabel": "Pivot Grid",
+    "summary": "Configure pivot grids for multidimensional analysis with rows, columns, filters, values, hierarchies, custom aggregations, state persistence, and remote operations.",
+    "hash": "97caed2647be0dec83f36265b98b4d63",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists > Spreadsheet",
+    "section": "Grids & Lists",
+    "groupLabel": "Spreadsheet",
+    "summary": "Configure spreadsheets, load and save Excel workbooks, edit and format cells, use formulas, validation, hyperlinks, charts, clipboard, and commands.",
+    "hash": "df2e062c7166ac319be2d1acf00a55be",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Grids & Lists > Tree Grid",
+    "section": "Grids & Lists",
+    "groupLabel": "Tree Grid",
+    "summary": "Build hierarchical and flat Tree Grids with editing, filtering, sorting, selection, paging, virtualization, exporting, state persistence, and load-on-demand",
+    "hash": "dd715f303e6bbdb624c91b29fe07faa4",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Interactions",
+    "section": "Interactions",
+    "groupLabel": "",
+    "summary": "Build chat experiences, touch and click ripples, tooltips, sliders, chart zooming, and query-builder filtering with expressions, events, accessibility, and styling.",
+    "hash": "885e11a79583d7c1ea208523ba2b74ca",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Interactivity",
+    "section": "Interactivity",
+    "groupLabel": "",
+    "summary": "Covers accessibility compliance through Section 508, WCAG, and WAI-ARIA support, with coverage matrices for grids and UI components.",
+    "hash": "60dabe59ac2d6555ba2e06100c27623c",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Layouts",
+    "section": "Layouts",
+    "groupLabel": "",
+    "summary": "Build layouts with expandable panels, cards, tabs, steppers, carousels, split panes, dividers, avatars, and resizable, reorderable tiles.",
+    "hash": "90d056d698e4fc65bb4ba6b35bb794c3",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Layouts > Dock Manager",
+    "section": "Layouts",
+    "groupLabel": "Dock Manager",
+    "summary": "Configure content, split, tab group, document, and floating panes with runtime docking, persistence, customization, localization, and Electron window dragging",
+    "hash": "68a2e9be1884303f50aa8e7d6002a45c",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Maps",
+    "section": "Maps",
+    "groupLabel": "",
+    "summary": "Configure maps with symbol, bubble, density, contour, area, polygon, and polyline series, including coordinate binding, triangulation, scales, shapefiles, and navigation",
+    "hash": "cf8a7c969c5b9d65eb923fac75babbfb",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Maps > Geographic Map Features",
+    "section": "Maps",
+    "groupLabel": "Geographic Map Features",
+    "summary": "Display and bind geographic data from CSV, JSON, models, and shape files; overlay map series, imagery, navigation, shape styling, and world-data utilities.",
+    "hash": "45b576c449a12fc3351dfd34a609b816",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Menus",
+    "section": "Menus",
+    "groupLabel": "",
+    "summary": "Toolbars cover built-in/custom actions, icons, orientation, color editing; navbars cover navigation, while drawers cover items, mini mode, positioning, styling.",
+    "hash": "7aee27018ba3bfd01b239015d00da53f",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Notifications",
+    "section": "Notifications",
+    "groupLabel": "",
+    "summary": "Display banners, snackbars, toast notifications, and modal dialogs with custom content, actions, events, visibility controls, forms, and styling.",
+    "hash": "4087b3a0196f983f3dfce3ffc14c334b",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Scheduling",
+    "section": "Scheduling",
+    "groupLabel": "",
+    "summary": "Covers calendar, date picker, and date range picker setup, selection, formatting, localization, validation, ranges, keyboard navigation, events, and styling.",
+    "hash": "98309a8283b0c7608d7c7176e566c549",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  },
+  {
+    "groupKey": "Styling & Themes",
+    "section": "Styling & Themes",
+    "groupLabel": "",
+    "summary": "Load and switch Bootstrap, Material, Fluent, and Indigo themes; customize palettes, typography, elevation, roundness, size, spacing, CSS parts, and Tailwind utilities",
+    "hash": "4a7c77749dbab952d29ae356be467b20",
+    "model": "gpt-5.6-luna",
+    "promptVersion": 1
+  }
+]

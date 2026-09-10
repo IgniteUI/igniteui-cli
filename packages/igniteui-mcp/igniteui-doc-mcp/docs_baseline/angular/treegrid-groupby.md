@@ -52,7 +52,7 @@ The component's inputs are the following:
 ## Angular Tree Grid Group By Example
 
 ```typescript
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, HostBinding, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, OnDestroy, ViewChild, HostBinding, inject } from '@angular/core';
 import { AbsoluteScrollStrategy, ConnectedPositioningStrategy, DefaultSortingStrategy, HorizontalAlignment, IGroupingExpression, IgxOverlayOutletDirective, OverlaySettings, PositionSettings, TreeGridFilteringStrategy, VerticalAlignment } from 'igniteui-angular/core';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { ITreeGridAggregation, IgxGroupedTreeGridSorting, IgxTreeGridComponent, IgxTreeGridGroupByAreaComponent, IgxTreeGridGroupingPipe } from 'igniteui-angular/grids/tree-grid';
@@ -72,12 +72,12 @@ import { IgxPreventDocumentScrollDirective } from '../../../../../src/app/direct
     selector: 'app-tree-grid-finjs-sample',
     styleUrls: ['./tree-grid-finjs-sample.component.scss'],
     templateUrl: './tree-grid-finjs-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSliderComponent, FormsModule, IgxButtonGroupComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarPinningComponent, IgxGridToolbarHidingComponent, IgxGridToolbarExporterComponent, IgxTreeGridGroupByAreaComponent, IgxColumnComponent, IgxCellEditorTemplateDirective, IgxSelectComponent, IgxFocusDirective, IgxSelectItemComponent, IgxCellTemplateDirective, IgxIconComponent, IgxOverlayOutletDirective, AsyncPipe, CurrencyPipe, DatePipe, IgxTreeGridGroupingPipe]
 })
 
 export class TreeGridFinJSComponent implements OnDestroy, OnInit {
     private elRef = inject(ElementRef);
+    private cdr = inject(ChangeDetectorRef);
     dataService = inject(SignalRService);
 
     @ViewChild('grid1', { static: true }) public grid1!: IgxTreeGridComponent;
@@ -168,6 +168,7 @@ export class TreeGridFinJSComponent implements OnDestroy, OnInit {
         this.data$.subscribe((data) => {
             if (data.length !== 0) {
                 this.isLoading = false;
+                this.cdr.markForCheck();
             };
         });
     }
@@ -762,7 +763,7 @@ public sorting = IgxGroupedTreeGridSorting.instance();
 ## Angular Tree Grid Group By Load On Demand Example
 
 ```typescript
-import { Component, Input, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { DefaultSortingStrategy, IGroupingExpression } from 'igniteui-angular/core';
 import { IgxTreeGridComponent, IgxTreeGridGroupByAreaComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -773,7 +774,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-group-by-load-on-demand-sample',
     styleUrls: ['./tree-grid-group-by-load-on-demand-sample.component.scss'],
     templateUrl: './tree-grid-group-by-load-on-demand-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxTreeGridGroupByAreaComponent, IgxColumnComponent]
 })
 

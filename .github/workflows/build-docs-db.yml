@@ -46,7 +46,7 @@ jobs:
 
   react:
     needs: angular
-    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && contains(inputs.frameworks, 'react')
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && contains(inputs.frameworks, 'react')
     runs-on: ubuntu-latest
     timeout-minutes: 330
     steps:
@@ -61,7 +61,7 @@ jobs:
 
   blazor:
     needs: react
-    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && contains(inputs.frameworks, 'blazor')
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && contains(inputs.frameworks, 'blazor')
     runs-on: ubuntu-latest
     timeout-minutes: 330
     steps:
@@ -76,7 +76,7 @@ jobs:
 
   webcomponents:
     needs: blazor
-    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && contains(inputs.frameworks, 'webcomponents')
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && contains(inputs.frameworks, 'webcomponents')
     runs-on: ubuntu-latest
     timeout-minutes: 330
     steps:
@@ -95,29 +95,37 @@ jobs:
   # angular-only database.
   assemble:
     needs: [angular, react, blazor, webcomponents]
-    if: always() && !cancelled() && !contains(needs.*.result, 'failure')
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
-          node-version: 22.x
+          node-version: 24.x
           cache: yarn
       - name: Install packages
         run: yarn --frozen-lockfile
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: docs-final-*
           path: packages/igniteui-mcp/igniteui-doc-mcp/dist/docs_final
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: docs-prepeared-*
           path: packages/igniteui-mcp/igniteui-doc-mcp/dist/docs_prepeared
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: docs-baseline-*
           path: packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: toc-index-*
+          path: packages/igniteui-mcp/igniteui-doc-mcp/dist/toc-index
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: group-summaries-*
+          path: packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries
 
       # download-artifact nests each artifact under its own name; flatten to the
       # framework directories that build-db expects.
@@ -132,51 +140,78 @@ jobs:
               [ -d "$src" ] && rm -rf "$dir/$fw" && mv "$src" "$dir/$fw" || true
             done
           done
-          ls -la dist/docs_final
+
+          # These two artifacts are single files, not directories, so they need
+          # their own unwrapping. Overwriting the checkout's committed summaries
+          # for a rebuilt framework is deliberate — the regenerated ones must win.
+          for kind in toc-index:dist/toc-index group-summaries:data/group-summaries; do
+            prefix="${kind%%:*}"; dir="${kind##*:}"
+            for fw in angular react blazor webcomponents; do
+              src="$dir/$prefix-$fw/$fw.json"
+              [ -f "$src" ] && mv -f "$src" "$dir/$fw.json" && rm -rf "$dir/$prefix-$fw" || true
+            done
+          done
+
+          ls -la dist/docs_final dist/toc-index data/group-summaries || true
 
       # Any framework missing from this run keeps the copy already committed, so the
       # database is always assembled from a complete set. --toc-stubs also emits the
       # minimal docs_prepeared entries build-db needs to populate toc_name.
       - name: Restore frameworks not rebuilt in this run
         working-directory: packages/igniteui-mcp/igniteui-doc-mcp
+        env:
+          REQUESTED: ${{ inputs.frameworks }}
         run: |
           set -euo pipefail
           for fw in angular react blazor webcomponents; do
-            if [ ! -d "dist/docs_final/$fw" ] || [ -z "$(ls -A dist/docs_final/$fw 2>/dev/null)" ]; then
-              echo "$fw was not rebuilt — restoring from the committed DB"
-              npx tsx scripts/restore-docs-final.ts --framework "$fw" --toc-stubs
+            if [ -d "dist/docs_final/$fw" ] && [ -n "$(ls -A "dist/docs_final/$fw" 2>/dev/null)" ]; then
+              continue
             fi
+            # A framework that was rebuilt but has no docs here means its artifact did
+            # not arrive. Restoring from the DB would silently publish stale docs for it
+            # with counts that look perfectly healthy, so fail instead.
+            if echo "$REQUESTED" | grep -qw "$fw"; then
+              echo "::error::$fw was part of this run but its artifact is missing — refusing to build a database from stale $fw documents."
+              ls -R dist/docs_final || true
+              exit 1
+            fi
+            echo "$fw was not part of this run — restoring from the committed DB"
+            npx tsx scripts/restore-docs-final.ts --framework "$fw" --toc-stubs
           done
 
       - name: Build database
         working-directory: packages/igniteui-mcp/igniteui-doc-mcp
-        run: npm run build:db
+        run: npm run release:db
 
       - name: Verify document counts
         run: |
           npx tsc spec/unit/docs-db-counts-spec.ts --target es6 --module commonjs --esModuleInterop --skipLibCheck
           npx jasmine spec/unit/docs-db-counts-spec.js
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: igniteui-docs-db
           path: |
             packages/igniteui-mcp/igniteui-doc-mcp/db/igniteui-docs.db
             packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+            packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries
           retention-days: 5
 
   # The only job that writes to the repository. It opens a PR for review — nothing is
   # pushed to a protected branch and nothing auto-merges.
   publish:
     needs: assemble
-    if: success()
+    # Not `success()`: at job level that evaluates the whole ancestor chain, so a run
+    # scoped to a subset of frameworks (leaving the others skipped) would make it false
+    # and silently skip publishing. Check the direct dependency's result instead.
+    if: always() && !cancelled() && needs.assemble.result == 'success'
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: igniteui-docs-db
           path: artifact
@@ -191,9 +226,10 @@ jobs:
           # of compression, so it must not fail on a path guess.
           DB=$(find artifact -type f -name igniteui-docs.db | head -1)
           BASELINE=$(find artifact -type d -name docs_baseline | head -1)
+          SUMMARIES=$(find artifact -type d -name group-summaries | head -1)
 
-          if [ -z "$DB" ] || [ -z "$BASELINE" ]; then
-            echo "::error::Could not locate the database or baselines in the artifact."
+          if [ -z "$DB" ] || [ -z "$BASELINE" ] || [ -z "$SUMMARIES" ]; then
+            echo "::error::Could not locate the database, baselines or group summaries in the artifact."
             find artifact
             exit 1
           fi
@@ -205,6 +241,11 @@ jobs:
           cp "$DB" packages/igniteui-mcp/docs-backend/docs-backend/igniteui-docs.db
           rm -rf packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
           cp -r "$BASELINE" packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+          # Without this the run regenerates summaries, builds them into the shipped
+          # DB, then throws the sources away — the committed cache would drift
+          # permanently from the committed database.
+          rm -rf packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries
+          cp -r "$SUMMARIES" packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries
           rm -rf artifact
 
       - name: Commit and open pull request
@@ -221,7 +262,8 @@ jobs:
           # submodules out fresh, so recording them here would only add noise.
           git add packages/igniteui-mcp/igniteui-doc-mcp/db/igniteui-docs.db \
                   packages/igniteui-mcp/docs-backend/docs-backend/igniteui-docs.db \
-                  packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
+                  packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline \
+                  packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries
 
           if git diff --cached --quiet; then
             echo "No changes to publish — the documentation is already up to date."

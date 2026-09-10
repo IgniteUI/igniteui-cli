@@ -1,0 +1,2 @@
+shared-fixtures/**/*.txt text eol=lf
+shared-fixtures/**/*.json text eol=lf

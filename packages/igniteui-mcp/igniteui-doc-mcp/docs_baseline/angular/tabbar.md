@@ -19,7 +19,7 @@ _tocName: Bottom Navigation
 
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxBottomNavComponent, IgxBottomNavContentComponent, IgxBottomNavHeaderComponent, IgxBottomNavItemComponent } from 'igniteui-angular/bottom-nav';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
@@ -27,7 +27,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-tabbar-sample-1',
     styleUrls: ['./tabbar-sample-1.component.scss'],
     templateUrl: './tabbar-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxBottomNavComponent, IgxBottomNavItemComponent, IgxBottomNavHeaderComponent, IgxIconComponent, IgxBottomNavContentComponent]
 })
 export class TabbarSample1Component {
@@ -278,7 +277,7 @@ igx-bottom-nav-content {
 After these modifications our Bottom Navigation should look similar to this:
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { Component } from "@angular/core";
 import { IgxBottomNavComponent, IgxBottomNavContentComponent, IgxBottomNavHeaderComponent, IgxBottomNavHeaderIconDirective, IgxBottomNavHeaderLabelDirective, IgxBottomNavItemComponent } from 'igniteui-angular/bottom-nav';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
@@ -287,7 +286,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: "app-tabbar-sample-2",
     styleUrls: ["./tabbar-sample-2.component.scss"],
     templateUrl: "./tabbar-sample-2.component.html",
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxBottomNavComponent, IgxBottomNavItemComponent, IgxBottomNavHeaderComponent, IgxIconComponent, IgxBottomNavHeaderIconDirective, IgxBottomNavHeaderLabelDirective, IgxBottomNavContentComponent]
 })
 export class TabbarSample2Component {
@@ -521,7 +519,7 @@ The approach described above is used by the following sample to demonstrate rout
 
 
 ```typescript
-import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet, RouterLinkActive, RouterLink } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { IgxBottomNavComponent, IgxBottomNavHeaderComponent, IgxBottomNavHeaderIconDirective, IgxBottomNavItemComponent } from 'igniteui-angular/bottom-nav';
@@ -531,7 +529,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-tabbar-sample-3',
     styleUrls: ['./tabbar-sample-3.component.scss'],
     templateUrl: './tabbar-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterOutlet, IgxBottomNavComponent, IgxBottomNavItemComponent, RouterLinkActive, IgxBottomNavHeaderComponent, RouterLink, IgxIconComponent, IgxBottomNavHeaderIconDirective]
 })
 export class TabbarSample3Component implements OnInit {
@@ -709,7 +706,7 @@ The last step is to **include** the component theme in our application.
 
 
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IgxBottomNavComponent, IgxBottomNavContentComponent, IgxBottomNavHeaderComponent, IgxBottomNavHeaderIconDirective, IgxBottomNavHeaderLabelDirective, IgxBottomNavItemComponent } from 'igniteui-angular/bottom-nav';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
@@ -718,7 +715,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: "app-tabbar-style",
     styleUrls: ["./tabbar-style.component.scss"],
     templateUrl: "./tabbar-style.component.html",
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxBottomNavComponent, IgxBottomNavItemComponent, IgxBottomNavHeaderComponent, IgxIconComponent, IgxBottomNavHeaderIconDirective, IgxBottomNavHeaderLabelDirective, IgxBottomNavContentComponent]
 })
 export class TabbarStyleComponent {

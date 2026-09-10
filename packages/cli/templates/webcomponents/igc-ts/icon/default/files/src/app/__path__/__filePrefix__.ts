@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
@@ -21,6 +21,12 @@ registerIcon(
 
 @customElement('app-$(path)')
 export default class Icon extends LitElement {
+  static styles = css`
+    igc-icon {
+      --ig-size: var(--ig-size-large);
+    }
+  `;
+
   render() {
     return html`
       <div>
@@ -28,7 +34,6 @@ export default class Icon extends LitElement {
         <igc-icon
           name='search'
           collection='material'
-          size='large'
           mirrored = false
         >
         </igc-icon>
@@ -38,7 +43,6 @@ export default class Icon extends LitElement {
         <igc-icon
           name='build'
           collection='material'
-          size='large'
           mirrored = false
         >
         </igc-icon>

@@ -588,7 +588,6 @@ This can be done by creating a header template for the columns with a custom ico
     HeaderTemplateScript="WebTreeGridPinHeaderTemplate" Name="column6" @ref="column6"></IgbColumn>
 </IgbTreeGrid>
 
-
 // In JavaScript
 
 igRegisterScript("WebTreeGridPinHeaderTemplate", (ctx) => {

@@ -16,7 +16,7 @@ The Angular ComboBox component represents a drop-down list that provides editabl
 In this Angular ComboBox example, you can see how users can filter items and perform selection with the provided data. In addition, the ComboBox exposes keyboard navigation and custom styling capabilities.
 
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { localData } from './local-data';
 import { IgxComboComponent } from 'igniteui-angular/combo';
 
@@ -24,7 +24,6 @@ import { IgxComboComponent } from 'igniteui-angular/combo';
     selector: 'app-combo-main',
     styleUrls: ['./combo-main.component.scss'],
     templateUrl: './combo-main.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxComboComponent]
 })
 
@@ -169,7 +168,7 @@ export class MyCombo {
 
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxComboComponent } from 'igniteui-angular/combo';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { CITIES, ICity } from './cities';
@@ -179,7 +178,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-combo-valuekey',
     templateUrl: 'combo-valuekey.component.html',
     styleUrls: ['combo-valuekey.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxComboComponent, FormsModule, IgxButtonDirective]
 })
 export class ComboValueKeyComponent {
@@ -246,7 +244,7 @@ export class MyCombo {
 
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxComboComponent } from 'igniteui-angular/combo';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxCardComponent, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective } from 'igniteui-angular/card';
@@ -258,7 +256,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-combo-binding',
     templateUrl: 'combo-binding.component.html',
     styleUrls: ['combo-binding.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxComboComponent, FormsModule, IgxButtonDirective, IgxCardComponent, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective]
 })
 export class ComboBindingComponent {
@@ -608,7 +605,7 @@ The last step is to include the component's theme.
 ### Demo
 
 ```typescript
-import { Component, ElementRef, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { IComboSelectionChangingEventArgs, IgxComboComponent } from 'igniteui-angular/combo';
 import { IgxToastComponent } from 'igniteui-angular/toast';
 import { VerticalAlignment } from 'igniteui-angular/core';
@@ -618,7 +615,6 @@ import { getHeroWeaponsData, IHeroWeapon } from '../../../data/heroData';
     selector: 'app-combo',
     styleUrls: ['./combo-styling.component.scss'],
     templateUrl: './combo-styling.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxComboComponent, IgxToastComponent]
 })
 export class ComboStylingComponent implements OnInit {

@@ -19,7 +19,7 @@ The Ignite UI for Angular PDF Exporter service provides powerful functionality t
 
 
 ```typescript
-import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { IgxPdfExporterOptions, IgxPdfExporterService } from 'igniteui-angular/grids/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 
@@ -27,7 +27,6 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-pdf-export',
     styleUrls: ['./pdf-export.component.scss'],
     templateUrl: './pdf-export.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective]
 })
 export class PdfExportComponent {
@@ -241,7 +240,6 @@ import notoSansFontData from './fonts/noto-sans.json';
     selector: 'app-export-pdf-custom-font',
     templateUrl: './export-pdf-custom-font.component.html',
     styleUrls: ['./export-pdf-custom-font.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [IgxGridComponent, IgxColumnComponent]
 })
 export class ExportPdfCustomFontComponent {

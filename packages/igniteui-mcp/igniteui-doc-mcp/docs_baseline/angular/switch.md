@@ -13,14 +13,13 @@ _tocName: Switch
 ## Angular Switch Example
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 
 @Component({
     selector: 'app-switch-sample-1',
     styleUrls: ['./switch-sample-1.component.scss'],
     templateUrl: './switch-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent]
 })
 export class SwitchSample1Component { }
@@ -137,7 +136,7 @@ igx-switch {
 And the final result should be something like that:
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 
@@ -145,7 +144,6 @@ import { IgxSwitchComponent } from 'igniteui-angular/switch';
     selector: 'app-switch-sample-2',
     styleUrls: ['./switch-sample-2.component.scss'],
     templateUrl: './switch-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent]
 })
 export class SwitchSample2Component {
@@ -447,14 +445,13 @@ Finally, **include** the custom theme in your application:
 In the sample below, you can see how using the switch component with customized CSS variables allows you to create a design that visually resembles the switch used in the [`SAP UI5`](https://ui5.sap.com/#/entity/sap.m.Switch/sample/sap.m.sample.Switch) design system.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 
 @Component({
   selector: 'app-switch-styling',
   styleUrls: ['./switch-styling.component.scss'],
   templateUrl: './switch-styling.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [IgxSwitchComponent]
 })
 export class SwitchStylingComponent {

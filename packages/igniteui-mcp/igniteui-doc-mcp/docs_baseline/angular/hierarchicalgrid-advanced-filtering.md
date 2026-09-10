@@ -11,7 +11,7 @@ _premium: true
 The Advanced filtering provides a dialog which allows the creation of groups with filtering conditions across all columns for any [Angular table](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid) like the Hierarchical Grid.
 ## Angular Hierarchical Grid Advanced Filtering Example
 ```typescript
-import { Component, AfterViewInit, ViewChild, ChangeDetectorRef, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ChangeDetectorRef, inject } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarComponent, IgxGridToolbarDirective } from 'igniteui-angular/grids/core';
@@ -22,7 +22,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-advanced-filtering',
     styleUrls: ['./hierarchical-grid-advanced-filtering.component.scss'],
     templateUrl: 'hierarchical-grid-advanced-filtering.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxGridToolbarDirective]
 })
 
@@ -37,7 +36,7 @@ export class HGridAdvancedFilteringSampleComponent implements AfterViewInit{
     constructor() {
         this.localData = SINGERS;
     }
-    
+
     public ngAfterViewInit() {
         const albumsTree = new FilteringExpressionsTree(FilteringLogic.And, undefined, 'Albums', ['Artist']);
         albumsTree.filteringOperands.push({
@@ -195,7 +194,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-external-advanced-filtering',
     templateUrl: './hierarchical-grid-external-advanced-filtering.component.html',
     styleUrls: ['./hierarchical-grid-external-advanced-filtering.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxAdvancedFilteringDialogComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxGridToolbarDirective, IgxGridToolbarComponent]
 })
 export class HGridExternalAdvancedFilteringComponent {
@@ -333,7 +331,7 @@ $custom-query-builder: query-builder-theme(
 ```
 ### Demo
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarComponent, IgxGridToolbarDirective } from 'igniteui-angular/grids/core';
@@ -343,7 +341,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-advanced-filtering-style',
     styleUrls: ['./hierarchical-grid-advanced-filtering-style.component.scss'],
     templateUrl: 'hierarchical-grid-advanced-filtering-style.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, IgxGridToolbarDirective]
 })
 

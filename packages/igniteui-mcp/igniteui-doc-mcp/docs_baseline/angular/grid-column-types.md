@@ -11,7 +11,7 @@ Ignite UI for Angular Grid provides a default handling of _number_, _string_, _d
 ## Angular Column Types Example
 ```typescript
 /*eslint-disable*/
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { registerLocaleData, NgClass } from "@angular/common";
 import localeBG from '@angular/common/locales/bg';
 import localeDE from '@angular/common/locales/de';
@@ -22,7 +22,8 @@ import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent, IgxPrefixD
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxTooltipDirective, IgxTooltipTargetDirective } from 'igniteui-angular/directives';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
-import { IgxColumnComponent, IgxTimeSummaryOperand } from 'igniteui-angular/grids/core';
+import { IgxColumnComponent } from 'igniteui-angular/grids/core';
+import { IgxTimeSummaryOperand } from 'igniteui-angular/core';
 import { FormsModule } from "@angular/forms";
 import { IgxPreventDocumentScrollDirective } from "../../directives/prevent-scroll.directive";
 
@@ -30,7 +31,6 @@ import { IgxPreventDocumentScrollDirective } from "../../directives/prevent-scro
     selector: "grid-column-data-types-sample",
     styleUrls: ["./grid-column-data-types-sample.component.scss"],
     templateUrl: "grid-column-data-types-sample.component.html",
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSelectComponent, FormsModule, IgxPrefixDirective, IgxSelectItemComponent, IgxHintDirective, IgxSuffixDirective, IgxIconComponent, IgxInputGroupComponent, IgxTooltipTargetDirective, IgxTooltipDirective, IgxInputDirective, NgClass, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class GridColumnDataTypesSampleComponent implements OnInit {

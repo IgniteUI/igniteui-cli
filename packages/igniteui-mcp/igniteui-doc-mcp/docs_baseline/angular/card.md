@@ -19,7 +19,7 @@ This lightweight Angular Card component is used for creating all sorts of cards,
 Below you can see a basic sample of a well-crafted Ignite UI for Angular Card with main card sections like image, title, subtitle, primary card content, container for a button.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Card } from './card.blueprint';
 import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
 import { IgxButtonDirective, IgxIconButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
@@ -31,7 +31,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-card',
     styleUrls: ['./card.component.scss'],
     templateUrl: './card.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCardComponent, IgxCardMediaDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardContentDirective, IgxCardActionsComponent, IgxButtonDirective, IgxRippleDirective, IgxPrefixDirective, IgxIconButtonDirective, IgxSuffixDirective, IgxIconComponent]
 })
 export class CardComponent {
@@ -330,10 +329,10 @@ If everything went well, our card should look like this:
 
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Card } from '../card.blueprint';
 import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
-import { IgxDividerDirective, IgxFlexDirective, IgxIconButtonDirective, IgxLayoutDirective, IgxRippleDirective } from 'igniteui-angular/directives';
+import { IgxDividerComponent, IgxFlexDirective, IgxIconButtonDirective, IgxLayoutDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
@@ -342,8 +341,7 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-card-sample-2',
     styleUrls: ['./card-sample-2.component.scss'],
     templateUrl: './card-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxCardComponent, IgxLayoutDirective, IgxFlexDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardMediaDirective, IgxCardContentDirective, IgxDividerDirective, IgxCardActionsComponent, IgxIconButtonDirective, IgxRippleDirective, IgxSuffixDirective, IgxIconComponent]
+    imports: [IgxCardComponent, IgxLayoutDirective, IgxFlexDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardMediaDirective, IgxCardContentDirective, IgxDividerComponent, IgxCardActionsComponent, IgxIconButtonDirective, IgxRippleDirective, IgxSuffixDirective, IgxIconComponent]
 })
 export class CardSample2Component {
     public card = new Card({
@@ -429,7 +427,7 @@ Below is an example showing how you can create a semi-horizontal card, where we 
 
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Card } from '../card.blueprint';
 import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
 import { IgxButtonDirective, IgxFlexDirective, IgxLayoutDirective, IgxRippleDirective } from 'igniteui-angular/directives';
@@ -441,7 +439,6 @@ import { IgxPrefixDirective } from 'igniteui-angular/input-group';
     selector: 'app-card-sample-3',
     styleUrls: ['./card-sample-3.component.scss'],
     templateUrl: './card-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCardComponent, IgxLayoutDirective, IgxFlexDirective, IgxCardHeaderComponent, IgxAvatarComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardContentDirective, IgxCardActionsComponent, IgxButtonDirective, IgxRippleDirective, IgxPrefixDirective, IgxCardMediaDirective]
 })
 export class CardSample3Component {
@@ -596,7 +593,7 @@ In the sample below, you can see how using the card component with customized CS
 
 
 ```typescript
-import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Card } from '../card.blueprint';
 import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
 import { IgxDividerModule, IgxIconButtonDirective } from 'igniteui-angular/directives';
@@ -608,10 +605,9 @@ import { IgxChipComponent } from 'igniteui-angular/chips';
   selector: 'app-card-styling-sample',
   templateUrl: './card-styling-sample.component.html',
   styleUrls: ['./card-styling-sample.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [IgxCardComponent, IgxCardMediaDirective, IgxCardHeaderComponent, 
-		IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, 
-		IgxCardContentDirective, IgxCardActionsComponent, IgxIconButtonDirective, 
+  imports: [IgxCardComponent, IgxCardMediaDirective, IgxCardHeaderComponent,
+		IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective,
+		IgxCardContentDirective, IgxCardActionsComponent, IgxIconButtonDirective,
 		IgxIconComponent, IgxAvatarComponent, IgxDividerModule, IgxChipComponent]
 })
 export class CardStylingSampleComponent implements OnInit {

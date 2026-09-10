@@ -1,0 +1,65 @@
+{
+  "framework": "angular",
+  "docs": [
+    {
+      "framework": "angular",
+      "filename": "B c.md",
+      "component": "IgxThing",
+      "toc_name": "B c",
+      "premium": 0,
+      "keywords": "",
+      "summary": "Filename containing a space, in group \"A\"."
+    },
+    {
+      "framework": "angular",
+      "filename": "c.md",
+      "component": "IgxThing",
+      "toc_name": "c",
+      "premium": 0,
+      "keywords": "",
+      "summary": "Filename without a space, in group \"A B\"."
+    }
+  ],
+  "docToc": [
+    {
+      "framework": "angular",
+      "filename": "B c.md",
+      "group_key": "A",
+      "section": "A",
+      "group_label": "",
+      "path": "A > B c",
+      "ord": 0,
+      "landing": 0
+    },
+    {
+      "framework": "angular",
+      "filename": "c.md",
+      "group_key": "A B",
+      "section": "A",
+      "group_label": "B",
+      "path": "A > B > c",
+      "ord": 1,
+      "landing": 0
+    }
+  ],
+  "docGroups": [
+    {
+      "framework": "angular",
+      "group_key": "A",
+      "section": "A",
+      "group_label": "",
+      "summary": "Section-level group whose key is a prefix of the other.",
+      "doc_count": 1,
+      "ord": 0
+    },
+    {
+      "framework": "angular",
+      "group_key": "A B",
+      "section": "A",
+      "group_label": "B",
+      "summary": "Group whose key plus a space equals the other key plus its filename.",
+      "doc_count": 1,
+      "ord": 1
+    }
+  ]
+}

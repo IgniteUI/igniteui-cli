@@ -1,1 +1,1 @@
-export const IGNITEUI_ANGULAR_PACKAGE = "igniteui-angular@~22.0.0";
+export const IGNITEUI_ANGULAR_PACKAGE = "igniteui-angular@~22.1.0";

@@ -12,48 +12,10 @@ _tocName: Button Group
 
 ## Angular Button Group Example
 
-```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
-import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-import { IgxIconComponent } from 'igniteui-angular/icon';
-
-@Component({
-    selector: 'app-button-group-sample-1',
-    styleUrls: ['./button-group-sample-1.component.scss'],
-    templateUrl: './button-group-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective, IgxIconComponent]
-})
-
-export class ButtonGroupSample1Component {
-    public rippleColor = 'grey';
-}
-```
-```html
-<article class="sample-column">
-    <igx-buttongroup>
-        <button igxButton [igxRipple]="rippleColor">
-            <igx-icon>format_align_left</igx-icon>
-        </button>
-        <button igxButton [igxRipple]="rippleColor">
-            <igx-icon>format_align_center</igx-icon>
-        </button>
-        <button igxButton [igxRipple]="rippleColor">
-            <igx-icon>format_align_right</igx-icon>
-        </button>
-        <button igxButton [igxRipple]="rippleColor" selected>
-            <igx-icon>format_align_justify</igx-icon>
-        </button>
-    </igx-buttongroup>
-</article>
-```
-```scss
-igx-buttongroup{
-    display: inline-block;
-    max-width: 400px;
-}
-```
+<code-view style="height: 85px"
+           data-demos-base-url="{environment:demosBaseUrl}"
+           iframe-src="{environment:demosBaseUrl}/data-entries/button-group-sample-1/" alt="Angular Button Group Example">
+</code-view>
 
 <div class="divider--half"></div>
 
@@ -175,39 +137,10 @@ public alignment = ButtonGroupAlignment.vertical;
 </igx-buttongroup>
 ```
 
-```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ButtonGroupAlignment, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
-import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-
-@Component({
-    selector: 'app-button-group-sample-2',
-    styleUrls: ['./button-group-sample-2.component.scss'],
-    templateUrl: './button-group-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective]
-})
-export class ButtonGroupSample2Component {
-    public alignment = ButtonGroupAlignment.vertical;
-    public rippleColor = 'grey';
-}
-```
-```html
-<article class="sample-column">
-    <igx-buttongroup [alignment]="alignment">
-        <button igxButton [igxRipple]="rippleColor">Sofia</button>
-        <button igxButton [igxRipple]="rippleColor">London</button>
-        <button igxButton selected [igxRipple]="rippleColor">New York</button>
-        <button igxButton [igxRipple]="rippleColor">Tokyo</button>
-    </igx-buttongroup>
-</article>
-```
-```scss
-igx-buttongroup{
-    display: inline-block;
-    width: 200px;
-}
-```
+<code-view style="height: 220px"
+           data-demos-base-url="{environment:demosBaseUrl}"
+           iframe-src="{environment:demosBaseUrl}/data-entries/button-group-sample-2/" >
+</code-view>
 
 <div class="divider--half"></div>
 
@@ -221,59 +154,10 @@ In order to configure the `igx-buttongroup` selection, you could use its [select
 
 The sample below demonstrates the exposed `igx-buttongroup` selection modes:
 
-```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { IgxRadioComponent } from 'igniteui-angular/radio';
-import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
-import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-import { IgxIconComponent } from 'igniteui-angular/icon';
-import { FormsModule } from '@angular/forms';
-
-@Component({
-    selector: 'app-button-group-sample',
-    styleUrls: ['./button-group-sample.component.scss'],
-    templateUrl: './button-group-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxRadioComponent, FormsModule, IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective, IgxIconComponent]
-})
-export class ButtonGroupSampleComponent {
-    public rippleColor = 'grey';
-    public selectionMode: 'single' | 'singleRequired' | 'multi' = 'single';
-}
-```
-```html
-<article class="sample-column">
-    <h6>Selection Mode</h6>
-    <div class="radio-buttons">
-        <igx-radio [(ngModel)]="selectionMode" value="single">Single</igx-radio>
-        <igx-radio [(ngModel)]="selectionMode" value="singleRequired">Single-Required</igx-radio>
-        <igx-radio [(ngModel)]="selectionMode" value="multi">Multi</igx-radio>
-    </div>
-    <igx-buttongroup [selectionMode]="selectionMode">
-        <button igxButton [igxRipple]="rippleColor">
-            <igx-icon>format_bold</igx-icon>
-        </button>
-        <button igxButton [igxRipple]="rippleColor">
-            <igx-icon>format_italic</igx-icon>
-        </button>
-        <button igxButton [igxRipple]="rippleColor">
-            <igx-icon>format_underlined</igx-icon>
-        </button>
-    </igx-buttongroup>
-</article>
-```
-```scss
-.sample-column,
-.radio-buttons {
-    display: flex;
-    gap: 16px;
-}
-
-.sample-column {
-    flex-direction: column;
-    align-items: flex-start;
-}
-```
+<code-view style="height: 170px"
+           data-demos-base-url="{environment:demosBaseUrl}"
+           iframe-src="{environment:demosBaseUrl}/data-entries/button-group-sample-4/" >
+</code-view>
 
 ### Size
 
@@ -291,57 +175,10 @@ igx-buttongroup {
 <igx-buttongroup></igx-buttongroup>
 ```
 
-```typescript
-import { Component, HostBinding, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
-
-type Button = {
-    label: string,
-    selected: boolean,
-    togglable: boolean
-}
-
-@Component({
-    selector: 'app-button-group-sample-5',
-    styleUrls: ['./button-group-sample-5.component.scss'],
-    templateUrl: './button-group-sample-5.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxButtonGroupComponent]
-})
-export class ButtonGroupSample5Component implements OnInit {
-    public rippleColor = 'grey';
-    public size = 'large';
-    public sizes: Button[];
-
-    public ngOnInit() {
-        this.sizes = [
-            { label: 'small', selected: this.size === 'small', togglable: true },
-            { label: 'medium', selected: this.size === 'medium', togglable: true },
-            { label: 'large', selected: this.size === 'large', togglable: true }
-        ];
-    }
-
-    public selectSize(event: any) {
-        this.size = this.sizes[event.index].label;
-    }
-
-
-    @HostBinding('style.--ig-size')
-    protected get sizeStyle() {
-        return `var(--ig-size-${this.size})`;
-    }
-}
-```
-```html
-<article class="sample-column">
-    <igx-buttongroup [values]="sizes" (selected)="selectSize($event)"></igx-buttongroup>
-</article>
-```
-```scss
-igx-buttongroup{
-    display: inline-block;
-}
-```
+<code-view style="height: 80px"
+           data-demos-base-url="{environment:demosBaseUrl}"
+           iframe-src="{environment:demosBaseUrl}/data-entries/button-group-sample-5/" >
+</code-view>
 
 ### Custom toggle buttons
 
@@ -410,83 +247,10 @@ public ngOnInit() {
 <igx-buttongroup [selectionMode]="'multi'" [values]="bordersButtons"></igx-buttongroup>
 ```
 
-```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
-
-interface IButton {
-    ripple?: string;
-    label?: string;
-    disabled?: boolean;
-    togglable?: boolean;
-    selected?: boolean;
-    color?: string;
-    icon?: string;
-}
-
-class ToggleButton {
-    private ripple: string;
-    private label: string;
-    private disabled: boolean;
-    private togglable: boolean;
-    private selected: boolean;
-    private color: string;
-    private icon: string;
-
-    constructor(obj?: IButton) {
-        this.ripple = obj.ripple || 'gray';
-        this.label = obj.label;
-        this.selected = obj.selected || false;
-        this.togglable = obj.togglable || true;
-        this.disabled = obj.disabled || false;
-        this.color = obj.color;
-        this.icon = obj.icon;
-    }
-}
-
-@Component({
-    selector: 'app-button-group-sample-3',
-    styleUrls: ['./button-group-sample-3.component.scss'],
-    templateUrl: './button-group-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxButtonGroupComponent]
-})
-export class ButtonGroupSample3Component implements OnInit {
-    public bordersButtons: ToggleButton[];
-
-    public ngOnInit() {
-        this.bordersButtons = [
-            new ToggleButton({
-                icon: 'border_top',
-                selected: true
-            }),
-            new ToggleButton({
-                icon: 'border_right',
-                selected: false
-            }),
-            new ToggleButton({
-                icon: 'border_bottom',
-                selected: false
-            }),
-            new ToggleButton({
-                icon: 'border_left',
-                selected: false
-            })
-        ];
-    }
-}
-```
-```html
-<article class="sample-column">
-    <igx-buttongroup [selectionMode]="'multi'" [values]="bordersButtons"></igx-buttongroup>
-</article>
-```
-```scss
-igx-buttongroup {
-    display: inline-block;
-    width: 300px;
-}
-```
+<code-view style="height: 90px"
+           data-demos-base-url="{environment:demosBaseUrl}"
+           iframe-src="{environment:demosBaseUrl}/data-entries/button-group-sample-3/" >
+</code-view>
 
 ## Styling
 
@@ -672,44 +436,11 @@ The last step is to include the component's theme.
 
 ### Demo
 
-```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ButtonGroupAlignment, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
-import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-
-@Component({
-    selector: 'app-button-group-style',
-    styleUrls: ['./button-group-style.component.scss'],
-    templateUrl: './button-group-style.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective]
-})
-export class ButtonGroupStyleComponent {
-    public alignment = ButtonGroupAlignment.vertical;
-}
-```
-```html
-<article class="sample-column">
-    <igx-buttongroup [alignment]="alignment">
-        <button igxButton igxRipple="white">Sofia</button>
-        <button igxButton igxRipple="white">London</button>
-        <button igxButton igxRipple="white">New York</button>
-        <button igxButton igxRipple="white" disabled>Tokyo</button>
-    </igx-buttongroup>
-</article>
-```
-```scss
-@use "layout.scss" as *;
-@use "igniteui-angular/theming" as *;
-
-$custom-button-group: button-group-theme(
-  $item-background: #57a5cd,
-);
-
-:host {
-    @include tokens($custom-button-group);
-}
-```
+<code-view style="height: 200px"
+           no-theming
+           data-demos-base-url="{environment:demosBaseUrl}"
+           iframe-src="{environment:demosBaseUrl}/data-entries/button-group-style/" >
+</code-view>
 
 ### Styling with Tailwind
 

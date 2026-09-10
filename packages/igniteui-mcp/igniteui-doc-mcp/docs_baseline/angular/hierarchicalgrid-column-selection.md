@@ -14,7 +14,7 @@ The Column selection feature provides an easy way to select an entire column wit
 The sample below demonstrates the three types of Hierarchical Grid's **column selection** behavior. Use the _column selection_ dropdown below to enable each of the available selection modes.
 *_Photo_ and _Debut_ are with disabled column selection.
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { GridSelectionMode, IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
@@ -27,7 +27,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-hierarchical-grid-column-selection',
     templateUrl: './hierarchical-grid-column-selection.component.html',
     styleUrls: ['./hierarchical-grid-column-selection.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxSelectComponent, FormsModule, IgxLabelDirective, IgxSelectItemComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 export class HierarchicalGridColumnSelectionComponent implements OnInit, AfterViewInit {
@@ -123,7 +122,7 @@ The default selection mode is `none`. If set to `single` or `multiple` all of th
 > [`Multi-column Headers`](multi-column-headers.md) don't reflect on the [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable) input. The [`IgxColumnGroupComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent) is [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=selected) if all of its `selectable` descendants are [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selected).
 *Under _Location_ Column Group only column _City_ is selectable.
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
 import { CUSTOMERS } from '../../data/hierarchical-data';
@@ -133,7 +132,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-column-group-selection',
     templateUrl: './hierarchical-grid-column-group-selection.component.html',
     styleUrls: ['./hierarchical-grid-column-group-selection.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxColumnGroupComponent, IgxRowIslandComponent]
 })
 export class HierarchicalGridColumnGroupSelectionComponent implements OnInit, AfterViewInit {
@@ -263,7 +261,7 @@ The last step is to include the custom `igx-grid` theme.
 ```
 ### Demo
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { SINGERS } from '../../data/singersData';
@@ -273,7 +271,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-column-selection-styles',
     templateUrl: './hierarchical-grid-column-selection-styles.component.html',
     styleUrls: ['./hierarchical-grid-column-selection-styles.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 export class HGridColumnSelectionStylesComponent implements OnInit, AfterViewInit {

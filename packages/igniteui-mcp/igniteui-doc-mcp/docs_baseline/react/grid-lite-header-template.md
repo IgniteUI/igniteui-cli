@@ -48,7 +48,6 @@ const ratingHeaderTemplate = (ctx: IgrHeaderContext) => (
   <h3>{"⭐ Rating ⭐"}</h3>
 );
 
-
 return (
   <IgrGridLite>
     <IgrGridLiteColumn field="rating" headerTemplate={ratingHeaderTemplate}></IgrGridLiteColumn>
