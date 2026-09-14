@@ -1,0 +1,11 @@
+<p>igx-paginator component sample.</p>
+<p>You can read more about configuring the igx-paginator component in the
+<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/paginator/README.md" target="_blank">README</a> or the
+<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/paging" target="_blank">official documentation</a>.</p>
+<igx-paginator
+  [totalRecords]="totalRecords"
+  [perPage]="perPage"
+  [selectOptions]="[10, 25, 50, 100]"
+  (pageChange)="onPageChanged($event)"
+  (perPageChange)="perPage = $event">
+</igx-paginator>
