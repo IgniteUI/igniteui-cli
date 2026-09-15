@@ -4,6 +4,7 @@ import {
   applyDocAlias,
   formatSubstitutionNotice,
   normalizeDocName,
+  parseDocNames,
   resolveDoc,
   sanitizeSearchDocsQuery,
 } from '../../tools/doc-tools.js';
@@ -289,6 +290,32 @@ describe('resolveDoc', () => {
     expect(r.text).toBe('NAV');
   });
 
+
+  it('resolves through the search fallback when the provider returns remote-format results', async () => {
+    // RemoteDocsProvider proxies DocsController.cs, which renders each hit as
+    // `**doc-name** [Component]` followed by an excerpt line — no backticks.
+    const p: DocsProvider = {
+      async listComponents() {
+        return '';
+      },
+      async getDoc(_framework: string, name: string) {
+        return name === 'navdrawer'
+          ? { text: 'NAV', found: true }
+          : { text: 'not found', found: false };
+      },
+      async searchDocs() {
+        return [
+          '**navdrawer** [IgxNavigationDrawer]',
+          'The **Navigation Drawer** slides in from the side...',
+          '',
+          '**grid-sorting** [IgxGrid]',
+          'Sort rows by column.',
+        ].join('\n');
+      },
+    };
+    const r = await resolveDoc(p, 'angular', 'navigation drawer');
+    expect(r).toMatchObject({ found: true, servedName: 'navdrawer', text: 'NAV', fuzzy: true });
+  });
   it('returns not found when search also yields nothing', async () => {
     const p = makeProvider({}); // searchDocs returns "No results"
     const r = await resolveDoc(p, 'angular', 'totally unknown widget');
@@ -408,5 +435,39 @@ describe('formatSubstitutionNotice', () => {
     const notice = formatSubstitutionNotice('x', 'y');
     expect(notice).toContain('list_components');
     expect(notice).toContain('search_docs');
+  });
+});
+
+describe('parseDocNames', () => {
+  it('parses local-format results from the backtick token, not the bold toc title', () => {
+    const out = [
+      'Found 2 results for "sort" in **angular**:',
+      '',
+      '- **Grid Sorting** (`grid-sorting`)',
+      '  Sort rows by one or more columns.',
+      '- **Tree Grid Sorting** (`treegrid-sorting`)',
+    ].join('\n');
+    expect(parseDocNames(out)).toEqual(['grid-sorting', 'treegrid-sorting']);
+  });
+
+  it('parses remote-format results from the line-leading bold doc name', () => {
+    const out = [
+      '**grid-sorting** [IgxGrid]',
+      'Sort rows by one or more columns.',
+      '',
+      '**treegrid-sorting**',
+      'Tree grid sorting excerpt.',
+    ].join('\n');
+    expect(parseDocNames(out)).toEqual(['grid-sorting', 'treegrid-sorting']);
+  });
+
+  it('ignores bold prose inside a remote excerpt', () => {
+    const out = ['**grid-editing** [IgxGrid]', '**Note:** editing requires primaryKey.'].join('\n');
+    expect(parseDocNames(out)).toEqual(['grid-editing']);
+  });
+
+  it('returns an empty list for a no-results message', () => {
+    expect(parseDocNames('No results found for "xyz".')).toEqual([]);
+    expect(parseDocNames('No results')).toEqual([]);
   });
 });

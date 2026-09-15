@@ -256,9 +256,27 @@ export function applyCompactGridPrefix(framework: string, name: string): string 
 const PREFIXED_DOC_RE =
   /^(grid|hierarchical|tree|pivot|hierarchicalgrid|treegrid|pivotgrid|combo|drop-down|select|for-of)[-]/;
 
-/** Extract result doc names, in rank order, from searchDocs markdown (the `(`name`)` tokens). */
-function parseDocNames(searchOutput: string): string[] {
-  return [...searchOutput.matchAll(/\(`([^`]+)`\)/g)].map((m) => m[1]);
+/**
+ * Extract result doc names, in rank order, from searchDocs output. The two
+ * providers render results differently:
+ *   local  (LocalDocsProvider): `- **Toc Title** (`doc-name`)` — name is in the backticks
+ *   remote (DocsController.cs): `**doc-name** [Component]` at line start, excerpt below
+ * A line with a backtick token uses that; otherwise a line-leading bold token is
+ * taken as the name. The bold form is restricted to doc-name characters so that
+ * bold prose inside a remote excerpt (`**Note:**`) is not mistaken for a result.
+ */
+export function parseDocNames(searchOutput: string): string[] {
+  const names: string[] = [];
+  for (const line of searchOutput.split(/\r?\n/)) {
+    const local = line.match(/\(`([^`]+)`\)/);
+    if (local) {
+      names.push(local[1]);
+      continue;
+    }
+    const remote = line.match(/^\*\*([A-Za-z0-9_.-]+)\*\*/);
+    if (remote) names.push(remote[1]);
+  }
+  return names;
 }
 
 /**
