@@ -1,5 +1,5 @@
-import { App, BaseTemplateManager, detectFrameworkFromPackageJson, GoogleAnalytics, ProjectConfig, TEMPLATE_MANAGER,
-	type ProjectTemplate, Util } from "@igniteui/cli-core";
+import { App, BaseTemplateManager, detectFrameworkFromPackageJson, GoogleAnalytics, ProjectConfig, resolveUpgradeableProject, TEMPLATE_MANAGER,
+	Util } from "@igniteui/cli-core";
 import { PositionalArgs, UpgradeCommandType } from "./types";
 import { ArgumentsCamelCase } from "yargs";
 
@@ -60,12 +60,10 @@ const command: UpgradeCommandType = {
 				if (projectType === "igx-ts" || projectType === "igr-ts" || projectType === "igc-ts") {
 					const templateManager = App.container.get<BaseTemplateManager>(TEMPLATE_MANAGER);
 					const projectLibrary = templateManager.getProjectLibrary(framework, projectType);
-					let project: ProjectTemplate;
-					if (!config.project?.projectTemplate || !projectLibrary.hasProject(config.project.projectTemplate)) {
-						// in case project template is missing from the config we provide backward.
-						project = projectLibrary.getProject(projectLibrary.projectIds[0]);
-					} else {
-						project = projectLibrary.getProject(config.project.projectTemplate);
+					const project = resolveUpgradeableProject(projectLibrary, config.project?.projectTemplate);
+					if (!project) {
+						Util.error("No valid Ignite UI project template found to upgrade packages.", "red");
+						return;
 					}
 					const success = await project.upgradeIgniteUIPackages(process.cwd(), "");
 					if (success && !argv.skipInstall) {
