@@ -1,3 +1,13 @@
+# 15.7.0 (2026-09-15)
+
+## What's Changed
+* **feat(angular):** Added Angular templates for Ripple, Simple Combo, Slider, Snackbar, Splitter, Switch, and Toast, with related action strip and chat template updates. [#1794](https://github.com/IgniteUI/igniteui-cli/pull/1794)
+* **feat(webcomponents):** Added Web Components templates for Snackbar, Splitter, Stepper, Theme Provider, Tile Manager, Toast, Toggle Button, Tooltip, and Virtual Scroll. [#1789](https://github.com/IgniteUI/igniteui-cli/pull/1789)
+* **feat(react):** Added missing React `igr-ts` component templates and related styles and tests. [#1796](https://github.com/IgniteUI/igniteui-cli/pull/1796)
+* **fix(cli):** Improved framework menu visibility and made the `None` option exclusive in AI configuration selections. [#1788](https://github.com/IgniteUI/igniteui-cli/pull/1788)
+* **fix(schematics):** Resolved the valid project template before upgrading packages. [#1799](https://github.com/IgniteUI/igniteui-cli/pull/1799)
+* **fix(templates):** Removed MCP configuration files from generated project templates. [#1800](https://github.com/IgniteUI/igniteui-cli/pull/1800)
+
 # 15.6.1 (2026-09-01)
 
 ## What's Changed
