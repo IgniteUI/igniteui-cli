@@ -11,8 +11,8 @@
   flex: 0 0 auto;
   height: 56px;
   padding: 0 16px;
-  background: #239ef0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .24);
+  background: var(--ig-primary-500);
+  box-shadow: var(--ig-elevation-4);
   box-sizing: border-box;
   position: relative;
   z-index: 10;
@@ -29,7 +29,7 @@
   width: 40px;
   height: 40px;
   padding: 0;
-  color: #000;
+  color: var(--ig-primary-500-contrast);
   border: 0;
   background: transparent;
   cursor: pointer;
@@ -41,7 +41,7 @@
 
 .app__title {
   margin: 0 0 0 16px;
-  color: #000;
+  color: var(--ig-primary-500-contrast);
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1;
@@ -60,12 +60,12 @@
 }
 
 igc-nav-drawer-item[active]::part(base) {
-  background: #e0f2ff;
-  color: #0075d2;
+  background: var(--ig-primary-100);
+  color: var(--ig-primary-700);
 }
 
 igc-nav-drawer-item[active] igc-icon {
-  color: #0075d2;
+  color: var(--ig-primary-700);
 }
 
 .app--mini .app__drawer {

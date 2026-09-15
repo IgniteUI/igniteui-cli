@@ -14,9 +14,7 @@ The Infragistics Web Components Excel Engine's [`WorksheetTable`](https://www.in
 
 <!--## Web Components Using Tables Example
 
-
 `sample="/excel/excel-library/working-with-tables", height="500", alt="Web Components Using Tables Example"`
-
 
 -->
 

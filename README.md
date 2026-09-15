@@ -7,7 +7,7 @@
 [![npm version](https://badge.fury.io/js/igniteui-cli.svg)](https://badge.fury.io/js/igniteui-cli)
 [![Discord](https://img.shields.io/discord/836634487483269200?logo=discord&logoColor=ffffff)](https://discord.gg/39MjrTRqds)
 
-Quickly create projects including [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular) and [Ignite UI for jQuery](https://www.infragistics.com/products/ignite-ui) components for a variety of frameworks.
+Quickly create projects, including [Ignite UI for Angular](https://www.infragistics.com/products/ignite-ui-angular) and [Ignite UI for Web Components](https://www.infragistics.com/products/ignite-ui-web-components), for a variety of frameworks.
 
 ## Overview
 ### Features:
@@ -22,6 +22,7 @@ Quickly create projects including [Ignite UI for Angular](https://www.infragisti
  * Angular
  * React
  * Web Components
+ * Blazor
  * jQuery
 
 ### Prerequisites
@@ -38,7 +39,7 @@ This monorepo contains several packages that combine into the `igniteui-cli`:
 | [@igniteui/cli-core](https://www.npmjs.com/package/@igniteui/cli-core) | Contains the core functionality of the cli tool | [packages/core](./packages/core) |
 | [@igniteui/angular-templates](https://www.npmjs.com/package/@igniteui/angular-templates) | Contains the template definitions for Angular components | [packages/igx-templates](./packages/igx-templates) |
 | [@igniteui/angular-schematics](https://www.npmjs.com/package/@igniteui/angular-schematics) | IgniteUI CLI implementation to be used with Angular CLI's schematics engine | [packages/ng-schematics](./packages/ng-schematics) |
-| [igniteui-cli](https://www.npmjs.com/package/igniteui-cli) | Standalone IgniteUI CLI tool for React, jQuery and Angular | [packages/cli](./packages/cli) |
+| [igniteui-cli](https://www.npmjs.com/package/igniteui-cli) | Standalone IgniteUI CLI tool for React, Blazor, Angular, jQuery and Web Components | [packages/cli](./packages/cli) |
 | [@igniteui/mcp-server](https://www.npmjs.com/package/@igniteui/mcp-server) | MCP server providing AI assistants with Ignite UI documentation and API reference | [packages/igniteui-mcp/igniteui-doc-mcp](./packages/igniteui-mcp/igniteui-doc-mcp) |
 
 ## Table of Contents
@@ -241,6 +242,64 @@ See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/maste
     There is a predefined launch.config file for VS Code in the root folder, so you can use VS Code View/Debug window and choose one of the predefined actions. These include launching the step by step guide, create new project for a particular framework or add components.
 
 6. Hit Start Debugging/F5
+
+#### Template smoke test
+
+`scripts/smoke-test.sh` drives the locally built CLI end to end: it scaffolds a project, adds
+every component template into it, installs, and builds. The Jasmine specs under `spec/` stub out
+`PackageManager.installPackages`, so they verify that files land on disk but never that the result
+installs or compiles — this script covers that gap.
+
+```bash
+npm run build                 # required: the script runs your local build, not the published CLI
+scripts/smoke-test.sh         # angular, react and webcomponents (~20-30 min)
+```
+
+Options:
+
+| Option | Meaning |
+|---|---|
+| `-f, --frameworks LIST` | comma separated; default `angular,react,webcomponents` |
+| `-p, --project ID` | project template to scaffold (default: the framework's own default) |
+| `--all-projects` | scaffold and build every project template, skip component adds |
+| `--templates LIST` | only these component template ids — the fast path when iterating |
+| `--isolate` | one project per component template; slow, use to bisect a failure |
+| `--skip-build` | scaffold and add only |
+| `--keep` | keep the generated projects even when everything passes |
+| `-o, --out DIR` | work directory (default `output/smoke`, which is gitignored) — **wiped on each run**, see below |
+| `-j, --jobs N` | frameworks to run in parallel (default 1) |
+
+```bash
+scripts/smoke-test.sh -f angular --templates grid,combo    # quick check, ~2 min
+scripts/smoke-test.sh -f angular --all-projects            # every Angular project template
+scripts/smoke-test.sh -f webcomponents --isolate           # bisect which template broke
+```
+
+Per-step logs land in `<out>/logs/`, and `<out>/results.tsv` is a machine-readable
+`framework / step / template / status / seconds` table. The script exits non-zero if any step
+failed and prints a summary of the failures.
+
+The work directory is deleted and recreated on every run, so the script refuses to touch anything
+it cannot show is its own: the filesystem root, your home directory, the repository or any directory
+containing it, and any non-empty directory that lacks either the `.smoke-test-workdir` sentinel it
+drops or the `results.tsv` of an earlier run. Point `--out` elsewhere, or remove the directory
+yourself, if you hit that.
+
+Two things to know if you modify it:
+
+* **All `ig` calls must happen before `npm install`.** `packages/cli/bin/execute.js` delegates to
+  `node_modules/igniteui-cli` whenever one resolves inside the current directory, and every project
+  template lists `igniteui-cli` as a devDependency — so once a generated project has been installed,
+  `ig add` silently switches to the *published* CLI and its bundled templates. Scaffolding with
+  `--skip-install` keeps `PackageManager.queuePackage` from spawning installs, so dependencies are
+  written to `package.json` and installed once at the end.
+* **Exit codes are not sufficient.** `Util.error` logs and returns without setting one, so
+  `ig add does-not-exist x` exits 0. Each step is judged on its exit code *and* an error scan of its
+  log *and* an artifact check.
+
+jQuery and Blazor are opt-in via `-f`. jQuery has no build script and 13 of its templates pull
+`ignite-ui-full` from the Infragistics ProGet feed, which needs credentials; Blazor needs the .NET
+SDK and has no component templates, so only `dotnet build` runs.
 
 #### MCP Server development
 

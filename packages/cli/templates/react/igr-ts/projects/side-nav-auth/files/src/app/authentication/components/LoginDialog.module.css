@@ -6,7 +6,6 @@
 .dialog::part(title) {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #2d2d2d;
 }
 
 .body {

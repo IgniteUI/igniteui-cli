@@ -61,7 +61,6 @@ The following code demonstrates how to bind the [`IgbGeographicShapeSeries`](mcp
 ```razor
 @using IgniteUI.Blazor.Controls
 
-
 <IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
     <GeographicShapeSeries ShapefileDataSource="DataSource"/>
 </IgbGeographicMap>

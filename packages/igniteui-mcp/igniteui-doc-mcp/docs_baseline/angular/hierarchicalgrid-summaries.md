@@ -11,10 +11,10 @@ _premium: true
 The Angular UI grid in Ignite UI for Angular has a **summaries** feature that functions on a per-column level as group footer. Angular grid summaries is powerful feature which enables the user to see column information in a separate container with a predefined set of default summary items, depending on the type of data within the column or by implementing a custom angular template in the Hierarchical Grid.
 ## Angular Hierarchical Grid Summaries Overview Example
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
-import { IgxCellTemplateDirective, IgxColumnComponent, IgxNumberSummaryOperand } from 'igniteui-angular/grids/core';
-import { IgxSummaryResult } from 'igniteui-angular/core';
+import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
+import { IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scroll.directive';
 
@@ -59,7 +59,6 @@ class MyChildSummary {
     selector: 'app-hierarchical-grid-summary',
     styleUrls: ['./hierarchical-grid-summary.component.scss'],
     templateUrl: 'hierarchical-grid-summary.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 
@@ -272,10 +271,10 @@ class MySummary extends IgxNumberSummaryOperand {
 }
 ```
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
-import { IgxCellTemplateDirective, IgxColumnComponent, IgxNumberSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
-import { IgxSummaryResult } from 'igniteui-angular/core';
+import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
+import { IgxNumberSummaryOperand, IgxSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scroll.directive';
 
@@ -321,7 +320,6 @@ class GrammySummary {
     selector: 'app-hierarchical-grid-all-data-summary',
     styleUrls: ['./hierarchical-grid-allData-summary.component.scss'],
     templateUrl: 'hierarchical-grid-allData-summary.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 
@@ -389,9 +387,9 @@ When a default summary is defined, the height of the summary area is calculated 
 > [!NOTE]
 > Column summary template could be defined through API by setting the column [summaryTemplate](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=summaryTemplate) property to the required TemplateRef.
 ```typescript
-import { Component, HostBinding, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { IgxCellTemplateDirective, IgxColumnComponent, IgxNumberSummaryOperand, IgxSummaryTemplateDirective } from 'igniteui-angular/grids/core';
-import { IgxSummaryResult } from 'igniteui-angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { IgxCellTemplateDirective, IgxColumnComponent, IgxSummaryTemplateDirective } from 'igniteui-angular/grids/core';
+import { IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
@@ -442,7 +440,6 @@ class GrammySummary {
     selector: 'app-hierarchical-grid-all-data-summary',
     styleUrls: ['./hgrid-summary-template.component.scss'],
     templateUrl: 'hgrid-summary-template.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxSwitchComponent, IgxButtonGroupComponent, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxSummaryTemplateDirective, IgxRowIslandComponent]
 })
 
@@ -650,8 +647,8 @@ import {
   ChangeDetectionStrategy
 } from "@angular/core";
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
-import { IgxCellTemplateDirective, IgxColumnComponent, IgxNumberSummaryOperand } from 'igniteui-angular/grids/core';
-import { ConnectedPositioningStrategy, HorizontalAlignment, IgxSummaryResult, OverlaySettings, VerticalAlignment } from 'igniteui-angular/core';
+import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
+import { ConnectedPositioningStrategy, HorizontalAlignment, IgxNumberSummaryOperand, IgxSummaryResult, OverlaySettings, VerticalAlignment } from 'igniteui-angular/core';
 import { IgxButtonDirective, IgxToggleDirective } from 'igniteui-angular/directives';
 import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
 import { SINGERS } from "../../data/singersData";
@@ -711,7 +708,6 @@ class GrammySummary {
     selector: "app-hierarchical-grid-summary-sample",
     styleUrls: ["./hierarchical-grid-disable-summaries.component.scss"],
     templateUrl: "hierarchical-grid-disable-summaries.component.html",
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     IgxHierarchicalGridComponent,
     IgxRowIslandComponent,
@@ -1060,10 +1056,10 @@ public dateSummaryFormat(summary: IgxSummaryResult, summaryOperand: IgxSummaryOp
 ```
 ```typescript
 import { DatePipe } from '@angular/common';
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
-import { IgxColumnComponent, IgxDateSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
+import { Component, ViewChild } from '@angular/core';
+import { IgxColumnComponent } from 'igniteui-angular/grids/core';
+import { IgxDateSummaryOperand, IgxSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
-import { IgxSummaryResult } from 'igniteui-angular/core';
 import { SINGERS } from '../../data/singersData';
 import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scroll.directive';
 
@@ -1071,7 +1067,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-summary-formatter',
     styleUrls: ['./hierarchical-grid-summary-formatter.component.scss'],
     templateUrl: 'hierarchical-grid-summary-formatter.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxRowIslandComponent]
 })
 
@@ -1142,11 +1137,11 @@ export class HGridSummaryFormatterComponent {
 There is an [`exportSummaries`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterOptions&member=exportSummaries) option in `IgxExcelExporterOptions` that specifies whether the exported data should include the grid's summaries. Default `exportSummaries` value is **false**.
 The [`IgxExcelExporterService`](mcp:get_api_reference?platform=angular&component=IgxExcelExporterService) will export the default summaries for all column types as their equivalent excel functions so they will continue working properly when the sheet is modified. Try it for yourself in the example below:
 ```typescript
-import { Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { SINGERS } from '../../data/singersData';
-import { IgxSummaryResult } from 'igniteui-angular/core';
+import { IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
+import { IgxCellTemplateDirective, IgxColumnComponent, IgxExcelExporterOptions, IgxExcelExporterService } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
-import { IgxCellTemplateDirective, IgxColumnComponent, IgxNumberSummaryOperand, IgxExcelExporterOptions, IgxExcelExporterService } from 'igniteui-angular/grids/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scroll.directive';
 
@@ -1190,7 +1185,6 @@ class MyChildSummary {
     selector: 'app-hierarchical-grid-summary-export',
     styleUrls: ['./hgrid-summary-export.component.scss'],
     templateUrl: 'hgrid-summary-export.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 
@@ -1400,9 +1394,9 @@ The last step is to **include** the component custom theme:
 ```
 ### Demo
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { IgxCellTemplateDirective, IgxColumnComponent, IgxNumberSummaryOperand } from 'igniteui-angular/grids/core';
-import { IgxSummaryResult } from 'igniteui-angular/core';
+import { Component } from '@angular/core';
+import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
+import { IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { SINGERS } from '../../data/singersData';
 import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scroll.directive';
@@ -1448,7 +1442,6 @@ class MyChildSummary {
     selector: 'app-hierarchical-grid-summary-styling',
     styleUrls: ['./hierarchical-grid-summary-styling.component.scss'],
     templateUrl: 'hierarchical-grid-summary-styling.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 

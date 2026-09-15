@@ -1,4 +1,4 @@
-import type { DocsProvider } from "./DocsProvider.js";
+import type { DocsProvider, ListComponentsOptions } from "./DocsProvider.js";
 
 export class RemoteDocsProvider implements DocsProvider {
   private backendUrl: string;
@@ -13,10 +13,12 @@ export class RemoteDocsProvider implements DocsProvider {
     return resp.text();
   }
 
-  async listComponents(framework: string, filter?: string): Promise<string> {
+  async listComponents(framework: string, opts: ListComponentsOptions = {}): Promise<string> {
     const url = new URL("/api/docs", this.backendUrl);
     url.searchParams.set("framework", framework);
-    if (filter) url.searchParams.set("filter", filter);
+    if (opts.filter) url.searchParams.set("filter", opts.filter);
+    if (opts.detail) url.searchParams.set("detail", opts.detail);
+    if (opts.group) url.searchParams.set("group", opts.group);
     return this.fetchText(url);
   }
 

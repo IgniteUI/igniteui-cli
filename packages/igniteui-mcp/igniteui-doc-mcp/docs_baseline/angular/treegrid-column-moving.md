@@ -22,7 +22,7 @@ The Tree Grid component in Ignite UI for Angular provides the **Column Moving** 
 ```
 ## Angular Tree Grid Column Moving Overview Example
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellHeaderTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -35,7 +35,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-column-moving-sample',
     styleUrls: ['./tree-grid-column-moving-sample.component.scss'],
     templateUrl: './tree-grid-column-moving-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCellHeaderTemplateDirective, IgxIconComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent]
 })
 export class TreeGridColumnMovingSampleComponent {
@@ -180,7 +179,7 @@ The last step is to **include** the component mixins with its respective theme:
 ```
 ### Demo
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellHeaderTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -193,7 +192,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-column-moving-styled-sample',
     styleUrls: ['./tree-grid-column-moving-styled-sample.component.scss'],
     templateUrl: './tree-grid-column-moving-styled-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCellHeaderTemplateDirective, IgxIconComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent]
 })
 export class TreeGridColumnMovingStyledSampleComponent {

@@ -13,32 +13,7 @@ The Ignite UI for Blazor Avatar helps to display initials, images, or icons in y
 
 ## Blazor Icon Avatar Example
 
-```razor
-@using IgniteUI.Blazor.Controls
 
-
-<div class="container vertical">
-    <IgbAvatar >
-        <IgbIcon @ref="ChildIcon" IconName="home" Collection="material" />
-    </IgbAvatar>
-</div>
-
-@code {
-
-    public IgbIcon ChildIcon { get; set; }
-
-    protected override void OnAfterRender(bool firstRender)
-    {
-        if (this.ChildIcon != null && firstRender)
-        {
-            this.ChildIcon.EnsureReady().ContinueWith(new Action<Task>((e) =>
-            {
-                this.ChildIcon.RegisterIcon("home", "https://unpkg.com/material-design-icons@3.0.1/action/svg/production/ic_home_24px.svg", "material");
-            }));
-        }
-    }
-}
-```
 
 <div class="divider--half"></div>
 
@@ -86,19 +61,7 @@ If the [`Initials`](mcp:get_api_reference?platform=blazor&component=IgbAvatar&me
 </IgbAvatar>
 ```
 
-```razor
-@using IgniteUI.Blazor.Controls
 
-
-<div class="container vertical">
-    <IgbAvatar Initials="AZ"/>
-</div>
-
-@code {
-
-
-}
-```
 
 ### Image
 
@@ -132,25 +95,66 @@ The avatar supports three shapes - `circle`, `rounded`, and `square`. The defaul
 ```razor
 @using IgniteUI.Blazor.Controls
 
+<div class="avatar-shape-sample">
+    <IgbAvatar
+        Shape="@AvatarShape.Circle"
+        Src="https://dl.infragistics.com/x/img/avatars/avatar-profile-06.png"
+        Alt="A profile photo of a man." />
+    <IgbBadge
+        Dot="true"
+        Outlined="true"
+        Variant="@StyleVariant.Success" />
+    <span>Circle</span>
 
-<div class="container vertical">
-    <IgbAvatar Shape=AvatarShape.Rounded>
-        <IgbIcon @ref="ChildIcon" IconName="home" Collection="material" />
+    <IgbAvatar Shape="@AvatarShape.Square">
+        <IgbIcon @ref="MailIconRef" IconName="mail" Collection="material" />
     </IgbAvatar>
+    <IgbBadge
+        Outlined="true"
+        Shape="@BadgeShape.Square"
+        Variant="@StyleVariant.Info">
+        2
+    </IgbBadge>
+    <span>Square</span>
+
+    <IgbAvatar
+        Shape="@AvatarShape.Rounded"
+        Src="https://dl.infragistics.com/x/img/avatars/avatar-profile-07.png"
+        Alt="A profile photo of a man." />
+    <IgbBadge
+        Outlined="true"
+        Shape="@BadgeShape.Rounded"
+        Variant="@StyleVariant.Success">
+        <IgbIcon @ref="CheckIconRef" IconName="check" Collection="material" />
+    </IgbBadge>
+    <span>Rounded</span>
 </div>
 
 @code {
+    private const string MailIcon =
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z\"/></svg>";
 
-    public IgbIcon ChildIcon { get; set; }
+    private const string CheckIcon =
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"m9 16.17-4.17-4.17-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17Z\"/></svg>";
 
-    protected override void OnAfterRender(bool firstRender)
+    public IgbIcon MailIconRef { get; set; }
+    public IgbIcon CheckIconRef { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (this.ChildIcon != null && firstRender)
+        if (firstRender)
         {
-            this.ChildIcon.EnsureReady().ContinueWith(new Action<Task>((e) =>
+            if (MailIconRef != null)
             {
-                this.ChildIcon.RegisterIcon("home", "https://unpkg.com/material-design-icons@3.0.1/action/svg/production/ic_home_24px.svg", "material");
-            }));
+                await MailIconRef.EnsureReady();
+                await MailIconRef.RegisterIconFromTextAsync("mail", MailIcon, "material");
+            }
+
+            if (CheckIconRef != null)
+            {
+                await CheckIconRef.EnsureReady();
+                await CheckIconRef.RegisterIconFromTextAsync("check", CheckIcon, "material");
+            }
         }
     }
 }
@@ -169,16 +173,37 @@ igc-avatar {
 ```razor
 @using IgniteUI.Blazor.Controls
 
+<div class="avatar-size-sample">
+    <IgbAvatar
+        Shape="@AvatarShape.Circle"
+        Src="https://dl.infragistics.com/x/img/avatars/avatar-profile-05.png"
+        Alt="A profile photo of a man." />
+    <IgbBadge
+        Dot="true"
+        Outlined="true"
+        Variant="@StyleVariant.Success" />
+    <span>Large</span>
 
-<div class="container horizontal" style="gap: 10px;">
-    <IgbAvatar Initials="L" class="size-large" />
-    <IgbAvatar Initials="M" class="size-medium" />
-    <IgbAvatar Initials="S" class="size-small" />
+    <IgbAvatar
+        Shape="@AvatarShape.Circle"
+        Src="https://dl.infragistics.com/x/img/avatars/avatar-profile-03.png"
+        Alt="A profile photo of a man." />
+    <IgbBadge
+        Dot="true"
+        Outlined="true"
+        Variant="@StyleVariant.Success" />
+    <span>Medium</span>
+
+    <IgbAvatar
+        Shape="@AvatarShape.Circle"
+        Src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png"
+        Alt="A profile photo of a man." />
+    <IgbBadge
+        Dot="true"
+        Outlined="true"
+        Variant="@StyleVariant.Success" />
+    <span>Small</span>
 </div>
-
-@code {
-
-}
 ```
 
 ### Styling
@@ -204,21 +229,199 @@ igc-avatar::part(base) {
 ```razor
 @using IgniteUI.Blazor.Controls
 
+<div class="container sample">
+    <IgbIcon class="icon-registrar" @ref="IconRef" IconName="check" Collection="material" />
+    <IgbList class="chat-list">
+        @foreach (var group in Sections)
+        {
+            <IgbListHeader>@group.Header</IgbListHeader>
 
-<div class="container horizontal" style="gap: 10px;">
-    <IgbAvatar 
-        src="https://dl.infragistics.com/x/img/people/men/11.png" 
-        alt="A photo of a man." 
-        className='size-large'/>
+            @foreach (var item in group.Items)
+            {
+                <IgbListItem class="@(group.Header == "Chats" ? "chat-list-item--split" : "meeting-list-item")">
+                    <div class="avatar-with-badge" slot="start">
+                        <IgbAvatar
+                            class="@GetAvatarClass(item)"
+                            Shape=AvatarShape.Circle
+                            Src="@item.Avatar.Src"
+                            Initials="@item.Avatar.Initials"
+                            Alt="@item.Avatar.Alt">
+                            @if (!string.IsNullOrEmpty(item.Avatar.Icon))
+                            {
+                                <IgbIcon class="avatar-icon" IconName="@item.Avatar.Icon" Collection="material" />
+                            }
+                        </IgbAvatar>
 
-    <div className="sizes">
-        <IgbAvatar Initials="L" class="size-large" />
-        <IgbAvatar Initials="M" class="size-medium" />
-        <IgbAvatar Initials="S" class="size-small" />
-    </div>
+                        @if (item.Badge != null)
+                        {
+                            <IgbBadge
+                                class="@GetBadgeClass(item)"
+                                Outlined="true"
+                                Shape="@BadgeShape.Rounded"
+                                Variant="@item.Badge.Variant">
+                                <IgbIcon IconName="@item.Badge.Icon" Collection="material" />
+                            </IgbBadge>
+                        }
+                    </div>
+                    <span slot="title">@item.Title</span>
+                    <span slot="subtitle">@item.Subtitle</span>
+                    <div slot="end">@item.End</div>
+                </IgbListItem>
+            }
+        }
+    </IgbList>
 </div>
-@code {
 
+@code {
+    private const string CheckIcon =
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"m9 16.17-4.17-4.17-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17Z\"/></svg>";
+
+    private const string CalendarIcon =
+        "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M20 3H19V1H17V3H7V1H5V3H4C2.9 3 2 3.9 2 5V21C2 22.1 2.9 23 4 23H20C21.1 23 22 22.1 22 21V5C22 3.9 21.1 3 20 3ZM20 21H4V8H20V21Z\" fill=\"#424242\"/></svg>";
+
+    private const string XIcon =
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\" width=\"24px\" fill=\"currentColor\"><path d=\"m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z\"/></svg>";
+
+    private const string HorizontalRuleIcon =
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\" width=\"24px\" fill=\"#ffffff\"><path d=\"M160-440v-80h640v80H160Z\"/></svg>";
+
+    private const string PeopleIcon =
+        "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M16 11C17.66 11 18.99 9.66 18.99 8C18.99 6.34 17.66 5 16 5C14.34 5 13 6.34 13 8C13 9.66 14.34 11 16 11ZM8 11C9.66 11 10.99 9.66 10.99 8C10.99 6.34 9.66 5 8 5C6.34 5 5 6.34 5 8C5 9.66 6.34 11 8 11ZM8 13C5.67 13 1 14.17 1 16.5V19H15V16.5C15 14.17 10.33 13 8 13ZM16 13C15.71 13 15.38 13.02 15.03 13.05C16.19 13.89 17 15.02 17 16.5V19H23V16.5C23 14.17 18.33 13 16 13Z\" fill=\"#424242\"/></svg>";
+
+    private readonly List<AvatarListSection> Sections = new()
+    {
+        new AvatarListSection
+        {
+            Header = "Chats",
+            Items = new List<AvatarListItem>
+            {
+                new AvatarListItem
+                    },
+                    Badge = new BadgeData
+                    {
+                        Icon = "check",
+                        Variant = StyleVariant.Success
+                    }
+                },
+                new AvatarListItem
+                {
+                    Title = "James Ford",
+                    Subtitle = "I'll send the text and im ...",
+                    End = "8:30 AM",
+                    Avatar = new AvatarData
+                    {
+                        Initials = "JF",
+                        Alt = "A profile photo of James Ford.",
+                        ClassName = "avatar-muted"
+                    },
+                    Badge = new BadgeData
+                    {
+                        Icon = "x",
+                        Variant = StyleVariant.Primary,
+                        ClassName = "avatar-muted-badge"
+                    }
+                },
+                new AvatarListItem
+                {
+                    Title = "Kate Porter",
+                    Subtitle = "That's great!",
+                    End = "Yesterday",
+                    Avatar = new AvatarData
+                    {
+                        Src = "https://dl.infragistics.com/x/img/avatars/avatar-profile-08.png",
+                        Alt = "A profile photo of Kate Porter."
+                    },
+                    Badge = new BadgeData
+                    {
+                        Icon = "horizontalRule",
+                        Variant = StyleVariant.Danger
+                    }
+                }
+            }
+        },
+        new AvatarListSection
+        {
+            Header = "Meetings",
+            Items = new List<AvatarListItem>
+            {
+                new AvatarListItem
+                    }
+                },
+                new AvatarListItem
+                {
+                    Title = "Design Discussion",
+                    Subtitle = "https://www.infra.com",
+                    End = "11:30 AM",
+                    Avatar = new AvatarData
+                    {
+                        Icon = "people",
+                        Alt = "Group Icon.",
+                        ClassName = "avatar-meeting"
+                    }
+                }
+            }
+        }
+    };
+
+    private IgbIcon IconRef { get; set; }
+
+    private string GetAvatarClass(AvatarListItem item)
+    {
+        return string.IsNullOrEmpty(item.Avatar.ClassName)
+            ? "profile-avatar"
+            : $"profile-avatar {item.Avatar.ClassName}";
+    }
+
+    private string GetBadgeClass(AvatarListItem item)
+    {
+        return string.IsNullOrEmpty(item.Badge?.ClassName)
+            ? "avatar-status avatar-check-badge"
+            : $"avatar-status avatar-check-badge {item.Badge.ClassName}";
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && IconRef != null)
+        {
+            await IconRef.EnsureReady();
+            await IconRef.RegisterIconFromTextAsync("calendar", CalendarIcon, "material");
+            await IconRef.RegisterIconFromTextAsync("check", CheckIcon, "material");
+            await IconRef.RegisterIconFromTextAsync("x", XIcon, "material");
+            await IconRef.RegisterIconFromTextAsync("horizontalRule", HorizontalRuleIcon, "material");
+            await IconRef.RegisterIconFromTextAsync("people", PeopleIcon, "material");
+        }
+    }
+
+    private class AvatarListSection
+    {
+        public string Header { get; set; }
+        public List<AvatarListItem> Items { get; set; }
+    }
+
+    private class AvatarListItem
+    {
+        public string Title { get; set; }
+        public string Subtitle { get; set; }
+        public string End { get; set; }
+        public AvatarData Avatar { get; set; }
+        public BadgeData Badge { get; set; }
+    }
+
+    private class AvatarData
+    {
+        public string Src { get; set; }
+        public string Icon { get; set; }
+        public string Initials { get; set; }
+        public string Alt { get; set; }
+        public string ClassName { get; set; }
+    }
+
+    private class BadgeData
+    {
+        public string Icon { get; set; }
+        public StyleVariant Variant { get; set; }
+        public string ClassName { get; set; }
+    }
 }
 ```
 

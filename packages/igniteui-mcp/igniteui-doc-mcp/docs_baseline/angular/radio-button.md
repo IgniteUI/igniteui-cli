@@ -15,7 +15,7 @@ _tocName: Radio & Radio Group
 ## Angular Radio & Radio Group Example
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxRadioComponent } from 'igniteui-angular/radio';
 import { FormsModule } from '@angular/forms';
 
@@ -23,7 +23,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-radio-sample-1',
     styleUrls: ['./radio-sample-1.component.scss'],
     templateUrl: './radio-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxRadioComponent, FormsModule]
 })
 export class RadioSample1Component {
@@ -169,7 +168,7 @@ Pay attention that if you don't use the `NgModel` directive in a two-way data bi
 The final result would be something like that:
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { IgxRadioComponent } from 'igniteui-angular/radio';
 import { FormsModule } from '@angular/forms';
@@ -178,7 +177,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-radio-sample-2',
     styleUrls: ['./radio-sample-2.component.scss'],
     templateUrl: './radio-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxRadioComponent, FormsModule]
 })
 export class RadioSample2Component {
@@ -324,7 +322,7 @@ Finally, **include** the custom theme in your application:
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxRadioComponent } from 'igniteui-angular/radio';
 import { FormsModule } from '@angular/forms';
 
@@ -332,7 +330,6 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-radio-sample-1',
   styleUrls: ['./radio-styling-sample.component.scss'],
   templateUrl: './radio-styling-sample.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [IgxRadioComponent, FormsModule]
 })
 export class RadioStylingSampleComponent {
@@ -355,27 +352,15 @@ export class RadioStylingSampleComponent {
 // CSS variables approach
 
 // igx-radio {
-//     --empty-color: #556b81;
-//     --label-color: #131e29;
-//     --fill-color: #0064d9;
-//     --focus-outline-color: #0032a5;
-// }
-
-// igx-radio:hover {
-//     --empty-fill-color: #e3f0ff;
-//     --empty-color: #0064d9;
-//     --hover-color: transparent;
+//     --empty-color: #345779;
+//     --fill-color: #2dabe8;
 // }
 
 // Sass theme approach
 
 $custom-radio-theme: radio-theme(
-    $empty-color: #556b81,
-    $label-color: #131e29,
-    $fill-color: #0064d9,
-    $focus-outline-color: #0032a5,
-    $fill-color-hover: #0064d9,
-    $hover-color: transparent
+    $empty-color:  #345779,
+    $fill-color: #2dabe8,
 );
 
 :host {
@@ -436,7 +421,7 @@ At the end your radio button should look like this:
 ### Demo
 
 ```typescript
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxRadioComponent, IgxRadioGroupDirective } from 'igniteui-angular/radio';
@@ -447,7 +432,6 @@ import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directi
     selector: 'app-radio-group-sample',
     styleUrls: ['./radio-group-sample.component.scss'],
     templateUrl: './radio-group-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, IgxInputGroupComponent, IgxInputDirective, IgxRadioGroupDirective, IgxRadioComponent, IgxButtonDirective, IgxRippleDirective, IgxLabelDirective]
 })
 export class RadioGroupSampleComponent {
@@ -608,7 +592,7 @@ public alignment = RadioGroupAlignment.vertical;
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxRadioComponent, IgxRadioGroupDirective, RadioGroupAlignment } from 'igniteui-angular/radio';
 import { FormsModule } from '@angular/forms';
 
@@ -616,7 +600,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-radio-group-vertical',
     styleUrls: ['./radio-group-vertical.component.scss'],
     templateUrl: './radio-group-vertical.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxRadioGroupDirective, IgxRadioComponent, FormsModule]
 })
 export class RadioGroupVerticalComponent {

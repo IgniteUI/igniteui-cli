@@ -1,0 +1,11 @@
+Found 2 component doc(s) for **angular** in 2 group(s). Pass `group` with any heading below to get that group's docs with summaries.
+
+## A (1)
+Section-level group whose key is a prefix of the other.
+- **B c** (`B c`)
+  Filename containing a space, in group "A".
+
+## A B (1)
+Group whose key plus a space equals the other key plus its filename.
+- **c** (`c`)
+  Filename without a space, in group "A B".

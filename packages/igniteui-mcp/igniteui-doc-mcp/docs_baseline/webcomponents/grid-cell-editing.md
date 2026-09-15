@@ -117,7 +117,6 @@ constructor() {
     column3.inlineEditorTemplate = this.webGridCellEditCellTemplate;
 }
 
-
 public webGridCellEditCellTemplate = (ctx: IgcCellTemplateContext) => {
     let cellValues: any = [];
     let uniqueValues: any = [];

@@ -14,9 +14,7 @@ The Infragistics React Excel Engine's [`WorksheetTable`](https://www.infragistic
 
 <!--## React Using Tables Example
 
-
 `sample="/excel/excel-library/working-with-tables", height="500", alt="React Using Tables Example"`
-
 
 -->
 

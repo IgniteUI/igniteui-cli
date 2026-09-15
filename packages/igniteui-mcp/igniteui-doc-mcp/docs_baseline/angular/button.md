@@ -19,14 +19,13 @@ We have created the Angular Button example below to show you how different butto
 <div class="divider--half"></div>
 
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 
 @Component({
     selector: 'app-buttons-sample-1',
     styleUrls: ['./buttons-sample-1.component.scss'],
     templateUrl: './buttons-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxRippleDirective]
 })
 export class ButtonsSample1Component { }
@@ -283,7 +282,7 @@ protected get sizeStyle() {
 If all went well, you should see something like the following in the browser:
 
 ```typescript
-import { Component, HostBinding, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -292,7 +291,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-buttons-display-density',
     styleUrls: ['./buttons-display-density.component.scss'],
     templateUrl: './buttons-display-density.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxButtonDirective, IgxRippleDirective, IgxIconComponent]
 })
 export class ButtonsDisplayDensityComponent implements OnInit {
@@ -1581,7 +1579,7 @@ For [`flat-button-theme`](https://www.infragistics.com/products/ignite-ui-angula
 In the sample below, you can see how using the button component with customized CSS variables allows you to create a design that visually resembles the button used in the [`Ant`](https://ant.design/components/button?theme=light#button-demo-color-variant) design system.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { THEME_TOKEN, ThemeToken } from 'igniteui-angular/core';
 
@@ -1590,7 +1588,6 @@ import { THEME_TOKEN, ThemeToken } from 'igniteui-angular/core';
     styleUrls: ['./buttons-style.component.scss'],
     templateUrl: './buttons-style.component.html',
     imports: [IgxButtonDirective],
-    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [{provide: THEME_TOKEN, useFactory: () => new ThemeToken('bootstrap')}]
 })
 export class ButtonsStyleComponent {

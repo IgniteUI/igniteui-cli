@@ -11,7 +11,7 @@ The Grid's Editing functionality provides with the opportunity to use [Cascading
 ## Angular Grid with Cascading Combos Sample Overview
 The sample below demonstrates how `Grid` works with nested `Cascading Combos`.
 ```typescript
-import { Component, OnInit, QueryList, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ISimpleComboSelectionChangingEventArgs, IgxSimpleComboComponent } from 'igniteui-angular/simple-combo';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -26,10 +26,11 @@ import { FormsModule } from '@angular/forms';
     selector: 'grid-cascading-combos',
     templateUrl: './grid-cascading-combos.component.html',
     styleUrls: ['./grid-cascading-combos.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxSimpleComboComponent, FormsModule, IgxLinearProgressBarComponent]
 })
 export class GridCascadingCombosComponent implements OnInit {
+    private cdr = inject(ChangeDetectorRef);
+
     @ViewChildren(IgxSimpleComboComponent)
     public combos: QueryList<IgxSimpleComboComponent>;
 
@@ -69,6 +70,7 @@ export class GridCascadingCombosComponent implements OnInit {
                 .map((c) => ({ name: c.region, country: c.country }))
                 .filter((v, i, a) => a.findIndex((r) => r.name === v.name) === i);
             cell.row.data.loadingRegion = false;
+            this.cdr.markForCheck();
         }, this.loadingTime);
         this.selectedRegionName = null;
         this.selectedCityId = null;
@@ -93,6 +95,7 @@ export class GridCascadingCombosComponent implements OnInit {
                 (c) => c.region === this.selectedRegionName
             );
             cell.row.data.loadingCity = false;
+            this.cdr.markForCheck();
         }, this.loadingTime);
         this.selectedCityId = null;
         this.loadingTime = 0;
@@ -134,34 +137,32 @@ export class GridCascadingCombosComponent implements OnInit {
       </igx-column>
       <igx-column field="Region" header="Region" dataType="string" width="220px">
         <ng-template igxCell let-cell="cell">
-          <div>
             <igx-simple-combo [id]="'region-' + cell.row.data.ID"
               (selectionChanging)="regionChanging($event, cell)" placeholder="Choose Region..."
               [ngModel]="cell.value === '' ? undefined : cell.value" [valueKey]="'name'"
               [displayKey]="'name'" [disabled]="cell.row.cells[1].value === ''" [overlaySettings]="{ outlet: grid1.outlet }">
             </igx-simple-combo>
+
             @if (cell.row.data.loadingRegion) {
               <igx-linear-bar [id]="'region-progress-' + cell.row.data.ID"
                 type="info" [indeterminate]="true">
               </igx-linear-bar>
             }
-          </div>
         </ng-template>
       </igx-column>
       <igx-column field="City" header="City" width="220px" dataType="number">
         <ng-template igxCell let-cell="cell">
-          <div>
             <igx-simple-combo [id]="'city-' + cell.row.data.ID" placeholder="Choose City..."
               (selectionChanging)="cityChanging($event, cell)"
               [ngModel]="!cell.value ? undefined : cell.value" [valueKey]="'id'" [displayKey]="'name'"
               [disabled]="cell.row.cells[2].value === ''" [overlaySettings]="{ outlet: grid1.outlet }">
             </igx-simple-combo>
+
             @if (cell.row.data.loadingCity) {
               <igx-linear-bar [id]="'city-progress-' + cell.row.data.ID"
                 type="info" [indeterminate]="true">
               </igx-linear-bar>
             }
-          </div>
         </ng-template>
       </igx-column>
     </igx-grid>
@@ -211,6 +212,12 @@ export class GridCascadingCombosComponent implements OnInit {
             .igx-grid {
                 overflow-x: none;
             }
+        }
+
+        igx-linear-bar {
+            position: absolute;
+            inset-inline: 0;
+            inset-block-end: 0;
         }
     }
 }

@@ -33,7 +33,7 @@ export default function RedirectFacebook() {
 
   if (error) {
     return (
-      <div style={{ padding: '2rem', color: '#d32f2f' }}>
+      <div style={{ padding: '2rem', color: 'var(--ig-error-500)' }}>
         <p>{error}</p>
         <button onClick={() => navigate('/')}>Back to Home</button>
       </div>

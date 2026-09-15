@@ -11,7 +11,7 @@ describe("New command", () => {
 		spyOn(console, "error");
 		spyOn(GoogleAnalytics, "post");
 		spyOn(PackageManager, "installPackages");
-		spyOn(InquirerWrapper, "checkbox").and.returnValue(Promise.resolve(["none"]));
+		spyOn(InquirerWrapper, "exclusiveCheckbox").and.returnValue(Promise.resolve(["none"]));
 		process.chdir("./output");
 	});
 

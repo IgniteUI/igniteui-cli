@@ -14,14 +14,13 @@ The Chat component provides a complete solution for building conversational inte
 Unlike a static message list, the Chat component is interactive and designed for **real-time communication**. It manages input, rendering, and user interaction while giving you full control over how messages and attachments are displayed. It also exposes an extensive rendering API that lets you override any part of its layout or visuals.
 
 ```typescript
-import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { IgxChatComponent, IgxChatOptions } from 'igniteui-angular/chat';
 
 @Component({
     selector: 'app-chat-overview-sample',
     styleUrls: ['./overview-sample.component.scss'],
     templateUrl: './overview-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxChatComponent]
 })
 export class ChatOverviewSampleComponent {
@@ -384,7 +383,7 @@ You can listen for these events and sync them with your backend:
 
 ```typescript
 import { AsyncPipe } from '@angular/common';
-import { Component, effect, signal, viewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, effect, signal, viewChild } from '@angular/core';
 import { IgxChatComponent, IgxChatMessageContextDirective, type IgxChatOptions } from 'igniteui-angular/chat';
 import { MarkdownPipe } from 'igniteui-angular/chat-extras';
 
@@ -392,7 +391,6 @@ import { MarkdownPipe } from 'igniteui-angular/chat-extras';
     selector: 'app-chat-features-sample',
     styleUrls: ['./features-sample.component.scss'],
     templateUrl: './features-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxChatComponent, IgxChatMessageContextDirective, AsyncPipe, MarkdownPipe]
 })
 export class ChatFeaturesSampleComponent {
@@ -677,7 +675,7 @@ Finally, **include** the custom theme in your application:
 ```
 
 ```typescript
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 import { IgxChatComponent, IgxChatOptions } from 'igniteui-angular/chat';
 
@@ -686,7 +684,6 @@ import { IgxChatComponent, IgxChatOptions } from 'igniteui-angular/chat';
   styleUrls: ['./styling-sample.component.scss'],
   templateUrl: './styling-sample.component.html',
   imports: [IgxAvatarComponent, IgxChatComponent],
-  changeDetection: ChangeDetectionStrategy.Eager,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 

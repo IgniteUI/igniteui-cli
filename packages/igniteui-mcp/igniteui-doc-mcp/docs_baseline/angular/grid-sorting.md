@@ -13,7 +13,7 @@ In Ignite UI for Angular Grid, data sorting is enabled on a per-column level, me
 ## Angular Grid Sorting Overview Example
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { DefaultSortingStrategy, ISortingOptions, SortingDirection } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
@@ -29,7 +29,6 @@ import { UpperCasePipe } from '@angular/common';
     selector: 'app-grid-sample',
     styleUrls: ['./grid-sorting-sample.component.scss'],
     templateUrl: 'grid-sorting-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxButtonDirective, IgxGridToolbarActionsComponent, IgxSimpleComboComponent, FormsModule, IgxComboClearIconDirective, IgxComboItemDirective, IgxColumnComponent, IgxCellTemplateDirective, UpperCasePipe]
 })
 
@@ -51,7 +50,7 @@ export class SortingSampleComponent implements OnInit, AfterViewInit {
     public ngOnInit(): void {
         this.data = DATA;
     }
-    
+
     public ngAfterViewInit(): void {
         this.grid1.sortingExpressions = [
             {
@@ -141,7 +140,7 @@ Having a certain amount of sorted columns could be really confusing if there is 
 The **IgxGrid** provides a solution for this problem by indicating the index of each sorted column.
 @@if(igxName === "IgxGrid"){
 ```typescript
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { DefaultSortingStrategy } from 'igniteui-angular/core';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -153,7 +152,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-sorting-indicators',
     templateUrl: './grid-sorting-indicators.component.html',
     styleUrls: ['./grid-sorting-indicators.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class GridSortingIndicatorsComponent implements OnInit, AfterViewInit {
@@ -315,7 +313,7 @@ The last step is to **include** the component mixins:
 ### Demo
 ```typescript
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DefaultSortingStrategy, SortingDirection } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
@@ -335,7 +333,6 @@ enum TYPE {
     selector: 'app-grid-sorting-styling',
     styleUrls: ['./grid-sorting-styling.component.scss'],
     templateUrl: 'grid-sorting-styling.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxSelectComponent, FormsModule, IgxLabelDirective, IgxSelectItemComponent, IgxColumnComponent, IgxCellTemplateDirective]
 })
 

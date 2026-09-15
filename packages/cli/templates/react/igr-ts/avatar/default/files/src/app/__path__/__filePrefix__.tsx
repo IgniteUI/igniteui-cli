@@ -7,9 +7,9 @@ export default function $(ClassName)() {
     <div>
       <h1 className={style.title}>Avatar</h1>
       <div className={style.container}>
-        <IgrAvatar shape="circle" size="large" initials="JD" />
-        <IgrAvatar shape="rounded" size="medium" initials="AB" />
-        <IgrAvatar shape="circle" size="small" initials="CD" />
+        <IgrAvatar className={style.large} shape="circle" initials="JD" />
+        <IgrAvatar className={style.medium} shape="rounded" initials="AB" />
+        <IgrAvatar className={style.small} shape="circle" initials="CD" />
       </div>
     </div>
   );

@@ -40,13 +40,28 @@ describe('RemoteDocsProvider', () => {
       vi.stubGlobal('fetch', fetch);
 
       const provider = new RemoteDocsProvider(BACKEND_URL);
-      await provider.listComponents('angular', 'grid');
+      await provider.listComponents('angular', { filter: 'grid' });
 
       const url = new URL(fetch.mock.calls[0][0]);
       expect(url.searchParams.get('filter')).toBe('grid');
     });
 
-    it('omits filter param when not provided', async () => {
+    it('forwards group and detail params', async () => {
+      const fetch = mockFetch(200, '- IgxGrid');
+      vi.stubGlobal('fetch', fetch);
+
+      const provider = new RemoteDocsProvider(BACKEND_URL);
+      await provider.listComponents('angular', {
+        group: 'Grids & Lists > Data Grid',
+        detail: 'docs',
+      });
+
+      const url = new URL(fetch.mock.calls[0][0]);
+      expect(url.searchParams.get('group')).toBe('Grids & Lists > Data Grid');
+      expect(url.searchParams.get('detail')).toBe('docs');
+    });
+
+    it('omits filter, group and detail params when not provided', async () => {
       const fetch = mockFetch(200, '');
       vi.stubGlobal('fetch', fetch);
 
@@ -55,6 +70,8 @@ describe('RemoteDocsProvider', () => {
 
       const url = new URL(fetch.mock.calls[0][0]);
       expect(url.searchParams.has('filter')).toBe(false);
+      expect(url.searchParams.has('group')).toBe(false);
+      expect(url.searchParams.has('detail')).toBe(false);
     });
 
     it('throws when backend returns a non-ok status', async () => {

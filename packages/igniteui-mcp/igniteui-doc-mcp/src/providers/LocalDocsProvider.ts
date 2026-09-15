@@ -3,13 +3,24 @@ import { readFileSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { createRequire } from "module";
-import type { DocsProvider } from "./DocsProvider.js";
+import type { DocsProvider, ListComponentsOptions } from "./DocsProvider.js";
+import {
+  renderFlat,
+  renderGroup,
+  renderGroupedIndex,
+  renderUnknownGroup,
+  type DocRow,
+  type GroupRow,
+  type GroupedDocRow,
+} from "../tools/render-components.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export class LocalDocsProvider implements DocsProvider {
   private db: Database | null = null;
   private dbPath: string;
+  private tocTablesPresent: boolean | null = null;
+  private groupedFrameworks = new Map<string, boolean>();
 
   constructor(dbPath?: string) {
     this.dbPath = dbPath || process.env.DB_PATH || join(__dirname, "..", "igniteui-docs.db");
@@ -36,51 +47,136 @@ export class LocalDocsProvider implements DocsProvider {
     return this.db;
   }
 
-  async listComponents(framework: string, filter?: string): Promise<string> {
-    const db = this.ensureDb();
-
-    let sql: string;
-    let params: Record<string, string>;
-
-    if (filter) {
-      const like = `%${filter}%`;
-      sql = `SELECT filename, component, toc_name, premium, keywords, summary
-             FROM docs
-             WHERE framework = $framework
-               AND (filename LIKE $like OR component LIKE $like OR toc_name LIKE $like
-                    OR keywords LIKE $like OR summary LIKE $like)
-             ORDER BY toc_name`;
-      params = { $framework: framework, $like: like };
-    } else {
-      sql = `SELECT filename, component, toc_name, premium, keywords, summary
-             FROM docs
-             WHERE framework = $framework
-             ORDER BY toc_name`;
-      params = { $framework: framework };
-    }
-
-    const stmt = db.prepare(sql);
-    stmt.bind(params);
-
+  private query(sql: string, params: Record<string, unknown> = {}): Record<string, unknown>[] {
+    const stmt = this.ensureDb().prepare(sql);
+    stmt.bind(params as never);
     const rows: Record<string, unknown>[] = [];
     while (stmt.step()) {
       rows.push(stmt.getAsObject());
     }
     stmt.free();
+    return rows;
+  }
 
-    if (rows.length === 0) {
-      return `No components found for framework "${framework}"${filter ? ` matching "${filter}"` : ""}.`;
+  /**
+   * The package ships a prebuilt DB and `db/igniteui-docs.db` is committed, so a
+   * client can update the server without rebuilding the database. A DB with no
+   * `doc_toc`, or one where this framework has not been migrated yet, renders
+   * exactly as it does today.
+   */
+  private hasGroups(framework: string): boolean {
+    if (this.tocTablesPresent === null) {
+      this.tocTablesPresent =
+        this.query(
+          `SELECT name FROM sqlite_master
+           WHERE type = 'table' AND name IN ('doc_toc', 'doc_groups')`
+        ).length === 2;
+    }
+    if (!this.tocTablesPresent) return false;
+
+    const cached = this.groupedFrameworks.get(framework);
+    if (cached !== undefined) return cached;
+
+    const row = this.query(`SELECT COUNT(*) AS cnt FROM doc_toc WHERE framework = $framework`, {
+      $framework: framework,
+    })[0];
+    const present = Number(row?.cnt ?? 0) > 0;
+    this.groupedFrameworks.set(framework, present);
+    return present;
+  }
+
+  async listComponents(framework: string, opts: ListComponentsOptions = {}): Promise<string> {
+    const { filter, detail, group } = opts;
+
+    if (detail === "docs" || !this.hasGroups(framework)) {
+      return this.listFlat(framework, filter, group);
     }
 
-    const lines = rows.map((r) => {
-      const name = (r.filename as string).replace(/\.md$/, "");
-      const parts = [`- **${r.toc_name || name}** (\`${name}\`)`];
-      if (r.summary) parts.push(`  ${r.summary}`);
-      if (r.premium) parts.push(`  ⭐ Premium`);
-      return parts.join("\n");
-    });
+    const groups = this.query(
+      `SELECT group_key, section, group_label, summary, doc_count, ord
+       FROM doc_groups WHERE framework = $framework ORDER BY ord`,
+      { $framework: framework }
+    ) as unknown as GroupRow[];
 
-    return `Found ${rows.length} components for **${framework}**${filter ? ` matching "${filter}"` : ""}:\n\n${lines.join("\n")}`;
+    if (group !== undefined) {
+      const match = groups.find((g) => g.group_key === group);
+      if (!match) return renderUnknownGroup(framework, group, groups);
+      return renderGroup(framework, match, this.groupedRows(framework, filter, group), filter);
+    }
+
+    return renderGroupedIndex(framework, groups, this.groupedRows(framework, filter), filter);
+  }
+
+  /**
+   * Grouped mode also matches `doc_toc.group_key`, so a filter can select whole
+   * sections. Flat mode deliberately does not — see `listFlat`.
+   */
+  private groupedRows(framework: string, filter?: string, group?: string): GroupedDocRow[] {
+    const conditions = [`t.framework = $framework`];
+    const params: Record<string, unknown> = { $framework: framework };
+
+    if (group !== undefined) {
+      conditions.push(`t.group_key = $group`);
+      params.$group = group;
+    }
+    if (filter) {
+      conditions.push(
+        `(d.filename LIKE $like OR d.component LIKE $like OR d.toc_name LIKE $like
+          OR d.keywords LIKE $like OR d.summary LIKE $like OR t.group_key LIKE $like)`
+      );
+      params.$like = `%${filter}%`;
+    }
+
+    return this.query(
+      `SELECT d.filename, d.toc_name, d.premium, d.summary, t.group_key, t.ord
+       FROM doc_toc t
+       JOIN docs d ON d.framework = t.framework AND d.filename = t.filename
+       WHERE ${conditions.join(" AND ")}
+       ORDER BY t.ord`,
+      params
+    ) as unknown as GroupedDocRow[];
+  }
+
+  /**
+   * Flat mode never reads through `doc_toc`: the join multiplies cross-listed
+   * docs and reorders by TOC position. Where `group` narrows a flat listing,
+   * membership is resolved separately and applied to the unchanged query.
+   */
+  private listFlat(framework: string, filter?: string, group?: string): string {
+    let rows: Record<string, unknown>[];
+
+    if (filter) {
+      rows = this.query(
+        `SELECT filename, component, toc_name, premium, keywords, summary
+         FROM docs
+         WHERE framework = $framework
+           AND (filename LIKE $like OR component LIKE $like OR toc_name LIKE $like
+                OR keywords LIKE $like OR summary LIKE $like)
+         ORDER BY toc_name`,
+        { $framework: framework, $like: `%${filter}%` }
+      );
+    } else {
+      rows = this.query(
+        `SELECT filename, component, toc_name, premium, keywords, summary
+         FROM docs
+         WHERE framework = $framework
+         ORDER BY toc_name`,
+        { $framework: framework }
+      );
+    }
+
+    if (group !== undefined && this.hasGroups(framework)) {
+      const members = new Set(
+        this.query(
+          `SELECT DISTINCT filename FROM doc_toc
+           WHERE framework = $framework AND group_key = $group`,
+          { $framework: framework, $group: group }
+        ).map((r) => r.filename as string)
+      );
+      rows = rows.filter((r) => members.has(r.filename as string));
+    }
+
+    return renderFlat(framework, rows as unknown as DocRow[], filter);
   }
 
   async getDoc(framework: string, name: string): Promise<{ text: string; found: boolean }> {

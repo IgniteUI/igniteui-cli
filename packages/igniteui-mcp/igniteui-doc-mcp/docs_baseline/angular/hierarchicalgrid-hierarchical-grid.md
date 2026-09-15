@@ -15,7 +15,7 @@ The Ignite UI for Angular Hierarchical Data Grid is used to display and manipula
 In this angular grid example you can see how users can visualize hierarchical sets of data and use cell templating to add other visual components like [Sparkline](../charts/types/sparkline-chart.md).
 
 ```typescript
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { RemoteValuesService } from '../../services/remoteValues.service';
@@ -27,7 +27,6 @@ import { IgxSparklineCoreModule } from 'igniteui-angular-charts';
     styleUrls: ['./hierarchical-grid-resizing.component.scss'],
     templateUrl: 'hierarchical-grid-resizing.component.html',
     providers: [RemoteValuesService],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxSparklineCoreModule, IgxRowIslandComponent]
 })
 
@@ -492,7 +491,7 @@ This way, due to Angular's [`ViewEncapsulation`](https://angular.io/api/core/Com
 ### Demo
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { SINGERS } from '../../data/singersData';
@@ -502,7 +501,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-styling',
     styleUrls: ['./hierarchical-grid-styling.component.scss'],
     templateUrl: 'hierarchical-grid-styling.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 

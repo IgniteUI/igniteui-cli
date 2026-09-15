@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
@@ -9,10 +9,15 @@ defineComponents(IgcButtonComponent);
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {
+  static styles = css`
+    :host {
+      --ig-size: var(--ig-size-large);
+    }
+  `;
+
   render() {
     return html`
-      <igc-button
-        size='large'>
+      <igc-button>
         Large button
       </igc-button>
     `;

@@ -1,12 +1,13 @@
-import { html, LitElement } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import {
   defineComponents,
+  IgcIconComponent,
   IgcTabsComponent,
   registerIconFromText
 } from 'igniteui-webcomponents';
 
-defineComponents(IgcTabsComponent);
+defineComponents(IgcTabsComponent, IgcIconComponent);
 
 const libraryIcon =
 '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v14"/><path d="M19 7.674v-.657a4 4 0 0 0-2.901-3.846l-2.824-.807A1 1 0 0 0 12 3.326V7l5.725 1.636A1 1 0 0 0 19 7.674Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3 3 0 1 1-6 0c0-1.657 1.343-2 3-2s3 .343 3 2Z"/></g></svg>';
@@ -22,19 +23,18 @@ registerIconFromText('info', infoIcon, 'material');
 
 @customElement('app-tabs')
 export default class Tabs extends LitElement {
+  static styles = css`
+    igc-icon {
+      --ig-size: var(--ig-size-medium);
+    }
+  `;
+
     render() {
         return html`
         <igc-tabs alignment="start" >
-            <igc-tab panel="first">
-                <igc-icon name="library" collection='material' size='large'></igc-icon> Albums
-            </igc-tab>
-            <igc-tab panel="second">
-                <igc-icon name="favorite" collection='material' size='large'></igc-icon> Favourites
-            </igc-tab>
-            <igc-tab panel="third" disabled>
-              <igc-icon name="info" collection='material' size='large'></igc-icon> Info
-            </igc-tab>
-            <igc-tab-panel id="first">
+            <igc-tab>
+                <igc-icon slot="prefix" name="library" collection='material'></igc-icon>
+                <span slot="label">Albums</span>
                 <br /><br /><b>
                 Sgt. Peppers Lonely Hearts Club Band <br /><br />
                 The Dark Side of the Moon <br /><br />
@@ -42,14 +42,20 @@ export default class Tabs extends LitElement {
                 Led Zeppelin IV <br /><br />
                 It Takes a Nation of Millions to Hold Us Back <br /><br />
                 Thriller <br /><br /></b>
-            </igc-tab-panel>
-            <igc-tab-panel id="second">
+            </igc-tab>
+            <igc-tab>
+                <igc-icon slot="prefix" name="favorite" collection='material'></igc-icon>
+                <span slot="label">Favourites</span>
                 <br /><br /><b>
                 The Dark Side of the Moon <br /><br />
                 Led Zeppelin IV <br /><br />
                 It Takes a Nation of Millions to Hold Us Back <br /><br />
                 Thriller <br /><br /></b>
-            </igc-tab-panel>
+            </igc-tab>
+            <igc-tab disabled>
+                <igc-icon slot="prefix" name="info" collection='material'></igc-icon>
+                <span slot="label">Info</span>
+            </igc-tab>
         </igc-tabs>
         `;
       }

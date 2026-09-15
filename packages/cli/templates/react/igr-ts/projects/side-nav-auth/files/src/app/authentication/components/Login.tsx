@@ -43,23 +43,23 @@ export function Login({ onRegister, onSuccess }: LoginProps) {
       </IgrInput>
       {error && <p className={styles.error}>{error}</p>}
       <div className={styles.actions}>
-        <IgrButton variant="contained" type="submit" className={styles.submitBtn} disabled={!canSubmit}>
+        <IgrButton variant="contained" type="submit" disabled={!canSubmit}>
           <span>Log In</span>
         </IgrButton>
-        <a className={styles.linkBtn} onClick={onRegister} role="button" tabIndex={0}>Create new account</a>
+        <a onClick={onRegister} role="button" tabIndex={0}>Create new account</a>
       </div>
       {ExternalAuth.hasProvider() && (
         <div className={styles.socialLogin}>
           {ExternalAuth.hasProvider('google') && (
-            <IgrButton variant="contained" type="button" className={`${styles.socialBtn} ${styles.google}`}
+            <IgrButton variant="contained" type="button"
               onClick={() => ExternalAuth.login('google')}><span>Sign in with Google</span></IgrButton>
           )}
           {ExternalAuth.hasProvider('facebook') && (
-            <IgrButton variant="contained" type="button" className={`${styles.socialBtn} ${styles.facebook}`}
+            <IgrButton variant="contained" type="button"
               onClick={() => ExternalAuth.login('facebook')}><span>Sign in with Facebook</span></IgrButton>
           )}
           {ExternalAuth.hasProvider('microsoft') && (
-            <IgrButton variant="contained" type="button" className={`${styles.socialBtn} ${styles.microsoft}`}
+            <IgrButton variant="contained" type="button"
               onClick={() => ExternalAuth.login('microsoft')}><span>Sign in with Microsoft</span></IgrButton>
           )}
         </div>

@@ -11,7 +11,7 @@ Pagination is used to split a large set of data into a sequence of pages that ha
 ## Angular Pagination Example
 The following example represents Grid pagination and exposes the options usage of `items per page` and how paging can be enabled. The user can also quickly navigate through the Grid pages via "Go to last page" and "Go to first page" buttons.
 ```typescript
-import { Component, OnInit, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -25,7 +25,6 @@ import { DecimalPipe } from '@angular/common';
     selector: 'app-grid-sample',
     styleUrls: ['./grid-paging-sample.component.scss'],
     templateUrl: 'grid-paging-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxLinearProgressBarComponent, DecimalPipe]
 })
 
@@ -87,7 +86,7 @@ $progressBar-sample-theme: progress-linear-theme(
 );
 
 .grid__wrapper {
-    @include progress-linear($progressBar-sample-theme);
+    @include tokens($progressBar-sample-theme);
 
     --ig-size: var(--ig-size-medium);
     margin: 0 16px;
@@ -149,7 +148,7 @@ The `igx-paginator` component is used along with the `igx-grid` component in the
 ```
 ### Paginator Component Demo
 ```typescript
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, PLATFORM_ID, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, PLATFORM_ID, inject } from '@angular/core';
 import { athletesData } from '../../data/athletesData';
 import { IPaginatorResourceStrings } from 'igniteui-angular/core';
 import { IgxPageNavigationComponent, IgxPageSizeSelectorComponent, IgxPaginatorComponent, IgxPaginatorContentDirective } from 'igniteui-angular/paginator';
@@ -164,7 +163,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-grid-pager-sample',
     styleUrls: ['./grid-pager-sample.component.scss'],
     templateUrl: './grid-pager-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxPageSizeSelectorComponent, IgxPageNavigationComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxSwitchComponent, FormsModule, DecimalPipe]
 })
 export class GridPagerSampleComponent implements OnInit, AfterViewInit {
@@ -325,7 +323,7 @@ The last step is to **include** the component mixins, each with its respective t
 ```
 ### Pagination Style Example
 ```typescript
-import { Component, ViewChild, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -339,7 +337,6 @@ import { DecimalPipe } from '@angular/common';
     selector: 'app-custom-grid-paging-style-sample',
     styleUrls: ['custom-grid-paging-style.component.scss'],
     templateUrl: 'custom-grid-paging-style.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxIconButtonDirective, IgxIconComponent, DecimalPipe]
 })
 

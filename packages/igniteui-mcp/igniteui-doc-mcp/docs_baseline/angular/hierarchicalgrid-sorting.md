@@ -14,7 +14,7 @@ In Ignite UI for Angular Hierarchical Grid, data sorting is enabled on a per-col
 ## Angular Hierarchical Grid Sorting Overview Example
 Additionally there is a custom context menu added for sorting using **igx-hierarchical-grid**'s [`contextMenu`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=contextMenu) Output.
 ```typescript
-import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DefaultSortingStrategy, SortingDirection } from 'igniteui-angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -27,7 +27,6 @@ import { HGridContextmenuComponent } from './hgrid-contextmenu/hgrid-contextmenu
     selector: 'app-hierarchical-grid-sorting',
     styleUrls: ['./hierarchical-grid-sorting.component.scss'],
     templateUrl: 'hierarchical-grid-sorting.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent, HGridContextmenuComponent]
 })
 
@@ -137,7 +136,7 @@ Having a certain amount of sorted columns could be really confusing if there is 
 The **IgxHierarchicalGrid** provides a solution for this problem by indicating the index of each sorted column.
 @@if(igxName === "IgxGrid"){
 ```typescript
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { DefaultSortingStrategy } from 'igniteui-angular/core';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -149,7 +148,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-sorting-indicators',
     templateUrl: './grid-sorting-indicators.component.html',
     styleUrls: ['./grid-sorting-indicators.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class GridSortingIndicatorsComponent implements OnInit, AfterViewInit {
@@ -307,7 +305,7 @@ The last step is to **include** the component mixins:
 ```
 ### Demo
 ```typescript
-import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DefaultSortingStrategy, SortingDirection } from 'igniteui-angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -318,7 +316,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-hierarchical-grid-sorting-styling',
     styleUrls: ['./hierarchical-grid-sorting-styling.component.scss'],
     templateUrl: 'hierarchical-grid-sorting-styling.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxHierarchicalGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 

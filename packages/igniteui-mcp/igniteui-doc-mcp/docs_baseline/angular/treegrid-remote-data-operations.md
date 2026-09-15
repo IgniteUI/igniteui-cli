@@ -11,7 +11,7 @@ _premium: true
 The Ignite UI for Angular Tree Grid supports remote data operations such as remote virtualization, remote sorting, remote filtering and others. This allows the developer to perform these tasks on a server, retrieve the data that is produced and display it in the Tree Grid.
 ## Angular Tree Grid Remote Data Operations Overview Example
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { NoopFilteringStrategy } from 'igniteui-angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -29,7 +29,6 @@ const DEBOUNCE_TIME = 300;
     selector: 'app-tree-grid-remote-filtering-sample',
     styleUrls: ['./tree-grid-remote-filtering-sample.component.scss'],
     templateUrl: './tree-grid-remote-filtering-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxIconComponent, AsyncPipe]
 })
 export class TreeGridRemoteFilteringSampleComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -169,7 +168,7 @@ public columnValuesStrategy = (column: ColumnType,
 ```
 ### Unique Column Values Strategy Demo
 ```typescript
-import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ColumnType, IFilteringExpressionsTree } from 'igniteui-angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -182,7 +181,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     styleUrls: ['./tree-grid-excel-style-filtering-load-on-demand.component.scss'],
     templateUrl: './tree-grid-excel-style-filtering-load-on-demand.component.html',
     providers: [RemoteValuesService],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxIconComponent]
 })
 export class TreeGridExcelStyleFilteringLoadOnDemandComponent implements OnInit {
@@ -334,7 +332,7 @@ public paginate(page: number) {
 ```
 ```typescript
 import { formatNumber, AsyncPipe } from '@angular/common';
-import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation, inject } from '@angular/core';
 import { GridPagingMode, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -349,7 +347,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-remote-paging-default-template',
     styleUrls: ['./tree-grid-remote-paging-default-template.component.scss'],
     templateUrl: './tree-grid-remote-paging-default-template.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxIconComponent, AsyncPipe]
 })
 export class TreeGridRemotePagingDefaultTemplateComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -491,7 +488,7 @@ The last step will be to declare the paginator content based on your requirement
 After all the changes above, the following result will be achieved.
 ```typescript
 import { formatNumber, AsyncPipe } from '@angular/common';
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation, inject } from '@angular/core';
 import { GridPagingMode, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -506,7 +503,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-remote-paging-grid-sample',
     styleUrls: ['./tree-grid-remote-paging-sample.component.scss'],
     templateUrl: './tree-grid-remote-paging-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellTemplateDirective, IgxIconComponent, IgxPaginatorComponent, IgxPaginatorContentDirective, IgxPageSizeSelectorComponent, IgxPageNavigationComponent, AsyncPipe]
 })
 export class TreeGridRemotePagingSampleComponent implements OnInit, AfterViewInit, OnDestroy {

@@ -143,7 +143,6 @@ The context menu will have the following functions:
         this.toggleContextMenu();
     }
 
-
     public copySelectedData() {
         const selectedData = this.grid.getSelectedData();
         this.copyData(selectedData);

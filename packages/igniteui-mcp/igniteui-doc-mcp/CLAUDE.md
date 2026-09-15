@@ -16,6 +16,11 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 │   └── LocalDocsProvider.ts            # Local mode — sql.js WASM SQLite with FTS4
 ├── scripts/
 │   ├── build-db.ts                    # Build SQLite DB from compressed docs (better-sqlite3)
+│   ├── build-group-summaries.ts        # LLM summaries per TOC group → data/group-summaries/<fw>.json
+│   ├── report-toc-coverage.ts          # Per-framework TOC coverage report (regression check)
+│   ├── lib/toc-index.ts                # Shared TOC walker — sections, groups, ordering
+│   ├── lib/toc-sidecar.ts              # dist/toc-index/<fw>.json writer + filename collision resolver
+│   ├── lib/frontmatter.ts              # Shared docs_final frontmatter parser
 │   ├── export-angular-docs.ts          # Export Angular docs from docfx (toc-driven, template expansion, include resolution, API URL resolution)
 │   ├── inject-angular-docs.ts          # Inject sample code into docs (replaces <code-view> with component source)
 │   ├── compress-angular-docs.ts        # LLM-based compression of docs (~50% size reduction, supports --batch mode)
@@ -34,7 +39,7 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 │   ├── export-wc-api.ts               # Build Web Components API docs from blazor/api-docs submodule → docs/webcomponents-api/
 │   └── export-blazor-api.ts           # Build Blazor API docs from blazor/api-docs submodule → docs/blazor-api/
 ├── docs/
-│   ├── knowledgebase.md                # Lessons learned and issues for cross-platform reference (32 entries)
+│   ├── knowledgebase.md                # Lessons learned and issues for cross-platform reference (35 entries)
 │   ├── db.md                           # SQLite + FTS4 database integration (IMPLEMENTED)
 │   ├── batch-compression.md            # OpenAI Batch API for compression (IMPLEMENTED)
 │   ├── incremental-processing.md       # Plan: Incremental processing with diff-based pipeline (NOT YET IMPLEMENTED)
@@ -125,9 +130,21 @@ Local mode requires `dist/igniteui-docs.db` to exist. Run the pipeline and `npm 
 ```bash
 npm run build:db                          # full rebuild for all frameworks
 npm run build:db -- --framework react     # rebuild only react rows
+npm run release:db                        # full rebuild + whole-DB release gates
+npm run report:toc-coverage               # per-framework TOC coverage report
 ```
 
-The `build:db` step reads `dist/docs_final/<framework>/` and `dist/docs_prepeared/<framework>/`, and produces `dist/igniteui-docs.db`. It must run after compression and before starting the MCP server.
+The `build:db` step reads `dist/docs_final/<framework>/`, `dist/docs_prepeared/<framework>/` and `dist/toc-index/<framework>.json`, and produces `dist/igniteui-docs.db`. It must run after compression and before starting the MCP server.
+
+It builds into `dist/igniteui-docs.db.tmp` and publishes `dist/` → backend → `db/` last, so a failure anywhere leaves the authoritative `db/igniteui-docs.db` byte-for-byte intact. A full rebuild preflights **all four** frameworks and aborts if any is missing compressed docs, prepared docs, or a TOC sidecar — deriving the set from what happens to be on disk used to drop a framework silently.
+
+Group summaries are generated separately and cached in the tracked `data/group-summaries/<framework>.json`:
+
+```bash
+npm run build:group-summaries             # all frameworks, cached groups make no API call
+npm run group-summaries:angular           # one framework
+npm run build:group-summaries -- --force  # ignore the cache
+```
 
 ## Angular Documentation Pipeline
 
@@ -228,14 +245,19 @@ npm run pipeline:blazor           # run all steps: clear → build → export �
 - GitHub API tools use `octokit` (requires `GITHUB_TOKEN` env var)
 - CLI scaffolding tools use `igniteui-cli` via `npx`
 - Six registered tools:
-  - `list_components` — list/filter docs by `framework` (required) and optional `filter` keyword
+  - `list_components` — TOC-grouped doc index by `framework` (required), narrowed with `filter`, `group`, or `detail: "docs"` for the flat per-doc list
   - `get_doc` — retrieve full markdown content by `framework` (required) + `name` (required, without `.md`)
   - `search_docs` — full-text search by `framework` (required) + `query` (required), top 20 results with snippets
   - `search_api` — discover API entries by keyword or partial component name
   - `get_api_reference` — retrieve full API details for an exact component or class name
   - `get_project_setup_guide` — return setup guides for creating a new Ignite UI project (CLI docs for Angular/React/WC, dotnet + NuGet guides for Blazor)
 
-**Build DB** (`scripts/build-db.ts`): Reads compressed docs from `dist/docs_final/<framework>/`, looks up `_tocName` from `dist/docs_prepeared/<framework>/`, and produces `dist/igniteui-docs.db` using `better-sqlite3`. Supports full rebuild or per-framework rebuild via `--framework` flag. DB schema: `docs` table + `docs_fts` FTS4 virtual table with external content, porter tokenizer, and prefix indexes.
+**Build DB** (`scripts/build-db.ts`): Reads compressed docs from `dist/docs_final/<framework>/`, looks up `_tocName` from `dist/docs_prepeared/<framework>/`, and produces `dist/igniteui-docs.db` using `better-sqlite3`. Supports full rebuild or per-framework rebuild via `--framework` flag. DB schema: `docs` table + `docs_fts` FTS4 virtual table with external content, porter tokenizer, and prefix indexes, plus two additive grouping tables:
+
+- `doc_toc` — one row per TOC membership, keyed `(framework, filename, path)` so a cross-listed doc keeps both. Carries `group_key`, `section`, `group_label`, `ord` (TOC order) and `landing`.
+- `doc_groups` — one row per `(framework, group_key)` with the generated group `summary`, `doc_count` and `ord`.
+
+Both are derived from `dist/toc-index/<framework>.json`, written by the export scripts via the shared walker in `scripts/lib/toc-index.ts`. `docs` and `docs_fts` are unchanged by grouping — no reindex, no content churn. A database without these tables, or one where a framework has no `doc_toc` rows, makes `list_components` render the flat list for that framework.
 
 ## Key Dependencies
 

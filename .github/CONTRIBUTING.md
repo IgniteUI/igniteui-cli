@@ -143,6 +143,25 @@ In order to contribute code to a new feature, you need to follow these guideline
 5. Reference the issue you've been working on in your commit message and pull request title/description.
 6. Don't forget to make the necessary status updates, as described in the workflow section.
 
+# Smoke testing the templates
+
+Unit and acceptance specs stub out package installation, so they cannot catch a template that
+scaffolds correctly but fails to install or compile — a stale package pin, a removed component
+property, or an API that moved on in the underlying library.
+
+Before opening a pull request that touches anything under `packages/cli/templates/` or
+`packages/igx-templates/`, run the smoke test:
+
+```bash
+npm run build
+scripts/smoke-test.sh -f angular --templates <the-ids-you-touched>   # fast path
+scripts/smoke-test.sh                                               # full run, ~20-30 min
+```
+
+It scaffolds a project per framework with the locally built CLI, adds every component template,
+installs and builds. See [Template smoke test](../README.md#template-smoke-test) for the options
+and for the constraints to respect when changing the script.
+
 # Testing a PR
 In order to test a pull request that is awaiting test, perform the following actions.
 

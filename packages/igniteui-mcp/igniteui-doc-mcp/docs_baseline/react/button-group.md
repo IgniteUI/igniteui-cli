@@ -14,12 +14,45 @@ The React Button Group component is used to organize [`IgrToggleButton`](mcp:get
 ## React Button Example
 
 ```css
+.container.sample {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
 igc-button-group {
-    max-width: 400px;
+    display: block;
+    width: 280px;
+    max-width: 100%;
 }
 
 igc-ripple {
     --color: gray;
+}
+
+.album {
+    margin-top: 8px;
+    width: 280px;
+    max-width: 100%;
+}
+
+.album-title {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #1f89d4;
+}
+
+.album-photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+}
+
+.album-photos img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
 }
 ```
 ```css
@@ -27,66 +60,71 @@ igc-ripple {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
     IgrButtonGroup,
-    IgrIcon,
     IgrRipple,
     IgrToggleButton,
-    registerIconFromText,
   } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/material.css';
 import './ButtonGroupOverview.css';
 import './index.css';
 
 
-const icons = [
-    {
-        name: 'format_align_left',
-        iconText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 15H3v2h12v-2zm0-8H3v2h12V7zM3 13h18v-2H3v2zm0 8h18v-2H3v2zM3 3v2h18V3H3z"/></svg>',
+const albums = {
+    device: {
+        title: 'Trip around the world',
+        photos: [
+            'https://picsum.photos/id/1015/300/220',
+            'https://picsum.photos/id/1016/300/220',
+            'https://picsum.photos/id/1018/300/220',
+            'https://picsum.photos/id/1019/300/220',
+        ],
     },
-    {
-        name: 'format_align_center',
-        iconText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 15v2h10v-2H7zm-4 6h18v-2H3v2zm0-8h18v-2H3v2zm4-6v2h10V7H7zM3 3v2h18V3H3z"/></svg>',
+    cloud: {
+        title: 'Trip around the world',
+        photos: [
+            'https://picsum.photos/id/1036/300/220',
+            'https://picsum.photos/id/1051/300/220',
+            'https://picsum.photos/id/1062/300/220',
+            'https://picsum.photos/id/1067/300/220',
+        ],
     },
-    {
-        name: 'format_align_right',
-        iconText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 21h18v-2H3v2zm6-4h12v-2H9v2zm-6-4h18v-2H3v2zm6-4h12V7H9v2zM3 3v2h18V3H3z"/></svg>',
-    },
-    {
-        name: 'format_align_justify',
-        iconText: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 21h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18V7H3v2zm0-6v2h18V3H3z"/></svg>',
-    },
-];
+};
 
 export default function ButtonGroupOverview() {
-    useEffect(() => {
-        icons.forEach((icon) => {
-            registerIconFromText(icon.name, icon.iconText, 'material');
-        });
-    }, [])
+    const [source, setSource] = useState<'device' | 'cloud'>('cloud');
+    const album = albums[source];
 
     return (
         <div className="container sample">
-            <IgrButtonGroup>
-                <IgrToggleButton value="left">
-                    <IgrIcon name="format_align_left" collection="material" />
-                    <IgrRipple/>
-                </IgrToggleButton>
-                <IgrToggleButton value="center">
-                    <IgrIcon name="format_align_center" collection="material"/>
+            <IgrButtonGroup
+                selection="single-required"
+                onSelect={(e: CustomEvent<string | undefined>) => {
+                    if (e.detail === 'device' || e.detail === 'cloud') {
+                        setSource(e.detail);
+                    }
+                }}
+            >
+                <IgrToggleButton value="device" selected={source === 'device'}>
+                    Device
                     <IgrRipple />
                 </IgrToggleButton>
-                <IgrToggleButton value="right" >
-                    <IgrIcon name="format_align_right" collection="material" />
+                <IgrToggleButton value="cloud" selected={source === 'cloud'}>
+                    Cloud
                     <IgrRipple />
-                </IgrToggleButton>
-                <IgrToggleButton value="justify" selected={true}>
-                    <IgrIcon name="format_align_justify" collection="material"/>
-                    <IgrRipple/>
                 </IgrToggleButton>
             </IgrButtonGroup>
+
+            <div className="album">
+                <span className="album-title">{album.title}</span>
+                <div className="album-photos">
+                    {album.photos.map((photo) => (
+                        <img key={photo} src={photo} alt={album.title} />
+                    ))}
+                </div>
+            </div>
       </div>
     );
 }
@@ -145,12 +183,44 @@ Use the [`IgrButtonGroup`](mcp:get_api_reference?platform=react&component=IgrBut
 Use the [`alignment`](mcp:get_api_reference?platform=react&component=IgrButtonGroup&member=alignment) property to set the orientation of the buttons in the button group.
 
 ```css
-igc-button-group {
-    width: 200px;
-}
-
 igc-ripple {
     --color: gray;
+}
+
+.button-group-alignment {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 60px;
+    padding: 24px;
+}
+
+.button-group-alignment-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+}
+
+.button-group-alignment-item igc-button-group {
+    width: 240px;
+}
+
+.button-group-alignment-item:first-child igc-button-group {
+    width: 320px;
+}
+
+.button-group-alignment-item span {
+    width: 100%;
+    text-align: center;
+    color: #556c86;
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 20px;
+    letter-spacing: 0.3px;
 }
 ```
 ```css
@@ -160,44 +230,41 @@ igc-ripple {
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-    IgrButtonGroup,
-    IgrRipple,
-    IgrToggleButton,
-  } from 'igniteui-react';
+import { IgrButtonGroup, IgrRipple, IgrToggleButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/material.css';
 import './ButtonGroupAlignment.css';
 import './index.css';
 
+const cities = ['Sofia', 'London', 'New York'];
 
-export default function ButtonGroupAlignment() {
+const alignments: Array<'horizontal' | 'vertical'> = ['horizontal', 'vertical'];
+
+export default function ButtonGroupAlignment(): JSX.Element {
     return (
-        <div className="container sample">
-            <IgrButtonGroup alignment="vertical">
-                <IgrToggleButton value="sofia">
-                    Sofia
-                    <IgrRipple/>
-                </IgrToggleButton>
-                <IgrToggleButton value="london">
-                    London
-                    <IgrRipple/>
-                </IgrToggleButton>
-                <IgrToggleButton value="new york" selected={true}>
-                    New York
-                    <IgrRipple/>
-                </IgrToggleButton>
-                <IgrToggleButton value="tokyo" >
-                    Tokyo
-                    <IgrRipple />
-                </IgrToggleButton>
-            </IgrButtonGroup>
-      </div>
+        <div className="button-group-alignment">
+            {alignments.map((alignment) => (
+                <div className="button-group-alignment-item" key={alignment}>
+                    <span>{alignment.charAt(0).toUpperCase() + alignment.slice(1)}</span>
+                    <IgrButtonGroup alignment={alignment}>
+                        {cities.map((city) => (
+                            <IgrToggleButton
+                                key={city}
+                                value={city.toLowerCase()}
+                            >
+                                {city}
+                                <IgrRipple />
+                            </IgrToggleButton>
+                        ))}
+                    </IgrButtonGroup>
+                </div>
+            ))}
+        </div>
     );
 }
 
 // rendering above class to the React DOM
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<ButtonGroupAlignment/>);
+root.render(<ButtonGroupAlignment />);
 ```
 
 ### Selection
@@ -211,16 +278,34 @@ In order to configure the Ignite UI for React [`IgrButtonGroup`](mcp:get_api_ref
 The sample below demonstrates the exposed [`IgrButtonGroup`](mcp:get_api_reference?platform=react&component=IgrButtonGroup) selection modes:
 
 ```css
-.radio-group-container {
-    width: 400px;
-    margin-bottom: 1rem;
+.selection-samples {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding-left: 32px;
 }
 
-igc-radio-group {
-    padding: 0.5rem;
+.selection-sample {
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
-igc-button-group {
+.selection-sample > span {
+    width: 120px;
+    text-align: right;
+    color: #556c86;
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+}
+
+.selection-sample igc-button-group {
     width: 200px;
 }
 
@@ -233,15 +318,11 @@ igc-ripple {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-    ButtonGroupSelection,
     IgrButtonGroup,
     IgrIcon,
-    IgrRadio,
-    IgrRadioChangeEventArgs,
-    IgrRadioGroup,
     IgrRipple,
     IgrToggleButton,
     registerIconFromText,
@@ -272,43 +353,27 @@ export default function ButtonGroupSelectionSample() {
         });
     }, [])
 
-    const buttonGroupRef = useRef<IgrButtonGroup>(null);
-
-    function onRadioChange(e: IgrRadioChangeEventArgs) {
-        const value = e.detail.value as ButtonGroupSelection;
-        buttonGroupRef.current.selection = value;
-    }
-
     return (
-        <div className="container sample">
-            <div className="radio-group-container">
-                <label>Selection Mode</label>
-                <IgrRadioGroup alignment="horizontal">
-                    <IgrRadio name="mode" value="single" checked onChange={onRadioChange}>
-                        Single
-                    </IgrRadio>
-                    <IgrRadio name="mode" value="single-required" onChange={onRadioChange}>
-                        Single-Required
-                    </IgrRadio>
-                    <IgrRadio name="mode" value="multiple" onChange={onRadioChange}>
-                        Multiple
-                    </IgrRadio>
-                </IgrRadioGroup>
-            </div>
-            <IgrButtonGroup ref={buttonGroupRef}>
-                <IgrToggleButton value="bold">
-                    <IgrIcon name="bold" collection="material" />
-                    <IgrRipple />
-                </IgrToggleButton>
-                <IgrToggleButton value="italic">
-                    <IgrIcon name="italic" collection="material" />
-                    <IgrRipple />
-                </IgrToggleButton>
-                <IgrToggleButton value="underlined">
-                    <IgrIcon name="underlined" collection="material"/>
-                    <IgrRipple/>
-                </IgrToggleButton>
-            </IgrButtonGroup>
+        <div className="container sample selection-samples">
+            {(['single', 'single-required', 'multiple'] as const).map((selection) => (
+                <div className="selection-sample" key={selection}>
+                    <span>{selection === 'single-required' ? 'Single-Required' : selection.charAt(0).toUpperCase() + selection.slice(1)}</span>
+                    <IgrButtonGroup selection={selection}>
+                        <IgrToggleButton value="bold" selected={selection === 'single-required' || selection === 'multiple'}>
+                            <IgrIcon name="bold" collection="material" />
+                            <IgrRipple />
+                        </IgrToggleButton>
+                        <IgrToggleButton value="italic" selected={selection === 'multiple'}>
+                            <IgrIcon name="italic" collection="material" />
+                            <IgrRipple />
+                        </IgrToggleButton>
+                        <IgrToggleButton value="underlined">
+                            <IgrIcon name="underlined" collection="material" />
+                            <IgrRipple />
+                        </IgrToggleButton>
+                    </IgrButtonGroup>
+                </div>
+            ))}
       </div>
     );
 }
@@ -345,49 +410,84 @@ A [`IgrToggleButton`](mcp:get_api_reference?platform=react&component=IgrToggleBu
 The `--ig-size` CSS custom property can be used to control the size of the button group.
 
 ```css
+igc-ripple {
+    --color: gray;
+}
+
+.button-group-size {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 32px;
+    padding: 13px;
+    padding-left: 3rem;
+}
+
+.button-group-size-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 32px;
+}
+
+.button-group-size-item span {
+    width: 52px;
+    text-align: right;
+    color: #556c86;
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+}
+```
+```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-    IgrButtonGroup,
-    IgrComponentValueChangedEventArgs,
-    IgrToggleButton,
-  } from 'igniteui-react';
+import { IgrButtonGroup, IgrRipple, IgrToggleButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/material.css';
+import './ButtonGroupSize.css';
 import './index.css';
 
-export default function ButtonGroupSize() {
-    const [style, setStyle] = useState({ '--ig-size': 'var(--ig-size-large)' } as React.CSSProperties)
+const cities = ['Sofia', 'London', 'New York'];
 
-    function onSelect(args: IgrComponentValueChangedEventArgs) {
-        setStyle({
-            '--ig-size': `var(--ig-size-${args.detail})`
-        } as React.CSSProperties)
-    }
+const sizes = ['small', 'medium', 'large'];
 
+export default function ButtonGroupSize(): JSX.Element {
     return (
-        <div className="container sample">
-            <IgrButtonGroup onSelect={onSelect} style={style}>
-                <IgrToggleButton value="small">
-                    Small
-                </IgrToggleButton>
-                <IgrToggleButton value="medium">
-                    Medium
-                </IgrToggleButton>
-                <IgrToggleButton value="large">
-                    Large
-                </IgrToggleButton>
-            </IgrButtonGroup>
-      </div>
+        <div className="button-group-size">
+            {sizes.map((size) => (
+                <div className="button-group-size-item" key={size}>
+                    <span>{size.charAt(0).toUpperCase() + size.slice(1)}</span>
+                    <IgrButtonGroup
+                        style={{ '--ig-size': `var(--ig-size-${size})` } as React.CSSProperties}
+                    >
+                        {cities.map((city) => (
+                            <IgrToggleButton
+                                key={city}
+                                value={city.toLowerCase()}
+                            >
+                                {city}
+                                <IgrRipple />
+                            </IgrToggleButton>
+                        ))}
+                    </IgrButtonGroup>
+                </div>
+            ))}
+        </div>
     );
 }
 
 // rendering above class to the React DOM
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<ButtonGroupSize/>);
+root.render(<ButtonGroupSize />);
 ```
 
 ## Styling
@@ -407,32 +507,37 @@ igc-toggle-button::part(toggle) {
 ```
 
 ```css
-igc-button-group {
-    width: 200px;
-}
-
 igc-ripple {
     --color: gray;
 }
 
-igc-toggle-button::part(toggle) {
-    color: #fdfdfd;
-    background: #2f4d6a;
+.button-group-styling {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 7rem;
 }
 
-igc-toggle-button::part(toggle):hover {
-    color: #fdfdfd;
-    background: #1f3347;
+.button-group-styling igc-button-group {
+    width: 420px;
+    border: 2px solid #4da3e8;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-igc-toggle-button[disabled]::part(toggle) {
-    color: gray;
-    background: lightgray;
+.button-group-styling igc-toggle-button::part(toggle) {
+    color: #4a5a66;
+    background: #cfe8fb;
+    border-color: #4da3e8;
 }
 
-igc-toggle-button[selected]::part(toggle) {
-    color: #fdfdfd;
-    background: #1f3347;
+.button-group-styling igc-toggle-button::part(toggle):hover {
+    background: #b3daf8;
+}
+
+.button-group-styling igc-toggle-button[selected]::part(toggle) {
+    color: #2f4d6a;
+    background: #6db3ea;
 }
 ```
 ```css
@@ -442,43 +547,35 @@ igc-toggle-button[selected]::part(toggle) {
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-    IgrButtonGroup,
-    IgrRipple,
-    IgrToggleButton,
-  } from 'igniteui-react';
+import { IgrButtonGroup, IgrRipple, IgrToggleButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/material.css';
 import './ButtonGroupStyling.css';
 import './index.css';
 
-export default function ButtonGroupStyling() {
+const layouts = ['Left', 'Center', 'Right'];
+
+export default function ButtonGroupStyling(): JSX.Element {
     return (
-        <div className="container sample">
-            <IgrButtonGroup alignment="vertical">
-                <IgrToggleButton value="sofia">
-                    Sofia
-                    <IgrRipple/>
-                </IgrToggleButton>
-                <IgrToggleButton value="london">
-                    London
-                    <IgrRipple/>
-                </IgrToggleButton>
-                <IgrToggleButton value="new york">
-                    New York
-                    <IgrRipple/>
-                </IgrToggleButton>
-                <IgrToggleButton value="tokyo" disabled={true}>
-                    Tokyo
-                    <IgrRipple/>
-                </IgrToggleButton>
+        <div className="button-group-styling">
+            <IgrButtonGroup>
+                {layouts.map((layout) => (
+                    <IgrToggleButton
+                        key={layout}
+                        value={layout.toLowerCase()}
+                        selected={layout === 'Left'}
+                    >
+                        {layout}
+                        <IgrRipple />
+                    </IgrToggleButton>
+                ))}
             </IgrButtonGroup>
-      </div>
+        </div>
     );
 }
 
 // rendering above class to the React DOM
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<ButtonGroupStyling/>);
+root.render(<ButtonGroupStyling />);
 ```
 
 ## API Reference

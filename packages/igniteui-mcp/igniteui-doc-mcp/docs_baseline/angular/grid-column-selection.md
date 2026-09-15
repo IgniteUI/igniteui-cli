@@ -13,7 +13,7 @@ The Column selection feature provides an easy way to select an entire column wit
 The sample below demonstrates the three types of Grid's **column selection** behavior. Use the _column selection_ dropdown below to enable each of the available selection modes.
 *_Contact Title_, _City_ and _Address_ columns are with disabled column selection.
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { GridSelectionMode, IgxColumnComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
@@ -25,7 +25,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-grid-column-selection',
     templateUrl: './column-selection-sample.component.html',
     styleUrls: ['./column-selection-sample.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxGridToolbarComponent, IgxSelectComponent, FormsModule, IgxLabelDirective, IgxSelectItemComponent, IgxColumnComponent]
 })
 export class GridColumnSelectionComponent implements OnInit, AfterViewInit {
@@ -88,7 +87,7 @@ The default selection mode is `none`. If set to `single` or `multiple` all of th
 > [`Multi-column Headers`](multi-column-headers.md) don't reflect on the [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable) input. The [`IgxColumnGroupComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent) is [`selectable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selectable), if at least one of its children has the selection behavior enabled. In addition, the component is marked as [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnGroupComponent&member=selected) if all of its `selectable` descendants are [`selected`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=selected).
 *Under _Country Information_ Column Group only column _City_ and _Postal code_ are selectable.
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, IgxColumnGroupComponent } from 'igniteui-angular/grids/core';
 import { DATA } from '../../data/customers';
@@ -97,7 +96,6 @@ import { DATA } from '../../data/customers';
     selector: 'app-gird-column-group-selection',
     templateUrl: './column-group-selection-sample.component.html',
     styleUrls: ['./column-group-selection-sample.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxColumnGroupComponent, IgxColumnComponent]
 })
 export class GridColumnGroupSelectionComponent implements OnInit, AfterViewInit {
@@ -195,7 +193,7 @@ The last step is to include the custom `igx-grid` theme.
 ```
 ### Demo
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { DATA } from '../../data/customers';
@@ -204,7 +202,6 @@ import { DATA } from '../../data/customers';
     selector: 'app-gird-column-selection-styles',
     templateUrl: './column-selection-styles.component.html',
     styleUrls: ['./column-selection-styles.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxColumnComponent]
 })
 export class GridColumnSelectionStylesComponent implements OnInit, AfterViewInit {

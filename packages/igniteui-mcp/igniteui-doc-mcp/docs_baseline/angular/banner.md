@@ -13,7 +13,7 @@ _tocName: Banner
 ## Angular Banner Example
 
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxBannerComponent } from 'igniteui-angular/banner';
 import { IgxNavbarComponent } from 'igniteui-angular/navbar';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -23,7 +23,6 @@ import { IgxCardComponent } from 'igniteui-angular/card';
     selector: 'app-banner-sample-1',
     styleUrls: ['../banner-samples.scss'],
     templateUrl: 'banner-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent, IgxIconComponent, IgxBannerComponent, IgxCardComponent]
 })
 
@@ -199,7 +198,7 @@ The `IgxBannerModule` exposes a directive for templating the banner buttons - [`
 
 
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxBannerActionsDirective, IgxBannerComponent } from 'igniteui-angular/banner';
 import { IgxNavbarComponent } from 'igniteui-angular/navbar';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -210,7 +209,6 @@ import { IgxCardComponent } from 'igniteui-angular/card';
     selector: 'app-banner-sample-2',
     styleUrls: ['../banner-samples.scss'],
     templateUrl: 'banner-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent, IgxIconComponent, IgxBannerComponent, IgxBannerActionsDirective, IgxButtonDirective, IgxRippleDirective, IgxCardComponent]
 })
 
@@ -285,7 +283,7 @@ export class MyBannerComponent {
 
 
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxBannerActionsDirective, IgxBannerComponent } from 'igniteui-angular/banner';
 import { IgxNavbarComponent } from 'igniteui-angular/navbar';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -297,7 +295,6 @@ import { slideInLeft, slideOutRight } from 'igniteui-angular/animations';
     selector: 'app-banner-sample-3',
     styleUrls: ['../banner-samples.scss'],
     templateUrl: 'banner-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent, IgxIconComponent, IgxBannerComponent, IgxBannerActionsDirective, IgxButtonDirective, IgxRippleDirective, IgxCardComponent]
 })
 
@@ -407,7 +404,7 @@ Finally, we will add a `toast`, displaying a message about the WiFi state. The r
 
 
 ```typescript
-import { Component, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { IgxBannerActionsDirective, IgxBannerComponent } from 'igniteui-angular/banner';
 import { IgxToastComponent } from 'igniteui-angular/toast';
 import { VerticalAlignment } from 'igniteui-angular/core';
@@ -421,7 +418,6 @@ import { Subject } from 'rxjs';
     selector: 'app-banner-advanced-sample',
     styleUrls: ['../banner-samples.scss'],
     templateUrl: 'banner-advanced-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent, IgxIconComponent, IgxBannerComponent, IgxBannerActionsDirective, IgxButtonDirective, IgxRippleDirective, IgxCardComponent, IgxToastComponent]
 })
 
@@ -531,7 +527,7 @@ The last step is to pass the custom banner theme:
 ```
 
 ```typescript
-import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { IgxBannerActionsDirective, IgxBannerComponent } from 'igniteui-angular/banner';
 import { IgxToastComponent } from 'igniteui-angular/toast';
 import { VerticalAlignment } from 'igniteui-angular/core';
@@ -547,7 +543,6 @@ import { Subject } from 'rxjs';
     styleUrls: ['banner-styling.component.scss', '../banner-samples.scss'],
     templateUrl: 'banner-styling.component.html',
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxNavbarComponent, IgxIconComponent, IgxBannerComponent, IgxBannerActionsDirective, IgxButtonDirective, IgxRippleDirective, IgxCardComponent, IgxToastComponent]
 })
 

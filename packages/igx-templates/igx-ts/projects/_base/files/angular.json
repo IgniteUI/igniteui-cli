@@ -31,7 +31,6 @@
             "styles": [
               "src/styles.scss"<%=DefaultTheme%>
             ],
-            "scripts": ["./node_modules/hammerjs/hammer.min.js"],
             "stylePreprocessorOptions": {
               "includePaths": ["node_modules"]
             }

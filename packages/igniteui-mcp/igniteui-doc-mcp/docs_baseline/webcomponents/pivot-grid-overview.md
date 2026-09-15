@@ -256,7 +256,6 @@ Let's take a look at a basic pivot configuration:
                 enabled: true
             }
 
-
         ],
         rows: [
             {

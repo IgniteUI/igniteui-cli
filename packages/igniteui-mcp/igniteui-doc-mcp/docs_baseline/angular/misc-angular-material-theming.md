@@ -23,10 +23,10 @@ The following article demonstrates how to use both Ignite UI and Angular Materia
 ## Angular Material Theming Example
 
 ```typescript
-import { Component, HostBinding, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewChild, inject } from '@angular/core';
 import { IgxDialogActionsDirective, IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxOverlayOutletDirective } from 'igniteui-angular/core';
-import { IgxButtonDirective, IgxDividerDirective, IgxIconButtonDirective, IgxLayoutDirective } from 'igniteui-angular/directives';
+import { IgxButtonDirective, IgxDividerComponent, IgxIconButtonDirective, IgxLayoutDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 import { IgxCardActionsComponent, IgxCardComponent, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
@@ -46,8 +46,7 @@ import { MatInput } from '@angular/material/input';
     selector: 'app-angular-sample',
     styleUrls: ['./angular-sample.component.scss'],
     templateUrl: './angular-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatToolbar, IgxButtonDirective, MatMenuTrigger, IgxIconComponent, MatMenu, MatMenuItem, IgxLayoutDirective, IgxAvatarComponent, IgxIconButtonDirective, IgxCardComponent, IgxCardMediaDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardActionsComponent, MatButton, IgxDialogComponent, IgxDialogActionsDirective, IgxSuffixDirective, IgxOverlayOutletDirective, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective, IgxExpansionPanelDescriptionDirective, IgxExpansionPanelBodyComponent, MatSlider, MatSliderThumb, IgxDividerDirective, MatStepper, MatStep, FormsModule, ReactiveFormsModule, MatStepLabel, MatFormField, MatLabel, MatInput, MatStepperNext, MatStepperPrevious]
+    imports: [MatToolbar, IgxButtonDirective, MatMenuTrigger, IgxIconComponent, MatMenu, MatMenuItem, IgxLayoutDirective, IgxAvatarComponent, IgxIconButtonDirective, IgxCardComponent, IgxCardMediaDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardActionsComponent, MatButton, IgxDialogComponent, IgxDialogActionsDirective, IgxSuffixDirective, IgxOverlayOutletDirective, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective, IgxExpansionPanelDescriptionDirective, IgxExpansionPanelBodyComponent, MatSlider, MatSliderThumb, IgxDividerComponent, MatStepper, MatStep, FormsModule, ReactiveFormsModule, MatStepLabel, MatFormField, MatLabel, MatInput, MatStepperNext, MatStepperPrevious]
 })
 
 export class AngularMaterialComponent implements OnInit {
@@ -86,7 +85,7 @@ export class AngularMaterialComponent implements OnInit {
     private toggleOverlayClasses(theme: 'light' | 'dark') {
         const overlayClasses = this.overlayContainer.getContainerElement().classList;
         overlayClasses.add('mat-menu');
-    
+
         switch (theme) {
             case 'light':
                 overlayClasses.remove('dark-menu-theme');

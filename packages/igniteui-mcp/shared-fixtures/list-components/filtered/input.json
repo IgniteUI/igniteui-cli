@@ -1,0 +1,217 @@
+{
+  "framework": "angular",
+  "filter": "excel",
+  "docs": [
+    {
+      "framework": "angular",
+      "filename": "grids-and-lists.md",
+      "component": "IgxGridComponent",
+      "toc_name": "Grids & Lists",
+      "premium": 0,
+      "keywords": "grid list",
+      "summary": "Section overview for grids and lists."
+    },
+    {
+      "framework": "angular",
+      "filename": "grid-grid.md",
+      "component": "IgxGridComponent",
+      "toc_name": "Data Grid",
+      "premium": 0,
+      "keywords": "grid data",
+      "summary": "The data grid: setup, columns, binding."
+    },
+    {
+      "framework": "angular",
+      "filename": "grid-sorting.md",
+      "component": "IgxGridComponent",
+      "toc_name": "Sorting",
+      "premium": 1,
+      "keywords": "sort ordering",
+      "summary": "Sort grid rows by one or more columns."
+    },
+    {
+      "framework": "angular",
+      "filename": "grid-editing.md",
+      "component": "IgxGridComponent",
+      "toc_name": "Editing",
+      "premium": 0,
+      "keywords": "edit cell row",
+      "summary": "Edit cells and rows, batch and transactional."
+    },
+    {
+      "framework": "angular",
+      "filename": "excel-utility.md",
+      "component": "IgxExcelUtility",
+      "toc_name": "Excel Utility",
+      "premium": 0,
+      "keywords": "excel workbook",
+      "summary": "Load and save Excel workbooks."
+    },
+    {
+      "framework": "angular",
+      "filename": "accordion.md",
+      "component": "IgxAccordionComponent",
+      "toc_name": "Accordion",
+      "premium": 0,
+      "keywords": "accordion panel",
+      "summary": "Expand and collapse stacked panels."
+    },
+    {
+      "framework": "angular",
+      "filename": "no-component.md",
+      "component": "",
+      "toc_name": null,
+      "premium": 0,
+      "keywords": "",
+      "summary": ""
+    },
+    {
+      "framework": "react",
+      "filename": "grid-editing.md",
+      "component": "IgrGrid",
+      "toc_name": "Editing",
+      "premium": 0,
+      "keywords": "edit",
+      "summary": "Edit cells in the React grid."
+    }
+  ],
+  "docToc": [
+    {
+      "framework": "angular",
+      "filename": "grids-and-lists.md",
+      "group_key": "Grids & Lists",
+      "section": "Grids & Lists",
+      "group_label": "",
+      "path": "Grids & Lists",
+      "ord": 0,
+      "landing": 1
+    },
+    {
+      "framework": "angular",
+      "filename": "grid-grid.md",
+      "group_key": "Grids & Lists > Data Grid",
+      "section": "Grids & Lists",
+      "group_label": "Data Grid",
+      "path": "Grids & Lists > Data Grid",
+      "ord": 1,
+      "landing": 0
+    },
+    {
+      "framework": "angular",
+      "filename": "grid-sorting.md",
+      "group_key": "Grids & Lists > Data Grid",
+      "section": "Grids & Lists",
+      "group_label": "Data Grid",
+      "path": "Grids & Lists > Data Grid > Sorting",
+      "ord": 2,
+      "landing": 0
+    },
+    {
+      "framework": "angular",
+      "filename": "grid-editing.md",
+      "group_key": "Grids & Lists > Data Grid",
+      "section": "Grids & Lists",
+      "group_label": "Data Grid",
+      "path": "Grids & Lists > Data Grid > Editing",
+      "ord": 3,
+      "landing": 0
+    },
+    {
+      "framework": "angular",
+      "filename": "excel-utility.md",
+      "group_key": "Grids & Lists",
+      "section": "Grids & Lists",
+      "group_label": "",
+      "path": "Grids & Lists > Excel Utility",
+      "ord": 4,
+      "landing": 0
+    },
+    {
+      "framework": "angular",
+      "filename": "accordion.md",
+      "group_key": "Layouts",
+      "section": "Layouts",
+      "group_label": "",
+      "path": "Layouts > Accordion",
+      "ord": 5,
+      "landing": 0
+    },
+    {
+      "framework": "angular",
+      "filename": "no-component.md",
+      "group_key": "Layouts",
+      "section": "Layouts",
+      "group_label": "",
+      "path": "Layouts > Unnamed",
+      "ord": 6,
+      "landing": 0
+    },
+    {
+      "framework": "angular",
+      "filename": "excel-utility.md",
+      "group_key": "Frameworks > Excel Library",
+      "section": "Frameworks",
+      "group_label": "Excel Library",
+      "path": "Frameworks > Excel Library > Excel Utility",
+      "ord": 7,
+      "landing": 0
+    },
+    {
+      "framework": "react",
+      "filename": "grid-editing.md",
+      "group_key": "Grids & Lists > Data Grid",
+      "section": "Grids & Lists",
+      "group_label": "Data Grid",
+      "path": "Grids & Lists > Data Grid > Editing",
+      "ord": 0,
+      "landing": 0
+    }
+  ],
+  "docGroups": [
+    {
+      "framework": "angular",
+      "group_key": "Grids & Lists",
+      "section": "Grids & Lists",
+      "group_label": "",
+      "summary": "Grid and list components, plus the Excel interop utility.",
+      "doc_count": 2,
+      "ord": 0
+    },
+    {
+      "framework": "angular",
+      "group_key": "Grids & Lists > Data Grid",
+      "section": "Grids & Lists",
+      "group_label": "Data Grid",
+      "summary": "Data grid: sorting, filtering, editing, virtualization, export.",
+      "doc_count": 3,
+      "ord": 1
+    },
+    {
+      "framework": "angular",
+      "group_key": "Layouts",
+      "section": "Layouts",
+      "group_label": "",
+      "summary": null,
+      "doc_count": 2,
+      "ord": 5
+    },
+    {
+      "framework": "angular",
+      "group_key": "Frameworks > Excel Library",
+      "section": "Frameworks",
+      "group_label": "Excel Library",
+      "summary": "Read, write and format Excel workbooks without Excel installed.",
+      "doc_count": 1,
+      "ord": 7
+    },
+    {
+      "framework": "react",
+      "group_key": "Grids & Lists > Data Grid",
+      "section": "Grids & Lists",
+      "group_label": "Data Grid",
+      "summary": "Data grid editing.",
+      "doc_count": 1,
+      "ord": 0
+    }
+  ]
+}

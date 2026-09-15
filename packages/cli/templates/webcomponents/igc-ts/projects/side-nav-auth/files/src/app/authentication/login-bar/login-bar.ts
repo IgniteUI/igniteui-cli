@@ -32,6 +32,7 @@ export class LoginBarElement extends LitElement {
 
     .profile-avatar {
       cursor: pointer;
+      --ig-size: var(--ig-size-small);
       color: #0075d2;
       --ig-avatar-background: #fff;
       --ig-avatar-color: #0075d2;
@@ -105,7 +106,6 @@ export class LoginBarElement extends LitElement {
           slot="target"
           class="profile-avatar"
           shape="circle"
-          size="small"
           src=${this.currentUser.picture ?? ''}
           tabindex="0"
           aria-label="Open profile menu"

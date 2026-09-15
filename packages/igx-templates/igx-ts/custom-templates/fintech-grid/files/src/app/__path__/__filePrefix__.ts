@@ -185,7 +185,7 @@ export class <%=ClassName%> implements OnInit, AfterViewInit, OnDestroy {
     if (this.grid1().groupsRecords[0].groups && this.grid1().groupsRecords[0]?.groups?.[0]?.groups) {
       const recordsToBeSelected = this.grid1().selectionService.getRowIDs(this.grid1().groupsRecords[0].groups![0].groups![0].records);
       recordsToBeSelected.forEach(item => {
-        this.grid1().selectionService.selectRowById(item, false, true);
+        this.grid1().selectionService.selectRowById(item, false);
       });
     }
   }

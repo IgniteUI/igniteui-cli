@@ -1,6 +1,8 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync } from "fs";
-import { join, resolve, relative, basename } from "path";
+import { join, resolve, relative } from "path";
 import { execSync } from "child_process";
+import { walkTocJson, type TocEntry, type TocNode } from "./lib/toc-index.js";
+import { TocSidecar, resolveUniqueName } from "./lib/toc-sidecar.js";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const XPLAT_ROOT = join(ROOT, "common", "igniteui-xplat-docs");
@@ -19,38 +21,14 @@ function stripImages(content: string): string {
   return content.replace(/!\[[^\]]*\]\([^)]*\)/g, "");
 }
 
-interface TocEntry {
-  name: string;
-  href: string;
-  premium: boolean;
-}
-
 function parseTocJson(tocPath: string): TocEntry[] {
   const raw = readFileSync(tocPath, "utf-8");
-  const data = JSON.parse(raw) as any[];
-  const entries: TocEntry[] = [];
+  const data = JSON.parse(raw) as TocNode[];
 
-  function flatten(items: any[], parentExcluded: boolean) {
-    for (const item of items) {
-      const excludes: string[] = item.exclude || [];
-      const excluded = parentExcluded || excludes.includes("WebComponents");
-
-      if (!excluded && item.href && !item.header) {
-        entries.push({
-          name: item.name || "",
-          href: item.href,
-          premium: item.premium === true,
-        });
-      }
-
-      if (Array.isArray(item.items)) {
-        flatten(item.items, excluded);
-      }
-    }
-  }
-
-  flatten(data, false);
-  return entries;
+  // Header nodes are walked so `section` is tracked correctly, but their own
+  // landing pages have never been exported for the xplat platforms — keeping
+  // that filter here leaves the exported set unchanged.
+  return walkTocJson(data, { excludePlatform: "WebComponents" }).filter((e) => !e.landing);
 }
 
 function injectTocMetadata(content: string, entry: TocEntry): string {
@@ -138,6 +116,8 @@ function main() {
   let totalFiles = 0;
   let skipped = 0;
   const usedNames = new Map<string, string>();
+  const writtenFiles = new Set<string>();
+  const sidecar = new TocSidecar("webcomponents", ROOT);
 
   for (const entry of tocEntries) {
     const href = entry.href.replace(/\\/g, "/");
@@ -157,23 +137,23 @@ function main() {
 
     content = injectTocMetadata(content, entry);
 
-    let flatName = flattenPath(href);
-
-    if (usedNames.has(flatName)) {
-      const parts = href.replace(/\\/g, "/").split("/");
-      if (parts.length >= 2) {
-        flatName = `${parts[parts.length - 2]}-${basename(href)}`;
-      }
-      if (usedNames.has(flatName)) {
-        flatName = href.replace(/\//g, "-");
-      }
+    // A cross-listed page appears under two TOC paths. Reuse the name resolved
+    // the first time so it stays one doc, but still write: injectTocMetadata has
+    // already run for this entry and last-write-wins is observable in the DB.
+    let flatName = sidecar.nameFor(href);
+    if (!flatName) {
+      flatName = resolveUniqueName(flattenPath(href), href, usedNames);
+      usedNames.set(flatName, href);
     }
-    usedNames.set(flatName, href);
 
     const outPath = join(OUTPUT_DIR, flatName);
     writeFileSync(outPath, content, "utf-8");
+    writtenFiles.add(flatName);
+    sidecar.record(entry, flatName);
     totalFiles++;
   }
+
+  sidecar.write(writtenFiles);
 
   console.error(`\nDone!`);
   console.error(`  Files exported: ${totalFiles}`);

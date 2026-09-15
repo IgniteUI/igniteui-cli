@@ -16,7 +16,7 @@ The Tree Grid in Ignite UI for Angular provides an [`IgxGridToolbarComponent`](m
 or just any other custom content. The toolbar and the predefined UI components support Angular events and expose API for developers.
 ## Angular Toolbar Grid Example
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { EMPLOYEE_FLAT_AVATARS_DATA } from '../data/employees-flat-avatars';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarAdvancedFilteringComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
@@ -27,7 +27,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-toolbar-sample-4',
     styleUrls: ['./tree-grid-toolbar-sample-4.component.scss'],
     templateUrl: './tree-grid-toolbar-sample-4.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarAdvancedFilteringComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent]
 })
 export class TreeGridToolbarSample4Component {
@@ -119,7 +118,7 @@ These features can be enabled independently from each other by following a patte
 the Ignite UI for Angular suite.
 Listed below are the main features of the toolbar with example code for each of them.
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { EMPLOYEE_FLAT_AVATARS_DATA } from '../data/employees-flat-avatars';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
@@ -134,7 +133,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-toolbar-sample-1',
     styleUrls: ['./tree-grid-toolbar-sample-1.component.scss'],
     templateUrl: './tree-grid-toolbar-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxSwitchComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarAdvancedFilteringComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent]
 })
 export class TreeGridToolbarSample1Component {
@@ -394,7 +392,7 @@ configureExport(args: IGridToolbarExportEventArgs) {
 ```
 The following sample demonstrates how to customize the exported files:
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import {
     CsvFileTypes,
     IColumnExportingEventArgs,
@@ -418,7 +416,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-toolbar-sample-2',
     styleUrls: ['./tree-grid-toolbar-sample-2.component.scss'],
     templateUrl: './tree-grid-toolbar-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent]
 })
 export class TreeGridToolbarSample2Component {
@@ -432,7 +429,7 @@ export class TreeGridToolbarSample2Component {
     public configureExport(args: IGridToolbarExportEventArgs) {
         // You can customize the exporting from this event
         const options: IgxExporterOptionsBase = args.options;
-        
+
         options.fileName = `Report_${new Date().toDateString()}`;
 
         if (options instanceof IgxExcelExporterOptions) {
@@ -504,7 +501,7 @@ Moreover, users can set the toolbar [showProgress](mcp:get_api_reference?platfor
 or just as another way to signify an action taking place in the grid.
 The sample below has significant amount of data. While the data is being exported, the progress bar is shown. Additionally, it has another button that simulates a long running operation in the grid:
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, ChangeDetectorRef } from '@angular/core';
 import { ORDERS_DATA } from '../data/orders';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent } from 'igniteui-angular/grids/core';
@@ -516,10 +513,10 @@ import { CurrencyPipe } from '@angular/common';
     selector: 'app-tree-grid-export-visualization',
     templateUrl: './tree-grid-export-visualization.component.html',
     styleUrls: ['./tree-grid-export-visualization.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxButtonDirective, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, CurrencyPipe]
 })
 export class TreeGridExportVisualizationComponent {
+    private cdr = inject(ChangeDetectorRef);
     public localData = [];
     private data = ORDERS_DATA;
 
@@ -543,7 +540,10 @@ export class TreeGridExportVisualizationComponent {
 
     longRunning(toolbar: any) {
         toolbar.showProgress = true;
-        setTimeout(() => toolbar.showProgress = false, 5000);
+        setTimeout(() => {
+            toolbar.showProgress = false;
+            this.cdr.markForCheck();
+        }, 5000);
     }
 }
 ```
@@ -621,7 +621,7 @@ Here is a sample snippet:
 ```
 The following sample demonstrates how to add an additional button to the toolbar to clear the sorting set by clicking on the columns' headers:
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { EMPLOYEE_FLAT_AVATARS_DATA } from '../data/employees-flat-avatars';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
@@ -634,7 +634,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-toolbar-sample-3',
     styleUrls: ['./tree-grid-toolbar-sample-3.component.scss'],
     templateUrl: './tree-grid-toolbar-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxButtonDirective, IgxRippleDirective, IgxIconComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent]
 })
 export class TreeGridToolbarSample3Component {
@@ -767,7 +766,7 @@ The last step is to **include** the newly created themes.
 ```
 ### Demo
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { EMPLOYEE_FLAT_AVATARS_DATA } from '../data/employees-flat-avatars';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxCellTemplateDirective, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarExporterComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarTitleComponent } from 'igniteui-angular/grids/core';
@@ -778,7 +777,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-toolbar-style',
     styleUrls: ['./tree-grid-toolbar-style.component.scss'],
     templateUrl: './tree-grid-toolbar-style.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarTitleComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxGridToolbarExporterComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxAvatarComponent]
 })
 export class TreeGridToolbarStyleComponent {

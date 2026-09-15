@@ -21,7 +21,7 @@ public handleRowSelection(event: IRowSelectionEventArgs) {
 }
 ```
 ```typescript
-import { Component, ElementRef, OnInit, Renderer2, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild, inject } from '@angular/core';
 
 import { GridSelectionMode, IRowSelectionEventArgs, IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -44,7 +44,6 @@ import { AsyncPipe } from '@angular/common';
     selector: 'grid-sample',
     styleUrls: ['./grid-selection.component.scss'],
     templateUrl: 'grid-selection.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSwitchComponent, FormsModule, IgxButtonGroupComponent, IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxCellHeaderTemplateDirective, IgxCellTemplateDirective, IgxBadgeComponent, IgxButtonDirective, IgxIconComponent, IgxSnackbarComponent, AsyncPipe]
 })
 
@@ -527,7 +526,7 @@ The `selectedCount` and `totalCount` properties can be used to determine if the 
 ### Row Numbering Demo
 This demo shows the usage of custom header and row selectors. The latter uses `rowContext.index` to display row numbers and an `igx-checkbox` bound to `rowContext.selected`.
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { DATA } from '../../data/customers';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -539,7 +538,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-selection-template-numbers',
     styleUrls: ['./grid-sample-selection-template-numbers.component.scss'],
     templateUrl: 'grid-sample-selection-template-numbers.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxHeadSelectorDirective, IgxRowSelectorDirective, IgxCheckboxComponent]
 })
 
@@ -616,7 +614,7 @@ export class GridSelectionTemplateNumbersComponent {
 ### Excel Style Row Selectors Demo
 This demo uses custom templates to resemble Excel-like header and row selectors.
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { DATA } from '../../data/customers';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -628,7 +626,6 @@ import { NgClass } from '@angular/common';
     selector: 'app-grid-selection-template-excel',
     styleUrls: ['./grid-sample-selection-template-excel.component.scss'],
     templateUrl: 'grid-sample-selection-template-excel.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxHeadSelectorDirective, NgClass, IgxRowSelectorDirective]
 })
 
@@ -718,7 +715,7 @@ $default-arrow-all-color: color($color: 'secondary', $variant: 100);
 ### Conditional Selection Demo
 This demo prevents some rows from being selected using the `rowSelectionChanging` event and a custom template with disabled checkbox for non-selectable rows.
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IRowSelectionEventArgs, IgxColumnComponent, IgxRowSelectorDirective } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
@@ -730,7 +727,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-conditional-row-selectors',
     styleUrls: ['./grid-conditional-row-selectors-sample.component.scss'],
     templateUrl: 'grid-conditional-row-selectors-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxRowSelectorDirective, IgxCheckboxComponent]
 })
 

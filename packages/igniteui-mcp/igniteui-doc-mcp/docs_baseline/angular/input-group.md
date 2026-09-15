@@ -13,7 +13,7 @@ The `IgxInputGroupComponent` allows the user to enhance input elements like inpu
 ## Angular Input Group Example
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { BaseInputGroupSampleComponent } from '../base-input.component';
 import { FormsModule } from '@angular/forms';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
@@ -22,7 +22,6 @@ import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'ig
     selector: 'app-input-group-sample-1',
     styleUrls: ['./input-group-sample-1.component.scss'],
     templateUrl: './input-group-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, IgxInputGroupComponent, IgxInputDirective, IgxLabelDirective]
 })
 export class InputGroupSample1Component extends BaseInputGroupSampleComponent { }
@@ -133,7 +132,7 @@ The `igx-prefix` or `igxPrefix` and `igx-suffix` or `igxSuffix` directives can c
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { BaseInputGroupSampleComponent } from '../base-input.component';
 import { FormsModule } from '@angular/forms';
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
@@ -143,7 +142,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-input-group-sample-3',
     styleUrls: ['./input-group-sample-3.component.scss'],
     templateUrl: './input-group-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, IgxInputGroupComponent, IgxPrefixDirective, IgxLabelDirective, IgxInputDirective, IgxIconComponent, IgxSuffixDirective]
 })
 export class InputGroupSample3Component extends BaseInputGroupSampleComponent { }
@@ -186,7 +184,7 @@ The [`igx-hint`](mcp:get_api_reference?platform=angular&component=IgxHintDirecti
 
 This is how the phone field with hint looks:
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BaseInputGroupSampleComponent } from '../base-input.component';
 import { FormsModule } from '@angular/forms';
 import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
@@ -196,7 +194,6 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
     selector: 'app-input-group-sample-4',
     styleUrls: ['./input-group-sample-4.component.scss'],
     templateUrl: './input-group-sample-4.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, IgxInputGroupComponent, IgxPrefixDirective, IgxLabelDirective, IgxInputDirective, IgxSuffixDirective, IgxIconComponent, IgxHintDirective]
 })
 export class InputGroupSample4Component extends BaseInputGroupSampleComponent { }
@@ -253,7 +250,7 @@ Ignite UI for Angular also provides styling for the input of `type="file"` and i
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { BaseInputGroupSampleComponent } from '../base-input.component';
 import { IGX_INPUT_GROUP_TYPE, IgxHintDirective, IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -265,7 +262,6 @@ import { FormsModule } from '@angular/forms';
     styleUrls: ['./input-group-sample-5.component.scss'],
     templateUrl: './input-group-sample-5.component.html',
     providers: [{ provide: IGX_INPUT_GROUP_TYPE, useValue: 'box' }],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, IgxInputGroupComponent, IgxInputDirective, IgxLabelDirective, IgxSuffixDirective, IgxIconComponent, IgxHintDirective, IgxPrefixDirective]
 })
 export class InputGroupSample5Component extends BaseInputGroupSampleComponent { }
@@ -360,7 +356,7 @@ The input group component supports several themes - `material`, `fluent`, `boots
 The Ignite UI for Angular Input Group component can be used inside strictly typed reactive forms which are the default ones as of Angular 14. To find out more about the typed forms, you can check [Angular official documentation](https://angular.io/guide/typed-forms).
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxDatePickerComponent } from 'igniteui-angular/date-picker';
@@ -383,7 +379,6 @@ export interface registrationFormGroup
     selector: 'app-typed-form',
     templateUrl: './typed-form.component.html',
     styleUrls: ['./typed-form.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, IgxInputGroupComponent, IgxLabelDirective, IgxInputDirective, IgxDatePickerComponent, IgxPickerToggleComponent, IgxSuffixDirective, IgxIconComponent, IgxButtonDirective, IgxRippleDirective]
 })
 export class TypedFormComponent {
@@ -546,7 +541,7 @@ The following example demonstrates how to inspect the form's state by exporting 
 The result from the above configurations could be seen in the below sample. Start typing into the Email and Password fields and you will notice that the [`igx-hint`](mcp:get_api_reference?platform=angular&component=IgxHintDirective) is shown if the entered values are invalid. The sample also demonstrates how to toggle the password's visibility by using the [`igx-icon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent) and the [`igx-suffix`](#prefix--suffix) directive.
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm, FormsModule } from '@angular/forms';
 import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -564,7 +559,6 @@ interface User
     selector: 'app-template-driven-form-validation',
     templateUrl: './template-driven-form-validation.component.html',
     styleUrls: ['./template-driven-form-validation.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, IgxInputGroupComponent, IgxLabelDirective, IgxInputDirective, IgxHintDirective, IgxIconComponent, IgxSuffixDirective, IgxButtonDirective, IgxRippleDirective]
 })
 export class TemplateDrivenFormValidationComponent {
@@ -720,7 +714,7 @@ public get password() {
 The result from the above configurations could be seen in the below sample. Similar to the template-driven form sample, it also demonstrates how to toggle the password's visibility by using the [`igx-icon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent) and the [`igx-suffix`](#prefix--suffix) directive.
 
 ```typescript
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -738,7 +732,6 @@ interface User
     selector: 'app-reactive-form-validation',
     templateUrl: './reactive-form-validation.component.html',
     styleUrls: ['./reactive-form-validation.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, IgxInputGroupComponent, IgxLabelDirective, IgxInputDirective, IgxHintDirective, IgxIconComponent, IgxSuffixDirective, IgxButtonDirective, IgxRippleDirective]
 })
 export class ReactiveFormValidationComponent {
@@ -941,7 +934,7 @@ constructor(fb: FormBuilder) {
 The below sample demonstrates how the built-in validators could be used in combination with the custom `emailValidator` and cross-field `passwordValidator` from the previous examples.
 
 ```typescript
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -967,7 +960,6 @@ interface ValidatorErrors
     selector: 'app-reactive-form-custom-validation',
     templateUrl: './reactive-form-custom-validation.component.html',
     styleUrls: ['./reactive-form-custom-validation.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, IgxInputGroupComponent, IgxLabelDirective, IgxInputDirective, IgxHintDirective, IgxIconComponent, IgxSuffixDirective, IgxButtonDirective, IgxRippleDirective]
 })
 export class ReactiveFormCustomValidationComponent {
@@ -1494,17 +1486,14 @@ The last step is to include the newly created theme:
 In the sample below, you can see how using the input group with customized CSS variables allows you to create a design that visually resembles the one used in the [`Carbon`](https://carbondesignsystem.com/components/text-input/usage/#live-demo) design system.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective } from 'igniteui-angular/input-group';
-import { THEME_TOKEN, ThemeToken } from 'igniteui-angular/core';
 
 @Component({
     selector: 'app-input-group-style',
     templateUrl: 'input-group-styling.component.html',
     styleUrls: ['input-group-styling.component.scss'],
-    imports: [IgxInputGroupComponent, IgxLabelDirective, IgxInputDirective, IgxHintDirective],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    providers: [{provide: THEME_TOKEN, useFactory: () => new ThemeToken('indigo')}]
+    imports: [IgxInputGroupComponent, IgxLabelDirective, IgxInputDirective, IgxHintDirective]
 })
 export class InputGroupStyleComponent { }
 ```
@@ -1518,42 +1507,40 @@ export class InputGroupStyleComponent { }
 </article>
 ```
 ```scss
-@use "layout.scss";
 @use "igniteui-angular/theming" as *;
 
-// CSS variables approach
-
-// igx-input-group {
-//     --border-color: #0f62fe;
-//     --size: #{rem(40px)};
-//     --idle-bottom-line-color: #8d8d8d;
-//     --hover-bottom-line-color: #8d8d8d;
-//     --hover-placeholder-color: var(--ig-gray-600);
-//     --idle-secondary-color: var(--ig-gray-600);
-//     --focused-secondary-color: var(--ig-gray-700);
-//     --focused-bottom-line-color: #8d8d8d;
-//     --box-background-hover: var(--ig-gray-100);
-//     --helper-text-color: var(--ig-gray-600);
-// }
-
-// Sass theme approach
-
-$custom-input-group: input-group-theme(
-    $border-color: #0f62fe,
-    $idle-bottom-line-color: #8d8d8d,
-    $hover-bottom-line-color: #8d8d8d,
-    $hover-placeholder-color: var(--ig-gray-600),
-    $idle-secondary-color: var(--ig-gray-600),
-    $focused-secondary-color: var(--ig-gray-700),
-    $size: rem(40px),
-    $box-border-radius: 0,
-    $box-background-hover: var(--ig-gray-100),
-    $placeholder-color: var(--ig-gray-600),
-    $helper-text-color: var(--ig-gray-600)
-);
-
 :host {
-    @include tokens($custom-input-group);
+    display: grid;
+    max-width: rem(300px);
+    margin-top: rem(24px);
+
+    ::ng-deep {
+        $custom-input-group: input-group-theme(
+            $schema: $light-indigo-schema,
+            $size: rem(40px),
+        );
+
+        @include typography(
+            $font-family: '"IBM Plex Sans", sans-serif',
+            $type-scale: $indigo-type-scale
+        );
+
+        @include theme(
+            $palette: $light-indigo-palette,
+            $schema: $light-indigo-schema
+        );
+
+        .igx-input-group {
+            @include tokens($custom-input-group);
+
+            --ig-caption-font-weight: 400;
+            --ig-subtitle-1-font-weight: 400;
+
+            &__bundle-main {
+                background: var(--box-background-hover);
+            }
+        }
+    }
 }
 ```
 

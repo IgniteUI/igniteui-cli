@@ -7,3 +7,12 @@
 :local(.title) {
   color: rgb(0, 153, 255);
 }
+:local(.large) {
+  --ig-size: var(--ig-size-large);
+}
+:local(.medium) {
+  --ig-size: var(--ig-size-medium);
+}
+:local(.small) {
+  --ig-size: var(--ig-size-small);
+}

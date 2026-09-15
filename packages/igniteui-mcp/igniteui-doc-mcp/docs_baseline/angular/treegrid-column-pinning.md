@@ -11,7 +11,7 @@ _premium: true
 A column or multiple columns can be pinned to the left or right side of the Angular UI Grid. **Column Pinning** in Ignite UI for Angular allows the end users to lock column in a particular column order, this will allow them to see it while horizontally scrolling the Tree Grid. The Material UI Grid has a built-in column pinning UI, which can be used through the Tree Grid's toolbar to change the pin state of the columns. In addition, you can define a custom UI and change the pin state of the columns via the Column Pinning API.
 ## Angular Tree Grid Column Pinning  Example
 ```typescript
-import { Component, ViewChild, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, OnInit, inject } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { generateEmployeeDetailedFlatData } from '../data/employees-flat-detailed';
@@ -24,7 +24,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-sample',
     styleUrls: ['tree-grid-toolbar-pinning.component.scss'],
     templateUrl: 'tree-grid-toolbar-pinning.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NgClass, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarPinningComponent, IgxColumnComponent]
 })
 
@@ -116,7 +115,7 @@ public pinningConfig: IPinningConfig = { columns: ColumnPinningPosition.End };
 ```
 ### Demo
 ```typescript
-import { Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ColumnPinningPosition } from 'igniteui-angular/core';
 import { IPinningConfig, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -128,7 +127,6 @@ import { generateEmployeeDetailedFlatData } from '../data/employees-flat-detaile
     selector: 'app-tree-grid-sample',
     styleUrls: ['tree-grid-right-pinning.component.scss'],
     templateUrl: 'tree-grid-right-pinning.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarPinningComponent, IgxColumnComponent]
 })
 
@@ -205,7 +203,7 @@ img.country-flag {
 ### Column Pinning on Both Sides
 Additionally, you can specify each column pinning location separately, allowing you to pin columns to both sides of the grid for greater convenience and easier optimization of data sets. Please refer to the demo below for further reference. In order to pin a column, please either select a column by clicking on a header and use the pin buttons added to the toolbar, or simply drag a column to another pinned one.
 ```typescript
-import { Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ColumnPinningPosition, ColumnType } from 'igniteui-angular/core';
 import { IPinningConfig, IgxColumnComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent } from 'igniteui-angular/grids/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -218,7 +216,6 @@ import { generateEmployeeDetailedFlatData } from '../data/employees-flat-detaile
     selector: 'app-tree-grid-sample',
     styleUrls: ['tree-grid-both-sides-pinning.component.scss'],
     templateUrl: 'tree-grid-both-sides-pinning.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         IgxTreeGridComponent,
         IgxGridToolbarComponent,
@@ -361,7 +358,7 @@ public toggleColumn(col: ColumnType) {
 ```
 ### Demo
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ViewChild, inject } from '@angular/core';
 import { ColumnType } from 'igniteui-angular/core';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
@@ -375,7 +372,6 @@ const FILTERING_ICONS_FONT_SET = "filtering-icons";
     selector: 'app-tree-grid-column-pinning-sample',
     styleUrls: ['./tree-grid-column-pinning-sample.component.scss'],
     templateUrl: './tree-grid-column-pinning-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCellHeaderTemplateDirective, IgxIconComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent]
 })
 export class TreeGridColumnPinningSampleComponent implements AfterViewInit {

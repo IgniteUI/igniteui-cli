@@ -261,7 +261,6 @@ During runtime the expressions are gettable and settable from the `groupingExpre
         new IgbGroupingExpression() { FieldName = "ShipCity", Dir= SortingDirection.Asc  }
     };
 
-
     private void GroupGrid()
     {
         this.grid.GroupBy(GroupingExpression1);
@@ -322,7 +321,6 @@ As an example, the following template would make the group rows summary more ver
 
 ```razor
 <IgbGrid AutoGenerate="true" Data="InvoicesData" @ref="grid" Id="grid" GroupRowTemplateScript="WebGridGroupByRowTemplate"></IgbGrid>
-
 
 //In JavaScript:
 igRegisterScript("WebGridGroupByRowTemplate", (ctx) => {

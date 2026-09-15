@@ -11,10 +11,10 @@ _premium: true
 Ignite UI for Angular Tree Grid component provides a great data manipulation capabilities and powerful API for Angular CRUD operations. By default the Tree Grid is using **in cell** editing and different editors will be shown based on the column data type, thanks to the **default cell editing template**. In addition, you can define your own custom templates for update-data actions and to override the default behavior for committing and discarding any changes.
 ## Angular Tree Grid cell editing and edit templates Example
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
-import { IgxCellTemplateDirective, IgxColumnComponent, IgxNumberSummaryOperand, IgxSummaryOperand } from 'igniteui-angular/grids/core';
-import { IgxSummaryResult } from 'igniteui-angular/core';
+import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
+import { IgxNumberSummaryOperand, IgxSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxButtonDirective, IgxIconButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -49,7 +49,6 @@ class CustomNumberSummary {
     selector: 'app-tree-grid-editing-sample',
     styleUrls: ['./tree-grid-editing-sample.component.scss'],
     templateUrl: './tree-grid-editing-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxIconComponent, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxIconButtonDirective, IgxDialogComponent, IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxDatePickerComponent, IgxCheckboxComponent]
 })
 export class TreeGridEditingSampleComponent implements OnInit {
@@ -242,7 +241,7 @@ If you want to provide a custom template which will be applied when a cell is in
 This code is used in the sample below which implements an [`IgxSelectComponent`](../select.md) in the cells of the `Race`, `Class` and `Alignment` columns.
 ```typescript
 import { Character } from './characters';
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxCellEditorTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
@@ -255,7 +254,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-grid-select-sample',
     styleUrls: ['./grid-select-sample.component.scss'],
     templateUrl: './grid-select-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxColumnComponent, IgxCellEditorTemplateDirective, IgxSelectComponent, FormsModule, IgxFocusDirective, IgxSelectItemComponent]
 })
 export class GridSelectComponent implements OnInit {
@@ -421,7 +419,7 @@ export class MyTreeGridEventsComponent {
 Here, we are validating two columns. If the user tries to set an invalid value for an employee's **Age** (below 18) or their **Hire Date** (a future date), the editing will be cancelled (the value will not be submitted) and a toast with an error message will be displayed.
 The result of the above validation being applied to our `igx-tree-grid` can be seen in the below demo:
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IGridEditEventArgs, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxToastComponent } from 'igniteui-angular/toast';
 import { VerticalAlignment } from 'igniteui-angular/core';
@@ -433,7 +431,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-editing-events',
     templateUrl: 'tree-grid-editing-events.component.html',
     styleUrls: ['tree-grid-editing-events.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxColumnComponent, IgxToastComponent]
 })
 export class TreeGridEditingEventsComponent implements OnInit {
@@ -524,7 +521,7 @@ The easiest way to apply our theme is with a `sass` `@include` statement in the 
 ### Demo
 In addition to the steps above, we can also style the controls that are used for the cells' editing templates: [`input-group`](../input-group.md#styling), [`datepicker`](../date-picker.md#styling) & [`checkbox`](../checkbox.md#styling)
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
@@ -536,7 +533,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-editing-sample',
     styleUrls: ['./tree-grid-editing-sample.component.scss'],
     templateUrl: './tree-grid-editing-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxIconComponent]
 })
 export class TreeGridEditingStyleComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement, query } from 'lit/decorators.js';
 import {
   defineComponents,
@@ -13,6 +13,12 @@ registerIconFromText('clear', clearIcon, 'material');
 
 @customElement('app-$(path)')
 export default class $(ClassName) extends LitElement {
+  static styles = css`
+    igc-icon {
+      --ig-size: var(--ig-size-large);
+    }
+  `;
+
     @query('igc-date-time-input')
       _input!: Element
 
@@ -26,7 +32,7 @@ export default class $(ClassName) extends LitElement {
     .minValue=${new Date(2022, 6, 2, 7, 30, 0)}
     .maxValue=${new Date(2022, 6, 27, 7, 30, 0)}
     .spinDelta={date: 2, year: 10,}>
-        <igc-icon name="clear" collection='material' size='large' slot="suffix" @click=${this.handleClear}></igc-icon>
+        <igc-icon name="clear" collection='material' slot="suffix" @click=${this.handleClear}></igc-icon>
         <span slot="helper-text">This is some helper text</span>
     </igc-date-time-input>
         `;

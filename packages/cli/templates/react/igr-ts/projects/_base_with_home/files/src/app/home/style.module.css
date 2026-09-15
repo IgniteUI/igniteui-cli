@@ -6,12 +6,12 @@
   padding: 24px;
   box-sizing: border-box;
   text-align: center;
-  font-family: "Titillium Web", "Segoe UI", Arial, sans-serif;
-  color: #000;
+  font-family: var(--ig-font-family);
+  color: var(--ig-gray-900);
 }
 
 :local(.header) {
-  color: #09f;
+  color: var(--ig-primary-500);
   font-size: 80px;
   font-weight: 300;
   line-height: 1.2;

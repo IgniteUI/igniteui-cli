@@ -17,7 +17,7 @@ In this Angular Stepper example, you can see how users are given the opportunity
 Note that the fourth step in our Angular stepper demo gets enabled only if the user ticks the checkbox in the second step, signifying that their mailing address is different from the business physical address.
 
 ```typescript
-import { ChangeDetectorRef, Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild, inject } from '@angular/core';
 import { NgForm, FormsModule } from '@angular/forms';
 import { IgxStepComponent, IgxStepContentDirective, IgxStepTitleDirective, IgxStepperComponent } from 'igniteui-angular/stepper';
 import { IgxCardComponent, IgxCardContentDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
@@ -34,7 +34,6 @@ import { NgClass, DatePipe } from '@angular/common';
     selector: 'app-stepper-overview-sample',
     styleUrls: ['./stepper-overview-sample.component.scss'],
     templateUrl: './stepper-overview-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxStepperComponent, IgxStepComponent, IgxStepTitleDirective, IgxStepContentDirective, IgxBadgeComponent, IgxCardComponent, NgClass, IgxCardMediaDirective, IgxCardContentDirective, FormsModule, IgxInputGroupComponent, IgxInputDirective, IgxLabelDirective, IgxSelectComponent, IgxSelectItemComponent, IgxMaskDirective, IgxCheckboxComponent, IgxHintDirective, IgxRadioGroupDirective, IgxRadioComponent, IgxButtonDirective, IgxIconComponent, DatePipe]
 })
 export class StepperOverviewSampleComponent {
@@ -464,7 +463,7 @@ $my-card: card-theme(
 	$content-text-color: color($default-palette, 'gray', 900),
 );
 
-@include card($my-card);
+@include tokens($my-card);
 
 .selected-card {
 	border: 2px solid color($default-palette, 'primary', 400);
@@ -657,7 +656,7 @@ $my-card: card-theme(
 Here is the a sample demonstrating how to achieve the above functionality using Angular Reactive Forms.
 
 ```typescript
-import { ChangeDetectorRef, Component, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IgxStepComponent, IgxStepContentDirective, IgxStepTitleDirective, IgxStepperComponent } from 'igniteui-angular/stepper';
 import { IgxCardComponent, IgxCardContentDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
@@ -704,7 +703,6 @@ export interface ShippingDetails{
     selector: 'app-stepper-sample-reactive-forms',
     styleUrls: ['./stepper-sample-reactive-forms.component.scss'],
     templateUrl: './stepper-sample-reactive-forms.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxStepperComponent, IgxStepComponent, IgxStepTitleDirective, IgxStepContentDirective, IgxBadgeComponent, IgxCardComponent, NgClass, IgxCardMediaDirective, IgxCardContentDirective, FormsModule, ReactiveFormsModule, IgxInputGroupComponent, IgxInputDirective, IgxLabelDirective, IgxSelectComponent, IgxSelectItemComponent, IgxMaskDirective, IgxCheckboxComponent, IgxHintDirective, IgxRadioGroupDirective, IgxRadioComponent, IgxButtonDirective, IgxIconComponent, DatePipe]
 })
 export class StepperSampleReactiveFormsComponent {
@@ -1146,7 +1144,7 @@ $my-card: card-theme(
 	$content-text-color: color($default-palette, 'gray', 900),
 );
 
-@include card($my-card);
+@include tokens($my-card);
 
 .selected-card {
 	border: 2px solid color($default-palette, 'primary', 400);
@@ -1483,7 +1481,7 @@ You can easily switch from the horizontal to vertical layout. In order to change
 The sample below demonstrates how stepper [orientation](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) and [titles position](stepper.md#customizing-the-steps) could be changed runtime.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IButtonGroupEventArgs, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxStepComponent, IgxStepContentDirective, IgxStepTitleDirective, IgxStepperComponent, IgxStepperOrientation, IgxStepperTitlePosition } from 'igniteui-angular/stepper';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -1492,7 +1490,6 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-stepper-label-position-and-orientation-sample',
     styleUrls: ['./stepper-label-position-and-orientation-sample.component.scss'],
     templateUrl: './stepper-label-position-and-orientation-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxStepperComponent, IgxStepComponent, IgxStepTitleDirective, IgxStepContentDirective, IgxButtonDirective]
 })
 export class StepperLabelPositionAndOrientationSampleComponent {
@@ -1625,7 +1622,7 @@ If the current non-optional step is not valid you cannot go forward to the next 
 The following example demonstrates how to configure a linear stepper:
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IButtonGroupEventArgs, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxStepActiveIndicatorDirective, IgxStepComponent, IgxStepContentDirective, IgxStepSubtitleDirective, IgxStepTitleDirective, IgxStepperComponent } from 'igniteui-angular/stepper';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -1639,7 +1636,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-stepper-linear-sample',
     styleUrls: ['./stepper-linear-sample.component.scss'],
     templateUrl: './stepper-linear-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxStepperComponent, IgxStepActiveIndicatorDirective, IgxIconComponent, IgxStepComponent, IgxStepTitleDirective, IgxStepContentDirective, FormsModule, IgxInputGroupComponent, IgxInputDirective, IgxLabelDirective, IgxButtonDirective, IgxStepSubtitleDirective, IgxRadioGroupDirective, IgxRadioComponent]
 })
 export class StepperLinearSampleComponent {
@@ -1883,7 +1879,7 @@ In this way if subtitles are defined, they will also be rendered below the step 
 The sample below demonstrates all exposed step types and how they could be changed:
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IButtonGroupEventArgs, IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxStepComponent, IgxStepTitleDirective, IgxStepType, IgxStepperComponent } from 'igniteui-angular/stepper';
 
@@ -1891,7 +1887,6 @@ import { IgxStepComponent, IgxStepTitleDirective, IgxStepType, IgxStepperCompone
     selector: 'app-stepper-steptypes-sample',
     styleUrls: ['./stepper-steptypes-sample.component.scss'],
     templateUrl: './stepper-steptypes-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonGroupComponent, IgxStepperComponent, IgxStepComponent, IgxStepTitleDirective]
 })
 export class StepperStepTypesSampleComponent {
@@ -2138,7 +2133,7 @@ The last step is to include the component's theme.
 The sample below demonstrates a simple styling applied through the [Ignite UI for Angular Theming](themes/index.md).
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IStepChangingEventArgs, IgxStepActiveIndicatorDirective, IgxStepCompletedIndicatorDirective, IgxStepComponent, IgxStepContentDirective, IgxStepSubtitleDirective, IgxStepTitleDirective, IgxStepperComponent } from 'igniteui-angular/stepper';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -2147,7 +2142,6 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-stepper-styling-sample',
     styleUrls: ['./stepper-styling-sample.component.scss'],
     templateUrl: './stepper-styling-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxStepperComponent, IgxStepActiveIndicatorDirective, IgxIconComponent, IgxStepCompletedIndicatorDirective, IgxStepComponent, IgxStepTitleDirective, IgxStepSubtitleDirective, IgxStepContentDirective, IgxButtonDirective]
 })
 export class StepperStylingSampleComponent {

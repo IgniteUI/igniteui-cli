@@ -22,14 +22,13 @@ We created the following Angular Calendar example using the Ignite UI for Angula
 <div class="divider--half"></div>
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCalendarComponent } from 'igniteui-angular/calendar';
 
 @Component({
     selector: 'app-calendar',
     styleUrls: ['./calendar-sample-5.component.scss'],
     templateUrl: './calendar-sample-5.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCalendarComponent]
 })
 export class CalendarSample5Component { }
@@ -142,14 +141,13 @@ We can easily change the default mode using the [`selection`](mcp:get_api_refere
 
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCalendarComponent } from 'igniteui-angular/calendar';
 
 @Component({
     selector: 'app-calendar',
     styleUrls: ['./calendar-sample-1.component.scss'],
     templateUrl: './calendar-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCalendarComponent]
 })
 export class CalendarSample1Component { }
@@ -188,14 +186,13 @@ Following the same approach, we can switch to range selection mode:
 
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCalendarComponent } from 'igniteui-angular/calendar';
 
 @Component({
     selector: 'app-calendar',
     styleUrls: ['./calendar-sample-8.component.scss'],
     templateUrl: './calendar-sample-8.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCalendarComponent]
 })
 export class CalendarSample8Component { }
@@ -268,7 +265,7 @@ If everything went well, we should now have a calendar with customized dates dis
 
 
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IgxCalendarComponent } from 'igniteui-angular/calendar';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
 import { IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -283,7 +280,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-calendar',
     styleUrls: ['./calendar-sample-2.component.scss'],
     templateUrl: './calendar-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSelectComponent, FormsModule, IgxPrefixDirective, IgxSelectItemComponent, IgxCalendarComponent]
 })
 export class CalendarSample2Component implements OnInit{
@@ -377,7 +373,7 @@ These configurations should have the following result:
 
 
 ```typescript
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DateRangeType } from 'igniteui-angular/core';
 import { IgxCalendarComponent } from 'igniteui-angular/calendar';
 import { DatePipe } from '@angular/common';
@@ -386,7 +382,6 @@ import { DatePipe } from '@angular/common';
     selector: 'app-calendar',
     styleUrls: ['./calendar-sample-6.component.scss'],
     templateUrl: './calendar-sample-6.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCalendarComponent, DatePipe]
 })
 export class CalendarSample6Component implements OnInit{
@@ -490,7 +485,7 @@ The following demo illustrates a calendar with a vacation request option:
 
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { DateRangeType } from 'igniteui-angular/core';
 import { IgxCalendarComponent } from 'igniteui-angular/calendar';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
@@ -500,7 +495,6 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-calendar',
     styleUrls: ['./calendar-sample-7.component.scss'],
     templateUrl: './calendar-sample-7.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCalendarComponent, IgxDialogComponent, IgxButtonDirective]
 })
 export class CalendarSample7Component {
@@ -574,14 +568,13 @@ The following demo illustrates a calendar with enabled week numbers:
 
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCalendarComponent } from 'igniteui-angular/calendar';
 
 @Component({
     selector: 'app-calendar',
     styleUrls: ['./calendar-sample-1.component.scss'],
     templateUrl: './calendar-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCalendarComponent]
 })
 export class CalendarSample1Component { }
@@ -649,7 +642,7 @@ public activeViewChanged(event: CalendarView) {
 Use the demo below to play around (change selection, navigate through months and years) and see the events logged real time:
 
 ```typescript
-import { Component, ViewChild, DOCUMENT, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, DOCUMENT, inject } from '@angular/core';
 import { IViewDateChangeEventArgs, IgxCalendarComponent, IgxCalendarView } from 'igniteui-angular/calendar';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 
@@ -657,7 +650,6 @@ import { IgxDialogComponent } from 'igniteui-angular/dialog';
     selector: 'app-calendar',
     styleUrls: ['./calendar-sample-3.component.scss'],
     templateUrl: './calendar-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCalendarComponent]
 })
 export class CalendarSample3Component {
@@ -765,7 +757,7 @@ There are separate views provided by the `IgxCalendarModule` that can be used in
 
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent } from 'igniteui-angular/card';
 import { IgxDaysViewComponent } from 'igniteui-angular/calendar';
 
@@ -773,7 +765,6 @@ import { IgxDaysViewComponent } from 'igniteui-angular/calendar';
     selector: 'app-calendar-views',
     styleUrls: ['./calendar-days-view.component.scss'],
     templateUrl: './calendar-days-view.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCardComponent, IgxCardHeaderComponent, IgxCardContentDirective, IgxDaysViewComponent]
 })
 export class CalendarDaysViewComponent { }
@@ -805,7 +796,7 @@ export class CalendarDaysViewComponent { }
 
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent } from 'igniteui-angular/card';
 import { IgxMonthsViewComponent } from 'igniteui-angular/calendar';
 
@@ -813,7 +804,6 @@ import { IgxMonthsViewComponent } from 'igniteui-angular/calendar';
     selector: 'app-calendar-views',
     styleUrls: ['./calendar-months-view.component.scss'],
     templateUrl: './calendar-months-view.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCardComponent, IgxCardHeaderComponent, IgxCardContentDirective, IgxMonthsViewComponent]
 })
 export class CalendarMonthsViewComponent { }
@@ -845,7 +835,7 @@ export class CalendarMonthsViewComponent { }
 
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent } from 'igniteui-angular/card';
 import { IgxYearsViewComponent } from 'igniteui-angular/calendar';
 
@@ -853,7 +843,6 @@ import { IgxYearsViewComponent } from 'igniteui-angular/calendar';
     selector: 'app-calendar-views',
     styleUrls: ['./calendar-years-view.component.scss'],
     templateUrl: './calendar-years-view.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCardComponent, IgxCardHeaderComponent, IgxCardContentDirective, IgxYearsViewComponent]
 })
 export class CalendarYearsViewComponent { }
@@ -947,7 +936,7 @@ Multi-view calendar supports all three types of selection. Use the [`monthsViewN
 
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxCalendarComponent } from 'igniteui-angular/calendar';
 import { IgxDialogComponent } from 'igniteui-angular/dialog';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -957,7 +946,6 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-calendar',
     styleUrls: ['./multiview.component.scss'],
     templateUrl: './multiview.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCalendarComponent, IgxDialogComponent, IgxButtonDirective]
 })
 export class CalendarMultiViewComponent {
@@ -1104,7 +1092,7 @@ export class CalendarSample9Component {
 ```
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxButtonGroupComponent } from 'igniteui-angular/button-group';
 import { IgxCalendarComponent } from 'igniteui-angular/calendar';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -1117,7 +1105,6 @@ type Orientation = (typeof orientations)[number];
     selector: 'app-calendar',
     styleUrls: ['./calendar-sample-9.component.scss'],
     templateUrl: './calendar-sample-9.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCalendarComponent, IgxButtonGroupComponent, IgxButtonDirective]
 })
 
@@ -1556,195 +1543,38 @@ The last step is to pass the custom calendar theme:
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxCalendarComponent } from 'igniteui-angular/calendar';
 
 @Component({
     selector: 'app-calendar',
     styleUrls: ['./calendar-styling-sample.component.scss'],
     templateUrl: './calendar-styling-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCalendarComponent]
 })
 export class CalendarStylingSampleComponent { }
 ```
 ```html
 <article class="calendar-wrapper">
-    <igx-calendar [formatOptions]="{weekday: 'short'}" [hasHeader]="false" 
+    <igx-calendar [formatOptions]="{weekday: 'short'}"
     [showWeekNumbers]="true"  [weekStart]="1"></igx-calendar>
 </article>
 ```
 ```scss
-@use "layout.scss";
-@use "igniteui-angular/theming" as *;
+@use 'igniteui-angular/theming' as *;
 
-// CSS variables approach
+$custom-calendar-theme: calendar-theme(
+    $header-background: #ecaa53,
+    $content-background: #011627,
+);
 
 :host {
-    ::ng-deep {
-        .igx-days-view__date--weekend:not(.igx-days-view__date--inactive) {
-            --date-hover-background: var(--background-hover);
-            --date-selected-foreground: var(--primary);
-            --date-selected-background: #FFF;
-            --date-selected-border-color: var(--primary);
-            --date-selected-focus-foreground: var(--primary);
-            --date-selected-focus-background: var(--background-hover);
-            --date-selected-focus-border-color: var(--primary);
-            --date-selected-hover-foreground: var(--primary);
-            --date-selected-hover-background: var(--background-hover);
-            --date-selected-hover-border-color: var(--primary);
-            --date-selected-current-hover-background: var(--background-hover);
-            --date-selected-current-focus-background: var(--background-hover);
-            --date-selected-current-background: #FFF;
-            --date-selected-current-border-color: var(--primary);
-            --date-selected-current-hover-border-color: var(--primary);
-            --date-current-hover-background: var(--background-hover);
-        }
-    }
+    display: grid;
+    place-items: center;
+    height: 100%;
+
+    @include tokens($custom-calendar-theme);
 }
-
-igx-calendar {
-    --date-focus-background: transparent;
-    --week-number-background: transparent;
-    --weekend-color: #131E29;
-    --weekday-color: #556B82;
-    --week-number-foreground: #556B82;
-    --inactive-color: #556B82;
-    --date-current-border-color: var(--current-border);
-    --date-current-hover-border-color: var(--current-border);
-    --date-current-focus-border-color: var(--current-border);
-    --date-current-hover-background: var(--background-weekend);
-    --date-selected-current-border-color: var(--current-border);
-    --date-selected-current-background: #FFF;
-    --date-selected-current-foreground: var(--primary);
-    --date-selected-current-focus-border-color: var(--current-border);
-    --date-selected-current-focus-background: var(--background-weekend);
-    --date-selected-current-focus-foreground: var(--primary);
-    --date-selected-current-hover-border-color: var(--current-border);
-    --date-selected-current-hover-background: var(--background-weekend);
-    --date-selected-current-hover-foreground: var(--primary);
-    --date-selected-foreground: var(--primary);
-    --date-selected-background: #FFF;
-    --date-selected-border-color: var(--primary);
-    --date-selected-hover-foreground: var(--primary);
-    --date-selected-hover-background: var(--background-weekend);
-    --date-selected-hover-border-color: var(--primary);
-    --date-selected-focus-foreground: var(--primary);
-    --date-selected-focus-background: var(--background-weekend);
-    --date-selected-focus-border-color: var(--primary);
-    --picker-foreground: var(--primary);
-    --picker-hover-foreground: var(--primary);
-    --picker-focus-foreground: var(--primary);
-    --ym-hover-background: var(--background);
-    --ym-selected-background: #EDF5FF;
-    --ym-selected-hover-background: #D9EAFF;
-    --ym-selected-hover-foreground: var(--primary);
-    --ym-selected-outline-color: var(--primary);
-    --ym-selected-hover-outline-color: var(--primary);
-    --ym-selected-focus-outline-color: var(--primary);
-    --ym-selected-focus-background: #D9EAFF;
-    --ym-current-foreground: var(--primary);
-    --ym-current-background: transparent;
-    --ym-current-outline-color: transparent;
-    --ym-current-hover-foreground: var(--primary);
-    --ym-current-hover-background: var(--background);
-    --ym-current-outline-hover-color: var(--primary);
-    --ym-selected-current-foreground: var(--primary);
-    --ym-selected-current-background: #EDF5FF;
-    --ym-selected-current-outline-color: var(--primary);
-    --ym-selected-current-hover-foreground: var(--primary);
-    --ym-selected-current-hover-background: #D9EAFF;
-    --ym-selected-current-outline-hover-color: var(--primary);
-    --ym-selected-current-outline-focus-color: var(--primary);
-}
-
-// Sass theme approach
-
-// $custom-calendar-theme-weekend: calendar-theme(
-//     $date-hover-background: var(--background-hover),
-//     $date-selected-foreground: var(--primary),
-//     $date-selected-background: #FFF,
-//     $date-selected-border-color: var(--primary),
-//     $date-selected-focus-foreground: var(--primary),
-//     $date-selected-focus-background: var(--background-hover),
-//     $date-selected-focus-border-color: var(--primary),
-//     $date-selected-hover-foreground: var(--primary),
-//     $date-selected-hover-background: var(--background-hover),
-//     $date-selected-hover-border-color: var(--primary),
-//     $date-selected-current-hover-background: var(--background-hover),
-//     $date-selected-current-focus-background: var(--background-hover),
-//     $date-selected-current-background: #FFF,
-//     $date-selected-current-border-color: var(--primary),
-//     $date-selected-current-hover-border-color: var(--primary),
-//     $date-current-hover-background: var(--background-hover)
-// );
-
-// $custom-calendar-theme: calendar-theme(
-//     $date-focus-background: transparent,
-//     $picker-foreground: var(--primary),
-//     $picker-hover-foreground: var(--primary),
-//     $picker-focus-foreground: var(--primary),
-//     $weekday-color: #556B82,
-//     $weekend-color: #131E29,
-//     $inactive-color: #556B82,
-//     $week-number-foreground: #556B82,
-//     $week-number-background: transparent,
-//     $ym-selected-current-hover-foreground: var(--primary),
-//     $ym-selected-current-hover-background: #D9EAFF,
-//     $ym-hover-background: var(--background),
-//     $ym-current-foreground: var(--primary),
-//     $ym-current-background: transparent,
-//     $ym-current-hover-foreground: var(--primary),
-//     $ym-current-hover-background: var(--background),
-//     $ym-selected-current-foreground: var(--primary),
-//     $ym-selected-current-background: #EDF5FF,
-//     $ym-selected-background: #EDF5FF,
-//     $ym-selected-hover-foreground: var(--primary),
-//     $ym-selected-hover-background: #D9EAFF,
-//     $ym-current-outline-color: transparent,
-//     $ym-current-outline-hover-color: var(--primary),
-//     $ym-selected-outline-color: var(--primary),
-//     $ym-selected-hover-outline-color: var(--primary),
-//     $ym-selected-focus-outline-color: var(--primary),
-//     $ym-selected-current-outline-color: var(--primary),
-//     $ym-selected-current-outline-hover-color: var(--primary),
-//     $ym-selected-current-outline-focus-color: var(--primary),
-//     $date-selected-current-foreground: var(--primary),
-//     $date-selected-current-background: #FFF,
-//     $date-selected-current-hover-foreground: var(--primary),
-//     $date-selected-current-hover-background: var(--background-weekend),
-//     $date-selected-current-focus-foreground: var(--primary),
-//     $date-selected-current-focus-background: var(--background-weekend),
-//     $date-selected-foreground: var(--primary),
-//     $date-selected-background: #FFF,
-//     $date-selected-border-color: var(--primary),
-//     $date-selected-hover-foreground: var(--primary),
-//     $date-selected-hover-background: var(--background-weekend),
-//     $date-selected-hover-border-color: var(--primary),
-//     $date-selected-focus-foreground: var(--primary),
-//     $date-selected-focus-background: var(--background-weekend),
-//     $date-selected-focus-border-color: var(--primary),
-//     $date-current-border-color: var(--current-border),
-//     $date-current-hover-border-color: var(--current-border),
-//     $date-current-focus-border-color: var(--current-border),
-//     $date-selected-current-border-color: var(--current-border),
-//     $date-selected-current-hover-border-color: var(--current-border),
-//     $date-selected-current-focus-border-color: var(--current-border),
-//     $date-current-hover-background: var(--background-weekend),
-//     $border-radius: rem(8px)
-// );
-
-// :host {
-//     ::ng-deep {
-//         .igx-days-view__date--weekend:not(.igx-days-view__date--inactive) {
-//             @include tokens($custom-calendar-theme-weekend);
-//         }
-//     }
-// }
-
-// igx-calendar {
-//     @include tokens($custom-calendar-theme);
-// }
 ```
 
 ### Styling with Tailwind

@@ -139,11 +139,11 @@ this.state.setState(state, ['filtering', 'rowIslands']);
 ```
 ## Demo
 ```typescript
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit, inject } from '@angular/core';
 import { NavigationStart, Router, RouterLink } from '@angular/router';
-import { GridFeatures, IGridState, IGridStateOptions, IgxCellTemplateDirective, IgxColumnComponent, IgxGridStateDirective, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxNumberSummaryOperand } from 'igniteui-angular/grids/core';
+import { GridFeatures, IGridState, IGridStateOptions, IgxCellTemplateDirective, IgxColumnComponent, IgxGridStateDirective, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
+import { IgxNumberSummaryOperand, IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxHierarchicalGridComponent, IgxRowIslandComponent } from 'igniteui-angular/grids/hierarchical-grid';
-import { IgxSummaryResult } from 'igniteui-angular/core';
 import { IgxCheckboxComponent } from 'igniteui-angular/checkbox';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -171,7 +171,6 @@ class MySummary {
     selector: 'app-hgrid',
     styleUrls: ['./hGrid-state.component.scss'],
     templateUrl: './hGrid-state.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxIconComponent, RouterLink, IgxCheckboxComponent, IgxHierarchicalGridComponent, IgxGridStateDirective, IgxPreventDocumentScrollDirective, IgxPaginatorComponent, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxRowIslandComponent]
 })
 

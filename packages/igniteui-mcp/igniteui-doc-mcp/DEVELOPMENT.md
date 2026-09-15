@@ -290,7 +290,7 @@ npm run compress:blazor
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|
-| `--model <name>` | OpenAI model to use | `gpt-5.4-mini` |
+| `--model <name>` | OpenAI model to use | `gpt-5.6-luna` |
 | `--api-base <url>` | Custom OpenAI API base URL | OpenAI default |
 | `--min-size <kb>` | Skip files smaller than this (KB) | `0` |
 | `--delay <seconds>` | Delay between API calls | `0.5` |
@@ -328,7 +328,7 @@ npm run compress:react -- --batch poll             # Step 2: poll, download & va
 npm run compress:react -- --batch retry            # Step 3: retry failed/invalid files (optional)
 
 # Batch with filters
-npm run compress:react -- --batch submit --only grid.md --model gpt-5.4-mini
+npm run compress:react -- --batch submit --only grid.md --model gpt-5.6-luna
 
 # Incremental mode (only compress changed files from diff manifest)
 npm run compress:angular -- --manifest dist/diff-manifest.json

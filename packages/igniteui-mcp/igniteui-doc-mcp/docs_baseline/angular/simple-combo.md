@@ -17,7 +17,7 @@ In this Angular Simple ComboBox example, you can see how users can select the ch
 <div class="divider--half"></div>
 
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IgRect } from 'igniteui-angular-core';
 import { StockData, updatedStockData } from '../../../data/stocks-data';
 import { IgxSimpleComboComponent } from 'igniteui-angular/simple-combo';
@@ -31,7 +31,6 @@ import { IgxFinancialChartCoreModule, IgxFinancialChartModule } from 'igniteui-a
     selector: 'app-simple-combo-main',
     templateUrl: 'simple-combo-main.component.html',
     styleUrls: ['simple-combo-main.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSimpleComboComponent, FormsModule, IgxButtonGroupComponent, IgxButtonDirective, IgxFinancialChartModule, IgxFinancialChartCoreModule]
 })
 export class SimpleComboMainComponent implements OnInit {
@@ -266,7 +265,7 @@ export class MySimpleComboComponent implements OnInit {
 
 
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { City, getCitiesByPopulation } from '../../../data/cities15000-regions-countries';
 import { IgxSimpleComboComponent } from 'igniteui-angular/simple-combo';
 import { FormsModule } from '@angular/forms';
@@ -276,7 +275,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-simple-combo-usage',
     templateUrl: 'simple-combo-usage.component.html',
     styleUrls: ['simple-combo-usage.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSimpleComboComponent, FormsModule]
 })
 export class SimpleComboUsageComponent implements OnInit {
@@ -427,7 +425,7 @@ The following sample demonstrates a scenario where the [igx-simple-combo](mcp:ge
 
 
 ```typescript
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { ISimpleComboSelectionChangingEventArgs, IgxSimpleComboComponent } from 'igniteui-angular/simple-combo';
 import { IgxLinearProgressBarComponent } from 'igniteui-angular/progressbar';
 import { City, Country, getCitiesByCountry, getCountries, Region } from '../../../data/cities15000-regions-countries';
@@ -438,7 +436,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-simple-combo-cascading',
     templateUrl: 'simple-combo-cascading.component.html',
     styleUrls: ['simple-combo-cascading.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSimpleComboComponent, FormsModule, IgxLinearProgressBarComponent]
 })
 export class SimpleComboCascadingComponent implements OnInit {
@@ -451,6 +448,7 @@ export class SimpleComboCascadingComponent implements OnInit {
     public isLoadingRegions: boolean = false;
     public isLoadingCities: boolean = false;
     private loadingTime = 0;
+    private cdr = inject(ChangeDetectorRef);
 
     public ngOnInit(): void {
         this.countriesData = getCountries(['United States', 'Japan', 'United Kingdom']);
@@ -471,6 +469,7 @@ export class SimpleComboCascadingComponent implements OnInit {
             .map(c => ({name: c.region, country: c.country}))
             .filter((v, i, a) => a.findIndex(r => r.name === v.name) === i);
             this.isLoadingRegions = false;
+            this.cdr.markForCheck();
         }, this.loadingTime)
         this.citiesData = [];
         this.loadingTime = 0;
@@ -489,6 +488,7 @@ export class SimpleComboCascadingComponent implements OnInit {
             this.citiesData = getCitiesByCountry([this.selectedCountry?.name])
             .filter(c => c.region === this.selectedRegion?.name);
             this.isLoadingCities = false;
+            this.cdr.markForCheck();
         }, this.loadingTime)
         this.loadingTime = 0;
     }
@@ -625,7 +625,7 @@ The Ignite UI for Angular Simple ComboBox Component exposes an API that allows b
 The sample below demonstrates remote binding using the [dataPreLoad](mcp:get_api_reference?platform=angular&component=IgxSimpleComboComponent&member=dataPreLoad) property to load new chunk of remote data and following the steps described in [ComboBox Remote Binding](combo-remote.md):
 
 ```typescript
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { IComboSearchInputEventArgs } from 'igniteui-angular/combo';
 import { IForOfState } from 'igniteui-angular/directives';
 import { ISimpleComboSelectionChangingEventArgs, IgxSimpleComboComponent } from 'igniteui-angular/simple-combo';
@@ -639,7 +639,6 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-simple-combo-remote',
     templateUrl: './simple-combo-remote.component.html',
     styleUrls: ['./simple-combo-remote.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSimpleComboComponent, IgxToastComponent, AsyncPipe]
 })
 export class SimpleComboRemoteComponent implements OnInit, AfterViewInit {
@@ -836,7 +835,7 @@ The last step is to include the component's theme.
 ### Demo
 
 ```typescript
-import { Component, ElementRef, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, OnInit, inject } from '@angular/core';
 import { City, getCitiesByPopulation } from '../../../data/cities15000-regions-countries';
 import { IgxSimpleComboComponent } from 'igniteui-angular/simple-combo';
 
@@ -844,7 +843,6 @@ import { IgxSimpleComboComponent } from 'igniteui-angular/simple-combo';
     selector: 'app-simple-combo-styling',
     templateUrl: 'simple-combo-styling.component.html',
     styleUrls: ['simple-combo-styling.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxSimpleComboComponent]
 })
 export class SimpleComboStylingComponent implements OnInit {

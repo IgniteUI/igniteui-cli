@@ -24,40 +24,160 @@ public class DocsController(SqliteConnection db) : ControllerBase
         return ValidFrameworks.TryGetValue(framework.ToLowerInvariant(), out normalized!);
     }
 
+    private static string? Str(SqliteDataReader r, string column)
+    {
+        var i = r.GetOrdinal(column);
+        return r.IsDBNull(i) ? null : r.GetString(i);
+    }
+
+    /// <summary>
+    /// The MCP package ships a prebuilt database and the committed copy can be
+    /// updated independently, so this must tolerate a DB with no grouping tables,
+    /// and one where only some frameworks have been migrated.
+    /// </summary>
+    private bool HasGroups(string framework)
+    {
+        var probe = db.CreateCommand();
+        probe.CommandText =
+            "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name IN ('doc_toc', 'doc_groups')";
+        if (Convert.ToInt64(probe.ExecuteScalar()) != 2) return false;
+
+        var rows = db.CreateCommand();
+        rows.CommandText = "SELECT COUNT(*) FROM doc_toc WHERE framework = @fw";
+        rows.Parameters.AddWithValue("@fw", framework);
+        return Convert.ToInt64(rows.ExecuteScalar()) > 0;
+    }
+
+    private List<ComponentRenderer.GroupRow> ReadGroups(string framework)
+    {
+        var cmd = db.CreateCommand();
+        cmd.CommandText = "SELECT group_key, summary FROM doc_groups WHERE framework = @fw ORDER BY ord";
+        cmd.Parameters.AddWithValue("@fw", framework);
+
+        var groups = new List<ComponentRenderer.GroupRow>();
+        using var reader = cmd.ExecuteReader();
+        while (reader.Read())
+            groups.Add(new ComponentRenderer.GroupRow(reader.GetString(0), Str(reader, "summary")));
+        return groups;
+    }
+
+    /// <summary>
+    /// Grouped mode also matches doc_toc.group_key, so a filter can select whole
+    /// sections. Flat mode deliberately does not — see <see cref="ReadFlat"/>.
+    /// </summary>
+    private List<ComponentRenderer.GroupedDocRow> ReadGroupedRows(string framework, string? filter, string? group)
+    {
+        var cmd = db.CreateCommand();
+        var where = new List<string> { "t.framework = @fw" };
+        cmd.Parameters.AddWithValue("@fw", framework);
+
+        if (group != null)
+        {
+            where.Add("t.group_key = @g");
+            cmd.Parameters.AddWithValue("@g", group);
+        }
+        if (!string.IsNullOrWhiteSpace(filter))
+        {
+            where.Add("(d.filename LIKE @f OR d.component LIKE @f OR d.toc_name LIKE @f " +
+                      "OR d.keywords LIKE @f OR d.summary LIKE @f OR t.group_key LIKE @f)");
+            cmd.Parameters.AddWithValue("@f", $"%{filter}%");
+        }
+
+        cmd.CommandText =
+            "SELECT d.filename, d.toc_name, d.premium, d.summary, t.group_key, t.ord " +
+            "FROM doc_toc t JOIN docs d ON d.framework = t.framework AND d.filename = t.filename " +
+            $"WHERE {string.Join(" AND ", where)} ORDER BY t.ord";
+
+        var rows = new List<ComponentRenderer.GroupedDocRow>();
+        using var reader = cmd.ExecuteReader();
+        while (reader.Read())
+        {
+            rows.Add(new ComponentRenderer.GroupedDocRow(
+                reader.GetString(reader.GetOrdinal("filename")),
+                Str(reader, "toc_name"),
+                Str(reader, "summary"),
+                !reader.IsDBNull(reader.GetOrdinal("premium")) && reader.GetInt64(reader.GetOrdinal("premium")) != 0,
+                reader.GetString(reader.GetOrdinal("group_key")),
+                reader.GetInt64(reader.GetOrdinal("ord"))));
+        }
+        return rows;
+    }
+
+    /// <summary>
+    /// Flat mode never reads through doc_toc: the join multiplies cross-listed
+    /// docs and reorders by TOC position. Where <paramref name="group"/> narrows
+    /// a flat listing, membership is resolved separately.
+    /// </summary>
+    private List<ComponentRenderer.DocRow> ReadFlat(string framework, string? filter, string? group)
+    {
+        var cmd = db.CreateCommand();
+        var sql = "SELECT filename, component, toc_name, premium, keywords, summary FROM docs WHERE framework = @fw";
+        cmd.Parameters.AddWithValue("@fw", framework);
+
+        if (!string.IsNullOrWhiteSpace(filter))
+        {
+            sql += " AND (filename LIKE @f OR component LIKE @f OR toc_name LIKE @f OR keywords LIKE @f OR summary LIKE @f)";
+            cmd.Parameters.AddWithValue("@f", $"%{filter}%");
+        }
+        cmd.CommandText = sql + " ORDER BY toc_name";
+
+        var rows = new List<ComponentRenderer.DocRow>();
+        using (var reader = cmd.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                rows.Add(new ComponentRenderer.DocRow(
+                    reader.GetString(reader.GetOrdinal("filename")),
+                    Str(reader, "toc_name"),
+                    Str(reader, "summary"),
+                    !reader.IsDBNull(reader.GetOrdinal("premium")) && reader.GetInt64(reader.GetOrdinal("premium")) != 0));
+            }
+        }
+
+        if (group != null && HasGroups(framework))
+        {
+            var members = new HashSet<string>(StringComparer.Ordinal);
+            var cmd2 = db.CreateCommand();
+            cmd2.CommandText = "SELECT DISTINCT filename FROM doc_toc WHERE framework = @fw AND group_key = @g";
+            cmd2.Parameters.AddWithValue("@fw", framework);
+            cmd2.Parameters.AddWithValue("@g", group);
+            using var reader2 = cmd2.ExecuteReader();
+            while (reader2.Read()) members.Add(reader2.GetString(0));
+            rows = rows.Where(r => members.Contains(r.Filename)).ToList();
+        }
+
+        return rows;
+    }
+
     [HttpGet]
-    public IActionResult List([FromQuery] string framework, [FromQuery] string? filter)
+    public IActionResult List(
+        [FromQuery] string framework,
+        [FromQuery] string? filter,
+        [FromQuery] string? detail = null,
+        [FromQuery] string? group = null)
     {
         if (!IsValidFramework(framework, out var fw))
             return BadRequest($"Invalid framework \"{framework}\". Valid values: {string.Join(", ", ValidFrameworks.Keys)}");
 
         framework = fw;
-        var sql = "SELECT framework, filename, component, toc_name, premium, summary FROM docs WHERE framework = @fw";
-        var cmd = db.CreateCommand();
-        cmd.Parameters.AddWithValue("@fw", framework);
 
-        if (!string.IsNullOrWhiteSpace(filter))
+        if (detail == "docs" || !HasGroups(framework))
+            return Content(ComponentRenderer.RenderFlat(framework, ReadFlat(framework, filter, group), filter), "text/plain");
+
+        var groups = ReadGroups(framework);
+
+        if (group != null)
         {
-            sql += " AND (filename LIKE @f OR toc_name LIKE @f OR component LIKE @f OR keywords LIKE @f OR summary LIKE @f)";
-            cmd.Parameters.AddWithValue("@f", $"%{filter}%");
+            var match = groups.FirstOrDefault(g => string.Equals(g.GroupKey, group, StringComparison.Ordinal));
+            var text = match is null
+                ? ComponentRenderer.RenderUnknownGroup(framework, group, groups)
+                : ComponentRenderer.RenderGroup(framework, match, ReadGroupedRows(framework, filter, group), filter);
+            return Content(text, "text/plain");
         }
 
-        sql += " ORDER BY filename";
-        cmd.CommandText = sql;
-
-        var sb = new StringBuilder();
-        using var reader = cmd.ExecuteReader();
-        while (reader.Read())
-        {
-            var filename = reader.GetString(reader.GetOrdinal("filename"));
-            var name = filename.EndsWith(".md") ? filename[..^3] : filename;
-            var component = reader.IsDBNull(reader.GetOrdinal("component")) ? null : reader.GetString(reader.GetOrdinal("component"));
-            var comp = !string.IsNullOrEmpty(component) ? $" [{component}]" : "";
-            if (sb.Length > 0) sb.AppendLine();
-            sb.Append($"{name}{comp}");
-        }
-
-        var text = sb.Length > 0 ? sb.ToString() : "No docs found.";
-        return Content(text, "text/plain");
+        return Content(
+            ComponentRenderer.RenderGroupedIndex(framework, groups, ReadGroupedRows(framework, filter, null), filter),
+            "text/plain");
     }
 
     [HttpGet("{framework}/{name}")]

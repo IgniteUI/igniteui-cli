@@ -140,7 +140,6 @@ const [comboDisabled, setComboDisabled] = useState(false);
     disabled={comboDisabled}>
 </IgrCombo>
 
-
 <IgrSwitch checked={disableFiltering} onChange={e => setDisableFiltering(e.detail.checked)}>
     <span>Disable Filtering</span>
 </IgrSwitch>

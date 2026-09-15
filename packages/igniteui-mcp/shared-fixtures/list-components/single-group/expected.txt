@@ -1,0 +1,11 @@
+Found 3 component doc(s) in **angular** > Grids & Lists > Data Grid:
+
+Data grid: sorting, filtering, editing, virtualization, export.
+
+- **Data Grid** (`grid-grid`)
+  The data grid: setup, columns, binding.
+- **Sorting** (`grid-sorting`)
+  Sort grid rows by one or more columns.
+  ⭐ Premium
+- **Editing** (`grid-editing`)
+  Edit cells and rows, batch and transactional.

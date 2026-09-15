@@ -16,7 +16,7 @@ This Angular Query Builder example demonstrates how the [`IgxQueryBuilderCompone
 
 ```typescript
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { FilteringExpressionsTree, FilteringLogic, IExpressionTree } from 'igniteui-angular/core';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -28,7 +28,6 @@ const API_ENDPOINT = 'https://data-northwind.indigo.design';
     selector: 'query-builder-request-sample',
     styleUrls: ['./query-builder-request-sample.component.scss'],
     templateUrl: 'query-builder-request-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxQueryBuilderComponent, IgxGridComponent, IgxColumnComponent]
 })
 export class QueryBuilderRequestSampleComponent implements OnInit, AfterViewInit {
@@ -75,11 +74,11 @@ export class QueryBuilderRequestSampleComponent implements OnInit, AfterViewInit
                 fields: this.ordersFields
             }
         ];
-        
+
         const tree = new FilteringExpressionsTree(FilteringLogic.And, undefined, 'Orders', ['orderId', 'customerId', 'employeeId', 'shipperId', 'orderDate', 'requiredDate', 'shipVia', 'freight', 'shipName', 'completed']);
         this.expressionTree = tree;
     }
-    
+
     public ngAfterViewInit(): void {
         this.onChange();
     }
@@ -339,7 +338,7 @@ Now we can set the `expressionsTree` property of the `IgxQueryBuilderComponent` 
 
 ```typescript
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { EntityType, FilteringExpressionsTree, IExpressionTree, IgxNumberFilteringOperand, IgxStringFilteringOperand } from 'igniteui-angular/core';
 import { IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
@@ -352,7 +351,6 @@ const API_ENDPOINT = 'https://data-northwind.indigo.design';
     selector: 'app-query-builder-sql-sample',
     styleUrls: ['./query-builder-sql-sample.component.scss'],
     templateUrl: 'query-builder-sql-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxQueryBuilderComponent, IgxGridComponent, IgxColumnComponent]
 })
 export class QueryBuilderSqlSampleComponent implements OnInit, AfterViewInit {
@@ -456,7 +454,7 @@ export class QueryBuilderSqlSampleComponent implements OnInit, AfterViewInit {
             `${tree.returnFields.join(',')}` :
             '*';
 
-        const selectClause = `SELECT ${selectFields}`; 
+        const selectClause = `SELECT ${selectFields}`;
         const fromClause = `FROM ${tree.entity}`;
         const whereClause = this.buildWhereClause(tree);
 
@@ -528,7 +526,7 @@ export class QueryBuilderSqlSampleComponent implements OnInit, AfterViewInit {
                 break;
         }
     }
-    
+
     public onChange() {
         const sqlQuery = this.transformExpressionTreeToSqlQuery(this.expressionTree);
         this.sqlQuery = format(sqlQuery);

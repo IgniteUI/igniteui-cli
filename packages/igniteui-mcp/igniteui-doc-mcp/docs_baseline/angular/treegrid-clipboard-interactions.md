@@ -11,7 +11,7 @@ _premium: true
 Copy to clipboard operations are now available in the Tree Grid. This functionality provides a fast, easy and customizable way to copy data of the Angular Data Grid through the current multi cell data select. System Clipboard behavior gives the user ability to copy data from the Tree Grid into Excel or other external programs.
 ## Angular Tree Grid Clipboard Interactions Example
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { EMPLOYEE_DATA } from './data';
 import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
 import { IgxIconComponent } from 'igniteui-angular/icon';
@@ -26,7 +26,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-tree-grid-clipboard-operations-sample',
     styleUrls: ['tree-grid-clipboard-operations-sample.component.scss'],
     templateUrl: './tree-grid-clipboard-operations-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxInputGroupComponent, IgxLabelDirective, FormsModule, IgxInputDirective, IgxSuffixDirective, IgxIconComponent, IgxHintDirective, IgxTreeGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxSwitchComponent, IgxButtonDirective, IgxRippleDirective, IgxColumnComponent]
 })
 export class TreeGridClipboardSampleComponent {

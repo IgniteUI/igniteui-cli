@@ -16,57 +16,45 @@ The Blazor Button Group component is used to organize [`IgbToggleButton`](mcp:ge
 ```razor
 @using IgniteUI.Blazor.Controls
 
-<style>
-    igc-button-group {
-        max-width: 400px;
-    }
-
-    igc-ripple {
-        --color: gray;
-    }
-</style>
+<link href="_content/IgniteUI.Blazor/themes/light/material.css" rel="stylesheet" />
 
 <div class="container sample">
-    <IgbButtonGroup>
-        <IgbToggleButton Value="left">
-            <IgbIcon @ref="iconRef" IconName="format_align_left" Collection="material"></IgbIcon>
-            <IgbRipple />
-        </IgbToggleButton>
-        <IgbToggleButton Value="center">
-            <IgbIcon IconName="format_align_center" Collection="material"></IgbIcon>
-            <IgbRipple />
-        </IgbToggleButton>
-        <IgbToggleButton Value="right">
-            <IgbIcon IconName="format_align_right" Collection="material"></IgbIcon>
-            <IgbRipple />
-        </IgbToggleButton>
-        <IgbToggleButton Value="justify" Selected="true">
-            <IgbIcon IconName="format_align_justify" Collection="material"></IgbIcon>
-            <IgbRipple />
-        </IgbToggleButton>
+    <IgbButtonGroup Selection="ButtonGroupSelection.SingleRequired" Select="OnSelect">
+        <IgbToggleButton Value="device">Device<IgbRipple /></IgbToggleButton>
+        <IgbToggleButton Value="cloud" Selected="true">Cloud<IgbRipple /></IgbToggleButton>
     </IgbButtonGroup>
+
+    <div class="album">
+        <span class="album-title">Trip around the world</span>
+        <div class="album-photos">
+            @foreach (var photo in Photos)
+            {
+                <img src="@photo" alt="Trip around the world" />
+            }
+        </div>
+    </div>
 </div>
 
- @code {
-    private string formatAlignLeft = "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M15 15H3v2h12v-2zm0-8H3v2h12V7zM3 13h18v-2H3v2zm0 8h18v-2H3v2zM3 3v2h18V3H3z'/></svg>";
-    private string formatAlignCenter = "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M7 15v2h10v-2H7zm-4 6h18v-2H3v2zm0-8h18v-2H3v2zm4-6v2h10V7H7zM3 3v2h18V3H3z'/></svg>";
-    private string formatAlignRight = "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M3 21h18v-2H3v2zm6-4h12v-2H9v2zm-6-4h18v-2H3v2zm6-4h12V7H9v2zM3 3v2h18V3H3z'/></svg>";
-    private string formatAlignJustify = "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M3 21h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18V7H3v2zm0-6v2h18V3H3z'/></svg>";
+@code {
+    private static readonly string[] DevicePhotos = {
+        "https://picsum.photos/id/1015/300/220",
+        "https://picsum.photos/id/1016/300/220",
+        "https://picsum.photos/id/1018/300/220",
+        "https://picsum.photos/id/1019/300/220"
+    };
 
-    private IgbIcon iconRef;
+    private static readonly string[] CloudPhotos = {
+        "https://picsum.photos/id/1036/300/220",
+        "https://picsum.photos/id/1051/300/220",
+        "https://picsum.photos/id/1062/300/220",
+        "https://picsum.photos/id/1067/300/220"
+    };
 
-    protected override void OnAfterRender(bool firstRender)
+    private string[] Photos { get; set; } = CloudPhotos;
+
+    private void OnSelect(IgbComponentValueChangedEventArgs args)
     {
-        if (this.iconRef != null && firstRender)
-        {
-            this.iconRef.EnsureReady().ContinueWith(new Action<Task>((e) =>
-            {
-                this.iconRef.RegisterIconFromText("format_align_left", formatAlignLeft, "material"); ;
-                this.iconRef.RegisterIconFromText("format_align_center", formatAlignCenter, "material"); ;
-                this.iconRef.RegisterIconFromText("format_align_right", formatAlignRight, "material"); ;
-                this.iconRef.RegisterIconFromText("format_align_justify", formatAlignJustify, "material"); ;
-            }));
-        }
+        this.Photos = args.Detail == "device" ? DevicePhotos : CloudPhotos;
     }
 }
 ```
@@ -123,39 +111,30 @@ Use the [`Alignment`](mcp:get_api_reference?platform=blazor&component=IgbButtonG
 ```razor
 @using IgniteUI.Blazor.Controls
 
-<style>
-    igc-button-group {
-        width: 200px;
-    }
+<link href="_content/IgniteUI.Blazor/themes/light/material.css" rel="stylesheet" />
 
-    igc-ripple {
-        --color: gray;
+<div class="button-group-alignment">
+    @foreach (var alignment in Alignments)
+    {
+        <div class="button-group-alignment-item">
+            <span>@(alignment == ContentOrientation.Horizontal ? "Horizontal" : "Vertical")</span>
+            <IgbButtonGroup Alignment="@alignment">
+                @foreach (var city in Cities)
+                {
+                    <IgbToggleButton Value="@city.ToLowerInvariant()">
+                        @city
+                        <IgbRipple />
+                    </IgbToggleButton>
+                }
+            </IgbButtonGroup>
+        </div>
     }
-</style>
-
-<div class="container sample">
-    <IgbButtonGroup Alignment="ContentOrientation.Vertical">
-        <IgbToggleButton Value="sofia">
-            Sofia
-            <IgbRipple />
-        </IgbToggleButton>
-        <IgbToggleButton Value="london">
-            London
-            <IgbRipple />
-        </IgbToggleButton>
-        <IgbToggleButton Value="new york" Selected="true">
-            New York
-            <IgbRipple />
-        </IgbToggleButton>
-        <IgbToggleButton Value="tokyo">
-            Tokyo
-            <IgbRipple />
-        </IgbToggleButton>
-    </IgbButtonGroup>
 </div>
 
- @code {
+@code {
+    private static readonly string[] Cities = { "Sofia", "London", "New York" };
 
+    private static readonly ContentOrientation[] Alignments = { ContentOrientation.Horizontal, ContentOrientation.Vertical };
 }
 ```
 
@@ -172,17 +151,34 @@ The sample below demonstrates the exposed [`IgbButtonGroup`](mcp:get_api_referen
 ```razor
 @using IgniteUI.Blazor.Controls
 
+<link href="_content/IgniteUI.Blazor/themes/light/material.css" rel="stylesheet" />
+
 <style>
-    .radio-group-container {
-        width: 400px;
-        margin-bottom: 1rem;
+    .selection-samples {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+        padding-left: 32px;
     }
 
-    igc-radio-group {
-        padding: 0.5rem;
+    .selection-sample {
+        display: flex;
+        align-items: center;
+        gap: 30px;
     }
 
-    igc-button-group {
+    .selection-sample > span {
+        width: 120px;
+        text-align: right;
+        color: #556c86;
+        font-size: 13px;
+        line-height: 20px;
+        letter-spacing: 0.3px;
+    }
+
+    .selection-sample igc-button-group {
         width: 200px;
     }
 
@@ -191,21 +187,17 @@ The sample below demonstrates the exposed [`IgbButtonGroup`](mcp:get_api_referen
     }
 </style>
 
-<div class="container sample">
-    <div class="radio-group-container">
-        <label>Selection Mode</label>
-        <IgbRadioGroup Alignment="ContentOrientation.Horizontal">
-            <IgbRadio Name="mode" Value="single" Checked @onclick="OnSingleClick">Single</IgbRadio>
-            <IgbRadio Name="mode" Value="single-required" @onclick="OnSingleRequiredClick">Single-Required</IgbRadio>
-            <IgbRadio Name="mode" Value="Multiple" @onclick="OnMultipleClick">Multiple</IgbRadio>
-        </IgbRadioGroup>
-    </div>
-    <IgbButtonGroup @ref="buttonGroupRef">
-        <IgbToggleButton Value="bold">
+<div class="container sample selection-samples">
+    @foreach (var selection in modes)
+    {
+    <div class="selection-sample">
+        <span>@(selection == ButtonGroupSelection.SingleRequired ? "Single-Required" : selection.ToString())</span>
+        <IgbButtonGroup Selection="@selection">
+        <IgbToggleButton Value="bold" Selected="@(selection != ButtonGroupSelection.Single)">
             <IgbIcon @ref="iconRef" IconName="bold" Collection="material"></IgbIcon>
             <IgbRipple />
         </IgbToggleButton>
-        <IgbToggleButton Value="italic">
+        <IgbToggleButton Value="italic" Selected="@(selection == ButtonGroupSelection.Multiple)">
             <IgbIcon IconName="italic" Collection="material"></IgbIcon>
             <IgbRipple />
         </IgbToggleButton>
@@ -213,7 +205,9 @@ The sample below demonstrates the exposed [`IgbButtonGroup`](mcp:get_api_referen
             <IgbIcon IconName="underlined" Collection="material"></IgbIcon>
             <IgbRipple />
         </IgbToggleButton>
-    </IgbButtonGroup>
+        </IgbButtonGroup>
+    </div>
+    }
 </div>
 
  @code {
@@ -222,7 +216,7 @@ The sample below demonstrates the exposed [`IgbButtonGroup`](mcp:get_api_referen
     private string underlinedIcon = "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z'/></svg>";
 
     private IgbIcon iconRef;
-    private IgbButtonGroup buttonGroupRef;
+    private readonly ButtonGroupSelection[] modes = { ButtonGroupSelection.Single, ButtonGroupSelection.SingleRequired, ButtonGroupSelection.Multiple };
 
     protected override void OnAfterRender(bool firstRender)
     {
@@ -237,20 +231,6 @@ The sample below demonstrates the exposed [`IgbButtonGroup`](mcp:get_api_referen
         }
     }
 
-    private void OnSingleClick()
-    {
-        this.buttonGroupRef.Selection = ButtonGroupSelection.Single;
-    }
-
-    private void OnSingleRequiredClick()
-    {
-        this.buttonGroupRef.Selection = ButtonGroupSelection.SingleRequired;
-    }
-
-    private void OnMultipleClick()
-    {
-        this.buttonGroupRef.Selection = ButtonGroupSelection.Multiple;
-    }
 }
 ```
 
@@ -283,27 +263,30 @@ The `--ig-size` CSS custom property can be used to control the size of the butto
 ```razor
 @using IgniteUI.Blazor.Controls
 
-<div class="container sample">
-    <IgbButtonGroup style="@style" Select="OnSelect">
-        <IgbToggleButton Value="small">
-            Small
-        </IgbToggleButton>
-        <IgbToggleButton Value="medium">
-            Medium
-        </IgbToggleButton>
-        <IgbToggleButton Value="large" Selected="true">
-            Large
-        </IgbToggleButton>
-    </IgbButtonGroup>
+<link href="_content/IgniteUI.Blazor/themes/light/material.css" rel="stylesheet" />
+
+<div class="button-group-size">
+    @foreach (var size in Sizes)
+    {
+        <div class="button-group-size-item">
+            <span>@(char.ToUpperInvariant(size[0]) + size.Substring(1))</span>
+            <IgbButtonGroup style="@($"--ig-size: var(--ig-size-{size})")">
+                @foreach (var city in Cities)
+                {
+                    <IgbToggleButton Value="@city.ToLowerInvariant()">
+                        @city
+                        <IgbRipple />
+                    </IgbToggleButton>
+                }
+            </IgbButtonGroup>
+        </div>
+    }
 </div>
 
 @code {
-    private string style = "--ig-size: var(--ig-size-large)";
+    private static readonly string[] Cities = { "Sofia", "London", "New York" };
 
-    private void OnSelect(IgbComponentValueChangedEventArgs args)
-    {
-        this.style = $"--ig-size: var(--ig-size-{args.Detail})";
-    }
+    private static readonly string[] Sizes = { "small", "medium", "large" };
 }
 ```
 
@@ -326,59 +309,22 @@ igc-toggle-button::part(toggle) {
 ```razor
 @using IgniteUI.Blazor.Controls
 
-<style>
-    igc-button-group {
-        width: 200px;
-    }
+<link href="_content/IgniteUI.Blazor/themes/light/material.css" rel="stylesheet" />
 
-    igc-ripple {
-        --color: gray;
-    }
-
-    igc-toggle-button::part(toggle) {
-        color: #fdfdfd;
-        background: #2f4d6a;
-    }
-
-    igc-toggle-button::part(toggle):hover {
-        color: #fdfdfd;
-        background: #1f3347;
-    }
-
-    igc-toggle-button[disabled]::part(toggle) {
-        color: gray;
-        background: lightgray;
-    }
-
-    igc-toggle-button[selected]::part(toggle) {
-        color: #fdfdfd;
-        background: #1f3347;
-    }
-</style>
-
-<div class="container sample">
-    <IgbButtonGroup Alignment="ContentOrientation.Vertical">
-        <IgbToggleButton Value="sofia">
-            Sofia
-            <IgbRipple />
-        </IgbToggleButton>
-        <IgbToggleButton Value="london">
-            London
-            <IgbRipple />
-        </IgbToggleButton>
-        <IgbToggleButton Value="new york">
-            New York
-            <IgbRipple />
-        </IgbToggleButton>
-        <IgbToggleButton Value="tokyo" Disabled="true">
-            Tokyo
-            <IgbRipple />
-        </IgbToggleButton>
+<div class="button-group-styling">
+    <IgbButtonGroup>
+        @foreach (var alignmentOption in Layouts)
+        {
+            <IgbToggleButton Value="@alignmentOption.ToLowerInvariant()" Selected="@(alignmentOption == "Left")">
+                @alignmentOption
+                <IgbRipple />
+            </IgbToggleButton>
+        }
     </IgbButtonGroup>
 </div>
 
- @code {
-
+@code {
+    private static readonly string[] Layouts = { "Left", "Center", "Right" };
 }
 ```
 

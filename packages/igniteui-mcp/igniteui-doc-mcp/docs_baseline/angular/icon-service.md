@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
 ```
 
 ```typescript
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
 import { IgxCardActionsComponent, IgxCardComponent, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective } from 'igniteui-angular/card';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
@@ -43,7 +43,6 @@ import { IgxSuffixDirective } from 'igniteui-angular/input-group';
     selector: 'app-icon-service-sample',
     styleUrls: ['./icon-service-sample.component.scss'],
     templateUrl: './icon-service-sample.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxCardComponent, IgxCardHeaderComponent, IgxAvatarComponent, IgxIconComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardActionsComponent, IgxButtonDirective, IgxSuffixDirective]
 })
 export class IconServiceSampleComponent {

@@ -19,14 +19,13 @@ Ignite UI Expansion Panel [igx-expansion-panel](mcp:get_api_reference?platform
 We've created this simple Angular Expansion Panel Example using Ignite UI Angular. See how the sample works.
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxExpansionPanelBodyComponent, IgxExpansionPanelComponent, IgxExpansionPanelDescriptionDirective, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective } from 'igniteui-angular/expansion-panel';
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'app-expansion-sample-1',
     styleUrls: ['./expansion-sample-1.component.scss'],
     templateUrl: './expansion-sample-1.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective, IgxExpansionPanelDescriptionDirective, IgxExpansionPanelBodyComponent]
 })
 export class ExpansionPanelSample1Component {
@@ -183,7 +182,7 @@ export class ExpansionPanelComponent {
 Below we have the results:
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxExpansionPanelBodyComponent, IgxExpansionPanelComponent, IgxExpansionPanelDescriptionDirective, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective } from 'igniteui-angular/expansion-panel';
 import { IgxToastComponent } from 'igniteui-angular/toast';
 
@@ -192,7 +191,6 @@ import { IgxToastComponent } from 'igniteui-angular/toast';
     selector: 'app-expansion-sample-2',
     styleUrls: ['./expansion-sample-2.component.scss'],
     templateUrl: './expansion-sample-2.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective, IgxExpansionPanelDescriptionDirective, IgxExpansionPanelBodyComponent, IgxToastComponent]
 })
 export class ExpansionPanelSample2Component {
@@ -290,7 +288,7 @@ For the sake of simplicity let's add some basic markup to the body of our expans
 Lets see the result from all the above changes:
 
 ```typescript
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IgxExpansionPanelBodyComponent, IgxExpansionPanelComponent, IgxExpansionPanelDescriptionDirective, IgxExpansionPanelHeaderComponent, IgxExpansionPanelIconDirective, IgxExpansionPanelTitleDirective } from 'igniteui-angular/expansion-panel';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 
@@ -300,7 +298,6 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-expansion-sample-3',
     styleUrls: ['./expansion-sample-3.component.scss'],
     templateUrl: './expansion-sample-3.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective, IgxExpansionPanelDescriptionDirective, IgxExpansionPanelIconDirective, IgxExpansionPanelBodyComponent, IgxButtonDirective]
 })
 
@@ -508,7 +505,7 @@ To find out more on how you can use Ignite UI theming engine [`click here`](them
 ### Demo
 
 ```typescript
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import {Component} from '@angular/core';
 import { IgxExpansionPanelBodyComponent, IgxExpansionPanelComponent, IgxExpansionPanelDescriptionDirective, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective } from 'igniteui-angular/expansion-panel';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
 
@@ -517,7 +514,6 @@ import { IgxButtonDirective } from 'igniteui-angular/directives';
     selector: 'app-expansion-styling',
     styleUrls: ['./expansion-styling.component.scss'],
     templateUrl: './expansion-styling.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective, IgxExpansionPanelDescriptionDirective, IgxExpansionPanelBodyComponent, IgxButtonDirective]
 })
 
@@ -671,7 +667,7 @@ You can see the results below:
 
 ```typescript
 import { useAnimation } from '@angular/animations';
-import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { IgxExpansionPanelBodyComponent, IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective } from 'igniteui-angular/expansion-panel';
 import { slideInLeft, slideOutRight } from 'igniteui-angular/animations';
@@ -681,7 +677,6 @@ import { slideInLeft, slideOutRight } from 'igniteui-angular/animations';
     selector: 'app-expansion-sample-5',
     styleUrls: ['./expansion-sample-5.component.scss'],
     templateUrl: './expansion-sample-5.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxExpansionPanelComponent, IgxExpansionPanelHeaderComponent, IgxExpansionPanelTitleDirective, IgxExpansionPanelBodyComponent]
 })
 export class ExpansionPanelSample5Component {
@@ -720,7 +715,7 @@ export class ExpansionPanelSample5Component {
 <div class="sample-holder">
     <igx-expansion-panel [animationSettings] = "animationSettingsCustom" class="my-expansion-panel">
         <igx-expansion-panel-header>
-            <igx-expansion-panel-title class="sample-title">Angular</igx-expansion-panel-title>
+            <igx-expansion-panel-title>Angular</igx-expansion-panel-title>
         </igx-expansion-panel-header>
         <igx-expansion-panel-body>
             Angular (commonly referred to as "Angular 2+" or "Angular v2 and above") is a TypeScript-based open-source web application framework led by the Angular Team at Google and by a community of individuals and corporations.

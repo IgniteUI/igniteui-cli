@@ -15,7 +15,7 @@ The Angular Date Range Picker is a lightweight component that includes a text in
 Below is a sample demonstrating the [`IgxDateRangePickerComponent`](mcp:get_api_reference?platform=angular&component=IgxDateRangePickerComponent) component in action, where a calendar pop-up allows users to select start and end dates.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { DateRange } from 'igniteui-angular/core';
 import { IgxDateRangePickerComponent } from 'igniteui-angular/date-picker';
 import { IgxLabelDirective } from 'igniteui-angular/input-group';
@@ -25,7 +25,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-basic-rangedatepicker',
     styleUrls: ['./daterangepicker-basic.scss'],
     templateUrl: './daterangepicker-basic.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDateRangePickerComponent, FormsModule, IgxLabelDirective]
 })
 export class BasicDateRangePickerComponent {
@@ -173,7 +172,7 @@ The Angular Date Range Picker component also allows configuring two separate inp
 - To enable date editing, decorate both inputs with the [`igxDateTimeEditor`](date-time-editor.md) directive.
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { DateRange, IgxPickerClearComponent, IgxPickerToggleComponent } from 'igniteui-angular/core';
 import { IgxDateRangeEndComponent, IgxDateRangePickerComponent, IgxDateRangeStartComponent } from 'igniteui-angular/date-picker';
 import { IgxInputDirective, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
@@ -185,7 +184,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-rangedatepicker-start-end',
     styleUrls: ['./daterangepicker-start-end.scss'],
     templateUrl: './daterangepicker-start-end.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDateRangePickerComponent, FormsModule, IgxDateRangeStartComponent, IgxInputDirective, IgxDateTimeEditorDirective,
               IgxPickerToggleComponent, IgxPrefixDirective, IgxIconComponent, IgxDateRangeEndComponent, IgxSuffixDirective,
               IgxPickerClearComponent]
@@ -204,7 +202,7 @@ By default, the [`IgxDateRangePickerComponent`](mcp:get_api_reference?platform=a
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { DateRange } from 'igniteui-angular/core';
 import { IgxDateRangePickerComponent } from 'igniteui-angular/date-picker';
 
@@ -212,7 +210,6 @@ import { IgxDateRangePickerComponent } from 'igniteui-angular/date-picker';
     selector: 'app-mode-rangedatepicker',
     styleUrls: ['./daterangepicker-mode.scss'],
     templateUrl: './daterangepicker-mode.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDateRangePickerComponent]
 })
 export class DateRangePickerModeComponent {
@@ -388,7 +385,7 @@ public customRanges: CustomDateRange[] = [
 In addition, custom content or actions can be templated using the [`igxPickerActions`](mcp:get_api_reference?platform=angular&component=IgxPickerActionsDirective) directive. The following demo shows the predefined and custom ranges along with the templated actions:
 
 ```typescript
-import { Component, ElementRef, OnInit, ViewChild, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { CustomDateRange, DateRange, IgxPickerActionsDirective, OverlaySettings } from 'igniteui-angular/core';
 import { IgxDateRangePickerComponent } from 'igniteui-angular/date-picker';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
@@ -399,7 +396,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-rangdatepicker-range-buttons',
     styleUrls: ['./daterangepicker-range-buttons.scss'],
     templateUrl: './daterangepicker-range-buttons.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDateRangePickerComponent, FormsModule, IgxPickerActionsDirective, IgxButtonDirective]
 })
 export class DateRangePickerRangeButtonsComponent {
@@ -514,7 +510,7 @@ When using two separate inputs, it is possible to set the model and required pro
 ```
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { DateRange, IgxPickerClearComponent, IgxPickerToggleComponent } from 'igniteui-angular/core';
 import { IgxDateRangeEndComponent, IgxDateRangePickerComponent, IgxDateRangeStartComponent } from 'igniteui-angular/date-picker';
 import { IgxInputDirective, IgxLabelDirective, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
@@ -526,7 +522,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-daterangepicker-validation',
     styleUrls: ['./daterangepicker-validation.scss'],
     templateUrl: './daterangepicker-validation.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDateRangePickerComponent, FormsModule, IgxLabelDirective, IgxDateRangeStartComponent, IgxPickerToggleComponent,
               IgxPrefixDirective, IgxIconComponent, IgxInputDirective, IgxDateTimeEditorDirective, IgxDateRangeEndComponent,
               IgxSuffixDirective, IgxPickerClearComponent]
@@ -749,7 +744,7 @@ Regarding style scoping, you should refer to both styling sections [Overlay Scop
 
 
 ```typescript
-import { Component, ElementRef, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ElementRef, inject } from '@angular/core';
 import { DateRange, IgxPickerClearComponent, IgxPickerToggleComponent } from 'igniteui-angular/core';
 import { IgxDateRangeEndComponent, IgxDateRangePickerComponent, IgxDateRangeStartComponent } from 'igniteui-angular/date-picker';
 import { IgxInputDirective, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
@@ -761,7 +756,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-styled-rangedatepicker',
     styleUrls: ['./daterangepicker-styling.scss'],
     templateUrl: './daterangepicker-styling.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxDateRangePickerComponent, FormsModule, IgxDateRangeStartComponent, IgxInputDirective, IgxDateTimeEditorDirective,
               IgxPickerToggleComponent, IgxPrefixDirective, IgxIconComponent, IgxDateRangeEndComponent, IgxSuffixDirective, IgxPickerClearComponent]
 })
@@ -779,7 +773,7 @@ The demo below defines a form for flight tickets that uses the [`IgxDateRangePic
 
 
 ```typescript
-import { Component, Pipe, PipeTransform, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Pipe, PipeTransform } from '@angular/core';
 import { DateRange } from 'igniteui-angular/core';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
 import { IgxHintDirective, IgxLabelDirective, IgxPrefixDirective } from 'igniteui-angular/input-group';
@@ -793,7 +787,6 @@ import { PipeWithoutTownFrom as PipeWithoutTownFrom_1 } from '../../datepicker/d
     selector: 'app-flight-booking',
     styleUrls: ['./daterangepicker-flight-booking.scss'],
     templateUrl: './daterangepicker-flight-booking.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, IgxSelectComponent, IgxPrefixDirective, IgxIconComponent, IgxSelectItemComponent, IgxDateRangePickerComponent, IgxLabelDirective, IgxHintDirective, PipeWithoutTownFrom_1]
 })
 export class FlightBookingComponent {

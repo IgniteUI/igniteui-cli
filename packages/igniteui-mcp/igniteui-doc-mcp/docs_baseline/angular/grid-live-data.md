@@ -50,8 +50,8 @@ The purpose of this demo is to showcase a financial screen board with Real-time 
 As you can see the igxGrid component handles with ease the high-frequency updates from the server. The code for the ASP.NET Core application using SignalR could be found in this [public GitHub repository](https://github.com/IgniteUI/finjs-web-api).
 ```typescript
 /* eslint-disable max-len */
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Renderer2, OnDestroy, OnInit, DoCheck, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA, inject, ChangeDetectionStrategy } from '@angular/core';
-import { AbsoluteScrollStrategy, ConnectedPositioningStrategy, DefaultSortingStrategy, GridColumnDataType, IgxOverlayOutletDirective, OverlaySettings, SortingDirection } from 'igniteui-angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Renderer2, OnDestroy, OnInit, DoCheck, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
+import { AbsoluteScrollStrategy, ConnectedPositioningStrategy, DefaultSortingStrategy, GridColumnDataType, OverlaySettings, SortingDirection } from 'igniteui-angular/core';
 import { IgxCellTemplateDirective, IgxColumnComponent } from 'igniteui-angular/grids/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxSelectComponent, IgxSelectItemComponent } from 'igniteui-angular/select';
@@ -74,8 +74,7 @@ import { AsyncPipe, CurrencyPipe } from '@angular/common';
     selector: 'app-finjs-dock-manager',
     templateUrl: './grid-finjs-dock-manager.component.html',
     styleUrls: ['./grid-finjs-dock-manager.component.scss'],
-    imports: [IgxSwitchComponent, FormsModule, IgxSelectComponent, IgxLabelDirective, IgxPrefixDirective, IgxIconComponent, IgxSelectItemComponent, IgxButtonDirective, IgxOverlayOutletDirective, IgxGridComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxPaginatorComponent, GridHostDirective, AsyncPipe, CurrencyPipe],
-    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [IgxSwitchComponent, FormsModule, IgxSelectComponent, IgxLabelDirective, IgxPrefixDirective, IgxIconComponent, IgxSelectItemComponent, IgxButtonDirective, IgxGridComponent, IgxColumnComponent, IgxCellTemplateDirective, IgxPaginatorComponent, GridHostDirective, AsyncPipe, CurrencyPipe],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterViewInit, DoCheck {
@@ -93,7 +92,6 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
     public priceTemplate: TemplateRef<any>;
     @ViewChild(IgxSelectComponent) public select: IgxSelectComponent;
     @ViewChild('freq', { read: IgxSelectComponent }) public selectFrequency: IgxSelectComponent;
-    @ViewChild(IgxOverlayOutletDirective) outlet: IgxOverlayOutletDirective;
 
     public isDarkTheme = true;
 
@@ -225,6 +223,7 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
         this.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
             if (data.length !== 0) {
                 this.isLoading = false;
+                this.cdr.markForCheck();
             };
         });
     }
@@ -255,9 +254,7 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
             this.paneService.initialPanePosition = { x, y };
             this.grid2.selectColumns(['price', 'change', 'changeP']);
             this.customOverlaySettings.target = this.select.inputGroup.element.nativeElement;
-            this.customOverlaySettings.outlet = this.outlet;
             this.freqOverlaySettings.target = this.selectFrequency.inputGroup.element.nativeElement;
-            this.freqOverlaySettings.outlet = this.outlet;
             this.grid1.groupingExpressions = [{
                 dir: SortingDirection.Desc,
                 fieldName: 'category',
@@ -276,6 +273,7 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
                 ignoreCase: false,
                 strategy: DefaultSortingStrategy.instance()
             }];
+            this.cdr.markForCheck();
         }, 500);
     }
 
@@ -354,7 +352,10 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
         const componentRef = viewContainerRef.createComponent(IgxGridComponent);
         const grid = (componentRef.instance as IgxGridComponent);
         grid.autoGenerate = true;
-        this.dataService.data.pipe(takeUntil(destructor)).subscribe(d => grid.data = d);
+        this.dataService.data.pipe(takeUntil(destructor)).subscribe(d => {
+            grid.data = d;
+            componentRef.changeDetectorRef.markForCheck();
+        });
         grid.columnInit.pipe(takeUntil(destructor)).subscribe((col: IgxColumnComponent) => {
             if (col.field === 'price') {
                 col.cellClasses = this.trends;
@@ -413,12 +414,11 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
     </igx-select>
   </div>
   <div igxButton (click)="createGrid()" [disabled]="docLayout.floatingPanes.length >= 5">Add Floating Pane</div>
-  <div igxOverlayOutlet #outlet></div>
 </div>
 <div slot="gridStockPrices" style="height: 100%;">
   <igx-grid #grid1 [data]="data | async" [isLoading]="isLoading"
     [allowFiltering]="true" [filterMode]="'excelStyleFilter'" [primaryKey]="'id'"
-    [columnSelection]="'multiple'" [cellSelection]="'none'" [outlet]="filteringOverlayOutlet">
+    [columnSelection]="'multiple'" [cellSelection]="'none'">
     <igx-column [field]="'id'" [width]="'70px'" [hidden]="true" [sortable]="true"></igx-column>
     <igx-column [field]="'category'" [width]="'120px'" [sortable]="true"></igx-column>
     <igx-column [field]="'type'" [width]="'100px'" [sortable]="true" [filterable]="false">
@@ -455,7 +455,7 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
 </div>
 <div slot="forexMarket" style="height: 100%;">
   <igx-grid #grid2 [data]="data | async" [isLoading]="isLoading"
-    [allowFiltering]="true" [filterMode]="'excelStyleFilter'" [primaryKey]="'id'" [outlet]="filteringOverlayOutlet"
+    [allowFiltering]="true" [filterMode]="'excelStyleFilter'" [primaryKey]="'id'"
     [columnSelection]="'multiple'" [cellSelection]="'none'">
     <igx-column [field]="'id'" [width]="'70px'" [hidden]="true" [sortable]="true"></igx-column>
     <igx-column [field]="'category'" [width]="'120px'" [sortable]="true" [groupable]="true"></igx-column>
@@ -493,7 +493,7 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
 </div>
 <div slot="content4" style="height: 100%;">
   <igx-grid #grid3 [data]="data | async" [isLoading]="isLoading"
-    [allowFiltering]="true" [filterMode]="'excelStyleFilter'" [primaryKey]="'id'" [outlet]="filteringOverlayOutlet"
+    [allowFiltering]="true" [filterMode]="'excelStyleFilter'" [primaryKey]="'id'"
     [columnSelection]="'multiple'" [cellSelection]="'none'">
     <igx-column [field]="'id'" [width]="'70px'" [hidden]="true" [sortable]="true"></igx-column>
     <igx-column [field]="'category'" [width]="'120px'" [sortable]="true" [groupable]="true"></igx-column>
@@ -531,7 +531,7 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
 </div>
 <div slot="etfStockPrices" style="height: 100%;">
   <igx-grid #grid4 [data]="data | async" [isLoading]="isLoading"
-    [allowFiltering]="true" [filterMode]="'excelStyleFilter'" [primaryKey]="'id'" [outlet]="filteringOverlayOutlet"
+    [allowFiltering]="true" [filterMode]="'excelStyleFilter'" [primaryKey]="'id'"
     [columnSelection]="'multiple'" [cellSelection]="'none'">
     <igx-paginator></igx-paginator>
     <igx-column [field]="'id'" [width]="'70px'" [hidden]="true" [sortable]="true"></igx-column>
@@ -571,11 +571,35 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
 <ng-template #host gridHost>
 </ng-template>
 </igc-dockmanager>
-<div [class]="isDarkTheme ? 'dark-theme' : 'light-theme'" #filteringOverlayOutlet="overlay-outlet" igxOverlayOutlet></div>
 ```
 ```scss
 @use 'igniteui-dockmanager/dist/collection/styles/igc.themes';
 @use '../../variables' as *;
+
+// Set the grid's background/foreground/accent tokens; the grid's derived-themes
+// layer cascades them to the paginator, scrollbars, chips, drop-downs, select,
+// excel filter, etc. Scoped mode emits the short `--background`/`--foreground`/
+// `--accent-color` aliases the derived layer reads first.
+$finjs-grid-accent-color: var(--ig-primary-500);
+$finjs-grid-background: var(--ig-surface-500);
+$finjs-grid-foreground: var(--ig-surface-500-contrast);
+
+$finjs-dark-grid-theme: grid-theme(
+    $schema: $dark-material-schema,
+    $background: $finjs-grid-background,
+    $foreground: $finjs-grid-foreground,
+    $accent-color: $finjs-grid-accent-color,
+);
+
+$finjs-light-grid-theme: grid-theme(
+    $schema: $light-material-schema,
+    $background: $finjs-grid-background,
+    $foreground: $finjs-grid-foreground,
+    $accent-color: $finjs-grid-accent-color,
+);
+
+@include tokens($finjs-dark-grid-theme, $mode: 'scoped', $scope: '.dark-theme igx-grid');
+@include tokens($finjs-light-grid-theme, $mode: 'scoped', $scope: '.light-theme igx-grid');
 
 .actionItem {
 	margin-block-end: rem(20px);
@@ -620,7 +644,7 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
 
 .negative.strongNegative {
 	.igx-grid__td-text {
-		color: color(null, 'success', 500, .8) !important;
+		color: color(null, 'error', 500, .8) !important;
 	}
 }
 
@@ -758,10 +782,6 @@ igx-grid {
 			color: contrast-color(null, 'gray', 900);
 		}
 	}
-}
-
-igx-select {
-    --ig-size: var(--ig-size-small);
 }
 ```
 ### Start the hub connection

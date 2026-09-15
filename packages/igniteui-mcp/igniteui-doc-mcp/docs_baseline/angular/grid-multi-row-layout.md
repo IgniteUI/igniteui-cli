@@ -10,7 +10,7 @@ _premium: true
 Multi-row Layout extends the rendering capabilities of the `igxGridComponent`. The feature allows splitting a single data record into multiple visible rows.
 ## Angular Multi-row Layout Example
 ```typescript
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { DefaultSortingStrategy, SortingDirection } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, IgxColumnLayoutComponent, IgxGridToolbarActionsComponent, IgxGridToolbarComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent } from 'igniteui-angular/grids/core';
@@ -22,7 +22,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-multi-row-layout-sample',
     styleUrls: ['./grid-multi-row-layout.component.scss'],
     templateUrl: './grid-multi-row-layout.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxGridToolbarComponent, IgxGridToolbarActionsComponent, IgxGridToolbarHidingComponent, IgxGridToolbarPinningComponent, IgxColumnLayoutComponent, IgxColumnComponent]
 })
 export class GridMultiRowLayoutComponent {
@@ -151,7 +150,7 @@ The grid allows customizing the default navigation behavior when a certain key i
 The demo below adds additional navigation down/up via the <kbd>Enter</kbd> and <kbd>Shift</kbd> + <kbd>Enter</kbd> keys, similar to the behavior observed in Excel.
 ### Demo
 ```typescript
-import { Component, ViewChild, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, IgxColumnLayoutComponent } from 'igniteui-angular/grids/core';
 import { DATA } from '../../data/company-data';
@@ -162,7 +161,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-mrl-custom-navigation-sample',
     styleUrls: ['./grid-mrl-custom-navigation.component.scss'],
     templateUrl: './grid-mrl-custom-navigation.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnLayoutComponent, IgxColumnComponent]
 })
 export class GridMRLCustomNavigationComponent {
@@ -271,7 +269,7 @@ In order for the custom theme do affect only specific component, you can move al
 This way, due to Angular's [ViewEncapsulation](https://angular.io/api/core/Component#encapsulation), your styles will be applied only to your custom component.
 ### Demo
 ```typescript
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { DefaultSortingStrategy, SortingDirection } from 'igniteui-angular/core';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxColumnComponent, IgxColumnLayoutComponent } from 'igniteui-angular/grids/core';
@@ -282,7 +280,6 @@ import { IgxPreventDocumentScrollDirective } from '../../directives/prevent-scro
     selector: 'app-grid-multi-row-layout-styling-sample',
     styleUrls: ['./grid-multi-row-layout-styling.component.scss'],
     templateUrl: './grid-multi-row-layout-styling.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxGridComponent, IgxPreventDocumentScrollDirective, IgxColumnLayoutComponent, IgxColumnComponent]
 })
 export class GridMultiRowLayoutStylingComponent {

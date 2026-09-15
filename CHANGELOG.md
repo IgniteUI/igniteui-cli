@@ -1,3 +1,36 @@
+# 15.6.1 (2026-09-01)
+
+## What's Changed
+* **fix(angular):** Updated generated Angular projects to Angular 22.1 tooling, removed leftover Hammer.js usage, corrected Dock Manager component registration and package compatibility, and aligned Fintech Grid row selection with the current API. [#1787](https://github.com/IgniteUI/igniteui-cli/pull/1787)
+
+# 15.6.0 (2026-08-31)
+
+## What's Changed
+* **chore(angular):** Updated scaffolded Angular projects and Ignite UI for Angular to `~22.1.0`, and aligned the CLI workspace packages with the 15.6.0 release. [#1759](https://github.com/IgniteUI/igniteui-cli/pull/1759)
+* **chore(webcomponents):** Updated scaffolded Web Components projects for the 7.3 release cycle, including `igniteui-webcomponents` `~7.3.0`, grids `~7.2.1`, and core, charts, gauges, inputs, and layouts `~7.1.0`. [#1779](https://github.com/IgniteUI/igniteui-cli/pull/1779)
+* **feat(angular):** Removed the obsolete `hammerjs` dependency from Angular project templates. [dcb4a9f](https://github.com/IgniteUI/igniteui-cli/commit/dcb4a9f49375551de91e7141cca958b36c29d93b)
+* **feat(mcp):** Added an automated documentation build and database workflow with deterministic component metadata derivation, stronger validation gates, build summaries, and safer staged artifact publishing. [#1769](https://github.com/IgniteUI/igniteui-cli/pull/1769), [#1777](https://github.com/IgniteUI/igniteui-cli/pull/1777)
+* **feat(mcp):** Enhanced documentation tooling: `list_components` is now TOC-grouped by default with `group`/`filter` options and `detail: "docs"` flat-mode compatibility, significantly reducing unfiltered response tokens. [#1778](https://github.com/IgniteUI/igniteui-cli/pull/1778)
+* **fix(mcp):** Added the missing documentation submodules to the submodule switching script. [#1781](https://github.com/IgniteUI/igniteui-cli/pull/1781)
+* **chore(mcp):** Refreshed the bundled documentation database and component group summaries across Angular, React, Web Components, and Blazor. [#1780](https://github.com/IgniteUI/igniteui-cli/pull/1780)
+* **docs(cli):** Added Blazor to the supported frameworks listed in the CLI documentation. [ee22827](https://github.com/IgniteUI/igniteui-cli/commit/ee2282704030c92f2cc16f4425caac4b3cc40f88)
+
+# 15.5.1 (2026-08-05)
+
+## What's Changed
+* **fix(mcp):** Updated the bundled MCP documentation database with the full set of documents, so `list_components`, `get_doc`, and `search_docs` resolve against complete Angular, React, Web Components, and Blazor docs. The `build:db` script no longer fails the build when the optional copy to the docs backend cannot be written. [#1767](https://github.com/IgniteUI/igniteui-cli/pull/1767)
+* **refactor(styles):** Removed hardcoded styles from the React templates — Login, Register, LoginBar, LoginDialog, Profile, and the side-nav / side-nav-mini / side-nav-auth layouts now use theme CSS variables. Also restored the missing theme import and styles in the React base template. [#1760](https://github.com/IgniteUI/igniteui-cli/pull/1760)
+* **feat(cd):** Added an MCP Publisher step to the npm publish workflow, including prerelease checks, so `@igniteui/mcp-server` is published to the MCP registry alongside npm. Updated the root and MCP README files. [#1764](https://github.com/IgniteUI/igniteui-cli/pull/1764)
+* **chore(mcp):** Updated `@modelcontextprotocol/sdk` to 1.30.0 and `@hono/node-server` to 2.0.12. [#1762](https://github.com/IgniteUI/igniteui-cli/pull/1762)
+
+# 15.5.0 (2026-07-15)
+
+## What's Changed
+* **feat(wc, react):** Updated scaffolded Web Components, React, and React Grids package versions. [#1751](https://github.com/IgniteUI/igniteui-cli/pull/1751)
+* **refactor(igc-ts):** Centralized Web Components package version constants used by templates. [#1752](https://github.com/IgniteUI/igniteui-cli/pull/1752)
+* **fix(mcp):** Improved `search_docs` ranking and `get_doc` name resolution for more relevant results. [#1746](https://github.com/IgniteUI/igniteui-cli/pull/1746)
+* **docs(mcp):** Enhanced MCP server tool descriptions for better clarity and guidance. [#1737](https://github.com/IgniteUI/igniteui-cli/pull/1737)
+
 # 15.4.1 (2026-06-26)
 
 ## What's Changed

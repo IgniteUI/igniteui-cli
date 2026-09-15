@@ -10,9 +10,9 @@
   align-self: flex-start;
   width: 100%;
   max-width: 640px;
-  background: #fff;
+  background: var(--ig-surface-500);
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, .08);
+  box-shadow: var(--ig-elevation-2);
   padding: 32px;
   box-sizing: border-box;
 }
@@ -22,13 +22,13 @@
   align-items: center;
   gap: 20px;
   padding-bottom: 24px;
-  border-bottom: 1px solid #d7eaf8;
+  border-bottom: 1px solid var(--ig-gray-300);
 }
 
 .avatar {
   flex: 0 0 auto;
-  --ig-avatar-background: #e0f2ff;
-  --ig-avatar-color: #0075d2;
+  --ig-avatar-background: var(--ig-primary-500);
+  --ig-avatar-color: var(--ig-primary-500-contrast);
   --ig-avatar-size: 4rem;
 }
 
@@ -38,7 +38,7 @@
 
 .status {
   margin: 0 0 4px;
-  color: #000;
+  color: var(--ig-gray-700);
   font-size: .875rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -47,7 +47,7 @@
 .name {
   margin: 0;
   overflow-wrap: anywhere;
-  color: #09f;
+  color: var(--ig-primary-500);
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.2;
@@ -55,7 +55,7 @@
 
 .description {
   margin: 8px 0 0;
-  color: #000;
+  color: var(--ig-gray-900);
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -70,11 +70,11 @@
   grid-template-columns: 140px minmax(0, 1fr);
   gap: 24px;
   padding: 14px 0;
-  border-bottom: 1px solid #eef3f7;
+  border-bottom: 1px solid var(--ig-gray-200);
 }
 
 .dt {
-  color: rgba(0, 0, 0, .62);
+  color: var(--ig-gray-600);
   font-size: .875rem;
   font-weight: 600;
   margin: 0;
@@ -83,5 +83,5 @@
 .dd {
   margin: 0;
   font-size: 1rem;
-  color: #2d2d2d;
+  color: var(--ig-gray-900);
 }

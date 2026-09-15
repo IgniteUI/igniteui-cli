@@ -13,7 +13,7 @@ The Ignite UI for Angular Drop Down component can fully integrate with the [`Igx
 ## Angular Virtual Drop Down Example
 
 ```typescript
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { IgxButtonDirective, IgxForOfDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxDropDownComponent, IgxDropDownItemComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
 
@@ -30,7 +30,6 @@ interface DataItem {
     selector: 'app-drop-down-virtual',
     templateUrl: './drop-down-virtual.component.html',
     styleUrls: ['./drop-down-virtual.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxForOfDirective, IgxDropDownItemComponent]
 })
 export class DropDownVirtualComponent {
@@ -340,7 +339,7 @@ The result of the above configuration is a drop-down that dynamically loads the 
 
 
 ```typescript
-import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, AfterViewInit, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, AfterViewInit, inject } from '@angular/core';
 // tslint:disable-next-line:max-line-length
 import { IForOfState, IgxButtonDirective, IgxForOfDirective, IgxToggleActionDirective } from 'igniteui-angular/directives';
 import { IgxDropDownComponent, IgxDropDownItemComponent, IgxDropDownItemNavigationDirective } from 'igniteui-angular/drop-down';
@@ -357,7 +356,6 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-drop-down-remote',
     templateUrl: './drop-down-remote.component.html',
     styleUrls: ['./drop-down-remote.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [IgxButtonDirective, IgxToggleActionDirective, IgxDropDownItemNavigationDirective, IgxDropDownComponent, IgxForOfDirective, IgxDropDownItemComponent, IgxToastComponent, AsyncPipe]
 })
 export class DropDownRemoteComponent implements OnInit, OnDestroy, AfterViewInit {

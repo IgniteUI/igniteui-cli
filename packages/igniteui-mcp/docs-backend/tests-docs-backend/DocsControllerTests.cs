@@ -60,17 +60,21 @@ public class DocsControllerTests
 
     // --- List endpoint tests ---
 
+    // This fixture has no doc_toc/doc_groups, so it also covers the back-compat
+    // guard: a legacy-schema database must render flat, exactly as it did before
+    // grouping existed. ListFixtureTests covers the grouped modes.
+
     [Test]
-    public void List_ReturnsAllAngularDocs()
+    public void List_LegacySchema_FallsBackToFlat()
     {
         var result = _controller.List("angular", null) as ContentResult;
 
         Assert.That(result, Is.Not.Null);
         Assert.That(result!.StatusCode, Is.Null.Or.EqualTo(200));
-        var lines = result.Content!.Split('\n');
-        Assert.That(lines, Has.Length.EqualTo(4));
-        Assert.That(result.Content, Does.Contain("accordion [IgxAccordionComponent]"));
-        Assert.That(result.Content, Does.Contain("grid-editing [IgxGridComponent, IgxColumnComponent]"));
+        Assert.That(result.Content, Does.StartWith("Found 4 components for **angular**:"));
+        Assert.That(result.Content, Does.Contain("- **Accordion** (`accordion`)"));
+        Assert.That(result.Content, Does.Contain("  Accordion component overview"));
+        Assert.That(result.Content, Does.Contain("  ⭐ Premium"));
     }
 
     [Test]
@@ -79,10 +83,9 @@ public class DocsControllerTests
         var result = _controller.List("angular", "grid") as ContentResult;
 
         Assert.That(result, Is.Not.Null);
-        var lines = result!.Content!.Split('\n');
-        Assert.That(lines, Has.Length.EqualTo(2));
-        Assert.That(result.Content, Does.Contain("grid-editing"));
-        Assert.That(result.Content, Does.Contain("grid-filtering"));
+        Assert.That(result!.Content, Does.StartWith("Found 2 components for **angular** matching \"grid\":"));
+        Assert.That(result.Content, Does.Contain("(`grid-editing`)"));
+        Assert.That(result.Content, Does.Contain("(`grid-filtering`)"));
     }
 
     [Test]
@@ -91,7 +94,8 @@ public class DocsControllerTests
         var result = _controller.List("angular", "nonexistent-xyz") as ContentResult;
 
         Assert.That(result, Is.Not.Null);
-        Assert.That(result!.Content, Is.EqualTo("No docs found."));
+        Assert.That(result!.Content,
+            Is.EqualTo("No components found for framework \"angular\" matching \"nonexistent-xyz\"."));
     }
 
     [Test]
@@ -112,12 +116,23 @@ public class DocsControllerTests
     }
 
     [Test]
-    public void List_DocWithEmptyComponent_NoSquareBrackets()
+    public void List_DocWithNoTocName_FallsBackToTheFilename()
     {
         var result = _controller.List("angular", "no-component") as ContentResult;
 
         Assert.That(result, Is.Not.Null);
-        Assert.That(result!.Content, Is.EqualTo("no-component"));
+        Assert.That(result!.Content,
+            Is.EqualTo("Found 1 components for **angular** matching \"no-component\":\n\n- **no-component** (`no-component`)"));
+    }
+
+    [Test]
+    public void List_LegacySchema_IgnoresGroupAndDetail()
+    {
+        var grouped = _controller.List("angular", null) as ContentResult;
+        var asked = _controller.List("angular", null, "groups", "Grids & Lists") as ContentResult;
+
+        Assert.That(asked, Is.Not.Null);
+        Assert.That(asked!.Content, Is.EqualTo(grouped!.Content));
     }
 
     // --- Get endpoint tests ---
