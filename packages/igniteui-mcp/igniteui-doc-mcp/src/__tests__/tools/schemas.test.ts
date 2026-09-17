@@ -74,12 +74,21 @@ describe('getApiReferenceSchema', () => {
     expect(result.member).toBe('checked');
   });
 
-  it('rejects empty member name', () => {
+  it('accepts an empty member name (treated as omitted by the handler)', () => {
     expect(getApiReferenceSchema.safeParse({
       platform: 'angular',
       component: 'IgxGrid',
       member: '',
-    }).success).toBe(false);
+    }).success).toBe(true);
+  });
+
+  it('accepts a whitespace-only member name and trims it to empty', () => {
+    const result = getApiReferenceSchema.parse({
+      platform: 'angular',
+      component: 'IgxGrid',
+      member: '   ',
+    });
+    expect(result.member).toBe('');
   });
 
   it('rejects member name exceeding 128 characters', () => {
