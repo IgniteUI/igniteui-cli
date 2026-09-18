@@ -21,32 +21,28 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
       }
     }
 
-    let resolvedComponent = component;
-    let entry = docLoader.get(platform, resolvedComponent);
+    // Agents that read `member` as required send placeholders like "*" or ".*"
+    // when they want the whole entry. Anything with no letters or digits cannot
+    // name a real member, so treat it as omitted rather than failing.
+    if (member && !/[A-Za-z0-9]/.test(member)) {
+      member = undefined;
+    }
+
+    // ApiDocLoader.get is exact-first, then case-insensitive and generic-stripped
+    // (IgbCombo → IgbCombo<T>).
+    const entry = docLoader.get(platform, component);
 
     if (!entry) {
-      // Try case-insensitive search within platform
-      const results = docLoader.search({ platform, filter: resolvedComponent });
-      const caseInsensitive = results.find(
-        e => e.component.toLowerCase() === resolvedComponent.toLowerCase()
-      );
-
-      if (caseInsensitive) {
-        resolvedComponent = caseInsensitive.component;
-        entry = caseInsensitive;
-      }
-
-      if (!entry) {
-        const platformName = getPlatformConfig(platform).displayName;
-        return {
-          content: [{
-            type: "text",
-            text: `API reference for "${resolvedComponent}" not found in ${platformName}. Use search_api to find available components.`
-          }],
-          isError: true,
-        };
-      }
+      const platformName = getPlatformConfig(platform).displayName;
+      return {
+        content: [{
+          type: "text",
+          text: `API reference for "${component}" not found in ${platformName}. Use search_api to find available components.`
+        }],
+        isError: true,
+      };
     }
+    const resolvedComponent = entry.component;
 
     const content = entry.content;
     if (!content) {

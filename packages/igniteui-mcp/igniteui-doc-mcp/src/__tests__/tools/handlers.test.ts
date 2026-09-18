@@ -50,6 +50,26 @@ describe('createGetApiReferenceHandler', () => {
     expect(result.content[0].text).toContain('Events');
   });
 
+  it('returns the full entry when member is an empty string (blank member sent for "full entry")', async () => {
+    const loader = makeLoader({ get: vi.fn().mockReturnValue(makeEntry()) });
+    const handler = createGetApiReferenceHandler(loader);
+    const result = await handler({ platform: 'angular', component: 'IgxGridComponent', section: 'all', member: '' });
+
+    expect(result.isError).toBeUndefined();
+    expect(result.content[0].text).toContain('Properties');
+    expect(result.content[0].text).toContain('Methods');
+    expect(result.content[0].text).toContain('Events');
+  });
+
+  it('returns the requested section when member is an empty string', async () => {
+    const loader = makeLoader({ get: vi.fn().mockReturnValue(makeEntry()) });
+    const handler = createGetApiReferenceHandler(loader);
+    const result = await handler({ platform: 'angular', component: 'IgxGridComponent', section: 'properties', member: '' });
+
+    expect(result.isError).toBeUndefined();
+    expect(result.content[0].text).toContain('- properties');
+  });
+
   it('returns isError when component is not found', async () => {
     const loader = makeLoader();
     const handler = createGetApiReferenceHandler(loader);
@@ -60,16 +80,37 @@ describe('createGetApiReferenceHandler', () => {
     expect(result.content[0].text).toContain('not found');
   });
 
-  it('falls back to case-insensitive match', async () => {
-    const entry = makeEntry({ component: 'IgxGridComponent' });
-    const loader = makeLoader({
-      get: vi.fn().mockReturnValueOnce(undefined).mockReturnValue(entry),
-      search: vi.fn().mockReturnValue([entry]),
-    });
+  it('delegates fuzzy name matching to the loader and reports the resolved name', async () => {
+    // ApiDocLoader.get handles case-insensitive and generic-stripped lookups;
+    // the handler just uses whatever entry comes back.
+    const entry = makeEntry({ component: 'IgbCombo<T>', platform: 'blazor' });
+    const loader = makeLoader({ get: vi.fn().mockReturnValue(entry) });
     const handler = createGetApiReferenceHandler(loader);
-    const result = await handler({ platform: 'angular', component: 'igxgridcomponent', section: 'all' });
+    const result = await handler({ platform: 'blazor', component: 'IgbCombo', section: 'properties' });
 
+    expect(loader.get).toHaveBeenCalledWith('blazor', 'IgbCombo');
     expect(result.isError).toBeUndefined();
+    expect(result.content[0].text).toContain('# IgbCombo<T> (blazor) - properties');
+  });
+
+  it('treats a placeholder member with no letters or digits as omitted', async () => {
+    const loader = makeLoader({ get: vi.fn().mockReturnValue(makeEntry()) });
+    const handler = createGetApiReferenceHandler(loader);
+
+    for (const member of ['.*', '*', '-', '?']) {
+      const result = await handler({ platform: 'angular', component: 'IgxGridComponent', section: 'all', member });
+      expect(result.isError, `member=${JSON.stringify(member)}`).toBeUndefined();
+      expect(result.content[0].text).toContain('Methods');
+    }
+  });
+
+  it('still reports not-found for a real-looking member that does not exist', async () => {
+    const loader = makeLoader({ get: vi.fn().mockReturnValue(makeEntry()) });
+    const handler = createGetApiReferenceHandler(loader);
+    const result = await handler({ platform: 'angular', component: 'IgxGridComponent', section: 'all', member: ':invalid' });
+
+    expect(result.isError).toBe(true);
+    expect(result.content[0].text).toContain('Member ":invalid" not found');
   });
 
   it('returns isError with suggestion to use search_api when not found even case-insensitively', async () => {

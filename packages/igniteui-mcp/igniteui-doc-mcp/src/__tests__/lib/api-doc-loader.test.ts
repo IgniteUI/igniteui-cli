@@ -158,6 +158,62 @@ describe('ApiDocLoader', () => {
       const loader = createLoadedLoader();
       expect(loader.get('react', 'IgxGridComponent')).toBeUndefined();
     });
+
+    it('falls back to a case-insensitive match', () => {
+      const loader = createLoadedLoader();
+      expect(loader.get('angular', 'igxgridcomponent')?.component).toBe('IgxGridComponent');
+    });
+
+    describe('generic-typed names', () => {
+      const GENERIC_CONTENT = [
+        '### [IgbCombo<T>](https://example.com/blazor/igbcombo)',
+        '',
+        'A combo box component.',
+        '',
+        '### [DynamicContentInfo<T>](https://example.com/blazor/dci-generic)',
+        '',
+        'Generic variant.',
+        '',
+        '### [DynamicContentInfo](https://example.com/blazor/dci)',
+        '',
+        'Non-generic variant.',
+        '',
+      ].join('\n');
+
+      function createBlazorLoader(): ApiDocLoader {
+        setupFsMocks();
+        mockReadFileSync.mockReturnValue(GENERIC_CONTENT);
+        const loader = new ApiDocLoader([{ ...FIXTURE_CONFIG, key: 'blazor', displayName: 'Blazor' }]);
+        loader.load();
+        return loader;
+      }
+
+      it('resolves the plain class name to the generic-typed entry', () => {
+        const loader = createBlazorLoader();
+        expect(loader.get('blazor', 'IgbCombo')?.component).toBe('IgbCombo<T>');
+      });
+
+      it('still resolves the exact generic-typed name', () => {
+        const loader = createBlazorLoader();
+        expect(loader.get('blazor', 'IgbCombo<T>')?.component).toBe('IgbCombo<T>');
+      });
+
+      it('resolves a differently-parameterised spelling to the same entry', () => {
+        const loader = createBlazorLoader();
+        expect(loader.get('blazor', 'IgbCombo<string>')?.component).toBe('IgbCombo<T>');
+      });
+
+      it('combines case-insensitive and generic-stripped matching', () => {
+        const loader = createBlazorLoader();
+        expect(loader.get('blazor', 'igbcombo')?.component).toBe('IgbCombo<T>');
+      });
+
+      it('prefers the exact non-generic entry when both spellings are indexed', () => {
+        const loader = createBlazorLoader();
+        expect(loader.get('blazor', 'DynamicContentInfo')?.component).toBe('DynamicContentInfo');
+        expect(loader.get('blazor', 'DynamicContentInfo<T>')?.component).toBe('DynamicContentInfo<T>');
+      });
+    });
   });
 
   describe('search()', () => {
