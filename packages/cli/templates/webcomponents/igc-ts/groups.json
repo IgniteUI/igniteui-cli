@@ -1,12 +1,11 @@
 {
-	"Data Entry & Display": "",
-  "Interactions": "",
-  "Menus": "",
-  "Grids & Lists": "",
-  "Scheduling": "",
-  "Layouts": "",
-  "Charts": "",
-  "Gauges": "",
-  "Notifications": ""
+	"Grids & Lists": "display data sets with feature rich Grids, Lists and Trees.",
+	"Charts": "high-performance data visualization for category and financial data.",
+	"Gauges": "scale measure Controls including Linear and Radial Gauge and Bullet Graph.",
+	"Data Entry & Display": "contains Button, Input, Checkbox, Combo, Drop Down, Progress Bars, etc.",
+	"Interactions": "includes Dialog, Chat, Slider, Tooltip, Ripple, etc.",
+	"Layouts": "content layout building blocks such as Accordion, Card, Carousel, Tabs and Splitter.",
+	"Menus": "navigation controls including Navbar and Navigation Drawer.",
+	"Notifications": "informational components including Banner, Snackbar and Toast.",
+	"Scheduling": "date and time controls including Calendar and Date pickers."
 }
-
