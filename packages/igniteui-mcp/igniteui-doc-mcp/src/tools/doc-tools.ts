@@ -43,17 +43,16 @@ export function sanitizeSearchDocsQuery(queryText: string): string | null {
     .split(/\s+/)
     .filter(Boolean);
 
-  // Strip stopwords, but if that leaves nothing (e.g. a pure "how do I" query)
-  // fall back to the full term list rather than returning no query at all.
-  const meaningful = rawTerms.filter((t) => !SEARCH_STOPWORDS.has(t.toLowerCase()));
-  const terms = meaningful.length > 0 ? meaningful : rawTerms;
+  const toQuery = (terms: string[]) =>
+    terms
+      .map(quoteOrPrefixTerm)
+      .filter((term): term is string => Boolean(term))
+      .join(' ');
 
-  const sanitized = terms
-    .map(quoteOrPrefixTerm)
-    .filter((term): term is string => Boolean(term))
-    .join(' ');
-
-  return sanitized || null;
+  // Strip stopwords, but if that leaves nothing usable (e.g. a pure "how do I"
+  // query) fall back to the full term list rather than returning no query at all.
+  const meaningful = toQuery(rawTerms.filter((t) => !SEARCH_STOPWORDS.has(t.toLowerCase())));
+  return meaningful || toQuery(rawTerms) || null;
 }
 
 /**
@@ -136,7 +135,7 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         grid: 'grid-grid',
         'hierarchical-grid': 'hierarchicalgrid-hierarchical-grid',
         'tree-grid': 'treegrid-tree-grid',
-        'pivot-grid': 'pivotgrid-pivot-grid',
+        'pivot-grid': 'pivotGrid-pivot-grid',
         spreadsheet: 'spreadsheet-overview',
         'zoom-slider': 'zoomslider-overview',
         zoomslider: 'zoomslider-overview',
@@ -221,8 +220,9 @@ export function applyDocAlias(framework: string, normalizedName: string): string
 
 /**
  * Angular keys its grid-variant feature docs with a compact, unhyphenated
- * component prefix (treegrid-filtering, hierarchicalgrid-paging), while the
- * user-facing component name — and the DOC_ALIASES entry for it — is
+ * component prefix taken from the docfx folder name (treegrid-filtering,
+ * hierarchicalgrid-paging, and camelCase pivotGrid-state-persistence), while
+ * the user-facing component name — and the DOC_ALIASES entry for it — is
  * hyphenated (tree-grid). Composing a component and a topic therefore yields
  * names like "tree-grid-filtering" that no doc uses. Rewriting the prefix
  * resolves ~90 Angular docs that would otherwise fall through to the search
@@ -235,7 +235,7 @@ export function applyDocAlias(framework: string, normalizedName: string): string
 const ANGULAR_COMPACT_GRID_PREFIXES: Array<[string, string]> = [
   ['hierarchical-grid-', 'hierarchicalgrid-'],
   ['tree-grid-', 'treegrid-'],
-  ['pivot-grid-', 'pivotgrid-'],
+  ['pivot-grid-', 'pivotGrid-'],
 ];
 
 /**
@@ -287,6 +287,8 @@ export function parseDocNames(searchOutput: string): string[] {
  * ("navdrawer" contains "drawer").
  */
 function sharesToken(requestName: string, docName: string): boolean {
+  requestName = requestName.toLowerCase();
+  docName = docName.toLowerCase();
   const reqTokens = requestName.split('-').filter((t) => t.length >= 3);
   const docTokens = docName.split('-').filter((t) => t.length >= 3);
   return (
@@ -308,10 +310,10 @@ export interface ResolvedDoc {
 }
 
 /**
- * Resolve a caller-supplied doc name to actual doc content, shared by get_doc
- * and get_example. Applies normalizeDocName + applyDocAlias, then the Angular
- * compact grid prefix rewrite (tree-grid-x → treegrid-x), then a generic grid-
- * prefix fallback for bare feature names (e.g. "sorting" → "grid-sorting").
+ * Resolve a caller-supplied doc name to actual doc content for get_doc.
+ * Applies normalizeDocName + applyDocAlias, then the Angular compact grid
+ * prefix rewrite (tree-grid-x → treegrid-x), then a generic grid- prefix
+ * fallback for bare feature names (e.g. "sorting" → "grid-sorting").
  * As a last resort, runs a full-text search and serves the top hit — this
  * catches names that don't map mechanically (e.g. angular "navigation drawer"
  * → navdrawer, angular charts under the types- prefix) and is the only path
@@ -350,7 +352,13 @@ export async function resolveDoc(
   if (!found) {
     const query = sanitizeSearchDocsQuery(resolvedName.replace(/-/g, ' '));
     if (query) {
-      const results = await docsProvider.searchDocs(framework, query);
+      // A failed search must not turn a plain not-found into a tool error.
+      let results: string;
+      try {
+        results = await docsProvider.searchDocs(framework, query);
+      } catch {
+        return { text, found, servedName, fuzzy };
+      }
       // Accept the highest-ranked hit that shares a token with the request.
       // Checking the top few (not just #1) recovers cases where the best hit
       // ranks second, without accepting an unrelated doc.

@@ -109,6 +109,10 @@ describe('sanitizeSearchDocsQuery', () => {
     expect(sanitizeSearchDocsQuery('how do I')).toBe('"how" "do" "I"');
   });
 
+  it('falls back to full terms when the non-stopwords are all invalid', () => {
+    expect(sanitizeSearchDocsQuery('* the')).toBe('"the"');
+  });
+
   it('does not strip meaningful component words that resemble nothing in the list', () => {
     expect(sanitizeSearchDocsQuery('column pinning')).toBe('"column" "pinning"');
   });
@@ -322,10 +326,27 @@ describe('resolveDoc', () => {
     expect(r.found).toBe(false);
   });
 
+  it('returns the original not-found result when the search fallback throws', async () => {
+    const p: DocsProvider = {
+      ...makeProvider({}),
+      async searchDocs() {
+        throw new Error('Backend returned 500: boom');
+      },
+    };
+    const r = await resolveDoc(p, 'angular', 'totally unknown widget');
+    expect(r).toMatchObject({ found: false, fuzzy: false, text: 'not found' });
+  });
+
   it('rejects an unrelated search hit that shares no token with the request', async () => {
     const p = makeProvider({ 'grid-paste-excel': 'X' });
     const r = await resolveDoc(p, 'angular', 'textarea');
     expect(r.found).toBe(false); // guard rejects; better an honest miss than a wrong doc
+  });
+
+  it('matches search hits case-insensitively against the request', async () => {
+    const p = makeProvider({ 'zoomSlider-overview': 'ZS' });
+    const r = await resolveDoc(p, 'angular', 'zoomslider');
+    expect(r).toMatchObject({ found: true, servedName: 'zoomSlider-overview', fuzzy: true });
   });
 
   it('skips an unrelated top hit and accepts a lower-ranked one that shares a token', async () => {
@@ -348,14 +369,15 @@ describe('resolveDoc', () => {
   });
 
   it('rewrites angular hierarchical-grid- and pivot-grid- topic names', async () => {
-    const p = makeProvider({ 'hierarchicalgrid-paging': 'HP', 'pivotgrid-sorting': 'PS' });
+    const p = makeProvider({ 'hierarchicalgrid-paging': 'HP', 'pivotGrid-state-persistence': 'PS' });
     await expect(resolveDoc(p, 'angular', 'hierarchical-grid-paging')).resolves.toMatchObject({
       found: true,
       servedName: 'hierarchicalgrid-paging',
     });
-    await expect(resolveDoc(p, 'angular', 'pivot-grid-sorting')).resolves.toMatchObject({
+    await expect(resolveDoc(p, 'angular', 'pivot-grid-state-persistence')).resolves.toMatchObject({
       found: true,
-      servedName: 'pivotgrid-sorting',
+      servedName: 'pivotGrid-state-persistence',
+      fuzzy: false,
     });
   });
 
@@ -401,7 +423,7 @@ describe('applyCompactGridPrefix', () => {
   it('rewrites the three angular grid-variant prefixes', () => {
     expect(applyCompactGridPrefix('angular', 'tree-grid-filtering')).toBe('treegrid-filtering');
     expect(applyCompactGridPrefix('angular', 'hierarchical-grid-paging')).toBe('hierarchicalgrid-paging');
-    expect(applyCompactGridPrefix('angular', 'pivot-grid-sorting')).toBe('pivotgrid-sorting');
+    expect(applyCompactGridPrefix('angular', 'pivot-grid-sorting')).toBe('pivotGrid-sorting');
   });
 
   it('returns null when no prefix matches', () => {
