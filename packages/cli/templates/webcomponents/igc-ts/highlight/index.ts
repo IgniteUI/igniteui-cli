@@ -7,7 +7,7 @@ class IgcHighlightComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name  = "Highlight";
-		this.group = "Interactions";
+		this.group = "Data Entry & Display";
 		this.description = `Searches and highlights matching text projected into its default slot`;
 	}
 }

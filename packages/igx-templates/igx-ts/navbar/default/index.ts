@@ -5,7 +5,7 @@ class IgxNavbarTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Navbar"];
-		this.controlGroup = "Layouts";
+		this.controlGroup = "Menus";
 		this.listInComponentTemplates = true;
 		this.id = "navbar";
 		this.projectType = "igx-ts";

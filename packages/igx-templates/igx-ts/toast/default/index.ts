@@ -5,7 +5,7 @@ class IgxToastTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Toast"];
-		this.controlGroup = "Interactions";
+		this.controlGroup = "Notifications";
 		this.listInComponentTemplates = true;
 		this.id = "toast";
 		this.projectType = "igx-ts";

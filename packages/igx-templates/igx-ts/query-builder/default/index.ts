@@ -5,7 +5,7 @@ class IgxQueryBuilderTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Query Builder"];
-		this.controlGroup = "Grids & Lists";
+		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
 		this.id = "query-builder";
 		this.projectType = "igx-ts";

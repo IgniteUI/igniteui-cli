@@ -4,7 +4,7 @@ class IgrHighlightComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name = "Highlight";
-		this.group = "Interactions";
+		this.group = "Data Entry & Display";
 		this.description = `highlights matches of a search text within its slotted content`;
 	}
 }

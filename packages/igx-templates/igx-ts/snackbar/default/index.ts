@@ -5,7 +5,7 @@ class IgxSnackbarTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Snackbar"];
-		this.controlGroup = "Interactions";
+		this.controlGroup = "Notifications";
 		this.listInComponentTemplates = true;
 		this.id = "snackbar";
 		this.projectType = "igx-ts";

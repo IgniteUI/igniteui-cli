@@ -5,7 +5,7 @@ class IgrHighlightTemplate extends IgniteUIForReactTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Highlight"];
-		this.controlGroup = "Interactions";
+		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
 		this.id = "highlight";
 		this.projectType = "igr-ts";

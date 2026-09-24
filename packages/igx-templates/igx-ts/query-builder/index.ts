@@ -4,7 +4,7 @@ class IgxQueryBuilderComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name = "Query Builder";
-		this.group = "Grids & Lists";
+		this.group = "Data Entry & Display";
 		this.description = "provides a way to build complex queries through the UI";
 	}
 }
