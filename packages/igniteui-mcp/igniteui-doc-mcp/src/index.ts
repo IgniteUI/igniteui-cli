@@ -12,7 +12,7 @@ import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
 import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
 import { getApiReferenceSchema, searchApiSchema } from "./tools/schemas.js";
 import { createGetApiReferenceHandler, createSearchApiHandler } from "./tools/handlers.js";
-import { applyDocAlias, buildProjectSetupGuide, normalizeDocName, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
+import { buildProjectSetupGuide, formatSubstitutionNotice, resolveDoc, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
 import { ApiDocLoader } from "./lib/api-doc-loader.js";
 import { getPlatforms } from "./config/platforms.js";
 
@@ -160,24 +160,12 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     },
     async ({ framework, name }) => {
       const start = performance.now();
-      const resolvedName = applyDocAlias(framework, normalizeDocName(name.trim()));
-      let { text, found } = await docsProvider.getDoc(framework, resolvedName);
+      const { text, found, servedName, fuzzy } = await resolveDoc(docsProvider, framework, name);
 
-      // Generic grid-prefix fallback: if the doc isn't found and the name doesn't
-      // already start with a component-type prefix, try "grid-{name}".
-      // This handles bare feature names like "sorting", "remote-data-operations",
-      // "row-editing" etc. without needing an explicit alias for every grid sub-doc.
-      let servedName = resolvedName;
-      if (!found && !/^(grid|hierarchical|tree|pivot|hierarchicalgrid|treegrid|pivotgrid|combo|drop-down|select|for-of)[-]/.test(resolvedName)) {
-        const withGridPrefix = await docsProvider.getDoc(framework, `grid-${resolvedName}`);
-        if (withGridPrefix.found) {
-          ({ text, found } = withGridPrefix);
-          servedName = `grid-${resolvedName}`;
-        }
-      }
+      const body = fuzzy ? `${formatSubstitutionNotice(name, servedName)}\n\n${text}` : text;
 
-      log("get_doc", { framework, name: servedName }, text, Math.round(performance.now() - start));
-      return { content: [{ type: "text" as const, text }], ...(found ? {} : { isError: true }) };
+      log("get_doc", { framework, name: servedName }, body, Math.round(performance.now() - start));
+      return { content: [{ type: "text" as const, text: body }], ...(found ? {} : { isError: true }) };
     }
   );
 
