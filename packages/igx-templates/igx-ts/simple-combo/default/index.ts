@@ -5,7 +5,7 @@ class IgxSimpleComboTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Simple Combo"];
-		this.controlGroup = "Grids & Lists";
+		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
 		this.id = "simple-combo";
 		this.projectType = "igx-ts";

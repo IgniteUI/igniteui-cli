@@ -5,7 +5,7 @@ class IgxActionStripTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Action Strip"];
-		this.controlGroup = "Grids & Lists";
+		this.controlGroup = "Interactions";
 		this.listInComponentTemplates = true;
 		this.id = "action-strip";
 		this.projectType = "igx-ts";

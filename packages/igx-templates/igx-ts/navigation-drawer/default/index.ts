@@ -5,7 +5,7 @@ class IgxNavigationDrawerTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Navigation Drawer"];
-		this.controlGroup = "Layouts";
+		this.controlGroup = "Menus";
 		this.listInComponentTemplates = true;
 		this.id = "navigation-drawer";
 		this.projectType = "igx-ts";
