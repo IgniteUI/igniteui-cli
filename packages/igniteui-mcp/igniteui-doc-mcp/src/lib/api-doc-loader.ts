@@ -13,8 +13,16 @@ export class ApiDocsInitializationError extends Error {
   }
 }
 
+/** Drop a generic type parameter list: "IgbCombo<T>" → "IgbCombo". */
+export function stripGenerics(name: string): string {
+  return name.replace(/<[^>]*>/g, '').trim();
+}
+
 export class ApiDocLoader {
   private docs = new Map<string, DocEntry>();
+  // Secondary index keyed by lower-cased, generic-stripped name ("blazor:igbcombo"
+  // for IgbCombo<T>), so callers can use the plain class name the docs refer to.
+  private docsByBaseName = new Map<string, DocEntry>();
   private platformConfigs: PlatformConfig[];
 
   constructor(platformConfigs: PlatformConfig[]) {
@@ -116,7 +124,7 @@ export class ApiDocLoader {
             .filter(Boolean);
 
           const key = `${config.key}:${componentName}`;
-          this.docs.set(key, {
+          const entry: DocEntry = {
             filepath: llmsFile,
             content: chunk,
             title: componentName,
@@ -125,7 +133,9 @@ export class ApiDocLoader {
             keywords,
             summary: summaryLine.trim(),
             platform: config.key,
-          });
+          };
+          this.docs.set(key, entry);
+          this.indexBaseName(config.key, componentName, entry);
           count++;
         }
       }
@@ -162,8 +172,31 @@ export class ApiDocLoader {
     return 'class';
   }
 
+  /**
+   * Register an entry under its base name. Later entries replace earlier ones,
+   * mirroring the exact-name map, except that a non-generic name is never
+   * shadowed by a generic one (Blazor has both DynamicContentInfo and
+   * DynamicContentInfo<T>).
+   */
+  private indexBaseName(platform: string, componentName: string, entry: DocEntry): void {
+    const base = stripGenerics(componentName);
+    const key = `${platform}:${base.toLowerCase()}`;
+    const existing = this.docsByBaseName.get(key);
+    const existingIsGeneric = existing !== undefined && stripGenerics(existing.component) !== existing.component;
+    if (!existing || existingIsGeneric || base === componentName) {
+      this.docsByBaseName.set(key, entry);
+    }
+  }
+
+  /**
+   * Exact lookup first; then a case-insensitive, generic-stripped lookup so
+   * "IgbCombo" (or "igbcombo") resolves to the indexed "IgbCombo<T>".
+   */
   get(platform: Platform, name: string): DocEntry | undefined {
-    return this.docs.get(`${platform}:${name}`);
+    return (
+      this.docs.get(`${platform}:${name}`) ??
+      this.docsByBaseName.get(`${platform}:${stripGenerics(name).toLowerCase()}`)
+    );
   }
 
   search(options: {
