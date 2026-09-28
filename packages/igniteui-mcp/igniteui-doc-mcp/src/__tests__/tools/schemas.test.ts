@@ -31,6 +31,30 @@ describe('resolveImportSchema', () => {
   it('rejects an unknown platform', () => {
     expect(resolveImportSchema.safeParse({ symbols: ['X'], platform: 'vue' }).success).toBe(false);
   });
+
+  it('strips `type` prefixes copied from type-only imports', () => {
+    expect(resolveImportSchema.parse({ symbols: ['type IGridEditEventArgs', 'typeof IGX_GRID_DIRECTIVES'] }).symbols)
+      .toEqual(['IGridEditEventArgs', 'IGX_GRID_DIRECTIVES']);
+  });
+
+  it('accepts an array serialized as a JSON string', () => {
+    expect(resolveImportSchema.parse({ symbols: '["IGridEditEventArgs", "IPageEventArgs"]' }).symbols)
+      .toEqual(['IGridEditEventArgs', 'IPageEventArgs']);
+  });
+
+  it('reduces a pasted import statement to its names, dropping aliases and the module', () => {
+    const pasted = `import { type IRowDataEventArgs, IgxGridComponent as Grid } from 'igniteui-angular/grids/grid';`;
+    expect(resolveImportSchema.parse({ symbols: [pasted] }).symbols).toEqual(['IRowDataEventArgs', 'IgxGridComponent']);
+  });
+
+  it('drops generic parameters, including ones with commas', () => {
+    expect(resolveImportSchema.parse({ symbols: ['IgbCombo<T>', 'Map<string, Array<number>>'] }).symbols)
+      .toEqual(['IgbCombo', 'Map']);
+  });
+
+  it('still rejects non-string entries', () => {
+    expect(resolveImportSchema.safeParse({ symbols: [42] }).success).toBe(false);
+  });
 });
 
 describe('getApiReferenceSchema', () => {

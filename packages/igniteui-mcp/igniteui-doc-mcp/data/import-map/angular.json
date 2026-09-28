@@ -1,7 +1,7 @@
 {
  "platform": "angular",
  "sources": {
-  "igniteui-angular": "22.1.0-beta.1-2-g0a0755cbb4",
+  "igniteui-angular": "22.1.4",
   "igniteui-angular-examples": "be04fef9"
  },
  "symbols": {
@@ -1629,11 +1629,15 @@
    "kind": "const"
   },
   "GridSelectionRange": {
-   "module": "igniteui-angular/grids/core",
+   "module": "igniteui-angular/core",
    "kind": "interface"
   },
   "GridServiceType": {
    "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "GridStyleCSSProperty": {
+   "module": "igniteui-angular/core",
    "kind": "interface"
   },
   "GridSummaryCalculationMode": {
@@ -1869,7 +1873,7 @@
    "kind": "interface"
   },
   "IColumnSelectionState": {
-   "module": "igniteui-angular/grids/core",
+   "module": "igniteui-angular/core",
    "kind": "interface"
   },
   "IColumnState": {
@@ -2361,7 +2365,7 @@
    "kind": "interface"
   },
   "IGroupingDoneEventArgs": {
-   "module": "igniteui-angular/grids/grid",
+   "module": "igniteui-angular/grids/core",
    "kind": "interface"
   },
   "IGroupingExpression": {
@@ -2397,7 +2401,7 @@
    "kind": "interface"
   },
   "IMultiRowLayoutNode": {
-   "module": "igniteui-angular/grids/core",
+   "module": "igniteui-angular/core",
    "kind": "interface"
   },
   "INPUT_DEBOUNCE_TIME": {
@@ -2480,6 +2484,10 @@
    "module": "igniteui-angular/grids/core",
    "kind": "interface"
   },
+  "IPivotExpandableDimension": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
   "IPivotGridColumn": {
    "module": "igniteui-angular/grids/core",
    "kind": "interface"
@@ -2498,6 +2506,10 @@
   },
   "IPivotKeys": {
    "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotRecordTemplateContext": {
+   "module": "igniteui-angular/grids/pivot-grid",
    "kind": "interface"
   },
   "IPivotUISettings": {
@@ -2569,15 +2581,15 @@
    "kind": "interface"
   },
   "ISelectionKeyboardState": {
-   "module": "igniteui-angular/grids/core",
+   "module": "igniteui-angular/core",
    "kind": "interface"
   },
   "ISelectionNode": {
-   "module": "igniteui-angular/grids/core",
+   "module": "igniteui-angular/core",
    "kind": "interface"
   },
   "ISelectionPointerState": {
-   "module": "igniteui-angular/grids/core",
+   "module": "igniteui-angular/core",
    "kind": "interface"
   },
   "ISimpleComboSelectionChangedEventArgs": {
@@ -2719,10 +2731,6 @@
   "IconReference": {
    "module": "igniteui-angular/icon",
    "kind": "type"
-  },
-  "IgSizeDirective": {
-   "module": "igniteui-angular/directives",
-   "kind": "class"
   },
   "IgcCalendarBaseEventMap": {
    "module": "igniteui-angular/core",
@@ -2894,7 +2902,7 @@
   },
   "IgxButtonType": {
    "module": "igniteui-angular/directives",
-   "kind": "type"
+   "kind": "const"
   },
   "IgxCSVTextDirective": {
    "module": "igniteui-angular/grids/core",
@@ -3321,7 +3329,7 @@
    "kind": "class"
   },
   "IgxDateSummaryOperand": {
-   "module": "igniteui-angular/grids/core",
+   "module": "igniteui-angular/core",
    "kind": "class"
   },
   "IgxDateTimeEditorDirective": {
@@ -3364,7 +3372,7 @@
    "module": "igniteui-angular/dialog",
    "kind": "class"
   },
-  "IgxDividerDirective": {
+  "IgxDividerComponent": {
    "module": "igniteui-angular/directives",
    "kind": "class"
   },
@@ -3828,6 +3836,10 @@
    "module": "igniteui-angular/grids/lite",
    "kind": "class"
   },
+  "IgxGridLiteNavigateToOptions": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "type"
+  },
   "IgxGridLiteSortingExpression": {
    "module": "igniteui-angular/grids/lite",
    "kind": "type"
@@ -3981,7 +3993,7 @@
    "kind": "class"
   },
   "IgxGridTransaction": {
-   "module": "igniteui-angular/grids/core",
+   "module": "igniteui-angular/core",
    "kind": "const"
   },
   "IgxGridTransactionPipe": {
@@ -4284,6 +4296,10 @@
    "module": "igniteui-angular/core",
    "kind": "class"
   },
+  "IgxNoTypographyDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
   "IgxNotificationsDirective": {
    "module": "igniteui-angular/directives",
    "kind": "class"
@@ -4297,7 +4313,7 @@
    "kind": "class"
   },
   "IgxNumberSummaryOperand": {
-   "module": "igniteui-angular/grids/core",
+   "module": "igniteui-angular/core",
    "kind": "class"
   },
   "IgxOverlayOutletDirective": {
@@ -4720,6 +4736,10 @@
    "module": "igniteui-angular/grids/core",
    "kind": "class"
   },
+  "IgxStylesRegistrar": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
   "IgxSuffixDirective": {
    "module": "igniteui-angular/input-group",
    "kind": "class"
@@ -4733,7 +4753,7 @@
    "kind": "class"
   },
   "IgxSummaryOperand": {
-   "module": "igniteui-angular/grids/core",
+   "module": "igniteui-angular/core",
    "kind": "class"
   },
   "IgxSummaryResult": {
@@ -4893,7 +4913,7 @@
    "kind": "interface"
   },
   "IgxTimeSummaryOperand": {
-   "module": "igniteui-angular/grids/core",
+   "module": "igniteui-angular/core",
    "kind": "class"
   },
   "IgxToastComponent": {
@@ -5245,7 +5265,7 @@
    "kind": "class"
   },
   "SelectionState": {
-   "module": "igniteui-angular/grids/core",
+   "module": "igniteui-angular/core",
    "kind": "type"
   },
   "Size": {
@@ -6113,10 +6133,6 @@
   },
   "weekDay": {
    "module": "igniteui-angular/calendar",
-   "kind": "const"
-  },
-  "ɵSize": {
-   "module": "igniteui-angular/core",
    "kind": "const"
   }
  }

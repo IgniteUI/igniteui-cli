@@ -22,7 +22,7 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 │   ├── lib/toc-sidecar.ts              # dist/toc-index/<fw>.json writer + filename collision resolver
 │   ├── lib/frontmatter.ts              # Shared docs_final frontmatter parser
 │   ├── build-import-map.ts             # Symbol → import module maps → data/import-map/<fw>.json (resolve_import)
-│   ├── lib/import-map.ts               # Entry-point export walker + example import scanner
+│   ├── lib/import-map.ts               # Published-package entry-point walker + import verifier + example import scanner
 │   ├── export-angular-docs.ts          # Export Angular docs from docfx (toc-driven, template expansion, include resolution, API URL resolution)
 │   ├── inject-angular-docs.ts          # Inject sample code into docs (replaces <code-view> with component source)
 │   ├── compress-angular-docs.ts        # LLM-based compression of docs (~50% size reduction, supports --batch mode)
@@ -103,13 +103,14 @@ npm run build:docs:all             # Build all four platforms
 
 ### Import Map Generation
 
-`resolve_import` reads the tracked, shipped `data/import-map/{angular,react,webcomponents}.json`. Regenerate after bumping the `angular/igniteui-angular` or example submodules:
+`resolve_import` reads the tracked, shipped `data/import-map/{angular,react,webcomponents}.json`. Regenerate after an igniteui-angular release or after bumping the example submodules:
 
 ```bash
-npm run build:import-map
+npm run build:import-map                       # igniteui-angular@latest from npm
+npm run build:import-map -- --angular 22.1.4   # pin a version or dist-tag
 ```
 
-- **Angular**: walks every `ng-package.json` entry point of `angular/igniteui-angular/projects/igniteui-angular` with the TypeScript compiler; a symbol belongs to the entry point whose directory declares it (`IgxColumnComponent` → `igniteui-angular/grids/core`, even though `grids/grid` re-exports it). Other `igniteui-angular-*` packages come from imports observed in the Angular examples/samples.
+- **Angular**: downloads the **published** `igniteui-angular` tarball (`npm pack`, typings only, no install) and reads every typed entry point of its `exports` map with the TypeScript compiler. A symbol belongs to the entry point whose flattened `.d.ts` declares it (`IgxColumnComponent` → `igniteui-angular/grids/core`, even though `grids/grid` re-exports it). Every mapped import is then type-checked against the typings and the script fails if any does not compile. The submodule is deliberately not used: it tracks unreleased master, and entry points move between releases (e.g. `IgxSummaryOperand` is in `core` in 22.1.x but `grids/core` on master). Other `igniteui-angular-*` packages come from imports observed in the Angular examples/samples.
 - **React / Web Components**: most frequent import module per symbol across the example repos (`@infragistics/` scope normalized away, internal deep paths dropped).
 - **Blazor**, and anything missing from the maps, falls back to the `Package:` header of the API docs `llms-full.txt`. API-docs-only hits in the main `igniteui-angular` package are ignored — they are symbols from older releases.
 

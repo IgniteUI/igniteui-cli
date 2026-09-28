@@ -1,14 +1,17 @@
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "fs";
 import { tmpdir } from "os";
 import { dirname, join } from "path";
+import { gzipSync } from "zlib";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
-  collectEntryPointExports,
   collectObservedImports,
-  findEntryPoints,
+  collectPublishedExports,
+  extractTarball,
   isPublicModule,
   normalizeModule,
   parseNamedImports,
+  readPublishedPackage,
+  verifyPublishedImports,
 } from "../../../scripts/lib/import-map.js";
 
 describe("parseNamedImports", () => {
@@ -59,51 +62,112 @@ describe("collectObservedImports", () => {
   });
 });
 
-describe("collectEntryPointExports", () => {
-  let root: string;
+let root: string;
 
-  const write = (rel: string, content: string) => {
-    const full = join(root, rel);
-    mkdirSync(dirname(full), { recursive: true });
-    writeFileSync(full, content);
+beforeEach(() => {
+  root = mkdtempSync(join(tmpdir(), "import-map-"));
+});
+
+afterEach(() => {
+  rmSync(root, { recursive: true, force: true });
+});
+
+function write(rel: string, content: string) {
+  const full = join(root, rel);
+  mkdirSync(dirname(full), { recursive: true });
+  writeFileSync(full, content);
+}
+
+/** Minimal ustar archive; a long path is carried in a pax header like npm does. */
+function tarball(files: Record<string, string>): Buffer {
+  const blocks: Buffer[] = [];
+  const header = (name: string, size: number, type: string) => {
+    const h = Buffer.alloc(512);
+    h.write(name.slice(0, 100), 0);
+    h.write(size.toString(8).padStart(11, "0"), 124);
+    h.write(type, 156);
+    h.write("ustar", 257);
+    return h;
   };
+  const pad = (b: Buffer) => Buffer.concat([b, Buffer.alloc((512 - (b.length % 512)) % 512)]);
+  for (const [name, content] of Object.entries(files)) {
+    const body = Buffer.from(content);
+    if (name.length > 100) {
+      const record = ` path=${name}\n`;
+      const pax = Buffer.from(`${record.length + String(record.length).length}${record}`);
+      blocks.push(header("PaxHeader", pax.length, "x"), pad(pax));
+    }
+    blocks.push(header(name, body.length, "0"), pad(body));
+  }
+  blocks.push(Buffer.alloc(1024));
+  return gzipSync(Buffer.concat(blocks));
+}
 
+describe("extractTarball", () => {
+  it("extracts the included files, following pax long paths", () => {
+    const long = `package/types/${"x".repeat(120)}.d.ts`;
+    extractTarball(
+      tarball({ "package/package.json": "{}", "package/fesm2022/a.mjs": "js", [long]: "declare const x: 1;" }),
+      root,
+      p => p === "package/package.json" || p.endsWith(".d.ts"),
+    );
+    expect(readFileSync(join(root, "package/package.json"), "utf-8")).toBe("{}");
+    expect(readFileSync(join(root, long), "utf-8")).toBe("declare const x: 1;");
+    expect(existsSync(join(root, "package/fesm2022/a.mjs"))).toBe(false);
+  });
+
+  it("refuses paths that escape the destination", () => {
+    expect(() => extractTarball(tarball({ "../evil.d.ts": "x" }), join(root, "out"), () => true)).toThrow(/Refusing/);
+  });
+});
+
+describe("published package exports", () => {
   beforeEach(() => {
-    root = mkdtempSync(join(tmpdir(), "entry-points-"));
-    write("ng-package.json", "{}");
-    write("src/public_api.ts", `export * from 'pkg/core';\nexport * from 'pkg/grids/grid';\n`);
-
-    write("core/ng-package.json", "{}");
-    write("core/index.ts", `export * from './src/public_api';\n`);
-    write("core/src/public_api.ts", `export * from './utils';\n`);
-    write("core/src/utils.ts", [
-      `export class CoreService {}`,
-      `export interface IState { a: number }`,
-      `export type Mode = 'a' | 'b';`,
-      `export const Selection = { single: 'single' } as const;`,
-      `export type Selection = (typeof Selection)[keyof typeof Selection];`,
-      `export function helper() {}`,
-      `export enum Direction { Up }`,
+    write("package.json", JSON.stringify({
+      name: "pkg",
+      version: "1.2.3",
+      exports: {
+        "./package.json": { default: "./package.json" },
+        ".": { types: "./types/pkg.d.ts", default: "./fesm2022/pkg.mjs" },
+        "./core": { types: "./types/pkg-core.d.ts", default: "./fesm2022/pkg-core.mjs" },
+        "./grids/grid": { types: "./types/pkg-grids-grid.d.ts", default: "./fesm2022/pkg-grids-grid.mjs" },
+        "./schematics/*": { default: "./schematics/*" },
+        "./theming": { sass: "./lib/_index.scss" },
+      },
+    }));
+    write("types/pkg.d.ts", `export * from 'pkg/core';\nexport * from 'pkg/grids/grid';\n`);
+    write("types/pkg-core.d.ts", [
+      `declare class CoreService {}`,
+      `interface IState { a: number }`,
+      `interface IInternal { b: number }`,
+      `type Mode = 'a' | 'b';`,
+      `declare const Selection: { readonly single: 'single' };`,
+      `type Selection = (typeof Selection)[keyof typeof Selection];`,
+      `declare function helper(): void;`,
+      `declare enum Direction { Up = 0 }`,
+      `declare const ɵPrivate: 1;`,
+      `export { CoreService, Direction, helper, Mode, Selection, ɵPrivate };`,
+      `export type { IState };`,
     ].join("\n"));
-
-    write("grids/grid/ng-package.json", "{}");
-    write("grids/grid/index.ts", `export * from './src/grid';\nexport { CoreService } from 'pkg/core';\n`);
-    write("grids/grid/src/grid.ts", `export class GridComponent {}\nexport const GRID_DIRECTIVES = [GridComponent] as const;\n`);
-
-    write("schematics/ng-package.json", "{}");
-    write("schematics/index.ts", `export const Schematic = 1;\n`);
+    write("types/pkg-grids-grid.d.ts", [
+      `import { CoreService, IInternal } from 'pkg/core';`,
+      `declare class GridComponent { s: CoreService; i: IInternal }`,
+      `declare const GRID_DIRECTIVES: readonly [typeof GridComponent];`,
+      `export { CoreService } from 'pkg/core';`,
+      `export { GridComponent, GRID_DIRECTIVES };`,
+    ].join("\n"));
   });
 
-  afterEach(() => {
-    rmSync(root, { recursive: true, force: true });
+  it("reads typed entry points from the exports map, skipping the root, wildcards and Sass", () => {
+    const pkg = readPublishedPackage(root);
+    expect(pkg.name).toBe("pkg");
+    expect(pkg.version).toBe("1.2.3");
+    expect(pkg.rootTypes).toMatch(/pkg\.d\.ts$/);
+    expect(pkg.entries.map(e => e.module)).toEqual(["pkg/core", "pkg/grids/grid"]);
   });
 
-  it("finds nested entry points, skipping the root and tooling dirs", () => {
-    expect(findEntryPoints(root)).toEqual(["core", "grids/grid"]);
-  });
-
-  it("assigns each symbol to the entry point that declares it, with its kind", () => {
-    expect(collectEntryPointExports(root, "pkg")).toEqual({
+  it("assigns each symbol to the entry point whose typings declare it", () => {
+    expect(collectPublishedExports(readPublishedPackage(root))).toEqual({
       CoreService: { module: "pkg/core", kind: "class" },
       Direction: { module: "pkg/core", kind: "enum" },
       GRID_DIRECTIVES: { module: "pkg/grids/grid", kind: "const" },
@@ -113,5 +177,26 @@ describe("collectEntryPointExports", () => {
       Selection: { module: "pkg/core", kind: "const" },
       helper: { module: "pkg/core", kind: "function" },
     });
+  });
+
+  it("verifies the collected map without failures", () => {
+    const pkg = readPublishedPackage(root);
+    expect(verifyPublishedImports(pkg, collectPublishedExports(pkg))).toEqual([]);
+  });
+
+  it("reports imports that do not compile: wrong entry point, not exported, or unknown", () => {
+    const pkg = readPublishedPackage(root);
+    const failures = verifyPublishedImports(pkg, {
+      GridComponent: { module: "pkg/core" },
+      IInternal: { module: "pkg/core" },
+      Missing: { module: "pkg/grids/grid" },
+      CoreService: { module: "pkg/grids/grid" },
+      Unrelated: { module: "other-package" },
+    });
+    expect(failures.map(f => `${f.symbol}@${f.module}`).sort()).toEqual([
+      "GridComponent@pkg/core",
+      "IInternal@pkg/core",
+      "Missing@pkg/grids/grid",
+    ]);
   });
 });
