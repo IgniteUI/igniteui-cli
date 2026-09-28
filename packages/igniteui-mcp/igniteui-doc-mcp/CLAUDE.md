@@ -21,6 +21,8 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 │   ├── lib/toc-index.ts                # Shared TOC walker — sections, groups, ordering
 │   ├── lib/toc-sidecar.ts              # dist/toc-index/<fw>.json writer + filename collision resolver
 │   ├── lib/frontmatter.ts              # Shared docs_final frontmatter parser
+│   ├── build-import-map.ts             # Symbol → import module maps → data/import-map/<fw>.json (resolve_import)
+│   ├── lib/import-map.ts               # Entry-point export walker + example import scanner
 │   ├── export-angular-docs.ts          # Export Angular docs from docfx (toc-driven, template expansion, include resolution, API URL resolution)
 │   ├── inject-angular-docs.ts          # Inject sample code into docs (replaces <code-view> with component source)
 │   ├── compress-angular-docs.ts        # LLM-based compression of docs (~50% size reduction, supports --batch mode)
@@ -98,6 +100,18 @@ npm run build:docs:react-api       # React: Astro build → docs/react-api/
 npm run build:docs:blazor-api      # Blazor: docfx + Astro build → docs/blazor-api/
 npm run build:docs:all             # Build all four platforms
 ```
+
+### Import Map Generation
+
+`resolve_import` reads the tracked, shipped `data/import-map/{angular,react,webcomponents}.json`. Regenerate after bumping the `angular/igniteui-angular` or example submodules:
+
+```bash
+npm run build:import-map
+```
+
+- **Angular**: walks every `ng-package.json` entry point of `angular/igniteui-angular/projects/igniteui-angular` with the TypeScript compiler; a symbol belongs to the entry point whose directory declares it (`IgxColumnComponent` → `igniteui-angular/grids/core`, even though `grids/grid` re-exports it). Other `igniteui-angular-*` packages come from imports observed in the Angular examples/samples.
+- **React / Web Components**: most frequent import module per symbol across the example repos (`@infragistics/` scope normalized away, internal deep paths dropped).
+- **Blazor**, and anything missing from the maps, falls back to the `Package:` header of the API docs `llms-full.txt`. API-docs-only hits in the main `igniteui-angular` package are ignored — they are symbols from older releases.
 
 ### Server Modes
 
@@ -244,12 +258,13 @@ npm run pipeline:blazor           # run all steps: clear → build → export �
   - Mode selected at startup: local by default, `--remote <url>` for remote. `--debug` enables request logging.
 - GitHub API tools use `octokit` (requires `GITHUB_TOKEN` env var)
 - CLI scaffolding tools use `igniteui-cli` via `npx`
-- Six registered tools:
+- Seven registered tools:
   - `list_components` — TOC-grouped doc index by `framework` (required), narrowed with `filter`, `group`, or `detail: "docs"` for the flat per-doc list
   - `get_doc` — retrieve full markdown content by `framework` (required) + `name` (required, without `.md`)
   - `search_docs` — full-text search by `framework` (required) + `query` (required), top 20 results with snippets
   - `search_api` — discover API entries by keyword or partial component name
   - `get_api_reference` — retrieve full API details for an exact component or class name
+  - `resolve_import` — exact import path (package + entry point) for one or more symbols, backed by `data/import-map/<fw>.json` with an API-docs package fallback
   - `get_project_setup_guide` — return setup guides for creating a new Ignite UI project (CLI docs for Angular/React/WC, dotnet + NuGet guides for Blazor)
 
 **Build DB** (`scripts/build-db.ts`): Reads compressed docs from `dist/docs_final/<framework>/`, looks up `_tocName` from `dist/docs_prepeared/<framework>/`, and produces `dist/igniteui-docs.db` using `better-sqlite3`. Supports full rebuild or per-framework rebuild via `--framework` flag. DB schema: `docs` table + `docs_fts` FTS4 virtual table with external content, porter tokenizer, and prefix indexes, plus two additive grouping tables:

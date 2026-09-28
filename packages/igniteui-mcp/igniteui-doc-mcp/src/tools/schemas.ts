@@ -31,5 +31,21 @@ export const searchApiSchema = z.object({
   platform: z.enum(PLATFORMS).optional().describe('Limit results to one platform (angular, react, webcomponents, or blazor). Omit to search all platforms simultaneously.'),
 });
 
+const MAX_IMPORT_SYMBOLS = 50;
+
+export const resolveImportSchema = z.object({
+  symbols: z
+    .preprocess(
+      value => (typeof value === 'string' ? value.split(/[\s,]+/) : value),
+      z
+        .array(z.string().trim().max(MAX_COMPONENT_LENGTH, `Symbol names must be at most ${MAX_COMPONENT_LENGTH} characters`))
+        .transform(list => [...new Set(list.filter(Boolean))])
+        .pipe(z.array(z.string()).min(1, 'At least one symbol is required').max(MAX_IMPORT_SYMBOLS, `At most ${MAX_IMPORT_SYMBOLS} symbols per call`))
+    )
+    .describe('Exported symbol names to resolve — components, directives, modules, services, interfaces, enums, types or constants. Pass every symbol a file needs in one call. Examples: ["IgxGridComponent", "IgxColumnComponent", "IGX_GRID_DIRECTIVES"], ["IgrGrid"], ["IgcButtonComponent"], ["IgbGrid"]'),
+  platform: z.enum(PLATFORMS).optional().describe('Platform to resolve against: angular, react, webcomponents, or blazor. Optional — inferred per symbol from the Igx/Igr/Igc/Igb prefix. Pass it for symbols without a prefix (e.g. "GridSelectionMode", "IGridState"), otherwise every platform is searched.'),
+});
+
 export type GetApiReferenceParams = z.infer<typeof getApiReferenceSchema>;
 export type SearchApiParams = z.infer<typeof searchApiSchema>;
+export type ResolveImportParams = z.infer<typeof resolveImportSchema>;
