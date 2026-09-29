@@ -178,7 +178,7 @@ function formatPlatform(platform: Platform, matches: ResolvedImport[]): string {
       .filter(m => m.module === 'igniteui-webcomponents' && m.symbol.endsWith('Component'))
       .map(m => m.symbol);
     if (toDefine.length > 0) {
-      notes.push(`Register the elements once at startup: \`defineComponents(${toDefine.join(', ')});\` (\`defineComponents\` is exported by \`igniteui-webcomponents\`).`);
+      notes.push(`Import \`defineComponents\` from \`igniteui-webcomponents\`, then register the elements once at startup: \`defineComponents(${toDefine.join(', ')});\`.`);
     }
     if (matches.some(m => m.module === 'igniteui-webcomponents-grids/grids')) {
       notes.push("Grid elements are registered by the side-effect import `import 'igniteui-webcomponents-grids/grids/combined';`.");
