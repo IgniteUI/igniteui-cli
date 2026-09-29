@@ -50,7 +50,8 @@ function describeRevision(dir: string): string {
 
 function requireDir(dir: string): void {
   if (!existsSync(dir)) {
-    console.error(`❌ Not found: ${dir}\n   Run: git submodule update --init ${dir.slice(ROOT.length + 1).replace(/\\/g, "/")}`);
+    const submodule = dir.slice(ROOT.length + 1).replace(/\\/g, "/").split("/").slice(0, 2).join("/");
+    console.error(`❌ Not found: ${dir}\n   Run: git submodule update --init ${submodule}`);
     process.exit(1);
   }
 }
@@ -71,6 +72,11 @@ function observed(dirs: string[], extensions: string[], accept: (m: string) => b
 }
 
 // ── Angular ────────────────────────────────────────────────────────────────
+const angularExamples = join(ROOT, "angular", "igniteui-angular-examples", "samples");
+const angularSamples = join(ROOT, "angular", "igniteui-angular-samples", "src");
+requireDir(angularExamples);
+requireDir(angularSamples);
+
 const angularSpec = `igniteui-angular@${argValue("--angular") ?? "latest"}`;
 const workDir = mkdtempSync(join(tmpdir(), "igniteui-import-map-"));
 try {
@@ -87,8 +93,6 @@ try {
   }
   console.log(`   ✔ all ${Object.keys(entryPoints).length} imports type-check against the published typings`);
 
-  const angularExamples = join(ROOT, "angular", "igniteui-angular-examples", "samples");
-  const angularSamples = join(ROOT, "angular", "igniteui-angular-samples", "src");
   const angularObserved = observed(
     [angularExamples, angularSamples],
     [".ts"],
@@ -99,6 +103,7 @@ try {
     {
       [pkg.name]: pkg.version,
       "igniteui-angular-examples": describeRevision(angularExamples),
+      "igniteui-angular-samples": describeRevision(angularSamples),
     },
     { ...angularObserved, ...entryPoints },
   );
