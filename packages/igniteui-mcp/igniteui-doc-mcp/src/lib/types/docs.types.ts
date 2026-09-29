@@ -9,6 +9,8 @@ export interface DocEntry {
   keywords: string[];
   summary: string;
   platform: Platform;
+  /** Package the entry ships in (llms-full.txt "Package:" header), e.g. "igniteui-react-grids". */
+  package?: string;
 }
 
 export interface SearchHit {
