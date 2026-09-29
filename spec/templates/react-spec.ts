@@ -1,5 +1,7 @@
 import { AGENTS_TEMPLATE_FILE, AI_CONFIG_PROJECT_ID, AI_SKILLS_DIR_NAME, App, Framework, Util } from "@igniteui/cli-core";
-import { IGNITEUI_REACT_GRIDS_PACKAGE, IGNITEUI_REACT_PACKAGE } from "../../packages/cli/templates/react/igr-ts/constants";
+import {
+	IGNITEUI_REACT_CHARTS_PACKAGE, IGNITEUI_REACT_GAUGES_PACKAGE, IGNITEUI_REACT_GRIDS_PACKAGE, IGNITEUI_REACT_PACKAGE
+} from "../../packages/cli/templates/react/igr-ts/constants";
 import path from "path";
 import * as fs from "fs";
 
@@ -40,7 +42,9 @@ describe("React templates", () => {
 		const projLibrary = reactFramework.projectLibraries.find(x => x.projectType === "igr-ts");
 		const expectedPackages: Record<string, string> = {
 			[IGNITEUI_REACT_PACKAGE.split("@")[0]]: IGNITEUI_REACT_PACKAGE.split("@")[1],
-			[IGNITEUI_REACT_GRIDS_PACKAGE.split("@")[0]]: IGNITEUI_REACT_GRIDS_PACKAGE.split("@")[1]
+			[IGNITEUI_REACT_GRIDS_PACKAGE.split("@")[0]]: IGNITEUI_REACT_GRIDS_PACKAGE.split("@")[1],
+			[IGNITEUI_REACT_CHARTS_PACKAGE.split("@")[0]]: IGNITEUI_REACT_CHARTS_PACKAGE.split("@")[1],
+			[IGNITEUI_REACT_GAUGES_PACKAGE.split("@")[0]]: IGNITEUI_REACT_GAUGES_PACKAGE.split("@")[1]
 		};
 
 		projLibrary.templates
