@@ -10,10 +10,11 @@ import { TOOL_DESCRIPTIONS, USAGE_GUIDE } from "./tools/constants.js";
 import type { DocsProvider } from "./providers/DocsProvider.js";
 import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
 import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
-import { getApiReferenceSchema, searchApiSchema } from "./tools/schemas.js";
-import { createGetApiReferenceHandler, createSearchApiHandler } from "./tools/handlers.js";
+import { getApiReferenceSchema, resolveImportSchema, searchApiSchema } from "./tools/schemas.js";
+import { createGetApiReferenceHandler, createResolveImportHandler, createSearchApiHandler } from "./tools/handlers.js";
 import { buildProjectSetupGuide, formatSubstitutionNotice, resolveDoc, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
 import { ApiDocLoader } from "./lib/api-doc-loader.js";
+import { ImportResolver } from "./lib/import-resolver.js";
 import { getPlatforms } from "./config/platforms.js";
 
 dotenv.config({ quiet: true });
@@ -73,7 +74,8 @@ const server = new McpServer(
       "If the framework is unclear from context, ask the user. " +
       "LIBRARY BOUNDARY RULE: Once the target framework is identified, always pass it as the 'framework' or 'platform' parameter to every tool call. " +
       "Never apply component APIs, event names, binding syntax, prop names, or state patterns from one framework to code in another framework. " +
-      "Angular (Igx), React (Igr), Blazor (Igb), and Web Components (Igc) each have distinct APIs — they are not interchangeable.",
+      "Angular (Igx), React (Igr), Blazor (Igb), and Web Components (Igc) each have distinct APIs — they are not interchangeable. " +
+      "Before writing import statements for Ignite UI symbols, call resolve_import to get the exact package and entry point.",
   }
 );
 
@@ -96,6 +98,16 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
       inputSchema: searchApiSchema,
     },
     createSearchApiHandler(docLoader)
+  );
+
+  server.registerTool(
+    "resolve_import",
+    {
+      description: TOOL_DESCRIPTIONS.resolve_import,
+      annotations: { readOnlyHint: true, openWorldHint: false },
+      inputSchema: resolveImportSchema,
+    },
+    createResolveImportHandler(new ImportResolver(docLoader))
   );
 }
 
