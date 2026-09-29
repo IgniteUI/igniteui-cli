@@ -21,7 +21,7 @@ function entry(overrides: Partial<DocEntry>): DocEntry {
 
 function makeLoader(entries: DocEntry[], packages: Record<string, string[]> = {}): ApiDocLoader {
   const find = (platform: string, name: string) =>
-    entries.find(e => e.platform === platform && e.component.replace(/<[^>]*>/g, '').toLowerCase() === name.replace(/<[^>]*>/g, '').toLowerCase());
+    entries.find(e => e.platform === platform && e.component.replace(/[<>]/g, '').toLowerCase() === name.replace(/[<>]/g, '').toLowerCase());
   return {
     get: vi.fn((platform: string, name: string) => find(platform, name)),
     search: vi.fn(({ platform }: { platform?: string }) => entries.filter(e => !platform || e.platform === platform)),
