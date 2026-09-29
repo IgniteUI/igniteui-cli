@@ -3,6 +3,7 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { PLATFORMS, type Platform } from '../config/platforms.js';
 import { stripGenerics, type ApiDocLoader } from './api-doc-loader.js';
+import type { DocEntry } from './types/docs.types.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DEFAULT_MAP_DIR = join(__dirname, '..', '..', 'data', 'import-map');
@@ -27,6 +28,8 @@ export interface ResolvedImport {
   kind?: string;
   /** Other packages that ship the same symbol (e.g. the Blazor Lite package). */
   alsoIn?: string[];
+  /** Blazor only: the module class to register in Program.cs, when one exists. */
+  registerModule?: string;
 }
 
 export interface ResolveResult {
@@ -47,6 +50,21 @@ const ENTRY_POINT_PACKAGES: Partial<Record<Platform, string>> = {
 };
 
 const SUFFIXES = ['Component', 'Directive', 'Module', 'Service', 'Pipe'];
+
+const URL_KINDS: Record<string, string> = {
+  classes: 'class',
+  enums: 'enum',
+  interfaces: 'interface',
+  types: 'type',
+  functions: 'function',
+  variables: 'const',
+};
+
+/** Kind from the doc heading URL (".../interfaces/IgcCellType"); the name-based entry.type is only a guess. */
+export function docKind(entry: DocEntry): string {
+  const dir = entry.content?.match(/^### \[[^\]]+\]\([^)]*\/([a-z-]+)\/[^/)]+\)/)?.[1];
+  return (dir && URL_KINDS[dir]) ?? entry.type;
+}
 
 export function loadImportMaps(dir: string = DEFAULT_MAP_DIR): ImportMaps {
   const maps: ImportMaps = {};
@@ -107,7 +125,7 @@ export class ImportResolver {
     const matches: ResolvedImport[] = [];
     for (const p of platforms) {
       const match = this.resolveOn(symbol, p);
-      if (match) matches.push(match);
+      if (match) matches.push(p === 'blazor' ? this.withModule(match) : match);
     }
 
     return {
@@ -121,7 +139,9 @@ export class ImportResolver {
     const map = this.maps[platform] ?? {};
     const exact = map[symbol] ? symbol : this.lowerIndex(platform).get(symbol.toLowerCase());
     if (exact && map[exact]) {
-      return { symbol: exact, platform, ...map[exact] };
+      const found = map[exact];
+      const doc = found.kind ? undefined : this.docLoader.get(platform, exact);
+      return { symbol: exact, platform, ...found, ...(doc ? { kind: docKind(doc) } : {}) };
     }
 
     const entry = this.docLoader.get(platform, symbol);
@@ -137,9 +157,15 @@ export class ImportResolver {
       symbol: stripGenerics(entry.component),
       platform,
       module: modules[0],
-      kind: entry.type,
+      kind: docKind(entry),
       ...(modules.length > 1 ? { alsoIn: modules.slice(1) } : {}),
     };
+  }
+
+  private withModule(match: ResolvedImport): ResolvedImport {
+    if (match.kind !== 'class' || /(EventArgs|Options|Module)$/.test(match.symbol)) return match;
+    const module = this.docLoader.get('blazor', `${match.symbol}Module`);
+    return module ? { ...match, registerModule: stripGenerics(module.component) } : match;
   }
 
   private lowerIndex(platform: Platform): Map<string, string> {

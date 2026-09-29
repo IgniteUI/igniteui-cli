@@ -157,10 +157,13 @@ function formatBlazor(matches: ResolvedImport[]): string[] {
 
   lines.push('', 'Notes:');
   lines.push('- nuget.org ships trial builds as `<Package>.Trial` (e.g. `IgniteUI.Blazor.Trial`); the licensed Infragistics feed uses the plain package id.');
-  const components = matches.filter(m => m.kind === 'class' && !/(EventArgs|Options|Module)$/.test(m.symbol));
-  if (components.length > 0) {
-    const modules = components.map(m => `typeof(${m.symbol}Module)`).join(', ');
-    lines.push(`- Register the component modules in Program.cs: \`builder.Services.AddIgniteUIBlazor(${modules});\``);
+  const otherPackages = [...groups.keys()].filter(p => !BLAZOR_CONTROLS_PACKAGES.has(p));
+  if (otherPackages.length > 0) {
+    lines.push(`- The \`@using\` namespace for ${otherPackages.map(p => `\`${p}\``).join(', ')} is not listed here; check the package's API reference.`);
+  }
+  const modules = [...new Set(matches.flatMap(m => (m.registerModule ? [m.registerModule] : [])))];
+  if (modules.length > 0) {
+    lines.push(`- Register the component modules in Program.cs: \`builder.Services.AddIgniteUIBlazor(${modules.map(m => `typeof(${m})`).join(', ')});\``);
   }
   return lines;
 }

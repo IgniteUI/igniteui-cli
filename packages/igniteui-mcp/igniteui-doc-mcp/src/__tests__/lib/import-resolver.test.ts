@@ -2,7 +2,7 @@ import { mkdtempSync, rmSync, writeFileSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { ImportResolver, inferPlatform, loadImportMaps, type ImportMaps } from '../../lib/import-resolver.js';
+import { docKind, ImportResolver, inferPlatform, loadImportMaps, type ImportMaps } from '../../lib/import-resolver.js';
 import type { ApiDocLoader } from '../../lib/api-doc-loader.js';
 import type { DocEntry } from '../../lib/types/docs.types.js';
 
@@ -21,7 +21,7 @@ function entry(overrides: Partial<DocEntry>): DocEntry {
 
 function makeLoader(entries: DocEntry[], packages: Record<string, string[]> = {}): ApiDocLoader {
   const find = (platform: string, name: string) =>
-    entries.find(e => e.platform === platform && e.component.replace(/[<>]/g, '').toLowerCase() === name.replace(/[<>]/g, '').toLowerCase());
+    entries.find(e => e.platform === platform && e.component.replace(/<[^>]*>/g, '').toLowerCase() === name.replace(/<[^>]*>/g, '').toLowerCase());
   return {
     get: vi.fn((platform: string, name: string) => find(platform, name)),
     search: vi.fn(({ platform }: { platform?: string }) => entries.filter(e => !platform || e.platform === platform)),
@@ -40,6 +40,7 @@ const MAPS: ImportMaps = {
   },
   react: {
     IgrGrid: { module: 'igniteui-react-grids' },
+    ComboTemplateProps: { module: 'igniteui-react' },
     GridSelectionMode: { module: 'igniteui-react-grids' },
   },
 };
@@ -58,6 +59,25 @@ describe('inferPlatform', () => {
 
   it.each(['IGridState', 'IGroupingExpression', 'GridSelectionMode', 'Igniter'])('does not infer a platform for %s', symbol => {
     expect(inferPlatform(symbol)).toBeUndefined();
+  });
+});
+
+const heading = (name: string, dir: string) => `### [${name}](https://www.infragistics.com/api/x/pkg/latest/${dir}/${name})\n`;
+
+describe('docKind', () => {
+  it.each([
+    ['classes', 'class'],
+    ['interfaces', 'interface'],
+    ['types', 'type'],
+    ['enums', 'enum'],
+    ['variables', 'const'],
+    ['functions', 'function'],
+  ])('reads %s from the heading URL as %s', (dir, kind) => {
+    expect(docKind(entry({ component: 'X', content: heading('X', dir) }))).toBe(kind);
+  });
+
+  it('falls back to the inferred type without a URL', () => {
+    expect(docKind(entry({ type: 'interface' }))).toBe('interface');
   });
 });
 
@@ -99,6 +119,37 @@ describe('ImportResolver', () => {
     const loader = makeLoader([entry({ platform: 'react', component: 'IgrDockManager', package: 'igniteui-react-dockmanager' })]);
     const resolver = new ImportResolver(loader, MAPS);
     expect(resolver.resolve('IgrDockManager').matches[0]).toMatchObject({ module: 'igniteui-react-dockmanager', kind: 'class' });
+  });
+
+  it('takes the kind from the API docs when the map entry has none', () => {
+    const loader = makeLoader([entry({ platform: 'react', component: 'ComboTemplateProps', content: heading('ComboTemplateProps', 'interfaces') })]);
+    const [match] = new ImportResolver(loader, MAPS).resolve('ComboTemplateProps', 'react').matches;
+    expect(match).toMatchObject({ module: 'igniteui-react', kind: 'interface' });
+  });
+
+  it('prefers the doc URL over the name-based type', () => {
+    const args = entry({
+      platform: 'webcomponents',
+      component: 'IgcAssigningCategoryStyleEventArgs',
+      type: 'interface',
+      package: 'igniteui-webcomponents-charts',
+      content: heading('IgcAssigningCategoryStyleEventArgs', 'classes'),
+    });
+    const [match] = new ImportResolver(makeLoader([args]), {}).resolve('IgcAssigningCategoryStyleEventArgs').matches;
+    expect(match.kind).toBe('class');
+  });
+
+  it('adds the Blazor module to register only when it exists', () => {
+    const loader = makeLoader([
+      entry({ platform: 'blazor', component: 'IgbCombo<T>', package: 'IgniteUI.Blazor' }),
+      entry({ platform: 'blazor', component: 'IgbComboModule', package: 'IgniteUI.Blazor' }),
+      entry({ platform: 'blazor', component: 'IgbDataChart', package: 'IgniteUI.Blazor' }),
+      entry({ platform: 'blazor', component: 'IgbComboChangeEventArgs', package: 'IgniteUI.Blazor' }),
+    ]);
+    const resolver = new ImportResolver(loader, {});
+    expect(resolver.resolve('IgbCombo').matches[0].registerModule).toBe('IgbComboModule');
+    expect(resolver.resolve('IgbDataChart').matches[0].registerModule).toBeUndefined();
+    expect(resolver.resolve('IgbComboChangeEventArgs').matches[0].registerModule).toBeUndefined();
   });
 
   it('applies subpath overrides for API-docs packages', () => {

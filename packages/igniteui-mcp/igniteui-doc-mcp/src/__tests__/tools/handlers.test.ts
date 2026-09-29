@@ -483,7 +483,7 @@ describe('createResolveImportHandler', () => {
 
   it('renders Blazor as @using, NuGet packages and module registration', async () => {
     const handler = createResolveImportHandler(makeResolver({
-      IgbCombo: [{ symbol: 'IgbCombo', platform: 'blazor', module: 'IgniteUI.Blazor', kind: 'class', alsoIn: ['IgniteUI.Blazor.Lite'] }],
+      IgbCombo: [{ symbol: 'IgbCombo', platform: 'blazor', module: 'IgniteUI.Blazor', kind: 'class', alsoIn: ['IgniteUI.Blazor.Lite'], registerModule: 'IgbComboModule' }],
       IgbComboChangeEventArgs: [{ symbol: 'IgbComboChangeEventArgs', platform: 'blazor', module: 'IgniteUI.Blazor', kind: 'class' }],
     }));
     const text = (await handler({ symbols: ['IgbCombo', 'IgbComboChangeEventArgs'] })).content[0].text as string;
@@ -491,5 +491,23 @@ describe('createResolveImportHandler', () => {
     expect(text).toContain('NuGet `IgniteUI.Blazor`: IgbCombo (also in `IgniteUI.Blazor.Lite`), IgbComboChangeEventArgs');
     expect(text).toContain('AddIgniteUIBlazor(typeof(IgbComboModule));');
     expect(text).not.toContain('import {');
+  });
+
+  it('registers no Blazor module the resolver did not find', async () => {
+    const handler = createResolveImportHandler(makeResolver({
+      IgbDataChart: [{ symbol: 'IgbDataChart', platform: 'blazor', module: 'IgniteUI.Blazor', kind: 'class' }],
+    }));
+    const text = (await handler({ symbols: ['IgbDataChart'] })).content[0].text as string;
+    expect(text).not.toContain('AddIgniteUIBlazor');
+  });
+
+  it('does not claim a namespace for Blazor Documents packages', async () => {
+    const handler = createResolveImportHandler(makeResolver({
+      Workbook: [{ symbol: 'Workbook', platform: 'blazor', module: 'IgniteUI.Blazor.Documents.Excel', kind: 'class' }],
+    }));
+    const text = (await handler({ symbols: ['Workbook'], platform: 'blazor' })).content[0].text as string;
+    expect(text).not.toContain('@using IgniteUI.Blazor.Controls');
+    expect(text).toContain('namespace for `IgniteUI.Blazor.Documents.Excel` is not listed here');
+    expect(text).not.toContain('AddIgniteUIBlazor');
   });
 });
