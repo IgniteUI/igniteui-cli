@@ -133,6 +133,35 @@ describe('ApiDocLoader', () => {
     });
   });
 
+  describe('packages', () => {
+    it('falls back to the package directory name when there is no Package: header', () => {
+      const loader = createLoadedLoader();
+      expect(loader.get('angular', 'IgxGridComponent')?.package).toBe('igniteui-angular');
+    });
+
+    it('reads the package from the Package: header', () => {
+      setupFsMocks();
+      mockReadFileSync.mockReturnValue(`Platform: Angular\nPackage: igniteui-angular-charts\n\n${FIXTURE_LLMS_CONTENT}`);
+      const loader = new ApiDocLoader([FIXTURE_CONFIG]);
+      loader.load();
+      expect(loader.get('angular', 'IgxGridComponent')?.package).toBe('igniteui-angular-charts');
+    });
+
+    it('getPackages lists every package that ships the same name', () => {
+      setupFsMocks();
+      mockReaddirSync.mockImplementation((p) => {
+        const s = String(p);
+        if (s.endsWith('angular-api')) return ['pkg-full', 'pkg-lite'] as unknown as ReturnType<typeof readdirSync>;
+        if (s.endsWith('pkg-full') || s.endsWith('pkg-lite')) return ['1.0.0'] as unknown as ReturnType<typeof readdirSync>;
+        return [] as unknown as ReturnType<typeof readdirSync>;
+      });
+      const loader = new ApiDocLoader([FIXTURE_CONFIG]);
+      loader.load();
+      const entry = loader.get('angular', 'IgxGridComponent')!;
+      expect(loader.getPackages(entry).sort()).toEqual(['pkg-full', 'pkg-lite']);
+    });
+  });
+
   describe('get()', () => {
     it('returns the entry for a known component', () => {
       const loader = createLoadedLoader();

@@ -23,6 +23,8 @@ export class ApiDocLoader {
   // Secondary index keyed by lower-cased, generic-stripped name ("blazor:igbcombo"
   // for IgbCombo<T>), so callers can use the plain class name the docs refer to.
   private docsByBaseName = new Map<string, DocEntry>();
+  // Every package a name appears in; the exact-name map keeps only the last one loaded.
+  private packagesByKey = new Map<string, Set<string>>();
   private platformConfigs: PlatformConfig[];
 
   constructor(platformConfigs: PlatformConfig[]) {
@@ -96,6 +98,8 @@ export class ApiDocLoader {
           );
         }
 
+        const packageName = content.match(/^Package:\s*(\S+)/m)?.[1] ?? pkgName;
+
         // Split on "### [ComponentName](url)" headings
         // Each chunk starts with the heading line and contains the member list
         const chunks = content.split(/(?=^### \[)/m).filter(c => c.trim());
@@ -133,9 +137,12 @@ export class ApiDocLoader {
             keywords,
             summary: summaryLine.trim(),
             platform: config.key,
+            package: packageName,
           };
           this.docs.set(key, entry);
           this.indexBaseName(config.key, componentName, entry);
+          const packages = this.packagesByKey.get(key) ?? new Set<string>();
+          this.packagesByKey.set(key, packages.add(packageName));
           count++;
         }
       }
@@ -197,6 +204,13 @@ export class ApiDocLoader {
       this.docs.get(`${platform}:${name}`) ??
       this.docsByBaseName.get(`${platform}:${stripGenerics(name).toLowerCase()}`)
     );
+  }
+
+  /** All packages that ship the entry's symbol, e.g. IgbCombo → IgniteUI.Blazor and IgniteUI.Blazor.Lite. */
+  getPackages(entry: DocEntry): string[] {
+    const packages = this.packagesByKey.get(`${entry.platform}:${entry.component}`);
+    if (packages) return [...packages];
+    return entry.package ? [entry.package] : [];
   }
 
   search(options: {

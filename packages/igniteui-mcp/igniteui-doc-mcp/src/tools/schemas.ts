@@ -31,5 +31,55 @@ export const searchApiSchema = z.object({
   platform: z.enum(PLATFORMS).optional().describe('Limit results to one platform (angular, react, webcomponents, or blazor). Omit to search all platforms simultaneously.'),
 });
 
+const MAX_IMPORT_SYMBOLS = 50;
+const IMPORT_KEYWORDS = new Set(['import', 'export', 'type', 'typeof']);
+
+/**
+ * Agents send more than bare names: a JSON array serialized as a string,
+ * `type IGridEditEventArgs` copied from a type-only import, `X as Y`, or a whole
+ * pasted import statement. Reduce all of those to the symbol names.
+ */
+export function extractSymbolNames(value: unknown): unknown {
+  let input = value;
+  if (typeof input === 'string' && input.trim().startsWith('[')) {
+    try {
+      input = JSON.parse(input);
+    } catch {
+      // not JSON — tokenized as plain text below
+    }
+  }
+  const items = typeof input === 'string' ? [input] : input;
+  if (!Array.isArray(items) || items.some(item => typeof item !== 'string')) return input;
+
+  const names: string[] = [];
+  for (const item of items as string[]) {
+    let text = item.replace(/\bfrom\s*(['"`]).*?\1/g, ' ');
+    while (/<[^<>]*>/.test(text)) text = text.replace(/<[^<>]*>/g, '');
+    const tokens = text.split(/[\s,;{}[\]"'`]+/).filter(Boolean);
+    for (let i = 0; i < tokens.length; i++) {
+      if (tokens[i] === 'as') {
+        i++;
+      } else if (!IMPORT_KEYWORDS.has(tokens[i])) {
+        names.push(tokens[i]);
+      }
+    }
+  }
+  return names;
+}
+
+export const resolveImportSchema = z.object({
+  symbols: z
+    .preprocess(
+      extractSymbolNames,
+      z
+        .array(z.string().trim().max(MAX_COMPONENT_LENGTH, `Symbol names must be at most ${MAX_COMPONENT_LENGTH} characters`))
+        .transform(list => [...new Set(list.filter(Boolean))])
+        .pipe(z.array(z.string()).min(1, 'At least one symbol is required').max(MAX_IMPORT_SYMBOLS, `At most ${MAX_IMPORT_SYMBOLS} symbols per call`))
+    )
+    .describe('Exported symbol names to resolve — components, directives, modules, services, interfaces, enums, types or constants. Pass every symbol a file needs in one call; `type` prefixes and pasted import statements are accepted. Examples: ["IgxGridComponent", "IgxColumnComponent", "IGX_GRID_DIRECTIVES"], ["IgrGrid"], ["IgcButtonComponent"], ["IgbGrid"]'),
+  platform: z.enum(PLATFORMS).optional().describe('Platform to resolve against: angular, react, webcomponents, or blazor. Optional — inferred per symbol from the Igx/Igr/Igc/Igb prefix. Pass it for symbols without a prefix (e.g. "GridSelectionMode", "IGridState"), otherwise every platform is searched.'),
+});
+
 export type GetApiReferenceParams = z.infer<typeof getApiReferenceSchema>;
 export type SearchApiParams = z.infer<typeof searchApiSchema>;
+export type ResolveImportParams = z.infer<typeof resolveImportSchema>;
