@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
-import { createGetApiReferenceHandler, createSearchApiHandler } from '../../tools/handlers.js';
+import { createGetApiReferenceHandler, createResolveImportHandler, createSearchApiHandler } from '../../tools/handlers.js';
 import type { ApiDocLoader } from '../../lib/api-doc-loader.js';
+import type { ImportResolver, ResolvedImport, ResolveResult } from '../../lib/import-resolver.js';
 import type { DocEntry } from '../../lib/types/docs.types.js';
 
 function makeEntry(overrides: Partial<DocEntry> = {}): DocEntry {
@@ -399,5 +400,114 @@ describe('createSearchApiHandler', () => {
     await handler({ query: 'grid' });
 
     expect(searchMock).toHaveBeenCalledWith({ platform: undefined });
+  });
+});
+
+describe('createResolveImportHandler', () => {
+  function makeResolver(table: Record<string, ResolvedImport[]>, suggestions: Record<string, string[]> = {}): ImportResolver {
+    return {
+      resolve: vi.fn((query: string): ResolveResult => ({
+        query,
+        matches: table[query] ?? [],
+        suggestions: table[query] ? [] : (suggestions[query] ?? []),
+      })),
+    } as unknown as ImportResolver;
+  }
+
+  const ng = (symbol: string, module: string, kind = 'class'): ResolvedImport => ({ symbol, platform: 'angular', module, kind });
+
+  it('groups symbols into one import line per module', async () => {
+    const handler = createResolveImportHandler(makeResolver({
+      IgxGridComponent: [ng('IgxGridComponent', 'igniteui-angular/grids/grid')],
+      IGX_GRID_DIRECTIVES: [ng('IGX_GRID_DIRECTIVES', 'igniteui-angular/grids/grid', 'const')],
+      IgxColumnComponent: [ng('IgxColumnComponent', 'igniteui-angular/grids/core')],
+      IGridState: [ng('IGridState', 'igniteui-angular/grids/core', 'interface')],
+    }));
+    const result = await handler({ symbols: ['IgxGridComponent', 'IGX_GRID_DIRECTIVES', 'IgxColumnComponent', 'IGridState'] });
+    const text = result.content[0].text as string;
+
+    expect(result.isError).toBeUndefined();
+    expect(text).toContain(`import { type IGridState, IgxColumnComponent } from 'igniteui-angular/grids/core';`);
+    expect(text).toContain(`import { IGX_GRID_DIRECTIVES, IgxGridComponent } from 'igniteui-angular/grids/grid';`);
+    expect(text).toContain('`@infragistics/igniteui-angular/grids/grid`');
+  });
+
+  it('passes the platform through to the resolver', async () => {
+    const resolver = makeResolver({});
+    await createResolveImportHandler(resolver)({ symbols: ['GridSelectionMode'], platform: 'react' });
+    expect(resolver.resolve).toHaveBeenCalledWith('GridSelectionMode', 'react');
+  });
+
+  it('reports unresolved names with suggestions alongside resolved ones', async () => {
+    const handler = createResolveImportHandler(makeResolver(
+      { IgxComboComponent: [ng('IgxComboComponent', 'igniteui-angular/combo')] },
+      { IgxGrid: ['IgxGridComponent', 'IgxGridModule'] },
+    ));
+    const result = await handler({ symbols: ['IgxComboComponent', 'IgxGrid'] });
+    const text = result.content[0].text as string;
+
+    expect(result.isError).toBeUndefined();
+    expect(text).toContain(`from 'igniteui-angular/combo'`);
+    expect(text).toContain('## Not resolved');
+    expect(text).toContain('Did you mean: IgxGridComponent, IgxGridModule?');
+  });
+
+  it('returns isError when nothing resolves', async () => {
+    const result = await createResolveImportHandler(makeResolver({}))({ symbols: ['FooBar'] });
+    expect(result.isError).toBe(true);
+    expect(result.content[0].text).toContain('`FooBar` — not found');
+  });
+
+  it('warns when a name resolves in several frameworks', async () => {
+    const handler = createResolveImportHandler(makeResolver({
+      GridSelectionMode: [
+        ng('GridSelectionMode', 'igniteui-angular/grids/core', 'const'),
+        { symbol: 'GridSelectionMode', platform: 'react', module: 'igniteui-react-grids' },
+      ],
+    }));
+    const text = (await handler({ symbols: ['GridSelectionMode'] })).content[0].text as string;
+    expect(text).toContain('"GridSelectionMode" exists in several frameworks');
+    expect(text).toContain('## Angular');
+    expect(text).toContain('## React');
+  });
+
+  it('adds defineComponents and grid registration notes for Web Components', async () => {
+    const handler = createResolveImportHandler(makeResolver({
+      IgcButtonComponent: [{ symbol: 'IgcButtonComponent', platform: 'webcomponents', module: 'igniteui-webcomponents', kind: 'class' }],
+      IgcGridComponent: [{ symbol: 'IgcGridComponent', platform: 'webcomponents', module: 'igniteui-webcomponents-grids/grids' }],
+    }));
+    const text = (await handler({ symbols: ['IgcButtonComponent', 'IgcGridComponent'] })).content[0].text as string;
+    expect(text).toContain('defineComponents(IgcButtonComponent)');
+    expect(text).toContain(`import 'igniteui-webcomponents-grids/grids/combined';`);
+  });
+
+  it('renders Blazor as @using, NuGet packages and module registration', async () => {
+    const handler = createResolveImportHandler(makeResolver({
+      IgbCombo: [{ symbol: 'IgbCombo', platform: 'blazor', module: 'IgniteUI.Blazor', kind: 'class', alsoIn: ['IgniteUI.Blazor.Lite'], registerModule: 'IgbComboModule' }],
+      IgbComboChangeEventArgs: [{ symbol: 'IgbComboChangeEventArgs', platform: 'blazor', module: 'IgniteUI.Blazor', kind: 'class' }],
+    }));
+    const text = (await handler({ symbols: ['IgbCombo', 'IgbComboChangeEventArgs'] })).content[0].text as string;
+    expect(text).toContain('@using IgniteUI.Blazor.Controls');
+    expect(text).toContain('NuGet `IgniteUI.Blazor`: IgbCombo (also in `IgniteUI.Blazor.Lite`), IgbComboChangeEventArgs');
+    expect(text).toContain('AddIgniteUIBlazor(typeof(IgbComboModule));');
+    expect(text).not.toContain('import {');
+  });
+
+  it('registers no Blazor module the resolver did not find', async () => {
+    const handler = createResolveImportHandler(makeResolver({
+      IgbDataChart: [{ symbol: 'IgbDataChart', platform: 'blazor', module: 'IgniteUI.Blazor', kind: 'class' }],
+    }));
+    const text = (await handler({ symbols: ['IgbDataChart'] })).content[0].text as string;
+    expect(text).not.toContain('AddIgniteUIBlazor');
+  });
+
+  it('does not claim a namespace for Blazor Documents packages', async () => {
+    const handler = createResolveImportHandler(makeResolver({
+      Workbook: [{ symbol: 'Workbook', platform: 'blazor', module: 'IgniteUI.Blazor.Documents.Excel', kind: 'class' }],
+    }));
+    const text = (await handler({ symbols: ['Workbook'], platform: 'blazor' })).content[0].text as string;
+    expect(text).not.toContain('@using IgniteUI.Blazor.Controls');
+    expect(text).toContain('namespace for `IgniteUI.Blazor.Documents.Excel` is not listed here');
+    expect(text).not.toContain('AddIgniteUIBlazor');
   });
 });
