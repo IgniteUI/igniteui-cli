@@ -1,0 +1,6139 @@
+{
+ "platform": "angular",
+ "sources": {
+  "igniteui-angular": "22.1.4",
+  "igniteui-angular-examples": "be04fef9"
+ },
+ "symbols": {
+  "AnnotationLayerProxyDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "AnyValueDataValidationRule": {
+   "module": "igniteui-angular-excel"
+  },
+  "AxisGroup": {
+   "module": "igniteui-angular-excel"
+  },
+  "AxisPosition": {
+   "module": "igniteui-angular-excel"
+  },
+  "AxisType": {
+   "module": "igniteui-angular-excel"
+  },
+  "AzureMapsImageryStyle": {
+   "module": "igniteui-angular-maps"
+  },
+  "BingMapsImageryStyle": {
+   "module": "igniteui-angular-maps"
+  },
+  "BrushSelectionMode": {
+   "module": "igniteui-angular-charts"
+  },
+  "CategoryChartDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "CellReferenceMode": {
+   "module": "igniteui-angular-excel"
+  },
+  "ChartTitle": {
+   "module": "igniteui-angular-excel"
+  },
+  "ChartType": {
+   "module": "igniteui-angular-excel"
+  },
+  "CollisionAvoidanceType": {
+   "module": "igniteui-angular-charts"
+  },
+  "Color": {
+   "module": "igniteui-angular-core"
+  },
+  "ColorScaleInterpolationMode": {
+   "module": "igniteui-angular-charts"
+  },
+  "ComponentRenderer": {
+   "module": "igniteui-angular-core"
+  },
+  "CustomDataValidationRule": {
+   "module": "igniteui-angular-excel"
+  },
+  "CustomFilterCondition": {
+   "module": "igniteui-angular-excel"
+  },
+  "DataChartAnnotationDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "DataChartCategoryDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "DataChartCategoryTrendLineDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "DataChartCoreDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "DataChartInteractivityDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "DataChartRadialCoreDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "DataChartRadialDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "DataChartScatterCoreDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "DataChartScatterDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "DataChartToolbarDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "DataLegendDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "DataPieChartDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "DataTemplateMeasureInfo": {
+   "module": "igniteui-angular-core"
+  },
+  "DataTemplateRenderInfo": {
+   "module": "igniteui-angular-core"
+  },
+  "DataValidationErrorStyle": {
+   "module": "igniteui-angular-excel"
+  },
+  "EnumUtil": {
+   "module": "igniteui-angular-core"
+  },
+  "ExcelComparisonOperator": {
+   "module": "igniteui-angular-excel"
+  },
+  "FinalValueSelectionMode": {
+   "module": "igniteui-angular-charts"
+  },
+  "FinancialChartCustomIndicatorArgs": {
+   "module": "igniteui-angular-charts"
+  },
+  "FinancialChartType": {
+   "module": "igniteui-angular-charts"
+  },
+  "FinancialChartVolumeType": {
+   "module": "igniteui-angular-charts"
+  },
+  "FinancialChartZoomSliderType": {
+   "module": "igniteui-angular-charts"
+  },
+  "FinancialIndicatorType": {
+   "module": "igniteui-angular-charts"
+  },
+  "FinancialOverlayType": {
+   "module": "igniteui-angular-charts"
+  },
+  "FormatConditionTextOperator": {
+   "module": "igniteui-angular-excel"
+  },
+  "FormattedString": {
+   "module": "igniteui-angular-excel"
+  },
+  "Formula": {
+   "module": "igniteui-angular-excel"
+  },
+  "HeatTileGeneratorWebWorker": {
+   "module": "igniteui-angular-core"
+  },
+  "HighlightedValueDisplayMode": {
+   "module": "igniteui-angular-core"
+  },
+  "IgPoint": {
+   "module": "igniteui-angular-core"
+  },
+  "IgRect": {
+   "module": "igniteui-angular-core"
+  },
+  "IgxAbsoluteVolumeOscillatorIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxAccumulationDistributionIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxAnnotationLayerProxyModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxArcGISOnlineMapImagery": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxAreaSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxAssigningCategoryStyleEventArgs": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxAverageDirectionalIndexIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxAverageTrueRangeIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxAzureMapsImagery": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxAzureMapsImageryModule": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxBarSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxBingMapsMapImagery": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxBollingerBandWidthIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxBollingerBandsOverlayComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxBollingerBandsOverlayModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxBubbleSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxBubbleSeriesModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxBulletGraphComponent": {
+   "module": "igniteui-angular-gauges"
+  },
+  "IgxBulletGraphModule": {
+   "module": "igniteui-angular-gauges"
+  },
+  "IgxCalloutLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCalloutLayerModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCategoryAngleAxisComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCategoryAngleAxisModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCategoryChartComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCategoryChartModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCategoryChartToolbarModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCategoryHighlightLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCategoryItemHighlightLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCategoryToolTipLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCategoryXAxisComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCategoryXAxisModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCategoryYAxisComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCategoryYAxisModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxChaikinOscillatorIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxChaikinVolatilityIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxChartSelection": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxChartSeriesEventArgs": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCheckboxListModule": {
+   "module": "igniteui-angular-data-grids"
+  },
+  "IgxColorEditorComponent": {
+   "module": "igniteui-angular-inputs"
+  },
+  "IgxColorEditorModule": {
+   "module": "igniteui-angular-inputs"
+  },
+  "IgxColumnSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCommodityChannelIndexIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCrosshairLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCrosshairLayerModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCustomPaletteBrushScaleComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxCustomPaletteColorScaleComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDashboardTileComponent": {
+   "module": "igniteui-angular-dashboards"
+  },
+  "IgxDashboardTileModule": {
+   "module": "igniteui-angular-dashboards"
+  },
+  "IgxDataAnnotationBandLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataAnnotationBandLayerModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataAnnotationLineLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataAnnotationLineLayerModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataAnnotationRectLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataAnnotationRectLayerModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataAnnotationSliceLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataAnnotationSliceLayerModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataAnnotationStripLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataAnnotationStripLayerModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartAnnotationDynamicModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartAnnotationModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartCategoryCoreModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartCategoryModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartCategoryTrendLineModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartCoreModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartDashboardTileModule": {
+   "module": "igniteui-angular-dashboards"
+  },
+  "IgxDataChartFinancialCoreModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartFinancialModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartFinancialOverlaysModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartInteractivityModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartMouseButtonEventArgs": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartPolarCoreModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartPolarModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartRadialCoreModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartRadialModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartScatterCoreModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartScatterModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartShapeCoreModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartShapeModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartStackedModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartToolbarModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataChartVerticalCategoryModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataContext": {
+   "module": "igniteui-angular-core"
+  },
+  "IgxDataLegendComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataLegendModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataPieChartComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataPieChartCoreModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataPieChartModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDataToolTipLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDateTimeFormatSpecifier": {
+   "module": "igniteui-angular-core"
+  },
+  "IgxDateTimeFormatSpecifierModule": {
+   "module": "igniteui-angular-core"
+  },
+  "IgxDetrendedPriceOscillatorIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDomainChartSeriesPointerEventArgs": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDoughnutChartComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxDoughnutChartModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxEaseOfMovementIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxExcelModule": {
+   "module": "igniteui-angular-excel"
+  },
+  "IgxFastStochasticOscillatorIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxFinalValueLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxFinalValueLayerModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxFinancialChartComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxFinancialChartCoreModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxFinancialChartModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxFinancialEventArgs": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxFinancialIndicatorTypeCollection": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxFinancialOverlayTypeCollection": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxFinancialPriceSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxFinancialPriceSeriesModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxForceIndexIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxFullStochasticOscillatorIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxGeographicContourLineSeriesComponent": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxGeographicHighDensityScatterSeriesComponent": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxGeographicMapComponent": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxGeographicMapDashboardTileModule": {
+   "module": "igniteui-angular-dashboards"
+  },
+  "IgxGeographicMapModule": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxGeographicPolylineSeriesComponent": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxGeographicProportionalSymbolSeriesComponent": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxGeographicScatterAreaSeriesComponent": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxGeographicShapeSeriesComponent": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxGeographicSymbolSeriesComponent": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxGeographicTileSeriesComponent": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxHeatTileGenerator": {
+   "module": "igniteui-angular-core"
+  },
+  "IgxHighDensityScatterSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxHorizontalAnchoredCategorySeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxIndicatorsModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxItemLegendComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxItemLegendModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxItemToolTipLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxLegendComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxLegendModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxLineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxLinearContourValueResolverComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxLinearGaugeComponent": {
+   "module": "igniteui-angular-gauges"
+  },
+  "IgxLinearGaugeDashboardTileModule": {
+   "module": "igniteui-angular-dashboards"
+  },
+  "IgxLinearGaugeModule": {
+   "module": "igniteui-angular-gauges"
+  },
+  "IgxLinearGraphRangeComponent": {
+   "module": "igniteui-angular-gauges"
+  },
+  "IgxMarketFacilitationIndexIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxMassIndexIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxMedianPriceIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxMoneyFlowIndexIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxMoneyFlowIndexIndicatorModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxMovingAverageConvergenceDivergenceIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxNegativeVolumeIndexIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxNumberAbbreviatorModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxNumberFormatSpecifier": {
+   "module": "igniteui-angular-core"
+  },
+  "IgxNumberFormatSpecifierModule": {
+   "module": "igniteui-angular-core"
+  },
+  "IgxNumericAngleAxisComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxNumericAngleAxisModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxNumericRadiusAxisComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxNumericRadiusAxisModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxNumericXAxisComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxNumericXAxisModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxNumericYAxisComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxNumericYAxisModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxOnBalanceVolumeIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxOpenStreetMapImagery": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxPercentagePriceOscillatorIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPercentageVolumeOscillatorIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPieChartComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPieChartDashboardTileModule": {
+   "module": "igniteui-angular-dashboards"
+  },
+  "IgxPieChartModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPlotAreaMouseButtonEventArgs": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPlotAreaMouseEventArgs": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPointSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPolarAreaSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPolarLineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPolarScatterSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPolarSplineAreaSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPolarSplineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPositiveVolumeIndexIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPriceChannelOverlayComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPriceVolumeTrendIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxPropertyEditorPanelComponent": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxPropertyEditorPanelModule": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxPropertyEditorPropertyDescriptionButtonClickEventArgs": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxPropertyEditorPropertyDescriptionChangedEventArgs": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxPropertyEditorPropertyDescriptionComponent": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxProportionalCategoryAngleAxisComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxRadialAreaSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxRadialColumnSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxRadialGaugeComponent": {
+   "module": "igniteui-angular-gauges"
+  },
+  "IgxRadialGaugeDashboardTileModule": {
+   "module": "igniteui-angular-dashboards"
+  },
+  "IgxRadialGaugeModule": {
+   "module": "igniteui-angular-gauges"
+  },
+  "IgxRadialGaugeRangeComponent": {
+   "module": "igniteui-angular-gauges"
+  },
+  "IgxRadialLineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxRadialPieSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxRangeAreaSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxRangeBarSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxRangeBarSeriesModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxRangeColumnSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxRateOfChangeAndMomentumIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxRectChangedEventArgs": {
+   "module": "igniteui-angular-core"
+  },
+  "IgxRelativeStrengthIndexIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxResourceStringsBG": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsCS": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsDA": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsDE": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsES": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsFR": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsHU": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsIT": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsJA": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsKO": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsNB": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsNL": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsPL": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsPT": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsRO": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsSV": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsTR": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsZHHANS": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxResourceStringsZHHANT": {
+   "module": "igniteui-angular-i18n"
+  },
+  "IgxRingSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxRingSeriesModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxScatterAreaSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxScatterAreaSeriesModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxScatterContourSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxScatterContourSeriesModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxScatterLineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxScatterPolygonSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxScatterPolylineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxScatterSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxScatterSplineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxSeriesMatcher": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxShapeDataSource": {
+   "module": "igniteui-angular-core"
+  },
+  "IgxSizeScaleComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxSliceClickEventArgs": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxSlowStochasticOscillatorIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxSparklineComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxSparklineModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxSplineAreaSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxSplineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxSpreadsheetChartAdapterModule": {
+   "module": "igniteui-angular-spreadsheet-chart-adapter"
+  },
+  "IgxSpreadsheetComponent": {
+   "module": "igniteui-angular-spreadsheet"
+  },
+  "IgxSpreadsheetModule": {
+   "module": "igniteui-angular-spreadsheet"
+  },
+  "IgxStacked100AreaSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStacked100BarSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStacked100ColumnSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStacked100LineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStacked100SplineAreaSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStacked100SplineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStackedAreaSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStackedBarSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStackedColumnSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStackedFragmentSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStackedFragmentSeriesModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStackedLineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStackedSplineAreaSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStackedSplineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStandardDeviationIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStepAreaSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStepLineSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStochRSIIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxStyleShapeEventArgs": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxTRIXIndicatorComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxTileGeneratorMapImagery": {
+   "module": "igniteui-angular-maps"
+  },
+  "IgxTimeXAxisComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxTimeXAxisModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxToolActionCheckboxComponent": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxToolActionColorEditorComponent": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxToolActionColorEditorModule": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxToolActionComboModule": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxToolActionComponent": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxToolActionGroupHeaderComponent": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxToolActionIconMenuComponent": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxToolActionLabelComponent": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxToolActionSubPanelComponent": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxToolCommandEventArgs": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxToolbarComponent": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxToolbarModule": {
+   "module": "igniteui-angular-layouts"
+  },
+  "IgxTreemapComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxTreemapModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxTreemapNodeStyleMappingComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxTrendLineLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxTrendLineLayerModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxUserAnnotationInformation": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxValueBrushScaleComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxValueLayerComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxValueOverlayComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxValueOverlayModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxWaterfallSeriesComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxZoomSliderComponent": {
+   "module": "igniteui-angular-charts"
+  },
+  "IgxZoomSliderDynamicModule": {
+   "module": "igniteui-angular-charts"
+  },
+  "IndicatorDisplayType": {
+   "module": "igniteui-angular-charts"
+  },
+  "ItemLegendDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "Legend": {
+   "module": "igniteui-angular-excel"
+  },
+  "LegendDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "LegendPosition": {
+   "module": "igniteui-angular-excel"
+  },
+  "LinearGraphNeedleShape": {
+   "module": "igniteui-angular-gauges"
+  },
+  "ListDataValidationRule": {
+   "module": "igniteui-angular-excel"
+  },
+  "LocalDataSource": {
+   "module": "igniteui-angular-core"
+  },
+  "MarkerType": {
+   "module": "igniteui-angular-charts"
+  },
+  "MarkerType_$type": {
+   "module": "igniteui-angular-charts"
+  },
+  "NumberAbbreviatorDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "NumberFormatSpecifierDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "OneConstraintDataValidationOperator": {
+   "module": "igniteui-angular-excel"
+  },
+  "OneConstraintDataValidationRule": {
+   "module": "igniteui-angular-excel"
+  },
+  "OrderedSortCondition": {
+   "module": "igniteui-angular-excel"
+  },
+  "PropertyEditorPanelDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "PropertyEditorValueType": {
+   "module": "igniteui-angular-layouts"
+  },
+  "RadialGaugeBackingShape": {
+   "module": "igniteui-angular-gauges"
+  },
+  "RadialGaugeNeedleShape": {
+   "module": "igniteui-angular-gauges"
+  },
+  "RadialGaugePivotShape": {
+   "module": "igniteui-angular-gauges"
+  },
+  "RadialGaugeScaleOversweepShape": {
+   "module": "igniteui-angular-gauges"
+  },
+  "RelativeIndex": {
+   "module": "igniteui-angular-excel"
+  },
+  "SortDirection": {
+   "module": "igniteui-angular-excel"
+  },
+  "SparklineDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "SparklineDisplayType": {
+   "module": "igniteui-angular-charts"
+  },
+  "SparklineType": {
+   "module": "igniteui-angular-excel"
+  },
+  "SpreadsheetAction": {
+   "module": "igniteui-angular-spreadsheet"
+  },
+  "SpreadsheetCell": {
+   "module": "igniteui-angular-spreadsheet"
+  },
+  "SpreadsheetChartAdapter": {
+   "module": "igniteui-angular-spreadsheet-chart-adapter"
+  },
+  "SweepDirection": {
+   "module": "igniteui-angular-core"
+  },
+  "TextFormatMode": {
+   "module": "igniteui-angular-excel"
+  },
+  "ToolTipType": {
+   "module": "igniteui-angular-charts"
+  },
+  "ToolbarDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "TreemapDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "TreemapNodePointerEventArgs": {
+   "module": "igniteui-angular-charts"
+  },
+  "TrendLineLayerDescriptionModule": {
+   "module": "igniteui-angular-core"
+  },
+  "TwoConstraintDataValidationOperator": {
+   "module": "igniteui-angular-excel"
+  },
+  "TwoConstraintDataValidationRule": {
+   "module": "igniteui-angular-excel"
+  },
+  "UnknownValuePlotting": {
+   "module": "igniteui-angular-core"
+  },
+  "Workbook": {
+   "module": "igniteui-angular-excel"
+  },
+  "WorkbookColorInfo": {
+   "module": "igniteui-angular-excel"
+  },
+  "WorkbookFormat": {
+   "module": "igniteui-angular-excel"
+  },
+  "WorkbookSaveOptions": {
+   "module": "igniteui-angular-excel"
+  },
+  "Worksheet": {
+   "module": "igniteui-angular-excel"
+  },
+  "WorksheetCell": {
+   "module": "igniteui-angular-excel"
+  },
+  "WorksheetCellComment": {
+   "module": "igniteui-angular-excel"
+  },
+  "WorksheetColumnWidthUnit": {
+   "module": "igniteui-angular-excel"
+  },
+  "WorksheetMergedCellsRegion": {
+   "module": "igniteui-angular-excel"
+  },
+  "WorksheetRegion": {
+   "module": "igniteui-angular-excel"
+  },
+  "WorksheetTable": {
+   "module": "igniteui-angular-excel"
+  },
+  "WorksheetTableColumnArea": {
+   "module": "igniteui-angular-excel"
+  },
+  "XValues": {
+   "module": "igniteui-angular-excel"
+  },
+  "AbsolutePosition": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "AbsoluteScrollStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "Action": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ActionStripResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "ActiveElement": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "AnimationPlayer": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "AnimationService": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "AnimationUtil": {
+   "module": "igniteui-angular/animations",
+   "kind": "class"
+  },
+  "ArrowFit": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "AutoPositionStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "AutocompleteOverlaySettings": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "interface"
+  },
+  "AutocompleteSelectionChangingEventArgs": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "interface"
+  },
+  "BannerCancelEventArgs": {
+   "module": "igniteui-angular/banner",
+   "kind": "interface"
+  },
+  "BannerEventArgs": {
+   "module": "igniteui-angular/banner",
+   "kind": "interface"
+  },
+  "BannerResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "BaseFilteringStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "BaseFitPositionStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "BaseFormatter": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "BlockScrollStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "ButtonGroupAlignment": {
+   "module": "igniteui-angular/button-group",
+   "kind": "const"
+  },
+  "ByLevelTreeGridMergeStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "CachedDataCloneStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "Calendar": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "CalendarDay": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "CalendarRangeParams": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "CalendarResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "CalendarSelection": {
+   "module": "igniteui-angular/calendar",
+   "kind": "const"
+  },
+  "CancelableBrowserEventArgs": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "CancelableEventArgs": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "CarouselAnimationDirection": {
+   "module": "igniteui-angular/carousel",
+   "kind": "enum"
+  },
+  "CarouselAnimationSettings": {
+   "module": "igniteui-angular/carousel",
+   "kind": "interface"
+  },
+  "CarouselAnimationType": {
+   "module": "igniteui-angular/carousel",
+   "kind": "const"
+  },
+  "CarouselIndicatorsOrientation": {
+   "module": "igniteui-angular/carousel",
+   "kind": "const"
+  },
+  "CarouselResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "CellType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "CharSeparatedValueData": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "ChatInputContext": {
+   "module": "igniteui-angular/chat",
+   "kind": "interface"
+  },
+  "CheckboxBaseDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "ChipResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "CloseScrollStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "ColumnDisplayOrder": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "ColumnGroupsCache": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "ColumnPinningPosition": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "ColumnType": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ComboResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "ConnectedFit": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ConnectedPositioningStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "ContainerPositionStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "CsvFileTypes": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "enum"
+  },
+  "CustomDateRange": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "DEFAULT_LOCALE": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "DEFAULT_OWNER": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "DEFAULT_PIVOT_KEYS": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "DataTypes": {
+   "module": "igniteui-angular/combo",
+   "kind": "enum"
+  },
+  "DataUtil": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "DatePart": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "DatePartDeltas": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "DatePartInfo": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "DatePickerResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "DateRange": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "DateRangeDescriptor": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "DateRangePickerFormatPipe": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "class"
+  },
+  "DateRangePickerResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "DateRangeType": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "DateTimeUtil": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "DayInterval": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "DayParameter": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "DefaultDataCloneStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "DefaultMergeStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "DefaultPivotGridRecordSortingStrategy": {
+   "module": "igniteui-angular/grids/pivot-grid",
+   "kind": "class"
+  },
+  "DefaultPivotSortingStrategy": {
+   "module": "igniteui-angular/grids/pivot-grid",
+   "kind": "class"
+  },
+  "DefaultSortingStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "DefaultTreeGridMergeStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "DimensionValueType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "DimensionValuesFilteringStrategy": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "DragDirection": {
+   "module": "igniteui-angular/directives",
+   "kind": "enum"
+  },
+  "DropDownActionKey": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "const"
+  },
+  "DropPosition": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "enum"
+  },
+  "EDITOR_PROVIDER": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "ELEMENTS_TOKEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "EaseIn": {
+   "module": "igniteui-angular/animations",
+   "kind": "enum"
+  },
+  "EaseInOut": {
+   "module": "igniteui-angular/animations",
+   "kind": "enum"
+  },
+  "EaseOut": {
+   "module": "igniteui-angular/animations",
+   "kind": "enum"
+  },
+  "EditorProvider": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ElasticPositionStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "EntityType": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ExpansionPanelHeaderIconPosition": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "const"
+  },
+  "ExportHeaderType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "enum"
+  },
+  "ExportRecordType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "enum"
+  },
+  "ExportUtilities": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "ExpressionUI": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "ExpressionsTreeUtil": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "FamilyMeta": {
+   "module": "igniteui-angular/icon",
+   "kind": "interface"
+  },
+  "FieldType": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "FilterListItem": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "FilterMode": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "FilterUtil": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "FilteringExpressionsTree": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "FilteringExpressionsTreeType": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "FilteringLogic": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "FilteringStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "FlatGridType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "FormattedValuesFilteringStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "FormattedValuesSortingStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "GRID_LEVEL_COL": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "GRID_PARENT": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "GRID_ROOT_SUMMARY": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "GlobalPositionStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "GridBaseAPIService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "GridCellMergeMode": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "GridColumnDataType": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "GridFeatures": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "type"
+  },
+  "GridKeydownTargetType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "type"
+  },
+  "GridPagingMode": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "GridResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "GridSVGIcon": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "GridSelectionMode": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "GridSelectionRange": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "GridServiceType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "GridStyleCSSProperty": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "GridSummaryCalculationMode": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "GridSummaryPosition": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "GridType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "GridTypeBase": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "GridValidationTrigger": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "type"
+  },
+  "GroupMemberCountSortingStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "GroupedRecords": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "HEADER_KEYS": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "HORIZONTAL_NAV_KEYS": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "HeaderType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "HierarchicalGridType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "HierarchicalState": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "HierarchicalTransaction": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "HierarchicalTransactionService": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "HorizontalAlignment": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "HorizontalAnimationType": {
+   "module": "igniteui-angular/stepper",
+   "kind": "const"
+  },
+  "I18N_FORMATTER": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "IAccordionCancelableEventArgs": {
+   "module": "igniteui-angular/accordion",
+   "kind": "interface"
+  },
+  "IAccordionEventArgs": {
+   "module": "igniteui-angular/accordion",
+   "kind": "interface"
+  },
+  "IActionStripResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IActiveHighlightInfo": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IActiveNode": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IActiveNodeChangeEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IAnimationParams": {
+   "module": "igniteui-angular/animations",
+   "kind": "interface"
+  },
+  "IBannerResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IBaseCancelableBrowserEventArgs": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IBaseCancelableEventArgs": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IBaseChipEventArgs": {
+   "module": "igniteui-angular/chips",
+   "kind": "interface"
+  },
+  "IBaseChipsAreaEventArgs": {
+   "module": "igniteui-angular/chips",
+   "kind": "interface"
+  },
+  "IBaseEventArgs": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IBaseSearchInfo": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IButtonEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IButtonGroupEventArgs": {
+   "module": "igniteui-angular/button-group",
+   "kind": "interface"
+  },
+  "ICachedViewLoadedEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "ICalendarResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "ICarouselResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "ICellPosition": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IChangeCheckboxEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IChangeProgressEventArgs": {
+   "module": "igniteui-angular/progressbar",
+   "kind": "interface"
+  },
+  "IChipClickEventArgs": {
+   "module": "igniteui-angular/chips",
+   "kind": "interface"
+  },
+  "IChipEnterDragAreaEventArgs": {
+   "module": "igniteui-angular/chips",
+   "kind": "interface"
+  },
+  "IChipKeyDownEventArgs": {
+   "module": "igniteui-angular/chips",
+   "kind": "interface"
+  },
+  "IChipResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IChipSelectEventArgs": {
+   "module": "igniteui-angular/chips",
+   "kind": "interface"
+  },
+  "IChipsAreaReorderEventArgs": {
+   "module": "igniteui-angular/chips",
+   "kind": "interface"
+  },
+  "IChipsAreaSelectEventArgs": {
+   "module": "igniteui-angular/chips",
+   "kind": "interface"
+  },
+  "IClipboardOptions": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnEditorOptions": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IColumnExportingEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnInfo": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnList": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnMovingEndEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnMovingEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnMovingStartEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnPipeArgs": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IColumnResizeEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnResizingEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnSelectionEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnSelectionState": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IColumnState": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnToggledEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnVisibilityChangedEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IColumnVisibilityChangingEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IComboFilteringOptions": {
+   "module": "igniteui-angular/combo",
+   "kind": "interface"
+  },
+  "IComboItemAdditionEvent": {
+   "module": "igniteui-angular/combo",
+   "kind": "interface"
+  },
+  "IComboResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IComboSearchInputEventArgs": {
+   "module": "igniteui-angular/combo",
+   "kind": "interface"
+  },
+  "IComboSelectionChangedEventArgs": {
+   "module": "igniteui-angular/combo",
+   "kind": "interface"
+  },
+  "IComboSelectionChangingEventArgs": {
+   "module": "igniteui-angular/combo",
+   "kind": "interface"
+  },
+  "ICsvExportEndedEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IDataCloneStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IDateParts": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IDatePickerResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IDatePickerValidationFailedEventArgs": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "interface"
+  },
+  "IDateRangePickerResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IDialogCancellableEventArgs": {
+   "module": "igniteui-angular/dialog",
+   "kind": "interface"
+  },
+  "IDialogEventArgs": {
+   "module": "igniteui-angular/dialog",
+   "kind": "interface"
+  },
+  "IDimensionsChange": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IDragBaseEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IDragCustomTransitionArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IDragGhostBaseEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IDragMoveEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IDragStartEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IDropBaseEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IDropDownBase": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "interface"
+  },
+  "IDropDownList": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "interface"
+  },
+  "IDropDownNavigationDirective": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "interface"
+  },
+  "IDropDroppedEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IDropStrategy": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IExcelExportEndedEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IExpansionPanelCancelableEventArgs": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "interface"
+  },
+  "IExpansionPanelEventArgs": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "interface"
+  },
+  "IExportRecord": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IExpressionTree": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IFieldEditorOptions": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IFieldPipeArgs": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IFieldValidationState": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IFilteringEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IFilteringExpression": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IFilteringExpressionsTree": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IFilteringOperation": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IFilteringState": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IFilteringStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IForOfDataChangeEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IForOfDataChangingEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IForOfState": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IFormattedParts": {
+   "module": "igniteui-angular/calendar",
+   "kind": "interface"
+  },
+  "IFormattingOptions": {
+   "module": "igniteui-angular/calendar",
+   "kind": "interface"
+  },
+  "IFormattingViews": {
+   "module": "igniteui-angular/calendar",
+   "kind": "interface"
+  },
+  "IGX_ACCORDION_DIRECTIVES": {
+   "module": "igniteui-angular/accordion",
+   "kind": "const"
+  },
+  "IGX_ACTION_STRIP_DIRECTIVES": {
+   "module": "igniteui-angular/action-strip",
+   "kind": "const"
+  },
+  "IGX_BANNER_DIRECTIVES": {
+   "module": "igniteui-angular/banner",
+   "kind": "const"
+  },
+  "IGX_BOTTOM_NAV_DIRECTIVES": {
+   "module": "igniteui-angular/bottom-nav",
+   "kind": "const"
+  },
+  "IGX_BUTTON_GROUP_DIRECTIVES": {
+   "module": "igniteui-angular/button-group",
+   "kind": "const"
+  },
+  "IGX_CALENDAR_DIRECTIVES": {
+   "module": "igniteui-angular/calendar",
+   "kind": "const"
+  },
+  "IGX_CALENDAR_VIEW_ITEM": {
+   "module": "igniteui-angular/calendar",
+   "kind": "const"
+  },
+  "IGX_CARD_DIRECTIVES": {
+   "module": "igniteui-angular/card",
+   "kind": "const"
+  },
+  "IGX_CAROUSEL_DIRECTIVES": {
+   "module": "igniteui-angular/carousel",
+   "kind": "const"
+  },
+  "IGX_CHIPS_DIRECTIVES": {
+   "module": "igniteui-angular/chips",
+   "kind": "const"
+  },
+  "IGX_CIRCULAR_PROGRESS_BAR_DIRECTIVES": {
+   "module": "igniteui-angular/progressbar",
+   "kind": "const"
+  },
+  "IGX_COMBO_COMPONENT": {
+   "module": "igniteui-angular/combo",
+   "kind": "const"
+  },
+  "IGX_COMBO_DIRECTIVES": {
+   "module": "igniteui-angular/combo",
+   "kind": "const"
+  },
+  "IGX_DATE_PICKER_DIRECTIVES": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "const"
+  },
+  "IGX_DATE_RANGE_PICKER_DIRECTIVES": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "const"
+  },
+  "IGX_DIALOG_DIRECTIVES": {
+   "module": "igniteui-angular/dialog",
+   "kind": "const"
+  },
+  "IGX_DRAG_DROP_DIRECTIVES": {
+   "module": "igniteui-angular/directives",
+   "kind": "const"
+  },
+  "IGX_DROPDOWN_BASE": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "const"
+  },
+  "IGX_DROP_DOWN_DIRECTIVES": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "const"
+  },
+  "IGX_EXPANSION_PANEL_DIRECTIVES": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "const"
+  },
+  "IGX_GRID_BASE": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "IGX_GRID_COMMON_DIRECTIVES": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "IGX_GRID_DIRECTIVES": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "const"
+  },
+  "IGX_GRID_SERVICE_BASE": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "IGX_GRID_VALIDATION_DIRECTIVES": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "IGX_HIERARCHICAL_GRID_DIRECTIVES": {
+   "module": "igniteui-angular/grids/hierarchical-grid",
+   "kind": "const"
+  },
+  "IGX_INPUT_GROUP_DIRECTIVES": {
+   "module": "igniteui-angular/input-group",
+   "kind": "const"
+  },
+  "IGX_INPUT_GROUP_TYPE": {
+   "module": "igniteui-angular/input-group",
+   "kind": "const"
+  },
+  "IGX_LINEAR_PROGRESS_BAR_DIRECTIVES": {
+   "module": "igniteui-angular/progressbar",
+   "kind": "const"
+  },
+  "IGX_LIST_DIRECTIVES": {
+   "module": "igniteui-angular/list",
+   "kind": "const"
+  },
+  "IGX_NAVBAR_DIRECTIVES": {
+   "module": "igniteui-angular/navbar",
+   "kind": "const"
+  },
+  "IGX_NAVIGATION_DRAWER_DIRECTIVES": {
+   "module": "igniteui-angular/navigation-drawer",
+   "kind": "const"
+  },
+  "IGX_PAGINATOR_DIRECTIVES": {
+   "module": "igniteui-angular/paginator",
+   "kind": "const"
+  },
+  "IGX_PIVOT_GRID_DIRECTIVES": {
+   "module": "igniteui-angular/grids/pivot-grid",
+   "kind": "const"
+  },
+  "IGX_PROGRESS_BAR_DIRECTIVES": {
+   "module": "igniteui-angular/progressbar",
+   "kind": "const"
+  },
+  "IGX_QUERY_BUILDER_DIRECTIVES": {
+   "module": "igniteui-angular/query-builder",
+   "kind": "const"
+  },
+  "IGX_RADIO_GROUP_DIRECTIVES": {
+   "module": "igniteui-angular/radio",
+   "kind": "const"
+  },
+  "IGX_SELECT_DIRECTIVES": {
+   "module": "igniteui-angular/select",
+   "kind": "const"
+  },
+  "IGX_SIMPLE_COMBO_DIRECTIVES": {
+   "module": "igniteui-angular/simple-combo",
+   "kind": "const"
+  },
+  "IGX_SLIDER_DIRECTIVES": {
+   "module": "igniteui-angular/slider",
+   "kind": "const"
+  },
+  "IGX_SPLITTER_DIRECTIVES": {
+   "module": "igniteui-angular/splitter",
+   "kind": "const"
+  },
+  "IGX_STEPPER_DIRECTIVES": {
+   "module": "igniteui-angular/stepper",
+   "kind": "const"
+  },
+  "IGX_TABS_DIRECTIVES": {
+   "module": "igniteui-angular/tabs",
+   "kind": "const"
+  },
+  "IGX_TIME_PICKER_DIRECTIVES": {
+   "module": "igniteui-angular/time-picker",
+   "kind": "const"
+  },
+  "IGX_TOOLTIP_DIRECTIVES": {
+   "module": "igniteui-angular/directives",
+   "kind": "const"
+  },
+  "IGX_TREE_DIRECTIVES": {
+   "module": "igniteui-angular/tree",
+   "kind": "const"
+  },
+  "IGX_TREE_GRID_DIRECTIVES": {
+   "module": "igniteui-angular/grids/tree-grid",
+   "kind": "const"
+  },
+  "IGridCellEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridClipboardEvent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridContextMenuEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridCreatedEventArgs": {
+   "module": "igniteui-angular/grids/hierarchical-grid",
+   "kind": "interface"
+  },
+  "IGridDataBindable": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridEditDoneEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridEditEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridFormGroupCreatedEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridGroupingStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IGridKeydownEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridMergeStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IGridResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IGridRowEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridScrollEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridSortingStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IGridState": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridStateCollection": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridStateOptions": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridToolbarExportEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridValidationState": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGridValidationStatusEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGroupByExpandState": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IGroupByKey": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IGroupByRecord": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IGroupByResult": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IGroupingDoneEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IGroupingExpression": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IGroupingState": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IInputResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IListItemClickEventArgs": {
+   "module": "igniteui-angular/list",
+   "kind": "interface"
+  },
+  "IListItemPanningEventArgs": {
+   "module": "igniteui-angular/list",
+   "kind": "interface"
+  },
+  "IListResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IMaskEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IMergeByResult": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IMultiRowLayoutNode": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "INPUT_DEBOUNCE_TIME": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "INPUT_DEBOUNCE_TIME_DEFAULT": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "IPageCancellableEventArgs": {
+   "module": "igniteui-angular/paginator",
+   "kind": "interface"
+  },
+  "IPageEventArgs": {
+   "module": "igniteui-angular/paginator",
+   "kind": "interface"
+  },
+  "IPaginatorResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IPagingState": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IPanStateChangeEventArgs": {
+   "module": "igniteui-angular/list",
+   "kind": "interface"
+  },
+  "IPathSegment": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IPdfExportEndedEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPinColumnCancellableEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPinColumnEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPinRowEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPinningConfig": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotAggregator": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotConfiguration": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotConfigurationChangedEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotDateDimensionOptions": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotDimension": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotDimensionData": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotDimensionStrategy": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotExpandableDimension": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotGridColumn": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotGridGroupRecord": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotGridHorizontalGroup": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotGridRecord": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotKeys": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotRecordTemplateContext": {
+   "module": "igniteui-angular/grids/pivot-grid",
+   "kind": "interface"
+  },
+  "IPivotUISettings": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPivotValue": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IPositionStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IQueryBuilderResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IRangeSliderValue": {
+   "module": "igniteui-angular/slider",
+   "kind": "interface"
+  },
+  "IRecordValidationState": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IRowDataCancelableEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IRowDataEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IRowDragEndEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IRowDragStartEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IRowExportingEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IRowSelectionEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IRowToggleEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IScrollStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ISearchInfo": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "ISelectionEventArgs": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "interface"
+  },
+  "ISelectionKeyboardState": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ISelectionNode": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ISelectionPointerState": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ISimpleComboSelectionChangedEventArgs": {
+   "module": "igniteui-angular/simple-combo",
+   "kind": "interface"
+  },
+  "ISimpleComboSelectionChangingEventArgs": {
+   "module": "igniteui-angular/simple-combo",
+   "kind": "interface"
+  },
+  "ISizeInfo": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "ISlideEventArgs": {
+   "module": "igniteui-angular/carousel",
+   "kind": "interface"
+  },
+  "ISliderValueChangeEventArgs": {
+   "module": "igniteui-angular/slider",
+   "kind": "interface"
+  },
+  "ISortingEventArgs": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "ISortingExpression": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ISortingOptions": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ISortingStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ISplitterBarResizeEventArgs": {
+   "module": "igniteui-angular/splitter",
+   "kind": "interface"
+  },
+  "IStepChangedEventArgs": {
+   "module": "igniteui-angular/stepper",
+   "kind": "interface"
+  },
+  "IStepChangingEventArgs": {
+   "module": "igniteui-angular/stepper",
+   "kind": "interface"
+  },
+  "ISummaryExpression": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ISummaryRecord": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ITabsBaseEventArgs": {
+   "module": "igniteui-angular/tabs",
+   "kind": "interface"
+  },
+  "ITabsSelectedIndexChangingEventArgs": {
+   "module": "igniteui-angular/tabs",
+   "kind": "interface"
+  },
+  "ITabsSelectedItemChangeEventArgs": {
+   "module": "igniteui-angular/tabs",
+   "kind": "interface"
+  },
+  "ITimePickerResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IToggleView": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ITooltipHideEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "ITooltipShowEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "ITreeGridAggregation": {
+   "module": "igniteui-angular/grids/tree-grid",
+   "kind": "class"
+  },
+  "ITreeGridRecord": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "ITreeNodeEditedEvent": {
+   "module": "igniteui-angular/tree",
+   "kind": "interface"
+  },
+  "ITreeNodeEditingEvent": {
+   "module": "igniteui-angular/tree",
+   "kind": "interface"
+  },
+  "ITreeNodeSelectionEvent": {
+   "module": "igniteui-angular/tree",
+   "kind": "interface"
+  },
+  "ITreeNodeToggledEventArgs": {
+   "module": "igniteui-angular/tree",
+   "kind": "interface"
+  },
+  "ITreeNodeTogglingEventArgs": {
+   "module": "igniteui-angular/tree",
+   "kind": "interface"
+  },
+  "ITreeResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IValuesChange": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IViewChangeEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IViewDateChangeEventArgs": {
+   "module": "igniteui-angular/calendar",
+   "kind": "interface"
+  },
+  "IconFamily": {
+   "module": "igniteui-angular/icon",
+   "kind": "interface"
+  },
+  "IconMeta": {
+   "module": "igniteui-angular/icon",
+   "kind": "interface"
+  },
+  "IconReference": {
+   "module": "igniteui-angular/icon",
+   "kind": "type"
+  },
+  "IgcCalendarBaseEventMap": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IgcFormControlDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgcFormsModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxAccordionComponent": {
+   "module": "igniteui-angular/accordion",
+   "kind": "class"
+  },
+  "IgxAccordionModule": {
+   "module": "igniteui-angular/accordion",
+   "kind": "class"
+  },
+  "IgxActionStripActionsToken": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxActionStripComponent": {
+   "module": "igniteui-angular/action-strip",
+   "kind": "class"
+  },
+  "IgxActionStripMenuItemDirective": {
+   "module": "igniteui-angular/action-strip",
+   "kind": "class"
+  },
+  "IgxActionStripModule": {
+   "module": "igniteui-angular/action-strip",
+   "kind": "class"
+  },
+  "IgxActionStripToken": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxAddRow": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxAddRowParent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxAdvancedFilteringDialogComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxAngularAnimationPlayer": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxAngularAnimationService": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxAppendDropStrategy": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxAutocompleteDirective": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "class"
+  },
+  "IgxAutocompleteModule": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "class"
+  },
+  "IgxAvatarComponent": {
+   "module": "igniteui-angular/avatar",
+   "kind": "class"
+  },
+  "IgxAvatarModule": {
+   "module": "igniteui-angular/avatar",
+   "kind": "class"
+  },
+  "IgxAvatarSize": {
+   "module": "igniteui-angular/avatar",
+   "kind": "const"
+  },
+  "IgxAvatarType": {
+   "module": "igniteui-angular/avatar",
+   "kind": "const"
+  },
+  "IgxBadgeComponent": {
+   "module": "igniteui-angular/badge",
+   "kind": "class"
+  },
+  "IgxBadgeModule": {
+   "module": "igniteui-angular/badge",
+   "kind": "class"
+  },
+  "IgxBadgeType": {
+   "module": "igniteui-angular/badge",
+   "kind": "const"
+  },
+  "IgxBannerActionsDirective": {
+   "module": "igniteui-angular/banner",
+   "kind": "class"
+  },
+  "IgxBannerComponent": {
+   "module": "igniteui-angular/banner",
+   "kind": "class"
+  },
+  "IgxBannerModule": {
+   "module": "igniteui-angular/banner",
+   "kind": "class"
+  },
+  "IgxBaseExporter": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxBaseTransactionService": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxBooleanFilteringOperand": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxBottomNavComponent": {
+   "module": "igniteui-angular/bottom-nav",
+   "kind": "class"
+  },
+  "IgxBottomNavContentComponent": {
+   "module": "igniteui-angular/bottom-nav",
+   "kind": "class"
+  },
+  "IgxBottomNavHeaderComponent": {
+   "module": "igniteui-angular/bottom-nav",
+   "kind": "class"
+  },
+  "IgxBottomNavHeaderIconDirective": {
+   "module": "igniteui-angular/bottom-nav",
+   "kind": "class"
+  },
+  "IgxBottomNavHeaderLabelDirective": {
+   "module": "igniteui-angular/bottom-nav",
+   "kind": "class"
+  },
+  "IgxBottomNavItemComponent": {
+   "module": "igniteui-angular/bottom-nav",
+   "kind": "class"
+  },
+  "IgxBottomNavModule": {
+   "module": "igniteui-angular/bottom-nav",
+   "kind": "class"
+  },
+  "IgxButtonDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxButtonGroupComponent": {
+   "module": "igniteui-angular/button-group",
+   "kind": "class"
+  },
+  "IgxButtonGroupModule": {
+   "module": "igniteui-angular/button-group",
+   "kind": "class"
+  },
+  "IgxButtonModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxButtonType": {
+   "module": "igniteui-angular/directives",
+   "kind": "const"
+  },
+  "IgxCSVTextDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxCalendarComponent": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IgxCalendarContainerComponent": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "class"
+  },
+  "IgxCalendarHeaderTemplateDirective": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IgxCalendarHeaderTitleTemplateDirective": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IgxCalendarModule": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IgxCalendarMonthDirective": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IgxCalendarScrollPageDirective": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IgxCalendarSubheaderTemplateDirective": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IgxCalendarView": {
+   "module": "igniteui-angular/calendar",
+   "kind": "const"
+  },
+  "IgxCalendarViewBaseDirective": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IgxCalendarYearDirective": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IgxCardActionsComponent": {
+   "module": "igniteui-angular/card",
+   "kind": "class"
+  },
+  "IgxCardActionsLayout": {
+   "module": "igniteui-angular/card",
+   "kind": "const"
+  },
+  "IgxCardComponent": {
+   "module": "igniteui-angular/card",
+   "kind": "class"
+  },
+  "IgxCardContentDirective": {
+   "module": "igniteui-angular/card",
+   "kind": "class"
+  },
+  "IgxCardFooterDirective": {
+   "module": "igniteui-angular/card",
+   "kind": "class"
+  },
+  "IgxCardHeaderComponent": {
+   "module": "igniteui-angular/card",
+   "kind": "class"
+  },
+  "IgxCardHeaderSubtitleDirective": {
+   "module": "igniteui-angular/card",
+   "kind": "class"
+  },
+  "IgxCardHeaderTitleDirective": {
+   "module": "igniteui-angular/card",
+   "kind": "class"
+  },
+  "IgxCardMediaDirective": {
+   "module": "igniteui-angular/card",
+   "kind": "class"
+  },
+  "IgxCardModule": {
+   "module": "igniteui-angular/card",
+   "kind": "class"
+  },
+  "IgxCardThumbnailDirective": {
+   "module": "igniteui-angular/card",
+   "kind": "class"
+  },
+  "IgxCarouselComponent": {
+   "module": "igniteui-angular/carousel",
+   "kind": "class"
+  },
+  "IgxCarouselComponentBase": {
+   "module": "igniteui-angular/carousel",
+   "kind": "class"
+  },
+  "IgxCarouselIndicatorDirective": {
+   "module": "igniteui-angular/carousel",
+   "kind": "class"
+  },
+  "IgxCarouselModule": {
+   "module": "igniteui-angular/carousel",
+   "kind": "class"
+  },
+  "IgxCarouselNextButtonDirective": {
+   "module": "igniteui-angular/carousel",
+   "kind": "class"
+  },
+  "IgxCarouselPrevButtonDirective": {
+   "module": "igniteui-angular/carousel",
+   "kind": "class"
+  },
+  "IgxCell": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxCellCrudState": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxCellEditorTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxCellFooterTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxCellHeaderTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxCellTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxCellTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxCellValidationErrorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxChatAttachmentContextDirective": {
+   "module": "igniteui-angular/chat",
+   "kind": "class"
+  },
+  "IgxChatComponent": {
+   "module": "igniteui-angular/chat",
+   "kind": "class"
+  },
+  "IgxChatInputContextDirective": {
+   "module": "igniteui-angular/chat",
+   "kind": "class"
+  },
+  "IgxChatMessageContextDirective": {
+   "module": "igniteui-angular/chat",
+   "kind": "class"
+  },
+  "IgxChatOptions": {
+   "module": "igniteui-angular/chat",
+   "kind": "type"
+  },
+  "IgxChatTemplates": {
+   "module": "igniteui-angular/chat",
+   "kind": "type"
+  },
+  "IgxCheckboxComponent": {
+   "module": "igniteui-angular/checkbox",
+   "kind": "class"
+  },
+  "IgxCheckboxModule": {
+   "module": "igniteui-angular/checkbox",
+   "kind": "class"
+  },
+  "IgxChildGridRowComponent": {
+   "module": "igniteui-angular/grids/hierarchical-grid",
+   "kind": "class"
+  },
+  "IgxChipComponent": {
+   "module": "igniteui-angular/chips",
+   "kind": "class"
+  },
+  "IgxChipTypeVariant": {
+   "module": "igniteui-angular/chips",
+   "kind": "const"
+  },
+  "IgxChipsAreaComponent": {
+   "module": "igniteui-angular/chips",
+   "kind": "class"
+  },
+  "IgxChipsModule": {
+   "module": "igniteui-angular/chips",
+   "kind": "class"
+  },
+  "IgxCircularProgressBarComponent": {
+   "module": "igniteui-angular/progressbar",
+   "kind": "class"
+  },
+  "IgxCollapsibleIndicatorTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnActionsBaseDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnActionsComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnEmailValidatorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnFormatterPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnGroupComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnHidingDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnLayoutComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnMaxLengthValidatorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnMaxValidatorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnMinLengthValidatorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnMinValidatorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnMovingDragDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnMovingDropDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnMovingService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnPatternValidatorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnPinningDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnRequiredValidatorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnResizerDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnResizingService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxColumnTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxComboAPIService": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboAddItemComponent": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboAddItemDirective": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboBase": {
+   "module": "igniteui-angular/combo",
+   "kind": "interface"
+  },
+  "IgxComboBaseDirective": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboClearIconDirective": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboComponent": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboDropDownComponent": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboEmptyDirective": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboFilteringPipe": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboFooterDirective": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboGroupingPipe": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboHeaderDirective": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboHeaderItemDirective": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboItemComponent": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboItemDirective": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboModule": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxComboToggleIconDirective": {
+   "module": "igniteui-angular/combo",
+   "kind": "class"
+  },
+  "IgxCsvExporterOptions": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxCsvExporterService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxCurrencyFormatterPipe": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxDataLoadingTemplateDirective": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxDataRecordSorting": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxDateFilteringOperand": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxDateFormatterPipe": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxDatePickerComponent": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "class"
+  },
+  "IgxDatePickerModule": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "class"
+  },
+  "IgxDateRangeEndComponent": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "class"
+  },
+  "IgxDateRangeInputsBaseComponent": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "class"
+  },
+  "IgxDateRangePickerComponent": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "class"
+  },
+  "IgxDateRangePickerModule": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "class"
+  },
+  "IgxDateRangeSeparatorDirective": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "class"
+  },
+  "IgxDateRangeStartComponent": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "class"
+  },
+  "IgxDateSummaryOperand": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxDateTimeEditorDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxDateTimeEditorEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IgxDateTimeEditorModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxDateTimeFilteringOperand": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxDaysViewComponent": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IgxDefaultDropStrategy": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxDialogActionsDirective": {
+   "module": "igniteui-angular/dialog",
+   "kind": "class"
+  },
+  "IgxDialogComponent": {
+   "module": "igniteui-angular/dialog",
+   "kind": "class"
+  },
+  "IgxDialogModule": {
+   "module": "igniteui-angular/dialog",
+   "kind": "class"
+  },
+  "IgxDialogTitleDirective": {
+   "module": "igniteui-angular/dialog",
+   "kind": "class"
+  },
+  "IgxDividerComponent": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxDividerModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxDividerType": {
+   "module": "igniteui-angular/directives",
+   "kind": "const"
+  },
+  "IgxDragCustomEventDetails": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "IgxDragDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxDragDropModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxDragHandleDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxDragIgnoreDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxDragIndicatorIconDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxDragLocation": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxDropDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxDropDownBaseDirective": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "class"
+  },
+  "IgxDropDownComponent": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "class"
+  },
+  "IgxDropDownGroupComponent": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "class"
+  },
+  "IgxDropDownItemBaseDirective": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "class"
+  },
+  "IgxDropDownItemComponent": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "class"
+  },
+  "IgxDropDownItemNavigationDirective": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "class"
+  },
+  "IgxDropDownModule": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "class"
+  },
+  "IgxEditRow": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxEmptyListTemplateDirective": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxExcelExporterOptions": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelExporterService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleClearFiltersComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleColumnOperationsTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleConditionalFilterComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleDateExpressionComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleFilterOperationsTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleHeaderComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleHeaderIconDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleHidingComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleLoadingValuesTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleMovingComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStylePinningComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleSearchComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleSelectingComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelStyleSortingComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExcelTextDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxExpansionPanelBase": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "interface"
+  },
+  "IgxExpansionPanelBodyComponent": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "class"
+  },
+  "IgxExpansionPanelComponent": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "class"
+  },
+  "IgxExpansionPanelDescriptionDirective": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "class"
+  },
+  "IgxExpansionPanelHeaderComponent": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "class"
+  },
+  "IgxExpansionPanelIconDirective": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "class"
+  },
+  "IgxExpansionPanelModule": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "class"
+  },
+  "IgxExpansionPanelTitleDirective": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "class"
+  },
+  "IgxExporterEvent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxExporterOptions": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "type"
+  },
+  "IgxExporterOptionsBase": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxFilterCellTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxFilterDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxFilterItem": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IgxFilterModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxFilterOptions": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxFilterPipe": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxFilteringOperand": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxFilteringService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxFlatTransactionFactory": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxFlexDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxFocusDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxFocusModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxFocusTrapDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxFocusTrapModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxForOfContext": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxForOfDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxForOfModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxForOfScrollSyncService": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxForOfSyncService": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxForOfToken": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxGestureEvent": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IgxGridActionButtonComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridActionsBaseDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridAddRowPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridBaseDirective": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "class"
+  },
+  "IgxGridBodyDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridCRUDService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridCell": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridCellComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridCellImageAltPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridCellMergePipe": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "class"
+  },
+  "IgxGridCellStyleClassesPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridCellStylesPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridColumnResizerComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridComponent": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "class"
+  },
+  "IgxGridDataMapperPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridDetailTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridDragSelectDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridEditingActionsComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridEmptyTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGridEmptyTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridExcelStyleFilteringComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridExpandableCellComponent": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "class"
+  },
+  "IgxGridFilterConditionPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridFilteringCellComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridFilteringPipe": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "class"
+  },
+  "IgxGridFilteringRowComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridFooterComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridForOfContext": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxGridForOfDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxGridGroupByAreaComponent": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "class"
+  },
+  "IgxGridGroupingPipe": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "class"
+  },
+  "IgxGridHeaderComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridHeaderGroupComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridHeaderRowComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridHeaderTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGridHierarchicalPagingPipe": {
+   "module": "igniteui-angular/grids/hierarchical-grid",
+   "kind": "class"
+  },
+  "IgxGridHierarchicalPipe": {
+   "module": "igniteui-angular/grids/hierarchical-grid",
+   "kind": "class"
+  },
+  "IgxGridLiteCellTemplateContext": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "type"
+  },
+  "IgxGridLiteCellTemplateDirective": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "class"
+  },
+  "IgxGridLiteColumnComponent": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "class"
+  },
+  "IgxGridLiteColumnConfiguration": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "type"
+  },
+  "IgxGridLiteColumnSortConfiguration": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "type"
+  },
+  "IgxGridLiteComponent": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "class"
+  },
+  "IgxGridLiteDataPipelineConfiguration": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "type"
+  },
+  "IgxGridLiteFilteringExpression": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "type"
+  },
+  "IgxGridLiteHeaderTemplateContext": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "type"
+  },
+  "IgxGridLiteHeaderTemplateDirective": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "class"
+  },
+  "IgxGridLiteNavigateToOptions": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "type"
+  },
+  "IgxGridLiteSortingExpression": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "type"
+  },
+  "IgxGridLiteSortingOptions": {
+   "module": "igniteui-angular/grids/lite",
+   "kind": "type"
+  },
+  "IgxGridLoadingTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridMRLNavigationService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridMasterDetailContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGridModule": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "class"
+  },
+  "IgxGridNavigationService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridNotGroupedPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridPaginatorOptionsPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridPaginatorTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGridPagingPipe": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "class"
+  },
+  "IgxGridPinningActionsComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridRow": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridRowClassesPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridRowComponent": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "class"
+  },
+  "IgxGridRowDragGhostContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGridRowEditActionsTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGridRowEditTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGridRowEditTextTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGridRowPinningPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridRowStylesPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridRowTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGridSelectionService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridSortingPipe": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "class"
+  },
+  "IgxGridStateBaseDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridStateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridSummaryService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGridToolbarActionsComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridToolbarAdvancedFilteringComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridToolbarComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridToolbarDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridToolbarExporterComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridToolbarHidingComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridToolbarPinningComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridToolbarTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGridToolbarTitleComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridTopLevelColumns": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridTransaction": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "IgxGridTransactionPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridTransactionStatePipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGridUnmergeActivePipe": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "class"
+  },
+  "IgxGridValidationService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGroupAreaDropDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGroupByAreaDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGroupByMetaPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGroupByRow": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGroupByRowSelectorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGroupByRowSelectorTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGroupByRowSelectorTemplateDetails": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGroupByRowTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxGroupByRowTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxGroupedTreeGridSorting": {
+   "module": "igniteui-angular/grids/tree-grid",
+   "kind": "class"
+  },
+  "IgxGrouping": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxHasVisibleColumnsPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxHeadSelectorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxHeadSelectorTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxHeadSelectorTemplateDetails": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxHeaderCollapsedIndicatorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxHeaderExpandedIndicatorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxHeaderGroupStylePipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxHierarchicalGridComponent": {
+   "module": "igniteui-angular/grids/hierarchical-grid",
+   "kind": "class"
+  },
+  "IgxHierarchicalGridModule": {
+   "module": "igniteui-angular/grids/hierarchical-grid",
+   "kind": "class"
+  },
+  "IgxHierarchicalGridRow": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxHierarchicalTransactionFactory": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxHierarchicalTransactionService": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxHintDirective": {
+   "module": "igniteui-angular/input-group",
+   "kind": "class"
+  },
+  "IgxIconButtonDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxIconButtonType": {
+   "module": "igniteui-angular/directives",
+   "kind": "type"
+  },
+  "IgxIconComponent": {
+   "module": "igniteui-angular/icon",
+   "kind": "class"
+  },
+  "IgxIconLoadedEvent": {
+   "module": "igniteui-angular/icon",
+   "kind": "interface"
+  },
+  "IgxIconModule": {
+   "module": "igniteui-angular/icon",
+   "kind": "class"
+  },
+  "IgxIconService": {
+   "module": "igniteui-angular/icon",
+   "kind": "class"
+  },
+  "IgxInputDirective": {
+   "module": "igniteui-angular/input-group",
+   "kind": "class"
+  },
+  "IgxInputGroupBase": {
+   "module": "igniteui-angular/input-group",
+   "kind": "class"
+  },
+  "IgxInputGroupComponent": {
+   "module": "igniteui-angular/input-group",
+   "kind": "class"
+  },
+  "IgxInputGroupEnum": {
+   "module": "igniteui-angular/input-group",
+   "kind": "const"
+  },
+  "IgxInputGroupModule": {
+   "module": "igniteui-angular/input-group",
+   "kind": "class"
+  },
+  "IgxInputGroupType": {
+   "module": "igniteui-angular/input-group",
+   "kind": "type"
+  },
+  "IgxInputState": {
+   "module": "igniteui-angular/input-group",
+   "kind": "enum"
+  },
+  "IgxInsertDropStrategy": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxItemListDirective": {
+   "module": "igniteui-angular/time-picker",
+   "kind": "class"
+  },
+  "IgxLabelDirective": {
+   "module": "igniteui-angular/input-group",
+   "kind": "class"
+  },
+  "IgxLayoutDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxLayoutModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxLinearProgressBarComponent": {
+   "module": "igniteui-angular/progressbar",
+   "kind": "class"
+  },
+  "IgxListActionDirective": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxListBaseDirective": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxListComponent": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxListItemComponent": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxListItemLeftPanningTemplateDirective": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxListItemRightPanningTemplateDirective": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxListLineDirective": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxListLineSubTitleDirective": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxListLineTitleDirective": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxListModule": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxListPanState": {
+   "module": "igniteui-angular/list",
+   "kind": "enum"
+  },
+  "IgxListThumbnailDirective": {
+   "module": "igniteui-angular/list",
+   "kind": "class"
+  },
+  "IgxMaskDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxMaskModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxMonthPickerComponent": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IgxMonthsViewComponent": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IgxNavDrawerItemDirective": {
+   "module": "igniteui-angular/navigation-drawer",
+   "kind": "class"
+  },
+  "IgxNavDrawerMiniTemplateDirective": {
+   "module": "igniteui-angular/navigation-drawer",
+   "kind": "class"
+  },
+  "IgxNavDrawerTemplateDirective": {
+   "module": "igniteui-angular/navigation-drawer",
+   "kind": "class"
+  },
+  "IgxNavbarActionDirective": {
+   "module": "igniteui-angular/navbar",
+   "kind": "class"
+  },
+  "IgxNavbarComponent": {
+   "module": "igniteui-angular/navbar",
+   "kind": "class"
+  },
+  "IgxNavbarModule": {
+   "module": "igniteui-angular/navbar",
+   "kind": "class"
+  },
+  "IgxNavbarTitleDirective": {
+   "module": "igniteui-angular/navbar",
+   "kind": "class"
+  },
+  "IgxNavigationCloseDirective": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxNavigationDrawerComponent": {
+   "module": "igniteui-angular/navigation-drawer",
+   "kind": "class"
+  },
+  "IgxNavigationDrawerModule": {
+   "module": "igniteui-angular/navigation-drawer",
+   "kind": "class"
+  },
+  "IgxNavigationService": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxNavigationToggleDirective": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxNoTypographyDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxNotificationsDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxNumberFilteringOperand": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxNumberFormatterPipe": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxNumberSummaryOperand": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxOverlayOutletDirective": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxOverlayService": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxPageNavigationComponent": {
+   "module": "igniteui-angular/paginator",
+   "kind": "class"
+  },
+  "IgxPageSizeSelectorComponent": {
+   "module": "igniteui-angular/paginator",
+   "kind": "class"
+  },
+  "IgxPaginatorComponent": {
+   "module": "igniteui-angular/paginator",
+   "kind": "class"
+  },
+  "IgxPaginatorContentDirective": {
+   "module": "igniteui-angular/paginator",
+   "kind": "class"
+  },
+  "IgxPaginatorDirective": {
+   "module": "igniteui-angular/paginator",
+   "kind": "class"
+  },
+  "IgxPaginatorModule": {
+   "module": "igniteui-angular/paginator",
+   "kind": "class"
+  },
+  "IgxPaginatorToken": {
+   "module": "igniteui-angular/paginator",
+   "kind": "class"
+  },
+  "IgxPdfExporterOptions": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxPdfExporterService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxPdfTextDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxPercentFormatterPipe": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxPickerActionsDirective": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxPickerClearComponent": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxPickerToggleComponent": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxPivotAggregate": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxPivotColumnResizingService": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxPivotDataSelectorComponent": {
+   "module": "igniteui-angular/grids/pivot-grid",
+   "kind": "class"
+  },
+  "IgxPivotDateAggregate": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxPivotDateDimension": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxPivotGridColumnResizerComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxPivotGridComponent": {
+   "module": "igniteui-angular/grids/pivot-grid",
+   "kind": "class"
+  },
+  "IgxPivotGridModule": {
+   "module": "igniteui-angular/grids/pivot-grid",
+   "kind": "class"
+  },
+  "IgxPivotGridValueTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxPivotNumericAggregate": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxPivotResizeHandleDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxPivotRowDimensionHeaderTemplateDirective": {
+   "module": "igniteui-angular/grids/pivot-grid",
+   "kind": "class"
+  },
+  "IgxPivotTimeAggregate": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxPivotValueChipTemplateDirective": {
+   "module": "igniteui-angular/grids/pivot-grid",
+   "kind": "class"
+  },
+  "IgxPrefixDirective": {
+   "module": "igniteui-angular/input-group",
+   "kind": "class"
+  },
+  "IgxPrependDropStrategy": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxProgressBarGradientDirective": {
+   "module": "igniteui-angular/progressbar",
+   "kind": "class"
+  },
+  "IgxProgressBarModule": {
+   "module": "igniteui-angular/progressbar",
+   "kind": "class"
+  },
+  "IgxProgressBarTextTemplateDirective": {
+   "module": "igniteui-angular/progressbar",
+   "kind": "class"
+  },
+  "IgxProgressType": {
+   "module": "igniteui-angular/progressbar",
+   "kind": "const"
+  },
+  "IgxQueryBuilderComponent": {
+   "module": "igniteui-angular/query-builder",
+   "kind": "class"
+  },
+  "IgxQueryBuilderHeaderComponent": {
+   "module": "igniteui-angular/query-builder",
+   "kind": "class"
+  },
+  "IgxQueryBuilderModule": {
+   "module": "igniteui-angular/query-builder",
+   "kind": "class"
+  },
+  "IgxQueryBuilderSearchValueTemplateDirective": {
+   "module": "igniteui-angular/query-builder",
+   "kind": "class"
+  },
+  "IgxRadioComponent": {
+   "module": "igniteui-angular/radio",
+   "kind": "class"
+  },
+  "IgxRadioGroupDirective": {
+   "module": "igniteui-angular/radio",
+   "kind": "class"
+  },
+  "IgxRadioModule": {
+   "module": "igniteui-angular/radio",
+   "kind": "class"
+  },
+  "IgxReadOnlyInputDirective": {
+   "module": "igniteui-angular/input-group",
+   "kind": "class"
+  },
+  "IgxRippleDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxRippleModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxRowAddCrudState": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowAddTextDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowCollapsedIndicatorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowCrudState": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowDragDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowDragGhostDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowEditActionsDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowEditTabStopDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowEditTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowEditTextDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowExpandedIndicatorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowIslandComponent": {
+   "module": "igniteui-angular/grids/hierarchical-grid",
+   "kind": "class"
+  },
+  "IgxRowSelectorDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxRowSelectorTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxRowSelectorTemplateDetails": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxScrollInertiaDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxScrollInertiaModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxSelectComponent": {
+   "module": "igniteui-angular/select",
+   "kind": "class"
+  },
+  "IgxSelectFooterDirective": {
+   "module": "igniteui-angular/select",
+   "kind": "class"
+  },
+  "IgxSelectGroupComponent": {
+   "module": "igniteui-angular/select",
+   "kind": "class"
+  },
+  "IgxSelectHeaderDirective": {
+   "module": "igniteui-angular/select",
+   "kind": "class"
+  },
+  "IgxSelectItemComponent": {
+   "module": "igniteui-angular/select",
+   "kind": "class"
+  },
+  "IgxSelectModule": {
+   "module": "igniteui-angular/select",
+   "kind": "class"
+  },
+  "IgxSelectOverlapPositionStrategy": {
+   "module": "igniteui-angular/select",
+   "kind": "class"
+  },
+  "IgxSelectToggleIconDirective": {
+   "module": "igniteui-angular/select",
+   "kind": "class"
+  },
+  "IgxSelectionAPIService": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxSimpleComboComponent": {
+   "module": "igniteui-angular/simple-combo",
+   "kind": "class"
+  },
+  "IgxSimpleComboModule": {
+   "module": "igniteui-angular/simple-combo",
+   "kind": "class"
+  },
+  "IgxSlideComponent": {
+   "module": "igniteui-angular/carousel",
+   "kind": "class"
+  },
+  "IgxSlideComponentBase": {
+   "module": "igniteui-angular/carousel",
+   "kind": "interface"
+  },
+  "IgxSliderComponent": {
+   "module": "igniteui-angular/slider",
+   "kind": "class"
+  },
+  "IgxSliderModule": {
+   "module": "igniteui-angular/slider",
+   "kind": "class"
+  },
+  "IgxSliderType": {
+   "module": "igniteui-angular/slider",
+   "kind": "const"
+  },
+  "IgxSnackbarComponent": {
+   "module": "igniteui-angular/snackbar",
+   "kind": "class"
+  },
+  "IgxSnackbarModule": {
+   "module": "igniteui-angular/snackbar",
+   "kind": "class"
+  },
+  "IgxSortAscendingHeaderIconDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxSortDescendingHeaderIconDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxSortHeaderIconDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxSorting": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxSplitBarComponent": {
+   "module": "igniteui-angular/splitter",
+   "kind": "class"
+  },
+  "IgxSplitterComponent": {
+   "module": "igniteui-angular/splitter",
+   "kind": "class"
+  },
+  "IgxSplitterModule": {
+   "module": "igniteui-angular/splitter",
+   "kind": "class"
+  },
+  "IgxSplitterPaneComponent": {
+   "module": "igniteui-angular/splitter",
+   "kind": "class"
+  },
+  "IgxStepActiveIndicatorDirective": {
+   "module": "igniteui-angular/stepper",
+   "kind": "class"
+  },
+  "IgxStepCompletedIndicatorDirective": {
+   "module": "igniteui-angular/stepper",
+   "kind": "class"
+  },
+  "IgxStepComponent": {
+   "module": "igniteui-angular/stepper",
+   "kind": "class"
+  },
+  "IgxStepContentDirective": {
+   "module": "igniteui-angular/stepper",
+   "kind": "class"
+  },
+  "IgxStepIndicatorDirective": {
+   "module": "igniteui-angular/stepper",
+   "kind": "class"
+  },
+  "IgxStepInvalidIndicatorDirective": {
+   "module": "igniteui-angular/stepper",
+   "kind": "class"
+  },
+  "IgxStepSubtitleDirective": {
+   "module": "igniteui-angular/stepper",
+   "kind": "class"
+  },
+  "IgxStepTitleDirective": {
+   "module": "igniteui-angular/stepper",
+   "kind": "class"
+  },
+  "IgxStepType": {
+   "module": "igniteui-angular/stepper",
+   "kind": "const"
+  },
+  "IgxStepperComponent": {
+   "module": "igniteui-angular/stepper",
+   "kind": "class"
+  },
+  "IgxStepperModule": {
+   "module": "igniteui-angular/stepper",
+   "kind": "class"
+  },
+  "IgxStepperOrientation": {
+   "module": "igniteui-angular/stepper",
+   "kind": "const"
+  },
+  "IgxStepperTitlePosition": {
+   "module": "igniteui-angular/stepper",
+   "kind": "const"
+  },
+  "IgxStringFilteringOperand": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxStringReplacePipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxStylesRegistrar": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxSuffixDirective": {
+   "module": "igniteui-angular/input-group",
+   "kind": "class"
+  },
+  "IgxSummaryDataPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxSummaryFormatterPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxSummaryOperand": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxSummaryResult": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IgxSummaryRow": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxSummaryRowComponent": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxSummaryTemplateContext": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "IgxSummaryTemplateDirective": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxSwitchComponent": {
+   "module": "igniteui-angular/switch",
+   "kind": "class"
+  },
+  "IgxSwitchModule": {
+   "module": "igniteui-angular/switch",
+   "kind": "class"
+  },
+  "IgxTabContentBase": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabContentComponent": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabContentDirective": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabHeaderBase": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabHeaderComponent": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabHeaderDirective": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabHeaderIconDirective": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabHeaderLabelDirective": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabItemBase": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabItemComponent": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabItemDirective": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabsAlignment": {
+   "module": "igniteui-angular/tabs",
+   "kind": "const"
+  },
+  "IgxTabsBase": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabsComponent": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabsDirective": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTabsModule": {
+   "module": "igniteui-angular/tabs",
+   "kind": "class"
+  },
+  "IgxTemplateOutletDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxTextAlign": {
+   "module": "igniteui-angular/progressbar",
+   "kind": "const"
+  },
+  "IgxTextHighlightDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxTextHighlightModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxTextHighlightService": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxTextSelectionDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxTextSelectionModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxTheme": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "IgxThumbFromTemplateDirective": {
+   "module": "igniteui-angular/slider",
+   "kind": "class"
+  },
+  "IgxThumbToTemplateDirective": {
+   "module": "igniteui-angular/slider",
+   "kind": "class"
+  },
+  "IgxTickLabelTemplateDirective": {
+   "module": "igniteui-angular/slider",
+   "kind": "class"
+  },
+  "IgxTimeFilteringOperand": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxTimeItemDirective": {
+   "module": "igniteui-angular/time-picker",
+   "kind": "class"
+  },
+  "IgxTimePickerComponent": {
+   "module": "igniteui-angular/time-picker",
+   "kind": "class"
+  },
+  "IgxTimePickerModule": {
+   "module": "igniteui-angular/time-picker",
+   "kind": "class"
+  },
+  "IgxTimePickerValidationFailedEventArgs": {
+   "module": "igniteui-angular/time-picker",
+   "kind": "interface"
+  },
+  "IgxTimeSummaryOperand": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxToastComponent": {
+   "module": "igniteui-angular/toast",
+   "kind": "class"
+  },
+  "IgxToastModule": {
+   "module": "igniteui-angular/toast",
+   "kind": "class"
+  },
+  "IgxToggleActionDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxToggleDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxToggleModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxToolbarToken": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxTooltipDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxTooltipModule": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxTooltipTargetDirective": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "IgxTouchManager": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxTouchManagerCallbacks": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IgxTouchManagerOptions": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IgxTransactionService": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "IgxTree": {
+   "module": "igniteui-angular/tree",
+   "kind": "interface"
+  },
+  "IgxTreeComponent": {
+   "module": "igniteui-angular/tree",
+   "kind": "class"
+  },
+  "IgxTreeExpandIndicatorDirective": {
+   "module": "igniteui-angular/tree",
+   "kind": "class"
+  },
+  "IgxTreeGridAPIService": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "IgxTreeGridComponent": {
+   "module": "igniteui-angular/grids/tree-grid",
+   "kind": "class"
+  },
+  "IgxTreeGridGroupByAreaComponent": {
+   "module": "igniteui-angular/grids/tree-grid",
+   "kind": "class"
+  },
+  "IgxTreeGridGroupingPipe": {
+   "module": "igniteui-angular/grids/tree-grid",
+   "kind": "class"
+  },
+  "IgxTreeGridModule": {
+   "module": "igniteui-angular/grids/tree-grid",
+   "kind": "class"
+  },
+  "IgxTreeGridRow": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "IgxTreeModule": {
+   "module": "igniteui-angular/tree",
+   "kind": "class"
+  },
+  "IgxTreeNode": {
+   "module": "igniteui-angular/tree",
+   "kind": "interface"
+  },
+  "IgxTreeNodeComponent": {
+   "module": "igniteui-angular/tree",
+   "kind": "class"
+  },
+  "IgxTreeNodeLinkDirective": {
+   "module": "igniteui-angular/tree",
+   "kind": "class"
+  },
+  "IgxTreeSearchResolver": {
+   "module": "igniteui-angular/tree",
+   "kind": "type"
+  },
+  "IgxTreeSelectionType": {
+   "module": "igniteui-angular/tree",
+   "kind": "const"
+  },
+  "IgxYearsViewComponent": {
+   "module": "igniteui-angular/calendar",
+   "kind": "class"
+  },
+  "IndigoIcons": {
+   "module": "igniteui-angular/icon",
+   "kind": "const"
+  },
+  "InputResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "IntlFormatter": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "KeyOfOrString": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "LabelPosition": {
+   "module": "igniteui-angular/directives",
+   "kind": "const"
+  },
+  "ListResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "MRLColumnSizeInfo": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "MRLResizeColumnInfo": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "MarkdownPipe": {
+   "module": "igniteui-angular/chat-extras",
+   "kind": "class"
+  },
+  "NAVIGATION_KEYS": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "Navigate": {
+   "module": "igniteui-angular/drop-down",
+   "kind": "enum"
+  },
+  "NoOpScrollStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "NoopFilteringStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "NoopPivotDimensionsStrategy": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "NoopSortingStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "OffsetMode": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "OverlayAnimationEventArgs": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "OverlayCancelableEventArgs": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "OverlayClosingEventArgs": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "OverlayCreateSettings": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "OverlayEventArgs": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "OverlaySettings": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "PaginatorResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "PagingError": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "PdfUnicodeFont": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "PickerBaseDirective": {
+   "module": "igniteui-angular/date-picker",
+   "kind": "class"
+  },
+  "PickerCalendarOrientation": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "PickerHeaderOrientation": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "PickerInteractionMode": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "PivotAggregation": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "type"
+  },
+  "PivotAggregationType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "type"
+  },
+  "PivotColumnDimensionsStrategy": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "PivotDimensionType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "enum"
+  },
+  "PivotGridType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "PivotRowDimensionsStrategy": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "PivotRowHeaderGroupType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "PivotRowLayoutType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "enum"
+  },
+  "PivotSummaryPosition": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "enum"
+  },
+  "PivotUtil": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "PlatformUtil": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "Point": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "PositionSettings": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "QueryBuilderResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "ROW_ADD_KEYS": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "ROW_COLLAPSE_KEYS": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "ROW_EXPAND_KEYS": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "RadioGroupAlignment": {
+   "module": "igniteui-angular/radio",
+   "kind": "const"
+  },
+  "RelativePosition": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "RelativePositionStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "RenderPhase": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "RowEditPositionSettings": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "RowEditPositionStrategy": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "RowPinningPosition": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "enum"
+  },
+  "RowType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "SCROLL_THROTTLE_TIME_MULTIPLIER": {
+   "module": "igniteui-angular/grids/grid",
+   "kind": "const"
+  },
+  "SUPPORTED_KEYS": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "const"
+  },
+  "ScrollDirection": {
+   "module": "igniteui-angular/calendar",
+   "kind": "enum"
+  },
+  "ScrollStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "SelectionState": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "Size": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "SliderHandle": {
+   "module": "igniteui-angular/slider",
+   "kind": "const"
+  },
+  "SortingDirection": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "SortingIndexPipe": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "class"
+  },
+  "SplitterType": {
+   "module": "igniteui-angular/splitter",
+   "kind": "enum"
+  },
+  "State": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "StateUpdateEvent": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "THEME_TOKEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "TRANSACTION_TYPE": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "ThemeToken": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "TickLabelsOrientation": {
+   "module": "igniteui-angular/slider",
+   "kind": "const"
+  },
+  "TicksOrientation": {
+   "module": "igniteui-angular/slider",
+   "kind": "const"
+  },
+  "TimePickerResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "ToggleAnimationPlayer": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "class"
+  },
+  "ToggleAnimationSettings": {
+   "module": "igniteui-angular/expansion-panel",
+   "kind": "interface"
+  },
+  "ToggleViewCancelableEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "ToggleViewEventArgs": {
+   "module": "igniteui-angular/directives",
+   "kind": "interface"
+  },
+  "TooltipPositionStrategy": {
+   "module": "igniteui-angular/directives",
+   "kind": "class"
+  },
+  "Transaction": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "TransactionEventOrigin": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "TransactionService": {
+   "module": "igniteui-angular/core",
+   "kind": "interface"
+  },
+  "TransactionType": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "TreeGridFilteringStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "TreeGridFormattedValuesFilteringStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "TreeGridMatchingRecordsOnlyFilteringStrategy": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "TreeGridType": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "interface"
+  },
+  "TreeResourceStringsEN": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "Util": {
+   "module": "igniteui-angular/core",
+   "kind": "class"
+  },
+  "ValidationStatus": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "type"
+  },
+  "VerticalAlignment": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "VerticalAnimationType": {
+   "module": "igniteui-angular/stepper",
+   "kind": "const"
+  },
+  "WEEKDAYS": {
+   "module": "igniteui-angular/core",
+   "kind": "enum"
+  },
+  "WatchChanges": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "function"
+  },
+  "WatchColumnChanges": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "function"
+  },
+  "WeekDays": {
+   "module": "igniteui-angular/core",
+   "kind": "type"
+  },
+  "areEqualArrays": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "areSameMonth": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "blink": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "calendarRange": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "changei18n": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "clamp": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "cloneArray": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "cloneHierarchicalArray": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "cloneValue": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "cloneValueCached": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "columnFieldPath": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "comboIgnoreDiacriticsFilter": {
+   "module": "igniteui-angular/combo",
+   "kind": "function"
+  },
+  "compareMaps": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "copyDescriptors": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "daysInWeek": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "fadeIn": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "fadeOut": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "first": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "flatten": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "flipBottom": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "flipHorBck": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "flipHorFwd": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "flipLeft": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "flipRight": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "flipTop": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "flipVerBck": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "flipVerFwd": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "formatToParts": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "generateExpressionsList": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "function"
+  },
+  "generateMonth": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "getClosestActiveDate": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "getComponentCssSizeVar": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "getComponentSize": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "getComponentTheme": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "getCurrentResourceStrings": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "getHierarchy": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "getNextActiveDate": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "getPreviousActiveDate": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "getResizeObserver": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "getUUID": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "function"
+  },
+  "getYearRange": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "growVerIn": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "growVerOut": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "heartbeat": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "intoChunks": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "isConstructor": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "isDate": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "isDateInRanges": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "isEqual": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "isHierarchyMatch": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "isLeap": {
+   "module": "igniteui-angular/calendar",
+   "kind": "const"
+  },
+  "isLeftToRight": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "isNextMonth": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "isObject": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "isPreviousMonth": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "isTree": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "last": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "mergeObjects": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "modulo": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "monthRange": {
+   "module": "igniteui-angular/calendar",
+   "kind": "const"
+  },
+  "normalizeURI": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "notifyChanges": {
+   "module": "igniteui-angular/grids/core",
+   "kind": "function"
+  },
+  "onResourceChangeHandle": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "parseDate": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "provideIgniteIntl": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "pulsateBck": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "pulsateFwd": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "range": {
+   "module": "igniteui-angular/calendar",
+   "kind": "const"
+  },
+  "recreateExpression": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "recreateTree": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "recreateTreeFromFields": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "registerI18n": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "rem": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "resizeObservable": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "resolveNestedPath": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "reverseMapper": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "rotateInBl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateInBottom": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateInBr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateInCenter": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateInDiagonal1": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateInDiagonal2": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateInHor": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateInLeft": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateInRight": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateInTl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateInTop": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateInTr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateInVer": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutBl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutBottom": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutBr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutCenter": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutDiagonal1": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutDiagonal2": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutHor": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutLeft": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutRight": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutTl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutTop": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutTr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "rotateOutVer": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "runAfterRenderOnce": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "scaleInBl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInBottom": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInBr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInCenter": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInHorCenter": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInHorLeft": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInHorRight": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInLeft": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInRight": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInTl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInTop": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInTr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInVerBottom": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInVerCenter": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleInVerTop": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutBl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutBottom": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutBr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutCenter": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutHorCenter": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutHorLeft": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutHorRight": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutLeft": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutRight": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutTl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutTop": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutTr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutVerBottom": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutVerCenter": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "scaleOutVerTop": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "setCurrentI18n": {
+   "module": "igniteui-angular/core"
+  },
+  "shakeBl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "shakeBottom": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "shakeBr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "shakeCenter": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "shakeHor": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "shakeLeft": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "shakeRight": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "shakeTl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "shakeTop": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "shakeTr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "shakeVer": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "showMessage": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "slideInBl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideInBottom": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideInBr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideInLeft": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideInRight": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideInTl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideInTop": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideInTr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideOutBl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideOutBottom": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideOutBr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideOutLeft": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideOutRight": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideOutTl": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideOutTop": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "slideOutTr": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingInBottomBck": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingInBottomFwd": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingInLeftBck": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingInLeftFwd": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingInRightBck": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingInRightFwd": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingInTopBck": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingInTopFwd": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingOutBottomBck": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingOutBottomFwd": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingOutLeftBck": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingOutLefttFwd": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingOutRightBck": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingOutRightFwd": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingOutTopBck": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "swingOutTopFwd": {
+   "module": "igniteui-angular/animations",
+   "kind": "const"
+  },
+  "toCalendarDay": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "trackByIdentity": {
+   "module": "igniteui-angular/core",
+   "kind": "function"
+  },
+  "uniqueDates": {
+   "module": "igniteui-angular/core",
+   "kind": "const"
+  },
+  "weekDay": {
+   "module": "igniteui-angular/calendar",
+   "kind": "const"
+  }
+ }
+}
