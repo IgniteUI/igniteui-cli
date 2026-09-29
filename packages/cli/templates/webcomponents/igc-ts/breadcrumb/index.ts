@@ -8,7 +8,7 @@ class IgcBreadcrumbComponent extends BaseComponent {
 		super(__dirname);
 		this.name  = "Breadcrumb";
 		this.group = "Menus";
-		this.description = `Customizable breadcrumb component`;
+		this.description = `Shows the current page location within a navigational hierarchy`;
 	}
 }
 module.exports = new IgcBreadcrumbComponent();

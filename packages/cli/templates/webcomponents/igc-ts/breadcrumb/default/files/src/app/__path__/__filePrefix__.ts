@@ -21,13 +21,13 @@ export default class $(ClassName) extends LitElement {
       <nav aria-label="Breadcrumb">
         <igc-breadcrumbs>
           <igc-breadcrumb>
-            <a href="/home">Home</a>
+            <a href="#">Home</a>
           </igc-breadcrumb>
           <igc-breadcrumb>
-            <a href="/category">Category</a>
+            <a href="#">Category</a>
           </igc-breadcrumb>
           <igc-breadcrumb current>
-            <a href="/category/item">Item</a>
+            <a href="#">Item</a>
           </igc-breadcrumb>
         </igc-breadcrumbs>
       </nav>
