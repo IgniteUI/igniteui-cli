@@ -144,6 +144,8 @@ export function newProject(options: OptionsSchema): Rule {
 							tree.rename("gitignore", ".gitignore");
 						}
 					},
+					// run full schematic for args/prompts
+					schematic("ai-config", {}),
 					(tree: Tree, context: IgxSchematicContext) => {
 						if (!nameProvided) {
 							return defer(async () => {
@@ -153,8 +155,6 @@ export function newProject(options: OptionsSchema): Rule {
 							});
 						}
 					},
-					// run full schematic for args/prompts
-					schematic("ai-config", {}),
 					(_tree: Tree, _context: IgxSchematicContext) => {
 						// move late so name can be resolved before use
 						return move(options.name!);
