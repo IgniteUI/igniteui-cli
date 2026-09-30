@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_GAUGES_PACKAGE } from "../../constants";
 
 class IgrTsBulletGraphTemplate extends IgniteUIForReactTemplate {
 	constructor() {
@@ -10,7 +11,7 @@ class IgrTsBulletGraphTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Bullet Graph";
 		this.description = `allows for a linear and concise view of measures compared against a scale.`;
-		this.packages = ["igniteui-react-gauges@~19.5.2"];
+		this.packages = [IGNITEUI_REACT_GAUGES_PACKAGE];
 	}
 }
 module.exports = new IgrTsBulletGraphTemplate();

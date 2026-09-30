@@ -5,7 +5,7 @@ class IgrDateTimeInputTemplate extends IgniteUIForReactTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Date Time Input"];
-		this.controlGroup = "Scheduling";
+		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
 		this.id = "date-time-input";
 		this.projectType = "igr-ts";

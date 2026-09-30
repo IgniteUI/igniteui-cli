@@ -4,7 +4,7 @@ class IgxSnackbarComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name = "Snackbar";
-		this.group = "Interactions";
+		this.group = "Notifications";
 		this.description = "provides feedback about an operation by showing a brief message";
 	}
 }

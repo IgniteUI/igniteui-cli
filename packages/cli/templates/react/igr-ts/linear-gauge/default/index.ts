@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_GAUGES_PACKAGE } from "../../constants";
 
 class IgrTsLinearGaugeTemplate extends IgniteUIForReactTemplate {
 	constructor() {
@@ -10,7 +11,7 @@ class IgrTsLinearGaugeTemplate extends IgniteUIForReactTemplate {
 		this.projectType = "igr-ts";
 		this.name = "Linear Gauge";
 		this.description = `value compared against a scale and one or more ranges.`;
-		this.packages = ["igniteui-react-gauges@~19.5.2"];
+		this.packages = [IGNITEUI_REACT_GAUGES_PACKAGE];
 	}
 }
 module.exports = new IgrTsLinearGaugeTemplate();

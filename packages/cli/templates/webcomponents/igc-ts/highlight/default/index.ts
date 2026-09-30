@@ -4,7 +4,7 @@ class IgcHighlightTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Highlight"];
-		this.controlGroup = "Interactions";
+		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
 		this.id = "highlight";
 		this.projectType = "igc-ts";

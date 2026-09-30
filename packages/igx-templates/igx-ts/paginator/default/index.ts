@@ -5,7 +5,7 @@ class IgxPaginatorTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Paginator"];
-		this.controlGroup = "Grids & Lists";
+		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
 		this.id = "paginator";
 		this.projectType = "igx-ts";

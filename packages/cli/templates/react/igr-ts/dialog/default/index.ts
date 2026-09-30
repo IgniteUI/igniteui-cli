@@ -5,7 +5,7 @@ class IgrDialogTemplate extends IgniteUIForReactTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Dialog"];
-		this.controlGroup = "Notifications";
+		this.controlGroup = "Interactions";
 		this.listInComponentTemplates = true;
 		this.id = "dialog";
 		this.projectType = "igr-ts";

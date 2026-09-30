@@ -4,7 +4,7 @@ class IgcVirtualScrollTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Virtual Scroll"];
-		this.controlGroup = "Grids & Lists";
+		this.controlGroup = "Data Entry & Display";
 		this.listInComponentTemplates = true;
 		this.id = "virtual-scroll";
 		this.projectType = "igc-ts";
