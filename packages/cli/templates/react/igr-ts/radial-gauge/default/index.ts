@@ -1,4 +1,5 @@
 import { IgniteUIForReactTemplate } from "../../../../../lib/templates/IgniteUIForReactTemplate";
+import { IGNITEUI_REACT_GAUGES_PACKAGE } from "../../constants";
 
 class IgrTsRadialGaugeTemplate extends IgniteUIForReactTemplate {
 	constructor() {
@@ -11,8 +12,7 @@ class IgrTsRadialGaugeTemplate extends IgniteUIForReactTemplate {
 		this.name = "Radial Gauge";
 		this.description = `provides a number of visual elements, like a needle, tick marks, ranges
 							and labels, in order to create a predefined shape and scale.`;
-		// TODO: read version from igniteui-react-core in package.json
-		this.packages = ["igniteui-react-gauges@~19.5.2"];
+		this.packages = [IGNITEUI_REACT_GAUGES_PACKAGE];
 	}
 }
 module.exports = new IgrTsRadialGaugeTemplate();
