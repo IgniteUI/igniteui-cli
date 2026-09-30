@@ -13,7 +13,7 @@ class TreeGridTemplate extends IgniteUIForReactTemplate {
 		this.description = "IgrTreeGrid template for React";
 		this.projectType = "igr-ts";
 		this.components = ["Tree Grid"];
-		this.controlGroup = "Data Grids";
+		this.controlGroup = "Grids & Lists";
 		this.packages = [IGNITEUI_REACT_GRIDS_PACKAGE];
 		this.hasExtraConfiguration = false;
 	}

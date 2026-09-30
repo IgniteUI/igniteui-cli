@@ -4,7 +4,7 @@ class IgxAvatarComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name = "Avatar";
-		this.group = "Data Entry & Display";
+		this.group = "Layouts";
 		this.description = "displays an image, icon or initials to the user";
 	}
 }

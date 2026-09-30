@@ -5,7 +5,7 @@ class IgxBannerTemplate extends IgniteUIForAngularTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Banner"];
-		this.controlGroup = "Interactions";
+		this.controlGroup = "Notifications";
 		this.listInComponentTemplates = true;
 		this.id = "banner";
 		this.projectType = "igx-ts";

@@ -7,7 +7,7 @@ class IgcDividerComponent extends BaseComponent {
 	constructor() {
 		super(__dirname);
 		this.name  = "Divider";
-		this.group = "Data Entry & Display";
+		this.group = "Layouts";
 		this.description = `Customizable divider component`;
 	}
 }
