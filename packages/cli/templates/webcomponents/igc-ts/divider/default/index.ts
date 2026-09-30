@@ -5,7 +5,7 @@ class IgcDividerTemplate extends IgniteUIForWebComponentsTemplate {
 	constructor() {
 		super(__dirname);
 		this.components = ["Divider"];
-		this.controlGroup = "Data Entry & Display";
+		this.controlGroup = "Layouts";
 		this.listInComponentTemplates = true;
 		this.id = "divider";
 		this.projectType = "igc-ts";

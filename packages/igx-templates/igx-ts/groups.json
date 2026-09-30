@@ -1,10 +1,12 @@
 {
-	"Grids & Lists": "display data sets with feature rich Grids, Combo or List.",
+	"Grids & Lists": "display data sets with feature rich Grids, Lists and Trees.",
 	"Charts": "high-performance data visualization for category and financial data.",
 	"Maps": "display data that contains geographic locations from view models or geo-spatial data.",
 	"Gauges": "scale measure Controls including Linear and Radial Gauge and Bullet Graph.",
-	"Data Entry & Display": "contains Progress Bars, Button, Drop Down, Checkbox, Label & Input, etc.",
-	"Interactions": "includes Dialog Window, Slider, Toggle, Overlay, Ripple, etc.",
-	"Layouts": "content layout building blocks such as Dock Manager, Bottom Navigation and Carousel.",
-	"Scheduling": "date and time controls including Calendar, Date and Time pickers."
+	"Data Entry & Display": "contains Button, Input, Checkbox, Combo, Drop Down, Progress Bars, etc.",
+	"Interactions": "includes Dialog, Chat, Slider, Tooltip, Ripple, etc.",
+	"Layouts": "content layout building blocks such as Accordion, Card, Carousel, Tabs and Splitter.",
+	"Menus": "navigation controls including Navbar and Navigation Drawer.",
+	"Notifications": "informational components including Banner, Snackbar and Toast.",
+	"Scheduling": "date and time controls including Calendar and Date pickers."
 }
