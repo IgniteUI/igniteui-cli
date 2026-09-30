@@ -1,3 +1,19 @@
+# 15.8.0 (2026-09-30)
+
+## What's Changed
+* chore(changelog): update templates for Angular, Web Components, and R… by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1806
+* build(deps): bump immutable from 3.8.2 to 3.8.4 in the npm_and_
+* fix(mcp): add search fallback to get_doc and generic-stripped lookup to get_api_reference by @dkalinovInfra in https://github.com/IgniteUI/igniteui-cli/pull/1808
+* chore(mcp): update default doc compression model to gpt-6-luna by @dkalinovInfra in https://github.com/IgniteUI/igniteui-cli/pull/1817
+* feat(mcp): add resolve_import tool for exact symbol import paths by @dkalinovInfra in https://github.com/IgniteUI/igniteui-cli/pull/1821
+* build(deps): update igniteui-webcomponents to version 7.4.1 in projec… by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1814
+* update react packages and add missing templates by @onlyexeption in https://github.com/IgniteUI/igniteui-cli/pull/1820
+* feat(breadcrumb): add IgcBreadcrumb  component template with tests by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1815
+* chore(templates): update component groups for better categorization by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1809
+* chore(cli): update angular version to 22.2.0 by @ivanvpetrov in https://github.com/IgniteUI/igniteui-cli/pull/1813
+* fix(schematic): fix ai-config schematic call in newProject function t… by @Marina-L-Stoyanova in https://github.com/IgniteUI/igniteui-cli/pull/1816
+
+
 # 15.7.0 (2026-09-15)
 
 ## What's Changed
