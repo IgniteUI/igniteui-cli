@@ -94,6 +94,15 @@ describe('TypeScriptExpressionCollector', () => {
       expect(unique(`{ ...foo }, { ...bar }, { ...foo }`)).toEqual(['{ ...foo }', '{ ...bar }']);
     });
 
+    it('keeps member order significant when objects contain spreads', () => {
+      expect(unique(`{ ...base, path: 'home' }, { path: 'home', ...base }`))
+        .toEqual([`{ ...base, path: 'home' }`, `{ path: 'home', ...base }`]);
+    });
+
+    it('removes duplicates with spreads in the same order', () => {
+      expect(unique(`{ path: 'home', ...base }, { path: 'home', ...base }`)).toEqual([`{ path: 'home', ...base }`]);
+    });
+
     it('does not treat a shorthand property as equal to a method with the same name', () => {
       expect(unique(`{ Foo }, { Foo() {} }`)).toEqual(['{ Foo }', '{ Foo() {} }']);
     });

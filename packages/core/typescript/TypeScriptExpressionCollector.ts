@@ -87,8 +87,10 @@ export class TypeScriptExpressionCollector {
       a: ts.ObjectLiteralElementLike,
       b: ts.ObjectLiteralElementLike
     ) => (this.getPropertyName(a) ?? "").localeCompare(this.getPropertyName(b) ?? "");
-    const sortedProps1 = obj1.properties.slice().sort(namesComparer);
-    const sortedProps2 = obj2.properties.slice().sort(namesComparer);
+    // spread order is significant (later members override earlier ones), so only sort without spreads
+    const hasSpread = [...obj1.properties, ...obj2.properties].some(p => ts.isSpreadAssignment(p));
+    const sortedProps1 = hasSpread ? obj1.properties.slice() : obj1.properties.slice().sort(namesComparer);
+    const sortedProps2 = hasSpread ? obj2.properties.slice() : obj2.properties.slice().sort(namesComparer);
 
     for (let i = 0; i < sortedProps1.length; i++) {
       const prop1 = sortedProps1[i];
