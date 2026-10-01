@@ -1,13 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
   walkTocJson,
-  walkTocYaml,
   type TocEntry,
   type TocNode,
 } from "../../../scripts/lib/toc-index.js";
 
 /**
- * Mirrors the shape of `angular/igniteui-docfx/en/components/toc.yml`: headers
+ * Mirrors the shape of `docs/angular/src/content/en/components/toc.json` in igniteui-documentation: headers
  * are top-level siblings of the entries they introduce, and a header may carry
  * its own landing-page href.
  */
@@ -55,8 +54,8 @@ function shape(entry: TocEntry) {
   };
 }
 
-describe("walkTocYaml — §4.1 worked examples", () => {
-  const entries = walkTocYaml(ANGULAR_TOC);
+describe("walkTocJson (Angular TOC) — §4.1 worked examples", () => {
+  const entries = walkTocJson(ANGULAR_TOC);
 
   it("groups a node that has both an href and children with its own children", () => {
     expect(shape(byHref(entries, "grid/grid.md")[0])).toEqual({
@@ -135,8 +134,8 @@ describe("walkTocYaml — §4.1 worked examples", () => {
   });
 });
 
-describe("walkTocYaml — structure", () => {
-  const entries = walkTocYaml(ANGULAR_TOC);
+describe("walkTocJson (Angular TOC) — structure", () => {
+  const entries = walkTocJson(ANGULAR_TOC);
 
   it("emits one entry per href in document order", () => {
     expect(entries.map((e) => e.ord)).toEqual(entries.map((_, i) => i));

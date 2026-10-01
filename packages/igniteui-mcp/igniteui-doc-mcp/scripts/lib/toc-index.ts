@@ -1,7 +1,7 @@
 /**
  * Shared TOC walker for the documentation exporters.
  *
- * Both TOC sources (angular's `toc.yml` and the xplat `toc.json`) are arrays of
+ * Both TOC sources (the Angular and the xplat `toc.json` in igniteui-documentation) are arrays of
  * nodes with the same shape: `name`, optional `href`, optional `items`, and
  * `header: true` for the editorial section dividers. The exporters previously
  * flattened these to `{ name, href, premium }` and discarded the tree; this
@@ -49,7 +49,7 @@ export interface TocEntry {
 export interface WalkOptions {
   /**
    * Platform token filtered on by the xplat `toc.json` (`"Angular"`, `"React"`,
-   * `"Blazor"`, `"WebComponents"`). Omitted for `toc.yml`, which has no
+   * `"Blazor"`, `"WebComponents"`). Omitted for the Angular TOC, which has no
    * `exclude` entries.
    */
   excludePlatform?: string;
@@ -136,12 +136,7 @@ function walk(nodes: TocNode[], opts: WalkOptions): TocEntry[] {
   return entries;
 }
 
-/** Walk a parsed `toc.yml` (angular). */
-export function walkTocYaml(nodes: TocNode[], opts: WalkOptions = {}): TocEntry[] {
-  return walk(nodes, opts);
-}
-
-/** Walk a parsed `toc.json` (xplat), honouring per-platform `exclude`. */
+/** Walk a parsed `toc.json`, honouring per-platform `exclude` when `excludePlatform` is set. */
 export function walkTocJson(nodes: TocNode[], opts: WalkOptions = {}): TocEntry[] {
   return walk(nodes, opts);
 }

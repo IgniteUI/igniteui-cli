@@ -128,7 +128,7 @@ export → inject → rewrite-api-urls → diff → compress (changed only) → 
 
 | Step | Input | Output | Requires API |
 |------|-------|--------|:---:|
-| Export | Source docs (docfx/xplat) | `dist/docs_processing/<platform>/` | No |
+| Export | `common/igniteui-documentation` | `dist/docs_processing/<platform>/` | No |
 | Inject | `dist/docs_processing/<platform>/` | `dist/docs_prepeared/<platform>/` | No |
 | Rewrite API Links | `dist/docs_prepeared/<platform>/` (in place) | `dist/docs_prepeared/<platform>/` + `_rewrite_log.csv` | No |
 | Diff | `dist/docs_prepeared/<platform>/` vs `docs_baseline/<platform>/` | `dist/diff-manifest.json` | No |
@@ -139,7 +139,7 @@ export → inject → rewrite-api-urls → diff → compress (changed only) → 
 
 The **diff** step compares the fresh inject output against a tracked baseline (`docs_baseline/`) using SHA-256 content hashes (with line-ending normalization for cross-platform consistency). Only files classified as `changed` or `added` are sent to the compress step. Deleted files are removed from the output directory. Unchanged files are skipped entirely.
 
-**Export** — Parses the table of contents (Angular: `toc.yml`, others: `toc.json`) to get the definitive list of published docs. For React, WebComponents, and Blazor it first runs the xplat gulp build which handles variable replacement, platform filtering, and API link resolution. Flattens hierarchical directory output into single-level filenames (e.g. `grids/grid/editing.md` → `grid-editing.md`) and injects toc metadata (`_tocName`, `_premium`) into each file's frontmatter.
+**Export** — Runs the docs repo's own generate scripts (platform blocks, TOC excludes, shared grid topics; Angular also syncs the pages it shares with xplat), then reads the framework's `toc.json` to get the definitive list of published docs. Each `.mdx` page is converted to plain markdown by `scripts/lib/mdx-convert.ts`: `{Platform}`-style tokens are resolved the way the docs site does, `<Sample>` becomes the `<code-view>` tag the inject step parses, `<ApiLink>`/`<ApiRef>` become `mcp:get_api_reference` links, `<DocsAside>` becomes a bold label, and images, badges and MDX imports are dropped. Flattens hierarchical paths into single-level filenames (e.g. `grids/grid/editing.mdx` → `grid-editing.md`) and injects toc metadata (`_tocName`, `_premium`) into each file's frontmatter. Reports how many API links resolved against the bundled API data.
 
 **Inject** — Replaces `<code-view>` HTML tags with actual component source code from the platform's examples repository. Resolves samples via the `github-src` attribute. Includes a post-inject data trimming step that keeps only 3 representative items from large data arrays and replaces the rest with `// ... N more items`, preventing individual files from exceeding 300KB.
 
@@ -175,7 +175,7 @@ npm run pipeline:blazor:full
 
 ```bash
 # Angular
-npm run export:angular           # parse toc.yml, expand grid templates, inject metadata
+npm run export:angular           # generate + convert .mdx, filter by toc.json, inject metadata
 npm run inject:angular           # replace <code-view> tags with TS/HTML/SCSS source code
 npm run rewrite-api-urls:angular      # replace infragistics.com API URLs with mcp:get_api_reference refs
 npm run diff:angular             # compare against baseline, output diff-manifest.json
@@ -184,8 +184,7 @@ npm run update-baseline:angular  # sync baseline with freshly processed docs
 npm run validate:angular         # LLM-as-Judge quality scoring
 
 # Blazor
-npm run build:xplat-blazor       # run xplat gulp build for Blazor
-npm run export:blazor            # flatten built docs, filter by toc.json, inject metadata
+npm run export:blazor            # generate + convert .mdx, filter by toc.json, inject metadata
 npm run inject:blazor            # replace <code-view> tags with Razor/C#/CSS source code
 npm run rewrite-api-urls:blazor       # replace infragistics.com API URLs with mcp:get_api_reference refs
 npm run diff:blazor              # compare against baseline, output diff-manifest.json
@@ -194,8 +193,7 @@ npm run update-baseline:blazor   # sync baseline with freshly processed docs
 npm run validate:blazor          # LLM-as-Judge quality scoring
 
 # React
-npm run build:xplat-react        # run xplat gulp build for React
-npm run export:react             # flatten built docs, filter by toc.json, inject metadata
+npm run export:react             # generate + convert .mdx, filter by toc.json, inject metadata
 npm run inject:react             # replace <code-view> tags with TSX/CSS source code
 npm run rewrite-api-urls:react        # replace infragistics.com API URLs with mcp:get_api_reference refs
 npm run diff:react               # compare against baseline, output diff-manifest.json
@@ -204,8 +202,7 @@ npm run update-baseline:react    # sync baseline with freshly processed docs
 npm run validate:react           # LLM-as-Judge quality scoring
 
 # WebComponents
-npm run build:xplat-wc           # run xplat gulp build for WebComponents
-npm run export:webcomponents     # flatten built docs, filter by toc.json, inject metadata
+npm run export:webcomponents     # generate + convert .mdx, filter by toc.json, inject metadata
 npm run inject:webcomponents     # replace <code-view> tags with HTML/TS/CSS source code
 npm run rewrite-api-urls:webcomponents # replace infragistics.com API URLs with mcp:get_api_reference refs
 npm run diff:webcomponents       # compare against baseline, output diff-manifest.json
@@ -216,19 +213,23 @@ npm run validate:webcomponents   # LLM-as-Judge quality scoring
 
 ## Scripts Reference
 
-### export-angular-docs.ts
+### export-docs.ts
 
-Reads `toc.yml` to determine which files to process, expands grid templates, and copies docs with metadata to the processing directory.
+Exports one framework from the `common/igniteui-documentation` submodule: runs its generate scripts, converts each TOC-listed `.mdx` page to markdown and writes flat files with TOC metadata to the processing directory. The Angular sync step writes into the submodule's source tree; the script restores those files afterwards so the submodule can still be pulled.
 
 ```bash
 npm run export:angular
 # or directly:
-npx tsx scripts/export-angular-docs.ts [lang]
+npx tsx scripts/export-docs.ts --framework angular [--lang en] [--skip-generate]
 ```
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|
-| `[lang]` | Language code (positional, first arg) | `en` |
+| `--framework` | `angular`, `react`, `webcomponents` or `blazor` | required |
+| `--lang` | Language code | `en` |
+| `--skip-generate` | Reuse the docs repo's existing generated output | off |
+
+Pages that moved folders in igniteui-documentation keep their old flat names through `ANGULAR_LEGACY_NAMES` so `get_doc` names and baselines stay stable.
 
 ### inject-angular-docs.ts
 
@@ -603,7 +604,6 @@ Returns framework-specific setup guides for creating a new Ignite UI project.
 ```
 igniteui-doc-mcp/
   angular/                          # Angular git submodules
-    igniteui-docfx/                 # Documentation source (markdown + toc.yml)
     igniteui-angular-samples/       # Angular sample apps (component source code)
     igniteui-angular-examples/      # Additional examples (charts, maps, etc.)
   react/                            # React git submodules
@@ -613,7 +613,7 @@ igniteui-doc-mcp/
   blazor/                           # Blazor git submodules
     igniteui-blazor-examples/       # Blazor example projects
   common/                           # Cross-platform git submodules
-    igniteui-xplat-docs/            # Shared docs for React, Blazor, WebComponents
+    igniteui-documentation/         # Documentation source for all four frameworks (Astro + .mdx)
   docs_baseline/                    # Tracked in git: post-inject snapshots for incremental diff
     angular/                        # Last-processed prepared docs (per platform)
     react/
@@ -645,8 +645,8 @@ igniteui-doc-mcp/
 | File | Description |
 |------|-------------|
 | `docs/progress.md` | Implementation progress tracker |
-| `docs/knowledgebase.md` | Cross-platform lessons learned (32 entries) |
-| `docs/xplat-docs-architecture.md` | Cross-platform docs architecture (variable replacement, toc.json, apiMap) |
+| `docs/knowledgebase.md` | Cross-platform lessons learned (36 entries) |
+| `docs/xplat-docs-architecture.md` | Historical: the gulp build of the archived igniteui-xplat-docs repo |
 | `docs/react-pipeline.md` | React pipeline implementation plan |
 | `docs/wc-pipeline-plan.md` | WebComponents pipeline implementation plan |
 | `docs/blazor-pipeline-plan.md` | Blazor pipeline implementation plan |

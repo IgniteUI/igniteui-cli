@@ -1,7 +1,3 @@
-[submodule "packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-docfx"]
-	path = packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-docfx
-	url = https://github.com/IgniteUI/igniteui-docfx
-	ignore = dirty
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-angular-samples"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-angular-samples
 	url = https://github.com/IgniteUI/igniteui-angular-samples
@@ -9,10 +5,6 @@
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-angular-examples"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-angular-examples
 	url = https://github.com/IgniteUI/igniteui-angular-examples
-	ignore = dirty
-[submodule "packages/igniteui-mcp/igniteui-doc-mcp/common/igniteui-xplat-docs"]
-	path = packages/igniteui-mcp/igniteui-doc-mcp/common/igniteui-xplat-docs
-	url = https://github.com/IgniteUI/igniteui-xplat-docs
 	ignore = dirty
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/react/igniteui-react-examples"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/react/igniteui-react-examples
@@ -41,3 +33,7 @@
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/blazor/igniteui-blazor"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/blazor/igniteui-blazor
 	url = https://github.com/IgniteUI/igniteui-blazor.git
+[submodule "packages/igniteui-mcp/igniteui-doc-mcp/common/igniteui-documentation"]
+	path = packages/igniteui-mcp/igniteui-doc-mcp/common/igniteui-documentation
+	url = https://github.com/IgniteUI/igniteui-documentation
+	ignore = dirty

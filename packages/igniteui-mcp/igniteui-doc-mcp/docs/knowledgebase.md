@@ -421,6 +421,22 @@ The model listed the **sample application's own classes** while the document bod
 
 **Rule: the group set comes from the TOC, never from the summary cache.** Loading `doc_groups` from `data/group-summaries/<fw>.json` would make a new or renamed group vanish along with all of its docs, instead of appearing with a NULL summary. NULL summaries are a development state; `--release` is what refuses to ship one.
 
+## 36. Docs Source Moved to igniteui-documentation (Astro + .mdx)
+
+**Problem:** igniteui-docfx (Angular) and igniteui-xplat-docs (React/WC/Blazor) were archived on 2026-06-08 and replaced by IgniteUI/igniteui-documentation. The pipeline kept building from the frozen submodules, so no doc change made after that date reached the DB. Entries 4–6, 29, 31 and 32 describe the old sources and only apply to them.
+
+**Solution:** One submodule, `common/igniteui-documentation`, and one exporter, `scripts/export-docs.ts --framework <fw>`. It runs the repo's own generate scripts (Node built-ins only, no `npm install`, well under a second per platform) and converts the `.mdx` output with `scripts/lib/mdx-convert.ts` back into the shape inject and compress were built around. Inject, rewrite, diff and compress are unchanged.
+
+**Rule: the exporter is an adapter, not a renderer.** `<Sample src>` becomes the `<code-view>` tag the inject scripts already parse (Angular keeps `iframe-src="{environment:<base>}/<src>"` for route lookup, xplat only needs `github-src`). `<ApiLink>` goes straight to an `mcp:get_api_reference` link, so `rewrite-api-links.ts` now finds almost nothing; it stays as a safety net for raw URLs. Types missing from the bundled API data (charts, maps, spreadsheet) become code spans.
+
+**Rule: generate.mjs leaves tokens in `_shared` grid pages.** The site resolves `{ComponentName}`-style tokens at build time in `vitePluginPlatformTokens` (`docs/xplat/astro.config.ts`) via `_componentKey` and `docConfig.json`. `resolveTokens()` is a port of that pass — keep the two in step.
+
+**Rule: the Angular sync step dirties the submodule.** `sync-generated.mjs` copies xplat-generated pages into `docs/angular/src/content`, overwriting tracked files and adding untracked ones. Most of the Angular catalogue (charts, excel, shared inputs/layouts) only exists after this step. The exporter restores what it touched so `switch-submodules.sh` can still pull.
+
+**Rule: keep flat names stable.** Pages that moved folders (`inputs/badge`, `inputs/button-group`, `layouts/avatar`) map back to their old names via `ANGULAR_LEGACY_NAMES`; `pivotgrid/` maps to `pivotGrid-`; xplat `grids/theming-grid` became `grids/grid/theming-grid` and is covered by a `theming-grid` alias. A rename otherwise shows up as delete + add and breaks aliases.
+
+**Rule: the first run after the switch is a full recompress.** Converted text differs from the old gulp/docfx output in nearly every file, so the diff step reports every doc as changed.
+
 ## Related Documentation
 
 | Document | Description | Status |
@@ -428,7 +444,7 @@ The model listed the **sample application's own classes** while the document bod
 | `impl_plan.md` | Original plan for `<code-view>` tag replacement in Angular docs | ✅ Implemented |
 | `prefix_fix.md` | Plan for fixing React→Angular prefix in compress prompt | ✅ Implemented |
 | `toc_based_processing.md` | Plan for using `toc.yml` as source of truth instead of filesystem enumeration | ✅ Implemented |
-| `xplat-docs-architecture.md` | Architecture analysis of the shared xplat build system (variable replacement, platform filtering, code fence filtering, API mapping) | Reference |
+| `xplat-docs-architecture.md` | Architecture analysis of the archived xplat gulp build (variable replacement, platform filtering, code fence filtering, API mapping) | Historical |
 | `react-pipeline.md` | React pipeline implementation plan (export → inject → compress) | ✅ Implemented |
 | `wc-pipeline-plan.md` | WebComponents pipeline implementation plan | ✅ Implemented |
 | `blazor-pipeline-plan.md` | Blazor pipeline implementation plan | ✅ Implemented |

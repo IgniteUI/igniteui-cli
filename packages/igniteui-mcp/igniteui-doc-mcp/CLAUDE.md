@@ -23,16 +23,14 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 │   ├── lib/frontmatter.ts              # Shared docs_final frontmatter parser
 │   ├── build-import-map.ts             # Symbol → import module maps → data/import-map/<fw>.json (resolve_import)
 │   ├── lib/import-map.ts               # Published-package entry-point walker + import verifier + example import scanner
-│   ├── export-angular-docs.ts          # Export Angular docs from docfx (toc-driven, template expansion, include resolution, API URL resolution)
+│   ├── export-docs.ts                  # Export docs for one framework from igniteui-documentation (generate, toc-driven, .mdx → .md, flatten)
+│   ├── lib/mdx-convert.ts              # MDX component/token conversion used by export-docs.ts (<Sample>, <ApiLink>, <DocsAside>, …)
 │   ├── inject-angular-docs.ts          # Inject sample code into docs (replaces <code-view> with component source)
 │   ├── compress-angular-docs.ts        # LLM-based compression of docs (~50% size reduction, supports --batch mode)
-│   ├── export-react-docs.ts            # Export React docs from xplat gulp build (toc.json-driven, flatten hierarchy)
 │   ├── inject-react-docs.ts            # Inject React sample code (github-src based resolution, TSX files)
 │   ├── compress-react-docs.ts          # LLM-based compression with React-specific prompt (Igr prefix, supports --batch mode)
-│   ├── export-wc-docs.ts              # Export WebComponents docs from xplat gulp build (toc.json-driven, flatten hierarchy)
 │   ├── inject-wc-docs.ts              # Inject WC sample code (github-src based, HTML/TS/CSS files)
 │   ├── compress-wc-docs.ts            # LLM-based compression with WC-specific prompt (Igc prefix + Component suffix, supports --batch mode)
-│   ├── export-blazor-docs.ts          # Export Blazor docs from xplat gulp build (toc.json-driven, flatten hierarchy)
 │   ├── inject-blazor-docs.ts          # Inject Blazor sample code (github-src based, .razor/.razor.cs/.css files)
 │   ├── compress-blazor-docs.ts        # LLM-based compression with Blazor-specific prompt (Igb prefix, no suffix, supports --batch mode)
 │   ├── validate-docs.ts               # LLM-as-Judge validation of compressed docs (platform-independent)
@@ -41,7 +39,7 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 │   ├── export-wc-api.ts               # Build Web Components API docs from blazor/api-docs submodule → docs/webcomponents-api/
 │   └── export-blazor-api.ts           # Build Blazor API docs from blazor/api-docs submodule → docs/blazor-api/
 ├── docs/
-│   ├── knowledgebase.md                # Lessons learned and issues for cross-platform reference (35 entries)
+│   ├── knowledgebase.md                # Lessons learned and issues for cross-platform reference (36 entries)
 │   ├── db.md                           # SQLite + FTS4 database integration (IMPLEMENTED)
 │   ├── batch-compression.md            # OpenAI Batch API for compression (IMPLEMENTED)
 │   ├── incremental-processing.md       # Plan: Incremental processing with diff-based pipeline (NOT YET IMPLEMENTED)
@@ -49,7 +47,7 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 │   ├── impl_plan.md                    # Original implementation plan for code-view replacement
 │   ├── prefix_fix.md                   # Plan for fixing component prefix issue
 │   ├── toc_based_processing.md         # Plan for toc.yml-driven file selection
-│   ├── xplat-docs-architecture.md      # Cross-platform docs architecture analysis (variable replacement, toc.json, apiMap)
+│   ├── xplat-docs-architecture.md      # Historical: gulp build of the archived igniteui-xplat-docs repo
 │   ├── react-pipeline.md              # React pipeline implementation plan
 │   ├── wc-pipeline-plan.md            # WebComponents pipeline implementation plan
 │   └── blazor-pipeline-plan.md        # Blazor pipeline implementation plan
@@ -58,8 +56,6 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 ├── webcomponents-api/                  # Web Components API docs (llms-full.txt files, built by build:docs:wc-api)
 ├── blazor-api/                         # Blazor API docs (llms-full.txt files, built by build:docs:blazor-api)
 ├── angular/                            # Git submodules
-│   ├── igniteui-docfx/                 # DocFX-based Angular documentation (en/jp/kr)
-│   │   └── en/components/toc.yml       # Table of contents — source of truth for which files to process
 │   ├── igniteui-angular-samples/       # Angular sample apps for Ignite UI components
 │   └── igniteui-angular-examples/      # Angular example projects
 ├── react/
@@ -69,8 +65,9 @@ This is the **Ignite UI Documentation MCP Server** — a Model Context Protocol 
 ├── blazor/
 │   └── igniteui-blazor-examples/       # Blazor example projects (git submodule)
 ├── common/
-│   └── igniteui-xplat-docs/            # Cross-platform docs source (React, Blazor, WC)
-│       └── docfx/en/components/toc.json # Cross-platform toc with exclude arrays
+│   └── igniteui-documentation/         # Docs source for all four frameworks (Astro + .mdx)
+│       ├── docs/angular/src/content/en/components/toc.json   # Angular TOC
+│       └── docs/xplat/src/content/en/toc.json                # React/WC/Blazor TOC with exclude arrays
 ├── dist/
 │   ├── docs_processing/angular/        # Intermediate output from export:angular
 │   ├── docs_prepeared/angular/         # Output from inject:angular (docs with inline sample code)
@@ -164,7 +161,7 @@ npm run build:group-summaries -- --force  # ignore the cache
 ## Angular Documentation Pipeline
 
 ```bash
-npm run export:angular    # export docs from docfx submodule → dist/docs_processing/angular/
+npm run export:angular    # export docs from igniteui-documentation → dist/docs_processing/angular/
 npm run inject:angular    # inject sample code into exported docs → dist/docs_prepeared/angular/
 npm run compress:angular  # LLM-compress docs → dist/docs_final/angular/
 npm run validate:angular  # LLM-as-Judge quality check → dist/validation_report_angular.json
@@ -176,7 +173,7 @@ npm run clear:blazor      # remove only Blazor output dirs
 npm run clear:webcomponents # remove only WebComponents output dirs
 ```
 
-**`export:angular`** (`scripts/export-angular-docs.ts`): Parses `toc.yml` to get the definitive list of published documentation files (only files referenced in toc are processed). Expands grid templates (grid, treeGrid, hierarchicalGrid, pivotGrid) by resolving `@@include()` directives and `@@if` conditionals. Injects toc metadata (`_tocName`, `_premium`) into each file's frontmatter. Replaces API documentation URL placeholders (`{environment:angularApiUrl}`, `{environment:sassApiUrl}`, `{environment:dvApiBaseUrl}`) with production URLs loaded from `environment.json`. Does NOT replace demo base URLs — those are handled by the inject step. Writes processed files to `dist/docs_processing/angular/`. Accepts an optional language argument (defaults to `en`).
+**`export:angular`** (`scripts/export-docs.ts --framework angular`): Runs the docs repo's xplat `generate.mjs` for Angular, the Angular `sync-generated.mjs` (copies the pages Angular shares with xplat into `docs/angular/src/content`) and the Angular `generate.mjs` (expands `grids_templates` into `grid/`, `treegrid/`, `hierarchicalgrid/`, `pivotgrid/`). Parses `toc.json` to get the definitive list of published files and converts each `.mdx` page with `scripts/lib/mdx-convert.ts`: tokens resolved, `<Sample>` → `<code-view iframe-src="{environment:<base>}/<src>" github-src="<src>">` (base picked like the site's Sample component: `dvDemosBaseUrl` for charts/gauges/maps/excel, `lobDemosBaseUrl`/`crmDemoBaseUrl` for `lob`/`crm`), `<ApiLink>` → `mcp:get_api_reference` links (code span when the type is not in the bundled API data), `<DocsAside>` → bold label. Injects toc metadata (`_tocName`, `_premium`) and writes flat files to `dist/docs_processing/angular/`. Restores the submodule files the sync step overwrote or added.
 
 **`inject:angular`** (`scripts/inject-angular-docs.ts`): Processes the exported docs, replacing `<code-view>` elements with actual Angular component source code. Uses two resolution strategies:
 - **Route-based** (`demosBaseUrl`, `lobDemosBaseUrl`, `crmDemoBaseUrl`): Parses `app.routes.ts` from `igniteui-angular-samples` to map `iframe-src` paths to component files (`.ts`, `.html`, `.scss`/`.css`)
@@ -202,15 +199,14 @@ Key compression prompt rules (shared across all platforms):
 ## React Documentation Pipeline
 
 ```bash
-npm run build:xplat-react   # run xplat gulp build for React → common/igniteui-xplat-docs/dist/React/
 npm run export:react         # flatten & enrich built docs → dist/docs_processing/react/
 npm run inject:react         # inject React sample code → dist/docs_prepeared/react/
 npm run compress:react       # LLM-compress docs → dist/docs_final/react/
 npm run validate:react       # LLM-as-Judge quality check
-npm run pipeline:react       # run all steps: clear → build → export → inject → compress
+npm run pipeline:react       # run all steps: clear → export → inject → compress
 ```
 
-**`export:react`** (`scripts/export-react-docs.ts`): Runs the xplat gulp build (`buildReact`) which handles variable replacement, platform filtering, code fence filtering, and API link resolution. Then parses `toc.json` (filtering entries where `"React"` is NOT in the `exclude` array), flattens hierarchical build output to single-level filenames (e.g., `grids/grid/editing.md` → `grid-editing.md`), and injects toc metadata (`_tocName`, `_premium`). Use `--skip-build` to skip the gulp build step if already built.
+**`export:react`** (`scripts/export-docs.ts --framework react`): Runs the docs repo's `docs/xplat/scripts/generate.mjs --platform=React` (resolves `<PlatformBlock>`, TOC excludes, and expands `grids/_shared` into each grid folder) and reads `docs/xplat/generated/React/en/components/`. Parses `toc.json` (filtering entries where `"React"` is in the `exclude` array), converts each `.mdx` page with `scripts/lib/mdx-convert.ts` (`_componentKey` and docConfig token replacement ported from the site's `vitePluginPlatformTokens`, `<Sample>` → `<code-view github-src>`, `<ApiLink>` → `mcp:get_api_reference`), flattens paths (e.g. `grids/grid/editing.mdx` → `grid-editing.md`) and injects toc metadata (`_tocName`, `_premium`). Use `--skip-generate` to reuse existing generated output.
 
 **`inject:react`** (`scripts/inject-react-docs.ts`): Replaces `<code-view>` tags with actual React sample code from `react/igniteui-react-examples/samples/{github-src}/src/`. Reads `.tsx`, `.ts`, `.css`, `.scss` files from sample directories. Uses a single resolution strategy based on the `github-src` attribute (simpler than Angular's route-based + file-based dual strategy). Includes a post-inject size report flagging files >300KB.
 
@@ -219,15 +215,14 @@ npm run pipeline:react       # run all steps: clear → build → export → inj
 ## WebComponents Documentation Pipeline
 
 ```bash
-npm run build:xplat-wc          # run xplat gulp build for WebComponents → common/igniteui-xplat-docs/dist/WebComponents/
 npm run export:webcomponents     # flatten & enrich built docs → dist/docs_processing/webcomponents/
 npm run inject:webcomponents     # inject WC sample code → dist/docs_prepeared/webcomponents/
 npm run compress:webcomponents   # LLM-compress docs → dist/docs_final/webcomponents/
 npm run validate:webcomponents   # LLM-as-Judge quality check
-npm run pipeline:webcomponents   # run all steps: clear → build → export → inject → compress
+npm run pipeline:webcomponents   # run all steps: clear → export → inject → compress
 ```
 
-**`export:webcomponents`** (`scripts/export-wc-docs.ts`): Identical architecture to `export:react` — runs the xplat gulp build (`buildWC`), parses `toc.json` (filtering entries where `"WebComponents"` is NOT in the `exclude` array), flattens hierarchical build output, and injects toc metadata. Use `--skip-build` to skip the gulp build step if already built.
+**`export:webcomponents`** (`scripts/export-docs.ts --framework webcomponents`): Same as `export:react` with `--platform=WebComponents` and the `Igc` API prefix.
 
 **`inject:webcomponents`** (`scripts/inject-wc-docs.ts`): Replaces `<code-view>` tags with actual WebComponents sample code from `webcomponents/igniteui-wc-examples/samples/{github-src}/src/`. Reads `.html`, `.ts`, `.css` files from sample directories (not `.tsx` like React). Uses the same `github-src` attribute resolution strategy as React.
 
@@ -236,15 +231,14 @@ npm run pipeline:webcomponents   # run all steps: clear → build → export →
 ## Blazor Documentation Pipeline
 
 ```bash
-npm run build:xplat-blazor       # run xplat gulp build for Blazor → common/igniteui-xplat-docs/dist/Blazor/
 npm run export:blazor             # flatten & enrich built docs → dist/docs_processing/blazor/
 npm run inject:blazor             # inject Blazor sample code → dist/docs_prepeared/blazor/
 npm run compress:blazor           # LLM-compress docs → dist/docs_final/blazor/
 npm run validate:blazor           # LLM-as-Judge quality check
-npm run pipeline:blazor           # run all steps: clear → build → export → inject → compress
+npm run pipeline:blazor           # run all steps: clear → export → inject → compress
 ```
 
-**`export:blazor`** (`scripts/export-blazor-docs.ts`): Identical architecture to `export:react` — runs the xplat gulp build (`buildBlazor`), parses `toc.json` (filtering entries where `"Blazor"` is NOT in the `exclude` array), flattens hierarchical build output, and injects toc metadata. Use `--skip-build` to skip the gulp build step if already built.
+**`export:blazor`** (`scripts/export-docs.ts --framework blazor`): Same as `export:react` with `--platform=Blazor` and the `Igb` API prefix.
 
 **`inject:blazor`** (`scripts/inject-blazor-docs.ts`): Replaces `<code-view>` tags with actual Blazor sample code from `blazor/igniteui-blazor-examples/samples/{github-src}/src/`. Reads `.razor`, `.razor.cs`, `.cs`, `.razor.css`, `.css` files from sample directories. Skips `_Imports.razor`, `.csproj`, `Program.cs`, and `wwwroot/` contents. Uses the same `github-src` attribute resolution strategy as React/WC.
 
@@ -284,7 +278,6 @@ Both are derived from `dist/toc-index/<framework>.json`, written by the export s
 - `better-sqlite3` — Native SQLite for build-db.ts (dev dependency, fast bulk inserts)
 - `openai` — OpenAI API client (used by compress scripts)
 - `js-tiktoken` — Token counting for compressed docs (o200k_base encoding)
-- `js-yaml` — YAML parsing for toc.yml processing
 - `zod` — input schema validation for tool parameters
 - `tsx` — dev dependency for running TypeScript scripts directly
 - TypeScript targeting ES2022 with Node16 module resolution
@@ -293,24 +286,14 @@ Both are derived from `dist/toc-index/<framework>.json`, written by the export s
 
 - `docs/knowledgebase.md` — Lessons learned and issues encountered across all platform pipelines (32 entries: Angular 1-16, React 17-21, WebComponents 22-26, Blazor/cross-platform 27-32).
 - `docs/progress.md` — Implementation progress tracker. Shows which features are done and which are planned.
-- `docs/xplat-docs-architecture.md` — Architecture analysis of the shared xplat build system (variable replacement, platform filtering, toc.json, apiMap).
+- `docs/xplat-docs-architecture.md` — Historical: the gulp build of the archived igniteui-xplat-docs repo. Kept for context on older pipeline decisions.
 - `docs/react-pipeline.md` — React pipeline implementation plan.
 - `docs/wc-pipeline-plan.md` — WebComponents pipeline implementation plan.
 - `docs/blazor-pipeline-plan.md` — Blazor pipeline implementation plan.
 - `docs/db.md` — SQLite + FTS4 database integration (implemented). Covers schema, `build-db.ts` script, and MCP server architecture.
 - `docs/batch-compression.md` — OpenAI Batch API integration (implemented). Adds `--batch submit|poll|retry` to all 4 compress scripts for 50% cost reduction and faster processing.
 - `docs/incremental-processing.md` — Plan for incremental processing (not yet implemented). Covers `docs_baseline/`, `diff-docs.ts`, and `--manifest` flag.
-- `angular/igniteui-docfx/en/components/toc.yml` — Source of truth for which Angular docs to process. Contains `name`, `premium`, `new`, `updated` metadata per entry.
-- `common/igniteui-xplat-docs/docfx/en/components/toc.json` — Source of truth for React, WebComponents, and Blazor docs. Uses `exclude` arrays for platform filtering.
-- `angular/igniteui-docfx/en/environment.json` — Production URLs for API documentation links. The `.production` section provides values for `angularApiUrl`, `sassApiUrl`, `dvApiBaseUrl`.
-
-## Submodule Documentation Build (igniteui-docfx)
-
-```bash
-cd angular/igniteui-docfx
-npm install                        # also runs dotnet tool restore
-npm start -- --lang en             # dev server with live reload
-npm run build -- --lang en         # static build
-npm run spellcheck                 # cspell
-npm run lint:md                    # markdownlint
-```
+- `common/igniteui-documentation/docs/angular/src/content/en/components/toc.json` — Source of truth for which Angular docs to process. Contains `name`, `premium`, `new`, `updated` metadata per entry.
+- `common/igniteui-documentation/docs/xplat/src/content/en/toc.json` — Source of truth for React, WebComponents, and Blazor docs. Uses `exclude` arrays for platform filtering.
+- `common/igniteui-documentation/docs/xplat/docConfig.json` — Per-platform token replacements (`{Platform}`, `{ProductName}`, `{GridName}`, …) applied by `mdx-convert.ts`.
+- igniteui-docfx and igniteui-xplat-docs are archived (2026-06-08); igniteui-documentation replaced both.
