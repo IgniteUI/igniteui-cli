@@ -270,7 +270,10 @@ export function convertApiLink(tag: JsxTag, opts: ConvertOptions): string {
     return codeSpan(display);
   }
   if (opts.stats) opts.stats.apiLinksResolved++;
-  return `[${codeSpan(display)}](${apiRef(api, canonical, member)})`;
+  // Unprefixed symbols (functions such as configureTheme) display under their own
+  // name, as the site's ApiLink does when the resolved symbol equals `type`.
+  const resolvedDisplay = canonical === type && !label ? (member ? `${type}.${member}` : type) : display;
+  return `[${codeSpan(resolvedDisplay)}](${apiRef(api, canonical, member)})`;
 }
 
 export function convertApiRef(tag: JsxTag, opts: ConvertOptions): string {

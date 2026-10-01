@@ -122,6 +122,13 @@ describe("convertApiLink", () => {
     );
   });
 
+  it("shows unprefixed symbols under their own name", () => {
+    const api: ApiResolver = { platform: "webcomponents", prefix: "Igc", index: new Map([["configuretheme", "configureTheme"]]) };
+    expect(convertApiLink(tag('<ApiLink type="configureTheme" />'), { ...opts(api), platform: "WebComponents" })).toBe(
+      "[`configureTheme`](mcp:get_api_reference?platform=webcomponents&component=configureTheme)"
+    );
+  });
+
   it("falls back to a code span and records unresolved types", () => {
     const o = opts(angularApi);
     expect(convertApiLink(tag('<ApiLink type="CategoryChart" member="title" />'), o)).toBe("`IgxCategoryChart.title`");
